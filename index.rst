@@ -10,6 +10,7 @@ Welcome to Open Data Kit's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   javarosa
 
 
 Indices and tables
