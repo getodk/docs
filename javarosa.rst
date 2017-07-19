@@ -40,6 +40,8 @@ Two source files in Validate use JavaRosa.
 
 FormValidator.java
 ------------------
+::
+
     core/model/Constants.java
     core/model/FormDef.java
     core/model/FormIndex.java
@@ -67,5 +69,8 @@ FormValidator.java
 
 StubPropertyManager.java
 ------------------------
+::
+
     core/services/properties/IPropertyRules.java
     core/services/IPropertyManager.java
+
