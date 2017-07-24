@@ -13,9 +13,36 @@ Open Data Kit (ODK) is a suite of open source applications that help organizatio
 Also part of the ODK suite are several tools that support form creation and data management:
 
 - **ODK Build** lets you design forms with a drag-and-drop form interface.
-- **ODK XLS2XForm** lets you design forms in Excel.
+- **ODK XLSForm** lets you design forms in Excel.
 - **ODK Validate** validates forms against the ODK XForms specification.
 - **ODK Form Uploader** uploads blank forms and their media files to ODK Aggregate.
 - **ODK Briefcase** packages and transfers data between instances of Collect and Aggregate.
 
 ODK also maintains several specifications and tools that support these applications. For a complete list of our projects, check out `Open Data Kit on Github <https://github.com/opendatakit>`_.
+
+.. _using-odk:
+Using ODK
+-----------
+
+In most cases, users of ODK:
+
+- Create survey forms using Build or XLSForm
+- Upload forms to an Aggregate server
+- Load forms into Collect on an Android phone
+- Use Collect to fill out forms with subjects
+- Upload survey data from Collect to Aggregate
+- Analyse or export data in Aggregate
+
+This requires:
+
+- Installing Aggregate on a server
+- Installing Collect on a phone or other mobile device
+
+.. tip::
+
+  While this is the *typical* use pattern, it is not the only way to do things. For example:
+
+  - Forms can be created using tools other than Build or XLSForm
+  - Forms can be uploaded directly to Collect, without using Aggregate
+
+  ODK is a very flexible set of tools, and orgnizations will find their own best practices for adopting it.
