@@ -59,7 +59,7 @@ This requires:
 Installing Collect
 ---------------------
 
-- **Recommended:**`The ODK Collect App is available in the Google Play store <https://play.google.com/store/apps/details?id=org.odk.collect.android&hl=en>`_.
+- **Recommended:** `The ODK Collect App is available in the Google Play store <https://play.google.com/store/apps/details?id=org.odk.collect.android&hl=en>`_.
 - You can also download from the web and install manually:
 
   - From your device's application drawer, choose :guilabel:`Settings`, then :guilabel:`Applications`. Make sure Unknown sources is checked.
@@ -78,3 +78,15 @@ Installing Collect
 .. tip::
 
   You can also `install ODK Collect on an Android emulator<https://github.com/opendatakit/opendatakit/wiki/DevEnv-Setup>`_. However, this can be slow and buggy, and is not recommended.
+
+.. _installing-aggregate:
+Installing Aggregate
+---------------------
+
+The easiest, recommended way to setup an ODK Aggregate instance is to use `Google App Engine <https://cloud.google.com/appengine/>`_ and the `ODK Aggregate Installer <https://opendatakit.org/downloads/download-category/aggregate/>`_.
+
+You'll set up a new Google Cloud project, and then run the install utility locally. This will connect to your Google Cloud account and install Aggregate there.
+
+For full details, and other installation methods, see the `ODK Aggregate Installation and Setup Guide <https://opendatakit.org/use/aggregate/>`_.
+
+.. change to: :ref:`ODK Aggregate Installation and Setup Guide <aggregate-install-guide>`.
