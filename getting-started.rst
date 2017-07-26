@@ -5,8 +5,6 @@ Getting Started Guide
 What is ODK?
 --------------
 
-..
-
 Open Data Kit (ODK) is a suite of open source applications that help organizations engaged in enumerator-mediated data collection. ODK tools assist with the collection and management of survey data using mobile forms. These include the primary ODK applications:
 
 - **ODK Collect**, an Android mobile app that replaces paper-based forms.
@@ -109,3 +107,18 @@ The quickest and easiest way to start using your own survey forms is to create t
   - ODK Build can also be run locally. `Desktop versions are available for download here <https://opendatakit.org/downloads/download-category/build/>`_/
 
 .. link to list of more form design options
+
+.. _using-collect-intro:
+Load, Complete, and Upload a Form with ODK Collect
+----------------------------------------------------------
+
+- :ref:`Install <installing-collect>` and open ODK Collect on your Android phone.
+- Open the :guiselect:`⋮` menu and then select :menuselection:`General Settings`.
+- Select :guiselect:`Server`.
+- Edit the server settings to connect to your ODK Aggregate instance.
+- Go back to the app home screen and select :guiselect:`Get Blank Form`, then select your form.
+- Select :guiselect:`Fill Blank Form` to complete a survey.
+- Select :guiselect:`Send Finalized Form` to upload your completed survey to ODK Aggregate.
+
+
+Now, you should be able to log back in to your ODK Aggregate instance and see your completed survey results.
