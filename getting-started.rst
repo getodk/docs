@@ -42,8 +42,8 @@ In most cases, users of ODK:
 
 This requires:
 
-- :ref:`Installing Collect on a phone or other mobile device <install-collect>`
-- :ref:`Installing Aggregate on a server <install-aggregate>`
+- :ref:`Installing Collect on a phone or other mobile device <installing-collect>`
+- :ref:`Installing Aggregate on a server <installing-aggregate>`
 
 .. tip::
 
@@ -77,7 +77,7 @@ Installing Collect
 
 .. tip::
 
-  You can also `install ODK Collect on an Android emulator<https://github.com/opendatakit/opendatakit/wiki/DevEnv-Setup>`_. However, this can be slow and buggy, and is not recommended.
+  You can also `install ODK Collect on an Android emulator <https://github.com/opendatakit/opendatakit/wiki/DevEnv-Setup>`_. However, this can be slow and buggy, and is not recommended.
 
 .. _installing-aggregate:
 
