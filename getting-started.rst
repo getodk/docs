@@ -2,6 +2,7 @@ Getting Started Guide
 =========================
 
 .. _what-is-odk:
+
 What is ODK?
 --------------
 
@@ -26,6 +27,7 @@ ODK also maintains libraries and specifications that support these applications.
 For a complete list of our projects, check out `Open Data Kit on Github <https://github.com/opendatakit>`_.
 
 .. _using-odk:
+
 Using ODK
 -----------
 
@@ -78,6 +80,7 @@ Installing Collect
   You can also `install ODK Collect on an Android emulator<https://github.com/opendatakit/opendatakit/wiki/DevEnv-Setup>`_. However, this can be slow and buggy, and is not recommended.
 
 .. _installing-aggregate:
+
 Installing Aggregate
 ---------------------
 
@@ -92,6 +95,7 @@ For full details, and other installation methods, see the `ODK Aggregate Install
     once that section is completed
 
 .. _intro-odk-build:
+
 Create and Upload Survey Forms with ODK Build
 -----------------------------------------------
 
@@ -109,6 +113,7 @@ The quickest and easiest way to start using your own survey forms is to create t
 .. link to list of more form design options
 
 .. _using-collect-intro:
+
 Load, Complete, and Upload a Form with ODK Collect
 ----------------------------------------------------------
 
