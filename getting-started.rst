@@ -5,7 +5,9 @@ Getting Started Guide
 What is ODK?
 --------------
 
-Open Data Kit (ODK) is a suite of open source applications that help organizations collect and manage survey data using mobile forms. These include the primary ODK applications:
+..
+
+Open Data Kit (ODK) is a suite of open source applications that help organizations engaged in enumerator-mediated data collection. ODK tools assist with the collection and management of survey data using mobile forms. These include the primary ODK applications:
 
 - **ODK Collect**, an Android mobile app that replaces paper-based forms.
 - **ODK Aggregate**, a server-side data storage and analysis tool.
@@ -18,7 +20,12 @@ Also part of the ODK suite are several tools that support form creation and data
 - **ODK Form Uploader** uploads blank forms and their media files to ODK Aggregate.
 - **ODK Briefcase** packages and transfers data between instances of Collect and Aggregate.
 
-ODK also maintains several specifications and tools that support these applications. For a complete list of our projects, check out `Open Data Kit on Github <https://github.com/opendatakit>`_.
+ODK also maintains libraries and specifications that support these applications.
+
+- **ODK XForm** is a subset of the W3 XForm specification, for use in the ODK ecosystem.
+- **ODK JavaRosa** is a Java library that renders forms complying with the ODK XForm specification.
+
+For a complete list of our projects, check out `Open Data Kit on Github <https://github.com/opendatakit>`_.
 
 .. _using-odk:
 Using ODK
@@ -46,3 +53,28 @@ This requires:
   - Forms can be uploaded directly to Collect, without using Aggregate
 
   ODK is a very flexible set of tools, and orgnizations will find their own best practices for adopting it.
+
+.. _installing-collect:
+
+Installing Collect
+---------------------
+
+- **Recommended:**`The ODK Collect App is available in the Google Play store <https://play.google.com/store/apps/details?id=org.odk.collect.android&hl=en>`_.
+- You can also download from the web and install manually:
+
+  - From your device's application drawer, choose :guilabel:`Settings`, then :guilabel:`Applications`. Make sure Unknown sources is checked.
+  - Return to the application drawer and choose :guilabel:`Browser`. Navigate to `https://opendatakit.org/downloads/download-category/collect/ <https://opendatakit.org/downloads/download-category/collect/>`_ and download the ODK Collect APK.
+  - In the download window, you will see ODK_Collect_vN.N.N.apk. - Select it to download the file.
+
+    - On older devices, the APK will automatically install after you approve the security settings.
+    - On newer devices, you must go to the download list, rename the file to restore the .apk extension (the extension will have been renamed to .man during the download process), then click on it to install it.
+
+.. warning::
+
+  ODK Collect requires a external SD Card. Most current Android models have these built in, but some models (mostly Android 2.x and earlier) do not and will need one to be installed.
+
+  If ODK fails to start, it is likely a problem with your SD card. Check that you have one and that it is properly installed and seated.
+
+.. tip::
+
+  You can also `install ODK Collect on an Android emulator<https://github.com/opendatakit/opendatakit/wiki/DevEnv-Setup>`_. However, this can be slow and buggy, and is not recommended.
