@@ -118,12 +118,12 @@ Load, Complete, and Upload a Form with ODK Collect
 ----------------------------------------------------------
 
 - :ref:`Install <installing-collect>` and open ODK Collect on your Android phone.
-- Open the :guiselect:`⋮` menu and then select :menuselection:`General Settings`.
-- Select :guiselect:`Server`.
+- Open the :guilabel:`⋮` menu and then select :menuselection:`General Settings`.
+- Select :guilabel:`Server`.
 - Edit the server settings to connect to your ODK Aggregate instance.
-- Go back to the app home screen and select :guiselect:`Get Blank Form`, then select your form.
-- Select :guiselect:`Fill Blank Form` to complete a survey.
-- Select :guiselect:`Send Finalized Form` to upload your completed survey to ODK Aggregate.
+- Go back to the app home screen and select :guilabel:`Get Blank Form`, then select your form.
+- Select :guilabel:`Fill Blank Form` to complete a survey.
+- Select :guilabel:`Send Finalized Form` to upload your completed survey to ODK Aggregate.
 
 
 Now, you should be able to log back in to your ODK Aggregate instance and see your completed survey results.
