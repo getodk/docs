@@ -4,16 +4,13 @@ Glossary
 .. ODK-compatible tools
 
 .. glossary:: sorted
-
-
-  subject
   participant
 
-    A person being interviewed by a user of :term:`Collect`
+    A person being interviewed by a user of :term:`Collect`. (Also sometimes called a "subject".)
 
   enumerator
 
-    A person
+    A person who conducts a survey.
 
   Collect
 
@@ -46,7 +43,7 @@ Glossary
 
     Part of ODK.
 
-    A tool for validating forms against the :term:`ODK XForms specification <xform>`.
+    A tool for validating forms against the :term:`ODK XForms specification <ODK XForm>`.
 
   Form Uploader
 
