@@ -36,7 +36,7 @@ In most cases, users of ODK:
 - Create survey forms using `Build <https://build.opendatakit.org/>`_ or `XLSForm <http://xlsform.org/>`_
 - Upload forms to an Aggregate server
 - Load forms into Collect on an Android phone
-- Use Collect to fill out forms with :term:`subjects <subject>`
+- Use Collect to fill out forms with :term:`participants <participant>`
 - Upload survey data from Collect to Aggregate
 - Analyse or export data in Aggregate
 
