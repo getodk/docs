@@ -1,12 +1,19 @@
 Glossary
 ==============
 
+.. ODK-compatible tools
+
 .. glossary:: sorted
 
 
   subject
+  participant
 
     A person being interviewed by a user of :term:`Collect`
+
+  enumerator
+
+    A person
 
   Collect
 
