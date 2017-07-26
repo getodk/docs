@@ -89,4 +89,23 @@ You'll set up a new Google Cloud project, and then run the install utility local
 
 For full details, and other installation methods, see the `ODK Aggregate Installation and Setup Guide <https://opendatakit.org/use/aggregate/>`_.
 
-.. change to: :ref:`ODK Aggregate Installation and Setup Guide <aggregate-install-guide>`.
+.. change to
+    :ref:`ODK Aggregate Installation and Setup Guide <aggregate-install-guide>`.
+    once that section is completed
+
+.. _intro-odk-build:
+Create and Upload Survey Forms with ODK Build
+-----------------------------------------------
+
+The quickest and easiest way to start using your own survey forms is to create them in online with `ODK Build <https://build.opendatakit.org/>`_.
+
+- Go to `build.opendatakit.org <https://build.opendatakit.org/>`_, create a new account, and log in.
+- Once logged in, a blank survey is created. Give it a name (:guilabel:`rename` in the upper left-hand corner) and add a few questions (click on question types in the :guilabel:`+Add New` bar along the bottom).
+- Once your new form is complete, go to :menuselection:`File --> Upload form to Aggregate...` to upload your form.
+
+.. tip::
+
+  - ODK Build is a great tool for simple forms. For more complex forms, try `ODK XLSForm <http://xlsform.org/>`_.
+  - ODK Build can also be run locally. `Desktop versions are available for download here <https://opendatakit.org/downloads/download-category/build/>`_/
+
+.. link to list of more form design options
