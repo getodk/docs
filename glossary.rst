@@ -3,7 +3,8 @@ Glossary
 
 .. ODK-compatible tools
 
-.. glossary:: sorted
+.. glossary:: :sorted:
+
   participant
 
     A person being interviewed by a user of :term:`Collect`. (Also sometimes called a "subject".)
