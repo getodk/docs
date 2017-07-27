@@ -64,7 +64,67 @@ Terminal (Command Line)
 
 Contributing to the docs requires interacting with git, Github, Python, and Sphinx, which requires use of the Terminal. This is common among Linux users. Mac users unfamiliar with the Terminal can learn more from `this tutorial <https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855>`_.
 
-.. install python
+Python
+~~~~~~~~
+
+Python 3
+'''''''''''
+
+If you don't know, check to see if you have Python 3 installed:
+
+.. code::
+
+  $ python3
+
+If you get an error, you probably don't and will need to `install Python 3 <https://www.python.org/downloads/>`_. If the Python command-line interpreter starts up, type ``quit()`` to exit.
+
+Virtual Environment
+''''''''''''''''''''''
+
+A virtual environment is a Python tool for sandboxing dependencies. It lets you install whatever you need for a particular project, without messing up any other Python environments you might need.
+
+Check to see if you have virtualenv installed:
+
+.. code::
+
+  $ virtualenv
+
+If you get a help message with information about commands, you have it. If you don't have it, you'll get a ``command not found`` message.
+
+If you don't have it, the easiest way to get it is to use pip:
+
+.. code::
+
+  $ pip install virtualenv
+
+Then, create an ODK "master" directory. This will contain your virtualenv as a subdirectory and the docs repo as a subdirectory.
+
+.. code::
+
+  $ mkdir odk
+  $ cd odk
+
+Now, inside that odk directory, create a python3 virtualenv.
+
+.. code::
+
+  $ virtualenv -p python3 odkenv
+
+The last part, ``odkenv`` can be whatever name you'd like to call it.
+
+Activate your virtural environement with:
+
+.. code::
+
+  $ source odkenv/bin/activate
+
+And, when you are done working, deactivate it with:
+
+.. code::
+
+  $ deactivate
+
+
 
 Github and git
 ~~~~~~~~~~~~~~~~~
@@ -143,7 +203,11 @@ Workflow Details
 Pull in Updates from Upstream
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You probably won't need to do this the
+You probably won't need to do this the first time, but you should always pull in any changes from the main repo before working.
+
+.. code::
+
+  $ git pull upstream
 
 Make a New Branch
 ~~~~~~~~~~~~~~~~~~~
