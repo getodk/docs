@@ -159,4 +159,44 @@ Create a new branch in which you will work on this specific issue. The branch na
 Work on the Docs
 ~~~~~~~~~~~~~~~~~~~
 
-- Write and edit files
+Write and edit files in your favorite editor.
+
+.. links to style guidelines, rst syntax, etc...
+
+Build, View, and Debug
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+To build the documentation into a viewable website:
+
+.. code::
+
+  $ sphinx-build -b html . build
+
+This calls the sphinx-build utility, which you have if you :ref:`installed Sphinx <install-sphinx>` properly. The ``-b`` switch specifies the builder, which in this case is ``html`` -- as opposed to other builders like ``pdf``. The ``.`` refers to the current directory (the build source) and ``build`` refers to the target of the build (the built files will be put into a directory labeled ``build``).
+
+When you run the build, you may see error or warning messages. These indicate potential problems with the documentation, like:
+
+- syntax errors
+- broken links
+- terms not included in the glossary
+
+Error and warning messages include a file name and line number for tracking them down. Try to resolve all your errors and warnings before issuing a pull request. However, if this is not possible, please add a note in your pull request. **If you submit a pull request that will create build errors, you must include a note mentioning what those errors are, and why thy are ok to leave in.**
+
+
+To view the documentation in your web browser, you can use Python's built-in webserver.
+
+.. code::
+
+  $ cd build
+  $ python -m http.server 8000
+
+Then open your browser and go to `http://localhost:8000 <http://localhost:8000>`_.
+
+Read through your doc edits in the browser and correct any issues in your source files. You'll need to shut down the web server (:kbd:`CTRL C`) before rebuilding, then return to the main directory of the repo ( ``cd ..`` ).
+
+It's a good idea to delete the ``build`` directory before each rebuild.
+
+.. code::
+
+  $ rm -rf build
+  $ sphinx-build -b html . build
