@@ -17,6 +17,9 @@ ODK Documentation follows (as much as possible) the `Docs like Code <http://www.
 
 This section of the Contributor Guide walks through our authoring and publishing workflow and toolchain, to make it as easy possible for you to contribute.
 
+Terminal (Command Line)
+--------------------------
+
 .. warning::
 
   This contributor guide is written from a *nix (Bash Terminal) perspective, which works on all flavors of Linux and MacOS. If you are on Windows, you will need to:
