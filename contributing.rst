@@ -54,10 +54,10 @@ Terminal (Command Line)
 
 .. warning::
 
-  This contributor guide is written from a *nix (Bash Terminal) perspective, which is relevant to all flavors of Linux and MacOS. If you are on Windows, you will need to do one of the following:
+  This contributor guide is written from a \*nix (Bash Terminal) perspective, which is relevant to all flavors of Linux and MacOS. If you are on Windows, you will need to do one of the following:
 
   - adapt the commands to your environment
-  - use the `Linux subsystem (Windows 10)<https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/>`_
+  - use the `Linux subsystem (Windows 10) <https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/>`_
   - use a `bash terminal emulator <https://www.howtogeek.com/howto/41382/how-to-use-linux-commands-in-windows-with-cygwin/>`_
 
   Contributions to this guide with explanations and help for Windows users is greatly appreciated.
@@ -249,7 +249,7 @@ To build the documentation into a viewable website:
 
   $ sphinx-build -b html . build
 
-This calls the sphinx-build utility, which you have if you :ref:`installed Sphinx <install-sphinx>` properly. The ``-b`` switch specifies the builder, which in this case is ``html`` -- as opposed to other builders like ``pdf``. The ``.`` refers to the current directory (the build source) and ``build`` refers to the target of the build (the built files will be put into a directory labeled ``build``).
+This calls the sphinx-build utility. The ``-b`` switch specifies the builder, which in this case is ``html`` -- as opposed to other builders like ``pdf``. The ``.`` refers to the current directory (the build source) and ``build`` refers to the target of the build (the built files will be put into a directory labeled ``build``).
 
 When you run the build, you may see error or warning messages. These indicate potential problems with the documentation, like:
 
