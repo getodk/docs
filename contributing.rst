@@ -261,4 +261,23 @@ Complete the pull request. The maintainers will review it as quickly as possible
 Keep Going
 ~~~~~~~~~~~
 
-Once the PR is merged, you need to pull the updated
+Once the PR is merged, you'll need to pull in the changes from the main repo ( ``upstream`` ) into your local copy.
+
+.. code::
+
+  $ git checkout master
+  $ git pull upstream master
+
+Then you should push those change to your copy on GitHub ( ``origin`` ).
+
+.. code::
+
+  $ git push
+
+If you want to delete your branch from before, you can do that:
+
+.. code::
+
+  $ git branch -d branch-name
+
+Now you can find a new issue to work on, create a new branch, and get to work...
