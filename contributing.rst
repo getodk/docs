@@ -6,6 +6,13 @@ Contributing to ODK Docs
 Authoring Tools and Environment
 =====================================
 
+.. note::
+
+  Developer and authoring tools have lots of options and alternatives. Local tools and workflows presented in this guide are what the author feels would be easiest for a non-coding contributor to set up and use.
+
+Docs as Code
+----------------
+
 ODK Documentation follows (as much as possible) the `Docs like Code <http://www.writethedocs.org/guide/docs-as-code/>`_ philosophy. This means:
 
 - Documention source files are written in a plaintext format. (We use `reStructuredText <http://docutils.sourceforge.net/rst.html>`_.)
@@ -17,18 +24,22 @@ ODK Documentation follows (as much as possible) the `Docs like Code <http://www.
 
 This section of the Contributor Guide walks through our authoring and publishing workflow and toolchain, to make it as easy possible for you to contribute.
 
+
+
 Terminal (Command Line)
 --------------------------
 
 .. warning::
 
-  This contributor guide is written from a *nix (Bash Terminal) perspective, which works on all flavors of Linux and MacOS. If you are on Windows, you will need to:
+  This contributor guide is written from a *nix (Bash Terminal) perspective, which is relevant to all flavors of Linux and MacOS. If you are on Windows, you will need to do one of the following:
 
   - adapt the commands to your environment
-  - use the Linux subsystem (Windows 10)
-  - use a bash terminal emulator
+  - use the `Linux subsystem (Windows 10)<https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/>`_
+  - use a `bash terminal emulator <https://www.howtogeek.com/howto/41382/how-to-use-linux-commands-in-windows-with-cygwin/>`_
 
   Contributions to this guide with explanations and help for Windows users is greatly appreciated.
+
+Contributing to the docs requires interacting with git, Github, Python, and Sphinx, which requires use of the Terminal. This is common among Linux users. Mac users unfamiliar with the Terminal can learn more from `this tutorial <https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855>`_.
 
 Github and git
 ----------------
