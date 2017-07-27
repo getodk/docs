@@ -12,6 +12,7 @@ Welcome to Open Data Kit's documentation!
 
    getting-started
    javarosa
+   contributing
    glossary
 
 
