@@ -129,21 +129,17 @@ And, when you are done working, deactivate it with:
 Github and git
 ~~~~~~~~~~~~~~~~~
 
+Git is a distributed version control system. It makes it possible to track changes in files over time, merge changes made by different contributors, compare different versions of the same file, and revert a file to an earlier point. Git can be very complicated, but you do not need to understand its advanced features or inner workings to use it.
+
+GitHub is an online service that lets individuals and organizations host git repositories. It also provides additional collaboration tools like issue trackers. Open Data Kit uses GitHub for its public code and documentation projects.
+
 You will need to:
 
 - `Install git <https://git-scm.com/downloads>`_
 - `Start a GitHub account <https://github.com/>`_
 
-.. note::
-
-  Git is a distributed version control system. It makes it possible to track changes in files over time, merge changes made by different contributors, compare different versions of the same file, and revert a file to an earlier point. Git can be very complicated, but you do not need to understand its advanced features or inner workings to use it.
-
-  GitHub is an online service that lets individuals and organizations host git repositories. It also provides additional collaboration tools like issue trackers. Open Data Kit uses GitHub for its public code and documentation projects.
-
-.. python
-
-Setup Details
--------------------
+Getting Ready to Work
+-----------------------
 
 Fork the Docs
 ~~~~~~~~~~~~~~
