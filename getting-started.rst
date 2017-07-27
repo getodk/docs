@@ -35,14 +35,14 @@ In most cases, users of ODK:
 
 - Create survey forms using `Build <https://build.opendatakit.org/>`_ or `XLSForm <http://xlsform.org/>`_
 - Upload forms to an Aggregate server
-- Load forms into Collect on an Android phone
+- Load forms into Collect on an Android device
 - Use Collect to fill out forms with :term:`participants <participant>`
 - Upload survey data from Collect to Aggregate
 - Analyse or export data in Aggregate
 
 This requires:
 
-- :ref:`Installing Collect on a phone or other mobile device <installing-collect>`
+- :ref:`Installing Collect on a device or other mobile device <installing-collect>`
 - :ref:`Installing Aggregate on a server <installing-aggregate>`
 
 .. tip::
@@ -69,11 +69,9 @@ Installing Collect
     - On older devices, the APK will automatically install after you approve the security settings.
     - On newer devices, you must go to the download list, rename the file to restore the .apk extension (the extension will have been renamed to .man during the download process), then click on it to install it.
 
-.. warning::
+.. note::
 
-  ODK Collect requires a external SD Card. Most current Android models have these built in, but some models (mostly Android 2.x and earlier) do not and will need one to be installed.
-
-  If ODK fails to start, it is likely a problem with your SD card. Check that you have one and that it is properly installed and seated.
+  On older Android devices (4.0 and earlier) ODK Collect required an external SD Card. This is no longer an issue because Android devices have internal storage. Virtually all current Android devices will run ODK Collect.
 
 .. tip::
 
@@ -117,7 +115,7 @@ The quickest and easiest way to start using your own survey forms is to create t
 Load, Complete, and Upload a Form with ODK Collect
 ----------------------------------------------------------
 
-- :ref:`Install <installing-collect>` and open ODK Collect on your Android phone.
+- :ref:`Install <installing-collect>` and open ODK Collect on your Android device.
 - Open the :guilabel:`⋮` menu and then select :menuselection:`General Settings`.
 - Select :guilabel:`Server`.
 - Edit the server settings to connect to your ODK Aggregate instance.
