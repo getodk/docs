@@ -82,7 +82,7 @@ You will need to:
 
 .. python
 
-Workflow Details
+Setup Details
 -------------------
 
 Fork the Docs
@@ -111,6 +111,15 @@ The rest of the documentation assumes you are in the directory for the repo (the
   - The ``clone`` command creates a new directory inside the current one. So you do not need to create a new `odk-docs` directory first.
   - As noted above, we recommend an `odk` master directory that holds your virtualenv directory and your git repo. So you would be in that odk directory when you clone down the repo.
 
+Set the Upstream Remote
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When you clone down a repo, the local copy calls your GitHub copy ``origin``. You should also set ``upstream`` as the name of the original, main GitHub repo.
+
+.. code::
+
+  $ git remote add upstream https://github.com/opendatakit/docs.git
+
 Install Dependencies
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -127,6 +136,14 @@ The first time you clone down the repo, you'll need to install the dependencies.
 .. note::
 
   If you have problems when running the Sphinx commands (see below), you may have a dependency issue. Try running ``pip install -r requirements.txt`` again.
+
+Workflow Details
+-------------------
+
+Pull in Updates from Upstream
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You probably won't need to do this the
 
 Make a New Branch
 ~~~~~~~~~~~~~~~~~~~
@@ -200,3 +217,48 @@ It's a good idea to delete the ``build`` directory before each rebuild.
 
   $ rm -rf build
   $ sphinx-build -b html . build
+
+Push Your Branch
+~~~~~~~~~~~~~~~~~~
+
+Once your work on the issue is completed, push your branch to your GitHub repo.
+
+The first time you do this on any branch, you'll need to specify the branch name:
+
+.. code::
+
+  $ git push origin branch-name
+
+After that, you can just:
+
+.. code::
+
+  $ git push
+
+(Note: ``origin`` is the local label for your GitHub fork.)
+
+Issue a Pull Request
+~~~~~~~~~~~~~~~~~~~~~~
+
+A pull request (or PR) is a request from you to the ODK Docs maintainers, for us to pull in your changes to the main repo.
+
+Go the `main docs repo on GitHub <https://github.com/opendatakit/docs>`. You'll see a message there referencing your recently pushed branches. Select :guilabel:`Compare & pull request` to start a pull request.
+
+Follow GitHub's instructions. The :guilabel:`Base fork` should be the main repo, and :guilabel:`base` should be ``master``. Your repo and working fork should be listed beside them. (This should all populate by default, but you should double check.) If there is a green **Able to be merged** message, you can proceed.
+
+You must include a PR comment. Things to include:
+
+- A summary of what you did.
+- A note about anything that probably should have been done, but you didn't do.
+- A note about any new work this PR will create.
+- The issue number you are working on. If the PR completes the issue, include the text ``Closes #`` and the issue number.
+- A note about any errors or warnings, and why you did not or could not resolve them.
+- A note justifying any changes to requirements.txt
+- A note about any difficulties, questions, or concerns that came up while working on this issue.
+
+Complete the pull request. The maintainers will review it as quickly as possible. If there's any problems the maintainers can't deal with, they will reach out to you.
+
+Keep Going
+~~~~~~~~~~~
+
+Once the PR is merged, you need to pull the updated
