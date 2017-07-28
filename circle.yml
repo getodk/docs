@@ -1,0 +1,7 @@
+test:
+  override:
+    - mkdir $HOME/docs/build
+    - sphinx-build $HOME/docs $HOME/docs/build
+
+  post:
+    - cp -r $HOME/docs/build $CIRCLE_ARTIFACTS
