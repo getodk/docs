@@ -4,9 +4,8 @@ dependencies:
 
 test:
   override:
-    - cd docs
-    - mkdir build
-    - sphinx-build -b . build
+    - mkdir $HOME/docs/build
+    - sphinx-build -b $HOME/docs  $HOME/docs/build
 
   post:
-    - cp -r build/ $CIRCLE_ARTIFACTS
+    - cp -r $HOME/docs/build $CIRCLE_ARTIFACTS
