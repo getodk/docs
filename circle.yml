@@ -2,7 +2,7 @@ test:
   pre:
     # your fork of the docs repo is probably not called "docs"
     # so, if there is no "docs" folder, find the repo folder and rename it to docs
-    - if [ ! -d $HOME/docs ]; then mv `dirname */circle.yml` docs; fi
+    - if [ ! -d $HOME/docs ]; then mv `dirname $HOME/*/circle.yml` $HOME/docs; fi
 
   override:
     - sphinx-build $HOME/docs $HOME/docs/build
