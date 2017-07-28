@@ -1,7 +1,3 @@
-dependencies:
-  post:
-    - pip install -r requirements.txt
-
 test:
   override:
     - mkdir $HOME/docs/build
