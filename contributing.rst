@@ -2,6 +2,7 @@
 Contributing to ODK Docs
 ***************************
 
+.. docs-tech-guide:
 
 Authoring Tools and Environment
 =====================================
@@ -9,6 +10,8 @@ Authoring Tools and Environment
 .. note::
 
   Developer and authoring tools have lots of options and alternatives. Local tools and workflows presented in this guide are what the author feels would be easiest for a non-coding contributor to set up and use.
+
+.. _docs-as-code:
 
 Docs as Code
 ----------------
@@ -24,6 +27,7 @@ ODK Documentation follows (as much as possible) the `Docs like Code <http://www.
 
 This section of the Contributor Guide walks through our authoring and publishing workflow and toolchain, to make it as easy possible for you to contribute.
 
+.. _docs-workflow-overview:
 
 Overview of Workflow
 -----------------------
@@ -45,9 +49,12 @@ And then each time you work you will:
 - Pull latest back to your local machine from the main repo
 - Repeat.
 
+.. _docs-dev-setup:
 
 Setting up Your Environment
 ----------------------------
+
+.. _docs-terminal:
 
 Terminal (Command Line)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -64,8 +71,12 @@ Terminal (Command Line)
 
 Contributing to the docs requires interacting with git, Github, Python, and Sphinx, which requires use of the Terminal. This is common among Linux users. Mac users unfamiliar with the Terminal can learn more from `this tutorial <https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855>`_.
 
+.. _docs-python:
+
 Python
 ~~~~~~~~
+
+.. _docs-python3:
 
 Python 3
 '''''''''''
@@ -77,6 +88,8 @@ If you don't know, check to see if you have Python 3 installed:
   $ python3
 
 If you get an error, you probably don't and will need to `install Python 3 <https://www.python.org/downloads/>`_. If the Python command-line interpreter starts up, type ``quit()`` to exit.
+
+.. _docs-venv:
 
 Virtual Environment
 ''''''''''''''''''''''
@@ -125,6 +138,7 @@ And, when you are done working, deactivate it with:
   $ deactivate
 
 
+.. _docs-gh-git:
 
 Github and git
 ~~~~~~~~~~~~~~~~~
@@ -138,13 +152,19 @@ You will need to:
 - `Install git <https://git-scm.com/downloads>`_
 - `Start a GitHub account <https://github.com/>`_
 
+.. _docs-workflow-setup:
+
 Getting Ready to Work
 -----------------------
+
+.. _fork-the-docs:
 
 Fork the Docs
 ~~~~~~~~~~~~~~
 
 Go to the `ODK Doc repo on Github <https://github.com/opendatakit/docs>`_ and use the :guilabel:`Fork` button (top right) to create your own copy. After the process completes, you'll be looking at your own fork on Github.
+
+.. _clone-the-docs:
 
 Clone Down to Local
 ~~~~~~~~~~~~~~~~~~~~~
@@ -167,6 +187,8 @@ The rest of the documentation assumes you are in the directory for the repo (the
   - The ``clone`` command creates a new directory inside the current one. So you do not need to create a new `odk-docs` directory first.
   - As noted above, we recommend an `odk` master directory that holds your virtualenv directory and your git repo. So you would be in that odk directory when you clone down the repo.
 
+.. _upstream-the-docs:
+
 Set the Upstream Remote
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -175,6 +197,8 @@ When you clone down a repo, the local copy calls your GitHub copy ``origin``. Yo
 .. code::
 
   $ git remote add upstream https://github.com/opendatakit/docs.git
+
+.. _install-doc-dependencies:
 
 Install Dependencies
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -193,8 +217,12 @@ The first time you clone down the repo, you'll need to install the dependencies.
 
   If you have problems when running the Sphinx commands (see below), you may have a dependency issue. Try running ``pip install -r requirements.txt`` again.
 
+.. _docs-workflow-details:
+
 Workflow Details
 -------------------
+
+.. _git-pull-the-docs:
 
 Pull in Updates from Upstream
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -204,6 +232,8 @@ You probably won't need to do this the first time, but you should always pull in
 .. code::
 
   $ git pull upstream
+
+.. _git-branch-the-docs:
 
 Make a New Branch
 ~~~~~~~~~~~~~~~~~~~
@@ -233,12 +263,16 @@ Create a new branch in which you will work on this specific issue. The branch na
   - ``Getting_started_guide``
   - ``writing-the-getting-started-guide-adammichaelwood-july-2017-draft``
 
+.. _write-the-docs:
+
 Work on the Docs
 ~~~~~~~~~~~~~~~~~~~
 
 Write and edit files in your favorite editor.
 
 .. links to style guidelines, rst syntax, etc...
+
+.. _build-the-docs:
 
 Build, View, and Debug
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -278,6 +312,8 @@ It's a good idea to delete the ``build`` directory before each rebuild.
   $ rm -rf build
   $ sphinx-build -b html . build
 
+.. _push-the-docs:
+
 Push Your Branch
 ~~~~~~~~~~~~~~~~~~
 
@@ -296,6 +332,8 @@ After that, you can just:
   $ git push
 
 (Note: ``origin`` is the local label for your GitHub fork.)
+
+.. _pr-the-docs:
 
 Issue a Pull Request
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -317,6 +355,8 @@ You must include a PR comment. Things to include:
 - A note about any difficulties, questions, or concerns that came up while working on this issue.
 
 Complete the pull request. The maintainers will review it as quickly as possible. If there's any problems the maintainers can't deal with, they will reach out to you.
+
+.. _keep-working-the-docs:
 
 Keep Going
 ~~~~~~~~~~~
