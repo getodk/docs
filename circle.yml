@@ -1,7 +1,7 @@
 test:
   override:
     - mkdir $HOME/docs/build
-    - sphinx-build -b $HOME/docs -c $HOME/docs/conf.py $HOME/docs/build
+    - sphinx-build $HOME/docs $HOME/docs/build
 
   post:
     - cp -r $HOME/docs/build $CIRCLE_ARTIFACTS
