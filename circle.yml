@@ -4,6 +4,7 @@ dependencies:
 
 test:
   override:
+    - mkdir build
     - sphinx-build -b . build
 
   post:
