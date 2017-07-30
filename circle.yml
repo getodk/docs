@@ -9,3 +9,10 @@ test:
 
   post:
     - cp -r $HOME/docs/build $CIRCLE_ARTIFACTS
+
+deployment:
+  production:
+    branch: master
+    owner: opendatkit-bot
+    commands:
+      - aws s3 sync $HOME/docs/build s3://docs.opendatakit.org --delete --exclude .buildinfo --exclude .doctrees --exclude objects.inv
