@@ -14,4 +14,4 @@ deployment:
   production:
     branch: master
     commands:
-      - aws s3 sync $HOME/docs/build s3://docs.opendatakit.org --delete --exclude .buildinfo --exclude .doctrees --exclude objects.inv
+      - aws s3 sync $HOME/docs/build s3://docs.opendatakit.org --delete --exclude ".buildinfo" --exclude ".doctrees/*" --exclude "objects.inv"
