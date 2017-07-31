@@ -641,3 +641,53 @@ Definitions
 
 Line spacing
   there should be a blank line between term-definition pairs
+
+
+.. _paragraph-markup:
+
+Paragraph-level Markup
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code::
+
+  Paragraphs are separarated by blank lines. Line breaks in the source code do not create line breaks in the output.
+
+  This means that you *could*, in theory,
+  include a lot of arbitrary line breaks
+  in your source document files.
+  These line breaks would not appear in the output.
+  Some people like to do this because they have been trained
+  to not exceed 80 column lines, and they like
+  to write .txt files this way.
+  Please do not do this.
+
+  There is **no reason** to put a limit on line length in source files for documentation, since this is prose and not code. Therefore, please do not put arbitrary line breaks in your files.
+
+Paragraphs are separarated by blank lines. Line breaks in the source code do not create line breaks in the output.
+
+This means that you *could*, in theory,
+include a lot of arbitrary line breaks
+in your source document files.
+These line breaks would not appear in the output.
+Some people like to do this because they have been trained
+to not exceed 80 column lines, and they like
+to write .txt files this way.
+Please do not do this.
+
+There is **no reason** to put a limit on line length in source files for documentation, since this is prose and not code. Therefore, please do not put arbitrary line breaks in your files.
+
+Block Quotes
+""""""""""""""
+
+.. code::
+
+  This is not a block quote. Block quotes are indented, and otherwise unadorned.
+
+    This is a block quote.
+    — Adam Michael Wood
+
+
+This is not a block quote. Block quotes are indented, and otherwise unadorned.
+
+  This is a block quote.
+  — Adam Michael Wood
