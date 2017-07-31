@@ -13,5 +13,6 @@ test:
 deployment:
   production:
     branch: master
+    owner: opendatakit
     commands:
-      - aws s3 sync $HOME/docs/build s3://docs.opendatakit.org --delete --exclude ".buildinfo" --exclude "*/.doctrees/*" --exclude "objects.inv"
+      - aws s3 sync $HOME/docs/build s3://docs.opendatakit.org --delete --exclude "*" --include "*.html" --include "*.js" --include "_sources/*" --include "_static/*"
