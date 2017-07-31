@@ -381,3 +381,263 @@ If you want to delete your branch from before, you can do that:
   $ git branch -d branch-name
 
 Now you can find a new issue to work on, create a new branch, and get to work...
+
+.. _writing-in-sphinx:
+
+Writing in Sphinx
+====================
+
+The ODK documentation is built using `Sphinx <http://sphinx-doc.org>`_, a static-site generator designed to create structured, semantic, and internally consistent documentation. Source documents are written in `reStructuredText <http://docutils.sourceforge.net/rst.html>`_, a semantic, extensible markup syntax similar to Markdown.
+
+- `reStructuredText Primer <http://docutils.sourceforge.net/docs/user/rst/quickstart.html>`_ — Introduction to reStructuredText
+
+  - `reStructuredText Quick Reference <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_
+  - `reStrcuturedTest 1-page cheat sheet <http://docutils.sourceforge.net/docs/user/rst/cheatsheet.txt>`_
+
+- `Sphinx Markup <http://www.sphinx-doc.org/en/stable/markup/index.html>`_ — Detailed guide to Sphinx's markup concepts and reStructuredText extensions
+
+.. note::
+
+  Sphinx and reStructuredText can be very flexible. For the sake of consistency and maintainability, this guide is *highly opinionated* about how documentation source files are organized and marked up.
+
+.. _doc-files:
+
+Documentation Files
+----------------------
+
+Sphinx document files have the ``.rst`` extension. File names should be all lowercase and use hyphens (not underscores or spaces) as word separators.
+
+
+.. _about-toc:
+
+Table of Contents
+--------------------
+
+The ``index.rst`` file serves as a front-page to the documentation, and contains the table of contents. The table of contents controls the documentation navigation menu. To add a new document to the table of contents, add the file new (without the ``.rst`` extension) to the list of file names in ``index.rst``.
+
+
+.. _sections-titles:
+
+Sections and Titles
+-----------------------
+
+Headlines require two lines: the text of the headline, followed by a line filled with a single character. Each level in a headline hierarchy uses a different character:
+
+.. code::
+
+  Title of the Page - <h1> - Equal Signs
+  =========================================
+
+
+  Major Section - <h2> - Hyphens
+  ---------------------------------
+
+
+  Subsection - <h3> - Tildes
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+  Sub-subsection - <h4> - Double Quotes
+  """""""""""""""""""""""""""""""""""""""
+
+
+  Sub-sub-subsection - <h5> - Single Quotes
+  ''''''''''''''''''''''''''''''''''''''''''''
+
+If you need to combine several existing pages together, or want to start a single-page doc that you think might be split into individual pages later on, you can add a top-level title, demoting the other headline types by one:
+
+.. code::
+
+  ************************************************
+  Page Title - <h1> - Asterisks above and below
+  ************************************************
+
+
+  Major Section - <h2> - Equal Signs
+  =======================================
+
+
+  Subsection - <h3> - Hyphens
+  ---------------------------------
+
+
+  Sub-subsection - <h4> - Tildes
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+  Sub-sub-subsection - <h5> - Double Quotes
+  """""""""""""""""""""""""""""""""""""""""""""
+
+  Sub-sub-sub-subsection - <h6> - Single Quotes
+  ''''''''''''''''''''''''''''''''''''''''''''''''''
+
+
+In either case, the underline of characters needs to be *longer than* the line of text. In the case of the asterisks, the two lines of asterisks need to be the same length.
+
+.. note::
+
+  The exact order of underline characters is flexible in reStrcutredText. However, this specific ordering should be used throughout the ODK documentation.
+
+.. _section-labels:
+
+Section labels
+~~~~~~~~~~~~~~~~
+
+In order to facilitate efficient :ref:`cross referencing`, sections should be labeled. This is done on the line above the section title. The format is:
+
+- two dots
+- underscore
+- section label
+
+  - lowercase
+  - hypen separators
+
+- a single colon
+
+.. code::
+
+  .. _section-label:
+
+  Section Title
+  ----------------
+
+  Lorem ipsum content of section blah blah.
+
+The section label should usually be a sluggified version of the section title.
+
+Section titles must be unique throughout the entire documentation set. Therefore, if you write a common title that might appear in more than one document (*Learn More* or *Getting Started*, for example), you'll need to include additional words to make the label unique. The best way to do this is to add a meaningful work from the document title.
+
+.. code::
+
+  ODK Aggregate
+  ===============
+
+  ODK Aggregate is a server application...
+
+  .. _aggregate-getting-started:
+
+  Getting Started
+  -----------------
+
+.. _basic-markup:
+
+Basic Markup
+-------------
+
+.. _inline-markup
+
+Empahasis and Inline Literal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code::
+
+  Single asterisks for *italic text* (``<em>``).
+
+  Double asterisks for **bold text** (``<strong>``).
+
+  Double back-ticks for ``inline literal text`` (``<code>``).
+
+
+Single asterisks for *italic text* ( ``<em>`` ).
+
+Double asterisks for **bold text** ( ``<strong>`` ).
+
+Double back-ticks for ``inline literal text`` ( ``<code>`` ).
+
+.. note::
+
+  The **bold**, *italic*, and ``inline literal`` styles do not carry semantic meaning. They should not be used when a more semantically appropriate markup construct is available; for example, when :ref:`writing about GUI text`.
+
+.. _lists:
+Lists
+~~~~~~~~~
+
+.. _ul:
+Unordered (bullet) lists
+"""""""""""""""""""""""""""
+
+.. code::
+
+  Bulleted lists ( ``<ul>`` ):
+
+  - use hyphens
+  - are unindented at the first level
+  - must have a blank line before and after
+
+    - the blank line requirement means that nested list items will have a blank line before and after as well
+
+    - you may *optionally* put a blank line *between* list items
+
+
+Bulleted lists ( ``<ul>`` ):
+
+- use hyphens
+- are unindented at the first level
+- must have a blank line before and after
+
+  - the blank line requirement means that nested list items will have a blank line before and after as well
+
+  - you may *optionally* put a blank line *between* list items
+
+
+.. _ol:
+Ordered (numbered) lists
+""""""""""""""""""""""""""
+
+.. code::
+
+  Numbered lists ( ``<ol>`` ):
+
+  1. Start each line with a number and period
+  2. Can begin on any number
+  3. Must have a blank line before and after
+  4. Can have nested sub-lists
+
+     a. nested lists are numbered separately
+     b. nested lists need a blank line before and after
+
+  #. Can have automatic number with the ``#`` character.
+
+Numbered lists ( ``<ol>`` ):
+
+1. Start each line with a number and period
+2. Can begin on any number
+3. Must have a blank line before and after
+4. Can have nested sub-lists
+
+   a. nested lists are numbered separately
+   b. nested lists need a blank line before and after
+
+#. Can have automatic number with the ``#`` character.
+
+.. _dl:
+
+Definition Lists
+"""""""""""""""""""
+
+.. code::
+
+  Definition list ( ``<dl>`` )
+    a list with several term-defition pairs
+
+  Terms
+    should not be indented
+
+  Definitions
+    should be indented under the term
+
+  Line spacing
+    there should be a blank line between term-definition pairs
+
+
+Definition list ( ``<dl>`` )
+  a list with several term-defition pairs
+
+Terms
+  should not be indented
+
+Definitions
+  should be indented under the term
+
+Line spacing
+  there should be a blank line between term-definition pairs
