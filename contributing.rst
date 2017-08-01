@@ -548,6 +548,36 @@ Double back-ticks for ``inline literal text`` ( ``<code>`` ).
 
   The **bold**, *italic*, and ``inline literal`` styles do not carry semantic meaning. They should not be used when a more semantically appropriate markup construct is available; for example, when :ref:`writing about GUI text`.
 
+
+.. _hyperlinks:
+
+Hyperlinks
+~~~~~~~~~~~~
+
+**External** hyperlinks — that is, links to resources *outside* the documentation — look like this:
+
+.. code::
+
+  This is a link to `example <http://example.com>`_.
+
+This is a link to `example <http://example.com>`_.
+
+You can also use "reference style" links:
+
+.. code::
+
+  This is a link to `example`_.
+
+  .. _example: http://example.com
+
+This is useful to make paragraphs with *a lot* of links more readable. In general, the inline style is preferable. If you do this, be sure to keep the link references below the paragraph where they appear.
+
+.. code::
+
+  You can also simply place an unadorned URI in the text: http://example.com
+
+You can also simply place an unadorned URI in the text: http://example.com
+
 .. _lists:
 Lists
 ~~~~~~~~~
@@ -827,3 +857,27 @@ Grid style
 .. _simple-table:
 Simple style
 ''''''''''''''
+
+
+.. code::
+  =====  =====  ======
+     Inputs     Output
+  ------------  ------
+    A      B    A or B
+  =====  =====  ======
+  False  False  False
+  True   False  True
+  False  True   True
+  True   True   True
+  =====  =====  ======
+
+=====  =====  ======
+   Inputs     Output
+------------  ------
+  A      B    A or B
+=====  =====  ======
+False  False  False
+True   False  True
+False  True   True
+True   True   True
+=====  =====  ======
