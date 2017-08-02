@@ -741,74 +741,6 @@ This is not a block quote. Block quotes are indented, and otherwise unadorned.
   This is a block quote.
   — Adam Michael Wood
 
-.. _literal-blocks:
-
-Literal Blocks
-""""""""""""""""
-
-.. code-block:: rest
-
-  A paragraph containing only two colons indicates that the following indented or quoted text is a literal block. This will be represented in a monospace format.
-
-  ::
-
-    Whitespace, newlines, blank lines, and
-    all kinds of markup (like *this* or
-    \this) is preserved by literal blocks.
-
-    The paragraph containing only '::'
-    will be omitted from the result.
-
-  The ``::`` may be tacked onto the very end of any paragraph. The ``::`` will be omitted if it is preceded by whitespace. The ``::`` will be converted to a single colon if preceded by text, like this::
-
-    It's very convenient to use this form.
-
-  Literal blocks end when text returns to the preceding paragraph's indentation. This means that something like this
-  is possible::
-
-        We start here
-      and continue here
-    and end here.
-
-  Per-line quoting can also be used on
-  unindented literal blocks::
-
-  > Useful for quotes from email and
-  > for literate programming.
-
-A paragraph containing only two colons indicates that the following indented or quoted text is a literal block. This will be displayed in the output with a monospace font.
-
-::
-
-  Whitespace, newlines, blank lines, and
-  all kinds of markup (like *this* or
-  \this) is preserved by literal blocks.
-
-  The paragraph containing only '::'
-  will be omitted from the result.
-
-The ``::`` may be tacked onto the very end of any paragraph. The ``::`` will be omitted if it is preceded by whitespace. The ``::`` will be converted to a single colon if preceded by text, like this::
-
-  It's very convenient to use this form.
-
-Literal blocks end when text returns to the preceding paragraph's indentation. This means that something like this
-is possible::
-
-      We start here
-    and continue here
-  and end here.
-
-Per-line quoting can also be used on
-unindented literal blocks::
-
-> Useful for quotes from email and
-> for literate programming.
-
-.. note::
-
-  The literal block can be useful for showing exact user input or output. However, it should **not** be used for :ref:`code samples, which have their own semantic markup directive <code-samples>`.
-
-.. _line-blocks:
 
 Line Blocks
 """"""""""""
@@ -822,9 +754,7 @@ Line Blocks
   | vertical bar ("|").
   |     Line breaks and initial indents
   |     are preserved.
-  | Continuation lines are wrapped
-    portions of long lines; they begin
-    with spaces in place of vertical bars.
+
 
 | Line blocks are useful for addresses,
 | verse, and adornment-free lists.
@@ -833,9 +763,6 @@ Line Blocks
 | vertical bar ("|").
 |     Line breaks and initial indents
 |     are preserved.
-| Continuation lines are wrapped
-  portions of long lines; they begin
-  with spaces in place of vertical bars.
 
 
 .. _tables:
