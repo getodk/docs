@@ -291,7 +291,7 @@ When you run the build, you may see error or warning messages. These indicate po
 - broken links
 - terms not included in the glossary
 
-Error and warning messages include a file name and line number for tracking them down. Try to resolve all your errors and warnings before issuing a pull request. However, if this is not possible, please add a note in your pull request. **If you submit a pull request that will create build errors, you must include a note mentioning what those errors are, and why thy are ok to leave in.**
+Error and warning messages include a file name and line number for tracking them down. Try to resolve all your errors and warnings before issuing a pull request. However, if this is not possible, please add a note in your pull request. **If you submit a pull request that will create build errors, you must include a note mentioning what those errors are, and why they are ok to leave in.**
 
 
 To view the documentation in your web browser, you can use Python's built-in webserver.
@@ -340,7 +340,7 @@ Issue a Pull Request
 
 A pull request (or PR) is a request from you to the ODK Docs maintainers, for us to pull in your changes to the main repo.
 
-Go the `main docs repo on GitHub <https://github.com/opendatakit/docs>`. You'll see a message there referencing your recently pushed branches. Select :guilabel:`Compare & pull request` to start a pull request.
+Go the `main docs repo on GitHub <https://github.com/opendatakit/docs>`_. You'll see a message there referencing your recently pushed branches. Select :guilabel:`Compare & pull request` to start a pull request.
 
 Follow GitHub's instructions. The :guilabel:`Base fork` should be the main repo, and :guilabel:`base` should be ``master``. Your repo and working fork should be listed beside them. (This should all populate by default, but you should double check.) If there is a green **Able to be merged** message, you can proceed.
 
@@ -584,7 +584,7 @@ You can also use "reference style" links:
 
   .. _example: http://example.com
 
-This is useful to make paragraphs with *a lot* of links more readable. In general, the inline style is preferable. If you do this, be sure to keep the link references below the paragraph where they appear.
+This may help make paragraphs with *a lot* of links more readable. In general, the inline style is preferable. If you use the reference style, be sure to keep the link references below the paragraph where they appear.
 
 .. code-block:: rest
 
@@ -596,8 +596,6 @@ You can also simply place an unadorned URI in the text: http://example.com
 
 Lists
 ~~~~~~~~~
-
-This section is about lists.
 
 .. _ul:
 
