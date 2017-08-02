@@ -83,7 +83,7 @@ Python 3
 
 If you don't know, check to see if you have Python 3 installed:
 
-.. code::
+.. code-block:: rest
 
   $ python3
 
@@ -98,7 +98,7 @@ A virtual environment is a Python tool for sandboxing dependencies. It lets you 
 
 Check to see if you have virtualenv installed:
 
-.. code::
+.. code-block:: rest
 
   $ virtualenv
 
@@ -106,20 +106,20 @@ If you get a help message with information about commands, you have it. If you d
 
 If you don't have it, the easiest way to get it is to use pip:
 
-.. code::
+.. code-block:: rest
 
   $ pip install virtualenv
 
 Then, create an ODK "master" directory. This will contain your virtualenv as a subdirectory and the docs repo as a subdirectory.
 
-.. code::
+.. code-block:: rest
 
   $ mkdir odk
   $ cd odk
 
 Now, inside that odk directory, create a python3 virtualenv.
 
-.. code::
+.. code-block:: rest
 
   $ virtualenv -p python3 odkenv
 
@@ -127,13 +127,13 @@ The last part, ``odkenv`` can be whatever name you'd like to call it.
 
 Activate your virtural environement with:
 
-.. code::
+.. code-block:: rest
 
   $ source odkenv/bin/activate
 
 And, when you are done working, deactivate it with:
 
-.. code::
+.. code-block:: rest
 
   $ deactivate
 
@@ -173,7 +173,7 @@ From your own form of the repo on Github, select the :guilabel:`Clone or downloa
 
 Open your terminal, and `cd` to your preferred directory. Then `git clone` the repo:
 
-.. code::
+.. code-block:: rest
 
   $ git clone https://github.com/your-gh-username/docs.git
   .
@@ -194,7 +194,7 @@ Set the Upstream Remote
 
 When you clone down a repo, the local copy calls your GitHub copy ``origin``. You should also set ``upstream`` as the name of the original, main GitHub repo.
 
-.. code::
+.. code-block:: rest
 
   $ git remote add upstream https://github.com/opendatakit/docs.git
 
@@ -205,7 +205,7 @@ Install Dependencies
 
 The first time you clone down the repo, you'll need to install the dependencies. Make sure you have your Python 3 virtual environment set up and activated and then:
 
-.. code::
+.. code-block:: rest
 
   $ pip install -r requirements.txt
 
@@ -229,7 +229,7 @@ Pull in Updates from Upstream
 
 You probably won't need to do this the first time, but you should always pull in any changes from the main repo before working.
 
-.. code::
+.. code-block:: rest
 
   $ git pull upstream
 
@@ -242,7 +242,7 @@ Choose a specific, deliverable task to work on. This should be an `active issue 
 
 Create a new branch in which you will work on this specific issue. The branch name should briefly describe what you are doing. For example, the original author of this contributor guide worked in a branch he called ``contributing``.
 
-.. code::
+.. code-block:: rest
 
   $ git checkout -b branch-name
 
@@ -279,7 +279,7 @@ Build, View, and Debug
 
 To build the documentation into a viewable website:
 
-.. code::
+.. code-block:: rest
 
   $ sphinx-build -b html . build
 
@@ -296,7 +296,7 @@ Error and warning messages include a file name and line number for tracking them
 
 To view the documentation in your web browser, you can use Python's built-in webserver.
 
-.. code::
+.. code-block:: rest
 
   $ cd build
   $ python -m http.server 8000
@@ -307,7 +307,7 @@ Read through your doc edits in the browser and correct any issues in your source
 
 It's a good idea to delete the ``build`` directory before each rebuild.
 
-.. code::
+.. code-block:: rest
 
   $ rm -rf build
   $ sphinx-build -b html . build
@@ -321,13 +321,13 @@ Once your work on the issue is completed, push your branch to your GitHub repo.
 
 The first time you do this on any branch, you'll need to specify the branch name:
 
-.. code::
+.. code-block:: rest
 
   $ git push origin branch-name
 
 After that, you can just:
 
-.. code::
+.. code-block:: rest
 
   $ git push
 
@@ -363,20 +363,20 @@ Keep Going
 
 Once the PR is merged, you'll need to pull in the changes from the main repo ( ``upstream`` ) into your local copy.
 
-.. code::
+.. code-block:: rest
 
   $ git checkout master
   $ git pull upstream master
 
 Then you should push those change to your copy on GitHub ( ``origin`` ).
 
-.. code::
+.. code-block:: rest
 
   $ git push
 
 If you want to delete your branch from before, you can do that:
 
-.. code::
+.. code-block:: rest
 
   $ git branch -d branch-name
 
@@ -423,7 +423,7 @@ Sections and Titles
 
 Headlines require two lines: the text of the headline, followed by a line filled with a single character. Each level in a headline hierarchy uses a different character:
 
-.. code::
+.. code-block:: rest
 
   Title of the Page - <h1> - Equal Signs
   =========================================
@@ -446,7 +446,7 @@ Headlines require two lines: the text of the headline, followed by a line filled
 
 If you need to combine several existing pages together, or want to start a single-page doc that you think might be split into individual pages later on, you can add a top-level title, demoting the other headline types by one:
 
-.. code::
+.. code-block:: rest
 
   ************************************************
   Page Title - <h1> - Asterisks above and below
@@ -476,7 +476,7 @@ In either case, the underline of characters needs to be *longer than* the line o
 
 .. note::
 
-  The exact order of underline characters is flexible in reStrcutredText. However, this specific ordering should be used throughout the ODK documentation.
+  The exact order of underline characters is flexible in reStructuredText. However, this specific ordering should be used throughout the ODK documentation.
 
 .. _section-labels:
 
@@ -494,7 +494,7 @@ In order to facilitate efficient :ref:`cross referencing`, sections should be la
 
 - a single colon
 
-.. code::
+.. code-block:: rest
 
   .. _section-label:
 
@@ -507,7 +507,7 @@ The section label should usually be a sluggified version of the section title.
 
 Section titles must be unique throughout the entire documentation set. Therefore, if you write a common title that might appear in more than one document (*Learn More* or *Getting Started*, for example), you'll need to include additional words to make the label unique. The best way to do this is to add a meaningful work from the document title.
 
-.. code::
+.. code-block:: rest
 
   ODK Aggregate
   ===============
@@ -528,7 +528,7 @@ Basic Markup
 
   Markup characters can be escaped using the ``\`` characters.
 
-  .. code::
+  .. code-block:: rest
 
     *Italic.*
 
@@ -543,7 +543,7 @@ Basic Markup
 Empahasis and Inline Literal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code::
+.. code-block:: rest
 
   Single asterisks for *italic text* (``<em>``).
 
@@ -570,7 +570,7 @@ Hyperlinks
 
 **External** hyperlinks — that is, links to resources *outside* the documentation — look like this:
 
-.. code::
+.. code-block:: rest
 
   This is a link to `example <http://example.com>`_.
 
@@ -578,7 +578,7 @@ This is a link to `example <http://example.com>`_.
 
 You can also use "reference style" links:
 
-.. code::
+.. code-block:: rest
 
   This is a link to `example`_.
 
@@ -586,7 +586,7 @@ You can also use "reference style" links:
 
 This is useful to make paragraphs with *a lot* of links more readable. In general, the inline style is preferable. If you do this, be sure to keep the link references below the paragraph where they appear.
 
-.. code::
+.. code-block:: rest
 
   You can also simply place an unadorned URI in the text: http://example.com
 
@@ -604,7 +604,7 @@ This section is about lists.
 Unordered (bullet) lists
 """""""""""""""""""""""""""
 
-.. code::
+.. code-block:: rest
 
   Bulleted lists ( ``<ul>`` ):
 
@@ -633,7 +633,7 @@ Bulleted lists ( ``<ul>`` ):
 Ordered (numbered) lists
 """"""""""""""""""""""""""
 
-.. code::
+.. code-block:: rest
 
   Numbered lists ( ``<ol>`` ):
 
@@ -664,7 +664,7 @@ Numbered lists ( ``<ol>`` ):
 Definition Lists
 """""""""""""""""""
 
-.. code::
+.. code-block:: rest
 
   Definition list ( ``<dl>`` )
     a list with several term-defition pairs
@@ -697,7 +697,7 @@ Line spacing
 Paragraph-level Markup
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code::
+.. code-block:: rest
 
   Paragraphs are separarated by blank lines. Line breaks in the source code do not create line breaks in the output.
 
@@ -728,7 +728,7 @@ There is **no reason** to put a limit on line length in source files for documen
 Block Quotes
 """"""""""""""
 
-.. code::
+.. code-block:: rest
 
   This is not a block quote. Block quotes are indented, and otherwise unadorned.
 
@@ -746,7 +746,7 @@ This is not a block quote. Block quotes are indented, and otherwise unadorned.
 Literal Blocks
 """"""""""""""""
 
-.. code::
+.. code-block:: rest
 
   A paragraph containing only two colons indicates that the following indented or quoted text is a literal block. This will be represented in a monospace format.
 
@@ -813,7 +813,7 @@ unindented literal blocks::
 Line Blocks
 """"""""""""
 
-.. code::
+.. code-block:: rest
 
   | Line blocks are useful for addresses,
   | verse, and adornment-free lists.
@@ -848,7 +848,7 @@ Tables
 Grid style
 ''''''''''''
 
-.. code::
+.. code-block:: rest
 
   +------------+------------+-----------+
   | Header 1   | Header 2   | Header 3  |
@@ -880,8 +880,8 @@ Simple style
 ''''''''''''''
 
 
-.. code::
-  
+.. code-block:: rest
+
   =====  =====  ======
      Inputs     Output
   ------------  ------
