@@ -79,7 +79,7 @@ Python
 .. _docs-python3:
 
 Python 3
-'''''''''''
+""""""""""""
 
 If you don't know, check to see if you have Python 3 installed:
 
@@ -92,7 +92,7 @@ If you get an error, you probably don't and will need to `install Python 3 <http
 .. _docs-venv:
 
 Virtual Environment
-''''''''''''''''''''''
+""""""""""""""""""""""""
 
 A virtual environment is a Python tool for sandboxing dependencies. It lets you install whatever you need for a particular project, without messing up any other Python environments you might need.
 
@@ -524,7 +524,21 @@ Section titles must be unique throughout the entire documentation set. Therefore
 Basic Markup
 -------------
 
-.. _inline-markup
+.. note:: Escaping Characters
+
+  Markup characters can be escaped using the ``\`` characters.
+
+  .. code::
+
+    *Italic.*
+
+    \*Not italic, surrounded by asterisks.\*
+
+  *Italic.*
+
+  \*Not italic, surrounded by asterisks.\*
+
+.. _inline-markup:
 
 Empahasis and Inline Literal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -579,10 +593,14 @@ This is useful to make paragraphs with *a lot* of links more readable. In genera
 You can also simply place an unadorned URI in the text: http://example.com
 
 .. _lists:
+
 Lists
 ~~~~~~~~~
 
+This section is about lists.
+
 .. _ul:
+
 Unordered (bullet) lists
 """""""""""""""""""""""""""
 
@@ -611,6 +629,7 @@ Bulleted lists ( ``<ul>`` ):
 
 
 .. _ol:
+
 Ordered (numbered) lists
 """"""""""""""""""""""""""
 
@@ -757,7 +776,7 @@ Literal Blocks
   > Useful for quotes from email and
   > for literate programming.
 
-A paragraph containing only two colons indicates that the following indented or quoted text is a literal block. This will be represented in the
+A paragraph containing only two colons indicates that the following indented or quoted text is a literal block. This will be displayed in the output with a monospace font.
 
 ::
 
@@ -825,6 +844,7 @@ Tables
 """"""""
 
 .. _grid-table:
+
 Grid style
 ''''''''''''
 
@@ -855,11 +875,13 @@ Grid style
 +------------+------------+-----------+
 
 .. _simple-table:
+
 Simple style
 ''''''''''''''
 
 
 .. code::
+  
   =====  =====  ======
      Inputs     Output
   ------------  ------
