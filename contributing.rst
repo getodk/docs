@@ -407,6 +407,29 @@ Documentation Files
 
 Sphinx document files have the ``.rst`` extension. File names should be all lowercase and use hyphens (not underscores or spaces) as word separators.
 
+Normally, the title of the page should be the first line of the file, followed by the a line of equal-signs.
+
+.. code-block:: rst
+
+  Title of Page
+  ================
+
+  Page content is here...
+
+You can also wrap the title in two lines of asterisks.
+
+.. code-block:: rst
+
+  *******************
+  Title of Page
+  *******************
+
+  Page content here.
+
+The asterisks style is useful when you are combining several existing documents (and don't want to change every subsection headline) or when you are working on a document that might be split into separate documents in the future.
+
+See :ref:`sections-titles` for more details.
+
 
 .. _about-toc:
 
@@ -828,3 +851,97 @@ True   False  True
 False  True   True
 True   True   True
 =====  =====  ======
+
+.. _sphinx-markup:
+
+Sphinx-specific Markup
+--------------------------
+
+Roles and directives
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+A *role* is an inline markup construct that wraps some text, similar to an HTML or XML tag. They look like this::
+
+  :rolename:`some text`
+
+A directive is a block-level markup construct. They look like this::
+
+  .. directivename:: additional info or options here
+    :option: optional-value
+    :option: optional-value
+
+    Content of block here, indented.
+
+  This is no longer part of the block controlled by the directive.
+
+Most of the Sphinx-specific and ODK-specific markup will use one or both of these constructs.
+
+.. _cross-referencing:
+
+Cross referencing
+~~~~~~~~~~~~~~~~~~~~
+
+Corss referencing is linking internally, from one place in the documentation to another. This is **not** done using the :ref:`hyperlinks` syntax, but with one of several roles:
+
+.. code-block:: none
+
+  :role:`target`
+    becomes...
+      <a href="target">reference title</a>
+
+  :role:`anchor text <target>`
+    becomes...
+      <a href="target">anchor text</a>
+
+
+- ``:doc:`` — Links to documents (pages)
+
+  - *target* is the file name, without the ``.rst`` extension
+  - *title* is the first :ref:`headline <doc-files>` ( ``<h1>`` ) of the page
+
+- ``:ref:`` — Links to :ref:`sections <sections-titles>`
+
+  - *target* is the :ref:`section-labels`
+  - *title* is the :ref:`section title (headline) <sections-titles>`
+
+
+- ``:term:`` — Links to items in the :doc:`glossary`
+
+  - *target* is the term, in the glossary
+  - *title* is the term itself
+
+**To recap:** If you do not include an explicit ``<target>``, the text inside the role will be understood as the target, and the anchor text for the link in the output will be title of the target.
+
+For example:
+
+.. code-block:: rst
+
+  - Link to this document:
+
+    - :doc:`contributing`
+    - :doc:`anchor text <contributing>`
+
+  - Link to this section:
+
+    - :ref:`cross-referencing`
+    - :ref:`anchor text <cross-referencing>`
+
+  - Link to a term:
+
+    - :term:`participant`
+    - :term:`anchor text <participant>`
+
+- Link to this document:
+
+  - :doc:`contributing`
+  - :doc:`anchor text <contributing>`
+
+- Link to this section:
+
+  - :ref:`cross-referencing`
+  - :ref:`anchor text <cross-referencing>`
+
+- Link to a term:
+
+  - :term:`participant`
+  - :term:`anchor text <participant>`
