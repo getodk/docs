@@ -506,7 +506,7 @@ In either case, the underline of characters needs to be *longer than* the line o
 Section labels
 ~~~~~~~~~~~~~~~~
 
-In order to facilitate efficient :ref:`cross referencing`, sections should be labeled. This is done on the line above the section title. The format is:
+In order to facilitate efficient :ref:`cross-referencing`, sections should be labeled. This is done on the line above the section title. The format is:
 
 - two dots
 - underscore
@@ -881,7 +881,7 @@ Most of the Sphinx-specific and ODK-specific markup will use one or both of thes
 Cross referencing
 ~~~~~~~~~~~~~~~~~~~~
 
-Corss referencing is linking internally, from one place in the documentation to another. This is **not** done using the :ref:`hyperlinks` syntax, but with one of several roles:
+Cross referencing is linking internally, from one place in the documentation to another. This is **not** done using the :ref:`hyperlinks` syntax, but with one of several roles:
 
 .. code-block:: none
 
@@ -894,19 +894,22 @@ Corss referencing is linking internally, from one place in the documentation to 
       <a href="target">anchor text</a>
 
 
-- ``:doc:`` — Links to documents (pages)
+.. rst:role:: doc
 
+  - Links to documents (pages)
   - *target* is the file name, without the ``.rst`` extension
   - *title* is the first :ref:`headline <doc-files>` ( ``<h1>`` ) of the page
 
-- ``:ref:`` — Links to :ref:`sections <sections-titles>`
+.. rst:role:: ref
 
+  - Links to :ref:`sections <sections-titles>`
   - *target* is the :ref:`section-labels`
   - *title* is the :ref:`section title (headline) <sections-titles>`
 
 
-- ``:term:`` — Links to items in the :doc:`glossary`
+.. rst:role:: term
 
+  - Links to items in the :doc:`glossary`
   - *target* is the term, in the glossary
   - *title* is the term itself
 
@@ -945,3 +948,148 @@ For example:
 
   - :term:`participant`
   - :term:`anchor text <participant>`
+
+.. _interface-writing:
+
+Writing about User Interface
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Several roles are used when describing user interactions.
+
+.. rst:role:: guilabel
+
+  Marks up *actual UI text* of form labels or buttons.
+
+  .. code-block:: rst
+
+    Press the :guilabel:`Submit` button.
+
+.. rst:role:: menuselection
+
+  Marks up the *actual UI text* of a navigation menu or form select element.
+
+  .. code-block:: rst
+
+    Select :menuselection:`Help` from menu.
+
+  When wrting about multi-level menus, use a single ``:menuselection:`` role, and separate menu choices with ``-->``.
+
+  .. code-block:: rst
+
+    To save your file, go to :menuselection:`File --> Save` in the Main Menu.
+
+.. rst:role:: kbd
+
+  Marks up a sequence of literal keyboard strokes.
+
+  .. code-block:: rst
+
+    To stop the localserver, type :kbd:`CTRL C`.
+
+.. rst:role:: command
+
+  Marks up a terminal command.
+
+  .. code-block:: rst
+
+    To build the documentation, use :command:`sphinx-build`.
+
+.. rst:role:: option
+
+  Marks up a terminal command option.
+
+  .. code-block:: rst
+
+    The :option:`-b html` option specifies the HTML builder.
+
+.. _misc-markup:
+
+Other Semantic Markup
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rst:role:: abbr:
+
+  Marks up an abbreviation. If the role content contains a parenthesized explanation, it will be treated specially: it will be shown in a tool-tip in HTML.
+
+  .. code-block:: rst
+
+    :abbr:`ODK (Open Data Kit)`
+
+.. rst:role:: dfn
+
+  Marks the defining instance of a term outside the glossary.
+
+  .. code-block:: rst
+
+    :dfn:`Open Data Kit` (ODK) is a suite of open source applications that help organizations engaged in enumerator-mediated data collection.
+
+.. rst:role:: file
+
+  Marks the name of a file or directory. Within the contents, you can use curly braces to indicate a “variable” part.
+
+  .. code-block:: rst
+
+    is installed in :file:`/usr/lib/python2.{x}/site-packages`
+
+  In the built documentation, the ``x`` will be displayed differently to indicate that it is variable.
+
+.. rst:role:: program
+
+  Marks the name of an executable program.
+
+  .. code-block:: rst
+
+    launch the :program:`ODK Aggregate Installer`
+
+.. _images:
+
+Images and Figures
+~~~~~~~~~~~~~~~~~~~~~~
+
+Image files should be put in the :file:`_static/img/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
+
+To place an image in a document, use the :rst:directive:`image` directive.
+
+.. code-block:: rst
+
+  .. image:: /img/{document-subdirectory}/{file}.*
+    :alt: Alt text. Every image should have descriptive alt text.
+
+Note the *literal* asterisk at the end *in place of a file extension*. Use the asterisk, and omit the file extension.
+
+Use the :rst:directive:`figure` to markup an image with a caption.
+
+.. code-block:: rst
+
+  .. figure:: /img/{document-subdirectory}/{file}.*
+    :alt: Alt text. Every image should have descriptive alt text.
+
+    The rest of the indented content will be the caption. This can be a short sentence or several paragraphs. Captions can contain any other rst markup.
+
+.. _image-names:
+
+Image File Names
+""""""""""""""""""
+
+
+Image file names should be:
+
+- as short as possible while still being descriptive
+- all lower case
+- no spaces
+- hyphen separators
+
+Good image file names:
+
+- :file:`collect-home-screen.png`
+- :file:`build-data-export-menu.png`
+
+Bad image file names:
+
+- :file:`Collect home screen.png`
+- :file:`collect_home_screen.png`
+- :file:`3987948p2983768ohl84692p094.jpg-large`
+
+.. tip::
+
+  Be sure to obscure any personally-identifiable information from screen shots. Crop to the smallest relevant screen area. Annotate screen shots with arrows or circles to indicate relevant information.
