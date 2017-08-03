@@ -547,6 +547,17 @@ Section titles must be unique throughout the entire documentation set. Therefore
 Basic Markup
 -------------
 
+.. _indentation:
+
+Indentation
+~~~~~~~~~~~~~~
+
+Indentation is meaningful in reStructured text.
+
+- Use **spaces, not tabs**.
+- Indent **two spaces**.
+
+
 .. note:: Escaping Characters
 
   Markup characters can be escaped using the ``\`` characters.
