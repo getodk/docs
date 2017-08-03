@@ -400,6 +400,17 @@ The ODK documentation is built using `Sphinx <http://sphinx-doc.org>`_, a static
 
   Sphinx and reStructuredText can be very flexible. For the sake of consistency and maintainability, this guide is *highly opinionated* about how documentation source files are organized and marked up.
 
+
+  .. _indentation:
+
+Indentation
+--------------
+
+Indentation is meaningful in Sphinx and reStructured text.
+
+- Use **spaces, not tabs**.
+- Indent **two spaces**.
+
 .. _doc-files:
 
 Documentation Files
@@ -546,16 +557,6 @@ Section titles must be unique throughout the entire documentation set. Therefore
 
 Basic Markup
 -------------
-
-.. _indentation:
-
-Indentation
-~~~~~~~~~~~~~~
-
-Indentation is meaningful in reStructured text.
-
-- Use **spaces, not tabs**.
-- Indent **two spaces**.
 
 
 .. note:: Escaping Characters
