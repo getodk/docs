@@ -401,7 +401,7 @@ The ODK documentation is built using `Sphinx <http://sphinx-doc.org>`_, a static
   Sphinx and reStructuredText can be very flexible. For the sake of consistency and maintainability, this guide is *highly opinionated* about how documentation source files are organized and marked up.
 
 
-  .. _indentation:
+.. _indentation:
 
 Indentation
 --------------
