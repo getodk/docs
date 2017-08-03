@@ -583,7 +583,7 @@ Double back-ticks for ``inline literal text`` ( ``<code>`` ).
 
 .. note::
 
-  The **bold**, *italic*, and ``inline literal`` styles do not carry semantic meaning. They should not be used when a more semantically appropriate markup construct is available; for example, when :ref:`writing about GUI text`.
+  The **bold**, *italic*, and ``inline literal`` styles do not carry semantic meaning. They should not be used when a more semantically appropriate markup construct is available; for example, when :ref:`writing about GUI text <interface-writing>`.
 
 
 .. _hyperlinks:
@@ -1048,7 +1048,7 @@ Images and Figures
 
 Image files should be put in the :file:`_static/img/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
 
-To place an image in a document, use the :rst:directive:`image` directive.
+To place an image in a document, use the ``image`` directive.
 
 .. code-block:: rst
 
@@ -1057,7 +1057,7 @@ To place an image in a document, use the :rst:directive:`image` directive.
 
 Note the *literal* asterisk at the end *in place of a file extension*. Use the asterisk, and omit the file extension.
 
-Use the :rst:directive:`figure` to markup an image with a caption.
+Use the ``figure`` to markup an image with a caption.
 
 .. code-block:: rst
 
@@ -1093,3 +1093,31 @@ Bad image file names:
 .. tip::
 
   Be sure to obscure any personally-identifiable information from screen shots. Crop to the smallest relevant screen area. Annotate screen shots with arrows or circles to indicate relevant information.
+
+.. _code-samples:
+
+Code Samples
+~~~~~~~~~~~~~~
+
+Use the ``code-block`` directive to markup code samples. Specify the language on the same line as the directive for syntax highlighting.
+
+.. code-block:: rst
+
+  .. code-block:: rst
+
+    Use the ``code-block`` directive to markup code samples.
+
+  .. code-block:: python
+
+    print("Hello ODK!")
+
+  .. code-block:: java
+
+    public class HelloWorld {
+
+        public static void main(String[] args) {
+            // Prints "Hello, World" to the terminal window.
+            System.out.println("Hello, World");
+        }
+
+    }
