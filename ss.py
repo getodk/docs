@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+
+
 import os
 import subprocess
 import sys
@@ -16,7 +19,7 @@ def save_screencap(cap, filename):
 
 if __name__ == "__main__":
     short_filename = sys.argv[1]
-    filename = '_static/img/' + short_filename + '.png'
+    filename = 'img/' + short_filename + '.png'
     ensure_dir(filename)
     save_screencap(screencap(), filename)
     print("Insert image into doc with:")
@@ -24,12 +27,11 @@ if __name__ == "__main__":
     print("  :alt: Alt text here. Be sure to add alt text.")
     print("")
     print("")
+    print("Use the figure directive to add a caption:")
+    print(".. figure:: /img/" + short_filename + ".*")
+    print("  :alt: Alt text here. Be sure to add alt text.")
+    print("")
+    print("  The caption is here.")
+    print("")
+    print("")
     print("See http://docs.opendatakit.org/contributing.html#images-and-figures for more details.")
-
-
-
-
-
-
-
-# adb shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > screen.png
