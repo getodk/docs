@@ -152,6 +152,38 @@ You will need to:
 - `Install git <https://git-scm.com/downloads>`_
 - `Start a GitHub account <https://github.com/>`_
 
+.. _android-tools:
+
+Android Tools
+~~~~~~~~~~~~~~~~~
+
+Some testing and documentation tasks (including :ref:`making screenshots from ODK Collect <screenshots>`) require the :command:`adb` (`Android Debug Bridge <https://developer.android.com/studio/command-line/adb.html>`_) command line tool.
+
+Android Studio
+""""""""""""""""""
+
+:abbr:`ADB (Android Debug Bridge)` is part of `Android Studio <https://developer.android.com/studio/index.html>`_. This is the best way to get :command:`adb` if you plan to do any other Android development. It *should* be installed by default when you install Android Studio. To use it from the command line, you'll need to add the SDK Platform tools to your path.
+
+On Mac, add the following to your :file:`.bash_profile`
+
+.. code-block:: none
+
+  export PATH=$PATH:~/Library/Android/sdk/tools/
+
+.. warning::
+
+  The path specified above assumes a default installation of Android Studio. You may have put Android Studio in a different location.
+
+.. help for linux and windows users here would be good...
+
+.. _standalone-sdk-tools:
+
+Standalone SDK Tools
+"""""""""""""""""""""""
+
+You can install the SDK Platform tools (including :command:`adb`) as a `standalone package <https://developer.android.com/studio/index.html#command-tools>`_. `This tutorial explains how to setup the standalone SDK tools <https://www.androidcentral.com/installing-android-sdk-windows-mac-and-linux-tutorial>`_.
+
+
 .. _docs-workflow-setup:
 
 Getting Ready to Work
@@ -1105,6 +1137,38 @@ Bad image file names:
 .. tip::
 
   Be sure to obscure any personally-identifiable information from screen shots. Crop to the smallest relevant screen area. Annotate screen shots with arrows or circles to indicate relevant information.
+
+.. _screenshots:
+
+Screenshots from ODK Collect
+"""""""""""""""""""""""""""""""
+
+If you have set up local :ref:`android-tools`, you can connect your Android device to your computer and take screenshots from the command line.
+
+- Connect your device via USB
+- Enable Developer Settings
+
+  - :menuselection:`Settings --> About phone`
+  - Tap :menuselection:`Build number` seven (7) times
+
+- Turn on USB Debugging
+
+  - :menuselection:`Settings --> Developer options --> USB debugging`
+
+Now, at the command line, from the root directory of the :file:`odk-docs` repo:
+
+.. code-block:: none
+
+  python ss.py {document-name}/{image-name}
+
+- ``{document-name}`` is the filename (without extension) where the you will use the image
+- ``{image-name}`` is the name (without extension) you are giving the image
+
+  - be sure you are not overwriting an existing image
+  - follow the :ref:`image-names` guidelines
+
+.. tip::
+  If you have a problem running ss.py, check to make sure your :ref:`Python 3 virtual environment <docs-venv>` is activated.
 
 .. _code-samples:
 
