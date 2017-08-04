@@ -5,7 +5,7 @@ test:
     - if [ ! -d $HOME/docs ]; then mv `dirname $HOME/*/circle.yml` $HOME/docs; fi
 
   override:
-    - sphinx-build $HOME/docs $HOME/docs/build
+    - sphinx-build -b dirhtml $HOME/docs $HOME/docs/build
 
   post:
     - cp -r $HOME/docs/build $CIRCLE_ARTIFACTS
