@@ -23,7 +23,7 @@ This is still a new project, and most of the useful documentation is still at th
 
 We are open for new issues and pull requests.
 
- - Please read the [Contributors Guide](http://docs.opendatakit.org/contributing.html) before working on the documentation.
+ - Please read the [Contributors Guide](http://docs.opendatakit.org/contributing) before working on the documentation.
  - [Engaging in the forum discussions on documentation.](https://forum.opendatakit.org/c/development/documentation)
  - [Filing GH Issues](https://github.com/opendatakit/docs/issues) for specific documentation artifacts that don't currently exist in any form.
  - [Watch](https://github.com/opendatakit/docs/subscription) and Star this repo, to keep up with what we're doing.
