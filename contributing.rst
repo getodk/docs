@@ -1090,7 +1090,7 @@ Other Semantic Markup
 Images and Figures
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Image files should be put in the :file:`_static/img/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
+Image files should be put in the :file:`/img/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
 
 To place an image in a document, use the ``image`` directive.
 
