@@ -190,7 +190,7 @@ Integer
 A whole number entry input. Integer widgets will not accept decimal points.
 
 .. image:: /img/form-widgets/integer.*
-  :alt: An integer form widget displayed in the ODK Android App. The question is "What is your age in years?" A numerical keyboard is displayed.
+  :alt: An integer form widget displayed in ODK Collect on an Android phone. The question is "What is your age in years?" A numerical keyboard is displayed.
 
 XLSForm Rows
 ~~~~~~~~~~~~~~~~
@@ -219,7 +219,7 @@ Decimal
 A numerical entry input that will accept decimal points.
 
 .. image:: /img/form-widgets/decimal.*
-  :alt: An integer form widget displayed in the ODK Android App. The question is "Weight in kilograms." A numerical keyboard is displayed.
+  :alt: An integer form widget displayed in ODK Collect on an Android phone. The question is "Weight in kilograms." A numerical keyboard is displayed.
 
 XLSForm Rows
 ~~~~~~~~~~~~~~~~
@@ -238,4 +238,43 @@ XForm XML
 
   <input ref="/sample-xlsform/weight">
     <label>Weight in kilograms.</label>
+  </input>
+
+.. _geopoint:
+
+Geopoint
+------------
+
+A single set of GPS coordinates. The example includes a :term:`hint`.
+
+.. image:: /img/form-widgets/geopoint-start.*
+  :alt: A geopoint form widget displayed in ODK Collect on an Android phone. The question headline is "Current location." Below that is the hint text "You might have to turn on your GPS," followed by a button with the label "Start GeoPoint."
+
+
+.. image:: /img/form-widgets/geopoint-working.*
+  :alt: A modal popup over an obscured screen. The headline of the modal is "Loading Location." The text is "Please wait. This could take a few minutes." There are two options: "Cancel" and "Save Geopoint."
+
+
+.. image:: /img/form-widgets/geopoint-completed.*
+  :alt: A completed geopoint form widget. It looks the same as before, but now has four fields below the button: Latitude, Longitude, Altitude, and Accuracy.
+
+
+XLSForm Rows
+~~~~~~~~~~~~~~~~
+
+.. csv-form:: survey
+ :header: type, name, label, hint
+
+ geopoint, current_location, Current location., You might have to turn on your GPS.
+
+XForm XML
+~~~~~~~~~~~~~~
+
+.. code-block:: xml
+
+  <bind nodeset="/sample-xlsform/current_location" type="geopoint"/>
+
+  <input ref="/sample-xlsform/current_location">
+    <label>Current location.</label>
+    <hint>You might have to turn on your GPS.</hint>
   </input>
