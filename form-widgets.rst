@@ -520,3 +520,34 @@ XForm XML
     <label>Please take a self portrait.</label>
     <hint>A &quot;selfie.&quot;</hint>
   </upload>
+
+.. _audio:
+
+Audio
+--------
+
+An audio recording collector.
+
+.. image:: /img/form-widgets/audio-start.*
+  :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "Please record your name." There are three buttons: Record Sound, Choose Sound, and Play Sound. The "Play Sound" button is disabled.
+
+.. need to complete the audio widget sequence of images
+
+XLSForm Rows
+~~~~~~~~~~~~~~~
+
+.. csv-table:: survey
+  :header: type, name, label
+
+  audio, name_pronounce, Please record your name.
+
+XForm XML
+~~~~~~~~~~~
+
+.. code-block:: xml
+
+  <bind nodeset="/sample-xlsform/name_pronounce" type="binary"/>
+
+  <upload mediatype="audio/*" ref="/sample-xlsform/name_pronounce">
+    <label>Please record your name.</label>
+  </upload>
