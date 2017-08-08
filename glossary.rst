@@ -73,3 +73,15 @@ Glossary
     A Java library that renders ODK Compliant XForms.
 
     `ODK JavaRosa source on Github <https://github.com/opendatakit/javarosa>`_
+
+  form
+
+    A defined set of questions and answer choices displayed by an application that can render forms written in the XForm standard.
+
+  widget
+
+    A single question, answer set, and attendent GUI elements, as rendered in an XForm compliant app such as :term:`Collect`.
+
+  hint
+
+    Additional help text on a single question, displayed after the label.

@@ -11,6 +11,7 @@ Welcome to Open Data Kit's documentation!
    :caption: Contents:
 
    getting-started
+   form-widgets
    javarosa
    contributing
    glossary

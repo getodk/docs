@@ -1,10 +1,10 @@
 Form Widgets
 ===============
 
-This document is a list of available :term:`ODK Collect` :term:`form` :term:`widgets <widget>` (question types), with:
+This document is a list of available ODK :term:`Collect` :term:`form` :term:`widgets <widget>` (question types), with:
 
 - examples images from the ODK Collect app
-- example Excel spreadsheet rows for creating form widgets with :term:`ODK XLSForm`
+- example Excel spreadsheet rows for creating form widgets with :term:`XLSForm`
 - example :term:`ODK XForm` XML snippets
 
 .. _string-input:
@@ -151,6 +151,7 @@ XForm XML
 ~~~~~~~~~~~
 
 .. code-block:: xml
+
   <bind nodeset="/sample-xlsform/veggies" type="select"/>
 
   <select ref="/sample-xlsform/veggies">
@@ -182,7 +183,7 @@ XForm XML
     </item>
   </select>
 
-.. _integer::
+.. _integer:
 
 Integer
 ---------
@@ -262,7 +263,7 @@ A single set of GPS coordinates. The example includes a :term:`hint`.
 XLSForm Rows
 ~~~~~~~~~~~~~~~~
 
-.. csv-form:: survey
+.. csv-table:: survey
  :header: type, name, label, hint
 
  geopoint, current_location, Current location., You might have to turn on your GPS.
@@ -303,7 +304,8 @@ A line or polygon of GPS coordinates tracking actual device movement. The user c
 .. image:: /img/form-widgets/geotrace4.*
   :alt: The same modal popup as in the previous image, but the Automatic Mode radio button is not selected. Below it are two drop-down select boxes. Their values are "20" and "seconds."
 
-.. geotrace5 should be the markers on a map
+.. image:: /img/form-widgets/geotrace5.*
+  :alt: The same map as displayed previosuly, but now a series of red markers form a line across the map.
 
 .. image:: /img/form-widgets/geotrace6.*
   :alt: The same map as previously, with a new modal popup. The headlines of the modal is "Save GeoTrace as" followed by two options: Save as Polygon and Save as Polyline. In the bottom-right is a Cancel button.
@@ -329,4 +331,80 @@ XForm XML
 
   <input ref="/sample-xlsform/trace_example">
     <label>Where have you been?</label>
+  </input>
+
+.. _geoshape:
+
+GeoShape
+------------
+
+A user-entered series of GPS coordinates, forming a polygon.
+
+.. image:: /img/form-widgets/geoshape-start.*
+  :alt: The GeoShape form widget, as displayed in the ODK Collect app on an Android phone. The question text is "Select an Area." Below that is a button labeled "Start GeoShape."
+
+.. image:: /img/form-widgets/geoshape1.*
+  :alt: A modal popup over a map. The modal headline is "Zoom to..." Below that are two options: "Zoom to current location" (selected) and "Zoom to saved feature". In the bottom-right of the modal is a Cancel button.
+
+.. image:: /img/form-widgets/geoshape2.*
+  :alt: A map displayed in the ODK Collect App on an Android phone. Above the map is the instruction: "Long press to place marks." On the right side are five icon buttons stacked vertically: Add marker, Zoom, Layers, Trash, Save.
+
+.. image:: /img/form-widgets/geoshape3.*
+  :alt: The same map as displayed previosuly, but now a series of red markers form a polygon across the map.
+
+.. image:: /img/form-widgets/geoshape4.*
+  :alt: The GeoShape form widget shown previously. The question text is "Select an Area." The button label is now "View or Change GeoShape." Below the button is a list of lat/long GPS coordinates.
+
+XLSForm Rows
+~~~~~~~~~~~~~~~~
+
+.. csv-table:: survey
+  :header: type, name, label
+
+  geoshape, shape_example, Select an area.
+
+XForm XML
+~~~~~~~~~~~~~~
+
+.. code-block:: xml
+
+  <bind nodeset="/sample-xlsform/shape_example" type="geoshape"/>
+
+  <input ref="/sample-xlsform/shape_example">
+    <label>Select an area.</label>
+  </input>
+
+.. _date:
+
+Date
+---------
+
+A date selector.
+
+.. image:: /img/form-widgets/date-start.*
+  :alt: The date selection form widget, as displayed in the ODK Collect app on an Android phone. The question text is "What is your birthday?" The button label is "Select date." Below that is the message "No date selected."
+
+.. image:: /img/form-widgets/date1.*
+  :alt: The same form widget screen as previously, overlaid with a modal popup calendar. The headline is a date: 2017 Tue, Aug 8. The main body shows a monthly calendar with selectable days and arrows for scrolling month-to-month. In the bottom-right are Cancel and OK buttons.
+
+.. image:: /img/form-widgets/date-start.*
+  :alt:The date selection form widget as shown previously. Below the "Select date" button is the date Aug 01, 2017.
+
+XLSForm Rows
+~~~~~~~~~~~~~~~
+
+.. csv-table:: survey
+  :header: type, name, label
+
+  date, birthday, What is your birthday?
+
+XForm XML
+~~~~~~~~~~~~
+
+.. code-block:: xml
+
+  <bind nodeset="/sample-xlsform/birthday" type="date"/>
+
+  <input ref="/sample-xlsform/birthday">
+    <label>What is your birthday?</label>
   </input>
