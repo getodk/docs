@@ -408,3 +408,38 @@ XForm XML
   <input ref="/sample-xlsform/birthday">
     <label>What is your birthday?</label>
   </input>
+
+.. _time:
+
+Time
+-------
+
+A time selector. Captures only a specific time-of-day, not a date and time. For date and time, see :ref:`datetime`.
+
+.. image:: /img/form-widgets/time-start.*
+  :alt: The Time form widget as displayed in the ODK Collect App on an Android phone. The question text is "What time do you usually wakeup?" The button label is "Select time." Below the button is the message "No time selected."
+
+.. image:: /img/form-widgets/time1.*
+  :alt: The Time widget as displayed previously, with a modal popup. The modal headline is "Select time." The body of the modal contains scrollers for Hour, Minute, and AM/PM. At the bottom of the modal are Cancel and OK buttons.
+
+.. image:: /img/form-widgets/time2.*
+  :alt: The Time form widget as displayed previously. Below the "Select time" button is "06:30".
+
+XLSForm Rows
+~~~~~~~~~~~~~~~
+
+.. csv-table:: survey
+  :header: type, name, label
+
+  time, wakeup, What time do you usually wakeup?
+
+XForm XML
+~~~~~~~~~~~~~
+
+.. code-block:: xml
+
+  <bind nodeset="/sample-xlsform/wakeup" type="time"/>
+
+  <input ref="/sample-xlsform/wakeup">
+    <label>What time do you usually wakeup?</label>
+  </input>
