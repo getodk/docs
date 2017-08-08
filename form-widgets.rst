@@ -278,3 +278,55 @@ XForm XML
     <label>Current location.</label>
     <hint>You might have to turn on your GPS.</hint>
   </input>
+
+GeoTrace
+-----------
+
+A line or polygon of GPS coordinates tracking actual device movement. The user can specify one of two location-recording modes:
+
+- Manual Mode — The user taps the device to place a marker as desired, while moving.
+- Automatic Mode — The app creates a marker on a regular time interval (default: 20 second) as the user moves.
+
+
+.. image:: /img/form-widgets/geotrace-start.*
+  :alt: A geotrace form widget displayed in the ODK Collect app on an Android phone. The question text is "Where have you been?" and below that is a button with the label "Start GeoTrace."
+
+.. image:: /img/form-widgets/geotrace1.*
+  :alt: A modal popup over a map. The modal headline is "Zoom to..." Below that are two options: "Zoom to current location" (selected) and "Zoom to saved feature". In the bottom-right of the modal is a Cancel button.
+
+.. image:: /img/form-widgets/geotrace2.*
+  :alt: A map displayed in the ODK Collect App on an Android phone. Above the map is the instruction: Wait for lock, then tap add marker button start. On the right side are five icon buttons stacked vertically: Add marker, Zoom, Layers, Trash, Save.
+
+.. image:: /img/form-widgets/geotrace3.*
+  :alt: The same map as displayed in the previous image. Over the map is a modal popup. The modal headine is "Select GeoTrace Mode," followed by two radio-button (single select) options: Manual Mode (selected) and Automatic Mode. In the bottom-right are buttons for Cancel and Start.
+
+.. image:: /img/form-widgets/geotrace4.*
+  :alt: The same modal popup as in the previous image, but the Automatic Mode radio button is not selected. Below it are two drop-down select boxes. Their values are "20" and "seconds."
+
+.. geotrace5 should be the markers on a map
+
+.. image:: /img/form-widgets/geotrace6.*
+  :alt: The same map as previously, with a new modal popup. The headlines of the modal is "Save GeoTrace as" followed by two options: Save as Polygon and Save as Polyline. In the bottom-right is a Cancel button.
+
+.. image:: /img/form-widgets/geotrace7.*
+  :alt: The Geotrace form widget, as shown previously. The question text is "Where have you been?" and the button label is "View or Change GeoTrace." Below that is a list of lat/long GPS coordinates.
+
+
+XLSForm Rows
+~~~~~~~~~~~~~~~
+
+.. csv-table:: survey
+  :header: type, name, label
+
+  geotrace, trace_example, Where have you been?
+
+XForm XML
+~~~~~~~~~~~
+
+.. code-block:: xml
+
+  <bind nodeset="/sample-xlsform/trace_example" type="geotrace"/>
+
+  <input ref="/sample-xlsform/trace_example">
+    <label>Where have you been?</label>
+  </input>
