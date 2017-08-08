@@ -443,3 +443,44 @@ XForm XML
   <input ref="/sample-xlsform/wakeup">
     <label>What time do you usually wakeup?</label>
   </input>
+
+.. _datetime:
+
+Datetime
+-----------
+
+A datetime selector. For date only, see :ref:`date`. For time only, see :ref:`time`.
+
+.. image:: /img/form-widgets/datetime-start.*
+  :alt: The Datetime form widget as displayed in the ODK Collect App on an Android phone. The question text is "When was the last time you ate?" Below the question are two buttons. The first button is labeled "Select date" and below it is the message "No date selected." The second button is labeled "Select time" and below it is the message "No time select."
+
+.. image:: /img/form-widgets/datetime1.*
+  :alt: The same form widget screen as previously, overlaid with a modal popup calendar. The headline is a date: 2017 Tue, Aug 8. The main body shows a monthly calendar with selectable days and arrows for scrolling month-to-month. In the bottom-right are Cancel and OK buttons.
+
+.. image:: /img/form-widgets/datetime2.*
+  :alt: The Datetime form widget as displayed previously. The question text is "When was the last time you ate?" Below the question are two buttons. The first button is labeled "Select date" and below it is the date "Aug 08, 2017" The second button is labeled "Select time" and below it is the message "No time select."
+
+.. image:: /img/form-widgets/datetime3.*
+  :alt: The Datetime widget as displayed previously, with a modal popup. The modal headline is "Select time." The body of the modal contains scrollers for Hour, Minute, and AM/PM. At the bottom of the modal are Cancel and OK buttons.
+
+.. image:: /img/form-widgets/datetime2.*
+  :alt: The Datetime form widget as displayed previously. The question text is "When was the last time you ate?" Below the question are two buttons. The first button is labeled "Select date" and below it is the date "Aug 08, 2017" The second button is labeled "Select time" and below it is the time "06:45"
+
+XLSForm Rows
+~~~~~~~~~~~~~
+
+.. csv-table:: survey
+  :header: type, name, label
+
+  dateTime, previous_meal, When was the last time you ate?
+
+XForm XML
+~~~~~~~~~~~~~
+
+.. code-block:: xml
+
+  <bind nodeset="/sample-xlsform/previous_meal" type="dateTime"/>
+
+  <input ref="/sample-xlsform/previous_meal">
+    <label>When was the last time you ate?</label>
+  </input>
