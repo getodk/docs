@@ -627,3 +627,32 @@ XForm XML
     <label>This is an example note.</label>
     <hint>The text displays, but there is no input.</hint>
   </input>
+
+.. _acknowledge:
+
+Acknowledge
+-------------
+
+An acknowledgement prompt with single checkbox. In :term:`Aggregate`, a completed acknowledgement is stored as the string response ``OK``.
+
+.. image:: /img/form-widgets/acknowledge.*
+  :alt: The Acknowledge form widget as displayed in the ODK Collect app on an Android phone. The headline text is, "I acknowledge this acknowledgment." Below that is a single checkbox with the label, "OK. Please continue."
+
+XLSForm Rows
+~~~~~~~~~~~~~~~
+
+.. csv-table:: survey
+  :header: type, name, label
+
+  acknowledge, ack_sample, I acknowledge this acknowledgement.
+
+XForm XML
+~~~~~~~~~~~~~
+
+.. code-block:: xml
+
+  <bind nodeset="/sample-xlsform/ack_sample" type="string"/>
+
+  <trigger ref="/sample-xlsform/ack_sample">
+    <label>I acknowledge this acknowledgement.</label>
+  </trigger>
