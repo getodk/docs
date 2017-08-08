@@ -597,3 +597,33 @@ XForm XML
     <label>Please record a video of yourself blinking.</label>
     <hint>Three times is probably sufficient.</hint>
   </upload>
+
+.. _note:
+
+Note
+---------
+
+A note to the user, accepting no input. This example includes :term:`hint` text.
+
+.. figure:: /img/form-widgets/note.*
+  :alt: The Note form widget as displayed in the ODK Collect App on an Android phone. The headline text is, "This is an example note." The hint text is, "The text displays, but there is no input."
+
+XSLForm Rows
+~~~~~~~~~~~~~~
+
+.. csv-table::
+  :header: type, name, label, hint
+
+  note, note_1, This is an example note., "The text displays, but there is no input."
+
+XForm XML
+~~~~~~~~~~~~
+
+.. code-block:: xml
+
+  <bind nodeset="/sample-xlsform/note_1" readonly="true()" type="string"/>
+
+  <input ref="/sample-xlsform/note_1">
+    <label>This is an example note.</label>
+    <hint>The text displays, but there is no input.</hint>
+  </input>
