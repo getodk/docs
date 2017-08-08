@@ -628,6 +628,44 @@ XForm XML
     <hint>The text displays, but there is no input.</hint>
   </input>
 
+.. _barcode:
+
+Barcode
+----------
+
+A barcode scanner.
+
+.. note::
+  Older versions of ODK Collect required a third-party app for barcode scanning. This is no longer the case. The barcode widget is fully supported on recent ODK Collect releases used on recent Android devices.
+
+.. image:: /img/form-widgets/barcode-start.*
+  :alt: The Barcode form widget as displayed in the ODK Collect app on an Android phone. The headline text reads, "Scan any barcode." Below that is an image labeled "Get Barcode."
+
+.. image:: /img/form-widgets/barcode1.*
+  :alt: A barcode scanner on a horizontally-oriented Android device. A barcode is in the viewfinder, with a thin red line across the barcode.
+
+.. image:: /img/form-widgets/barcode2.*
+  :alt: The Barcode form widget as displayed previously. The button label is now "Replace Barcode." Below the button is a string of numbers representing the decoded content of the scanned barcode.
+
+XSLForm Rows
+~~~~~~~~~~~~~~~~~~
+
+.. csv-table:: survey
+  :header: type, name, label
+
+  barcode, barcode_example, Scan any barcode.
+
+XForm XML
+~~~~~~~~~~~
+
+.. code-block:: xml
+
+  <bind nodeset="/sample-xlsform/barcode_example" type="barcode"/>
+
+  <input ref="/sample-xlsform/barcode_example">
+    <label>Scan any barcode.</label>
+  </input>
+
 .. _acknowledge:
 
 Acknowledge
