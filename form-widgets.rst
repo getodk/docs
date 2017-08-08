@@ -1,11 +1,20 @@
+***************
 Form Widgets
-===============
+***************
 
 This document is a list of available ODK :term:`Collect` :term:`form` :term:`widgets <widget>` (question types), with:
 
 - examples images from the ODK Collect app
 - example Excel spreadsheet rows for creating form widgets with :term:`XLSForm`
 - example :term:`ODK XForm` XML snippets
+
+.. _basic-form-widgets:
+
+Basic Form Widgets
+=====================
+
+This section shows examples of all the form widgets types, with no additional options displayed. 
+
 
 .. _string-input:
 
@@ -551,3 +560,20 @@ XForm XML
   <upload mediatype="audio/*" ref="/sample-xlsform/name_pronounce">
     <label>Please record your name.</label>
   </upload>
+
+.. _video:
+
+Video
+--------
+
+A video collector. The example includes :term:`hint` text.
+
+.. image:: /img/form-widgets/video-start.*
+  :alt: The Video form widget as displayed in the ODK Collect App on an Android phone. The question text is "Please record a video of yourself blinking." The hint text is "Three times is probably sufficient." Below that are three buttons: Record Video, Choose Video, and Play Video. The Play Video button is disabled.
+
+
+.. image:: /img/form-widgets/video1.*
+  :alt: The Android camera app, in video mode. A person's face is in the camera viewer. Below the camera viewer is a large, blue checkmark button.
+
+.. image:: /img/form-widgets/video2.*
+  :alt: The Video form widget as displayed previously. The question text is "Please record a video of yourself blinking." The hint text is "Three times is probably sufficient." Below that are three buttons: Record Video, Choose Video, and Play Video. All three buttons are enabled.
