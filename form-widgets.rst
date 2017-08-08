@@ -397,7 +397,7 @@ A date selector.
   :alt: The same form widget screen as previously, overlaid with a modal popup calendar. The headline is a date: 2017 Tue, Aug 8. The main body shows a monthly calendar with selectable days and arrows for scrolling month-to-month. In the bottom-right are Cancel and OK buttons.
 
 .. image:: /img/form-widgets/date-start.*
-  :alt:The date selection form widget as shown previously. Below the "Select date" button is the date Aug 01, 2017.
+  :alt: The date selection form widget as shown previously. Below the "Select date" button is the date Aug 01, 2017.
 
 XLSForm Rows
 ~~~~~~~~~~~~~~~
