@@ -484,3 +484,39 @@ XForm XML
   <input ref="/sample-xlsform/previous_meal">
     <label>When was the last time you ate?</label>
   </input>
+
+.. _image:
+
+Image
+----------
+
+An image collector. The user can choose to select an image stored on the device, or take a new picture. The example includes :term:`hint` text.
+
+.. image:: /img/form-widgets/image-start.*
+  :alt: The Image widget as displayed in the ODK Collect App on an Android phone. The question text is "Please take a self portrait." Below the question is the hint text, "A 'selfie.'" There are two buttons: Take Picture and Choose Image.
+
+.. image:: /img/form-widgets/image1.*
+  :alt: The camera app on an Android phone, with a person's face in the camera image. Below the camera image is a large, blue Checkbox button.
+
+.. image:: /img/form-widgets/image2.*
+  :alt: The Image widget as displayed previously. Below the buttons is the photo of a face from the previous camera app image.
+
+XLSForm
+~~~~~~~~~~~
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+
+  image, selfie, Please take a self portrait., A "selfie."
+
+XForm XML
+~~~~~~~~~~~
+
+.. code-block:: xml
+
+  <bind nodeset="/sample-xlsform/selfie" type="binary"/>
+
+  <upload mediatype="image/*" ref="/sample-xlsform/selfie">
+    <label>Please take a self portrait.</label>
+    <hint>A &quot;selfie.&quot;</hint>
+  </upload>
