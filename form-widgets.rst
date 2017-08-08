@@ -13,7 +13,7 @@ This document is a list of available ODK :term:`Collect` :term:`form` :term:`wid
 Basic Form Widgets
 =====================
 
-This section shows examples of all the form widgets types, with no additional options displayed. 
+This section shows examples of all the form widgets types, with no additional options displayed.
 
 
 .. _string-input:
@@ -577,3 +577,23 @@ A video collector. The example includes :term:`hint` text.
 
 .. image:: /img/form-widgets/video2.*
   :alt: The Video form widget as displayed previously. The question text is "Please record a video of yourself blinking." The hint text is "Three times is probably sufficient." Below that are three buttons: Record Video, Choose Video, and Play Video. All three buttons are enabled.
+
+XSLForm Rows
+~~~~~~~~~~~~~~
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+
+  video, blinking, Please record a video of yourself blinking., Three times is probably sufficient.
+
+XForm XML
+~~~~~~~~~~~
+
+.. code-block:: xml
+
+  <bind nodeset="/sample-xlsform/blinking" type="binary"/>
+
+  <upload mediatype="video/*" ref="/sample-xlsform/blinking">
+    <label>Please record a video of yourself blinking.</label>
+    <hint>Three times is probably sufficient.</hint>
+  </upload>
