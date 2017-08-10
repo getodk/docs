@@ -661,7 +661,6 @@ XForm XML
 .. code-block:: xml
 
   <bind nodeset="/sample-xlsform/barcode_example" type="barcode"/>
-
   <input ref="/sample-xlsform/barcode_example">
     <label>Scan any barcode.</label>
   </input>
@@ -687,10 +686,13 @@ XLSForm Rows
 XForm XML
 ~~~~~~~~~~~~~
 
-.. code-block:: xml
+.. code:: xml
 
   <bind nodeset="/sample-xlsform/ack_sample" type="string"/>
 
   <trigger ref="/sample-xlsform/ack_sample">
     <label>I acknowledge this acknowledgement.</label>
   </trigger>
+
+
+
