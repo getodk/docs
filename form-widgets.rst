@@ -289,6 +289,8 @@ XForm XML
     <hint>You might have to turn on your GPS.</hint>
   </input>
 
+.. _geotrace:
+  
 GeoTrace
 -----------
 
@@ -837,6 +839,7 @@ XForm XML
 """""""""""
 
 .. code:: xml
+
   <bind nodeset="/all-widgets/text_widgets/ex_string_widget" type="string"/>
   
   <input appearance="ex:change.uw.android.BREATHCOUNT" ref="/all-widgets/text_widgets/ex_string_widget">
@@ -901,6 +904,7 @@ XLSForm Rows
 XForm XML
 """""""""""
 .. code:: xml
+
   <bind nodeset="/all-widgets/number_widgets/integer_widget" type="int"/>
 
   <input ref="/all-widgets/number_widgets/integer_widget">
@@ -1038,13 +1042,14 @@ XForm XML
     <label>Bearing widget</label>
     <hint>decimal type with bearing appearance</hint>
   </input>
+
   
 .. _image-widgets:
 
 Image Widgets
 ---------------
 
-.. _default-image-widget
+.. _default-image-widget:
 
 Default Image Widget
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -1063,6 +1068,7 @@ XForm XML
 """"""""""
 
 .. code:: xml
+
   <bind nodeset="/all-widgets/image_widgets/image_widget" type="binary"/>
 
   <upload mediatype="image/*" ref="/all-widgets/image_widgets/image_widget">
@@ -1219,7 +1225,7 @@ XLSForm Rows
 XForm XML
 """"""""""""
 
-.. code:: block
+.. code:: xml
 
   <bind nodeset="/all-widgets/image_widgets/signature_widget" type="binary"/>
   
