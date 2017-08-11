@@ -723,6 +723,19 @@ XLSForm Rows
 
   text,string_widget,String widget
 
+XForm XML
+""""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/text_widgets/string_widget" type="string"/>
+  
+  <input ref="/all-widgets/text_widgets/string_widget">
+     <label>String widget</label>
+  </input>
+  
+  
+  
 .. _string-number:
 
 String Number
@@ -741,6 +754,19 @@ XLSForm Rows
 
   text,string_number_widget,String number widget,numbers,text type with numbers appearance  
 
+XForm XML
+"""""""""
+
+.. code:: xml
+  
+  <bind nodeset="/all-widgets/text_widgets/string_number_widget" type="string"/>
+  
+  <input appearance="numbers" ref="/all-widgets/text_widgets/string_number_widget">
+    <label>String number widget</label>
+    <hint>text type with numbers appearance</hint>
+  </input>
+
+  
 .. _url-widget:
 
 URL Widget
@@ -761,6 +787,29 @@ XLSForm Rows
 
   text,url_widget,URL widget,url,text type with url appearance and default value of http://opendatakit.org/,http://opendatakit.org/
 
+  
+XForm XML
+""""""""""
+
+.. code:: xml
+
+  <instance>
+    <all_widgets>
+      <text_widgets>
+        <!-- URL is defined here. -->
+        <url_widget>http://opendatakit.org/</url_widget>
+      </text_widgets>
+    </all_widgets>
+  </instance>
+
+  <bind nodeset="/all-widgets/text_widgets/url_widget" type="string"/>
+
+  <input appearance="url" ref="/all-widgets/text_widgets/url_widget">
+    <label>URL widget</label>
+    <hint>text type with url appearance and default value of http://opendatakit.org/</hint>
+  </input>
+
+  
 .. _external-app-widget:
 
 External App String Widget
@@ -784,6 +833,18 @@ XLSForm Rows
 
   text,ex_string_widget,Ex string widget,ex:change.uw.android.BREATHCOUNT,text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
 
+XForm XML
+"""""""""""
+
+.. code:: xml
+  <bind nodeset="/all-widgets/text_widgets/ex_string_widget" type="string"/>
+  
+  <input appearance="ex:change.uw.android.BREATHCOUNT" ref="/all-widgets/text_widgets/ex_string_widget">
+    <label>Ex string widget</label>
+      <hint>text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)</hint>
+  </input>
+  
+  
 .. _external-printer-widget:
 
 External Printer Widget
@@ -803,3 +864,16 @@ XLSForm Rows
   :header: type, name, label, appearance, hint
 
    text,ex_printer_widget,Ex printer widget,printer:org.opendatakit.sensors.ZebraPrinter,text type with printer:org.opendatakit.sensors.ZebraPrinter
+
+XForm XML
+""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/text_widgets/ex_printer_widget" type="string"/>
+
+  <input appearance="printer:org.opendatakit.sensors.ZebraPrinter" ref="/all-widgets/text_widgets/ex_printer_widget">
+    <label>Ex printer widget</label>
+    <hint>text type with printer:org.opendatakit.sensors.ZebraPrinter</hint>
+  </input>
+
