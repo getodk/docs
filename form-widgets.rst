@@ -1420,3 +1420,35 @@ XForm XML
     <hint>geopoint type with no appearance</hint>
   </input>
   
+.. _placement-map-widget:
+
+Geopoint Placement Map Widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A geopoint with the appearance attribute :tc:`placement-map` allows the user to select a geopoint from a map.
+
+.. image:: /img/form-widgets/geopoint-placement-map.* 
+  :alt: A map app open on an Android phone. Above the map is the message: "Long press to place mark or tap add marker button." Along the right side of the map are buttons: Add Marker, Zoom to point, Layers, Trash, Save.
+ 
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  geopoint,geopoint_widget_placementmap,Geopoint widget,placement-map,geopoint type with placement-map appearance
+  
+XForm XML
+"""""""""""
+  
+.. code:: xml
+
+  <bind nodeset="/all-widgets/geopoint_widgets/geopoint_widget_placementmap" type="geopoint"/>
+      
+  <input appearance="placement-map" ref="/all-widgets/geopoint_widgets/geopoint_widget_placementmap">
+    <label>Geopoint widget</label>
+    <hint>geopoint type with placement-map appearance</hint>
+  </input>
+  
+  
+ 
