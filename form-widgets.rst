@@ -969,3 +969,36 @@ XForm XML
     <label>Decimal widget</label>
     <hint>decimal type with no appearance</hint>
   </input>
+  
+.. _external-decimal-widget:
+
+External Decimal Widget
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Launches an external app and recieves a decimal number input back from the external app. If the specified external app is not available, a manual input is prompted.
+
+.. image:: /img/form-widgets/external-decimal-start.* 
+  :alt: The External Decimal form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Ex decimal widget." The hint text is, "decimal type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form group name "Numerical widgets."
+  
+.. image:: /img/form-widgets/external-decimal-fallback.* 
+  :alt: The External Decimal widget displayed previously. The Launch button is now disabled and below it is a simple input. A help text reads, "The requested application is missing. Please manually enter the reading."
+  
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  decimal,ex_decimal_widget,Ex decimal widget,ex:change.uw.android.BREATHCOUNT,decimal type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
+  
+XForm XML
+""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/number_widgets/ex_decimal_widget" type="decimal"/>
+
+  <input appearance="ex:change.uw.android.BREATHCOUNT" ref="/all-widgets/number_widgets/ex_decimal_widget">
+    <label>Ex decimal widget</label>
+    <hint>decimal type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)</hint>
+  </input>
