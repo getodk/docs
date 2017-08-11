@@ -1191,3 +1191,39 @@ XForm XML
     <hint>image type with annotate appearance</hint>
   </upload>
   
+.. _signature-widget:
+
+Signature Widget
+"""""""""""""""""
+
+Collects a signature from the user.
+
+.. image:: /img/form-widgets/signature-start.* 
+  :alt: The Signature form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Signature widget." The hint text is "image type with signature appearance." Below that is a button labelled "Gather Signature." Above the question text is the form group name "Image widgets."
+  
+.. image:: /img/form-widgets/signature-in-progress.* 
+  :alt: A drawing pad with a signature line, displayed in an Andoird phone. A signature is drawn across it. In the lower right corner is circular button marked with a plus sign (+).
+
+.. image:: /img/form-widgets/signature-completed.* 
+  :alt: The signature widget displayed previously. Below the button is the signature drawn in the previous image.
+  
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: table
+  :header: type, name, label, appearance, hint
+  
+  image,signature_widget,Signature widget,signature,image type with signature appearance
+  
+  
+XForm XML
+""""""""""""
+
+.. code:: block
+
+  <bind nodeset="/all-widgets/image_widgets/signature_widget" type="binary"/>
+  
+  <upload appearance="signature" mediatype="image/*" ref="/all-widgets/image_widgets/signature_widget">
+    <label>Signature widget</label>
+    <hint>image type with signature appearance</hint>
+  </upload>   
