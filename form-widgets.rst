@@ -1371,4 +1371,17 @@ XForm XML
     <hint>date type with year appearance</hint>
   </input>
   
- 
+.. _time-widgets:
+
+Time Widgets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The :tc:`time` widget does not accept an appearance attribute.
+
+See :ref:`basic-form-widgets` for details on:
+
+- :ref:`time`
+- :ref:`datetime`
+
+The :ref:`datetime` widget accepts a :tc:`no-calendar` appearance. This changes the date selector to the "spinner" style shown in :ref:`date-no-calendar`.
+
