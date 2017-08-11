@@ -1069,3 +1069,39 @@ XForm XML
     <label>Image widget</label>
     <hint>image type with no appearance</hint>
   </upload>
+
+.. _selfie-widget:
+
+Selfie Widget
+~~~~~~~~~~~~~~~
+
+Takes a picture using the front-facing ("selfie") camera. The "Choose picture" button is not displayed.
+
+.. image:: /img/form-widgets/selfie-start.* 
+  :alt: The Selfie form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Selfie widget." The hint text is, "image type with selfie appearance." There is a single button, labeled "Take Picture." Above the question text is the form group name "Image widgets."
+  
+.. image:: /img/form-widgets/selfie-in-progress.* 
+  :alt: A camera view on an Android phone. A person is taking a self-portrait.
+  
+.. image:: /img/form-widgets/selfie-complete.* 
+  :alt: The Selfie form widget as displayed previously. Below the button is the self-portrait from the previous image.
+  
+XLSForm Rows
+""""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  image,selfie_image_widget,Selfie widget,selfie,image type with selfie appearance
+  
+XForm XML
+""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/image_widgets/selfie_image_widget" type="binary"/>
+  
+  <upload appearance="selfie" mediatype="image/*" ref="/all-widgets/image_widgets/selfie_image_widget">
+    <label>Selfie widget</label>
+    <hint>image type with selfie appearance</hint>
+  </upload>
