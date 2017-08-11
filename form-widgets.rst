@@ -1341,4 +1341,34 @@ XForm XML
     <hint>date type with month-year appearance</hint>
   </input>
   
+.. _year-widget:
   
+Year Widget
+~~~~~~~~~~~~
+
+Collects only a year.
+
+.. image:: /img/form-widgets/year-spinner.* 
+  :alt: The Year form widget, with a model popup labeled "Select date." There is a single "spinner" type selector for year. At the bottom are Cancel ans OK buttons.
+  
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  date,date_widget_year,Date widget,year,date type with year appearance
+  
+XForm XML
+""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/date_time_widgets/date_widget_year" type="date"/>
+
+  <input appearance="year" ref="/all-widgets/date_time_widgets/date_widget_year">
+    <label>Date widget</label>
+    <hint>date type with year appearance</hint>
+  </input>
+  
+ 
