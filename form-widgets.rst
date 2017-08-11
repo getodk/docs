@@ -1105,3 +1105,44 @@ XForm XML
     <label>Selfie widget</label>
     <hint>image type with selfie appearance</hint>
   </upload>
+
+.. _draw-widget:
+
+Draw Widget
+~~~~~~~~~~~~~
+
+Provides the user a drawing pad and collects the drawn image.
+
+.. image:: /img/form-widgets/draw-widget.* 
+  :alt: The Draw form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Draw widget." The hint text is "image type with draw appearance." Below that is a button labeled "Sketch Image." Above the question text is the form group name "Image widgets."
+  
+.. image:: /img/form-widgets/draw-in-progress.* 
+  :alt: A white "drawing pad" on an Android phone, horizontally oriented (landscape mode). A simple smiley face has been drawn. In the lower right corner of the drawing pad is a plus sign (+) in a circle.
+  
+.. image:: /img/form-widgets/draw-options.* 
+  :alt: The drawing pad as displayed in the previous image. Amenu has expanded from the lower right corner with the options: Reset, Save and Close, and Set Color.
+  
+.. image:: /img/form-widgets/draw-completed.* 
+  :alt: The Draw widget as displayed previously. Below the "Sketch Image" button is the smiley face from the drawing pad image shown previously.
+
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+
+  :header: type, name, label, appearance, hint
+  
+  image,draw_image_widget,Draw widget ,draw,image type with draw appearance  
+  
+XForm XML
+"""""""""""
+
+.. code:: xml
+
+   <bind nodeset="/all-widgets/image_widgets/draw_image_widget" type="binary"/>
+
+   <upload appearance="draw" mediatype="image/*" ref="/all-widgets/image_widgets/draw_image_widget">
+     <label>Draw widget</label>
+     <hint>image type with draw appearance</hint>
+   </upload>
+   
