@@ -1278,3 +1278,38 @@ XForm XML
     <hint>date type with no appearance</hint>
   </input>
   
+.. _date-no-calendar:
+
+Date, No Calendar
+~~~~~~~~~~~~~~~~~~~
+
+The :tc:`no-calendar` appearance displays a "spinner" type date selection. This is especially appropriate for selecting dates more than in the past.
+
+.. image:: /img/form-widgets/date-no-calendar-start.* 
+  :alt: The no-calendar Date form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Date Widget." The hint text is "date type with no-calendar appearance." Below that is a button labeled "Select date." Below the button is the text, "No date selected." Above the question text is the form group name "Date and time widgets."
+  
+.. image:: /img/form-widgets/date-no-calendar-in-progress.* 
+  :alt: The date widget shown previously, with a pop modal. The headline of the modal is "Select date." There are individual "spinner" style selectors for month, day, and year. At the bottom of the modal are OK and Cancel buttons.
+  
+XSLForm Rows
+""""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  date,date_widget_nocalendar,Date Widget,no-calendar,date type with no-calendar appearance
+  
+XForm XML
+""""""""""
+
+.. code:: xml
+  
+  <bind nodeset="/all-widgets/date_time_widgets/date_widget_nocalendar" type="date"/>
+  
+  <input appearance="no-calendar" ref="/all-widgets/date_time_widgets/date_widget_nocalendar">
+     <label>Date Widget</label>
+     <hint>date type with no-calendar appearanec</hint>
+  </input>
+  
+
+  
