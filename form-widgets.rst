@@ -940,3 +940,32 @@ XForm XML
     <label>Ex integer widget</label>
     <hint>integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)</hint>
   </input>
+
+  
+.. _default-decimal-widget:
+
+Default Decimal Widget
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: /img/form-widgets/default-decimal-widget.* 
+  :alt: The default Decimal form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Decimal widget." The hint text is "decimal type with no appearance." Below that is a simple input. The number pad is active. Above the question text is the form group name "Numerical widgets."
+  
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+  
+  decimal,decimal_widget,Decimal widget,decimal type with no appearance
+  
+XForm XML
+""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/number_widgets/decimal_widget" type="decimal"/>
+  
+  <input ref="/all-widgets/number_widgets/decimal_widget">
+    <label>Decimal widget</label>
+    <hint>decimal type with no appearance</hint>
+  </input>
