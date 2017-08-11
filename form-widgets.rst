@@ -1385,3 +1385,38 @@ See :ref:`basic-form-widgets` for details on:
 
 The :ref:`datetime` widget accepts a :tc:`no-calendar` appearance. This changes the date selector to the "spinner" style shown in :ref:`date-no-calendar`.
 
+.. _gps-widgets:
+
+GPS Widgets
+------------
+
+.. _default-geopoint:
+
+Default Geopoint
+~~~~~~~~~~~~~~~~~~
+
+The default :ref:`geopoint` widget collects the current GPS position (if available) from the device.
+
+.. image:: /img/form-widgets/default-geopoint.* 
+  :alt: The default Geopoint form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Geopoint widget." The hint text is "geopoint type with no appearance." Below that is a button labeled "Start Geopoint." Below the button are completed fields for Latitude, Longitude, Altitude, and Accuracy.
+  
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+  
+  geopoint,geopoint_widget,Geopoint widget,geopoint type with no appearance
+
+XForm XML
+"""""""""""
+    
+.. code:: xml
+
+  <bind nodeset="/all-widgets/geopoint_widgets/geopoint_widget_placementmap" type="geopoint"/>
+  
+  <input ref="/all-widgets/geopoint_widgets/geopoint_widget">
+    <label>Geopoint widget</label>
+    <hint>geopoint type with no appearance</hint>
+  </input>
+  
