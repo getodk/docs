@@ -1039,3 +1039,33 @@ XForm XML
     <hint>decimal type with bearing appearance</hint>
   </input>
   
+.. _image-widgets:
+
+Image Widgets
+---------------
+
+.. _default-image-widget
+
+Default Image Widget
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: /img/form-widgets/default-image-widget.* 
+  :alt: The default Image form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Image Widget." The hint text is, "image type with no appearance." Below that are two buttons: "Take Picture" and "Choose Image." Above the question text is the form group name "Image widgets."
+  
+XLSForm Rows
+""""""""""""""
+.. csv-table:: survey
+  :header: type, name, label, hint
+  
+  image,image_widget,Image widget,image type with no appearance
+  
+XForm XML
+""""""""""
+
+.. code:: xml
+  <bind nodeset="/all-widgets/image_widgets/image_widget" type="binary"/>
+
+  <upload mediatype="image/*" ref="/all-widgets/image_widgets/image_widget">
+    <label>Image widget</label>
+    <hint>image type with no appearance</hint>
+  </upload>
