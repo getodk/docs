@@ -1311,5 +1311,34 @@ XForm XML
      <hint>date type with no-calendar appearanec</hint>
   </input>
   
+.. _date-type-month-year:
 
+Month and Year Widget
+~~~~~~~~~~~~~~~~~~~~~~
+
+Collects only a month and year.
+
+.. image:: /img/form-widgets/month-year-spinner.* 
+  :alt: The date widget, with a modal popup labeled "Select date." There are individual "Spinner" type selectors for month and year, but not for date. At the bottom are Cancel and OK buttons.
+  
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  date,date_widget_month_year,Date widget,month-year,date type with month-year appearance
+  
+XForm XML
+""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/date_time_widgets/date_widget_month_year" type="date"/>
+  
+  <input appearance="month-year" ref="/all-widgets/date_time_widgets/date_widget_month_year">
+    <label>Date widget</label>
+    <hint>date type with month-year appearance</hint>
+  </input>
+  
   
