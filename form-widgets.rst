@@ -877,3 +877,66 @@ XForm XML
     <hint>text type with printer:org.opendatakit.sensors.ZebraPrinter</hint>
   </input>
 
+.. _number-widget:
+
+Number Widgets
+---------------
+
+.. _default-integer-widget:
+
+Default Integer Widget
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: /img/form-widgets/default-integer-widget.* 
+  :alt: The default Integer form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Integer Widget." The hint text is "integer type with no appearance." Below that is a simple input. The numerical keypad is active. Above the question text is the form group name "Numerical widgets."
+  
+XLSForm Rows
+""""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+  
+  integer,integer_widget,Integer widget,integer type with no appearance
+  
+XForm XML
+"""""""""""
+.. code:: xml
+  <bind nodeset="/all-widgets/number_widgets/integer_widget" type="int"/>
+
+  <input ref="/all-widgets/number_widgets/integer_widget">
+    <label>Integer widget</label>
+    <hint>integer type with no appearance</hint>
+  </input>
+  
+.. _external-integer-widget:
+
+External Integer Widget
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Launches an external app and recieves an integer input back from the external app. If the specified external app is not available, a manual input is prompted.
+
+.. image:: /img/form-widgets/external-integer-widget-start.* 
+  :alt: The External Integer form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Ex integer widget." The hint text is, "integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form name "Numerical widgets."
+  
+.. image:: /img/form-widgets/external-widget-fallback.* 
+  :alt: The External Integer widget as displayed previously. The Launch button is now disabled and below it is a simple input. A help text reads, "The requested application is missing. Please manually enter the reading."
+  
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  integer,ex_integer_widget,Ex integer widget,ex:change.uw.android.BREATHCOUNT,integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
+  
+XForm XML
+""""""""""
+
+.. code:: xml
+  
+  <bind nodeset="/all-widgets/number_widgets/ex_integer_widget" type="int"/>
+  
+  <input appearance="ex:change.uw.android.BREATHCOUNT" ref="/all-widgets/number_widgets/ex_integer_widget">
+    <label>Ex integer widget</label>
+    <hint>integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)</hint>
+  </input>
