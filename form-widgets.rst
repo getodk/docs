@@ -1227,3 +1227,54 @@ XForm XML
     <label>Signature widget</label>
     <hint>image type with signature appearance</hint>
   </upload>   
+
+.. _media-widgets:
+
+Media Widgets
+---------------
+  
+The media widgets do not accept any appearance attributes. They are documented in :ref:`basic-form-widgets` above:
+
+- :ref:`barcode`
+- :ref:`audio`
+- :ref:`video`
+
+.. _date-and-time-widgets:
+
+Date and Time Widgets
+----------------------
+
+.. _default-date-widget:
+
+Default Date Widget
+~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: /img/form-widgets/default-date-widget.* 
+  :alt: The default Date form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Date widget." The hint text is "date type with no appearance." Below that is a button labeled "Select date." Below that is the text, "No date selected." Above the quesiton text is the form group name "Date and time widgets."
+  
+.. image:: /img/form-widgets/date-calendar-view.* 
+  :alt: The date widget shown in the previous image, with a modal popup showing a monthyl calendar. A date is selected. At the bottom of the modal are Cancel and OK buttons.
+  
+.. image:: /img/form-widgets/date-completed.* 
+  :alt: The date widget shown previously. Below the button is a date: Aug 11, 2017.
+  
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+  
+  date,date_widget,Date widget,date type with no appearance
+
+XForm XML
+"""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/date_time_widgets/date_widget" type="date"/>
+  
+  <input ref="/all-widgets/date_time_widgets/date_widget">
+    <label>Date widget</label>
+    <hint>date type with no appearance</hint>
+  </input>
+  
