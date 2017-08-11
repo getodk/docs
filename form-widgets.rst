@@ -1002,3 +1002,40 @@ XForm XML
     <label>Ex decimal widget</label>
     <hint>decimal type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)</hint>
   </input>
+
+.. _bearing-widget:
+
+Bearing Widget
+~~~~~~~~~~~~~~~~
+
+Captures a compass reading.
+
+.. image:: /img/form-widgets/bearing-widget-start.* 
+  :alt: The Bearing form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Beaering widget." The hint text is, "decimal type wih bearing appearance. Below that is a button labeled "Record Bearing." Above the question text is the form group name "Numericl widgets."
+
+.. image:: /img/form-widgets/bearing-in-progress.* 
+  :alt: The Bearing widget, overlaid with a model popup. The modal headline is "Loading Bearing." In the body of the modal are two fields: "Direction: W" and "Bearing: 273.001". At the bottom of the modal are Cancel and Record Bearing buttons.
+  
+.. image:: /img/form-widgets/bearing-finished.* 
+  :alt: The Bearing widget, as displayed previously. The button's label is not "Replace bearing." Below the button is the decimal number 271.538 (the recorded bearing). 
+ 
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  decimal,bearing_widget,Bearing widget,bearing,decimal type with bearing appearance
+  
+XForm XML
+"""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/number_widgets/bearing_widget" type="decimal"/>
+  
+  <input appearance="bearing" ref="/all-widgets/number_widgets/bearing_widget">
+    <label>Bearing widget</label>
+    <hint>decimal type with bearing appearance</hint>
+  </input>
+  
