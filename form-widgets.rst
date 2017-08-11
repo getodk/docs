@@ -1146,3 +1146,48 @@ XForm XML
      <hint>image type with draw appearance</hint>
    </upload>
    
+.. _annotate-widget:
+
+Annotate Widget
+~~~~~~~~~~~~~~~~~~
+
+Allows user to take or select an image and then draw on it.
+
+.. image:: /img/form-widgets/annotate-start.* 
+  :alt: The Annotate form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Annotate widget." The hint text is, "image type with anotatr appearance." There are three buttons: "Take Picture," "Choose Image," and "Markup Image." The Markup Image button is displabled. Above the question text is the form group name "Image widgets."
+  
+.. image:: /img/form-widgets/annotate-1.* 
+  :alt: The camera view on an Android phone. In the viewer is a picture of a small saucer. Below the viewer is a blue checkmark button.
+  
+.. image:: /img/form-widgets/annotate-2.* 
+  :alt: The Annotate form widget displayed previosuly. The Markup Image button is now enabled. Below the buttons is the picture of a saucer shown previously.
+  
+.. image:: /img/form-widgets/annotate-3.* 
+  :alt: The image of a saucer on a drawing pad, with a poorly-drawn cup of tea drawn over it. In the lower right corner is a plus sign (+) in a circle.
+  
+.. image:: /img/form-widgets/annotate-4.* 
+  :alt: The same picture shown in the previous image. The menu in the bottom right corner has expanded to show the options: Reset, Save and Close, and Set Color.
+  
+.. image:: /img/form-widgets/annotate-5.* 
+  :alt: The Annotate form widget shown previously. The drawn-on picture is below the buttons.
+  
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  image,annotate_image_widget,Annotate widget,annotate,image type with annotate appearance
+
+XForm XML
+""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/image_widgets/annotate_image_widget" type="binary"/>
+  
+  <upload appearance="annotate" mediatype="image/*" ref="/all-widgets/image_widgets/annotate_image_widget">
+    <label>Annotate widget</label>
+    <hint>image type with annotate appearance</hint>
+  </upload>
+  
