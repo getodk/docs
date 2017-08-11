@@ -694,5 +694,112 @@ XForm XML
     <label>I acknowledge this acknowledgement.</label>
   </trigger>
 
+.. _appearance:
+
+Widget Formatting with Appearance
+==================================
+
+In your :term:`xlsform` sheet, you can optionally specify an :th:`appearance` column. This will affect widget display and functionality in :term:`Collect`.
+
+.. _text-widgets:
+
+Text Widgets
+-------------
+
+.. _text-default:
+
+Default Appearance
+~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: /img/form-widgets/text-no-appearance.* 
+  :alt: The default String widget, as displayed in the ODK Collect app on an Android phone. The question text is "String Widget." Below that is a simple text input. Above the question text is the form group name, "Text widgets."
 
 
+XLSForm Rows
+""""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label
+
+  text,string_widget,String widget
+
+.. _string-number:
+
+String Number
+~~~~~~~~~~~~~~~
+
+A numerical input that treats the input as a string, rather than a number.
+
+.. image:: /img/form-widgets/string-number.* 
+  :alt: The text widget, with numerical entry, as displayed in the ODK Collect app on an Android phone. The question text is "String number widget." The hint text is, "text type with numbers appearance." Below that is a simple input. Above the question text is the form group name "Text Widget." The Android onscreen keyboard displays a number pad.
+
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  text,string_number_widget,String number widget,numbers,text type with numbers appearance  
+
+.. _url-widget:
+
+URL Widget
+~~~~~~~~~~~~
+
+Provides a link which the user can open from the survey. Takes no input.
+
+The URL to open is specified with :th:`default`.
+
+.. image:: /img/form-widgets/url-widget.* 
+  :alt: The URL form widget, as displayed in the ODK Collect app on an Android phone. The question text is "URL Widget." The hint text is "text type with url appearance and default value of http://opendatakit.org/" Below that is a button labeled, "Open URL." Below the button is the URL, "http://opendatakit.org/" Above the question text is the form group name "Text widgets."
+
+XLSForm Rows
+"""""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint, default
+
+  text,url_widget,URL widget,url,text type with url appearance and default value of http://opendatakit.org/,http://opendatakit.org/
+
+.. _external-app-widget:
+
+External App String Widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Launches an external app and recieves a string input back from the external app. If the specified external app is not available, a manual input is prompted.
+
+The external app widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
+
+.. image:: /img/form-widgets/external-app-widget-start.* 
+  :alt: The External App form widget, as displayed in the ODK Collect App on an Android phone. The question text is "Ex string widget." The hinst text is, "text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labelled "Launch." Above the question text is the form group name "Text widgets."
+
+.. image:: /img/form-widgets/external-app-widget-fallback.* 
+  :alt: The External App widget as displayed earlier. The Launch button has now been disabled. Below it is a simple input. A help message displays the text, "The requested application is missing. Please manually enter the reading."
+
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  text,ex_string_widget,Ex string widget,ex:change.uw.android.BREATHCOUNT,text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
+
+.. _external-printer-widget:
+
+External Printer Widget
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Connects to an external printer. See `printing widget <https://opendatakit.org/help/form-design/examples/#printing_widgets>`_ for complete details.
+
+.. pull printing widget detail into its own doc in this repo
+
+.. image:: /img/form-widgets/printer-widget.* 
+  :alt: The external printer widget, as displayed in the ODK Collect app on an Android phone. The question text is "Ex printer widget." The hint text is "text type with printer:org.opendatakit.sensors.ZebraPrinter." Below that is a button labeled, "Initiate Printing." Above the question text is the form gropu name "Text widgets."
+
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+   text,ex_printer_widget,Ex printer widget,printer:org.opendatakit.sensors.ZebraPrinter,text type with printer:org.opendatakit.sensors.ZebraPrinter
