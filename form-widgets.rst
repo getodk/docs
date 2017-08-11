@@ -1450,5 +1450,37 @@ XForm XML
     <hint>geopoint type with placement-map appearance</hint>
   </input>
   
+.. _geopoint-maps:
+
+Geopoint with Map
+~~~~~~~~~~~~~~~~~~~~~~ 
+
+The default :ref:`geopoint` widget does not display map to the user. With the added :tc:`maps` appearance attribute, a map of the recorded location is shown to the user. The user cannot select a different location on the map. (See :ref:`placement-map-widget` for a geopoint with a user-selected location.)
+
+XLSForm Rows
+""""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
   
- 
+  geopoint,geopoint_widget_maps,Geopoint widget,maps,geopoint type with maps appearance
+  
+XForm XML
+""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/geopoint_widgets/geopoint_widget_maps" type="geopoint"/
+  
+  <input appearance="maps" ref="/all-widgets/geopoint_widgets/geopoint_widget_maps">
+    <label>Geopoint widget</label>
+    <hint>geopoint type with maps appearance</hint>
+  </input>
+
+.. _default-geoshape-geotrace:
+
+Geoshape and Geotrace
+~~~~~~~~~~~~~~~~~~~~~~
+
+The :ref:`geopoint` and :ref:`geotrace` widgets do not accept any appearance attributes.
+
