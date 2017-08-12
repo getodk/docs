@@ -1719,3 +1719,63 @@ XForm XML
       <value>d</value>
     </item>
   </select1>
+
+.. _select-autocomplete:
+
+Select with Autocomplete Widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A set of radio buttons with a search and filter function. The search input has an autocomplete feature.
+
+.. image:: /img/form-widgets/select-autocomplete.* 
+  :alt: The Select One form widget with autocomplete, as displayed in the ODK Collect app on an Android phone. The question text is "Select one search widget." The hint text is, "select one type with autocomplete appearance, 4 text choices." Below that is a text input followed by four radio buttons labeled A, B, C, and D. Above the question text is the form group name "Select one widgets." The device keyboard is active.
+  
+.. image:: /img/form-widgets/select-autocomplete-filtered.* 
+  :alt: The Select One form widget as displayed previously. The text input contains a lowercase 'b'. There is a single radio button: B. The other three radio buttons are no longer displayed.
+  
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  select_one opt_abcd,select_one_autocomplete_widget,Select one search widget,autocomplete,"select_one type with autocomplete appearance, 4 text choices"
+  
+.. csv-table:: choices
+  :header: list_name, name, label
+  
+  opt_abcd,a,A
+  opt_abcd,b,B
+  opt_abcd,c,C
+  opt_abcd,d,D
+
+  
+XForm XML
+"""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/select_one_widgets/select_one_autocomplete_widget" type="select1"/>
+  
+  <select1 appearance="autocomplete" ref="/all-widgets/select_one_widgets/select_one_autocomplete_widget">
+    <label>Select one search widget</label>
+    <hint>select_one type with autocomplete appearance, 4 text choices</hint>
+    <item>
+      <label>A</label>
+      <value>a</value>
+    </item>
+    <item>
+      <label>B</label>
+      <value>b</value>
+    </item>
+    <item>
+      <label>C</label>
+      <value>c</value>
+    </item>
+    <item>
+      <label>D</label>
+      <value>d</value>
+    </item>
+  </select1>
+
+ 
