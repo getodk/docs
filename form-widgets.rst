@@ -1778,4 +1778,59 @@ XForm XML
     </item>
   </select1>
 
- 
+.. _select-image-widget:
+
+Default Single Select with Images
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A set of radio buttons with text labels and accompanying images.
+
+See :ref:`image-options` to learn more about including images in surveys.
+
+.. image:: /img/form-widgets/default-single-image-select.* 
+  :alt: The Single Select form widget with images, as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is, "select_one type with no appearace, 4 image choices (a.jpg, b.jpb, c.jpg, d.jpg)." Below that is a set of radio buttons labeled A, B, C, and D. Below each radio button is a small icon of an animal: A - whale, B - frog, C - aligator, D - eagle. Above the question text is the form group name "Select one widgets."
+  
+XLSForm Rows
+""""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  select_one abcd_icon,grid_widget,Grid select one widget,,"select_one type with no appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)"
+
+.. csv-table:: choices
+  :header: list_name, name, label, media::image
+  
+  abcd_icon,a,A,a.jpg
+  abcd_icon,b,B,b.jpg
+  abcd_icon,c,C,c.jpg
+  abcd_icon,d,D,d.jpg
+
+XForm XML
+""""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/select_one_widgets/grid_widget" type="select1"/>
+  
+  <select1 ref="/all-widgets/select_one_widgets/grid_widget">
+    <label>Grid select one widget</label>
+    <hint>select_one type with no appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)</hint>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget/a:label')"/>
+      <value>a</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget/b:label')"/>
+      <value>b</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget/c:label')"/>
+      <value>c</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget/d:label')"/>
+      <value>d</value>
+    </item>
+  </select1>
+
