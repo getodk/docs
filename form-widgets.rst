@@ -1603,3 +1603,64 @@ XForm XML
       <value>d</value>
     </item>
   </select1>
+
+  
+.. _autoadvance-widget:
+  
+Autoadvance Widget
+~~~~~~~~~~~~~~~~~~~~~
+
+Advances immediately to the next question once a selection is made.
+
+.. raw:: html
+
+  <video controls muted style="max-width:100%">
+    <source src="/_static/vid/form-widgets/auto-advance.mp4">
+  </video>
+
+
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  select_one opt_abcd,select_one_autoadvance_widget,Select one autoadvance widget,quick,"select_one type with quick appearance, 4 text choices"
+  
+.. csv-table:: choices
+  :header: list_name, name, label
+  
+  opt_abcd,a,A
+  opt_abcd,b,B
+  opt_abcd,c,C
+  opt_abcd,d,D
+
+XForm XML
+"""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/select_one_widgets/select_one_autoadvance_widget" type="select1"/>
+
+  <select1 appearance="quick" ref="/all-widgets/select_one_widgets/select_one_autoadvance_widget">
+    <label>Select one autoadvance widget</label>
+    <hint>select_one type with quick appearance, 4 text choices</hint>
+    <item>
+      <label>A</label>
+      <value>a</value>
+    </item>
+    <item>
+      <label>B</label>
+      <value>b</value>
+    </item>
+    <item>
+      <label>C</label>
+      <value>c</value>
+    </item>
+    <item>
+      <label>D</label>
+      <value>d</value>
+    </item>
+  </select1>
+  
+  
