@@ -1546,3 +1546,60 @@ XForm XML
       <value>d</value>
     </item>
   </select1>
+  
+.. _spinner-widget:
+
+Spinner Widget
+~~~~~~~~~~~~~~~
+
+Adding the :tc:`minimal` appearance attribute places the choices into a drop-down style menu.
+
+.. image:: /img/form-widgets/select-one-minimal-start.* 
+  :alt: The Single Select form widget, with minimal appearance, as displayed in the ODK Collect app on an Android phone. The question text is "Spinner widget." The hint text is "select_one type with minimal appearance, 4 text choices." Below that is a drop-down style select menu with the prompt "Select One Answer." Above the question text is the form gorup name "Select one widgets."
+  
+.. image:: /img/form-widgets/select-one-minimal-expanded.* 
+  :alt: The Single Select form widget, wih minimal appearance, as displayed in the previously image. The select menu has expanded to show choices: A, B, C, D, and Remove Response.
+  
+XLSForm Rows
+""""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  select_one opt_abcd,spinner_widget,Spinner widget,minimal,"select_one type with minimal appearance, 4 text choices"
+  
+.. csv-table:: choices
+  :header: list_name, name, label
+  
+  opt_abcd,a,A
+  opt_abcd,b,B
+  opt_abcd,c,C
+  opt_abcd,d,D
+  
+XForm XML
+"""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/select_one_widgets/spinner_widget" type="select1"/>
+  
+  <select1 appearance="minimal" ref="/all-widgets/select_one_widgets/spinner_widget">
+    <label>Spinner widget</label>
+    <hint>select_one type with minimal appearance, 4 text choices</hint>
+    <item>
+      <label>A</label>
+      <value>a</value>
+    </item>
+    <item>
+      <label>B</label>
+      <value>b</value>
+    </item>
+    <item>
+      <label>C</label>
+      <value>c</value>
+    </item>
+    <item>
+      <label>D</label>
+      <value>d</value>
+    </item>
+  </select1>
