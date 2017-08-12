@@ -1490,3 +1490,59 @@ Geoshape and Geotrace
 
 The :ref:`geopoint` and :ref:`geotrace` widgets do not accept any appearance attributes.
 
+.. _single-select-widgets:
+
+Single Select Widgets
+----------------------
+
+.. _default-select-one:
+
+Default Single Select
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: /img/form-widgets/default-single-select.* 
+  :alt: The default Single Select form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Select one widget." The hint text is "select_one type with no appearance, 4 text choices." Below that is a set of radio button selectors labeled A, B, C, and D. Above the question text is form grop name "Select one widgets."
+  
+XLSForm Rows
+""""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+  
+  select_one opt_abcd,select_one_widget,Select one widget,"select_one type with no appearance, 4 text choices"
+  
+.. csv-table:: choices
+  :header: list_name, name, label
+  
+  opt_abcd,a,A
+  opt_abcd,b,B
+  opt_abcd,c,C
+  opt_abcd,d,D
+
+XForm XML
+""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/select_one_widgets/select_one_widget" type="select1"/>
+
+  <select1 ref="/all-widgets/select_one_widgets/select_one_widget">
+    <label>Select one widget</label>
+    <hint>select_one type with no appearance, 4 text choices</hint>
+    <item>
+      <label>A</label>
+      <value>a</value>
+    </item>
+    <item>
+      <label>B</label>
+      <value>b</value>
+    </item>
+    <item>
+      <label>C</label>
+      <value>c</value>
+    </item>
+    <item>
+      <label>D</label>
+      <value>d</value>
+    </item>
+  </select1>
