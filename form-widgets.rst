@@ -1663,4 +1663,59 @@ XForm XML
     </item>
   </select1>
   
+.. _select-search-widget:
+
+Select with Search Widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A set of radio buttons with a search and filter function.
+
+.. image:: /img/form-widgets/select-search-start.* 
+  :alt: The Select One form widget with search, as displayed in the ODK Collect app on an Android phone. The question text is, "Select one search widget." The hint text is, "select one type with search appearance, 4 text choices." Below that is a text input above four radio buttons labeled A, B, C, and D. Above the question text is the form group name, "Select one widgets." The phone's keyboard is active.
+ 
+.. image:: /img/form-widgets/select-one-search-searching.* 
+  :alt: The Select One form widget as displayed previously. The text input contains a lowercase 'b'. There is a single radio button: B. The other three radio buttons are no longer displayed.
   
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint 
+  
+  select_one opt_abcd,select_one_search_widget,Select one search widget,search,"select_one type with search appearance, 4 text choices"
+
+.. csv-table:: choices
+  :header: list_name, name, label
+  
+  opt_abcd,a,A
+  opt_abcd,b,B
+  opt_abcd,c,C
+  opt_abcd,d,D
+
+XForm XML
+""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/select_one_widgets/select_one_search_widget" type="select1"/>
+  
+  <select1 appearance="search" ref="/all-widgets/select_one_widgets/select_one_search_widget">
+    <label>Select one search widget</label>
+    <hint>select_one type with search appearance, 4 text choices</hint>
+    <item>
+      <label>A</label>
+      <value>a</value>
+    </item>
+    <item>
+      <label>B</label>
+      <value>b</value>
+    </item>
+    <item>
+      <label>C</label>
+      <value>c</value>
+    </item>
+    <item>
+      <label>D</label>
+      <value>d</value>
+    </item>
+  </select1>
