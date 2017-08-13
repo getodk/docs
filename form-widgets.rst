@@ -1888,8 +1888,9 @@ XForm XML
     </item>
   </select1>  
 
-Compact Single Select with Images 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _compact:  
+Compact Single Select with Images, style 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A second compact display style for images.
 
@@ -1997,4 +1998,59 @@ XForm XML
     </item>
   </select1>
 
+.. _quickcompact-2-widget
 
+Compact Single Select with Images and Autoadvance, style 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The :tc:`quickcompact-2` appearance attribute combines the design of :ref:`compact-2` with the :ref:`autoadvance-widget` functionality.
+
+.. raw:: html
+
+  <video controls muted style="max-width:100%">
+    <source src="/_static/vid/form-widgets/quickcompacta.mp4">
+  </video>
+
+XLSForm Rows
+""""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  select_one abcd_icon,grid_widget_quickcompact2,Grid select one widget,quickcompact-2,"select_one type with quickcompact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)"
+  
+.. csv-table:: choices
+  :header: list_name, name, label, media::image
+  
+  abcd_icon,a,A,a.jpg
+  abcd_icon,b,B,b.jpg
+  abcd_icon,c,C,c.jpg
+  abcd_icon,d,D,d.jpg
+
+XForm XML
+""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/select_one_widgets/grid_widget_quickcompact2" type="select1"/>
+
+  <select1 appearance="quickcompact-2" ref="/all-widgets/select_one_widgets/grid_widget_quickcompact2">
+    <label>Grid select one widget</label>
+    <hint>select_one type with quickcompact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)</hint>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_quickcompact2/a:label')"/>
+      <value>a</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_quickcompact2/b:label')"/>
+      <value>b</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_quickcompact2/c:label')"/>
+      <value>c</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_quickcompact2/d:label')"/>
+      <value>d</value>
+    </item>
+  </select1>
