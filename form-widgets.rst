@@ -1887,3 +1887,55 @@ XForm XML
       <value>d</value>
     </item>
   </select1>  
+
+Compact Single Select with Images 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A second compact display style for images.
+
+.. image:: /img/form-widgets/single-image-select-compact-2.* 
+  :alt: The single select form widget with images and appearace of 'compact-2,' as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is "select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four animal icons arranged in a two-by-two grid. Above the quesiton text is the form group name "Select one widgets."
+  
+XLSForm Rows
+""""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  select_one abcd_icon,grid_widget_compact2,Grid select one widget,compact-2,"select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)"
+  
+.. csv-table:: choices
+  :header: list_name, name, label, media::image
+  
+  abcd_icon,a,A,a.jpg
+  abcd_icon,b,B,b.jpg
+  abcd_icon,c,C,c.jpg
+  abcd_icon,d,D,d.jpg
+
+XForm XML
+""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/select_one_widgets/grid_widget_compact2" type="select1"/>
+  
+  <select1 appearance="compact-2" ref="/all-widgets/select_one_widgets/grid_widget_compact2">
+    <label>Grid select one widget</label>
+    <hint>select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)</hint>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact2/a:label')"/>
+      <value>a</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact2/b:label')"/>
+      <value>b</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact2/c:label')"/>
+      <value>c</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact2/d:label')"/>
+      <value>d</value>
+    </item>
+  </select1>
