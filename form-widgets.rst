@@ -1939,3 +1939,62 @@ XForm XML
       <value>d</value>
     </item>
   </select1>
+
+.. _quickcompact-widget:
+  
+Compact Single Select with Images and Autoadvance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The :tc:`quickcompact` appearance attribute combines the design of the :ref:`compact-single-image-select` widget with the :ref:`autoadvance-widget` functionality.
+
+.. raw:: html
+
+  <video controls muted style="max-width:100%">
+    <source src="/_static/vid/form-widgets/quickcompact.mp4">
+  </video>
+
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  select_one abcd_icon,grid_widget_quickcompact,Grid select one widget,quickcompact,"select_one type with quickcompact appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)"
+    
+.. csv-table:: choices
+  :header: list_name, name, label, media::image
+  
+  abcd_icon,a,A,a.jpg
+  abcd_icon,b,B,b.jpg
+  abcd_icon,c,C,c.jpg
+  abcd_icon,d,D,d.jpg
+
+XForm XML
+"""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/select_one_widgets/grid_widget_quickcompact2" type="select1"/>
+
+  <select1 appearance="quickcompact" ref="/all-widgets/select_one_widgets/grid_widget_quickcompact">
+    <label>Grid select one widget</label>
+    <hint>select_one type with quickcompact appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)</hint>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_quickcompact/a:label')"/>
+      <value>a</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_quickcompact/b:label')"/>
+      <value>b</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_quickcompact/c:label')"/>
+      <value>c</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_quickcompact/d:label')"/>
+      <value>d</value>
+    </item>
+  </select1>
+
+
