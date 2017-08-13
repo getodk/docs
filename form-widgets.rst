@@ -1834,3 +1834,56 @@ XForm XML
     </item>
   </select1>
 
+.. _compact-single-image-select:
+
+Compact Single Select with Images
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Image options are placed on a single line.
+
+.. image:: /img/form-widgets/single-select-compact.* 
+  :alt: The compact Single Select form widget with images, as displayed in the ODK Collect app on an Android phone. The question text is "Grid select one widget." The hint text is, "select_one with compact appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four small animal icons arranged on a single line. Above the question text is the form group name "Slect one widgets."
+  
+XLSForm Rows
+""""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  select_one abcd_icon,grid_widget_compact,Grid select one widget,compact,"select_one type with compact appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)"
+  
+.. csv-table:: choices
+  :header: list_name, name, label, media::image
+  
+  abcd_icon,a,A,a.jpg
+  abcd_icon,b,B,b.jpg
+  abcd_icon,c,C,c.jpg
+  abcd_icon,d,D,d.jpg
+
+XForm XML
+"""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/select_one_widgets/grid_widget_compact" type="select1"/>
+
+  <select1 appearance="compact" ref="/all-widgets/select_one_widgets/grid_widget_compact">
+    <label>Grid select one widget</label>
+    <hint>select_one type with compact appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)</hint>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact/a:label')"/>
+      <value>a</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact/b:label')"/>
+      <value>b</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact/c:label')"/>
+      <value>c</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact/d:label')"/>
+      <value>d</value>
+    </item>
+  </select1>  
