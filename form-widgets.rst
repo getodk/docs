@@ -2222,3 +2222,60 @@ XForm XML
     </item>
   </select>
     
+.. _spinner-widget-multi:
+
+Multiselect Spinner Widget
+~~~~~~~~~~~~~~~
+
+Adding the :tc:`minimal` appearance attribute places the choices into a drop-down style menu.
+
+.. image:: /img/form-widgets/multiselect-minimal-start.* 
+  :alt: The Multiselect form widget, with minimal appearance, as displayed in the ODK Collect app on an Android phone. The question text is "Spinner widget: select multiple." The hint text is "select_multiple type with minimal appearance, 4 text choices." Below that is a drop-down style select menu with the prompt "Select Answer." Above the question text is the form gorup name "This section contains 'Select Multi Widget.'"
+
+.. image:: /img/form-widgets/multiselect-minimal-expanded.* 
+  :alt: The multiselect form widget, wih minimal appearance, as displayed in the previous image. The select menu has expanded to show choices: A, B, C, D. In the lower right corber is a button labeled OK.
+  
+XLSForm Rows
+""""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  select_multiple opt_abcd,spinner_multi_widget,Spinner widget: select multiple,minimal,"select_multiple type with minimal appearance, 4 image choices"
+  
+.. csv-table:: choices
+  :header: list_name, name, label
+  
+  opt_abcd,a,A
+  opt_abcd,b,B
+  opt_abcd,c,C
+  opt_abcd,d,D
+  
+XForm XML
+"""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/select_multi_widgets/spinner_multi_widget" type="select"/>
+  
+  <select appearance="minimal" ref="/all-widgets/select_multi_widgets/spinner_multi_widget">
+    <label>Spinner widget: select multiple</label>
+    <hint>select_multiple type with minimal appearance, 4 image choices</hint>
+    <item>
+      <label>A</label>
+      <value>a</value>
+    </item>
+    <item>
+      <label>B</label>
+      <value>b</value>
+    </item>
+    <item>
+      <label>C</label>
+      <value>c</value>
+    </item>
+    <item>
+      <label>D</label>
+      <value>d</value>
+    </item>
+  </select>
+  
