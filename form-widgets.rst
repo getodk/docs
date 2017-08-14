@@ -2279,3 +2279,190 @@ XForm XML
     </item>
   </select>
   
+
+.. _field-list:
+
+Field List
+-------------
+
+The :tc:`field-list` appearance attribute, applied to a group of questions, displays them all on a single screen.
+
+.. image:: /img/form-widgets/field-list-1.* 
+  :alt: A field-list group of questions, as displayed in the ODK Collect app on an Android phone. Six questions are displayed. Below each, the answer choices are arranged in a row.
+  
+.. image:: /img/form-widgets/field-list-2.* 
+  :alt: The continuation of the previous image.
+  
+XLSForm Rows
+~~~~~~~~~~~~~~
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  begin_group,table_list_test,List group,field-list,
+  select_one yes_no,table_list_test_label,Label widget,label,"Show only the labels of these options and not the inputs (type=select_one yes_no, appearance=label)"
+  select_multiple yes_no,table_list_test_label_2,Label multi widget,label,"Show only the labels of these options and not the inputs (type=select_multiple yes_no, appearance=label)"
+  select_one yes_no,table_list_1,List widget,list-nolabel,"Show only the inputs of these options and not the labels (type=select_one yes_no, appearance=list-nolabel)"
+  select_multiple yes_no,table_list_2,List multi widget,list-nolabel,"Show only the inputs of these options and not the labels (type=select_multiple yes_no, appearance=list-nolabel)"
+  select_one yes_no,list_widget,List widget,list,"This is a normal list widget with (type = select_one, appearance = list)"
+  select_multiple yes_no,list_multi_widget,List multi widget,list,"This is a normal list widget with (type = select_multiple, appearance = list)"
+  end_group
+
+.. csv-table:: choices
+  :header: list_name, name, label
+  
+  yes_no,yes,Yes
+  yes_no,no,No
+  yes_no,dk,Don't Know
+  yes_no,na,Not Applicable
+  
+XForm XML
+~~~~~~~~~~~~
+
+.. code:: xml
+
+  <instance>
+    <all-widgets>
+      <table_list_test>
+	<table_list_test_label/>
+	<table_list_test_label_2/>
+	<table_list_1/>
+	<table_list_2/>
+	<list_widget/>
+	<list_multi_widget/>
+      </table_list_test>
+    </all-widgets>
+  </instance>
+
+  
+  <bind nodeset="/all-widgets/table_list_test/table_list_test_label" type="select1"/>
+  <bind nodeset="/all-widgets/table_list_test/table_list_test_label_2" type="select"/>
+  <bind nodeset="/all-widgets/table_list_test/table_list_1" type="select1"/>
+  <bind nodeset="/all-widgets/table_list_test/table_list_2" type="select"/>
+  <bind nodeset="/all-widgets/table_list_test/list_widget" type="select1"/>
+  <bind nodeset="/all-widgets/table_list_test/list_multi_widget" type="select"/>
+
+  
+  <group appearance="field-list" ref="/all-widgets/table_list_test">
+    <label>List group</label>
+    <select1 appearance="label" ref="/all-widgets/table_list_test/table_list_test_label">
+      <label>Label widget</label>
+      <hint>Show only the labels of these options and not the inputs (type=select_one yes_no, appearance=label)</hint>
+      <item>
+	<label>Yes</label>
+	<value>yes</value>
+      </item>
+      <item>
+	<label>No</label>
+	<value>no</value>
+      </item>
+      <item>
+	<label>Don't Know</label>
+	<value>dk</value>
+      </item>
+      <item>
+	<label>Not Applicable</label>
+	<value>na</value>
+      </item>
+    </select1>
+    <select appearance="label" ref="/all-widgets/table_list_test/table_list_test_label_2">
+      <label>Label multi widget</label>
+      <hint>Show only the labels of these options and not the inputs (type=select_multiple yes_no, appearance=label)</hint>
+      <item>
+	<label>Yes</label>
+	<value>yes</value>
+      </item>
+      <item>
+	<label>No</label>
+	<value>no</value>
+      </item>
+      <item>
+	<label>Don't Know</label>
+	<value>dk</value>
+      </item>
+      <item>
+	<label>Not Applicable</label>
+	<value>na</value>
+      </item>
+    </select>
+    <select1 appearance="list-nolabel" ref="/all-widgets/table_list_test/table_list_1">
+      <label>List widget</label>
+      <hint>Show only the inputs of these options and not the labels (type=select_one yes_no, appearance=list-nolabel)</hint>
+      <item>
+	<label>Yes</label>
+	<value>yes</value>
+      </item>
+      <item>
+	<label>No</label>
+	<value>no</value>
+      </item>
+      <item>
+	<label>Don't Know</label>
+	<value>dk</value>
+      </item>
+      <item>
+	<label>Not Applicable</label>
+	<value>na</value>
+      </item>
+    </select1>
+    <select appearance="list-nolabel" ref="/all-widgets/table_list_test/table_list_2">
+      <label>List multi widget</label>
+      <hint>Show only the inputs of these options and not the labels (type=select_multiple yes_no, appearance=list-nolabel)</hint>
+      <item>
+	<label>Yes</label>
+	<value>yes</value>
+      </item>
+      <item>
+	<label>No</label>
+	<value>no</value>
+      </item>
+      <item>
+	<label>Don't Know</label>
+	<value>dk</value>
+      </item>
+      <item>
+	<label>Not Applicable</label>
+	<value>na</value>
+      </item>
+    </select>
+    <select1 appearance="list" ref="/all-widgets/table_list_test/list_widget">
+      <label>List widget</label>
+      <hint>This is a normal list widget with (type = select_one, appearance = list)</hint>
+      <item>
+	<label>Yes</label>
+	<value>yes</value>
+      </item>
+      <item>
+	<label>No</label>
+	<value>no</value>
+      </item>
+      <item>
+	<label>Don't Know</label>
+	<value>dk</value>
+      </item>
+      <item>
+	<label>Not Applicable</label>
+	<value>na</value>
+      </item>
+    </select1>
+    <select appearance="list" ref="/all-widgets/table_list_test/list_multi_widget">
+      <label>List multi widget</label>
+      <hint>This is a normal list widget with (type = select_multiple, appearance = list)</hint>
+      <item>
+	<label>Yes</label>
+	<value>yes</value>
+      </item>
+      <item>
+	<label>No</label>
+	<value>no</value>
+      </item>
+      <item>
+	<label>Don't Know</label>
+	<value>dk</value>
+      </item>
+      <item>
+	<label>Not Applicable</label>
+	<value>na</value>
+      </item>
+    </select>
+  </group>
