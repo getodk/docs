@@ -1888,7 +1888,8 @@ XForm XML
     </item>
   </select1>  
 
-.. _compact-2:  
+.. _compact-2:
+
 Compact Single Select with Images, width specified
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1998,7 +1999,7 @@ XForm XML
     </item>
   </select1>
 
-.. _quickcompact-2-widget
+.. _quickcompact-2-widget:
 
 Compact Single Select with Images and Autoadvance, width specified
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2008,7 +2009,7 @@ As with :ref:`compact <compact-2>`, you can specify a width when using :tc:`quic
 .. raw:: html
 
   <video controls muted style="max-width:100%">
-    <source src="/_static/vid/form-widgets/quickcompacta.mp4">
+    <source src="/_static/vid/form-widgets/quickcompact2.mp4">
   </video>
 
 XLSForm Rows
@@ -2167,7 +2168,7 @@ XForm XML
     </item>
   </select>  
   
-.. _multi-image-compact-2
+.. _multi-image-compact-2:
 
 Compact Multiselect with Image Choices, style 2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2177,6 +2178,7 @@ Compact Multiselect with Image Choices, style 2
   
 .. image:: /img/form-widgets/multi-image-compact-2-selected.* 
   :alt: The compact multiselect widget shown previously. Two of the animal icons are outlined with an orange border, indicating they have been selected.
+
   
 XLSForm Rows
 """""""""""""
@@ -2225,7 +2227,7 @@ XForm XML
 .. _spinner-widget-multi:
 
 Multiselect Spinner Widget
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Adding the :tc:`minimal` appearance attribute places the choices into a drop-down style menu.
 
@@ -2509,4 +2511,4 @@ XForm XML
 Including Images as Choices
 =============================
 
-To include images as choices for select questions, specify the file name in the **choices** worksheet, in a column labeled :th:`media::image`. The media files must be uploaded to the Android device in the :dir:`/sdcard/odk/forms/` directory, in a file labeled :file:`{form-name}-files`. When uploading a form to ODK Aggregate, a second upload prompt will allow you to upload your files directory.
+To include images as choices for select questions, specify the file name in the **choices** worksheet, in a column labeled :th:`media::image`. The media files must be uploaded to the Android device in the :file:`/sdcard/odk/forms/` directory, in a file labeled :file:`{form-name}-files`. When uploading a form to ODK Aggregate, a second upload prompt will allow you to upload your files directory.
