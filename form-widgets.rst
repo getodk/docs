@@ -2054,3 +2054,60 @@ XForm XML
       <value>d</value>
     </item>
   </select1>
+
+.. _multiselect-widgets:  
+  
+Multiselect Widgets
+---------------------
+
+.. _default-multi-select:
+
+Default Multiselect Widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: /img/form-widgets/default-multiselect.* 
+  :alt: The default Multiselect widget as displayed in the ODK Collect app on an Android phone. The question text is, "Multiselect widget." The hint text is, "select_one widget with no appearance, 4 text choices." Below that are four checkbox options labeled A, B, C, and D. Above the question text is the form group label, "This section contains 'Select Multi Widgets'"
+  
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+  
+  select_multiple opt_abcd,select_multi_widget,Multi select widget,"select_multiple type with no appearance, 4 text choices"
+  
+.. csv-table:: choices
+  :header: list_name, name, label, media::image
+  
+  abcd_icon,a,A,a.jpg
+  abcd_icon,b,B,b.jpg
+  abcd_icon,c,C,c.jpg
+  abcd_icon,d,D,d.jpg
+
+XForm XML
+"""""""""""
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/select_multi_widgets/select_multi_widget" type="select"/>
+
+  <select ref="/all-widgets/select_multi_widgets/select_multi_widget">
+    <label>Multi select widget</label>
+    <hint>select_multiple type with no appearance, 4 text choices</hint>
+    <item>
+      <label>A</label>
+      <value>a</value>
+    </item>
+    <item>
+      <label>B</label>
+      <value>b</value>
+    </item>
+    <item>
+      <label>C</label>
+      <value>c</value>
+    </item>
+    <item>
+      <label>D</label>
+      <value>d</value>
+    </item>
+  </select>
