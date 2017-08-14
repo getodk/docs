@@ -2504,3 +2504,9 @@ XForm XML
   </trigger>
  
  
+.. _image-options:
+
+Including Images as Choices
+=============================
+
+To include images as choices for select questions, specify the file name in the **choices** worksheet, in a column labeled :th:`media::image`. The media files must be uploaded to the Android device in the :dir:`/sdcard/odk/forms/` directory, in a file labeled :file:`{form-name}-files`. When uploading a form to ODK Aggregate, a second upload prompt will allow you to upload your files directory.
