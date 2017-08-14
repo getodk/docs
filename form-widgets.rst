@@ -2111,3 +2111,59 @@ XForm XML
       <value>d</value>
     </item>
   </select>
+
+.. _compact-multi-widget:
+
+Compact Multiselect with Images
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: /img/form-widgets/compact-multiselect.* 
+  :alt: The compact multiselect form widget with image options, as displayed in the ODK Collect app on Android phone. The question text is "Grid select multiple widget." The hint text is select_multiple type with compact appearance, 4 image choices." Below that are four small animal icons in a single row. Above the question text is the section label "This section contains 'Select Multi Widgets.'"
+  
+.. image:: /img/form-widgets/compact-multiselect-selected.* 
+  :alt: The compact multiselect as shown in the previous image. Two of the small animal icons are outlined with an orange border, indicating they have been selected.
+  
+XLSForm Rows
+"""""""""""""
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+  
+  select_multiple abcd_icon,grid_multi_widget_compact,Grid select multiple widget,compact,"select_multiple type with compact appearance, 4 image choices"
+  
+.. csv-table:: choices
+  :header: list_name, name, label, media::image
+  
+  abcd_icon,a,A,a.jpg
+  abcd_icon,b,B,b.jpg
+  abcd_icon,c,C,c.jpg
+  abcd_icon,d,D,d.jpg
+
+XForm XML
+""""""""""
+
+.. code:: xml
+  
+  <bind nodeset="/all-widgets/select_multi_widgets/grid_multi_widget_compact" type="select"/>
+  
+  <select appearance="compact" ref="/all-widgets/select_multi_widgets/grid_multi_widget_compact">
+    <label>Grid select multiple widget</label>
+    <hint>select_multiple type with compact appearance, 4 image choices</hint>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_multi_widgets/grid_multi_widget_compact/a:label')"/>
+      <value>a</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_multi_widgets/grid_multi_widget_compact/b:label')"/>
+      <value>b</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_multi_widgets/grid_multi_widget_compact/c:label')"/>
+      <value>c</value>
+    </item>
+    <item>
+      <label ref="jr:itext('/all-widgets/select_multi_widgets/grid_multi_widget_compact/d:label')"/>
+      <value>d</value>
+    </item>
+  </select>  
+  
