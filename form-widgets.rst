@@ -2466,3 +2466,41 @@ XForm XML
       </item>
     </select>
   </group>
+
+.. _trigger:
+
+Trigger Widget
+---------------
+
+"Trigger" is another name for the :ref:`acknowledge` widget. The example shown here includes the :th:`required` attribute.
+
+.. image:: /img/form-widgets/trigger.* 
+  :alt: The Trigger (or "Acknowledge") form widget as displayed in the ODK Collect App on an Android phone. The question text is, "Trigger widget." The hint text is, "Prompts for confirmation. Useful to combine with required or relevant. (type=trigger)" Below that is a single checkbox labeled, "OK. Please continue." The checkbox is unchecked.
+  
+.. image:: /img/form-widgets/trigger-sorry.* 
+  :alt: The Trigger widget shown previously. An error text reads, "Sorry, this response is required."
+  
+.. image:: /img/form-widgets/trigger-selected.* 
+  :alt: The Trigger widget shown previously. The checkbox is now checked.
+  
+XLSForm Rows
+~~~~~~~~~~~~~~
+
+.. csv-table:: survey
+  :header: type, name, label, hint, required
+  
+  trigger,my_trigger,Trigger widget,Prompts for confirmation. Useful to combine with required or relevant. (type=trigger),true() 
+  
+XForm XML
+~~~~~~~~~~~~
+
+.. code:: xml
+
+  <bind nodeset="/all-widgets/my_trigger" required="true()"/>
+
+  <trigger ref="/all-widgets/my_trigger">
+    <label>Trigger widget</label>
+    <hint>Prompts for confirmation. Useful to combine with required or relevant. (type=trigger)</hint>
+  </trigger>
+ 
+ 
