@@ -1888,11 +1888,11 @@ XForm XML
     </item>
   </select1>  
 
-.. _compact:  
-Compact Single Select with Images, style 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _compact-2:  
+Compact Single Select with Images, width specified
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A second compact display style for images.
+With the :tc:`compact-{x}` style, you can specify the number of images to display on each row. To display two images on each row, specify an :th:`appearance` of :tc:`compact-2`.
 
 .. image:: /img/form-widgets/single-image-select-compact-2.* 
   :alt: The single select form widget with images and appearace of 'compact-2,' as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is "select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four animal icons arranged in a two-by-two grid. Above the quesiton text is the form group name "Select one widgets."
@@ -2000,10 +2000,10 @@ XForm XML
 
 .. _quickcompact-2-widget
 
-Compact Single Select with Images and Autoadvance, style 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Compact Single Select with Images and Autoadvance, width specified
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The :tc:`quickcompact-2` appearance attribute combines the design of :ref:`compact-2` with the :ref:`autoadvance-widget` functionality.
+As with :ref:`compact <compact-2>`, you can specify a width when using :tc:`quickcompact`. To display two images on each row, set the :th:`appearance` attribute to :tc:`quickcompact-2`.
 
 .. raw:: html
 
