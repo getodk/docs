@@ -15,6 +15,6 @@ deployment:
     branch: master
     owner: opendatakit
     commands:
-      - aws s3 sync $HOME/docs/build s3://$S3_BUCKET --delete --exclude "*" --include "*.html" --include "*.js" --include "_sources/*" --include "_static/*"
+      - aws s3 sync $HOME/docs/build s3://$S3_BUCKET --delete --exclude "*" --include "*.html" --include "*.js" --include "_sources/*" --include "_images/*" --include "_static/*"
       - aws configure set preview.cloudfront true
       - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
