@@ -19,7 +19,7 @@ deployment:
     branch: master
     owner: opendatakit
     commands:
-      - pngquant $HOME/docs/build/_images/*.png  --strip --verbose --force --ext .png
+      - pngquant $HOME/docs/build/_images/*.png --verbose --force --ext .png
       - aws s3 sync $HOME/docs/build s3://$S3_BUCKET --delete --exclude "*" --include "*.html" --include "*.js" --include "_sources/*" --include "_images/*" --include "_static/*"
       - aws configure set preview.cloudfront true
       - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
