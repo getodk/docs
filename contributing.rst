@@ -152,6 +152,25 @@ You will need to:
 - `Install git <https://git-scm.com/downloads>`_
 - `Start a GitHub account <https://github.com/>`_
 
+.. glfs
+
+GLFS
+""""""
+
+We use `Git Large File Storage (GLFS)  <https://git-lfs.github.com/>`_ to handle large binary files like images and videos. Once installed, you normally won't need to do anything else.
+
+- `Install GLFS <https://git-lfs.github.com/>`_
+
+.. warning::
+  If you add large binary files to any directory other than :file:`_static/vid` or :file:`img/`, they will likely not be tracked by GLFS. To make sure they are properly tracked, add the file type to GLFS.
+
+  .. code-block:: none
+
+    glfs track *.{file-extension}
+
+  This needs to be done **before** you commit the binary file.
+
+
 .. _android-tools:
 
 Android Tools
