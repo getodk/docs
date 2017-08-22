@@ -52,7 +52,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Open Data Kit'
-copyright = '2017, Open Data Kit'
+copyright = '2017, Open Data Kit. This document is licensed under a Creative Commons Attribution 4.0 International License'
 author = 'Open Data Kit'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -88,7 +88,7 @@ todo_include_todos = True
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = "sphinx_rtd_theme"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -185,11 +185,7 @@ epub_exclude_files = ['search.html']
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
 
-rst_prolog="""
+# Add custom CSS
 
-.. role:: th
-    :class: th
-    
-.. role:: tc
-    :class: tc
-"""
+def setup(app):
+    app.add_stylesheet('css/custom.css')
