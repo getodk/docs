@@ -10,7 +10,7 @@ test:
     - cd $HOME/docs && git lfs pull
 
   override:
-    - sphinx-build -b dirhtml $HOME/docs $HOME/docs/build
+    - sphinx-build -W -b dirhtml $HOME/docs $HOME/docs/build
 
   post:
     - cp -r $HOME/docs/build $CIRCLE_ARTIFACTS
