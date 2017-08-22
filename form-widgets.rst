@@ -23,7 +23,7 @@ String Input
 
 A simple text input.
 
-.. image:: /img/form-widgets/string-input.*
+.. image:: /img/form-widgets/string-inpu.*
   :alt: String input form widget, displayed in ODK Collect on an Android phone. The label is "What is your name?"
   :class: device-screen-vertical
 
