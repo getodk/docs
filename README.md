@@ -6,7 +6,7 @@ This repo is the source for ODK documentation.
 
 ## Current Status — Live! (But still new.)
 
-Our new documentation website is live at http://docs.opendatakit.otg
+Our new documentation website is live at https://docs.opendatakit.org
 
 This is still a new project, and most of the useful documentation is still at the [old docs on the ODK website](https://opendatakit.org/).
 
