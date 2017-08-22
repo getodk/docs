@@ -152,6 +152,41 @@ You will need to:
 - `Install git <https://git-scm.com/downloads>`_
 - `Start a GitHub account <https://github.com/>`_
 
+.. glfs
+
+GLFS
+""""""
+
+We use `Git Large File Storage (GLFS)  <https://git-lfs.github.com/>`_ to handle large binary files like images and videos. Once installed, you normally won't need to do anything else. GLFS is largely transparent when using git.
+
+- `Install GLFS <https://git-lfs.github.com/>`_
+
+GLFS tracks binary files as defined in the :file:`.gitattributes` file `in the repo <https://github.com/opendatakit/docs/blob/master/.gitattributes>`_. Most common binary file formats are already listed, but there might be others we haven't thought of yet.
+
+If you are adding binary files to the repo, and they are in formats not already tracked, **it is your responsibility to make sure they are tracked.** To make sure they are properly tracked, add the file type to GLFS. You can do this by editing :file:`.gitattributes` directly.
+
+.. code-block:: none
+
+  # file type section heading 
+  *.{extension-to-track} filter=lfs diff=lfs merge=lfs -text
+
+You can also use the command line.    
+
+.. code-block:: none
+
+  $ glfs track *.{file-extension}
+
+This will add a line to :file:`.gitattributes`.
+
+We would also appreciate it if you would keep that file organized by placing the new file format declaration in the appropriate section, or creating a new section as needed.
+
+.. warning:: 
+
+  Updates to :file:`.gitattributes` must be done in a commit before the commit that adds the new binary files.  
+
+  **We will not accept Pull Requests that include binary files untracked by GLFS.** 
+
+
 .. _android-tools:
 
 Android Tools
