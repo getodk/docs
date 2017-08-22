@@ -189,3 +189,13 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 
 def setup(app):
     app.add_stylesheet('css/custom.css')
+
+# Add custom roles
+
+rst_prolog="""
+.. role:: th
+    :class: th
+    
+.. role:: tc
+    :class: tc
+"""
