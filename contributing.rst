@@ -152,6 +152,54 @@ You will need to:
 - `Install git <https://git-scm.com/downloads>`_
 - `Start a GitHub account <https://github.com/>`_
 
+.. glfs
+
+GLFS
+""""""
+
+We use `Git Large File Storage (GLFS)  <https://git-lfs.github.com/>`_ to handle large binary files like images and videos. Once installed, you normally won't need to do anything else.
+
+- `Install GLFS <https://git-lfs.github.com/>`_
+
+Currently, GLFS tracks the following file formats:
+
+- *.png 
+- *.jpeg
+- *.jpg 
+- *.bmp 
+- *.gif 
+- *.psd 
+- *.xlsx
+- *.xls 
+- *.mp4 
+- *.mp3 
+- *.mpeg
+- *.wav 
+- *.mov 
+- *.doc 
+- *.docx
+- *.pdf 
+- *.tiff 
+
+Additionally, all files in the :file:`_static/vid` and :file:`img` directories are tracked.
+
+If you are adding binary files to the repo, and they are in formats not already tracked, **it is your responsibility to make sure they are tracked.** To make sure they are properly tracked, add the file type to GLFS.
+
+  .. code-block:: none
+
+    glfs track *.{file-extension}
+
+Once you have done that, please update the list above as well. This needs to be done **before** you commit the binary file. 
+
+.. warning:: 
+
+  Running the :command:`git lfs track` must be done in a commit before the commit that adds the new binary files.  
+
+  **We will not accept Pull Requests that include binary files untracked by GLFS.** 
+
+  
+
+
 .. _android-tools:
 
 Android Tools
