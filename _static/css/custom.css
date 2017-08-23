@@ -8,8 +8,12 @@ pre {
     font-size: 14px;
 }
 
-table {
+table, .th, .tc {
     font-family: Calibri, Arial, Helvetica, sans;
+}
+
+.th {
+    font-weight: bold;
 }
 
 caption {
