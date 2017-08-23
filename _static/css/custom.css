@@ -4,8 +4,9 @@
     font-family: Georgia, "Times New Roman", serif;
 }  
 
-pre {
+div.highlight pre, pre {
     font-size: 14px;
+    padding: 14px;
 }
 
 table, .th, .tc {
