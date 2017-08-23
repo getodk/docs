@@ -13,6 +13,7 @@ table {
 }
 
 caption {
+    padding-top: 0 !important;
     text-align: left !important;
     font-style: normal !important;
 }
