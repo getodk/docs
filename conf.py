@@ -77,7 +77,7 @@ language = None
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = 'default'
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
@@ -91,7 +91,7 @@ todo_include_todos = True
 html_theme = "sphinx_rtd_theme"
 
 # Add logo stuff
-html_logo = '_static/img/odk-logo.png'
+html_logo = '_static/img/odk-logo-wide.png'
 html_theme_options = {
     'logo_only': True,
     'display_version': False,
