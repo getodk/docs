@@ -204,7 +204,7 @@ def setup(app):
     app.add_stylesheet('css/custom.css')
     
 
-# Add custom roles
+# At top of every document
 
 rst_prolog="""
 .. role:: th
@@ -212,4 +212,16 @@ rst_prolog="""
     
 .. role:: tc
     :class: tc
+"""
+
+# At bottom of every document
+
+rst_epilog = """
+
+-----
+
+If you find a problem with this documentation, please `file an issue <https://github.com/opendatakit/docs/issues>`_. 
+
+You are also encouraged to `fork our Github repo <https://github.com/opendatakit/docs/>`_ and :doc:`become a contributor <contributing>`.
+
 """
