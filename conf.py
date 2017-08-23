@@ -98,10 +98,7 @@ html_theme_options = {
 }
 html_title = "Open Data Kit Docs"
 
-
-
-
-
+html_favicon = "_static/img/odk-favicon.ico"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
