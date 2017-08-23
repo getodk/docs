@@ -90,6 +90,19 @@ todo_include_todos = True
 #
 html_theme = "sphinx_rtd_theme"
 
+# Add logo stuff
+html_logo = '_static/img/odk-logo.png'
+html_theme_options = {
+    'logo_only': True,
+    'display_version': False,
+}
+html_title = "Open Data Kit Docs"
+
+
+
+
+
+
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
