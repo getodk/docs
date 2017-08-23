@@ -29,3 +29,7 @@ caption .headerlink::after {
     font-size: 75%;
 }
 
+.rst-content img, .rst-content video {
+    max-height: 85vh !important;
+    width: auto !important;
+}
