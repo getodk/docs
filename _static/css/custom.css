@@ -1,0 +1,41 @@
+/* Custom CSS for ODK Docs */
+
+.document {
+    font-family: Georgia, "Times New Roman", serif;
+}  
+
+div.highlight pre, pre {
+    font-size: 14px;
+    padding: 14px;
+}
+
+table, .th, .tc {
+    font-family: Calibri, Arial, Helvetica, sans;
+}
+
+.th {
+    font-weight: bold;
+}
+
+caption {
+    padding-top: 0 !important;
+    text-align: left !important;
+    font-style: normal !important;
+}
+
+
+caption .headerlink {
+    visibility: hidden;    
+}
+
+caption .headerlink::after {
+    content: "\f0c1";
+    font-family: FontAwesome;
+    visibility: visible;
+    font-size: 75%;
+}
+
+.rst-content img, .rst-content video {
+    max-height: 85vh !important;
+    width: auto !important;
+}
