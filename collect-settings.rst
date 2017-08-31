@@ -1,7 +1,7 @@
 Collect Settings and Security
 ================================
 
-Settings are accessible from the :guiselect:`⋮` menu.
+Settings are accessible from the :guilabel:`⋮` menu.
 
 .. _general-settings:
 
@@ -36,7 +36,7 @@ Mapping
 
 Map setting are included on the :menuselection:`User Interface` settings page.
 
-- :guilabel:`Mapping SDK` sets the app used for :ref:`geopoint`, :ref:`geoshape`, and :ref:`geotrace` :docs:`form-widgets`. Options are Google Maps (default) and OpenStreetMap.
+- :guilabel:`Mapping SDK` sets the app used for :ref:`geopoint`, :ref:`geoshape`, and :ref:`geotrace` :doc:`form-widgets`. Options are Google Maps (default) and OpenStreetMap.
 - :guilabel:`Basemap` sets the specific map used when opening the mapping app. 
 
 .. _form-management-settings:
