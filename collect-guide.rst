@@ -222,3 +222,17 @@ If you are connected to :ref:`an ODK Aggregate server <connecting-to-aggregate>`
 For local form management, use `ODK Briefcase <https://opendatakit.org/use/briefcase/>`_ to pull :formstate:`finalized` form instances to your local computer.
 
 :formstate:`Sent` forms are no longer editable, but they remain viewable until deleted. Select :guilabel:` 
+
+.. note:: 
+
+  You can copy form instances from the device using :command:`adb`, however this will not update the state of the form to :formstate:`Sent`.
+
+.. _deleting-forms:
+
+Deleting Forms
+===============
+
+You can delete :formstate:`Saved`, :formstate:`Finalized`, :formstate:`Sent`, and :formstate:`Blank` forms by selecting :guilabel:`Delete Saved Form` on the app home screen.
+
+You can also delete form instances directly with :command:`adb`. They are stored in :file:`sdcard/odk/instances`, with a directory for each instances.
+
