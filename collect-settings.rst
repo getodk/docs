@@ -122,4 +122,10 @@ You can also import settings from a QR code saved to the device, by selecting :g
 .. warning:: 
 
   The QR code used for settings import contains the admin and server passwords *in plain text*. To remove them from the code, :gesture:`tap` the warning on the QR code screen.
-   
+
+.. _user-access-control-settings:
+
+User Access Control Settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This section allows the admin to hide menu items and settings from the user.
