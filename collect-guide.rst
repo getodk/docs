@@ -166,6 +166,7 @@ Once you have at least one form :ref:`loaded into ODK Collect <loading-forms-int
 - Select :guilabel:`Fill Blank Form` from the app home screen.
 - Select the form you would like to fill out from the form list.
 - Typically, you will :gesture:`Swipe Left` to advance forward through the question, and :gesture:`Swipe Right` to backup.
+  - You can switch from :gesture:`Swipe` navigation to Forward/Backward buttons in :menuselection:`⋮ -> General Settings -> User Interface`
   - Some questions will :ref:`auto-advance <autoadvance-widget>` after being answered.
   - `Required questions <http://xlsform.org/#required>`_ will not allow you to advance unless answered.
 - To **remove a response**, :gesture:`Long Press` on the :term:`question label`. 
