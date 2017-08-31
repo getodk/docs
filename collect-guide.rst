@@ -1,5 +1,5 @@
 ******************************
-Collect Guide
+ODK Collect
 ******************************
 
 :dfn:`ODK Collect` is an open source Android app that replaces paper forms used in survey-based data gathering. 
