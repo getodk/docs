@@ -24,7 +24,7 @@ Installing Collect
 .. _install-collect-from-google-play:
 
 Install from Google Play Store
-------------------------
+---------------------------------
 
 **Recommended**
 
@@ -86,7 +86,7 @@ See :ref:`installing-aggregate` to setup your ODK Aggregate server.
 
 .. _connecting-to-google:
 
-Connecrting to a Googe Drive Account
+Connecting to a Googe Drive Account
 --------------------------------------
 
 - Open the app's main menu (:guilabel:`⋮`)  and then select :menuselection:`General Settings`.
@@ -99,7 +99,7 @@ Connecrting to a Googe Drive Account
 Connecting to another server app
 -----------------------------------
 
-Any server application that implements the `OpenRosa API <https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaAPI>` can be connected to, using the :ref:`connecting-to-aggregate` instructions. Choose :menuselect:`ODK Aggregate` as the server type.
+Any server application that implements the `OpenRosa API <https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaAPI>` can be connected to, using the :ref:`connecting-to-aggregate` instructions. Choose :menuselection:`ODK Aggregate` as the server type.
 
 .. warning::
 
@@ -114,4 +114,45 @@ Any server application that implements the `OpenRosa API <https://bitbucket.org/
 
 Loading Blank Forms
 ====================
+
+A :dfn:`blank form` is a `.xml` file contaning a form definition consistent with the `XForm specification <https://opendatakit.github.io/xforms-spec/>`_. Blank forms can be created using `ODK Build <https://build.opendatakit.org/>`_ or `XLSForm <https://opendatakit.org/use/xlsform/>`_.
+
+In order to complete out forms with survey participants, you must first load blank forms into the Collect App.
+
+.. _in-app-get-blank-forms:
+
+Loading Forms from ODK Aggregate Server or Google Drive 
+------------------------------------------------------------
+
+If you have :ref:`connected ODK Collect to a server <connecting-to-server>` or :ref:`Google Drive <connecting-to-google>`, use :guilabel:`Get blank forms` on the app home screen to browse available forms and download them to your device.
+
+.. note::
+
+  Before downloading blank forms from Aggregate or Google Driveto Collect, those forms have to be uploaded. 
+
+  .. link to Aggregate guide, once there is one
+
+.. _loading-forms-directly:
+
+Loading forms directly
+------------------------
+
+You can load forms directly from a computer to your device via USB, using `Android Developer Bridge <https://developer.android.com/studio/command-line/adb.html>`_.
+
+.. code-block:: none
+
+  $ adb push path/to/form.xml /sdcard/odk/forms/form.xml
+
+You can also download forms to  your device via a web browser, and move them to the :file:`odk/forms/` directory, using the device's file manager (:menuselection:`Settings -> Storage & USB -> Explore`).
+
+Loading form media
+~~~~~~~~~~~~~~~~~~~~~
+
+If a form :ref:`includes images or other media <including-images-as-choices>`, those files have to be loaded to the device along with the form.
+
+Media files should be placed in a folder labeled :file:`{form-name}-media`. 
+
+- When using ODK Aggregate, the form upload prompt includes instructions to upload the :file:`-media` folder. The files are downloaded automatically when :ref:`fetching forms from Aggregate <in-app-get-blank-forms>`.
+- When using Google Drive, the :file:`-media` folder should be uploaded to the same location as the form.
+- If :ref:`loading forms directly to your device <loading-forms-directly>`, the :file:`-media` folder needs to be placed in the :file:`sdcard/odk/forms` directory, alongside the form itself.
 
