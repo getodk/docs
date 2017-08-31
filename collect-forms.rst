@@ -40,7 +40,7 @@ You can also download forms to  your device via a web browser, and move them to 
 Loading form media
 ~~~~~~~~~~~~~~~~~~~~~
 
-If a form :ref:`includes images or other media <including-images-as-choices>`, those files have to be loaded to the device along with the form.
+If a form :ref:`includes images or other media <image-options>`, those files have to be loaded to the device along with the form.
 
 Media files should be placed in a folder labeled :file:`{form-name}-media`. 
 
@@ -80,14 +80,14 @@ Name the form
 
 The last form screen provides a default name for the form (defined by the form designer). You can rename it. This name only applies to that particular instance of a completed form (not to the blank form).
 
-The Form Name identifies the form for :ref:`later viewing <viewing-completed-forms>` and :ref:`uploading to a server <uploading-completed-forms>`. For this reason, a meaningful name may be important to you. 
+The Form Name identifies the form in lists throughout the app. For this reason, a meaningful name may be important to you. 
 
 .. _finalize-form:
 
 Mark the form as *Finalized*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Only :formstate:`Finalized` forms can be :ref:`uploaded to a server <uploading-completed-forms>`. 
+Only :formstate:`Finalized` forms can be :ref:`uploaded to a server <uploading-forms>`. 
 
 .. _editing-saved-forms:
 
@@ -105,6 +105,7 @@ This will reopen the form, which are then free to edit.
 
   - You may freely edit :formstate:`Saved` and :formstate:`Finalized` forms.
 
+.. _uploading-forms:
 
 Uploading Finalized Forms
 ===========================
