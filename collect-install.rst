@@ -34,7 +34,7 @@ You can also download from the web and install manually.
   - On older devices, the APK will automatically install after you approve the security settings.
   - On newer devices, you must go to the download list, rename the file to restore the .apk extension (the extension will have been renamed to .man during the download process), then click on it to install it.
 
-- You can also `download the ODK Collect APK <https://opendatakit.org/downloads/download-category/collect/`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDriod <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/`_.
+- You can also `download the ODK Collect APK <https://opendatakit.org/downloads/download-category/collect/>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDriod <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
 
 --------
 
