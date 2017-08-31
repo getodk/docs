@@ -95,3 +95,31 @@ Usage Data
 When enabled, ODK Collect sends usage and error data back to the ODK development team, which helps us improve the application.
 
 Usage data is anonymized.
+
+.. _admin-settings:
+
+Admin Settings
+-----------------
+
+.. _admin-security:
+
+Admin Security
+~~~~~~~~~~~~~~~~
+
+Admin settings can be **password protected**. If you set an :guilabel:`Admin Password` in the Admin settings screen, you will need to re-enter that password to access Admin settings in the future.
+
+Admin settings allow you to :ref:`restrict which General Settings are seen by users <user-access-control-settings>`. To access those settings as an Admin (and see all of them), :gesture:`tap` :guilabel:`General Settings` from the Admin settings page.
+
+.. _import-export-settings:
+
+Import/Export settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:guilabel:`Import/Export Settings` lets you copy settings quickly from one device to another, using a QR code. The QR image presented contains all of your current General and Admin settings, including admin and server passwords. When scanned by the ODK Collect app with another device, these settings are imported.
+
+You can also import settings from a QR code saved to the device, by selecting :guilabel:`Select Code from SD Card`
+
+.. warning:: 
+
+  The QR code used for settings import contains the admin and server passwords *in plain text*. To remove them from the code, :gesture:`tap` the warning on the QR code screen.
+   
