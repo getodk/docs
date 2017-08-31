@@ -209,6 +209,12 @@ rst_prolog="""
     
 .. role:: tc
     :class: tc
+
+.. role:: formstate
+    :class: formstate
+    
+.. role:: gesture
+    :class: gesture
 """
 
 # At bottom of every document
