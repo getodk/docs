@@ -34,7 +34,7 @@ You can also download from the web and install manually.
   - On older devices, the APK will automatically install after you approve the security settings.
   - On newer devices, you must go to the download list, rename the file to restore the .apk extension (the extension will have been renamed to .man during the download process), then click on it to install it.
 
-- You can also `download the ODK Collect APK <https://opendatakit.org/downloads/download-category/collect/>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDriod <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
+- You can also `download the ODK Collect APK <https://opendatakit.org/downloads/download-category/collect/>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
 
 --------
 
@@ -52,10 +52,10 @@ You can also download from the web and install manually.
 Connecting to a Server
 ================================
 
-When you first install Collect, it connects to the `ODK Aggregate Demo server <https://opendatakit.appspot.com/Aggregate.html>.` You can try out the app by :ref:`downloading blank example forms <in-app-get-blank-forms>`, filling them out, and :ref:`uploading completed forms <uploading-forms>` back to the demo server.
+When you first install Collect, it connects to the `ODK Aggregate Demo server <https://opendatakit.appspot.com/Aggregate.html>`_. You can try out the app by :ref:`downloading blank example forms <in-app-get-blank-forms>`, :ref:`filling them out <fill-blank-forms>`, and :ref:`uploading completed forms <uploading-forms>` back to the demo server.
 
 .. tip::
-  Managing forms from an ODK Aggregate server or Google Drive is typical. However, there are other ways to use ODK Collect. You can also :ref:`upload blank forms directly to your device <loading-forms-directly>`, `download completed forms directly with adb <https://developer.android.com/studio/command-line/adb.html>`_, or :`use ODK Briefcase <https://opendatakit.org/use/briefcase/>`_.
+  Managing forms from an ODK Aggregate server or Google Drive is typical. However, there are other ways to use ODK Collect. You can also :ref:`upload blank forms directly to your device <loading-forms-directly>`, `download completed forms directly with adb <https://developer.android.com/studio/command-line/adb.html>`_, or `use ODK Briefcase <https://opendatakit.org/use/briefcase/>`_.
 
 
 .. _connecting-to-aggregate:
@@ -89,7 +89,7 @@ Any server application that implements the `OpenRosa API <https://bitbucket.org/
 
 .. warning::
 
-   In :menuselection:`Server Settings`, there is currently a :guilabel:`Type` option of :menuselection:`Other`. It is unlikely you will need this option, since any server application will need to implement the same API as ODK Aggregate. 
+  In :menuselection:`Server Settings`, there is currently a :guilabel:`Type` option of :menuselection:`Other`. It is unlikely you will need this option, since any server application will need to implement the same API as ODK Aggregate. 
 
   If you think you might need to connect to a non-Aggregate server application, and are having trouble, we encourage you to visit our `Support Forum <https://forum.opendatakit.org/c/support>`.
 
