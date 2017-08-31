@@ -28,19 +28,39 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
 
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+  :maxdepth: 1 
+  :hidden:
 
-   getting-started
-   form-widgets
-   javarosa
+  getting-started
+
+.. toctree::
+  :hidden:
+  :maxdepth: 2
+  :caption: Collect
+
+  collect-guide
+  collect-install
+  collect-forms
+  
+.. toctree::
+  :hidden:
+  :maxdepth: 2
+  :caption: Form Building
+
+  form-widgets
+  javarosa
+  
+.. toctree::
+  :hidden:
+  :maxdepth: 2
+  :caption: Contributing 
+
    contributing
-   glossary
+  
+.. toctree::
+  :hidden:
+  :maxdepth: 2
+  :caption: Reference
+  
+  glossary
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
