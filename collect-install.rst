@@ -52,10 +52,10 @@ You can also download from the web and install manually.
 Connecting to a Server
 ================================
 
-When you first install Collect, it connects to the `ODK Aggregate Demo server <https://opendatakit.appspot.com/Aggregate.html>.` You can try out the app by :ref:`downloading blank example forms`, filling them out, and :ref:`uploading completed forms` back to the demo server.
+When you first install Collect, it connects to the `ODK Aggregate Demo server <https://opendatakit.appspot.com/Aggregate.html>.` You can try out the app by :ref:`downloading blank example forms <in-app-get-blank-forms>`, filling them out, and :ref:`uploading completed forms <uploading-forms>` back to the demo server.
 
 .. tip::
-  Managing forms from an ODK Aggeegate server or Google Drive is typical. However, there are other ways to use ODK Collect. You can also :ref:`upload forms directly to your device`, :ref:`download completed forms directly`, or :ref:`use ODK Briefcase`.
+  Managing forms from an ODK Aggregate server or Google Drive is typical. However, there are other ways to use ODK Collect. You can also :ref:`upload blank forms directly to your device <loading-forms-directly>`, `download completed forms directly with adb <https://developer.android.com/studio/command-line/adb.html>`_, or :`use ODK Briefcase <https://opendatakit.org/use/briefcase/>`_.
 
 
 .. _connecting-to-aggregate:
