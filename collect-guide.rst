@@ -189,10 +189,27 @@ The last form screen provides a default name for the form (defined by the form d
 
 The Form Name identifies the form for :ref:`later viewing <viewing-completed-forms>` and :ref:`uploading to a server <uploading-completed-forms>`. For this reason, a meaningful name may be important to you. 
 
-.. _finalize-form
+.. _finalize-form:
 
 Mark the form as *Finalized*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Only :formstate:`Finalized` forms can be :ref:`uploaded to a server <uploading-completed-forms>`. 
+
+.. _editing-saved-forms:
+
+Editing *Saved* forms
+----------------------
+
+- From the app home screen, select :guilabel:`Edit Saved Form`. 
+- From the form list, select a form by name.
+
+This will reopen the form, which are then free to edit.
+
+.. note:: 
+
+  - :formstate:`Sent` forms will not appear in the :guilabel:`Edit Saved Forms` list.
+
+  - You may freely edit :formstate:`Saved` and :formstate:`Finalized` forms.
+
 
