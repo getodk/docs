@@ -58,3 +58,40 @@ Form Management Settings
 .. rubric:: Form import
 
 - :guilabel:`Import saved forms as finalized` When enabled, forms added directly to the :file:`instances/` directory are automatically set to :formstate:`Finalized`.
+
+.. _id-settings:
+
+User and Device Identity Settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _form-metadata-settings:
+
+Form Metadata Settings
+""""""""""""""""""""""""
+
+:menuselection:`User and Device Identity -> Form Metadata` sets identity values which are added to the metadata of forms completed on the device.
+
+.. rubric:: User-defined
+
+You can edit the following:
+
+- :guilabel:`Username`
+- :guilabel:`Phone number`
+- :guilabel:`Email address`
+
+.. rubric:: Device-defined
+
+You cannot edit these:
+
+- Device ID
+- Subscriber ID
+- SIM serial number
+
+.. _usage-data-setting:
+
+Usage Data
+"""""""""""""
+
+When enabled, ODK Collect sends usage and error data back to the ODK development team, which helps us improve the application.
+
+Usage data is anonymized.
