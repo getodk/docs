@@ -9,7 +9,7 @@ Loading Blank Forms
 
 A :dfn:`blank form` is a `.xml` file contaning a form definition consistent with the `XForm specification <https://opendatakit.github.io/xforms-spec/>`_. Blank forms can be created using `ODK Build <https://build.opendatakit.org/>`_ or `XLSForm <https://opendatakit.org/use/xlsform/>`_.
 
-In order to complete out forms with survey participants, you must first load blank forms into the Collect App.
+In order to fill out forms with survey participants, you must first load blank forms into the Collect App.
 
 .. _in-app-get-blank-forms:
 
@@ -20,7 +20,7 @@ If you have :ref:`connected ODK Collect to a server <connecting-to-server>` or :
 
 .. note::
 
-  Before downloading blank forms from Aggregate or Google Driveto Collect, those forms have to be uploaded. 
+  Before downloading blank forms from Aggregate or Google Drive to Collect, those forms have to be uploaded to those locations.
 
   .. link to Aggregate guide, once there is one
 
@@ -58,9 +58,11 @@ Once you have at least one form :ref:`loaded into ODK Collect <loading-forms-int
 - Select :guilabel:`Fill Blank Form` from the app home screen.
 - Select the form you would like to fill out from the form list.
 - Typically, you will :gesture:`Swipe Left` to advance forward through the question, and :gesture:`Swipe Right` to backup.
+
   - You can switch from :gesture:`Swipe` navigation to Forward/Backward buttons in :menuselection:`⋮ -> General Settings -> User Interface`
   - Some questions will :ref:`auto-advance <autoadvance-widget>` after being answered.
   - `Required questions <http://xlsform.org/#required>`_ will not allow you to advance unless answered.
+
 - To **remove a response**, :gesture:`Long Press` on the :term:`question label`. 
 
 
@@ -97,7 +99,7 @@ Editing *Saved* forms
 - From the app home screen, select :guilabel:`Edit Saved Form`. 
 - From the form list, select a form by name.
 
-This will reopen the form, which are then free to edit.
+This will reopen the form, which you are then free to edit.
 
 .. note:: 
 
