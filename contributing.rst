@@ -23,7 +23,7 @@ ODK Documentation follows (as much as possible) the `Docs like Code <http://www.
 - Documentation is built from source to published output using a static site generator. (We use `Sphinx <http://sphinx-doc.org>`_.)
 - Documentation builds are run, tested, and deployed automatically using continuous integration tools. (We use `CircleCI <https://circleci.com/>`_.)
 
-`The Docs as Code approach has many advantages <http://hackwrite.com/posts/docs-as-code/>`_, but we are aware that this approach can feel difficult for writers who aren't used to dealing with the command line. It can also be difficult for coders who are used to this approach, but who typically use simpler authoring tools (like `Jekyll <http://jekyllrb.com>`_ and `Markdown <https://guides.github.com/features/mastering-markdown/>`_).
+`The 'Docs as Code' approach has many advantages <http://hackwrite.com/posts/docs-as-code/>`_, but we are aware that this approach can feel difficult for writers who aren't used to dealing with the command line. It can also be difficult for coders who are used to this approach, but who typically use simpler authoring tools (like `Jekyll <http://jekyllrb.com>`_ and `Markdown <https://guides.github.com/features/mastering-markdown/>`_).
 
 This section of the Contributor Guide walks through our authoring and publishing workflow and toolchain, to make it as easy possible for you to contribute.
 
@@ -35,23 +35,23 @@ Overview of Workflow
 When you first get started you'll need to:
 
 - Fork to your own Github Account
-- Clone down to your local machine
+- Clone it down to your local machine
 - Install dependencies
 
 And then each time you work you will:
 
-- Branch for a specific task
+- Make a branch for a specific task
 - Make commits as you go
 - Build and view the docs locally
   - Correct any errors and commit
 - Push your branch to your Github fork
 - Issue a pull request against the current working branch of the main repo (usually ``master``)
 - Pull latest back to your local machine from the main repo
-- Repeat.
+- Repeat
 
 .. _docs-dev-setup:
 
-Setting up Your Environment
+Setting up your Environment
 ----------------------------
 
 .. _docs-terminal:
@@ -102,7 +102,7 @@ Check to see if you have virtualenv installed:
 
   $ virtualenv
 
-If you get a help message with information about commands, you have it. If you don't have it, you'll get a ``command not found`` message.
+If you get a help message with information about commands, you have it. If you don't have it, you'll get a ``command not found`` message. 
 
 If you don't have it, the easiest way to get it is to use pip:
 
@@ -110,7 +110,13 @@ If you don't have it, the easiest way to get it is to use pip:
 
   $ pip install virtualenv
 
-Then, create an ODK "master" directory. This will contain your virtualenv as a subdirectory and the docs repo as a subdirectory.
+Also, since we are using Python 3 here, you might encounter version error while using Virtual environment. In that case, you can easily install virtualenv which is Python 3 compatible by running:
+
+.. code-block:: rest
+
+  $ sudo apt-get install python3-venv
+
+Then, create an ODK "master" directory. This will contain your virtualenv and the docs repo as subdirectories.
 
 .. code-block:: rest
 
@@ -242,7 +248,7 @@ Open your terminal, and `cd` to your preferred directory. Then `git clone` the r
 
 .. code-block:: rest
 
-  $ git clone https://github.com/your-gh-username/docs.git
+  $ git clone https://github.com/your-github-username/docs.git
   .
   .
   .
@@ -263,7 +269,16 @@ When you clone down a repo, the local copy calls your GitHub copy ``origin``. Yo
 
 .. code-block:: rest
 
-  $ git remote add upstream https://github.com/opendatakit/docs.git
+  $ git remote add --track upstream https://github.com/opendatakit/docs.git
+
+Run ``git remote -v`` to check the status, you should see something like this:
+
+.. code-block:: rest
+
+  $ origin https://github.com/your-github-username/docs.git (fetch)
+  $ origin https://github.com/your-github-username/docs.git (push)
+  $ upstream https://github.com/opendatakit/docs.git (fetch)
+  $ upstream https://github.com/opendatakit/docs.git (push)
 
 .. _install-doc-dependencies:
 
@@ -307,7 +322,7 @@ Make a New Branch
 
 Choose a specific, deliverable task to work on. This should be an `active issue from our issue tracker on GitHub <https://github.com/opendatakit/docs/issues>`_.
 
-Create a new branch in which you will work on this specific issue. The branch name should briefly describe what you are doing. For example, the original author of this contributor guide worked in a branch he called ``contributing``.
+Create a new branch in which you will work on this specific issue. The branch name should briefly describe what you are doing. For example, the original author of this contributor guide worked in a branch he called ``contributing``. Also, make sure that all the branches are derived from the ``master`` branch to avoid intermixing of commits.
 
 .. code-block:: rest
 
@@ -386,7 +401,14 @@ Push Your Branch
 
 Once your work on the issue is completed, push your branch to your GitHub repo.
 
-The first time you do this on any branch, you'll need to specify the branch name:
+First you need to add the files you've changed or created additionally, and write a relevant commit message describing the changes.
+
+.. code-block:: rest
+
+  $ git add my_changed_files
+  $ git commit -m "A small but relevant commit message"
+
+Then it's time to push the changes. The first time you do this on any branch, you'll need to specify the branch name:
 
 .. code-block:: rest
 
@@ -397,6 +419,13 @@ After that, you can just:
 .. code-block:: rest
 
   $ git push
+
+If you're asked to change your commit message, you can amend the message and commit:
+
+.. code-block:: rest
+
+  $ git commit --amend
+  $ git push -f origin branch-name
 
 (Note: ``origin`` is the local label for your GitHub fork.)
 
