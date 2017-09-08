@@ -1,92 +1,95 @@
+********
 Glossary
-==============
+********
 
 .. ODK-compatible tools
 
 .. glossary:: :sorted:
 
-  participant
+participant
+***********
 
-    A person being interviewed by a user of :term:`Collect`. (Also sometimes called a "subject".)
+* A person being interviewed by a user of :term:`Collect`. (Also sometimes called a "subject")
 
-  enumerator
+enumerator
+**********
 
-    A person who conducts a survey.
+* A person who conducts a survey.
 
-  Collect
+Collect
+*******
 
-    Part of ODK.
+* Part of ODK.
+* An Android mobile app that replaces paper-based forms.
 
-    An Android mobile app that replaces paper-based forms.
+Aggregate
+*********
 
-  Aggregate
+* Part of ODK.
+* A server-side data storage and analysis tool.
 
-    Part of ODK.
+Build
+*****
 
-    A server-side data storage and analysis tool.
+* Part of ODK.
+* An application lets you design forms with a drag-and-drop form interface.
+  - `Use ODK Build online <https://build.opendatakit.org/>`_.
+  - `Download a desktop version of ODK Build <https://opendatakit.org/downloads/download-category/build/>`_.
 
-  Build
+XLSForm
+*******
 
-    Part of ODK.
+* Part of ODK.
+* A tool for building forms with Microsoft Excel.
 
-    An application lets you design forms with a drag-and-drop form interface.
+Validate
+********
 
-    - `Use ODK Build online <https://build.opendatakit.org/>`_.
-    - `Download a desktop version of ODK Build <https://opendatakit.org/downloads/download-category/build/>`_.
+* Part of ODK.
+* A tool for validating forms against the :term:`ODK XForms specification <ODK XForm>`.
 
-  XLSForm
+Form Uploader
+*************
 
-    Part of ODK.
+* Part of ODK.
+* A tool for uploading blank forms and their media files to ODK Aggregate.
 
-    A tool for building forms with Microsoft Excel.
+Briefcase
+*********
 
-  Validate
+* Part of ODK.
+* A tool for packaging and transfering forms and data between instances of Collect and Aggregate.
 
-    Part of ODK.
+ODK XForm
+*********
 
-    A tool for validating forms against the :term:`ODK XForms specification <ODK XForm>`.
+* Part of ODK.
+* A specification defining valid XML-based forms for ODK. It is a subset of the `W3C XForms 1.0 specification <https://www.w3.org/TR/xforms/>`_
+     `View ODK XForms Specification <https://opendatakit.github.io/xforms-spec/>`_
 
-  Form Uploader
+ODK JavaRosa
+************
 
-    Part of ODK.
-
-    A tool for uploading blank forms and their media files to ODK Aggregate.
-
-  Briefcase
-
-    Part of ODK.
-
-    A tool for packaging and transfering forms and data between instances of Collect and Aggregate.
-
-  ODK XForm
-
-    Part of ODK.
-
-    A specification defining valid XML-based forms for ODK. It is a subset of the `W3C XForms 1.0 specification <https://www.w3.org/TR/xforms/>`_
-
-    `View ODK XForms Specification <https://opendatakit.github.io/xforms-spec/>`_
-
-  ODK JavaRosa
-
-    Part of ODK.
-
-    A Java library that renders ODK Compliant XForms.
-
+* Part of ODK.
+* A Java library that renders ODK Compliant XForms.
     `ODK JavaRosa source on Github <https://github.com/opendatakit/javarosa>`_
 
-  form
+form
+****
 
-    A defined set of questions and answer choices displayed by an application that can render forms written in the XForm standard.
+* A defined set of questions and answer choices displayed by an application that can render forms written in the XForm standard.
 
-  widget
+widget
+******
 
-    A single question, answer set, and attendent GUI elements, as rendered in an XForm compliant app such as :term:`Collect`.
+* A single question, answer set, and attendent GUI elements, as rendered in an XForm compliant app such as :term:`Collect`.
 
-  hint
+hint
+****
+    
+* Additional help text on a single question, displayed after the label.
 
-    Additional help text on a single question, displayed after the label.
-
-  question label
-  question text
+question text
+*************
   
-    The main part body of a form question or widget. In an :term:`XLSForm`, the contents of :th:`label`.
+* The main part body of a form question or widget. In an :term:`XLSForm`, the contents of :th:`label`.
