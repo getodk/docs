@@ -7,7 +7,7 @@ Form Management in Collect
 Loading Blank Forms
 ====================
 
-A :dfn:`blank form` is a `.xml` file contaning a form definition consistent with the `XForm specification <https://opendatakit.github.io/xforms-spec/>`_. Blank forms can be created using `ODK Build <https://build.opendatakit.org/>`_ or `XLSForm <https://opendatakit.org/use/xlsform/>`_.
+A :dfn:`blank form` is a `.xml` file containing a form definition consistent with the `XForm specification <https://opendatakit.github.io/xforms-spec/>`_. Blank forms can be created using `ODK Build <https://build.opendatakit.org/>`_ or `XLSForm <https://opendatakit.org/use/xlsform/>`_.
 
 In order to fill out forms with survey participants, you must first load blank forms into the Collect App.
 
@@ -42,7 +42,7 @@ Loading form media
 
 If a form :ref:`includes images or other media <image-options>`, those files have to be loaded to the device along with the form.
 
-Media files should be placed in a folder labeled :file:`{form-name}-media`. 
+Media files should be placed in a folder labelled :file:`{form-name}-media`. 
 
 - When using ODK Aggregate, the form upload prompt includes instructions to upload the :file:`-media` folder. The files are downloaded automatically when :ref:`fetching forms from Aggregate <in-app-get-blank-forms>`.
 - When using Google Drive, the :file:`-media` folder should be uploaded to the same location as the form.
