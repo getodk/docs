@@ -110,12 +110,6 @@ If you don't have it, the easiest way to get it is to use pip:
 
   $ pip install virtualenv
 
-Also, since we are using Python 3 here, you might encounter version error while using Virtual environment. In that case, you can easily install virtualenv which is Python 3 compatible by running:
-
-.. code-block:: rest
-
-  $ sudo apt-get install python3-venv
-
 Then, create an ODK "master" directory. This will contain your virtualenv and the docs repo as subdirectories.
 
 .. code-block:: rest
@@ -399,9 +393,7 @@ It's a good idea to delete the ``build`` directory before each rebuild.
 Push Your Branch
 ~~~~~~~~~~~~~~~~~~
 
-Once your work on the issue is completed, push your branch to your GitHub repo.
-
-First you need to add the files you've changed or created additionally, and write a relevant commit message describing the changes.
+Once your work on the issue is completed, add the files you've changed or created additionally, and write a relevant commit message describing the changes.
 
 .. code-block:: rest
 
@@ -420,12 +412,6 @@ After that, you can just:
 
   $ git push
 
-If you're asked to change your commit message, you can amend the message and commit:
-
-.. code-block:: rest
-
-  $ git commit --amend
-  $ git push -f origin branch-name
 
 (Note: ``origin`` is the local label for your GitHub fork.)
 
