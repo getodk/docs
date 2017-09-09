@@ -29,28 +29,14 @@ This requires:
 
   ODK is a very flexible set of tools, and orgnizations will find their own best practices for adopting it.
 
-.. _installing-collect:
+.. _install-collect:
 
-Installing Collect
+Install Collect
 ---------------------
 
-- **Recommended:** `The ODK Collect App is available in the Google Play store <https://play.google.com/store/apps/details?id=org.odk.collect.android&hl=en>`_.
-- You can also download from the web and install manually:
+The easiest way to install the ODK Collect App is `get it from the Google Play store <https://play.google.com/store/apps/details?id=org.odk.collect.android&hl=en>`_.
 
-  - From your device's application drawer, choose :guilabel:`Settings`, then :guilabel:`Applications`. Make sure Unknown sources is checked.
-  - Return to the application drawer and choose :guilabel:`Browser`. Navigate to `https://opendatakit.org/downloads/download-category/collect/ <https://opendatakit.org/downloads/download-category/collect/>`_ and download the ODK Collect APK.
-  - In the download window, you will see ODK_Collect_vN.N.N.apk. - Select it to download the file.
-
-    - On older devices, the APK will automatically install after you approve the security settings.
-    - On newer devices, you must go to the download list, rename the file to restore the .apk extension (the extension will have been renamed to .man during the download process), then click on it to install it.
-
-.. note::
-
-  On older Android devices (4.0 and earlier) ODK Collect required an external SD Card. This is no longer an issue because Android devices have internal storage. Virtually all current Android devices will run ODK Collect.
-
-.. tip::
-
-  You can also `install ODK Collect on an Android emulator <https://github.com/opendatakit/opendatakit/wiki/DevEnv-Setup>`_. However, this can be slow and buggy, and is not recommended.
+For other installation options, see :ref:`installing-collect` in the :doc:`collect-guide`.
 
 .. _installing-aggregate:
 

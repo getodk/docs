@@ -39,3 +39,11 @@ caption .headerlink::after {
     max-height: 85vh !important;
     width: auto !important;
 }
+
+.formstate {
+    font-style: italics;
+}
+
+.gesture {
+    font-style: italics;
+}

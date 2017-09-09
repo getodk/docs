@@ -85,3 +85,8 @@ Glossary
   hint
 
     Additional help text on a single question, displayed after the label.
+
+  question label
+  question text
+  
+    The main part body of a form question or widget. In an :term:`XLSForm`, the contents of :th:`label`.
