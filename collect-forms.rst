@@ -122,7 +122,7 @@ For local form management, use `ODK Briefcase <https://opendatakit.org/use/brief
 
 .. note:: 
 
-  You can copy form instances from the device using :command:`adb`, however this will not update the state of the form to :formstate:`Sent`.
+  - You can copy form instances from the device using :command:`adb`, however this will not update the state of the form to :formstate:`Sent`.
 
 .. _deleting-forms:
 
@@ -133,9 +133,7 @@ You can delete :formstate:`Saved`, :formstate:`Finalized`, :formstate:`Sent`, an
 
 You can also delete form instances directly with :command:`adb`. They are stored in :file:`sdcard/odk/instances`, with a directory for each instance. 
 
-.. note::
-
-  - Sent Forms can be reviewed but not edited.
+.. note:: 
 
   - Deleted Forms are listed, but cannot be viewed. They are indicated with the crossed-out eye icon.
 
