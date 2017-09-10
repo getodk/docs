@@ -35,7 +35,7 @@ You can load forms directly from a computer to your device via USB, using `Andro
 
   $ adb push path/to/form.xml /sdcard/odk/forms/form.xml
 
-You can also download forms to  your device via a web browser, and move them to the :file:`odk/forms/` directory, using the device's file manager (:menuselection:`Settings -> Storage & USB -> Explore`).
+You can also download forms to your device via a web browser, and move them to the :file:`odk/forms/` directory, using the device's file manager (:menuselection:`Settings -> Storage & USB -> Explore`).
 
 Loading form media
 ~~~~~~~~~~~~~~~~~~~~~
@@ -73,7 +73,7 @@ For a (mostly) complete guide to form question appearance, see :doc:`form-widget
 Completing a Form
 -------------------
 
-Once you have reached the end of a form, you will have the opportunity to Save and Exit the form. At this point, you may also:
+Once you have reached the end of a form, you will have the opportunity to *Save* and *Exit* the form. At this point, you may also:
 
 .. _name-form-instance:
 
@@ -82,7 +82,7 @@ Name the form
 
 The last form screen provides a default name for the form (defined by the form designer). You can rename it. This name only applies to that particular instance of a completed form (not to the blank form).
 
-The Form Name identifies the form in lists throughout the app. For this reason, a meaningful name may be important to you. 
+The Form Name identifies the form in lists throughout the app. For this reason, a meaningful name may be important to you. After you've saved the name, the form automatically moves to the :guilabel:`Send Finalized Form` section, from where you can send it.
 
 .. _finalize-form:
 
@@ -105,7 +105,7 @@ This will reopen the form, which you are then free to edit.
 
   - :formstate:`Sent` forms will not appear in the :guilabel:`Edit Saved Forms` list.
 
-  - :formstate:`Sent` forms, even when deleted will be available for viewing in :guilabel:`View Sent Forms` list.
+  - :formstate:`Sent` forms, will be available for viewing in :guilabel:`View Sent Forms` list, along with the details which cannot be edited.
 
   - You may freely edit :formstate:`Saved` and :formstate:`Finalized` forms. 
 
@@ -118,7 +118,7 @@ If you are connected to :ref:`an ODK Aggregate server <connecting-to-aggregate>`
 
 For local form management, use `ODK Briefcase <https://opendatakit.org/use/briefcase/>`_ to pull :formstate:`finalized` form instances to your local computer.
 
-:formstate:`Sent` forms are no longer editable, but they remain viewable until they are deleted. However, you can always see a list of sent forms which have been deleted.
+:formstate:`Sent` forms are no longer editable, but they remain viewable until they are deleted. 
 
 .. note:: 
 
@@ -129,13 +129,13 @@ For local form management, use `ODK Briefcase <https://opendatakit.org/use/brief
 Deleting Forms
 ===============
 
-You can delete :formstate:`Saved`, :formstate:`Finalized`, :formstate:`Sent`, and :formstate:`Blank` forms by selecting :guilabel:`Delete Saved Form` on the app home screen. 
+You can delete :formstate:`Saved`, :formstate:`Finalized`, :formstate:`Sent`, and :formstate:`Blank` forms by selecting :guilabel:`Delete Saved Form` on the app home screen. This page contains two tabs, :guilabel:`Saved Forms`, which contains the list of all form instances that are saved, finalized or sent, and :guilabel:`Blank Forms`.
 
-You can also delete form instances directly with :command:`adb`. They are stored in :file:`sdcard/odk/instances`, with a directory for each instances. 
+You can also delete form instances directly with :command:`adb`. They are stored in :file:`sdcard/odk/instances`, with a directory for each instance. 
 
 .. note::
 
-  - In the case of filled out forms that are not deleted, the data can be reviewed but not edited.
+  - Sent Forms can be reviewed but not edited.
 
-  - In the case of filled out forms that have been deleted, the crossed out eye icon is displayed and the row is not clickable.
+  - Deleted Forms are listed, but cannot be viewed. They are indicated with the crossed-out eye icon.
 
