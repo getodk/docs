@@ -47,3 +47,10 @@ caption .headerlink::after {
 .gesture {
     font-style: italics;
 }
+
+.footerText {
+    color: black;
+    font-family: Georgia,'Times New Roman',serif;
+    font-size: 16px;
+    font-weight: 300;
+}
