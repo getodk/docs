@@ -118,7 +118,7 @@ If you are connected to :ref:`an ODK Aggregate server <connecting-to-aggregate>`
 
 For local form management, use `ODK Briefcase <https://opendatakit.org/use/briefcase/>`_ to pull :formstate:`finalized` form instances to your local computer.
 
-:formstate:`Sent` forms are no longer editable, but they remain viewable, even after they are deleted. This feature is mainly for for enumerators and/or data managers to confirm which filled out forms were sent even if they were deleted.
+:formstate:`Sent` forms are no longer editable, but they remain viewable until they are deleted. However, you can always see a list of sent forms which have been deleted.
 
 .. note:: 
 
