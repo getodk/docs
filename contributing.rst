@@ -1142,6 +1142,14 @@ Images and Figures
 
 Image files should be put in the :file:`/img/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
 
+You must perform lossless compression on the source images. Following tools can be used to optimize the images: 
+
+- **ImageOptim** is a tool that allows us to optimize the images. It is not format specfic which means it can optimize both jpeg as well as png images. You can download it `from here <https://imageoptim.com/howto.html>`_ . After launching ImageOptim.app, dragging and dropping images into its window gives you an in-place optimized file. 
+
+- **Pngout** is another option for optimizing png images. Installation and usage instructions can be found `here <http://docs.ewww.io/article/13-installing-pngout/>`_ .
+
+- **Mozjpeg** can be used to optimize jpeg images. Installation and related information can be found on `this link <https://nystudio107.com/blog/installing-mozjpeg-on-ubuntu-16-04-forge/>`_ . 
+
 To place an image in a document, use the ``image`` directive.
 
 .. code-block:: rst
