@@ -56,7 +56,7 @@ Glossary
 
     Part of ODK.
 
-    A tool for packaging and transfering forms and data between instances of Collect and Aggregate.
+    A tool for packaging and transferring forms and data between instances of Collect and Aggregate.
 
   ODK XForm
 
@@ -80,7 +80,7 @@ Glossary
 
   widget
 
-    A single question, answer set, and attendent GUI elements, as rendered in an XForm compliant app such as :term:`Collect`.
+    A single question, answer set, and attendant GUI elements, as rendered in an XForm compliant app such as :term:`Collect`.
 
   hint
 

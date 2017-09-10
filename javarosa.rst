@@ -4,14 +4,14 @@ ODK JavaRosa
 .. This introduction was copied from the readme, but not confirmed to be correct
 
 JavaRosa is a Java library for rendering forms that are compliant
-with `ODK XForms spec <http://opendatakit.github.io/xforms-spec>`_. It is at the heart of many of
+with `ODK XForms spec <http://opendatakit.github.io/xforms-spec>`_. It is the heart of many of
 the ODK tools. ODK JavaRosa is a fork of `JavaRosa <https://bitbucket.org/javarosa/javarosa/wiki/Home>`_ 1.0
 that has been modified to NOT run on J2ME devices. The key differences are:
 
 * Regularly updated to ensure spec compliance
 * KoBo additional instance defn. and filter paths
-* remember all bind attributes and any additional attributes on ``<input>``, ``<select>``, ``<group>``, etc. statements
-* numerous enhancements and contributions from SurveyCTO and others
+* Remember all bind attributes and any additional attributes on ``<input>``, ``<select>``, ``<group>``, etc. statements
+* Numerous enhancements and contributions from SurveyCTO and others
 * J2ME sub-projects removed
 
 Architecture
