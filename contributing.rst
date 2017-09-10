@@ -18,7 +18,7 @@ Docs as Code
 
 ODK Documentation follows (as much as possible) the `Docs like Code <http://www.writethedocs.org/guide/docs-as-code/>`_ philosophy. This means:
 
-- Documention source files are written in a plaintext format. (We use `reStructuredText <http://docutils.sourceforge.net/rst.html>`_.)
+- Documentation source files are written in a plaintext format. (We use `reStructuredText <http://docutils.sourceforge.net/rst.html>`_.)
 - Documentation source files are kept under version control. (We use git and `Github <https://github.com/opendatakit/docs>`_.)
 - Documentation is built from source to published output using a static site generator. (We use `Sphinx <http://sphinx-doc.org>`_.)
 - Documentation builds are run, tested, and deployed automatically using continuous integration tools. (We use `CircleCI <https://circleci.com/>`_.)
@@ -303,7 +303,7 @@ Workflow Details
 Pull in Updates from Upstream
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You probably won't need to do this the first time, but you should always pull in any changes from the main repo before working.
+You probably won't need to do this the first time, but you should always pull in any changes from the main repository before working.
 
 .. code-block:: rest
 
