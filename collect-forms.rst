@@ -105,7 +105,9 @@ This will reopen the form, which you are then free to edit.
 
   - :formstate:`Sent` forms will not appear in the :guilabel:`Edit Saved Forms` list.
 
-  - You may freely edit :formstate:`Saved` and :formstate:`Finalized` forms.
+  - :formstate:`Sent` forms, even when deleted will be available for viewing in :guilabel:`View Sent Forms` list.
+
+  - You may freely edit :formstate:`Saved` and :formstate:`Finalized` forms. 
 
 .. _uploading-forms:
 
@@ -116,7 +118,7 @@ If you are connected to :ref:`an ODK Aggregate server <connecting-to-aggregate>`
 
 For local form management, use `ODK Briefcase <https://opendatakit.org/use/briefcase/>`_ to pull :formstate:`finalized` form instances to your local computer.
 
-:formstate:`Sent` forms are no longer editable, but they remain viewable until deleted. 
+:formstate:`Sent` forms are no longer editable, but they remain viewable, even after they are deleted. This feature is mainly for for enumerators and/or data managers to confirm which filled out forms were sent even if they were deleted.
 
 .. note:: 
 
@@ -127,6 +129,13 @@ For local form management, use `ODK Briefcase <https://opendatakit.org/use/brief
 Deleting Forms
 ===============
 
-You can delete :formstate:`Saved`, :formstate:`Finalized`, :formstate:`Sent`, and :formstate:`Blank` forms by selecting :guilabel:`Delete Saved Form` on the app home screen.
+You can delete :formstate:`Saved`, :formstate:`Finalized`, :formstate:`Sent`, and :formstate:`Blank` forms by selecting :guilabel:`Delete Saved Form` on the app home screen. 
 
-You can also delete form instances directly with :command:`adb`. They are stored in :file:`sdcard/odk/instances`, with a directory for each instances.
+You can also delete form instances directly with :command:`adb`. They are stored in :file:`sdcard/odk/instances`, with a directory for each instances. 
+
+.. note::
+
+  - In the case of filled out forms that are not deleted, the data can be reviewed but not edited.
+
+  - In the case of filled out forms that have been deleted, the crossed out eye icon is displayed and the row is not clickable.
+
