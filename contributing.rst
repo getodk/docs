@@ -1144,6 +1144,15 @@ Image files should be put in the :file:`/img/` directory in the source, and they
 
 To place an image in a document, use the ``image`` directive.
 
+You may want to perform lossless compression on the source images. Following tools can be used for the same : 
+
+- **ImageOptim** is one tool that allows us to do the same. You can download it `here <https://imageoptim.com/howto.html>`_ . After launching ImageOptim.app, drag'n'drop images into its window gives you an in-place optimized files. 
+
+- **Pngout** is another option for image optimizing of png images. Installation and usage instructions can be found `here <http://docs.ewww.io/article/13-installing-pngout/>`_ .
+
+- **Mozjpeg** is a good option for jpeg images. Installation and related information can be found `here <https://nystudio107.com/blog/installing-mozjpeg-on-ubuntu-16-04-forge/>`_ . 
+
+
 .. code-block:: rst
 
   .. image:: /img/{document-subdirectory}/{file}.*
