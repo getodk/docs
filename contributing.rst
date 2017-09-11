@@ -221,7 +221,7 @@ You can install the SDK Platform tools (including :command:`adb`) as a `standalo
 
 .. _docs-workflow-setup:
 
-Get Ready to Work
+Getting Ready to Work
 -----------------------
 
 .. _fork-the-docs:
@@ -621,7 +621,7 @@ In order to facilitate efficient :ref:`cross-referencing`, sections should be la
 
 The section label is a sluggified version of the section title.
 
-Section titles must be unique throughout the entire documentation set. Therefore, if you write a common title that might appear in more than one document (*Learn More* or *Get Started*, for example), you'll need to include additional words to make the label unique. The best way to do this is to add a meaningful work from the document title.
+Section titles must be unique throughout the entire documentation set. Therefore, if you write a common title that might appear in more than one document (*Learn More* or *Getting Started*, for example), you'll need to include additional words to make the label unique. The best way to do this is to add a meaningful work from the document title.
 
 .. code-block:: rest
 
@@ -1169,7 +1169,7 @@ Image File Names
 Image file names should:
 
 - be short yet descriptive
-- contain only lower case charecters
+- contain only lower case characters
 - have no spaces
 - use hyphens as the separator
 
