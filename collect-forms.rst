@@ -29,7 +29,7 @@ If you have :ref:`connected ODK Collect to a server <connecting-to-server>` or :
 Loading forms directly
 ------------------------
 
-You can load forms directly from a computer to your device via USB, using `Android Developer Bridge <https://developer.android.com/studio/command-line/adb.html>`_.
+You can load forms directly from a computer to your device via USB, using `Android Debug Bridge <https://developer.android.com/studio/command-line/adb.html>`_.
 
 .. code-block:: none
 
