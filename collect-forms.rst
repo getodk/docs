@@ -2,6 +2,16 @@
 Form Management in Collect
 *****************************
 
+This section explains how users can work with forms in Collect app. This includes loading blank forms from external servers or from local computer, filling them, saving and finalizing the contents, and lastly sending and deleted them. This document also explains how `adb <https://developer.android.com/studio/command-line/adb.html>`_, or Android Developer Bridge can be used as a command line tool to perform a variety of tasks. For the developers of ODK, the most common ones include pushing blank forms to SD Card, pulling the form database, deleting forms, making the **.apk** file from the source code, etc. To install **adb**, please follow the instructions given `here <https://android.gadgethacks.com/how-to/android-basics-install-adb-fastboot-mac-linux-windows-0164225/>`_.
+
+If you're already working on Android studio, you'll have **adb** already installed with it, but it requires specific configurations. To use adb with a device connected over USB, you must enable USB debugging in the device system settings, under Developer options. On Android 4.2 and higher, the Developer options screen is hidden by default. To make it visible, go to ``Settings``, then ``About phone`` and tap ``Build number`` seven times. Return to the previous screen to find Developer options at the bottom.
+
+.. note::
+
+  These forms reside in the :guilabel:`sdcard/odk` folder in the phone.
+
+These forms 
+
 .. _loading-forms-into-collect:
 
 Loading Blank Forms
@@ -29,7 +39,7 @@ If you have :ref:`connected ODK Collect to a server <connecting-to-server>` or :
 Loading forms directly
 ------------------------
 
-You can load forms directly from a computer to your device via USB, using `Android Developer Bridge <https://developer.android.com/studio/command-line/adb.html>`_.
+You can load forms directly from a computer to your device via USB, using the **adb** command:
 
 .. code-block:: none
 
@@ -131,9 +141,46 @@ Deleting Forms
 
 You can delete :formstate:`Saved`, :formstate:`Finalized`, :formstate:`Sent`, and :formstate:`Blank` forms by selecting :guilabel:`Delete Saved Form` on the app home screen. This page contains two tabs, :guilabel:`Saved Forms`, which contains the list of all form instances that are saved, finalized or sent, and :guilabel:`Blank Forms`.
 
-You can also delete form instances directly with :command:`adb`. They are stored in :file:`sdcard/odk/instances`, with a directory for each instance. 
+You can also delete form instances directly with :command:`adb`. They are stored in :file:`sdcard/odk/instances`, with a directory for each instance. You can do so by using the command:
+
+.. code-block:: none
+
+  $ adb shell rm -d /sdcard/odk/forms/my_form.xml
+
+
 
 .. note:: 
 
   - Deleted Forms are listed, but cannot be viewed. They are indicated with the crossed-out eye icon.
+
+.. _downloading-forms:
+
+Downloading forms to your computer
+===================================
+
+You can download a specified form from the emulator/device to your computer using the **adb** tool. Developers might also need to check the entries in the database from the computer. In such case we can simple pull the database file from the SD card and use any database visualizer to see the data. For getting a form, simply run:
+
+.. code-block:: none
+
+  $ adb pull /sdcard/odk/forms/my_form.xml
+
+.. _saving-screenshot:
+
+Document writers need to take screenshots of the running app to help the readers visualize and verify everything. While using an emulator or a device, this might take some time. For this purpose, **adb** also provides a feature call **screencap** which can take a screenshot and upload it to your computer. For taking a screenshot, just run:
+
+.. code-block:: none
+
+  $ adb shell screencap /sdcard/screen.png
+
+Here, the image will be stored as ``screen.png`` which can be downloaded to the computer by running:
+
+.. code-block:: none
+
+  $ adb pull /sdcard/screen.png
+
+
+
+
+
+
 
