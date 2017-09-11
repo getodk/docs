@@ -2,7 +2,7 @@
 File Structure of Collect
 *************************
 
-This document describes the file structure of the `Collect app. For complete understanding, it is advisable to follow this document while viewing the `Collect app's repo <https://github.com/opendatakit/collect/>`_. 
+This document describes the file structure of the Collect app. For complete understanding, it is advisable to follow this document while viewing the `Collect app's repo <https://github.com/opendatakit/collect/>`_. 
 
 An android project can consist of multiple app modules with their own configurations and settings. In this project, we just have one one app module, named :file:`collect_app`. This module further contains other subdirectories which are described below:
 
