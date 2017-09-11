@@ -102,7 +102,7 @@ Check to see if you have virtualenv installed:
 
   $ virtualenv
 
-If you get a help message with information about commands, you have it. If you don't have it, you'll get a ``command not found`` message. 
+If you get a help message with information about commands, you have it. If you don't have it, you'll get a ``command not found`` message.
 
 If you don't have it, the easiest way to get it is to use pip:
 
@@ -125,7 +125,7 @@ Now, inside that odk directory, create a python3 virtualenv.
 
 The last part, ``odkenv`` can be whatever name you'd like to call it.
 
-Activate your virtural environement with:
+Activate your virtural environment with:
 
 .. code-block:: rest
 
@@ -167,10 +167,10 @@ If you are adding binary files to the repo, and they are in formats not already 
 
 .. code-block:: none
 
-  # file type section heading 
+  # file type section heading
   *.{extension-to-track} filter=lfs diff=lfs merge=lfs -text
 
-You can also use the command line.    
+You can also use the command line.
 
 .. code-block:: none
 
@@ -180,11 +180,11 @@ This will add a line to :file:`.gitattributes`.
 
 We would also appreciate it if you would keep that file organized by placing the new file format declaration in the appropriate section, or creating a new section as needed.
 
-.. warning:: 
+.. warning::
 
-  Updates to :file:`.gitattributes` must be done in a commit before the commit that adds the new binary files.  
+  Updates to :file:`.gitattributes` must be done in a commit before the commit that adds the new binary files.
 
-  **We will not accept Pull Requests that include binary files untracked by GLFS.** 
+  **We will not accept Pull Requests that include binary files untracked by GLFS.**
 
 
 .. _android-tools:
@@ -619,7 +619,7 @@ In order to facilitate efficient :ref:`cross-referencing`, sections should be la
 
   Lorem ipsum content of section blah blah.
 
-The section label should usually be a sluggified version of the section title.
+The section label is a sluggified version of the section title.
 
 Section titles must be unique throughout the entire documentation set. Therefore, if you write a common title that might appear in more than one document (*Learn More* or *Getting Started*, for example), you'll need to include additional words to make the label unique. The best way to do this is to add a meaningful work from the document title.
 
@@ -632,7 +632,7 @@ Section titles must be unique throughout the entire documentation set. Therefore
 
   .. _aggregate-getting-started:
 
-  Getting Started
+  Get Started
   -----------------
 
 .. _basic-markup:
@@ -1174,12 +1174,12 @@ Image File Names
 """"""""""""""""""
 
 
-Image file names should be:
+Image file names should:
 
-- as short as possible while still being descriptive
-- all lower case
-- no spaces
-- hyphen separators
+- be short yet descriptive
+- contain only lower case characters
+- have no spaces
+- use hyphens as the separator
 
 Good image file names:
 
@@ -1219,11 +1219,12 @@ Now, at the command line, from the root directory of the :file:`odk-docs` repo:
 
   python ss.py {document-name}/{image-name}
 
-- ``{document-name}`` is the filename (without extension) where the you will use the image
-- ``{image-name}`` is the name (without extension) you are giving the image
-
-  - be sure you are not overwriting an existing image
+- ``{document-name}`` is the filename (without extension) where the image will be used.
+- ``{image-name}`` is the name (without extension) given to the image.
   - follow the :ref:`image-names` guidelines
+
+.. warning::
+  Be sure you to not overwrite an existing image.
 
 .. tip::
   If you have a problem running ss.py, check to make sure your :ref:`Python 3 virtual environment <docs-venv>` is activated.
