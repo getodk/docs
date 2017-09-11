@@ -1168,10 +1168,10 @@ Image File Names
 
 Image file names should:
 
-- be as short as possible while still being descriptive
-- be all lower case
+- be short yet descriptive
+- contain only lower case charecters
 - have no spaces
-- use hyphens as the separator.
+- use hyphens as the separator
 
 Good image file names:
 
