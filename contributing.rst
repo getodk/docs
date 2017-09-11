@@ -1215,6 +1215,9 @@ Now, at the command line, from the root directory of the :file:`odk-docs` repo:
 - ``{image-name}`` is the name (without extension) given to the image.
   - follow the :ref:`image-names` guidelines
 
+.. warning::
+  Be sure you to not overwrite an existing image.
+
 .. tip::
   If you have a problem running ss.py, check to make sure your :ref:`Python 3 virtual environment <docs-venv>` is activated.
 
