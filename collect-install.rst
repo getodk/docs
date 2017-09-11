@@ -24,7 +24,7 @@ You can also download from the web and install manually.
 
 - From your device's :guilabel:`Settings`, choose :menuselection:`Security`.
 
-  - Make sure Unknown sources is checked.
+  - Make sure *Unknown Sources* is checked.
   - (On older versions of Android, this setting is in :menuselection:`Applications` rather than :menuselection:`Security`
 
 - Open a web browser on your phone.
@@ -85,13 +85,13 @@ Connecting to a Googe Drive Account
 Connecting to another server app
 -----------------------------------
 
-Any server application that implements the `OpenRosa API <https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaAPI>` can be connected to, using the :ref:`connecting-to-aggregate` instructions. Choose :menuselection:`ODK Aggregate` as the server type.
+Any server application that implements the `OpenRosa API <https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaAPI>`_ can be connected to, using the :ref:`connecting-to-aggregate` instructions. Choose :menuselection:`ODK Aggregate` as the server type.
 
 .. warning::
 
   In :menuselection:`Server Settings`, there is currently a :guilabel:`Type` option of :menuselection:`Other`. It is unlikely you will need this option, since any server application will need to implement the same API as ODK Aggregate. 
 
-  If you think you might need to connect to a non-Aggregate server application, and are having trouble, we encourage you to visit our `Support Forum <https://forum.opendatakit.org/c/support>`.
+  If you think you might need to connect to a non-Aggregate server application, and are having trouble, we encourage you to visit our `Support Forum <https://forum.opendatakit.org/c/support>`_.
 
   The :menuselection:`Other` option will likely be deprecated in the future, and its use is not recommended.  
 
