@@ -619,7 +619,7 @@ In order to facilitate efficient :ref:`cross-referencing`, sections should be la
 
   Lorem ipsum content of section blah blah.
 
-The section label should usually be a sluggified version of the section title.
+The section label is a sluggified version of the section title.
 
 Section titles must be unique throughout the entire documentation set. Therefore, if you write a common title that might appear in more than one document (*Learn More* or *Getting Started*, for example), you'll need to include additional words to make the label unique. The best way to do this is to add a meaningful work from the document title.
 
