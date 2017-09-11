@@ -218,13 +218,54 @@ rst_prolog="""
 """
 
 # At bottom of every document
+prevar1 = """
 
-rst_epilog = """
-
------
-
-If you find a problem with this documentation, please `file an issue <https://github.com/opendatakit/docs/issues>`_. 
-
-You are also encouraged to `fork our Github repo <https://github.com/opendatakit/docs/>`_ and :doc:`become a contributor <contributing>`.
+If you find a problem with this documentation, please 
 
 """
+hyper1 = """
+
+file an issue
+
+"""
+link1 = """
+
+https://github.com/opendatakit/docs/issues
+
+"""
+prevar2 = """
+
+You are also encouraged to
+
+"""
+hyper2 = """
+
+fork our Github repo 
+
+"""
+link2 = """ 
+
+https://github.com/opendatakit/docs/
+
+"""
+prevar3 = """ 
+
+and 
+
+"""
+hyper3 = """
+
+become a contributor
+
+""" 
+link3 = """
+
+contributing.html
+
+"""
+html_context = {'prevar1' : prevar1 , 'prevar2' : prevar2 , 'prevar3' : prevar3 , 'hyper1' : hyper1 , 'hyper2' : hyper2 ,
+                'hyper3' : hyper3 , 'link1' : link1 , 'link2' : link2 , 'link3' : link3}
+
+
+
+
