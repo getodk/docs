@@ -1101,7 +1101,7 @@ Several roles are used when describing user interactions.
 Other Semantic Markup
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. rst:role:: abbr:
+.. rst:role:: abbr
 
   Marks up an abbreviation. If the role content contains a parenthesized explanation, it will be treated specially: it will be shown in a tool-tip in HTML.
 
