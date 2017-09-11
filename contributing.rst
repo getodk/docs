@@ -1211,10 +1211,8 @@ Now, at the command line, from the root directory of the :file:`odk-docs` repo:
 
   python ss.py {document-name}/{image-name}
 
-- ``{document-name}`` is the filename (without extension) where the you will use the image
-- ``{image-name}`` is the name (without extension) you are giving the image
-
-  - be sure you are not overwriting an existing image
+- ``{document-name}`` is the filename (without extension) where the image will be used.
+- ``{image-name}`` is the name (without extension) given to the image.
   - follow the :ref:`image-names` guidelines
 
 .. tip::
