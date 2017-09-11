@@ -125,11 +125,9 @@ Now, inside that odk directory, create a python3 virtualenv.
 
 The last part, ``odkenv`` can be whatever name you'd like to call it.
 
-<<<<<<< HEAD
-Activate your virtural environment with:
-=======
+
 Activate your virtual environment with:
->>>>>>> b39d87b... minor fix
+
 
 .. code-block:: rest
 
