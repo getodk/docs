@@ -18,7 +18,7 @@ Docs as Code
 
 ODK Documentation follows (as much as possible) the `Docs like Code <http://www.writethedocs.org/guide/docs-as-code/>`_ philosophy. This means:
 
-- Documentation source files are written in a plaintext format. (We use `reStructuredText <http://docutils.sourceforge.net/rst.html>`_.)
+- Documentation source files are written in a plain text format. (We use `reStructuredText <http://docutils.sourceforge.net/rst.html>`_.)
 - Documentation source files are kept under version control. (We use git and `Github <https://github.com/opendatakit/docs>`_.)
 - Documentation is built from source to published output using a static site generator. (We use `Sphinx <http://sphinx-doc.org>`_.)
 - Documentation builds are run, tested, and deployed automatically using continuous integration tools. (We use `CircleCI <https://circleci.com/>`_.)
@@ -69,7 +69,7 @@ Terminal (Command Line)
 
   Contributions to this guide with explanations and help for Windows users is greatly appreciated.
 
-Contributing to the docs requires interacting with git, Github, Python, and Sphinx, which requires use of the Terminal. This is common among Linux users. Mac users unfamiliar with the Terminal can learn more from `this tutorial <https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855>`_.
+Contributing to the docs requires interacting with git, Github, Python, and Sphinx, which requires the use of the Terminal. This is common among Linux users. Mac users unfamiliar with the Terminal can learn more from `this tutorial <https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855>`_.
 
 .. _docs-python:
 
@@ -125,7 +125,7 @@ Now, inside that odk directory, create a python3 virtualenv.
 
 The last part, ``odkenv`` can be whatever name you'd like to call it.
 
-Activate your virtural environment with:
+Activate your virtual environment with:
 
 .. code-block:: rest
 
@@ -370,7 +370,7 @@ When you run the build, you may see error or warning messages. These indicate po
 Error and warning messages include a file name and line number for tracking them down. Try to resolve all your errors and warnings before issuing a pull request. However, if this is not possible, please add a note in your pull request. **If you submit a pull request that will create build errors, you must include a note mentioning what those errors are, and why they are ok to leave in.**
 
 
-To view the documentation in your web browser, you can use Python's built-in webserver.
+To view the documentation in your web browser, you can use Python's built-in web server.
 
 .. code-block:: rest
 
@@ -436,7 +436,7 @@ You must include a PR comment. Things to include:
 - A note justifying any changes to requirements.txt
 - A note about any difficulties, questions, or concerns that came up while working on this issue.
 
-Complete the pull request. The maintainers will review it as quickly as possible. If there's any problems the maintainers can't deal with, they will reach out to you.
+Complete the pull request. The maintainers will review it as quickly as possible. If there are any problems the maintainers can't deal with, they will reach out to you.
 
 .. _keep-working-the-docs:
 
@@ -500,7 +500,7 @@ Documentation Files
 
 Sphinx document files have the ``.rst`` extension. File names should be all lowercase and use hyphens (not underscores or spaces) as word separators.
 
-Normally, the title of the page should be the first line of the file, followed by the a line of equal-signs.
+Normally, the title of the page should be the first line of the file, followed by the line of equal-signs.
 
 .. code-block:: rst
 
@@ -529,7 +529,7 @@ See :ref:`sections-titles` for more details.
 Table of Contents
 --------------------
 
-The ``index.rst`` file serves as a front-page to the documentation, and contains the table of contents. The table of contents controls the documentation navigation menu. To add a new document to the table of contents, add the file new (without the ``.rst`` extension) to the list of file names in ``index.rst``.
+The ``index.rst`` file serves as a front-page to the documentation and contains the table of contents. The table of contents controls the documentation navigation menu. To add a new document to the table of contents, add the file new (without the ``.rst`` extension) to the list of file names in ``index.rst``.
 
 
 .. _sections-titles:
@@ -606,7 +606,7 @@ In order to facilitate efficient :ref:`cross-referencing`, sections should be la
 - section label
 
   - lowercase
-  - hypen separators
+  - hyphen separators
 
 - a single colon
 
@@ -772,7 +772,7 @@ Numbered lists ( ``<ol>`` ):
    a. nested lists are numbered separately
    b. nested lists need a blank line before and after
 
-#. Can have automatic number with the ``#`` character.
+#. Can have an automatic number with the ``#`` character.
 
 .. _dl:
 
@@ -782,7 +782,7 @@ Definition Lists
 .. code-block:: rest
 
   Definition list ( ``<dl>`` )
-    a list with several term-defition pairs
+    a list with several term-definition pairs
 
   Terms
     should not be indented
@@ -814,7 +814,7 @@ Paragraph-level Markup
 
 .. code-block:: rest
 
-  Paragraphs are separarated by blank lines. Line breaks in the source code do not create line breaks in the output.
+  Paragraphs are separated by blank lines. Line breaks in the source code do not create line breaks in the output.
 
   This means that you *could*, in theory,
   include a lot of arbitrary line breaks
@@ -827,7 +827,7 @@ Paragraph-level Markup
 
   There is **no reason** to put a limit on line length in source files for documentation, since this is prose and not code. Therefore, please do not put arbitrary line breaks in your files.
 
-Paragraphs are separarated by blank lines. Line breaks in the source code do not create line breaks in the output.
+Paragraphs are separated by blank lines. Line breaks in the source code do not create line breaks in the output.
 
 This means that you *could*, in theory,
 include a lot of arbitrary line breaks
@@ -975,7 +975,7 @@ Most of the Sphinx-specific and ODK-specific markup will use one or both of thes
 Cross referencing
 ~~~~~~~~~~~~~~~~~~~~
 
-Cross referencing is linking internally, from one place in the documentation to another. This is **not** done using the :ref:`hyperlinks` syntax, but with one of several roles:
+Cross referencing is linking internally, from one place in the documentation to another. This is **not** done using the :ref:`hyperlinks` syntax, but with one of the several roles:
 
 .. code-block:: none
 
@@ -1007,7 +1007,7 @@ Cross referencing is linking internally, from one place in the documentation to 
   - *target* is the term, in the glossary
   - *title* is the term itself
 
-**To recap:** If you do not include an explicit ``<target>``, the text inside the role will be understood as the target, and the anchor text for the link in the output will be title of the target.
+**To recap:** If you do not include an explicit ``<target>``, the text inside the role will be understood as the target, and the anchor text for the link in the output will be the title of the target.
 
 For example:
 
@@ -1066,7 +1066,7 @@ Several roles are used when describing user interactions.
 
     Select :menuselection:`Help` from menu.
 
-  When wrting about multi-level menus, use a single ``:menuselection:`` role, and separate menu choices with ``-->``.
+  When writing about multi-level menus, use a single ``:menuselection:`` role, and separate menu choices with ``-->``.
 
   .. code-block:: rst
 
@@ -1078,7 +1078,7 @@ Several roles are used when describing user interactions.
 
   .. code-block:: rst
 
-    To stop the localserver, type :kbd:`CTRL C`.
+    To stop the local server, type :kbd:`CTRL C`.
 
 .. rst:role:: command
 
@@ -1144,7 +1144,7 @@ Image files should be put in the :file:`/img/` directory in the source, and they
 
 You must perform lossless compression on the source images. Following tools can be used to optimize the images: 
 
-- **ImageOptim** is a tool that allows us to optimize the images. It is not format specfic which means it can optimize both jpeg as well as png images. You can download it `from here <https://imageoptim.com/howto.html>`_ . After launching ImageOptim.app, dragging and dropping images into its window gives you an in-place optimized file. 
+- **ImageOptim** is a tool that allows us to optimize the images. It is not format specific which means it can optimize both jpeg as well as png images. You can download it `from here <https://imageoptim.com/howto.html>`_ . After launching ImageOptim.app, dragging and dropping images into its window gives you an in-place optimized file. 
 
 - **Pngout** is another option for optimizing png images. Installation and usage instructions can be found `here <http://docs.ewww.io/article/13-installing-pngout/>`_ .
 
