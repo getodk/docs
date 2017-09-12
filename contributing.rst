@@ -1229,6 +1229,36 @@ Now, at the command line, from the root directory of the :file:`odk-docs` repo:
 .. tip::
   If you have a problem running ss.py, check to make sure your :ref:`Python 3 virtual environment <docs-venv>` is activated.
 
+.. _videos:
+
+Videos
+~~~~~~~~
+
+Like the image files, video files should also be put in the :file:`/vid/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
+
+The length of the videos must be less than a minute.
+
+To add a video in a document, you can do the following:
+
+
+.. code-block:: rst
+  
+  .. raw:: html
+
+  <video controls muted style="max-width:100%">
+    <source src="/{document-subdirectory}/{file}.*>
+  </video>
+
+**ADB or Android Debug Bridge** can be used to capture a screen recording from collect. This can be done by entering 
+
+.. code-block:: none
+
+  $ adb shell screenrecord /sdcard/example.mp4
+
+On pressing the enter key the video recording starts. Recording stops automatically after 3 minutes but since video length has to be less than a minute, to stop the recording in between simply press :command:`Ctrl+C`.
+
+The video file is saved in your Android device to a file at :file:`/sdcard/example.mp4` file.
+
 .. _code-samples:
 
 Code Samples
