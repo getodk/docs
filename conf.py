@@ -266,6 +266,6 @@ contributing.html
 html_context = {'prevar1' : prevar1 , 'prevar2' : prevar2 , 'prevar3' : prevar3 , 'hyper1' : hyper1 , 'hyper2' : hyper2 ,
                 'hyper3' : hyper3 , 'link1' : link1 , 'link2' : link2 , 'link3' : link3}
 
-
+html_extra_path = ['vid']
 
 
