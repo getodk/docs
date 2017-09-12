@@ -99,6 +99,17 @@ Here, the image will be stored as ``screen.png`` which can be downloaded to the 
 
   You can also use Collect's program to get a screenshot by referring to the instructions given in the `Contribution Guide <https://docs.opendatakit.org/contributing/#screenshots-from-odk-collect>`_.
 
+.. _recording-video-with-adb:
 
+Recording a video
+~~~~~~~~~~~~~~~~~~~
+
+**adb** can be used to record video on device's screen. This can be done by running:
+
+.. code-block:: none
+
+  $ adb shell screenrecord /sdcard/example.mp4
+
+This command will start recording your device’s screen using the default settings and save the resulting video to a file at :guilabel:`/sdcard/example.mp4` file on your device.
 
 
