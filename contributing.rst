@@ -18,12 +18,12 @@ Docs as Code
 
 ODK Documentation follows (as much as possible) the `Docs like Code <http://www.writethedocs.org/guide/docs-as-code/>`_ philosophy. This means:
 
-- Documention source files are written in a plaintext format. (We use `reStructuredText <http://docutils.sourceforge.net/rst.html>`_.)
+- Documentation source files are written in a plain text format. (We use `reStructuredText <http://docutils.sourceforge.net/rst.html>`_.)
 - Documentation source files are kept under version control. (We use git and `Github <https://github.com/opendatakit/docs>`_.)
 - Documentation is built from source to published output using a static site generator. (We use `Sphinx <http://sphinx-doc.org>`_.)
 - Documentation builds are run, tested, and deployed automatically using continuous integration tools. (We use `CircleCI <https://circleci.com/>`_.)
 
-`The Docs as Code approach has many advantages <http://hackwrite.com/posts/docs-as-code/>`_, but we are aware that this approach can feel difficult for writers who aren't used to dealing with the command line. It can also be difficult for coders who are used to this approach, but who typically use simpler authoring tools (like `Jekyll <http://jekyllrb.com>`_ and `Markdown <https://guides.github.com/features/mastering-markdown/>`_).
+`The 'Docs as Code' approach has many advantages <http://hackwrite.com/posts/docs-as-code/>`_, but we are aware that this approach can feel difficult for writers who aren't used to dealing with the command line. It can also be difficult for coders who are used to this approach, but who typically use simpler authoring tools (like `Jekyll <http://jekyllrb.com>`_ and `Markdown <https://guides.github.com/features/mastering-markdown/>`_).
 
 This section of the Contributor Guide walks through our authoring and publishing workflow and toolchain, to make it as easy possible for you to contribute.
 
@@ -35,23 +35,23 @@ Overview of Workflow
 When you first get started you'll need to:
 
 - Fork to your own Github Account
-- Clone down to your local machine
+- Clone it down to your local machine
 - Install dependencies
 
 And then each time you work you will:
 
-- Branch for a specific task
+- Make a branch for a specific task
 - Make commits as you go
 - Build and view the docs locally
   - Correct any errors and commit
 - Push your branch to your Github fork
 - Issue a pull request against the current working branch of the main repo (usually ``master``)
 - Pull latest back to your local machine from the main repo
-- Repeat.
+- Repeat
 
 .. _docs-dev-setup:
 
-Setting up Your Environment
+Setting up your Environment
 ----------------------------
 
 .. _docs-terminal:
@@ -69,7 +69,7 @@ Terminal (Command Line)
 
   Contributions to this guide with explanations and help for Windows users is greatly appreciated.
 
-Contributing to the docs requires interacting with git, Github, Python, and Sphinx, which requires use of the Terminal. This is common among Linux users. Mac users unfamiliar with the Terminal can learn more from `this tutorial <https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855>`_.
+Contributing to the docs requires interacting with git, Github, Python, and Sphinx, which requires the use of the Terminal. This is common among Linux users. Mac users unfamiliar with the Terminal can learn more from `this tutorial <https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855>`_.
 
 .. _docs-python:
 
@@ -110,7 +110,7 @@ If you don't have it, the easiest way to get it is to use pip:
 
   $ pip install virtualenv
 
-Then, create an ODK "master" directory. This will contain your virtualenv as a subdirectory and the docs repo as a subdirectory.
+Then, create an ODK "master" directory. This will contain your virtualenv and the docs repo as subdirectories.
 
 .. code-block:: rest
 
@@ -125,7 +125,7 @@ Now, inside that odk directory, create a python3 virtualenv.
 
 The last part, ``odkenv`` can be whatever name you'd like to call it.
 
-Activate your virtural environement with:
+Activate your virtual environment with:
 
 .. code-block:: rest
 
@@ -167,10 +167,10 @@ If you are adding binary files to the repo, and they are in formats not already 
 
 .. code-block:: none
 
-  # file type section heading 
+  # file type section heading
   *.{extension-to-track} filter=lfs diff=lfs merge=lfs -text
 
-You can also use the command line.    
+You can also use the command line.
 
 .. code-block:: none
 
@@ -180,11 +180,11 @@ This will add a line to :file:`.gitattributes`.
 
 We would also appreciate it if you would keep that file organized by placing the new file format declaration in the appropriate section, or creating a new section as needed.
 
-.. warning:: 
+.. warning::
 
-  Updates to :file:`.gitattributes` must be done in a commit before the commit that adds the new binary files.  
+  Updates to :file:`.gitattributes` must be done in a commit before the commit that adds the new binary files.
 
-  **We will not accept Pull Requests that include binary files untracked by GLFS.** 
+  **We will not accept Pull Requests that include binary files untracked by GLFS.**
 
 
 .. _android-tools:
@@ -242,7 +242,7 @@ Open your terminal, and `cd` to your preferred directory. Then `git clone` the r
 
 .. code-block:: rest
 
-  $ git clone https://github.com/your-gh-username/docs.git
+  $ git clone https://github.com/your-github-username/docs.git
   .
   .
   .
@@ -263,7 +263,16 @@ When you clone down a repo, the local copy calls your GitHub copy ``origin``. Yo
 
 .. code-block:: rest
 
-  $ git remote add upstream https://github.com/opendatakit/docs.git
+  $ git remote add --track upstream https://github.com/opendatakit/docs.git
+
+Run ``git remote -v`` to check the status, you should see something like this:
+
+.. code-block:: rest
+
+  $ origin https://github.com/your-github-username/docs.git (fetch)
+  $ origin https://github.com/your-github-username/docs.git (push)
+  $ upstream https://github.com/opendatakit/docs.git (fetch)
+  $ upstream https://github.com/opendatakit/docs.git (push)
 
 .. _install-doc-dependencies:
 
@@ -294,7 +303,7 @@ Workflow Details
 Pull in Updates from Upstream
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You probably won't need to do this the first time, but you should always pull in any changes from the main repo before working.
+You probably won't need to do this the first time, but you should always pull in any changes from the main repository before working.
 
 .. code-block:: rest
 
@@ -307,7 +316,7 @@ Make a New Branch
 
 Choose a specific, deliverable task to work on. This should be an `active issue from our issue tracker on GitHub <https://github.com/opendatakit/docs/issues>`_.
 
-Create a new branch in which you will work on this specific issue. The branch name should briefly describe what you are doing. For example, the original author of this contributor guide worked in a branch he called ``contributing``.
+Create a new branch in which you will work on this specific issue. The branch name should briefly describe what you are doing. For example, the original author of this contributor guide worked in a branch he called ``contributing``. Also, make sure that all the branches are derived from the ``master`` branch to avoid intermixing of commits.
 
 .. code-block:: rest
 
@@ -361,7 +370,7 @@ When you run the build, you may see error or warning messages. These indicate po
 Error and warning messages include a file name and line number for tracking them down. Try to resolve all your errors and warnings before issuing a pull request. However, if this is not possible, please add a note in your pull request. **If you submit a pull request that will create build errors, you must include a note mentioning what those errors are, and why they are ok to leave in.**
 
 
-To view the documentation in your web browser, you can use Python's built-in webserver.
+To view the documentation in your web browser, you can use Python's built-in web server.
 
 .. code-block:: rest
 
@@ -384,9 +393,14 @@ It's a good idea to delete the ``build`` directory before each rebuild.
 Push Your Branch
 ~~~~~~~~~~~~~~~~~~
 
-Once your work on the issue is completed, push your branch to your GitHub repo.
+Once your work on the issue is completed, add the files you've changed or created additionally, and write a relevant commit message describing the changes.
 
-The first time you do this on any branch, you'll need to specify the branch name:
+.. code-block:: rest
+
+  $ git add my_changed_files
+  $ git commit -m "A small but relevant commit message"
+
+Then it's time to push the changes. The first time you do this on any branch, you'll need to specify the branch name:
 
 .. code-block:: rest
 
@@ -397,6 +411,7 @@ After that, you can just:
 .. code-block:: rest
 
   $ git push
+
 
 (Note: ``origin`` is the local label for your GitHub fork.)
 
@@ -421,7 +436,7 @@ You must include a PR comment. Things to include:
 - A note justifying any changes to requirements.txt
 - A note about any difficulties, questions, or concerns that came up while working on this issue.
 
-Complete the pull request. The maintainers will review it as quickly as possible. If there's any problems the maintainers can't deal with, they will reach out to you.
+Complete the pull request. The maintainers will review it as quickly as possible. If there are any problems the maintainers can't deal with, they will reach out to you.
 
 .. _keep-working-the-docs:
 
@@ -485,7 +500,7 @@ Documentation Files
 
 Sphinx document files have the ``.rst`` extension. File names should be all lowercase and use hyphens (not underscores or spaces) as word separators.
 
-Normally, the title of the page should be the first line of the file, followed by the a line of equal-signs.
+Normally, the title of the page should be the first line of the file, followed by the line of equal-signs.
 
 .. code-block:: rst
 
@@ -514,7 +529,7 @@ See :ref:`sections-titles` for more details.
 Table of Contents
 --------------------
 
-The ``index.rst`` file serves as a front-page to the documentation, and contains the table of contents. The table of contents controls the documentation navigation menu. To add a new document to the table of contents, add the file new (without the ``.rst`` extension) to the list of file names in ``index.rst``.
+The ``index.rst`` file serves as a front-page to the documentation and contains the table of contents. The table of contents controls the documentation navigation menu. To add a new document to the table of contents, add the file new (without the ``.rst`` extension) to the list of file names in ``index.rst``.
 
 
 .. _sections-titles:
@@ -591,7 +606,7 @@ In order to facilitate efficient :ref:`cross-referencing`, sections should be la
 - section label
 
   - lowercase
-  - hypen separators
+  - hyphen separators
 
 - a single colon
 
@@ -604,7 +619,7 @@ In order to facilitate efficient :ref:`cross-referencing`, sections should be la
 
   Lorem ipsum content of section blah blah.
 
-The section label should usually be a sluggified version of the section title.
+The section label is a sluggified version of the section title.
 
 Section titles must be unique throughout the entire documentation set. Therefore, if you write a common title that might appear in more than one document (*Learn More* or *Getting Started*, for example), you'll need to include additional words to make the label unique. The best way to do this is to add a meaningful work from the document title.
 
@@ -617,7 +632,7 @@ Section titles must be unique throughout the entire documentation set. Therefore
 
   .. _aggregate-getting-started:
 
-  Getting Started
+  Get Started
   -----------------
 
 .. _basic-markup:
@@ -757,7 +772,7 @@ Numbered lists ( ``<ol>`` ):
    a. nested lists are numbered separately
    b. nested lists need a blank line before and after
 
-#. Can have automatic number with the ``#`` character.
+#. Can have an automatic number with the ``#`` character.
 
 .. _dl:
 
@@ -767,7 +782,7 @@ Definition Lists
 .. code-block:: rest
 
   Definition list ( ``<dl>`` )
-    a list with several term-defition pairs
+    a list with several term-definition pairs
 
   Terms
     should not be indented
@@ -799,7 +814,7 @@ Paragraph-level Markup
 
 .. code-block:: rest
 
-  Paragraphs are separarated by blank lines. Line breaks in the source code do not create line breaks in the output.
+  Paragraphs are separated by blank lines. Line breaks in the source code do not create line breaks in the output.
 
   This means that you *could*, in theory,
   include a lot of arbitrary line breaks
@@ -812,7 +827,7 @@ Paragraph-level Markup
 
   There is **no reason** to put a limit on line length in source files for documentation, since this is prose and not code. Therefore, please do not put arbitrary line breaks in your files.
 
-Paragraphs are separarated by blank lines. Line breaks in the source code do not create line breaks in the output.
+Paragraphs are separated by blank lines. Line breaks in the source code do not create line breaks in the output.
 
 This means that you *could*, in theory,
 include a lot of arbitrary line breaks
@@ -960,7 +975,7 @@ Most of the Sphinx-specific and ODK-specific markup will use one or both of thes
 Cross referencing
 ~~~~~~~~~~~~~~~~~~~~
 
-Cross referencing is linking internally, from one place in the documentation to another. This is **not** done using the :ref:`hyperlinks` syntax, but with one of several roles:
+Cross referencing is linking internally, from one place in the documentation to another. This is **not** done using the :ref:`hyperlinks` syntax, but with one of the several roles:
 
 .. code-block:: none
 
@@ -992,7 +1007,7 @@ Cross referencing is linking internally, from one place in the documentation to 
   - *target* is the term, in the glossary
   - *title* is the term itself
 
-**To recap:** If you do not include an explicit ``<target>``, the text inside the role will be understood as the target, and the anchor text for the link in the output will be title of the target.
+**To recap:** If you do not include an explicit ``<target>``, the text inside the role will be understood as the target, and the anchor text for the link in the output will be the title of the target.
 
 For example:
 
@@ -1051,7 +1066,7 @@ Several roles are used when describing user interactions.
 
     Select :menuselection:`Help` from menu.
 
-  When wrting about multi-level menus, use a single ``:menuselection:`` role, and separate menu choices with ``-->``.
+  When writing about multi-level menus, use a single ``:menuselection:`` role, and separate menu choices with ``-->``.
 
   .. code-block:: rst
 
@@ -1063,7 +1078,7 @@ Several roles are used when describing user interactions.
 
   .. code-block:: rst
 
-    To stop the localserver, type :kbd:`CTRL C`.
+    To stop the local server, type :kbd:`CTRL C`.
 
 .. rst:role:: command
 
@@ -1086,7 +1101,7 @@ Several roles are used when describing user interactions.
 Other Semantic Markup
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. rst:role:: abbr:
+.. rst:role:: abbr
 
   Marks up an abbreviation. If the role content contains a parenthesized explanation, it will be treated specially: it will be shown in a tool-tip in HTML.
 
@@ -1127,6 +1142,14 @@ Images and Figures
 
 Image files should be put in the :file:`/img/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
 
+You must perform lossless compression on the source images. Following tools can be used to optimize the images: 
+
+- **ImageOptim** is a tool that allows us to optimize the images. It is not format specific which means it can optimize both jpeg as well as png images. You can download it `from here <https://imageoptim.com/howto.html>`_ . After launching ImageOptim.app, dragging and dropping images into its window gives you an in-place optimized file. 
+
+- **Pngout** is another option for optimizing png images. Installation and usage instructions can be found `here <http://docs.ewww.io/article/13-installing-pngout/>`_ .
+
+- **Mozjpeg** can be used to optimize jpeg images. Installation and related information can be found on `this link <https://nystudio107.com/blog/installing-mozjpeg-on-ubuntu-16-04-forge/>`_ . 
+
 To place an image in a document, use the ``image`` directive.
 
 .. code-block:: rst
@@ -1151,12 +1174,12 @@ Image File Names
 """"""""""""""""""
 
 
-Image file names should be:
+Image file names should:
 
-- as short as possible while still being descriptive
-- all lower case
-- no spaces
-- hyphen separators
+- be short yet descriptive
+- contain only lower case characters
+- have no spaces
+- use hyphens as the separator
 
 Good image file names:
 
@@ -1196,11 +1219,12 @@ Now, at the command line, from the root directory of the :file:`odk-docs` repo:
 
   python ss.py {document-name}/{image-name}
 
-- ``{document-name}`` is the filename (without extension) where the you will use the image
-- ``{image-name}`` is the name (without extension) you are giving the image
-
-  - be sure you are not overwriting an existing image
+- ``{document-name}`` is the filename (without extension) where the image will be used.
+- ``{image-name}`` is the name (without extension) given to the image.
   - follow the :ref:`image-names` guidelines
+
+.. warning::
+  Be sure you to not overwrite an existing image.
 
 .. tip::
   If you have a problem running ss.py, check to make sure your :ref:`Python 3 virtual environment <docs-venv>` is activated.

@@ -29,13 +29,13 @@ If you have :ref:`connected ODK Collect to a server <connecting-to-server>` or :
 Loading forms directly
 ------------------------
 
-You can load forms directly from a computer to your device via USB, using `Android Developer Bridge <https://developer.android.com/studio/command-line/adb.html>`_.
+You can load forms directly from a computer to your device via USB, using `Android Debug Bridge <https://developer.android.com/studio/command-line/adb.html>`_.
 
 .. code-block:: none
 
   $ adb push path/to/form.xml /sdcard/odk/forms/form.xml
 
-You can also download forms to  your device via a web browser, and move them to the :file:`odk/forms/` directory, using the device's file manager (:menuselection:`Settings -> Storage & USB -> Explore`).
+You can also download forms to your device via a web browser, and move them to the :file:`odk/forms/` directory, using the device's file manager (:menuselection:`Settings -> Storage & USB -> Explore`).
 
 Loading form media
 ~~~~~~~~~~~~~~~~~~~~~
@@ -73,7 +73,7 @@ For a (mostly) complete guide to form question appearance, see :doc:`form-widget
 Completing a Form
 -------------------
 
-Once you have reached the end of a form, you will have the opportunity to Save and Exit the form. At this point, you may also:
+Once you have reached the end of a form, you will have the opportunity to *Save* and *Exit* the form. At this point, you may also:
 
 .. _name-form-instance:
 
@@ -82,7 +82,7 @@ Name the form
 
 The last form screen provides a default name for the form (defined by the form designer). You can rename it. This name only applies to that particular instance of a completed form (not to the blank form).
 
-The Form Name identifies the form in lists throughout the app. For this reason, a meaningful name may be important to you. 
+The Form Name identifies the form in lists throughout the app. For this reason, a meaningful name may be important to you. After you've saved the name, the form automatically moves to the :guilabel:`Send Finalized Form` section, from where you can send it.
 
 .. _finalize-form:
 
@@ -105,7 +105,9 @@ This will reopen the form, which you are then free to edit.
 
   - :formstate:`Sent` forms will not appear in the :guilabel:`Edit Saved Forms` list.
 
-  - You may freely edit :formstate:`Saved` and :formstate:`Finalized` forms.
+  - :formstate:`Sent` forms, will be available for viewing in :guilabel:`View Sent Forms` list, along with the details which cannot be edited.
+
+  - You may freely edit :formstate:`Saved` and :formstate:`Finalized` forms. 
 
 .. _uploading-forms:
 
@@ -116,17 +118,22 @@ If you are connected to :ref:`an ODK Aggregate server <connecting-to-aggregate>`
 
 For local form management, use `ODK Briefcase <https://opendatakit.org/use/briefcase/>`_ to pull :formstate:`finalized` form instances to your local computer.
 
-:formstate:`Sent` forms are no longer editable, but they remain viewable until deleted. 
+:formstate:`Sent` forms are no longer editable, but they remain viewable until they are deleted. 
 
 .. note:: 
 
-  You can copy form instances from the device using :command:`adb`, however this will not update the state of the form to :formstate:`Sent`.
+  - You can copy form instances from the device using :command:`adb`, however this will not update the state of the form to :formstate:`Sent`.
 
 .. _deleting-forms:
 
 Deleting Forms
 ===============
 
-You can delete :formstate:`Saved`, :formstate:`Finalized`, :formstate:`Sent`, and :formstate:`Blank` forms by selecting :guilabel:`Delete Saved Form` on the app home screen.
+You can delete :formstate:`Saved`, :formstate:`Finalized`, :formstate:`Sent`, and :formstate:`Blank` forms by selecting :guilabel:`Delete Saved Form` on the app home screen. This page contains two tabs, :guilabel:`Saved Forms`, which contains the list of all form instances that are saved, finalized or sent, and :guilabel:`Blank Forms`.
 
-You can also delete form instances directly with :command:`adb`. They are stored in :file:`sdcard/odk/instances`, with a directory for each instances.
+You can also delete form instances directly with :command:`adb`. They are stored in :file:`sdcard/odk/instances`, with a directory for each instance. 
+
+.. note:: 
+
+  - Deleted Forms are listed, but cannot be viewed. They are indicated with the crossed-out eye icon.
+
