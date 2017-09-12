@@ -54,3 +54,10 @@ caption .headerlink::after {
     font-size: 16px;
     font-weight: 300;
 }
+
+@media screen and (max-width: 950px) {
+    .btn{
+        margin-bottom: 1em;
+        width: 100%;
+    }
+}
