@@ -27,7 +27,7 @@ This requires:
   - Forms can be created using tools other than Build or XLSForm
   - Forms can be uploaded directly to Collect, without using Aggregate
 
-  ODK is a very flexible set of tools, and orgnizations will find their own best practices for adopting it.
+  ODK is a very flexible set of tools, and organizations will find their own best practices for adopting it.
 
 .. _install-collect:
 
@@ -85,4 +85,4 @@ Load, Complete, and Upload a Form with ODK Collect
 - Select :guilabel:`Send Finalized Form` to upload your completed survey to ODK Aggregate.
 
 
-Now, you should be able to log back in to your ODK Aggregate instance and see your completed survey results.
+Now, you should be able to log back into your ODK Aggregate instance and see your completed survey results.
