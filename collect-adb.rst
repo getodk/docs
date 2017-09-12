@@ -4,39 +4,36 @@ Using Android Debug Bridge with Collect
 
 This document focuses specifically on using **adb** as a command line tool to perform a variety of tasks related to Collect. 
 
-.. _what-is-it:
+.. _what-is-adb:
 
 What is Android Debug Bridge (adb)?
 ====================================
 
-Android Debug Bridge or `adb <https://developer.android.com/studio/command-line/adb.html>`_ is a command line tool which, as the name suggests, acts as a bridge between the Android device and the terminal. It can control your device over USB from a computer, copy files back and forth, install and uninstall apps, run shell commands, and more. For the developers of ODK Collect, the most common ones include pushing blank forms to SD Card, pulling the form database, deleting forms, making the **.apk** file from the source code, etc. To install **adb**, please follow the instructions given `here <https://android.gadgethacks.com/how-to/android-basics-install-adb-fastboot-mac-linux-windows-0164225/>`_.
+Android Debug Bridge or `adb <https://developer.android.com/studio/command-line/adb.html>`_ is a command line tool which, as the name suggests, acts as a bridge between the Android device and the terminal. It can control your device over USB from a computer, copy files back and forth, install and uninstall apps, run shell commands, and more. To install **adb**, please follow the instructions given `here <https://android.gadgethacks.com/how-to/android-basics-install-adb-fastboot-mac-linux-windows-0164225/>`_. For the developers and users of ODK Collect, the most common uses are:
 
-.. _downloading-adb:
+- include pushing blank forms to SD Card
+- pulling the form database, deleting forms
+- making the **.apk** file from the source code
 
-Downloading adb
-================
-
-If you're already working on Android studio, you'll have **adb** already installed with it, but it requires specific configurations. To use adb with a device connected over USB, you must enable USB debugging in the device system settings, under Developer options. On Android 4.2 and higher, the Developer options screen is hidden by default. To make it visible, go to ``Settings``, then ``About phone`` and tap ``Build number`` seven times. Return to the previous screen to find Developer options at the bottom.
-
-For people who don't have Android studio installed, **adb** can be downloaded as a standalone tool, either through command line or from the official Android Studio's `Command line tools page <https://developer.android.com/studio/index.html#command-tools>`_.
-
-.. _using-adb:
+.. _using-adb-with-collect:
 
 Using adb with Collect
 =======================
 
-As mentioned before in the `Form Management section <https://docs.opendatakit.org/collect-forms/>`_, forms can be manipulated pretty easily from the command line itself. The following points describe how **adb** can be used to work with the app:
+As mentioned before in the `Form Management section <https://docs.opendatakit.org/collect-forms/>`_, forms can be manipulated pretty easily from the command line itself. The following points describe how **adb** can be used to work with the app.
+
+.. _loading-blank-forms-with-adb:
 
 Loading blank forms
 ~~~~~~~~~~~~~~~~~~~~
 
-All the data related to form instances and other files are saved in :guilabel:`sdcard/odk/forms/` folder on the device. Hence if can easily download a form from external sources and transfer them to the device via USB cable. To do this, just run:
+The forms are stored in :guilabel:`sdcard/odk/forms/` folder on the device. They can be downloaded from external source and loaded via a USB device using:
 
 .. code-block:: none
 
   $ adb push path/to/form.xml /sdcard/odk/forms/form.xml
 
-While filling the form, it is possible to copy the contents of one form into another eaisly, just by knowing the path of the form.
+Contents of a form can be copied using:
 
 .. code-block:: none
 
@@ -46,25 +43,42 @@ While filling the form, it is possible to copy the contents of one form into ano
 
   Copying the contents of the form doesn't copy the current state (saved, sent or finalized) of the form. 
 
+.. _deleting-forms-with-adb:
+
 Deleting forms
 ~~~~~~~~~~~~~~~
 
-You can delete form instances directly with :command:`adb`. They are stored in :file:`sdcard/odk/forms`, with a directory for each instance. You can do so by using the command:
+You can delete form instances with :command:`adb`. They are stored in :file:`sdcard/odk/forms`, with a directory for each instance. You can do so by using the command:
 
 .. code-block:: none
 
   $ adb shell rm -d /sdcard/odk/forms/my_form.xml
 
+.. _downloading-forms:
+
 Downloading forms to your computer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can download a specified form from the emulator/device to your computer using the **adb** tool. Developers might also need to check the entries in the database from the computer. In such case we can simple pull the database file from the SD card and use any database visualizer to see the data. For getting a form, simply run:
+You can download a specified form from the device to your computer using the **adb** tool.
 
 .. code-block:: none
 
   $ adb pull /sdcard/odk/forms/my_form.xml
 
-.. _saving-screenshot:
+.. _downloading-database-with-adb:
+
+Downloading database
+~~~~~~~~~~~~~~~~~~~~~~
+
+Developers might also need to check the entries in the database from the computer. In such cases pull the database file from the SD card and use any **SQLite visualizer** to see the data. To pull the database into the computer, run:
+
+.. code-block:: none
+  
+  $  adb -d shell "run-as org.odk.collect.android cat databases/database.name" > target.sqlite
+
+Here *target* refers to the location where the database is stored on computer.
+
+.. _saving-screenshot-with-adb:
 
 Saving screenshot
 ~~~~~~~~~~~~~~~~~~
@@ -73,13 +87,17 @@ Document writers need to take screenshots of the running app to help the readers
 
 .. code-block:: none
 
-  $ adb shell screencap /sdcard/screen.png
+  $ adb exec-out screencap /sdcard/screen.png
 
 Here, the image will be stored as ``screen.png`` which can be downloaded to the computer by running:
 
 .. code-block:: none
 
   $ adb pull /sdcard/screen.png
+
+.. note::
+
+  You can also use Collect's program to get a screenshot by referring to the instructions given in the `Contribution Guide <https://docs.opendatakit.org/contributing/#screenshots-from-odk-collect>`_.
 
 
 
