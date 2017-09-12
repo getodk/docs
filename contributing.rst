@@ -25,7 +25,7 @@ ODK Documentation follows (as much as possible) the `Docs like Code <http://www.
 
 `The 'Docs as Code' approach has many advantages <http://hackwrite.com/posts/docs-as-code/>`_, but we are aware that this approach can feel difficult for writers who aren't used to dealing with the command line. It can also be difficult for coders who are used to this approach, but who typically use simpler authoring tools (like `Jekyll <http://jekyllrb.com>`_ and `Markdown <https://guides.github.com/features/mastering-markdown/>`_).
 
-This section of the Contributor Guide walks through our authoring and publishing workflow and toolchain, to make it as easy possible for you to contribute.
+This section of the Contributor Guide walks through our authoring and publishing workflow and toolchain, to make it as easy as possible for you to contribute.
 
 .. _docs-workflow-overview:
 
@@ -87,7 +87,7 @@ If you don't know, check to see if you have Python 3 installed:
 
   $ python3
 
-If you get an error, you probably don't and will need to `install Python 3 <https://www.python.org/downloads/>`_. If the Python command-line interpreter starts up, type ``quit()`` to exit.
+If you get an error, you probably don't have it and will need to `install Python 3 <https://www.python.org/downloads/>`_. If the Python command-line interpreter starts up, type ``quit()`` to exit.
 
 .. _docs-venv:
 
@@ -104,7 +104,7 @@ Check to see if you have virtualenv installed:
 
 If you get a help message with information about commands, you have it. If you don't have it, you'll get a ``command not found`` message.
 
-If you don't have it, the easiest way to get it is to use pip:
+In case you don't have it, install it using ``pip`` by running:
 
 .. code-block:: rest
 
@@ -619,7 +619,7 @@ In order to facilitate efficient :ref:`cross-referencing`, sections should be la
 
   Lorem ipsum content of section blah blah.
 
-The section label is a sluggified version of the section title.
+The section label is a slugified version of the section title.
 
 Section titles must be unique throughout the entire documentation set. Therefore, if you write a common title that might appear in more than one document (*Learn More* or *Getting Started*, for example), you'll need to include additional words to make the label unique. The best way to do this is to add a meaningful work from the document title.
 
