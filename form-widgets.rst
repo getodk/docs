@@ -1615,7 +1615,7 @@ Advances immediately to the next question once a selection is made.
 .. raw:: html
 
   <video controls muted style="max-width:100%">
-    <source src="/_static/vid/form-widgets/auto-advance.mp4">
+    <source src="/form-widgets/auto-advance.mp4">
   </video>
 
 
@@ -1952,7 +1952,7 @@ The :tc:`quickcompact` appearance attribute combines the design of the :ref:`com
 .. raw:: html
 
   <video controls muted style="max-width:100%">
-    <source src="/_static/vid/form-widgets/quickcompact.mp4">
+    <source src="/form-widgets/quickcompact.mp4">
   </video>
 
 XLSForm Rows
@@ -2009,7 +2009,7 @@ As with :ref:`compact <compact-2>`, you can specify a width when using :tc:`quic
 .. raw:: html
 
   <video controls muted style="max-width:100%">
-    <source src="/_static/vid/form-widgets/quickcompact2.mp4">
+    <source src="/form-widgets/quickcompact2.mp4">
   </video>
 
 XLSForm Rows
