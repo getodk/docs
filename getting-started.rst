@@ -27,7 +27,7 @@ This requires:
   - Forms can be created using tools other than Build or XLSForm
   - Forms can be uploaded directly to Collect, without using Aggregate
 
-  ODK is a very flexible set of tools, and orgnizations will find their own best practices for adopting it.
+  ODK is a very flexible set of tools, and organizations will find their own best practices for adopting it.
 
 .. _install-collect:
 
