@@ -3,6 +3,8 @@ Collect Settings and Security
 
 Settings are accessible from the :guilabel:`⋮` menu.
 
+There are two kinds of setting, **General Settings** and **Admin Settings**. This is useful when the person who is collecting the data and the owner of the device are not same. Admin can set an *admin password* and choose what all general settings the enumerator (in this case not the owner) can access. You can also hide/show the items displayed in the main menu and the options available in the options menu while filling the form. 
+
 .. _general-settings:
 
 General Settings
