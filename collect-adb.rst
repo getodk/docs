@@ -2,13 +2,6 @@
 Using Android Debug Bridge with Collect
 *****************************************
 
-This document focuses specifically on using :command:`adb` as a command line tool to perform tasks related to Collect. 
-
-.. _what-is-adb:
-
-What is Android Debug Bridge (adb)?
-====================================
-
 `Android Debug Bridge <https://developer.android.com/studio/command-line/adb.html>`_ is a command which acts as a bridge between the Android device and the terminal. It can control device over USB from a computer, copy files back and forth, install and uninstall apps, run shell commands etc. For the developers and users of ODK Collect, the most common uses are:
 
 - loading blank forms to SD Card
