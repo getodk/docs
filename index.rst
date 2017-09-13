@@ -57,6 +57,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   :caption: Contributing 
 
   contributing
+  cygwin
   
 .. toctree::
   :hidden:
