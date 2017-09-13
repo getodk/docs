@@ -13,7 +13,7 @@ Using Android Debug Bridge with Collect
 .. _install-adb:
 
 Installing adb
-===============
+~~~~~~~~~~~~~~~
 
 If you plan to work on ODK Collect or run the app using an emulator, download the `Android Studio <https://developer.android.com/studio/index.html>`_. It already comes with the adb tool. To use it, `enable USB Debugging <https://www.howtogeek.com/125769/how-to-install-and-use-abd-the-android-debug-bridge-utility/>`_.
 
