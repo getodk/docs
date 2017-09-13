@@ -8,7 +8,7 @@ Using Android Debug Bridge with Collect
 - fetching completed forms
 - deleting forms
 - copying the form database
-- making the **.apk** file from the source code
+- installing the **.apk** file from the source code
 
 .. _install-adb:
 
