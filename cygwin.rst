@@ -1,6 +1,6 @@
-*****************************
+******************************************
 Working with Docs in Windows using Cygwin
-*****************************
+******************************************
 
 Install Cygwin
 -------------------------------
@@ -39,8 +39,8 @@ You have two options:
 
 .. _native-virenv:
 
-Native virtualenv
-~~~~~~~~~~~~~~~~~~~~~
+Native Virtual Environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Create a new Python 3 virtual environment, "odkenv" is the name of the virtualenv, you can add any name.
 
@@ -151,7 +151,7 @@ Set the Upstream Remote
 
 .. _requirments:
 
-Install the requirements
+Install the Requirements
 ------------------------
 
 First activate odkenv:
@@ -168,7 +168,7 @@ Make sure you are inside the docs folder, then run:
 
 To this step, you will have ODKdocs environment ready. You can start change and build.
 
-You can work with any editor. You may install `Notepad++ <<https://notepad-plus-plus.org/download/v7.5.1.html/>`_ to edit source files. Add it to Windows Path in order to use it from command prompt.
+You can work with any editor. You may install `Notepad++ <https://notepad-plus-plus.org/download/v7.5.1.html/>`_ to edit source files. Add it to Windows Path in order to use it from command prompt.
 
 To edit docs files use: 
 
