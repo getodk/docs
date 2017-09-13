@@ -58,7 +58,7 @@ For full details, and other installation methods, see the `ODK Aggregate Install
 Create and Upload Survey Forms with ODK Build
 -----------------------------------------------
 
-The quickest and easiest way to start using your own survey forms is to create them in online with `ODK Build <https://build.opendatakit.org/>`_.
+The quickest and easiest way to start using your own survey forms is to create them online with `ODK Build <https://build.opendatakit.org/>`_.
 
 - Go to `build.opendatakit.org <https://build.opendatakit.org/>`_, create a new account, and log in.
 - Once logged in, a blank survey is created. Give it a name (:guilabel:`rename` in the upper left-hand corner) and add a few questions (click on question types in the :guilabel:`+Add New` bar along the bottom).
