@@ -74,7 +74,7 @@ Developers might also need to check the entries in the database from the compute
 
 .. code-block:: none
   
-  $  adb -d shell "run-as org.odk.collect.android cat databases/database.name" > target.sqlite
+  $  adb -pull /sdcard/odk/database/database.name
 
 Here *target* refers to the location where the database is stored on computer.
 
