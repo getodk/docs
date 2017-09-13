@@ -69,8 +69,6 @@ Developers might also need to check the entries in the database from the compute
   
   $  adb -pull /sdcard/odk/database/database.name
 
-Here *target* refers to the location where the database is stored on computer.
-
 .. _saving-screenshot-with-adb:
 
 Saving screenshot
