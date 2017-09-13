@@ -2,46 +2,46 @@
 Using Android Debug Bridge with Collect
 *****************************************
 
-This document focuses specifically on using **adb** as a command line tool to perform tasks related to Collect. 
+This document focuses specifically on using :command:`adb` as a command line tool to perform tasks related to Collect. 
 
 .. _what-is-adb:
 
 What is Android Debug Bridge (adb)?
 ====================================
 
-Android Debug Bridge or `adb <https://developer.android.com/studio/command-line/adb.html>`_ is a command line tool which acts as a bridge between the Android device and the terminal. It can control device over USB from a computer, copy files back and forth, install and uninstall apps, run shell commands, and more. To install **adb**, please follow the instructions given `here <https://android.gadgethacks.com/how-to/android-basics-install-adb-fastboot-mac-linux-windows-0164225/>`_. For the developers and users of ODK Collect, the most common uses are:
+`Android Debug Bridge <https://developer.android.com/studio/command-line/adb.html>`_ is a command which acts as a bridge between the Android device and the terminal. It can control device over USB from a computer, copy files back and forth, install and uninstall apps, run shell commands etc. For the developers and users of ODK Collect, the most common uses are:
 
-- include pushing blank forms to SD Card
-- pulling the form database, deleting forms
+- loading blank forms to SD Card
+- fetching completed forms
+- deleting forms
+- copying the form database
 - making the **.apk** file from the source code
 
-.. _using-adb-with-collect:
+.. _install-adb:
 
-Using adb with Collect
-=======================
+Installing adb
+===============
 
-Forms can be manipulated from the command line itself. The following sections describe how **adb** can be used to work with the app.
+If you plan to work on ODK Collect or run the app using an emulator, download the `Android Studio <https://developer.android.com/studio/index.html>`_. It already comes with the adb tool. To use it, `enable USB Debugging <https://www.howtogeek.com/125769/how-to-install-and-use-abd-the-android-debug-bridge-utility/>`_.
+
+To install :command:`adb` as a standalone tool, please follow the instructions given `here <https://android.gadgethacks.com/how-to/android-basics-install-adb-fastboot-mac-linux-windows-0164225/>`_.
+
+Forms can be manipulated from the command line itself. The following sections describe how :command:`adb` can be used to work with the app.
 
 .. _loading-blank-forms-with-adb:
 
 Loading blank forms
 ~~~~~~~~~~~~~~~~~~~~
 
-The forms are stored in :guilabel:`sdcard/odk/forms/` folder on the device. They can be downloaded from external source and loaded via a USB device using:
+The forms are stored in :file:`sdcard/odk/forms/` folder on the device. They can be loaded via a USB device using:
 
 .. code-block:: none
 
   $ adb push path/to/form.xml /sdcard/odk/forms/form.xml
 
-Contents of a form can be copied by running:
-
-.. code-block:: none
-
-  $ adb shell cp /sdcard/odk/forms/form-1.xml /sdcard/odk/forms/form-2.xml
-
 .. note::
 
-  Copying the contents of the form doesn't copy the current state of the form. 
+  Path on the phone must include the file name and not just the folder name
 
 .. _deleting-forms-with-adb:
 
@@ -59,7 +59,7 @@ Forms can be deleted from :file:`sdcard/odk/forms` by running:
 Downloading forms to your computer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To download a specific form from the computer, run:
+To download a completed form or form instance from the computer, run:
 
 .. code-block:: none
 
@@ -83,7 +83,7 @@ Here *target* refers to the location where the database is stored on computer.
 Saving screenshot
 ~~~~~~~~~~~~~~~~~~
 
-Document writers need to take screenshots of the running app to help the readers visualize and verify everything. While using an emulator or a device, this might take some time. For this purpose, **adb** also provides a feature call **screencap** which can take a screenshot and upload it to your computer. For taking a screenshot, run:
+For taking a screenshot, run:
 
 .. code-block:: none
 
@@ -97,19 +97,21 @@ Here, the image will be stored as ``screen.png`` which can be downloaded to the 
 
 .. note::
 
-  You can also use Collect's program to get a screenshot by referring to the instructions given in the `Contribution Guide <https://docs.opendatakit.org/contributing/#screenshots-from-odk-collect>`_.
+  You can also use ODK docs program to get a screenshot by referring to the instructions given in the `Contribution Guide <https://docs.opendatakit.org/contributing/#screenshots-from-odk-collect>`_.
 
 .. _recording-video-with-adb:
 
 Recording a video
 ~~~~~~~~~~~~~~~~~~~
 
-**adb** can be used to record video on device's screen. This can be done by running:
+:command:`adb` can be used to record video on device's screen. This can be done by running:
 
 .. code-block:: none
 
   $ adb shell screenrecord /sdcard/example.mp4
 
-This command will start recording your device’s screen using the default settings and save the resulting video to a file at :guilabel:`/sdcard/example.mp4` file on your device.
+As you hit :guilabel:`Enter`, this command will start recording your device’s screen using the default settings and save the resulting video to a file at :guilabel:`/sdcard/example.mp4` file on your device.
+
+To stop the recording, press :guilabel:`ctrl` + :guilabel:`C`
 
 
