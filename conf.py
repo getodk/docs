@@ -202,6 +202,7 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 
 def setup(app):
     app.add_stylesheet('css/custom.css')
+    app.add_stylesheet('css/genericstyle.css')
     
 
 # At top of every document
