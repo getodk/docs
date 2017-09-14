@@ -8,7 +8,7 @@ Smallest meaningful PR
 
 A PR should normally address one issue. This makes it easier to review, easier to deploy, and easier to roll back in case of a problem. Additionally, the smaller the PR, the less likely it is to create a merge issue.
 
-The exception is when several issues are closely related or can reasonably be worked on together.  In this case, it should be clear by looking at the conversation on the Github issues that the items are related and will be worked on together.
+The exception is when several issues are closely related or can reasonably be worked on together.  In this case, it should be clear by looking at the conversation on the Github issues that the items are related and will be worked on together. Your PR message should also make it clear which issues are being worked on, and whether the PR closes the issues or not.
 
 
 .. _descriptive-pr-names:
@@ -45,6 +45,7 @@ Commit messages should answer the question, "What does this commit do?"
 
 Small, well-named commits will help you keep track of your own work and make rollbacks and other changes easier to deal with.
 
+
 .. _discuss-issues:
 
 Discuss issues before working
@@ -59,6 +60,18 @@ If you have a question, ask. Don't guess.
   Many new contributors don't ask questions because they are worried about appearing under informed. Please set this worry aside.
 
   **You will never be judged harshly for asking clarifying questions or for seeking more information.** 
+
+.. _wip-pr:
+
+Share Work in Progress
+-------------------------
+
+It can be helpful to share your in-progress work. To mark a PR as a work in progress, append ``[WIP]`` to the beginning of the PR title. We will not merge ``[WIP]`` PRs, and we won't do a review on them unless you ask. 
+
+If you want a review, comment, opinion, or help on a ``[WIP]`` PR, please say so.
+
+If you finish the work and want the PR to be merged, you do not need to open a new one. Just edit the PR title. 
+
 
 .. _if-you-get-stuck:
 
@@ -82,7 +95,7 @@ If you get stuck while working
 It is okay to abandon an issue
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Sometimes you simply cannot complete work you have said you were going to complete. This could happen because you don't have the skills or knowledge to complete the work, or because the issue cannot actually be completed as scoped, or because you don't have the time.
+Sometimes you simply cannot complete work you have said you were going to complete. This could happen because you don't have all the required skills or knowledge to complete the work, or because the issue cannot actually be completed as scoped, or because you don't have the time.
 
 Please let the community know in the issue discussion. This way, everyone knows that someone else can take up the project (or that we need to rethink it).
 
@@ -114,6 +127,8 @@ All PRs must be directly connected to open issues. PRs should not represent sugg
 
 If you have a good idea, file an issue. If you are curious about whether something should be an issue, chat with one of the core team in the `#docs-code` channel on the `Slack <https://opendatakit.slack.com>`_.
 
+Once you have filed an issue, wait for comment and approval before diving into the work. We do not want surprise PRs.
+
 .. _use-odk:
 
 Actually install and use Open Data Kit or other tools
@@ -140,3 +155,20 @@ Always build locally
 Before submitting a PR, run the build locally to make sure you do not produce any errors or warnings. **We do not accept PRs that produce errors or warnings.**
 
 It is best to run the build frequently as you work. You'll often catch simple mistakes that are harder to track down later.
+
+.. _no-imposters:
+
+You are not an imposter
+--------------------------
+
+`Imposter syndrome <https://en.wikipedia.org/wiki/Impostor_syndrome>`_ is the feeling that you are not good enough or accomplished enough to do the work you are doing.
+
+We all feel this way sometimes, and that's okay. But it is important to realize that **you are not an imposter.** 
+
+You can contribute to this community, no matter your background or skills. 
+
+- If there is something you don't know how to do, you can ask.  
+- If you want to try something even though you aren't sure you can do it, go ahead and try.
+
+Another worry you may have is that something will take you a long time, when an "expert" might be able to do it quickly. You may feel, then, you aren't the "right person" for the job. But if you are the only one with the time or desire to work on something, **you are the right person to work on it.** 
+
