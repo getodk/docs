@@ -8,7 +8,11 @@ Smallest meaningful PR
 
 A PR should normally address one issue. This makes it easier to review, easier to deploy, and easier to roll back in case of a problem. Additionally, the smaller the PR, the less likely it is to create a merge issue.
 
-The exception is when several issues are closely related or can reasonably be worked on together.  In this case, it should be clear by looking at the conversation on the Github issues that the items are related and will be worked on together. Your PR message should also make it clear which issues are being worked on, and whether the PR closes the issues or not.
+The exception is when several issues are closely related or can reasonably be worked on together.  In this case, it should be clear by looking at the conversation on the Github issues that the items are related and will be worked on together. Your PR message should also make it clear which issues are being worked on, and whether the PR closes the issues or not. Mention the PR by number:
+
+ addresses #123
+
+ closes #123
 
 
 .. _descriptive-pr-names:
@@ -61,6 +65,20 @@ If you have a question, ask. Don't guess.
 
   **You will never be judged harshly for asking clarifying questions or for seeking more information.** 
 
+.. _claim-issues:
+
+Claim issues
+--------------
+
+If you decide to work on an issue, let the community know you are working on it by *claiming* the issue.
+
+> @opendatakit-bot claim
+
+Once you've claimed an issue, other people won't work on it. So make sure you're actually going to work on it before claiming it.
+
+Don't claim more than one or two open issues at a time.
+
+
 .. _wip-pr:
 
 Share Work in Progress
@@ -68,7 +86,7 @@ Share Work in Progress
 
 It can be helpful to share your in-progress work. To mark a PR as a work in progress, append ``[WIP]`` to the beginning of the PR title. We will not merge ``[WIP]`` PRs, and we won't do a review on them unless you ask. 
 
-If you want a review, comment, opinion, or help on a ``[WIP]`` PR, please say so.
+If you want a review, comment, opinion, or help on a ``[WIP]`` PR, please tag someone in the PR comments.
 
 If you finish the work and want the PR to be merged, you do not need to open a new one. Just edit the PR title. 
 
@@ -85,7 +103,7 @@ If you get stuck while working
 - Submit a ``[WIP]`` (work in progress) pull request.
 
   - If we can see what progress you have made, it is easier to offer help.
-  - Even if you don't complete the project, perhaps someone else can pull in your in-progress work and build on it.
+  - Even if you don't complete the task, perhaps someone else can pull in your in-progress work and build on it.
   - Sometimes your in-progress work is an improvement over not having it, and so we'll merge in something even if it isn't complete.
 
 - If you really cannot move forward, it is okay to abandon an issue.
@@ -97,9 +115,13 @@ It is okay to abandon an issue
 
 Sometimes you simply cannot complete work you have said you were going to complete. This could happen because you don't have all the required skills or knowledge to complete the work, or because the issue cannot actually be completed as scoped, or because you don't have the time.
 
-Please let the community know in the issue discussion. This way, everyone knows that someone else can take up the project (or that we need to rethink it).
+Please let the community know in the issue discussion. 
 
-If you did significant work on a project before abandoning it, consider filing a ``[WIP]`` (work in progress) PR, so that others can see what you did and potentially build off of it.
+> @opendatakit-bot unclaim
+
+This way, everyone knows that someone else can take up the project (or that we need to rethink it).
+
+If you did significant work on a project before abandoning it, consider filing a ``[WIP]`` (work in progress) PR, so that others can see what you did and potentially build off of it. (Be sure to mention the issue, so the work is easy to find later.)
 
 .. _issue-takes-long-time:
 
@@ -167,7 +189,10 @@ We all feel this way sometimes, and that's okay. But it is important to realize 
 
 You can contribute to this community, no matter your background or skills. 
 
-- If there is something you don't know how to do, you can ask.  
+- If there is something you don't know how to do, you can ask. 
+  - If it is issue related, ask on the issue.
+  - If it is more general, try the #docs-code channel in the `ODK Developer Slack <https://opendatakit.slack.com>`.
+  - You can also send a private message to @adammichaelwood or another maintainer. 
 - If you want to try something even though you aren't sure you can do it, go ahead and try.
 
 Another worry you may have is that something will take you a long time, when an "expert" might be able to do it quickly. You may feel, then, you aren't the "right person" for the job. But if you are the only one with the time or desire to work on something, **you are the right person to work on it.** 
