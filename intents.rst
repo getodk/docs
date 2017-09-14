@@ -1,8 +1,7 @@
-************************
-Using Collect's Intent :
-************************
+Using Collect's Intent
+========================
 
-A. Navigating User to edit a form/instance after choosing :
+Navigating User to edit a form/instance after choosing :
 -----------------------------------------------------------
 
 .. code-block:: java
@@ -21,7 +20,7 @@ Similarly for an instance of the form :
 
 Apart from this , we also need to put in a mode, which will allow to differentiate between editing or viewing form . So we need to put in an extra here , which goes like :
 
-1. For Editing Saved Instance
+For Editing Saved Instance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: java
@@ -29,7 +28,7 @@ Apart from this , we also need to put in a mode, which will allow to differentia
 	intent.putExtra												    (org.odk.collect.android.utilities.ApplicationConstants.BundleKeys.FORM_MODES,org.odk.collect.android.utilities.ApplicationConstants.FormModes.EDIT_SAVED);
 
 
-2. For Viewing Sent Form
+For Viewing Sent Form
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: java
@@ -37,11 +36,11 @@ Apart from this , we also need to put in a mode, which will allow to differentia
 	intent.putExtra	(org.odk.collect.android.utilities.ApplicationConstants.BundleKeys.FORM_MODES,org.odk.collect.android.utilities.ApplicationConstants.FormModes.VIEW_SENT);
 
 
-B. Getting the URI of the form/instance chosen by USER :
----------------------------------------------------------
+Getting the URI of the form/instance chosen by USER :
+--------------------------------------------------------
 
-1. Starting Activity For Result
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Starting Activity For Result
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
 .. code-block:: java
 
@@ -53,8 +52,8 @@ B. Getting the URI of the form/instance chosen by USER :
 	static final int PICK_FORM_REQUEST = 1;  // The request code
 	startActivityForResult(intent, PICK_FORM_REQUEST);
 
-2. To get the result , simply override onActivityResultMethod like this :
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+To get the result , simply override onActivityResultMethod like this :
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: java
 
@@ -83,7 +82,7 @@ Same thing can be done for an instance by simply changing the uri to that of the
 
 searching s
 
-C. Using a particular form's uri returned previously to launch for edit/view:
+Using a particular form's uri returned previously to launch for edit/view:
 -----------------------------------------------------------------------------
 
 

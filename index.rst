@@ -50,12 +50,6 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
 
   form-widgets
   javarosa
-
-.. toctree::
-  :hidden:
-  :maxdepth: 2
-  :caption: Form Design
-
   intents
   
 .. toctree::
