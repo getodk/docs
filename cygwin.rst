@@ -16,7 +16,7 @@ You need to install `Python 3 <https://www.python.org/downloads/>`_. `For instru
 
 .. _virtualenv:
 
-Virtual Environment
+Virtual Environ
 -------------------------------
 
 `A virtual environment tool <https://virtualenv.pypa.io/en/stable/userguide/>`_ creates multiple Pythons, each has its packages and dependencies.
