@@ -4,15 +4,15 @@ Collects's Intent
 About Intent
 -------------
 
-*Intent* is a messaging object used to request an action from another app component.
+**Intent** is a messaging object used to request an action from another app component.
 
 Each page pertaining to an android app is called an activity. ODK Collect has several activities and sub-activities. These activities are able to communicate with each other using intents(as mentioned above).
 
 There are two types of intents:
 
-1.Explicit Intent: We use Explicit Intent when we want to communicate between 2 or more activites inside the *same* application.
+1. **Explicit Intent** : We use Explicit Intent when we want to communicate between 2 or more activites inside the *same* application.
 
-2.Implicit intent: We use Explicit Intent when we want to communicate between 2 or more activites inside *different* applications.
+2. **Implicit intent** : We use Explicit Intent when we want to communicate between 2 or more activites inside *different* applications.
 
 For example, after following the instrutions given below:
 
