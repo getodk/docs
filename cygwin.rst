@@ -19,9 +19,9 @@ You need to install `Python 3 <https://www.python.org/downloads/>`_. `For instru
 Virtual Environment
 -------------------------------
 
-`A virtual environment tool <https://virtualenv.pypa.io/en/stable/userguide/>`_ creates multiple Pythons, each has its packages and dependencies.
+`A virtual environment to <https://virtualenv.pypa.io/en/stable/userguide/>`_ creates multiple Pythons, each has its packages and dependencies.
 
- To install virtualenv in Windows, you can use pip command, which is already shipped with Python 3.
+To install virtualenv in Windows, you can use pip command, which is already shipped with Python 3.
 
 .. code-block:: none
 

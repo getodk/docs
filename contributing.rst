@@ -1,4 +1,4 @@
-***************************
+﻿***************************
 Contributing to ODK Docs
 ***************************
 
@@ -34,7 +34,7 @@ Overview of Workflow
 
 When you first get started you'll need to:
 
-- Fork to your own Github Account
+- Fork to your own Github Acc
 - Clone it down to your local machine
 - Install dependencies
 
