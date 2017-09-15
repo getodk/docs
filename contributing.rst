@@ -1096,6 +1096,51 @@ Several roles are used when describing user interactions.
 
     The :option:`-b html` option specifies the HTML builder.
 
+.. _custom-text-roles:
+
+Custom Text Roles
+~~~~~~~~~~~~~~~~~~~
+
+**Custom Text Roles** signify that the enclosed text should be interpreted in a specific way. 
+
+Custom text roles used in ODK documentation are:
+
+.. rst:role:: th
+
+  Stands for table head and refers to a table header cell in the body of text.
+
+.. rst:role:: tc
+
+  Stands for table cell and describes the table cells in the body of text. 
+
+  .. code-block:: rst
+
+    External App String Widget
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    The external app widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`.
+
+.. rst:role:: formstate 
+  
+  Specifies the state of the form which could be one of the following:
+
+  - Blank
+  - Finalized
+  - Saved
+  - Sent
+  - Deleted
+  
+  .. code-block:: rest
+    
+    :formstate:`Sent`
+
+.. rst:role:: gesture
+    
+  Describes a touch screen gesture. 
+
+  .. code-block:: rest
+    
+    :gesture:`Swipe Left`
+
 .. _misc-markup:
 
 Other Semantic Markup
