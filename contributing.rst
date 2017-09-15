@@ -1109,19 +1109,21 @@ Custom text roles used in ODK documentation are:
 
   Stands for table head and refers to a table header cell in the body of text.
 
+  .. code-block:: rest
+
+    The URL to open is specified with :th:`default`.
+
 .. rst:role:: tc
 
   Stands for table cell and describes the table cells in the body of text. 
 
   .. code-block:: rest
-
-    External App String Widget
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
     The external app widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`.
 
 .. rst:role:: formstate 
   
-  Specifies the state of the form which could be one of the following-
+  Specifies the state of the form which could be one of the following:
 
   - Blank
   - Finalized
