@@ -1109,7 +1109,7 @@ Custom text roles used in ODK documentation are:
 
   Stands for table head and refers to a table header cell in the body of text.
 
-  .. code-block:: rest
+  .. code-block:: rst
 
     The URL to open is specified with :th:`default`.
 
@@ -1117,8 +1117,8 @@ Custom text roles used in ODK documentation are:
 
   Stands for table cell and describes the table cells in the body of text. 
 
-  .. code-block:: rest
-  
+  .. code-block:: rst
+
     The external app widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`.
 
 .. rst:role:: formstate 
@@ -1131,7 +1131,7 @@ Custom text roles used in ODK documentation are:
   - Sent
   - Deleted
 
-  .. code-block:: rest
+  .. code-block:: rst
     
     :formstate:`Sent`
 
@@ -1139,7 +1139,7 @@ Custom text roles used in ODK documentation are:
     
   Describes a touch screen gesture. 
 
-  .. code-block:: rest
+  .. code-block:: rst
     
     :gesture:`Swipe Left`
 
