@@ -83,7 +83,7 @@ Python 3
 
 If you don't know, check to see if you have Python 3 installed:
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ python3
 
@@ -98,7 +98,7 @@ A virtual environment is a Python tool for sandboxing dependencies. It lets you 
 
 Check to see if you have virtualenv installed:
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ virtualenv
 
@@ -106,20 +106,20 @@ If you get a help message with information about commands, you have it. If you d
 
 In case you don't have it, install it using ``pip`` by running:
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ pip install virtualenv
 
 Then, create an ODK "master" directory. This will contain your virtualenv and the docs repo as subdirectories.
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ mkdir odk
   $ cd odk
 
 Now, inside that odk directory, create a python3 virtualenv.
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ virtualenv -p python3 odkenv
 
@@ -127,13 +127,13 @@ The last part, ``odkenv`` can be whatever name you'd like to call it.
 
 Activate your virtual environment with:
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ source odkenv/bin/activate
 
 And, when you are done working, deactivate it with:
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ deactivate
 
@@ -240,7 +240,7 @@ From your own form of the repo on Github, select the :guilabel:`Clone or downloa
 
 Open your terminal, and `cd` to your preferred directory. Then `git clone` the repo:
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ git clone https://github.com/your-github-username/docs.git
   .
@@ -248,7 +248,7 @@ Open your terminal, and `cd` to your preferred directory. Then `git clone` the r
   .
   $ cd docs
 
-The rst of the documentation assumes you are in the directory for the repo (the directory containing ``conf.py`` and ``index.rst``).
+The rest of the documentation assumes you are in the directory for the repo (the directory containing ``conf.py`` and ``index.rst``).
 
 .. tip::
   - The ``clone`` command creates a new directory inside the current one. So you do not need to create a new `odk-docs` directory first.
@@ -261,13 +261,13 @@ Set the Upstream Remote
 
 When you clone down a repo, the local copy calls your GitHub copy ``origin``. You should also set ``upstream`` as the name of the original, main GitHub repo.
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ git remote add --track upstream https://github.com/opendatakit/docs.git
 
 Run ``git remote -v`` to check the status, you should see something like this:
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ origin https://github.com/your-github-username/docs.git (fetch)
   $ origin https://github.com/your-github-username/docs.git (push)
@@ -281,7 +281,7 @@ Install Dependencies
 
 The first time you clone down the repo, you'll need to install the dependencies. Make sure you have your Python 3 virtual environment set up and activated and then:
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ pip install -r requirements.txt
 
@@ -305,7 +305,7 @@ Pull in Updates from Upstream
 
 You probably won't need to do this the first time, but you should always pull in any changes from the main repository before working.
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ git pull upstream
 
@@ -318,7 +318,7 @@ Choose a specific, deliverable task to work on. This should be an `active issue 
 
 Create a new branch in which you will work on this specific issue. The branch name should briefly describe what you are doing. For example, the original author of this contributor guide worked in a branch he called ``contributing``. Also, make sure that all the branches are derived from the ``master`` branch to avoid intermixing of commits.
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ git checkout -b branch-name
 
@@ -355,7 +355,7 @@ Build, View, and Debug
 
 To build the documentation into a viewable website:
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ sphinx-build -b html . build
 
@@ -372,7 +372,7 @@ Error and warning messages include a file name and line number for tracking them
 
 To view the documentation in your web browser, you can use Python's built-in web server.
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ cd build
   $ python -m http.server 8000
@@ -383,7 +383,7 @@ Read through your doc edits in the browser and correct any issues in your source
 
 It's a good idea to delete the ``build`` directory before each rebuild.
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ rm -rf build
   $ sphinx-build -b html . build
@@ -395,20 +395,20 @@ Push Your Branch
 
 Once your work on the issue is completed, add the files you've changed or created additionally, and write a relevant commit message describing the changes.
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ git add my_changed_files
   $ git commit -m "A small but relevant commit message"
 
 Then it's time to push the changes. The first time you do this on any branch, you'll need to specify the branch name:
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ git push origin branch-name
 
 After that, you can just:
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ git push
 
@@ -445,20 +445,20 @@ Keep Going
 
 Once the PR is merged, you'll need to pull in the changes from the main repo ( ``upstream`` ) into your local copy.
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ git checkout master
   $ git pull upstream master
 
 Then you should push those change to your copy on GitHub ( ``origin`` ).
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ git push
 
 If you want to delete your branch from before, you can do that:
 
-.. code-block:: rst
+.. code-block:: rest
 
   $ git branch -d branch-name
 
@@ -539,7 +539,7 @@ Sections and Titles
 
 Headlines require two lines: the text of the headline, followed by a line filled with a single character. Each level in a headline hierarchy uses a different character:
 
-.. code-block:: rst
+.. code-block:: rest
 
   Title of the Page - <h1> - Equal Signs
   =========================================
@@ -562,7 +562,7 @@ Headlines require two lines: the text of the headline, followed by a line filled
 
 If you need to combine several existing pages together, or want to start a single-page doc that you think might be split into individual pages later on, you can add a top-level title, demoting the other headline types by one:
 
-.. code-block:: rst
+.. code-block:: rest
 
   ************************************************
   Page Title - <h1> - Asterisks above and below
@@ -610,7 +610,7 @@ In order to facilitate efficient :ref:`cross-referencing`, sections should be la
 
 - a single colon
 
-.. code-block:: rst
+.. code-block:: rest
 
   .. _section-label:
 
@@ -623,7 +623,7 @@ The section label is a slugified version of the section title.
 
 Section titles must be unique throughout the entire documentation set. Therefore, if you write a common title that might appear in more than one document (*Learn More* or *Getting Started*, for example), you'll need to include additional words to make the label unique. The best way to do this is to add a meaningful work from the document title.
 
-.. code-block:: rst
+.. code-block:: rest
 
   ODK Aggregate
   ===============
@@ -645,7 +645,7 @@ Basic Markup
 
   Markup characters can be escaped using the ``\`` characters.
 
-  .. code-block:: rst
+  .. code-block:: rest
 
     *Italic.*
 
@@ -660,7 +660,7 @@ Basic Markup
 Emphasis and Inline Literal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: rst
+.. code-block:: rest
 
   Single asterisks for *italic text* (``<em>``).
 
@@ -687,7 +687,7 @@ Hyperlinks
 
 **External** hyperlinks — that is, links to resources *outside* the documentation — look like this:
 
-.. code-block:: rst
+.. code-block:: rest
 
   This is a link to `example <http://example.com>`_.
 
@@ -695,7 +695,7 @@ This is a link to `example <http://example.com>`_.
 
 You can also use "reference style" links:
 
-.. code-block:: rst
+.. code-block:: rest
 
   This is a link to `example`_.
 
@@ -703,7 +703,7 @@ You can also use "reference style" links:
 
 This may help make paragraphs with *a lot* of links more readable. In general, the inline style is preferable. If you use the reference style, be sure to keep the link references below the paragraph where they appear.
 
-.. code-block:: rst
+.. code-block:: rest
 
   You can also simply place an unadorned URI in the text: http://example.com
 
@@ -719,7 +719,7 @@ Lists
 Unordered (bullet) lists
 """""""""""""""""""""""""""
 
-.. code-block:: rst
+.. code-block:: rest
 
   Bulleted lists ( ``<ul>`` ):
 
@@ -748,7 +748,7 @@ Bulleted lists ( ``<ul>`` ):
 Ordered (numbered) lists
 """"""""""""""""""""""""""
 
-.. code-block:: rst
+.. code-block:: rest
 
   Numbered lists ( ``<ol>`` ):
 
@@ -779,7 +779,7 @@ Numbered lists ( ``<ol>`` ):
 Definition Lists
 """""""""""""""""""
 
-.. code-block:: rst
+.. code-block:: rest
 
   Definition list ( ``<dl>`` )
     a list with several term-definition pairs
@@ -812,7 +812,7 @@ Line spacing
 Paragraph-level Markup
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: rst
+.. code-block:: rest
 
   Paragraphs are separated by blank lines. Line breaks in the source code do not create line breaks in the output.
 
@@ -843,7 +843,7 @@ There is **no reason** to put a limit on line length in source files for documen
 Block Quotes
 """"""""""""""
 
-.. code-block:: rst
+.. code-block:: rest
 
   This is not a block quote. Block quotes are indented, and otherwise unadorned.
 
@@ -860,7 +860,7 @@ This is not a block quote. Block quotes are indented, and otherwise unadorned.
 Line Blocks
 """"""""""""
 
-.. code-block:: rst
+.. code-block:: rest
 
   | Line blocks are useful for addresses,
   | verse, and adornment-free lists.
@@ -890,7 +890,7 @@ Tables
 Grid style
 ''''''''''''
 
-.. code-block:: rst
+.. code-block:: rest
 
   +------------+------------+-----------+
   | Header 1   | Header 2   | Header 3  |
@@ -922,7 +922,7 @@ Simple style
 ''''''''''''''
 
 
-.. code-block:: rst
+.. code-block:: rest
 
   =====  =====  ======
      Inputs     Output
@@ -1129,7 +1129,7 @@ Custom text roles used in ODK documentation are:
   - Sent
   - Deleted
   
-  .. code-block:: rst
+  .. code-block:: rest
     
     :formstate:`Sent`
 
@@ -1137,7 +1137,7 @@ Custom text roles used in ODK documentation are:
     
   Describes a touch screen gesture. 
 
-  .. code-block:: rst
+  .. code-block:: rest
     
     :gesture:`Swipe Left`
 
@@ -1211,7 +1211,7 @@ Use the ``figure`` to markup an image with a caption.
   .. figure:: /img/{document-subdirectory}/{file}.*
     :alt: Alt text. Every image should have descriptive alt text.
 
-    The rst of the indented content will be the caption. This can be a short sentence or several paragraphs. Captions can contain any other rst markup.
+    The rest of the indented content will be the caption. This can be a short sentence or several paragraphs. Captions can contain any other rst markup.
 
 .. _image-names:
 
