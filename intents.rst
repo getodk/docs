@@ -77,11 +77,6 @@ Same thing can be done for an instance by simply changing the uri to that of the
 
 	intent.setData(org.odk.collect.android.provider.InstanceProviderAPI.InstanceColumns.CONTENT_URI);
 
-
-
-
-searching s
-
 Using a particular form's uri returned previously to launch for edit/view:
 -----------------------------------------------------------------------------
 
