@@ -1127,6 +1127,7 @@ Custom text roles used in ODK documentation are:
   - Finalized
   - Saved
   - Sent
+  - Deleted
   
   .. code-block:: rst
     
