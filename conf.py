@@ -111,6 +111,9 @@ html_favicon = "_static/img/odk-favicon.ico"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+# Add paths that contain extra files which are not directly related to the 
+# documentation and which are are copied to the output directory.
+html_extra_path = ['vid']
 
 # -- Options for HTMLHelp output ------------------------------------------
 
@@ -265,7 +268,4 @@ contributing.html
 """
 html_context = {'prevar1' : prevar1 , 'prevar2' : prevar2 , 'prevar3' : prevar3 , 'hyper1' : hyper1 , 'hyper2' : hyper2 ,
                 'hyper3' : hyper3 , 'link1' : link1 , 'link2' : link2 , 'link3' : link3}
-
-
-
 

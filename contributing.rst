@@ -98,6 +98,9 @@ On windows :
  
 
 If you get an error, you probably don't have it and will need to `install Python 3 <https://www.python.org/downloads/>`_.On Windows Make sure to select the option “Add python to the Path”, while installing (see `instructions <https://www.youtube.com/watch?v=oHOiqFs_x8Y>`_ ) otherwise you need to add it `manually <https://youtu.be/UTUlp6L2zkw>`_ .If the Python command-line interpreter starts up, type ``quit()`` to exit.
+=======
+If you get an error, you probably don't have it and will need to `install Python 3 <https://www.python.org/downloads/>`_. If the Python command-line interpreter starts up, type ``quit()`` to exit.
+
 
 .. _docs-venv:
 

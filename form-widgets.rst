@@ -297,7 +297,7 @@ GeoTrace
 A line or polygon of GPS coordinates tracking actual device movement. The user can specify one of two location-recording modes:
 
 - Manual Mode — The user taps the device to place a marker as desired, while moving.
-- Automatic Mode — The app creates a marker on a regular time interval (default: 20 second) as the user moves.
+- Automatic Mode — The app creates a marker on a regular time interval (default: 20 seconds) as the user moves.
 
 
 .. image:: /img/form-widgets/geotrace-start.*
@@ -310,13 +310,13 @@ A line or polygon of GPS coordinates tracking actual device movement. The user c
   :alt: A map displayed in the ODK Collect App on an Android phone. Above the map is the instruction: Wait for lock, then tap add marker button start. On the right side are five icon buttons stacked vertically: Add marker, Zoom, Layers, Trash, Save.
 
 .. image:: /img/form-widgets/geotrace3.*
-  :alt: The same map as displayed in the previous image. Over the map is a modal popup. The modal headine is "Select GeoTrace Mode," followed by two radio-button (single select) options: Manual Mode (selected) and Automatic Mode. In the bottom-right are buttons for Cancel and Start.
+  :alt: The same map as displayed in the previous image. Over the map is a modal popup. The modal headline is "Select GeoTrace Mode," followed by two radio-button (single select) options: Manual Mode (selected) and Automatic Mode. In the bottom-right are buttons for Cancel and Start.
 
 .. image:: /img/form-widgets/geotrace4.*
   :alt: The same modal popup as in the previous image, but the Automatic Mode radio button is not selected. Below it are two drop-down select boxes. Their values are "20" and "seconds."
 
 .. image:: /img/form-widgets/geotrace5.*
-  :alt: The same map as displayed previosuly, but now a series of red markers form a line across the map.
+  :alt: The same map as displayed previously, but now a series of red markers form a line across the map.
 
 .. image:: /img/form-widgets/geotrace6.*
   :alt: The same map as previously, with a new modal popup. The headlines of the modal is "Save GeoTrace as" followed by two options: Save as Polygon and Save as Polyline. In the bottom-right is a Cancel button.
@@ -361,7 +361,7 @@ A user-entered series of GPS coordinates, forming a polygon.
   :alt: A map displayed in the ODK Collect App on an Android phone. Above the map is the instruction: "Long press to place marks." On the right side are five icon buttons stacked vertically: Add marker, Zoom, Layers, Trash, Save.
 
 .. image:: /img/form-widgets/geoshape3.*
-  :alt: The same map as displayed previosuly, but now a series of red markers form a polygon across the map.
+  :alt: The same map as displayed previously, but now a series of red markers form a polygon across the map.
 
 .. image:: /img/form-widgets/geoshape4.*
   :alt: The GeoShape form widget shown previously. The question text is "Select an Area." The button label is now "View or Change GeoShape." Below the button is a list of lat/long GPS coordinates.
@@ -817,7 +817,7 @@ XForm XML
 External App String Widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Launches an external app and recieves a string input back from the external app. If the specified external app is not available, a manual input is prompted.
+Launches an external app and receives a string input back from the external app. If the specified external app is not available, a manual input is prompted.
 
 The external app widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
 
@@ -858,7 +858,7 @@ Connects to an external printer. See `printing widget <https://opendatakit.org/h
 .. pull printing widget detail into its own doc in this repo
 
 .. image:: /img/form-widgets/printer-widget.* 
-  :alt: The external printer widget, as displayed in the ODK Collect app on an Android phone. The question text is "Ex printer widget." The hint text is "text type with printer:org.opendatakit.sensors.ZebraPrinter." Below that is a button labeled, "Initiate Printing." Above the question text is the form gropu name "Text widgets."
+  :alt: The external printer widget, as displayed in the ODK Collect app on an Android phone. The question text is "Ex printer widget." The hint text is "text type with printer:org.opendatakit.sensors.ZebraPrinter." Below that is a button labeled, "Initiate Printing." Above the question text is the form group name "Text widgets."
 
 XLSForm Rows
 """""""""""""
@@ -917,7 +917,7 @@ XForm XML
 External Integer Widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Launches an external app and recieves an integer input back from the external app. If the specified external app is not available, a manual input is prompted.
+Launches an external app and receives an integer input back from the external app. If the specified external app is not available, a manual input is prompted.
 
 .. image:: /img/form-widgets/external-integer-widget-start.* 
   :alt: The External Integer form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Ex integer widget." The hint text is, "integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form name "Numerical widgets."
@@ -979,7 +979,7 @@ XForm XML
 External Decimal Widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Launches an external app and recieves a decimal number input back from the external app. If the specified external app is not available, a manual input is prompted.
+Launches an external app and receives a decimal number input back from the external app. If the specified external app is not available, a manual input is prompted.
 
 .. image:: /img/form-widgets/external-decimal-start.* 
   :alt: The External Decimal form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Ex decimal widget." The hint text is, "decimal type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form group name "Numerical widgets."
@@ -1015,7 +1015,7 @@ Bearing Widget
 Captures a compass reading.
 
 .. image:: /img/form-widgets/bearing-widget-start.* 
-  :alt: The Bearing form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Beaering widget." The hint text is, "decimal type wih bearing appearance. Below that is a button labeled "Record Bearing." Above the question text is the form group name "Numericl widgets."
+  :alt: The Bearing form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Bearing widget." The hint text is, "decimal type with bearing appearance. Below that is a button labeled "Record Bearing." Above the question text is the form group name "Numericl widgets."
 
 .. image:: /img/form-widgets/bearing-in-progress.* 
   :alt: The Bearing widget, overlaid with a model popup. The modal headline is "Loading Bearing." In the body of the modal are two fields: "Direction: W" and "Bearing: 273.001". At the bottom of the modal are Cancel and Record Bearing buttons.
@@ -1126,7 +1126,7 @@ Provides the user a drawing pad and collects the drawn image.
   :alt: A white "drawing pad" on an Android phone, horizontally oriented (landscape mode). A simple smiley face has been drawn. In the lower right corner of the drawing pad is a plus sign (+) in a circle.
   
 .. image:: /img/form-widgets/draw-options.* 
-  :alt: The drawing pad as displayed in the previous image. Amenu has expanded from the lower right corner with the options: Reset, Save and Close, and Set Color.
+  :alt: The drawing pad as displayed in the previous image. A menu has expanded from the lower right corner with the options: Reset, Save and Close, and Set Color.
   
 .. image:: /img/form-widgets/draw-completed.* 
   :alt: The Draw widget as displayed previously. Below the "Sketch Image" button is the smiley face from the drawing pad image shown previously.
@@ -1160,13 +1160,13 @@ Annotate Widget
 Allows user to take or select an image and then draw on it.
 
 .. image:: /img/form-widgets/annotate-start.* 
-  :alt: The Annotate form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Annotate widget." The hint text is, "image type with anotatr appearance." There are three buttons: "Take Picture," "Choose Image," and "Markup Image." The Markup Image button is displabled. Above the question text is the form group name "Image widgets."
+  :alt: The Annotate form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Annotate widget." The hint text is, "image type with anotatr appearance." There are three buttons: "Take Picture," "Choose Image," and "Markup Image." The Markup Image button is disabled. Above the question text is the form group name "Image widgets."
   
 .. image:: /img/form-widgets/annotate-1.* 
   :alt: The camera view on an Android phone. In the viewer is a picture of a small saucer. Below the viewer is a blue checkmark button.
   
 .. image:: /img/form-widgets/annotate-2.* 
-  :alt: The Annotate form widget displayed previosuly. The Markup Image button is now enabled. Below the buttons is the picture of a saucer shown previously.
+  :alt: The Annotate form widget displayed previously. The Markup Image button is now enabled. Below the buttons is the picture of a saucer shown previously.
   
 .. image:: /img/form-widgets/annotate-3.* 
   :alt: The image of a saucer on a drawing pad, with a poorly-drawn cup of tea drawn over it. In the lower right corner is a plus sign (+) in a circle.
@@ -1208,7 +1208,7 @@ Collects a signature from the user.
   :alt: The Signature form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Signature widget." The hint text is "image type with signature appearance." Below that is a button labelled "Gather Signature." Above the question text is the form group name "Image widgets."
   
 .. image:: /img/form-widgets/signature-in-progress.* 
-  :alt: A drawing pad with a signature line, displayed in an Andoird phone. A signature is drawn across it. In the lower right corner is circular button marked with a plus sign (+).
+  :alt: A drawing pad with a signature line, displayed in an Android phone. A signature is drawn across it. In the lower right corner is circular button marked with a plus sign (+).
 
 .. image:: /img/form-widgets/signature-completed.* 
   :alt: The signature widget displayed previously. Below the button is the signature drawn in the previous image.
@@ -1256,10 +1256,10 @@ Default Date Widget
 ~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: /img/form-widgets/default-date-widget.* 
-  :alt: The default Date form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Date widget." The hint text is "date type with no appearance." Below that is a button labeled "Select date." Below that is the text, "No date selected." Above the quesiton text is the form group name "Date and time widgets."
+  :alt: The default Date form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Date widget." The hint text is "date type with no appearance." Below that is a button labeled "Select date." Below that is the text, "No date selected." Above the question text is the form group name "Date and time widgets."
   
 .. image:: /img/form-widgets/date-calendar-view.* 
-  :alt: The date widget shown in the previous image, with a modal popup showing a monthyl calendar. A date is selected. At the bottom of the modal are Cancel and OK buttons.
+  :alt: The date widget shown in the previous image, with a modal popup showing a monthly calendar. A date is selected. At the bottom of the modal are Cancel and OK buttons.
   
 .. image:: /img/form-widgets/date-completed.* 
   :alt: The date widget shown previously. Below the button is a date: Aug 11, 2017.
@@ -1434,7 +1434,7 @@ Geopoint Placement Map Widget
 A geopoint with the appearance attribute :tc:`placement-map` allows the user to select a geopoint from a map.
 
 .. image:: /img/form-widgets/geopoint-placement-map.* 
-  :alt: A map app open on an Android phone. Above the map is the message: "Long press to place mark or tap add marker button." Along the right side of the map are buttons: Add Marker, Zoom to point, Layers, Trash, Save.
+  :alt: A map app opens on an Android phone. Above the map is the message: "Long press to place mark or tap add marker button." Along the right side of the map are buttons: Add Marker, Zoom to point, Layers, Trash, Save.
  
 XLSForm Rows
 """""""""""""
@@ -1501,7 +1501,7 @@ Default Single Select
 ~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: /img/form-widgets/default-single-select.* 
-  :alt: The default Single Select form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Select one widget." The hint text is "select_one type with no appearance, 4 text choices." Below that is a set of radio button selectors labeled A, B, C, and D. Above the question text is form grop name "Select one widgets."
+  :alt: The default Single Select form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Select one widget." The hint text is "select_one type with no appearance, 4 text choices." Below that is a set of radio button selectors labeled A, B, C, and D. Above the question text is form group name "Select one widgets."
   
 XLSForm Rows
 """"""""""""""
@@ -1555,7 +1555,7 @@ Spinner Widget
 Adding the :tc:`minimal` appearance attribute places the choices into a drop-down style menu.
 
 .. image:: /img/form-widgets/select-one-minimal-start.* 
-  :alt: The Single Select form widget, with minimal appearance, as displayed in the ODK Collect app on an Android phone. The question text is "Spinner widget." The hint text is "select_one type with minimal appearance, 4 text choices." Below that is a drop-down style select menu with the prompt "Select One Answer." Above the question text is the form gorup name "Select one widgets."
+  :alt: The Single Select form widget, with minimal appearance, as displayed in the ODK Collect app on an Android phone. The question text is "Spinner widget." The hint text is "select_one type with minimal appearance, 4 text choices." Below that is a drop-down style select menu with the prompt "Select One Answer." Above the question text is the form group name "Select one widgets."
   
 .. image:: /img/form-widgets/select-one-minimal-expanded.* 
   :alt: The Single Select form widget, wih minimal appearance, as displayed in the previously image. The select menu has expanded to show choices: A, B, C, D, and Remove Response.
@@ -1615,7 +1615,7 @@ Advances immediately to the next question once a selection is made.
 .. raw:: html
 
   <video controls muted style="max-width:100%">
-    <source src="/_static/vid/form-widgets/auto-advance.mp4">
+    <source src="/form-widgets/auto-advance.mp4">
   </video>
 
 
@@ -1788,7 +1788,7 @@ A set of radio buttons with text labels and accompanying images.
 See :ref:`image-options` to learn more about including images in surveys.
 
 .. image:: /img/form-widgets/default-single-image-select.* 
-  :alt: The Single Select form widget with images, as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is, "select_one type with no appearace, 4 image choices (a.jpg, b.jpb, c.jpg, d.jpg)." Below that is a set of radio buttons labeled A, B, C, and D. Below each radio button is a small icon of an animal: A - whale, B - frog, C - aligator, D - eagle. Above the question text is the form group name "Select one widgets."
+  :alt: The Single Select form widget with images, as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is, "select_one type with no appearance, 4 image choices (a.jpg, b.jpb, c.jpg, d.jpg)." Below that is a set of radio buttons labeled A, B, C, and D. Below each radio button is a small icon of an animal: A - whale, B - frog, C - aligator, D - eagle. Above the question text is the form group name "Select one widgets."
   
 XLSForm Rows
 """"""""""""""
@@ -1842,7 +1842,7 @@ Compact Single Select with Images
 Image options are placed on a single line.
 
 .. image:: /img/form-widgets/single-select-compact.* 
-  :alt: The compact Single Select form widget with images, as displayed in the ODK Collect app on an Android phone. The question text is "Grid select one widget." The hint text is, "select_one with compact appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four small animal icons arranged on a single line. Above the question text is the form group name "Slect one widgets."
+  :alt: The compact Single Select form widget with images, as displayed in the ODK Collect app on an Android phone. The question text is "Grid select one widget." The hint text is, "select_one with compact appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four small animal icons arranged on a single line. Above the question text is the form group name "Select one widgets."
   
 XLSForm Rows
 """"""""""""""
@@ -1896,7 +1896,7 @@ Compact Single Select with Images, width specified
 With the :tc:`compact-{x}` style, you can specify the number of images to display on each row. To display two images on each row, specify an :th:`appearance` of :tc:`compact-2`.
 
 .. image:: /img/form-widgets/single-image-select-compact-2.* 
-  :alt: The single select form widget with images and appearace of 'compact-2,' as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is "select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four animal icons arranged in a two-by-two grid. Above the quesiton text is the form group name "Select one widgets."
+  :alt: The single select form widget with images and appearance of 'compact-2,' as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is "select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four animal icons arranged in a two-by-two grid. Above the question text is the form group name "Select one widgets."
   
 XLSForm Rows
 """"""""""""""
@@ -1952,7 +1952,7 @@ The :tc:`quickcompact` appearance attribute combines the design of the :ref:`com
 .. raw:: html
 
   <video controls muted style="max-width:100%">
-    <source src="/_static/vid/form-widgets/quickcompact.mp4">
+    <source src="/form-widgets/quickcompact.mp4">
   </video>
 
 XLSForm Rows
@@ -2009,7 +2009,7 @@ As with :ref:`compact <compact-2>`, you can specify a width when using :tc:`quic
 .. raw:: html
 
   <video controls muted style="max-width:100%">
-    <source src="/_static/vid/form-widgets/quickcompact2.mp4">
+    <source src="/form-widgets/quickcompact2.mp4">
   </video>
 
 XLSForm Rows
@@ -2174,7 +2174,7 @@ Compact Multiselect with Image Choices, style 2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: /img/form-widgets/multi-image-compact-2.* 
-  :alt: The multiselect form widget with images and appearace of 'compact-2,' as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select multiple widget." The hint text is "select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four animal icons arranged in a two-by-two grid. Above the quesiton text is the form group label "This section contains 'Select multi Widgets.'"
+  :alt: The multiselect form widget with images and appearance of 'compact-2,' as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select multiple widget." The hint text is "select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four animal icons arranged in a two-by-two grid. Above the question text is the form group label "This section contains 'Select multi Widgets.'"
   
 .. image:: /img/form-widgets/multi-image-compact-2-selected.* 
   :alt: The compact multiselect widget shown previously. Two of the animal icons are outlined with an orange border, indicating they have been selected.
@@ -2232,10 +2232,10 @@ Multiselect Spinner Widget
 Adding the :tc:`minimal` appearance attribute places the choices into a drop-down style menu.
 
 .. image:: /img/form-widgets/multiselect-minimal-start.* 
-  :alt: The Multiselect form widget, with minimal appearance, as displayed in the ODK Collect app on an Android phone. The question text is "Spinner widget: select multiple." The hint text is "select_multiple type with minimal appearance, 4 text choices." Below that is a drop-down style select menu with the prompt "Select Answer." Above the question text is the form gorup name "This section contains 'Select Multi Widget.'"
+  :alt: The Multiselect form widget, with minimal appearance, as displayed in the ODK Collect app on an Android phone. The question text is "Spinner widget: select multiple." The hint text is "select_multiple type with minimal appearance, 4 text choices." Below that is a drop-down style select menu with the prompt "Select Answer." Above the question text is the form group name "This section contains 'Select Multi Widget.'"
 
 .. image:: /img/form-widgets/multiselect-minimal-expanded.* 
-  :alt: The multiselect form widget, wih minimal appearance, as displayed in the previous image. The select menu has expanded to show choices: A, B, C, D. In the lower right corber is a button labeled OK.
+  :alt: The multiselect form widget, wih minimal appearance, as displayed in the previous image. The select menu has expanded to show choices: A, B, C, D. In the lower right corner is a button labeled OK.
   
 XLSForm Rows
 """"""""""""""
