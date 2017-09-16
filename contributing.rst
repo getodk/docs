@@ -97,7 +97,7 @@ On windows :
    >python
  
 
-If you get an error, you probably don't have it and will need to `install Python 3 <https://www.python.org/downloads/>`_.On Windows Make sure to select the option “Add python to the Path”,while installing(`see instructions <https://www.youtube.com/watch?v=oHOiqFs_x8Y>`_ )otherwise you need to add it `manually <https://youtu.be/UTUlp6L2zkw>`_ .If the Python command-line interpreter starts up, type ``quit()`` to exit.
+If you get an error, you probably don't have it and will need to `install Python 3 <https://www.python.org/downloads/>`_.On Windows Make sure to select the option “Add python to the Path”, while installing (see `instructions <https://www.youtube.com/watch?v=oHOiqFs_x8Y>`_ ) otherwise you need to add it `manually <https://youtu.be/UTUlp6L2zkw>`_ .If the Python command-line interpreter starts up, type ``quit()`` to exit.
 
 .. _docs-venv:
 
@@ -154,7 +154,6 @@ On Windows use:
 .. code-block:: rest
 
   >cd odkenv
-  
   >.\Scripts\activate
 
 
@@ -178,8 +177,9 @@ You will need to:
 
 - `Install git <https://git-scm.com/downloads>`_
 -  Make sure that git is installed properly by typing (git) in the terminal or command prompt
-  - On windows if you get any error check if environment variables are set up correctly(`see instructions <https://stackoverflow.com/questions/26620312/installing-git-in-path-with-github-client-for-windows#answer-34767523>`_)
-    
+
+   - On windows if you get any error check if environment variables are set up correctly(`see instructions <https://stackoverflow.com/questions/26620312/installing-git-in-path-with-github-client-for-windows#answer-34767523>`_) 
+  
 - `Start a GitHub account <https://github.com/>`_
 
 .. glfs
@@ -289,6 +289,7 @@ The rest of the documentation assumes you are in the directory for the repo (the
   - The ``clone`` command creates a new directory inside the current one. So you do not need to create a new `odk-docs` directory first.
   - As noted above, we recommend an `odk` master directory that holds your virtualenv directory and your git repo. So you would be in that odk directory when you clone down the repo.
   - Double check that right folders are in the right places
+  
   .. code-block:: rest
 
     1. odk/
@@ -296,6 +297,7 @@ The rest of the documentation assumes you are in the directory for the repo (the
     3.	   docs/
 
 
+	
 .. _upstream-the-docs:
 
 Set the Upstream Remote
@@ -306,6 +308,16 @@ When you clone down a repo, the local copy calls your GitHub copy ``origin``. Yo
 .. code-block:: rest
 
   $ git remote add --track upstream https://github.com/opendatakit/docs.git
+  
+.. note::
+
+  If you are working on windows use:
+  
+  .. code-block:: rest
+  
+    >git remote add upstream https://github.com/opendatakit/docs.git
+  
+  
 
 Run ``git remote -v`` to check the status, you should see something like this:
 
