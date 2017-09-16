@@ -1,4 +1,4 @@
-***************************
+﻿***************************
 Contributing to ODK Docs
 ***************************
 
@@ -25,7 +25,7 @@ ODK Documentation follows (as much as possible) the `Docs like Code <http://www.
 
 `The 'Docs as Code' approach has many advantages <http://hackwrite.com/posts/docs-as-code/>`_, but we are aware that this approach can feel difficult for writers who aren't used to dealing with the command line. It can also be difficult for coders who are used to this approach, but who typically use simpler authoring tools (like `Jekyll <http://jekyllrb.com>`_ and `Markdown <https://guides.github.com/features/mastering-markdown/>`_).
 
-This section of the Contributor Guide walks through our authoring and publishing workflow and toolchain, to make it as easy possible for you to contribute.
+This section of the Contributor Guide walks through our authoring and publishing workflow and toolchain, to make it as easy as possible for you to contribute.
 
 .. _docs-workflow-overview:
 
@@ -66,6 +66,9 @@ Terminal (Command Line)
   - adapt the commands to your environment
   - use the `Linux subsystem (Windows 10) <https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/>`_
   - use a `bash terminal emulator <https://www.howtogeek.com/howto/41382/how-to-use-linux-commands-in-windows-with-cygwin/>`_
+  - use command prompt
+  
+    - If you see PowerShell instead of Command Prompt on the Power Users menu,It’s very easy to `switch back to showing the Command Prompt on the Power Users menu <https://www.howtogeek.com/301885/how-to-put-the-command-prompt-back-on-the-windowsx-power-users-menu/>`_
 
   Contributions to this guide with explanations and help for Windows users is greatly appreciated.
 
@@ -87,7 +90,14 @@ If you don't know, check to see if you have Python 3 installed:
 
   $ python3
 
-If you get an error, you probably don't and will need to `install Python 3 <https://www.python.org/downloads/>`_. If the Python command-line interpreter starts up, type ``quit()`` to exit.
+On windows :
+
+.. code-block:: rest
+
+   >python
+ 
+
+If you get an error, you probably don't have it and will need to `install Python 3 <https://www.python.org/downloads/>`_.On Windows Make sure to select the option “Add python to the Path”,while installing(`see instructions <https://www.youtube.com/watch?v=oHOiqFs_x8Y>`_ )otherwise you need to add it `manually <https://youtu.be/UTUlp6L2zkw>`_ .If the Python command-line interpreter starts up, type ``quit()`` to exit.
 
 .. _docs-venv:
 
@@ -104,7 +114,7 @@ Check to see if you have virtualenv installed:
 
 If you get a help message with information about commands, you have it. If you don't have it, you'll get a ``command not found`` message.
 
-If you don't have it, the easiest way to get it is to use pip:
+In case you don't have it, install it using ``pip`` by running:
 
 .. code-block:: rest
 
@@ -122,6 +132,14 @@ Now, inside that odk directory, create a python3 virtualenv.
 .. code-block:: rest
 
   $ virtualenv -p python3 odkenv
+  
+On Windows use:
+
+.. code-block:: rest
+
+  >path to python\python -m venv odkenv
+  (e.g C:\python36\python -m venv odkenv)
+
 
 The last part, ``odkenv`` can be whatever name you'd like to call it.
 
@@ -130,6 +148,15 @@ Activate your virtual environment with:
 .. code-block:: rest
 
   $ source odkenv/bin/activate
+  
+On Windows use:
+
+.. code-block:: rest
+
+  >cd odkenv
+  
+  >.\Scripts\activate
+
 
 And, when you are done working, deactivate it with:
 
@@ -150,6 +177,9 @@ GitHub is an online service that lets individuals and organizations host git rep
 You will need to:
 
 - `Install git <https://git-scm.com/downloads>`_
+-  Make sure that git is installed properly by typing (git) in the terminal or command prompt
+  - On windows if you get any error check if environment variables are set up correctly(`see instructions <https://stackoverflow.com/questions/26620312/installing-git-in-path-with-github-client-for-windows#answer-34767523>`_)
+    
 - `Start a GitHub account <https://github.com/>`_
 
 .. glfs
@@ -160,6 +190,11 @@ GLFS
 We use `Git Large File Storage (GLFS)  <https://git-lfs.github.com/>`_ to handle large binary files like images and videos. Once installed, you normally won't need to do anything else. GLFS is largely transparent when using git.
 
 - `Install GLFS <https://git-lfs.github.com/>`_
+
+
+.. warning::
+
+  Make sure :file:`git-lfs.exe` and  :file:`git.exe` are under same "master" directory on Windows,See `this <https://github.com/git-lfs/git-lfs/issues/919>`_ for reference.
 
 GLFS tracks binary files as defined in the :file:`.gitattributes` file `in the repo <https://github.com/opendatakit/docs/blob/master/.gitattributes>`_. Most common binary file formats are already listed, but there might be others we haven't thought of yet.
 
@@ -253,6 +288,13 @@ The rest of the documentation assumes you are in the directory for the repo (the
 .. tip::
   - The ``clone`` command creates a new directory inside the current one. So you do not need to create a new `odk-docs` directory first.
   - As noted above, we recommend an `odk` master directory that holds your virtualenv directory and your git repo. So you would be in that odk directory when you clone down the repo.
+  - Double check that right folders are in the right places
+  .. code-block:: rest
+
+    1. odk/
+    2.	odkenv/
+    3.	   docs/
+
 
 .. _upstream-the-docs:
 
@@ -329,7 +371,7 @@ Create a new branch in which you will work on this specific issue. The branch na
   Good branch names:
 
   - ``getting-started-guide``
-  - ``conributing``
+  - ``contributing``
   - ``fix-issue-13``
 
   Bad branch names:
@@ -619,7 +661,7 @@ In order to facilitate efficient :ref:`cross-referencing`, sections should be la
 
   Lorem ipsum content of section blah blah.
 
-The section label is a sluggified version of the section title.
+The section label is a slugified version of the section title.
 
 Section titles must be unique throughout the entire documentation set. Therefore, if you write a common title that might appear in more than one document (*Learn More* or *Getting Started*, for example), you'll need to include additional words to make the label unique. The best way to do this is to add a meaningful work from the document title.
 
@@ -657,7 +699,7 @@ Basic Markup
 
 .. _inline-markup:
 
-Empahasis and Inline Literal
+Emphasis and Inline Literal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: rest
@@ -1142,13 +1184,13 @@ Images and Figures
 
 Image files should be put in the :file:`/img/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
 
-You must perform lossless compression on the source images. Following tools can be used to optimize the images: 
+You must perform lossless compression on the source images. Following tools can be used to optimize the images:
 
-- **ImageOptim** is a tool that allows us to optimize the images. It is not format specific which means it can optimize both jpeg as well as png images. You can download it `from here <https://imageoptim.com/howto.html>`_ . After launching ImageOptim.app, dragging and dropping images into its window gives you an in-place optimized file. 
+- **ImageOptim** is a tool that allows us to optimize the images. It is not format specific which means it can optimize both jpeg as well as png images. You can download it `from here <https://imageoptim.com/howto.html>`_ . After launching ImageOptim.app, dragging and dropping images into its window gives you an in-place optimized file.
 
 - **Pngout** is another option for optimizing png images. Installation and usage instructions can be found `here <http://docs.ewww.io/article/13-installing-pngout/>`_ .
 
-- **Mozjpeg** can be used to optimize jpeg images. Installation and related information can be found on `this link <https://nystudio107.com/blog/installing-mozjpeg-on-ubuntu-16-04-forge/>`_ . 
+- **Mozjpeg** can be used to optimize jpeg images. Installation and related information can be found on `this link <https://nystudio107.com/blog/installing-mozjpeg-on-ubuntu-16-04-forge/>`_ .
 
 To place an image in a document, use the ``image`` directive.
 
@@ -1228,6 +1270,43 @@ Now, at the command line, from the root directory of the :file:`odk-docs` repo:
 
 .. tip::
   If you have a problem running ss.py, check to make sure your :ref:`Python 3 virtual environment <docs-venv>` is activated.
+
+.. _videos:
+
+Videos
+~~~~~~~~
+
+Video files should be put in the :file:`/vid/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
+
+The length of the videos must be less than a minute.
+
+There is no ``video`` directive to add a video, so to add a video in a document, you can do the following:
+
+.. code-block:: rst
+  
+  .. raw:: html
+
+  <video controls muted style="max-width:100%">
+    <source src="/{document-subdirectory}/{file}.mp4>
+  </video>
+
+**ADB or Android Debug Bridge** can be used to capture a screen recording from collect. This can be done by entering:
+
+.. code-block:: none
+
+  $ adb shell screenrecord /sdcard/example.mp4
+
+On pressing the enter key the video recording starts. Recording stops automatically after 3 minutes but since video length has to be less than a minute, to stop the recording in between simply press :command:`Ctrl+C`.
+
+The video file is saved in your Android device to a file at :file:`/sdcard/example.mp4` file.
+
+To pull the video locally just type the following command and hit :command:`Enter`.
+
+.. code-block:: none
+  
+  $ adb pull /sdcard/example.mp4 localsavelocation
+
+where localsavelocation is the location where you want to save your file locally.
 
 .. _code-samples:
 
