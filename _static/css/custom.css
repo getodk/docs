@@ -61,3 +61,55 @@ caption .headerlink::after {
         width: 100%;
     }
 }
+
+.menuselection {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: rgb(231, 242, 250);
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0% 0%;
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: repeat;
+    background-size: auto auto;
+    border-bottom-color: black;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-image-outset: 0;
+    border-image-repeat: stretch stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-left-color: black;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: black;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: block;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    box-sizing: border-box;
+    color: rgb(64, 64, 64);
+    font-family: Georgia,"Times New Roman",serif;
+    font-size: 12.8px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 0px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 0px;
+    padding-bottom: 2.4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 2.4px;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+}
