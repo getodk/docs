@@ -156,8 +156,6 @@ Standalone SDK Tools
 You can install the SDK Platform tools (including :command:`adb`) as a `standalone package <https://developer.android.com/studio/index.html#command-tools>`_. `This tutorial explains how to setup the standalone SDK tools <https://www.androidcentral.com/installing-android-sdk-windows-mac-and-linux-tutorial>`_.
 
 
-.. _docs-workflow-setup:
-
 Fork and Clone the ODK Docs repo
 ---------------------------------
 
