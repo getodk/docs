@@ -15,13 +15,6 @@ Install Cygwin
 Cygwin is a Windows implementation of many GNU/Linux commands usable from \*NIX command prompt. Download `cygwin <https://www.cygwin.com/install.html/>`_. Once you download the setup file, follow the steps mentioned here `for instructions <https://www.davidbaumgold.com/tutorials/set-up-python-windows/>`_.
 Make sure to select a mirror site near you to save on download time. The entire list is available on the `cygwin website <https://cygwin.com/mirrors.html/>`_.You will need to install three software packages: openssh, git, and curl.
 
-After you are done with installing cygwin and setting the environment variable, run the following command
-
-.. code-block:: none
-
-  $ echo "PATH=\$PATH:/cygdrive/c/Python32" >> .bash_profile
-  $ source .bash_profile
-
 Set a symbolic link to the executable python location by using:
 
 .. code-block:: none
@@ -135,7 +128,8 @@ To deactivate the odkenv:
 Git and GLFS
 -------------------------------
 
-GitHub is an online service that lets individuals and organizations host git repositories while providing additional collaboration tools like issue trackers. Open Data Kit uses GitHub for its public code and documentation projects.
+GitHub is an online service that lets individuals and organizations host git repositories. It also provides additional collaboration tools like issue trackers. Open Data Kit uses GitHub for its public code and documentation projects.
+
   - Install `Git for windows <https://git-scm.com/downloads>`_.
 
 Make sure that git is installed properly by typing (git) in the cmd.
