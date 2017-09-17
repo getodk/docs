@@ -12,17 +12,17 @@ You need to install `Python 3 <https://www.python.org/downloads/>`_.For instruct
 Install Cygwin
 -------------------------------
 
-Cygwin is a Windows implementation of many GNU/Linux commands usable from \*NIX command prompt. Download `cygwin <https://www.cygwin.com/install.html/>`_ . Once you download the setup file, follow the steps mentioned here `for instructions <https://www.howtogeek.com/howto/41382/how-to-use-linux-commands-in-windows-with-cygwin/>`_.
- Make sure to select a mirror site near you to save on download time. The entire list is available on the `cygwin website <https://cygwin.com/mirrors.html/>`_.You will need to install three software packages: openssh, git, and curl.
+Cygwin is a Windows implementation of many GNU/Linux commands usable from \*NIX command prompt. Download `cygwin <https://www.cygwin.com/install.html/>`_. Once you download the setup file, follow the steps mentioned here `for instructions <https://www.davidbaumgold.com/tutorials/set-up-python-windows/>`_.
+Make sure to select a mirror site near you to save on download time. The entire list is available on the `cygwin website <https://cygwin.com/mirrors.html/>`_.You will need to install three software packages: openssh, git, and curl.
 
-After you are done with installing cywing and setiing the environment variable, run the following command
+After you are done with installing cygwin and setting the environment variable, run the following command
 
 .. code-block:: none
 
   $ echo "PATH=\$PATH:/cygdrive/c/Python32" >> .bash_profile
   $ source .bash_profile
 
-set a symbolic link to the executable python location by using:
+Set a symbolic link to the executable python location by using:
 
 .. code-block:: none
 
@@ -33,7 +33,7 @@ set a symbolic link to the executable python location by using:
 Virtual Environment
 -------------------------------
 
-`A virtual environment <https://virtualenv.pypa.io/en/stable/userguide/>`_ virtualenv is a tool to create isolated Python environments. The basic problem being addressed is one of dependencies and versions, and indirectly permissions. 
+`A virtual environment <https://virtualenv.pypa.io/en/stable/userguide/>`_ is a tool to create isolated Python environments. The basic problem being addressed is one of dependencies and versions, and indirectly permissions. 
 
 To start with the installation first create a new directory for your odkdocs work:
 
