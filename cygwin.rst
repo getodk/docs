@@ -2,11 +2,6 @@
 Working with Docs in Windows using Cygwin
 ******************************************
 
-Install Cygwin
--------------------------------
-
-Cygwin is a Windows implementation of many GNU/Linux commands usable from \*NIX command prompt. Download `cygwin <https://www.cygwin.com/install.html/>`_ . Once you download the file follow the steps mentioned `here <https://davidbaumgold.com/tutorials/set-up-python-windows/>`_to complete installation. Make sure to select a mirror site near you to save on download time. The entire list is available `here<https://cygwin.com/mirrors.html/>`_. 
-
 .. _cygwin-python:
 
 Python 3
@@ -14,7 +9,12 @@ Python 3
 
 You need to install `Python 3 <https://www.python.org/downloads/>`_. `For instructions, see 'this video <https://www.youtube.com/watch?v=oHOiqFs_x8Y>`_. Make sure to select the option "Add python to the Path", otherwise you will need to add it manually.
 
-Once done with installing python, set a symbolic link to the executable location by using:
+Install Cygwin
+-------------------------------
+
+Cygwin is a Windows implementation of many GNU/Linux commands usable from \*NIX command prompt. Download `cygwin <https://www.cygwin.com/install.html/>`_ . Once you download the setup file follow the steps mentioned `here <https://www.howtogeek.com/howto/41382/how-to-use-linux-commands-in-windows-with-cygwin/>`_to complete installation. Make sure to select a mirror site near you to save on download time. The entire list is available `here<https://cygwin.com/mirrors.html/>`_. 
+
+Once done with installing python, set a symbolic link to the executable python location by using:
 
 .. code-block:: none
 
