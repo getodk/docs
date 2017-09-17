@@ -149,7 +149,7 @@ Android Studio
 
 ADB (Android Debug Bridge) is part of `Android Studio <https://developer.android.com/studio/index.html>`_. This is the best way to get ADB if you plan to do any other Android development. It *should* be installed by default when you install Android Studio. To use it from the command line, you'll need to add the SDK Platform tools to your path.
 
-.. _standalone-sdk-tools:
+.. _sdk-tools:
 
 Standalone SDK Tools
 --------------------
