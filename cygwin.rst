@@ -12,9 +12,16 @@ You need to install `Python 3 <https://www.python.org/downloads/>`_. `For instru
 Install Cygwin
 -------------------------------
 
-Cygwin is a Windows implementation of many GNU/Linux commands usable from \*NIX command prompt. Download `cygwin <https://www.cygwin.com/install.html/>`_ . Once you download the setup file follow the steps mentioned `here <https://www.howtogeek.com/howto/41382/how-to-use-linux-commands-in-windows-with-cygwin/>`_to complete installation. Make sure to select a mirror site near you to save on download time. The entire list is available `here<https://cygwin.com/mirrors.html/>`_. 
+Cygwin is a Windows implementation of many GNU/Linux commands usable from \*NIX command prompt. Download `cygwin <https://www.cygwin.com/install.html/>`_ . Once you download the setup file, follow the steps mentioned here `for instructions <https://www.howtogeek.com/howto/41382/how-to-use-linux-commands-in-windows-with-cygwin/>`_.
+ Make sure to select a mirror site near you to save on download time. The entire list is available `here<https://cygwin.com/mirrors.html/>`_.You will need to install three software packages: openssh, git, and curl.
 
-Once done with installing python, set a symbolic link to the executable python location by using:
+After you are done with installing cywing and setiing the environment variable, run the following command
+
+.. code-block:: none
+  $echo "PATH=\$PATH:/cygdrive/c/Python32" >> .bash_profile
+  $source .bash_profile
+
+set a symbolic link to the executable python location by using:
 
 .. code-block:: none
 
