@@ -142,20 +142,19 @@ Make sure that git is installed properly by typing (git) in the cmd.
 Android Tools
 -------------------------------
 
-Some testing and documentation tasks require `ADB (`Android Debug Bridge <https://developer.android.com/studio/command-line/adb.html>`_) command line tool.
+Some testing and documentation tasks require ADB (`Android Debug Bridge <https://developer.android.com/studio/command-line/adb.html>`_) command line tool.
 
 Android Studio
 -------------------------------
 
-ADB (Android Debug Bridge) is part of `Android Studio <https://developer.android.com/studio/index.html>`_. This is the best way to get :command:`adb` if you plan to do any other Android development. It *should* be installed by default when you install Android Studio. To use it from the command line, you'll need to add the SDK Platform tools to your path.
+ADB (Android Debug Bridge) is part of `Android Studio <https://developer.android.com/studio/index.html>`_. This is the best way to get ADB if you plan to do any other Android development. It *should* be installed by default when you install Android Studio. To use it from the command line, you'll need to add the SDK Platform tools to your path.
 
 .. _standalone-sdk-tools:
 
 Standalone SDK Tools
 --------------------
 
-You can install the SDK Platform tools as a `standalone package <https://developer.android.com/studio/index.html#command-tools>`_. `This tutorial explains how to setup the standalone SDK tools <https://www.androidcentral.com/installing-android-sdk-windows-mac-and-linux-tutorial>`_.
-
+You can install the SDK Platform tools as a `standalone package <https://developer.android.com/studio/index.html#command-tools>`_. `This tutorial <https://www.androidcentral.com/installing-android-sdk-windows-mac-and-linux-tutorial>`_  explains how to setup the standalone SDK tools.
 
 Fork and Clone the ODK Docs repo
 ---------------------------------
