@@ -5,7 +5,7 @@ Working with Docs in Windows using Cygwin
 Install Cygwin
 -------------------------------
 
-Cygwin is a Windows implementation of many GNU/Linux commands usable from \*NIX command prompt. Download `cygwin <https://www.cygwin.com/install.html/>`_ . Once you download the file follow the steps mentioned `here <https://www.davidbaumgold.com/tutorials/set-up-python-windows/>`_to complete installation. Make sure to select a mirror site near you to save on download time. The entire list is available `here<https://cygwin.com/mirrors.html/>`_. 
+Cygwin is a Windows implementation of many GNU/Linux commands usable from \*NIX command prompt. Download `cygwin <https://www.cygwin.com/install.html/>`_ . Once you download the file follow the steps mentioned `here <https://davidbaumgold.com/tutorials/set-up-python-windows/>`_to complete installation. Make sure to select a mirror site near you to save on download time. The entire list is available `here<https://cygwin.com/mirrors.html/>`_. 
 
 .. _cygwin-python:
 
