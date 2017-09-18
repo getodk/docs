@@ -83,7 +83,7 @@ Python 3
 
 If you don't know, check to see if you have Python 3 installed:
 
-.. code-block:: none
+.. code-block:: console
 
   $ python3
 
@@ -98,7 +98,7 @@ A virtual environment is a Python tool for sandboxing dependencies. It lets you 
 
 Check to see if you have virtualenv installed:
 
-.. code-block:: none
+.. code-block:: console
 
   $ virtualenv
 
@@ -106,20 +106,20 @@ If you get a help message with information about commands, you have it. If you d
 
 In case you don't have it, install it using ``pip`` by running:
 
-.. code-block:: none
+.. code-block:: console
 
   $ pip install virtualenv
 
 Then, create an ODK "master" directory. This will contain your virtualenv and the docs repo as subdirectories.
 
-.. code-block:: none
+.. code-block:: console
 
   $ mkdir odk
   $ cd odk
 
 Now, inside that odk directory, create a python3 virtualenv.
 
-.. code-block:: none
+.. code-block:: console
 
   $ virtualenv -p python3 odkenv
 
@@ -127,13 +127,13 @@ The last part, ``odkenv`` can be whatever name you'd like to call it.
 
 Activate your virtual environment with:
 
-.. code-block:: none
+.. code-block:: console
 
   $ source odkenv/bin/activate
 
 And, when you are done working, deactivate it with:
 
-.. code-block:: none
+.. code-block:: console
 
   $ deactivate
 
@@ -165,14 +165,14 @@ GLFS tracks binary files as defined in the :file:`.gitattributes` file `in the r
 
 If you are adding binary files to the repo, and they are in formats not already tracked, **it is your responsibility to make sure they are tracked.** To make sure they are properly tracked, add the file type to GLFS. You can do this by editing :file:`.gitattributes` directly.
 
-.. code-block:: none
+.. code-block:: console
 
   # file type section heading
   *.{extension-to-track} filter=lfs diff=lfs merge=lfs -text
 
 You can also use the command line.
 
-.. code-block:: none
+.. code-block:: console
 
   $ glfs track *.{file-extension}
 
@@ -203,7 +203,7 @@ On Mac, add the following to your :file:`.bash_profile`
 
 .. code-block:: console
 
-  export PATH=$PATH:~/Library/Android/sdk/tools/
+  $ export PATH=$PATH:~/Library/Android/sdk/tools/
 
 .. warning::
 
@@ -240,7 +240,7 @@ From your own form of the repo on Github, select the :guilabel:`Clone or downloa
 
 Open your terminal, and `cd` to your preferred directory. Then `git clone` the repo:
 
-.. code-block:: none
+.. code-block:: console
 
   $ git clone https://github.com/your-github-username/docs.git
   .
@@ -261,13 +261,13 @@ Set the Upstream Remote
 
 When you clone down a repo, the local copy calls your GitHub copy ``origin``. You should also set ``upstream`` as the name of the original, main GitHub repo.
 
-.. code-block:: none
+.. code-block:: console
 
   $ git remote add --track upstream https://github.com/opendatakit/docs.git
 
 Run ``git remote -v`` to check the status, you should see something like this:
 
-.. code-block:: none
+.. code-block:: console
 
   $ origin https://github.com/your-github-username/docs.git (fetch)
   $ origin https://github.com/your-github-username/docs.git (push)
@@ -281,7 +281,7 @@ Install Dependencies
 
 The first time you clone down the repo, you'll need to install the dependencies. Make sure you have your Python 3 virtual environment set up and activated and then:
 
-.. code-block:: none
+.. code-block:: console
 
   $ pip install -r requirements.txt
 
@@ -305,7 +305,7 @@ Pull in Updates from Upstream
 
 You probably won't need to do this the first time, but you should always pull in any changes from the main repository before working.
 
-.. code-block:: none
+.. code-block:: console
 
   $ git pull upstream
 
@@ -318,7 +318,7 @@ Choose a specific, deliverable task to work on. This should be an `active issue 
 
 Create a new branch in which you will work on this specific issue. The branch name should briefly describe what you are doing. For example, the original author of this contributor guide worked in a branch he called ``contributing``. Also, make sure that all the branches are derived from the ``master`` branch to avoid intermixing of commits.
 
-.. code-block:: none
+.. code-block:: console
 
   $ git checkout -b branch-name
 
@@ -355,7 +355,7 @@ Build, View, and Debug
 
 To build the documentation into a viewable website:
 
-.. code-block:: none
+.. code-block:: console
 
   $ sphinx-build -b html . build
 
@@ -372,7 +372,7 @@ Error and warning messages include a file name and line number for tracking them
 
 To view the documentation in your web browser, you can use Python's built-in web server.
 
-.. code-block:: none
+.. code-block:: console
 
   $ cd build
   $ python -m http.server 8000
@@ -383,7 +383,7 @@ Read through your doc edits in the browser and correct any issues in your source
 
 It's a good idea to delete the ``build`` directory before each rebuild.
 
-.. code-block:: none
+.. code-block:: console
 
   $ rm -rf build
   $ sphinx-build -b html . build
@@ -395,20 +395,20 @@ Push Your Branch
 
 Once your work on the issue is completed, add the files you've changed or created additionally, and write a relevant commit message describing the changes.
 
-.. code-block:: none
+.. code-block:: console
 
   $ git add my_changed_files
   $ git commit -m "A small but relevant commit message"
 
 Then it's time to push the changes. The first time you do this on any branch, you'll need to specify the branch name:
 
-.. code-block:: none
+.. code-block:: console
 
   $ git push origin branch-name
 
 After that, you can just:
 
-.. code-block:: none
+.. code-block:: console
 
   $ git push
 
@@ -445,20 +445,20 @@ Keep Going
 
 Once the PR is merged, you'll need to pull in the changes from the main repo ( ``upstream`` ) into your local copy.
 
-.. code-block:: none
+.. code-block:: console
 
   $ git checkout master
   $ git pull upstream master
 
 Then you should push those change to your copy on GitHub ( ``origin`` ).
 
-.. code-block:: none
+.. code-block:: console
 
   $ git push
 
 If you want to delete your branch from before, you can do that:
 
-.. code-block:: none
+.. code-block:: console
 
   $ git branch -d branch-name
 
@@ -1341,5 +1341,5 @@ Use the ``code-block`` directive to markup code samples. Specify the language on
 
 .. note::
 
-    All command line examples in this documentation use ``none`` as the code-block type.
+    All command line examples in this documentation use ``console`` as the code-block type.
 
