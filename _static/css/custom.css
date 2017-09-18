@@ -73,7 +73,7 @@ caption .headerlink::after {
     background-position-y: 0%;
     background-repeat: repeat;
     background-size: auto auto;
-    border-bottom-color: black;
+    border-bottom-color: rgb(127, 187, 227);
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     border-bottom-style: solid;
@@ -83,13 +83,13 @@ caption .headerlink::after {
     border-image-slice: 100%;
     border-image-source: none;
     border-image-width: 1;
-    border-left-color: black;
+    border-left-color: rgb(127, 187, 227);
     border-left-style: solid;
     border-left-width: 1px;
-    border-right-color: black;
+    border-right-color: rgb(127, 187, 227);
     border-right-style: solid;
     border-right-width: 1px;
-    border-top-color: block;
+    border-top-color: rgb(127, 187, 227);
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-top-style: solid;
