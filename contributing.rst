@@ -1260,7 +1260,7 @@ If you have set up local :ref:`android-tools`, you can connect your Android devi
 
 Now, at the command line, from the root directory of the :file:`odk-docs` repo:
 
-.. code-block:: none
+.. code-block:: console
 
   python ss.py {document-name}/{image-name}
 
@@ -1285,7 +1285,7 @@ The length of the videos must be less than a minute.
 
 There is no ``video`` directive to add a video, so to add a video in a document, you can do the following:
 
-.. code-block:: none
+.. code-block:: rst
   
   .. raw:: html
 
@@ -1295,7 +1295,7 @@ There is no ``video`` directive to add a video, so to add a video in a document,
 
 **ADB or Android Debug Bridge** can be used to capture a screen recording from collect. This can be done by entering:
 
-.. code-block:: none
+.. code-block:: console
 
   $ adb shell screenrecord /sdcard/example.mp4
 
@@ -1305,7 +1305,7 @@ The video file is saved in your Android device to a file at :file:`/sdcard/examp
 
 To pull the video locally just type the following command and hit :command:`Enter`.
 
-.. code-block:: none
+.. code-block:: console
   
   $ adb pull /sdcard/example.mp4 localsavelocation
 
