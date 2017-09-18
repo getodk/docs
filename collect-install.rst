@@ -93,6 +93,6 @@ Any server application that implements the `OpenRosa API <https://bitbucket.org/
 
   If you think you might need to connect to a non-Aggregate server application, and are having trouble, we encourage you to visit our `Support Forum <https://forum.opendatakit.org/c/support>`_.
 
-  The :menuselection:`Other` option will likely be deprecated in the future, and its use is not recommended.  
+  The :menuselection:`other` option will likely be deprecated in the future, and its use is not recommended.  
 
 
