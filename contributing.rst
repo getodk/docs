@@ -502,7 +502,7 @@ Sphinx document files have the ``.rst`` extension. File names should be all lowe
 
 Normally, the title of the page should be the first line of the file, followed by the line of equal-signs.
 
-.. code-block:: none
+.. code-block:: rst
 
   Title of Page
   ================
@@ -511,7 +511,7 @@ Normally, the title of the page should be the first line of the file, followed b
 
 You can also wrap the title in two lines of asterisks.
 
-.. code-block:: none
+.. code-block:: rst
 
   *******************
   Title of Page
@@ -539,7 +539,7 @@ Sections and Titles
 
 Headlines require two lines: the text of the headline, followed by a line filled with a single character. Each level in a headline hierarchy uses a different character:
 
-.. code-block:: none
+.. code-block:: rst
 
   Title of the Page - <h1> - Equal Signs
   =========================================
@@ -562,7 +562,7 @@ Headlines require two lines: the text of the headline, followed by a line filled
 
 If you need to combine several existing pages together, or want to start a single-page doc that you think might be split into individual pages later on, you can add a top-level title, demoting the other headline types by one:
 
-.. code-block:: none
+.. code-block:: rst
 
   ************************************************
   Page Title - <h1> - Asterisks above and below
@@ -610,7 +610,7 @@ In order to facilitate efficient :ref:`cross-referencing`, sections should be la
 
 - a single colon
 
-.. code-block:: none
+.. code-block:: rst
 
   .. _section-label:
 
@@ -623,7 +623,7 @@ The section label is a slugified version of the section title.
 
 Section titles must be unique throughout the entire documentation set. Therefore, if you write a common title that might appear in more than one document (*Learn More* or *Getting Started*, for example), you'll need to include additional words to make the label unique. The best way to do this is to add a meaningful work from the document title.
 
-.. code-block:: none
+.. code-block:: rst
 
   ODK Aggregate
   ===============
@@ -645,7 +645,7 @@ Basic Markup
 
   Markup characters can be escaped using the ``\`` characters.
 
-  .. code-block:: none
+  .. code-block:: rst
 
     *Italic.*
 
@@ -660,7 +660,7 @@ Basic Markup
 Emphasis and Inline Literal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: rst
 
   Single asterisks for *italic text* (``<em>``).
 
@@ -687,7 +687,7 @@ Hyperlinks
 
 **External** hyperlinks — that is, links to resources *outside* the documentation — look like this:
 
-.. code-block:: none
+.. code-block:: rst
 
   This is a link to `example <http://example.com>`_.
 
@@ -695,7 +695,7 @@ This is a link to `example <http://example.com>`_.
 
 You can also use "reference style" links:
 
-.. code-block:: none
+.. code-block:: rst
 
   This is a link to `example`_.
 
@@ -703,7 +703,7 @@ You can also use "reference style" links:
 
 This may help make paragraphs with *a lot* of links more readable. In general, the inline style is preferable. If you use the reference style, be sure to keep the link references below the paragraph where they appear.
 
-.. code-block:: none
+.. code-block:: rst
 
   You can also simply place an unadorned URI in the text: http://example.com
 
@@ -719,7 +719,7 @@ Lists
 Unordered (bullet) lists
 """""""""""""""""""""""""""
 
-.. code-block:: none
+.. code-block:: rst
 
   Bulleted lists ( ``<ul>`` ):
 
@@ -748,7 +748,7 @@ Bulleted lists ( ``<ul>`` ):
 Ordered (numbered) lists
 """"""""""""""""""""""""""
 
-.. code-block:: none
+.. code-block:: rst
 
   Numbered lists ( ``<ol>`` ):
 
@@ -779,7 +779,7 @@ Numbered lists ( ``<ol>`` ):
 Definition Lists
 """""""""""""""""""
 
-.. code-block:: none
+.. code-block:: rst
 
   Definition list ( ``<dl>`` )
     a list with several term-definition pairs
@@ -812,7 +812,7 @@ Line spacing
 Paragraph-level Markup
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: none
+.. code-block:: rst
 
   Paragraphs are separated by blank lines. Line breaks in the source code do not create line breaks in the output.
 
@@ -843,7 +843,7 @@ There is **no reason** to put a limit on line length in source files for documen
 Block Quotes
 """"""""""""""
 
-.. code-block:: none
+.. code-block:: rst
 
   This is not a block quote. Block quotes are indented, and otherwise unadorned.
 
@@ -860,7 +860,7 @@ This is not a block quote. Block quotes are indented, and otherwise unadorned.
 Line Blocks
 """"""""""""
 
-.. code-block:: none
+.. code-block:: rst
 
   | Line blocks are useful for addresses,
   | verse, and adornment-free lists.
@@ -890,7 +890,7 @@ Tables
 Grid style
 ''''''''''''
 
-.. code-block:: none
+.. code-block:: rst
 
   +------------+------------+-----------+
   | Header 1   | Header 2   | Header 3  |
@@ -922,7 +922,7 @@ Simple style
 ''''''''''''''
 
 
-.. code-block:: none
+.. code-block:: rst
 
   =====  =====  ======
      Inputs     Output
@@ -977,7 +977,7 @@ Cross referencing
 
 Cross referencing is linking internally, from one place in the documentation to another. This is **not** done using the :ref:`hyperlinks` syntax, but with one of the several roles:
 
-.. code-block:: none
+.. code-block:: rst
 
   :role:`target`
     becomes...
@@ -1011,7 +1011,7 @@ Cross referencing is linking internally, from one place in the documentation to 
 
 For example:
 
-.. code-block:: none
+.. code-block:: rst
 
   - Link to this document:
 
@@ -1054,7 +1054,7 @@ Several roles are used when describing user interactions.
 
   Marks up *actual UI text* of form labels or buttons.
 
-  .. code-block:: none
+  .. code-block:: rst
 
     Press the :guilabel:`Submit` button.
 
@@ -1129,7 +1129,7 @@ Custom text roles used in ODK documentation are:
   - Sent
   - Deleted
   
-  .. code-block:: rest
+  .. code-block:: rst
     
     :formstate:`Sent`
 
@@ -1137,7 +1137,7 @@ Custom text roles used in ODK documentation are:
     
   Describes a touch screen gesture. 
 
-  .. code-block:: rest
+  .. code-block:: rst
     
     :gesture:`Swipe Left`
 
@@ -1285,7 +1285,7 @@ The length of the videos must be less than a minute.
 
 There is no ``video`` directive to add a video, so to add a video in a document, you can do the following:
 
-.. code-block:: console
+.. code-block:: none
   
   .. raw:: html
 
@@ -1338,3 +1338,8 @@ Use the ``code-block`` directive to markup code samples. Specify the language on
         }
 
     }
+
+.. note::
+
+    All command line examples in this documentation use ``none`` as the code-block type.
+
