@@ -201,9 +201,9 @@ Android Studio
 
 On Mac, add the following to your :file:`.bash_profile`
 
-.. code-block:: console
+.. code-block:: sh
 
-  $ export PATH=$PATH:~/Library/Android/sdk/tools/
+  export PATH=$PATH:~/Library/Android/sdk/tools/
 
 .. warning::
 
@@ -1328,6 +1328,10 @@ Use the ``code-block`` directive to markup code samples. Specify the language on
 
     print("Hello ODK!")
 
+  .. code-block:: console
+
+    $ python --version
+
   .. code-block:: java
 
     public class HelloWorld {
@@ -1338,8 +1342,4 @@ Use the ``code-block`` directive to markup code samples. Specify the language on
         }
 
     }
-
-.. note::
-
-    All command line examples in this documentation use ``console`` as the code-block type.
 
