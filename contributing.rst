@@ -1072,6 +1072,13 @@ Several roles are used when describing user interactions.
 
     To save your file, go to :menuselection:`File --> Save` in the Main Menu.
 
+.. note::
+
+  In some situations you might not be clear about which option to use from ``:menuselection:`` and ``:guilabel:``, in which case you should refer to the following rule that we observe in our writing.
+
+  - Actual UI text will always receive ``:guilabel:`` role unless the text could reasonably be understood to be part of a menu.
+  - If the actual UI text could be understood as a menu, ``:menuselection:`` should be used.
+
 .. rst:role:: kbd
 
   Marks up a sequence of literal keyboard strokes.
