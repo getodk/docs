@@ -17,8 +17,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
+import os
+import sys
+sys.path.append(os.path.abspath('docs'))
 # sys.path.insert(0, os.path.abspath('.'))
 
 
@@ -111,7 +112,7 @@ html_favicon = "_static/img/odk-favicon.ico"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-# Add paths that contain extra files which are not directly related to the 
+# Add paths that contain extra files which are not directly related to the
 # documentation and which are are copied to the output directory.
 html_extra_path = ['vid']
 
@@ -202,20 +203,20 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 
 def setup(app):
     app.add_stylesheet('css/custom.css')
-    
+
 
 # At top of every document
 
 rst_prolog="""
 .. role:: th
     :class: th
-    
+
 .. role:: tc
     :class: tc
 
 .. role:: formstate
     :class: formstate
-    
+
 .. role:: gesture
     :class: gesture
 """
@@ -223,7 +224,7 @@ rst_prolog="""
 # At bottom of every document
 prevar1 = """
 
-If you find a problem with this documentation, please 
+If you find a problem with this documentation, please
 
 """
 hyper1 = """
@@ -243,24 +244,24 @@ You are also encouraged to
 """
 hyper2 = """
 
-fork our Github repo 
+fork our Github repo
 
 """
-link2 = """ 
+link2 = """
 
 https://github.com/opendatakit/docs/
 
 """
-prevar3 = """ 
+prevar3 = """
 
-and 
+and
 
 """
 hyper3 = """
 
 become a contributor
 
-""" 
+"""
 link3 = """
 
 contributing.html
@@ -268,4 +269,3 @@ contributing.html
 """
 html_context = {'prevar1' : prevar1 , 'prevar2' : prevar2 , 'prevar3' : prevar3 , 'hyper1' : hyper1 , 'hyper2' : hyper2 ,
                 'hyper3' : hyper3 , 'link1' : link1 , 'link2' : link2 , 'link3' : link3}
-
