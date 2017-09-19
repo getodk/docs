@@ -1062,8 +1062,6 @@ Several roles are used when describing user interactions.
 
   Marks up the *actual UI text* of a navigation menu or form select element.
 
-
-
   .. code-block:: rst
 
     Select :menuselection:`Help` from menu.
