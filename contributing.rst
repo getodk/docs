@@ -86,13 +86,13 @@ Python 3
 
 If you don't know, check to see if you have Python 3 installed:
 
-.. code-block:: rest
+.. code-block:: none
 
   $ python3
 
 On windows :
 
-.. code-block:: rest
+.. code-block:: none
 
    >python
  
@@ -110,7 +110,7 @@ A virtual environment is a Python tool for sandboxing dependencies. It lets you 
 
 Check to see if you have virtualenv installed:
 
-.. code-block:: rest
+.. code-block:: none
 
   $ virtualenv
 
@@ -118,26 +118,26 @@ If you get a help message with information about commands, you have it. If you d
 
 In case you don't have it, install it using ``pip`` by running:
 
-.. code-block:: rest
+.. code-block:: none
 
   $ pip install virtualenv
 
 Then, create an ODK "master" directory. This will contain your virtualenv and the docs repo as subdirectories.
 
-.. code-block:: rest
+.. code-block:: none
 
   $ mkdir odk
   $ cd odk
 
 Now, inside that odk directory, create a python3 virtualenv.
 
-.. code-block:: rest
+.. code-block:: none
 
   $ virtualenv -p python3 odkenv
   
 On Windows use:
 
-.. code-block:: rest
+.. code-block:: none
 
   >path to python\python -m venv odkenv
   (e.g C:\python36\python -m venv odkenv)
@@ -147,13 +147,13 @@ The last part, ``odkenv`` can be whatever name you'd like to call it.
 
 Activate your virtual environment with:
 
-.. code-block:: rest
+.. code-block:: none
 
   $ source odkenv/bin/activate
   
 On Windows use:
 
-.. code-block:: rest
+.. code-block:: none
 
   >cd odkenv
   >.\Scripts\activate
@@ -161,7 +161,7 @@ On Windows use:
 
 And, when you are done working, deactivate it with:
 
-.. code-block:: rest
+.. code-block:: none
 
   $ deactivate
 
@@ -277,7 +277,7 @@ From your own form of the repo on Github, select the :guilabel:`Clone or downloa
 
 Open your terminal, and `cd` to your preferred directory. Then `git clone` the repo:
 
-.. code-block:: rest
+.. code-block:: none
 
   $ git clone https://github.com/your-github-username/docs.git
   .
@@ -307,7 +307,7 @@ Set the Upstream Remote
 
 When you clone down a repo, the local copy calls your GitHub copy ``origin``. You should also set ``upstream`` as the name of the original, main GitHub repo.
 
-.. code-block:: rest
+.. code-block:: none
 
   $ git remote add --track upstream https://github.com/opendatakit/docs.git
   
@@ -315,7 +315,7 @@ When you clone down a repo, the local copy calls your GitHub copy ``origin``. Yo
 
   If you are working on windows use:
   
-  .. code-block:: rest
+  .. code-block:: none
   
     >git remote add upstream https://github.com/opendatakit/docs.git
   
@@ -323,7 +323,7 @@ When you clone down a repo, the local copy calls your GitHub copy ``origin``. Yo
 
 Run ``git remote -v`` to check the status, you should see something like this:
 
-.. code-block:: rest
+.. code-block:: none
 
   $ origin https://github.com/your-github-username/docs.git (fetch)
   $ origin https://github.com/your-github-username/docs.git (push)
@@ -337,7 +337,7 @@ Install Dependencies
 
 The first time you clone down the repo, you'll need to install the dependencies. Make sure you have your Python 3 virtual environment set up and activated and then:
 
-.. code-block:: rest
+.. code-block:: none
 
   $ pip install -r requirements.txt
 
@@ -361,7 +361,7 @@ Pull in Updates from Upstream
 
 You probably won't need to do this the first time, but you should always pull in any changes from the main repository before working.
 
-.. code-block:: rest
+.. code-block:: none
 
   $ git pull upstream
 
@@ -374,7 +374,7 @@ Choose a specific, deliverable task to work on. This should be an `active issue 
 
 Create a new branch in which you will work on this specific issue. The branch name should briefly describe what you are doing. For example, the original author of this contributor guide worked in a branch he called ``contributing``. Also, make sure that all the branches are derived from the ``master`` branch to avoid intermixing of commits.
 
-.. code-block:: rest
+.. code-block:: none
 
   $ git checkout -b branch-name
 
@@ -411,7 +411,7 @@ Build, View, and Debug
 
 To build the documentation into a viewable website:
 
-.. code-block:: rest
+.. code-block:: none
 
   $ sphinx-build -b html . build
 
@@ -439,7 +439,7 @@ Read through your doc edits in the browser and correct any issues in your source
 
 It's a good idea to delete the ``build`` directory before each rebuild.
 
-.. code-block:: rest
+.. code-block:: none
 
   $ rm -rf build
   $ sphinx-build -b html . build
@@ -451,20 +451,20 @@ Push Your Branch
 
 Once your work on the issue is completed, add the files you've changed or created additionally, and write a relevant commit message describing the changes.
 
-.. code-block:: rest
+.. code-block:: none
 
   $ git add my_changed_files
   $ git commit -m "A small but relevant commit message"
 
 Then it's time to push the changes. The first time you do this on any branch, you'll need to specify the branch name:
 
-.. code-block:: rest
+.. code-block:: none
 
   $ git push origin branch-name
 
 After that, you can just:
 
-.. code-block:: rest
+.. code-block:: none
 
   $ git push
 
@@ -501,20 +501,20 @@ Keep Going
 
 Once the PR is merged, you'll need to pull in the changes from the main repo ( ``upstream`` ) into your local copy.
 
-.. code-block:: rest
+.. code-block:: none
 
   $ git checkout master
   $ git pull upstream master
 
 Then you should push those change to your copy on GitHub ( ``origin`` ).
 
-.. code-block:: rest
+.. code-block:: none
 
   $ git push
 
 If you want to delete your branch from before, you can do that:
 
-.. code-block:: rest
+.. code-block:: none
 
   $ git branch -d branch-name
 
