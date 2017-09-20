@@ -28,7 +28,7 @@ Loading blank forms
 
 The forms are stored in :file:`sdcard/odk/forms/` folder on the device. They can be loaded via a USB device using:
 
-.. code-block:: none
+.. code-block:: console
 
   $ adb push path/to/form.xml /sdcard/odk/forms/form.xml
 
@@ -43,7 +43,7 @@ Deleting forms
 
 Forms can be deleted from :file:`sdcard/odk/forms` by running:
 
-.. code-block:: none
+.. code-block:: console
 
   $ adb shell rm -d /sdcard/odk/forms/my_form.xml
 
@@ -54,7 +54,7 @@ Downloading forms to your computer
 
 To download a completed form or form instance from the computer, run:
 
-.. code-block:: none
+.. code-block:: console
 
   $ adb pull /sdcard/odk/forms/my_form.xml
 
@@ -65,7 +65,7 @@ Downloading database
 
 Developers might also need to check the entries in the database from the computer. In such case pull the database file from the SD card and use any **SQLite visualizer** to view it. To pull the database into the computer, run:
 
-.. code-block:: none
+.. code-block:: console
   
   $  adb -pull /sdcard/odk/database/database.name
 
@@ -76,13 +76,13 @@ Saving screenshot
 
 For taking a screenshot, run:
 
-.. code-block:: none
+.. code-block:: console
 
   $ adb exec-out screencap /sdcard/screen.png
 
 Here, the image will be stored as ``screen.png`` which can be downloaded to the computer by running:
 
-.. code-block:: none
+.. code-block:: console
 
   $ adb pull /sdcard/screen.png
 
@@ -97,7 +97,7 @@ Recording a video
 
 :command:`adb` can be used to record video on device's screen. This can be done by running:
 
-.. code-block:: none
+.. code-block:: console
 
   $ adb shell screenrecord /sdcard/example.mp4
 
