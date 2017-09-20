@@ -36,7 +36,7 @@ Bad PR titles:
 
 .. _small-commits:
 
-Small Atomic Commits
+Small, atomic commits
 -----------------------
 
 When working locally, commit often. Don't wait until you have 100 lines of changes across multiple files.
@@ -72,7 +72,7 @@ Claim issues
 
 If you decide to work on an issue, let the community know you are working on it by *claiming* the issue.
 
-> @opendatakit-bot claim
+  @opendatakit-bot claim
 
 Once you've claimed an issue, other people won't work on it. So make sure you're actually going to work on it before claiming it.
 
@@ -81,12 +81,12 @@ Don't claim more than one or two open issues at a time.
 
 .. _wip-pr:
 
-Share Work in Progress
+Share work in progress
 -------------------------
 
-It can be helpful to share your in-progress work. To mark a PR as a work in progress, append ``[WIP]`` to the beginning of the PR title. We will not merge ``[WIP]`` PRs, and we won't do a review on them unless you ask. 
+It can be helpful to share your in-progress work. To mark a PR as a work in progress, append **WIP:** to the beginning of the PR title. We will not merge **WIP** PRs, and we won't do a review on them unless you ask. 
 
-If you want a review, comment, opinion, or help on a ``[WIP]`` PR, please tag someone in the PR comments.
+If you want a review, comment, opinion, or help on a **WIP** PR, please tag the relevant person in the PR comments.
 
 If you finish the work and want the PR to be merged, you do not need to open a new one. Just edit the PR title. 
 
@@ -100,7 +100,7 @@ If you get stuck while working
 
   - Asking questions is always better than guessing.
 
-- Submit a ``[WIP]`` (work in progress) pull request.
+- Submit a **WIP** (work in progress) pull request.
 
   - If we can see what progress you have made, it is easier to offer help.
   - Even if you don't complete the task, perhaps someone else can pull in your in-progress work and build on it.
@@ -117,11 +117,11 @@ Sometimes you simply cannot complete work you have said you were going to comple
 
 Please let the community know in the issue discussion. 
 
-> @opendatakit-bot unclaim
+  @opendatakit-bot unclaim
 
 This way, everyone knows that someone else can take up the project (or that we need to rethink it).
 
-If you did significant work on a project before abandoning it, consider filing a ``[WIP]`` (work in progress) PR, so that others can see what you did and potentially build off of it. (Be sure to mention the issue, so the work is easy to find later.)
+If you did significant work on a project before abandoning it, consider filing a **WIP** (work in progress) PR, so that others can see what you did and potentially build off of it. (Be sure to mention the issue, so the work is easy to find later.)
 
 .. _issue-takes-long-time:
 
@@ -138,7 +138,7 @@ An issue might take a long time because:
 
 The thing that matters is: **Are you actively working on the issue, and making progress, at least a little bit?**
 
-If you are actively working on it, we do not want someone else to jump on and try to work on it at the same time. So please keep the community informed of your work by filing a ``[WIP]`` (work in progress) PR and comitting to it as you work.
+If you are actively working on it, we do not want someone else to jump on and try to work on it at the same time. So please keep the community informed of your work by filing a **WIP** (work in progress) PR and comitting to it as you work.
 
 .. _issues-only:
 
@@ -190,9 +190,10 @@ We all feel this way sometimes, and that's okay. But it is important to realize 
 You can contribute to this community, no matter your background or skills. 
 
 - If there is something you don't know how to do, you can ask. 
+
   - If it is issue related, ask on the issue.
-  - If it is more general, try the #docs-code channel in the `ODK Developer Slack <https://opendatakit.slack.com>`.
-  - You can also send a private message to @adammichaelwood or another maintainer. 
+  - If it is more general, try the #docs-code channel in the `ODK Developer Slack <http://slack.opendatakit.org>`.
+
 - If you want to try something even though you aren't sure you can do it, go ahead and try.
 
 Another worry you may have is that something will take you a long time, when an "expert" might be able to do it quickly. You may feel, then, you aren't the "right person" for the job. But if you are the only one with the time or desire to work on something, **you are the right person to work on it.** 
