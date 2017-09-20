@@ -122,12 +122,12 @@ Make sure that git is installed properly by typing (git) in the cmd.
   - Install `GLFS <https://git-lfs.github.com/>`_.
 
 
-.. _android-abd:
+.. _android-adb:
 
 Android Tools
 -------------------------------
 
-Android tools (Adb) by installing `Android studio <https://developer.android.com/studio/index.html/>`_
+Android tools `Adb <android-tools>`_ by installing `Android studio <https://developer.android.com/studio/index.html/>`_
 
 .. _fork-clone:
 

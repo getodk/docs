@@ -42,6 +42,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   collect-install
   collect-settings
   collect-forms
+  google-drive
   
 .. toctree::
   :hidden:
@@ -58,6 +59,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
 
   contributing
   cygwin
+  
   
 .. toctree::
   :hidden:

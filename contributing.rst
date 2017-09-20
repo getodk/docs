@@ -15,7 +15,7 @@ Authoring Tools and Environment
 
 Docs as Code
 ----------------
-
+  
 ODK Documentation follows (as much as possible) the `Docs like Code <http://www.writethedocs.org/guide/docs-as-code/>`_ philosophy. This means:
 
 - Documentation source files are written in a plaintext format. (We use `reStructuredText <http://docutils.sourceforge.net/rst.html>`_.)
