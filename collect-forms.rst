@@ -114,9 +114,9 @@ This will reopen the form, which you are then free to edit.
 Uploading Finalized Forms
 ===========================
 
-If you are connected to :ref:`an ODK Aggregate server <connecting-to-aggregate>` or :ref:`Google Drive Account <connecting-to-google>`, use :guilabel:`Send Finalized Forms` to upload :formstate:`finalized` form instances. 
+If you are connected to :ref:`an ODK Aggregate server <connecting-to-aggregate>` or :ref:`Google Drive Account <connecting-to-google>`, use :guilabel:`Send Finalized Forms` to upload :formstate:`Finalized` form instances. 
 
-For local form management, use `ODK Briefcase <https://opendatakit.org/use/briefcase/>`_ to pull :formstate:`finalized` form instances to your local computer.
+For local form management, use `ODK Briefcase <https://opendatakit.org/use/briefcase/>`_ to pull :formstate:`Finalized` form instances to your local computer.
 
 :formstate:`Sent` forms are no longer editable, but they remain viewable until they are deleted. 
 

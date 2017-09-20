@@ -86,6 +86,7 @@ Python 3
 
 If you don't know, check to see if you have Python 3 installed:
 
+
 .. code-block:: console
 
   $ python3
@@ -292,7 +293,7 @@ The rest of the documentation assumes you are in the directory for the repo (the
   - As noted above, we recommend an `odk` master directory that holds your virtualenv directory and your git repo. So you would be in that odk directory when you clone down the repo.
   - Double check that right folders are in the right places
   
-  .. code-block:: rest
+  .. code-block:: rst
 
     1. odk/
     2.	odkenv/
@@ -306,6 +307,7 @@ Set the Upstream Remote
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When you clone down a repo, the local copy calls your GitHub copy ``origin``. You should also set ``upstream`` as the name of the original, main GitHub repo.
+
 
 .. code-block:: console
 
@@ -360,6 +362,7 @@ Pull in Updates from Upstream
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You probably won't need to do this the first time, but you should always pull in any changes from the main repository before working.
+
 
 .. code-block:: console
 
@@ -1152,6 +1155,51 @@ Several roles are used when describing user interactions.
 
     The :option:`-b html` option specifies the HTML builder.
 
+.. _custom-text-roles:
+
+Custom Text Roles
+~~~~~~~~~~~~~~~~~~~
+
+**Custom Text Roles** signify that the enclosed text should be interpreted in a specific way. 
+
+Custom text roles used in ODK documentation are:
+
+.. rst:role:: th
+
+  Stands for table head and refers to a table header cell in the body of text.
+
+.. rst:role:: tc
+
+  Stands for table cell and describes the table cells in the body of text. 
+
+  .. code-block:: rst
+
+    External App String Widget
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    The external app widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`.
+
+.. rst:role:: formstate 
+  
+  Specifies the state of the form which could be one of the following:
+
+  - Blank
+  - Finalized
+  - Saved
+  - Sent
+  - Deleted
+  
+  .. code-block:: rst
+    
+    :formstate:`Sent`
+
+.. rst:role:: gesture
+    
+  Describes a touch screen gesture. 
+
+  .. code-block:: rst
+    
+    :gesture:`Swipe Left`
+
 .. _misc-markup:
 
 Other Semantic Markup
@@ -1339,6 +1387,10 @@ Use the ``code-block`` directive to markup code samples. Specify the language on
 
     print("Hello ODK!")
 
+  .. code-block:: console
+
+    $ python --version
+
   .. code-block:: java
 
     public class HelloWorld {
@@ -1349,3 +1401,4 @@ Use the ``code-block`` directive to markup code samples. Specify the language on
         }
 
     }
+
