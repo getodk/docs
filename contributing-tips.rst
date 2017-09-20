@@ -10,9 +10,9 @@ A PR should normally address one issue. This makes it easier to review, easier t
 
 The exception is when several issues are closely related or can reasonably be worked on together.  In this case, it should be clear by looking at the conversation on the Github issues that the items are related and will be worked on together. Your PR message should also make it clear which issues are being worked on, and whether the PR closes the issues or not. Mention the PR by number:
 
- addresses #123
+  addresses #123
 
- closes #123
+  closes #123
 
 
 .. _descriptive-pr-names:
