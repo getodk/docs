@@ -7,7 +7,7 @@ Contributing to ODK Docs
 Authoring Tools and Environment
 =====================================
 
-.. note::
+.. note:: 
 
   Developer and authoring tools have lots of options and alternatives. Local tools and workflows presented in this guide are what the author feels would be easiest for a non-coding contributor to set up and use.
 
