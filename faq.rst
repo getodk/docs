@@ -52,7 +52,7 @@ How do I get a stack trace or log after an Android "Force Close"?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 See `Collect Troubleshooting <https://github.com/opendatakit/opendatakit/wiki/Collect-Troubleshooting>`_. Capturing an error log is more difficult now that the newer Android operating systems restrict access to the system log stream. 
-Once you begin capturing a log and have reproduced the crash, please open an issue `here<https://github.com/opendatakit/opendatakit/issues>`_ and attach the captured log file.
+Once you begin capturing a log and have reproduced the crash, please open an issue `here <https://github.com/opendatakit/opendatakit/issues>`_ and attach the captured log file.
 
 .. _request-new-feature: 
 
