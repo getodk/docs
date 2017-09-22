@@ -266,6 +266,21 @@ link3 = """
 contributing.html
 
 """
-html_context = {'prevar1' : prevar1 , 'prevar2' : prevar2 , 'prevar3' : prevar3 , 'hyper1' : hyper1 , 'hyper2' : hyper2 ,
-                'hyper3' : hyper3 , 'link1' : link1 , 'link2' : link2 , 'link3' : link3}
+prevar4 = """
+
+If you still need help, you can ask support questions in the
+
+"""
+hyper4 = """
+
+ODK Forum
+
+"""
+link4 = """
+
+https://forum.opendatakit.org/
+
+"""
+html_context = {'prevar1' : prevar1 , 'prevar2' : prevar2 , 'prevar3' : prevar3 , 'prevar4' : prevar4 , 'hyper1' : hyper1 , 'hyper2' : hyper2 ,
+                'hyper3' : hyper3 , 'hyper4' : hyper4 , 'link1' : link1 , 'link2' : link2 , 'link3' : link3 , 'link4' : link4}
 
