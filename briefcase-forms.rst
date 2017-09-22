@@ -4,7 +4,7 @@ Briefcase Usage
 
 :doc:`Install Briefcase <briefcase-install>` before going through this section.
 
-Pulling Forms from ODK Aggregate
+Pulling forms from ODK Aggregate
 ---------------------------------
 
 - Open *ODK Briefcase*.
@@ -24,7 +24,7 @@ Pulling Forms from ODK Aggregate
 
 -----------
 
-Pushing Forms to ODK Aggregate
+Pushing forms to ODK Aggregate
 --------------------------------
 
 - Open *ODK Briefcase*.
@@ -41,7 +41,7 @@ Pushing Forms to ODK Aggregate
 
 .. tip::
 
-  In the above case, if these changes do not affect the data model, you can make a copy of the storage area, replace the copy's form definition file with that from the server, and then push the data up from this storage area copy.
+  If the form definition has changed but the changes do not affect the data model, you can make a copy of the storage area, replace the copy's form definition file with that from the server, and then push the data up from this storage area copy.
 
 -----------
 
@@ -51,7 +51,7 @@ Pushing Forms to ODK Aggregate
   - By pulling data into the local ODK Briefcase Storage location and then pushing data up to an ODK Aggregate instance, ODK Briefcase provides a mechanism to transfer data across incompatible upgrades of ODK Aggregate.
 
 
-Pulling data from Collect
+Pulling forms from Collect
 ---------------------------
 
 Pulling from Android 2.x or earlier device
@@ -148,7 +148,7 @@ Export form data
 This command exports form data with id market_prices from Briefcase's storage directory on the :file:`~/Desktop` and write CSV file to :file:`~/Desktop/market_prices.csv`
 
 
-To get help about the command line operation type `java -jar path_to_jar -help` for help on the command line interface.
+To get help about the command line operation type `java -jar path_to_jar -help`.
 
  .. code-block:: console
 
