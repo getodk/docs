@@ -4,6 +4,8 @@ Briefcase Usage
 
 :doc:`Install Briefcase <briefcase-install>` before going through this section.
 
+.. _pull-from-aggregate:
+
 Pulling forms from ODK Aggregate
 ---------------------------------
 
@@ -12,7 +14,7 @@ Pulling forms from ODK Aggregate
 - Select Aggregate 0.9.x or Aggregate 1.0 in the :guilabel:`pull data from` drop-down.
 - Enter the url of your ODK Aggregate server in :guilabel:`url` option. For instance `https://proj1.appspot.com` and click on connect.
 - You can either leave the username blank if the anonymousUser is granted Data Viewer permissions, or specify an ODK Aggregate user (Account Type 'ODK') that has been granted Data Viewer permissions.
-- A list of forms will be displayed. Select the ones you want to pull and click on :guilabel:`pull` button at the bottom of window.The forms will be pulled to ODK Briefcase Storage on your local system. 
+- A list of forms will be displayed. Select the ones you want to pull and click on :guilabel:`pull` button at the bottom of window. The forms will be pulled to ODK Briefcase Storage on your local system. 
 
 .. warning::
 
@@ -24,6 +26,8 @@ Pulling forms from ODK Aggregate
 
 -----------
 
+.. _push-to-aggregate:
+
 Pushing forms to ODK Aggregate
 --------------------------------
 
@@ -32,7 +36,7 @@ Pushing forms to ODK Aggregate
 - Select Aggregate 1.0 in the :guilabel:`push data to` drop-down.
 - Enter the url of your ODK Aggregate server in :guilabel:`url` option. For instance `https://proj1.appspot.com` and click on connect.
 - You can either leave the username blank if the anonymousUser is granted Data Viewer permissions, or specify an ODK Aggregate user (Account Type 'ODK') that has been granted Data Viewer permissions.
-- A list of forms will be displayed. Select the ones you want to push and click on :guilabel:`push` button at the bottom of window.The forms will be pushed to ODK Aggregate Server.
+- A list of forms will be displayed. Select the ones you want to push and click on :guilabel:`push` button at the bottom of window. The forms will be pushed to ODK Aggregate Server.
 
 
 .. warning::
@@ -47,9 +51,10 @@ Pushing forms to ODK Aggregate
 
 .. note::
 
-  - ODK Briefcase does not work with Google accounts (Account Type 'Google')
+  - ODK Briefcase does not work with Google accounts (Account Type 'Google').
   - By pulling data into the local ODK Briefcase Storage location and then pushing data up to an ODK Aggregate instance, ODK Briefcase provides a mechanism to transfer data across incompatible upgrades of ODK Aggregate.
 
+.. _pull-from-collect:
 
 Pulling forms from Collect
 ---------------------------
@@ -67,7 +72,7 @@ Pulling from Android 2.x or earlier device
 - In the window which opens up select :guilabel:`pull` tab.
 - Select `Mounted Android SD Card` in the :guilabel:`pull data from` drop-down.
 - Click :guilabel:`Choose` and select the appropriate mounted SD card.
-- A list of forms will be displayed. Select the ones you want to pull and click on :guilabel:`pull` button at the bottom of window.The forms will be pulled to ODK Briefcase Storage on your local system.
+- A list of forms will be displayed. Select the ones you want to pull and click on :guilabel:`pull` button at the bottom of window. The forms will be pulled to ODK Briefcase Storage on your local system.
 - On the Android device, open ODK Collect and delete the filled-in forms.
 
 .. warning::
@@ -104,19 +109,23 @@ Pulling from Android 4.x and later device
 
 .. note::
 
- ODK Briefcase does not support pushing blank forms to ODK Collect.You can manually install the forms on your ODK Collect device.
+ ODK Briefcase does not support pushing blank forms to ODK Collect. You can manually install the forms on your ODK Collect device.
+
+.. _export-forms:
 
 Export forms to CSV 
 ---------------------
 
 - Open *ODK Briefcase*.
 - In the window which opens up select :guilabel:`export` tab.
-- Select the form you wish to export from the :guilabel:`form` dropdown.It displays a list of all forms on your ODK Briefcase Storage.
+- Select the form you wish to export from the :guilabel:`form` dropdown. It displays a list of all forms on your ODK Briefcase Storage.
 - Specify the location where you wish to export form as csv on your system in the :guilabel:`Export Directory` option.
 - Click on :guilabel:`Export` at the bottom of the window.
 
 
 --------------
+
+.. _cli-use:
 
 Working with command line
 ----------------------------
