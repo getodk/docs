@@ -45,6 +45,15 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   collect-adb
   
 .. toctree::
+   :hidden:
+   :maxdepth: 2
+   :caption: Briefcase
+
+   briefcase-guide
+   briefcase-install
+   briefcase-forms
+
+.. toctree::
   :hidden:
   :maxdepth: 2
   :caption: Form Building
