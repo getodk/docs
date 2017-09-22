@@ -29,7 +29,7 @@ Glossary
 
     Part of ODK.
 
-    An application lets you design forms with a drag-and-drop form interface.
+    An application that lets you design forms with a drag-and-drop form interface.
 
     - `Use ODK Build online <https://build.opendatakit.org/>`_.
     - `Download a desktop version of ODK Build <https://opendatakit.org/downloads/download-category/build/>`_.

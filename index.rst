@@ -42,7 +42,11 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   collect-install
   collect-settings
   collect-forms
+<<<<<<< HEAD
   google-drive
+=======
+  collect-adb
+>>>>>>> 408eb7b4338082bd9b999dd98deb57f7f23b0147
   
 .. toctree::
   :hidden:

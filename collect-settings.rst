@@ -34,7 +34,7 @@ User Interface Settings
 Mapping
 """""""""
 
-Map setting are included on the :menuselection:`User Interface` settings page.
+Map settings are included on the :menuselection:`User Interface` settings page.
 
 - :guilabel:`Mapping SDK` sets the app used for :ref:`geopoint`, :ref:`geoshape`, and :ref:`geotrace` :doc:`form-widgets`. Options are Google Maps (default) and OpenStreetMap.
 - :guilabel:`Basemap` sets the specific map used when opening the mapping app. 
@@ -53,7 +53,7 @@ Form Management Settings
 
 - :guilabel:`Default to finalized` When enabled, forms are automatically finalized upon reaching the end of the form. You can opt out of finalizing any form when completing it.
 - :guilabel:`Constraint processing` sets when response constraints are validated: When advancing through the form, or at finalization.
-- :guilabel:`High res video` enables high resolution recordings.
+- :guilabel:`High res video` enables high-resolution recordings.
 
 .. rubric:: Form import
 

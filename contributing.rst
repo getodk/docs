@@ -18,14 +18,14 @@ Docs as Code
   
 ODK Documentation follows (as much as possible) the `Docs like Code <http://www.writethedocs.org/guide/docs-as-code/>`_ philosophy. This means:
 
-- Documentation source files are written in a plaintext format. (We use `reStructuredText <http://docutils.sourceforge.net/rst.html>`_.)
+- Documentation source files are written in a plain text format. (We use `reStructuredText <http://docutils.sourceforge.net/rst.html>`_.)
 - Documentation source files are kept under version control. (We use git and `Github <https://github.com/opendatakit/docs>`_.)
 - Documentation is built from source to published output using a static site generator. (We use `Sphinx <http://sphinx-doc.org>`_.)
 - Documentation builds are run, tested, and deployed automatically using continuous integration tools. (We use `CircleCI <https://circleci.com/>`_.)
 
 `The 'Docs as Code' approach has many advantages <http://hackwrite.com/posts/docs-as-code/>`_, but we are aware that this approach can feel difficult for writers who aren't used to dealing with the command line. It can also be difficult for coders who are used to this approach, but who typically use simpler authoring tools (like `Jekyll <http://jekyllrb.com>`_ and `Markdown <https://guides.github.com/features/mastering-markdown/>`_).
 
-This section of the Contributor Guide walks through our authoring and publishing workflow and toolchain, to make it as easy possible for you to contribute.
+This section of the Contributor Guide walks through our authoring and publishing workflow and toolchain, to make it as easy as possible for you to contribute.
 
 .. _docs-workflow-overview:
 
@@ -69,7 +69,7 @@ Terminal (Command Line)
 
   Contributions to this guide with explanations and help for Windows users is greatly appreciated.
 
-Contributing to the docs requires interacting with git, Github, Python, and Sphinx, which requires use of the Terminal. This is common among Linux users. Mac users unfamiliar with the Terminal can learn more from `this tutorial <https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855>`_.
+Contributing to the docs requires interacting with git, Github, Python, and Sphinx, which requires the use of the Terminal. This is common among Linux users. Mac users unfamiliar with the Terminal can learn more from `this tutorial <https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855>`_.
 
 .. _docs-python:
 
@@ -83,11 +83,11 @@ Python 3
 
 If you don't know, check to see if you have Python 3 installed:
 
-.. code-block:: rest
+.. code-block:: console
 
   $ python3
 
-If you get an error, you probably don't and will need to `install Python 3 <https://www.python.org/downloads/>`_. If the Python command-line interpreter starts up, type ``quit()`` to exit.
+If you get an error, you probably don't have it and will need to `install Python 3 <https://www.python.org/downloads/>`_. If the Python command-line interpreter starts up, type ``quit()`` to exit.
 
 .. _docs-venv:
 
@@ -98,42 +98,42 @@ A virtual environment is a Python tool for sandboxing dependencies. It lets you 
 
 Check to see if you have virtualenv installed:
 
-.. code-block:: rest
+.. code-block:: console
 
   $ virtualenv
 
 If you get a help message with information about commands, you have it. If you don't have it, you'll get a ``command not found`` message.
 
-If you don't have it, the easiest way to get it is to use pip:
+In case you don't have it, install it using ``pip`` by running:
 
-.. code-block:: rest
+.. code-block:: console
 
   $ pip install virtualenv
 
 Then, create an ODK "master" directory. This will contain your virtualenv and the docs repo as subdirectories.
 
-.. code-block:: rest
+.. code-block:: console
 
   $ mkdir odk
   $ cd odk
 
 Now, inside that odk directory, create a python3 virtualenv.
 
-.. code-block:: rest
+.. code-block:: console
 
   $ virtualenv -p python3 odkenv
 
 The last part, ``odkenv`` can be whatever name you'd like to call it.
 
-Activate your virtural environment with:
+Activate your virtual environment with:
 
-.. code-block:: rest
+.. code-block:: console
 
   $ source odkenv/bin/activate
 
 And, when you are done working, deactivate it with:
 
-.. code-block:: rest
+.. code-block:: console
 
   $ deactivate
 
@@ -165,14 +165,14 @@ GLFS tracks binary files as defined in the :file:`.gitattributes` file `in the r
 
 If you are adding binary files to the repo, and they are in formats not already tracked, **it is your responsibility to make sure they are tracked.** To make sure they are properly tracked, add the file type to GLFS. You can do this by editing :file:`.gitattributes` directly.
 
-.. code-block:: none
+.. code-block:: console
 
   # file type section heading
   *.{extension-to-track} filter=lfs diff=lfs merge=lfs -text
 
 You can also use the command line.
 
-.. code-block:: none
+.. code-block:: console
 
   $ glfs track *.{file-extension}
 
@@ -201,7 +201,7 @@ Android Studio
 
 On Mac, add the following to your :file:`.bash_profile`
 
-.. code-block:: none
+.. code-block:: sh
 
   export PATH=$PATH:~/Library/Android/sdk/tools/
 
@@ -240,7 +240,7 @@ From your own form of the repo on Github, select the :guilabel:`Clone or downloa
 
 Open your terminal, and `cd` to your preferred directory. Then `git clone` the repo:
 
-.. code-block:: rest
+.. code-block:: console
 
   $ git clone https://github.com/your-github-username/docs.git
   .
@@ -261,13 +261,13 @@ Set the Upstream Remote
 
 When you clone down a repo, the local copy calls your GitHub copy ``origin``. You should also set ``upstream`` as the name of the original, main GitHub repo.
 
-.. code-block:: rest
+.. code-block:: console
 
   $ git remote add --track upstream https://github.com/opendatakit/docs.git
 
 Run ``git remote -v`` to check the status, you should see something like this:
 
-.. code-block:: rest
+.. code-block:: console
 
   $ origin https://github.com/your-github-username/docs.git (fetch)
   $ origin https://github.com/your-github-username/docs.git (push)
@@ -281,7 +281,7 @@ Install Dependencies
 
 The first time you clone down the repo, you'll need to install the dependencies. Make sure you have your Python 3 virtual environment set up and activated and then:
 
-.. code-block:: rest
+.. code-block:: console
 
   $ pip install -r requirements.txt
 
@@ -305,7 +305,7 @@ Pull in Updates from Upstream
 
 You probably won't need to do this the first time, but you should always pull in any changes from the main repository before working.
 
-.. code-block:: rest
+.. code-block:: console
 
   $ git pull upstream
 
@@ -318,7 +318,7 @@ Choose a specific, deliverable task to work on. This should be an `active issue 
 
 Create a new branch in which you will work on this specific issue. The branch name should briefly describe what you are doing. For example, the original author of this contributor guide worked in a branch he called ``contributing``. Also, make sure that all the branches are derived from the ``master`` branch to avoid intermixing of commits.
 
-.. code-block:: rest
+.. code-block:: console
 
   $ git checkout -b branch-name
 
@@ -329,7 +329,7 @@ Create a new branch in which you will work on this specific issue. The branch na
   Good branch names:
 
   - ``getting-started-guide``
-  - ``conributing``
+  - ``contributing``
   - ``fix-issue-13``
 
   Bad branch names:
@@ -355,7 +355,7 @@ Build, View, and Debug
 
 To build the documentation into a viewable website:
 
-.. code-block:: rest
+.. code-block:: console
 
   $ sphinx-build -b html . build
 
@@ -370,9 +370,9 @@ When you run the build, you may see error or warning messages. These indicate po
 Error and warning messages include a file name and line number for tracking them down. Try to resolve all your errors and warnings before issuing a pull request. However, if this is not possible, please add a note in your pull request. **If you submit a pull request that will create build errors, you must include a note mentioning what those errors are, and why they are ok to leave in.**
 
 
-To view the documentation in your web browser, you can use Python's built-in webserver.
+To view the documentation in your web browser, you can use Python's built-in web server.
 
-.. code-block:: rest
+.. code-block:: console
 
   $ cd build
   $ python -m http.server 8000
@@ -383,7 +383,7 @@ Read through your doc edits in the browser and correct any issues in your source
 
 It's a good idea to delete the ``build`` directory before each rebuild.
 
-.. code-block:: rest
+.. code-block:: console
 
   $ rm -rf build
   $ sphinx-build -b html . build
@@ -395,20 +395,20 @@ Push Your Branch
 
 Once your work on the issue is completed, add the files you've changed or created additionally, and write a relevant commit message describing the changes.
 
-.. code-block:: rest
+.. code-block:: console
 
   $ git add my_changed_files
   $ git commit -m "A small but relevant commit message"
 
 Then it's time to push the changes. The first time you do this on any branch, you'll need to specify the branch name:
 
-.. code-block:: rest
+.. code-block:: console
 
   $ git push origin branch-name
 
 After that, you can just:
 
-.. code-block:: rest
+.. code-block:: console
 
   $ git push
 
@@ -436,7 +436,7 @@ You must include a PR comment. Things to include:
 - A note justifying any changes to requirements.txt
 - A note about any difficulties, questions, or concerns that came up while working on this issue.
 
-Complete the pull request. The maintainers will review it as quickly as possible. If there's any problems the maintainers can't deal with, they will reach out to you.
+Complete the pull request. The maintainers will review it as quickly as possible. If there are any problems the maintainers can't deal with, they will reach out to you.
 
 .. _keep-working-the-docs:
 
@@ -445,20 +445,20 @@ Keep Going
 
 Once the PR is merged, you'll need to pull in the changes from the main repo ( ``upstream`` ) into your local copy.
 
-.. code-block:: rest
+.. code-block:: console
 
   $ git checkout master
   $ git pull upstream master
 
 Then you should push those change to your copy on GitHub ( ``origin`` ).
 
-.. code-block:: rest
+.. code-block:: console
 
   $ git push
 
 If you want to delete your branch from before, you can do that:
 
-.. code-block:: rest
+.. code-block:: console
 
   $ git branch -d branch-name
 
@@ -500,7 +500,7 @@ Documentation Files
 
 Sphinx document files have the ``.rst`` extension. File names should be all lowercase and use hyphens (not underscores or spaces) as word separators.
 
-Normally, the title of the page should be the first line of the file, followed by the a line of equal-signs.
+Normally, the title of the page should be the first line of the file, followed by the line of equal-signs.
 
 .. code-block:: rst
 
@@ -529,7 +529,7 @@ See :ref:`sections-titles` for more details.
 Table of Contents
 --------------------
 
-The ``index.rst`` file serves as a front-page to the documentation, and contains the table of contents. The table of contents controls the documentation navigation menu. To add a new document to the table of contents, add the file new (without the ``.rst`` extension) to the list of file names in ``index.rst``.
+The ``index.rst`` file serves as a front-page to the documentation and contains the table of contents. The table of contents controls the documentation navigation menu. To add a new document to the table of contents, add the file new (without the ``.rst`` extension) to the list of file names in ``index.rst``.
 
 
 .. _sections-titles:
@@ -539,7 +539,7 @@ Sections and Titles
 
 Headlines require two lines: the text of the headline, followed by a line filled with a single character. Each level in a headline hierarchy uses a different character:
 
-.. code-block:: rest
+.. code-block:: rst
 
   Title of the Page - <h1> - Equal Signs
   =========================================
@@ -562,7 +562,7 @@ Headlines require two lines: the text of the headline, followed by a line filled
 
 If you need to combine several existing pages together, or want to start a single-page doc that you think might be split into individual pages later on, you can add a top-level title, demoting the other headline types by one:
 
-.. code-block:: rest
+.. code-block:: rst
 
   ************************************************
   Page Title - <h1> - Asterisks above and below
@@ -606,11 +606,11 @@ In order to facilitate efficient :ref:`cross-referencing`, sections should be la
 - section label
 
   - lowercase
-  - hypen separators
+  - hyphen separators
 
 - a single colon
 
-.. code-block:: rest
+.. code-block:: rst
 
   .. _section-label:
 
@@ -619,11 +619,11 @@ In order to facilitate efficient :ref:`cross-referencing`, sections should be la
 
   Lorem ipsum content of section blah blah.
 
-The section label is a sluggified version of the section title.
+The section label is a slugified version of the section title.
 
 Section titles must be unique throughout the entire documentation set. Therefore, if you write a common title that might appear in more than one document (*Learn More* or *Getting Started*, for example), you'll need to include additional words to make the label unique. The best way to do this is to add a meaningful work from the document title.
 
-.. code-block:: rest
+.. code-block:: rst
 
   ODK Aggregate
   ===============
@@ -645,7 +645,7 @@ Basic Markup
 
   Markup characters can be escaped using the ``\`` characters.
 
-  .. code-block:: rest
+  .. code-block:: rst
 
     *Italic.*
 
@@ -657,10 +657,10 @@ Basic Markup
 
 .. _inline-markup:
 
-Empahasis and Inline Literal
+Emphasis and Inline Literal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: rest
+.. code-block:: rst
 
   Single asterisks for *italic text* (``<em>``).
 
@@ -687,7 +687,7 @@ Hyperlinks
 
 **External** hyperlinks — that is, links to resources *outside* the documentation — look like this:
 
-.. code-block:: rest
+.. code-block:: rst
 
   This is a link to `example <http://example.com>`_.
 
@@ -695,7 +695,7 @@ This is a link to `example <http://example.com>`_.
 
 You can also use "reference style" links:
 
-.. code-block:: rest
+.. code-block:: rst
 
   This is a link to `example`_.
 
@@ -703,7 +703,7 @@ You can also use "reference style" links:
 
 This may help make paragraphs with *a lot* of links more readable. In general, the inline style is preferable. If you use the reference style, be sure to keep the link references below the paragraph where they appear.
 
-.. code-block:: rest
+.. code-block:: rst
 
   You can also simply place an unadorned URI in the text: http://example.com
 
@@ -719,7 +719,7 @@ Lists
 Unordered (bullet) lists
 """""""""""""""""""""""""""
 
-.. code-block:: rest
+.. code-block:: rst
 
   Bulleted lists ( ``<ul>`` ):
 
@@ -748,7 +748,7 @@ Bulleted lists ( ``<ul>`` ):
 Ordered (numbered) lists
 """"""""""""""""""""""""""
 
-.. code-block:: rest
+.. code-block:: rst
 
   Numbered lists ( ``<ol>`` ):
 
@@ -772,17 +772,17 @@ Numbered lists ( ``<ol>`` ):
    a. nested lists are numbered separately
    b. nested lists need a blank line before and after
 
-#. Can have automatic number with the ``#`` character.
+#. Can have an automatic number with the ``#`` character.
 
 .. _dl:
 
 Definition Lists
 """""""""""""""""""
 
-.. code-block:: rest
+.. code-block:: rst
 
   Definition list ( ``<dl>`` )
-    a list with several term-defition pairs
+    a list with several term-definition pairs
 
   Terms
     should not be indented
@@ -812,9 +812,9 @@ Line spacing
 Paragraph-level Markup
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: rest
+.. code-block:: rst
 
-  Paragraphs are separarated by blank lines. Line breaks in the source code do not create line breaks in the output.
+  Paragraphs are separated by blank lines. Line breaks in the source code do not create line breaks in the output.
 
   This means that you *could*, in theory,
   include a lot of arbitrary line breaks
@@ -827,7 +827,7 @@ Paragraph-level Markup
 
   There is **no reason** to put a limit on line length in source files for documentation, since this is prose and not code. Therefore, please do not put arbitrary line breaks in your files.
 
-Paragraphs are separarated by blank lines. Line breaks in the source code do not create line breaks in the output.
+Paragraphs are separated by blank lines. Line breaks in the source code do not create line breaks in the output.
 
 This means that you *could*, in theory,
 include a lot of arbitrary line breaks
@@ -843,7 +843,7 @@ There is **no reason** to put a limit on line length in source files for documen
 Block Quotes
 """"""""""""""
 
-.. code-block:: rest
+.. code-block:: rst
 
   This is not a block quote. Block quotes are indented, and otherwise unadorned.
 
@@ -860,7 +860,7 @@ This is not a block quote. Block quotes are indented, and otherwise unadorned.
 Line Blocks
 """"""""""""
 
-.. code-block:: rest
+.. code-block:: rst
 
   | Line blocks are useful for addresses,
   | verse, and adornment-free lists.
@@ -890,7 +890,7 @@ Tables
 Grid style
 ''''''''''''
 
-.. code-block:: rest
+.. code-block:: rst
 
   +------------+------------+-----------+
   | Header 1   | Header 2   | Header 3  |
@@ -922,7 +922,7 @@ Simple style
 ''''''''''''''
 
 
-.. code-block:: rest
+.. code-block:: rst
 
   =====  =====  ======
      Inputs     Output
@@ -975,9 +975,9 @@ Most of the Sphinx-specific and ODK-specific markup will use one or both of thes
 Cross referencing
 ~~~~~~~~~~~~~~~~~~~~
 
-Cross referencing is linking internally, from one place in the documentation to another. This is **not** done using the :ref:`hyperlinks` syntax, but with one of several roles:
+Cross referencing is linking internally, from one place in the documentation to another. This is **not** done using the :ref:`hyperlinks` syntax, but with one of the several roles:
 
-.. code-block:: none
+.. code-block:: rst
 
   :role:`target`
     becomes...
@@ -1007,7 +1007,7 @@ Cross referencing is linking internally, from one place in the documentation to 
   - *target* is the term, in the glossary
   - *title* is the term itself
 
-**To recap:** If you do not include an explicit ``<target>``, the text inside the role will be understood as the target, and the anchor text for the link in the output will be title of the target.
+**To recap:** If you do not include an explicit ``<target>``, the text inside the role will be understood as the target, and the anchor text for the link in the output will be the title of the target.
 
 For example:
 
@@ -1066,11 +1066,18 @@ Several roles are used when describing user interactions.
 
     Select :menuselection:`Help` from menu.
 
-  When wrting about multi-level menus, use a single ``:menuselection:`` role, and separate menu choices with ``-->``.
+  When writing about multi-level menus, use a single ``:menuselection:`` role, and separate menu choices with ``-->``.
 
   .. code-block:: rst
 
     To save your file, go to :menuselection:`File --> Save` in the Main Menu.
+
+.. note::
+
+  In some situations you might not be clear about which option to use from ``:menuselection:`` and ``:guilabel:``, in which case you should refer to the following rule that we observe in our writing.
+
+  - Actual UI text will always receive ``:guilabel:`` role unless the text could reasonably be understood to be part of a menu.
+  - If the actual UI text could be understood as a menu, ``:menuselection:`` should be used.
 
 .. rst:role:: kbd
 
@@ -1078,7 +1085,7 @@ Several roles are used when describing user interactions.
 
   .. code-block:: rst
 
-    To stop the localserver, type :kbd:`CTRL C`.
+    To stop the local server, type :kbd:`CTRL C`.
 
 .. rst:role:: command
 
@@ -1095,6 +1102,51 @@ Several roles are used when describing user interactions.
   .. code-block:: rst
 
     The :option:`-b html` option specifies the HTML builder.
+
+.. _custom-text-roles:
+
+Custom Text Roles
+~~~~~~~~~~~~~~~~~~~
+
+**Custom Text Roles** signify that the enclosed text should be interpreted in a specific way. 
+
+Custom text roles used in ODK documentation are:
+
+.. rst:role:: th
+
+  Stands for table head and refers to a table header cell in the body of text.
+
+.. rst:role:: tc
+
+  Stands for table cell and describes the table cells in the body of text. 
+
+  .. code-block:: rst
+
+    External App String Widget
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    The external app widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`.
+
+.. rst:role:: formstate 
+  
+  Specifies the state of the form which could be one of the following:
+
+  - Blank
+  - Finalized
+  - Saved
+  - Sent
+  - Deleted
+  
+  .. code-block:: rst
+    
+    :formstate:`Sent`
+
+.. rst:role:: gesture
+    
+  Describes a touch screen gesture. 
+
+  .. code-block:: rst
+    
+    :gesture:`Swipe Left`
 
 .. _misc-markup:
 
@@ -1142,13 +1194,13 @@ Images and Figures
 
 Image files should be put in the :file:`/img/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
 
-You must perform lossless compression on the source images. Following tools can be used to optimize the images: 
+You must perform lossless compression on the source images. Following tools can be used to optimize the images:
 
-- **ImageOptim** is a tool that allows us to optimize the images. It is not format specfic which means it can optimize both jpeg as well as png images. You can download it `from here <https://imageoptim.com/howto.html>`_ . After launching ImageOptim.app, dragging and dropping images into its window gives you an in-place optimized file. 
+- **ImageOptim** is a tool that allows us to optimize the images. It is not format specific which means it can optimize both jpeg as well as png images. You can download it `from here <https://imageoptim.com/howto.html>`_ . After launching ImageOptim.app, dragging and dropping images into its window gives you an in-place optimized file.
 
 - **Pngout** is another option for optimizing png images. Installation and usage instructions can be found `here <http://docs.ewww.io/article/13-installing-pngout/>`_ .
 
-- **Mozjpeg** can be used to optimize jpeg images. Installation and related information can be found on `this link <https://nystudio107.com/blog/installing-mozjpeg-on-ubuntu-16-04-forge/>`_ . 
+- **Mozjpeg** can be used to optimize jpeg images. Installation and related information can be found on `this link <https://nystudio107.com/blog/installing-mozjpeg-on-ubuntu-16-04-forge/>`_ .
 
 To place an image in a document, use the ``image`` directive.
 
@@ -1215,7 +1267,7 @@ If you have set up local :ref:`android-tools`, you can connect your Android devi
 
 Now, at the command line, from the root directory of the :file:`odk-docs` repo:
 
-.. code-block:: none
+.. code-block:: console
 
   python ss.py {document-name}/{image-name}
 
@@ -1228,6 +1280,43 @@ Now, at the command line, from the root directory of the :file:`odk-docs` repo:
 
 .. tip::
   If you have a problem running ss.py, check to make sure your :ref:`Python 3 virtual environment <docs-venv>` is activated.
+
+.. _videos:
+
+Videos
+~~~~~~~~
+
+Video files should be put in the :file:`/vid/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
+
+The length of the videos must be less than a minute.
+
+There is no ``video`` directive to add a video, so to add a video in a document, you can do the following:
+
+.. code-block:: rst
+  
+  .. raw:: html
+
+  <video controls muted style="max-width:100%">
+    <source src="/{document-subdirectory}/{file}.mp4>
+  </video>
+
+**ADB or Android Debug Bridge** can be used to capture a screen recording from collect. This can be done by entering:
+
+.. code-block:: console
+
+  $ adb shell screenrecord /sdcard/example.mp4
+
+On pressing the enter key the video recording starts. Recording stops automatically after 3 minutes but since video length has to be less than a minute, to stop the recording in between simply press :command:`Ctrl+C`.
+
+The video file is saved in your Android device to a file at :file:`/sdcard/example.mp4` file.
+
+To pull the video locally just type the following command and hit :command:`Enter`.
+
+.. code-block:: console
+  
+  $ adb pull /sdcard/example.mp4 localsavelocation
+
+where localsavelocation is the location where you want to save your file locally.
 
 .. _code-samples:
 
@@ -1246,6 +1335,10 @@ Use the ``code-block`` directive to markup code samples. Specify the language on
 
     print("Hello ODK!")
 
+  .. code-block:: console
+
+    $ python --version
+
   .. code-block:: java
 
     public class HelloWorld {
@@ -1256,3 +1349,4 @@ Use the ``code-block`` directive to markup code samples. Specify the language on
         }
 
     }
+
