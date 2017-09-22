@@ -17,12 +17,8 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
-import sys
-
-sys.path.append(os.path.abspath('docs'))
-
-extensions = ['video']
+# import os
+# import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
 
@@ -206,6 +202,15 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 
 def setup(app):
     app.add_stylesheet('css/custom.css')
+
+    from . import video
+
+    app.add_node(video,
+                 html=(visit_video_node, depart_video_node),
+                 latex=(visit_video_node, depart_todo_node),
+                 text=(visit_video_node, depart_video_node))
+
+    app.add_directive('video', VideoDirective)
 
 
 # At top of every document

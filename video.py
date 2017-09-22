@@ -1,131 +1,79 @@
-def setup(app):
-    app.add_config_value('video_include_videos', False, 'html')
-
-    app.add_node(videolist)
-    app.add_node(video,
-                 html=(visit_video_node, depart_video_node),
-                 latex=(visit_video_node, depart_todo_node),
-                 text=(visit_video_node, depart_video_node))
-
-    app.add_directive('video', VideoDirective)
-    app.add_directive('vidolist', VideolistDirective)
-    app.connect('doctree-resolved', process_video_nodes)
-    app.connect('env-purge-doc', purge_videos)
-
-    return {'version': '0.1'}
-
-from docutils import nodes
-
-class video(nodes.Admonition, nodes.Element):
-    pass
-
-class videolist(nodes.General, nodes.Element):
-
-def visit_video_node(self, node):
-    self.visit_admonition(node)
-
-def depart_video_node(self, node):
-    self.depart_admonition(node)
-
+from docutils import nodes, utils
+from docutils.parsers.rst import directives, states
 from docutils.parsers.rst import Directive
+from docutils.nodes import fully_normalize_name, whitespace_normalize_name
+from docutils.parsers.rst.roles import set_classes
+try:
+    import urlparse
 
-class VideoListDirective(Directive):
+except ImportError:
+    import urllib.parse as urlparse
+
+class Video(Directive):
+    align_h_values = ('left', 'center', 'right')
+    align_v_values = ('top', 'middle', 'bottom')
+    align_values = align_v_values + align_h_values
+
+    def align(argument):
+        return directives.choice(argument, (Video.align_values)
+
+
+    require_arguments = 1
+    optional_arguments = 0
+    final_argument_whitespace = True
+    option_spec = {'alt': directives.unchanged,
+                   'height': directives.length_or_unitless,
+                   'width': directives.length_or_percentage_or_unitless,
+                   'scale': directives.percentage,
+                   'align': align,
+                   'name': directives.unchanged,
+                   'target': directives.unchanged_required,
+                   'class': directives.class_option
+                   }
 
     def run(self):
-        return [videolist('')]
-
-from sphinx.locale import _
-
-class VideoDirective(Directive):
-
-    has_content = False
-
-    def run(self):
-        env = self.state.document.settings.env
-
-        targetid = "video-%d" % env.new_serialno('video')
-        targetnode = nodes.target('', '', ids=[targetid])
-
-        video_node = video('\n'.join(self.content))
-        video_node += nodes.title(_('Video'), _('Video'))
-        self.state.nested_parse(self.content, self.content_offset, video_node)
-
-        if not hasattr(env, 'video_all_videos'):
-            env.video_all_videos = []
-        env.video_all_Videos.append({
-            'docname': env.docname,
-            'lineno': self.lineno,
-            'video': video_node.deepcopy(),
-            'target': targetnode,
-        })
-
-        return [targetnode, video_node]
-
-# from docutils import nodes
-# from docutils.parsers.rst import directives
-# from docutils.parsers.rst import Directive
-#
-# def align(argument):
-#     return directives.choice(argument, ('left', 'center', 'right'))
-# class Video(directive):
-#
-#     require_arguments = 1
-#     optional_arguments = 0
-#     final_argument_whitespace = True
-#     option_spec = {'alt': directives.unchanged,
-#                    'height': directives.nonnegative_int,
-#                    'width': directives.nonnegative_int,
-#                    'scale': directives.nonnegative_int,
-#                    'align': align
-#                    }
-#     has_content = False
-#
-#     def run(self):
-#         reference = directives.uri(self.arguments[0])
-#         self.options['uri'] = reference
-#         video_node = nodes.image(rawsource=self.block_text,
-#                                  **self.options)
-#         return [video_node]
-
-def purge_videos(app, env, docname):
-    if not hasattr(env, 'video_all_videos'):
-        return
-    env.video_all_videos = [video for video in env.video_all_videos
-                            if video['docname'] != docname]
-
-def process_video_nodes(app, doctree, fromdocname):
-    if not app.config.video_include_videos:
-        for node in doctree.traverse(video):
-            node.parent.remove(node)
-
-    env = app.builder.env
-
-    for node in doctree.transverse(videolist):
-        if not app.config.video_include_videos:
-            node.replace_self([])
-            continue
-
-        content = []
-
-        for video_info in env.video_all_videos:
-            para = nodes.paragraph()
-            filename = env.doc2path(video_infor['docname'], base=None)
-            description = (
-                _('(The original entry is located in %s, line%d and can be found ') %
-                (filename, video_info['lineno']))
-            para += nodes.Text(description, description)
-
-            newnode = nodes.reference('', '')
-            innernode = nodes.emphasis(_('here'), _('here'))
-            newnode['refdocname'] = video_info['docname']
-            newnode['refuri'] = app.builder.get_relative_uri(
-                fromdocname, video_info['docname'])
-            newnode['refuri'] += '#' + video_infor['target']['refid']
-            newnode.append(innernode)
-            para += newnode
-            para += nodes.Text('.)', '.)')
-
-            content.append(video_info['video'])
-            content.append(para)
-
-        node.replace_self(content)
+        if 'align' in self.options:
+            if isinstance(self.state, states.SubstitutionDef):
+                # Check for align_v_values.
+                if self.options['align'] not in self.align_v_values:
+                    raise self.error(
+                        'Error in "%s" directive: "%s" is not a valid value '
+                        'for the "align" option within a substitution '
+                        'definition.  Valid values for "align" are: "%s".'
+                        % (self.name, self.options['align'],
+                           '", "'.join(self.align_v_values)))
+            elif self.options['align'] not in self.align_h_values:
+                raise self.error(
+                    'Error in "%s" directive: "%s" is not a valid value for '
+                    'the "align" option.  Valid values for "align" are: "%s".'
+                    % (self.name, self.options['align'],
+                       '", "'.join(self.align_h_values)))
+        messages = []
+        reference = directives.uri(self.arguments[0])
+        self.options['uri'] = reference
+        reference_node = None
+        if 'target' in self.options:
+            block = states.escape2null(
+                self.options['target']).splitlines()
+            block = [line for line in block]
+            target_type, data = self.state.parse_target(
+                block, self.block_text, self.lineno)
+            if target_type == 'refuri':
+                reference_node = nodes.reference(refuri=data)
+            elif target_type == 'refname':
+                reference_node = nodes.reference(
+                    refname=fully_normalize_name(data),
+                    name=whitespace_normalize_name(data))
+                reference_node.indirect_reference_name = data
+                self.state.document.note_refname(reference_node)
+            else:                           # malformed target
+                messages.append(data)       # data is a system message
+            del self.options['target']
+        set_classes(self.options)
+        video_node = nodes.video(self.block_text, **self.options)
+        self.add_name(video_node)
+        if reference_node:
+            reference_node += video_node
+            return messages + [reference_node]
+        else:
+            return messages + [video_node]
