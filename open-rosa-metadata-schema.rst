@@ -11,11 +11,42 @@ There are two types of metadata in a form submission.
 XForm Metadata
 ----------------------------
 
-The metadata describing the form identity and versioning is provided as required attributes within the top-level group of the default model instance of the form. The three required attributes are:
-version a String value indicating the version of the form. This MUST be incremented/changed when any part of the form changes. One example of this is adding a new element to the model or changing a select1 into a select (multi-valued) element. Version MUST support a string value to indicate an increment, SHOULD support any string schema. If version is not present, it is handled as NULL. version MUST support an arbitrary string up to 249 characters and SHOULD support arbitrary-length strings
-Either id or xmlns identifying the form id. These values should be in the form of scheme:value. For the id, the implementor's registered domain name should be used as part of the scheme (e.g., opendatakit.org:widgetForm). If specified, the id value takes precedence over any explicit xmlns declaration. Compliant systems MUST support id or xmlns lengths up to 249 chars; ideally, servers SHOULD be able to support arbitrary lengths.
-Location of Submission MetaData
-The MetaData block is located within the Model block of an XForm. It consists of a group of elements that describe the required information that should be included in every xml submission made to the server.
+The metadata describing the form identity and versioning is provided as required attributes within the top-level group of the default model instance of the form. Two attributes are required:
+
+``version``
+~~~~~~~~~~~~
+
+A string value indicating the version number of the form. 
+
+- MUST support a string value (not a number), to indicate an increment. 
+- SHOULD support any string schema. 
+- MUST support arbitrary strings up to 249 characters
+- SHOULD support arbitrary-length strings
+
+The value of ``version`` MUST be incremented when any part of the form changes. 
+
+If ``version`` is not present, it is handled as NULL. 
+  
+Identity  
+~~~~~~~~~~
+
+One of:
+
+- ``id``
+- ``xmlns``  
+  
+These values should be in the form of ``scheme:value``. 
+
+If specified, the id value takes precedence over any explicit ``xmlns`` declaration. 
+
+For ``id``, the implementor's registered domain name should be used as part of the scheme (for example:``opendatakit.org:widgetForm``). 
+
+Compliant systems MUST support ``id`` or ``xmlns`` lengths up to 249 chars; ideally, servers SHOULD be able to support arbitrary lengths.
+
+Location of Submission Metadata
+-----------------------------------
+
+The ``metadata`` block is located within the Model block of an XForm. It consists of a group of elements that describe the required information that should be included in every xml submission made to the server.
 Required and Optional elements
 There are two types of fields to be used in the metadata block: required and optional fields.
 Required fields are used primarily to facilitate in the storage/sorting of submissions on the server and are useful during analysis of the data included in submissions.
