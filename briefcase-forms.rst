@@ -57,7 +57,7 @@ Pulling forms from Collect
 
 .. _pull-from-android2.x:
 
-Pulling from Android 2.x or earlier device
+Pulling from Android 2.x and earlier device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Ensure all filled-in forms are finalized. Either delete the forms which are not finalized or delete them after making a backup copy of :file:`/sdcard/odk` directory on your device and restore that later.
