@@ -3,12 +3,12 @@ FAQ
 
 Truth be told, these questions aren't frequently asked. Hopefully the answers are still helpful. 
 
-.. _what-is-ODK:
+.. _what-is-odk:
 
 What is ODK? 
 ~~~~~~~~~~~~~~~~~~
 
-Open Data Kit (ODK) is a free and open-source set of tools which help organizations create mobile data collection solutions.
+Open Data Kit (ODK) is a free and open source set of tools which help organizations create mobile data collection solutions.
 
 Our `blog <https://opendatakit.org/blog/>`_ blog and `deployments page <https://opendatakit.org/about/deployments/>`_ have good examples of what others have used ODK for. Our `research page <https://opendatakit.org/about/research/>`_ also has videos and slides that explain ODK.
 
@@ -16,6 +16,8 @@ Our `blog <https://opendatakit.org/blog/>`_ blog and `deployments page <https://
 
 How do I use ODK?
 ~~~~~~~~~~~~~~~~~~~~
+
+Please read the :doc:`Getting Started Guide <getting-started>` section of our documentation to understand the initiou instructions. 
 
 Please read through the documentation on our `implementer instructions <https://opendatakit.org/use/>`_ and on the `developer wiki <https://github.com/opendatakit/opendatakit/wiki>`_.
 
@@ -25,11 +27,10 @@ If you don't find an answer after searching, then post your question to the appr
 
 .. _what-kinds-question:
 
-What kinds of questions do you answer on the mainling list? 
+What kinds of questions do you answer on the mailing list? 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Our team only answers questions about the `supported tools <https://opendatakit.org/about/tools/>`_. 
-We generally do not answer form design questions, and instead refer you to the `form design <https://opendatakit.org/help/form-design/>`_ guide.
+Our team only answers questions about the `supported tools <https://opendatakit.org/about/tools/>`_. We generally do not answer form design questions, and instead refer you to the `form design <https://opendatakit.org/help/form-design/>`_ guide.
 You are more than welcome to post any message -- someone else in the community is likely to help.
 
 .. _work-not-expected: 
@@ -41,8 +42,7 @@ Make sure you are running the latest versions of ODK software. You can find them
 
 Search the `issue tracker <https://github.com/opendatakit/opendatakit/issues>`_ to see if the problem you are having has been reported. If you can't find it, report it there.
 
-Please be precise about the tool you are using, the version of the software, and include all the steps you did so we can reproduce the same problem. 
-If you can get a stack trace, please attach it. If the problem is with a form, please attach it as well. If you are new to filing bug reports, read How to Report Bugs Effectively.
+Please be precise about the tool you are using, the version of the software, and include all the steps you did so we can reproduce the same problem. If you can get a stack trace, please attach it. If the problem is with a form, please attach it as well. If you are new to filing bug reports, read How to Report Bugs Effectively.
 
 If your issue is urgent, we recommend you `hire help <https://opendatakit.org/help/help-for-hire/>`_ from one of the ODK implementations companies.
 
@@ -59,16 +59,14 @@ Once you begin capturing a log and have reproduced the crash, please open an iss
 How do I request a new feature or enhacement?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Search the `issue tracker <https://github.com/opendatakit/opendatakit/issues>`_ to see if the feature you want has been suggested. If you find it, vote for it by adding yourself to receive notifications. 
-If you don't find it, open a new issue (feature request) describing the scenario which you need the feature for.
+Search the `issue tracker <https://github.com/opendatakit/opendatakit/issues>`_ to see if the feature you want has been suggested. If you find it, vote for it by adding yourself to receive notifications. If you don't find it, open a new issue (feature request) describing the scenario which you need the feature for.
 
 .. _customize-ODK-solution: 
 
 How do I customize or implement an ODK solution? 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The core team does not provide code or implementation support beyond what is described on our `implementer site <https://opendatakit.org/>`_ and on the developer site. 
-If you need more support, `hire help <https://opendatakit.org/help/help-for-hire/>`_ from one of the ODK implementations companies.
+The core team does not provide code or implementation support beyond what is described on our `implementer site <https://opendatakit.org/>`_ and on the developer site. If you need more support, `hire help <https://opendatakit.org/help/help-for-hire/>`_ from one of the ODK implementations companies.
 
 .. _how-cite-odk: 
 
@@ -96,14 +94,30 @@ Are there other data collection systems I should consider?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Of course! There are many other data collection systems that might work better for you.
-Some of them use ODK in some way (`Ona <http://ona.io/>`_, `Survey CTO <http://www.surveycto.com/>`_, `KoBo Toolbox <http://kobotoolbox.org/>`_, `Commcare HQ <http://commcarehq.com/>`_, `DoForms <http://doforms.com/>`_, `DataWinners <http://datawinners.com/>`_, `ViewWorld <http://viewworld.dk/>`_, `PhiCollect <http://webfirst.com/phicollect>`_) while others are ODK compatible (`JavaRosa <http://www.dimagi.com/javarosa/>`_, `OpenXData <http://www.openxdata.org/>`_, `RapidSMS <http://rapidsms.org/>`_).
+Some of them use ODK in some way:
+
+- `Ona <http://ona.io/>`_;
+- `Survey CTO <http://www.surveycto.com/>`_;
+- `KoBo Toolbox <http://kobotoolbox.org/>`_;
+- `Commcare HQ <http://commcarehq.com/>`_;
+- `DoForms <http://doforms.com/>`_;
+- `DataWinners <http://datawinners.com/>`_;
+- `ViewWorld <http://viewworld.dk/>`_;
+- `PhiCollect <http://webfirst.com/phicollect>`_;
+
+While other are ODK compatible: 
+
+- `JavaRosa <http://www.dimagi.com/javarosa/>`_;
+- `OpenXData <http://www.openxdata.org/>`_;
+- `RapidSMS <http://rapidsms.org/>`_;
+
 
 If you want to find out more, `MobileActive <http://mobileactive.org/>`_ is a great place to learn more about data collection. `Mobile Data Collection Tools - Comparison Matrix <https://docs.google.com/spreadsheet/ccc?key=0Akj5_3vVWZ8tdGk4czI4eHcycGo2Y1NnWmhsUjdBTXc&hl=en_US>`_ and `Mobile-Phone-Based Data Collection Systems Comparison Table <https://docs.google.com/spreadsheet/ccc?key=0ArG7kkc9mE75dEdNNktocmVwT0hNbHVjTXl2ZU1VMXc&hl=en_US>`_, `Mobile and Web Technologies for Social and Economic Development report <https://docs.google.com/spreadsheet/ccc?key=0ArG7kkc9mE75dEdNNktocmVwT0hNbHVjTXl2ZU1VMXc&hl=en_US>`_, `Comparing Mobile Solutions for GIS Data Collection and Display <https://sites.google.com/site/dougbrowningportfolio/Resources/mobile-gis>`_ , and `Nomad Mobile Collection Systems Decision Tool <http://humanitarian-nomad.org/?page_id=533>`_ are also good resources.
 
 We also have `peer-reviewed research <https://opendatakit.org/about/research/>`_ and `user stories <https://opendatakit.org/blog>`_ that describe the situations where ODK is likely to be easier to use, less error-prone, more cost-effective and more timely when compared to other data collection systems.
 
 
-.. _email-members-ODK:
+.. _email-members-odk:
 
 Should I email members of the ODK team directly? 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -118,9 +132,19 @@ What Android phone/tablet/device should I use?
 The Android ecosystem changes too rapidly to recommend one device. In general, we recommend you get devices that you can source in-country and run the latest Android OS (even though we support Android OS 1.6+ and higher). 
 ODK Collect will run on most Android form factors (including tablets and netbooks).
 
-We recommend you spend a little more to get a higher quality device, instead of buying the cheapest phone. If you need a supplier, try amazon.com, newegg.com, ebay.com, n1wireless.com, expansys-usa.com and negrielectronics.com.
+We recommend you spend a little more to get a higher quality device, instead of buying the cheapest phone. If you need a supplier, try:
 
-For a list of all Android devices, try wikipedia.org, gsmarena.com, and phonescoop.com.
+- `Amazon <amazon.com>`_;
+- `Newegg <newegg.com>`_;
+- `Ebay <ebay.com>`_;
+- `N1 Wirelesse <n1wireless.com>`_;
+
+
+For a list of all Android devices, make a search in: 
+
+- `Wikipedia <wikipedia.org>`_;
+- `GSMArena <gsmarena.com>`_;
+-  `Phone Scoop <phonescoop.com>`_;
 
 .. _my-messages-delayed:
 
