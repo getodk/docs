@@ -61,16 +61,19 @@ Terminal (Command Line)
 
 .. warning::
 
-  This contributor guide is written from a \*nix (Bash Terminal) perspective, which is relevant to all flavors of Linux and MacOS. If you are on Windows, you will need to do one of the following:
+  This contributor guide is written primarily from a \*nix (Bash Terminal) perspective, which is relevant to all flavors of Linux and MacOS. We consider the Bash terminal commands to be the "canonical" way to build and work with the docs.
 
-  - adapt the commands to your environment
+  We have also provided explanations for how to adapt these commands to the Windows Command Prompt. (This is different than Windows Powershell, and not all the commands will work in Powershell. For more details on the Windows Command Prompt, `see this article <https://www.lifewire.com/how-to-open-command-prompt-2618089>`_
+
+  If you are on a Windows machine, you may prefer to use the adapted Windows instructions here. Alternatively, you can follow the Bash commands:
+
   - use the `Linux subsystem (Windows 10) <https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/>`_
-  - use a `bash terminal emulator <https://www.howtogeek.com/howto/41382/how-to-use-linux-commands-in-windows-with-cygwin/>`_
-  - use command prompt
-  
-    - If you see PowerShell instead of Command Prompt on the Power Users menu,It’s very easy to `switch back to showing the Command Prompt on the Power Users menu <https://www.howtogeek.com/301885/how-to-put-the-command-prompt-back-on-the-windowsx-power-users-menu/>`_
+  - use a bash terminal emulator, such as
 
-  Contributions to this guide with explanations and help for Windows users is greatly appreciated.
+    - :doc:`Cygwin <cygwin>`
+    - `gitbash <https://git-for-windows.github.io/>`_
+  
+  The lead maintainers of this docs repo are not Windows users, so we rely on our contributor community to keep Windows-specific information complete and accurate. Contributions to this guide with explanations and help for Windows users are greatly appreciated.
 
 Contributing to the docs requires interacting with git, Github, Python, and Sphinx, which requires the use of the Terminal. This is common among Linux users. Mac users unfamiliar with the Terminal can learn more from `this tutorial <https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855>`_.
 
@@ -91,16 +94,18 @@ If you don't know, check to see if you have Python 3 installed:
 
   $ python3
 
-On windows :
+On windows:
 
-.. code-block:: console
+.. code-block:: doscon
 
-   >python
+   > python
  
 
-If you get an error, you probably don't have it and will need to `install Python 3 <https://www.python.org/downloads/>`_.On Windows Make sure to select the option “Add python to the Path”, while installing (see `instructions <https://www.youtube.com/watch?v=oHOiqFs_x8Y>`_ ) otherwise you need to add it `manually <https://youtu.be/UTUlp6L2zkw>`_ .If the Python command-line interpreter starts up, type ``quit()`` to exit.
+If you get an error, you probably don't have it and will need to `install Python 3 <https://www.python.org/downloads/>`_. 
 
+On Windows make sure to select the option "Add python to the Path", while installing (see `instructions <https://www.youtube.com/watch?v=oHOiqFs_x8Y>`_ ) otherwise you need to add it `manually <https://youtu.be/UTUlp6L2zkw>`_ . 
 
+If the Python command-line interpreter starts up, type ``quit()`` to exit.
 
 .. _docs-venv:
 
@@ -138,11 +143,10 @@ Now, inside that odk directory, create a python3 virtualenv.
   
 On Windows use:
 
-.. code-block:: console
+.. code-block:: doscon
 
-  >path to python\python -m venv odkenv
+  > path\to\python\python -m venv odkenv
   (e.g C:\python36\python -m venv odkenv)
-
 
 The last part, ``odkenv`` can be whatever name you'd like to call it.
 
@@ -154,10 +158,9 @@ Activate your virtual environment with:
   
 On Windows use:
 
-.. code-block:: console
+.. code-block:: doscon
 
-  >cd odkenv
-  >.\Scripts\activate
+  > odkenv\Scripts\activate
 
 
 And, when you are done working, deactivate it with:
@@ -197,13 +200,15 @@ We use `Git Large File Storage (GLFS)  <https://git-lfs.github.com/>`_ to handle
 
 .. warning::
 
-  Make sure :file:`git-lfs.exe` and  :file:`git.exe` are under same "master" directory on Windows,See `this <https://github.com/git-lfs/git-lfs/issues/919>`_ for reference.
+  **On Windows**
+
+  Make sure :file:`git-lfs.exe` and  :file:`git.exe` are under the same "master" directory on Windows. (See `this page <https://github.com/git-lfs/git-lfs/issues/919>`_ for reference.
 
 GLFS tracks binary files as defined in the :file:`.gitattributes` file `in the repo <https://github.com/opendatakit/docs/blob/master/.gitattributes>`_. Most common binary file formats are already listed, but there might be others we haven't thought of yet.
 
 If you are adding binary files to the repo, and they are in formats not already tracked, **it is your responsibility to make sure they are tracked.** To make sure they are properly tracked, add the file type to GLFS. You can do this by editing :file:`.gitattributes` directly.
 
-.. code-block:: console
+.. code-block:: none
 
   # file type section heading
   *.{extension-to-track} filter=lfs diff=lfs merge=lfs -text
@@ -230,7 +235,7 @@ We would also appreciate it if you would keep that file organized by placing the
 Android Tools
 ~~~~~~~~~~~~~~~~~
 
-Some testing and documentation tasks (including :ref:`making screenshots from ODK Collect <screenshots>`) require the :command:`adb` (`Android Debug Bridge <https://developer.android.com/studio/command-line/adb.html>`_) command line tool.
+Some testing and documentation tasks (including :ref:`making screenshots from ODK Collect <screenshots>`) require the :doc:`Android Debug Bridge <collect-adb>`) command line tool.
 
 Android Studio
 """"""""""""""""""
@@ -290,16 +295,14 @@ The rest of the documentation assumes you are in the directory for the repo (the
 
 .. tip::
   - The ``clone`` command creates a new directory inside the current one. So you do not need to create a new `odk-docs` directory first.
-  - As noted above, we recommend an `odk` master directory that holds your virtualenv directory and your git repo. So you would be in that odk directory when you clone down the repo.
+  - As noted above, we recommend a master :file:`odk` directory that holds your virtualenv directory and your git repo in two separate subdirectories. So you would be in that master :file:`odk` directory when you clone down the repo.
   - Double check that right folders are in the right places
   
-  .. code-block:: rst
+  .. code-block:: none
 
-    1. odk/
-    2.	odkenv/
-    3.	   docs/
-
-
+    - odk/
+      - odkenv/
+      - docs/
 	
 .. _upstream-the-docs:
 
@@ -311,17 +314,13 @@ When you clone down a repo, the local copy calls your GitHub copy ``origin``. Yo
 
 .. code-block:: console
 
-  $ git remote add --track upstream https://github.com/opendatakit/docs.git
-  
-.. note::
+  $ git remote add --track upstream https://github.com/opendatakit/docs.git  
 
-  If you are working on windows use:
-  
-  .. code-block:: console
-  
-    >git remote add upstream https://github.com/opendatakit/docs.git
-  
-  
+Or in Windows:
+
+.. code-block:: doscon
+
+  git branch --set-upstream master origin/master https://github.com/opendatakit/docs.git  
 
 Run ``git remote -v`` to check the status, you should see something like this:
 
@@ -345,7 +344,7 @@ The first time you clone down the repo, you'll need to install the dependencies.
 
 .. note::
 
-  If you are working on the design, testing, or deployment of the docs, you might find the need to install an additional PyPi package. If you do, please update the requirements.txt file with ``pip freeze > requirements.txt``. Pull Requests which change requirements.txt should include a note about why the new packages are needed.
+  If you are working on the design, testing, or deployment of the docs, you might find the need to install an additional PyPi package. If you do, please update the requirements.txt file with ``pip freeze > requirements.txt``. Pull Requests which change :file:`requirements.txt` should include a note about why the new packages are needed.
 
 .. note::
 
@@ -418,7 +417,7 @@ To build the documentation into a viewable website:
 
   $ sphinx-build -b html . build
 
-This calls the sphinx-build utility. The ``-b`` switch specifies the builder, which in this case is ``html`` -- as opposed to other builders like ``pdf``. The ``.`` refers to the current directory (the build source) and ``build`` refers to the target of the build (the built files will be put into a directory labeled ``build``).
+This calls the sphinx-build utility. The :option:`-b` switch specifies the builder, which in this case is ``html`` -- as opposed to other builders like ``pdf``. The ``.`` refers to the current directory (the build source) and ``build`` refers to the target of the build (the built files will be put into a directory labeled ``build``).
 
 When you run the build, you may see error or warning messages. These indicate potential problems with the documentation, like:
 
@@ -426,7 +425,13 @@ When you run the build, you may see error or warning messages. These indicate po
 - broken links
 - terms not included in the glossary
 
-Error and warning messages include a file name and line number for tracking them down. Try to resolve all your errors and warnings before issuing a pull request. However, if this is not possible, please add a note in your pull request. **If you submit a pull request that will create build errors, you must include a note mentioning what those errors are, and why they are ok to leave in.**
+Error and warning messages include a file name and line number for tracking them down. Try to resolve all your errors and warnings before issuing a pull request. However, if this is not possible, please add a note in your pull request so that we can help you debug the problem. 
+
+**We will not merge Pull Requests that have warnings or errors in them.**
+
+.. note::
+
+  Because of `a bug in Sphinx <https://github.com/sphinx-doc/sphinx/issues/2617>`_, the line numbers in error and warning messages will be off by the length of `rst_prolog` in :file:`conf.py`. 
 
 
 To view the documentation in your web browser, you can use Python's built-in web server.
@@ -1130,6 +1135,13 @@ Several roles are used when describing user interactions.
   .. code-block:: rst
 
     To save your file, go to :menuselection:`File --> Save` in the Main Menu.
+
+.. note::
+
+  In some situations you might not be clear about which option to use from ``:menuselection:`` and ``:guilabel:``, in which case you should refer to the following rule that we observe in our writing.
+
+  - Actual UI text will always receive ``:guilabel:`` role unless the text could reasonably be understood to be part of a menu.
+  - If the actual UI text could be understood as a menu, ``:menuselection:`` should be used.
 
 .. rst:role:: kbd
 
