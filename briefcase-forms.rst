@@ -22,9 +22,8 @@ Pulling forms from ODK Aggregate
 
 .. tip::
 
- In the above case, if the changes only affect the question text and do not alter the structure of the collected data (or change the formId or version), you can create a new ODK Briefcase Storage area, pull data into that, then manually copy the instances from there into your original storage area.
+ If the form definition has changed but the changes only affect the question text and do not alter the structure of the collected data (or change the formId or version), you can create a new ODK Briefcase Storage area, pull data into that, then manually copy the instances from there into your original storage area.
 
------------
 
 .. _push-to-aggregate:
 
@@ -41,18 +40,15 @@ Pushing forms to ODK Aggregate
 
 .. warning::
 
-  ODK Briefcase will abort a push attempt if the form definition already on the ODK Aggregate server differs in any way from the form definition in the ODK Briefcase Storage area.
+  - ODK Briefcase will abort a push attempt if the form definition already on the ODK Aggregate server differs in any way from the form definition in the ODK Briefcase Storage area.
+  - ODK Briefcase does not work with Google accounts (Account Type 'Google').
 
+  
 .. tip::
 
-  If the form definition has changed but the changes do not affect the data model, you can make a copy of the storage area, replace the copy's form definition file with that from the server, and then push the data up from this storage area copy.
-
------------
-
-.. note::
-
-  - ODK Briefcase does not work with Google accounts (Account Type 'Google').
+  - If the form definition has changed but the changes do not affect the data model, you can make a copy of the storage area, replace the copy's form definition file with that from the server, and then push the data up from this storage area copy.
   - By pulling data into the local ODK Briefcase Storage location and then pushing data up to an ODK Aggregate instance, ODK Briefcase provides a mechanism to transfer data across incompatible upgrades of ODK Aggregate.
+
 
 .. _pull-from-collect:
 
@@ -81,10 +77,6 @@ Pulling from Android 2.x or earlier device
 Pulling from Android 4.x and later device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. note::
-
- ODK Briefcase does not work with the USB-mounted Media device (MTP) protocol, which replaced the USB-mounted drive protocol on Android 4.x devices.
-
 - Ensure all filled-in forms are finalized. Either delete the forms which are not finalized or delete them after making a backup copy of :file:`/sdcard/odk` directory on your device and restore that later.
 - Create a zip of the entire :file:`odk` directory using an application like `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
 - Connect your Android device to your computer using a USB cable and choose to mount it as a Media device.
@@ -98,18 +90,14 @@ Pulling from Android 4.x and later device
 - On the Android device, open ODK Collect and delete the filled-in forms.
 
 
-.. note::
- You can use the *Custom path to ODK Directory* any time you want to pull forms from custom loaction.
-
---------------
-
 .. tip::
+ - You can use the *Custom path to ODK Directory* any time you want to pull forms from custom loaction.
+ - You can confirm that the forms have been successfully pulled into ODK Briefcase by confirming a successful pull status or by verifying the data appearing in a CSV export file.
 
- You can confirm that the forms have been successfully pulled into ODK Briefcase by confirming a successful pull status or by verifying the data appear in a CSV export file.
+.. warning::
+ - ODK Briefcase does not work with the USB-mounted Media device (MTP) protocol, which replaced the USB-mounted drive protocol on Android 4.x devices.
+ - ODK Briefcase does not support pushing blank forms to ODK Collect. You can manually install the forms on your ODK Collect device. 
 
-.. note::
-
- ODK Briefcase does not support pushing blank forms to ODK Collect. You can manually install the forms on your ODK Collect device.
 
 .. _export-forms:
 
@@ -122,8 +110,6 @@ Export forms to CSV
 - Specify the location where you wish to export form as csv on your system in the :guilabel:`Export Directory` option.
 - Click on :guilabel:`Export` at the bottom of the window.
 
-
---------------
 
 .. _cli-use:
 
