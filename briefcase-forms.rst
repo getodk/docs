@@ -55,6 +55,8 @@ Pushing forms to ODK Aggregate
 Pulling forms from Collect
 ---------------------------
 
+.. _pull-from-android2.x:
+
 Pulling from Android 2.x or earlier device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -73,6 +75,8 @@ Pulling from Android 2.x or earlier device
 
 .. warning::
  ODK Briefcase cannot discriminate between duplicates of the same filled-in form. After you pull the data into ODK Briefcase, it is important that you delete it from ODK Collect. Otherwise, the next time you follow this process, you will end up with two copies of the filled-in forms from the first pull, etc.
+
+.. _pull-from-android4.x:
 
 Pulling from Android 4.x and later device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
