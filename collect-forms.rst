@@ -57,7 +57,7 @@ Once you have at least one form :ref:`loaded into ODK Collect <loading-forms-int
 
 - Select :guilabel:`Fill Blank Form` from the app home screen.
 - Select the form you would like to fill out from the form list.
-- Typically, you will :gesture:`Swipe Left` to advance forward through the question, and :gesture:`Swipe Right` to backup.
+- Typically, you will :gesture:`swipe left` to advance forward through the question, and :gesture:`swipe right` to back up.
 
   - You can switch from :gesture:`Swipe` navigation to Forward/Backward buttons in :menuselection:`⋮ -> General Settings -> User Interface`
   - Some questions will :ref:`auto-advance <autoadvance-widget>` after being answered.

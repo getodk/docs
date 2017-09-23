@@ -55,7 +55,9 @@ Pushing forms to ODK Aggregate
 Pulling forms from Collect
 ---------------------------
 
-Pulling from Android 2.x or earlier device
+.. _pull-from-android2.x:
+
+Pulling from Android 2.x and earlier device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Ensure all filled-in forms are finalized. Either delete the forms which are not finalized or delete them after making a backup copy of :file:`/sdcard/odk` directory on your device and restore that later.
@@ -73,6 +75,8 @@ Pulling from Android 2.x or earlier device
 
 .. warning::
  ODK Briefcase cannot discriminate between duplicates of the same filled-in form. After you pull the data into ODK Briefcase, it is important that you delete it from ODK Collect. Otherwise, the next time you follow this process, you will end up with two copies of the filled-in forms from the first pull, etc.
+
+.. _pull-from-android4.x:
 
 Pulling from Android 4.x and later device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -120,17 +124,17 @@ In Briefcase v1.4.4 and later, there is a scriptable command line interface.
 
 Pulling form data from Aggregate Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- .. code-block:: console
+.. code-block:: console
 
-    $ java -jar "ODK Briefcase v1.4.4 Production.jar" --form_id market_prices --storage_directory ~/Desktop --aggregate_url https://my_server.appspot.com --odk_username my_username --odk_password my_password
+  $ java -jar "ODK Briefcase v1.4.4 Production.jar" --form_id market_prices --storage_directory ~/Desktop --aggregate_url https://my_server.appspot.com --odk_username my_username --odk_password my_password
 
- This command pulls form data with id market_prices from Aggregate server at `https://my_server.appspot.com` and stores data in Briefcase's storage directory on the :file:`~/Desktop`
+This command pulls form data with id market_prices from Aggregate server at `https://my_server.appspot.com` and stores data in Briefcase's storage directory on the :file:`~/Desktop`
 
 Pulling form data from ODK Collect
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. code-block:: console
 
-   $ java -jar "ODK Briefcase v1.4.4 Production.jar" --form_id market_prices --storage_directory ~/Desktop --odk_directory ~/Desktop/odk
+  $ java -jar "ODK Briefcase v1.4.4 Production.jar" --form_id market_prices --storage_directory ~/Desktop --odk_directory ~/Desktop/odk
 
 This command pulls form data with id market_prices from Collect's odk folder at :file:`~/Desktop/odk` and store data in Briefcase's storage directory on the :file:`~/Desktop`
 
@@ -138,14 +142,14 @@ Export form data
 ~~~~~~~~~~~~~~~~~~~~
 .. code-block:: console
 
-   $ java -jar "ODK Briefcase v1.4.4 Production.jar" --form_id market_prices --storage_directory ~/Desktop --export_directory ~/Desktop --export_filename market_prices.csv
+  $ java -jar "ODK Briefcase v1.4.4 Production.jar" --form_id market_prices --storage_directory ~/Desktop --export_directory ~/Desktop --export_filename market_prices.csv
 
 This command exports form data with id market_prices from Briefcase's storage directory on the :file:`~/Desktop` and write CSV file to :file:`~/Desktop/market_prices.csv`
 
 
 To get help about the command line operation type `java -jar path_to_jar -help`.
 
- .. code-block:: console
+.. code-block:: console
 
   $ java -jar "/home/pc123/Desktop/ODK Briefcase v1.8.0 Production.jar" -help
 
