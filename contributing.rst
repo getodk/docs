@@ -63,7 +63,7 @@ Terminal (Command Line)
 
   This contributor guide is written primarily from a \*nix (Bash Terminal) perspective, which is relevant to all flavors of Linux and MacOS. We consider the Bash terminal commands to be the "canonical" way to build and work with the docs.
 
-  We have also provided explanations for how to adapt these commands to the Windows command prompt.
+  We have also provided explanations for how to adapt these commands to the Windows Command Prompt. (This is different than Windows Powershell, and not all the commands will work in Powershell. For more details on the Windows Command Prompt, `see this article <https://www.lifewire.com/how-to-open-command-prompt-2618089>`_
 
   If you are on a Windows machine, you may prefer to use the adapted Windows instructions here. Alternatively, you can follow the Bash commands:
 
@@ -73,7 +73,7 @@ Terminal (Command Line)
     - :doc:`Cygwin <cygwin>`
     - `gitbash <https://git-for-windows.github.io/>`_
   
-  Contributions to this guide with explanations and help for Windows users is greatly appreciated.
+  The lead maintainers of this docs repo are not Windows users, so we rely on our contributor community to keep Windows-specific information complete and accurate. Contributions to this guide with explanations and help for Windows users are greatly appreciated.
 
 Contributing to the docs requires interacting with git, Github, Python, and Sphinx, which requires the use of the Terminal. This is common among Linux users. Mac users unfamiliar with the Terminal can learn more from `this tutorial <https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855>`_.
 
@@ -315,7 +315,12 @@ When you clone down a repo, the local copy calls your GitHub copy ``origin``. Yo
 .. code-block:: console
 
   $ git remote add --track upstream https://github.com/opendatakit/docs.git  
-  
+
+Or in Windows:
+
+.. code-block:: doscon
+
+  git branch --set-upstream master origin/master https://github.com/opendatakit/docs.git  
 
 Run ``git remote -v`` to check the status, you should see something like this:
 
