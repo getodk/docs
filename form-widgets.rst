@@ -635,10 +635,12 @@ XForm XML
 Barcode
 ----------
 
-A barcode scanner.
+Captures the text from a barcode using the device camera. Supported barcode formats are described [here](https://github.com/zxing/zxing/#supported-formats). Non-printing control codes are removed.
+
+The flash can be used as a light source when scanning barcodes in a poorly-lit environment.
 
 .. note::
-  Older versions of ODK Collect required a third-party app for barcode scanning. This is no longer the case. The barcode widget is fully supported on recent ODK Collect releases used on recent Android devices.
+  Barcode scanning is built into ODK Collect versions 1.7.0 and greater. Versions of ODK Collect prior to 1.7.0 require the [ZXing app](https://play.google.com/store/apps/details?id=com.google.zxing.client.android) to be installed.
 
 .. image:: /img/form-widgets/barcode-start.*
   :alt: The Barcode form widget as displayed in the ODK Collect app on an Android phone. The headline text reads, "Scan any barcode." Below that is an image labeled "Get Barcode."
