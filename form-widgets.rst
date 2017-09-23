@@ -296,7 +296,7 @@ GeoTrace
 
 A line or polygon of GPS coordinates tracking actual device movement. The user can specify one of two location-recording modes:
 
-- Manual Mode — The user taps the device to place a marker as desired, while moving.
+- Manual Mode — The user taps the device to place a marker as desired while moving.
 - Automatic Mode — The app creates a marker on a regular time interval (default: 20 seconds) as the user moves.
 
 
@@ -319,7 +319,7 @@ A line or polygon of GPS coordinates tracking actual device movement. The user c
   :alt: The same map as displayed previously, but now a series of red markers form a line across the map.
 
 .. image:: /img/form-widgets/geotrace6.*
-  :alt: The same map as previously, with a new modal popup. The headlines of the modal is "Save GeoTrace as" followed by two options: Save as Polygon and Save as Polyline. In the bottom-right is a Cancel button.
+  :alt: The same map as previously, with a new modal popup. The headline of the modal is "Save GeoTrace as" followed by two options: Save as Polygon and Save as Polyline. In the bottom-right is a Cancel button.
 
 .. image:: /img/form-widgets/geotrace7.*
   :alt: The Geotrace form widget, as shown previously. The question text is "Where have you been?" and the button label is "View or Change GeoTrace." Below that is a list of lat/long GPS coordinates.
@@ -501,7 +501,7 @@ XForm XML
 Image
 ----------
 
-An image collector. The user can choose to select an image stored on the device, or take a new picture. The example includes :term:`hint` text.
+An image collector. The user can choose to select an image stored on the device or take a new picture. The example includes :term:`hint` text.
 
 .. image:: /img/form-widgets/image-start.*
   :alt: The Image widget as displayed in the ODK Collect App on an Android phone. The question text is "Please take a self portrait." Below the question is the hint text, "A 'selfie.'" There are two buttons: Take Picture and Choose Image.
@@ -540,7 +540,7 @@ Audio
 An audio recording collector.
 
 .. image:: /img/form-widgets/audio-start.*
-  :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "Please record your name." There are three buttons: Record Sound, Choose Sound, and Play Sound. The "Play Sound" button is disabled.
+  :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "Please record your name." There are three buttons: Record Sound, Choose Sound and Play Sound. The "Play Sound" button is disabled.
 
 .. need to complete the audio widget sequence of images
 
@@ -1162,7 +1162,7 @@ Annotate Widget
 Allows user to take or select an image and then draw on it.
 
 .. image:: /img/form-widgets/annotate-start.* 
-  :alt: The Annotate form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Annotate widget." The hint text is, "image type with anotatr appearance." There are three buttons: "Take Picture," "Choose Image," and "Markup Image." The Markup Image button is disabled. Above the question text is the form group name "Image widgets."
+  :alt: The Annotate form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Annotate widget." The hint text is, "image type with annotate appearance." There are three buttons: "Take Picture," "Choose Image," and "Markup Image." The Markup Image button is disabled. Above the question text is the form group name "Image widgets."
   
 .. image:: /img/form-widgets/annotate-1.* 
   :alt: The camera view on an Android phone. In the viewer is a picture of a small saucer. Below the viewer is a blue checkmark button.
@@ -1790,7 +1790,7 @@ A set of radio buttons with text labels and accompanying images.
 See :ref:`image-options` to learn more about including images in surveys.
 
 .. image:: /img/form-widgets/default-single-image-select.* 
-  :alt: The Single Select form widget with images, as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is, "select_one type with no appearance, 4 image choices (a.jpg, b.jpb, c.jpg, d.jpg)." Below that is a set of radio buttons labeled A, B, C, and D. Below each radio button is a small icon of an animal: A - whale, B - frog, C - aligator, D - eagle. Above the question text is the form group name "Select one widgets."
+  :alt: The Single Select form widget with images, as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is, "select_one type with no appearance, 4 image choices (a.jpg, b.jpb, c.jpg, d.jpg)." Below that is a set of radio buttons labeled A, B, C, and D. Below each radio button is a small icon of an animal: A - whale, B - frog, C - alligator, D - eagle. Above the question text is the form group name "Select one widgets."
   
 XLSForm Rows
 """"""""""""""
