@@ -1,14 +1,13 @@
-**********************************
 Briefcase vs Aggregate
-**********************************
+=========================
 
 .. _briefcase-points:
 
 Briefcase
 -------------
 
-- Briefcase provides a mechanism to pull blank and finalized forms from ODK Collect or ODK Aggregate or any custom ODK directory into a local briefcase storage location.
-- It can push blank forms and finalized forms from briefcase storage location to an Aggregate 1.0 instance.
+- Briefcase provides a mechanism to pull blank and finalized forms from ODK Collect or ODK Aggregate or any custom ODK directory into a local Briefcase storage location.
+- It can push blank forms and finalized forms from Briefcase storage location to an Aggregate 1.0 instance.
 - Export the finalized form to a CSV file for processing by other applications.
 - It can be used to transfer data across incompatible upgrades of ODK Aggregate as well as it is required to decrypt any encrypted submissions.
 - Briefcase is good for offline use when there is no need for a server. It is often enough for smaller projects.
