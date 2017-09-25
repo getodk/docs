@@ -263,7 +263,7 @@ become a contributor
 """ 
 contri_guide = """
 
-contributing.html
+/contributing/
 
 """
 faq_help = """
