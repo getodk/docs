@@ -45,6 +45,6 @@ To manually install forms onto your ODK Collect device:
 - Run ODK Collect
 - Choose "Fill Blank Form".
 
-ODK Collect will scan the directory for new forms, parse them, and make them available in this list. It can take several moments for large forms to appear. When ODK Collect has completed scanning for new forms, it will display Finished scanning. All forms loaded. in the second line at the top of this screen.
+ODK Collect will scan the directory for new forms, parse them, and make them available in this list. It can take several moments for large forms to appear. When ODK Collect has completed scanning for new forms, it will display "Finished scanning". All forms are loaded in the second line at the top of this screen.
 
 The steps for pulling data directly into ODK Briefcase from your Android device differs between the :ref:`Android 2.x <pull-from-android2.x>` and :ref:`Android 4.x <pull-from-android4.x>` devices.
