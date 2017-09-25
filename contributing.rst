@@ -244,6 +244,13 @@ Android Studio
 
 On Mac, add the following to your :file:`.bash_profile`
 
+.. note::
+    On Windows, you have to run Android Studio once to complete the Installation of ADB. The tool can be found in :file:`C:/Users/your user name/AppData/Local/Android/sdk/platform-tools`. You need to add it to the environment variable path, use the following command:
+
+    .. code-block:: none
+
+        set PATH=%PATH%;C:\Users\your user name\AppData\Local\Android\sdk\platform-tools
+
 .. code-block:: sh
 
   export PATH=$PATH:~/Library/Android/sdk/tools/
