@@ -7,7 +7,7 @@ Briefcase Installation and Setup
 Installing Briefcase
 ----------------------
 
-- Make sure to download and install `Java 7 <https://java.com/en/download/>`_ or higher on your system.
+- Make sure to download and install `Java 8 <https://java.com/en/download/>`_ or higher on your system.
 - Download `ODK Briefcase <https://opendatakit.org/downloads/download-category/briefcase/>`_  vN.N.N.jar.
 - Double click and start the file.
 - If that doesn't work for you try running *java -jar path_to_jar* from the command line.
