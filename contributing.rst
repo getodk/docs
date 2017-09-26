@@ -424,7 +424,7 @@ To build the documentation into a viewable website:
 
 .. code-block:: console
 
-  $ sphinx-build -b html . build
+  $ sphinx-build -b dirhtml . build
 
 This calls the sphinx-build utility. The :option:`-b` switch specifies the builder, which in this case is ``html`` -- as opposed to other builders like ``pdf``. The ``.`` refers to the current directory (the build source) and ``build`` refers to the target of the build (the built files will be put into a directory labeled ``build``).
 
@@ -459,7 +459,11 @@ It's a good idea to delete the ``build`` directory before each rebuild.
 .. code-block:: console
 
   $ rm -rf build
-  $ sphinx-build -b html . build
+  $ sphinx-build -b dirhtml . build
+
+.. tip::
+
+  The script ``b.sh`` is a utility script that can be run to build the directory. It not only saves typing effort but will also become the canonical build script for us, so it's good to get used to it from now. 
 
 .. _push-the-docs:
 
