@@ -2,6 +2,8 @@
 Encrypted Forms
 *****************************
 
+.. encrypted-forms:
+
 Overview 
 ====================
 Encrypted forms provide a mechanism to keep your data private even when using **http:** for communications (e.g., when you do not have an **SSL certificate** or **https:** is not available). Encrypted forms may also enable Google App Engine deployments (and deployments using other web database services, e.g., AWS) to comply with data privacy laws, eliminating the necessity for setting up your own servers to meet those requirements.
@@ -17,6 +19,8 @@ This process ensures that the finalized form's data (and media attachments) are 
 
 The non-encrypted data is available on the ODK Collect device during data collection and whenever a form is saved without marking it as complete. Once you mark a form as complete (finalize it), ODK Collect will generate a random 256-bit symmetric key, encrypt the form contents and all attachments with this key, then construct a submission manifest which describes the encrypted submission and an asymmetric-key encryption of the symmetric key used for the encryption. This manifest is the "form" that is uploaded to ODK Aggregate, with the encrypted form contents and its encrypted attachments appearing as attachments to this submission manifest "form."
 
+.. requiremets:
+
 Requirements
 ====================
 Encrypted forms require the following *minimum versions* for the ODK tools
@@ -30,6 +34,8 @@ Encrypted forms require the following *minimum versions* for the ODK tools
   Encrypted form definitions must include a unique OpenRosa instanceID and have an explicit ``<submission/>`` element
   
 These requirements are covered in more detail below.
+
+.. security-concerns:
   
 Security Concerns
 ====================
@@ -38,6 +44,8 @@ While ODK Collect attempts to remove all unencrypted copies of a finalized form 
 .. note::
 
   Encrypting a form ensures that the finalized form is not readable and is not tampered with. However, there is nothing preventing a malicious adversary from the wholesale replacement of a finalized form with falsified data or the synthesis and submission of extra data — these are not contingencies that encrypted forms seek to address.
+  
+.. config-briefcase:
 
 Configuration 
 ====================
@@ -54,20 +62,25 @@ Windows
 ~~~~~~~~~~~~~~~
 
 The JRE is usually installed here:
-:file:`C:\Program Files\Java\jre1.x.x_xxx\lib\security`
+
+:file:`C:\\Program Files\\Java\\jre1.x.x_xxx\\lib\\security`
 
 You might also have a JDK. If you do, you must also install the JCE files there:
-:file:`C:\Program Files\Java\jdk1.x.x_xxx\jre\lib\security`
+
+:file:`C:\\Program Files\\Java\\jdk1.x.x_xxx\\jre\\lib\\security`
 
 macOS
 ~~~~~~~~~~~~~~~
 
 The JRE is usually found here:
+
 :file:`/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/lib/security`
 
 You might also have a JDK. If you do, you must also install the JCE files there:
+
 :file:`/Library/Java/JavaVirtualMachines/jdk1.x.x_xxx.jdk/Contents/Home/jre/lib/security`
 
+.. upload-final-forms:
 
 Uploading Finalized Forms
 ===========================
@@ -121,6 +134,8 @@ The required element to make this form an encrypted form is the ``<submission/>`
   - You can define any value for the instanceID field, but it must be unique across all collected surveys. 
   - As shown, the ``<bind/>`` calculates an instanceID value comparable to the instanceID value ODK Aggregate will generate when a form does not have an instanceID field. 
   - If you use punctuation other than colon and dash, or any special characters, please test    thoroughly to ensure that ODK Aggregate correctly handles those characters during submissons and   when the form is pulled down to ODK Briefcase.
+  
+.. create-RSA-key:
 
 Creating RSA Key pair
 ===========================
@@ -197,6 +212,8 @@ Open the :file:`MyPublicKey.pem` file in Notepad (Windows) or TextEdit (Mac). Re
 .. note::
 
   You  need to be especially careful that this is ONLY the public key, and not the contents of the original public-private key file (which would also appear to work but provide no security).
+  
+.. encrypt-operations:
 
 Operations
 ===========================
