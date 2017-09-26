@@ -235,7 +235,7 @@ We would also appreciate it if you would keep that file organized by placing the
 Android Tools
 ~~~~~~~~~~~~~~~~~
 
-Some testing and documentation tasks (including :ref:`making screenshots from ODK Collect <screenshots>`) require the :doc:`Android Debug Bridge <collect-adb>`) command line tool.
+Some testing and documentation tasks (including :ref:`making screenshots from ODK Collect <screenshots>`) require the :doc:`Android Debug Bridge <collect-adb>`) command line tool. You can either install Android Studio or install ADB as standalone SDK tool.
 
 Android Studio
 """"""""""""""""""
@@ -243,6 +243,15 @@ Android Studio
 :abbr:`ADB (Android Debug Bridge)` is part of `Android Studio <https://developer.android.com/studio/index.html>`_. This is the best way to get :command:`adb` if you plan to do any other Android development. It *should* be installed by default when you install Android Studio. To use it from the command line, you'll need to add the SDK Platform tools to your path.
 
 On Mac, add the following to your :file:`.bash_profile`
+
+.. note::
+
+    On Windows, you have to run Android Studio once to complete the Installation of ADB. The tool can be found in :file:`C:/Users/your user name/AppData/Local/Android/sdk/platform-tools`. You need to add it to the environment variable path, use the following command:
+
+    .. code-block:: none
+
+        set PATH=%PATH%;C:\Users\your user name\AppData\Local\Android\sdk\platform-tools
+
 
 .. code-block:: sh
 
