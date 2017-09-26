@@ -361,7 +361,7 @@ Before looking at the explanaton please download the `XLS <https://opendatakit.o
 
 The XML file has been generated from the XLS file then manually edited to use the names of the chosen crop and plot in the yield question. The plot and crop selections are asked on the same screen (inside a field-list group). This is recommended since the constraint is applied on forward-swipe off of a screen. If you ask these questions on different screens, you might get odd behaviors.
 
-The technique is to use the ````selected() predicate to detect whether an already-entered value matches the current crop_type field's answer. If it does, the constraint is violated:
+The technique is to use the ``selected()`` predicate to detect whether an already-entered value matches the current ``crop_type`` field's answer. If it does, the constraint is violated:
 
 :guilabel:`not(selected(/* accumulation of already-entered values */, .))`
 
