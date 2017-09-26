@@ -646,7 +646,7 @@ The flash can be used as a light source when scanning barcodes in a poorly-lit e
   :alt: The Barcode form widget as displayed in the ODK Collect app on an Android phone. The headline text reads, "Scan any barcode." Below that is an image labeled "Get Barcode."
 
 .. image:: /img/form-widgets/barcode1.*
-  :alt: A barcode scanner on a horizontally-oriented Android device. A barcode is in the viewfinder, with a thin red line across the barcode.
+  :alt: A barcode scanner on an Android device. A barcode is in the viewfinder, with a thin blue line across the barcode.
 
 .. image:: /img/form-widgets/barcode2.*
   :alt: The Barcode form widget as displayed previously. The button label is now "Replace Barcode." Below the button is a string of numbers representing the decoded content of the scanned barcode.
