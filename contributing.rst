@@ -329,7 +329,7 @@ Or in Windows:
 
 .. code-block:: doscon
 
-  git branch --set-upstream master origin/master https://github.com/opendatakit/docs.git  
+  > git remote add upstream https://github.com/opendatakit/docs.git  
 
 Run ``git remote -v`` to check the status, you should see something like this:
 
