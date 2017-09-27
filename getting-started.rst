@@ -49,6 +49,8 @@ You'll set up a new Google Cloud project, and then run the install utility local
 
 For full details, and other installation methods, see the `ODK Aggregate Installation and Setup Guide <https://opendatakit.org/use/aggregate/>`_.
 
+You can also watch `this video <https://www.youtube.com/watch?v=uZYInkghbCo>`_ which explains the installation procedure of ODK Aggregate on Google App Engine. 
+
 .. change to
     :ref:`ODK Aggregate Installation and Setup Guide <aggregate-install-guide>`.
     once that section is completed
