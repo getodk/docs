@@ -8,7 +8,8 @@ There are two types of metadata in a form submission.
  - Form metadata — Data about the identity and version of the XForm used to create the data being submitted. 
  - Submission metadata — Data about the submission itself.
 
-
+.. _blank-form-metadata:
+ 
 Blank Form Metadata
 -----------------------
 
@@ -28,6 +29,8 @@ A blank form must have two pieces of identifying metadata. These are provided as
 
 Two attributes are required. One provides the unique identity of the form, the other provides the current version number.
 
+.. _form-identity:
+
 Form Identity
 ~~~~~~~~~~~~~~~~
 
@@ -44,6 +47,8 @@ For ``id``, the implementor's registered domain name should be used as part of t
 
 Compliant systems MUST support ``id`` or ``xmlns`` lengths up to 249 chars; ideally, servers SHOULD be able to support arbitrary lengths.
 
+.. _form-version:
+
 Version
 ~~~~~~~~~~
 
@@ -58,11 +63,12 @@ The value of ``version`` MUST be incremented when any part of the form changes.
 
 If ``version`` is not present, it is handled as NULL. 
 
+.. _completed-form-metadata:
 
 Completed Form Metadata
 --------------------------
 
-In a completed form, metadata is provided in a ``<metadata>`` element inside the ``<model>`` element.
+In a completed form, metadata is provided in a ``<meta>`` element inside the ``<model>`` element.
 
 .. code-block:: xml
 
@@ -70,15 +76,17 @@ In a completed form, metadata is provided in a ``<metadata>`` element inside the
   .
   .
   .
-    <metadata>
+    <meta>
       <instanceID>
         uuid:ca90905c-a2db-11e7-abc4-cec278b6b50a
       </instanceID>
       <userID>
         openid:http://www.google.com/profiles/adam.michael.wood
       </userID>
-    </metadata>
+    </meta>
     
+.. _metadata-fields:
+
 Fields
 ~~~~~~~~
 
@@ -86,16 +94,20 @@ The only **required** element in the form submission metadata is ``<instanceID>`
 
 Optional fields:
 
-- ``<timeStart>`` ---  A timestamp of when form entry started.
-- ``<timeEnd>`` --- A timestamp of when form entry ended.
+- ``<timeStart>`` ---  An `ISO 8601 timestamp <https://en.wikipedia.org/wiki/ISO_8601>`_ of when form entry started.
+- ``<timeEnd>`` --- An `ISO 8601 timestamp <https://en.wikipedia.org/wiki/ISO_8601>`_ of when form entry ended.
 - ``<userID>`` --- A unique identifier of the submitting user.
-- ``<deviceID>`` --- The ID of the specific device used to generate the submission.
+- ``<deviceID>`` --- A unique identifier of device used to generate the submission.
 - ``<deprecatedID>`` --- the ``<instanceID>`` of the submission for which this is a revision. Server software can use this field to unify multiple revisions to a submission into a consolidated submission record.
+
+.. _if-field-formatting:
 
 ID field formatting
 """"""""""""""""""""""
 
 ID fields (``<instanceID>``, ``<userID>``, etc.) must follow the format ``scheme:id``. 
+
+.. _recommended-id-schemes:
 
 Recommended ID schemes
 ''''''''''''''''''''''''
@@ -119,3 +131,96 @@ If you implement a custom ID scheme, it should be prefixed with your domain name
 
   <instanceID>opendatakit.org:123456789</instanceID>
   
+.. _id-constraints:
+
+ID Field Constraints
+"""""""""""""""""""""""
+
+- The combined scheme:value keypair MUST be no longer than 249 characters (ie, so that varchar(249) can be used). 
+  
+  - A `robust <https://en.wikipedia.org/wiki/Robustness_principle>`_ Server SHOULD be able to support an arbitrary length ID, however.
+  
+- Only ONE of each type of ID element can be included in a form submitted to the server. That is, only one ``deviceID``, one ``userID``, one ``instanceID``, and one ``deprecatedID``.
+
+  -  Each ID element MUST have one and only one scheme:value pair.
+
+.. _defining-expected-metadata:  
+  
+Defining expected submission metadata in the blank form
+------------------------------------------------------------
+
+The blank form **MUST** specify which of the metadata fields are expected when the completed form is submitted. This is done within a ``<meta>`` element having the namespace ``http://openrosa.org/xforms``. The ``<meta>`` element may be anywhere within the ``<model>`` element.
+
+.. code-block:: xml
+
+  <model>
+    <instance>
+      <data xmlns:jr="http://openrosa.org/xforms"
+            id="example.org:myFormId"
+            version="1" >
+        <jr:meta>
+          <jr:timeStart/>
+	  <jr:timeEnd/>
+	  <jr:instanceID/>
+	  </jr:meta>
+
+	  
+.. _metadata-examples:
+
+Examples
+------------
+
+.. _blank-form-metadata-example:
+
+Blank form metadata
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: xml
+
+  <h:head>
+    <h:title>Metablock example</h:title>
+    <model>
+      <instance>
+	<data xmlns:jr="http://openrosa.org/xforms"
+	      xmlns="http://example.org/meta"
+	      version="1" >
+	  <jr:meta>
+	    <jr:deviceID/>
+	    <jr:timeStart/>
+	    <jr:timeEnd/>
+	    <jr:instanceID/>
+	  </jr:meta>
+	  .
+	  .
+	  .
+	</data>
+      </instance>
+      .
+      .
+      .
+    </model>
+  </h:head>
+
+.. _form-submission-metadata-example:
+
+Form submission metadata
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: xml
+
+  <?xml version='1.0'?>
+    <data version="1" 
+          xmlns:jr="http://openrosa.org/xforms"         
+	  xmlns="http://example.org/meta">
+      <jr:meta>
+        <jr:deviceID>uuid:38DN0236SAKWJOJNQB3XJI9RW</jr:deviceID>
+        <jr:timeStart>2010-08-12T04:08:29.765-5:00</jr:timeStart>
+        <jr:timeEnd>2010-08-12T04:10:23.062-5:00</jr:timeEnd>
+        <jr:instanceID>uuid.dimagi.org:GEPSJLOGH13TY8L77066GEJJW</jr:instanceID>
+        <jr:userID>chwid.dimagi.org:Akende</jr:userID>
+      </jr:meta>
+      .
+      .
+      .
+    </data>
+    
