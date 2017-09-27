@@ -96,6 +96,70 @@ Select values
 
 The underlying values defined with ``<value>`` tag for select clauses should follow the same naming as the field names, above. In particular, these values should not contain embedded spaces, as the parsing at the server will split the strings at the spaces, causing "my value" to be stored on the server as two selection values "my" and "value".
 
+.. _forms-with-media:
+
+Forms with media (images, video, audio) included in prompts
+============================================================
+
+You can now use images, audio, and video (in any combination) in addition to or in place of text in questions and in multiple choice answers. To use media we have taken advantage of javarosa's itext framework. Like text, a media file can be different for each language specified in the form.
+
+To define your media, declare one or more ``<text id>`` fields in ``<itext>``. For example:
+
+.. code-block:: html
+
+  <itext>
+  <translation lang="English" default="">
+    <text id="my_media">
+      <value form="long">This is a question with an not-clickable image</value>
+      <value form="short">audio and image</value>
+      <value form="image">jr://images/test.gif</value>
+    </text>
+  </translation>
+  </itext>
+
+Then, in the ``<body>`` reference the text id as the ``<label>`` in either a question or an element in a select:
+
+.. code-block:: html
+
+  <input ref="image_question">
+    <label ref="jr:itext('my_media')"/>
+  </input>
+
+or
+
+.. code-block:: html
+
+  <select1 ref="select_question">
+  <label> Select one with images and audio </label>
+  <item>
+    <label ref="jr:itext('my_media')" />
+    <value>a</value>
+  </item>
+  </select1>
+
+.. _itext-value-tag-types
+
+Itext value tag types
+======================
+
+The possible choices for the ``form`` attribute of the itext ``<value>`` tag are:
+
+- "long"
+- "short"
+- "image"
+- "audio"
+- "video"
+- "big-image"
+
+By default, itext "image" values are not clickable. However, if you also include a "big-image", the image displayed by "image" will be clickable and will display a pannable, zoomable view of the file specified by "big-image". You can return to your form after opening a "big-image" by hitting the phone's "back" button. Specifying "big-image" alone has no effect, you must always include "image".
+
+Files referenced by "image" and "big-image" may be the same; however, to improve the user experience, we highly recommend creating smaller thumbnail images to be referenced by "image" (images will display faster if they do not need to be dramatically scaled down). 
+
+Audio files will play until complete, or until the user swipes to another prompt.
+
+Video plays in a separate player allowing play, stop, and a scroll bar to jump to a specific spot. Once the video finishes playing, the user will be automatically returned to the form. Users may also return at any time by hitting the phone's "back" button.
+
+
 
 
 
