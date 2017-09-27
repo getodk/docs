@@ -29,6 +29,6 @@ Aggregate Usage
 - Use the :guilabel:`Permissions` sub-tab under the :guilabel:`Site Admin` tab to restrict who can download forms or submit data from ODK Collect. Do this by creating an ODK username and password and granting it Data Collector privileges. This username and password can then be entered into ODK Collect's settings page. When restricting access you must also remove the Data Collector privilege from the anonymousUser. Remember to click Save Changes to make these changes take effect. Conversely, granting the Data Collector privilege to the anonymousUser enables anyone to submit data to your ODK Aggregate server.
 
 .. image:: /img/aggregate-use/site-admin.*
-   :alt: Image shoing site admin and permissions tab.
+   :alt: Image showing site admin and permissions tab.
    
 - Use the :guilabel:`Permissions` sub-tab under the :guilabel:`Site Admin` tab to specify additional usernames with browser access to the server. For each user you add, select whether they have access to the submitted data (Data Viewer privileges), the ability to upload forms and export or publish data (Form Management), or the ability to manage site access and users (Site Admin) privileges. Remember to click :guilabel:`Save Changes` to make these changes take effect. And, for each username you define, remember to Change Password to assign a password; by default, usernames are created with unusable passwords. Granting any of these privileges to the anonymousUser enables browser access to these functions without first logging in.
