@@ -10,8 +10,8 @@ This document gathers the set of guidelines for creating your own forms. These r
 
 .. form-id-guidelines:
 
-Form ID Guidelines
-===================
+Form ID 
+========
 
 Open Data Kit depends upon the presence of either the ``id`` attribte (preferred) or the "xmlns" (deprecated) on the tag within the Xform's ``<instance>`` tag to uniquely identify the form. Filled-in forms, when finalized by ODK Collect, contain this ``id`` attribute. When these are submitted to the server (e.g., ODK Aggregate), it extracts the form id and retrieves the corresponding, previously-uploaded, form definition. Using that form definition, the server can then extract the data values from the submission and store them in the appropriate data tables.
 
@@ -38,8 +38,8 @@ As mentioned above, if you leave the form_id unchanged, and change the version, 
 
 .. group-and-fieldname-guidelines:
 
-Group and Fieldname Guidelines
-================================
+Group and Fieldname 
+=====================
 
 Answers to your survey questions are identified by their field names within your form. In ODK Build, the Data Name property specifies the field name. In an XLSForm spreadsheet, the name column specifies the field name. Question groupings also have names, and these guidelines also apply to their names.
 
@@ -137,7 +137,7 @@ or
   </item>
   </select1>
 
-.. _itext-value-tag-types
+.. _itext-value-tag-types:
 
 Itext value tag types
 ======================
@@ -158,6 +158,26 @@ Files referenced by "image" and "big-image" may be the same; however, to improve
 Audio files will play until complete, or until the user swipes to another prompt.
 
 Video plays in a separate player allowing play, stop, and a scroll bar to jump to a specific spot. Once the video finishes playing, the user will be automatically returned to the form. Users may also return at any time by hitting the phone's "back" button.
+
+.. _usable-media-formats:
+
+Usable Image, Audio and Video Formats
+======================================
+
+The formats listed are what we've tested and verified as working. There may be more formats that are supported by Android.
+
++---------------+---------------------+
+| Media Type    | Supported Formats   |
++===============+=====================+
+| Image files   | jpg, jpeg, gif, png |
++---------------+---------------------+
+| Audio files   | mp3, wav            |
++---------------+---------------------+
+| Video files   | 3gp, mp4            |
++---------------+---------------------+
+
+For each form, media needs to be put on the SD card into :guilabel:`/sdcard/odk/forms/{formname}-media/`. Media needs to be specified in the xform as :guilabel:`jr://{type}/mediafile` where type is one of "images", "audio", or "video".
+
 
 
 
