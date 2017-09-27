@@ -154,6 +154,8 @@ If you are on Windows, open a powershell or command prompt window. Change direct
 .. code-block:: doscon
 
   > cd C:\OpenSSL-Win32\bin
+  
+If you are on a Mac, open the terminal. Change directories to your Desktop.
 
 .. code-block:: console
 
