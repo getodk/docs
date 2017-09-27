@@ -16,7 +16,7 @@ Before going through this section, make sure you have used :doc:`ODK Collect <co
 Installing on App Engine
 --------------------------
 
-- Make sure `Java 8 <https://java.com/en/download/>`_ or higher is installed on your system.See `MacOSX Java install <https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jdk.html>`_ if you are a Mac user.
+- Make sure `Java 8 <https://java.com/en/download/>`_ or higher is installed on your system. See `MacOSX Java install <https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jdk.html>`_ if you are a Mac user.
 - You will need a Gmail account to use App Engine; this Gmail account will be the owner of the Google Cloud Platform `project` under which your App Engine will execute. 
 
 .. tip::
@@ -29,7 +29,7 @@ Installing on App Engine
 .. image:: /img/aggregate-install/cloud-console.*
    :alt: An image showing the console option on the Google Cloud Platform.
 
-- You will now be asked to provide a gmail account which you will use throughout.Sign in with a gmail account which you wish to use.
+- You will now be asked to provide a gmail account which you will use throughout. Sign in with a gmail account which you wish to use.
 
 .. image:: /img/aggregate-install/email-select.*
    :alt: Image showing the sign in window of Gmail.
@@ -49,7 +49,7 @@ Installing on App Engine
 .. image:: /img/aggregate-install/create-project.*
    :alt: Image showing the `+` sign which denotes creating a new project.
 
-- On the project-creation pop-up dialog, type in a project name that makes sense to you.You can enter a project name and click on :guilabel:`Create` if you don't want to edit the project-id.You can choose :guilabel:`Edit` if you want to edit the project id. The project id will be the first part of the URL to your ODK Aggregate server.
+- On the project-creation pop-up dialog, type in a project name that makes sense to you. You can enter a project name and click on :guilabel:`Create` if you don't want to edit the project-id.You can choose :guilabel:`Edit` if you want to edit the project id. The project id will be the first part of the URL to your ODK Aggregate server.
 
 .. image:: /img/aggregate-install/project-name.png
    :alt: Image showing the window to enter a project name.
@@ -68,7 +68,7 @@ Installing on App Engine
 .. image:: /img/aggregate-install/notification.*
    :alt: Image showing blue notification icon.
 
-- Click on the notification icon and select the first option from the dropdown menu then. Thw option is labelled as `Create Project:your project name`.
+- Click on the notification icon and select the first option from the dropdown menu then. The option is labelled as `Create Project:your project name`.
 
 .. image:: /img/aggregate-install/go-to-project.*
    :alt: Image showing the option to create your project.      
@@ -128,7 +128,7 @@ Installing on App Engine
 .. image:: /img/aggregate-install/agreement.*
    :alt: Image showing license agreement.
 
-- Select a parent directory under which an `ODK Aggregate` directory will be created to contain the configured software.Click on the :guilabel:`folder` icon to choose a directory.
+- Select a parent directory under which an `ODK Aggregate` directory will be created to contain the configured software. Click on the :guilabel:`folder` icon to choose a directory.
 
 .. image:: /img/aggregate-install/directory-setup.*
    :alt: Image showing window to choose a parent directory. 
@@ -233,7 +233,7 @@ Installing on App Engine
 .. image:: /img/aggregate-install/project-aggregate.*
    :alt: Image showing a window where server url is displayed on top right corner.
 
--  You will go to now your ODK Aggregate server. Youu can click on :guilabel:`Log In` to log in, enter the ODK Aggregate username (superuser) that you specified within the installer (the initial password for this username will be aggregate) and access the site administration screens for your server.  
+-  You will go to now your ODK Aggregate server. You can click on :guilabel:`Log In` to log in, enter the ODK Aggregate username (superuser) that you specified within the installer (the initial password for this username will be aggregate) and access the site administration screens for your server.  
 
 .. image:: /img/aggregate-install/server.*
    :alt: Image showing ODK Aggregate server and log in option.
@@ -299,7 +299,7 @@ To run on ODK Aggregate on a Tomcat server backed with a MySQL or PostgreSQL dat
    **Server Requirements**
    
    - `Availability` :-  Decide the availability of your server depending on how frequently you want to update and upload forms. If you do need a high-availability server, you need to talk to your Internet Service Provider (ISP) as to their availability guarantees.
-   - `Data Loss` :- Your tolerance to data loss will impact your backup schedule and your server hardware.  Invest in a storage system based on your tolerance to data loss. Seek technical assistance for these requirements.If you cannot tolerate any data loss, or less than 24 hours of data loss, you should invest in a RAID storage array with battery-backed controller cards. If you can tolerate a day or longer interval of data loss, be sure you have a periodic tape or other means of backup for your system that matches or is shorter than the data loss interval.
+   - `Data Loss` :- Your tolerance to data loss will impact your backup schedule and your server hardware.  Invest in a storage system based on your tolerance to data loss. Seek technical assistance for these requirements. If you cannot tolerate any data loss, or less than 24 hours of data loss, you should invest in a RAID storage array with battery-backed controller cards. If you can tolerate a day or longer interval of data loss, be sure you have a periodic tape or other means of backup for your system that matches or is shorter than the data loss interval.
    - `Dataset Size` :- The quantity of data you intend to collect will affect the size of the machine required to host the ODK Aggregate instance and of your database server. For most applications, the default size should be fine. If you are collecting more than 6000 submissions, you may need to increase the JVM size. Note that the maximum size of the JVM is limited by the size of the physical memory on your machine.
    - `Secure and Protected Data` :- If you need to prevent eavesdroppers from seeing your data as it is transmitted to your ODK Aggregate instance, you should either (1) only connect to ODK Aggregate from within your organization's network (when the ODK Collect devices are on your premises), (2) obtain an SSL certificate and install it on your Tomcat server (a certificate is required to secure transmissions over https:), or (3) use `Encrypted Forms <https://opendatakit.org/help/encrypted-forms/>`_. If you are not using encrypted forms and are handling sensitive data, a computer security specialist should review your system and your security procedures. When operating without an SSL certificate, do not access ODK Aggregate from a remote location when changing passwords.
 
@@ -407,7 +407,7 @@ To run on ODK Aggregate on a Tomcat server backed with a MySQL or PostgreSQL dat
         collation_server=utf8_unicode_ci
         max_allowed_packet=1073741824
 
-    and restart the MySQL databaseserver. Then, download the `MySQL Connector/J`, unzip it, and copy the :file:`mysql-connector-java-x.x.x-bin.jar` file into the Tomcat server's libs directory. After copying it into that directory, you should stop and restart the Tomcat server. The `max_allowed_packet` setting defines the maximum size of the communications buffer to the server. The value used in the snippet above is 1GB, the maximum value supported. For ODK Aggregate 1.4.11 through 1.4.7, and 1.2.x, the maximum media (e.g., image or video) attachment is limited to the value you set for max_allowed_packet minus some unknown overhead -- e.g., a storage size of something less than 1GB. For ODK Aggregate 1.4.6 and earlier (excluding 1.2.x), the maximum media attachment is unlimited and the setting for max_allowed_packet does not need to be specified. For ODK Aggregate 1.4.12 and later, the max_allowed_packet value should be set to a value greater than 16842752 (this is the minimum value that should be used: 16MB plus 64kB); with that setting, media attachments of unlimited size are once again supported. If you are upgrading to a newer ODK Aggregate, you must continue to use the setting you already have, or 16842752, whichever is greater. If you experience problems uploading large attachments, change this setting to its maximum value, 1073741824.Finally, if you are using MySQL 5.7 or later, some of releases `expire all database passwords <https://dev.mysql.com/doc/refman/5.7/en/password-management.html>`_ after 360 days. Please verify the behavior of your version of MySQL and either change the password expiration policy or create a calendar reminder to change the password before it expires. For ODK Aggregate, you will need to re-run the installer to specify the new password. 
+    and restart the MySQL databaseserver. Then, download the `MySQL Connector/J`, unzip it, and copy the :file:`mysql-connector-java-x.x.x-bin.jar` file into the Tomcat server's libs directory. After copying it into that directory, you should stop and restart the Tomcat server. The `max_allowed_packet` setting defines the maximum size of the communications buffer to the server. The value used in the snippet above is 1GB, the maximum value supported. For ODK Aggregate 1.4.11 through 1.4.7, and 1.2.x, the maximum media (e.g., image or video) attachment is limited to the value you set for max_allowed_packet minus some unknown overhead -- e.g., a storage size of something less than 1GB. For ODK Aggregate 1.4.6 and earlier (excluding 1.2.x), the maximum media attachment is unlimited and the setting for max_allowed_packet does not need to be specified. For ODK Aggregate 1.4.12 and later, the max_allowed_packet value should be set to a value greater than 16842752 (this is the minimum value that should be used: 16MB plus 64kB); with that setting, media attachments of unlimited size are once again supported. If you are upgrading to a newer ODK Aggregate, you must continue to use the setting you already have, or 16842752, whichever is greater. If you experience problems uploading large attachments, change this setting to its maximum value, 1073741824. Finally, if you are using MySQL 5.7 or later, some of releases `expire all database passwords <https://dev.mysql.com/doc/refman/5.7/en/password-management.html>`_ after 360 days. Please verify the behavior of your version of MySQL and either change the password expiration policy or create a calendar reminder to change the password before it expires. For ODK Aggregate, you will need to re-run the installer to specify the new password. 
 
    - For PostgreSQL, download and install the appropriate binary package from `PostgreSQL download site <https://www.postgresql.org/download/>`_. Be sure to set the password for the postgres (root) user and set the default character set and collation sequence.
    - For either database, you should ensure that the default character set is configured to be UTF-8 and that the collation sequence (dictionary order) is set appropriately for your circumstances. If it isn't, any non-Latin characters may display as question marks. Refer to the character set and collation sections of your database's documentation for how to do this.
@@ -491,7 +491,7 @@ Following are basic details for setting up ODK Aggregate to run on a Linux micro
 
 		- Make sure that the “<Connector port="8443"” part of the configuration file is not commented out. If it is, un-comment it.
 		- Upload your SSL keystore file and the certificate(s) to the server.
-		- Install it as instructed. (If you buy from RapidSSL, for example, they provide you with Tomcat installation instructions. E.g., you may need to download a special P7S certificate file, then install it on the server with “keytool -import -alias YOURALIAS -trustcacerts -file xxxxx.p7s -keystore xxxxx.keystore”.)
+		- Install it as instructed. (If you buy from RapidSSL, for example, they provide you with Tomcat installation instructions. E.g., you may need to download a special P7S certificate file, then install it on the server with “keytool -import -alias YOURALIAS -trustcacerts -file xxxxx.p7s -keystore xxxxx.keystore”).
 		- In the “<Connector port="8443"” part of the configuration file, specify the location of your keystore file and password (e.g., "keystoreFile="/…/xxxxx.keystore" keystorePass="changeit"”).		
 
 	
