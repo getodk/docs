@@ -8,7 +8,7 @@ Before going through this section, make sure you have used :doc:`ODK Collect <co
 
   - Try the ODK Aggregate `demo server <https://opendatakit.appspot.com>`_ to explore the core functionality.
   - Decide whether to install a cloud instance or a local instance. It is strongly recommended to try an App Engine cloud instance first. If you wish to host locally, see `Aggregate Deployment Planning <https://opendatakit.org/use/aggregate/deployment-planning/>`_
-  - Local hosting implies that you are taking ownership of the off-site back-up and restoration of your data and are documenting the steps necessary to return your systems to operation in circumstances that might include a full hardware failure or the destruction of your facility.    
+  - Local hosting implies that you are taking ownership of the off-site back up and restoration of your data and are documenting the steps necessary to return your systems to operation in circumstances that might include a full hardware failure or the destruction of your facility.    
   - You must also plan for the security of your data and systems. And finally, it requires that you `configure your network routers <https://opendatakit.org/use/aggregate/tomcat-install/#Configure_for_Network_Access>`_. It is recommended to seek assistance from your local computer-technical-support community before proceeding. The set-up of the ODK Aggregate web server and database are very easy in comparison.
 
 .. _install-app-engine:
@@ -29,7 +29,7 @@ Installing on App Engine
 .. image:: /img/aggregate-install/cloud-console.*
    :alt: An image showing the console option on the Google Cloud Platform.
 
-- You will now be asked to provide a gmail account which you will use throughout. Sign in with a gmail account which you wish to use.
+- You will now be asked to provide a Gmail account which you will use throughout. Sign in with a Gmail account which you wish to use.
 
 .. image:: /img/aggregate-install/email-select.*
    :alt: Image showing the sign in window of Gmail.
@@ -37,7 +37,7 @@ Installing on App Engine
 - If you have never configured a Google Cloud Platform project, click on :guilabel:`Create an Empty Project`.
 
 .. image:: /img/aggregate-install/empty-project.*
-   :alt: Image showing Create a empty project option for first projects. 
+   :alt: Image showing Create an empty project option for first projects. 
 
 - If you have configured a Google Cloud Platform project before, this link will open onto either a page with a :guilabel:`Create Project` button and a table listing all of your projects, or it will open into one of your existing projects. In the later case, click on that project name at the top of the window.In the below image, the older project is `Project 123`.
 
@@ -133,7 +133,7 @@ Installing on App Engine
 .. image:: /img/aggregate-install/directory-setup.*
    :alt: Image showing window to choose a parent directory. 
 
-- In the next window choose `Google App Engine` as the platform for Aggregate server.
+- In the next window choose `Google App Engine` as the platform for the Aggregate server.
 
 .. image:: /img/aggregate-install/choose-platform.*
    :alt: Image displaying options to choose a platform for Aggregate.
@@ -172,21 +172,21 @@ Installing on App Engine
 
 .. tip::
 
-   Beginning with Java 7 Update 51, there are security level settings that may prevent the upload tool from running. A reported work-around is to add the file: path (e.g., file:///) to the Exception Site list.
+   Beginning with Java 7 Update 51, there are security level settings that may prevent the upload tool from running. A reported workaround is to add the file: path (e.g., file:///) to the Exception Site list.
 
-- Enter the gmail account in the upload tool that you specified to use the App Engine. This will enable the :guilabel:`Get Token` button.
+- Enter the Gmail account in the upload tool that you specified to use the App Engine. This will enable the :guilabel:`Get Token` button.
 
 .. image:: /img/aggregate-install/get-token.*
    :alt: Image showing the window for upload tool to enter the email id and get a token.
 
 - Click the :guilabel:`Get Token` button.Two things happen after this:-
 
-    - Your default browser will open to a Google site (accounts.google.com) where you are asked to choose a gmail account (select the account specified by you to use the App Engine), and then approve allowing "Google App Engine appcfg" to View and manage your AppEngine instances and datastores. Click :guilabel:`Allow`. This will take you to a screen with instructions to copy a code.
+    - Your default browser will open to a Google site (accounts.google.com) where you are asked to choose a Gmail account (select the account specified by you to use the App Engine), and then approve allowing "Google App Engine appcfg" to View and manage your AppEngine instances and datastores. Click :guilabel:`Allow`. This will take you to a screen with instructions to copy a code.
     - At the same time, a pop-up dialog should be displayed by the upload tool. 
 
     .. tip::
 
-      - If the pop-up dialog does not show, close the upload tool and open a file browser or Finder window on the directory you specified for the installer to place its files. Navigate into the ODK Aggregate directory.
+      - If the pop-up dialog does not show, close the upload tool and open a file browser or Finder window in the directory you specified for the installer to place its files. Navigate to the ODK Aggregate directory.
       - If on Windows, double-click the :file:`ODKAggregateAppEngineUpdater.jar` file. 
       - If on Mac OSX, double-click the uploadAggregateToAppEngine.app file. 
       - If on Linux, open a bash shell and run uploadAggregateToAppEngine.sh. These should all re-launch the upload tool. 
@@ -195,7 +195,7 @@ Installing on App Engine
 - Copy the code from the browser into the upload tool's pop-up dialog and click :guilabel:`OK`.
 
 .. image:: /img/aggregate-install/token.*
-   :alt: Image showing pop up dialog to enter a token.
+   :alt: Image showing pop-up dialog to enter a token.
 
 .. tip::
     
@@ -204,12 +204,12 @@ Installing on App Engine
 - The output should look something like that in the image.
   
 .. image:: /img/aggregate-install/success-output.*
-   :alt: Image showing ouyput for a successful result.
+   :alt: Image showing output for a successful result.
 
 .. tip::
   
    - If the output does not look like that, you may have delayed too long between getting the code and pasting it into the tool. Click :guilabel:`Delete Token` and try again.
-   - If you see a failure message in the output window, then it is likely that you have several different gmail accounts and Google has gotten confused during the token-issuing process. In this case, when the browser window opens, before selecting an account, copy the URL, open a Private Browsing or Incognito Window in your browser, and paste the URL into that. Then proceed to get the token, etc. This should fix this issue.
+   - If you see a failure message in the output window, then it is likely that you have several different Gmail accounts and Google has gotten confused during the token-issuing process. In this case, when the browser window opens, before selecting an account, copy the URL, open a Private Browsing or Incognito Window in your browser, and paste the URL into that. Then proceed to get the token, etc. This should fix this issue.
 
 - Now click :guilabel:`Upload ODK Aggregate`.
 
@@ -243,7 +243,7 @@ Installing on App Engine
 Changing size of App Engine Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you have many form definitions on your server, you may get better performance and reduce the likelihood for data corruption if you increase the size of your server.
+If you have many form definitions on your server, you may get better performance and reduce the likelihood of data corruption if you increase the size of your server.
 
 .. note::
 
