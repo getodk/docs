@@ -39,12 +39,12 @@ Installing on App Engine
 .. image:: /img/aggregate-install/empty-project.*
    :alt: Image showing Create an empty project option for first projects. 
 
-- If you have configured a Google Cloud Platform project before, this link will open onto either a page with a :guilabel:`Create Project` button and a table listing all of your projects, or it will open into one of your existing projects. In the later case, click on that project name at the top of the window.In the below image, the older project is `Project 123`.
+- If you have configured a Google Cloud Platform project before, this link will open onto either a page with a :guilabel:`Create Project` button and a table listing all of your projects, or it will open into one of your existing projects. In the later case, click on that project name at the top of the window.In the below image, the older project is `Project-edu`.
 
 .. image:: /img/aggregate-install/project.*
-   :alt: Image showing previous project name `Project123`.
+   :alt: Image showing previous project name `Project-edu`.
 
-- On clicking on the project name (In this case `Project123`), a window appears with a :guilabel:`+` symbol. Click on it to create a new project.   
+- On clicking on the project name (In this case `Project-edu`), a window appears with a :guilabel:`+` symbol. Click on it to create a new project.   
 
 .. image:: /img/aggregate-install/create-project.*
    :alt: Image showing the `+` sign which denotes creating a new project.
