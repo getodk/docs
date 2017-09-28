@@ -139,3 +139,62 @@ This section describes various features in the :guilabel:`Form Management` tab. 
 
 
 
+.. _submission-tab:
+
+Submissions
+--------------
+
+This section describes various features in the :guilabel:`Submissions` tab. You can view the data submitted from ODK Collect here.
+
+.. image:: /img/aggregate-use/filter-submission.*
+   :alt: Image showing filter submission tab.
+
+.. image:: /img/aggregate-use/apply-filter.*
+   :alt: Image showing Filter creation.   
+
+.. image:: /img/aggregate-use/visualize.*
+   :alt: Image showing visulaize feature.         
+
+- Click on the :guilabel:`Filter Submissions` tab to filter and visualize the submitted data.
+
+   - Click on :guilabel:`Add Filter` to add filter to the data.
+
+      - In the :guilabel:`Create filter to` dropdown, `Display/Hide` will specify whether you will be selecting data to show or hide and  `Rows/Columns` will specify whether you will be working with the rows or columns of the table. If you select `Rows` specify a condition you want to apply in the :guilabel:`where` box. If you selected `Columns` specify the columns you wish to display or hide in the :guilabel:`titled` box. Example :- `Display Rows where column Gender EQUAL male` specifies that you wanted to get the list of males over the age of 35. 
+      
+      - Click on :guilabel:`Save` to save the filter or filter group for future use. Unless the filter is saved, it is temporary. Clicking on :guilabel: `Save As` allows you to give a name to the filter or filter group.
+      - Click on :guilabel:`Delete` to delete a filter or filter group.
+      - You can check the :guilabel:`Display Metadata` checkbox to display or hide metadata.
+
+      .. note::
+       
+       - Filters give you the ability to see a subset of your data. 
+       - If you have multiple filters applied at once, then you have a filter group.
+       - Metadata provides information about the submissions. There will be information such as date submitted, if the data is complete, version numbers, and id numbers.
+
+   - Click on :guilabel:`Visualize` for basic data visualization. This Visualize functionality is meant to provide a quick means to view early data results in meaningful ways but is not meant to provide complex data analysis functionality. You can view your data in bar graph, pie chart or on a map by selecting either of them in the :guilabel:`Type` dropdown.
+
+       - If you choose Pie Chart, choose whether you would like to count or sum data.
+
+          - :guilabel:`Count` option is to count the number of times a unique answer occurs in the specified column. Select the column in which you want to apply this.
+          - :guilabel:`Sum` option is to sum up the values in one column grouped together by a value in another column. Select the column of values that you want to add and another column that you want to use to group the numbers. Then click on :guilabel:`Pie It` to get the Pie Chart.
+
+       - If you choose Bar Graph, you have the same options as that in case of Pie Chart. Choose the option you want to use and then click on :guilabel:`Bar It` to get the Bar Graph.
+
+       - If you choose Map, select a column that you want to map in the :guilabel:`GeoPoint to Map` dropdown. Click on :guilabel:`Map It` to get the map. You can click on a point to view a balloon with the other information supplied in the table.
+  
+   - :guilabel:`Export` and :guilabel:`Publish` provide the same function as discussed in the :ref:`Form Management <form-manage-tab>` section.
+
+
+- Click on :guilabel:`Exported Submissions` tab to view the list of exported files.
+
+   - :guilabel:`File Type` specifies whether file is :file:`.csv` or :file:`.kml` or :file:`.json` file.
+   - :guilabel:`Status` will state whether the file being made is in progress, or is now available for viewing.
+   - :guilabel:`Time Completed` shows the time when the "Export" task is complete and the file is ready.
+   - Click on the link in :guilabel:`Download File` to see your exported file.
+   - Select delete box in the :guilabel:`Delete` column if you want to delete your exported file.
+
+.. image:: /img/aggregate-use/exported-submission.*
+   :alt: Image showing exported submission tab.
+
+
+
