@@ -25,7 +25,7 @@ You can also download from the web and install manually.
 - From your device's :guilabel:`Settings`, choose :menuselection:`Security`.
 
   - Make sure *Unknown Sources* is checked.
-  - (On older versions of Android, this setting is in :menuselection:`Applications` rather than :menuselection:`Security`
+  - (On older versions of Android, this setting is in :menuselection:`Applications` rather than :menuselection:`Security`)
 
 - Open a web browser on your phone.
 - Navigate to https://opendatakit.org/downloads/download-category/collect/  and download the ODK Collect APK.
@@ -67,7 +67,7 @@ See :ref:`installing-aggregate` to setup your ODK Aggregate server.
 
 - Open the app's main menu (:guilabel:`⋮`)  and then select :menuselection:`General Settings`.
 - Select :guilabel:`Server`.
-- :guilabel:`Type` should be set to :menuselection:`ODK Aggregate`
+- :guilabel:`Type` should be set to :menuselection:`ODK Aggregate`.
 - Edit :guilabel:`ODK Aggregate settings` to connect to your ODK Aggregate instance.
 
 .. _connecting-to-google:
@@ -77,7 +77,7 @@ Connecting to a Googe Drive Account
 
 - Open the app's main menu (:guilabel:`⋮`)  and then select :menuselection:`General Settings`.
 - Select :guilabel:`Server`.
-- :guilabel:`Type` should be set to :menuselection:`Google Drive, Google Sheets`
+- :guilabel:`Type` should be set to :menuselection:`Google Drive, Google Sheets`.
 - Select your Google account. (The available Google Accounts are pulled from the Google Play Store app.)
 
 .. _connecting-to-other:
