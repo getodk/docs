@@ -2,7 +2,7 @@
 Encrypted Forms
 *****************************
 
-.. encrypted-forms:
+.. _encrypted-forms:
 
 Overview 
 ====================
@@ -19,7 +19,7 @@ This process ensures that the finalized form's data (and media attachments) are 
 
 The non-encrypted data is available on the ODK Collect device during data collection and whenever a form is saved without marking it as complete. Once you mark a form as complete (finalize it), ODK Collect will generate a random 256-bit symmetric key, encrypt the form contents and all attachments with this key, then construct a submission manifest which describes the encrypted submission and an asymmetric-key encryption of the symmetric key used for the encryption. This manifest is the "form" that is uploaded to ODK Aggregate, with the encrypted form contents and its encrypted attachments appearing as attachments to this submission manifest "form."
 
-.. requiremets:
+.. _encrypt-requirements:
 
 Requirements
 ====================
@@ -35,7 +35,7 @@ Encrypted forms require the following *minimum versions* for the ODK tools
   
 These requirements are covered in more detail below.
 
-.. security-concerns:
+.. _security-concerns:
   
 Security Concerns
 ====================
@@ -45,7 +45,7 @@ While ODK Collect attempts to remove all unencrypted copies of a finalized form 
 
   Encrypting a form ensures that the finalized form is not readable and is not tampered with. However, there is nothing preventing a malicious adversary from the wholesale replacement of a finalized form with falsified data or the synthesis and submission of extra data — these are not contingencies that encrypted forms seek to address.
   
-.. config-briefcase:
+.. _config-briefcase:
 
 Configuration 
 ====================
@@ -54,9 +54,9 @@ For ODK Briefcase, you must download and install the *Java Cryptography Extensio
 
 To install the JCE:
 
-   - 1. Select the downloaded UCE zip archive file in the file viewer
-   - 2. Right-click, choose :guilabel:`Extract files...` and extract the files from the downloaded zip archive
-   - 3. Navigate into the extracted directory tree and copy the :file:`local_policy.jar` and :file:`US_export_policy.jar` files to the :file:`lib\security` directory under the installation directory of the Java Runtime Enviornment (JRE) of your computer, replacing earlier versions of these files.
+   1. Select the downloaded UCE zip archive file in the file viewer.
+   2. Right-click, choose :guilabel:`Extract files...` and extract the files from the downloaded zip archive.
+   3. Navigate into the extracted directory tree and copy the :file:`local_policy.jar` and :file:`US_export_policy.jar` files to the :file:`lib\security` directory under the installation directory of the Java Runtime Enviornment (JRE) of your computer, replacing earlier versions of these files.
 
 Windows
 ~~~~~~~~~~~~~~~
@@ -80,19 +80,19 @@ You might also have a JDK. If you do, you must also install the JCE files there:
 
 :file:`/Library/Java/JavaVirtualMachines/jdk1.x.x_xxx.jdk/Contents/Home/jre/lib/security`
 
-.. upload-final-forms:
+.. _upload-final-forms:
 
 Uploading Finalized Forms
 ===========================
 
-.. code-block:: rst
+.. code-block:: xml
 
    <h:html xmlns=<http://www.w3.org/2002/xforms>
         xmlns:h=<http://www.w3.org/1999/xhtml>
 	xmlns:orx=<http://openrosa.org/xforms/>
- <h:head>
-  <h:title>Sample Form</h:title>
-  <model>
+   <h:head>
+   <h:title>Sample Form</h:title>
+   <model>
     <itext>
       <translation lang="English" default="">
         <text id="ask_name">
@@ -115,14 +115,15 @@ Uploading Finalized Forms
     <bind nodeset="/sample/meta/instanceID" type="string" readonly="true()"
           calculate="concat('uuid:', uuid())"/>
     <bind nodeset="/sample/name" type="string" />
-  </model>
- </h:head>
- <h:body>
+    </model>
+    </h:head>
+    <h:body>
     <input ref="name">
        <label ref="jr:itext('ask_name')"/>
     </input>
- </h:body>
- </h:html>
+    </h:body>
+    </h:html>
+ 
  
 If you are using `XLSForm <https://opendatakit.org/use/xlsform/>`_ , then form encryption is governed by the :guilabel:`settings` on the `Settings Worksheet <http://xlsform.org/#settings_ws>`_ . Encrypted forms must specify a *submission_url* and a *public_key* on this worksheet. If both are specified, XLSForm will generate a encrypted-form definition. Skip to the following sections to see how to create a public-private key pair and specify the public key.
 
@@ -133,23 +134,28 @@ The required element to make this form an encrypted form is the ``<submission/>`
   - The presence of the OpenRosa metadata block, as defined here: `OpenRosa 1.0 Metadata Schema <https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaMetaDataSchema>`_ ; is required. 
   - You can define any value for the instanceID field, but it must be unique across all collected surveys. 
   - As shown, the ``<bind/>`` calculates an instanceID value comparable to the instanceID value ODK Aggregate will generate when a form does not have an instanceID field. 
-  - If you use punctuation other than colon and dash, or any special characters, please test    thoroughly to ensure that ODK Aggregate correctly handles those characters during submissons and   when the form is pulled down to ODK Briefcase.
+  - If you use punctuation other than colon and dash, or any special characters, please test thoroughly to ensure that ODK Aggregate correctly handles those characters during submissons and when the form is pulled down to ODK Briefcase.
   
-.. create-RSA-key:
+.. _create-RSA-key:
 
 Creating RSA Key pair
 ===========================
+
 RSA public-private key pairs are generated using the OpenSSL software package. This is pre-installed on OSX and Linux, but needs to be downloaded and installed on Windows.
 
-1. Install OpenSSL (Windows only)
+.. _install-openssl:
+
+Install OpenSSL (Windows only)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For Windows, download and run the OpenSSL installer appropriate for your system from OpenSSL for Windows. When it asks whether to copy the DLLs to the Windows system directory or to the :file:`/bin` directory, choose the :file:`/bin` directory (either will work, but this will minimize the pollution of the Windows system directory)
 
-2. Constructing the RSA Key Pair
+.. _construct-key:
+
+Constructing the RSA Key Pair
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
-If you are on Windows, open a powershell or command prompt window. Change directories to the /bin directory in the OpenSSL directory. e.g.,
+If you are on Windows, open a powershell or command prompt window. Change directories to the :file:`/bin` directory in the OpenSSL directory. e.g.,
 
 .. code-block:: doscon
 
@@ -160,8 +166,10 @@ If you are on a Mac, open the terminal. Change directories to your Desktop.
 .. code-block:: console
 
   $ cd ~/Desktop
-   
-3. Create a private key
+
+.. _create-key:
+  
+Create a private key
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following command will create a 2048-bit private key and write it to the :file:`MyPrivateKey.pem` file. This may complain about a missing configuration file. You can ignore this warning.
@@ -188,7 +196,9 @@ If you are on a Mac, run:
 
   $ openssl genrsa -out MyPrivateKey.pem 2048
   
-4. Extract a public key
+.. _extract-key:
+
+Extract a public key
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Next, you need to extract the public key for this private key.
@@ -201,21 +211,35 @@ Run the following command:
   
 This may also complain about a missing configuration file. You can ignore this warning.
 
-5. Storing and using the keys
+.. _store-use-keys:
+
+Storing and using the keys
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Move the :file:`MyPrivateKey.pem` file to a secure location. It does not have a password encoding it, so anyone can decrypt your data if they have access to this file. This is the private key file that you will give to ODK Briefcase when decrypting the data.
 
-6. Updating the public_key field in the XLSForm settings worksheet.
+.. _update-keys:
+
+Updating the public_key field in the XLSForm settings worksheet.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Open the :file:`MyPublicKey.pem` file in Notepad (Windows) or TextEdit (Mac). Remove the leading and trailing '---...' lines. Then remove all new-lines (carriage-returns) from the file. Select the resulting very-long string, and paste it into the **public_key field** in the XLSForm settings worksheet. This very-long string will become the *base64RsaPublicKey* attribute in the resulting encrypted form definition.
+Open the :file:`MyPublicKey.pem` file and copy the resulting very-long string inside **----BEGIN/END----** lines and paste it into the **public_key field** in the XLSForm settings worksheet. This very-long string will become the *base64RsaPublicKey* attribute in the resulting encrypted form definition.
 
 .. note::
 
-  You  need to be especially careful that this is ONLY the public key, and not the contents of the original public-private key file (which would also appear to work but provide no security).
+  - You  need to be especially careful that this is ONLY the public key, and not the contents of the original public-private key file (which would also appear to work but provide no security).
   
-.. encrypt-operations:
+  
+.. tip::
+  
+  - You can use Notepad (Windows) or TextEdit (Mac) to open :file:`MyPublicKey.pem`
+  - Alternatively, you can use the command ``less MyPublicKey.pem`` to print the contents into the terminal and directly copy/paste from there.
+  
+.. seealso::
+  
+   - For reference you can checkout the `tutorial encrypted-XLSForm <https://docs.google.com/spreadsheets/d/1O2VW5dNxXeyr-V_GB3spS6QPX4rtqtt7ijqP_uZLU3I/edit#gid=390337726>`_.It is for viewing purpose only but you can make you own copy to edit it.
+
+.. _encrypt-operations:
 
 Operations
 ===========================
