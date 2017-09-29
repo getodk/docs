@@ -19,14 +19,14 @@ Aggregate Usage
 .. image:: /img/aggregate-use/submission.*
    :alt: Image showing submissions tab.
 
-- If the :guilabel:`Site Admin` tab is not visible, click the :guilabel:`Log In` link in the upper right corner of the screen to be presented with the Log onto Aggregate screen. Choose the :guilabel:`Sign in with Aggregate password` button and enter the super-user username you specified within the installer. The initial password for this account is aggregate When signing in with this method, if you do not enter the password correctly, you may need to close all your browser windows and quit your browser before you can try again.
+- If the :guilabel:`Site Admin` tab is not visible, click the :guilabel:`Log In` link in the upper right corner of the screen to be presented with the Log onto Aggregate screen. Choose the :guilabel:`Sign in with Aggregate password` button and enter the super-user username you specified within the installer. The initial password for this account is ``aggregate``. When signing in with this method, if you do not enter the password correctly, you may need to close all your browser windows and quit your browser before you can try again.
 
 .. image:: /img/aggregate-use/log-in.*
    :alt: Image showing log in option
 
 - If you have not yet changed your super-user password to something other than aggregate, the server will display `This server and its data are not secure! Please change the super-user's password!` at the top of the web page. Please visit the :guilabel:`Permissions` sub-tab under the :guilabel:`Site Admin` tab to change this user's password.
 - If the instance name of the server changes (the installer asks for this name), then the passwords for all ODK Aggregate usernames will be cleared (preventing their use) and the super-user username's password will be reset to aggregate and the above message will also be displayed. In this case, you should log in, change the super-user's password, and change the passwords for all of your ODK Aggregate usernames.
-- Use the :guilabel:`Permissions` sub-tab under the :guilabel:`Site Admin` tab to restrict who can download forms or submit data from ODK Collect. Do this by creating an ODK username and password and granting it Data Collector privileges. This username and password can then be entered into ODK Collect's settings page. When restricting access you must also remove the Data Collector privilege from the anonymousUser. Remember to click Save Changes to make these changes take effect. Conversely, granting the Data Collector privilege to the anonymousUser enables anyone to submit data to your ODK Aggregate server.
+- Use the :guilabel:`Permissions` sub-tab under the :guilabel:`Site Admin` tab to restrict who can download forms or submit data from ODK Collect. Do this by creating an ODK username and password and granting it **Data Collector** privileges. This username and password can then be entered into ODK Collect's settings page. When restricting access you must also remove the Data Collector privilege from the anonymousUser. Remember to click on **Save Changes** to make these changes take effect. Conversely, granting the Data Collector privilege to the anonymousUser enables anyone to submit data to your ODK Aggregate server.
 
 .. image:: /img/aggregate-use/site-admin.*
    :alt: Image showing site admin and permissions tab.
