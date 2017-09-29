@@ -1,17 +1,43 @@
-Collect Settings and Security
-================================
+Collect Menus, Settings and Security
+=====================================
 
-Settings are accessible from the :guilabel:`⋮` menu.
+.. _main-menu:
+
+1. Main Menu
+-------------
+
+ODK Collect's main menu contain the following options:
+
+.. image:: /img/collect-settings/main-menu.*
+  :alt: Main menu of ODK Collect
+  :class: device-screen-vertical
+
+- :menuselection:`Fill Blank Form` allows you to fill any blank form in your data collection.
+- :menuselection:`Edit Saved Form` looks for forms you've saved, lists them and allows you to edit them.
+- :menuselection:`Send Finalized Form` lists all the finalized forms and gives you an option to send them.
+- :menuselection:`View Sent Form` displays the fors that have been sent.
+- :menuselection:`Get Blank form` lists all available ODK :term:`Collect` :term:`form` :term:`widgets` (question types). The details about which are available on :ref:`form-widgets`.
+- :menuselection:`Delete Saved Form` lists all the Saved and Blank Forms and allows you to delete them.
 
 .. _general-settings:
 
-General Settings
------------------
+2. General Settings
+--------------------
+
+.. image:: /img/collect-settings/general-settings.*
+  :alt: General settings
+  :class: device-screen-vertical
+
+General Settings are accessible from the :guilabel:`⋮` menu on the top-right corner. It allows us to configure the following:
 
 .. _server-settings:
 
 Server Settings
 ~~~~~~~~~~~~~~~~~
+
+.. image:: /img/collect-settings/server-settings.*
+  :alt: Server settings
+  :class: device-screen-vertical
 
 :menuselection:`Server` settings manage the connection to an ODK Aggregate server or Google Drive account for form management.
 
@@ -22,17 +48,22 @@ See :ref:`connecting-to-server` for more details.
 User Interface Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-:menuselection:`User Interface` settings define how the app looks and behaves. It includes settings for:
+.. image:: /img/collect-settings/ui-settings.*
+  :alt: User Interface settings
+  :class: device-screen-vertical
 
-- :guilabel:`Language`
-- :guilabel:`Text font size`
-- :guilabel:`Navigation` (Swiping or Buttons)
-- :guilabel:`Splash Screen` (an image to display while Collect loads)
+:menuselection:`User Interface` settings allow us to customize the way our app looks and behaves. It includes settings for:
+
+- :guilabel:`Language` - Allows us to select the device language from 49 available options.
+- :guilabel:`Text font size` - Lets us select the font-size.
+- :guilabel:`Navigation` (Swiping or Buttons) - Allows us to select the navigation method from swipes, buttons or both.
+- :guilabel:`Splash Screen` - An image to display when the Collect application loads
+
+:menuselection:`User Interface` settings page also consists of the Mapping Settings. 
 
 .. _mapping-settings:
 
-Mapping
-"""""""""
+.. rubric:: Mapping
 
 Map settings are included on the :menuselection:`User Interface` settings page.
 
@@ -44,15 +75,21 @@ Map settings are included on the :menuselection:`User Interface` settings page.
 Form Management Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. image:: /img/collect-settings/form-management.*
+  :alt: Form Management settings
+  :class: device-screen-vertical
+
 :menuselection:`Form Management` settings handle default behavior when editing, finalizing, and importing forms.
 
-- :guilabel:`Auto send` When enabled, forms are sent immediately when finalized if the device can connect to the internet. You can specify whether to send over WiFi, cell data, or both.
-- :guilabel:`Delete after send` When enabled, form instances are deleted once they are sent.
+.. rubric:: Form submission
+
+- :guilabel:`Auto send` When enabled, forms are sent immediately when finalized if the device can connect to the internet. You can specify whether to send over WiFi, cellular data, or both.
+- :guilabel:`Delete after send` When checked, form instances are deleted once they are sent.
 
 .. rubric:: Form filling
 
 - :guilabel:`Default to finalized` When enabled, forms are automatically finalized upon reaching the end of the form. You can opt out of finalizing any form when completing it.
-- :guilabel:`Constraint processing` sets when response constraints are validated: When advancing through the form, or at finalization.
+- :guilabel:`Constraint processing` used to select when response constraints are validated: When advancing through the form i.e. after each swipe, or until finalization.
 - :guilabel:`High res video` enables high-resolution recordings.
 
 .. rubric:: Form import
@@ -63,6 +100,10 @@ Form Management Settings
 
 User and Device Identity Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: /img/collect-settings/und-settings.*
+  :alt: User and Device Identity Settings
+  :class: device-screen-vertical
 
 .. _form-metadata-settings:
 
@@ -75,9 +116,9 @@ Form Metadata Settings
 
 You can edit the following:
 
-- :guilabel:`Username`
-- :guilabel:`Phone number`
-- :guilabel:`Email address`
+- Username
+- Phone number
+- Email address
 
 .. rubric:: Device-defined
 
@@ -98,15 +139,19 @@ Usage data is anonymized.
 
 .. _admin-settings:
 
-Admin Settings
+3. Admin Settings
 -----------------
 
+.. note::
+  Admin settings can be **password protected**. If you set an :guilabel:`Admin Password` in the Admin settings screen, you will need to re-enter that password to access Admin settings in the future.
+
+.. image:: /img/collect-settings/admin-settings.*
+  :alt: Admin settings menu
+  :class: device-screen-vertical
 .. _admin-security:
 
 Admin Security
 ~~~~~~~~~~~~~~~~
-
-Admin settings can be **password protected**. If you set an :guilabel:`Admin Password` in the Admin settings screen, you will need to re-enter that password to access Admin settings in the future.
 
 Admin settings allow you to :ref:`restrict which General Settings are seen by users <user-access-control-settings>`. To access those settings as an Admin (and see all of them), :gesture:`tap` :guilabel:`General Settings` from the Admin settings page.
 
@@ -115,7 +160,7 @@ Admin settings allow you to :ref:`restrict which General Settings are seen by us
 Import/Export settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:guilabel:`Import/Export Settings` lets you copy settings quickly from one device to another, using a QR code. The QR image presented contains all of your current General and Admin settings, including admin and server passwords. When scanned by the ODK Collect app with another device, these settings are imported.
+:guilabel:`Import/Export Settings` lets you configure other devices indentical to your current device simply by scanning the QR code. The QR image presented contains all of your current General and Admin settings, including admin and server passwords. When scanned by the ODK Collect app with another device, these settings are imported.
 
 You can also import settings from a QR code saved to the device, by selecting :guilabel:`Select Code from SD Card`
 
@@ -125,7 +170,10 @@ You can also import settings from a QR code saved to the device, by selecting :g
 
 .. _user-access-control-settings:
 
-User Access Control Settings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. rubric:: User Access Control Settings
 
-This section allows the admin to hide menu items and settings from the user.
+This section allows the admin to hide menu items and settings from the user. It contains the following options:
+
+- :guilabel:`Main Menu Settings` : Allows admin to hide some of the main-meny options from the users.
+- :guilabel:`User Settings` : Allows admin to select the options that'll be visible to the users in the :guilabel:`General settings` menu.
+- :guilabel:`Form Entry Settings` : Admin can configure the `form entry items` visible to the users. For example unchecking the :guilabel:`change language` option will prevent the user from changing the device language.
