@@ -3,7 +3,7 @@ Collect Menus, Settings and Security
 
 .. _main-menu:
 
-1. Main Menu
+Main Menu
 -------------
 
 ODK Collect's main menu contains the following options:
@@ -21,7 +21,7 @@ ODK Collect's main menu contains the following options:
 
 .. _general-settings:
 
-2. General Settings
+General Settings
 --------------------
 
 General Settings are accessible from the :guilabel:`⋮` menu on the top-right corner. 
@@ -91,7 +91,7 @@ Form Management Settings
 .. rubric:: Form filling
 
 - :guilabel:`Default to finalized` When enabled, forms are automatically finalized upon reaching the end of the form. You can opt out of finalizing any form when completing it.
-- :guilabel:`Constraint processing` used to select when response constraints are validated: When advancing through the form i.e. after each swipe, or at finalization.
+- :guilabel:`Constraint processing` used to select when response constraints are validated: After each swipe, or at finalization.
 - :guilabel:`High res video` enables high-resolution recordings.
 
 .. rubric:: Form import
@@ -140,7 +140,7 @@ Usage data is anonymized.
 
 .. _admin-settings:
 
-3. Admin Settings
+Admin Settings
 -----------------
 
 .. note::
@@ -175,6 +175,6 @@ You can also import settings from a QR code saved to the device, by selecting :g
 
 This section allows the admin to hide menu items and settings from the user. It contains the following options:
 
-- :guilabel:`Main Menu Settings` : Allows admin to hide some of the main-meny options from the users.
+- :guilabel:`Main Menu Settings` : Allows admin to hide some of the main-menu options from the users.
 - :guilabel:`User Settings` : Allows admin to select the options that'll be visible to the users in the :guilabel:`General settings` menu.
 - :guilabel:`Form Entry Settings` : Admin can configure the `form entry items` visible to the users. For example unchecking the :guilabel:`change language` option will prevent the user from changing the device language.
