@@ -13,8 +13,8 @@ XLSForm
 Using the Application
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-- To design your form, you can refer to the `XLSForm form design documentation <http://xlsform.org/>`_ and check out the `sample Excel file <https://opendatakit.org/wp-content/uploads/2013/06/sample_xlsform.xls />`_.
-- Once your xls form is ready, you can submit it `for conversion here <http://opendatakit.org/xiframe/ >`_.
+- To design your form, you can refer to the `XLSForm form design documentation <http://xlsform.org/>`_ and check out the `sample Excel file <https://opendatakit.org/wp-content/uploads/2013/06/sample_xlsform.xls>`_.
+- Once your xls form is ready, you can submit it `for conversion here <http://opendatakit.org/xiframe/>`_.
 
 Other XLSForm converters
 ~~~~~~~~~~~~~~~~~~~~~~~~~
