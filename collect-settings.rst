@@ -161,7 +161,7 @@ Admin settings allow you to :ref:`restrict which General Settings are seen by us
 Import/Export settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:guilabel:`Import/Export Settings` lets you configure other devices indentical to your current device simply by scanning the QR code. The QR image presented contains all of your current General and Admin settings, including admin and server passwords. When scanned by the ODK Collect app with another device, these settings are imported.
+:guilabel:`Import/Export Settings` lets you configure other devices identical to your current device simply by scanning the QR code. The QR image presented contains all of your current General and Admin settings, including admin and server passwords. When scanned by the ODK Collect app with another device, these settings are imported.
 
 You can also import settings from a QR code saved to the device, by selecting :guilabel:`Select Code from SD Card`
 
