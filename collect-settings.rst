@@ -132,8 +132,7 @@ You cannot edit these:
 
 .. _usage-data-setting:
 
-Usage Data
-"""""""""""""
+.. rubric:: Usage data
 
 When enabled, ODK Collect sends usage and error data back to the ODK development team, which helps us improve the application.
 
