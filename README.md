@@ -10,6 +10,16 @@ Our new documentation website is live at https://docs.opendatakit.org
 
 This is still a new project, and most of the useful documentation is still at the [old docs on the ODK website](https://opendatakit.org/).
 
+## Building and viewing documentation locally
+See the [contribution guide](http://docs.opendatakit.org/contributing) for detailed steps -- no prior experience needed!
+
+Once your environment is set up:
+```
+sphinx-build -b dirhtml . build
+cd build
+python -m http.server 8000
+```
+
 ## What's the plan?
 
  - Docs are being aggregated, rewritten, edited, and expanded into this repo.
