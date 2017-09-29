@@ -16,7 +16,7 @@ ODK Collect's main menu contains the following options:
 - :menuselection:`Edit Saved Form` looks for forms you've saved, lists them and allows you to edit them.
 - :menuselection:`Send Finalized Form` lists all the finalized forms and gives you an option to send them.
 - :menuselection:`View Sent Form` displays the forms that have been sent.
-- :menuselection:`Get Blank form` lists all available ODK :term:`Collect` :term:`form` :term:`widgets` (question types). The details about which are available on :ref:`basic-form-widgets`.
+- :menuselection:`Get Blank form` lists all available ODK :term:`Collect` :term:`form` :term:`widget` (question types). The details about which are available on :ref:`basic-form-widgets`.
 - :menuselection:`Delete Saved Form` lists all the Saved and Blank Forms and allows you to delete them.
 
 .. _general-settings:
