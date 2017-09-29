@@ -6,16 +6,16 @@ Collect Menus, Settings and Security
 1. Main Menu
 -------------
 
-ODK Collect's main menu contain the following options:
+ODK Collect's main menu contains the following options:
 
 .. image:: /img/collect-settings/main-menu.*
   :alt: Main menu of ODK Collect
   :class: device-screen-vertical
 
-- :menuselection:`Fill Blank Form` allows you to fill any blank form in your data collection.
+- :menuselection:`Fill Blank Form` allows you to fill any blank form already there in your data collection.
 - :menuselection:`Edit Saved Form` looks for forms you've saved, lists them and allows you to edit them.
 - :menuselection:`Send Finalized Form` lists all the finalized forms and gives you an option to send them.
-- :menuselection:`View Sent Form` displays the fors that have been sent.
+- :menuselection:`View Sent Form` displays the forms that have been sent.
 - :menuselection:`Get Blank form` lists all available ODK :term:`Collect` :term:`form` :term:`widgets` (question types). The details about which are available on :ref:`form-widgets`.
 - :menuselection:`Delete Saved Form` lists all the Saved and Blank Forms and allows you to delete them.
 
@@ -56,8 +56,8 @@ User Interface Settings
 
 - :guilabel:`Language` - Allows us to select the device language from 49 available options.
 - :guilabel:`Text font size` - Lets us select the font-size.
-- :guilabel:`Navigation` (Swiping or Buttons) - Allows us to select the navigation method from swipes, buttons or both.
-- :guilabel:`Splash Screen` - An image to display when the Collect application loads
+- :guilabel:`Navigation` (Swiping or Buttons) - Allows us to select the navigation method(swipes, buttons or both).
+- :guilabel:`Splash Screen` - An image to display when the Collect application loads.
 
 :menuselection:`User Interface` settings page also consists of the Mapping Settings. 
 
