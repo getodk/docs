@@ -39,7 +39,7 @@ Installing on App Engine
 .. image:: /img/aggregate-install/empty-project.*
    :alt: Image showing Create an empty project option for first projects. 
 
-- If you have configured a Google Cloud Platform project before, this link will open onto either a page with a :guilabel:`Create Project` button and a table listing all of your projects, or it will open into one of your existing projects. In the later case, click on that project name at the top of the window.In the below image, the older project is `Project 123`.
+- If you have configured a Google Cloud Platform project before, this link will open onto either a page with a :guilabel:`Create Project` button and a table listing all of your projects, or it will open into one of your existing projects. In the later case, click on that project name at the top of the window. In the below image, the older project is `Project 123`.
 
 .. image:: /img/aggregate-install/project.*
    :alt: Image showing previous project name `Project123`.
@@ -49,7 +49,7 @@ Installing on App Engine
 .. image:: /img/aggregate-install/create-project.*
    :alt: Image showing the `+` sign which denotes creating a new project.
 
-- On the project-creation pop-up dialog, type in a project name that makes sense to you. You can enter a project name and click on :guilabel:`Create` if you don't want to edit the project-id.You can choose :guilabel:`Edit` if you want to edit the project id. The project id will be the first part of the URL to your ODK Aggregate server.
+- On the project-creation pop-up dialog, type in a project name that makes sense to you. You can enter a project name and click on :guilabel:`Create` if you don't want to edit the project-id. You can choose :guilabel:`Edit` if you want to edit the project id. The project id will be the first part of the URL to your ODK Aggregate server.
 
 .. image:: /img/aggregate-install/project-name.png
    :alt: Image showing the window to enter a project name.
@@ -172,14 +172,14 @@ Installing on App Engine
 
 .. tip::
 
-   Beginning with Java 7 Update 51, there are security level settings that may prevent the upload tool from running. A reported workaround is to add the file: path (e.g., file:///) to the Exception Site list.
+   Beginning with Java 7 Update 51, there are security level settings that may prevent the upload tool from running. A reported workaround is to add the file: path (e.g., ``file:///``) to the Exception Site list.
 
 - Enter the Gmail account in the upload tool that you specified to use the App Engine. This will enable the :guilabel:`Get Token` button.
 
 .. image:: /img/aggregate-install/get-token.*
    :alt: Image showing the window for upload tool to enter the email id and get a token.
 
-- Click the :guilabel:`Get Token` button.Two things happen after this:-
+- Click the :guilabel:`Get Token` button. Two things happen after this:-
 
     - Your default browser will open to a Google site (accounts.google.com) where you are asked to choose a Gmail account (select the account specified by you to use the App Engine), and then approve allowing "Google App Engine appcfg" to View and manage your AppEngine instances and datastores. Click :guilabel:`Allow`. This will take you to a screen with instructions to copy a code.
     - At the same time, a pop-up dialog should be displayed by the upload tool. 
@@ -309,7 +309,7 @@ To run on ODK Aggregate on a Tomcat server backed with a MySQL or PostgreSQL dat
 
     .. note::
 
-        You generally need to launch installers with Run as administrator privileges (available under the right-click menu).Accept all the defaults.
+        You generally need to launch installers with Run as administrator privileges (available under the right-click menu). Accept all the defaults.
 
     - Add the installed Java bin directory to the `PATH variable <https://docs.oracle.com/javase/tutorial/essential/environment/paths.html>`_.
     - Download and install `Tomcat 8 <https://tomcat.apache.org/download-80.cgi>`_
@@ -411,7 +411,7 @@ To run on ODK Aggregate on a Tomcat server backed with a MySQL or PostgreSQL dat
 
    - For PostgreSQL, download and install the appropriate binary package from `PostgreSQL download site <https://www.postgresql.org/download/>`_. Be sure to set the password for the postgres (root) user and set the default character set and collation sequence.
    - For either database, you should ensure that the default character set is configured to be UTF-8 and that the collation sequence (dictionary order) is set appropriately for your circumstances. If it isn't, any non-Latin characters may display as question marks. Refer to the character set and collation sections of your database's documentation for how to do this.
-   - For Microsoft SQL Server or Azure SQL Server, you should configure these with UTF-8 character sets and to use Windows authentication. When using Windows authentication, the user under which the webserver executes must be granted permissions to access the SQL Server instance. The install wizard for ODK Aggregate will produce a Readme.html file that contains additional information on how to complete the configuration of the database and webserver service.
+   - For Microsoft SQL Server or Azure SQL Server, you should configure these with UTF-8 character sets and to use Windows authentication. When using Windows authentication, the user under which the webserver executes must be granted permissions to access the SQL Server instance. The install wizard for ODK Aggregate will produce a :file:`Readme.html` file that contains additional information on how to complete the configuration of the database and webserver service.
 
 - Download and install `ODK Aggregate <https://opendatakit.org/downloads/>`_. Select the latest Featured release for your operating system.
 
