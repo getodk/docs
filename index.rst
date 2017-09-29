@@ -84,7 +84,17 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
 .. toctree::
   :hidden:
   :maxdepth: 2
+  :caption: Integration
+  
+  encrypted-forms
+  
+.. toctree::
+  :hidden:
+  :maxdepth: 2
   :caption: Reference
   
   glossary
+  
+
+  
 
