@@ -135,14 +135,14 @@ We recommend you spend a little more to get a higher quality device, instead of 
 - `Amazon <amazon.com>`_;
 - `Newegg <newegg.com>`_;
 - `Ebay <ebay.com>`_;
-- `N1 Wirelesse <n1wireless.com>`_;
+- `N1 Wireless <n1wireless.com>`_;
 
 
 For a list of all Android devices, make a search in: 
 
 - `Wikipedia <wikipedia.org>`_;
 - `GSMArena <gsmarena.com>`_;
--  `Phone Scoop <phonescoop.com>`_;
+- `Phone Scoop <phonescoop.com>`_;
 
 .. _my-messages-delayed:
 
@@ -171,7 +171,7 @@ How do I change the language that Collect is using?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The tools understand the text internationalization features of javarosa Xforms and can restructure your input so that the question text is grouped into an <itext/> translation block for internationalization. 
-Therefore, to support multiple languages you need to `specify the question text in the appropriate language using the tag <https://opendatakit.org/about/research/>`_. To change the language the Xform's questions are being rendered in, simply click the 'Menu' button on the Android while filling out a form and click the 'Change Language' button.
+Therefore, to support multiple languages you need to `specify the question text in the appropriate language using the tag <https://opendatakit.org/about/research/>`_. To change the language the XForm's questions are being rendered in, simply click the 'Menu' button on the Android while filling out a form and click the 'Change Language' button.
 
-To change the language ODK Collect (version 1.2 and higher) is using to render the  user interface (e.g., button text, instructions) you need to change the phone's language settings. Collect determines its user interface language (not question language) based on the phone's overall settings. For example, in the phone settings if you set the phone's locale to Espanol, Collect will render its navigation text in Spanish.
+To change the language ODK Collect (version 1.2 and higher) is using to render the  user interface (e.g., button text, instructions) you need to change the phone's language settings. Collect determines its user interface language (not question language) based on the phone's overall settings. For example, in the phone settings, if you set the phone's locale to Espanol, Collect will render its navigation text in Spanish.
 
