@@ -24,11 +24,13 @@ ODK Collect's main menu contains the following options:
 2. General Settings
 --------------------
 
+General Settings are accessible from the :guilabel:`⋮` menu on the top-right corner. 
+
 .. image:: /img/collect-settings/general-settings.*
   :alt: General settings
   :class: device-screen-vertical
 
-General Settings are accessible from the :guilabel:`⋮` menu on the top-right corner. It allows us to configure the following:
+It allows us to configure the following:
 
 .. _server-settings:
 
@@ -89,7 +91,7 @@ Form Management Settings
 .. rubric:: Form filling
 
 - :guilabel:`Default to finalized` When enabled, forms are automatically finalized upon reaching the end of the form. You can opt out of finalizing any form when completing it.
-- :guilabel:`Constraint processing` used to select when response constraints are validated: When advancing through the form i.e. after each swipe, or until finalization.
+- :guilabel:`Constraint processing` used to select when response constraints are validated: When advancing through the form i.e. after each swipe, or at finalization.
 - :guilabel:`High res video` enables high-resolution recordings.
 
 .. rubric:: Form import
