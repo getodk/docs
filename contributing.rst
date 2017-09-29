@@ -72,7 +72,7 @@ Terminal (Command Line)
 
     - :doc:`Cygwin <cygwin>`
     - `gitbash <https://git-for-windows.github.io/>`_
-  
+
   The lead maintainers of this docs repo are not Windows users, so we rely on our contributor community to keep Windows-specific information complete and accurate. Contributions to this guide with explanations and help for Windows users are greatly appreciated.
 
 Contributing to the docs requires interacting with git, Github, Python, and Sphinx, which requires the use of the Terminal. This is common among Linux users. Mac users unfamiliar with the Terminal can learn more from `this tutorial <https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855>`_.
@@ -99,11 +99,11 @@ On windows:
 .. code-block:: doscon
 
    > python
- 
 
-If you get an error, you probably don't have it and will need to `install Python 3 <https://www.python.org/downloads/>`_. 
 
-On Windows make sure to select the option "Add python to the Path", while installing (see `instructions <https://www.youtube.com/watch?v=oHOiqFs_x8Y>`_ ) otherwise you need to add it `manually <https://youtu.be/UTUlp6L2zkw>`_ . 
+If you get an error, you probably don't have it and will need to `install Python 3 <https://www.python.org/downloads/>`_.
+
+On Windows make sure to select the option "Add python to the Path", while installing (see `instructions <https://www.youtube.com/watch?v=oHOiqFs_x8Y>`_ ) otherwise you need to add it `manually <https://youtu.be/UTUlp6L2zkw>`_ .
 
 If the Python command-line interpreter starts up, type ``quit()`` to exit.
 
@@ -140,7 +140,7 @@ Now, inside that odk directory, create a python3 virtualenv.
 .. code-block:: console
 
   $ virtualenv -p python3 odkenv
-  
+
 On Windows use:
 
 .. code-block:: doscon
@@ -155,7 +155,7 @@ Activate your virtual environment with:
 .. code-block:: console
 
   $ source odkenv/bin/activate
-  
+
 On Windows use:
 
 .. code-block:: doscon
@@ -184,8 +184,8 @@ You will need to:
 - `Install git <https://git-scm.com/downloads>`_
 -  Make sure that git is installed properly by typing (git) in the terminal or command prompt
 
-   - On windows if you get any error check if environment variables are set up correctly(`see instructions <https://stackoverflow.com/questions/26620312/installing-git-in-path-with-github-client-for-windows#answer-34767523>`_) 
-  
+   - On windows if you get any error check if environment variables are set up correctly(`see instructions <https://stackoverflow.com/questions/26620312/installing-git-in-path-with-github-client-for-windows#answer-34767523>`_)
+
 - `Start a GitHub account <https://github.com/>`_
 
 .. glfs
@@ -306,30 +306,30 @@ The rest of the documentation assumes you are in the directory for the repo (the
   - The ``clone`` command creates a new directory inside the current one. So you do not need to create a new `odk-docs` directory first.
   - As noted above, we recommend a master :file:`odk` directory that holds your virtualenv directory and your git repo in two separate subdirectories. So you would be in that master :file:`odk` directory when you clone down the repo.
   - Double check that right folders are in the right places
-  
+
   .. code-block:: none
 
     - odk/
       - odkenv/
       - docs/
-	
+
 .. _upstream-the-docs:
 
 Set the Upstream Remote
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When you clone down a repo, the local copy calls your GitHub copy ``origin``. You should also set ``upstream`` as the name of the original, main GitHub repo.
+When you clone down a repo, the local copy calls your GitHub copy ``origin``. You should also set ``upstream`` as the name of the original master branch of the main GitHub repo.
 
 
 .. code-block:: console
 
-  $ git remote add --track upstream https://github.com/opendatakit/docs.git  
+  $ git remote add --track master upstream https://github.com/opendatakit/docs.git
 
 Or in Windows:
 
 .. code-block:: doscon
 
-  > git remote add upstream https://github.com/opendatakit/docs.git  
+  > git remote add upstream https://github.com/opendatakit/docs.git
 
 Run ``git remote -v`` to check the status, you should see something like this:
 
@@ -345,7 +345,7 @@ Run ``git remote -v`` to check the status, you should see something like this:
 Install Dependencies
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The first time you clone down the repo, you'll need to install the dependencies. Make sure you have your Python 3 virtual environment set up and activated and then:
+The first time you clone down the repo, you'll need to install the dependencies. Make sure you have your Python 3 virtual environment set up and activated from the docs directory and then:
 
 .. code-block:: console
 
@@ -376,6 +376,19 @@ You probably won't need to do this the first time, but you should always pull in
 
   $ git pull upstream
 
+.. note::
+
+  If you get this message:
+
+  .. code-block:: none
+
+        You asked to pull from the remote 'upstream', but did not specify a branch.
+        Because this is not the default configured remote for your current branch,
+        you must specify a branch on the command line.     
+
+
+  Try running ``git pull upstream master`` instead.
+
 .. _git-branch-the-docs:
 
 Make a New Branch
@@ -385,7 +398,7 @@ Choose a specific, deliverable task to work on. This should be an `active issue 
 
 Create a new branch in which you will work on this specific issue. The branch name should briefly describe what you are doing. For example, the original author of this contributor guide worked in a branch he called ``contributing``. Also, make sure that all the branches are derived from the ``master`` branch to avoid intermixing of commits.
 
-.. code-block:: console 
+.. code-block:: console
 
   $ git checkout -b branch-name
 
@@ -434,13 +447,13 @@ When you run the build, you may see error or warning messages. These indicate po
 - broken links
 - terms not included in the glossary
 
-Error and warning messages include a file name and line number for tracking them down. Try to resolve all your errors and warnings before issuing a pull request. However, if this is not possible, please add a note in your pull request so that we can help you debug the problem. 
+Error and warning messages include a file name and line number for tracking them down. Try to resolve all your errors and warnings before issuing a pull request. However, if this is not possible, please add a note in your pull request so that we can help you debug the problem.
 
 **We will not merge Pull Requests that have warnings or errors in them.**
 
 .. note::
 
-  Because of `a bug in Sphinx <https://github.com/sphinx-doc/sphinx/issues/2617>`_, the line numbers in error and warning messages will be off by the length of `rst_prolog` in :file:`conf.py`. 
+  Because of `a bug in Sphinx <https://github.com/sphinx-doc/sphinx/issues/2617>`_, the line numbers in error and warning messages will be off by the length of `rst_prolog` in :file:`conf.py`.
 
 
 To view the documentation in your web browser, you can use Python's built-in web server.
@@ -463,7 +476,7 @@ It's a good idea to delete the ``build`` directory before each rebuild.
 
 .. tip::
 
-  The script ``b.sh`` is a utility script that can be run to build the directory. It not only saves typing effort but will also become the canonical build script for us, so it's good to get used to it from now. 
+  The script ``b.sh`` is a utility script that can be run to build the directory. It not only saves typing effort but will also become the canonical build script for us, so it's good to get used to it from now.
 
 .. _push-the-docs:
 
@@ -1185,7 +1198,7 @@ Several roles are used when describing user interactions.
 Custom Text Roles
 ~~~~~~~~~~~~~~~~~~~
 
-**Custom Text Roles** signify that the enclosed text should be interpreted in a specific way. 
+**Custom Text Roles** signify that the enclosed text should be interpreted in a specific way.
 
 Custom text roles used in ODK documentation are:
 
@@ -1195,7 +1208,7 @@ Custom text roles used in ODK documentation are:
 
 .. rst:role:: tc
 
-  Stands for table cell and describes the table cells in the body of text. 
+  Stands for table cell and describes the table cells in the body of text.
 
   .. code-block:: rst
 
@@ -1203,8 +1216,8 @@ Custom text roles used in ODK documentation are:
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     The external app widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`.
 
-.. rst:role:: formstate 
-  
+.. rst:role:: formstate
+
   Specifies the state of the form which could be one of the following:
 
   - Blank
@@ -1212,17 +1225,17 @@ Custom text roles used in ODK documentation are:
   - Saved
   - Sent
   - Deleted
-  
+
   .. code-block:: rst
-    
+
     :formstate:`Sent`
 
 .. rst:role:: gesture
-    
-  Describes a touch screen gesture. 
+
+  Describes a touch screen gesture.
 
   .. code-block:: rst
-    
+
     :gesture:`Swipe Left`
 
 .. _misc-markup:
@@ -1370,7 +1383,7 @@ The length of the videos must be less than a minute.
 There is no ``video`` directive to add a video, so to add a video in a document, you can do the following:
 
 .. code-block:: rst
-  
+
   .. raw:: html
 
   <video controls muted style="max-width:100%">
@@ -1390,7 +1403,7 @@ The video file is saved in your Android device to a file at :file:`/sdcard/examp
 To pull the video locally just type the following command and hit :command:`Enter`.
 
 .. code-block:: console
-  
+
   $ adb pull /sdcard/example.mp4 localsavelocation
 
 where localsavelocation is the location where you want to save your file locally.
@@ -1426,4 +1439,3 @@ Use the ``code-block`` directive to markup code samples. Specify the language on
         }
 
     }
-
