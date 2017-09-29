@@ -171,7 +171,8 @@ You can also import settings from a QR code saved to the device, by selecting :g
 
 .. _user-access-control-settings:
 
-.. rubric:: User Access Control Settings
+User Access Control Settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This section allows the admin to hide menu items and settings from the user. It contains the following options:
 
