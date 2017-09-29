@@ -87,9 +87,9 @@ Uploading Finalized Forms
 
 .. code-block:: xml
 
-   <h:html xmlns=<http://www.w3.org/2002/xforms>
-        xmlns:h=<http://www.w3.org/1999/xhtml>
-	xmlns:orx=<http://openrosa.org/xforms/>
+   <h:html xmlns="http://www.w3.org/2002/xforms"
+        xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:orx="http://openrosa.org/xforms/">
    <h:head>
    <h:title>Sample Form</h:title>
    <model>
