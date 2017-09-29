@@ -6,7 +6,7 @@ Encrypted Forms
 
 Overview 
 ====================
-Encrypted forms provide a mechanism to keep your data private even when using **http:** for communications (e.g., when you do not have a **SSL certificate** or **https:** is not available). Encrypted forms may also enable Google App Engine deployments (and deployments using other web database services, e.g., AWS) to comply with data privacy laws, eliminating the necessity for setting up your own servers to meet those requirements.
+Encrypted forms provide a mechanism to keep your data private even when using **http:** for communications (e.g., when you do not have an **SSL certificate** or **https:** is not available). Encrypted forms may also enable Google App Engine deployments (and deployments using other web database services, e.g., AWS) to comply with data privacy laws, eliminating the necessity for setting up your own servers to meet those requirements.
 
 Encrypted forms apply asymmetric public key encryption at the time the form is finalized within ODK Collect. This encrypted form can then be submitted up to ODK Aggregate and downloaded to ODK Briefcase. ODK Briefcase, when supplied with the asymmetric private key (which ODK Briefcase never stores), can then decrypt and export the form data as a CSV file for your use.
 
