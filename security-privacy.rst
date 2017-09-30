@@ -27,8 +27,8 @@ Our software uses a number of open-source 3rd-party libraries from well-known an
 
 Your security people may want to review the libraries and source code on our `source code site <https://github.com/opendatakit/opendatakit/>`_.
     
-4. :ref:`ODK Aggregate <aggregate-introduction>` Communications
------------------------------------------------------------------
+4. ODK Aggregate Communications
+---------------------------------
 
 When setting up your own webserver to run :ref:`ODK Aggregate <aggregate-introduction>`, if you do not configure the server and :ref:`ODK Aggregate <aggregate-introduction>` to use an SSL certificate, a determined observer can see all data communicated to and from that server.
 
@@ -36,7 +36,7 @@ Only transmissions over an https:// connection are obscured from observers.
 
 The definition of an encrypted form (`see here <https://opendatakit.org/help/encrypted-forms/>`_) is transmitted in plaintext (unencrypted) to the device. When a filled-in submission for an encrypted form is finalized, it is encrypted on the device and transmitted in encrypted form. While this may meet requirements for obscured transmission over unsecured http:// connections, unsecured connections still allow observers to alter the form definition to potentially remove the encryption, capture any filled-in forms, or potentially intercept and thereby prevent their transmission to your server.
 
-5. :ref:`ODK Aggregate <aggregate-introduction>` Deployments to Google App Engine or Other Hosting Services
+5. ODK Aggregate Deployments to Google App Engine or Other Hosting Services
 -------------------------------------------------------------------------------------------------------------
 
 With all 3rd party hosting services, you should expect your data to be viewable by support staff of the hosting service. Different services go to differing lengths to restrict access to, encrypt, and/or secure the data and communications within their data centers.
@@ -65,7 +65,7 @@ On the server, if an observer were able to access your encrypted data, since eac
 At this point in time, cracking AES encryption is viewed as impossible for all but the most advanced governmental agencies (e.g., the NSA).
 
 
-7. :ref:`ODK Aggregate <aggregate-introduction>` Username Authentication
+7. ODK Aggregate Username Authentication
 ---------------------------------------------------------------------------
 
 When authenticating :ref:`ODK Aggregate <aggregate-introduction>` usernames and passwords, the ODK tools use DigestAuth. This enables secure username/password authentication even while communicating with servers over http:// (when using DigestAuth, the password is not sent over the network).
@@ -95,8 +95,8 @@ During data submission, some identifying information is transmitted and stored o
 
 While interacting with an :ref:`ODK Aggregate <aggregate-introduction>` website, any actions that require authentication and that modify the server settings, set of form definitions, filters, exports, publishers, or data tables, etc., will cause the authenticated username or Google account to be written into the audit fields of the database tables that are being updated. If these modifications result in delete actions being performed against a database table, then this authenticated username or Google account will be identified in the server log together with summary information on what was deleted.
 
-10. :ref:`ODK Collect <collect-introduction>`
-----------------------------------------------
+10. ODK Collect
+-----------------
 
 We gather anonymous aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data off the device and the data are available to ODK's maintainers. Users may disable analytics in the settings of :ref:`ODK Collect <collect-introduction>`.
     
