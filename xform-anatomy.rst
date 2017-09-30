@@ -173,7 +173,7 @@ The body represents what should be shown to the user. In this example, we have t
   </input>
   </h:body>
 
-The type of form widget is specified by the tag name of the element. Here it is shown by the ``<input>`` tag. To specify which field will store the response, we use the ``ref=""`` attribute. The ``<label> ``is what will be shown to the user as the prompt header, and the ``<hint>`` is an optional piece of text to display.
+The type of form widget is specified by the tag name of the element. Here it is shown by the ``<input>`` tag. To specify which field will store the response, we use the ``ref=""`` attribute. The ``<label>`` is what will be shown to the user as the prompt header, and the ``<hint>`` is an optional piece of text to display.
 
 For a full list of body element types see `form body <https://opendatakit.org/help/form-design/body/>`_ or look through the `widget examples <https://docs.opendatakit.org/form-widgets/>`_.
 
