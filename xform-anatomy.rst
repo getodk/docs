@@ -2,18 +2,15 @@
 XForm Anatomy
 ****************
 
-The purpose of this document is to provide a detailed breakdown of XForms, specifically the subset of XForms implemented by JavaRosa, so that anyone can make their own forms. There are several tools to help create your own XForms that work on JavaRosa platforms. They all allow you to create XForms, and the easier they are to use the less advanced functionality they provide.
+The purpose of this document is to provide an introduction to XForms, specifically the subset of XForms implemented by JavaRosa, so that anyone can make their own forms. There are several tools to help create your own XForms that work on JavaRosa platforms. They all allow you to create XForms, and the easier they are to use the less advanced functionality they provide. For detailed specifications, visit `ODK XForm Specifications <https://opendatakit.github.io/xforms-spec/>`_.
 
-.. javarosa-automated-tool:
+.. building-xforms:
 
-Begin with a JavaRosa-compliant automated design tool
-======================================================
+Building XForms
+=================
 
-Use an automated tool compatible with JavaRosa to build the basic XForm. These tools understand the text internationalization features of JavaRosa XForms and can restructure your input so that the question text is grouped into an ``<itext/>`` translation block for internationalization.
+To build XForms, the most commonly used form standard is `XLSForm <https://opendatakit.org/use/xlsform/>`_, which uses an Excel spreadsheet of questions to generate the XForm file. There are many online XLSForm converters available. ODK's `Xiframe <http://opendatakit.org/xiframe/>`_ is an online XLSForm converter. Forms can be designed with Excel and XLSForm will convert them to XForms that can be used with ODK tools. `Pyxform <https://github.com/uw-ictd/pyxform>`_ is a Python library which works offline as well and can be used on the command line to convert forms. For simple form designing, `Build <https://opendatakit.org/use/build/>`_ can be used. XLSForm supports most features of the XForm specification. It is rare for ODK implementers to edit XForms manually, and doing so is highly error prone.
 
-We have a `form design guide <https://opendatakit.org/help/form-design/guidelines/>`_, and the JavaRosa community has a `description of the specification <https://bitbucket.org/javarosa/javarosa/wiki/xform>`_ we support and a `good tutorial <https://bitbucket.org/javarosa/javarosa/wiki/buildxforms>`_. We also have `examples of forms available <https://github.com/opendatakit/sample-forms>`_ and a simple graphical form designer `ODK Build <https://opendatakit.org/use/build/>`_. Another form builder `XLSForm <https://opendatakit.org/use/xlsform/>`_ uses an Excel spreadsheet of questions to generate the XForm file; it is more suitable when working with larger forms. 
-
-XLSForms now support most of the desired features. To work on advanced forms, there might be some need of manually editing XML.
 
 .. xform-file:
 
@@ -27,7 +24,7 @@ XForms consist of four major components:
 - The **bindings** -- for each instance variable, you can include information about those data like the type (string, integer, etc.), the constraints on those data (i.e. less than 3), whether they're required or not, etc.
 - The **body** -- how prompts are displayed to the user.
 
-These are explained in the following HTML example one by one.
+These are explained in the following XML example one by one.
 
 .. code-block:: xml
 
@@ -83,13 +80,11 @@ Instances
   </data>
   </instance>
 
-Here we have a single instance called "data". This instance is identified via the 'id' attribute as the 'myform' form. This id attribute, and an optional version attribute, provide the internal unique name of this form to the software. The software only allows one form definition for each (id, version) pair.
+Here, the first element labaled ``instance`` is the primary instance, and it has ``data`` element as its child node, and is the secondary instance in this example. This secondary instance is identified via the ``id`` attribute as the 'myform' form. This ``id`` attribute, and an optional version attribute, provide the internal unique name of this form to the software. The software only allows one form definition for each (id, version) pair.
 
-The form itself has two variables; the first, called "instanceID" is nested within a "meta" block. The second variable is called "mystring." Nesting within blocks can help organize your data; we could have nested "mystring" within one or more blocks. The "meta" block and "instanceID" variable are defined as part of a form design standard, and must appear as shown by OpenRosa 1.0 Metadata Schema.
+Each blank XForm must have a completed instance within it, as it contains all the data. This instance contains two fields -- the first, called "instanceID" is nested within a ``meta`` element. The second field is called "mystring." Nesting within elements can help organize your data.
 
-We are going to compute and store a unique identifier for each filled-in form in the ``<instanceID/>`` element. This will enable ODK Aggregate (or any back-end process) to de-duplicate submissions if, for example, the same filled-in form were somehow submitted twice.
-
-The other variable, ``<mystring/>``, is where we're going to store the answer to our prompt, but it's only a placeholder. We **DO NOT** specify a data type here.
+The other field, ``<mystring/>``, is where we're going to store the answers for our form instance, but it's only a placeholder. We **DO NOT** specify a data type here.
 
 The first instance in the form represents a saved or completed version of the form. When you save a filled-in form, the XML output file will look something like this:
 
@@ -104,13 +99,15 @@ The first instance in the form represents a saved or completed version of the fo
 
 Beginning with ODK Collect 1.2, there can be multiple instances defined in the form. The second and subsequent instance definitions can specify static data used in filling out the form (e.g., lists of cities within each county within a given state, dosage tables). The most common use would be to present the choices in a cascading select, e.g., where you are asked to first choose a state, then the county within that state, then the city within that county. 
 
-If you specify a value for :``<mystring>`` in the original XForm, it presents that as the default answer to the prompt:
+If you specify a value for any element of the primary instance in the original XForm, it presents that as the default answer.
 
 .. code-block:: xml
 
   <mystring>Default answer</mystring>
 
-Adding more prompts is as simple as adding more variables:
+Here, *Default answer* becomes the default value for ``<mystring>``.
+
+Each node in the Primary Instance represents a piece of data that will be collected by the form.
 
 .. code-block:: xml
 
@@ -134,7 +131,7 @@ Adding more prompts is as simple as adding more variables:
 Bindings
 ---------
 
-Since we have two variables, we need two bindings:
+Since we have two fields, we need two bindings:
 
 .. code-block:: html
 
@@ -150,7 +147,7 @@ Bindings are also where you specify branching, calculations, read-only fields, r
 
 Note that the binding references the instance node using an XPath expression. The expression represents the hierarchy inside the ``<instance>`` tags.
 
-.. code-block:: html
+.. code-block:: xml
 
   <instance>
   <data>
@@ -165,9 +162,9 @@ In this example, mystring is referenced by: :guilabel:`/data/mystring`.
 Body
 -----
 
-The body represents what should be shown to the user. In this example, we have two variables, but the ``<instanceID>`` variable is merely for bookkeeping. Thus, we will only have one prompt displayed to the user for the ``<mystring>`` variable. This is placed in the body element:
+The body represents what should be shown to the user. In this example, we have two pieces of data in the form, but the ``<instanceID>`` is not editable by the user, so it will not appear in the rendered form. Thus, we will only have one data to be collected by the user (in the prompt), and that is for the ``<mystring>``. This is placed in the body element:
 
-.. code-block:: html
+.. code-block:: xml
 
   <h:body>
   <input ref="/data/mystring">
@@ -176,9 +173,9 @@ The body represents what should be shown to the user. In this example, we have t
   </input>
   </h:body>
 
-The type of widget/prompt to show the user is specified by the <input> tag. Where to put the data is specified by the ``ref=""`` attribute. The <label> is what will be shown to the user as the prompt header, and the ``<hint>`` is an optional piece of text to display.
+The type of form widget is specified by the tag name of the element. Here it is shown by the ``<input>`` tag. To specify which field will store the response, we use the ``ref=""`` attribute. The ``<label> ``is what will be shown to the user as the prompt header, and the ``<hint>`` is an optional piece of text to display.
 
-For a full list of body element types see `form body <https://opendatakit.org/help/form-design/body/>`_ or look through the `widget examples <https://opendatakit.org/help/form-design/examples/>`_.
+For a full list of body element types see `form body <https://opendatakit.org/help/form-design/body/>`_ or look through the `widget examples <https://docs.opendatakit.org/form-widgets/>`_.
 
 .. adding-another-prompt
 
@@ -189,7 +186,7 @@ To finish our example, we'll add another prompt to our form. We'll need to add a
 
 So our new form now looks like this:
 
-.. code-block:: html
+.. code-block:: xml
 
   <h:html xmlns="http://www.w3.org/2002/xforms"
   xmlns:h="http://www.w3.org/1999/xhtml"
