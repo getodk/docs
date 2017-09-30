@@ -1,5 +1,5 @@
 ****************
-Form Design
+XForm Anatomy
 ****************
 
 The purpose of this document is to provide a detailed breakdown of XForms, specifically the subset of XForms implemented by JavaRosa, so that anyone can make their own forms. There are several tools to help create your own XForms that work on JavaRosa platforms. They all allow you to create XForms, and the easier they are to use the less advanced functionality they provide.
@@ -11,9 +11,9 @@ Begin with a JavaRosa-compliant automated design tool
 
 Use an automated tool compatible with JavaRosa to build the basic XForm. These tools understand the text internationalization features of JavaRosa XForms and can restructure your input so that the question text is grouped into an ``<itext/>`` translation block for internationalization.
 
-We have a `form design guide <https://opendatakit.org/help/form-design/guidelines/>`_, and the JavaRosa community has a `description of the specification <https://bitbucket.org/javarosa/javarosa/wiki/xform>`_ we support and a `good tutorial <https://bitbucket.org/javarosa/javarosa/wiki/buildxforms>`_. We also have `examples of forms available <https://github.com/opendatakit/sample-forms>`_ and a simple graphical form designer `ODK Build <https://opendatakit.org/use/build/>`_. Another form builder `XLSForm <https://opendatakit.org/use/xlsform/>`_ uses an Excel spreadsheet of questions to generate the XForm file; it is more suitable when working with larger forms. `PurcForms designer <https://code.google.com/archive/p/purcforms/>`_ is another tool.
+We have a `form design guide <https://opendatakit.org/help/form-design/guidelines/>`_, and the JavaRosa community has a `description of the specification <https://bitbucket.org/javarosa/javarosa/wiki/xform>`_ we support and a `good tutorial <https://bitbucket.org/javarosa/javarosa/wiki/buildxforms>`_. We also have `examples of forms available <https://github.com/opendatakit/sample-forms>`_ and a simple graphical form designer `ODK Build <https://opendatakit.org/use/build/>`_. Another form builder `XLSForm <https://opendatakit.org/use/xlsform/>`_ uses an Excel spreadsheet of questions to generate the XForm file; it is more suitable when working with larger forms. 
 
-Our experience is that these form design tools can provide a good starting point, but, to enable advanced features, you will inevitably need to edit the resulting form. After hand-editing, you should verify the syntax of the form using ODK Validate.
+XLSForms now support most of the desired features. To work on advanced forms, there might be some need of manually editing XML.
 
 .. xform-file:
 
@@ -29,7 +29,7 @@ XForms consist of four major components:
 
 These are explained in the following HTML example one by one.
 
-.. code-block:: html
+.. code-block:: xml
 
   <h:html xmlns="http://www.w3.org/2002/xforms"
   xmlns:h="http://www.w3.org/1999/xhtml"
@@ -87,7 +87,7 @@ Here we have a single instance called "data". This instance is identified via th
 
 The form itself has two variables; the first, called "instanceID" is nested within a "meta" block. The second variable is called "mystring." Nesting within blocks can help organize your data; we could have nested "mystring" within one or more blocks. The "meta" block and "instanceID" variable are defined as part of a form design standard, and must appear as shown by OpenRosa 1.0 Metadata Schema.
 
-We are going to compute and store a unique identifier for each filled-in form in the ``<instanceID/>`` variable. This will enable ODK Aggregate (or any back-end process) to de-duplicate submissions if, for example, the same filled-in form were somehow submitted twice.
+We are going to compute and store a unique identifier for each filled-in form in the ``<instanceID/>`` element. This will enable ODK Aggregate (or any back-end process) to de-duplicate submissions if, for example, the same filled-in form were somehow submitted twice.
 
 The other variable, ``<mystring/>``, is where we're going to store the answer to our prompt, but it's only a placeholder. We **DO NOT** specify a data type here.
 
