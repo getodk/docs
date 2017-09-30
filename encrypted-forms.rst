@@ -39,7 +39,7 @@ These requirements are covered in more detail below.
   
 Security Concerns
 ====================
-While ODK Collect attempts to remove all unencrypted copies of a finalized form and its attachments from the device, because ODK Collect uses third party applications for image capture, etc., and because of the potential for Forced Close events during the clean-up process, we cannot guarantee that all copies will have been destroyed. Furthermore, because of the way an SD card writes and deletes information, there is a possibility of this data being recoverable from the free space on the SD card. Your organization should investigate the extra steps needed to ensure all data is deleted from the SD cards on your ODK Collect devices and should establish procedures to periodically wipe and reinstall those devices.
+While ODK Collect attempts to remove all unencrypted copies of a finalized form and its attachments from the device, because ODK Collect uses third-party applications for image capture, etc., and because of the potential for Forced Close events during the clean-up process, we cannot guarantee that all copies will have been destroyed. Furthermore, because of the way an SD card writes and deletes information, there is a possibility of this data being recoverable from the free space on the SD card. Your organization should investigate the extra steps needed to ensure all data is deleted from the SD cards on your ODK Collect devices and should establish procedures to periodically wipe and reinstall those devices.
 
 .. note::
 
@@ -56,7 +56,7 @@ To install the JCE:
 
    1. Select the downloaded UCE zip archive file in the file viewer.
    2. Right-click, choose :guilabel:`Extract files...` and extract the files from the downloaded zip archive.
-   3. Navigate into the extracted directory tree and copy the :file:`local_policy.jar` and :file:`US_export_policy.jar` files to the :file:`lib\security` directory under the installation directory of the Java Runtime Enviornment (JRE) of your computer, replacing earlier versions of these files.
+   3. Navigate into the extracted directory tree and copy the :file:`local_policy.jar` and :file:`US_export_policy.jar` files to the :file:`lib\security` directory under the installation directory of the Java Runtime Environment (JRE) of your computer, replacing earlier versions of these files.
 
 Windows
 ~~~~~~~~~~~~~~~
@@ -237,7 +237,7 @@ Open the :file:`MyPublicKey.pem` file and copy the resulting very-long string in
   
 .. seealso::
   
-   - For reference you can checkout the `tutorial encrypted-XLSForm <https://docs.google.com/spreadsheets/d/1O2VW5dNxXeyr-V_GB3spS6QPX4rtqtt7ijqP_uZLU3I/edit#gid=390337726>`_.It is for viewing purpose only but you can make you own copy to edit it.
+   - For reference, you can checkout the `tutorial encrypted-XLSForm <https://docs.google.com/spreadsheets/d/1O2VW5dNxXeyr-V_GB3spS6QPX4rtqtt7ijqP_uZLU3I/edit#gid=390337726>`_.It is for viewing purpose only but you can make you own copy to edit it.
 
 .. _encrypt-operations:
 

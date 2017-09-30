@@ -2,6 +2,8 @@
 ODK Aggregate
 ******************
 
+.. _aggregate-introduction:
+
 `ODK Aggregate` provides a ready-to-deploy server and data repository to:-
 
 - provide blank forms to ODK Collect (or other OpenRosa clients).

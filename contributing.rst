@@ -318,12 +318,12 @@ The rest of the documentation assumes you are in the directory for the repo (the
 Set the Upstream Remote
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When you clone down a repo, the local copy calls your GitHub copy ``origin``. You should also set ``upstream`` as the name of the original master branch of the main GitHub repo.
+When you clone down a repo, the local copy calls your GitHub copy ``origin``. You should also set ``upstream`` as the name of the original, main GitHub repo.
 
 
 .. code-block:: console
 
-  $ git remote add --track master upstream https://github.com/opendatakit/docs.git
+  $ git remote add upstream https://github.com/opendatakit/docs.git
 
 Or in Windows:
 
@@ -345,7 +345,7 @@ Run ``git remote -v`` to check the status, you should see something like this:
 Install Dependencies
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The first time you clone down the repo, you'll need to install the dependencies. Make sure you have your Python 3 virtual environment set up and activated from the docs directory and then:
+The first time you clone down the repo, you'll need to install the dependencies. Make sure you have your Python 3 virtual environment set up and activated in the docs repo and then:
 
 .. code-block:: console
 
@@ -384,7 +384,7 @@ You probably won't need to do this the first time, but you should always pull in
 
         You asked to pull from the remote 'upstream', but did not specify a branch.
         Because this is not the default configured remote for your current branch,
-        you must specify a branch on the command line.     
+        you must specify a branch on the command line.
 
 
   Try running ``git pull upstream master`` instead.
