@@ -2,6 +2,8 @@
 Security and Privacy
 *********************
 
+.. _security-and-privacy:
+
 Below is an attempt to enumerate known security and privacy considerations of the ODK software.
 
 1. License Terms
@@ -34,7 +36,7 @@ When setting up your own webserver to run :ref:`ODK Aggregate <aggregate-introdu
 
 Only transmissions over an https:// connection are obscured from observers.
 
-The definition of an encrypted form (`see here <https://opendatakit.org/help/encrypted-forms/>`_) is transmitted in plaintext (unencrypted) to the device. When a filled-in submission for an encrypted form is finalized, it is encrypted on the device and transmitted in encrypted form. While this may meet requirements for obscured transmission over unsecured http:// connections, unsecured connections still allow observers to alter the form definition to potentially remove the encryption, capture any filled-in forms, or potentially intercept and thereby prevent their transmission to your server.
+The definition of an encrypted form (:ref:`check here <encrypted-forms>`) is transmitted in plaintext (unencrypted) to the device. When a filled-in submission for an encrypted form is finalized, it is encrypted on the device and transmitted in encrypted form. While this may meet requirements for obscured transmission over unsecured http:// connections, unsecured connections still allow observers to alter the form definition to potentially remove the encryption, capture any filled-in forms, or potentially intercept and thereby prevent their transmission to your server.
 
 5. ODK Aggregate Deployments to Google App Engine or Other Hosting Services
 -------------------------------------------------------------------------------------------------------------
@@ -52,7 +54,7 @@ The form definition and associated media files of an :ref:`ODK encrypted form <e
 
 Prior to finalizing a filled-in form, all form data and attachments are stored in plaintext (unencrypted) on the device.
 
-At the time a filled-in form is finalized, a random 256-bit encryption/decryption key is generated for that filled-in form using the SecureRandom number generator (`found here <https://docs.oracle.com/javase/7/docs/api/java/security/SecureRandom.html/>`_). This ensures that every filled-in form has its own unique 256-bit encryption/decryption key.
+At the time a filled-in form is finalized, a random 256-bit encryption/decryption key is generated for that filled-in form using the SecureRandom number generator (`found here <https://docs.oracle.com/javase/7/docs/api/java/security/SecureRandom.html>`_). This ensures that every filled-in form has its own unique 256-bit encryption/decryption key.
 
 The filled-in form data and all media attachments are then encrypted with that key using 256-bit AES Cipher Feedback (CFB) streaming-block encryption. Once encrypted, all plaintext files and attachments for that filled-in form are deleted.
 
