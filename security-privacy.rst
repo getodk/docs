@@ -7,7 +7,7 @@ Below is an attempt to enumerate known security and privacy considerations of th
 1. License Terms
 ------------------
 
-The ODK software is released under the `Apache 2 License <http://www.apache.org/licenses/LICENSE-2.0/>`_.
+The ODK software is released under the `Apache 2 License <http://www.apache.org/licenses/LICENSE-2.0>`_.
 
 All our installers, programs and source code are provided AS-IS with no warranty or conditions, and without any liability obligations. See the license text for details.
 
@@ -108,7 +108,7 @@ We require secure HTTPS connections to ODK Build. We gather anonymous aggregate 
 12. Online XLSForm tool
 -------------------------
 
-The online XLSForm tool does not use a secure connection. This means that your form definition files (both XLS and XML) are visible to a determined observer when submitted and downloaded from that site, as are any reported errors in the form.
+The online :ref:`XLSForm <xlsform-introduction>` tool does not use a secure connection. This means that your form definition files (both XLS and XML) are visible to a determined observer when submitted and downloaded from that site, as are any reported errors in the form.
 
 Furthermore, the online XLSForm tool stores both your submitted XLS and the generated XML form for a period of time on its disk drive before being deleted (this is necessary for the operation of the tool).
 
