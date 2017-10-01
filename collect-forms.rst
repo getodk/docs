@@ -7,7 +7,7 @@ Form Management in Collect
 Loading Blank Forms
 ====================
 
-A :dfn:`blank form` is a `.xml` file containing a form definition consistent with the `XForm specification <https://opendatakit.github.io/xforms-spec/>`_. Blank forms can be created using `ODK Build <https://build.opendatakit.org/>`_ or `XLSForm <https://opendatakit.org/use/xlsform/>`_.
+A :dfn:`blank form` is a `.xml` file containing a form definition consistent with the `XForm specification <https://opendatakit.github.io/xforms-spec/>`_. Blank forms can be created using `ODK Build <https://build.opendatakit.org/>`_ or :doc:`XLSForm <xlsform>`.
 
 In order to fill out forms with survey participants, you must first load blank forms into the Collect App.
 
@@ -29,7 +29,7 @@ If you have :ref:`connected ODK Collect to a server <connecting-to-server>` or :
 Loading forms directly
 ------------------------
 
-You can load forms directly from a computer to your device via USB, using `Android Debug Bridge <https://developer.android.com/studio/command-line/adb.html>`_.
+You can load forms directly from a computer to your device via USB, using :doc:`Android Debug Bridge <collect-adb>`.
 
 .. code-block:: none
 
@@ -116,7 +116,7 @@ Uploading Finalized Forms
 
 If you are connected to :ref:`an ODK Aggregate server <connecting-to-aggregate>` or :ref:`Google Drive Account <connecting-to-google>`, use :guilabel:`Send Finalized Forms` to upload :formstate:`Finalized` form instances. 
 
-For local form management, use `ODK Briefcase <https://opendatakit.org/use/briefcase/>`_ to pull :formstate:`Finalized` form instances to your local computer.
+For local form management, use :doc:`ODK Briefcase <briefcase-forms>` to pull :formstate:`Finalized` form instances to your local computer.
 
 :formstate:`Sent` forms are no longer editable, but they remain viewable until they are deleted. 
 
