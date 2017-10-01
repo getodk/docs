@@ -26,7 +26,7 @@ Requirements
 Encrypted forms require the following *minimum versions* for the ODK tools
 
 - :doc:`ODK Collect 1.2 Release Candidate 1 (RC1) or higher <collect-install>`
-- :ref:`ODK Aggregate 1.0.4 Production or higher <installing-aggregate>`
+- :doc:`ODK Aggregate 1.0.4 Production or higher <aggregate-install>`
 - :doc:`ODK Briefcase 1.0 Production or higher<briefcase-install>`
 
 .. warning::
@@ -125,7 +125,7 @@ Uploading Finalized Forms
     </h:html>
  
  
-If you are using `XLSForm <https://opendatakit.org/use/xlsform/>`_ , then form encryption is governed by the :guilabel:`settings` on the `Settings Worksheet <http://xlsform.org/#settings_ws>`_ . Encrypted forms must specify a *submission_url* and a *public_key* on this worksheet. If both are specified, XLSForm will generate a encrypted-form definition. Skip to the following sections to see how to create a public-private key pair and specify the public key.
+If you are using :doc:`XLSForm <xlsform>` , then form encryption is governed by the :guilabel:`settings` on the `Settings Worksheet <http://xlsform.org/#settings_ws>`_ . Encrypted forms must specify a *submission_url* and a *public_key* on this worksheet. If both are specified, XLSForm will generate a encrypted-form definition. Skip to the following sections to see how to create a public-private key pair and specify the public key.
 
 The required element to make this form an encrypted form is the ``<submission/>`` tag. Within this tag, the method attribute should always be **form-data-post**. The action attribute should be the url to which the submission should be posted; this is the ODK Aggregate website url with Aggregate.html replaced by submission. Finally, what identifies the form as an encryted form is the presence of a *base64RsaPublicKey* attribute. This should be the base64 encoding of the RSA public key that ODK Collect uses to encrypt the symmetric encryption key it creates to encrypt a finalized instance of this form (a different symmetric encryption key is created for every finalized form)
 
