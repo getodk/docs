@@ -24,3 +24,18 @@ Verifying on Linux and Mac
    :alt: Image showing process of verifying downloads in Linux.  
 
 
+Verifying on Windows
+---------------------
+
+- Open a cmd window.
+- Navigate to the folder containing the file you downloaded ( cd "path/to/file" ). 
+- Then type certUtil -hashfile "filename" SHA256 on your command prompt.
+
+  .. code-block:: console
+
+     $ cd path/to/file
+     $ certUtil -hashfile "filename" SHA256
+
+.. image:: /img/download-verify/cmd-verify.*
+   :alt: Image showing process of verifying downloads in Windows.
+
