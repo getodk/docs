@@ -88,7 +88,7 @@ Here, the image will be stored as ``screen.png`` which can be downloaded to the 
 
 .. note::
 
-  You can also use ODK docs program to get a screenshot by referring to the instructions given in the `Contribution Guide <https://docs.opendatakit.org/contributing/#screenshots-from-odk-collect>`_.
+  You can also use ODK docs program to get a screenshot by referring to the instructions given in the :ref:`Contribution Guide <screenshots>`.
 
 .. _recording-video-with-adb:
 
