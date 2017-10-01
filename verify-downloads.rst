@@ -31,7 +31,7 @@ Verifying on Windows
 - Navigate to the folder containing the file you downloaded ( cd "path/to/file" ). 
 - Then type certUtil -hashfile "filename" SHA256 on your command prompt.
 
-  .. code-block:: none
+  .. code-block:: doscon
 
      > cd path/to/file
      > certUtil -hashfile "filename" SHA256
