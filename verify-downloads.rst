@@ -39,3 +39,39 @@ Verifying on Windows
 .. image:: /img/download-verify/cmd-verify.*
    :alt: Image showing process of verifying downloads in Windows.
 
+If the downloaded file is not corrupted, the long hash string printed by these tools will match the one listed for that file in the `link <https://opendatakit.org/wp-content/uploads/sha256_signatures.txt>`_ at the top of our `downloads page <https://opendatakit.org/downloads/>`_.
+
+To check this :-
+
+- Copy the SHA256 hash displayed on your terminal or cmd.
+
+.. image:: /img/download-verify/copy-signature.*
+   :alt: Image showing copying SHA256 signature.
+
+- Then open the `link <https://opendatakit.org/wp-content/uploads/sha256_signatures.txt>`_ which contains the list of all SHA256 hashes for the downloaded files.
+
+- Press Ctrl+F in the window and paste the copied signature in the box which opens on the top right corner. You will get a single result highlighted if the signature is found.
+
+.. figure:: /img/download-verify/verified.*
+   :alt: Image showing single search result found in the file.
+
+   Match for hash found
+
+.. figure:: /img/download-verify/not-verified.* 
+   :alt: Image showing no matches found for the hash.
+
+   No match found for the hash
+
+.. tip::
+
+   - In Linux terminal, the name of the downloaded file is also printed along with the hash. Be careful not to copy it.
+   - When you get a match, also check that the name of file in the list aside the hash is same as that of your downloaded file.  
+
+
+
+
+
+
+
+
+
