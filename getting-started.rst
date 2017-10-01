@@ -47,7 +47,7 @@ The easiest, recommended way to setup an ODK Aggregate instance is to use `Googl
 
 You'll set up a new Google Cloud project, and then run the install utility locally. This will connect to your Google Cloud account and install Aggregate there.
 
-For full details, and other installation methods, see the `ODK Aggregate Installation and Setup Guide <https://opendatakit.org/use/aggregate/>`_.
+For full details, and other installation methods, see the :doc:`ODK Aggregate Installation and Setup Guide <aggregate-install>`.
 
 You can also watch `this video <https://www.youtube.com/watch?v=uZYInkghbCo/>`_ which explains the installation procedure of ODK Aggregate on Google App Engine and also this `Aggregate tutorial video <https://www.youtube.com/watch?v=ceEC9RZiIiA&list=PLRRSiEabNvxtzLqIKlMOQaTByxH-REEuM&index=5/>`_ which describes few of its functionalities. 
 
