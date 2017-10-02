@@ -149,7 +149,7 @@ ID Field Constraints
 Defining expected submission metadata in the blank form
 ------------------------------------------------------------
 
-The blank form **MUST** specify which of the metadata fields are expected when the completed form is submitted. This is done within a ``<meta>`` element having the namespace ``http://openrosa.org/xforms``. The ``<meta>`` element may be anywhere within the ``<model>`` element.
+The blank form **MUST** specify which of the metadata fields are expected when the completed form is submitted. This is done within a ``<meta>`` element having the namespace ``http://openrosa.org/xforms``. The ``<meta>`` appears inside the child node of the Primary Instance (the first instance element inside ``<model>``).
 
 .. code-block:: xml
 
