@@ -45,7 +45,7 @@ With all 3rd party hosting services, you should expect your data to be viewable 
 
 The form definition and associated media files of an encrypted form (:ref:`ODK see here <encrypted-forms>`) are stored on the server in plaintext (unencrypted). When a filled-in submission for an encrypted form is finalized, it is encrypted on the device and transmitted to the server in encrypted form, where it is stored. The secret key required for decryption is not stored on the server, thereby preventing anyone at the hosting service from seeing your filled-in form data and attachments unless they break the encryption.
 
-See `Deployment Planning <https://opendatakit.org/use/aggregate/deployment-planning/>`_ for other considerations.
+See :ref:`Deployment Planning <deployment-planning>` for other considerations.
     
 6. Encrypted Form Security
 ---------------------------
