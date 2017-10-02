@@ -51,6 +51,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
 
    aggregate-guide
    aggregate-install
+   aggregate-deployment-planning
    aggregate-use
    form-uploader
    aggregate-limitations
