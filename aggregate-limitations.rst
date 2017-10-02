@@ -15,15 +15,6 @@ Aggregate Limitations
 
 - Spinning up of copies of the frontend will incur faster quota usage on AppEngine. For that reason, the Aggregate configuration here specifies a 14-second queuing time threshold before a new instance is spun up. Only if at least one request is queued for longer than 14 seconds will a new instance be spun up, and then that new instance will take about 30 seconds to become live. Leaving a 15-second processing interval. This is why ODK Collect tried twice before failing a submit.
 
-
-- Aggregate 0.9.x has a 1000-record limit to the number of records it can display (this is by design); it does, however, still retain all records i.e. it will hold as many records as you've uploaded and does not loose or ignore the 1001st record, etc; in general, any webserver will have a limit to what it can display interactively (at some point it will run out of memory or time out). 
-
-.. tip::
-  
-  - On Aggregate 0.9.x, we provide the Briefcase applet (one of the links on the top row) to allow you to extract your data from the server into a local CSV file for local processing. That should retrieve all data within the server, and should work regardless of the number of submissions you have uploaded.
-  - Aggregate 1.0 has far fewer display restrictions; the latest iteration, RC2, has implemented display paging on the submissions display page so you can page through all the submissions on the server, rather than just the first 1000 (and you get to set the page size, as well).
-
-
 - ODK Aggregate 1.4.7 and earlier use a deprecated `backends` technology. Google may terminate support for that at any time with little warning. You should consider upgrading to 1.4.8.  
 
 - Aggregate v1.4.15 fixed rev 210 sync protocol. Prior to this User permissions were incorrectly being computed and filtered. This prevented resetting the server with new content from the device (but syncing with existing content worked fine). The rev 210 sync protocol is incompatible with anything prior to rev 210.
