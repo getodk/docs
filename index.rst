@@ -43,7 +43,19 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   collect-settings
   collect-forms
   collect-adb
-  
+
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+   :caption: Aggregate
+
+   aggregate-guide
+   aggregate-install
+   aggregate-deployment-planning
+   aggregate-use
+   form-uploader
+   aggregate-limitations
+
 .. toctree::
    :hidden:
    :maxdepth: 2
@@ -59,8 +71,10 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   :maxdepth: 2
   :caption: Form Building
 
+  xlsform
   form-widgets
   javarosa
+  pyxform
   
 .. toctree::
   :hidden:
@@ -69,11 +83,25 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
 
   contributing
   cygwin
+  contributing-tips
+  
+.. toctree::
+  :hidden:
+  :maxdepth: 2
+  :caption: Integration
+  
+  encrypted-forms
   
 .. toctree::
   :hidden:
   :maxdepth: 2
   :caption: Reference
   
+  security-privacy
+  verify-downloads
+  faq
   glossary
+  
+
+  
 
