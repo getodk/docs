@@ -2,6 +2,8 @@
 ODK Briefcase
 ******************************
 
+.. _briefcase-introduction:
+
 :dfn:`ODK Briefcase` is a Java application for fetching and pushing forms and their contents. It can be used to gather and aggregate data from ODK Collect when there is no internet connectivity or you don't want to set up an ODK Aggregate Server.
 
 Typical Usage
