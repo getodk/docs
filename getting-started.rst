@@ -27,7 +27,7 @@ This requires:
   - Forms can be created using tools other than Build or XLSForm
   - Forms can be uploaded directly to Collect, without using Aggregate
 
-  ODK is a very flexible set of tools, and orgnizations will find their own best practices for adopting it.
+  ODK is a very flexible set of tools, and organizations will find their own best practices for adopting it.
 
 .. _install-collect:
 
@@ -47,7 +47,9 @@ The easiest, recommended way to setup an ODK Aggregate instance is to use `Googl
 
 You'll set up a new Google Cloud project, and then run the install utility locally. This will connect to your Google Cloud account and install Aggregate there.
 
-For full details, and other installation methods, see the `ODK Aggregate Installation and Setup Guide <https://opendatakit.org/use/aggregate/>`_.
+For full details, and other installation methods, see the :doc:`ODK Aggregate Installation and Setup Guide <aggregate-install>`.
+
+You can also watch `this video <https://www.youtube.com/watch?v=uZYInkghbCo/>`_ which explains the installation procedure of ODK Aggregate on Google App Engine and also this `Aggregate tutorial video <https://www.youtube.com/watch?v=ceEC9RZiIiA&list=PLRRSiEabNvxtzLqIKlMOQaTByxH-REEuM&index=5/>`_ which describes few of its functionalities. 
 
 .. change to
     :ref:`ODK Aggregate Installation and Setup Guide <aggregate-install-guide>`.
@@ -58,7 +60,7 @@ For full details, and other installation methods, see the `ODK Aggregate Install
 Create and Upload Survey Forms with ODK Build
 -----------------------------------------------
 
-The quickest and easiest way to start using your own survey forms is to create them in online with `ODK Build <https://build.opendatakit.org/>`_.
+The quickest and easiest way to start using your own survey forms is to create them online with `ODK Build <https://build.opendatakit.org/>`_. To create a form, you can follow the steps below or watch this `tutorial <https://www.youtube.com/watch?v=LPdG3rKDzpo/>`_ which explains the creation process.
 
 - Go to `build.opendatakit.org <https://build.opendatakit.org/>`_, create a new account, and log in.
 - Once logged in, a blank survey is created. Give it a name (:guilabel:`rename` in the upper left-hand corner) and add a few questions (click on question types in the :guilabel:`+Add New` bar along the bottom).
@@ -85,4 +87,4 @@ Load, Complete, and Upload a Form with ODK Collect
 - Select :guilabel:`Send Finalized Form` to upload your completed survey to ODK Aggregate.
 
 
-Now, you should be able to log back in to your ODK Aggregate instance and see your completed survey results.
+Now, you should be able to log back into your ODK Aggregate instance and see your completed survey results.

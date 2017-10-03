@@ -25,7 +25,7 @@ You can also download from the web and install manually.
 - From your device's :guilabel:`Settings`, choose :menuselection:`Security`.
 
   - Make sure *Unknown Sources* is checked.
-  - (On older versions of Android, this setting is in :menuselection:`Applications` rather than :menuselection:`Security`
+  - (On older versions of Android, this setting is in :menuselection:`Applications` rather than :menuselection:`Security`)
 
 - Open a web browser on your phone.
 - Navigate to https://opendatakit.org/downloads/download-category/collect/  and download the ODK Collect APK.
@@ -55,7 +55,7 @@ Connecting to a Server
 When you first install Collect, it connects to the `ODK Aggregate Demo server <https://opendatakit.appspot.com/Aggregate.html>`_. You can try out the app by :ref:`downloading blank example forms <in-app-get-blank-forms>`, :ref:`filling them out <fill-blank-forms>`, and :ref:`uploading completed forms <uploading-forms>` back to the demo server.
 
 .. tip::
-  Managing forms from an ODK Aggregate server or Google Drive is typical. However, there are other ways to use ODK Collect. You can also :ref:`upload blank forms directly to your device <loading-forms-directly>`, `download completed forms directly with adb <https://developer.android.com/studio/command-line/adb.html>`_, or `use ODK Briefcase <https://opendatakit.org/use/briefcase/>`_.
+  Managing forms from an ODK Aggregate server or Google Drive is typical. However, there are other ways to use ODK Collect. You can also :ref:`upload blank forms directly to your device <loading-forms-directly>`, :doc:`download completed forms directly with adb <collect-adb>`, or :doc:`use ODK Briefcase <briefcase-forms>`.
 
 
 .. _connecting-to-aggregate:
@@ -63,11 +63,11 @@ When you first install Collect, it connects to the `ODK Aggregate Demo server <h
 Connecting to your own ODK Aggregate Server
 ------------------------------------------------
 
-See :ref:`installing-aggregate` to setup your ODK Aggregate server.
+See :doc:`aggregate-install` to setup your ODK Aggregate server.
 
 - Open the app's main menu (:guilabel:`⋮`)  and then select :menuselection:`General Settings`.
 - Select :guilabel:`Server`.
-- :guilabel:`Type` should be set to :menuselection:`ODK Aggregate`
+- :guilabel:`Type` should be set to :menuselection:`ODK Aggregate`.
 - Edit :guilabel:`ODK Aggregate settings` to connect to your ODK Aggregate instance.
 
 .. _connecting-to-google:
@@ -77,7 +77,7 @@ Connecting to a Googe Drive Account
 
 - Open the app's main menu (:guilabel:`⋮`)  and then select :menuselection:`General Settings`.
 - Select :guilabel:`Server`.
-- :guilabel:`Type` should be set to :menuselection:`Google Drive, Google Sheets`
+- :guilabel:`Type` should be set to :menuselection:`Google Drive, Google Sheets`.
 - Select your Google account. (The available Google Accounts are pulled from the Google Play Store app.)
 
 .. _connecting-to-other:

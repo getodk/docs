@@ -221,51 +221,76 @@ rst_prolog="""
 """
 
 # At bottom of every document
-prevar1 = """
+prob_in_doc = """
 
 If you find a problem with this documentation, please 
 
 """
-hyper1 = """
+file_issue = """
 
 file an issue
 
 """
-link1 = """
+file_issue_here = """
 
 https://github.com/opendatakit/docs/issues
 
 """
-prevar2 = """
+contri_start = """
 
 You are also encouraged to
 
 """
-hyper2 = """
+fork_repo = """
 
 fork our Github repo 
 
 """
-link2 = """ 
+repo_here = """ 
 
 https://github.com/opendatakit/docs/
 
 """
-prevar3 = """ 
+join = """ 
 
 and 
 
 """
-hyper3 = """
+contri = """
 
 become a contributor
 
 """ 
-link3 = """
+contri_guide = """
 
-contributing.html
+/contributing/
 
 """
-html_context = {'prevar1' : prevar1 , 'prevar2' : prevar2 , 'prevar3' : prevar3 , 'hyper1' : hyper1 , 'hyper2' : hyper2 ,
-                'hyper3' : hyper3 , 'link1' : link1 , 'link2' : link2 , 'link3' : link3}
+faq_help = """
+
+If you still need help, you can ask support questions in the
+
+"""
+forum = """
+
+ODK Forum
+
+"""
+forum_here = """
+
+https://forum.opendatakit.org/
+
+"""
+html_context = {'prob_in_doc' : prob_in_doc , 
+                'contri_start' : contri_start , 
+                'join' : join , 
+                'faq_help' : faq_help , 
+                'file_issue' : file_issue , 
+                'fork_repo' : fork_repo ,
+                'contri' : contri , 
+                'forum' : forum , 
+                'file_issue_here' : file_issue_here , 
+                'repo_here' : repo_here , 
+                'contri_guide' : contri_guide , 
+                'forum_here' : forum_here}
 

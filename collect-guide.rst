@@ -2,6 +2,8 @@
 ODK Collect
 ******************************
 
+.. _collect-introduction:
+
 :dfn:`ODK Collect` is an open source Android app that replaces paper forms used in survey-based data gathering. 
 
 Here is a typical pattern of use:
@@ -13,7 +15,7 @@ Here is a typical pattern of use:
 You can also:
 
 - :ref:`Upload forms directly to Collect <loading-forms-directly>`
-- `Copy form to and from Collect with ODK Briefcase <https://opendatakit.org/use/briefcase/>`_
+- :ref:`Copy form to and from Collect with ODK Briefcase <pull-from-collect>`
 
 Along the way you might want to:
 
