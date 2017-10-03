@@ -1,5 +1,5 @@
-OpenRosa HTTP Requests and Responses
-=======================================
+HTTP Requests and Responses
+================================
 
 Much of OpenRosa communication comes in the form of HTTP requests and responses. In order to properly maintain appropriate formatting and compatibility over time, it is ideal for some information to be consistently provided on both sides of these interactions.
 
@@ -58,13 +58,13 @@ For Example:
         <!--... Some platform specific response ...-->
     </OpenRosaResponse>
     
-API's using this response can then include their namespaced payload inside of the response. This response should be handled in a unified way on the client, regardless of the specific submission. That is, any time an OpenRosa response envelope is received, any of its payloads should be parsed properly.
+APIs using this response can then include their namespaced payload inside of the response. This response should be handled in a unified way on the client, regardless of the specific submission. That is, any time an OpenRosa response envelope is received, any of its payloads should be parsed properly.
 
 Any responses included in the envelope that are unrecognized by the client should be ignored without error.
 
 Since the server cannot receive confirmation that a response was successfully retrieved, any responses included in the envelope should be considered idempotent.
 
-The message component of a response envelope should be returned (if possible) in the language specified by the Accept-Language header ID. The nature attribute of a message is an optional ID which can be used to categorize the type of a response. If the nature of two messages is identical in a bulk operation, for instance, the assumption is that only one of them need be presented to a user (presumably the newest).
+The message component of a response envelope should be returned (if possible) in the language specified by the ``Accept-Language`` header. The ``nature`` attribute of a message is an optional ID which can be used to categorize the type of a response. If the ``nature`` of two messages is identical in a bulk operation, for instance, the assumption is that only one of them need be presented to a user (presumably the newest).
 
 As an example, if a server submits 4 xforms, and receives the responses
 

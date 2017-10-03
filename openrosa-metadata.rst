@@ -100,7 +100,7 @@ Optional fields:
 - ``<deviceID>`` --- A unique identifier of device used to generate the submission.
 - ``<deprecatedID>`` --- the ``<instanceID>`` of the submission for which this is a revision. Server software can use this field to unify multiple revisions to a submission into a consolidated submission record.
 
-.. _if-field-formatting:
+.. _id-field-formatting:
 
 ID field formatting
 """"""""""""""""""""""
@@ -223,4 +223,3 @@ Form submission metadata
       .
       .
     </data>
-    

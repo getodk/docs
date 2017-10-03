@@ -7,13 +7,15 @@ They were originally worked on by the OpenRosa WorkGroup, and they were an outgr
 
 This set of docs is intended to provide information about the OpenRosa standards, for use by developers working on applications that communicate with other applications within the ODK ecosystem.
 
+.. _openrosa-1-0-apis:
+
 OpenRosa 1.0 APIs
 -------------------
 
 OpenRosa 1.0 APIs were formally approved by the OpenRosa Working Group in December of 2011. To be considered "OpenRosa 1.0 Compliant," a system must implement all 5 of the OpenRosa 1.0 APIs.
 
-- MetaData Schema - XForms 1.0
-- HTTP Request API 1.0
-- Form Submission/Overwrite API 1.0
-- Authentication API 1.0
-- Form Discovery (Listing) API 1.0
+- :doc:`openrosa-metadata`
+- :doc:`openrosa-http`
+- :doc:`openrosa-form-submission`
+- :doc:`openrosa-authentication`
+- :doc:`openrosa-form-list`

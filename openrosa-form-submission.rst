@@ -3,6 +3,8 @@ Form Submission API
 
 This standard defines the API for submitting data to an OpenRosa compliant server and receiving a response from the server about the submission. This API is designed to provide a base level of interoperability between OpenRosa clients and servers while enabling application-specific extensions as well.
 
+.. _form-submission:
+
 Form Submission
 --------------------
 
@@ -13,6 +15,8 @@ There are 3 major categories of requirements for submission which must be fulfil
 - channel
 - content
 - correctness.
+
+.. _channel:
 
 Channel
 ~~~~~~~~~~~~
@@ -25,6 +29,8 @@ For maximum compatibility with J2ME clients, it is recommended that a server SHO
 
 .. note::
   Using digest authentication and https when communicating with a server does not require any redirects --- you can have authentication and secure transport without redirects.
+
+.. _content:
 
 Content
 ~~~~~~~~~~
@@ -40,17 +46,23 @@ Servers SHOULD include this header in their error responses. However, clients MU
   
 OpenRosa submissions are POSTed to servers as a multipart MIME Envelope with at least 1 part --- the XML content of the form itself. Each of these parts should adhere to the following requirements
 
-Mime Envelope
+.. _mime-envelope:
+
+MIME Envelope
 """""""""""""""
 - Content Type: multipart/form-data
 - Contains Exactly 1 XForm Part
 - Contains 0 or More Additional Parts
+
+.. _xform-part:
 
 XForm Part
 """""""""""""
 
 - Content Type: text/xml
 - Name: xml_submission_file
+
+.. _additional-parts:
 
 Additional Parts
 """"""""""""""""""
@@ -60,14 +72,17 @@ Additional Parts
 
 Servers MAY be more permissive than this specification (for example, allowing multipart/mixed for the mime envelope), but MUST be capable of recognizing and properly receiving submissions in this format.
 
+.. _correctness:
+
 Correctness
-""""""""""""""
+~~~~~~~~~~~~~~
 
 The server MUST consume an entire HTTP POST in conformance with that protocol. Once a POST is received, the range and structure of the server's response is specified below.
 
+.. _extended-transmission-considerations:
 
 Extended Transmission Considerations
-"""""""""""""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If the client is capable of negotiating authenticated and/or secure transmissions to the server, it is recommended that the client first attempt a ``HEAD`` request to the server to negotiate the authentication and channel security prior to the first ``POST`` of the data, regardless of any channel security stated in the ``<submission>`` element of the form. This ensures that submitted data is not inadvertently sent in the clear on that first request due to the client device possessing an out-of-date form definition with inaccurate ``<submission>`` content. 
 
@@ -81,6 +96,8 @@ The ``X-OpenRosa-Accept-Content-Length`` header is provided to avoid failures th
 
 The form's XML submission is sent on each ``POST`` so that a client can avoid having any knowledge about the content of the files it is shipping around. Doing so also places the fewest restrictions on how the server handles the submission.
 
+.. _rationale-for-sending-form-xml-submission:
+
 Rationale for sending the form's XML submission
 ''''''''''''''''''''''''''''''''''''''''''''''''''
 
@@ -89,6 +106,8 @@ To avoid sending the form's XML submission, you would need to inspect the submis
 On the server, having just the ``instanceID`` sent on subsequent ``POST``s might not be sufficient to process the request --- sending only this information would burden those server implementations with maintaining a mapping from the instanceID to the natural key for this data. Not sending the form's XML submission in subsequent POSTs biases against some server designs.
 
 Finally, since most XML submission documents are smaller than 2K bytes, and if you have a 10M byte threshold for splitting a submission across multiple ``POST`` requests (a reasonable lower limit), you're burning only 0.02% of your bandwidth with the retransmission.
+
+.. _server-response-format:
 
 Server Response Format
 --------------------------
@@ -106,6 +125,8 @@ Example response:
 If the server is RESTful, the server MAY return an ``HTTP`` URI (using the standard ``HTTP`` Location header) where the form can be found.
 
 A form should not be assumed to be submitted until a ``201`` or ``202`` response code is received with an OpenRosaResponse envelope body.
+
+.. _server-status-codes:
 
 Server Status Codes
 ~~~~~~~~~~~~~~~~~~~~~
@@ -127,7 +148,7 @@ Server status codes will be the same as `standard http codes <http://www.w3.org/
   
 Some common interpretations of codes are below, but more could apply.
 
-.. csz-table::
+.. csv-table::
   :header: Code, HTTP Meaning, ODK Meaning	
 
   200, UNUSED, "Since the request is a post, a 200 response is not a sign of a successful submission. Many intermediate proxies will return a 200 response for gateway pages on WI-FI, etc, so receiving a 200 shouldn't be assumed to be meaningful."	
@@ -139,3 +160,4 @@ Some common interpretations of codes are below, but more could apply.
   404, Not Found, Unknown URI endpoint, domain, or other	
   413, Request too large, The request body is too large for the server to process
   500, Internal Server Error, Something went awry on the server and we're not sure what it was
+  
