@@ -86,7 +86,7 @@ Authentication
 
 Clients MUST NOT include authentication credentials in the URL to the server. That is, this syntax is strictly forbidden:
 
-.. code-block:: http
+.. code-block:: none
   
   http://username:password@myhost.org/mypage
 
@@ -97,10 +97,12 @@ Basic Authentication MUST NOT be performed over a non-secure (HTTP) connection.
 
 Once the client is aware that basic authentication is required, it SHOULD proactively supply the basic authentication credentials on every secure request to the server, rather than wait for the server to reject the request with a ``401`` response.
 
-OpenRosa Restricted Digest authentication
+.. _openrosa-restrcted-digest-authentication:
+
+OpenRosa Restricted Digest Authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-This is the `Digest Access Authentication Scheme (RFC 2617 Section 3)<https://tools.ietf.org/html/rfc2617#section-3>`_ with the following restrictions:
+This is the `Digest Access Authentication Scheme (RFC 2617 Section 3) <https://tools.ietf.org/html/rfc2617#section-3>`_ with the following restrictions:
     
 - algorithm --- server MUST omit or specify "MD5"
 - domain --- server MUST specify to help device with proactive inclusion of Authenticate: header records.
@@ -161,7 +163,7 @@ Request:
 
 .. code-block:: http
 
-GET /dir/index.html HTTP/1.0
+  GET /dir/index.html HTTP/1.0
 
 Response:
 

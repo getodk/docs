@@ -40,11 +40,11 @@ Servers should include the following headers in all responses.
 
 When a response is issued from an OpenRosa server, the format of the response payload will often be defined by the specific API (Form List, for instance). However, APIs which are fundamentally transactional (user registration, form submission, etc) all contain similar semantics. As such, they will utilize a shared XML Envelope of the format:
 
-.. code-block:: xml
+.. code-block:: none
 
   <OpenRosaResponse xmlns="http://openrosa.org/http/response" items=""> <!-- items: Optional number of how many payloads are included in this envelope -->
 	   <message nature=""/>                                              <!-- 0 or 1: message payload to be displayed to the user. Nature is an optional tag to group messages by type -->
-	   <*/>                                                              <!-- 0 or many: additional payloads to be parsed per platform-->
+	   <!-- PAYLOADS HERE-->                                                              <!-- 0 or many: additional payloads to be parsed per platform-->
        </OpenRosaResponse>
 
 

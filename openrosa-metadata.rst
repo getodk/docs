@@ -1,7 +1,7 @@
 Metadata Schema
 ==================
 
-This document details the metadata scheme to be used in an :terms:`XForm` intended for use with OpenRosa compliant servers. This metadata is used to ensure that critical or extremely useful data pertaining to the XForms and submissions made by client devices is captured and stored.
+This document details the metadata scheme to be used in an XForm intended for use with OpenRosa compliant servers. This metadata is used to ensure that critical or extremely useful data pertaining to the XForms and submissions made by client devices is captured and stored.
 
 There are two types of metadata in a form submission. 
 
@@ -15,7 +15,9 @@ Blank Form Metadata
 
 A blank form must have two pieces of identifying metadata. These are provided as attributes in the top-level element inside ``model/instance``.
 
-.. code-block:: xml
+.. The following block is `none` because the lexer won't handle incomplete xml.
+
+.. code-block:: none
 
   <model>
   .
@@ -26,7 +28,11 @@ A blank form must have two pieces of identifying metadata. These are provided as
       .
       .
       .
+      </form-name>
+    </instance>
+  </model>
 
+      
 Two attributes are required. One provides the unique identity of the form, the other provides the current version number.
 
 .. _form-identity:

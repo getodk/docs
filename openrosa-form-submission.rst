@@ -99,13 +99,13 @@ The form's XML submission is sent on each ``POST`` so that a client can avoid ha
 .. _rationale-for-sending-form-xml-submission:
 
 Rationale for sending the form's XML submission
-''''''''''''''''''''''''''''''''''''''''''''''''''
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
-To avoid sending the form's XML submission, you would need to inspect the submission and send up its identifiying information (the ``instanceID``). By avoiding inspection of the submission, a much simpler Ajax-enabled webpage could conform to this API.
+To avoid sending the form's XML submission, you would need to inspect the submission and send up its identifiying information. By avoiding inspection of the submission, a much simpler Ajax-enabled webpage could conform to this API.
 
-On the server, having just the ``instanceID`` sent on subsequent ``POST``s might not be sufficient to process the request --- sending only this information would burden those server implementations with maintaining a mapping from the instanceID to the natural key for this data. Not sending the form's XML submission in subsequent POSTs biases against some server designs.
+On the server, having just the ``instanceID`` sent on subsequent ``POST`` requests might not be sufficient to process the request --- sending only this information would burden those server implementations with maintaining a mapping from the instanceID to the natural key for this data. Not sending the form's XML submission in subsequent POSTs biases against some server designs.
 
-Finally, since most XML submission documents are smaller than 2K bytes, and if you have a 10M byte threshold for splitting a submission across multiple ``POST`` requests (a reasonable lower limit), you're burning only 0.02% of your bandwidth with the retransmission.
+Finally, since most XML submission documents are smaller than 2K bytes, and if you have a 10M byte threshold for splitting a submission across multiple requests (a reasonable lower limit), you're burning only 0.02% of your bandwidth with the retransmission.
 
 .. _server-response-format:
 
@@ -144,7 +144,7 @@ Server status codes will be the same as `standard http codes <http://www.w3.org/
 
 .. note:: 
 
-  ``1XX`` (informational) and ``3XX`` (redirection) probably do not apply to these ``POST``s.
+  ``1XX`` (informational) and ``3XX`` (redirection) probably do not apply to these POSTs.
   
 Some common interpretations of codes are below, but more could apply.
 
@@ -153,11 +153,10 @@ Some common interpretations of codes are below, but more could apply.
 
   200, UNUSED, "Since the request is a post, a 200 response is not a sign of a successful submission. Many intermediate proxies will return a 200 response for gateway pages on WI-FI, etc, so receiving a 200 shouldn't be assumed to be meaningful."	
   201, Form Received, Everything went great. Thanks for submitting.
-  202, Accepted, "We got and saved your data, but may not have fully processed it. You should not try to resubmit.	
-  204  No Content, Status returned in response to a HEAD request.	
+  202, Accepted, "We got and saved your data, but may not have fully processed it. You should not try to resubmit."	
+  204, No Content, Status returned in response to a HEAD request.	
   401, Unauthorized, Client tried to post something it didn't have permission to post.
   403, Forbidden, You're not allowed to post to this server.	
-  404, Not Found, Unknown URI endpoint, domain, or other	
+  404, Not Found, "Unknown URI endpoint, domain, or other"	
   413, Request too large, The request body is too large for the server to process
   500, Internal Server Error, Something went awry on the server and we're not sure what it was
-  
