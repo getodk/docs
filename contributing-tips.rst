@@ -138,14 +138,14 @@ An issue might take a long time because:
 
 The thing that matters is: **Are you actively working on the issue, and making progress, at least a little bit?**
 
-If you are actively working on it, we do not want someone else to jump on and try to work on it at the same time. So please keep the community informed of your work by filing a **WIP** (work in progress) PR and comitting to it as you work.
+If you are actively working on it, we do not want someone else to jump on and try to work on it at the same time. So please keep the community informed of your work by filing a **WIP** (work in progress) PR and committing to it as you work.
 
 .. _issues-only:
 
 Issues only
 ----------------
 
-All PRs must be directly connected to open issues. PRs should not represent suggestions, good ideas, or independent intiative. 
+All PRs must be directly connected to open issues. PRs should not represent suggestions, good ideas, or independent initiative. 
 
 If you have a good idea, file an issue. If you are curious about whether something should be an issue, chat with one of the core team in the `#docs-code` channel on the `Slack <https://opendatakit.slack.com>`_.
 
