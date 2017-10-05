@@ -14,21 +14,21 @@ Verifying on Linux and Mac
 - Open a terminal window.
 - Navigate to the folder containing the file you downloaded. ( cd "path/to/file" )
 - Then type `sha256sum "filename"` on the terminal.
-  
+
    .. code-block:: console
 
      $ cd path/to/file
      $ sha256sum "filename"
 
 .. image:: /img/download-verify/terminal-verify.*
-   :alt: Image showing process of verifying downloads in Linux.  
+   :alt: Image showing process of verifying downloads in Linux.
 
 
 Verifying on Windows
 ---------------------
 
 - Open a cmd window.
-- Navigate to the folder containing the file you downloaded ( cd "path/to/file" ). 
+- Navigate to the folder containing the file you downloaded ( cd "path/to/file" ).
 - Then type certUtil -hashfile "filename" SHA256 on your command prompt.
 
   .. code-block:: doscon
@@ -57,7 +57,7 @@ To check this :-
 
    Match for hash found
 
-.. figure:: /img/download-verify/not-verified.* 
+.. figure:: /img/download-verify/not-verified.*
    :alt: Image showing no matches found for the hash.
 
    No match found for the hash
@@ -65,13 +65,4 @@ To check this :-
 .. tip::
 
    - In Linux terminal, the name of the downloaded file is also printed along with the hash. Be careful not to copy it.
-   - When you get a match, also check that the name of file in the list aside the hash is same as that of your downloaded file.  
-
-
-
-
-
-
-
-
-
+   - When you get a match, also check that the name of the file in the list aside the hash is the same as that of your downloaded file.  
