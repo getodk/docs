@@ -233,7 +233,20 @@ Installing on App Engine
    
       listBackends : Unable to list backends: Error posting to URL: https://appengine.google.com/api/backends/list?app_id=project-123-181306&
       listBackends : 500 Internal Server Error
+      
+   .. code-block:: none
+   
+      deleteBackendBackground : Warning: This application uses Backends, a deprecated feature that has been replaced by Modules, which offers additional functionality. Please convert your backends to modules as described at: https://developers.google.com/appengine/docs/java/modules/converting.
 
+   .. code-block:: none
+   
+      deleteBackendBackground!: WARNING: Error posting to URL: https://appengine.google.com/api/backends/delete?backend=background&app_id=project-123-181306&
+      deleteBackendBackground!: 400 Bad Request      
+
+   .. code-block:: none
+      
+      deleteBackendBackground : Unable to delete backend: Error posting to URL: https://appengine.google.com/api/backends/delete?backend=background&app_id=project-123-181306& 
+      deleteBackendBackground : 400 Bad Request     
            
 
    - Toward the bottom, the `update :` section should not report errors and at the end, a `status : Action Succeeded!` line should be written. This indicates that the upload completed successfully. 
