@@ -218,8 +218,27 @@ Installing on App Engine
 
 .. note::
 
-   - Clicking on :guilabel:`Upload ODK Aggregate` will spew a very long list of progress messages into the Output window. The `listBackends :` and `deleteBackendBackground :` sections may report "500 Internal Server Error" and Severe errors, and Warnings about the use of Backends, a deprecated feature. This is expected.
-   - Toward the bottom, the update : section should not report errors and at the end, a `status : Action Succeeded!` line should be written. This indicates that the upload completed successfully. 
+   - Clicking on :guilabel:`Upload ODK Aggregate` will spew a very long list of progress messages into the Output window. The `listBackends :` and `deleteBackendBackground :` sections may report "500 Internal Server Error" and Severe errors, and Warnings about the use of Backends, a deprecated feature. This is expected. Here is a list of few of those errors:
+   
+   .. code-block:: none
+
+      listBackends : Warning: This application uses Backends, a deprecated feature that has been replaced by Modules, which offers additional functionality. Please convert your backends to modules as described at: https://developers.google.com/appengine/docs/java/modules/converting.
+
+   .. code-block:: none
+       
+      listBackends! : WARNING: Error posting to URL: https://appengine.google.com/api/backends/delete?backend=background&app_id=project-123-181306&   
+      listBackends! : 500 Internal Server Error
+
+   .. code-block:: none
+   
+      listBackends : Unable to list backends: Error posting to URL: https://appengine.google.com/api/backends/list?app_id=project-123-181306&
+      listBackends : 500 Internal Server Error
+
+           
+
+   - Toward the bottom, the `update :` section should not report errors and at the end, a `status : Action Succeeded!` line should be written. This indicates that the upload completed successfully. 
+   
+    
 
 - Once the updater script has run and uploaded the ODK Aggregate configuration to App Engine, return to the Google Cloud Platform console. With the console displaying your project, click on the menu icon (three horizontal bars) to the right of `Google Cloud Platform` in the upper left side of the screen and select App Engine from the menu.
 
