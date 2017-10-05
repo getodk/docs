@@ -574,4 +574,3 @@ There are several reasons for this:-
 - `Enhanced capabilities` - the form-processing library (javarosa) has roughly-annual updates to add new functions (e.g., sin(), cos()) and occasionally data types. And new features are slowly added to ODK Aggregate, too.
 
 
-
