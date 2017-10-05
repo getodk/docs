@@ -13,7 +13,7 @@ Pulling forms from ODK Aggregate
 - In the window which opens up select :guilabel:`pull` tab.
 - Select Aggregate 0.9.x or Aggregate 1.0 in the :guilabel:`pull data from` drop-down.
 - Enter the url of your ODK Aggregate server in :guilabel:`url` option. For instance `https://proj1.appspot.com` and click on connect.
-- You can either leave the username blank if the anonymousUser is granted Data Viewer permissions, or specify an ODK Aggregate user (Account Type 'ODK') that has been granted Data Viewer permissions.
+- You can either leave the username blank if the anonymous User is granted Data Viewer permissions, or specify an ODK Aggregate user (Account Type 'ODK') that has been granted Data Viewer permissions.
 - A list of forms will be displayed. Select the ones you want to pull and click on :guilabel:`pull` button at the bottom of window. The forms will be pulled to ODK Briefcase Storage on your local system. 
 
 .. warning::
@@ -22,7 +22,7 @@ Pulling forms from ODK Aggregate
 
 .. tip::
 
- If the form definition has changed but the changes only affect the question text and do not alter the structure of the collected data (or change the formId or version), you can create a new ODK Briefcase Storage area, pull data into that, then manually copy the instances from there into your original storage area.
+ If the form definition has changed but the changes only affect the question text and do not alter the structure of the collected data (or change the form Id or version), you can create a new ODK Briefcase Storage area, pull data into that, then manually copy the instances from there into your original storage area.
 
 
 .. _push-to-aggregate:
@@ -34,7 +34,7 @@ Pushing forms to ODK Aggregate
 - In the window which opens up select :guilabel:`push` tab.
 - Select Aggregate 1.0 in the :guilabel:`push data to` drop-down.
 - Enter the url of your ODK Aggregate server in :guilabel:`url` option. For instance `https://proj1.appspot.com` and click on connect.
-- You can either leave the username blank if the anonymousUser is granted Data Viewer permissions, or specify an ODK Aggregate user (Account Type 'ODK') that has been granted Data Viewer permissions.
+- You can either leave the username blank if the anonymous User is granted Data Viewer permissions, or specify an ODK Aggregate user (Account Type 'ODK') that has been granted Data Viewer permissions.
 - A list of forms will be displayed. Select the ones you want to push and click on :guilabel:`push` button at the bottom of window. The forms will be pushed to ODK Aggregate Server.
 
 
