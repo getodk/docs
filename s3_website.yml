@@ -1,0 +1,33 @@
+s3_bucket: docs.opendatakit.org
+s3_endpoint: us-west-2
+
+site: build
+
+error_document: index.html
+
+max_age: 300
+gzip: true
+
+exclude_from_upload:
+  - .buildinfo
+  - .doctrees
+  - .DS_Store
+  - ojects.inv
+
+cloudfront_distribution_id: E1IDKKW65Q2HVZ
+
+cloudfront_distribution_config:
+  default_cache_behavior:
+    min_ttl: <%= 60 * 60 * 24 %>
+  aliases:
+    quantity: 1
+    items:
+      - docs.opendatakit.org
+
+cloudfront_wildcard_invalidation: true
+
+# redirects:
+#   index.php: /
+#   about.php: /about.html
+#   music-files/promo.mp4: http://www.youtube.com/watch?v=dQw4w9WgXcQ
+#   heated-towel-rail/index.html: /
