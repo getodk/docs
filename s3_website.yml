@@ -12,7 +12,7 @@ exclude_from_upload:
   - .buildinfo
   - .doctrees
   - .DS_Store
-  - ojects.inv
+  - objects.inv
 
 cloudfront_distribution_id: E1IDKKW65Q2HVZ
 
