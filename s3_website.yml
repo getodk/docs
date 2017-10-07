@@ -26,7 +26,8 @@ cloudfront_distribution_config:
 
 cloudfront_wildcard_invalidation: true
 
-# redirects:
+ redirects:
+    /faq: /faq1
 #   index.php: /
 #   about.php: /about.html
 #   music-files/promo.mp4: http://www.youtube.com/watch?v=dQw4w9WgXcQ
