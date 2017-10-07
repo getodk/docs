@@ -2,7 +2,7 @@
 Style Guide
 *****************
 
-
+.. _spelling-and-grammer:
 Spelling and Grammar
 =======================
 
@@ -64,12 +64,15 @@ Quote marks are used in prose writing to indicate verbatim text. This is rarely 
 
   You may get an error: ``Something went wrong.``
 
-
+  
+.. _straight-quote:
   
 Straight quotes
 ~~~~~~~~~~~~~~~~~~
 
 Any time that you *do* need to use quotation marks, use straight (or *plain*) quotes. Sphinx and Docutils will output the typographically correct quote style.
+
+.. _serial-comma:
 
 Serial comma
 -----------------
@@ -108,10 +111,12 @@ A bulleted list is often more clear than an inline list.
   
 There's no hard rule about which to use in any situation. Use your judgement: try it both ways and see which is more clear.
 
-.. _avoid-unneeded-word:
+.. _avoid-unneeded-words:
 
 Avoid unneeded words
 -----------------------
+
+.. _adverbs:
 
 Adverbs
 ~~~~~~~~~~~
@@ -189,9 +194,12 @@ Semicolons can almost always be replaced with periods (full stops). This rarely 
 
   These "canned phrases" are pervasive in technical writing. Remove them whenever they occur.
 
-  
+.. _pronouns:
+    
 Pronouns
 ----------
+
+.. _third-person-pronouns:
 
 Third-person personal pronouns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -245,6 +253,8 @@ Therefore, avoid the use of personal pronouns whenever possible. They are often 
   - open the app
   - complete the survey
 
+.. _same:  
+  
 "Same"
 ~~~~~~~~~
 
@@ -267,8 +277,12 @@ Therefore, avoid the use of personal pronouns whenever possible. They are often 
   ODK Collect is an Android app that is used to...
   
 
+.. _titles-style-guide:  
+  
 Titles 
 ------------
+
+.. _title-casing:
 
 Title case and sentence case
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -276,6 +290,8 @@ Title case and sentence case
 Document titles should be in ``Sentence Case`` -- that is, all meaningful words are to be capitalized.
 
 Section titles should use ``Sentence case`` -- that is, only the first word should be capitalized, along with any proper nouns or other words usually capitalized in a sentence.
+
+.. _title-verb-forms:
 
 Verb forms
 -----------
@@ -309,6 +325,8 @@ If section title is a directive to do something (for example, as a step in a pro
   Section content here.
 
   
+.. _section-label-style-guide:  
+  
 Section labels
 ~~~~~~~~~~~~~~~~
 
@@ -318,7 +336,8 @@ The only exception is very short subsections that repeat --- like the **Right** 
 
 In these cases, you may want to use the :rst:dir:`rubric` directive.
     
-  
+.. _other-title-considerations:
+      
 Other titling considerations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -326,11 +345,14 @@ Other titling considerations
 - Readers skim. Section titles should be clear and provide information.
 
   
+.. _writing-about-code:
+  
 Writing code and writing about code
 ======================================
 
 ODK Documentation includes code samples in a number of languages. Make sure to follow generally accepted coding style for each language. 
 
+.. _indenting:
 
 Indenting
 ------------
@@ -363,6 +385,7 @@ Using two spaces keeps code sample lines shorter, which makes them easier to vie
   Content-Type: text/html
   Content-Length: 311
 
+.. _meaningful-names:
 
 Meaningful names
 -----------------
@@ -380,7 +403,7 @@ When writing sample code, avoid meaningless names.
 
     return foobar
 
-
+.. _xml-html-style-guide:
 
 XML and HTML
 ---------------
@@ -388,6 +411,8 @@ XML and HTML
 Some of the terms often used to describe XML and HTML code structures are imprecise or confusing. For clarity, we restrict certain terms and uses.
 
 Likewise, coding practices and styles for XML and HTML vary widely. For the sake of clarity and consistency, samples should follow the guidelines set forth here.
+
+.. _xml-element:
 
 Element
 ~~~~~~~~~~~
@@ -407,6 +432,8 @@ The following piece of code represents an **element**:
   - *Tag* is defined below.
   - *Block* has a specific meaning in HTML and XML templates, and should generally be avoided outside those contexts.
 
+.. _xml-tag:
+  
 Tag
 ~~~~~~
 
@@ -421,6 +448,8 @@ A **tag** is the token that begins or ends an element.
 The word *tag* has often been used to refer to the entire element. For clarity, we will avoid that here.
 
 
+.. _xml-node:
+
 Node
 ~~~~~
 
@@ -430,6 +459,8 @@ For clarity, we make the following distinction:
 
 - An *element* is a piece of XML or HTML code.
 - A *node* is an element rendered into a DOM tree or other dynamic representation.
+
+.. _xml-attributes-values:
 
 Attributes and values
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -443,9 +474,11 @@ An element may have attributes. Attributes have values. Values are wrapped in st
   </element>
   
 Other names for attributes, such as *variables* or *properties*, should be avoided.
+
+.. _xml-element-content:
   
-Content
-~~~~~~~~~~
+Element content
+~~~~~~~~~~~~~~~~
 
 The code between the opening and closing tags of an element is the content. Content can include other elements, which are called *child elements*.
 
@@ -475,6 +508,8 @@ In XML, null element tags always self-close. This is not the case in HTML.
 
   <script src="some-javascript.js"></script>
 
+.. _xml-capitalization:
+  
 Capitalization
 ~~~~~~~~~~~~~~~~
 
@@ -484,9 +519,12 @@ Newly-written XML examples should also be ``all lowercase``.
 
 XML examples that show actual code generated by tools in the ODK ecosystem should replicate that code exactly, regardless of its capitalization practice.
 
+.. _odk-jargon:
 
 ODK jargon
 =============
+
+.. _writing-about-odk:
 
 ODK and ODK Docs
 -------------------
@@ -511,8 +549,10 @@ ODK and ODK Docs
 
 - Open Data Kit Documentation
 
-ODK apps and projects
------------------------
+.. _odk-app-project-names:
+
+ODK app and project names
+---------------------------
 
 ODK includes a number of components, including:
 
@@ -529,6 +569,8 @@ A few projects should *always* use the **ODK** prefix:
 - ODK XForm
 - ODK Javarosa
 - ODK Docs
+
+.. _xform-xlsform:
 
 XForm and XLSForm
 -------------------
@@ -552,6 +594,8 @@ XForm and XLSForm
 - XForm
 - XLSForm
 
+.. _writing-about-xform:
+
 XForm Spec, XForm Tools, XForms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -564,6 +608,8 @@ XForm Spec, XForm Tools, XForms
 - A specific XML document that encodes a form.
 
 When writing about any of these things, make sure you are clear --- in your mind as well as in your writing --- which one you are talking about.
+
+.. _writing-about-xlsform:
 
 XLSForm
 ~~~~~~~~~
