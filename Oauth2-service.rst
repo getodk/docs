@@ -185,38 +185,3 @@ Your ODK Aggregate server is now configured to support publishing of data to Goo
 .. tip::
 
   If your publishers seems to be stalled in an Active Paused or Paused state, this is most likely caused by exceeding Google's quota limits. See :ref:`this section <api-request>` for how to navigate to a pop-up from which you can request a quota limit increase.
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
- 
-
-
-
-
-
-
-
-
-   
-
-
-
