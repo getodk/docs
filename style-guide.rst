@@ -15,9 +15,13 @@ Whenever U.S. English and British (or other) English spelling or usage disagree,
 
 .. rubric:: Right
 
+.. code-block:: rst
+
   The color of the button is gray.
 
 .. rubric:: Wrong
+
+.. code-block:: rst
 
   The colour of the button is grey
 
@@ -38,17 +42,25 @@ Quote marks are used in prose writing to indicate verbatim text. This is rarely 
 
 .. rubric:: Wrong
 
+.. code-block:: rst
+
   Click the button that says, "Save."
   
 .. rubric:: Right
+
+.. code-block:: rst
 
   Click :guilabel:`Save`.
   
 .. rubric:: Wrong
 
+.. code-block:: rst
+
   You may see an error message that says, "Something went wrong."
   
 .. rubric:: Right
+
+.. code-block:: rst
 
   You may get an error: ``Something went wrong.``
 
@@ -62,23 +74,31 @@ Any time that you *do* need to use quotation marks, use straight (or *plain*) qu
 Serial comma
 -----------------
 
-In a comma-delineated list of items, the penultimate item should followed by a comma.
+In a comma-delineated list of items, the penultimate item should be followed by a comma.
 
 .. rubric:: Wrong
 
-  Apples, oraanges and pears.
+.. code-block:: rst
+
+  Apples, oranges and pears.
   
 .. rubric:: Right
 
+.. code-block:: rst
+
   Apples, oranges, and pears.
   
-In technical writer, a bulleted list is often more clear than an inline list.
+A bulleted list is often more clear than an inline list.
 
 .. rubric:: Correct
+
+.. code-block:: rst
 
   You will need to be familiar with git, GitHub, and Python.
   
 .. rubric:: Possibly Better
+
+.. code-block:: rst
 
   You will need to be familiar with:
   
@@ -109,17 +129,25 @@ Common offenders include:
 
 .. rubric:: Wrong
 
+.. code-block:: rst
+
   To open the file, simply click the button.
   
 .. rubric:: Right
+
+.. code-block:: rst
 
   To open the file, click the button.
   
 .. rubric:: Wrong
 
+.. code-block:: rst
+
   You can easily edit the form by...
   
 .. rubric:: Right
+
+.. code-block:: rst
 
   To edit the form...
   
@@ -145,18 +173,157 @@ This list is not exhaustive. These "canned phrases" are pervasive in technical w
 Semicolons
 -------------
 
-Semicolons are used to separate to independent clauses which could stand as individual sentences but which the writer feels would benefit by close proximity.
+Semicolons are used to separate two independent clauses which could stand as individual sentences but which the writer feels would benefit by close proximity.
 
 Semicolons can almost always be replaced with periods (full stops). This rarely diminishes correctness and often improves readability.
 
 .. rubric:: Correct
 
+.. code-block:: rst
+
   These "canned phrases" are pervasive in technical writing; remove them whenever they occur.
   
 .. rubric:: Better
 
+.. code-block:: rst
+
   These "canned phrases" are pervasive in technical writing. Remove them whenever they occur.
 
+  
+Pronouns
+----------
+
+Third-person personal pronouns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Third-person personal pronouns are:
+
+- he/him/his
+- she/her/her(s)
+- they/them/their(s) 
+
+.. note:: 
+
+  While some people consider *they/them/their* to be non-standard (or "incorrect") as third-person singular, it has gained wide use as a gender-neutral or gender-ambigious alternative to *he* or *she*.
+
+There are two issues with personal pronouns:
+
+- gender bias
+- clarity
+
+To avoid gender bias, the third person gender-neutral *they/then/their(s)* is preferred over *he* or *she* pronouns when writing about abstract individuals.
+
+.. rubric:: Wrong
+
+.. code-block:: rst
+
+  The enumerator uses his device.
+  
+.. rubric:: Right
+
+.. code-block:: rst
+
+  The enumerator uses their device.
+
+
+Unfortunately, *they/them/their* is not a perfect solution. Since it is conventionally used as a plural pronoun, it can cause confusion.
+
+Therefore, avoid the use of personal pronouns whenever possible. They are often out of place in technical writing anyway. Rewriting passages to avoid personal prnouns often makes the writing more clear.
+
+.. rubric:: Correct
+
+.. code-block:: rst
+
+  When using Collect, first the enumerator opens the app on their device. Then they complete the survey.
+  
+.. rubric:: Improved
+
+.. code-block:: rst
+
+  To use Collect:
+  
+  - open the app
+  - complete the survey
+
+"Same"
+~~~~~~~~~
+
+*Same*, when used as an impersonal pronoun, is non-standard in Modern American English. It should be avoided.
+
+.. rubric:: Wrong
+
+.. code-block:: rst
+
+  ODK Collect is an Android app. The same can be used for...
+  
+.. rubric:: Right
+
+.. code-block:: rst
+
+  ODK Collect is an Android app. It can be used for...
+
+ .. OR THIS:
+  
+  ODK Collect is an Android app that is used to...
+  
+
+Titles 
+------------
+
+Title case and sentence case
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Document titles should be in ``Sentence Case`` -- that is, all meaningful words are to be capitalized.
+
+Section titles should use ``Sentence case`` -- that is, only the first word should be capitalized, along with any proper nouns or other words usually capitalized in a sentence.
+
+Verb forms
+-----------
+
+If a document or section describes a procedure that someone might do, use a gerund. Do not use the "How to..." construction.
+
+.. rubric:: Wrong
+
+.. code-block:: rst
+
+  How to install ODK Collect
+  --------------------------
+    
+.. rubric:: Right
+
+.. code-block:: rst
+
+  Installing ODK Collect
+  ----------------------
+    
+If section title is a directive to do something (for example, as a step in a procedure), use an imperative. 
+
+.. code-block:: rst
+
+  Installing ODK Aggregate
+  ------------------------
+  
+  Download ODK Aggregate
+  ~~~~~~~~~~~~~~~~~~~~~~
+
+  Section content here.
+
+  
+Section labels
+~~~~~~~~~~~~~~~~
+
+Section titles should almost always be preceded by labels.
+
+The only exception is very short subsections that repeat --- like the **Right** and **Wrong** titles in this document or the **XLSForm Rows** and **XForm XML** sections in the :doc:`form-widgets` document.
+
+In these cases, you may want to use the :rst:dir:`rubric` directive.
+    
+  
+Other titling considerations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Do not put step numbers in section titles.
+- Readers skim. Section titles should be clear and provide information.
 
   
 Writing code and writing about code
@@ -173,7 +340,7 @@ In code samples:
 - Use spaces, not tabs.
 - Two spaces for logical indents in most languages.
 
-  - Python samples must use `four spaces per indent level <https://www.python.org/dev/peps/pep-0008/#indentation>`.
+  - Python samples must use `four spaces per indent level <https://www.python.org/dev/peps/pep-0008/#indentation>`_.
   
 - Strive for clarity. Sometimes nonstandard indentation, especially when combined with non-semantic line breaks, makes things easier to read.
 
@@ -184,17 +351,34 @@ Using two spaces keeps code sample lines shorter, which makes them easier to vie
 
 .. rubric:: Example of indenting for clarity
 
-  .. code-block: HTTP
-  
-    HTTP/1.0 401 Unauthorized
-    Server: HTTPd/0.9
-    Date: Sun, 10 Apr 2005 20:26:47 GMT
-    WWW-Authenticate: Digest realm="testrealm@host.com",
-			     qop="auth,auth-int",
-			     nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093",
-			     opaque="5ccc069c403ebaf9f0171e9517f40e41"
-    Content-Type: text/html
-    Content-Length: 311
+.. code-block:: HTTP
+
+  HTTP/1.0 401 Unauthorized
+  Server: HTTPd/0.9
+  Date: Sun, 10 Apr 2005 20:26:47 GMT
+  WWW-Authenticate: Digest realm="testrealm@host.com",
+			   qop="auth,auth-int",
+			   nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093",
+			   opaque="5ccc069c403ebaf9f0171e9517f40e41"
+  Content-Type: text/html
+  Content-Length: 311
+
+
+Meaningful names
+-----------------
+
+When writing sample code, avoid meaningless names.
+
+.. rubric:: Wrong
+
+.. code-block:: python
+
+  def myFunction(foo):
+
+    for bar in foo:
+       bar[foo] = foo[spam] + spam[foo]
+
+    return foobar
 
 
 
@@ -203,10 +387,12 @@ XML and HTML
 
 Some of the terms often used to describe XML and HTML code structures are imprecise or confusing. For clarity, we restrict certain terms and uses.
 
+Likewise, coding practices and styles for XML and HTML vary widely. For the sake of clarity and consistency, samples should follow the guidelines set forth here.
+
 Element
 ~~~~~~~~~~~
 
-The following piece code represents an **element**:
+The following piece of code represents an **element**:
 
 .. code-block:: xml
 
@@ -219,7 +405,7 @@ The following piece code represents an **element**:
   An element is **not** a *block* or a *tag*.
   
   - *Tag* is defined below.
-  - *Block* has a specific meaning if HTML and XML templates, and should generally be avoided outside those contexts.
+  - *Block* has a specific meaning in HTML and XML templates, and should generally be avoided outside those contexts.
 
 Tag
 ~~~~~~
@@ -255,6 +441,8 @@ An element may have attributes. Attributes have values. Values are wrapped in st
   <element attribute="value">
     Content.
   </element>
+  
+Other names for attributes, such as *variables* or *properties*, should be avoided.
   
 Content
 ~~~~~~~~~~
@@ -295,4 +483,96 @@ For all HTML samples, tag names and attribute names should be ``all lowercase``.
 Newly-written XML examples should also be ``all lowercase``.
 
 XML examples that show actual code generated by tools in the ODK ecosystem should replicate that code exactly, regardless of its capitalization practice.
+
+
+ODK jargon
+=============
+
+ODK and ODK Docs
+-------------------
+
+.. rubric:: Wrong
+
+- Odk
+- odk
+- Open data kit
+- OpenDataKit
+- ODK docs
+- ODK documentation
+
+.. rubric:: Right
+
+- ODK
+- Open Data Kit
+- ODK Docs
+- ODK Documentation
+
+.. rubric:: Probably want to avoid...
+
+- Open Data Kit Documentation
+
+ODK apps and projects
+-----------------------
+
+ODK includes a number of components, including:
+
+- Collect
+- Aggregate
+- Briefcase
+
+These should always be capitalized.
+
+The **ODK** prefix (as in, *ODK Collect*) should be used the first time a document mentions the app or project, or any other time it would be unclear.
+
+A few projects should *always* use the **ODK** prefix:
+
+- ODK XForm
+- ODK Javarosa
+- ODK Docs
+
+XForm and XLSForm
+-------------------
+
+- *XForm* refers to XML-encoded forms. 
+- *XLSForm* refers to a spreadsheet format used to define forms. 
+
+.. rubric:: Wrong
+
+- Xform
+- X-Form
+- xform
+- XFORM
+
+- xlsform
+- XLSform
+- Xlsform
+
+.. rubric:: Right
+
+- XForm
+- XLSForm
+
+XForm Spec, XForm Tools, XForms
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+*XForm* (or *XForms*) can refer to:
+
+- The `XML-based form format <https://en.wikipedia.org/wiki/XForms>`_
+- The `official XForms specification from the W3C <https://www.w3.org/TR/2009/REC-xforms-20091020/>`_
+- The `ODK XForms Specification <https://opendatakit.github.io/xforms-spec/>`_, which is a subset of the full W3C recommendation.
+- The general idea of an XML-based form.
+- A specific XML document that encodes a form.
+
+When writing about any of these things, make sure you are clear --- in your mind as well as in your writing --- which one you are talking about.
+
+XLSForm
+~~~~~~~~~
+
+*XLSForm* can refer to:
+
+- The `XLSForm format for describing form in an Excel spreadsheet <http://xlsform.org/>`_
+- A spreadsheet file that describes a form using the format.
+- An `online tool <http://opendatakit.org/use/xlsform/>`_ and an `offline tool <https://gumroad.com/l/xlsform-offline>`_ for converting :file:`*.xls(x)` files to XForm documents. 
+
+When writing about any of these things, make sure you are clear --- in your mind as well as in your writing --- which one you are talking about.
 
