@@ -52,7 +52,6 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
    aggregate-guide
    aggregate-install
    aggregate-use
-   form-uploader
    Oauth2-service
 
 .. toctree::
