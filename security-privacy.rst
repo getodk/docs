@@ -11,7 +11,7 @@ Below is an attempt to enumerate known security and privacy considerations of th
 
 The ODK software is released under the `Apache 2 License <http://www.apache.org/licenses/LICENSE-2.0>`_.
 
-All our installers, programs and source code are provided AS-IS with no warranty or conditions, and without any liability obligations. See the license text for details.
+All our installers, programs, and source code are provided AS-IS with no warranty or conditions, and without any liability obligations. See the license text for details.
 
 2. Communication Channels
 ---------------------------
@@ -28,7 +28,7 @@ Our user website (`opendatakit <https://opendatakit.org/>`_.org) does not knowin
 Our software uses a number of open-source 3rd-party libraries from well-known and/or reputable sources, and a few from obscure sources. We do not vet the security of those software libraries.
 
 Your security people may want to review the libraries and source code on our `source code site <https://github.com/opendatakit/opendatakit/>`_.
-    
+
 4. ODK Aggregate Communications
 ---------------------------------
 
@@ -41,12 +41,12 @@ The definition of an encrypted form (:ref:`check here <encrypted-forms>`) is tra
 5. ODK Aggregate Deployments to Google App Engine or Other Hosting Services
 -------------------------------------------------------------------------------------------------------------
 
-With all 3rd party hosting services, you should expect your data to be viewable by support staff of the hosting service. Different services go to differing lengths to restrict access to, encrypt, and/or secure the data and communications within their data centers.
+With all 3rd party hosting services, you should expect your data to be viewable by the support staff of the hosting service. Different services go to differing lengths to restrict access to, encrypt, and/or secure the data and communications within their data centers.
 
 The form definition and associated media files of an encrypted form (:ref:`ODK see here <encrypted-forms>`) are stored on the server in plaintext (unencrypted). When a filled-in submission for an encrypted form is finalized, it is encrypted on the device and transmitted to the server in encrypted form, where it is stored. The secret key required for decryption is not stored on the server, thereby preventing anyone at the hosting service from seeing your filled-in form data and attachments unless they break the encryption.
 
-See `Deployment Planning <https://opendatakit.org/use/aggregate/deployment-planning/>`_ for other considerations.
-    
+See :ref:`Deployment Planning <deployment-planning>` for other considerations.
+
 6. Encrypted Form Security
 ---------------------------
 
@@ -89,7 +89,7 @@ For this reason, it may be inappropriate to declare and grant Google e-mail addr
 ------------------------------------------------------
 
 During data submission, some identifying information is transmitted and stored on the server:
-    
+
 .. pull-quote::
 
   1. :ref:`ODK Collect <collect-introduction>` passes the deviceID of the device to the server during the submission process. (the HEAD request that initiates the submission is a URL of the form: .../submission?deviceID=imei%3A9117DD011813771 ). The :ref:`ODK Aggregate <aggregate-introduction>` server does not store this deviceID in any database tables, but it will generally be emitted into the webserver access log. This deviceID uniquely identifies the device from which the data is submitted. This can be useful when correlating events on the server with interactions from specific devices. Because this is logged, it is likely that a submission can be correlated with a device, and therefore a data collector.
@@ -101,7 +101,7 @@ While interacting with an :ref:`ODK Aggregate <aggregate-introduction>` website,
 -----------------
 
 We gather anonymous aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data off the device and the data are available to ODK's maintainers. Users may disable analytics in the settings of :ref:`ODK Collect <collect-introduction>`.
-    
+
 11. ODK Build
 ---------------
 
@@ -127,9 +127,8 @@ Our websites, downloads site, and the online XLSForm tool can or do use cookies 
 Downloads from the Google Play store are compiled into aggregated usage statistics on our management portal.
 
 Crash reports you elect to send are provided to us as anonymous crash reports. By design, these do not contain survey field values or other device- or user- specific data.
-    
+
 15. Other Resources
 ---------------------
 
 `Towards a Secure Framework for mHealth <http://bora.uib.no/handle/1956/10652/>`_. A Case Study in Mobile Data Collection Systems. Samson Hussien Gejibo. Ph.D. Dissertation at the University of Bergen, 2015.
-

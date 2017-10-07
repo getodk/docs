@@ -4,7 +4,7 @@ Encrypted Forms
 
 .. _encrypted-forms:
 
-Overview 
+Overview
 ====================
 Encrypted forms provide a mechanism to keep your data private even when using **http:** for communications (e.g., when you do not have an **SSL certificate** or **https:** is not available). Encrypted forms may also enable Google App Engine deployments (and deployments using other web database services, e.g., AWS) to comply with data privacy laws, eliminating the necessity for setting up your own servers to meet those requirements.
 
@@ -13,8 +13,8 @@ Encrypted forms apply asymmetric public key encryption at the time the form is f
 This process ensures that the finalized form's data (and media attachments) are encrypted before being submitted to ODK Aggregate, remain encrypted while stored on ODK Aggregate, and remain encrypted as the data and attachments are pulled into ODK Briefcase, where they are again stored in encrypted form.
 
 .. note::
-  
-  - ODK Aggregate cannot meaningfully publish encrypted forms to Google Spreadsheets or Fusion Tables since the encryption obscures the entire contents of the form and ODK Aggregate never possesses the asymmetric key required to decrypt the form. 
+
+  - ODK Aggregate cannot meaningfully publish encrypted forms to Google Spreadsheets or Fusion Tables since the encryption obscures the entire contents of the form and ODK Aggregate never possesses the asymmetric key required to decrypt the form.
   - When using encrypted forms, ODK Aggregate serves only as a data aggregation point — you must download, decrypt, and export the data using ODK Briefcase to access the unencrypted data
 
 The non-encrypted data is available on the ODK Collect device during data collection and whenever a form is saved without marking it as complete. Once you mark a form as complete (finalize it), ODK Collect will generate a random 256-bit symmetric key, encrypt the form contents and all attachments with this key, then construct a submission manifest which describes the encrypted submission and an asymmetric-key encryption of the symmetric key used for the encryption. This manifest is the "form" that is uploaded to ODK Aggregate, with the encrypted form contents and its encrypted attachments appearing as attachments to this submission manifest "form."
@@ -23,20 +23,20 @@ The non-encrypted data is available on the ODK Collect device during data collec
 
 Requirements
 ====================
-Encrypted forms require the following *minimum versions* for the ODK tools
+Encrypted forms require the following *minimum versions* of the ODK tools
 
 - :doc:`ODK Collect 1.2 Release Candidate 1 (RC1) or higher <collect-install>`
-- :ref:`ODK Aggregate 1.0.4 Production or higher <installing-aggregate>`
+- :doc:`ODK Aggregate 1.0.4 Production or higher <aggregate-install>`
 - :doc:`ODK Briefcase 1.0 Production or higher<briefcase-install>`
 
 .. warning::
 
   Encrypted form definitions must include a unique OpenRosa instanceID and have an explicit ``<submission/>`` element
-  
+
 These requirements are covered in more detail below.
 
 .. _security-concerns:
-  
+
 Security Concerns
 ====================
 While ODK Collect attempts to remove all unencrypted copies of a finalized form and its attachments from the device, because ODK Collect uses third-party applications for image capture, etc., and because of the potential for Forced Close events during the clean-up process, we cannot guarantee that all copies will have been destroyed. Furthermore, because of the way an SD card writes and deletes information, there is a possibility of this data being recoverable from the free space on the SD card. Your organization should investigate the extra steps needed to ensure all data is deleted from the SD cards on your ODK Collect devices and should establish procedures to periodically wipe and reinstall those devices.
@@ -44,13 +44,13 @@ While ODK Collect attempts to remove all unencrypted copies of a finalized form 
 .. note::
 
   Encrypting a form ensures that the finalized form is not readable and is not tampered with. However, there is nothing preventing a malicious adversary from the wholesale replacement of a finalized form with falsified data or the synthesis and submission of extra data — these are not contingencies that encrypted forms seek to address.
-  
+
 .. _config-briefcase:
 
-Configuration 
+Configuration
 ====================
 
-For ODK Briefcase, you must download and install the *Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 6* from the `Java download site <http://www.oracle.com/technetwork/java/javase/downloads/index.html#other>`_ ; for previous version of Java, it is available `here <http://www.oracle.com/technetwork/java/javase/downloads/jce-7-download-432124.html>`_ . This is required for decryption to be successful.
+For ODK Briefcase, you must download and install the *Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 6* from the `Java download site <http://www.oracle.com/technetwork/java/javase/downloads/index.html#other>`_; for previous versions of Java, it is available `here <http://www.oracle.com/technetwork/java/javase/downloads/jce-7-download-432124.html>`_. This is required for decryption to be successful.
 
 To install the JCE:
 
@@ -123,25 +123,25 @@ Uploading Finalized Forms
     </input>
     </h:body>
     </h:html>
- 
- 
-If you are using `XLSForm <https://opendatakit.org/use/xlsform/>`_ , then form encryption is governed by the :guilabel:`settings` on the `Settings Worksheet <http://xlsform.org/#settings_ws>`_ . Encrypted forms must specify a *submission_url* and a *public_key* on this worksheet. If both are specified, XLSForm will generate a encrypted-form definition. Skip to the following sections to see how to create a public-private key pair and specify the public key.
 
-The required element to make this form an encrypted form is the ``<submission/>`` tag. Within this tag, the method attribute should always be **form-data-post**. The action attribute should be the url to which the submission should be posted; this is the ODK Aggregate website url with Aggregate.html replaced by submission. Finally, what identifies the form as an encryted form is the presence of a *base64RsaPublicKey* attribute. This should be the base64 encoding of the RSA public key that ODK Collect uses to encrypt the symmetric encryption key it creates to encrypt a finalized instance of this form (a different symmetric encryption key is created for every finalized form)
+
+If you are using :doc:`XLSForm <xlsform>`, then form encryption is governed by the :guilabel:`settings` on the `Settings Worksheet <http://xlsform.org/#settings_ws>`_. Encrypted forms must specify a *submission_url* and a *public_key* on this worksheet. If both are specified, XLSForm will generate an encrypted-form definition. Skip to the following sections to see how to create a public-private key pair and specify the public key.
+
+The required element to make this form an encrypted form is the ``<submission/>`` tag. Within this tag, the method attribute should always be **form-data-post**. The action attribute should be the url to which the submission should be posted; this is the ODK Aggregate website url with Aggregate.html replaced by submission. Finally, what identifies the form as an encrypted form is the presence of a *base64RsaPublicKey* attribute. This should be the base64 encoding of the RSA public key that ODK Collect uses to encrypt the symmetric encryption key it creates to encrypt a finalized instance of this form (a different symmetric encryption key is created for every finalized form)
 
 .. note::
-  
-  - The presence of the OpenRosa metadata block, as defined here: `OpenRosa 1.0 Metadata Schema <https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaMetaDataSchema>`_ ; is required. 
-  - You can define any value for the instanceID field, but it must be unique across all collected surveys. 
-  - As shown, the ``<bind/>`` calculates an instanceID value comparable to the instanceID value ODK Aggregate will generate when a form does not have an instanceID field. 
-  - If you use punctuation other than colon and dash, or any special characters, please test thoroughly to ensure that ODK Aggregate correctly handles those characters during submissons and when the form is pulled down to ODK Briefcase.
-  
+
+  - The presence of the OpenRosa metadata block, as defined here: `OpenRosa 1.0 Metadata Schema <https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaMetaDataSchema>`_; is required.
+  - You can define any value for the instanceID field, but it must be unique across all collected surveys.
+  - As shown, the ``<bind/>`` calculates an instanceID value comparable to the instanceID value ODK Aggregate will generate when a form does not have an instanceID field.
+  - If you use punctuation other than colon and dash, or any special characters, please test thoroughly to ensure that ODK Aggregate correctly handles those characters during submissions and when the form is pulled down to ODK Briefcase.
+
 .. _create-RSA-key:
 
 Creating RSA Key pair
 ===========================
 
-RSA public-private key pairs are generated using the OpenSSL software package. This is pre-installed on OSX and Linux, but needs to be downloaded and installed on Windows.
+RSA public-private key pairs are generated using the OpenSSL software package. This is pre-installed on OSX and Linux but needs to be downloaded and installed on Windows.
 
 .. _install-openssl:
 
@@ -154,13 +154,13 @@ For Windows, download and run the OpenSSL installer appropriate for your system 
 
 Constructing the RSA Key Pair
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
-If you are on Windows, open a powershell or command prompt window. Change directories to the :file:`/bin` directory in the OpenSSL directory. e.g.,
+
+If you are on Windows, open a PowerShell or command prompt window. Change directories to the :file:`/bin` directory in the OpenSSL directory. e.g.,
 
 .. code-block:: doscon
 
   > cd C:\OpenSSL-Win32\bin
-  
+
 If you are on a Mac, open the terminal. Change directories to your Desktop.
 
 .. code-block:: console
@@ -168,7 +168,7 @@ If you are on a Mac, open the terminal. Change directories to your Desktop.
   $ cd ~/Desktop
 
 .. _create-key:
-  
+
 Create a private key
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -179,23 +179,23 @@ If you are on Windows, run:
 .. code-block:: doscon
 
   > openssl genpkey -out MyPrivateKey.pem -outform PEM -algorithm RSA -pkeyopt rsa_keygen_bits:2048
-  
+
 .. warning::
-  
+
   **On Powershell**
-  
+
     Check **$env:path** to be sure :file:`path\\OpenSSL-Win64\\bin` is in there.If it is not, run the following command in Powershell:
-	
+
   .. code-block:: console
-	
+
     > $env:path = $env:path + ";path to OpenSSL-Win64\bin"
-	  
+
 If you are on a Mac, run:
 
 .. code-block:: console
 
   $ openssl genrsa -out MyPrivateKey.pem 2048
-  
+
 .. _extract-key:
 
 Extract a public key
@@ -208,7 +208,7 @@ Run the following command:
 .. code-block:: console
 
   openssl rsa -in MyPrivateKey.pem -inform PEM -out MyPublicKey.pem -outform PEM -pubout
-  
+
 This may also complain about a missing configuration file. You can ignore this warning.
 
 .. _store-use-keys:
@@ -227,17 +227,17 @@ Open the :file:`MyPublicKey.pem` file and copy the resulting very-long string in
 
 .. note::
 
-  - You  need to be especially careful that this is ONLY the public key, and not the contents of the original public-private key file (which would also appear to work but provide no security).
-  
-  
+  - You  need to be especially careful that this is ONLY the public key and not the contents of the original public-private key file (which would also appear to work but provide no security).
+
+
 .. tip::
-  
+
   - You can use Notepad (Windows) or TextEdit (Mac) to open :file:`MyPublicKey.pem`
   - Alternatively, you can use the command ``less MyPublicKey.pem`` to print the contents into the terminal and directly copy/paste from there.
-  
+
 .. seealso::
-  
-   - For reference, you can checkout the `tutorial encrypted-XLSForm <https://docs.google.com/spreadsheets/d/1O2VW5dNxXeyr-V_GB3spS6QPX4rtqtt7ijqP_uZLU3I/edit#gid=390337726>`_.It is for viewing purpose only but you can make you own copy to edit it.
+
+   - For reference, you can checkout the `tutorial encrypted-XLSForm <https://docs.google.com/spreadsheets/d/1O2VW5dNxXeyr-V_GB3spS6QPX4rtqtt7ijqP_uZLU3I/edit#gid=390337726>`_.It is for viewing purpose only but you can make your own copy to edit it.
 
 .. _encrypt-operations:
 

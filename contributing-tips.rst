@@ -41,7 +41,7 @@ Small, atomic commits
 
 When working locally, commit often. Don't wait until you have 100 lines of changes across multiple files.
 
-- If you need to copy or move a large section or file, commit that change before also editing it. 
+- If you need to copy or move a large section or file, commit that change before also editing it.
 - If you have to create a new template file based on an existing template file, copy the file in one commit and then work on the changes. This makes it easier to know what you actually did.
 - If writing a new doc, commits after each new section are a good idea.
 
@@ -55,7 +55,7 @@ Small, well-named commits will help you keep track of your own work and make rol
 Discuss issues before working
 --------------------------------
 
-Take the time to clarify the needs and scope of an issue before committing to work on it. Especially for coding tasks, make sure you state your understanding and your plan before working. 
+Take the time to clarify the needs and scope of an issue before committing to work on it. Especially for coding tasks, make sure you state your understanding and your plan before working.
 
 If you have a question, ask. Don't guess.
 
@@ -63,7 +63,7 @@ If you have a question, ask. Don't guess.
 
   Many new contributors don't ask questions because they are worried about appearing under informed. Please set this worry aside.
 
-  **You will never be judged harshly for asking clarifying questions or for seeking more information.** 
+  **You will never be judged harshly for asking clarifying questions or for seeking more information.**
 
 .. _claim-issues:
 
@@ -84,11 +84,11 @@ Don't claim more than one or two open issues at a time.
 Share work in progress
 -------------------------
 
-It can be helpful to share your in-progress work. To mark a PR as a work in progress, append **WIP:** to the beginning of the PR title. We will not merge **WIP** PRs, and we won't do a review on them unless you ask. 
+It can be helpful to share your in-progress work. To mark a PR as a work in progress, append **WIP:** to the beginning of the PR title. We will not merge **WIP** PRs, and we won't do a review on them unless you ask.
 
 If you want a review, comment, opinion, or help on a **WIP** PR, please tag the relevant person in the PR comments.
 
-If you finish the work and want the PR to be merged, you do not need to open a new one. Just edit the PR title. 
+If you finish the work and want the PR to be merged, you do not need to open a new one. Just edit the PR title.
 
 
 .. _if-you-get-stuck:
@@ -115,7 +115,7 @@ It is okay to abandon an issue
 
 Sometimes you simply cannot complete work you have said you were going to complete. This could happen because you don't have all the required skills or knowledge to complete the work, or because the issue cannot actually be completed as scoped, or because you don't have the time.
 
-Please let the community know in the issue discussion. 
+Please let the community know in the issue discussion.
 
   @opendatakit-bot unclaim
 
@@ -132,20 +132,20 @@ For our purposes, a "long time" is a week or more, from when you first announce 
 
 An issue might take a long time because:
 
-- it is complex and requires lots of hours 
+- it is complex and requires lots of hours
 - you only have a short period of time each day to work on it
 - you are new to the project and are having to learn as you go
 
 The thing that matters is: **Are you actively working on the issue, and making progress, at least a little bit?**
 
-If you are actively working on it, we do not want someone else to jump on and try to work on it at the same time. So please keep the community informed of your work by filing a **WIP** (work in progress) PR and comitting to it as you work.
+If you are actively working on it, we do not want someone else to jump on and try to work on it at the same time. So please keep the community informed of your work by filing a **WIP** (work in progress) PR and committing to it as you work.
 
 .. _issues-only:
 
 Issues only
 ----------------
 
-All PRs must be directly connected to open issues. PRs should not represent suggestions, good ideas, or independent intiative. 
+All PRs must be directly connected to open issues. PRs should not represent suggestions, good ideas, or independent initiative.
 
 If you have a good idea, file an issue. If you are curious about whether something should be an issue, chat with one of the core team in the `#docs-code` channel on the `Slack <https://opendatakit.slack.com>`_.
 
@@ -156,7 +156,7 @@ Once you have filed an issue, wait for comment and approval before diving into t
 Actually install and use Open Data Kit or other tools
 ----------------------------------------------------------
 
-You cannot write effectively about tools you have not used. If you're going to write or edit documentation about any of the apps in the ODK ecosystem, you need to spend some time actually using it. 
+You cannot write effectively about tools you have not used. If you're going to write or edit documentation about any of the apps in the ODK ecosystem, you need to spend some time actually using it.
 
 Before diving into writing documentation, follow the :doc:`getting-started` guide so that you are familiar with the core ODK tools.
 
@@ -185,16 +185,15 @@ You are not an imposter
 
 `Imposter syndrome <https://en.wikipedia.org/wiki/Impostor_syndrome>`_ is the feeling that you are not good enough or accomplished enough to do the work you are doing.
 
-We all feel this way sometimes, and that's okay. But it is important to realize that **you are not an imposter.** 
+We all feel this way sometimes, and that's okay. But it is important to realize that **you are not an imposter.**
 
-You can contribute to this community, no matter your background or skills. 
+You can contribute to this community, no matter your background or skills.
 
-- If there is something you don't know how to do, you can ask. 
+- If there is something you don't know how to do, you can ask.
 
   - If it is issue related, ask on the issue.
   - If it is more general, try the #docs-code channel in the `ODK Developer Slack <http://slack.opendatakit.org>`_.
 
 - If you want to try something even though you aren't sure you can do it, go ahead and try.
 
-Another worry you may have is that something will take you a long time, when an "expert" might be able to do it quickly. You may feel, then, you aren't the "right person" for the job. But if you are the only one with the time or desire to work on something, **you are the right person to work on it.** 
-
+Another worry you may have is that something will take you a long time when an "expert" might be able to do it quickly. You may feel, then, you aren't the "right person" for the job. But if you are the only one with the time or desire to work on something, **you are the right person to work on it.** 

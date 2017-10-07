@@ -80,7 +80,7 @@ Glossary
 
   widget
 
-    A single question, answer set, and attendant GUI elements, as rendered in an XForm compliant app such as :term:`Collect`.
+    A single question, answer set, and attendant GUI elements, as rendered in a XForm compliant app such as :term:`Collect`.
 
   hint
 
@@ -88,5 +88,5 @@ Glossary
 
   question label
   question text
-  
-    The main part body of a form question or widget. In an :term:`XLSForm`, the contents of :th:`label`.
+
+    The main part body of a form question or widget. In a :term:`XLSForm`, the contents of the :th:`label`.

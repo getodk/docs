@@ -51,8 +51,11 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
 
    aggregate-guide
    aggregate-install
+   aggregate-deployment-planning
    aggregate-use
+   form-uploader
    Oauth2-service
+   aggregate-limitations
 
 .. toctree::
    :hidden:
@@ -73,6 +76,8 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   form-widgets
   javarosa
   pyxform
+  validate
+
   
 .. toctree::
   :hidden:
@@ -96,6 +101,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   :caption: Reference
   
   security-privacy
+  verify-downloads
   faq
   glossary
   
