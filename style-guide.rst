@@ -3,7 +3,7 @@ Style Guide
 *****************
 
 .. _spelling-and-grammer:
-Spelling and Grammar
+Spelling and grammar
 =======================
 
 .. _american-spelling:
@@ -13,18 +13,19 @@ American spelling and grammar
 
 Whenever U.S. English and British (or other) English spelling or usage disagree, standard U.S. spelling and usage is preferred.
 
-.. rubric:: Right
-
-.. code-block:: rst
-
-  The color of the button is gray.
-
 .. rubric:: Wrong
 
 .. code-block:: rst
 
   The colour of the button is grey
 
+.. rubric:: Right
+
+.. code-block:: rst
+
+  The color of the button is gray.
+  
+  
 .. _quote-marks:
     
 Quote marks
@@ -236,7 +237,7 @@ To avoid gender bias, the third person gender-neutral *they/then/their(s)* is pr
 
 Unfortunately, *they/them/their* is not a perfect solution. Since it is conventionally used as a plural pronoun, it can cause confusion.
 
-Therefore, avoid the use of personal pronouns whenever possible. They are often out of place in technical writing anyway. Rewriting passages to avoid personal prnouns often makes the writing more clear.
+Therefore, avoid the use of personal pronouns whenever possible. They are often out of place in technical writing anyway. Rewriting passages to avoid personal pronouns often makes the writing more clear.
 
 .. rubric:: Correct
 
@@ -272,7 +273,7 @@ Therefore, avoid the use of personal pronouns whenever possible. They are often 
 
   ODK Collect is an Android app. It can be used for...
 
- .. OR THIS:
+  .. OR THIS:
   
   ODK Collect is an Android app that is used to...
   
@@ -287,7 +288,7 @@ Titles
 Title case and sentence case
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Document titles should be in ``Sentence Case`` -- that is, all meaningful words are to be capitalized.
+Document titles should be in ``Title Case`` -- that is, all meaningful words are to be capitalized.
 
 Section titles should use ``Sentence case`` -- that is, only the first word should be capitalized, along with any proper nouns or other words usually capitalized in a sentence.
 
@@ -364,7 +365,7 @@ In code samples:
 
   - Python samples must use `four spaces per indent level <https://www.python.org/dev/peps/pep-0008/#indentation>`_.
   
-- Strive for clarity. Sometimes nonstandard indentation, especially when combined with non-semantic line breaks, makes things easier to read.
+- Strive for clarity. Sometimes nonstandard indentation, especially when combined with non-syntactic line breaks, makes things easier to read.
 
   - Make sure that line breaks and indentation stay within the valid syntax of the language.
 
