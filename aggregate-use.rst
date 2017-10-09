@@ -2,7 +2,7 @@
 Aggregate Usage
 ********************
 
-ODK Aggregate can be used to collect data from ODK collect, filter the submiited data and export it to useful formats. It provides a mechanism for hosting the survey forms and gathering the survey results. 
+ODK Aggregate can be used to collect data from ODK collect, filter the submitted data and export it to useful formats. It provides a mechanism for hosting the survey forms and gathering the survey results. 
 
 When the URL to the ODK Aggregate server is first opened, you will be presented with the application page showing the :guilabel:`Submissions` and :guilabel:`Form Management` tabs. You will also see a :guilabel:`Log In` option and three help buttons.
 
@@ -62,7 +62,7 @@ You can manage all the forms present on your server in your form list. All optio
 Exporting form data
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Click on :guilabel:`Export` option in the form list to export form into useful formats and choose the format in which you want to export data. You can also choose a filter which you have saved for the form to export only a certain substet of form. Details on :ref:`exporting data <export-data>` are given in the :ref:`data transfer <transfer-data>` section.   
+Click on :guilabel:`Export` option in the form list to export form into useful formats and choose the format in which you want to export data. You can also choose a filter which you have saved for the form to export only a certain subset of form. Details on :ref:`exporting data <export-data>` are given in the :ref:`data transfer <transfer-data>` section.   
 
 .. _publish-form:
 
@@ -165,17 +165,17 @@ If you selected `Columns` specify the columns you wish to display or hide in the
    :alt: Image showing save, save as, delete and display metadata options.
 
 
-.. _visulaize-submissions:
+.. _visualize-submissions:
 
 Visualizing Submissions
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ODK Aggregate provides a quick means for basic data visualization. This Visualize functionality is meant to provide a quick means to view early data results in meaningful ways but is not meant to provide complex data analysis functionality. You can view your data in bar graph, pie chart or on a map. 
 
-In both Pie chart and bar graph visulaization you can either count the number of times a unique answer occurs in a specified column or calculate sum of values in one column grouped by a value in another column. You can choose a column that you want to map in map visulaization.
+In both Pie chart and bar graph visualization you can either count the number of times a unique answer occurs in a specified column or calculate sum of values in one column grouped by a value in another column. You can choose a column that you want to map in map visualization.
 
 .. image:: /img/aggregate-use/visualize.*
-   :alt: Image showing visulaize option.
+   :alt: Image showing visualize option.
 
 Click on :guilabel:`Visualize` to visualize the submitted data. Select bar graph, pie chart or map in the :guilabel:`Type` dropdown. Further options are described as follows:
 
@@ -209,7 +209,7 @@ Exporting Submissions
 .. image:: /img/aggregate-use/export-options.*
    :alt: Image showing export window.   
 
-Click on :guilabel:`Export` option to export submitted data into useful formats and choose the format in which you want to export data. You can also choose a filter which you have saved earlier to export only a certain substet of data. Details on :ref:`exporting data <export-data>` are given in the :ref:`data transfer <transfer-data>` section.
+Click on :guilabel:`Export` option to export submitted data into useful formats and choose the format in which you want to export data. You can also choose a filter which you have saved earlier to export only a certain subset of data. Details on :ref:`exporting data <export-data>` are given in the :ref:`data transfer <transfer-data>` section.
   
 .. _publish-submissions:  
 
@@ -285,7 +285,7 @@ You can specify additional usernames with browser access to the server under the
    - The anonymousUser must be granted Data Collector rights to accept submissions from unidentified sources (e.g., from ODK Collect 1.1.5 and earlier, or from ODK Collect 1.1.7 and later if not authenticating).
 
 - `Data Viewer`: able to log onto the ODK Aggregate website, filter and view submissions, and generate csv or kml files for download.
-- ` Form Manager`: all the capabilities of a Data Viewer plus the abilities to upload a form definition, delete a form and its data, and upload submissions manually through the ODK Aggregate website.
+- `Form Manager`: all the capabilities of a Data Viewer plus the abilities to upload a form definition, delete a form and its data, and upload submissions manually through the ODK Aggregate website.
 - `Site Administrator`: all the capabilities of a Form Manager plus the ability to add users, set passwords, and grant these capabilities to other users.
 
 .. image:: /img/aggregate-use/privileges.*
@@ -307,7 +307,7 @@ In the :guilabel:`Preferences` sub-tab under :guilabel:`Site Admin` tab, you can
 .. image:: /img/aggregate-use/google-api-option.*
    :alt: Image showing google api option.
 
-- Enketo credentials: These credentials are used for Enketo webforms integration. To link Enketo witj Aggregate, see `this <https://accounts.enketo.org/support/aggregate/>`_
+- Enketo credentials: These credentials are used for Enketo webforms integration. To link Enketo with Aggregate, see `this <https://accounts.enketo.org/support/aggregate/>`_
 - ODK 2.0 App name
       
    - ODK Tables Synchronization Functionality - check this to enable ODK Tables functionality i.e.  able to download, upload and alter data records within ODK Tables as restricted by table-access privileges granted to the user.
@@ -513,7 +513,7 @@ Interfaces used during pull actions are:
 - `view/submissionList` to obtain a chunk of submission keys
 - `view/downloadSubmission` to download an individual submission
 
-Interfacse used during push actions are:
+Interfaces used during push actions are:
 
 - `formUpload` to upload a form and its media files to ODK Aggregate
 - `view/submissionList` to obtain a chunk of submission keys   
