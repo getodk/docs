@@ -8,7 +8,7 @@ ODK Aggregate can be deployed to Google's App Engine, Amazon's EC2 cloud service
 
 In general, you should gain familiarity with ODK Aggregate using Google's App Engine cloud services or the ODK Aggregate VM before attempting an EC2 or Tomcat deployment. See :ref:`Aggregate installation <install-app-engine>`.
 
-Once you can download forms from ODK Aggregate to :ref:`ODK Collect <collect-introduction>`, fill them out, upload finalized forms to ODK Aggregate, view, export and publish data from within ODK Aggregate, and download data from ODK Aggregate using See  :ref:`ODK BriefCase <ODK Briefcase>`, you might then consider whether a Google App Engine cloud services deployment or VM is appropriate for your needs.
+Once you can download forms from ODK Aggregate to :ref:`ODK Collect <collect-introduction>`, fill them out, upload finalized forms to ODK Aggregate, view, export and publish data from within ODK Aggregate, and download data from ODK Aggregate using See  :doc: briefcase-guide, you might then consider whether a Google App Engine cloud services deployment or VM is appropriate for your needs.
 
 Considerations
 ---------------
