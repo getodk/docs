@@ -153,7 +153,7 @@ If you selected `Columns` specify the columns you wish to display or hide in the
 .. image:: /img/aggregate-use/column-filter.*
    :alt: Image showing column selection.
 
-- Click on :guilabel:`Save` to save the filter or filter group for future use. Clicking on :guilabel: `Save As` allows you to give a name to the filter or filter group.
+- Click on :guilabel:`Save` to save the filter or filter group for future use. Clicking on :guilabel:`Save As` allows you to give a name to the filter or filter group.
 - Click on :guilabel:`Delete` to delete a filter or filter group.
 - You can check the :guilabel:`Display Metadata` checkbox to display or hide metadata.
 
@@ -307,15 +307,15 @@ In the :guilabel:`Preferences` sub-tab under :guilabel:`Site Admin` tab, you can
 .. image:: /img/aggregate-use/google-api-option.*
    :alt: Image showing google api option.
 
-- Enketo credentials: These credentials are used for Enketo webforms integration. To link Enketo with Aggregate, see `this <https://accounts.enketo.org/support/aggregate/>`_
-- ODK 2.0 App name
+- **Enketo credentials**: These credentials are used for Enketo webforms integration. To link Enketo with Aggregate, see `this <https://accounts.enketo.org/support/aggregate/>`_.
+- **ODK 2.0 App name**
       
-   - ODK Tables Synchronization Functionality - check this to enable ODK Tables functionality i.e.  able to download, upload and alter data records within ODK Tables as restricted by table-access privileges granted to the user.
+   - `ODK Tables Synchronization Functionality` - check this to enable ODK Tables functionality i.e.  able to download, upload and alter data records within ODK Tables as restricted by table-access privileges granted to the user.
 
-- Aggregate features: These settings affect the operations of the server.
+- **Aggregate features**: These settings affect the operations of the server.
    
-   - Disable faster background actions - check this to reduce AppEngine quota usage.
-   - Skip malformed submissions - check this to ignore corrupted submissions.
+   - `Disable faster background actions` - check this to reduce AppEngine quota usage.
+   - `Skip malformed submissions` - check this to ignore corrupted submissions.
 
 .. image:: /img/aggregate-use/preferences-options.*
    :alt: Image showing other options.   
