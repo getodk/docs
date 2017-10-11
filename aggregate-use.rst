@@ -302,7 +302,7 @@ Preferences
 
 In the :guilabel:`Preferences` sub-tab under :guilabel:`Site Admin` tab, you can manage:
 
-- Google API credentials: These credentials are used when publishing into Google services. For details on this, see `Aggregate OAuth2 info <https://opendatakit.org/use/aggregate/oauth2-service-account/>`_
+- Google API credentials: These credentials are used when publishing into Google services. For details on this, see :doc:`Aggregate OAuth2 info <oauth2-service>`.
 
 .. image:: /img/aggregate-use/google-api-option.*
    :alt: Image showing google api option.
