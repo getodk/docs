@@ -35,13 +35,13 @@ For maximum compatibility with J2ME clients, it is recommended that a server SHO
 Content
 ~~~~~~~~~~
 
-OpenRosa submissions (and responses) MUST provide headers conforming to the OpenRosa Request standard.
+OpenRosa submissions (and responses) MUST provide headers conforming to the :doc:`OpenRosa Request standard <openrosa-http>`.
 
 Successful server responses MUST include an ``X-OpenRosa-Accept-Content-Length`` header in addition to the :ref:`required OpenRosa Request response headers <openrosa-responses>`. The ``X-OpenRosa-Accept-Content-Length`` header specifies this server's recommended maximum size for a POST body, in bytes.
 
 Servers SHOULD include this header in their error responses. However, clients MUST NOT rely on the presence of this header (or any OpenRosa header) in every error response.
 
-.. warning:: 
+.. note:: 
   Overly-large requests sent to Google AppEngine will be rejected prior to being sent to any server, and will therefore not contain this (or any) OpenRosa header.
   
 OpenRosa submissions are POSTed to servers as a multipart MIME Envelope with at least 1 part --- the XML content of the form itself. Each of these parts should adhere to the following requirements

@@ -34,7 +34,7 @@ Servers should include the following headers in all responses.
 .. csv-table::
   :header: Header, Values, Required
 
-  Content-Language, The key for the response locale., No. Recommended for internationalization. 
+  Content-Language, `Two-letter language code (ISO 639-1) <https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes>`_, No. Recommended for internationalization. 
   X-OpenRosa-Version, 1.0, Yes
   Date, "The date on the server in the format: `Mon, 14 Feb 2011 16:48:15 GMT`", Yes
 
@@ -58,7 +58,7 @@ For Example:
         <!--... Some platform specific response ...-->
     </OpenRosaResponse>
     
-APIs using this response can then include their namespaced payload inside of the response. This response should be handled in a unified way on the client, regardless of the specific submission. That is, any time an OpenRosa response envelope is received, any of its payloads should be parsed properly.
+APIs using this response can then include their namespaced payload inside of the response. This response should be handled by the client the same way, regardless of the specific submission. That is, any time an OpenRosa response envelope is received, any of its payloads should be parsed properly.
 
 Any responses included in the envelope that are unrecognized by the client should be ignored without error.
 

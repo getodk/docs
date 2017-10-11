@@ -1,7 +1,7 @@
-Metadata Schema
+Metadata Scheme
 ==================
 
-This document details the metadata scheme to be used in an XForm intended for use with OpenRosa compliant servers. This metadata is used to ensure that critical or extremely useful data pertaining to the XForms and submissions made by client devices is captured and stored.
+This document details the metadata scheme for OpenRosa-compliant XForms. This metadata is used to ensure that critical or extremely useful data pertaining to the XForms and submissions made by client devices is captured and stored.
 
 There are two types of metadata in a form submission. 
 

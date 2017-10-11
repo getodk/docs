@@ -6,7 +6,7 @@ This standard specifies the Request and Response format through which OpenRosa c
 Overview
 ----------
 
-This API provides a standardized means with which OpenRosa devices are authenticated with compliant servers.
+This API provides a standardized means with which OpenRosa clients are authenticated with compliant servers.
 
 OpenRosa compliant devices MUST support both:
 
@@ -36,7 +36,7 @@ Typical Interaction
 
 A typical transaction consists of the following steps.
 
-1. The client asks for a page that requires authentication but does not provide a user name and password. Typically this is because the user simply entered the address or followed a link to the page.
+1. The client asks for a resource that requires authentication but does not provide a user name and password. Typically this is because the user simply entered the address or followed a link to the page.
 
 2. The server responds with the 401 response code, either requesting Digest Authentication and providing the authentication realm and a randomly-generated, single-use value called a nonce, or requesting Basic Authentication (in which case the server should also redirect and negotiate TLS channel security (https) if the client is not already communicating over https).
 
