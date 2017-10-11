@@ -20,7 +20,7 @@ Verifying on Linux and Mac
      $ cd path/to/file
      $ sha256sum "filename"
 
-.. image:: /img/download-verify/terminal-verify.*
+.. image:: /img/download-verify/terminal-verify.png
    :alt: Image showing process of verifying downloads in Linux.
 
 
@@ -36,7 +36,7 @@ Verifying on Windows
      > cd path/to/file
      > certUtil -hashfile "filename" SHA256
 
-.. image:: /img/download-verify/cmd-verify.*
+.. image:: /img/download-verify/cmd-verify.png
    :alt: Image showing process of verifying downloads in Windows.
 
 If the downloaded file is not corrupted, the long hash string printed by these tools will match the one listed for that file in the `link <https://opendatakit.org/wp-content/uploads/sha256_signatures.txt>`_ at the top of our `downloads page <https://opendatakit.org/downloads/>`_.
@@ -45,19 +45,19 @@ To check this :-
 
 - Copy the SHA256 hash displayed on your terminal or cmd.
 
-.. image:: /img/download-verify/copy-signature.*
+.. image:: /img/download-verify/copy-signature.png
    :alt: Image showing copying SHA256 signature.
 
 - Then open the `link <https://opendatakit.org/wp-content/uploads/sha256_signatures.txt>`_ which contains the list of all SHA256 hashes for the downloaded files.
 
 - Press Ctrl+F in the window and paste the copied signature in the box which opens on the top right corner. You will get a single result highlighted if the signature is found.
 
-.. figure:: /img/download-verify/verified.*
+.. figure:: /img/download-verify/verified.png
    :alt: Image showing single search result found in the file.
 
    Match for hash found
 
-.. figure:: /img/download-verify/not-verified.*
+.. figure:: /img/download-verify/not-verified.png
    :alt: Image showing no matches found for the hash.
 
    No match found for the hash
