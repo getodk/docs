@@ -68,7 +68,7 @@ Pulling from Android 2.x and earlier device
 - Connect your Android device to your computer using a USB cable and choose to mount the drive.
 - Open *ODK Briefcase*.
 - In the window which opens up select :guilabel:`pull` tab.
-- Select `Mounted Android SD Card` in the :guilabel:`pull data from` the drop-down.
+- Select `Mounted Android SD Card` in the :guilabel:`pull data from` drop-down.
 - Click :guilabel:`Choose` and select the appropriate mounted SD card.
 - A list of forms will be displayed. Select the ones you want to pull and click on :guilabel:`pull` button at the bottom of the window. The forms will be pulled to ODK Briefcase Storage on your local system.
 - On the Android device, open ODK Collect and delete the filled-in forms.
@@ -88,7 +88,7 @@ Pulling from Android 4.x and later device
 - Once it is copied onto your local hard drive, unzip the file of the 'odk' directory.
 - Open *ODK Briefcase*.
 - In the window which opens up select :guilabel:`pull` tab.
-- Select *Custom Path to ODK Directory* in the :guilabel:`pull data from` the drop-down.
+- Select *Custom Path to ODK Directory* in the :guilabel:`pull data from` drop-down.
 - Select the unzipped :file:`odk` folder that you copied onto your local hard drive.
 - Click on :guilabel:`pull` button at the bottom of the window and the filled-in submissions that were copied off of the device will be loaded into ODK Briefcase's storage location.
 - On the Android device, open ODK Collect and delete the filled-in forms.
