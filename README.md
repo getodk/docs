@@ -6,12 +6,12 @@ This repo is the source for ODK documentation.
 
 ## Current Status — Live! (But still new)
 
-Our new documentation website is live at https://docs.opendatakit.org
+Our documentation website is live at https://docs.opendatakit.org
 
-This is still a new project, and most of the useful documentation is still at the [old docs on the ODK website](https://opendatakit.org/).
+If you can't find what you are looking for, try the [old docs on the ODK website](https://opendatakit.org/). Also, please [file an issue](https://github.com/opendatakit/docs/issues) so that we know to add the information you are looking for.
 
 ## Building and viewing documentation locally
-See the [contribution guide](http://docs.opendatakit.org/contributing) for detailed steps -- no prior experience needed!
+See the [Contributor Guide](http://docs.opendatakit.org/contributing) for detailed steps --- no prior experience needed!
 
 Once your environment is set up:
 ```
@@ -20,20 +20,19 @@ cd build
 python -m http.server 8000
 ```
 
-## What's the plan?
-
- - Docs are being aggregated, rewritten, edited, and expanded into this repo.
- - The first things we've done are:
-    - a __Getting Started__ guide
-    - a __Contributors__ guide
- - This repo will be used as a single source for documentation for all ODK components.
-    - There are good reasons for separating the docs into individual repos for each component. We may do this in the future. [Please see this ODK Forum thread to discuss whether to keep all the docs together or disaggregate them.](https://forum.opendatakit.org/t/docs-structure-discussion-one-or-many-repos/7080)
-
 ## How to contribute?
 
 We are open for new issues and pull requests.
 
  - Please read the [Contributors Guide](http://docs.opendatakit.org/contributing) before working on the documentation.
- - [Engaging in the forum discussions on documentation.](https://forum.opendatakit.org/c/development/documentation)
- - [Filing GH Issues](https://github.com/opendatakit/docs/issues) for specific documentation artifacts that don't currently exist in any form.
+ - Find issues to work on.
+    - First time contributors are encouraged to complete a [line edit](https://github.com/opendatakit/docs/issues/96) as a way to get familiar with our contribution process.
+	- Issues labelled [easy](https://github.com/opendatakit/docs/labels/easy) do not require much specific technical knowledge.
+	- Issues labelled [contributor friendly](https://github.com/opendatakit/docs/labels/contributor%20friendly) are usually self-contained and don't require extensive knowledge of the ODK ecosystem as a whole.
+	
+You can also...
+
+ - [Discuss the documentation from a user perspective in our forum](https://forum.opendatakit.org/c/development/documentation).
+ - [Discuss the documentation from a contributor perspective in our developer Slack](slack.opendatakit.org). (Use the #docs-code channel.)
+ - [File an issue](https://github.com/opendatakit/docs/issues) for any needed improvements.
  - [Watch](https://github.com/opendatakit/docs/subscription) and star this repo, to keep up with what we're doing.
