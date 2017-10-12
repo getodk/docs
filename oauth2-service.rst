@@ -38,7 +38,7 @@ Credentials are associated with a Google Cloud Platform project.
 .. image:: /img/oauth2-service/myconsole-2.*
    :alt: Image showing project screen.
    
-4. Click on the menu icon(three horizontal bars) in upper-left side of the screen.
+4. Click on the menu icon(three horizontal bars) in the upper-left side of the screen.
 
 .. image:: /img/oauth2-service/menu-icon.*
    :alt: Image showing menu.
