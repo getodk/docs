@@ -139,3 +139,37 @@ caption .headerlink::after {
                padding-top: 12px;
           
 }
+
+.upgrade {
+   background-attachment: scroll;
+   background-clip: border-box;
+   background-color: lemonchiffon;
+   background-image: none;
+   background-origin: padding-box;
+   background-position: 0% 0%;
+   background-position-x: 0%;
+   background-position-y: 0%;
+   background-repeat: repeat;
+   background-size: auto auto;
+   box-sizing: border-box;
+   color: rgb(64, 64, 64);
+   font-family: Georgia,"Times New Roman",serif;
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 24px;
+   margin-bottom: 24px;
+   padding-bottom: 12px;
+   padding-left: 12px;
+   padding-right: 12px;
+   padding-top: 12px;
+}
+
+.upgrade p.first.admonition-title{
+    font-weight: bold;
+    display: block;
+    color: #fff;
+    background: orange;
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+}
