@@ -2,7 +2,8 @@
 Style Guide
 *****************
 
-.. _spelling-and-grammer:
+.. _spelling-and-grammar:
+
 Spelling and grammar
 =======================
 
@@ -24,7 +25,6 @@ Whenever U.S. English and British (or other) English spelling or usage disagree,
 .. code-block:: rst
 
   The color of the button is gray.
-  
   
 .. _quote-marks:
     
