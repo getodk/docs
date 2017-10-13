@@ -458,8 +458,11 @@ The word *node* is often used interchangeably with *element*.
 
 For clarity, we make the following distinction:
 
-- An *element* is a piece of XML or HTML code.
-- A *node* is an element rendered into a DOM tree or other dynamic representation.
+- An HTML or XML document has *elements*, not *nodes*.
+- A *node* is part of a "live" DOM tree or other dynamic representation.
+
+  - An XML or HTML element becomes an *element node* in a DOM tree.
+  - There are also other types of nodes in a DOM tree.
 
 .. _xml-attributes-values:
 
