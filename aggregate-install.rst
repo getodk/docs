@@ -591,18 +591,5 @@ Following are basic details for setting up ODK Aggregate to run on a Linux micro
 
 For screenshots and more on the general set-up of Tomcat on AWS, see the excellent three-part “Cat in the Cloud: Apache Tomcat in Amazon EC2” series at http://www.excelsior-usa.com/articles/tomcat-amazon-ec2-basic.html. Amazon’s getting-started guides are also quite helpful: http://aws.amazon.com/documentation/gettingstarted/.
 
-.. _upgrade-aggregate:
-
-Need for Upgrading
---------------------
-
-It is important to upgrade to newer ODK Aggregate versions as they come out (not necessarily immediately, but this should be something you do at least once a year).
-
-There are several reasons for this:-
-
-- `Security vulnerabilities` - we (and Google) are constantly upgrading the libraries we use with newer, safer, versions. The older your software, the greater the number of vulnerabilities in it.
-- `Hosting revisions` - Google AppEngine is a managed environment, unlike, say, AWS or other "bare-box" hosting services. Google is continuously updating features and removing support for older features in this environment. If you don't upgrade, there may not be an upgrade path that works due to these changes -- unlike "bare-box" hosting, you, and the ODK team, only have partial control over the software and hardware environment.
-- `Performance revisions` -` as we find performance issues and address them, the tools get better and faster.
-- `Enhanced capabilities` - the form-processing library (javarosa) has roughly-annual updates to add new functions (e.g., sin(), cos()) and occasionally data types. And new features are slowly added to ODK Aggregate, too.
 
 
