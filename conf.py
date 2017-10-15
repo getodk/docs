@@ -30,7 +30,7 @@
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
+# ones. rst2pdf makes the pdf while building.
 extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
@@ -38,9 +38,9 @@ extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.coverage',
     'rst2pdf.pdfbuilder'
     ]
-
+    
 pdf_documents = [
-    ('index', u'MyProject', u'My Project', u'Author Name'),
+    ('index', u'ODKDocs', u'ODKDocs', u'OpenDataKit'),
 ]
 
 pdf_use_index=False
