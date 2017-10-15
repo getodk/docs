@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 #
 # Open Data Kit documentation build configuration file, created by
@@ -36,7 +36,14 @@ extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
-    'sphinx.ext.mathjax']
+    'rst2pdf.pdfbuilder'
+    ]
+
+pdf_documents = [
+    ('index', u'MyProject', u'My Project', u'Author Name'),
+]
+
+pdf_use_index=False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
