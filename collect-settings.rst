@@ -8,7 +8,7 @@ Main Menu
 
 ODK Collect's main menu contains the following options:
 
-.. image:: /img/collect-settings/main-menu.*
+.. image:: /img/collect-settings/main-menu.jpeg
   :alt: Main menu of ODK Collect
   :class: device-screen-vertical
 
@@ -26,7 +26,7 @@ General Settings
 
 General Settings are accessible from the :guilabel:`⋮` menu on the top-right corner. 
 
-.. image:: /img/collect-settings/general-settings.*
+.. image:: /img/collect-settings/general-settings.jpeg
   :alt: General settings
   :class: device-screen-vertical
 
@@ -37,7 +37,7 @@ It allows us to configure the following:
 Server Settings
 ~~~~~~~~~~~~~~~~~
 
-.. image:: /img/collect-settings/server-settings.*
+.. image:: /img/collect-settings/server-settings.jpeg
   :alt: Server settings
   :class: device-screen-vertical
 
@@ -50,7 +50,7 @@ See :ref:`connecting-to-server` for more details.
 User Interface Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/collect-settings/ui-settings.*
+.. image:: /img/collect-settings/ui-settings.jpeg
   :alt: User Interface settings
   :class: device-screen-vertical
 
@@ -77,7 +77,7 @@ Map settings are included on the :menuselection:`User Interface` settings page.
 Form Management Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/collect-settings/form-management.*
+.. image:: /img/collect-settings/form-management.jpeg
   :alt: Form Management settings
   :class: device-screen-vertical
 
@@ -103,7 +103,7 @@ Form Management Settings
 User and Device Identity Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/collect-settings/und-settings.*
+.. image:: /img/collect-settings/und-settings.jpeg
   :alt: User and Device Identity Settings
   :class: device-screen-vertical
 
@@ -146,7 +146,7 @@ Admin Settings
 .. note::
   Admin settings can be **password protected**. If you set an :guilabel:`Admin Password` in the Admin settings screen, you will need to re-enter that password to access Admin settings in the future.
 
-.. image:: /img/collect-settings/admin-settings.*
+.. image:: /img/collect-settings/admin-settings.jpeg
   :alt: Admin settings menu
   :class: device-screen-vertical
 .. _admin-security:

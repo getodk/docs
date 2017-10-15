@@ -26,27 +26,27 @@ Installing on App Engine
 
 - To set up a Google Cloud Platform project, go to `Google Cloud Platform <https://cloud.google.com/>`_ and click on :guilabel:`Console` in the top right corner.
 
-.. image:: /img/aggregate-install/cloud-console.*
+.. image:: /img/aggregate-install/cloud-console.png
    :alt: An image showing the console option on the Google Cloud Platform.
 
 - You will now be asked to provide a Gmail account which you will use throughout. Sign in with a Gmail account which you wish to use.
 
-.. image:: /img/aggregate-install/email-select.*
+.. image:: /img/aggregate-install/email-select.png
    :alt: Image showing the sign in window of Gmail.
 
 - If you have never configured a Google Cloud Platform project, click on :guilabel:`Create an Empty Project`.
 
-.. image:: /img/aggregate-install/empty-project.*
+.. image:: /img/aggregate-install/empty-project.png
    :alt: Image showing Create an empty project option for first projects. 
 
 - If you have configured a Google Cloud Platform project before, this link will open onto either a page with a :guilabel:`Create Project` button and a table listing all of your projects, or it will open into one of your existing projects. In the later case, click on that project name at the top of the window.In the below image, the older project is `Project-edu`.
 
-.. image:: /img/aggregate-install/project.*
+.. image:: /img/aggregate-install/project.png
    :alt: Image showing previous project name `Project-edu`.
 
 - On clicking on the project name (In this case `Project-edu`), a window appears with a :guilabel:`+` symbol. Click on it to create a new project.   
 
-.. image:: /img/aggregate-install/create-project.*
+.. image:: /img/aggregate-install/create-project.png
    :alt: Image showing the `+` sign which denotes creating a new project.
 
 - On the project-creation pop-up dialog, type in a project name that makes sense to you. You can enter a project name and click on :guilabel:`Create` if you don't want to edit the project-id.You can choose :guilabel:`Edit` if you want to edit the project id. The project id will be the first part of the URL to your ODK Aggregate server.
@@ -56,7 +56,7 @@ Installing on App Engine
 
 - If you click on :guilabel:`Edit`, a window will appear where you can enter a project id. After changing the project id click on :guilabel:`Create` to create your project.
 
-.. image:: /img/aggregate-install/project-id.*
+.. image:: /img/aggregate-install/project-id.png
    :alt: Image showing the window which comes after clicking on edit option to change the project id.
 
 .. tip::
@@ -65,47 +65,47 @@ Installing on App Engine
 
 - After few seconds, you will see a notification in the top right corner of the window.
   
-.. image:: /img/aggregate-install/notification.*
+.. image:: /img/aggregate-install/notification.png
    :alt: Image showing blue notification icon.
 
 - Click on the notification icon and select the first option from the dropdown menu then. The option is labelled as `Create Project:your project name`.
 
-.. image:: /img/aggregate-install/go-to-project.*
+.. image:: /img/aggregate-install/go-to-project.png
    :alt: Image showing the option to create your project.      
 
 - Upon creating the Google Cloud Platform project, you will be on an empty-project screen, showing the project info. If you want to change any settings, click on :guilabel:`Go to project settings`. Otherwise click on the menu icon (three horizontal bars) to the left of :guilabel:`Google Cloud Platform` in the upper left side of the screen.
 
-.. image:: /img/aggregate-install/project-settings.*
+.. image:: /img/aggregate-install/project-settings.png
    :alt: Image showing the project settings option and the menu option.
 
 - Now and select :guilabel:`App Engine` from the dropdown menu.
 
-.. image:: /img/aggregate-install/app-engine.*
+.. image:: /img/aggregate-install/app-engine.png
    :alt: Image showing App Engine option.
 
 - Click on the :guilabel:`Select a language` dropdown under the `Your first app` heading.
 
-.. image:: /img/aggregate-install/language-select.*
+.. image:: /img/aggregate-install/language-select.png
    :alt: Image showing option to select a language.
 
 - Now choose `Java`.
 
-.. image:: /img/aggregate-install/select-java.*
+.. image:: /img/aggregate-install/select-java.png
    :alt: Image showing various language options to choose from.
 
 - Select the datacenter location where this server will operate and click :guilabel:`Next`.
 
-.. image:: /img/aggregate-install/select-region.*
+.. image:: /img/aggregate-install/select-region.png
    :alt: Image showing options to choose a region where the server will operate.
 
 - Google will then begin configuring the server.
 
-.. image:: /img/aggregate-install/prepare-engine.*
+.. image:: /img/aggregate-install/prepare-engine.png
    :alt: Image showing Google configuring the server.
 
 - When this completes, you will be directed to begin a tutorial to install a sample application. Choose :guilabel:`Cancel Tutorial` and confirm that you want to not perform that tutorial.
 
-.. image:: /img/aggregate-install/cancel-tutorial.*
+.. image:: /img/aggregate-install/cancel-tutorial.png
    :alt: Image showing option to cancel the tutorial.
 
 - Download `ODK Aggregate <https://opendatakit.org/downloads/>`_. Select the latest release for your operating system.
@@ -120,27 +120,27 @@ Installing on App Engine
 
 - The installer will guide you through configuring ODK Aggregate for App Engine. Click on :guilabel:`Forward` button each time you complete a step to move ahead.
 
-.. image:: /img/aggregate-install/setup.*
+.. image:: /img/aggregate-install/setup.png
    :alt: Image showing the installer for ODK Aggregate.
 
 - Accept the license agreement and click on :guilabel:`Forward` button.
 
-.. image:: /img/aggregate-install/agreement.*
+.. image:: /img/aggregate-install/agreement.png
    :alt: Image showing license agreement.
 
 - Select a parent directory under which an `ODK Aggregate` directory will be created to contain the configured software. Click on the :guilabel:`folder` icon to choose a directory.
 
-.. image:: /img/aggregate-install/directory-setup.*
+.. image:: /img/aggregate-install/directory-setup.png
    :alt: Image showing window to choose a parent directory. 
 
 - In the next window choose `Google App Engine` as the platform for the Aggregate server.
 
-.. image:: /img/aggregate-install/choose-platform.*
+.. image:: /img/aggregate-install/choose-platform.png
    :alt: Image displaying options to choose a platform for Aggregate.
 
 - Enter a name for your ODK Aggregate instance.
 
-.. image:: /img/aggregate-install/set-name.*
+.. image:: /img/aggregate-install/set-name.png
    :alt: Image showing window to select a name for your Aggregate instance.
 
 .. note::    
@@ -153,7 +153,7 @@ Installing on App Engine
 
 - Enter a superuser name in the next window.
 
-.. image:: /img/aggregate-install/superuser.*
+.. image:: /img/aggregate-install/superuser.png
    :alt: Image showing window to enter a superuser name.
 
 .. note::
@@ -165,7 +165,7 @@ Installing on App Engine
 
 - In the next window enter the project id of the project you created on the Google Cloud platform.
 
-.. image:: /img/aggregate-install/application-id.*
+.. image:: /img/aggregate-install/application-id.png
    :alt: Image showing project id of the project created earlier entered in the application id box.
 
 - Now the installer will configure Aggregate and launch a upload tool.  
@@ -176,7 +176,7 @@ Installing on App Engine
 
 - Enter the Gmail account in the upload tool that you specified to use the App Engine. This will enable the :guilabel:`Get Token` button.
 
-.. image:: /img/aggregate-install/get-token.*
+.. image:: /img/aggregate-install/get-token.png
    :alt: Image showing the window for upload tool to enter the email id and get a token.
 
 - Click the :guilabel:`Get Token` button.Two things happen after this:-
@@ -194,7 +194,7 @@ Installing on App Engine
 
 - Copy the code from the browser into the upload tool's pop-up dialog and click :guilabel:`OK`.
 
-.. image:: /img/aggregate-install/token.*
+.. image:: /img/aggregate-install/token.png
    :alt: Image showing pop-up dialog to enter a token.
 
 .. tip::
@@ -203,7 +203,7 @@ Installing on App Engine
 
 - The output should look something like that in the image.
   
-.. image:: /img/aggregate-install/success-output.*
+.. image:: /img/aggregate-install/success-output.png
    :alt: Image showing output for a successful result.
 
 .. tip::
@@ -213,7 +213,7 @@ Installing on App Engine
 
 - Now click :guilabel:`Upload ODK Aggregate`.
 
-.. image:: /img/aggregate-install/upload.*
+.. image:: /img/aggregate-install/upload.png
    :alt: Image showing successful output and upload option.
 
 .. note::
@@ -257,17 +257,17 @@ Installing on App Engine
 
 - Click on :guilabel:`ALLOW` in the next window.
 
-.. image:: /img/aggregate-install/allow.*
+.. image:: /img/aggregate-install/allow.png
    :alt: Image showing window asking for App Engine Permissions.
 
 - Click on the project-id URL in the top right corner of the window.
 
-.. image:: /img/aggregate-install/project-aggregate.*
+.. image:: /img/aggregate-install/project-aggregate.png
    :alt: Image showing a window where server url is displayed on top right corner.
 
 -  You will go to now your ODK Aggregate server. You can click on :guilabel:`Log In` to log in, enter the ODK Aggregate username (superuser) that you specified within the installer (the initial password for this username will be aggregate) and access the site administration screens for your server.  
 
-.. image:: /img/aggregate-install/server.*
+.. image:: /img/aggregate-install/server.png
    :alt: Image showing ODK Aggregate server and log in option.
 
 .. _change-size:
