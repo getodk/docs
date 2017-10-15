@@ -14,3 +14,4 @@ sphinx-rtd-theme==0.2.4
 sphinxcontrib-websupport==1.0.1
 typing==3.6.1
 update==0.4.4
+rst2pdf
