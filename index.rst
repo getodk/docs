@@ -53,6 +53,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
    aggregate-install
    aggregate-deployment-planning
    aggregate-use
+   aggregate-upgrade
    form-uploader
    oauth2-service
    aggregate-limitations
