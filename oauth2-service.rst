@@ -28,29 +28,29 @@ Credentials are associated with a Google Cloud Platform project.
 
 1. If you are using App Engine for your ODK Aggregate server, then you have already set up a Google Cloud Platform project -- you just need to navigate to it. Otherwise, you will need to create one. In either case, go to Google Cloud Platform and click on :guilabel:`Console`:
 
-.. image:: /img/oauth2-service/my-console.*
+.. image:: /img/oauth2-service/my-console.png
    :alt: Image showing console.
    
 2. If you have never configured a Google Cloud Platform project, please refer :ref:`this section <install-app-engine>` to configure a project using App Engine under which aggregate server would run.
    
 3. If you have already configured you should be able to see the project screen, showing the project name in the upper-left side of the screen.In this case, I named my project "My Project 80299" and project id "regal-mediator-181503".
 
-.. image:: /img/oauth2-service/myconsole-2.*
+.. image:: /img/oauth2-service/myconsole-2.png
    :alt: Image showing project screen.
    
 4. Click on the menu icon(three horizontal bars) in the upper-left side of the screen.
 
-.. image:: /img/oauth2-service/menu-icon.*
+.. image:: /img/oauth2-service/menu-icon.png
    :alt: Image showing menu.
    
 5. Now select :guilabel:`APIs & services` from the menu and then select :guilabel:`Library` option
 
-.. image:: /img/oauth2-service/api-menu.*
+.. image:: /img/oauth2-service/api-menu.png
    :alt: Image showing APIs option.
    
 6. This will take you to the lists all the application APIs that Google offers. 
 
-.. image:: /img/oauth2-service/api-library.*
+.. image:: /img/oauth2-service/api-library.png
    :alt: Image showing lists pf application of APIs.
 
 
@@ -65,17 +65,17 @@ The Sheets API is under the same section heading as the Drive API.
 
 7. For each of these APIs, click on the API. This takes you to an information page for that API. On that page, click on the :guilabel:`Enable` button. E.g., on the Google Maps Javascript API v3 page, it looks like this:
 
-.. image:: /img/oauth2-service/enable-api.*
+.. image:: /img/oauth2-service/enable-api.png
    :alt: Image showing information page for API.
    
 8. After clicking on :guilabel:`Enable`, if you have more application APIs to enable, click on the back-arrow within the page to return to the list of application APIs (and repeat the previous step):
 
-.. image:: /img/oauth2-service/after-enable.*
+.. image:: /img/oauth2-service/after-enable.png
    :alt: Image showing after enable screen.
    
 Otherwise, after enabling it, click on the :guilabel:`Create Credentials` button:
 
-.. image:: /img/oauth2-service/after-enable-create.*
+.. image:: /img/oauth2-service/after-enable-create.png
    :alt: Image showing Credentials option.
    
 9. And on the credentials page, choose to create a ``service account``.
@@ -85,7 +85,7 @@ Otherwise, after enabling it, click on the :guilabel:`Create Credentials` button
    
 10. This takes you to the list of service accounts for your Google Cloud Platform project.Click on :guilabel:`Create service account`.
 
-.. image:: /img/oauth2-service/create-service-account.*
+.. image:: /img/oauth2-service/create-service-account.png
    :alt: Image showing create service account option.
    
 .. note::
@@ -94,22 +94,22 @@ Otherwise, after enabling it, click on the :guilabel:`Create Credentials` button
   
 11. On the next screen, enter a name for the service account (e.g., "ODK Oauth2 Publishing"), choose to furnish a new private key, select a role, and request the P12 format. Then click :guilabel:`Create`:
 
-.. image:: /img/oauth2-service/create-service-dialog.*
+.. image:: /img/oauth2-service/create-service-dialog.png
    :alt: Image showing service account dialog box.
    
 12. The private key for this service account will begin downloading (it will have a .p12 file extension). After it has downloaded, click :guilabel:`Close`.
 
-.. image:: /img/oauth2-service/created-account.*
+.. image:: /img/oauth2-service/created-account.png
    :alt: Image showing service account and key created dialog box.
 
 13. This returns you to the list of service accounts. Click on the the menu icon to the left of **Google Cloud Platform** and select :guilabel:`APIs & services` from the menu and then select :guilabel:`Credentials` option.
 
-.. image:: /img/oauth2-service/credentials.*
+.. image:: /img/oauth2-service/credentials.png
    :alt: Image showing Credentials option.
    
 14. Choose :guilabel:`Create credentials` and select ``API Key``.
 
-.. image:: /img/oauth2-service/create-credentials.*
+.. image:: /img/oauth2-service/create-credentials.png
    :alt: Image showing create credentials option.
    
 15. After selecting ``API key`` an API key will be generated, copy it as it will be used further and click on :guilabel:`Restrict Key`.
@@ -119,27 +119,27 @@ Otherwise, after enabling it, click on the :guilabel:`Create Credentials` button
    
 16. Enter a name (e.g., "ODK Aggregate"), enter the hostname (and port, if nonstandard) of your ODK Aggregate server, followed by a slash and star and choose the key restriction(**HTTP referrers**). Then click :guilabel:`Save`: 
 
-.. image:: /img/oauth2-service/restrict-api.*
+.. image:: /img/oauth2-service/restrict-api.png
    :alt: Image showing how to restrict api .
    
 17. You will be redirected to credentials page, now click on :guilabel:`OAuth consent screen` tab.
 
-.. image:: /img/oauth2-service/oauth.*
+.. image:: /img/oauth2-service/oauth.png
    :alt: Image showing OAuth consent screen tab.
 
 18. Enter a product name and email address on this screen and fill in any additional fields that you might want to provide.Click :guilabel:`Save`.
 
-.. image:: /img/oauth2-service/credentials-info.*
+.. image:: /img/oauth2-service/credentials-info.png
    :alt: Image showing credentials information.
    
 19. Once again, click on the :guilabel:`Credentials` tab if not redirected, select the ``ODK Oauth2 Publishing`` key that you created above, and choose ``Manage service accounts``:
 
-.. image:: /img/oauth2-service/manage-service-account.*
+.. image:: /img/oauth2-service/manage-service-account.png
    :alt: Image showing manage service account option.
    
 20. This takes you to details about that **ODK Oauth2 Publishing** service account. Keep this browser screen open; you will need to cut and paste values from this screen into ODK Aggregate. This is what those details look like:
 
-.. image:: /img/oauth2-service/service-account-id.*
+.. image:: /img/oauth2-service/service-account-id.png
    :alt: Image showing details about that ODK Oauth2 Publishing service account.
    
 .. note::
@@ -159,7 +159,7 @@ To upload the credentials:
 
 1. Log onto ODK Aggregate as a Site Administrator. Click on the :guilabel:`Site Admin` then click on :guilabel:`Preferences` tab.Now, click on :guilabel:`Change Google API Credentials`.
 
-.. image:: /img/oauth2-service/change-google-api.*
+.. image:: /img/oauth2-service/change-google-api.png
    :alt: Image showing Change Google API Credentials option.
    
 2. This will bring up the **Google API Credentials Upload** dialog.From the Google website, copy and paste the **API key** into ODK Aggregate's ``Simple API Key`` field.
@@ -167,17 +167,17 @@ To upload the credentials:
 4. From the Google website, copy and paste the **Service account** section's "Key ID" into ODK Aggregate's ``ID (Key ID) or perhaps Client ID`` field.
 5. From the Google website, copy and paste the **Service account ID** (it looks like an Email address) into ODK Aggregate's ``Service Account ID (looks like an Email address)`` field:
 
-.. image:: /img/oauth2-service/upload-api.*
+.. image:: /img/oauth2-service/upload-api.png
    :alt: Image showing Google API Credentials Upload dialog box.
    
 6. Click on :guilabel:`Upload Google Credentials`. This should present a successful-upload pop-up:
 
-.. image:: /img/oauth2-service/success.*
+.. image:: /img/oauth2-service/success.png
    :alt: Image showing successful upload pop-up box.
    
 7. Click on the :guilabel:`X` to close that pop-up. The ``Simple API Access Key`` and ``Google OAuth2 Credentials`` should be updated:
 
-.. image:: /img/oauth2-service/site-admin.*
+.. image:: /img/oauth2-service/site-admin.png
    :alt: Image showing updated information.
    
 Your ODK Aggregate server is now configured to support publishing of data to Google Spreadsheets and Google Fusion Tables.

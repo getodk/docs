@@ -8,14 +8,14 @@ Main Menu
 
 ODK Collect's main menu contains the following options:
 
-.. image:: /img/collect-settings/main-menu.*
+.. image:: /img/collect-settings/main-menu.jpeg
   :alt: Main menu of ODK Collect
   :class: device-screen-vertical
 
 - :menuselection:`Fill Blank Form` allows you to fill any blank form already there in your data collection.
 - :menuselection:`Edit Saved Form` looks for forms you've saved, lists them and allows you to edit them.
 - :menuselection:`Send Finalized Form` lists all the finalized forms and gives you an option to send them.
-- :menuselection:`View Sent Form` displays the forms that have been sent.
+- :menuselection:`View Sent Form` displays the forms that have been sent even if they were deleted.
 - :menuselection:`Get Blank form` lists all available ODK :term:`Collect` :term:`form` :term:`widget` (question types). The details about which are available on :ref:`basic-form-widgets`.
 - :menuselection:`Delete Saved Form` lists all the Saved and Blank Forms and allows you to delete them.
 
@@ -26,7 +26,7 @@ General Settings
 
 General Settings are accessible from the :guilabel:`⋮` menu on the top-right corner. 
 
-.. image:: /img/collect-settings/general-settings.*
+.. image:: /img/collect-settings/general-settings.jpeg
   :alt: General settings
   :class: device-screen-vertical
 
@@ -37,7 +37,7 @@ It allows us to configure the following:
 Server Settings
 ~~~~~~~~~~~~~~~~~
 
-.. image:: /img/collect-settings/server-settings.*
+.. image:: /img/collect-settings/server-settings.jpeg
   :alt: Server settings
   :class: device-screen-vertical
 
@@ -50,7 +50,7 @@ See :ref:`connecting-to-server` for more details.
 User Interface Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/collect-settings/ui-settings.*
+.. image:: /img/collect-settings/ui-settings.jpeg
   :alt: User Interface settings
   :class: device-screen-vertical
 
@@ -77,7 +77,7 @@ Map settings are included on the :menuselection:`User Interface` settings page.
 Form Management Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/collect-settings/form-management.*
+.. image:: /img/collect-settings/form-management.jpeg
   :alt: Form Management settings
   :class: device-screen-vertical
 
@@ -103,7 +103,7 @@ Form Management Settings
 User and Device Identity Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/collect-settings/und-settings.*
+.. image:: /img/collect-settings/und-settings.jpeg
   :alt: User and Device Identity Settings
   :class: device-screen-vertical
 
@@ -146,7 +146,7 @@ Admin Settings
 .. note::
   Admin settings can be **password protected**. If you set an :guilabel:`Admin Password` in the Admin settings screen, you will need to re-enter that password to access Admin settings in the future.
 
-.. image:: /img/collect-settings/admin-settings.*
+.. image:: /img/collect-settings/admin-settings.jpeg
   :alt: Admin settings menu
   :class: device-screen-vertical
 .. _admin-security:

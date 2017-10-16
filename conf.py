@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 #
 # Open Data Kit documentation build configuration file, created by
@@ -30,13 +30,20 @@
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
+# ones. rst2pdf makes the pdf while building.
 extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
-    'sphinx.ext.mathjax']
+    'rst2pdf.pdfbuilder'
+    ]
+    
+pdf_documents = [
+    ('index', u'ODKDocs', u'ODKDocs', u'OpenDataKit'),
+]
+
+pdf_use_index=False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
