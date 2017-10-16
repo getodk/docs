@@ -6,10 +6,10 @@ Briefcase vs Aggregate
 Briefcase
 -------------
 
-- Briefcase provides a mechanism to pull blank and finalized forms from ODK Collect or ODK Aggregate or any custom ODK directory into a local Briefcase storage location.
+- Briefcase provides a mechanism to pull blank forms and finalized forms from ODK Collect or ODK Aggregate or any custom ODK directory into a local Briefcase storage location.
 - It can push blank forms and finalized forms from Briefcase storage location to an Aggregate 1.0 instance.
 - Export the finalized form to a CSV file for processing by other applications.
-- It can be used to transfer data across incompatible upgrades of ODK Aggregate as well as it is required to decrypt any encrypted submissions.
+- It can be used to transfer data across incompatible upgrades of ODK Aggregate and it is required to decrypt any encrypted submissions.
 - Briefcase is good for offline use when there is no need for a server. It is often enough for smaller projects.
 - It can be used to back up all forms and submissions on Aggregate. In particular, Briefcase's :ref:`command line interface <cli-use>` makes this easier.
 
@@ -40,7 +40,7 @@ ODK Briefcase can pull data directly off ODK Collect devices but does not suppor
 To manually install forms onto your ODK Collect device:
 
 - Connect the device to your computer with a USB cable and either, for Android 2.x devices, turn on USB storage (on the Android device), or, for Android 4.x devices, choose to connect it as a Media device (on the computer).
-- On the computer, copy the form definition and media folder to the /odk/forms directory. For Mac OS/X, if it is an Android 4.x device, you will need to use `Android File Transfer <https://www.android.com/filetransfer/>`_ to accomplish this.
+- On the computer, copy the form definition and media folder to the :file:`/odk/forms` directory. For Mac OS/X, if it is an Android 4.x device, you will need to use `Android File Transfer <https://www.android.com/filetransfer/>`_ to accomplish this.
 - On Android 2.x, turn off USB storage.
 - Run ODK Collect
 - Choose "Fill Blank Form".

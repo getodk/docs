@@ -471,7 +471,7 @@ Aggregate v1.4
 1. Changed behavior: simple JSON publisher now POSTs an application/json entity body; added option for how to treat binary content. Incompatible change; see Upgrading section if you were using the Z-ALPHA JSON Server
 2. Changed representation: ODK Tabled storage schema has been revised. Incompatible change; see Upgrading section if you used your server to upload or download data to ODK Tables. Syncing with ODK Tables is broken in this release. Only v1.3.4 on Google AppEngine works with the ODK Tables alpha (we are in the middle of changing table schemas). 
 3. Fix: file exports were not properly writing UTF-8 character sets.
-4. Fix: postgreSQL failures on some forms (column names must be less than 63 characters)
+4. Fix: PostgreSQL failures on some forms (column names must be less than 63 characters)
 5. Upgrade Aggregate’s Google publishers to use the updated Oauth2 libraries (e.g., Google Fusion Tables, Google Spreadsheet). Publishing from Google Apps domains does not work (it never has). 
 6. Add support for publishing data to Google Maps Engine.
 7. Rework Spreadsheet and Fusion Table publishers to use Google libraries (consistent with the new Google Maps Engine publisher)
@@ -490,14 +490,14 @@ Aggregate v1.4
 Aggregate v1.3.4
 ~~~~~~~~~~~~~~~~~~ 
 
-1. Fix for the v1.3.3 fix for Google AppEngine -- The original fix caused the creation of new publishers to Google Spreadsheets to fail, export to files to fail, form deletions to fail, and purge-sent-submisions actions to fail. This fix should rectify those issues.  
+1. Fix for the v1.3.3 fix for Google AppEngine -- The original fix caused the creation of new publishers to Google Spreadsheets to fail, export to files to fail, form deletions to fail, and purge-sent-submissions actions to fail. This fix should rectify those issues.  
 
 .. _v1.3.3:
 
 Aggregate v1.3.3
 ~~~~~~~~~~~~~~~~~
 
-1. Fix for Google AppEngine -- entity keys (unique identifiers assigned by Google AppEngine and used internally by ODK Aggregate) may now contains slashes. Submissions that have been assigned an entity key containing a slash were breaking the 'SubmissionKey' parsing used when publishing, retrieving images, accessing repeat groups, or retrieving submissions using ODK Briefcase.
+1. Fix for Google AppEngine -- entity keys (unique identifiers assigned by Google AppEngine and used internally by ODK Aggregate) may now contain slashes. Submissions that have been assigned an entity key containing a slash were breaking the 'SubmissionKey' parsing used when publishing, retrieving images, accessing repeat groups, or retrieving submissions using ODK Briefcase.
 
 .. _v1.3.2:
 
@@ -621,7 +621,7 @@ Aggregate v1.2
 .. admonition:: Upgrade notes
    :class: upgrade
 
-   Existing 1.0 installations can upgrade to the 1.2 release, but, once upgraded, if you use the new form-versioning feature,these installations cannot downgrade from 1.2 to the earlier 1.0 releases.
+   Existing 1.0 installations can upgrade to the 1.2 release, but, once upgraded, if you use the new form-versioning feature, these installations cannot downgrade from 1.2 to the earlier 1.0 releases.
 
    MySQL and PostgreSQL require special upgrade instructions. The ``_filter_group`` table has a new column. If you are running ODK Aggregate 1.0 or 1.1, you will need to issue an ``alter table`` command on this table to add this column.
 
@@ -716,7 +716,7 @@ On MySQL or PostgreSQL
 
 .. warning::
 
-   The primary upgrade impact is the loss of all registered users and their privileges (what the manual steps above do). Beta 3 changes the user configuration. Registered users are now either gmail accounts or ODK Aggregate usernames. ODK Aggregate now supports only anonymous access and/or registered users.
+   The primary upgrade impact is the loss of all registered users and their privileges (what the manual steps above do). Beta 3 changes the user configuration. Registered users are now either Gmail accounts or ODK Aggregate usernames. ODK Aggregate now supports only anonymous access and/or registered users.
 
 .. _v0.9xtov1.x:
 
@@ -734,7 +734,7 @@ Migration from ODK Aggregate 0.9x to 1.x
 Since Google is now charging for AppEngine usage, the lowest-cost sequence for the AppEngine migration is as follows:
 
 1. Upgrade ODK Aggregate 0.9.x to the latest 0.9.x release. If you have any 0.9.x release, you can upgrade to the latest 0.9.x release without any changes (the newer updates are backward compatible). Get the latest Aggregate release from the ODK Downloads page `here <https://opendatakit.org/downloads/download-info/odk-aggregate-v0-9-8-1/>`_.
-2. Create an new application id for the 1.x instance.
+2. Create a new application id for the 1.x instance.
 3. Download the latest installer for ODK Aggregate 1.x, run it, and deploy to the new application id. For installation process, see the :ref:`Aggregate Installation Guide <install-app-engine>`.
 4. Manually download the form definitions (as XML) from Aggregate 0.9.x. Browse to your Aggregate 0.9.x instance and choose the :guilabel:`View XML` button on the main forms page. Then, from the resulting page, choose the :guilabel:`Download XML` button. Repeat for every form you have on the system.
 
@@ -742,14 +742,14 @@ Since Google is now charging for AppEngine usage, the lowest-cost sequence for t
 
    You may wish to specify a new folder for the downloads of your forms so that you can easily locate and edit them.
 
-5. Manually upload the form definitions to Aggregate 1.x, editing and fixing the form definitions as needed. First sign in to your Aggregate server. Go to the :guilabel:`Forms List` sub-tab under :guilabel:`Form Management` tab. Click the :guilabel:`Add New Form` button. Select the form to upload, and click on :guilabel:`Upload Form`. Repeat with the remaining forms.
+5. Manually upload the form definitions to Aggregate 1.x, editing and fixing the form definitions as needed. First sign into your Aggregate server. Go to the :guilabel:`Forms List` sub-tab under :guilabel:`Form Management` tab. Click the :guilabel:`Add New Form` button. Select the form to upload, and click on :guilabel:`Upload Form`. Repeat with the remaining forms.
 
 .. warning::
 
    Following issues may arise in form upload process:
 
    - Your form definition may be using *xmlns="myformid"* to define the Identifier (Aggregate 0.9.x) now referred to as the Form Id (Aggregate 1.x) of the form. In Aggregate 1.x, we enforce that all xmlns assignments conform to URL syntax. This is a w3c standard and a requirement of some Xml parsers and editing systems. Since most users have just a simple short alphanumeric id for their forms, the fix is to change from using xmlns to using id to define your "form id". E.g., use *id="myformid"* instead. This variant allows "myformid" to be any alphanumeric string with additional non-space characters (e.g., dashes and underscores).
-   - Aggregate 1.0.1 warns you if you have fields in the form that do not have defined data types. I.e., they lack any <bind> expressions or their <bind> expression does not specify a type="datatype" expression, with datatype being one of the known data types. This is a concern because Aggregate can filter results based upon the values of individual columns. The ranking order for the string "111" would place it before (less than) "13", but that would be incorrect if this field were actually an integer value. The warnings are to catch omissions like this so that filters can work properly and so that data can be properly published to Fusion Tables.
+   - Aggregate 1.0.1 warns you if you have fields in the form that do not have defined data types. I.e., they lack any <bind> expressions or their <bind> expression does not specify a type="datatype" expression, with datatype being one of the known data types. This is a concern because Aggregate can filter results based on the values of individual columns. The ranking order for the string "111" would place it before (less than) "13", but that would be incorrect if this field were actually an integer value. The warnings are to catch omissions like this so that filters can work properly and so that data can be properly published to Fusion Tables.
 
 
 6. Configure the Aggregate 1.x instance to accept submissions from ODK Collect. If you are running ODK Collect 1.1.5, you will need to configure Aggregate 1.x to grant the anonymousUser the Data Collector privilege. This allows unauthenticated users to submit data to Aggregate 1.x. If you are running ODK Collect 1.1.7 or higher, you can choose to define one or more local usernames and passwords, and configure ODK Collect 1.1.7 to identify itself with one of those usernames and passwords when accessing the server. Steps to do either of this are as follows:
@@ -760,14 +760,14 @@ Since Google is now charging for AppEngine usage, the lowest-cost sequence for t
    d. Click :guilabel:`Save Changes` to apply your changes.
    e. Then, for each username you created, you must click :guilabel:`Change Password` and set the password for that username.
 
-7. Configure all your ODK Collect clients to use the new Aggregate 1.x instance. On both ODK Collect 1.1.5 and 1.1.7, ensure that the Server URL points to the new instance and begins with *https* (for AppEngine instances). For MySQL or PostgreSQL systems, specify *https* only if the server has an SSL certificate. sernames and passwords into the phone. 
+7. Configure all your ODK Collect clients to use the new Aggregate 1.x instance. On both ODK Collect 1.1.5 and 1.1.7, ensure that the Server URL points to the new instance and begins with *https* (for AppEngine instances). For MySQL or PostgreSQL systems, specify *https* only if the server has an SSL certificate. For ODK Collect 1.1.7, if you are requiring authentication, enter one of the configured usernames and passwords into the phone. 
 
-7. :doc:`Install <briefcase-install>` the latest ODK Briefcase application.
-8. Run ODK Briefcase, choosing to :ref:`pull all forms <pull-from-aggregate>` from your 0.9.x instance to the local server. You will need enough space to store these files.
-9. For any form definitions you have changed, manually overwrite the downloaded form definition within the Briefcase directory with the one updated for Aggregate 1.x. The ODK Briefcase Storage Area has a :file:`/forms` directory under it, and, in that, it has directories for each form downloaded from Aggregate 0.9.x. The form definition is within that directory and must have the same name (with a file extension of .xml) as the directory containing it.
-10. Run ODK Briefcase, choosing to :ref:`push all forms <push-to-aggregate>` from your local server to the new Aggregate 1.x instance.
-11. Validate that your Aggregate 1.x instance has all the data you expect, and the values are complete and correct (by, e.g., publishing to Fusion Tables and comparing this dataset to the corresponding dataset produced by 0.9.x).
-12. Once you are comfortable with the operations of the Aggregate 1.x instance, you should go to the Aggregate 0.9.x dashboard and delete that application id.
+8. :doc:`Install <briefcase-install>` the latest ODK Briefcase application.
+9. Run ODK Briefcase, choosing to :ref:`pull all forms <pull-from-aggregate>` from your 0.9.x instance to the local server. You will need enough space to store these files.
+10. For any form definitions you have changed, manually overwrite the downloaded form definition within the Briefcase directory with the one updated for Aggregate 1.x. The ODK Briefcase Storage Area has a :file:`/forms` directory under it, and, in that, it has directories for each form downloaded from Aggregate 0.9.x. The form definition is within that directory and must have the same name (with a file extension of .xml) as the directory containing it.
+11. Run ODK Briefcase, choosing to :ref:`push all forms <push-to-aggregate>` from your local server to the new Aggregate 1.x instance.
+12. Validate that your Aggregate 1.x instance has all the data you expect, and the values are complete and correct (by, e.g., publishing to Fusion Tables and comparing this dataset to the corresponding dataset produced by 0.9.x).
+13. Once you are comfortable with the operations of the Aggregate 1.x instance, you should go to the Aggregate 0.9.x dashboard and delete that application id.
  
    a. Click on the :guilabel:`Application Settings` link on the left sidebar under the Administration heading.
    b. Click on the :guilabel:`Disable Application..` button on this page.
@@ -778,7 +778,7 @@ This is more cost-effective than deleting the forms (and data) from the old inst
 
 .. tip::
 
-   If you have to do this migration mid-survey, and need to be able to incrementally pull data from ODK Aggregate v0.9.x, you should follow these steps:
+   If you have to do this migration mid-survey and need to be able to incrementally pull data from ODK Aggregate v0.9.x, you should follow these steps:
 
    1. Pull data from ODK Aggregate v0.9.x
    2. Push data to ODK Aggregate v1.x
