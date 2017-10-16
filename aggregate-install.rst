@@ -218,9 +218,41 @@ Installing on App Engine
 
 .. note::
 
-   - Clicking on :guilabel:`Upload ODK Aggregate` will spew a very long list of progress messages into the Output window. The `listBackends :` and `deleteBackendBackground :` sections may report "500 Internal Server Error" and Severe errors, and Warnings about the use of Backends, a deprecated feature. This is expected.
-   - Toward the bottom, the update : section should not report errors and at the end, a `status : Action Succeeded!` line should be written. This indicates that the upload completed successfully. 
+   - Clicking on :guilabel:`Upload ODK Aggregate` will spew a very long list of progress messages into the Output window. The `listBackends :` and `deleteBackendBackground :` sections may report "500 Internal Server Error" and Severe errors, and Warnings about the use of Backends, a deprecated feature. This is expected. Here is a list of few of those errors:
+   
+   .. code-block:: none
 
+      listBackends : Warning: This application uses Backends, a deprecated feature that has been replaced by Modules, which offers additional functionality. Please convert your backends to modules as described at: https://developers.google.com/appengine/docs/java/modules/converting.
+
+   .. code-block:: none
+       
+      listBackends! : WARNING: Error posting to URL: https://appengine.google.com/api/backends/delete?backend=background&app_id=project-123-181306&   
+      listBackends! : 500 Internal Server Error
+
+   .. code-block:: none
+   
+      listBackends : Unable to list backends: Error posting to URL: https://appengine.google.com/api/backends/list?app_id=project-123-181306&
+      listBackends : 500 Internal Server Error
+
+   .. code-block:: none
+   
+      deleteBackendBackground : Warning: This application uses Backends, a deprecated feature that has been replaced by Modules, which offers additional functionality. Please convert your backends to modules as described at: https://developers.google.com/appengine/docs/java/modules/converting.
+
+   .. code-block:: none
+   
+      deleteBackendBackground!: WARNING: Error posting to URL: https://appengine.google.com/api/backends/delete?backend=background&app_id=project-123-181306&
+      deleteBackendBackground!: 400 Bad Request      
+
+   .. code-block:: none
+      
+      deleteBackendBackground : Unable to delete backend: Error posting to URL: https://appengine.google.com/api/backends/delete?backend=background&app_id=project-123-181306& 
+      deleteBackendBackground : 400 Bad Request     
+           
+
+   - Toward the bottom, the `update :` section should not report errors and at the end, a `status : Action Succeeded!` line should be written. This indicates that the upload completed successfully. 
+   - To get a more clear view, you can see an `example log <https://opendatakit.org/wp-content/uploads/Apr2016-GoogleCloud/exampleUploadScriptOutput.txt>`_. 
+   
+    
 - Once the updater script has run and uploaded the ODK Aggregate configuration to App Engine, return to the Google Cloud Platform console. With the console displaying your project, click on the menu icon (three horizontal bars) to the right of `Google Cloud Platform` in the upper left side of the screen and select App Engine from the menu.
 
 - Click on :guilabel:`ALLOW` in the next window.
@@ -558,20 +590,6 @@ Following are basic details for setting up ODK Aggregate to run on a Linux micro
 - Once you have confirmed that your Aggregate instance is working, you can back it up by creating an image of the instance (an AMI). You can do this by going to the Instances tab in the AWS-EC2 console, then selecting the :guilabel:`Create Image (EBS AMI)` Instance Action for your instance.
 
 For screenshots and more on the general set-up of Tomcat on AWS, see the excellent three-part “Cat in the Cloud: Apache Tomcat in Amazon EC2” series at http://www.excelsior-usa.com/articles/tomcat-amazon-ec2-basic.html. Amazon’s getting-started guides are also quite helpful: http://aws.amazon.com/documentation/gettingstarted/.
-
-.. _upgrade-aggregate:
-
-Need for Upgrading
---------------------
-
-It is important to upgrade to newer ODK Aggregate versions as they come out (not necessarily immediately, but this should be something you do at least once a year).
-
-There are several reasons for this:-
-
-- `Security vulnerabilities` - we (and Google) are constantly upgrading the libraries we use with newer, safer, versions. The older your software, the greater the number of vulnerabilities in it.
-- `Hosting revisions` - Google AppEngine is a managed environment, unlike, say, AWS or other "bare-box" hosting services. Google is continuously updating features and removing support for older features in this environment. If you don't upgrade, there may not be an upgrade path that works due to these changes -- unlike "bare-box" hosting, you, and the ODK team, only have partial control over the software and hardware environment.
-- `Performance revisions` -` as we find performance issues and address them, the tools get better and faster.
-- `Enhanced capabilities` - the form-processing library (javarosa) has roughly-annual updates to add new functions (e.g., sin(), cos()) and occasionally data types. And new features are slowly added to ODK Aggregate, too.
 
 
 

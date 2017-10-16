@@ -15,6 +15,13 @@ Aggregate Limitations
 
 - Spinning up of copies of the frontend will incur faster quota usage on AppEngine. For that reason, the Aggregate configuration here specifies a 14-second queuing time threshold before a new instance is spun up. Only if at least one request is queued for longer than 14 seconds will a new instance be spun up, and then that new instance will take about 30 seconds to become live. Leaving a 15-second processing interval. This is why ODK Collect tried twice before failing a submit.
 
+- Adding blank forms through the ODK Aggregate website is limited to an overall form-and-media size of 10MB; beyond that, you have to perform multiple uploads of the form definition file with different subsets of the media files in order to fully upload the blank form and its media attachments.
+
+.. tip::
+
+   If you have many media attachments or more than 10MB of media attachments, :doc:`Form Uploader <form-uploader>` provides a quick and easy means to upload forms into ODK Aggregate.
+
+
 - ODK Aggregate 1.4.7 and earlier use a deprecated `backends` technology. Google may terminate support for that at any time with little warning. You should consider upgrading to 1.4.8.  
 
 - Aggregate v1.4.15 fixed rev 210 sync protocol. Prior to this User permissions were incorrectly being computed and filtered. This prevented resetting the server with new content from the device (but syncing with existing content worked fine). The rev 210 sync protocol is incompatible with anything prior to rev 210.
