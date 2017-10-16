@@ -19,7 +19,7 @@ Briefcase
 Aggregate
 ------------
 
-- Aggregate provides ready-to-deploy server to provide blank forms to ODK Collect.
+- Aggregate provides a ready-to-deploy server to provide blank forms to ODK Collect.
 - It accepts finalized forms from ODK Collect and manages and visualizes the collected data.
 - Export data as CSV file, KML file, JSON file (e.g., as CSV files for spreadsheets, or as KML files for Google Earth).
 - It can be used to publish data to external systems.
@@ -35,7 +35,7 @@ Aggregate
 ODK Briefcase as a replacement for ODK Aggregate
 --------------------------------------------------
 
-ODK Briefcase can pull data directly off ODK Collect devices, but does not support pushing blank forms to ODK Collect. To use ODK Briefcase as a replacement for ODK Aggregate, you must manually install the forms on your ODK Collect device.
+ODK Briefcase can pull data directly off ODK Collect devices but does not support pushing blank forms to ODK Collect. To use ODK Briefcase as a replacement for ODK Aggregate, you must manually install the forms on your ODK Collect device.
 
 To manually install forms onto your ODK Collect device:
 
@@ -45,6 +45,6 @@ To manually install forms onto your ODK Collect device:
 - Run ODK Collect
 - Choose "Fill Blank Form".
 
-ODK Collect will scan the directory for new forms, parse them, and make them available in this list. It can take several moments for large forms to appear. When ODK Collect has completed scanning for new forms, it will display "Finished scanning". All forms are loaded in the second line at the top of this screen.
+ODK Collect will scan the directory for new forms, parse them, and make them available in this list. It can take several moments for large forms to appear. When ODK Collect has completed scanning for new forms, it will display "Finished scanning". All forms are loaded on the second line at the top of this screen.
 
 The steps for pulling data directly into ODK Briefcase from your Android device differs between the :ref:`Android 2.x <pull-from-android2.x>` and :ref:`Android 4.x <pull-from-android4.x>` devices.

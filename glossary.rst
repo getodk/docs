@@ -89,4 +89,5 @@ Glossary
   question label
   question text
 
-    The main part body of a form question or widget. In a :term:`XLSForm`, the contents of the :th:`label`.
+    The main body of a form question or widget. In an :term:`XLSForm`, the contents of the :th:`label`.
+

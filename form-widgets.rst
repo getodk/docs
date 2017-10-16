@@ -290,7 +290,7 @@ XForm XML
   </input>
 
 .. _geotrace:
-  
+
 GeoTrace
 -----------
 
@@ -674,10 +674,10 @@ XForm XML
 Acknowledge
 -------------
 
-An acknowledgement prompt with single checkbox. In :term:`Aggregate`, a completed acknowledgement is stored as the string response ``OK``.
+An acknowledgement prompt with a single checkbox. In :term:`Aggregate`, a completed acknowledgement is stored as the string response ``OK``.
 
 .. image:: /img/form-widgets/acknowledge.*
-  :alt: The Acknowledge form widget as displayed in the ODK Collect app on an Android phone. The headline text is, "I acknowledge this acknowledgment." Below that is a single checkbox with the label, "OK. Please continue."
+  :alt: The Acknowledge form widget as displayed in the ODK Collect app on an Android phone. The headline text is, "I acknowledge this acknowledgement." Below that is a single checkbox with the label, "OK. Please continue."
 
 XLSForm Rows
 ~~~~~~~~~~~~~~~
@@ -715,7 +715,7 @@ Text Widgets
 Default Appearance
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/form-widgets/text-no-appearance.* 
+.. image:: /img/form-widgets/text-no-appearance.*
   :alt: The default String widget, as displayed in the ODK Collect app on an Android phone. The question text is "String Widget." Below that is a simple text input. Above the question text is the form group name, "Text widgets."
 
 
@@ -733,13 +733,13 @@ XForm XML
 .. code:: xml
 
   <bind nodeset="/all-widgets/text_widgets/string_widget" type="string"/>
-  
+
   <input ref="/all-widgets/text_widgets/string_widget">
      <label>String widget</label>
   </input>
-  
-  
-  
+
+
+
 .. _string-number:
 
 String Number
@@ -747,7 +747,7 @@ String Number
 
 A numerical input that treats the input as a string, rather than a number.
 
-.. image:: /img/form-widgets/string-number.* 
+.. image:: /img/form-widgets/string-number.*
   :alt: The text widget, with numerical entry, as displayed in the ODK Collect app on an Android phone. The question text is "String number widget." The hint text is, "text type with numbers appearance." Below that is a simple input. Above the question text is the form group name "Text Widget." The Android onscreen keyboard displays a number pad.
 
 XLSForm Rows
@@ -756,21 +756,21 @@ XLSForm Rows
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
 
-  text,string_number_widget,String number widget,numbers,text type with numbers appearance  
+  text,string_number_widget,String number widget,numbers,text type with numbers appearance
 
 XForm XML
 """""""""
 
 .. code:: xml
-  
+
   <bind nodeset="/all-widgets/text_widgets/string_number_widget" type="string"/>
-  
+
   <input appearance="numbers" ref="/all-widgets/text_widgets/string_number_widget">
     <label>String number widget</label>
     <hint>text type with numbers appearance</hint>
   </input>
 
-  
+
 .. _url-widget:
 
 URL Widget
@@ -780,7 +780,7 @@ Provides a link which the user can open from the survey. Takes no input.
 
 The URL to open is specified with :th:`default`.
 
-.. image:: /img/form-widgets/url-widget.* 
+.. image:: /img/form-widgets/url-widget.*
   :alt: The URL form widget, as displayed in the ODK Collect app on an Android phone. The question text is "URL Widget." The hint text is "text type with url appearance and default value of http://opendatakit.org/" Below that is a button labeled, "Open URL." Below the button is the URL, "http://opendatakit.org/" Above the question text is the form group name "Text widgets."
 
 XLSForm Rows
@@ -791,7 +791,7 @@ XLSForm Rows
 
   text,url_widget,URL widget,url,text type with url appearance and default value of http://opendatakit.org/,http://opendatakit.org/
 
-  
+
 XForm XML
 """"""""""
 
@@ -813,7 +813,7 @@ XForm XML
     <hint>text type with url appearance and default value of http://opendatakit.org/</hint>
   </input>
 
-  
+
 .. _external-app-widget:
 
 External App String Widget
@@ -823,10 +823,10 @@ Launches an external app and receives a string input back from the external app.
 
 The external app widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
 
-.. image:: /img/form-widgets/external-app-widget-start.* 
+.. image:: /img/form-widgets/external-app-widget-start.*
   :alt: The External App form widget, as displayed in the ODK Collect App on an Android phone. The question text is "Ex string widget." The hinst text is, "text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labelled "Launch." Above the question text is the form group name "Text widgets."
 
-.. image:: /img/form-widgets/external-app-widget-fallback.* 
+.. image:: /img/form-widgets/external-app-widget-fallback.*
   :alt: The External App widget as displayed earlier. The Launch button has now been disabled. Below it is a simple input. A help message displays the text, "The requested application is missing. Please manually enter the reading."
 
 XLSForm Rows
@@ -843,13 +843,13 @@ XForm XML
 .. code:: xml
 
   <bind nodeset="/all-widgets/text_widgets/ex_string_widget" type="string"/>
-  
+
   <input appearance="ex:change.uw.android.BREATHCOUNT" ref="/all-widgets/text_widgets/ex_string_widget">
     <label>Ex string widget</label>
       <hint>text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)</hint>
   </input>
-  
-  
+
+
 .. _external-printer-widget:
 
 External Printer Widget
@@ -859,7 +859,7 @@ Connects to an external printer. See `printing widget <https://opendatakit.org/h
 
 .. pull printing widget detail into its own doc in this repo
 
-.. image:: /img/form-widgets/printer-widget.* 
+.. image:: /img/form-widgets/printer-widget.*
   :alt: The external printer widget, as displayed in the ODK Collect app on an Android phone. The question text is "Ex printer widget." The hint text is "text type with printer:org.opendatakit.sensors.ZebraPrinter." Below that is a button labeled, "Initiate Printing." Above the question text is the form group name "Text widgets."
 
 XLSForm Rows
@@ -892,17 +892,17 @@ Number Widgets
 Default Integer Widget
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/form-widgets/default-integer-widget.* 
+.. image:: /img/form-widgets/default-integer-widget.*
   :alt: The default Integer form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Integer Widget." The hint text is "integer type with no appearance." Below that is a simple input. The numerical keypad is active. Above the question text is the form group name "Numerical widgets."
-  
+
 XLSForm Rows
 """"""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, hint
-  
+
   integer,integer_widget,Integer widget,integer type with no appearance
-  
+
 XForm XML
 """""""""""
 .. code:: xml
@@ -913,7 +913,7 @@ XForm XML
     <label>Integer widget</label>
     <hint>integer type with no appearance</hint>
   </input>
-  
+
 .. _external-integer-widget:
 
 External Integer Widget
@@ -921,61 +921,61 @@ External Integer Widget
 
 Launches an external app and receives an integer input back from the external app. If the specified external app is not available, a manual input is prompted.
 
-.. image:: /img/form-widgets/external-integer-widget-start.* 
+.. image:: /img/form-widgets/external-integer-widget-start.*
   :alt: The External Integer form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Ex integer widget." The hint text is, "integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form name "Numerical widgets."
-  
-.. image:: /img/form-widgets/external-widget-fallback.* 
+
+.. image:: /img/form-widgets/external-widget-fallback.*
   :alt: The External Integer widget as displayed previously. The Launch button is now disabled and below it is a simple input. A help text reads, "The requested application is missing. Please manually enter the reading."
-  
+
 XLSForm Rows
 """""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   integer,ex_integer_widget,Ex integer widget,ex:change.uw.android.BREATHCOUNT,integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
-  
+
 XForm XML
 """"""""""
 
 .. code:: xml
-  
+
   <bind nodeset="/all-widgets/number_widgets/ex_integer_widget" type="int"/>
-  
+
   <input appearance="ex:change.uw.android.BREATHCOUNT" ref="/all-widgets/number_widgets/ex_integer_widget">
     <label>Ex integer widget</label>
     <hint>integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)</hint>
   </input>
 
-  
+
 .. _default-decimal-widget:
 
 Default Decimal Widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/form-widgets/default-decimal-widget.* 
+.. image:: /img/form-widgets/default-decimal-widget.*
   :alt: The default Decimal form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Decimal widget." The hint text is "decimal type with no appearance." Below that is a simple input. The number pad is active. Above the question text is the form group name "Numerical widgets."
-  
+
 XLSForm Rows
 """""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, hint
-  
+
   decimal,decimal_widget,Decimal widget,decimal type with no appearance
-  
+
 XForm XML
 """"""""""
 
 .. code:: xml
 
   <bind nodeset="/all-widgets/number_widgets/decimal_widget" type="decimal"/>
-  
+
   <input ref="/all-widgets/number_widgets/decimal_widget">
     <label>Decimal widget</label>
     <hint>decimal type with no appearance</hint>
   </input>
-  
+
 .. _external-decimal-widget:
 
 External Decimal Widget
@@ -983,20 +983,20 @@ External Decimal Widget
 
 Launches an external app and receives a decimal number input back from the external app. If the specified external app is not available, a manual input is prompted.
 
-.. image:: /img/form-widgets/external-decimal-start.* 
+.. image:: /img/form-widgets/external-decimal-start.*
   :alt: The External Decimal form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Ex decimal widget." The hint text is, "decimal type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form group name "Numerical widgets."
-  
-.. image:: /img/form-widgets/external-decimal-fallback.* 
+
+.. image:: /img/form-widgets/external-decimal-fallback.*
   :alt: The External Decimal widget displayed previously. The Launch button is now disabled and below it is a simple input. A help text reads, "The requested application is missing. Please manually enter the reading."
-  
+
 XLSForm Rows
 """""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   decimal,ex_decimal_widget,Ex decimal widget,ex:change.uw.android.BREATHCOUNT,decimal type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
-  
+
 XForm XML
 """"""""""
 
@@ -1016,36 +1016,36 @@ Bearing Widget
 
 Captures a compass reading.
 
-.. image:: /img/form-widgets/bearing-widget-start.* 
+.. image:: /img/form-widgets/bearing-widget-start.*
   :alt: The Bearing form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Bearing widget." The hint text is, "decimal type with bearing appearance. Below that is a button labeled "Record Bearing." Above the question text is the form group name "Numericl widgets."
 
-.. image:: /img/form-widgets/bearing-in-progress.* 
+.. image:: /img/form-widgets/bearing-in-progress.*
   :alt: The Bearing widget, overlaid with a model popup. The modal headline is "Loading Bearing." In the body of the modal are two fields: "Direction: W" and "Bearing: 273.001". At the bottom of the modal are Cancel and Record Bearing buttons.
-  
-.. image:: /img/form-widgets/bearing-finished.* 
-  :alt: The Bearing widget, as displayed previously. The button's label is not "Replace bearing." Below the button is the decimal number 271.538 (the recorded bearing). 
- 
+
+.. image:: /img/form-widgets/bearing-finished.*
+  :alt: The Bearing widget, as displayed previously. The button's label is not "Replace bearing." Below the button is the decimal number 271.538 (the recorded bearing).
+
 XLSForm Rows
 """""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   decimal,bearing_widget,Bearing widget,bearing,decimal type with bearing appearance
-  
+
 XForm XML
 """""""""""
 
 .. code:: xml
 
   <bind nodeset="/all-widgets/number_widgets/bearing_widget" type="decimal"/>
-  
+
   <input appearance="bearing" ref="/all-widgets/number_widgets/bearing_widget">
     <label>Bearing widget</label>
     <hint>decimal type with bearing appearance</hint>
   </input>
 
-  
+
 .. _image-widgets:
 
 Image Widgets
@@ -1056,16 +1056,16 @@ Image Widgets
 Default Image Widget
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/form-widgets/default-image-widget.* 
+.. image:: /img/form-widgets/default-image-widget.*
   :alt: The default Image form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Image Widget." The hint text is, "image type with no appearance." Below that are two buttons: "Take Picture" and "Choose Image." Above the question text is the form group name "Image widgets."
-  
+
 XLSForm Rows
 """"""""""""""
 .. csv-table:: survey
   :header: type, name, label, hint
-  
+
   image,image_widget,Image widget,image type with no appearance
-  
+
 XForm XML
 """"""""""
 
@@ -1085,30 +1085,30 @@ Selfie Widget
 
 Takes a picture using the front-facing ("selfie") camera. The "Choose picture" button is not displayed.
 
-.. image:: /img/form-widgets/selfie-start.* 
+.. image:: /img/form-widgets/selfie-start.*
   :alt: The Selfie form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Selfie widget." The hint text is, "image type with selfie appearance." There is a single button, labeled "Take Picture." Above the question text is the form group name "Image widgets."
-  
-.. image:: /img/form-widgets/selfie-in-progress.* 
+
+.. image:: /img/form-widgets/selfie-in-progress.*
   :alt: A camera view on an Android phone. A person is taking a self-portrait.
-  
-.. image:: /img/form-widgets/selfie-complete.* 
+
+.. image:: /img/form-widgets/selfie-complete.*
   :alt: The Selfie form widget as displayed previously. Below the button is the self-portrait from the previous image.
-  
+
 XLSForm Rows
 """"""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   image,selfie_image_widget,Selfie widget,selfie,image type with selfie appearance
-  
+
 XForm XML
 """"""""""
 
 .. code:: xml
 
   <bind nodeset="/all-widgets/image_widgets/selfie_image_widget" type="binary"/>
-  
+
   <upload appearance="selfie" mediatype="image/*" ref="/all-widgets/image_widgets/selfie_image_widget">
     <label>Selfie widget</label>
     <hint>image type with selfie appearance</hint>
@@ -1121,16 +1121,16 @@ Draw Widget
 
 Provides the user a drawing pad and collects the drawn image.
 
-.. image:: /img/form-widgets/draw-widget.* 
+.. image:: /img/form-widgets/draw-widget.*
   :alt: The Draw form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Draw widget." The hint text is "image type with draw appearance." Below that is a button labeled "Sketch Image." Above the question text is the form group name "Image widgets."
-  
-.. image:: /img/form-widgets/draw-in-progress.* 
+
+.. image:: /img/form-widgets/draw-in-progress.*
   :alt: A white "drawing pad" on an Android phone, horizontally oriented (landscape mode). A simple smiley face has been drawn. In the lower right corner of the drawing pad is a plus sign (+) in a circle.
-  
-.. image:: /img/form-widgets/draw-options.* 
+
+.. image:: /img/form-widgets/draw-options.*
   :alt: The drawing pad as displayed in the previous image. A menu has expanded from the lower right corner with the options: Reset, Save and Close, and Set Color.
-  
-.. image:: /img/form-widgets/draw-completed.* 
+
+.. image:: /img/form-widgets/draw-completed.*
   :alt: The Draw widget as displayed previously. Below the "Sketch Image" button is the smiley face from the drawing pad image shown previously.
 
 XLSForm Rows
@@ -1139,9 +1139,9 @@ XLSForm Rows
 .. csv-table:: survey
 
   :header: type, name, label, appearance, hint
-  
-  image,draw_image_widget,Draw widget ,draw,image type with draw appearance  
-  
+
+  image,draw_image_widget,Draw widget ,draw,image type with draw appearance
+
 XForm XML
 """""""""""
 
@@ -1153,38 +1153,38 @@ XForm XML
      <label>Draw widget</label>
      <hint>image type with draw appearance</hint>
    </upload>
-   
+
 .. _annotate-widget:
 
 Annotate Widget
 ~~~~~~~~~~~~~~~~~~
 
-Allows user to take or select an image and then draw on it.
+Allows the user to take or select an image and then draw on it.
 
-.. image:: /img/form-widgets/annotate-start.* 
+.. image:: /img/form-widgets/annotate-start.*
   :alt: The Annotate form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Annotate widget." The hint text is, "image type with annotate appearance." There are three buttons: "Take Picture," "Choose Image," and "Markup Image." The Markup Image button is disabled. Above the question text is the form group name "Image widgets."
-  
-.. image:: /img/form-widgets/annotate-1.* 
+
+.. image:: /img/form-widgets/annotate-1.*
   :alt: The camera view on an Android phone. In the viewer is a picture of a small saucer. Below the viewer is a blue checkmark button.
-  
-.. image:: /img/form-widgets/annotate-2.* 
+
+.. image:: /img/form-widgets/annotate-2.*
   :alt: The Annotate form widget displayed previously. The Markup Image button is now enabled. Below the buttons is the picture of a saucer shown previously.
-  
-.. image:: /img/form-widgets/annotate-3.* 
+
+.. image:: /img/form-widgets/annotate-3.*
   :alt: The image of a saucer on a drawing pad, with a poorly-drawn cup of tea drawn over it. In the lower right corner is a plus sign (+) in a circle.
-  
-.. image:: /img/form-widgets/annotate-4.* 
+
+.. image:: /img/form-widgets/annotate-4.*
   :alt: The same picture shown in the previous image. The menu in the bottom right corner has expanded to show the options: Reset, Save and Close, and Set Color.
-  
-.. image:: /img/form-widgets/annotate-5.* 
+
+.. image:: /img/form-widgets/annotate-5.*
   :alt: The Annotate form widget shown previously. The drawn-on picture is below the buttons.
-  
+
 XLSForm Rows
 """""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   image,annotate_image_widget,Annotate widget,annotate,image type with annotate appearance
 
 XForm XML
@@ -1193,12 +1193,12 @@ XForm XML
 .. code:: xml
 
   <bind nodeset="/all-widgets/image_widgets/annotate_image_widget" type="binary"/>
-  
+
   <upload appearance="annotate" mediatype="image/*" ref="/all-widgets/image_widgets/annotate_image_widget">
     <label>Annotate widget</label>
     <hint>image type with annotate appearance</hint>
   </upload>
-  
+
 .. _signature-widget:
 
 Signature Widget
@@ -1206,41 +1206,41 @@ Signature Widget
 
 Collects a signature from the user.
 
-.. image:: /img/form-widgets/signature-start.* 
+.. image:: /img/form-widgets/signature-start.*
   :alt: The Signature form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Signature widget." The hint text is "image type with signature appearance." Below that is a button labelled "Gather Signature." Above the question text is the form group name "Image widgets."
-  
-.. image:: /img/form-widgets/signature-in-progress.* 
-  :alt: A drawing pad with a signature line, displayed in an Android phone. A signature is drawn across it. In the lower right corner is circular button marked with a plus sign (+).
 
-.. image:: /img/form-widgets/signature-completed.* 
+.. image:: /img/form-widgets/signature-in-progress.*
+  :alt: A drawing pad with a signature line, displayed on an Android phone. A signature is drawn across it. In the lower right corner is circular button marked with a plus sign (+).
+
+.. image:: /img/form-widgets/signature-completed.*
   :alt: The signature widget displayed previously. Below the button is the signature drawn in the previous image.
-  
+
 XLSForm Rows
 """""""""""""
 
 .. csv-table:: table
   :header: type, name, label, appearance, hint
-  
+
   image,signature_widget,Signature widget,signature,image type with signature appearance
-  
-  
+
+
 XForm XML
 """"""""""""
 
 .. code:: xml
 
   <bind nodeset="/all-widgets/image_widgets/signature_widget" type="binary"/>
-  
+
   <upload appearance="signature" mediatype="image/*" ref="/all-widgets/image_widgets/signature_widget">
     <label>Signature widget</label>
     <hint>image type with signature appearance</hint>
-  </upload>   
+  </upload>
 
 .. _media-widgets:
 
 Media Widgets
 ---------------
-  
+
 The media widgets do not accept any appearance attributes. They are documented in :ref:`basic-form-widgets` above:
 
 - :ref:`barcode`
@@ -1257,21 +1257,21 @@ Date and Time Widgets
 Default Date Widget
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/form-widgets/default-date-widget.* 
+.. image:: /img/form-widgets/default-date-widget.*
   :alt: The default Date form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Date widget." The hint text is "date type with no appearance." Below that is a button labeled "Select date." Below that is the text, "No date selected." Above the question text is the form group name "Date and time widgets."
-  
-.. image:: /img/form-widgets/date-calendar-view.* 
+
+.. image:: /img/form-widgets/date-calendar-view.*
   :alt: The date widget shown in the previous image, with a modal popup showing a monthly calendar. A date is selected. At the bottom of the modal are Cancel and OK buttons.
-  
-.. image:: /img/form-widgets/date-completed.* 
+
+.. image:: /img/form-widgets/date-completed.*
   :alt: The date widget shown previously. Below the button is a date: Aug 11, 2017.
-  
+
 XLSForm Rows
 """""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, hint
-  
+
   date,date_widget,Date widget,date type with no appearance
 
 XForm XML
@@ -1280,12 +1280,12 @@ XForm XML
 .. code:: xml
 
   <bind nodeset="/all-widgets/date_time_widgets/date_widget" type="date"/>
-  
+
   <input ref="/all-widgets/date_time_widgets/date_widget">
     <label>Date widget</label>
     <hint>date type with no appearance</hint>
   </input>
-  
+
 .. _date-no-calendar:
 
 Date, No Calendar
@@ -1293,32 +1293,32 @@ Date, No Calendar
 
 The :tc:`no-calendar` appearance displays a "spinner" type date selection. This is especially appropriate for selecting dates more than in the past.
 
-.. image:: /img/form-widgets/date-no-calendar-start.* 
+.. image:: /img/form-widgets/date-no-calendar-start.*
   :alt: The no-calendar Date form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Date Widget." The hint text is "date type with no-calendar appearance." Below that is a button labeled "Select date." Below the button is the text, "No date selected." Above the question text is the form group name "Date and time widgets."
-  
-.. image:: /img/form-widgets/date-no-calendar-in-progress.* 
+
+.. image:: /img/form-widgets/date-no-calendar-in-progress.*
   :alt: The date widget shown previously, with a pop modal. The headline of the modal is "Select date." There are individual "spinner" style selectors for month, day, and year. At the bottom of the modal are OK and Cancel buttons.
-  
+
 XSLForm Rows
 """"""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   date,date_widget_nocalendar,Date Widget,no-calendar,date type with no-calendar appearance
-  
+
 XForm XML
 """"""""""
 
 .. code:: xml
-  
+
   <bind nodeset="/all-widgets/date_time_widgets/date_widget_nocalendar" type="date"/>
-  
+
   <input appearance="no-calendar" ref="/all-widgets/date_time_widgets/date_widget_nocalendar">
      <label>Date Widget</label>
      <hint>date type with no-calendar appearanec</hint>
   </input>
-  
+
 .. _date-type-month-year:
 
 Month and Year Widget
@@ -1326,47 +1326,47 @@ Month and Year Widget
 
 Collects only a month and year.
 
-.. image:: /img/form-widgets/month-year-spinner.* 
+.. image:: /img/form-widgets/month-year-spinner.*
   :alt: The date widget, with a modal popup labeled "Select date." There are individual "Spinner" type selectors for month and year, but not for date. At the bottom are Cancel and OK buttons.
-  
+
 XLSForm Rows
 """""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   date,date_widget_month_year,Date widget,month-year,date type with month-year appearance
-  
+
 XForm XML
 """"""""""
 
 .. code:: xml
 
   <bind nodeset="/all-widgets/date_time_widgets/date_widget_month_year" type="date"/>
-  
+
   <input appearance="month-year" ref="/all-widgets/date_time_widgets/date_widget_month_year">
     <label>Date widget</label>
     <hint>date type with month-year appearance</hint>
   </input>
-  
+
 .. _year-widget:
-  
+
 Year Widget
 ~~~~~~~~~~~~
 
 Collects only a year.
 
-.. image:: /img/form-widgets/year-spinner.* 
-  :alt: The Year form widget, with a model popup labeled "Select date." There is a single "spinner" type selector for year. At the bottom are Cancel ans OK buttons.
-  
+.. image:: /img/form-widgets/year-spinner.*
+  :alt: The Year form widget, with a model popup labeled "Select date." There is a single "spinner" type selector for year. At the bottom are Cancel and OK buttons.
+
 XLSForm Rows
 """""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   date,date_widget_year,Date widget,year,date type with year appearance
-  
+
 XForm XML
 """"""""""
 
@@ -1378,7 +1378,7 @@ XForm XML
     <label>Date widget</label>
     <hint>date type with year appearance</hint>
   </input>
-  
+
 .. _time-widgets:
 
 Time Widgets
@@ -1405,29 +1405,29 @@ Default Geopoint
 
 The default :ref:`geopoint` widget collects the current GPS position (if available) from the device.
 
-.. image:: /img/form-widgets/default-geopoint.* 
+.. image:: /img/form-widgets/default-geopoint.*
   :alt: The default Geopoint form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Geopoint widget." The hint text is "geopoint type with no appearance." Below that is a button labeled "Start Geopoint." Below the button are completed fields for Latitude, Longitude, Altitude, and Accuracy.
-  
+
 XLSForm Rows
 """""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, hint
-  
+
   geopoint,geopoint_widget,Geopoint widget,geopoint type with no appearance
 
 XForm XML
 """""""""""
-    
+
 .. code:: xml
 
   <bind nodeset="/all-widgets/geopoint_widgets/geopoint_widget_placementmap" type="geopoint"/>
-  
+
   <input ref="/all-widgets/geopoint_widgets/geopoint_widget">
     <label>Geopoint widget</label>
     <hint>geopoint type with no appearance</hint>
   </input>
-  
+
 .. _placement-map-widget:
 
 Geopoint Placement Map Widget
@@ -1435,51 +1435,51 @@ Geopoint Placement Map Widget
 
 A geopoint with the appearance attribute :tc:`placement-map` allows the user to select a geopoint from a map.
 
-.. image:: /img/form-widgets/geopoint-placement-map.* 
+.. image:: /img/form-widgets/geopoint-placement-map.*
   :alt: A map app opens on an Android phone. Above the map is the message: "Long press to place mark or tap add marker button." Along the right side of the map are buttons: Add Marker, Zoom to point, Layers, Trash, Save.
- 
+
 XLSForm Rows
 """""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   geopoint,geopoint_widget_placementmap,Geopoint widget,placement-map,geopoint type with placement-map appearance
-  
+
 XForm XML
 """""""""""
-  
+
 .. code:: xml
 
   <bind nodeset="/all-widgets/geopoint_widgets/geopoint_widget_placementmap" type="geopoint"/>
-      
+
   <input appearance="placement-map" ref="/all-widgets/geopoint_widgets/geopoint_widget_placementmap">
     <label>Geopoint widget</label>
     <hint>geopoint type with placement-map appearance</hint>
   </input>
-  
+
 .. _geopoint-maps:
 
 Geopoint with Map
-~~~~~~~~~~~~~~~~~~~~~~ 
+~~~~~~~~~~~~~~~~~~~~~~
 
-The default :ref:`geopoint` widget does not display map to the user. With the added :tc:`maps` appearance attribute, a map of the recorded location is shown to the user. The user cannot select a different location on the map. (See :ref:`placement-map-widget` for a geopoint with a user-selected location.)
+The default :ref:`geopoint` widget does not display a map to the user. With the added :tc:`maps` appearance attribute, a map of the recorded location is shown to the user. The user cannot select a different location on the map. (See :ref:`placement-map-widget` for a geopoint with a user-selected location.)
 
 XLSForm Rows
 """"""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   geopoint,geopoint_widget_maps,Geopoint widget,maps,geopoint type with maps appearance
-  
+
 XForm XML
 """"""""""
 
 .. code:: xml
 
   <bind nodeset="/all-widgets/geopoint_widgets/geopoint_widget_maps" type="geopoint"/
-  
+
   <input appearance="maps" ref="/all-widgets/geopoint_widgets/geopoint_widget_maps">
     <label>Geopoint widget</label>
     <hint>geopoint type with maps appearance</hint>
@@ -1502,20 +1502,20 @@ Single Select Widgets
 Default Single Select
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/form-widgets/default-single-select.* 
+.. image:: /img/form-widgets/default-single-select.*
   :alt: The default Single Select form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Select one widget." The hint text is "select_one type with no appearance, 4 text choices." Below that is a set of radio button selectors labeled A, B, C, and D. Above the question text is form group name "Select one widgets."
-  
+
 XLSForm Rows
 """"""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, hint
-  
+
   select_one opt_abcd,select_one_widget,Select one widget,"select_one type with no appearance, 4 text choices"
-  
+
 .. csv-table:: choices
   :header: list_name, name, label
-  
+
   opt_abcd,a,A
   opt_abcd,b,B
   opt_abcd,c,C
@@ -1548,7 +1548,7 @@ XForm XML
       <value>d</value>
     </item>
   </select1>
-  
+
 .. _spinner-widget:
 
 Spinner Widget
@@ -1556,12 +1556,12 @@ Spinner Widget
 
 Adding the :tc:`minimal` appearance attribute places the choices into a drop-down style menu.
 
-.. image:: /img/form-widgets/select-one-minimal-start.* 
+.. image:: /img/form-widgets/select-one-minimal-start.*
   :alt: The Single Select form widget, with minimal appearance, as displayed in the ODK Collect app on an Android phone. The question text is "Spinner widget." The hint text is "select_one type with minimal appearance, 4 text choices." Below that is a drop-down style select menu with the prompt "Select One Answer." Above the question text is the form group name "Select one widgets."
-  
-.. image:: /img/form-widgets/select-one-minimal-expanded.* 
+
+.. image:: /img/form-widgets/select-one-minimal-expanded.*
   :alt: The Single Select form widget, wih minimal appearance, as displayed in the previously image. The select menu has expanded to show choices: A, B, C, D, and Remove Response.
-  
+
 XLSForm Rows
 """"""""""""""
 
@@ -1569,22 +1569,22 @@ XLSForm Rows
   :header: type, name, label, appearance, hint
 
   select_one opt_abcd,spinner_widget,Spinner widget,minimal,"select_one type with minimal appearance, 4 text choices"
-  
+
 .. csv-table:: choices
   :header: list_name, name, label
-  
+
   opt_abcd,a,A
   opt_abcd,b,B
   opt_abcd,c,C
   opt_abcd,d,D
-  
+
 XForm XML
 """""""""""
 
 .. code:: xml
 
   <bind nodeset="/all-widgets/select_one_widgets/spinner_widget" type="select1"/>
-  
+
   <select1 appearance="minimal" ref="/all-widgets/select_one_widgets/spinner_widget">
     <label>Spinner widget</label>
     <hint>select_one type with minimal appearance, 4 text choices</hint>
@@ -1606,9 +1606,9 @@ XForm XML
     </item>
   </select1>
 
-  
+
 .. _autoadvance-widget:
-  
+
 Autoadvance Widget
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -1626,12 +1626,12 @@ XLSForm Rows
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   select_one opt_abcd,select_one_autoadvance_widget,Select one autoadvance widget,quick,"select_one type with quick appearance, 4 text choices"
-  
+
 .. csv-table:: choices
   :header: list_name, name, label
-  
+
   opt_abcd,a,A
   opt_abcd,b,B
   opt_abcd,c,C
@@ -1664,7 +1664,7 @@ XForm XML
       <value>d</value>
     </item>
   </select1>
-  
+
 .. _select-search-widget:
 
 Select with Search Widget
@@ -1672,23 +1672,23 @@ Select with Search Widget
 
 A set of radio buttons with a search and filter function.
 
-.. image:: /img/form-widgets/select-search-start.* 
+.. image:: /img/form-widgets/select-search-start.*
   :alt: The Select One form widget with search, as displayed in the ODK Collect app on an Android phone. The question text is, "Select one search widget." The hint text is, "select one type with search appearance, 4 text choices." Below that is a text input above four radio buttons labeled A, B, C, and D. Above the question text is the form group name, "Select one widgets." The phone's keyboard is active.
- 
-.. image:: /img/form-widgets/select-one-search-searching.* 
+
+.. image:: /img/form-widgets/select-one-search-searching.*
   :alt: The Select One form widget as displayed previously. The text input contains a lowercase 'b'. There is a single radio button: B. The other three radio buttons are no longer displayed.
-  
+
 XLSForm Rows
 """""""""""""
 
 .. csv-table:: survey
-  :header: type, name, label, appearance, hint 
-  
+  :header: type, name, label, appearance, hint
+
   select_one opt_abcd,select_one_search_widget,Select one search widget,search,"select_one type with search appearance, 4 text choices"
 
 .. csv-table:: choices
   :header: list_name, name, label
-  
+
   opt_abcd,a,A
   opt_abcd,b,B
   opt_abcd,c,C
@@ -1700,7 +1700,7 @@ XForm XML
 .. code:: xml
 
   <bind nodeset="/all-widgets/select_one_widgets/select_one_search_widget" type="select1"/>
-  
+
   <select1 appearance="search" ref="/all-widgets/select_one_widgets/select_one_search_widget">
     <label>Select one search widget</label>
     <hint>select_one type with search appearance, 4 text choices</hint>
@@ -1729,36 +1729,36 @@ Select with Autocomplete Widget
 
 A set of radio buttons with a search and filter function. The search input has an autocomplete feature.
 
-.. image:: /img/form-widgets/select-autocomplete.* 
+.. image:: /img/form-widgets/select-autocomplete.*
   :alt: The Select One form widget with autocomplete, as displayed in the ODK Collect app on an Android phone. The question text is "Select one search widget." The hint text is, "select one type with autocomplete appearance, 4 text choices." Below that is a text input followed by four radio buttons labeled A, B, C, and D. Above the question text is the form group name "Select one widgets." The device keyboard is active.
-  
-.. image:: /img/form-widgets/select-autocomplete-filtered.* 
+
+.. image:: /img/form-widgets/select-autocomplete-filtered.*
   :alt: The Select One form widget as displayed previously. The text input contains a lowercase 'b'. There is a single radio button: B. The other three radio buttons are no longer displayed.
-  
+
 XLSForm Rows
 """""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   select_one opt_abcd,select_one_autocomplete_widget,Select one search widget,autocomplete,"select_one type with autocomplete appearance, 4 text choices"
-  
+
 .. csv-table:: choices
   :header: list_name, name, label
-  
+
   opt_abcd,a,A
   opt_abcd,b,B
   opt_abcd,c,C
   opt_abcd,d,D
 
-  
+
 XForm XML
 """""""""
 
 .. code:: xml
 
   <bind nodeset="/all-widgets/select_one_widgets/select_one_autocomplete_widget" type="select1"/>
-  
+
   <select1 appearance="autocomplete" ref="/all-widgets/select_one_widgets/select_one_autocomplete_widget">
     <label>Select one search widget</label>
     <hint>select_one type with autocomplete appearance, 4 text choices</hint>
@@ -1789,20 +1789,20 @@ A set of radio buttons with text labels and accompanying images.
 
 See :ref:`image-options` to learn more about including images in surveys.
 
-.. image:: /img/form-widgets/default-single-image-select.* 
+.. image:: /img/form-widgets/default-single-image-select.*
   :alt: The Single Select form widget with images, as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is, "select_one type with no appearance, 4 image choices (a.jpg, b.jpb, c.jpg, d.jpg)." Below that is a set of radio buttons labeled A, B, C, and D. Below each radio button is a small icon of an animal: A - whale, B - frog, C - alligator, D - eagle. Above the question text is the form group name "Select one widgets."
-  
+
 XLSForm Rows
 """"""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   select_one abcd_icon,grid_widget,Grid select one widget,,"select_one type with no appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)"
 
 .. csv-table:: choices
   :header: list_name, name, label, media::image
-  
+
   abcd_icon,a,A,a.jpg
   abcd_icon,b,B,b.jpg
   abcd_icon,c,C,c.jpg
@@ -1814,7 +1814,7 @@ XForm XML
 .. code:: xml
 
   <bind nodeset="/all-widgets/select_one_widgets/grid_widget" type="select1"/>
-  
+
   <select1 ref="/all-widgets/select_one_widgets/grid_widget">
     <label>Grid select one widget</label>
     <hint>select_one type with no appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)</hint>
@@ -1843,20 +1843,20 @@ Compact Single Select with Images
 
 Image options are placed on a single line.
 
-.. image:: /img/form-widgets/single-select-compact.* 
+.. image:: /img/form-widgets/single-select-compact.*
   :alt: The compact Single Select form widget with images, as displayed in the ODK Collect app on an Android phone. The question text is "Grid select one widget." The hint text is, "select_one with compact appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four small animal icons arranged on a single line. Above the question text is the form group name "Select one widgets."
-  
+
 XLSForm Rows
 """"""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   select_one abcd_icon,grid_widget_compact,Grid select one widget,compact,"select_one type with compact appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)"
-  
+
 .. csv-table:: choices
   :header: list_name, name, label, media::image
-  
+
   abcd_icon,a,A,a.jpg
   abcd_icon,b,B,b.jpg
   abcd_icon,c,C,c.jpg
@@ -1888,7 +1888,7 @@ XForm XML
       <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact/d:label')"/>
       <value>d</value>
     </item>
-  </select1>  
+  </select1>
 
 .. _compact-2:
 
@@ -1897,20 +1897,20 @@ Compact Single Select with Images, width specified
 
 With the :tc:`compact-{x}` style, you can specify the number of images to display on each row. To display two images on each row, specify an :th:`appearance` of :tc:`compact-2`.
 
-.. image:: /img/form-widgets/single-image-select-compact-2.* 
+.. image:: /img/form-widgets/single-image-select-compact-2.*
   :alt: The single select form widget with images and appearance of 'compact-2,' as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is "select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four animal icons arranged in a two-by-two grid. Above the question text is the form group name "Select one widgets."
-  
+
 XLSForm Rows
 """"""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   select_one abcd_icon,grid_widget_compact2,Grid select one widget,compact-2,"select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)"
-  
+
 .. csv-table:: choices
   :header: list_name, name, label, media::image
-  
+
   abcd_icon,a,A,a.jpg
   abcd_icon,b,B,b.jpg
   abcd_icon,c,C,c.jpg
@@ -1922,7 +1922,7 @@ XForm XML
 .. code:: xml
 
   <bind nodeset="/all-widgets/select_one_widgets/grid_widget_compact2" type="select1"/>
-  
+
   <select1 appearance="compact-2" ref="/all-widgets/select_one_widgets/grid_widget_compact2">
     <label>Grid select one widget</label>
     <hint>select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)</hint>
@@ -1945,7 +1945,7 @@ XForm XML
   </select1>
 
 .. _quickcompact-widget:
-  
+
 Compact Single Select with Images and Autoadvance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1962,12 +1962,12 @@ XLSForm Rows
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   select_one abcd_icon,grid_widget_quickcompact,Grid select one widget,quickcompact,"select_one type with quickcompact appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)"
-    
+
 .. csv-table:: choices
   :header: list_name, name, label, media::image
-  
+
   abcd_icon,a,A,a.jpg
   abcd_icon,b,B,b.jpg
   abcd_icon,c,C,c.jpg
@@ -2019,12 +2019,12 @@ XLSForm Rows
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   select_one abcd_icon,grid_widget_quickcompact2,Grid select one widget,quickcompact-2,"select_one type with quickcompact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)"
-  
+
 .. csv-table:: choices
   :header: list_name, name, label, media::image
-  
+
   abcd_icon,a,A,a.jpg
   abcd_icon,b,B,b.jpg
   abcd_icon,c,C,c.jpg
@@ -2058,8 +2058,8 @@ XForm XML
     </item>
   </select1>
 
-.. _multiselect-widgets:  
-  
+.. _multiselect-widgets:
+
 Multiselect Widgets
 ---------------------
 
@@ -2068,20 +2068,20 @@ Multiselect Widgets
 Default Multiselect Widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/form-widgets/default-multiselect.* 
+.. image:: /img/form-widgets/default-multiselect.*
   :alt: The default Multiselect widget as displayed in the ODK Collect app on an Android phone. The question text is, "Multiselect widget." The hint text is, "select_one widget with no appearance, 4 text choices." Below that are four checkbox options labeled A, B, C, and D. Above the question text is the form group label, "This section contains 'Select Multi Widgets'"
-  
+
 XLSForm Rows
 """""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, hint
-  
+
   select_multiple opt_abcd,select_multi_widget,Multi select widget,"select_multiple type with no appearance, 4 text choices"
-  
+
 .. csv-table:: choices
   :header: list_name, name, label, media::image
-  
+
   abcd_icon,a,A,a.jpg
   abcd_icon,b,B,b.jpg
   abcd_icon,c,C,c.jpg
@@ -2120,23 +2120,23 @@ XForm XML
 Compact Multiselect with Images
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/form-widgets/compact-multiselect.* 
+.. image:: /img/form-widgets/compact-multiselect.*
   :alt: The compact multiselect form widget with image options, as displayed in the ODK Collect app on Android phone. The question text is "Grid select multiple widget." The hint text is select_multiple type with compact appearance, 4 image choices." Below that are four small animal icons in a single row. Above the question text is the section label "This section contains 'Select Multi Widgets.'"
-  
-.. image:: /img/form-widgets/compact-multiselect-selected.* 
+
+.. image:: /img/form-widgets/compact-multiselect-selected.*
   :alt: The compact multiselect as shown in the previous image. Two of the small animal icons are outlined with an orange border, indicating they have been selected.
-  
+
 XLSForm Rows
 """""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   select_multiple abcd_icon,grid_multi_widget_compact,Grid select multiple widget,compact,"select_multiple type with compact appearance, 4 image choices"
-  
+
 .. csv-table:: choices
   :header: list_name, name, label, media::image
-  
+
   abcd_icon,a,A,a.jpg
   abcd_icon,b,B,b.jpg
   abcd_icon,c,C,c.jpg
@@ -2146,9 +2146,9 @@ XForm XML
 """"""""""
 
 .. code:: xml
-  
+
   <bind nodeset="/all-widgets/select_multi_widgets/grid_multi_widget_compact" type="select"/>
-  
+
   <select appearance="compact" ref="/all-widgets/select_multi_widgets/grid_multi_widget_compact">
     <label>Grid select multiple widget</label>
     <hint>select_multiple type with compact appearance, 4 image choices</hint>
@@ -2168,31 +2168,31 @@ XForm XML
       <label ref="jr:itext('/all-widgets/select_multi_widgets/grid_multi_widget_compact/d:label')"/>
       <value>d</value>
     </item>
-  </select>  
-  
+  </select>
+
 .. _multi-image-compact-2:
 
 Compact Multiselect with Image Choices, style 2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/form-widgets/multi-image-compact-2.* 
+.. image:: /img/form-widgets/multi-image-compact-2.*
   :alt: The multiselect form widget with images and appearance of 'compact-2,' as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select multiple widget." The hint text is "select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four animal icons arranged in a two-by-two grid. Above the question text is the form group label "This section contains 'Select multi Widgets.'"
-  
-.. image:: /img/form-widgets/multi-image-compact-2-selected.* 
+
+.. image:: /img/form-widgets/multi-image-compact-2-selected.*
   :alt: The compact multiselect widget shown previously. Two of the animal icons are outlined with an orange border, indicating they have been selected.
 
-  
+
 XLSForm Rows
 """""""""""""
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   select_multiple abcd_icon,grid_multi_widget_compact2,Grid select multiple widget,compact-2,"select_multiple type with compact-2 appearance, 4 image choices"
 
 .. csv-table:: choices
   :header: list_name, name, label, media::image
-  
+
   abcd_icon,a,A,a.jpg
   abcd_icon,b,B,b.jpg
   abcd_icon,c,C,c.jpg
@@ -2225,7 +2225,7 @@ XForm XML
       <value>d</value>
     </item>
   </select>
-    
+
 .. _spinner-widget-multi:
 
 Multiselect Spinner Widget
@@ -2233,12 +2233,12 @@ Multiselect Spinner Widget
 
 Adding the :tc:`minimal` appearance attribute places the choices into a drop-down style menu.
 
-.. image:: /img/form-widgets/multiselect-minimal-start.* 
+.. image:: /img/form-widgets/multiselect-minimal-start.*
   :alt: The Multiselect form widget, with minimal appearance, as displayed in the ODK Collect app on an Android phone. The question text is "Spinner widget: select multiple." The hint text is "select_multiple type with minimal appearance, 4 text choices." Below that is a drop-down style select menu with the prompt "Select Answer." Above the question text is the form group name "This section contains 'Select Multi Widget.'"
 
-.. image:: /img/form-widgets/multiselect-minimal-expanded.* 
+.. image:: /img/form-widgets/multiselect-minimal-expanded.*
   :alt: The multiselect form widget, wih minimal appearance, as displayed in the previous image. The select menu has expanded to show choices: A, B, C, D. In the lower right corner is a button labeled OK.
-  
+
 XLSForm Rows
 """"""""""""""
 
@@ -2246,22 +2246,22 @@ XLSForm Rows
   :header: type, name, label, appearance, hint
 
   select_multiple opt_abcd,spinner_multi_widget,Spinner widget: select multiple,minimal,"select_multiple type with minimal appearance, 4 image choices"
-  
+
 .. csv-table:: choices
   :header: list_name, name, label
-  
+
   opt_abcd,a,A
   opt_abcd,b,B
   opt_abcd,c,C
   opt_abcd,d,D
-  
+
 XForm XML
 """""""""""
 
 .. code:: xml
 
   <bind nodeset="/all-widgets/select_multi_widgets/spinner_multi_widget" type="select"/>
-  
+
   <select appearance="minimal" ref="/all-widgets/select_multi_widgets/spinner_multi_widget">
     <label>Spinner widget: select multiple</label>
     <hint>select_multiple type with minimal appearance, 4 image choices</hint>
@@ -2282,7 +2282,7 @@ XForm XML
       <value>d</value>
     </item>
   </select>
-  
+
 
 .. _field-list:
 
@@ -2291,18 +2291,18 @@ Field List
 
 The :tc:`field-list` appearance attribute, applied to a group of questions, displays them all on a single screen.
 
-.. image:: /img/form-widgets/field-list-1.* 
+.. image:: /img/form-widgets/field-list-1.*
   :alt: A field-list group of questions, as displayed in the ODK Collect app on an Android phone. Six questions are displayed. Below each, the answer choices are arranged in a row.
-  
-.. image:: /img/form-widgets/field-list-2.* 
+
+.. image:: /img/form-widgets/field-list-2.*
   :alt: The continuation of the previous image.
-  
+
 XLSForm Rows
 ~~~~~~~~~~~~~~
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
-  
+
   begin_group,table_list_test,List group,field-list,
   select_one yes_no,table_list_test_label,Label widget,label,"Show only the labels of these options and not the inputs (type=select_one yes_no, appearance=label)"
   select_multiple yes_no,table_list_test_label_2,Label multi widget,label,"Show only the labels of these options and not the inputs (type=select_multiple yes_no, appearance=label)"
@@ -2314,12 +2314,12 @@ XLSForm Rows
 
 .. csv-table:: choices
   :header: list_name, name, label
-  
+
   yes_no,yes,Yes
   yes_no,no,No
   yes_no,dk,Don't Know
   yes_no,na,Not Applicable
-  
+
 XForm XML
 ~~~~~~~~~~~~
 
@@ -2338,7 +2338,7 @@ XForm XML
     </all-widgets>
   </instance>
 
-  
+
   <bind nodeset="/all-widgets/table_list_test/table_list_test_label" type="select1"/>
   <bind nodeset="/all-widgets/table_list_test/table_list_test_label_2" type="select"/>
   <bind nodeset="/all-widgets/table_list_test/table_list_1" type="select1"/>
@@ -2346,7 +2346,7 @@ XForm XML
   <bind nodeset="/all-widgets/table_list_test/list_widget" type="select1"/>
   <bind nodeset="/all-widgets/table_list_test/list_multi_widget" type="select"/>
 
-  
+
   <group appearance="field-list" ref="/all-widgets/table_list_test">
     <label>List group</label>
     <select1 appearance="label" ref="/all-widgets/table_list_test/table_list_test_label">
@@ -2478,23 +2478,23 @@ Trigger Widget
 
 "Trigger" is another name for the :ref:`acknowledge` widget. The example shown here includes the :th:`required` attribute.
 
-.. image:: /img/form-widgets/trigger.* 
+.. image:: /img/form-widgets/trigger.*
   :alt: The Trigger (or "Acknowledge") form widget as displayed in the ODK Collect App on an Android phone. The question text is, "Trigger widget." The hint text is, "Prompts for confirmation. Useful to combine with required or relevant. (type=trigger)" Below that is a single checkbox labeled, "OK. Please continue." The checkbox is unchecked.
-  
-.. image:: /img/form-widgets/trigger-sorry.* 
+
+.. image:: /img/form-widgets/trigger-sorry.*
   :alt: The Trigger widget shown previously. An error text reads, "Sorry, this response is required."
-  
-.. image:: /img/form-widgets/trigger-selected.* 
+
+.. image:: /img/form-widgets/trigger-selected.*
   :alt: The Trigger widget shown previously. The checkbox is now checked.
-  
+
 XLSForm Rows
 ~~~~~~~~~~~~~~
 
 .. csv-table:: survey
   :header: type, name, label, hint, required
-  
-  trigger,my_trigger,Trigger widget,Prompts for confirmation. Useful to combine with required or relevant. (type=trigger),true() 
-  
+
+  trigger,my_trigger,Trigger widget,Prompts for confirmation. Useful to combine with required or relevant. (type=trigger),true()
+
 XForm XML
 ~~~~~~~~~~~~
 
@@ -2506,8 +2506,8 @@ XForm XML
     <label>Trigger widget</label>
     <hint>Prompts for confirmation. Useful to combine with required or relevant. (type=trigger)</hint>
   </trigger>
- 
- 
+
+
 .. _image-options:
 
 Including Images as Choices
