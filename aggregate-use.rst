@@ -6,7 +6,7 @@ ODK Aggregate can be used to collect data from ODK collect, filter the submitted
 
 When the URL to the ODK Aggregate server is first opened, you will be presented with the application page showing the :guilabel:`Submissions` and :guilabel:`Form Management` tabs. You will also see a :guilabel:`Log In` option and three help buttons.
 
-.. image:: /img/aggregate-use/server-start.*
+.. image:: /img/aggregate-use/server-start.png
    :alt: Image showing tabs on Aggregate server.
 
 .. _form-manage:
@@ -25,24 +25,24 @@ You can view all your forms, add new forms, delete forms, download forms as well
 
 Click on :guilabel:`Forms list` tab to see a list of all your forms.  
 
-.. image:: /img/aggregate-use/form-list.*
+.. image:: /img/aggregate-use/form-list.png
    :alt: Image showing list of all forms.
 
 Under the :guilabel:`Form list` tab, you will see :guilabel:`Add New Form` button  to upload a new form definition to ODK Aggregate. 
 
-.. image:: /img/aggregate-use/add-form.*
+.. image:: /img/aggregate-use/add-form.png
    :alt: Image showing add form button.
 
 When you click on it a box will open asking for details of the form. `Form Definition` is required and `Media File(s)` is optional. Choose the .xml file that will be used. You can also choose the appropriate media files for the form.  
 
-.. image:: /img/aggregate-use/add-form-options.*
+.. image:: /img/aggregate-use/add-form-options.png
    :alt: Image showing add form options.
 
 You can manage all the forms present on your server in your form list. All options displayed in the form list are as follow:
 
 - Click on :guilabel:`Title` to view the XML for a form. You can then download XML for that form by clicking on :guilabel:`Download XML` in the Form XML Viewer.
 
-.. image:: /img/aggregate-use/xml-viewer.*
+.. image:: /img/aggregate-use/xml-viewer.png
    :alt: Image showing xml viewer for form.
 
 - :guilabel:`Form Id` is the unique name for the form.
@@ -78,7 +78,7 @@ Viewing Published data
 
 You can get a view of the published data you have created for a particular form by clicking on :guilabel:`Published Data`. 
 
-.. image:: /img/aggregate-use/published-data.*
+.. image:: /img/aggregate-use/published-data.png
    :alt: Image showing published data.
 
 - Select the form corresponding to the published data in the :guilabel:`Form` dropdown.
@@ -99,12 +99,12 @@ Managing Submissions manually
 
 You can manually upload submissions for a form and check incomplete submissions under the :guilabel:`Submission Admin` tab. Following options are available:
 
-.. image:: /img/aggregate-use/submission-admin.*
+.. image:: /img/aggregate-use/submission-admin.png
    :alt: Image showing submission admin tab.
 
 - Click on :guilabel:`Manually upload submission data` to manually upload submissions.
 
-.. image:: /img/aggregate-use/submission-upload.*
+.. image:: /img/aggregate-use/submission-upload.png
    :alt: Image showing window to manually upload submissions.
 
 .. note::
@@ -140,17 +140,17 @@ Various options under this tab can be used as follows:
 
 - Click on :guilabel:`Add Filter` to add filter to the data. In the :guilabel:`Create filter to` dropdown, `Display/Hide` will specify whether you will be selecting data to show or hide and  `Rows/Columns` will specify whether you will be working with the rows or columns of the table. 
 
-.. image:: /img/aggregate-use/add-filter.*
+.. image:: /img/aggregate-use/add-filter.png
    :alt: Image showing add filter option.
 
 If you select `Rows` specify a condition you want to apply in the :guilabel:`where` box. 
 
-.. image:: /img/aggregate-use/row-filter.*
+.. image:: /img/aggregate-use/row-filter.png
    :alt: Image showing row selection.
 
 If you selected `Columns` specify the columns you wish to display or hide in the :guilabel:`titled` box. 
 
-.. image:: /img/aggregate-use/column-filter.*
+.. image:: /img/aggregate-use/column-filter.png
    :alt: Image showing column selection.
 
 - Click on :guilabel:`Save` to save the filter or filter group for future use. Clicking on :guilabel:`Save As` allows you to give a name to the filter or filter group.
@@ -161,7 +161,7 @@ If you selected `Columns` specify the columns you wish to display or hide in the
 
  Metadata provides information about the submissions. There will be information such as date submitted, if the data is complete, version numbers, and id numbers.
 
-.. image:: /img/aggregate-use/filter-options.*
+.. image:: /img/aggregate-use/filter-options.png
    :alt: Image showing save, save as, delete and display metadata options.
 
 
@@ -174,7 +174,7 @@ ODK Aggregate provides a quick means for basic data visualization. This Visualiz
 
 In both Pie chart and bar graph visualization you can either count the number of times a unique answer occurs in a specified column or calculate sum of values in one column grouped by a value in another column. You can choose a column that you want to map in map visualization.
 
-.. image:: /img/aggregate-use/visualize.*
+.. image:: /img/aggregate-use/visualize.png
    :alt: Image showing visualize option.
 
 Click on :guilabel:`Visualize` to visualize the submitted data. Select bar graph, pie chart or map in the :guilabel:`Type` dropdown. Further options are described as follows:
@@ -185,17 +185,17 @@ Click on :guilabel:`Visualize` to visualize the submitted data. Select bar graph
       - If you select :guilabel:`Sum` option, then select the column of values that you want to add and another column that you want to use to group the numbers. 
       - Then click on :guilabel:`Pie It` to get the Pie Chart.
 
-.. image:: /img/aggregate-use/pie-chart.*
+.. image:: /img/aggregate-use/pie-chart.png
    :alt: Image showing pie chart option.
 
 - If you choose Bar Graph, you have the same options as that in case of Pie Chart. Choose the option you want to use and then click on :guilabel:`Bar It` to get the Bar Graph.
 
-.. image:: /img/aggregate-use/bar-graph.*
+.. image:: /img/aggregate-use/bar-graph.png
    :alt: Image showing bar graph option.
 
 - If you choose Map, select a column that you want to map in the :guilabel:`GeoPoint to Map` dropdown. Click on :guilabel:`Map It` to get the map. You can click on a point to view a balloon with the other information supplied in the table.
 
-.. image:: /img/aggregate-use/map.*
+.. image:: /img/aggregate-use/map.png
    :alt: Image showing map option.
 
 .. _export-submissions:
@@ -203,10 +203,10 @@ Click on :guilabel:`Visualize` to visualize the submitted data. Select bar graph
 Exporting Submissions
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/aggregate-use/export-submission.*
+.. image:: /img/aggregate-use/export-submission.png
    :alt: Image showing export option.
 
-.. image:: /img/aggregate-use/export-options.*
+.. image:: /img/aggregate-use/export-options.png
    :alt: Image showing export window.   
 
 Click on :guilabel:`Export` option to export submitted data into useful formats and choose the format in which you want to export data. You can also choose a filter which you have saved earlier to export only a certain subset of data. Details on :ref:`exporting data <export-data>` are given in the :ref:`data transfer <transfer-data>` section.
@@ -216,10 +216,10 @@ Click on :guilabel:`Export` option to export submitted data into useful formats 
 Publishing Submissions
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/aggregate-use/publish-submission.*
+.. image:: /img/aggregate-use/publish-submission.png
    :alt: Image showing publish option.
 
-.. image:: /img/aggregate-use/publish-options.*
+.. image:: /img/aggregate-use/publish-options.png
    :alt: Image showing publish window.   
 
 Click on :guilabel:`Publish` option to publish the submitted data into another service. You can choose where you want to publish data and which data you want to publish. Details on :ref:`publishing data <publish-data>` are given in the :ref:`data transfer <transfer-data>` section.  
@@ -231,7 +231,7 @@ Viewing Exported Submissions
 
 You can to view the list of exported files under the :guilabel:`Exported Submissions` tab.
 
-.. image:: /img/aggregate-use/exported-submission.*
+.. image:: /img/aggregate-use/exported-submission.png
    :alt: Image showing exported submissions.
 
 - :guilabel:`File Type` specifies whether file is :file:`.csv` or :file:`.kml` or :file:`.json` file.
@@ -247,7 +247,7 @@ Site Admin
 
 Click the :guilabel:`Log In` link in the upper right corner of the screen to be presented with the Log onto Aggregate screen. Choose the :guilabel:`Sign in with Aggregate password` button and enter the super-user username you specified within the installer. The initial password for this account is `aggregate`. When you log in, :guilabel:`Site Admin` will be visible to you.
 
-.. image:: /img/aggregate-use/sign-in.*
+.. image:: /img/aggregate-use/sign-in.png
    :alt: Image showing sign in option.
 
 .. tip::
@@ -267,12 +267,12 @@ Permissions
 
 If you have not yet changed your super-user password to something other than `aggregate`, the server will display **This server and its data are not secure! Please change the super-user's password!** at the top of the web page. 
 
-.. image:: /img/aggregate-use/warning.*
+.. image:: /img/aggregate-use/warning.png
    :alt: Image showing server not secure warning.
 
 Please visit the :guilabel:`Permissions` sub-tab under the :guilabel:`Site Admin` tab to change this user's password.  
 
-.. image:: /img/aggregate-use/permissions.*
+.. image:: /img/aggregate-use/permissions.png
    :alt: Image showing permissions sub-tab.
 
 You can specify additional usernames with browser access to the server under the :guilabel:`Permissions` sub-tab. Privileges are as follows:
@@ -288,7 +288,7 @@ You can specify additional usernames with browser access to the server under the
 - `Form Manager`: all the capabilities of a Data Viewer plus the abilities to upload a form definition, delete a form and its data, and upload submissions manually through the ODK Aggregate website.
 - `Site Administrator`: all the capabilities of a Form Manager plus the ability to add users, set passwords, and grant these capabilities to other users.
 
-.. image:: /img/aggregate-use/privileges.*
+.. image:: /img/aggregate-use/privileges.png
    :alt: Image showing privileges.
 
 Remember to click :guilabel:`Save Changes` to make these changes take effect. You can also edit the privileges for current users.
@@ -304,7 +304,7 @@ In the :guilabel:`Preferences` sub-tab under :guilabel:`Site Admin` tab, you can
 
 - Google API credentials: These credentials are used when publishing into Google services. For details on this, see :doc:`Aggregate OAuth2 info <oauth2-service>`.
 
-.. image:: /img/aggregate-use/google-api-option.*
+.. image:: /img/aggregate-use/google-api-option.png
    :alt: Image showing google api option.
 
 - **Enketo credentials**: These credentials are used for Enketo webforms integration. To link Enketo with Aggregate, see `this <https://accounts.enketo.org/support/aggregate/>`_.
@@ -317,7 +317,7 @@ In the :guilabel:`Preferences` sub-tab under :guilabel:`Site Admin` tab, you can
    - *Disable faster background actions* - check this to reduce AppEngine quota usage.
    - *Skip malformed submissions* - check this to ignore corrupted submissions.
 
-.. image:: /img/aggregate-use/preferences-options.*
+.. image:: /img/aggregate-use/preferences-options.png
    :alt: Image showing other options.   
 
 
@@ -330,17 +330,17 @@ Aggregate provides three kinds of help accessible by pressing one of three butto
 
 The red question mark will give you instructions for the tab you are currently viewing. When you click the button, a help panel will appear at the bottom of the screen. To hide the help panel, simply click the red question mark again.
 
-.. image:: /img/aggregate-use/question-mark-help.*
+.. image:: /img/aggregate-use/question-mark-help.png
    :alt: Image showing question mark help option.
 
 The green book will give you the most comprehensive help. When you click the button, a popup will appear providing detailed information as well as video instructions.
 
-.. image:: /img/aggregate-use/book-help.*
+.. image:: /img/aggregate-use/book-help.png
    :alt: Image showing green book help option.
 
 The blue balloon increases the amount of detail that appears describing the button's functionality when you hover over most buttons.
 
-.. image:: /img/aggregate-use/balloon-help.*
+.. image:: /img/aggregate-use/balloon-help.png
    :alt: Image showing blue balloon help option.
 
 .. _transfer-data:
