@@ -18,7 +18,7 @@ Whenever U.S. English and British (or other) English spelling or usage disagree,
 
 .. code-block:: rst
 
-  The colour of the button is grey
+  The colour of the button is grey.
 
 .. rubric:: Right
 
@@ -111,6 +111,48 @@ A bulleted list is often more clear than an inline list.
   - Python
   
 There's no hard rule about which to use in any situation. Use your judgement: try it both ways and see which is more clear.
+
+.. _avoid-latin:
+
+Avoid Latin
+-------------
+
+Several Latin abbreviations are common in written English:
+
+ - etc.
+ - i.e.
+ - e.g.
+ - viz.
+ - c.f.
+ - n.b.
+ 
+At best, these present a minor barrier to understanding. This is often made worse by unintentional misuse.
+
+Avoid Latin abbreviations.
+
+.. rubric:: Wrong
+
+.. code-block:: rst
+
+  If you are writing about a specific process (e.g., installing an application)...
+  
+.. rubric:: Right
+
+.. code-block:: rst
+
+  If you are writing about a specific process (for example, installing an application)...
+  
+.. _etc:
+  
+Etc.
+~~~~~~~~
+
+*Et cetera* (or *etc.*) deserves a special mention.
+
+*Et cetera* means "and all the rest," and is often used to indicate that there is more that could or should be said, but which is being omitted.
+
+Writers often use *etc.* to gloss over details of the subject which they are not fully aware of. If you find yourself tempted use *etc.*, ask yourself if you really understand the thing you are writing about.
+
 
 .. _avoid-unneeded-words:
 
@@ -273,7 +315,9 @@ Therefore, avoid the use of personal pronouns whenever possible. They are often 
 
   ODK Collect is an Android app. It can be used for...
 
-  .. OR THIS:
+.. rubric:: Right
+
+.. code-block:: rst
   
   ODK Collect is an Android app that is used to...
   
@@ -297,7 +341,7 @@ Section titles should use ``Sentence case`` -- that is, only the first word shou
 Verb forms
 -----------
 
-If a document or section describes a procedure that someone might do, use a gerund. Do not use the "How to..." construction.
+If a document or section describes a procedure that someone might do, use a verb ending in *-ing*. (That is, a `gerund <https://en.wikipedia.org/wiki/Gerund>`_.) Do not use the "How to..." construction.
 
 .. rubric:: Wrong
 
@@ -539,6 +583,7 @@ ODK and ODK Docs
 - odk
 - Open data kit
 - OpenDataKit
+- the Open Data Kit
 - ODK docs
 - ODK documentation
 
@@ -576,18 +621,19 @@ A few projects should *always* use the **ODK** prefix:
 
 .. _xform-xlsform:
 
-XForm and XLSForm
+XForms and XLSForm
 -------------------
 
-- *XForm* refers to XML-encoded forms. 
+- *XForms* refers to XML-encoded forms. 
 - *XLSForm* refers to a spreadsheet format used to define forms. 
 
 .. rubric:: Wrong
 
-- Xform
-- X-Form
-- xform
-- XFORM
+- Xforms
+- X-Forms
+- xforms
+- XFORMS
+- XForm (no *s*, when referring to the specification)
 
 - xlsform
 - XLSform
@@ -595,20 +641,24 @@ XForm and XLSForm
 
 .. rubric:: Right
 
-- XForm
+- XForms
+- an Xform (when referring to a single form)
 - XLSForm
 
 .. _writing-about-xform:
 
-XForm Spec, XForm Tools, XForms
+XForms Spec, XForms Tools, XForms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*XForm* (or *XForms*) can refer to:
+*XForms* can refer to:
 
 - The `XML-based form format <https://en.wikipedia.org/wiki/XForms>`_
 - The `official XForms specification from the W3C <https://www.w3.org/TR/2009/REC-xforms-20091020/>`_
 - The `ODK XForms Specification <https://opendatakit.github.io/xforms-spec/>`_, which is a subset of the full W3C recommendation.
 - The general idea of an XML-based form.
+
+*XForm* (without an *s*) refers to:
+
 - A specific XML document that encodes a form.
 
 When writing about any of these things, make sure you are clear --- in your mind as well as in your writing --- which one you are talking about.
@@ -625,4 +675,3 @@ XLSForm
 - An `online tool <http://opendatakit.org/use/xlsform/>`_ and an `offline tool <https://gumroad.com/l/xlsform-offline>`_ for converting :file:`*.xls(x)` files to XForm documents. 
 
 When writing about any of these things, make sure you are clear --- in your mind as well as in your writing --- which one you are talking about.
-
