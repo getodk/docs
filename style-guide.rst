@@ -112,6 +112,48 @@ A bulleted list is often more clear than an inline list.
   
 There's no hard rule about which to use in any situation. Use your judgement: try it both ways and see which is more clear.
 
+
+.. _ordered-vs-unordered:
+
+Ordered and unordered lists
+-----------------------------
+
+An order list is numbered. It should be used when the order of the list is essential. For example, when enumerating a series of steps in a procedure.
+
+.. rubric:: Wrong
+
+.. code-block:: rst
+
+  - First we do this.
+  - And then we do this.
+  - And the we do this.
+  
+.. rubric:: Right
+
+.. code-block:: rst
+
+  1. Do this.
+  2. Do this.
+  3. Do this.
+  
+An unordered list is bulleted. It should be used for a collection of items in which order is not essential.
+
+.. rubric:: Wrong
+
+.. code-block:: rst
+
+  1. apples
+  2. oranges
+  3. bananas
+  
+.. rubric:: Right
+
+.. code-block:: rst
+
+  - apples
+  - oranges
+  - bananas
+
 .. _avoid-latin:
 
 Avoid Latin
@@ -164,9 +206,7 @@ Avoid unneeded words
 Adverbs
 ~~~~~~~~~~~
 
-Adverbs often contribute nothing.
-
-Common offenders include:
+Adverbs often contribute nothing. Common offenders include:
 
  - simply
  - easily
