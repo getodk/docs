@@ -327,7 +327,7 @@ Therefore, avoid the use of personal pronouns whenever possible. They are often 
 
   When using Collect, first the enumerator opens the app on their device. Then they complete the survey.
   
-.. rubric:: Improved
+.. rubric:: Better
 
 .. code-block:: rst
 
