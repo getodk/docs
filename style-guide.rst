@@ -295,7 +295,7 @@ Third-person personal pronouns are:
 
 .. note:: 
 
-  While some people consider *they/them/their* to be non-standard (or "incorrect") as third-person singular, it has gained wide use as a gender-neutral or gender-ambigious alternative to *he* or *she*.
+  While some people consider *they/them/their* to be non-standard (or "incorrect") as third-person singular, it has gained wide use as a gender-neutral or gender-ambiguous alternative to *he* or *she*.
 
 There are two issues with personal pronouns:
 
