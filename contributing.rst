@@ -1555,3 +1555,19 @@ Use the ``code-block`` directive to markup code samples. Specify the language on
         }
 
     }
+
+.. note::
+  
+  **rst** code-blocks wrap overflow lines by default. To unwrap overflow lines, use **unwrap** class with **rst** code-blocks.
+
+  .. code-block:: rst
+
+    .. code-block:: rst
+      :class: unwrap
+
+  Code-blocks for other languages don't wrap overflow lines. Instead of wrapping, you need to scroll side-ways. To wrap overflow lines with other code-blocks, use **wrap** class with them.
+
+  .. code-block:: rst
+
+    .. code-block:: python
+      :class: wrap
