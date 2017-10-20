@@ -105,7 +105,7 @@ Form Management Settings
   :class: device-screen-vertical
 
 .. versionadded:: 1.11.0*
-   :guilabel:`Image size` feature would be added in *Collect v1.11.0* (upcoming release).
+   :guilabel:`Image size` feature will be added in *Collect v1.11.0* (upcoming release).
   
 
 .. rubric:: Form import
