@@ -80,13 +80,10 @@ Form Management Settings
 .. image:: /img/collect-settings/form-management.png
   :alt: Form Management settings
   :class: device-screen-vertical
-  :width: 49 %
   
 .. image:: /img/collect-settings/form-management2.png
   :alt: Form Management settings
   :class: device-screen-vertical
-  :align: right
-  :width: 49 %
 
 
 :menuselection:`Form Management` settings handle default behavior when editing, finalizing, and importing forms.
@@ -107,9 +104,8 @@ Form Management Settings
   :alt: Image settings 
   :class: device-screen-vertical
 
-.. note::
-  
-  :guilabel:`Image size` feature would be added in *Collect v1.11.0* (upcoming release).
+.. versionadded:: 1.11.0*
+   :guilabel:`Image size` feature would be added in *Collect v1.11.0* (upcoming release).
   
 
 .. rubric:: Form import
