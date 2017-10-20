@@ -77,9 +77,14 @@ Map settings are included on the :menuselection:`User Interface` settings page.
 Form Management Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/collect-settings/form-management.*
+.. image:: /img/collect-settings/form-management.png
   :alt: Form Management settings
   :class: device-screen-vertical
+  
+.. image:: /img/collect-settings/form-management2.png
+  :alt: Form Management settings
+  :class: device-screen-vertical
+
 
 :menuselection:`Form Management` settings handle default behavior when editing, finalizing, and importing forms.
 
@@ -93,6 +98,15 @@ Form Management Settings
 - :guilabel:`Default to finalized` When enabled, forms are automatically finalized upon reaching the end of the form. You can opt out of finalizing any form when completing it.
 - :guilabel:`Constraint processing` used to select when response constraints are validated: After each swipe, or at finalization.
 - :guilabel:`High res video` enables high-resolution recordings.
+- :guilabel:`Image size` is used to set an image size for all the widgets.There are five size options available as shown below:
+
+.. image:: /img/collect-settings/image-settings.png
+  :alt: Image settings 
+  :class: device-screen-vertical
+
+.. versionadded:: 1.11.0*
+   :guilabel:`Image size` feature will be added in *Collect v1.11.0* (upcoming release).
+  
 
 .. rubric:: Form import
 
