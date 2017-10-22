@@ -21,7 +21,7 @@ There are several reasons for this:-
 Determining your Aggregate version
 -----------------------------------
 
-If are able to log onto the server as a Site Administrator, the ODK Aggregate version is displayed at the top of the :guilabel:`Preferences` sub-tab under the :guilabel:`Site Admin` tab.
+If you are able to log onto the server as a Site Administrator, the ODK Aggregate version is displayed at the top of the :guilabel:`Preferences` sub-tab under the :guilabel:`Site Admin` tab.
 
 If you are unable to log onto your server, you will need to search for the version in the application logs. To do that:
 
