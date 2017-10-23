@@ -11,10 +11,10 @@ It is important to upgrade to newer ODK Aggregate versions as they come out (not
 
 There are several reasons for this:-
 
-- `Security vulnerabilities` - we (and Google) are constantly upgrading the libraries we use with newer, safer, versions. The older your software, the greater the number of vulnerabilities in it.
-- `Hosting revisions` - Google AppEngine is a managed environment, unlike, say, AWS or other "bare-box" hosting services. Google is continuously updating features and removing support for older features in this environment. If you don't upgrade, there may not be an upgrade path that works due to these changes -- unlike "bare-box" hosting, you, and the ODK team, only have partial control over the software and hardware environment.
-- `Performance revisions` - as we find performance issues and address them, the tools get better and faster.
-- `Enhanced capabilities` - the form-processing library (javarosa) has roughly-annual updates to add new functions (e.g., sin(), cos()) and occasionally data types. And new features are slowly added to ODK Aggregate, too.
+- **Security vulnerabilities** - we (and Google) are constantly upgrading the libraries we use with newer, safer, versions. The older your software, the greater the number of vulnerabilities in it.
+- **Hosting revisions** - Google AppEngine is a managed environment, unlike, say, AWS or other "bare-box" hosting services. Google is continuously updating features and removing support for older features in this environment. If you don't upgrade, there may not be an upgrade path that works due to these changes -- unlike "bare-box" hosting, you, and the ODK team, only have partial control over the software and hardware environment.
+- **Performance revisions** - as we find performance issues and address them, the tools get better and faster.
+- **Enhanced capabilities** - the form-processing library (javarosa) has roughly-annual updates to add new functions (e.g., sin(), cos()) and occasionally data types. And new features are slowly added to ODK Aggregate, too.
 
 .. _determine-version:
 
@@ -80,7 +80,7 @@ General steps
 
 .. tip::
 
-  You need to know the exact `instance name` that was used in prior installs for your username and password to continue to work. If you add a space or change capitalization or spelling, the passwords will be invalid (you just need to re-run the installer with the correct string to correct the problem).
+  You need to know the exact *instance name* that was used in prior installs for your username and password to continue to work. If you add a space or change capitalization or spelling, the passwords will be invalid (you just need to re-run the installer with the correct string to correct the problem).
 
 .. _release-notes:
 
@@ -164,7 +164,7 @@ Aggregate v1.4.12
 4. Change MySQL ODK 1.x and ODK 2.0 data table constructions to use MEDIUMBLOB columns for media attachments. Fix several issues around accessing attachments. See Upgrade notes below and MySQL configuration instructions in :ref:`installing Aggregate on Tomcat <install-tomcat>` for configuration that is required for MySQL.
 5. Tweak Google AppEngine configuration to reduce frontend usage hours and thereby reduce costs.
 6. Performance improvements to Google AppEngine task locks (primarily for ODK 2.0 support).
-7. Add "/users/list" URL that returns the list of all configured users and the roles they have been granted. Access to this URL requires authentication and is restricted to ODK Aggregate usernames and Google accounts (anonymousUser access is forbidden). If the authenticated user does not have Tables Super-user, Administer Tables, or Site Administrator permissions, a singleton list is returned that contains only information about their own identity and its capabilities.
+7. Add ``/users/list`` URL that returns the list of all configured users and the roles they have been granted. Access to this URL requires authentication and is restricted to ODK Aggregate usernames and Google accounts (anonymousUser access is forbidden). If the authenticated user does not have Tables Super-user, Administer Tables, or Site Administrator permissions, a singleton list is returned that contains only information about their own identity and its capabilities.
 8. Changes to support row-level filtering in ODK 2.0.
 9. Implement a paginated view of ODK 2.0 data rows; 100 records per page.
 10. Upgrade to Google AppEngine 1.9.42 SDK.
@@ -194,8 +194,8 @@ Aggregate v1.4.11
 1. Add a mutex around ODK 1.x form submission creation and updating. This should eliminate submission data corruption.
 2. If only ODK 2.0 privileges are assigned, hide the Submissions tab.
 3. Fix: advisory memcache interaction to delete the entry when rolling back the datastore update.
-4. Add "Tables Super-user" as a configurable user capability. Users with this capability will be able to modify the table-level and row-level privileges on ODK 2.0 rev 206 data tables. These privileges are advisory and do not provide strong access or revision control.
-5. Add "/roles/granted" URL that returns the roles granted to an authenticated username or google account. This will be used by ODK 2.0 rev 206 tools to determine and save the capabilities of the configured user on a device. Those capabilities are then used to apply advisory access controls on the tables and rows.
+4. Add **Tables Super-user** as a configurable user capability. Users with this capability will be able to modify the table-level and row-level privileges on ODK 2.0 rev 206 data tables. These privileges are advisory and do not provide strong access or revision control.
+5. Add ``/roles/granted`` URL that returns the roles granted to an authenticated username or google account. This will be used by ODK 2.0 rev 206 tools to determine and save the capabilities of the configured user on a device. Those capabilities are then used to apply advisory access controls on the tables and rows.
 
 
 .. admonition:: Upgrade notes
