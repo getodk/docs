@@ -16,6 +16,7 @@ In the example below, the answer for the person’s age must be less than or equ
  
   "integer", "age", "How old are you?", ".<=40", "Person must be 40 years old or younger to complete the survey."
 
+For more details, refer `constraints section in XLSForm documentation <http://xlsform.org/#constraints>`_.
 
 Relevants
 -----------
@@ -30,6 +31,8 @@ In the example below, school name will be asked only if age entered by the user 
 
   "integer", "age", "How old are you?"
   "text", "School", "Enter your school name", "${age} <= 18"
+
+For more details, refer `relevants section in XLSForm documentation <http://xlsform.org/#relevant>`_.  
 
 
 Read only
@@ -51,6 +54,7 @@ In the example below, city is a read only value with default as California. User
 
   "text", "City", "Enter a city where server will operate", "yes", "California"
 
+For more details, refer `read only section in XLSForm documentation <http://xlsform.org/#read-only>`_.  
 
 Required
 ------------
@@ -65,6 +69,8 @@ To make questions required, add a **required** column to your survey worksheet. 
 
   "text", "name", "Enter your name", "yes", ""
 
+For more details, refer `required section in XLSForm documentation <http://xlsform.org/#required>`_.  
+
 Calculation
 -------------
 
@@ -76,7 +82,9 @@ Your survey can perform calculations using the values of preceding questions. In
 
   "decimal", "amount", "What was the price of the meal?", ""   
   "calculate", "tip", "", "${amount} * 0.18"
-  "note", "display", "18% tip for your meal is: ${tip}", ""  
+  "note", "display", "18% tip for your meal is: ${tip}", "" 
+
+For more details, refer `calculation section in XLSForm documentation <http://xlsform.org/#calculation>`_. 
 
 Tips on using above fields
 ----------------------------
@@ -113,13 +121,9 @@ To prevent the user from entering more tha maximum marks, a constraint should be
   "calculate", "total", "", "", "", "${course_cnt}!=''", "", "", "", "${course_cnt}*100"
   "note", "disp_max", "Maximum marks possible are ${total}.", "${total}<${marks}", "", "${course_cnt}!=''", "", "", "", ""
 
-.. note::
+- Whenever you perform a calculation make sure that it has proper relevants. Relevants should check that the variables required for calculation are not null and are supplied by the user. This will ensure that calculation fires only when no required variable is null and correct value is generated. In the above forms calculate field has relevant set to **${course_cnt}!=''**, so that calculate fires only when some value is entered in number of courses.  
 
-  You can download xml for these forms from this `Aggregate server <https://proj123-180702.appspot.com/>`_ as well as try filling them with different combinations. They are listed as *example_1* and *example_2*.
-
-- Whenever you perform a calculation make sure that it has proper relevants that is calculate fires only when all the required variables are supplied. In the above forms calculate field has relevant set to **${course_cnt}!=''**, so that calculate fires only when some value is entered in number of courses.  
-
-- It is not necessary that a field which has a constraint is a required field.  It is possible to represent a case when a value may not be known but if it is known must meet certain characteristics. For example, if a question asks for an exam percentage, it can be left blank but if provided with an answer it should be less than or equal to 100.
+- It is not necessary that a field which has a constraint is a required field.  It is possible to represent a case when a value may not be known but if it is known, it must meet certain characteristics. For example, if a question asks for an exam percentage, it can be left blank but if provided with an answer it should be less than or equal to 100.
 
 .. csv-table:: **Survey**  
   :header: "type", "name", "label", "constraint", "constraint_message", "required"
