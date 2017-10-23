@@ -63,6 +63,8 @@ Once you have at least one form :ref:`loaded into ODK Collect <loading-forms-int
   - The |arrow icon|  on the top right corner opens the jump menu. From the jump menu, you can go to any question or go to the beginning/ending of the form.
 
   .. |arrow icon| image:: jumpicon.png
+  
+  .. image:: jumpmenu.png
 
   .. note::
 
