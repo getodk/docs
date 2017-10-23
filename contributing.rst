@@ -1417,6 +1417,14 @@ To place an image in a document, use the ``image`` directive.
 
 Note the *literal* asterisk at the end *in place of a file extension*. Use the asterisk, and omit the file extension.
 
+You can add **inline images** in the document using "substitutions". Substitution definitions are indicated by an explicit markup start (".. ") followed by a vertical bar, the substitution text (which gets substituted), another vertical bar, whitespace, and the definition block. A substitution definition block may contain directives like image, replace etc. The following block of code will substitute "name" in the text with the image specified. 
+
+.. code-block:: rst
+  
+  .. |name| image:: /img/{document-subdirectory}/{file}.*
+             :alt: Alt text.
+
+
 Use the ``figure`` to markup an image with a caption.
 
 .. code-block:: rst
