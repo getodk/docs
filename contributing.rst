@@ -1417,14 +1417,6 @@ To place an image in a document, use the ``image`` directive.
 
 Note the *literal* asterisk at the end *in place of a file extension*. Use the asterisk, and omit the file extension.
 
-You can add **inline images** in the document using "substitutions". Substitution definitions are indicated by an explicit markup start (".. ") followed by a vertical bar, the substitution text (which gets substituted), another vertical bar, whitespace, and the definition block. A substitution definition block may contain directives like image, replace etc. The following block of code will substitute "name" in the text with the image specified. 
-
-.. code-block:: rst
-  
-  .. |name| image:: /img/{document-subdirectory}/{file}.*
-             :alt: Alt text.
-
-
 Use the ``figure`` to markup an image with a caption.
 
 .. code-block:: rst
@@ -1433,6 +1425,20 @@ Use the ``figure`` to markup an image with a caption.
     :alt: Alt text. Every image should have descriptive alt text.
 
     The rest of the indented content will be the caption. This can be a short sentence or several paragraphs. Captions can contain any other rst markup.
+
+.. _inline-images:
+
+Inline images
+"""""""""""""""
+
+You can add inline images in the document using `substitutions <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#substitution-definitions>`_. Substitution definitions are indicated by an explicit markup start (".. ") followed by a vertical bar, the substitution text (which gets substituted), another vertical bar, whitespace, and the definition block. A substitution definition block may contain inline-compatible directives such as :ref:`image <images>` or `replace <http://docutils.sourceforge.net/docs/ref/rst/directives.html#replace>`_. The following block of code substitutes arrow in the text with the image specified.  
+
+.. code-block:: rst 
+
+  The |arrow| icon opens the jump menu.
+  
+  .. |arrow| image:: /img/{document-subdirectory}/{file}.*
+             :alt: Alt text.
 
 .. _image-names:
 
