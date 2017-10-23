@@ -33,7 +33,7 @@ Under the :guilabel:`Form list` tab, you will see :guilabel:`Add New Form` butto
 .. image:: /img/aggregate-use/add-form.*
    :alt: Image showing add form button.
 
-When you click on it a box will open asking for details of the form. `Form Definition` is required and `Media File(s)` is optional. Choose the .xml file that will be used. You can also choose the appropriate media files for the form.  
+When you click on it a box will open asking for details of the form. :guilabel:`Form Definition` is required and :guilabel:`Media File(s)` is optional. Choose the .xml file that will be used. You can also choose the appropriate media files for the form.  
 
 .. image:: /img/aggregate-use/add-form-options.*
    :alt: Image showing add form options.
@@ -138,17 +138,17 @@ You can create a single or multiple filters depending on the subset of data you 
 
 Various options under this tab can be used as follows:
 
-- Click on :guilabel:`Add Filter` to add filter to the data. In the :guilabel:`Create filter to` dropdown, `Display/Hide` will specify whether you will be selecting data to show or hide and  `Rows/Columns` will specify whether you will be working with the rows or columns of the table. 
+- Click on :guilabel:`Add Filter` to add filter to the data. In the :guilabel:`Create filter to` dropdown, :menuselection:`Display` or :menuselection:`Hide` will specify whether you will be selecting data to show or hide and  :menuselection:`Rows` or :menuselection:`Columns` will specify whether you will be working with the rows or columns of the table. 
 
 .. image:: /img/aggregate-use/add-filter.*
    :alt: Image showing add filter option.
 
-If you select `Rows` specify a condition you want to apply in the :guilabel:`where` box. 
+If you select :menuselection:`Rows` specify a condition you want to apply in the :guilabel:`where` box. 
 
 .. image:: /img/aggregate-use/row-filter.*
    :alt: Image showing row selection.
 
-If you selected `Columns` specify the columns you wish to display or hide in the :guilabel:`titled` box. 
+If you selected :menuselection:`Columns` specify the columns you wish to display or hide in the :guilabel:`titled` box. 
 
 .. image:: /img/aggregate-use/column-filter.*
    :alt: Image showing column selection.
@@ -277,16 +277,16 @@ Please visit the :guilabel:`Permissions` sub-tab under the :guilabel:`Site Admin
 
 You can specify additional usernames with browser access to the server under the :guilabel:`Permissions` sub-tab. Privileges are as follows:
 
-- `Data Collector`: able to download forms to ODK Collect and submit data from ODK Collect to ODK Aggregate. 
+- **Data Collector**: able to download forms to ODK Collect and submit data from ODK Collect to ODK Aggregate. 
 
 .. note::
 
    - Only ODK accounts and the anonymousUser can be granted Data Collector rights. 
    - The anonymousUser must be granted Data Collector rights to accept submissions from unidentified sources (e.g., from ODK Collect 1.1.5 and earlier, or from ODK Collect 1.1.7 and later if not authenticating).
 
-- `Data Viewer`: able to log onto the ODK Aggregate website, filter and view submissions, and generate csv or kml files for download.
-- `Form Manager`: all the capabilities of a Data Viewer plus the abilities to upload a form definition, delete a form and its data, and upload submissions manually through the ODK Aggregate website.
-- `Site Administrator`: all the capabilities of a Form Manager plus the ability to add users, set passwords, and grant these capabilities to other users.
+- **Data Viewer**: able to log onto the ODK Aggregate website, filter and view submissions, and generate csv or kml files for download.
+- **Form Manager**: all the capabilities of a Data Viewer plus the abilities to upload a form definition, delete a form and its data, and upload submissions manually through the ODK Aggregate website.
+- **Site Administrator**: all the capabilities of a Form Manager plus the ability to add users, set passwords, and grant these capabilities to other users.
 
 .. image:: /img/aggregate-use/privileges.*
    :alt: Image showing privileges.
@@ -510,13 +510,13 @@ Interfaces used during pull actions are:
 
 - OpenRosa Form Discovery API
 - download forms and media files using URLs form discovery
-- `view/submissionList` to obtain a chunk of submission keys
-- `view/downloadSubmission` to download an individual submission
+- ``view/submissionList`` to obtain a chunk of submission keys
+- ``view/downloadSubmission`` to download an individual submission
 
 Interfaces used during push actions are:
 
-- `formUpload` to upload a form and its media files to ODK Aggregate
-- `view/submissionList` to obtain a chunk of submission keys   
+- ``formUpload`` to upload a form and its media files to ODK Aggregate
+- ``view/submissionList`` to obtain a chunk of submission keys   
 - OpenRosa Form Submission/Overwite API (with extensions)
 
 For more details, see `Briefcase Aggregate API <https://github.com/opendatakit/opendatakit/wiki/Briefcase-Aggregate-API>`_.
