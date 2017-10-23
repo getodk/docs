@@ -4,7 +4,7 @@ Form Widgets
 
 This document is a list of available ODK :term:`Collect` :term:`form` :term:`widgets <widget>` (question types), with:
 
-- examples images from the ODK Collect app
+- example images from the ODK Collect app
 - example Excel spreadsheet rows for creating form widgets with :term:`XLSForm`
 - example :term:`ODK XForm` XML snippets
 
