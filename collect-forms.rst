@@ -64,7 +64,9 @@ Once you have at least one form :ref:`loaded into ODK Collect <loading-forms-int
 
   .. |arrow icon| image:: jumpicon.png
   
-  .. image:: jumpmenu.png
+  .. image:: /img/collect-forms/jumpmenu.*
+    :alt: Jump menu displayed in ODK Collect on an Android phone. 
+    :class: device-screen-vertical
 
   .. note::
 
