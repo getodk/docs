@@ -11,7 +11,7 @@ test:
 
   override:
     - sphinx-build -W -b dirhtml $HOME/docs $HOME/docs/build
-    - pngquant $HOME/docs/build/_images/*.png --force --ext .png
+    - pngquant $HOME/docs/build/_images/*.png --force --ext .png --verbose
 
   post:
     - cp -r $HOME/docs/build $CIRCLE_ARTIFACTS
