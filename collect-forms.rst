@@ -60,6 +60,28 @@ Once you have at least one form :ref:`loaded into ODK Collect <loading-forms-int
 - Typically, you will :gesture:`swipe left` to advance forward through the question, and :gesture:`swipe right` to back up.
 
   - You can switch from :gesture:`Swipe` navigation to Forward/Backward buttons in :menuselection:`⋮ -> General Settings -> User Interface`
+  - The |arrow| icon on the top right corner opens the jump menu. From the jump menu, you can go to any question or go to the beginning/ending of the form.
+
+  .. |arrow| image:: /img/collect-forms/jumpicon.*
+             :alt: Opens the jump menu. 
+
+  |           
+
+  .. image:: /img/collect-forms/jumpscreen.*
+    :alt: Screen with the arrow icon displayed in ODK Collect on an Android phone. 
+    :class: device-screen-vertical
+  
+  |
+
+  .. image:: /img/collect-forms/jumpmenu.*
+    :alt: Jump menu displayed in ODK Collect on an Android phone. 
+    :class: device-screen-vertical
+
+  |
+    
+  .. note::
+    Jump menu only shows the questions of a looped group once an actual record is created.   
+   
   - Some questions will :ref:`auto-advance <autoadvance-widget>` after being answered.
   - `Required questions <http://xlsform.org/#required>`_ will not allow you to advance unless answered.
 
