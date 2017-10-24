@@ -97,7 +97,18 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   :caption: Integration
   
   encrypted-forms
+
+.. toctree::
+  :hidden:
+  :maxdepth: 2
+  :caption: OpenRosa
   
+  openrosa
+  openrosa-metadata
+  openrosa-http
+  openrosa-authentication
+  openrosa-form-submission
+  openrosa-form-list
 .. toctree::
   :hidden:
   :maxdepth: 2
