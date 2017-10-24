@@ -43,6 +43,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   collect-settings
   collect-forms
   collect-adb
+  projecting-collect
 
 .. toctree::
    :hidden:
