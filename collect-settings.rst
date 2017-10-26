@@ -197,7 +197,7 @@ You can click on the |share| icon to share the generated barcode as an image. Th
 Saving QR code locally
 """"""""""""""""""""""""
 
-You can also save the settings to disk by clicking on :guilabel:`⋮` on the top-right corner.  
+You can go to :menuselection:`⋮->Save settings to disk` to save the QR code.  
 
 Making your own QR code
 """"""""""""""""""""""""""
@@ -216,7 +216,7 @@ You can import settings from a QR code saved on your device by selecting :guilab
     }
   }
 
-The JSON object isn't encrypted but is compressed using `zlib <https://en.wikipedia.org/wiki/Zlib>_` before encoding into QRCode. Therefore the creation process can be summarized as follows:
+The JSON object isn't encrypted but is compressed using `zlib <https://en.wikipedia.org/wiki/Zlib>`_ before encoding into QRCode. Therefore the creation process can be summarized as follows:
 
 1) Write a JSON object containing the changed settings in form of structure as written above. 
 2) Compress it using zlib.
