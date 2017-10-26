@@ -197,7 +197,7 @@ You can click on the |share| icon to share the generated barcode as an image. Th
 Saving QR code locally
 """"""""""""""""""""""""
 
-You can go to :menuselection:`⋮->Save settings to disk` to save the QR code.  
+You can go to :menuselection:`⋮ --> Save settings to disk` to save the QR code.  
 
 Making your own QR code
 """"""""""""""""""""""""""
