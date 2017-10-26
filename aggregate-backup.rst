@@ -13,33 +13,44 @@ Use :doc:`ODK Briefcase <briefcase-guide>` to back up all forms and submissions 
 Recovering database from MySQL dump 
 --------------------------------------
 
-1. Stop running the Tomcat.
-2. Upgrade to the latest version og Aggregate.
-3. Finally restore it from MySQL dump. An SQL dump of a database is a common method to safely store away a snapshot of the database for archival purposes or to migrate data between database instances, e.g. between two major system releases. The content of a SQL dump is a large collection of SQL commands in ASCII. Running the script will recreate the database in the same state as it was when the dump was created. The primary tool to consider for making an ASCII dump is msqldump, which includes a wide variety of options:
+1. Stop running Tomcat.
+2. :doc:`Upgrade to the latest version of Aggregate <aggregate-upgrade>`.
+3. Finally, restore it from MySQL dump. An SQL dump of a database is a common method to safely store away a snapshot of the database for archival purposes or to migrate data between database instances, e.g. between two major system releases. The content of a SQL dump is a large collection of SQL commands in ASCII. Running the script will recreate the database in the same state as it was when the dump was created. The primary tool to consider for making an ASCII dump is `mysqldump <https://dev.mysql.com/doc/mysql-backup-excerpt/5.7/en/using-mysqldump.html>`_, which includes a wide variety of options.
 
 .. code-block:: console
 
-	$ msqldump [ options ] [ dbname ]
+  $ mysqldump [ options ] [ dbname ]
 
-Options are:
+Some of the useful options are:
 
 - :option:`-h hostname` or :option:`--host=hostname` specifies host to connect to.
 - :option:`-p portnr` or :option:`--port=portnr` specifies port to connect to.
 - :option:`-u user` or :option:`--user=user` specifies user id.
 - :option:`-d database` or :option:`--database=database` specifies database to connect to.
-- :option:`-f` or :option:`--functions` specifies dump functions.
-- :option:`-t table` or :option:`--table=table` specifies dump a database table.
-- :option:`-D` or :option:`--describe` to describe database.
-- :option:`-N` or :option:`--inserts` to use INSERT INTO statements.
-- :option:`-q` or :option:`--quiet` to don't print welcome message.
-- :option:`-X` or :option:`--Xdebug` to trace mapi network interaction.
-- :option:`-?` or :option:`--help` to show this usage message.
 
-:option:`--functions` and :option:`--table` are mutually exclusive.
+To take a backup of database:
 
-It act as a normal database application, e.g. it runs concurrently with all other user sessions, and dumps the generated SQL statements onto standard output. Safe this to a file for later a later restore session by calling mclient with the saved session as argument. Details on the various arguments can be found in the manual page for mclient.
+.. code-block:: console
 
-Creation of the dump respects your credentials, which means you only can dump the tables you have access to. 
+  $ mysqldump database > backup-file.sql; 
+
+To restore a database:
+
+.. code-block:: console
+
+  $ mysql database < backup-file.sql;
+
+To copy a database from one server to another
+
+.. code-block:: console
+
+  $ mysqldump --opt database | mysql --host=remote_host -C database
+
+**remote_host** indicates a remote server where you want to take backup.      
+
+.. note::
+
+  Creation of the dump respects your credentials, which means you only can dump the tables you have access to. 
 
 .. _gae-backup:
 
@@ -88,8 +99,8 @@ Create backup
    
   It is recommended to disable writes during creation of backup. To disable writes, click on :guilabel:`Disable writes` on the Admin page.
 
-.. image:: /img/aggregate-backup/disable-writes.png
-   :alt: Image showing Disable writes option.
+  .. image:: /img/aggregate-backup/disable-writes.png
+    :alt: Image showing Disable writes option.
 
 .. warning::
    
@@ -142,8 +153,8 @@ Click on :guilabel:`Info` to get more information about the backup. On the info 
 
   After the backup is complete, if you disabled Cloud Datastore writes, re-enable them by going to Admin page and clicking on :guilabel:`Enable writes`.
 
-.. image:: /img/aggregate-backup/enable-writes.png
-   :alt: Image shwowing Enable writes option.
+  .. image:: /img/aggregate-backup/enable-writes.png
+    :alt: Image showing Enable writes option.
 
 .. _restore-backup:
 
@@ -159,8 +170,8 @@ Restoring data from Backup
 
   Disable Cloud Datastore writes for your application. It's normally a good idea to do this to avoid conflicts between the restore and any new data written to Cloud Datastore. To disable writes, click on :guilabel:`Disable writes` on the Admin page.
 
-.. image:: /img/aggregate-backup/disable-writes.png
-   :alt: Image showing Disable writes option.
+  .. image:: /img/aggregate-backup/disable-writes.png
+    :alt: Image showing Disable writes option.
 
 2. Click on :guilabel:`Open Datastore Admin`.
 
@@ -193,8 +204,8 @@ Restoring data from Backup
 
   After the restore is complete, if you disabled Cloud Datastore writes, re-enable them by going to Admin page and clicking on :guilabel:`Enable writes`.
 
-.. image:: /img/aggregate-backup/enable-writes.png
-   :alt: Image shwowing Enable writes option.
+  .. image:: /img/aggregate-backup/enable-writes.png
+    :alt: Image showing Enable writes option.
 
 .. note::
 
