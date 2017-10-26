@@ -194,7 +194,11 @@ QR code is a JSON object with a structure such as shown:
     }
   }
 
+The JSON object isn't encrypted but is compressed using `zlib <https://en.wikipedia.org/wiki/Zlib>_` before encoding into QRCode.
 
+.. note::
+
+  QR code only contains settings whose values are not the default values. This is done because there're constraints on the amount of data a QR code can hold.
 
 .. warning:: 
 
