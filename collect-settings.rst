@@ -175,23 +175,36 @@ Admin settings allow you to :ref:`restrict which General Settings are seen by us
 Import/Export settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+When you click on the :guilabel:`Import/Export Settings`, you see a QR Code and a few options. 
+
 .. image:: /img/collect-settings/import-settings.*
   :alt: Import/export settings menu of ODK Collect
   :class: device-screen-vertical
 
-QR Code or the Quick Response Code is a two dimensional barcode. They can be used to configure Collect on many devices. When you click on the :guilabel:`Import/Export Settings`, you see a QR Code. 
-The QR image presented contains all of your current General and Admin settings, including admin and server passwords. When this QR code is scanned from the ODK Collect app on another device, these settings are imported. 
-You can click on the |share| icon to share the generated barcode as an image. 
+QR Code
+""""""""
+
+QR Code or the Quick Response Code is a two dimensional barcode. QR codes can be used to configure Collect on many devices. The QR image presented contains all of your current General and Admin settings, including admin and server passwords. When this QR code is scanned from the ODK Collect app on another device, these settings are imported.
+
+Sharing QR code
+""""""""""""""""
+
+You can click on the |share| icon to share the generated barcode as an image. This is useful when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device. 
 
 .. |share| image:: /img/collect-settings/share-icon.*
              :alt: Share icon for sharing the QR code. 
 
-This is useful when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device. 
-You can also save the settings to disk by clicking on :guilabel:`⋮` on the top-right corner.  
-You can import settings from a QR code saved to the device, by selecting :guilabel:`Select Code from SD Card`. The code that you select could be something that was shared with you or you can also generate your own QR code. 
-To create your own QR code, you need to know that QR code is a JSON object with a structure such as shown:
+Saving QR code locally
+""""""""""""""""""""""""
 
-..code-block:: JSON
+You can also save the settings to disk by clicking on :guilabel:`⋮` on the top-right corner.  
+
+Making your own QR code
+""""""""""""""""""""""""""
+
+You can import settings from a QR code saved on your device by selecting :guilabel:`Select Code from SD Card`. The code that you select could be something that was shared with you or you can also generate your own QR code. To create your own QR code, you need to know that QR code is a JSON object with a structure as shown below:
+
+.. code-block:: JSON
 
   {
     "general": {
@@ -203,19 +216,16 @@ To create your own QR code, you need to know that QR code is a JSON object with 
     }
   }
 
-The JSON object isn't encrypted but is compressed using `zlib <https://en.wikipedia.org/wiki/Zlib>_` before encoding into QRCode.
-To create you own QR code, you simply need to follow these steps: 
+The JSON object isn't encrypted but is compressed using `zlib <https://en.wikipedia.org/wiki/Zlib>_` before encoding into QRCode. Therefore the creation process can be summarized as follows:
 
 1) Write a JSON object containing the changed settings in form of structure as written above. 
 2) Compress it using zlib.
 3) Encode into QR code. 
 
 .. note::
-
   QR code only contains settings whose values are not the default values. This is done because there're constraints on the amount of data a QR code can hold.
 
 .. warning:: 
-
   The QR code used for settings-import contains the admin and server passwords *in plain text*. To remove them from the code, :gesture:`tap` the warning on the QR code screen.
 
 .. _user-access-control-settings:
