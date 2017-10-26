@@ -243,35 +243,3 @@ If the command is successfully executed, you will find your file in the launcher
 
   You can also use `Genymotion <https://www.genymotion.com/>`_ as an alternative as it is very fast as comapared to custom android emulators.It is also easy to use and configure, and it is available free of cost for personal use.
   
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-  
-
-
-
