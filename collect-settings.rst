@@ -176,11 +176,11 @@ Import/Export settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 QR Codes or the Quick Response Codes are two dimensional barcodes. They can be used to configure Collect on many devices. When you click on the :guilabel:`Import/Export Settings`, you see a QR Code. 
-The QR image presented contains all of your current General and Admin settings, including admin and server passwords. When scanned by the ODK Collect app with another device, these settings are imported. 
-You can click on the |share| icon to share the generated barcode as an image. This is useful in scenario when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device. 
+The QR image presented contains all of your current General and Admin settings, including admin and server passwords. When this QR code is scanned from the ODK Collect app on another device, these settings are imported. 
+You can click on the |share| icon to share the generated barcode as an image. This is useful when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device. 
 You can also save the settings to disk by clicking on :guilabel:`⋮` on the top-right corner.  
 You can import settings from a QR code saved to the device, by selecting :guilabel:`Select Code from SD Card`. The code that you select could be something that was shared with you or you can also generate your own QR code. 
-QR code is a JSON object with a structure such as shown:
+To create your own QR code, you need to know that QR code is a JSON object with a structure such as shown:
 
 ..code-block:: JSON
 
@@ -195,6 +195,11 @@ QR code is a JSON object with a structure such as shown:
   }
 
 The JSON object isn't encrypted but is compressed using `zlib <https://en.wikipedia.org/wiki/Zlib>_` before encoding into QRCode.
+To create you own QR code, you simply need to follow these steps: 
+
+1) Write a JSON object containing the changed settings in form of structure as written above. 
+2) Compress it using zlib.
+3) Encode into QR code. 
 
 .. note::
 
