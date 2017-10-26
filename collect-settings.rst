@@ -175,17 +175,12 @@ Admin settings allow you to :ref:`restrict which General Settings are seen by us
 Import/Export settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-:guilabel:`Import/Export Settings` lets you configure other devices identical to your current device simply by scanning the QR code. 
+QR Codes or the Quick Response Codes are two dimensional barcodes. They can be used to configure Collect on many devices. When you click on the :guilabel:`Import/Export Settings`, you see a QR Code. 
+The QR image presented contains all of your current General and Admin settings, including admin and server passwords. When scanned by the ODK Collect app with another device, these settings are imported. 
+You can click on the |share| icon to share the generated barcode as an image. This is useful in scenario when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device. 
+You can also save the settings to disk by clicking on :guilabel:`⋮` on the top-right corner.  
+You can import settings from a QR code saved to the device, by selecting :guilabel:`Select Code from SD Card`. The code that you select could be something that was shared with you or you can also generate your own QR code. 
 
-QR Codes
-"""""""""
-
-QR Codes or the Quick Response Codes are two dimensional barcodes. They can be used to configure Collect on many devices. When you click on the :guilabel:`Import/Export Settings`, you see a QR Code. That QR code encloses the general and admin settings of the current device. You can click on the |share| icon to share the generated barcode as an image. This is useful in scenario when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device. You can save the settings to disk by clicking on :guilabel:`⋮` on the top-right corner.
-
-
-
-
-The QR image presented contains all of your current General and Admin settings, including admin and server passwords. When scanned by the ODK Collect app with another device, these settings are imported.You can also import settings from a QR code saved to the device, by selecting :guilabel:`Select Code from SD Card`
 
 .. warning:: 
 
