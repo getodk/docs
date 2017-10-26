@@ -175,7 +175,11 @@ Admin settings allow you to :ref:`restrict which General Settings are seen by us
 Import/Export settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-QR Codes or the Quick Response Codes are two dimensional barcodes. They can be used to configure Collect on many devices. When you click on the :guilabel:`Import/Export Settings`, you see a QR Code. 
+.. image:: /img/collect-settings/import-settings.*
+  :alt: Import/export settings menu of ODK Collect
+  :class: device-screen-vertical
+
+QR Code or the Quick Response Code is a two dimensional barcode. They can be used to configure Collect on many devices. When you click on the :guilabel:`Import/Export Settings`, you see a QR Code. 
 The QR image presented contains all of your current General and Admin settings, including admin and server passwords. When this QR code is scanned from the ODK Collect app on another device, these settings are imported. 
 You can click on the |share| icon to share the generated barcode as an image. This is useful when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device. 
 You can also save the settings to disk by clicking on :guilabel:`⋮` on the top-right corner.  
