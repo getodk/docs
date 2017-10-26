@@ -47,7 +47,7 @@ Installing on App Engine
 - On clicking on the project name (In this case `Project-edu`), a window appears with a :guilabel:`+` symbol. Click on it to create a new project.   
 
 .. image:: /img/aggregate-install/create-project.*
-   :alt: Image showing the `+` sign which denotes creating a new project.
+   :alt: Image showing the + sign which denotes creating a new project.
 
 - On the project-creation pop-up dialog, type in a project name that makes sense to you. You can enter a project name and click on :guilabel:`Create` if you don't want to edit the project-id. You can choose :guilabel:`Edit` if you want to edit the project id. The project id will be the first part of the URL to your ODK Aggregate server.
 
@@ -68,7 +68,7 @@ Installing on App Engine
 .. image:: /img/aggregate-install/notification.*
    :alt: Image showing blue notification icon.
 
-- Click on the notification icon and select the first option from the dropdown menu then. The option is labelled as `Create Project:your project name`.
+- Click on the notification icon and select the first option from the dropdown menu then. The option is labelled as *Create Project:your project name*.
 
 .. image:: /img/aggregate-install/go-to-project.*
    :alt: Image showing the option to create your project.      
@@ -83,12 +83,12 @@ Installing on App Engine
 .. image:: /img/aggregate-install/app-engine.*
    :alt: Image showing App Engine option.
 
-- Click on the :guilabel:`Select a language` dropdown under the `Your first app` heading.
+- Click on the :guilabel:`Select a language` dropdown under the *Your first app* heading.
 
 .. image:: /img/aggregate-install/language-select.*
    :alt: Image showing option to select a language.
 
-- Now choose `Java`.
+- Now choose *Java*.
 
 .. image:: /img/aggregate-install/select-java.*
    :alt: Image showing various language options to choose from.
@@ -112,7 +112,7 @@ Installing on App Engine
 
 .. tip::
 
-   - You can verify the download using `SHA256 signatures` as described at the top of the downloads page.
+   - You can :doc:`verify the download <verify-downloads>` using *SHA256 signatures*.
    - If you are running OSX, you must unzip the downloaded file before running the installer within it.
    - If you are on MacOSX Mountain Lion or onward, you will need to fiddle with `GateKeeper settings <http://osxdaily.com/2012/07/27/app-cant-be-opened-because-it-is-from-an-unidentified-developer/>`_ in order to run the installer.
    - If you are on Windows 10, you will need to approve running an unsigned installer.
@@ -128,12 +128,12 @@ Installing on App Engine
 .. image:: /img/aggregate-install/agreement.*
    :alt: Image showing license agreement.
 
-- Select a parent directory under which an `ODK Aggregate` directory will be created to contain the configured software. Click on the :guilabel:`folder` icon to choose a directory.
+- Select a parent directory under which an *ODK Aggregate* directory will be created to contain the configured software. Click on the :guilabel:`folder` icon to choose a directory.
 
 .. image:: /img/aggregate-install/directory-setup.*
    :alt: Image showing window to choose a parent directory. 
 
-- In the next window choose `Google App Engine` as the platform for the Aggregate server.
+- In the next window choose *Google App Engine* as the platform for the Aggregate server.
 
 .. image:: /img/aggregate-install/choose-platform.*
    :alt: Image displaying options to choose a platform for Aggregate.
@@ -159,7 +159,7 @@ Installing on App Engine
 .. note::
    
    - The user with the superuser account will have full permissions on the system.
-   - The password for this user will be set to `aggregate` initially.
+   - The password for this user will be set to **aggregate** initially.
    - Only this user will be allowed to log onto the system when ODK Aggregate is run for the first time.
    - Upon first logging in, the superuser should change the password and complete the configuration of ODK Aggregate by specifying additional users and what permissions they will have on the system.
 
@@ -172,7 +172,7 @@ Installing on App Engine
 
 .. tip::
 
-   Beginning with Java 7 Update 51, there are security level settings that may prevent the upload tool from running. A reported workaround is to add the file: path (e.g., ``file:///``) to the Exception Site list.
+   Beginning with Java 7 Update 51, there are security level settings that may prevent the upload tool from running. A reported workaround is to add the *file: path* (e.g., :file:```file:///```) to the Exception Site list.
 
 - Enter the Gmail account in the upload tool that you specified to use the App Engine. This will enable the :guilabel:`Get Token` button.
 
@@ -181,7 +181,7 @@ Installing on App Engine
 
 - Click the :guilabel:`Get Token` button. Two things happen after this:
 
-    - Your default browser will open to a Google site (accounts.google.com) where you are asked to choose a Gmail account (select the account specified by you to use the App Engine), and then approve allowing "Google App Engine appcfg" to View and manage your AppEngine instances and datastores. Click :guilabel:`Allow`. This will take you to a screen with instructions to copy a code.
+    - Your default browser will open to a Google site (accounts.google.com) where you are asked to choose a Gmail account (select the account specified by you to use the App Engine), and then approve allowing *Google App Engine appcfg* to view and manage your AppEngine instances and datastores. Click :guilabel:`Allow`. This will take you to a screen with instructions to copy a code.
     - At the same time, a pop-up dialog should be displayed by the upload tool. 
 
     .. tip::
@@ -249,11 +249,11 @@ Installing on App Engine
       deleteBackendBackground : 400 Bad Request     
            
 
-   - Toward the bottom, the `update :` section should not report errors and at the end, a `status : Action Succeeded!` line should be written. This indicates that the upload completed successfully. 
+   - Toward the bottom, the *update :* section should not report errors and at the end, a *status : Action Succeeded!* line should be written. This indicates that the upload completed successfully. 
    - To get a more clear view, you can see an `example log <https://opendatakit.org/wp-content/uploads/Apr2016-GoogleCloud/exampleUploadScriptOutput.txt>`_. 
    
     
-- Once the updater script has run and uploaded the ODK Aggregate configuration to App Engine, return to the Google Cloud Platform console. With the console displaying your project, click on the menu icon (three horizontal bars) to the right of `Google Cloud Platform` in the upper left side of the screen and select App Engine from the menu.
+- Once the updater script has run and uploaded the ODK Aggregate configuration to App Engine, return to the Google Cloud Platform console. With the console displaying your project, click on the menu icon (three horizontal bars) to the right of *Google Cloud Platform* in the upper left side of the screen and select App Engine from the menu.
 
 - Click on :guilabel:`ALLOW` in the next window.
 
@@ -284,7 +284,7 @@ If you have many form definitions on your server, you may get better performance
 
 To change Google App Engine configuration, you must edit the configuration files produced by the installer and re-run the uploader script to push the changes to Google's servers. There are two server settings that can be changed:
   
-- `Web Server Size`: The web server handles all browser interactions and all data-submission and form-download requests from ODK Collect and ODK Briefcase. Increasing the size of the web server should reduce the likelihood of data corruption if it is not caused by slow network speeds. To change the Google App Engine web server size, go to the folder you specified to the installer. Within that folder, navigate to :file:`ODKAggregate/default/WEB-INF`. Within that directory, there will be a file :file:`appengine-web.xml`. Open that file in a text editor like Notepad++ or Notepad. The file contents will look something like:
+- **Web Server Size**: The web server handles all browser interactions and all data-submission and form-download requests from ODK Collect and ODK Briefcase. Increasing the size of the web server should reduce the likelihood of data corruption if it is not caused by slow network speeds. To change the Google App Engine web server size, go to the folder you specified to the installer. Within that folder, navigate to :file:`ODKAggregate/default/WEB-INF`. Within that directory, there will be a file :file:`appengine-web.xml`. Open that file in a text editor like Notepad++ or Notepad. The file contents will look something like:
 
  .. code-block:: xml
 
@@ -298,7 +298,7 @@ To change Google App Engine configuration, you must edit the configuration files
  
  To change the size of the web server, replace **F2** with a different instance class size. There are several different instance classes available. Select from among the instance classes beginning with the letter **F**. See `instance classes <https://cloud.google.com/appengine/docs/about-the-standard-environment#instance_classes>`_  for their descriptions or search for `Google AppEngine instance classes standard environment` on the web. Then re-run the upload tool within the ODKAggregate folder either by double-clicking the :file:`ODKAggregateAppEngineUpdater.jar` file (Windows), or double-clicking the :file:`uploadAggregateToAppEngine.app` file (Mac OSX), or double-clicking the :file:`uploadAggregateToAppEngine.sh` file (linux). Once you have uploaded these changes to App Engine, your server will be running on the instance size that you have specified.
 
-- `Background Server Size`: App Engine deployments use a "background" copy of the website to process long-running actions like generating CSV and KML files for export and for publishing all accumulated data to an external server. If you experience difficulty exporting to CSV or KML, the size of that server will also need to be updated. In that case, go to :file:`ODKAggregate/background/WEB-INF`. Within that directory, there will be a slightly different file with the same :file:`appengine-web.xml` filename. Open that file in a text editor like Notepad++ or Notepad. The file contents will look something like:
+- **Background Server Size**: App Engine deployments use a "background" copy of the website to process long-running actions like generating CSV and KML files for export and for publishing all accumulated data to an external server. If you experience difficulty exporting to CSV or KML, the size of that server will also need to be updated. In that case, go to :file:`ODKAggregate/background/WEB-INF`. Within that directory, there will be a slightly different file with the same :file:`appengine-web.xml` filename. Open that file in a text editor like Notepad++ or Notepad. The file contents will look something like:
 
  .. code-block:: xml
 
@@ -328,12 +328,10 @@ To run on ODK Aggregate on a Tomcat server backed with a MySQL or PostgreSQL dat
 
 - Define your server requirements and install your server.
    
-   **Server Requirements**
-   
-   - `Availability`: Decide the availability of your server depending on how frequently you want to update and upload forms. If you do need a high-availability server, you need to talk to your Internet Service Provider (ISP) as to their availability guarantees.
-   - `Data Loss`: Your tolerance to data loss will impact your backup schedule and your server hardware.  Invest in a storage system based on your tolerance to data loss. Seek technical assistance for these requirements. If you cannot tolerate any data loss, or less than 24 hours of data loss, you should invest in a RAID storage array with battery-backed controller cards. If you can tolerate a day or longer interval of data loss, be sure you have a periodic tape or other means of backup for your system that matches or is shorter than the data loss interval.
-   - `Dataset Size`: The quantity of data you intend to collect will affect the size of the machine required to host the ODK Aggregate instance and of your database server. For most applications, the default size should be fine. If you are collecting more than 6000 submissions, you may need to increase the JVM size. Note that the maximum size of the JVM is limited by the size of the physical memory on your machine.
-   - `Secure and Protected Data`: If you need to prevent eavesdroppers from seeing your data as it is transmitted to your ODK Aggregate instance, you should either (1) only connect to ODK Aggregate from within your organization's network (when the ODK Collect devices are on your premises), (2) obtain an SSL certificate and install it on your Tomcat server (a certificate is required to secure transmissions over https:), or (3) use `Encrypted Forms <https://opendatakit.org/help/encrypted-forms/>`_. If you are not using encrypted forms and are handling sensitive data, a computer security specialist should review your system and your security procedures. When operating without an SSL certificate, do not access ODK Aggregate from a remote location when changing passwords.
+   - **Availability**: Decide the availability of your server depending on how frequently you want to update and upload forms. If you do need a high-availability server, you need to talk to your Internet Service Provider (ISP) as to their availability guarantees.
+   - **Data Loss**: Your tolerance to data loss will impact your backup schedule and your server hardware.  Invest in a storage system based on your tolerance to data loss. Seek technical assistance for these requirements. If you cannot tolerate any data loss, or less than 24 hours of data loss, you should invest in a RAID storage array with battery-backed controller cards. If you can tolerate a day or longer interval of data loss, be sure you have a periodic tape or other means of backup for your system that matches or is shorter than the data loss interval.
+   - **Dataset Size**: The quantity of data you intend to collect will affect the size of the machine required to host the ODK Aggregate instance and of your database server. For most applications, the default size should be fine. If you are collecting more than 6000 submissions, you may need to increase the JVM size. Note that the maximum size of the JVM is limited by the size of the physical memory on your machine.
+   - **Secure and Protected Data**: If you need to prevent eavesdroppers from seeing your data as it is transmitted to your ODK Aggregate instance, you should either (1) only connect to ODK Aggregate from within your organization's network (when the ODK Collect devices are on your premises), (2) obtain an SSL certificate and install it on your Tomcat server (a certificate is required to secure transmissions over https:), or (3) use `Encrypted Forms <https://opendatakit.org/help/encrypted-forms/>`_. If you are not using encrypted forms and are handling sensitive data, a computer security specialist should review your system and your security procedures. When operating without an SSL certificate, do not access ODK Aggregate from a remote location when changing passwords.
 
 - Install Tomcat on your server.
 
@@ -349,10 +347,10 @@ To run on ODK Aggregate on a Tomcat server backed with a MySQL or PostgreSQL dat
     .. tip::
 
      - If using the Windows installer, change to use port 80 for the HTTP/1.1 port. If you are going to set up an SSL certificate, change the HTTPS/1.1 port to 443. Use all other defaults.
-     - Verify that Tomcat 8 is running by opening a browser on this server to `http://localhost/` You should see the Apache Tomcat administration page. If you didn't request port 80 during the install, you will need to specify the port you chose (`http://localhost:port/`). If you didn't configure a port, the default port is 8080 (and 8443 for HTTPS).
+     - Verify that Tomcat 8 is running by opening a browser on this server to *http://localhost/* You should see the Apache Tomcat administration page. If you didn't request port 80 during the install, you will need to specify the port you chose (*http://localhost:port/*). If you didn't configure a port, the default port is 8080 (and 8443 for HTTPS).
      - **Linux Installs**
 
-       - To ensure that the proper java settings are found by the web server, you may need to specify the '-E' flag when restarting the webserver. Example -
+       - To ensure that the proper java settings are found by the web server, you may need to specify the **-E** flag when restarting the webserver. Example -
 
         .. code-block:: console
 
@@ -366,25 +364,25 @@ To run on ODK Aggregate on a Tomcat server backed with a MySQL or PostgreSQL dat
 
           $ sudo -E /etc/init.d/tomcat8 restart
 
-       - The `E` flag on the last command is critical. It forces Ubuntu to reload the environment settings for the service, causing it to pick up the new `JAVA_HOME` setting.  
+       - The **E** flag on the last command is critical. It forces Ubuntu to reload the environment settings for the service, causing it to pick up the new *JAVA_HOME* setting.  
     
      - Apply or change the administrator password for Tomcat; the administration functions should be secured.
      - ODK Aggregate v1.4.13 and higher are supported on Tomcat 8.0; these newer releases should also work, without modification on other webservers.
      - Prior to ODK Aggregate v1.4.13, we only supported Tomcat 6. Tomcat 7, Tomcat 8, Glassfish and Jetty require additional configuration steps to run ODK Aggregate v1.4.12 and earlier. All of these webservers require configuration settings to enable cookies under HTTPS.
 
-      - `For Tomcat 7`: Edit :file:`context.xml` (under Tomcat 7's conf directory) to have the attribute 'useHttpOnly' set to false. 
+      - **For Tomcat 7**: Edit :file:`context.xml` (under Tomcat 7's conf directory) to have the attribute 'useHttpOnly' set to false. 
 
        .. code-block:: xml
 
          <Context useHttpOnly="false">
 
-      - `For Tomcat 8`: My ODK Aggregate file is installed as :file:`/var/lib/tomcat8/webapps/ODKAggregate.war`. The following content needed to be placed in the file :file:`webapps/ODKAggregate/META-INF/context.xml` (this is within the expanded content of the war file, once the Tomcat 8 server has exploded it).
+      - **For Tomcat 8**: My ODK Aggregate file is installed as :file:`/var/lib/tomcat8/webapps/ODKAggregate.war`. The following content needed to be placed in the file :file:`webapps/ODKAggregate/META-INF/context.xml` (this is within the expanded content of the war file, once the Tomcat 8 server has exploded it).
 
        .. code-block:: xml
 
          <Context path="" useHttpOnly="false" />
 
-      - `For Glassfish 4`: Add :file:`glassfish-web.xml` under ODK Aggregate's WEB-INF directory with the content:
+      - **For Glassfish 4**: Add :file:`glassfish-web.xml` under ODK Aggregate's WEB-INF directory with the content:
 
        .. code-block:: xml
 
@@ -397,7 +395,7 @@ To run on ODK Aggregate on a Tomcat server backed with a MySQL or PostgreSQL dat
              </session-config>
          </glassfish-web-app>
 
-      - `For Jetty`: Add :file:`jetty-web.xml` under ODK Aggregate's WEB-INF directory with the content:
+      - **For Jetty**: Add :file:`jetty-web.xml` under ODK Aggregate's WEB-INF directory with the content:
 
        .. code-block:: xml
 
@@ -454,7 +452,7 @@ To run on ODK Aggregate on a Tomcat server backed with a MySQL or PostgreSQL dat
 .. tip::   
    
    - When asked for the fully qualified hostname of the ODK Aggregate server, you should enter the DNS name you established above. The install also asks for a database name, user and password. The user should not be root (MySQL) or postgres (PostgreSQL). ODK Aggregate will use this user when accessing this database (and it will only access this database). By specifying different databases and users, you can set up multiple ODK Aggregate servers that share the same database server, store their data in different databases, and operate without interfering with each other.
-   - If you are upgrading to a newer version of ODK Aggregate, as long as you specify the same database name, user and password, you do not need to re-run the create_db_and_user.sql script (it only needs to be executed once).
+   - If you are upgrading to a newer version of ODK Aggregate, as long as you specify the same database name, user and password, you do not need to re-run the :file:`create_db_and_user.sql` script (it only needs to be executed once).
 
 .. _install-aws:
 
@@ -472,29 +470,29 @@ Following are basic details for setting up ODK Aggregate to run on a Linux micro
 	- Create a new key pair, download the private key, and keep the private key safe. This will be your only method of communicating with your new instance and you will not be allowed to download it again.
 
 - After creating the instance, add security rules for allowing both HTTP and HTTPS.
-	- Choose the Security Groups tab and click on the auto-created security group associated with your new instance. (This might have been called `launch-wizard-1`. If you’re not sure, you can go to the Instances tab to see which Security Group is listed for the new instance.)
+	- Choose the Security Groups tab and click on the auto-created security group associated with your new instance. (This might have been called *launch-wizard-1*. If you’re not sure, you can go to the Instances tab to see which Security Group is listed for the new instance.)
 	- In the properties pane at the bottom, click to the Inbound tab, select HTTP from the :guilabel:`create a new rule` drop-down, then click :guilabel:`Add Rule`. Do the same for HTTPS. Then click :guilabel:`Apply Rule Changes`.
-	- To avoid potential problems with MTU settings and packet loss, also add a rule to allow `All ICMP`. After you create the new rule, click :guilabel:`Apply Rule Changes`.
+	- To avoid potential problems with MTU settings and packet loss, also add a rule to allow *All ICMP*. After you create the new rule, click :guilabel:`Apply Rule Changes`.
 
 - Switch to the Instances tab, click on your instance, and note its Public DNS Address in the properties pane below. This is the default address that you will use to access your instance.
-- Presuming that you want a friendlier way to access your instance, allocate it an `elastic IP` and domain name.
+- Presuming that you want a friendlier way to access your instance, allocate it an *elastic IP* and domain name.
 	
 	- Navigate to Elastic IPs and click :guilabel:`Allocate New Address`. Associate it with your new instance.
 	- Note that the IP is free so long as you keep it associated with a running instance. If you stop your instance and do not release the IP address for others to use (in essence, wasting it), then Amazon will begin charging you for holding the unused address.
-	- Note your new IP. Also, if possible, configure DNS to route one or more names to this address. You can then use this IP and/or name to access your instance (and can forget the `Public DNS Address` assigned by AWS).
+	- Note your new IP. Also, if possible, configure DNS to route one or more names to this address. You can then use this IP and/or name to access your instance (and can forget the *Public DNS Address* assigned by AWS).
 
 - Connect to your instance.
 	
 	- Go to the :guilabel:`Instances` tab and select :guilabel:`Connect` from the Instance Actions drop-down.
 	- The easiest is to connect using their Java SSH client. If you choose that option, you just have to specify the location of your private key file (created above) and AWS launches an in-browser SSH client to connect to your instance.
-	- Once you connect, you will probably be told that there are new security updates to install. You can run `sudo yum update` to install these updates, as it advises.
+	- Once you connect, you will probably be told that there are new security updates to install. You can run *sudo yum update* to install these updates, as it advises.
 
 - Transferring files to/from your instance.
 	
 	- When you login via ssh, you will default to being in the (empty) ec2-user home directory. You will want to be able to transfer files between here and your local directory. You have several options.
 	- f you’re using the command-line ssh, you can also use the command-line scp to copy files. The syntax is similar to ssh, but of course you also need to specify the source and destination file paths.
 	- An easier option is to use an FTP program like FileZilla (as long as it supports SFTP).
-	- To configure FileZilla to connect to your instance, go into `Edit…Settings/Preferences…Connection…SFTP` and add your private key to FileZilla’s keystore (it will offer to convert the key format, which you should accept). Then, go into Site Manager and create a new site. The host should be the IP, name, or Public DNS for your instance, the port can be blank, the protocol should be `SFTP – SSH File Transfer Protocol`, the login type should be Normal, and the user should be `ec2-user`. Everything else should be left at the defaults, including the password (which will be blank).
+	- To configure FileZilla to connect to your instance, go into *Edit…Settings/Preferences…Connection…SFTP* and add your private key to FileZilla’s keystore (it will offer to convert the key format, which you should accept). Then, go into Site Manager and create a new site. The host should be the IP, name, or Public DNS for your instance, the port can be blank, the protocol should be *SFTP – SSH File Transfer Protocol*, the login type should be Normal, and the user should be *ec2-user*. Everything else should be left at the defaults, including the password (which will be blank).
 
 - Install Tomcat 6 
 
@@ -573,13 +571,13 @@ Following are basic details for setting up ODK Aggregate to run on a Linux micro
 	- During set-up, it’s important to specify that this will be a MySQL installation, and it is also very important that you specify the correct domain name or IP address that will be used to access your Aggregate server. Ideally, this will be a specific domain name that you have already mapped to an elastic IP (and can re-map later if you change the IP).
 	- The installation will create a :file:`create_db_and_user.sql` file. Upload this to your ec2-user home directory. 
 	- The installation will also create an ODKAggregate.war file. Rename this to ROOT.war and upload it to the :file:`/usr/share/tomcat6/webapps` folder. If you receive a `Permission Denied` error, you might need to execute `chmod -R 755` or something similar for the webapps folder.
-	- After ROOT.war has been copied to the server, you need to make sure tomcat has permission to use it. Run `sudo chown tomcat ROOT.war` and `sudo chgrp tomcat ROOT.war` in the webapps directory to ensure this is the case.
+	- After ROOT.war has been copied to the server, you need to make sure tomcat has permission to use it. Run *sudo chown tomcat ROOT.war* and *sudo chgrp tomcat ROOT.war* in the webapps directory to ensure this is the case.
 
 - Configure MySQL
 
-	- On your AWS instance, run `/usr/bin/mysql_secure_installation` to set a root password and generally secure your MySQL installation.
-	- Then, run `mysql –u root -p` to log in to MySQL (specifying the password you just set), and type `source ~/create_db_and_user.sql`. This will create the ODK user and database. Type `quit` on the mysql prompt to quit from MySQL.
-	- Finally, run `sudo /sbin/chkconfig --levels 235 mysqld on` to auto-start MySQL whenever your instance boots up.
+	- On your AWS instance, run */usr/bin/mysql_secure_installation* to set a root password and generally secure your MySQL installation.
+	- Then, run *mysql –u root -p* to log in to MySQL (specifying the password you just set), and type *source ~/create_db_and_user.sql*. This will create the ODK user and database. Type *quit* on the mysql prompt to quit from MySQL.
+	- Finally, run *sudo /sbin/chkconfig --levels 235 mysqld on* to auto-start MySQL whenever your instance boots up.
 
 
 - Login and test.
@@ -589,7 +587,7 @@ Following are basic details for setting up ODK Aggregate to run on a Linux micro
 
 - Once you have confirmed that your Aggregate instance is working, you can back it up by creating an image of the instance (an AMI). You can do this by going to the Instances tab in the AWS-EC2 console, then selecting the :guilabel:`Create Image (EBS AMI)` Instance Action for your instance.
 
-For screenshots and more on the general set-up of Tomcat on AWS, see the excellent three-part “Cat in the Cloud: Apache Tomcat in Amazon EC2” series at http://www.excelsior-usa.com/articles/tomcat-amazon-ec2-basic.html. Amazon’s getting-started guides are also quite helpful: http://aws.amazon.com/documentation/gettingstarted/.
+For screenshots and more on the general set-up of Tomcat on AWS, see the excellent three-part *Cat in the Cloud: Apache Tomcat in Amazon EC2* series at http://www.excelsior-usa.com/articles/tomcat-amazon-ec2-basic.html. Amazon’s getting-started guides are also quite helpful: http://aws.amazon.com/documentation/gettingstarted/.
 
 
 

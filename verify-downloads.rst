@@ -13,7 +13,7 @@ Verifying on Linux and Mac
 
 - Open a terminal window.
 - Navigate to the folder containing the file you downloaded. ( cd "path/to/file" )
-- Then type `sha256sum "filename"` on the terminal.
+- Then type :command:`sha256sum "filename"` on the terminal.
 
    .. code-block:: console
 
@@ -29,7 +29,7 @@ Verifying on Windows
 
 - Open a cmd window.
 - Navigate to the folder containing the file you downloaded ( cd "path/to/file" ).
-- Then type certUtil -hashfile "filename" SHA256 on your command prompt.
+- Then type :command:`certUtil -hashfile "filename" SHA256` on your command prompt.
 
   .. code-block:: doscon
 

@@ -1,7 +1,7 @@
 Aggregate Limitations
 ========================
 
-- Push of data to the server should be serialized. Within ODK Aggregate, there is a global mutex (`TaskLock` across all server instances, mediated by the datastore layer) in the server when inserting submissions. Having multiple push requests occurring simultaneously will cause them to block on the mutex, chewing up their 60-second request limit, as they get processed in single file no matter how many server instances are spun up.
+- Push of data to the server should be serialized. Within ODK Aggregate, there is a global mutex (*TaskLock* across all server instances, mediated by the datastore layer) in the server when inserting submissions. Having multiple push requests occurring simultaneously will cause them to block on the mutex, chewing up their 60-second request limit, as they get processed in single file no matter how many server instances are spun up.
 
 - The 60-second request limit can be very commonly exceeded over low-bandwidth connections, and even text-only submissions can be impacted on satellite connections. That is why ODK Collect splits submissions into multiple 10MB submission requests. The timer starts upon receipt of the first byte, so a slow connection can account for a sizeable portion of those 60 seconds. Same applies for sending a response. The processing on the server is generally negligible in relation to the transmission times.
 
@@ -22,7 +22,7 @@ Aggregate Limitations
    If you have many media attachments or more than 10MB of media attachments, :doc:`Form Uploader <form-uploader>` provides a quick and easy means to upload forms into ODK Aggregate.
 
 
-- ODK Aggregate 1.4.7 and earlier use a deprecated `backends` technology. Google may terminate support for that at any time with little warning. You should consider upgrading to 1.4.8.  
+- ODK Aggregate 1.4.7 and earlier use a deprecated backend technology. Google may terminate support for that at any time with little warning. You should consider upgrading to 1.4.8.  
 
 - Aggregate v1.4.15 fixed rev 210 sync protocol. Prior to this User permissions were incorrectly being computed and filtered. This prevented resetting the server with new content from the device (but syncing with existing content worked fine). The rev 210 sync protocol is incompatible with anything prior to rev 210.
 

@@ -41,7 +41,7 @@ Pushing forms to ODK Aggregate
 .. warning::
 
   - ODK Briefcase will abort a push attempt if the form definition already on the ODK Aggregate server differs in any way from the form definition in the ODK Briefcase Storage area.
-  - ODK Briefcase does not work with Google accounts (Account Type 'Google').
+  - ODK Briefcase does not work with Google accounts (Account Type *Google*).
 
 
 .. tip::
@@ -147,7 +147,7 @@ Export form data
 This command exports form data with id market_prices from Briefcase's storage directory on the :file:`~/Desktop` and write CSV file to :file:`~/Desktop/market_prices.csv`
 
 
-To get help about the command line operation type `java -jar path_to_jar -help`.
+To get help about the command line operation type :command:`java -jar path_to_jar -help`.
 
 .. code-block:: console
 
