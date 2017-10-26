@@ -181,7 +181,12 @@ Import/Export settings
 
 QR Code or the Quick Response Code is a two dimensional barcode. They can be used to configure Collect on many devices. When you click on the :guilabel:`Import/Export Settings`, you see a QR Code. 
 The QR image presented contains all of your current General and Admin settings, including admin and server passwords. When this QR code is scanned from the ODK Collect app on another device, these settings are imported. 
-You can click on the |share| icon to share the generated barcode as an image. This is useful when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device. 
+You can click on the |share| icon to share the generated barcode as an image. 
+
+.. |share| image:: /img/collect-settings/share-icon.*
+             :alt: Share icon for sharing the QR code. 
+
+This is useful when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device. 
 You can also save the settings to disk by clicking on :guilabel:`⋮` on the top-right corner.  
 You can import settings from a QR code saved to the device, by selecting :guilabel:`Select Code from SD Card`. The code that you select could be something that was shared with you or you can also generate your own QR code. 
 To create your own QR code, you need to know that QR code is a JSON object with a structure such as shown:
