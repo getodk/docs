@@ -71,18 +71,22 @@ Follow the instructions given below to use Vysor:
   
   .. image:: /img/project-collect/advanced-setting.*
     :alt: Image showing advanced settings
+	
+  |
   
   2. In the System section, ensure the Use :guilabel:`hardware acceleration when available` is enabled.You'll need to relaunch Chrome for any changes to take effect. Click on :guilabel:`RELAUCH`
   
   .. image:: /img/project-collect/acceleration.*
     :alt: Image showing hardware acceleration option
   
-  Then, we need to enable WebGL:
+  |
   
-  3. Go to ``chrome://flags``,scroll down and search for **WebGL 2.0**. From the drop down list choose `Enabled`.
+  3.  Then, we need to enable WebGL, go to ``chrome://flags``,scroll down and search for **WebGL 2.0**. From the drop down list choose `Enabled`.
   
   .. image:: /img/project-collect/webgl-enabled.*
     :alt: Image showing enabled WebGL 2.0
+  
+  |
   
   Now you can return to `Vysor extension <https://chrome.google.com/webstore/detail/vysor/gidgenkbbabolejbgbpnhbimgjbffefm>`_ and install it again.
   
