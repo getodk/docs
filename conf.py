@@ -82,6 +82,9 @@ pygments_style = 'default'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
+# suppress warnings for unknown options
+suppress_warnings = ['ref.option']
+
 
 # -- Options for HTML output ----------------------------------------------
 
