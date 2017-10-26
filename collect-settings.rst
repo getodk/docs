@@ -193,6 +193,8 @@ You can click on the |share| icon to share the generated barcode as an image. Th
 
 .. |share| image:: /img/collect-settings/share-icon.*
              :alt: Share icon for sharing the QR code. 
+             :height: 43 px
+             :width: 43 px
 
 Saving QR code locally
 """"""""""""""""""""""""
