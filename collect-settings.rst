@@ -204,7 +204,7 @@ You can go to :menuselection:`⋮ --> Save settings to disk` to save the QR code
 Making your own QR code
 """"""""""""""""""""""""""
 
-You can import settings from a QR code saved on your device by selecting :guilabel:`Select Code from SD Card`. The code that you select could be something that was shared with you or you can also generate your own QR code. To create your own QR code, you need to know that QR code is a JSON object with a structure as shown below:
+You can import settings from a QR code saved on your device by selecting :guilabel:`Select Code from SD Card` option. The code that you select could be something that was shared with you or you can also generate your own QR code. To create your own QR code, you need to know that QR code is a JSON object with a structure as shown below:
 
 .. code-block:: JSON
 
