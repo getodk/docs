@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>example_2</h:title>
+    <model>
+      <instance>
+        <example_2 id="example_2">
+          <name/>
+          <age/>
+          <college>IIT Roorkee</college>
+          <course/>
+          <course_cnt/>
+          <marks/>
+          <total/>
+          <disp_max/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </example_2>
+      </instance>
+      <bind nodeset="/example_2/name" required="true()" type="string"/>
+      <bind constraint=".&lt;=18" jr:constraintMsg="You should be below 18 years to be eligible for the survey." nodeset="/example_2/age" required="true()" type="int"/>
+      <bind nodeset="/example_2/college" readonly="true()" type="string"/>
+      <bind nodeset="/example_2/course" required="true()" type="select1"/>
+      <bind constraint=".&gt;=1 and .&lt;=6" jr:constraintMsg="You should choose atleast 1 course and atmost 6 courses." nodeset="/example_2/course_cnt" relevant=" /example_2/course ='yes'" required="true()" type="int"/>
+      <bind constraint=" /example_2/marks &lt;= /example_2/total " jr:constraintMsg="You cannot obtain more than maximum marks." nodeset="/example_2/marks" relevant=" /example_2/course ='yes'" required="true()" type="int"/>
+      <bind calculate=" /example_2/course_cnt *100" nodeset="/example_2/total" relevant=" /example_2/course_cnt !=''" type="string"/>
+      <bind nodeset="/example_2/disp_max" readonly="true()" relevant=" /example_2/course_cnt !='' and  /example_2/marks &gt; /example_2/total " type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/example_2/meta/instanceID" readonly="true()" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/example_2/name">
+      <label>Enter your name</label>
+    </input>
+    <input ref="/example_2/age">
+      <label>Enter your age</label>
+    </input>
+    <input ref="/example_2/college">
+      <label>College name</label>
+    </input>
+    <select1 ref="/example_2/course">
+      <label>Have you chosen any courses?</label>
+      <item>
+        <label>yes</label>
+        <value>yes</value>
+      </item>
+      <item>
+        <label>no</label>
+        <value>no</value>
+      </item>
+    </select1>
+    <input ref="/example_2/course_cnt">
+      <label>Enter number of courses you have chosen</label>
+    </input>
+    <input ref="/example_2/marks">
+      <label>Enter total marks obtained in all courses</label>
+    </input>
+    <input ref="/example_2/disp_max">
+      <label>Maximum marks possible are <output value=" /example_2/total "/>.</label>
+    </input>
+  </h:body>
+</h:html>
