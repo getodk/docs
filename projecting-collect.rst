@@ -2,14 +2,14 @@
 Projecting ODK Collect onto another screen
 ********************************************
 
-This guide helps the users to project ODK collect onto screen. There are various methods available to do this, some of the methods are discussed below:
+This guide helps the users to project ODK collect onto a screen. There are various methods available to do this, some of the methods are discussed below:
 
 .. _using-vysor:
 
 Using Vysor
 --------------
 
-Vysor is an extension for the Google Chrome browser that connects to an app on your smartphone.This extension enables you to control your phone from your PC or Mac using the mouse/trackpad and keyboard.
+Vysor is an extension for the Google Chrome browser that connects to an app on your smartphone. This extension enables you to control your phone from your PC or Mac using the mouse/trackpad and keyboard.
 
 Before proceeding further make sure USB Debugging mode is enabled:
 
@@ -30,7 +30,7 @@ Enable USB Debugging Mode on Android
   :alt: Image showing developer options
   :class: device-screen-vertical
   
-4. Scroll down and enable :guilabel:`USB debugging` mode 
+4. Scroll down and enable :guilabel:`USB debugging` mode. 
 
 .. image:: /img/project-collect/usb-debugging.*
   :alt: Image showing USB debugging mode
@@ -40,7 +40,7 @@ Enable USB Debugging Mode on Android
 
 .. note::
   
-  Windows users should make sure that they have `downloaded <https://devs-lab.com/usb-adb-drivers-for-all-android-devices.html>`_ Universal ADB Drivers
+  Windows users should make sure that they have `downloaded <https://devs-lab.com/usb-adb-drivers-for-all-android-devices.html>`_ Universal ADB Drivers.
 
 Follow the instructions given below to use Vysor:
 
@@ -51,7 +51,7 @@ Follow the instructions given below to use Vysor:
 .. image:: /img/project-collect/vysor-download.*
   :alt: Vysor download
 
-4. Confirm your action by clicking on `Add app`.
+4. Confirm your action by clicking on :guilabel:`Add app`.
 
 .. image:: /img/project-collect/vysor-add-app.*
   :alt: Vysor add app button
@@ -65,23 +65,23 @@ Follow the instructions given below to use Vysor:
   
   To fix this, follow the procedures given below:
   
-  First we need to enable hardware acceleration:
+  First, we need to enable hardware acceleration:
   
   1. Go to ``chrome://settings``, scroll down and click on :guilabel:`Advanced`.
   
   .. image:: /img/project-collect/advanced-setting.*
     :alt: Image showing advanced settings
-	
+    
   |
   
-  2. In the System section, ensure the Use :guilabel:`hardware acceleration when available` is enabled.You'll need to relaunch Chrome for any changes to take effect. Click on :guilabel:`RELAUCH`
+  2. In the System section, ensure the Use :guilabel:`hardware acceleration when available` is enabled. You'll need to relaunch Chrome for any changes to take effect. Click on :guilabel:`RELAUCH`
   
   .. image:: /img/project-collect/acceleration.*
     :alt: Image showing hardware acceleration option
   
   |
   
-  3.  Then, we need to enable WebGL, go to ``chrome://flags``,scroll down and search for **WebGL 2.0**. From the drop down list choose `Enabled`.
+  3.  Then, we need to enable WebGL, go to ``chrome://flags``, scroll down and search for **WebGL 2.0**. From the drop-down list choose :guilabel:`Enabled`.
   
   .. image:: /img/project-collect/webgl-enabled.*
     :alt: Image showing enabled WebGL 2.0
@@ -99,7 +99,7 @@ Follow the instructions given below to use Vysor:
 
 .. image:: /img/project-collect/vysor-launch.*
   :alt: Image showing options after launching vysor
-	
+    
 7. Click on :guilabel:`Find Devices`, select your device and click on :guilabel:`Select`.
 
 .. image:: /img/project-collect/find-device.*
@@ -119,7 +119,7 @@ Follow the instructions given below to use Vysor:
 Using Android Studio
 ----------------------------
 
-Android Studio is the official IDE for Android.It provide tools for building apps on every type of Android device.Android Emulator can be used to test your app virtually on any Android device configuration.
+Android Studio is the official IDE for Android. It provides tools for building apps for every type of Android device. Android Emulator can be used to test your app virtually on any Android device configuration.
 
 Follow the procedures given below to run your app on the emulator:
 
@@ -132,29 +132,29 @@ Follow the procedures given below to run your app on the emulator:
 .. image:: /img/project-collect/android-studio.*
   :alt: Image showing Android studio screen 
 
-4. To create a new project follow further steps, if you have an existing project skip to the step 9. 
+4. To create a new project follow further steps but if you have an existing project skip to the step 9. 
 
 5. Choose your project location and fill out the :guilabel:`Application name` and click on :guilabel:`Next`.
 
 .. image:: /img/project-collect/application-name.*
   :alt: Image showing new project window
   
-6. Select the :guilabel:`Phone and Tablet` option and choose your :menuselection:`Minimum SDK`.Click on :guilabel:`Next`.
+6. Select the :guilabel:`Phone and Tablet` option and choose your :menuselection:`Minimum SDK`. Click on :guilabel:`Next`.
 
 .. image:: /img/project-collect/target-android.*
   :alt: Image showing Target Android Devices window
 
-7. Select an Activity, **Empty Activity is preferable**.Click on :guilabel:`Next`.
+7. Select an Activity, **Empty Activity is preferable**. Click on :guilabel:`Next`.
 
 .. image:: /img/project-collect/activity.*
   :alt: Image showing window having various activities
   
-8. In Customize the Activity window don't change the default options and click on :guilabel:`Finish`.
+8. In Customize the Activity window, don't change the default options and click on :guilabel:`Finish`.
 
 .. image:: /img/project-collect/customize-activity.*
   :alt: Image showing Customize Activity window
   
-9. After few minutes, you will be able to see the Android Studio main window,click on |AVD| icon, alternatively you can click on :menuselection:`Tools` then select :guilabel:`Android`, from the drop down menu select :guilabel:`AVD Manager`.
+9. After few minutes, you will be able to see the Android Studio main window, click on |AVD| icon, alternatively, you can click on :menuselection:`Tools` then select :guilabel:`Android`, from the drop-down menu select :guilabel:`AVD Manager`.
 
 .. |AVD| image:: /img/project-collect/avd-manager.*
   :alt: Image showing avd manager icon
@@ -168,17 +168,17 @@ Follow the procedures given below to run your app on the emulator:
   :alt: Image showing list of virtual devices.
 
   
-11. In the Select Hardware window, choose a device definition for your virtual device.I have choosen :guilabel:`Nexus 5`, click on `Next`.
+11. In the Select Hardware window, choose a device definition for your virtual device. I have chosen :guilabel:`Nexus 5`, click on :guilabel:`Next`.
 
 .. image:: /img/project-collect/hardware.*
   :alt: Image showing hardware window
   
-12. Select a system image, I have choosen Lollipop version.Click on :guilabel:`Next`.
+12. Select a system image, I have chosen Lollipop version.Click on :guilabel:`Next`.
 
 .. image:: /img/project-collect/system-image.*
   :alt: Admin settings menu
   
-13. Enter your :guilabel:`AVD Name`, choose startup orientation and click on `Finish`.
+13. Enter your :guilabel:`AVD Name`, choose startup orientation and click on :guilabel:`Finish`.
 
 .. image:: /img/project-collect/verify-configuration.*
   :alt: Configuration verification menu
@@ -207,7 +207,7 @@ Follow the procedures given below to run your app on the emulator:
          :alt: Image showing SDK manager icon
   
 .. image:: /img/project-collect/emulator-screen.*
-  :alt: Image showing SDK manager in Android main window.
+  :alt: Image showing SDK manager in the Android main window.
   
 17. Open the terminal and move to the `platform-tools` of the `SDK` directory.
 
@@ -215,7 +215,7 @@ Follow the procedures given below to run your app on the emulator:
 
   $ cd platform-tools
   
-18. Copy the :file:`collect.apk` into :file:`platform-tool` folder.You can `download <https://opendatakit.org/downloads/download-info/odk-collect-apk/>`_ the apk file from here.
+18. Copy the :file:`collect.apk` into :file:`platform-tools` folder. You can `download <https://opendatakit.org/downloads/download-info/odk-collect-apk/>`_ the apk file from here.
 
 19. Type the following command to see the list connected devices:
 
@@ -223,7 +223,7 @@ Follow the procedures given below to run your app on the emulator:
 
   $ adb devices
 
-You should be able to see the emulator along with its port number, e.g emulator-5554, Here 5554 is the port number.If the emulator is not present in the list, restart the emulator .
+You should be able to see the emulator along with its port number, e.g emulator-5554, Here 5554 is the port number. If the emulator is not present in the list, restart the emulator.
 
 To install apk file, in the emulator type the following command: 
 
@@ -241,5 +241,5 @@ If the command is successfully executed, you will find your file in the launcher
   
 .. seealso::
 
-  You can also use `Genymotion <https://www.genymotion.com/>`_ as an alternative as it is very fast as comapared to custom android emulators.It is also easy to use and configure, and it is available free of cost for personal use.
+  You can also use `Genymotion <https://www.genymotion.com/>`_ as an alternative as it is very fast as compared to custom android emulators. It is also easy to use and configure, and it is available free of cost for personal use.
   
