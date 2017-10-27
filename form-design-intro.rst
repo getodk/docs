@@ -5,9 +5,12 @@ Forms used in the ODK ecosystem are XML documents following the `ODK XForms spec
 
 Because of the complexity of the XForms format, we do not recommend "hand-coding" XForms. The recommended process is:
 
-- Begin with one of the :ref:`compliant-build-tools`.
-- :ref:`Edit the XML only if neccessary <>`.
-- Use :doc:`validate` to check that form is well-formed and fully compliant.
+1. Begin with one of the :ref:`compliant-build-tools`.
+2. Edit the XML only if neccessary.
+
+   - Before editing an XForm directly, you need to be familiar with the `ODK XForm specification <https://github.com/opendatakit/xforms-spec>`_.
+
+3. Use :doc:`validate` to check that the edited XForm is well-formed and fully compliant.
 
 
 .. _compliant-build-tools:
@@ -19,17 +22,26 @@ Most ODK users design their forms in Excel, following the `XLSForm <http://xlsfo
 
 - `ODK's online XLSForm converter <http://opendatakit.org/xiframe/>`_
 - `XLSForm Offline for Mac or Windows <https://gumroad.com/l/xlsform-offline>`_
-- - `XLSForm for Windows <https://opendatakit.org/downloads/download-info/xlsform-for-windows/>`_
-- `Pyxform, a Python XLSForm conversion library <https://github.com/uw-ictd/pyxform>`_
+- `XLSForm for Windows <https://opendatakit.org/downloads/download-info/xlsform-for-windows/>`_
+- :doc:`pyxform`, a Python XLSForm converter with a command-line tool
 
-For simple forms, `ODK Build <https://opendatakit.org/use/build/>`_ is an online drag-and-drop form designer.
+.. tip::
+
+  If you are comfortable with using the command-line, Pyxform is the most efficient XLSForm converter.
+
+.. _non-xlsform-builders:
+
+Non-XLSForm Javarosa builders
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+For simple forms, :doc:`odk-build` is an online drag-and-drop form designer.
 
 .. _other-xform-build-tools:
 
 Other XForm build tools
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-These tools product XForms that *may not* strictly comply with the JavaRosa library. 
+These tools produce XForms that *may not* strictly comply with the JavaRosa library. 
 
 - `Kobo <http://www.kobotoolbox.org/>`_
 - `Enketo <https://enketo.org/>`_
