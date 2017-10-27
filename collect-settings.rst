@@ -189,7 +189,7 @@ QR Code or the Quick Response Code is a two dimensional barcode. QR codes can be
 Sharing QR code
 """"""""""""""""
 
-You can click on the |share| icon to share the generated barcode as an image. This is useful when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device. 
+You can click on the |share| icon to share the generated barcode as an image. When you click on it, it displays a list of applications like *whatsapp*, *facebook* , *hangouts* to name a few, which can be used to share the generated QR code. This is useful when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device. 
 
 .. |share| image:: /img/collect-settings/share-icon.*
              :alt: Share icon for sharing the QR code. 
@@ -201,10 +201,15 @@ Saving QR code locally
 
 You can go to :menuselection:`⋮ --> Save settings to disk` to save the QR code.  
 
+Importing settings from a QR saved on your device
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+You can import settings from a QR code saved on your device by clicking on :guilabel:`Select Code from SD Card` option.
+
 Making your own QR code
 """"""""""""""""""""""""""
 
-You can import settings from a QR code saved on your device by selecting :guilabel:`Select Code from SD Card` option. The code that you select could be something that was shared with you or you can also generate your own QR code. To create your own QR code, you need to know that QR code is a JSON object with a structure as shown below:
+To create your own QR code, you need to know that QR code is a JSON object with a structure as shown below:
 
 .. code-block:: JSON
 
@@ -218,11 +223,13 @@ You can import settings from a QR code saved on your device by selecting :guilab
     }
   }
 
-The JSON object isn't encrypted but is compressed using `zlib <https://en.wikipedia.org/wiki/Zlib>`_ before encoding into QRCode. Therefore the creation process can be summarized as follows:
+The JSON object isn't encrypted but is compressed using `zlib <http://www.zlib.net/manual.html>`_ before encoding into QRCode. Therefore the creation process can be summarized as follows:
 
 1) Write a JSON object containing the changed settings in form of structure as written above. 
 2) Compress it using zlib.
 3) Encode into QR code. 
+
+After you finish generating the QR code, you can transfer it to your device and then import it by clicking on :guilabel:`Select Code from SD Card`  option.
 
 .. note::
   QR code only contains settings whose values are not the default values. This is done because there're constraints on the amount of data a QR code can hold.
