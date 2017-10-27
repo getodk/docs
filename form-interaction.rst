@@ -121,6 +121,16 @@ To prevent the user from entering more tha maximum marks, a constraint should be
   "calculate", "total", "", "", "", "${course_cnt}!=''", "", "", "", "${course_cnt}*100"
   "note", "disp_max", "Maximum marks possible are ${total}.", "${total}<${marks}", "", "${course_cnt}!=''", "", "", "", ""
 
+These are the :file:`.xml` files for the above forms:
+
+  1. :download:`example_1 </downloads/form-interaction/example_1.xml>`
+  2. :download:`example_2 </downloads/form-interaction/example_2.xml>`
+
+These are the :file:`.xlsx` files for the above forms:
+
+  1. :download:`example_1 </downloads/form-interaction/example_1.xlsx>`
+  2. :download:`example_2 </downloads/form-interaction/example_2.xlsx>`
+
 - Whenever you perform a calculation make sure that it has proper relevants. Relevants should check that the variables required for calculation are not null and are supplied by the user. This will ensure that calculation fires only when no required variable is null and correct value is generated. In the above forms calculate field has relevant set to **${course_cnt}!=''**, so that calculate fires only when some value is entered in number of courses.  
 
 - It is not necessary that a field which has a constraint is a required field.  It is possible to represent a case when a value may not be known but if it is known, it must meet certain characteristics. For example, if a question asks for an exam percentage, it can be left blank but if provided with an answer it should be less than or equal to 100.
