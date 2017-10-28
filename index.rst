@@ -55,25 +55,27 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
    aggregate-deployment-planning
    aggregate-use
    aggregate-upgrade
+   aggregate-backup
    form-uploader
    oauth2-service
    aggregate-limitations
 
 .. toctree::
-   :hidden:
-   :maxdepth: 2
-   :caption: Briefcase
+  :hidden:
+  :maxdepth: 2
+  :caption: Briefcase
 
-   briefcase-guide
-   briefcase-install
-   briefcase-forms
-   briefcase-vs-aggregate
+  briefcase-guide
+  briefcase-install
+  briefcase-forms
+  briefcase-vs-aggregate
 
 .. toctree::
   :hidden:
   :maxdepth: 2
   :caption: Form Building
 
+  odk-build
   xlsform
   form-widgets
   form-interaction
@@ -81,7 +83,6 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   pyxform
   validate
 
-  
 .. toctree::
   :hidden:
   :maxdepth: 2
@@ -110,6 +111,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   openrosa-authentication
   openrosa-form-submission
   openrosa-form-list
+
 .. toctree::
   :hidden:
   :maxdepth: 2

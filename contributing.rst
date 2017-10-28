@@ -1445,7 +1445,6 @@ You can add inline images in the document using `substitutions <http://docutils.
 Image File Names
 """"""""""""""""""
 
-
 Image file names should:
 
 - be short yet descriptive
@@ -1537,6 +1536,19 @@ To pull the video locally just type the following command and hit :command:`Ente
   $ adb pull /sdcard/example.mp4 localsavelocation
 
 where localsavelocation is the location where you want to save your file locally.
+
+.. _downloads:
+
+Downloadable files
+~~~~~~~~~~~~~~~~~~~~
+
+Downloadable files should be put in the :file:`/downloads/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
+
+To place a downloadable file in a document, use the ``download`` directive.
+
+.. code-block:: rst
+
+  See this :download:`example script </downloads/contributing/example_script.py>` to understand the procedure better.
 
 .. _code-samples:
 
