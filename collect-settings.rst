@@ -231,6 +231,9 @@ The JSON object isn't encrypted but is compressed using `zlib <http://www.zlib.n
 
 After you finish generating the QR code, you can transfer it to your device and then import it by clicking on :guilabel:`Select Code from SD Card`  option.
 
+List of keys for all the settings
+"""""""""""""""""""""""""""""""""""
+
 Following is the list of all keys and the set of values they can take:
 
 .. code-block:: javascript
