@@ -231,7 +231,7 @@ The JSON object isn't encrypted but is compressed using `zlib <http://www.zlib.n
 
 After you finish generating the QR code, you can transfer it to your device and then import it by clicking on :guilabel:`Select Code from SD Card`  option.
 
-Following is the list of all keys and the values they can take:
+Following is the list of all keys and the set of values they can take:
 
 .. code-block:: javascript
 
@@ -242,14 +242,14 @@ Following is the list of all keys and the values they can take:
       "admin_password": Boolean,
       "admin_pw": String,
    
-      // User access control settings for the main menu. The default value is true. 
+      // User access control to the main menu. The default value is true. 
       "edit_saved": Boolean,
       "send_finalized": Boolean,
       "view_sent": Boolean,
       "get_blank": Boolean,
       "delete_saved": Boolean,
    
-      // User access control settings for form entry
+      // User access control to form entry
       "save_mid": Boolean,
       "jump_to": Boolean,
       "change_language": Boolean,
@@ -257,46 +257,64 @@ Following is the list of all keys and the values they can take:
       "save_as": Boolean,
       "mark_as_finalized": Boolean,
    
-      // User access control settings for User settings
+      // User access control settings for General settings
+      "change_autosend": Boolean,
+      "change_navigation": Boolean,
+      "change_constraint_behavior": Boolean,
       "change_font_size": Boolean,
-      "default_to_finalized": Boolean,
-      "high_resolution": Boolean,
-      "show_splash_screen": Boolean,
-      "delete_after_send": Boolean,
+      "change_app_language": Boolean,
       "instance_form_sync": Boolean,
-
-      // Server
-      "import_settings": Boolean,
-      "change_protocol_settings": Boolean,
+      "default_to_finalized": Boolean,
+      "delete_after_send": Boolean,
+      "high_resolution": Boolean,
+      "image_size": Boolean,
+      "show_splash_screen": Boolean,
+      "show_map_sdk": Boolean,
+      "show_map_basemap": Boolean,
+      "analytics" : Boolean,
       "change_form_metadata": Boolean,
       "change_server": Boolean,
 
-      "show_map_sdk": Boolean,
-      "show_map_basemap": Boolean,
+      // Server
+      "import_settings": Boolean,
+      "change_server": Boolean,
+      "change_protocol_settings": Boolean,
 
-      "analytics" : Boolean,
-       
       },
 
     "general" : {
 
+      // Server settings
+      "protocol": {"odk_default", "google_sheets", "other"},
+      // Aggregate specific key
+      "server_url": String,
+      // Google sheets specific keys
+      "selected_google_account": String,
+      "google_sheets_url": String,
+      "username": String,
+      "password": String,
+      // Other specific keys
+      "formlist_url": String,
+      "submission_url": String,
+      
       // User interface
-      "app_language": { "en", "af", "am", "ar", "bn", "ca", "cs", "de", "es", 
-           "et", "fa", "fi", "fr", "ha", "hi", "hu", "in", "it", "ja", "ka", "km",
+      "app_language": { "en", "af", "am", "ar", "bn", "ca", "cs", "de", "es", "km", 
+           "et", "fa", "fi", "fr", "ha", "hi", "hu", "in", "it", "ja", "ka", "zu",
            "lt", "mg", "mr", "my", "ml", "nb", "nl", "no", "pl", "ps", "pt", "ro",
-           "ru", "so","sq", "sw", "ta", "ti", "tl", "tr", "uk", "ur", "vi", "zh", "zu"
+           "ru", "so","sq", "sw", "ta", "ti", "tl", "tr", "uk", "ur", "vi", "zh"
            },
       "font_size": {13, 17, 21, 25, 29},
       "navigation": {"swipe" ,"buttons" ,"swipe_buttons"},
       "showSplash": Boolean,
       "splashPath": String, // If showSplash is true, then you specify the path of image here.
       "map_sdk_behavior": {"google_maps", "osmdroid"},
-
       // if map_sdk_behavior is google_maps, then map_basemap_behavior can take the following values:
       "map_basemap_behavior": {"streets", "satellite", "terrain", "hybrid"},
-
-      // if map_sdk_behavior is osmdroid then map_basemap_behvior can take the following values:
-      "map_basemap_behavior": {"openmap_streets", "openmap_usgs_topo", "openmap_usgs_sat", "openmap_stamen_terrain", "openmap_cartodb_positron", "openmap_cartodb_darkmatter"},
+      // if map_sdk_behavior is osmdroid, then map_basemap_behvior can take the following values:
+      "map_basemap_behavior": { "openmap_streets", "openmap_usgs_topo", 
+                                "openmap_usgs_sat", "openmap_stamen_terrain",
+                                "openmap_cartodb_positron", "openmap_cartodb_darkmatter"
+                            },
       
       // Form submission
       "delete_send": Boolean,
@@ -313,14 +331,9 @@ Following is the list of all keys and the values they can take:
       // Form import
       "instance_sync": Boolean,
 
-      // Server settings
-      "protocol": {"odk_default", "google_sheets", "other"},
-      "selected_google_account": String,
-      "username": String,
-      "password": String,
-      "google_sheets_url": String,
-
       // User and Device identity
+      "form_metadata": String,
+      "metadata_migrated": Boolean,
       "metadata_username": String,
       "metadata_phonenumber": String,
       "metadata_email": String,
@@ -329,6 +342,9 @@ Following is the list of all keys and the values they can take:
     },
 
   }
+
+.. note::
+  The subkeys in the general key can be a part of the admin key too. 
 
 .. note::
   QR code only contains settings whose values are not the default values. This is done because there're constraints on the amount of data a QR code can hold.
