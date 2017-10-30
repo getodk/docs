@@ -189,12 +189,15 @@ QR Code or the Quick Response Code is a two dimensional barcode. QR codes can be
 Sharing QR code
 """"""""""""""""
 
-You can click on the |share| icon to share the generated barcode as an image. When you click on it, it displays a list of applications like *whatsapp*, *facebook* , *hangouts* to name a few, which can be used to share the generated QR code. This is useful when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device. 
+You can click on the |share| icon to share the generated barcode as an image. When you click on it, it displays a list of applications like *whatsapp*, *facebook* , *hangouts* to name a few, and other services like *bluetooth*, *MMS* which can be used to share the generated QR code. This is useful when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device. 
 
 .. |share| image:: /img/collect-settings/share-icon.*
              :alt: Share icon for sharing the QR code. 
              :height: 43 px
              :width: 43 px
+
+.. warning:: 
+  Since the QR code may contain the admin and server passwords without encryption, you should be careful about how you share it. It is advised to not send it through an external application but through *bluetooth*, *MMS* or any other such service that doesn't allow the third party to access the data. 
 
 Saving QR code locally
 """"""""""""""""""""""""
