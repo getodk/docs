@@ -31,7 +31,7 @@ Follow these steps to view your data using fusion tables:
   :alt: Image showing location-based form
 
 
-3. If you are using Google Cloud Platform make sure you have enabled relevant APIs like **Google Drive API**, **Fusion Tables API**, **and Google Maps    Javascript API** otherwise you may get *RequestFailureException error*.
+3. If you are using Google Cloud Platform make sure you have enabled relevant APIs like **Google Drive API**, **Fusion Tables API**, **and Google Maps Javascript API** otherwise you may get *RequestFailureException error*.
 
 .. image:: /img/visualize/error.*
   :alt: Image showing an error message.
