@@ -97,16 +97,14 @@ Form Management Settings
 
 - :guilabel:`Default to finalized` When enabled, forms are automatically finalized upon reaching the end of the form. You can opt out of finalizing any form when completing it.
 - :guilabel:`Constraint processing` used to select when response constraints are validated: After each swipe, or at finalization.
-- :guilabel:`High res video` enables high-resolution recordings.
-- :guilabel:`Image size` is used to set an image size for all the widgets.There are five size options available as shown below:
+- :guilabel:`High res video` enables or disables high-resolution video recordings if supported by the video application used.
+- :guilabel:`Image size` (v1.11.0+) specifies the maximum number of pixels for the long edge of all images added to forms. Images are scaled down immediately after being added. This setting can be overridden at the form question level. There are five size options available:
 
-.. image:: /img/collect-settings/image-settings.png
-  :alt: Image settings 
-  :class: device-screen-vertical
-
-.. versionadded:: 1.11.0*
-   :guilabel:`Image size` feature will be added in *Collect v1.11.0* (upcoming release).
-  
+  - :guilabel:`Original size from camera (default)`: images are unchanged when added to a form. Used when images must contain a lot of detail or when the internet connection used to send submissions is fast.
+  - :guilabel:`Very small (640px)`: used when images don't need to be detailed and the internet connection used to send submissions is slow.
+  - :guilabel:`Small (1024px)`: sufficiently detailed for most on-screen viewing but too small for printing.
+  - :guilabel:`Medium (2048px)`: sufficiently detailed for most uses including printing.
+  - :guilabel:`Large (3072px)`: used when a lot of detail is needed.
 
 .. rubric:: Form import
 
