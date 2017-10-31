@@ -12,13 +12,13 @@ Creating Android desktop shortcut to launch specific form
    :alt: Image showing Apps button.
    :class: device-screen-vertical
 
-2. Touch and hold on an empty space on the Home screen and then click on :guilabel:`Widgets` button at the bottom of the screen.
+2. :gesture:`Touch and hold` on an empty space on the Home screen and then click on :guilabel:`Widgets` button at the bottom of the screen.
 
 .. image:: /img/collect-best-practices/widgets.png
    :alt: Image showing Widgets button.
    :class: device-screen-vertical
 
-3. Find the :guilabel:`ODK Form` widget and then touch and hold it.
+3. Find the :guilabel:`ODK Form` widget and then :gesture:`touch and hold` it.
 
 .. image:: /img/collect-best-practices/odk-form.png
    :alt: Image showing ODK Form widget.
@@ -30,7 +30,7 @@ Creating Android desktop shortcut to launch specific form
    :alt: Image showing form list.
    :class: device-screen-vertical
 
-5. Shortcut for the selected form will appear on your home screen. You can move the shortcut to the desired position by drag and drop.
+5. Shortcut for the selected form will appear on your home screen. You can move the shortcut to the desired position by :gesture:`drag and drop`.
 
 .. image:: /img/collect-best-practices/form-shortcut.png
    :alt: Image showing form shortcut.
@@ -38,7 +38,7 @@ Creating Android desktop shortcut to launch specific form
 
 .. note::
 
-  To delete the shortcut, hold and press it. A :guilabel:`Remove` button will appear on the top right corner. Drag the shortcut to the remove button. The shortcut will be removed.
+  To delete the shortcut, hold and press it. A :guilabel:`Remove` button will appear on the top right corner. :gesture:`Drag and drop` the shortcut to the :guilabel:`Remove` button. The shortcut will be removed.
 
   .. image:: /img/collect-best-practices/remove.png
      :alt: Image showing Remove button.
@@ -93,15 +93,20 @@ When you need to specify location in any survey form, you may get a warning mess
    :alt: Image showing warning message.
    :class: device-screen-vertical
 
+.. _location-providers:
+
+Enable/Disable location providers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   
+
 To turn your device's location providers on/off:
 
-1. Open your device's Settings app Settings app.
+1. Open your device's Settings app.
 
 .. image:: /img/collect-best-practices/settings.png
    :alt: Image showing Settings app.
    :class: device-screen-vertical
 
-2. Tap :guilabel:`Location`. 
+2. :gesture:`Tap` :guilabel:`Location`. 
 
 .. image:: /img/collect-best-practices/location.png
    :alt: Image showing Location option.
@@ -109,7 +114,7 @@ To turn your device's location providers on/off:
 
 .. tip::
 
-  If you don't see "Location",  Tap :guilabel:`Security & Location` and then :guilabel:`Location`.
+  If you don't see "Location",  :gesture:`tap` :guilabel:`Security & Location` and then :guilabel:`Location`.
 
 3. Turn Location on or off.
 
@@ -125,9 +130,14 @@ To turn your device's location providers on/off:
 
    Location providers enabled.   
 
+.. _location-mode:
+
+Change location mode   
+~~~~~~~~~~~~~~~~~~~~~~~
+
 You can also choose your location mode based on accuracy, speed, and battery use. Android can help improve location accuracy by triangulating your location off nearby Wi-Fi access points or cell towers. Combined with data available from your ailing GPS signal, turning on Wi-Fi will greatly improve location accuracy under most conditions.
 
-In the Location section, tap on :guilabel:`Mode`. 
+In the Location section, :gesture:`tap` on :guilabel:`Mode`. 
 
 .. image:: /img/collect-best-practices/mode.png
    :alt: Image showing Mode option.
@@ -145,10 +155,14 @@ Then pick:
    :alt: Image showing different accuracy modes.
    :class: device-screen-vertical
 
+.. _improve-accuracy:
+
+Improve location accuracy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can also improve accuracy of location.
 
-Tap on :guilabel:`Improve accuracy` in Location section.
+:gesture:`Tap` on :guilabel:`Improve accuracy` in Location section.
 
 .. image:: /img/collect-best-practices/improve-accuracy.png
    :alt: Image showing Improve-accuracy option.
