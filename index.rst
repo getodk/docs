@@ -59,6 +59,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   aggregate-backup
   form-uploader
   oauth2-service
+  visualize
   aggregate-limitations
 
 .. toctree::
