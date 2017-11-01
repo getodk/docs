@@ -454,7 +454,42 @@ XForm XML
   <input ref="/sample-xlsform/wakeup">
     <label>What time do you usually wakeup?</label>
   </input>
+  
+.. _ethiopian-calendar:
 
+Ethiopian Calendar
+--------------------
+
+An ethiopian calendar. The main calendar used in Ethiopia. Users can enter a date according to the ethiopian calendar system and also they can see the corresponding date according to the Gregorian calendar(internationally accepted calendar).
+
+.. image:: /img/form-widgets/ethiopian-start.*
+  :alt: The Ethiopian calendar form widget as displayed in the ODK Collect App on an Android phone. The headline is "Ethiopian Calendar". The button label is "Select date." Below the button is the message "No date selected."
+  
+.. image:: /img/form-widgets/ethiopian2.* 
+  :alt: The same form widget screen as previously, overlaid with popup calendar. The modal headline is "Select date." The main body shows the ethiopian calendar and contains scrollers for Day, Month and Year. Just below the main body, date according to the ethiopian and gregorian calendar system can be seen. In the bottom-right are Cancel and OK buttons.
+  
+.. image:: /img/form-widgets/ethiopian3.* 
+  :alt: The Ethiopian calendar form widget as displayed previously. The headline is "Ethiopian Calendar". The button label is "Select date." Below the button is the message "22 Tikimt 2010 (Nov 01, 2017)."  
+  
+XLSForm Rows
+~~~~~~~~~~~~~
+
+.. csv-table:: survey
+  :header: type, name, label
+  
+  date, ethiopian-calendar, Ethiopian Calendar 
+  
+XForm XML
+~~~~~~~~~~~~~
+  
+.. code-block:: xml
+  
+  <bind nodeset="/data/ethiopian-calendar" type="date" />
+  
+  <input ref="/data/ethiopian-calendar" appearance="ethiopian">
+    <label> Ethiopian Calendar </label>
+  </input>
+  
 .. _datetime:
 
 Datetime
