@@ -460,7 +460,7 @@ XForm XML
 Ethiopian Calendar
 --------------------
 
-An ethiopian calendar. The main calendar used in Ethiopia. Users can enter a date according to the ethiopian calendar system and also they can see the corresponding date according to the Gregorian calendar(internationally accepted calendar).
+An Ethiopian-calendar. The main calendar used in Ethiopia. Users can enter a date according to the ethiopian calendar system and also they can see the corresponding date according to the Gregorian calendar(internationally accepted calendar).
 
 .. image:: /img/form-widgets/ethiopian-start.*
   :alt: The Ethiopian calendar form widget as displayed in the ODK Collect App on an Android phone. The headline is "Ethiopian Calendar". The button label is "Select date." Below the button is the message "No date selected."
