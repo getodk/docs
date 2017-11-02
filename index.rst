@@ -81,7 +81,6 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   xlsform
   form-widgets
   form-interaction
-  javarosa
   pyxform
   validate
 
@@ -94,6 +93,14 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   cygwin
   contributing-tips
   style-guide
+
+.. toctree::
+  :hidden:
+  :maxdepth: 2
+  :caption: Developing with ODK 
+  
+  openrosa
+  javarosa
   
 .. toctree::
   :hidden:
@@ -101,18 +108,6 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   :caption: Integration
   
   encrypted-forms
-
-.. toctree::
-  :hidden:
-  :maxdepth: 2
-  :caption: OpenRosa
-  
-  openrosa
-  openrosa-metadata
-  openrosa-http
-  openrosa-authentication
-  openrosa-form-submission
-  openrosa-form-list
 
 .. toctree::
   :hidden:
