@@ -126,6 +126,10 @@ Form Metadata Settings
 
 :menuselection:`User and Device Identity -> Form Metadata` sets identity values which are added to the metadata of forms completed on the device.
 
+.. image:: /img/collect-settings/form-metadata.*
+  :alt: Form Metadata Settings
+  :class: device-screen-vertical
+
 .. rubric:: User-defined
 
 You can edit the following:
@@ -133,6 +137,12 @@ You can edit the following:
 - Username
 - Phone number
 - Email address
+
+.. note::
+
+  - If no username is set in Form metadata settings, server username in :ref:`Server settings <server-settings>` is used by default in the form.
+  - If username is defined in Form metadata settings as well as in Server settings, username from Form metadata would be visible in form.
+  - If you want to ensure that form metadata username can't be changed, you can use the :ref:`admin settings <admin-settings>`.
 
 .. rubric:: Device-defined
 
