@@ -245,11 +245,11 @@ If the command is successfully executed, you will find your file in the launcher
 Using Command Line 
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-You can also run the emulator using command line. Follow the steps given below to start your emulator using command line:
+You can also run the emulator using command line. Follow the steps given below to start your emulator using the command line:
 
 .. note::
 
-  If SDK installation has been put in another drive or folder instead of in its default location of ``$USER_HOME`` or ``$HOME``. Make sure you haves set the environment variables according to that. In the command line type the following command to set environment variables.
+  If SDK installation has been put in another drive or folder instead of in its default location of ``$USER_HOME`` or ``$HOME``. Make sure you have set the environment variables according to that. In the command line type the following command to set environment variables.
   
   .. code-block:: console
   
