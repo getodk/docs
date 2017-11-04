@@ -1465,7 +1465,7 @@ You can use the hyperlink reference by appending a "_" at the end of the vertica
 
 You can ask about your problem in |slack|_.
 
-The ``rst_epilog`` in :file:`conf.py` contains a list of global substitutions that can be used from any file. 
+The ``rst_epilog`` in :file:`conf.py` contains a list of global substitutions that can be used in any file. 
 
 You can add inline images in the document using substitutions. The following block of code substitutes arrow in the text with the image specified.  
 
