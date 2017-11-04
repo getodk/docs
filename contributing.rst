@@ -9,7 +9,7 @@ Authoring Tools and Environment
 
 .. note::
 
-  Developer and authoring tools have lots of options and alternatives. Local tools and workflows presented in this guide are what the author feels would be easiest for a non-coding contributor to set up and use.
+  Developer and authoring tools have lots of options and alternatives. Local tools and workflows presented in this guide are what the author feels would be easiest for a non-coding contributor to set up and use. 
 
 .. _docs-as-code:
 
@@ -1426,12 +1426,48 @@ Use the ``figure`` to markup an image with a caption.
 
     The rest of the indented content will be the caption. This can be a short sentence or several paragraphs. Captions can contain any other rst markup.
 
-.. _inline-images:
+.. _substitutions:
 
-Inline images
+Substitutions
 """""""""""""""
 
-You can add inline images in the document using `substitutions <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#substitution-definitions>`_. Substitution definitions are indicated by an explicit markup start (".. ") followed by a vertical bar, the substitution text (which gets substituted), another vertical bar, whitespace, and the definition block. A substitution definition block may contain inline-compatible directives such as :ref:`image <images>` or `replace <http://docutils.sourceforge.net/docs/ref/rst/directives.html#replace>`_. The following block of code substitutes arrow in the text with the image specified.  
+Substitutions are a useful way to define a value which is needed in many places. Substitution definitions are indicated by an explicit markup start (".. ") followed by a vertical bar, the substitution text (which gets substituted), another vertical bar, whitespace, and the definition block. A substitution definition block may contain inline-compatible directives such as :ref:`image <images>` or `replace <http://docutils.sourceforge.net/docs/ref/rst/directives.html#replace>`_. For more information, refer this `guide <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#substitution-definitions>`_.
+
+You can define the value once like this:
+
+.. code-block:: rst 
+
+  .. |RST| replace:: reStructuredText
+  
+and then reuse it like this:
+
+.. code-block:: rst 
+
+  We use |RST| to write documentation source files.
+  
+Here, ``|RST|`` will be replaced by reStructuredText
+
+You can also create a reference with styled text:
+
+.. code-block:: rst
+  
+  .. |slack| replace:: **ODK Slack**
+  .. slack: https://opendatakit.slack.com
+
+You can use the hyperlink reference by appending a "_" at the end of the vertical bars, for example:
+
+.. code-block:: rst
+
+  You can ask about your problem in |odk-slack|_.
+
+.. |slack| replace:: **ODK Slack**
+.. _slack: https://opendatakit.slack.com  
+
+You can ask about your problem in |slack|_.
+
+The ``rst_epilog`` in :file:`conf.py` contains a list of global substitutions that can be used from any file. 
+
+You can add inline images in the document using substitutions. The following block of code substitutes arrow in the text with the image specified.  
 
 .. code-block:: rst 
 
@@ -1440,6 +1476,7 @@ You can add inline images in the document using `substitutions <http://docutils.
   .. |arrow| image:: /img/{document-subdirectory}/{file}.*
              :alt: Alt text.
 
+			 
 .. _image-names:
 
 Image File Names
