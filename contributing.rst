@@ -1458,7 +1458,7 @@ You can use the hyperlink reference by appending a "_" at the end of the vertica
 
 .. code-block:: rst
 
-  You can ask about your problem in |odk-slack|_.
+  You can ask about your problem in |slack|_.
 
 .. |slack| replace:: **ODK Slack**
 .. _slack: https://opendatakit.slack.com  
