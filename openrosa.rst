@@ -14,8 +14,12 @@ OpenRosa 1.0 APIs
 
 OpenRosa 1.0 APIs were formally approved by the OpenRosa Working Group in December of 2011. To be considered "OpenRosa 1.0 Compliant," a system must implement all 5 of the OpenRosa 1.0 APIs.
 
-- :doc:`openrosa-metadata`
-- :doc:`openrosa-http`
-- :doc:`openrosa-form-submission`
-- :doc:`openrosa-authentication`
-- :doc:`openrosa-form-list`
+
+.. toctree::
+  :maxdepth: 2
+ 
+  openrosa-metadata
+  openrosa-http
+  openrosa-authentication
+  openrosa-form-submission
+  openrosa-form-list
