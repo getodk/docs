@@ -197,7 +197,7 @@ QR Code or the Quick Response Code is a two dimensional barcode. QR codes can be
 Sharing QR code
 """"""""""""""""
 
-You can click on the |share| icon to share the generated barcode as an image. When you click on it, it displays a list of applications like *whatsapp*, *facebook* , *hangouts* to name a few, and other services like *bluetooth*, *MMS* which can be used to share the generated QR code. This is useful when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device. 
+You can click on the |share| icon to share the QR code as an image. When you click on it, it displays a list of applications and services like *whatsapp*, *facebook*, *hangouts*, *bluetooth*, *MMS* to name a few, which can be used to share the QR code. This is useful when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device. 
 
 .. |share| image:: /img/collect-settings/share-icon.*
              :alt: Share icon for sharing the QR code. 
@@ -220,7 +220,7 @@ You can import settings from a QR code saved on your device by clicking on :guil
 Making your own QR code
 """"""""""""""""""""""""""
 
-To create your own QR code, you need to know that QR code is a JSON object with a structure as shown below:
+QR code is a JSON object with a structure as shown below:
 
 .. code-block:: JSON
 
@@ -236,16 +236,16 @@ To create your own QR code, you need to know that QR code is a JSON object with 
 
 The JSON object isn't encrypted but is compressed using `zlib <http://www.zlib.net/manual.html>`_ before encoding into QRCode. Therefore the creation process can be summarized as follows:
 
-1) Write a JSON object containing the changed settings in form of structure as written above. 
+1) Write a JSON object containing the changed settings with a structure as shown above. 
 2) Compress it using zlib.
 3) Encode into QR code. 
 
 After you finish generating the QR code, you can transfer it to your device and then import it by clicking on :guilabel:`Select Code from SD Card`  option.
 
-List of keys for all the settings
-"""""""""""""""""""""""""""""""""""
+List of keys for all settings
+""""""""""""""""""""""""""""""
 
-Following is the list of all keys and the set of values they can take:
+Following is the list of keys for all settings and the set of values they can take:
 
 .. code-block:: javascript
 
@@ -324,7 +324,7 @@ Following is the list of all keys and the set of values they can take:
       "map_sdk_behavior": {"google_maps", "osmdroid"},
       // if map_sdk_behavior is google_maps, then map_basemap_behavior can take the following values:
       "map_basemap_behavior": {"streets", "satellite", "terrain", "hybrid"},
-      // if map_sdk_behavior is osmdroid, then map_basemap_behvior can take the following values:
+      // if map_sdk_behavior is osmdroid, then map_basemap_behavior can take the following values:
       "map_basemap_behavior": { "openmap_streets", "openmap_usgs_topo", 
                                 "openmap_usgs_sat", "openmap_stamen_terrain",
                                 "openmap_cartodb_positron", "openmap_cartodb_darkmatter"
@@ -361,7 +361,7 @@ Following is the list of all keys and the set of values they can take:
   The subkeys in the general key can be a part of the admin key too. 
 
 .. note::
-  QR code only contains settings whose values are not the default values. This is done because there're constraints on the amount of data a QR code can hold.
+  QR code only contains settings whose values are not the default values because of the constraints on the amount of data a QR code can hold.
 
 .. warning:: 
   The QR code used for settings-import contains the admin and server passwords *in plain text*. To remove them from the code, :gesture:`tap` the warning on the QR code screen.
