@@ -43,6 +43,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   collect-settings
   collect-forms
   collect-adb
+  collect-intent
   collect-best-practices
   projecting-collect
 
@@ -94,14 +95,6 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   cygwin
   contributing-tips
   style-guide
-
-
-.. toctree::
-  :hidden:
-  :maxdepth: 2
-  :caption: Developing with ODK
-  
-  collect-intent
   
 .. toctree::
   :hidden:
