@@ -286,24 +286,37 @@ You can also run the emulator using command line. Follow the steps given below t
 
 .. code-block:: console
 
-  emulator -avd avd_name
+  $ emulator -avd avd_name
 
 .. note::
   
-  - You can use :command:`sdkmanager` command to update, install, and uninstall packages for the Android SDK. This method is not recommended as it is not user-friendly and also takes time.
+  1. You can use :command:`sdkmanager` command to update, install, and uninstall packages for the Android SDK. This method is not recommended as it is not   user-friendly and also takes time.
 
-  .. code-block:: console
+     To create an emualtor you need to download system image for a particular API level.
+	
+    .. code-block:: console
 
-   sdkmanager packages [options]
-   (e.g sdkmanager --verbose "system-images;android-19;google_apis;x86")
+      $ sdkmanager --verbose "system-images;android-19;google_apis;x86"
+	  
+	  
+    - The :option:`--verbose` option or :option:`-v` option shows errors, warnings and all messages.
+    - ``system-images;android-19;google_apis`` specifies the system image package for the Android virtual device.
+    - ``android-19`` specifies the API level. You can choose different API level if you want.
+   
+  2. To create and manage Android Virtual device from the command line, you can use :command:`avdmanager`.
   
-  - To create and manage Android Virtual device from the command line, you can use :command:`avdmanager`.
-  
-  .. code-block:: console
+     After downloading system image, you can use the following command to create an emulator.
+   
+    .. code-block:: console
 
-   avdmanager [global options] command [command options]
-   (e.g avdmanager -v create avd --name testAVD -k "system-images;android-19;google_apis;x86" -g "google_apis")
-  
+      $ avdmanager -v create avd --name testAVD -k "system-images;android-19;google_apis;x86" -g "google_apis"
+	  
+	 
+    - The :option:`create avd` option creates a new Android virtual device.
+    - :option:`--name` option is a **required** option which is used to specify name of the AVD. Here, the name of the AVD is testAVD.
+    - The :option:`-g` specifies the sys-img tag to use for the AVD.
+    - :option:`-k` specifies package path of the system image for the AVD.
+   
 .. seealso::
 
   You can also use `Genymotion <https://www.genymotion.com/>`_ as an alternative as it is very fast as compared to custom android emulators. It is also easy to use and configure, and it is available free of cost for personal use.
