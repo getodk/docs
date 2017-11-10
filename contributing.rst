@@ -9,7 +9,7 @@ Authoring Tools and Environment
 
 .. note::
 
-  Developer and authoring tools have lots of options and alternatives. Local tools and workflows presented in this guide are what the author feels would be easiest for a non-coding contributor to set up and use.
+  Developer and authoring tools have lots of options and alternatives. Local tools and workflows presented in this guide are what the author feels would be easiest for a non-coding contributor to set up and use. 
 
 .. _docs-as-code:
 
@@ -1418,12 +1418,86 @@ Use the ``figure`` to markup an image with a caption.
 
     The rest of the indented content will be the caption. This can be a short sentence or several paragraphs. Captions can contain any other rst markup.
 
-.. _inline-images:
+.. _substitutions:
 
-Inline images
+Substitutions
 """""""""""""""
 
-You can add inline images in the document using `substitutions <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#substitution-definitions>`_. Substitution definitions are indicated by an explicit markup start (".. ") followed by a vertical bar, the substitution text (which gets substituted), another vertical bar, whitespace, and the definition block. A substitution definition block may contain inline-compatible directives such as :ref:`image <images>` or `replace <http://docutils.sourceforge.net/docs/ref/rst/directives.html#replace>`_. The following block of code substitutes arrow in the text with the image specified.  
+Substitutions are a useful way to define a value which is needed in many places. Substitution definitions are indicated by an explicit markup start (".. ") followed by a vertical bar, the substitution text (which gets substituted), another vertical bar, whitespace, and the definition block. A substitution definition block may contain inline-compatible directives such as :ref:`image <images>` or `replace <http://docutils.sourceforge.net/docs/ref/rst/directives.html#replace>`_. For more information, refer this `guide <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#substitution-definitions>`_.
+
+You can define the value once like this:
+
+.. code-block:: rst 
+
+  .. |RST| replace:: reStructuredText
+  
+and then reuse it like this:
+
+.. code-block:: rst 
+
+  We use |RST| to write documentation source files.
+  
+Here, ``|RST|`` will be replaced by reStructuredText
+
+You can also create a reference with styled text:
+
+.. code-block:: rst
+  
+  .. |slack| replace:: **ODK Slack**
+  .. slack: https://opendatakit.slack.com
+
+You can use the hyperlink reference by appending a "_" at the end of the vertical bars, for example:
+
+.. code-block:: rst
+
+  You can ask about your problem in |slack|_.
+
+.. |slack| replace:: **ODK Slack**
+.. _slack: https://opendatakit.slack.com  
+
+You can ask about your problem in |slack|_.
+
+The ``rst_epilog`` in :file:`conf.py` contains a list of global substitutions that can be used from any file. The list is given below:
+
+- If you want to create a hyperlink reference for ODK Slack, you can use ``|odk-slack|_``.
+
+  .. code-block:: rst
+
+    You can use |odk-slack|_ to ask your questions.
+  
+  You can use |odk-slack|_ to ask your questions.
+  
+|
+  
+- To create a hyperlink reference for docs related issues, use ``|docs-issue|_``.
+
+  .. code-block:: rst
+  
+    If you find a problem, file an |docs-issue|_.
+	
+  If you find a problem, file an |docs-issue|_.
+  
+|
+ 
+- To create a hyperlink reference for ODK Forum, use ``|forum|_``.
+
+  .. code-block:: rst
+  
+    You can ask support questions in |forum|_.
+	
+  You can ask support questions in |forum|_.
+
+|  
+  
+- To create a hyperlink reference for contributors guide, use ``|contrib-guide|_``.
+
+  .. code-block:: rst
+    
+	Be sure to read the |contrib-guide|_.
+	
+  Be sure to read the |contrib-guide|_.
+
+You can add inline images in the document using substitutions. The following block of code substitutes arrow in the text with the image specified.  
 
 .. code-block:: rst 
 
@@ -1432,6 +1506,7 @@ You can add inline images in the document using `substitutions <http://docutils.
   .. |arrow| image:: /img/{document-subdirectory}/{file}.*
              :alt: Alt text.
 
+			 
 .. _image-names:
 
 Image File Names
