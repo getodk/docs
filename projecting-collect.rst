@@ -115,6 +115,7 @@ Follow the instructions given below to use Vysor:
 .. image:: /img/project-collect/collect-app.*
   :alt: Image showing collect-app after launching vysor
 
+.. _using-android-studio:
 
 Using Android Studio
 ----------------------------
@@ -200,7 +201,7 @@ Follow the procedures given below to run your app on the emulator:
 
 .. image:: /img/project-collect/emulator-screen1.*
   :alt: Image showing emulator screen.
-  
+   
 16. Now click on |SDK| to see the location of Android SDK.
 
 .. |SDK| image:: /img/project-collect/sdk-manager.*
@@ -239,7 +240,83 @@ If the command is successfully executed, you will find your file in the launcher
 .. image:: /img/project-collect/collect-emulator2.*
   :alt: Image showing collect app on the emulator screen
   
+.. _using-command-line:
+  
+Using Command Line 
+~~~~~~~~~~~~~~~~~~~~~~~
+
+You can also run the emulator using command line. Follow the steps given below to start your emulator using the command line:
+
+.. note::
+
+  If SDK installation has been put in another drive or folder instead of in its default location of ``$USER_HOME`` or ``$HOME``. Make sure you have set the environment variables according to that. In the command line type the following command to set environment variables.
+  
+  .. code-block:: console
+  
+    set ANDROID_SDK_ROOT=path\sdk\
+
+
+1. Open the terminal and move to the :file:`emulator` folder of the `SDK` directory.
+
+.. code-block:: console
+
+  $ cd emulator
+  
+2. For the list of available virtual devices, type the following command:
+
+.. code-block:: console
+
+  $ emulator -list-avds
+ 
+.. tip::
+
+  If you are not able to locate :file:`emulator.exe` file in :file:`SDK` folder. Type the following command to know the location of the file:
+  
+  .. code-block:: console
+
+    $ which emulator
+  
+  On Windows:
+  
+  .. code-block:: doscon
+
+    > where emulator
+
+3. Use :command:`emulator` to start the emulator. Here *avd_name* is the name of Android virtual device that you have created.
+
+.. code-block:: console
+
+  $ emulator -avd avd_name
+
+.. note::
+  
+  1. You can use :command:`sdkmanager` command to update, install, and uninstall packages for the Android SDK. This method is not recommended as it is not   user-friendly and also takes time.
+
+     To create an emualtor you need to download system image for a particular API level.
+	
+    .. code-block:: console
+
+      $ sdkmanager --verbose "system-images;android-19;google_apis;x86"
+	  
+	  
+    - The :option:`--verbose` option or :option:`-v` option shows errors, warnings and all messages.
+    - ``system-images;android-19;google_apis`` specifies the system image package for the Android virtual device.
+    - ``android-19`` specifies the API level. You can choose different API level if you want.
+   
+  2. To create and manage Android Virtual device from the command line, you can use :command:`avdmanager`.
+  
+     After downloading system image, you can use the following command to create an emulator.
+   
+    .. code-block:: console
+
+      $ avdmanager -v create avd --name testAVD -k "system-images;android-19;google_apis;x86" -g "google_apis"
+	  
+	 
+    - The :option:`create avd` option creates a new Android virtual device.
+    - :option:`--name` option is a **required** option which is used to specify name of the AVD. Here, the name of the AVD is testAVD.
+    - The :option:`-g` specifies the sys-img tag to use for the AVD.
+    - :option:`-k` specifies package path of the system image for the AVD.
+   
 .. seealso::
 
   You can also use `Genymotion <https://www.genymotion.com/>`_ as an alternative as it is very fast as compared to custom android emulators. It is also easy to use and configure, and it is available free of cost for personal use.
-  
