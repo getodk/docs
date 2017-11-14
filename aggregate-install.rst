@@ -494,18 +494,18 @@ Following are basic details for setting up ODK Aggregate to run on a Linux micro
 	- An easier option is to use an FTP program like FileZilla (as long as it supports SFTP).
 	- To configure FileZilla to connect to your instance, go into *Edit…Settings/Preferences…Connection…SFTP* and add your private key to FileZilla’s keystore (it will offer to convert the key format, which you should accept). Then, go into Site Manager and create a new site. The host should be the IP, name, or Public DNS for your instance, the port can be blank, the protocol should be *SFTP – SSH File Transfer Protocol*, the login type should be Normal, and the user should be *ec2-user*. Everything else should be left at the defaults, including the password (which will be blank).
 
-- Install Tomcat 6 
+- Install Tomcat 8 
 
  This can be done by simply running:
 
   .. code-block:: console
 	
-	$ sudo yum install tomcat6
+	$ sudo yum install tomcat8
 
 - Configure Tomcat
 
-	- Download the MySQL Connector/J from the MySQL download site <http://dev.mysql.com/downloads/connector/j/>_, unzip it, and transfer the :file:`mysql‐connector‐java‐x.x.x‐bin.jar` file up to your instance’s :file:`/usr/share/tomcat6/lib` directory.
-	- Edit :file:`/etc/tomcat6/server.xml` in order to customize settings. (If you’re not used to Linux text editors, you can always download the file, edit it, and upload it back.)
+	- Download the MySQL Connector/J from the MySQL download site <http://dev.mysql.com/downloads/connector/j/>_, unzip it, and transfer the :file:`mysql‐connector‐java‐x.x.x‐bin.jar` file up to your instance’s :file:`/usr/share/tomcat8/lib` directory.
+	- Edit :file:`/etc/tomcat8/server.xml` in order to customize settings. (If you’re not used to Linux text editors, you can always download the file, edit it, and upload it back.)
 	- Assuming that you want to run Aggregate on the standard HTTP port (80) and HTTPS port (443):
 	- Change “<Connector port="8080" protocol="HTTP/1.1"” to “<Connector port="8080" proxyPort="80" protocol="HTTP/1.1"” (i.e., add the proxyPort attribute).
 	- If you are using SSL, also change “<Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true"” to “<Connector port="8443" proxyPort="443" protocol="HTTP/1.1" SSLEnabled="true"”.
@@ -531,10 +531,10 @@ Following are basic details for setting up ODK Aggregate to run on a Linux micro
 
 	   .. code-block:: console
 
-	     $ sudo service tomcat6 start
+	     $ sudo service tomcat8 start
 
  
-	- Configure Tomcat to auto-start when the instance boots with `sudo chkconfig --level 345 tomcat6 on`.   
+	- Configure Tomcat to auto-start when the instance boots with `sudo chkconfig --level 345 tomcat8 on`.   
 		     
 
 
@@ -544,7 +544,7 @@ Following are basic details for setting up ODK Aggregate to run on a Linux micro
 
    .. code-block:: console
 	
-	 $ sudo yum install tomcat6
+	 $ sudo yum install mysql mysql-server
 
 
 - Configure MySQL
@@ -570,7 +570,7 @@ Following are basic details for setting up ODK Aggregate to run on a Linux micro
 	- First, install `ODK Aggregate <https://opendatakit.org/downloads/>`_ on your local computer (not on your AWS instance).
 	- During set-up, it’s important to specify that this will be a MySQL installation, and it is also very important that you specify the correct domain name or IP address that will be used to access your Aggregate server. Ideally, this will be a specific domain name that you have already mapped to an elastic IP (and can re-map later if you change the IP).
 	- The installation will create a :file:`create_db_and_user.sql` file. Upload this to your ec2-user home directory. 
-	- The installation will also create an ODKAggregate.war file. Rename this to ROOT.war and upload it to the :file:`/usr/share/tomcat6/webapps` folder. If you receive a `Permission Denied` error, you might need to execute `chmod -R 755` or something similar for the webapps folder.
+	- The installation will also create an ODKAggregate.war file. Rename this to ROOT.war and upload it to the :file:`/usr/share/tomcat8/webapps` folder. If you receive a `Permission Denied` error, you might need to execute `chmod -R 755` or something similar for the webapps folder.
 	- After ROOT.war has been copied to the server, you need to make sure tomcat has permission to use it. Run *sudo chown tomcat ROOT.war* and *sudo chgrp tomcat ROOT.war* in the webapps directory to ensure this is the case.
 
 - Configure MySQL
