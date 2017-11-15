@@ -29,7 +29,7 @@ If you have :ref:`connected ODK Collect to a server <connecting-to-server>` or :
 Loading forms directly
 ------------------------
 
-You can load forms directly from a computer to your device via USB, using :doc:`Android Debug Bridge <collect-adb>`.
+You can load forms directly from a computer to your device via USB, using :ref:`Android Debug Bridge <adb>`.
 
 .. code-block:: none
 
@@ -545,18 +545,3 @@ This section allows the admin to hide menu items and settings from the user. It 
 - :guilabel:`Main Menu Settings` : Allows admin to hide some of the main-menu options from the users.
 - :guilabel:`User Settings` : Allows admin to select the options that'll be visible to the users in the :guilabel:`General settings` menu.
 - :guilabel:`Form Entry Settings` : Admin can configure the `form entry items` visible to the users. For example unchecking the :guilabel:`change language` option will prevent the user from changing the device language.
-
-  
-
-Additional Topics
-===================
-
-.. change name
-
-.. toctree::
-  :maxdepth: 2
-  
-  collect-adb
-  collect-integrations
-  projecting-collect
-

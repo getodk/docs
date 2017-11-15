@@ -235,7 +235,7 @@ We would also appreciate it if you would keep that file organized by placing the
 Android Tools
 ~~~~~~~~~~~~~~~~~
 
-Some testing and documentation tasks (including :ref:`making screenshots from ODK Collect <screenshots>`) require the :doc:`Android Debug Bridge <collect-adb>`) command line tool. You can either install Android Studio or install ADB as standalone SDK tool.
+Some testing and documentation tasks (including :ref:`making screenshots from ODK Collect <screenshots>`) require the :ref:`Android Debug Bridge <adb>`) command line tool. You can either install Android Studio or install ADB as standalone SDK tool.
 
 Android Studio
 """"""""""""""""""
