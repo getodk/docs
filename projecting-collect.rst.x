@@ -1,6 +1,5 @@
-********************************************
 Projecting ODK Collect onto another screen
-********************************************
+==============================================
 
 This guide helps the users to project ODK collect onto a screen. There are various methods available to do this, some of the methods are discussed below:
 
@@ -317,6 +316,9 @@ You can also run the emulator using command line. Follow the steps given below t
     - The :option:`-g` specifies the sys-img tag to use for the AVD.
     - :option:`-k` specifies package path of the system image for the AVD.
    
-.. seealso::
+.. _genymotion:
+
+Genymotion
+------------
 
   You can also use `Genymotion <https://www.genymotion.com/>`_ as an alternative as it is very fast as compared to custom android emulators. It is also easy to use and configure, and it is available free of cost for personal use.

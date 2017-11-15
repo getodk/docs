@@ -1,8 +1,7 @@
-***************************
 External App Integrations
-***************************
+==========================
 
-:doc:`collect-guide` enables rich integrations with external Android applications. It can both launch external applications to get data from them and be launched by custom apps to perform certain actions.
+:doc:`collect-intro` enables rich integrations with external Android applications. It can both launch external applications to get data from them and be launched by custom apps to perform certain actions.
 
 
 .. note::
@@ -12,12 +11,12 @@ External App Integrations
 .. _launch-apps-single-field:
 
 Launching external apps to populate single fields
-===================================================
+---------------------------------------------------
 
 ODK Collect can launch external applications to populate string, integer or decimal fields using the ``ex:intentString`` appearance. A ``value`` parameter that holds the current value for that field is passed to the application. Since v1.4.3, additional parameters can be specified. The names of these parameters are user defined and there are no reserved names. 
 
 XLSForm
-~~~~~~~~~
+~~~~~~~~
 
 .. csv-table:: survey
   :header: type, name, label, appearance
@@ -43,7 +42,7 @@ In the examples above, the parameter specified are ``form_id``, ``form_name``, `
 .. _launch-apps-multiple-fields:
 
 Launching external apps to populate multiple fields
-=====================================================
+-------------------------------------------------------
 
 Since v1.4.3, a ``field-list`` group can have an ``intent`` attribute that allows an external application to populate it. This functionality is not available in XLSForm and requires editing a form's raw XML representation.
 
@@ -71,9 +70,9 @@ The external app is launched with the parameters that are defined in the intent 
 .. _launch-collect:
 
 Launching ODK Collect from External Apps
-==========================================
+-------------------------------------------
 
-:doc:`collect-guide` supports several intents which allow it to be launched by external applications. You can open a specific form or lists of empty forms, saved forms, finalized forms or sent forms. 
+:doc:`collect-intro` supports several intents which allow it to be launched by external applications. You can open a specific form or lists of empty forms, saved forms, finalized forms or sent forms. 
 
 This section describes how to launch ODK Collect and open its activities from an external app. The code samples go in your custom Android application.
 
