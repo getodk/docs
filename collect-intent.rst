@@ -1,18 +1,77 @@
+***************************
 External App Integrations
-===========================
+***************************
 
-:doc:`collect-guide` enables rich integrations with external Android applications. It can both be launched externally to perform certain actions and launch external applications to get data from them.
+:doc:`collect-guide` enables rich integrations with external Android applications. It can both launch external applications to get data from them and be launched by custom apps to perform certain actions.
 
 
 .. note::
-
-  - `ODK Collect Intents Tester <https://github.com/grzesiek2010/collectTester>`_ demonstrates how to open ODK Collect activities directly from an external app.
   - `ODK Counter <https://github.com/opendatakit/counter>`_ demonstrates how to build an external application to pass data to ODK Collect. It an app which is intended to be used from ODK Collect as a counter.
+  - `ODK Collect Intents Tester <https://github.com/grzesiek2010/collectTester>`_ demonstrates how to open ODK Collect activities directly from an external app.
+
+.. _launch-apps-single-field:
+
+Launching external apps to populate single fields
+===================================================
+
+ODK Collect can launch external applications to populate string, integer or numeric fields using the ``ex:intentString`` appearance. A ``value`` parameter that holds the current value for that field is passed to the application. Since v1.4.3, additional parameters can be specified. The names of these parameters are user defined and there are no reserved names. 
+
+XLSForm
+~~~~~~~~~
+
+.. csv-table:: survey
+  :header: type, name, label, appearance
+
+  integer, counter, Click launch to start the counter app, "ex:org.opendatakit.counter(form_id='counter-form', form_name='Counter Form', question_id='1', question_name='Counter')"
+
+XForm XML
+~~~~~~~~~~~
+
+.. code-block:: xml
+
+  <input appearance="ex:org.opendatakit.counter(form_id='counter-form', form_name='Counter Form', question_id='1', question_name='Counter')" ref="/counter/counter">
+      <label>Click launch to start the counter app</label>
+  </input>
+
+In the examples above, the parameter specified are ``form_id``, ``form_name``, ``question_id`` and ``question_name``. Any number of extra parameters can be specified. The parameter values can be:
+
+  - An xpath expression to an other field.
+  - A string literal defined in single quotes.
+  - A raw number (integer or decimal)
+  - Any JavaRosa function.
+
+.. _launch-apps-multiple-fields:
+
+Launching external apps to populate multiple fields
+=====================================================
+
+Since v1.4.3, a ``field-list`` group can have an ``intent`` attribute that allows an external application to populate it. This functionality is not available in XLSForm and requires editing a form's raw XML representation.
+
+.. code-block:: xml
+
+  <group ref="/externaltest/consented" appearance="field-list" 
+          intent="org.myapp.COLLECT(uuid=/externaltest/meta/instanceID, 
+                                    deviceid=/externaltest/deviceid)">
+    <label>Please populate these:</label>
+    <input ref="/externaltest/consented/textFieldInGroup">
+      <label>A text</label>
+    </input>
+    <input ref="/externaltest/consented/integerFieldInGroup">
+      <label>An integer</label>
+    </input>
+    <input ref="/externaltest/consented/decimalFieldInGroup">
+      <label>A decimal</label>
+    </input>
+  </group>
+
+The ``intent`` attribute is only used when the group has an ``appearance`` of ``field-list``. The format and the functionality of the ``intent`` value is the same as above. If bundle of values returned by the external application contains values whose keys match the type and the name of the sub-fields, then these values overwrite the current values of those sub-fields.
+
+The external app is launched with the parameters that are defined in the intent string plus the values of all the sub-fields that are either text, decimal, or integer. Any other sub-field is invisible to the external app.
 
 .. _launch-collect:
 
 Launching ODK Collect from External Apps
-------------------------------------------
+==========================================
 
 :doc:`collect-guide` supports several intents which allow it to be launched by external applications. You can open a specific form or lists of empty forms, saved forms, finalized forms or sent forms. 
 
@@ -84,15 +143,14 @@ To get the result, override ``onActivityResultMethod`` in the followig way:
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     // Check which request we're responding to
     if (requestCode == PICK_FORM_REQUEST) {
-        // Make sure the request was successful
-	    if (resultCode == RESULT_OK) {
- 	      // The Intent's data URI identifies which form was selected.
+      // Make sure the request was successful
+      if (resultCode == RESULT_OK) {
+        // The Intent's data URI identifies which form was selected.
         Uri formUri = data.getData();
         // Do something with the form here
- 	    }
-	  }	
+      }
+    }
   }
- 
 
 For an instance, change the intent type:
  
@@ -114,58 +172,3 @@ If the URI of a form or instance is known, it can be viewed or edited. For examp
   startActivity(intent);
  
 The same thing can be done with a specific instance.
-
-.. _launch-apps:
-
-Launch External Apps from ODK Collect
----------------------------------------
-
-ODK Collect can launch 3rd party apps to populate string, integer or numeric fields. Beginning with ODK Collect 1.4.3, an external app can populate a group of fields. Also beginning with ODK Collect 1.4.3, any number of additional values, beyond the current value(s) of the field(s) being updated, can be passed to the 3rd party app.
-
-- A text/decimal/integer field with an **ex:intentString** appearance can specify extra parameters that are passed to the external app, in addition to the ``value`` parameter that holds the current value for that field. The names of the parameters are user defined and there are no reserved names. 
-
-.. code-block:: xml
-
-  <input appearance="ex:org.myapp.COLLECT(started= /externaltest/starttime ,
-                                          constant='----', randomNumber=random())" 
-           ref="/externaltest/textField" >
-      <label>Click launch to see an external-fetched string</label>
-  </input>
-
-Any number of extra parameters can be specified. The parameter values can be four different things:
-
-  - An xpath expression to an other field.
-  - A string literal defined in single quotes.
-  - A raw number (integer or decimal)
-  - Any JavaRosa function.
-
-
-- A ``field-list`` group can also have an ``intent`` attribute.
-
-.. code-block:: xml
-
-  <group ref="/externaltest/consented" appearance="field-list" 
-          intent="org.myapp.COLLECT(uuid=/externaltest/meta/instanceID, 
-                                    deviceid=/externaltest/deviceid)">
-    <label>Please populate these:</label>
-    <input ref="/externaltest/consented/textFieldInGroup">
-      <label>A text</label>
-    </input>
-    <input ref="/externaltest/consented/integerFieldInGroup">
-      <label>An integer</label>
-    </input>
-    <input ref="/externaltest/consented/decimalFieldInGroup">
-      <label>A decimal</label>
-    </input>
-  </group>
-
-  - This intent attribute is only used when the group has an ``appearance`` of ``field-list``.
-  - The format and the functionality of the ``intent`` value is the same as above.
-  - The external app is launched with the parameters that are defined in the intent string plus the values of all the sub-fields that are either text, decimal, or integer.
-  - Any other sub-field is invisible to the external app.
-  - If the returned bundle of values contains values whose keys match the type and the name of the sub-fields, then these values overwrite the current values of those sub-fields.
-
-.. seealso::
-
-  The source code for example of an external application that collects and returns a single field value is provided, here: `BreathCounter <https://github.com/opendatakit/breathcounter>`_. The project includes the form definition (.xml) file that works with the application.
-
