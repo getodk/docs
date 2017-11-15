@@ -41,6 +41,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   collect-intro
   collect-install
   collect-using
+  collect-best-practices
 
 .. toctree::
   :hidden:
