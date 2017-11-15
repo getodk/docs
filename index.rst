@@ -38,18 +38,14 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   :maxdepth: 2
   :caption: Collect
 
-  collect-guide
+  collect-intro
   collect-install
-  collect-settings
-  collect-forms
-  collect-adb
-  collect-integrations
-  collect-best-practices
-  projecting-collect
+  collect-using
 
 .. toctree::
   :hidden:
-  :maxdepth: 2
+  :maxdepth: 0
+  :titlesonly:
   :caption: Aggregate
 
   aggregate-guide

@@ -36,7 +36,7 @@ Install Collect
 
 The easiest way to install the ODK Collect App is `to get it from the Google Play store <https://play.google.com/store/apps/details?id=org.odk.collect.android&hl=en>`_.
 
-For other installation options, see :ref:`installing-collect` in the :doc:`collect-guide`.
+For other installation options, see :ref:`installing-collect`.
 
 .. _installing-aggregate:
 

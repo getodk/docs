@@ -2,7 +2,7 @@
 External App Integrations
 ***************************
 
-:doc:`collect-guide` enables rich integrations with external Android applications. It can both launch external applications to get data from them and be launched by custom apps to perform certain actions.
+:doc:`collect-intro` enables rich integrations with external Android applications. It can both launch external applications to get data from them and be launched by custom apps to perform certain actions.
 
 
 .. note::
@@ -73,7 +73,7 @@ The external app is launched with the parameters that are defined in the intent 
 Launching ODK Collect from External Apps
 ==========================================
 
-:doc:`collect-guide` supports several intents which allow it to be launched by external applications. You can open a specific form or lists of empty forms, saved forms, finalized forms or sent forms. 
+:doc:`collect-intro` supports several intents which allow it to be launched by external applications. You can open a specific form or lists of empty forms, saved forms, finalized forms or sent forms. 
 
 This section describes how to launch ODK Collect and open its activities from an external app. The code samples go in your custom Android application.
 

@@ -1,5 +1,5 @@
 *****************************
-Form Management in Collect
+Using Collect
 *****************************
 
 .. _loading-forms-into-collect:
@@ -165,4 +165,20 @@ You can also delete form instances directly with :command:`adb`. They are stored
 .. note:: 
 
   - Deleted Forms are listed, but cannot be viewed. They are indicated with the crossed-out eye icon.
+
+----
+
+Additional Topics
+===================
+
+.. change name
+
+.. toctree::
+  :maxdepth: 2
+  
+  collect-settings
+  collect-adb
+  collect-integrations
+  collect-best-practices
+  projecting-collect
 

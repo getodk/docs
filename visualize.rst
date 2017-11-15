@@ -12,7 +12,7 @@ This guide helps the users to visualize the collected geodata uploaded on ODK Ag
 .. rubric:: Prerequisites
 
 1. Make sure you have set up your :doc:`ODK Aggregate server <aggregate-install>`.
-2. You should know how :doc:`ODK Collect <collect-guide>` works.
+2. You should know how :doc:`ODK Collect <collect-intro>` works.
 3. You should be familiar with form designers like :doc:`ODK Build <odk-build>`,  :doc:`XLSForm <xlsform>` to create your location based forms and upload it to ODK Aggregate server.
 
 .. _use-google-fusion: 
