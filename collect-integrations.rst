@@ -14,7 +14,7 @@ External App Integrations
 Launching external apps to populate single fields
 ===================================================
 
-ODK Collect can launch external applications to populate string, integer or numeric fields using the ``ex:intentString`` appearance. A ``value`` parameter that holds the current value for that field is passed to the application. Since v1.4.3, additional parameters can be specified. The names of these parameters are user defined and there are no reserved names. 
+ODK Collect can launch external applications to populate string, integer or decimal fields using the ``ex:intentString`` appearance. A ``value`` parameter that holds the current value for that field is passed to the application. Since v1.4.3, additional parameters can be specified. The names of these parameters are user defined and there are no reserved names. 
 
 XLSForm
 ~~~~~~~~~
