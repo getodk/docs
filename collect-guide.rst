@@ -12,13 +12,15 @@ Here is a typical pattern of use:
 - :ref:`Fill out surveys <fill-blank-forms>` with participants
 - :ref:`Upload completed surveys <uploading-forms>` to Aggregate or Google Drive
 
-You can also:
 
-- :ref:`Upload forms directly to Collect <loading-forms-directly>`
-- :ref:`Copy form to and from Collect with ODK Briefcase <pull-from-collect>`
+.. toctree::
+  :caption: ODK Collect Guide
 
-Along the way you might want to:
-
-- :doc:`Customize settings <collect-settings>`
-- :ref:`Bulk Configure settings <import-export-settings>`  
+  collect-install
+  collect-settings
+  collect-forms
+  collect-adb
+  collect-integrations
+  collect-best-practices
+  projecting-collect
 

@@ -39,13 +39,6 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   :caption: Collect
 
   collect-guide
-  collect-install
-  collect-settings
-  collect-forms
-  collect-adb
-  collect-integrations
-  collect-best-practices
-  projecting-collect
 
 .. toctree::
   :hidden:
@@ -120,7 +113,3 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   verify-downloads
   faq
   glossary
-  
-
-  
-
