@@ -17,20 +17,28 @@ ref_pattern = re.compile(r':((ref)|(doc)|(any)):`([^<`\n]*)<?([^>`\n]*)>?`')
 
 
 def updated_ref(matchobj):
-    current_ref_type = matchobj[1]
+    current_ref_type = matchobj.group(1)
     if current_ref_type != old_ref_type:
-        return matchobj[0]
-    if matchobj[6]:
-        current_ref = matchobj[6]
-        current_anchor_text = matchobj[5]
-    if not matchobj[6]:
-        current_ref = matchobj[5]
+        return matchobj.group(0)
+    if matchobj.group(6):
+        current_ref = matchobj.group(6)
+        current_anchor_text = matchobj.group(5)
+    if not matchobj.group(6):
+        current_ref = matchobj.group(5)
+        curretn_anchor_text = ""
     if current_ref != old_ref:
-        return matchobj[0]
+        return matchobj.group(0)
 
     if current_anchor_text:
-        return f":{new_ref_type}:`{current_anchor_text} <{new_ref}>`"
-    return f":{new_ref-type}:`{new-ref}`"
+        replacement = ':{}:`{} <{}>`'.format(
+            new_ref_type, current_anchor_text, new_ref
+        )
+    else:
+        replacement = ':{}:`{}`'.format(
+            new_ref_type, new_ref
+
+    print("Replacing: \n - ", matchobj.group(0), "\n + ", replacement)
+    return replacement
     
 
 
