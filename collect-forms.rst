@@ -16,7 +16,7 @@ In order to fill out forms with survey participants, you must first load blank f
 Loading Forms from ODK Aggregate Server or Google Drive 
 ------------------------------------------------------------
 
-If you have :ref:`connected ODK Collect to a server <connecting-to-server>` or :ref:`Google Drive <connecting-to-google>`, use :guilabel:`Get blank forms` on the app home screen to browse available forms and download them to your device.
+If you have :doc:`connected ODK Collect to a server  <collect-connect>` or :ref:`Google Drive <connecting-to-google>`, use :guilabel:`Get blank forms` on the app home screen to browse available forms and download them to your device.
 
 .. note::
 
@@ -213,7 +213,7 @@ Server Settings
 
 :menuselection:`Server` settings manage the connection to an ODK Aggregate server or Google Drive account for form management.
 
-See :ref:`connecting-to-server` for more details.
+See :doc:`collect-connect` for more details.
 
 .. _interface-settings:
 

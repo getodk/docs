@@ -25,7 +25,7 @@ def updated_ref(matchobj):
         current_anchor_text = matchobj.group(5)
     if not matchobj.group(6):
         current_ref = matchobj.group(5)
-        curretn_anchor_text = ""
+        current_anchor_text = ""
     if current_ref != old_ref:
         return matchobj.group(0)
 
@@ -36,6 +36,7 @@ def updated_ref(matchobj):
     else:
         replacement = ':{}:`{}`'.format(
             new_ref_type, new_ref
+        )
 
     print("Replacing: \n - ", matchobj.group(0), "\n + ", replacement)
     return replacement
