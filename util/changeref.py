@@ -10,6 +10,18 @@ old_ref = sys.argv[2]
 new_ref_type = sys.argv[3]
 new_ref = sys.argv[4]
 
+if not all((old_ref_type, old_ref, new_ref_type, new_ref)):
+    print("Not enough arguments. Exiting.")
+    sys.exit()
+
+if old_ref_type not in ["ref", "any", "doc"]:
+    print("First arg not a valid ref type string.")
+    sys.exit()
+
+if new_ref_type not in ["ref", "any", "doc"]:
+    print("Third arg not a valid ref type string.")
+    sys.exit()    
+
 ref_pattern = re.compile(r':((ref)|(doc)|(any)):`([^<`\n]*)<?([^>`\n]*)>?`')
     # group 1 : ref, doc, any (reference type)
     # group 5 : if 6 is empty, 5 is reference target; else 5 is anchor text

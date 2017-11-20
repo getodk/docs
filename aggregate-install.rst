@@ -2,7 +2,7 @@
 Aggregate Installation and Setup
 ***********************************
 
-Before going through this section, make sure you have used :doc:`ODK Collect <collect-guide>` and are familiar with how it works.
+Before going through this section, make sure you have used :doc:`ODK Collect  <collect-intro>` and are familiar with how it works.
 
 .. tip::
 

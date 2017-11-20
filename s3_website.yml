@@ -26,7 +26,10 @@ cloudfront_distribution_config:
 
 cloudfront_wildcard_invalidation: true
 
-# redirects:
+redirects:
+  collect-install/#connecting-to-a-server: collect-connect
+  collect-guide: collect-intro
+
 #   index.php: /
 #   about.php: /about.html
 #   music-files/promo.mp4: http://www.youtube.com/watch?v=dQw4w9WgXcQ
