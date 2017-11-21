@@ -6,4 +6,4 @@ Using ODK Collect
   
   collect-forms
   collect-settings
-  collect-best-practices
+  
