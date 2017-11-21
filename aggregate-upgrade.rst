@@ -735,7 +735,7 @@ Since Google is now charging for AppEngine usage, the lowest-cost sequence for t
 
 1. Upgrade ODK Aggregate 0.9.x to the latest 0.9.x release. If you have any 0.9.x release, you can upgrade to the latest 0.9.x release without any changes (the newer updates are backward compatible). Get the latest Aggregate release from the ODK Downloads page `here <https://opendatakit.org/downloads/download-info/odk-aggregate-v0-9-8-1/>`_.
 2. Create a new application id for the 1.x instance.
-3. Download the latest installer for ODK Aggregate 1.x, run it, and deploy to the new application id. For installation process, see the :ref:`Aggregate Installation Guide <install-app-engine>`.
+3. Download the latest installer for ODK Aggregate 1.x, run it, and deploy to the new application id. For installation process, see the :doc:`Aggregate Installation Guide  <aggregate-app-engine>`.
 4. Manually download the form definitions (as XML) from Aggregate 0.9.x. Browse to your Aggregate 0.9.x instance and choose the :guilabel:`View XML` button on the main forms page. Then, from the resulting page, choose the :guilabel:`Download XML` button. Repeat for every form you have on the system.
 
 .. tip::
