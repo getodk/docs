@@ -321,7 +321,7 @@ In the :guilabel:`Preferences` sub-tab under :guilabel:`Site Admin` tab, you can
    :alt: Image showing other options.   
 
 
-.. _help-options:
+
 
    
 .. toctree::
