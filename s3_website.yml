@@ -26,8 +26,14 @@ cloudfront_distribution_config:
 
 cloudfront_wildcard_invalidation: true
 
-# redirects:
-#   index.php: /
-#   about.php: /about.html
-#   music-files/promo.mp4: http://www.youtube.com/watch?v=dQw4w9WgXcQ
-#   heated-towel-rail/index.html: /
+redirects:
+  collect-install/#connecting-to-a-server: collect-connect
+  collect-guide: collect-intro
+  aggregate-install/#installing-on-app-engine: aggregate-app-engine
+  aggregate-install/#installing-on-tomcat-local-or-cloud: aggregate-tomcat
+  aggregate-install/#installing-on-aws-cloud: aggregate-aws
+  aggregate-install/#installing-vm-local-or-cloud: aggregate-vm
+  aggregate-use/#data-transfer-using-aggregate: aggregate-data-access
+  aggregate-use/#help-options: aggregate-help
+  aggregate-use/#site-admin: aggregate-admin
+  aggregate-use/#submissions: aggregate-data

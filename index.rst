@@ -38,26 +38,19 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   :maxdepth: 2
   :caption: Collect
 
-  collect-guide
-  collect-install
-  collect-settings
-  collect-forms
-  collect-adb
-  collect-integrations
+  collect-intro
+  collect-setup
+  collect-using
   collect-best-practices
-  projecting-collect
-
+  
 .. toctree::
   :hidden:
   :maxdepth: 2
   :caption: Aggregate
 
   aggregate-guide
-  aggregate-install
-  aggregate-deployment-planning
+  aggregate-setup
   aggregate-use
-  aggregate-upgrade
-  aggregate-backup
   form-uploader
   oauth2-service
   visualize
@@ -120,7 +113,3 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   verify-downloads
   faq
   glossary
-  
-
-  
-

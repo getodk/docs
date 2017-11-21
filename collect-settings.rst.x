@@ -43,7 +43,7 @@ Server Settings
 
 :menuselection:`Server` settings manage the connection to an ODK Aggregate server or Google Drive account for form management.
 
-See :doc:`collect-connect` for more details.
+See :ref:`connecting-to-server` for more details.
 
 .. _interface-settings:
 

@@ -1,5 +1,5 @@
 *****************************
-Form Management in Collect
+Working with Forms
 *****************************
 
 .. _loading-forms-into-collect:
@@ -16,7 +16,7 @@ In order to fill out forms with survey participants, you must first load blank f
 Loading Forms from ODK Aggregate Server or Google Drive 
 ------------------------------------------------------------
 
-If you have :ref:`connected ODK Collect to a server <connecting-to-server>` or :ref:`Google Drive <connecting-to-google>`, use :guilabel:`Get blank forms` on the app home screen to browse available forms and download them to your device.
+If you have :doc:`connected ODK Collect to a server  <collect-connect>` or :ref:`Google Drive <connecting-to-google>`, use :guilabel:`Get blank forms` on the app home screen to browse available forms and download them to your device.
 
 .. note::
 
@@ -165,4 +165,3 @@ You can also delete form instances directly with :command:`adb`. They are stored
 .. note:: 
 
   - Deleted Forms are listed, but cannot be viewed. They are indicated with the crossed-out eye icon.
-

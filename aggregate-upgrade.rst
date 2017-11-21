@@ -161,7 +161,7 @@ Aggregate v1.4.12
 1. Update to installer with new language and links to documentation.
 2. Revise upload tool for Google AppEngine deployments to more-consistently display the token-entry dialog.
 3. Add .csv-based downloading and bulk updating of configured users and their capabilities.
-4. Change MySQL ODK 1.x and ODK 2.0 data table constructions to use MEDIUMBLOB columns for media attachments. Fix several issues around accessing attachments. See Upgrade notes below and MySQL configuration instructions in :ref:`installing Aggregate on Tomcat <install-tomcat>` for configuration that is required for MySQL.
+4. Change MySQL ODK 1.x and ODK 2.0 data table constructions to use MEDIUMBLOB columns for media attachments. Fix several issues around accessing attachments. See Upgrade notes below and MySQL configuration instructions in :doc:`installing Aggregate on Tomcat  <aggregate-tomcat>` for configuration that is required for MySQL.
 5. Tweak Google AppEngine configuration to reduce frontend usage hours and thereby reduce costs.
 6. Performance improvements to Google AppEngine task locks (primarily for ODK 2.0 support).
 7. Add ``/users/list`` URL that returns the list of all configured users and the roles they have been granted. Access to this URL requires authentication and is restricted to ODK Aggregate usernames and Google accounts (anonymousUser access is forbidden). If the authenticated user does not have Tables Super-user, Administer Tables, or Site Administrator permissions, a singleton list is returned that contains only information about their own identity and its capabilities.
@@ -433,7 +433,7 @@ Aggregate v1.4.3
 Aggregate v1.4.2
 ~~~~~~~~~~~~~~~~~
 
-1. Fixes to ODK Tables sync protocol for the combined release. Due to interactions with Google AppEngine, the ODK Tables Synchronization protocol does not currently work on Google AppEngine servers. You must :ref:`install a local server or a VM image <install-vm>` in order to use that mechanism.
+1. Fixes to ODK Tables sync protocol for the combined release. Due to interactions with Google AppEngine, the ODK Tables Synchronization protocol does not currently work on Google AppEngine servers. You must :doc:`install a local server or a VM image  <aggregate-vm>` in order to use that mechanism.
 
 .. admonition:: Upgrade notes
    :class: upgrade
@@ -735,7 +735,7 @@ Since Google is now charging for AppEngine usage, the lowest-cost sequence for t
 
 1. Upgrade ODK Aggregate 0.9.x to the latest 0.9.x release. If you have any 0.9.x release, you can upgrade to the latest 0.9.x release without any changes (the newer updates are backward compatible). Get the latest Aggregate release from the ODK Downloads page `here <https://opendatakit.org/downloads/download-info/odk-aggregate-v0-9-8-1/>`_.
 2. Create a new application id for the 1.x instance.
-3. Download the latest installer for ODK Aggregate 1.x, run it, and deploy to the new application id. For installation process, see the :ref:`Aggregate Installation Guide <install-app-engine>`.
+3. Download the latest installer for ODK Aggregate 1.x, run it, and deploy to the new application id. For installation process, see the :doc:`Aggregate Installation Guide  <aggregate-app-engine>`.
 4. Manually download the form definitions (as XML) from Aggregate 0.9.x. Browse to your Aggregate 0.9.x instance and choose the :guilabel:`View XML` button on the main forms page. Then, from the resulting page, choose the :guilabel:`Download XML` button. Repeat for every form you have on the system.
 
 .. tip::

@@ -40,6 +40,11 @@ caption .headerlink::after {
     width: auto !important;
 }
 
+.rst-content img.side-by-side {
+    max-height: none !important;
+    max-width: 45%
+}
+
 .formstate {
     font-style: italics;
 }
