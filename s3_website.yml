@@ -30,6 +30,7 @@ redirects:
   collect-install/#connecting-to-a-server: collect-connect
   collect-guide: collect-intro
   aggregate-install/#installing-on-app-engine: aggregate-app-engine
+  aggregate-install/#installing-on-tomcat-local-or-cloud: aggregate-tomcat
 
 #   index.php: /
 #   about.php: /about.html

@@ -161,7 +161,7 @@ Aggregate v1.4.12
 1. Update to installer with new language and links to documentation.
 2. Revise upload tool for Google AppEngine deployments to more-consistently display the token-entry dialog.
 3. Add .csv-based downloading and bulk updating of configured users and their capabilities.
-4. Change MySQL ODK 1.x and ODK 2.0 data table constructions to use MEDIUMBLOB columns for media attachments. Fix several issues around accessing attachments. See Upgrade notes below and MySQL configuration instructions in :ref:`installing Aggregate on Tomcat <install-tomcat>` for configuration that is required for MySQL.
+4. Change MySQL ODK 1.x and ODK 2.0 data table constructions to use MEDIUMBLOB columns for media attachments. Fix several issues around accessing attachments. See Upgrade notes below and MySQL configuration instructions in :doc:`installing Aggregate on Tomcat  <aggregate-tomcat>` for configuration that is required for MySQL.
 5. Tweak Google AppEngine configuration to reduce frontend usage hours and thereby reduce costs.
 6. Performance improvements to Google AppEngine task locks (primarily for ODK 2.0 support).
 7. Add ``/users/list`` URL that returns the list of all configured users and the roles they have been granted. Access to this URL requires authentication and is restricted to ODK Aggregate usernames and Google accounts (anonymousUser access is forbidden). If the authenticated user does not have Tables Super-user, Administer Tables, or Site Administrator permissions, a singleton list is returned that contains only information about their own identity and its capabilities.
