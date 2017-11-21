@@ -8,7 +8,7 @@ ODK Collect
 
 .. _example-survey-questions:
 
-Example survey question in Collect
+Example survey questions in Collect
 -----------------------------------
 
 .. image:: /img/form-widgets/string-input.*
