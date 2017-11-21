@@ -1,12 +1,12 @@
-Submissions
---------------
+Form Submissions in Aggregate
+================================
 
 You can view the data submitted from ODK Collect here. You can filter the submissions, visualize them using pie chart, bar graph or map, export the submissions into useful formats and publish the submitted data into another service. You can also view all the exported submissions. ODK Aggregate provides all these options under the :guilabel:`Submissions` tab.
 
 .. _filter-submission:
 
 Filtering Submissions
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
 Submissions from ODK collect can be filtered to view or hide a specific subset of data by creation of filters. Filters give you the ability to see a subset of your data. You can have a single filter as well as multiple filters. If you have multiple filters applied at once, then you have a filter group. You can create and apply filters by using the options under the :guilabel:`Filter Submissions` tab.
 
@@ -44,7 +44,7 @@ If you selected :menuselection:`Columns` specify the columns you wish to display
 .. _visualize-submissions:
 
 Visualizing Submissions
-~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------
 
 ODK Aggregate provides a quick means for basic data visualization. This Visualize functionality is meant to provide a quick means to view early data results in meaningful ways but is not meant to provide complex data analysis functionality. You can view your data in bar graph, pie chart or on a map. 
 
@@ -77,7 +77,7 @@ Click on :guilabel:`Visualize` to visualize the submitted data. Select bar graph
 .. _export-submissions:
 
 Exporting Submissions
-~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------
 
 .. image:: /img/aggregate-use/export-submission.*
    :alt: Image showing export option.
@@ -90,7 +90,7 @@ Click on :guilabel:`Export` option to export submitted data into useful formats 
 .. _publish-submissions:  
 
 Publishing Submissions
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 .. image:: /img/aggregate-use/publish-submission.*
    :alt: Image showing publish option.
@@ -103,7 +103,7 @@ Click on :guilabel:`Publish` option to publish the submitted data into another s
 .. _view-export-data:
 
 Viewing Exported Submissions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------
 
 You can to view the list of exported files under the :guilabel:`Exported Submissions` tab.
 
