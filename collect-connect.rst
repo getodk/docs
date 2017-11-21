@@ -21,7 +21,7 @@ See :doc:`aggregate-install` to setup your ODK Aggregate server.
 
 .. _connecting-to-google:
 
-Connecting to a Googe Drive Account
+Connecting to a Google Drive Account
 --------------------------------------
 
 - Open the app's main menu (:guilabel:`⋮`)  and then select :menuselection:`General Settings`.
