@@ -4,7 +4,7 @@ ODK Aggregate
 
 .. _aggregate-introduction:
 
-`ODK Aggregate` provides a ready-to-deploy server and data repository to:
+ODK Aggregate is a server application and data repository used with :doc:`collect-intro` or other :doc:`OpenRosa-compliant data client applications <openrosa>`.
 
 - provide blank forms to ODK Collect (or other OpenRosa clients).
 - accept finalized forms (submissions) from ODK Collect and manage collected data.

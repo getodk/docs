@@ -433,7 +433,7 @@ Aggregate v1.4.3
 Aggregate v1.4.2
 ~~~~~~~~~~~~~~~~~
 
-1. Fixes to ODK Tables sync protocol for the combined release. Due to interactions with Google AppEngine, the ODK Tables Synchronization protocol does not currently work on Google AppEngine servers. You must :ref:`install a local server or a VM image <install-vm>` in order to use that mechanism.
+1. Fixes to ODK Tables sync protocol for the combined release. Due to interactions with Google AppEngine, the ODK Tables Synchronization protocol does not currently work on Google AppEngine servers. You must :doc:`install a local server or a VM image  <aggregate-vm>` in order to use that mechanism.
 
 .. admonition:: Upgrade notes
    :class: upgrade

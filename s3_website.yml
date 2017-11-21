@@ -32,6 +32,7 @@ redirects:
   aggregate-install/#installing-on-app-engine: aggregate-app-engine
   aggregate-install/#installing-on-tomcat-local-or-cloud: aggregate-tomcat
   aggregate-install/#installing-on-aws-cloud: aggregate-aws
+  aggregate-install/#installing-vm-local-or-cloud: aggregate-vm
 
 #   index.php: /
 #   about.php: /about.html
