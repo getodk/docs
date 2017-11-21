@@ -34,8 +34,3 @@ redirects:
   aggregate-install/#installing-on-aws-cloud: aggregate-aws
   aggregate-install/#installing-vm-local-or-cloud: aggregate-vm
   aggregate-use/#data-transfer-using-aggregate: aggregate-data-access
-
-#   index.php: /
-#   about.php: /about.html
-#   music-files/promo.mp4: http://www.youtube.com/watch?v=dQw4w9WgXcQ
-#   heated-towel-rail/index.html: /
