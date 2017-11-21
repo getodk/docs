@@ -123,7 +123,7 @@ You can manually upload submissions for a form and check incomplete submissions 
    
 .. toctree::
 
-  aggregate-submissions
+  aggregate-data
   aggregate-admin
   aggregate-data-access
   aggregate-help
