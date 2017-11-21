@@ -31,6 +31,7 @@ redirects:
   collect-guide: collect-intro
   aggregate-install/#installing-on-app-engine: aggregate-app-engine
   aggregate-install/#installing-on-tomcat-local-or-cloud: aggregate-tomcat
+  aggregate-install/#installing-on-aws-cloud: aggregate-aws
 
 #   index.php: /
 #   about.php: /about.html
