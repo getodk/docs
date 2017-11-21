@@ -1,5 +1,5 @@
-Help Options
---------------
+Getting Help in Aggregate
+=============================
 
 Aggregate provides three kinds of help accessible by pressing one of three buttons in the upper righthand corner.
 
