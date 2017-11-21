@@ -34,3 +34,5 @@ redirects:
   aggregate-install/#installing-on-aws-cloud: aggregate-aws
   aggregate-install/#installing-vm-local-or-cloud: aggregate-vm
   aggregate-use/#data-transfer-using-aggregate: aggregate-data-access
+  aggregate-use/#help-options: aggregate-help
+  aggregate-use/#site-admin: aggregate-admin
