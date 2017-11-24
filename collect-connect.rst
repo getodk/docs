@@ -24,7 +24,21 @@ See :doc:`aggregate-install` to setup your ODK Aggregate server.
 Connecting to a Google Drive Account
 --------------------------------------
 
-- Open the app's main menu (:guilabel:`⋮`)  and then select :menuselection:`General Settings`.
+Open the app's main menu (:guilabel:`⋮`) 
+
+.. image:: /img/collect-connect/main-menu-highlight-kebab.* 
+  :alt:
+  
+.. image:: /img/collect-connect/test.* 
+  :alt:
+  
+.. image:: /img/collect-connect/test.* 
+  :alt:
+
+Select :menuselection:`General Settings`.
+
+
+
 - Select :guilabel:`Server`.
 - :guilabel:`Type` should be set to :menuselection:`Google Drive, Google Sheets`.
 - Select your Google account. (The available Google Accounts are pulled from the Google Play Store app.)
