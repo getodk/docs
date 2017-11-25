@@ -9,15 +9,10 @@ ODK Collect is used to complete surveys with participants. But if you want to re
   
   Once you are done "trying out" ODK Collect, and you start actually using it, you will need to decide on a plan for managing forms and data submissions.
 
-.. _choosing-collect-server-options:
-
-Choosing a server option for Collect
---------------------------------------
-
 The two most common options for form and data management are:
 
 .. toctree::
-  :maxdepth: 1
+  :maxdepth: 2
 
   collect-connect-aggregate
   collect-connect-google
