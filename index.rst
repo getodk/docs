@@ -35,7 +35,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
 
 .. toctree::
   :hidden:
-  :maxdepth: 2
+  :maxdepth: 1
   :caption: Collect
 
   collect-intro
