@@ -16,7 +16,7 @@ In order to fill out forms with survey participants, you must first load blank f
 Loading Forms from ODK Aggregate Server or Google Drive 
 ------------------------------------------------------------
 
-If you have :doc:`connected ODK Collect to a server  <collect-connect>` or :ref:`Google Drive <connecting-to-google>`, use :guilabel:`Get blank forms` on the app home screen to browse available forms and download them to your device.
+If you have :doc:`connected ODK Collect to a server  <collect-connect>` or :doc:`Google Drive  <collect-connect-google>`, use :guilabel:`Get blank forms` on the app home screen to browse available forms and download them to your device.
 
 .. note::
 
@@ -136,7 +136,7 @@ This will reopen the form, which you are then free to edit.
 Uploading Finalized Forms
 ===========================
 
-If you are connected to :ref:`an ODK Aggregate server <connecting-to-aggregate>` or :ref:`Google Drive Account <connecting-to-google>`, use :guilabel:`Send Finalized Forms` to upload :formstate:`Finalized` form instances. 
+If you are connected to :doc:`an ODK Aggregate server  <collect-connect-aggregate>` or :doc:`Google Drive Account  <collect-connect-google>`, use :guilabel:`Send Finalized Forms` to upload :formstate:`Finalized` form instances. 
 
 For local form management, use :doc:`ODK Briefcase <briefcase-forms>` to pull :formstate:`Finalized` form instances to your local computer.
 

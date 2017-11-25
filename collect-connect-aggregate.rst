@@ -56,7 +56,7 @@ Edit :guilabel:`ODK Aggregate settings`
 
 .. admonition:: Connecting to another OpenRosa server app
 
-  Any server application that implements the `OpenRosa API <https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaAPI>`_ can be connected to, using :doc:`the instructions laid out above <collect-connect-aggregate`. You would stil choose :menuselection:`ODK Aggregate` as the server type.
+  Any server application that implements the `OpenRosa API <https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaAPI>`_ can be connected to, using :doc:`the instructions laid out above <collect-connect-aggregate>`. You would stil choose :menuselection:`ODK Aggregate` as the server type.
 
   .. warning::
 
