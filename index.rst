@@ -100,6 +100,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   
   openrosa
   javarosa
+  launch-collect-from-app
   
 .. toctree::
   :hidden:
