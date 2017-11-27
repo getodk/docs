@@ -48,75 +48,11 @@ Media files should be placed in a folder labelled :file:`{form-name}-media`.
 - When using Google Drive, the :file:`-media` folder should be uploaded to the same location as the form.
 - If :ref:`loading forms directly to your device <loading-forms-directly>`, the :file:`-media` folder needs to be placed in the :file:`sdcard/odk/forms` directory, alongside the form itself.
 
-.. _fill-blank-forms:
-
-Filling out forms
-===================
-
-Once you have at least one form :ref:`loaded into ODK Collect <loading-forms-into-collect>`, you can fill out a form. 
-
-- Select :guilabel:`Fill Blank Form` from the app home screen.
-- Select the form you would like to fill out from the form list.
-- Typically, you will :gesture:`swipe left` to advance forward through the question, and :gesture:`swipe right` to back up.
-
-  - You can switch from :gesture:`Swipe` navigation to Forward/Backward buttons in :menuselection:`⋮ -> General Settings -> User Interface`
-  - The |arrow| icon on the top right corner opens the jump menu. From the jump menu, you can go to any question or go to the beginning/ending of the form.
-
-  .. |arrow| image:: /img/collect-forms/jumpicon.*
-             :alt: Opens the jump menu. 
-
-  |           
-
-  .. image:: /img/collect-forms/jumpscreen.*
-    :alt: Screen with the arrow icon displayed in ODK Collect on an Android phone. 
-    :class: device-screen-vertical
-  
-  |
-
-  .. image:: /img/collect-forms/jumpmenu.*
-    :alt: Jump menu displayed in ODK Collect on an Android phone. 
-    :class: device-screen-vertical
-
-  |
-    
-  .. note::
-    Jump menu only shows the questions of a looped group once an actual record is created.   
-   
-  - Some questions will :ref:`auto-advance <autoadvance-widget>` after being answered.
-  - `Required questions <http://xlsform.org/#required>`_ will not allow you to advance unless answered.
-
-- To **remove a response**, :gesture:`Long Press` on the :term:`question label`. 
-
-
-For a (mostly) complete guide to form question appearance, see :doc:`form-widgets`.
-
-.. _completing-form:
-
-Completing a Form
--------------------
-
-Once you have reached the end of a form, you will have the opportunity to *Save* and *Exit* the form. At this point, you may also:
-
-.. _name-form-instance:
-
-Name the form
-~~~~~~~~~~~~~~~
-
-The last form screen provides a default name for the form (defined by the form designer). You can rename it. This name only applies to that particular instance of a completed form (not to the blank form).
-
-The Form Name identifies the form in lists throughout the app. For this reason, a meaningful name may be important to you. After you've saved the name, the form automatically moves to the :guilabel:`Send Finalized Form` section, from where you can send it.
-
-.. _finalize-form:
-
-Mark the form as *Finalized*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Only :formstate:`Finalized` forms can be :ref:`uploaded to a server <uploading-forms>`. 
 
 .. _editing-saved-forms:
 
 Editing *Saved* forms
-----------------------
+===========================
 
 - From the app home screen, select :guilabel:`Edit Saved Form`. 
 - From the form list, select a form by name.
