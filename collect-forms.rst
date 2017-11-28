@@ -2,6 +2,10 @@
 Form Management
 *****************************
 
+.. seealso::
+
+  For an overview on forms and form design, see :doc:`form-design-intro`.
+
 .. _loading-forms-into-collect:
 
 Loading Blank Forms
@@ -18,11 +22,47 @@ Loading Forms from ODK Aggregate Server or Google Drive
 
 If you have :doc:`connected ODK Collect to a server  <collect-connect>` or :doc:`Google Drive  <collect-connect-google>`, use :guilabel:`Get blank forms` on the app home screen to browse available forms and download them to your device.
 
+.. image:: /img/collect-forms/main-menu-highlight-get-blank-form.* 
+  :alt: The Main Menu of the Collect app. The option *Get Blank Form* is circled in red.
+
+  
+.. rubric:: Aggregate
+
+If you are using ODK Aggregate, you will see a list of available forms. Select the ones you would like download, and tap :guilabel:`Get Selected`.
+
+.. image:: /img/collect-forms/get-blank-form.* 
+  :alt: The Get Blank Form screen in the Collect app. Several form names are listed, with checkboxes. One form's checkbox is checked. At the bottom are buttons labeled: *Select All*, *Refresh*, and *Get Selected*.
+
 .. note::
 
-  Before downloading blank forms from Aggregate or Google Drive to Collect, those forms have to be uploaded to those locations.
+  Before downloading blank forms from Aggregate to Collect, a form has to be uploaded. See :ref:`Form Management in ODK Aggregate <form-manage>`.
+  
+.. rubric:: Google Drive
 
-  .. link to Aggregate guide, once there is one
+If you are using Google Drive, the **Get Blank Form** screen will display the folders in your Google Drive account and any XML documents. Select and download the forms you want.
+
+.. image:: /img/collect-forms/get-forms-google.* 
+  :alt:
+
+
+.. warning:: 
+
+  All XML documents in Google Drive will appear in Collect. XML documents will be listed **even if they are not valid XForms**.
+
+  .. image:: /img/collect-forms/get-blank-form-not-a-form.* 
+    :alt:
+
+  And you can actually download any XML document, **even if it isn't a real XForm**.
+
+  .. image:: /img/collect-forms/downloading-not-a-form.* 
+    :alt:
+
+  But you can't Fill Out a non-form.  
+
+  .. image:: /img/collect-forms/not-form-exception.* 
+    :alt:
+
+.. link to Google forms guide, once there is one
 
 .. _loading-forms-directly:
 
