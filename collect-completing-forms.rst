@@ -170,13 +170,18 @@ Required Questions
   :alt: A question screen in the Collect app. An error text reads, "Sorry, this response is required."
 
 
-
 .. _completing-form:
 
 Completing a Form
 -------------------
 
-Once you have reached the end of a form, you will have the opportunity to *Save* and *Exit* the form. At this point, you may also:
+Once you have reached the end of a form, you will have the opportunity to *Save* and *Exit* the form. 
+
+
+.. image:: /img/collect-completing-forms/save-and-exit.* 
+  :alt: The end of a survey in the Collect app. The headline is *You are at the end of Demo Survey.* Below that is a text field labeled *Name this form*, with the value 'Demo Survey'. Then an unchecked checkbox labeled *Mark form as finalized*. Below all that is a button labeled *Save Form and Exit*.
+
+At this point, you may also:
 
 .. _name-form-instance:
 
@@ -184,6 +189,10 @@ Name the form
 ~~~~~~~~~~~~~~~
 
 The last form screen provides a default name for the form (defined by the form designer). You can rename it. This name only applies to that particular instance of a completed form (not to the blank form).
+
+.. image:: /img/collect-completing-forms/rename-form.gif 
+  :alt: To rename the form instance, touch the form name in the last screen of the survey.
+  
 
 The Form Name identifies the form in lists throughout the app. For this reason, a meaningful name may be important to you. After you've saved the name, the form automatically moves to the :guilabel:`Send Finalized Form` section, from where you can send it.
 
