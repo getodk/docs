@@ -193,13 +193,15 @@ The last form screen provides a default name for the form (defined by the form d
 .. image:: /img/collect-completing-forms/rename-form.gif 
   :alt: To rename the form instance, touch the form name in the last screen of the survey.
   
-
 The Form Name identifies the form in lists throughout the app. For this reason, a meaningful name may be important to you. After you've saved the name, the form automatically moves to the :guilabel:`Send Finalized Form` section, from where you can send it.
 
 .. _finalize-form:
 
 Mark the form as *Finalized*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: /img/collect-completing-forms/mark-form-as-finalized.* 
+  :alt:
 
 Only :formstate:`Finalized` forms can be :ref:`uploaded to a server <uploading-forms>`. 
 
