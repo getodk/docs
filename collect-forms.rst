@@ -69,16 +69,34 @@ If you are using Google Drive, the **Get Blank Form** screen will display the fo
 Loading forms directly
 ------------------------
 
+.. _loading-forms-with-adb:
+
+Loading forms with ``adb``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 You can load forms directly from a computer to your device via USB, using :doc:`Android Debug Bridge <collect-adb>`.
 
 .. code-block:: none
 
   $ adb push path/to/form.xml /sdcard/odk/forms/form.xml
 
+Loading forms from device storage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
 You can also download forms to your device via a web browser, and move them to the :file:`odk/forms/` directory, using the device's file manager (:menuselection:`Settings -> Storage & USB -> Explore`).
 
+.. figure:: /img/collect-forms/device-settings-storage.* 
+  :alt: The Settings menu on an Android Device. The option *Storage and USB* is circled in red.
+  
+  The settings menu may look different on your device.
+
+.. figure:: /img/collect-forms/device-settings-storage-explore.* 
+  :alt: The Internal Storage settings menu on an Android device. The option *Explore* is circled in red.
+  
+  The :guilabel:`Explore` option opens a file manager that you can use to move forms into Collect.
+
 Loading form media
-~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 If a form :ref:`includes images or other media <image-options>`, those files have to be loaded to the device along with the form.
 
@@ -94,10 +112,21 @@ Media files should be placed in a folder labelled :file:`{form-name}-media`.
 Editing *Saved* forms
 ===========================
 
-- From the app home screen, select :guilabel:`Edit Saved Form`. 
-- From the form list, select a form by name.
+:formstate:`Completed` (filled-in) :term:`form instances <instance>` can be edited after they have been saved.
 
-This will reopen the form, which you are then free to edit.
+Select :guilabel:`Edit Saved Form`
+------------------------------------ 
+
+.. image:: /img/collect-forms/main-menu-edit-saved.* 
+  :alt: The Main Menu of the Collect app. The option *Edit Saved Menu* is circled in red.
+
+Select a form by name
+-----------------------
+
+.. image:: /img/collect-forms/edit-saved-form.* 
+  :alt: The Edit Saved Form screen. Several completed forms are listed by name.
+
+This will reopen the form instance, which you are then free to edit. Form instances are list by name, which is one reason it can be helpful to :ref:`name the form instance after filling it out <name-form-instance>`.
 
 .. note:: 
 
@@ -112,11 +141,17 @@ This will reopen the form, which you are then free to edit.
 Uploading Finalized Forms
 ===========================
 
+Eventually, you will want to upload completed form instances for analysis and data aggregation. 
+
+Doing this from within the Collect app marks the forms as :formstate:`sent`. :formstate:`Sent` forms are no longer editable, but they remain viewable until they are deleted. 
+
+Upload to Aggregate or Google Drive
+------------------------------------
+
 If you are connected to :doc:`an ODK Aggregate server  <collect-connect-aggregate>` or :doc:`Google Drive Account  <collect-connect-google>`, use :guilabel:`Send Finalized Forms` to upload :formstate:`Finalized` form instances. 
 
-For local form management, use :doc:`ODK Briefcase <briefcase-forms>` to pull :formstate:`Finalized` form instances to your local computer.
-
-:formstate:`Sent` forms are no longer editable, but they remain viewable until they are deleted. 
+.. image:: /img/collect-forms/main-menu-send-finalized.* 
+  :alt: The Main Menu of the Collect app. The *Send Finalized Form* option is circled in red.
 
 .. note::
 
@@ -125,9 +160,17 @@ For local form management, use :doc:`ODK Briefcase <briefcase-forms>` to pull :f
   - Use the `TRIM <https://support.google.com/docs/answer/3094140?hl=en>`_ function in the google sheets to remove the leading and trailing spaces from the cells.
   - Define empty cell in your tests to be a cell that is either empty or contains a single space.
 
-.. note:: 
 
-  - You can copy form instances from the device using :command:`adb`, however this will not update the state of the form to :formstate:`Sent`.
+Pull forms with Briefcase
+--------------------------
+
+For local form management, use :doc:`ODK Briefcase <briefcase-forms>` to pull :formstate:`Finalized` form instances to your local computer.
+
+
+Pull forms with ``adb``
+------------------------
+
+You can copy form instances from the device using :command:`adb pull`, however this will not update the state of the form to :formstate:`Sent`.
 
 .. _deleting-forms:
 
