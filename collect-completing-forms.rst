@@ -1,14 +1,12 @@
 Filling out Forms with Collect
 ================================
 
-ODK Collect is used by :term:`enumerators <enumerator>` to complete survey forms with :term:`participants <participant>`.
+ODK Collect is used by :term:`enumerators <enumerator>` to complete survey :doc:`forms <form-design-intro>` with :term:`participants <participant>`.
 
 .. admonition:: Before you get started...
 
   Before you can fill out a form, you need to :ref:`load at least one form into Collect <loading-forms-into-collect>`.
   
-  - For information on creating forms to use in Collect, see the :doc:`form-design-intro`.
-
   
 Select :guilabel:`Fill Blank Form` from the Main Menu
 ----------------------------------------------------------
@@ -83,6 +81,9 @@ Removing answers
 ~~~~~~~~~~~~~~~~~~~
 
 To **remove a response**, :gesture:`Long Press` on the :term:`question label`. 
+
+.. image:: /img/collect-completing-forms/long-press-to-remove.gif 
+  :alt: To remove an answer to a question, long press the question label and follow the on-screen prompts. 
 
   
 Navigating the form 
