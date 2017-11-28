@@ -1,5 +1,5 @@
 *****************************
-Working with Forms
+Form Management
 *****************************
 
 .. _loading-forms-into-collect:
