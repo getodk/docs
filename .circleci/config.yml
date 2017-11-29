@@ -6,7 +6,7 @@ jobs:
       - image: circleci/python:latest
     steps:
       - checkout
-      - run: 
+      - run:
           name: Install checkout requirements
           command: |
             curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
@@ -15,11 +15,11 @@ jobs:
       - run:
           name: Checkout binaries
           command: git lfs pull
-      - run: 
-            name: Install build requirements
-            command: |
-              sudo apt-get install pngquant
-              sudo pip install -r requirements.txt
+      - run:
+          name: Install build requirements
+          command: |
+            sudo apt-get install pngquant
+            sudo pip install -r requirements.txt
       - run:
           name: Build docs
           command: sphinx-build -W -b dirhtml . build
@@ -60,8 +60,10 @@ workflows:
     jobs:
       - build
       - deploy:
-          requires: 
+          requires:
             - build
+          # We'd prefer to filter by username and remove the if/fi above, but username filtering is not supported in workflows.
+          # We still filter by branch to save CircleCI from launching deploy containers on pull request builds that shouldn't deploy.
           filters:
             branches:
               only: master
