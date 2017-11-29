@@ -1,0 +1,67 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/code
+    docker:
+      - image: circleci/python:latest
+    steps:
+      - checkout
+      - run: 
+          name: Install checkout requirements
+          command: |
+            curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+            sudo apt-get install git-lfs
+            git lfs install
+      - run:
+          name: Checkout binaries
+          command: git lfs pull
+      - run: 
+            name: Install build requirements
+            command: |
+              sudo apt-get install pngquant
+              sudo pip install -r requirements.txt
+      - run:
+          name: Build docs
+          command: sphinx-build -W -b dirhtml . build
+      - run:
+          name: Compress images
+          command: pngquant build/_images/*.png --force --ext .png --verbose
+      - store_artifacts:
+          path: build
+          destination: build
+      - persist_to_workspace:
+          root: ~/code
+          paths:
+            - build/*
+            - s3_website.yml
+  deploy:
+    working_directory: ~/code
+    docker:
+      - image: circleci/ruby:latest
+    steps:
+      - attach_workspace:
+          at: ~/code
+      - run:
+          name: Install deploy requirements
+          command: |
+              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" && "$CIRCLE_BRANCH" == "master" ]]; then \
+                sudo apt-get install -y openjdk-7-jre-headless
+                gem install s3_website && s3_website install
+              fi
+      - run:
+          name: Push to S3
+          command: |
+              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" && "$CIRCLE_BRANCH" == "master" ]]; then \
+                s3_website push
+              fi
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires: 
+            - build
+          filters:
+            branches:
+              only: master
