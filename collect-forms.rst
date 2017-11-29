@@ -177,10 +177,31 @@ You can copy form instances from the device using :command:`adb pull`, however t
 Deleting Forms
 ===============
 
-You can delete :formstate:`Saved`, :formstate:`Finalized`, :formstate:`Sent`, and :formstate:`Blank` forms by selecting :guilabel:`Delete Saved Form` on the app home screen. This page contains two tabs, :guilabel:`Saved Forms`, which contains the list of all form instances that are saved, finalized or sent, and :guilabel:`Blank Forms`.
+You can delete :formstate:`Saved`, :formstate:`Finalized`, :formstate:`Sent`, and :formstate:`Blank` forms by selecting :guilabel:`Delete Saved Form` on the app home screen. 
 
-You can also delete form instances directly with :command:`adb`. They are stored in :file:`sdcard/odk/instances`, with a directory for each instance. 
+.. image:: /img/collect-forms/main-menu-delete-form.* 
+  :alt: The Main Menu of the Collect app. The option *Delete Saved Forms* is circled in red.
 
+
+This page contains two tabs, :guilabel:`Saved Forms`, which contains the list of all form instances that are saved, finalized or sent, and :guilabel:`Blank Forms`.
+
+.. image:: /img/collect-forms/delete-saved-forms.* 
+  :alt: The Delete Saved Forms screen in the Collect app. There are two available tabs: *Saved Forms* and *Blank Forms*. The *Saved Forms* tab is active. Below that is a list of saved form instances, with checkboxes. There are buttons labeled: *Select All* and *Delete Selected*.
+
+.. image:: /img/collect-forms/delete-saved-forms-blank-forms.* 
+  :alt: The Delete Saved Forms screen in the Collect app. There are two available tabs: *Saved Forms* and *Blank Forms*. The *Blank Forms* tab is active. Below that is a list of blank forms, with checkboxes. There are buttons labeled: *Select All* and *Delete Selected*.
+  
 .. note:: 
 
-  - Deleted Forms are listed, but cannot be viewed. They are indicated with the crossed-out eye icon.
+  Deleted Forms are listed in the :guilabel:`View Sent Form` page, but cannot be viewed. They are indicated with the crossed-out eye icon.
+
+  .. image:: /img/collect-forms/deleted-form-in-view-sent-form.* 
+    :alt: The View Sent Forms page in Collect app. Two sent forms are listed, but the second one, *Hypertension Screening* has been deleted. Next to the form name is an icon of an eye, crossed out. Below the form name is the note *Deleted*, along with a date and time.   
+  
+.. _delete-forms-adb:
+      
+Deleting Forms with ``adb``
+-------------------------------
+
+You can also :ref:`delete form instances directly with <deleting-forms-with-adb>` :doc:`Android Debug Bridge <collect-adb>`. They are stored in :file:`sdcard/odk/instances`, with a directory for each instance. 
+
