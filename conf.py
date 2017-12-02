@@ -82,6 +82,9 @@ pygments_style = 'default'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
+# suppress warnings for unknown options
+suppress_warnings = ['ref.option']
+
 
 # -- Options for HTML output ----------------------------------------------
 
@@ -281,6 +284,23 @@ forum_here = """
 https://forum.opendatakit.org/
 
 """
+
+rst_epilog = """
+
+.. |odk-slack| replace:: ODK Slack
+.. _odk-slack: https://opendatakit.slack.com
+
+.. |docs-issue| replace:: issue
+.. _docs-issue: https://github.com/opendatakit/docs/issues 
+
+.. |forum| replace:: ODK Forum
+.. _forum: https://forum.opendatakit.org
+
+.. |contrib-guide| replace:: contributors guide
+.. _contrib-guide: http://docs.opendatakit.org/contributing/
+
+"""
+
 html_context = {'prob_in_doc' : prob_in_doc , 
                 'contri_start' : contri_start , 
                 'join' : join , 

@@ -9,7 +9,7 @@ Authoring Tools and Environment
 
 .. note::
 
-  Developer and authoring tools have lots of options and alternatives. Local tools and workflows presented in this guide are what the author feels would be easiest for a non-coding contributor to set up and use.
+  Developer and authoring tools have lots of options and alternatives. Local tools and workflows presented in this guide are what the author feels would be easiest for a non-coding contributor to set up and use. 
 
 .. _docs-as-code:
 
@@ -262,14 +262,6 @@ On Mac, add the following to your :file:`.bash_profile`
   The path specified above assumes a default installation of Android Studio. You may have put Android Studio in a different location.
 
 .. help for linux and windows users here would be good...
-
-.. _standalone-sdk-tools:
-
-Standalone SDK Tools
-"""""""""""""""""""""""
-
-You can install the SDK Platform tools (including :command:`adb`) as a `standalone package <https://developer.android.com/studio/index.html#command-tools>`_. `This tutorial explains how to setup the standalone SDK tools <https://www.androidcentral.com/installing-android-sdk-windows-mac-and-linux-tutorial>`_.
-
 
 .. _docs-workflow-setup:
 
@@ -1426,12 +1418,86 @@ Use the ``figure`` to markup an image with a caption.
 
     The rest of the indented content will be the caption. This can be a short sentence or several paragraphs. Captions can contain any other rst markup.
 
-.. _inline-images:
+.. _substitutions:
 
-Inline images
+Substitutions
 """""""""""""""
 
-You can add inline images in the document using `substitutions <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#substitution-definitions>`_. Substitution definitions are indicated by an explicit markup start (".. ") followed by a vertical bar, the substitution text (which gets substituted), another vertical bar, whitespace, and the definition block. A substitution definition block may contain inline-compatible directives such as :ref:`image <images>` or `replace <http://docutils.sourceforge.net/docs/ref/rst/directives.html#replace>`_. The following block of code substitutes arrow in the text with the image specified.  
+Substitutions are a useful way to define a value which is needed in many places. Substitution definitions are indicated by an explicit markup start (".. ") followed by a vertical bar, the substitution text (which gets substituted), another vertical bar, whitespace, and the definition block. A substitution definition block may contain inline-compatible directives such as :ref:`image <images>` or `replace <http://docutils.sourceforge.net/docs/ref/rst/directives.html#replace>`_. For more information, refer this `guide <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#substitution-definitions>`_.
+
+You can define the value once like this:
+
+.. code-block:: rst 
+
+  .. |RST| replace:: reStructuredText
+  
+and then reuse it like this:
+
+.. code-block:: rst 
+
+  We use |RST| to write documentation source files.
+  
+Here, ``|RST|`` will be replaced by reStructuredText
+
+You can also create a reference with styled text:
+
+.. code-block:: rst
+  
+  .. |slack| replace:: **ODK Slack**
+  .. slack: https://opendatakit.slack.com
+
+You can use the hyperlink reference by appending a "_" at the end of the vertical bars, for example:
+
+.. code-block:: rst
+
+  You can ask about your problem in |slack|_.
+
+.. |slack| replace:: **ODK Slack**
+.. _slack: https://opendatakit.slack.com  
+
+You can ask about your problem in |slack|_.
+
+The ``rst_epilog`` in :file:`conf.py` contains a list of global substitutions that can be used from any file. The list is given below:
+
+- If you want to create a hyperlink reference for ODK Slack, you can use ``|odk-slack|_``.
+
+  .. code-block:: rst
+
+    You can use |odk-slack|_ to ask your questions.
+  
+  You can use |odk-slack|_ to ask your questions.
+  
+|
+  
+- To create a hyperlink reference for docs related issues, use ``|docs-issue|_``.
+
+  .. code-block:: rst
+  
+    If you find a problem, file an |docs-issue|_.
+	
+  If you find a problem, file an |docs-issue|_.
+  
+|
+ 
+- To create a hyperlink reference for ODK Forum, use ``|forum|_``.
+
+  .. code-block:: rst
+  
+    You can ask support questions in |forum|_.
+	
+  You can ask support questions in |forum|_.
+
+|  
+  
+- To create a hyperlink reference for contributors guide, use ``|contrib-guide|_``.
+
+  .. code-block:: rst
+    
+	Be sure to read the |contrib-guide|_.
+	
+  Be sure to read the |contrib-guide|_.
+
+You can add inline images in the document using substitutions. The following block of code substitutes arrow in the text with the image specified.  
 
 .. code-block:: rst 
 
@@ -1440,11 +1506,11 @@ You can add inline images in the document using `substitutions <http://docutils.
   .. |arrow| image:: /img/{document-subdirectory}/{file}.*
              :alt: Alt text.
 
+			 
 .. _image-names:
 
 Image File Names
 """"""""""""""""""
-
 
 Image file names should:
 
@@ -1496,7 +1562,7 @@ Now, at the command line, from the root directory of the :file:`odk-docs` repo:
   - follow the :ref:`image-names` guidelines
 
 .. warning::
-  Be sure you to not overwrite an existing image.
+  Make sure you do not overwrite an existing image.
 
 .. tip::
   If you have a problem running ss.py, check to make sure your :ref:`Python 3 virtual environment <docs-venv>` is activated.
@@ -1537,6 +1603,19 @@ To pull the video locally just type the following command and hit :command:`Ente
   $ adb pull /sdcard/example.mp4 localsavelocation
 
 where localsavelocation is the location where you want to save your file locally.
+
+.. _downloads:
+
+Downloadable files
+~~~~~~~~~~~~~~~~~~~~
+
+Downloadable files should be put in the :file:`/downloads/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
+
+To place a downloadable file in a document, use the ``download`` directive.
+
+.. code-block:: rst
+
+  See this :download:`example script </downloads/contributing/example_script.py>` to understand the procedure better.
 
 .. _code-samples:
 
