@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/code
+    working_directory: ~/src
     docker:
       - image: circleci/python:latest
     steps:
@@ -30,40 +30,39 @@ jobs:
           path: build
           destination: build
       - persist_to_workspace:
-          root: ~/code
+          root: ~/src
           paths:
             - build/*
             - s3_website.yml
   deploy:
-    working_directory: ~/code
+    working_directory: ~/src
     docker:
       - image: circleci/ruby:latest
     steps:
       - attach_workspace:
-          at: ~/code
+          at: ~/src
       - run:
           name: Install deploy requirements
           command: |
-              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" && "$CIRCLE_BRANCH" == "master" ]]; then \
+              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
                 sudo apt-get install -y openjdk-7-jre-headless
                 gem install s3_website && s3_website install
               fi
       - run:
           name: Push to S3
           command: |
-              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" && "$CIRCLE_BRANCH" == "master" ]]; then \
+              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
                 s3_website push
               fi
 workflows:
   version: 2
-  build_and_deploy:
+  build_deploy:
     jobs:
       - build
       - deploy:
           requires:
             - build
-          # We'd prefer to filter by username and remove the if/fi above, but username filtering is not supported in workflows.
-          # We still filter by branch to save CircleCI from launching deploy containers on pull request builds that shouldn't deploy.
+          # We'd like to also filter by username and remove the if/fi above, but username filtering is not supported in CircleCI
           filters:
             branches:
               only: master
