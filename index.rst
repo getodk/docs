@@ -8,8 +8,8 @@ Welcome to Open Data Kit's documentation!
 
 :dfn:`Open Data Kit` (ODK) is a suite of open source applications that help organizations engaged in enumerator-mediated data collection. ODK tools assist with the collection and management of survey data using mobile forms. These include the primary ODK applications:
 
-- **ODK Collect**, an Android mobile app that replaces paper-based forms.
-- **ODK Aggregate**, a server-side data storage and analysis tool.
+- :doc:`collect-intro`, an Android mobile app that replaces paper-based forms.
+- :doc:`aggregate-guide`, a server-side data storage and analysis tool.
 
 Also part of the ODK suite are several tools that support form creation and data management:
 

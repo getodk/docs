@@ -38,6 +38,7 @@ caption .headerlink::after {
 .rst-content img, .rst-content video {
     max-height: 85vh !important;
     width: auto !important;
+    margin-bottom: 24px;
 }
 
 .rst-content img.side-by-side {
