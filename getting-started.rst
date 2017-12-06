@@ -25,7 +25,7 @@ This requires:
   While this is the *typical* use pattern, it is not the only way to do things. For example:
 
   - Forms can be created using tools other than Build or XLSForm
-  - Forms can be uploaded directly to Collect, without using Aggregate
+  - Forms can be transfered directly to Collect, without using Aggregate
 
   ODK is a very flexible set of tools, and organizations will find their own best practices for adopting it.
 
