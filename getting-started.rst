@@ -40,7 +40,7 @@ For other installation options, see :doc:`collect-install`.
 
 .. _installing-aggregate:
 
-Installing Aggregate
+Install Aggregate
 ---------------------
 
 The easiest, recommended way to setup an ODK Aggregate instance is to use `Google App Engine <https://cloud.google.com/appengine/>`_ and the `ODK Aggregate Installer <https://opendatakit.org/downloads/download-category/aggregate/>`_.
