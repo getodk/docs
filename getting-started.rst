@@ -68,7 +68,7 @@ The quickest and easiest way to start using your own survey forms is to create t
 
 .. tip::
 
-  - ODK Build is a great tool for simple forms. For more complex forms, try `ODK XLSForm <http://xlsform.org/>`_.
+  - ODK Build is a great tool for simple forms. For more complex forms, try `XLSForm <http://xlsform.org/>`_.
   - ODK Build can also be run locally. `Desktop versions are available for download here <https://opendatakit.org/downloads/download-category/build/>`_.
 
 .. link to list of more form design options
