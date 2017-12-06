@@ -185,3 +185,17 @@ div[class^='wrap'] pre {
 div[class^='unwrap'] pre {
     white-space: pre;
 }
+
+.figure{
+  display: table;
+  border: 2px solid;
+  border-color: black;
+}
+
+.figure p.caption{
+  padding: 10px;
+  display: table-caption;
+  caption-side: bottom;
+  background-color: black;
+  color: white;
+}
