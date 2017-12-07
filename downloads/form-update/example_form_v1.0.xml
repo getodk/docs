@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>Example_form</h:title>
+    <model>
+      <instance>
+        <example_form id="example_id" version="2017120700">
+          <name/>
+          <sid/>
+          <age/>
+          <course/>
+          <course_cnt/>
+          <marks/>
+          <total/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </example_form>
+      </instance>
+      <bind nodeset="/example_form/name" required="true()" type="string"/>
+      <bind nodeset="/example_form/sid" required="true()" type="int"/>
+      <bind constraint=".&lt;=18" jr:constraintMsg="You should be below 18 years to be eligible for the survey." nodeset="/example_form/age" required="true()" type="int"/>
+      <bind nodeset="/example_form/course" required="true()" type="select1"/>
+      <bind constraint=".&gt;=1 and .&lt;=6" jr:constraintMsg="You should choose atleast 1 course and atmost 6 courses." nodeset="/example_form/course_cnt" relevant=" /example_form/course !='none'" required="true()" type="int"/>
+      <bind constraint=" /example_form/marks &lt;= /example_form/total " jr:constraintMsg="You cannot obtain more than maximum marks." nodeset="/example_form/marks" relevant=" /example_form/course !='none'" required="true()" type="int"/>
+      <bind calculate=" /example_form/course_cnt *100" nodeset="/example_form/total" relevant=" /example_form/course_cnt !=''" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/example_form/meta/instanceID" readonly="true()" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/example_form/name">
+      <label>Enter your name</label>
+    </input>
+    <input ref="/example_form/sid">
+      <label>Enter your student id</label>
+    </input>
+    <input ref="/example_form/age">
+      <label>Enter your age</label>
+    </input>
+    <select1 ref="/example_form/course">
+      <label>In which department have you chosen courses?</label>
+      <item>
+        <label>PHY</label>
+        <value>Physics</value>
+      </item>
+      <item>
+        <label>MAT</label>
+        <value>Maths</value>
+      </item>
+      <item>
+        <label>CHEM</label>
+        <value>Chemistry</value>
+      </item>
+      <item>
+        <label>none</label>
+        <value>none</value>
+      </item>
+    </select1>
+    <input ref="/example_form/course_cnt">
+      <label>Enter number of courses you have chosen</label>
+    </input>
+    <input ref="/example_form/marks">
+      <label>Enter total marks obtained in all courses</label>
+    </input>
+  </h:body>
+</h:html>
