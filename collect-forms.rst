@@ -24,8 +24,9 @@ If you have :doc:`connected ODK Collect to a server  <collect-connect>` or :doc:
 
 1. Select :guilabel:`Get blank forms` on the app home screen to browse available forms and download them to your device.
 
-  .. image:: /img/collect-forms/main-menu-highlight-get-blank-form.* 
-    :alt: The Main Menu of the Collect app. The option *Get Blank Form* is circled in red.
+   .. image:: /img/collect-forms/main-menu-highlight-get-blank-form.* 
+     :alt: The Main Menu of the Collect app. The option *Get Blank Form* is circled in red.
+     
 
   
 2. Find and download forms.
