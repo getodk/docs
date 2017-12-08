@@ -17,6 +17,11 @@ Certain changes which don't involve adding or removing a question can be made wi
 
 For such changes you can update the version and re-upload the form. 
 
+.. note::
+
+  - If you update media for your form, you don't need to change the version.
+  - If you have used external select and update the choices in external :file:`.csv` file, you don't need to change the version. For more details on using external choices in your form, see `this <http://xlsform.org/#external>`_
+
 .. tip::
 
   Form version in XLSForm is a string of up to 10 numbers that describes this revision. Revised form definitions must have alphabetically greater versions than previous ones. A common convention is to use strings of the form **yyyymmddrr**. For example, 2017120701 is the 1st revision from Dec 7th, 2017. 
@@ -116,7 +121,7 @@ These are the :file:`.xlsx` files for the above forms:
    :alt: Image showing new version 2017120708 selected in the list of forms to be downloaded.
    :class: device-screen-vertical
 
-  Both versions of the form exist in the device of the user and the user will be allowed to fill a older version and submit the form to the Aggregate server. 
+  Both versions of the form exist in the device of the user and the user will be allowed to fill an older version and submit the form to the Aggregate server. 
 
   .. image:: /img/form-update/two-version-form.png
    :alt: Image showing two versions 2017120700 and 2017120701 in the form list.
