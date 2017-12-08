@@ -11,6 +11,9 @@ Certain changes which don't involve adding or removing a question can be made wi
 - Changing the text or translation of a label
 - Changing validations, calculations, relevants
 - Changing options for a select_one or select_multiple
+- Changing the order of questions
+- Adding translations
+- Update media for your form
 
 For such changes you can update the version and re-upload the form. 
 
@@ -45,10 +48,12 @@ For example:
   :header: "form_title", "form_id", "default_language", "version"    
   :widths: auto
 
-  "Example_form", "example_id", "2017120700"
+  "Example_form", "example_id", "English", "2017120700"
 
 If you want to make the following changes to the above form:
 
+- Add a Spanish translation
+- Change the relative order of first and second question
 - Change age constraint from **18** to **20**
 - Change the sid field to not required
 - Change label for third question from **In which department have you chosen courses?** to **Name of Department**.
@@ -61,15 +66,15 @@ If you want to make the following changes to the above form:
 These changes can be made as:
 
 .. csv-table:: **Survey**  
-  :header: "type", "name", "label", "constraint", "constraint_message", "relevant", "read_only", "default", "required", "calculation"
+  :header: "type", "name", "label::English (en)", "label::Español (es)", "constraint", "constraint_message", "relevant", "read_only", "default", "required", "calculation"
   :widths: auto
 
-  "text", "name", "Enter your name", "", "", "", "", "", "", "yes", ""
-  "integer", "sid", "Enter your student id", "", "", "", "", "", "", "no", ""
-  "integer", "age", "Enter your age", ".<=20", "You should be below 20 years to be eligible for the survey. ", "", "", "", "", "yes", ""
-  "select_one dept_name", "course", "Name of Department", "", "", "", "", "", "yes", ""
-  "integer", "course_cnt", "Enter number of courses you have chosen", "1<=.<=6", "You should choose atleast 1 course and atmost 6 courses.", "${course}!='none'", "", "", "yes", ""         
-  "integer", "marks", "Enter total marks obtained in all courses", "", "", "${course}!='none'", "", "", "yes", ""
+  "integer", "sid", "Enter your student id", "Ingrese su identificación de estudiante", "", "", "", "", "", "no", ""
+  "text", "name", "Enter your name", "Introduzca su nombre", "", "", "", "", "", "", "yes", ""
+  "integer", "age", "Enter your age", "Introduzca su edad", ".<=20", "You should be below 20 years to be eligible for the survey. ", "", "", "", "", "yes", ""
+  "select_one dept_name", "course", "Name of Department", "Nombre del departamento", "", "", "", "", "", "yes", ""
+  "integer", "course_cnt", "Enter number of courses you have chosen", "Ingresa el número de cursos que has elegido", "1<=.<=6", "You should choose atleast 1 course and atmost 6 courses.", "${course}!='none'", "", "", "yes", ""         
+  "integer", "marks", "Enter total marks obtained in all courses", "Ingrese las calificaciones totales obtenidas en todos los cursos", "", "", "${course}!='none'", "", "", "yes", ""
   "calculate", "total", "", "", "", "${course_cnt}!=''", "", "", "", "${course}!='none' and ${course_cnt}*50"
 
 .. csv-table:: **Choices**
@@ -86,7 +91,7 @@ These changes can be made as:
   :header: "form_title", "form_id", "default_language", "version"    
   :widths: auto
 
-  "Example_form", "example_id", "2017120701"
+  "Example_form", "example_id", "English", "2017120701"
 
 These are the :file:`.xml` files for the above forms:
 
@@ -102,6 +107,20 @@ These are the :file:`.xlsx` files for the above forms:
 
   You cannot change the question type or name, form id and title. 
   Example: In above form you cannot change the type from **select_one** to **select_multiple** or change name from **dept** to **department**.
+
+.. note::
+
+  ODK Collect treats different versions of the same form completely independently. It won't explicitly notify the users of the existence of new versions. When a user tries to get new blank forms, a form with updated version will be selected by default in the list but there will be no explicit notification unless a user tries to get new blank forms.
+
+  .. image:: /img/form-update/get-new-version.png
+   :alt: Image showing new version 2017120708 selected in the list of forms to be downloaded.
+   :class: device-screen-vertical
+
+  Both versions of the form exist in the device of the user and the user will be allowed to fill a older version and submit the form to the Aggregate server. 
+
+  .. image:: /img/form-update/two-version-form.png
+   :alt: Image showing two versions 2017120700 and 2017120701 in the form list.
+   :class: device-screen-vertical
 
 .. _replace-form:
 
