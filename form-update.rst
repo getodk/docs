@@ -27,9 +27,9 @@ For example:
   :header: "type", "name", "label", "constraint", "constraint_message", "relevant", "read_only", "default", "required", "calculation"
   :widths: auto
 
-  "text", "name", "Enter your name", "", "", "", "", "", "", "yes", ""
-  "integer", "sid", "Enter your student id", "", "", "", "", "", "", "yes", ""
-  "integer", "age", "Enter your age", ".<=18", "You should be below 18 years to be eligible for the survey. ", "", "", "", "", "yes", ""
+  "text", "name", "Enter your name", "", "", "", "", "", "yes", ""
+  "integer", "sid", "Enter your student id", "", "", "", "", "", "yes", ""
+  "integer", "age", "Enter your age", ".<=18", "You should be below 18 years to be eligible for the survey.", "", "", "", "yes", ""
   "select_one dept", "course", "In which department have you chosen courses?", "", "", "", "", "", "yes", ""
   "integer", "course_cnt", "Enter number of courses you have chosen", "1<=.<=6", "You should choose atleast 1 course and atmost 6 courses.", "${course}!='none'", "", "", "yes", ""         
   "integer", "marks", "Enter total marks obtained in all courses", "", "", "${course}!='none'", "", "", "yes", ""
@@ -70,12 +70,12 @@ These changes can be made as:
   :widths: auto
 
   "integer", "sid", "Enter your student id", "Ingrese su identificación de estudiante", "", "", "", "", "", "no", ""
-  "text", "name", "Enter your name", "Introduzca su nombre", "", "", "", "", "", "", "yes", ""
-  "integer", "age", "Enter your age", "Introduzca su edad", ".<=20", "You should be below 20 years to be eligible for the survey. ", "", "", "", "", "yes", ""
+  "text", "name", "Enter your name", "Introduzca su nombre", "", "", "", "", "", "yes", ""
+  "integer", "age", "Enter your age", "Introduzca su edad", ".<=20", "You should be below 20 years to be eligible for the survey.", "", "", "", "yes", ""
   "select_one dept_name", "course", "Name of Department", "Nombre del departamento", "", "", "", "", "", "yes", ""
   "integer", "course_cnt", "Enter number of courses you have chosen", "Ingresa el número de cursos que has elegido", "1<=.<=6", "You should choose atleast 1 course and atmost 6 courses.", "${course}!='none'", "", "", "yes", ""         
   "integer", "marks", "Enter total marks obtained in all courses", "Ingrese las calificaciones totales obtenidas en todos los cursos", "", "", "${course}!='none'", "", "", "yes", ""
-  "calculate", "total", "", "", "", "${course_cnt}!=''", "", "", "", "${course}!='none' and ${course_cnt}*50"
+  "calculate", "total", "", "", "", "", "${course}!='none' and ${course_cnt}!=''", "", "", "", "${course_cnt}*50"
 
 .. csv-table:: **Choices**
   :header: "list name", "name", "label"
