@@ -96,11 +96,3 @@ metadata Directory
 
  The databases present in the :file:`metadata` folder are not automatically regenerated, merged or combined, and if damaged can cause some problems, for example, if you delete :file:`instances.db` the sent forms would be available again for submission.
    
-
-   
-  
-   
-  
-	
-
-	
