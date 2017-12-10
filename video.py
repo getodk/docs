@@ -13,22 +13,26 @@ def visit_video_node(self, node):
     else:   
        os.makedirs("./build/_videos/")
 
-    vsrc = node["id"]
+    vsrc = node["uri"]
     spth = ".%s" % vsrc
     dpth = "./build/_videos/%s" %vsrc[vsrc.rfind('/')+1:]
 
     shutil.copyfile(spth, dpth)
+
+    src = "../_videos/%s" % vsrc[vsrc.rfind('/')+1:]
         
     attrs = {
+            "src":"%s" %src,
             "controls":"controls",
             "muted":"muted",
-            "style": "max-width:100%",
+            "style":"max-width:100%",
         }
-
-    src = "\"../_videos/%s\"" % vsrc[vsrc.rfind('/')+1:]
+   
     
+    alt = node["alt"]
+                                                                                                                                
     self.body.append(self.starttag(node, "video", **attrs))
-    self.body.append("<source src = %s>" % src)
+    self.body.append("<p> %s </p>" %alt)
     self.body.append("</video>")
   
 def visit_video_other(self, node):
@@ -43,10 +47,19 @@ class Video(Directive):
     required_arguments = 1
     optional_arguments = 0
     final_argument_whitespace = True
-    option_spec = {}
+    option_spec = { 'alt': directives.unchanged,
+    }
 
     def run(self):
-        return [video_node(id = self.arguments[0])]
+
+        alt = "Video cannot be played."
+
+        if "alt" in self.options:
+            alt = self.options["alt"]
+
+        uri = directives.uri(self.arguments[0])
+
+        return [video_node(uri = uri, alt = alt)]
 
 def setup(app):
 
