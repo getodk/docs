@@ -4,6 +4,8 @@ Structure of ODK Collect directory in Android file system
 
 After installation of ODK collect, you can try out the app by :ref:`downloading blank example forms <in-app-get-blank-forms>`, as soon as you download a blank form you would be able see odk directory in the internal storage or external storage depending on the settings of your android device. The structure of the directory is explained below.
 
+.. _directory-structure:
+
 Directory Structure
 ----------------------
 
@@ -34,6 +36,8 @@ Inside :file:`ODK` directory, there are four subdirectories which are as follows
   :alt: Image showing folders inside odk directory
   :class: device-screen-vertical
 
+.. _forms-directory:
+
 forms Directory
 ~~~~~~~~~~~~~~~~~
 
@@ -46,6 +50,8 @@ forms Directory
 .. tip::
 
   If your :file:`.csv` files contain very sensitive data, you may not want to upload that data to your server. Instead, you can upload a blank :file:`.csv` file as part of your form, then replace it with the real :file:`.csv` file by hand-copying that file onto each of your devices. You can hand-copy your :file:`.csv` file in media subdirectory associated with your form in this case Sample-form-media directory. That way, sensitive pre-loaded data never passes through the server.
+
+.. _instances-directory:
 
 instances Directory
 ~~~~~~~~~~~~~~~~~~~~~
@@ -60,6 +66,8 @@ instances Directory
 
 Submissions are located under this directory. This directory will contain subdirectories with names of the form: :file:`formID_yyyy-mm-dd_hh-MM-ss`. Within each of these subdirectories are the submission data file (named: :file:`formID_yyyy-mm-dd_hh-MM-ss.xml`),and associated data files for the images, audio clips, video clips, etc. linked with this submission.
 
+.. _layers-directory:
+
 layers Directory
 ~~~~~~~~~~~~~~~~~~~
 
@@ -72,6 +80,8 @@ layers Directory
   :class: device-screen-vertical
 
 :file:`layers` directory contains offline map tiles which are in the subdirectories of :file:`/odk/layers`, here the subdirectory is Sample layer. Under the Sample layer subdirectory is sample *MapBox mbtile* file.
+
+.. _meta-directory:
 
 metadata Directory
 ~~~~~~~~~~~~~~~~~~~~
