@@ -38,5 +38,5 @@ If you need a different version of Collect, you can download from the web and in
 
 .. tip::
 
-  Developers can also `install ODK Collect on an Android emulator <https://github.com/opendatakit/opendatakit/wiki/DevEnv-Setup>`_. However, this can be slow and buggy and is not recommended.
+  You can also `install ODK Collect on an Android emulator <https://github.com/opendatakit/opendatakit/wiki/DevEnv-Setup>`_. However, this can be slow and is only recommended for developers actively working on Collect.
 
