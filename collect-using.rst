@@ -1,9 +1,7 @@
 Using ODK Collect
 ==================
 
-.. note::
-
-  This page offers an in-depth guide to using the Collect App.
+.. admonition:: This is an in-depth guide to using the Collect App
   
   To learn about the main features and try out Open Data Kit, :doc:`see the Getting Started Guide for a quick walk-through. <getting-started>`
 

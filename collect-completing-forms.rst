@@ -8,17 +8,15 @@ ODK Collect is used by :term:`enumerators <enumerator>` to complete survey :doc:
   Before you can fill out a form, you need to :ref:`load at least one form into Collect <loading-forms-into-collect>`.
   
   
-Select :guilabel:`Fill Blank Form` from the Main Menu
-----------------------------------------------------------
+1. Select :guilabel:`Fill Blank Form` from the Main Menu
 
-.. image:: /img/collect-completing-forms/main-menu-fill-blank-form.* 
-  :alt: The Main Menu of the Collect app. The first menu option, *Fill Blank Form*, is circled in red.
+   .. image:: /img/collect-completing-forms/main-menu-fill-blank-form.* 
+     :alt: The Main Menu of the Collect app. The first menu option, *Fill Blank Form*, is circled in red.
 
-Select a form to fill out from the form list
-------------------------------------------------
+2. Select a form to fill out from the form list
 
-.. image:: /img/collect-completing-forms/fill-blank-forms.* 
-  :alt: The Fill Blank Form menu in the Collect app. Several form titles are listed: *All widgets*, *Demo Survey*, *Form Design Tips by Nafundi*, *Hypertension Screening*, *Sample XLSForm*.
+   .. image:: /img/collect-completing-forms/fill-blank-forms.* 
+     :alt: The Fill Blank Form menu in the Collect app. Several form titles are listed: *All widgets*, *Demo Survey*, *Form Design Tips by Nafundi*, *Hypertension Screening*, *Sample XLSForm*.
 
   
 Answering questions
