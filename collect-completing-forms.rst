@@ -41,7 +41,6 @@ Questions with response choices can be answered by touching the selected items. 
 
   Radio buttons accept one selection.
   
-
 .. figure:: /img/collect-completing-forms/multi-select.gif 
   :alt: A question screen with check boxes (multi-select).
   
@@ -107,20 +106,30 @@ Left and Right Buttons
 
 If you prefer Forward and Back buttons for navigation, you can switch to that in :menuselection:`⋮ -> General Settings -> User Interface`.
 
-.. image:: /img/collect-completing-forms/question-screen-highlight-kebab.* 
-  :alt: A question screen in the Collect app. The Action Menu ("kebab") in the top-right corner is circled in red.
+1. Open the *Action Menu* (:menuselection:`⋮`)
+
+   .. image:: /img/collect-completing-forms/question-screen-highlight-kebab.* 
+     :alt: A question screen in the Collect app. The Action Menu ("kebab") in the top-right corner is circled in red.
   
-.. image:: /img/collect-completing-forms/question-screen-highlight-general-settings.* 
-  :alt: A question screen in the Collect app. The Action Menu is expanded and the option *General Settings* is circled in red.
+2. Select :menuselection:`General Settings`.
+
+   .. image:: /img/collect-completing-forms/question-screen-highlight-general-settings.* 
+     :alt: A question screen in the Collect app. The Action Menu is expanded and the option *General Settings* is circled in red.
   
-.. image:: /img/collect-completing-forms/general-settings-highlight-user-interface.* 
-  :alt: The General Settings menu of the Collect app. The *User Interface* item is circled in red.
+3. Select :menuselection:`User Interface`
+
+   .. image:: /img/collect-completing-forms/general-settings-highlight-user-interface.* 
+     :alt: The General Settings menu of the Collect app. The *User Interface* item is circled in red.
   
-.. image:: /img/collect-completing-forms/user-interface-highlight-navigation.* 
-  :alt: The User Interface menu of the Collect app. The *Navigation* item is circled in red.
-  
-.. image:: /img/collect-completing-forms/ui-navigation-buttons.* 
-  :alt: The User Interface menu of the Collect app, as displayed in the previous image. There is now a modal titled *Navigation*, with radio buttons (single select) for: *Use horizontal swipes*, *Use forward/back buttons*, and *Use swipes and buttons*. The option for *Use forward/back buttons* is selected and circled in red.
+4. Select :menuselection:`Navigation`
+
+   .. image:: /img/collect-completing-forms/user-interface-highlight-navigation.* 
+     :alt: The User Interface menu of the Collect app. The *Navigation* item is circled in red.
+
+5. Update your form navigation preference  
+
+   .. image:: /img/collect-completing-forms/ui-navigation-buttons.* 
+     :alt: The User Interface menu of the Collect app, as displayed in the previous image. There is now a modal titled *Navigation*, with radio buttons (single select) for: *Use horizontal swipes*, *Use forward/back buttons*, and *Use swipes and buttons*. The option for *Use forward/back buttons* is selected and circled in red.
   
 .. image:: /img/collect-completing-forms/question-screen-with-buttons.* 
   :alt: A question screen in the Collect App. There are now two buttons below the question text, with left (backwards) and right (forwards) buttons.
