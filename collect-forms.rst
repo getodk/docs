@@ -150,8 +150,8 @@ Eventually, you will want to upload completed form instances for analysis and da
 
 Doing this from within the Collect app marks the forms as :formstate:`sent`. :formstate:`Sent` forms are no longer editable, but they remain viewable until they are deleted. 
 
-Upload to Aggregate or Google Drive
-------------------------------------
+Uploading to Aggregate or Google Drive
+----------------------------------------
 
 If you are connected to :doc:`an ODK Aggregate server  <collect-connect-aggregate>` or :doc:`Google Drive Account  <collect-connect-google>`, use :guilabel:`Send Finalized Forms` to upload :formstate:`Finalized` form instances. 
 
@@ -166,14 +166,14 @@ If you are connected to :doc:`an ODK Aggregate server  <collect-connect-aggregat
   - Define empty cell in your tests to be a cell that is either empty or contains a single space.
 
 
-Pull forms with Briefcase
---------------------------
+Pulling forms with Briefcase
+-------------------------------
 
 For local form management, use :doc:`ODK Briefcase <briefcase-forms>` to pull :formstate:`Finalized` form instances to your local computer.
 
 
-Pull forms with ``adb``
-------------------------
+Pulling forms with ``adb``
+----------------------------
 
 You can copy form instances from the device using :command:`adb pull`, however this will not update the state of the form to :formstate:`Sent`.
 
