@@ -12,7 +12,9 @@ Install from Google Play Store (**Recommended**)
 Install Manually
 -------------------
 
-You can also download from the web and install manually.
+The Google Play store always has the latest stable release.
+
+If you need a different version of Collect, you can download from the web and install manually.
 
 1. From your device's :guilabel:`Settings`, choose :menuselection:`Security`.
 
