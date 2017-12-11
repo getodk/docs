@@ -1,15 +1,19 @@
 Using ODK Collect
 ==================
 
+.. note::
+
+  This page offers an in-depth guide to using the Collect App.
+  
+  To learn about the main features and try out Open Data Kit, :doc:`see the Getting Started Guide for a quick walk-through. <getting-started>`
+
 ODK Collect is used by :term:`enumerators <enumerator>` to collect survey data by filling out :doc:`forms <form-design-intro>` with :term:`participants <participant>`. 
 
 To use ODK Collect:
 
-- :ref:`Get blank forms <loading-forms-into-collect>` from :ref:`ODK Aggregate Server or Google Drive <in-app-get-blank-forms>`
-- :doc:`Fill out surveys <collect-completing-forms>` with participants
-- :ref:`Upload completed surveys <uploading-forms>` to Aggregate or Google Drive
-
-:doc:`See the Getting Started Guide for a quick walk-through. <getting-started>`
+1. :ref:`Get blank forms <loading-forms-into-collect>` from :ref:`ODK Aggregate Server or Google Drive <in-app-get-blank-forms>`
+2. :doc:`Fill out surveys <collect-completing-forms>` with participants
+3. :ref:`Upload completed surveys <uploading-forms>` to Aggregate or Google Drive
 
 -----
 
