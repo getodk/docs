@@ -121,19 +121,17 @@ Editing *Saved* forms
 
 :formstate:`Completed` (filled-in) :term:`form instances <instance>` can be edited after they have been saved.
 
-Select :guilabel:`Edit Saved Form`
------------------------------------- 
+1. Select :guilabel:`Edit Saved Form`
 
-.. image:: /img/collect-forms/main-menu-edit-saved.* 
-  :alt: The Main Menu of the Collect app. The option *Edit Saved Menu* is circled in red.
+   .. image:: /img/collect-forms/main-menu-edit-saved.* 
+     :alt: The Main Menu of the Collect app. The option *Edit Saved Menu* is circled in red.
 
-Select a form by name
------------------------
+2. Select a form by name
 
-.. image:: /img/collect-forms/edit-saved-form.* 
-  :alt: The Edit Saved Form screen. Several completed forms are listed by name.
+   .. image:: /img/collect-forms/edit-saved-form.* 
+     :alt: The Edit Saved Form screen. Several completed forms are listed by name.
 
-This will reopen the form instance, which you are then free to edit. Form instances are list by name, which is one reason it can be helpful to :ref:`name the form instance after filling it out <name-form-instance>`.
+This will reopen the form instance, which you are then free to edit. Form instances are listed by name, which is one reason it can be helpful to :ref:`name the form instance after filling it out <name-form-instance>`.
 
 .. note:: 
 
