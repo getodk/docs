@@ -207,3 +207,10 @@ div[class^='unwrap'] pre {
 .has-details {
     margin-bottom: 12px;
 }
+
+
+/* Utility Classes */
+
+.block {
+    display: block;
+}

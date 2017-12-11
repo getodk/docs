@@ -24,7 +24,8 @@ ODK Collect is used by :term:`enumerators <enumerator>` to complete survey :doc:
 Answering questions
 -----------------------
 
-.. rubric:: Free response
+Free response
+~~~~~~~~~~~~~~~
 
 Free-entry text and number answers are entered using the device keyboard. The appropriate keyboard (letters or numbers) opens when the question appears.
 
@@ -34,7 +35,8 @@ Free-entry text and number answers are entered using the device keyboard. The ap
     <source src="/collect-completing-forms/keyboard-popup.mp4">
   </video>
 
-.. rubric:: Select response
+Select response
+~~~~~~~~~~~~~~~~~
 
 Questions with response choices can be answered by touching the selected items. These include radio buttons (single-select), dropdowns (single-select), check boxes (multi-select), and images choices (single and multi-select).
 
@@ -53,7 +55,8 @@ Questions with response choices can be answered by touching the selected items. 
   
   Select images by touching them.
 
-.. rubric:: Capture answer from device
+Capture answer from device
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Many question formats launch additional features, form widgets, or apps to collect an answer. This includes audio and video recording, signature collection, photo capture, date and time widgets, geolocation widgets, and barcodes. 
 
@@ -77,12 +80,13 @@ In all cases, buttons below the question text will guide you through providing t
 
 
 Removing answers
-~~~~~~~~~~~~~~~~~~~
+-------------------
 
-To **remove a response**, :gesture:`Long Press` on the :term:`question label`. 
+To remove a response, :gesture:`Long Press` on the :term:`question label`. 
 
 .. image:: /img/collect-completing-forms/long-press-to-remove.gif 
-  :alt: To remove an answer to a question, long press the question label and follow the on-screen prompts. 
+  :alt: To remove an answer to a question, long press the question label and follow the on-screen prompts.
+  :class: details
 
   
 Navigating the form 
@@ -95,7 +99,7 @@ To move between questions, :gesture:`Swipe Left or Right`.
 
 .. image:: /img/collect-completing-forms/swiping.* 
   :alt: A question screen in the Collect App. Overlaid on the screen is an icon of a hand with extended finger and arrows pointing left and right, representing a swiping gesture.
-
+  :class: block
 
 .. raw:: html
 
