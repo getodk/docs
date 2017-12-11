@@ -42,5 +42,4 @@ Connecting to a Google Drive Account
 
    You have the option to specify a :guilabel:`Fallback submisison URL`. This is the URL of a Google sheet to which form submissions will be posted if the submitted form does not specify it own URL.
 
-   If your forms will specify a submission URL, you can leave this setting empty. Otherwise, enter the URL of a Google sheet you would like to use.  
-    
+   If your forms will specify a submission URL, you can leave this setting empty. Otherwise, enter the URL of a Google sheet you would like to use.    

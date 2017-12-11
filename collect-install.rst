@@ -14,21 +14,21 @@ Install Manually
 
 You can also download from the web and install manually.
 
-- From your device's :guilabel:`Settings`, choose :menuselection:`Security`.
+1. From your device's :guilabel:`Settings`, choose :menuselection:`Security`.
 
-  - Make sure *Unknown Sources* is checked.
-  - (On older versions of Android, this setting is in :menuselection:`Applications` rather than :menuselection:`Security`)
+   - Make sure *Unknown Sources* is checked.
+   - (On older versions of Android, this setting is in :menuselection:`Applications` rather than :menuselection:`Security`)
 
-- Open a web browser on your phone.
-- Navigate to https://opendatakit.org/downloads/download-category/collect/  and download the ODK Collect APK.
-- In the download window, you will see ODK_Collect_vN.N.N.apk. - Select it to download the file.
+2. Open a web browser on your phone.
+3. Navigate to https://opendatakit.org/downloads/download-category/collect/  and download the ODK Collect APK.
+4. In the download window, you will see ODK_Collect_vN.N.N.apk. - Select it to download the file.
 
-  - On older devices, the APK will automatically install after you approve the security settings.
-  - On newer devices, you must go to the download list, rename the file to restore the .apk extension (the extension will have been renamed to .man during the download process), then click on it to install it.
+   - On older devices, the APK will automatically install after you approve the security settings.
+   - On newer devices, you must go to the download list, rename the file to restore the .apk extension (the extension will have been renamed to .man during the download process), then click on it to install it.
 
-- You can also `download the ODK Collect APK <https://opendatakit.org/downloads/download-category/collect/>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
-
---------
+.. note::
+  
+  You can also `download the ODK Collect APK <https://opendatakit.org/downloads/download-category/collect/>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
 
 .. note::
 
