@@ -6,7 +6,7 @@ from sphinx.util.compat import Directive
 
 class video_node(nodes.General, nodes.Element): pass
 
-def visit_video_node(self, node):
+def visit_video_html(self, node):
 
     if os.path.exists("./build/_videos"):
        pass
@@ -35,9 +35,11 @@ def visit_video_node(self, node):
     self.body.append("<p> %s </p>" %alt)
     self.body.append("</video>")
   
-def visit_video_other(self, node):
-    pass
-
+def visit_video_nonhtml(self, node):
+    self.visit_attention(node)
+    self.body.append(node["alt"])
+    self.depart_attention(node)
+    
 def depart_video_node(self, node):
     pass
 
@@ -52,10 +54,10 @@ class Video(Directive):
 
     def run(self):
 
-        alt = "Video cannot be played."
+        alt = "Video cannot be played!"
 
         if "alt" in self.options:
-            alt = self.options["alt"]
+            alt = alt + '\n' + self.options["alt"]
 
         uri = directives.uri(self.arguments[0])
 
@@ -63,8 +65,9 @@ class Video(Directive):
 
 def setup(app):
 
-    app.add_node(video_node, html = (visit_video_node, depart_video_node), 
-    	                     latex = (visit_video_other, depart_video_node),
-    	                     text = (visit_video_other, depart_video_node),
+    app.add_node(video_node, html = (visit_video_html, depart_video_node), 
+    	                     latex = (visit_video_nonhtml, depart_video_node),
+                             epub = (visit_video_nonhtml, depart_video_node),
+                             text = (visit_video_nonhtml, depart_video_node),
     	                     )
     app.add_directive("video", Video)
