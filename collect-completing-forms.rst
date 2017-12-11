@@ -18,6 +18,8 @@ ODK Collect is used by :term:`enumerators <enumerator>` to complete survey :doc:
    .. image:: /img/collect-completing-forms/fill-blank-forms.* 
      :alt: The Fill Blank Form menu in the Collect app. Several form titles are listed: *All widgets*, *Demo Survey*, *Form Design Tips by Nafundi*, *Hypertension Screening*, *Sample XLSForm*.
 
+3. Once you have :ref:`completed the form <completing-form>`, prepare it for upload by :ref:`finalizing it <finalize-form>`.
+
   
 Answering questions
 -----------------------
