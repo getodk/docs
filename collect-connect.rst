@@ -28,6 +28,6 @@ Other options
 
 Managing forms from an ODK Aggregate server or Google Drive is typical. However, there are other ways to use ODK Collect.
 
- - :ref:`upload blank forms directly to your device <loading-forms-directly>`
- - :doc:`download completed forms directly with adb <collect-adb>`
- - :doc:`use ODK Briefcase <briefcase-forms>`
+ - :ref:`Upload blank forms directly to your device <loading-forms-directly>`
+ - :doc:`Download completed forms directly with adb <collect-adb>`
+ - :doc:`Use ODK Briefcase <briefcase-forms>`
