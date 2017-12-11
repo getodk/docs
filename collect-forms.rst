@@ -88,15 +88,19 @@ Loading forms from device storage
   
 You can also download forms to your device via a web browser, and move them to the :file:`odk/forms/` directory, using the device's file manager (:menuselection:`Settings -> Storage & USB -> Explore`).
 
-.. figure:: /img/collect-forms/device-settings-storage.* 
-  :alt: The Settings menu on an Android Device. The option *Storage and USB* is circled in red.
-  
-  The settings menu may look different on your device.
+1. Go to the Settings menu (:guilabel:`⚙`) on your device and find :menuselection:`Storage & USB`
 
-.. figure:: /img/collect-forms/device-settings-storage-explore.* 
-  :alt: The Internal Storage settings menu on an Android device. The option *Explore* is circled in red.
+   .. figure:: /img/collect-forms/device-settings-storage.* 
+     :alt: The Settings menu on an Android Device. The option *Storage and USB* is circled in red.
   
-  The :guilabel:`Explore` option opens a file manager that you can use to move forms into Collect.
+     The settings menu may look different on your device.
+
+2. From the internal storage screen, select :menuselection:`Explore` to open the file manager.
+     
+   .. figure:: /img/collect-forms/device-settings-storage-explore.* 
+     :alt: The Internal Storage settings menu on an Android device. The option *Explore* is circled in red.
+  
+     The :guilabel:`Explore` option opens a file manager that you can use to move forms into Collect.
 
 Loading form media
 ----------------------
