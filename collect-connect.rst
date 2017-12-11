@@ -5,7 +5,7 @@ ODK Collect is used to complete surveys with participants. But if you want to re
 
 .. note::
 
-  When you first install Collect, it connects to the `ODK Aggregate Demo server <https://opendatakit.appspot.com/Aggregate.html>`_. This allows you to try out the app by :ref:`downloading blank example forms <in-app-get-blank-forms>`, :doc:`filling them out  <collect-completing-forms>`, and :ref:`uploading completed forms <uploading-forms>` back to the demo server.
+  When you first install Collect, it connects to the `ODK Aggregate Demo server <https://opendatakit.appspot.com/Aggregate.html>`_. This allows you to try out the app by :ref:`downloading blank example forms <in-app-get-blank-forms>`, :doc:`filling them out   <collect-filling-forms>`, and :ref:`uploading completed forms <uploading-forms>` back to the demo server.
   
   Once you are done "trying out" ODK Collect, and you start actually using it, you will need to decide on a plan for managing forms and data submissions.
 
