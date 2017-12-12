@@ -187,15 +187,16 @@ div[class^='unwrap'] pre {
 }
 
 .figure{
-  display: table;
-  border: 2px solid;
-  border-color: black;
-}
-
-.figure p.caption{
-  padding: 10px;
-  display: table-caption;
-  caption-side: bottom;
-  background-color: black;
-  color: white;
-}
+   display: table;
+ }
+ 
+ .figure p.caption{
+   border-top: solid 10px #fcfcfc;
+   padding: 10px;
+   display: table-caption;
+   caption-side: bottom;
+   background-color: darkgray;
+   color: #fcfcfc;
+   font-size: 85%;
+   text-align: center;
+ }
