@@ -355,7 +355,7 @@ To run on ODK Aggregate on a Tomcat server backed with a MySQL or PostgreSQL dat
         .. code-block:: console
 
           $ sudo apt-get install tasksel
-          $ sudo tasksell install tomcat
+          $ sudo tasksel install tomcat
           $ sudo apt-get install java8-jdk
 
        - Now open :file:`/.bashrc` with your editor and add: export JAVA_HOME = :file:`/usr/lib/jvm/java-7-openjdk-amd64` at the bottom of that file. Change this to whatever path is appropriate for your java installation.  
