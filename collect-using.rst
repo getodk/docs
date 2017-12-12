@@ -21,7 +21,7 @@ To use ODK Collect:
   :maxdepth: 2
   
   collect-forms
-  collect-completing-forms
+  collect-filling-forms
   collect-settings
   
 - Advanced Use and Best Practices
