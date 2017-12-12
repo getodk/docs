@@ -17,7 +17,7 @@ In most cases, users of ODK:
 
 This requires:
 
-- :ref:`Installing Collect on a device or other mobile device <installing-collect>`
+- :doc:`Installing Collect on a phone or other mobile device <collect-install>`
 - :ref:`Installing Aggregate on a server <installing-aggregate>`
 
 .. tip::
@@ -25,7 +25,7 @@ This requires:
   While this is the *typical* use pattern, it is not the only way to do things. For example:
 
   - Forms can be created using tools other than Build or XLSForm
-  - Forms can be uploaded directly to Collect, without using Aggregate
+  - Forms can be transfered directly to Collect, without using Aggregate
 
   ODK is a very flexible set of tools, and organizations will find their own best practices for adopting it.
 
@@ -36,11 +36,11 @@ Install Collect
 
 The easiest way to install the ODK Collect App is `to get it from the Google Play store <https://play.google.com/store/apps/details?id=org.odk.collect.android&hl=en>`_.
 
-For other installation options, see :ref:`installing-collect` in the :doc:`collect-guide`.
+For other installation options, see :doc:`collect-install`.
 
 .. _installing-aggregate:
 
-Installing Aggregate
+Install Aggregate
 ---------------------
 
 The easiest, recommended way to setup an ODK Aggregate instance is to use `Google App Engine <https://cloud.google.com/appengine/>`_ and the `ODK Aggregate Installer <https://opendatakit.org/downloads/download-category/aggregate/>`_.
@@ -68,7 +68,7 @@ The quickest and easiest way to start using your own survey forms is to create t
 
 .. tip::
 
-  - ODK Build is a great tool for simple forms. For more complex forms, try `ODK XLSForm <http://xlsform.org/>`_.
+  - ODK Build is a great tool for simple forms. For more complex forms, try `XLSForm <http://xlsform.org/>`_.
   - ODK Build can also be run locally. `Desktop versions are available for download here <https://opendatakit.org/downloads/download-category/build/>`_.
 
 .. link to list of more form design options
@@ -78,7 +78,7 @@ The quickest and easiest way to start using your own survey forms is to create t
 Load, Complete, and Upload a Form with ODK Collect
 ----------------------------------------------------------
 
-- :ref:`Install <installing-collect>` and open ODK Collect on your Android device.
+- :doc:`Install <collect-install>` and open ODK Collect on your Android device.
 - Open the :guilabel:`⋮` menu and then select :menuselection:`General Settings`.
 - Select :guilabel:`Server`.
 - Edit the server settings to connect to your ODK Aggregate instance.

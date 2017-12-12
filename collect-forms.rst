@@ -1,6 +1,10 @@
 *****************************
-Form Management in Collect
+Form Management
 *****************************
+
+.. seealso::
+
+  For an overview on forms and form design, see :doc:`form-design-intro`.
 
 .. _loading-forms-into-collect:
 
@@ -16,18 +20,62 @@ In order to fill out forms with survey participants, you must first load blank f
 Loading Forms from ODK Aggregate Server or Google Drive 
 ------------------------------------------------------------
 
-If you have :ref:`connected ODK Collect to a server <connecting-to-server>` or :ref:`Google Drive <connecting-to-google>`, use :guilabel:`Get blank forms` on the app home screen to browse available forms and download them to your device.
+If you have :doc:`connected ODK Collect to a server  <collect-connect>` or :doc:`Google Drive  <collect-connect-google>`:
 
-.. note::
+1. Select :guilabel:`Get blank forms` on the app home screen to browse available forms and download them to your device.
 
-  Before downloading blank forms from Aggregate or Google Drive to Collect, those forms have to be uploaded to those locations.
+   .. image:: /img/collect-forms/main-menu-highlight-get-blank-form.* 
+     :alt: The Main Menu of the Collect app. The option *Get Blank Form* is circled in red.
+     
 
-  .. link to Aggregate guide, once there is one
+  
+2. Find and download forms.
+
+   - If you are using ODK Aggregate, you will see a list of available forms. Select the ones you would like download, and tap :guilabel:`Get Selected`.
+
+   
+     .. image:: /img/collect-forms/get-blank-form.* 
+       :alt: The Get Blank Form screen in the Collect app. Several form names are listed, with checkboxes. One form's checkbox is checked. At the bottom are buttons labeled: *Select All*, *Refresh*, and *Get Selected*.
+
+       
+    .. note::
+        
+      Before downloading blank forms from Aggregate to Collect, a form has to be uploaded. See :ref:`Form Management in ODK Aggregate <form-manage>`.
+  
+   - If you are using Google Drive, the **Get Blank Form** screen will display the folders in your Google Drive account and any XML documents. Select and download the forms you want.
+
+     .. image:: /img/collect-forms/get-forms-google.* 
+       :alt:
+
+       
+     .. warning:: 
+
+       All XML documents in Google Drive will appear in Collect. XML documents will be listed **even if they are not valid XForms**.
+
+       .. image:: /img/collect-forms/get-blank-form-not-a-form.* 
+         :alt:
+
+       And you can actually download any XML document, **even if it isn't a real XForm**.
+
+       .. image:: /img/collect-forms/downloading-not-a-form.* 
+         :alt:
+
+       But you can't Fill Out a non-form.  
+
+       .. image:: /img/collect-forms/not-form-exception.* 
+         :alt:
+
+.. link to Google forms guide, once there is one
 
 .. _loading-forms-directly:
 
 Loading forms directly
 ------------------------
+
+.. _loading-forms-with-adb:
+
+Loading forms with ``adb``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can load forms directly from a computer to your device via USB, using :doc:`Android Debug Bridge <collect-adb>`.
 
@@ -35,10 +83,27 @@ You can load forms directly from a computer to your device via USB, using :doc:`
 
   $ adb push path/to/form.xml /sdcard/odk/forms/form.xml
 
+Loading forms from device storage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
 You can also download forms to your device via a web browser, and move them to the :file:`odk/forms/` directory, using the device's file manager (:menuselection:`Settings -> Storage & USB -> Explore`).
 
+1. Go to the Settings menu (:guilabel:`⚙`) on your device and find :menuselection:`Storage & USB`
+
+   .. figure:: /img/collect-forms/device-settings-storage.* 
+     :alt: The Settings menu on an Android Device. The option *Storage and USB* is circled in red.
+  
+     The settings menu may look different on your device.
+
+2. From the internal storage screen, select :menuselection:`Explore` to open the file manager.
+     
+   .. figure:: /img/collect-forms/device-settings-storage-explore.* 
+     :alt: The Internal Storage settings menu on an Android device. The option *Explore* is circled in red.
+  
+     The :guilabel:`Explore` option opens a file manager that you can use to move forms into Collect.
+
 Loading form media
-~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 If a form :ref:`includes images or other media <image-options>`, those files have to be loaded to the device along with the form.
 
@@ -48,80 +113,25 @@ Media files should be placed in a folder labelled :file:`{form-name}-media`.
 - When using Google Drive, the :file:`-media` folder should be uploaded to the same location as the form.
 - If :ref:`loading forms directly to your device <loading-forms-directly>`, the :file:`-media` folder needs to be placed in the :file:`sdcard/odk/forms` directory, alongside the form itself.
 
-.. _fill-blank-forms:
-
-Filling out forms
-===================
-
-Once you have at least one form :ref:`loaded into ODK Collect <loading-forms-into-collect>`, you can fill out a form. 
-
-- Select :guilabel:`Fill Blank Form` from the app home screen.
-- Select the form you would like to fill out from the form list.
-- Typically, you will :gesture:`swipe left` to advance forward through the question, and :gesture:`swipe right` to back up.
-
-  - You can switch from :gesture:`Swipe` navigation to Forward/Backward buttons in :menuselection:`⋮ -> General Settings -> User Interface`
-  - The |arrow| icon on the top right corner opens the jump menu. From the jump menu, you can go to any question or go to the beginning/ending of the form.
-
-  .. |arrow| image:: /img/collect-forms/jumpicon.*
-             :alt: Opens the jump menu. 
-
-  |           
-
-  .. image:: /img/collect-forms/jumpscreen.*
-    :alt: Screen with the arrow icon displayed in ODK Collect on an Android phone. 
-    :class: device-screen-vertical
-  
-  |
-
-  .. image:: /img/collect-forms/jumpmenu.*
-    :alt: Jump menu displayed in ODK Collect on an Android phone. 
-    :class: device-screen-vertical
-
-  |
-    
-  .. note::
-    Jump menu only shows the questions of a looped group once an actual record is created.   
-   
-  - Some questions will :ref:`auto-advance <autoadvance-widget>` after being answered.
-  - `Required questions <http://xlsform.org/#required>`_ will not allow you to advance unless answered.
-
-- To **remove a response**, :gesture:`Long Press` on the :term:`question label`. 
-
-
-For a (mostly) complete guide to form question appearance, see :doc:`form-widgets`.
-
-.. _completing-form:
-
-Completing a Form
--------------------
-
-Once you have reached the end of a form, you will have the opportunity to *Save* and *Exit* the form. At this point, you may also:
-
-.. _name-form-instance:
-
-Name the form
-~~~~~~~~~~~~~~~
-
-The last form screen provides a default name for the form (defined by the form designer). You can rename it. This name only applies to that particular instance of a completed form (not to the blank form).
-
-The Form Name identifies the form in lists throughout the app. For this reason, a meaningful name may be important to you. After you've saved the name, the form automatically moves to the :guilabel:`Send Finalized Form` section, from where you can send it.
-
-.. _finalize-form:
-
-Mark the form as *Finalized*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Only :formstate:`Finalized` forms can be :ref:`uploaded to a server <uploading-forms>`. 
 
 .. _editing-saved-forms:
 
-Editing *Saved* forms
-----------------------
+Editing :formstate:`Saved` forms
+===================================
 
-- From the app home screen, select :guilabel:`Edit Saved Form`. 
-- From the form list, select a form by name.
+:formstate:`Completed` (filled-in) :term:`form instances <instance>` can be edited after they have been saved.
 
-This will reopen the form, which you are then free to edit.
+1. Select :guilabel:`Edit Saved Form`
+
+   .. image:: /img/collect-forms/main-menu-edit-saved.* 
+     :alt: The Main Menu of the Collect app. The option *Edit Saved Menu* is circled in red.
+
+2. Select a form by name
+
+   .. image:: /img/collect-forms/edit-saved-form.* 
+     :alt: The Edit Saved Form screen. Several completed forms are listed by name.
+
+This will reopen the form instance, which you are then free to edit. Form instances are listed by name, which is one reason it can be helpful to :ref:`name the form instance after filling it out <name-form-instance>`.
 
 .. note:: 
 
@@ -136,11 +146,17 @@ This will reopen the form, which you are then free to edit.
 Uploading Finalized Forms
 ===========================
 
-If you are connected to :ref:`an ODK Aggregate server <connecting-to-aggregate>` or :ref:`Google Drive Account <connecting-to-google>`, use :guilabel:`Send Finalized Forms` to upload :formstate:`Finalized` form instances. 
+Eventually, you will want to upload completed form instances for analysis and data aggregation. 
 
-For local form management, use :doc:`ODK Briefcase <briefcase-forms>` to pull :formstate:`Finalized` form instances to your local computer.
+Doing this from within the Collect app marks the forms as :formstate:`sent`. :formstate:`Sent` forms are no longer editable, but they remain viewable until they are deleted. 
 
-:formstate:`Sent` forms are no longer editable, but they remain viewable until they are deleted. 
+Uploading to Aggregate or Google Drive
+----------------------------------------
+
+If you are connected to :doc:`an ODK Aggregate server  <collect-connect-aggregate>` or :doc:`Google Drive Account  <collect-connect-google>`, use :guilabel:`Send Finalized Forms` to upload :formstate:`Finalized` form instances. 
+
+.. image:: /img/collect-forms/main-menu-send-finalized.* 
+  :alt: The Main Menu of the Collect app. The *Send Finalized Form* option is circled in red.
 
 .. note::
 
@@ -149,20 +165,52 @@ For local form management, use :doc:`ODK Briefcase <briefcase-forms>` to pull :f
   - Use the `TRIM <https://support.google.com/docs/answer/3094140?hl=en>`_ function in the google sheets to remove the leading and trailing spaces from the cells.
   - Define empty cell in your tests to be a cell that is either empty or contains a single space.
 
-.. note:: 
 
-  - You can copy form instances from the device using :command:`adb`, however this will not update the state of the form to :formstate:`Sent`.
+Pulling forms with Briefcase
+-------------------------------
+
+For local form management, use :doc:`ODK Briefcase <briefcase-forms>` to pull :formstate:`Finalized` form instances to your local computer.
+
+
+Pulling forms with ``adb``
+----------------------------
+
+You can copy form instances from the device using :command:`adb pull`, however this will not update the state of the form to :formstate:`Sent`.
 
 .. _deleting-forms:
 
 Deleting Forms
 ===============
 
-You can delete :formstate:`Saved`, :formstate:`Finalized`, :formstate:`Sent`, and :formstate:`Blank` forms by selecting :guilabel:`Delete Saved Form` on the app home screen. This page contains two tabs, :guilabel:`Saved Forms`, which contains the list of all form instances that are saved, finalized or sent, and :guilabel:`Blank Forms`.
+You can delete :formstate:`Saved`, :formstate:`Finalized`, :formstate:`Sent`, and :formstate:`Blank` forms.
 
-You can also delete form instances directly with :command:`adb`. They are stored in :file:`sdcard/odk/instances`, with a directory for each instance. 
+1. Select :guilabel:`Delete Saved Form` on the app home screen. 
 
+   .. image:: /img/collect-forms/main-menu-delete-form.* 
+     :alt: The Main Menu of the Collect app. The option *Delete Saved Forms* is circled in red.
+
+2. Select the :guilabel:`Saved Forms` or :guilabel:`Blank Forms` tab.
+
+   .. figure:: /img/collect-forms/delete-saved-forms.* 
+     :alt: The Delete Saved Forms screen in the Collect app. There are two available tabs: *Saved Forms* and *Blank Forms*. The *Saved Forms* tab is active. Below that is a list of saved form instances, with checkboxes. There are buttons labeled: *Select All* and *Delete Selected*.
+     
+     The :guilabel:`Saved Forms` tab lists form instances that are :formstate:`saved`, :formstate:`finalized`, or :formstate:`sent`. 
+     
+   .. figure:: /img/collect-forms/delete-saved-forms-blank-forms.* 
+     :alt: The Delete Saved Forms screen in the Collect app. There are two available tabs: *Saved Forms* and *Blank Forms*. The *Blank Forms* tab is active. Below that is a list of blank forms, with checkboxes. There are buttons labeled: *Select All* and *Delete Selected*.
+     
+     The :guilabel:`Blank Forms` tab lists :formstate:`blank` forms.
+  
 .. note:: 
 
-  - Deleted Forms are listed, but cannot be viewed. They are indicated with the crossed-out eye icon.
+  Deleted Forms are listed in the :guilabel:`View Sent Forms` page, but cannot be viewed. They are indicated with the crossed-out eye icon.
 
+  .. image:: /img/collect-forms/deleted-form-in-view-sent-form.* 
+    :alt: The View Sent Forms page in Collect app. Two sent forms are listed, but the second one, *Hypertension Screening* has been deleted. Next to the form name is an icon of an eye, crossed out. Below the form name is the note *Deleted*, along with a date and time.   
+  
+.. _delete-forms-adb:
+      
+Deleting Forms with ``adb``
+-------------------------------
+
+You can also :ref:`delete form instances directly with <deleting-forms-with-adb>` :doc:`Android Debug Bridge <collect-adb>`. They are stored in :file:`sdcard/odk/instances`, with a directory for each instance. 

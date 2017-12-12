@@ -25,7 +25,7 @@ Requirements
 ====================
 Encrypted forms require the following *minimum versions* of the ODK tools
 
-- :doc:`ODK Collect 1.2 Release Candidate 1 (RC1) or higher <collect-install>`
+- :doc:`ODK Collect 1.2 Release Candidate 1 (RC1) or higher  <collect-install>`
 - :doc:`ODK Aggregate 1.0.4 Production or higher <aggregate-install>`
 - :doc:`ODK Briefcase 1.0 Production or higher<briefcase-install>`
 
