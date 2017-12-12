@@ -1,5 +1,9 @@
 Launching External Apps from Collect Forms
 ====================================================
+
+.. seealso::
+
+  :doc:`launch-collect-from-app`
 	
 .. _launch-apps-single-field:
 

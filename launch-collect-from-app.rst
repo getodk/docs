@@ -1,6 +1,10 @@
 Launching ODK Collect from External Apps
 ==========================================
 
+.. seealso::
+  
+  :doc:`launch-apps-from-collect`
+
 :doc:`collect-intro` supports several intents which allow it to be launched by external applications. You can open a specific form or lists of empty forms, saved forms, finalized forms or sent forms. 
 
 This section describes how to launch ODK Collect and open its activities from an external app. The code samples go in your custom Android application.
