@@ -8,8 +8,8 @@ Welcome to Open Data Kit's documentation!
 
 :dfn:`Open Data Kit` (ODK) is a suite of open source applications that help organizations engaged in enumerator-mediated data collection. ODK tools assist with the collection and management of survey data using mobile forms. These include the primary ODK applications:
 
-- **ODK Collect**, an Android mobile app that replaces paper-based forms.
-- **ODK Aggregate**, a server-side data storage and analysis tool.
+- :doc:`collect-intro`, an Android mobile app that replaces paper-based forms.
+- :doc:`aggregate-guide`, a server-side data storage and analysis tool.
 
 Also part of the ODK suite are several tools that support form creation and data management:
 
@@ -35,18 +35,14 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
 
 .. toctree::
   :hidden:
-  :maxdepth: 2
+  :maxdepth: 1
   :caption: Collect
 
-  collect-guide
-  collect-install
-  collect-settings
-  collect-forms
-  collect-adb
-  collect-integrations
+  collect-intro
+  collect-setup
+  collect-using
   collect-best-practices
-  projecting-collect
-
+  
 .. toctree::
   :hidden:
   :maxdepth: 2
@@ -85,7 +81,8 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   form-interaction
   pyxform
   validate
-
+  launch-apps-from-collect
+  
 .. toctree::
   :hidden:
   :maxdepth: 2
@@ -103,6 +100,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   
   openrosa
   javarosa
+  launch-collect-from-app
   
 .. toctree::
   :hidden:
@@ -120,7 +118,3 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   verify-downloads
   faq
   glossary
-  
-
-  
-

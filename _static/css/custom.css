@@ -38,6 +38,12 @@ caption .headerlink::after {
 .rst-content img, .rst-content video {
     max-height: 85vh !important;
     width: auto !important;
+    margin-bottom: 24px;
+}
+
+.rst-content img.side-by-side {
+    max-height: none !important;
+    max-width: 45%
 }
 
 .formstate {
@@ -186,6 +192,31 @@ div[class^='unwrap'] pre {
     white-space: pre;
 }
 
+/* Styles related to details-like JS implementation */
+
+.toggler {
+    font-weight: bold;
+    font-variant: small-caps;
+    color: #2980B9;
+    cursor: pointer;
+    padding-bottom: 12px;
+}
+.toggle-sign {
+    width: 1.5em;
+}
+.has-details {
+    margin-bottom: 12px;
+}
+
+
+/* Utility Classes */
+
+.block {
+    display: block;
+}
+
+/* Figure caption styling */
+
 .figure{
    display: table;
  }
@@ -200,3 +231,4 @@ div[class^='unwrap'] pre {
    font-size: 85%;
    text-align: center;
  }
+

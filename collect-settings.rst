@@ -1,4 +1,4 @@
-Collect Menus, Settings and Security
+Collect Menus, Settings, and Security
 =====================================
 
 .. _main-menu:
@@ -43,7 +43,7 @@ Server Settings
 
 :menuselection:`Server` settings manage the connection to an ODK Aggregate server or Google Drive account for form management.
 
-See :ref:`connecting-to-server` for more details.
+See :doc:`collect-connect` for more details.
 
 .. _interface-settings:
 
