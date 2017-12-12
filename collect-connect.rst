@@ -7,7 +7,7 @@ ODK Collect is used to complete surveys with participants. But if you want to re
 
   When you first install Collect, it connects to the `ODK Aggregate Demo server <https://opendatakit.appspot.com/Aggregate.html>`_. This allows you to try out the app by :ref:`downloading blank example forms <in-app-get-blank-forms>`, :doc:`filling them out   <collect-filling-forms>`, and :ref:`uploading completed forms <uploading-forms>` back to the demo server.
   
-  Once you are done "trying out" ODK Collect, and you start actually using it, you will need to decide on a plan for managing forms and data submissions.
+  Once you are done "trying out" Collect, and you start actually using it, you will need to decide on a plan for managing forms and data submissions.
 
 The two most common options for form and data management are:
 
@@ -26,7 +26,7 @@ Using Google Drive to manage form submissions is simpler and, in most cases, che
 Other options
 ~~~~~~~~~~~~~~~
 
-Managing forms from an ODK Aggregate server or Google Drive is typical. However, there are other ways to use ODK Collect.
+Managing forms from an ODK Aggregate server or Google Drive is typical. However, there are other ways to use Collect.
 
  - :ref:`Upload blank forms directly to your device <loading-forms-directly>`
  - :doc:`Download completed forms directly with adb <collect-adb>`

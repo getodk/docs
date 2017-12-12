@@ -37,13 +37,13 @@ Connecting to your own ODK Aggregate Server
 4. Edit :guilabel:`ODK Aggregate settings`
 
    .. image:: /img/collect-connect/server-settings-aggregate-settings.* 
-     :alt: The Server Settings screen in the Collect app. Below the *Type* option is a section titled *ODK Aggregate Settings*, with the itmes labelled *URL*, *Username*, and *Password*. These three items are numbered in red.
+     :alt: The Server Settings screen in the Collect app. Below the *Type* option is a section titled *ODK Aggregate Settings*, with the items labelled *URL*, *Username*, and *Password*. These three items are numbered in red.
 
    .. image:: /img/collect-connect/server-settings-server-url.* 
      :alt: The Server Settings screen in the Collect app, with a modal overlay titled *Server URL*. There is a single text-entry field with a URL, and buttons labelled OK and CANCEL.
 
    .. image:: /img/collect-connect/server-settings-odk-username.* 
-     :alt: The Server Settings screen in the Collect app, with a modal overal titled *ODK Username.* There is a single text-entry field, and buttons labelled OK and CANCEL.
+     :alt: The Server Settings screen in the Collect app, with a modal overlay titled *ODK Username.* There is a single text-entry field, and buttons labelled OK and CANCEL.
 
    .. image:: /img/collect-connect/server-settings-odk-password.* 
      :alt: The Server Settings screen in the Collect app, with a modal overlay titled *ODK Password*. There is a single obscured-text field, and buttons for OK and CANCEL.
@@ -52,7 +52,7 @@ Connecting to your own ODK Aggregate Server
 
 .. admonition:: Connecting to another OpenRosa server app
 
-  Any server application that implements the `OpenRosa API <https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaAPI>`_ can be connected to, using :doc:`the instructions laid out above <collect-connect-aggregate>`. You would stil choose :menuselection:`ODK Aggregate` as the server type.
+  Any server application that implements the `OpenRosa API <https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaAPI>`_ can be connected to, using :doc:`the instructions laid out above <collect-connect-aggregate>`. You would still choose :menuselection:`ODK Aggregate` as the server type.
 
   In :menuselection:`Server Settings`, there is currently a :guilabel:`Type` option of :menuselection:`Other`. It is unlikely you will need this option, since any server application will need to implement the same API as ODK Aggregate. 
 

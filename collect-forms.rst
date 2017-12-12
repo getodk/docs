@@ -116,8 +116,8 @@ Media files should be placed in a folder labelled :file:`{form-name}-media`.
 
 .. _editing-saved-forms:
 
-Editing *Saved* forms
-===========================
+Editing :formstate:`Saved` forms
+===================================
 
 :formstate:`Completed` (filled-in) :term:`form instances <instance>` can be edited after they have been saved.
 

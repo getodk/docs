@@ -30,7 +30,7 @@ Connecting to a Google Drive Account
 4. Select your :guilabel:`Google Account`
 
    .. image:: /img/collect-connect/server-settings-google-account.* 
-     :alt: The Server Settings screen in the Collect app. Below the *Type* setting is a section titled *Google Sheets settings*, eith items for *Google Account* and *Fallback submission URL*. *Google Account* is circled in red.
+     :alt: The Server Settings screen in the Collect app. Below the *Type* setting is a section titled *Google Sheets settings*, with items for *Google Account* and *Fallback submission URL*. *Google Account* is circled in red.
 
    .. image:: /img/collect-connect/server-settings-google-account-modal.* 
      :alt: The Server Settings screen as displayed in the previous image. There is now a modal labelled *Google account,* with a set of radio button (single select) options. The options are Google Accounts associated with the device, and a final option labelled 'No account'. Below that is a button labelled CANCEL.
@@ -40,6 +40,6 @@ Connecting to a Google Drive Account
 
    When using Collect with a Google account, form submissions will be posted to a Google Sheet specified in the form. 
 
-   You have the option to specify a :guilabel:`Fallback submisison URL`. This is the URL of a Google sheet to which form submissions will be posted if the submitted form does not specify it own URL.
+   You have the option to specify a :guilabel:`Fallback submisison URL`. This is the URL of a Google sheet to which form submissions will be posted if the submitted form does not specify its own URL.
 
    If your forms will specify a submission URL, you can leave this setting empty. Otherwise, enter the URL of a Google sheet you would like to use.    
