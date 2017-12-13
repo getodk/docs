@@ -13,7 +13,7 @@ def yes_no(name, arg):
     else:
        raise Exception("Value for {} attribute can only be a boolean" .format(name))
 
-def preload(arg):
+def preload_choice(arg):
 
     if arg == 'auto' or arg == 'metadata' or arg == 'none':
        return arg
@@ -128,7 +128,7 @@ class Video(Directive):
             poster = directives.uri(self.options["poster"])                
            
         if "preload" in self.options:
-            preload = preload(self.options["preload"])
+            preload = preload_choice(self.options["preload"])
 
         if "class" in self.options:
             cl = self.options["class"]    
