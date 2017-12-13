@@ -17,6 +17,11 @@ that has been modified to NOT run on J2ME devices. The key differences are:
 Architecture
 ************
 
+.. toctree::
+  :maxdepth: 3
+
+  javarosa-dag
+
 Integration Points
 ******************
 
