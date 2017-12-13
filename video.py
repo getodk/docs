@@ -4,6 +4,22 @@ from docutils import nodes
 from docutils.parsers.rst import directives
 from sphinx.util.compat import Directive
 
+def yes_no(name, arg):
+
+    if arg == 'yes' or arg == 'true':
+       return name
+    elif arg == 'no' or arg == 'false':
+       return None
+    else:
+       raise Exception("Value for {} attribute can only be a boolean" .format(name))
+
+def preload(arg):
+
+    if arg == 'auto' or arg == 'metadata' or arg == 'none':
+       return arg
+    else:
+       raise Exception("Value for preload attribute can only be auto, metadata or none")
+
 class video_node(nodes.General, nodes.Element): pass
 
 def visit_video_html(self, node):
@@ -23,22 +39,46 @@ def visit_video_html(self, node):
         
     attrs = {
             "src":"%s" %src,
-            "controls":"controls",
-            "muted":"muted",
             "style":"max-width:100%",
         }
+
+    if node["poster"] is not None:
+       if os.path.exists("./build/_images"):
+          pass
+       else:   
+          os.makedirs("./build/_images/")
+       psrc = node["poster"]
+       p_spth = ".%s" % psrc
+       p_dpth = "./build/_images/%s" %psrc[psrc.rfind('/')+1:]
+
+       shutil.copyfile(p_spth, p_dpth)
+
+       psrc = "../_images/%s" % psrc[psrc.rfind('/')+1:]
+       attrs["poster"] = "%s" % psrc    
    
-    
-    alt = node["alt"]
+    if node["autoplay"] == "autoplay":
+       attrs["autoplay"] = "autoplay"
+
+    if node["controls"] == "controls":
+       attrs["controls"] = "controls"
+
+    if node["loop"] == "loop":
+       attrs["loop"] = "loop" 
+
+    if node["muted"] == "muted":
+       attrs["muted"] = "muted"
+
+    if node["preload"] is not None:
+       attrs["preload"] = "%s" % node["preload"]
+
+    if node["cl"] is not None:
+       attrs["class"] = "%s" % node["cl"]
                                                                                                                                 
     self.body.append(self.starttag(node, "video", **attrs))
-    self.body.append("<p> %s </p>" %alt)
     self.body.append("</video>")
   
 def visit_video_nonhtml(self, node):
-    self.visit_attention(node)
-    self.body.append(node["alt"])
-    self.depart_attention(node)
+    pass
     
 def depart_video_node(self, node):
     pass
@@ -49,19 +89,52 @@ class Video(Directive):
     required_arguments = 1
     optional_arguments = 0
     final_argument_whitespace = True
-    option_spec = { 'alt': directives.unchanged,
-    }
+    option_spec = { 
+                'autoplay' : directives.unchanged,
+                'controls' : directives.unchanged,
+                'loop' : directives.unchanged,
+                'muted' : directives.unchanged,
+                'poster' : directives.unchanged,
+                'preload' : directives.unchanged,
+                'class' : directives.unchanged,
+        }
 
     def run(self):
 
-        alt = "Video cannot be played!"
+        autoplay = None
+        controls = "controls"
+        loop = None
+        muted = "muted"
+        poster = None
+        preload = None
+        cl = None
 
-        if "alt" in self.options:
-            alt = alt + '\n' + self.options["alt"]
+        if "autoplay" in self.options:
+            autoplay = yes_no("autoplay",self.options["autoplay"])
+
+        if "controls" in self.options:
+            controls = yes_no("controls",self.options["controls"])
+            
+        if "loop" in self.options:
+            loop = yes_no("loop",self.options["loop"])
+            
+        if "muted" in self.options:
+            muted = yes_no("muted",self.options["muted"])
+            
+        if "poster" in self.options:
+            poster = directives.uri(self.options["poster"])                
+           
+        if "preload" in self.options:
+            preload = preload(self.options["preload"])
+
+        if "class" in self.options:
+            cl = self.options["class"]    
 
         uri = directives.uri(self.arguments[0])
 
-        return [video_node(uri = uri, alt = alt)]
+        return [video_node(uri = uri, autoplay = autoplay, controls = controls, 
+            loop = loop, muted = muted, poster = poster, 
+            preload = preload, cl = cl)]
 
 def setup(app):
 
@@ -71,3 +144,4 @@ def setup(app):
                              text = (visit_video_nonhtml, depart_video_node),
     	                     )
     app.add_directive("video", Video)
+
