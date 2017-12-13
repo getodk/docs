@@ -75,17 +75,19 @@ def visit_video_html(self, node):
        attrs["class"] = "%s" % node["cl"]
                                                                                                                                 
     self.body.append(self.starttag(node, "video", **attrs))
-    self.body.append("</video>")
+
+def depart_video_html(self, node):
+    self.body.append("</video>")    
   
 def visit_video_nonhtml(self, node):
     pass
     
-def depart_video_node(self, node):
+def depart_video_nonhtml(self,node):
     pass
 
 class Video(Directive):
 
-    has_content = False
+    has_content = True
     required_arguments = 1
     optional_arguments = 0
     final_argument_whitespace = True
@@ -98,6 +100,7 @@ class Video(Directive):
                 'preload' : directives.unchanged,
                 'class' : directives.unchanged,
         }
+
 
     def run(self):
 
@@ -132,16 +135,20 @@ class Video(Directive):
 
         uri = directives.uri(self.arguments[0])
 
-        return [video_node(uri = uri, autoplay = autoplay, controls = controls, 
+        vid = video_node(uri = uri, autoplay = autoplay, controls = controls, 
             loop = loop, muted = muted, poster = poster, 
-            preload = preload, cl = cl)]
+            preload = preload, cl = cl)        
+        
+        self.state.nested_parse(self.content, self.content_offset, vid)
+         
+        return [vid]
 
 def setup(app):
 
-    app.add_node(video_node, html = (visit_video_html, depart_video_node), 
-    	                     latex = (visit_video_nonhtml, depart_video_node),
-                             epub = (visit_video_nonhtml, depart_video_node),
-                             text = (visit_video_nonhtml, depart_video_node),
+    app.add_node(video_node, html = (visit_video_html, depart_video_html), 
+    	                     latex = (visit_video_nonhtml, depart_video_nonhtml),
+                             epub = (visit_video_nonhtml, depart_video_nonhtml),
+                             text = (visit_video_nonhtml, depart_video_nonhtml),
     	                     )
     app.add_directive("video", Video)
 
