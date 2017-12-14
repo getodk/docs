@@ -1576,15 +1576,46 @@ Video files should be put in the :file:`/vid/` directory in the source, and they
 
 The length of the videos must be less than a minute.
 
-There is no ``video`` directive to add a video, so to add a video in a document, you can do the following:
+We have a custom ``video`` directive to add a video.
+
+``video`` directive supports the following attributes:
+
+- ``autoplay``, ``controls``, ``muted`` and ``loop`` are boolean attributes. They can take values as: **true**, **false**, **yes** or **no**. 
+
+.. note::
+
+  ``controls`` and ``muted`` are set by default to **yes** and ``autoplay`` and ``loop`` are set to **no**.
+
+- ``preload`` attribute can take one of the following three values: **auto**, **metadata** or **none**.
+
+- ``poster`` attribute contains the source address for an an image to be shown while the video is downloading, or until the user hits the play button.
+
+.. note::
+
+  Images to be used as poster for a video should be in the same directory as the video and should have a name of format :file:`[same-file-name-as-video]-poster.jpg`.
+
+- ``class`` attribute specifies a class for the video element.
+
+For more details on these attributes, see `this guide <https://www.w3schools.com/tags/tag_video.asp>`_.
+
+All the above attributes are optional. 
+
+Video directive should also have alternate content for when the video cannot be played. It can contain long texts as well as any other rst content. You should always specify alternate content for a video.
+
+So to add a video in a document, you can do the following:
 
 .. code-block:: rst
 
-  .. raw:: html
+  .. video:: /vid/{document-subdirectory}/{file}.mp4
+    :autoplay: yes/no
+    :controls: yes/no
+    :muted: yes/no
+    :loop: yes/no
+    :class: class-name
+    :preload: auto/metadata/none
+    :poster:: /vid/{document-subdirectory}/{file}.ext
 
-  <video controls muted style="max-width:100%">
-    <source src="/{document-subdirectory}/{file}.mp4>
-  </video>
+    Alt content. Every video should have descriptive alt content.
 
 **ADB or Android Debug Bridge** can be used to capture a screen recording from collect. This can be done by entering:
 
