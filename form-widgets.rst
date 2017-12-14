@@ -15,7 +15,6 @@ Basic Form Widgets
 
 This section shows examples of all the form widgets types, with no additional options displayed.
 
-
 .. _string-input:
 
 String Input
@@ -1649,12 +1648,7 @@ Autoadvance Widget
 
 Advances immediately to the next question once a selection is made.
 
-.. raw:: html
-
-  <video controls muted style="max-width:100%">
-    <source src="/form-widgets/auto-advance.mp4">
-  </video>
-
+.. video:: /vid/form-widgets/auto-advance.mp4
 
 XLSForm Rows
 """""""""""""
@@ -1986,11 +1980,7 @@ Compact Single Select with Images and Autoadvance
 
 The :tc:`quickcompact` appearance attribute combines the design of the :ref:`compact-single-image-select` widget with the :ref:`autoadvance-widget` functionality.
 
-.. raw:: html
-
-  <video controls muted style="max-width:100%">
-    <source src="/form-widgets/quickcompact.mp4">
-  </video>
+.. video:: /vid/form-widgets/quickcompact.mp4
 
 XLSForm Rows
 """""""""""""
@@ -2043,11 +2033,7 @@ Compact Single Select with Images and Autoadvance, width specified
 
 As with :ref:`compact <compact-2>`, you can specify a width when using :tc:`quickcompact`. To display two images on each row, set the :th:`appearance` attribute to :tc:`quickcompact-2`.
 
-.. raw:: html
-
-  <video controls muted style="max-width:100%">
-    <source src="/form-widgets/quickcompact2.mp4">
-  </video>
+.. video:: /vid/form-widgets/quickcompact2.mp4
 
 XLSForm Rows
 """"""""""""""
