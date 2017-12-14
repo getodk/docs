@@ -38,7 +38,7 @@ Free-entry text and number answers are entered using the device keyboard. The ap
 Select response
 ~~~~~~~~~~~~~~~~~
 
-Questions with response choices can be answered by touching the selected items. These include radio buttons (single-select), dropdowns (single-select), check boxes (multi-select), and images choices (single and multi-select).
+Questions with response choices can be answered by touching the selected items. These include radio buttons (single-select), dropdowns (single-select), check boxes (multi-select), and image choices (single and multi-select).
 
 .. figure:: /img/collect-completing-forms/single-select.* 
   :alt: A question screen with radio buttons (single-select).
