@@ -1588,7 +1588,7 @@ We have a custom ``video`` directive to add a video.
 
 - ``preload`` attribute can take one of the following three values: **auto**, **metadata** or **none**.
 
-- ``poster`` attribute contains the source address for an an image to be shown while the video is downloading, or until the user hits the play button.
+- ``poster`` attribute contains the source address for an image to be shown while the video is downloading, or until the user hits the play button.
 
 .. note::
 
@@ -1600,7 +1600,7 @@ For more details on these attributes, see `this guide <https://www.w3schools.com
 
 All the above attributes are optional. 
 
-Video directive should also have alternate content for when the video cannot be played. It can contain long texts as well as any other rst content. You should always specify alternate content for a video.
+Video directive should also have alternate content which is displayed when the video cannot be played. It can contain long texts as well as any other rst content. You should always specify alternate content for a video.
 
 So to add a video in a document, you can do the following:
 
