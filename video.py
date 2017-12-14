@@ -43,17 +43,13 @@ def visit_video_html(self, node):
         }
 
     if node["poster"] is not None:
-       if os.path.exists("./build/_images"):
-          pass
-       else:   
-          os.makedirs("./build/_images/")
        psrc = node["poster"]
        p_spth = ".%s" % psrc
-       p_dpth = "./build/_images/%s" %psrc[psrc.rfind('/')+1:]
+       p_dpth = "./build/_videos/%s" %psrc[psrc.rfind('/')+1:]
 
        shutil.copyfile(p_spth, p_dpth)
 
-       psrc = "../_images/%s" % psrc[psrc.rfind('/')+1:]
+       psrc = "../_videos/%s" % psrc[psrc.rfind('/')+1:]
        attrs["poster"] = "%s" % psrc    
    
     if node["autoplay"] == "autoplay":
