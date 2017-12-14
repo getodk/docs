@@ -80,6 +80,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   xlsform
   form-widgets
   form-interaction
+  form-update
   pyxform
   validate
   launch-apps-from-collect
