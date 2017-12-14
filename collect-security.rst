@@ -43,14 +43,14 @@ For devices running Android version 4 or later:
       :alt: Image showing Pin and Password options.
       :class: device-screen-vertical   
 
-.. note::
+   .. note::
 
-  Encryption cannot be performed until you have setup either a PIN or a password lock. Pattern lock is not allowed with encryption.
+      Encryption cannot be performed until you have setup either a PIN or a password lock. Pattern lock is not allowed with encryption.
 
-.. tip::
+   .. tip::
 
-  Setting a strong passcode is imperative to protect your Android phone. The longer the passcode (or alphanumeric password), the tougher it will be for an attacker to gain access to your device. 
-  Even a lock screen won't necessarily prevent a thief or hacker from getting access to your data. You can use apps that destroy all the data after few failed attempts to unlock the device. For more details, see `this <https://www.techrepublic.com/blog/five-apps/five-apps-to-wipe-data-from-your-android-phone/>`__.
+     Setting a strong passcode is imperative to protect your Android phone. The longer the passcode (or alphanumeric password), the tougher it will be for an attacker to gain access to your device. 
+     Even a lock screen won't necessarily prevent a thief or hacker from getting access to your data. You can use apps that destroy all the data after few failed attempts to unlock the device. For more details, see `this <https://www.techrepublic.com/blog/five-apps/five-apps-to-wipe-data-from-your-android-phone/>`__.
 
 3. :gesture:`Tap` :guilabel:`Security` in the :guilabel:`System` section.
 
@@ -64,9 +64,9 @@ For devices running Android version 4 or later:
       :alt: Image showing Encrypt device option in the Encryption section.
       :class: device-screen-vertical
 
-.. note::
+   .. note::
 
-  On some phones, you’ll need to choose :guilabel:`Storage`, then :menuselection:`Storage encryption` or :menuselection:`Storage --> Lock screen and security --> Other security settings` to find the :guilabel:`Encrypt device` option
+     On some phones, you’ll need to choose :guilabel:`Storage`, then :menuselection:`Storage encryption` or :menuselection:`Storage --> Lock screen and security --> Other security settings` to find the :guilabel:`Encrypt device` option
 
 .. note::
 
