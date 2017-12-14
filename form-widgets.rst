@@ -1650,6 +1650,8 @@ Advances immediately to the next question once a selection is made.
 
 .. video:: /vid/form-widgets/auto-advance.mp4
 
+  Video showing auto-advance after the questions are answered.  
+
 XLSForm Rows
 """""""""""""
 
@@ -1982,6 +1984,8 @@ The :tc:`quickcompact` appearance attribute combines the design of the :ref:`com
 
 .. video:: /vid/form-widgets/quickcompact.mp4
 
+  Video showing Compact single select widget and auto-advance after the question is answered.
+
 XLSForm Rows
 """""""""""""
 
@@ -2034,6 +2038,8 @@ Compact Single Select with Images and Autoadvance, width specified
 As with :ref:`compact <compact-2>`, you can specify a width when using :tc:`quickcompact`. To display two images on each row, set the :th:`appearance` attribute to :tc:`quickcompact-2`.
 
 .. video:: /vid/form-widgets/quickcompact2.mp4
+
+  Video showing Compact-2 widget and auto-advance after the question is answered.
 
 XLSForm Rows
 """"""""""""""
