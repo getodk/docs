@@ -7,7 +7,9 @@ Tips and Best Practices
   collect-adb
   collect-shortcut
   collect-location
+  collect-structure
   projecting-collect
+  
 
 Related Topics
 ----------------

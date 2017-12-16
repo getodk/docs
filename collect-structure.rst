@@ -38,8 +38,8 @@ Inside :file:`ODK` directory, there are four subdirectories which are as follows
 
 .. _forms-directory:
 
-forms Directory
-~~~~~~~~~~~~~~~~~
+:guilabel:`forms` Directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: /img/collect-structure/sample-form.*
   :alt: Image showing forms and Sample form-media directory
@@ -53,8 +53,8 @@ forms Directory
 
 .. _instances-directory:
 
-instances Directory
-~~~~~~~~~~~~~~~~~~~~~
+:guilabel:`instances` Directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: /img/collect-structure/instances.*
   :alt: Image showing folder inside instance directory
@@ -68,8 +68,8 @@ Submissions are located under this directory. This directory will contain subdir
 
 .. _layers-directory:
 
-layers Directory
-~~~~~~~~~~~~~~~~~~~
+:guilabel:`layers` Directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: /img/collect-structure/sample-layer.*
   :alt: Image showing layer folder inside odk directory
@@ -83,8 +83,8 @@ layers Directory
 
 .. _meta-directory:
 
-metadata Directory
-~~~~~~~~~~~~~~~~~~~~
+:guilabel:`metadata` Directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: /img/collect-structure/metadata.*
   :alt: Image dhowing files inside metadata folder

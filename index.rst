@@ -43,8 +43,6 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   collect-setup
   collect-using
   collect-best-practices
-  projecting-collect
-  collect-structure
 
 .. toctree::
   :hidden:
