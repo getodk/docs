@@ -6,7 +6,9 @@ Using regular expressions
 Regular Expressions
 ---------------------
 
-A regular expression is a special text string for describing a search pattern. Some basic operations on regular expressions are:
+A regular expression is a special text string for describing a search pattern. Regular expressions find an important use in specifying constraints in your forms. You might want to set constraints on the length, character set allowed and various other fields in the data input by the user. All this can be achieved by using regular expression constraints in your form.
+
+Some basic operations on regular expressions are:
 
 1. **Boolean or**: A vertical bar separates alternatives. For example, *gray|grey* can match *gray* or *grey*. 
 2. **Grouping Parentheses**: They are used to define the scope and precedence of the operators. For example, *gray|grey* and *gr(a|e)y* are equivalent patterns which both describe the set of *gray* or *grey*.
@@ -21,7 +23,7 @@ A regular expression is a special text string for describing a search pattern. S
     - {min,max}: The preceding item is matched at least min times, but not more than max times. 
 
 
-For more details on regular expressions, refer `this site <https://regex101.com/>`_.   
+For a clear understanding of regular expressions, try these regex online checker tools: https://regex101.com/, https://www.regextester.com/, https://regexr.com/, http://www.regexe.com/.
 
 .. _tips-on-regex:
 
