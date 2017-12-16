@@ -29,11 +29,9 @@ Free response
 
 Free-entry text and number answers are entered using the device keyboard. The appropriate keyboard (letters or numbers) opens when the question appears.
 
-.. raw:: html
+.. video:: /vid/collect-completing-forms/keyboard-popup.mp4
 
-  <video controls muted style="max-width:100%">
-    <source src="/collect-completing-forms/keyboard-popup.mp4">
-  </video>
+  Video showing text keyboard popup when a string input is required and number keyboard popup when a number input is required.
 
 Select response
 ~~~~~~~~~~~~~~~~~
@@ -101,11 +99,9 @@ To move between questions, :gesture:`Swipe Left or Right`.
   :alt: A question screen in the Collect App. Overlaid on the screen is an icon of a hand with extended finger and arrows pointing left and right, representing a swiping gesture.
   :class: block
 
-.. raw:: html
+.. video:: /vid/collect-completing-forms/swipe-example.mp4
 
-  <video controls muted style="max-width:100%">
-    <source src="/collect-completing-forms/swipe-example.mp4">
-  </video>
+  Video showing swiping between three questions.
 
 Left and Right Buttons  
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -167,12 +163,9 @@ Autoadvance Questions
 
 Some questions will :ref:`auto-advance <autoadvance-widget>` after being answered.
 
-.. raw:: html
+.. video:: /vid/form-widgets/auto-advance.mp4
 
-  <video controls muted style="max-width:100%">
-    <source src="/form-widgets/auto-advance.mp4">
-  </video>
-
+  Video showing auto-advance after the questions are answered.
 
 Required Questions
 ~~~~~~~~~~~~~~~~~~~~~~
