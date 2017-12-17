@@ -210,7 +210,11 @@ You can click on the |share| icon to share the QR code as an image. When you cli
 Saving QR code locally
 """"""""""""""""""""""""
 
-You can go to :menuselection:`⋮ --> Save settings to disk` to save the QR code.  
+You can go to :menuselection:`⋮ --> Save settings to disk` to save the QR code.
+
+.. note::
+
+  Settings are saved to :file:`/sdcard/odk/settings/collect.settings` and loaded from :file:`/sdcard/odk/collect.settings`. This is because we don't want to load and delete the saved settings on next app launch. When settings are saved, they are not necessarily saved for the same device but for some other device or mass configuration. So, saving and loading settings is done from separate locations.
 
 Importing settings from a QR saved on your device
 """""""""""""""""""""""""""""""""""""""""""""""""""""
