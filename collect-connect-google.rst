@@ -22,10 +22,10 @@ Connecting to a Google Drive Account
 3. Select :guilabel:`Type`, and set it to :menuselection:`Google Drive, Google Sheets`
 
    .. image:: /img/collect-connect/server-settings-type-google.* 
-     :alt: The Server Settings screen in the Collect app. The first item in the menu is labelled *Type*, and this item is circled in red.
+     :alt: The Server Settings screen in the Collect app. The first item in the menu is labeled *Type*, and this item is circled in red.
 
    .. image:: /img/collect-connect/server-settings-type-model-google.* 
-     :alt: The Server Settings screen in the Collect App, as displayed in the previous image. There is now a modal menu labelled *Platform*, with single-select radio buttons for: *ODK Aggregate*, *Google Drive, Google Sheets*, and *Other*. *Google Drive, Google Sheets* is selected and circled in red.
+     :alt: The Server Settings screen in the Collect App, as displayed in the previous image. There is now a modal menu labeled *Platform*, with single-select radio buttons for: *ODK Aggregate*, *Google Drive, Google Sheets*, and *Other*. *Google Drive, Google Sheets* is selected and circled in red.
 
 4. Select your :guilabel:`Google Account`
 
@@ -33,7 +33,7 @@ Connecting to a Google Drive Account
      :alt: The Server Settings screen in the Collect app. Below the *Type* setting is a section titled *Google Sheets settings*, with items for *Google Account* and *Fallback submission URL*. *Google Account* is circled in red.
 
    .. image:: /img/collect-connect/server-settings-google-account-modal.* 
-     :alt: The Server Settings screen as displayed in the previous image. There is now a modal labelled *Google account,* with a set of radio button (single select) options. The options are Google Accounts associated with the device, and a final option labelled 'No account'. Below that is a button labelled CANCEL.
+     :alt: The Server Settings screen as displayed in the previous image. There is now a modal labeled *Google account,* with a set of radio button (single select) options. The options are Google Accounts associated with the device, and a final option labeled 'No account'. Below that is a button labeled CANCEL.
 
   
 5. **Optional:** Set a :guilabel:`Fallback submission URL`

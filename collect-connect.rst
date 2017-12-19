@@ -17,7 +17,7 @@ The two most common options for form and data management are:
   collect-connect-aggregate
   collect-connect-google
  
-:doc:`aggregate-guide` provides a robust data repository with tools for data visualization, querying, and export. For complex data collection and aggregation tasks, it is usually the right choice. However, setting up and maintaing an Aggregate server is not a trivial matter. 
+:doc:`aggregate-guide` provides a robust data repository with tools for data visualization, querying, and export. For complex data collection and aggregation tasks, it is usually the right choice. However, setting up and maintaining an Aggregate server is not a trivial matter. 
 
 Using Google Drive to manage form submissions is simpler and, in most cases, cheaper. With this simplicity you sacrifice a richer feature set. Additionally, using Google Drive may not meet your privacy requirements.
 

@@ -68,7 +68,7 @@ Installing on App Engine
 .. image:: /img/aggregate-install/notification.*
    :alt: Image showing blue notification icon.
 
-- Click on the notification icon and select the first option from the dropdown menu then. The option is labelled as *Create Project:your project name*.
+- Click on the notification icon and select the first option from the dropdown menu then. The option is labeled as *Create Project:your project name*.
 
 .. image:: /img/aggregate-install/go-to-project.*
    :alt: Image showing the option to create your project.      
@@ -116,7 +116,7 @@ Installing on App Engine
    - If you are running OSX, you must unzip the downloaded file before running the installer within it.
    - If you are on MacOSX Mountain Lion or onward, you will need to fiddle with `GateKeeper settings <http://osxdaily.com/2012/07/27/app-cant-be-opened-because-it-is-from-an-unidentified-developer/>`_ in order to run the installer.
    - If you are on Windows 10, you will need to approve running an unsigned installer.
-   - If you are on Linux, you will need to change the downloaded file's permissions to enable running it as a program. Right click on the file and click on :guilabel:`Properties`. Click on :guilabel:`Permissions` tab. Now check the box labelled as :guilabel:`Allow executing file as program`. Now double click on the file to run it.
+   - If you are on Linux, you will need to change the downloaded file's permissions to enable running it as a program. Right click on the file and click on :guilabel:`Properties`. Click on :guilabel:`Permissions` tab. Now check the box labeled as :guilabel:`Allow executing file as program`. Now double click on the file to run it.
 
 - The installer will guide you through configuring ODK Aggregate for App Engine. Click on :guilabel:`Forward` button each time you complete a step to move ahead.
 
