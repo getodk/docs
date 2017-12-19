@@ -10,7 +10,7 @@ Launching External Apps from Collect Forms
 Launching external apps to populate single fields
 ------------------------------------------------------
 
-ODK Collect can launch external applications to populate string, integer or decimal fields using the ``ex:intentString`` appearance. A ``value`` parameter that holds the current value for that field is passed to the application. Since v1.4.3, additional parameters can be specified. The names of these parameters are user defined and there are no reserved names. 
+ODK Collect can launch external applications to populate string, integer or decimal fields using the ``ex:intentString`` appearance. A ``value`` parameter that holds the current value for that field is passed to the application. Since v1.4.3, additional parameters can be specified. The names of these parameters are user defined and ``value`` is the only reserved name. 
 
 XLSForm
 ~~~~~~~~~
@@ -29,34 +29,41 @@ XForm XML
       <label>Click launch to start the counter app</label>
   </input>
 
-In the examples above, the parameter specified are ``form_id``, ``form_name``, ``question_id`` and ``question_name``. Any number of extra parameters can be specified. The parameter values can be:
+In the examples above, the parameters specified are ``form_id``, ``form_name``, ``question_id`` and ``question_name``. Any number of extra parameters can be specified. The parameter values can be:
 
-  - An xpath expression to an other field.
-  - A string literal defined in single quotes.
-  - A raw number (integer or decimal)
-  - Any JavaRosa function.
+  - XPath expressions referring to other fields and including function calls
+  - String literals defined in single quotes
+  - Raw integers or decimals
 
 .. _launch-apps-multiple-fields:
 
 Launching external apps to populate multiple fields
 -------------------------------------------------------
 
-Since v1.4.3, a ``field-list`` group can have an ``intent`` attribute that allows an external application to populate it. This functionality is not available in XLSForm and requires editing a form's raw XML representation.
+Since v1.4.3, a ``field-list`` group can have an ``intent`` attribute that allows an external application to populate it. 
+
+XLSForm
+~~~~~~~~~
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, body::intent
+
+  begin_group, mygroup, Fields to populate, field-list, "org.mycompany.myapp(my_text='Some text', uuid=/myform/meta/instanceID)"
+  text, sometext, Some text
+  integer, someinteger, Some integer
+  end_group                                        
 
 .. code-block:: xml
 
-  <group ref="/externaltest/consented" appearance="field-list" 
-          intent="org.myapp.COLLECT(uuid=/externaltest/meta/instanceID, 
-                                    deviceid=/externaltest/deviceid)">
-    <label>Please populate these:</label>
-    <input ref="/externaltest/consented/textFieldInGroup">
-      <label>A text</label>
+  <group ref="/myform/mygroup" appearance="field-list" 
+          intent="org.mycompany.myapp(my_text='Some text', 
+                                      uuid=/myform/meta/instanceID)">
+    <label>Fields to populate</label>
+    <input ref="/myform/mygroup/sometext">
+      <label>Some text</label>
     </input>
-    <input ref="/externaltest/consented/integerFieldInGroup">
-      <label>An integer</label>
-    </input>
-    <input ref="/externaltest/consented/decimalFieldInGroup">
-      <label>A decimal</label>
+    <input ref="/myform/mygroup/someinteger">
+      <label>Some integer</label>
     </input>
   </group>
 
