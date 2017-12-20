@@ -68,6 +68,23 @@ caption .headerlink::after {
     }
 }
 
+[class^='toctree-'] .menuselection {
+    background: none;
+    border: none;
+    margin: unset;
+    padding: unset;
+    font-weight: inherit;
+    color: inherit;
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
+    border-top-left-radius: unset;
+    border-top-right-radius: unset;
+    box-sizing: unset;
+    line-height: inherit;
+    font-family: inherit;
+    font-size: inherit;
+}
+
 .menuselection {
     background-attachment: scroll;
     background-clip: border-box;
