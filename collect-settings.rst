@@ -214,7 +214,11 @@ You can go to :menuselection:`⋮ --> Save settings to disk` to save the QR code
 
 .. note::
 
-  Settings are saved to :file:`/sdcard/odk/settings/collect.settings` and loaded from :file:`/sdcard/odk/collect.settings`. This is because we don't want to load and delete the saved settings on next app launch. When settings are saved, they are not necessarily saved for the same device but for some other device or mass configuration. So, saving and loading settings is done from separate locations.
+  Settings are exported and saved so that they can be loaded to other devices. When you save external settings, they are saved to :file:`/sdcard/odk/settings/collect.settings`. You can load external settings from this location to other devices as well.
+
+  At app launch, the settings are loaded from a different location :file:`/sdcard/odk/collect.settings`, which tracks the state of your settings at all times. 
+
+  Settings are saved to and loaded from different locations to avoid deleting the saved settings.
 
 Importing settings from a QR saved on your device
 """""""""""""""""""""""""""""""""""""""""""""""""""""
