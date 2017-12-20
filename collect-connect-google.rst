@@ -1,10 +1,5 @@
 Connecting to a Google Drive Account
 =======================================
-
-.. admonition:: Before you get started...
-
-  ODK Collect connects to your Google Account using the Google Play Store credentials stored on your Android device. This means that before you can connect Collect to your Google account, you need to `add your account to your device <https://support.google.com/googleplay/answer/2521798?hl=en>`_.
-
     
 1. From the Action Button (:guilabel:`⋮`), select :menuselection:`General Settings`
 
@@ -27,13 +22,13 @@ Connecting to a Google Drive Account
    .. image:: /img/collect-connect/server-settings-type-model-google.* 
      :alt: The Server Settings screen in the Collect App, as displayed in the previous image. There is now a modal menu labeled *Platform*, with single-select radio buttons for: *ODK Aggregate*, *Google Drive, Google Sheets*, and *Other*. *Google Drive, Google Sheets* is selected and circled in red.
 
-4. Select your :guilabel:`Google Account`
+4. Select your :guilabel:`Google Account`. You can select any account which is already linked with your device or add a new account as well.
 
    .. image:: /img/collect-connect/server-settings-google-account.* 
      :alt: The Server Settings screen in the Collect app. Below the *Type* setting is a section titled *Google Sheets settings*, with items for *Google Account* and *Fallback submission URL*. *Google Account* is circled in red.
 
    .. image:: /img/collect-connect/server-settings-google-account-modal.* 
-     :alt: The Server Settings screen as displayed in the previous image. There is now a modal labeled *Google account,* with a set of radio button (single select) options. The options are Google Accounts associated with the device, and a final option labeled 'No account'. Below that is a button labeled CANCEL.
+     :alt: The Server Settings screen as displayed in the previous image. There is now a modal labeled *Google account,* with a set of radio button (single select) options. The options are Google Accounts associated with the device, and a final option labeled 'Add account'. Below that are buttons labeled CANCEL and OK.
 
   
 5. **Optional:** Set a :guilabel:`Fallback submission URL`
