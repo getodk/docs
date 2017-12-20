@@ -28,22 +28,22 @@ Connecting to your own ODK Aggregate Server
 3. Select :guilabel:`Type`, and set it to :menuselection:`ODK Aggregate`
 
    .. image:: /img/collect-connect/server-settings-type-aggregate.* 
-     :alt: The Server Settings screen in the Collect app. The first item in the menu is labelled *Type*, and this item is circled in red.
+     :alt: The Server Settings screen in the Collect app. The first item in the menu is labeled *Type*, and this item is circled in red.
 
    .. image:: /img/collect-connect/server-settings-type-modal.* 
-     :alt: The Server Settings screen in the Collect App, as displayed in the previous image. There is now a modal menu labelled *Platform*, with single-select radio buttons for: *ODK Aggregate*, *Google Drive, Google Sheets*, and *Other*. *ODK Aggregate* is selected and circled in red.
+     :alt: The Server Settings screen in the Collect App, as displayed in the previous image. There is now a modal menu labeled *Platform*, with single-select radio buttons for: *ODK Aggregate*, *Google Drive, Google Sheets*, and *Other*. *ODK Aggregate* is selected and circled in red.
   
 
 4. Edit :guilabel:`ODK Aggregate settings`
 
    .. image:: /img/collect-connect/server-settings-aggregate-settings.* 
-     :alt: The Server Settings screen in the Collect app. Below the *Type* option is a section titled *ODK Aggregate Settings*, with the items labelled *URL*, *Username*, and *Password*. These three items are numbered in red.
+     :alt: The Server Settings screen in the Collect app. Below the *Type* option is a section titled *ODK Aggregate Settings*, with the items labeled *URL*, *Username*, and *Password*. These three items are numbered in red.
 
    .. image:: /img/collect-connect/server-settings-server-url.* 
-     :alt: The Server Settings screen in the Collect app, with a modal overlay titled *Server URL*. There is a single text-entry field with a URL, and buttons labelled OK and CANCEL.
+     :alt: The Server Settings screen in the Collect app, with a modal overlay titled *Server URL*. There is a single text-entry field with a URL, and buttons labeled OK and CANCEL.
 
    .. image:: /img/collect-connect/server-settings-odk-username.* 
-     :alt: The Server Settings screen in the Collect app, with a modal overlay titled *ODK Username.* There is a single text-entry field, and buttons labelled OK and CANCEL.
+     :alt: The Server Settings screen in the Collect app, with a modal overlay titled *ODK Username.* There is a single text-entry field, and buttons labeled OK and CANCEL.
 
    .. image:: /img/collect-connect/server-settings-odk-password.* 
      :alt: The Server Settings screen in the Collect app, with a modal overlay titled *ODK Password*. There is a single obscured-text field, and buttons for OK and CANCEL.
