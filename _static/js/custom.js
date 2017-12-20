@@ -1,9 +1,3 @@
-// Autogen unique ids
-
-function uniqId() {
-  return Math.round(new Date().getTime() + (Math.random() * 100));
-}
-
 // Implement Details-like hide/show on class "details"
 
 $(function(){
@@ -14,8 +8,9 @@ $(function(){
 	)
     });
     // Add a toggler to each details element.
+    var id = 1000000
     $(".details").each(function(index){
-	id = uniqId();
+	id = id + 1;
 	$(this).attr('id', id);
 	togl = "<span class='toggler hiding' data-toggle='" + id + "'></span><br>";
 	$(this).before(togl);
