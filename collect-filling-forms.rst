@@ -175,6 +175,48 @@ Required Questions
 .. image:: /img/form-widgets/trigger-sorry.*
   :alt: A question screen in the Collect app. An error text reads, "Sorry, this response is required."
 
+.. _change-form-language:  
+
+Changing language of a form
+-----------------------------
+
+If a form is available in multiple languages, you can choose a language in which you want the questions to appear. 
+
+1. Open the *Action Menu* (:menuselection:`⋮`)
+
+   .. image:: /img/collect-completing-forms/question-screen-highlight-kebab.* 
+     :alt: A question screen in the Collect app. The Action Menu ("kebab") in the top-right corner is circled in red.
+  
+2. Select :menuselection:`Change Language`.
+
+   .. image:: /img/collect-completing-forms/question-screen-highlight-change-language.* 
+     :alt: A question screen in the Collect app. The Action Menu is expanded and the option *Change Language* is circled in red.
+
+   .. note::
+   
+     :menuselection:`Change Language` option is only visible if a form is available in more than one language.  
+  
+3. Select the language you want the form questions to appear in.
+
+   .. image:: /img/collect-completing-forms/choose-language.* 
+     :alt: A modal titled *Change Language*, with radio buttons (single select) for languages: *English* and *French* and a CANCEL button. The option for *English* is selected.
+
+.. _save-partial-filled-form:
+
+Saving a partially filled form
+--------------------------------
+
+If you wish to save a partially filled form, you can click on the save icon (|save|) beside the form name.
+
+.. |save| image:: /img/collect-completing-forms/saveicon.*
+             :alt: Saves a form. 
+
+ 
+.. image:: /img/collect-completing-forms/save-partial-filled-form.*
+    :alt: Screen with the save icon displayed in ODK Collect on an Android phone. 
+    :class: device-screen-vertical
+  
+To :ref:`edit the saved form <editing-saved-forms>`, select :menuselection:`Edit Saved Form` in the Main Menu and select the form you wish to edit.
 
 .. _completing-form:
 
