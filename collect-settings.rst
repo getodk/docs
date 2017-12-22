@@ -1,4 +1,4 @@
-Collect Menus, Settings and Security
+Collect Menus, Settings, and Security
 =====================================
 
 .. _main-menu:

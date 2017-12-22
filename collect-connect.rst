@@ -1,45 +1,34 @@
 Connecting to a Server
 ================================
 
-When you first install Collect, it connects to the `ODK Aggregate Demo server <https://opendatakit.appspot.com/Aggregate.html>`_. You can try out the app by :ref:`downloading blank example forms <in-app-get-blank-forms>`, :ref:`filling them out <fill-blank-forms>`, and :ref:`uploading completed forms <uploading-forms>` back to the demo server.
+ODK Collect is used to complete surveys with participants. But if you want to review and analyse your collected data, you'll need to upload your collected data to another application.
 
-.. tip::
-  Managing forms from an ODK Aggregate server or Google Drive is typical. However, there are other ways to use ODK Collect. You can also :ref:`upload blank forms directly to your device <loading-forms-directly>`, :doc:`download completed forms directly with adb <collect-adb>`, or :doc:`use ODK Briefcase <briefcase-forms>`.
+.. note::
+
+  When you first install Collect, it connects to the `ODK Aggregate Demo server <https://opendatakit.appspot.com/Aggregate.html>`_. This allows you to try out the app by :ref:`downloading blank example forms <in-app-get-blank-forms>`, :doc:`filling them out   <collect-filling-forms>`, and :ref:`uploading completed forms <uploading-forms>` back to the demo server.
+  
+  Once you are done "trying out" Collect, and you start actually using it, you will need to decide on a plan for managing forms and data submissions.
+
+The two most common options for form and data management are:
+
+.. toctree::
+  :maxdepth: 2
+
+  collect-connect-aggregate
+  collect-connect-google
+ 
+:doc:`aggregate-guide` provides a robust data repository with tools for data visualization, querying, and export. For complex data collection and aggregation tasks, it is usually the right choice. However, setting up and maintaining an Aggregate server is not a trivial matter. 
+
+Using Google Drive to manage form submissions is simpler and, in most cases, cheaper. With this simplicity you sacrifice a richer feature set. Additionally, using Google Drive may not meet your privacy requirements.
+
+.. _other-collect-server-options:
+
+Other options
+~~~~~~~~~~~~~~~
 
 
-.. _connecting-to-aggregate:
+Managing forms from an ODK Aggregate server or Google Drive is typical. However, there are other ways to use Collect.
 
-Connecting to your own ODK Aggregate Server
-------------------------------------------------
-
-See :doc:`aggregate-install` to setup your ODK Aggregate server.
-
-- Open the app's main menu (:guilabel:`⋮`)  and then select :menuselection:`General Settings`.
-- Select :guilabel:`Server`.
-- :guilabel:`Type` should be set to :menuselection:`ODK Aggregate`.
-- Edit :guilabel:`ODK Aggregate settings` to connect to your ODK Aggregate instance.
-
-.. _connecting-to-google:
-
-Connecting to a Google Drive Account
---------------------------------------
-
-- Open the app's main menu (:guilabel:`⋮`)  and then select :menuselection:`General Settings`.
-- Select :guilabel:`Server`.
-- :guilabel:`Type` should be set to :menuselection:`Google Drive, Google Sheets`.
-- Select your Google account. (The available Google Accounts are pulled from the Google Play Store app.)
-
-.. _connecting-to-other:
-
-Connecting to another server app
------------------------------------
-
-Any server application that implements the `OpenRosa API <https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaAPI>`_ can be connected to, using the :ref:`connecting-to-aggregate` instructions. Choose :menuselection:`ODK Aggregate` as the server type.
-
-.. warning::
-
-  In :menuselection:`Server Settings`, there is currently a :guilabel:`Type` option of :menuselection:`Other`. It is unlikely you will need this option, since any server application will need to implement the same API as ODK Aggregate. 
-
-  If you think you might need to connect to a non-Aggregate server application, and are having trouble, we encourage you to visit our `Support Forum <https://forum.opendatakit.org/c/support>`_.
-
-  The :menuselection:`Other` option will likely be deprecated in the future, and its use is not recommended.  
+ - :ref:`Upload blank forms directly to your device <loading-forms-directly>`
+ - :doc:`Download completed forms directly with adb <collect-adb>`
+ - :doc:`Use ODK Briefcase <briefcase-forms>`
