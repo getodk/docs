@@ -619,6 +619,45 @@ The asterisks style is useful when you are combining several existing documents 
 
 See :ref:`sections-titles` for more details.
 
+.. _custom-css:
+
+Custom CSS
+------------
+
+You can add custom styling in :file:`_static/css/custom.css`. Whenever you add any custom styling, add short comments describing the changes made and the PR number in which the changes were made.
+
+For example:
+
+.. code-block:: css
+
+  /* Example css PR #xyx */
+
+  div[class^='example'] {
+    color: black;
+  }
+
+There are various sections in the :file:`custom.css` file:
+
+- Styling for rst roles and directives
+- Responsive css
+- Styling for JS implementation
+- Utility classes
+
+Each of these sections are enclosed between start and end comments. Make sure you add your code to the relevant section. If you don't find any section relevant, add a new section and add your code there.
+
+For example:
+
+.. code-block:: css
+
+  /* New section starts */
+
+  /* Example css PR #xyx */
+
+  div[class^='example'] {
+    color: black;
+  }
+  
+  /* New section ends */ 
 
 .. _about-toc:
 
@@ -1664,3 +1703,4 @@ Use the ``code-block`` directive to markup code samples. Specify the language on
 
     .. code-block:: python
       :class: wrap
+
