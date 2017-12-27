@@ -21,7 +21,7 @@ Classes
 
     * ``Condition`` --- Represents an expression for ``relevant``, ``required`` and ``readonly`` attributes which always evaluates to ``true`` or ``false``.
     * ``Recalculate``--- Represents an expression for the ``calculate`` attribute and can evaluate to any supported data type.
-- ``QuickTriggerable`` --- A ``Triggerable`` class wrapper which provides a shallow comparison of ``Triggerble`` implementations. Once the DAG structure is built, no new ``Triggerable`` instances are created and therefore there is no need for the deep comparison. For the sake of readability, this document will always reference to ``Triggerable`` class even if ``QuickTriggerable`` is actually used in the code. 
+- ``QuickTriggerable`` --- A ``Triggerable`` class wrapper which provides a shallow comparison of ``Triggerable`` implementations. Once the DAG structure is built, no new ``Triggerable`` instances are created and therefore there is no need for the deep comparison. For the sake of readability, this document will always reference to ``Triggerable`` class even if ``QuickTriggerable`` is actually used in the code. 
 - ``IDag`` --- An abstract class represents an interface for the DAG management and triggerable evaluation logic.
 - ``LatestDagBase`` --- An abstract implementation of ``IDag`` class which serves as a base for all actual implementation of ``IDag``
 - ``Safe2014DagImpl`` --- The only supported ``IDag`` implementation.
@@ -31,7 +31,7 @@ High level description
 -----------------------
 
 Each triggerable expression is evaluated at form load and save. Additionally, if the XPath expression references other node(s),
-it is evaluated if any of the referenced node is updated. Moreover, it may happen that a referenced node also has a triggerable
+it is evaluated if any of the referenced nodes are updated. Moreover, it may happen that a referenced node also has a triggerable
 expression which references other nodes etc. 
 So triggerables may depend on each other. 
 
@@ -46,9 +46,9 @@ So the dependency is ``tC`` > ``tB`` > ``tA``.
 When a form is loaded or saved, those triggerables should be evaluated in the following order: ``tC``, ``tB``, ``tA``.
 When a value of ``nodeC`` is changed then ``tB`` and ``tA`` must be evaluated. In this order.
 
-Lets change the above so the ``nodeC`` node has a ``relevant`` expression which returns ``true`` if ``nodeA`` has certain value.
+Lets change the above so the ``nodeC`` node has a ``relevant`` expression which returns ``true`` if ``nodeA`` has a certain value.
 This gives the following dependency ``tA`` > ``tC`` > ``tB`` > ``tA``. Since ``tA`` depends on ``tB`` and ``tB`` depends on ``tC``
-it results in an infinity loop. A paradox which cannot be handled.
+it results in an infinite loop. A paradox which cannot be handled.
 
 Direct Acyclic Graph ensures that triggerables are in the topological order. If there are cycles then DAG cannot be constructed
 and an exception is thrown.
@@ -135,7 +135,7 @@ Two or more nodes can have the same triggerable expression for a given bind attr
 In the above snippet, both ``nodeA`` and ``nodeB`` have the same ``calculation`` expression which is evaluated
 when ``nodeC`` is updated. The ``nodeC`` is the *trigger* of ``nodeA`` and ``nodeB`` calculations.
 
-To avoid storing two separate but equal``Triggerable`` instances, the ``IDag.addTriggerable(Triggerable t)``
+To avoid storing two separate but equal ``Triggerable`` instances, the ``IDag.addTriggerable(Triggerable t)``
 method first checks if a same triggerable has been already added. 
 Two ``Triggerable`` instances are considered equal if:
 
@@ -143,14 +143,14 @@ Two ``Triggerable`` instances are considered equal if:
 * Both have the same expressions to be evaluated.
 * Both have the same triggers. This is implied by the second bullet as triggers are the nodes referenced in the expressions.
 
-If such triggerable already exists, ``IDag`` does not add a new instance but updates the existing``Triggerable`` one's context so it points to the 
+If such triggerable already exists, ``IDag`` does not add a new instance but updates the existing ``Triggerable`` one's context so it points to the 
 highest common root. For the above example, the highest common root for ``nodeA`` and ``nodeB`` calculations is ``/data``.
 The passed instance ``t`` is ignored and a previously added ``Triggerable`` one is returned and should be used for the further processing.
 The context is used later when constructing a DAG structure.
 
 If such triggerable does not exist, it is added to the ``unorderedTriggerables`` list and the ``triggerIndex`` map.
 The passed triggerable ``t`` instance is returned.
-The list is later used to construct the topoligically sorted list ``triggerablesDAG``.
+The list is later used to construct the topologically sorted list ``triggerablesDAG``.
 The ``triggerIndex`` maps the triggers to the triggerables.
 
 Each ``Triggerable`` instance comes with a list of targets which should be updated with the evaluation result.
@@ -171,13 +171,13 @@ in the ``FormInstanceParser.applyInstanceProperties(FormInstance instance)`` met
 Finalization and constructing the DAG
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Once all ``bind`` nodes are parsed and all ``Triggerable`` collected, the ``IDag`` can be finalized and
+Once all ``bind`` nodes are parsed and all ``Triggerable`` objects collected, the ``IDag`` can be finalized and
 the actual DAG structure can be constructed. The ``finalizeTriggerables(FormInstance mainInstance, EvaluationContext evalContext)``
 method is responsible for the finalization. Once it completes, ``triggerablesDAG`` and ``conditionRepeatTargetIndex`` becomes
 populated and valid. 
 
 * ``triggerablesDAG`` stands for the topologically ordered list of ``Triggerable`` instances. All evaluation takes place according to the order in this list.
-* ``conditionRepeatTargetIndex`` maps a repeat group reference (``TreeReference``) to its``Condition`` that determines the relevance.  
+* ``conditionRepeatTargetIndex`` maps a repeat group reference (``TreeReference``) to its ``Condition`` that determines the relevance.  
 
 
 Triggering
@@ -198,12 +198,12 @@ Part of the triggering functionality is extracted into a couple of private/prote
 
 .. code-block:: java
 
-protected Set<QuickTriggerable> doEvaluateTriggerables(
-    FormInstance mainInstance, 
-    EvaluationContext evalContext, 
-    Set<QuickTriggerable> tv, 
-    TreeReference anchorRef, 
-    Set<QuickTriggerable> alreadyEvaluated) 
+    protected Set<QuickTriggerable> doEvaluateTriggerables(
+        FormInstance mainInstance, 
+        EvaluationContext evalContext, 
+        Set<QuickTriggerable> tv, 
+        TreeReference anchorRef, 
+        Set<QuickTriggerable> alreadyEvaluated) 
 
 This method is responsible for evaluation of given set of ``Triggerable`` instances with the respect to the order in ``triggerablesDAG``.
 Triggerables present in the ``alreadyEvaluated`` set are ignored. This argument is useful when triggering calculations
@@ -211,10 +211,10 @@ for a group node creation or deletion and will be described later.
 
 .. code-block:: java
 
-private Set<QuickTriggerable> evaluateTriggerables(
-    FormInstance mainInstance, EvaluationContext evalContext,
-    Set<QuickTriggerable> tv, TreeReference anchorRef,
-    Set<QuickTriggerable> alreadyEvaluated)
+    private Set<QuickTriggerable> evaluateTriggerables(
+        FormInstance mainInstance, EvaluationContext evalContext,
+        Set<QuickTriggerable> tv, TreeReference anchorRef,
+        Set<QuickTriggerable> alreadyEvaluated)
 
 This method is called before the above one (``doEvaluateTriggerables``) and is responsible for collecting
 calculations that depend on the set of directly triggered conditions (``tv``). 
@@ -226,7 +226,7 @@ A form is loaded
 ~~~~~~~~~~~~~~~~
 
 After the form is loaded, 
-the ``initializeTriggerables(FormInstance mainInstance, EvaluationContext evalContext, TreeReference rootRef, boolean midSurvey)``
+the ``initializeTriggerables(FormInstance mainInstance, EvaluationContext evalContext, TreeReference rootRef, boolean midSurvey)`` 
 method is called. It just iterates over the ``triggerablesDAG`` collection and grabs each triggerable which targets
 at least one node that is a child of the ``rootRef`` parameter and puts it in the ``applicable`` collection. 
 Next, the collection is passed down to the private/protected methods that take care of gathering dependent triggerables
@@ -238,8 +238,8 @@ the root reference is passed and therefore all triggerables in the form should b
 A value of a node changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When an answer is commited, 
-the ``triggerTriggerables(FormInstance mainInstance, EvaluationContext evalContext, TreeReference ref, boolean midSurvey);``.
+When an answer is committed,
+the ``triggerTriggerables(FormInstance mainInstance, EvaluationContext evalContext, TreeReference ref, boolean midSurvey)``
 method is called. It finds triggerables that are triggered by the ``ref`` in the ``triggerIndex`` map. 
 Those triggerables are passed down to the private/protected methods that take care of gathering dependent triggerables
 and evaluating them in the correct order. 
@@ -295,7 +295,7 @@ This scenario is handled by the following method:
 A form instance is finalized
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When a form is finalized, all triggerables for the relevant and visible nodes are re-evaluted. 
+When a form is finalized, all triggerables for the relevant and visible nodes are re-evaluated. 
 Visible means nodes that have a corresponding input definition in the form ``body``.
 Validation takes place in the ``IDag.validate(FormEntryController formEntryControllerToBeValidated, boolean markCompleted)`` method
 and uses the API class ``FormEntryController`` to navigate through all relevant questions and re-commit them in order
