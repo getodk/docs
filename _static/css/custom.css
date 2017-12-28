@@ -1,21 +1,52 @@
 /* Custom CSS for ODK Docs */
 
+/* document font styling PR #90 */
+
 .document {
     font-family: Georgia, "Times New Roman", serif;
-}  
+} 
+
+/* Styling for rst roles and directives starts */
+
+/* code-sample styling PR #90 */ 
 
 div.highlight pre, pre {
     font-size: 14px;
     padding: 14px;
 }
 
+/* default wrap for rst overflow lines PR #310 */
+
+div[class^='highlight-rst'] pre {
+    white-space: pre-wrap;
+}
+
+
+/* table stying, th and tc role PR #90 */
+
 table, .th, .tc {
     font-family: Calibri, Arial, Helvetica, sans;
 }
 
+/* th role PR #90 */
+
 .th {
     font-weight: bold;
 }
+
+/* formstate role PR #111 */
+
+.formstate {
+    font-style: italics;
+}
+
+/* gesture role PR #111 */
+
+.gesture {
+    font-style: italics;
+}
+
+/* caption styling PR #90 */
 
 caption {
     padding-top: 0 !important;
@@ -35,38 +66,67 @@ caption .headerlink::after {
     font-size: 75%;
 }
 
+/* screenshot styling PR #90 */
+
 .rst-content img, .rst-content video {
     max-height: 85vh !important;
     width: auto !important;
     margin-bottom: 24px;
 }
 
+/* styling for side-by-side images PR #361 */
+
 .rst-content img.side-by-side {
     max-height: none !important;
     max-width: 45%
 }
 
-.formstate {
-    font-style: italics;
+/* Figure caption styling PR #371 */
+
+.figure{
+   display: table;
+ }
+ 
+.figure p.caption{
+   border-top: solid 10px #fcfcfc;
+   padding: 10px;
+   display: table-caption;
+   caption-side: bottom;
+   background-color: darkgray;
+   color: #fcfcfc;
+   font-size: 85%;
+   text-align: center;
+ }
+
+/* admonition styling PR #178 */
+
+[class^="admonition-"] {
+      
+               background-attachment: scroll;
+               background-clip: border-box;
+               background-color: rgb(231, 242, 250);
+               background-image: none;
+               background-origin: padding-box;
+               background-position: 0% 0%;
+               background-position-x: 0%;
+               background-position-y: 0%;
+               background-repeat: repeat;
+               background-size: auto auto;
+               box-sizing: border-box;
+               color: rgb(64, 64, 64);
+               font-family: Georgia,"Times New Roman",serif;
+               font-size: 16px;
+               font-weight: 400;
+               line-height: 24px;
+               margin-bottom: 24px;
+               padding-bottom: 12px;
+               padding-left: 12px;
+               padding-right: 12px;
+               padding-top: 12px;
+          
 }
 
-.gesture {
-    font-style: italics;
-}
-
-.footerText {
-    color: black;
-    font-family: Georgia,'Times New Roman',serif;
-    font-size: 16px;
-    font-weight: 300;
-}
-
-@media screen and (max-width: 950px) {
-    .btn{
-        margin-bottom: 1em;
-        width: 100%;
-    }
-}
+/* menuselection styling in toctree PR #405 */
 
 [class^='toctree-'] .menuselection {
     background: none;
@@ -84,6 +144,8 @@ caption .headerlink::after {
     font-family: inherit;
     font-size: inherit;
 }
+
+/* menuselection role styling PR #173 PR #175 */
 
 .menuselection {
     background-attachment: scroll;
@@ -137,31 +199,9 @@ caption .headerlink::after {
     -moz-border-top-colors: none;
 }
 
-[class^="admonition-"] {
-      
-               background-attachment: scroll;
-               background-clip: border-box;
-               background-color: rgb(231, 242, 250);
-               background-image: none;
-               background-origin: padding-box;
-               background-position: 0% 0%;
-               background-position-x: 0%;
-               background-position-y: 0%;
-               background-repeat: repeat;
-               background-size: auto auto;
-               box-sizing: border-box;
-               color: rgb(64, 64, 64);
-               font-family: Georgia,"Times New Roman",serif;
-               font-size: 16px;
-               font-weight: 400;
-               line-height: 24px;
-               margin-bottom: 24px;
-               padding-bottom: 12px;
-               padding-left: 12px;
-               padding-right: 12px;
-               padding-top: 12px;
-          
-}
+/* Upgrade notes admonition PR #297 */
+
+/* upgrade admonition styling */
 
 .upgrade {
    background-attachment: scroll;
@@ -187,6 +227,8 @@ caption .headerlink::after {
    padding-top: 12px;
 }
 
+/* upgrade admonition title styling */
+
 .upgrade p.first.admonition-title{
     font-weight: bold;
     display: block;
@@ -197,19 +239,24 @@ caption .headerlink::after {
     margin-bottom: 12px;
 }
 
-div[class^='highlight-rst'] pre {
-    white-space: pre-wrap;
+/* Styling for rst roles and directives ends */
+
+/* Responsive css starts */
+
+/* Responsive footer buttons PR #152 */
+
+@media screen and (max-width: 950px) {
+    .btn{
+        margin-bottom: 1em;
+        width: 100%;
+    }
 }
 
-div[class^='wrap'] pre {
-    white-space: pre-wrap;
-}
+/* Responsive css ends */
 
-div[class^='unwrap'] pre {
-    white-space: pre;
-}
+/* Styles related to JS implementation starts */
 
-/* Styles related to details-like JS implementation */
+/* Styles related to details-like JS implementation PR #361 */
 
 .toggler {
     font-weight: bold;
@@ -225,27 +272,33 @@ div[class^='unwrap'] pre {
     margin-bottom: 12px;
 }
 
+/* Styles related to JS implementation ends */
 
-/* Utility Classes */
+/* Utility Classes starts */
+
+/* footer text styling PR #130 */
+
+.footerText {
+    color: black;
+    font-family: Georgia,'Times New Roman',serif;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+/* block class to fix image weirdness PR #361 */
 
 .block {
     display: block;
 }
 
-/* Figure caption styling */
+/* wrap and unwrap classes PR #310 */
 
-.figure{
-   display: table;
- }
- 
- .figure p.caption{
-   border-top: solid 10px #fcfcfc;
-   padding: 10px;
-   display: table-caption;
-   caption-side: bottom;
-   background-color: darkgray;
-   color: #fcfcfc;
-   font-size: 85%;
-   text-align: center;
- }
+div[class^='wrap'] pre {
+    white-space: pre-wrap;
+}
 
+div[class^='unwrap'] pre {
+    white-space: pre;
+}
+
+/* Utility classes ends */
