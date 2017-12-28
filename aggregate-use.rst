@@ -2,6 +2,7 @@ Using ODK Aggregate
 =====================
 
 .. toctree::
+  :maxdepth: 2
 
   aggregate-forms
   aggregate-data
