@@ -9,4 +9,5 @@ Using ODK Aggregate
   aggregate-admin
   aggregate-data-access
   aggregate-visualize
+  form-uploader
   aggregate-help
