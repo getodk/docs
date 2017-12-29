@@ -59,7 +59,7 @@ Basic Auth broken prior to Aggregate 1.4.14
 
 :doc:`openrosa` servers are :doc:`required to implement at least one authentication protocol <openrosa-authentication>` as outlined in `RFC2617 <the capability of Basic Auth>`_.
 
-- a :ref:`subset` of `RFC2617 Digest Authentication <https://tools.ietf.org/html/rfc2617#section-3>`_
+- a subset of `RFC2617 Digest Authentication <https://tools.ietf.org/html/rfc2617#section-3>`_
 - `Basic Authentication <https://tools.ietf.org/html/rfc2617#section-2>`_.
 
 Aggregate v1.4.14 added an SHA-1 library so that Basic Auth is possible. Prior to this, Basic Auth was not possible.
