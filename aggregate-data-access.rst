@@ -90,12 +90,21 @@ Fusion Tables is an experimental data visualization web application to gather, v
 
   The solution is to the problem in above example is to design your forms with field names like `purchaser_name` and `supplier_name`.
 
+.. admonition:: OAuth2 Service Account Required
+
+  Publishing data to Google Fusion Tables requires an :doc:`oauth2-service`.  
+  
+  
 .. _google-spreadsheet:
 
 Google Spreadsheets
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Spreadsheets is Google’s cloud-hosted spreadsheet solution. Multimedia files are represented by including standard web links to the files. Repeats are also represented with links to the underlying data. All metadata is preserved. Spreadsheets has a 400,000 cell limit, above which errors will be reported. Spreadsheets also has an API that can be used to export/publish data. Similar to Google Fusion tables, non-repeating grouping information is not preserved.
+
+.. admonition:: OAuth2 Service Account Required
+
+  Publishing data to Google Spreadsheets requires an :doc:`oauth2-service`.
 
 .. _json-server:
 

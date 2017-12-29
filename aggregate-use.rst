@@ -8,4 +8,5 @@ Using ODK Aggregate
   aggregate-data
   aggregate-admin
   aggregate-data-access
+  aggregate-visualize
   aggregate-help

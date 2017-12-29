@@ -1,11 +1,12 @@
+:orphan: orphan
+	
 ***************************
 OAuth2 Service Account
 ***************************
 
-.. _oauth-service:
+.. An orphan page does not create a warning if it is not included in a TOC.
+   This page is linked from aggregate-data-access and is only relevant there. 
 
-Overview
-====================
 Publishing your data into Google Spreadsheets or Google Fusion Tables requires a Google Oauth2 Service Account.
 
 .. _api-request:

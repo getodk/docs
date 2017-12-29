@@ -44,3 +44,4 @@ redirects:
   aggregate-use/#submissions: aggregate-data
   aggregate-use/#form-manage: form-management
   aggregate-guide/: aggregate-intro
+  visualize/: aggregate-visualize
