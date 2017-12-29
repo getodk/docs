@@ -2,7 +2,8 @@ Setting Up ODK Aggregate
 ===============================
 
 .. toctree::
-  
+  :maxdepth: 2
+   
   aggregate-install
   aggregate-deployment-planning
   aggregate-upgrade
