@@ -82,13 +82,13 @@ Google Fusion Tables
 
 Fusion Tables is an experimental data visualization web application to gather, visualize, and share larger data tables. Multimedia files are represented by including standard web links to the files. Repeating groups of questions are split into separate tables. All metadata is preserved. Fusion Tables is hosted in Google’s cloud infrastructure. We know of no row limit, but one may exist. Fusion Tables also has an API that can be used to export/publish data.   
 
+.. _non-repeat-group-warning:
+
 .. warning::
 
   Non-repeating grouping information is not preserved. This implies that if your form has a non-repeating group `purchaser` and a second non-repeating group `supplier` and within each of these groups, you have a `name` field, then when you publish to Fusion Tables, there will be two columns called `name`. Unfortunately, that badly confuses Fusion Tables, and generally results in data not transferring successfully into Fusion Tables. 
 
-.. tip::
-
-  The solution is to the problem in above example is to design your forms with field names like `purchaser_name` and `supplier_name`.
+  The solution is to this problem is to design your forms with field names such as `purchaser_name` and `supplier_name`. In other words, use unique names throughout your form.
 
 .. admonition:: OAuth2 Service Account Required
 
@@ -100,7 +100,11 @@ Fusion Tables is an experimental data visualization web application to gather, v
 Google Spreadsheets
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Spreadsheets is Google’s cloud-hosted spreadsheet solution. Multimedia files are represented by including standard web links to the files. Repeats are also represented with links to the underlying data. All metadata is preserved. Spreadsheets has a 400,000 cell limit, above which errors will be reported. Spreadsheets also has an API that can be used to export/publish data. Similar to Google Fusion tables, non-repeating grouping information is not preserved.
+Spreadsheets is Google’s cloud-hosted spreadsheet solution. Multimedia files are represented by including standard web links to the files. Repeats are also represented with links to the underlying data. All metadata is preserved. Spreadsheets has a 400,000 cell limit, above which errors will be reported. Spreadsheets also has an API that can be used to export/publish data. 
+
+.. warning::
+  
+  As with Google Fusion tables, :ref:`non-repeating grouping information is not preserved <non-repeat-group-warning>`.
 
 .. admonition:: OAuth2 Service Account Required
 
