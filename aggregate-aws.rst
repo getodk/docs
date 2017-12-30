@@ -55,40 +55,45 @@ For screenshots and more on the general set-up of Tomcat on AWS, see the excelle
     - If you’re using the command-line ssh, you can also use the command-line scp to copy files. The syntax is similar to ssh, but of course you also need to specify the source and destination file paths.
     - An easier option is to use an FTP program like FileZilla (as long as it supports SFTP). To configure FileZilla to connect to your instance, go into :menuselection:`Edit-->Settings/Preferences-->Connection-->SFTP` and add your private key to FileZilla’s keystore (it will offer to convert the key format, which you should accept). Then, go into Site Manager and create a new site. The host should be the IP, name, or Public DNS for your instance, the port can be blank, the protocol should be **SFTP – SSH File Transfer Protocol**, the login type should be Normal, and the user should be **ec2-user**. Everything else should be left at the defaults, including the password (which will be blank). When you connect, the default directory will be the ec2-user’s home directory, but you can also navigate to other directories.
 
-11. Install Tomcat 6. This can be done by running :command:`sudo yum install tomcat6`. This installs configuration files into :file:`/etc/tomcat6` and other files into :file:`/usr/share/tomcat6`. Log files go into :file:`/var/log/tomcat6`.
+11. Install Tomcat 6. 
 
-12. Install MySQL. This can be done by running:
+    .. code-block:: console
+    
+      $ sudo yum install tomcat6
+    
+    This installs configuration files into :file:`/etc/tomcat6` and other files into :file:`/usr/share/tomcat6`. Log files go into :file:`/var/log/tomcat6`.
 
- .. code-block:: console
+12. Install MySQL.
+
+    .. code-block:: console
   
-   $ sudo yum install mysql mysql-server
+      $ sudo yum install mysql mysql-server
 
- Now use vi or an editor to edit :file:`/etc/my.cnf` (e.g., :command:`sudo vi /etc/my.cnf`). In the [mysqld] section, add (the max_allowed_packet allows up to a 4GB file attachment):
+    Open :file:`/etc/my.cnf`. In the ``[mysqld]`` section, add:
 
- .. code-block:: none
+    .. code-block:: none
 
-   character_set_server=utf8
-   collation_server=utf8_unicode_ci
-   max_allowed_packet=1073741824
+      character_set_server=utf8
+      collation_server=utf8_unicode_ci
+      max_allowed_packet=1073741824
 
-13. Run MySQL. To run MySQL:
+13. Run MySQL.
 
-   .. code-block:: console
+    .. code-block:: console
   
-     $ sudo service mysqld start
+      $ sudo service mysqld start
 
 14. Install and transfer ODK Aggregate files.
 
-    - First, install ODK Aggregate on your local computer (not on your AWS instance).
+    a. First, install ODK Aggregate on your local computer (not on your AWS instance).
   
     .. note::
-  
 
       During set-up, it’s important to specify that this will be a MySQL installation, and it is also very important that you specify the correct domain name or IP address that will be used to access your Aggregate server. Ideally, this will be a specific domain name that you have already mapped to an elastic IP (and can re-map later if you change the IP).
 
-    - The installation will create a :file:`create_db_and_user.sql` file. Upload this to your ec2-user home directory as described in point 10.
-    - The installation will also create an :file:`ODKAggregate.war` file. Rename this to :file:`ROOT.war` and upload it to the :file:`/usr/share/tomcat6/webapps` folder. If you receive a *Permission Denied* error, you might need to execute :command:`chmod -R 755` or something similar for the webapps folder.
-    - After :file:`ROOT.war` has been copied to the server, you need to make sure tomcat has permission to use it. Run :command:`sudo chown tomcat ROOT.war` and :command:`sudo chgrp tomcat ROOT.war` in the webapps directory to ensure this is the case.
+    b. The installation will create a :file:`create_db_and_user.sql` file. Upload this to your ec2-user home directory as described in point 10.
+    c. The installation will also create an :file:`ODKAggregate.war` file. Rename this to :file:`ROOT.war` and upload it to the :file:`/usr/share/tomcat6/webapps` folder. If you receive a *Permission Denied* error, you might need to execute :command:`chmod -R 755` or something similar for the webapps folder.
+    d. After :file:`ROOT.war` has been copied to the server, you need to make sure tomcat has permission to use it. Run :command:`sudo chown tomcat ROOT.war` and :command:`sudo chgrp tomcat ROOT.war` in the webapps directory to ensure this is the case.
 
 15. Configure MySQL.
 
@@ -132,10 +137,10 @@ For screenshots and more on the general set-up of Tomcat on AWS, see the excelle
 
 18. Further set-up for production servers:
 
-  - You will want to create a system to monitor and manage the log files in :file:`/var/log/tomcat6`.
-  - You will also want to create a system for regular back-ups and a plan for how to restore them when needed. This will be needed to safely back up the MySQL database, which may be in-use at any given time.
+    - You will want to create a system to monitor and manage the log files in :file:`/var/log/tomcat6`.
+    - You will also want to create a system for regular back-ups and a plan for how to restore them when needed. This will be needed to safely back up the MySQL database, which may be in-use at any given time.
 
-  .. note::
+    .. note::
 
-    - The micro instance is only free for 12 months from AWS sign-up, and that you may exceed the free quotas on disk space or network bandwidth before that point (`see <http://aws.amazon.com/free/>`_).
-    - You may at some point need to upgrade your instance to a standard instance if the micro instance is not providing enough performance.
+      - The micro instance is only free for 12 months from AWS sign-up, and that you may exceed the free quotas on disk space or network bandwidth before that point (`see <http://aws.amazon.com/free/>`_).
+      - You may at some point need to upgrade your instance to a standard instance if the micro instance is not providing enough performance.
