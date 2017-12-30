@@ -29,16 +29,14 @@ Free response
 
 Free-entry text and number answers are entered using the device keyboard. The appropriate keyboard (letters or numbers) opens when the question appears.
 
-.. raw:: html
+.. video:: /vid/collect-completing-forms/keyboard-popup.mp4
 
-  <video controls muted style="max-width:100%">
-    <source src="/collect-completing-forms/keyboard-popup.mp4">
-  </video>
+  Video showing text keyboard popup when a string input is required and number keyboard popup when a number input is required.
 
 Select response
 ~~~~~~~~~~~~~~~~~
 
-Questions with response choices can be answered by touching the selected items. These include radio buttons (single-select), dropdowns (single-select), check boxes (multi-select), and images choices (single and multi-select).
+Questions with response choices can be answered by touching the selected items. These include radio buttons (single-select), dropdowns (single-select), check boxes (multi-select), and image choices (single and multi-select).
 
 .. figure:: /img/collect-completing-forms/single-select.* 
   :alt: A question screen with radio buttons (single-select).
@@ -101,11 +99,9 @@ To move between questions, :gesture:`Swipe Left or Right`.
   :alt: A question screen in the Collect App. Overlaid on the screen is an icon of a hand with extended finger and arrows pointing left and right, representing a swiping gesture.
   :class: block
 
-.. raw:: html
+.. video:: /vid/collect-completing-forms/swipe-example.mp4
 
-  <video controls muted style="max-width:100%">
-    <source src="/collect-completing-forms/swipe-example.mp4">
-  </video>
+  Video showing swiping between three questions.
 
 Left and Right Buttons  
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -167,12 +163,9 @@ Autoadvance Questions
 
 Some questions will :ref:`auto-advance <autoadvance-widget>` after being answered.
 
-.. raw:: html
+.. video:: /vid/form-widgets/auto-advance.mp4
 
-  <video controls muted style="max-width:100%">
-    <source src="/form-widgets/auto-advance.mp4">
-  </video>
-
+  Video showing auto-advance after the questions are answered.
 
 Required Questions
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -182,6 +175,48 @@ Required Questions
 .. image:: /img/form-widgets/trigger-sorry.*
   :alt: A question screen in the Collect app. An error text reads, "Sorry, this response is required."
 
+.. _change-form-language:  
+
+Changing language of a form
+-----------------------------
+
+If a form is available in multiple languages, you can choose a language in which you want the questions to appear. 
+
+1. Open the *Action Menu* (:menuselection:`⋮`)
+
+   .. image:: /img/collect-completing-forms/question-screen-highlight-kebab.* 
+     :alt: A question screen in the Collect app. The Action Menu ("kebab") in the top-right corner is circled in red.
+  
+2. Select :menuselection:`Change Language`.
+
+   .. image:: /img/collect-completing-forms/question-screen-highlight-change-language.* 
+     :alt: A question screen in the Collect app. The Action Menu is expanded and the option *Change Language* is circled in red.
+
+   .. note::
+   
+     :menuselection:`Change Language` option is only visible if a form is available in more than one language.  
+  
+3. Select the language you want the form questions to appear in.
+
+   .. image:: /img/collect-completing-forms/choose-language.* 
+     :alt: A modal titled *Change Language*, with radio buttons (single select) for languages: *English* and *French* and a CANCEL button. The option for *English* is selected.
+
+.. _save-partial-filled-form:
+
+Saving a partially filled form
+--------------------------------
+
+If you wish to save a partially filled form, you can click on the save icon (|save|) beside the form name.
+
+.. |save| image:: /img/collect-completing-forms/saveicon.*
+             :alt: Saves a form. 
+
+ 
+.. image:: /img/collect-completing-forms/save-partial-filled-form.*
+    :alt: Screen with the save icon displayed in ODK Collect on an Android phone. 
+    :class: device-screen-vertical
+  
+To :ref:`edit the saved form <editing-saved-forms>`, select :menuselection:`Edit Saved Form` in the Main Menu and select the form you wish to edit.
 
 .. _completing-form:
 

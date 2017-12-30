@@ -107,7 +107,7 @@ Loading form media
 
 If a form :ref:`includes images or other media <image-options>`, those files have to be loaded to the device along with the form.
 
-Media files should be placed in a folder labelled :file:`{form-name}-media`. 
+Media files should be placed in a folder labeled :file:`{form-name}-media`. 
 
 - When using ODK Aggregate, the form upload prompt includes instructions to upload the :file:`-media` folder. The files are downloaded automatically when :ref:`fetching forms from Aggregate <in-app-get-blank-forms>`.
 - When using Google Drive, the :file:`-media` folder should be uploaded to the same location as the form.
