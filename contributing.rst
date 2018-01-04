@@ -522,17 +522,40 @@ Complete the pull request. The maintainers will review it as quickly as possible
 
 .. note::
 
-   If you happen to rename any document file(:file:`*.rst`), then be sure that you add the redirect in your PR.
+   If you happen to rename any document file(:file:`*.rst`), then make sure to add the redirect in your PR.
 
+<<<<<<< HEAD
    To add the redirect go to :file:`s3_website.yml`. Add a mapping from the old file name to the new file name below the **redirects:** line, one mapping per line. Several examples of how to format these are shown in the file.
+=======
+   You can add the redirect in :file:`s3_website.yml`. Add a mapping from the old file name to the new file name under the **redirects:** line, one mapping per line. You can refer the already added redirects to get a understanding of formatting redirects.
+>>>>>>> 0800677... added info on changeref script
 
-   For example you rename a file to :file:`newcheck.rst` from :file:`oldcheck.rst`, then to add the redirect:
+   For example, you rename a file to :file:`newcheck.rst` from :file:`oldcheck.rst`, then to add the redirect:
 
    .. code-block:: yaml
 
      redirects:
+<<<<<<< HEAD
       oldcheck/index.html: /newcheck
+=======
+      oldcheck: newcheck
+>>>>>>> 0800677... added info on changeref script
 
+.. tip::
+  
+  When you move files around or rename files, you need to update all the cross-references as well as add a redirect. Instead of doing that maunally, you can use the :file:`util/changeref.py` script. To update references and add redirects:
+
+  .. code-block:: console
+
+    python util/changeref.py [old-ref-type] [old-ref-label] [new-ref-type] [new-ref-label] [old-path] [new-path] 
+
+  Reference type can be ``doc`` or ``ref``.  
+
+  For example, you renamed a doc from :file:`collect-guide.rst` to :file:`collect-intro.rst`:
+  
+  .. code-block:: console
+  
+    python util/changeref.py doc collect-guide doc collect-intro collect-guide collect-intro
 
 .. _keep-working-the-docs:
 
