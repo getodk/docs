@@ -382,5 +382,49 @@ User Access Control Settings
 This section allows the admin to hide menu items and settings from the user. It contains the following options:
 
 - :guilabel:`Main Menu Settings` : Allows admin to hide some of the main-menu options from the users.
-- :guilabel:`User Settings` : Allows admin to select the options that'll be visible to the users in the :guilabel:`General settings` menu.
-- :guilabel:`Form Entry Settings` : Admin can configure the `form entry items` visible to the users. For example unchecking the :guilabel:`change language` option will prevent the user from changing the device language.
+
+.. image:: /img/collect-settings/main-menu-settings.*
+  :alt: A list of checked main menu options. The options to be hidden from the main menu can be unchecked. 
+  :class: device-screen-vertical
+
+- :guilabel:`User Settings` : Allows admin to select the options that'll be visible to the users in the :guilabel:`General Settings` menu.
+
+.. image:: /img/collect-settings/user-settings.*
+  :alt: A list of checked options available in General Settings menu. The options to be hidden from the General Settings menu can be unchecked.
+  :class: device-screen-vertical
+
+.. image:: /img/collect-settings/user-settings2.*
+  :alt: Remaining options in the User Settings list.
+  :class: device-screen-vertical
+
+- :guilabel:`Form Entry Settings` : Admin can configure the `form entry items` visible to the users. For example, unchecking the :guilabel:`Change Language` option will prevent the user from changing the form language.
+
+ .. image:: /img/collect-settings/form-entry-settings.*
+   :alt: A list of checked form entry options and a Moving backwards options before the list which is checked. The options to be hidden while filling a form can be unchecked.
+   :class: device-screen-vertical
+
+ :guilabel:`Moving backwards` option in the :guilabel:`Form Entry Settings` can be unchecked to prevent the user from navigating backwards while filling a form and changing the response to a previously answered question. 
+
+ When you uncheck this option, a message will be displayed which asks you to configure following settings:
+
+ - Disable :guilabel:`Edit Saved Form` option in the main menu
+ - Disable :guilabel:`Save Form` option in the Form entry menu
+ - Disable :guilabel:`Go To Prompt` option in the Form entry menu
+ - Set :guilabel:`Constraint processing` to validate upon forward swipe in the Form Management settings
+
+ .. image:: /img/collect-settings/moving-backwards-disabled.*
+   :alt: Image showing message displayed to configure other settings when Moving backwards option is unchecked.
+   :class: device-screen-vertical
+
+ If you choose :guilabel:`YES` as response, these settings will be disabled along with moving backwards and the user will not be able to bypass the moving backwards settings. When using this setting, you will generally want to set an admin password so a user can’t bypass it.
+
+ .. note::
+
+   When you enable the moving backwards option, you have to configure the other changed settings since they are not automatically changed back.
+
+   .. image:: /img/collect-settings/moving-backwards-enabled.*
+     :alt: Image showing message displayed to configure other settings when Moving backwards option is re-enabled.
+     :class: device-screen-vertical
+
+ If you choose :guilabel:`NO` as response, only the moving backwards option will be disabled and no other settings will be changed. User may be able to bypass the moving backwards settings using the other settings.
+
