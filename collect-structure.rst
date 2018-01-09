@@ -1,7 +1,7 @@
 Structure of ODK Collect Directory in Android File System
 ============================================================
 
-After installation of ODK collect, odk directory would be created in the internal storage or external storage depending on the settings of your android device. The subdirectories are forms, instances, layers, metadata and settings respectively. The structure of the directory is explained below.
+After installation of ODK collect, :file:`odk` directory would be created in the internal storage or external storage depending on the settings of your android device. The subdirectories are :file:`forms`, :file:`instances`, :file:`layers`, :file:`metadata` and :file:`settings` respectively. The structure of the directory is explained below.
 
 .. _directory-structure:
 
@@ -40,7 +40,7 @@ Directory structure
   :alt: Image showing forms and Sample form-media directory
   :class: device-screen-vertical
 
-The :file:`forms` folder contains forms, fetched from aggregate server. Forms designed by users do not have to be uploaded to aggregate server  for them to be used, they can be manually added to the forms directory. The :file:`Sample form-media` directory holds media files for image based forms and :file:`csv` files. CSV is a simple file format used to store tabular data, such as a spreadsheet or database.
+The :file:`forms` directory contains forms, fetched from aggregate server. Forms designed by users do not have to be uploaded to aggregate server  for them to be used, they can be manually added to the forms directory. The :file:`Sample form-media` directory holds media files for image based forms and :file:`csv` files. CSV is a simple file format used to store tabular data, such as a spreadsheet or database.
 
 .. tip::
 
@@ -52,7 +52,7 @@ The :file:`forms` folder contains forms, fetched from aggregate server. Forms de
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: /img/collect-structure/instances.*
-  :alt: Image showing folder inside instance directory
+  :alt: Image showing directory inside instance directory
   :class: device-screen-vertical
   
 .. image:: /img/collect-structure/instances-form.*
@@ -67,7 +67,7 @@ Form instances are located in this directory. This directory will contain subdir
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: /img/collect-structure/sample-layer.*
-  :alt: Image showing layer folder inside odk directory
+  :alt: Image showing layer directory inside odk directory
   :class: device-screen-vertical
   
 .. image:: /img/collect-structure/tiles.*
@@ -82,14 +82,14 @@ The :file:`layers` directory contains offline map tiles which are in the subdire
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: /img/collect-structure/metadata.*
-  :alt: Image dhowing files inside metadata folder
+  :alt: Image dhowing files inside metadata directory
   :class: device-screen-vertical
 
 The :file:`metadata` directory contains databases, that track some high level file information about forms and instances such as status of all completed and incomplete form submissions on the phone. It conatins some checksum files that are used to ensure that the data within a file is complete and has not become corrupt. The state of the form instance (:formstate:`incomplete`, :formstate:`finalized`, :formstate:`sent`) is stored stored in :file:`instances.db` file and the status of the blank forms is stored in :file:`forms.db` file.
    
 .. warning::
 
-  The databases present in the :file:`metadata` folder are not automatically regenerated, merged, or combined. Therefore, tampering can cause unexpected problems. For example, if you delete :file:`instances.db`, :formstate:`sent` forms would become available again for submission.
+  The databases present in the :file:`metadata` directory are not automatically regenerated, merged, or combined. Therefore, tampering can cause unexpected problems. For example, if you delete :file:`instances.db`, :formstate:`sent` forms would become available again for submission.
 
 .. note::
 
