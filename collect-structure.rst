@@ -89,9 +89,9 @@ The :file:`metadata` directory contains databases, that track some high level fi
    
 .. warning::
 
-  The databases present in the :file:`metadata` folder are not automatically regenerated, merged, or combined. Therefore, tampering can cause unexpected problems. For example, if you delete :file:`instances.db`,  :formstate:`sent` forms would become available again for submission.
+  The databases present in the :file:`metadata` folder are not automatically regenerated, merged, or combined. Therefore, tampering can cause unexpected problems. For example, if you delete :file:`instances.db`, :formstate:`sent` forms would become available again for submission.
 
 .. note::
 
-  For information on the :file:`settings` directory, refer to 
+  For information on the :file:`settings` directory, refer to this :ref:`section <save-qr-code>`.
    
