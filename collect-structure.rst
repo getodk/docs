@@ -85,11 +85,11 @@ The :file:`layers` directory contains offline map tiles which are in the subdire
   :alt: Image dhowing files inside metadata folder
   :class: device-screen-vertical
 
-The :file:`metadata` directory contains databases, that track some high level file information about forms and instances such as status of all completed and incomplete form submissions on the phone. It conatins some checksum files that are used to ensure that the data within a file is complete and has not become corrupt. The incomplete/finalized/sent status of the filled-in forms are stored in :file:`instances.db` file and the status of the blank forms is stored in :file:`forms.db` file.
+The :file:`metadata` directory contains databases, that track some high level file information about forms and instances such as status of all completed and incomplete form submissions on the phone. It conatins some checksum files that are used to ensure that the data within a file is complete and has not become corrupt. The state of the form instance (:formstate:`incomplete`, :formstate:`finalized`, :formstate:`sent`) is stored stored in :file:`instances.db` file and the status of the blank forms is stored in :file:`forms.db` file.
    
 .. warning::
 
- The databases present in the :file:`metadata` folder are not automatically regenerated, merged or combined, and if damaged can cause some problems, for example, if you delete :file:`instances.db` the sent forms would be available again for submission.
+  The databases present in the :file:`metadata` folder are not automatically regenerated, merged, or combined. Therefore, tampering can cause unexpected problems. For example, if you delete :file:`instances.db`,  :formstate:`sent` forms would become available again for submission.
 
 .. note::
 
