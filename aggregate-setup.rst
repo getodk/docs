@@ -8,6 +8,7 @@ Setting Up ODK Aggregate
   aggregate-deployment-planning
   aggregate-upgrade
   aggregate-backup
+  aggregate-increase-aws-size
 
 .. _aggregate-setup-tips:
   
