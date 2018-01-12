@@ -45,3 +45,4 @@ redirects:
   aggregate-use/#form-manage: form-management
   aggregate-guide/: aggregate-intro
   visualize/: aggregate-visualize
+  aggregate-app-engine/#increasing-app-engine-server-size-can-improve-performance-and-reduce-data-corruption: aggregate-increase-aws-size
