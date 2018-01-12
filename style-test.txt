@@ -1,0 +1,3 @@
+        "style-guide.spelling-odk"      : true,
+        "style-guide.uk-us"             : true,
+        "style-guide.check-quotes"      : true
