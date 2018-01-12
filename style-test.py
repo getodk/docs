@@ -5,15 +5,13 @@ import proselint
 
 def add_checks(): 	   
 
+	src ='./style-guide'       
 	dest = os.path.dirname(proselint.__file__)
 	dest_prc = dest + '/.proselintrc'
 	dest = dest + '/checks/style-guide'
 
-	if os.path.exists(dest):
-	   pass
-	else:
-	   src ='./style-guide'       
-	   shutil.copytree(src, dest)
+	shutil.rmtree(dest)
+	shutil.copytree(src, dest)
 
 	with open("style-test.txt", "r") as file:
 	   tests = file.readlines()
