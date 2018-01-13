@@ -1,27 +1,47 @@
 Installing on Tomcat (Local or Cloud)
 =========================================
 
-To run on ODK Aggregate on a Tomcat server backed with a MySQL or PostgreSQL database follow the following steps:
+`Apache Tomcat <http://tomcat.apache.org/>`_ is an open source web server that can be used to serve Java applicationa like ODK Aggregate.
 
-1. Define your server requirements and install your server.
-   
-   Availability
-   
-     Decide the availability of your server depending on how frequently you want to update and upload forms. If you do need a high-availability server, you need to talk to your Internet Service Provider (ISP) as to their availability guarantees.
-   
-   Data Loss
-   
-     Your tolerance to data loss will impact your backup schedule and your server hardware.  Invest in a storage system based on your tolerance to data loss. Seek technical assistance for these requirements. If you cannot tolerate any data loss, or less than 24 hours of data loss, you should invest in a RAID storage array with battery-backed controller cards. If you can tolerate a day or longer interval of data loss, be sure you have a periodic tape or other means of backup for your system that matches or is shorter than the data loss interval.
-   
-   Dataset Size
-   
-     The quantity of data you intend to collect will affect the size of the machine required to host the ODK Aggregate instance and of your database server. For most applications, the default size should be fine. If you are collecting more than 6000 submissions, you may need to increase the JVM size. Note that the maximum size of the JVM is limited by the size of the physical memory on your machine.
-   
-   Secure and Protected Data
-   
-     If you need to prevent eavesdroppers from seeing your data as it is transmitted to your ODK Aggregate instance, you should either (1) only connect to ODK Aggregate from within your organization's network (when the ODK Collect devices are on your premises), (2) obtain an SSL certificate and install it on your Tomcat server (a certificate is required to secure transmissions over https:), or (3) use `Encrypted Forms <https://opendatakit.org/help/encrypted-forms/>`_. If you are not using encrypted forms and are handling sensitive data, a computer security specialist should review your system and your security procedures. When operating without an SSL certificate, do not access ODK Aggregate from a remote location when changing passwords.
+This document guides you through the installation and initial setup of a self-hosted instance of ODK Aggregate, running on Apache Tomcat with a `MySQL <https://www.mysql.com/>`_ or `PostgreSQL <https://www.postgresql.org/>`_. "Self-hosted" could mean on your own hardware or on a cloud-based server such as Amazon Web Services. (Though, for AWS in particular, we have :doc:`additional instructions <aggregate-aws>`.)
 
-2. Install Tomcat on your server.
+.. warning::
+
+  Self-hosting, whether local or cloud-based, requires expertise in server maintenance, security, systems administration, and networking. If your organization does not have this expertise, we recommend using :doc:`Google App Engine <aggregate-app-engine>`.
+
+
+.. note::
+
+  - Local hosting implies that you are taking ownership of the off-site back up and restoration of your data and are documenting the steps necessary to return your systems to operation in circumstances that might include a full hardware failure or the destruction of your facility. You must also plan for the security of your data and systems. 
+
+  -  Local hosting requires that you `configure your network routers <https://opendatakit.org/use/aggregate/tomcat-install/#Configure_for_Network_Access>`_. It is recommended to seek assistance from your local computer-technical-support community before proceeding. The set-up of the ODK Aggregate web server and database are very easy in comparison.
+
+
+Considerations before you begin
+----------------------------------
+   
+Availability
+~~~~~~~~~~~~~~
+
+Decide the availability of your server depending on how frequently you want to update and upload forms. If you do need a high-availability server, you need to talk to your Internet Service Provider (ISP) as to their availability guarantees.
+   
+Data Loss
+~~~~~~~~~~~
+   
+Your tolerance to data loss will impact your backup schedule and your server hardware.  Invest in a storage system based on your tolerance to data loss. Seek technical assistance for these requirements. If you cannot tolerate any data loss, or less than 24 hours of data loss, you should invest in a RAID storage array with battery-backed controller cards. If you can tolerate a day or longer interval of data loss, be sure you have a periodic tape or other means of backup for your system that matches or is shorter than the data loss interval.
+   
+Dataset Size
+~~~~~~~~~~~~~~
+   
+The quantity of data you intend to collect will affect the size of the machine required to host the ODK Aggregate instance and of your database server. For most applications, the default size should be fine. If you are collecting more than 6000 submissions, you may need to increase the JVM size. Note that the maximum size of the JVM is limited by the size of the physical memory on your machine.
+   
+   
+Secure and Protected Data
+~~~~~~~~~~~~~~~~~~~~~~~~~~   
+
+If you need to prevent eavesdroppers from seeing your data as it is transmitted to your ODK Aggregate instance, you should either (1) only connect to ODK Aggregate from within your organization's network (when the ODK Collect devices are on your premises), (2) obtain an SSL certificate and install it on your Tomcat server (a certificate is required to secure transmissions over https:), or (3) use `Encrypted Forms <https://opendatakit.org/help/encrypted-forms/>`_. If you are not using encrypted forms and are handling sensitive data, a computer security specialist should review your system and your security procedures. When operating without an SSL certificate, do not access ODK Aggregate from a remote location when changing passwords.
+
+1. Install Tomcat on your server.
 
     a. Install `Java 8 <https://java.com/en/download/>`_ or higher on your system.
 
@@ -97,7 +117,7 @@ To run on ODK Aggregate on a Tomcat server backed with a MySQL or PostgreSQL dat
               </Configure>
   
 
-3. `Configure your server and network devices <https://opendatakit.org/use/aggregate/tomcat-install/#Configure_for_Network_Access>`_ so that laptops or Android devices connecting to the internet from an external access point can access your server. 
+2. `Configure your server and network devices <https://opendatakit.org/use/aggregate/tomcat-install/#Configure_for_Network_Access>`_ so that laptops or Android devices connecting to the internet from an external access point can access your server. 
 
    If your organization has a network or systems administrator, contact them for assistance. The steps for this are:
 
@@ -105,9 +125,9 @@ To run on ODK Aggregate on a Tomcat server backed with a MySQL or PostgreSQL dat
    - make your server visible on the internet (optional)
    - establish a DNS name for the server
 
-4. `Obtain and Install an SSL certificate <https://gist.github.com/yanokwa/399a7fcbc3d9ad8a0bd3>`_ if you need secure ``https`` access.
+3. `Obtain and Install an SSL certificate <https://gist.github.com/yanokwa/399a7fcbc3d9ad8a0bd3>`_ if you need secure ``https`` access.
 
-5. Select and Install your database server.
+4. Select and Install your database server.
 
    ODK Aggregate works with any of these database servers:
 
@@ -134,7 +154,7 @@ To run on ODK Aggregate on a Tomcat server backed with a MySQL or PostgreSQL dat
    
    - For Microsoft SQL Server or Azure SQL Server, you should configure these with UTF-8 character sets and to use Windows authentication. When using Windows authentication, the user under which the webserver executes must be granted permissions to access the SQL Server instance. The install wizard for ODK Aggregate will produce a :file:`Readme.html` file that contains additional information on how to complete the configuration of the database and webserver service.
 
-6. Download and install `ODK Aggregate <https://opendatakit.org/downloads/>`_. Select the latest Featured release for your operating system.
+5. Download and install `ODK Aggregate <https://opendatakit.org/downloads/>`_. Select the latest Featured release for your operating system.
 
    .. note::
 
