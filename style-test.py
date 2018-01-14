@@ -10,7 +10,11 @@ def add_checks():
 	dest_prc = dest + '/.proselintrc'
 	dest = dest + '/checks/style-guide'
 
+
+	# remove style-guide folder
 	shutil.rmtree(dest)
+
+	# copy over style-guide folder to checks
 	shutil.copytree(src, dest)
 
 	with open("style-test.txt", "r") as file:
@@ -21,11 +25,13 @@ def add_checks():
 
 	pos = len(buf)-2
 
+	# find first occurence of style-guide checks in proselintrc
 	for index, line in enumerate(buf):
 	    if line.startswith("        \"style-guide."):
 	       pos = index
 	       break      
 
+	# copy over new checks to proselintrc from style-text.txt
 	with open(dest_prc, "w") as out_file:
 	    for index, line in enumerate(buf):
 	        if index == pos-1 and not line.endswith(",\n"):
