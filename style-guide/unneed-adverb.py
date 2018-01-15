@@ -8,7 +8,7 @@ from proselint.tools import existence_check, memoize
 def check(text):
     """Check Unneeded adverbs."""
     err = "style-guide.unneed-adverb"
-    msg = "Avoid using unneeded adverbs like just, simply."
+    msg = "Avoid using unneeded adverbs like \"just\", \"simply\"."
 
     list = [
         "simply",
