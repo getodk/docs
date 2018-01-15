@@ -5,4 +5,7 @@
         "style-guide.latin-abbr"        : true,
         "style-guide.unneed-adverb"     : true,
         "style-guide.filler-phrase"     : true,
-        "style-guide.personal-pronoun"  : true
+        "style-guide.personal-pronoun"  : true,
+        "style-guide.serial-comma"      : true,
+        "style-guide.unorder-list"      : true,
+        "style-guide.order-list"        : true
