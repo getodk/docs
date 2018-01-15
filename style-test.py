@@ -48,7 +48,7 @@ def run_checks():
     file_path = os.path.realpath(__file__)
     search_path = file_path[0:file_path.rfind('/')]
     for filename in glob.glob(os.path.join(search_path, '*.rst')):
-        txt=open(filename,'r')
+        txt = open(filename,'r')
         errors = proselint.tools.lint(txt)
         err_list = []
         for e in errors:
