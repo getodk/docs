@@ -4,4 +4,5 @@
         "style-guide.check-curlyquotes" : true,
         "style-guide.latin-abbr"        : true,
         "style-guide.unneed-adverb"     : true,
-        "style-guide.filler-phrase"     : true
+        "style-guide.filler-phrase"     : true,
+        "style-guide.personal-pronoun"  : true
