@@ -5,7 +5,7 @@
 from proselint.tools import memoize, existence_check
 
 @memoize
-def check_quotes(text):
+def check_unorderlist(text):
     """Use ordered list if order of steps matters."""
     err = "style-guide.unorder-list"
     msg = "Use ordered list if order of steps matters."
