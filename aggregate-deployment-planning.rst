@@ -6,7 +6,7 @@ ODK Aggregate can be deployed to :doc:`Google App Engine <aggregate-app-engine>`
 
 We recommend using Google App Engine or the ODK Aggregate VM before attempting an EC2 or Tomcat deployment.
 
-Once you have tried ODK Aggregate together with :doc:`ODK Collect <collect-intro>` and familiarized yourself with their use, you can consider alternative hosting platforms. You can also think about foregoing Aggregate altogether and just using :doc:`ODK Briefcase <briefcase-intro>`.
+Once you have tried ODK Aggregate together with :doc:`ODK Collect <collect-intro>` and familiarized yourself with their use, you can consider alternative hosting platforms. You can also think about foregoing Aggregate altogether and just using :doc:`ODK Briefcase <briefcase-guide>`.
 
 This document provides general advise for thinking through your deployment decisions.
 
