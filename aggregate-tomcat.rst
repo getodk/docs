@@ -14,7 +14,7 @@ This document guides you through the installation and initial setup of a self-ho
 
   - Local hosting implies that you are taking ownership of the off-site back up and restoration of your data and are documenting the steps necessary to return your systems to operation in circumstances that might include a full hardware failure or the destruction of your facility. You must also plan for the security of your data and systems. 
 
-  -  Local hosting requires that you `configure your network routers <https://opendatakit.org/use/aggregate/tomcat-install/#Configure_for_Network_Access>`_. It is recommended to seek assistance from your local computer-technical-support community before proceeding. The set-up of the ODK Aggregate web server and database are very easy in comparison.
+  -  Local hosting requires that you `configure your network routers <https://opendatakit.org/use/aggregate/tomcat-install/#Configure_for_Network_Access>`_. It is recommended to seek assistance from your local computer technical support community before proceeding. The set-up of the ODK Aggregate web server and database are very easy in comparison.
 
 
 Considerations before you begin
@@ -33,13 +33,29 @@ Your tolerance to data loss will impact your backup schedule and your server har
 Dataset Size
 ~~~~~~~~~~~~~~
    
-The quantity of data you intend to collect will affect the size of the machine required to host the ODK Aggregate instance and of your database server. For most applications, the default size should be fine. If you are collecting more than 6000 submissions, you may need to increase the JVM size. Note that the maximum size of the JVM is limited by the size of the physical memory on your machine.
+The quantity of data you intend to collect will affect the size of the machine required to host the ODK Aggregate instance and of your database server. For most use cases, the default size should be fine. If you are collecting more than 6000 submissions, you may need to increase the JVM size. Note that the maximum size of the JVM is limited by the size of the physical memory on your machine.
    
    
 Secure and Protected Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~   
 
-If you need to prevent eavesdroppers from seeing your data as it is transmitted to your ODK Aggregate instance, you should either (1) only connect to ODK Aggregate from within your organization's network (when the ODK Collect devices are on your premises), (2) obtain an SSL certificate and install it on your Tomcat server (a certificate is required to secure transmissions over https:), or (3) use `Encrypted Forms <https://opendatakit.org/help/encrypted-forms/>`_. If you are not using encrypted forms and are handling sensitive data, a computer security specialist should review your system and your security procedures. When operating without an SSL certificate, do not access ODK Aggregate from a remote location when changing passwords.
+If you need to prevent eavesdroppers from seeing your data as it is transmitted to your ODK Aggregate instance, you need to do one of the following:
+
+- only connect to ODK Aggregate from within your organization's network (when the ODK Collect devices are on your premises)
+- obtain an SSL certificate and install it on your Tomcat server (a certificate is required to secure transmissions over `https`)
+- use :doc:`encrypted-forms`
+
+Encrypted forms can be used in conjuction with either of the first two suggestions.
+
+If you are not using encrypted forms and are handling sensitive data, a computer security specialist should review your system and your security procedures. 
+
+.. note::
+
+  Use of an SSL and `https` is recommended for any deployment accessed from the internet.
+
+Installation procedure
+--------------------------
+
 
 1. Install Tomcat on your server.
 
@@ -47,7 +63,7 @@ If you need to prevent eavesdroppers from seeing your data as it is transmitted 
 
        .. note::
 
-        You generally need to launch installers with Run as administrator privileges (available under the right-click menu). Accept all the defaults.
+        You generally need to launch installers with *Run as administrator* privileges (available under the right-click menu). Accept all the defaults.
 
     b. Add the installed Java bin directory to the `PATH variable <https://docs.oracle.com/javase/tutorial/essential/environment/paths.html>`_.
     c. Download and install `Tomcat 8 <https://tomcat.apache.org/download-80.cgi>`_
