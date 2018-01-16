@@ -4,7 +4,7 @@ import shutil
 import proselint
 
 def add_checks(): 	   
-
+"""Function to add checks to proselint"""
     src ='./style-guide'       
     dest = os.path.dirname(proselint.__file__)
     dest_prc = dest + '/.proselintrc'
@@ -43,18 +43,28 @@ def add_checks():
         out_file.write("    }\n")
         out_file.write("}")
 
-def run_checks():
 
+def run_checks():
+"""Function to run checks on the docs"""
     file_path = os.path.realpath(__file__)
+
+    # find path for all .rst files
     search_path = file_path[0:file_path.rfind('/')]
+
     for filename in glob.glob(os.path.join(search_path, '*.rst')):
+        
+        # read the file and lint the errors
         txt = open(filename,'r')
         errors = proselint.tools.lint(txt)
         err_list = []
+
         for e in errors:
+
             # ignore tests for curly quotes
     	    if e[0] == "typography.symbols.curly_quotes":
     	        continue
+            
+            # prepare error message
     	    check = "check: %s, " %e[0] 
     	    msg = "message: %s, " %e[1]
     	    line = "line: %d, " %(1 + e[2])
@@ -64,9 +74,15 @@ def run_checks():
     	    extent = "extent: %d, " %e[6]
     	    severity = "severity: %s, " %e[7]
     	    replace = "replacements: %s " %e[8]
+
+            # add errors to list
     	    err_str = check + msg + line + column + start + end + extent + severity + replace
-    	    err_list.append(err_str)    
+    	    err_list.append(err_str)  
+
+        # display filename
         print(filename)
+        
+        # display errors
         for e in err_list:
     	    print(e)
     	    print('\n') 
