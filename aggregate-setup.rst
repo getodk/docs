@@ -3,7 +3,7 @@ Setting Up ODK Aggregate
 
 .. admonition:: Before you get started
   
-  If you just want to explore ODK Aggreagte, try the `demo server <https://opendatakit.appspot.com>`_.
+  If you just want to explore ODK Aggregate, try the `demo server <https://opendatakit.appspot.com>`_.
 
 
 .. toctree::
