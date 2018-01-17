@@ -28,6 +28,7 @@ cloudfront_wildcard_invalidation: true
 
 redirects:
   collect-install/#connecting-to-a-server: collect-connect
+  collect-install#connecting-to-a-server: collect-connect
   collect-guide: collect-intro
   collect-install/#connecting-to-your-own-odk-aggregate-server: collect-connect-aggregate
   collect-install/#connecting-to-a-googe-drive-account: collect-connect-google
