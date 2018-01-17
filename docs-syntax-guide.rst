@@ -130,7 +130,7 @@ For example:
 Tables of Content
 --------------------
 
-The :rst:dir:`toctree` directive defines a table of content. The content of a :rst:dir:`toctree` is a list of page file names, without the ``.rst`` extension. When rendered, the :rst:tree:`toctree` becomes an unordered list of page links, including links to sections and subsections of the included pages.
+The :rst:dir:`toctree` directive defines a table of content. The content of a :rst:dir:`toctree` is a list of page file names, without the ``.rst`` extension. When rendered, the :rst:dir:`toctree` becomes an unordered list of page links, including links to sections and subsections of the included pages.
 
 .. code-block:: rst
 
