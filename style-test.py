@@ -176,7 +176,6 @@ def run_checks(paths):
                 else:
                    print(t.red(e["line3"]))
                 print(t.white(e["line4"])) 
-                print(e["extent"])
                 print("\n")     
                  
 @click.command(context_settings=CONTEXT_SETTINGS)
