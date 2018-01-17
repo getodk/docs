@@ -1,4 +1,4 @@
-Reducing data corruption and boosting performance on AWS
+Reducing Data Corruption and Boosting Performance in Aggregate
 ------------------------------------------------------------
 
 If you have many form definitions on your server, you may get better performance and reduce the likelihood of data corruption if you increase the size of your server.

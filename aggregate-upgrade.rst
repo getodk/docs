@@ -1,4 +1,4 @@
-Aggregate Upgrade
+Upgrading Aggregate
 =====================
 
 .. _upgrade-aggregate:

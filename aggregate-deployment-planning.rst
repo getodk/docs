@@ -1,6 +1,6 @@
-*******************************
-Aggregate Deployment Planning
-*******************************
+***********************************
+Planning Your Aggregate Deployment
+***********************************
 
 ODK Aggregate can be deployed to :doc:`Google App Engine <aggregate-app-engine>`, :doc:`Amazon's EC2 cloud services <aggregate-aws>`, or to :doc:`webservers running Tomcat with MySQL or PostgreSQL <aggregate-tomcat>`. There is also a fully set-up :doc:`virtual machine <aggregate-vm>` that can be run in nearly any environment.
 
