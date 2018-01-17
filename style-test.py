@@ -83,7 +83,7 @@ def run_checks(paths):
         search_path = search_path + "/"
         path_list = [search_path + path for path in paths]
 
-    # Add all rst files if not provided by user
+    # Add all rst files if specific paths not provided by user
     else:
         for filename in glob.glob(os.path.join(search_path, '*.rst')):
             path_list.append(filename)
@@ -133,7 +133,7 @@ def run_checks(paths):
 @click.command(context_settings=CONTEXT_SETTINGS)
 @click.argument('paths', nargs=-1, type=click.Path())
 def style_test(paths=None):
-
+    """A CLI for style guide testing"""
     # Expand the list of directories and files.
     filepaths = paths
 
