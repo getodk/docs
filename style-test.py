@@ -78,7 +78,6 @@ def get_line(file, row, col):
             st_col = max(0, col-15)
             en_col = min(col+15, len(line))
             txt = "..." + line[st_col:en_col] + "..."
-
             break
     
     return txt
@@ -132,34 +131,33 @@ def run_checks(paths):
 
         for e in errors:
 
+            # prepare error message
+            check = e[0]
+            file = filename[filename.rfind('/')+1:]
+            msg = e[1]
+            line = e[2] + 1
+            column = e[3] + 1
+            start = e[4] + 1
+            end = e[5] + 1
+            extent = e[6]
+            replace = e[8]
+
             # ignore tests for curly quotes
-            if e[0] == "typography.symbols.curly_quotes":
+            if check == "typography.symbols.curly_quotes":
                 continue
             
-            # prepare error message
-
             # Set warning or error severity
-            if e[0] in list_errors:
+            if check in list_errors:
                 severity = "error"
             else:
                 severity = "warning" 
 
-            check = "check: %s | %s " %(e[0], severity) 
-            file = filename[filename.rfind('/')+1:]
-            msg = "message: %s " %e[1]
-            line = "line: %d " %(1 + e[2])
-            column = "column: %d " %(1 + e[3])
-            start = 1+e[4]
-            end = 1+e[5]
-            extent = e[6]
-            replace = e[8]
-
             # add errors to list
             err_str =  {
-                         "line1": file + " | " + line + " | " + column,
+                         "line1": "%s | line: %d | col: %d" %(file, line, column),
                          "line2": get_line(filename,1+e[2],1+e[3]),
                          "line3": msg,
-                         "line4": check,
+                         "line4": check + " | " + severity,
                          "start": start,
                          "end": end,
                          "extent": extent,
