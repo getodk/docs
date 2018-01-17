@@ -1,7 +1,10 @@
 import os
 import glob
+import click
 import shutil
 import proselint
+
+CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
 def add_checks():      
     """Function to add checks to proselint."""
@@ -64,14 +67,28 @@ def remove_ignored_lines(txt):
     return txt            
 
 
-def run_checks():
+def run_checks(paths):
+
     """Function to run checks on the docs."""
     file_path = os.path.realpath(__file__)
 
     # find path for all .rst files
     search_path = file_path[0:file_path.rfind('/')]
 
-    for filename in glob.glob(os.path.join(search_path, '*.rst')):
+    # Make a list of paths to check for
+    path_list = []
+
+    # Add paths if provided by user
+    if paths:
+        search_path = search_path + "/"
+        path_list = [search_path + path for path in paths]
+
+    # Add all rst files if not provided by user
+    else:
+        for filename in glob.glob(os.path.join(search_path, '*.rst')):
+            path_list.append(filename)
+
+    for filename in path_list:        
         
         # read the file 
         with open(filename, "r") as file:
@@ -113,5 +130,19 @@ def run_checks():
             print(e)
             print('\n') 
 
-add_checks()
-run_checks()
+@click.command(context_settings=CONTEXT_SETTINGS)
+@click.argument('paths', nargs=-1, type=click.Path())
+def style_test(paths=None):
+
+    # Expand the list of directories and files.
+    filepaths = paths
+
+    # add custom style-guide checks to proselint
+    add_checks()
+
+    # run custom style guide checks
+    run_checks(filepaths)
+
+
+if __name__ == '__main__':
+    style_test()
