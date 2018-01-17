@@ -40,7 +40,7 @@ If you have :doc:`connected ODK Collect to a server  <collect-connect>` or :doc:
        
     .. note::
         
-      Before downloading blank forms from Aggregate to Collect, a form has to be uploaded. See :ref:`Form Management in ODK Aggregate <form-manage>`.
+      Before downloading blank forms from Aggregate to Collect, a form has to be uploaded. See :doc:`Form Management in ODK Aggregate  <aggregate-forms>`.
   
    - If you are using Google Drive, the **Get Blank Form** screen will display the folders in your Google Drive account and any XML documents. Select and download the forms you want.
 

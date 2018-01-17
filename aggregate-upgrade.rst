@@ -1,20 +1,40 @@
-*******************
 Aggregate Upgrade
-*******************
+=====================
 
 .. _upgrade-aggregate:
 
 Need for Upgrading
 --------------------
 
-It is important to upgrade to newer ODK Aggregate versions as they come out (not necessarily immediately, but this should be something you do at least once a year).
+It is important to upgrade to newer ODK Aggregate versions as they come out. You don't need to do this immediately, but this should be something you do at least once a year.
 
-There are several reasons for this:-
+There are several reasons for this.
 
-- **Security vulnerabilities** - we (and Google) are constantly upgrading the libraries we use with newer, safer, versions. The older your software, the greater the number of vulnerabilities in it.
-- **Hosting revisions** - Google AppEngine is a managed environment, unlike, say, AWS or other "bare-box" hosting services. Google is continuously updating features and removing support for older features in this environment. If you don't upgrade, there may not be an upgrade path that works due to these changes -- unlike "bare-box" hosting, you, and the ODK team, only have partial control over the software and hardware environment.
-- **Performance revisions** - as we find performance issues and address them, the tools get better and faster.
-- **Enhanced capabilities** - the form-processing library (javarosa) has roughly-annual updates to add new functions (e.g., sin(), cos()) and occasionally data types. And new features are slowly added to ODK Aggregate, too.
+Security vulnerabilities
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ODK developers are constantly upgrading the libraries we use with newer, safer, versions. The older your software, the greater the number of vulnerabilities in it.
+
+Hosting revisions
+~~~~~~~~~~~~~~~~~~~~
+
+If you are using Google App Engine as we recommend, your hosting environment is being continuously updated.
+
+Google AppEngine is a managed environment, unlike AWS or other "bare-box" hosting services. Google is continuously updating features and removing support for older features in this environment. 
+
+The Aggregate development team is committed to supporting Google App Engine, so we update our application as the platform changes. If you do not upgrade gradually as new versions come out, your installation may stop working or cease to have a viable upgrade path.
+
+Performance improvements
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As we find performance issues and address them, the Aggregate gets faster and cheaper to run.
+
+Enhanced capabilities
+~~~~~~~~~~~~~~~~~~~~~~
+
+:doc:`javarosa`, the underlying form rendering library is updated about annually. Those updates add new functions, features, and occasionally data types. New features are slowly added to ODK Aggregate, too.
+
+To use these newer features, keep your Aggregate installation up to date.
 
 .. _determine-version:
 
@@ -61,15 +81,16 @@ If you are unable to log onto your server, you will need to search for the versi
     - `RC2`: :guilabel:`Submissions` tab is paginated (shows 500 records per page by default); publishing to Google works.
     - `RC3`: kml exports apply the active Filter to the exported data. All data is exported. It no longer truncates to the first 500 records.
     - `RC4`: Submissions for forms with non-repeating groups are now properly reconstructed into Briefcase. Date fields are broken.
-
+    
+    
     Publishing to Google is broken prior to RC2 (due to a change in Google infrastructure).
     
-.. _general-steps:
+.. _general-steps-for-upgrading-aggregate:
 
-General steps
----------------
+General steps for upgrading
+------------------------------------
 
-1. Disable all submissions to ODK Aggregate via the :guilabel:`Form Management` tab.
+1. Disable all submissions to ODK Aggregate, in the :guilabel:`Form Management` tab.
 2. Use :doc:`ODK Briefcase <briefcase-forms>` to pull a copy of all data to your computer.
 3. Search upward in the :ref:`release notes <release-notes>` below, starting from your current ODK Aggregate version to locate the most recent ODK Aggregate version that does not require any manual upgrade steps. 
 4. Log onto your server to confirm that it is still functioning.
@@ -161,7 +182,7 @@ Aggregate v1.4.12
 1. Update to installer with new language and links to documentation.
 2. Revise upload tool for Google AppEngine deployments to more-consistently display the token-entry dialog.
 3. Add .csv-based downloading and bulk updating of configured users and their capabilities.
-4. Change MySQL ODK 1.x and ODK 2.0 data table constructions to use MEDIUMBLOB columns for media attachments. Fix several issues around accessing attachments. See Upgrade notes below and MySQL configuration instructions in :ref:`installing Aggregate on Tomcat <install-tomcat>` for configuration that is required for MySQL.
+4. Change MySQL ODK 1.x and ODK 2.0 data table constructions to use MEDIUMBLOB columns for media attachments. Fix several issues around accessing attachments. See Upgrade notes below and MySQL configuration instructions in :doc:`installing Aggregate on Tomcat  <aggregate-tomcat>` for configuration that is required for MySQL.
 5. Tweak Google AppEngine configuration to reduce frontend usage hours and thereby reduce costs.
 6. Performance improvements to Google AppEngine task locks (primarily for ODK 2.0 support).
 7. Add ``/users/list`` URL that returns the list of all configured users and the roles they have been granted. Access to this URL requires authentication and is restricted to ODK Aggregate usernames and Google accounts (anonymousUser access is forbidden). If the authenticated user does not have Tables Super-user, Administer Tables, or Site Administrator permissions, a singleton list is returned that contains only information about their own identity and its capabilities.
@@ -433,7 +454,7 @@ Aggregate v1.4.3
 Aggregate v1.4.2
 ~~~~~~~~~~~~~~~~~
 
-1. Fixes to ODK Tables sync protocol for the combined release. Due to interactions with Google AppEngine, the ODK Tables Synchronization protocol does not currently work on Google AppEngine servers. You must :ref:`install a local server or a VM image <install-vm>` in order to use that mechanism.
+1. Fixes to ODK Tables sync protocol for the combined release. Due to interactions with Google AppEngine, the ODK Tables Synchronization protocol does not currently work on Google AppEngine servers. You must :doc:`install a local server or a VM image  <aggregate-vm>` in order to use that mechanism.
 
 .. admonition:: Upgrade notes
    :class: upgrade
@@ -735,7 +756,7 @@ Since Google is now charging for AppEngine usage, the lowest-cost sequence for t
 
 1. Upgrade ODK Aggregate 0.9.x to the latest 0.9.x release. If you have any 0.9.x release, you can upgrade to the latest 0.9.x release without any changes (the newer updates are backward compatible). Get the latest Aggregate release from the ODK Downloads page `here <https://opendatakit.org/downloads/download-info/odk-aggregate-v0-9-8-1/>`_.
 2. Create a new application id for the 1.x instance.
-3. Download the latest installer for ODK Aggregate 1.x, run it, and deploy to the new application id. For installation process, see the :ref:`Aggregate Installation Guide <install-app-engine>`.
+3. Download the latest installer for ODK Aggregate 1.x, run it, and deploy to the new application id. For installation process, see the :doc:`Aggregate Installation Guide  <aggregate-app-engine>`.
 4. Manually download the form definitions (as XML) from Aggregate 0.9.x. Browse to your Aggregate 0.9.x instance and choose the :guilabel:`View XML` button on the main forms page. Then, from the resulting page, choose the :guilabel:`Download XML` button. Repeat for every form you have on the system.
 
 .. tip::

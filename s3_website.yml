@@ -34,3 +34,15 @@ redirects:
   collect-install/#connecting-to-another-server-app: collect-connect/#other-options
   collect-forms/#filling-out-forms: collect-filling-forms/
   collect-integrations: launch-apps-from-collect/
+  aggregate-install/#installing-on-app-engine: aggregate-app-engine
+  aggregate-install/#installing-on-tomcat-local-or-cloud: aggregate-tomcat
+  aggregate-install/#installing-on-aws-cloud: aggregate-aws
+  aggregate-install/#installing-vm-local-or-cloud: aggregate-vm
+  aggregate-use/#data-transfer-using-aggregate: aggregate-data-access
+  aggregate-use/#help-options: aggregate-help
+  aggregate-use/#site-admin: aggregate-admin
+  aggregate-use/#submissions: aggregate-data
+  aggregate-use/#form-manage: form-management
+  aggregate-guide/: aggregate-intro
+  visualize/: aggregate-visualize
+  aggregate-app-engine/#increasing-app-engine-server-size-can-improve-performance-and-reduce-data-corruption: aggregate-increase-aws-size
