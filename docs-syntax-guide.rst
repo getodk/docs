@@ -1,5 +1,5 @@
-Writing in Sphinx
-====================
+Docs Markup and Syntax Guide
+================================
 
 The ODK documentation is built using `Sphinx <http://sphinx-doc.org>`_, a static-site generator designed to create structured, semantic, and internally consistent documentation. Source documents are written in `reStructuredText <http://docutils.sourceforge.net/rst.html>`_, a semantic, extensible markup syntax similar to Markdown.
 
@@ -20,10 +20,36 @@ The ODK documentation is built using `Sphinx <http://sphinx-doc.org>`_, a static
 Indentation
 --------------
 
-Indentation is meaningful in Sphinx and reStructured text.
+Indentation is meaningful in Sphinx and reStructured text. Usually, indenting a section means that is "belongs to" the line it is indented under. For example:
 
+.. code-block:: rst
+
+  .. figure:: path-to-image.*
+  
+    This is the caption of the figure. Notice that it is indented under the line defining the figure.
+
+The rules for indentation are:
+    
 - Use **spaces, not tabs**.
-- Indent **two spaces**.
+- Generally, indent **two spaces**.
+
+The exception to the two spaces rule is :ref:`ol`, where indentation follows the content of the list item.
+
+.. code-block:: rst
+
+  1. This is a list item.
+  
+     This is some additional content related to Item 1. Notice that it is indented to the same column as the first line of content. In this case, that's three (3) spaces.
+     
+  .
+  .
+  .
+  
+  10. The tenth item in a list.
+      
+      This related content will be indented four spaces. 
+      
+      
 
 .. _doc-files:
 
@@ -32,7 +58,7 @@ Documentation Files
 
 Sphinx document files have the ``.rst`` extension. File names should be all lowercase and use hyphens (not underscores or spaces) as word separators.
 
-Normally, the title of the page should be the first line of the file, followed by the line of equal-signs.
+Normally, the title of the page should be the first line of the file, underlined with equal-signs.
 
 .. code-block:: rst
 
@@ -52,6 +78,10 @@ You can also wrap the title in two lines of asterisks.
   Page content here.
 
 The asterisks style is useful when you are combining several existing documents (and don't want to change every subsection headline) or when you are working on a document that might be split into separate documents in the future.
+
+.. important::
+
+  If you use the double-asterisks style, your major section headlines (`<h2>`) should use the equal-signs underline style. This allows major sections to be easily promoted to individual pages.
 
 See :ref:`sections-titles` for more details.
 
@@ -97,10 +127,93 @@ For example:
 
 .. _about-toc:
 
-Table of Contents
+Tables of Content
 --------------------
 
-The ``index.rst`` file serves as a front-page to the documentation and contains the table of contents. The table of contents controls the documentation navigation menu. To add a new document to the table of contents, add the file new (without the ``.rst`` extension) to the list of file names in ``index.rst``.
+The :rst:dir:`toctree` directive defines a table of content. The content of a :rst:dir:`toctree` is a list of page file names, without the ``.rst`` extension. When rendered, the :rst:tree:`toctree` becomes an unordered list of page links, including links to sections and subsections of the included pages.
+
+.. code-block:: rst
+
+  .. toctree::
+  
+    page-name
+    another-page
+    this-other-page
+
+The depth of sections and subsections links to display in the output can be controlled using the :rst:role:`maxdepth` attribute. We typically use a depth of ``2``, but you should use your judgement if you feel it should be more or less in any given context.
+
+.. code-block:: rst
+
+  .. toctree::
+    :maxdepth: 2
+    
+    this-page
+    that-page
+    thick-page
+    flat-page
+
+
+.. seealso:: 
+
+  `The TOC Tree <http://www.sphinx-doc.org/en/stable/markup/toctree.html>`_
+  
+    The Sphinx documentation includes information about a number of other :rst:dir:`toctree` attributes.
+
+.. _main-nav-menu:
+    
+Sidebar navigation menu
+~~~~~~~~~~~~~~~~~~~~~~~~~    
+        
+The ``index.rst`` file serves as a front-page to the documentation and contains the main tables of content, defined using :rst:dir:`toctree` directives. 
+
+These :rst:dir:`toctree` directives control the sidebar navigation menu. To add a new document to a table of content, add the file name (without the ``.rst`` extension) to the relevant list of file names in ``index.rst``.
+
+.. _secondary-tocs:
+
+Secondary tables of content
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Collections of documents are sometimes given their own table of content on an individual page. (See, for example, :doc:`collect-setup` and :doc:`collect-using`.) 
+
+In these cases, the page containing the :rst:dir:`toctree` serves as sort of intro page for the collection. That intro must, itself, be included in the :ref:`main-nav-menu`.
+
+The contents of a :rst:dir:`toctree` appear as section links in another :rst:dir:`toctree` it is included in. That is, if a :rst:dir:`toctree` in :file:`index.rst` lists ``collect-using``, and :file:`collect-using` has a :rst:dir:`toctree`, then the contents of that second :rst:dir:`toctree` will appear in the :ref:`main-nav-menu`, as sub-items to :doc:`collect-using`. (Indeed, this is precisely the case in the docs currently.)
+
+How ODK Docs uses main and secondary tables of content
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+ - Major topics get a :rst:dir:`toctree` in :file:`index.rst`
+ 
+   Major topics include things like:
+ 
+   - Each major product (Collect, Aggregate, Briefcase) 
+   - Large, general categories like Contributing
+   
+   Major topic tables of content include both sub-collection intro pages and also individual pages that don't fit into a sub-collection.
+   
+   The :rst:role:`caption` attribute of the :rst:dir:`toctree` directive defines the section label in the :ref:`main-nav-menu`.
+   
+ - Within a large topic, documents are grouped into collections of related pages, defined by a :rst:dir:`toctree` on a topic intro page.
+ 
+   Intro pages (pages that contain secondary :rst:dir:`toctree` directives) may include additional content introducing the collection or providing contextual wayfinding. However, this is not always neccesary or desirable. Use your judgement, and avoid stating things just for the sake of having some text. ("Here are the pages in this collection.")
+   
+   We also (very occasionally) include :rst:dir:`toctree` directives in sub-collection pages.
+   
+If it not obvious where a new document should appear in the navigation, the best practice is to simply ask about it in the Github issue driving the new page.
+
+.. note::
+
+  For wayfinding purposes, we sometimes create an :ref:`ul` of page links rather than a :rst:dir:`toctree` directive. (For example, see :file:`collect-intro`. We do this when using a :rst:dir:`toctree` would create redundant links in the :ref:`main-nav-menu`. 
+   
+.. admonition:: Why are the docs files not grouped into folders in the source? 
+
+  We use :rst:dir:`toctree` directives as our primary way of organizing the documentation for readers. We do not organize the source ``rst`` files into subfolders.
+  
+  The reason is that if we put them into topic-related subfolders, it would affect the URI of the document. Keeping all of our document files in the a single flat directory results in a flat URI structure; every page's URI looks like ``docs.opendatakit.org/page-name``.
+  
+  If we used subdirectories, then our URIs would look like ``docs.opendatakit.org/subdirectory-name/page-name``. This would mean that our URIs would change every time we moved a document from one folder to another, greatly increasing the time cost and broken-link risk of reorganizing the docs.
+ 
 
 
 .. _sections-titles:

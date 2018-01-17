@@ -2,6 +2,7 @@
 ============================
 
 .. toctree::
+  :maxdepth: 2
 
   docs-tech-guide
   docs-syntax-guide
