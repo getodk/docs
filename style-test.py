@@ -3,6 +3,7 @@ import glob
 import click
 import shutil
 import proselint
+from blessings import Terminal
 
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
@@ -66,9 +67,23 @@ def remove_ignored_lines(txt):
 
     return txt            
 
+def get_line(file, row, col):
+    """Get specific line from file"""
+
+    # read the lines
+    lines = open(file, 'r').readlines() 
+
+    for index,line in enumerate(lines):
+        if index==row-1:
+            st_col = max(0, col-15)
+            en_col = min(col+15, len(line))
+            txt = "..." + line[st_col:en_col] + "..."
+
+            break
+    
+    return txt
 
 def run_checks(paths):
-
     """Function to run checks on the docs."""
     file_path = os.path.realpath(__file__)
 
@@ -87,6 +102,19 @@ def run_checks(paths):
     else:
         for filename in glob.glob(os.path.join(search_path, '*.rst')):
             path_list.append(filename)
+    
+    # list of errors to fail the build. Others will be considered as warnings.
+    list_errors = ["style-guide.check-curlyquotes", "style-guide.uk-us",
+                   "consistency.spacing", "spelling.able_atable", 
+                   "spelling.able_ible", "spelling.athletes", 
+                   "spelling.em_im_en_in", "spelling.er_or",
+                   "spelling.in_un", "spelling.misc",
+                   "misc.capitalization", "misc.inferior_superior",
+                   "misc.many_a", "misc.phrasal_adjectives",
+                   "nonwords.misc", ""
+                 ]        
+
+    t = Terminal()
 
     for filename in path_list:        
         
@@ -108,28 +136,49 @@ def run_checks(paths):
                 continue
             
             # prepare error message
-            check = "check: %s, " %e[0] 
-            msg = "message: %s, " %e[1]
-            line = "line: %d, " %(1 + e[2])
-            column = "column: %d, " %(1 + e[3])
-            start = "start: %d, " %(1 + e[4])
-            end = "end: %d, " %(1 + e[5])
-            extent = "extent: %d, " %e[6]
-            severity = "severity: %s, " %e[7]
-            replace = "replacements: %s " %e[8]
+
+            # Set warning or error severity
+            if e[0] in list_errors:
+                severity = "error"
+            else:
+                severity = "warning" 
+
+            check = "check: %s | %s " %(e[0], severity) 
+            file = filename[filename.rfind('/')+1:]
+            msg = "message: %s " %e[1]
+            line = "line: %d " %(1 + e[2])
+            column = "column: %d " %(1 + e[3])
+            start = 1+e[4]
+            end = 1+e[5]
+            extent = e[6]
+            replace = e[8]
 
             # add errors to list
-            err_str = check + msg + line + column + start + end + extent + severity + replace
-            err_list.append(err_str)  
+            err_str =  {
+                         "line1": file + " | " + line + " | " + column,
+                         "line2": get_line(filename,1+e[2],1+e[3]),
+                         "line3": msg,
+                         "line4": check,
+                         "start": start,
+                         "end": end,
+                         "extent": extent,
+                         "replace": replace,
+                         "severity": severity
+                        }
+            err_list.append(err_str)             
 
-        # display filename
-        print(filename)
-        
         # display errors
         for e in err_list:
-            print(e)
-            print('\n') 
-
+                print(t.blue(e["line1"]))
+                print(e["line2"])
+                if e["severity"] is "warning":
+                   print(t.yellow(e["line3"]))
+                else:
+                   print(t.red(e["line3"]))
+                print(t.white(e["line4"])) 
+                print(e["extent"])
+                print("\n")     
+                 
 @click.command(context_settings=CONTEXT_SETTINGS)
 @click.argument('paths', nargs=-1, type=click.Path())
 def style_test(paths=None):
