@@ -1,12 +1,12 @@
-Reducing data corruption and boosting performance on AWS
-------------------------------------------------------------
+Reducing Data Corruption and Boosting Performance in Aggregate
+=================================================================
 
 If you have many form definitions on your server, you may get better performance and reduce the likelihood of data corruption if you increase the size of your server.
 
 .. _what-is-causing-data-corruption:
 
 What is causing data corruption?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------
 
 Data corruption is generally caused by the premature termination of an action (for example, saving of a submission) because it took longer than the allotted time. 
 
@@ -23,7 +23,7 @@ Increasing the web server size enables it to handle larger workloads faster, whi
 .. _increase-server-size:
 
 Increasing web server size
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------
 
 To change Google App Engine configuration, you must edit the configuration files produced by the installer and re-run the uploader script to push the changes to Google's servers. 
 
@@ -32,7 +32,7 @@ There are two server settings that can be changed:
 .. _increase-web-server-size:
 
 Web Server Size
-"""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~
 
 The web server handles all browser interactions and all data-submission and form-download requests from ODK Collect and ODK Briefcase. Increasing the size of the web server should reduce the likelihood of data corruption if it is not caused by slow network speeds. 
 
@@ -67,7 +67,7 @@ To change the Google App Engine web server size:
 .. _increase-background-server-size:
 
 Background Server Size
-"""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 App Engine deployments use a "background" copy of the website to process long-running actions like generating CSV and KML files for export and for publishing all accumulated data to an external server. 
 
