@@ -8,9 +8,9 @@ Setting Up ODK Aggregate
 
 .. toctree::
   :maxdepth: 2
-   
+  
+  aggregate-deployment-planning 
   aggregate-install
-  aggregate-deployment-planning
   aggregate-upgrade
   aggregate-backup
   aggregate-increase-aws-size
