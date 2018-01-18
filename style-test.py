@@ -2,6 +2,7 @@ import os
 import glob
 import click
 import shutil
+import importlib
 import proselint
 from blessings import Terminal
 
@@ -58,13 +59,6 @@ def remove_ignored_lines(txt):
                 index = index+1
         index = index+1 
 
-    f= open("temp.txt","w+")
-    for line in txt:
-        f.write(line)
-
-    txt = open("temp.txt", "r")
-    os.remove("temp.txt")
-
     return txt            
 
 def get_line(file, row, col):
@@ -104,7 +98,7 @@ def run_checks(paths):
     
     # list of errors to fail the build. Others will be considered as warnings.
     list_errors = [
-                   "style-guide.check-curlyquotes", "style-guide.uk-us",
+                   "style-guide.check-curlyquote", "style-guide.uk-us",
                    "consistency.spacing", "spelling.able_atable", 
                    "spelling.able_ible", "spelling.athletes", 
                    "spelling.em_im_en_in", "spelling.er_or",
@@ -125,8 +119,36 @@ def run_checks(paths):
         # remove ignored lines
         txt = remove_ignored_lines(txt)
 
-        # lint the text
-        errors = proselint.tools.lint(txt)
+        # run checks for quotes, curly quotes, section labels
+        # Open a temporary file to write the text lines
+        f= open("temp.txt","w+")
+        for line in txt:
+            f.write(line)
+        text = open("temp.txt", "r")
+         
+        # Import extra check module from style-guide and run the check
+        extra = importlib.import_module('style-guide.extra', None)
+        errors = extra.check(text)
+
+        # Remove temporary file
+        os.remove("temp.txt")     
+        
+        # lint the text for other tests
+        # Open a temporary file to write the text lines
+        f= open("temp.txt","w+")
+        for line in txt:
+            f.write(line) 
+        text = open("temp.txt", "r")
+
+        # run the checks
+        errors = errors + proselint.tools.lint(text)
+
+        # Remove temporary file
+        os.remove("temp.txt")
+
+        # sort the errors according to line and column 
+        errors = sorted(errors, key=lambda e: (e[2], e[3]))
+
         err_list = []
 
         for e in errors:
@@ -137,8 +159,6 @@ def run_checks(paths):
             msg = e[1]
             line = e[2] + 1
             column = e[3] + 1
-            start = e[4] + 1
-            end = e[5] + 1
             extent = e[6]
             replace = e[8]
 
@@ -158,12 +178,12 @@ def run_checks(paths):
                          "line2": get_line(filename,1+e[2],1+e[3]),
                          "line3": msg,
                          "line4": check + " | " + severity,
-                         "start": start,
-                         "end": end,
                          "extent": extent,
                          "replace": replace,
                          "severity": severity
                         }
+            
+           
             err_list.append(err_str)             
 
         # display errors
@@ -175,7 +195,7 @@ def run_checks(paths):
                 else:
                    print(t.red(e["line3"]))
                 print(t.white(e["line4"])) 
-                print("\n")     
+                print("\n")   
                  
 @click.command(context_settings=CONTEXT_SETTINGS)
 @click.argument('paths', nargs=-1, type=click.Path())
