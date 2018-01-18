@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""quote marks check."""
+"""quote marks and section label check"""
 
 import re
 
