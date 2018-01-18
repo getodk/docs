@@ -13,4 +13,4 @@ Setting Up ODK Aggregate
   aggregate-install
   aggregate-upgrade
   aggregate-backup
-  aggregate-increase-aws-size
+  aggregate-boost-performance
