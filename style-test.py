@@ -49,17 +49,17 @@ def add_checks():
         out_file.write("}")
 
 
-def remove_ignored_lines(txt):
+def remove_ignored_lines(text):
     """Function to remove ignored lines from text"""
     index = 0
-    while index<len(txt):
-        if "startignore" in txt[index]:
-            while index<len(txt) and "endignore" not in txt[index]:
-                txt[index]="ignore_line\n"
+    while index<len(text):
+        if "startignore" in text[index]:
+            while index<len(text) and "endignore" not in text[index]:
+                text[index]="ignore_line\n"
                 index = index+1
         index = index+1 
 
-    return txt            
+    return text            
 
 def get_line(file, row, col):
     """Get specific line from file"""
@@ -71,10 +71,19 @@ def get_line(file, row, col):
         if index==row-1:
             st_col = max(0, col-15)
             en_col = min(col+15, len(line))
-            txt = "..." + line[st_col:en_col] + "..."
+            text = "..." + line[st_col:en_col] + "..."
             break
     
-    return txt
+    return text
+
+def temp_file(text):
+    """create a temporary file to write the text lines""" 
+    f= open("temp.txt","w+")
+    for line in text:
+        f.write(line)
+    text = open("temp.txt", "r")
+    os.remove("temp.txt")
+    return text    
 
 def run_checks(paths):
     """Function to run checks on the docs."""
@@ -114,37 +123,19 @@ def run_checks(paths):
         
         # read the file 
         with open(filename, "r") as file:
-            txt = file.readlines()
+            text = file.readlines()
 
         # remove ignored lines
-        txt = remove_ignored_lines(txt)
+        text = remove_ignored_lines(text)
+        
+        # Import extra check module from style-guide 
+        extra = importlib.import_module('style-guide.extra', None)
 
         # run checks for quotes, curly quotes, section labels
-        # Open a temporary file to write the text lines
-        f= open("temp.txt","w+")
-        for line in txt:
-            f.write(line)
-        text = open("temp.txt", "r")
-         
-        # Import extra check module from style-guide and run the check
-        extra = importlib.import_module('style-guide.extra', None)
-        errors = extra.check(text)
+        errors = extra.check(temp_file(text))
 
-        # Remove temporary file
-        os.remove("temp.txt")     
-        
         # lint the text for other tests
-        # Open a temporary file to write the text lines
-        f= open("temp.txt","w+")
-        for line in txt:
-            f.write(line) 
-        text = open("temp.txt", "r")
-
-        # run the checks
-        errors = errors + proselint.tools.lint(text)
-
-        # Remove temporary file
-        os.remove("temp.txt")
+        errors = errors + proselint.tools.lint(temp_file(text))
 
         # sort the errors according to line and column 
         errors = sorted(errors, key=lambda e: (e[2], e[3]))
