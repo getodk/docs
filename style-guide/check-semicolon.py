@@ -5,7 +5,7 @@
 from proselint.tools import memoize, existence_check
 
 @memoize
-def check_quotes(text):
+def check_semicolon(text):
     """Avoid using semicolon."""
     err = "style-guide.check-semicolon"
     msg = "Avoid using semicolon."

@@ -5,7 +5,7 @@ from proselint.tools import existence_check, memoize
 
 
 @memoize
-def check(text):
+def check_howto(text):
     """Check how to construct."""
     err = "style-guide.check-howto"
     msg = "Avoid using \"How to\" construction."

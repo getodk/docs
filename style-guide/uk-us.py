@@ -6,7 +6,7 @@ from proselint.tools import memoize, preferred_forms_check
 
 
 @memoize
-def check(text):
+def check_ukus(text):
     """uk vs. us."""
     err = "style-guide.uk-us"
     msg = "uk-vs-us-spell-check. '{}' is the preferred spelling."

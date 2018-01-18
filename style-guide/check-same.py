@@ -5,7 +5,7 @@ from proselint.tools import existence_check, memoize
 
 
 @memoize
-def check(text):
+def check_same(text):
     """Check Impersonal pronoun same."""
     err = "style-guide.check-same"
     msg = "Avoid using \"The same\"."

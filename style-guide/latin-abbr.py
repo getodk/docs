@@ -5,7 +5,7 @@ from proselint.tools import existence_check, memoize
 
 
 @memoize
-def check(text):
+def check_latin(text):
     """Check Latin abbrevaiations."""
     err = "style-guide.latin-abbr"
     msg = "Avoid using Latin abbreviations like \"etc.\", \"i.e.\"."

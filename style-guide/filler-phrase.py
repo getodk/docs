@@ -5,7 +5,7 @@ from proselint.tools import existence_check, memoize
 
 
 @memoize
-def check(text):
+def check_filler(text):
     """Check Filler phrases."""
     err = "style-guide.filler-phrase"
     msg = "Avoid using filler phrases like \"to the extent that\"."

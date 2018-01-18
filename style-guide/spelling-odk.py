@@ -6,7 +6,7 @@ from proselint.tools import memoize, preferred_forms_check
 
 
 @memoize
-def check(text):
+def check_odkspell(text):
     """odk spell check"""
     err = "style-guide.spelling-odk"
     msg = "ODK spell check. '{}' is the preferred usage."
