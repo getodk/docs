@@ -524,22 +524,14 @@ Complete the pull request. The maintainers will review it as quickly as possible
 
    If you happen to rename any document file(:file:`*.rst`), then make sure to add the redirect in your PR.
 
-<<<<<<< HEAD
-   To add the redirect go to :file:`s3_website.yml`. Add a mapping from the old file name to the new file name below the **redirects:** line, one mapping per line. Several examples of how to format these are shown in the file.
-=======
    You can add the redirect in :file:`s3_website.yml`. Add a mapping from the old file name to the new file name under the **redirects:** line, one mapping per line. You can refer the already added redirects to get a understanding of formatting redirects.
->>>>>>> 0800677... added info on changeref script
 
    For example, you rename a file to :file:`newcheck.rst` from :file:`oldcheck.rst`, then to add the redirect:
 
    .. code-block:: yaml
 
      redirects:
-<<<<<<< HEAD
-      oldcheck/index.html: /newcheck
-=======
-      oldcheck: newcheck
->>>>>>> 0800677... added info on changeref script
+        oldcheck/index.html: /newcheck
 
 .. tip::
   
