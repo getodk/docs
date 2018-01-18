@@ -9,7 +9,7 @@ from blessings import Terminal
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
 def add_checks():      
-    """Function to add checks to proselint."""
+    """Add checks to proselint."""
     src ='./style-guide'       
     dest = os.path.dirname(proselint.__file__)
     dest_prc = dest + '/.proselintrc'
@@ -50,7 +50,7 @@ def add_checks():
 
 
 def remove_ignored_lines(text):
-    """Function to remove ignored lines from text"""
+    """Remove ignored lines from text"""
     index = 0
     while index<len(text):
         if "startignore" in text[index]:
@@ -61,10 +61,9 @@ def remove_ignored_lines(text):
 
     return text            
 
+
 def get_line(file, row, col):
     """Get specific line from file"""
-
-    # read the lines
     lines = open(file, 'r').readlines() 
 
     for index,line in enumerate(lines):
@@ -76,8 +75,9 @@ def get_line(file, row, col):
     
     return text
 
+
 def temp_file(text):
-    """create a temporary file to write the text lines""" 
+    """Create a temporary file to write the text lines""" 
     f= open("temp.txt","w+")
     for line in text:
         f.write(line)
@@ -85,8 +85,9 @@ def temp_file(text):
     os.remove("temp.txt")
     return text    
 
+
 def run_checks(paths):
-    """Function to run checks on the docs."""
+    """Run checks on the docs."""
     file_path = os.path.realpath(__file__)
 
     # find path for all .rst files
@@ -116,8 +117,6 @@ def run_checks(paths):
                    "misc.many_a", "misc.phrasal_adjectives",
                    "nonwords.misc",
                  ]        
-
-    t = Terminal()
 
     for filename in path_list:        
         
@@ -176,6 +175,7 @@ def run_checks(paths):
             err_list.append(err_str)             
 
         # display errors
+        t = Terminal()
         for e in err_list:
                 print(t.blue(e["line1"]))
                 print(e["line2"])
@@ -185,19 +185,18 @@ def run_checks(paths):
                    print(t.red(e["line3"]))
                 print(t.white(e["line4"])) 
                 print("\n")   
+
                  
 @click.command(context_settings=CONTEXT_SETTINGS)
 @click.argument('paths', nargs=-1, type=click.Path())
 def style_test(paths=None):
     """A CLI for style guide testing"""
-    # Expand the list of directories and files.
-    filepaths = paths
 
     # add custom style-guide checks to proselint
     add_checks()
 
     # run custom style guide checks
-    run_checks(filepaths)
+    run_checks(paths)
 
 
 if __name__ == '__main__':
