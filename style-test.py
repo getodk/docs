@@ -172,9 +172,7 @@ def run_checks(paths):
                          "extent": extent,
                          "replace": replace,
                          "severity": severity
-                        }
-            
-           
+                        }          
             err_list.append(err_str)             
 
         # display errors
