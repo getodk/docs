@@ -109,13 +109,13 @@ def run_checks(paths):
     # list of errors to fail the build. Others will be considered as warnings.
     list_errors = [
                    "style-guide.check-curlyquote", "style-guide.uk-us",
-                   "consistency.spacing", "spelling.able_atable", 
-                   "spelling.able_ible", "spelling.athletes", 
-                   "spelling.em_im_en_in", "spelling.er_or",
-                   "spelling.in_un", "spelling.misc",
-                   "misc.capitalization", "misc.inferior_superior",
-                   "misc.many_a", "misc.phrasal_adjectives",
-                   "nonwords.misc",
+                   "style-guide.check-space", "consistency.spacing", 
+                   "spelling.able_atable", "spelling.able_ible", 
+                   "spelling.athletes", "spelling.em_im_en_in", 
+                   "spelling.er_or", "spelling.in_un", 
+                   "spelling.misc", "misc.capitalization", 
+                   "misc.inferior_superior", "misc.many_a", 
+                   "misc.phrasal_adjectives", "nonwords.misc",
                  ]        
 
     for filename in path_list:        
@@ -171,9 +171,10 @@ def run_checks(paths):
                          "extent": extent,
                          "replace": replace,
                          "severity": severity
-                        }          
-            err_list.append(err_str)             
-
+                        } 
+                  
+            err_list.append(err_str)   
+              
         # display errors
         t = Terminal()
         for e in err_list:

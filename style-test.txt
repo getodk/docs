@@ -9,4 +9,5 @@
         "style-guide.order-list"        : true,
         "style-guide.check-same"        : true,
         "style-guide.check-semicolon"   : true,
-        "style-guide.check-howto"       : true
+        "style-guide.check-howto"       : true,
+        "style-guide.check-space"       : true
