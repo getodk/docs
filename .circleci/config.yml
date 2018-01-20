@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/src
+    working_directory: ~/work
     docker:
       - image: circleci/python:latest
     steps:
@@ -30,17 +30,17 @@ jobs:
           path: build
           destination: build
       - persist_to_workspace:
-          root: ~/src
+          root: ~/work
           paths:
             - build/*
             - s3_website.yml
   deploy:
-    working_directory: ~/src
+    working_directory: ~/work
     docker:
       - image: circleci/ruby:latest
     steps:
       - attach_workspace:
-          at: ~/src
+          at: ~/work
       - run:
           name: Install deploy requirements
           command: |
