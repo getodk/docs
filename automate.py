@@ -18,7 +18,6 @@ dir_src = os.path.expanduser("~/collect/fastlane/metadata/android/en/images/phon
 
 utilPath=(os.path.dirname(os.path.realpath(__file__)))
 l= utilPath.split("/")
-print(l)
 l.remove(l[-1])
 fullPath="/".join(l)
 fullImgPath= fullPath +"/img/form-widgets" #path to form-widgets image directory
@@ -48,7 +47,6 @@ file1 = open(fullFilepath, "w")
 
 def stringWidget():
     #L=[string-caption, newline, image-name, alt-text]
-    print("ho")
     text = ["A st"
          "ring-input\n", " \n", "string-input\n", "String input form widget, displayed in ODK Collect on an Android phone. The label is ""What is your name?"""]
     write(text)
