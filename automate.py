@@ -16,7 +16,13 @@ dir_src = os.path.expanduser("~/collect/fastlane/metadata/android/en/images/phon
 
 # destination directory
 
-dir_dst = os.path.expanduser("~/odk/odkenv/docs/img/form-widgets")
+utilPath=(os.path.dirname(os.path.realpath(__file__)))
+l= utilPath.split("/")
+print(l)
+l.remove(l[-1])
+fullPath="/".join(l)
+fullImgPath= fullPath +"/img/form-widgets" #path to form-widgets image directory
+dir_dst = fullImgPath
 
 path=dir_dst
 
@@ -36,17 +42,19 @@ for file in files:
 
 # path to form-widgets guide
 
-file1 = open("path/odk/odkenv/docs/form-widgets.rst", "w")
+fullFilepath = fullPath + "/docs/form-widgets.rst"  #path to form-widgets.rst
+file1 = open(fullFilepath, "w")
 
 
 def stringWidget():
     #L=[string-caption, newline, image-name, alt-text]
+    print("ho")
     text = ["A st"
          "ring-input\n", " \n", "string-input\n", "String input form widget, displayed in ODK Collect on an Android phone. The label is ""What is your name?"""]
     write(text)
 
 def integerWidget():
-    text=["A whole number entry input. Integer widgets will not accept decimal points.\n","\n","string-number", "An integer form widget displayed in ODK Collect on an Android phone. A numerical keyboard is displayed. The label is ""String number widget"""]
+    text = ["A whole number entry input. Integer widgets will not accept decimal points.\n","\n","string-number", "An integer form widget displayed in ODK Collect on an Android phone. A numerical keyboard is displayed. The label is ""String number widget"""]
     write(text)
 
 def urlWidget():
@@ -74,7 +82,7 @@ def decimalWidget():
     text=["A numerical entry input that will accept decimal points.", "\n", "decimal1", "An integer form widget displayed in ODK Collect on an Android phone. The question is ""Weight in kilograms."" A numerical keyboard is displayed."]
     write(text)
 
-def exdecimalWidget():
+def exDecimalWidget():
     text=["Launches an external app and receives a decimal number input back from the external app. If the specified external app is not available, a manual input is prompted.", "\n\n", "", "The External Decimal form widget, as displayed in the ODK Collect app on an Android phone. The question text is, ""Ex decimal widget."" The hint text is, ""decimal type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)."" Below that is a button labeled ""Launch."" Above the question text is the form group name ""Numerical widgets.""|The External Decimal widget displayed previously. The Launch button is now disabled and below it is a simple input. A help text reads, ""The requested application is missing. Please manually enter the reading."""]
     write(text)
 
@@ -105,7 +113,7 @@ def main():
     integerWiget()
     exIntegerWidget()
     decimalWidget()
-    exdecimalWidget()
+    exDecimalWidget()
 
 
 if __name__ == '__main__':
