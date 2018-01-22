@@ -8,7 +8,7 @@ from proselint.tools import existence_check, memoize
 def check_pronoun(text):
     """Check third-person personal pronouns."""
     err = "style-guide.personal-pronoun"
-    msg = "Avoid using third-person personal pronouns like \"he.\", \"she.\", \"them\"."
+    msg = "Avoid using third-person personal pronouns like \"he\", \"she\", \"them\"."
 
     list = [
         "he",
