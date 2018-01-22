@@ -132,7 +132,8 @@ def run_checks(paths):
     global err_list
     path_list = get_paths(paths) 
     list_errors = get_errlist()
-    errors = []   
+    errors = [] 
+    
     for filename in path_list:        
         
         # read the file 
@@ -176,13 +177,15 @@ def run_checks(paths):
                 severity = "warning" 
 
             # Add error tuples to err_list
-            err_list += [(check, filename, msg, line, col, extent, replace, severity)]  
+            err_list += [(check, filename, msg, line, col, extent, replace, severity)]       
 
 
 def disp_checks():
     """Display errors and warnings."""
     global err_list
     t = Terminal()
+    err_cnt = 0
+    warn_cnt = 0
 
     for e in err_list:
         
@@ -198,10 +201,17 @@ def disp_checks():
         print(line2)
         if e[7] is "warning":
             print(t.yellow(line3))
+            warn_cnt += 1
         else:
             print(t.red(line3))
+            err_cnt += 1
         print(t.white(line4)) 
         print("\n")   
+    
+    print(t.yellow("Found %d warnings" %warn_cnt))
+    print(t.red("Found %d errors") %err_cnt)
+    if err_cnt:
+        raise Exception("Style-guide testing failed! Fix the errors")
 
  
 def fix_err(paths):
