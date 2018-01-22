@@ -109,7 +109,6 @@ def run_checks(paths):
     # list of errors to fail the build. Others will be considered as warnings.
     list_errors = [
                    "style-guide.check-curlyquote", "style-guide.uk-us",
-                   "style-guide.check-space", "consistency.spacing", 
                    "spelling.able_atable", "spelling.able_ible", 
                    "spelling.athletes", "spelling.em_im_en_in", 
                    "spelling.er_or", "spelling.in_un", 
