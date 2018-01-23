@@ -199,6 +199,7 @@ def disp_checks():
         line4 = "%s | %s" %(e[0], e[7])
         print(t.blue(line1))
         print(line2)
+        # e[7]=severity
         if e[7] is "warning":
             print(t.yellow(line3))
             warn_cnt += 1
@@ -223,6 +224,9 @@ def fix_err(paths):
     rep_list = [e for e in err_list if e[0] in fix_list]
     
     for filename in path_list:
+        # don't fix errors in style-guide.rst
+        if "style-guide.rst" in filename:
+            continue
         # filter errors to get errors only for filename
         file_err = [e for e in rep_list if e[1] == filename]
 
