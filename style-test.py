@@ -183,6 +183,8 @@ def run_checks(paths):
 def disp_checks():
     """Display errors and warnings."""
     global err_list
+    os.environ["TERM"] = "linux"
+    os.environ["TERMINFO"]= "/etc/terminfo"
     t = Terminal()
     err_cnt = 0
     warn_cnt = 0
