@@ -11,4 +11,4 @@ def check_unorderlist(text):
     msg = "Use ordered list if order of steps matters."
     regex = "(\-\s[(\x00-\x09)|(\x0B-\x7F)]*\n)+"
 
-    return existence_check(text, [regex], err, msg, max_errors=3, require_padding=False)
+    return existence_check(text, [regex], err, msg, max_errors=1, require_padding=False)
