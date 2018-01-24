@@ -11,12 +11,12 @@ def check_latin(text):
     msg = "Avoid using Latin abbreviations like \"etc.\", \"i.e.\"."
 
     list = [
-        "etc.",
-        "i.e.",
-        "e.g.",
-        "viz.",
-        "c.f.",
-        "n.b.",
+        "etc\.", "etc", "\*etc\.\*", "\*etc\*",
+        "i\.e\.", "ie", "\*ie\.\*", "\*ie\*",
+        "e\.g\.", "eg", "\*eg\.\*", "\*eg\*",
+        "viz\.", "viz", "\*viz\.\*", "\*viz\*",
+        "c\.f\.", "cf", "\*cf\.\*", "\*cf\*",
+        "n\.b\.", "nb", "\*nb\.\*", "\*nb\*",
     ]
 
     return existence_check(text, list, err, msg, ignore_case=True)
