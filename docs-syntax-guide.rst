@@ -6,7 +6,7 @@ The ODK documentation is built using `Sphinx <http://sphinx-doc.org>`_, a static
 - `reStructuredText Primer <http://docutils.sourceforge.net/docs/user/rst/quickstart.html>`_ — Introduction to reStructuredText
 
   - `reStructuredText Quick Reference <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_
-  - `reStrcuturedTest 1-page cheat sheet <http://docutils.sourceforge.net/docs/user/rst/cheatsheet.txt>`_
+  - `reStructuredText 1-page cheat sheet <http://docutils.sourceforge.net/docs/user/rst/cheatsheet.txt>`_
 
 - `Sphinx Markup <http://www.sphinx-doc.org/en/stable/markup/index.html>`_ — Detailed guide to Sphinx's markup concepts and reStructuredText extensions
 
@@ -20,7 +20,7 @@ The ODK documentation is built using `Sphinx <http://sphinx-doc.org>`_, a static
 Indentation
 --------------
 
-Indentation is meaningful in Sphinx and reStructured text. Usually, indenting a section means that is "belongs to" the line it is indented under. For example:
+Indentation is meaningful in Sphinx and reStructuredText text. Usually, indenting a section means that is "belongs to" the line it is indented under. For example:
 
 .. code-block:: rst
 
@@ -85,45 +85,6 @@ The asterisks style is useful when you are combining several existing documents 
 
 See :ref:`sections-titles` for more details.
 
-.. _custom-css:
-
-Custom CSS
-------------
-
-You can add custom styling in :file:`_static/css/custom.css`. Whenever you add any custom styling, add short comments describing the changes made and the PR number in which the changes were made.
-
-For example:
-
-.. code-block:: css
-
-  /* Example css PR #xyx */
-
-  div[class^='example'] {
-    color: black;
-  }
-
-There are various sections in the :file:`custom.css` file:
-
-- Styling for rst roles and directives
-- Responsive css
-- Styling for JS implementation
-- Utility classes
-
-Each of these sections are enclosed between start and end comments. Make sure you add your code to the relevant section. If you don't find any section relevant, add a new section and add your code there.
-
-For example:
-
-.. code-block:: css
-
-  /* New section starts */
-
-  /* Example css PR #xyx */
-
-  div[class^='example'] {
-    color: black;
-  }
-  
-  /* New section ends */ 
 
 .. _about-toc:
 
@@ -140,7 +101,7 @@ The :rst:dir:`toctree` directive defines a table of content. The content of a :r
     another-page
     this-other-page
 
-The depth of sections and subsections links to display in the output can be controlled using the :rst:role:`maxdepth` attribute. We typically use a depth of ``2``, but you should use your judgement if you feel it should be more or less in any given context.
+The depth of sections and subsections links to display in the output can be controlled using the :rst:role:`maxdepth` attribute. We typically use a depth of ``2``, but you should use your judgment if you feel it should be more or less in any given context.
 
 .. code-block:: rst
 
@@ -175,7 +136,7 @@ Secondary tables of content
 
 Collections of documents are sometimes given their own table of content on an individual page. (See, for example, :doc:`collect-setup` and :doc:`collect-using`.) 
 
-In these cases, the page containing the :rst:dir:`toctree` serves as sort of intro page for the collection. That intro must, itself, be included in the :ref:`main-nav-menu`.
+In these cases, the page containing the :rst:dir:`toctree` serves as a sort of intro page for the collection. That intro must, itself, be included in the :ref:`main-nav-menu`.
 
 The contents of a :rst:dir:`toctree` appear as section links in another :rst:dir:`toctree` it is included in. That is, if a :rst:dir:`toctree` in :file:`index.rst` lists ``collect-using``, and :file:`collect-using` has a :rst:dir:`toctree`, then the contents of that second :rst:dir:`toctree` will appear in the :ref:`main-nav-menu`, as sub-items to :doc:`collect-using`. (Indeed, this is precisely the case in the docs currently.)
 
@@ -196,11 +157,11 @@ How ODK Docs uses main and secondary tables of content
    
  - Within a large topic, documents are grouped into collections of related pages, defined by a :rst:dir:`toctree` on a topic intro page.
  
-   Intro pages (pages that contain secondary :rst:dir:`toctree` directives) may include additional content introducing the collection or providing contextual wayfinding. However, this is not always neccesary or desirable. Use your judgement, and avoid stating things just for the sake of having some text. ("Here are the pages in this collection.")
+   Intro pages (pages that contain secondary :rst:dir:`toctree` directives) may include additional content introducing the collection or providing contextual wayfinding. However, this is not always necessary or desirable. Use your judgment, and avoid stating things just for the sake of having some text. ("Here are the pages in this collection.")
    
    We also (very occasionally) include :rst:dir:`toctree` directives in sub-collection pages.
    
-If it not obvious where a new document should appear in the navigation, the best practice is to simply ask about it in the Github issue driving the new page.
+If it not obvious where a new document should appear in the navigation, the best practice is to simply ask about it in the GitHub issue driving the new page.
 
 .. note::
 
@@ -479,7 +440,7 @@ Definition Lists
 
 
 Definition list ( ``<dl>`` )
-  a list with several term-defition pairs
+  a list with several term-definition pairs
 
 Terms
   should not be indented
@@ -717,7 +678,7 @@ Some of the options recognized are:
 
 .. rst:role:: file
   
-  Contains the local filesystem path to a CSV data file.
+  Contains the local file system path to a CSV data file.
 
 .. rst:role:: url
 
@@ -1249,7 +1210,7 @@ We have a custom video directive to add a video:
 
   $ adb shell screenrecord /sdcard/example.mp4
 
-On pressing the enter key the video recording starts. Recording stops automatically after 3 minutes but since video length has to be less than a minute, to stop the recording in between simply press :command:`Ctrl+C`.
+On pressing the enter key the video recording starts. Recording stops automatically after 3 minutes but since video length has to be less than a minute, to stop the recording in between simply press :command:`CTRL+C`.
 
 The video file is saved in your Android device to a file at :file:`/sdcard/example.mp4` file.
 
