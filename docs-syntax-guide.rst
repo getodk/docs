@@ -182,7 +182,12 @@ How ODK Docs uses main and secondary tables of content
 Sections and Titles
 -----------------------
 
-Headlines require two lines: the text of the headline, followed by a line filled with a single character. Each level in a headline hierarchy uses a different character:
+Headlines require two lines: 
+
+- the text of the headline, followed by 
+- a line filled with a single character. 
+
+Each level in a headline hierarchy uses a different character:
 
 .. code-block:: rst
 
@@ -205,7 +210,7 @@ Headlines require two lines: the text of the headline, followed by a line filled
   Sub-sub-subsection - <h5> - Single Quotes
   ''''''''''''''''''''''''''''''''''''''''''''
 
-If you need to combine several existing pages together, or want to start a single-page doc that you think might be split into individual pages later on, you can add a top-level title, demoting the other headline types by one:
+If you need to combine several existing pages together, or want to start a single-page doc that you think might be split into individual pages later on, you can add a top-level title, demoting the other headline types by one.
 
 .. code-block:: rst
 
@@ -264,7 +269,7 @@ In order to facilitate efficient :ref:`cross-referencing`, sections should be la
 
   Lorem ipsum content of section blah blah.
 
-The section label is a slugified version of the section title.
+The section label is usually a slugified version of the section title.
 
 Section titles must be unique throughout the entire documentation set. Therefore, if you write a common title that might appear in more than one document (*Learn More* or *Getting Started*, for example), you'll need to include additional words to make the label unique. The best way to do this is to add a meaningful work from the document title.
 
@@ -277,7 +282,7 @@ Section titles must be unique throughout the entire documentation set. Therefore
 
   .. _aggregate-getting-started:
 
-  Get Started
+  Getting Started
   -----------------
 
 .. _basic-markup:
@@ -285,20 +290,22 @@ Section titles must be unique throughout the entire documentation set. Therefore
 Basic Markup
 -------------
 
+.. _escaping-characters:
 
-.. note:: Escaping Characters
+Escaping characters
+~~~~~~~~~~~~~~~~~~~~~
 
-  Markup characters can be escaped using the ``\`` characters.
+Markup characters can be escaped using the ``\`` character.
 
-  .. code-block:: rst
-
-    *Italic.*
-
-    \*Not italic, surrounded by asterisks.\*
+.. code-block:: rst
 
   *Italic.*
 
   \*Not italic, surrounded by asterisks.\*
+
+*Italic.*
+
+\*Not italic, surrounded by asterisks.\*
 
 .. _inline-markup:
 
@@ -418,6 +425,10 @@ Numbered lists ( ``<ol>`` ):
    b. nested lists need a blank line before and after
 
 #. Can have an automatic number with the ``#`` character.
+
+.. note::
+
+  See :ref:`list-types` in the :doc:`docs-style-guide` for details on when to use ordered and unordered lists.
 
 .. _dl:
 
@@ -626,9 +637,9 @@ Some of the options recognized are:
     
   Contains a comma or space-separated list of relative column widths. The default is equal-width columns.
    
-  .. note::
-
-    The special value *auto* may be used by writers to decide whether to delegate the determination of column widths to the backend.
+  The special value ``auto`` may be used by writers to decide whether to delegate the determination of column widths to the backend.
+  
+  In most cases, the best result is either the default or ``auto``. If you're unsure, try it both ways and see which looks better to you.
 
 .. rst:role:: header 
 
@@ -637,6 +648,8 @@ Some of the options recognized are:
 .. rst:role:: delim
   
   Contains a one character string used to separate fields. Default value is comma. It must be a single character or Unicode code.
+  
+  The only reason to use something other than a comma is when copying large blocks of content from another source that uses a different style. If you are creating new table content yourself, use the comma.
 
   .. code-block:: rst
 
@@ -648,17 +661,17 @@ Some of the options recognized are:
       "Peter"#"A"
       "Paul"#"B"
 
-    .. csv-table:: Table using # as delimiter
+    .. csv-table:: Table using | as delimiter
       :header: "Name", "Grade"
       :widths: auto
-      :delim: #
+      :delim: |
 
-      "Peter"#"A"
-      "Paul"#"B"
+      "Peter"|"A"
+      "Paul"|"B"
 
 .. rst:role:: align
 
-  It specifies the horizontal alignment of the table. It can be `left` ,`right` or `center`. 
+  It specifies the horizontal alignment of the table. It can be `left`, `right` or `center`. 
 
   .. code-block:: rst
 
@@ -669,12 +682,12 @@ Some of the options recognized are:
       "Peter", "A"
       "Paul", "B"
 
-    .. csv-table:: Table aligned to right
-      :header: "Name", "Grade"
-      :align: right
+  .. csv-table:: Table aligned to right
+    :header: "Name", "Grade"
+    :align: right
 
-      "Peter", "A"
-      "Paul", "B"
+    "Peter", "A"
+    "Paul", "B"
 
 .. rst:role:: file
   
@@ -706,6 +719,10 @@ Some of the options recognized are:
 
 
 For more details, refer this `guide on CSV Tables <http://docutils.sourceforge.net/docs/ref/rst/directives.html#id4>`_.
+
+.. note::
+
+  In almost all cases, :rst:dir:`csvtable` is the easiest and most maintainable way to insert a table into a document. It should be preferred unless there is a compelling reason to use on of the other styles.
 
 .. _sphinx-markup:
 
