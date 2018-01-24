@@ -6,6 +6,7 @@
 
   docs-tech-guide
   docs-syntax-guide
-  style-guide
+  docs-style-guide
+  docs-developer-guide
   contributing-tips
   cygwin

@@ -118,7 +118,7 @@ There's no hard rule about which to use in any situation. Use your judgement: tr
 Ordered and unordered lists
 -----------------------------
 
-An order list is numbered. It should be used when the order of the list is essential. For example, when enumerating a series of steps in a procedure.
+An ordered list is numbered. It should be used when the order of the list is essential. For example, when enumerating a series of steps in a procedure.
 
 .. rubric:: Wrong
 
