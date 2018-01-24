@@ -1422,7 +1422,7 @@ Other Semantic Markup
 
 .. rst:role:: file
 
-  Marks the name of a file or directory. Within the contents, you can use curly braces to indicate a “variable” part.
+  Marks the name of a file or directory. Within the contents, you can use curly braces to indicate a "variable" part.
 
   .. code-block:: rst
 
