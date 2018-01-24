@@ -67,7 +67,7 @@ Normally, the title of the page should be the first line of the file, underlined
 
   Page content is here...
 
-You can also wrap the title in two lines of asterisks.
+You can alternatively wrap the title in two lines of asterisks, in some cases. (This should not be your default choice.)
 
 .. code-block:: rst
 
@@ -77,7 +77,7 @@ You can also wrap the title in two lines of asterisks.
 
   Page content here.
 
-The asterisks style is useful when you are combining several existing documents (and don't want to change every subsection headline) or when you are working on a document that might be split into separate documents in the future.
+The asterisks style is useful when you are combining several existing documents and don't want to change every subsection headline. Or, you can use it when you are working on a document that you have reason to think might be split into separate documents in the future.
 
 .. important::
 
@@ -101,7 +101,7 @@ The :rst:dir:`toctree` directive defines a table of content. The content of a :r
     another-page
     this-other-page
 
-The depth of sections and subsections links to display in the output can be controlled using the :rst:role:`maxdepth` attribute. We typically use a depth of ``2``, but you should use your judgment if you feel it should be more or less in any given context.
+The depth of section and subsection links to display in the output can be controlled using the :rst:role:`maxdepth` attribute. We typically use a depth of ``2``, but you should use your judgment if you feel it should be more or less in any given context.
 
 .. code-block:: rst
 
@@ -125,9 +125,9 @@ The depth of sections and subsections links to display in the output can be cont
 Sidebar navigation menu
 ~~~~~~~~~~~~~~~~~~~~~~~~~    
         
-The ``index.rst`` file serves as a front-page to the documentation and contains the main tables of content, defined using :rst:dir:`toctree` directives. 
+The :file:`index.rst` file serves as a front-page to the documentation and contains the main tables of content, defined using :rst:dir:`toctree` directives. 
 
-These :rst:dir:`toctree` directives control the sidebar navigation menu. To add a new document to a table of content, add the file name (without the ``.rst`` extension) to the relevant list of file names in ``index.rst``.
+These :rst:dir:`toctree` directives control the sidebar navigation menu. To add a new document to a table of content, add the file name (without the ``.rst`` extension) to the relevant list of file names in :file:`index.rst`.
 
 .. _secondary-tocs:
 
@@ -138,30 +138,31 @@ Collections of documents are sometimes given their own table of content on an in
 
 In these cases, the page containing the :rst:dir:`toctree` serves as a sort of intro page for the collection. That intro must, itself, be included in the :ref:`main-nav-menu`.
 
-The contents of a :rst:dir:`toctree` appear as section links in another :rst:dir:`toctree` it is included in. That is, if a :rst:dir:`toctree` in :file:`index.rst` lists ``collect-using``, and :file:`collect-using` has a :rst:dir:`toctree`, then the contents of that second :rst:dir:`toctree` will appear in the :ref:`main-nav-menu`, as sub-items to :doc:`collect-using`. (Indeed, this is precisely the case in the docs currently.)
+The contents of a :rst:dir:`toctree` appear as section links in another :rst:dir:`toctree` it is included in. That is, if a :rst:dir:`toctree` in :file:`index.rst` lists ``collect-using``, and :file:`collect-using.rst` has a :rst:dir:`toctree`, then the contents of that second :rst:dir:`toctree` will appear in the :ref:`main-nav-menu`, as sub-items to :doc:`collect-using`. (Indeed, this is precisely the case in the docs currently.)
 
 How ODK Docs uses main and secondary tables of content
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- Major topics get a :rst:dir:`toctree` in :file:`index.rst`
+ 
+  Major topics include things like:
+ 
+  - Each major product (Collect, Aggregate, Briefcase) 
+  - Large, general categories like Contributing
+   
+  Major topic tables of content include both sub-collection intro pages and also individual pages that don't fit into a sub-collection.
+   
+  The :rst:role:`caption` attribute of the :rst:dir:`toctree` directive defines the section label in the :ref:`main-nav-menu`.
+   
+- Within a large topic, documents are grouped into collections of related pages, defined by a :rst:dir:`toctree` on a topic intro page.
+ 
+  Intro pages (pages that contain secondary :rst:dir:`toctree` directives) may include additional content, introducing the collection or providing contextual wayfinding. However, this is not always necessary or desirable. Use your judgment, and avoid stating things just for the sake of having some text. ("Here are the pages in this collection.")
+   
+  We also (very occasionally) include :rst:dir:`toctree` directives in sub-collection pages.
 
- - Major topics get a :rst:dir:`toctree` in :file:`index.rst`
+.. tip::  
  
-   Major topics include things like:
- 
-   - Each major product (Collect, Aggregate, Briefcase) 
-   - Large, general categories like Contributing
-   
-   Major topic tables of content include both sub-collection intro pages and also individual pages that don't fit into a sub-collection.
-   
-   The :rst:role:`caption` attribute of the :rst:dir:`toctree` directive defines the section label in the :ref:`main-nav-menu`.
-   
- - Within a large topic, documents are grouped into collections of related pages, defined by a :rst:dir:`toctree` on a topic intro page.
- 
-   Intro pages (pages that contain secondary :rst:dir:`toctree` directives) may include additional content introducing the collection or providing contextual wayfinding. However, this is not always necessary or desirable. Use your judgment, and avoid stating things just for the sake of having some text. ("Here are the pages in this collection.")
-   
-   We also (very occasionally) include :rst:dir:`toctree` directives in sub-collection pages.
-   
-If it not obvious where a new document should appear in the navigation, the best practice is to simply ask about it in the GitHub issue driving the new page.
+  If it not obvious where a new document should appear in the navigation, the best practice is to simply ask about it in the GitHub issue driving the new page.
 
 .. note::
 
@@ -171,10 +172,9 @@ If it not obvious where a new document should appear in the navigation, the best
 
   We use :rst:dir:`toctree` directives as our primary way of organizing the documentation for readers. We do not organize the source ``rst`` files into subfolders.
   
-  The reason is that if we put them into topic-related subfolders, it would affect the URI of the document. Keeping all of our document files in the a single flat directory results in a flat URI structure; every page's URI looks like ``docs.opendatakit.org/page-name``.
+  The reason is that if we put them into topic-related subfolders, it would affect the URI of the document. Keeping all of our document files in a single flat directory results in a flat URI structure. Every page's URI looks like ``docs.opendatakit.org/page-name``.
   
   If we used subdirectories, then our URIs would look like ``docs.opendatakit.org/subdirectory-name/page-name``. This would mean that our URIs would change every time we moved a document from one folder to another, greatly increasing the time cost and broken-link risk of reorganizing the docs.
- 
 
 
 .. _sections-titles:
