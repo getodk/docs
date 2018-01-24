@@ -24,6 +24,8 @@ ODK also maintains libraries and specifications that support these applications.
 - **ODK JavaRosa** is a Java library that renders forms complying with the ODK XForm specification.
 - **XLSForm** defines an Excel format for designing forms.
 
+If the above tools do not meet your needs, the :doc:`odk-2-intro` may be a better fit. Compare features with the guide for :doc:`select-tool-suite`.
+
 
 For a complete list of our projects, check out `Open Data Kit on Github <https://github.com/opendatakit>`_.
 
@@ -78,7 +80,24 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   pyxform
   validate
   launch-apps-from-collect
-  
+
+.. toctree::
+  :hidden:
+  :maxdepth: 2
+  :caption: 2.0 Tool Suite
+
+  odk-2-intro
+  select-tool-suite
+  getting-started-2
+  app-designer-intro
+  survey-intro
+  tables-intro
+  services-intro
+  scan-intro
+  cloud-endpoints-intro
+  suitcase-intro
+  advanced-topics
+
 .. toctree::
   :hidden:
   :maxdepth: 2
