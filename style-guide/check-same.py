@@ -14,4 +14,4 @@ def check_same(text):
         "The same",
     ]
 
-    return existence_check(text, list, err, msg)
+    return existence_check(text, list, err, msg, ignore_case=False)
