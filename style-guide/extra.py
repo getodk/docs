@@ -8,7 +8,7 @@ def check_quotes(text):
     """Check straight quotes"""
     err = "style-guide.check-quote"
     msg = "Avoid using quote marks."
-    regex = r"\W\"[a-zA-z0-9\s]*\"\W"
+    regex = r"\"[a-zA-z0-9 ]{1,15}\""
     
     errors = []
 
@@ -27,7 +27,7 @@ def check_curlyquotes(text):
     """Check curly quotes"""
     err = "style-guide.check-curlyquote"
     msg = "Do not use curly quotes. If needed use straight quotes."
-    regex = r"\W\“[a-zA-z0-9\s]*\”\W"
+    regex = r"\“[a-zA-z0-9 ]{1,15}\”"
     
     errors = []
 
