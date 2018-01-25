@@ -1,7 +1,7 @@
 Connecting to a Server
 ================================
 
-ODK Collect is used to complete surveys with participants. But if you want to review and analyse your collected data, you'll need to upload your collected data to another application.
+ODK Collect is used to complete surveys with participants. But if you want to review and analyze your collected data, you'll need to upload your collected data to another application.
 
 .. note::
 

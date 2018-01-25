@@ -30,7 +30,7 @@ Media held in memory
 
 When a form submission is uploaded, and when blank forms are downloaded, all the associated media files are held in memory at the same time, twice. For forms with a lot of media files, this can consume a lot of memory.
 
-The previous section already suggested serialising form submission uploads. This is not absolutely critical for form downlaods, but you should probably manage how many form download requests are being handled concurrently, in order to avoid memory problems.
+The previous section already suggested serializing form submission uploads. This is not absolutely critical for form downlaods, but you should probably manage how many form download requests are being handled concurrently, in order to avoid memory problems.
 
 ..  Spinning up of copies of the frontend will incur faster quota usage on AppEngine. For that reason, the Aggregate configuration here specifies a 14-second queuing time threshold before a new instance is spun up. Only if at least one request is queued for longer than 14 seconds will a new instance be spun up, and then that new instance will take about 30 seconds to become live. Leaving a 15-second processing interval. This is why ODK Collect tried twice before failing a submit.
 

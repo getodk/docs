@@ -24,7 +24,7 @@ Installing on App Engine
     - If you are running OSX, you must unzip the downloaded file before running the installer within it.
     - If you are on MacOSX Mountain Lion or onward, you will need to fiddle with `GateKeeper settings <http://osxdaily.com/2012/07/27/app-cant-be-opened-because-it-is-from-an-unidentified-developer/>`_ in order to run the installer.
     - If you are on Windows 10, you will need to approve running an unsigned installer.
-    - If you are on Linux, you will need to change the downloaded file's permissions to enable running it as a program. Right click on the file and click on :guilabel:`Properties`. Click on :guilabel:`Permissions` tab. Now check the box labelled as :guilabel:`Allow executing file as program`.
+    - If you are on Linux, you will need to change the downloaded file's permissions to enable running it as a program. Right click on the file and click on :guilabel:`Properties`. Click on :guilabel:`Permissions` tab. Now check the box labeled as :guilabel:`Allow executing file as program`.
   
     
 
