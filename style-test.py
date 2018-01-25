@@ -268,7 +268,7 @@ def style_test(paths = None, fix = None):
     if not fix:
         disp_checks()
     
-    #remove the fixable errors
+    # remove the fixable errors
     if fix:
         fix_err(paths)
 
