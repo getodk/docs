@@ -9,9 +9,8 @@ def check_same(text):
     """Check Impersonal pronoun same."""
     err = "style-guide.check-same"
     msg = "Avoid using \"The same\"."
+    regex = "\. The same"
 
-    list = [
-        "The same",
-    ]
+    return existence_check(text, [regex], err, msg, ignore_case=False, 
+    	                   require_padding=False)
 
-    return existence_check(text, list, err, msg, ignore_case=False)
