@@ -9,9 +9,7 @@ def check_howto(text):
     """Check how to construct."""
     err = "style-guide.check-howto"
     msg = "Avoid using \"How to\" construction."
+    regex = "(How to.*)(\n)([=~\-\"\*]+)"
 
-    list = [
-        "How to",
-    ]
+    return existence_check(text, [regex], err, msg, require_padding=False)
 
-    return existence_check(text, list, err, msg, ignore_case=False)
