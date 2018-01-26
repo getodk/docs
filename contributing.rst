@@ -1522,7 +1522,7 @@ The ``rst_epilog`` in :file:`conf.py` contains a list of global substitutions th
   
 |
   
-- To create a hyperlink reference for docs related issues, use ``|docs-issue|_``.
+- To create a hyperlink reference for docs-related issues, use ``|docs-issue|_``.
 
   .. code-block:: rst
   
