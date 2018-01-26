@@ -49,6 +49,7 @@ def check_label(text):
     regex = r"(.*\n)(( )*\n)(.+\n)(([=\-~\"\']){3,})"
 
     errors = []
+    sym_list = ['===','---','~~~','"""','\'\'\'']
 
     for m in re.finditer(regex, text):
         label = m.group(1)
@@ -56,6 +57,8 @@ def check_label(text):
         end = m.end()
         (row, col) = line_and_column(text, start)
         row = row + 2
+        if any(word in text.splitlines(True)[row] for word in sym_list):
+            row = row - 1
         col = 0
         extent = m.end()-m.start()
         catches = tuple(re.finditer(r"\.\. _", label))
