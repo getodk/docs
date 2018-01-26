@@ -9,7 +9,7 @@ Authoring Tools and Environment
 
 .. note::
 
-  Developer and authoring tools have lots of options and alternatives. Local tools and workflows presented in this guide are what the author feels would be easiest for a non-coding contributor to set up and use. 
+  Developer and authoring tools have lots of options and alternatives. Local tools and workflows presented in this guide are what the author feels would be easiest for a non-coding contributor to set up and use.
 
 .. _docs-as-code:
 
@@ -656,8 +656,8 @@ For example:
   div[class^='example'] {
     color: black;
   }
-  
-  /* New section ends */ 
+
+  /* New section ends */
 
 .. _about-toc:
 
@@ -1108,24 +1108,24 @@ The `csv-table` directive is used to create a table from CSV (comma-separated va
    "Albatross", 2.99, "On a stick!"
    "Crunchy Frog", 1.49, "If we took the bones out, it wouldn't be
    crunchy, now would it?"
-   "Gannet Ripple", 1.99, "On a stick!"   
+   "Gannet Ripple", 1.99, "On a stick!"
 
 Some of the options recognized are:
 
-.. rst:role:: widths 
-    
+.. rst:role:: widths
+
   Contains a comma or space-separated list of relative column widths. The default is equal-width columns.
-   
+
   .. note::
 
     The special value *auto* may be used by writers to decide whether to delegate the determination of column widths to the backend.
 
-.. rst:role:: header 
+.. rst:role:: header
 
-  Contains column titles. It must use the same CSV format as the main CSV data.  
+  Contains column titles. It must use the same CSV format as the main CSV data.
 
 .. rst:role:: delim
-  
+
   Contains a one character string used to separate fields. Default value is comma. It must be a single character or Unicode code.
 
   .. code-block:: rst
@@ -1148,7 +1148,7 @@ Some of the options recognized are:
 
 .. rst:role:: align
 
-  It specifies the horizontal alignment of the table. It can be `left` ,`right` or `center`. 
+  It specifies the horizontal alignment of the table. It can be `left` ,`right` or `center`.
 
   .. code-block:: rst
 
@@ -1167,7 +1167,7 @@ Some of the options recognized are:
       "Paul", "B"
 
 .. rst:role:: file
-  
+
   Contains the local filesystem path to a CSV data file.
 
 .. rst:role:: url
@@ -1182,13 +1182,13 @@ Some of the options recognized are:
 
       .. csv-table:: Table with different number of columns in each row
          :header: "Name", "Grade"
-   
+
          "Peter"
          "Paul", "B"
 
    .. csv-table:: Table with different number of columns in each row
       :header: "Name", "Grade"
-   
+
       "Peter"
       "Paul", "B"
 
@@ -1480,22 +1480,22 @@ Substitutions are a useful way to define a value which is needed in many places.
 
 You can define the value once like this:
 
-.. code-block:: rst 
+.. code-block:: rst
 
   .. |RST| replace:: reStructuredText
-  
+
 and then reuse it like this:
 
-.. code-block:: rst 
+.. code-block:: rst
 
   We use |RST| to write documentation source files.
-  
+
 Here, ``|RST|`` will be replaced by reStructuredText
 
 You can also create a reference with styled text:
 
 .. code-block:: rst
-  
+
   .. |slack| replace:: **ODK Slack**
   .. slack: https://opendatakit.slack.com
 
@@ -1506,7 +1506,7 @@ You can use the hyperlink reference by appending a "_" at the end of the vertica
   You can ask about your problem in |slack|_.
 
 .. |slack| replace:: **ODK Slack**
-.. _slack: https://opendatakit.slack.com  
+.. _slack: https://opendatakit.slack.com
 
 You can ask about your problem in |slack|_.
 
@@ -1517,49 +1517,49 @@ The ``rst_epilog`` in :file:`conf.py` contains a list of global substitutions th
   .. code-block:: rst
 
     You can use |odk-slack|_ to ask your questions.
-  
+
   You can use |odk-slack|_ to ask your questions.
-  
+
 |
-  
-- To create a hyperlink reference for docs related issues, use ``|docs-issue|_``.
+
+- To create a hyperlink reference for docs-related issues, use ``|docs-issue|_``.
 
   .. code-block:: rst
-  
+
     If you find a problem, file an |docs-issue|_.
-	
+
   If you find a problem, file an |docs-issue|_.
-  
+
 |
- 
+
 - To create a hyperlink reference for ODK Forum, use ``|forum|_``.
 
   .. code-block:: rst
-  
+
     You can ask support questions in |forum|_.
-	
+
   You can ask support questions in |forum|_.
 
-|  
-  
+|
+
 - To create a hyperlink reference for contributors guide, use ``|contrib-guide|_``.
 
   .. code-block:: rst
-    
+
 	Be sure to read the |contrib-guide|_.
-	
+
   Be sure to read the |contrib-guide|_.
 
-You can add inline images in the document using substitutions. The following block of code substitutes arrow in the text with the image specified.  
+You can add inline images in the document using substitutions. The following block of code substitutes arrow in the text with the image specified.
 
-.. code-block:: rst 
+.. code-block:: rst
 
   The |arrow| icon opens the jump menu.
-  
+
   .. |arrow| image:: /img/{document-subdirectory}/{file}.*
              :alt: Alt text.
 
-			 
+
 .. _image-names:
 
 Image File Names
@@ -1629,23 +1629,23 @@ Video files should be put in the :file:`/vid/` directory in the source, and they
 
 The length of the videos must be less than a minute.
 
-We have a custom video directive to add a video: 
+We have a custom video directive to add a video:
 
 .. rst:directive:: video
 
-  You should specify the source address of the video and a descriptive alt content in the video directive. Alternate content is displayed when the video cannot be played. It can contain long texts as well as any other rst content. 
+  You should specify the source address of the video and a descriptive alt content in the video directive. Alternate content is displayed when the video cannot be played. It can contain long texts as well as any other rst content.
 
   So to add a video in a document, you can do the following:
 
   .. code-block:: rst
 
     .. video:: /vid/{document-subdirectory}/{file}.mp4
-    
+
       Alt content. Every video should have descriptive alt content.
 
   Following options are supported:
 
-  .. rst:role:: autoplay 
+  .. rst:role:: autoplay
 
     Specifies whether the video should start playing as soon as it is ready. Can take boolean value: true, false, yes or no. Default is **no**.
 
@@ -1657,15 +1657,15 @@ We have a custom video directive to add a video:
 
     Specifies whether the audio output of the video should be muted. Can take boolean value: true, false, yes or no. Default is **yes**.
 
-  .. rst:role:: loop 
+  .. rst:role:: loop
 
-    Specifies whether the video should start over again, every time it is finished. Can take boolean value: true, false, yes or no. Default is **no**.   
+    Specifies whether the video should start over again, every time it is finished. Can take boolean value: true, false, yes or no. Default is **no**.
 
-  .. rst:role:: preload   
+  .. rst:role:: preload
 
     Specifies if and how the author thinks the video should be loaded when the page loads. Can take one of the following three values: **auto**, **metadata** or **none**.
 
-  .. rst:role:: poster  
+  .. rst:role:: poster
 
     Contains the source address for an image to be shown while the video is downloading, or until the user hits the play button.
 
@@ -1673,7 +1673,7 @@ We have a custom video directive to add a video:
 
       Images to be used as poster for a video should be in the same directory as the video and should have a name of format :file:`[same-file-name-as-video]-poster.ext`.
 
-  .. rst:role:: class 
+  .. rst:role:: class
 
     Specifies a class for the video element.
 
@@ -1758,7 +1758,7 @@ Use the ``code-block`` directive to markup code samples. Specify the language on
     }
 
 .. note::
-  
+
   **rst** code-blocks wrap overflow lines by default. To unwrap overflow lines, use **unwrap** class with **rst** code-blocks.
 
   .. code-block:: rst
@@ -1772,4 +1772,3 @@ Use the ``code-block`` directive to markup code samples. Specify the language on
 
     .. code-block:: python
       :class: wrap
-
