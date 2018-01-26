@@ -90,6 +90,8 @@ def get_line(filename, row, col):
 
     for index,line in enumerate(lines):
         if index==row-1:
+            if line.isspace():
+                line = lines[index+1]
             st_col = max(0, col-15)
             en_col = min(col+15, len(line))
             text = "..." + line[st_col:en_col].rstrip() + "..."
