@@ -4,7 +4,6 @@
 
 from proselint.tools import memoize, preferred_forms_check
 
-
 @memoize
 def check_odkspell(text):
     """odk spell check"""
@@ -15,14 +14,14 @@ def check_odkspell(text):
 
         ["Open Data Kit",         ["Open data kit"]],
         ["Open Data Kit",         ["OpenDataKit"]],
-        ["Aggregate",        	  ["aggregate"]],
-        ["Briefcase",             ["briefcase"]],
+        ["Aggregate",        	  ["{0} aggregate"]],
+        ["Briefcase",             ["{0} briefcase"]],
         ["XForms",                ["Xforms"]],
         ["XForms",                ["X-Forms"]],
-        ["XForms",                ["xforms"]],
+        ["XForms",                ["{0} xforms"]],
         ["XForms",                ["XFORMS"]],
         ["an Xform",              ["XForm"]],
-        ["XLSForm",               ["xlsform"]],
+        ["XLSForm",               ["{0} xlsform"]],
         ["XLSForm",               ["XLSform"]],
         ["XLSForm",               ["Xlsform"]]
     ]
