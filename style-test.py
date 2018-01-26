@@ -53,16 +53,34 @@ def add_checks():
         out_file.write("}")
 
 
-def remove_ignored_lines(text):
-    """Remove ignored lines from text."""
+def remove_lines(text):
+    """Remove ignored lines  and directive blocks from text."""
+    directive_list = [".. image::", ".. figure::", ".. video::", ".. code::",
+                      ".. code-block::", ".. csv-table::", ".. toctree::",]
     index = 0
+    length = len(text)
     while index<len(text):
+        # remove ignored lines
         if "startignore" in text[index]:
-            while index<len(text) and "endignore" not in text[index]:
-                text[index]="ignore_line\n"
+            while index < length and "endignore" not in text[index]:
+                text[index] = "ignore_line\n"
                 index = index+1
+        # remove directive blocks
+        if index < length and any(word in text[index] for word in directive_list):
+            indent = len(text[index]) - len(text[index].lstrip())
+            text[index] = "ignore_line\n"
+            index = index + 1
+            if index < length:
+                space_cnt = len(text[index]) - len(text[index].lstrip())
+            while index < length and (space_cnt > indent or text[index] == '\n'):
+                if not text[index].isspace():
+                    text[index] = "ignore_line\n"
+                index = index + 1
+                if index < length:
+                    space_cnt = len(text[index]) - len(text[index].lstrip())
+            index = index - 1        
         index = index+1 
-
+    
     return text            
 
 
@@ -141,7 +159,7 @@ def run_checks(paths):
             text = file.readlines()
 
         # remove ignored lines
-        text = remove_ignored_lines(text)
+        text = remove_lines(text)
         
         # Import extra check module from style-guide 
         extra = importlib.import_module('style-guide.extra', None)
