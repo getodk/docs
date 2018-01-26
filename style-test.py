@@ -92,7 +92,7 @@ def get_line(filename, row, col):
         if index==row-1:
             st_col = max(0, col-15)
             en_col = min(col+15, len(line))
-            text = "..." + line[st_col:en_col] + "..."
+            text = "..." + line[st_col:en_col].rstrip() + "..."
             break
     
     return text
