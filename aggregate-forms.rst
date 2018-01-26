@@ -1,5 +1,5 @@
-Form Management
-==================
+Managing Forms in Aggregate
+================================
 
 You can add, download and delete forms, export data into useful formats, publish data into another service, manually upload submissions and view the published data. ODK Aggregate provides all these options under the :guilabel:`Form Management` tab.
 
