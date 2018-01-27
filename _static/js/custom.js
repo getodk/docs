@@ -16,6 +16,9 @@ $(function(){
 	$(this).before(togl);
 	$(this).addClass('hidden');
 	$(this).has("img:only-child").addClass('screenshot-only');
+	if ( $(this).is("img") ) {
+	    $(this).addClass("screenshot-only");
+	}
     });
 
     // Add class to list items that include togglers
