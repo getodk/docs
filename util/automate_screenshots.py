@@ -58,7 +58,7 @@ def rows(row_index):
 	widgets.write(".. csv-table:: survey" +"\n")
 	widgets.write(" :header: type, name, label"+"\n")
 	values=[]
-	if (sheet.cell(row=row_index, column=1).value !="end_group" or sheet.cell(row=i, column=1).value !="begin_group" ):
+	if ((sheet.cell(row= row_index, column=1).value) !="begin_group" ):
 		if (sheet.cell(row= row_index, column=1).value is not None):
 			# appends type of the widget
 			values.append(sheet.cell(row=row_index, column=1).value)
@@ -95,7 +95,7 @@ def xml(name):
 					widgets.write("  "+"</input>"+"\n\n")
 
 
-for i in range(5,8):
+for i in range(5,10):
 	# prints headlines and section labels
 	if (sheet.cell(row=i, column=2).value is not None):
 		widgets.writelines(sheet.cell(row=i, column=2).value+"\n\n")
