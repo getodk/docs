@@ -77,7 +77,6 @@ def rows(row_index):
 # prints XForm XML
 def xml(name):
 	widgets.write(sheet.cell(row = 1, column=11).value + "\n\n")
-	print("working")
 	widgets.write(".. code-block:: xml"+ "\n\n")
 	with open('all-widgets.xml', 'rt') as file:
 		for line in file:
@@ -88,7 +87,6 @@ def xml(name):
 					length=len(nameSplit[0])
 					widgetName=nameSplit[0]
 					if (widgetName[0:length-1]==name):
-						print("yes")	
 						widgets.write("  "+line.strip()+"\n")
 						print("\n")
 			if "input" in line:
