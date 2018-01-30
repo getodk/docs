@@ -1,5 +1,6 @@
 import os
 import re
+import csv
 import glob
 import click
 import shutil
@@ -12,6 +13,9 @@ CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 # variables to hold error and warning count
 err_cnt = 0
 warn_cnt = 0
+
+# list to hold check results
+err_list = []
 
 # for generating colored output
 os.environ["TERM"] = "linux"
@@ -133,7 +137,7 @@ def get_line(filename, row, col):
 
 def temp_file(text):
     """Create a temporary file to write the text lines.""" 
-    f= open("temp.txt","w+")
+    f = open("temp.txt","w+")
     for line in text:
         f.write(line)
     text = open("temp.txt", "r")
@@ -199,9 +203,10 @@ def get_paths(paths):
     return path_list
 
 
-def run_checks(paths, fix):
+def run_checks(paths, disp, fix):
     """Run checks on the docs."""
     global t
+    global err_list
     path_list = get_paths(paths) 
     list_errors = get_errlist()
     errors = []
@@ -230,26 +235,38 @@ def run_checks(paths, fix):
 
         # sort the errors according to line and column 
         errors = sorted(errors, key=lambda e: (e[2], e[3]))
-
-        if not fix:
+        
+        # display the result of checks
+        if disp:
             disp_checks(errors, shortname)
         
-        # prepare a list for fixing errors
+        # list to hold fixable errors
+        fix_list = []
+
+        for e in errors:
+            check = e[0]
+            msg = e[1]
+            line = e[2] + 1
+            col = e[3] + 1
+            extent = e[6]
+            replace = e[8]
+            # Set warning or error severity. 
+            # Don't set errors for style-guide as they might be examples.
+            if check in list_errors and "style-guide.rst" not in filename:
+                severity = "error"
+            else:
+                severity = "warning"
+
+            # store all tuples in err_list
+            err_list += [(shortname, check, msg, line, col, extent, 
+                           replace, severity)] 
+
+            # Prepare a list of fixable errors 
+            if severity == "error":
+                fix_list += [(check, line, col, extent, replace)]
+
+        # call fix_err function to fix the errors
         if fix:
-            fix_list = []
-            for e in errors:
-                check = e[0]
-                line = e[2] + 1
-                col = e[3] + 1
-                extent = e[6]
-                replace = e[8]
-
-                # Prepare a list of fixable errors 
-                # Don't set errors for style-guide as they might be examples
-                if check in list_errors and "style-guide.rst" not in filename:
-                    fix_list += [(check, line, col, extent, replace)]
-
-            # call fix_err function to fix the errors
             cnt = len(fix_list)
             if cnt:
                 print(t.red("Found %d errors" %cnt))
@@ -259,7 +276,7 @@ def run_checks(paths, fix):
                 print(t.yellow("Found no errors!"))           
     
     # Display total errors and warning count
-    if not fix:
+    if disp:
         disp_cnt()
 
 
@@ -272,6 +289,8 @@ def disp_checks(errors, filename):
 
     for e in errors:        
         # e[0]=check
+        # Set warning or error severity. 
+        # Don't set errors for style-guide as they might be examples.
         if e[0] in list_errors and "style-guide.rst" not in filename:
             severity = "error"
         else:
@@ -332,11 +351,35 @@ def fix_err(fix_list, filename):
             out_file.write(line)
 
 
+def gen_out(path):
+    """Generate output in a specified format."""
+    print("Generating output...")
+    global err_list
+    file_type = path[path.rfind('.')+1:]
+
+    # CSV output
+    if file_type == "csv":
+        f = open(path,'w+')
+        csv_out = csv.writer(f)
+        csv_out.writerow(['Filename', 'Check', 'Message', 'Line', 
+                       'Column', 'Extent', 'Replacement', 'Severity'])
+        for e in err_list:
+            csv_out.writerow(e)    
+
+
 @click.command(context_settings = CONTEXT_SETTINGS)
-@click.option('--fix', '-f', is_flag = True, help = "Removes the fixable errors")
-@click.argument('paths', nargs = -1, type = click.Path())
-def style_test(paths = None, fix = None):
+@click.option('--fix', '-f', is_flag = True, 
+               help = "Removes the fixable errors")
+@click.option('--output','-o', is_flag = True, 
+               help = "Generate errors in an output format")
+@click.argument('out_path', nargs = 1, type = click.Path(), required = False)
+@click.argument('in_path', nargs = -1, type = click.Path())
+def style_test(in_path = None, out_path = None, fix = None, output = None):
     """A CLI for style guide testing"""
+    
+    # Check for correct command
+    if (output and not out_path) or (out_path and not output):
+        raise Exception("Please specify both output flag and output path!")
 
     # add custom style-guide checks to proselint
     add_checks()
@@ -345,7 +388,14 @@ def style_test(paths = None, fix = None):
     exclude_checks()
     
     # run the checks on docs
-    run_checks(paths, fix)
+    disp = True
+    if fix or output:
+        disp = False
+    run_checks(in_path, disp, fix)
+
+    # generate output
+    if output and out_path:
+        gen_out(out_path)
     
 
 if __name__ == '__main__':
