@@ -20,7 +20,7 @@ Interfaces used during Pull actions.
 The APIs used:
 
 1. OpenRosa Form Discovery API
-2. download forms and media files using URLs form discovery.
+2. Download forms and media files using URLs form discovery.
 3. ``view/submissionList`` to obtain a chunk of submission keys.
 4. ``view/downloadSubmission`` to download an individual submission.
 

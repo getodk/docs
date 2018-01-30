@@ -12,7 +12,7 @@ Pulling forms from ODK Aggregate
 - Open *ODK Briefcase*.
 - In the window which opens up select :guilabel:`pull` tab.
 - Select Aggregate 0.9.x or Aggregate 1.0 in the :guilabel:`pull data from` the drop-down.
-- Enter the url of your ODK Aggregate server in :guilabel:`url` option. For instance `https://proj1.appspot.com` and click on connect.
+- Enter the URL of your ODK Aggregate server in :guilabel:`url` option. For instance `https://proj1.appspot.com` and click on connect.
 - You can either leave the username blank if the anonymousUser is granted Data Viewer permissions or specify an ODK Aggregate user (Account Type 'ODK') that has been granted Data Viewer permissions.
 - A list of forms will be displayed. Select the ones you want to pull and click on :guilabel:`pull` button at the bottom of the window. The forms will be pulled to ODK Briefcase Storage on your local system.
 
@@ -33,7 +33,7 @@ Pushing forms to ODK Aggregate
 - Open *ODK Briefcase*.
 - In the window which opens up select :guilabel:`push` tab.
 - Select Aggregate 1.0 in the :guilabel:`push data to` drop-down.
-- Enter the url of your ODK Aggregate server in :guilabel:`url` option. For instance `https://proj1.appspot.com` and click on connect.
+- Enter the URL of your ODK Aggregate server in :guilabel:`url` option. For instance `https://proj1.appspot.com` and click on connect.
 - You can either leave the username blank if the anonymousUser is granted Data Viewer permissions or specify an ODK Aggregate user (Account Type 'ODK') that has been granted Data Viewer permissions.
 - A list of forms will be displayed. Select the ones you want to push and click on :guilabel:`push` button at the bottom of the window. The forms will be pushed to ODK Aggregate Server.
 
@@ -111,7 +111,7 @@ Export forms to CSV
 - Open *ODK Briefcase*.
 - In the window which opens up select :guilabel:`export` tab.
 - Select the form you wish to export from the :guilabel:`form` dropdown. It displays a list of all forms on your ODK Briefcase Storage.
-- Specify the location where you wish to export form as csv on your system in the :guilabel:`Export Directory` option.
+- Specify the location where you wish to export form as CSV on your system in the :guilabel:`Export Directory` option.
 - Click on :guilabel:`Export` at the bottom of the window.
 
 
