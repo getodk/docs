@@ -22,7 +22,7 @@ Pulling forms from ODK Aggregate
 
 .. tip::
 
- If the form definition has changed but the changes only affect the question text and do not alter the structure of the collected data (or change the formed or version), you can create a new ODK Briefcase Storage area, pull data into that, then manually copy the instances from there into your original storage area.
+ If the form definition has changed but the changes only affect the question text and do not alter the structure of the collected data (or change the formId or version), you can create a new ODK Briefcase Storage area, pull data into that, then manually copy the instances from there into your original storage area.
 
 
 .. _push-to-aggregate:
@@ -36,6 +36,7 @@ Pushing forms to ODK Aggregate
 - Enter the URL of your ODK Aggregate server in :guilabel:`url` option. For instance `https://proj1.appspot.com` and click on connect.
 - You can either leave the username blank if the anonymousUser is granted Data Viewer permissions or specify an ODK Aggregate user (Account Type 'ODK') that has been granted Data Viewer permissions.
 - A list of forms will be displayed. Select the ones you want to push and click on :guilabel:`push` button at the bottom of the window. The forms will be pushed to ODK Aggregate Server.
+
 
 .. warning::
 
@@ -59,17 +60,17 @@ Pulling forms from Collect
 Pulling from Android 2.x and earlier device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Ensure all filled-in forms are finalized. Either delete the forms which are not finalized or delete them after making a backup copy of the file:`/sdcard/odk` directory on your device and restore that later.
+- Ensure all filled-in forms are finalized. Either delete the forms which are not finalized or delete them after making a backup copy of :file:`/sdcard/odk` directory on your device and restore that later.
 
 .. warning::
- ODK Briefcase does not discriminate between incomplete and finalized forms on the device. It will pull all data off of the device. This can cause problems during later pushes, and, especially, if you are encrypting your finalized forms. To keep your dataset clean, you must ensure that all forms are complete before being pulled off of the device.
+ ODK Briefcase does not discriminate between incomplete and finalized forms on the device. It will pull all data off of the device. This can cause problems during later pushes, and, especially, if you are encrypting your finalized forms. To keep your data set clean, you must ensure that all forms are complete before being pulled off of the device.
 
 - Connect your Android device to your computer using a USB cable and choose to mount the drive.
 - Open *ODK Briefcase*.
-- In the window which opens up select: guilabel: pull` tab.
-- Select `Mounted Android SD Card` in the: guilabel: pull data from` drop-down.
-- Click: guilabel:`Choose` and select the appropriate mounted SD card.
-- A list of forms will be displayed. Select the ones you want to pull and click on: guilabel:`pull` button at the bottom of the window. The forms will be pulled to ODK Briefcase Storage on your local system.
+- In the window which opens up select :guilabel:`pull` tab.
+- Select `Mounted Android SD Card` in the :guilabel:`pull data from` drop-down.
+- Click :guilabel:`Choose` and select the appropriate mounted SD card.
+- A list of forms will be displayed. Select the ones you want to pull and click on :guilabel:`pull` button at the bottom of the window. The forms will be pulled to ODK Briefcase Storage on your local system.
 - On the Android device, open ODK Collect and delete the filled-in forms.
 
 .. warning::
@@ -80,21 +81,21 @@ Pulling from Android 2.x and earlier device
 Pulling from Android 4.x and later device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Ensure all filled-in forms are finalized. Either delete the forms which are not finalized or delete them after making a backup copy of the file:`/sdcard/odk` directory on your device and restore that later.
-- Create a zip of the entire: file:`odk` directory using an application like `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
+- Ensure all filled-in forms are finalized. Either delete the forms which are not finalized or delete them after making a backup copy of :file:`/sdcard/odk` directory on your device and restore that later.
+- Create a zip of the entire :file:`odk` directory using an application like `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
 - Connect your Android device to your computer using a USB cable and choose to mount it as a Media device.
 - Copy that zip file from the mounted MTP/Android device to a local hard drive.
 - Once it is copied onto your local hard drive, unzip the file of the 'odk' directory.
 - Open *ODK Briefcase*.
-- In the window which opens up select: guilabel: pull` tab.
-- Select *Custom Path to ODK Directory* in the: guilabel: pull data from` drop-down.
-- Select the unzipped: file:`odk` folder that you copied onto your local hard drive.
-- Click on: guilabel:`pull` button at the bottom of the window and the filled-in submissions that were copied off of the device will be loaded into ODK Briefcase's storage location.
+- In the window which opens up select :guilabel:`pull` tab.
+- Select *Custom Path to ODK Directory* in the :guilabel:`pull data from` drop-down.
+- Select the unzipped :file:`odk` folder that you copied onto your local hard drive.
+- Click on :guilabel:`pull` button at the bottom of the window and the filled-in submissions that were copied off of the device will be loaded into ODK Briefcase's storage location.
 - On the Android device, open ODK Collect and delete the filled-in forms.
 
 
 .. tip::
- - You can use the *Custom path to ODK Directory* anytime you want to pull forms from the custom location.
+ - You can use the *Custom path to ODK Directory* any time you want to pull forms from custom location.
  - You can confirm that the forms have been successfully pulled into ODK Briefcase by confirming a successful pull status or by verifying the data appearing in a CSV export file.
 
 .. warning::
@@ -119,7 +120,7 @@ Export forms to CSV
 Working with command line
 ----------------------------
 
-In Briefcase v1.4.4 and later, there is a scriptable command-line interface.
+In Briefcase v1.4.4 and later, there is a scriptable command line interface.
 
 Pulling form data from Aggregate Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -127,7 +128,7 @@ Pulling form data from Aggregate Server
 
   $ java -jar "ODK Briefcase v1.4.4 Production.jar" --form_id market_prices --storage_directory ~/Desktop --aggregate_url https://my_server.appspot.com --odk_username my_username --odk_password my_password
 
-This command pulls from data with id market_prices from Aggregate server at `https://my_server.appspot.com` and stores data in Briefcase's storage directory on the: file:`~/Desktop`
+This command pulls form data with id market_prices from Aggregate server at `https://my_server.appspot.com` and stores data in Briefcase's storage directory on the :file:`~/Desktop`
 
 Pulling form data from ODK Collect
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -135,7 +136,7 @@ Pulling form data from ODK Collect
 
   $ java -jar "ODK Briefcase v1.4.4 Production.jar" --form_id market_prices --storage_directory ~/Desktop --odk_directory ~/Desktop/odk
 
-This command pulls form data with id market_prices from Collect's odk folder at file:`~/Desktop/odk` and store data in Briefcase's storage directory on the: file:`~/Desktop`
+This command pulls form data with id market_prices from Collect's odk folder at :file:`~/Desktop/odk` and store data in Briefcase's storage directory on the :file:`~/Desktop`
 
 Export form data
 ~~~~~~~~~~~~~~~~~~~~
@@ -143,10 +144,10 @@ Export form data
 
   $ java -jar "ODK Briefcase v1.4.4 Production.jar" --form_id market_prices --storage_directory ~/Desktop --export_directory ~/Desktop --export_filename market_prices.csv
 
-This command exports form data with id market_prices from Briefcase's storage directory on the: file:`~/Desktop` and write CSV file to file:`~/Desktop/market_prices.csv`
+This command exports form data with id market_prices from Briefcase's storage directory on the :file:`~/Desktop` and write CSV file to :file:`~/Desktop/market_prices.csv`
 
 
-To get help about the command line operation type: command: java -jar path_to_jar -help`.
+To get help about the command line operation type :command:`java -jar path_to_jar -help`.
 
 .. code-block:: console
 
