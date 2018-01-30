@@ -20,7 +20,8 @@ def check_odkspell(text):
         ["XForms",                ["X-Forms"]],
         ["XForms",                ["{0} xforms"]],
         ["XForms",                ["XFORMS"]],
-        ["an Xform",              ["XForm"]],
+        ["an XForm",              ["a XForm"]],
+        ["an XLSForm",            ["a XLSForm"]],
         ["XLSForm",               ["{0} xlsform"]],
         ["XLSForm",               ["XLSform"]],
         ["XLSForm",               ["Xlsform"]]
