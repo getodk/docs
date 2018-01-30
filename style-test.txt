@@ -5,8 +5,6 @@
         "style-guide.filler-phrase"     : true,
         "style-guide.personal-pronoun"  : true,
         "style-guide.serial-comma"      : true,
-        "style-guide.unorder-list"      : true,
-        "style-guide.order-list"        : true,
         "style-guide.check-same"        : true,
         "style-guide.check-semicolon"   : true,
         "style-guide.check-howto"       : true,
