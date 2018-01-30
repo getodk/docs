@@ -18,10 +18,6 @@ def check_pronoun(text):
         "she",
         "her",
         "hers",
-        "they",
-        "them",
-        "their",
-        "theirs",
     ]
 
     return existence_check(text, list, err, msg, ignore_case=True)
