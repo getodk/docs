@@ -66,7 +66,7 @@ MySQL is the most popular, so you will likely find more qualified professionals 
 - collect geographic data
 - use forms with a very high number of questions (over 200)
 
-PostgreSQL has better built-in support for geographic data, and MySQL's table have a row size limit that will affect perfromance for very large forms.  
+PostgreSQL has better built-in support for geographic data, and MySQL's tables have a row size limit that will affect performance for very large forms.  
 
 .. note::
 
