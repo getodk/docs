@@ -9,8 +9,14 @@ from blessings import Terminal
 
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
-# Make a global list to hold result of all checks. Used to display and fix.
-err_list = []  
+# variables to hold error and warning count
+err_cnt = 0
+warn_cnt = 0
+
+# for generating colored output
+os.environ["TERM"] = "linux"
+os.environ["TERMINFO"]= "/etc/terminfo"
+t = Terminal()
 
 def add_checks():      
     """Add checks to proselint."""
@@ -124,6 +130,27 @@ def get_errlist():
     return list_errors
 
 
+def exclude_checks():
+    """Removes the checks which are to be excluded."""
+    list_exclude = [
+                     "typography.symbols", "weasel_words.very",
+                  ]
+    dest = os.path.dirname(proselint.__file__)
+    dest_prc = dest + '/.proselintrc'
+
+    with open(dest_prc, "r") as in_file:
+        buf = in_file.readlines()
+
+    # remove excluded checks
+    for index, line in enumerate(buf):
+        if any(word in line for word in list_exclude):
+            buf[index] = line.replace('true','false')  
+
+    with open(dest_prc, "w") as out_file:
+        for index, line in enumerate(buf):
+            out_file.write(line)
+
+
 def get_paths(paths):
     """Return a list of files to run the checks on."""
     file_path = os.path.realpath(__file__)
@@ -147,14 +174,17 @@ def get_paths(paths):
     return path_list
 
 
-def run_checks(paths):
+def run_checks(paths, fix):
     """Run checks on the docs."""
-    global err_list
+    global t
     path_list = get_paths(paths) 
     list_errors = get_errlist()
-    errors = [] 
-    
-    for filename in path_list:        
+    errors = []
+
+    for filename in path_list:
+        shortname = filename[filename.rfind('/')+1:]
+
+        print(t.cyan("Testing %s ..." %shortname)) 
         
         # read the file 
         with open(filename, "r") as file:
@@ -174,55 +204,63 @@ def run_checks(paths):
 
         # sort the errors according to line and column 
         errors = sorted(errors, key=lambda e: (e[2], e[3]))
-     
-        for e in errors:
 
-            # ignore tests for curly quotes
-            if e[0] == "typography.symbols.curly_quotes":
-                continue
-
-            check = e[0]
-            shortname = filename[filename.rfind('/')+1:]
-            msg = e[1]
-            line = e[2] + 1
-            col = e[3] + 1
-            extent = e[6]
-            replace = e[8]
-
-            # Set warning or error severity. 
-            # Don't set errors for style-guide as they might be examples.
-            if check in list_errors and "style-guide.rst" not in filename:
-                severity = "error"
-            else:
-                severity = "warning" 
-
-            # Add error tuples to err_list
-            err_list += [(check, filename, msg, line, col, extent, replace, severity)]       
-
-
-def disp_checks():
-    """Display errors and warnings."""
-    global err_list
-    os.environ["TERM"] = "linux"
-    os.environ["TERMINFO"]= "/etc/terminfo"
-    t = Terminal()
-    err_cnt = 0
-    warn_cnt = 0
-
-    for e in err_list:
+        if not fix:
+            disp_checks(errors, shortname)
         
-        # e[1]=filename, e[3]=line, e[4]=col
-        line1 = "%s | line: %d | col: %d" %(e[1][e[1].rfind('/')+1:], e[3], e[4])
-        # get line from file where e[1]=filename, e[3]=line, e[4]=col
-        line2 = get_line(e[1],e[3],e[4])
-        # e[2]=error_message
-        line3 = e[2]
-        # e[0]=check, e[7]=severity
-        line4 = "%s | %s" %(e[0], e[7])
+        # prepare a list for fixing errors
+        if fix:
+            fix_list = []
+            for e in errors:
+                check = e[0]
+                line = e[2] + 1
+                col = e[3] + 1
+                extent = e[6]
+                replace = e[8]
+
+                # Prepare a list of fixable errors 
+                # Don't set errors for style-guide as they might be examples
+                if check in list_errors and "style-guide.rst" not in filename:
+                    fix_list += [(check, line, col, extent, replace)]
+
+            # call fix_err function to fix the errors
+            cnt = len(fix_list)
+            if cnt:
+                print(t.red("Found %d errors" %cnt))
+                print(t.red("Fixing errors"))
+                fix_err(fix_list, filename) 
+            else:
+                print(t.yellow("Found no errors!"))           
+    
+    # Display total errors and warning count
+    if not fix:
+        disp_cnt()
+
+
+def disp_checks(errors, filename):
+    """Display errors and warnings."""
+    global err_cnt
+    global warn_cnt
+    global t
+    list_errors = get_errlist()
+
+    for e in errors:        
+        # e[0]=check
+        if e[0] in list_errors and "style-guide.rst" not in filename:
+            severity = "error"
+        else:
+            severity = "warning" 
+        # e[2]+1=line, e[3]+1=col
+        line1 = "%s | line: %d | col: %d" %(filename, e[2]+1, e[3]+1)
+        # get line from file where  e[2]+1=line, e[3]+1=col
+        line2 = get_line(filename,e[2]+1,e[3]+1)
+        # e[1]=error_message
+        line3 = e[1]
+        # e[0]=check
+        line4 = "%s | %s" %(e[0], severity)
         print(t.blue(line1))
         print(line2)
-        # e[7]=severity
-        if e[7] is "warning":
+        if severity is "warning":
             print(t.yellow(line3))
             warn_cnt += 1
         else:
@@ -231,45 +269,41 @@ def disp_checks():
         print(t.white(line4)) 
         print("\n")   
     
+
+def disp_cnt():
+    """Display error and warning count."""
+    global err_cnt
+    global warn_cnt
+    global t
+
     print(t.yellow("Found %d warnings" %warn_cnt))
     print(t.red("Found %d errors") %err_cnt)
     if err_cnt:
         raise Exception("Style-guide testing failed! Fix the errors")
 
- 
-def fix_err(paths):
-    """Remove the fixable errors."""
-    global err_list
-    fix_list = get_errlist()
-    path_list = get_paths(paths)
-    # filter results to get fixable errors where e[0]=check
-    rep_list = [e for e in err_list if e[0] in fix_list]
-    
-    for filename in path_list:
-        # don't fix errors in style-guide.rst
-        if "style-guide.rst" in filename:
-            continue
-        # filter errors to get errors only for filename
-        file_err = [e for e in rep_list if e[1] == filename]
 
-        buf = open(filename, 'r').readlines()       
+def fix_err(fix_list, filename):
+    """Remove the fixable errors.""" 
+    buf = open(filename, 'r').readlines()
+
+    for e in fix_list:      
         for index,line in enumerate(buf):
-            for e in file_err:
-                # e[3]=line, e[4]=col, e[5]=extent
-                if index == e[3]-1:
-                    # e[0]=check
-                    if e[0] == "style-guide.check-curlyquote":
-                        line = re.sub('“','"',line)
-                        line = re.sub('”','"',line)
-                    else:    
-                        word = line[e[4]-1:e[4]+e[5]-2]
-                        # e[7]=replacement
-                        line = re.sub(word, e[6], line)
-                    buf[index] = line    
+            # e[1]=line
+            if index == e[1]-1:
+                # e[0]=check
+                if e[0] == "style-guide.check-curlyquote":
+                    line = re.sub('“','"',line)
+                    line = re.sub('”','"',line)
+                else:  
+                    # e[2]=col, e[3]=extent  
+                    word = line[e[2]-1:e[2]+e[3]-2]
+                    # e[4]=replacement
+                    line = re.sub(word, e[4], line)
+                buf[index] = line    
         
-        with open(filename, "w") as out_file:
-            for line in buf:
-                out_file.write(line)
+    with open(filename, "w") as out_file:
+        for line in buf:
+            out_file.write(line)
 
 
 @click.command(context_settings = CONTEXT_SETTINGS)
@@ -280,17 +314,13 @@ def style_test(paths = None, fix = None):
 
     # add custom style-guide checks to proselint
     add_checks()
+
+    # Remove the excluded checks
+    exclude_checks()
     
     # run the checks on docs
-    run_checks(paths)
-
-    # display result of checks
-    if not fix:
-        disp_checks()
+    run_checks(paths, fix)
     
-    # remove the fixable errors
-    if fix:
-        fix_err(paths)
 
 if __name__ == '__main__':
     style_test()
