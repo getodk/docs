@@ -83,19 +83,29 @@ def xml(name):
 		for line in file:
 			if "bind" in line:
 				if name in line:
-					widgets.write("  "+line.strip()+"\n")
-					print("\n")
+					xmlSplit=(line.split("/"))
+					nameSplit=(xmlSplit[3].split(" "))
+					length=len(nameSplit[0])
+					widgetName=nameSplit[0]
+					if (widgetName[0:length-1]==name):
+						print("yes")	
+						widgets.write("  "+line.strip()+"\n")
+						print("\n")
 			if "input" in line:
 				if name in line:
 					snippet=line.strip()
-					widgets.write("  "+snippet+"\n")
-					# extracts elements between input tags
-					expression =[x.strip() for x in re.findall(snippet+'(.*?)</input>', text, re.MULTILINE | re.DOTALL)]
-					widgets.write("  "+"".join(expression)+ "\n")
-					widgets.write("  "+"</input>"+"\n\n")
+					snippetSplit=snippet.split("/")
+					snippetName=snippetSplit[-1]
+					snipLength=len(snippetName)
+					if (snippetName[0:snipLength-2]== name):
+						widgets.write("  "+snippet+"\n")
+						# extracts elements between input tags
+						expression =[x.strip() for x in re.findall(snippet+'(.*?)</input>', text, re.MULTILINE | re.DOTALL)]
+						widgets.write("  "+"".join(expression)+ "\n")
+						widgets.write("  "+"</input>"+"\n\n")
 
 
-for i in range(5,10):
+for i in range(5,49):
 	# prints headlines and section labels
 	if (sheet.cell(row=i, column=2).value is not None):
 		widgets.writelines(sheet.cell(row=i, column=2).value+"\n\n")
