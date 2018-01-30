@@ -93,13 +93,24 @@ def remove_lines(text):
             pos = 0
             line_len = len(line)
             while pos < line_len:
-                if line[pos]=="`":
-                    new_line += line[pos]
-                    pos = pos + 1
-                    while pos < line_len and line[pos]!="`":
+
+                if line[pos] == "`" and line[pos+1] == "`":
+                    new_line += "``"
+                    pos = pos+2
+                    while pos < line_len and line[pos] != "`":
                         new_line += "i"
                         pos = pos + 1
-                new_line += line[pos]       
+                    new_line += "`"
+                    pos = pos + 1    
+                         
+                elif line[pos] == "`":
+                    new_line += line[pos]
+                    pos = pos + 1
+                    while pos < line_len and line[pos] != "`":
+                        new_line += "i"
+                        pos = pos + 1
+
+                new_line += line[pos]      
                 pos = pos + 1   
             text[index] = new_line    
         index = index+1
@@ -199,7 +210,8 @@ def run_checks(paths, fix):
     for filename in path_list:
         shortname = filename[filename.rfind('/')+1:]
 
-        print(t.cyan("Testing %s ..." %shortname)) 
+        print(t.underline(t.cyan("Testing %s ..." %shortname)))
+        print("\n")
         
         # read the file 
         with open(filename, "r") as file:
