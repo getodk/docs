@@ -16,4 +16,4 @@ Upon first starting, Briefcase will ask for the directory under which to create 
 
 .. tip::
 
-  You can change the storage location for Briefcase from the: guilabel:`Settings` tab.
+  You can change the storage location for Briefcase from the :guilabel:`Settings` tab.
