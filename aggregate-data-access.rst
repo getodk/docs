@@ -1,4 +1,4 @@
-Data Transfer using Aggregate
+Getting Data Out of Aggregate
 ================================
 
 ODK Aggregate supports three primary mechanisms for data transfer:
