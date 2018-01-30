@@ -63,6 +63,7 @@ def remove_lines(text):
     """Remove ignored lines  and directive blocks from text."""
     directive_list = [".. image::", ".. figure::", ".. video::", ".. code::",
                       ".. code-block::", ".. csv-table::", ".. toctree::",]
+
     index = 0
     length = len(text)
     while index<len(text):
@@ -84,9 +85,25 @@ def remove_lines(text):
                 index = index + 1
                 if index < length:
                     space_cnt = len(text[index]) - len(text[index].lstrip())
-            index = index - 1        
-        index = index+1 
-    
+            index = index - 1
+        # remove text between backtick -- inline literals, uris, roles
+        if "`" in text[index]:
+            line = text[index]
+            new_line = ""
+            pos = 0
+            line_len = len(line)
+            while pos < line_len:
+                if line[pos]=="`":
+                    new_line += line[pos]
+                    pos = pos + 1
+                    while pos < line_len and line[pos]!="`":
+                        new_line += "i"
+                        pos = pos + 1
+                new_line += line[pos]       
+                pos = pos + 1   
+            text[index] = new_line    
+        index = index+1
+
     return text            
 
 
@@ -101,9 +118,7 @@ def get_line(filename, row, col):
             st_col = max(0, col-15)
             en_col = min(col+15, len(line))
             text = "..." + line[st_col:en_col].rstrip() + "..."
-            break
-    
-    return text
+            return text
 
 
 def temp_file(text):
