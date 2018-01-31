@@ -94,7 +94,7 @@ def rows(row_index):
 		widgets.write(" "+ ", ".join(values))
 		widgets.write("\n\n")
 		if len(values)==3:
-			# l[1]= name of widget
+			# values[1]= name of widget
 			xml(values[1])
 
 # prints XForm XML
@@ -126,7 +126,7 @@ def xml(name):
 						widgets.write("  "+"</input>"+"\n\n")
 
 
-for i in range(4,66):
+for i in range(4,86):
 	# prints headlines and section labels
 	if (sheet.cell(row=i, column=2).value is not None):
 		widgets.writelines(sheet.cell(row=i, column=2).value + "\n\n")
