@@ -49,6 +49,25 @@ Encrypted forms can be used in conjuction with either of the first two suggestio
 
 If you are not using encrypted forms and are handling sensitive data, a computer security specialist should review your system and your security procedures. 
 
+Database Systems
+~~~~~~~~~~~~~~~~~~
+
+ODK Aggregate works with any of these database servers:
+
+- MySQL
+- PostgreSQL
+- Microsoft SQL Server
+- Azure SQL Server
+
+Most deployments will use either MySQL or PostgreSQL, as they are the two most prevalent open source relational database servers.
+
+MySQL is the most popular, so you will likely find more qualified professionals to install, administer, and debug it. However, you should consider PostgreSQL if you plan to:
+
+- collect geographic data
+- use forms with a very high number of questions (over 200)
+
+PostgreSQL has better built-in support for geographic data, and MySQL's tables have a row size limit that will affect performance for very large forms.  
+
 .. note::
 
   Use of an SSL and `https` is recommended for any deployment accessed from the internet.

@@ -1422,7 +1422,7 @@ Other Semantic Markup
 
 .. rst:role:: file
 
-  Marks the name of a file or directory. Within the contents, you can use curly braces to indicate a “variable” part.
+  Marks the name of a file or directory. Within the contents, you can use curly braces to indicate a "variable" part.
 
   .. code-block:: rst
 
@@ -1522,7 +1522,7 @@ The ``rst_epilog`` in :file:`conf.py` contains a list of global substitutions th
   
 |
   
-- To create a hyperlink reference for docs related issues, use ``|docs-issue|_``.
+- To create a hyperlink reference for docs-related issues, use ``|docs-issue|_``.
 
   .. code-block:: rst
   

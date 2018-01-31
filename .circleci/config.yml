@@ -21,6 +21,9 @@ jobs:
             sudo apt-get install pngquant
             sudo pip install -r requirements.txt
       - run:
+          name: Style Guide Testing
+          command: sudo python style-test.py  
+      - run:
           name: Build docs
           command: sphinx-build -W -b dirhtml . build
       - run:
