@@ -178,14 +178,14 @@ Before submitting a PR, run the build locally to make sure you do not produce an
 
 It is best to run the build frequently as you work. You'll often catch simple mistakes that are harder to track down later.
 
-.. _no-imposters:
+.. _no-impostors:
 
-You are not an imposter
+You are not an impostor
 --------------------------
 
-`Imposter syndrome <https://en.wikipedia.org/wiki/Impostor_syndrome>`_ is the feeling that you are not good enough or accomplished enough to do the work you are doing.
+`Impostor syndrome <https://en.wikipedia.org/wiki/Impostor_syndrome>`_ is the feeling that you are not good enough or accomplished enough to do the work you are doing.
 
-We all feel this way sometimes, and that's okay. But it is important to realize that **you are not an imposter.**
+We all feel this way sometimes, and that's okay. But it is important to realize that **you are not an impostor.**
 
 You can contribute to this community, no matter your background or skills.
 

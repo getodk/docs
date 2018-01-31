@@ -8,7 +8,7 @@ Connecting to your own ODK Aggregate Server
   When connecting to an ODK Aggregate server from Collect, you will need a username and password from your Aggregate server. This can be the superuser created when you install Aggregate, or another user account created by you.   
 
   - See :doc:`aggregate-install` to setup your ODK Aggregate server.
-  - See :ref:`Aggregate Site Admin <site-admin>` for details on setting up new users.
+  - See :doc:`Aggregate Site Admin <aggregate-admin>` for details on setting up new users.
   
     
 1. From the Action Button (:guilabel:`⋮`), select :menuselection:`General Settings`

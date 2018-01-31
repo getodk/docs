@@ -13,7 +13,7 @@ In most cases, users of ODK:
 - Load forms into Collect on an Android device
 - Use Collect to fill out forms with :term:`participants <participant>`
 - Upload survey data from Collect to Aggregate
-- Analyse or export data in Aggregate
+- Analyze or export data in Aggregate
 
 This requires:
 

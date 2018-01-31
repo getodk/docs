@@ -16,5 +16,6 @@ sphinxcontrib-websupport==1.0.1
 typing==3.6.1
 Pillow==4.3.0
 openpyxl==2.5.0
-
+proselint
+blessings
 

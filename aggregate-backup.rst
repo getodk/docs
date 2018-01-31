@@ -1,4 +1,4 @@
-Backup Strategies for Aggregate
+Backing Up Aggregate
 ================================
 
 .. _briefcase-backup:
