@@ -83,7 +83,7 @@ def remove_lines(text):
             index = index + 1
             if index < length:
                 space_cnt = len(text[index]) - len(text[index].lstrip())
-            while index < length and (space_cnt > indent or text[index] == '\n'):
+            while index < length and (space_cnt > indent or text[index].isspace()):
                 if not text[index].isspace():
                     text[index] = "ignore_line\n"
                 index = index + 1
