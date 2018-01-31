@@ -109,7 +109,7 @@ def xml(name):
 					nameSplit=(xmlSplit[3].split(" "))
 					length=len(nameSplit[0])
 					widgetName=nameSplit[0]
-					if (widgetName[0:length-1]==name):	
+					if (widgetName[0:length-1]==name):
 						widgets.write("  "+line.strip()+"\n")
 
 			if "input" in line:
