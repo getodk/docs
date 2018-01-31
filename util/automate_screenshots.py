@@ -5,10 +5,16 @@ import re
 
 
 # source directory - generated screenshots are stored here
-dir_src = os.path.expanduser("~/collect/fastlane/metadata/android/en-US/images/phoneScreenshots/")
+dir_src = os.path.expanduser("~/collect/fastlane/metadata/android/en/images/phoneScreenshots/")
 
 # destination directory
 utilPath=(os.path.dirname(os.path.realpath(__file__)))
+xlsPath=utilPath+"/all-widgets.xlsx"
+xmlPath= utilPath+"/all-widgets.xml"
+
+# pyxform conversion
+os.system("xls2xform " + xlsPath + " " + xmlPath)
+
 pathList= utilPath.split("/")
 pathList.remove(pathList[-1])
 fullPath="/".join(pathList)
@@ -44,8 +50,25 @@ for file in files:
 # path to form-widgets guide
 fullFilepath = fullPath + "/form-widgets.rst" 
 
+''' Extracts introductory sentences'''
+intro = []
+lookup=" section shows examples of all the form widgets types"
+
+with open(fullFilepath) as file:
+	for num, line in enumerate(file, 1):
+		if lookup in line:
+			found=num
+			with open(fullFilepath) as file:
+				intro.extend(file.readline() for i in range(found))
+
 
 widgets = open(fullFilepath, "w")
+widgets.seek(0)
+#prints intro
+widgets.writelines(intro)
+widgets.write("\n")
+
+
 xmlFile = open("all-widgets.xml", "r+")
 text = xmlFile.read()
 
@@ -58,7 +81,7 @@ def rows(row_index):
 	widgets.write(".. csv-table:: survey" +"\n")
 	widgets.write(" :header: type, name, label"+"\n")
 	values=[]
-	if ((sheet.cell(row= row_index, column=1).value) !="begin_group" ):
+	if ((sheet.cell(row= row_index, column=1).value) !="begin_group" and (sheet.cell(row= row_index, column=1).value) !="end_group" ):
 		if (sheet.cell(row= row_index, column=1).value is not None):
 			# appends type of the widget
 			values.append(sheet.cell(row=row_index, column=1).value)
@@ -77,7 +100,6 @@ def rows(row_index):
 # prints XForm XML
 def xml(name):
 	widgets.write(sheet.cell(row = 1, column=11).value + "\n\n")
-	print("working")
 	widgets.write(".. code-block:: xml"+ "\n\n")
 	with open('all-widgets.xml', 'rt') as file:
 		for line in file:
@@ -87,10 +109,9 @@ def xml(name):
 					nameSplit=(xmlSplit[3].split(" "))
 					length=len(nameSplit[0])
 					widgetName=nameSplit[0]
-					if (widgetName[0:length-1]==name):
-						print("yes")	
+					if (widgetName[0:length-1]==name):	
 						widgets.write("  "+line.strip()+"\n")
-						print("\n")
+
 			if "input" in line:
 				if name in line:
 					snippet=line.strip()
@@ -105,17 +126,17 @@ def xml(name):
 						widgets.write("  "+"</input>"+"\n\n")
 
 
-for i in range(5,49):
+for i in range(4,66):
 	# prints headlines and section labels
 	if (sheet.cell(row=i, column=2).value is not None):
-		widgets.writelines(sheet.cell(row=i, column=2).value+"\n\n")
+		widgets.writelines(sheet.cell(row=i, column=2).value + "\n\n")
 	# prints captions
 	if (sheet.cell(row=i, column=7).value is not None):
-		widgets.writelines(sheet.cell(row=i, column=6).value+ "\n")
+		widgets.writelines(sheet.cell(row=i, column=7).value + "\n")
 		widgets.writelines("\n")
 	# prints image directive
 	if (sheet.cell(row=i, column=9).value is not None):	
-		widgets.writelines(".. image:: /img/widgets/"+ sheet.cell(row=i, column=9).value+".*\n")
+		widgets.writelines(".. image:: /img/widgets/"+ sheet.cell(row=i, column=9).value +".*\n")
 	# prints alt texts
 	if (sheet.cell(row=i, column=8).value is not None):
 		widgets.writelines(" alt:"+ sheet.cell(row=i, column=8).value+"\n")
