@@ -28,14 +28,37 @@ the `Docs as Code`_ philosophy.
 
 This means:
 
-- Documentation source files are written in a plain text format. (We use `reStructuredText <http://docutils.sourceforge.net/rst.html>`_.)
-- Documentation source files are kept under version control. (We use git and `Github <https://github.com/opendatakit/docs>`_.)
-- Documentation is built from source to published output using a static site generator. (We use `Sphinx <http://sphinx-doc.org>`_.)
-- Documentation builds are run, tested, and deployed automatically using continuous integration tools. (We use `CircleCI <https://circleci.com/>`_.)
+- Documentation source files are written in a plain text format. 
+  (We use `reStructuredText`_.)
+- Documentation source files are kept under version control.
+  (We use git and `Github`_.)
+- Documentation is built from source 
+  to a published output using a 
+  static site generator. 
+  (We use `Sphinx`_.)
+- Documentation builds are 
+  run, tested, and deployed automatically 
+  using continuous integration tools. 
+  (We use `CircleCI`_.)
 
-`The 'Docs as Code' approach has many advantages <http://hackwrite.com/posts/docs-as-code/>`_, but we are aware that this approach can feel difficult for writers who aren't used to dealing with the command line. It can also be difficult for coders who are used to this approach, but who typically use simpler authoring tools (like `Jekyll <http://jekyllrb.com>`_ and `Markdown <https://guides.github.com/features/mastering-markdown/>`_).
+.. _reStructuredText: http://docutils.sourceforge.net/rst.html
+.. _Github: http://github.com
+.. _Sphinx: http://sphinx-doc.org
+.. _CircleCI: https://circleci.com
 
-This section of the Contributor Guide walks through our authoring and publishing workflow and toolchain, to make it as easy as possible for you to contribute.
+The 'Docs as Code' approach has many advantages, 
+but we are aware that this approach can feel difficult 
+for writers who aren't used to dealing with the command line. 
+It can also be difficult for coders who are used to this approach, 
+but who typically use simpler authoring tools 
+like `Jekyll`_ and `Markdown`_. 
+
+.. _Jekyll: http://jekyllrb.com
+.. _Markdown: https://guides.github.com/features/mastering-markdown/
+
+This section of the Contributor Guide 
+walks through our authoring and publishing workflow and toolchain, 
+to make it as easy as possible for you to contribute.
 
 .. _docs-workflow-overview:
 
@@ -44,20 +67,29 @@ Overview of Workflow
 
 When you first get started you'll need to:
 
-- Fork to your own Github Account
-- Clone it down to your local machine
-- Install dependencies
+1. Fork the `ODK Docs repo`_ your own Github Account
+2. Clone it down to your local machine
+3. Install dependencies
+
+.. _ODK Docs repo: https://github.com/opendatakit/docs
 
 And then each time you work you will:
 
-- Make a branch for a specific task
-- Make commits as you go
-- Build and view the docs locally
-  - Correct any errors and commit
-- Push your branch to your Github fork
-- Issue a pull request against the current working branch of the main repo (usually ``master``)
-- Pull latest back to your local machine from the main repo
-- Repeat
+1. Make a branch for a specific task
+2. Make commits as you go
+3. Build and view the docs locally,
+   running the style guide tests.
+
+  - Correct any errors 
+    and commit those changes
+
+4. Push your branch to your Github fork
+5. Issue a pull request 
+   against the current working branch 
+   of the main repo (usually ``master``)
+6. Pull the latest changes to ``master``
+   back to your local machine from the main repo.
+7. Repeat
 
 .. _docs-dev-setup:
 
