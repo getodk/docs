@@ -12,7 +12,7 @@ After :doc:`app-designer-launching`, find the Scan Form Designer inside a tab (s
 
   You must use :program:`Google Chrome`; other web browsers are not compatible at this time.
 
-The Scan Form designer presents a default page, the toolbar across the top of the screen, and Form Properties in the grey editing area surrounding the the page.
+The Scan Form designer presents a default page, the toolbar across the top of the screen, and Form Properties in the gray editing area surrounding the the page.
 
 .. image:: /img/scan-form-designer/scan-form-blank.*
   :alt: ODK Scan Form Designer Homepage

@@ -25,7 +25,7 @@ Forms in ODK Survey are HTML. You can control the look-and-feel of the forms usi
 
 Every change you make to the data in the form is written immediately to the database as a **checkpoint** save. You may also manually save the form as *incomplete* or *finalize* the form, as you did with ODK Collect. To do so anywhere in the form, open the pop-up menu and take the desired action.
 
-Otherwise, to exit the form without saving or cancelling your changes (and return to the form chooser screen), tap the device's back button (on newer devices, tap the back arrow icon at the bottom of the touch screen). You will be asked whether to ignore any changes since your last explicit save, whether to save your changes as an incomplete change, or whether to cancel the back (exit) action and return to the form.
+Otherwise, to exit the form without saving or canceling your changes (and return to the form chooser screen), tap the device's back button (on newer devices, tap the back arrow icon at the bottom of the touch screen). You will be asked whether to ignore any changes since your last explicit save, whether to save your changes as an incomplete change, or whether to cancel the back (exit) action and return to the form.
 
 .. _survey-using-syncing:
 
