@@ -351,7 +351,7 @@ When a SQL query is processed inside the ODK Services layer, it is first examine
 Effective Access
 -----------------------
 
-As mentioned above, when a SQL query is processed inside the ODK Services layer, it is first examined to see if the result set contains the columns :th:`_sync_state, :th:`_default_access`, :th:`_row_owner`, :th:`_group_read_only`, :th:`_group_modify`, and :th:`_group_privileged`. If it contains all six columns, then a synthesized column, :th:`_effective_access` is added to the result set. That column returns one of *r*, *rw*, *rwd*, or *rwdp* (with the *p* indicating that a user can change permissions for the row as well) to indicate the level of access the current user has on the rows in the result set.
+As mentioned above, when a SQL query is processed inside the ODK Services layer, it is first examined to see if the result set contains the columns :th:`_sync_state`, :th:`_default_access`, :th:`_row_owner`, :th:`_group_read_only`, :th:`_group_modify`, and :th:`_group_privileged`. If it contains all six columns, then a synthesized column, :th:`_effective_access` is added to the result set. That column returns one of *r*, *rw*, *rwd*, or *rwdp* (with the *p* indicating that a user can change permissions for the row as well) to indicate the level of access the current user has on the rows in the result set.
 
 Additionally, once a result set is returned for a given table, you can determine whether the current user can create new rows on the table by calling :code:`getCanCreateRow`
 
