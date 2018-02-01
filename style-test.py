@@ -71,12 +71,12 @@ def remove_lines(text):
 
     index = 0
     length = len(text)
-    while index<len(text):
+    while index < len(text):
         # remove ignored lines
         if "startignore" in text[index]:
             while index < length and "endignore" not in text[index]:
                 text[index] = "ignore_line\n"
-                index = index+1
+                index = index + 1
         # remove directive blocks
         if index < length and any(word in text[index] for word in directive_list):
             indent = len(text[index]) - len(text[index].lstrip())
@@ -84,7 +84,7 @@ def remove_lines(text):
             index = index + 1
             if index < length:
                 space_cnt = len(text[index]) - len(text[index].lstrip())
-            while index < length and (space_cnt > indent or text[index] == '\n'):
+            while index < length and (space_cnt > indent or text[index].isspace()):
                 if not text[index].isspace():
                     text[index] = "ignore_line\n"
                 index = index + 1
@@ -92,7 +92,7 @@ def remove_lines(text):
                     space_cnt = len(text[index]) - len(text[index].lstrip())
             index = index - 1
         # remove text between backtick -- inline literals, uris, roles
-        if "`" in text[index]:
+        if index < length and "`" in text[index]:
             line = text[index]
             new_line = ""
             pos = 0
@@ -101,7 +101,7 @@ def remove_lines(text):
                 # double backticks
                 if line[pos] == "`" and line[pos+1] == "`":
                     new_line += "``"
-                    pos = pos+2
+                    pos = pos + 2
                     while pos < line_len and line[pos] != "`":
                         new_line += "i"
                         pos = pos + 1
@@ -118,9 +118,28 @@ def remove_lines(text):
                     new_line += line[pos]      
                 pos = pos + 1   
             text[index] = new_line    
-        index = index+1
-
+        # ignore comments
+        if index < length and text[index].startswith(".."):
+            # don't ignore section labels
+            if not text[index].startswith(".. _"):
+                text[index] = "ignore_line\n"
+        index = index + 1        
+    
     return text            
+
+
+def remove_quotes(text):
+    """Replace quote marks in text."""
+    index = 0
+    length = len(text)
+    while index < length:
+        if '\"' in text[index]:
+            text[index] = text[index].replace('\"','*')
+        if '\'' in text[index]:
+            text[index] = text[index].replace('\'','*')
+        index = index + 1
+     
+    return text
 
 
 def get_line(filename, row, col):
@@ -243,6 +262,9 @@ def run_checks(paths, disp, fix):
 
         # run checks for quotes, curly quotes, section labels
         errors = extra.check(temp_file(text))
+
+        # replace quote marks
+        text = remove_quotes(text)
 
         # lint the text for other tests
         errors = errors + proselint.tools.lint(temp_file(text))
