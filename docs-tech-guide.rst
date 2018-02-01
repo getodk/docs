@@ -127,10 +127,9 @@ Terminal (Command Line)
 
     - :doc:`Cygwin <cygwin>`
     - `gitbash`_
-
-    
-.. _Linux subsystem: h ttps://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/
-.. _gitbash: https://git-for-windows.github.io/
+  
+  .. _Linux subsystem: https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/
+  .. _gitbash: https://git-for-windows.github.io/
     
   The lead maintainers of this docs repo 
   are not Windows users, 
@@ -140,6 +139,7 @@ Terminal (Command Line)
   with explanations and help for Windows users 
   are greatly appreciated.
 
+  
 Contributing to the docs requires interacting with 
 git, GitHub, Python, and Sphinx, 
 which requires the use of the Terminal. 
@@ -200,7 +200,9 @@ type :py:func:`quit()` to exit.
 Virtual Environment
 """"""""""""""""""""""""
 
-A virtual environment is a Python tool for sandboxing dependencies. It lets you install whatever you need for a particular project, without messing up any other Python environments you might need.
+A virtual environment is a Python tool for sandboxing dependencies. 
+It lets you install whatever you need for a particular project, 
+without messing up any other Python environments you might need.
 
 Check to see if you have virtualenv installed:
 
@@ -208,22 +210,27 @@ Check to see if you have virtualenv installed:
 
   $ virtualenv
 
-If you get a help message with information about commands, you have it. If you don't have it, you'll get a ``command not found`` message.
+If you get a help message with information about commands, 
+you have it. 
+If you don't have it, 
+you'll get a ``command not found`` message.
 
-In case you don't have it, install it using ``pip`` by running:
+If you don't have it, 
+install it using ``pip`` by running:
 
 .. code-block:: console
 
   $ pip install virtualenv
 
-Then, create an :file:`ODK` directory. This will contain your virtualenv and the docs repo as subdirectories.
+Then, create a directory called :file:`odk`.
+This will contain your virtualenv and the docs repo as subdirectories.
 
 .. code-block:: console
 
   $ mkdir odk
   $ cd odk
 
-Now, inside that odk directory, create a python3 virtualenv.
+Now, inside that  directory, create a python3 virtualenv.
 
 .. code-block:: console
 
@@ -234,9 +241,10 @@ On Windows use:
 .. code-block:: doscon
 
   > path\to\python\python -m venv odkenv
-  (e.g C:\python36\python -m venv odkenv)
 
-The last part, ``odkenv`` can be whatever name you'd like to call it.
+The last part, ``odkenv``, is the name of virtual environment.
+It can be whatever name you'd like to call it,
+but we'll use ``odkenv`` throughout these docs.
 
 Activate your virtual environment with:
 
@@ -251,7 +259,7 @@ On Windows use:
   > odkenv\Scripts\activate
 
 
-And, when you are done working, deactivate it with:
+When you are done working, deactivate it with:
 
 .. code-block:: console
 
@@ -263,18 +271,42 @@ And, when you are done working, deactivate it with:
 Github and git
 ~~~~~~~~~~~~~~~~~
 
-Git is a distributed version control system. It makes it possible to track changes in files over time, merge changes made by different contributors, compare different versions of the same file, and revert a file to an earlier point. Git is complicated, but you do not need to understand its advanced features or inner workings to use it.
+`Git`_ is a distributed version control system. 
+It makes it possible to track changes in files over time, 
+merge changes made by different contributors, 
+compare different versions of the same file, 
+and revert a file to an earlier point. 
 
-GitHub is an online service that lets individuals and organizations host git repositories. It also provides additional collaboration tools like issue trackers. Open Data Kit uses GitHub for its public code and documentation projects.
+.. _git: https://git-scm.com/
+
+Git is complicated, 
+but you do not need to understand its advanced features or inner workings
+to use it.
+
+`GitHub`_ is an online service 
+for hosting git repositories. 
+It also provides additional collaboration tools 
+like issue trackers and project boards. 
+Open Data Kit uses GitHub 
+for its public code and documentation projects.
+
+.. github: http://github.com
 
 You will need to:
 
-- `Install git <https://git-scm.com/downloads>`_
--  Make sure that git is installed properly by typing (git) in the terminal or command prompt
+1. `Install git <https://git-scm.com/downloads>`_
+2. Make sure that git is installed properly by typing (git) in the terminal or command prompt
 
-   - On windows if you get any error check if environment variables are set up correctly(`see instructions <https://stackoverflow.com/questions/26620312/installing-git-in-path-with-github-client-for-windows#answer-34767523>`_)
+   - On Windows: If you get any errors, 
+     check if your environment variables are set up correctly.
+     (See `this StackOverflow answer`__ for details.)
 
-- `Start a GitHub account <https://github.com/>`_
+3. Get a `GitHub`_ account. 
+
+.. GitHub: https://github.com/
+
+__ https://stackoverflow.com/questions/26620312/installing-git-in-path-with-github-client-for-windows#answer-34767523
+
 
 .. _glfs:
 
