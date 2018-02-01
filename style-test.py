@@ -380,6 +380,21 @@ def gen_out(path):
         for e in err_list:
             csv_out.writerow(e)    
 
+def gen_list(paths = None):
+    """Return a list of errors and warnings."""
+    global err_list
+
+    # add custom style-guide checks to proselint
+    add_checks()
+
+    # Remove the excluded checks
+    exclude_checks()
+
+    # run the checks on docs
+    run_checks(paths, False, False)
+
+    return err_list
+
 
 @click.command(context_settings = CONTEXT_SETTINGS)
 @click.option('--diff', '-d', is_flag = True, 
