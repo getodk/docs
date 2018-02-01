@@ -1,18 +1,32 @@
 Docs Technical Guide
 ==========================
 
-This document explains the tools and workflows used when contributing to ODK Documentation.
+This document explains the tools and workflows used 
+when contributing to ODK Documentation.
 
 .. note::
 
-  Developer and authoring tools have lots of options and alternatives. Local tools and workflows presented in this guide are what the authors feel would be easiest for a non-coding contributor to set up and use. 
+  Developer and authoring tools 
+  have lots of options and alternatives. 
+  Local tools and workflows presented in this guide 
+  are what the authors feel would be easiest 
+  for a non-coding contributor to set up and use.
+  
+  You should feel free
+  to use your preferred tools.
 
 .. _docs-as-code:
 
 Docs as Code
 ----------------
 
-ODK Documentation follows (as much as possible) the `Docs like Code <http://www.writethedocs.org/guide/docs-as-code/>`_ philosophy. This means:
+ODK Documentation follows 
+(as much as possible) 
+the `Docs as Code`_ philosophy. 
+
+.. _Docs as Code: http://www.writethedocs.org/guide/docs-as-code/ 
+
+This means:
 
 - Documentation source files are written in a plain text format. (We use `reStructuredText <http://docutils.sourceforge.net/rst.html>`_.)
 - Documentation source files are kept under version control. (We use git and `Github <https://github.com/opendatakit/docs>`_.)
@@ -57,7 +71,7 @@ Terminal (Command Line)
 
 .. warning::
 
-  This contributor guide is written primarily from a \*nix (Bash Terminal) perspective, which is relevant to all flavors of Linux and MacOS. We consider the Bash terminal commands to be the "canonical" way to build and work with the docs.
+  This contributor guide is written primarily from a \*nix (Bash Terminal) perspective, which is relevant to all flavors of Linux and MacOS. We consider the Bash terminal commands to be the canonical way to build and work with the docs.
 
   We have also provided explanations for how to adapt these commands to the Windows Command Prompt. (This is different than Windows Powershell, and not all the commands will work in Powershell. For more details on the Windows Command Prompt, `see this article <https://www.lifewire.com/how-to-open-command-prompt-2618089>`_
 
@@ -124,7 +138,7 @@ In case you don't have it, install it using ``pip`` by running:
 
   $ pip install virtualenv
 
-Then, create an ODK "master" directory. This will contain your virtualenv and the docs repo as subdirectories.
+Then, create an :file:`ODK` directory. This will contain your virtualenv and the docs repo as subdirectories.
 
 .. code-block:: console
 
@@ -171,7 +185,7 @@ And, when you are done working, deactivate it with:
 Github and git
 ~~~~~~~~~~~~~~~~~
 
-Git is a distributed version control system. It makes it possible to track changes in files over time, merge changes made by different contributors, compare different versions of the same file, and revert a file to an earlier point. Git can be very complicated, but you do not need to understand its advanced features or inner workings to use it.
+Git is a distributed version control system. It makes it possible to track changes in files over time, merge changes made by different contributors, compare different versions of the same file, and revert a file to an earlier point. Git is complicated, but you do not need to understand its advanced features or inner workings to use it.
 
 GitHub is an online service that lets individuals and organizations host git repositories. It also provides additional collaboration tools like issue trackers. Open Data Kit uses GitHub for its public code and documentation projects.
 
@@ -184,7 +198,7 @@ You will need to:
 
 - `Start a GitHub account <https://github.com/>`_
 
-.. glfs
+.. _glfs:
 
 GLFS
 """"""
@@ -198,7 +212,7 @@ We use `Git Large File Storage (GLFS)  <https://git-lfs.github.com/>`_ to handle
 
   **On Windows**
 
-  Make sure :file:`git-lfs.exe` and  :file:`git.exe` are under the same "master" directory on Windows. (See `this page <https://github.com/git-lfs/git-lfs/issues/919>`_ for reference.
+  Make sure :file:`git-lfs.exe` and  :file:`git.exe` are under the same main  directory on Windows. (See `this page <https://github.com/git-lfs/git-lfs/issues/919>`_ for reference.
 
 GLFS tracks binary files as defined in the :file:`.gitattributes` file `in the repo <https://github.com/opendatakit/docs/blob/master/.gitattributes>`_. Most common binary file formats are already listed, but there might be others we haven't thought of yet.
 
@@ -232,6 +246,8 @@ Android Tools
 ~~~~~~~~~~~~~~~~~
 
 Some testing and documentation tasks (including :ref:`making screenshots from ODK Collect <screenshots>`) require the :doc:`Android Debug Bridge <collect-adb>`) command line tool. You can either install Android Studio or install ADB as standalone SDK tool.
+
+.. _android-studio:
 
 Android Studio
 """"""""""""""""""
@@ -384,7 +400,7 @@ Make a New Branch
 
 Choose a specific, deliverable task to work on. This should be an `active issue from our issue tracker on GitHub <https://github.com/opendatakit/docs/issues>`_.
 
-Create a new branch in which you will work on this specific issue. The branch name should briefly describe what you are doing. For example, the original author of this contributor guide worked in a branch he called ``contributing``. Also, make sure that all the branches are derived from the ``master`` branch to avoid intermixing of commits.
+Create a new branch in which you will work on this specific issue. The branch name should briefly describe what you are doing. For example, the original author of this contributor guide worked in a branch called ``contributing``. Also, make sure that all the branches are derived from the ``master`` branch to avoid intermixing of commits.
 
 .. code-block:: console
 
@@ -414,7 +430,6 @@ Work on the Docs
 
 Write and edit files in your favorite editor.
 
-.. links to style guidelines, rst syntax, etc...
 
 .. _build-the-docs:
 
@@ -484,7 +499,7 @@ Then it's time to push the changes. The first time you do this on any branch, yo
 
   $ git push origin branch-name
 
-After that, you can just:
+After that, you only need to use the :command:`push` command:
 
 .. code-block:: console
 
