@@ -103,21 +103,51 @@ Terminal (Command Line)
 
 .. warning::
 
-  This contributor guide is written primarily from a \*nix (Bash Terminal) perspective, which is relevant to all flavors of Linux and MacOS. We consider the Bash terminal commands to be the canonical way to build and work with the docs.
+  This contributor guide is written
+  from a Linux/Unix (bash terminal) perspective, 
+  which is relevant to all flavors of Linux and macOS. 
+  We consider the Bash terminal commands to be 
+  the canonical way to build and work with the docs.
 
-  We have also provided explanations for how to adapt these commands to the Windows Command Prompt. (This is different than Windows Powershell, and not all the commands will work in Powershell. For more details on the Windows Command Prompt, `see this article <https://www.lifewire.com/how-to-open-command-prompt-2618089>`_
+  We have also provided explanations for 
+  how to adapt these commands to the Windows Command Prompt. 
+  (This is different than Windows Powershell, 
+  and not all the commands will work in Powershell. 
+  For more details on the Windows Command Prompt, 
+  `see this article`__.
+  
+  __  https://www.lifewire.com/how-to-open-command-prompt-2618089
 
-  If you are on a Windows machine, you may prefer to use the adapted Windows instructions here. Alternatively, you can follow the Bash commands:
+  If you are on a Windows machine, 
+  you may prefer to use the adapted Windows instructions here.    
+  Alternatively, you can follow the Bash commands:
 
-  - use the `Linux subsystem (Windows 10) <https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/>`_
+  - use the `Linux subsystem`_ (Windows 10) 
   - use a bash terminal emulator, such as
 
     - :doc:`Cygwin <cygwin>`
-    - `gitbash <https://git-for-windows.github.io/>`_
+    - `gitbash`_
 
-  The lead maintainers of this docs repo are not Windows users, so we rely on our contributor community to keep Windows-specific information complete and accurate. Contributions to this guide with explanations and help for Windows users are greatly appreciated.
+    
+.. _Linux subsystem: h ttps://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/
+.. _gitbash: https://git-for-windows.github.io/
+    
+  The lead maintainers of this docs repo 
+  are not Windows users, 
+  so we rely on our contributor community 
+  to keep Windows-specific information complete and accurate. 
+  Contributions to this guide
+  with explanations and help for Windows users 
+  are greatly appreciated.
 
-Contributing to the docs requires interacting with git, Github, Python, and Sphinx, which requires the use of the Terminal. This is common among Linux users. Mac users unfamiliar with the Terminal can learn more from `this tutorial <https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855>`_.
+Contributing to the docs requires interacting with 
+git, GitHub, Python, and Sphinx, 
+which requires the use of the Terminal. 
+This is common among Linux users. 
+Mac users unfamiliar with the Terminal 
+can learn more from `this tutorial`__.
+
+__ https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855
 
 .. _docs-python:
 
@@ -129,7 +159,8 @@ Python
 Python 3
 """"""""""""
 
-If you don't know, check to see if you have Python 3 installed:
+If you don't know, 
+check to see if you have Python 3 installed:
 
 
 .. code-block:: console
@@ -143,11 +174,26 @@ On windows:
    > python
 
 
-If you get an error, you probably don't have it and will need to `install Python 3 <https://www.python.org/downloads/>`_.
+If you get an error, 
+you probably don't have it and will need to 
+`install Python 3`.
 
-On Windows make sure to select the option "Add python to the Path", while installing (see `instructions <https://www.youtube.com/watch?v=oHOiqFs_x8Y>`_ ) otherwise you need to add it `manually <https://youtu.be/UTUlp6L2zkw>`_ .
+.. _install Python 3: https://www.python.org/downloads/
 
-If the Python command-line interpreter starts up, type ``quit()`` to exit.
+On Windows 
+make sure to select the option 
+"Add python to the Path" 
+while installing,
+otherwise you'll need to `add it manually`__. 
+
+__ https://youtu.be/UTUlp6L2zkw
+
+See `this video`__ for more details.
+
+__ https://www.youtube.com/watch?v=oHOiqFs_x8Y 
+
+If the Python command-line interpreter starts up, 
+type :py:func:`quit()` to exit.
 
 .. _docs-venv:
 
