@@ -113,7 +113,8 @@ def remove_lines(text):
                     while pos < line_len and line[pos] != "`":
                         new_line += "i"
                         pos = pos + 1
-                new_line += line[pos]      
+                if pos < line_len:
+                    new_line += line[pos]      
                 pos = pos + 1   
             text[index] = new_line    
         index = index+1
