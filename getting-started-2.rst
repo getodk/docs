@@ -315,7 +315,7 @@ Once you have the application running on the device, you will typically need to 
 
 .. note::
 
-  Whenever you are developing an application, and have found a need to add a new column to an existing table, you will need to manually delete the data tables from the server before using the :guilabel:Reset App Server` button from the device.
+  Whenever you are developing an application, and have found a need to add a new column to an existing table, you will need to manually delete the data tables from the server before using the :guilabel:`Reset App Server` button from the device.
 
 Open a browser window to the server, log in with a user that has :guilabel:`Administer Tables` or :guilabel:`Site Admin` privileges.
 
