@@ -91,7 +91,7 @@ def remove_lines(text):
                     space_cnt = len(text[index]) - len(text[index].lstrip())
             index = index - 1
         # remove text between backtick -- inline literals, uris, roles
-        if "`" in text[index]:
+        if index < length and "`" in text[index]:
             line = text[index]
             new_line = ""
             pos = 0
@@ -116,8 +116,13 @@ def remove_lines(text):
                 new_line += line[pos]      
                 pos = pos + 1   
             text[index] = new_line    
-        index = index+1
-
+        # ignore comments
+        if index < length and text[index].startswith(".."):
+            # don't ignore section labels
+            if not text[index].startswith(".. _"):
+                text[index] = "ignore_line\n"
+        index = index+1        
+    
     return text            
 
 
