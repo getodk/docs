@@ -126,6 +126,20 @@ def remove_lines(text):
     return text            
 
 
+def remove_quotes(text):
+    """Replace quote marks in text."""
+    index = 0
+    length = len(text)
+    while index < length:
+        if '\"' in text[index]:
+            text[index] = text[index].replace('\"','*')
+        if '\'' in text[index]:
+            text[index] = text[index].replace('\'','*')
+        index = index + 1
+     
+    return text
+
+
 def get_line(filename, row, col):
     """Get specific line from file."""
     lines = open(filename, 'r').readlines() 
@@ -234,6 +248,9 @@ def run_checks(paths, disp, fix):
 
         # run checks for quotes, curly quotes, section labels
         errors = extra.check(temp_file(text))
+
+        # replace quote marks
+        text = remove_quotes(text)
 
         # lint the text for other tests
         errors = errors + proselint.tools.lint(temp_file(text))
