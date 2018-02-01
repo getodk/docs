@@ -1,5 +1,6 @@
 import os
 import re
+import git
 import csv
 import glob
 import click
@@ -204,6 +205,18 @@ def get_paths(paths):
     return path_list
 
 
+def get_changed_files():
+    """Return currently modified rst files."""
+
+    file_path = os.path.realpath(__file__)
+    repo_path = file_path[0:file_path.rfind('/')]
+    repo = git.Repo(repo_path)
+    changedFiles = [item.a_path for item in repo.index.diff(None)]
+    changedFiles = [f for f in changedFiles if ".rst" in f]
+    changedFiles = tuple(changedFiles)
+    return changedFiles
+
+
 def run_checks(paths, disp, fix):
     """Run checks on the docs."""
     global t
@@ -369,17 +382,24 @@ def gen_out(path):
 
 
 @click.command(context_settings = CONTEXT_SETTINGS)
+@click.option('--diff', '-d', is_flag = True, 
+               help = "Run check on the modified files")
 @click.option('--fix', '-f', is_flag = True, 
                help = "Removes the fixable errors")
 @click.option('--out_path','-o', type = click.Path())
 @click.argument('in_path', nargs = -1, type = click.Path())
-def style_test(in_path = None, out_path = None, fix = None, output = None):
+def style_test(in_path = None, out_path = None, diff = None, 
+                fix = None, output = None):
     """A CLI for style guide testing"""
     # add custom style-guide checks to proselint
     add_checks()
 
     # Remove the excluded checks
     exclude_checks()
+
+    # Get list of changed files
+    if diff:
+        in_path += get_changed_files()
     
     # run the checks on docs
     disp = True
