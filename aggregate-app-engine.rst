@@ -24,7 +24,7 @@ Installing on App Engine
     - If you are running OSX, you must unzip the downloaded file before running the installer within it.
     - If you are on MacOSX Mountain Lion or onward, you will need to fiddle with `GateKeeper settings <http://osxdaily.com/2012/07/27/app-cant-be-opened-because-it-is-from-an-unidentified-developer/>`_ in order to run the installer.
     - If you are on Windows 10, you will need to approve running an unsigned installer.
-    - If you are on Linux, you will need to change the downloaded file's permissions to enable running it as a program. Right click on the file and click on :guilabel:`Properties`. Click on :guilabel:`Permissions` tab. Now check the box labelled as :guilabel:`Allow executing file as program`.
+    - If you are on Linux, you will need to change the downloaded file's permissions to enable running it as a program. Right click on the file and click on :guilabel:`Properties`. Click on :guilabel:`Permissions` tab. Now check the box labeled as :guilabel:`Allow executing file as program`.
   
     
 
@@ -82,7 +82,7 @@ Installing on App Engine
    .. image:: /img/aggregate-install/go-to-project.*
      :alt: Image showing the option to create your project.      
 
-7. Click on the menu icon (:guilabel:`☰`) to the left of :guilabel:`Google Cloud Platform` in the upper left side of the screen, and select :guilabel:`App Engine` from the dropdown menu.
+7. You will be directed to an empty project screen showing the details of your project. If you want to change any settings, click on :guilabel:`Go to project settings` otherwise click on the menu icon (:guilabel:`☰`) to the left of :guilabel:`Google Cloud Platform` in the upper left side of the screen, and select :guilabel:`App Engine` from the dropdown menu.
 
    .. image:: /img/aggregate-install/project-settings.*
      :alt: Image showing the project settings option and the menu option.
@@ -179,6 +179,10 @@ Installing on App Engine
 21. Click the :guilabel:`Get Token` button. 
 
     - Your default browser will open to a Google site (``accounts.google.com``) where you are asked to choose a Gmail account. Select the account you specified earlier when setting up App Engine, and then allow *Google App Engine appcfg* to view and manage your AppEngine instances and datastores. Click :guilabel:`Allow`. This will take you to a screen with instructions to copy a code.
+
+      .. image:: /img/aggregate-install/allow.*
+        :alt: Image showing window asking for App Engine Permissions.
+
     - At the same time, a popup dialog should be displayed by the install wizard. 
 
       .. tip::
@@ -248,22 +252,17 @@ Installing on App Engine
 
 27. With the console displaying your project, click on the menu icon (☰) to the right of *Google Cloud Platform* in the upper left side of the screen and select :guilabel:`App Engine` from the menu.
 
-28. Click :guilabel:`ALLOW` in the next window to grant necessary permissions.
-
-    .. image:: /img/aggregate-install/allow.*
-      :alt: Image showing window asking for App Engine Permissions.
-
-29. Click on the project's URI in the top right corner of the window. This will open your Aggregate server page.
+28. Click on the project's URI in the top right corner of the window. This will open your Aggregate server page.
 
     .. image:: /img/aggregate-install/project-aggregate.*
       :alt: Image showing a window where server url is displayed on top right corner.
 
-30. :guilabel:`Log In` with the superuser username that you specified in the installer (the initial password for this username will be ``aggregate``), and access the site administration screens for your server.  
+29. :guilabel:`Log In` with the superuser username that you specified in the installer (the initial password for this username will be ``aggregate``), and access the site administration screens for your server.  
 
     .. image:: /img/aggregate-install/server.*
       :alt: Image showing ODK Aggregate server and log in option.
 
-31. You should immediately change your superuser password.
+30. You should immediately change your superuser password.
 
     Go to :menuselection:`Site Admin -> Permissions` to change your password. You can also add additional users.
       

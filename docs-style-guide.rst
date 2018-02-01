@@ -161,12 +161,16 @@ Avoid Latin
 
 Several Latin abbreviations are common in written English:
 
+.. startignore
+
  - etc.
  - i.e.
  - e.g.
  - viz.
  - c.f.
  - n.b.
+
+.. endignore
  
 At best, these present a minor barrier to understanding. This is often made worse by unintentional misuse.
 
@@ -183,7 +187,9 @@ Avoid Latin abbreviations.
 .. code-block:: rst
 
   If you are writing about a specific process (for example, installing an application)...
-  
+
+.. startignore
+
 .. _etc:
   
 Etc.
@@ -256,6 +262,8 @@ Common filler phrases and words include:
 
 This list is not exhaustive. These "canned phrases" are pervasive in technical writing. Remove them whenever they occur.
 
+.. endignore
+
 .. _semicolons:
 
 Semicolons
@@ -287,6 +295,8 @@ Pronouns
 Third-person personal pronouns
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. startignore
+
 Third-person personal pronouns are:
 
 - he/him/his
@@ -303,6 +313,8 @@ There are two issues with personal pronouns:
 - clarity
 
 To avoid gender bias, the third person gender-neutral *they/then/their(s)* is preferred over *he* or *she* pronouns when writing about abstract individuals.
+
+.. endignore
 
 .. rubric:: Wrong
 
@@ -617,6 +629,8 @@ ODK jargon
 ODK and ODK Docs
 -------------------
 
+.. startignore
+
 .. rubric:: Wrong
 
 - Odk
@@ -715,3 +729,5 @@ XLSForm
 - An `online tool <http://opendatakit.org/use/xlsform/>`_ and an `offline tool <https://gumroad.com/l/xlsform-offline>`_ for converting :file:`*.xls(x)` files to XForm documents. 
 
 When writing about any of these things, make sure you are clear --- in your mind as well as in your writing --- which one you are talking about.
+
+.. endignore

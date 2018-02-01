@@ -20,7 +20,7 @@ Interfaces used during Pull actions.
 The APIs used:
 
 1. OpenRosa Form Discovery API
-2. download forms and media files using URLs form discovery.
+2. Download forms and media files using URLs form discovery.
 3. ``view/submissionList`` to obtain a chunk of submission keys.
 4. ``view/downloadSubmission`` to download an individual submission.
 
@@ -33,7 +33,7 @@ Interfaces used during Push actions.
 
 1. *formUpload* to upload a form and its media files to ODK Aggregate.
 2. ``view/submissionList`` to obtain a chunk of submission keys.
-3. OpenRosa Form Submission/Overwite API (with extensions)
+3. OpenRosa Form Submission/Overwrite API (with extensions)
 
 .. _interface-details:
 

@@ -1,4 +1,4 @@
-﻿Contributing to ODK Docs
+Contributing to ODK Docs
 ============================
 
 .. toctree::
