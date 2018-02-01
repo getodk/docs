@@ -250,8 +250,8 @@ def run_checks(paths, disp, fix):
             col = e[3] + 1
             extent = e[6]
             replace = e[8]
-            # Set warning or error severity. 
-            # Don't set errors for style-guide as they might be examples.
+            # Set warning or error severity
+            # Don't set errors for style-guide as they might be examples
             if check in list_errors and "style-guide.rst" not in filename:
                 severity = "error"
             else:
@@ -289,8 +289,8 @@ def disp_checks(errors, filename):
 
     for e in errors:        
         # e[0]=check
-        # Set warning or error severity. 
-        # Don't set errors for style-guide as they might be examples.
+        # Set warning or error severity
+        # Don't set errors for style-guide as they might be examples
         if e[0] in list_errors and "style-guide.rst" not in filename:
             severity = "error"
         else:
@@ -370,17 +370,10 @@ def gen_out(path):
 @click.command(context_settings = CONTEXT_SETTINGS)
 @click.option('--fix', '-f', is_flag = True, 
                help = "Removes the fixable errors")
-@click.option('--output','-o', is_flag = True, 
-               help = "Generate errors in an output format")
-@click.argument('out_path', nargs = 1, type = click.Path(), required = False)
+@click.option('--out_path','-o', type = click.Path())
 @click.argument('in_path', nargs = -1, type = click.Path())
 def style_test(in_path = None, out_path = None, fix = None, output = None):
     """A CLI for style guide testing"""
-    
-    # Check for correct command
-    if (output and not out_path) or (out_path and not output):
-        raise Exception("Please specify both output flag and output path!")
-
     # add custom style-guide checks to proselint
     add_checks()
 
@@ -389,12 +382,12 @@ def style_test(in_path = None, out_path = None, fix = None, output = None):
     
     # run the checks on docs
     disp = True
-    if fix or output:
+    if fix or out_path:
         disp = False
     run_checks(in_path, disp, fix)
 
     # generate output
-    if output and out_path:
+    if out_path:
         gen_out(out_path)
     
 
