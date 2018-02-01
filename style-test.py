@@ -70,12 +70,12 @@ def remove_lines(text):
 
     index = 0
     length = len(text)
-    while index<len(text):
+    while index < len(text):
         # remove ignored lines
         if "startignore" in text[index]:
             while index < length and "endignore" not in text[index]:
                 text[index] = "ignore_line\n"
-                index = index+1
+                index = index + 1
         # remove directive blocks
         if index < length and any(word in text[index] for word in directive_list):
             indent = len(text[index]) - len(text[index].lstrip())
@@ -100,7 +100,7 @@ def remove_lines(text):
                 # double backticks
                 if line[pos] == "`" and line[pos+1] == "`":
                     new_line += "``"
-                    pos = pos+2
+                    pos = pos + 2
                     while pos < line_len and line[pos] != "`":
                         new_line += "i"
                         pos = pos + 1
@@ -121,7 +121,7 @@ def remove_lines(text):
             # don't ignore section labels
             if not text[index].startswith(".. _"):
                 text[index] = "ignore_line\n"
-        index = index+1        
+        index = index + 1        
     
     return text            
 
