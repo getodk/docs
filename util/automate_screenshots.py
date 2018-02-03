@@ -5,7 +5,9 @@ import re
 
 
 # source directory - generated screenshots are stored here
-dir_src = os.path.expanduser("~/collect/fastlane/metadata/android/en/images/phoneScreenshots/")
+print("Enter fastlane screenshot storage directory")
+fastlanePath=input()
+dir_src = os.path.expanduser(fastlanePath)
 
 # destination directory
 utilPath=(os.path.dirname(os.path.realpath(__file__)))
