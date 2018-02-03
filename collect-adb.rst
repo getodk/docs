@@ -17,7 +17,12 @@ Installing adb
 
 If you plan to work on ODK Collect or run the app using an emulator, download the `Android Studio <https://developer.android.com/studio/index.html>`_. It already comes with the adb tool. To use it, `enable USB Debugging <https://www.howtogeek.com/125769/how-to-install-and-use-abd-the-android-debug-bridge-utility/>`_.
 
-To install :command:`adb` as a standalone tool, please follow the instructions given `here <https://android.gadgethacks.com/how-to/android-basics-install-adb-fastboot-mac-linux-windows-0164225/>`_.
+You can also `install adb <https://developer.android.com/studio/releases/platform-tools.html>`_ as a standalone tool, the installation instructions for different platforms are given below:
+
+- `Installing adb on Windows <https://android.gadgethacks.com/how-to/make-adb-fastboot-work-any-folder-windows-0177198/>`_
+- `Installing adb on Ubuntu <http://linuxtechlab.com/install-adb-fastboot-ubuntu/>`_
+- `Installing adb on Mac <https://stackoverflow.com/questions/31374085/installing-adb-on-mac-os-x>`_
+
 
 Forms can be manipulated from the command line itself. The following sections describe how :command:`adb` can be used to work with the app.
 
