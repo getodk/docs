@@ -18,4 +18,4 @@ Pillow==4.3.0
 openpyxl==2.5.0
 proselint
 blessings
-
+gitpython
