@@ -524,14 +524,14 @@ Complete the pull request. The maintainers will review it as quickly as possible
 
    If you happen to rename any document file(:file:`*.rst`), then be sure that you add the redirect in your PR.
 
-   To add the redirect go to :file:`s3_website.yml` and uncomment the **redirects:** line. Add a mapping from the old file name to the new file name below the **redirects:** line, one mapping per line. Several examples of how to format these are shown in the comments.
+   To add the redirect go to :file:`s3_website.yml`. Add a mapping from the old file name to the new file name below the **redirects:** line, one mapping per line. Several examples of how to format these are shown in the file.
 
    For example you rename a file to :file:`newcheck.rst` from :file:`oldcheck.rst`, then to add the redirect:
 
    .. code-block:: yaml
 
      redirects:
-      /oldcheck: /newcheck
+      oldcheck/index.html: /newcheck
 
 
 .. _keep-working-the-docs:
@@ -1422,7 +1422,7 @@ Other Semantic Markup
 
 .. rst:role:: file
 
-  Marks the name of a file or directory. Within the contents, you can use curly braces to indicate a “variable” part.
+  Marks the name of a file or directory. Within the contents, you can use curly braces to indicate a "variable" part.
 
   .. code-block:: rst
 
@@ -1522,7 +1522,7 @@ The ``rst_epilog`` in :file:`conf.py` contains a list of global substitutions th
   
 |
   
-- To create a hyperlink reference for docs related issues, use ``|docs-issue|_``.
+- To create a hyperlink reference for docs-related issues, use ``|docs-issue|_``.
 
   .. code-block:: rst
   
