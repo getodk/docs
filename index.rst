@@ -43,7 +43,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   collect-setup
   collect-using
   collect-best-practices
-  
+
 .. toctree::
   :hidden:
   :maxdepth: 2
