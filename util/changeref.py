@@ -9,8 +9,10 @@ old_ref_type = sys.argv[1]
 old_ref = sys.argv[2]
 new_ref_type = sys.argv[3]
 new_ref = sys.argv[4]
+old_path = sys.argv[5]
+new_path =sys.argv[6]
 
-if not all((old_ref_type, old_ref, new_ref_type, new_ref)):
+if not all((old_ref_type, old_ref, new_ref_type, new_ref, old_path, new_path)):
     print("Not enough arguments. Exiting.")
     sys.exit()
 
@@ -20,7 +22,18 @@ if old_ref_type not in ["ref", "any", "doc"]:
 
 if new_ref_type not in ["ref", "any", "doc"]:
     print("Third arg not a valid ref type string.")
-    sys.exit()    
+    sys.exit()  
+
+redirect = "  %s: %s\n" %(old_path, new_path)
+
+with open("s3_website.yml", "r") as in_file:
+    buf = in_file.readlines()
+
+with open("s3_website.yml", "w") as out_file:
+    for line in buf:
+        if line == "redirects:\n":
+            line = line + "%s" %redirect
+        out_file.write(line)
 
 ref_pattern = re.compile(r':((ref)|(doc)|(any)):`([^<`\n]*)<?([^>`\n]*)>?`')
     # group 1 : ref, doc, any (reference type)
@@ -65,3 +78,5 @@ for f in glob.glob('*.rst'):
     # Write the file out again
     with open(f, 'w') as file:
       file.write(filedata)
+
+
