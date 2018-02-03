@@ -16,4 +16,5 @@ typing==3.6.1
 Pillow==4.3.0
 proselint
 blessings
+gitpython
 
