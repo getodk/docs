@@ -524,14 +524,14 @@ Complete the pull request. The maintainers will review it as quickly as possible
 
    If you happen to rename any document file(:file:`*.rst`), then be sure that you add the redirect in your PR.
 
-   To add the redirect go to :file:`s3_website.yml` and uncomment the **redirects:** line. Add a mapping from the old file name to the new file name below the **redirects:** line, one mapping per line. Several examples of how to format these are shown in the comments.
+   To add the redirect go to :file:`s3_website.yml`. Add a mapping from the old file name to the new file name below the **redirects:** line, one mapping per line. Several examples of how to format these are shown in the file.
 
    For example you rename a file to :file:`newcheck.rst` from :file:`oldcheck.rst`, then to add the redirect:
 
    .. code-block:: yaml
 
      redirects:
-      /oldcheck: /newcheck
+      oldcheck/index.html: /newcheck
 
 
 .. _keep-working-the-docs:
@@ -619,6 +619,45 @@ The asterisks style is useful when you are combining several existing documents 
 
 See :ref:`sections-titles` for more details.
 
+.. _custom-css:
+
+Custom CSS
+------------
+
+You can add custom styling in :file:`_static/css/custom.css`. Whenever you add any custom styling, add short comments describing the changes made and the PR number in which the changes were made.
+
+For example:
+
+.. code-block:: css
+
+  /* Example css PR #xyx */
+
+  div[class^='example'] {
+    color: black;
+  }
+
+There are various sections in the :file:`custom.css` file:
+
+- Styling for rst roles and directives
+- Responsive css
+- Styling for JS implementation
+- Utility classes
+
+Each of these sections are enclosed between start and end comments. Make sure you add your code to the relevant section. If you don't find any section relevant, add a new section and add your code there.
+
+For example:
+
+.. code-block:: css
+
+  /* New section starts */
+
+  /* Example css PR #xyx */
+
+  div[class^='example'] {
+    color: black;
+  }
+  
+  /* New section ends */ 
 
 .. _about-toc:
 
@@ -1073,53 +1112,67 @@ The `csv-table` directive is used to create a table from CSV (comma-separated va
 
 Some of the options recognized are:
 
-- **:widths:** can contain a comma or space-separated list of relative column widths. The default is equal-width columns.
+.. rst:role:: widths 
+    
+  Contains a comma or space-separated list of relative column widths. The default is equal-width columns.
    
-.. note::
+  .. note::
 
-    The special value `auto` may be used by writers to decide whether to delegate the determination of column widths to the backend.
+    The special value *auto* may be used by writers to decide whether to delegate the determination of column widths to the backend.
 
-- **:header:** contains column titles. It must use the same CSV format as the main CSV data.      
-- **:delim:** contains a one character string used to separate fields. Default value is comma. It must be a single character or Unicode code.
+.. rst:role:: header 
 
-.. code-block:: rst
+  Contains column titles. It must use the same CSV format as the main CSV data.  
 
-  .. csv-table:: Table using # as delimiter
-   :header: "Name", "Grade"
-   :widths: auto
-   :delim: #
+.. rst:role:: delim
+  
+  Contains a one character string used to separate fields. Default value is comma. It must be a single character or Unicode code.
 
-   "Peter"#"A"
-   "Paul"#"B"
+  .. code-block:: rst
 
-.. csv-table:: Table using # as delimiter
-   :header: "Name", "Grade"
-   :widths: auto
-   :delim: #
+    .. csv-table:: Table using # as delimiter
+      :header: "Name", "Grade"
+      :widths: auto
+      :delim: #
 
-   "Peter"#"A"
-   "Paul"#"B"
+      "Peter"#"A"
+      "Paul"#"B"
 
-- **:align:** can be `left` ,`right` or `center`. It specifies the horizontal alignment of the table. 
+    .. csv-table:: Table using # as delimiter
+      :header: "Name", "Grade"
+      :widths: auto
+      :delim: #
 
-.. code-block:: rst
+      "Peter"#"A"
+      "Paul"#"B"
 
-  .. csv-table:: Table aligned to right
-   :header: "Name", "Grade"
-   :align: right
+.. rst:role:: align
 
-   "Peter", "A"
-   "Paul", "B"
+  It specifies the horizontal alignment of the table. It can be `left` ,`right` or `center`. 
 
-.. csv-table:: Table aligned to right
-   :header: "Name", "Grade"
-   :align: right
+  .. code-block:: rst
 
-   "Peter", "A"
-   "Paul", "B"
+    .. csv-table:: Table aligned to right
+      :header: "Name", "Grade"
+      :align: right
 
-- **:file:** contains the local filesystem path to a CSV data file.
-- **:url:** contains an Internet URL reference to a CSV data file.
+      "Peter", "A"
+      "Paul", "B"
+
+    .. csv-table:: Table aligned to right
+      :header: "Name", "Grade"
+      :align: right
+
+      "Peter", "A"
+      "Paul", "B"
+
+.. rst:role:: file
+  
+  Contains the local filesystem path to a CSV data file.
+
+.. rst:role:: url
+
+  Contains an Internet URL reference to a CSV data file.
 
 .. note::
 
@@ -1369,7 +1422,7 @@ Other Semantic Markup
 
 .. rst:role:: file
 
-  Marks the name of a file or directory. Within the contents, you can use curly braces to indicate a “variable” part.
+  Marks the name of a file or directory. Within the contents, you can use curly braces to indicate a "variable" part.
 
   .. code-block:: rst
 
@@ -1469,7 +1522,7 @@ The ``rst_epilog`` in :file:`conf.py` contains a list of global substitutions th
   
 |
   
-- To create a hyperlink reference for docs related issues, use ``|docs-issue|_``.
+- To create a hyperlink reference for docs-related issues, use ``|docs-issue|_``.
 
   .. code-block:: rst
   
@@ -1576,15 +1629,70 @@ Video files should be put in the :file:`/vid/` directory in the source, and they
 
 The length of the videos must be less than a minute.
 
-There is no ``video`` directive to add a video, so to add a video in a document, you can do the following:
+We have a custom video directive to add a video: 
 
-.. code-block:: rst
+.. rst:directive:: video
 
-  .. raw:: html
+  You should specify the source address of the video and a descriptive alt content in the video directive. Alternate content is displayed when the video cannot be played. It can contain long texts as well as any other rst content. 
 
-  <video controls muted style="max-width:100%">
-    <source src="/{document-subdirectory}/{file}.mp4>
-  </video>
+  So to add a video in a document, you can do the following:
+
+  .. code-block:: rst
+
+    .. video:: /vid/{document-subdirectory}/{file}.mp4
+    
+      Alt content. Every video should have descriptive alt content.
+
+  Following options are supported:
+
+  .. rst:role:: autoplay 
+
+    Specifies whether the video should start playing as soon as it is ready. Can take boolean value: true, false, yes or no. Default is **no**.
+
+  .. rst:role:: controls
+
+    Specifies whether the video controls should be displayed. Can take boolean value: true, false, yes or no. Default is **yes**.
+
+  .. rst:role:: muted
+
+    Specifies whether the audio output of the video should be muted. Can take boolean value: true, false, yes or no. Default is **yes**.
+
+  .. rst:role:: loop 
+
+    Specifies whether the video should start over again, every time it is finished. Can take boolean value: true, false, yes or no. Default is **no**.   
+
+  .. rst:role:: preload   
+
+    Specifies if and how the author thinks the video should be loaded when the page loads. Can take one of the following three values: **auto**, **metadata** or **none**.
+
+  .. rst:role:: poster  
+
+    Contains the source address for an image to be shown while the video is downloading, or until the user hits the play button.
+
+    .. note::
+
+      Images to be used as poster for a video should be in the same directory as the video and should have a name of format :file:`[same-file-name-as-video]-poster.ext`.
+
+  .. rst:role:: class 
+
+    Specifies a class for the video element.
+
+  For more details on these attributes, see `this guide <https://www.w3schools.com/tags/tag_video.asp>`_.
+
+  To add a video in a document with the above options, you can do the following:
+
+  .. code-block:: rst
+
+    .. video:: /vid/{document-subdirectory}/{file}.mp4
+      :autoplay: yes/no
+      :controls: yes/no
+      :muted: yes/no
+      :loop: yes/no
+      :class: class-name
+      :preload: auto/metadata/none
+      :poster:: /vid/{document-subdirectory}/{file}.ext
+
+      Alt content. Every video should have descriptive alt content.
 
 **ADB or Android Debug Bridge** can be used to capture a screen recording from collect. This can be done by entering:
 
@@ -1664,3 +1772,4 @@ Use the ``code-block`` directive to markup code samples. Specify the language on
 
     .. code-block:: python
       :class: wrap
+

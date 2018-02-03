@@ -17,10 +17,10 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
-
+import os
+import sys
+sys.path.insert(0, os.path.abspath('.'))
+import video
 
 # -- General configuration ------------------------------------------------
 
@@ -36,7 +36,8 @@ extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
-    'sphinx.ext.mathjax']
+    'sphinx.ext.mathjax',
+    'video']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -115,8 +116,8 @@ html_favicon = "_static/img/odk-favicon.ico"
 html_static_path = ['_static']
 
 # Add paths that contain extra files which are not directly related to the 
-# documentation and which are are copied to the output directory.
-html_extra_path = ['vid']
+# documentation and which are copied to the output directory.
+# html_extra_path = []
 
 # -- Options for HTMLHelp output ------------------------------------------
 
@@ -205,7 +206,7 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 
 def setup(app):
     app.add_stylesheet('css/custom.css')
-    
+    app.add_javascript('js/custom.js')
 
 # At top of every document
 

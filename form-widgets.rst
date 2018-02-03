@@ -15,7 +15,6 @@ Basic Form Widgets
 
 This section shows examples of all the form widgets types, with no additional options displayed.
 
-
 .. _string-input:
 
 String Input
@@ -859,7 +858,7 @@ Launches an external app and receives a string input back from the external app.
 The external app widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
 
 .. image:: /img/form-widgets/external-app-widget-start.*
-  :alt: The External App form widget, as displayed in the ODK Collect App on an Android phone. The question text is "Ex string widget." The hinst text is, "text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labelled "Launch." Above the question text is the form group name "Text widgets."
+  :alt: The External App form widget, as displayed in the ODK Collect App on an Android phone. The question text is "Ex string widget." The hinst text is, "text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form group name "Text widgets."
 
 .. image:: /img/form-widgets/external-app-widget-fallback.*
   :alt: The External App widget as displayed earlier. The Launch button has now been disabled. Below it is a simple input. A help message displays the text, "The requested application is missing. Please manually enter the reading."
@@ -1242,7 +1241,7 @@ Signature Widget
 Collects a signature from the user.
 
 .. image:: /img/form-widgets/signature-start.*
-  :alt: The Signature form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Signature widget." The hint text is "image type with signature appearance." Below that is a button labelled "Gather Signature." Above the question text is the form group name "Image widgets."
+  :alt: The Signature form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Signature widget." The hint text is "image type with signature appearance." Below that is a button labeled "Gather Signature." Above the question text is the form group name "Image widgets."
 
 .. image:: /img/form-widgets/signature-in-progress.*
   :alt: A drawing pad with a signature line, displayed on an Android phone. A signature is drawn across it. In the lower right corner is circular button marked with a plus sign (+).
@@ -1649,12 +1648,9 @@ Autoadvance Widget
 
 Advances immediately to the next question once a selection is made.
 
-.. raw:: html
+.. video:: /vid/form-widgets/auto-advance.mp4
 
-  <video controls muted style="max-width:100%">
-    <source src="/form-widgets/auto-advance.mp4">
-  </video>
-
+  Video showing auto-advance after the questions are answered.  
 
 XLSForm Rows
 """""""""""""
@@ -1986,11 +1982,9 @@ Compact Single Select with Images and Autoadvance
 
 The :tc:`quickcompact` appearance attribute combines the design of the :ref:`compact-single-image-select` widget with the :ref:`autoadvance-widget` functionality.
 
-.. raw:: html
+.. video:: /vid/form-widgets/quickcompact.mp4
 
-  <video controls muted style="max-width:100%">
-    <source src="/form-widgets/quickcompact.mp4">
-  </video>
+  Video showing Compact single select widget and auto-advance after the question is answered.
 
 XLSForm Rows
 """""""""""""
@@ -2043,11 +2037,9 @@ Compact Single Select with Images and Autoadvance, width specified
 
 As with :ref:`compact <compact-2>`, you can specify a width when using :tc:`quickcompact`. To display two images on each row, set the :th:`appearance` attribute to :tc:`quickcompact-2`.
 
-.. raw:: html
+.. video:: /vid/form-widgets/quickcompact2.mp4
 
-  <video controls muted style="max-width:100%">
-    <source src="/form-widgets/quickcompact2.mp4">
-  </video>
+  Video showing Compact-2 widget and auto-advance after the question is answered.
 
 XLSForm Rows
 """"""""""""""
@@ -2548,4 +2540,4 @@ XForm XML
 Including Images as Choices
 =============================
 
-To include images as choices for select questions, specify the file name in the **choices** worksheet, in a column labeled :th:`media::image`. The media files must be uploaded to the Android device in the :file:`/sdcard/odk/forms/` directory, in a file labeled :file:`{form-name}-files`. When uploading a form to ODK Aggregate, a second upload prompt will allow you to upload your files directory.
+To include images as choices for select questions, specify the file name in the **choices** worksheet, in a column labeled :th:`media::image`. The media files must be uploaded to the Android device in the :file:`/sdcard/odk/forms/` directory, in a folder labeled :file:`{form-name}-media`. When uploading a form to ODK Aggregate, a second upload prompt will allow you to upload your files directory.

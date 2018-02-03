@@ -1,11 +1,12 @@
+:orphan: orphan
+	
 ***************************
 OAuth2 Service Account
 ***************************
 
-.. _oauth-service:
+.. An orphan page does not create a warning if it is not included in a TOC.
+   This page is linked from aggregate-data-access and is only relevant there. 
 
-Overview
-====================
 Publishing your data into Google Spreadsheets or Google Fusion Tables requires a Google Oauth2 Service Account.
 
 .. _api-request:
@@ -31,7 +32,7 @@ Credentials are associated with a Google Cloud Platform project.
 .. image:: /img/oauth2-service/my-console.*
    :alt: Image showing console.
    
-2. If you have never configured a Google Cloud Platform project, please refer :ref:`this section <install-app-engine>` to configure a project using App Engine under which aggregate server would run.
+2. If you have never configured a Google Cloud Platform project, please refer :doc:`this section  <aggregate-app-engine>` to configure a project using App Engine under which aggregate server would run.
    
 3. If you have already configured you should be able to see the project screen, showing the project name in the upper-left side of the screen.In this case, I named my project "My Project 80299" and project id "regal-mediator-181503".
 

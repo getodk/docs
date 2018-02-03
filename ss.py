@@ -3,8 +3,9 @@
 import os
 import subprocess
 import sys
-import PIL.Image
-import PIL.ImageCms
+import PIL.Image as Image
+import PIL.ImageCms as ImageCms
+
 import tempfile
 
 def ensure_dir(file_path):
@@ -20,22 +21,28 @@ def save_screencap(cap, filename):
         f.write(cap)
 
 def convert_profile(filename):
-    img = PIL.Image.open(filename)
+    img = Image.open(filename)
     icc = tempfile.mkstemp(suffix='.icc')[1]
     if 'icc_profile' in img.info:
         with open(icc, 'wb') as f:
             f.write(img.info['icc_profile'])
-        srgb = PIL.ImageCms.createProfile('sRGB')
-        img = PIL.ImageCms.profileToProfile(img, icc, srgb)
+        srgb = ImageCms.createProfile('sRGB')
+        img = ImageCms.profileToProfile(img, icc, srgb)
     img.save(filename)
 
 if __name__ == "__main__":
     short_filename = sys.argv[1]
+    silent_mode = False
+    try:
+        if sys.argv[2] == '-s':
+            silent_mode = True
+    except:
+        pass
     filename = 'img/' + short_filename + '.png'
     ensure_dir(filename)
     save_screencap(screencap(), filename)
     convert_profile(filename)
-    if sys.argv[2] != '-s':
+    if not silent_mode:
         print("Insert image into doc with:")
         print(".. image:: /img/" + short_filename + ".*")
         print("  :alt: Alt text here. Be sure to add alt text.")

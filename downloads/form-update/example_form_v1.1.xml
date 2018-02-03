@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>Example_form</h:title>
+    <model>
+      <itext>
+        <translation lang="Español (es)">
+          <text id="/example_form/sid:label">
+            <value>Ingrese su identificación de estudiante</value>
+          </text>
+          <text id="/example_form/course:label">
+            <value>Nombre del departamento</value>
+          </text>
+          <text id="/example_form/name:label">
+            <value>Introduzca su nombre</value>
+          </text>
+          <text id="/example_form/marks:label">
+            <value>Ingrese las calificaciones totales obtenidas en todos los cursos</value>
+          </text>
+          <text id="/example_form/course_cnt:label">
+            <value>Ingresa el número de cursos que has elegido</value>
+          </text>
+          <text id="/example_form/age:label">
+            <value>Introduzca su edad</value>
+          </text>
+        </translation>
+        <translation lang="English (en)">
+          <text id="/example_form/sid:label">
+            <value>Enter your student id</value>
+          </text>
+          <text id="/example_form/course:label">
+            <value>Name of Department</value>
+          </text>
+          <text id="/example_form/name:label">
+            <value>Enter your name</value>
+          </text>
+          <text id="/example_form/marks:label">
+            <value>Enter total marks obtained in all courses</value>
+          </text>
+          <text id="/example_form/course_cnt:label">
+            <value>Enter number of courses you have chosen</value>
+          </text>
+          <text id="/example_form/age:label">
+            <value>Enter your age</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <example_form id="example_id" version="2017120701">
+          <sid/>
+          <name/>
+          <age/>
+          <course/>
+          <course_cnt/>
+          <marks/>
+          <total/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </example_form>
+      </instance>
+      <bind nodeset="/example_form/sid" required="false()" type="int"/>
+      <bind nodeset="/example_form/name" required="true()" type="string"/>
+      <bind constraint=".&lt;=20" jr:constraintMsg="You should be below 20 years to be eligible for the survey." nodeset="/example_form/age" required="true()" type="int"/>
+      <bind nodeset="/example_form/course" required="true()" type="select1"/>
+      <bind constraint=".&gt;=1 and .&lt;=6" jr:constraintMsg="You should choose atleast 1 course and atmost 6 courses." nodeset="/example_form/course_cnt" relevant=" /example_form/course !='none'" required="true()" type="int"/>
+      <bind constraint=" /example_form/marks &lt;= /example_form/total " jr:constraintMsg="You cannot obtain more than maximum marks." nodeset="/example_form/marks" relevant=" /example_form/course !='none'" required="true()" type="int"/>
+      <bind calculate=" /example_form/course_cnt *50" nodeset="/example_form/total" relevant=" /example_form/course !='none' and  /example_form/course_cnt !=''" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/example_form/meta/instanceID" readonly="true()" type="string"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/example_form/sid">
+      <label ref="jr:itext('/example_form/sid:label')"/>
+    </input>
+    <input ref="/example_form/name">
+      <label ref="jr:itext('/example_form/name:label')"/>
+    </input>
+    <input ref="/example_form/age">
+      <label ref="jr:itext('/example_form/age:label')"/>
+    </input>
+    <select1 ref="/example_form/course">
+      <label ref="jr:itext('/example_form/course:label')"/>
+      <item>
+        <label>PHY</label>
+        <value>Physics</value>
+      </item>
+      <item>
+        <label>MATHS</label>
+        <value>Mathematics</value>
+      </item>
+      <item>
+        <label>CHEM</label>
+        <value>Chemistry</value>
+      </item>
+      <item>
+        <label>COMP</label>
+        <value>Computer</value>
+      </item>
+      <item>
+        <label>none</label>
+        <value>none</value>
+      </item>
+    </select1>
+    <input ref="/example_form/course_cnt">
+      <label ref="jr:itext('/example_form/course_cnt:label')"/>
+    </input>
+    <input ref="/example_form/marks">
+      <label ref="jr:itext('/example_form/marks:label')"/>
+    </input>
+  </h:body>
+</h:html>

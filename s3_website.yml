@@ -26,8 +26,9 @@ cloudfront_distribution_config:
 
 cloudfront_wildcard_invalidation: true
 
-# redirects:
-#   index.php: /
-#   about.php: /about.html
-#   music-files/promo.mp4: http://www.youtube.com/watch?v=dQw4w9WgXcQ
-#   heated-towel-rail/index.html: /
+redirects:
+  # use url/index.html syntax to enable url, url/, url/index.html and hash passthrough
+  aggregate-guide/index.html: /aggregate-intro
+  collect-guide/index.html: /collect-intro
+  collect-integrations/index.html: /launch-apps-from-collect
+  visualize/index.html: /aggregate-visualize

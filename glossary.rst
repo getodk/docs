@@ -13,6 +13,10 @@ Glossary
 
     A person who conducts a survey.
 
+  instance
+  
+    The file representing a filled-in form. 
+  
   Collect
 
     Part of ODK.
