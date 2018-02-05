@@ -313,10 +313,20 @@ __ https://stackoverflow.com/questions/26620312/installing-git-in-path-with-gith
 GLFS
 """"""
 
-We use `Git Large File Storage (GLFS)  <https://git-lfs.github.com/>`_ to handle large binary files like images and videos. Once installed, you normally won't need to do anything else. GLFS is largely transparent when using git.
+We use `Git Large File Storage (GLFS)`__
+to handle large binary files 
+like images and videos. 
+Once installed, 
+you normally won't need to do anything else. 
+GLFS is largely transparent when using git.
 
-- `Install GLFS <https://git-lfs.github.com/>`_
+.. _GitLFS: https://git-lfs.github.com
+__ GitLFS_
 
+
+1. Install GLFS__.
+
+__ GitLFS_
 
 .. warning::
 
@@ -326,7 +336,17 @@ We use `Git Large File Storage (GLFS)  <https://git-lfs.github.com/>`_ to handle
 
 GLFS tracks binary files as defined in the :file:`.gitattributes` file `in the repo <https://github.com/opendatakit/docs/blob/master/.gitattributes>`_. Most common binary file formats are already listed, but there might be others we haven't thought of yet.
 
-If you are adding binary files to the repo, and they are in formats not already tracked, **it is your responsibility to make sure they are tracked.** To make sure they are properly tracked, add the file type to GLFS. You can do this by editing :file:`.gitattributes` directly.
+.. _adding-new-glfs-formats:
+
+Adding new file formats to GLFS tracking
+'''''''''''''''''''''''''''''''''''''''''''''
+
+If you are adding binary files to the repo, 
+and they are in formats not already tracked, 
+**it is your responsibility to make sure they are tracked by GLFS.** 
+
+To make sure they are properly tracked, 
+add them to the :file:`.gitattributes` file.
 
 .. code-block:: none
 
@@ -341,13 +361,21 @@ You can also use the command line.
 
 This will add a line to :file:`.gitattributes`.
 
-We would also appreciate it if you would keep that file organized by placing the new file format declaration in the appropriate section, or creating a new section as needed.
+.. note:: 
+
+Please keep :file:`.gitattributes` organized 
+by placing the new file format declaration 
+in the appropriate section, 
+or creating a new section as needed.
 
 .. warning::
 
-  Updates to :file:`.gitattributes` must be done in a commit before the commit that adds the new binary files.
+  Updates to :file:`.gitattributes` must be done 
+  in a commit before the commit 
+  that adds the new binary files.
 
-  **We will not accept Pull Requests that include binary files untracked by GLFS.**
+  **We will not accept Pull Requests 
+  that include binary files untracked by GLFS.**
 
 
 .. _android-tools:
@@ -355,24 +383,42 @@ We would also appreciate it if you would keep that file organized by placing the
 Android Tools
 ~~~~~~~~~~~~~~~~~
 
-Some testing and documentation tasks (including :ref:`making screenshots from ODK Collect <screenshots>`) require the :doc:`Android Debug Bridge <collect-adb>`) command line tool. You can either install Android Studio or install ADB as standalone SDK tool.
+Some testing and documentation tasks 
+(including :ref:`making screenshots from ODK Collect <screenshots>`)
+require the :doc:`Android Debug Bridge <collect-adb>` command line tool.
+You can either install Android Studio 
+or install ADB as standalone SDK tool.
 
 .. _android-studio:
 
 Android Studio
 """"""""""""""""""
 
-:abbr:`ADB (Android Debug Bridge)` is part of `Android Studio <https://developer.android.com/studio/index.html>`_. This is the best way to get :command:`adb` if you plan to do any other Android development. It *should* be installed by default when you install Android Studio. To use it from the command line, you'll need to add the SDK Platform tools to your path.
+:abbr:`ADB (Android Debug Bridge)` is part of `Android Studio`_,
+and is typically installed by default when you install Android Studio. 
+
+.. _Android Studio: https://developer.android.com/studio/index.html
+
+This is the best way to get :command:`adb` 
+if you plan to do any other Android development. 
+To use it from the command line, 
+add the SDK Platform tools to your path.
 
 On Mac, add the following to your :file:`.bash_profile`
 
 .. note::
 
-    On Windows, you have to run Android Studio once to complete the Installation of ADB. The tool can be found in :file:`C:/Users/your user name/AppData/Local/Android/sdk/platform-tools`. You need to add it to the environment variable path, use the following command:
+    On Windows, 
+    you have to run Android Studio once 
+    to complete the installation of ADB. 
+    The tool can be found in
+    :file:`C:/Users/user-name/AppData/Local/Android/sdk/platform-tools`. 
+    To add it to the environment variable path, 
+    use the following command:
 
     .. code-block:: none
 
-        set PATH=%PATH%;C:\Users\your user name\AppData\Local\Android\sdk\platform-tools
+      set PATH=%PATH%;C:\Users\your user name\AppData\Local\Android\sdk\platform-tools
 
 
 .. code-block:: sh
@@ -381,9 +427,10 @@ On Mac, add the following to your :file:`.bash_profile`
 
 .. warning::
 
-  The path specified above assumes a default installation of Android Studio. You may have put Android Studio in a different location.
+  The path specified above 
+  assumes a default installation of Android Studio. 
+  You may have put Android Studio in a different location.
 
-.. help for linux and windows users here would be good...
 
 .. _docs-workflow-setup:
 
