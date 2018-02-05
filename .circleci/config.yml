@@ -22,7 +22,7 @@ jobs:
             sudo pip install -r requirements.txt
       - run:
           name: Style Guide Testing
-          command: sudo python style-test.py  
+          command: sudo python style-test.py -c 
       - run:
           name: Build docs
           command: sphinx-build -W -b dirhtml . build
