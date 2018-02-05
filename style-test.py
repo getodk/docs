@@ -236,6 +236,20 @@ def get_changed_files():
     return changedFiles
 
 
+def get_committed_files():
+    """Return files committed on a branch."""
+    file_path = os.path.realpath(__file__)
+    repo_path = file_path[0:file_path.rfind('/')]
+    repo = git.Repo(repo_path)
+    branch = repo.active_branch.name
+    commit_cnt = len(list(repo.iter_commits('master..%s' %branch)))
+    committedFiles = repo.git.diff('HEAD~%d..HEAD' %commit_cnt, name_only=True)
+    committedFiles = committedFiles.splitlines()
+    committedFiles = [f for f in committedFiles if ".rst" in f and os.path.isfile(f)]
+    committedFiles = tuple(committedFiles)
+    return committedFiles
+
+
 def run_checks(paths, disp, fix):
     """Run checks on the docs."""
     global t
@@ -419,15 +433,20 @@ def gen_list(paths = None):
 
 
 @click.command(context_settings = CONTEXT_SETTINGS)
+@click.option('--commit','-c', is_flag = True,
+               help = "Run checks on committed files")
 @click.option('--diff', '-d', is_flag = True, 
                help = "Run check on the modified files")
 @click.option('--fix', '-f', is_flag = True, 
                help = "Removes the fixable errors")
 @click.option('--out_path','-o', type = click.Path())
 @click.argument('in_path', nargs = -1, type = click.Path())
-def style_test(in_path = None, out_path = None, diff = None, 
-                fix = None, output = None):
+def style_test(in_path = None, out_path = None, commit = None,
+               diff = None, fix = None, output = None):
     """A CLI for style guide testing"""
+    # check if diff or commit option is used
+    check = False
+
     # add custom style-guide checks to proselint
     add_checks()
 
@@ -437,11 +456,20 @@ def style_test(in_path = None, out_path = None, diff = None,
     # Get list of changed files
     if diff:
         in_path += get_changed_files()
+        check = True
+    
+    # Get list of committed files
+    if commit:
+        in_path += get_committed_files()
+        check = True
     
     # run the checks on docs
     disp = True
     if fix or out_path:
         disp = False
+    if check and not in_path:
+        print("No files to check for!")
+        return
     run_checks(in_path, disp, fix)
 
     # generate output
