@@ -429,9 +429,9 @@ To build the documentation into a viewable website:
 
 .. code-block:: console
 
-  $ sphinx-build -b dirhtml . build
+  $ sphinx-build -b dirhtml src build
 
-This calls the sphinx-build utility. The :option:`-b` switch specifies the builder, which in this case is ``html`` -- as opposed to other builders like ``pdf``. The ``.`` refers to the current directory (the build source) and ``build`` refers to the target of the build (the built files will be put into a directory labeled ``build``).
+This calls the sphinx-build utility. The :option:`-b` switch specifies the builder, which in this case is ``html`` -- as opposed to other builders like ``pdf``. The ``src`` refers to the source directory (which contains all :file:`.rst` files, image files, formatting files, and other source files) and ``build`` refers to the target of the build (the built files will be put into a directory labeled ``build``).
 
 When you run the build, you may see error or warning messages. These indicate potential problems with the documentation, like:
 
