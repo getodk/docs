@@ -1,5 +1,6 @@
 import os
 import re
+import git
 import csv
 import glob
 import click
@@ -70,12 +71,12 @@ def remove_lines(text):
 
     index = 0
     length = len(text)
-    while index<len(text):
+    while index < len(text):
         # remove ignored lines
         if "startignore" in text[index]:
             while index < length and "endignore" not in text[index]:
                 text[index] = "ignore_line\n"
-                index = index+1
+                index = index + 1
         # remove directive blocks
         if index < length and any(word in text[index] for word in directive_list):
             indent = len(text[index]) - len(text[index].lstrip())
@@ -83,7 +84,7 @@ def remove_lines(text):
             index = index + 1
             if index < length:
                 space_cnt = len(text[index]) - len(text[index].lstrip())
-            while index < length and (space_cnt > indent or text[index] == '\n'):
+            while index < length and (space_cnt > indent or text[index].isspace()):
                 if not text[index].isspace():
                     text[index] = "ignore_line\n"
                 index = index + 1
@@ -91,7 +92,7 @@ def remove_lines(text):
                     space_cnt = len(text[index]) - len(text[index].lstrip())
             index = index - 1
         # remove text between backtick -- inline literals, uris, roles
-        if "`" in text[index]:
+        if index < length and "`" in text[index]:
             line = text[index]
             new_line = ""
             pos = 0
@@ -100,7 +101,7 @@ def remove_lines(text):
                 # double backticks
                 if line[pos] == "`" and line[pos+1] == "`":
                     new_line += "``"
-                    pos = pos+2
+                    pos = pos + 2
                     while pos < line_len and line[pos] != "`":
                         new_line += "i"
                         pos = pos + 1
@@ -113,12 +114,32 @@ def remove_lines(text):
                     while pos < line_len and line[pos] != "`":
                         new_line += "i"
                         pos = pos + 1
-                new_line += line[pos]      
+                if pos < line_len:
+                    new_line += line[pos]      
                 pos = pos + 1   
             text[index] = new_line    
-        index = index+1
-
+        # ignore comments
+        if index < length and text[index].startswith(".."):
+            # don't ignore section labels
+            if not text[index].startswith(".. _"):
+                text[index] = "ignore_line\n"
+        index = index + 1        
+    
     return text            
+
+
+def remove_quotes(text):
+    """Replace quote marks in text."""
+    index = 0
+    length = len(text)
+    while index < length:
+        if '\"' in text[index]:
+            text[index] = text[index].replace('\"','*')
+        if '\'' in text[index]:
+            text[index] = text[index].replace('\'','*')
+        index = index + 1
+     
+    return text
 
 
 def get_line(filename, row, col):
@@ -203,6 +224,18 @@ def get_paths(paths):
     return path_list
 
 
+def get_changed_files():
+    """Return currently modified rst files."""
+
+    file_path = os.path.realpath(__file__)
+    repo_path = file_path[0:file_path.rfind('/')]
+    repo = git.Repo(repo_path)
+    changedFiles = [item.a_path for item in repo.index.diff(None)]
+    changedFiles = [f for f in changedFiles if ".rst" in f]
+    changedFiles = tuple(changedFiles)
+    return changedFiles
+
+
 def run_checks(paths, disp, fix):
     """Run checks on the docs."""
     global t
@@ -229,6 +262,9 @@ def run_checks(paths, disp, fix):
 
         # run checks for quotes, curly quotes, section labels
         errors = extra.check(temp_file(text))
+
+        # replace quote marks
+        text = remove_quotes(text)
 
         # lint the text for other tests
         errors = errors + proselint.tools.lint(temp_file(text))
@@ -366,19 +402,41 @@ def gen_out(path):
         for e in err_list:
             csv_out.writerow(e)    
 
+def gen_list(paths = None):
+    """Return a list of errors and warnings."""
+    global err_list
+
+    # add custom style-guide checks to proselint
+    add_checks()
+
+    # Remove the excluded checks
+    exclude_checks()
+
+    # run the checks on docs
+    run_checks(paths, False, False)
+
+    return err_list
+
 
 @click.command(context_settings = CONTEXT_SETTINGS)
+@click.option('--diff', '-d', is_flag = True, 
+               help = "Run check on the modified files")
 @click.option('--fix', '-f', is_flag = True, 
                help = "Removes the fixable errors")
 @click.option('--out_path','-o', type = click.Path())
 @click.argument('in_path', nargs = -1, type = click.Path())
-def style_test(in_path = None, out_path = None, fix = None, output = None):
+def style_test(in_path = None, out_path = None, diff = None, 
+                fix = None, output = None):
     """A CLI for style guide testing"""
     # add custom style-guide checks to proselint
     add_checks()
 
     # Remove the excluded checks
     exclude_checks()
+
+    # Get list of changed files
+    if diff:
+        in_path += get_changed_files()
     
     # run the checks on docs
     disp = True
