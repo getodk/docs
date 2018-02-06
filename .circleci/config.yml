@@ -25,7 +25,7 @@ jobs:
           command: sudo python style-test.py  
       - run:
           name: Build docs
-          command: sphinx-build -W -b dirhtml . build
+          command: sphinx-build -W -b dirhtml src build
       - run:
           name: Compress images
           command: pngquant build/_images/*.png --force --ext .png --verbose
