@@ -363,10 +363,10 @@ This will add a line to :file:`.gitattributes`.
 
 .. note:: 
 
-Please keep :file:`.gitattributes` organized 
-by placing the new file format declaration 
-in the appropriate section, 
-or creating a new section as needed.
+  Please keep :file:`.gitattributes` organized 
+  by placing the new file format declaration 
+  in the appropriate section, 
+  or creating a new section as needed.
 
 .. warning::
 
@@ -374,8 +374,8 @@ or creating a new section as needed.
   in a commit before the commit 
   that adds the new binary files.
 
-  **We will not accept Pull Requests 
-  that include binary files untracked by GLFS.**
+  We will not accept Pull Requests 
+  that include binary files untracked by GLFS.
 
 
 .. _android-tools:
@@ -406,6 +406,11 @@ add the SDK Platform tools to your path.
 
 On Mac, add the following to your :file:`.bash_profile`
 
+.. code-block:: sh
+
+  export PATH=$PATH:~/Library/Android/sdk/tools/
+
+
 .. note::
 
     On Windows, 
@@ -421,9 +426,6 @@ On Mac, add the following to your :file:`.bash_profile`
       set PATH=%PATH%;C:\Users\your user name\AppData\Local\Android\sdk\platform-tools
 
 
-.. code-block:: sh
-
-  export PATH=$PATH:~/Library/Android/sdk/tools/
 
 .. warning::
 
@@ -434,24 +436,36 @@ On Mac, add the following to your :file:`.bash_profile`
 
 .. _docs-workflow-setup:
 
-Getting Ready to Work
+Getting ready to work
 -----------------------
 
 .. _fork-the-docs:
 
-Fork the Docs
+Fork the docs
 ~~~~~~~~~~~~~~
 
-Go to the `ODK Doc repo on Github <https://github.com/opendatakit/docs>`_ and use the :guilabel:`Fork` button (top right) to create your own copy. After the process completes, you'll be looking at your own fork on Github.
+Go to the `ODK Doc repo on GitHub`__ 
+and use the :guilabel:`Fork` button (top right) 
+to create your own copy. 
+After the process completes, 
+you'll be looking at your own fork on GitHub.
+
+__ https://github.com/opendatakit/docs
 
 .. _clone-the-docs:
 
-Clone Down to Local
-~~~~~~~~~~~~~~~~~~~~~
+Clone to local
+~~~~~~~~~~~~~~~~
 
-From your own form of the repo on Github, select the :guilabel:`Clone or download` button. Copy the URI from the text box that opens up. It will be something like: ``https://github.com/your-gh-username/docs.git``
+From your own fork of the repo on GitHub, 
+select the :guilabel:`Clone or download` button. 
+Copy the URI from the text box that opens up. 
+It will be something like: 
+``https://github.com/your-gh-username/docs.git``
 
-Open your terminal, and `cd` to your preferred directory. Then `git clone` the repo:
+Open your terminal, 
+and `cd` to your preferred directory. 
+Then `git clone` the repo:
 
 .. code-block:: console
 
@@ -461,12 +475,21 @@ Open your terminal, and `cd` to your preferred directory. Then `git clone` the r
   .
   $ cd docs
 
-The rest of the documentation assumes you are in the directory for the repo (the directory containing ``conf.py`` and ``index.rst``).
+The rest of the documentation assumes 
+you are in the directory for the repo 
+(the directory containing ``conf.py`` and ``index.rst``).
 
 .. tip::
-  - The ``clone`` command creates a new directory inside the current one. So you do not need to create a new `odk-docs` directory first.
-  - As noted above, we recommend a master :file:`odk` directory that holds your virtualenv directory and your git repo in two separate subdirectories. So you would be in that master :file:`odk` directory when you clone down the repo.
-  - Double check that right folders are in the right places
+
+  - The ``clone`` command creates a new directory inside the current one.
+    So you do not need to create a new `odk-docs` directory first.
+  - As noted above,
+    we recommend a master :file:`odk` directory 
+    that holds your virtualenv directory and your git repo 
+    in two separate subdirectories. 
+    So you would be in that master :file:`odk` directory 
+    when you clone down the repo.
+  - Double check that the right folders are in the right places
 
   .. code-block:: none
 
@@ -476,11 +499,13 @@ The rest of the documentation assumes you are in the directory for the repo (the
 
 .. _upstream-the-docs:
 
-Set the Upstream Remote
+Set the upstream remote
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When you clone down a repo, the local copy calls your GitHub copy ``origin``. You should also set ``upstream`` as the name of the original, main GitHub repo.
-
+When you clone down a repo, 
+the local copy calls your GitHub copy ``origin``. 
+You should also set ``upstream`` 
+as the name of the  main ODK Docs GitHub repo.
 
 .. code-block:: console
 
@@ -506,7 +531,10 @@ Run ``git remote -v`` to check the status, you should see something like this:
 Install Dependencies
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The first time you clone down the repo, you'll need to install the dependencies. Make sure you have your Python 3 virtual environment set up and activated in the docs repo and then:
+The first time you clone down the repo, 
+you need to install the dependencies. 
+Make sure you have your Python 3 virtual environment 
+set up and activated, then:
 
 .. code-block:: console
 
@@ -514,23 +542,37 @@ The first time you clone down the repo, you'll need to install the dependencies.
 
 .. note::
 
-  If you are working on the design, testing, or deployment of the docs, you might find the need to install an additional PyPi package. If you do, please update the requirements.txt file with ``pip freeze > requirements.txt``. Pull Requests which change :file:`requirements.txt` should include a note about why the new packages are needed.
+  If you are working on 
+  the design, testing, or deployment of the docs, 
+  you might find the need to install an additional PyPi package. 
+  If you do, 
+  please update the :file:`requirements.txt` file with 
+  :command:`pip freeze > requirements.txt`. 
+  Pull Requests which change :file:`requirements.txt` 
+  should include a note about why the new packages are needed.
 
 .. note::
 
-  If you have problems when running the Sphinx commands (see below), you may have a dependency issue. Try running ``pip install -r requirements.txt`` again.
+  If you have problems when running the Sphinx commands (see below), 
+  you may have a dependency issue. 
+  Try running :command:`pip install -r requirements.txt` again.
 
 .. _docs-workflow-details:
 
-Workflow Details
+Workflow details
 -------------------
 
 .. _git-pull-the-docs:
 
-Pull in Updates from Upstream
+Pull in changes from upstream
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You probably won't need to do this the first time, but you should always pull in any changes from the main repository before working.
+As other people make changes to the docs,
+you need to keep your local copy up to date.
+
+You probably won't need to do this the first time, 
+but you should always pull in any changes from the main repository
+before working.
 
 
 .. code-block:: console
@@ -555,9 +597,20 @@ You probably won't need to do this the first time, but you should always pull in
 Make a New Branch
 ~~~~~~~~~~~~~~~~~~~
 
-Choose a specific, deliverable task to work on. This should be an `active issue from our issue tracker on GitHub <https://github.com/opendatakit/docs/issues>`_.
+Choose a specific, deliverable task to work on. 
+This should be an `active issue from our issue tracker on GitHub`__. 
 
-Create a new branch in which you will work on this specific issue. The branch name should briefly describe what you are doing. For example, the original author of this contributor guide worked in a branch called ``contributing``. Also, make sure that all the branches are derived from the ``master`` branch to avoid intermixing of commits.
+__ https://github.com/opendatakit/docs/issues
+
+Create a new branch in which you will work on this specific issue. 
+The branch name should briefly describe what you are doing. 
+For example, 
+the original author of this contributor guide 
+worked in a branch called ``contributing``. 
+
+Also, 
+make sure that all the branches are derived from ``master``,
+to avoid mixing up work from different issues commits.
 
 .. code-block:: console
 
@@ -588,6 +641,29 @@ Work on the Docs
 Write and edit files in your favorite editor.
 
 
+.. note::
+
+  To work on ODK Docs, 
+  you need to work in a code editor.
+
+  If you've never used a code editor before, 
+  you should know that they are a little different
+  than other writing environments
+  like MS Word or your email editor.
+  
+  People have strong opinions about code editors,
+  and nearly everyone who uses them regularly has a favorite.
+  
+  If you're new to using an editor, 
+  you might want to try `Atom`_ or `Sublime`_,
+  which are both popular and easy to use, 
+  and they both have decent support for reStructuredText syntax.
+  
+  .. _Atom: https://atom.io/
+  .. _Sublime: https://www.sublimetext.com/
+  
+  
+
 .. _build-the-docs:
 
 Build, View, and Debug
@@ -599,33 +675,54 @@ To build the documentation into a viewable website:
 
   $ sphinx-build -b dirhtml . build
 
-This calls the sphinx-build utility. The :option:`-b` switch specifies the builder, which in this case is ``html`` -- as opposed to other builders like ``pdf``. The ``.`` refers to the current directory (the build source) and ``build`` refers to the target of the build (the built files will be put into a directory labeled ``build``).
+This calls the sphinx-build utility. 
+The :option:`-b` switch specifies the builder, 
+which in this case is ``html``. 
+The ``.`` refers to the current directory (the build source) 
+and ``build`` refers to the target of the build 
+(the built files will be put into a directory labeled :file:`build`).
 
-When you run the build, you may see error or warning messages. These indicate potential problems with the documentation, like:
+When you run the build, 
+you may see error or warning messages. 
+These indicate potential problems with the documentation, like:
 
 - syntax errors
 - broken links
 - terms not included in the glossary
 
-Error and warning messages include a file name and line number for tracking them down. Try to resolve all your errors and warnings before issuing a pull request. However, if this is not possible, please add a note in your pull request so that we can help you debug the problem.
+Error and warning messages 
+include a file name and line number for tracking them down. 
+Try to resolve all your errors and warnings 
+before issuing a pull request. 
+If this is not possible, 
+please add a note in your pull request 
+so that we can help you debug the problem.
 
 **We will not merge Pull Requests that have warnings or errors in them.**
 
 .. note::
 
-  Because of `a bug in Sphinx <https://github.com/sphinx-doc/sphinx/issues/2617>`_, the line numbers in error and warning messages will be off by the length of `rst_prolog` in :file:`conf.py`.
+  Because of `a bug in Sphinx`__ 
+  the line numbers in error and warning messages 
+  will be off by the length of `rst_prolog` in :file:`conf.py`.
 
+__ https://github.com/sphinx-doc/sphinx/issues/2617
 
-To view the documentation in your web browser, you can use Python's built-in web server.
+To view the documentation in your web browser, 
+you can use Python's built-in web server.
 
 .. code-block:: console
 
   $ cd build
   $ python -m http.server 8000
 
-Then open your browser and go to `http://localhost:8000 <http://localhost:8000>`_.
+Then open your browser and go to http://localhost:8000 
 
-Read through your doc edits in the browser and correct any issues in your source files. You'll need to shut down the web server (:kbd:`CTRL C`) before rebuilding, then return to the main directory of the repo ( ``cd ..`` ).
+Read through your doc edits in the browser 
+and correct any issues in your source files. 
+You'll need to shut down the web server (:kbd:`CTRL C`) 
+before rebuilding, 
+then return to the main directory of the repo ( :command:`cd ..` ).
 
 It's a good idea to delete the ``build`` directory before each rebuild.
 
@@ -636,21 +733,29 @@ It's a good idea to delete the ``build`` directory before each rebuild.
 
 .. tip::
 
-  The script ``b.sh`` is a utility script that can be run to build the directory. It not only saves typing effort but will also become the canonical build script for us, so it's good to get used to it from now.
+  The script :file:`b.sh` automatically runs all the build commands.
+  It saves typing.
+  In the future, 
+  it will also become the canonical build script for ODK Docs,
+  including additional tests and other build tasks.
 
 .. _push-the-docs:
 
 Push Your Branch
 ~~~~~~~~~~~~~~~~~~
 
-Once your work on the issue is completed, add the files you've changed or created additionally, and write a relevant commit message describing the changes.
+Once your work on the issue is completed, 
+add the files you've changed or created, 
+and write a relevant commit message describing the changes.
 
 .. code-block:: console
 
   $ git add my_changed_files
   $ git commit -m "A small but relevant commit message"
 
-Then it's time to push the changes. The first time you do this on any branch, you'll need to specify the branch name:
+Then, push the changes. 
+The first time you do this on any branch, 
+you'll need to specify the branch name:
 
 .. code-block:: console
 
@@ -663,43 +768,68 @@ After that, you only need to use the :command:`push` command:
   $ git push
 
 
-(Note: ``origin`` is the local label for your GitHub fork.)
+.. note:: ``origin`` is the local label for your GitHub fork.
 
 .. _pr-the-docs:
 
 Issue a Pull Request
 ~~~~~~~~~~~~~~~~~~~~~~
 
-A pull request (or PR) is a request from you to the ODK Docs maintainers, for us to pull in your changes to the main repo.
+A :dfn:`pull request` (or PR) 
+is a request from you to the ODK Docs maintainers, 
+for us to pull in your changes to the main repo.
 
-Go the `main docs repo on GitHub <https://github.com/opendatakit/docs>`_. You'll see a message there referencing your recently pushed branches. Select :guilabel:`Compare & pull request` to start a pull request.
+Go the `main docs repo on GitHub`__. 
+You'll see a message there referencing your recently pushed branches. Select :guilabel:`Compare & pull request` to start a pull request.
 
-Follow GitHub's instructions. The :guilabel:`Base fork` should be the main repo, and :guilabel:`base` should be ``master``. Your repo and working fork should be listed beside them. (This should all populate by default, but you should double check.) If there is a green **Able to be merged** message, you can proceed.
+__ https://github.com/opendatakit/docs>
+
+Follow GitHub's instructions. 
+The :guilabel:`Base fork` should be the main repo, 
+and :guilabel:`base` should be ``master``. 
+Your repo and working fork should be listed beside them. 
+(This should all populate by default, 
+but be sure to double check.) 
+If there is a green **Able to be merged** message, 
+you can proceed.
 
 You must include a PR comment. Things to include:
 
 - A summary of what you did.
-- A note about anything that probably should have been done, but you didn't do.
+- A note about anything that probably should have been done, 
+  but you didn't do.
 - A note about any new work this PR will create.
-- The issue number you are working on. If the PR completes the issue, include the text ``Closes #`` and the issue number.
-- A note about any errors or warnings, and why you did not or could not resolve them.
-- A note justifying any changes to requirements.txt
-- A note about any difficulties, questions, or concerns that came up while working on this issue.
+- The issue number you are working on. 
+  If the PR completes the issue, 
+  include the text ``Closes #`` and the issue number.
+- A note about any errors or warnings, 
+  and why you did not or could not resolve them.
+- A note justifying any changes to :file:`requirements.txt`.
+- A note about any difficulties, questions, or concerns 
+  that came up while working on this issue.
 
-Complete the pull request. The maintainers will review it as quickly as possible. If there are any problems the maintainers can't deal with, they will reach out to you.
+Complete the pull request. 
+The maintainers will review it as quickly as possible. 
+If there are any problems the maintainers can't deal with, 
+they will reach out to you.
 
 .. note::
 
-   If you happen to rename any document file(:file:`*.rst`), then be sure that you add the redirect in your PR.
+   If you happen to rename any document file (:file:`*.rst`), 
+   then be sure that you add the redirect in your PR.
 
-   To add the redirect go to :file:`s3_website.yml` and uncomment the **redirects:** line. Add a mapping from the old file name to the new file name below the **redirects:** line, one mapping per line. Several examples of how to format these are shown in the comments.
-
-   For example you rename a file to :file:`newcheck.rst` from :file:`oldcheck.rst`, then to add the redirect:
+   To add the redirect go to :file:`s3_website.yml`, 
+   and add a mapping from the old file name to the new file name 
+   below the **redirects:** line, one mapping per line. 
+    
+   If you have renamed :file:`old-name.rst` to :file:`new-name.rst`:
 
    .. code-block:: yaml
 
      redirects:
-      /oldcheck: /newcheck
+      old-name/index.html: new-name
+      
+   Notice the inclusion of ``/index.html`` on the left side.
 
 
 .. _keep-working-the-docs:
@@ -707,7 +837,9 @@ Complete the pull request. The maintainers will review it as quickly as possible
 Keep Going
 ~~~~~~~~~~~
 
-Once the PR is merged, you'll need to pull in the changes from the main repo ( ``upstream`` ) into your local copy.
+Once the PR is merged, 
+you'll need to pull in the changes from the main repo ( ``upstream`` )
+into your local copy.
 
 .. code-block:: console
 
@@ -726,4 +858,6 @@ If you want to delete your branch from before, you can do that:
 
   $ git branch -d branch-name
 
-Now you can find a new issue to work on, create a new branch, and get to work...
+Now you can find a new issue to work on, 
+create a new branch, 
+and get to work again.
