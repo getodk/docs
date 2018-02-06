@@ -214,7 +214,7 @@ def get_paths(paths):
     # Add paths if provided by user
     if paths:
         search_path = search_path + "/"
-        path_list = [search_path + path for path in paths]
+        path_list = [search_path + path for path in paths if '.rst' in path]
 
     # Add all rst files if specific paths not provided by user
     else:
