@@ -1,76 +1,120 @@
 Collect Menus, Settings, and Security
 =====================================
 
+
 .. _main-menu:
 
 Main Menu
 -------------
 
-ODK Collect's main menu contains the following options:
-
 .. image:: /img/collect-settings/main-menu.*
   :alt: Main menu of ODK Collect
   :class: device-screen-vertical
 
-- :menuselection:`Fill Blank Form` allows you to fill any blank form already there in your data collection.
-- :menuselection:`Edit Saved Form` looks for forms you've saved, lists them and allows you to edit them.
-- :menuselection:`Send Finalized Form` lists all the finalized forms and gives you an option to send them.
-- :menuselection:`View Sent Form` displays the forms that have been sent even if they were deleted.
-- :menuselection:`Get Blank form` lists all available ODK :term:`Collect` :term:`form` :term:`widget` (question types). The details about which are available on :ref:`basic-form-widgets`.
-- :menuselection:`Delete Saved Form` lists all the Saved and Blank Forms and allows you to delete them.
+:menuselection:`Fill Blank Form` 
+  Lists available blank forms and
+  lets you select a form to begin filling out.
+   
+:menuselection:`Edit Saved Form` 
+  Lists completed and saved forms and
+  lets you select a form to edit.
+   
+:menuselection:`Send Finalized Form` 
+  Lists finalized but unsent forms and
+  lets you select forms to send to the server.
+
+:menuselection:`View Sent Form` 
+  Lists forms that have been sent, even if they were deleted. 
+  
+:menuselection:`Get Blank form` 
+  Lists blank forms available on the server and
+  lets you download them.
+  
+:menuselection:`Delete Saved Form` 
+  Lists all the Saved and Blank Forms and
+  lets you delete them.
 
 .. _general-settings:
 
 General Settings
 --------------------
 
-General Settings are accessible from the :guilabel:`⋮` menu on the top-right corner. 
+To access General Settings:
+  :menuselection:`⋮ --> General Settings`
 
 .. image:: /img/collect-settings/general-settings.*
   :alt: General settings
   :class: device-screen-vertical
-
-It allows us to configure the following:
 
 .. _server-settings:
 
 Server Settings
 ~~~~~~~~~~~~~~~~~
 
+Server settings :doc:`control the connection to <collect-connect>` 
+an :doc:`Aggregate <aggregate-intro>` or :doc:`openrosa` server
+or a :doc:`Google Drive account <collect-connect-google>`. 
+
+To access Server Settings:  
+  :menuselection:`⋮ --> General Settings --> Server` 
+
+  
 .. image:: /img/collect-settings/server-settings.*
   :alt: Server settings
   :class: device-screen-vertical
 
-:menuselection:`Server` settings manage the connection to an ODK Aggregate server or Google Drive account for form management.
-
-See :doc:`collect-connect` for more details.
+.. seealso:: :doc:`collect-connect`
 
 .. _interface-settings:
 
 User Interface Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+User Interface settings control Collect's appearance and behavior. 
+
+To access User Interface settings:
+  :menuselection:`⋮ --> General Settings --> User Interface` 
+
 .. image:: /img/collect-settings/ui-settings.*
   :alt: User Interface settings
   :class: device-screen-vertical
 
-:menuselection:`User Interface` settings allow us to customize the way our app looks and behaves. It includes settings for:
+:guilabel:`Language` 
+  Sets the display language.
 
-- :guilabel:`Language` - Allows us to select the device language from 49 available options.
-- :guilabel:`Text font size` - Lets us select the font-size.
-- :guilabel:`Navigation` (Swiping or Buttons) - Allows us to select the navigation method(swipes, buttons or both).
-- :guilabel:`Splash Screen` - An image to display when the Collect application loads.
+:guilabel:`Text font size`
+  Sets the display font size.
+    
+:guilabel:`Navigation` 
+  Sets form navigation style for moving between questions.
+  
+  Options:
 
-:menuselection:`User Interface` settings page also consists of the Mapping Settings. 
+  - Horizontal swiping
+  - Forward and back buttons
+  - Both
+
+:guilabel:`Splash Screen`
+  Sets an image to display while Collect loads.
 
 .. _mapping-settings:
 
 .. rubric:: Mapping
 
-Map settings are included on the :menuselection:`User Interface` settings page.
-
-- :guilabel:`Mapping SDK` sets the app used for :ref:`geopoint`, :ref:`geoshape`, and :ref:`geotrace` :doc:`form-widgets`. Options are Google Maps (default) and OpenStreetMap.
-- :guilabel:`Basemap` sets the specific map used when opening the mapping app. 
+:guilabel:`Mapping SDK` 
+  Sets the app that will be used for 
+  form question types that require map integration.
+  
+  Options:
+  
+  - Google Maps (default)
+  - OpenStreetMap
+ 
+  .. seealso:: :ref:`geopoint`, :ref:`geoshape`, :ref:`geotrace` 
+  
+  
+:guilabel:`Basemap` 
+  Sets the map to be displayed when the mapping app is opened. 
 
 .. _form-management-settings:
 
@@ -90,13 +134,25 @@ Form Management Settings
 
 .. rubric:: Form submission
 
-- :guilabel:`Auto send` When enabled, forms are sent immediately when finalized if the device can connect to the internet. You can specify whether to send over WiFi, cellular data, or both.
-- :guilabel:`Delete after send` When checked, form instances are deleted once they are sent.
+:guilabel:`Auto send` 
+  When enabled, forms are sent immediately when finalized if the device can connect to the internet. You can specify whether to send over WiFi, cellular data, or both.
+  
+:guilabel:`Delete after send` 
+  When enabled, form instances are deleted once they are sent.
 
 .. rubric:: Form filling
 
-- :guilabel:`Default to finalized` When enabled, forms are automatically finalized upon reaching the end of the form. You can opt out of finalizing any form when completing it.
-- :guilabel:`Constraint processing` used to select when response constraints are validated: After each swipe, or at finalization.
+:guilabel:`Default to finalized` 
+  When enabled, forms are automatically finalized upon reaching the end of the form. You can opt out of this on any specific form during form completion.
+  
+:guilabel:`Constraint processing` 
+  Sets when form responses are validated.
+  
+  Options:
+  
+  - Upon forward swipe. (That is, right after the question is answered.)
+  - At finalization.
+
 - :guilabel:`High res video` enables or disables high-resolution video recordings if supported by the video application used.
 - :guilabel:`Image size` (v1.11.0+) specifies the maximum number of pixels for the long edge of all images added to forms. Images are scaled down immediately after being added. This setting can be overridden at the form question level. There are five size options available:
 
