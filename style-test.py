@@ -445,6 +445,9 @@ def style_test(in_path = None, out_path = None, diff = None,
     disp = True
     if fix or out_path:
         disp = False
+    if diff and not in_path:
+        print("No files to check for!")
+        return    
     run_checks(in_path, disp, fix)
 
     # generate output
