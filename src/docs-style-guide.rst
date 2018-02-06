@@ -112,6 +112,21 @@ A bulleted list is often more clear than an inline list.
   
 There's no hard rule about which to use in any situation. Use your judgement: try it both ways and see which is more clear.
 
+.. _direct-address:
+
+Direct Address
+------------------
+
+Direct address 
+--- speaking directly to the reader using the second person "you" --- 
+is prefered over 
+passive voice ("it can be done"),
+first-person plural ("we can do it"),
+or other constructions.
+
+First person plural ("we") should only be used 
+when speaking of the ODK project team
+("We recommend...").
 
 .. _ordered-vs-unordered:
 
@@ -126,7 +141,7 @@ An ordered list is numbered. It should be used when the order of the list is ess
 
   - First we do this.
   - And then we do this.
-  - And the we do this.
+  - And then we do this.
   
 .. rubric:: Right
 
