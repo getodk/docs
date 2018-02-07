@@ -93,5 +93,5 @@ The :file:`metadata` directory contains databases, that track some high level fi
 
 .. note::
 
-  For information on the :file:`settings` directory, refer to this :ref:`section<save-qr-code>`.
+  For information on the :file:`settings` directory, refer to this :ref:`section <save-qr-code>`.
    
