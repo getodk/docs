@@ -121,6 +121,13 @@ To access User Interface settings:
 Form Management Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Form Management settings control default behavior 
+when editing, finalizing, and importing forms.
+
+To access User Interface settings:
+  :menuselection:`⋮ --> General Settings --> Form Management` 
+
+
 .. image:: /img/collect-settings/form-management.png
   :alt: Form Management settings
   :class: device-screen-vertical
@@ -130,12 +137,12 @@ Form Management Settings
   :class: device-screen-vertical
 
 
-:menuselection:`Form Management` settings handle default behavior when editing, finalizing, and importing forms.
-
 .. rubric:: Form submission
 
 :guilabel:`Auto send` 
-  When enabled, forms are sent immediately when finalized if the device can connect to the internet. You can specify whether to send over WiFi, cellular data, or both.
+  When enabled, forms are sent immediately when they are finalized,
+  if the device can connect to the internet. 
+  You can specify whether to send over WiFi, cellular data, or both.
   
 :guilabel:`Delete after send` 
   When enabled, form instances are deleted once they are sent.
@@ -143,33 +150,69 @@ Form Management Settings
 .. rubric:: Form filling
 
 :guilabel:`Default to finalized` 
-  When enabled, forms are automatically finalized upon reaching the end of the form. You can opt out of this on any specific form during form completion.
+  When enabled, forms are automatically finalized 
+  upon reaching the end of the form. 
+  You can opt out of this on any specific form during form completion.
   
 :guilabel:`Constraint processing` 
-  Sets when form responses are validated.
+  Sets when form responses are validated against constraints_.
   
   Options:
   
   - Upon forward swipe. (That is, right after the question is answered.)
   - At finalization.
+  
+  .. _constraints: http://xlsform.org/#constraints
 
-- :guilabel:`High res video` enables or disables high-resolution video recordings if supported by the video application used.
-- :guilabel:`Image size` (v1.11.0+) specifies the maximum number of pixels for the long edge of all images added to forms. Images are scaled down immediately after being added. This setting can be overridden at the form question level. There are five size options available:
+:guilabel:`High res video` 
+  When enabled, 
+  :ref:`video` widgets will record high resolution video
+  if possible.  
 
-  - :guilabel:`Original size from camera (default)`: images are unchanged when added to a form. Used when images must contain a lot of detail or when the internet connection used to send submissions is fast.
-  - :guilabel:`Very small (640px)`: used when images don't need to be detailed and the internet connection used to send submissions is slow.
-  - :guilabel:`Small (1024px)`: sufficiently detailed for most on-screen viewing but too small for printing.
-  - :guilabel:`Medium (2048px)`: sufficiently detailed for most uses including printing.
-  - :guilabel:`Large (3072px)`: used when a lot of detail is needed.
+:guilabel:`Image size` 
+  .. versionadded:: 1.11.0
+  
+  Sets the default maximum size for images added to forms,
+  as measured by the number of pixels on the longest edge.
+  Images larger than the maximum 
+  are scaled down immediately after being added. 
+  
+  Options:
+  
+  :guilabel:`Original size from camera (default)`
+    Images are unchanged when added to a form. 
+    Recommended for use only when images must contain a lot of detail 
+    and when the internet connection used to send submissions is fast.
+  :guilabel:`Very small (640px)` 
+    Recommended when images don't need to be detailed 
+    or the internet connection used to send submissions is slow.
+  :guilabel:`Small (1024px)`
+    Sufficiently detailed for most on-screen viewing 
+    but too small for printing.
+  :guilabel:`Medium (2048px)`
+    Sufficiently detailed for most uses, including printing.
+  :guilabel:`Large (3072px)`
+    Recommended when a lot of detail is needed,
+    but you want to reduce the size of image files
+    as much as possible.
 
 .. rubric:: Form import
 
-- :guilabel:`Import saved forms as finalized` When enabled, forms added directly to the :file:`instances/` directory are automatically set to :formstate:`Finalized`.
+:guilabel:`Import saved forms as finalized` 
+  When enabled, forms added directly to the :file:`instances/` directory
+  are automatically set to :formstate:`Finalized`.
 
 .. _id-settings:
 
 User and Device Identity Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+User and device identity settings control how 
+personally identifiable information and device id
+are used.
+
+To access User and device identity settings:
+  :menuselection:`⋮ --> General Settings --> User and device identity`   
 
 .. image:: /img/collect-settings/und-settings.*
   :alt: User and Device Identity Settings
@@ -177,7 +220,7 @@ User and Device Identity Settings
 
 .. _form-metadata-settings:
 
-Form Metadata Settings
+Form metadata settings
 """"""""""""""""""""""""
 
 :menuselection:`User and Device Identity -> Form Metadata` sets identity values which are added to the metadata of forms completed on the device.
