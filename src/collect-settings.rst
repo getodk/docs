@@ -271,12 +271,25 @@ which helps us improve the application.
 Admin Settings
 -----------------
 
+Admin settings control which settings and features
+are available to users of the app.
+
+Generally, admin settings are useful when 
+you are managing devices that will be used by many enumerators,
+and you would like to limit the options available to those enumerators.
+
 .. note::
-  Admin settings can be **password protected**. If you set an :guilabel:`Admin Password` in the Admin settings screen, you will need to re-enter that password to access Admin settings in the future.
+
+  The Admin settings screen can be password protected. 
+  
+  If you set an :guilabel:`Admin Password` in the Admin settings screen,
+  you will need to re-enter that password to access Admin settings 
+  in the future.
 
 .. image:: /img/collect-settings/admin-settings.*
   :alt: Admin settings menu
   :class: device-screen-vertical
+
 .. _admin-security:
 
 Admin Security
