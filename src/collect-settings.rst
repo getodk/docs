@@ -205,7 +205,9 @@ You can click on the |share| icon to share the QR code as an image. When you cli
              :width: 43 px
 
 .. warning:: 
-  Since the QR code may contain the admin and server passwords without encryption, you should be careful about how you share it. It is advised to not send it through an external application but through *bluetooth*, *MMS* or any other such service that doesn't allow the third party to access the data. 
+  Since the QR code may contain the admin and server passwords without encryption, you should be careful about how you share it. It is advised to not send it through an external application but through *bluetooth*, *MMS* or any other such service that doesn't allow the third party to access the data.
+
+.. _save-qr-code:  
 
 Saving QR code locally
 """"""""""""""""""""""""
