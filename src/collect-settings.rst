@@ -223,7 +223,12 @@ To access User and device identity settings:
 Form metadata settings
 """"""""""""""""""""""""
 
-:menuselection:`User and Device Identity -> Form Metadata` sets identity values which are added to the metadata of forms completed on the device.
+Form metadata settings control how identifying information
+is added to the metadata of forms completed on the device.
+
+To access form metadata settings:
+  :menuselection:`⋮ --> General Settings --> User and Device Identity --> Form Metadata`
+  
 
 .. image:: /img/collect-settings/form-metadata.*
   :alt: Form Metadata Settings
@@ -239,9 +244,11 @@ You can edit the following:
 
 .. note::
 
-  - If no username is set in Form metadata settings, server username in :ref:`Server settings <server-settings>` is used by default in the form.
-  - If username is defined in Form metadata settings as well as in Server settings, username from Form metadata would be visible in form.
-  - If you want to ensure that form metadata username can't be changed, you can use the :ref:`admin settings <admin-settings>`.
+  - If no username is set here, 
+    the username from :ref:`Server settings <server-settings>` 
+    is used instead.
+  - You can restrict editing of the username in 
+    :ref:`admin settings <admin-settings>`.
 
 .. rubric:: Device-defined
 
@@ -255,9 +262,9 @@ You cannot edit these:
 
 .. rubric:: Usage data
 
-When enabled, ODK Collect sends usage and error data back to the ODK development team, which helps us improve the application.
-
-Usage data is anonymized.
+When enabled, ODK Collect sends anonymous usage and error data 
+back to the ODK development team, 
+which helps us improve the application.
 
 .. _admin-settings:
 
