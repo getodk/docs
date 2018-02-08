@@ -214,24 +214,27 @@ def get_paths(paths):
     # Add paths if provided by user
     if paths:
         search_path = search_path + "/"
-        path_list = [search_path + path for path in paths]
+        path_list = [search_path + path for path in paths if '.rst' in path]
 
     # Add all rst files if specific paths not provided by user
     else:
         for filename in glob.glob(os.path.join(search_path, '*.rst')):
-            path_list.append(filename)       
+            path_list.append(filename)
+
+    path_list = [path for path in path_list if os.path.isfile(path)]             
     
     return path_list
 
 
 def get_changed_files():
     """Return currently modified rst files."""
-
     file_path = os.path.realpath(__file__)
     repo_path = file_path[0:file_path.rfind('/')]
     repo = git.Repo(repo_path)
     changedFiles = [item.a_path for item in repo.index.diff(None)]
-    changedFiles = [f for f in changedFiles if ".rst" in f]
+    changedFiles += repo.untracked_files
+    changedFiles = [f for f in changedFiles if ".rst" in f
+                     and os.path.isfile(repo_path + "/" + f)]
     changedFiles = tuple(changedFiles)
     return changedFiles
 
@@ -442,6 +445,9 @@ def style_test(in_path = None, out_path = None, diff = None,
     disp = True
     if fix or out_path:
         disp = False
+    if diff and not in_path:
+        print("No files to check for!")
+        return    
     run_checks(in_path, disp, fix)
 
     # generate output

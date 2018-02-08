@@ -5,7 +5,7 @@
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
 SPHINXPROJ    = OpenDataKit
-SOURCEDIR     = .
+SOURCEDIR     = _src
 BUILDDIR      = _build
 
 # Put it first so that "make" without argument is like "make help".

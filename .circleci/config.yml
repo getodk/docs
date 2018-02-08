@@ -22,10 +22,12 @@ jobs:
             sudo pip install -r requirements.txt
       - run:
           name: Style Guide Testing
-          command: sudo python style-test.py  
+          command: |
+            paths=$(git diff origin/master... --name-only)
+            sudo python style-test.py $paths
       - run:
           name: Build docs
-          command: sphinx-build -W -b dirhtml . build
+          command: sphinx-build -W -b dirhtml src build
       - run:
           name: Compress images
           command: pngquant build/_images/*.png --force --ext .png --verbose
