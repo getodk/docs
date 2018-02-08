@@ -25,7 +25,8 @@ t = Terminal()
 
 def add_checks():      
     """Add checks to proselint."""
-    src ='./style-guide'       
+    file_path = os.path.realpath(__file__)
+    src = file_path[0:file_path.rfind('/')] + '/style-guide'
     dest = os.path.dirname(proselint.__file__)
     dest_prc = dest + '/.proselintrc'
     dest = dest + '/checks/style-guide'
@@ -206,7 +207,7 @@ def get_paths(paths):
     file_path = os.path.realpath(__file__)
 
     # find path for all .rst files
-    search_path = file_path[0:file_path.rfind('/')]
+    search_path = file_path[0:file_path.rfind('/')] + "/src"
 
     # Make a list of paths to check for
     path_list = []
@@ -214,24 +215,29 @@ def get_paths(paths):
     # Add paths if provided by user
     if paths:
         search_path = search_path + "/"
-        path_list = [search_path + path for path in paths]
+        paths = [path[path.rfind('/')+1:] for path in paths]
+        path_list = [search_path + path for path in paths if '.rst' in path]
 
     # Add all rst files if specific paths not provided by user
     else:
         for filename in glob.glob(os.path.join(search_path, '*.rst')):
-            path_list.append(filename)       
+            path_list.append(filename)
+
+    path_list = [path for path in path_list if os.path.isfile(path)]
+
+    if not path_list:
+        print("No files to check for!")            
     
     return path_list
 
 
 def get_changed_files():
     """Return currently modified rst files."""
-
     file_path = os.path.realpath(__file__)
     repo_path = file_path[0:file_path.rfind('/')]
     repo = git.Repo(repo_path)
     changedFiles = [item.a_path for item in repo.index.diff(None)]
-    changedFiles = [f for f in changedFiles if ".rst" in f]
+    changedFiles += repo.untracked_files
     changedFiles = tuple(changedFiles)
     return changedFiles
 
@@ -274,7 +280,7 @@ def run_checks(paths, disp, fix):
         
         # display the result of checks
         if disp:
-            disp_checks(errors, shortname)
+            disp_checks(errors, filename, shortname)
         
         # list to hold fixable errors
         fix_list = []
@@ -316,23 +322,23 @@ def run_checks(paths, disp, fix):
         disp_cnt()
 
 
-def disp_checks(errors, filename):
+def disp_checks(errors, filename, shortname):
     """Display errors and warnings."""
     global err_cnt
     global warn_cnt
     global t
     list_errors = get_errlist()
-
+    
     for e in errors:        
         # e[0]=check
         # Set warning or error severity
         # Don't set errors for style-guide as they might be examples
-        if e[0] in list_errors and "style-guide.rst" not in filename:
+        if e[0] in list_errors and "style-guide.rst" not in shortname:
             severity = "error"
         else:
             severity = "warning" 
         # e[2]+1=line, e[3]+1=col
-        line1 = "%s | line: %d | col: %d" %(filename, e[2]+1, e[3]+1)
+        line1 = "%s | line: %d | col: %d" %(shortname, e[2]+1, e[3]+1)
         # get line from file where  e[2]+1=line, e[3]+1=col
         line2 = get_line(filename,e[2]+1,e[3]+1)
         # e[1]=error_message
@@ -402,6 +408,7 @@ def gen_out(path):
         for e in err_list:
             csv_out.writerow(e)    
 
+
 def gen_list(paths = None):
     """Return a list of errors and warnings."""
     global err_list
@@ -441,7 +448,7 @@ def style_test(in_path = None, out_path = None, diff = None,
     # run the checks on docs
     disp = True
     if fix or out_path:
-        disp = False
+        disp = False  
     run_checks(in_path, disp, fix)
 
     # generate output
