@@ -291,25 +291,25 @@ To access Admin settings:
   :class: device-screen-vertical
 
   
+:guilabel:`General Settings`
+  Provides access to :ref:`general-settings`, 
+  with all items unrestricted.
+  
+:guilabel:`Admin Password`
+  Lets you password protect this screen.
+  
+:guilabel:`Reset application`
+  Lets you reset to default settings,
+  delete forms, and empty caches.
+  
+:guilabel:`Import/Export settings`
+  Opens the `import-export-settings` screen.
   
   
   
   
   
   
-  
-  
-  
-  
-  
-  
-.. _admin-security:
-
-Admin Security
-~~~~~~~~~~~~~~~~
-
-Admin settings allow you to :ref:`restrict which General Settings are seen by users <user-access-control-settings>`. To access those settings as an Admin (and see all of them), :gesture:`tap` :guilabel:`General Settings` from the Admin settings page.
-
 .. _import-export-settings:
 
 Import/Export settings
