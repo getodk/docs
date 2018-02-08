@@ -124,7 +124,7 @@ Form Management Settings
 Form Management settings control default behavior 
 when editing, finalizing, and importing forms.
 
-To access User Interface settings:
+To access Form Management settings:
   :menuselection:`⋮ --> General Settings --> Form Management` 
 
 
