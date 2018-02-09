@@ -30,7 +30,7 @@ def visit_video_html(self, node):
        os.makedirs("./build/_videos/")
 
     vsrc = node["uri"]
-    spth = ".%s" % vsrc
+    spth = "./src%s" % vsrc
     dpth = "./build/_videos/%s" %vsrc[vsrc.rfind('/')+1:]
 
     shutil.copyfile(spth, dpth)
@@ -44,7 +44,7 @@ def visit_video_html(self, node):
 
     if node["poster"] is not None:
        psrc = node["poster"]
-       p_spth = ".%s" % psrc
+       p_spth = "./src%s" % psrc
        p_dpth = "./build/_videos/%s" %psrc[psrc.rfind('/')+1:]
 
        shutil.copyfile(p_spth, p_dpth)
