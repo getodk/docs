@@ -981,7 +981,7 @@ Images and Figures
 Where to put image files
 """""""""""""""""""""""""""
 
-Image files should be put in the :file:`/img/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
+Image files should be put in the :file:`/src/img/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
 
 .. _image-compression:
 
@@ -1123,7 +1123,7 @@ Now, at the command line, from the root directory of the :file:`odk-docs` repo:
 Videos
 ~~~~~~~~
 
-Video files should be put in the :file:`/vid/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
+Video files should be put in the :file:`/src/vid/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
 
 The purpose of on page videos is to illustrate complicated user interactions that might be difficult to describe otherwise. Longer tutorial videos should be hosted elsewhere and, if appropriate, linked to from the docs. Therefore:
 
@@ -1139,7 +1139,7 @@ To insert a video, use the custom :rst:dir:`video` directive.
 
   .. code-block:: rst
 
-    .. video:: /vid/{document-subdirectory}/{file}.mp4
+    .. video:: /vid/{document-subdirectory}/{file}.ext
     
       Alt content. Every video should have descriptive alt content.
 
@@ -1185,7 +1185,7 @@ To insert a video, use the custom :rst:dir:`video` directive.
 
   .. code-block:: rst
 
-    .. video:: /vid/{document-subdirectory}/{file}.mp4
+    .. video:: /vid/{document-subdirectory}/{file}.ext
       :autoplay: yes/no
       :controls: yes/no
       :muted: yes/no
@@ -1224,7 +1224,7 @@ To pull the video locally:
 Downloadable files
 ~~~~~~~~~~~~~~~~~~~~
 
-Downloadable files should be put in the :file:`/downloads/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
+Downloadable files should be put in the :file:`/src/downloads/` directory in the source, and they should be in a subdirectory with the same name as the document in which they appear. (That is, the filename without the ``.rst`` extension.)
 
 To place a downloadable file in a document, use the :rst:role:`download` role.
 
