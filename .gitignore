@@ -1,3 +1,5 @@
+style-checks.py
+extra.py
 build/
 __pycache__/
 .DS_Store
