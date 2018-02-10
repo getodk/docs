@@ -10,8 +10,12 @@ import shutil
 import importlib
 import proselint
 from blessings import Terminal
+from docutils.core import publish_doctree
 
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
+
+# path of docs directory
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 # variables to hold error and warning count
 err_cnt = 0
@@ -25,10 +29,68 @@ os.environ["TERM"] = "linux"
 os.environ["TERMINFO"]= "/etc/terminfo"
 t = Terminal()
 
+def parse_code():
+    """Parse python code-blocks."""
+    global dir_path
+    test_file = dir_path + '/style-guide/style-checks.py'
+    extra_file = dir_path + '/style-guide/extra.py'
+    
+    def is_style_code_block(node):
+        """Check for style-checks python code-blocks."""
+        return (node.tagname == 'literal_block'
+            and 'code' in node.attributes['classes']
+            and 'python' in node.attributes['classes']
+            and 'style-checks' in node.attributes['classes'])
+    
+    def is_extra_code_block(node):
+        """Check for extra-checks python code-blocks."""
+        return (node.tagname == 'literal_block'
+            and 'code' in node.attributes['classes']
+            and 'python' in node.attributes['classes']
+            and 'extra-checks' in node.attributes['classes'])
+
+    style_guide = open(dir_path + "/src/docs-style-guide.rst", "r")   
+    doctree = publish_doctree(style_guide.read())
+    
+    # write source code into style-check file
+    code_blocks = doctree.traverse(condition=is_style_code_block)
+    source_code = [block.astext() for block in code_blocks]
+    
+    f = open(test_file,"w+")
+    f.write('"""Style Guide testing."""\n\n')
+
+    # modules to import from proselint 
+    modules = "memoize, existence_check, preferred_forms_check"
+    f.write("from proselint.tools import %s\n\n" %modules)
+
+    for line in source_code:
+        if not line.endswith('\n'):
+            line = line + "\n"
+        if "@memoize" in line:
+            line = "\n" + line    
+        f.write(line)
+    
+    # write source code into extra file
+    code_blocks = doctree.traverse(condition=is_extra_code_block)
+    source_code = [block.astext() for block in code_blocks]
+    
+    f = open(extra_file,"w+")
+    f.write('"""Style Guide testing."""\n\n')
+    f.write("import re\n")
+    f.write("from proselint.tools import line_and_column\n\n")
+
+    for line in source_code:
+        if not line.endswith('\n'):
+            line = line + "\n"
+        if "def" in line:
+            line = "\n" + line    
+        f.write(line)
+
+
 def add_checks():      
     """Add checks to proselint."""
-    file_path = os.path.realpath(__file__)
-    src = file_path[0:file_path.rfind('/')] + '/style-guide'
+    global dir_path
+    src = dir_path + '/style-guide'
     dest = os.path.dirname(proselint.__file__)
     dest_prc = dest + '/.proselintrc'
     dest = dest + '/checks/style-guide'
@@ -206,10 +268,10 @@ def exclude_checks():
 
 def get_paths(paths):
     """Return a list of files to run the checks on."""
-    file_path = os.path.realpath(__file__)
+    global dir_path
 
     # find path for all .rst files
-    search_path = file_path[0:file_path.rfind('/')] + "/src"
+    search_path = dir_path + "/src"
 
     # Make a list of paths to check for
     path_list = []
@@ -235,8 +297,8 @@ def get_paths(paths):
 
 def get_changed_files():
     """Return currently modified rst files."""
-    file_path = os.path.realpath(__file__)
-    repo_path = file_path[0:file_path.rfind('/')]
+    global dir_path
+    repo_path = dir_path
     repo = git.Repo(repo_path)
     changedFiles = [item.a_path for item in repo.index.diff(None)]
     changedFiles += repo.untracked_files
@@ -266,7 +328,7 @@ def run_checks(paths, disp, fix):
         text = remove_lines(text)
         
         # Import extra check module from style-guide 
-        extra = importlib.import_module('style-guide.extra', None)
+        extra = importlib.import_module('style-guide.extrarun', None)
 
         # run checks for quotes, curly quotes, section labels
         errors = extra.check(temp_file(text))
@@ -437,6 +499,9 @@ def gen_list(paths = None):
 def style_test(in_path = None, out_path = None, diff = None, 
                 fix = None, output = None):
     """A CLI for style guide testing"""
+    # generate source code for checks
+    parse_code()
+
     # add custom style-guide checks to proselint
     add_checks()
 
