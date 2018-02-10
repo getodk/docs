@@ -25,7 +25,28 @@ Whenever U.S. English and British (or other) English spelling or usage disagree,
 .. code-block:: rst
 
   The color of the button is gray.
+
+.. code-block:: python
+  :class: proselint-extra-checks
   
+  @memoize
+  def check_ukus(text):
+      """UK vs. US spelling usage."""
+      err = "style-guide.uk-us"
+      msg = "uk-vs-us-spell-check. '{}' is the preferred spelling."
+
+      preferences = [
+
+          ["gray",                ["grey"]],
+          ["color",               ["colour"]],
+          ["accessorizing",       ["accessorising"]],
+          ["acclimatization",     ["acclimatisation"]],
+          ["acclimatize",         ["acclimatise"]],
+          ["acclimatized",        ["acclimatised"]],
+      ]
+
+      return preferred_forms_check(text, preferences, err, msg)
+
 .. _quote-marks:
     
 Quote marks
@@ -65,13 +86,54 @@ Quote marks are used in prose writing to indicate verbatim text. This is rarely 
 
   You may get an error: ``Something went wrong.``
 
-  
+.. code-block:: python
+  :class: extra-checks
+
+  def check_quotes(text):
+      """Avoid using straight quotes."""
+      err = "style-guide.check-quote"
+      msg = "Avoid using quote marks."
+      regex = r"\"[a-zA-z0-9 ]{1,15}\""
+
+      errors = []
+
+      for m in re.finditer(regex, text):
+          start = m.start()+1
+          end = m.end()
+          (row, col) = line_and_column(text, start)
+          extent = m.end()-m.start()
+          errors += [(err, msg, row, col, start, end,
+                           extent, "warning", "None")]  
+
+      return errors
+ 
 .. _straight-quote:
   
 Straight quotes
 ~~~~~~~~~~~~~~~~~~
 
 Any time that you *do* need to use quotation marks, use straight (or *plain*) quotes. Sphinx and Docutils will output the typographically correct quote style.
+
+.. code-block:: python
+  :class: extra-checks
+
+  def check_curlyquotes(text):
+      """Do not use curly quotes."""
+      err = "style-guide.check-curlyquote"
+      msg = "Do not use curly quotes. If needed use straight quotes."
+      regex = r"\“[a-zA-z0-9 ]{1,15}\”"
+
+      errors = []
+
+      for m in re.finditer(regex, text):
+          start = m.start()+1
+          end = m.end()
+          (row, col) = line_and_column(text, start)
+          extent = m.end()-m.start()
+          errors += [(err, msg, row, col, start, end,
+                           extent, "warning", "None")]  
+
+      return errors
 
 .. _serial-comma:
 
@@ -91,7 +153,19 @@ In a comma-delineated list of items, the penultimate item should be followed by 
 .. code-block:: rst
 
   Apples, oranges, and pears.
-  
+
+.. code-block:: python
+  :class: style-checks
+
+  @memoize
+  def check_comma(text):
+      """Use serial comma after penultimate item."""
+      err = "style-guide.serial-comma"
+      msg = "Use serial comma after penultimate item."
+      regex = "\,\s[a-zA-Z0-9]*\sand\s"
+
+      return existence_check(text, [regex], err, msg, require_padding=False)
+
 A bulleted list is often more clear than an inline list.
 
 .. rubric:: Correct
@@ -203,6 +277,28 @@ Avoid Latin abbreviations.
 
   If you are writing about a specific process (for example, installing an application)...
 
+.. code-block:: python
+  :class: style-checks
+
+  @memoize
+  def check_latin(text):
+      """Avoid using Latin abbreviations."""
+      err = "style-guide.latin-abbr"
+      msg = "Avoid using Latin abbreviations like \"etc.\", \"i.e.\"."
+
+      list = [
+          "etc\.", "etc", "\*etc\.\*", "\*etc\*",
+          "i\.e\.", "ie", "\*ie\.\*", "\*ie\*",
+          "e\.g\.", "eg", "\*eg\.\*", "\*eg\*",
+          "viz\.", "viz", "\*viz\.\*", "\*viz\*",
+          "c\.f\.", "cf", "\*cf\.\*", "\*cf\*",
+          "n\.b\.", "nb", "\*nb\.\*", "\*nb\*",
+        ]
+
+      return existence_check(text, list, err, msg, ignore_case=True)
+
+
+
 .. startignore
 
 .. _etc:
@@ -259,6 +355,27 @@ Adverbs often contribute nothing. Common offenders include:
 .. code-block:: rst
 
   To edit the form...
+
+.. code-block:: python
+  :class: style-checks
+
+  @memoize
+  def check_adverb(text):
+      """Avoid using unneeded adverbs."""
+      err = "style-guide.unneed-adverb"
+      msg = "Avoid using unneeded adverbs like \"just\", \"simply\"."
+
+      list = [
+          "simply",
+          "easily",
+          "just",
+          "very",
+          "really",
+          "basically",
+      ]
+
+      return existence_check(text, list, err, msg, ignore_case=True)
+
   
 .. _filler-phrases:  
   
@@ -276,6 +393,26 @@ Common filler phrases and words include:
 - point in time
 
 This list is not exhaustive. These "canned phrases" are pervasive in technical writing. Remove them whenever they occur.
+
+.. code-block:: python
+  :class: style-checks
+
+  @memoize
+  def check_filler(text):
+      """Avoid using filler phrases."""
+      err = "style-guide.filler-phrase"
+      msg = "Avoid using filler phrases like \"to the extent that\"."
+
+      list = [
+          "to the extent that",
+          "for all intents and purposes",
+          "when all is said and done",
+          "from the perspective of",
+          "point in time",
+      ]
+
+      return existence_check(text, list, err, msg, ignore_case=True)
+
 
 .. endignore
 
@@ -299,6 +436,19 @@ Semicolons can almost always be replaced with periods (full stops). This rarely 
 .. code-block:: rst
 
   These "canned phrases" are pervasive in technical writing. Remove them whenever they occur.
+
+.. code-block:: python
+  :class: style-checks
+
+  @memoize
+  def check_semicolon(text):
+      """Avoid using semicolon."""
+      err = "style-guide.check-semicolon"
+      msg = "Avoid using semicolon."
+      regex = ";"
+
+      return existence_check(text, [regex], err, msg, require_padding=False)
+
 
 .. _pronouns:
     
@@ -363,6 +513,28 @@ Therefore, avoid the use of personal pronouns whenever possible. They are often 
   - open the app
   - complete the survey
 
+.. code-block:: python
+  :class: style-checks
+
+  @memoize
+  def check_pronoun(text):
+      """Avoid using third-person personal pronouns."""
+      err = "style-guide.personal-pronoun"
+      msg = "Avoid using third-person personal pronouns like \"he\", \"she\". "
+      msg = msg + "In case of absolute need, prefer using \"they\"."
+
+      list = [
+          "he",
+          "him",
+          "his",
+          "she",
+          "her",
+          "hers",
+      ]
+
+      return existence_check(text, list, err, msg, ignore_case=True)
+
+
 .. _same:  
   
 "Same"
@@ -387,7 +559,19 @@ Therefore, avoid the use of personal pronouns whenever possible. They are often 
 .. code-block:: rst
   
   ODK Collect is an Android app that is used to...
-  
+
+.. code-block:: python
+  :class: style-checks
+
+  @memoize
+  def check_same(text):
+      """Avoid using impersonal pronoun same."""
+      err = "style-guide.check-same"
+      msg = "Avoid using \"The same\"."
+      regex = "\. The same"
+
+      return existence_check(text, [regex], err, msg, ignore_case=False, 
+                         require_padding=False)
 
 .. _titles-style-guide:  
   
@@ -436,6 +620,17 @@ If section title is a directive to do something (for example, as a step in a pro
 
   Section content here.
 
+.. code-block:: python
+  :class: style-checks
+
+  @memoize
+  def check_howto(text):
+      """Avoid using how to construct."""
+      err = "style-guide.check-howto"
+      msg = "Avoid using \"How to\" construction."
+      regex = "(How to.*)(\n)([=~\-\"\*]+)"
+
+      return existence_check(text, [regex], err, msg, require_padding=False)
   
 .. _section-label-style-guide:  
   
@@ -447,6 +642,36 @@ Section titles should almost always be preceded by labels.
 The only exception is very short subsections that repeat --- like the **Right** and **Wrong** titles in this document or the **XLSForm Rows** and **XForm XML** sections in the :doc:`form-widgets` document.
 
 In these cases, you may want to use the :rst:dir:`rubric` directive.
+
+.. code-block:: python
+  :class: extra-checks
+
+  def check_label(text):
+      """Prefer giving a section label."""
+      err = "style-guide.check-label"
+      msg = "Add a section label if required."
+      regex = r"(.*\n)(( )*\n)(.+\n)(([=\-~\"\']){3,})"
+
+      errors = []
+      sym_list = ['===','---','~~~','"""','\'\'\'']
+
+      for m in re.finditer(regex, text):
+          label = m.group(1)
+          start = m.start()+1
+          end = m.end()
+          (row, col) = line_and_column(text, start)
+          row = row + 2
+          if any(word in text.splitlines(True)[row] for word in sym_list):
+              row = row - 1
+          col = 0
+          extent = m.end()-m.start()
+          catches = tuple(re.finditer(r"\.\. _", label))
+          if not len(catches):
+              errors += [(err, msg, row, col, start, end,
+                           extent, "warning", "None")]
+
+      return errors       
+
     
 .. _other-title-considerations:
       
@@ -481,7 +706,6 @@ In code samples:
   - Make sure that line breaks and indentation stay within the valid syntax of the language.
 
 Using two spaces keeps code sample lines shorter, which makes them easier to view.
-
 
 .. rubric:: Example of indenting for clarity
 
@@ -713,6 +937,34 @@ XForms and XLSForm
 - XForms
 - an Xform (when referring to a single form)
 - XLSForm
+
+.. code-block:: python
+  :class: style-checks
+
+  @memoize
+  def check_odkspell(text):
+      """ODK spelling usage."""
+      err = "style-guide.spelling-odk"
+      msg = "ODK spell check. '{}' is the preferred usage."
+
+      preferences = [
+
+          ["Open Data Kit",         ["Open data kit"]],
+          ["Open Data Kit",         ["OpenDataKit"]],
+          ["Aggregate",             ["{0} aggregate"]],
+          ["Briefcase",             ["{0} briefcase"]],
+          ["XForms",                ["Xforms"]],
+          ["XForms",                ["X-Forms"]],
+          ["XForms",                ["{0} xforms"]],
+          ["XForms",                ["XFORMS"]],
+          ["an XForm",              ["a XForm"]],
+          ["an XLSForm",            ["a XLSForm"]],
+          ["XLSForm",               ["{0} xlsform"]],
+          ["XLSForm",               ["XLSform"]],
+          ["XLSForm",               ["Xlsform"]]
+      ]
+
+      return preferred_forms_check(text, preferences, err, msg, ignore_case=False)
 
 .. _writing-about-xform:
 
