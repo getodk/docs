@@ -15,7 +15,7 @@ See the [Contributor Guide](http://docs.opendatakit.org/contributing) for detail
 
 Once your environment is set up:
 ```
-sphinx-build -b dirhtml . build
+sphinx-build -b dirhtml src build
 cd build
 python -m http.server 8000
 ```

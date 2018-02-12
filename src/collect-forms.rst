@@ -1,5 +1,5 @@
 *****************************
-Form Management
+Managing Forms in Collect
 *****************************
 
 .. seealso::

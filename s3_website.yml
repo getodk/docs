@@ -32,3 +32,5 @@ redirects:
   collect-guide/index.html: /collect-intro
   collect-integrations/index.html: /launch-apps-from-collect
   visualize/index.html: /aggregate-visualize
+  style-guide/index.html: docs-style-guide
+  
