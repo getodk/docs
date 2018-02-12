@@ -64,7 +64,7 @@ def parse_code():
 
     # modules to import from proselint 
     modules = "memoize, existence_check, preferred_forms_check"
-    f.write("from proselint.tools import %s\n\n" %modules)
+    f.write("from proselint.tools import %s\n" %modules)
 
     for line in source_code:
         if not line.endswith('\n'):
@@ -80,7 +80,7 @@ def parse_code():
     f = open(extra_file,"w+")
     f.write('"""Style Guide testing."""\n\n')
     f.write("import re\n")
-    f.write("from proselint.tools import line_and_column\n\n")
+    f.write("from proselint.tools import line_and_column\n")
 
     for line in source_code:
         if not line.endswith('\n'):
