@@ -20,7 +20,7 @@ os.system("xls2xform " + xlsPath + " " + xmlPath)
 pathList= utilPath.split("/")
 pathList.remove(pathList[-1])
 fullPath="/".join(pathList)
-fullImgPath= fullPath +"/img/form-widgets" #path to form-widgets image directory
+fullImgPath= fullPath +"/src/img/form-widgets" #path to form-widgets image directory
 dir_dst = fullImgPath
 
 path=dir_dst
@@ -50,7 +50,7 @@ for file in files:
         os.rename(os.path.join(path, file), os.path.join(path, f[0]+'.png'))
 
 # path to form-widgets guide
-fullFilepath = fullPath + "/form-widgets.rst" 
+fullFilepath = fullPath + "/src/form-widgets.rst" 
 
 ''' Extracts introductory sentences'''
 intro = []
