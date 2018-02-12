@@ -2,6 +2,118 @@
 Style Guide
 *****************
 
+.. _general-style:
+
+General style notes
+=====================
+
+
+.. _direct-address:
+
+Direct address
+---------------
+
+ODK Docs have an audience ---
+users trying to do work with the software.
+It is usually best to address them directly, 
+writing about what they can accomplish
+and how to accomplish it,
+rather than what can be accomplished.
+
+.. rubric:: Okay
+
+.. code-block:: rst
+
+  The form can be saved. 
+  To do so, click the button.
+  
+.. rubric:: Better
+
+.. code-block:: rst
+
+  You can save the form 
+  by clicking the button.
+  
+.. rubric:: Best
+
+.. code-block::
+
+  To save the form,
+  click the button.
+  
+Notice that the last example saves words
+in both the first and second half of the sentence.
+It is also more clear and direct.
+
+.. _not-direct-address:
+
+Deviating from direct address
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+There are times when the other constructions fit better.
+
+For example ---
+when writing general introductory material about an application, 
+it makes sense to write about what the application does,
+or what the user can do with it.
+
+.. code-block:: rst
+
+  ODK Collect is an open source Android app 
+  that replaces paper forms used in survey-based data gathering. 
+  It supports a wide range of question and answer types, 
+  and is designed to work well without network connectivity.
+
+  ODK Collect renders forms into a sequence of input prompts 
+  that apply form logic, entry constraints, and repeating sub-structures.
+  Users work through the prompts 
+  and can save the submission at any point.
+  Finalized submissions can be sent to 
+  (and new forms downloaded from)
+  a server.
+
+When describing the content of a screen or menu,
+it makes sense to describe what a button or option does.
+
+  .. code-block:: rst
+  
+  Server settings manage the connection to 
+  an ODK Aggregate server or Google Drive account 
+  for form management.
+  
+  .. code-block:: rst
+  
+  :menuselection:`Edit Saved Form` 
+    Lists completed and saved forms and
+    lets you select a form to edit.
+
+Notice that even when talking *about* the app,
+good writing is talking *to* the reader.
+
+
+First person plural (*we*)
+-----------------------------
+
+The first person plural (*we*)
+should only be used to mean *the ODK development team*
+(or a subset of it, such as *the ODK Docs team*).
+
+.. rubric:: Wrong
+
+.. code-block:: rst
+
+  We can use Collect to...
+  
+  To install Aggreagte, first we have to...
+  
+.. rubric:: Right
+  
+.. code-block:: rst
+
+  We recommend using HTTPS.
+  
+  We do not provide support for third-party software.
+
 .. _spelling-and-grammar:
 
 Spelling and grammar
@@ -112,26 +224,15 @@ A bulleted list is often more clear than an inline list.
   
 There's no hard rule about which to use in any situation. Use your judgement: try it both ways and see which is more clear.
 
-.. _direct-address:
+.. _lists:
 
-Direct Address
-------------------
-
-Direct address 
---- speaking directly to the reader using the second person "you" --- 
-is prefered over 
-passive voice ("it can be done"),
-first-person plural ("we can do it"),
-or other constructions.
-
-First person plural ("we") should only be used 
-when speaking of the ODK project team
-("We recommend...").
+Lists
+--------
 
 .. _ordered-vs-unordered:
 
 Ordered and unordered lists
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 An ordered list is numbered. It should be used when the order of the list is essential. For example, when enumerating a series of steps in a procedure.
 
@@ -169,6 +270,48 @@ An unordered list is bulleted. It should be used for a collection of items in wh
   - oranges
   - bananas
 
+.. _description-lists:
+  
+Description lists
+~~~~~~~~~~~~~~~~~~
+
+Descriptions lists (sometimes called *definition lists*)
+present terms and their descriptions.
+A glossary is a good example of a description list.
+
+Prefer a description list when writing about a series of items
+which each need to be named and then described:
+
+ - Buttons in a menu
+ - Settings on a screen
+ 
+.. rubric:: Wrong
+
+.. code-block:: rst
+
+  - Open --- Opens the file.
+  - Save --- Saves the file.
+  - Delete --- Deletes the file.
+  
+.. code-block:: rst
+
+  - :guilabel:`Open` is used to open the file.
+  - :guilabel:`Save` is used to save the file.
+  - :guilabel:`Delete` is used to delete the file.
+  
+.. rubric:: Right
+
+  :guilabel:`Open`
+    Opens the file.
+    
+  :guilabel:`Save`
+    Saves the file.
+    
+  :guilabel:`Delete`
+    Deletes the file.
+    
+    
+  
 .. _avoid-latin:
 
 Avoid Latin
