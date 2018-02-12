@@ -62,7 +62,7 @@ You need to install `Python 3 <https://www.python.org/downloads/>`_. Select Pyth
 
 Make sure to select the option "Add Python to the Path", as shown below.
 
-.. image:: img/cygwin/python-path.png
+.. image:: /img/cygwin/python-path.png
    
 
 Next, make sure to select "pip", which is `a package manager < https://pypi.python.org/pypi/pip>_` written in Python. We will use it to install packages. See the following image:

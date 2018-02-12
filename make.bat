@@ -7,7 +7,7 @@ REM Command file for Sphinx documentation
 if "%SPHINXBUILD%" == "" (
 	set SPHINXBUILD=python -msphinx
 )
-set SOURCEDIR=.
+set SOURCEDIR=_src
 set BUILDDIR=_build
 set SPHINXPROJ=OpenDataKit
 
