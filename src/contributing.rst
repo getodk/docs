@@ -8,5 +8,6 @@ Contributing to ODK Docs
   docs-syntax-guide
   docs-style-guide
   docs-developer-guide
+  screenshots
   contributing-tips
   cygwin
