@@ -98,6 +98,12 @@ These changes can be made as:
 
   "Example_form", "example_id", "English", "2017120701"
 
+.. note::
+
+  You need to use the same filename when generating newer versions of your form since the XLSForm generator pays attention to the filename. If you use different filenames, you would need to delete the previous version to upload the newer version of form.
+
+  In the examples below, we have different filenames since that is necessary on the server.
+
 These are the :file:`.xml` files for the above forms:
 
   1. :download:`example_form_v1.0 </downloads/form-update/example_form_v1.0.xml>`
