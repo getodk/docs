@@ -114,7 +114,8 @@ To access User Interface settings:
   
   
 :guilabel:`Basemap` 
-  Sets the map to be displayed when the mapping app is opened. 
+  Sets the map to be displayed 
+  when a widget with a mapping component is opened. 
 
 .. _form-management-settings:
 
@@ -208,7 +209,7 @@ User and Device Identity Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 User and device identity settings control how 
-personally identifiable information and device id
+personally identifiable information and device ID
 are used.
 
 To access User and device identity settings:
@@ -310,7 +311,12 @@ To access Admin settings:
   delete forms, and empty caches.
   
 :guilabel:`Import/Export settings`
-  Opens the `import-export-settings` screen.
+  See:
+  
+  .. toctree::
+    :maxdepth: 1
+     
+    collect-import-export
 
 .. _user-access-control-settings:
 
@@ -359,3 +365,5 @@ To access Admin settings:
       When you enable the moving backwards option, 
       you have to configure the other changed settings 
       since they are not automatically changed back.  
+
+      
