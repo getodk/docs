@@ -63,3 +63,11 @@ $(function(){
 	})
     });    
 });
+
+
+// Add a class to dt elements
+// when they contain guilabel or menuselection
+// so that we can style away collisions between lines.
+// Problem discovered while working on issue #399
+
+$('dt').has('.guilabel, .menuselection').addClass('gui-term')
