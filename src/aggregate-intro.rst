@@ -12,4 +12,3 @@ ODK Aggregate is a server application and data repository used with :doc:`collec
 - :doc:`Export and publish data in a variety of formats <aggregate-data-access>`
 
 
-
