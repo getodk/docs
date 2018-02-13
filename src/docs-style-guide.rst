@@ -36,7 +36,7 @@ rather than what can be accomplished.
   
 .. rubric:: Best
 
-.. code-block::
+.. code-block:: rst
 
   To save the form,
   click the button.
@@ -83,9 +83,9 @@ it makes sense to describe what a button or option does.
   
   .. code-block:: rst
   
-  :menuselection:`Edit Saved Form` 
-    Lists completed and saved forms and
-    lets you select a form to edit.
+    :menuselection:`Edit Saved Form` 
+      Lists completed and saved forms and
+      lets you select a form to edit.
 
 Notice that even when talking *about* the app,
 good writing is talking *to* the reader.
@@ -224,7 +224,7 @@ A bulleted list is often more clear than an inline list.
   
 There's no hard rule about which to use in any situation. Use your judgement: try it both ways and see which is more clear.
 
-.. _lists:
+.. _style-guide-lists:
 
 Lists
 --------
@@ -300,6 +300,8 @@ which each need to be named and then described:
   - :guilabel:`Delete` is used to delete the file.
   
 .. rubric:: Right
+
+.. code-block:: rst
 
   :guilabel:`Open`
     Opens the file.
