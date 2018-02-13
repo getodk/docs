@@ -106,7 +106,7 @@ Tips on using above fields
 
 In this survey table, it is of no use to include a constraint in college field since it is already fixed and user cannot modify it. Further the constraint in the note field is of no use as it will just display an note that *Maximum allowed marks are total* but will allow the user to fill the form even with more than total marks.
 
-To prevent the user from entering more tha maximum marks, a constraint should be included in the marks field: **${marks}<=${total}** and the note should have a relevant: **${course_cnt}!='' and ${total}<${marks}**.
+To prevent the user from entering more than maximum marks, a constraint should be included in the marks field: **${marks}<=${total}** and the note should have a relevant: **${course_cnt}!='' and ${total}<${marks}**.
 
 .. csv-table:: **Survey**  
   :header: "type", "name", "label", "constraint", "constraint_message", "relevant", "read_only", "default", "required", "calculation"

@@ -156,7 +156,7 @@ For more details on JSON Server, RedCap Server and Ohmage JSON Server see `Aggre
 APIs
 ------
 
-ODK Aggreate has public APIs defined for sending data to and from its various components. This section gives references to those API implementations that can be used for connecting new applications to the ODK ecosystem.
+ODK Aggregate has public APIs defined for sending data to and from its various components. This section gives references to those API implementations that can be used for connecting new applications to the ODK ecosystem.
 
 .. _briefcase-cli:
 
@@ -183,7 +183,7 @@ Interfaces used during push actions are:
 
 - ``formUpload`` to upload a form and its media files to ODK Aggregate
 - ``view/submissionList`` to obtain a chunk of submission keys   
-- OpenRosa Form Submission/Overwite API (with extensions)
+- OpenRosa Form Submission/Overwrite API (with extensions)
 
 For more details, see `Briefcase Aggregate API <https://github.com/opendatakit/opendatakit/wiki/Briefcase-Aggregate-API>`_.
 
