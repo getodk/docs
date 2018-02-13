@@ -1,10 +1,10 @@
-******************
 ODK Aggregate
-******************
+================
 
 .. _aggregate-introduction:
 
-ODK Aggregate is a server application and data repository used with :doc:`collect-intro` or other :doc:`OpenRosa-compliant data client applications <openrosa>` to:
+:dfn:`ODK Aggregate` is an open source Java application that
+stores, analyses, and presents :doc:`XForm <form-design-intro>` survey data collected using :doc:`collect-intro` or other :doc:`OpenRosa-compliant applications <openrosa>` to:
 
 - :doc:`Host <aggregate-forms>` blank :doc:`XForms <form-design-intro>` used by ODK Collect or other OpenRosa clients
 - :doc:`Store and manage XForm submission data <aggregate-data>` 
