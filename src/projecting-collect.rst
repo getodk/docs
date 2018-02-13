@@ -1,3 +1,9 @@
+.. spelling::
+
+  apk
+  testAVD
+  img
+
 ********************************************
 Projecting ODK Collect onto another screen
 ********************************************

@@ -1,3 +1,30 @@
+.. spelling::
+
+  sid
+  cnt
+  Español
+  Ingrese
+  su
+  identificación
+  de
+  estudiante
+  Introduzca
+  nombre
+  edad
+  Nombre
+  del
+  departamento
+  Ingresa
+  número
+  cursos
+  que
+  elegido
+  calificaciones
+  totales
+  obtenidas
+  todos
+  los
+
 Updating forms
 =================
 

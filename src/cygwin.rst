@@ -1,3 +1,12 @@
+.. spelling::
+
+  imagesize
+  Jinja
+  Pygments
+  pytz
+  snowballstemmer
+  rtd
+
 ******************************************
 Working with Docs in Windows using Cygwin
 ******************************************

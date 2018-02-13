@@ -1,3 +1,7 @@
+.. spelling::
+
+  pre
+
 Backing Up Aggregate
 ================================
 

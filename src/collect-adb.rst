@@ -1,3 +1,7 @@
+.. spelling::
+
+  adb
+
 *****************************************
 Using Android Debug Bridge with Collect
 *****************************************

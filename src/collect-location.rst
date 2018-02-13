@@ -1,3 +1,9 @@
+.. spelling::
+
+  Wi
+  Fi
+  doesn
+
 Improving Location Performance
 ==================================
 	

@@ -1,3 +1,8 @@
+.. spelling::
+
+  ss
+  py
+
 Docs Markup and Syntax Guide
 ================================
 

@@ -1,3 +1,10 @@
+.. spelling::
+
+  mailto
+  openid
+  ie
+  varchar
+
 Metadata Scheme
 ==================
 

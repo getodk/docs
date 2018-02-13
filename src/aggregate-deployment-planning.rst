@@ -1,3 +1,9 @@
+.. spelling::
+
+  sysadmin
+  dbadmin
+  Mumbai
+
 ***********************************
 Planning Your Aggregate Deployment
 ***********************************

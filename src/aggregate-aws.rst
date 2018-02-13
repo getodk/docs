@@ -1,3 +1,10 @@
+.. spelling::
+
+  ec
+  IPv
+  scp
+  un
+
 Installing on AWS (Cloud)
 ==========================
 

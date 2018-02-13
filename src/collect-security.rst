@@ -1,3 +1,7 @@
+.. spelling::
+
+  adb
+
 Android security recommendations
 ==================================
 

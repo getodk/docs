@@ -1,3 +1,24 @@
+.. spelling::
+
+  NaN
+  dateTime
+  Nan
+  pgAdmin
+  memcache
+  pre
+  init
+  datetime
+  itemset
+  jr
+  ui
+  clickjacking
+  JBoss
+  Resteasy
+  Memcache
+  pre
+  yyyymmddnn
+  myformid
+
 Upgrading Aggregate
 =====================
 

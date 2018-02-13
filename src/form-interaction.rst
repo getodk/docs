@@ -1,3 +1,12 @@
+.. spelling::
+
+  pre
+  readonly
+  IIT
+  Roorkee
+  cnt
+  disp
+
 Interaction of constraints, relevants and read only
 =========================================================
 

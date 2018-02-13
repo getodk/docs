@@ -1,3 +1,10 @@
+.. spelling::
+
+  org
+  imei
+  Hussien
+  Gejibo
+
 *********************
 Security and Privacy
 *********************
