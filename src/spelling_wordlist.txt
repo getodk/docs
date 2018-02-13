@@ -45,6 +45,7 @@ dropdown
 dropdowns
 Enketo
 enketo
+ethiopian
 formID
 formId
 formid
@@ -129,6 +130,7 @@ OpenRosa
 passcode
 plaintext
 plugins
+png
 popup
 Popups
 postgres
@@ -170,6 +172,7 @@ toolbar
 toolchain
 trackpad
 txt
+Ubuntu
 uncheck
 Uncheck
 unchecking
