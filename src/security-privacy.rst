@@ -1,9 +1,9 @@
 .. spelling::
 
-  org
-  imei
-  Hussien
   Gejibo
+  Hussien
+  imei
+  org
 
 *********************
 Security and Privacy

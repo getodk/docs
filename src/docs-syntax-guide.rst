@@ -1,7 +1,7 @@
 .. spelling::
 
-  ss
   py
+  ss
 
 Docs Markup and Syntax Guide
 ================================

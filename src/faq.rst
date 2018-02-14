@@ -1,20 +1,20 @@
 .. spelling::
 
-  Hartung
   Anokwa
-  Lerer
-  Tseng
-  Gaetano
   Borriello
-  Sundt
-  Rohit
-  Chaudhri
+  Borriello
   Breit
-  Gaetano
-  Borriello
-  netbooks
-  itext
+  Chaudhri
   Espanol
+  Gaetano
+  Gaetano
+  Hartung
+  itext
+  Lerer
+  netbooks
+  Rohit
+  Sundt
+  Tseng
 
 FAQ
 ==============

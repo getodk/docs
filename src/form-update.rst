@@ -1,29 +1,29 @@
 .. spelling::
 
-  sid
+  calificaciones
   cnt
-  Español
-  Ingrese
-  su
-  identificación
+  cursos
   de
-  estudiante
-  Introduzca
-  nombre
-  edad
-  Nombre
   del
   departamento
-  Ingresa
-  número
-  cursos
-  que
+  edad
   elegido
-  calificaciones
-  totales
-  obtenidas
-  todos
+  Español
+  estudiante
+  identificación
+  Ingresa
+  Ingrese
+  Introduzca
   los
+  nombre
+  Nombre
+  número
+  obtenidas
+  que
+  sid
+  su
+  todos
+  totales
 
 Updating forms
 =================

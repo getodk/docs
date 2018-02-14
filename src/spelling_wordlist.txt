@@ -1,6 +1,8 @@
+adb
 Admin
 admin
 anonymousUser
+apk
 app
 App
 apps
@@ -133,6 +135,7 @@ popup
 Popups
 postgres
 Powershell
+pre
 prepending
 proactively
 pyxform

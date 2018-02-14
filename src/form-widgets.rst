@@ -1,17 +1,17 @@
 .. spelling::
 
+  abcd
+  ack
+  BREATHCOUNT
   Datetime
   dateTime
-  ZXing
-  ack
-  uw
-  BREATHCOUNT
-  nocalendar
-  placementmap
-  abcd
-  nolabel
   dk
   na
+  nocalendar
+  nolabel
+  placementmap
+  uw
+  ZXing
 
 ***************
 Form Widgets

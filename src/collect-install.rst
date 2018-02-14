@@ -1,7 +1,3 @@
-.. spelling::
-
-  apk
-
 Installing Collect
 ====================
 

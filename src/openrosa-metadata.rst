@@ -1,8 +1,8 @@
 .. spelling::
 
+  ie
   mailto
   openid
-  ie
   varchar
 
 Metadata Scheme

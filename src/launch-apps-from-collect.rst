@@ -1,13 +1,13 @@
 .. spelling::
 
-  org
-  mygroup
-  mycompany
   myapp
-  uuid
+  mycompany
   myform
-  sometext
+  mygroup
+  org
   someinteger
+  sometext
+  uuid
 
 Launching External Apps from Collect Forms
 ====================================================

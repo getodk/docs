@@ -1,8 +1,8 @@
 .. spelling::
 
-  Wi
-  Fi
   doesn
+  Fi
+  Wi
 
 Improving Location Performance
 ==================================

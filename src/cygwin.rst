@@ -4,8 +4,8 @@
   Jinja
   Pygments
   pytz
-  snowballstemmer
   rtd
+  snowballstemmer
 
 ******************************************
 Working with Docs in Windows using Cygwin
