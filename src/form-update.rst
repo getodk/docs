@@ -36,7 +36,7 @@ For example:
   "integer", "sid", "Enter your student id", "", "", "", "", "", "yes", ""
   "integer", "age", "Enter your age", ".<=18", "You should be below 18 years to be eligible for the survey.", "", "", "", "yes", ""
   "select_one dept", "course", "In which department have you chosen courses?", "", "", "", "", "", "yes", ""
-  "integer", "course_cnt", "Enter number of courses you have chosen", "1<=.<=6", "You should choose atleast 1 course and atmost 6 courses.", "${course}!='none'", "", "", "yes", ""         
+  "integer", "course_cnt", "Enter number of courses you have chosen", "1<=.<=6", "You should choose at least 1 course and at most 6 courses.", "${course}!='none'", "", "", "yes", ""         
   "integer", "marks", "Enter total marks obtained in all courses", "", "", "${course}!='none'", "", "", "yes", ""
   "calculate", "total", "", "", "", "${course_cnt}!=''", "", "", "", "${course_cnt}*100"
   
@@ -78,7 +78,7 @@ These changes can be made as:
   "text", "name", "Enter your name", "Introduzca su nombre", "", "", "", "", "", "yes", ""
   "integer", "age", "Enter your age", "Introduzca su edad", ".<=20", "You should be below 20 years to be eligible for the survey.", "", "", "", "yes", ""
   "select_one dept_name", "course", "Name of Department", "Nombre del departamento", "", "", "", "", "", "yes", ""
-  "integer", "course_cnt", "Enter number of courses you have chosen", "Ingresa el número de cursos que has elegido", "1<=.<=6", "You should choose atleast 1 course and atmost 6 courses.", "${course}!='none'", "", "", "yes", ""         
+  "integer", "course_cnt", "Enter number of courses you have chosen", "Ingresa el número de cursos que has elegido", "1<=.<=6", "You should choose at least 1 course and at most 6 courses.", "${course}!='none'", "", "", "yes", ""         
   "integer", "marks", "Enter total marks obtained in all courses", "Ingrese las calificaciones totales obtenidas en todos los cursos", "", "", "${course}!='none'", "", "", "yes", ""
   "calculate", "total", "", "", "", "", "${course}!='none' and ${course_cnt}!=''", "", "", "", "${course_cnt}*50"
 
