@@ -6,8 +6,6 @@ App
 apps
 Apps
 appspot
-atleast
-atmost
 Auth
 auth
 Autoadvance
