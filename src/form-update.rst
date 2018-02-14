@@ -46,7 +46,7 @@ For example:
 
   "dept", "Physics", "PHY"
   "dept", "Maths", "MAT"
-  "dept", "Chemsitry", "CHEM"
+  "dept", "Chemistry", "CHEM"
   "dept", "none", "none"
 
 .. csv-table:: **Settings**
@@ -65,7 +65,7 @@ If you want to make the following changes to the above form:
 - Change the calculation from **${course_cnt}*100** to **${course_cnt}*50**
 - Change the relevant for calculate to **${course}!='none' and ${course_cnt}!=''**
 - Change the list name in choices from **dept** to **dept_name**
-- Add a new choice in deptartment list as **Computer**
+- Add a new choice in department list as **Computer**
 - Change **Maths** to **Mathematics** and **MAT** to **MATHS** in choices
 
 These changes can be made as:
@@ -88,7 +88,7 @@ These changes can be made as:
 
   "dept_name", "Physics", "PHY"
   "dept_name", "Mathematics", "MATHS"
-  "dept_name", "Chemsitry", "CHEM"
+  "dept_name", "Chemistry", "CHEM"
   "dept_name", "Computer", "COMP"
   "dept_name", "none", "none"
 
