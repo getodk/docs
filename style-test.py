@@ -403,7 +403,7 @@ def disp_checks(errors, filename, shortname):
         # e[0]=check
         # Set warning or error severity
         # Don't set errors for style-guide as they might be examples
-        if e[0] in list_errors and "style-guide.rst" not in shortname:
+        if e[0] in list_errors and shortname != "docs-style-guide.rst":
             severity = "error"
         else:
             severity = "warning" 
@@ -433,8 +433,20 @@ def disp_cnt():
     global warn_cnt
     global t
 
-    print(t.yellow("Found %d warnings" %warn_cnt))
-    print(t.red("Found %d errors") %err_cnt)
+    warn = "%d warnings." %warn_cnt
+    err = "%d errors." %err_cnt
+
+    if warn_cnt == 0:
+        warn = "no warnings!"
+    elif warn_cnt == 1:
+        warn = "1 warning."
+    if err_cnt == 0:
+        err = "no errors!"
+    elif err_cnt == 1:
+        err = "1 error."
+
+    print(t.yellow("Testing found %s" %warn))
+    print(t.red("Testing found %s" %err))
     if err_cnt:
         raise Exception("Style-guide testing failed! Fix the errors")
 
