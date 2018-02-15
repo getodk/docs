@@ -252,6 +252,7 @@ def exclude_checks():
     """Removes the checks which are to be excluded."""
     list_exclude = [
                      "typography.symbols", "weasel_words.very",
+                     "misc.but", "consistency.spelling",
                   ]
     dest = os.path.dirname(proselint.__file__)
     dest_prc = dest + '/.proselintrc'
