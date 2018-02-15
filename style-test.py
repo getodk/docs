@@ -60,6 +60,7 @@ def parse_code():
     source_code = [block.astext() for block in code_blocks]
     
     f = open(test_file,"w+")
+    f.write("# -*- coding: utf-8 -*-\n\n")
     f.write('"""Style Guide testing."""\n\n')
 
     # modules to import from proselint 
@@ -78,6 +79,7 @@ def parse_code():
     source_code = [block.astext() for block in code_blocks]
     
     f = open(extra_file,"w+")
+    f.write("# -*- coding: utf-8 -*-\n\n")
     f.write('"""Style Guide testing."""\n\n')
     f.write("import re\n")
     f.write("from proselint.tools import line_and_column\n")
