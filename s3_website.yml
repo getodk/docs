@@ -13,6 +13,7 @@ exclude_from_upload:
   - .doctrees
   - .DS_Store
   - objects.inv
+  - spelling
 
 cloudfront_distribution_id: E1IDKKW65Q2HVZ
 
