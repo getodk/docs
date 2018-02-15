@@ -162,7 +162,7 @@ In a comma-delineated list of items, the penultimate item should be followed by 
       """Use serial comma after penultimate item."""
       err = "style-guide.serial-comma"
       msg = "Use serial comma after penultimate item."
-      regex = "\,\s[a-zA-Z0-9]*\sand\s"
+      regex = "\,\s[a-zA-Z0-9]+\sand\s"
 
       return existence_check(text, [regex], err, msg, require_padding=False)
 
