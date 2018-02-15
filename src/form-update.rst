@@ -100,9 +100,9 @@ These changes can be made as:
 
 .. note::
 
-  You need to use the same filename when generating newer versions of your form since the XLSForm generator pays attention to the filename. If you use different filenames, you would need to delete the previous version to upload the newer version of form.
+  You need to use the same filename when generating newer versions of your form since the XLSForm converter uses that filename in creating the form structure which is used by the server to help determine uniqueness. If you use different filenames, you would need to delete the old version of the form to upload the newer version.
 
-  In the examples below, we have different filenames since that is necessary on the server.
+  In the examples below, we use different filenames for version upgrade since unique filenames are required for uploading files to the documentation website.
 
 These are the :file:`.xml` files for the above forms:
 
