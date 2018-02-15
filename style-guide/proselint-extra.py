@@ -21,6 +21,7 @@ def check_ukus(text):
         ["acclimatizes",        ["acclimatises"]],
         ["acclimatizing",       ["acclimatising"]],
         ["accouterments",       ["accoutrements"]],
+        ["acknowledgment",      ["acknowledgement"]],
         ["eon",                 ["aeon"]],
         ["eons",                ["aeons"]],
         ["aerogram",            ["aerogramme"]],
