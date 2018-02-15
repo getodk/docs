@@ -100,9 +100,28 @@ These changes can be made as:
 
 .. note::
 
-  You need to use the same filename when generating newer versions of your form since the XLSForm converter uses that filename in creating the form structure which is used by the server to help determine uniqueness. If you use different filenames, you would need to delete the old version of the form to upload the newer version.
+  You need to use the same filename when generating newer versions of your form since the XLSForm converter uses that filename in creating the form structure which is used by the server to help determine uniqueness. 
+
+  If you use the same filename, you can upload the form and ODK Aggregate will automatically replace the old version and keep the existing form data. If you use different filenames, you would need to delete the old version of the form (and the existing form data) in order to upload the newer version.
 
   In the examples below, we use different filenames for version upgrade since unique filenames are required for uploading files to the documentation website.
+
+  Due to different XLSForm filenames in these examples, the generated XForms will have different instance definition as follows:
+
+  For :file:`example_form_v1.0.xlsx`:
+
+  .. code-block:: xml
+
+    <instance>
+        <example_form_v1.0 id="example_id" version="2017120700"> 
+
+  For :file:`example_form_v1.1.xlsx`:
+
+  .. code-block:: xml
+
+    <instance>
+        <example_form_v1.1 id="example_id" version="2017120701"> 
+
 
 These are the :file:`.xml` files for the above forms:
 
