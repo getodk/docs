@@ -708,10 +708,10 @@ XForm XML
 Acknowledge
 -------------
 
-An acknowledgement prompt with a single checkbox. In :term:`Aggregate`, a completed acknowledgement is stored as the string response ``OK``.
+An acknowledgment prompt with a single checkbox. In :term:`Aggregate`, a completed acknowledgment is stored as the string response ``OK``.
 
 .. image:: /img/form-widgets/acknowledge.*
-  :alt: The Acknowledge form widget as displayed in the ODK Collect app on an Android phone. The headline text is, "I acknowledge this acknowledgement." Below that is a single checkbox with the label, "OK. Please continue."
+  :alt: The Acknowledge form widget as displayed in the ODK Collect app on an Android phone. The headline text is, "I acknowledge this acknowledgment." Below that is a single checkbox with the label, "OK. Please continue."
 
 XLSForm Rows
 ~~~~~~~~~~~~~~~
@@ -719,7 +719,7 @@ XLSForm Rows
 .. csv-table:: survey
   :header: type, name, label
 
-  acknowledge, ack_sample, I acknowledge this acknowledgement.
+  acknowledge, ack_sample, I acknowledge this acknowledgment.
 
 XForm XML
 ~~~~~~~~~~~~~
@@ -729,7 +729,7 @@ XForm XML
   <bind nodeset="/sample-xlsform/ack_sample" type="string"/>
 
   <trigger ref="/sample-xlsform/ack_sample">
-    <label>I acknowledge this acknowledgement.</label>
+    <label>I acknowledge this acknowledgment.</label>
   </trigger>
 
 .. _appearance:
