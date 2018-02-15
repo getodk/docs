@@ -21,7 +21,7 @@ From here, you can add new forms, delete forms, download forms as well as restri
 Blank form info in list
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition to the functional columns described below, the form list displayes the following information about each form.
+In addition to the functional columns described below, the form list displays the following information about each form.
 
 - :guilabel:`Form Id` is the unique name for the form.
 - :guilabel:`Media Files` is the count of media files associated with the form.

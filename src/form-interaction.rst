@@ -99,14 +99,14 @@ Tips on using above fields
   "integer", "age", "Enter your age", ".<=18", "You should be below 18 years to be eligible for the survey. ", "", "", "", "", "yes", ""
   "text", "college", "College name", "${college}='IIT Roorkee'", "", "", "yes", "IIT Roorkee", "", "", ""
   "select_one yes_no", "course", "Have you chosen any courses?", "", "", "", "", "", "yes", ""
-  "integer", "course_cnt", "Enter number of courses you have chosen", "1<=.<=6", "You should choose atleast 1 course and atmost 6 courses.", "${course}='yes'", "", "", "yes", ""         
+  "integer", "course_cnt", "Enter number of courses you have chosen", "1<=.<=6", "You should choose at least 1 course and at most 6 courses.", "${course}='yes'", "", "", "yes", ""         
   "integer", "marks", "Enter total marks obtained in all courses", "", "", "${course}='yes'", "", "", "yes", ""
   "calculate", "total", "", "", "", "${course_cnt}!=''", "", "", "", "${course_cnt}*100"
   "note", "disp_max", "Maximum marks possible are ${total}.", "${total}<${marks}", "", "${course_cnt}!=''", "", "", "", ""
 
 In this survey table, it is of no use to include a constraint in college field since it is already fixed and user cannot modify it. Further the constraint in the note field is of no use as it will just display an note that *Maximum allowed marks are total* but will allow the user to fill the form even with more than total marks.
 
-To prevent the user from entering more tha maximum marks, a constraint should be included in the marks field: **${marks}<=${total}** and the note should have a relevant: **${course_cnt}!='' and ${total}<${marks}**.
+To prevent the user from entering more than maximum marks, a constraint should be included in the marks field: **${marks}<=${total}** and the note should have a relevant: **${course_cnt}!='' and ${total}<${marks}**.
 
 .. csv-table:: **Survey**  
   :header: "type", "name", "label", "constraint", "constraint_message", "relevant", "read_only", "default", "required", "calculation"
@@ -116,7 +116,7 @@ To prevent the user from entering more tha maximum marks, a constraint should be
   "integer", "age", "Enter your age", ".<=18", "You should be below 18 years to be eligible for the survey. ", "", "", "", "", "yes", ""
   "text", "college", "College name", "", "", "", "yes", "IIT Roorkee", "", "", ""
   "select_one yes_no", "course", "Have you chosen any courses?", "", "", "", "", "", "yes", ""
-  "integer", "course_cnt", "Enter number of courses you have chosen", "1<=.<=6", "You should choose atleast 1 course and atmost 6 courses.", "${course}='yes'", "", "", "yes", ""         
+  "integer", "course_cnt", "Enter number of courses you have chosen", "1<=.<=6", "You should choose at least 1 course and at most 6 courses.", "${course}='yes'", "", "", "yes", ""         
   "integer", "marks", "Enter total marks obtained in all courses", "", "", "${course}='yes'", "", "", "yes", ""
   "calculate", "total", "", "", "", "${course_cnt}!=''", "", "", "", "${course_cnt}*100"
   "note", "disp_max", "Maximum marks possible are ${total}.", "${total}<${marks}", "", "${course_cnt}!=''", "", "", "", ""

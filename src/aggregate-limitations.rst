@@ -15,7 +15,7 @@ Within ODK Aggregate, there is a global mutex (*TaskLock* across all server inst
 
 The solution to this is: **Serialize your push requests.**
 
-Time limit may be exceeded on low-bandwitch connections
+Time limit may be exceeded on low-bandwidth connections
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The 60-second request limit can be very commonly exceeded over low-bandwidth connections, and even text-only submissions can be impacted on satellite connections. That is why ODK Collect splits submissions into multiple 10MB submission requests. The timer starts upon receipt of the first byte, so a slow connection can account for a sizeable portion of those 60 seconds. The same applies for sending a response. The processing on the server is generally negligible in relation to the transmission times.
@@ -30,7 +30,7 @@ Media held in memory
 
 When a form submission is uploaded, and when blank forms are downloaded, all the associated media files are held in memory at the same time, twice. For forms with a lot of media files, this can consume a lot of memory.
 
-The previous section already suggested serializing form submission uploads. This is not absolutely critical for form downlaods, but you should probably manage how many form download requests are being handled concurrently, in order to avoid memory problems.
+The previous section already suggested serializing form submission uploads. This is not absolutely critical for form downloads, but you should probably manage how many form download requests are being handled concurrently, in order to avoid memory problems.
 
 ..  Spinning up of copies of the frontend will incur faster quota usage on AppEngine. For that reason, the Aggregate configuration here specifies a 14-second queuing time threshold before a new instance is spun up. Only if at least one request is queued for longer than 14 seconds will a new instance be spun up, and then that new instance will take about 30 seconds to become live. Leaving a 15-second processing interval. This is why ODK Collect tried twice before failing a submit.
 

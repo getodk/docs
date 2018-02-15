@@ -36,7 +36,7 @@ For example:
   "integer", "sid", "Enter your student id", "", "", "", "", "", "yes", ""
   "integer", "age", "Enter your age", ".<=18", "You should be below 18 years to be eligible for the survey.", "", "", "", "yes", ""
   "select_one dept", "course", "In which department have you chosen courses?", "", "", "", "", "", "yes", ""
-  "integer", "course_cnt", "Enter number of courses you have chosen", "1<=.<=6", "You should choose atleast 1 course and atmost 6 courses.", "${course}!='none'", "", "", "yes", ""         
+  "integer", "course_cnt", "Enter number of courses you have chosen", "1<=.<=6", "You should choose at least 1 course and at most 6 courses.", "${course}!='none'", "", "", "yes", ""         
   "integer", "marks", "Enter total marks obtained in all courses", "", "", "${course}!='none'", "", "", "yes", ""
   "calculate", "total", "", "", "", "${course_cnt}!=''", "", "", "", "${course_cnt}*100"
   
@@ -46,7 +46,7 @@ For example:
 
   "dept", "Physics", "PHY"
   "dept", "Maths", "MAT"
-  "dept", "Chemsitry", "CHEM"
+  "dept", "Chemistry", "CHEM"
   "dept", "none", "none"
 
 .. csv-table:: **Settings**
@@ -65,7 +65,7 @@ If you want to make the following changes to the above form:
 - Change the calculation from **${course_cnt}*100** to **${course_cnt}*50**
 - Change the relevant for calculate to **${course}!='none' and ${course_cnt}!=''**
 - Change the list name in choices from **dept** to **dept_name**
-- Add a new choice in deptartment list as **Computer**
+- Add a new choice in department list as **Computer**
 - Change **Maths** to **Mathematics** and **MAT** to **MATHS** in choices
 
 These changes can be made as:
@@ -78,7 +78,7 @@ These changes can be made as:
   "text", "name", "Enter your name", "Introduzca su nombre", "", "", "", "", "", "yes", ""
   "integer", "age", "Enter your age", "Introduzca su edad", ".<=20", "You should be below 20 years to be eligible for the survey.", "", "", "", "yes", ""
   "select_one dept_name", "course", "Name of Department", "Nombre del departamento", "", "", "", "", "", "yes", ""
-  "integer", "course_cnt", "Enter number of courses you have chosen", "Ingresa el número de cursos que has elegido", "1<=.<=6", "You should choose atleast 1 course and atmost 6 courses.", "${course}!='none'", "", "", "yes", ""         
+  "integer", "course_cnt", "Enter number of courses you have chosen", "Ingresa el número de cursos que has elegido", "1<=.<=6", "You should choose at least 1 course and at most 6 courses.", "${course}!='none'", "", "", "yes", ""         
   "integer", "marks", "Enter total marks obtained in all courses", "Ingrese las calificaciones totales obtenidas en todos los cursos", "", "", "${course}!='none'", "", "", "yes", ""
   "calculate", "total", "", "", "", "", "${course}!='none' and ${course_cnt}!=''", "", "", "", "${course_cnt}*50"
 
@@ -88,7 +88,7 @@ These changes can be made as:
 
   "dept_name", "Physics", "PHY"
   "dept_name", "Mathematics", "MATHS"
-  "dept_name", "Chemsitry", "CHEM"
+  "dept_name", "Chemistry", "CHEM"
   "dept_name", "Computer", "COMP"
   "dept_name", "none", "none"
 

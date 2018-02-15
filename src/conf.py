@@ -87,6 +87,9 @@ todo_include_todos = True
 # suppress warnings for unknown options
 suppress_warnings = ['ref.option']
 
+# Smart (q)uotes, (D)ashes, and (e)llipses
+smartquotes = True
+smartquotes_action = 'De'
 
 # -- Options for HTML output ----------------------------------------------
 
