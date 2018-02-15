@@ -1,3 +1,18 @@
+.. spelling::
+
+  abcd
+  ack
+  BREATHCOUNT
+  Datetime
+  dateTime
+  dk
+  na
+  nocalendar
+  nolabel
+  placementmap
+  uw
+  ZXing
+
 ***************
 Form Widgets
 ***************

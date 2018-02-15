@@ -1,3 +1,9 @@
+.. spelling::
+
+  databaseserver
+  Glassfish
+  useHttpOnly
+
 Installing on Tomcat (Local or Cloud)
 =========================================
 

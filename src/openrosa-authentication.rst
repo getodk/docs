@@ -1,3 +1,11 @@
+.. spelling::
+
+  cnonce
+  dir
+  Mufasa
+  nc
+  qop
+
 Authentication API
 =====================
 

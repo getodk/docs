@@ -1,3 +1,7 @@
+.. spelling::
+
+  src
+
 Docs Technical Guide
 ==========================
 
