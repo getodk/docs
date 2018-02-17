@@ -1,3 +1,9 @@
+.. spelling::
+
+  databaseserver
+  Glassfish
+  useHttpOnly
+
 Installing on Tomcat (Local or Cloud)
 =========================================
 
@@ -45,7 +51,7 @@ If you need to prevent eavesdroppers from seeing your data as it is transmitted 
 - obtain an SSL certificate and install it on your Tomcat server (a certificate is required to secure transmissions over `https`)
 - use :doc:`encrypted-forms`
 
-Encrypted forms can be used in conjuction with either of the first two suggestions.
+Encrypted forms can be used in conjunction with either of the first two suggestions.
 
 If you are not using encrypted forms and are handling sensitive data, a computer security specialist should review your system and your security procedures. 
 

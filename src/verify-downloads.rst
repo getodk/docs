@@ -1,3 +1,8 @@
+.. spelling::
+
+  cd
+  Ctrl
+
 Verifying Downloads
 =====================
 

@@ -1,3 +1,7 @@
+.. spelling::
+
+  vN
+
 *********************************
 Briefcase Installation and Setup
 *********************************

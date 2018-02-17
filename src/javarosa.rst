@@ -1,3 +1,7 @@
+.. spelling::
+
+  defn
+
 ODK JavaRosa
 ############
 

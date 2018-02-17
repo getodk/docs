@@ -101,7 +101,7 @@ The form's XML submission is sent on each ``POST`` so that a client can avoid ha
 Rationale for sending the form's XML submission
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-To avoid sending the form's XML submission, you would need to inspect the submission and send up its identifiying information. By avoiding inspection of the submission, a much simpler Ajax-enabled webpage could conform to this API.
+To avoid sending the form's XML submission, you would need to inspect the submission and send up its identifying information. By avoiding inspection of the submission, a much simpler Ajax-enabled webpage could conform to this API.
 
 On the server, having just the ``instanceID`` sent on subsequent ``POST`` requests might not be sufficient to process the request --- sending only this information would burden those server implementations with maintaining a mapping from the instanceID to the natural key for this data. Not sending the form's XML submission in subsequent POSTs biases against some server designs.
 

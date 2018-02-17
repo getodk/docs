@@ -12,6 +12,7 @@ snowballstemmer==1.2.1
 Sphinx==1.6.6
 sphinx-rtd-theme==0.2.4
 sphinxcontrib-websupport==1.0.1
+sphinxcontrib-spelling
 typing==3.6.1
 Pillow==4.3.0
 proselint

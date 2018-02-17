@@ -1,3 +1,9 @@
+.. spelling::
+
+  dbadmin
+  Mumbai
+  sysadmin
+
 ***********************************
 Planning Your Aggregate Deployment
 ***********************************
@@ -19,7 +25,7 @@ Here are some issues to consider when determining whether Google's App Engine cl
 Internet access
 ~~~~~~~~~~~~~~~~~
 
-Google App Engine and Amazon Web Servives both require internet access. If you don't have consistent internet access, ODK Briefcase may be more appropriate. 
+Google App Engine and Amazon Web Services both require internet access. If you don't have consistent internet access, ODK Briefcase may be more appropriate.
 
 Tomcat deployments can operate without internet access. In such an environment, ODK Collect would only be able to upload finalized forms after it connects to the network containing the Tomcat deployment.
 
