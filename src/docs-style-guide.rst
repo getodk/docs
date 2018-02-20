@@ -891,6 +891,27 @@ ODK and ODK Docs
 
 - Open Data Kit Documentation
 
+.. code-block:: python
+  :class: style-checks
+
+  @memoize
+  def check_odkspell(text):
+      """ODK spelling usage."""
+      err = "style-guide.spelling-odk"
+      msg = "ODK spell check. '{}' is the preferred usage."
+
+      preferences = [
+
+          ["Open Data Kit",         ["Open data kit"]],
+          ["Open Data Kit",         ["OpenDataKit"]],
+          ["ODK",                   ["Odk"]],
+          ["ODK",                   ["{0} odk"]],
+          ["ODK Docs",              ["ODK docs"]],
+          ["ODK Documentation",     ["ODK documentation"]]
+      ]
+
+      return preferred_forms_check(text, preferences, err, msg, ignore_case=False)
+
 .. _odk-app-project-names:
 
 ODK app and project names
@@ -911,6 +932,22 @@ A few projects should *always* use the **ODK** prefix:
 - ODK XForm
 - ODK Javarosa
 - ODK Docs
+
+.. code-block:: python
+  :class: style-checks
+
+  @memoize
+  def check_appspell(text):
+      """ODK spelling usage."""
+      err = "style-guide.spelling-odk"
+      msg = "ODK spell check. '{}' is the preferred usage."
+
+      preferences = [
+          ["Aggregate",             ["{0} aggregate"]],
+          ["Briefcase",             ["{0} briefcase"]]
+      ]
+
+      return preferred_forms_check(text, preferences, err, msg, ignore_case=False)
 
 .. _xform-xlsform:
 
@@ -942,17 +979,12 @@ XForms and XLSForm
   :class: style-checks
 
   @memoize
-  def check_odkspell(text):
+  def check_formspell(text):
       """ODK spelling usage."""
       err = "style-guide.spelling-odk"
       msg = "ODK spell check. '{}' is the preferred usage."
 
       preferences = [
-
-          ["Open Data Kit",         ["Open data kit"]],
-          ["Open Data Kit",         ["OpenDataKit"]],
-          ["Aggregate",             ["{0} aggregate"]],
-          ["Briefcase",             ["{0} briefcase"]],
           ["XForms",                ["Xforms"]],
           ["XForms",                ["X-Forms"]],
           ["XForms",                ["{0} xforms"]],
