@@ -36,7 +36,6 @@ Whenever U.S. English and British (or other) English spelling or usage disagree,
       msg = "uk-vs-us-spell-check. '{}' is the preferred spelling."
 
       preferences = [
-
           ["gray",                ["grey"]],
           ["color",               ["colour"]],
           ["accessorizing",       ["accessorising"]],
@@ -46,6 +45,9 @@ Whenever U.S. English and British (or other) English spelling or usage disagree,
       ]
 
       return preferred_forms_check(text, preferences, err, msg)
+
+      # This is a sample code. The complete code can be found in the file:
+      # proselint-extra.py.
 
 .. _quote-marks:
     
