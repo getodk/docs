@@ -414,7 +414,6 @@ This list is not exhaustive. These "canned phrases" are pervasive in technical w
 
       list = [
           "to the extent that",
-          "for all intents and purposes",
           "when all is said and done",
           "from the perspective of",
           "point in time",
