@@ -306,10 +306,10 @@ def get_changed_files():
     global dir_path
     repo_path = dir_path
     repo = git.Repo(repo_path)
-    changedFiles = [item.a_path for item in repo.index.diff(None)]
-    changedFiles += repo.untracked_files
-    changedFiles = tuple(changedFiles)
-    return changedFiles
+    changed_files = [item.a_path for item in repo.index.diff(None)]
+    changed_files += repo.untracked_files
+    changed_files = tuple(changed_files)
+    return changed_files
 
 
 def run_checks(paths, disp, fix):
