@@ -38,6 +38,7 @@ extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.mathjax',
+    'sphinx_tabs.tabs',
     'sphinxcontrib.spelling',
     'video']
 
@@ -322,4 +323,3 @@ html_context = {'prob_in_doc' : prob_in_doc ,
                 'repo_here' : repo_here , 
                 'contri_guide' : contri_guide , 
                 'forum_here' : forum_here}
-
