@@ -260,6 +260,8 @@ Several Latin abbreviations are common in written English:
  - viz.
  - c.f.
  - n.b.
+ - ibid.
+ - q.v.
 
 .. endignore
  
@@ -295,10 +297,11 @@ Avoid Latin abbreviations.
           "viz\.", "viz", "\*viz\.\*", "\*viz\*",
           "c\.f\.", "cf", "\*cf\.\*", "\*cf\*",
           "n\.b\.", "nb", "\*nb\.\*", "\*nb\*",
+          "q\.v\.", "qv", "\*qv\.\*", "\*qv\*",
+          "ibid\.", "ibid", "\*ibid\.\*", "\*ibid\*",
         ]
 
       return existence_check(text, list, err, msg, ignore_case=True)
-
 
 
 .. startignore
