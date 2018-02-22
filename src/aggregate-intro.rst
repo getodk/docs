@@ -6,7 +6,7 @@ ODK Aggregate
 :dfn:`ODK Aggregate` is an open source Java application that
 stores, analyzes, and presents :doc:`XForm <form-design-intro>` survey data collected using :doc:`collect-intro` or other :doc:`OpenRosa-compliant applications <openrosa>`. It supports a wide range of data types, and is designed to work well in any hosting environment.
 
-With Aggregate, survey collection teams can:
+With Aggregate, data collection teams can:
 
 - :doc:`Host <aggregate-forms>` blank :doc:`XForms <form-design-intro>` used by ODK Collect or other OpenRosa clients
 - :doc:`Store and manage XForm submission data <aggregate-data>` 
