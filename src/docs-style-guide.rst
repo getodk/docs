@@ -119,7 +119,7 @@ Direct Address
 
 Direct address 
 --- speaking directly to the reader using the second person "you" --- 
-is prefered over 
+is preferred over
 passive voice ("it can be done"),
 first-person plural ("we can do it"),
 or other constructions.

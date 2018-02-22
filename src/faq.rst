@@ -1,3 +1,21 @@
+.. spelling::
+
+  Anokwa
+  Borriello
+  Borriello
+  Breit
+  Chaudhri
+  Espanol
+  Gaetano
+  Gaetano
+  Hartung
+  itext
+  Lerer
+  netbooks
+  Rohit
+  Sundt
+  Tseng
+
 FAQ
 ==============
 

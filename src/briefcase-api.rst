@@ -49,7 +49,7 @@ Vanilla conformance.
 
 .. _openrosa-submit-api:
 
-OpenRosa Form Submission/Overwite API
+OpenRosa Form Submission/Overwrite API
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Server Processing
