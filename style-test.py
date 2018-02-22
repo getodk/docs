@@ -506,17 +506,27 @@ def gen_list(paths = None):
 
     return err_list
 
+def remove_file():
+    """Remove generated check files."""
+    global dir_path
+    test_file = dir_path + '/style-guide/style-checks.py'
+    extra_file = dir_path + '/style-guide/extra.py'
+    os.remove(test_file)
+    os.remove(extra_file)
+
 
 @click.command(context_settings = CONTEXT_SETTINGS)
 @click.option('--diff', '-d', is_flag = True, 
                help = "Run check on the modified files")
 @click.option('--fix', '-f', is_flag = True, 
-               help = "Removes the fixable errors")
+               help = "Remove the fixable errors")
 @click.option('--out_path','-o', type = click.Path())
+@click.option('--store','-s',is_flag = True,
+               help = "Store the generated test scripts")
 @click.argument('in_path', nargs = -1, type = click.Path())
 def style_test(in_path = None, out_path = None, diff = None, 
-                fix = None, output = None):
-    """A CLI for style guide testing"""
+                fix = None, output = None, store = None):
+    """A CLI for style guide testing."""
     # generate source code for checks
     parse_code()
 
@@ -539,7 +549,10 @@ def style_test(in_path = None, out_path = None, diff = None,
     # generate output
     if out_path:
         gen_out(out_path)
-    
+
+    # remove generated test scripts
+    if not store:
+        remove_file()
 
 if __name__ == '__main__':
     style_test()
