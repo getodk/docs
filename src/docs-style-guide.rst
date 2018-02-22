@@ -336,6 +336,8 @@ Adverbs often contribute nothing. Common offenders include:
  - very
  - really
  - basically
+ - extremely
+ - actually
 
 .. rubric:: Wrong
 
@@ -377,6 +379,8 @@ Adverbs often contribute nothing. Common offenders include:
           "very",
           "really",
           "basically",
+          "extremely",
+          "actually",
       ]
 
       return existence_check(text, list, err, msg, ignore_case=True)
