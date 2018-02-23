@@ -137,7 +137,8 @@ def add_checks():
 def remove_lines(text):
     """Remove ignored lines  and directive blocks from text."""
     directive_list = [".. image::", ".. figure::", ".. video::", ".. code::",
-                      ".. code-block::", ".. csv-table::", ".. toctree::",]
+                      ".. code-block::", ".. csv-table::", ".. toctree::",
+                      ".. py:",]
 
     index = 0
     length = len(text)
