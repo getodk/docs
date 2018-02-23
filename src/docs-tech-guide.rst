@@ -666,6 +666,44 @@ Write and edit files in your favorite editor.
   .. _Atom: https://atom.io/
   .. _Sublime: https://www.sublimetext.com/
 
+.. _spell-check:
+
+Spell check your work
+~~~~~~~~~~~~~~~~~~~~~~
+
+After you have made the changes to the docs,
+you need to run the spell checker.
+To run the spell checker:
+
+.. code-block:: console
+
+  $ sphinx-build -b spelling src build/spelling
+
+If there are any warnings, make sure that you fix them
+to avoid build failure.
+
+The error messages will be displayed on terminal
+as well as stored in a file :file:`/build/spelling/output.txt`.
+
+If you find a word which is not misspelled
+and will have repeated use in docs,
+add it to the spelling list
+in the file :file:`/src/spelling_wordlist.txt`.
+
+If you find a word which is not misspelled
+and is only required in a particular file,
+use the :rst:dir:`spelling` directive
+to list the words before the file content.
+
+.. code-block:: rst
+
+  .. spelling::
+
+    word1
+    word2
+
+  File content
+
 .. _style-test-docs:
 
 Style-test your work
