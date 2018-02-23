@@ -122,3 +122,188 @@ For example:
   }
 
   /* New section ends */
+
+.. _style-tests:
+
+Style Guide checks
+--------------------
+
+Proselint_  is used for style testing the docs.
+Apart from the inbuilt tests in proselint,
+custom checks are added for style guide testing.
+We follow the approach of `literate programming <https://en.wikipedia.org/wiki/Literate_programming>`_.
+The checks reside in the file :doc:`docs-style-guide.rst <docs-style-guide>`.
+After each style rule,
+you can define a python code-block
+containing the code for style testing.
+When style testing is performed,
+these python code-blocks are parsed to
+generate a testing script.
+
+.. _proselint-checks:
+
+Proselint dependent checks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Various inbuilt functions from Proselint are used to define the tests:
+
+.. py:function:: memoize
+
+  To cache the check for faster execution. Use :py:data:`@memoize` above function definition to cache the result.
+
+.. py:function:: existence_check(text, list, err, msg, ignore_case=True, \
+                                 str=False, max_errors=float("inf"), offset=0, \
+                                 require_padding=True, dotall=False, \
+                                 excluded_topics=None, join=False)
+
+  To check for existence of a regex pattern(s) in the text.
+  The parameters :py:data:`offset`, :py:data:`excluded_topics` and :py:data:`join`
+  are not needed for style guide testing.
+
+  :param str text: Text to be checked
+  :param list list: List of regex expressions
+  :param str err: Name of the test
+  :param str msg: Error or warning message
+  :param bool ignore_case: For using :py:data:`re.IGNORECASE`
+  :param bool str: For using :py:data:`re.UNICODE`
+  :param float max_errors: Maximum number of errors to be generated
+  :param bool require_padding: To use padding with the specified regex (It is better to set it as **False** and specify the regex accordingly)
+  :param bool dotall: For using :py:data:`re.DOTALL`
+  :return: The error list consisting of error tuples: :py:const:`[(start, end, err, msg, replacement)]`.
+  :rtype: list
+
+.. py:function:: preferred_forms_check(text, list, err, msg, ignore_case=True, \
+                                       offset=0, max_errors=float("inf"))
+
+  To suggest a preferred form of the word used.
+  The parameter :py:data:`offset`
+  is not needed for style guide testing.
+
+
+  :param str text: Text to be checked
+  :param list list: list of comparison (words or regex): :py:const:`[correct form , incorrect form]`
+  :param str err: Name of the test
+  :param str msg: Error or warning message
+  :param bool ignore_case: For using :py:data:`re.IGNORECASE`
+  :param float max_errors: Maximum number of errors to be generated
+  :return: The error list consisting of error tuples: :py:const:`[(start, end, err, msg, replacement)]`.
+  :rtype: list
+
+
+.. py:function:: consistency_check(text, word_pairs, err, msg, offset=0)
+
+   To check for consistency for the given word pairs.
+   The parameters :py:data:`offset`
+   is not needed for style guide testing.
+
+   :param str text: Text to be checked
+   :param list word_pairs: Word pairs to be checked for consistency
+   :param str err: Name of the test
+   :param str msg: Error or warning message
+   :return: The error list consisting of error tuples: :py:const:`[(start, end, err, msg, replacement)]`.
+   :rtype: list
+
+.. note::
+
+  The checker functions are used by the
+  inbuilt proselint function :py:func:`lint`
+  to generate an error list of different format.
+  The returned list finally is: :py:const:`[(check, message, line, column, start, end, end - start, "warning", replacements)]`
+
+.. seealso::
+
+  To get a clear understanding,
+  refer the code for the modules `here <https://github.com/amperser/proselint/blob/master/proselint/tools.py>`_.
+
+.. rubric:: Example Usage
+
+.. code-block:: python
+
+  @memoize
+  def example(text):
+      """Example check."""
+      err = "style-guide.example"
+      msg = "A demonstration for writing checks."
+      regex = "[\.\?!](example)"
+
+      return existence_check(text, [regex], err, msg, ignore_case=False, 
+                         require_padding=False)
+
+When you define code-blocks which
+use inbuilt proselint testing,
+specify the class **style-checks**.
+
+.. code-block:: rst
+
+  .. code-block:: python
+    :class: style-checks
+
+The generated file after parsing code
+for style checks is :file:`style-checks.py`.
+
+
+If the test is too large
+to be defined in the file :file:`docs-style-guide.rst`,
+you can use a snippet from the test
+(as :ref:`here <american-spelling>`).
+The code-blocks for such snippets
+should specify the class **proselint-extra-checks**.
+Define the complete test
+in the file :file:`/style-guide/proselint-extra-checks.py`.
+
+.. _independent-checks:
+
+Independent checks
+~~~~~~~~~~~~~~~~~~~
+
+Apart from the checks, which are to be run through proselint,
+you can add extra checks to be run independently.
+The code-blocks for extra checks
+should specify the class **extra-checks**.
+The generated file after parsing code
+for extra checks is :file:`extra-checks.py`.
+
+.. note::
+
+  Inbuilt proselint function :py:func:`line_and_column` is used with extra checks to obtain the row and column of the matched text.
+
+  .. py:function:: line_and_column(text, start)
+
+    To find the line number and column of a position in a string.
+
+    :param str text: Text to be searched for
+    :param int start: Starting position of matched pattern
+    :return: Tuple containing row and column number
+    :rtype: tuple
+
+.. _classify-checks:
+
+Error vs warning
+~~~~~~~~~~~~~~~~~~
+
+You can classify the result of a check
+as an error if you are sure
+that no false positives would be produced.
+The checks classified as errors should return a replacement
+for fixing the errors.
+Proselint dependent checks which use the function
+:py:func:`preferred_forms_check` or :py:func:`consistency_check`
+always return a preferred form.
+If you create an independent check
+which generates an error
+make sure to return a replacement in the error list.
+
+To generate an error from a check,
+specify the check name in the list of errors
+in the function :py:func:`get_errlist`
+in the file :file:`style-test.py`.
+
+.. _exclude-checks:
+
+Excluding inbuilt proselint checks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To exclude an inbuilt proselint check,
+specify the check name in the check list
+in the function :py:func:`exclude_checks`
+in the file :file:`style-test.py`.
