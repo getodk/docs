@@ -665,8 +665,112 @@ Write and edit files in your favorite editor.
   
   .. _Atom: https://atom.io/
   .. _Sublime: https://www.sublimetext.com/
-  
-  
+
+.. _style-test-docs:
+
+Style-test your work
+~~~~~~~~~~~~~~~~~~~~~
+
+After you have made the changes to the docs,
+you need to run the style-guide checks.
+To run the style guide checks on all the docs:
+
+.. code-block:: console
+
+  $ python style-test.py
+
+To run the style guide checks on specified files:
+
+.. code-block:: console
+
+  $ python style-test.py filename1.rst filename2.rst ...
+
+If you want to run the style guide checks
+on the files modified by you,
+use the option :option:`-d` or :option:`--diff`.
+
+.. code-block:: console
+
+  $ python style-test.py -d
+
+To run the tests on modified files and some other specified files:
+
+.. code-block:: console
+
+  $ python style-test.py -d filename1.rst filename2.rst ...
+
+The output will consist of a list of warnings and errors.
+Make sure to go through the warnings
+and eliminate the ones which violate the style guide rules.
+
+.. note::
+
+  The list of warnings may contain many false positives as well.
+
+If there are any errors, you need to fix them to avoid build failure.
+You can manually fix the errors or
+use the option :option:`-f` or :option:`--fix`.
+
+.. code-block:: console
+
+  $ python style-test.py -f
+
+If you want to fix the errors in some specified files:
+
+.. code-block:: console
+
+  $ python style-test.py -f filename1.rst filename2.rst ...
+
+.. tip::
+
+  After automatic fixing of errors, make sure to go through the changes made.
+
+To ignore any part of a file from being checked, you can enclose it in comments:
+
+.. code-block:: rst
+
+  .. startignore
+
+  Some text which is to be ignored while testing.
+
+  .. endignore
+
+You can also generate :file:`.csv` format output
+using the :option:`-o` or :option:`--out_path` with the output filename:
+
+.. code-block:: console
+
+  $ python style-test.py -o output.csv
+
+To generate output for a some specified files:
+
+.. code-block:: console
+
+  $ python style-test.py -o output.csv filename1.rst filename2.rst ...
+
+.. note::
+
+  Make sure to specify the output file before the input files
+  when you use the option :option:`-o`.
+
+When you run the style guide checks,
+style testing scripts are generated
+before the test starts and are removed automatically
+after the testing is complete.
+If you want to keep these scripts for debugging,
+use the option :option:`-s` or :option:`--store`:
+
+.. code-block:: console
+
+  $ python style-test.py -s
+
+Use the option :option:`-h` or :option:`--help`
+to get any help about style guide testing:
+
+.. code-block:: console
+
+  $ python style-test.py -h
+
 
 .. _build-the-docs:
 
