@@ -20,6 +20,7 @@ jobs:
           command: |
             sudo apt-get install pngquant
             sudo apt-get install python-enchant
+            sudo apt-get install texlive-xetex
             sudo pip install -r requirements.txt
       - run:
           name: Style Guide Testing
@@ -31,6 +32,16 @@ jobs:
           command: |
             sphinx-build -b spelling src build/spelling
             python util/check-spelling-output.py
+      - run:
+          name: Build PDF
+          command: |
+            sphinx-build -b latex src build/latex
+            sudo python util/resize.py
+            cd build/latex
+            xelatex OpenDataKit.tex
+            xelatex OpenDataKit.tex
+            cd ../..
+            sudo cp build/latex/OpenDataKit.pdf build
       - run:
           name: Build docs
           command: sphinx-build -W -b dirhtml src build
