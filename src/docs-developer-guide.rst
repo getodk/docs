@@ -278,11 +278,11 @@ do not use any built-in functions to obtain an error list.
 
       errors = []
 
-      for m in re.finditer(regex, text):
-          start = m.start()+1
-          end = m.end()
+      for matchobj in re.finditer(regex, text):
+          start = matchobj.start()+1
+          end = matchobj.end()
           (row, col) = line_and_column(text, start)
-          extent = m.end()-m.start()
+          extent = matchobj.end()-matchobj.start()
           errors += [(err, msg, row, col, start, end,
                            extent, "warning", "None")]
 
