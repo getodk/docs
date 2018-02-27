@@ -1,28 +1,48 @@
-**********************************
-Briefcase Usage
-**********************************
-
-:doc:`Install Briefcase <briefcase-install>` before going through this section.
+Using Briefcase
+==================
 
 .. _pull-from-aggregate:
 
-Pulling forms from ODK Aggregate
----------------------------------
+Pulling forms from Aggregate
+-----------------------------
 
-- Open *ODK Briefcase*.
-- In the window which opens up select :guilabel:`pull` tab.
-- Select Aggregate 0.9.x or Aggregate 1.0 in the :guilabel:`pull data from` the drop-down.
-- Enter the URL of your ODK Aggregate server in :guilabel:`url` option. For instance `https://proj1.appspot.com` and click on connect.
-- You can either leave the username blank if the anonymousUser is granted Data Viewer permissions or specify an ODK Aggregate user (Account Type 'ODK') that has been granted Data Viewer permissions.
-- A list of forms will be displayed. Select the ones you want to pull and click on :guilabel:`pull` button at the bottom of the window. The forms will be pulled to ODK Briefcase Storage on your local system.
+To download blank forms and completed form instances from an :doc:`Aggregate <aggregate-intro>` server:
 
-.. warning::
+#. Open the :guilabel:`Pull` tab.
+#. Select *Aggregate 1.0* in the :guilabel:`Pull data from` drop-down.
+#. Click the :guilabel:`Connect` button and enter the URL and login credentials for your Aggregate server.
 
- ODK Briefcase will abort a pull attempt if the local copy of the form definition file differs in any way from the copy being pulled from the server or ODK Collect device.
+   If you have anonymous login enabled on Aggregate, no login credentials are needed here.
+   
+   To connect to the `Aggregate Demo Server`_, the URL is https://opendatakit.appspot.com.
+   
+   .. _Aggregate Demo Server: https://opendatakit.appspot.com
 
-.. tip::
+#. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to :file:`ODK Briefcase Storage` on your local system.
 
- If the form definition has changed but the changes only affect the question text and do not alter the structure of the collected data (or change the formId or version), you can create a new ODK Briefcase Storage area, pull data into that, then manually copy the instances from there into your original storage area.
+   For each selected form, Briefcase will pull down:
+   
+   - The form definition file (that is, the blank XForm).
+   - All media associated with the form.
+   - Completed form instances.
+
+   If you have previously pulled the form:
+   
+   - New instances will be downloaded to the same location as previously downloaded ones.
+   - The form definition file and media files will not be re-copied.
+   
+   .. warning::
+
+     If your local copy and the remote copy of the blank form definition file are different, the pull will be aborted.
+
+     .. rubric:: Workaround
+     
+     If the form definition has changed, but the changes only affect the question text and do not alter the structure of the collected data (or change the form Id or version), you can:
+     
+     #. In :guilabel:`Settings`, temporarily change the location of :file:`ODK Briefcase Storage`.
+     #. Pull data into to the new location.
+     #. Manually copy the instances from the temporary location to your original storage location.
+     #. Update :guilabel:`Settings` back to the original storage location.
 
 
 .. _push-to-aggregate:
@@ -30,24 +50,48 @@ Pulling forms from ODK Aggregate
 Pushing forms to ODK Aggregate
 --------------------------------
 
-- Open *ODK Briefcase*.
-- In the window which opens up select :guilabel:`push` tab.
-- Select Aggregate 1.0 in the :guilabel:`push data to` drop-down.
-- Enter the URL of your ODK Aggregate server in :guilabel:`url` option. For instance `https://proj1.appspot.com` and click on connect.
-- You can either leave the username blank if the anonymousUser is granted Data Viewer permissions or specify an ODK Aggregate user (Account Type 'ODK') that has been granted Data Viewer permissions.
-- A list of forms will be displayed. Select the ones you want to push and click on :guilabel:`push` button at the bottom of the window. The forms will be pushed to ODK Aggregate Server.
+To upload blank forms and completed form instances to :doc:`Aggregate <aggregate-intro>`:
 
+#. Open the :guilabel:`Push` tab.
+#. Select *Aggregate 1.0* in the :guilabel:`Push data to` drop-down.
+#. Click the :guilabel:`Connect` button and enter the URL and login credentials for your Aggregate server.
 
-.. warning::
+   If you have anonymous login enabled on Aggregate, no login credentials are needed here.
+   
+   To connect to the `Aggregate Demo Server`_, the URL is https://opendatakit.appspot.com.
+   
+   .. _Aggregate Demo Server: https://opendatakit.appspot.com
 
-  - ODK Briefcase will abort a push attempt if the form definition already on the ODK Aggregate server differs in any way from the form definition in the ODK Briefcase Storage area.
-  - ODK Briefcase does not work with Google accounts (Account Type *Google*).
+#. Select the forms you want to upload and click :guilabel:`Push`. The selected forms will be pushed from :file:`ODK Briefcase Storage` on your local system to the Aggregate server.
 
+   For each selected form, Briefcase will upload:
+   
+   - If not on the server already:
+   
+     - The form definition file (that is, the blank XForm).
+     - All media associated with the form.
+   
+   - Completed form instances.
+
+   .. warning::
+
+     If your local copy and the remote copy of the blank form definition file are different, the push will be aborted.
+   
+     .. rubric:: Workaround
+     
+     If the form definition has changed, but the changes only affect the question text and do not alter the structure of the collected data (or change the form Id or version), you can:
+     
+     #. In :guilabel:`Settings`, temporarily change the location of :file:`ODK Briefcase Storage`.
+     #. Manually copy the form directory from your original storage location to the temporary location.
+     #. Replace the local form definition file with a copy of the version from your Aggregate server.
+     #. Push your form instances. 
+     #. Update :guilabel:`Settings` back to the original storage location.
 
 .. tip::
-
-  - If the form definition has changed but the changes do not affect the data model, you can make a copy of the storage area, replace the copy's form definition file with that from the server, and then push the data up from this storage area copy.
-  - By pulling data into the local ODK Briefcase Storage location and then pushing data up to an ODK Aggregate instance, ODK Briefcase provides a mechanism to transfer data across incompatible upgrades of ODK Aggregate.
+       
+  .. Move this to Aggregate docs, or the Agg-v-Briefcase page.
+       
+  By pulling data into the local ODK Briefcase Storage location and then pushing data up to an ODK Aggregate instance, ODK Briefcase provides a mechanism to transfer data across incompatible upgrades of ODK Aggregate.
 
 
 .. _pull-from-collect:
@@ -57,98 +101,128 @@ Pulling forms from Collect
 
 .. _pull-from-android2.x:
 
-Pulling from Android 2.x and earlier device
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Pulling forms --- Android 2.x and earlier
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Ensure all filled-in forms are finalized. Either delete the forms which are not finalized or delete them after making a backup copy of :file:`/sdcard/odk` directory on your device and restore that later.
 
-.. warning::
- ODK Briefcase does not discriminate between incomplete and finalized forms on the device. It will pull all data off of the device. This can cause problems during later pushes, and, especially, if you are encrypting your finalized forms. To keep your data set clean, you must ensure that all forms are complete before being pulled off of the device.
+#. Ensure all filled-in forms are finalized. 
 
-- Connect your Android device to your computer using a USB cable and choose to mount the drive.
-- Open *ODK Briefcase*.
-- In the window which opens up select :guilabel:`pull` tab.
-- Select `Mounted Android SD Card` in the :guilabel:`pull data from` drop-down.
-- Click :guilabel:`Choose` and select the appropriate mounted SD card.
-- A list of forms will be displayed. Select the ones you want to pull and click on :guilabel:`pull` button at the bottom of the window. The forms will be pulled to ODK Briefcase Storage on your local system.
-- On the Android device, open ODK Collect and delete the filled-in forms.
+   Briefcase does not discriminate between incomplete and finalized forms on the device. It will pull all filled-in form instances, even incomplete ones. This can cause problems during later pushes, especially if you are encrypting your finalized forms. To keep your data set clean, you must ensure that all forms are complete before being pulled from the device.
 
-.. warning::
- ODK Briefcase cannot discriminate between duplicates of the same filled-in form. After you pull the data into ODK Briefcase, it is important that you delete it from ODK Collect. Otherwise, the next time you follow this process, you will end up with two copies of the filled-in forms from the first pull, etc.
+   If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
+
+#. Connect your Android device to your computer with a USB cable.
+
+   If your computer gives you an option of how to handle the device,
+   choose to mount the drive.
+
+#. In Briefcase, open the :guilabel:`Pull` tab.
+#. Select *Mounted Android SD Card* in the :guilabel:`pull data from` drop-down.
+#. Click :guilabel:`Choose` and select the appropriate mounted SD card.
+#. Select the forms you want to download and click on :guilabel:`Pull`. 
+#. On the Android device, open ODK Collect and delete the filled-in forms.
+
+   .. warning::
+     
+     Briefcase cannot discriminate between duplicate form instances. After you pull completed forms into Briefcase, it is important that you delete them from Collect. Otherwise, the next time you pull in forms, you will create duplicates.
 
 .. _pull-from-android4.x:
 
-Pulling from Android 4.x and later device
+Pulling forms --- current Android devices
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Ensure all filled-in forms are finalized. Either delete the forms which are not finalized or delete them after making a backup copy of :file:`/sdcard/odk` directory on your device and restore that later.
-- Create a zip of the entire :file:`odk` directory using an application like `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
-- Connect your Android device to your computer using a USB cable and choose to mount it as a Media device.
-- Copy that zip file from the mounted MTP/Android device to a local hard drive.
-- Once it is copied onto your local hard drive, unzip the file of the 'odk' directory.
-- Open *ODK Briefcase*.
-- In the window which opens up select :guilabel:`pull` tab.
-- Select *Custom Path to ODK Directory* in the :guilabel:`pull data from` drop-down.
-- Select the unzipped :file:`odk` folder that you copied onto your local hard drive.
-- Click on :guilabel:`pull` button at the bottom of the window and the filled-in submissions that were copied off of the device will be loaded into ODK Briefcase's storage location.
-- On the Android device, open ODK Collect and delete the filled-in forms.
+Current Android devices (those running v4.x or later) use a USB mounting protocol that Briefcase does not support. Therefore, the procedure for getting form instances out of Collect is different.
+
+#. Ensure all filled-in forms are finalized. 
+
+   If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
+
+#. Create a zip archive of the entire :file:`odk` directory.
+
+   .. tip::
+   
+     You'll need to use an app for this. 
+     
+     One option is `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
+     
+#. Connect your Android device to your computer using a USB cable and choose to mount it as a Media device.
+#. Copy the zip file you created from the Android device to your local hard drive.
+#. Once it is copied onto your local hard drive, unzip the file.
+#. In Briefcase, open the :guilabel:`Pull` tab.
+#. Select *Custom Path to ODK Directory* in the :guilabel:`pull data from` drop-down.
+#. Select the unzipped :file:`odk` folder.
+#. Click :guilabel:`Pull`.
+#. On the Android device, open ODK Collect and delete the filled-in forms.
 
 
-.. tip::
- - You can use the *Custom path to ODK Directory* any time you want to pull forms from custom location.
- - You can confirm that the forms have been successfully pulled into ODK Briefcase by confirming a successful pull status or by verifying the data appearing in a CSV export file.
+   .. tip::
+  
+     - You can use the *Custom path to ODK Directory* any time you want to pull forms from custom location.
+     - You can confirm that the forms have been successfully pulled into Briefcase by confirming a successful pull status or by verifying the data appearing in a :ref:`CSV export file <briefcase-export-to-csv>`.
 
-.. warning::
- - ODK Briefcase does not work with the USB-mounted Media device (MTP) protocol, which replaced the USB-mounted drive protocol on Android 4.x devices.
- - ODK Briefcase does not support pushing blank forms to ODK Collect. You can manually install the forms on your ODK Collect device.
+     
+.. note:: 
+
+  ODK Briefcase does not support pushing blank forms to ODK Collect. Instead, :ref:`manually load the forms on your ODK Collect device <loading-forms-directly>`.
 
 
-.. _export-forms:
+.. _briefcase-export-to-csv:
 
 Export forms to CSV
 ---------------------
 
-- Open *ODK Briefcase*.
-- In the window which opens up select :guilabel:`export` tab.
-- Select the form you wish to export from the :guilabel:`form` dropdown. It displays a list of all forms on your ODK Briefcase Storage.
-- Specify the location where you wish to export form as CSV on your system in the :guilabel:`Export Directory` option.
-- Click on :guilabel:`Export` at the bottom of the window.
+#. Open the :guilabel:`Export` tab.
+#. Choose an Export Location.
+#. If exporting :doc:`encrypted-forms`, identify the location of your :ref:`PEM file <create-key>`.
+#. If you wish, select Start and End dates to specify a limited date range to export.
+#. Select the forms to export.
+#. Click :guilabel:`Export`.
 
 
 .. _cli-use:
 
-Working with command line
-----------------------------
+Working with the command line
+-------------------------------
 
-In Briefcase v1.4.4 and later, there is a scriptable command line interface.
+.. versionadded:: 1.4.4
+  A CLI was added.
 
+.. _pull-from-aggregate-cli:
+  
 Pulling form data from Aggregate Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. code-block:: console
 
-  $ java -jar "ODK Briefcase v1.4.4 Production.jar" --form_id market_prices --storage_directory ~/Desktop --aggregate_url https://my_server.appspot.com --odk_username my_username --odk_password my_password
+  $ java -jar {path/to/briefcase-jar-file} --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --aggregate_url {aggregate-url} --odk_username {username} --odk_password {password}
 
-This command pulls form data with id market_prices from Aggregate server at `https://my_server.appspot.com` and stores data in Briefcase's storage directory on the :file:`~/Desktop`
-
-Pulling form data from ODK Collect
+.. _pull-from-collect-cli:
+  
+Pulling form data from Collect
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. code-block:: console
 
-  $ java -jar "ODK Briefcase v1.4.4 Production.jar" --form_id market_prices --storage_directory ~/Desktop --odk_directory ~/Desktop/odk
-
-This command pulls form data with id market_prices from Collect's odk folder at :file:`~/Desktop/odk` and store data in Briefcase's storage directory on the :file:`~/Desktop`
-
-Export form data
-~~~~~~~~~~~~~~~~~~~~
-.. code-block:: console
-
-  $ java -jar "ODK Briefcase v1.4.4 Production.jar" --form_id market_prices --storage_directory ~/Desktop --export_directory ~/Desktop --export_filename market_prices.csv
-
-This command exports form data with id market_prices from Briefcase's storage directory on the :file:`~/Desktop` and write CSV file to :file:`~/Desktop/market_prices.csv`
-
-
-To get help about the command line operation type :command:`java -jar path_to_jar -help`.
+This command assumes you have already copied and unzipped the :file:`odk` file :ref:`as described here <pull-from-android4.x>`.
 
 .. code-block:: console
 
-  $ java -jar "/home/pc123/Desktop/ODK Briefcase v1.8.0 Production.jar" -help
+  $ java -jar {path/to/briefcase-jar-file} --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --odk_directory {path/to/unzipped-odk-file}
+
+.. _export-to-csv-cli:
+  
+Exporting form data to CSV
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+  $ java -jar {path/to/briefcase-jar-file} --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --export_directory {path/to/output-directory} --export_filename {output-file-name.csv}
+
+.. _briefcase-cli-help:
+  
+Getting CLI help
+~~~~~~~~~~~~~~~~~~~
+
+To get help about the command line operation:
+
+.. code-block:: console
+
+  $ java -jar {path/to/briefcase-jar-file} -help
