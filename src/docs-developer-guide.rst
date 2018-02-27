@@ -129,14 +129,14 @@ Style Guide checks
 --------------------
 
 Proselint_  is used for style testing the docs.
-Apart from the inbuilt tests in proselint,
+Apart from the built-in tests in proselint,
 custom checks are added for style guide testing.
-We follow the approach of `literate programming <https://en.wikipedia.org/wiki/Literate_programming>`_.
-The checks reside in the file :doc:`docs-style-guide.rst <docs-style-guide>`.
+Following a `literate programming <https://en.wikipedia.org/wiki/Literate_programming>`_. model,
+style checks are defined in :doc:`docs-style-guide.rst <docs-style-guide>`.
 After each style rule,
 you can define a python code-block
 containing the code for style testing.
-When style testing is performed,
+When the style-test script is run,
 these python code-blocks are parsed to
 generate a testing script.
 
@@ -145,11 +145,18 @@ generate a testing script.
 Proselint dependent checks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Various inbuilt functions from Proselint are used to define the tests:
+In most of the custom checks,
+a new function is written
+that calls one of the built-in proselint functions as a return value.
+
+All the checks use a decorator :py:func:`memoize`
+to cache the check for faster execution.
 
 .. py:function:: memoize
 
-  To cache the check for faster execution. Use :py:data:`@memoize` above function definition to cache the result.
+  Use :py:data:`@memoize` above function definition to cache the result.
+
+Proselint provides several functions for defining style tests:
 
 .. py:function:: existence_check(text, list, err, msg, ignore_case=True, \
                                  str=False, max_errors=float("inf"), offset=0, \
@@ -206,14 +213,11 @@ Various inbuilt functions from Proselint are used to define the tests:
 .. note::
 
   The checker functions are used by the
-  inbuilt proselint function :py:func:`lint`
+  built-in proselint function :py:func:`lint`
   to generate an error list of different format.
   The returned list finally is: :py:const:`[(check, message, line, column, start, end, end - start, "warning", replacements)]`
 
-.. seealso::
-
-  To get a clear understanding,
-  refer the code for the modules `here <https://github.com/amperser/proselint/blob/master/proselint/tools.py>`_.
+.. seealso:: `Proselint source code <https://github.com/amperser/proselint/blob/master/proselint/tools.py>`_
 
 .. rubric:: Example Usage
 
@@ -230,7 +234,7 @@ Various inbuilt functions from Proselint are used to define the tests:
                          require_padding=False)
 
 When you define code-blocks which
-use inbuilt proselint testing,
+use built-in proselint testing,
 specify the class **style-checks**.
 
 .. code-block:: rst
@@ -258,6 +262,32 @@ Independent checks
 
 Apart from the checks, which are to be run through proselint,
 you can add extra checks to be run independently.
+They are not enabled in :file:`proselintrc` as well.
+For example, the checks for finding quote marks and section labels
+do not use any built-in functions to obtain an error list.
+
+.. rubric:: Example Usage
+
+.. code-block:: python
+
+  def check_quotes(text):
+      """Avoid using straight quotes."""
+      err = "style-guide.check-quote"
+      msg = "Avoid using quote marks."
+      regex = r"\"[a-zA-z0-9 ]{1,15}\""
+
+      errors = []
+
+      for m in re.finditer(regex, text):
+          start = m.start()+1
+          end = m.end()
+          (row, col) = line_and_column(text, start)
+          extent = m.end()-m.start()
+          errors += [(err, msg, row, col, start, end,
+                           extent, "warning", "None")]
+
+      return errors
+
 The code-blocks for extra checks
 should specify the class **extra-checks**.
 The generated file after parsing code
@@ -265,7 +295,7 @@ for extra checks is :file:`extra-checks.py`.
 
 .. note::
 
-  Inbuilt proselint function :py:func:`line_and_column` is used with extra checks to obtain the row and column of the matched text.
+  Built-in proselint function :py:func:`line_and_column` is used with extra checks to obtain the row and column of the matched text.
 
   .. py:function:: line_and_column(text, start)
 
@@ -280,6 +310,9 @@ for extra checks is :file:`extra-checks.py`.
 
 Error vs warning
 ~~~~~~~~~~~~~~~~~~
+
+- Warnings are intended to provide guidance to authors.
+- Errors enforce "hard" rules, and raising an error will stop the build.
 
 You can classify the result of a check
 as an error if you are sure
@@ -300,10 +333,10 @@ in the file :file:`style-test.py`.
 
 .. _exclude-checks:
 
-Excluding inbuilt proselint checks
+Excluding built-in proselint checks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To exclude an inbuilt proselint check,
+To exclude an built-in proselint check,
 specify the check name in the check list
 in the function :py:func:`exclude_checks`
 in the file :file:`style-test.py`.

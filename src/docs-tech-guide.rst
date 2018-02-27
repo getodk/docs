@@ -671,7 +671,7 @@ Write and edit files in your favorite editor.
 Spell check your work
 ~~~~~~~~~~~~~~~~~~~~~~
 
-After you have made the changes to the docs,
+After making changes to the docs,
 you need to run the spell checker.
 To run the spell checker:
 
@@ -699,17 +699,17 @@ to list the words before the file content.
 
   .. spelling::
 
-    word1
-    word2
+    vN.N
 
-  File content
+  Upgrading Aggregate
+  ========================
 
 .. _style-test-docs:
 
 Style-test your work
 ~~~~~~~~~~~~~~~~~~~~~
 
-After you have made the changes to the docs,
+After making changes to the docs,
 you need to run the style-guide checks.
 To run the style guide checks on all the docs:
 
@@ -724,12 +724,20 @@ To run the style guide checks on specified files:
   $ python style-test.py filename1.rst filename2.rst ...
 
 If you want to run the style guide checks
-on the files modified by you,
+on the files you modified,
 use the option :option:`-d` or :option:`--diff`.
 
 .. code-block:: console
 
   $ python style-test.py -d
+
+.. note::
+
+  Using this option, only checks the files
+  that have been edited since the last :command:`git commit`.
+  So, if you modify the files,
+  make sure to check them
+  before making a commit.
 
 To run the tests on modified files and some other specified files:
 
@@ -743,7 +751,9 @@ and eliminate the ones which violate the style guide rules.
 
 .. note::
 
-  The list of warnings may contain many false positives as well.
+  It is not necessary to fix all the warnings
+  but you should go through each warning
+  and decide if a change makes sense.
 
 If there are any errors, you need to fix them to avoid build failure.
 You can manually fix the errors or
