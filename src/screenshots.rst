@@ -80,9 +80,9 @@ Clone down ODK Collect repository
 Configuring the Build
 """"""""""""""""""""""""
 
-`Gradle <https://gradle.org/>`_ is an advanced build toolkit which is used to automate and manage the build process, while allowing you to define flexible custom build configurations. The Android plugin for Gradle works with the build toolkit to provide processes and configurable settings that are specific to building and testing Android applications.
+`Gradle <https://gradle.org/>`_ is an advanced build toolkit which is used to automate and manage the build process, while allowing you to define flexible custom build configurations. The Android plug-in for Gradle works with the build toolkit to provide processes and configurable settings that are specific to building and testing Android applications.
 
-Gradle and the Android plugin run independent of Android Studio which means that you can build Android apps from within Android Studio or from the command line on your machine. If you are not using Android Studio, you can move to the next section to know how to build Collect app from the command line. If you want to use Android Studio to build the app move to :ref:`this section <build-android-studio>`.
+Gradle and the Android plug-in run independent of Android Studio which means that you can build Android apps from within Android Studio or from the command line on your machine. If you are not using Android Studio, you can move to the next section to know how to build Collect app from the command line. If you want to use Android Studio to build the app move to :ref:`this section <build-android-studio>`.
 
 .. _building-command-line:
 
@@ -188,7 +188,7 @@ Building App from the Android Studio
 
 2. Here is a `tutorial <https://developer.android.com/studio/install.html>`_ on how to set up Android Studio according to different platforms.
 
-3. Whenver you import an Android project, Android Studio starts a gradle daemon which automatically builds the project. Alternatively you can go to :menuselection:`Build--> Make Project` to trigger gradle build.
+3. Whenever you import an Android project, Android Studio starts a gradle daemon which automatically builds the project. Alternatively you can go to :menuselection:`Build--> Make Project` to trigger gradle build.
 
 .. _generate-test-debug:
 
