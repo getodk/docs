@@ -50,11 +50,8 @@ jobs:
   build_pdf:
     working_directory: ~/work
     docker:
-      - image: tianon/latex
+      - image: schickling/latex
     steps:
-      - run:
-          name: Install bins
-          command: apt-get install git ssh tar gzip ca-certificates
       - attach_workspace:
           at: ~/work
       - run:
