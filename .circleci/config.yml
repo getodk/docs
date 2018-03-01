@@ -61,7 +61,7 @@ jobs:
               xelatex OpenDataKit.tex
               xelatex OpenDataKit.tex
               cd ../..
-              sudo cp build/latex/OpenDataKit.pdf build
+              cp build/latex/OpenDataKit.pdf build
   deploy:
     working_directory: ~/work
     docker:
