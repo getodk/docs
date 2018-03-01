@@ -54,7 +54,7 @@ jobs:
     steps:
       - run:
           name: Install bins
-          command: sudo apt-get install git ssh tar gzip ca-certificates
+          command: apt-get install git ssh tar gzip ca-certificates
       - attach_workspace:
           at: ~/work
       - run:
