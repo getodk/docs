@@ -1,3 +1,30 @@
+.. spelling::
+
+  calificaciones
+  cnt
+  cursos
+  de
+  del
+  departamento
+  edad
+  elegido
+  Español
+  estudiante
+  identificación
+  Ingresa
+  Ingrese
+  Introduzca
+  los
+  nombre
+  Nombre
+  número
+  obtenidas
+  que
+  sid
+  su
+  todos
+  totales
+
 Updating forms
 =================
 
@@ -36,7 +63,7 @@ For example:
   "integer", "sid", "Enter your student id", "", "", "", "", "", "yes", ""
   "integer", "age", "Enter your age", ".<=18", "You should be below 18 years to be eligible for the survey.", "", "", "", "yes", ""
   "select_one dept", "course", "In which department have you chosen courses?", "", "", "", "", "", "yes", ""
-  "integer", "course_cnt", "Enter number of courses you have chosen", "1<=.<=6", "You should choose atleast 1 course and atmost 6 courses.", "${course}!='none'", "", "", "yes", ""         
+  "integer", "course_cnt", "Enter number of courses you have chosen", "1<=.<=6", "You should choose at least 1 course and at most 6 courses.", "${course}!='none'", "", "", "yes", ""         
   "integer", "marks", "Enter total marks obtained in all courses", "", "", "${course}!='none'", "", "", "yes", ""
   "calculate", "total", "", "", "", "${course_cnt}!=''", "", "", "", "${course_cnt}*100"
   
@@ -46,7 +73,7 @@ For example:
 
   "dept", "Physics", "PHY"
   "dept", "Maths", "MAT"
-  "dept", "Chemsitry", "CHEM"
+  "dept", "Chemistry", "CHEM"
   "dept", "none", "none"
 
 .. csv-table:: **Settings**
@@ -65,7 +92,7 @@ If you want to make the following changes to the above form:
 - Change the calculation from **${course_cnt}*100** to **${course_cnt}*50**
 - Change the relevant for calculate to **${course}!='none' and ${course_cnt}!=''**
 - Change the list name in choices from **dept** to **dept_name**
-- Add a new choice in deptartment list as **Computer**
+- Add a new choice in department list as **Computer**
 - Change **Maths** to **Mathematics** and **MAT** to **MATHS** in choices
 
 These changes can be made as:
@@ -78,7 +105,7 @@ These changes can be made as:
   "text", "name", "Enter your name", "Introduzca su nombre", "", "", "", "", "", "yes", ""
   "integer", "age", "Enter your age", "Introduzca su edad", ".<=20", "You should be below 20 years to be eligible for the survey.", "", "", "", "yes", ""
   "select_one dept_name", "course", "Name of Department", "Nombre del departamento", "", "", "", "", "", "yes", ""
-  "integer", "course_cnt", "Enter number of courses you have chosen", "Ingresa el número de cursos que has elegido", "1<=.<=6", "You should choose atleast 1 course and atmost 6 courses.", "${course}!='none'", "", "", "yes", ""         
+  "integer", "course_cnt", "Enter number of courses you have chosen", "Ingresa el número de cursos que has elegido", "1<=.<=6", "You should choose at least 1 course and at most 6 courses.", "${course}!='none'", "", "", "yes", ""         
   "integer", "marks", "Enter total marks obtained in all courses", "Ingrese las calificaciones totales obtenidas en todos los cursos", "", "", "${course}!='none'", "", "", "yes", ""
   "calculate", "total", "", "", "", "", "${course}!='none' and ${course_cnt}!=''", "", "", "", "${course_cnt}*50"
 
@@ -88,7 +115,7 @@ These changes can be made as:
 
   "dept_name", "Physics", "PHY"
   "dept_name", "Mathematics", "MATHS"
-  "dept_name", "Chemsitry", "CHEM"
+  "dept_name", "Chemistry", "CHEM"
   "dept_name", "Computer", "COMP"
   "dept_name", "none", "none"
 
@@ -97,6 +124,31 @@ These changes can be made as:
   :widths: auto
 
   "Example_form", "example_id", "English", "2017120701"
+
+.. note::
+
+  You need to use the same filename when generating newer versions of your form since the XLSForm converter uses that filename in creating the form structure which is used by the server to help determine uniqueness. 
+
+  If you use the same filename, you can upload the form and ODK Aggregate will automatically replace the old version and keep the existing form data. If you use different filenames, you would need to delete the old version of the form (and the existing form data) in order to upload the newer version.
+
+  In the examples below, we use different filenames for version upgrade since unique filenames are required for uploading files to the documentation website.
+
+  Due to different XLSForm filenames in these examples, the generated XForms will have different instance definition as follows:
+
+  For :file:`example_form_v1.0.xlsx`:
+
+  .. code-block:: xml
+
+    <instance>
+        <example_form_v1.0 id="example_id" version="2017120700"> 
+
+  For :file:`example_form_v1.1.xlsx`:
+
+  .. code-block:: xml
+
+    <instance>
+        <example_form_v1.1 id="example_id" version="2017120701"> 
+
 
 These are the :file:`.xml` files for the above forms:
 

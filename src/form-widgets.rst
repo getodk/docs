@@ -1,3 +1,18 @@
+.. spelling::
+
+  abcd
+  ack
+  BREATHCOUNT
+  Datetime
+  dateTime
+  dk
+  na
+  nocalendar
+  nolabel
+  placementmap
+  uw
+  ZXing
+
 ***************
 Form Widgets
 ***************
@@ -153,7 +168,7 @@ XLSForm Rows
 
 
 - The **list_name** in the **choices** table matches the string *after* ``select_one`` in the **type** column of the **survey** table.
-- The content of **name** can not have spaces.
+- The content of **name** cannot have spaces.
 
 XForm XML
 ~~~~~~~~~~~
@@ -453,42 +468,42 @@ XForm XML
   <input ref="/sample-xlsform/wakeup">
     <label>What time do you usually wakeup?</label>
   </input>
-  
+
 .. _ethiopian-calendar:
 
 Ethiopian Calendar
 --------------------
 
-An Ethiopian-calendar. The main calendar used in Ethiopia. Users can enter a date according to the Ethiopian calendar system, and also see the corresponding Gregorian (standard) calendar date. 
+An Ethiopian-calendar. The main calendar used in Ethiopia. Users can enter a date according to the Ethiopian calendar system, and also see the corresponding Gregorian (standard) calendar date.
 
 .. image:: /img/form-widgets/ethiopian-start.*
   :alt: The Ethiopian calendar form widget as displayed in the ODK Collect App on an Android phone. The headline is "Ethiopian Calendar". The button label is "Select date." Below the button is the message "No date selected."
-  
-.. image:: /img/form-widgets/ethiopian2.* 
+
+.. image:: /img/form-widgets/ethiopian2.*
   :alt: The same form widget screen as previously, overlaid with popup calendar. The modal headline is "Select date." The main body shows the ethiopian calendar and contains scrollers for Day, Month and Year. Just below the main body, date according to the Ethiopian and Gregorian calendar system can be seen. In the bottom-right are Cancel and OK buttons.
-  
-.. image:: /img/form-widgets/ethiopian3.* 
-  :alt: The Ethiopian calendar form widget as displayed previously. The headline is "Ethiopian Calendar". The button label is "Select date." Below the button is the message "22 Tikimt 2010 (Nov 01, 2017)."  
-  
+
+.. image:: /img/form-widgets/ethiopian3.*
+  :alt: The Ethiopian calendar form widget as displayed previously. The headline is "Ethiopian Calendar". The button label is "Select date." Below the button is the message "22 Tikimt 2010 (Nov 01, 2017)."
+
 XLSForm Rows
 ~~~~~~~~~~~~~
 
 .. csv-table:: survey
   :header: type, name, label
-  
-  date, ethiopian-calendar, Ethiopian Calendar 
-  
+
+  date, ethiopian-calendar, Ethiopian Calendar
+
 XForm XML
 ~~~~~~~~~~~~~
-  
+
 .. code-block:: xml
-  
+
   <bind nodeset="/data/ethiopian-calendar" type="date" />
-  
+
   <input ref="/data/ethiopian-calendar" appearance="ethiopian">
     <label> Ethiopian Calendar </label>
   </input>
-  
+
 .. _datetime:
 
 Datetime
@@ -708,10 +723,10 @@ XForm XML
 Acknowledge
 -------------
 
-An acknowledgement prompt with a single checkbox. In :term:`Aggregate`, a completed acknowledgement is stored as the string response ``OK``.
+An acknowledgment prompt with a single checkbox. In :term:`Aggregate`, a completed acknowledgment is stored as the string response ``OK``.
 
 .. image:: /img/form-widgets/acknowledge.*
-  :alt: The Acknowledge form widget as displayed in the ODK Collect app on an Android phone. The headline text is, "I acknowledge this acknowledgement." Below that is a single checkbox with the label, "OK. Please continue."
+  :alt: The Acknowledge form widget as displayed in the ODK Collect app on an Android phone. The headline text is, "I acknowledge this acknowledgment." Below that is a single checkbox with the label, "OK. Please continue."
 
 XLSForm Rows
 ~~~~~~~~~~~~~~~
@@ -719,7 +734,7 @@ XLSForm Rows
 .. csv-table:: survey
   :header: type, name, label
 
-  acknowledge, ack_sample, I acknowledge this acknowledgement.
+  acknowledge, ack_sample, I acknowledge this acknowledgment.
 
 XForm XML
 ~~~~~~~~~~~~~
@@ -729,7 +744,7 @@ XForm XML
   <bind nodeset="/sample-xlsform/ack_sample" type="string"/>
 
   <trigger ref="/sample-xlsform/ack_sample">
-    <label>I acknowledge this acknowledgement.</label>
+    <label>I acknowledge this acknowledgment.</label>
   </trigger>
 
 .. _appearance:
@@ -1650,7 +1665,7 @@ Advances immediately to the next question once a selection is made.
 
 .. video:: /vid/form-widgets/auto-advance.mp4
 
-  Video showing auto-advance after the questions are answered.  
+  Video showing auto-advance after the questions are answered.
 
 XLSForm Rows
 """""""""""""

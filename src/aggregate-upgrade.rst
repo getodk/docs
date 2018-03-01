@@ -1,3 +1,22 @@
+.. spelling::
+
+  clickjacking
+  dateTime
+  datetime
+  init
+  itemset
+  JBoss
+  jr
+  memcache
+  Memcache
+  myformid
+  NaN
+  Nan
+  pgAdmin
+  Resteasy
+  ui
+  yyyymmddnn
+
 Upgrading Aggregate
 =====================
 
@@ -423,7 +442,7 @@ Aggregate v1.4.4
    2. Click through to your application id. Then click on :guilabel:`Memcache Viewer` under the :guilabel:`Data` heading in the left sidebar. Keep this window open.
    3. Now, run the installer and deploy ODK Aggregate 1.4.4 to this application id.
    4. After it has deployed, click on :guilabel:`Flush Cache` in the dashboard window's Memcache Viewer screen.
-   5. Follow the instructions :ref:`here <permission-tab>` for changing the password of the super-user username.
+   5. Follow the instructions :ref:`here  <aggregate-permissions>` for changing the password of the super-user username.
    
    Other than the need to flush this cache, and the need to delete any ODK Tables data before upgrading, this should be a seamless upgrade from ODK Aggregate 1.4.x.
 
@@ -532,7 +551,7 @@ Aggregate v1.3.2
 5. Fix publishing failure with Fusion Tables when a form with repeat groups has submissions without any repeats.
 6. Fix publisher-creation failure that can cause cycling UI refresh.
 7. Update javarosa library, adding format-date-time().
-8. Update to selemium 2.33.0 to resolve Firefox ESR 17.0.7 failures.
+8. Update to selenium 2.33.0 to resolve Firefox ESR 17.0.7 failures.
 
 .. _v1.3.1:
 
@@ -623,7 +642,7 @@ Aggregate v1.2
 
 .. note::
 
-   The use of LONGBLOB and LONGSTRING requires a configuration change in the MySQL server. The server requires the transmisison packet size to be configured large enough to hold the largest LONGBLOB or LONGSTRING you will ever send to the server. See `this <https://dev.mysql.com/doc/connector-net/en/connector-net-programming-blob-serverprep.html>`_ for details.
+   The use of LONGBLOB and LONGSTRING requires a configuration change in the MySQL server. The server requires the transmission packet size to be configured large enough to hold the largest LONGBLOB or LONGSTRING you will ever send to the server. See `this <https://dev.mysql.com/doc/connector-net/en/connector-net-programming-blob-serverprep.html>`_ for details.
 
    Alternatively, after creating your tables, you can use the MySQL ``ALTER TABLE`` command to change the LONGBLOB field to a BLOB field. This was the pre-1.2 setting, and will be the 1.2.1 setting for image fields, returning the system to use 65kB image chunks and avoiding the need to change the server configuration. If you do this, you will need to stop and restart your ODK Aggregate server for the change to be detected and take effect.
 

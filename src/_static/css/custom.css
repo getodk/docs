@@ -199,6 +199,15 @@ caption .headerlink::after {
     -moz-border-top-colors: none;
 }
 
+
+/* Style for Definition Terms when they are also
+/* menu selection or guilabel */
+
+.rst-content dt.gui-term {
+    margin-bottom: 12px;
+}
+
+
 /* Upgrade notes admonition PR #297 */
 
 /* upgrade admonition styling */
