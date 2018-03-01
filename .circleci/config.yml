@@ -20,7 +20,6 @@ jobs:
           command: |
             sudo apt-get install pngquant
             sudo apt-get install python-enchant
-            sudo apt-get install texlive-xetex
             sudo pip install -r requirements.txt
       - run:
           name: Style Guide Testing
@@ -37,11 +36,6 @@ jobs:
           command: |
             sphinx-build -b latex src build/latex
             sudo python util/resize.py
-            cd build/latex
-            xelatex OpenDataKit.tex
-            xelatex OpenDataKit.tex
-            cd ../..
-            sudo cp build/latex/OpenDataKit.pdf build
       - run:
           name: Build docs
           command: sphinx-build -W -b dirhtml src build
@@ -56,6 +50,20 @@ jobs:
           paths:
             - build/*
             - s3_website.yml
+  build_pdf:
+    docker:
+      - image: tianon/latex
+    steps:
+      - checkout
+      - run:
+          name: Build PDF
+          command: |
+              cd build/latex
+              xelatex OpenDataKit.tex
+              xelatex OpenDataKit.tex
+              cd ../..
+              sudo cp build/latex/OpenDataKit.pdf build
+
   deploy:
     working_directory: ~/work
     docker:
