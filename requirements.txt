@@ -18,4 +18,5 @@ Pillow==4.3.0
 proselint
 blessings
 gitpython
+sphinx-tabs==1.1.7
 

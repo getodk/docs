@@ -108,14 +108,14 @@ Terminal (Command Line)
 .. warning::
 
   This contributor guide is written
-  from a Linux/Unix (bash terminal) perspective, 
+  from a Linux/Unix (Bash terminal) perspective, 
   which is relevant to all flavors of Linux and macOS. 
   We consider the Bash terminal commands to be 
   the canonical way to build and work with the docs.
 
   We have also provided explanations for 
   how to adapt these commands to the Windows Command Prompt. 
-  (This is different than Windows Powershell, 
+  This is different than Windows Powershell, 
   and not all the commands will work in Powershell. 
   For more details on the Windows Command Prompt, 
   `see this article`__.
