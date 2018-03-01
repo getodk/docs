@@ -1,3 +1,7 @@
+.. spelling::
+
+  pushpins
+
 Getting Data Out of Aggregate
 ================================
 
@@ -70,7 +74,7 @@ Aggregate provides mechanism for either bulk publishing data to another service,
 
 .. note::
 
-  - If ODK Aggregate aborts its publishing attempt before it gets an acknowledgement, it will re-send the submission a short time later. If the downstream server successfully processed the first request, the re-send of that same submission can cause a duplicate record of it to appear in the downstream system. The instance ID of the submission will appear as the metainstanceid column in Google Sheets and as the *meta-instance-id* column in Google Fusion tables.
+  - If ODK Aggregate aborts its publishing attempt before it gets an acknowledgment, it will re-send the submission a short time later. If the downstream server successfully processed the first request, the re-send of that same submission can cause a duplicate record of it to appear in the downstream system. The instance ID of the submission will appear as the metainstanceid column in Google Sheets and as the *meta-instance-id* column in Google Fusion tables.
   - When the downstream server fails to respond or responds with an error code, ODK Aggregate first delays a re-send for 60 seconds, and, if that also fails, it then backs off its publishing attempts, and will re-send at either 7.5-minute or 15-minute intervals until the downstream service successfully responds, after which ODK Aggregate will resume its normal publishing behavior.  
 
 Aggregate currently supports publishing data to the following services or in the following formats:
@@ -156,7 +160,7 @@ For more details on JSON Server, RedCap Server and Ohmage JSON Server see `Aggre
 APIs
 ------
 
-ODK Aggreate has public APIs defined for sending data to and from its various components. This section gives references to those API implementations that can be used for connecting new applications to the ODK ecosystem.
+ODK Aggregate has public APIs defined for sending data to and from its various components. This section gives references to those API implementations that can be used for connecting new applications to the ODK ecosystem.
 
 .. _briefcase-cli:
 
@@ -183,7 +187,7 @@ Interfaces used during push actions are:
 
 - ``formUpload`` to upload a form and its media files to ODK Aggregate
 - ``view/submissionList`` to obtain a chunk of submission keys   
-- OpenRosa Form Submission/Overwite API (with extensions)
+- OpenRosa Form Submission/Overwrite API (with extensions)
 
 For more details, see `Briefcase Aggregate API <https://github.com/opendatakit/opendatakit/wiki/Briefcase-Aggregate-API>`_.
 

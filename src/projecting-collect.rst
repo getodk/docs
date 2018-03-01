@@ -1,3 +1,8 @@
+.. spelling::
+
+  img
+  testAVD
+
 ********************************************
 Projecting ODK Collect onto another screen
 ********************************************
@@ -292,7 +297,7 @@ You can also run the emulator using command line. Follow the steps given below t
   
   1. You can use :command:`sdkmanager` command to update, install, and uninstall packages for the Android SDK. This method is not recommended as it is not   user-friendly and also takes time.
 
-     To create an emualtor you need to download system image for a particular API level.
+     To create an emulator you need to download system image for a particular API level.
 	
     .. code-block:: console
 

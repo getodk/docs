@@ -13,19 +13,19 @@ ODK Docs uses:
 - Sphinx_, a static-site generator written in Python_
 
   Sphinx uses:
-  
+
   - Docutils_ for parsing reStructuredText_
   - Jinja_ for templating
-  
+
 - sphinx_rtd_theme_, a Sphinx theme/template
 
   sphinx_rtd_theme uses:
 
   - JQuery_, a JavaScript library
 
-- Proselint_ for style testing    
+- Proselint_ for style testing
 - git_ and GitHub_ for version control
-- CircleCI_ for testing and deployment 
+- CircleCI_ for testing and deployment
 - `Amazon S3`_ for hosting
 
 
@@ -34,7 +34,7 @@ ODK Docs uses:
 .. _docutils: http://docutils.sourceforge.net/
 .. _restructuredtext: http://docutils.sourceforge.net/rst.html
 .. _jinja: http://jinja.pocoo.org/
-.. _sphinx_rtd_theme: https://github.com/rtfd/sphinx_rtd_theme  
+.. _sphinx_rtd_theme: https://github.com/rtfd/sphinx_rtd_theme
 .. _proselint: http://proselint.com/
 .. _git: https://git-scm.com/
 .. _github: https://github.com/opendatakit/docs
@@ -47,12 +47,12 @@ ODK Docs uses:
 Custom HTML templating
 -------------------------
 
-ODK Docs uses the sphinx_rtd_theme_, 
+ODK Docs uses the sphinx_rtd_theme_,
 with some minor customizations.
 
 ODK-specific versions of HTML/Jinja templates
 are in :file:`_templates`.
-Any file in that directory 
+Any file in that directory
 will override the file of the same name
 in the sphinx_rtd_theme source.
 
@@ -62,7 +62,7 @@ and then edit it.
 
 Please commit the copied file unchanged before editing,
 so that it is easy to track what you have changed.
-  
+
 .. _custom-js:
 
 Custom JavaScript
@@ -82,7 +82,7 @@ so you can use it in your custom JS.
 Custom CSS
 ------------
 
-Custom CSS should be added in :file:`src/_static/css/custom.css`. 
+Custom CSS should be added in :file:`src/_static/css/custom.css`.
 Comment your code with an explanation of what the CSS accomplishes
 and a reference to the issue number you are working on.
 
@@ -90,7 +90,7 @@ For example:
 
 .. code-block:: css
 
-  /* Example css PR #xyx */
+  /* Example CSS PR #xyx */
 
   div[class^='example'] {
     color: black;
@@ -100,13 +100,13 @@ It is helpful to keep the CSS file organized.
 There are several sections in the :file:`custom.css` file:
 
 - Styling for rst roles and directives
-- Responsive css
+- Responsive CSS
 - Styling for JS implementation
 - Utility classes
 
-Each of these sections are enclosed in start and end comments. 
-Add your code to the relevant section. 
-If you don't find any section relevant, 
+Each of these sections are enclosed in start and end comments.
+Add your code to the relevant section.
+If you don't find any section relevant,
 add a new section and add your code there.
 
 For example:
@@ -115,10 +115,10 @@ For example:
 
   /* New section starts */
 
-  /* Example css PR #xyx */
+  /* Example CSS PR #xyx */
 
   div[class^='example'] {
     color: black;
   }
-  
-  /* New section ends */ 
+
+  /* New section ends */
