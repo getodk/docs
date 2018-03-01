@@ -1,3 +1,15 @@
+.. spelling::
+
+ fastlane
+ screengrab
+ Screengrab
+ Gradle
+ gradle
+ androidTest
+ apks
+ sdk
+ 
+
 Automating Form-Widgets Guide
 ===================================
 
@@ -119,7 +131,7 @@ Building App from the Command Line
 
     > cd tools\bin
 
-  On linux or Mac:
+  On Linux or Mac:
 
   .. code-block:: console
 
