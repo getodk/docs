@@ -39,9 +39,6 @@ jobs:
       - run:
           name: Build docs
           command: sphinx-build -W -b dirhtml src build
-      - run:
-          name: Compress images
-          command: pngquant build/_images/*.png --force --ext .png --verbose
       - store_artifacts:
           path: build
           destination: build
@@ -55,7 +52,11 @@ jobs:
     docker:
       - image: tianon/latex
     steps:
-      - checkout
+      - run:
+          name: Install bins
+          command: sudo apt-get install git ssh tar gzip ca-certificates
+      - attach_workspace:
+          at: ~/work
       - run:
           name: Build PDF
           command: |
@@ -64,7 +65,6 @@ jobs:
               xelatex OpenDataKit.tex
               cd ../..
               sudo cp build/latex/OpenDataKit.pdf build
-
   deploy:
     working_directory: ~/work
     docker:
