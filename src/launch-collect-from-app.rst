@@ -67,7 +67,7 @@ Getting the URI of a form or instance chosen by the user
   static final int PICK_FORM_REQUEST = 1;  // The request code
   startActivityForResult(intent, PICK_FORM_REQUEST);
  
-To get the result, override ``onActivityResultMethod`` in the followig way:
+To get the result, override ``onActivityResultMethod`` in the following way:
 
 .. code-block:: java
 

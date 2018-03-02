@@ -16,7 +16,7 @@ Click the :guilabel:`Log In` link in the upper right corner of the screen to be 
 
  Beginning with ODK Aggregate 1.3.2, upon the initial installation of the server, it is configured to allow unauthenticated (`anonymousUser`) submissions from ODK Collect and unauthenticated browser access to the submissions and forms management functionality of ODK Aggregate.
 
-.. _permission-tab:
+.. _aggregate-permissions:
 
 Permissions
 ~~~~~~~~~~~~~
