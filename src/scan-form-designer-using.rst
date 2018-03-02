@@ -184,7 +184,7 @@ Once you have a QR code saved as an image, you can add it to your form like any 
 Checkboxes and Fill-in Bubbles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For ODK Scan, Fill-In Bubbles and Checkboxes have the same functionalities and options; they only vary in terms of aesthetic.
+For ODK Scan, Fill-In Bubbles and Checkboxes have the same functionalities and options; they only vary in how they look.
 
 .. note::
 
