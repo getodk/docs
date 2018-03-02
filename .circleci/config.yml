@@ -63,8 +63,9 @@ jobs:
               cd build/latex
               xelatex OpenDataKit.tex
               xelatex OpenDataKit.tex
-              cd ../..
-              cp build/latex/OpenDataKit.pdf build
+      - store_artifacts:
+          path: build/latex/OpenDataKit.pdf
+          destination: OpenDataKit.pdf
 
   deploy:
     working_directory: ~/work
