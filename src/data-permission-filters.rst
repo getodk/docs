@@ -1,3 +1,10 @@
+.. spelling::
+  rw
+  rwd
+  rwdp
+  defaultAccessOnCreation
+  unverifiedUserCanCreate
+
 Data Permission Filters
 ========================
 
@@ -39,7 +46,7 @@ Verified User Identities
 
 Enforcing restrictions on who can see or modify data requires that the identity of the user has been verified.
 
-When configuring the :guilabel:`Server Settings`, any changes to any of the settings (such as the server URL, type of credential (or anonymous access), username, password or gmail account) will clear any prior user identity and capability information and flag the user identity as unverified.
+When configuring the :guilabel:`Server Settings`, any changes to any of the settings (such as the server URL, type of credential (or anonymous access), username, password or Gmail account) will clear any prior user identity and capability information and flag the user identity as unverified.
 
 When leaving the :guilabel:`Server Settings` screen, a user-verification screen will then be presented (unless no server sign-on credential is specified, in which case anonymous access to the server will be attempted):
 
@@ -47,7 +54,7 @@ When leaving the :guilabel:`Server Settings` screen, a user-verification screen 
   :alt: Verify User Screen
   :class: device-screen-vertical
 
-Clicking the "guilabel:`Verify User Permissions` button on this screen will initiate a series of requests to the configured server. These requests verify that the server URL is correct, that the server works with this application name, and then verify the server sign-on credential that has been configured on the :guilabel:`Server Settings` page.
+Clicking the :guilabel:`Verify User Permissions` button on this screen will initiate a series of requests to the configured server. These requests verify that the server URL is correct, that the server works with this application name, and then verify the server sign-on credential that has been configured on the :guilabel:`Server Settings` page.
 
 .. warning::
 

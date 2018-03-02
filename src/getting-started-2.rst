@@ -31,7 +31,7 @@ ODK 2.0 tools access configuration files and store data under sub-directories of
 
 This is handled in such a way that each user application is isolated from all other user applications, with separate configurations, data tables, and server settings. This allows one device to run multiple user applications built on top of the ODK 2.0 tools without any coordination among the teams developing those applications.
 
-A major goal of the 2.0 tools was to eliminate the need for any software engineering skills (e.g., Java programming, Android software development environment, source code version control systems) when designing data management applications. The skills required to build a data management application range from scripting a form definition in XLSX (similar to constructing ODK Collect forms using XLSX files processed by the XLSForm tool), to simple web programming -- modifying boilerplate HTML and JavaScript for custom presentations of the collected data. Advanced web programmers can also easily implement entirely-custom webpages.
+A major goal of the 2.0 tools was to eliminate the need for any software engineering skills (e.g., Java programming, Android software development environment, source code version control systems) when designing data management applications. The skills required to build a data management application range from scripting a form definition in XLSX (similar to constructing ODK Collect forms using XLSX files processed by the XLSForm tool), to simple web programming -- modifying boilerplate HTML and JavaScript for custom presentations of the collected data. Advanced web programmers can also easily implement entirely-custom web pages.
 
 .. _using-odk-2-joining-a-server:
 
@@ -56,7 +56,7 @@ Follow the steps described above to join the ODK Aggregate server hosting our si
   #. Click on :menuselection:`Server URL` and replace the default server with *https://opendatakit-simpledemo.appspot.com* then click :guilabel:`OK`.
   #. Back out of settings then choose :guilabel:`Sync Now`.
 
-The synchronization process will now occu
+The synchronization process will now occur.
 
 .. note::
 
@@ -327,7 +327,7 @@ Delete each of the tables here. In this case, there will be only one, *Geotagger
 
   If your table has a large number of configuration files or data rows, the server may time out during the deletion process. In this case, the next time you try to create the table on the server, it will resume the deletion process, and potentially time out again until such time as it is able to finish the deletion; only then will it re-create the table.
 
-Now, from your device, launch ODK Tables, click on the sync icon (two curved arrows) to launch ODK Services, make sure you are loggin in as a user with :guilabel:`Administer Tables` or :guilabel:`Site Admin` privileges, and choose :guilabel:`Reset App Server`.
+Now, from your device, launch ODK Tables, click on the sync icon (two curved arrows) to launch ODK Services, make sure you are logging in as a user with :guilabel:`Administer Tables` or :guilabel:`Site Admin` privileges, and choose :guilabel:`Reset App Server`.
 
 The synchronization process will create the tables and push your content up to this server. Note that the server now only contains the data rows present on the device -- it no longer has any of the additional data records from the demo site.
 

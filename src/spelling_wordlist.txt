@@ -22,11 +22,16 @@ Barcode
 barcodes
 Bluetooth
 bluetooth
+camelCase
 checkbox
 checkboxes
+clickable
+config
 configurer
+Cron
 csv
 CSV
+curation
 Cygwin
 datacenter
 Datastore
@@ -46,6 +51,7 @@ dropdowns
 Enketo
 enketo
 ethiopian
+formDef
 formID
 formId
 formid
@@ -57,6 +63,7 @@ geolocation
 Geolocation
 geopoint
 Geopoint
+geopoints
 geoshape
 Geoshape
 geotagger
@@ -84,9 +91,11 @@ internet
 Javarosa
 javarosa
 Javascript
+JavaScript
 jpeg
 jpg
 jQuery
+js
 json
 judgement
 kB
@@ -94,6 +103,8 @@ keypair
 keystore
 kml
 KML
+LDAP
+ldaps
 macOS
 malware
 Metadata
@@ -127,6 +138,7 @@ online
 onscreen
 opendatakit
 OpenRosa
+orderBy
 passcode
 plaintext
 plugins
@@ -147,6 +159,7 @@ relevants
 Relevants
 repo
 reStructuredText
+reusability
 righthand
 rst
 sandboxing
@@ -157,6 +170,7 @@ Screenshots
 screenshots
 scriptable
 sdcard
+selectionArgs
 selfie
 Selfie
 servlet
@@ -166,6 +180,8 @@ smartphone
 spam
 sphinxcontrib
 subfolders
+subform
+subforms
 subkeys
 submissionList
 templating
@@ -179,9 +195,13 @@ Uncheck
 unchecking
 Unchecking
 unclaim
+ungroup
 uninstall
+uninstalling
+unselect
 uploader
 Uploader
+uri
 url
 USB
 username
@@ -193,6 +213,7 @@ Virtualenv
 virtualenv
 Virtualenvwrapper
 virtualenvwrapper
+virtualization
 Vysor
 wayfinding
 webapps

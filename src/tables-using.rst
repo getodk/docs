@@ -1,3 +1,10 @@
+.. spelling::
+  Wi
+  Fi
+  Goodall
+  allfields
+
+
 Using ODK Tables
 ===================
 
@@ -24,7 +31,7 @@ The sample application's custom home screen has five tabs. Select the :guilabel:
 
 .. note::
 
-  All of these screens and web pages are served directly off of the device -- there is no network access. These are fully able to function in Airplane modee -- without a Wi-Fi or internet connection.
+  All of these screens and web pages are served directly off of the device -- there is no network access. These are fully able to function in Airplane mode -- without a Wi-Fi or internet connection.
 
   When you design your applications, you can either have them operate without any network access, or you can write them to access data on the internet. This becomes your design choice.
 
@@ -42,7 +49,7 @@ Within ODK Tables, full data sets can be viewed in the following ways:
 
     .. note::
 
-      *Spreadsheet View*, unlike all the other options here, is rendered with Android user interfaces rather than your own customized HTML and Javasript.
+      *Spreadsheet View*, unlike all the other options here, is rendered with Android user interfaces rather than your own customized HTML and JavaScript.
 
   - :ref:`Map View <tables-using-view-data-map>` -- A pap displaying data points which can be selected to display details of data associated with that data point.
 
@@ -62,7 +69,7 @@ The following sections take you through an example of each type of view from the
 List View
 ~~~~~~~~~~~~~~~~~
 
-After clicking on the :guilabel:`View Tea Houses` button in the :ref:`custom home screen section <tables-using-custom-home>` you are looking at a *List View* of the *Tea Houses* table. This view is designed entirely in JavaScript and HTML, and we’ve customized it for the *Tea Houses* table. Click on the lined paper icon at the top of the screen. Here you’ll see all the possible view types. Select :menuselection:`Spreadsheet`.
+After clicking on the :guilabel:`View Tea Houses` button in the :ref:`custom home screen section <tables-using-custom-home>` you are looking at a *List View* of the *Tea Houses* table. This view is designed entirely in JavaScript and HTML, and we have customized it for the *Tea Houses* table. Click on the lined paper icon at the top of the screen. Here you’ll see all the possible view types. Select :menuselection:`Spreadsheet`.
 
 .. _tables-using-view-data-spreadsheet:
 

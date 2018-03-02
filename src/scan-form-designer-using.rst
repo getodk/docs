@@ -100,10 +100,10 @@ Add Images
 
   3. Use cursor to select the area of the image you want to use; this can be resized later.
   4. :guilabel:`Add Selection`
-  5. Selected image will be placed in the upper lefthand corner of the editing layer workspace. Drag the center of the image to place it where you want on the form, and the corners of the image to resize it.
+  5. Selected image will be placed in the upper left-hand corner of the editing layer workspace. Drag the center of the image to place it where you want on the form, and the corners of the image to resize it.
   6. You can keep adding selections from the same image while in :guilabel:`Image Layer` mode.
   7. Return to :menuselection:`Edit --> Field` to add more fields.
-  8. If you return to :menuselection:`Edit --> Image` to add more images, you will see the previously uploaded files in the righthand corner of the workspace. Click on a file to quickly load the image for reselection.
+  8. If you return to :menuselection:`Edit --> Image` to add more images, you will see the previously uploaded files in the righthand corner of the workspace. Click on a file to quickly load the image for selection.
 
   .. image:: /img/scan-form-designer/scan-form-apply-image.*
     :alt: Apply an Image to Scan Form
@@ -153,7 +153,7 @@ This will be a blank field where users will write in information. In the scannin
 
 .. note::
 
-  To digitze a text box, a user will manually transcribe the image of the text box into a text prompt in ODK Survey.
+  To digitize a text box, a user will manually transcribe the image of the text box into a text prompt in ODK Survey.
 
 .. _scan-form-using-adding-fields-text:
 
@@ -184,7 +184,7 @@ Once you have a QR code saved as an image, you can add it to your form like any 
 Checkboxes and Fill-in Bubbles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For ODK Scan, Fill-In Bubbles and Checkboxes have the same functionalities and options; they only vary in terms of esthetic.
+For ODK Scan, Fill-In Bubbles and Checkboxes have the same functionalities and options; they only vary in terms of aesthetic.
 
 .. note::
 
@@ -198,7 +198,7 @@ Bubble Type
 The :guilabel:`Bubble type` field allows you to select how to categorize and count user entries.
   - :menuselection:`Tally`: Filled bubbles will be read by ODK Scan as one unit each and will be added up to result in a number value. Each filled bubble/checkbox is one tally mark. (for example, one filled bubble for each child vaccinated).
   - :menuselection:`Select one`: User chooses only one answer to the prompt. (for example, Male or Female).
-  - :menuselection:`Select many`: User chooses all applicable answers. (for example, Reasons for extra care: Low birthweight, family history of infant death, twins...).
+  - :menuselection:`Select many`: User chooses all applicable answers. (for example, Reasons for extra care: Low birth weight, family history of infant death, twins...).
 
 .. image:: /img/scan-form-designer/create-bubbles-menu.*
   :alt: Adding Bubble Fields in Scan Form Designer

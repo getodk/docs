@@ -1,3 +1,23 @@
+.. spelling::
+  openRowInitialElementKeyToValueMap
+  newRowInitialElementKeyToValueMap
+  exampleForm
+  isSessionVariable
+  keyMapLongCol
+  keyMapLatCol
+  keyColorRuleType
+  mapListViewFileName
+  listViewFileName
+  defaultViewFileName
+  defaultViewType
+  hindi
+  templatePath
+  attr
+  inputAttributes
+  hideInContents
+  detailViewFileName
+
+
 ODK XLSX Converter Reference
 ================================
 
@@ -253,7 +273,7 @@ A list of the optional columns that can be incorporated into a **survey** worksh
       | will not be displayed on the contents screen.
   * - inputAttributes.<attr>
     - | This column can be used in conjunction with the following
-      | prompt types: :tc:`string`, :tc:`text`, :tc:`integer`, :tc:`decimal`. The <attr> can
+      | prompt types: :tc:`string`, :tc:`text`, :tc:`integer`, :tc:`decimal`. The :code:`<attr>` can
       | specify an HTML attribute to be added to the prompt types.
       | For example, :th:`inputAttributes.min` with a value of 5 would add
       | :code:`min=”5”` into the HTML element for the prompt type.
@@ -455,12 +475,12 @@ A sample **settings** worksheet might look like this:
     -
     -
     - English
-    - English (as hindi name)
+    - English (as Hindi name)
   * - hindi
     -
     -
     - Hindi
-    - Hindi (as hindi name)
+    - Hindi (as Hindi name)
 
 .. tip::
 
@@ -568,7 +588,7 @@ Each row of the **calculates** page represents a function that can be used elsew
 
   There are  built in functions for ODK Survey that can be used anywhere in the workbook. See the :ref:`Forumla Functions <xlsx-ref-formula>` section for more details.
 
-If a complex calculation is required, you can access the full power of javascript and the :program:`jquery.js` (that is: :code:`$.some_func(...)` ) and :program:`underscore.js` (that is: :code:`_.some_func(...)` ) libraries. Internally, the calculate column is wrapped and evaluated as a javascript function:
+If a complex calculation is required, you can access the full power of Javascript and the :program:`jquery.js` (that is: :code:`$.some_func(...)` ) and :program:`underscore.js` (that is: :code:`_.some_func(...)` ) libraries. Internally, the calculate column is wrapped and evaluated as a Javascript function:
 
 .. code-block:: javascript
 
@@ -754,21 +774,21 @@ The **queries** worksheet is an optional sheet that allows you to request data f
     - | Used by :tc:`linked_table` queries to specify the
       | order in which results should be returned.
   * - newRowInitialElementKeyToValueMap
-    - | Used by :tc:`linked_table` queries. A javascript
+    - | Used by :tc:`linked_table` queries. A Javascript
       | object containing key value pairs used to assign
       | initial values when creating a new row in the
       | linked table. The key is the element name in the
       | linked form. The value is the initial value to
       | assign to the element.
   * - openRowInitialElementKeyToValueMap
-    - | Used by :tc:`linked_table` queries. A javascript
+    - | Used by :tc:`linked_table` queries. A JavaScript
       | object containing key value pairs used to assign
       | initial values when opening an existing row in the
       | linked table. The key is the element name in the
       | linked form. The value is the initial value to
       | assign to the element.
 
-The two columns :th:`newRowInitialElementKeyToValueMap` and :th:`openRowInitialElementKeyToValueMap` allow you to pass information from your originating form into the linked form. The element keys in these maps correspond to the element keys in the linked form (not the current form). These can refer to any of the form's fields; commonly, the values you would pass into the :th:`openRowInitialElementKeyToValueMap` would refer to session variables. You would typically pass the :th:`instanceID` of the originating form (that is: :code:`opendatakit.getInstanceID()` ) into the linked form when creating it so thay you can store that id in a field in that linked table, thereby tying the newly-created row in that table back to the originating form's row.
+The two columns :th:`newRowInitialElementKeyToValueMap` and :th:`openRowInitialElementKeyToValueMap` allow you to pass information from your originating form into the linked form. The element keys in these maps correspond to the element keys in the linked form (not the current form). These can refer to any of the form's fields; commonly, the values you would pass into the :th:`openRowInitialElementKeyToValueMap` would refer to session variables. You would typically pass the :th:`instanceID` of the originating form (that is: :code:`opendatakit.getInstanceID()` ) into the linked form when creating it so that you can store that id in a field in that linked table, thereby tying the newly-created row in that table back to the originating form's row.
 
 .. _xlsx-ref-user-defined:
 
@@ -856,7 +876,7 @@ The **framework_translations** sheet is only present in the :file:`framework.xls
       | for this locale.  There can be as many of these columns as you want
       | translated languages (i.e. :th:`video.default`, :th:`video.gr`, :th:`video.es`).
 
-The locale code should generally be the 2-letter langauge code, or, if necessary, the *language_COUNTRY* naming used by Android can be used to identify a specific language variant. For example: *en_US*, *en_UK* for US English and UK English, respectively.
+The locale code should generally be the 2-letter language code, or, if necessary, the *language_COUNTRY* naming used by Android can be used to identify a specific language variant. For example: *en_US*, *en_UK* for US English and UK English, respectively.
 
 .. _xlsx-ref-common-translations:
 
@@ -891,7 +911,7 @@ The format for this sheet is the same as that for the **framework_translations**
       | for this locale.  There can be as many of these columns as you want
       | translated languages (i.e. :th:`video.default`, :th:`video.gr`, :th:`video.es`).
 
-The locale code should generally be the 2-letter langauge code, or, if necessary, the *language_COUNTRY* naming used by Android can be used to identify a specific language variant. For example: *en_US*, *en_UK* for US English and UK English, respectively.
+The locale code should generally be the 2-letter language code, or, if necessary, the *language_COUNTRY* naming used by Android can be used to identify a specific language variant. For example: *en_US*, *en_UK* for US English and UK English, respectively.
 
 .. _xlsx-ref-table-translations:
 
@@ -924,7 +944,7 @@ The **table_specific_translations** sheet is optional. It should only be present
       | for this locale.  There can be as many of these columns as you want
       | translated languages (i.e. :th:`video.default`, :th:`video.gr`, :th:`video.es`).
 
-The locale code should generally be the 2-letter langauge code, or, if necessary, the *language_COUNTRY* naming used by Android can be used to identify a specific language variant. For example: *en_US*, *en_UK* for US English and UK English, respectively.
+The locale code should generally be the 2-letter language code, or, if necessary, the *language_COUNTRY* naming used by Android can be used to identify a specific language variant. For example: *en_US*, *en_UK* for US English and UK English, respectively.
 
 .. _xlsx-ref-built-in:
 

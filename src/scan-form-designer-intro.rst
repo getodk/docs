@@ -22,7 +22,7 @@ You can begin using the Scan app once you've got a form template and forms with 
 
 Video tutorials for each of these steps --from designing to exporting your form template-- are available `as a YouTube playlist <https://www.youtube.com/playlist?list=PLInM3bDqDAn-liFsahcdHQxtjSHWQIw83>`_.
 
-Once you have exported your completed form you can transfer the form template to the ODK Scan app and begin scanning paper forms. See the :doc:`scan-intro` documenation for more on those next steps.
+Once you have exported your completed form you can transfer the form template to the ODK Scan app and begin scanning paper forms. See the :doc:`scan-intro` documentation for more on those next steps.
 
 .. _scan-form-user-guide:
 

@@ -239,7 +239,7 @@ This process is more involved on Mac/Unix than on Windows. Use a text editor (no
 
   $ echo ~
 
-in a :program:`terminal`. ('~' is a shortcut for the home directory.) Macs use a hidden file called :file:`.bash_profile` in the home directory to set variables like *PATH*. Other unix systems use files like :file:`.bashrc`. You might have to check the specifics for your distribution to know which you should use. Open the appropriate file. If the file does not already exist, create a new file that will be saved with the appropriate name in your home directory.
+in a :program:`terminal`. ('~' is a shortcut for the home directory.) Macs use a hidden file called :file:`.bash_profile` in the home directory to set variables like *PATH*. Other Unix systems use files like :file:`.bashrc`. You might have to check the specifics for your distribution to know which you should use. Open the appropriate file. If the file does not already exist, create a new file that will be saved with the appropriate name in your home directory.
 
 We want to add the location of the :program:`adb` tool to your *PATH* while preserving the existing *PATH* information. Assuming that your :program:`adb` program is in the :file:`/Users/someuser/Desktop/android-sdk/platform-tools/` directory, you would add the following command to the end of the :file:`.bash_profile` file:
 

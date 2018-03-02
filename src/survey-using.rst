@@ -1,3 +1,6 @@
+.. spelling::
+  myapp
+
 Using ODK Survey
 =======================
 
@@ -82,7 +85,7 @@ Now, play around with launching ODK Survey using this application shortcut and :
 
 This highlights the isolation of applications in the ODK 2.0 tools. This is even more powerful with applications that use ODK Tables because you can create entirely isolated applications, such as a forestry app and a health clinic app, and have the forms and data entirely independent of each other.
 
-This should eliminate much of the need for different groups to fork the ODK codebase.
+This should eliminate much of the need for different groups to fork the ODK code base.
 
 .. _survey-using-dev-environment:
 

@@ -1,3 +1,7 @@
+.. spelling::
+  testForm
+  getHashString
+
 Application Designer Common Tasks
 ====================================
 

@@ -1,3 +1,7 @@
+.. spelling::
+  phpLDAPadmin
+  readonly
+
 ODK Sync Endpoint
 =====================
 
@@ -161,7 +165,7 @@ Stopping ODK Sync Endpoint
 
   2. OPTIONAL: If you want to remove the volumes as well,
 
-    - Linux/MacOS:
+    - Linux/macOS:
 
     .. code-block:: console
 
@@ -182,13 +186,13 @@ LDAP
   - The default password is *admin* - it can be changed with the *LDAP_ADMIN_PASSWORD* environment variable in :file:`ldap.env`
 
   - The default readonly account is *cn=readonly,dc=example,dc=org*.
-  - The defualt password is *readonly* - it can be changed with the *LDAP_READONLY_USER_PASSWORD* environment variable in :file:`ldap.env`. This account is used by the Sync Endpoint to retrieve user information.
+  - The default password is *readonly* - it can be changed with the *LDAP_READONLY_USER_PASSWORD* environment variable in :file:`ldap.env`. This account is used by the Sync Endpoint to retrieve user information.
 
-Ther LDAP directory that you deployed with the instructions above is an :program:`OpenLDAP` server. In addition to the directory, a :program:`phpLDAPadmin` server is also deployed to help you configure the directory.
+The LDAP directory that you deployed with the instructions above is an :program:`OpenLDAP` server. In addition to the directory, a :program:`phpLDAPadmin` server is also deployed to help you configure the directory.
 
-If you'd perfer to use the :program:`OpenLDAP` command line utilities, they're installed in the OpenLDAP container. These tools are accessible with this command:
+If you'd prefer to use the :program:`OpenLDAP` command line utilities, they're installed in the OpenLDAP container. These tools are accessible with this command:
 
-  - Linux/MacOS:
+  - Linux/macOS:
 
   .. code-block:: console
 

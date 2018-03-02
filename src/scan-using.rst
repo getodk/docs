@@ -1,3 +1,6 @@
+.. spelling::
+  Plexiglass
+
 Using ODK Scan
 ====================
 
@@ -24,7 +27,7 @@ ODK Scan works with machine readable forms created using the :doc:`scan-form-des
 After creating a form with Form Designer, you'll have generated the machine readable files. To push them to your device, you will use the same mechanism that is used to push Survey and Tables files to the device.
 
   #. Create a form using the ODK Scan Form Designer. Save that form with the :guilabel:`Save to File System` option.
-  #. Follow the instructions in the :ref:`Application Designer Guide <app-designer-common-tasks-move-to-device>` to push updates to the device. These describe pushign Survey files, but they will push Scan files to the device too with the same procedure.
+  #. Follow the instructions in the :ref:`Application Designer Guide <app-designer-common-tasks-move-to-device>` to push updates to the device. These describe pushing Survey files, but they will push Scan files to the device too with the same procedure.
   #. To confirm that the *[your_form]* template has been successfully been transferred, open the ODK Scan app on your device and go to :guilabel:`Settings` (the wheel icon) and select :menuselection:`Templates to Use`. The folder name should appear in the list of templates.
 
 .. image:: /img/scan-using/scan-template-list.*
@@ -65,7 +68,7 @@ Scanning the form
       :alt: Scan camera capturing form image
 
   3. If the preview of the photo looks good, tap the checkbox icon to move onto the next step. To retake the photo tap the :guilabel:`Back` button and to exit the camera tap the :guilabel:`X`.
-  4. Once you select the checkmark to begin photo processing, a small message will pop up saying *Processing photo in background.*
+  4. Once you select the check mark to begin photo processing, a small message will pop up saying *Processing photo in background.*
   5. When the photo has been successfully (or unsuccessfully) processed, you will see a notification at the top of the screen in the Android toolbar. Pull the top toolbar down and tap the ODK Scan notification. This will open Scan and pull up the photo of the selected scan.
 
     - The successfully processed photo will show an overlay of colored boxes that indicate the fields that Scan has detected. Any bubbles or checkboxes recognized as filled will show an overlay of the value that was assigned to them in the form designer. Number fields will show an overlay of the number that the app recognized for each digit.
@@ -80,7 +83,7 @@ Scanning the form
 
 .. tip::
 
-  To increase accuracy of Scan's results, you can consider building a stand with a clear plastic surface to place your phone or tablet on top off while you take the each photo. The stability can help improve the alignment and reduce blur in photos. Below is an example of a stand built with PVC piping and plexiglass.
+  To increase accuracy of Scan's results, you can consider building a stand with a clear plastic surface to place your phone or tablet on top off while you take the each photo. The stability can help improve the alignment and reduce blur in photos. Below is an example of a stand built with PVC piping and Plexiglass.
 
   .. image:: /img/scan-using/scan-stand.*
     :alt: Custom build stand for improved Scan accuracy
@@ -155,7 +158,7 @@ Your Data in Tables
 With each verified and finalized scan, a new line of data will be entered into Tables. To view (on your device) the verified data collected in this instance: open the Tables app and select the line with your form's name listed. This will open up a spreadsheet of your data. If you need to need to edit the data in a record from here:
 
   1. Double tap on the cell you want to edit.
-  2. You'll be given the option to either :guilabel:`Edit` or guilabel:`Delete` that row. Choosing :guilabel:`Edit` will launch the form in Survey.
+  2. You'll be given the option to either :guilabel:`Edit` or :guilabel:`Delete` that row. Choosing :guilabel:`Edit` will launch the form in Survey.
   3. You can change the :guilabel:`View Type`, :guilabel:`Color Settings`, and more by pressing the settings wheel and making any changes you need.
 
 .. image:: /img/scan-using/scan-tables-view.*
@@ -176,7 +179,7 @@ Prerequisites for Syncing
   1. :doc:`services-intro` must be installed on your device
   2. A compatible :doc:`cloud-endpoints-intro` server must be set up.
 
-To sync your device-stored data with your ODK Cloud Endpoint, open ODK Services and launch the sync interface (press the circular arrow button along the top bar). Make sure you have the correct settings for your *Endpoint URL* and *Account*. Make sure your device is connected to the Internet. Instructions are availble in the :ref:`ODK Services guide <services-using-sync>`.
+To sync your device-stored data with your ODK Cloud Endpoint, open ODK Services and launch the sync interface (press the circular arrow button along the top bar). Make sure you have the correct settings for your *Endpoint URL* and *Account*. Make sure your device is connected to the Internet. Instructions are available in the :ref:`ODK Services guide <services-using-sync>`.
 
 .. _scan-using-syncing-viewing:
 

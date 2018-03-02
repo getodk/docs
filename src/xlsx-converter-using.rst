@@ -1,9 +1,26 @@
+.. spelling::
+  getHashString
+  getCurrentInstanceId
+  tienes
+  Cuántos
+  años
+  Cuál
+  es
+  su
+  nombre
+  newRowInitialElementKeyToValueMap
+  happyBirthday
+  isBirthdayToday
+  getTime
+  daysOld
+  num
+
 Using ODK XLSX Converter
 =============================
 
 .. _xlsx-using:
 
-ODK Survey offers a rich set of features that can be seamlessly integrated into a custom form. A lot of the functionality can be implemented solely within an Excel workbook. Thise guide is designed to help you take advantage of this via a guided tour of example tasks.
+ODK Survey offers a rich set of features that can be seamlessly integrated into a custom form. A lot of the functionality can be implemented solely within an Excel workbook. This guide is designed to help you take advantage of this via a guided tour of example tasks.
 
 .. contents:: :local:
 
@@ -95,7 +112,7 @@ The pizza survey example used earlier can be improved upon with multiple choice 
   "if", "selected(data('person_age'), 'yes')",
   "begin screen",
   ,,"select_multiple", "topping_list", "pizza_type", "What are your favorite kind of pizza toppings (select up to 3)?"
-  ,,"integer", "num_slic", "How many slices would you like?"
+  ,,"integer", "num_slice", "How many slices would you like?"
   "end screen",
   "else",
   ,,"note", "You are too young to be eating pizza"
@@ -108,13 +125,13 @@ and the corresponding **choices** worksheet would look like this:
 
   "yes_no", "ye", "Yes"
   "yes_no", "no", "No"
-  "topping_list", "pepperon", "Pepperoni"
+  "topping_list", "pepperoni", "Pepperoni"
   "topping_list", "olives", "Black Olives"
   "topping_list", "onions", "Onions"
   "topping_list", "mushroom", "Mushrooms"
   "topping_list", "pepper", "Green Peppers"
-  "topping_list", "baco", "Canadian Bacon"
-  "topping_list", "pineappl", "Pineapple"
+  "topping_list", "bacon", "Canadian Bacon"
+  "topping_list", "pineapple", "Pineapple"
 
 Now, instead of typing their age, the user simply selects whether they are older than 18 or not. Furthermore, instead of entering the type of pizza they like, they can select from a list of toppings.
 
@@ -137,7 +154,7 @@ Custom section worksheets can be added to a workbook to make the control flow of
 .. tip::
   When splitting a survey into different sections, it is wise to put a :tc:`note` before each section call with :th:`display.prompt.text` set to read *Section <name_of_section>*. This is because a :tc:`do` :tc:`section <name_of_section>` call is transparent to the user. Unless the form designer explicitly adds a :tc:`note`, the user will not realize that they entered a section.
 
-  Also, after leaving a section, if the user swipes back, the survey will go to the row before the :tc:`do` :tc:` section` call. If the user then swipes forward at this point, the survey will go to the beginning of the section they just completed. It is often beneficial to the user to put a :tc:`note` before entering a section and before leaving a section.
+  Also, after leaving a section, if the user swipes back, the survey will go to the row before the :tc:`do` :tc:`section` call. If the user then swipes forward at this point, the survey will go to the beginning of the section they just completed. It is often beneficial to the user to put a :tc:`note` before entering a section and before leaving a section.
 
 .. _xlsx-using-calculations:
 
@@ -147,7 +164,7 @@ Using Calculations
 The **calculates** worksheet is an optional worksheet. It consists of two columns:
 
   - :th:`calculation_name`: Each row of the **calculates** page represents a function that can be used elsewhere in the workbook by referencing the individual :th:`calculation_name`.
-  - :th"`calculation`: The calculation to be performed.
+  - :th:`calculation`: The calculation to be performed.
 
 .. note::
 
@@ -171,7 +188,7 @@ and one of the **survey** worksheets may look like this:
   :header: "clause, "condition", "type", "name", "display.prompt.text"
 
   "if", "calculates.isBirthdayToday()",
-  ,,"note", "happyBirthda", "Happy Birthday!"
+  ,,"note", "happyBirthday", "Happy Birthday!"
   "end if",
 
 Notice that the <:th:`calculation_name`>s do not contain parentheses () at the end of them. However, when referencing them it is always in the format of :command:`calculates.<calculation_name>()`.
@@ -295,7 +312,7 @@ Initially this list will be empty since no members have been added. The user can
 
 .. note::
 
-  The selection criteria and its type (in this case, :tc:`house_id` and :tc:`text`) must be added to the model subest of the subform (members_info) in order for selection criteria to be persisted to the database and for the subform to be found by its parent form; the selection criteria cannot filter on session variables since those values are never persisted.
+  The selection criteria and its type (in this case, :tc:`house_id` and :tc:`text`) must be added to the model subset of the subform (members_info) in order for selection criteria to be persisted to the database and for the subform to be found by its parent form; the selection criteria cannot filter on session variables since those values are never persisted.
 
 When the user finishes the subform, the screen will return to the same linked_table prompt. At this point, the user can continue adding more users, edit an existing member's info, or go to a different screen.
 

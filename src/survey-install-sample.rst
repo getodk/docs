@@ -34,7 +34,7 @@ To access the sample application and its six sample forms:
 
   1. Launch ODK Survey.
   2. Click on the sync icon (2 curved arrows) to launch ODK Services directly into the sync activity.
-  3. From the menu, choose :menuselection:`Settings -> Server Settings`. You may be presented with a pop-up warning you that there are changes on your device that have not been sync'd to your server. Since you are setting up this demonstration application for the first time, you can choose :guilabel:`Ignore Unsynced Changes`.
+  3. From the menu, choose :menuselection:`Settings -> Server Settings`. You may be presented with a pop-up warning you that there are changes on your device that have not been synced to your server. Since you are setting up this demonstration application for the first time, you can choose :guilabel:`Ignore Unsynced Changes`.
   4. Choose Server URL and specify https://opendatakit-2.appspot.com as the server URL (note that this URL begins with https:// ).
   5. Because this server allows anonymous access, the :guilabel:`Server Sign-on Credential` should be set to: :menuselection:`None (anonymous access)`. Other options are :menuselection:`Username and Google Account`. When setting up your own server, the ODK Sync Endpoint only supports Username. ODK Aggregate supports both Username and Google Account.
   6. Exit out of the :menuselection:`Server Settings` page, and then the :menuselection:`Settings` page, by using the back button.  During this process, if you had chosen a :guilabel:`Server Sign-on Credential` other than :menuselection:`None`, you will be prompted to authenticate that user.
