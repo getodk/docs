@@ -1,0 +1,63 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2017, Open Data Kit. This document is licensed under a Creative Commons Attribution 4.0 International License
+# This file is distributed under the same license as the Open Data Kit package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Open Data Kit 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-02 11:59+0530\n"
+"PO-Revision-Date: 2018-03-06 14:20+0530\n"
+"Last-Translator: Divya Rani <ranidivya063@gmail.com>, 2018\n"
+"Language-Team: Indonesian (https://www.transifex.com/opendatakit/"
+"teams/84009/id/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: ../../src/pyxform.rst:16
+msgid "pyxform"
+msgstr "pyxform"
+
+#: ../../src/pyxform.rst:18
+msgid ""
+"**pyxform** is a Python library that makes writing XForms for ODK Collect "
+"and enketo easy by converting XLS(X) spreadsheets into XForms. It is used "
+"as a library in a number of tools including the `ODK online converter "
+"<http://opendatakit.org/xiframe/>`_ and `Ona <https://ona.io/>`_."
+msgstr ""
+"** pyxform **  adalah library Python yang membuat XForms menulis untuk ODK "
+"Collect dan mudah dimengerti dengan mengubah spreadsheet XLS (X) menjadi "
+"XForms. Ini digunakan sebagai perpustakaan di sejumlah alat termasuk  `ODK "
+"online  konverter <http://opendatakit.org/xiframe/> `_   dan `Ona <https://"
+"ona.io/>` _ ."
+
+#: ../../src/pyxform.rst:23
+msgid "Running pyxform from command line"
+msgstr "Menjalankan pyxform dari command line"
+
+#: ../../src/pyxform.rst:24
+msgid ""
+"For those who want to convert forms at the command line, pyxform can be "
+"installed directly from the command line using `pip <https://en.wikipedia."
+"org/wiki/Pip_(package_manager)>`_:"
+msgstr ""
+"Bagi mereka yang ingin mengubah bentuk pada baris perintah, pyxform dapat "
+"diinstal langsung dari command line menggunakan `pip <https://en.wikipedia."
+"org/wiki/Pip_(package_manager)>`_ :"
+
+#: ../../src/pyxform.rst:30
+msgid "The :command:`xls2xform` command can then be used:"
+msgstr "Perintah :command: `xls2xform` kemudian dapat digunakan:"
+
+#: ../../src/pyxform.rst:38
+msgid ""
+"For further queries or for more information please refer to the `Github "
+"repo <https://github.com/XLSForm/pyxform>`_."
+msgstr ""
+"Untuk pertanyaan lebih lanjut atau untuk informasi lebih lanjut, lihat "
+"bagian `Github repo <https://github.com/XLSForm/pyxform>`_."
