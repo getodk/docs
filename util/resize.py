@@ -8,7 +8,7 @@ def single_resize(imagedir, filename):
     filepath = os.path.join(imagedir, filename)
     image = Image.open(filepath)
     old_w, old_h  = image.size
-    h = min(old_h, 500)
+    h = min(old_h, 300)
     w = (int)(old_w * h / old_h)
     image = image.resize((w,h), Image.ANTIALIAS)
     image.save(filepath, quality=95)
