@@ -55,50 +55,20 @@ Finally, see the :doc:`data-permission-filters` page for how to manage table and
 .. toctree::
   :maxdepth: 2
   :hidden:
-  :caption: Application Designer
-
-  app-designer-intro
-
-.. toctree::
-  :maxdepth: 2
-  :hidden:
-  :caption: Survey
+  :caption: Mobile Tools
 
   survey-intro
-
-.. toctree::
-  :maxdepth: 2
-  :hidden:
-  :caption: Tables
-
   tables-intro
-
-.. toctree::
-  :maxdepth: 2
-  :hidden:
-  :caption: Services
-
   services-intro
-
-.. toctree::
-  :maxdepth: 2
-  :hidden:
-  :caption: Scan
-
   scan-intro
 
 .. toctree::
   :maxdepth: 2
   :hidden:
-  :caption: Cloud Endpoints
+  :caption: Desktop and Server Tools
 
+  app-designer-intro
   cloud-endpoints-intro
-
-.. toctree::
-  :maxdepth: 2
-  :hidden:
-  :caption: Suitcase
-
   suitcase-intro
 
 .. toctree::
@@ -106,7 +76,9 @@ Finally, see the :doc:`data-permission-filters` page for how to manage table and
   :hidden:
   :caption: Advanced Topics
 
-  advanced-topics
+  data-permission-filters
+  odk-2-framework
+  odk-2-sync-protocol
 
 .. toctree::
   :maxdepth: 2
