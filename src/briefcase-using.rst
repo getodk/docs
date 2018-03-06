@@ -1,5 +1,5 @@
-Using Briefcase
-==================
+Using ODK Briefcase
+======================
 
 .. _pull-from-aggregate:
 
@@ -86,12 +86,14 @@ To upload blank forms and completed form instances to :doc:`Aggregate <aggregate
      #. Replace the local form definition file with a copy of the version from your Aggregate server.
      #. Push your form instances. 
      #. Update :guilabel:`Settings` back to the original storage location.
-
+     
 .. tip::
        
   .. Move this to Aggregate docs, or the Agg-v-Briefcase page.
        
-  By pulling data into the local ODK Briefcase Storage location and then pushing data up to an ODK Aggregate instance, ODK Briefcase provides a mechanism to transfer data across incompatible upgrades of ODK Aggregate.
+  .. _aggregate-upgrade-with-briefcase:
+       
+  By pulling data into the local Briefcase Storage location and then pushing data up to an Aggregate instance, ODK Briefcase provides a mechanism to transfer data across upgrade-incompatible versions of Aggregate.
 
 
 .. _pull-from-collect:
@@ -99,43 +101,9 @@ To upload blank forms and completed form instances to :doc:`Aggregate <aggregate
 Pulling forms from Collect
 ---------------------------
 
-.. _pull-from-android2.x:
-
-Pulling forms --- Android 2.x and earlier
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
 #. Ensure all filled-in forms are finalized. 
 
-   Briefcase does not discriminate between incomplete and finalized forms on the device. It will pull all filled-in form instances, even incomplete ones. This can cause problems during later pushes, especially if you are encrypting your finalized forms. To keep your data set clean, you must ensure that all forms are complete before being pulled from the device.
-
-   If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
-
-#. Connect your Android device to your computer with a USB cable.
-
-   If your computer gives you an option of how to handle the device,
-   choose to mount the drive.
-
-#. In Briefcase, open the :guilabel:`Pull` tab.
-#. Select *Mounted Android SD Card* in the :guilabel:`pull data from` drop-down.
-#. Click :guilabel:`Choose` and select the appropriate mounted SD card.
-#. Select the forms you want to download and click on :guilabel:`Pull`. 
-#. On the Android device, open ODK Collect and delete the filled-in forms.
-
-   .. warning::
-     
-     Briefcase cannot discriminate between duplicate form instances. After you pull completed forms into Briefcase, it is important that you delete them from Collect. Otherwise, the next time you pull in forms, you will create duplicates.
-
-.. _pull-from-android4.x:
-
-Pulling forms --- current Android devices
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Current Android devices (those running v4.x or later) use a USB mounting protocol that Briefcase does not support. Therefore, the procedure for getting form instances out of Collect is different.
-
-#. Ensure all filled-in forms are finalized. 
-
-   If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
+   If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy of :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
 
 #. Create a zip archive of the entire :file:`odk` directory.
 
@@ -160,7 +128,33 @@ Current Android devices (those running v4.x or later) use a USB mounting protoco
      - You can use the *Custom path to ODK Directory* any time you want to pull forms from custom location.
      - You can confirm that the forms have been successfully pulled into Briefcase by confirming a successful pull status or by verifying the data appearing in a :ref:`CSV export file <briefcase-export-to-csv>`.
 
+
+.. _pull-from-android2.x:
+
+.. admonition:: Pulling forms --- Android 2.x and earlier
+
+  #. Ensure all filled-in forms are finalized. 
+
+     Briefcase does not discriminate between incomplete and finalized forms on the device. It will pull all filled-in form instances, even incomplete ones. This can cause problems during later pushes, especially if you are encrypting your finalized forms. To keep your data set clean, you must ensure that all forms are complete before being pulled from the device.
+
+     If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy of :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
+
+  #. Connect your Android device to your computer with a USB cable.
+
+     If your computer gives you an option of how to handle the device,
+     choose to mount the drive.
+
+  #. In Briefcase, open the :guilabel:`Pull` tab.
+  #. Select *Mounted Android SD Card* in the :guilabel:`pull data from` drop-down.
+  #. Click :guilabel:`Choose` and select the appropriate mounted SD card.
+  #. Select the forms you want to download and click on :guilabel:`Pull`. 
+  #. On the Android device, open ODK Collect and delete the filled-in forms.
+
+   .. warning::
      
+     Briefcase cannot discriminate between duplicate form instances. After you pull completed forms into Briefcase, it is important that you delete them from Collect. Otherwise, the next time you pull in forms, you will create duplicates.
+
+          
 .. note:: 
 
   ODK Briefcase does not support pushing blank forms to ODK Collect. Instead, :ref:`manually load the forms on your ODK Collect device <loading-forms-directly>`.
@@ -176,6 +170,13 @@ Export forms to CSV
 #. If exporting :doc:`encrypted-forms`, identify the location of your :ref:`PEM file <create-key>`.
 #. If you wish, select Start and End dates to specify a limited date range to export.
 #. Select the forms to export.
+
+   If you are selecting and exporting more than one form,
+   you may need to individualize your export settings
+   (export location, PEM file, start date, end date).
+   To do this,
+   click the gear icon (:guilabel:`⚙`) next to the form name.
+   
 #. Click :guilabel:`Export`.
 
 
@@ -201,7 +202,7 @@ Pulling form data from Aggregate Server
 Pulling form data from Collect
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This command assumes you have already copied and unzipped the :file:`odk` file :ref:`as described here <pull-from-android4.x>`.
+This command assumes you have already copied and unzipped the :file:`odk` file :ref:`as described here <pull-from-collect>`.
 
 .. code-block:: console
 

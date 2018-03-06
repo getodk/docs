@@ -1,4 +1,4 @@
-Setting Up Briefcase
+Setting Up ODK Briefcase
 ===================================
 
 .. note:: 

@@ -59,10 +59,10 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   :maxdepth: 2
   :caption: Briefcase
 
-  briefcase-guide
+  briefcase-intro
   briefcase-install
-  briefcase-forms
-  briefcase-vs-aggregate
+  briefcase-using
+  briefcase-and-aggregate
 
 .. toctree::
   :hidden:
