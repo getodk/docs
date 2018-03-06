@@ -55,7 +55,7 @@ def updated_ref(matchobj):
     
 
 
-for f in glob.glob('*.rst'): 
+for f in glob.glob('src/*.rst'): 
     with open(f, 'r') as file :
       filedata = file.read()
 

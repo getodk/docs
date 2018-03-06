@@ -28,7 +28,9 @@ jobs:
             sudo python style-test.py $paths
       - run:
           name: Spell Checker
-          command: sphinx-build -W -b spelling src build/spelling
+          command: |
+            sphinx-build -b spelling src build/spelling
+            python util/check-spelling-output.py
       - run:
           name: Build docs
           command: sphinx-build -W -b dirhtml src build
