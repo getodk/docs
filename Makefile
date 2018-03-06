@@ -13,13 +13,13 @@ LANGUAGES     = de,id,ja
 # Put it first so that "make" without argument is like "make help".
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-        @echo "  translations          to build .po files and upload them to transifex"
+	@echo "  translations          to build .po files and upload them to transifex"
 	@echo "  pull-translations     to fetch translations form transifex for all languages"
 	@echo "  pull-translations-%   to fetch translations form transifex for a specific language"
 	@echo "  localizedhtml         to build localized html for all languages"
 	@echo "  localizedhtml-%       to build localized html for specific language (2 letter code)"
 
-.PHONY: help Makefile
+.PHONY: help Makefile translations pull-translations localizedhtml
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
