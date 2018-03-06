@@ -18,4 +18,6 @@ Pillow==4.3.0
 proselint
 blessings
 gitpython
+transifex-client
+sphinx-intl
 
