@@ -3,7 +3,7 @@ Briefcase and Aggregate
 
 :doc:`ODK Briefcase  <briefcase-intro>` and
 :doc:`ODK Aggregate <aggregate-intro>` have 
-complimentary and overlapping features. 
+complementary and overlapping features. 
 For some deployments, 
 it makes sense to use one or the other.
 In other case, 
