@@ -1,0 +1,381 @@
+[main]
+host = https://www.transifex.com
+type=PO
+
+
+[odk-docs.aggregate-limitations]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-limitations.po
+source_file = _build/gettext/aggregate-limitations.pot
+source_lang = en
+
+
+[odk-docs.verify-downloads]
+file_filter = locales/<lang>/LC_MESSAGES/verify-downloads.po
+source_file = _build/gettext/verify-downloads.pot
+source_lang = en
+
+[odk-docs.collect-forms]
+file_filter = locales/<lang>/LC_MESSAGES/collect-forms.po
+source_file = _build/gettext/collect-forms.pot
+source_lang = en
+
+[odk-docs.aggregate-forms]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-forms.po
+source_file = _build/gettext/aggregate-forms.pot
+source_lang = en
+
+[odk-docs.collect-install]
+file_filter = locales/<lang>/LC_MESSAGES/collect-install.po
+source_file = _build/gettext/collect-install.pot
+source_lang = en
+
+[odk-docs.javarosa]
+file_filter = locales/<lang>/LC_MESSAGES/javarosa.po
+source_file = _build/gettext/javarosa.pot
+source_lang = en
+
+[odk-docs.collect-shortcut]
+file_filter = locales/<lang>/LC_MESSAGES/collect-shortcut.po
+source_file = _build/gettext/collect-shortcut.pot
+source_lang = en
+
+[odk-docs.briefcase-guide]
+file_filter = locales/<lang>/LC_MESSAGES/briefcase-guide.po
+source_file = _build/gettext/briefcase-guide.pot
+source_lang = en
+
+[odk-docs.collect-import-export]
+file_filter = locales/<lang>/LC_MESSAGES/collect-import-export.po
+source_file = _build/gettext/collect-import-export.pot
+source_lang = en
+
+[odk-docs.collect-location]
+file_filter = locales/<lang>/LC_MESSAGES/collect-location.po
+source_file = _build/gettext/collect-location.pot
+source_lang = en
+
+[odk-docs.odk-build]
+file_filter = locales/<lang>/LC_MESSAGES/odk-build.po
+source_file = _build/gettext/odk-build.pot
+source_lang = en
+
+[odk-docs.collect-adb]
+file_filter = locales/<lang>/LC_MESSAGES/collect-adb.po
+source_file = _build/gettext/collect-adb.pot
+source_lang = en
+
+[odk-docs.collect-connect-google]
+file_filter = locales/<lang>/LC_MESSAGES/collect-connect-google.po
+source_file = _build/gettext/collect-connect-google.pot
+source_lang = en
+
+[odk-docs.aggregate-aws]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-aws.po
+source_file = _build/gettext/aggregate-aws.pot
+source_lang = en
+
+[odk-docs.briefcase-vs-aggregate]
+file_filter = locales/<lang>/LC_MESSAGES/briefcase-vs-aggregate.po
+source_file = _build/gettext/briefcase-vs-aggregate.pot
+source_lang = en
+
+[odk-docs.docs-tech-guide]
+file_filter = locales/<lang>/LC_MESSAGES/docs-tech-guide.po
+source_file = _build/gettext/docs-tech-guide.pot
+source_lang = en
+
+[odk-docs.aggregate-intro]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-intro.po
+source_file = _build/gettext/aggregate-intro.pot
+source_lang = en
+
+[odk-docs.getting-started]
+file_filter = locales/<lang>/LC_MESSAGES/getting-started.po
+source_file = _build/gettext/getting-started.pot
+source_lang = en
+
+[odk-docs.aggregate-upgrade]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-upgrade.po
+source_file = _build/gettext/aggregate-upgrade.pot
+source_lang = en
+
+[odk-docs.collect-security]
+file_filter = locales/<lang>/LC_MESSAGES/collect-security.po
+source_file = _build/gettext/collect-security.pot
+source_lang = en
+
+[odk-docs.form-interaction]
+file_filter = locales/<lang>/LC_MESSAGES/form-interaction.po
+source_file = _build/gettext/form-interaction.pot
+source_lang = en
+
+[odk-docs.form-uploader]
+file_filter = locales/<lang>/LC_MESSAGES/form-uploader.po
+source_file = _build/gettext/form-uploader.pot
+source_lang = en
+
+[odk-docs.collect-connect-aggregate]
+file_filter = locales/<lang>/LC_MESSAGES/collect-connect-aggregate.po
+source_file = _build/gettext/collect-connect-aggregate.pot
+source_lang = en
+
+[odk-docs.contributing]
+file_filter = locales/<lang>/LC_MESSAGES/contributing.po
+source_file = _build/gettext/contributing.pot
+source_lang = en
+
+[odk-docs.aggregate-deployment-planning]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-deployment-planning.po
+source_file = _build/gettext/aggregate-deployment-planning.pot
+source_lang = en
+
+[odk-docs.briefcase-install]
+file_filter = locales/<lang>/LC_MESSAGES/briefcase-install.po
+source_file = _build/gettext/briefcase-install.pot
+source_lang = en
+
+[odk-docs.collect-best-practices]
+file_filter = locales/<lang>/LC_MESSAGES/collect-best-practices.po
+source_file = _build/gettext/collect-best-practices.pot
+source_lang = en
+
+[odk-docs.docs-developer-guide]
+file_filter = locales/<lang>/LC_MESSAGES/docs-developer-guide.po
+source_file = _build/gettext/docs-developer-guide.pot
+source_lang = en
+
+[odk-docs.briefcase-forms]
+file_filter = locales/<lang>/LC_MESSAGES/briefcase-forms.po
+source_file = _build/gettext/briefcase-forms.pot
+source_lang = en
+
+[odk-docs.aggregate-app-engine]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-app-engine.po
+source_file = _build/gettext/aggregate-app-engine.pot
+source_lang = en
+
+[odk-docs.aggregate-setup]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-setup.po
+source_file = _build/gettext/aggregate-setup.pot
+source_lang = en
+
+[odk-docs.xlsform]
+file_filter = locales/<lang>/LC_MESSAGES/xlsform.po
+source_file = _build/gettext/xlsform.pot
+source_lang = en
+
+[odk-docs.security-privacy]
+file_filter = locales/<lang>/LC_MESSAGES/security-privacy.po
+source_file = _build/gettext/security-privacy.pot
+source_lang = en
+
+[odk-docs.projecting-collect]
+file_filter = locales/<lang>/LC_MESSAGES/projecting-collect.po
+source_file = _build/gettext/projecting-collect.pot
+source_lang = en
+
+[odk-docs.oauth2-service]
+file_filter = locales/<lang>/LC_MESSAGES/oauth2-service.po
+source_file = _build/gettext/oauth2-service.pot
+source_lang = en
+
+[odk-docs.collect-using]
+file_filter = locales/<lang>/LC_MESSAGES/collect-using.po
+source_file = _build/gettext/collect-using.pot
+source_lang = en
+
+[odk-docs.collect-connect]
+file_filter = locales/<lang>/LC_MESSAGES/collect-connect.po
+source_file = _build/gettext/collect-connect.pot
+source_lang = en
+
+[odk-docs.aggregate-admin]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-admin.po
+source_file = _build/gettext/aggregate-admin.pot
+source_lang = en
+
+[odk-docs.collect-filling-forms]
+file_filter = locales/<lang>/LC_MESSAGES/collect-filling-forms.po
+source_file = _build/gettext/collect-filling-forms.pot
+source_lang = en
+
+[odk-docs.faq]
+file_filter = locales/<lang>/LC_MESSAGES/faq.po
+source_file = _build/gettext/faq.pot
+source_lang = en
+
+[odk-docs.contributing-tips]
+file_filter = locales/<lang>/LC_MESSAGES/contributing-tips.po
+source_file = _build/gettext/contributing-tips.pot
+source_lang = en
+
+[odk-docs.pyxform]
+file_filter = locales/<lang>/LC_MESSAGES/pyxform.po
+source_file = _build/gettext/pyxform.pot
+source_lang = en
+
+[odk-docs.collect-setup]
+file_filter = locales/<lang>/LC_MESSAGES/collect-setup.po
+source_file = _build/gettext/collect-setup.pot
+source_lang = en
+
+[odk-docs.aggregate-boost-performance]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-boost-performance.po
+source_file = _build/gettext/aggregate-boost-performance.pot
+source_lang = en
+
+[odk-docs.openrosa-metadata]
+file_filter = locales/<lang>/LC_MESSAGES/openrosa-metadata.po
+source_file = _build/gettext/openrosa-metadata.pot
+source_lang = en
+
+[odk-docs.index]
+file_filter = locales/<lang>/LC_MESSAGES/index.po
+source_file = _build/gettext/index.pot
+source_lang = en
+
+[odk-docs.encrypted-forms]
+file_filter = locales/<lang>/LC_MESSAGES/encrypted-forms.po
+source_file = _build/gettext/encrypted-forms.pot
+source_lang = en
+
+[odk-docs.form-widgets]
+file_filter = locales/<lang>/LC_MESSAGES/form-widgets.po
+source_file = _build/gettext/form-widgets.pot
+source_lang = en
+
+[odk-docs.openrosa-form-submission]
+file_filter = locales/<lang>/LC_MESSAGES/openrosa-form-submission.po
+source_file = _build/gettext/openrosa-form-submission.pot
+source_lang = en
+
+[odk-docs.aggregate-backup]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-backup.po
+source_file = _build/gettext/aggregate-backup.pot
+source_lang = en
+
+[odk-docs.glossary_]
+file_filter = locales/<lang>/LC_MESSAGES/glossary.po
+source_file = _build/gettext/glossary.pot
+source_lang = en
+
+[odk-docs.collect-intro]
+file_filter = locales/<lang>/LC_MESSAGES/collect-intro.po
+source_file = _build/gettext/collect-intro.pot
+source_lang = en
+
+[odk-docs.openrosa-http]
+file_filter = locales/<lang>/LC_MESSAGES/openrosa-http.po
+source_file = _build/gettext/openrosa-http.pot
+source_lang = en
+
+[odk-docs.aggregate-help]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-help.po
+source_file = _build/gettext/aggregate-help.pot
+source_lang = en
+
+[odk-docs.aggregate-visualize]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-visualize.po
+source_file = _build/gettext/aggregate-visualize.pot
+source_lang = en
+
+[odk-docs.docs-syntax-guide]
+file_filter = locales/<lang>/LC_MESSAGES/docs-syntax-guide.po
+source_file = _build/gettext/docs-syntax-guide.pot
+source_lang = en
+
+[odk-docs.form-design-intro]
+file_filter = locales/<lang>/LC_MESSAGES/form-design-intro.po
+source_file = _build/gettext/form-design-intro.pot
+source_lang = en
+
+[odk-docs.launch-collect-from-app]
+file_filter = locales/<lang>/LC_MESSAGES/launch-collect-from-app.po
+source_file = _build/gettext/launch-collect-from-app.pot
+source_lang = en
+
+[odk-docs.collect-settings]
+file_filter = locales/<lang>/LC_MESSAGES/collect-settings.po
+source_file = _build/gettext/collect-settings.pot
+source_lang = en
+
+[odk-docs.validate]
+file_filter = locales/<lang>/LC_MESSAGES/validate.po
+source_file = _build/gettext/validate.pot
+source_lang = en
+
+[odk-docs.openrosa-form-list]
+file_filter = locales/<lang>/LC_MESSAGES/openrosa-form-list.po
+source_file = _build/gettext/openrosa-form-list.pot
+source_lang = en
+
+[odk-docs.docs-style-guide]
+file_filter = locales/<lang>/LC_MESSAGES/docs-style-guide.po
+source_file = _build/gettext/docs-style-guide.pot
+source_lang = en
+
+[odk-docs.aggregate-install]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-install.po
+source_file = _build/gettext/aggregate-install.pot
+source_lang = en
+
+[odk-docs.aggregate-use]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-use.po
+source_file = _build/gettext/aggregate-use.pot
+source_lang = en
+
+[odk-docs.aggregate-data-access]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-data-access.po
+source_file = _build/gettext/aggregate-data-access.pot
+source_lang = en
+
+[odk-docs.aggregate-best-practices]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-best-practices.po
+source_file = _build/gettext/aggregate-best-practices.pot
+source_lang = en
+
+[odk-docs.briefcase-api]
+file_filter = locales/<lang>/LC_MESSAGES/briefcase-api.po
+source_file = _build/gettext/briefcase-api.pot
+source_lang = en
+
+[odk-docs.aggregate-vm]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-vm.po
+source_file = _build/gettext/aggregate-vm.pot
+source_lang = en
+
+[odk-docs.form-update]
+file_filter = locales/<lang>/LC_MESSAGES/form-update.po
+source_file = _build/gettext/form-update.pot
+source_lang = en
+
+[odk-docs.aggregate-data]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-data.po
+source_file = _build/gettext/aggregate-data.pot
+source_lang = en
+
+[odk-docs.launch-apps-from-collect]
+file_filter = locales/<lang>/LC_MESSAGES/launch-apps-from-collect.po
+source_file = _build/gettext/launch-apps-from-collect.pot
+source_lang = en
+
+[odk-docs.aggregate-tomcat]
+file_filter = locales/<lang>/LC_MESSAGES/aggregate-tomcat.po
+source_file = _build/gettext/aggregate-tomcat.pot
+source_lang = en
+
+[odk-docs.cygwin]
+file_filter = locales/<lang>/LC_MESSAGES/cygwin.po
+source_file = _build/gettext/cygwin.pot
+source_lang = en
+
+[odk-docs.openrosa-authentication]
+file_filter = locales/<lang>/LC_MESSAGES/openrosa-authentication.po
+source_file = _build/gettext/openrosa-authentication.pot
+source_lang = en
+
+[odk-docs.openrosa]
+file_filter = locales/<lang>/LC_MESSAGES/openrosa.po
+source_file = _build/gettext/openrosa.pot
+source_lang = en
+
