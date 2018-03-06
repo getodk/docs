@@ -1,5 +1,6 @@
 import os
 import shutil
+import sphinx.environment
 from docutils import nodes
 from docutils.parsers.rst import directives
 from sphinx.util.compat import Directive
@@ -24,14 +25,22 @@ class video_node(nodes.General, nodes.Element): pass
 
 def visit_video_html(self, node):
 
-    if os.path.exists("./build/_videos"):
-       pass
-    else:   
-       os.makedirs("./build/_videos/")
-
+    srcPath = node["source_dir"] + "%s"
     vsrc = node["uri"]
-    spth = "./src%s" % vsrc
-    dpth = "./build/_videos/%s" %vsrc[vsrc.rfind('/')+1:]
+    spth = srcPath % vsrc
+
+    if "tmp1-src" not in spth:
+        if os.path.exists("./odk2-build/_videos"):
+            pass
+        else:   
+            os.makedirs("./odk2-build/_videos/")
+        dpth = "./odk2-build/_videos/%s" %vsrc[vsrc.rfind('/')+1:]
+    else:
+        if os.path.exists("./odk1-build/_videos"):
+            pass
+        else:   
+            os.makedirs("./odk1-build/_videos/")
+        dpth = "./odk1-build/_videos/%s" %vsrc[vsrc.rfind('/')+1:]
 
     shutil.copyfile(spth, dpth)
 
@@ -131,7 +140,10 @@ class Video(Directive):
 
         uri = directives.uri(self.arguments[0])
 
-        vid = video_node(uri = uri, autoplay = autoplay, controls = controls, 
+        source_dir = os.path.dirname(os.path.abspath(self.state.document.current_source))
+
+
+        vid = video_node(uri = uri, source_dir=source_dir, autoplay = autoplay, controls = controls, 
             loop = loop, muted = muted, poster = poster, 
             preload = preload, cl = cl)        
         

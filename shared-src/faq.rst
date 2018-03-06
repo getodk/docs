@@ -33,7 +33,7 @@ Our `blog <https://opendatakit.org/blog/>`_ and `deployments page <https://opend
 How do I use ODK?
 ~~~~~~~~~~~~~~~~~~~~
 
-Please read the :doc:`Getting Started Guide <getting-started>` section of our documentation to understand the initial instructions.
+Please read the `Getting Started Guide <https://docs.opendatakit.org/getting-started>`_ section of our documentation to understand the initial instructions.
 
 Please read through the documentation on our `implementer instructions <https://opendatakit.org/use/>`_ and on the `developer wiki <https://github.com/opendatakit/opendatakit/wiki>`_.
 

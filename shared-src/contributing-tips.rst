@@ -162,7 +162,7 @@ Actually install and use Open Data Kit or other tools
 
 You cannot write effectively about tools you have not used. If you're going to write or edit documentation about any of the apps in the ODK ecosystem, you need to spend some time actually using it.
 
-Before diving into writing documentation, follow the :doc:`getting-started` guide so that you are familiar with the core ODK tools.
+Before diving into writing documentation, try out the core tools `here https://opendatakit.org/software` and become familiar with them.
 
 This is also true of writing about Sphinx or any of our documentation build tools. Reading existing documentation is not enough to write about something.
 

@@ -646,7 +646,7 @@ Section labels
 
 Section titles should almost always be preceded by labels.
 
-The only exception is very short subsections that repeat --- like the **Right** and **Wrong** titles in this document or the **XLSForm Rows** and **XForm XML** sections in the :doc:`form-widgets` document.
+The only exception is very short subsections that repeat --- like the **Right** and **Wrong** titles in this document or the **XLSForm Rows** and **XForm XML** sections in the **Form Widgets** document.
 
 In these cases, you may want to use the :rst:dir:`rubric` directive.
 

@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build-odk1:
     working_directory: ~/work
     docker:
       - image: circleci/python:latest
@@ -22,58 +22,79 @@ jobs:
             sudo apt-get install python-enchant
             sudo pip install -r requirements.txt
       - run:
-          name: Style Guide Testing
+          name: Style Guide Check
           command: |
             paths=$(git diff origin/master... --name-only)
-            sudo python style-test.py $paths
+            echo $paths
+            sudo python style-test.py $paths -r odk1-src
+            sudo python style-test.py $paths -r shared-src
       - run:
-          name: Spell Checker
-          command: |
-            sphinx-build -b spelling src build/spelling
-            python util/check-spelling-output.py
+          name: Build ODK1 Documentation
+          command: make odk1
       - run:
-          name: Build docs
-          command: sphinx-build -W -b dirhtml src build
+          name: Check spelling of ODK1 Documentation
+          command: make odk1-spell-check
       - run:
           name: Compress images
-          command: pngquant build/_images/*.png --force --ext .png --verbose
+          command: pngquant odk1-build/_images/*.png --force --ext .png --verbose
       - store_artifacts:
-          path: build
-          destination: build
+          path: odk1-build
+          destination: odk1-build
       - persist_to_workspace:
           root: ~/work
           paths:
-            - build/*
-            - s3_website.yml
-  deploy:
+            - odk1-build/*
+    
+  build-odk2:
     working_directory: ~/work
     docker:
-      - image: circleci/ruby:latest
+      - image: circleci/python:latest
     steps:
-      - attach_workspace:
-          at: ~/work
+      - checkout
       - run:
-          name: Install deploy requirements
+          name: Install checkout requirements
           command: |
-              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
-                sudo apt-get install -y openjdk-8-jre-headless
-                gem install s3_website && s3_website install
-              fi
+            curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+            sudo apt-get install git-lfs
+            git lfs install
       - run:
-          name: Push to S3
+          name: Checkout binaries
+          command: git lfs pull
+      - run:
+          name: Install build requirements
           command: |
-              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
-                s3_website push
-              fi
+            sudo apt-get install pngquant
+            sudo apt-get install python-enchant
+            sudo pip install -r requirements.txt
+      - run:
+          name: Style Guide Check
+          command: |
+            paths=$(git diff origin/master... --name-only)
+            echo $paths
+            sudo python style-test.py $paths -r odk2-src
+            sudo python style-test.py $paths -r shared-src
+      - run:
+          name: Build ODK2 Documentation
+          command: make odk2
+      - run:
+          name: Check spelling of ODK2 Documentation
+          command: make odk2-spell-check
+      - run:
+          name: Compress images
+          command: pngquant odk2-build/_images/*.png --force --ext .png --verbose 
+      - store_artifacts:
+          path: odk2-build
+          destination: odk2-build
+      - persist_to_workspace:
+          root: ~/work
+          paths:
+            - odk2-build/*
+    
 workflows:
   version: 2
   build_deploy:
     jobs:
-      - build
-      - deploy:
-          requires:
-            - build
-          # We'd like to also filter by username and remove the if/fi above, but username filtering is not supported in CircleCI
-          filters:
-            branches:
-              only: master
+      - build-odk1
+      - build-odk2
+      
+      

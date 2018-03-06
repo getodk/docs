@@ -389,7 +389,7 @@ Android Tools
 
 Some testing and documentation tasks 
 (including :ref:`making screenshots from ODK Collect <screenshots>`)
-require the :doc:`Android Debug Bridge <collect-adb>` command line tool.
+require the `Android Debug Bridge <https://developer.android.com/studio/command-line/adb.html>`_ command line tool.
 You can either install Android Studio 
 or install ADB as standalone SDK tool.
 

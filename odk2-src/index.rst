@@ -1,9 +1,9 @@
-ODK 2.0 Tool Suite
-=======================
+Welcome to Open Data Kit 2.0's documentation!
+==================================================
 
 .. _odk-2-introduction:
 
-The :dfn:`ODK 2.0 Tool Suite` is a new set of ODK tools that will co-exist with the existing ODK 1.0 Tool Suite. It addresses several limitations of the existing ODK 1.0 data collection workflows such as:
+The :dfn:`ODK 2.0 Tool Suite` is a new set of ODK tools that will co-exist with the existing ODK 1.0 Tool Suite. It targets advanced users who find themselves limited by the ODK 1.0 data collection workflows. It provides:
 
 - **Fully customizable layout of prompts on the Android device**. The 2.0 tools use HTML, JavaScript, and CSS to specify the layout of nearly all the screens viewed by the data collectors. This enables individuals and organizations with basic web development skills to modify and customize the appearance of their surveys and workflow. At the same time, we retain the easy-to-use spreadsheet-based definition of the survey questions (however, this XLSX Converter mechanism is not cross-compatible with XLSForm).
 - **More flexible, user-directed, navigation of a survey**. The 2.0 tools do not impose a strict sequential advancement through a form like ODK Collect; form designers can allow users to traverse a form in any order, yet impose validation of collected data prior to traversing into subsequent steps in a workflow.
@@ -12,11 +12,15 @@ The :dfn:`ODK 2.0 Tool Suite` is a new set of ODK tools that will co-exist with 
 - **Data curation and visualization on the device**. ODK Tables gives organizations the ability to investigate and visualize entire datasets directly on the Android devices through graphical and non-graphical displays and through filtered views.
 - **Row-level access filters**. The visibility of the data and the ability to edit and/or delete data can be restricted for different users and groups.
 
+.. note::
+
+  The ODK 2.0 tool suite is targeted at advanced users who are unable to complete their workflows with the ODK 1.0 tools. If you find that the ODK 1.0 tools meet your needs then there is no reason to switch.
+
 .. _odk-2-intro-learn-more:
 
 Learn More
 --------------
-View a full feature comparison in the guide for :doc:`select-tool-suite`.
+View a brief feature comparison in the guide for :doc:`select-tool-suite`.
 
 .. _odk-2-intro-list-of-tools:
 
@@ -40,3 +44,82 @@ Next, see the :doc:`getting-started-2` to understand the process for revising an
 
 Finally, see the :doc:`data-permission-filters` page for how to manage table and row-level access filters.
 
+
+.. toctree::
+  :maxdepth: 1
+  :hidden:
+
+  getting-started-2
+  select-tool-suite
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Application Designer
+
+  app-designer-intro
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Survey
+
+  survey-intro
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Tables
+
+  tables-intro
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Services
+
+  services-intro
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Scan
+
+  scan-intro
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Cloud Endpoints
+
+  cloud-endpoints-intro
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Suitcase
+
+  suitcase-intro
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Advanced Topics
+
+  advanced-topics
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Contributing
+
+  contributing
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Reference
+
+  verify-downloads
+  faq
+  glossary
