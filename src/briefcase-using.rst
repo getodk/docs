@@ -128,6 +128,17 @@ Pulling forms from Collect
      - You can use the *Custom path to ODK Directory* any time you want to pull forms from custom location.
      - You can confirm that the forms have been successfully pulled into Briefcase by confirming a successful pull status or by verifying the data appearing in a :ref:`CSV export file <briefcase-export-to-csv>`.
 
+.. warning::
+
+  Briefcase cannot discriminate between duplicate form instances. After you pull completed forms into Briefcase, it is important that you delete them from Collect. Otherwise, the next time you pull in forms, you will create duplicates.
+
+          
+.. note:: 
+
+  ODK Briefcase does not support pushing blank forms to ODK Collect. Instead, :ref:`manually load the forms on your ODK Collect device <loading-forms-directly>`.
+
+     
+
 
 .. _pull-from-android2.x:
 
@@ -149,15 +160,6 @@ Pulling forms from Collect
   #. Click :guilabel:`Choose` and select the appropriate mounted SD card.
   #. Select the forms you want to download and click on :guilabel:`Pull`. 
   #. On the Android device, open ODK Collect and delete the filled-in forms.
-
-   .. warning::
-     
-     Briefcase cannot discriminate between duplicate form instances. After you pull completed forms into Briefcase, it is important that you delete them from Collect. Otherwise, the next time you pull in forms, you will create duplicates.
-
-          
-.. note:: 
-
-  ODK Briefcase does not support pushing blank forms to ODK Collect. Instead, :ref:`manually load the forms on your ODK Collect device <loading-forms-directly>`.
 
 
 .. _briefcase-export-to-csv:
