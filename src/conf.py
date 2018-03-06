@@ -310,6 +310,9 @@ rst_epilog = """
 
 """
 
+locale_dirs = ['locales/']   
+gettext_compact = False  
+
 html_context = {'prob_in_doc' : prob_in_doc , 
                 'contri_start' : contri_start , 
                 'join' : join , 
@@ -321,5 +324,7 @@ html_context = {'prob_in_doc' : prob_in_doc ,
                 'file_issue_here' : file_issue_here , 
                 'repo_here' : repo_here , 
                 'contri_guide' : contri_guide , 
-                'forum_here' : forum_here}
+                'forum_here' : forum_here,
+                'languages': ['en', 'id', 'ja'],
+                 }
 
