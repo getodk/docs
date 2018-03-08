@@ -250,14 +250,9 @@ rst_prolog="""
 """
 
 # At bottom of every document
-doc_pdf = """
+download_pdf = """
 
-You can also the download the PDF for the
-
-"""
-odkdocs = """
-
-ODK Docs
+Download this documentation as a PDF.
 
 """
 odkpdf = """
@@ -342,8 +337,7 @@ rst_epilog = """
 
 """
 
-html_context = {'doc_pdf' : doc_pdf,
-                'odkdocs' : odkdocs,
+html_context = {'download_pdf' : download_pdf,
                 'odkpdf' : odkpdf,
                 'prob_in_doc' : prob_in_doc ,
                 'contri_start' : contri_start , 
