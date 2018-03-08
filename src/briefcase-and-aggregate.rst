@@ -49,4 +49,4 @@ Notable Differences
 - When moving forms from Collect to Aggregate, form instances are ignored if they have not been :formstate:`finalized`. When using Briefcase, all form instances are transferred.
 - Aggregate supports simple visualizations. Briefcase does not.
 - Briefcase has a CLI, while Aggregate does not. In addition to using Briefcase from a terminal, the CLI can also be scripted. No comparable scripting interface exists for Aggregate.
-- Briefcase is simpler to set up and requires less storage than Aggregate. Briefcase does not use a database.
+- Briefcase is a small and simple desktop application requiring very little setup and no maintenance. Aggregate is a full-fledged server backed by an enterprise database.

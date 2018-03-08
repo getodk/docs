@@ -37,7 +37,7 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
 
      .. rubric:: Workaround
      
-     If the form definition has changed, but the changes only affect the question text and do not alter the structure of the collected data (or change the form Id or version), you can:
+     If the form definition has changed, but the changes only affect the question text and do not alter the structure of the collected data (or change the form ID or version), you can:
      
      #. In :guilabel:`Settings`, temporarily change the location of :file:`ODK Briefcase Storage`.
      #. Pull data into to the new location.
@@ -47,7 +47,7 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
 
 .. _push-to-aggregate:
 
-Pushing forms to ODK Aggregate
+Pushing forms to Aggregate
 --------------------------------
 
 To upload blank forms and completed form instances to :doc:`Aggregate <aggregate-intro>`:
@@ -132,35 +132,9 @@ Pulling forms from Collect
 
   Briefcase cannot discriminate between duplicate form instances. After you pull completed forms into Briefcase, it is important that you delete them from Collect. Otherwise, the next time you pull in forms, you will create duplicates.
 
-          
 .. note:: 
 
   ODK Briefcase does not support pushing blank forms to ODK Collect. Instead, :ref:`manually load the forms on your ODK Collect device <loading-forms-directly>`.
-
-     
-
-
-.. _pull-from-android2.x:
-
-.. admonition:: Pulling forms --- Android 2.x and earlier
-
-  #. Ensure all filled-in forms are finalized. 
-
-     Briefcase does not discriminate between incomplete and finalized forms on the device. It will pull all filled-in form instances, even incomplete ones. This can cause problems during later pushes, especially if you are encrypting your finalized forms. To keep your data set clean, you must ensure that all forms are complete before being pulled from the device.
-
-     If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy of :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
-
-  #. Connect your Android device to your computer with a USB cable.
-
-     If your computer gives you an option of how to handle the device,
-     choose to mount the drive.
-
-  #. In Briefcase, open the :guilabel:`Pull` tab.
-  #. Select *Mounted Android SD Card* in the :guilabel:`pull data from` drop-down.
-  #. Click :guilabel:`Choose` and select the appropriate mounted SD card.
-  #. Select the forms you want to download and click on :guilabel:`Pull`. 
-  #. On the Android device, open ODK Collect and delete the filled-in forms.
-
 
 .. _briefcase-export-to-csv:
 
