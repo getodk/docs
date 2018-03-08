@@ -1,36 +1,56 @@
-*****************************************
 Using Android Debug Bridge with Collect
-*****************************************
+===========================================
 
-`Android Debug Bridge <https://developer.android.com/studio/command-line/adb.html>`_ is a command which acts as a bridge between the Android device and the terminal. It can control device over USB from a computer, copy files back and forth, install and uninstall apps, run shell commands etc. For the developers and users of ODK Collect, the most common uses are:
+`Android Debug Bridge`_ is a tool that provides command-line access
+to a USB-connected Android device.
+It can be used to move files between the device and your computer,
+install applications,
+and take screenshots and videos.
+When connected to a device that has ODK Collect installed,
+it can be used to push blank form definitions
+and pull completed forms.
 
-- loading blank forms to SD Card
-- fetching completed forms
-- deleting forms
-- copying the form database
-- installing the **.apk** file from the source code
+.. _Android Debug Bridge: https://developer.android.com/studio/command-line/adb.htlm
 
 .. _install-adb:
 
 Installing adb
-~~~~~~~~~~~~~~~
+----------------
 
-If you plan to work on ODK Collect or run the app using an emulator, download the `Android Studio <https://developer.android.com/studio/index.html>`_. It already comes with the adb tool. To use it, `enable USB Debugging <https://www.howtogeek.com/125769/how-to-install-and-use-abd-the-android-debug-bridge-utility/>`_.
+Android Studio
+~~~~~~~~~~~~~~~~~
 
-To install :command:`adb` as a standalone tool, please follow the instructions given `here <https://android.gadgethacks.com/how-to/android-basics-install-adb-fastboot-mac-linux-windows-0164225/>`_.
+The easiest and most well-supported way to install ADB is to 
+install `Android Studio`_,
+which includes ADB.
+After installing, you'll need to
+`enable USB Debugging`__.
 
-Forms can be manipulated from the command line itself. The following sections describe how :command:`adb` can be used to work with the app.
+__ https://www.howtogeek.com/125769/how-to-install-and-use-abd-the-android-debug-bridge-utility_
+
+Standalone ADB
+~~~~~~~~~~~~~~~~
+
+You can also `install ADB without Android studio`__.
+This is not well supported, though,
+and should only be done
+if you cannot instal Android Studio on your computer.
+
+__ https://android.gadgethacks.com/how-to/android-basics-install-adb-fastboot-mac-linux-windows-0164225/_
+
+Managing Forms with ADB
+---------------------------
+
+Forms are stored on the device in  :file:`sdcard/odk/forms/`.
 
 .. _loading-blank-forms-with-adb:
 
 Loading blank forms
 ~~~~~~~~~~~~~~~~~~~~
 
-The forms are stored in :file:`sdcard/odk/forms/` folder on the device. They can be loaded via a USB device using:
-
 .. code-block:: console
 
-  $ adb push path/to/form.xml /sdcard/odk/forms/form.xml
+  $ adb push local/path/to/form.xml /sdcard/odk/forms/form.xml
 
 .. note::
 
@@ -41,68 +61,80 @@ The forms are stored in :file:`sdcard/odk/forms/` folder on the device. They can
 Deleting forms
 ~~~~~~~~~~~~~~~
 
-Forms can be deleted from :file:`sdcard/odk/forms` by running:
-
 .. code-block:: console
 
-  $ adb shell rm -d /sdcard/odk/forms/my_form.xml
+  $ adb shell rm -d /sdcard/odk/forms/form.xml
 
 .. _downloading-forms:
 
 Downloading forms to your computer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To download a completed form or form instance from the computer, run:
+To download a completed form or form instance from the computer:
 
 .. code-block:: console
 
-  $ adb pull /sdcard/odk/forms/my_form.xml
+  $ adb pull /sdcard/odk/forms/form.xml
 
+  
+Developer tasks and troubleshooting with ADB
+-----------------------------------------------
+  
 .. _downloading-database-with-adb:
 
-Downloading database
-~~~~~~~~~~~~~~~~~~~~~~
+Downloading Collect databases
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Developers might also need to check the entries in the database from the computer. In such case pull the database file from the SD card and use any **SQLite visualizer** to view it. To pull the database into the computer, run:
+Collect stores settings and form state information
+in several SQLite databases, 
+which you can pull onto your local computer.
+
+To see a list of available databases:
 
 .. code-block:: console
   
-  $  adb -pull /sdcard/odk/database/database.name
+  $  adb ls /sdcard/odk/database/
+
+To pull a database locally:
+
+.. code-block:: console
+  
+  $  adb pull /sdcard/odk/database/{database-name}
 
 .. _saving-screenshot-with-adb:
 
-Saving screenshot
-~~~~~~~~~~~~~~~~~~
-
-For taking a screenshot, run:
+Taking screenshota
+~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
-  $ adb exec-out screencap /sdcard/screen.png
+  $ adb exec-out screencap /sdcard/image-name.png
 
-Here, the image will be stored as ``screen.png`` which can be downloaded to the computer by running:
+To pull the saved image locally:
 
 .. code-block:: console
 
-  $ adb pull /sdcard/screen.png
+  $ adb pull /sdcard/image-name.png
 
 .. note::
 
-  You can also use ODK docs program to get a screenshot by referring to the instructions given in the :ref:`Contribution Guide <screenshots>`.
-
+  ODK Docs contributors can use the :ref:`screenshot utility script <screenshots>`, which wraps the :command:`adb` commands and assists with saving the images to the correct location and inserting appropriate markup in the documentation source.
+  
 .. _recording-video-with-adb:
 
-Recording a video
+Recording video
 ~~~~~~~~~~~~~~~~~~~
-
-:command:`adb` can be used to record video on device's screen. This can be done by running:
 
 .. code-block:: console
 
-  $ adb shell screenrecord /sdcard/example.mp4
+  $ adb shell screenrecord /sdcard/video-name.mp4
 
-As you hit :guilabel:`Enter`, this command will start recording your device’s screen using the default settings and save the resulting video to a file at :guilabel:`/sdcard/example.mp4` file on your device.
+When you hit :guilabel:`Enter`, the video starts recording immediately.
 
-To stop the recording, press :guilabel:`ctrl` + :guilabel:`C`
+To stop the recording, press :kbd:`CTRL-C`. If you don't interrupt the recording, it will stop after three minutes.
 
+To pull the video locally:
 
+.. code-block:: console
+
+  $ adb pull /sdcard/video-name.png
