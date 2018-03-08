@@ -8,9 +8,9 @@
 Using Offline Maps
 ====================
 
-Collect's :ref:`geoshape`, :ref:`geotrace` and :ref:`geopoint` question types can be configured to display different maps. To use online map tiles, set the mapping engine and basemap from the :ref:`mapping settings <mapping-settings>`. Users will need to be online to load questions with maps.
+Collect's :ref:`geoshape`, :ref:`geotrace` and :ref:`geopoint` question types can be configured to display different maps. To use online maps, :ref:`set the mapping engine and basemap <mapping-settings>` in :ref:`interface-settings`. Users will need to be online to load questions with maps.
 
-Offline map tiles are useful for low-connectivity environments or to present custom geospatial data. Use them to display high-resolution imagery, annotated maps, heatmaps, and more. ODK Collect can display any map layer saved in the `MBTiles format <https://github.com/mapbox/mbtiles-spec)>`_. The only limitation is that tile data in Mapbox's pbf format are not supported.
+Offline maps are useful for low-connectivity environments or to present custom geospatial data. Use them to display high-resolution imagery, annotated maps, heatmaps, and more. ODK Collect can display any map layer saved as a set of tiles in the `MBTiles format <https://github.com/mapbox/mbtiles-spec)>`_. Tiles are images that represent a subset of a map. The only limitation is that tile data in Mapbox's pbf format are not supported.
 
 .. _offline-maps-quick-start:
 
@@ -18,7 +18,7 @@ Offline maps quick start
 -------------------------
 #. From :ref:`Collect's settings <mapping-settings>`, change the Mapping SDK to Google Maps SDK
 #. :ref:`Get or create your MBTiles file <getting-map-tiles>` with `TileMill <https://tilemill-project.github.io/tilemill/>`_ or other software.
-#. :ref:`Transfer tiles to devices <transferring-offline-tiles>`. Put the MBTiles file to a folder on your device in the :file:`/sdcard/odk/layers` folder. The name of the folder will be shown in the interface. For example, if you want to show :file:`All settlements` as the map name, use the folder :file:`/sdcard/odk/layers/All settlements/my_tiles.mbtiles`.
+#. :ref:`Transfer tiles to devices <transferring-offline-tiles>`. The MBTiles file must be placed in a sub-folder on your device in the :file:`/sdcard/odk/layers` folder.
 #. Open a question that displays a map (types :ref:`geoshape`, :ref:`geotrace`, :ref:`geopoint` with certain appearances)
 #. Tap the layers icon and select your map
 
