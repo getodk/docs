@@ -1,3 +1,10 @@
+.. spelling::
+
+  logcat
+  bugreport
+  screencap
+  
+	
 Using Android Debug Bridge with Collect
 ===========================================
 
@@ -14,8 +21,10 @@ and pull completed forms.
 
 .. _install-adb:
 
-Installing adb
-----------------
+Installing and setting up ADB
+------------------------------------
+
+.. _install-adb-android-studio:
 
 Android Studio
 ~~~~~~~~~~~~~~~~~
@@ -28,15 +37,19 @@ After installing, you'll need to
 
 __ https://www.howtogeek.com/125769/how-to-install-and-use-abd-the-android-debug-bridge-utility_
 
+.. _install-adb-standalone:
+
 Standalone ADB
 ~~~~~~~~~~~~~~~~
 
 You can also `install ADB without Android studio`__.
 This is not well supported, though,
 and should only be done
-if you cannot instal Android Studio on your computer.
+if you cannot install Android Studio on your computer.
 
 __ https://android.gadgethacks.com/how-to/android-basics-install-adb-fastboot-mac-linux-windows-0164225/_
+
+.. _adb-forms:
 
 Managing Forms with ADB
 ---------------------------
@@ -54,7 +67,9 @@ Loading blank forms
 
 .. note::
 
-  Path on the phone must include the file name and not just the folder name
+  The target path on the phone 
+  (the last part of the command)
+  must include the file name.
 
 .. _deleting-forms-with-adb:
 
@@ -76,6 +91,8 @@ To download a completed form or form instance from the computer:
 
   $ adb pull /sdcard/odk/forms/form.xml
 
+  
+.. _adb-dev-tasks:
   
 Developer tasks and troubleshooting with ADB
 -----------------------------------------------
@@ -103,7 +120,7 @@ To pull a database locally:
 
 .. _saving-screenshot-with-adb:
 
-Taking screenshota
+Taking screenshots
 ~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
@@ -138,3 +155,51 @@ To pull the video locally:
 .. code-block:: console
 
   $ adb pull /sdcard/video-name.png
+
+.. _adb-debug-logs:
+  
+Pulling logs for debugging
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _logcat:
+
+Capturing in-progress logs with logcat
+""""""""""""""""""""""""""""""""""""""""
+
+If you are experiencing crashes or other serious glitches,
+and you can reproduce the bug,
+use :command:`adb logcat` to capture log events during the crash.
+
+#. Before reproducing the bug, begin piping logs to a file:
+
+   .. code-block:: console
+
+     adb logcat > logfile.txt
+  
+   This will write all logged errors to your local file :file:`logfile.txt`.
+
+#. Reproduce the bug or crash event.
+
+#. Type :kbd:`CTRL-C` to stop logging.
+
+You can then upload the :file:`logfile.txt` file to 
+a `Collect issue on GitHub <https://github.com/opendatakit/collect/issues>`_
+or post in the |forum|.
+
+.. _bugreport:
+
+Pull a bugreport
+""""""""""""""""""
+
+If more in-depth information is needed, 
+you can pull a complete bug report from the device.
+
+.. code-block:: console
+
+  adb bugreport
+  
+This copies a ZIP file locally containing all system messages,
+error logs, and diagnostic output,
+along with information about the device's hardware, firmware, and operating system.
+
+.. seealso:: https://developer.android.com/studio/debug/bug-report.html
