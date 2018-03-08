@@ -51,10 +51,10 @@ __ https://android.gadgethacks.com/how-to/android-basics-install-adb-fastboot-ma
 
 .. _adb-forms:
 
-Managing Forms with ADB
+Managing forms with ADB
 ---------------------------
 
-Forms are stored on the device in  :file:`sdcard/odk/forms/`.
+Forms are stored on the device in  :file:`/sdcard/odk/forms/`.
 
 .. _loading-blank-forms-with-adb:
 
@@ -103,21 +103,13 @@ Downloading Collect databases
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Collect stores settings and form state information
-in several SQLite databases, 
+in a few SQLite databases, 
 which you can pull onto your local computer.
 
-To see a list of available databases:
-
 .. code-block:: console
   
-  $  adb ls /sdcard/odk/database/
-
-To pull a database locally:
-
-.. code-block:: console
+  $  adb pull /sdcard/odk/metadata/*.db
   
-  $  adb pull /sdcard/odk/database/{database-name}
-
 .. _saving-screenshot-with-adb:
 
 Taking screenshots
@@ -158,7 +150,7 @@ To pull the video locally:
 
 .. _adb-debug-logs:
   
-Pulling logs for debugging
+Capturing logs for debugging
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. _logcat:
@@ -176,7 +168,7 @@ use :command:`adb logcat` to capture log events during the crash.
 
      adb logcat > logfile.txt
   
-   This will write all logged errors to your local file :file:`logfile.txt`.
+   This will write all logged errors to your local file :file:`logfile.txt` as they occur.
 
 #. Reproduce the bug or crash event.
 
@@ -188,7 +180,7 @@ or post in the |forum|.
 
 .. _bugreport:
 
-Pull a bugreport
+Pull a bug report
 """"""""""""""""""
 
 If more in-depth information is needed, 
@@ -200,6 +192,7 @@ you can pull a complete bug report from the device.
   
 This copies a ZIP file locally containing all system messages,
 error logs, and diagnostic output,
-along with information about the device's hardware, firmware, and operating system.
+along with information about the device's
+hardware, firmware, and operating system.
 
 .. seealso:: https://developer.android.com/studio/debug/bug-report.html
