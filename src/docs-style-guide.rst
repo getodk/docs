@@ -661,11 +661,11 @@ In these cases, you may want to use the :rst:dir:`rubric` directive.
 
       errors = []
       sym_list = ['===','---','~~~','"""','\'\'\'']
-      cnt_label = 0
+      is_doc_title = True
 
       for matchobj in re.finditer(regex, text):
-          cnt_label += 1
-          if cnt_label == 1:
+          if is_doc_title:
+              is_doc_title = False
               continue
           label = matchobj.group(1)
           start = matchobj.start()+1
