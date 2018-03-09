@@ -9,7 +9,7 @@ Pulling forms from Aggregate
 To download blank forms and completed form instances from an :doc:`Aggregate <aggregate-intro>` server:
 
 #. Open the :guilabel:`Pull` tab.
-#. Select *Aggregate 1.0* in the :guilabel:`Pull data from` drop-down.
+#. Select *Aggregate* in the :guilabel:`Pull data from` drop-down.
 #. Click the :guilabel:`Connect` button and enter the URL and login credentials for your Aggregate server.
 
    If you have anonymous login enabled on Aggregate, no login credentials are needed here.
@@ -53,7 +53,7 @@ Pushing forms to Aggregate
 To upload blank forms and completed form instances to :doc:`Aggregate <aggregate-intro>`:
 
 #. Open the :guilabel:`Push` tab.
-#. Select *Aggregate 1.0* in the :guilabel:`Push data to` drop-down.
+#. Select *Aggregate* in the :guilabel:`Push data to` drop-down.
 #. Click the :guilabel:`Connect` button and enter the URL and login credentials for your Aggregate server.
 
    If you have anonymous login enabled on Aggregate, no login credentials are needed here.
