@@ -63,6 +63,8 @@ jobs:
               cd build/latex
               xelatex OpenDataKit.tex
               xelatex OpenDataKit.tex
+              cd ../..
+              cp build/latex/OpenDataKit.pdf build/OpenDataKit.pdf
       - store_artifacts:
           path: build/latex/OpenDataKit.pdf
           destination: OpenDataKit.pdf
