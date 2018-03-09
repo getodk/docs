@@ -4,7 +4,7 @@ from PIL import Image
 
 def single_resize(imagedir, filename):
     """Resize a single image."""
-    print("Resisizing %s ..." %filename)
+    print("Resizing %s ..." %filename)
     filepath = os.path.join(imagedir, filename)
     image = Image.open(filepath)
     old_w, old_h  = image.size
