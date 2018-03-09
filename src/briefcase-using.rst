@@ -93,7 +93,7 @@ To upload blank forms and completed form instances to :doc:`Aggregate <aggregate
        
   .. _aggregate-upgrade-with-briefcase:
        
-  By pulling data into the local Briefcase Storage location and then pushing data up to an Aggregate instance, ODK Briefcase provides a mechanism to transfer data across upgrade-incompatible versions of Aggregate.
+  By pulling data into the local Briefcase Storage location and then pushing data up to an Aggregate instance, Briefcase provides a mechanism to transfer data across upgrade-incompatible versions of Aggregate.
 
 
 .. _pull-from-collect:
@@ -166,7 +166,7 @@ Working with the command line
 
 .. _pull-from-aggregate-cli:
   
-Pulling form data from Aggregate Server
+Pulling form data from Aggregate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
@@ -202,4 +202,4 @@ To get help about the command line operation:
 
 .. code-block:: console
 
-  $ java -jar {path/to/briefcase-jar-file} -help
+  $ java -jar {path/to/briefcase-jar-file} --help
