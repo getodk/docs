@@ -110,7 +110,7 @@ General steps for upgrading
 ------------------------------------
 
 1. Disable all submissions to ODK Aggregate, in the :guilabel:`Form Management` tab.
-2. Use :doc:`ODK Briefcase <briefcase-forms>` to pull a copy of all data to your computer.
+2. Use :doc:`ODK Briefcase  <briefcase-using>` to pull a copy of all data to your computer.
 3. Search upward in the :ref:`release notes <release-notes>` below, starting from your current ODK Aggregate version to locate the most recent ODK Aggregate version that does not require any manual upgrade steps. 
 4. Log onto your server to confirm that it is still functioning.
 5. Download the next ODK Aggregate version, perform the manual upgrade steps if any and upgrade to that version (and perform any post-install upgrade steps, if any).

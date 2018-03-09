@@ -18,7 +18,7 @@ There is also a fully set-up :doc:`virtual machine <aggregate-vm>` that can be r
 
 We recommend using Google App Engine or the ODK Aggregate VM before attempting an EC2 or Tomcat deployment. Once you have tried Aggregate together with :doc:`ODK Collect <collect-intro>` and familiarized yourself with their use, you can consider alternative hosting platforms. 
 
-You can also go without Aggregate altogether and use :doc:`ODK Briefcase <briefcase-guide>`.
+You can also go without Aggregate altogether and use :doc:`ODK Briefcase  <briefcase-intro>`.
 
 This document provides general advise for thinking through your deployment decisions.
 
@@ -176,7 +176,7 @@ Therefore, to reduce datastore reads:
  - :ref:`restrict access to the Aggregate website <aggregate-permissions>`
  - do not keep the browser window open on the submissions tab
  - :doc:`export or publish your data <aggregate-data-access>`, and do your analysis in a different tool
- - use :doc:`briefcase-guide` instead of Aggregate to generate CSV files
+ - use :doc:`briefcase-intro` instead of Aggregate to generate CSV files
  
 It is generally more efficient to use Briefcase to generate CSV files than to use Aggregate, as Briefcase will use the locally cached data to generate the CSV files.
 

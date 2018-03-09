@@ -34,4 +34,6 @@ redirects:
   collect-integrations/index.html: /launch-apps-from-collect
   visualize/index.html: /aggregate-visualize
   style-guide/index.html: docs-style-guide
-  
+  briefcase-guide/index.html: briefcase-intro
+  briefcase-forms/index.html: briefcase-using
+  briefcase-vs-aggregate/index.html: briefcase-and-aggregate

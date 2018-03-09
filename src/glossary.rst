@@ -95,3 +95,17 @@ Glossary
 
     The main body of a form question or widget. In an :term:`XLSForm`, the contents of the :th:`label`.
 
+  CSV
+  
+    `Comma Separated Values <https://en.wikipedia.org/wiki/Comma-separated_values>`_.
+    A plain-text file format for tabular (spreadsheet-like) data.
+    
+  JSON
+  
+    `JavaScript Object Notation <https://www.json.org/>`_.
+    A serialized key-value data format.
+    
+  KML
+  
+    `Keyhole Markup Language <https://developers.google.com/kml/>`_.
+    A file format for geographic data.
