@@ -14,6 +14,7 @@ exclude_from_upload:
   - .DS_Store
   - objects.inv
   - spelling
+  - latex
 
 cloudfront_distribution_id: E1IDKKW65Q2HVZ
 
