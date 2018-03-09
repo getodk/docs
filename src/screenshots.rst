@@ -42,6 +42,10 @@ In the command line type, the following command to check if RubyGem is installed
 
 If it is not installed, you can install it using the instructions `given here <https://rubygems.org/pages/download>`_. Windows users are recommended to use `RubyInstallers <https://rubyinstaller.org/>`_.
 
+.. note::
+  
+ Mac users 
+
 After installing RubyGem install the gems:
 
 Windows and Mac users can use the following commands:
@@ -234,30 +238,7 @@ Screenshots will be generated and saved to :file:`collect/fastlane/metadata/andr
 
   The setup needs to be configured once only. After the complete setup there is no need to run the :command:`gradlew` commands again, but in order to add new widgets, that is to reflect the changes made in integration test, :command:`./gradlew assembleDebug assembleAndroidTest` command should be run again.
 
-.. add-widgets-guide:
 
-Adding Widgets to Form-Widgets Guide
-----------------------------------------
-
-1. New widgets should be added to the `integration test <https://github.com/opendatakit/collect/blob/master/collect_app/src/androidTest/java/org/odk/collect/android/AllWidgetsFormTest.java>`_ and Screengrab.screenshot("image-name") calls should be made to capture the screenshot of the relevant widget. They should also be added to the :file:`all-widgets.xslx` sheet along with captions, alt-texts and image-name. 
-
-2. Move to ODK docs directory and :command:`cd` to :file:`util` directory.
-
-  .. code-block:: console
-
-    $ cd util
-
-3. Run the script to regenerate form-widgets guide.
-
-  .. code-block:: console
-
-    $ python3 automate_screenshots.py
-
-Enter the fastlane screenshot storage directory, then the form-widgets guide will be regenerated and generated screenshots will be copied to :file:`docs/img/form-widgets` folder.
-
-.. note::
-
-  Due to some issue with the screengrab tool, the directories where screenshots are saved keep changing. 
 
 
 
