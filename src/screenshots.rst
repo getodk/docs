@@ -8,6 +8,9 @@
  androidTest
  apks
  sdk
+ rbenv
+ XCode
+ cd
 
 Screenshot Generation using Screengrab
 ==========================================
