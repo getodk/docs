@@ -66,8 +66,8 @@ jobs:
               cd ../..
               cp build/latex/OpenDataKit.pdf build/OpenDataKit.pdf
       - store_artifacts:
-          path: build/latex/OpenDataKit.pdf
-          destination: OpenDataKit.pdf
+          path: build/OpenDataKit.pdf
+          destination: build/OpenDataKit.pdf
 
   deploy:
     working_directory: ~/work
