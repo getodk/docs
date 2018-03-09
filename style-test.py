@@ -138,7 +138,7 @@ def remove_lines(text):
     """Remove ignored lines  and directive blocks from text."""
     directive_list = [".. image::", ".. figure::", ".. video::", ".. code::",
                       ".. code-block::", ".. csv-table::", ".. toctree::",
-                      ".. py:", ".. math::",]
+                      ".. py:", ".. math::", ".. spelling::"]
 
     index = 0
     length = len(text)

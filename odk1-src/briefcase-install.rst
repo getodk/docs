@@ -1,23 +1,32 @@
-.. spelling::
+Setting Up ODK Briefcase
+===================================
 
-  vN
+.. note:: 
 
-*********************************
-Briefcase Installation and Setup
-*********************************
+  The ODK Briefcase file available for download is an executable Java application. Once downloaded, it can be run directly and does not need to be "installed."
 
-.. _installing-briefcase:
+.. admonition:: Before you begin...
 
-Installing Briefcase
-----------------------
+  Make sure `Java 8 <https://java.com/en/download/>`_ or higher is `installed on your system <https://www.java.com/en/download/help/download_options.xml>`_.
+  
+#. Download `ODK Briefcase <https://opendatakit.org/downloads/download-category/briefcase/>`_.
 
-- Make sure to download and install `Java 8 <https://java.com/en/download/>`_ or higher on your system.
-- Download `ODK Briefcase <https://opendatakit.org/downloads/download-category/briefcase/>`_  vN.N.N.jar.
-- Double click and start the file.
-- If that doesn't work for you try running *java -jar path_to_jar* from the command line.
+   You may wish to move the Briefcase file to your desktop, your Applications directory, or another location.
 
-Upon first starting, Briefcase will ask for the directory under which to create the ODK Briefcase Storage area. An `ODK Briefcase Storage` folder will be created here to hold all the blank forms and finalized forms.
+#. Open the file.
 
-.. tip::
+   - Double click the file icon.
+   - Or, from the command line:
+   
+     .. code-block:: console 
+       
+       $ java -jar {path/to/Briefcase}
+   
 
-  You can change the storage location for Briefcase from the :guilabel:`Settings` tab.
+#. Set the location for Briefcase Storage.
+
+   The first time you open Briefcase, you will need to select a directory for storing forms and submission data. A new directory called :file:`ODK Briefcase Storage` will be created under the directory you select.
+
+   .. tip::
+
+     You can change the storage location later, from the :guilabel:`Settings` tab.

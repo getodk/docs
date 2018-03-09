@@ -35,6 +35,11 @@ jobs:
           name: Check spelling of ODK1 Documentation
           command: make odk1-spell-check
       - run:
+          name: Build PDF of ODK1 Documentation
+          command: |
+            sphinx-build -b latex src odk1-build/latex
+            sudo python util/resize.py odk1-build
+      - run:
           name: Compress images
           command: pngquant odk1-build/_images/*.png --force --ext .png --verbose
       - store_artifacts:
@@ -44,7 +49,27 @@ jobs:
           root: ~/work
           paths:
             - odk1-build/*
-    
+
+  build-pdf-odk1:
+    working_directory: ~/work
+    docker:
+      - image: schickling/latex
+    steps:
+      - attach_workspace:
+          at: ~/work
+      - run:
+          name: Build PDF
+          command: |
+              cd odk1-build/latex
+              xelatex OpenDataKit.tex
+              xelatex OpenDataKit.tex
+              cd ../..
+              cp odk1-build/latex/OpenDataKit.pdf odk1-build/OpenDataKit.pdf
+      - store_artifacts:
+          path: odk1-build/latex/OpenDataKit.pdf
+          destination: OpenDataKit.pdf
+
+
   build-odk2:
     working_directory: ~/work
     docker:
@@ -80,6 +105,11 @@ jobs:
           name: Check spelling of ODK2 Documentation
           command: make odk2-spell-check
       - run:
+          name: Build PDF of ODK2 Documentation
+          command: |
+            sphinx-build -b latex src odk2-build/latex
+            sudo python util/resize.py odk2-build
+      - run:
           name: Compress images
           command: pngquant odk2-build/_images/*.png --force --ext .png --verbose 
       - store_artifacts:
@@ -89,12 +119,35 @@ jobs:
           root: ~/work
           paths:
             - odk2-build/*
-    
+
+  build-pdf-odk2:
+    working_directory: ~/work
+    docker:
+      - image: schickling/latex
+    steps:
+      - attach_workspace:
+          at: ~/work
+      - run:
+          name: Build PDF
+          command: |
+              cd odk2-build/latex
+              xelatex OpenDataKit.tex
+              xelatex OpenDataKit.tex
+              cd ../..
+              cp odk2-build/latex/OpenDataKit.pdf odk2-build/OpenDataKit.pdf
+      - store_artifacts:
+          path: odk2-build/latex/OpenDataKit.pdf
+          destination: OpenDataKit.pdf
+
 workflows:
   version: 2
   build_deploy:
     jobs:
       - build-odk1
+      - build-pdf-odk1:
+          requires:
+            - build-odk1
       - build-odk2
-      
-      
+      - build-pdf-odk2:
+        requires:
+            - build-odk2
