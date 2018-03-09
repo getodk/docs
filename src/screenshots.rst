@@ -8,17 +8,9 @@
  androidTest
  apks
  sdk
- 
-
-Automating Form-Widgets Guide
-===================================
-
-This guide gives information on how to automate generation of screenshots for form-widgets guide as well as regenerating form-widgets guide whenever new widgets are added.
-
-.. _screenshot-screengrab:
 
 Screenshot Generation using Screengrab
-----------------------------------------
+==========================================
 
 `Screengrab <https://docs.fastlane.tools/actions/screengrab/>`_ is a command line tool, provided by fastlane. fastlane is an open source platform, which provides a toolchain and automates tasks like generating screenshots, dealing with code signing, and releasing your application. Screengrab can be configured to load up different locales, run all the UI tests and take screenshots during the execution of the test on various devices. 
 
@@ -32,7 +24,7 @@ To configure screengrab, follow the steps given below:
 .. _install-screen:
 
 Installation
-""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the command line type, the following command to check if RubyGem is installed or not. RubyGems is a package manager for the Ruby programming language that provides a standard format for distributing Ruby programs and libraries (in a self-contained format called a *gem*). If Ruby is installed, the command given below would return the version number.
 
@@ -44,7 +36,34 @@ If it is not installed, you can install it using the instructions `given here <h
 
 .. note::
   
- Mac users 
+ - Mac users need to install XCode's CLI tools first before installing gems using the command :command:`xcode-select --install`.
+ - As Macs come with an old version of ruby, so it is recommended to install a recent version of ruby, preferably through brew and with rbenv.
+
+   1. Install rbenv.
+
+   .. code-block:: console
+     
+     $ brew install rbenv
+    
+   2. Run the command :command:`rbenv init` and set up rbenv integration with your shell.
+   3. Install the specific version of ruby using rbenv.
+
+   .. code-block:: console
+    
+     $ rbenv install 2.3.1
+
+   4. After :ref:`cloning <clone-collect>` collect repo, cd to :file:`collect` directory.
+   
+   .. code-block:: console
+
+     $ cd /path/to/collect
+
+   5. Set a local application-specific Ruby version.
+
+   .. code-block:: console
+
+    $ rbenv local 2.3.1
+    
 
 After installing RubyGem install the gems:
 
@@ -71,8 +90,10 @@ Linux users can use the commands given below:
 
  - Make sure that you have `JDK 8 <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>`_ installed and you have `correctly set the JAVA_HOME variable <https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/index.html>`_ in your environment to match the location of your Java installation.
 
+.. _clone-collect:
+
 Clone down ODK Collect repository
-"""""""""""""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Go to `ODK collect repo on Github <https://github.com/opendatakit/collect>`_ , select the :guilabel:`Clone or download` button. Copy the URL from the text box that opens up. It will be : ``https://github.com/opendatakit/collect.git``.
 
@@ -94,7 +115,7 @@ Clone down ODK Collect repository
 .. _configure-build:
 
 Configuring the Build
-""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 `Gradle <https://gradle.org/>`_ is an advanced build toolkit which is used to automate and manage the build process, while allowing you to define flexible custom build configurations. The Android plug-in for Gradle works with the build toolkit to provide processes and configurable settings that are specific to building and testing Android applications.
 
@@ -103,7 +124,7 @@ Gradle and the Android plug-in run independent of Android Studio which means tha
 .. _building-command-line:
 
 Building App from the Command Line
-''''''''''''''''''''''''''''''''''''''
+""""""""""""""""""""""""""""""""""""""
 
 1. :command:`cd` to your preferred directory, and create a directory named :file:`sdk`.
 
@@ -198,7 +219,7 @@ Building App from the Command Line
 .. _build-android-studio:
 
 Building App from the Android Studio
-''''''''''''''''''''''''''''''''''''''
+""""""""""""""""""""""""""""""""""""""""""
 
 1. `Download Android Studio <https://developer.android.com/studio/index.html#downloads>`_ with SDK according to your platform.
 
@@ -209,7 +230,7 @@ Building App from the Android Studio
 .. _generate-test-debug:
 
 Generating Test and Debug APKs
-"""""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To generate test and debug apks, run the following command.
 
@@ -226,7 +247,7 @@ The debug app APK will be stored in :file:`collect_app/build/outputs/apk/debug/`
 .. _generate-screenshots:
 
 Generating Screenshots
-"""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Run the command :command:`fastlane screengrab`.
 
