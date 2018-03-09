@@ -78,7 +78,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'incl']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'default'
@@ -95,6 +95,15 @@ smartquotes_action = 'De'
 
 # Print suggestions for misspelled words.
 spelling_show_suggestions = True
+
+# Change image preference for DirectoryHTMLBuilder
+from sphinx.builders.html import DirectoryHTMLBuilder
+DirectoryHTMLBuilder.supported_image_types = [
+    'image/svg+xml',
+    'image/gif',
+    'image/png',
+    'image/jpeg'
+]
 
 # -- Options for HTML output ----------------------------------------------
 
@@ -138,20 +147,27 @@ htmlhelp_basename = 'OpenDataKit2doc'
 
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
-    #
-    # 'papersize': 'letterpaper',
+    'papersize': 'letterpaper',
 
     # The font size ('10pt', '11pt' or '12pt').
-    #
-    # 'pointsize': '10pt',
+    'pointsize': '12pt',
 
     # Additional stuff for the LaTeX preamble.
-    #
-    # 'preamble': '',
+    'preamble': '''
+    \usepackage{fontspec}
+    ''',
+
+    # disable font inclusion
+    'fontpkg': '',
+    'fontenc': '',
+
+    # Fix Unicode handling by disabling the defaults for a few items
+    # set by sphinx
+    'inputenc': '',
+    'utf8extra': '',
 
     # Latex figure (float) alignment
-    #
-    # 'figure_align': 'htbp',
+    'figure_align': 'htbp',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
@@ -234,6 +250,16 @@ rst_prolog="""
 """
 
 # At bottom of every document
+download_pdf = """
+
+Download this documentation as a PDF.
+
+"""
+odk_pdf = """
+
+../_downloads/ODK2-Documentation.pdf
+
+"""
 prob_in_doc = """
 
 If you find a problem with this documentation, please 
@@ -311,7 +337,9 @@ rst_epilog = """
 
 """
 
-html_context = {'prob_in_doc' : prob_in_doc , 
+html_context = {'download_pdf' : download_pdf,
+                'odk_pdf' : odk_pdf,
+                'prob_in_doc' : prob_in_doc ,
                 'contri_start' : contri_start , 
                 'join' : join , 
                 'faq_help' : faq_help , 

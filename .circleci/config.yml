@@ -61,14 +61,16 @@ jobs:
           name: Build PDF
           command: |
               cd odk1-build/latex
-              xelatex OpenDataKit.tex
-              xelatex OpenDataKit.tex
-              cd ../..
-              cp odk1-build/latex/OpenDataKit.pdf odk1-build/OpenDataKit.pdf
+              xelatex OpenDataKit1.tex
+              xelatex OpenDataKit1.tex
+              mv OpenDataKit1.pdf ../_downloads/ODK1-Documentation.pdf
       - store_artifacts:
-          path: odk1-build/latex/OpenDataKit.pdf
-          destination: OpenDataKit.pdf
-
+          path: odk1-build/_downloads/ODK1-Documentation.pdf
+          destination: ODK1-Documentation.pdf
+      - persist_to_workspace:
+          root: ~/work
+          paths:
+            - odk1-build/*
 
   build-odk2:
     working_directory: ~/work
@@ -133,11 +135,14 @@ jobs:
               cd odk2-build/latex
               xelatex OpenDataKit.tex
               xelatex OpenDataKit.tex
-              cd ../..
-              cp odk2-build/latex/OpenDataKit.pdf odk2-build/OpenDataKit.pdf
+              mv OpenDataKit.pdf ../_downloads/ODK2-Documentation.pdf
       - store_artifacts:
-          path: odk2-build/latex/OpenDataKit.pdf
-          destination: OpenDataKit.pdf
+          path: odk2-build/_downloads/ODK2-Documentation.pdf
+          destination: ODK2-Documentation.pdf
+      - persist_to_workspace:
+          root: ~/work
+          paths:
+            - odk2-build/*
 
 workflows:
   version: 2

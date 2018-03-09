@@ -79,7 +79,7 @@ To upload blank forms and completed form instances to :doc:`Aggregate <aggregate
    
      .. rubric:: Workaround
      
-     If the form definition has changed, but the changes only affect the question text and do not alter the structure of the collected data (or change the form Id or version), you can:
+     If the form definition has changed, but the changes only affect the question text and do not alter the structure of the collected data (or change the form ID or version), you can:
      
      #. In :guilabel:`Settings`, temporarily change the location of :file:`ODK Briefcase Storage`.
      #. Manually copy the form directory from your original storage location to the temporary location.
