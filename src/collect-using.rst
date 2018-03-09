@@ -23,6 +23,7 @@ To use ODK Collect:
   collect-forms
   collect-filling-forms
   collect-settings
+  collect-offline-maps
 
   
 - Advanced Use and Best Practices

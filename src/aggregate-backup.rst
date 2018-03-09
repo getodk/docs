@@ -6,7 +6,7 @@ Backing Up Aggregate
 Recovering from Briefcase
 ---------------------------
 
-Use :doc:`ODK Briefcase <briefcase-guide>` to back up all forms and submissions on Aggregate. You can :ref:`pull forms from your Aggregate server <pull-from-aggregate>` into your local machine using Briefcase. In particular, Briefcase's :ref:`command line interface <cli-use>` makes this easier.
+Use :doc:`ODK Briefcase  <briefcase-intro>` to back up all forms and submissions on Aggregate. You can :ref:`pull forms from your Aggregate server <pull-from-aggregate>` into your local machine using Briefcase. In particular, Briefcase's :ref:`command line interface <cli-use>` makes this easier.
 
 .. _mysql-backup:
 

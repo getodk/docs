@@ -43,7 +43,7 @@ Questions with response choices can be answered by touching the selected items. 
 
   Radio buttons accept one selection.
   
-.. figure:: /img/collect-completing-forms/multi-select.gif 
+.. figure:: /img/collect-completing-forms/multi-select.*
   :alt: A question screen with check boxes (multi-select).
   
   Check boxes accept multiple answers.
@@ -82,7 +82,7 @@ Removing answers
 
 To remove a response, :gesture:`Long Press` on the :term:`question label`. 
 
-.. image:: /img/collect-completing-forms/long-press-to-remove.gif 
+.. image:: /img/collect-completing-forms/long-press-to-remove.*
   :alt: To remove an answer to a question, long press the question label and follow the on-screen prompts.
   :class: details
 
@@ -238,7 +238,7 @@ Name the form
 
 The last form screen provides a default name for the form (defined by the form designer). You can rename it. This name only applies to that particular instance of a completed form (not to the blank form).
 
-.. image:: /img/collect-completing-forms/rename-form.gif 
+.. image:: /img/collect-completing-forms/rename-form.*
   :alt: To rename the form instance, touch the form name in the last screen of the survey.
   
 The Form Name identifies the form in lists throughout the app. For this reason, a meaningful name may be important to you. After you've saved the name, the form automatically moves to the :guilabel:`Send Finalized Form` section, from where you can send it.

@@ -102,7 +102,7 @@ To access User Interface settings:
 .. rubric:: Mapping
 
 :guilabel:`Mapping SDK` 
-  Sets the app that will be used for 
+  Sets the mapping engine that will be used for 
   form question types that require map integration.
   
   Options:
@@ -110,12 +110,12 @@ To access User Interface settings:
   - Google Maps (default)
   - OpenStreetMap
  
-  .. seealso:: :ref:`geopoint`, :ref:`geoshape`, :ref:`geotrace` 
+  .. seealso:: :ref:`geopoint`, :ref:`geoshape`, :ref:`geotrace`, :doc:`offline maps <collect-offline-maps>`
   
   
 :guilabel:`Basemap` 
   Sets the map to be displayed 
-  when a widget with a mapping component is opened. 
+  when a question with a mapping component is opened.
 
 .. _form-management-settings:
 

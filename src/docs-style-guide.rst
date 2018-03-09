@@ -99,11 +99,11 @@ Quote marks are used in prose writing to indicate verbatim text. This is rarely 
 
       errors = []
 
-      for m in re.finditer(regex, text):
-          start = m.start()+1
-          end = m.end()
+      for matchobj in re.finditer(regex, text):
+          start = matchobj.start()+1
+          end = matchobj.end()
           (row, col) = line_and_column(text, start)
-          extent = m.end()-m.start()
+          extent = matchobj.end()-matchobj.start()
           errors += [(err, msg, row, col, start, end,
                            extent, "warning", "None")]  
 
@@ -127,11 +127,11 @@ Any time that you *do* need to use quotation marks, use straight (or *plain*) qu
 
       errors = []
 
-      for m in re.finditer(regex, text):
-          start = m.start()+1
-          end = m.end()
+      for matchobj in re.finditer(regex, text):
+          start = matchobj.start()+1
+          end = matchobj.end()
           (row, col) = line_and_column(text, start)
-          extent = m.end()-m.start()
+          extent = matchobj.end()-matchobj.start()
           errors += [(err, msg, row, col, start, end,
                            extent, "warning", "None")]  
 
@@ -661,17 +661,21 @@ In these cases, you may want to use the :rst:dir:`rubric` directive.
 
       errors = []
       sym_list = ['===','---','~~~','"""','\'\'\'']
+      is_doc_title = True
 
-      for m in re.finditer(regex, text):
-          label = m.group(1)
-          start = m.start()+1
-          end = m.end()
+      for matchobj in re.finditer(regex, text):
+          if is_doc_title:
+              is_doc_title = False
+              continue
+          label = matchobj.group(1)
+          start = matchobj.start()+1
+          end = matchobj.end()
           (row, col) = line_and_column(text, start)
           row = row + 2
           if any(word in text.splitlines(True)[row] for word in sym_list):
               row = row - 1
           col = 0
-          extent = m.end()-m.start()
+          extent = matchobj.end()-matchobj.start()
           catches = tuple(re.finditer(r"\.\. _", label))
           if not len(catches):
               errors += [(err, msg, row, col, start, end,
