@@ -255,9 +255,9 @@ download_pdf = """
 Download this documentation as a PDF.
 
 """
-odkpdf = """
+odk_pdf = """
 
-../OpenDataKit.pdf
+../_downloads/ODK-Documentation.pdf
 
 """
 prob_in_doc = """
@@ -338,7 +338,7 @@ rst_epilog = """
 """
 
 html_context = {'download_pdf' : download_pdf,
-                'odkpdf' : odkpdf,
+                'odk_pdf' : odk_pdf,
                 'prob_in_doc' : prob_in_doc ,
                 'contri_start' : contri_start , 
                 'join' : join , 

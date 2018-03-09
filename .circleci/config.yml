@@ -63,12 +63,14 @@ jobs:
               cd build/latex
               xelatex OpenDataKit.tex
               xelatex OpenDataKit.tex
-              cd ../..
-              cp build/latex/OpenDataKit.pdf build/OpenDataKit.pdf
+              mv OpenDataKit.pdf ../downloads/ODK-Documentation.pdf
       - store_artifacts:
-          path: build/latex/OpenDataKit.pdf
-          destination: OpenDataKit.pdf
-
+          path: build/downloads/ODK-Documentation.pdf
+          destination: ODK-Documentation.pdf
+      - persist_to_workspace:
+          root: ~/work
+          paths:
+            - build/*
   deploy:
     working_directory: ~/work
     docker:
