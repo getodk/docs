@@ -61,7 +61,6 @@ jobs:
           command: |
               cd odk1-build/latex
               xelatex OpenDataKit1.tex
-              mkdir ../_downloads
               mv OpenDataKit1.pdf ../_downloads/ODK1-Documentation.pdf
       - store_artifacts:
           path: odk1-build/_downloads/ODK1-Documentation.pdf
