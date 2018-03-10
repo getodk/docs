@@ -46,7 +46,15 @@ odk2: odk2_copy
 	@$(SPHINXBUILD) -b dirhtml "$(COMPILE2_SRCDIR)" "$(ODK2_BUILDDIR)" $(SPHINXOPTS)
 
 build-all: odk1 odk2
-	
+
+odk1-latex: odk1
+	@$(SPHINXBUILD) -b latex "$(COMPILE1_SRCDIR)" "$(ODK1_BUILDDIR)"/latex $(SPHINXOPTS)
+	python util/resize.py "$(ODK1_BUILDDIR)"
+
+odk2-latex: odk2
+	@$(SPHINXBUILD) -b latex "$(COMPILE2_SRCDIR)" "$(ODK2_BUILDDIR)"/latex $(SPHINXOPTS)
+	python util/resize.py "$(ODK2_BUILDDIR)"
+
 odk1-style-check: odk1
 	python style-test.py -r $(COMPILE1_SRCDIR)
 

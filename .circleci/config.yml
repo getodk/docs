@@ -37,8 +37,7 @@ jobs:
       - run:
           name: Build PDF of ODK1 Documentation
           command: |
-            sphinx-build -b latex src odk1-build/latex
-            sudo python util/resize.py odk1-build
+            make odk1-latex
       - run:
           name: Compress images
           command: pngquant odk1-build/_images/*.png --force --ext .png --verbose
@@ -109,8 +108,7 @@ jobs:
       - run:
           name: Build PDF of ODK2 Documentation
           command: |
-            sphinx-build -b latex src odk2-build/latex
-            sudo python util/resize.py odk2-build
+            make odk2-latex
       - run:
           name: Compress images
           command: pngquant odk2-build/_images/*.png --force --ext .png --verbose 
@@ -133,9 +131,9 @@ jobs:
           name: Build PDF
           command: |
               cd odk2-build/latex
-              xelatex OpenDataKit.tex
-              xelatex OpenDataKit.tex
-              mv OpenDataKit.pdf ../_downloads/ODK2-Documentation.pdf
+              xelatex OpenDataKit2.tex
+              xelatex OpenDataKit2.tex
+              mv OpenDataKit2.pdf ../_downloads/ODK2-Documentation.pdf
       - store_artifacts:
           path: odk2-build/_downloads/ODK2-Documentation.pdf
           destination: ODK2-Documentation.pdf
@@ -154,5 +152,5 @@ workflows:
             - build-odk1
       - build-odk2
       - build-pdf-odk2:
-        requires:
+          requires:
             - build-odk2
