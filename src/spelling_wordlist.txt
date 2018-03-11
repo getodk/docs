@@ -45,6 +45,11 @@ dropdown
 dropdowns
 Enketo
 enketo
+esthete
+esthetes
+esthetic
+esthetically
+esthetics
 ethiopian
 formID
 formId
@@ -138,11 +143,15 @@ Powershell
 pre
 prepending
 proactively
+Proselint
+proselint
 pyxform
 Pyxform
 quickcompact
 readme
 refetch
+regex
+Regex
 relevants
 Relevants
 repo
