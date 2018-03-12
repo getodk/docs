@@ -110,7 +110,7 @@ General steps for upgrading
 ------------------------------------
 
 1. Disable all submissions to ODK Aggregate, in the :guilabel:`Form Management` tab.
-2. Use :doc:`ODK Briefcase <briefcase-forms>` to pull a copy of all data to your computer.
+2. Use :doc:`ODK Briefcase  <briefcase-using>` to pull a copy of all data to your computer.
 3. Search upward in the :ref:`release notes <release-notes>` below, starting from your current ODK Aggregate version to locate the most recent ODK Aggregate version that does not require any manual upgrade steps. 
 4. Log onto your server to confirm that it is still functioning.
 5. Download the next ODK Aggregate version, perform the manual upgrade steps if any and upgrade to that version (and perform any post-install upgrade steps, if any).
@@ -442,7 +442,7 @@ Aggregate v1.4.4
    2. Click through to your application id. Then click on :guilabel:`Memcache Viewer` under the :guilabel:`Data` heading in the left sidebar. Keep this window open.
    3. Now, run the installer and deploy ODK Aggregate 1.4.4 to this application id.
    4. After it has deployed, click on :guilabel:`Flush Cache` in the dashboard window's Memcache Viewer screen.
-   5. Follow the instructions :ref:`here <permission-tab>` for changing the password of the super-user username.
+   5. Follow the instructions :ref:`here  <aggregate-permissions>` for changing the password of the super-user username.
    
    Other than the need to flush this cache, and the need to delete any ODK Tables data before upgrading, this should be a seamless upgrade from ODK Aggregate 1.4.x.
 

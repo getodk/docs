@@ -20,4 +20,4 @@ blessings
 gitpython
 transifex-client
 sphinx-intl
-
+sphinx-tabs==1.1.7

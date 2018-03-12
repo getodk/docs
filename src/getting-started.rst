@@ -1,4 +1,4 @@
-Getting Started Guide
+Getting Started With ODK
 =========================
 
 .. _using-odk:

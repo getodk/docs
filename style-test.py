@@ -10,8 +10,12 @@ import shutil
 import importlib
 import proselint
 from blessings import Terminal
+from docutils.core import publish_doctree
 
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
+
+# path of docs directory
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 # variables to hold error and warning count
 err_cnt = 0
@@ -25,10 +29,73 @@ os.environ["TERM"] = "linux"
 os.environ["TERMINFO"]= "/etc/terminfo"
 t = Terminal()
 
+def parse_code():
+    """Parse python code-blocks."""
+    global dir_path
+    test_file = dir_path + '/style-guide/style-checks.py'
+    extra_file = dir_path + '/style-guide/extra.py'
+    
+    def is_style_code_block(node):
+        """Check for style-checks python code-blocks."""
+        return (node.tagname == 'literal_block'
+            and 'code' in node.attributes['classes']
+            and 'python' in node.attributes['classes']
+            and 'style-checks' in node.attributes['classes'])
+    
+    def is_extra_code_block(node):
+        """Check for extra-checks python code-blocks."""
+        return (node.tagname == 'literal_block'
+            and 'code' in node.attributes['classes']
+            and 'python' in node.attributes['classes']
+            and 'extra-checks' in node.attributes['classes'])
+
+    style_guide = open(dir_path + "/src/docs-style-guide.rst", "r")
+    
+    # publish doctree, report only severe errors 
+    doctree = publish_doctree(style_guide.read(),
+        settings_overrides = {'report_level': 4})
+    
+    # write source code into style-check file
+    code_blocks = doctree.traverse(condition=is_style_code_block)
+    source_code = [block.astext() for block in code_blocks]
+    
+    f = open(test_file,"w+")
+    f.write("# -*- coding: utf-8 -*-\n\n")
+    f.write('"""Style Guide testing."""\n\n')
+
+    # modules to import from proselint 
+    modules = "memoize, existence_check, preferred_forms_check"
+    f.write("from proselint.tools import %s\n" %modules)
+
+    for line in source_code:
+        if not line.endswith('\n'):
+            line = line + "\n"
+        if "@memoize" in line:
+            line = "\n" + line    
+        f.write(line)
+    
+    # write source code into extra file
+    code_blocks = doctree.traverse(condition=is_extra_code_block)
+    source_code = [block.astext() for block in code_blocks]
+    
+    f = open(extra_file,"w+")
+    f.write("# -*- coding: utf-8 -*-\n\n")
+    f.write('"""Style Guide testing."""\n\n')
+    f.write("import re\n")
+    f.write("from proselint.tools import line_and_column\n")
+
+    for line in source_code:
+        if not line.endswith('\n'):
+            line = line + "\n"
+        if "def" in line:
+            line = "\n" + line    
+        f.write(line)
+
+
 def add_checks():      
     """Add checks to proselint."""
-    file_path = os.path.realpath(__file__)
-    src = file_path[0:file_path.rfind('/')] + '/style-guide'
+    global dir_path
+    src = dir_path + '/style-guide'
     dest = os.path.dirname(proselint.__file__)
     dest_prc = dest + '/.proselintrc'
     dest = dest + '/checks/style-guide'
@@ -70,7 +137,8 @@ def add_checks():
 def remove_lines(text):
     """Remove ignored lines  and directive blocks from text."""
     directive_list = [".. image::", ".. figure::", ".. video::", ".. code::",
-                      ".. code-block::", ".. csv-table::", ".. toctree::",]
+                      ".. code-block::", ".. csv-table::", ".. toctree::",
+                      ".. py:", ".. math::", ".. spelling::"]
 
     index = 0
     length = len(text)
@@ -187,6 +255,7 @@ def exclude_checks():
     """Removes the checks which are to be excluded."""
     list_exclude = [
                      "typography.symbols", "weasel_words.very",
+                     "misc.but", "consistency.spelling",
                   ]
     dest = os.path.dirname(proselint.__file__)
     dest_prc = dest + '/.proselintrc'
@@ -206,10 +275,10 @@ def exclude_checks():
 
 def get_paths(paths):
     """Return a list of files to run the checks on."""
-    file_path = os.path.realpath(__file__)
+    global dir_path
 
     # find path for all .rst files
-    search_path = file_path[0:file_path.rfind('/')] + "/src"
+    search_path = dir_path + "/src"
 
     # Make a list of paths to check for
     path_list = []
@@ -235,13 +304,13 @@ def get_paths(paths):
 
 def get_changed_files():
     """Return currently modified rst files."""
-    file_path = os.path.realpath(__file__)
-    repo_path = file_path[0:file_path.rfind('/')]
+    global dir_path
+    repo_path = dir_path
     repo = git.Repo(repo_path)
-    changedFiles = [item.a_path for item in repo.index.diff(None)]
-    changedFiles += repo.untracked_files
-    changedFiles = tuple(changedFiles)
-    return changedFiles
+    changed_files = [item.a_path for item in repo.index.diff(None)]
+    changed_files += repo.untracked_files
+    changed_files = tuple(changed_files)
+    return changed_files
 
 
 def run_checks(paths, disp, fix):
@@ -266,7 +335,7 @@ def run_checks(paths, disp, fix):
         text = remove_lines(text)
         
         # Import extra check module from style-guide 
-        extra = importlib.import_module('style-guide.extra', None)
+        extra = importlib.import_module('style-guide.extrarun', None)
 
         # run checks for quotes, curly quotes, section labels
         errors = extra.check(temp_file(text))
@@ -335,7 +404,7 @@ def disp_checks(errors, filename, shortname):
         # e[0]=check
         # Set warning or error severity
         # Don't set errors for style-guide as they might be examples
-        if e[0] in list_errors and "style-guide.rst" not in shortname:
+        if e[0] in list_errors and shortname != "docs-style-guide.rst":
             severity = "error"
         else:
             severity = "warning" 
@@ -365,8 +434,20 @@ def disp_cnt():
     global warn_cnt
     global t
 
-    print(t.yellow("Found %d warnings" %warn_cnt))
-    print(t.red("Found %d errors") %err_cnt)
+    warn = "%d warnings." %warn_cnt
+    err = "%d errors." %err_cnt
+
+    if warn_cnt == 0:
+        warn = "no warnings!"
+    elif warn_cnt == 1:
+        warn = "1 warning."
+    if err_cnt == 0:
+        err = "no errors!"
+    elif err_cnt == 1:
+        err = "1 error."
+
+    print(t.yellow("Testing found %s" %warn))
+    print(t.red("Testing found %s" %err))
     if err_cnt:
         raise Exception("Style-guide testing failed! Fix the errors")
 
@@ -426,17 +507,30 @@ def gen_list(paths = None):
 
     return err_list
 
+def remove_file():
+    """Remove generated check files."""
+    global dir_path
+    test_file = dir_path + '/style-guide/style-checks.py'
+    extra_file = dir_path + '/style-guide/extra.py'
+    os.remove(test_file)
+    os.remove(extra_file)
+
 
 @click.command(context_settings = CONTEXT_SETTINGS)
 @click.option('--diff', '-d', is_flag = True, 
                help = "Run check on the modified files")
 @click.option('--fix', '-f', is_flag = True, 
-               help = "Removes the fixable errors")
+               help = "Remove the fixable errors")
 @click.option('--out_path','-o', type = click.Path())
+@click.option('--store','-s',is_flag = True,
+               help = "Store the generated test scripts")
 @click.argument('in_path', nargs = -1, type = click.Path())
 def style_test(in_path = None, out_path = None, diff = None, 
-                fix = None, output = None):
-    """A CLI for style guide testing"""
+                fix = None, output = None, store = None):
+    """A CLI for style guide testing."""
+    # generate source code for checks
+    parse_code()
+
     # add custom style-guide checks to proselint
     add_checks()
 
@@ -456,7 +550,10 @@ def style_test(in_path = None, out_path = None, diff = None,
     # generate output
     if out_path:
         gen_out(out_path)
-    
+
+    # remove generated test scripts
+    if not store:
+        remove_file()
 
 if __name__ == '__main__':
     style_test()

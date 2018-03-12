@@ -169,7 +169,7 @@ If you are connected to :doc:`an ODK Aggregate server  <collect-connect-aggregat
 Pulling forms with Briefcase
 -------------------------------
 
-For local form management, use :doc:`ODK Briefcase <briefcase-forms>` to pull :formstate:`Finalized` form instances to your local computer.
+For local form management, use :doc:`ODK Briefcase  <briefcase-using>` to pull :formstate:`Finalized` form instances to your local computer.
 
 
 Pulling forms with ``adb``

@@ -28,7 +28,14 @@ jobs:
             sudo python style-test.py $paths
       - run:
           name: Spell Checker
-          command: sphinx-build -W -b spelling src build/spelling
+          command: |
+            sphinx-build -b spelling src build/spelling
+            python util/check-spelling-output.py
+      - run:
+          name: Build PDF
+          command: |
+            sphinx-build -b latex src build/latex
+            sudo python util/resize.py
       - run:
           name: Build docs
           command: sphinx-build -W -b dirhtml src build
@@ -48,6 +55,27 @@ jobs:
           paths:
             - build/*
             - s3_website.yml
+  build_pdf:
+    working_directory: ~/work
+    docker:
+      - image: schickling/latex
+    steps:
+      - attach_workspace:
+          at: ~/work
+      - run:
+          name: Build PDF
+          command: |
+              cd build/latex
+              xelatex OpenDataKit.tex
+              xelatex OpenDataKit.tex
+              mv OpenDataKit.pdf ../_downloads/ODK-Documentation.pdf
+      - store_artifacts:
+          path: build/_downloads/ODK-Documentation.pdf
+          destination: ODK-Documentation.pdf
+      - persist_to_workspace:
+          root: ~/work
+          paths:
+            - build/*
   deploy:
     working_directory: ~/work
     docker:
@@ -73,9 +101,13 @@ workflows:
   build_deploy:
     jobs:
       - build
+      - build_pdf:
+          requires:
+            - build
       - deploy:
           requires:
             - build
+            - build_pdf
           # We'd like to also filter by username and remove the if/fi above, but username filtering is not supported in CircleCI
           filters:
             branches:
