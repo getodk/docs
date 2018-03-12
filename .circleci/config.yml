@@ -36,7 +36,7 @@ jobs:
           name: Compress images
           command: pngquant build/_images/*.png --force --ext .png --verbose
       - run:
-	  name: Push translations
+          name: Push translations
           command: |
             sudo echo $'[https://www.transifex.com]\nhostname = https://www.transifex.com\nusername = '"$TRANSIFEX_USER"$'\npassword =      		    '"$TRANSIFEX_PASSWORD"$'\ntoken = '"$TRANSIFEX_API_TOKEN"$'\n' > ~/.transifexrc
             tx push -s
