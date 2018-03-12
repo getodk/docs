@@ -492,7 +492,7 @@ def gen_out(path):
             csv_out.writerow(e)    
 
 
-def gen_list(paths = None):
+def gen_list(src_path, paths = None):
     """Return a list of errors and warnings."""
     global err_list
 
@@ -503,7 +503,7 @@ def gen_list(paths = None):
     exclude_checks()
 
     # run the checks on docs
-    run_checks(paths, None, False, False)
+    run_checks(paths, src_path, False, False)
 
     return err_list
 
