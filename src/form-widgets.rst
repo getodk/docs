@@ -21,7 +21,6 @@ This document is a list of available ODK :term:`Collect` :term:`form` :term:`wid
 
 - example images from the ODK Collect app
 - example Excel spreadsheet rows for creating form widgets with :term:`XLSForm`
-- example :term:`ODK XForm` XML snippets
 
 .. _basic-form-widgets:
 
@@ -48,18 +47,6 @@ XLSForm Rows
   :header: type, name, label
 
   text, name, What is your name?
-
-
-XForm XML
-~~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/sample-xlsform/name" type="string"/>
-
-  <input ref="/sample-xlsform/name">
-    <label>What is your name?</label>
-  </input>
 
 .. _single-select:
 
@@ -94,49 +81,6 @@ XLSForm Rows
 
 The **list_name** in the **choices** table matches the string *after* ``select_one`` in the **type** column of the **survey** table.
 
-XForm XML
-~~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/sample-xlsform/fruits" type="select1"/>
-
-  <select1 ref="/sample-xlsform/fruits">
-    <label>What is your favorite fruit?</label>
-    <item>
-      <label>apple</label>
-      <value>apple</value>
-    </item>
-    <item>
-      <label>pear</label>
-      <value>pear</value>
-    </item>
-    <item>
-      <label>peach</label>
-      <value>peach</value>
-    </item>
-    <item>
-      <label>strawberry</label>
-      <value>strawberry</value>
-    </item>
-    <item>
-      <label>pineapple</label>
-      <value>pineapple</value>
-    </item>
-    <item>
-      <label>orange</label>
-      <value>orange</value>
-    </item>
-    <item>
-      <label>grape</label>
-      <value>grape</value>
-    </item>
-    <item>
-      <label>plum</label>
-      <value>plum</value>
-    </item>
-  </select1>
-
 .. _multi-select:
 
 Multi-select
@@ -170,42 +114,6 @@ XLSForm Rows
 - The **list_name** in the **choices** table matches the string *after* ``select_one`` in the **type** column of the **survey** table.
 - The content of **name** cannot have spaces.
 
-XForm XML
-~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/sample-xlsform/veggies" type="select"/>
-
-  <select ref="/sample-xlsform/veggies">
-    <label>Which vegetables do you enjoy?</label>
-    <hint>Select all that apply.</hint>
-    <item>
-      <label>broccoli</label>
-      <value>broccoli</value>
-    </item>
-    <item>
-      <label>carrot</label>
-      <value>carrot</value>
-    </item>
-    <item>
-      <label>spinach</label>
-      <value>spinach</value>
-    </item>
-    <item>
-      <label>tomato</label>
-      <value>tomato</value>
-    </item>
-    <item>
-      <label>bell pepper</label>
-      <value>bell_pepper</value>
-    </item>
-    <item>
-      <label>asparagus</label>
-      <value>asparagus</value>
-    </item>
-  </select>
-
 .. _integer:
 
 Integer
@@ -224,17 +132,6 @@ XLSForm Rows
 
   integer, age, What is your age in years?
 
-XForm XML
-~~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/sample-xlsform/age" type="int"/>
-
-  <input ref="/sample-xlsform/age">
-    <label>What is your age in years?</label>
-  </input>
-
 .. _decimal:
 
 Decimal
@@ -252,17 +149,6 @@ XLSForm Rows
   :header: type, name, label
 
   decimal, weight, Weight in kilograms.
-
-XForm XML
-~~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/sample-xlsform/weight" type="decimal"/>
-
-  <input ref="/sample-xlsform/weight">
-    <label>Weight in kilograms.</label>
-  </input>
 
 .. _geopoint:
 
@@ -291,17 +177,6 @@ XLSForm Rows
 
  geopoint, current_location, Current location., You might have to turn on your GPS.
 
-XForm XML
-~~~~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/sample-xlsform/current_location" type="geopoint"/>
-
-  <input ref="/sample-xlsform/current_location">
-    <label>Current location.</label>
-    <hint>You might have to turn on your GPS.</hint>
-  </input>
 
 .. _geotrace:
 
@@ -347,17 +222,6 @@ XLSForm Rows
 
   geotrace, trace_example, Where have you been?
 
-XForm XML
-~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/sample-xlsform/trace_example" type="geotrace"/>
-
-  <input ref="/sample-xlsform/trace_example">
-    <label>Where have you been?</label>
-  </input>
-
 .. _geoshape:
 
 GeoShape
@@ -388,17 +252,6 @@ XLSForm Rows
 
   geoshape, shape_example, Select an area.
 
-XForm XML
-~~~~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/sample-xlsform/shape_example" type="geoshape"/>
-
-  <input ref="/sample-xlsform/shape_example">
-    <label>Select an area.</label>
-  </input>
-
 .. _date:
 
 Date
@@ -422,17 +275,6 @@ XLSForm Rows
   :header: type, name, label
 
   date, birthday, What is your birthday?
-
-XForm XML
-~~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/sample-xlsform/birthday" type="date"/>
-
-  <input ref="/sample-xlsform/birthday">
-    <label>What is your birthday?</label>
-  </input>
 
 .. _time:
 
@@ -458,17 +300,6 @@ XLSForm Rows
 
   time, wakeup, What time do you usually wakeup?
 
-XForm XML
-~~~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/sample-xlsform/wakeup" type="time"/>
-
-  <input ref="/sample-xlsform/wakeup">
-    <label>What time do you usually wakeup?</label>
-  </input>
-
 .. _ethiopian-calendar:
 
 Ethiopian Calendar
@@ -493,16 +324,6 @@ XLSForm Rows
 
   date, ethiopian-calendar, Ethiopian Calendar
 
-XForm XML
-~~~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/data/ethiopian-calendar" type="date" />
-
-  <input ref="/data/ethiopian-calendar" appearance="ethiopian">
-    <label> Ethiopian Calendar </label>
-  </input>
 
 .. _datetime:
 
@@ -534,17 +355,6 @@ XLSForm Rows
 
   dateTime, previous_meal, When was the last time you ate?
 
-XForm XML
-~~~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/sample-xlsform/previous_meal" type="dateTime"/>
-
-  <input ref="/sample-xlsform/previous_meal">
-    <label>When was the last time you ate?</label>
-  </input>
-
 .. _image:
 
 Image
@@ -569,17 +379,6 @@ XLSForm
 
   image, selfie, Please take a self portrait., A "selfie."
 
-XForm XML
-~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/sample-xlsform/selfie" type="binary"/>
-
-  <upload mediatype="image/*" ref="/sample-xlsform/selfie">
-    <label>Please take a self portrait.</label>
-    <hint>A &quot;selfie.&quot;</hint>
-  </upload>
 
 .. _audio:
 
@@ -600,17 +399,6 @@ XLSForm Rows
   :header: type, name, label
 
   audio, name_pronounce, Please record your name.
-
-XForm XML
-~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/sample-xlsform/name_pronounce" type="binary"/>
-
-  <upload mediatype="audio/*" ref="/sample-xlsform/name_pronounce">
-    <label>Please record your name.</label>
-  </upload>
 
 .. _video:
 
@@ -637,17 +425,6 @@ XSLForm Rows
 
   video, blinking, Please record a video of yourself blinking., Three times is probably sufficient.
 
-XForm XML
-~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/sample-xlsform/blinking" type="binary"/>
-
-  <upload mediatype="video/*" ref="/sample-xlsform/blinking">
-    <label>Please record a video of yourself blinking.</label>
-    <hint>Three times is probably sufficient.</hint>
-  </upload>
 
 .. _note:
 
@@ -667,17 +444,6 @@ XSLForm Rows
 
   note, note_1, This is an example note., "The text displays, but there is no input."
 
-XForm XML
-~~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/sample-xlsform/note_1" readonly="true()" type="string"/>
-
-  <input ref="/sample-xlsform/note_1">
-    <label>This is an example note.</label>
-    <hint>The text displays, but there is no input.</hint>
-  </input>
 
 .. _barcode:
 
@@ -708,16 +474,6 @@ XSLForm Rows
 
   barcode, barcode_example, Scan any barcode.
 
-XForm XML
-~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <bind nodeset="/sample-xlsform/barcode_example" type="barcode"/>
-  <input ref="/sample-xlsform/barcode_example">
-    <label>Scan any barcode.</label>
-  </input>
-
 .. _acknowledge:
 
 Acknowledge
@@ -735,17 +491,6 @@ XLSForm Rows
   :header: type, name, label
 
   acknowledge, ack_sample, I acknowledge this acknowledgment.
-
-XForm XML
-~~~~~~~~~~~~~
-
-.. code:: xml
-
-  <bind nodeset="/sample-xlsform/ack_sample" type="string"/>
-
-  <trigger ref="/sample-xlsform/ack_sample">
-    <label>I acknowledge this acknowledgment.</label>
-  </trigger>
 
 .. _appearance:
 
@@ -776,18 +521,6 @@ XLSForm Rows
 
   text,string_widget,String widget
 
-XForm XML
-""""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/text_widgets/string_widget" type="string"/>
-
-  <input ref="/all-widgets/text_widgets/string_widget">
-     <label>String widget</label>
-  </input>
-
-
 
 .. _string-number:
 
@@ -806,18 +539,6 @@ XLSForm Rows
   :header: type, name, label, appearance, hint
 
   text,string_number_widget,String number widget,numbers,text type with numbers appearance
-
-XForm XML
-"""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/text_widgets/string_number_widget" type="string"/>
-
-  <input appearance="numbers" ref="/all-widgets/text_widgets/string_number_widget">
-    <label>String number widget</label>
-    <hint>text type with numbers appearance</hint>
-  </input>
 
 
 .. _url-widget:
@@ -841,26 +562,6 @@ XLSForm Rows
   text,url_widget,URL widget,url,text type with url appearance and default value of http://opendatakit.org/,http://opendatakit.org/
 
 
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <instance>
-    <all_widgets>
-      <text_widgets>
-        <!-- URL is defined here. -->
-        <url_widget>http://opendatakit.org/</url_widget>
-      </text_widgets>
-    </all_widgets>
-  </instance>
-
-  <bind nodeset="/all-widgets/text_widgets/url_widget" type="string"/>
-
-  <input appearance="url" ref="/all-widgets/text_widgets/url_widget">
-    <label>URL widget</label>
-    <hint>text type with url appearance and default value of http://opendatakit.org/</hint>
-  </input>
 
 
 .. _external-app-widget:
@@ -886,18 +587,6 @@ XLSForm Rows
 
   text,ex_string_widget,Ex string widget,ex:change.uw.android.BREATHCOUNT,text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
 
-XForm XML
-"""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/text_widgets/ex_string_widget" type="string"/>
-
-  <input appearance="ex:change.uw.android.BREATHCOUNT" ref="/all-widgets/text_widgets/ex_string_widget">
-    <label>Ex string widget</label>
-      <hint>text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)</hint>
-  </input>
-
 
 .. _external-printer-widget:
 
@@ -919,17 +608,6 @@ XLSForm Rows
 
    text,ex_printer_widget,Ex printer widget,printer:org.opendatakit.sensors.ZebraPrinter,text type with printer:org.opendatakit.sensors.ZebraPrinter
 
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/text_widgets/ex_printer_widget" type="string"/>
-
-  <input appearance="printer:org.opendatakit.sensors.ZebraPrinter" ref="/all-widgets/text_widgets/ex_printer_widget">
-    <label>Ex printer widget</label>
-    <hint>text type with printer:org.opendatakit.sensors.ZebraPrinter</hint>
-  </input>
 
 .. _number-widget:
 
@@ -952,17 +630,6 @@ XLSForm Rows
 
   integer,integer_widget,Integer widget,integer type with no appearance
 
-XForm XML
-"""""""""""
-.. code:: xml
-
-  <bind nodeset="/all-widgets/number_widgets/integer_widget" type="int"/>
-
-  <input ref="/all-widgets/number_widgets/integer_widget">
-    <label>Integer widget</label>
-    <hint>integer type with no appearance</hint>
-  </input>
-
 .. _external-integer-widget:
 
 External Integer Widget
@@ -984,19 +651,6 @@ XLSForm Rows
 
   integer,ex_integer_widget,Ex integer widget,ex:change.uw.android.BREATHCOUNT,integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
 
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/number_widgets/ex_integer_widget" type="int"/>
-
-  <input appearance="ex:change.uw.android.BREATHCOUNT" ref="/all-widgets/number_widgets/ex_integer_widget">
-    <label>Ex integer widget</label>
-    <hint>integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)</hint>
-  </input>
-
-
 .. _default-decimal-widget:
 
 Default Decimal Widget
@@ -1012,18 +666,6 @@ XLSForm Rows
   :header: type, name, label, hint
 
   decimal,decimal_widget,Decimal widget,decimal type with no appearance
-
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/number_widgets/decimal_widget" type="decimal"/>
-
-  <input ref="/all-widgets/number_widgets/decimal_widget">
-    <label>Decimal widget</label>
-    <hint>decimal type with no appearance</hint>
-  </input>
 
 .. _external-decimal-widget:
 
@@ -1045,18 +687,6 @@ XLSForm Rows
   :header: type, name, label, appearance, hint
 
   decimal,ex_decimal_widget,Ex decimal widget,ex:change.uw.android.BREATHCOUNT,decimal type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
-
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/number_widgets/ex_decimal_widget" type="decimal"/>
-
-  <input appearance="ex:change.uw.android.BREATHCOUNT" ref="/all-widgets/number_widgets/ex_decimal_widget">
-    <label>Ex decimal widget</label>
-    <hint>decimal type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)</hint>
-  </input>
 
 .. _bearing-widget:
 
@@ -1082,18 +712,6 @@ XLSForm Rows
 
   decimal,bearing_widget,Bearing widget,bearing,decimal type with bearing appearance
 
-XForm XML
-"""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/number_widgets/bearing_widget" type="decimal"/>
-
-  <input appearance="bearing" ref="/all-widgets/number_widgets/bearing_widget">
-    <label>Bearing widget</label>
-    <hint>decimal type with bearing appearance</hint>
-  </input>
-
 
 .. _image-widgets:
 
@@ -1115,17 +733,6 @@ XLSForm Rows
 
   image,image_widget,Image widget,image type with no appearance
 
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/image_widgets/image_widget" type="binary"/>
-
-  <upload mediatype="image/*" ref="/all-widgets/image_widgets/image_widget">
-    <label>Image widget</label>
-    <hint>image type with no appearance</hint>
-  </upload>
 
 .. _selfie-widget:
 
@@ -1151,17 +758,6 @@ XLSForm Rows
 
   image,selfie_image_widget,Selfie widget,selfie,image type with selfie appearance
 
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/image_widgets/selfie_image_widget" type="binary"/>
-
-  <upload appearance="selfie" mediatype="image/*" ref="/all-widgets/image_widgets/selfie_image_widget">
-    <label>Selfie widget</label>
-    <hint>image type with selfie appearance</hint>
-  </upload>
 
 .. _draw-widget:
 
@@ -1190,18 +786,6 @@ XLSForm Rows
   :header: type, name, label, appearance, hint
 
   image,draw_image_widget,Draw widget ,draw,image type with draw appearance
-
-XForm XML
-"""""""""""
-
-.. code:: xml
-
-   <bind nodeset="/all-widgets/image_widgets/draw_image_widget" type="binary"/>
-
-   <upload appearance="draw" mediatype="image/*" ref="/all-widgets/image_widgets/draw_image_widget">
-     <label>Draw widget</label>
-     <hint>image type with draw appearance</hint>
-   </upload>
 
 .. _annotate-widget:
 
@@ -1236,18 +820,6 @@ XLSForm Rows
 
   image,annotate_image_widget,Annotate widget,annotate,image type with annotate appearance
 
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/image_widgets/annotate_image_widget" type="binary"/>
-
-  <upload appearance="annotate" mediatype="image/*" ref="/all-widgets/image_widgets/annotate_image_widget">
-    <label>Annotate widget</label>
-    <hint>image type with annotate appearance</hint>
-  </upload>
-
 .. _signature-widget:
 
 Signature Widget
@@ -1272,18 +844,6 @@ XLSForm Rows
 
   image,signature_widget,Signature widget,signature,image type with signature appearance
 
-
-XForm XML
-""""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/image_widgets/signature_widget" type="binary"/>
-
-  <upload appearance="signature" mediatype="image/*" ref="/all-widgets/image_widgets/signature_widget">
-    <label>Signature widget</label>
-    <hint>image type with signature appearance</hint>
-  </upload>
 
 .. _media-widgets:
 
@@ -1323,18 +883,6 @@ XLSForm Rows
 
   date,date_widget,Date widget,date type with no appearance
 
-XForm XML
-"""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/date_time_widgets/date_widget" type="date"/>
-
-  <input ref="/all-widgets/date_time_widgets/date_widget">
-    <label>Date widget</label>
-    <hint>date type with no appearance</hint>
-  </input>
-
 .. _date-no-calendar:
 
 Date, No Calendar
@@ -1356,18 +904,6 @@ XSLForm Rows
 
   date,date_widget_nocalendar,Date Widget,no-calendar,date type with no-calendar appearance
 
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/date_time_widgets/date_widget_nocalendar" type="date"/>
-
-  <input appearance="no-calendar" ref="/all-widgets/date_time_widgets/date_widget_nocalendar">
-     <label>Date Widget</label>
-     <hint>date type with no-calendar appearanec</hint>
-  </input>
-
 .. _date-type-month-year:
 
 Month and Year Widget
@@ -1386,17 +922,6 @@ XLSForm Rows
 
   date,date_widget_month_year,Date widget,month-year,date type with month-year appearance
 
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/date_time_widgets/date_widget_month_year" type="date"/>
-
-  <input appearance="month-year" ref="/all-widgets/date_time_widgets/date_widget_month_year">
-    <label>Date widget</label>
-    <hint>date type with month-year appearance</hint>
-  </input>
 
 .. _year-widget:
 
@@ -1415,18 +940,6 @@ XLSForm Rows
   :header: type, name, label, appearance, hint
 
   date,date_widget_year,Date widget,year,date type with year appearance
-
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/date_time_widgets/date_widget_year" type="date"/>
-
-  <input appearance="year" ref="/all-widgets/date_time_widgets/date_widget_year">
-    <label>Date widget</label>
-    <hint>date type with year appearance</hint>
-  </input>
 
 .. _time-widgets:
 
@@ -1465,17 +978,6 @@ XLSForm Rows
 
   geopoint,geopoint_widget,Geopoint widget,geopoint type with no appearance
 
-XForm XML
-"""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/geopoint_widgets/geopoint_widget_placementmap" type="geopoint"/>
-
-  <input ref="/all-widgets/geopoint_widgets/geopoint_widget">
-    <label>Geopoint widget</label>
-    <hint>geopoint type with no appearance</hint>
-  </input>
 
 .. _placement-map-widget:
 
@@ -1495,17 +997,6 @@ XLSForm Rows
 
   geopoint,geopoint_widget_placementmap,Geopoint widget,placement-map,geopoint type with placement-map appearance
 
-XForm XML
-"""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/geopoint_widgets/geopoint_widget_placementmap" type="geopoint"/>
-
-  <input appearance="placement-map" ref="/all-widgets/geopoint_widgets/geopoint_widget_placementmap">
-    <label>Geopoint widget</label>
-    <hint>geopoint type with placement-map appearance</hint>
-  </input>
 
 .. _geopoint-maps:
 
@@ -1521,18 +1012,6 @@ XLSForm Rows
   :header: type, name, label, appearance, hint
 
   geopoint,geopoint_widget_maps,Geopoint widget,maps,geopoint type with maps appearance
-
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/geopoint_widgets/geopoint_widget_maps" type="geopoint"/
-
-  <input appearance="maps" ref="/all-widgets/geopoint_widgets/geopoint_widget_maps">
-    <label>Geopoint widget</label>
-    <hint>geopoint type with maps appearance</hint>
-  </input>
 
 .. _default-geoshape-geotrace:
 
@@ -1570,33 +1049,6 @@ XLSForm Rows
   opt_abcd,c,C
   opt_abcd,d,D
 
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/select_one_widgets/select_one_widget" type="select1"/>
-
-  <select1 ref="/all-widgets/select_one_widgets/select_one_widget">
-    <label>Select one widget</label>
-    <hint>select_one type with no appearance, 4 text choices</hint>
-    <item>
-      <label>A</label>
-      <value>a</value>
-    </item>
-    <item>
-      <label>B</label>
-      <value>b</value>
-    </item>
-    <item>
-      <label>C</label>
-      <value>c</value>
-    </item>
-    <item>
-      <label>D</label>
-      <value>d</value>
-    </item>
-  </select1>
 
 .. _spinner-widget:
 
@@ -1627,34 +1079,6 @@ XLSForm Rows
   opt_abcd,c,C
   opt_abcd,d,D
 
-XForm XML
-"""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/select_one_widgets/spinner_widget" type="select1"/>
-
-  <select1 appearance="minimal" ref="/all-widgets/select_one_widgets/spinner_widget">
-    <label>Spinner widget</label>
-    <hint>select_one type with minimal appearance, 4 text choices</hint>
-    <item>
-      <label>A</label>
-      <value>a</value>
-    </item>
-    <item>
-      <label>B</label>
-      <value>b</value>
-    </item>
-    <item>
-      <label>C</label>
-      <value>c</value>
-    </item>
-    <item>
-      <label>D</label>
-      <value>d</value>
-    </item>
-  </select1>
-
 
 .. _autoadvance-widget:
 
@@ -1683,33 +1107,6 @@ XLSForm Rows
   opt_abcd,c,C
   opt_abcd,d,D
 
-XForm XML
-"""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/select_one_widgets/select_one_autoadvance_widget" type="select1"/>
-
-  <select1 appearance="quick" ref="/all-widgets/select_one_widgets/select_one_autoadvance_widget">
-    <label>Select one autoadvance widget</label>
-    <hint>select_one type with quick appearance, 4 text choices</hint>
-    <item>
-      <label>A</label>
-      <value>a</value>
-    </item>
-    <item>
-      <label>B</label>
-      <value>b</value>
-    </item>
-    <item>
-      <label>C</label>
-      <value>c</value>
-    </item>
-    <item>
-      <label>D</label>
-      <value>d</value>
-    </item>
-  </select1>
 
 .. _select-search-widget:
 
@@ -1739,34 +1136,6 @@ XLSForm Rows
   opt_abcd,b,B
   opt_abcd,c,C
   opt_abcd,d,D
-
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/select_one_widgets/select_one_search_widget" type="select1"/>
-
-  <select1 appearance="search" ref="/all-widgets/select_one_widgets/select_one_search_widget">
-    <label>Select one search widget</label>
-    <hint>select_one type with search appearance, 4 text choices</hint>
-    <item>
-      <label>A</label>
-      <value>a</value>
-    </item>
-    <item>
-      <label>B</label>
-      <value>b</value>
-    </item>
-    <item>
-      <label>C</label>
-      <value>c</value>
-    </item>
-    <item>
-      <label>D</label>
-      <value>d</value>
-    </item>
-  </select1>
 
 .. _select-autocomplete:
 
@@ -1798,33 +1167,6 @@ XLSForm Rows
   opt_abcd,d,D
 
 
-XForm XML
-"""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/select_one_widgets/select_one_autocomplete_widget" type="select1"/>
-
-  <select1 appearance="autocomplete" ref="/all-widgets/select_one_widgets/select_one_autocomplete_widget">
-    <label>Select one search widget</label>
-    <hint>select_one type with autocomplete appearance, 4 text choices</hint>
-    <item>
-      <label>A</label>
-      <value>a</value>
-    </item>
-    <item>
-      <label>B</label>
-      <value>b</value>
-    </item>
-    <item>
-      <label>C</label>
-      <value>c</value>
-    </item>
-    <item>
-      <label>D</label>
-      <value>d</value>
-    </item>
-  </select1>
 
 .. _select-image-widget:
 
@@ -1854,33 +1196,6 @@ XLSForm Rows
   abcd_icon,c,C,c.jpg
   abcd_icon,d,D,d.jpg
 
-XForm XML
-""""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/select_one_widgets/grid_widget" type="select1"/>
-
-  <select1 ref="/all-widgets/select_one_widgets/grid_widget">
-    <label>Grid select one widget</label>
-    <hint>select_one type with no appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)</hint>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget/a:label')"/>
-      <value>a</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget/b:label')"/>
-      <value>b</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget/c:label')"/>
-      <value>c</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget/d:label')"/>
-      <value>d</value>
-    </item>
-  </select1>
 
 .. _compact-single-image-select:
 
@@ -1908,33 +1223,6 @@ XLSForm Rows
   abcd_icon,c,C,c.jpg
   abcd_icon,d,D,d.jpg
 
-XForm XML
-"""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/select_one_widgets/grid_widget_compact" type="select1"/>
-
-  <select1 appearance="compact" ref="/all-widgets/select_one_widgets/grid_widget_compact">
-    <label>Grid select one widget</label>
-    <hint>select_one type with compact appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)</hint>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact/a:label')"/>
-      <value>a</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact/b:label')"/>
-      <value>b</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact/c:label')"/>
-      <value>c</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact/d:label')"/>
-      <value>d</value>
-    </item>
-  </select1>
 
 .. _compact-2:
 
@@ -1961,34 +1249,6 @@ XLSForm Rows
   abcd_icon,b,B,b.jpg
   abcd_icon,c,C,c.jpg
   abcd_icon,d,D,d.jpg
-
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/select_one_widgets/grid_widget_compact2" type="select1"/>
-
-  <select1 appearance="compact-2" ref="/all-widgets/select_one_widgets/grid_widget_compact2">
-    <label>Grid select one widget</label>
-    <hint>select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)</hint>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact2/a:label')"/>
-      <value>a</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact2/b:label')"/>
-      <value>b</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact2/c:label')"/>
-      <value>c</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_compact2/d:label')"/>
-      <value>d</value>
-    </item>
-  </select1>
 
 .. _quickcompact-widget:
 
@@ -2017,33 +1277,6 @@ XLSForm Rows
   abcd_icon,c,C,c.jpg
   abcd_icon,d,D,d.jpg
 
-XForm XML
-"""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/select_one_widgets/grid_widget_quickcompact2" type="select1"/>
-
-  <select1 appearance="quickcompact" ref="/all-widgets/select_one_widgets/grid_widget_quickcompact">
-    <label>Grid select one widget</label>
-    <hint>select_one type with quickcompact appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)</hint>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_quickcompact/a:label')"/>
-      <value>a</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_quickcompact/b:label')"/>
-      <value>b</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_quickcompact/c:label')"/>
-      <value>c</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_quickcompact/d:label')"/>
-      <value>d</value>
-    </item>
-  </select1>
 
 .. _quickcompact-2-widget:
 
@@ -2072,33 +1305,6 @@ XLSForm Rows
   abcd_icon,c,C,c.jpg
   abcd_icon,d,D,d.jpg
 
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/select_one_widgets/grid_widget_quickcompact2" type="select1"/>
-
-  <select1 appearance="quickcompact-2" ref="/all-widgets/select_one_widgets/grid_widget_quickcompact2">
-    <label>Grid select one widget</label>
-    <hint>select_one type with quickcompact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)</hint>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_quickcompact2/a:label')"/>
-      <value>a</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_quickcompact2/b:label')"/>
-      <value>b</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_quickcompact2/c:label')"/>
-      <value>c</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_one_widgets/grid_widget_quickcompact2/d:label')"/>
-      <value>d</value>
-    </item>
-  </select1>
 
 .. _multiselect-widgets:
 
@@ -2129,33 +1335,6 @@ XLSForm Rows
   abcd_icon,c,C,c.jpg
   abcd_icon,d,D,d.jpg
 
-XForm XML
-"""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/select_multi_widgets/select_multi_widget" type="select"/>
-
-  <select ref="/all-widgets/select_multi_widgets/select_multi_widget">
-    <label>Multi select widget</label>
-    <hint>select_multiple type with no appearance, 4 text choices</hint>
-    <item>
-      <label>A</label>
-      <value>a</value>
-    </item>
-    <item>
-      <label>B</label>
-      <value>b</value>
-    </item>
-    <item>
-      <label>C</label>
-      <value>c</value>
-    </item>
-    <item>
-      <label>D</label>
-      <value>d</value>
-    </item>
-  </select>
 
 .. _compact-multi-widget:
 
@@ -2184,33 +1363,6 @@ XLSForm Rows
   abcd_icon,c,C,c.jpg
   abcd_icon,d,D,d.jpg
 
-XForm XML
-""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/select_multi_widgets/grid_multi_widget_compact" type="select"/>
-
-  <select appearance="compact" ref="/all-widgets/select_multi_widgets/grid_multi_widget_compact">
-    <label>Grid select multiple widget</label>
-    <hint>select_multiple type with compact appearance, 4 image choices</hint>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_multi_widgets/grid_multi_widget_compact/a:label')"/>
-      <value>a</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_multi_widgets/grid_multi_widget_compact/b:label')"/>
-      <value>b</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_multi_widgets/grid_multi_widget_compact/c:label')"/>
-      <value>c</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_multi_widgets/grid_multi_widget_compact/d:label')"/>
-      <value>d</value>
-    </item>
-  </select>
 
 .. _multi-image-compact-2:
 
@@ -2240,34 +1392,6 @@ XLSForm Rows
   abcd_icon,c,C,c.jpg
   abcd_icon,d,D,d.jpg
 
-XForm XML
-"""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/select_multi_widgets/grid_multi_widget_compact2" type="select"/>
-
-  <select appearance="compact-2" ref="/all-widgets/select_multi_widgets/grid_multi_widget_compact2">
-    <label>Grid select multiple widget</label>
-    <hint>select_multiple type with compact-2 appearance, 4 image choices</hint>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_multi_widgets/grid_multi_widget_compact2/a:label')"/>
-      <value>a</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_multi_widgets/grid_multi_widget_compact2/b:label')"/>
-      <value>b</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_multi_widgets/grid_multi_widget_compact2/c:label')"/>
-      <value>c</value>
-    </item>
-    <item>
-      <label ref="jr:itext('/all-widgets/select_multi_widgets/grid_multi_widget_compact2/d:label')"/>
-      <value>d</value>
-    </item>
-  </select>
-
 .. _spinner-widget-multi:
 
 Multiselect Spinner Widget
@@ -2296,34 +1420,6 @@ XLSForm Rows
   opt_abcd,b,B
   opt_abcd,c,C
   opt_abcd,d,D
-
-XForm XML
-"""""""""""
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/select_multi_widgets/spinner_multi_widget" type="select"/>
-
-  <select appearance="minimal" ref="/all-widgets/select_multi_widgets/spinner_multi_widget">
-    <label>Spinner widget: select multiple</label>
-    <hint>select_multiple type with minimal appearance, 4 image choices</hint>
-    <item>
-      <label>A</label>
-      <value>a</value>
-    </item>
-    <item>
-      <label>B</label>
-      <value>b</value>
-    </item>
-    <item>
-      <label>C</label>
-      <value>c</value>
-    </item>
-    <item>
-      <label>D</label>
-      <value>d</value>
-    </item>
-  </select>
 
 
 .. _field-list:
@@ -2362,157 +1458,6 @@ XLSForm Rows
   yes_no,dk,Don't Know
   yes_no,na,Not Applicable
 
-XForm XML
-~~~~~~~~~~~~
-
-.. code:: xml
-
-  <instance>
-    <all-widgets>
-      <table_list_test>
-	<table_list_test_label/>
-	<table_list_test_label_2/>
-	<table_list_1/>
-	<table_list_2/>
-	<list_widget/>
-	<list_multi_widget/>
-      </table_list_test>
-    </all-widgets>
-  </instance>
-
-
-  <bind nodeset="/all-widgets/table_list_test/table_list_test_label" type="select1"/>
-  <bind nodeset="/all-widgets/table_list_test/table_list_test_label_2" type="select"/>
-  <bind nodeset="/all-widgets/table_list_test/table_list_1" type="select1"/>
-  <bind nodeset="/all-widgets/table_list_test/table_list_2" type="select"/>
-  <bind nodeset="/all-widgets/table_list_test/list_widget" type="select1"/>
-  <bind nodeset="/all-widgets/table_list_test/list_multi_widget" type="select"/>
-
-
-  <group appearance="field-list" ref="/all-widgets/table_list_test">
-    <label>List group</label>
-    <select1 appearance="label" ref="/all-widgets/table_list_test/table_list_test_label">
-      <label>Label widget</label>
-      <hint>Show only the labels of these options and not the inputs (type=select_one yes_no, appearance=label)</hint>
-      <item>
-	<label>Yes</label>
-	<value>yes</value>
-      </item>
-      <item>
-	<label>No</label>
-	<value>no</value>
-      </item>
-      <item>
-	<label>Don't Know</label>
-	<value>dk</value>
-      </item>
-      <item>
-	<label>Not Applicable</label>
-	<value>na</value>
-      </item>
-    </select1>
-    <select appearance="label" ref="/all-widgets/table_list_test/table_list_test_label_2">
-      <label>Label multi widget</label>
-      <hint>Show only the labels of these options and not the inputs (type=select_multiple yes_no, appearance=label)</hint>
-      <item>
-	<label>Yes</label>
-	<value>yes</value>
-      </item>
-      <item>
-	<label>No</label>
-	<value>no</value>
-      </item>
-      <item>
-	<label>Don't Know</label>
-	<value>dk</value>
-      </item>
-      <item>
-	<label>Not Applicable</label>
-	<value>na</value>
-      </item>
-    </select>
-    <select1 appearance="list-nolabel" ref="/all-widgets/table_list_test/table_list_1">
-      <label>List widget</label>
-      <hint>Show only the inputs of these options and not the labels (type=select_one yes_no, appearance=list-nolabel)</hint>
-      <item>
-	<label>Yes</label>
-	<value>yes</value>
-      </item>
-      <item>
-	<label>No</label>
-	<value>no</value>
-      </item>
-      <item>
-	<label>Don't Know</label>
-	<value>dk</value>
-      </item>
-      <item>
-	<label>Not Applicable</label>
-	<value>na</value>
-      </item>
-    </select1>
-    <select appearance="list-nolabel" ref="/all-widgets/table_list_test/table_list_2">
-      <label>List multi widget</label>
-      <hint>Show only the inputs of these options and not the labels (type=select_multiple yes_no, appearance=list-nolabel)</hint>
-      <item>
-	<label>Yes</label>
-	<value>yes</value>
-      </item>
-      <item>
-	<label>No</label>
-	<value>no</value>
-      </item>
-      <item>
-	<label>Don't Know</label>
-	<value>dk</value>
-      </item>
-      <item>
-	<label>Not Applicable</label>
-	<value>na</value>
-      </item>
-    </select>
-    <select1 appearance="list" ref="/all-widgets/table_list_test/list_widget">
-      <label>List widget</label>
-      <hint>This is a normal list widget with (type = select_one, appearance = list)</hint>
-      <item>
-	<label>Yes</label>
-	<value>yes</value>
-      </item>
-      <item>
-	<label>No</label>
-	<value>no</value>
-      </item>
-      <item>
-	<label>Don't Know</label>
-	<value>dk</value>
-      </item>
-      <item>
-	<label>Not Applicable</label>
-	<value>na</value>
-      </item>
-    </select1>
-    <select appearance="list" ref="/all-widgets/table_list_test/list_multi_widget">
-      <label>List multi widget</label>
-      <hint>This is a normal list widget with (type = select_multiple, appearance = list)</hint>
-      <item>
-	<label>Yes</label>
-	<value>yes</value>
-      </item>
-      <item>
-	<label>No</label>
-	<value>no</value>
-      </item>
-      <item>
-	<label>Don't Know</label>
-	<value>dk</value>
-      </item>
-      <item>
-	<label>Not Applicable</label>
-	<value>na</value>
-      </item>
-    </select>
-  </group>
-
 .. _trigger:
 
 Trigger Widget
@@ -2536,18 +1481,6 @@ XLSForm Rows
   :header: type, name, label, hint, required
 
   trigger,my_trigger,Trigger widget,Prompts for confirmation. Useful to combine with required or relevant. (type=trigger),true()
-
-XForm XML
-~~~~~~~~~~~~
-
-.. code:: xml
-
-  <bind nodeset="/all-widgets/my_trigger" required="true()"/>
-
-  <trigger ref="/all-widgets/my_trigger">
-    <label>Trigger widget</label>
-    <hint>Prompts for confirmation. Useful to combine with required or relevant. (type=trigger)</hint>
-  </trigger>
 
 
 .. _image-options:
