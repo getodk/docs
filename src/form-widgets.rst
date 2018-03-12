@@ -21,7 +21,6 @@ This document is a list of available ODK :term:`Collect` :term:`form` :term:`wid
 
 - example images from the ODK Collect app
 - example Excel spreadsheet rows for creating form widgets with :term:`XLSForm`
-- example :term:`ODK XForm` XML snippets
 
 .. _basic-form-widgets:
 
