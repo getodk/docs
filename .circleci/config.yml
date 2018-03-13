@@ -48,7 +48,7 @@ jobs:
           root: ~/work
           paths:
             - odk1-build/*
-            - s3_website.yml
+            - odk1-config/*
 
   build-pdf-odk1:
     working_directory: ~/work
@@ -160,7 +160,7 @@ jobs:
           name: Push to S3
           command: |
               if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
-                s3_website help
+                s3_website push --config-dir odk1-config
               fi
 
 workflows:
