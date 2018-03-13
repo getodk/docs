@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build-odk1:
     working_directory: ~/work
     docker:
       - image: circleci/python:latest
@@ -22,35 +22,34 @@ jobs:
             sudo apt-get install python-enchant
             sudo pip install -r requirements.txt
       - run:
-          name: Style Guide Testing
+          name: Style Guide Check
           command: |
             paths=$(git diff origin/master... --name-only)
-            sudo python style-test.py $paths
+            echo $paths
+            sudo python style-test.py $paths -r odk1-src
+            sudo python style-test.py $paths -r shared-src
       - run:
-          name: Spell Checker
+          name: Build ODK1 Documentation
+          command: make odk1
+      - run:
+          name: Check spelling of ODK1 Documentation
+          command: make odk1-spell-check
+      - run:
+          name: Build PDF of ODK1 Documentation
           command: |
-            sphinx-build -b spelling src build/spelling
-            python util/check-spelling-output.py
-      - run:
-          name: Build PDF
-          command: |
-            sphinx-build -b latex src build/latex
-            sudo python util/resize.py
-      - run:
-          name: Build docs
-          command: sphinx-build -W -b dirhtml src build
+            make odk1-latex
       - run:
           name: Compress images
-          command: pngquant build/_images/*.png --force --ext .png --verbose
+          command: pngquant odk1-build/_images/*.png --force --ext .png --verbose
       - store_artifacts:
-          path: build
-          destination: build
+          path: odk1-build
+          destination: odk1-build
       - persist_to_workspace:
           root: ~/work
           paths:
-            - build/*
-            - s3_website.yml
-  build_pdf:
+            - odk1-build/*
+
+  build-pdf-odk1:
     working_directory: ~/work
     docker:
       - image: schickling/latex
@@ -60,50 +59,97 @@ jobs:
       - run:
           name: Build PDF
           command: |
-              cd build/latex
-              xelatex OpenDataKit.tex
-              xelatex OpenDataKit.tex
-              mv OpenDataKit.pdf ../_downloads/ODK-Documentation.pdf
+              cd odk1-build/latex
+              xelatex OpenDataKit1.tex
+              mv OpenDataKit1.pdf ../_downloads/ODK1-Documentation.pdf
       - store_artifacts:
-          path: build/_downloads/ODK-Documentation.pdf
-          destination: ODK-Documentation.pdf
+          path: odk1-build/_downloads/ODK1-Documentation.pdf
+          destination: ODK1-Documentation.pdf
       - persist_to_workspace:
           root: ~/work
           paths:
-            - build/*
-  deploy:
+            - odk1-build/*
+
+  build-odk2:
     working_directory: ~/work
     docker:
-      - image: circleci/ruby:latest
+      - image: circleci/python:latest
+    steps:
+      - checkout
+      - run:
+          name: Install checkout requirements
+          command: |
+            curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+            sudo apt-get install git-lfs
+            git lfs install
+      - run:
+          name: Checkout binaries
+          command: git lfs pull
+      - run:
+          name: Install build requirements
+          command: |
+            sudo apt-get install pngquant
+            sudo apt-get install python-enchant
+            sudo pip install -r requirements.txt
+      - run:
+          name: Style Guide Check
+          command: |
+            paths=$(git diff origin/master... --name-only)
+            echo $paths
+            sudo python style-test.py $paths -r odk2-src
+            sudo python style-test.py $paths -r shared-src
+      - run:
+          name: Build ODK2 Documentation
+          command: make odk2
+      - run:
+          name: Check spelling of ODK2 Documentation
+          command: make odk2-spell-check
+      - run:
+          name: Build PDF of ODK2 Documentation
+          command: |
+            make odk2-latex
+      - run:
+          name: Compress images
+          command: pngquant odk2-build/_images/*.png --force --ext .png --verbose 
+      - store_artifacts:
+          path: odk2-build
+          destination: odk2-build
+      - persist_to_workspace:
+          root: ~/work
+          paths:
+            - odk2-build/*
+
+  build-pdf-odk2:
+    working_directory: ~/work
+    docker:
+      - image: schickling/latex
     steps:
       - attach_workspace:
           at: ~/work
       - run:
-          name: Install deploy requirements
+          name: Build PDF
           command: |
-              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
-                sudo apt-get install -y openjdk-8-jre-headless
-                gem install s3_website && s3_website install
-              fi
-      - run:
-          name: Push to S3
-          command: |
-              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
-                s3_website push
-              fi
+              cd odk2-build/latex
+              xelatex OpenDataKit2.tex
+              mkdir ../_downloads
+              mv OpenDataKit2.pdf ../_downloads/ODK2-Documentation.pdf
+      - store_artifacts:
+          path: odk2-build/_downloads/ODK2-Documentation.pdf
+          destination: ODK2-Documentation.pdf
+      - persist_to_workspace:
+          root: ~/work
+          paths:
+            - odk2-build/*
+
 workflows:
   version: 2
   build_deploy:
     jobs:
-      - build
-      - build_pdf:
+      - build-odk1
+      - build-pdf-odk1:
           requires:
-            - build
-      - deploy:
+            - build-odk1
+      - build-odk2
+      - build-pdf-odk2:
           requires:
-            - build
-            - build_pdf
-          # We'd like to also filter by username and remove the if/fi above, but username filtering is not supported in CircleCI
-          filters:
-            branches:
-              only: master
+            - build-odk2

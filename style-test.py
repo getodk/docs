@@ -49,7 +49,7 @@ def parse_code():
             and 'python' in node.attributes['classes']
             and 'extra-checks' in node.attributes['classes'])
 
-    style_guide = open(dir_path + "/src/docs-style-guide.rst", "r")
+    style_guide = open(dir_path + "/shared-src/docs-style-guide.rst", "r")
     
     # publish doctree, report only severe errors 
     doctree = publish_doctree(style_guide.read(),
@@ -273,12 +273,12 @@ def exclude_checks():
             out_file.write(line)
 
 
-def get_paths(paths):
+def get_paths(paths, src_root):
     """Return a list of files to run the checks on."""
     global dir_path
 
     # find path for all .rst files
-    search_path = dir_path + "/src"
+    search_path = dir_path + '/' + src_root
 
     # Make a list of paths to check for
     path_list = []
@@ -313,11 +313,11 @@ def get_changed_files():
     return changed_files
 
 
-def run_checks(paths, disp, fix):
+def run_checks(paths, src_root, disp, fix):
     """Run checks on the docs."""
     global t
     global err_list
-    path_list = get_paths(paths) 
+    path_list = get_paths(paths, src_root)
     list_errors = get_errlist()
     errors = []
 
@@ -492,7 +492,7 @@ def gen_out(path):
             csv_out.writerow(e)    
 
 
-def gen_list(paths = None):
+def gen_list(src_path, paths = None):
     """Return a list of errors and warnings."""
     global err_list
 
@@ -503,7 +503,7 @@ def gen_list(paths = None):
     exclude_checks()
 
     # run the checks on docs
-    run_checks(paths, False, False)
+    run_checks(paths, src_path, False, False)
 
     return err_list
 
@@ -522,11 +522,12 @@ def remove_file():
 @click.option('--fix', '-f', is_flag = True, 
                help = "Remove the fixable errors")
 @click.option('--out_path','-o', type = click.Path())
+@click.option('--src_path','-r', required = True, type = click.Path())
 @click.option('--store','-s',is_flag = True,
                help = "Store the generated test scripts")
 @click.argument('in_path', nargs = -1, type = click.Path())
-def style_test(in_path = None, out_path = None, diff = None, 
-                fix = None, output = None, store = None):
+def style_test(in_path = None, out_path = None, src_path = None,
+                diff = None, fix = None, output = None, store = None):
     """A CLI for style guide testing."""
     # generate source code for checks
     parse_code()
@@ -545,7 +546,7 @@ def style_test(in_path = None, out_path = None, diff = None,
     disp = True
     if fix or out_path:
         disp = False  
-    run_checks(in_path, disp, fix)
+    run_checks(in_path, src_path, disp, fix)
 
     # generate output
     if out_path:

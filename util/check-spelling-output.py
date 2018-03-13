@@ -4,11 +4,15 @@
 # So this script checks the spellcheck output
 # and raises an exception if there are any.
 import os
+import sys
 
 class SpellingError(ValueError):
     pass
 
-build_dir = "build"
+if len(sys.argv) < 2:
+    raise ValueError("The parent directory of the spelling directory is a required argument")
+
+build_dir = sys.argv[1]
 spelling_dir = "spelling"
 output_file = "output.txt"
 

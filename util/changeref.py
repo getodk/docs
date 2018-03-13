@@ -9,6 +9,7 @@ old_ref_type = sys.argv[1]
 old_ref = sys.argv[2]
 new_ref_type = sys.argv[3]
 new_ref = sys.argv[4]
+src_path = sys.argv[5]
 
 if not all((old_ref_type, old_ref, new_ref_type, new_ref)):
     print("Not enough arguments. Exiting.")
@@ -55,7 +56,7 @@ def updated_ref(matchobj):
     
 
 
-for f in glob.glob('src/*.rst'): 
+for f in glob.glob( src_path + '/*.rst'):
     with open(f, 'r') as file :
       filedata = file.read()
 

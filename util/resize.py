@@ -2,6 +2,8 @@ import os
 import sys
 from PIL import Image
 
+build_path = sys.argv[1]
+
 def single_resize(imagedir, filename):
     """Resize a single image."""
     print("Resizing %s ..." %filename)
@@ -28,5 +30,5 @@ def bulk_resize(imagedir):
 file_path = os.path.realpath(__file__)
 subdir_path = file_path[0:file_path.rfind('/')]
 dir_path = subdir_path[0:subdir_path.rfind('/')]
-imagedir = dir_path + "/build/latex"
+imagedir = dir_path + '/' + build_path + '/latex'
 bulk_resize(imagedir)
