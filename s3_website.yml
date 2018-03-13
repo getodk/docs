@@ -1,7 +1,7 @@
 s3_bucket: docs.opendatakit.org
 s3_endpoint: us-west-2
 
-site: build
+site: odk1-build
 
 error_document: index.html
 
