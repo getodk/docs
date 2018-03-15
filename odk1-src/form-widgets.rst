@@ -13,175 +13,972 @@
   uw
   ZXing
 
-***************
-Form Widgets
-***************
 
-This document is a list of available ODK :term:`Collect` :term:`form` :term:`widgets <widget>` (question types), with:
+Question Types
+=================
 
-- example images from the ODK Collect app
-- example Excel spreadsheet rows for creating form widgets with :term:`XLSForm`
+.. _text-widget:
 
-.. _basic-form-widgets:
-
-Basic Form Widgets
-=====================
-
-This section shows examples of all the form widgets types, with no additional options displayed.
-
-.. _string-input:
-
-String Input
+Text Widgets
 --------------
 
+All of the text widgets share the :tc:`text` type,
+and the inputs from them are saved as literal strings.
+
+.. _text-default:
+
+Default text widget
+~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`text`
+appearance
+  *none*
+  
 A simple text input.
 
 .. image:: /img/form-widgets/string-input.*
-  :alt: String input form widget, displayed in ODK Collect on an Android phone. The label is "What is your name?"
+  :alt: Text form widget, displayed in ODK Collect on an Android phone. The label is "What is your name?"
   :class: device-screen-vertical
 
-XLSForm Rows
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance
+
+  text, name, What is your name?,
+
+.. _number-string-widget:
+
+Number string widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`text`
+appearance
+  :tc:`numbers`
+
+
+A numerical input that treats the input as a string, rather than a number.
+
+.. image:: /img/form-widgets/string-number.*
+  :alt: The text widget, with numerical entry, as displayed in the ODK Collect app on an Android phone. The question text is "String number widget." The hint text is, "text type with numbers appearance." Below that is a simple input. Above the question text is the form group name "Text Widget." The Android onscreen keyboard displays a number pad.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  text,string_number_widget,String number widget,numbers,text type with numbers appearance
+
+.. note::
+
+  This appearance can be combined with the the :ref:`thousands-sep <thousands-sep>` appearance.
+  
+.. _url-widget:
+
+URL widget
 ~~~~~~~~~~~~~~~
 
-.. csv-table:: survey
-  :header: type, name, label
+type
+  :tc:`text`
+appearance
+  :tc:`url`
 
-  text, name, What is your name?
+Provides a link which the user can open from the survey. 
+Takes no input.
 
-.. _single-select:
+The URL to open is specified with :th:`default`.
 
-Single Select
-----------------
+.. image:: /img/form-widgets/url-widget.*
+  :alt: The URL form widget, as displayed in the ODK Collect app on an Android phone. The question text is "URL Widget." The hint text is "text type with url appearance and default value of http://opendatakit.org/" Below that is a button labeled, "Open URL." Below the button is the URL, "http://opendatakit.org/" Above the question text is the form group name "Text widgets."
 
-A radio-button single choice from several options.
-
-.. image:: /img/form-widgets/single-select.*
-  :alt: Single-select (radio button) form widget, displayed in ODK Collect on an Android phone. The question label is "What is your favorite fruit?" After the question is a list of fruits.
-  :class: device-screen-vertical
-
-XLSForm Rows
-~~~~~~~~~~~~~
+.. rubric:: XLSForm
 
 .. csv-table:: survey
-  :header: type, name, label
+  :header: type, name, label, appearance, hint, default
 
-  select_one fruit_list, fruits, What is your favorite fruit?
+  text,url_widget,URL widget,url,text type with url appearance and default value of http://opendatakit.org/,http://opendatakit.org/
 
-.. csv-table:: choices
-  :header: list_name, name, label
 
-  fruit_list, apple, apple
-  fruit_list, pear, pear
-  fruit_list, peach, peach
-  fruit_list, strawberry, strawberry
-  fruit_list, pineapple, pineapple
-  fruit_list, orange, orange
-  fruit_list, grape, grape
-  fruit_list, plum, plum
+.. _external-app-widget:
 
-The **list_name** in the **choices** table matches the string *after* ``select_one`` in the **type** column of the **survey** table.
+External app widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _multi-select:
+type
+  :tc:`text`
+appearance
+  :tc:`ex.*`
 
-Multi-select
--------------
+Launches an external app and receives a string input back from the external app. If the specified external app is not available, a manual input is prompted.
 
-A checkbox-list selection of multiple items. (The example includes a :term:`hint`.)
+The external app widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
 
-.. image:: /img/form-widgets/multi-select.*
-  :alt: Multi-select (checkbox-list) form widget, displayed in ODK Collect on an Android phone. The question label is "What vegetables do you enjoy?" and the hint text "Select all the apply." After the question is a list of vegetables.
-  :class: device-screen-vertical
+.. image:: /img/form-widgets/external-app-widget-start.*
+  :alt: The External App form widget, as displayed in the ODK Collect App on an Android phone. The question text is "Ex string widget." The hinst text is, "text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form group name "Text widgets."
 
-XLSForm Rows
-~~~~~~~~~~~~~~
+.. image:: /img/form-widgets/external-app-widget-fallback.*
+  :alt: The External App widget as displayed earlier. The Launch button has now been disabled. Below it is a simple input. A help message displays the text, "The requested application is missing. Please manually enter the reading."
+
+.. rubric:: XLSForm
+
 
 .. csv-table:: survey
-  :header: type, name, label, hint
+  :header: type, name, label, appearance, hint
 
-  select_multiple veggie_list, veggies, Which vegetables do you enjoy?, Select all that apply.
+  text,ex_string_widget,Ex string widget,ex:change.uw.android.BREATHCOUNT,text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
 
-.. csv-table:: choices
-  :header: list_name, name, label
+.. seealso:: :doc:`launch-apps-from-collect`
+  
+  
+.. _external-printer-widget:
 
-  veggie_list, broccoli. broccoli
-  veggie_list, carrot, carrot
-  veggie_list, spinach, spinach
-  veggie_list, tomato, tomato
-  veggie_list, bell_pepper, bell pepper
-  veggie_list, asparagus, asparagus
+External printer widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`text`
+appearance
+  :tc:`printer:*`
+
+Connects to an external label printer, and prints labels that can contain a barcode, a QR code, or text.
+
+.. pull printing widget detail into its own doc in this repo
+
+.. image:: /img/form-widgets/printer-widget.*
+  :alt: The external printer widget, as displayed in the ODK Collect app on an Android phone. The question text is "Ex printer widget." The hint text is "text type with printer:org.opendatakit.sensors.ZebraPrinter." Below that is a button labeled, "Initiate Printing." Above the question text is the form group name "Text widgets."
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+   text,ex_printer_widget,Ex printer widget,printer:org.opendatakit.sensors.ZebraPrinter,text type with printer:org.opendatakit.sensors.ZebraPrinter
+
+.. seealso:: `printing widget <https://opendatakit.org/help/form-design/examples/#printing_widgets>`_
 
 
-- The **list_name** in the **choices** table matches the string *after* ``select_one`` in the **type** column of the **survey** table.
-- The content of **name** cannot have spaces.
+.. _numerical-widgets:
 
-.. _integer:
+Numerical Widgets
+---------------------
 
-Integer
----------
+Numerical widgets collect and store input as numerical values ---
+either :ref:`integers <default-integer-widget>` or 
+:ref:`floating-point decimals <default-decimal-widget>`.
 
+Numerical values can also be captured by the :ref:`range-widgets`.
+
+.. _default-integer-widget:
+
+Default integer widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`integer`
+appearance
+  *none*
+
+  
 A whole number entry input. Integer widgets will not accept decimal points.
 
 .. image:: /img/form-widgets/integer.*
   :alt: An integer form widget displayed in ODK Collect on an Android phone. The question is "What is your age in years?" A numerical keyboard is displayed.
 
-XLSForm Rows
-~~~~~~~~~~~~~~~~
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label
 
   integer, age, What is your age in years?
 
-.. _decimal:
 
-Decimal
-----------
+.. _thousands-sep:
+  
+Number widgets with :tc:`thousands-sep` appearance
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+If :tc:`thousands-sep` is added to :th:`appearance`,
+:ref:`integer <default-integer-widget>`, 
+:ref:`decimal <default-decimal-widget>`, 
+and :ref:`number string <number-string-widget>` widgets
+will display their values using locale-specific thousands separators.
+
+.. figure:: /img/form-widgets/integer-thousands-sep-widget.* 
+  :alt: An integer widget as displayed in the Collect app. The question text is "Integer widget with thousands separators". The answer value is "1,000,000". The number keyboard is active.
+  
+  The comma separator, used in English/U.S. (and others).
+  
+.. figure:: /img/form-widgets/integer-thousands-sep-widget-spaces.* 
+  :alt: The same image as previously, but the answer value is "1 000 000". (That is, it uses spaces instead of commas as thousand separators.
+  
+  The space separator, used in *Français*/France (and others).
+  
+  
+.. _external-number-widget:
+
+Number widgets with *external app* appearance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`integer`, :tc:`decimal`
+appearance
+  :tc:`ex.*`
+
+By specifying an external app in the :th:`appearance`, 
+your form can launches an external app and receive a number 
+(integer or decimal) 
+from the external app as input. 
+If the specified external app is not available, 
+a manual input is prompted.
+
+.. image:: /img/form-widgets/external-integer-widget-start.*
+  :alt: The External Integer form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Ex integer widget." The hint text is, "integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form name "Numerical widgets."
+
+.. image:: /img/form-widgets/external-widget-fallback.*
+  :alt: The External Integer widget as displayed previously. The Launch button is now disabled and below it is a simple input. A help text reads, "The requested application is missing. Please manually enter the reading."
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  integer,ex_integer_widget,Ex integer widget,ex:change.uw.android.BREATHCOUNT,integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
+
+.. seealso:: :doc:`launch-apps-from-collect`
+
+.. _default-decimal-widget:
+
+Default decimal widget
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`decimal`
+appearance
+  *none*
+  
 A numerical entry input that will accept decimal points.
 
 .. image:: /img/form-widgets/decimal.*
   :alt: An integer form widget displayed in ODK Collect on an Android phone. The question is "Weight in kilograms." A numerical keyboard is displayed.
 
-XLSForm Rows
-~~~~~~~~~~~~~~~~
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label
 
   decimal, weight, Weight in kilograms.
 
-.. _geopoint:
+.. note::
+  
+  The decimal widget supports:
+  
+  - :ref:`Thousands separators <thousands-sep>`
+  - :ref:`External apps <external-number-widget>`
+  
 
-Geopoint
-------------
+.. _bearing-widget:
 
-A single set of GPS coordinates. The example includes a :term:`hint`.
+Bearing widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/form-widgets/geopoint-start.*
-  :alt: A geopoint form widget displayed in ODK Collect on an Android phone. The question headline is "Current location." Below that is the hint text "You might have to turn on your GPS," followed by a button with the label "Start GeoPoint."
+type
+  :tc:`decimal`
+appearance
+  :tc:`bearing`
 
+Captures a compass reading, which is stored as a decimal.
 
-.. image:: /img/form-widgets/geopoint-working.*
-  :alt: A modal popup over an obscured screen. The headline of the modal is "Loading Location." The text is "Please wait. This could take a few minutes." There are two options: "Cancel" and "Save Geopoint."
+.. image:: /img/form-widgets/bearing-widget-start.*
+  :alt: The Bearing form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Bearing widget." The hint text is, "decimal type with bearing appearance. Below that is a button labeled "Record Bearing." Above the question text is the form group name "Numericl widgets."
 
+.. image:: /img/form-widgets/bearing-in-progress.*
+  :alt: The Bearing widget, overlaid with a model popup. The modal headline is "Loading Bearing." In the body of the modal are two fields: "Direction: W" and "Bearing: 273.001". At the bottom of the modal are Cancel and Record Bearing buttons.
 
-.. image:: /img/form-widgets/geopoint-completed.*
-  :alt: A completed geopoint form widget. It looks the same as before, but now has four fields below the button: Latitude, Longitude, Altitude, and Accuracy.
+.. image:: /img/form-widgets/bearing-finished.*
+  :alt: The Bearing widget, as displayed previously. The button's label is not "Replace bearing." Below the button is the decimal number 271.538 (the recorded bearing).
 
-
-XLSForm Rows
-~~~~~~~~~~~~~~~~
+.. rubric:: XLSForm
 
 .. csv-table:: survey
- :header: type, name, label, hint
+  :header: type, name, label, appearance, hint
 
- geopoint, current_location, Current location., You might have to turn on your GPS.
+  decimal,bearing_widget,Bearing widget,bearing,decimal type with bearing appearance
 
 
-.. _geotrace:
+.. _range-widgets:
+  
+Range widgets
+----------------
 
-GeoTrace
------------
+Range widgets allow the user to select numbers from within a range that is visually represented as a number line. The parameters of the range widget are defined by :tc:`start`, :tc:`end`, and :tc:`step` values defined in the :th:`parameters` column of your XLSForm. The parameter values can be integers or decimals.
+  
+.. _range-widget-integers:
+
+Default range widget with integers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`range`
+appearance
+  *none*
+  
+If all three parameter values are integers,
+the input will be stored as an integer.
+
+.. image:: /img/form-widgets/range-integer-default-widget.* 
+  :alt: The range widget, as displayed in the ODK Collect app on Android. The question text is "Range integer widget". The main part of the widget shows a horizontal line labeled "1" on the left end and "10" on the right. There are ten points on the line.
+  
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint, parameters
+  
+  range, range_integer_widget, Range integer widget,,range integer widget with no appearance, start=1;end=10;step=1
+
+.. _range-widget-decimal:
+  
+Default range widget with decimals
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`range`
+appearance
+  *none*
+
+If any of the parameter values are decimals,
+the input will be stored as a decimal.
+
+.. image:: /img/form-widgets/range-decimal-default-widget.* 
+  :alt: The range widget as displayed previously. The number selection choices range from 1.5 to 5.5, and the selection line is horizontal.
+
+.. rubric:: XLSForm
+    
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint, parameters
+  
+  range, range_decimal_widget, Range decimal widget,,range decimal widget with no appearance, start=1.5;end=5.5;step=0.5
+  
+.. _vertical-range-widget:  
+
+Vertical range widget 
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`range`
+appearance
+  :tc:`vertical`
+
+To display the range widget's number line vertically,
+use the :tc:`vertical` appearance.
+Both integers and decimals are supported.
+
+.. image:: /img/form-widgets/range-integer-vertical-widget.* 
+  :alt: The range widget, as displayed in the previous image, but the range number line is vertical instead of horizontal.
+  
+.. rubric:: XLSForm
+  
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint, parameters
+
+  range, range_integer_widget_vertical, Range vertical integer widget, vertical, range integer widget with vertical appearance, start=1;end=10;step=1
+
+.. _image-widgets:
+
+Image Widgets
+---------------
+
+.. _default-image-widget:
+
+Default image widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`image`
+appearance
+  *none*
+
+Captures an image from the device. The user can choose to take a new picture with the device camera, or select an image from the device photo gallery.
+
+.. image:: /img/form-widgets/default-image-widget.*
+  :alt: The default Image form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Image Widget." The hint text is, "image type with no appearance." Below that are two buttons: "Take Picture" and "Choose Image." Above the question text is the form group name "Image widgets."
+
+.. rubric:: XLSForm 
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+
+  image,image_widget,Image widget,image type with no appearance
+
+.. add entire photo cycle
+
+.. _annotate-widget:
+
+Image widget with annotation
+"""""""""""""""""""""""""""""""""""
+
+type
+  :tc:`image`
+appearance
+  :tc:`annotate`
+
+Adding the :tc:`annotate` appearance allows the user to draw on the image before submitting it.
+
+.. image:: /img/form-widgets/annotate-start.*
+  :alt: The Annotate form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Annotate widget." The hint text is, "image type with annotate appearance." There are three buttons: "Take Picture," "Choose Image," and "Markup Image." The Markup Image button is disabled. Above the question text is the form group name "Image widgets."
+
+.. image:: /img/form-widgets/annotate-1.*
+  :alt: The camera view on an Android phone. In the viewer is a picture of a small saucer. Below the viewer is a blue checkmark button.
+
+.. image:: /img/form-widgets/annotate-2.*
+  :alt: The Annotate form widget displayed previously. The Markup Image button is now enabled. Below the buttons is the picture of a saucer shown previously.
+
+.. image:: /img/form-widgets/annotate-3.*
+  :alt: The image of a saucer on a drawing pad, with a poorly-drawn cup of tea drawn over it. In the lower right corner is a plus sign (+) in a circle.
+
+.. image:: /img/form-widgets/annotate-4.*
+  :alt: The same picture shown in the previous image. The menu in the bottom right corner has expanded to show the options: Reset, Save and Close, and Set Color.
+
+.. image:: /img/form-widgets/annotate-5.*
+  :alt: The Annotate form widget shown previously. The drawn-on picture is below the buttons.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  image,annotate_image_widget,Annotate widget,annotate,image type with annotate appearance
+
+.. _new-image-widget:
+
+Image widget with required new image
+""""""""""""""""""""""""""""""""""""""""
+
+type
+  :tc:`image`
+appearance
+  :tc:`new`
+
+An image widget that does not include a :guilabel:`Choose Image` button. This requires the user to take a new picture.
+
+.. image:: /img/form-widgets/new-image-widget.* 
+  :alt: The new image widget, as displayed in the ODK Collect app on Android. It is largely identical to the previous image widget, except that there is only a Take Picture button, and there is no Choose Image button.
+  
+.. rubric:: XLSForm
+
+.. csv-table::
+  :header: type, name, label, appearance, hint
+  
+  image, image_widget_no_choose, Image widget without Choose button, new, image type with new appearance (can also be added with annotate appearance and on audio and video types)
+  
+  
+.. _selfie-widget:
+
+Selfie Widget
+~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`image`
+appearance
+  :tc:`selfie`
+
+Takes a picture using the front-facing ("selfie") camera. The :guilabel:`Choose image` button is not displayed.
+
+.. image:: /img/form-widgets/selfie-start.*
+  :alt: The Selfie form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Selfie widget." The hint text is, "image type with selfie appearance." There is a single button, labeled "Take Picture." Above the question text is the form group name "Image widgets."
+
+.. image:: /img/form-widgets/selfie-in-progress.*
+  :alt: A camera view on an Android phone. A person is taking a self-portrait.
+
+.. image:: /img/form-widgets/selfie-complete.*
+  :alt: The Selfie form widget as displayed previously. Below the button is the self-portrait from the previous image.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  image,selfie_image_widget,Selfie widget,selfie,image type with selfie appearance
+
+
+.. _draw-widget:
+
+Draw widget
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`image`
+appearance
+  :tc:`draw`
+  
+
+Provides the user a drawing pad and collects the drawn image.
+
+.. image:: /img/form-widgets/draw-widget.*
+  :alt: The Draw form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Draw widget." The hint text is "image type with draw appearance." Below that is a button labeled "Sketch Image." Above the question text is the form group name "Image widgets."
+
+.. image:: /img/form-widgets/draw-in-progress.*
+  :alt: A white "drawing pad" on an Android phone, horizontally oriented (landscape mode). A simple smiley face has been drawn. In the lower right corner of the drawing pad is a plus sign (+) in a circle.
+
+.. image:: /img/form-widgets/draw-options.*
+  :alt: The drawing pad as displayed in the previous image. A menu has expanded from the lower right corner with the options: Reset, Save and Close, and Set Color.
+
+.. image:: /img/form-widgets/draw-completed.*
+  :alt: The Draw widget as displayed previously. Below the "Sketch Image" button is the smiley face from the drawing pad image shown previously.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+
+  :header: type, name, label, appearance, hint
+
+  image,draw_image_widget,Draw widget ,draw,image type with draw appearance
+
+.. _signature-widget:
+
+Signature widget
+~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`image`
+appearance
+  :tc:`signature`
+
+Collects a signature from the user.
+
+.. image:: /img/form-widgets/signature-start.*
+  :alt: The Signature form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Signature widget." The hint text is "image type with signature appearance." Below that is a button labeled "Gather Signature." Above the question text is the form group name "Image widgets."
+
+.. image:: /img/form-widgets/signature-in-progress.*
+  :alt: A drawing pad with a signature line, displayed on an Android phone. A signature is drawn across it. In the lower right corner is circular button marked with a plus sign (+).
+
+.. image:: /img/form-widgets/signature-completed.*
+  :alt: The signature widget displayed previously. Below the button is the signature drawn in the previous image.
+
+.. rubric:: XLSForm
+
+.. csv-table:: table
+  :header: type, name, label, appearance, hint
+
+  image,signature_widget,Signature widget,signature,image type with signature appearance
+
+.. image with web appearance
+.. image with align:111 appearance
+
+
+.. _barcode:
+
+Barcode widget
+---------------------
+
+Scans, decodes, and captures the content of a barcode,
+using the device camera.
+
+The following barcode formats are supported:
+
+- UPC-A
+- UPC-E
+- EAN-8
+- EAN-13
+- Code 39
+- Code 93
+- Code 128
+- Codabar
+- ITF
+- RSS-14
+- RSS-Expanded
+- QR Code
+- Data Matrix
+- Aztec (beta)
+- PDF 417 (beta)
+- MaxiCode
+
+The flash can be used as a light source when scanning barcodes in a poorly-lit environment.
+
+.. image:: /img/form-widgets/barcode-start.*
+  :alt: The Barcode form widget as displayed in the ODK Collect app on an Android phone. The headline text reads, "Scan any barcode." Below that is an image labeled "Get Barcode."
+
+.. image:: /img/form-widgets/barcode1.*
+  :alt: A barcode scanner on an Android device. A barcode is in the viewfinder, with a thin blue line across the barcode.
+
+.. image:: /img/form-widgets/barcode2.*
+  :alt: The Barcode form widget as displayed previously. The button label is now "Replace Barcode." Below the button is a string of numbers representing the decoded content of the scanned barcode.
+
+.. rubric:: XLSForm
+  
+.. csv-table:: survey
+  :header: type, name, label
+
+  barcode, barcode_example, Scan any barcode.
+
+.. note::
+  Barcode scanning is built into ODK Collect versions 1.7.0 and greater.
+  
+  Versions of ODK Collect prior to 1.7.0 require the `ZXing app`_ to be installed.
+  
+.. _ZXing app: https://play.google.com/store/apps/details?id=com.google.zxing.client.android
+
+.. _audio:
+
+Audio widget
+~~~~~~~~~~~~~~~~~~~
+
+Records audio from an external app.
+
+.. note::
+
+  Some Android devices provide a default application for audio recording.
+  Others do not, 
+  and the user will need to install an audio recording app.
+  
+  There are many apps available for this, including:
+  
+  - `Audio Record from Sony <https://play.google.com/store/apps/details?id=com.sonymobile.androidapp.audiorecorder&hl=en>`_
+  - `RecForge II <https://play.google.com/store/apps/details?id=dje073.android.modernrecforge&hl=en>`_
+  
+  Any app that responds to
+  `android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION`
+  will be compatible.
+
+
+.. image:: /img/form-widgets/audio-start.*
+  :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "Please record your name." There are three buttons: Record Sound, Choose Sound and Play Sound. The "Play Sound" button is disabled.
+
+.. What app is required for audio recording?
+
+.. rubric:: XLSForm Rows
+
+.. csv-table:: survey
+  :header: type, name, label
+
+  audio, name_pronounce, Please record your name.
+
+.. _video:
+
+Video widget
+----------------
+
+Records video, using the device camera.
+
+.. image:: /img/form-widgets/video-start.*
+  :alt: The Video form widget as displayed in the ODK Collect App on an Android phone. The question text is "Please record a video of yourself blinking." The hint text is "Three times is probably sufficient." Below that are three buttons: Record Video, Choose Video, and Play Video. The Play Video button is disabled.
+
+
+.. image:: /img/form-widgets/video1.*
+  :alt: The Android camera app, in video mode. A person's face is in the camera viewer. Below the camera viewer is a large, blue checkmark button.
+
+.. image:: /img/form-widgets/video2.*
+  :alt: The Video form widget as displayed previously. The question text is "Please record a video of yourself blinking." The hint text is "Three times is probably sufficient." Below that are three buttons: Record Video, Choose Video, and Play Video. All three buttons are enabled.
+
+.. rubric:: XSLForm Rows
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+
+  video, blinking, Please record a video of yourself blinking., Three times is probably sufficient.
+
+
+.. _date-and-time-widgets:
+
+Date and Time Widgets
+----------------------
+
+.. _default-date-widget:
+
+Default date widget
+~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`date`
+appearance
+  *none*
+
+.. image:: /img/form-widgets/default-date-widget.*
+  :alt: The default Date form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Date widget." The hint text is "date type with no appearance." Below that is a button labeled "Select date." Below that is the text, "No date selected." Above the question text is the form group name "Date and time widgets."
+
+.. image:: /img/form-widgets/date-calendar-view.*
+  :alt: The date widget shown in the previous image, with a modal popup showing a monthly calendar. A date is selected. At the bottom of the modal are Cancel and OK buttons.
+
+.. image:: /img/form-widgets/date-completed.*
+  :alt: The date widget shown previously. Below the button is a date: Aug 11, 2017.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+
+  date,date_widget,Date widget,date type with no appearance
+
+.. _date-no-calendar:
+
+Date widget with spinner input
+"""""""""""""""""""""""""""""""""
+
+type
+  :tc:`date`
+appearance
+  :tc:`no-calendar`
+
+The :tc:`no-calendar` appearance displays a "spinner" type date selection. This is especially appropriate for selecting dates more than one year in the past or future.
+
+.. image:: /img/form-widgets/date-no-calendar-start.*
+  :alt: The no-calendar Date form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Date Widget." The hint text is "date type with no-calendar appearance." Below that is a button labeled "Select date." Below the button is the text, "No date selected." Above the question text is the form group name "Date and time widgets."
+
+.. image:: /img/form-widgets/date-no-calendar-in-progress.*
+  :alt: The date widget shown previously, with a pop modal. The headline of the modal is "Select date." There are individual "spinner" style selectors for month, day, and year. At the bottom of the modal are OK and Cancel buttons.
+
+.. rubric:: XSLForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  date,date_widget_nocalendar,Date Widget,no-calendar,date type with no-calendar appearance
+
+.. _date-type-month-year:
+
+Month and year only
+""""""""""""""""""""""
+
+type
+  :tc:`date`
+appearance
+  :tc:`month-year`
+
+Collects only a month and year.
+
+.. image:: /img/form-widgets/month-year-spinner.*
+  :alt: The date widget, with a modal popup labeled "Select date." There are individual "Spinner" type selectors for month and year, but not for date. At the bottom are Cancel and OK buttons.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  date,date_widget_month_year,Date widget,month-year,date type with month-year appearance
+
+
+.. _year-widget:
+
+Year only
+""""""""""""
+
+Collects only a year.
+
+.. image:: /img/form-widgets/year-spinner.*
+  :alt: The Year form widget, with a model popup labeled "Select date." There is a single "spinner" type selector for year. At the bottom are Cancel and OK buttons.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  date,date_widget_year,Date widget,year,date type with year appearance
+
+.. _non-gregorian-date-widgets:
+  
+Date widgets with non-Gregorian calendars
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Collect supports several non-Gregorian calendars.
+
+.. note::
+
+  The non-Gregorian calendar is used only on input.
+  The dates are converted and stored as standard Gregorian dates
+
+.. _ethiopian-calendar:
+
+Ethiopian calendar
+""""""""""""""""""""
+
+type
+  :tc:`date`
+appearance
+  :tc:`ethiopian`
+  
+.. image:: /img/form-widgets/ethiopian-calendar-widget.* 
+  :alt:
+
+.. _coptic-calendar:
+  
+Coptic calendar
+"""""""""""""""""
+
+type
+  :tc:`date`
+appearance
+  :tc:`coptic`
+  
+.. image:: /img/form-widgets/coptic-calendar-widget.* 
+  :alt:
+  
+.. _islamic-calendar:
+  
+Islamic calendar
+""""""""""""""""""
+
+type
+  :tc:`date`
+appearance
+  :tc:`islamic`
+  
+.. image:: /img/form-widgets/islamic-calendar-widget.* 
+  :alt:
+   
+.. _time-widgets:
+
+Time widget
+~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`time`
+appearance
+  *none*
+
+A time selector. Captures only a specific time-of-day, not a date and time. For date and time, see :ref:`datetime`.
+
+The time widget does not accept any :th:`appearance` attributes.
+
+.. image:: /img/form-widgets/time-start.*
+  :alt: The Time form widget as displayed in the ODK Collect App on an Android phone. The question text is "What time do you usually wakeup?" The button label is "Select time." Below the button is the message "No time selected."
+
+.. image:: /img/form-widgets/time1.*
+  :alt: The Time widget as displayed previously, with a modal popup. The modal headline is "Select time." The body of the modal contains scrollers for Hour, Minute, and AM/PM. At the bottom of the modal are Cancel and OK buttons.
+
+.. image:: /img/form-widgets/time2.*
+  :alt: The Time form widget as displayed previously. Below the "Select time" button is "06:30".
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label
+
+  time, wakeup, What time do you usually wakeup?
+
+.. _datetime-widget:
+  
+Datetime widget
+~~~~~~~~~~~~~~~~~~~
+  
+A date and time selector. 
+
+For date only, see :ref:`default-date-widget`. For time only, see :ref:`time-widget`.
+
+.. image:: /img/form-widgets/datetime-start.*
+  :alt: The Datetime form widget as displayed in the ODK Collect App on an Android phone. The question text is "When was the last time you ate?" Below the question are two buttons. The first button is labeled "Select date" and below it is the message "No date selected." The second button is labeled "Select time" and below it is the message "No time select."
+
+.. image:: /img/form-widgets/datetime1.*
+  :alt: The same form widget screen as previously, overlaid with a modal popup calendar. The headline is a date: 2017 Tue, Aug 8. The main body shows a monthly calendar with selectable days and arrows for scrolling month-to-month. In the bottom-right are Cancel and OK buttons.
+
+.. image:: /img/form-widgets/datetime2.*
+  :alt: The Datetime form widget as displayed previously. The question text is "When was the last time you ate?" Below the question are two buttons. The first button is labeled "Select date" and below it is the date "Aug 08, 2017" The second button is labeled "Select time" and below it is the message "No time select."
+
+.. image:: /img/form-widgets/datetime3.*
+  :alt: The Datetime widget as displayed previously, with a modal popup. The modal headline is "Select time." The body of the modal contains scrollers for Hour, Minute, and AM/PM. At the bottom of the modal are Cancel and OK buttons.
+
+.. image:: /img/form-widgets/datetime2.*
+  :alt: The Datetime form widget as displayed previously. The question text is "When was the last time you ate?" Below the question are two buttons. The first button is labeled "Select date" and below it is the date "Aug 08, 2017" The second button is labeled "Select time" and below it is the time "06:45"
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label
+
+  dateTime, previous_meal, When was the last time you ate?
+
+.. note::
+
+  The :ref:`datetime` widget supports the :ref:`no-calendar <date-no-calendar>` spinner-style appearance.
+
+.. _gps-widgets:
+
+GPS Widgets
+------------
+
+.. _geopoint-widget:
+
+Geopoint widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`geopoint`
+appearance
+  *none*
+
+Captures the current GPS position from the device.
+
+For a geopoint with a user-selected location,
+see :ref:`placement-map-widget` 
+
+.. image:: /img/form-widgets/default-geopoint.*
+  :alt: The default Geopoint form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Geopoint widget." The hint text is "geopoint type with no appearance." Below that is a button labeled "Start Geopoint." Below the button are completed fields for Latitude, Longitude, Altitude, and Accuracy.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+
+  geopoint,geopoint_widget,Geopoint widget,geopoint type with no appearance
+
+  
+.. _geopoint-maps:
+
+Geopoint with map display
+"""""""""""""""""""""""""""""
+
+type
+  :tc:`geopoint`
+appearance
+  :tc:`maps`
+
+The default :ref:`geopoint` widget does not display a map to the user. With the :tc:`maps` appearance attribute, a map of the recorded location is shown to the user.
+
+The user cannot select a different location on the map. 
+For a geopoint with a user-selected location,
+see :ref:`placement-map-widget` 
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  geopoint,geopoint_widget_maps,Geopoint widget,maps,geopoint type with maps appearance
+  
+.. _placement-map-widget:
+
+Geopoint with user-selected location
+""""""""""""""""""""""""""""""""""""""
+
+type
+  :tc:`geopoint`
+appearance
+  :tc:`placement-map`
+
+The default :ref:`geopoint-widget` does not allow the user to select a location.
+
+A geopoint with the appearance attribute :tc:`placement-map` allows the user to select a geopoint from a map.
+
+.. image:: /img/form-widgets/geopoint-placement-map.*
+  :alt: A map app opens on an Android phone. Above the map is the message: "Long press to place mark or tap add marker button." Along the right side of the map are buttons: Add Marker, Zoom to point, Layers, Trash, Save.
+
+.. rubric:: XLSForm 
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  geopoint,geopoint_widget_placementmap,Geopoint widget,placement-map,geopoint type with placement-map appearance
+
+
+.. _geotrace-widget:
+
+Geotrace widget
+~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`geotrace`
+appearance
+  *none*
 
 A line or polygon of GPS coordinates tracking actual device movement. The user can specify one of two location-recording modes:
 
@@ -214,20 +1011,25 @@ A line or polygon of GPS coordinates tracking actual device movement. The user c
   :alt: The Geotrace form widget, as shown previously. The question text is "Where have you been?" and the button label is "View or Change GeoTrace." Below that is a list of lat/long GPS coordinates.
 
 
-XLSForm Rows
-~~~~~~~~~~~~~~~
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label
 
   geotrace, trace_example, Where have you been?
+  
+  
+.. _geoshape-widget:
 
-.. _geoshape:
+Geoshape
+~~~~~~~~~
 
-GeoShape
-------------
+type
+  :tc:`geoshape`
+appearance
+  *none*
 
-A user-entered series of GPS coordinates, forming a polygon.
+Captures a user-entered series of GPS coordinates, forming a polygon.
 
 .. image:: /img/form-widgets/geoshape-start.*
   :alt: The GeoShape form widget, as displayed in the ODK Collect app on an Android phone. The question text is "Select an Area." Below that is a button labeled "Start GeoShape."
@@ -244,785 +1046,18 @@ A user-entered series of GPS coordinates, forming a polygon.
 .. image:: /img/form-widgets/geoshape4.*
   :alt: The GeoShape form widget shown previously. The question text is "Select an Area." The button label is now "View or Change GeoShape." Below the button is a list of lat/long GPS coordinates.
 
-XLSForm Rows
-~~~~~~~~~~~~~~~~
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label
 
-  geoshape, shape_example, Select an area.
-
-.. _date:
-
-Date
----------
-
-A date selector.
-
-.. image:: /img/form-widgets/date-start.*
-  :alt: The date selection form widget, as displayed in the ODK Collect app on an Android phone. The question text is "What is your birthday?" The button label is "Select date." Below that is the message "No date selected."
-
-.. image:: /img/form-widgets/date1.*
-  :alt: The same form widget screen as previously, overlaid with a modal popup calendar. The headline is a date: 2017 Tue, Aug 8. The main body shows a monthly calendar with selectable days and arrows for scrolling month-to-month. In the bottom-right are Cancel and OK buttons.
-
-.. image:: /img/form-widgets/date-start.*
-  :alt: The date selection form widget as shown previously. Below the "Select date" button is the date Aug 01, 2017.
-
-XLSForm Rows
-~~~~~~~~~~~~~~~
-
-.. csv-table:: survey
-  :header: type, name, label
-
-  date, birthday, What is your birthday?
-
-.. _time:
-
-Time
--------
-
-A time selector. Captures only a specific time-of-day, not a date and time. For date and time, see :ref:`datetime`.
-
-.. image:: /img/form-widgets/time-start.*
-  :alt: The Time form widget as displayed in the ODK Collect App on an Android phone. The question text is "What time do you usually wakeup?" The button label is "Select time." Below the button is the message "No time selected."
-
-.. image:: /img/form-widgets/time1.*
-  :alt: The Time widget as displayed previously, with a modal popup. The modal headline is "Select time." The body of the modal contains scrollers for Hour, Minute, and AM/PM. At the bottom of the modal are Cancel and OK buttons.
-
-.. image:: /img/form-widgets/time2.*
-  :alt: The Time form widget as displayed previously. Below the "Select time" button is "06:30".
-
-XLSForm Rows
-~~~~~~~~~~~~~~~
-
-.. csv-table:: survey
-  :header: type, name, label
-
-  time, wakeup, What time do you usually wakeup?
-
-.. _ethiopian-calendar:
-
-Ethiopian Calendar
---------------------
-
-An Ethiopian-calendar. The main calendar used in Ethiopia. Users can enter a date according to the Ethiopian calendar system, and also see the corresponding Gregorian (standard) calendar date.
-
-.. image:: /img/form-widgets/ethiopian-start.*
-  :alt: The Ethiopian calendar form widget as displayed in the ODK Collect App on an Android phone. The headline is "Ethiopian Calendar". The button label is "Select date." Below the button is the message "No date selected."
-
-.. image:: /img/form-widgets/ethiopian2.*
-  :alt: The same form widget screen as previously, overlaid with popup calendar. The modal headline is "Select date." The main body shows the ethiopian calendar and contains scrollers for Day, Month and Year. Just below the main body, date according to the Ethiopian and Gregorian calendar system can be seen. In the bottom-right are Cancel and OK buttons.
-
-.. image:: /img/form-widgets/ethiopian3.*
-  :alt: The Ethiopian calendar form widget as displayed previously. The headline is "Ethiopian Calendar". The button label is "Select date." Below the button is the message "22 Tikimt 2010 (Nov 01, 2017)."
-
-XLSForm Rows
-~~~~~~~~~~~~~
-
-.. csv-table:: survey
-  :header: type, name, label
-
-  date, ethiopian-calendar, Ethiopian Calendar
-
-
-.. _datetime:
-
-Datetime
------------
-
-A datetime selector. For date only, see :ref:`date`. For time only, see :ref:`time`.
-
-.. image:: /img/form-widgets/datetime-start.*
-  :alt: The Datetime form widget as displayed in the ODK Collect App on an Android phone. The question text is "When was the last time you ate?" Below the question are two buttons. The first button is labeled "Select date" and below it is the message "No date selected." The second button is labeled "Select time" and below it is the message "No time select."
-
-.. image:: /img/form-widgets/datetime1.*
-  :alt: The same form widget screen as previously, overlaid with a modal popup calendar. The headline is a date: 2017 Tue, Aug 8. The main body shows a monthly calendar with selectable days and arrows for scrolling month-to-month. In the bottom-right are Cancel and OK buttons.
-
-.. image:: /img/form-widgets/datetime2.*
-  :alt: The Datetime form widget as displayed previously. The question text is "When was the last time you ate?" Below the question are two buttons. The first button is labeled "Select date" and below it is the date "Aug 08, 2017" The second button is labeled "Select time" and below it is the message "No time select."
-
-.. image:: /img/form-widgets/datetime3.*
-  :alt: The Datetime widget as displayed previously, with a modal popup. The modal headline is "Select time." The body of the modal contains scrollers for Hour, Minute, and AM/PM. At the bottom of the modal are Cancel and OK buttons.
-
-.. image:: /img/form-widgets/datetime2.*
-  :alt: The Datetime form widget as displayed previously. The question text is "When was the last time you ate?" Below the question are two buttons. The first button is labeled "Select date" and below it is the date "Aug 08, 2017" The second button is labeled "Select time" and below it is the time "06:45"
-
-XLSForm Rows
-~~~~~~~~~~~~~
-
-.. csv-table:: survey
-  :header: type, name, label
-
-  dateTime, previous_meal, When was the last time you ate?
-
-.. _image:
-
-Image
-----------
-
-An image collector. The user can choose to select an image stored on the device or take a new picture. The example includes :term:`hint` text.
-
-.. image:: /img/form-widgets/image-start.*
-  :alt: The Image widget as displayed in the ODK Collect App on an Android phone. The question text is "Please take a self portrait." Below the question is the hint text, "A 'selfie.'" There are two buttons: Take Picture and Choose Image.
-
-.. image:: /img/form-widgets/image1.*
-  :alt: The camera app on an Android phone, with a person's face in the camera image. Below the camera image is a large, blue Checkbox button.
-
-.. image:: /img/form-widgets/image2.*
-  :alt: The Image widget as displayed previously. Below the buttons is the photo of a face from the previous camera app image.
-
-XLSForm
-~~~~~~~~~~~
-
-.. csv-table:: survey
-  :header: type, name, label, hint
-
-  image, selfie, Please take a self portrait., A "selfie."
-
-
-.. _audio:
-
-Audio
---------
-
-An audio recording collector.
-
-.. image:: /img/form-widgets/audio-start.*
-  :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "Please record your name." There are three buttons: Record Sound, Choose Sound and Play Sound. The "Play Sound" button is disabled.
-
-.. need to complete the audio widget sequence of images
-
-XLSForm Rows
-~~~~~~~~~~~~~~~
-
-.. csv-table:: survey
-  :header: type, name, label
-
-  audio, name_pronounce, Please record your name.
-
-.. _video:
-
-Video
---------
-
-A video collector. The example includes :term:`hint` text.
-
-.. image:: /img/form-widgets/video-start.*
-  :alt: The Video form widget as displayed in the ODK Collect App on an Android phone. The question text is "Please record a video of yourself blinking." The hint text is "Three times is probably sufficient." Below that are three buttons: Record Video, Choose Video, and Play Video. The Play Video button is disabled.
-
-
-.. image:: /img/form-widgets/video1.*
-  :alt: The Android camera app, in video mode. A person's face is in the camera viewer. Below the camera viewer is a large, blue checkmark button.
-
-.. image:: /img/form-widgets/video2.*
-  :alt: The Video form widget as displayed previously. The question text is "Please record a video of yourself blinking." The hint text is "Three times is probably sufficient." Below that are three buttons: Record Video, Choose Video, and Play Video. All three buttons are enabled.
-
-XSLForm Rows
-~~~~~~~~~~~~~~
-
-.. csv-table:: survey
-  :header: type, name, label, hint
-
-  video, blinking, Please record a video of yourself blinking., Three times is probably sufficient.
-
-
-.. _note:
-
-Note
----------
-
-A note to the user, accepting no input. This example includes :term:`hint` text.
-
-.. figure:: /img/form-widgets/note.*
-  :alt: The Note form widget as displayed in the ODK Collect App on an Android phone. The headline text is, "This is an example note." The hint text is, "The text displays, but there is no input."
-
-XSLForm Rows
-~~~~~~~~~~~~~~
-
-.. csv-table::
-  :header: type, name, label, hint
-
-  note, note_1, This is an example note., "The text displays, but there is no input."
-
-
-.. _barcode:
-
-Barcode
-----------
-
-Captures the text from a barcode using the device camera. Supported barcode formats are described [here](https://github.com/zxing/zxing/#supported-formats). Non-printing control codes are removed.
-
-The flash can be used as a light source when scanning barcodes in a poorly-lit environment.
-
-.. note::
-  Barcode scanning is built into ODK Collect versions 1.7.0 and greater. Versions of ODK Collect prior to 1.7.0 require the [ZXing app](https://play.google.com/store/apps/details?id=com.google.zxing.client.android) to be installed.
-
-.. image:: /img/form-widgets/barcode-start.*
-  :alt: The Barcode form widget as displayed in the ODK Collect app on an Android phone. The headline text reads, "Scan any barcode." Below that is an image labeled "Get Barcode."
-
-.. image:: /img/form-widgets/barcode1.*
-  :alt: A barcode scanner on an Android device. A barcode is in the viewfinder, with a thin blue line across the barcode.
-
-.. image:: /img/form-widgets/barcode2.*
-  :alt: The Barcode form widget as displayed previously. The button label is now "Replace Barcode." Below the button is a string of numbers representing the decoded content of the scanned barcode.
-
-XSLForm Rows
-~~~~~~~~~~~~~~~~~~
-
-.. csv-table:: survey
-  :header: type, name, label
-
-  barcode, barcode_example, Scan any barcode.
-
-.. _acknowledge:
-
-Acknowledge
--------------
-
-An acknowledgment prompt with a single checkbox. In :term:`Aggregate`, a completed acknowledgment is stored as the string response ``OK``.
-
-.. image:: /img/form-widgets/acknowledge.*
-  :alt: The Acknowledge form widget as displayed in the ODK Collect app on an Android phone. The headline text is, "I acknowledge this acknowledgment." Below that is a single checkbox with the label, "OK. Please continue."
-
-XLSForm Rows
-~~~~~~~~~~~~~~~
-
-.. csv-table:: survey
-  :header: type, name, label
-
-  acknowledge, ack_sample, I acknowledge this acknowledgment.
-
-.. _appearance:
-
-Widget Formatting with Appearance
-==================================
-
-In your :term:`xlsform` sheet, you can optionally specify an :th:`appearance` column. This will affect widget display and functionality in :term:`Collect`.
-
-.. _text-widgets:
-
-Text Widgets
--------------
-
-.. _text-default:
-
-Default Appearance
-~~~~~~~~~~~~~~~~~~~~~
-
-.. image:: /img/form-widgets/text-no-appearance.*
-  :alt: The default String widget, as displayed in the ODK Collect app on an Android phone. The question text is "String Widget." Below that is a simple text input. Above the question text is the form group name, "Text widgets."
-
-
-XLSForm Rows
-""""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label
-
-  text,string_widget,String widget
-
-
-.. _string-number:
-
-String Number
-~~~~~~~~~~~~~~~
-
-A numerical input that treats the input as a string, rather than a number.
-
-.. image:: /img/form-widgets/string-number.*
-  :alt: The text widget, with numerical entry, as displayed in the ODK Collect app on an Android phone. The question text is "String number widget." The hint text is, "text type with numbers appearance." Below that is a simple input. Above the question text is the form group name "Text Widget." The Android onscreen keyboard displays a number pad.
-
-XLSForm Rows
-"""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  text,string_number_widget,String number widget,numbers,text type with numbers appearance
-
-
-.. _url-widget:
-
-URL Widget
-~~~~~~~~~~~~
-
-Provides a link which the user can open from the survey. Takes no input.
-
-The URL to open is specified with :th:`default`.
-
-.. image:: /img/form-widgets/url-widget.*
-  :alt: The URL form widget, as displayed in the ODK Collect app on an Android phone. The question text is "URL Widget." The hint text is "text type with url appearance and default value of http://opendatakit.org/" Below that is a button labeled, "Open URL." Below the button is the URL, "http://opendatakit.org/" Above the question text is the form group name "Text widgets."
-
-XLSForm Rows
-"""""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint, default
-
-  text,url_widget,URL widget,url,text type with url appearance and default value of http://opendatakit.org/,http://opendatakit.org/
-
-
-
-
-.. _external-app-widget:
-
-External App String Widget
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Launches an external app and receives a string input back from the external app. If the specified external app is not available, a manual input is prompted.
-
-The external app widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
-
-.. image:: /img/form-widgets/external-app-widget-start.*
-  :alt: The External App form widget, as displayed in the ODK Collect App on an Android phone. The question text is "Ex string widget." The hinst text is, "text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form group name "Text widgets."
-
-.. image:: /img/form-widgets/external-app-widget-fallback.*
-  :alt: The External App widget as displayed earlier. The Launch button has now been disabled. Below it is a simple input. A help message displays the text, "The requested application is missing. Please manually enter the reading."
-
-XLSForm Rows
-"""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  text,ex_string_widget,Ex string widget,ex:change.uw.android.BREATHCOUNT,text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
-
-
-.. _external-printer-widget:
-
-External Printer Widget
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Connects to an external printer. See `printing widget <https://opendatakit.org/help/form-design/examples/#printing_widgets>`_ for complete details.
-
-.. pull printing widget detail into its own doc in this repo
-
-.. image:: /img/form-widgets/printer-widget.*
-  :alt: The external printer widget, as displayed in the ODK Collect app on an Android phone. The question text is "Ex printer widget." The hint text is "text type with printer:org.opendatakit.sensors.ZebraPrinter." Below that is a button labeled, "Initiate Printing." Above the question text is the form group name "Text widgets."
-
-XLSForm Rows
-"""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-   text,ex_printer_widget,Ex printer widget,printer:org.opendatakit.sensors.ZebraPrinter,text type with printer:org.opendatakit.sensors.ZebraPrinter
-
-
-.. _number-widget:
-
-Number Widgets
----------------
-
-.. _default-integer-widget:
-
-Default Integer Widget
-~~~~~~~~~~~~~~~~~~~~~~~
-
-.. image:: /img/form-widgets/default-integer-widget.*
-  :alt: The default Integer form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Integer Widget." The hint text is "integer type with no appearance." Below that is a simple input. The numerical keypad is active. Above the question text is the form group name "Numerical widgets."
-
-XLSForm Rows
-""""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, hint
-
-  integer,integer_widget,Integer widget,integer type with no appearance
-
-.. _external-integer-widget:
-
-External Integer Widget
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Launches an external app and receives an integer input back from the external app. If the specified external app is not available, a manual input is prompted.
-
-.. image:: /img/form-widgets/external-integer-widget-start.*
-  :alt: The External Integer form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Ex integer widget." The hint text is, "integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form name "Numerical widgets."
-
-.. image:: /img/form-widgets/external-widget-fallback.*
-  :alt: The External Integer widget as displayed previously. The Launch button is now disabled and below it is a simple input. A help text reads, "The requested application is missing. Please manually enter the reading."
-
-XLSForm Rows
-"""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  integer,ex_integer_widget,Ex integer widget,ex:change.uw.android.BREATHCOUNT,integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
-
-.. _default-decimal-widget:
-
-Default Decimal Widget
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. image:: /img/form-widgets/default-decimal-widget.*
-  :alt: The default Decimal form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Decimal widget." The hint text is "decimal type with no appearance." Below that is a simple input. The number pad is active. Above the question text is the form group name "Numerical widgets."
-
-XLSForm Rows
-"""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, hint
-
-  decimal,decimal_widget,Decimal widget,decimal type with no appearance
-
-.. _external-decimal-widget:
-
-External Decimal Widget
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Launches an external app and receives a decimal number input back from the external app. If the specified external app is not available, a manual input is prompted.
-
-.. image:: /img/form-widgets/external-decimal-start.*
-  :alt: The External Decimal form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Ex decimal widget." The hint text is, "decimal type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form group name "Numerical widgets."
-
-.. image:: /img/form-widgets/external-decimal-fallback.*
-  :alt: The External Decimal widget displayed previously. The Launch button is now disabled and below it is a simple input. A help text reads, "The requested application is missing. Please manually enter the reading."
-
-XLSForm Rows
-"""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  decimal,ex_decimal_widget,Ex decimal widget,ex:change.uw.android.BREATHCOUNT,decimal type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
-
-.. _bearing-widget:
-
-Bearing Widget
-~~~~~~~~~~~~~~~~
-
-Captures a compass reading.
-
-.. image:: /img/form-widgets/bearing-widget-start.*
-  :alt: The Bearing form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Bearing widget." The hint text is, "decimal type with bearing appearance. Below that is a button labeled "Record Bearing." Above the question text is the form group name "Numericl widgets."
-
-.. image:: /img/form-widgets/bearing-in-progress.*
-  :alt: The Bearing widget, overlaid with a model popup. The modal headline is "Loading Bearing." In the body of the modal are two fields: "Direction: W" and "Bearing: 273.001". At the bottom of the modal are Cancel and Record Bearing buttons.
-
-.. image:: /img/form-widgets/bearing-finished.*
-  :alt: The Bearing widget, as displayed previously. The button's label is not "Replace bearing." Below the button is the decimal number 271.538 (the recorded bearing).
-
-XLSForm Rows
-"""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  decimal,bearing_widget,Bearing widget,bearing,decimal type with bearing appearance
-
-
-.. _image-widgets:
-
-Image Widgets
----------------
-
-.. _default-image-widget:
-
-Default Image Widget
-~~~~~~~~~~~~~~~~~~~~~~
-
-.. image:: /img/form-widgets/default-image-widget.*
-  :alt: The default Image form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Image Widget." The hint text is, "image type with no appearance." Below that are two buttons: "Take Picture" and "Choose Image." Above the question text is the form group name "Image widgets."
-
-XLSForm Rows
-""""""""""""""
-.. csv-table:: survey
-  :header: type, name, label, hint
-
-  image,image_widget,Image widget,image type with no appearance
-
-
-.. _selfie-widget:
-
-Selfie Widget
-~~~~~~~~~~~~~~~
-
-Takes a picture using the front-facing ("selfie") camera. The "Choose picture" button is not displayed.
-
-.. image:: /img/form-widgets/selfie-start.*
-  :alt: The Selfie form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Selfie widget." The hint text is, "image type with selfie appearance." There is a single button, labeled "Take Picture." Above the question text is the form group name "Image widgets."
-
-.. image:: /img/form-widgets/selfie-in-progress.*
-  :alt: A camera view on an Android phone. A person is taking a self-portrait.
-
-.. image:: /img/form-widgets/selfie-complete.*
-  :alt: The Selfie form widget as displayed previously. Below the button is the self-portrait from the previous image.
-
-XLSForm Rows
-""""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  image,selfie_image_widget,Selfie widget,selfie,image type with selfie appearance
-
-
-.. _draw-widget:
-
-Draw Widget
-~~~~~~~~~~~~~
-
-Provides the user a drawing pad and collects the drawn image.
-
-.. image:: /img/form-widgets/draw-widget.*
-  :alt: The Draw form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Draw widget." The hint text is "image type with draw appearance." Below that is a button labeled "Sketch Image." Above the question text is the form group name "Image widgets."
-
-.. image:: /img/form-widgets/draw-in-progress.*
-  :alt: A white "drawing pad" on an Android phone, horizontally oriented (landscape mode). A simple smiley face has been drawn. In the lower right corner of the drawing pad is a plus sign (+) in a circle.
-
-.. image:: /img/form-widgets/draw-options.*
-  :alt: The drawing pad as displayed in the previous image. A menu has expanded from the lower right corner with the options: Reset, Save and Close, and Set Color.
-
-.. image:: /img/form-widgets/draw-completed.*
-  :alt: The Draw widget as displayed previously. Below the "Sketch Image" button is the smiley face from the drawing pad image shown previously.
-
-XLSForm Rows
-"""""""""""""
-
-.. csv-table:: survey
-
-  :header: type, name, label, appearance, hint
-
-  image,draw_image_widget,Draw widget ,draw,image type with draw appearance
-
-.. _annotate-widget:
-
-Annotate Widget
-~~~~~~~~~~~~~~~~~~
-
-Allows the user to take or select an image and then draw on it.
-
-.. image:: /img/form-widgets/annotate-start.*
-  :alt: The Annotate form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Annotate widget." The hint text is, "image type with annotate appearance." There are three buttons: "Take Picture," "Choose Image," and "Markup Image." The Markup Image button is disabled. Above the question text is the form group name "Image widgets."
-
-.. image:: /img/form-widgets/annotate-1.*
-  :alt: The camera view on an Android phone. In the viewer is a picture of a small saucer. Below the viewer is a blue checkmark button.
-
-.. image:: /img/form-widgets/annotate-2.*
-  :alt: The Annotate form widget displayed previously. The Markup Image button is now enabled. Below the buttons is the picture of a saucer shown previously.
-
-.. image:: /img/form-widgets/annotate-3.*
-  :alt: The image of a saucer on a drawing pad, with a poorly-drawn cup of tea drawn over it. In the lower right corner is a plus sign (+) in a circle.
-
-.. image:: /img/form-widgets/annotate-4.*
-  :alt: The same picture shown in the previous image. The menu in the bottom right corner has expanded to show the options: Reset, Save and Close, and Set Color.
-
-.. image:: /img/form-widgets/annotate-5.*
-  :alt: The Annotate form widget shown previously. The drawn-on picture is below the buttons.
-
-XLSForm Rows
-"""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  image,annotate_image_widget,Annotate widget,annotate,image type with annotate appearance
-
-.. _signature-widget:
-
-Signature Widget
-"""""""""""""""""
-
-Collects a signature from the user.
-
-.. image:: /img/form-widgets/signature-start.*
-  :alt: The Signature form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Signature widget." The hint text is "image type with signature appearance." Below that is a button labeled "Gather Signature." Above the question text is the form group name "Image widgets."
-
-.. image:: /img/form-widgets/signature-in-progress.*
-  :alt: A drawing pad with a signature line, displayed on an Android phone. A signature is drawn across it. In the lower right corner is circular button marked with a plus sign (+).
-
-.. image:: /img/form-widgets/signature-completed.*
-  :alt: The signature widget displayed previously. Below the button is the signature drawn in the previous image.
-
-XLSForm Rows
-"""""""""""""
-
-.. csv-table:: table
-  :header: type, name, label, appearance, hint
-
-  image,signature_widget,Signature widget,signature,image type with signature appearance
-
-
-.. _media-widgets:
-
-Media Widgets
----------------
-
-The media widgets do not accept any appearance attributes. They are documented in :ref:`basic-form-widgets` above:
-
-- :ref:`barcode`
-- :ref:`audio`
-- :ref:`video`
-
-.. _date-and-time-widgets:
-
-Date and Time Widgets
-----------------------
-
-.. _default-date-widget:
-
-Default Date Widget
-~~~~~~~~~~~~~~~~~~~~~
-
-.. image:: /img/form-widgets/default-date-widget.*
-  :alt: The default Date form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Date widget." The hint text is "date type with no appearance." Below that is a button labeled "Select date." Below that is the text, "No date selected." Above the question text is the form group name "Date and time widgets."
-
-.. image:: /img/form-widgets/date-calendar-view.*
-  :alt: The date widget shown in the previous image, with a modal popup showing a monthly calendar. A date is selected. At the bottom of the modal are Cancel and OK buttons.
-
-.. image:: /img/form-widgets/date-completed.*
-  :alt: The date widget shown previously. Below the button is a date: Aug 11, 2017.
-
-XLSForm Rows
-"""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, hint
-
-  date,date_widget,Date widget,date type with no appearance
-
-.. _date-no-calendar:
-
-Date, No Calendar
-~~~~~~~~~~~~~~~~~~~
-
-The :tc:`no-calendar` appearance displays a "spinner" type date selection. This is especially appropriate for selecting dates more than in the past.
-
-.. image:: /img/form-widgets/date-no-calendar-start.*
-  :alt: The no-calendar Date form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Date Widget." The hint text is "date type with no-calendar appearance." Below that is a button labeled "Select date." Below the button is the text, "No date selected." Above the question text is the form group name "Date and time widgets."
-
-.. image:: /img/form-widgets/date-no-calendar-in-progress.*
-  :alt: The date widget shown previously, with a pop modal. The headline of the modal is "Select date." There are individual "spinner" style selectors for month, day, and year. At the bottom of the modal are OK and Cancel buttons.
-
-XSLForm Rows
-""""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  date,date_widget_nocalendar,Date Widget,no-calendar,date type with no-calendar appearance
-
-.. _date-type-month-year:
-
-Month and Year Widget
-~~~~~~~~~~~~~~~~~~~~~~
-
-Collects only a month and year.
-
-.. image:: /img/form-widgets/month-year-spinner.*
-  :alt: The date widget, with a modal popup labeled "Select date." There are individual "Spinner" type selectors for month and year, but not for date. At the bottom are Cancel and OK buttons.
-
-XLSForm Rows
-"""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  date,date_widget_month_year,Date widget,month-year,date type with month-year appearance
-
-
-.. _year-widget:
-
-Year Widget
-~~~~~~~~~~~~
-
-Collects only a year.
-
-.. image:: /img/form-widgets/year-spinner.*
-  :alt: The Year form widget, with a model popup labeled "Select date." There is a single "spinner" type selector for year. At the bottom are Cancel and OK buttons.
-
-XLSForm Rows
-"""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  date,date_widget_year,Date widget,year,date type with year appearance
-
-.. _time-widgets:
-
-Time Widgets
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The :tc:`time` widget does not accept an appearance attribute.
-
-See :ref:`basic-form-widgets` for details on:
-
-- :ref:`time`
-- :ref:`datetime`
-
-The :ref:`datetime` widget accepts a :tc:`no-calendar` appearance. This changes the date selector to the "spinner" style shown in :ref:`date-no-calendar`.
-
-.. _gps-widgets:
-
-GPS Widgets
-------------
-
-.. _default-geopoint:
-
-Default Geopoint
-~~~~~~~~~~~~~~~~~~
-
-The default :ref:`geopoint` widget collects the current GPS position (if available) from the device.
-
-.. image:: /img/form-widgets/default-geopoint.*
-  :alt: The default Geopoint form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Geopoint widget." The hint text is "geopoint type with no appearance." Below that is a button labeled "Start Geopoint." Below the button are completed fields for Latitude, Longitude, Altitude, and Accuracy.
-
-XLSForm Rows
-"""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, hint
-
-  geopoint,geopoint_widget,Geopoint widget,geopoint type with no appearance
-
-
-.. _placement-map-widget:
-
-Geopoint Placement Map Widget
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-A geopoint with the appearance attribute :tc:`placement-map` allows the user to select a geopoint from a map.
-
-.. image:: /img/form-widgets/geopoint-placement-map.*
-  :alt: A map app opens on an Android phone. Above the map is the message: "Long press to place mark or tap add marker button." Along the right side of the map are buttons: Add Marker, Zoom to point, Layers, Trash, Save.
-
-XLSForm Rows
-"""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  geopoint,geopoint_widget_placementmap,Geopoint widget,placement-map,geopoint type with placement-map appearance
-
-
-.. _geopoint-maps:
-
-Geopoint with Map
-~~~~~~~~~~~~~~~~~~~~~~
-
-The default :ref:`geopoint` widget does not display a map to the user. With the added :tc:`maps` appearance attribute, a map of the recorded location is shown to the user. The user cannot select a different location on the map. (See :ref:`placement-map-widget` for a geopoint with a user-selected location.)
-
-XLSForm Rows
-""""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  geopoint,geopoint_widget_maps,Geopoint widget,maps,geopoint type with maps appearance
-
-.. _default-geoshape-geotrace:
-
-Geoshape and Geotrace
-~~~~~~~~~~~~~~~~~~~~~~
-
-The :ref:`geopoint` and :ref:`geotrace` widgets do not accept any appearance attributes.
-
-.. _single-select-widgets:
-
-Single Select Widgets
+  geoshape, shape_example, Select an area
+  
+  
+  
+.. _single-select-widget:
+
+Single select widget
 ----------------------
 
 .. _default-select-one:
@@ -1033,8 +1068,7 @@ Default Single Select
 .. image:: /img/form-widgets/default-single-select.*
   :alt: The default Single Select form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Select one widget." The hint text is "select_one type with no appearance, 4 text choices." Below that is a set of radio button selectors labeled A, B, C, and D. Above the question text is form group name "Select one widgets."
 
-XLSForm Rows
-""""""""""""""
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, hint
@@ -1050,12 +1084,18 @@ XLSForm Rows
   opt_abcd,d,D
 
 
-.. _spinner-widget:
+.. _select-minimal:
 
-Spinner Widget
-~~~~~~~~~~~~~~~
+Select with modal menu
+"""""""""""""""""""""""""""""""""""
 
-Adding the :tc:`minimal` appearance attribute places the choices into a drop-down style menu.
+type
+  :tc:`select_one`
+appearance
+  :tc:`minimal`
+
+Adding the :tc:`minimal` appearance attribute
+places the choices into a modal overlay menu.
 
 .. image:: /img/form-widgets/select-one-minimal-start.*
   :alt: The Single Select form widget, with minimal appearance, as displayed in the ODK Collect app on an Android phone. The question text is "Spinner widget." The hint text is "select_one type with minimal appearance, 4 text choices." Below that is a drop-down style select menu with the prompt "Select One Answer." Above the question text is the form group name "Select one widgets."
@@ -1063,8 +1103,7 @@ Adding the :tc:`minimal` appearance attribute places the choices into a drop-dow
 .. image:: /img/form-widgets/select-one-minimal-expanded.*
   :alt: The Single Select form widget, wih minimal appearance, as displayed in the previously image. The select menu has expanded to show choices: A, B, C, D, and Remove Response.
 
-XLSForm Rows
-""""""""""""""
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
@@ -1079,20 +1118,32 @@ XLSForm Rows
   opt_abcd,c,C
   opt_abcd,d,D
 
+.. note::
 
-.. _autoadvance-widget:
+  In web rendered form views 
+  (such as Enketo form viewer)
+  a select widget with :tc:`minimal` appearance
+  will appear in a drop-down (select) menu.
+  
+.. _autoadvance:
 
-Autoadvance Widget
-~~~~~~~~~~~~~~~~~~~~~
+Select with autoadvance
+"""""""""""""""""""""""""""
 
-Advances immediately to the next question once a selection is made.
+type
+  :tc:`select_one`
+appearance
+  :tc:`autoadvance`
+
+When the :tc:`autoadvance` appearance is added,
+the form advances immediately to the next question
+once a selection is made.
 
 .. video:: /vid/form-widgets/auto-advance.mp4
 
   Video showing auto-advance after the questions are answered.
 
-XLSForm Rows
-"""""""""""""
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
@@ -1110,10 +1161,16 @@ XLSForm Rows
 
 .. _select-search-widget:
 
-Select with Search Widget
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Select widget with search feature
+""""""""""""""""""""""""""""""""""""""
 
-A set of radio buttons with a search and filter function.
+type
+  :tc:`select_one`
+appearance
+  :tc:`search`
+
+The :tc:`search` appearance adds a
+search and filter function.
 
 .. image:: /img/form-widgets/select-search-start.*
   :alt: The Select One form widget with search, as displayed in the ODK Collect app on an Android phone. The question text is, "Select one search widget." The hint text is, "select one type with search appearance, 4 text choices." Below that is a text input above four radio buttons labeled A, B, C, and D. Above the question text is the form group name, "Select one widgets." The phone's keyboard is active.
@@ -1121,8 +1178,7 @@ A set of radio buttons with a search and filter function.
 .. image:: /img/form-widgets/select-one-search-searching.*
   :alt: The Select One form widget as displayed previously. The text input contains a lowercase 'b'. There is a single radio button: B. The other three radio buttons are no longer displayed.
 
-XLSForm Rows
-"""""""""""""
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
@@ -1139,10 +1195,17 @@ XLSForm Rows
 
 .. _select-autocomplete:
 
-Select with Autocomplete Widget
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Select widget with autocomplete
+""""""""""""""""""""""""""""""""""""
 
-A set of radio buttons with a search and filter function. The search input has an autocomplete feature.
+type
+  :tc:`select_one`
+appearance
+  :tc:`autocomplete`
+
+The :tc:`autocomplete` appearance adds autocomplete
+to the search and filter feature.
+This is especially helpful for questions with a large number of choices.
 
 .. image:: /img/form-widgets/select-autocomplete.*
   :alt: The Select One form widget with autocomplete, as displayed in the ODK Collect app on an Android phone. The question text is "Select one search widget." The hint text is, "select one type with autocomplete appearance, 4 text choices." Below that is a text input followed by four radio buttons labeled A, B, C, and D. Above the question text is the form group name "Select one widgets." The device keyboard is active.
@@ -1150,8 +1213,7 @@ A set of radio buttons with a search and filter function. The search input has a
 .. image:: /img/form-widgets/select-autocomplete-filtered.*
   :alt: The Select One form widget as displayed previously. The text input contains a lowercase 'b'. There is a single radio button: B. The other three radio buttons are no longer displayed.
 
-XLSForm Rows
-"""""""""""""
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
@@ -1170,18 +1232,25 @@ XLSForm Rows
 
 .. _select-image-widget:
 
-Default Single Select with Images
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Select widget with image choices
+"""""""""""""""""""""""""""""""""""""
 
-A set of radio buttons with text labels and accompanying images.
+type
+  :tc:`select_one`
+appearance
+  *none*
+
+Select widgets support image choices.
+The images are referenced in the **choices** sheet,
+and the image files 
+need to be included in the :file:`media` folder.
 
 See :ref:`image-options` to learn more about including images in surveys.
 
 .. image:: /img/form-widgets/default-single-image-select.*
   :alt: The Single Select form widget with images, as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is, "select_one type with no appearance, 4 image choices (a.jpg, b.jpb, c.jpg, d.jpg)." Below that is a set of radio buttons labeled A, B, C, and D. Below each radio button is a small icon of an animal: A - whale, B - frog, C - alligator, D - eagle. Above the question text is the form group name "Select one widgets."
 
-XLSForm Rows
-""""""""""""""
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
@@ -1197,18 +1266,23 @@ XLSForm Rows
   abcd_icon,d,D,d.jpg
 
 
-.. _compact-single-image-select:
+.. _compact-image-select:
 
-Compact Single Select with Images
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Select widget with compact image options
+"""""""""""""""""""""""""""""""""""""""""""""
 
-Image options are placed on a single line.
+type
+  :tc:`select_one`
+appearance
+  :tc:`compact`
+  
+When the :tc:`compact` appearance is added,
+the answer choices display in a single line.
 
 .. image:: /img/form-widgets/single-select-compact.*
   :alt: The compact Single Select form widget with images, as displayed in the ODK Collect app on an Android phone. The question text is "Grid select one widget." The hint text is, "select_one with compact appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four small animal icons arranged on a single line. Above the question text is the form group name "Select one widgets."
 
-XLSForm Rows
-""""""""""""""
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
@@ -1226,16 +1300,24 @@ XLSForm Rows
 
 .. _compact-2:
 
-Compact Single Select with Images, width specified
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Select widget with width-specified images
+""""""""""""""""""""""""""""""""""""""""""""
 
-With the :tc:`compact-{x}` style, you can specify the number of images to display on each row. To display two images on each row, specify an :th:`appearance` of :tc:`compact-2`.
+type
+  :tc:`select_one`
+appearance
+  :tc:`cmopact-{x}`
+
+With the :tc:`compact-{x}` appearance, 
+you can specify the number of images to display on each row. 
+
+For example, to display two images on each row, 
+specify an :th:`appearance` of :tc:`compact-2`.
 
 .. image:: /img/form-widgets/single-image-select-compact-2.*
   :alt: The single select form widget with images and appearance of 'compact-2,' as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is "select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four animal icons arranged in a two-by-two grid. Above the question text is the form group name "Select one widgets."
 
-XLSForm Rows
-""""""""""""""
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
@@ -1252,17 +1334,23 @@ XLSForm Rows
 
 .. _quickcompact-widget:
 
-Compact Single Select with Images and Autoadvance
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Compact select with autoadvance
+"""""""""""""""""""""""""""""""""""
 
-The :tc:`quickcompact` appearance attribute combines the design of the :ref:`compact-single-image-select` widget with the :ref:`autoadvance-widget` functionality.
+type
+  :tc:`select_one`
+appearance
+  :tc:`quickcompact`
+
+The :tc:`quickcompact` appearance 
+combines the design of the :ref:`compact-single-image-select` style
+with the :ref:`autoadvance-widget` functionality.
 
 .. video:: /vid/form-widgets/quickcompact.mp4
 
   Video showing Compact single select widget and auto-advance after the question is answered.
 
-XLSForm Rows
-"""""""""""""
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
@@ -1280,17 +1368,26 @@ XLSForm Rows
 
 .. _quickcompact-2-widget:
 
-Compact Single Select with Images and Autoadvance, width specified
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Compact select with specified width and autoadvance
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-As with :ref:`compact <compact-2>`, you can specify a width when using :tc:`quickcompact`. To display two images on each row, set the :th:`appearance` attribute to :tc:`quickcompact-2`.
+type
+  :tc:`select_one`
+appearance
+  :tc:`quickcompact-{x}`
+
+
+As with :ref:`compact <compact-2>`,
+you can specify a width when using :tc:`quickcompact`. 
+
+For example, 
+to display two images on each row, set the :th:`appearance` attribute to :tc:`quickcompact-2`.
 
 .. video:: /vid/form-widgets/quickcompact2.mp4
 
   Video showing Compact-2 widget and auto-advance after the question is answered.
 
-XLSForm Rows
-""""""""""""""
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
@@ -1306,21 +1403,23 @@ XLSForm Rows
   abcd_icon,d,D,d.jpg
 
 
-.. _multiselect-widgets:
+.. _multiselect-widget:
 
-Multiselect Widgets
+Multiselect widget
 ---------------------
 
-.. _default-multi-select:
+type
+  :tc:`select_multiple`
+appearance
+  *none*
 
-Default Multiselect Widget
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Multiselect questions support multiple answers.
+  
 
 .. image:: /img/form-widgets/default-multiselect.*
-  :alt: The default Multiselect widget as displayed in the ODK Collect app on an Android phone. The question text is, "Multiselect widget." The hint text is, "select_one widget with no appearance, 4 text choices." Below that are four checkbox options labeled A, B, C, and D. Above the question text is the form group label, "This section contains 'Select Multi Widgets'"
+  :alt: The default Multiselect widget as displayed in the ODK Collect app on an Android phone. The question text is, "Multiselect widget." The hint text is, "select_multiple widget with no appearance, 4 text choices." Below that are four checkbox options labeled A, B, C, and D. Above the question text is the form group label, "This section contains 'Select Multi Widgets'"
 
-XLSForm Rows
-"""""""""""""
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, hint
@@ -1336,96 +1435,82 @@ XLSForm Rows
   abcd_icon,d,D,d.jpg
 
 
-.. _compact-multi-widget:
+.. note::
 
-Compact Multiselect with Images
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  The multiselect widget supports 
+  many of the same :th:`appearance` attributes 
+  as the :ref:`single-select-widget`:
+  
+  - :ref:`minimal appearance <select-minimal>`
+  - :ref:`compact appearance with images <compact-image-select>`
+  - :ref:`width-specified compact appearance with images <compact-2>`
 
-.. image:: /img/form-widgets/compact-multiselect.*
-  :alt: The compact multiselect form widget with image options, as displayed in the ODK Collect app on Android phone. The question text is "Grid select multiple widget." The hint text is select_multiple type with compact appearance, 4 image choices." Below that are four small animal icons in a single row. Above the question text is the section label "This section contains 'Select Multi Widgets.'"
+.. _trigger:
 
-.. image:: /img/form-widgets/compact-multiselect-selected.*
-  :alt: The compact multiselect as shown in the previous image. Two of the small animal icons are outlined with an orange border, indicating they have been selected.
+Trigger/acknowledge widget
+-----------------------------
 
-XLSForm Rows
-"""""""""""""
+type
+  :tc:`trigger`, :tc:`acknowledge`
+appearance
+  *none*
 
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
+The :ref:`trigger` widget, 
+also known as the :tc:`acknowledge` widget,
+presents a single checkbox.
 
-  select_multiple abcd_icon,grid_multi_widget_compact,Grid select multiple widget,compact,"select_multiple type with compact appearance, 4 image choices"
+In :doc:`<aggregate-intro`,
+a completed trigger response is stored as the string ``OK``.
 
-.. csv-table:: choices
-  :header: list_name, name, label, media::image
+The example shown here includes the :th:`required` attribute.
 
-  abcd_icon,a,A,a.jpg
-  abcd_icon,b,B,b.jpg
-  abcd_icon,c,C,c.jpg
-  abcd_icon,d,D,d.jpg
+.. image:: /img/form-widgets/trigger.*
+  :alt: The Trigger (or "Acknowledge") form widget as displayed in the ODK Collect App on an Android phone. The question text is, "Trigger widget." The hint text is, "Prompts for confirmation. Useful to combine with required or relevant. (type=trigger)" Below that is a single checkbox labeled, "OK. Please continue." The checkbox is unchecked.
 
+.. image:: /img/form-widgets/trigger-sorry.*
+  :alt: The Trigger widget shown previously. An error text reads, "Sorry, this response is required."
 
-.. _multi-image-compact-2:
+.. image:: /img/form-widgets/trigger-selected.*
+  :alt: The Trigger widget shown previously. The checkbox is now checked.
 
-Compact Multiselect with Image Choices, style 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. image:: /img/form-widgets/multi-image-compact-2.*
-  :alt: The multiselect form widget with images and appearance of 'compact-2,' as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select multiple widget." The hint text is "select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four animal icons arranged in a two-by-two grid. Above the question text is the form group label "This section contains 'Select multi Widgets.'"
-
-.. image:: /img/form-widgets/multi-image-compact-2-selected.*
-  :alt: The compact multiselect widget shown previously. Two of the animal icons are outlined with an orange border, indicating they have been selected.
-
-
-XLSForm Rows
-"""""""""""""
+.. rubric:: XLSForm
 
 .. csv-table:: survey
-  :header: type, name, label, appearance, hint
+  :header: type, name, label, hint, required
 
-  select_multiple abcd_icon,grid_multi_widget_compact2,Grid select multiple widget,compact-2,"select_multiple type with compact-2 appearance, 4 image choices"
+  trigger,my_trigger,Trigger widget,Prompts for confirmation. Useful to combine with required or relevant. (type=trigger),true()
 
-.. csv-table:: choices
-  :header: list_name, name, label, media::image
+.. _note-widget:
 
-  abcd_icon,a,A,a.jpg
-  abcd_icon,b,B,b.jpg
-  abcd_icon,c,C,c.jpg
-  abcd_icon,d,D,d.jpg
+Note widget
+-------------
 
-.. _spinner-widget-multi:
-
-Multiselect Spinner Widget
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Adding the :tc:`minimal` appearance attribute places the choices into a drop-down style menu.
-
-.. image:: /img/form-widgets/multiselect-minimal-start.*
-  :alt: The Multiselect form widget, with minimal appearance, as displayed in the ODK Collect app on an Android phone. The question text is "Spinner widget: select multiple." The hint text is "select_multiple type with minimal appearance, 4 text choices." Below that is a drop-down style select menu with the prompt "Select Answer." Above the question text is the form group name "This section contains 'Select Multi Widget.'"
-
-.. image:: /img/form-widgets/multiselect-minimal-expanded.*
-  :alt: The multiselect form widget, wih minimal appearance, as displayed in the previous image. The select menu has expanded to show choices: A, B, C, D. In the lower right corner is a button labeled OK.
-
-XLSForm Rows
-""""""""""""""
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  select_multiple opt_abcd,spinner_multi_widget,Spinner widget: select multiple,minimal,"select_multiple type with minimal appearance, 4 image choices"
-
-.. csv-table:: choices
-  :header: list_name, name, label
-
-  opt_abcd,a,A
-  opt_abcd,b,B
-  opt_abcd,c,C
-  opt_abcd,d,D
+type
+  :tc:`note`
+appearance
+  *none*
 
 
+A note to the user, accepting no input. This example includes :term:`hint` text.
+
+.. figure:: /img/form-widgets/note.*
+  :alt: The Note form widget as displayed in the ODK Collect App on an Android phone. The headline text is, "This is an example note." The hint text is, "The text displays, but there is no input."
+
+.. rubric:: XSLForm
+
+.. csv-table::
+  :header: type, name, label, hint
+
+  note, note_1, This is an example note., "The text displays, but there is no input."
+
+  
+  
+--------
+  
 .. _field-list:
 
-Field List
--------------
+Grouping multiple questions on the same screen
+------------------------------------------------
 
 The :tc:`field-list` appearance attribute, applied to a group of questions, displays them all on a single screen.
 
@@ -1435,8 +1520,7 @@ The :tc:`field-list` appearance attribute, applied to a group of questions, disp
 .. image:: /img/form-widgets/field-list-2.*
   :alt: The continuation of the previous image.
 
-XLSForm Rows
-~~~~~~~~~~~~~~
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
@@ -1458,34 +1542,24 @@ XLSForm Rows
   yes_no,dk,Don't Know
   yes_no,na,Not Applicable
 
-.. _trigger:
-
-Trigger Widget
----------------
-
-"Trigger" is another name for the :ref:`acknowledge` widget. The example shown here includes the :th:`required` attribute.
-
-.. image:: /img/form-widgets/trigger.*
-  :alt: The Trigger (or "Acknowledge") form widget as displayed in the ODK Collect App on an Android phone. The question text is, "Trigger widget." The hint text is, "Prompts for confirmation. Useful to combine with required or relevant. (type=trigger)" Below that is a single checkbox labeled, "OK. Please continue." The checkbox is unchecked.
-
-.. image:: /img/form-widgets/trigger-sorry.*
-  :alt: The Trigger widget shown previously. An error text reads, "Sorry, this response is required."
-
-.. image:: /img/form-widgets/trigger-selected.*
-  :alt: The Trigger widget shown previously. The checkbox is now checked.
-
-XLSForm Rows
-~~~~~~~~~~~~~~
-
-.. csv-table:: survey
-  :header: type, name, label, hint, required
-
-  trigger,my_trigger,Trigger widget,Prompts for confirmation. Useful to combine with required or relevant. (type=trigger),true()
-
 
 .. _image-options:
 
 Including Images as Choices
 =============================
 
-To include images as choices for select questions, specify the file name in the **choices** worksheet, in a column labeled :th:`media::image`. The media files must be uploaded to the Android device in the :file:`/sdcard/odk/forms/` directory, in a folder labeled :file:`{form-name}-media`. When uploading a form to ODK Aggregate, a second upload prompt will allow you to upload your files directory.
+To include images as choices for select questions:
+
+#. Specify the file name in the **choices** worksheet,
+   in a column labeled :th:`media::image`. 
+#. Add the images to a folder named
+   :file:`{form-name}-media.
+#. Upload the media folder with your form.
+
+   - If you are hosting your form in :doc:`aggregate-intro`,
+     you will have the option to upload the media file with your form,
+     and it will be automatically downloaded to your device
+     when you pull down the blank form.
+   - If you are adding the form to your device directly,
+     make sure the media folder is placed in
+     :file:`/sdcard/odk/forms/`.
