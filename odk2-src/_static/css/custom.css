@@ -6,6 +6,15 @@
     font-family: Georgia, "Times New Roman", serif;
 } 
 
+/* styling for the side bar (search and menu) */
+.wy-side-nav-search {
+    background-color: #339933 !important;
+}
+
+.wy-side-scroll {
+    background-color: #1a1a1a;
+}
+
 /* Styling for rst roles and directives starts */
 
 /* code-sample styling PR #90 */ 
