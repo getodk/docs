@@ -69,7 +69,6 @@ jobs:
           root: ~/work
           paths:
             - odk1-build/*
-            - s3_website.yml
   build-odk2:
     working_directory: ~/work
     docker:
@@ -118,7 +117,6 @@ jobs:
           root: ~/work
           paths:
             - odk2-build/*
-            - s3_website.yml
   build-pdf-odk2:
     working_directory: ~/work
     docker:
@@ -140,7 +138,6 @@ jobs:
           root: ~/work
           paths:
             - odk2-build/*
-            - s3_website.yml
   deploy:
     working_directory: ~/work
     docker:
