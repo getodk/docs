@@ -17,6 +17,32 @@
 Question Types
 =================
 
+:doc:`collect-intro` supports forms with a wide variety of question types.
+The exact functionality and display style of each question
+are specified in your `XLSForm`_ definition using the 
+:th:`type` and :th:`appearance` columns.
+
+.. admonition:: Helpful terminology
+
+  .. glossary::
+
+    question
+
+      A prompt to the user, usually requesting a response.
+      Questions are written as a single line in an XLSForm,
+      and usually appear on a single screen in Collect.
+
+    widget
+
+      A rendered question screen in Collect.
+      The :th:`type` and :th:`appearance` of a question
+      determine the widget that is displayed.
+
+.. _XLSForm: http://xlsform.org
+
+.. contents:: :depth: 1
+  :local:
+  
 .. _text-widget:
 
 Text Widgets
@@ -24,6 +50,9 @@ Text Widgets
 
 All of the text widgets share the :tc:`text` type,
 and the inputs from them are saved as literal strings.
+
+.. contents::
+ :local:
 
 .. _text-default:
 
@@ -35,7 +64,9 @@ type
 appearance
   *none*
   
-A simple text input.
+A simple text input. 
+
+The text entry field expands as the user types, and line breaks can be included. The keyboard displayed depends on the Android device and user settings.
 
 .. image:: /img/form-widgets/string-input.*
   :alt: Text form widget, displayed in ODK Collect on an Android phone. The label is "What is your name?"
@@ -61,6 +92,10 @@ appearance
 
 A numerical input that treats the input as a string, rather than a number.
 
+The number input accepts numerals (``0123456789``), hyphens (``-``), and decimal points (``.``). These are the only characters available on the number keypad displayed with this widget.
+
+This is useful for phone numbers, ID numbers, IP addresses, and similar data. 
+
 .. image:: /img/form-widgets/string-number.*
   :alt: The text widget, with numerical entry, as displayed in the ODK Collect app on an Android phone. The question text is "String number widget." The hint text is, "text type with numbers appearance." Below that is a simple input. Above the question text is the form group name "Text Widget." The Android onscreen keyboard displays a number pad.
 
@@ -75,10 +110,41 @@ A numerical input that treats the input as a string, rather than a number.
 
   This appearance can be combined with the the :ref:`thousands-sep <thousands-sep>` appearance.
   
+
+.. _external-app-widget:
+
+External app widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`text`
+appearance
+  :tc:`ex.*`
+
+Launches an external app and receives a string input back from the external app. If the specified external app is not available, a manual input is prompted.
+
+The external app widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
+
+.. seealso:: :doc:`launch-apps-from-collect`
+
+.. image:: /img/form-widgets/external-app-widget-start.*
+  :alt: The External App form widget, as displayed in the ODK Collect App on an Android phone. The question text is "Ex string widget." The hinst text is, "text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form group name "Text widgets."
+
+.. image:: /img/form-widgets/external-app-widget-fallback.*
+  :alt: The External App widget as displayed earlier. The Launch button has now been disabled. Below it is a simple input. A help message displays the text, "The requested application is missing. Please manually enter the reading."
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  text,ex_string_widget,Ex string widget,ex:change.uw.android.BREATHCOUNT,text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
+
+
 .. _url-widget:
 
 URL widget
-~~~~~~~~~~~~~~~
+--------------
 
 type
   :tc:`text`
@@ -99,52 +165,21 @@ The URL to open is specified with :th:`default`.
   :header: type, name, label, appearance, hint, default
 
   text,url_widget,URL widget,url,text type with url appearance and default value of http://opendatakit.org/,http://opendatakit.org/
+  
+  
+.. _print-widget:
 
-
-.. _external-app-widget:
-
-External app widget
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Printer widget
+------------------
 
 type
   :tc:`text`
 appearance
-  :tc:`ex.*`
-
-Launches an external app and receives a string input back from the external app. If the specified external app is not available, a manual input is prompted.
-
-The external app widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
-
-.. image:: /img/form-widgets/external-app-widget-start.*
-  :alt: The External App form widget, as displayed in the ODK Collect App on an Android phone. The question text is "Ex string widget." The hinst text is, "text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form group name "Text widgets."
-
-.. image:: /img/form-widgets/external-app-widget-fallback.*
-  :alt: The External App widget as displayed earlier. The Launch button has now been disabled. Below it is a simple input. A help message displays the text, "The requested application is missing. Please manually enter the reading."
-
-.. rubric:: XLSForm
-
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  text,ex_string_widget,Ex string widget,ex:change.uw.android.BREATHCOUNT,text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
-
-.. seealso:: :doc:`launch-apps-from-collect`
-  
-  
-.. _external-printer-widget:
-
-External printer widget
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-type
-  :tc:`text`
-appearance
-  :tc:`printer:*`
+  :tc:`printer:org.opendatakit.sensors.ZebraPrinter`
 
 Connects to an external label printer, and prints labels that can contain a barcode, a QR code, or text.
 
-.. pull printing widget detail into its own doc in this repo
+See :doc:`printer-widget` for complete details.
 
 .. image:: /img/form-widgets/printer-widget.*
   :alt: The external printer widget, as displayed in the ODK Collect app on an Android phone. The question text is "Ex printer widget." The hint text is "text type with printer:org.opendatakit.sensors.ZebraPrinter." Below that is a button labeled, "Initiate Printing." Above the question text is the form group name "Text widgets."
@@ -152,11 +187,9 @@ Connects to an external label printer, and prints labels that can contain a barc
 .. rubric:: XLSForm
 
 .. csv-table:: survey
-  :header: type, name, label, appearance, hint
+  :header: type, name, label, appearance, calculation
 
-   text,ex_printer_widget,Ex printer widget,printer:org.opendatakit.sensors.ZebraPrinter,text type with printer:org.opendatakit.sensors.ZebraPrinter
-
-.. seealso:: `printing widget <https://opendatakit.org/help/form-design/examples/#printing_widgets>`_
+   text,ex_printer_widget,Ex printer widget,printer:org.opendatakit.sensors.ZebraPrinter, "concat('123456789','<br>’,'QRCODE','<br>','Text')"
 
 
 .. _numerical-widgets:
@@ -170,10 +203,13 @@ either :ref:`integers <default-integer-widget>` or
 
 Numerical values can also be captured by the :ref:`range-widgets`.
 
+.. contents::
+  :local:
+
 .. _default-integer-widget:
 
-Default integer widget
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Integer widget
+~~~~~~~~~~~~~~~~~~~~~~~
 
 type
   :tc:`integer`
@@ -182,6 +218,12 @@ appearance
 
   
 A whole number entry input. Integer widgets will not accept decimal points.
+
+
+The integer widget supports:
+
+- :ref:`Thousands separators <thousands-sep>`
+- :ref:`External apps <external-number-widget>`
 
 .. image:: /img/form-widgets/integer.*
   :alt: An integer form widget displayed in ODK Collect on an Android phone. The question is "What is your age in years?" A numerical keyboard is displayed.
@@ -193,17 +235,60 @@ A whole number entry input. Integer widgets will not accept decimal points.
 
   integer, age, What is your age in years?
 
+.. _default-decimal-widget:
 
+Decimal widget
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`decimal`
+appearance
+  *none*
+  
+A numerical entry input that will accept decimal points.
+
+The decimal widget supports:
+
+- :ref:`Thousands separators <thousands-sep>`
+- :ref:`External apps <external-number-widget>`
+
+
+.. image:: /img/form-widgets/decimal.*
+  :alt: An integer form widget displayed in ODK Collect on an Android phone. The question is "Weight in kilograms." A numerical keyboard is displayed.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label
+
+  decimal, weight, Weight in kilograms.
+
+.. _numeric-appearance-attributes:
+  
+Numeric appearance attributes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
 .. _thousands-sep:
   
 Number widgets with :tc:`thousands-sep` appearance
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+type
+  :tc:`integer`, :tc:`decimal`, (:tc:`text`)
+appearance
+  :tc:`thousands-sep`, (:tc:`numbers`)
+  
 
 If :tc:`thousands-sep` is added to :th:`appearance`,
 :ref:`integer <default-integer-widget>`, 
 :ref:`decimal <default-decimal-widget>`, 
 and :ref:`number string <number-string-widget>` widgets
 will display their values using locale-specific thousands separators.
+
+.. note::
+  
+  For locales that use the point separator (``.``),
+  a space is used instead.
 
 .. figure:: /img/form-widgets/integer-thousands-sep-widget.* 
   :alt: An integer widget as displayed in the Collect app. The question text is "Integer widget with thousands separators". The answer value is "1,000,000". The number keyboard is active.
@@ -218,8 +303,8 @@ will display their values using locale-specific thousands separators.
   
 .. _external-number-widget:
 
-Number widgets with *external app* appearance
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*External app* appearance
+"""""""""""""""""""""""""""""""""""""""""""""""""
 
 type
   :tc:`integer`, :tc:`decimal`
@@ -248,36 +333,7 @@ a manual input is prompted.
 
 .. seealso:: :doc:`launch-apps-from-collect`
 
-.. _default-decimal-widget:
-
-Default decimal widget
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-type
-  :tc:`decimal`
-appearance
-  *none*
   
-A numerical entry input that will accept decimal points.
-
-.. image:: /img/form-widgets/decimal.*
-  :alt: An integer form widget displayed in ODK Collect on an Android phone. The question is "Weight in kilograms." A numerical keyboard is displayed.
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label
-
-  decimal, weight, Weight in kilograms.
-
-.. note::
-  
-  The decimal widget supports:
-  
-  - :ref:`Thousands separators <thousands-sep>`
-  - :ref:`External apps <external-number-widget>`
-  
-
 .. _bearing-widget:
 
 Bearing widget
@@ -313,6 +369,9 @@ Range widgets
 ----------------
 
 Range widgets allow the user to select numbers from within a range that is visually represented as a number line. The parameters of the range widget are defined by :tc:`start`, :tc:`end`, and :tc:`step` values defined in the :th:`parameters` column of your XLSForm. The parameter values can be integers or decimals.
+  
+.. contents:: 
+  :local:
   
 .. _range-widget-integers:
 
@@ -384,10 +443,41 @@ Both integers and decimals are supported.
 
   range, range_integer_widget_vertical, Range vertical integer widget, vertical, range integer widget with vertical appearance, start=1;end=10;step=1
 
+.. _range-picker-widget:
+
+Range widget with picker
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`range`
+type
+  :tc:`picker`
+  
+When the :tc:`picker` appearance is added,
+the range widget is displayed 
+with a "spinner" style select menu in a modal pop up.
+
+.. image:: /img/form-widgets/range-widget-picker-0.* 
+  :alt: The range picker widget, as displayed in the ODK Collect app. The question label is "Range picker integer widget". There is a button labeled "Select Value".
+  
+.. image:: /img/form-widgets/range-widget-picker-1.* 
+  :alt: The range widget as shown in the previous image. Over it is a modal window labelled "Number Picker", with a spinner-style number select. Below are buttons for OK and CANCEL.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint, parameters
+
+  range, range_integer_widget_picker, Range verticalpicker integer widget, picker, range integer widget with picker appearance, start=1;end=10;step=1
+
+  
 .. _image-widgets:
 
 Image Widgets
 ---------------
+
+.. contents::
+ :local:
 
 .. _default-image-widget:
 
@@ -563,9 +653,6 @@ Collects a signature from the user.
 
   image,signature_widget,Signature widget,signature,image type with signature appearance
 
-.. image with web appearance
-.. image with align:111 appearance
-
 
 .. _barcode:
 
@@ -622,7 +709,7 @@ The flash can be used as a light source when scanning barcodes in a poorly-lit e
 .. _audio:
 
 Audio widget
-~~~~~~~~~~~~~~~~~~~
+----------------
 
 Records audio from an external app.
 
@@ -644,8 +731,6 @@ Records audio from an external app.
 
 .. image:: /img/form-widgets/audio-start.*
   :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "Please record your name." There are three buttons: Record Sound, Choose Sound and Play Sound. The "Play Sound" button is disabled.
-
-.. What app is required for audio recording?
 
 .. rubric:: XLSForm Rows
 
@@ -683,6 +768,9 @@ Records video, using the device camera.
 
 Date and Time Widgets
 ----------------------
+
+.. contents::
+  :local:
 
 .. _default-date-widget:
 
@@ -826,7 +914,7 @@ appearance
 .. image:: /img/form-widgets/islamic-calendar-widget.* 
   :alt:
    
-.. _time-widgets:
+.. _time-widget:
 
 Time widget
 ~~~~~~~~~~~~~~~~~
@@ -836,7 +924,7 @@ type
 appearance
   *none*
 
-A time selector. Captures only a specific time-of-day, not a date and time. For date and time, see :ref:`datetime`.
+A time selector. Captures only a specific time-of-day, not a date and time. For date and time, see the :ref:`datetime-widget`.
 
 The time widget does not accept any :th:`appearance` attributes.
 
@@ -889,12 +977,15 @@ For date only, see :ref:`default-date-widget`. For time only, see :ref:`time-wid
 
 .. note::
 
-  The :ref:`datetime` widget supports the :ref:`no-calendar <date-no-calendar>` spinner-style appearance.
+  The :ref:`datetime-widget` supports the :ref:`no-calendar <date-no-calendar>` spinner-style appearance.
 
 .. _gps-widgets:
 
 GPS Widgets
 ------------
+
+.. contents::
+  :local:
 
 .. _geopoint-widget:
 
@@ -932,7 +1023,7 @@ type
 appearance
   :tc:`maps`
 
-The default :ref:`geopoint` widget does not display a map to the user. With the :tc:`maps` appearance attribute, a map of the recorded location is shown to the user.
+The default :ref:`geopoint-widget` does not display a map to the user. With the :tc:`maps` appearance attribute, a map of the recorded location is shown to the user.
 
 The user cannot select a different location on the map. 
 For a geopoint with a user-selected location,
@@ -1055,15 +1146,28 @@ Captures a user-entered series of GPS coordinates, forming a polygon.
   
   
   
+.. _select-widgets:
+  
+Select widgets
+-----------------
+
+Select widgets offer the :term:`participant` options to pick from.
+You can offer the participant 
+a :ref:`single choice <single-select-widget>`,
+or the ability to :ref:`choose multiple answers <multiselect-widget>`.
+
+Select widgets can :ref:`include images as choices <select-image-widget>`.
+
+.. contents:: 
+  :local:
+ 
 .. _single-select-widget:
 
 Single select widget
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _default-select-one:
-
-Default Single Select
-~~~~~~~~~~~~~~~~~~~~~~
+type
+  :tc:`select_one`
 
 .. image:: /img/form-widgets/default-single-select.*
   :alt: The default Single Select form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Select one widget." The hint text is "select_one type with no appearance, 4 text choices." Below that is a set of radio button selectors labeled A, B, C, and D. Above the question text is form group name "Select one widgets."
@@ -1343,8 +1447,8 @@ appearance
   :tc:`quickcompact`
 
 The :tc:`quickcompact` appearance 
-combines the design of the :ref:`compact-single-image-select` style
-with the :ref:`autoadvance-widget` functionality.
+adds :ref:`autoadvance <autoadvance>` functionality
+to the design of the :ref:`compact-image-select`.
 
 .. video:: /vid/form-widgets/quickcompact.mp4
 
@@ -1406,7 +1510,7 @@ to display two images on each row, set the :th:`appearance` attribute to :tc:`qu
 .. _multiselect-widget:
 
 Multiselect widget
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 type
   :tc:`select_multiple`
@@ -1414,7 +1518,16 @@ appearance
   *none*
 
 Multiselect questions support multiple answers.
+
+.. note::
+
+  The multiselect widget supports 
+  many of the same :th:`appearance` attributes 
+  as the :ref:`single-select-widget`:
   
+  - :ref:`minimal appearance <select-minimal>`
+  - :ref:`compact appearance with images <compact-image-select>`
+  - :ref:`width-specified compact appearance with images <compact-2>`
 
 .. image:: /img/form-widgets/default-multiselect.*
   :alt: The default Multiselect widget as displayed in the ODK Collect app on an Android phone. The question text is, "Multiselect widget." The hint text is, "select_multiple widget with no appearance, 4 text choices." Below that are four checkbox options labeled A, B, C, and D. Above the question text is the form group label, "This section contains 'Select Multi Widgets'"
@@ -1434,16 +1547,28 @@ Multiselect questions support multiple answers.
   abcd_icon,c,C,c.jpg
   abcd_icon,d,D,d.jpg
 
-
-.. note::
-
-  The multiselect widget supports 
-  many of the same :th:`appearance` attributes 
-  as the :ref:`single-select-widget`:
   
-  - :ref:`minimal appearance <select-minimal>`
-  - :ref:`compact appearance with images <compact-image-select>`
-  - :ref:`width-specified compact appearance with images <compact-2>`
+
+.. _image-options:
+
+Including Images as Choices
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To include images as choices for select questions:
+
+#. Specify the file name in the **choices** worksheet,
+   in a column labeled :th:`media::image`. 
+#. Add the images to a folder named
+   :file:`{form-name}-media`.
+#. Upload the media folder with your form.
+
+   - If you are hosting your form in :doc:`aggregate-intro`,
+     you will have the option to upload the media file with your form,
+     and it will be automatically downloaded to your device
+     when you pull down the blank form.
+   - If you are adding the form to your device directly,
+     make sure the media folder is placed in
+     :file:`/sdcard/odk/forms/`.
 
 .. _trigger:
 
@@ -1459,7 +1584,7 @@ The :ref:`trigger` widget,
 also known as the :tc:`acknowledge` widget,
 presents a single checkbox.
 
-In :doc:`<aggregate-intro`,
+In :doc:`aggregate-intro`,
 a completed trigger response is stored as the string ``OK``.
 
 The example shown here includes the :th:`required` attribute.
@@ -1541,25 +1666,3 @@ The :tc:`field-list` appearance attribute, applied to a group of questions, disp
   yes_no,no,No
   yes_no,dk,Don't Know
   yes_no,na,Not Applicable
-
-
-.. _image-options:
-
-Including Images as Choices
-=============================
-
-To include images as choices for select questions:
-
-#. Specify the file name in the **choices** worksheet,
-   in a column labeled :th:`media::image`. 
-#. Add the images to a folder named
-   :file:`{form-name}-media.
-#. Upload the media folder with your form.
-
-   - If you are hosting your form in :doc:`aggregate-intro`,
-     you will have the option to upload the media file with your form,
-     and it will be automatically downloaded to your device
-     when you pull down the blank form.
-   - If you are adding the form to your device directly,
-     make sure the media folder is placed in
-     :file:`/sdcard/odk/forms/`.

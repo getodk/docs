@@ -8,7 +8,7 @@
 Using Offline Maps
 ====================
 
-Collect's :ref:`geoshape`, :ref:`geotrace` and :ref:`geopoint` question types can be configured to display different maps. To use online maps, :ref:`set the mapping engine and basemap <mapping-settings>` in :ref:`interface-settings`. Users will need to be online to load questions with maps.
+Collect's :ref:`gps-widgets` can be configured to display different maps. To use online maps, :ref:`set the mapping engine and basemap <mapping-settings>` in :ref:`interface-settings`. Users will need to be online to load questions with maps.
 
 Offline maps are useful for low-connectivity environments or to present custom geospatial data. Use them to display high-resolution imagery, annotated maps, heatmaps, and more. ODK Collect can display any map layer saved as a set of tiles in the `MBTiles format <https://github.com/mapbox/mbtiles-spec)>`_. Tiles are images that represent a subset of a map. The only limitation is that tile data in Mapbox's pbf format are not supported.
 
@@ -19,7 +19,7 @@ Offline maps quick start
 #. From :ref:`Collect's settings <mapping-settings>`, change the Mapping SDK to Google Maps SDK
 #. :ref:`Get or create your MBTiles file <getting-map-tiles>` with `TileMill <https://tilemill-project.github.io/tilemill/>`_ or other software.
 #. :ref:`Transfer tiles to devices <transferring-offline-tiles>`. The MBTiles file must be placed in a sub-folder on your device in the :file:`/sdcard/odk/layers` folder.
-#. Open a question that displays a map (types :ref:`geoshape`, :ref:`geotrace`, :ref:`geopoint` with certain appearances)
+#. Open a :ref:`question that displays a map <gps-widgets>`.
 #. Tap the layers icon and select your map
 
 .. _getting-map-tiles:

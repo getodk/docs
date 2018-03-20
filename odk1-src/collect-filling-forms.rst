@@ -161,7 +161,7 @@ The arrow icon (|arrow|) in the top right corner opens the jump menu. From the j
 Autoadvance Questions
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Some questions will :ref:`auto-advance <autoadvance-widget>` after being answered.
+Some questions will :ref:`automatically advance to the next question <autoadvance>` after being answered.
 
 .. video:: /vid/form-widgets/auto-advance.mp4
 
