@@ -1702,7 +1702,26 @@ A note to the user, accepting no input. This example includes :term:`hint` text.
 Grouping multiple questions on the same screen
 ------------------------------------------------
 
+type
+  :tc:`begin_group`
+appearance
+  :tc:`field-list`
+
 The :tc:`field-list` appearance attribute, applied to a group of questions, displays them all on a single screen.
+
+Select widgets included in a :tc:`field-list` group can have one of several :th:`appearance` attributes:
+
+:tc:`label`
+  Only the option labels are displayed, without checkboxes.
+:tc:`list`
+  The labels are displayes along with
+  checkboxes for multi-select questions
+  and
+  radio buttons for single-select questions.
+:tc:`list-nolabel`
+  Only checkboxes or radio buttons are displayed,
+  without their labels.
+  This is often used for sets of questions with repeated answer choices.
 
 .. image:: /img/form-widgets/field-list-1.*
   :alt: A field-list group of questions, as displayed in the ODK Collect app on an Android phone. Six questions are displayed. Below each, the answer choices are arranged in a row.
