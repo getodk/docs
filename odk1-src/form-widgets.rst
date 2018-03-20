@@ -1506,69 +1506,6 @@ to display two images on each row, set the :th:`appearance` attribute to :tc:`qu
   abcd_icon,c,C,c.jpg
   abcd_icon,d,D,d.jpg
 
-.. _image-map-select:
-  
-Image map select widget
-"""""""""""""""""""""""""
-
-.. versionadded:: 1.13
-
-type
-  :tc:`select_one {list_name}`, :tc:`select_multiple {list-name}` 
-appearance
-  :tc:`image-map`
-  
-The image map widget displays an SVG image with selectable regions.
-
-To make an image with selectable regions:
-
-#. Create or edit an :file:`.svg` source file. Include ``id`` attributes on any elements you want to be selectable.
-#. In the **choices** tab of your XLSForm, put the value of the ``id`` attributes in the :th:`name` column. Add an appropriate human-friendly :th:`label` to each choice.
-#. In the **survey** tab of your XLSForm, put the :file:`.svg` file name in the :th:`image` column.
-#. Include the :file:`.svg` file :ref:`in your form's media folder <loading-form-media>`.
-
-.. image:: /img/form-widgets/image-map-choose-shape-0.* 
-  :alt:
-  
-.. image:: /img/form-widgets/image-map-choose-shape-1.* 
-  :alt:
-  
-.. image:: /img/form-widgets/image-map-choose-shapes-0.* 
-  :alt:
-  
-.. image:: /img/form-widgets/image-map-choose-shapes-1.* 
-  :alt:
-
-.. rubric:: SVG
-
-.. code-block:: xml
-
-  <svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-    <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
-    <title>shapes</title>
-    <g>
-      <title>Layer 1</title>
-      <path id="path" fill="#000080" stroke="#000000" stroke-width="5" d="m125,382c33,56 -193,97 48,55c241,-42 279,-15 241,-62c-38,-47 -13,-42 -106,-40c-93,2 -183,47 -183,47z"/>
-      <rect id="rect" fill="#FF0000" stroke="#000000" stroke-width="5" x="52" y="53" width="176" height="149"/>
-      <ellipse id="ellipse" fill="#41A317" stroke="#000000" stroke-width="5" cx="423" cy="143" rx="107" ry="78"/>
-    </g>
-  </svg>
-  
-.. rubric:: XLSForm
-
-.. csvtable:: survey
-  :header: type, name, label, appearance, image
-
-  select_one shapes, choose-shape, Choose a shape, image-map, shapes.svg
-  select_multiple shapes, choose-shapes, Choose multiple shapes, image-map, shapes.svg
-  
-.. csv-table:: choices
-  :header: list_name, name, label
-  
-  shapes, path, blob
-  shapes, rect, rectangle
-  shapes, ellipse, ellipse
-  
   
 .. _multiselect-widget:
 
@@ -1633,6 +1570,71 @@ To include images as choices for select questions:
      make sure the media folder is placed in
      :file:`/sdcard/odk/forms/`.
 
+     
+.. _image-map-select:
+  
+Image map select widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 1.13
+
+type
+  :tc:`select_one {list_name}`, :tc:`select_multiple {list-name}` 
+appearance
+  :tc:`image-map`
+  
+The image map widget displays an SVG image with selectable regions.
+
+To make an image with selectable regions:
+
+#. Create or edit an :file:`.svg` source file. Include ``id`` attributes on any elements you want to be selectable.
+#. In the **choices** tab of your XLSForm, put the value of the ``id`` attributes in the :th:`name` column. Add an appropriate human-friendly :th:`label` to each choice.
+#. In the **survey** tab of your XLSForm, put the :file:`.svg` file name in the :th:`image` column.
+#. Include the :file:`.svg` file :ref:`in your form's media folder <loading-form-media>`.
+
+.. image:: /img/form-widgets/image-map-choose-shape-0.* 
+  :alt:
+  
+.. image:: /img/form-widgets/image-map-choose-shape-1.* 
+  :alt:
+  
+.. image:: /img/form-widgets/image-map-choose-shapes-0.* 
+  :alt:
+  
+.. image:: /img/form-widgets/image-map-choose-shapes-1.* 
+  :alt:
+
+.. rubric:: SVG
+
+.. code-block:: xml
+
+  <svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+    <title>shapes</title>
+    <g>
+      <title>Layer 1</title>
+      <path id="path" fill="#000080" stroke="#000000" stroke-width="5" d="m125,382c33,56 -193,97 48,55c241,-42 279,-15 241,-62c-38,-47 -13,-42 -106,-40c-93,2 -183,47 -183,47z"/>
+      <rect id="rect" fill="#FF0000" stroke="#000000" stroke-width="5" x="52" y="53" width="176" height="149"/>
+      <ellipse id="ellipse" fill="#41A317" stroke="#000000" stroke-width="5" cx="423" cy="143" rx="107" ry="78"/>
+    </g>
+  </svg>
+  
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, image
+
+  select_one shapes, choose-shape, Choose a shape, image-map, shapes.svg
+  select_multiple shapes, choose-shapes, Choose multiple shapes, image-map, shapes.svg
+  
+.. csv-table:: choices
+  :header: list_name, name, label
+  
+  shapes, path, blob
+  shapes, rect, rectangle
+  shapes, ellipse, ellipse
+  
+
+     
 .. _trigger:
 
 Trigger/acknowledge widget
