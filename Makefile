@@ -27,14 +27,22 @@ odk2_clean:
 	rm -rf $(COMPILE2_SRCDIR)
 	rm -rf $(ODK2_BUILDDIR)
 
+odk1_clean_files:
+	rm -rf $(COMPILE1_SRCDIR)
+	rm -rf $(ODK1_BUILDDIR)/*
+
+odk2_clean_files:
+	rm -rf $(COMPILE2_SRCDIR)
+	rm -rf $(ODK2_BUILDDIR)/*
+
 clean: odk1_clean odk2_clean
 
-odk1_copy: odk1_clean
+odk1_copy: odk1_clean_files
 	mkdir $(COMPILE1_SRCDIR)
 	cp -rf $(ODK1_SRCDIR)/* $(COMPILE1_SRCDIR)
 	cp -rf $(SHARED_SRCDIR)/* $(COMPILE1_SRCDIR)
 
-odk2_copy: odk2_clean
+odk2_copy: odk2_clean_files
 	mkdir $(COMPILE2_SRCDIR)
 	cp -rf $(ODK2_SRCDIR)/* $(COMPILE2_SRCDIR)
 	cp -rf $(SHARED_SRCDIR)/* $(COMPILE2_SRCDIR)
