@@ -48,8 +48,7 @@ jobs:
           root: ~/work
           paths:
             - odk1-build/*
-            - odk1-config/*
-
+            - s3_website.yml
   build-pdf-odk1:
     working_directory: ~/work
     docker:
@@ -70,7 +69,7 @@ jobs:
           root: ~/work
           paths:
             - odk1-build/*
-
+            - s3_website.yml
   build-odk2:
     working_directory: ~/work
     docker:
@@ -119,7 +118,7 @@ jobs:
           root: ~/work
           paths:
             - odk2-build/*
-
+            - s3_website.yml
   build-pdf-odk2:
     working_directory: ~/work
     docker:
@@ -141,14 +140,18 @@ jobs:
           root: ~/work
           paths:
             - odk2-build/*
-
-  deploy-odk1:
+            - s3_website.yml
+  deploy:
     working_directory: ~/work
     docker:
       - image: circleci/ruby:latest
     steps:
       - attach_workspace:
           at: ~/work
+      - run: |
+          mkdir -p build/odk2
+          cp -r odk1-build/ build
+          cp -r odk2-build/ build/odk2
       - run:
           name: Install deploy requirements
           command: |
@@ -160,9 +163,8 @@ jobs:
           name: Push to S3
           command: |
               if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
-                s3_website push --config-dir odk1-config --site odk1-build
+                s3_website help
               fi
-
 workflows:
   version: 2
   build_deploy:
@@ -171,14 +173,16 @@ workflows:
       - build-pdf-odk1:
           requires:
             - build-odk1
-      - deploy-odk1:
-          requires:
-            - build-odk1
-            - build-pdf-odk1
-          filters:
-            branches:
-              only: master
       - build-odk2
       - build-pdf-odk2:
           requires:
             - build-odk2
+      - deploy:
+          requires:
+            - build-odk1
+            - build-pdf-odk1
+            - build-odk2
+            - build-pdf-odk2
+          filters:
+            branches:
+              only: master
