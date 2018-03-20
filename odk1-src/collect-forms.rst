@@ -83,6 +83,8 @@ You can load forms directly from a computer to your device via USB, using :doc:`
 
   $ adb push path/to/form.xml /sdcard/odk/forms/form.xml
 
+.. _loading-forms-from-device-storage:
+  
 Loading forms from device storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   
@@ -102,6 +104,8 @@ You can also download forms to your device via a web browser, and move them to t
   
      The :guilabel:`Explore` option opens a file manager that you can use to move forms into Collect.
 
+.. _loading-form-media:
+     
 Loading form media
 ----------------------
 
