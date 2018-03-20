@@ -13,12 +13,16 @@ If you can't find what you are looking for, try the [old docs on the ODK website
 ## Building and viewing documentation locally
 See the [Contributor Guide](http://docs.opendatakit.org/contributing) for detailed steps --- no prior experience needed!
 
-Once your environment is set up:
+Once your environment is set up, build and run the doc site with:
 ```
-sphinx-build -b dirhtml src build
-cd build
+make odk1
+cd odk1-build
 python -m http.server 8000
 ```
+
+To perform all spell check and style checks before building, use `make odk1-check` instead or `make odk1`.
+
+To build ODK 2 docs, replace `odk1` with `odk2`.
 
 ## How to contribute?
 
