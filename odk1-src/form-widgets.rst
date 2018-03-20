@@ -1583,7 +1583,9 @@ type
 appearance
   :tc:`image-map`
   
-The image map widget displays an SVG image with selectable regions.
+The image map widget displays an `SVG`_ image with selectable regions.
+
+.. _SVG: https://en.wikipedia.org/wiki/Scalable_Vector_Graphics
 
 To make an image with selectable regions:
 
@@ -1591,6 +1593,21 @@ To make an image with selectable regions:
 #. In the **choices** tab of your XLSForm, put the value of the ``id`` attributes in the :th:`name` column. Add an appropriate human-friendly :th:`label` to each choice.
 #. In the **survey** tab of your XLSForm, put the :file:`.svg` file name in the :th:`image` column.
 #. Include the :file:`.svg` file :ref:`in your form's media folder <loading-form-media>`.
+
+.. seealso::
+
+  `Inkscape`_
+    An open source vector graphics editor.
+    
+  `SVG Documentation`_
+    From Mozilla Developer Network.
+  
+  `Free SVG Files`_
+    From Wikimedia Commons.
+  
+  .. _Inkscape: https://inkscape.org
+  .. _SVG Documentation: https://developer.mozilla.org/en-US/docs/Web/SVG
+  .. _Free SVG Files: https://commons.wikimedia.org/wiki/Category:SVG_files
 
 .. image:: /img/form-widgets/image-map-choose-shape-0.* 
   :alt:
