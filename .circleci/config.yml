@@ -146,7 +146,6 @@ jobs:
       - attach_workspace:
           at: ~/work
       - run: |
-          mkdir -p build/odk2
           cp -r odk1-build/ build
           cp -r odk2-build/ build/odk2
       - run:
