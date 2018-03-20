@@ -159,7 +159,7 @@ jobs:
           name: Push to S3
           command: |
               if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
-                s3_website help
+                s3_website push
               fi
 workflows:
   version: 2
