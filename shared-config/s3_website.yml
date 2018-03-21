@@ -14,7 +14,6 @@ exclude_from_upload:
   - .doctrees
   - .DS_Store
   - spelling
-  - latex
 
 cloudfront_distribution_id: E1IDKKW65Q2HVZ
 
