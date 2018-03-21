@@ -11,10 +11,10 @@
   {% endif %}
 
   <hr/>
-  <p class="footerText"> <a href="{{ odk_pdf }}" download> {{ download_pdf }} </a></p>
+  <p class="footerText"> <a href="{{ pathto(odk_pdf, 1) }}" download> {{ download_pdf }} </a></p>
   <p class="footerText"> {{ faq_help }} <a href="{{ forum_here }}"> {{ forum }} </a> </p>
   <p class="footerText"> {{ prob_in_doc }} <a href="{{ file_issue_here }}"> {{ file_issue }} </a> </p>
-  <p class="footerText"> {{ contri_start }} <a href="{{ repo_here }}"> {{ fork_repo }} </a> {{ join }} <a href="{{ contri_guide }}"> {{ contri }} </a></p>
+  <p class="footerText"> {{ contri_start }} <a href="{{ repo_here }}"> {{ fork_repo }} </a> {{ join }} <a href="{{ pathto('contributing') }}"> {{ contri }} </a></p>
   
   <div role="contentinfo">
     <p>

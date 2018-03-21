@@ -257,7 +257,7 @@ Download this documentation as a PDF.
 """
 odk_pdf = """
 
-../_downloads/ODK1-Documentation.pdf
+_downloads/ODK1-Documentation.pdf
 
 """
 prob_in_doc = """
