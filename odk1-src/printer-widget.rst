@@ -1,4 +1,12 @@
 :orphan:
+
+.. spelling::
+
+  br
+  concat
+  
+
+ 
 	
 Printing Labels with the Printer Widget
 ==========================================
@@ -25,7 +33,7 @@ Labels contain one or more of the following:
 - Text
 
 These three components always appear in this order.
-Their conent is specified 
+Their content is specified 
 in the :th:`Calculate` column of the XLSForm,
 using a :tc:`concatenate()` formula.
 The three components are included as strings, 
@@ -35,16 +43,16 @@ the XML line break tag.
 .. csv-table:: survey
   :header: type, name, label, appearance, calculation
 
-   text,printer_widget, Printer widget,printer:org.opendatakit.sensors.ZebraPrinter, "concat('123456789','<br>’,'QRCODE','<br>','Text')"
+   text,printer_widget, Printer widget,printer:org.opendatakit.sensors.ZebraPrinter, "concat('123456789','<br>’,'QR CODE','<br>','Text')"
 
 To exclude any of the label components,
 put an empty string in its place.
-For example, to print only a QRCODE, with no barcode or text:
+For example, to print only a QR CODE, with no barcode or text:
 
 .. csv-table::
   :header: calculation
   
-  "concat('','<br>','QRCODE content here','<br>','')"
+  "concat('','<br>','QR CODE content here','<br>','')"
   
 Or, to print only the barcode and text:
 

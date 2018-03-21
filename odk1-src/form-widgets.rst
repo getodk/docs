@@ -2,7 +2,10 @@
 
   abcd
   ack
+  concat
+  br
   BREATHCOUNT
+  Codabar
   Datetime
   dateTime
   dk
@@ -10,6 +13,7 @@
   nocalendar
   nolabel
   placementmap
+  rect
   uw
   ZXing
 
@@ -94,7 +98,7 @@ A numerical input that treats the input as a string, rather than a number.
 
 The number input accepts numerals (``0123456789``), hyphens (``-``), and decimal points (``.``). These are the only characters available on the number keypad displayed with this widget.
 
-This is useful for phone numbers, ID numbers, IP addresses, and similar data. 
+This is useful for phone numbers, ID numbers, IP addresses, and similar data. It can also be used in place of the :ref:`integer-widget` or :ref:`decimal-widget` if large numbers are needed. (The integer widget has a limit of nine digits, and the decimal widget has a limit of 15 digits.)
 
 .. image:: /img/form-widgets/string-number.*
   :alt: The text widget, with numerical entry, as displayed in the ODK Collect app on an Android phone. The question text is "String number widget." The hint text is, "text type with numbers appearance." Below that is a simple input. Above the question text is the form group name "Text Widget." The Android onscreen keyboard displays a number pad.
@@ -108,7 +112,7 @@ This is useful for phone numbers, ID numbers, IP addresses, and similar data.
 
 .. note::
 
-  This appearance can be combined with the the :ref:`thousands-sep <thousands-sep>` appearance.
+  This appearance can be combined with the :ref:`thousands-sep <thousands-sep>` appearance.
   
 
 .. _external-app-widget:
@@ -128,7 +132,7 @@ The external app widget is displayed when the :th:`appearance` attribute begins 
 .. seealso:: :doc:`launch-apps-from-collect`
 
 .. image:: /img/form-widgets/external-app-widget-start.*
-  :alt: The External App form widget, as displayed in the ODK Collect App on an Android phone. The question text is "Ex string widget." The hinst text is, "text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form group name "Text widgets."
+  :alt: The External App form widget, as displayed in the ODK Collect App on an Android phone. The question text is "Ex string widget." The hint text is, "text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form group name "Text widgets."
 
 .. image:: /img/form-widgets/external-app-widget-fallback.*
   :alt: The External App widget as displayed earlier. The Launch button has now been disabled. Below it is a simple input. A help message displays the text, "The requested application is missing. Please manually enter the reading."
@@ -189,7 +193,7 @@ See :doc:`printer-widget` for complete details.
 .. csv-table:: survey
   :header: type, name, label, appearance, calculation
 
-   text,ex_printer_widget,Ex printer widget,printer:org.opendatakit.sensors.ZebraPrinter, "concat('123456789','<br>’,'QRCODE','<br>','Text')"
+   text,ex_printer_widget,Ex printer widget,printer:org.opendatakit.sensors.ZebraPrinter, "concat('123456789','<br>’,'QR CODE','<br>','Text')"
 
 
 .. _numerical-widgets:
@@ -217,7 +221,12 @@ appearance
   *none*
 
   
-A whole number entry input. Integer widgets will not accept decimal points.
+A whole number entry input.
+
+Integer widgets will not accept decimal points,
+and the entry field has a limit of nine digits.
+If you need numbers larger than nine digits,
+see the :ref:`number-string-widget`.
 
 
 The integer widget supports:
@@ -246,6 +255,11 @@ appearance
   *none*
   
 A numerical entry input that will accept decimal points.
+
+Decimal number entry is capped at 15 characters
+(15 digits, or 14 digits and a decimal point).
+If you need numbers larger than 15 digits,
+see the :ref:`number-string-widget`.
 
 The decimal widget supports:
 
@@ -347,7 +361,7 @@ appearance
 Captures a compass reading, which is stored as a decimal.
 
 .. image:: /img/form-widgets/bearing-widget-start.*
-  :alt: The Bearing form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Bearing widget." The hint text is, "decimal type with bearing appearance. Below that is a button labeled "Record Bearing." Above the question text is the form group name "Numericl widgets."
+  :alt: The Bearing form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Bearing widget." The hint text is, "decimal type with bearing appearance. Below that is a button labeled "Record Bearing." Above the question text is the form group name "Numeric widgets."
 
 .. image:: /img/form-widgets/bearing-in-progress.*
   :alt: The Bearing widget, overlaid with a model popup. The modal headline is "Loading Bearing." In the body of the modal are two fields: "Direction: W" and "Bearing: 273.001". At the bottom of the modal are Cancel and Record Bearing buttons.
@@ -455,20 +469,20 @@ type
   
 When the :tc:`picker` appearance is added,
 the range widget is displayed 
-with a "spinner" style select menu in a modal pop up.
+with a spinner-style select menu in a modal pop up.
 
 .. image:: /img/form-widgets/range-widget-picker-0.* 
   :alt: The range picker widget, as displayed in the ODK Collect app. The question label is "Range picker integer widget". There is a button labeled "Select Value".
   
 .. image:: /img/form-widgets/range-widget-picker-1.* 
-  :alt: The range widget as shown in the previous image. Over it is a modal window labelled "Number Picker", with a spinner-style number select. Below are buttons for OK and CANCEL.
+  :alt: The range widget as shown in the previous image. Over it is a modal window labeled "Number Picker", with a spinner-style number select. Below are buttons for OK and CANCEL.
 
 .. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint, parameters
 
-  range, range_integer_widget_picker, Range verticalpicker integer widget, picker, range integer widget with picker appearance, start=1;end=10;step=1
+  range, range_integer_widget_picker, Range picker integer widget, picker, range integer widget with picker appearance, start=1;end=10;step=1
 
   
 .. _image-widgets:
@@ -681,7 +695,7 @@ The following barcode formats are supported:
 - PDF 417 (beta)
 - MaxiCode
 
-The flash can be used as a light source when scanning barcodes in a poorly-lit environment.
+The flash can be used as a light source when scanning barcodes in a poorly lit environment.
 
 .. image:: /img/form-widgets/barcode-start.*
   :alt: The Barcode form widget as displayed in the ODK Collect app on an Android phone. The headline text reads, "Scan any barcode." Below that is an image labeled "Get Barcode."
@@ -756,7 +770,7 @@ Records video, using the device camera.
 .. image:: /img/form-widgets/video2.*
   :alt: The Video form widget as displayed previously. The question text is "Please record a video of yourself blinking." The hint text is "Three times is probably sufficient." Below that are three buttons: Record Video, Choose Video, and Play Video. All three buttons are enabled.
 
-.. rubric:: XSLForm Rows
+.. rubric:: XLSForm Rows
 
 .. csv-table:: survey
   :header: type, name, label, hint
@@ -808,7 +822,7 @@ type
 appearance
   :tc:`no-calendar`
 
-The :tc:`no-calendar` appearance displays a "spinner" type date selection. This is especially appropriate for selecting dates more than one year in the past or future.
+The :tc:`no-calendar` appearance displays a spinner-style date selection. This is especially appropriate for selecting dates more than one year in the past or future.
 
 .. image:: /img/form-widgets/date-no-calendar-start.*
   :alt: The no-calendar Date form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Date Widget." The hint text is "date type with no-calendar appearance." Below that is a button labeled "Select date." Below the button is the text, "No date selected." Above the question text is the form group name "Date and time widgets."
@@ -816,7 +830,7 @@ The :tc:`no-calendar` appearance displays a "spinner" type date selection. This 
 .. image:: /img/form-widgets/date-no-calendar-in-progress.*
   :alt: The date widget shown previously, with a pop modal. The headline of the modal is "Select date." There are individual "spinner" style selectors for month, day, and year. At the bottom of the modal are OK and Cancel buttons.
 
-.. rubric:: XSLForm
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
@@ -929,7 +943,7 @@ A time selector. Captures only a specific time-of-day, not a date and time. For 
 The time widget does not accept any :th:`appearance` attributes.
 
 .. image:: /img/form-widgets/time-start.*
-  :alt: The Time form widget as displayed in the ODK Collect App on an Android phone. The question text is "What time do you usually wakeup?" The button label is "Select time." Below the button is the message "No time selected."
+  :alt: The Time form widget as displayed in the ODK Collect App on an Android phone. The question text is "What time do you usually wake up?" The button label is "Select time." Below the button is the message "No time selected."
 
 .. image:: /img/form-widgets/time1.*
   :alt: The Time widget as displayed previously, with a modal popup. The modal headline is "Select time." The body of the modal contains scrollers for Hour, Minute, and AM/PM. At the bottom of the modal are Cancel and OK buttons.
@@ -1205,7 +1219,7 @@ places the choices into a modal overlay menu.
   :alt: The Single Select form widget, with minimal appearance, as displayed in the ODK Collect app on an Android phone. The question text is "Spinner widget." The hint text is "select_one type with minimal appearance, 4 text choices." Below that is a drop-down style select menu with the prompt "Select One Answer." Above the question text is the form group name "Select one widgets."
 
 .. image:: /img/form-widgets/select-one-minimal-expanded.*
-  :alt: The Single Select form widget, wih minimal appearance, as displayed in the previously image. The select menu has expanded to show choices: A, B, C, D, and Remove Response.
+  :alt: The Single Select form widget, with minimal appearance, as displayed in the previously image. The select menu has expanded to show choices: A, B, C, D, and Remove Response.
 
 .. rubric:: XLSForm
 
@@ -1352,7 +1366,7 @@ need to be included in the :file:`media` folder.
 See :ref:`image-options` to learn more about including images in surveys.
 
 .. image:: /img/form-widgets/default-single-image-select.*
-  :alt: The Single Select form widget with images, as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is, "select_one type with no appearance, 4 image choices (a.jpg, b.jpb, c.jpg, d.jpg)." Below that is a set of radio buttons labeled A, B, C, and D. Below each radio button is a small icon of an animal: A - whale, B - frog, C - alligator, D - eagle. Above the question text is the form group name "Select one widgets."
+  :alt: The Single Select form widget with images, as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is, "select_one type with no appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that is a set of radio buttons labeled A, B, C, and D. Below each radio button is a small icon of an animal: A - whale, B - frog, C - alligator, D - eagle. Above the question text is the form group name "Select one widgets."
 
 .. rubric:: XLSForm
 
@@ -1410,7 +1424,7 @@ Select widget with width-specified images
 type
   :tc:`select_one`
 appearance
-  :tc:`cmopact-{x}`
+  :tc:`compact-{x}`
 
 With the :tc:`compact-{x}` appearance, 
 you can specify the number of images to display on each row. 
@@ -1703,14 +1717,12 @@ A note to the user, accepting no input. This example includes :term:`hint` text.
 .. figure:: /img/form-widgets/note.*
   :alt: The Note form widget as displayed in the ODK Collect App on an Android phone. The headline text is, "This is an example note." The hint text is, "The text displays, but there is no input."
 
-.. rubric:: XSLForm
+.. rubric:: XLSForm
 
 .. csv-table::
   :header: type, name, label, hint
 
   note, note_1, This is an example note., "The text displays, but there is no input."
-
-  
   
 --------
   
@@ -1731,7 +1743,7 @@ Select widgets included in a :tc:`field-list` group can have one of several :th:
 :tc:`label`
   Only the option labels are displayed, without checkboxes.
 :tc:`list`
-  The labels are displayes along with
+  The labels are displayed along with
   checkboxes for multi-select questions
   and
   radio buttons for single-select questions.
