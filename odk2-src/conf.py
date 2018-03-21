@@ -225,7 +225,11 @@ epub_exclude_files = ['search.html']
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/', None),
+    'shared': ('https://docs.opendatakit.org/shared', None),
+    'odk1': ('https://docs.opendatakit.org/', None)
+}
 
 # Add custom CSS
 
