@@ -1,7 +1,7 @@
-s3_bucket: docs.opendatakit.org
+s3_bucket: odk1-docs-web
 s3_endpoint: us-west-2
 
-site: build
+site: ../odk1-build
 
 error_document: index.html
 
@@ -12,7 +12,6 @@ exclude_from_upload:
   - .buildinfo
   - .doctrees
   - .DS_Store
-  - objects.inv
   - spelling
   - latex
 
