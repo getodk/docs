@@ -48,7 +48,7 @@ jobs:
           root: ~/work
           paths:
             - odk1-build/*
-            - s3_website.yml
+            - odk1-config/*
   build-pdf-odk1:
     working_directory: ~/work
     docker:
@@ -117,6 +117,7 @@ jobs:
           root: ~/work
           paths:
             - odk2-build/*
+            - odk2-config/*
   build-pdf-odk2:
     working_directory: ~/work
     docker:
@@ -138,16 +139,13 @@ jobs:
           root: ~/work
           paths:
             - odk2-build/*
-  deploy:
+  deploy-odk1:
     working_directory: ~/work
     docker:
       - image: circleci/ruby:latest
     steps:
       - attach_workspace:
           at: ~/work
-      - run: |
-          cp -r odk1-build/ build
-          cp -r odk2-build/ build/odk2
       - run:
           name: Install deploy requirements
           command: |
@@ -159,8 +157,49 @@ jobs:
           name: Push to S3
           command: |
               if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
-                s3_website push
+                s3_website push --config-dir='odk1-config'
               fi
+  deploy-odk2:
+    working_directory: ~/work
+    docker:
+      - image: circleci/ruby:latest
+    steps:
+      - attach_workspace:
+          at: ~/work
+      - run:
+          name: Install deploy requirements
+          command: |
+              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
+                sudo apt-get install -y openjdk-8-jre-headless
+                gem install s3_website && s3_website install
+              fi
+      - run:
+          name: Push to S3
+          command: |
+              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
+                s3_website push --config-dir='odk2-config'
+              fi
+  deploy-shared:
+    working_directory: ~/work
+    docker:
+      - image: circleci/ruby:latest
+    steps:
+      - attach_workspace:
+          at: ~/work
+      - run:
+          name: Install deploy requirements
+          command: |
+              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
+                sudo apt-get install -y openjdk-8-jre-headless
+                gem install s3_website && s3_website install
+              fi
+      - run:
+          name: Push to S3
+          command: |
+              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
+                s3_website push --config-dir='shared-config'
+              fi
+
 workflows:
   version: 2
   build_deploy:
@@ -173,10 +212,15 @@ workflows:
       - build-pdf-odk2:
           requires:
             - build-odk2
-      - deploy:
+      - deploy-odk1:
           requires:
             - build-odk1
             - build-pdf-odk1
+          filters:
+            branches:
+              only: master
+      - deploy-odk2:
+          requires:
             - build-odk2
             - build-pdf-odk2
           filters:
