@@ -49,7 +49,7 @@ are specified in your `XLSForm`_ definition using the
   
 .. _text-widget:
 
-Text Widgets
+Text widgets
 --------------
 
 All of the text widgets share the :tc:`text` type,
@@ -98,7 +98,7 @@ A numerical input that treats the input as a string, rather than a number.
 
 The number input accepts numerals (``0123456789``), hyphens (``-``), and decimal points (``.``). These are the only characters available on the number keypad displayed with this widget.
 
-This is useful for phone numbers, ID numbers, IP addresses, and similar data. It can also be used in place of the :ref:`integer-widget` or :ref:`decimal-widget` if large numbers are needed. (The integer widget has a limit of nine digits, and the decimal widget has a limit of 15 digits.)
+This is useful for phone numbers, ID numbers, IP addresses, and similar data. It can also be used in place of the :ref:`default-integer-widget` or :ref:`default-decimal-widget` if large numbers are needed. (The integer widget has a limit of nine digits, and the decimal widget has a limit of 15 digits.)
 
 .. image:: /img/form-widgets/string-number.*
   :alt: The text widget, with numerical entry, as displayed in the ODK Collect app on an Android phone. The question text is "String number widget." The hint text is, "text type with numbers appearance." Below that is a simple input. Above the question text is the form group name "Text Widget." The Android onscreen keyboard displays a number pad.
@@ -198,7 +198,7 @@ See :doc:`printer-widget` for complete details.
 
 .. _numerical-widgets:
 
-Numerical Widgets
+Numerical widgets
 ---------------------
 
 Numerical widgets collect and store input as numerical values ---
@@ -351,7 +351,7 @@ a manual input is prompted.
 .. _bearing-widget:
 
 Bearing widget
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 type
   :tc:`decimal`
@@ -487,7 +487,7 @@ with a spinner-style select menu in a modal pop up.
   
 .. _image-widgets:
 
-Image Widgets
+Image widgets
 ---------------
 
 .. contents::
@@ -520,7 +520,7 @@ Captures an image from the device. The user can choose to take a new picture wit
 .. _annotate-widget:
 
 Image widget with annotation
-"""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
 
 type
   :tc:`image`
@@ -579,8 +579,8 @@ An image widget that does not include a :guilabel:`Choose Image` button. This re
   
 .. _selfie-widget:
 
-Selfie Widget
-~~~~~~~~~~~~~~~~~~~~~~
+Selfie widget
+~~~~~~~~~~~~~~~
 
 type
   :tc:`image`
@@ -609,7 +609,7 @@ Takes a picture using the front-facing ("selfie") camera. The :guilabel:`Choose 
 .. _draw-widget:
 
 Draw widget
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
 type
   :tc:`image`
@@ -671,7 +671,7 @@ Collects a signature from the user.
 .. _barcode:
 
 Barcode widget
----------------------
+----------------
 
 Scans, decodes, and captures the content of a barcode,
 using the device camera.
@@ -780,7 +780,7 @@ Records video, using the device camera.
 
 .. _date-and-time-widgets:
 
-Date and Time Widgets
+Date and time widgets
 ----------------------
 
 .. contents::
@@ -995,7 +995,7 @@ For date only, see :ref:`default-date-widget`. For time only, see :ref:`time-wid
 
 .. _gps-widgets:
 
-GPS Widgets
+GPS widgets
 ------------
 
 .. contents::
@@ -1087,8 +1087,11 @@ appearance
 
 A line or polygon of GPS coordinates tracking actual device movement. The user can specify one of two location-recording modes:
 
-- Manual Mode — The user taps the device to place a marker as desired while moving.
-- Automatic Mode — The app creates a marker on a regular time interval (default: 20 seconds) as the user moves.
+Manual Mode 
+  The user taps the device to place a marker as desired while moving.
+
+Automatic Mode
+  The app creates a marker on a regular time interval (default: 20 seconds) as the user moves.
 
 
 .. image:: /img/form-widgets/geotrace-start.*
@@ -1205,7 +1208,7 @@ type
 .. _select-minimal:
 
 Select with modal menu
-"""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""
 
 type
   :tc:`select_one`
@@ -1280,7 +1283,7 @@ once a selection is made.
 .. _select-search-widget:
 
 Select widget with search feature
-""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""
 
 type
   :tc:`select_one`
@@ -1314,7 +1317,7 @@ search and filter function.
 .. _select-autocomplete:
 
 Select widget with autocomplete
-""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""
 
 type
   :tc:`select_one`
@@ -1351,7 +1354,7 @@ This is especially helpful for questions with a large number of choices.
 .. _select-image-widget:
 
 Select widget with image choices
-"""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""
 
 type
   :tc:`select_one`
@@ -1387,7 +1390,7 @@ See :ref:`image-options` to learn more about including images in surveys.
 .. _compact-image-select:
 
 Select widget with compact image options
-"""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""
 
 type
   :tc:`select_one`
@@ -1565,7 +1568,7 @@ Multiselect questions support multiple answers.
 
 .. _image-options:
 
-Including Images as Choices
+Including images as choices
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To include images as choices for select questions:
