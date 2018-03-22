@@ -113,7 +113,7 @@ A numerical input that treats the input as a string, rather than a number.
 
 The number input accepts numerals (``0123456789``), hyphens (``-``), and decimal points (``.``). These are the only characters available on the number keypad displayed with this widget.
 
-This is useful for phone numbers, ID numbers, IP addresses, and similar data. It can also be used in place of the :ref:`default-integer-widget` or :ref:`default-decimal-widget` if large numbers are needed. (The integer widget has a limit of nine digits, and the decimal widget has a limit of 15 digits.)
+This is useful for phone numbers, ID numbers, IP addresses, and similar data. It can also be used in place of the :ref:`default-integer-widget` or :ref:`default-decimal-widget` if large numbers are needed. (The integer widget has a limit of nine digits, and the decimal widget has a limit of 15 characters.)
 
 .. image:: /img/form-widgets/string-number.*
   :alt: The text widget, with numerical entry, as displayed in the ODK Collect app on an Android phone. The question text is "String number widget." The hint text is, "text type with numbers appearance." Below that is a simple input. Above the question text is the form group name "Text Widget." The Android onscreen keyboard displays a number pad.
@@ -1020,7 +1020,7 @@ type
 appearance
   *none*
 
-Captures the current GPS position from the device.
+Captures the current location from the device.
 
 For a geopoint with a user-selected location,
 see :ref:`placement-map-widget` 
@@ -1093,7 +1093,7 @@ type
 appearance
   *none*
 
-A line or polygon of GPS coordinates tracking actual device movement. The user can specify one of two location-recording modes:
+A line or polygon of coordinates tracking actual device movement. The user can specify one of two location-recording modes:
 
 Manual Mode 
   The user taps the device to place a marker as desired while moving.
@@ -1124,7 +1124,7 @@ Automatic Mode
   :alt: The same map as previously, with a new modal popup. The headline of the modal is "Save GeoTrace as" followed by two options: Save as Polygon and Save as Polyline. In the bottom-right is a Cancel button.
 
 .. image:: /img/form-widgets/geotrace7.*
-  :alt: The Geotrace form widget, as shown previously. The question text is "Where have you been?" and the button label is "View or Change GeoTrace." Below that is a list of lat/long GPS coordinates.
+  :alt: The Geotrace form widget, as shown previously. The question text is "Where have you been?" and the button label is "View or Change GeoTrace." Below that is a list of lat/long coordinates.
 
 
 .. rubric:: XLSForm
@@ -1145,7 +1145,7 @@ type
 appearance
   *none*
 
-Captures a user-entered series of GPS coordinates, forming a polygon.
+Captures a user-entered series of location coordinates, forming a polygon.
 
 .. image:: /img/form-widgets/geoshape-start.*
   :alt: The GeoShape form widget, as displayed in the ODK Collect app on an Android phone. The question text is "Select an Area." Below that is a button labeled "Start GeoShape."
@@ -1160,7 +1160,7 @@ Captures a user-entered series of GPS coordinates, forming a polygon.
   :alt: The same map as displayed previously, but now a series of red markers form a polygon across the map.
 
 .. image:: /img/form-widgets/geoshape4.*
-  :alt: The GeoShape form widget shown previously. The question text is "Select an Area." The button label is now "View or Change GeoShape." Below the button is a list of lat/long GPS coordinates.
+  :alt: The GeoShape form widget shown previously. The question text is "Select an Area." The button label is now "View or Change GeoShape." Below the button is a list of lat/long coordinates.
 
 .. rubric:: XLSForm
 
@@ -1725,8 +1725,8 @@ and are not visible to the user.
 These items are dependent on the survey collection event:
 
 - :tc:`start` --- The time the survey was started.
-- :tc:`end` --- The time the survey was completed.
-- :tc:`today` --- The date of survey collection.
+- :tc:`end` --- The last time the survey was saved.
+- :tc:`today` --- The current date, according to the device, when the survey is collected. (The date is determined when the widget is rendered.)
 
 These items are defined by the device and cannot be changed:
 
@@ -1758,7 +1758,7 @@ and :ref:`can be edited in Settings <form-metadata-settings>`:
   
 .. _field-list:
 
-Grouping multiple questions on the same screen
+Grouping multiple widgets on the same screen
 ------------------------------------------------
 
 type
@@ -1766,19 +1766,20 @@ type
 appearance
   :tc:`field-list`
 
-The :tc:`field-list` appearance attribute, applied to a group of questions, displays them all on a single screen.
+The :tc:`field-list` appearance attribute, applied to a group of widgets, displays them all on a single screen.
 
 .. warning::
 
   Do not include a question that depends on a previous answer
   in the same field list as the previous question it depends on.
   
-  Relevance and calculations are determined on :gesture:`swipe`,
+  Relevance and calculation values are determined
+  when the screen advances,
   which does not happen between questions
   that are grouped on the same page.
   Therefore,
   including a question and its dependent together in a field list
-  will fail.
+  will not work as expected.
 
 Select widgets included in a :tc:`field-list` group can have one of several :th:`appearance` attributes:
 
