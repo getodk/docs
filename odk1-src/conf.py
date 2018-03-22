@@ -225,7 +225,11 @@ epub_exclude_files = ['search.html']
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/', None),
+    'shared': ('https://docs.opendatakit.org/shared', None),
+    'odk2': ('https://docs.opendatakit.org/odk2', None)
+}
 
 # Add custom CSS
 
@@ -257,7 +261,7 @@ Download this documentation as a PDF.
 """
 odk_pdf = """
 
-../_downloads/ODK1-Documentation.pdf
+_downloads/ODK1-Documentation.pdf
 
 """
 prob_in_doc = """
