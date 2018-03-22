@@ -117,6 +117,7 @@ metadata
 metainstanceid
 MTP
 multipart
+multiselect
 Multiselect
 mutex
 mysql
@@ -170,6 +171,7 @@ repo
 reStructuredText
 reusability
 righthand
+RSS
 rst
 sandboxing
 schemas
@@ -193,6 +195,8 @@ subform
 subforms
 subkeys
 submissionList
+SVG
+svg
 templating
 toolbar
 toolchain
@@ -232,6 +236,7 @@ webpage
 webserver
 webservers
 websupport
+Wikimedia
 workflow
 Workflow
 workflows

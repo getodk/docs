@@ -110,7 +110,7 @@ To access User Interface settings:
   - Google Maps (default)
   - OpenStreetMap
  
-  .. seealso:: :ref:`geopoint`, :ref:`geoshape`, :ref:`geotrace`, :doc:`offline maps <collect-offline-maps>`
+  .. seealso:: :ref:`geopoint-widget`, :ref:`geoshape-widget`, :ref:`geotrace-widget`, :doc:`offline maps <collect-offline-maps>`
   
   
 :guilabel:`Basemap` 
