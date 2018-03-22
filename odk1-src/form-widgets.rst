@@ -28,6 +28,10 @@ are specified in your `XLSForm`_ definition using the
 
 .. _XLSForm: http://xlsform.org
 
+.. contents:: :depth: 1
+  :local:
+
+
 .. admonition:: Helpful terminology
 
   .. glossary::
@@ -50,11 +54,9 @@ are specified in your `XLSForm`_ definition using the
   available when creating forms using `XLSForm`_.
   
   For simpler forms
-  you can use :doc:`ODK Build`,
+  you can use :doc:`odk-build`,
   which provides a visual, drag-and-drop interface.
 
-.. contents:: :depth: 1
-  :local:
   
 .. _text-widget:
 
@@ -154,16 +156,16 @@ The external app widget is displayed when the :th:`appearance` attribute begins 
   text,ex_string_widget,Ex string widget,ex:change.uw.android.BREATHCOUNT,text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
 
 
-.. _numerical-widgets:
+.. _number-widgets:
 
-Numerical widgets
+Number widgets
 ---------------------
 
-Numerical widgets collect and store input as numerical values ---
+Number widgets collect and store number inputs ---
 either :ref:`integers <default-integer-widget>` or 
 :ref:`floating-point decimals <default-decimal-widget>`.
 
-Numerical values can also be captured by the :ref:`range-widgets`.
+Number values can also be captured by the :ref:`range-widgets`.
 
 .. contents::
   :local:
@@ -212,10 +214,10 @@ type
 appearance
   *none*
   
-A numerical entry input that will accept decimal points.
+A numeric input that will accept decimal points.
 
 Decimal number entry is capped at 15 characters
-(15 digits, or 14 digits and a decimal point).
+(14 digits and a decimal point).
 If you need numbers larger than 15 digits,
 see the :ref:`number-text-widget`.
 
@@ -237,13 +239,13 @@ The decimal widget supports:
 
 .. _numeric-appearance-attributes:
   
-Numeric appearance attributes
+Number widget appearance options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   
 .. _thousands-sep:
   
-Number widgets with :tc:`thousands-sep` appearance
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Thousands separator
+""""""""""""""""""""
 
 type
   :tc:`integer`, :tc:`decimal`, (:tc:`text`)
@@ -275,13 +277,13 @@ will display their values using locale-specific thousands separators.
   
 .. _external-number-widget:
 
-*External app* appearance
-"""""""""""""""""""""""""""""""""""""""""""""""""
+Number from an external app
+""""""""""""""""""""""""""""
 
 type
   :tc:`integer`, :tc:`decimal`
 appearance
-  :tc:`ex.*`
+  :tc:`ex:*`
 
 By specifying an external app in the :th:`appearance`, 
 your form can launches an external app and receive a number 
@@ -304,8 +306,6 @@ a manual input is prompted.
   integer,ex_integer_widget,Ex integer widget,ex:change.uw.android.BREATHCOUNT,integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
 
 .. seealso:: :doc:`launch-apps-from-collect`
-
-
 
 
 .. _date-and-time-widgets:
@@ -414,23 +414,13 @@ Date widgets with non-Gregorian calendars
 
 Collect supports several non-Gregorian calendars.
 
+.. contents::
+  :local:
+
 .. note::
 
   The non-Gregorian calendar is used only on input.
   The dates are converted and stored as standard Gregorian dates
-
-.. _ethiopian-calendar:
-
-Ethiopian calendar
-""""""""""""""""""""
-
-type
-  :tc:`date`
-appearance
-  :tc:`ethiopian`
-  
-.. image:: /img/form-widgets/ethiopian-calendar-widget.* 
-  :alt:
 
 .. _coptic-calendar:
   
@@ -443,6 +433,19 @@ appearance
   :tc:`coptic`
   
 .. image:: /img/form-widgets/coptic-calendar-widget.* 
+  :alt:
+  
+.. _ethiopian-calendar:
+
+Ethiopian calendar
+""""""""""""""""""""
+
+type
+  :tc:`date`
+appearance
+  :tc:`ethiopian`
+  
+.. image:: /img/form-widgets/ethiopian-calendar-widget.* 
   :alt:
   
 .. _islamic-calendar:
@@ -533,7 +536,7 @@ Select widgets
 Select widgets offer the :term:`participant` options to pick from.
 You can offer the participant 
 a :ref:`single choice <single-select-widget>`,
-or the ability to :ref:`choose multiple answers <multiselect-widget>`.
+or the ability to :ref:`choose multiple answers <multi-select-widget>`.
 
 Select widgets can :ref:`include images as choices <select-image-widget>`.
 
@@ -546,7 +549,7 @@ Single select widget
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`select_one`
+  :tc:`select_one {list_name}`
 
 .. image:: /img/form-widgets/default-single-select.*
   :alt: The default Single Select form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Select one widget." The hint text is "select_one type with no appearance, 4 text choices." Below that is a set of radio button selectors labeled A, B, C, and D. Above the question text is form group name "Select one widgets."
@@ -569,11 +572,11 @@ type
 
 .. _select-minimal:
 
-Select with modal menu
-""""""""""""""""""""""""
+Select widget with modal menu
+"""""""""""""""""""""""""""""""
 
 type
-  :tc:`select_one`
+  :tc:`select_one {list_name}`
 appearance
   :tc:`minimal`
 
@@ -610,11 +613,11 @@ places the choices into a modal overlay menu.
   
 .. _autoadvance:
 
-Select with autoadvance
-"""""""""""""""""""""""""""
+Select widget with autoadvance
+""""""""""""""""""""""""""""""""""
 
 type
-  :tc:`select_one`
+  :tc:`select_one {list_name}`
 appearance
   :tc:`autoadvance`
 
@@ -641,48 +644,13 @@ once a selection is made.
   opt_abcd,c,C
   opt_abcd,d,D
 
-
-.. _select-search-widget:
-
-Select widget with search feature
-""""""""""""""""""""""""""""""""""
-
-type
-  :tc:`select_one`
-appearance
-  :tc:`search`
-
-The :tc:`search` appearance adds a
-search and filter function.
-
-.. image:: /img/form-widgets/select-search-start.*
-  :alt: The Select One form widget with search, as displayed in the ODK Collect app on an Android phone. The question text is, "Select one search widget." The hint text is, "select one type with search appearance, 4 text choices." Below that is a text input above four radio buttons labeled A, B, C, and D. Above the question text is the form group name, "Select one widgets." The phone's keyboard is active.
-
-.. image:: /img/form-widgets/select-one-search-searching.*
-  :alt: The Select One form widget as displayed previously. The text input contains a lowercase 'b'. There is a single radio button: B. The other three radio buttons are no longer displayed.
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  select_one opt_abcd,select_one_search_widget,Select one search widget,search,"select_one type with search appearance, 4 text choices"
-
-.. csv-table:: choices
-  :header: list_name, name, label
-
-  opt_abcd,a,A
-  opt_abcd,b,B
-  opt_abcd,c,C
-  opt_abcd,d,D
-
 .. _select-autocomplete:
 
 Select widget with autocomplete
 """"""""""""""""""""""""""""""""
 
 type
-  :tc:`select_one`
+  :tc:`select_one {list_name}`
 appearance
   :tc:`autocomplete`
 
@@ -719,7 +687,7 @@ Select widget with image choices
 """"""""""""""""""""""""""""""""""
 
 type
-  :tc:`select_one`
+  :tc:`select_one {list_name}`
 appearance
   *none*
 
@@ -755,7 +723,7 @@ Select widget with compact image options
 """""""""""""""""""""""""""""""""""""""""
 
 type
-  :tc:`select_one`
+  :tc:`select_one {list_name}`
 appearance
   :tc:`compact`
   
@@ -787,7 +755,7 @@ Select widget with width-specified images
 """"""""""""""""""""""""""""""""""""""""""""
 
 type
-  :tc:`select_one`
+  :tc:`select_one {list_name}`
 appearance
   :tc:`compact-{x}`
 
@@ -817,11 +785,11 @@ specify an :th:`appearance` of :tc:`compact-2`.
 
 .. _quickcompact-widget:
 
-Compact select with autoadvance
-"""""""""""""""""""""""""""""""""""
+Compact select widget with autoadvance
+""""""""""""""""""""""""""""""""""""""""
 
 type
-  :tc:`select_one`
+  :tc:`select_one {list_name}`
 appearance
   :tc:`quickcompact`
 
@@ -851,11 +819,11 @@ to the design of the :ref:`compact-image-select`.
 
 .. _quickcompact-2-widget:
 
-Compact select with specified width and autoadvance
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Compact select widget with specified width and autoadvance
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 type
-  :tc:`select_one`
+  :tc:`select_one {list_name}`
 appearance
   :tc:`quickcompact-{x}`
 
@@ -886,21 +854,21 @@ to display two images on each row, set the :th:`appearance` attribute to :tc:`qu
   abcd_icon,d,D,d.jpg
 
   
-.. _multiselect-widget:
+.. _multi-select-widget:
 
-Multiselect widget
+Multi select widget
 ~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`select_multiple`
+  :tc:`select_multiple {list_name}`
 appearance
   *none*
 
-Multiselect questions support multiple answers.
+Multi select questions support multiple answers.
 
 .. note::
 
-  The multiselect widget supports 
+  The multi select widget supports 
   many of the same :th:`appearance` attributes 
   as the :ref:`single-select-widget`:
   
@@ -909,7 +877,7 @@ Multiselect questions support multiple answers.
   - :ref:`width-specified compact appearance with images <compact-2>`
 
 .. image:: /img/form-widgets/default-multiselect.*
-  :alt: The default Multiselect widget as displayed in the ODK Collect app on an Android phone. The question text is, "Multiselect widget." The hint text is, "select_multiple widget with no appearance, 4 text choices." Below that are four checkbox options labeled A, B, C, and D. Above the question text is the form group label, "This section contains 'Select Multi Widgets'"
+  :alt: The default multi select widget as displayed in the ODK Collect app on an Android phone. The question text is, "Multi select widget." The hint text is, "select_multiple widget with no appearance, 4 text choices." Below that are four checkbox options labeled A, B, C, and D. Above the question text is the form group label, "This section contains 'Select Multi Widgets'"
 
 .. rubric:: XLSForm
 
@@ -921,33 +889,10 @@ Multiselect questions support multiple answers.
 .. csv-table:: choices
   :header: list_name, name, label, media::image
 
-  abcd_icon,a,A,a.jpg
-  abcd_icon,b,B,b.jpg
-  abcd_icon,c,C,c.jpg
-  abcd_icon,d,D,d.jpg
-
-  
-
-.. _image-options:
-
-Including images as choices
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To include images as choices for select questions:
-
-#. Specify the file name in the **choices** worksheet,
-   in a column labeled :th:`media::image`. 
-#. Add the images to a folder named
-   :file:`{form-name}-media`.
-#. Upload the media folder with your form.
-
-   - If you are hosting your form in :doc:`aggregate-intro`,
-     you will have the option to upload the media file with your form,
-     and it will be automatically downloaded to your device
-     when you pull down the blank form.
-   - If you are adding the form to your device directly,
-     make sure the media folder is placed in
-     :file:`/sdcard/odk/forms/`.
+  opt_abcd,a,A
+  opt_abcd,b,B
+  opt_abcd,c,C
+  opt_abcd,d,D
 
      
 .. _image-map-select:
@@ -1029,6 +974,28 @@ To make an image with selectable regions:
   shapes, rect, rectangle
   shapes, ellipse, ellipse
   
+
+.. _image-options:
+
+Including images as choices
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To include images as choices for select questions:
+
+#. Specify the file name in the **choices** worksheet,
+   in a column labeled :th:`media::image`. 
+#. Add the images to a folder named
+   :file:`{form-name}-media`.
+#. Upload the media folder with your form.
+
+   - If you are hosting your form in :doc:`aggregate-intro`,
+     you will have the option to upload the media file with your form,
+     and it will be automatically downloaded to your device
+     when you pull down the blank form.
+   - If you are adding the form to your device directly,
+     make sure the media folder is placed in
+     :file:`/sdcard/odk/forms/`.
+
   
 
 .. _location-widgets:
@@ -1079,7 +1046,7 @@ The default :ref:`geopoint-widget` does not display a map to the user. With the 
 
 The user cannot select a different location on the map. 
 For a geopoint with a user-selected location,
-see :ref:`placement-map-widget` 
+see :ref:`placement-map-widget`.
 
 .. rubric:: XLSForm
 
@@ -1399,7 +1366,7 @@ Records audio from an external app.
   
   There are many apps available for this, including:
   
-  - `Audio Record from Sony <https://play.google.com/store/apps/details?id=com.sonymobile.androidapp.audiorecorder&hl=en>`_
+  - `Audio Recorder from Sony <https://play.google.com/store/apps/details?id=com.sonymobile.androidapp.audiorecorder&hl=en>`_
   - `RecForge II <https://play.google.com/store/apps/details?id=dje073.android.modernrecforge&hl=en>`_
   
   Any app that responds to
@@ -1488,11 +1455,11 @@ The flash can be used as a light source when scanning barcodes in a poorly lit e
   barcode, barcode_example, Scan any barcode.
 
 .. note::
-  Barcode scanning is built into ODK Collect versions 1.7.0 and greater.
+  Barcode scanning is built into Collect versions 1.7.0 and greater.
   
-  Versions of ODK Collect prior to 1.7.0 require the `ZXing app`_ to be installed.
+  Versions of Collect prior to 1.7.0 require the `Barcode Scanner app`_ to be installed.
   
-.. _ZXing app: https://play.google.com/store/apps/details?id=com.google.zxing.client.android
+.. _Barcode Scanner app: https://play.google.com/store/apps/details?id=com.google.zxing.client.android
 
 
   
@@ -1678,7 +1645,7 @@ See :doc:`printer-widget` for complete details.
 
    text,ex_printer_widget,Ex printer widget,printer:org.opendatakit.sensors.ZebraPrinter, "concat('123456789','<br>’,'QR CODE','<br>','Text')"
      
-.. _trigger:
+.. _trigger-widget:
 
 Trigger/acknowledge widget
 -----------------------------
@@ -1688,12 +1655,11 @@ type
 appearance
   *none*
 
-The :ref:`trigger` widget, 
-also known as the :tc:`acknowledge` widget,
+The trigger widget, 
+also known as the acknowledge widget,
 presents a single checkbox.
 
-In :doc:`aggregate-intro`,
-a completed trigger response is stored as the string ``OK``.
+A completed trigger response is stored as the string ``OK``.
 
 The example shown here includes the :th:`required` attribute.
 
@@ -1742,11 +1708,48 @@ Collects a signature from the user.
 
   image,signature_widget,Signature widget,signature,image type with signature appearance
 
-
-
-
+.. _meta-widgets:
   
-    
+Metadata widgets
+-------------------
+
+Metadata questions capture information about 
+the device or the survey collection event
+and are not visible to the user.
+
+
+These items are dependent on the survey collection event:
+
+- :tc:`start` --- The time the survey was started.
+- :tc:`end` --- The time the survey was completed.
+- :tc:`today` --- The date of survey collection.
+
+These items are defined by the device and cannot be changed:
+
+- :tc:`deviceid`
+- :tc:`subscriberid`
+- :tc:`simserial`
+
+These items are defined in Collect, 
+and :ref:`can be edited in Settings <form-metadata-settings>`:
+
+- :tc:`username`
+- :tc:`phonenumber`
+  
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name
+
+  start,start
+  end,end
+  today,today
+  deviceid,deviceid
+  subscriberid,subscriberid
+  simserial,simserial
+  username,username
+  phonenumber,phonenumber
+
 --------
   
 .. _field-list:
@@ -1760,6 +1763,18 @@ appearance
   :tc:`field-list`
 
 The :tc:`field-list` appearance attribute, applied to a group of questions, displays them all on a single screen.
+
+.. warning::
+
+  Do not include a question that depends on a previous answer
+  in the same field list as the previous question it depends on.
+  
+  Relevance and calculations are determined on :gesture:`swipe`,
+  which does not happen between questions
+  that are grouped on the same page.
+  Therefore,
+  including a question and its dependent together in a field list
+  will fail.
 
 Select widgets included in a :tc:`field-list` group can have one of several :th:`appearance` attributes:
 
