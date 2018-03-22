@@ -8,12 +8,16 @@
   Codabar
   Datetime
   dateTime
+  deviceid
   dk
   na
   nocalendar
   nolabel
+  phonenumber
   placementmap
   rect
+  simserial
+  subscriberid
   uw
   ZXing
 
