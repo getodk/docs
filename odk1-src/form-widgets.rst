@@ -1726,7 +1726,7 @@ These items are dependent on the survey collection event:
 
 - :tc:`start` --- The time the survey was started.
 - :tc:`end` --- The last time the survey was saved.
-- :tc:`today` --- The current date, according to the device, when the survey is collected. (The date is determined when the widget is rendered.)
+- :tc:`today` --- The current date, according to the device, when the survey is collected.
 
 These items are defined by the device and cannot be changed:
 
