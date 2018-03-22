@@ -139,22 +139,11 @@ These :rst:dir:`toctree` directives control the sidebar navigation menu. To add 
 Secondary tables of content
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Collections of documents are sometimes given their own table of content on an individual page. For example, the source for the document **Setting Up ODK Collect** looks like this:
-
-.. code-block:: rst
-
-  Setting Up ODK Collect
-  =========================
-
-  .. toctree::
-    :maxdepth: 2
-
-    collect-install
-    collect-connect
+Collections of documents are sometimes given their own table of content on an individual page. (See, for example, :doc:`collect-setup` and :doc:`collect-using`.)
 
 In these cases, the page containing the :rst:dir:`toctree` serves as a sort of intro page for the collection. That intro must, itself, be included in the :ref:`main-nav-menu`.
 
-The contents of a :rst:dir:`toctree` appear as section links in another :rst:dir:`toctree` it is included in. That is, if a :rst:dir:`toctree` in :file:`index.rst` lists ``collect-using``, and :file:`collect-using.rst` has a :rst:dir:`toctree`, then the contents of that second :rst:dir:`toctree` will appear in the :ref:`main-nav-menu`, as sub-items to ``collect-using``. (Indeed, this is precisely the case in the docs currently.)
+The contents of a :rst:dir:`toctree` appear as section links in another :rst:dir:`toctree` it is included in. That is, if a :rst:dir:`toctree` in :file:`index.rst` lists ``collect-using``, and :file:`collect-using.rst` has a :rst:dir:`toctree`, then the contents of that second :rst:dir:`toctree` will appear in the :ref:`main-nav-menu`, as sub-items to :doc:`collect-using`. (Indeed, this is precisely the case in the docs currently.)
 
 How ODK Docs uses main and secondary tables of content
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -934,7 +923,7 @@ We have added several custom text roles for writing about forms and the XForms a
 
 .. rst:role:: formstate
 
-  Specifies the state of the form in **ODK Collect**, which could be one of the following:
+  Specifies the state of the form in :doc:`collect-intro`, which could be one of the following:
 
   - Blank
   - Finalized

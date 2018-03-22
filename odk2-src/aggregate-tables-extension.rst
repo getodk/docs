@@ -12,7 +12,7 @@ The `ODK 2.0 REST Protocol <https://github.com/opendatakit/opendatakit/wiki/ODK-
 Server Setup
 -------------------
 
-First you’ll have to install ODK Aggregate v1.4.15 to a server (see the ODK 1.x Aggregate Installation instructions).
+First you’ll have to install ODK Aggregate v1.4.15 to a server (see :doc:`aggregate-install`).
 
   #. Install ODK Aggregate v1.4.15 to a server.
   #. Log onto your ODK Aggregate v1.4.15 instance.

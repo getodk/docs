@@ -73,6 +73,6 @@ The feature comparison table below illustrates the differences between the 1.0 a
 
 Trying Them Out
 -----------------------------
-  - Try the 1.x tools by visiting their getting started guide.
-  - Try the 2.x tools with the :doc:`getting-started-2`
+  - Try the 1.x tools with the :doc:`getting-started` guide.
+  - Try the 2.x tools with the :doc:`getting-started-2`.
 
