@@ -1168,9 +1168,46 @@ Captures a user-entered series of location coordinates, forming a polygon.
   :header: type, name, label
 
   geoshape, shape_example, Select an area
-  
 
+.. _geoshape-area:
+    
+Calculating the area of a geoshape
+"""""""""""""""""""""""""""""""""""
+
+type
+  :tc:`calculate`
+calculation
+  :tc:`area(${geoshape})`
   
+The :tc:`area()` function calculates the land area,
+in square meters,
+of a polygon defined in a :ref:`geoshape-widget`.
+The value will be included in your completed survey data,
+and can also be used in later widgets in the form.
+
+.. image:: /img/form-widgets/area-calc-0.* 
+  :alt: The geoshape widget. The question label is "Record a geoshape". The button label is "Start GeoShape".
+
+.. image:: /img/form-widgets/area-calc-1.* 
+  :alt: A map with four pins defining an area around a city block.
+    
+.. image:: /img/form-widgets/area-calc-2.* 
+  :alt: The geoshape widget with a series of lat/long coordinates.
+  
+.. image:: /img/form-widgets/area-calc-3.* 
+  :alt: A note widget. "The area of the recorded geoshape is 19322 square meters."
+  
+.. rubric:: XLSForm
+
+.. csv-table::
+  :header: type, name, label, calculation
+  
+  geoshape, shape, Record a Geoshape, 
+  calculate, shape_area, ,area(${shape})
+  calculate, rounded_shape_area, ,"round(${shape_area}, 2)"
+  note, shape_area_note, "| The area of the recorded geoshape is:
+  | ${rounded_shape_area} m²",  
+
 .. _bearing-widget:
 
 Bearing widget
