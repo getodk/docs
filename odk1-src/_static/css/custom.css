@@ -248,6 +248,15 @@ caption .headerlink::after {
     margin-bottom: 12px;
 }
 
+
+/* Unindent line blocks inside tables,
+   so that table cells can have line breaks */
+
+table.docutils div.line-block {
+    margin-left: 0;
+}
+
+
 /* Styling for rst roles and directives ends */
 
 /* Responsive css starts */
