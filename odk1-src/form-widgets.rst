@@ -479,6 +479,27 @@ A time selector. Captures only a specific time-of-day, not a date and time. For 
 
 The time widget does not accept any :th:`appearance` attributes.
 
+.. note::
+
+  The time widget stores the time along with a time zone.
+  This can cause unexpected behavior around `Daylight saving time`_.
+  
+  .. _Daylight saving time: https://en.wikipedia.org/wiki/Daylight_saving_time
+  
+  For example, if you record a time before the clock change,
+  and then view the time after the clock change,
+  it will appear to be an hour off.
+  This happens because the recorded time data
+  is understood as a specific moment in time
+  that is being "translated" into your current, local time zone.
+  
+  A similar problem occurs when moving between geographic time zones.
+  
+  This makes the time widget unsuitable for abstract 
+  time-of-day questions such as *What time do you usually wake up?*
+  
+    
+  
 .. image:: /img/form-widgets/time-start.*
   :alt: The Time form widget as displayed in the ODK Collect App on an Android phone. The question text is "What time do you usually wake up?" The button label is "Select time." Below the button is the message "No time selected."
 
