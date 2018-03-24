@@ -16,7 +16,7 @@ Install Collect
 
 The easiest way to install the Collect App is `to get it from the Google Play store <https://play.google.com/store/apps/details?id=org.odk.collect.android&hl=en>`_.
 
-For other installation options, see :doc:`collect-install`.
+.. seealso:: :doc:`collect-install`
 
 .. _getting-started-install-aggregate:
 
@@ -40,10 +40,11 @@ you can use the `Aggregate demo server`_.
 Create a form with Build and upload it to Aggregate
 ------------------------------------------------------
 
-The quickest and easiest way to start using your own survey forms is to create one online with `Build <https://build.opendatakit.org/>`_.
+The quickest and easiest way to start using your own survey forms is to create one online with `ODK Build <https://build.opendatakit.org/>`_.
 
-#. Go to `build.opendatakit.org <https://build.opendatakit.org/>`_, create a new account, and log in.
-#. Once logged in, a blank survey is created. Give it a name (:guilabel:`rename` in the upper left-hand corner) and add a few questions (click on question types in the :guilabel:`+Add New` bar along the bottom).
+#. Go to `build.opendatakit.org <https://build.opendatakit.org/>`_, create a new account, and log in. Once logged in, a blank survey is created. 
+#. Give your form a name (:guilabel:`rename` in the upper left-hand corner).
+#. Add a few questions (click on question types in the :guilabel:`+Add New` bar along the bottom).
 #. Once your new form is complete, go to :menuselection:`File --> Upload form to Aggregate...` to upload your form.
 
 
@@ -62,9 +63,9 @@ Load a form into Collect from Aggregate
 ----------------------------------------------------------
 
 #. Open Collect on your Android device.
-#. Open the :guilabel:`⋮` menu and then select :menuselection:`General Settings`.
-#. Select :guilabel:`Server`.
-#. Edit the server settings to connect to your Aggregate instance or the demo server.
+#. Open server settings 
+   (:menuselection:`⋮ --> General Settings --> Server`).
+#. Edit the server settings to connect to your Aggregate server or the demo server.
 #. Go back to the app home screen and select :guilabel:`Get Blank Form`, then select your form.
 
 
@@ -77,4 +78,4 @@ Fill out a form and upload it to Aggregate
 #. Select :guilabel:`Send Finalized Form` to upload your completed survey to Aggregate.
 
 
-Now, you should be able to log back into Aggregate instance and see your completed survey results.
+Now log back into Aggregate instance and see your completed survey results.
