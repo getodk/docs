@@ -27,6 +27,35 @@ ODK also maintains libraries and specifications that support these applications.
 
 For a complete list of our projects, check out `Open Data Kit on Github <https://github.com/opendatakit>`_.
 
+-------
+
+.. _using-odk:
+
+How is ODK used?
+------------------
+
+In most cases, users of ODK:
+
+- Create survey forms using `Build <https://build.opendatakit.org/>`_ or `XLSForm <http://xlsform.org/>`_.
+- :ref:`Upload forms <aggregate-add-new-forms>` to an :doc:`aggregate-intro` server.
+- :ref:`Load forms <in-app-get-blank-forms>` into :doc:`collect-intro` on an Android device.
+- :doc:`Use Collect to fill out forms <collect-filling-forms>` with :term:`participants <participant>`.
+- :ref:`Upload survey data <uploading-forms>` from Collect to Aggregate.
+- :doc:`Analyze or export data in Aggregate <aggregate-data>`.
+
+This requires:
+
+- :doc:`Installing Collect on a phone or other mobile device <collect-install>`
+- :ref:`Installing Aggregate on a server <installing-aggregate>`
+
+.. tip::
+
+  While this is the *typical* use pattern, it is not the only way to do things. ODK is a very flexible set of tools, and organizations will find their own best practices for adopting it.
+
+
+
+
+
 
 .. toctree::
   :maxdepth: 1 

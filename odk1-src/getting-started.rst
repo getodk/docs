@@ -1,33 +1,7 @@
 Getting Started With ODK
 =========================
 
-.. _using-odk:
 
-Using ODK
------------
-
-In most cases, users of ODK:
-
-- Create survey forms using `Build <https://build.opendatakit.org/>`_ or `XLSForm <http://xlsform.org/>`_
-- Upload forms to an Aggregate server
-- Load forms into Collect on an Android device
-- Use Collect to fill out forms with :term:`participants <participant>`
-- Upload survey data from Collect to Aggregate
-- Analyze or export data in Aggregate
-
-This requires:
-
-- :doc:`Installing Collect on a phone or other mobile device <collect-install>`
-- :ref:`Installing Aggregate on a server <installing-aggregate>`
-
-.. tip::
-
-  While this is the *typical* use pattern, it is not the only way to do things. For example:
-
-  - Forms can be created using tools other than Build or XLSForm
-  - Forms can be transfered directly to Collect, without using Aggregate
-
-  ODK is a very flexible set of tools, and organizations will find their own best practices for adopting it.
 
 .. _install-collect:
 
