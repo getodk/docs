@@ -1,64 +1,80 @@
 Getting Started With ODK
 =========================
 
+This document walks you through a very basic setup process,
+to get you familiar with using Open Data Kit.
 
+You will:
 
-.. _install-collect:
+.. contents::
+ :local:
+
+.. _getting-started-install-collect:
 
 Install Collect
 ---------------------
 
-The easiest way to install the ODK Collect App is `to get it from the Google Play store <https://play.google.com/store/apps/details?id=org.odk.collect.android&hl=en>`_.
+The easiest way to install the Collect App is `to get it from the Google Play store <https://play.google.com/store/apps/details?id=org.odk.collect.android&hl=en>`_.
 
 For other installation options, see :doc:`collect-install`.
 
-.. _installing-aggregate:
+.. _getting-started-install-aggregate:
 
-Install Aggregate
----------------------
+Install Aggregate (optional)
+------------------------------
 
-The easiest, recommended way to setup an ODK Aggregate instance is to use `Google App Engine <https://cloud.google.com/appengine/>`_ and the `ODK Aggregate Installer <https://opendatakit.org/downloads/download-category/aggregate/>`_.
+The easiest way to set up Aggregate is to
+:doc:`install it on Google App engine <aggregate-app-engine>`. 
 
 You'll set up a new Google Cloud project, and then run the install utility locally. This will connect to your Google Cloud account and install Aggregate there.
 
-For full details, and other installation methods, see the :doc:`ODK Aggregate Installation and Setup Guide <aggregate-install>`.
+Alternatively, if you just want to try things out,
+you can use the `Aggregate demo server`_.
 
-You can also watch `this video <https://www.youtube.com/watch?v=uZYInkghbCo/>`_ which explains the installation procedure of ODK Aggregate on Google App Engine and also this `Aggregate tutorial video <https://www.youtube.com/watch?v=ceEC9RZiIiA&list=PLRRSiEabNvxtzLqIKlMOQaTByxH-REEuM&index=5/>`_ which describes few of its functionalities. 
+.. _Aggregate demo server: https://opendatakit.appspot.com
 
-.. change to
-    :ref:`ODK Aggregate Installation and Setup Guide <aggregate-install-guide>`.
-    once that section is completed
+.. seealso:: :doc:`aggregate-install`
 
-.. _intro-odk-build:
+.. _getting-started-create-form:
 
-Create and Upload Survey Forms with ODK Build
------------------------------------------------
+Create a form with Build and upload it to Aggregate
+------------------------------------------------------
 
-The quickest and easiest way to start using your own survey forms is to create them online with `ODK Build <https://build.opendatakit.org/>`_. To create a form, you can follow the steps below or watch this `tutorial <https://www.youtube.com/watch?v=LPdG3rKDzpo/>`_ which explains the creation process.
+The quickest and easiest way to start using your own survey forms is to create one online with `Build <https://build.opendatakit.org/>`_.
 
-- Go to `build.opendatakit.org <https://build.opendatakit.org/>`_, create a new account, and log in.
-- Once logged in, a blank survey is created. Give it a name (:guilabel:`rename` in the upper left-hand corner) and add a few questions (click on question types in the :guilabel:`+Add New` bar along the bottom).
-- Once your new form is complete, go to :menuselection:`File --> Upload form to Aggregate...` to upload your form.
+#. Go to `build.opendatakit.org <https://build.opendatakit.org/>`_, create a new account, and log in.
+#. Once logged in, a blank survey is created. Give it a name (:guilabel:`rename` in the upper left-hand corner) and add a few questions (click on question types in the :guilabel:`+Add New` bar along the bottom).
+#. Once your new form is complete, go to :menuselection:`File --> Upload form to Aggregate...` to upload your form.
 
-.. tip::
 
-  - ODK Build is a great tool for simple forms. For more complex forms, try `XLSForm <http://xlsform.org/>`_.
-  - ODK Build can also be run locally. `Desktop versions are available for download here <https://opendatakit.org/downloads/download-category/build/>`_.
+.. seealso::
+  
+  `Build desktop app <https://opendatakit.org/downloads/download-category/build/>`_
+    To use Build locally.
 
-.. link to list of more form design options
+  `XLSForm <http://xlsform.org/>`_
+    A more robust form creation tool.
+  
+    
+.. _getting-started-load-form:
 
-.. _using-collect-intro:
-
-Load, Complete, and Upload a Form with ODK Collect
+Load a form into Collect from Aggregate
 ----------------------------------------------------------
 
-- :doc:`Install <collect-install>` and open ODK Collect on your Android device.
-- Open the :guilabel:`⋮` menu and then select :menuselection:`General Settings`.
-- Select :guilabel:`Server`.
-- Edit the server settings to connect to your ODK Aggregate instance.
-- Go back to the app home screen and select :guilabel:`Get Blank Form`, then select your form.
-- Select :guilabel:`Fill Blank Form` to complete a survey.
-- Select :guilabel:`Send Finalized Form` to upload your completed survey to ODK Aggregate.
+#. Open Collect on your Android device.
+#. Open the :guilabel:`⋮` menu and then select :menuselection:`General Settings`.
+#. Select :guilabel:`Server`.
+#. Edit the server settings to connect to your Aggregate instance or the demo server.
+#. Go back to the app home screen and select :guilabel:`Get Blank Form`, then select your form.
 
 
-Now, you should be able to log back into your ODK Aggregate instance and see your completed survey results.
+.. _getting-started-fill-form:
+
+Fill out a form and upload it to Aggregate
+-------------------------------------------
+
+#. Select :guilabel:`Fill Blank Form` to complete a survey.
+#. Select :guilabel:`Send Finalized Form` to upload your completed survey to Aggregate.
+
+
+Now, you should be able to log back into Aggregate instance and see your completed survey results.

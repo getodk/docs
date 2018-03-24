@@ -46,7 +46,7 @@ In most cases, users of ODK:
 This requires:
 
 - :doc:`Installing Collect on a phone or other mobile device <collect-install>`
-- :ref:`Installing Aggregate on a server <installing-aggregate>`
+- :doc:`Installing Aggregate on a server <aggregate-install>`
 
 .. tip::
 
