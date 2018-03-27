@@ -42,6 +42,39 @@ In the example below, school name will be asked only if age entered by the user 
 
 For more details, refer `relevants section in XLSForm documentation <http://xlsform.org/#relevant>`_.  
 
+.. warning::
+
+  Calculations are evaluated regardless of their relevance.
+  
+  For example, 
+  if you have a :tc:`calculate` widget
+  that adds together two previous responses,
+  you cannot use :th:`relevant` to skip in the case of missing values.
+  (Missing values will cause an error.)
+  
+  Instead,
+  use the `if() function`_ to check for the existence of a value,
+  and put your calculation inside the ``then`` argument.
+  
+  .. _if() function: https://opendatakit.github.io/xforms-spec/#fn:if
+  
+  For example,
+  when adding together fields ``a`` and ``b``:
+  
+  .. code-block:: none
+  
+    if(${a} != '' and ${b} != '', ${a} + ${b}, '')
+    
+  In context:
+  
+  .. csv-table::
+    :header: type, name, label, calculation
+    
+    integer, a, a =, 
+    integer, b, b =,
+    calculate, a_plus_b, ,"if(${a} != '' and ${b} != '', ${a} + ${b}, '')"
+    note, display_sum, a + b = ${a_plus_b}, 	
+
 
 Read only
 -------------
