@@ -55,7 +55,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Open Data Kit 1.x'
+project = 'Open Data Kit'
 copyright = '2017, Open Data Kit. This document is licensed under a Creative Commons Attribution 4.0 International License'
 author = 'Open Data Kit'
 
@@ -118,7 +118,7 @@ html_theme_options = {
     'logo_only': True,
     'display_version': False,
 }
-html_title = "Open Data Kit 1.x Docs"
+html_title = "Open Data Kit Docs"
 
 html_favicon = "_static/img/odk-favicon.ico"
 
@@ -174,8 +174,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'OpenDataKit1.tex', 'Open Data Kit 1.x Documentation',
-     'Open Data Kit 1.x', 'manual'),
+    (master_doc, 'OpenDataKit.tex', 'Open Data Kit Documentation',
+     'Open Data Kit', 'manual'),
 ]
 
 
@@ -184,7 +184,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'opendatakit1', 'Open Data Kit 1.x Documentation',
+    (master_doc, 'opendatakit', 'Open Data Kit Documentation',
      [author], 1)
 ]
 
@@ -195,8 +195,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'OpenDataKit1', 'Open Data Kit 1.x Documentation',
-     author, 'OpenDataKit1', 'One line description of project.',
+    (master_doc, 'OpenDataKit', 'Open Data Kit Documentation',
+     author, 'OpenDataKit', 'One line description of project.',
      'Miscellaneous'),
 ]
 
@@ -260,7 +260,7 @@ Download this documentation as a PDF.
 """
 odk_pdf = """
 
-_downloads/ODK1-Documentation.pdf
+_downloads/ODK-Documentation.pdf
 
 """
 prob_in_doc = """
