@@ -55,7 +55,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Open Data Kit 2.x'
+project = 'Open Data Kit 2'
 copyright = '2017, Open Data Kit. This document is licensed under a Creative Commons Attribution 4.0 International License'
 author = 'Open Data Kit'
 
