@@ -118,7 +118,7 @@ html_theme_options = {
     'logo_only': True,
     'display_version': False,
 }
-html_title = "Open Data Kit 2.x Docs"
+html_title = "Open Data Kit 2 Docs"
 
 html_favicon = "_static/img/odk-favicon.ico"
 
@@ -174,8 +174,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'OpenDataKit2.tex', 'Open Data Kit 2.x Documentation',
-     'Open Data Kit 2.x', 'manual'),
+    (master_doc, 'OpenDataKit2.tex', 'Open Data Kit 2 Documentation',
+     'Open Data Kit 2', 'manual'),
 ]
 
 
@@ -184,7 +184,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'opendatakit2', 'Open Data Kit 2.x Documentation',
+    (master_doc, 'opendatakit2', 'Open Data Kit 2 Documentation',
      [author], 1)
 ]
 
@@ -195,7 +195,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'OpenDataKit2', 'Open Data Kit 2.x Documentation',
+    (master_doc, 'OpenDataKit2', 'Open Data Kit 2 Documentation',
      author, 'OpenDataKit2', 'One line description of project.',
      'Miscellaneous'),
 ]
