@@ -36,7 +36,7 @@ Setting Up the Virtual Machine
 
   - If on Linux you get an error message about "PAE: Unable to boot", make sure VirtualBox has PAE/NX enabled. That setting is usually under System/Processor.
 
-  - The ova file is the installer. Once the VM has imported, the ova file and the zip file can be deleted. It is a good idea to keep the readme (this file).
+  - The ova file is the installer. Once the VM has imported, the ova file and the zip file can be deleted. It is a good idea to keep the readme file.
 
 .. _securing-the-vm:
 
