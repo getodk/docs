@@ -43,12 +43,28 @@ Setting Up the Virtual Machine
 Securing the VM
 ---------------
 
-Once the VM reboots, login to the command line interface with the following credentials
+The ODK Aggregate VM is configured with a default root user password "aggregate". The first time you log into the command line interface, you will be forced to change it.
 
-- Username: root
-- Password: aggregate
+When you start the VM, VirtualBox opens up a new window, and the VM will boot up. Everything which would normally be seen on the virtual system's monitor is shown in the window.
 
-You will be forced to change the default password on login. Please choose a secure password!
+When the VM has finished booting up, you will be prompted to log into the VM.
+
+- Click on the screen to capture your mouse and keyboard
+- Log into the command line interface with the following credentials:
+
+   - Username: root
+   - Password: aggregate
+
+   You will be forced to change the default password on login. Please choose a secure password!
+
+- Once you have logged in, you can exit the command line interface with the command :command:`exit`
+
+.. admonition:: Notes
+
+  You can learn more about working with VirtualBox on its `manual <https://www.virtualbox.org/manual>`_. We recommend reading these sections:
+
+  - `Running your virtual machine <https://www.virtualbox.org/manual/ch01.html#idm362>`_
+  - `Capturing and releasing keyboard and mouse <https://www.virtualbox.org/manual/ch01.html#keyb_mouse_normal>`_
 
 .. connecting-to-collect:
 
