@@ -6,7 +6,7 @@
 ODK Aggregate Virtual Machine
 =============================
 
-This document provides instructions on setting up :doc:`aggregate-intro` using the `ODK Aggregate VM OVA file <https://github.com/opendatakit/aggregate/releases/download/v1.5.0-beta.0/ODK-Aggregate-v1.5.0-beta.0.ova.zip>`_ and `VirtualBox <https://www.virtualbox.org>`_.
+This document provides instructions on setting up :doc:`aggregate-intro` using the `Aggregate VM OVA file <https://github.com/opendatakit/aggregate/releases/download/v1.5.0-beta.0/ODK-Aggregate-v1.5.0-beta.0.ova.zip>`_ and `VirtualBox <https://www.virtualbox.org>`_.
 
 .. admonition:: Before you get started…
 
@@ -20,7 +20,7 @@ Setting Up the Virtual Machine
 1. Download and install VirtualBox from `virtualbox.org <https://www.virtualbox.org>`_.
 2. Double-click `ODK-Aggregate-v1.5.0-beta.0.ova <https://github.com/opendatakit/aggregate/releases/download/v1.5.0-beta.0/ODK-Aggregate-v1.5.0-beta.0.ova.zip>`_ to import the VM. Accept the default settings.
 3. After the import completes, start the VM.
-4. After the VM starts, wait for Welcome to ODK Aggregate VM message to be shown.
+4. After the VM starts, wait for "Welcome to ODK Aggregate VM" message to be shown.
 5. Do not login into the black and white screen of the VM. Instead on your computer, open a web browser.
 6. Go to the web address shown in the VM boot screen (e.g., `http://localhost:10080 <http://localhost:10080>`_). You will see the Aggregate login screen.
 7. Click "Sign in with Aggregate password" and login with username and password shown below.
@@ -28,7 +28,7 @@ Setting Up the Virtual Machine
   - Aggregate username: aggregate
   - Aggregate password: aggregate
 
-8. ODK Aggregate will remind you to change your administrator password. Please do so!
+8. Aggregate will remind you to change your administrator password. Please do so!
 
 .. admonition:: Notes
 
@@ -43,7 +43,7 @@ Setting Up the Virtual Machine
 Securing the VM
 ---------------
 
-The ODK Aggregate VM is configured with a default root user password "aggregate". The first time you log into the command line interface, you will be forced to change it.
+The Aggregate VM is configured with a default root user password "aggregate". The first time you log into the command line interface, you will be forced to change it.
 
 When you start the VM, VirtualBox opens up a new window, and the VM will boot up. Everything which would normally be seen on the virtual system's monitor is shown in the window.
 
@@ -75,7 +75,7 @@ The VM defaults to a NAT network adapter and so you will only be able to connect
 
 If you'd like to connect to the VM from an external device (e.g., :doc:`collect-intro` on your phone or :doc:`briefcase-intro` on another computer), you must change the VM's network adapter settings in VirtualBox from NAT to Bridged. You must then reboot the VM. After the reboot, the VM will then behave like any other machine on your network and get an IP address.
 
-Now, log into the command line interface of the VM. Run the :command:`aggregate-config` script will let you set a FQDN. This FQDN is the globally accessible address that you should enter ODK Collect or ODK Briefcase if you want to download blank forms or send completed forms.
+Now, log into the command line interface of the VM. Run the :command:`aggregate-config` script will let you set a FQDN. This FQDN is the globally accessible address that you should enter Collect or Briefcase if you want to download blank forms or send completed forms.
 
 .. code-block:: console
 
@@ -85,6 +85,6 @@ The form download (but not the form listing) relies on the FQDN. If you want to 
 
 .. admonition:: Notes
 
-  - In order to have external servers, you have to make your VM publicly accessible on the Internet with a static IP or fully-qualified domain name. Doing this requires a fair amount of technical skill and we instead recommend you install ODK Aggregate on App Engine. Alternatively, export your data using ODK Briefcase.
+  - In order to have external servers, you have to make your VM publicly accessible on the Internet with a static IP or fully-qualified domain name. Doing this requires a fair amount of technical skill and we instead recommend you install Aggregate on App Engine. Alternatively, export your data using Briefcase.
 
   - When all fails, shutdown the VM, reboot the host computer, and restart the VM.
