@@ -6,7 +6,7 @@
 ODK Aggregate Virtual Machine
 =============================
 
-This document provides instructions on setting up ODK Aggregate using the `ODK Aggregate VM OVA file <https://github.com/opendatakit/aggregate/releases/download/v1.5.0-beta.0/ODK-Aggregate-v1.5.0-beta.0.ova.zip>`_ and `VirtualBox <https://www.virtualbox.org>`_.
+This document provides instructions on setting up :doc:`aggregate-intro` using the `ODK Aggregate VM OVA file <https://github.com/opendatakit/aggregate/releases/download/v1.5.0-beta.0/ODK-Aggregate-v1.5.0-beta.0.ova.zip>`_ and `VirtualBox <https://www.virtualbox.org>`_.
 
 .. admonition:: Before you get started…
 
@@ -73,7 +73,7 @@ Connecting to Collect
 
 The VM defaults to a NAT network adapter and so you will only be able to connect to it from your computer. This is the default behavior because it is the safest configuration.
 
-If you'd like to connect to the VM from an external device (e.g., ODK Collect on your phone or ODK Briefcase on another computer), you must change the VM's network adapter settings in VirtualBox from NAT to Bridged. You must then reboot the VM. After the reboot, the VM will then behave like any other machine on your network and get an IP address.
+If you'd like to connect to the VM from an external device (e.g., :doc:`collect-intro` on your phone or :doc:`briefcase-intro` on another computer), you must change the VM's network adapter settings in VirtualBox from NAT to Bridged. You must then reboot the VM. After the reboot, the VM will then behave like any other machine on your network and get an IP address.
 
 Now, log into the command line interface of the VM. Run the :command:`aggregate-config` script will let you set a FQDN. This FQDN is the globally accessible address that you should enter ODK Collect or ODK Briefcase if you want to download blank forms or send completed forms.
 
