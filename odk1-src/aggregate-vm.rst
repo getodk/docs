@@ -23,10 +23,10 @@ Setting Up the Virtual Machine
 4. After the VM starts, wait for "Welcome to ODK Aggregate VM" message to be shown.
 5. Do not login into the black and white screen of the VM. Instead on your computer, open a web browser.
 6. Go to the web address shown in the VM boot screen (e.g., `http://localhost:10080 <http://localhost:10080>`_). You will see the Aggregate login screen.
-7. Click "Sign in with Aggregate password" and login with username and password shown below.
+7. :guilabel:`Sign in with Aggregate password`
 
-  - Aggregate username: aggregate
-  - Aggregate password: aggregate
+  username: ``administrator``
+  password: ``aggregate``
 
 8. Aggregate will remind you to change your administrator password. Please do so!
 
