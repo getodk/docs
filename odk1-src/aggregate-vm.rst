@@ -34,7 +34,7 @@ Setting Up the Virtual Machine
 
 9. Aggregate will remind you to change your administrator user's password. Please do so!
 
-.. admonition:: Notes
+.. note::
 
   - Read `Running your virtual machine <https://www.virtualbox.org/manual/ch01.html#idm362>`_ manual page to learn more about working with VirtualBox and your Aggregate VM.
 
@@ -67,7 +67,7 @@ When the VM has finished booting up, you will be prompted to log into the VM.
 
 - Once you have logged in, you can exit the command line interface with the command :command:`exit`
 
-.. admonition:: Notes
+.. note::
 
   - Make sure you understand how VirtualBox captures your mouse and keyboard and how to release them, reading the  `Capturing and releasing keyboard and mouse <https://www.virtualbox.org/manual/ch01.html#keyb_mouse_normal>`_ section of the VirtualBox manual.
 
@@ -88,7 +88,7 @@ Now, log into the command line interface of the VM. Run the :command:`aggregate-
 
 The form download (but not the form listing) relies on the FQDN. If you want to use Collect to interact with Aggregate, you MUST configure the FQDN.
 
-.. admonition:: Notes
+.. note::
 
   - In order to have external servers, you have to make your VM publicly accessible on the Internet with a static IP or fully-qualified domain name. Doing this requires a fair amount of technical skill and we instead recommend you install Aggregate on App Engine. Alternatively, export your data using Briefcase.
 
