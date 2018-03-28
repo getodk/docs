@@ -55,7 +55,7 @@ Enhanced capabilities
 
 To use these newer features, keep your Aggregate installation up to date.
 
-.. _determine-version:
+.. _determine-aggregate-version:
 
 Determining your Aggregate version
 -----------------------------------
@@ -112,9 +112,23 @@ General steps for upgrading
 #. Disable all submissions to ODK Aggregate, in the :guilabel:`Form Management` tab.
 #. Use :doc:`ODK Briefcase  <briefcase-using>` to pull a copy of all data to your computer. 
 #. Log onto your server to confirm that it is still functioning.
-#. Download the next ODK Aggregate version and upgrade to that version.
+#. :ref:`Determine your current version number <determine-aggregate-version>`.
+#. Download the **next ODK Aggregate version** and upgrade to that version. `Find the download page for your platform here <https://opendatakit.org/downloads/download-category/aggregate/>`_, and then click :guilabel:`Previous versions` to find the right version.
+
+   Do not simply upgrade from an old version of Aggregate 
+   to the latest version.
+   It is important to upgrade sequentially through versions,
+   instead of trying to upgrade directly to the latest version
+   from an older one.
+   
+   Some versions will require manual changes upon upgrade. 
+   Complete notes about upgrading to each version 
+   are available in the `Aggregate release notes`_.
+   
+   .. _Aggregate release notes: https://github.com/opendatakit/opendatakit/wiki/Aggregate-Release-Notes 
+
 #. Log onto your server to confirm that it is still functioning.
-#. Repeat the steps 3-6 until you have upgraded to the current version.
+#. Repeat the steps 4-7 until you have upgraded to the current version.
 #. Enable submissions to ODK Aggregate via the :guilabel:`Form Management` tab.
 
 .. tip::
