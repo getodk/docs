@@ -18,25 +18,33 @@ Setting Up the Virtual Machine
 ------------------------------
 
 1. Download and install VirtualBox from `virtualbox.org <https://www.virtualbox.org>`_.
-2. Double-click `ODK-Aggregate-v1.5.0-beta.0.ova <https://github.com/opendatakit/aggregate/releases/download/v1.5.0-beta.0/ODK-Aggregate-v1.5.0-beta.0.ova.zip>`_ to import the VM. Accept the default settings.
-3. After the import completes, start the VM.
-4. After the VM starts, wait for "Welcome to ODK Aggregate VM" message to be shown.
-5. Do not login into the black and white screen of the VM. Instead on your computer, open a web browser.
-6. Go to the web address shown in the VM boot screen (e.g., `http://localhost:10080 <http://localhost:10080>`_). You will see the Aggregate login screen.
-7. :guilabel:`Sign in with Aggregate password`
+2. Download the latest Aggregate OVA file from the `Downloads <https://opendatakit.org/downloads/>`_ page
+
+   - Alternatively, if you're looking for a specific version of Aggregate, you can find them zipped on the `GitHub releases page <https://github.com/opendatakit/aggregate/releases>`_.
+
+3. Double-click on the OVA file to let VirtualBox import the VM. Accept the default settings.
+4. After the import completes, start the VM: select it with your mouse and click on the "Start" button on the VirtualBox top toolbar. A new black and white window will pop up.
+5. After the VM starts, wait for "Welcome to ODK Aggregate VM" message to be shown.
+6. Do not log into the screen of the VM. Instead, on your computer, open a web browser.
+7. Go to the web address shown in the VM screen, which normally will read `http://localhost:10080 <http://localhost:10080>`_. You will see the Aggregate login screen.
+8. :guilabel:`Sign in with Aggregate password`
 
   username: ``administrator``
   password: ``aggregate``
 
-8. Aggregate will remind you to change your administrator password. Please do so!
+9. Aggregate will remind you to change your administrator user's password. Please do so!
 
 .. admonition:: Notes
 
-  - If after unzipping the installer and launching the VM, a "File is busy" or "File access error" message is reported on Windows, it is likely due to improper unzipping or write permissions. Try right-clicking the zip file, then select Extract All and save the files to a folder on the Desktop.
+  - Read `Running your virtual machine <https://www.virtualbox.org/manual/ch01.html#idm362>`_ manual page to learn more about working with VirtualBox and your Aggregate VM.
 
-  - If on Linux you get an error message about "PAE: Unable to boot", make sure VirtualBox has PAE/NX enabled. That setting is usually under System/Processor.
+  - Once VirtualBox has imported the VM, the zip file and the OVA file can be deleted. It is a good idea to keep the readme file for future reference.
 
-  - The ova file is the installer. Once the VM has imported, the ova file and the zip file can be deleted. It is a good idea to keep the readme file.
+  - The OVA files published on GitHub releases page are zipped. You will have to unzip them in order to follow the steps above.
+
+  - Windows: if you get an error message about "File is busy" or "File access error" after launching the VM, it is likely due to improper unzipping or write permissions. Try right-clicking the zip file, then select "Extract All" and save the files to a folder on the Desktop.
+
+  - Linux: if you get an error message about "PAE: Unable to boot", make sure VirtualBox has PAE/NX enabled. That setting is usually under System/Processor.
 
 .. _securing-the-vm:
 
@@ -61,10 +69,7 @@ When the VM has finished booting up, you will be prompted to log into the VM.
 
 .. admonition:: Notes
 
-  You can learn more about working with VirtualBox on its `manual <https://www.virtualbox.org/manual>`_. We recommend reading these sections:
-
-  - `Running your virtual machine <https://www.virtualbox.org/manual/ch01.html#idm362>`_
-  - `Capturing and releasing keyboard and mouse <https://www.virtualbox.org/manual/ch01.html#keyb_mouse_normal>`_
+  - Make sure you understand how VirtualBox captures your mouse and keyboard and how to release them, reading the  `Capturing and releasing keyboard and mouse <https://www.virtualbox.org/manual/ch01.html#keyb_mouse_normal>`_ section of the VirtualBox manual.
 
 .. connecting-to-collect:
 
