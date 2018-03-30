@@ -8,13 +8,29 @@ Installing ODK Tables
 Prerequisites
 --------------------------------------
 
-ODK Tables requires:
+.. _tables-install-required:
 
-  - :doc:`app-designer-intro`
+Required
+~~~~~~~~~~~~~~~
+
+Before installing ODK Tables, you will need the following ODK Tools:
+
   - :doc:`services-intro`
-  - :doc:`survey-intro`
-  - :program:`OI File Manager` -- please download this from the `Google Play Store <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_ (this is required)
 
+As well as the following third party apps:
+
+  - `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_
+
+.. _tables-install-recommended:
+
+Recommended
+~~~~~~~~~~~~~~~
+
+We also recommend installing:
+
+  - :doc:`survey-intro`
+
+ODK Survey is not required, but Tables and Survey are most versatile when used together. Survey offers a simple, form based data collected workflow similar to ODK Collect that can be seamlessly integrated with Tables to create and modify records.
 
 .. _tables-install-app:
 

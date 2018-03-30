@@ -3,9 +3,9 @@ ODK Aggregate Tables Extension
 
 .. _aggregate-tables-extension-intro:
 
-:dfn:`ODK Aggregate Tables Extensions` enable the ODK 2.0 tools to share data via bi-directional synchronization with a central ODK Aggregate server.
+:dfn:`ODK Aggregate Tables Extensions` enable the ODK 2 tools to share data via bi-directional synchronization with a central ODK Aggregate server.
 
-The `ODK 2.0 REST Protocol <https://github.com/opendatakit/opendatakit/wiki/ODK-2.0-Synchronization-API-(RESTful)>`_ is compatible with ODK Aggregate v1.4.15. The sync protocol has been augmented to cache the user's permissions on the device and, for super-users or administrators, to cache the full set of users and all of their permissions (so that the super-user and/or administrator can assign rows to particular individuals).
+The `ODK 2 REST Protocol <https://github.com/opendatakit/opendatakit/wiki/ODK-2.0-Synchronization-API-(RESTful)>`_ is compatible with ODK Aggregate v1.4.15. The sync protocol has been augmented to cache the user's permissions on the device and, for super-users or administrators, to cache the full set of users and all of their permissions (so that the super-user and/or administrator can assign rows to particular individuals).
 
 .. _aggregate-tables-extension-server-setup:
 
@@ -30,15 +30,15 @@ First you’ll have to install ODK Aggregate v1.4.15 to a server (see :doc:`aggr
 Changing the AppName
 -----------------------
 
-ODK Aggregate is configured by default to use the **default** application name. To change the name, go to the :menuselection:`Site Admin --> Preferences` screen and click the :guilabel:`Change ODK 2.0 App Name` button, and enter a new application name. For example, the https://opendatakit-surveydemo.appspot.com server is configured with *survey* as its application name.
+ODK Aggregate is configured by default to use the **default** application name. To change the name, go to the :menuselection:`Site Admin --> Preferences` screen and click the :guilabel:`Change ODK 2 App Name` button, and enter a new application name. For example, the https://opendatakit-surveydemo.appspot.com server is configured with *survey* as its application name.
 
 .. note::
 
-  The ODK 2.0 tools are designed to support multiple, independent, ODK 2.0 applications running on the Android device. Each of the tools has the ability to run in the context of either a default application name, or a specified application name.
+  The ODK 2 tools are designed to support multiple, independent, ODK 2 applications running on the Android device. Each of the tools has the ability to run in the context of either a default application name, or a specified application name.
 
-By default, all the ODK 2.0 tools run under the default application name. Application names correspond to the name of the directory under :file:`/sdcard/opendatakit` where the data files for that application are stored.
+By default, all the ODK 2 tools run under the default application name. Application names correspond to the name of the directory under :file:`/sdcard/opendatakit` where the data files for that application are stored.
 
-When you run ODK Services from within ODK Survey, the ODK Survey tool informs ODK Services to run in the context of the application name under which the ODK Survey tool is running. When ODK Services then interacts with ODK Aggregate, it reports that application name to the server. The server must be configured with exactly the same application name or it will reject the requests from ODK Services. The same applies when launching ODK Services from within ODK Tables.
+When you run ODK Services from within ODK Survey, the ODK Survey tool informs ODK Services to run in the context of the application name under which the ODK Survey tool is running. When ODK Services then interacts with ODK Aggregate, it reports that application name to the server. The server must be configured with exactly the same application name or it will reject the requests from ODK Services. This also applies when launching ODK Services from within ODK Tables.
 
 .. _aggregate-tables-extension-syncing:
 
