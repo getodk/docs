@@ -220,7 +220,7 @@ Creating users
   3. Click on :guilabel:`ou=people` and choose :guilabel:`Create a child entry`.
   4. Choose the :guilabel:`Generic: User Account` template.
   5. Fill out the form and click :guilabel:`Create Object`.
-  6. Assign users to groups with `these instructions <sync-endpoint-ldap-assign>`.
+  6. Assign users to groups with :ref:`these instructions <sync-endpoint-ldap-assign>`.
 
 .. _sync-endpoint-ldap-groups:
 
@@ -237,7 +237,7 @@ Creating groups
 
     The group name must start with the group prefix, in this case the group prefix is *default_prefix* so for example: *default_prefix my-new-group*
 
-  6. Assign users to groups with `these instructions <sync-endpoint-ldap-assign>`.
+  6. Assign users to groups with :ref:`these instructions <sync-endpoint-ldap-assign>`.
 
 .. _sync-endpoint-ldap-assign:
 
