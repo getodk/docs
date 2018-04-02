@@ -1,4 +1,4 @@
-ODK 2 Getting Started Deployment Architect Guide
+Getting Started Deployment Architect Guide
 ==========================================================
 
 .. _architect-odk-2:
@@ -293,18 +293,34 @@ Congratulations, you have successfully modified this ODK 2 application to add a 
 
 You could now log onto your server, delete the geotagger table, reset your server, and start collecting geopoints with the new image direction field.
 
-.. _architect-odk-2-next:
+.. _architect-odk2-next:
 
 Next Steps
 -----------------------
 
-The XLSX file format and the supplied prompt types are described in the :doc:`xlsx-converter-intro` documentation. The tools allow arbitrary customization and the definition of new prompt types.
+Survey and Tables each have a basic sample application that walks through their features:
 
-We provide guides geared towards Deployment Architects for each of the Android tools:
+  - :doc:`survey-sample-app`
+  - :doc:`tables-sample-app`
+
+
+To get started building applications, first set up the :doc:`app-designer-intro`. After you have familiarized yourself with that tool, you can try building and deploying an application:
+
+  - :doc:`build-app`
+
+A more complete guide to using ODK XLSX Converter is provided in the :doc:`xlsx-converter-intro` documentation. More details about Tables web views are available in :doc:`tables-web-pages` and :doc:`injected-interfaces`.
+
+For examples of real world applications and details about they are implemented, try out the: :doc:`reference-apps`.
+
+We also provide guides geared towards Deployment Architects for each of the Android and Desktop tools.
 
   - :doc:`survey-managing`
   - :doc:`tables-managing`
   - :doc:`services-managing`
   - :doc:`scan-managing`
 
-And the :doc:`app-designer-intro` documentation details creating new applications.
+However the user guides for these tools are also useful for everyone.
+
+Finally, to expand your knowledge of the more advanced features of the platform, such as data permission filters, read the :doc:`advanced-topics-architect`.
+
+

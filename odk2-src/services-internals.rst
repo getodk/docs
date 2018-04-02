@@ -33,6 +33,6 @@ At any point you can copy the local database on the Android device onto your des
 
   :file:`/sdcard/opendatakit/default/data/webDb`
 
-To inspect the database, use the :code:`adb pull` command (Google documentation is available `here <https://developer.android.com/studio/command-line/adb.html#copyfiles>`_). Then use a program such as `DB Browser for SQLite <http://sqlitebrowser.org/>`_ to view the database. Further instructions are available in the :ref:`Application Designer Guide <app-designer-common-tasks-pushing>`.
+To inspect the database, use the :code:`adb pull` command (Google documentation is available `here <https://developer.android.com/studio/command-line/adb.html#copyfiles>`_). Then use a program such as `DB Browser for SQLite <http://sqlitebrowser.org/>`_ to view the database. Further instructions are available in the :ref:`build-app-pushing` guide.
 
 

@@ -49,6 +49,6 @@ After this configuration is set up, ODK Tables should now present a custom home 
 Learn More
 ---------------
 
-For instructions on installing your own Tables application to a device, view the :ref:`app-designer-common-tasks-move-to-device` guide.
+For instructions on installing your own Tables application to a device, view the :ref:`build-app-move-to-device` guide.
 
 

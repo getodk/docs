@@ -364,7 +364,7 @@ The creation of data tables is handled within the :doc:`app-designer-intro`. ODK
 Initialize from ODK Application Designer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-See the Application Designer documentation for :ref:`designing a form <app-designer-common-tasks-designing-a-form>` and :ref:`writing your own web files <app-designer-common-tasks-writing-web-file>` for more details on adding your own tables and defining their properties.
+See the documentation for :doc:`build-app` and :ref:`build-app-creating-web-file` for more details on adding your own tables and defining their properties.
 
 
 
@@ -373,7 +373,7 @@ See the Application Designer documentation for :ref:`designing a form <app-desig
 Creating Customized Web Views
 --------------------------------
 
-Instructions for creating your own custom web views for presenting and modifying data, and implementing your custom workflow, go to the :ref:`Application Designer web view design guide <app-designer-common-tasks-design-view>`.
+Instructions for creating your own custom web views for presenting and modifying data, and implementing your custom workflow, go to the :ref:`web view design guide <build-app-design-view>`.
 
 For the convenience of Data Management Application developers, the ODK 2 platform provides a number of basic view types, such as *List Views* and *Detail Views*. These can be used and extended in your applications, or you can create something completely unique to your requirements with a custom view. Some of these views can be configured as defaults in :ref:`tables-managing-table-properties`, and you can also launch directly into them with JavaScript calls from :file:`/system/tables/js/odkTables.js`. Examples include:
 

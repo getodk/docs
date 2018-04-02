@@ -53,9 +53,9 @@ To get started creating your own Data Management Applications, go to the :doc:`a
 Designing a Form
 --------------------
 
-Instructions for designing Survey forms are provided in the :ref:`Application Designer form design guide <app-designer-common-tasks-designing-a-form>`.
+Basic instructions for designing Survey forms are provided in the :ref:`build-app-designing-a-form`.
 
-Survey forms are created in :program:`Excel` and saved as :file:`.xlsx` files. These are converted into form definitions using the :doc:`xlsx-converter-intro`. The linked guide should help you create and modify these files to create your own forms.
+Survey forms are created in :program:`Excel` and saved as :file:`.xlsx` files. These are converted into form definitions using the :doc:`xlsx-converter-intro`. The linked guide should help you create and modify the files to create your own forms.
 
 .. _survey-xlsx-reference:
 
@@ -131,7 +131,7 @@ Making a New AppName
       The new AppName cannot be the same as another AppName that already exists on the device.
 
   5. Save :file:`Gruntfile.js`
-  6. Develop your Data Management Application and push it to the device the normal way (instructions in the :ref:`guide <app-designer-common-tasks-pushing>`).
+  6. Develop your Data Management Application and push it to the device the normal way (instructions in the :ref:`guide <build-app-pushing>`).
 
 Using the above technique will keep your apps cleanly separated. You can also maintain multiple Data Management Applications in the same Application Designer instance by making alternative :file:`app-designer/app` directories and creating new :program:`Grunt` tasks to push them to the device.
 

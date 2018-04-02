@@ -1,3 +1,7 @@
+.. spelling::
+
+  geotagging
+
 Welcome to Open Data Kit 2's documentation!
 ==================================================
 
@@ -58,11 +62,14 @@ The ODK 2 Tool Suite consists of:
 
 Trying It Out
 ----------------
-First see the sections for :doc:`survey-intro`, :doc:`tables-intro`, and :doc:`services-intro`. They cover the overview of each tool, setup instructions, and demonstration forms and applications built with these tools. These demonstration applications will give you a good sense of the flexibility and breadth of capabilities of the two tools.
 
-Next, see the :doc:`getting-started-2-user` and :doc:`getting-started-2-architect` to understand the process for revising and developing your own forms. That guide will walk you through modifying the Geotagger demo app to add a new field to it.
+The first step to get a feel for the ODK 2 tools and how they fit together is to do the :doc:`getting-started-2-user`. This guide walks you through the process of using a basic geotagging application and submitting data to the server. After this is completed, the guide provides a list of :ref:`user-odk2-next` for the user.
 
-Finally, after building your own applications, review the :doc:`advanced-topics-architect` sections to learn more about implementing more complex features, such as internationalization and row level access filtering.
+Deployment Architects should follow this up with the :doc:`getting-started-2-architect` to get an introduction into revising and editing their own forms. That guide walks you through modifying the *Geotagger* demo application to add a new field to it. Similar to the user guide, this guide provides a list of :ref:`architect-odk2-next` for the Deployment Architect.
+
+System Administrators should learn about :doc:`cloud-endpoints-intro`.
+
+Platform Developers should already be familiar with everything from the User and Deployment Architect sections, and can learn more in the :doc:`advanced-topics-developer` documentation.
 
 
 .. toctree::
@@ -91,6 +98,18 @@ Finally, after building your own applications, review the :doc:`advanced-topics-
   app-designer-intro
   cloud-endpoints-intro
   suitcase-intro
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Application Building
+
+  build-app
+  xlsx-converter-intro
+  tables-web-pages
+  injected-interfaces
+  scan-form-designer-intro
+  reference-apps
 
 .. toctree::
   :maxdepth: 2

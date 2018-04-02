@@ -24,9 +24,9 @@ Video tutorials for each of these steps --from designing to exporting your form 
 
 Once you have exported your completed form you can transfer the form template to the ODK Scan app and begin scanning paper forms. See the :doc:`scan-intro` documentation for more on those next steps.
 
-.. _scan-form-user-guide:
+.. _scan-form-architect-guide:
 
-ODK Scan Form Designer User Guide
+Deployment Architect Guide
 ---------------------------------------------
 
 .. toctree::

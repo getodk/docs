@@ -15,7 +15,5 @@ Other perspective definitions can be found :ref:`here <odk-2-perspectives>`.
   data-permission-filters
   internationalization
   config-file-structure
-  injected-interfaces
-  tables-web-pages
   survey-controller-actions
 

@@ -192,6 +192,7 @@ slugified
 smartphone
 spam
 sphinxcontrib
+stateful
 subfolders
 subform
 subforms
@@ -232,6 +233,9 @@ virtualenvwrapper
 virtualization
 Vysor
 wayfinding
+waypoint
+WayPoint
+waypoints
 webapps
 webforms
 Webforms
