@@ -3,7 +3,10 @@ ODK 2 Getting Started Deployment Architect Guide
 
 .. _architect-odk-2:
 
-This guide is intended for Deployment Architects (see the :ref:`odk-2-perspectives` section for details).
+This guide is intended for Deployment Architects. A Deployment Architect is an author of a data management application or a consumer of collected data. This person might create forms and edit Javascript on their computer to deploy to the Android device. Or they might download data from the server and use Excel to perform analysis. Examples include technical staff and data analytics staff.
+
+Other perspective definitions can be found :ref:`here <odk-2-perspectives>`.
+
 
 .. contents:: :local:
 
