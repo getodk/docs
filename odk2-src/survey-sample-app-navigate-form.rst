@@ -1,3 +1,7 @@
+.. spelling::
+  prepopulate
+  prepopulated
+
 Navigating a Form
 ========================
 

@@ -1,5 +1,6 @@
 .. spelling::
 
+  geotagging
   prepopulated
 
 ODK Tables: Sample Application

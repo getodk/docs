@@ -1,3 +1,7 @@
+.. spelling::
+
+  prepopulated
+
 Plot Demo
 ================
 

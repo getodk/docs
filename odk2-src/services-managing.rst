@@ -33,7 +33,7 @@ If you have not installed Services already, follow our guide for :doc:`services-
 Compatible Servers
 ~~~~~~~~~~~~~~~~~~~~~~
 
-It is important to match your version of ODK Services with an approprate version of a :doc:`cloud-endpoints-intro`. To do this, find the release from the `Services Releases page <https://github.com/opendatakit/services/releases>`_ and match it to a release from the `Sync Endpoint Releases page <https://github.com/opendatakit/sync-endpoint/releases>`_. Or, if you want to use ODK Aggregate, check the release notes for the appropriate version.
+It is important to match your version of ODK Services with an appropriate version of a :doc:`cloud-endpoints-intro`. To do this, find the release from the `Services Releases page <https://github.com/opendatakit/services/releases>`_ and match it to a release from the `Sync Endpoint Releases page <https://github.com/opendatakit/sync-endpoint/releases>`_. Or, if you want to use ODK Aggregate, check the release notes for the appropriate version.
 
 
 .. _services-managing-server-config:
