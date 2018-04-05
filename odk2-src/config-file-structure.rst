@@ -3,7 +3,7 @@ Application Configuration File Structure
 
 .. _config-structure:
 
-A complimentary description is provided in the user-level documentation. The tool suite stores its configuration and data files on the SDCard in a directory structure rooted at `opendatakit`. The directories underneath this are *application names* and provide isolation of data and configuration from one user-defined application to the next. By default, if not specified, the *application name* is assumed to be `default`. Underneath this are 4 top-level directories::
+A complementary description is provided in the user-level documentation. The tool suite stores its configuration and data files on the SDCard in a directory structure rooted at `opendatakit`. The directories underneath this are *application names* and provide isolation of data and configuration from one user-defined application to the next. By default, if not specified, the *application name* is assumed to be `default`. Underneath this are 4 top-level directories::
 
     /opendatakit/{appName}
         /config

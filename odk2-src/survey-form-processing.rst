@@ -502,8 +502,8 @@ Utility Functions for Parsing Selection and Order-By Clauses
 
 Two methods:
 
-  - code:`convertSelectionString(linkedModel, selection)`
-  - code:`convertOrderByString(linkedModel, order_by)`
+  - :code:`convertSelectionString(linkedModel, selection)`
+  - :code:`convertOrderByString(linkedModel, order_by)`
 
 These functions examine where clauses and order-by clauses to replace any `elementPath` expressions with `elementKey` values. Because this is not within the database layer, these conversions are not entirely fool-proof.
 
