@@ -71,4 +71,4 @@ ImportError: cannot import name Directive
 ```
 
 #### Reason & Fix:
-You got an incorrect` sphinx` version, and you can fix this by reinstall `sphinx` using `requirements.txt`.
+It caused by an incorrect` sphinx` version, and you can fix this by reinstalling `sphinx` using `requirements.txt`.
