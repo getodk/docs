@@ -71,8 +71,4 @@ ImportError: cannot import name Directive
 ```
 
 #### Reason & Fix:
-You got an incorrect` sphinx` version, and you can fix this by reinstall `sphinx` using:
-
-```bash
-$ pip install sphinx==1.6.6 
-```
+You got an incorrect` sphinx` version, and you can fix this by reinstall `sphinx` using `requirements.txt`.
