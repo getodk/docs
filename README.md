@@ -11,18 +11,28 @@ Our documentation website is live at https://docs.opendatakit.org
 If you can't find what you are looking for, try the [old docs on the ODK website](https://opendatakit.org/). Also, please [file an issue](https://github.com/opendatakit/docs/issues) so that we know to add the information you are looking for.
 
 ## Building and viewing documentation locally
-See the [Contributor Guide](http://docs.opendatakit.org/contributing) for detailed steps --- no prior experience needed!
+
+We require a Python version at [python3+](https://www.python.org/downloads/), you can also install Python using Virtual Environment or a version management like [pyenv](https://github.com/pyenv/pyenv) .
+
+Once you have finished the installation of Python, you need to clone this repo and make sure all the requirements are installed:
+```bash
+$ git clone https://github.com/opendatakit/docs.git
+$ cd docs/
+$ pip install -r requirements.txt
+```
 
 Once your environment is set up, build and run the doc site with:
-```
-make odk1
-cd odk1-build
-python -m http.server 8000
+```bash
+$ make odk1
+$ cd odk1-build
+$ python -m http.server 8000
 ```
 
 To perform all spell check and style checks before building, use `make odk1-check` instead or `make odk1`.
 
 To build ODK 2 docs, replace `odk1` with `odk2`.
+
+See the [Contributor Guide](http://docs.opendatakit.org/contributing) for detailed steps --- no prior experience needed!
 
 ## How to contribute?
 
