@@ -14,43 +14,12 @@ If you can't find what you are looking for, try the [old docs on the ODK website
 
 > See the [Contributor Guide](http://docs.opendatakit.org/contributing) for detailed steps --- no prior experience needed!
 
-We require a Python version at [python3+](https://www.python.org/downloads/), you can also install Python using Virtual Environment or a version management like [pyenv](https://github.com/pyenv/pyenv) . To see your python and [pip](https://pip.pypa.io/en/stable/installing/) version:
-
-```bash
-$ python --version
-$ pip -V
-```
-
-Once you have finished the installation of Python, you need to clone this repo and make sure all the requirements are installed:
+Firstly, you need to clone this repo and make sure all the requirements are installed:
 ```bash
 $ git clone https://github.com/opendatakit/docs.git
 $ cd docs/
 $ pip install -r requirements.txt
 ```
-These requirements including:
-
-> - alabaster==0.7.10
-> - Babel==2.4.0
-> - docutils>=0.14
-> - imagesize==0.7.1
-> - Jinja2==2.9.6
-> - MarkupSafe==1.0
-> - Pygments==2.2.0
-> - pytz==2017.2
-> - requests==2.14.2
-> - six==1.10.0
-> - snowballstemmer==1.2.1
-> - Sphinx==1.6.6
-> - sphinx-rtd-theme==0.2.4
-> - sphinxcontrib-websupport==1.0.1
-> - sphinxcontrib-spelling
-> - typing==3.6.1
-> - Pillow==4.3.0
-> - proselint
-> - blessings
-> - gitpython
-> - sphinx-tabs==1.1.7
-
 Once your environment is set up, build and run the doc site with:
 ```bash
 $ make odk1
