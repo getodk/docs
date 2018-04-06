@@ -50,22 +50,7 @@ You can also...
 
 ## Troubleshooting
 
-### **1. command not found**
-#### Error message:
-```bash
-$ make odk1
-rm -rf tmp1-src
-rm -rf odk1-build/*
-mkdir tmp1-src
-cp -rf odk1-src/* tmp1-src
-cp -rf shared-src/* tmp1-src
-python: sphinx-build: command not found
-make: *** [odk1] Error 127
-```
-#### Reason & Fix:
-To build document, make sure you have installed `sphinx` in you current python version already. If you didn't install that, please using our `requirements.txt` file or manually.
-
-### **2. incorrect sphinx version**
+### **1. incorrect sphinx version**
 #### Error message:
 ```bash
 $ make odk1
@@ -77,6 +62,7 @@ make: *** [odk1] Error 1
 or:
 ```bash
 $ make odk1
+...
 Configuration error:
 There is a programable error in your configuration file:
 ...
@@ -85,7 +71,7 @@ ImportError: cannot import name Directive
 ```
 
 #### Reason & Fix:
-You got an incorrect sphinx version, we need the 1.6.6 version. You can fix this by reinstall sphinx using:
+You got an incorrect` sphinx` version, and you can fix this by reinstall `sphinx` using:
 
 ```bash
 $ pip install sphinx==1.6.6 
