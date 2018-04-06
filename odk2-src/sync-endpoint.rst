@@ -7,9 +7,9 @@ ODK Sync Endpoint
 
 .. _sync-endpoint-intro:
 
-:dfn:`ODK Sync Endpoint` is an implementation of :doc:`cloud-endpoints-intro`. It runs a server inside a :program:`Docker` container that implements the `ODK 2.0 REST Protocol <https://github.com/opendatakit/opendatakit/wiki/ODK-2.0-Synchronization-API-(RESTful)>`_.
+:dfn:`ODK Sync Endpoint` is an implementation of :doc:`cloud-endpoints-intro`. It runs a server inside a :program:`Docker` container that implements the `ODK 2 REST Protocol <https://github.com/opendatakit/opendatakit/wiki/ODK-2.0-Synchronization-API-(RESTful)>`_.
 
-It communicates with your ODK 2.0 Android applications to synchronize your data and application files.
+It communicates with your ODK 2 Android applications to synchronize your data and application files.
 
 .. _sync-endpoint-auth:
 

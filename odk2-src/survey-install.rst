@@ -8,12 +8,29 @@ Installing ODK Survey
 Prerequisites
 --------------------------------------
 
-ODK Survey requires:
+.. _survey-install-required:
 
-  - :doc:`app-designer-intro`
+Required
+~~~~~~~~~~~~~~~
+
+Before installing ODK Survey, you will need the following ODK Tools:
+
   - :doc:`services-intro`
-  - :program:`OI File Manager` -- please download this from the `Google Play Store <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_ (this is required)
 
+As well as the following third party apps:
+
+  - `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_
+
+.. _survey-install-recommended:
+
+Recommended
+~~~~~~~~~~~~~~~
+
+We also recommend installing:
+
+  - :doc:`tables-intro`
+
+ODK Tables is not required, but Tables and Survey are most versatile when used together. Tables offers a way to visualize, process, and modify data collected by Survey, all on the device.
 
 .. _survey-install-app:
 

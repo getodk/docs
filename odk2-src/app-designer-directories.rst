@@ -8,7 +8,7 @@ There are many folders and files within the :file:`Application Designer` directo
   - :file:`app/` - folder containing everything that will be pushed to the Android device.
   - :file:`Gruntfile.js` - contains the definitions of tasks that push files to the Android device, launch the :program:`Chrome` browser, and pull data and log files off the Android device.
 
-Initially, you will only be concerned with the contents of your :file:`app/` directory -- the set of files that are placed on the Android device. As your sophistication grows, you may want to define your own :program:`grunt` tasks to automate repetitive steps in your deployment and device management processes. Adding or modifying tasks is beyond the scope of this document; please refer to the :program:`grunt` website (see :doc:`getting-started-2` for the link to that site).
+Initially, you will only be concerned with the contents of your :file:`app/` directory -- the set of files that are placed on the Android device. As your sophistication grows, you may want to define your own :program:`grunt` tasks to automate repetitive steps in your deployment and device management processes. Adding or modifying tasks is beyond the scope of this document; please refer to the :program:`grunt` website (see :doc:`getting-started-2-architect` for the link to that site).
 
 For completeness, here is the full list of the files and sub-folder in this directory. Again, you generally do not need to be concerned with the contents or specifics of any of these:
 

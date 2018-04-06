@@ -12,7 +12,7 @@ Application Designer Common Tasks
 ODK Survey: Designing a Form
 -------------------------------
 
-This section assumes that all of the necessary software has been installed and verified. If not, complete the instructions in the :doc:`getting-started-2`.
+This section assumes that all of the necessary software has been installed and verified. If not, complete the instructions in the :doc:`getting-started-2-user` and :doc:`getting-started-2-architect`.
 
 When creating a new form, the appropriate directory structure must be created. Once this directory structure is in place, an XLSX form can be created. From this XLSX form, a :file:`formDef.json` file will be generated using the XLSX Converter. This :file:`formDef.json`, in the appropriate directory, is what the system will use to create the survey form.
 
@@ -34,7 +34,7 @@ This will create the required directory structure for an individual table, inclu
 Creating an ODK Survey
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-With the proper directory structure in place, you can now create your survey form. The :doc:`xlsx-converter-intro` documentation extensively details the worksheets that will need to be created within your XLSX file to create a survey. Also, you can use the **File Browser** window of the Application Designer to navigate to example XLSX files under the :file:`app/tables/` directory; it will likely be easier to start with one of the existing example forms and modify it. The key modification would be on the settings page -- changing the values for *table_id* and *form_id* (if present).
+With the proper directory structure in place, you can now create your survey form. The :doc:`xlsx-converter-intro` documentation extensively details the worksheets that will need to be created within your XLSX file to create a survey. Also, you can use the **File Browser** window of the Application Designer to navigate to example XLSX files under the :file:`app/tables/` directory. It will likely be easier to start with one of the existing example forms and modify it. The key modification would be on the settings page -- changing the values for *table_id* and *form_id* (if present).
 
 .. _app-designer-common-tasks-generate-formdef:
 
@@ -49,7 +49,7 @@ Once you have a saved your survey XLSX file, you can use the XLSX Converter to c
 
 You will notice that the form still does not appear in the list of forms found under the **Preview** tab of the Application Designer. In order for the form to appear, the :file:`framework.xlsx` file in the :file:`app/config/assets/framework/forms/framework/` directory must be modified, and the :file:`formDef.json` file in that same directory updated using XLSX Converter.
 
-The :file:`framework.xlsx` file is just another form definition, but it generally has no persisted data. In this case, it just presents a list of forms and allows you to open them.
+The :file:`framework.xlsx` file is another form definition, but it generally has no persisted data. In this case, it only presents a list of forms and allows you to open them.
 
 The modifications to the :file:`framework.xlsx` are as follows. Assuming you have created a :file:`testForm.xlsx`, the appropriate directory structures for :file:`testForm.xlsx`, and then properly generated and saved the :file:`formDef.json:`, the following lines would need to be added into the :file:`framework.xlsx` **survey worksheet**.
 
@@ -80,7 +80,7 @@ The XLSX Converter should report most problems with your survey.
 
 If the form is not being rendered correctly but your survey generates a :file:`formDef.json` without an error, first try purging the database (dropping all the existing data tables) using the :guilabel:`Purge Database` button on the **Preview** tab. You will typically need to purge the database whenever you add or remove fields from your form or change their data type.
 
-If that does not resolve the issue, try stopping the :program:`grunt` command (on Windows, :kbd:`Control-C` should produce a prompt asking to confirm whether to stop or not.  On Mac, :kbd:`Control-C` kill the process with no prompt.), and re-running it. :program:`Grunt` can sometimes get overwhelmed with changes and stop working. After restarting, test your form.
+If that does not resolve the issue, try stopping the :program:`grunt` command (on Windows, :kbd:`Control-C` should produce a prompt asking to confirm whether to stop or not. On Mac, :kbd:`Control-C` kill the process with no prompt.), and re-running it. :program:`Grunt` can sometimes get overwhelmed with changes and stop working. After restarting, test your form.
 
 If there are other problems, the contents of the JavaScript Console will be helpful to the ODK core team for debugging. Open the JavaScript Console by clicking the icon with the three bars in the top right, select :guilabel:`More Tools`, select :guilabel:`Developer Tools`, and then select the :guilabel:`Console` tab. Select all of the debugging output, then copy it, save it to a file, and post it to |forum|_ or create a ticket on the `Github Issue Tracker <https://github.com/opendatakit/opendatakit/issues>`_.
 
@@ -134,7 +134,7 @@ In the ODK Application Designer, use the file browser to open the :file:`config/
   <script type="text/javascript" src="../../../../system/js/odkData.js"></script>
   <script type="text/javascript" src="../../../../system/tables/js/odkTables.js"></script>
 
-In the first line you are just making the :program:`jQuery` object available to your code; :program:`jQuery` is a very powerful, very commonly used set of functions for accessing and performing actions within a webpage. In the second two lines you are adding the *odkCommon*, *odkTables*, and *odkData* objects if they are not already provided by the browser environment. When running on the device, the ODK Tables APK will provide these, and the contents of these files will be ignored. When running in Application Designer on your computer, these files provide the approximate functionality of the APK, allowing you to create and debug your scripts. However, at the moment, these implementations make use of RequireJS, which the ODK Tables HTML files do not use (RequireJS is extensively used by ODK Survey). This causes these to break in Application Designer.
+In the first line you are making the :program:`jQuery` object available to your code. :program:`jQuery` is a powerful, commonly used set of functions for accessing and performing actions within a webpage. In the second two lines you are adding the *odkCommon*, *odkTables*, and *odkData* objects if they are not already provided by the browser environment. When running on the device, the ODK Tables APK will provide these, and the contents of these files will be ignored. When running in Application Designer on your computer, these files provide the approximate functionality of the APK, allowing you to create and debug your scripts. However, at the moment, these implementations make use of RequireJS, which the ODK Tables HTML files do not use (RequireJS is extensively used by ODK Survey). This causes these to break in Application Designer.
 
 .. _app-designer-common-tasks-writing-web-file:
 
@@ -154,7 +154,7 @@ These files need content from your data-table in order enable you to begin creat
 After that, you can deploy your app to your device and open ODK Tables onto the custom view (see the ``properties`` sheet section of the XLSX Converter for how to specify the HTML file that should be opened). Once it opens, you can use the :program:`Chrome` browser on your computer to inspect for devices and connect to this custom screen on your Android device, and debug from there.
 
 .. warning::
-  The edit-debug cycle is awkward because you must make the HTML or JavaScript change on your computer then push the change to your device, and reload the page (for example, by rotating the screen). When you do rotate the screen, however, it is rendered in a new web page, necessitating connecting to that new page to resume debugging (the prior page sits idle and will eventually be destroyed; if you don't see any activity, it is likely because you are pointing at the wrong web page; return to inspect devices, and select the newest page).
+  The edit-debug cycle is awkward because you must make the HTML or JavaScript change on your computer then push the change to your device, and reload the page (for example, by rotating the screen). When you do rotate the screen, however, it is rendered in a new web page, necessitating connecting to that new page to resume debugging (the prior page sits idle and will eventually be destroyed. If you don't see any activity, it is likely because you are pointing at the wrong web page. Return to inspect devices, and select the newest page).
 
 As with ODK Survey, you can use the JavaScript Console to look for and fix errors in your HTML/JavaScript. If you are having trouble please check on the |forum|_. Keep in mind that the debug objects only emit a subset of the data in your ODK Tables database.
 

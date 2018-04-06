@@ -6,33 +6,7 @@ Using ODK Scan
 
 .. _scan-using:
 
-ODK Scan works in integration with ODK Survey, Tables, and Services. To be able to take your scanned data through the entire process of scanning, editing, validation, and syncing, (as well as creation of custom reports from the data) please make sure you have all following ODK apps installed.
-
-  - :doc:`services-intro`
-  - :doc:`survey-intro`
-  - :doc:`tables-intro`
-  - :doc:`app-designer-intro`
-
-To take the data from paper to digital, a basic overview of the steps are:
-
 .. contents:: :local:
-
-.. _scan-using-transferring-template:
-
-Transferring a Form Template to the App
-------------------------------------------
-
-ODK Scan works with machine readable forms created using the :doc:`scan-form-designer-intro`; refer to the :doc:`scan-form-designer-using` for instructions on how to create these forms.
-
-After creating a form with Form Designer, you'll have generated the machine readable files. To push them to your device, you will use the same mechanism that is used to push Survey and Tables files to the device.
-
-  #. Create a form using the ODK Scan Form Designer. Save that form with the :guilabel:`Save to File System` option.
-  #. Follow the instructions in the :ref:`Application Designer Guide <app-designer-common-tasks-move-to-device>` to push updates to the device. These describe pushing Survey files, but they will push Scan files to the device too with the same procedure.
-  #. To confirm that the *[your_form]* template has been successfully been transferred, open the ODK Scan app on your device and go to :guilabel:`Settings` (the wheel icon) and select :menuselection:`Templates to Use`. The folder name should appear in the list of templates.
-
-.. image:: /img/scan-using/scan-template-list.*
-  :alt: Example list of Scan templates
-  :class: device-screen-vertical
 
 .. _scan-using-scanning-form:
 
@@ -44,7 +18,7 @@ Scanning a Form
 Prior to scanning
 ~~~~~~~~~~~~~~~~~~~
 
-Have the forms that completed by your users ready. For more information on printing the form created in Form Designer see the :ref:`printing instructions <scan-form-using-printing>`.
+Have a printed form ready. For more information on printing the form created in Form Designer see the :ref:`printing instructions <scan-form-using-printing>`.
 
 Open the Scan app, and be sure that the template you want to use this session is selected in the settings. Go to :menuselection:`Settings --> Templates to Use`, make sure the correct form is selected, and click :guilabel:`OK`.
 
@@ -125,11 +99,11 @@ Navigate to the next section to validate and edit either by:
 
 .. note::
 
-  The order that these fields are presented can be set when originally creating the form template in Form Designer. With a data field selected, in :guilabel:`Form Properties` enter a numbered order (i.e. 1, 2, 3, etc) in :guilabel:`Order of Fields`.
+  The order that these fields are presented can be set when originally creating the form template in Form Designer. With a data field selected, in :guilabel:`Form Properties` enter a numbered order (for example: 1, 2, 3, and so on) in :guilabel:`Order of Fields`.
 
 .. note::
 
-  Text boxes and text fields cannot be digitized. However, Scan will capture an image of text boxes (not text fields; text fields are to be used primarily as labels on your form), and when verifying data in Survey you can type in the data directly into the app.
+  Text boxes and text fields cannot be digitized. However, Scan will capture an image of text boxes (not text fields: text fields are to be used primarily as labels on your form), and when verifying data in Survey you can type in the data directly into the app.
 
   .. image:: /img/scan-using/scan-transcribe-text.*
     :alt: View of a scanned text field in ODK Survey
@@ -140,11 +114,11 @@ Navigate to the next section to validate and edit either by:
 Saving and Finalizing Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You have the option of saving changes you've made to the data and returning to it later to further review. Go to the :menuselection:`Form Name --> Save Changes + Exit`. You can access this scan's data again from :menuselection:`Scan> --> View Scanned Forms`; they will be arrange in the chronological order they were originally scanned.
+You have the option of saving changes you've made to the data and returning to it later to further review. Go to the :menuselection:`Form Name --> Save Changes + Exit`. You can access this scan's data again from :menuselection:`Scan> --> View Scanned Forms`. They will be arrange in the chronological order they were originally scanned.
 
 If you've made changes you don't want to keep, :menuselection:`Form Name --> Ignore Changes + Exit`.
 
-Once you've verified all the fields, select :menuselection:`Form Name --> Finalize Changes + Exit`. You will also have the option to :menuselection:`Finalize Changes` if you are navigating through the data fields by using the next button and reach the end of the data contents. Once you are finished here you will return to Scan, where you can scan a new form or transcribe a saved scan; both options accessible through navigating to Scan's Main Menu.
+Once you've verified all the fields, select :menuselection:`Form Name --> Finalize Changes + Exit`. You will also have the option to :menuselection:`Finalize Changes` if you are navigating through the data fields by using the next button and reach the end of the data contents. Once you are finished here you will return to Scan, where you can scan a new form or transcribe a saved scan. Both options accessible through navigating to Scan's Main Menu.
 
 .. image:: /img/scan-using/scan-finalize.*
   :alt: Finalizing changes in ODK Survey
@@ -163,42 +137,4 @@ With each verified and finalized scan, a new line of data will be entered into T
 
 .. image:: /img/scan-using/scan-tables-view.*
   :alt: Viewing scanned data in ODK Tables
-
-.. _scan-using-syncing:
-
-Syncing & Aggregating Data
-------------------------------------------
-
-Syncing your device's records with an :doc:`cloud-endpoints-intro` allows data to be accessible across all your devices, and provides a centralized database for all of the data collected using Scan. This is key if you are collecting data using Scan on multiple devices and/or are continuously scanning new forms.
-
-.. _scan-using-syncing-prereqs:
-
-Prerequisites for Syncing
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  1. :doc:`services-intro` must be installed on your device
-  2. A compatible :doc:`cloud-endpoints-intro` server must be set up.
-
-To sync your device-stored data with your ODK Cloud Endpoint, open ODK Services and launch the sync interface (press the circular arrow button along the top bar). Make sure you have the correct settings for your *Endpoint URL* and *Account*. Make sure your device is connected to the Internet. Instructions are available in the :ref:`ODK Services guide <services-using-sync>`.
-
-.. _scan-using-syncing-viewing:
-
-Viewing Data on an ODK Cloud Endpoint
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Once you have synced successfully, you can login to your ODK Cloud Endpoint instance to view the synced data.
-
-  1. Login to your Endpoint instance
-  2. Go to the Tables tab
-  3. Find the synced form template from the list and click Table Data.
-  4. You should see one row of data for each record that was synced from your device for that form template. This spreadsheet will grow with each synced instance.
-
-.. _scan-using-suitcase:
-
-Suitcase
-------------------------------------------
-
-:doc:`suitcase-intro` is the mechanism for downloading and exporting data from the ODK 2.0 data tables into local :file:`.csv` files.
-
-ODK Suitcase allows you to gather and aggregate data locally, maintain accessibility after the internet connection is gone, and automatically push data from Suitcase to an ODK Cloud Endpoint when you return to connection. Suitcase has specific options to handle Scan's use cases (paper-to-digital).
 

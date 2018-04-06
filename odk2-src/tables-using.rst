@@ -1,16 +1,7 @@
-.. spelling::
-  Wi
-  Fi
-  Goodall
-  allfields
-
-
 Using ODK Tables
 ===================
 
 .. _tables-using:
-
-In this guide we will be demonstrating how to use ODK Tables via a guided tour of the sample application. If you have not installed it yet, follow the instructions for :doc:`tables-install-sample`. However, this guide can also be used as a reference.
 
 .. contents:: :local:
 
@@ -19,310 +10,338 @@ In this guide we will be demonstrating how to use ODK Tables via a guided tour o
 Custom Home Screen
 -----------------------
 
-ODK Tables allows you to customize the app home screen. If you supply a custom home screen (:file:`config/assets/index.html`), you will have the option of using this as the home screen of the app. This is what is displayed after downloading the demo application.
+The custom home screen is an HTML file written by your organization to customize the look-and-feel of using Tables. If a custom home screen is provided, by default it will be the first screen shown after opening Tables.
 
-If there is no custom home screen configured, ODK Tables will display the *Table Manager* view, with the options to add new tables or data via CSVs (the :guilabel:`+` icon), export data to a CSV (the :guilabel:`->` icon), launch ODK Services (the two curved arrows icon), change app-level settings, or view the application version and license information.
+.. _tables-custom-home-hide:
 
-From the custom home screen, you can get to the *Table Manager* view by clicking on the icon with three lines at the top right of the menu bar.
+Showing/Hiding the Custom Home Screen
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To enable or disable the use of the custom home screen, go to the *Table Manager* and click on the :guilabel:`Settings` icon. This will open a screen through-which you can access application-level settings. Click on :menuselection:`Tables-specific Settings` and then check or uncheck the :guilabel:`Use custom home screen` checkbox. This checkbox is only enabled if the :file:`config/assets/index.html` file exists. After making the selection, you will need to fully back out of the ODK Tools and re-launch ODK Tables to have it pick up the change and render the home screen.
+To hide the custom home screen and see the *Table Manager* for a list of data tables on the device:
 
-The sample application's custom home screen has five tabs. Select the :guilabel:`Tea` tab and click :guilabel:`Launch Demo`. This will display another screen with three buttons. This is a custom layout written in HTML, CSS, and Javascript.
+  1. Open Tables. On the custom home screen press the button with three lines in the upper right.
 
-.. note::
+    .. image:: /img/tables-using/tables-home-launch-manager.*
+      :alt: Tables Custom Home Launching Manager
+      :class: device-screen-vertical
 
-  All of these screens and web pages are served directly off of the device -- there is no network access. These are fully able to function in Airplane mode -- without a Wi-Fi or internet connection.
+  2. The *Table Manager* will be visible with a full list of data tables stored on the device.
 
-  When you design your applications, you can either have them operate without any network access, or you can write them to access data on the internet. This becomes your design choice.
+    .. image:: /img/tables-using/tables-home-table-manager.*
+      :alt: Tables Table Manager
+      :class: device-screen-vertical
 
-Click on the :guilabel:`View Tea Houses` button.
+To return to the custom home screen press the back button in your Android navigation buttons.
+
+.. warning::
+
+  You may need to enable the custom home screen before it will appear.
+
+.. _tables-custom-home-disable:
+
+Enabling/Disabling the Custom Home Screen
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To enable or disable the use of the custom home screen, follow the instructions for :ref:`services-user-tables-settings`.
+
+
+.. _tables-using-table-manager:
+
+Table Manager
+------------------
+
+The *Table Manager* allows you to modify table settings, delete tables, and import or export data into your tables. See the :ref:`Deployment Architect instructions <tables-managing-table-manager>` for details.
 
 .. _tables-using-view-data:
 
 Viewing Data
-------------------------
+--------------------
 
-Within ODK Tables, full data sets can be viewed in the following ways:
+Tables supports viewing collected data in a variety of formats. Survey allows you to review individual form instances, but Tables lets you view full data tables as well as create your own customized visualizations. This is a significant departure from the form based model of data collection, and allows you to manage data directly on the device.
 
-  - :ref:`List View <tables-using-view-data-list>` -- A list of items, rendered using your own customized HTML and JavaScript. Each item can be selected to display details of that item.
-  - :ref:`Spreadsheet View <tables-using-view-data-spreadsheet>` -- A tabular view reminiscent of a Microsoft :program:`Excel` Spreadsheet.
+.. _tables-using-view-types:
 
-    .. note::
-
-      *Spreadsheet View*, unlike all the other options here, is rendered with Android user interfaces rather than your own customized HTML and JavaScript.
-
-  - :ref:`Map View <tables-using-view-data-map>` -- A pap displaying data points which can be selected to display details of data associated with that data point.
-
-Additionally, the following view options provide alternative methods of viewing data:
-
-  - :ref:`Detail View <tables-using-view-data-detail>` -- A page that shows the details of an individual record. Often used when a single record is selected in a *List View* or a *Map View*.
-  - :ref:`Detail with Sublist View <tables-using-view-data-detail-with-list>` -- A hybrid of a *Detail View* and a *List View*, using half the screen for each.
-  - :ref:`Graph View <tables-using-view-data-graph>` -- A graphical rendering of data (such as a bar graph or pie chart).
-  - :ref:`Navigate View <tables-using-view-data-navigate>` -- A *Map View* that adds a compass and geographic data to help the user navigate to points on the map.
-
-Finally, if your workflow doesn't fit well into the above options, you can create your own :ref:`Custom View <tables-using-view-data-custom>`.
-
-The following sections take you through an example of each type of view from the sample application.
-
-.. _tables-using-view-data-list:
-
-List View
+View Types
 ~~~~~~~~~~~~~~~~~
 
-After clicking on the :guilabel:`View Tea Houses` button in the :ref:`custom home screen section <tables-using-custom-home>` you are looking at a *List View* of the *Tea Houses* table. This view is designed entirely in JavaScript and HTML, and we have customized it for the *Tea Houses* table. Click on the lined paper icon at the top of the screen. Here you’ll see all the possible view types. Select :menuselection:`Spreadsheet`.
+Tables offers a number of view options for presenting data. These will have been configured by your organizations Deployment Architect and you may not always have a choice in how you view your data. These view types are:
+
+  - :ref:`Spreadsheet View <tables-using-view-data-spreadsheet>`
+  - :ref:`List View <tables-using-view-data-list>`
+  - :ref:`Detail View <tables-using-view-data-detail>`
+  - :ref:`Detail with Sublist View <tables-using-view-data-detail-with-list>`
+  - :ref:`Graph View <tables-using-view-data-graph>`
+  - :ref:`Map View <tables-using-view-data-map>`
+  - :ref:`Navigate View <tables-using-view-data-navigate>`
+  - :ref:`Custom View <tables-using-view-data-custom>`
+
+.. warning::
+
+  Many of the view types in Tables are customizable by a Deployment Architect. This guide will provide some basic outlines of how to use these view types, but for more accurate instructions you may need to contact your organization's Deployment Architect.
+
 
 .. _tables-using-view-data-spreadsheet:
 
 Spreadsheet View
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""
 
-This takes you to a familiar view as if you were looking at it on a spreadsheet. Each row here represents a tea house, and each was a row in the *List View*. The thin column on the left is called the *status column*: it will show a different color based on the status of that row.
+*Spreadsheet View* is the only view option that will be the same for all Data Management Applications. It is not customizable. It serves as a reliable way to view all of the data stored in a table on the device.
 
-  - White (clear) -- The row is downloaded from the server and has not been modified.
-  - Yellow -- The row is modified.
-  - Green -- The row is entirely-new row
-  - Black -- The row is deleted. It will show as black until you sync with the server and publish those changes.
+  .. image:: /img/tables-using/tables-spreadsheet-view.*
+    :alt: Tables Spreadsheet View
+    :class: device-screen-vertical
 
-Select the lined paper icon again, and select :menuselection:`Map`.
 
-.. _tables-using-view-data-map:
+It is intended to have the familiar view as if you were using a spreadsheet program such as :program:`Excel`. Each row represents a data record, which often (but not always) corresponds to a form instance created by Survey. You can scroll up and down to view all of the records, or left and right to see each column.
 
-Map View
-~~~~~~~~~~~~~~~~~~~~~
+The thin column on the left is called the *status column*: it will show a different color based on the status of that row.
 
-All the fictional tea houses in Benin appear on the map. Pinch and squeeze or widen to zoom out and in, respectively. The tea house location is plotted based on what appeared in the *Location_latitude* and *Location_longitude* columns in the *Spreadsheet View*. When you click on a map marker, the *List View* will redraw with that marker's information at the top of the *List View*.
+  - **White (clear)** -- The row is downloaded from the server and has not been modified.
+  - **Yellow** -- The row is modified.
+  - **Green** -- The row is an entirely new row
+  - **Black** -- The row is deleted. It will show as black until you sync with the server and publish those changes.
 
-Click on an entry and you will be taken to a *Detail with Sublist View*.
+Custom color rules can be set in table properties. They change the colors of spreadsheet cells based on the values of those cells. This can be useful in browsing larger data sets for records that meet certain criteria. For example, you might be recording crop heights and mark all cells with heights above a certain height as impossible so that they can be revisited or removed. For details on setting these color rules, see the :ref:`color rules guide <tables-managing-table-properties-color-rules>`
 
-.. _tables-using-view-data-detail-with-list:
+Spreadsheet view can also be used to edit data. See the :ref:`Spreadsheet View editing guide <tables-using-edit-spreadsheet>` for further instructions.
 
-Detail with Sublist View
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _tables-using-view-data-list:
 
-Tea houses shows individual tea houses using the *Detail with Sublist View*. This renders the screen as a *Detail View* webpage and a subordinate *List View*. In this case, the *Detail View* displays information on the tea house, and the *List View* displays the teas that the tea house serves. Within the *Detail View*, you can scroll down to see the information we decided to display. Like the *List View*, we programmed this using very rudimentary HTML and JavaScript, but it could be customized to look fancier or display additional information.
+List View
+""""""""""""""""""""
 
-Scroll to the bottom and you’ll see a link as a number of teas. This is using the information in the table called *Tea Inventory* to tell you how many teas this tea house offers, and has also been defined in the JavaScript.
+*List View* is a customizable view that will change based on your Data Management Application's code. In general, it is used to render a list of records from a data table, displaying only a few key values for each record.
 
-The subordinate list webpage displays a list of all of these teas. Click on one, and you will now be in a *Detail View* for that tea inventory item.
+  .. image:: /img/tables-using/tables-list-view-tea.*
+    :alt: Tables List View
+    :class: device-screen-vertical side-by-side
+
+  .. image:: /img/tables-using/tables-list-view-hope.*
+    :alt: Tables List View
+    :class: device-screen-vertical side-by-side
+
+Often the items in a *List View* are clickable to launch a *Detail View*, a *Detail With Sublist View*, or a *Custom View* to display details of that item. Sometimes these views can also be viewed as *Map Views* and *Navigation Views*. See :ref:`tables-using-view-data-change-views` for instructions on how to find if these view options are available.
 
 .. _tables-using-view-data-detail:
 
 Detail View
-~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""
 
-The tea inventory *Detail View* displays information about the tea, including whether it is available hot, iced, in bags, or loose leaf. Note that the tea type is being pulled from the *Tea Types* table, but the JavaScript is getting the information from that table to construct our view. Like the other views, we programmed this using very rudimentary HTML and JavaScript, but it could be customized to look fancier or display additional information.
+*Detail View* is a customizable view that will change based on your Data Management Application's code. In general, it is used to render the data from a single record in a logical fashion.
 
-Hit the device’s back button until you are back to the home screen.
+  .. image:: /img/tables-using/tables-detail-view-tea.*
+    :alt: Tables Detail View
+    :class: device-screen-vertical side-by-side
+
+  .. image:: /img/tables-using/tables-detail-view-geo.*
+    :alt: Tables Detail View
+    :class: device-screen-vertical side-by-side
+
+A *Detail View* may include some or all of the values from the record it is presenting, and it may include values drawn from other tables. The interface used to present that data is completely customized by the organization writing the Data Management Application.
+
+This view is often launched from a *List View* or a *Map View*.
+
+.. _tables-using-view-data-detail-with-list:
+
+Detail With Sublist View
+"""""""""""""""""""""""""""""""
+
+*Detail With Sublist View* is a customizable view that will change based on your Data Management Application's code. It is a combination of a *Detail View* on the top half of the screen and a *List View* on the bottom half of the screen.
+
+  .. image:: /img/tables-using/tables-detail-with-sublist-view.*
+    :alt: Tables Detail With Sublist View
+    :class: device-screen-vertical
+
+The *Detail View* on the top half of the screen follows all the same rules as a normal *Detail View*. In addition, it can control the *List View* rendered below it. There may be an interactive element within the *Detail View* that will cause the subordinate *List View* to redraw with different values.
 
 .. _tables-using-view-data-graph:
 
 Graph View
-~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""
 
-*List Views* can use JavaScript packages like D3 to render data graphically. Launch the *Plot Demo*, choose :guilabel:`View Plots`, and choose :guilabel:`Puerto Madero` to see a bar graph of corn crop heights across different visits to this farm. That graph was rendered using D3. That library can render scatter plots, line graphs, graphs with error bars and many other visualizations.
+*Graph View* is a customizable view that will change based on your Data Management Application's code. In general, it is a often specialized *List View* that creates a graphical rendering of the data (such as a bar graph or pie chart). It may also be a specialized *Detail View* or *Custom View*.
+
+  .. image:: /img/tables-using/tables-graph-view-hope.*
+    :alt: Tables Graph View
+    :class: device-screen-vertical side-by-side
+
+  .. image:: /img/tables-using/tables-graph-view-plot.*
+    :alt: Tables Graph View
+    :class: device-screen-vertical side-by-side
+
+A *Graph View* uses JavaScript libraries such as :program:`D3` to create visualizations of collected data on the device. These will be rendered on demand using the data available, meaning that they will update and change as new data is collected.
+
+.. _tables-using-view-data-map:
+
+Map View
+""""""""""""""""""""
+
+*Map View* is a partially customizable view that will change based on your Data Management Application's code. The top portion of the view is a *List View* representing the records in the data table, and the bottom portion of the screen renders the records as geopoints on a map using :program:`Google Maps`.
+
+  .. image:: /img/tables-using/tables-map-view-tea.*
+    :alt: Tables Map View
+    :class: device-screen-vertical side-by-side
+
+  .. image:: /img/tables-using/tables-map-view-geo.*
+    :alt: Tables Map View
+    :class: device-screen-vertical side-by-side
+
+Points are added to the map based on their recorded latitude and longitude values. The map can be navigated by pinching or widening to zoom in and out, or swipe around to move the window (the same controls as the stand alone :program:`Google Maps`).
+
+When a point is selected in a *Map View* it will usually update the *List View* on the top portion of the screen to select the same point, and possibly present more data about that point.
 
 .. _tables-using-view-data-navigate:
 
 Navigate View
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""
 
-These views render similarly to the *Map View*, but will use show a compass, bearing, and heading towards a point selected from the map. Back out of the *Plot Demo* and launch the *Geotagger Demo*. From the view options in the upper right, change the selection from *Map View* to *Navigate View* to see the same map of points, but with the navigation user interface replacing the list on the top portion of the screen. Select different points and walk around to see the navigation information update in real time.
+*Navigate View* is similar to *Map View*, but the top portion is replaced with navigational tools to aid in finding a location on the map in the real world. The bottom portion of the screen still renders the records as geopoints on a map using :program:`Google Maps`.
+
+  .. image:: /img/tables-using/tables-navigate-view.*
+    :alt: Tables Navigate View
+    :class: device-screen-vertical
+
+When a point on the map is selected, the navigation controls on the top portion of the screen will update to guide you to the selected point.
+
+  - **Compass** shows you cardinal directions in addition to an arrow pointing at the navigation point.
+  - **Distance** shows the distance between your GPS location and the navigation point.
+  - **Heading** shows the direction that you are facing.
+  - **Bearing** shows the angle between your heading and your navigation point.
+  - **GPS Accuracy Spinner** shows the GPS's current accuracy estimate. It will change color based on how good this accuracy is.
+
+The :guilabel:`Arrive` button will return you to the screen that launched the *Navigation View* with a success code. This may launch a follow up Survey or workflow to be performed at the navigation point.
+
+The :guilabel:`Cancel` button also returns you to the screen that launched the *Navigation View*, but with a failure code. It indicates that the navigation point was not reached and it will not trigger a follow up workflow.
 
 .. _tables-using-view-data-custom:
 
-Custom Views
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Custom View
+"""""""""""""""""""""
 
-The previous view examples cover common workflows. However, any arbitrary web based user interface can be constructed and rendered within Tables. Third party libraries, such as *Math.js* or *Snap.js*, can also be included. See more in the :ref:`App Designer user guide <app-designer-common-tasks-design-view>`.
+*Custom View* is a completely customized view that is defined by your Data Management Application's code. There is no general pattern for *Custom Views*.
 
-.. tip::
+  .. image:: /img/tables-using/tables-custom-view-tea.*
+    :alt: Tables Custom View Navigation
+    :class: device-screen-vertical side-by-side
 
-  These views are not restricted to viewing data. Data can be edited by calling the provided Javascript APIs (see :ref:`Understanding the Web File <app-designer-common-tasks-understanding-web-file>`).
+  .. image:: /img/tables-using/tables-custom-view-jgi.*
+    :alt: Tables Custom View Data Entry
+    :class: device-screen-vertical side-by-side
 
-.. _tables-using-view-data-custom-non-form-entry:
-
-Non-form-based data entry
-"""""""""""""""""""""""""""""""""
-
-Finally, back out of the *Plot Demo* and choose *JGI*.
-
-The *JGI* (Jane Goodall Institute) demo app is a portion of a chimpanzee interaction tracking app that field researchers can use to record the activities of a designated ("followed") chimp and its interactions with nearby chimpanzees at 15-minute intervals.
-
-Choose :guilabel:`New Follow`. Fill in the form fields, and click :guilabel:`Begin`. And begin recording interactions of this chimp with other known chimps in that group. These fields are all filled-in using hand-written HTML -- not ODK Survey. ODK Survey would be too scripted and confining for this type of dynamic interaction record.
+*Custom Views* are arbitrary user interfaces built on top of web technologies and rendered in Tables. They can be anything your organization needs to implement its custom workflow.
 
 .. note::
 
-  ODK Survey is not necessary for data collection. It is, however, more convenient in most cases.
+  *Custom Views* are not limited to displaying data. They can also be used to collect or modify data. See the guide for :ref:`editing data with custom views <tables-using-edit-custom>`.
 
-.. _tables-using-edit-row:
+.. _tables-using-view-data-change-views:
 
-Edit a row with Survey
---------------------------
+Changing View Types: The Lined Paper Button
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _table-using-edit-row-tea-house:
+The view types that represent multiple records (:ref:`tables-using-view-data-spreadsheet`, :ref:`tables-using-view-data-list`, :ref:`tables-using-view-data-map`, :ref:`tables-using-view-data-navigate`) can be alternately chosen, depending on what the Deployment Architect has configured in the table's settings.
 
-Simple Example: Tea Houses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+To change to another view type, tap the lined paper icon from the upper right:
 
-Launch the *Tea Houses* demo again. Follow the directions above to navigate to a *Detail with Sublist View* of a tea house.
+  .. image:: /img/tables-using/tables-change-view-button.*
+    :alt: Tables Change View Button
+    :class: device-screen-vertical
 
-At the top of the screen you will see a pencil icon. Click on this to open ODK Survey to edit the row using the *Tea Houses* form. This is possible because that form has been specified as the form to use when editing rows in this table.
+This will bring up a menu that lets you select your desired alternate view type.
 
-.. _table-using-edit-row-hope-study:
+  .. image:: /img/tables-using/tables-change-view-menu-full.*
+    :alt: Tables Change View Menu
+    :class: device-screen-vertical
 
-Complex Example: Hope Study
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. tip::
 
-A more complex example of this same flow is in the *Hope Demo*. Back out of the *Tea Houses* demo, back to the custom home screen and select the *Hope Demo* and launch it. Choose :guilabel:`Screen Female Client`. This launches an ODK Survey form for entering a new client into the *Hope Study*. Either complete an entry or back out of that form and choose to :guilabel:`Ignore Changes` to leave ODK Survey without adding a new client.
+  :ref:`tables-using-view-data-graph` is a special case. You may have the lined paper icon available to you, but it may only have *Spreadsheet View* as its alternative option, and may not have an option to return to the *Graph View*. Usually pressing the back button from *Spreadsheet View* will return you to the *Graph View*.
 
-Choose :guilabel:`Follow Up with Existing Client` to see a *List View* of clients who have already been entered into the study. Choosing one of these displays a *Detail View* that allows you to access client or partner forms for that individual. You can also click on the pencil icon at the top of that *Detail View* screen to launch an ODK Survey form within-which you can view or change any of the information for that client. Clicking on the top right button with the form name opens a drop-down menu from which you can choose :guilabel:`Contents` to see a summary of all the form's fields and their values.
+  *Graph Views* also may not have the lined paper icon available at all if they are instead mapped as a *Detail View* or a *Custom View*.
 
-.. _tables-using-geo-tagger:
+.. note::
 
-Another Map example: Geo Tagger
+  Not all view types will always be available. For example, if the data set does not contain geographic data, the *Map View* and *Navigate View* options will not be available.
+
+  .. image:: /img/tables-using/tables-change-view-menu-no-map.*
+    :alt: Tables Change View Menu Without Maps
+    :class: device-screen-vertical
+
+
+.. _tables-using-edit-data:
+
+Creating and Editing Data
 ---------------------------------
 
-Another example demo app, *Geotagger*, is also included in the sample application. It contains information and pictures from various places around Seattle. The HTML and JavaScript files associated with this table are slightly more sophisticated, and will give you an idea of the customization you can achieve using Tables.
+Tables supports creating new rows and editing existing records and provides a variety of methods to do so. These can be integrated into your Data Management Application's workflow or accessed directly.
 
-From the custom home screen, click on the :guilabel:`Geo` tab, and click on the :guilabel:`Launch Demo` button.
+.. _tables-using-edit-survey:
 
-This directly opens the *Geotagger* dataset in the *Map View*. The data represent several places around Seattle. Click on :guilabel:`Phinney Ridge`, and the item will expand to give you more information. This more sophisticated behavior is all performed in the JavaScript and HTML file, which you can find in :file:`config/tables/geotagger/html/geo_list.html` as well as :file:`config/tables/geotagger/js/geo_list.js`.
+Editing With Survey
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Click on the picture and you’ll be taken to a *Detail View* of the *Phinney Ridge* entry. This *Detail View* is also fancier than those in the :*Tea Time in Benin* example. This file is located in :guilabel:`config/tables/geotagger/html/geo_detail.html`.
+Most data change options use Survey to create or update the record. These options will launch Survey from the Table in question to directly edit the relevant record, and then return control back to Tables where you left off. Which options are available depends on which view type you are currently using.
 
-Press the device’s back button to go back to the *Map View*. We’re going to add an entry for your current location. Press the plus icon at the top of the screen and you’ll be taken to ODK Survey.
+.. _tables-using-edit-plus:
 
-Fill out the form, and at the last screen of the form and press :guilabel:`Finalizer`. You’ll now see your new entry in the list. Navigate to the *Detail View* and you’ll see it works there as well. If you go back to *List View* and change to *Spreadsheet View*, you’ll see it there as well.
+Creating a Record: The :guilabel:`+` Button
+""""""""""""""""""""""""""""""""""""""""""""""
 
-.. _tables-using-adding-tables:
+  .. image:: /img/tables-using/tables-list-view-new-record.*
+    :alt: Tables + Button
+    :class: device-screen-vertical
 
-Adding Your Own Tables
-------------------------------
+The :guilabel:`+` button is available in any of the multi-record views: :ref:`tables-using-view-data-list`, :ref:`tables-using-view-data-graph`, :ref:`tables-using-view-data-map`, and :ref:`tables-using-view-data-navigate`. This button will launch the configured Survey form to create a new record in the table currently being viewed. The example picture above shows the *Tea Houses* *List View* from the :doc:`tables-sample-app`. If the :guilabel:`+` is pressed it will launch a Survey to create a new tea house in the table.
 
-The creation of data tables is handled within the App Designer. ODK Tables can display and present data, but cannot create Tables on the fly. This enables the ODK Services application to enforce that the configuration of the device (its tables, HTML files, etc.) are identical to those on the server.
+.. _tables-using-edit-pencil:
 
-.. _tables-using-adding-tables-app-designer:
+Editing a Record: The Pencil Button
+"""""""""""""""""""""""""""""""""""""
 
-Initialize from ODK Application Designer
+  .. image:: /img/tables-using/tables-detail-view-edit-record.*
+    :alt: Tables Pencil Button
+    :class: device-screen-vertical
+
+The pencil button is available in any of the single record views: :ref:`tables-using-view-data-detail` and :ref:`tables-using-view-data-detail-with-list`. *Detail With Sublist View* is considered a single record view as the *Detail View* portion is considered the controlling view, and the *List View* below is subordinate.
+
+If the pencil button is pressed, it will launch the configured Survey form to edit the record currently be viewed. When the record has been updated and control returns to the calling view, the new details should be rendered in that view.
+
+
+.. _tables-using-edit-spreadsheet:
+
+Spreadsheet View
+"""""""""""""""""""""""
+
+*Spreadsheet View* also offers methods to launch Survey to create or edit records. If you know exactly the table or record you want to edit, this view may be the more direct option. You can also use :ref:`tables-managing-table-properties-color-rules` to find records that require your attention and then edit them directly.
+
+  - **Creating a Record** follows the same workflow as the other :ref:`multirecord views <tables-using-edit-plus>`. Press the :guilabel:`+` button to create a new row in the data table and see it in the *Spreadsheet View*.
+  - **Editing a Record** can be performed by long pressing on the desired row. A pop up will open when the long press is released.
+
+    .. image:: /img/tables-using/tables-spreadsheet-edit-record.*
+      :alt: Tables Spreadsheet Pop Up
+      :class: device-screen-vertical
+
+  This gives you the option to:
+
+    - :guilabel:`Delete Row` - This will produce a confirmation dialog make sure you want to delete the record. If affirmed, the row will be marked for deleted (or marked for deletion on the next synchronization).
+    - :guilabel:`Edit Row` - This will launch the Survey form corresponding to this record, similar to the :ref:`pencil button <tables-using-edit-pencil>`.
+
+.. _tables-using-edit-custom:
+
+Editing Directly in Tables: Custom Views
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-See the Application Designer documentation for :ref:`designing a form <app-designer-common-tasks-designing-a-form>` to describe a new data table.
+Tables supports direct creation and updates to data in the database through JavaScript API calls. These will be completely customized to your organization's Data Management Application and you may need to contact that person to find out how to use your particular design.
 
-.. _tables-using-import-data:
-
-Import Data into a Table from a CSV
------------------------------------------
-
-This section assumes you have already created the table into which you are importing data.
-
-Once you have created the table, you can load data from a CSV into it by choosing the plus :guilabel:`'+` icon on the *Table Manager* screen.
-
-A CSV is a comma-separated values file. It is a common way to transport tabular data between different programs. Microsoft :program:`Excel` can save and open CSV files, as can :program:`Open Office` and a variety of other programs. Tables expects a certain format of the data in order to import the data correctly: the first line must be the comma-separated list of column names. The remaining lines must be the data for each of the corresponding columns.
-
-For example, assume you wanted to load data into table of people's names, with column (field) names of :th:`Name` and :th:`Age`. In addition to those columns, your CSV file must also specify the unique row id (:th:`instance id`) for each data row (the :th:`_id` column); you can also specify the creator of the row, the time of creation, and other information. But, at a minimum, the file should look like:
-
-.. code-block:: none
-
-  _id,Name,Age
-  myUniqueIdforSam,Sam,27
-
-This can be achieved by creating a spreadsheet in a spreadsheet editor and saving it as a CSV, or by copying the above text into a text editor and saving it with a :file:`.csv` extension.
-
-The upload process is as follows:
-
-  #. Place the CSV file onto the device and place it in the :file:`config/assets/csv/` directory with a filename of :file:`tableid.csv`. For example, :file:`/sdcard/opendatakit/default/config/assets/csv/people.csv` would be the CSV file for the *people* table.
-  #. Launch ODK Tables and navigate to the *Table Manager* screen.
-  #. Press the plus :guilabel:`+` button at the top of the *Table Manager* screen.
-  #. Press :guilabel:`Select CSV File to Import`.
-
-    .. note::
-
-      You must have installed OI File Manager from the Play Store.
-
-  #. Find your file, select it, and press :guilabel:`Pick file`.
-  #. Press :guilabel:`Append to an Existing Table`.
-
-The data will be read from the file and appended to your data table.
-
-.. warning::
-
-  Prior to any deployment, you should sync your device to your server and export the data table and copy the exported CSV file back on top of the simple CSV file that you created above.
-
-  This ensures that the additional fields required by the ODK tools are properly populated and that a server-managed revision number is added to the data rows so that all devices will have the same internal ids for all of your data rows. This eliminates the possibility of the :file:`tables.init` mechanism introducing duplicate records and speeds the sync process and minimizes the occurrence of conflicts across the devices when these devices first sync to the server.
-
-.. warning::
-
-  Specifying the values for the :th:`_id` column is important. Otherwise, each device, when it loads the CSV file, would assign different unique ids for each of the rows, causing much duplication and confusion.
-
-.. _tables-using-export-data:
-
-Exporting Tables to CSV
-----------------------------
-
-You can export any of your tables to a CSV file and associated supporting files. These files will be written to the :file:`output/csv` directory.
-
-A Tables-exported CSV includes all the metadata needed to allow the table to be imported with exactly the same status settings, file associations and metadata settings on another device. Exporting produces the following files:
-
-  - file:`tableid.definition.csv` -- this defines the data table's structure. It specifies the columns and their column types and is a copy of the file found under :file:`config/tables/tableId/`
-  - file:`tableid.properties.csv` -- this defines the column heading names, translations, and the HTML files associated with *List Views*, *Detail Views*, *Map Views*, and so on, and is a copy of the file found under :file:`config/tables/tableId/`
-  - file:`tableid.csv` -- this holds the data file that you can import to recreate the contents of your data table
-  - file:`tableId` -- this holds an instances folder that holds folders named after each row id (the row id is cleaned up to remove any invalid filename characters such as slashes and colons). Each of those folders contains the row-level attachments for that row id.
-
-To export a table:
-
-  #. Launch ODK Tables and navigate to the *Table Manager* screen (if you have a custom home screen, click the icon at the top right with the three increasingly-wide lines).
-  #. Press the arrow :guilabel:`->` icon at the top of the *Table Manager* screen.
-  #. Select the table you want to export.
-  #. Optionally specify a qualifier that will be inserted into the filenames of the emitted files before the :file:`.csv` extension.
-  #. Press :guilabel:`Export`.
-
-For example, if you were to export the *geotagger* table and specified *demo* as a qualifier, the following files would be written:
-
-  - :file:`output/csv/geotagger.demo.definition.csv`
-  - :file:`output/csv/geotagger.demo.properties.csv`
-  - :file:`output/csv/geotagger.demo.csv/geotagger.demo.csv`
-  - :file:`output/csv/geotagger/instances/1f9e.../137...jpg`
-  - :file:`output/csv/geotagger/instances/...`
-
-.. _tables-using-config-at-startup:
-
-Configuring an App at Startup
------------------------------------
-
-If you are installing Tables on a new device and don’t have a server set up from which to pull the data (see the :ref:`advanced section about syncing <tables-using-syncing>`, you can alternatively configure Tables to import data at startup. This is useful during forms development, as you can simply push the form definitions, HTML and JavaScript for your application data down to the phone from your computer and launch ODK Tables, and it will load data from CSV files into your data tables.
-
-The configuration file must be titled :file:`tables.init` and placed in the :file:`/sdcard/odk/tables/config/assets` directory. Below is the complete contents of the :file:`tables.init` file distributed with the sample application:
-
-.. code-block:: none
-
-  table_keys=teaHouses, teaTypes, teaInventory, teaHousesEditable, geotagger, plot, plotVisits, femaleClients, maleClients, geopoints, follow
-  teaHouses.filename=config/assets/csv/Tea_houses.updated.csv
-  teaTypes.filename=config/assets/csv/Tea_types.updated.csv
-  teaInventory.filename=config/assets/csv/Tea_inventory.updated.csv
-  teaHousesEditable.filename=config/assets/csv/Tea_houses_editable.updated.csv
-  geotagger.filename=config/assets/csv/geotagger.updated.csv
-  plotVisits.filename=config/assets/csv/visit.example.csv
-  plot.filename=config/assets/csv/plot.example.csv
-  femaleClients.filename=config/assets/csv/femaleClients.allfields.csv
-  maleClients.filename=config/assets/csv/maleClients.allfields.csv
-  geopoints.filename=config/assets/csv/geopoints.allfields.csv
-  follow.filename=config/assets/csv/follow.updated.csv
-
-The table_keys key contains a comma and space separated list of table keys. Each table key can then have a :file:`.filename` that indicate the filename of the CSV data that should be imported; this file should be under the :file:`config/assets/csv` directory and the name should begin with the **tableId**, followed by an optional qualifier (for example, allfields), and end with :file:`.csv`. If there are row-level file attachments for the table, they would be placed in a **tableId** file within the :file:`csv` directory. Each row-level file attachment filename is relative to the folder for that row's id. If the rows :th:`_id` column was *myUniqueIdForSam*, then the filenames in the data table for row-level attachments for that row would be relative to :file:`/sdcard/opendatakit/default/config/assets/csv/tableId/instances/myUniqueIdForSam/`.
-
-.. note::
-
-  Any table ids appearing in this file must already have their table definitions and metadata values defined in the definition.csv and properties.csv files within their corresponding :file:`config/tables/tableId` directory.
-
-.. tip::
-
-  Only one attempt is made to read and import data at start-up. If that attempt fails, some or all tables may not be initialized or may be partially initialized. You can trigger a re-processing of this file by going to :guilabel:`Settings` and clicking :guilabel:`Reset configuration` then exiting the ODK tool and re-opening it.
-
-As mentioned earlier, this file is never uploaded to the server. After you have created your user application and loaded data onto your device using this mechanism, resetting the app server will push all the configuration files and all of data (the data rows loaded by the :file:`tables.init` script) up to the server (except for this :file:`tables.init` file). Other devices that synchronize with the server will retrieve all of those data rows during the data-row synchronization phase. There is no need for the devices that synchronize with the server to have a copy of the :file:`tables.init` file and independently perform these actions.
+For more information on how to edit data with these custom views, see :ref:`tables-managing-custom-web-view`.
 
 .. _tables-using-syncing:
 
-Syncing--Advanced
+Syncing Data
 --------------------------
 
-The final thing you might like to try is synchronizing data to the cloud. See the instructions in the :ref:`ODK Services user guide <services-using-sync>`.
+See the instructions in the :ref:`ODK Services user guide <services-using-sync>`.
+
+.. warning::
+
+  If a data table has any checkpoint saves (for example, caused by form crashes), the data table will not be synchronized. Checkpoints must be resolved before sync can proceed. The user must open a form on the problem table and either delete the checkpoint or edit the checkpoint. If editing, after that is complete they must save is as either incomplete or finalized. Once the checkpoints are eliminated, the user can initiate another synchronization, and the data in this table will then be synchronized with the information on the server.
