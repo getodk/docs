@@ -4,25 +4,54 @@
 
 This repo is the source for ODK documentation.
 
-## Current Status — Live! (But still new)
+The published documentation is at:
 
-Our documentation website is live at https://docs.opendatakit.org
+ - https://docs.opendatakit.org
+ - https://docs.opendatakit.org/odk2/
 
 If you can't find what you are looking for, try the [old docs on the ODK website](https://opendatakit.org/). Also, please [file an issue](https://github.com/opendatakit/docs/issues) so that we know to add the information you are looking for.
 
 ## Building and viewing documentation locally
+
 See the [Contributor Guide](http://docs.opendatakit.org/contributing) for detailed steps --- no prior experience needed!
 
-Once your environment is set up, build and run the doc site with:
+Make sure you have [Python 3](https://www.python.org/downloads/). We recommend you use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/) or a Python version management like [pyenv](https://github.com/pyenv/pyenv). (Type `python --version` to see your current version.)
+
+After that, you need to clone this repo and make sure all the requirements are installed:
+
+```bash
+$ git clone https://github.com/opendatakit/docs.git
+$ cd docs/
+$ pip install -r requirements.txt
 ```
-make odk1
-cd odk1-build
-python -m http.server 8000
+Once your environment is set up, build and serve the docs locally with:
+
+```bash
+$ make odk1
+$ cd odk1-build
+$ python -m http.server 8000
 ```
 
-To perform all spell check and style checks before building, use `make odk1-check` instead or `make odk1`.
+You can then view the docs in your browser at http://localhost:8000.
 
-To build ODK 2 docs, replace `odk1` with `odk2`.
+(Use `odk2` instead of `odk1` to build and serve the ODK2 docs.)
+
+You can also use `make` to build both ODK and ODK2 docs, or to run just a portion of the build process.
+
+For both ODK 1 and ODK 2:
+
+|          |    Build     |     Clean     |     Check Style & Spell     |
+| -------- | :---------: | :-----------: | :-----------------: |
+| **Options** | build-all |  clean |  check-all |
+
+For a specific ODK version:
+
+|          |    Copy     |     LaTeX     |     Style Check     |    Spell Check     |    Check All   |
+| -------- | :---------: | :-----------: | :-----------------: | :----------------: | :----------------: |
+| **Options** | odk1_copy |  odk1-latex |  odk1-style-check | odk1-spell-check |    odk1-check     |
+
+To build ODK 2 docs, just replace `odk1` with `odk2`. 
+
 
 ## How to contribute?
 
@@ -40,3 +69,11 @@ You can also...
  - [Discuss the documentation from a contributor perspective in our developer Slack](slack.opendatakit.org). (Use the #docs-code channel.)
  - [File an issue](https://github.com/opendatakit/docs/issues) for any needed improvements.
  - [Watch](https://github.com/opendatakit/docs/subscription) and star this repo, to keep up with what we're doing.
+
+## Troubleshooting
+- If you get an `extension error` or a `configuration error`:
+  - Make sure your virtual environment is activated.
+  - Type `python --version` to check your current python version (it should be 3.x).
+  - Run `pip install -r requirements.txt`.
+
+
