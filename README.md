@@ -4,32 +4,39 @@
 
 This repo is the source for ODK documentation.
 
-## Current Status — Live! (But still new)
+The published documentation is at:
 
-Our documentation website is live at https://docs.opendatakit.org
+ - https://docs.opendatakit.org
+ - https://docs.opendatakit.org/odk2/
 
 If you can't find what you are looking for, try the [old docs on the ODK website](https://opendatakit.org/). Also, please [file an issue](https://github.com/opendatakit/docs/issues) so that we know to add the information you are looking for.
 
 ## Building and viewing documentation locally
 
-> See the [Contributor Guide](http://docs.opendatakit.org/contributing) for detailed steps --- no prior experience needed!
+See the [Contributor Guide](http://docs.opendatakit.org/contributing) for detailed steps --- no prior experience needed!
 
-Firstly, make sure you have installed [python 3.x](https://www.python.org/downloads/), we recommend you to use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/) or a Python version management like [pyenv](https://github.com/pyenv/pyenv). You can take a look at your python and pip version using a  `--version` parameter.
+Make sure you have [Python 3](https://www.python.org/downloads/). We recommend you use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/) or a Python version management like [pyenv](https://github.com/pyenv/pyenv). (Type `python --version` to see your current version.)
 
 After that, you need to clone this repo and make sure all the requirements are installed:
+
 ```bash
 $ git clone https://github.com/opendatakit/docs.git
 $ cd docs/
 $ pip install -r requirements.txt
 ```
-Once your environment is set up, build and run the doc site with:
+Once your environment is set up, build and serve the docs locally with:
+
 ```bash
 $ make odk1
 $ cd odk1-build
 $ python -m http.server 8000
 ```
 
-And we also have several `make` options you can choose.
+You can then view the docs in your browser at http://localhost:8000.
+
+(Use `odk2` instead of `odk1` to build and serve the ODK2 docs.)
+
+You can also use `make` to build both ODK and ODK2 docs, or to run just a portion of the build process.
 
 For both ODK 1 and ODK 2:
 
@@ -64,9 +71,9 @@ You can also...
  - [Watch](https://github.com/opendatakit/docs/subscription) and star this repo, to keep up with what we're doing.
 
 ## Troubleshooting
-- If you get an extension error or a configuration error:
+- If you get an `extension error` or a `configuration error`:
   - Make sure your virtual environment is activated.
-  - type `python --version` to set their current python version (it should be 3.x).
-  - run `pip install -r requirements.txt`.
+  - Type `python --version` to check your current python version (it should be 3.x).
+  - Run `pip install -r requirements.txt`.
 
 
