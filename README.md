@@ -14,7 +14,9 @@ If you can't find what you are looking for, try the [old docs on the ODK website
 
 > See the [Contributor Guide](http://docs.opendatakit.org/contributing) for detailed steps --- no prior experience needed!
 
-Firstly, you need to clone this repo and make sure all the requirements are installed:
+Firstly, make sure you have installed [python 3.x](https://www.python.org/downloads/), we recommend you to use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/) or a Python version management like [pyenv](https://github.com/pyenv/pyenv). You can take a look at your python and pip version using a  `--version` parameter.
+
+After that, you need to clone this repo and make sure all the requirements are installed:
 ```bash
 $ git clone https://github.com/opendatakit/docs.git
 $ cd docs/
@@ -49,26 +51,9 @@ You can also...
  - [Watch](https://github.com/opendatakit/docs/subscription) and star this repo, to keep up with what we're doing.
 
 ## Troubleshooting
+- If you get an extension error or a configuration error:
+  - Make sure your virtual environment is activated.
+  - type `python --version` to set their current python version (it should be 3.x).
+  - run `pip install -r requirements.txt`.
 
-### **1. incorrect sphinx version**
-#### Error message:
-```bash
-$ make odk1
-...
-Extension error:
-Could not import extension sphinx_tabs.tabs (exception: No module named 'sphinx_tabs')
-make: *** [odk1] Error 1
-```
-or:
-```bash
-$ make odk1
-...
-Configuration error:
-There is a programable error in your configuration file:
-...
-from sphinx.util.compat import Directive
-ImportError: cannot import name Directive
-```
 
-#### Reason & Fix:
-It caused by an incorrect` sphinx` version, and you can fix this by reinstalling `sphinx` using `requirements.txt`.
