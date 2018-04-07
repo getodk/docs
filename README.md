@@ -29,22 +29,21 @@ $ cd odk1-build
 $ python -m http.server 8000
 ```
 
-To perform all spell check and style checks before building, use `make odk1-check` instead or `make odk1`.
+And we also have several `make` options you can choose.
 
-To build ODK 2 docs, replace `odk1` with `odk2`. 
+For both odk1 and odk2:
 
-Here are the all the `make` options you can use:
+|          |    Build     |     Clean     |     Check     |
+| -------- | :---------: | :-----------: | :-----------------: |
+| **Options** | build-all |  clean |  check-all |
 
-- ` help`
-- `odk1` **|** `odk2` **|** `build-all`
-- `odk1_clean` **|** `odk2_clean` **|** `clean`
-- `odk1_clean_files` **|** `odk2_clean_files` 
-- `odk1_copy` **|** `odk2_copy`
-- `odk1-latex` **|** `odk2-latex`
-- `odk1-style-check` **|** `odk2-style-check`
-- `odk1-spell-check` **|** `odk2-spell-check`
-- `odk1-check` **|** `odk2-check` **|** `check-all`
+For a specific odk:
 
+|          |    Copy     |     LaTeX     |     Style Check     |    Spell Check     |    Check All   |
+| -------- | :---------: | :-----------: | :-----------------: | :----------------: | :----------------: |
+| **Options** | odk1_copy |  odk1-latex |  odk1-style-check | odk1-spell-check |    odk1-check     |
+
+To build ODK 2 docs, just replace `odk1` with `odk2`. 
 
 
 ## How to contribute?
