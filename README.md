@@ -30,14 +30,13 @@ $ python -m http.server 8000
 ```
 
 And we also have several `make` options you can choose.
-
-For both odk1 and odk2:
+For both ODK 1 and ODK 2:
 
 |          |    Build     |     Clean     |     Check     |
 | -------- | :---------: | :-----------: | :-----------------: |
 | **Options** | build-all |  clean |  check-all |
 
-For a specific odk:
+For a specific ODK version:
 
 |          |    Copy     |     LaTeX     |     Style Check     |    Spell Check     |    Check All   |
 | -------- | :---------: | :-----------: | :-----------------: | :----------------: | :----------------: |
