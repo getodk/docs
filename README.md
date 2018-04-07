@@ -30,9 +30,10 @@ $ python -m http.server 8000
 ```
 
 And we also have several `make` options you can choose.
+
 For both ODK 1 and ODK 2:
 
-|          |    Build     |     Clean     |     Check     |
+|          |    Build     |     Clean     |     Check Style & Spell     |
 | -------- | :---------: | :-----------: | :-----------------: |
 | **Options** | build-all |  clean |  check-all |
 
