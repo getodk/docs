@@ -225,6 +225,10 @@ The :file:`framework.xlsx` file is central to the structure of the Application D
 
   10. Add the following rows. They tell the software what to do if you're previewing in :program:`Chrome`.
 
+  .. note::
+
+    This is only tested and expected to work in :program:`Chrome` and not other browsers like :program:`Firefox`, :program:`Safari`, or :program:`Edge`.
+
     .. list-table:: *survey* worksheet
       :header-rows: 1
 
@@ -310,7 +314,7 @@ To add another new form to an existing :file:`framework.xlsx` file, take the fol
 
   These steps are not part of the running example. They are provided here for reference.
 
-Assuming you have created a :file:`testForm.xlsx`, the appropriate directory structures for :file:`testForm.xlsx`, and then properly generated and saved the :file:`formDef.json:`, the following lines would need to be added into the :file:`framework.xlsx` *survey*.
+Assuming you have created a :file:`testForm.xlsx`, the appropriate directory structures for :file:`testForm.xlsx`, and then properly generated and saved the :file:`formDef.json`, the following lines would need to be added into the :file:`framework.xlsx` *survey* worksheet.
 
 .. csv-table:: Example Framework Survey Worksheet
   :header: "branch_label", "url", "clause", "condition", "type", "values_list", "display.text", "display.hint"
@@ -348,6 +352,14 @@ Once you have made these changes and used XLSX Converter on the :file:`framework
 
   If you don't see your form in the :guilabel:`Preview`, try refreshing your browser.
 
+.. tip::
+
+  You can also convert your forms with the :program:`Grunt` command:
+
+  .. code-block:: console
+
+    grunt xlsx-convert-all
+
 .. _build-app-debugging-survey:
 
 Debugging your Survey
@@ -375,13 +387,17 @@ In order to see these changes on an Android device, you must first have ODK Surv
   #. Open a :program:`cmd` or :program:`terminal` window within the :guilabel:`Application Designer` directory (the one containing :file:`Gruntfile.js`), as described in the :doc:`app-designer-directories` documentation.
   #. Type:
 
-.. code-block:: console
+  .. code-block:: console
 
-  $ grunt adbpush
+    $ grunt adbpush
 
-.. note::
+  .. note::
 
-  If it gives you an error, you may need to run :code:`grunt adbpush -f` to force it.
+    If it gives you an error, you may need to run :code:`grunt adbpush -f` to force it.
+
+  .. note::
+
+    If you do not see the form, you may need to :ref:`reset the configuration <services-managing-reset-config>`.
 
 This will copy all of the files under config onto your device. You should then be able to launch ODK Survey, and it will display your form in its list of forms. Click the form to open it.
 
@@ -399,7 +415,7 @@ JavaScript pages as the skin of the app. Through a JavaScript API presented to t
 
 Writing an app using HTML and JavaScript yields a lot of power. However, it can lead to a complicated design cycle.
 
-The HTML and JavaScript files you write rely on the JavaScript API implemented within the ODK Tables APK to vend data-table values into your HTML pages, where they can be displayed as a list of items, as a detail view of a single item, or graphed in any number of ways. This JavaScript API, since it is implemented in the APK, makes it difficult to debug your custom views off the phone. At present, the only way to test your HTML pages is on the device. Fortunately, on Android 4.4 and higher, :program:`Chrome` can access the browser Console and set breakpoints on the device, providing a clumsy but viable debug environment.
+The HTML and JavaScript files you write rely on the JavaScript API implemented within the ODK Tables APK to retrieve database values for your application. This JavaScript API, since it is implemented in the APK, makes it difficult to debug your custom views off the phone. At present, the only way to test your HTML pages is on the device. Fortunately, on Android 4.4 and higher, :program:`Chrome` can access the browser Console and set breakpoints on the device, providing a clumsy but viable debug environment.
 
 .. _build-app-understanding-web-file:
 
@@ -705,7 +721,10 @@ After that, you can deploy your app to your device. Open Survey and fill in a fe
 Debugging Tables Web Files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can use the :program:`Chrome` browser on your computer to inspect for devices and connect to this custom screen on your Android device, and debug from there.
+You can use the :program:`Chrome` browser on your computer to inspect for devices and connect to this custom screen on your Android device, and debug from there. Some useful guides include:
+
+  - `Get Started with Debugging JavaScript in Chrome DevTools <https://developers.google.com/web/tools/chrome-devtools/javascript/>`_
+  - `Get Started with Remote Debugging Android Devices <https://developers.google.com/web/tools/chrome-devtools/remote-debugging/>`_
 
 .. warning::
   The edit-debug cycle is awkward because you must make the HTML or JavaScript change on your computer then push the change to your device, and reload the page (for example, by rotating the screen). When you do rotate the screen, however, it is rendered in a new web page, necessitating connecting to that new page to resume debugging (the prior page sits idle and will eventually be destroyed. If you don't see any activity, it is likely because you are pointing at the wrong web page. Return to inspect devices, and select the newest page).
@@ -769,9 +788,7 @@ The application is now deployed to your server. Other devices can synchronize wi
 Updating an Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - **Changing view files**: In this scenario you are not changing the database schema and your changes only affect the presentation. These changes can be synchronized to the server and do not require resetting the app server.
-
-  - **Changing the database schema**: In this scenario you want to change the database schema, such as adding a new column. These changes cannot be synchronized and require resetting the app server.
+To update any app level or tabel level files, or to modify the database schema, you will need to reset the app server. Make the changes on your PC as normal, push them to the device, and reset the app server.
 
     .. warning::
 
