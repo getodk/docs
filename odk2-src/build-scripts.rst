@@ -31,15 +31,12 @@ If you had all of the Android tools checked out your directory structure would l
   /opendatakit/
       /androidlibrary/
       /androidcommon/
-      /app-designer/
       /gradle-config/
       /scan/
       /sensorsframework/
       /sensorsinterface/
       /services/
-      /suitcase/
       /survey/
-      /sync-client/
       /tables/
 
 There are two cases where this directory structure makes a difference:
@@ -58,7 +55,7 @@ There are two cases where this directory structure makes a difference:
 Building the Android Tools
 -------------------------------
 
-The simplest way to build the tools is often to press the build button in Android Studio. However, the command line can also be used. To invoke the gradle wrapper, enter the root level of the project to be built and run the command:
+The simplest way to build the tools is often to press the build button in Android Studio. However, the command line can also be used. To invoke the gradle wrapper, enter the root level of the project to be built and run a command that looks like this:
 
 .. code-block:: console
 
@@ -66,16 +63,33 @@ The simplest way to build the tools is often to press the build button in Androi
 
 If you are on :program:`Windows` use :file:`gradlew.bat` instead.
 
-Using the Snapshot flavor assumes you are running in the *development* branch. If you are using the *master* branch, use the *master* flavor instead:
+.. _build-scripts-flavors
+
+Flavors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Android tools use two dimensions of `product flavors <https://developer.android.com/studio/build/build-variants.html#product-flavors>`_. The first dimension determines the version of the dependencies to pull. Each of the Android tools depends on the androidlibrary library project, and some depend on androidcommon as well. Binary versions of these are posted to :program:`Maven` and :program:`Ivy` repositories corresponding to the latest version of each of the three branches:
+
+  - **Snapshot** is used if you are running the *development* branch. A new version of the libraries is automatically posted with each new commit that is merged.
+  - **Demo** is used if you are running the *demo* branch.
+  - **Master** is used if you are running the *master* branch. These are release versions that have been tested and posted by hand.
+
+.. warning::
+
+  The ODK 2 tools prefers pull requests to *development*. In unusual circumstances when *development* is undergoing heavy change we may accept pull requests to *demo* or *master* depending on the level of incompatibility that might exist.
+
+The other dimension determines whether to apply changes necessary to run the UI tests. The two options are:
+
+  - **Basic** is used for normal builds
+  - **Uitest** is used for builds that will run the UI tests.
+
+Therefor, if you wanted to build the normal version of the *master* branch, you would run:
 
 .. code-block:: console
 
   ./gradlew clean assembleMasterBasic
 
-.. warning::
-
-  The ODK 2 tools do not accept pull requests to master. If you are contributing, please use the development branch.
-
+See :ref:`build-scripts-building-ui-testing` for an example of the UI testing flavor.
 
 .. _build-scripts-building-linting:
 
@@ -197,7 +211,7 @@ This file contains miscellaneous Gradle tasks necessary to the ODK 2 tools. Most
 :file:`uitests.gradle`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This file contains tasks to make the UI tests work on a headless build server. In particular they disable animations and grant external storage permissions.
+This file contains tasks to make the UI tests work on a build server. In particular, they disable animations and grant external storage permissions.
 
 .. _build-scripts-external-remotet:
 
