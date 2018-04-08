@@ -63,7 +63,11 @@ The simplest way to build the tools is often to press the build button in Androi
 
 If you are on :program:`Windows` use :file:`gradlew.bat` instead.
 
-.. _build-scripts-flavors
+.. note::
+
+  If you are building with Android Studio, you will need to select the correct build variant. This is important when you don't have androidlibrary or androidcommon in your :ref:`build-scripts-directory-structure`. These are discussed more in the :ref:`next section <build-scripts-flavors>`.
+
+.. _build-scripts-flavors:
 
 Flavors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -83,13 +87,13 @@ The other dimension determines whether to apply changes necessary to run the UI 
   - **Basic** is used for normal builds
   - **Uitest** is used for builds that will run the UI tests.
 
-Therefor, if you wanted to build the normal version of the *master* branch, you would run:
+Therefore, if you wanted to build the normal version of the *master* branch, you would run:
 
 .. code-block:: console
 
   ./gradlew clean assembleMasterBasic
 
-See :ref:`build-scripts-building-ui-testing` for an example of the UI testing flavor.
+See :ref:`build-scripts-building-ui-tests` for an example of the UI testing flavor.
 
 .. _build-scripts-building-linting:
 
@@ -197,7 +201,7 @@ These build files are centralized in the `Gradle Config repository <https://gith
 :file:`variables.gradle`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This file contains all the versions and variables strings shared among the projects. Most notably this includes the release code version, the compile targets, the :program:`Java` version, and the composed project build and flavor names.
+This file contains all the versions and variables strings shared among the projects. Most notably this includes the release code version, the compile targets, the :program:`Java` version, and the composed project build and variant names.
 
 .. _build-scripts-external-runnables:
 
