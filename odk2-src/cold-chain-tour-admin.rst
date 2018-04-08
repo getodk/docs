@@ -23,7 +23,7 @@ Function
 
 The Administrator Options Menu is the hub that launches the special actions the administrator can perform. It is only accessible by authenticated Table Administrators. This screen is accessed by pressing the :guilabel:`Administrator Options` button the main menu.
 
-The administrator has access the full hierarchy of regions. Above the :guilabel:`Administrator Options` button is the list of all the highest tier regions. Tapping any of those individual options will filter the data into that region. They admin can keep advancing through the regions until they reach the child tiers, which is the same :doc:`cold-chain-tour-regions` interface.
+The administrator has access the full hierarchy of regions. Above the :guilabel:`Administrator Options` button is the list of all the highest tier regions. Tapping any of those individual options will filter the data into that region. They admin can keep advancing through the regions until they reach the leaf tiers, which is the same :doc:`cold-chain-tour-regions` interface.
 
 .. _cold-chain-tour-admin-menu-implementation:
 
@@ -249,7 +249,7 @@ Add Health Facility
 Function
 ~~~~~~~~~~~~~~~~~~~~~
 
-The Add Health Facility interface provides a method for an administrator to add a new health facility to the data set. The administrator must specify the region that should contain the facility (the region must be a child tier, it cannot contain other regions). When the :guilabel:`Add Facility` button is pressed, a form is launched to fill in the details of the facility.
+The Add Health Facility interface provides a method for an administrator to add a new health facility to the data set. The administrator must specify the region that should contain the facility (the region must be a leaf tier, it cannot contain other regions). When the :guilabel:`Add Facility` button is pressed, a form is launched to fill in the details of the facility.
 
 .. _cold-chain-tour-admin-add-health-facility-implementation:
 
@@ -260,7 +260,7 @@ The root level HTML file for this option is :file:`assets/addHealthFacility.html
 
 The JavaScript file reads the value from the drop menu and uses it to construct the :code:`defaults` argument to :code:`odkTables.addRowWithSurvey(...)`. The variable also includes the group permissions. The form launched is :file:`tables/health_facility/forms/health_facility/health_facility.xlsx`
 
-This form resembles many of the other forms in this application. Mostly :tc:`select_one` prompts are grouped into screens. The region choices are populated by a query from the *queries* worksheet. The *settings, *properties*, and *model* worksheets all contain their typical values, setting the form and table IDs, setting the default view files, and mapping to the database, respectively. The *properties* file includes security properties including :tc:`unverifiedUserCanCreate` and :tc:`defaultAccessOnCreation` that restrict which users can use this form.
+This form resembles many of the other forms in this application. Mostly :tc:`select_one` prompts are grouped into screens. The region choices are populated by a query from the *queries* worksheet. The *settings*, *properties*, and *model* worksheets all contain their typical values, setting the form and table IDs, setting the default view files, and mapping to the database, respectively. The *properties* file includes security properties including :tc:`unverifiedUserCanCreate` and :tc:`defaultAccessOnCreation` that restrict which users can use this form.
 
 .. _cold-chain-tour-admin-add-health-facility-implementation-files:
 

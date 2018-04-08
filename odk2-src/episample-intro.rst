@@ -33,7 +33,7 @@ Source code for this Data Management Application can be found in the `malaria-de
 .. note::
   The EpiSample application (and all other Data Management Applications provided in these docs) come with a full copy of the Application Designer they were developed in.
 
-After you have have downloaded the application, you can set it up according to the :doc:`Application Designer setup <app-designer-setup>` instructions. Similarly You can push the application to your device using the :ref:`build-app-pushing` instructions.
+After you have have downloaded the application, you can set it up according to the :doc:`Application Designer setup <app-designer-setup>` instructions. Similarly, you can push the application to your device using the :ref:`build-app-pushing` instructions.
 
 
 .. _episample-intro-tour:

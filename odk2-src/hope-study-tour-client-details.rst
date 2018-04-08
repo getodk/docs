@@ -19,7 +19,7 @@ The :guilabel:`Home Locater` button launches the :doc:`hope-study-tour-home-loca
 Implementation
 --------------------------
 
-The HTML file file:`tables/femaleClients/html/femaleClients_detail.html` is, minimal, like its sister *List View* HTML file, and provides only a basic skeleton of the user interface which will be filled in by :file:`tables/femaleClients/js/femaleClients_detail.js`
+The HTML file :file:`tables/femaleClients/html/femaleClients_detail.html` is minimal, like its sister *List View* HTML file, and provides only a basic skeleton of the user interface which will be filled in by :file:`tables/femaleClients/js/femaleClients_detail.js`
 
 The JavaScript file :file:`femaleClients_detail.js` implements the basic *Detail View* workflow. The call that launched the view provided a query as a parameter that selects which record will be displayed in the *Detail View*. This record is retrieved with the :code:`odkData.getViewData(...)` call. The returned record is used to fill in the basic info at the top of the screen, and then the :guilabel:`Client Forms` and :guilabel:`Partner Forms` are created. These buttons link to the :doc:`hope-study-tour-follow-up-forms` using :code:`odkTables.editRowWithSurvey(...)` and :code:`odkTables.addRowWithSurvey(...)` API calls. All the buttons in the :guilabel:`Client Forms` section use the table ID *femaleClients* and the client ID of the selected record, while all the buttons in the :guilabel:`Partner Forms` section use the table ID *maleClients* and the male client ID (read from the selected record).
 

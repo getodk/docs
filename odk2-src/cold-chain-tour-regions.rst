@@ -1,6 +1,6 @@
 .. spelling::
   Balaka
-  Chiitipa
+  Chitipa
 
 Regions
 =================
@@ -9,7 +9,7 @@ Regions are tiered geographic groupings that contain a list of health facilities
 
 Regions affect health facility, refrigerator, and maintenance data. Every row in these three tables will be tied to a particular region. The refrigerator type data is not tied to particular regions.
 
-Regions have multiple tiers. For example, the Balaka region is contained inside the South East Region, which is contained in the larger South region. This example has three tiers, but this is not required. The Chiitipa region is contained in the North region (there is no East/West subdivision).
+Regions have multiple tiers. For example, the Balaka region is contained inside the South East Region, which is contained in the larger South region. This example has three tiers, but this is not required. The Chitipa region is contained in the North region (there is no East/West subdivision).
 
 .. _cold-chain-tour-regions-navigation:
 
@@ -38,7 +38,7 @@ Each button in the list signifies a smaller region contained in the lager region
 Implementation
 ~~~~~~~~~~~~~~~~~~~
 
-This screen is shown when :file:`assets/index.html` and :file:`assets/menu.js` execute the :ref:`authentication code <cold-chain-tour-auth-implementation>` and find a user with a valid region. This will trigger the function :code:`showSubregionButtonsAndTitle(...)` in :file:`menu.js`, which handles the tiered subregions and creates a list of buttons based on the regions one tier below the authenticated users default group region. The default group region is parsed by the :code:`util.getMenuOptions(...)` function in :file:`assets/util.js`. This default group string might, itself, contain its subgroups if the group is a higher tier. If that is the case those subregions will be listed as the buttons, and when pressed they will relaunch this screen with a URL parameter indicating the subregion as the new focus region. See :code:`addMenuButton(...)` in :`menu.js` to see how :file:`index.html` is relaunched with a new parameter.
+This screen is shown when :file:`assets/index.html` and :file:`assets/menu.js` execute the :ref:`authentication code <cold-chain-tour-auth-implementation>` and find a user with a valid region. This will trigger the function :code:`showSubregionButtonsAndTitle(...)` in :file:`menu.js`, which handles the tiered subregions and creates a list of buttons based on the regions one tier below the authenticated users default group region. The default group region is parsed by the :code:`util.getMenuOptions(...)` function in :file:`assets/util.js`. This default group string might, itself, contain its subgroups if the group is a higher tier. If that is the case those subregions will be listed as the buttons, and when pressed they will relaunch this screen with a URL parameter indicating the subregion as the new focus region. See :code:`addMenuButton(...)` in :file:`menu.js` to see how :file:`index.html` is relaunched with a new parameter.
 
 If the sub regions are not found by the above method, then the database is queried for the sub regions: :code:`util.getDistrictsByAdminLevel2(...)` calls :code:`odkData.arbitraryQuery(...)` and queries the *health_facility* table.
 
