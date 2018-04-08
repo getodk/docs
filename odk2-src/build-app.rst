@@ -788,7 +788,7 @@ The application is now deployed to your server. Other devices can synchronize wi
 Updating an Application
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To update any app level or table level files, or to modify the database schema, you will need to reset the app server. Make the changes on your PC as normal, push them to the device, and reset the app server.
+To update any app level or table level files, or to modify the database schema (like adding a new field to your form that adds a database column), you will need to reset the app server. Make the changes on your PC as normal, push them to the device, and reset the app server.
 
     .. warning::
 
