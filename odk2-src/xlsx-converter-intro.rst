@@ -29,9 +29,9 @@ Will result in a survey like this:
 
   See :file:`exampleForm.xlsx` (located at the path :file:`app/config/tables/exampleForm/forms/exampleForm/` in the Application Designer) for a more extensive list of examples.
 
-.. _xlsx-converter-intro-learn-more:
+.. _xlsx-converter-intro-architect-guide:
 
-Learn more about ODK XLSX Converter
+Deployment Architect Guide
 ------------------------------------
 
 .. toctree::

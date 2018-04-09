@@ -48,5 +48,5 @@ When that is completed you should now be presented with the list of those six sa
 Learn More
 ~~~~~~~~~~~~~~~~~~~~
 
-For instructions on installing your own Survey application to a device, view the :ref:`app-designer-common-tasks-move-to-device` guide.
+For instructions on installing your own Survey application to a device, view the :ref:`build-app-move-to-device` guide.
 

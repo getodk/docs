@@ -7,5 +7,4 @@ Using ODK Application Designer
   app-designer-overview
   app-designer-launching
   app-designer-directories
-  app-designer-common-tasks
 

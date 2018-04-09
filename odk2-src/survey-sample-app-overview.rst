@@ -21,5 +21,5 @@ We have provided a sample application to help you acquaint yourself with the var
 Learn More
 -----------------------
 
-For instructions on creating your own Survey applications, view the :ref:`app-designer-common-tasks-designing-a-form` guide.
+For instructions on creating your own Survey applications, view the :ref:`build-app-designing-a-form` guide.
 

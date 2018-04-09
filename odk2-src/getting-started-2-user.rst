@@ -1,4 +1,4 @@
-ODK 2 Getting Started User Guide
+Getting Started User Guide
 =====================================
 
 .. _using-odk-2:
@@ -188,4 +188,16 @@ The conflict details screen displays the values of the field(s) in conflict, wit
 
 This concludes the tour of the *Geotagger* example application's screens, and the functionality within ODK Tables. For larger tours of sample applications, try the :doc:`survey-sample-app` and :doc:`tables-sample-app`.
 
-Development Architects should also continue this tour in the :doc:`getting-started-2-architect`.
+.. _user-odk2-next:
+
+Next Steps
+-----------------------
+
+Users can browse the user guides for the Android tools. Tables and Survey's documentation each guide you through the use of sample application to better familiarize with the workflow of each tool.
+
+  - :doc:`survey-intro`
+  - :doc:`tables-intro`
+  - :doc:`services-intro`
+
+
+Development Architects should continue this tour in the :doc:`getting-started-2-architect`.

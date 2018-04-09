@@ -34,7 +34,7 @@ ODK Scan works with machine readable forms created using the :doc:`scan-form-des
 After creating a form with Form Designer, you'll have generated the machine readable files. To push them to your device, you will use the same mechanism that is used to push Survey and Tables files to the device.
 
   #. Create a form using the ODK Scan Form Designer. Save that form with the :guilabel:`Save to File System` option.
-  #. Follow the instructions in the :ref:`Application Designer Guide <app-designer-common-tasks-move-to-device>` to push updates to the device. These describe pushing Survey files, but they will push Scan files to the device too with the same procedure.
+  #. Follow the instructions in :ref:`build-app-move-to-device` to push updates to the device. These describe pushing Survey files, but they will push Scan files to the device too with the same procedure.
   #. To confirm that the *[your_form]* template has been successfully been transferred, open the ODK Scan app on your device and go to :guilabel:`Settings` (the wheel icon) and select :menuselection:`Templates to Use`. The folder name should appear in the list of templates.
 
 .. image:: /img/scan-managing/scan-template-list.*
