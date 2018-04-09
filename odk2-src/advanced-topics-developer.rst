@@ -13,3 +13,4 @@ Other perspective definitions can be found :ref:`here <odk-2-perspectives>`.
   survey-form-processing
   formdef-structure
   odk-2-sync-protocol
+  build-scripts
