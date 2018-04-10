@@ -15,7 +15,7 @@ Related Topics
 
 - :doc:`Intro to Forms in Open Data Kit <form-design-intro>`
 
-  - :doc:`Example form questions in Collect <form-widgets>`
+  - :doc:`Example form questions in Collect  <form-question-types>`
 
 - :doc:`encrypted-forms`
 - Integrating with other Android Apps

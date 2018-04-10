@@ -72,7 +72,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   form-design-intro
   odk-build
   xlsform
-  form-widgets
+  form-question-types
   form-interaction
   form-regex
   form-update

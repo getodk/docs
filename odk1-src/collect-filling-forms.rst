@@ -74,7 +74,7 @@ In all cases, buttons below the question text will guide you through providing t
   
 .. seealso::
 
-  For a (mostly) complete guide to form question appearance, see :doc:`form-widgets`.
+  For a (mostly) complete guide to form question appearance, see :doc:`form-question-types`.
 
 
 Removing answers
