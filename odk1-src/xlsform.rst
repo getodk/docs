@@ -8,14 +8,15 @@ XLSForm
 
 .. _xlsform-introduction:
 
-:dfn:`XLSForm` is a tool to simplify the creation of forms. Forms designed with Excel can be converted to *XForms* that can be used with ODK tools.
+:dfn:`XLSForm` is a tool to simplify the creation of forms. Forms designed with Excel can be converted to *XForms* that can be used with ODK tools. It is available for use as `XLSForm Online <https://opendatakit.org/xiframe/>`_ and `XLSForm Offline <https://github.com/opendatakit/xlsform-offline/releases>`_
 
 
 Using the Application
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 - To design your form, you can refer to the `XLSForm form design documentation <http://xlsform.org/>`_ and check out the `sample Excel file <https://opendatakit.org/wp-content/uploads/2013/06/sample_xlsform.xls>`_.
-- Once your xls form is ready, you can submit it `for conversion here <http://opendatakit.org/xiframe/>`_.
+- Once your XLSForm is ready, you convert it with `XLSForm Online <https://opendatakit.org/xiframe/>`_ and `XLSForm Offline <https://github.com/opendatakit/xlsform-offline/releases>`_.
+
 
 Other XLSForm converters
 ~~~~~~~~~~~~~~~~~~~~~~~~~
