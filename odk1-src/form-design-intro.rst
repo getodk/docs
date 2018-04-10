@@ -36,4 +36,4 @@ Most ODK users design their forms in Excel, following the `XLSForm <http://xlsfo
 Drag-and-drop form creation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   
-For simple forms, :doc:`odk-build` is an drag-and-drop form designer that works both online and offline.
+For simple forms, :doc:`odk-build` is a drag-and-drop form designer that works both online and offline.
