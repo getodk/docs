@@ -15,7 +15,7 @@ Using the Application
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 - To design your form, you can refer to the `XLSForm form design documentation <http://xlsform.org/>`_.
-- Once your XLSForm is ready, you convert it with `XLSForm Online <https://opendatakit.org/xiframe/>`_ and `XLSForm Offline <https://github.com/opendatakit/xlsform-offline/releases>`_.
+- Once your XLSForm is ready, you convert it with `XLSForm Online <https://opendatakit.org/xiframe/>`_ or `XLSForm Offline <https://github.com/opendatakit/xlsform-offline/releases>`_.
 
 
 Other XLSForm converters
