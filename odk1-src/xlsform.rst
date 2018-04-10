@@ -8,12 +8,7 @@ XLSForm
 
 .. _xlsform-introduction:
 
-:dfn:`XLSForm` (formerly XLS2Xform) is a tool to simplify the creation of forms. Forms designed with Excel can be converted to *XForms* that can be used with ODK tools.
-
-.. note::
-  
-  - When this tool was renamed to XLSForm there were many changes to the syntax. The new version is mostly backwards compatible with the old syntax.
-  - XLSForm works with ODK Collect version *1.1.7* or later.
+:dfn:`XLSForm` is a tool to simplify the creation of forms. Forms designed with Excel can be converted to *XForms* that can be used with ODK tools.
 
 
 Using the Application
