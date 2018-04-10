@@ -104,7 +104,7 @@ Fusion Tables is an experimental data visualization web application to gather, v
 Google Spreadsheets
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Spreadsheets is Google’s cloud-hosted spreadsheet solution. Multimedia files are represented by including standard web links to the files. Repeats are also represented with links to the underlying data. All metadata is preserved. Spreadsheets has a 400,000 cell limit, above which errors will be reported. Spreadsheets also has an API that can be used to export/publish data. 
+Spreadsheets is Google’s cloud-hosted spreadsheet solution. Multimedia files are represented by including standard web links to the files. Repeats are also represented with links to the underlying data. All metadata is preserved. Spreadsheets has a 2 million cell limit, above which errors will be reported. Spreadsheets also has an API that can be used to export/publish data.
 
 .. warning::
   
