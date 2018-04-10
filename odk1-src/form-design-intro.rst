@@ -22,9 +22,8 @@ JavaRosa-compliant build tools
 
 Most ODK users design their forms in Excel, following the `XLSForm <http://xlsform.org/>`_ specification. To convert XLSForms to XForms, you can use:
 
-- `ODK's online XLSForm converter <http://opendatakit.org/xiframe/>`_
-- `XLSForm Offline for Mac or Windows <https://gumroad.com/l/xlsform-offline>`_
-- `XLSForm for Windows <https://opendatakit.org/downloads/download-info/xlsform-for-windows/>`_
+- `XLSForm Online <https://opendatakit.org/xiframe/>`_
+- `XLSForm Offline <https://github.com/opendatakit/xlsform-offline/releases>`_
 - :doc:`pyxform`, a Python XLSForm converter with a command-line tool
 
 .. tip::
