@@ -70,16 +70,13 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   :caption: Form Building
 
   form-design-intro
-  odk-build
   xlsform
   form-question-types
-  form-interaction
-  form-regex
-  form-update
-  pyxform
-  validate
+  form-logic
   launch-apps-from-collect
-
+  form-tools
+  form-best-practices
+  
 .. toctree::
   :hidden:
   :maxdepth: 2

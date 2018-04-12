@@ -7,7 +7,7 @@ Most ODK tools use the `ODK JavaRosa <https://github.com/opendatakit/javarosa>`_
 
 Because of the complexity of the XForms format, we do not recommend coding XForms directly in XML. The recommended process is:
 
-1. Begin with one of the :ref:`compliant-build-tools`.
+1. Begin with one of the :doc:`form-tools`.
 2. Edit the XML only if necessary.
 
    - Before editing an XForm directly, you need to be familiar with the `ODK XForm specification <https://github.com/opendatakit/xforms-spec>`_.
