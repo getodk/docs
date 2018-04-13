@@ -68,7 +68,7 @@ To check if the previous question has a response,
   
   
 This pattern can be combined with 
-:ref:`required responses <requiring_responses>`
+:ref:`required responses <requiring-responses>`
 to enforce a minimum number of responses.
 
 

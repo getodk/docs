@@ -5,5 +5,4 @@ Tips and Best Practices
 
   form-repeats
   form-regex
-  form-interaction
   form-update

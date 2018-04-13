@@ -39,7 +39,7 @@ put the question's :th:`name` in curly brackets preceded by a dollar sign:
 
 Variables can be used in 
 :th:`label`, :th:`hint`, and :th:`repeat_count` columns, 
-as well as any column that accepts an :term:`expression`.
+as well as any column that accepts an :ref:`expression <expressions>`.
 
 .. image:: /img/form-logic/variables-0.* 
   :alt: A text widget in Collect. The question is "What is your name?" The entry field has the value "Adam".
@@ -127,9 +127,9 @@ you must first use a :tc:`calculate` row and then a variable.
   :header: type, name, label, calculation
   
   decimal, bill_amount, Bill amount:, 
-  calculate, tip_18, , round((${bill_amount_1} * 0.18),2)
-  calculate, tip_18_total, , ${bill_amount_1} + ${tip_18}
-  note, tip_18_note, "| Bill: $${bill_amount_1}
+  calculate, tip_18, , "round((${bill_amount} * 0.18),2)"
+  calculate, tip_18_total, , ${bill_amount} + ${tip_18}
+  note, tip_18_note, "| Bill: $${bill_amount}
   | Tip (18%): $${tip_18}
   | Total: $${tip_18_total}",
 
@@ -153,7 +153,7 @@ Since expressions are evaluated when the form is saved,
 even if they were evaluated earlier while filling out the form,
 unexpected behavior can sometimes occur.
 For example,
-if a default value relies on a calculations,
+if a default value relies on a calculation,
 and the calculation relies on an earlier value,
 and the earlier value is edited,
 then the default value will re-evaluate on save,
@@ -164,7 +164,7 @@ use the :tc:`once()` function.
 If a calculation is wrapped in a :tc:`once()` function,
 the expression will only be evaluated if there is no current value.
 
-.. _requiring_responses:
+.. _requiring-responses:
 
 Requiring responses
 =====================
@@ -196,8 +196,8 @@ without answering the question.
 
 .. _default-responses:
   
-Setting default values
-=========================
+Setting default responses
+===========================
 
 To provide a default response to a question,
 put the response value in the :th:`default` column.
@@ -250,9 +250,13 @@ For example:
 :tc:`not(contains(., 'prohibited'))`
   True if the substring ``prohibited`` does not appear in the response.
 
+.. note::
+
+  Constraints are not evaluated if the response is left blank.
+  To restrict empty responses, 
+  :ref:`make the question required <requiring-responses>`.
   
-.. seealso:: :doc:`form-regex`
-  
+.. seealso:: :doc:`form-regex`  
   
 .. image:: /img/form-logic/constraint-message.* 
   :alt: A text widget in Collect. The question text is "What is your middle initial?" The entered value is "Michael". Over the widget is an alert message: "Just the first letter."
@@ -264,7 +268,29 @@ For example:
   
   text, middle_initial, What is your middle initial?, "regex(., '\p{L}')", Just the first letter.
   
+.. _read-only:
   
+Read-only questions
+---------------------  
+    
+To completely restrict user-entry, 
+use the :th:`read_only` column with a value of :tc:`yes`.
+This is usually combined with a :ref:`default response <default-responses>`,
+which is often :ref:`calculated <calculations>` 
+based on :ref:`previous responses <variables>`.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, read_only, default, calculation
+
+  decimal, salary_income, Income from salary,,,
+  decimal, self_income, Income from self-employment,,,
+  decimal, other_income, Other income,,,
+  calculate, income_sum, , , , "sum(${salary_income}, ${self_income}, ${other_income})"
+  decimal, total_income, Total income, yes, ${income_sum}, 
+
+    
     
 .. _relevants:
 
@@ -307,6 +333,8 @@ For example:
 
 .. _XPath functions: https://opendatakit.github.io/xforms-spec/#xpath-functions
 
+.. _simple-conditional-example:
+
 Simple example
 ---------------
 
@@ -327,6 +355,8 @@ Simple example
   yes_no, yes, Yes
   yes_no, no, No
 
+.. _complex-conditional-example:
+  
 Complex example
 ------------------
 
@@ -361,7 +391,41 @@ Complex example
   cancer_types, other, Other
   diabetes_types, type_1, Type 1 (Insulin dependent)
   diabetes_types, type_2, Type 2 (Insulin resistant)
+
+.. warning::
+
+  Calculations are evaluated regardless of their relevance.
   
+  For example, 
+  if you have a :tc:`calculate` widget
+  that adds together two previous responses,
+  you cannot use :th:`relevant` to skip in the case of missing values.
+  (Missing values will cause an error.)
+  
+  Instead,
+  use the `if() function`_ to check for the existence of a value,
+  and put your calculation inside the ``then`` argument.
+  
+  .. _if() function: https://opendatakit.github.io/xforms-spec/#fn:if
+  
+  For example,
+  when adding together fields ``a`` and ``b``:
+  
+  .. code-block:: none
+  
+    if(${a} != '' and ${b} != '', ${a} + ${b}, '')
+    
+  In context:
+  
+  .. csv-table::
+    :header: type, name, label, calculation
+    
+    integer, a, a =, 
+    integer, b, b =,
+    calculate, a_plus_b, ,"if(${a} != '' and ${b} != '', ${a} + ${b}, '')"
+    note, display_sum, a + b = ${a_plus_b}, 	
+  
+    
 .. _repeats:
 
 Repeating questions and groups of questions
@@ -369,7 +433,6 @@ Repeating questions and groups of questions
 
 To repeat questions or groups of questions
 use the :tc:`begin_repeat...end_repeat` syntax.
-This can be used with one question or a group of questions.
 
 .. rubric:: XLSForm (Single question repeat)
 
@@ -437,7 +500,7 @@ the user is asked if they want to add another repeat group.
 Statically defined repeats
 ----------------------------
 
-Use the :th:`repeat_count` columns
+Use the :th:`repeat_count` column
 to define the number of times a group will repeat.
 
 
@@ -472,6 +535,8 @@ The :th:`repeat_count` column can reference
   integer, child_age, Child's age,
   end_repeat, , , 
 
+
+.. seealso:: :doc:`form-repeats`
   
 .. _cascading-selects:
   
