@@ -38,3 +38,4 @@ redirects:
   briefcase-forms/index.html: briefcase-using
   briefcase-vs-aggregate/index.html: briefcase-and-aggregate
   form-widgets/index.html: form-question-types
+  form-interaction/index.html: form-logic
