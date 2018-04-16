@@ -88,21 +88,6 @@ If you are unable to log onto your server, you will need to search for the versi
 .. image:: /img/aggregate-upgrade/find-version.*
    :alt: Image showing search result for version.  
 
-.. note::
-
-    In the 1.0 Production release, the Version appears on the :guilabel:`Site Admin` Tab, under the :guilabel:`Preferences` sub-tab. If no version information is displayed even after you log in, then you are running an extremely old version of ODK Aggregate; in that case follow this cheat sheet:
-
-    - `Beta 1 and earlier`: :guilabel:`Permissions` tab looks nothing like the tab in the Production release.
-    - `Beta 2`: :guilabel:`Permissions` tab looks like the Production release; Forms tab does not show the number of media files associated with a form.
-    - `Beta 3`: The number of media files associated with a form is displayed; publishing to Google is broken.
-    - `Beta 4`: There are :guilabel:`Form Management` and :guilabel:`Site Admin` tabs; publishing to Google is broken.
-    - `RC1`: csv exports apply the active Filter to the exported columns; publishing to Google is broken.
-    - `RC2`: :guilabel:`Submissions` tab is paginated (shows 500 records per page by default); publishing to Google works.
-    - `RC3`: kml exports apply the active Filter to the exported data. All data is exported. It no longer truncates to the first 500 records.
-    - `RC4`: Submissions for forms with non-repeating groups are now properly reconstructed into Briefcase. Date fields are broken.
-    
-    
-    Publishing to Google is broken prior to RC2 (due to a change in Google infrastructure).
     
 .. _general-steps-for-upgrading-aggregate:
 
