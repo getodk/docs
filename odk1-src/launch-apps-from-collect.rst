@@ -9,8 +9,8 @@
   sometext
   uuid
 
-Launching External Apps from Collect Forms
-====================================================
+Launching External Apps
+========================
 
 .. seealso::
 
