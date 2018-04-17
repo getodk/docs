@@ -53,7 +53,7 @@ This displays a popup with the audit contents:
 .. image:: /img/form-audit-log/audit-example.png
   :alt: An example audit log in Aggregate.
 
-If more sophisticated analysis of the logs is required, they can be downloaded along with their submissions using :ref:`Briefcase <pull-from-aggregate>`.
+If more sophisticated analysis of the logs is required, logs can be downloaded along with their submissions using :ref:`Briefcase <pull-from-aggregate>`.
 
 .. _audit-log-structure:
 
@@ -67,7 +67,7 @@ If a form includes an audit, Collect will create an ``audit.csv`` file as the fo
 
   question, /data/name, 1523403169208, 1523403170733
 
-Values in the :th:`event` column represent a particular user action such as opening a form, saving a form or displaying a question. Possible event types are described in the :ref:`audit-event-types` section.
+Values in the :th:`event` column represent a particular user action such as opening a form, saving a form, or displaying a question. Possible event types are described in the :ref:`audit-event-types` section.
 
 Values in the :th:`node` column represent the node in the form that the event refers to, if applicable.
 
@@ -117,7 +117,7 @@ The event column of the audit log can have the following values:
 Timestamps
 -----------
 
-If we relied entirely on the time reported by the device for timestamps, users or the network could change the device time and manipulate the correctness of the audit log. For this reason, only use device time for the form start timestamp. All subsequent event timestamps are the result of elapsed time, which users cannot change, added to the form start timestamp. This means that while the timestamps themselves may potentially be inaccurate, the time elapsed within and between the timestamps are always accurate within one form editing session.
+If we relied entirely on the time reported by the device for timestamps, users or the network could change the device time and manipulate the correctness of the audit log. For this reason, we only use device time for the form start timestamp. All subsequent event timestamps are the result of elapsed time, which users cannot change, added to the form start timestamp. This means that while the timestamps themselves may potentially be inaccurate, the time elapsed within and between the timestamps are always accurate within one form editing session.
 
 Using epoch time makes it easy to compute elapsed time by subtracting start from end. For example, given the following log:
 
@@ -129,7 +129,7 @@ Using epoch time makes it easy to compute elapsed time by subtracting start from
 
 The enumerator spent ``1488761809157 - 1488761807868 = 1289`` milliseconds on the screen showing the ``/data/name`` question. This corresponds to ``1289 / 1000 = 1.289`` seconds.
 
-To convert from epoch time to time in UTC in most common spreadsheet programs, divide the epoch time by 86400000 ms per day and add 25569 days between January 1, 1900 (what most spreadsheet programs use as "day zero") and January 1, 1970. For example, to convert the timestamp ``1488761807868``:
+To convert from epoch time to time in UTC in most common spreadsheet programs, divide the epoch time by 86400000 ms per day and add 25569 days between January 1, 1900 (what spreadsheet programs use as "day zero") and January 1, 1970. For example, to convert the timestamp ``1488761807868``:
 
 .. code-block:: xml
 
