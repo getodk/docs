@@ -4,7 +4,7 @@ Using ODK Briefcase
 .. _pull-from-aggregate:
 
 Pulling forms from Aggregate
------------------------------
+----------------------------
 
 To download blank forms and completed form instances from an :doc:`Aggregate <aggregate-intro>` server:
 
@@ -48,7 +48,7 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
 .. _push-to-aggregate:
 
 Pushing forms to Aggregate
---------------------------------
+--------------------------
 
 To upload blank forms and completed form instances to :doc:`Aggregate <aggregate-intro>`:
 
@@ -99,7 +99,7 @@ To upload blank forms and completed form instances to :doc:`Aggregate <aggregate
 .. _pull-from-collect:
 
 Pulling forms from Collect
----------------------------
+--------------------------
 
 #. Ensure all filled-in forms are finalized. 
 
@@ -139,7 +139,7 @@ Pulling forms from Collect
 .. _briefcase-export-to-csv:
 
 Export forms to CSV
----------------------
+-------------------
 
 #. Open the :guilabel:`Export` tab.
 #. Choose an Export Location.
@@ -159,7 +159,7 @@ Export forms to CSV
 .. _cli-use:
 
 Working with the command line
--------------------------------
+-----------------------------
 
 .. versionadded:: 1.4.4
   A CLI was added.
@@ -181,7 +181,7 @@ To get help about the command line operation:
 .. _pull-from-aggregate-cli:
   
 Pulling form data from Aggregate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -190,7 +190,7 @@ Pulling form data from Aggregate
 .. _pull-from-collect-cli:
   
 Pulling form data from Collect
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This command assumes you have already copied and unzipped the :file:`odk` file :ref:`as described here <pull-from-collect>`.
 
@@ -201,7 +201,7 @@ This command assumes you have already copied and unzipped the :file:`odk` file :
 .. _push-to-aggregate-cli:
 
 Pushing form data to Aggregate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -210,7 +210,7 @@ Pushing form data to Aggregate
 .. _export-to-csv-cli:
   
 Exporting form data to CSV
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
