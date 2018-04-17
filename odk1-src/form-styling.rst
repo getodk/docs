@@ -1,9 +1,9 @@
 .. spelling::
 
-  bolding
-  tt
-  monospace
   CSS
+  bolding
+  monospace
+  tt
   yn
 	
 Form Styling
@@ -22,6 +22,8 @@ Markdown
 ---------
 
 :doc:`xlsform` supports limited used of `Markdown`_.
+
+.. _markdown-headers:
 
 Headers
 ~~~~~~~~
@@ -69,6 +71,8 @@ Line breaks in the XLSForm cell will break the header styling.
   | 
   | Here is some text below the headline."
 
+.. _markdown-emphasis:
+  
 Emphasis
 ~~~~~~~~~~
 
@@ -102,6 +106,8 @@ Collect's Markdown support also includes
   
   note, emphasis, This label has **bold** and *italic* text., This hint has **bold** and *italic* text.  
   
+.. _markdown-hyperlinks:
+  
 Hyperlinks
 ~~~~~~~~~~~
   
@@ -122,6 +128,8 @@ which will open in the device's default browser.
   
   note, hyperlink, This label [contains a link](http://example.com)., This hint [contains a link](http://example.com).
   
+.. _html-in-forms:
+  
 HTML
 -----
 
@@ -137,7 +145,7 @@ Collect Forms support a subset of inline HTML elements.
   ":tc:`<sup>`", supertext
   ":tc:`<big>`", big
   ":tc:`<small>`", small
-  ":tc:`<tt>`, monospace (teletype)
+  ":tc:`<tt>`", monospace (teletype)
   ":tc:`<h1>,<h2>,<h3>,<h4>,<h5>,<h6>`", headlines
   ":tc:`<font>`", font face and color
   ":tc:`<blockquote>`", for longer quotes
@@ -155,12 +163,14 @@ Collect Forms support a subset of inline HTML elements.
   note,	html, "<h2>Label heading</h2><p>If you need a headline and additional text, use HTML instead of Markdown.</p>", <p>Hint text can have <b>bold</b>, <i>italic</i>, and <u>underlined</u> words. Words can be raised with <sup>superscript</sup> or lowered with <sub>subscript</sub>. Use <tt>tt</tt> for <tt>monospace</tt>."
 
   
+.. _style-attribute:
+  
 Styling with the style attribute
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To add custom styling to hint, label, and choice labels,
 use `the style attribute`_.
-The ``style`` attribute accepts CSS-like key-value pairs for setting color font-family.
+The :tc:`style` attribute accepts CSS-like key-value pairs for setting color font-family.
 
 .. _the style attribute: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style 
 
