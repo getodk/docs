@@ -29,9 +29,9 @@ The easiest way to set up Aggregate is to
 You'll set up a new Google Cloud project, and then run the install utility locally. This will connect to your Google Cloud account and install Aggregate there.
 
 Alternatively, if you just want to try things out,
-you can use the `Aggregate demo server`_.
+you can use the `Aggregate sandbox server`_.
 
-.. _Aggregate demo server: https://opendatakit.appspot.com
+.. _Aggregate sandbox server: https://sandbox.aggregate.opendatakit.org:8443
 
 .. seealso:: :doc:`aggregate-install`
 
@@ -47,13 +47,17 @@ The quickest and easiest way to start using your own survey forms is to create o
 #. Add a few questions (click on question types in the :guilabel:`+Add New` bar along the bottom).
 #. Once your new form is complete, go to :menuselection:`File --> Upload form to Aggregate...` to upload your form.
 
+   If you have your own Aggregate server, use the URI and credentials you created during setup.
+   
+   To use the sandbox, the :guilabel:`Aggregate Instance URI` is ``https://sandbox.aggregate.opendatakit.org:8443``. You should not need additional credentials.
+
 
 .. seealso::
   
   `Build desktop app <https://opendatakit.org/downloads/download-category/build/>`_
     To use Build locally.
 
-  `XLSForm <http://xlsform.org/>`_
+  :doc:`xlsform`
     A more robust form creation tool.
   
     
@@ -65,7 +69,10 @@ Load a form into Collect from Aggregate
 #. Open Collect on your Android device.
 #. Open server settings 
    (:menuselection:`⋮ --> General Settings --> Server`).
-#. Edit the server settings to connect to your Aggregate server or the demo server.
+#. Edit the server settings to connect to your Aggregate server or the sandbox server.
+
+   The URI for the sandbox server is ``https://sandbox.aggregate.opendatakit.org:8443``.
+   
 #. Go back to the app home screen and select :guilabel:`Get Blank Form`, then select your form.
 
 
@@ -78,4 +85,4 @@ Fill out a form and upload it to Aggregate
 #. Select :guilabel:`Send Finalized Form` to upload your completed survey to Aggregate.
 
 
-Now log back into Aggregate instance and see your completed survey results.
+Now log back into Aggregate and see your completed survey results.
