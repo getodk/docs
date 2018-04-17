@@ -217,3 +217,12 @@ Exporting form data to CSV
   $ java -jar {path/to/briefcase-jar-file} -export --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --export_directory {path/to/output-directory} --export_filename {output-file-name.csv}
 
 The export operation also accepts these optional parameters to set encryption private keys, to set a range of dates, to exclude media files, or to toggle overwriting output files. Check :ref:`how to get help <briefcase-cli-help>` for more information.
+
+.. _clear-saved-preferences:
+
+Clear saved preferences
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+  $ java -jar {path/to/briefcase-jar-file} -clear_prefs
