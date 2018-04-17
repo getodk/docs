@@ -73,6 +73,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   xlsform
   form-question-types
   form-logic
+  form-styling
   launch-apps-from-collect
   form-tools
   form-best-practices
