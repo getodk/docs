@@ -198,6 +198,15 @@ This command assumes you have already copied and unzipped the :file:`odk` file :
 
   $ java -jar {path/to/briefcase-jar-file} -pull_collect --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --odk_directory {path/to/unzipped-odk-file}
 
+.. _push-to-aggregate-cli:
+
+Pushing form data to Aggregate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+  $ java -jar {path/to/briefcase-jar-file} -push_aggregate --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --aggregate_url {aggregate-url} --odk_username {username} --odk_password {password}
+
 .. _export-to-csv-cli:
   
 Exporting form data to CSV
