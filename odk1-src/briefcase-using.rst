@@ -185,7 +185,7 @@ Pulling form data from Aggregate
 
 .. code-block:: console
 
-  $ java -jar {path/to/briefcase-jar-file} --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --aggregate_url {aggregate-url} --odk_username {username} --odk_password {password}
+  $ java -jar {path/to/briefcase-jar-file} -pull_aggregate --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --aggregate_url {aggregate-url} --odk_username {username} --odk_password {password}
 
 .. _pull-from-collect-cli:
   
