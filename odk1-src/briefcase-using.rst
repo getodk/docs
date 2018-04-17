@@ -214,4 +214,4 @@ Exporting form data to CSV
 
 .. code-block:: console
 
-  $ java -jar {path/to/briefcase-jar-file} --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --export_directory {path/to/output-directory} --export_filename {output-file-name.csv}
+  $ java -jar {path/to/briefcase-jar-file} -export --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --export_directory {path/to/output-directory} --export_filename {output-file-name.csv}
