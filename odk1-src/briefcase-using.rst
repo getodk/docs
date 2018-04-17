@@ -167,6 +167,17 @@ Working with the command line
 .. versionadded:: 1.9.0
   The CLI first takes an operation parameter and then modifiers to that operation
 
+.. _briefcase-cli-help:
+
+Getting CLI help
+~~~~~~~~~~~~~~~~
+
+To get help about the command line operation:
+
+.. code-block:: console
+
+  $ java -jar {path/to/briefcase-jar-file} --help
+
 .. _pull-from-aggregate-cli:
   
 Pulling form data from Aggregate
@@ -195,14 +206,3 @@ Exporting form data to CSV
 .. code-block:: console
 
   $ java -jar {path/to/briefcase-jar-file} --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --export_directory {path/to/output-directory} --export_filename {output-file-name.csv}
-
-.. _briefcase-cli-help:
-  
-Getting CLI help
-~~~~~~~~~~~~~~~~~~~
-
-To get help about the command line operation:
-
-.. code-block:: console
-
-  $ java -jar {path/to/briefcase-jar-file} --help
