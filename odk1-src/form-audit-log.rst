@@ -43,7 +43,7 @@ Viewing audit logs
 
 Audit logs can be reviewed in Aggregate and downloaded for further analysis using Briefcase.
 
-In Aggregate 1.5.0+, audit logs can be viewed by clicking on the media icon in the :tc:`meta audit` column on the Submissions page:
+In Aggregate 1.5.0+, audit logs can be viewed by clicking on the media icon in the :th:`meta audit` column on the Submissions page:
 
 .. image:: /img/form-audit-log/audit-media-icon.png
   :alt: The Aggregate submissions page with a form that has an audit log. The media icon in the meta audit column is circled.
@@ -67,11 +67,11 @@ If a form includes an audit, Collect will create an ``audit.csv`` file as the fo
 
   question, /data/name, 1523403169208, 1523403170733
 
-Values in the ``event`` column represent a particular user action such as opening a form, saving a form or displaying a question. Possible event types are described in the :ref:`audit-event-types` section.
+Values in the :th:`event` column represent a particular user action such as opening a form, saving a form or displaying a question. Possible event types are described in the :ref:`audit-event-types` section.
 
-Values in the ``node`` column represent the node in the form that the event refers to, if applicable.
+Values in the :th:`node` column represent the node in the form that the event refers to, if applicable.
 
-Values in the ``start`` and ``end`` columns are timestamps represented as the number of milliseconds since midnight, January 1, 1970 UTC. This is known as epoch time and provides a standard way of representing date/time even across timezones. The :ref:`audit-timestamps` section contains more information about timestamps.
+Values in the :th:`start` and :th:`end` columns are timestamps represented as the number of milliseconds since midnight, January 1, 1970 UTC. This is known as epoch time and provides a standard way of representing date/time even across timezones. The :ref:`audit-timestamps` section contains more information about timestamps.
 
 .. _audit-event-types:
 
@@ -80,44 +80,44 @@ Event types
 
 The event column of the audit log can have the following values:
 
-+-------------------+------------------------------------------------------------------+-------+----------------+
-|      Event        |                           Description                            | Node? |  Timestamps?   |
-+===================+==================================================================+=======+================+
-| form start        | Start filling in the form                                        | No    | ``start`` only |
-+-------------------+------------------------------------------------------------------+-------+----------------+
-| question          | View a question                                                  | Yes   | Yes            |
-+-------------------+------------------------------------------------------------------+-------+----------------+
-| group questions   | View multiple questions on one screen (``field-list``)           | Yes   | Yes            |
-+-------------------+------------------------------------------------------------------+-------+----------------+
-| jump              | View the jump screen                                             | No    | ``start`` only |
-+-------------------+------------------------------------------------------------------+-------+----------------+
-| add repeat        | Add a repeat                                                     | Yes   | Yes            |
-+-------------------+------------------------------------------------------------------+-------+----------------+
-| delete repeat     | Delete a repeat                                                  | Yes   | Yes            |
-+-------------------+------------------------------------------------------------------+-------+----------------+
-| end screen        | View the end screen                                              | No    | Yes            |
-+-------------------+------------------------------------------------------------------+-------+----------------+
-| form save         | Save the form                                                    | No    | ``start`` only |
-+-------------------+------------------------------------------------------------------+-------+----------------+
-| form exit         | Exit the form                                                    | No    | ``start`` only |
-+-------------------+------------------------------------------------------------------+-------+----------------+
-| form resume       | Resume the form                                                  | No    | ``start`` only |
-+-------------------+------------------------------------------------------------------+-------+----------------+
-| form finalize     | Finalize the form                                                | No    | ``start`` only |
-+-------------------+------------------------------------------------------------------+-------+----------------+
-| save error        | Error trying to save                                             | No    | ``start`` only |
-+-------------------+------------------------------------------------------------------+-------+----------------+
-| finalize error    | Error trying to finalize the form (probably encryption related)  | No    | ``start`` only |
-+-------------------+------------------------------------------------------------------+-------+----------------+
-| constraint error  | Constraint or required error on finalize                         | No    | ``start`` only |
-+-------------------+------------------------------------------------------------------+-------+----------------+
++-------------------+------------------------------------------------------------------+-------+-----------------+
+|      Event        |                           Description                            | Node? |  Timestamps?    |
++===================+==================================================================+=======+=================+
+| form start        | Start filling in the form                                        | No    | :th:`start` only|
++-------------------+------------------------------------------------------------------+-------+-----------------+
+| question          | View a question                                                  | Yes   | Yes             |
++-------------------+------------------------------------------------------------------+-------+-----------------+
+| group questions   | View multiple questions on one screen (``field-list``)           | Yes   | Yes             |
++-------------------+------------------------------------------------------------------+-------+-----------------+
+| jump              | View the jump screen                                             | No    | :th:`start` only|
++-------------------+------------------------------------------------------------------+-------+-----------------+
+| add repeat        | Add a repeat                                                     | Yes   | Yes             |
++-------------------+------------------------------------------------------------------+-------+-----------------+
+| delete repeat     | Delete a repeat                                                  | Yes   | Yes             |
++-------------------+------------------------------------------------------------------+-------+-----------------+
+| end screen        | View the end screen                                              | No    | Yes             |
++-------------------+------------------------------------------------------------------+-------+-----------------+
+| form save         | Save the form                                                    | No    | :th:`start` only|
++-------------------+------------------------------------------------------------------+-------+-----------------+
+| form exit         | Exit the form                                                    | No    | :th:`start` only|
++-------------------+------------------------------------------------------------------+-------+-----------------+
+| form resume       | Resume the form                                                  | No    | :th:`start` only|
++-------------------+------------------------------------------------------------------+-------+-----------------+
+| form finalize     | Finalize the form                                                | No    | :th:`start` only|
++-------------------+------------------------------------------------------------------+-------+-----------------+
+| save error        | Error trying to save                                             | No    | :th:`start` only|
++-------------------+------------------------------------------------------------------+-------+-----------------+
+| finalize error    | Error trying to finalize the form (probably encryption related)  | No    | :th:`start` only|
++-------------------+------------------------------------------------------------------+-------+-----------------+
+| constraint error  | Constraint or required error on finalize                         | No    | :th:`start` only|
++-------------------+------------------------------------------------------------------+-------+-----------------+
 
 .. _audit-timestamps:
 
 Timestamps
 -----------
 
-Device time can be changed by the user unless Android access controls are put in place. To reduce the ways that audits can be manipulated by modifying device time, clock time is collected once at form launch and all following times are computed relative to that initial reading. This means that while the actual time may potentially be inaccurate, the time elapsed within and between screens is always accurate within one form editing session.
+If we relied entirely on the time reported by the device for timestamps, users or the network could change the device time and manipulate the correctness of the audit log. For this reason, only use device time for the form start timestamp. All subsequent event timestamps are the result of elapsed time, which users cannot change, added to the form start timestamp. This means that while the timestamps themselves may potentially be inaccurate, the time elapsed within and between the timestamps are always accurate within one form editing session.
 
 Using epoch time makes it easy to compute elapsed time by subtracting start from end. For example, given the following log:
 
@@ -135,7 +135,7 @@ To convert from epoch time to time in UTC in most common spreadsheet programs, d
 
   (1488761807868 / 86400000) + 25569 = 42800.03944
 
-When the cell is set to type ``date time`` in common spreadsheet programs, it will show ``3/6/2017 0:56:48 UTC``.
+When the cell is set to type :th:`date time` in common spreadsheet programs, it will show ``3/6/2017 0:56:48 UTC``. A common workflow if device time is needed in a human-readable format will be to add a column for the calculation above and change that column's type to :th:`date time`.
 
 
 .. _known-audit-limitations: 
