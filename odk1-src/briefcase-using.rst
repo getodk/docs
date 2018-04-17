@@ -164,6 +164,9 @@ Working with the command line
 .. versionadded:: 1.4.4
   A CLI was added.
 
+.. versionadded:: 1.9.0
+  The CLI first takes an operation parameter and then modifiers to that operation
+
 .. _pull-from-aggregate-cli:
   
 Pulling form data from Aggregate
