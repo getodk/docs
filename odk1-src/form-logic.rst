@@ -458,12 +458,12 @@ use the :tc:`begin_repeat...end_repeat` syntax.
   
 .. _controlling-number-of-repeats:
 
-Controlling the number of repeats
-------------------------------------
+Controlling the number of repetitions
+--------------------------------------
     
 .. _user-controlled-repeats:
     
-User controlled repeats
+User-controlled repeats
 """"""""""""""""""""""""""
 
 By default,
@@ -494,6 +494,10 @@ the user is asked if they want to add another repeat group.
   begin_repeat, repeat_example, repeat group label
   text, repeat_test, Question label
   end_repeat,,
+
+.. note::
+
+  This interaction may be confusing to users the first time they see it. If enumerators know the number of repetitions ahead of time, consider using :ref:`dynamically defined repeats <dynamically-defined-repeats>`.
 
 .. _statically-defined-repeats:
 
