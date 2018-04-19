@@ -432,7 +432,9 @@ Repeating questions and groups of questions
 ==============================================
 
 .. note::
-  Using repetition in a form is very powerful but can also make training and data analysis more time-consuming. Aggregate does not export repeats so Briefcase or one of the data connectors will need to be used to get data out. Repeats will be in their own documents and will need to be joined with their parent records for analysis. Before adding repeats to your form, consider other options:
+  Using repetition in a form is very powerful but can also make training and data analysis more time-consuming. Aggregate does not export repeats so Briefcase or one of the data connectors will need to be used to get data out. Repeats will be in their own documents and will need to be joined with their parent records for analysis. 
+  
+  Before adding repeats to your form, consider other options:
 
   - if the number of repetitions is small and known ahead of time, consider "unrolling" the repeat by copying the same questions several times.
   - if the number of repetitions is large and includes many questions, consider building a separate form that enumerators fill out multiple times.
