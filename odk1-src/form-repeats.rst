@@ -127,31 +127,6 @@ use :func:`indexed-repeat` and :func:`position`.
   Most often this is used in the form ``position(..)``
   to identify the current iteration index.
 
-.. _referencing-previous-iteration:
-  
-Referencing answers from the previous iteration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The index for the previous iteration of a repeat is 
-``position(..) - 1``.
-This could be used, for example, to provide a 
-:ref:`default response <default-responses>` based on 
-the previous response to the same question.
-
-Be sure to account for the first iteration,
-which doesn't have a previous response.
-This may require use of a :ref:`calculations`.
-
-.. rubric:: XLSForm
-
-.. csv-table::
-  :header: type, name, label, default, calculation
-  
-  note, child_details_note, Please provide the following details about each child.
-  begin_repeat, child_details, Children in household
-  text, child_name, Name
-  calculate, previous_school,,"if(bool(position(..), indexed-repeat(${child_school}, ${child_details}, position(..) - 1), ''))"
-  text, child_school, Current school, ${previous_school} ,
 
 .. _referencing-responses-from-outside-repeat-loop:
   
