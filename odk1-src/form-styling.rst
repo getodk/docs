@@ -160,7 +160,9 @@ which will open in the device's default browser.
 HTML
 -----
 
-Collect Forms support a subset of inline HTML elements.
+Collect forms support `a subset of HTML elements`__.
+
+__ https://www.grokkingandroid.com/android-quick-tip-formatting-text-with-html-fromhtml/
 
 .. csv-table::
   :header: tag, format
@@ -180,6 +182,14 @@ Collect Forms support a subset of inline HTML elements.
   ":tc:`p`", paragraph
   ":tc:`<br>`", line break
   ":tc:`<span>`", "span (generic inline element, used for styling)"
+  
+.. warning::
+
+  `Enketo`_ does not support HTML in forms.
+  For Enketo compatibility,
+  stick to :ref:`markdown-in-forms`.
+  
+  .. _Enketo: https://enketo.org/
   
 .. image:: /img/form-styling/html-styling.* 
   :alt:
@@ -230,6 +240,9 @@ The :tc:`style` attribute accepts CSS-like key-value pairs for setting color and
     
 .. image:: /img/form-styling/styled-answers.* 
   :alt:
+  
+.. image:: /img/form-styling/combo-example.* 
+  :alt:
 
 .. rubric:: XLSForm
 
@@ -240,6 +253,7 @@ The :tc:`style` attribute accepts CSS-like key-value pairs for setting color and
   note, green, Going <span style="color:#008000">green</span>
   note, cursive, <span style="font-family:cursive">Cursive text</span>
   select_one yn, colored_choices, Formatting works on labels for Choices also.
+  note, combo, <h1> <span style="font-family:cursive;color:purple">Color and font styling can be combined.</span></h1>
   
 .. csv-table:: choices
   :header: list_name, name, label
