@@ -9,12 +9,10 @@
 Form Styling
 ==============
 
-Labels, hints, and choices can all be styled in an :doc:`xlsform`.
+Labels, hints, and choices in an :doc:`xlsform`
+can all be styled using 
+:ref:`markdown-in-forms`, :ref:`html-in-forms`, and :ref:`emoji`.
 
-.. seealso:: 
-  
-  - `Styling prompts in XLSForm <http://xlsform.org/#styling>`_
-  - :download:`Sample XLSForm with Style </downloads/form-styling/style-example.xlsx>`
 
 .. _markdown-in-forms:
 
@@ -22,6 +20,8 @@ Markdown
 ---------
 
 :doc:`xlsform` supports limited used of `Markdown`_.
+
+.. _Markdown: https://en.wikipedia.org/wiki/Markdown
 
 .. _markdown-headers:
 
@@ -44,18 +44,23 @@ Labels and hints can be styled with one of six header levels.
   
   ###### Header H6
 
-
-If a markdown header is used, 
-the label or hint can only be one line of text.
-Line breaks in the XLSForm cell will break the header styling.
-
+    
 .. image:: /img/form-styling/h1-label.* 
   :alt:
   
-.. image:: /img/form-styling/h2-label-h3-hint.* 
+.. image:: /img/form-styling/h2-label.* 
   :alt:
-
-.. image:: /img/form-styling/broken-header.* 
+  
+.. image:: /img/form-styling/h3-label.* 
+  :alt:
+  
+.. image:: /img/form-styling/h4-label.* 
+  :alt:
+  
+.. image:: /img/form-styling/h5-label.* 
+  :alt:
+  
+.. image:: /img/form-styling/h6-label.* 
   :alt:
      
 .. rubric:: XLSForm
@@ -64,13 +69,35 @@ Line breaks in the XLSForm cell will break the header styling.
   :header: type, name, label, hint
   
   note, h1_label, # Largest Headline - H1, This note has a label with a Markdown-style header.
-  note, h2_label_h3_hint, ## H2 Label, ### This hint is H3.
-  note, broken_header, "| ## Attempted H2 Label Header
-  | 
-  | A line below the headline",	"| ### Attempted H3 hint headline, 
-  | 
-  | Here is some text below the headline."
+  note, h2_label, ## H2 Label, ### This hint is H3.
+  note, h3_label, ### H3 Label, #### This hint is H4.
+  note, h4_label, #### H4 Label, ##### This hint is H5.
+  note, h5_label, ##### H5 Label, ###### This hint is H6.
+  note, h6_label, ###### H6 Label, This hint is not a headline.
+  
 
+.. warning::
+  
+  If a Markdown header is used, 
+  the label or hint can only be one line of text.
+  Line breaks in the XLSForm cell will break the header styling.
+
+  .. image:: /img/form-styling/broken-header.* 
+    :alt:
+
+  .. rubric:: XLSForm
+  
+  .. csv-table:: survey
+    :header: type, name, label, hint
+  
+    note, broken_header, "| ## Attempted H2 Label Header
+    | 
+    | A line below the headline", "| ### Attempted H3 hint headline, 
+    | 
+    | Here is some text below the headline."
+  
+
+  
 .. _markdown-emphasis:
   
 Emphasis
@@ -152,7 +179,7 @@ Collect Forms support a subset of inline HTML elements.
   ":tc:`a`", link
   ":tc:`p`", paragraph
   ":tc:`<br>`", line break
-  ":tc:`<span>`", span (generic inline element, used for styling)
+  ":tc:`<span>`", "span (generic inline element, used for styling)"
   
 .. image:: /img/form-styling/html-styling.* 
   :alt:
@@ -170,14 +197,27 @@ Styling with the style attribute
 
 To add custom styling to hint, label, and choice labels,
 use `the style attribute`_.
-The :tc:`style` attribute accepts CSS-like key-value pairs for setting color font-family.
+The :tc:`style` attribute accepts CSS-like key-value pairs for setting color and font-family.
 
 .. _the style attribute: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style 
 
-For color, try one of the `named HTML color values`_ of use a `hex color`_.
+- For ``color``, try one of the `named HTML color values`_ or use a `hex color`_.
+- For ``font-family``, it is best to use `generic font categories`_
+  rather than specific fonts:
+  
+  - serif
+  - sans-serif
+  - monospace
+  - cursive
+  - fantasy
+  
+  This will ensure support across most devices.
+  You can also use specific font choices,
+  but you should test these on the actual devices being used.
 
 .. _named HTML color values: https://html-color-codes.info/color-names/
 .. _hex color: http://www.color-hex.com/
+.. _generic font categories: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#%3Cgeneric-name%3E
  
 .. image:: /img/form-styling/going-red.* 
   :alt:
@@ -185,7 +225,6 @@ For color, try one of the `named HTML color values`_ of use a `hex color`_.
 .. image:: /img/form-styling/going-green.* 
   :alt:
 
-  
 .. image:: /img/form-styling/cursive-text.* 
   :alt:
     
@@ -198,7 +237,7 @@ For color, try one of the `named HTML color values`_ of use a `hex color`_.
   :header: type, name, label
   
   note, red, Going <span style="color:red">red</span>
-  note, green, Going <span style="color:green">green</span>
+  note, green, Going <span style="color:#008000">green</span>
   note, cursive, <span style="font-family:cursive">Cursive text</span>
   select_one yn, colored_choices, Formatting works on labels for Choices also.
   
@@ -207,3 +246,48 @@ For color, try one of the `named HTML color values`_ of use a `hex color`_.
 
     yn, yes, <span style="color:green">Yes</span>
     yn, no, <span style="color:red">No</span>
+
+.. _emoji:
+    
+Emoji
+------
+
+Emoji can be used in form labels, hints, and answer choices.
+
+.. note::
+
+  The exact visual representation of each emoji character
+  is controlled by the device operating system,
+  and may vary from device to device.
+  If possible,
+  you should check how your rendered forms look
+  on the devices you are using for data collection.
+
+.. image:: /img/form-styling/emoji.* 
+  :alt:
+  
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label
+  
+  select_one pain, pain_level, What is your current pain level?
+  
+.. csv-table:: choices
+  :header: list_name, name, label
+  
+  pain, 1, 🙂
+  pain, 2, 😐
+  pain, 3, 🙁
+  pain, 4, 😦
+  pain, 5, 😧
+  pain, 6, 😩
+  pain, 7, 😱
+
+  
+------
+
+.. seealso:: 
+  
+  - `Styling prompts in XLSForm <http://xlsform.org/#styling>`_
+  - :download:`Sample XLSForm with Style </downloads/form-styling/style-example.xlsx>`
