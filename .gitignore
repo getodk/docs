@@ -1,10 +1,19 @@
-style-checks.py
-extra.py
+# compiled
+__pycache__/
+.pyc
+
+# build
 build/
 *-build/
 tmp*
-__pycache__/
-.DS_Store
+
+# emacs backups
 \#*.*\#
 .\#*
-.pyc
+
+# macOS
+.DS_Store
+
+# literate programming
+style-checks.py
+extra.py
