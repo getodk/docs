@@ -1,8 +1,12 @@
 .. spelling::
 
   CSS
+  Emoji
   bolding
+  emoji
+  md
   monospace
+  supertext
   tt
   yn
 	
@@ -46,37 +50,24 @@ Labels and hints can be styled with one of six header levels.
 
     
 .. image:: /img/form-styling/h1-label.* 
-  :alt:
+  :alt: 
   
-.. image:: /img/form-styling/h2-label.* 
-  :alt:
-  
-.. image:: /img/form-styling/h3-label.* 
-  :alt:
-  
-.. image:: /img/form-styling/h4-label.* 
-  :alt:
-  
-.. image:: /img/form-styling/h5-label.* 
-  :alt:
-  
-.. image:: /img/form-styling/h6-label.* 
+.. figure:: /img/form-styling/all-headers-label.* 
   :alt:
      
+  A comparison of headline sizes. This exact effect :ref:`cannot be produced using Markdown <one-headline-only>`.
+  
+  
 .. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, hint
   
   note, h1_label, # Largest Headline - H1, This note has a label with a Markdown-style header.
-  note, h2_label, ## H2 Label, ### This hint is H3.
-  note, h3_label, ### H3 Label, #### This hint is H4.
-  note, h4_label, #### H4 Label, ##### This hint is H5.
-  note, h5_label, ##### H5 Label, ###### This hint is H6.
-  note, h6_label, ###### H6 Label, This hint is not a headline.
+  note, all_headers, <h1>Largest Headline - H1</h1><h2>H2 Headline</h2><h3>H3 Headline</h3><h4>H4 Headline</h4><h5>H5 Headline</h5><h6>H6 Headline</h6>, Headers in the label.
   
-
 .. warning::
+  :name: one-headline-only
   
   If a Markdown header is used, 
   the label or hint can only be one line of text.
@@ -154,6 +145,26 @@ which will open in the device's default browser.
   :header: type, name, label, hint
   
   note, hyperlink, This label [contains a link](http://example.com)., This hint [contains a link](http://example.com).
+  
+.. _escaping-markdown:
+
+Escaping Markdown
+~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 1.15
+
+If you want to include literal asterisks or underscores,
+escape them with a back-slash (``\``).
+If you want to include a literal back-slash,
+you'll need to escape that too.
+
+.. rubric:: XLSForm
+
+.. csv-table::
+  :header: type, name, label, hint
+  
+  note, escape_md, \# This headline is normal sized, \*Asterisks\* and \_underscores\_ and one slash: \\
+  
   
 .. _html-in-forms:
   
