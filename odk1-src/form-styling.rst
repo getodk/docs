@@ -50,10 +50,10 @@ Labels and hints can be styled with one of six header levels.
 
     
 .. image:: /img/form-styling/h1-label.* 
-  :alt: 
+  :alt: A note widget in Collect. The label is a large headline reading "Largest Headline - H1". The hint text is "This note has a label with a Markdown-style header."
   
 .. figure:: /img/form-styling/all-headers-label.* 
-  :alt:
+  :alt: A note widget in Collect. The label is six headlines of decreasing size, with text describing the size as: H1, H2, H3, H4, H5, H6.
      
   A comparison of headline sizes. This exact effect :ref:`cannot be produced using Markdown <one-headline-only>`.
   
@@ -74,7 +74,7 @@ Labels and hints can be styled with one of six header levels.
   Line breaks in the XLSForm cell will break the header styling.
 
   .. image:: /img/form-styling/broken-header.* 
-    :alt:
+    :alt: A note widget in Collect. The label text is "## Attempted h2 Label Header (line break) A line below the headline". The hint text is "### Attempted H3 hint headline (line break) Here is some text below the headline."
 
   .. rubric:: XLSForm
   
@@ -115,7 +115,7 @@ Collect's Markdown support also includes
   so italicizing text within the hint has no effect.
   
 .. image:: /img/form-styling/emphasis.* 
-  :alt:
+  :alt: A note widget in Collect. The label text is "This label has bold and italic text." The hint text is "This hint has bold and italic text." The words "bold" and "italic" are styled to appear bold and italic.
   
 .. rubric:: XLSForm
 
@@ -137,7 +137,7 @@ which will open in the device's default browser.
   [Link anchor text](link.url)
   
 .. image:: /img/form-styling/hyperlinks.* 
-  :alt:
+  :alt: A note widget in Collect. The label text is "This label contains a link." The hint text is "This hint contains a link." In both cases, the words "contains a link" are hyperlinks.
   
 .. rubric:: XLSForm
 
@@ -189,8 +189,8 @@ __ https://www.grokkingandroid.com/android-quick-tip-formatting-text-with-html-f
   ":tc:`<h1>,<h2>,<h3>,<h4>,<h5>,<h6>`", headlines
   ":tc:`<font>`", font face and color
   ":tc:`<blockquote>`", for longer quotes
-  ":tc:`a`", link
-  ":tc:`p`", paragraph
+  ":tc:`<a>`", link
+  ":tc:`<p>`", paragraph
   ":tc:`<br>`", line break
   ":tc:`<span>`", "span (generic inline element, used for styling)"
   
@@ -203,7 +203,7 @@ __ https://www.grokkingandroid.com/android-quick-tip-formatting-text-with-html-f
   .. _Enketo: https://enketo.org/
   
 .. image:: /img/form-styling/html-styling.* 
-  :alt:
+  :alt: A note widget in Collect. The Label text is "Label heading (line break) If you need a headline and additional text, use HTML instead of Markdown." The words "Label heading" are styled as a large headline. The hint text is "Hint text can have bold, italic, and underlined words. Words can be raised with superscript or lowered with subscript. Use tt for monospace." The words "bold", "italic", "underlined", "superscript", "subscript", and "monospace" are each styled as described.
   
 .. csv-table:: survey
   :header: type, name, label, hint
@@ -241,19 +241,19 @@ The :tc:`style` attribute accepts CSS-like key-value pairs for setting color and
 .. _generic font categories: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#%3Cgeneric-name%3E
  
 .. image:: /img/form-styling/going-red.* 
-  :alt:
+  :alt: A note widget in Collect. The label text is "Going red", and the word "red" is colored red. The hint text is the source markup for the label: Going <span style="color:red">red</span>
   
 .. image:: /img/form-styling/going-green.* 
-  :alt:
+  :alt: A note widget in Collect. The label text is "Going green", and the word "green" is colored green. This hint text is the source markup for the label: Going <span style="color:#008000">green</span>
 
 .. image:: /img/form-styling/cursive-text.* 
-  :alt:
+  :alt: A note widget in Collect. The label text is "Cursive text", style in a cursive font. The hint text is the source markup for the label: <span style="font-family:cursive">Cursive text</span>
     
 .. image:: /img/form-styling/styled-answers.* 
-  :alt:
+  :alt: A single select widget in Collect. The label text is "Formatting works on labels for choices also." The choices are "Yes" (which is colored green) and "No" (which is colored red).
   
 .. image:: /img/form-styling/combo-example.* 
-  :alt:
+  :alt: A note widget in Collect. The label text is "Color and font styling can be combined." The label is large, purple, and in cursive.
 
 .. rubric:: XLSForm
 
@@ -289,7 +289,7 @@ Emoji can be used in form labels, hints, and answer choices.
   on the devices you are using for data collection.
 
 .. image:: /img/form-styling/emoji.* 
-  :alt:
+  :alt: A single select widget in Collect. The label text is "What is your current pain level?" The options are seven increasingly-unhappy emoji faces.
   
 .. rubric:: XLSForm
 
