@@ -108,24 +108,6 @@ To reference a response from a later iteration,
 or from outside the loop,
 use :func:`indexed-repeat` and :func:`position`.
   
-.. function:: indexed-repeat(name, group, i [, sub_grp, sub_i [, sub_sub_grp, sub_sub_i [...]]])
-
-  Returns the response value of question ``name``
-  from the repeat-group ``group``,
-  in iteration ``i``.
-  
-  Nested repeat groups can be accessed 
-  using the ``sub`` and ``sub_sub`` parameters,
-  which can be extended indefinitely
-  to arbitrary levels of nesting.
-  
-.. function:: position(xpath)
-
-  Returns an integer equal to the position of the current node
-  within the node defined by ``xpath``.
-  
-  Most often this is used in the form ``position(..)``
-  to identify the current iteration index.
 
 
 .. _referencing-responses-from-outside-repeat-loop:
@@ -155,20 +137,7 @@ This can be done by using `count()` and `position(..)`
 to iterate through a repeat group 
 in a second repeat group.
 
-.. rubric:: XLSForm
-
-.. csv-table::
-  :header: type, name, label, repeat_count, calculation
-    
-  note, person_list_note, Please list the names of the people in your household.,,
-  begin_repeat, name_group, Member of household, ,
-  text, name, Name, ,
-  end_repeat,,,,
-  begin_repeat, member_details, Details, count(${name}) ,
-  calculate, current_name, , , "indexed-repeat(${name}, ${name-group}, position(..))"
-  date, member_bday, Birthday of ${current_name},,
-  end_repeat,,,, 
-  
+.. include:: incl/form-examples/parallel-repeat-groups.rst
 
 .. _counting-repeats-and-answers:
 
@@ -202,25 +171,4 @@ which evaluates to ``1`` or ``0`` depending on the answer.
 Then, outside the loop,
 calculate the :tc:`sum()` of the calculate field.
 
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, calculation
-  
-  begin_repeat, guest_details, Guest details
-  text, guest_name, Guest name
-  select_one meal_options, meal_preference, Meal preference
-  calculate, chkn, , "if(${meal_preference} == 'chicken', 1, 0 )"
-  calculate, fsh, , "if(${meal_preference} == 'fish', 1, 0 )"
-  calculate, veg, , "if(${meal_preference} == 'vegetarian', 1, 0 )"
-  end_repeat
-  calculate, chkn_count, , sum(${chkn})
-  calculate, fsh_count, , sum(${fsh})
-  calculate, veg_count, , sum(${veg})
- 
-.. csv-table:: choices
-  :header: list_name, name, label
-  
-  meal_options, chicken, Chicken
-  meal_options, fish, Fish
-  meal_options, vegetarian, Vegetarian
+.. include::  incl/form-examples/sum-to-count-responses.rst
