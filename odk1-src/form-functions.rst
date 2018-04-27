@@ -31,14 +31,75 @@
 Form Functions and Operators
 ******************************
 
-:ref:`expressions` in :ref:`calculations`, :ref:`constraints <constraints>`, and :ref:`relevants <relevants>`
-can contain `XPath functions`_ and operators.
+:ref:`expressions` in :ref:`calculations <calculations>`, :ref:`constraints <constraints>`, and :ref:`relevants <relevants>`
+can contain operators and functions.
 
-.. _XPath functions: https://opendatakit.github.io/xforms-spec/#xpath-functions
+.. seealso:: `XPath Functions <https://opendatakit.github.io/xforms-spec/#xpath-functions>`_
 
 .. contents::
   :local:   
 
+  
+.. _xform-operators:
+
+Operators
+==========
+
+.. _utility-operators:
+
+Utility operators
+-------------------
+
+.. csv-table::
+  :header: , Explanation, Example, Notes
+  
+  ., current question's value, . >= 18, Used in :ref:`constraints <constraints>`.
+  \.\., current question's parent group, position(..), Used with :func:`position` to get the iteration index.
+  
+.. _boolean-operators:
+  
+Boolean operators
+------------------
+
+.. csv-table::
+  :header: , Explanation, Example
+
+  and, ``True`` if the expressions before and after are ``True``, ${age} > -1 and ${age} < 120
+  or, ``True`` if either of the expressions before or after are ``True``, ${age} < 19 or ${age} > 64
+  
+.. _comparison-operators:
+  
+Comparison operators
+-----------------------
+  
+.. csv-table::
+  :header: , Explanation, Example, Notes
+  
+  =, equal to, ${enrolled} = 'yes', Can compare numbers or strings.
+  !=, not equal to, ${enrolled} != 'yes', Can compare numbers or strings.
+  >, greater than, ${age} > 17, 
+  >=, greater than or equal to, ${age} >= 18,
+  <, less than, ${age} < 65, 
+  <=, less than or equal to, ${age} <= 64,
+
+.. _math-operators:
+  
+Math operators
+---------------
+
+.. csv-table::
+  :header: , Explanation, Example, Notes
+  
+  \+, addition, ${salary_income} + ${self_employed_income}, Numbers only; does not concatenate strings.
+  \-, subtraction, ${income} - ${expenses},
+  \*, multiplication, ${bill} * 1.18,
+  div, division, ${percent_int} div 100, 
+  mod, `modulo`_ (division remainder), (${even_number} mod 2) = 0, 
+
+.. _modulo: https://en.wikipedia.org/wiki/Modulo_operation
+
+  
+  
 .. _functions:
   
 Functions
@@ -55,40 +116,27 @@ Control flow
   Otherwise, returns :arg:`else`.
 
   
-.. function:: not(arg)
-
-  Returns the opposite of :func:`boolean(arg) <boolean>`.
-
   
-.. function:: coalesce(arg, arg) 	
+.. function:: position(xpath)
 
-  Returns first non-empty value of the two :arg:`arg`\ s.
-  Returns an empty string if both are empty or non-existent.
-
+  Returns an integer equal to the 1-indexed position of the current node
+  within the node defined by :arg:`xpath`.
   
-.. function:: true()
-
-  Evaluates to ``True``.
-
-.. function:: false()
-
-  Evaluates to ``False``.
+  Most often this is used in the form :tc:`position(..)`
+  to identify the current iteration index
+  within a repeat group.  
   
-.. function:: boolean(arg) 
+  .. include:: incl/form-examples/parallel-repeat-groups.rst
 
-  Returns ``True`` if :arg:`arg` is:
-  
-  - a number other than zero
-  - a non-empty string
-  - a non-empty collection
-  - a comparison or expressions that evaluates to ``True``.
-   
-  Returns ``False`` if :arg:`arg` is:
-  
-  - the number 0
-  - an empty string
-  - an empty collection
-  - a comparison or expression that evaluates to ``False``.
+.. function:: once(expression)
+
+  Returns the value :arg:`expression` if the question's value is empty. Otherwise, returns the current value of the question.
+
+  This can be used to ensure that a random number is only generated once,
+  or to store the first value entered for a question
+  in a way that is retrievable even of the response is changed later.
+
+    
 
 .. _response-access-functions:
   
@@ -381,8 +429,13 @@ Converting to and from strings
 
 .. _math-functions:
   
-Math and numbers
-------------------
+Math 
+------
+
+.. _number-functions:
+
+Number handling
+~~~~~~~~~~~~~~~~~
 
 .. function:: round(number, places)
 
@@ -392,6 +445,12 @@ Math and numbers
 
   Converts :arg:`arg` to an integer.
 
+.. seealso:: :func:`count`, :func:`max`, :func:`min`, :func:`number`
+  
+.. _calculation-functions:
+  
+Calculation
+~~~~~~~~~~~~~
 
 .. function:: pow(number, power)
 
@@ -453,6 +512,7 @@ Math and numbers
 
   Returns an approximation of the mathematical constant π.
 
+  
 .. _date-time-functions:
     
 Date and time
@@ -560,33 +620,6 @@ Geography
 
 Utility
 ---------
-  
-.. function:: position(xpath)
-
-  Returns an integer equal to the 1-indexed position of the current node
-  within the node defined by :arg:`xpath`.
-  
-  Most often this is used in the form :tc:`position(..)`
-  to identify the current iteration index
-  within a repeat group.  
-  
-  .. include:: incl/form-examples/parallel-repeat-groups.rst
-
-.. function:: uuid([length]) 	
-
-  Without argument, returns a random `RFC 4122 version 4 compliant UUID`__. 
-  
-  __ https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random)
-  
-  With an argument it returns a random GUID of specified :arg:`length`.  
-
-.. function:: once(expression)
-
-  Returns the value :arg:`expression` if the question's value is empty. Otherwise, returns the current value of the question.
-
-  This can be used to ensure that a random number is only generated once,
-  or to store the first value entered for a question
-  in a way that is retrievable even of the response is changed later.
 
 .. function:: random()
 
@@ -614,61 +647,48 @@ Utility
   
   Set :arg:`min` or :arg:`max` to ``-1`` to make the argument not 
     
+.. function:: uuid([length]) 	
 
-.. _xform-operators:
-
-Operators
-==========
-
-.. _utility-operators:
-
-Utility operators
--------------------
-
-.. csv-table::
-  :header: , Explanation, Example, Notes
+  Without argument, returns a random `RFC 4122 version 4 compliant UUID`__. 
   
-  ., current question's value, . >= 18, Used in :ref:`constraints <constraints>`.
-  \.\., current question's parent group, position(..), Used with :func:`position` to get the iteration index.
+  __ https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random)
   
-.. _boolean-operators:
-  
-Boolean operators
-------------------
+  With an argument it returns a random GUID of specified :arg:`length`.  
 
-.. csv-table::
-  :header: , Explanation, Example
+    
+.. function:: boolean(arg) 
 
-  and, ``True`` if the expressions before and after are ``True``, ${age} > -1 and ${age} < 120
-  or, ``True`` if either of the expressions before or after are ``True``, ${age} < 19 or ${age} > 64
+  Returns ``True`` if :arg:`arg` is:
   
-.. _comparion-operators:
+  - a number other than zero
+  - a non-empty string
+  - a non-empty collection
+  - a comparison or expressions that evaluates to ``True``.
+   
+  Returns ``False`` if :arg:`arg` is:
   
-Comparison operators
------------------------
-  
-.. csv-table::
-  :header: , Explanation, Example, Notes
-  
-  =, equal to, ${enrolled} = 'yes', Can compare numbers or strings.
-  !=, not equal to, ${enrolled} != 'yes', Can compare numbers or strings.
-  >, greater than, ${age} > 17, 
-  >=, greater than or equal to, ${age} >= 18,
-  <, less than, ${age} < 65, 
-  <=, less than or equal to, ${age} <= 64,
+  - the number 0
+  - an empty string
+  - an empty collection
+  - a comparison or expression that evaluates to ``False``.
 
-.. _math-operators:
-  
-Math operators
----------------
+    
+.. function:: not(arg)
 
-.. csv-table::
-  :header: , Explanation, Example, Notes
-  
-  \+, addition, ${salary_income} + ${self_employed_income}, Numbers only; does not concatenate strings.
-  \-, subtraction, ${income} - ${expenses},
-  \*, multiplication, ${bill} * 1.18,
-  div, division, ${percent_int} div 100, 
-  mod, `modulo`_ (division remainder), (. mod 2) = 0, 
+  Returns the opposite of :func:`boolean(arg) <boolean>`.
 
-.. _modulo: https://en.wikipedia.org/wiki/Modulo_operation
+  
+.. function:: coalesce(arg, arg) 	
+
+  Returns first non-empty value of the two :arg:`arg`\ s.
+  Returns an empty string if both are empty or non-existent.
+
+.. function:: true()
+
+  Evaluates to ``True``.
+
+.. function:: false()
+
+  Evaluates to ``False``.
+  
+  
