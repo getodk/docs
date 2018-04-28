@@ -126,17 +126,18 @@ Control flow
   to identify the current iteration index
   within a repeat group.  
   
-  .. include:: incl/form-examples/parallel-repeat-groups.rst
+  .. container:: details
+  
+    .. include:: incl/form-examples/parallel-repeat-groups.rst
 
 .. function:: once(expression)
 
-  Returns the value :arg:`expression` if the question's value is empty. Otherwise, returns the current value of the question.
+  Returns the value :arg:`expression` if the question's value is empty.
+  Otherwise, returns the current value of the question.
 
   This can be used to ensure that a random number is only generated once,
   or to store the first value entered for a question
-  in a way that is retrievable even of the response is changed later.
-
-    
+  in a way that is retrievable even of the response is changed later.  
 
 .. _response-access-functions:
   
@@ -161,12 +162,16 @@ Select questions
   Returns ``True`` if :arg:`choice_name` 
   was selected in :arg:`select_question`,
   otherwise returns ``False``.
-  
-  .. include:: incl/form-examples/constraint-on-selected.rst
+
+  .. container:: details
+      
+    .. include:: incl/form-examples/constraint-on-selected.rst
   
 .. function:: selected-at(multi_select_question, n)
 
   Returns the :th:`name` of the :arg:`n`\ :sup:`th` selected choice of the :arg:`multi_select_question`. (Selected choices are zero-indexed.)
+  
+  Returns an empty string if the index does not exist.  
   
   .. note::
   
@@ -175,58 +180,60 @@ Select questions
     To get the label in the current language,
     use :func:`jr:choice-name`.
   
-  Returns an empty string if the index does not exist.
+  .. container:: details
   
-  .. image:: /img/form-functions/selected-at-0.* 
-    :alt: A multi-select widget in Collect. The label is "What colors do you like?" Several color names are presented as options. Red, Green, and Purple are selected.
-  
-  .. image:: /img/form-functions/selected-at-1.* 
-    :alt: A note widget in Collect. The label is "Selected Colors". The hint text is "red, green, purple".
-  
-  .. rubric:: XLSForm
-  
-  .. csv-table:: survey
-    :header: type, name, label, hint, calculation
-  
-    select_multiple colors, color_prefs, What colors do you like?, Select three.
-    calculate, color_0, , ,"selected-at(${color_prefs}, 0)"
-    calculate, color_1, , ,"selected-at(${color_prefs}, 1)"
-    calculate, color_2, , ,"selected-at(${color_prefs}, 2)"
-    note, color_note, Selected colors:, ${color_0} <br> ${color_1} <br> ${color_2}  
+    .. image:: /img/form-functions/selected-at-0.* 
+      :alt: A multi-select widget in Collect. The label is "What colors do you like?" Several color names are presented as options. Red, Green, and Purple are selected.
 
-  .. csv-table:: choices
-    :header: list_name, name, label
-    
-    colors, red, Red
-    colors, blue, Blue
-    colors, yellow, Yellow
-    colors, green, Green
-    colors, orange, Orange
-    colors, purple, Purple
+    .. image:: /img/form-functions/selected-at-1.* 
+      :alt: A note widget in Collect. The label is "Selected Colors". The hint text is "red, green, purple".
+
+    .. rubric:: XLSForm
+
+    .. csv-table:: survey
+      :header: type, name, label, hint, calculation
+
+      select_multiple colors, color_prefs, What colors do you like?, Select three.
+      calculate, color_0, , ,"selected-at(${color_prefs}, 0)"
+      calculate, color_1, , ,"selected-at(${color_prefs}, 1)"
+      calculate, color_2, , ,"selected-at(${color_prefs}, 2)"
+      note, color_note, Selected colors:, ${color_0} <br> ${color_1} <br> ${color_2}  
+
+    .. csv-table:: choices
+      :header: list_name, name, label
+
+      colors, red, Red
+      colors, blue, Blue
+      colors, yellow, Yellow
+      colors, green, Green
+      colors, orange, Orange
+      colors, purple, Purple
 
 .. function:: count-selected(multi_select_question)
 
   Returns the number of choices selected in ``multi_select_question``.
   
-  .. image:: /img/form-functions/count-selected-constraint.* 
-    :alt: A multi-select widget in Collect. The label is "What colors do you like?" The hint text is "Select three." Four colors are selected. A message modal overlays the widget with the text "Select exactly three."
+  .. container:: details
   
-  .. rubric:: XLSForm
-  
-  .. csv-table:: survey
-    :header: type, name, label, hint, constraint, constraint_message
-    
-    select_multiple colors, color_prefs, What colors do you like?, Select three., count-selected(.)=3, Select exactly three.
-    
-  .. csv-table:: choices
-    :header: list_name, name, label
-    
-    colors, red, Red
-    colors, blue, Blue
-    colors, yellow, Yellow
-    colors, green, Green
-    colors, orange, Orange
-    colors, purple, Purple
+    .. image:: /img/form-functions/count-selected-constraint.* 
+      :alt: A multi-select widget in Collect. The label is "What colors do you like?" The hint text is "Select three." Four colors are selected. A message modal overlays the widget with the text "Select exactly three."
+
+    .. rubric:: XLSForm
+
+    .. csv-table:: survey
+      :header: type, name, label, hint, constraint, constraint_message
+
+      select_multiple colors, color_prefs, What colors do you like?, Select three., count-selected(.)=3, Select exactly three.
+
+    .. csv-table:: choices
+      :header: list_name, name, label
+
+      colors, red, Red
+      colors, blue, Blue
+      colors, yellow, Yellow
+      colors, green, Green
+      colors, orange, Orange
+      colors, purple, Purple
 
 .. function:: jr:choice-name(choice_name, 'select_question')
 
@@ -239,40 +246,42 @@ Select questions
     .. code-block:: none
     
       '${question_name}'
+      
+  .. container:: details  
   
-  .. image:: /img/form-functions/choice-name-multi-lang-english-0.* 
-    :alt: A multi-select widget in Collect. The label is "What colors do you like?" Several color names are presented as options. Red, Green, and Purple are selected.
-  
-  .. image:: /img/form-functions/choice-name-multi-lang-english-1.* 
-    :alt: A note widget in Collect. The label is "Selected colors". The hint text is "Red, Green, Purple."
-  
-  .. image:: /img/form-functions/choice-name-multi-lang-spanish-0.* 
-    :alt: A multi-select widget in Collect. The label is "¿Qué colores te gustan?" Several color names, in Spanish, are presented as options. Rojo, Verde, and Púrpura are selected.
-    
-  .. image:: /img/form-functions/choice-name-multi-lang-spanish-1.* 
-    :alt: A note widget in Collect. The label is "Colores seleccionados." The hint text is "Rojo, Verde, Púrpura".
-    
-  .. rubric:: XLSForm
-  
-  .. csv-table::  survey
-    :header: type, name, label::English, label::Español, hint::English, hint:Español, calculation
-    
-    select_multiple colors, color_prefs, What colors do you like?, ¿Qué colores te gustan?, Select three., Seleccione tres.
-    calculate, color_0, , , , ,"jr:choice-name( selected-at(${color_prefs}, 0), '${color_prefs}')"
-    calculate, color_1, , , , ,"jr:choice-name( selected-at(${color_prefs}, 2), '${color_prefs}')"
-    calculate, color_2, , , , ,"jr:choice-name( selected-at(${color_prefs}, 2), '${color_prefs}')"
-    note, color_note, Selected colors:, Colores seleccionados:, ${color_0} <br> ${color_1} <br> ${color_2}, ${color_0} <br> ${color_1} <br> ${color_2}
-    
-  .. csv-table:: choices
-    :header: list_name, name, label::English, label::Español
-    
-    colors, red, Red, Rojo
-    colors, blue, Blue, Azul
-    colors, yellow, Yellow, Amarillo
-    colors, green, Green, Verde
-    colors, orange, Orange, Anaranjado
-    colors, purple, Purple, Púrpura
-  
+    .. image:: /img/form-functions/choice-name-multi-lang-english-0.* 
+      :alt: A multi-select widget in Collect. The label is "What colors do you like?" Several color names are presented as options. Red, Green, and Purple are selected.
+
+    .. image:: /img/form-functions/choice-name-multi-lang-english-1.* 
+      :alt: A note widget in Collect. The label is "Selected colors". The hint text is "Red, Green, Purple."
+
+    .. image:: /img/form-functions/choice-name-multi-lang-spanish-0.* 
+      :alt: A multi-select widget in Collect. The label is "¿Qué colores te gustan?" Several color names, in Spanish, are presented as options. Rojo, Verde, and Púrpura are selected.
+
+    .. image:: /img/form-functions/choice-name-multi-lang-spanish-1.* 
+      :alt: A note widget in Collect. The label is "Colores seleccionados." The hint text is "Rojo, Verde, Púrpura".
+
+    .. rubric:: XLSForm
+
+    .. csv-table::  survey
+      :header: type, name, label::English, label::Español, hint::English, hint:Español, calculation
+
+      select_multiple colors, color_prefs, What colors do you like?, ¿Qué colores te gustan?, Select three., Seleccione tres.
+      calculate, color_0, , , , ,"jr:choice-name( selected-at(${color_prefs}, 0), '${color_prefs}')"
+      calculate, color_1, , , , ,"jr:choice-name( selected-at(${color_prefs}, 2), '${color_prefs}')"
+      calculate, color_2, , , , ,"jr:choice-name( selected-at(${color_prefs}, 2), '${color_prefs}')"
+      note, color_note, Selected colors:, Colores seleccionados:, ${color_0} <br> ${color_1} <br> ${color_2}, ${color_0} <br> ${color_1} <br> ${color_2}
+
+    .. csv-table:: choices
+      :header: list_name, name, label::English, label::Español
+
+      colors, red, Red, Rojo
+      colors, blue, Blue, Azul
+      colors, yellow, Yellow, Amarillo
+      colors, green, Green, Verde
+      colors, orange, Orange, Anaranjado
+      colors, purple, Purple, Púrpura
+
 .. _repeat-functions:
     
 Repeat groups
@@ -303,13 +312,17 @@ Repeat groups
 
   .. seealso:: :ref:`referencing-answers-in-repeats`
 
-  .. include:: incl/form-examples/parallel-repeat-groups.rst
+  .. container:: details
+  
+    .. include:: incl/form-examples/parallel-repeat-groups.rst
 
 .. function:: count(nodeset)
 
   Returns the number of items in :arg:`nodeset`. This can be used to count the number of repetitions in a :ref:`repeat group <repeats>`.
 
-  .. include:: incl/form-examples/parallel-repeat-groups.rst
+  .. container:: details
+  
+    .. include:: incl/form-examples/parallel-repeat-groups.rst
   
 .. function:: count-non-empty(nodeset)
 
@@ -321,38 +334,44 @@ Repeat groups
   
   Can be used to :ref:`tally responses to a repeated select question <counting-answers>`.
   
-  .. include::  incl/form-examples/sum-to-count-responses.rst
+  .. container:: details
+  
+    .. include::  incl/form-examples/sum-to-count-responses.rst
 
 .. function:: max(nodeset)
 
   Returns the largest member of :arg:`nodeset`.
   
-  .. rubric:: XLSForm
+  .. container:: details
   
-  .. csv-table:: survey
-    :header: type, name, label, calculation
-    
-    begin_repeat, child_questions, Questions about child
-    text, child_name, Child's name
-    integer, child_age, Child's age
-    end_repeat
-    calculate, age_of_oldest_child, , max(${child_age})
+    .. rubric:: XLSForm
+
+    .. csv-table:: survey
+      :header: type, name, label, calculation
+
+      begin_repeat, child_questions, Questions about child
+      text, child_name, Child's name
+      integer, child_age, Child's age
+      end_repeat
+      calculate, age_of_oldest_child, , max(${child_age})
 
 .. function:: min(nodeset)
 
   Returns the smallest member of :arg:`nodeset`.
-  
-  .. rubric:: XLSForm
-  
-  .. csv-table:: survey
-    :header: type, name, label, calculation
-    
-    begin_repeat, child_questions, Questions about child
-    text, child_name, Child's name
-    integer, child_age, Child's age
-    end_repeat
-    calculate, age_of_youngest_child, , min(${child_age}) 
-  
+
+  .. container:: details 
+   
+    .. rubric:: XLSForm
+
+    .. csv-table:: survey
+      :header: type, name, label, calculation
+
+      begin_repeat, child_questions, Questions about child
+      text, child_name, Child's name
+      integer, child_age, Child's age
+      end_repeat
+      calculate, age_of_youngest_child, , min(${child_age}) 
+
 .. _string-functions:
   
 Strings
@@ -369,8 +388,10 @@ Searching and matching strings
     Returns ``True`` if :arg:`string` is an *exact and complete* match for :arg:`expression`.
 
   .. seealso:: :doc:`form-regex`
-  
-  .. include:: incl/form-examples/regex-middle-initial.rst
+
+  .. container:: details
+    
+    .. include:: incl/form-examples/regex-middle-initial.rst
 
 
 .. function:: contains(string, substring)
@@ -560,39 +581,43 @@ Formatting dates and times for display
   
 .. function:: format-date(date, format)
 
-  Returns :arg:`date` as a string formatted as defined by :arg`format`.
+  Returns :arg:`date` as a string formatted as defined by :arg:`format`.
   
-  The following identifiers are used in the :arg:`format` string:
+  .. container:: details
   
-  .. csv-table::
-  
-    %Y, 4-digit year
-    %y, 2-digit year
-    %m, 0-padded month
-    %n, numeric month
-    %b, "short text month (Jan, Feb, Mar...)" 
-    %d, 0-padded day of month
-    %e, day of month
-    %a, "short text day (Sun, Mon, Tue...)."
+    The following identifiers are used in the :arg:`format` string:
 
-  .. note:: 
-  
-    Month and day abbreviations are language and locale specific. If form locale can be determined, that locale will be used. Otherwise, the device locale will be used.
+    .. csv-table::
+
+      %Y, 4-digit year
+      %y, 2-digit year
+      %m, 0-padded month
+      %n, numeric month
+      %b, "short text month (Jan, Feb, Mar...)" 
+      %d, 0-padded day of month
+      %e, day of month
+      %a, "short text day (Sun, Mon, Tue...)."
+
+    .. note:: 
+    
+      Month and day abbreviations are language and locale specific. If form locale can be determined, that locale will be used. Otherwise, the device locale will be used.
   
 .. function:: format-date-time(dateTime, format)
 
   Returns :arg:`dateTime` as a string formatted as defined by :arg:`format`.
 
-  The identifiers list in :func:`format-date` are available, 
-  plus the following:
+  .. container:: details
   
-  .. csv-table::
-  
-    %H, 0-padded hour (24-hr time)
-    %h, hour (24-hr time)
-    %M, 0-padded minute
-    %S, 0-padded second
-    %3, 0-padded millisecond ticks.
+    The identifiers list in :func:`format-date` are available, 
+    plus the following:
+
+    .. csv-table::
+
+      %H, 0-padded hour (24-hr time)
+      %h, hour (24-hr time)
+      %M, 0-padded minute
+      %S, 0-padded second
+      %3, 0-padded millisecond ticks.
 
 .. _geography-functions:
     
