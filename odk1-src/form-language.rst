@@ -1,0 +1,128 @@
+.. spelling::
+
+  Anaranjado
+  Azul
+  Español
+  Púrpura
+  Qué
+  Rojo
+  Seleccione
+  colores
+  gustan
+  prefs
+  te
+  tres
+	
+Form Localization
+===================
+
+:doc:`collect-intro` and `XLSForm`_ support `multi-language forms`_.
+
+.. _multi-language forms: http://xlsform.org/#language
+
+To add additional languages to your XLSForm,
+replace columns of user-facing content with language-specific columns.
+
+All columns representing user-facing text or media can be multi-lingual:
+
+ - :th:`label`
+ - :th:`hint`
+ - :th:`media::*`
+ - :th:`constraint_message`
+ - :th:`required_message`
+
+Each language column adds two colons and the language name,
+followed by the `two letter language code` in parenthesis.
+For example: :th:`::English (en)`
+
+.. _XLSForm: http://xlsform.org
+.. _two letter language code: http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+
+.. rubric:: XLSForm -- Single language
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+  
+  select_multiple colors, color_prefs, What colors do you like?, Select three.
+
+.. csv-table:: choices
+
+  :header: list_name, name, label
+  
+  colors, red, Red
+  colors, blue, Blue
+  colors, yellow, Yellow
+  colors, green, Green
+  colors, orange, Orange
+  colors, purple, Purple
+
+.. rubric:: XLSForm --- Multiple languages
+
+.. csv-table:: survey
+  :header: type, name, label::English (en), label::Español (es), hint::English (en), hint::Español (es)
+  
+  select_multiple colors, color_prefs, What colors do you like?, ¿Qué colores te gustan?, Select three., Seleccione tres.
+  
+.. csv-table:: choices
+  :header: list_name, name, label::English (en), label::Español (es)
+  
+  colors, red, Red, Rojo
+  colors, blue, Blue, Azul
+  colors, yellow, Yellow, Amarillo
+  colors, green, Green, Verde
+  colors, orange, Orange, Anaranjado
+  colors, purple, Purple, Púrpura
+
+  
+.. image:: /img/form-language/colors-english.* 
+  :alt: A multi-select widget in Collect. The label is "What colors do you like?" The hint text is "Select three." The choices are: Red, Blue, Yellow, Green, Orange, and Purple.
+  
+.. image:: /img/form-language/colors-spanish.* 
+  :alt: A multi-select widget in Collect. The label is "¿Qué colores te gustan?" The hint text is "Seleccione tres." The choices are Rojo, Azul, Amarillo, Verde, Anaranjado, and Púrpura.
+  
+.. _switching-languages:
+  
+Switching languages
+---------------------
+
+Typically, if multiple languages are available on a form,
+the form will display in the language set on the device.
+
+To switch between available languages on a form,
+go to :menuselection:`⋮ --> Change Language`.
+
+.. video:: /vid/form-language/language-switch.mp4
+
+.. _language-obstacles:
+
+Potential obstacles
+--------------------
+
+.. _no-language-fallback:
+
+No "fallback"
+~~~~~~~~~~~~~~~
+
+If you have specified languages for a column,
+the non-specific version of that column
+will be treated as if it were a separate language.
+(The :menuselection:`Change Language` menu will list it as :guilabel:`Default`.)
+
+Blank cells in a language-specific column
+will be blank in the form when that language is active,
+even if the "default" column has a value.
+
+.. _device-langauge:
+
+Device language
+~~~~~~~~~~~~~~~~
+
+Many elements of a form's navigation,
+as well as all menus in Collect,
+are controlled by the device's language,
+not the form's display language.
+
+Changing the form's language display
+will not change the device language.
+If you are in a context that requires switching languages often,
+make sure you know where to do this in your device's :menuselection:`Settings` menu.
