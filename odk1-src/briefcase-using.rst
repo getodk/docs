@@ -44,6 +44,27 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
      #. Manually copy the instances from the temporary location to your original storage location.
      #. Update :guilabel:`Settings` back to the original storage location.
 
+.. note::
+  :name: briefcase-parallel-connections
+
+  .. rubric:: Pull forms faster with parallel connections
+  
+  .. container:: details
+  
+    To speed up pulling forms from Aggregate,
+    enable :guilabel:`Pull submissions in parallel`
+    in the :guilabel:`Settings` tab.
+
+    .. image:: /img/briefcase-using/pull-in-parallel.*
+
+    However, if your Aggregate server is
+    :doc:`installed on Google App engine <aggregate-app-engine>`,
+    this setting may cause problems with large attachments.
+    If your form has submission attachments 
+    (file uploads, videos, images, sound recordings)
+    you should experiment with this setting
+    and see if it improves or worsens performance.
+
 
 .. _push-to-aggregate:
 
