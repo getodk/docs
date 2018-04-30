@@ -30,7 +30,7 @@ OpenRosa compliant servers MUST support at least one of either:
 
 We are following RFC2617 with additional OpenRosa compliance requirements defined in the implementation section below to ensure that the Digest Authentication implementations across devices do not compromise security and that they all implement a well-defined common subset of the RFC2617 Digest Authentication mechanism.
 
-.. _openrosa-authentication-security:
+.. _openrosa-authentication-data-security:
 
 Data Security Considerations
 -------------------------------
@@ -108,7 +108,7 @@ Clients MUST NOT include authentication credentials in the URL to the server. Th
   
   http://username:password@myhost.org/mypage
 
-.. _openrosa-authentication-basic:
+.. _openrosa-basic-authentication:
   
 Basic Authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~
