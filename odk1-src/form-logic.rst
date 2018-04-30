@@ -144,23 +144,23 @@ Every expression is constantly re-evaluated as an enumerator progresses through 
 - a form is opened
 - the value of any question in the form changes
 - a repeat group is added or deleted
-- a form is finalized
+- a form is saved or finalized
 
-A common misconception is that expressions are only evaluated when a question that uses it is displayed. This faulty mental model leads form designers to include functions such as :tc:`random()` or :tc:`now()` and to expect them to be evaluated exactly once. In fact, they will be re-evaluated over and over again until the form is finalized. For example, the following calculate will keep track of the last time the form was finalized:
+A common misconception is that expressions are only evaluated when a question that uses it is reached. This faulty mental model leads form designers to include functions such as :tc:`random()` or :tc:`now()` and to expect them to be evaluated exactly once. In fact, they will be re-evaluated over and over again until the form is finalized for the last time. For example, the following calculate will keep track of the last time the form was saved:
 
 .. csv-table:: survey
   :header: type, name, label, calculation
 
-  calculate, now, , now()
+  calculate, datetime_last_saved, , now()
 
-The :tc:`once()` function inhibits redundant evaluation by only evaluating the expression passed into it if the node has no value. That means the expression will be evaluated once either on form load or when any values the expression depends on are set.
+The :tc:`once()` function prevents multiple evaluation by only evaluating the expression passed into it if the node has no value. That means the expression will be evaluated once either on form open or when any values the expression depends on are set.
 
 Every call on :tc:`now()` in the form will have the same value unless the :tc:`once()` function is used. For example, the following calculate will keep track of the first time the form was opened:
 
 .. csv-table:: survey
   :header: type, name, label, calculation
 
-  calculate, now, , once(now())
+  calculate, datetime_first_opened, , once(now())
 
 The following calculate will keep track of the first time the enumerator set a value for the :th:`age` question:
 
@@ -168,7 +168,7 @@ The following calculate will keep track of the first time the enumerator set a v
   :header: type, name, label, calculation
 
   integer, age, What is your age?,
-  calculate, now, , if(age = '', '', once(now()))
+  calculate, age_timestamp, , if(age = '', '', once(now()))
 
 
 .. _requiring-responses:
