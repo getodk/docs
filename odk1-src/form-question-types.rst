@@ -568,6 +568,23 @@ You can offer the participant
 a :ref:`single choice <single-select-widget>`,
 or the ability to :ref:`choose multiple answers <multi-select-widget>`.
 
+The options for a select question are listed
+on a sheet named **choices**, in your XLSForm file.
+The **choices** sheet has at least three columns:
+
+:th:`list_name`
+  A set of choices for a single question share a common :th:`list_name`.
+  The value of :th:`list_name` is included in the :th:`type` column
+  on the **survey** sheet.
+
+:th:`name`
+  The canonical identifier for a specific choice. This value is what is stored on the completed form. If you :ref:`refer to a select response using a variable <variables>`, the :th:`name` string is returned.
+  
+  As with the **survey** sheet, :th:`name` must not include spaces.
+
+:th:`label`
+  The user-facing text displayed for the choice.
+
 Select widgets can :ref:`include images as choices <select-image-widget>`.
 
 .. contents:: 
