@@ -11,10 +11,12 @@ Authentication API
 
 This standard specifies the Request and Response format through which OpenRosa compliant servers authorize HTTP transactions.
 
+.. _openrosa-authentication-overview:
+
 Overview
 ----------
 
-This API provides a standardized means with which OpenRosa clients are authenticated with compliant servers.
+This API provides a standard means with which OpenRosa clients are authenticated with compliant servers.
 
 OpenRosa compliant devices MUST support both:
 
@@ -28,6 +30,8 @@ OpenRosa compliant servers MUST support at least one of either:
 
 We are following RFC2617 with additional OpenRosa compliance requirements defined in the implementation section below to ensure that the Digest Authentication implementations across devices do not compromise security and that they all implement a well-defined common subset of the RFC2617 Digest Authentication mechanism.
 
+.. _openrosa-authentication-security:
+
 Data Security Considerations
 -------------------------------
 
@@ -38,6 +42,8 @@ HTTPS requires that the server be configured with an SSL certificate issued by a
 OpenRosa compliant client devices MUST authenticate server certificates when establishing HTTPS channels to those servers.
 
 Because client communications are often through unsecured hotspots, it is recommended that HTTPS (with the authentication of server certificates) be used for all communications.
+
+.. _openrosa-authentication-typical-interaction:
 
 Typical Interaction
 --------------------
@@ -77,6 +83,8 @@ The Digest Authentication response value is thus sent in such a way that an adve
 
   Even with the more secure Digest Authentication, HTTPS is recommended. 
 
+.. _openrosa-authentication-implementation:
+  
 Implementation
 -----------------
 
@@ -89,6 +97,8 @@ Servers which implement the Authorization API should follow the specifications p
 - Device-and-server interactions for which the server requires authentication MUST implement either Basic authentication or the OpenRosa Restricted Digest authentication scheme as detailed below. The server or device MAY additionally implement other authentication schemes.
 - The device MUST make every effort to proactively supply an ``Authentication`` header line if the requested URI falls within the list of domain URIs covered by a previous authentication interaction. This is to minimize the number of authentication challenges.
 
+.. _openrosa-authentication-authentication:
+
 Authentication
 -----------------
 
@@ -98,6 +108,8 @@ Clients MUST NOT include authentication credentials in the URL to the server. Th
   
   http://username:password@myhost.org/mypage
 
+.. _openrosa-authentication-basic:
+  
 Basic Authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~
     
@@ -105,7 +117,7 @@ Basic Authentication MUST NOT be performed over a non-secure (HTTP) connection.
 
 Once the client is aware that basic authentication is required, it SHOULD proactively supply the basic authentication credentials on every secure request to the server, rather than wait for the server to reject the request with a ``401`` response.
 
-.. _openrosa-restrcted-digest-authentication:
+.. _openrosa-restricted-digest-authentication:
 
 OpenRosa Restricted Digest Authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -119,10 +131,14 @@ This is the `Digest Access Authentication Scheme (RFC 2617 Section 3) <https://t
 - stale --- device MUST make every effort to not prompt the user for username and password if this is TRUE but instead recompute the key with previously cached values for the username and password.
 - cnonce --- device SHOULD use a string representation of at least a 48-bit random value (a random UUID has 126-bit randomness) for the cnonce.
     
+.. _openrosa-digest-authentication-security:    
+
 Digest Authentication Security Considerations
 """"""""""""""""""""""""""""""""""""""""""""""""
 
 Digest Authentication is based upon the MD5 hash algorithm which is now considered too weak for mainstream cryptographic uses. Digest Authentication remains viable only when the cnonce and nonce values are random and reasonably long. The use of longer random strings (e.g., random UUIDs have 126 bits of randomness) is critical for the continued use of this authentication mechanism.
+
+.. _openrosa-digest-authentication-calculations:
 
 Digest Authentication Calculations
 """""""""""""""""""""""""""""""""""
@@ -161,8 +177,12 @@ RFC 2617 (HTTP Authentication: Basic and Digest Access Authentication)
 
 (the above shows that when qop is not specified, the simpler RFC2069 standard is followed)
 
+.. _openrosa-digest-authentication-example:
+
 Digest Authentication Example Interaction
 """""""""""""""""""""""""""""""""""""""""""
+
+.. _openrosa-no-authentication:
 
 No authentication
 ''''''''''''''''''''''''''''''''
@@ -200,6 +220,8 @@ Response:
     </BODY>
   </HTML>
 
+.. _openrosa-authentication-request-with-username-password:
+  
 Request with username and password
 '''''''''''''''''''''''''''''''''''''
 
