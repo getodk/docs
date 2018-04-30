@@ -116,7 +116,7 @@ go to :menuselection:`⋮ --> Change Language`.
 
 .. note::
 
-  Collect will remember the last lanaguge
+  Collect will remember the last language
   you switched to on a form,
   even if you switch device language.
 
