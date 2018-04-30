@@ -1043,8 +1043,20 @@ To include images as choices for select questions:
      make sure the media folder is placed in
      :file:`/sdcard/odk/forms/`.
 
-  
+.. _or-other:  
 
+Including "other" as an option
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On the **survey** sheet, in the :th:`type` column,
+after the type and the list_name,
+you can add :tc:`or_other`.
+This will add "Other" as an additional option to your choice list.
+The :th:`name` value of the choice when selected will be :tc:`other`.
+
+.. seealso:: `Specify other <http://xlsform.org/#specify-other>`_
+
+  
 .. _location-widgets:
 
 Location widgets
