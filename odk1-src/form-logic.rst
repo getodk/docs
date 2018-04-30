@@ -3,9 +3,11 @@
   ap
   ar
   bp
+  datetime
   dir
   fave
   mngr
+  timestamp
 
 ***********
 Form Logic
