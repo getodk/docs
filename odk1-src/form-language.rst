@@ -13,7 +13,7 @@
   te
   tres
 	
-Form Localization
+Form Language
 ===================
 
 :doc:`collect-intro` and `XLSForm`_ support `multi-language forms`_.
@@ -33,7 +33,12 @@ All columns representing user-facing text or media can be multi-lingual:
 
 Each language column adds two colons and the language name,
 followed by the `two letter language code` in parenthesis.
-For example: :th:`::English (en)`
+
+For example: 
+
+- :th:`label::English (en)`
+- :th:`hint::French (fr)`
+
 
 .. _XLSForm: http://xlsform.org
 .. _two letter language code: http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
@@ -79,7 +84,23 @@ For example: :th:`::English (en)`
   
 .. image:: /img/form-language/colors-spanish.* 
   :alt: A multi-select widget in Collect. The label is "¿Qué colores te gustan?" The hint text is "Seleccione tres." The choices are Rojo, Azul, Amarillo, Verde, Anaranjado, and Púrpura.
+
   
+
+.. warning:: 
+
+  There is no fallback language.
+
+  If you have specified languages for a column,
+  the non-specific version of that column
+  will be treated as if it were a separate language.
+  (The :menuselection:`Change Language` menu will list it as :guilabel:`Default`.)
+
+  Blank cells in a language-specific column
+  will be blank in the form when that language is active,
+  even if the "default" column has a value.
+
+    
 .. _switching-languages:
   
 Switching languages
@@ -93,36 +114,20 @@ go to :menuselection:`⋮ --> Change Language`.
 
 .. video:: /vid/form-language/language-switch.mp4
 
-.. _language-obstacles:
+.. note::
 
-Potential obstacles
---------------------
+  Collect will remember the last lanaguge
+  you switched to on a form,
+  even if you switch device language.
 
-.. _no-language-fallback:
+  Many elements of a form's navigation,
+  as well as all menus in Collect,
+  are controlled by the device's language,
+  not the form's display language.
 
-No "fallback"
-~~~~~~~~~~~~~~~
+  Changing the form's language display
+  will not change the device language.
+  If you are in a context that requires switching languages often,
+  make sure you know where to do this in your device's 
+  :menuselection:`Settings` menu.
 
-If you have specified languages for a column,
-the non-specific version of that column
-will be treated as if it were a separate language.
-(The :menuselection:`Change Language` menu will list it as :guilabel:`Default`.)
-
-Blank cells in a language-specific column
-will be blank in the form when that language is active,
-even if the "default" column has a value.
-
-.. _device-langauge:
-
-Device language
-~~~~~~~~~~~~~~~~
-
-Many elements of a form's navigation,
-as well as all menus in Collect,
-are controlled by the device's language,
-not the form's display language.
-
-Changing the form's language display
-will not change the device language.
-If you are in a context that requires switching languages often,
-make sure you know where to do this in your device's :menuselection:`Settings` menu.
