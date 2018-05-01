@@ -308,7 +308,7 @@ Often, comparison `operators`_ are used in relevance expressions. For example:
 :tc:`${has_children} = 'yes'`
   True if the answer to :tc:`has_children` was ``yes``.
   
-Relevance expressions can also use :doc:`XPath functions <form-functions>`.
+Relevance expressions can also use :ref:`functions <form-functions>`.
 For example:
 
 :tc:`selected(${allergies}, 'peanut')`

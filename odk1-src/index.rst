@@ -74,7 +74,7 @@ For a complete list of our projects, check out `Open Data Kit on Github <https:/
   form-question-types
   form-logic
   form-styling
-  form-functions
+  form-operators-functions
   form-audit-log
   launch-apps-from-collect
   form-tools

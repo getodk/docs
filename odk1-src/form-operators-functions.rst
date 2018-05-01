@@ -4,6 +4,7 @@
   Azul
   Colores
   Español
+  Nodesets
   Púrpura
   Qué
   Rojo
@@ -34,53 +35,14 @@ Form Functions and Operators
 :ref:`expressions` in :ref:`calculations <calculations>`, :ref:`constraints <constraints>`, and :ref:`relevants <relevants>`
 can contain operators and functions.
 
-.. seealso:: `XPath Functions <https://opendatakit.github.io/xforms-spec/#xpath-functions>`_
-
 .. contents::
   :local:   
-
-  
-.. _xform-operators:
+  :depth: 2
+    
+.. _form-operators:
 
 Operators
 ==========
-
-.. _utility-operators:
-
-Utility operators
--------------------
-
-.. csv-table::
-  :header: , Explanation, Example, Notes
-  
-  ., current question's value, . >= 18, Used in :ref:`constraints <constraints>`.
-  \.\., current question's parent group, position(..), Used with :func:`position` to get the iteration index.
-  
-.. _boolean-operators:
-  
-Boolean operators
-------------------
-
-.. csv-table::
-  :header: , Explanation, Example
-
-  and, ``True`` if the expressions before and after are ``True``, ${age} > -1 and ${age} < 120
-  or, ``True`` if either of the expressions before or after are ``True``, ${age} < 19 or ${age} > 64
-  
-.. _comparison-operators:
-  
-Comparison operators
------------------------
-  
-.. csv-table::
-  :header: , Explanation, Example, Notes
-  
-  =, equal to, ${enrolled} = 'yes', Can compare numbers or strings.
-  !=, not equal to, ${enrolled} != 'yes', Can compare numbers or strings.
-  >, greater than, ${age} > 17, 
-  >=, greater than or equal to, ${age} >= 18,
-  <, less than, ${age} < 65, 
-  <=, less than or equal to, ${age} <= 64,
 
 .. _math-operators:
   
@@ -99,11 +61,69 @@ Math operators
 .. _modulo: https://en.wikipedia.org/wiki/Modulo_operation
 
   
+.. _comparison-operators:
   
-.. _functions:
+Comparison operators
+-----------------------
+  
+Comparison operators are used to compare values.
+The result of a comparison is always ``True`` or ``False``.
+  
+.. csv-table::
+  :header: , Explanation, Example, Notes
+  
+  =, equal to, ${enrolled} = 'yes', Can compare numbers or strings.
+  !=, not equal to, ${enrolled} != 'yes', Can compare numbers or strings.
+  >, greater than, ${age} > 17, 
+  >=, greater than or equal to, ${age} >= 18,
+  <, less than, ${age} < 65, 
+  <=, less than or equal to, ${age} <= 64,
+  
+.. _boolean-operators:
+  
+Boolean operators
+------------------
+
+Boolean operators combine two ``True`` or ``False`` values
+into a single ``True`` or ``False`` value.
+
+.. csv-table::
+  :header: , Explanation, Example
+
+  and, ``True`` if the expressions before and after are ``True``, ${age} > -1 and ${age} < 120
+  or, ``True`` if either of the expressions before or after are ``True``, ${age} < 19 or ${age} > 64
+
+
+.. _path-operators:
+
+Path operators
+-------------------
+
+.. csv-table::
+  :header: , Explanation, Example, Notes
+  
+  ., current question's value, . >= 18, Used in :ref:`constraints <constraints>`.
+  \.\., current question's parent group, position(..), Used with :func:`position` to get the iteration index.
+
+.. note:: 
+
+  Formally, these are not operators but rather XPath references 
+  to the current node (``..``) and the containing node (``.``). 
+  `XPath paths`_ can be used to reference nodes of a form.
+  
+  .. _XPath paths: https://opendatakit.github.io/xforms-spec/#xpath-paths
+    
+  
+.. _form-functions:
   
 Functions
 ===========
+
+.. contents::
+  :local:
+    
+.. seealso:: `Functions in the ODK XForm Specification <https://opendatakit.github.io/xforms-spec/#xpath-functions>`_
+
     
 .. _control-flow-functions:
 
@@ -157,25 +177,39 @@ Accessing response values
 Select questions
 ~~~~~~~~~~~~~~~~~~~
 
-.. function:: selected(select_question, choice_name)
+.. function:: selected(space_delimited_array, string)
 
-  Returns ``True`` if :arg:`choice_name` 
-  was selected in :arg:`select_question`,
+  Returns ``True`` if :arg:`string` 
+  is a member of :arg:`space_delimited_array`,
   otherwise returns ``False``.
+  
+  Commonly used to determined if a specific choice was selected
+  in a :ref:`select question <select-widgets>`. 
+  (This is possible because 
+  a :ref:`reference to <variables>` a select question
+  returns a space-delimited array of choice names.)
 
   .. container:: details
       
     .. include:: incl/form-examples/constraint-on-selected.rst
   
-.. function:: selected-at(multi_select_question, n)
+.. function:: selected-at(space_delimited_array, n)
 
-  Returns the :th:`name` of the :arg:`n`\ :sup:`th` selected choice of the :arg:`multi_select_question`. (Selected choices are zero-indexed.)
-  
+  Returns the string at the :arg:`n`\ :sup:`th` position 
+  of the :arg:`space_delimited_array`.
+  (The array is zero-indexed.)
   Returns an empty string if the index does not exist.  
+  
+  This can be used to get the :th:`name` of a selected choice 
+  from a :ref:`multi-select question <multi-select-widget>`.
+  (This is possible because 
+  a :ref:`reference to <variables>` a select question
+  returns a space-delimited array of choice names.)
   
   .. note::
   
-    This function returns the :th:`name`, not the :th:`label`,
+    If used to get a choice name from a select question,
+    this function returns the :th:`name`, not the :th:`label`,
     of the selected choice.
     To get the label in the current language,
     use :func:`jr:choice-name`.
@@ -294,11 +328,14 @@ Repeat groups
 
     nodeset
 
-      A collection of response values. 
+      A collection of XML nodes.
+      In XLSForms, this is typically a collection of response values. 
 
       Outside a :ref:`repeat group <repeats>`, 
       :ref:`referring to a question by name <variables>`
       will return a nodeset containing all the responses to that question.
+      
+      Nodesets can also be created by joining two or more nodes with pipes: :tc:`/data/age | /data/name`.
 
         
 .. function:: indexed-repeat(name, group, i [, sub_grp, sub_i [, sub_sub_grp, sub_sub_i ]])
@@ -439,11 +476,6 @@ Converting to and from strings
   Returns ``True`` if :arg:`string` is "true" or "1".
   Otherwise, ``False``.
 
-
-.. function:: number(string)
-
-  Converts a :arg:`string` of digits into a number value.
-
 .. function:: string(arg)
 
    Converts :arg:`arg` to a string.
@@ -462,10 +494,21 @@ Number handling
 
   Rounds a decimal :arg:`number` to some number of decimal :arg:`places`.
 
-.. function:: int(arg) 	
+.. function:: int(number) 	
 
-  Converts :arg:`arg` to an integer.
+  Truncates the fractional portion of a decimal :arg:`number` to return an integer.
 
+.. function:: number(arg)
+
+  Converts :arg:`arg` to number value.
+  
+  If :arg:`arg` is a string of digits, returns the number value.
+  
+  If :arg:`arg` is ``True``, returns 1. If :arg:`arg` is ``False``, returns 0.
+  
+  If :arg:`arg` cannot be converted, returns ``NaN`` (not a number).
+
+  
 .. seealso:: :func:`count`, :func:`max`, :func:`min`, :func:`number`
   
 .. _calculation-functions:
@@ -545,7 +588,9 @@ Date and time
 
 .. function:: now()
 
-  Returns the current datetime in the current time zone.
+  Returns the current datetime in `ISO 8601 format`_, including the timezone.
+  
+  .. _ISO 8601 format: https://en.wikipedia.org/wiki/ISO_8601
 
 .. _date-time-conversion-functions:
   
@@ -570,7 +615,7 @@ Converting dates and time
 .. function:: decimal-time(time)
 
   Converts :arg:`time` to a number representing a fractional day.
-  For example, noon is 0.5 and 6pm is 0.75.
+  For example, noon is 0.5 and 6:00 PM is 0.75.
 
 
 .. _date-time-formatting-functions:
@@ -655,22 +700,19 @@ Utility
 
   Returns a shuffled :arg:`nodeset`.
   
-  A shuffle with a numeric :arg:`seed` is deterministic and reproducible.
+  A shuffle with a numeric :arg:`seed` is deterministic and reproducible. 
   
-.. function:: checklist(min, max, response[, response[, response [, ... ]]])
-
-  Returns ``True`` if the number of :arg:`response`\ s that are exactly the string "yes" is between :arg:`min` and :arg:`max`, inclusive.  
+  .. tip::
   
-  Set :arg:`min` or :arg:`max` to ``-1`` to make the argument not applicable.
-
-.. function:: weighted-checklist(min, max, reponse, weight[, response, weight[, response, weight[, response, weight[, ... ]]])
-
-  Returns ``True`` if 
-  the sum of the :arg:`weight`\ s 
-  of each :arg:`response` that is exactly the string "yes"
-  is between :arg:`min` and :arg:`max`, inclusive.
-  
-  Set :arg:`min` or :arg:`max` to ``-1`` to make the argument not 
+    You may want to generate and store a :arg:`seed` in a previous :ref:`calculate <calculations>` row, so you have a reproducible log of how a nodeset was randomized. Use :func:`once` to make sure the value doesn't change after being set.
+    
+    .. rubric:: XLSForm
+    
+    .. csv-table:: survey
+      :header: type, name, calculation
+      
+      calculate, seed_1, once(random())
+      calculate, shuffled_set, randomize(${some_nodeset}, ${seed_1})
     
 .. function:: uuid([length]) 	
 
@@ -708,6 +750,23 @@ Utility
   Returns first non-empty value of the two :arg:`arg`\ s.
   Returns an empty string if both are empty or non-existent.
 
+  
+.. function:: checklist(min, max, response[, response[, response [, ... ]]])
+
+  Returns ``True`` if the number of :arg:`response`\ s that are exactly the string "yes" is between :arg:`min` and :arg:`max`, inclusive.  
+  
+  Set :arg:`min` or :arg:`max` to ``-1`` to make the argument not applicable.
+
+.. function:: weighted-checklist(min, max, reponse, weight[, response, weight[, response, weight[, response, weight[, ... ]]])
+
+  Returns ``True`` if 
+  the sum of the :arg:`weight`\ s 
+  of each :arg:`response` that is exactly the string "yes"
+  is between :arg:`min` and :arg:`max`, inclusive.
+  
+  Set :arg:`min` or :arg:`max` to ``-1`` to make the argument not 
+
+  
 .. function:: true()
 
   Evaluates to ``True``.
