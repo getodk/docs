@@ -21,7 +21,7 @@ Form Language
 .. _multi-language forms: http://xlsform.org/#language
 
 To add additional languages to your XLSForm,
-replace columns of user-facing content with language-specific columns.
+add columns of user-facing content with language-specific columns.
 
 All columns representing user-facing text or media can be multi-lingual:
 
