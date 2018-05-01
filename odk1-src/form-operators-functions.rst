@@ -157,7 +157,11 @@ Control flow
 
   This can be used to ensure that a random number is only generated once,
   or to store the first value entered for a question
-  in a way that is retrievable even of the response is changed later.  
+  in a way that is retrievable even of the response is changed later.
+
+  .. warning::
+
+    This function is often misunderstood. Read :ref:`when expressions are evaluated <when-expressions-are-evaluated>` to learn more.
 
 .. _response-access-functions:
   
@@ -592,6 +596,10 @@ Date and time
   
   .. _ISO 8601 format: https://en.wikipedia.org/wiki/ISO_8601
 
+  .. warning::
+
+    This function is often misused. Read :ref:`when expressions are evaluated <when-expressions-are-evaluated>` to learn more.
+
 .. _date-time-conversion-functions:
   
 Converting dates and time
@@ -695,7 +703,11 @@ Utility
 
   Returns a random number between 0.0 (inclusive) and 1.0 (exclusive).
 
-  
+  .. warning::
+
+    This function is often misused. Read :ref:`when expressions are evaluated <when-expressions-are-evaluated>` to learn more.
+
+
 .. function:: randomize(nodeset[, seed]) 	
 
   Returns a shuffled :arg:`nodeset`.
