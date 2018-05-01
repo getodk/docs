@@ -3,9 +3,11 @@
   ap
   ar
   bp
+  datetime
   dir
   fave
   mngr
+  timestamp
 
 ***********
 Form Logic
@@ -139,30 +141,37 @@ you must first use a :tc:`calculate` row and then a variable.
 When expressions are evaluated
 --------------------------------
 
-Expressions are evaluated at two points:
+Every expression is constantly re-evaluated as an enumerator progresses through a form. This is an important mental model to have and can explain sometimes unexpected behavior. More specifically, expressions are re-evaluated when:
 
-- when the form is advanced to the widget that contains the expression
-- when the form is saved
+- a form is opened
+- the value of any question in the form changes
+- a repeat group is added or deleted
+- a form is saved or finalized
 
-In the case of :ref:`calculations`,
-which are not rendered visually in the app,
-the expression is evaluated when the form advances 
-to the widget after the calculation.
+A common misconception is that expressions are only evaluated when a question that uses it is reached. This faulty mental model leads form designers to include functions such as :tc:`random()` or :tc:`now()` and to expect them to be evaluated exactly once. In fact, they will be re-evaluated over and over again until the form is finalized for the last time. For example, the following calculate will keep track of the last time the form was saved:
 
-Since expressions are evaluated when the form is saved,
-even if they were evaluated earlier while filling out the form,
-unexpected behavior can sometimes occur.
-For example,
-if a default value relies on a calculation,
-and the calculation relies on an earlier value,
-and the earlier value is edited,
-then the default value will re-evaluate on save,
-even if the widget with the default value is not viewed or edited.
+.. csv-table:: survey
+  :header: type, name, label, calculation
 
-To inhibit redundant evaluation,
-use the :tc:`once()` function.
-If a calculation is wrapped in a :tc:`once()` function,
-the expression will only be evaluated if there is no current value.
+  calculate, datetime_last_saved, , now()
+
+The :tc:`once()` function prevents multiple evaluation by only evaluating the expression passed into it if the node has no value. That means the expression will be evaluated once either on form open or when any values the expression depends on are set.
+
+Every call on :tc:`now()` in the form will have the same value unless the :tc:`once()` function is used. For example, the following calculate will keep track of the first time the form was opened:
+
+.. csv-table:: survey
+  :header: type, name, label, calculation
+
+  calculate, datetime_first_opened, , once(now())
+
+The following calculate will keep track of the first time the enumerator set a value for the :th:`age` question:
+
+.. csv-table:: survey
+  :header: type, name, label, calculation
+
+  integer, age, What is your age?,
+  calculate, age_timestamp, , if(age = '', '', once(now()))
+
 
 .. _requiring-responses:
 
@@ -258,15 +267,7 @@ For example:
   
 .. seealso:: :doc:`form-regex`  
   
-.. image:: /img/form-logic/constraint-message.* 
-  :alt: A text widget in Collect. The question text is "What is your middle initial?" The entered value is "Michael". Over the widget is an alert message: "Just the first letter."
-  
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, constraint, constraint_message
-  
-  text, middle_initial, What is your middle initial?, "regex(., '\p{L}')", Just the first letter.
+.. include:: incl/form-examples/regex-middle-initial.rst
   
 .. _read-only:
   
@@ -287,7 +288,7 @@ based on :ref:`previous responses <variables>`.
   decimal, salary_income, Income from salary,,,
   decimal, self_income, Income from self-employment,,,
   decimal, other_income, Other income,,,
-  calculate, income_sum, , , , "sum(${salary_income}, ${self_income}, ${other_income})"
+  calculate, income_sum, , , , "${salary_income} + ${self_income} + ${other_income}"
   decimal, total_income, Total income, yes, ${income_sum}, 
 
     
@@ -316,7 +317,7 @@ Often, comparison `operators`_ are used in relevance expressions. For example:
 :tc:`${has_children} = 'yes'`
   True if the answer to :tc:`has_children` was ``yes``.
   
-Relevance expressions can also use `XPath functions`_.
+Relevance expressions can also use :ref:`functions <form-functions>`.
 For example:
 
 :tc:`selected(${allergies}, 'peanut')`
@@ -330,8 +331,6 @@ For example:
 :tc:`count-selected(${toppings}) > 5`
   True if more than five options were selected
   in the :ref:`multi-select-widget` named :tc:`toppings`.
-
-.. _XPath functions: https://opendatakit.github.io/xforms-spec/#xpath-functions
 
 .. _simple-conditional-example:
 
@@ -360,37 +359,7 @@ Simple example
 Complex example
 ------------------
 
-.. video:: /vid/form-logic/conditional-complex.mp4
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, hint, relevant, constraint
-  
-  select_multiple medical_issues, what_issues, Have you experienced any of the following?, Select all that apply.,,				
-  select_multiple cancer_types, what_cancer, What type of cancer have you experienced?, Select all that apply.,"selected(${what_issues}, 'cancer')",
-  select_multiple diabetes_types, what_diabetes, What type of diabetes do you have?, Select all that apply.,"selected(${what_issues}, 'diabetes')"
-  begin_group, blood_pressure, Blood pressure reading,"selected(${what_issues}, 'hypertension')",
-  integer, systolic_bp, Systolic,,,. > 40 and . < 400
-  integer, diastolic_bp, Diastolic,,,.  >= 20 and . <= 200
-  end_group							
-  text, other_health, List other issues.,,"selected(${what_issues}, 'other')",
-  note,after_health_note, This note is after all health questions.,,,							
-  
-.. csv-table:: choices
-  :header: list_name, name, label
-  
-  medical_issues, cancer, Cancer
-  medical_issues, diabetes, Diabetes
-  medical_issues, hypertension, Hypertension
-  medical_issues, other, Other
-  cancer_types, lung, Lung cancer
-  cancer_types, skin, Skin cancer
-  cancer_types, prostate, Prostate cancer
-  cancer_types, breast, Breast cancer
-  cancer_types, other, Other
-  diabetes_types, type_1, Type 1 (Insulin dependent)
-  diabetes_types, type_2, Type 2 (Insulin resistant)
+.. include:: incl/form-examples/constraint-on-selected.rst
 
 .. warning::
 

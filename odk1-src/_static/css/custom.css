@@ -37,14 +37,31 @@ table, .th, .tc {
 /* formstate role PR #111 */
 
 .formstate {
-    font-style: italics;
+    font-style: italic;
 }
 
 /* gesture role PR #111 */
 
 .gesture {
-    font-style: italics;
+    font-style: italic;
 }
+
+/* Style function signature more sensibly, and
+/* add arg role, PR 660 (function reference) */
+
+.function dt {
+    font-family: Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace;
+}
+
+.arg {
+    font-family: Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace;
+    font-style: italic;
+    font-weight: bold;
+    color: #2980B9;
+    font-size: 90%;
+    
+}
+
 
 /* caption styling PR #90 */
 

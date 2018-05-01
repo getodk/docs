@@ -78,7 +78,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'incl']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'incl', 'incl/form-examples']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'default'
@@ -104,6 +104,11 @@ DirectoryHTMLBuilder.supported_image_types = [
     'image/png',
     'image/jpeg'
 ]
+
+# Set primary domain to JavaScript
+# which is syntactically compatible with XPath functions.
+
+primary_domain = 'js'
 
 # -- Options for HTML output ----------------------------------------------
 
@@ -250,6 +255,9 @@ rst_prolog="""
     
 .. role:: gesture
     :class: gesture
+
+.. role:: arg
+    :class: arg
 """
 
 # At bottom of every document
