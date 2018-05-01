@@ -3,9 +3,11 @@
   ap
   ar
   bp
+  datetime
   dir
   fave
   mngr
+  timestamp
 
 ***********
 Form Logic
@@ -139,30 +141,37 @@ you must first use a :tc:`calculate` row and then a variable.
 When expressions are evaluated
 --------------------------------
 
-Expressions are evaluated at two points:
+Every expression is constantly re-evaluated as an enumerator progresses through a form. This is an important mental model to have and can explain sometimes unexpected behavior. More specifically, expressions are re-evaluated when:
 
-- when the form is advanced to the widget that contains the expression
-- when the form is saved
+- a form is opened
+- the value of any question in the form changes
+- a repeat group is added or deleted
+- a form is saved or finalized
 
-In the case of :ref:`calculations`,
-which are not rendered visually in the app,
-the expression is evaluated when the form advances 
-to the widget after the calculation.
+A common misconception is that expressions are only evaluated when a question that uses it is reached. This faulty mental model leads form designers to include functions such as :tc:`random()` or :tc:`now()` and to expect them to be evaluated exactly once. In fact, they will be re-evaluated over and over again until the form is finalized for the last time. For example, the following calculate will keep track of the last time the form was saved:
 
-Since expressions are evaluated when the form is saved,
-even if they were evaluated earlier while filling out the form,
-unexpected behavior can sometimes occur.
-For example,
-if a default value relies on a calculation,
-and the calculation relies on an earlier value,
-and the earlier value is edited,
-then the default value will re-evaluate on save,
-even if the widget with the default value is not viewed or edited.
+.. csv-table:: survey
+  :header: type, name, label, calculation
 
-To inhibit redundant evaluation,
-use the :tc:`once()` function.
-If a calculation is wrapped in a :tc:`once()` function,
-the expression will only be evaluated if there is no current value.
+  calculate, datetime_last_saved, , now()
+
+The :tc:`once()` function prevents multiple evaluation by only evaluating the expression passed into it if the node has no value. That means the expression will be evaluated once either on form open or when any values the expression depends on are set.
+
+Every call on :tc:`now()` in the form will have the same value unless the :tc:`once()` function is used. For example, the following calculate will keep track of the first time the form was opened:
+
+.. csv-table:: survey
+  :header: type, name, label, calculation
+
+  calculate, datetime_first_opened, , once(now())
+
+The following calculate will keep track of the first time the enumerator set a value for the :th:`age` question:
+
+.. csv-table:: survey
+  :header: type, name, label, calculation
+
+  integer, age, What is your age?,
+  calculate, age_timestamp, , if(age = '', '', once(now()))
+
 
 .. _requiring-responses:
 
