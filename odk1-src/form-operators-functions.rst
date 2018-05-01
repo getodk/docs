@@ -157,7 +157,7 @@ Control flow
 
   This can be used to ensure that a random number is only generated once,
   or to store the first value entered for a question
-  in a way that is retrievable even of the response is changed later.
+  in a way that is retrievable even if the response is changed later.
 
   .. warning::
 
