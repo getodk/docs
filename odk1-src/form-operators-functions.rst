@@ -29,7 +29,7 @@
   
 	
 ******************************
-Form Functions and Operators
+Form Operators and Functions
 ******************************
 
 :ref:`expressions` in :ref:`calculations <calculations>`, :ref:`constraints <constraints>`, and :ref:`relevants <relevants>`
