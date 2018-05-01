@@ -39,6 +39,12 @@ For example:
 - :th:`label::English (en)`
 - :th:`hint::French (fr)`
 
+.. note::
+
+  The text shown in Collect's user interface (e.g., buttons, menus, dialogs)
+  is controlled by device language, not the form language.
+  If you would like Collect's user interface to support your language,
+  contribute translations at https://www.transifex.com/opendatakit.
 
 .. _XLSForm: http://xlsform.org
 .. _two letter language code: http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
@@ -119,11 +125,6 @@ go to :menuselection:`⋮ --> Change Language`.
   Collect will remember the last language
   you switched to on a form,
   even if you switch device language.
-
-  Many elements of a form's navigation,
-  as well as all menus in Collect,
-  are controlled by the device's language,
-  not the form's display language.
 
   Changing the form's language display
   will not change the device language.
