@@ -267,15 +267,7 @@ For example:
   
 .. seealso:: :doc:`form-regex`  
   
-.. image:: /img/form-logic/constraint-message.* 
-  :alt: A text widget in Collect. The question text is "What is your middle initial?" The entered value is "Michael". Over the widget is an alert message: "Just the first letter."
-  
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, constraint, constraint_message
-  
-  text, middle_initial, What is your middle initial?, "regex(., '\p{L}')", Just the first letter.
+.. include:: incl/form-examples/regex-middle-initial.rst
   
 .. _read-only:
   
@@ -296,7 +288,7 @@ based on :ref:`previous responses <variables>`.
   decimal, salary_income, Income from salary,,,
   decimal, self_income, Income from self-employment,,,
   decimal, other_income, Other income,,,
-  calculate, income_sum, , , , "sum(${salary_income}, ${self_income}, ${other_income})"
+  calculate, income_sum, , , , "${salary_income} + ${self_income} + ${other_income}"
   decimal, total_income, Total income, yes, ${income_sum}, 
 
     
@@ -325,7 +317,7 @@ Often, comparison `operators`_ are used in relevance expressions. For example:
 :tc:`${has_children} = 'yes'`
   True if the answer to :tc:`has_children` was ``yes``.
   
-Relevance expressions can also use `XPath functions`_.
+Relevance expressions can also use :ref:`functions <form-functions>`.
 For example:
 
 :tc:`selected(${allergies}, 'peanut')`
@@ -339,8 +331,6 @@ For example:
 :tc:`count-selected(${toppings}) > 5`
   True if more than five options were selected
   in the :ref:`multi-select-widget` named :tc:`toppings`.
-
-.. _XPath functions: https://opendatakit.github.io/xforms-spec/#xpath-functions
 
 .. _simple-conditional-example:
 
@@ -369,37 +359,7 @@ Simple example
 Complex example
 ------------------
 
-.. video:: /vid/form-logic/conditional-complex.mp4
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, hint, relevant, constraint
-  
-  select_multiple medical_issues, what_issues, Have you experienced any of the following?, Select all that apply.,,				
-  select_multiple cancer_types, what_cancer, What type of cancer have you experienced?, Select all that apply.,"selected(${what_issues}, 'cancer')",
-  select_multiple diabetes_types, what_diabetes, What type of diabetes do you have?, Select all that apply.,"selected(${what_issues}, 'diabetes')"
-  begin_group, blood_pressure, Blood pressure reading,"selected(${what_issues}, 'hypertension')",
-  integer, systolic_bp, Systolic,,,. > 40 and . < 400
-  integer, diastolic_bp, Diastolic,,,.  >= 20 and . <= 200
-  end_group							
-  text, other_health, List other issues.,,"selected(${what_issues}, 'other')",
-  note,after_health_note, This note is after all health questions.,,,							
-  
-.. csv-table:: choices
-  :header: list_name, name, label
-  
-  medical_issues, cancer, Cancer
-  medical_issues, diabetes, Diabetes
-  medical_issues, hypertension, Hypertension
-  medical_issues, other, Other
-  cancer_types, lung, Lung cancer
-  cancer_types, skin, Skin cancer
-  cancer_types, prostate, Prostate cancer
-  cancer_types, breast, Breast cancer
-  cancer_types, other, Other
-  diabetes_types, type_1, Type 1 (Insulin dependent)
-  diabetes_types, type_2, Type 2 (Insulin resistant)
+.. include:: incl/form-examples/constraint-on-selected.rst
 
 .. warning::
 

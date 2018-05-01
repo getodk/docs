@@ -25,7 +25,9 @@ class video_node(nodes.General, nodes.Element): pass
 
 def visit_video_html(self, node):
 
-    srcPath = node["source_dir"] + "%s"
+    srcPath = node["source_dir"].split('incl',1)[0] + "%s" 
+        # .split() removes everything after 'incl'
+        # so video files will only be looked for in the root dir
     vsrc = node["uri"]
     spth = srcPath % vsrc
 
