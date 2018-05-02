@@ -211,6 +211,9 @@ Setting default responses
 To provide a default response to a question,
 put the response value in the :th:`default` column.
 
+Default values must be static values,
+not expressions or variables.
+
 .. rubric:: XLSForm
 
 .. csv-table:: survey
@@ -224,6 +227,22 @@ put the response value in the :th:`default` column.
   contacts, phone_call, Phone call
   contacts, text_message, Text message
   contacts, email, Email
+  
+.. tip:: 
+
+  You may want to use a previously entered value as a default,
+  but the :th:`default` column does not accept dynamic values.
+  
+  To workaround this, use the :th:`calculation` column instead,
+  and wrap your default value expression in a :func:`once` function.
+  
+  .. rubric:: XLSForm
+  
+  .. csv-table:: survey
+    :header: type, name, label, calculation
+    
+    text, default_value, Enter any text.,
+    text, calculated_default, Leave the value or change it., once(${default_value})
   
 .. _constraints:
 
