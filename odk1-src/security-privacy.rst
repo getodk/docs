@@ -11,16 +11,29 @@ Security and Privacy
 
 .. _security-and-privacy:
 
-Below is an attempt to enumerate known security and privacy considerations of the ODK software.
+This document details known security and privacy considerations of the ODK software.
 
-1. License Terms
-------------------
+.. contents::
+  :local:
 
-The ODK software is released under the `Apache 2 License <http://www.apache.org/licenses/LICENSE-2.0>`_.
+.. _license:
 
-All our installers, programs, and source code are provided AS-IS with no warranty or conditions, and without any liability obligations. See the license text for details.
+License 
+-----------
 
-2. Communication Channels
+The ODK software is released under the `Apache 2 License`_.
+
+.. _Apache 2 License: http://www.apache.org/licenses/LICENSE-2.0
+
+The ODK Documentation is released under the `Creative Commons Attribution 4.0 International License <cc-by-4>`_.
+
+.. _cc-by-4: https://creativecommons.org/licenses/by/4.0/
+
+All our installers, programs, source code, and documentation are provided AS-IS with no warranty or conditions, and without any liability obligations. See the license text for details.
+
+.. _communication-channels:
+
+Communication Channels
 ---------------------------
 
 None of the downloadable ODK software transmits or communicates any information back to us and the software we have written does not have any mechanisms that might allow us to access or control your devices or systems.
@@ -29,14 +42,18 @@ There is always the possibility that hackers can discover and exploit deficienci
 
 Our user website (`opendatakit <https://opendatakit.org/>`_.org) does not knowingly use cookies, does not knowingly contain 3rd party ads, and does not collect personally identifiable information from the general public.
 
-3.3rd-party Software
+.. _3rd-party-software:
+
+3rd-party Software
 ----------------------
 
 Our software uses a number of open-source 3rd-party libraries from well-known and/or reputable sources, and a few from obscure sources. We do not vet the security of those software libraries.
 
 Your security people may want to review the libraries and source code on our `source code site <https://github.com/opendatakit/opendatakit/>`_.
 
-4. ODK Aggregate Communications
+.. _odk-aggregate-communications:
+
+ODK Aggregate Communications
 ---------------------------------
 
 When setting up your own webserver to run :ref:`ODK Aggregate <aggregate-introduction>`, if you do not configure the server and :ref:`ODK Aggregate <aggregate-introduction>` to use an SSL certificate, a determined observer can see all data communicated to and from that server.
@@ -45,8 +62,10 @@ Only transmissions over an https:// connection are obscured from observers.
 
 The definition of an encrypted form (:ref:`check here <encrypted-forms>`) is transmitted in plaintext (unencrypted) to the device. When a filled-in submission for an encrypted form is finalized, it is encrypted on the device and transmitted in encrypted form. While this may meet requirements for obscured transmission over unsecured http:// connections, unsecured connections still allow observers to alter the form definition to potentially remove the encryption, capture any filled-in forms, or potentially intercept and thereby prevent their transmission to your server.
 
-5. ODK Aggregate Deployments to Google App Engine or Other Hosting Services
--------------------------------------------------------------------------------------------------------------
+.. _odk-aggregate-deployments:
+
+ODK Aggregate Deployments to Google App Engine or Other Hosting Services
+-------------------------------------------------------------------------
 
 With all 3rd party hosting services, you should expect your data to be viewable by the support staff of the hosting service. Different services go to differing lengths to restrict access to, encrypt, and/or secure the data and communications within their data centers.
 
@@ -54,7 +73,9 @@ The form definition and associated media files of an encrypted form (:ref:`ODK s
 
 See :doc:`aggregate-deployment-planning` for other considerations.
 
-6. Encrypted Form Security
+.. _encrypted-form-security:
+
+Encrypted Form Security
 ---------------------------
 
 The form definition and associated media files of an :ref:`ODK encrypted form <encrypted-forms>` are stored on the server in plaintext (unencrypted). And are transmitted and stored on the devices in plaintext.
@@ -71,50 +92,58 @@ On the device, copies of the deleted (plaintext) filled-in form data and attachm
 
 On the server, if an observer were able to access your encrypted data, since each filled-in submission uses a different key, each submission would need to be cracked separately.
 
-At this point in time, cracking AES encryption is viewed as impossible for all but the most advanced governmental agencies (e.g., the NSA).
+Currently, cracking AES encryption is viewed as impossible for all but the most advanced governmental agencies (for example, the NSA).
 
+.. _odk-aggregate-username-authentication:
 
-7. ODK Aggregate Username Authentication
----------------------------------------------------------------------------
+ODK Aggregate Username Authentication
+--------------------------------------
 
 When authenticating :ref:`ODK Aggregate <aggregate-introduction>` usernames and passwords, the ODK tools use DigestAuth. This enables secure username/password authentication even while communicating with servers over http:// (when using DigestAuth, the password is not sent over the network).
 
 An encoded form of the username's password is stored on the server. If that encoded value is stolen or revealed, it can allow others to log in and interact with the server as that user.
 
+.. _google-account-authentication:
 
-8. Google Gmail Authentication
+Google Account Authentication
 -------------------------------
 
-For authentication of Google accounts (Gmail or Google Apps), :ref:`ODK Aggregate <aggregate-introduction>` accepts OAuth2 tokens with rights to view a user's e-mail address (just the address - not the e-mail or user profile) as proof-of-identity.
+For authentication of Google accounts (Gmail or Google Apps), :ref:`ODK Aggregate <aggregate-introduction>` accepts OAuth2 tokens with rights to view a user's email address (just the address --- not the email or user profile) as proof-of-identity.
 
-*This is a very weak proof-of-identity*; every time you authorize Google to share your e-mail address with other sites or applications, those sites or applications have the permissions necessary to act on your behalf on :ref:`ODK Aggregate <aggregate-introduction>` (should they want to).
+**This is a very weak proof-of-identity.** Every time you authorize Google to share your email address with other sites or applications, those sites or applications have the permissions necessary to act on your behalf on :ref:`ODK Aggregate <aggregate-introduction>` (should they want to).
 
-For this reason, it may be inappropriate to declare and grant Google e-mail addresses access to your site; this access is required for ODK 2.0 Sync functionality at rev 128 and earlier.
+For this reason, it may be inappropriate to declare and grant Google email addresses access to your site. This access is required for ODK 2.0 Sync functionality at rev 128 and earlier.
 
+.. _identifying-information-transmission-storage:
 
-9. Identifying Information Transmission and Storage
-------------------------------------------------------
+Identifying Information Transmission and Storage
+--------------------------------------------------
 
 During data submission, some identifying information is transmitted and stored on the server:
 
-.. pull-quote::
+  - :ref:`ODK Collect <collect-introduction>` passes the deviceID of the device to the server during the submission process. (the HEAD request that initiates the submission is a URL of the form: .../submission?deviceID=imei%3A9117DD011813771 ). The :ref:`ODK Aggregate <aggregate-introduction>` server does not store this deviceID in any database tables, but it will generally be emitted into the webserver access log. This deviceID uniquely identifies the device from which the data is submitted. This can be useful when correlating events on the server with interactions from specific devices. Because this is logged, it is likely that a submission can be correlated with a device, and therefore a data collector.
 
-  1. :ref:`ODK Collect <collect-introduction>` passes the deviceID of the device to the server during the submission process. (the HEAD request that initiates the submission is a URL of the form: .../submission?deviceID=imei%3A9117DD011813771 ). The :ref:`ODK Aggregate <aggregate-introduction>` server does not store this deviceID in any database tables, but it will generally be emitted into the webserver access log. This deviceID uniquely identifies the device from which the data is submitted. This can be useful when correlating events on the server with interactions from specific devices. Because this is logged, it is likely that a submission can be correlated with a device, and therefore a data collector.
-  2. If :ref:`ODK Aggregate <aggregate-introduction>` is configured to require authentication (username / password or Google account) for submission (i.e., the Data Collector permission is NOT granted to the anonymousUser), then the username (or Google account) that authenticated is written into the audit fields of the data tables storing the submission. If the anonymousUser is granted Data Collector privileges, no authentication is performed, and "anonymousUser" is written into those fields. The content of these audit fields is not exposed in exported CSV files, ODK Briefcase data pulls, or published to downstream systems. However, because it is present in the database tables, you can definitely correlate this authenticated username or Google account with the submitted data.
+  - If :ref:`ODK Aggregate <aggregate-introduction>` is configured to require authentication (username / password or Google account) for submission (that is, if the Data Collector permission is NOT granted to the anonymousUser), then the username (or Google account) that authenticated is written into the audit fields of the data tables storing the submission. If the anonymousUser is granted Data Collector privileges, no authentication is performed, and ``anonymousUser`` is written into those fields. The content of these audit fields is not exposed in exported CSV files, ODK Briefcase data pulls, or published to downstream systems. However, because it is present in the database tables, you can definitely correlate this authenticated username or Google account with the submitted data.
 
-While interacting with an :ref:`ODK Aggregate <aggregate-introduction>` website, any actions that require authentication and that modify the server settings, set of form definitions, filters, exports, publishers, or data tables, etc., will cause the authenticated username or Google account to be written into the audit fields of the database tables that are being updated. If these modifications result in delete actions being performed against a database table, then this authenticated username or Google account will be identified in the server log together with summary information on what was deleted.
+While interacting with an :ref:`ODK Aggregate <aggregate-introduction>` website, any actions that require authentication and that modify the server settings, set of form definitions, filters, exports, publishers, or data tables, will cause the authenticated username or Google account to be written into the audit fields of the database tables that are being updated. If these modifications result in delete actions being performed against a database table, then this authenticated username or Google account will be identified in the server log together with summary information on what was deleted.
 
-10. ODK Collect
------------------
+.. _security-privacy-odk-collect:
+
+ODK Collect
+-------------
 
 We gather anonymous aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data off the device and the data are available to ODK's maintainers. Users may disable analytics in the settings of :ref:`ODK Collect <collect-introduction>`.
 
-11. ODK Build
+.. _security-privacy-odk-build:
+
+ODK Build
 ---------------
 
 We require secure HTTPS connections to ODK Build. We gather anonymous aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data and the data are available to ODK's maintainers.
 
-12. Online XLSForm tool
+.. _security-privacy-xlsform-online:
+
+Online XLSForm tool
 -------------------------
 
 The online :ref:`XLSForm <xlsform-introduction>` tool does not use a secure connection. This means that your form definition files (both XLS and XML) are visible to a determined observer when submitted and downloaded from that site, as are any reported errors in the form.
@@ -123,19 +152,25 @@ Furthermore, the online XLSForm tool stores both your submitted XLS and the gene
 
 The offline XLSForm tool and the ODK Validate tool, because they operate locally without any network communications, provide a secure alternative to the convenience of this online tool.
 
-13. Websites
+.. _security-privacy-odk-websites:
+
+Websites
 -------------
 
-Our websites, downloads site, and the online XLSForm tool can or do use cookies and can or do log all interactions. We also utilize security software, spam-blocking, and web-analytics tools (e.g., Google Web Analytics) that may track visitors and their access patterns on our web properties.
+Our websites, downloads site, documentation, and the online XLSForm tool can or do use cookies and can or do log all interactions. We also utilize security software, spam-blocking, and web-analytics tools (for example, Google Web Analytics) that may track visitors and their access patterns on our web properties.
 
-14. Google Play Store
+.. _security-privacy-google-play-store:
+
+Google Play Store
 -----------------------
 
 Downloads from the Google Play store are compiled into aggregated usage statistics on our management portal.
 
 Crash reports you elect to send are provided to us as anonymous crash reports. By design, these do not contain survey field values or other device- or user- specific data.
 
-15. Other Resources
----------------------
+----
 
-`Towards a Secure Framework for mHealth <http://bora.uib.no/handle/1956/10652/>`_. A Case Study in Mobile Data Collection Systems. Samson Hussien Gejibo. Ph.D. Dissertation at the University of Bergen, 2015.
+.. seealso::
+
+  `Towards a Secure Framework for mHealth <http://bora.uib.no/handle/1956/10652/>`_. 
+    A Case Study in Mobile Data Collection Systems. Samson Hussien Gejibo. Ph.D. Dissertation at the University of Bergen, 2015.
