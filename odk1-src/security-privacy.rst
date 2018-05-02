@@ -25,7 +25,7 @@ The ODK software is released under the `Apache 2 License`_.
 
 .. _Apache 2 License: http://www.apache.org/licenses/LICENSE-2.0
 
-The ODK Documentation is released under the `Creative Commons Attribution 4.0 International License <cc-by-4>`_.
+All other artifacts (for example, the ODK website and this documentation) are released under the `Creative Commons Attribution 4.0 International License <cc-by-4>`_.
 
 .. _cc-by-4: https://creativecommons.org/licenses/by/4.0/
 
@@ -40,7 +40,7 @@ None of the downloadable ODK software transmits or communicates any information 
 
 There is always the possibility that hackers can discover and exploit deficiencies or bugs in our software or in 3rd-party libraries to access or control your devices or systems.
 
-Our user website (`opendatakit <https://opendatakit.org/>`_.org) does not knowingly use cookies, does not knowingly contain 3rd party ads, and does not collect personally identifiable information from the general public.
+Our user website (`opendatakit <https://opendatakit.org/>`_.org) does not knowingly contain 3rd party ads and does not collect personally identifiable information from the general public.
 
 .. _3rd-party-software:
 
@@ -143,21 +143,21 @@ We require secure HTTPS connections to ODK Build. We gather anonymous aggregate 
 
 .. _security-privacy-xlsform-online:
 
-Online XLSForm tool
+XLSForm Online
 -------------------------
 
-The online :ref:`XLSForm <xlsform-introduction>` tool does not use a secure connection. This means that your form definition files (both XLS and XML) are visible to a determined observer when submitted and downloaded from that site, as are any reported errors in the form.
+ref:`XLSForm Online <xlsform-introduction>` does not use a secure connection. This means that your form definition files (both XLS and XML) are visible to a determined observer when submitted and downloaded from that site, as are any reported errors in the form.
 
-Furthermore, the online XLSForm tool stores both your submitted XLS and the generated XML form for a period of time on its disk drive before being deleted (this is necessary for the operation of the tool).
+Furthermore, XLSForm Online stores both your submitted XLS and the generated XML form for a period of time on its disk drive before being deleted (this is necessary for the operation of the tool).
 
-The offline XLSForm tool and the ODK Validate tool, because they operate locally without any network communications, provide a secure alternative to the convenience of this online tool.
+XLSForm Offline and ODK Validate, because they operate locally without any network communications, provide a secure alternative to the convenience of this online tool.
 
 .. _security-privacy-odk-websites:
 
 Websites
 -------------
 
-Our websites, downloads site, documentation, and the online XLSForm tool can or do use cookies and can or do log all interactions. We also utilize security software, spam-blocking, and web-analytics tools (for example, Google Web Analytics) that may track visitors and their access patterns on our web properties.
+Our websites under the opendatakit.org domain can or do use cookies and can or do log all interactions. We also utilize security software, spam-blocking, and web-analytics tools (for example, Google Web Analytics) that may track visitors and their access patterns on our web properties.
 
 .. _security-privacy-google-play-store:
 
