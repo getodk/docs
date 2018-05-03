@@ -165,13 +165,13 @@ you'll need to escape that too.
   
   note, escape_md, \# This headline is normal sized, \*Asterisks\* and \_underscores\_ and one slash: \\
   
-.. _style-attribute:
+.. _custom-styling:
   
-Styling with the style attribute
+Custom styling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To add custom styling to hint, label, and choice labels,
-use `the style attribute`_.
+use `the style attribute`_ on a :tc:`span` tag.
 The :tc:`style` attribute accepts CSS-like key-value pairs for setting color and font-family.
 
 .. _the style attribute: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style 
