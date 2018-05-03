@@ -258,7 +258,7 @@ not expressions or variables.
     if you enter ``8`` on :tc:`current_age`,
     then advance to gender,
     then back up and change :tc:`current_age` to ``10``,
-    when you get :tc:`malaria_age`, 
+    when you get to :tc:`malaria_age`, 
     the default value will be ``8``.
     
   - If the first earlier question has a value,
@@ -269,7 +269,7 @@ not expressions or variables.
     if you enter ``8`` on :tc:`current_age`
     and then delete the value ``8`` when you get to :tc:`malaria_age`
     (intending to leave it blank)
-    the ``8`` value will come back as the question when you advance.
+    the ``8`` value will come back as the answer when you advance.
     (In this case,
     using a blank value to indicate "child does not have malaria"
     would fail.)
