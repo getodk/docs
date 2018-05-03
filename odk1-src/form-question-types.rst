@@ -1290,6 +1290,19 @@ Captures a compass reading, which is stored as a decimal.
   decimal,bearing_widget,Bearing widget,bearing,decimal type with bearing appearance
 
   
+.. _openmapkit-widget:
+
+OpenMapKit widget
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+`OpenMapKit`_ allows you to add questions about 
+OpenStreetMap features in a Collect-rendered form.
+
+For more details, see the `OpenMapKit`_ documentation.
+
+.. _OpenMapKit: http://www.openmapkit.org
+
+  
 .. _image-widgets:
 
 Image widgets
