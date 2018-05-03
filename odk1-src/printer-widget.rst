@@ -85,7 +85,7 @@ of the survey :term:`participant`:
   where :tc:`{intentname}` identifies the printer driver.
  
   By copying and modifying the `ODK Zebra Printer Driver source code`_, 
-  and then specifying the intentname for that new driver, 
+  and then specifying the intent name for that new driver,
   you can create your own customized label formats 
   without needing to also modify Collect.
 
