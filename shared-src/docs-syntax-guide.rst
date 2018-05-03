@@ -1019,7 +1019,7 @@ using one of the following tools:
 - `ImageOptim`_ 
 - `Pngout`_ 
 
-.. _ImageOptime: https://imageoptim.com/howto.html
+.. _ImageOptim: https://imageoptim.com/howto.html
 .. _Pngout: http://docs.ewww.io/article/13-installing-pngout/
 
 .. _inserting-image:
