@@ -1012,7 +1012,7 @@ Image files should be put in the :file:`/src/img/` directory in the source, and 
 Image compression
 """"""""""""""""""""
 
-Before commiting images locally, 
+Before committing images locally, 
 run lossless compression on them
 using one of the following tools:
 
