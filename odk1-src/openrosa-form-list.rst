@@ -72,16 +72,16 @@ If accepted by the server, the server will respond with a ``Content-Type: text/x
   <?xml version='1.0' encoding='UTF-8' ?>
   <xforms xmlns="http://openrosa.org/xforms/xformsList">
     <xform>
-      <formID>mydomain.org:formId</id>
+      <formID>mydomain.org:formId</formID>
       <name>Form with zero or more additional files</name>
       <version>1.1</version>
       <hash>md5:c28fc778a9291672badee04ac880a05d</hash>
       <descriptionText>A possibly very long description of the form</descriptionText>
       <downloadUrl>http://myhost.com/app/path/getMe/formIdA</downloadUrl>
-      <manifestUrl>http://myothehost.com/app/path/getOtherStuff?formId=formIdA</namifestUrl>
+      <manifestUrl>http://myothehost.com/app/path/getOtherStuff?formId=formIdA</manifestUrl>
     </xform>
     <xform>
-      <formID>http://mydomain.org/uniqueFormXmlns</id>
+      <formID>http://mydomain.org/uniqueFormXmlns</formID>
       <name>Form without additional files</name>
       <version>v50 alpha</version>
       <hash>md5:c28fc778a9291672badee04ac770a05d</hash>
