@@ -1802,10 +1802,23 @@ Collects a signature from the user.
 
   image,signature_widget,Signature widget,signature,image type with signature appearance
 
-.. _meta-widgets:
+.. _hidden-questions:
+
+Hidden questions
+------------------
+
+Not all question types render as visible widgets in Collect.
+These questions do collect and store values,
+which are accessible as :ref:`variables <variables>`
+and available in Aggregate and other data analysis tools.
+
+.. contents::
+  :local:
   
-Metadata widgets
--------------------
+.. _metadata:
+
+Metadata 
+~~~~~~~~~~
 
 Metadata questions capture information about 
 the device or the survey collection event
@@ -1846,6 +1859,19 @@ and :ref:`can be edited in Settings <form-metadata-settings>`:
   username,username
   phonenumber,phonenumber
 
+.. _calculate-question:
+
+Calculate
+~~~~~~~~~~~
+
+type
+  :tc:`calculate`
+
+Calculate questions let you evaluate complex :ref:`expressions <expressions>`,
+storing the values for later use.
+
+For more details, see :ref:`calculations`.
+    
 --------
   
 .. _field-list:
