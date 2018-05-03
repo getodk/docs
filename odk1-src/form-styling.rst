@@ -15,7 +15,7 @@ Form Styling
 
 Labels, hints, and choices in an :doc:`xlsform`
 can all be styled using 
-:ref:`markdown-in-forms`, :ref:`html-in-forms`, and :ref:`emoji`.
+:ref:`markdown-in-forms` and :ref:`emoji`.
 
 
 .. _markdown-in-forms:
@@ -164,52 +164,6 @@ you'll need to escape that too.
   :header: type, name, label, hint
   
   note, escape_md, \# This headline is normal sized, \*Asterisks\* and \_underscores\_ and one slash: \\
-  
-  
-.. _html-in-forms:
-  
-HTML
------
-
-Collect forms support `a subset of HTML elements`__.
-
-__ https://www.grokkingandroid.com/android-quick-tip-formatting-text-with-html-fromhtml/
-
-.. csv-table::
-  :header: tag, format
-  
-  ":tc:`<b>`", bold
-  ":tc:`<i>`", italic
-  ":tc:`<u>`", underline
-  ":tc:`<sub>`", subtext
-  ":tc:`<sup>`", supertext
-  ":tc:`<big>`", big
-  ":tc:`<small>`", small
-  ":tc:`<tt>`", monospace (teletype)
-  ":tc:`<h1>,<h2>,<h3>,<h4>,<h5>,<h6>`", headlines
-  ":tc:`<font>`", font face and color
-  ":tc:`<blockquote>`", for longer quotes
-  ":tc:`<a>`", link
-  ":tc:`<p>`", paragraph
-  ":tc:`<br>`", line break
-  ":tc:`<span>`", "span (generic inline element, used for styling)"
-  
-.. warning::
-
-  `Enketo`_ does not support HTML in forms.
-  For Enketo compatibility,
-  stick to :ref:`markdown-in-forms`.
-  
-  .. _Enketo: https://enketo.org/
-  
-.. image:: /img/form-styling/html-styling.* 
-  :alt: A note widget in Collect. The Label text is "Label heading (line break) If you need a headline and additional text, use HTML instead of Markdown." The words "Label heading" are styled as a large headline. The hint text is "Hint text can have bold, italic, and underlined words. Words can be raised with superscript or lowered with subscript. Use tt for monospace." The words "bold", "italic", "underlined", "superscript", "subscript", and "monospace" are each styled as described.
-  
-.. csv-table:: survey
-  :header: type, name, label, hint
-  
-  note,	html, "<h2>Label heading</h2><p>If you need a headline and additional text, use HTML instead of Markdown.</p>", <p>Hint text can have <b>bold</b>, <i>italic</i>, and <u>underlined</u> words. Words can be raised with <sup>superscript</sup> or lowered with <sub>subscript</sub>. Use <tt>tt</tt> for <tt>monospace</tt>."
-
   
 .. _style-attribute:
   
