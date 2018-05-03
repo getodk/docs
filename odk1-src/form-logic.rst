@@ -6,6 +6,7 @@
   datetime
   dir
   fave
+  gndr
   mngr
   timestamp
 
