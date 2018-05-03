@@ -229,11 +229,12 @@ not expressions or variables.
   contacts, email, Email
   
 .. tip:: 
+  :name: dynamic-defaults
 
   You may want to use a previously entered value as a default,
   but the :th:`default` column does not accept dynamic values.
   
-  To workaround this, use the :th:`calculation` column instead,
+  To work around this, use the :th:`calculation` column instead,
   and wrap your default value expression in a :func:`once` function.
   
   .. rubric:: XLSForm
@@ -241,8 +242,36 @@ not expressions or variables.
   .. csv-table:: survey
     :header: type, name, label, calculation
     
-    text, default_value, Enter any text.,
-    text, calculated_default, Leave the value or change it., once(${default_value})
+    text, name, Child's name,
+    integer, current_age, Child's age,
+    select_one gndr, gender, Gender,
+    integer, malaria_age, Age at malaria diagnosis, once(${current_age}) 
+    
+  This solution has some limitations, though.
+  
+  - The value of the calculated default
+    will get set to the first value that the earlier question receives,
+    even if it is changed before viewing the later question.
+    
+    Example: In the above form,
+    if you enter ``8`` on :tc:`current_age`,
+    then advance to gender,
+    then back up and change :tc:`current_age` to ``10``,
+    when you get :tc:`malaria_age`, 
+    the default value will be ``8``.
+    
+  - If the first earlier question has a value,
+    the dependent question will also have a value ---
+    :func:`once` will evaluate anytime the question's value is blank.
+    
+    Example: In the above form,
+    if you enter ``8`` on :tc:`current_age`
+    and then delete the value ``8`` when you get to :tc:`malaria_age`
+    (intending to leave it blank)
+    the ``8`` value will come back as the question when you advance.
+    (In this case,
+    using a blank value to indicate "child does not have malaria"
+    would fail.)
   
 .. _constraints:
 
