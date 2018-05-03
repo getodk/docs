@@ -981,6 +981,25 @@ Other Semantic Markup
 Images and Figures
 ~~~~~~~~~~~~~~~~~~~~~~
 
+.. _pngs-only:
+
+PNGs only
+"""""""""""
+
+All still images used in ODK Docs should be PNG files.
+This helps us keep our image compression tooling simple,
+and generally results in higher-quality screenshots.
+
+Whenever possible,
+you should generate your images as PNGs
+rather than converting to PNGs from another format.
+If you have to start in another format,
+use lossless formats whenever possible.
+These include BMP, GIF, and TIFF.
+(Avoid JPG/JPEG if possible,
+as this is a lossy format 
+that does not replicate screenshots very well.) 
+
 .. _where-to-put-image-files:
 
 Where to put image files
@@ -993,14 +1012,15 @@ Image files should be put in the :file:`/src/img/` directory in the source, and 
 Image compression
 """"""""""""""""""""
 
-You must perform lossless compression on the source images. Use one of the following tools to optimize the images:
+Before committing images locally, 
+run lossless compression on them
+using one of the following tools:
 
-- **ImageOptim** is a tool that allows us to optimize the images. It is not format specific which means it can optimize both jpeg as well as png images. You can download it `from here <https://imageoptim.com/howto.html>`_ . After launching ImageOptim.app, dragging and dropping images into its window gives you an in-place optimized file.
+- `ImageOptim`_ 
+- `Pngout`_ 
 
-- **Pngout** is another option for optimizing png images. Installation and usage instructions can be found `here <http://docs.ewww.io/article/13-installing-pngout/>`_ .
-
-- **Mozjpeg** can be used to optimize jpeg images. Installation and related information can be found on `this link <https://nystudio107.com/blog/installing-mozjpeg-on-ubuntu-16-04-forge/>`_ .
-
+.. _ImageOptim: https://imageoptim.com/howto.html
+.. _Pngout: http://docs.ewww.io/article/13-installing-pngout/
 
 .. _inserting-image:
 
