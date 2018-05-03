@@ -34,8 +34,8 @@ Labels contain one or more of the following:
 
 These three components always appear in this order.
 Their content is specified 
-in the :th:`Calculate` column of the XLSForm,
-using a :tc:`concatenate()` formula.
+in the :th:`calculation` column of the XLSForm,
+using the :func:`concat` function.
 The three components are included as strings, 
 separated by ``'<br>'``, 
 the XML line break tag.
@@ -75,3 +75,19 @@ of the survey :term:`participant`:
   
   text, full_name, Participant Name, , 
   text, print_name_label, Print Name Label, printer:org.opendatakit.sensors.ZebraPrinter, "concat('','<br>','${full_name}',<br>,'${full_name}')"
+
+  
+.. note::
+
+  The printer widget is used whenever a :tc:`text` field 
+  has an :th:`appearance` attribute that begins with :tc:`printer`. 
+  The full form for the appearance attribute is :tc:`printer:{intentname}`,
+  where :tc:`{intentname}` identifies the printer driver.
+ 
+  By copying and modifying the `ODK Zebra Printer Driver source code`_, 
+  and then specifying the intentname for that new driver, 
+  you can create your own customized label formats 
+  without needing to also modify Collect.
+
+
+  .. _ODK Zebra Printer Driver source code: https://github.com/opendatakit/sensordrivers/tree/master/ZebraMzSeriesPrinter
