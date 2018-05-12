@@ -160,14 +160,24 @@ latex_elements = {
     # Additional stuff for the LaTeX preamble.
     'preamble': '''
     \usepackage{fontspec}
+    \\newcommand{\changefont}{%
+      \\fontsize{9}{11}\selectfont
+    }
     \makeatletter
       \\fancypagestyle{normal}{
         \\fancyhf{}
         \\fancyfoot[LE,RO]{{\py@HeaderFamily\\thepage}}
         \\fancyhead[LO]{{\py@HeaderFamily\\nouppercase{\\rightmark}}}
         \\fancyhead[RE]{{\py@HeaderFamily\\nouppercase{\\leftmark}}}
-        \\fancyfoot[CE,CO]{{\py@HeaderFamily{Get the latest guide at https://docs.opendatakit.org}}}
+        \\fancyfoot[CE,CO]{{\changefont{We update our documentation daily, so this file is likely out of date! Get the most current version at \href{https://docs.opendatakit.org}{https://docs.opendatakit.org}.}}}
         \\renewcommand{\\headrulewidth}{0.4pt}
+        \\renewcommand{\\footrulewidth}{0.4pt}
+      }
+      \\fancypagestyle{plain}{
+        \\fancyhf{}
+        \\fancyfoot[LE,RO]{{\py@HeaderFamily\\thepage}}
+        \\fancyfoot[CE,CO]{{\changefont{We update our documentation daily, so this file is likely out of date! Get the most current version at \href{https://docs.opendatakit.org}{https://docs.opendatakit.org}.}}}
+        \\renewcommand{\\headrulewidth}{0pt}
         \\renewcommand{\\footrulewidth}{0.4pt}
       }
     \makeatother
