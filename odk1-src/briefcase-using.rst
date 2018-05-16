@@ -206,7 +206,7 @@ Pulling form data from Aggregate
 
 .. code-block:: console
 
-  $ java -jar {path/to/briefcase-jar-file} -pull_aggregate --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --aggregate_url {aggregate-url} --odk_username {username} --odk_password {password}
+  $ java -jar {path/to/briefcase-jar-file} --pull_aggregate --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --aggregate_url {aggregate-url} --odk_username {username} --odk_password {password}
 
 .. _pull-from-collect-cli:
   
@@ -217,7 +217,7 @@ This command assumes you have already copied and unzipped the :file:`odk` file :
 
 .. code-block:: console
 
-  $ java -jar {path/to/briefcase-jar-file} -pull_collect --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --odk_directory {path/to/unzipped-odk-file}
+  $ java -jar {path/to/briefcase-jar-file} --pull_collect --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --odk_directory {path/to/unzipped-odk-file}
 
 .. _push-to-aggregate-cli:
 
@@ -226,7 +226,7 @@ Pushing form data to Aggregate
 
 .. code-block:: console
 
-  $ java -jar {path/to/briefcase-jar-file} -push_aggregate --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --aggregate_url {aggregate-url} --odk_username {username} --odk_password {password}
+  $ java -jar {path/to/briefcase-jar-file} --push_aggregate --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --aggregate_url {aggregate-url} --odk_username {username} --odk_password {password}
 
 .. _export-to-csv-cli:
   
@@ -235,7 +235,7 @@ Exporting form data to CSV
 
 .. code-block:: console
 
-  $ java -jar {path/to/briefcase-jar-file} -export --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --export_directory {path/to/output-directory} --export_filename {output-file-name.csv}
+  $ java -jar {path/to/briefcase-jar-file} --export --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --export_directory {path/to/output-directory} --export_filename {output-file-name.csv}
 
 The export operation also accepts these optional parameters to set encryption private keys, to set a range of dates, to exclude media files, or to toggle overwriting output files. Check :ref:`how to get help <briefcase-cli-help>` for more information.
 
@@ -246,4 +246,4 @@ Clear saved preferences
 
 .. code-block:: console
 
-  $ java -jar {path/to/briefcase-jar-file} -clear_prefs
+  $ java -jar {path/to/briefcase-jar-file} --clear_prefs
