@@ -58,14 +58,6 @@ Labels and hints can be styled with one of six header levels.
   A comparison of headline sizes. This exact effect :ref:`cannot be produced using Markdown <one-headline-only>`.
   
   
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, hint
-  
-  note, h1_label, # Largest Headline - H1, This note has a label with a Markdown-style header.
-  note, all_headers, <h1>Largest Headline - H1</h1><h2>H2 Headline</h2><h3>H3 Headline</h3><h4>H4 Headline</h4><h5>H5 Headline</h5><h6>H6 Headline</h6>, Headers in the label.
-  
 .. warning::
   :name: one-headline-only
   
@@ -164,15 +156,36 @@ you'll need to escape that too.
   :header: type, name, label, hint
   
   note, escape_md, \# This headline is normal sized, \*Asterisks\* and \_underscores\_ and one slash: \\
+
+.. _inline-html:
+
+Inline HTML
+~~~~~~~~~~~~~
+
+Many Markdown implementations support inline HTML,
+but Collect only supports a small subset of HTML elements.
+Support of HTML is further limited because:
+
+- Your exact Android device, operating system version,
+  and other device-related factors
+  will affect what HTML can be rendered, and how it is rendered.
+- HTML is not supported
+  by other form rendering tools in the XForm ecosystem.
+  For example, HTML elements that work in Collect may not work in Enketo.
+
+For these reasons, we do not recommend using HTML in forms (except the ``<span>`` element :ref:`noted below <custom-styling>`).
+
+.. seealso:: `The list of HTML tags currently supported in Collect <https://www.grokkingandroid.com/android-quick-tip-formatting-text-with-html-fromhtml>`_.
+
   
 .. _custom-styling:
   
 Custom styling
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------
 
 To add custom styling to hint, label, and choice labels,
 use `the style attribute`_ on a :tc:`span` tag.
-The :tc:`style` attribute accepts CSS-like key-value pairs for setting color and font-family.
+The :tc:`style` attribute accepts CSS-like key-value pairs for setting ``color`` and ``font-family``.
 
 .. _the style attribute: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style 
 
@@ -193,7 +206,11 @@ The :tc:`style` attribute accepts CSS-like key-value pairs for setting color and
 .. _named HTML color values: https://html-color-codes.info/color-names/
 .. _hex color: http://www.color-hex.com/
 .. _generic font categories: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#%3Cgeneric-name%3E
- 
+
+.. note::
+
+   These two attributes, ``color`` and ``font-family``, are the only style attributes supported in Collect.
+
 .. image:: /img/form-styling/going-red.* 
   :alt: A note widget in Collect. The label text is "Going red", and the word "red" is colored red. The hint text is the source markup for the label: Going <span style="color:red">red</span>
   
@@ -218,7 +235,7 @@ The :tc:`style` attribute accepts CSS-like key-value pairs for setting color and
   note, green, Going <span style="color:#008000">green</span>
   note, cursive, <span style="font-family:cursive">Cursive text</span>
   select_one yn, colored_choices, Formatting works on labels for Choices also.
-  note, combo, <h1> <span style="font-family:cursive;color:purple">Color and font styling can be combined.</span></h1>
+  note, combo, # <span style="font-family:cursive;color:purple">Color and font styling can be combined.</span>
   
 .. csv-table:: choices
   :header: list_name, name, label
