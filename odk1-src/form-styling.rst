@@ -180,8 +180,8 @@ For these reasons, we do not recommend using HTML in forms (except the ``<span>`
   
 .. _custom-styling:
   
-Custom styling
-----------------
+Custom font styling
+---------------------
 
 To add custom styling to hint, label, and choice labels,
 use `the style attribute`_ on a :tc:`span` tag.
