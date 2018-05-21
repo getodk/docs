@@ -164,14 +164,14 @@ latex_elements = {
         \\fancyfoot[LE,RO]{{\py@HeaderFamily\\thepage}}
         \\fancyhead[LO]{{\py@HeaderFamily\\nouppercase{\\rightmark}}}
         \\fancyhead[RE]{{\py@HeaderFamily\\nouppercase{\\leftmark}}}
-        \\fancyfoot[CE,CO]{{\changefont{Our documentation changes frequently. Get the latest version at \href{https://docs.opendatakit.org/odk2}{https://docs.opendatakit.org/odk2}.}}}
+        \\fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.opendatakit.org/odk2}{https://docs.opendatakit.org/odk2}.}}}
         \\renewcommand{\\headrulewidth}{0.4pt}
         \\renewcommand{\\footrulewidth}{0.4pt}
       }
       \\fancypagestyle{plain}{
         \\fancyhf{}
         \\fancyfoot[LE,RO]{{\py@HeaderFamily\\thepage}}
-        \\fancyfoot[CE,CO]{{\changefont{Our documentation changes frequently. Get the latest version at \href{https://docs.opendatakit.org/odk2}{https://docs.opendatakit.org/odk2}.}}}
+        \\fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.opendatakit.org/odk2}{https://docs.opendatakit.org/odk2}.}}}
         \\renewcommand{\\headrulewidth}{0pt}
         \\renewcommand{\\footrulewidth}{0.4pt}
       }
