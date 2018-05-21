@@ -170,7 +170,7 @@ Support of HTML is further limited because:
   and other device-related factors
   will affect what HTML can be rendered, and how it is rendered.
 - HTML is not supported
-  by other form rendering tools in the XForm ecosystem.
+  by other form rendering tools in the XForms ecosystem.
   For example, HTML elements that work in Collect may not work in Enketo.
 
 For these reasons, we do not recommend using HTML in forms (except the ``<span>`` element :ref:`noted below <custom-styling>`).
