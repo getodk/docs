@@ -26,11 +26,18 @@ Install Aggregate (optional)
 The easiest way to set up Aggregate is to
 :doc:`install it on Google App engine <aggregate-app-engine>`. 
 
-You'll set up a new Google Cloud project, and then run the install utility locally. This will connect to your Google Cloud account and install Aggregate there.
+You'll set up a new Google Cloud project, and then run the installer locally. This will connect to your Google Cloud account and install Aggregate there.
 
-Alternatively, if you just want to try things out,
+Alternatively, if you only want to try things out,
 you can use the `Aggregate sandbox server`_.
 
+
+
+.. warning::
+
+  The `Aggregate sandbox server`_ is for demo purposes only.
+  All forms and data on this server are public and are occasionally deleted without notice.
+  
 .. _Aggregate sandbox server: https://sandbox.aggregate.opendatakit.org:8443
 
 .. seealso:: :doc:`aggregate-install`
