@@ -15,7 +15,7 @@ Form Styling
 
 Labels, hints, and choices in an :doc:`xlsform`
 can all be styled using 
-:ref:`markdown-in-forms` and :ref:`emoji`.
+:ref:`markdown-in-forms`, ref:`fonts and colors <custom-fonts-colors>`, and :ref:`emoji`.
 
 
 .. _markdown-in-forms:
@@ -178,9 +178,9 @@ For these reasons, we do not recommend using HTML in forms (except the ``<span>`
 .. seealso:: `The list of HTML tags currently supported in Collect <https://www.grokkingandroid.com/android-quick-tip-formatting-text-with-html-fromhtml>`_.
 
   
-.. _custom-styling:
+.. _custom-fonts-colors:
   
-Custom font styling
+Fonts and colors
 ---------------------
 
 To add custom styling to hint, label, and choice labels,
