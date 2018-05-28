@@ -74,11 +74,28 @@ User Interface settings control Collect's appearance and behavior.
 
 To access User Interface settings:
   :menuselection:`⋮ --> General Settings --> User Interface` 
-
+  
 .. image:: /img/collect-settings/ui-settings.*
   :alt: User Interface settings
   :class: device-screen-vertical
 
+:guilabel:`Theme`
+  Toggles Light and Dark themes.
+  
+  .. versionadded:: 1.15
+  
+  .. container:: details
+  
+    .. image:: /img/collect-settings/light-theme-main-menu.* 
+      :alt: The main menu, with the light theme enabled.
+      :class: side-by-side
+
+
+    .. image:: /img/collect-settings/dark-theme-main-menu.* 
+      :alt: The main menu, with the dark theme enabled.
+      :class: side-by-side
+
+  
 :guilabel:`Language` 
   Sets the display language.
 
