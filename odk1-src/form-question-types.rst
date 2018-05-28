@@ -1521,6 +1521,10 @@ Records video, using the device camera.
 File upload widget
 --------------------
 
+.. versionadded:: 1.15
+
+  `ODK Collect v1.15.0 <https://github.com/opendatakit/collect/releases/tag/v1.15.0>`_
+
 Uploads any file from the device to the form.
 
 .. image:: /img/form-question-types/file-upload-widget.* 
