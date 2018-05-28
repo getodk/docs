@@ -46,12 +46,18 @@ odk2_copy: odk2_clean_files
 	mkdir $(COMPILE2_SRCDIR)
 	cp -rf $(ODK2_SRCDIR)/* $(COMPILE2_SRCDIR)
 	cp -rf $(SHARED_SRCDIR)/* $(COMPILE2_SRCDIR)
-	
+
 odk1: odk1_copy
 	@$(SPHINXBUILD) -b dirhtml "$(COMPILE1_SRCDIR)" "$(ODK1_BUILDDIR)" $(SPHINXOPTS)
 
 odk2: odk2_copy
 	@$(SPHINXBUILD) -b dirhtml "$(COMPILE2_SRCDIR)" "$(ODK2_BUILDDIR)" $(SPHINXOPTS)
+
+odk1-deploy: odk1_copy
+	@$(SPHINXBUILD) -W -b dirhtml "$(COMPILE1_SRCDIR)" "$(ODK1_BUILDDIR)" $(SPHINXOPTS)
+
+odk2-deploy: odk2_copy
+	@$(SPHINXBUILD) -W -b dirhtml "$(COMPILE2_SRCDIR)" "$(ODK2_BUILDDIR)" $(SPHINXOPTS)
 
 build-all: odk1 odk2
 
@@ -69,7 +75,7 @@ odk1-style-check: odk1
 odk1-spell-check: odk1
 	sphinx-build -b spelling $(COMPILE1_SRCDIR) $(ODK1_BUILDDIR)/spelling
 	python util/check-spelling-output.py $(ODK1_BUILDDIR)
-	
+
 odk2-style-check: odk2
 	python style-test.py -r $(COMPILE2_SRCDIR)
 
