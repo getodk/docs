@@ -1397,15 +1397,20 @@ An image widget that does not include a :guilabel:`Choose Image` button. This re
   
 .. _selfie-widget:
 
-Selfie widget
-~~~~~~~~~~~~~~~
+Self portrait (*selfie*) widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
   :tc:`image`
 appearance
-  :tc:`selfie`
+  :tc:`new-front`
 
 Takes a picture using the front-facing ("selfie") camera. The :guilabel:`Choose image` button is not displayed.
+
+.. versionchanged:: 1.15
+
+  Prior to v.1.15, the appearance attribute for this was :tc:`selfie`.
+  The old appearance attribute will continue to work on existing forms, but new forms should use the :tc:`new-front` appearance.
 
 .. image:: /img/form-widgets/selfie-start.*
   :alt: The Selfie form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Selfie widget." The hint text is, "image type with selfie appearance." There is a single button, labeled "Take Picture." Above the question text is the form group name "Image widgets."
@@ -1421,7 +1426,7 @@ Takes a picture using the front-facing ("selfie") camera. The :guilabel:`Choose 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
 
-  image,selfie_image_widget,Selfie widget,selfie,image type with selfie appearance
+  image,selfie_image_widget,Selfie widget,new-front,image type with new-front appearance
 
 
 .. _draw-widget:
