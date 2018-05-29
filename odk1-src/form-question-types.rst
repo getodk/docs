@@ -1516,6 +1516,35 @@ Records video, using the device camera.
   video, blinking, Please record a video of yourself blinking., Three times is probably sufficient.
 
 
+.. _file-upload:
+
+File upload widget
+--------------------
+
+.. versionadded:: 1.15
+
+  `ODK Collect v1.15.0 <https://github.com/opendatakit/collect/releases/tag/v1.15.0>`_
+
+Uploads any file from the device to the form.
+
+.. image:: /img/form-question-types/file-upload-widget.* 
+  :alt: The file upload widget in Collect.
+       The question label is "Select a file to upload."
+       Below that is a button labeled "Choose File".
+       
+.. image:: /img/form-question-types/file-upload-open-from.* 
+  :alt: A  file selection screen on an Android device.
+	A sidebar overlay is labeled "Open from".
+	This sidebar has several file locations such as "Recent", "Google Drive", "Images", "Downloads".
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label
+
+  file, some-file, Select a file to upload.
+
+  
 .. _barcode:
 
 Barcode widget
