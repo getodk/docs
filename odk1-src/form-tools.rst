@@ -4,6 +4,6 @@ Form Building Tools
 .. toctree::
 
   xlsform
-  odk-build
+  build-intro
   pyxform
   validate

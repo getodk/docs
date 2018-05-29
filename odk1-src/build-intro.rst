@@ -11,13 +11,6 @@ ODK Build
 
   For a more powerful form designer from Open Data Kit, try :doc:`XLSForm <xlsform>`.
 
-  You may also be interested in form design tools from other organizations:
-
-  - `Vellum <https://github.com/dimagi/Vellum>`_
-  - `Kobo <http://www.kobotoolbox.org/>`_
-  - `Enketo <https://enketo.org/>`_ 
-  - `PurcForms <https://code.google.com/archive/p/purcforms/>`_.
-
 .. _use-build:  
 
 Using ODK Build
