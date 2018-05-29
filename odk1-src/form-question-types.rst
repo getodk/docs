@@ -1078,6 +1078,25 @@ Captures the current location from the device.
 For a geopoint with a user-selected location,
 see :ref:`placement-map-widget` 
 
+.. tip::
+
+  .. versionadded:: 1.15
+
+  While determining the current coordinates,
+  you will see a dialog box displaying:
+  
+  - Number of satellites found
+  - Elapsed time
+  
+  If the device can not find at least four (4) satellites,
+  make sure there is nothing obstructing the device's view of the sky.
+  
+  If you have problems with the geopoint widget, 
+  be sure to note the elapsed time
+  and accuracy (if applicable),
+  so that you can share it with your support staff 
+  or with the |forum|_.
+
 .. image:: /img/form-widgets/default-geopoint.*
   :alt: The default Geopoint form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Geopoint widget." The hint text is "geopoint type with no appearance." Below that is a button labeled "Start Geopoint." Below the button are completed fields for Latitude, Longitude, Altitude, and Accuracy.
 
