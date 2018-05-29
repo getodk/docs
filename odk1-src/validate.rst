@@ -13,7 +13,7 @@ conforms to the `XForms specification`_.
 
 Validate should be used to check hand-edited XForms.
 It is not needed when creating forms with 
-:doc:`xlsform` or :doc:`odk-build`,
+:doc:`xlsform` or :doc:`build-intro`,
 unless you edit those forms manually after creating them.
 
 .. _setting-up-validate:

@@ -58,7 +58,7 @@ are specified in your `XLSForm`_ definition using the
   available when creating forms using `XLSForm`_.
   
   For simpler forms
-  you can use :doc:`odk-build`,
+  you can use :doc:`build-intro`,
   which provides a visual, drag-and-drop interface.
 
   

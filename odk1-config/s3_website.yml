@@ -39,3 +39,4 @@ redirects:
   briefcase-vs-aggregate/index.html: briefcase-and-aggregate
   form-widgets/index.html: form-question-types
   form-interaction/index.html: form-logic
+  odk-build/index.html: /build-intro
