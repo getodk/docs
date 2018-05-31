@@ -30,7 +30,7 @@ jobs:
             sudo python style-test.py $paths -r shared-src
       - run:
           name: Build ODK1 Documentation
-          command: make odk1
+          command: make odk1-deploy
       - run:
           name: Check spelling of ODK1 Documentation
           command: make odk1-spell-check
@@ -100,7 +100,7 @@ jobs:
             sudo python style-test.py $paths -r shared-src
       - run:
           name: Build ODK2 Documentation
-          command: make odk2
+          command: make odk2-deploy
       - run:
           name: Check spelling of ODK2 Documentation
           command: make odk2-spell-check
