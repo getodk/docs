@@ -173,7 +173,7 @@ Support of HTML is further limited because:
   by other form rendering tools in the XForms ecosystem.
   For example, HTML elements that work in Collect may not work in Enketo.
 
-For these reasons, we do not recommend using HTML in forms (except the ``<span>`` element :ref:`noted below <custom-styling>`).
+For these reasons, we do not recommend using HTML in forms (except the ``<span>`` element :ref:`noted below <custom-fonts-colors>`).
 
 .. seealso:: `The list of HTML tags currently supported in Collect <https://www.grokkingandroid.com/android-quick-tip-formatting-text-with-html-fromhtml>`_.
 
