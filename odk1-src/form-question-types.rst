@@ -1088,7 +1088,9 @@ see :ref:`placement-map-widget`
   - Number of satellites found
   - Elapsed time
   
-  If the device can not find at least four (4) satellites,
+  To get an accurate fix on your location, 
+  the device must find at least four (4) satellites.
+  If the device can not find at least four satellites,
   make sure there is nothing obstructing the device's view of the sky.
   
   If you have problems with the geopoint widget, 
