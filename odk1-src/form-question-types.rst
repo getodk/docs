@@ -1395,7 +1395,7 @@ An image widget that does not include a :guilabel:`Choose Image` button. This re
   image, image_widget_no_choose, Image widget without Choose button, new, image type with new appearance (can also be added with annotate appearance and on audio and video types)
   
   
-.. _selfie-widget:
+.. _self-portrait-widget:
 
 Self portrait (*selfie*) widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1409,24 +1409,27 @@ Takes a picture using the front-facing ("selfie") camera. The :guilabel:`Choose 
 
 .. versionchanged:: 1.15
 
-  Prior to v.1.15, the appearance attribute for this was :tc:`selfie`.
+  Prior to v1.15, the appearance attribute for this was :tc:`selfie`.
   The old appearance attribute will continue to work on existing forms, but new forms should use the :tc:`new-front` appearance.
 
-.. image:: /img/form-widgets/selfie-start.*
-  :alt: The Selfie form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Selfie widget." The hint text is, "image type with selfie appearance." There is a single button, labeled "Take Picture." Above the question text is the form group name "Image widgets."
-
-.. image:: /img/form-widgets/selfie-in-progress.*
-  :alt: A camera view on an Android phone. A person is taking a self-portrait.
-
-.. image:: /img/form-widgets/selfie-complete.*
-  :alt: The Selfie form widget as displayed previously. Below the button is the self-portrait from the previous image.
-
+  
+.. image:: /img/form-question-types/self-portrait-0.* 
+ :alt: The self portrait widget in Collect. The label text is "Self portrait (selfie) widget)". The hint text is "Image type with new-front appearance". There is a button labeled "Take Picture".
+ 
+.. image:: /img/form-question-types/self-portrait-1.* 
+ :alt: The camera screen on a device, taking a self-portrait of a person.
+ 
+.. image:: /img/form-question-types/self-portrait-2.* 
+ :alt: The self portrait widget as described above. Below the button is the self-portrait image captured in the previous image.  
+  
+  
 .. rubric:: XLSForm
 
 .. csv-table:: survey
-  :header: type, name, label, appearance, hint
+  :header: type, name, label, hint, appearance
 
-  image,selfie_image_widget,Selfie widget,new-front,image type with new-front appearance
+  image, self-portrait, Self portrait (*selfie*) widget, image type with new-front appearance, new-front
+  
 
 
 .. _draw-widget:
