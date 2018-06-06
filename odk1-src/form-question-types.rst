@@ -1527,6 +1527,24 @@ File upload widget
 
 Uploads any file from the device to the form.
 
+.. warning::
+
+  Users can upload **any** file type,
+  which includes potentially malicious files.
+  You should not include this widget
+  unless you trust the people using the form.
+  
+  Even then, you should take precautions 
+  before downloading or opening files.
+  
+  - Run an antimalware scan.
+  - Verify the file is a type you expect 
+    (such as a :file:`.pdf` document),
+    and not a `potentially dangerous file`_
+    (such as :file:`.exe` or :file:`.ini`).
+    
+  .. _potentially dangerous file: https://support.symantec.com/en_US/article.INFO3768.html
+
 .. image:: /img/form-question-types/file-upload-widget.* 
   :alt: The file upload widget in Collect.
        The question label is "Select a file to upload."
