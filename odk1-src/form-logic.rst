@@ -215,6 +215,14 @@ put the response value in the :th:`default` column.
 Default values must be static values,
 not expressions or variables.
 
+.. note::
+
+  The content of the :th:`default` row in a question
+  is taken literally as the default value.
+  Quotes should **not** be used to wrap string values,
+  unless you actually want those quote marks to appear
+  in the default response value.
+
 .. rubric:: XLSForm
 
 .. csv-table:: survey
