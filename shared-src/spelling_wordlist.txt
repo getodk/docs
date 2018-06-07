@@ -131,6 +131,7 @@ Nafundi
 namespace
 namespaced
 namespaces
+NaN
 Oauth
 OAuth
 oauth
