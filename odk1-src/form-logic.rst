@@ -188,19 +188,23 @@ That is, they have no value.
 When a :ref:`variable <variables>` referencing an empty value is used 
 in a math :ref:`operator <math-operators>` 
 or :ref:`function <math-functions>`,
-it is treated as Not a Number (NaN).
+it is treated as Not a Number (``NaN``).
 The empty value **will not** be converted to zero.
-The result of a calculation including NaN 
-will also be NaN, 
+The result of a calculation including ``NaN`` 
+will also be ``NaN``, 
 which may not be the behavior you want or expect.
 
 To convert empty values to zero,
-use the :func:`coalesce` function.
+use either the :func:`coalesce` function
+or the :func:`if` function.
 
 .. code-block:: none
 
   coalesce(${potentially_empty_value}, 0)
 
+.. code-block:: none
+
+  if(${potentially_empty_value}="", 0, ${potentially_empty_value})
   
 .. _requiring-responses:
 
