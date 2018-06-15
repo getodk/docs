@@ -91,7 +91,7 @@ Managing App Users
 
 App Users never gain any access to the management website; they do not have email addresses or passwords associated with their account, only a nickname so you can tell which is which. Once a Web User creates an App User, a :doc:`configuration QR Code <collect-import-export>` will be generated which will grant a mobile device access to the ODK Central server as that App User. Access can be revoked at any time, and Web Users can see which App Users uploaded which submissions.
 
-In the current alpha release of ODK Central, all App Users can download any :doc:`Open form  <central-forms-lifecycle>` and upload submissions to any :doc:`non-Closed form <central-forms-lifecycle>`. Future versions will feature more options to restrict certain App Users to certain forms or groups of forms.
+In the current alpha release of ODK Central, all App Users can download any :ref:`Open form  <central-forms-lifecycle>` and upload submissions to any :ref:`non-Closed form <central-forms-lifecycle>`. Future versions will feature more options to restrict certain App Users to certain forms or groups of forms.
 
 To manage app users, navigate to :menuselection:`--> Users --> App Users` at the top of the Central management website (you will see App Users in the second row of tabs). You should see a listing of users that looks like this:
 
@@ -110,7 +110,7 @@ Once you provide a nickname for the user (usually the name of the data enumerato
 
    .. image:: /img/central-users/app-users-created.png
 
-That App User has now been created and granted access to use their mobile device to list, download, and submit to all :doc:`available forms <central-forms-lifecycle>` on the server. To do so, however, their mobile device will have to get set up with the new account. That is what the QR Code you see on this screen is for. Read on to the next section to find out how to use it.
+That App User has now been created and granted access to use their mobile device to list, download, and submit to all :ref:`available forms <central-forms-lifecycle>` on the server. To do so, however, their mobile device will have to get set up with the new account. That is what the QR Code you see on this screen is for. Read on to the next section to find out how to use it.
 
 .. _central-users-app-configure:
 
