@@ -9,7 +9,7 @@ In ODK Central, there are four important steps to understand when managing a dat
 
 1. **Form design** is where you define the form itself, laying out many details like the questions and acceptable responses. ODK Central itself does not help with form design; instead, please take a look at the many :doc:`available tools <form-tools>` and the :doc:`introduction to form design <form-design-intro>` for help creating your form.
 2. **Form upload** is done after you have a working form design; here you log into ODK Central and upload your new form so that Central knows that it exists. Once you do this, it will become available to any mobile device connected to the server for download and submission upload.
-3. **Data extraction and analysis** can occur either at the end of the project, or continually as the project runs. Either way, ODK Central provides several different methods for extracting and analyzing your submission data. This is covered in the :doc:`<central-submissions>` article.
+3. **Data extraction and analysis** can occur either at the end of the project, or continually as the project runs. Either way, ODK Central provides several different methods for extracting and analyzing your submission data. This is covered in the :doc:`Form Submissions <central-submissions>` article.
 4. **Form lifecycle** tools let you manage the lifecycle of your data collection project: ongoing projects can just stay open, but many projects need a way to wrap things up. ODK Central provides tools to help control, for example, when workers using ODK Collect are allowed to download each form's definition, or separately to upload submissions to each form.
 
 For more information about how to accomplish each of these tasks, please read on.
@@ -56,7 +56,7 @@ In the future, look forward to seeing even more useful information at-a-glance o
 Seeing Form Submissions
 -----------------------
 
-To see the current submissions uploaded to Central for a form, you can click on the :menuselection:`--> Submissions` tab below the name of the form. Here, you will see a summary table of all known submissions, and you will find multiple options for downloading and analyzing your submission data. This page and these options are covered in more detail in the :doc:`<central-submissions>` article.
+To see the current submissions uploaded to Central for a form, you can click on the :menuselection:`--> Submissions` tab below the name of the form. Here, you will see a summary table of all known submissions, and you will find multiple options for downloading and analyzing your submission data. This page and these options are covered in more detail in the :doc:`central-submissions` article.
 
 .. _central-forms-lifecycle:
 
