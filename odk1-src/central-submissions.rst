@@ -3,7 +3,7 @@
 Managing Form Submissions in Central
 ====================================
 
-Once you have :ref:`uploaded a form <central-forms-upload>` to ODK Central, :ref:`connected to it from your mobile device <central-users-app-configure>`, and :ref:`uploaded forms <uploading-forms>` back to Central, you will see them appear in the Form submissions page in Central.
+Once you have :ref:`uploaded a form <central-forms-upload>` to ODK Central, :ref:`connected to it from your mobile device <central-users-app-configure>`, and :ref:`uploaded submissions <uploading-forms>` back to Central, you will see them appear in the Form submissions page in Central.
 
 To find the Form submissions page, first find the form in the Form listings page (:menuselection:`--> Forms`) and click on it. You will be taken to the :ref:`Form Overview <central-forms-checklist>` page for that form. Click on the :menuselection:`--> Submissions` tab below the form name to find the submissions.
 
@@ -33,7 +33,7 @@ Once it completes downloading, you will find one or more files when you extract 
 
 .. tip::
 
-   This :file:`.zip` is similar to but not exactly the same as the ODK Briefcase output format. We will correct this in a release very soon, so that your Briefcase-based tools will work with Central data.
+   This :file:`.zip` is similar to but not exactly the same as the ODK Briefcase output format. We will correct this in a release soon, so that your Briefcase-based tools will work with Central data.
 
 .. _central-submissions-odata:
 

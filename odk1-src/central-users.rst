@@ -8,7 +8,7 @@ There are two types of user accounts in ODK Central: **web users** and **app use
  - **Web users** have accounts on the Central management website. They can log into the web interface and perform administrative actions like user management, form upload and management, and submission data viewing and download.
  - **App users** can use mobile data collection apps like ODK Collect to :ref:`connect to Central <central-users-app-configure>`. Once connected through the app, they will be able to see the list of forms, download the ones they need, and upload completed submissions to those forms.
 
-You will need both types of users in order to run a successful data collection project: a web user must upload a valid form definition, and app user must upload submission to it from their mobile device, and the web user will then be able to see those submissions in the web interface and download or sync them for analysis.
+You will need both types of users in order to run a successful data collection project: a web user must upload a valid form definition, an app user must upload submissions to it from their mobile device, and the web user will then be able to see those submissions in the web interface and download or sync them for analysis.
 
 .. _central-users-web-overview:
 
@@ -53,7 +53,7 @@ To create a new Web User, click on the :guilabel:`Create web user` button on the
 
    .. image:: /img/central-users/web-users-create.png
 
-To create a new Web User, input the email address of the person who should receive access. As :ref:`noted above <central-users-web-overview>`, in the current alpha release the person will get full administrative access to the site. Press :guilabel:`Next` once you are satisfied with the email address.
+To create a new Web User, input the email address of the person who should receive access. As :ref:`noted above <central-users-web-overview>`, in the current alpha release the person will get full administrative access to the site. Press :guilabel:`Create` once you are satisfied with the email address.
 
 That email account will shortly receive an email with the subject line "ODK Central account created". If you do not see the email, check your spam folder. In the email, there will be a link which will allow the recipient to set a password for their new account, after which they will be able to log in.
 
@@ -68,16 +68,18 @@ Any user may request a reset of their own password by using the link at the bott
 
    .. image:: /img/central-users/web-users-self-reset.png
 
-After submitting the reset form, the user should receive an email with the subject line "ODK Central account password reset"; if they cannot find it, they should check their spam folder. When resetting a password this way, the user's current password continues to function until they actually use the link in the email to set a new one.
+After submitting the reset form, the user should receive an email with the subject line "ODK Central account password reset". If they cannot find it, they should check their spam folder. When resetting a password this way, the user's current password continues to function until they actually use the link in the email to set a new one.
 
 We also provide a separate way for administrators to directly reset any Web User's password in the administration panel for two reasons:
 
 1. In case the user's password has been stolen and needs to be disabled immediately.
 #. In case the user does not know how to do this themselves.
 
-With the administrative reset, the user's password **stops working immediately** and they will be completely unable to log in until a new one is set. They will receive an email with instructions and a link on how to do this exactly as shown above. To perform the administrative reset, navigate to the Web Users listing page, and use the Actions menu at the right side of the table:
+With the administrative reset, the user's password **stops working immediately** and they will be completely unable to log in until a new one is set. They will receive an email with instructions and a link on how to do this exactly :ref:`as shown above <central-users-web-create>`. To perform the administrative reset, navigate to the Web Users listing page, and use the Actions menu at the right side of the table:
 
    .. image:: /img/central-users/web-users-admin-reset.png
+
+.. _central-users-web-delete:
 
 Deleting a Web User
 ~~~~~~~~~~~~~~~~~~~
@@ -89,7 +91,7 @@ This is not yet possible in the current alpha release of ODK Central.
 Managing App Users
 ------------------
 
-App Users never gain any access to the management website; they do not have email addresses or passwords associated with their account, only a nickname so you can tell which is which. Once a Web User creates an App User, a :doc:`configuration QR Code <collect-import-export>` will be generated which will grant a mobile device access to the ODK Central server as that App User. Access can be revoked at any time, and Web Users can see which App Users uploaded which submissions.
+App Users never gain any access to the management website: they do not have email addresses or passwords associated with their account, only a nickname so you can tell which is which. Once a Web User creates an App User, a :doc:`configuration QR Code <collect-import-export>` will be generated which will grant a mobile device access to the ODK Central server as that App User. Access can be revoked at any time, and Web Users can see which App Users uploaded which submissions.
 
 In the current alpha release of ODK Central, all App Users can download any :ref:`Open form  <central-forms-lifecycle>` and upload submissions to any :ref:`non-Closed form <central-forms-lifecycle>`. Future versions will feature more options to restrict certain App Users to certain forms or groups of forms.
 
@@ -106,11 +108,11 @@ To create a new App User, click on the :guilabel:`Create app user` button on the
 
    .. image:: /img/central-users/app-users-create.png
 
-Once you provide a nickname for the user (usually the name of the data enumerator who will carry the mobile device works well), click :guilabel:`Next`. The user will be created, and you will see a screen that looks like this:
+Once you provide a nickname for the user (usually the name of the data enumerator who will carry the mobile device works well), click :guilabel:`Create`. The user will be created, and you will see a screen that looks like this:
 
    .. image:: /img/central-users/app-users-created.png
 
-That App User has now been created and granted access to use their mobile device to list, download, and submit to all :ref:`available forms <central-forms-lifecycle>` on the server. To do so, however, their mobile device will have to get set up with the new account. That is what the QR Code you see on this screen is for. Read on to the next section to find out how to use it.
+That App User has now been created and granted access to use their mobile device to list, download, and submit to all :ref:`available forms <central-forms-lifecycle>` on the server. To do so, however, their mobile device will have to get set up with this new account. That is what the QR Code you see on this screen is for. Read on to the next section to find out how to use it.
 
 .. _central-users-app-configure:
 
