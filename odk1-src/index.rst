@@ -100,6 +100,7 @@ This requires:
 
   form-design-intro
   xlsform
+  form-anatomy
   form-question-types
   form-logic
   form-styling

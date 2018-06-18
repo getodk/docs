@@ -136,6 +136,7 @@ If you prefer Forward and Back buttons for navigation, you can switch to that in
 .. image:: /img/collect-completing-forms/question-screen-with-buttons.* 
   :alt: A question screen in the Collect App. There are now two buttons below the question text, with left (backwards) and right (forwards) buttons.
  
+.. _jump-menu:
 
 Jumping to questions
 ~~~~~~~~~~~~~~~~~~~~~~
