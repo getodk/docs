@@ -136,11 +136,15 @@ you must first use a :tc:`calculate` row and then a variable.
   | Tip (18%): $${tip_18}
   | Total: $${tip_18_total}",
 
+.. _form-logic-gotchas:
+
+Form logic gotchas
+-------------------  
 
 .. _when-expressions-are-evaluated:
 
 When expressions are evaluated
---------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Every expression is constantly re-evaluated as an enumerator progresses through a form. This is an important mental model to have and can explain sometimes unexpected behavior. More specifically, expressions are re-evaluated when:
 
@@ -174,6 +178,34 @@ The following calculate will keep track of the first time the enumerator set a v
   calculate, age_timestamp, , "if(age = '', '', once(now()))"
 
 
+.. _empty-values:
+  
+Empty values in math
+~~~~~~~~~~~~~~~~~~~~~
+
+Unanswered :ref:`number questions <number-widgets>` are nil.
+That is, they have no value.
+When a :ref:`variable <variables>` referencing an empty value is used 
+in a math :ref:`operator <math-operators>` 
+or :ref:`function <math-functions>`,
+it is treated as Not a Number (``NaN``).
+The empty value **will not** be converted to zero.
+The result of a calculation including ``NaN`` 
+will also be ``NaN``, 
+which may not be the behavior you want or expect.
+
+To convert empty values to zero,
+use either the :func:`coalesce` function
+or the :func:`if` function.
+
+.. code-block:: none
+
+  coalesce(${potentially_empty_value}, 0)
+
+.. code-block:: none
+
+  if(${potentially_empty_value}="", 0, ${potentially_empty_value})
+  
 .. _requiring-responses:
 
 Requiring responses
@@ -500,7 +532,7 @@ Controlling the number of repetitions
 .. _user-controlled-repeats:
     
 User-controlled repeats
-""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 By default,
 the user controls how many times 
@@ -538,7 +570,7 @@ the user is asked if they want to add another repeat group.
 .. _statically-defined-repeats:
 
 Statically defined repeats
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Use the :th:`repeat_count` column
 to define the number of times a group will repeat.
@@ -559,7 +591,7 @@ to define the number of times a group will repeat.
 .. _dynamically-defined-repeats:
  
 Dynamically defined repeats
-""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The :th:`repeat_count` column can reference
 :ref:`previous responses <variables>` and :ref:`calculations <calculations>`.

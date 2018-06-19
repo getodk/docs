@@ -50,16 +50,26 @@ Math operators
 ---------------
 
 .. csv-table::
-  :header: , Explanation, Example, Notes
+  :header: , Explanation, Example
   
-  \+, addition, ${salary_income} + ${self_employed_income}, Numbers only; does not concatenate strings.
-  \-, subtraction, ${income} - ${expenses},
-  \*, multiplication, ${bill} * 1.18,
-  div, division, ${percent_int} div 100, 
-  mod, `modulo`_ (division remainder), (${even_number} mod 2) = 0, 
+  \+, addition, ${salary_income} + ${self_employed_income}
+  \-, subtraction, ${income} - ${expenses}
+  \*, multiplication, ${bill} * 1.18
+  div, division, ${percent_int} div 100 
+  mod, `modulo`_ (division remainder), (${even_number} mod 2) = 0
 
 .. _modulo: https://en.wikipedia.org/wiki/Modulo_operation
 
+.. warning::
+
+  Math operators only work with numbers.
+  
+  - The addition operator cannot be used to concatenate strings.
+    Use the :func:`concat` function instead.
+  - Empty values 
+    (that is, :ref:`variables <variables>` referencing unanswered questions)
+    are actually empty strings, 
+    :ref:`and will not be automatically converted to zero (0) <empty-values>`.
   
 .. _comparison-operators:
   
@@ -78,6 +88,13 @@ The result of a comparison is always ``True`` or ``False``.
   >=, greater than or equal to, ${age} >= 18,
   <, less than, ${age} < 65, 
   <=, less than or equal to, ${age} <= 64,
+  
+.. warning::
+
+  - The relational operators (``>``, ``>=``, ``<``, ``<=``)
+    only work with numbers.
+  - :ref:`Empty response values 
+    are not automatically converted to zero (0) <empty-values>`.
   
 .. _boolean-operators:
   
@@ -413,6 +430,16 @@ Repeat groups
       end_repeat
       calculate, age_of_youngest_child, , min(${child_age}) 
 
+      
+.. warning::
+
+  The :func:`min` and :func:`max` functions
+  only work sets of numbers.
+  Empty values 
+  (that is, :ref:`variables <variables>` referencing unanswered questions)
+  are actually empty strings, 
+  :ref:`and will not be automatically converted to zero (0) <empty-values>`.
+       
 .. _string-functions:
   
 Strings
@@ -489,6 +516,18 @@ Converting to and from strings
 Math 
 ------
 
+.. warning::
+
+  Math functions (except :func:`number`) only work with number values.
+  
+  You can use :func:`number` to convert a string of digits to a number,
+  but it is usually better to :ref:`get a number value directly <number-widgets>`.
+  
+  Empty values 
+  (that is, :ref:`variables <variables>` referencing unanswered questions)
+  are actually empty strings, 
+  :ref:`and will not be automatically converted to zero (0) <empty-values>`.
+  
 .. _number-functions:
 
 Number handling
