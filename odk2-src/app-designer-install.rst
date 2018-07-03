@@ -7,7 +7,7 @@ Download the |app_designer_link| zip file.
 
 .. |app_designer_link| raw:: html
 
-  <a href="http://opendatakit-dev.cs.washington.edu/2_0_tools/download" target="_blank">Application Designer</a>
+  <a href="https://github.com/opendatakit/app-designer/releases/latest" target="_blank">Application Designer</a>
 
 Unzip the file you downloaded and move the resulting folder to somewhere other than your :file:`Downloads` directory; such as your :file:`Documents` folder.
 
