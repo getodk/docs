@@ -10,7 +10,7 @@ Installing on Google App Engine
 
 .. admonition:: Before you begin...
 
-  - Make sure `Java 8 <https://java.com/en/download/>`_ or higher is `installed on your system <https://www.java.com/en/download/help/download_options.xml>`_.
+  - Make sure `Java 8 <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>`_ or `higher < <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_ is installed on your system.
   
   - You will need a Gmail account to use App Engine. This Gmail account will be the owner of the Google Cloud Platform project under which your App Engine will execute.
 
