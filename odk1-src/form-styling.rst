@@ -15,7 +15,7 @@ Form Styling
 
 Labels, hints, and choices in an :doc:`xlsform`
 can all be styled using 
-:ref:`markdown-in-forms`, ref:`fonts and colors <custom-fonts-colors>`, and :ref:`emoji`.
+:ref:`markdown-in-forms`, :ref:`fonts and colors <custom-fonts-colors>`, and :ref:`emojis`.
 
 
 .. _markdown-in-forms:
