@@ -21,7 +21,7 @@ Prerequisites
 Installing ODK Suitcase
 ------------------------------
 
-  1. Navigate to http://opendatakit-dev.cs.washington.edu/2_0_tools/download and download the latest :file:`ODK Suitcase.jar` file.
+  1. Navigate to https://github.com/opendatakit/suitcase/releases/latest and download the latest :file:`ODK Suitcase.jar` file.
   2. Double click the file to start. If that fails, try running:
 
     .. code-block:: console
