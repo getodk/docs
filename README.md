@@ -13,9 +13,15 @@ If you can't find what you are looking for, try the [old docs on the ODK website
 
 ## Building and viewing documentation locally
 
-See the [Contributor Guide](http://docs.opendatakit.org/contributing) for detailed steps --- no prior experience needed!
+The following steps help you build and view ODK docs locally. For details on each of these steps, see the [Contributor Guide](http://docs.opendatakit.org/contributing).
 
-Make sure you have [Python 3](https://www.python.org/downloads/). We recommend you use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/) or a Python version management like [pyenv](https://github.com/pyenv/pyenv). (Type `python --version` to see your current version.)
+### Prerequisites
+ * Install [Python 3](https://www.python.org/downloads/).
+ * Install [Git-LFS](https://git-lfs.github.com/).
+ 
+We highly recommend you use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/) or a Python version management like [pyenv](https://github.com/pyenv/pyenv). (Type `python --version` to see your current version.)
+
+### Cloning the repo
 
 After that, you need to clone this repo and make sure all the requirements are installed:
 
@@ -24,6 +30,11 @@ $ git clone https://github.com/opendatakit/docs.git
 $ cd docs/
 $ pip install -r requirements.txt
 ```
+
+It can take a long time (~10 minutes) to clone the repo due to the large number of images in the docs. If you get an error such as `Smudge error` or `github's rate limit reached`, run `git checkout -f HEAD` until you get the message `Checking out files: 100% done`.
+
+### Building the docs
+
 Once your environment is set up, build and serve the docs locally with:
 
 ```bash
@@ -75,5 +86,4 @@ You can also...
   - Make sure your virtual environment is activated.
   - Type `python --version` to check your current python version (it should be 3.x).
   - Run `pip install -r requirements.txt`.
-
 
