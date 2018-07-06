@@ -16,6 +16,7 @@ If you can't find what you are looking for, try the [old docs on the ODK website
 The following steps help you build and view ODK docs locally. For details on each of these steps, see the [Contributor Guide](http://docs.opendatakit.org/contributing).
 
 ### Prerequisites
+
  * Install [Python 3](https://www.python.org/downloads/).
  * Install [Git-LFS](https://git-lfs.github.com/).
  
