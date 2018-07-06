@@ -23,7 +23,7 @@ We highly recommend you use a virtual environment like [virtualenv](https://virt
 
 ### Cloning the repo
 
-After that, you need to clone this repo and make sure all the requirements are installed:
+After that, you need to clone the docs repo and make sure all the requirements are installed:
 
 ```bash
 $ git clone https://github.com/opendatakit/docs.git
@@ -31,7 +31,7 @@ $ cd docs/
 $ pip install -r requirements.txt
 ```
 
-It can take a long time (~10 minutes) to clone the repo due to the large number of images in the docs. If you get an error such as `Smudge error` or `github's rate limit reached`, run `git checkout -f HEAD` until you get the message `Checking out files: 100% done`.
+It can take a long time (>10 minutes) to clone the repo due to the large number of images in the docs. If you get an error such as `Smudge error` or `github's rate limit reached`, run `git checkout -f HEAD` until you get the message `Checking out files: 100% done`.
 
 ### Building the docs
 
@@ -86,4 +86,3 @@ You can also...
   - Make sure your virtual environment is activated.
   - Type `python --version` to check your current python version (it should be 3.x).
   - Run `pip install -r requirements.txt`.
-
