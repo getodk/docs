@@ -180,9 +180,9 @@ On windows:
 
 If you get an error, 
 you probably don't have it and will need to 
-`install Python 3`.
+`install Python 3`__.
 
-.. _install Python 3: https://www.python.org/downloads/
+__ https://www.python.org/downloads/
 
 On Windows 
 make sure to select the option 
