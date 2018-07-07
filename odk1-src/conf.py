@@ -383,4 +383,11 @@ html_context = {'download_pdf' : download_pdf,
                 'file_issue_here' : file_issue_here , 
                 'repo_here' : repo_here , 
                 'contri_guide' : contri_guide , 
-                'forum_here' : forum_here}
+                'forum_here' : forum_here ,
+                'display_github' : True,
+                'github_user' : "opendatakit", # Username
+                'github_repo' : "docs", # Repo name
+                'github_version' : "master", # Version
+                'conf_py_path' : "/odk1-src/" # Path in the checkout to the docs root
+            }
+            
