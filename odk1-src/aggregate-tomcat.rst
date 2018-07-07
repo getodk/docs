@@ -84,7 +84,7 @@ Installation procedure
 
 1. Install Tomcat on your server.
 
-    a. Install `Java 8 <https://java.com/en/download/>`_ or higher on your system.
+    a. Install the `Java 8 JDK <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>`_ or `higher <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_ on your system.
 
        .. note::
 
