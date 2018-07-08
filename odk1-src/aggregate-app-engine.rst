@@ -20,9 +20,6 @@ Installing on Google App Engine
     
   - Download the `ODK Aggregate installer <https://opendatakit.org/downloads/>`_. Select the latest release for your operating system.
 
-    - You can :doc:`verify the download <verify-downloads>` using *SHA256 signatures*.
-    
-
 1. Go to `Google Cloud Platform <https://cloud.google.com/>`_ and click on :guilabel:`Console` in the top right corner.
 
    .. image:: /img/aggregate-install/cloud-console.*
