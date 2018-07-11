@@ -93,7 +93,7 @@ After installing NodeJS, open a :program:`terminal` (which you can do by clickin
 
 .. warning::
 
-  Add :program:`node.js` to the *PATH* variable of your system if subsequent calls to access grunt fail.
+  Add the location of the :program:`npm` folder to the *PATH* variable of your system if subsequent calls to access grunt in the next step fail. Ex. :file:`C:\\Users\\[username]\\AppData\\Roaming\\npm`
 
 .. _app-designer-prereqs-grunt:
 
