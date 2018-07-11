@@ -140,6 +140,5 @@ This requires:
   :caption: Reference
   
   security-privacy
-  verify-downloads
   faq
   glossary

@@ -131,6 +131,5 @@ Platform Developers should already be familiar with everything from the User and
   :hidden:
   :caption: Reference
 
-  verify-downloads
   faq
   glossary
