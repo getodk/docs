@@ -1486,6 +1486,23 @@ Provides the user a drawing pad and collects the drawn image.
 
   image,draw_image_widget,Draw widget ,draw,image type with draw appearance
   
+Scaling down images
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Images created with any of the image widgets described above can be automatically scaled down on save by using the ``max-pixels`` parameter. If the long edge of the image is larger than the maximum size specified, the image is resized proportionally so that the long edge matches the provided pixel value. This is useful to reduce the upload size when bandwidth is limited. 
+
+Available in Collect since v1.10.0 and in XLSForm since 7/2018.
+
+.. rubric:: XLSForm
+
+In the parameters column, write ``max-pixels=`` followed by the desired maximum length of the long edge in pixels.
+
+.. csv-table:: survey
+
+  :header: type, name, label, parameters, hint
+
+  image,my_scaled_image,Scaled image,max-pixels=1024,image scaled to a max long edge of 1024 pixels
+
 
 .. _audio:
 
