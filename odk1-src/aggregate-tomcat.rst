@@ -60,8 +60,8 @@ Database Systems
 
 ODK Aggregate works with any of these database servers:
 
-- MySQL
-- PostgreSQL
+- MySQL 5.7
+- PostgreSQL 9.6
 - Microsoft SQL Server
 - Azure SQL Server
 
@@ -82,9 +82,9 @@ Installation procedure
 --------------------------
 
 
-1. Install Tomcat on your server.
+1. Install Tomcat 8.5 on your server.
 
-    a. Install the `Java 8 JDK <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>`_ or `higher <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_ on your system.
+    a. Install the `Java 8u171 JDK <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>`_ or `higher <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_ on your system.
 
        .. note::
 
