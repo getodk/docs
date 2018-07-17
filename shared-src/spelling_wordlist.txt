@@ -114,6 +114,8 @@ kml
 KML
 LDAP
 ldaps
+Lifecycle
+lifecycle
 macOS
 malware
 Metadata
@@ -137,6 +139,7 @@ OAuth
 oauth
 Oauth
 OAuth
+OData
 ODk
 ODK
 Odk
@@ -151,6 +154,8 @@ opendatakit
 OpenRosa
 orderBy
 passcode
+passphrase
+permissioning
 plaintext
 plugins
 png
@@ -196,7 +201,9 @@ slugified
 smartphone
 spam
 sphinxcontrib
+Stata
 stateful
+subfolder
 subfolders
 subform
 subforms

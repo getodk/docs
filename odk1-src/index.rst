@@ -96,6 +96,15 @@ This requires:
 .. toctree::
   :hidden:
   :maxdepth: 2
+  :caption: Central (Alpha)
+
+  central-intro
+  central-setup
+  central-using
+
+.. toctree::
+  :hidden:
+  :maxdepth: 2
   :caption: Form Building
 
   form-design-intro
