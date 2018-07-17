@@ -12,7 +12,7 @@ Using the Sandbox
 
 If you only want to try ODK Central to see if it's suitable for your project, consider skipping installation altogether and using the `Sandbox installation <https://sandbox.central.opendatakit.org/>`_ we've provided for exactly this reason. Do note that since there is only one Sandbox, all Sandbox users will be able to see each others' email addresses, form definitions, and submission data, so please be careful if you have sensitive information you wish to keep secret.
 
-Otherwise, private message `Yaw Anokwa on the Open Data Kit Forum <https://forum.opendatakit.org/u/yanokwa>`_ to gain access to the Sandbox.
+Otherwise, join the `ODK Forum <https://forum.opendatakit.org>`_ and send a personal message to `@yanokwa <https://forum.opendatakit.org/u/yanokwa>`_ to gain access to the Sandbox.
 
 .. _central-install-docker:
 
