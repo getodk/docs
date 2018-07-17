@@ -39,7 +39,7 @@ Central is still quite early in alpha testing and is missing many features that 
 
 If you are an adventurous user who is comfortable with (new) technology, you don't need the features we don't already support, and you are okay with the risks with using early release software, please consider giving Central a try and giving us your `feedback <https://forum.opendatakit.org/t/odk-central-v0-1-0-alpha/13437>`_.
 
-If you just read all the above and you're not feeling too sure about it, we suggest sitting it out for a little while longer. Keep watching the `release announcements board <https://forum.opendatakit.org/c/releases>`_ for future updates, and we'll be sure to sound the bells when we're sure things are ready for a broader audience.
+If you finished reading all the above and you're not feeling too sure about it, we suggest sitting it out for a little while longer. Keep watching the `release announcements board <https://forum.opendatakit.org/c/releases>`_ for future updates, and we'll be sure to sound the bells when we're sure things are ready for a broader audience.
 
 .. _central-intro-learn-more:
 

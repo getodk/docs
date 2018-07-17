@@ -35,13 +35,13 @@ Setting up backups
 
    .. image:: /img/central-backup/google-auth.png
 
-#. Once you press **Allow**, you will see a screen in the popup which contains a lengthy code, and instructions to copy and paste it back into "your application." Copy the code, switch back to the ODK Central website, and paste it into the "Confirmation text" box. Press :guilabel:`Next` to confirm it.
+#. Once you press **Allow**, you will see a screen in the popup which contains a lengthy code, and instructions to copy and paste it back into "your application." Copy the code, switch back to the ODK Central website, and paste it into the :guilabel:`Confirmation text` box. Press :guilabel:`Next` to confirm it.
 
    .. image:: /img/central-backup/code-google.png
 
    .. image:: /img/central-backup/code-central.png
 
-#. The setup box should close and you should see a message telling you "Success! Automated backups are now configured."
+#. The setup box should close and you should see a message telling you :guilabel:`Success! Automated backups are now configured.`
 
 #. Backups are scheduled to run once a day, at 02:00 server local time. If more than 24 hours pass without a backup completing successfully, you'll want to double check that everything has been correctly set up.
 

@@ -123,11 +123,11 @@ A mobile device will need to be configured to access your ODK Central server as 
 
 The QR Code contains information about how to find your ODK Central server, and how to prove to the server that the mobile device belongs to a valid App User. In future versions of ODK Central, it will be possible to specify other settings to be imported to the device as well.
 
-There are two ways to access the QR Code for an App User. The first is in the second step of the :ref:`App User creation wizard <central-users-app-create>`. Please find the second screenshot in the previous section to see what this looks like. If you close out of this wizard, you can still access the QR Code by clicking on the "See code" link in the listings table:
+There are two ways to access the QR Code for an App User. The first is in the second step of the :ref:`App User creation wizard <central-users-app-create>`. Please find the second screenshot in the previous section to see what this looks like. If you close out of this wizard, you can still access the QR Code by clicking on the :guilabel:`See code` link in the listings table:
 
    .. image:: /img/central-users/app-users-code.png
 
-If instead of a "See code" link you see text that says "Access revoked", that App User no longer has access to the server. Create a new App User if you need a new QR Code.
+If instead of a :guilabel:`See code` link you see text that says :guilabel:`Access revoked`, that App User no longer has access to the server. Create a new App User if you need a new QR Code.
 
 Once you have found the QR Code, you will be able to use it to configure ODK Collect. Please see the section on :doc:`importing settings into Collect <collect-import-export>` to learn how to do this.
 

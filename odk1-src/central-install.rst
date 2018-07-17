@@ -28,7 +28,7 @@ To learn more about installing on DigitalOcean, please see the instructions `her
 Installing elsewhere
 --------------------
 
-If you got excited when you heard the word "Docker" above, and you already have your own destination and process for managing Docker deployments, you're all set to go. ODK Central is entirely defined via **Docker Compose**, which means the ``docker-compose`` command will be all you need to manage the entire system.
+If you got excited when you heard mention of Docker above, and you already have your own destination and process for managing Docker deployments, you're all set to go. ODK Central is entirely defined via **Docker Compose**, which means the ``docker-compose`` command will be all you need to manage the entire system.
 
 We would still recommend reviewing the `instructions we've provided <https://github.com/opendatakit/central#running-on-digitalocean>`_ for DigitalOcean starting from step 9. In particular, you'll need to update your submodules after you clone the repository, and configure your :file:`.env` file for your installation.
 
