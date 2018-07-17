@@ -1481,7 +1481,6 @@ Provides the user a drawing pad and collects the drawn image.
 .. rubric:: XLSForm
 
 .. csv-table:: survey
-
   :header: type, name, label, appearance, hint
 
   image,draw_image_widget,Draw widget ,draw,image type with draw appearance
