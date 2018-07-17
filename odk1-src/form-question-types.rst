@@ -1498,7 +1498,6 @@ Available in Collect since v1.10.0 and in XLSForm since 7/2018.
 In the parameters column, write ``max-pixels=`` followed by the desired maximum length of the long edge in pixels.
 
 .. csv-table:: survey
-
   :header: type, name, label, parameters, hint
 
   image,my_scaled_image,Scaled image,max-pixels=1024,image scaled to a max long edge of 1024 pixels
