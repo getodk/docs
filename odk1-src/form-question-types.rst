@@ -1751,7 +1751,7 @@ type
 type
   :tc:`picker`
   
-When the :tc:`picker` appearance is added, the range widget is displayed with a spinner-style select menu in a dialog. The value between horizontal lines is the selected value. Users can drag the spinner up and down or can tap on the value above to go up by one and on the value below to go down by one.
+When the :tc:`picker` appearance is added, the range widget is displayed with a spinner-style select menu in a dialog. The value between horizontal lines is the selected value. Users can scroll the spinner up and down or can tap on the value above to go up by one and on the value below to go down by one.
 
 .. image:: /img/form-widgets/range-widget-picker-0.* 
   :alt: The range picker widget, as displayed in the ODK Collect app. The question label is "Range picker integer widget". There is a button labeled "Select Value".
