@@ -36,9 +36,9 @@ you can use the `Aggregate sandbox server`_.
 .. warning::
 
   The `Aggregate sandbox server`_ is for demo purposes only.
-  All forms and data on this server are public and are occasionally deleted without notice.
+  All forms and data on this server are public and are deleted every 24 hours without notice.
   
-.. _Aggregate sandbox server: https://sandbox.aggregate.opendatakit.org:8443
+.. _Aggregate sandbox server: https://sandbox.aggregate.opendatakit.org
 
 .. seealso:: :doc:`aggregate-install`
 
@@ -56,7 +56,7 @@ The quickest and easiest way to start using your own survey forms is to create o
 
    If you have your own Aggregate server, use the URI and credentials you created during setup.
    
-   To use the sandbox, the :guilabel:`Aggregate Instance URI` is ``https://sandbox.aggregate.opendatakit.org:8443``. You should not need additional credentials.
+   To use the sandbox, the :guilabel:`Aggregate Instance URI` is ``https://sandbox.aggregate.opendatakit.org``. You should not need additional credentials.
 
 
 .. seealso::
@@ -78,7 +78,7 @@ Load a form into Collect from Aggregate
    (:menuselection:`⋮ --> General Settings --> Server`).
 #. Edit the server settings to connect to your Aggregate server or the sandbox server.
 
-   The URI for the sandbox server is ``https://sandbox.aggregate.opendatakit.org:8443``.
+   The URI for the sandbox server is ``https://sandbox.aggregate.opendatakit.org``.
    
 #. Go back to the app home screen and select :guilabel:`Get Blank Form`, then select your form.
 
