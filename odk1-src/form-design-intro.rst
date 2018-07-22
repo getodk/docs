@@ -22,8 +22,8 @@ Excel-based form creation
 
 Most ODK users design their forms in Excel, following the `XLSForm <http://xlsform.org/>`_ specification. To convert XLSForms to XForms, you can use:
 
-- `XLSForm Online <https://opendatakit.org/xiframe/>`_
-- `XLSForm Offline <https://github.com/opendatakit/xlsform-offline/releases>`_
+- `XLSForm Online <https://opendatakit.org/xlsform>`_
+- `XLSForm Offline <https://github.com/opendatakit/xlsform-offline/releases/latest>`_
 - :doc:`pyxform`, a Python XLSForm converter with a command-line tool
 
 .. tip::
