@@ -8,20 +8,16 @@ XLSForm
 
 .. _xlsform-introduction:
 
-:dfn:`XLSForm` is a format to simplify the creation of forms. Forms designed with Excel can be converted to *XForms* that can be used with ODK tools.
+:dfn:`XLSForm` is a form standard created to help simplify the authoring of forms in Excel. XLSForms are simple to get started with but allow for the authoring of complex forms. Forms designed with Excel can be converted to *XForms* that can be used with ODK tools.
 
 To design your form, refer to the `XLSForm form design documentation <http://xlsform.org/>`_. Once the form has been designed, use `XLSForm Online <https://opendatakit.org/xlsform>`_, `XLSForm Offline <https://github.com/opendatakit/xlsform-offline/releases/latest>`_, or if you are comfortable on the command line, `pyxform <https://github.com/XLSForm/pyxform>`_.
-
-.. tip::
-
-  Forms do not have to be uploaded to :ref:`Aggregate <aggregate-introduction>` before they are used. They can be manually added to :ref:`Collect <collect-introduction>`. Place them in the :file:`/odk/forms` folder on your Android device’s SD card.
 
 .. _online:
 
 XLSForm Online
 --------------
 
-We recommend starting with XLSForm Online because it is always up-to-date and allows you to preview what the form will look like.
+We recommend starting with XLSForm Online converter because it is always up-to-date and allows you to preview what the form will look like.
 
 Use `XLSForm Online <https://opendatakit.org/xlsform>`_.
 
@@ -30,7 +26,7 @@ Use `XLSForm Online <https://opendatakit.org/xlsform>`_.
 XLSForm Offline
 ---------------
 
-XLSForm Offline is a great option for users who do not have a reliable connection or may need to design forms offline.
+XLSForm Offline converter is a great option for users who do not have a reliable connection or may need to design forms offline.
 
 Download `XLSForm Offline <https://github.com/opendatakit/xlsform-offline/releases/latest>`_.
 
