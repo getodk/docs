@@ -39,10 +39,10 @@ Media submission is not currently supported over SMS. If a question of a media t
 Configuring SMS submission in a form
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To send submissions via SMS, a blank form must specify a ``short_tag`` for at least one question in the form. These tags are short versions of the question names that will be included in the SMS output as described in the :ref:`submission format <collect-sms-submission-format>` section. Only questions that specify a ``short_tag`` in the form definition will be included in SMS submissions. This can be used to quickly send time-sensitive indicators via SMS and to also collect more information for submission when Internet connectivity becomes available. As long as at least one tag is present in the form definition, submissions can be made via SMS.
+To send submissions via SMS, a blank form must specify a ``compact_tag`` for at least one question in the form. These tags are short versions of the question names that will be included in the SMS output as described in the :ref:`submission format <collect-sms-submission-format>` section. Only questions that specify a ``compact_tag`` in the form definition will be included in SMS submissions. This can be used to quickly send time-sensitive indicators via SMS and to also collect more information for submission when Internet connectivity becomes available. As long as at least one tag is present in the form definition, submissions can be made via SMS.
 
 .. csv-table:: survey
-  :header: type, name, short_tag, label 
+  :header: type, name, compact_tag, label 
 
   text, first_name, fn, What is your first name?
   text, last_name, ln, What is your last name?
