@@ -18,21 +18,13 @@ Because of the complexity of the XForms format, we do not recommend coding XForm
 .. _excel-based-form-creation:
 
 Excel-based form creation
----------------------------------
+-------------------------
 
-Most ODK users design their forms in Excel, following the `XLSForm <http://xlsform.org/>`_ specification. To convert XLSForms to XForms, you can use:
-
-- `XLSForm Online <https://opendatakit.org/xlsform>`_
-- `XLSForm Offline <https://github.com/opendatakit/xlsform-offline/releases/latest>`_
-- :doc:`pyxform`, a Python XLSForm converter with a command-line tool
-
-.. tip::
-
-  If you are comfortable with using the command-line, Pyxform is the most efficient XLSForm converter.
+Most ODK users design their forms in Excel using :doc:`xlsform`.
 
 .. _drag-and-drop-form-creation:
 
 Drag-and-drop form creation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------
   
 For simple forms, :doc:`build-intro` is a drag-and-drop form designer that works both online and offline.
