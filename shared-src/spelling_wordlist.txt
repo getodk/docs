@@ -1,5 +1,5 @@
-adb
 accessor
+adb
 Admin
 admin
 anonymousUser
@@ -155,6 +155,7 @@ OpenRosa
 orderBy
 passcode
 passphrase
+pdf
 permissioning
 plaintext
 plugins
@@ -201,6 +202,7 @@ slugified
 smartphone
 spam
 sphinxcontrib
+src
 Stata
 stateful
 subfolder
@@ -212,6 +214,7 @@ submissionList
 SVG
 svg
 templating
+tex
 toolbar
 toolchain
 trackpad
@@ -258,6 +261,7 @@ Wikimedia
 workflow
 Workflow
 workflows
+xelatex
 XForm
 Xform
 XForms
