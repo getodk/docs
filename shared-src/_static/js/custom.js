@@ -77,7 +77,7 @@ $(function(){
 		}
 	    }
 	})
-    });    
+    });
 });
 
 
@@ -87,3 +87,28 @@ $(function(){
 // Problem discovered while working on issue #399
 
 $('dt').has('.guilabel, .menuselection').addClass('gui-term')
+
+// Parse the json file which contains mappings from
+// old redirects to new redirects.
+
+var xmlhttp = new XMLHttpRequest();
+var redirects;
+var oldAnchors;
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        redirects = JSON.parse(this.responseText);
+        oldAnchors = Object.keys(redirects);
+    }
+};
+xmlhttp.open("GET", "/_static/anchor-redirects.json", true);
+xmlhttp.send();
+
+// Redirect to new anchor link whenever url on page load
+// contains an old anchor link.
+
+$(document).ready(function(e){
+    var hash = window.location.hash.substr(1)
+    if (oldAnchors.indexOf(hash) >= 0) {
+        window.location.hash = redirects[hash]
+    }
+});
