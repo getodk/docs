@@ -69,17 +69,18 @@ odk2-latex: odk2
 	@$(SPHINXBUILD) -b latex "$(COMPILE2_SRCDIR)" "$(ODK2_BUILDDIR)"/latex $(SPHINXOPTS)
 	python util/resize.py "$(ODK2_BUILDDIR)"
 
-odk1-pdf:
+odk1-pdf: odk1-latex
 	cd "$(ODK1_BUILDDIR)"/latex && \
 	xelatex OpenDataKit.tex && \
 	xelatex OpenDataKit.tex && \
+	mkdir -p ../_downloads && \
 	mv OpenDataKit.pdf ../_downloads/ODK-Documentation.pdf
 
-odk2-pdf:
+odk2-pdf: odk2-latex
 	cd "$(ODK2_BUILDDIR)"/latex && \
 	xelatex OpenDataKit2.tex && \
 	xelatex OpenDataKit2.tex && \
-	mkdir ../_downloads && \
+	mkdir -p ../_downloads && \
 	mv OpenDataKit2.pdf ../_downloads/ODK2-Documentation.pdf
 
 odk1-style-check: odk1
