@@ -819,6 +819,48 @@ to get any help about style guide testing:
 
   $ python style-test.py -h
 
+.. _docs-pdf:
+
+Building PDF for docs
+~~~~~~~~~~~~~~~~~~~~~~
+
+The docs can be downloaded as PDF for the ease of users.
+
+To build the pdf locally, follow these steps:
+
+.. note::
+
+  All steps below explain the build process for odk1-docs. To build pdf for odk2-docs in a similar way, you can replace **1** with **2** in the above commands.
+
+1. Install XeLatex
+
+  .. code-block:: console
+
+    $ sudo apt-get install texlive-xetex
+
+  For MacOS, refer `mactex <https://www.tug.org/mactex/>`_.
+  For Windows, refer `miktex <https://miktex.org/>`_.
+
+  .. note::
+
+    A docker image for XeLatex can be used as well instead of installing it on your system. Some of the useful links for the same:
+
+      - https://github.com/moss-it/docker-xelatex
+      - https://github.com/thomasWeise/docker-texlive
+
+2. Build latex for ODK docs
+
+  .. code-block:: console
+
+    $ make odk1-latex
+
+3. Generate pdf for the produced tex file
+
+  .. code-block:: console
+
+    $ make odk1-pdf
+
+  The pdf will be generated in :file:`/odk1-build/_downloads/ODK-Documentation.pdf`
 
 .. _build-the-docs:
 
