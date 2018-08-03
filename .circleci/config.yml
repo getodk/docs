@@ -58,11 +58,7 @@ jobs:
           at: ~/work
       - run:
           name: Build PDF
-          command: |
-              cd odk1-build/latex
-              xelatex OpenDataKit.tex
-              xelatex OpenDataKit.tex
-              mv OpenDataKit.pdf ../_downloads/ODK-Documentation.pdf
+          command: make odk1-pdf
       - store_artifacts:
           path: odk1-build/_downloads/ODK-Documentation.pdf
           destination: ODK-Documentation.pdf
@@ -128,12 +124,7 @@ jobs:
           at: ~/work
       - run:
           name: Build PDF
-          command: |
-              cd odk2-build/latex
-              xelatex OpenDataKit2.tex
-              xelatex OpenDataKit2.tex
-              mkdir ../_downloads
-              mv OpenDataKit2.pdf ../_downloads/ODK2-Documentation.pdf
+          command: make odk2-pdf
       - store_artifacts:
           path: odk2-build/_downloads/ODK2-Documentation.pdf
           destination: ODK2-Documentation.pdf
