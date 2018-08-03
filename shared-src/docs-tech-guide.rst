@@ -822,7 +822,7 @@ to get any help about style guide testing:
 .. _docs-pdf:
 
 Building PDF for docs
------------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 The docs can be downloaded as PDF for the ease of users.
 
@@ -858,16 +858,9 @@ To build the pdf locally, follow these steps:
 
   .. code-block:: console
 
-    $ cd odk1-build/latex
-    $ xelatex OpenDataKit.tex
-    $ xelatex OpenDataKit.tex
+    $ make odk1-pdf
 
-  The pdf will be generated in :file:`/odk1-build/latex/OpenDataKit.pdf`
-
-  .. note::
-
-    The xelatex command is run twice to ensure proper rendering of references within the docs.
-    In the first run, there will be multiple warnings about missing hyper-references which can be safely ignored.
+  The pdf will be generated in :file:`/odk1-build/_downloads/ODK-Documentation.pdf`
 
 .. _build-the-docs:
 
