@@ -44,6 +44,7 @@ datastores
 datatype
 datatypes
 datestamp
+Debian
 deviceID
 docutils
 Docutils
@@ -156,6 +157,7 @@ orderBy
 passcode
 passphrase
 pdf
+PDF
 permissioning
 plaintext
 plugins
@@ -214,7 +216,6 @@ submissionList
 SVG
 svg
 templating
-tex
 toolbar
 toolchain
 trackpad
