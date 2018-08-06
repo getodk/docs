@@ -47,6 +47,13 @@ NodeJS
 ---------
 You must use Version 6.2.2 or higher. To avoid directory path problems on Windows, we require :program:`npm` version 3, and that is only available on this node release (or higher). Follow the `instructions to install NodeJS <https://nodejs.org/en/>`_.
 
+.. _app-designer-prereqs-nodejs-windows:
+
+For Windows
+~~~~~~~~~~~~~~~
+
+After installing NodeJS, ensure the location of the :file:`npm` folder is added to the *PATH* variable of your system. If it is not, subsequent calls to access grunt will fail. For example: :file:`C:\\Users\\[username]\\AppData\\Roaming\\npm`
+
 .. _app-designer-prereqs-nodejs-unix:
 
 For Mac/Unix
@@ -90,11 +97,6 @@ After installing NodeJS, open a :program:`terminal` (which you can do by clickin
 
   outputs a message telling you permission is denied, then you will have to change the ownership of the :file:`/usr/local/` and :file:`/usr/local/bin/` directories. On Mac, follow the `instructions to take ownership <http://osxdaily.com/2013/04/23/change-file-ownership-mac-os-x/>`_ of these directories, or to at least give yourself read permission. On other Unix systems, use the :program:`chown` command or the user-interface appropriate to your distribution to do so.
 
-
-.. warning::
-
-  Add the location of the :program:`npm` folder to the *PATH* variable of your system if subsequent calls to access grunt in the next step fail. Ex. :file:`C:\\Users\\[username]\\AppData\\Roaming\\npm`
-
 .. _app-designer-prereqs-grunt:
 
 Grunt
@@ -123,7 +125,7 @@ Should display the installed version of :program:`grunt`. For example the versio
 
 .. warning::
 
-  If :program:`grunt` is not found, then you need to add it to the *PATH* variable of your system.
+  If :program:`grunt` is not found, you may need to add it to the *PATH* variable of your system.
 
 .. _app-designer-prereqs-android:
 
@@ -144,7 +146,12 @@ To install the Android SDK:
   5. Wait for the install of the SDK Tools to complete. Windows will need to manually run the :file:`.exe` file previously downloaded to start installation.
   6. Run the SDK Manager
 
-    - On Windows, it is available in the :guilabel:`Start Menu` under Android SDK Tools (If you have an error where the packages fail to install then you should run Android SDK as an Administator).
+    - On Windows, it is available in the :guilabel:`Start Menu` under Android SDK Tools
+
+      .. warning::
+
+        If the packages fail to install, you may need to run the Android SDK as an Administrator.
+
     - On Mac/Unix, open the SDK folder you downloaded above. In the :file:`bin/` or :file:`tools/` directories (on some versions it is in both places--it doesn't matter which you use), double click the file called :file:`android`.
 
   7. Select the latest versions of the following packages (by checking their checkboxes):
