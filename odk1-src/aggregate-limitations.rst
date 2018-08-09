@@ -41,7 +41,7 @@ Adding blank forms through the ODK Aggregate website is limited to an overall fo
 
 An easier solution is use :doc:`ODK Briefcase <briefcase-intro>`.
 
-Issues with older version of Aggregate
+Issues with older versions of Aggregate
 ----------------------------------------
 
 Aggregate < 1.4.8 used deprecated technology
