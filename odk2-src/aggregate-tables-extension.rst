@@ -19,7 +19,7 @@ First you’ll have to install ODK Aggregate v1.4.15 to a server (see :doc:`aggr
   #. Go to the :menuselection:`Site Admin --> Preferences` page.
   #. Check the checkbox for :guilabel:`ODK Tables Synchronization Functionality`.
   #. Go to the :menuselection:`Site Admin --> Permissions` page.
-  #. Add ODK Aggregate usernames or :program:`Gmail` or :program:`Google Apps` account users (do this by typing one or more users' usernames or e-mail addresses into the text area and clicking :guilabel:`Add User`).
+  #. Add ODK Aggregate usernames by typing one or more users' e-mail addresses into the text area and clicking :guilabel:`Add User`.
   #. If you have created an ODK Aggregate username, be sure to :guilabel:`Change Password` on that account to set the initial password for the account.
   #. Grant these users the :guilabel:`Synchronize Tables` permissions.
   #. Select at least one user to be the administrator and grant them :guilabel:`Administer Tables` permissions. This user will have the ability to :guilabel:`Reset App Server` from the Android device and add or remove tables and configuration files on the server. This is the equivalent of the Form Manager permissions in ODK 1.x deployments.
