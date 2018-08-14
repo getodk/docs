@@ -819,7 +819,6 @@ to get any help about style guide testing:
 
   $ python style-test.py -h
 
-
 .. _build-the-docs:
 
 Build, View, and Debug
@@ -894,6 +893,45 @@ It's a good idea to delete the ``build`` directory before each rebuild.
   In the future, 
   it will also become the canonical build script for ODK Docs,
   including additional tests and other build tasks.
+
+.. _build-pdf:
+
+Build the Docs as a PDF
+~~~~~~~~~~~~~~~~~~~~~~~
+
+To build the docs as a PDF, follow these steps:
+
+.. note::
+
+  The steps below explain the build process for ODK 1's docs. To build the PDF for ODK 2's docs, replace **1** with **2** in the below commands.
+
+1. Install XeLatex
+
+  - For macOS, use `MacTex <https://www.tug.org/mactex/>`_.
+  - For Windows, use `MiKTeX <https://miktex.org/>`_.
+  - For Ubuntu (or Debian), run
+
+    .. code-block:: console
+
+      $ sudo apt-get install texlive-xetex
+
+  .. note::
+
+    Instead of installing XeLatex directly on your system, you can also use this `Docker image <https://github.com/schickling/dockerfiles/tree/master/latex>`_.
+
+2. Build LaTex file
+
+  .. code-block:: console
+
+    $ make odk1-latex
+
+3. Generate PDF for the produced LaTex file
+
+  .. code-block:: console
+
+    $ make odk1-pdf
+
+  The PDF will be generated in :file:`/odk1-build/_downloads/ODK-Documentation.pdf`
 
 .. _push-the-docs:
 

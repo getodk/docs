@@ -3,38 +3,36 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Open Data Kit's documentation!
-=========================================
+Welcome to ODK's Docs!
+======================
 
-:dfn:`Open Data Kit` (ODK) is a suite of open source applications that help organizations engaged in enumerator-mediated data collection. ODK tools assist with the collection and management of survey data using digital forms. These include the primary ODK applications:
+:dfn:`Open Data Kit` (ODK) is a suite of open source tools that help organizations collect and manage data. 
 
-- :doc:`collect-intro`, an Android mobile app that replaces paper-based forms.
-- :doc:`aggregate-intro`, a server-side data storage and analysis tool.
+The core ODK tools are:
 
-Also part of the ODK suite are several tools that support form creation and data management:
+- :doc:`collect-intro`, an Android app that replaces paper-based forms.
+- :doc:`aggregate-intro`, a proven server for data storage and analysis tool.
+- :doc:`central-intro`, a modern server with a RESTful API.
+- :doc:`build-intro`, a drag-and-drop form designer.
+- :doc:`ODK XLSForm </xlsform>`, an Excel-based form designer.
+- :doc:`briefcase-intro`, a desktop tool that pulls and exports data from Aggregate and Collect.
 
-- **ODK Build** lets you design forms with a drag-and-drop form interface.
-- **ODK Validate** validates forms against the ODK XForms specification.
-- **ODK Form Uploader** uploads blank forms and their media files to ODK Aggregate.
-- **ODK Briefcase** packages and transfers data between instances of Collect and Aggregate.
+The specifications and libraries that power the tools are:
 
-ODK also maintains libraries and specifications that support these applications.
+- :doc:`openrosa`, APIs for how ODK clients communicate with ODK servers.
+- `ODK XForms spec <https://opendatakit.github.io/xforms-spec/>`_, a subset of the W3C XForms specification, for use in the ODK ecosystem.
+- `ODK JavaRosa <https://github.com/opendatakit/javarosa>`_, a Java library that renders forms complying with ODK XForms.
+- `XLSForm spec <https://opendatakit.github.io/xforms-spec/>`_, a high-level Excel-based form specification.
+- `pyxform <https://github.com/xlsform/pyxform>`_, a Python library that converts XLSForms into ODK XForms.
 
-- **ODK XForm** is a subset of the W3 XForm specification, for use in the ODK ecosystem.
-- **ODK JavaRosa** is a Java library that renders forms complying with the ODK XForm specification.
-- **XLSForm** defines an Excel format for designing forms.
-
-
-For a complete list of our projects, check out `Open Data Kit on Github <https://github.com/opendatakit>`_.
-
--------
+For a complete list of our tools, check out `Open Data Kit on GitHub <https://github.com/opendatakit>`_.
 
 .. _using-odk:
 
 How is ODK used?
 ------------------
 
-In most cases, users of ODK:
+For a quick start, read :doc:`getting-started`. In most cases, users of ODK:
 
 - Create survey forms using `Build <https://build.opendatakit.org/>`_ or `XLSForm <http://xlsform.org/>`_.
 - :ref:`Upload forms <aggregate-add-new-forms>` to an :doc:`aggregate-intro` server.
@@ -48,13 +46,7 @@ This requires:
 - :doc:`Installing Collect on a phone or other mobile device <collect-install>`
 - :doc:`Installing Aggregate on a server <aggregate-install>`
 
-.. tip::
-
-  While this is the *typical* use pattern, it is not the only way to do things. ODK is a very flexible set of tools, and organizations will find their own best practices for adopting it.
-
-
-
-
+While this is the *typical* use pattern, it is not the only way to do things. ODK is a very flexible set of tools, and organizations will find their own best practices for adopting it.
 
 
 .. toctree::

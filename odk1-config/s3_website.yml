@@ -41,3 +41,4 @@ redirects:
   form-interaction/index.html: form-logic
   odk-build/index.html: build-intro
   pyxform/index.html: xlsform
+  form-uploader/index.html: briefcase-intro

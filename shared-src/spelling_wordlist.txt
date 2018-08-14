@@ -1,5 +1,5 @@
-adb
 accessor
+adb
 Admin
 admin
 anonymousUser
@@ -44,6 +44,7 @@ datastores
 datatype
 datatypes
 datestamp
+Debian
 deviceID
 docutils
 Docutils
@@ -155,6 +156,8 @@ OpenRosa
 orderBy
 passcode
 passphrase
+pdf
+PDF
 permissioning
 plaintext
 plugins
@@ -201,6 +204,7 @@ slugified
 smartphone
 spam
 sphinxcontrib
+src
 Stata
 stateful
 subfolder
@@ -258,6 +262,7 @@ Wikimedia
 workflow
 Workflow
 workflows
+xelatex
 XForm
 Xform
 XForms

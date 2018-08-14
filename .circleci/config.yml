@@ -35,9 +35,8 @@ jobs:
           name: Check spelling of ODK1 Documentation
           command: make odk1-spell-check
       - run:
-          name: Build PDF of ODK1 Documentation
-          command: |
-            make odk1-latex
+          name: Build LaTex of ODK1 Documentation
+          command: make odk1-latex
       - run:
           name: Compress images
           command: pngquant odk1-build/_images/*.png --force --ext .png --verbose
@@ -62,6 +61,7 @@ jobs:
               cd odk1-build/latex
               xelatex OpenDataKit.tex
               xelatex OpenDataKit.tex
+              mkdir -p ../_downloads
               mv OpenDataKit.pdf ../_downloads/ODK-Documentation.pdf
       - store_artifacts:
           path: odk1-build/_downloads/ODK-Documentation.pdf
@@ -105,12 +105,11 @@ jobs:
           name: Check spelling of ODK2 Documentation
           command: make odk2-spell-check
       - run:
-          name: Build PDF of ODK2 Documentation
-          command: |
-            make odk2-latex
+          name: Build LaTex of ODK2 Documentation
+          command: make odk2-latex
       - run:
           name: Compress images
-          command: pngquant odk2-build/_images/*.png --force --ext .png --verbose 
+          command: pngquant odk2-build/_images/*.png --force --ext .png --verbose
       - store_artifacts:
           path: odk2-build
           destination: odk2-build
@@ -132,7 +131,7 @@ jobs:
               cd odk2-build/latex
               xelatex OpenDataKit2.tex
               xelatex OpenDataKit2.tex
-              mkdir ../_downloads
+              mkdir -p ../_downloads
               mv OpenDataKit2.pdf ../_downloads/ODK2-Documentation.pdf
       - store_artifacts:
           path: odk2-build/_downloads/ODK2-Documentation.pdf
