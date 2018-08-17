@@ -1064,7 +1064,7 @@ The rank widget allows the user to order options from a list. The value saved in
 
 Like with :ref:`select-widgets`, the options are listed on a sheet named **choices** in an XLSForm.
 
-To change the order of the options in the list, tap the "Rank items" button. In the resulting dialog, long press on items and once they get a border around them, drag them up or down to change their order. If no :ref:`default <default-responses>` is provided, the value for the question is blank until the user taps "OK" in the ranking dialog.
+To change the order of the options in the list, tap the :guilabel:`Rank items` button. In the resulting dialog, long press on an item and once it gets a border around it, drag it up or down to change the order. If no :ref:`default <default-responses>` is provided, the value for the question is blank until the user taps :guilabel:`OK` in the ranking dialog.
 
 type
   :tc:`rank {list_name}`
