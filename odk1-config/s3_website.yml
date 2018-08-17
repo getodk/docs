@@ -29,16 +29,16 @@ cloudfront_wildcard_invalidation: true
 
 redirects:
   # use url/index.html syntax to enable url, url/, url/index.html and hash passthrough
-  aggregate-guide/index.html: /aggregate-intro
-  collect-guide/index.html: /collect-intro
-  collect-integrations/index.html: /launch-apps-from-collect
-  visualize/index.html: /aggregate-visualize
-  style-guide/index.html: docs-style-guide
-  briefcase-guide/index.html: briefcase-intro
+  aggregate-guide/index.html: aggregate-intro
   briefcase-forms/index.html: briefcase-using
+  briefcase-guide/index.html: briefcase-intro
   briefcase-vs-aggregate/index.html: briefcase-and-aggregate
-  form-widgets/index.html: form-question-types
+  collect-guide/index.html: collect-intro
+  collect-integrations/index.html: launch-apps-from-collect
   form-interaction/index.html: form-logic
+  form-uploader/index.html: briefcase-intro
+  form-widgets/index.html: form-question-types
   odk-build/index.html: build-intro
   pyxform/index.html: xlsform
-  form-uploader/index.html: briefcase-intro
+  style-guide/index.html: docs-style-guide
+  visualize/index.html: aggregate-visualize
