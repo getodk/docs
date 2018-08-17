@@ -1054,6 +1054,45 @@ you can add :tc:`or_other`.
 This will add "Other" as an additional option to your choice list.
 The :th:`name` value of the choice when selected will be :tc:`other`.
 
+
+.. _rank-widget:
+
+Rank widget
+-----------------
+
+The rank widget allows the user to order options from a list. The value saved in the form and sent to the server is a space-separated ordered list of the options.
+
+Like with :ref:`select-widgets`, the options are listed on a sheet named **choices** in an XLSForm.
+
+To change the order of the options in the list, tap the "Rank items" button. In the resulting dialog, long press on items and once they get a border around them, drag them up or down to change their order. If no :ref:`default <default-responses>` is provided, the value for the question is blank until the user taps "OK" in the ranking dialog.
+
+type
+  :tc:`rank {list_name}`
+
+.. image:: /img/form-widgets/rank-blank.*
+  :alt: The rank widget, as displayed in the ODK Collect app on an Android phone. The question text is "Rank widget." The hint text is "rank type with no appearance, 4 text choices. Long press on a choice and drag it to change its position." Below that is a button with label "Rank items."
+
+.. image:: /img/form-widgets/rank-drag.*
+  :alt: The rank widget, as displayed in the ODK Collect app on an Android phone. The question text is "Rank widget." The hint text is "rank type with no appearance, 4 text choices. Long press on a choice and drag it to change its position." A dialog is open showing the options to rank. The B option has a border around it and is being moved into position 4.
+
+.. image:: /img/form-widgets/rank-ordered.*
+ :alt: The rank widget, as displayed in the ODK Collect app on an Android phone. The question text is "Rank widget." The hint text is "rank type with no appearance, 4 text choices. Long press on a choice and drag it to change its position." Below that is a button with label "Rank items." Below the button is the current order of the options.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+
+  rank opt_abcd,rank_widget,Rank widget,"rank type with no appearance, 4 text choices"
+
+.. csv-table:: choices
+  :header: list_name, name, label
+
+  opt_abcd,a,A
+  opt_abcd,b,B
+  opt_abcd,c,C
+  opt_abcd,d,D
+
   
 .. _location-widgets:
 
