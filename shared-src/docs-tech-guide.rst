@@ -11,7 +11,7 @@ when contributing to ODK Documentation.
 .. note::
 
   Developer and authoring tools 
-  have lots of options and alternatives. 
+  have a lot of options and alternatives. 
   Local tools and workflows presented in this guide 
   are what the authors feel would be easiest 
   for a non-coding contributor to set up and use.
@@ -71,7 +71,7 @@ Overview of Workflow
 
 When you first get started you'll need to:
 
-1. Fork the `ODK Docs repo`_ your own Github Account
+1. Fork the `ODK Docs repo`_ to your own Github Account
 2. Clone it down to your local machine
 3. Install dependencies
 
@@ -234,7 +234,7 @@ This will contain your virtualenv and the docs repo as subdirectories.
   $ mkdir odk
   $ cd odk
 
-Now, inside that  directory, create a python3 virtualenv.
+Now, inside that directory, create a python3 virtualenv.
 
 .. code-block:: console
 
@@ -336,7 +336,7 @@ __ GitLFS_
 
   **On Windows**
 
-  Make sure :file:`git-lfs.exe` and  :file:`git.exe` are under the same main  directory on Windows. (See `this page <https://github.com/git-lfs/git-lfs/issues/919>`_ for reference.
+  Make sure :file:`git-lfs.exe` and  :file:`git.exe` are under the same main directory on Windows. (See `this page <https://github.com/git-lfs/git-lfs/issues/919>`_ for reference.
 
 GLFS tracks binary files as defined in the :file:`.gitattributes` file `in the repo <https://github.com/opendatakit/docs/blob/master/.gitattributes>`_. Most common binary file formats are already listed, but there might be others we haven't thought of yet.
 
@@ -378,7 +378,7 @@ This will add a line to :file:`.gitattributes`.
   in a commit before the commit 
   that adds the new binary files.
 
-  We will not accept Pull Requests 
+  We will not accept pull requests 
   that include binary files untracked by GLFS.
 
 
@@ -391,7 +391,7 @@ Some testing and documentation tasks
 (including :ref:`making screenshots from ODK Collect <screenshots>`)
 require the `Android Debug Bridge <https://developer.android.com/studio/command-line/adb.html>`_ command line tool.
 You can either install Android Studio 
-or install ADB as standalone SDK tool.
+or install ADB as a standalone SDK tool.
 
 .. _android-studio:
 
@@ -435,7 +435,7 @@ On Mac, add the following to your :file:`.bash_profile`
 
   The path specified above 
   assumes a default installation of Android Studio. 
-  You may have put Android Studio in a different location.
+  You may have installed Android Studio in a different location.
 
 
 .. _docs-workflow-setup:
@@ -463,11 +463,11 @@ Clone to local
 
 From your own fork of the repo on GitHub, 
 select the :guilabel:`Clone or download` button. 
-Copy the URI from the text box that opens up. 
+Copy the URL from the text box that opens. 
 It will be something like: 
 ``https://github.com/your-gh-username/docs.git``
 
-Open your terminal, 
+Open your terminal 
 and `cd` to your preferred directory. 
 Then `git clone` the repo:
 
@@ -481,19 +481,19 @@ Then `git clone` the repo:
 
 The rest of the documentation assumes 
 you are in the directory for the repo 
-(the directory containing ``conf.py`` and ``index.rst``).
+(the directory containing :file:`conf.py` and :file:`index.rst`).
 
 .. tip::
 
-  - The ``clone`` command creates a new directory inside the current one.
-    So you do not need to create a new `odk-docs` directory first.
+  - The :command:`clone` command creates a new directory inside the current directory.
+    You do not need to create a new `odk-docs` directory first.
   - As noted above,
     we recommend a master :file:`odk` directory 
     that holds your virtualenv directory and your git repo 
     in two separate subdirectories. 
     So you would be in that master :file:`odk` directory 
-    when you clone down the repo.
-  - Double check that the right folders are in the right places
+    when you clone the repo.
+  - Double-check that the right folders are in the right places:
 
   .. code-block:: none
 
@@ -507,9 +507,9 @@ Set the upstream remote
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When you clone down a repo, 
-the local copy calls your GitHub copy ``origin``. 
+the local copy names your GitHub copy ``origin``. 
 You should also set ``upstream`` 
-as the name of the  main ODK Docs GitHub repo.
+as the name of the main ODK Docs GitHub repo.
 
 .. code-block:: console
 
@@ -548,16 +548,16 @@ set up and activated, then:
 
   If you are working on 
   the design, testing, or deployment of the docs, 
-  you might find the need to install an additional PyPi package. 
-  If you do, 
+  you might need to install an additional PyPi package. 
+  If so, 
   please update the :file:`requirements.txt` file with 
   :command:`pip freeze > requirements.txt`. 
-  Pull Requests which change :file:`requirements.txt` 
-  should include a note about why the new packages are needed.
+  Pull requests which change :file:`requirements.txt` 
+  should include a note about why the new package is needed.
 
 .. note::
 
-  If you have problems when running the Sphinx commands (see below), 
+  If you have problems when running Sphinx commands (see below), 
   you may have a dependency issue. 
   Try running :command:`pip install -r requirements.txt` again.
 
@@ -576,7 +576,7 @@ you need to keep your local copy up to date.
 
 You probably won't need to do this the first time, 
 but you should always pull in any changes from the main repository
-before working.
+before you begin working.
 
 
 .. code-block:: console
@@ -601,20 +601,20 @@ before working.
 Make a New Branch
 ~~~~~~~~~~~~~~~~~~~
 
-Choose a specific, deliverable task to work on. 
+Choose a specific, deliverable issue to work on. 
 This should be an `active issue from our issue tracker on GitHub`__. 
 
 __ https://github.com/opendatakit/docs/issues
 
-Create a new branch in which you will work on this specific issue. 
-The branch name should briefly describe what you are doing. 
+Create a new branch in which to work on this specific issue. 
+Your branch name should briefly describe what you are doing. 
 For example, 
 the original author of this contributor guide 
 worked in a branch called ``contributing``. 
 
 Also, 
-make sure that all the branches are derived from ``master``,
-to avoid mixing up work from different issues commits.
+make sure that all your branches are derived from ``master``
+to avoid confusing work from different commits.
 
 .. code-block:: console
 
@@ -622,7 +622,7 @@ to avoid mixing up work from different issues commits.
 
 .. tip::
 
-  Branch names should be short, lowercase, and use hyphens for separators.
+  Branch names should be short, lowercase, and use hyphens as separators.
 
   Good branch names:
 
@@ -642,21 +642,20 @@ to avoid mixing up work from different issues commits.
 Work on the Docs
 ~~~~~~~~~~~~~~~~~~~
 
-Write and edit files in your favorite editor.
+Write and edit files in your favorite code editor.
 
 
 .. note::
 
-  To work on ODK Docs, 
-  you need to work in a code editor.
+  You need to use a code editor to work on ODK docs.
 
   If you've never used a code editor before, 
   you should know that they are a little different
-  than other writing environments
+  from other writing environments
   like MS Word or your email editor.
   
   People have strong opinions about code editors,
-  and nearly everyone who uses them regularly has a favorite.
+  and almost everyone has a favorite.
   
   If you're new to using an editor, 
   you might want to try `Atom`_ or `Sublime`_,
@@ -680,9 +679,9 @@ To run the spell checker:
   $ sphinx-build -b spelling src build/spelling
 
 If there are any warnings, make sure that you fix them
-to avoid build failure.
+to avoid a build failure.
 
-The error messages will be displayed on terminal
+The error messages will be displayed in the terminal
 as well as stored in a file :file:`/build/spelling/output.txt`.
 
 If you find a word which is not misspelled
@@ -733,37 +732,37 @@ use the option :option:`-d` or :option:`--diff`.
 
 .. note::
 
-  Using this option, only checks the files
+  This option checks only the files
   that have been edited since the last :command:`git commit`.
   So, if you modify the files,
   make sure to check them
   before making a commit.
 
-To run the tests on modified files and some other specified files:
+To run the tests on modified files and other specified files:
 
 .. code-block:: console
 
   $ python style-test.py -d filename1.rst filename2.rst ...
 
 The output will consist of a list of warnings and errors.
-Make sure to go through the warnings
-and eliminate the ones which violate the style guide rules.
+Read through the warnings
+and eliminate the ones that violate the style guide rules.
 
 .. note::
 
-  It is not necessary to fix all the warnings
-  but you should go through each warning
-  and decide if a change makes sense.
+  It is not necessary to fix all the warnings,
+  but you should review each warning
+  and decide if a change based on the warning makes sense.
 
 If there are any errors, you need to fix them to avoid build failure.
-You can manually fix the errors or
+You can either fix the errors or
 use the option :option:`-f` or :option:`--fix`.
 
 .. code-block:: console
 
   $ python style-test.py -f
 
-If you want to fix the errors in some specified files:
+If you want to fix the errors in specified files:
 
 .. code-block:: console
 
@@ -771,15 +770,15 @@ If you want to fix the errors in some specified files:
 
 .. tip::
 
-  After automatic fixing of errors, make sure to go through the changes made.
+  After automatic error fixing, be sure to review the changes that were made.
 
-To ignore any part of a file from being checked, you can enclose it in comments:
+To keep any part of a file from being checked, you can enclose the text in comments:
 
 .. code-block:: rst
 
   .. startignore
 
-  Some text which is to be ignored while testing.
+  Some text to ignore while testing.
 
   .. endignore
 
@@ -790,7 +789,7 @@ using the :option:`-o` or :option:`--out_path` with the output filename:
 
   $ python style-test.py -o output.csv
 
-To generate output for a some specified files:
+To generate output for specified files:
 
 .. code-block:: console
 
@@ -839,14 +838,14 @@ and ``build`` refers to the target of the build
 
 When you run the build, 
 you may see error or warning messages. 
-These indicate potential problems with the documentation, like:
+These indicate potential problems with the documentation, such as:
 
 - syntax errors
 - broken links
 - terms not included in the glossary
 
 Error and warning messages 
-include a file name and line number for tracking them down. 
+include a file name and line number to make it easy to locate them. 
 Try to resolve all your errors and warnings 
 before issuing a pull request. 
 If this is not possible, 
@@ -938,7 +937,7 @@ To build the docs as a PDF, follow these steps:
 Push Your Branch
 ~~~~~~~~~~~~~~~~~~
 
-Once your work on the issue is completed, 
+Once your work on an issue is complete, 
 add the files you've changed or created, 
 and write a relevant commit message describing the changes.
 
@@ -948,8 +947,7 @@ and write a relevant commit message describing the changes.
   $ git commit -m "A small but relevant commit message"
 
 Then, push the changes. 
-The first time you do this on any branch, 
-you'll need to specify the branch name:
+The first time you do this, you need to specify the branch name:
 
 .. code-block:: console
 
@@ -970,10 +968,10 @@ Issue a Pull Request
 ~~~~~~~~~~~~~~~~~~~~~~
 
 A :dfn:`pull request` (or PR) 
-is a request from you to the ODK Docs maintainers, 
-for us to pull in your changes to the main repo.
+is a request from you to the ODK Docs maintainers 
+to pull in your changes to the main repo.
 
-Go the `main docs repo on GitHub`__. 
+Go to the `main docs repo on GitHub`__. 
 You'll see a message there referencing your recently pushed branches. Select :guilabel:`Compare & pull request` to start a pull request.
 
 __ https://github.com/opendatakit/docs>
@@ -982,7 +980,7 @@ Follow GitHub's instructions.
 The :guilabel:`Base fork` should be the main repo, 
 and :guilabel:`base` should be ``master``. 
 Your repo and working fork should be listed beside them. 
-(This should all populate by default, 
+(This information should populate by default, 
 but be sure to double check.) 
 If there is a green **Able to be merged** message, 
 you can proceed.
@@ -1009,10 +1007,10 @@ they will reach out to you.
 
 .. note::
 
-   If you happen to rename any document file (:file:`*.rst`), 
-   then be sure that you add the redirect in your PR.
+   If you rename a document file (:file:`*.rst`), 
+   be sure that you add the redirect in your PR.
 
-   To add the redirect go to :file:`s3_website.yml`, 
+   To add the redirect, go to :file:`s3_website.yml`, 
    and add a mapping from the old file name to the new file name 
    below the **redirects:** line, one mapping per line. 
     
@@ -1046,7 +1044,7 @@ Then you should push those change to your copy on GitHub ( ``origin`` ).
 
   $ git push
 
-If you want to delete your branch from before, you can do that:
+If you want, you can delete your previous branch.
 
 .. code-block:: console
 
