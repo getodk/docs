@@ -33,13 +33,11 @@ Our `blog <https://opendatakit.org/blog/>`_ and `deployments page <https://opend
 How do I use ODK?
 ~~~~~~~~~~~~~~~~~~~~
 
-Please read the :doc:`Getting Started Guide <getting-started>` section of our documentation to understand the initial instructions.
+The following docs will help you learn how to use ODK:
 
-Please read through the documentation on our `implementer instructions <https://opendatakit.org/use/>`_ and on the `developer wiki <https://github.com/opendatakit/opendatakit/wiki>`_.
-
-If that doesn't help, search the `ODK forum <https://forum.opendatakit.org/>`_ to see if the issue has been answered.
-
-If you don't find an answer after searching, then post your question to the appropriate category.
+  * The `Getting Started Guide <https://docs.opendatakit.org/getting-started/>`_ walks you though the basic setup process.
+  * The `developer wiki <https://github.com/opendatakit/opendatakit/wiki>`_ contains information on how to set up your developer environment.
+  * The `ODK forum <https://forum.opendatakit.org/>`_ has community discussions on using ODK.
 
 .. _what-kinds-question:
 
