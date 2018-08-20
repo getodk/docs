@@ -60,7 +60,7 @@ For a specific ODK version:
 
 |          |    Copy     |     LaTeX     |     Style Check     |    Spell Check     |    Check All   |
 | -------- | :---------: | :-----------: | :-----------------: | :----------------: | :----------------: |
-| **Options** | odk1_copy |  odk1-latex |  odk1-style-check | odk1-spell-check |    odk1-check     |
+| **Options** | odk1-copy |  odk1-latex |  odk1-style-check | odk1-spell-check |    odk1-check     |
 
 To build ODK 2 docs, just replace `odk1` with `odk2`. 
 

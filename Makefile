@@ -19,44 +19,44 @@ help:
 
 .PHONY: help Makefile
 
-odk1_clean:
+odk1-clean:
 	rm -rf $(COMPILE1_SRCDIR)
 	rm -rf $(ODK1_BUILDDIR)
 
-odk2_clean:
+odk2-clean:
 	rm -rf $(COMPILE2_SRCDIR)
 	rm -rf $(ODK2_BUILDDIR)
 
-odk1_clean_files:
+odk1-clean-files:
 	rm -rf $(COMPILE1_SRCDIR)
 	rm -rf $(ODK1_BUILDDIR)/*
 
-odk2_clean_files:
+odk2-clean-files:
 	rm -rf $(COMPILE2_SRCDIR)
 	rm -rf $(ODK2_BUILDDIR)/*
 
-clean: odk1_clean odk2_clean
+clean: odk1-clean odk2-clean
 
-odk1_copy: odk1_clean_files
+odk1-copy: odk1-clean-files
 	mkdir $(COMPILE1_SRCDIR)
 	cp -rf $(ODK1_SRCDIR)/* $(COMPILE1_SRCDIR)
 	cp -rf $(SHARED_SRCDIR)/* $(COMPILE1_SRCDIR)
 
-odk2_copy: odk2_clean_files
+odk2-copy: odk2-clean-files
 	mkdir $(COMPILE2_SRCDIR)
 	cp -rf $(ODK2_SRCDIR)/* $(COMPILE2_SRCDIR)
 	cp -rf $(SHARED_SRCDIR)/* $(COMPILE2_SRCDIR)
 
-odk1: odk1_copy
+odk1: odk1-copy
 	@$(SPHINXBUILD) -b dirhtml "$(COMPILE1_SRCDIR)" "$(ODK1_BUILDDIR)" $(SPHINXOPTS)
 
-odk2: odk2_copy
+odk2: odk2-copy
 	@$(SPHINXBUILD) -b dirhtml "$(COMPILE2_SRCDIR)" "$(ODK2_BUILDDIR)" $(SPHINXOPTS)
 
-odk1-deploy: odk1_copy
+odk1-deploy: odk1-copy
 	@$(SPHINXBUILD) -W -b dirhtml "$(COMPILE1_SRCDIR)" "$(ODK1_BUILDDIR)" $(SPHINXOPTS)
 
-odk2-deploy: odk2_copy
+odk2-deploy: odk2-copy
 	@$(SPHINXBUILD) -W -b dirhtml "$(COMPILE2_SRCDIR)" "$(ODK2_BUILDDIR)" $(SPHINXOPTS)
 
 build-all: odk1 odk2
