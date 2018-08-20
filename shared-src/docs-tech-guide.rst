@@ -463,7 +463,7 @@ Clone to local
 
 From your own fork of the repo on GitHub, 
 select the :guilabel:`Clone or download` button. 
-Copy the URL from the text box that opens. 
+Copy the URI from the text box that opens. 
 It will be something like: 
 ``https://github.com/your-gh-username/docs.git``
 
