@@ -50,12 +50,6 @@ Glossary
 
     A tool for validating forms against the :term:`ODK XForms specification <ODK XForm>`.
 
-  Form Uploader
-
-    Part of ODK.
-
-    A tool for uploading blank forms and their media files to ODK Aggregate.
-
   Briefcase
 
     Part of ODK.
