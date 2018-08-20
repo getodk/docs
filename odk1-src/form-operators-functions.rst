@@ -751,19 +751,11 @@ Utility
 
   Returns a shuffled :arg:`nodeset`.
   
-  A shuffle with a numeric :arg:`seed` is deterministic and reproducible. 
+  A shuffle with a numeric :arg:`seed` is deterministic and reproducible.
   
-  .. tip::
-  
-    You may want to generate and store a :arg:`seed` in a previous :ref:`calculate <calculations>` row, so you have a reproducible log of how a nodeset was randomized. Use :func:`once` to make sure the value doesn't change after being set.
-    
-    .. rubric:: XLSForm
-    
-    .. csv-table:: survey
-      :header: type, name, calculation
-      
-      calculate, seed_1, once(random())
-      calculate, shuffled_set, randomize(${some_nodeset}, ${seed_1})
+  The primary use for this function is to randomize the order of choices for a select question. The :ref:`documentation on select widgets <randomize-choice-order>` describes how this is done in XLSForm.
+
+  :func:`randomize` can only be used in a context where a :arg:`nodeset` is accepted. Note that questions of type **calculate** cannot reference a :arg:`nodeset`.
     
 .. function:: uuid([length]) 	
 
