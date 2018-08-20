@@ -566,7 +566,7 @@ Select widgets
 Select widgets offer the :term:`participant` options to pick from.
 You can offer the participant 
 a :ref:`single choice <single-select-widget>`,
-or the ability to :ref:`choose multiple answers <multi-select-widget>`.
+or the ability to :ref:`choose multiple answers <multi-select-widget>`. The order of the choices can be :ref:`randomized <randomize-choice-order>` for any of the select types described below.
 
 The options for a select question are listed
 on a sheet named **choices**, in your XLSForm file.
@@ -1042,6 +1042,52 @@ To include images as choices for select questions:
    - If you are adding the form to your device directly,
      make sure the media folder is placed in
      :file:`/sdcard/odk/forms/`.
+
+.. _randomize-choice-order:
+
+Randomizing choice order
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To reduce bias, choice order can be randomized for any of the select question types described above. To display the choices in a different order each time the question is displayed, set **randomize** to **true** in the :th:`parameters` column of the XLSForm **survey** sheet:
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, parameters, name, label, hint
+
+  select_one opt_abcd,randomize=true,select_one_random_widget,Select one widget,"Select one with random choice order set on each display"
+
+.. csv-table:: choices
+  :header: list_name, name, label
+
+  opt_abcd,a,A
+  opt_abcd,b,B
+  opt_abcd,c,C
+  opt_abcd,d,D
+
+In the example above, each time the question is displayed, the choices will be in a different order. It is often preferable to pick one order that the choices will always be displayed in for a given filled form. This can be accomplished by setting a seed for the randomization:
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, parameters, name, label, hint, calculation
+
+  calculate,,my_seed,,,once(decimal-date-time(now()))
+  select_one opt_abcd,"randomize=true,seed=${my_seed}",select_one_widget,Select one with random choice order set once per filled form
+
+.. csv-table:: choices
+  :header: list_name, name, label
+
+  opt_abcd,a,A
+  opt_abcd,b,B
+  opt_abcd,c,C
+  opt_abcd,d,D
+
+This seed can also be used to recreate the order choices were displayed in. See `the XForms spec <https://opendatakit.github.io/xforms-spec/#fn:randomize>`_ for a description of the randomization algorithm used.
+
+.. note::
+
+  In the seed expression, :func:`once` is important because it makes sure the seed is not changed if the same filled form is opened more than once.
 
 .. _or-other:  
 
