@@ -132,4 +132,3 @@ Platform Developers should already be familiar with everything from the User and
   :caption: Reference
 
   faq
-  glossary
