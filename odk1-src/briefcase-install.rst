@@ -9,7 +9,7 @@ Setting Up ODK Briefcase
 
   Make sure `Java 8 <https://java.com/en/download/>`_ or higher is `installed on your system <https://www.java.com/en/download/help/download_options.xml>`_.
   
-#. Download `ODK Briefcase <https://opendatakit.org/downloads/download-category/briefcase/>`_.
+#. Download `ODK Briefcase <https://github.com/opendatakit/briefcase/releases/latest>`_.
 
    You may wish to move the Briefcase file to your desktop, your Applications directory, or another location.
 

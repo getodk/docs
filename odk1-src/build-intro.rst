@@ -23,7 +23,7 @@ Go to http://build.opendatakit.org and sign in.
 
 .. note::
   
-  There is a `downloadable version of ODK Build <https://opendatakit.org/downloads/download-category/build/>`_ available.
+  There is a `downloadable version of ODK Build <https://github.com/opendatakit/build/releases/latest>`_ available.
 
 .. tip::
 

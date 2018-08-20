@@ -34,7 +34,7 @@ Setting up Validate
 
 #. `Download Validate`_.
 
-   .. _Download Validate: https://opendatakit.org/downloads/download-info/odk-validate-2
+   .. _Download Validate: https://github.com/opendatakit/validate/releases/latest
 
 #. If you wish, move :program:`Validate` to your :file:`Applications` directory or another suitable location.
    

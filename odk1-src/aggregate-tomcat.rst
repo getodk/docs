@@ -195,7 +195,7 @@ Installation procedure
    
    - For Microsoft SQL Server or Azure SQL Server, you should configure these with UTF-8 character sets and to use Windows authentication. When using Windows authentication, the user under which the webserver executes must be granted permissions to access the SQL Server instance. The install wizard for ODK Aggregate will produce a :file:`Readme.html` file that contains additional information on how to complete the configuration of the database and webserver service.
 
-5. Download and install `ODK Aggregate <https://opendatakit.org/downloads/>`_. Select the latest Featured release for your operating system.
+5. Download and install `ODK Aggregate <https://github.com/opendatakit/aggregate/releases/latest>`_. Select the latest release for your operating system.
 
    .. note::
 

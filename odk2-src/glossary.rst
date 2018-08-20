@@ -36,7 +36,7 @@ Glossary
     An application that lets you design forms with a drag-and-drop form interface.
 
     - `Use ODK Build online <https://build.opendatakit.org/>`_.
-    - `Download a desktop version of ODK Build <https://opendatakit.org/downloads/download-category/build/>`_.
+    - `Download a desktop version of ODK Build <https://github.com/opendatakit/build/releases/latest>`_.
 
   XLSForm
 

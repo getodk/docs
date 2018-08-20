@@ -18,7 +18,7 @@ Installing on Google App Engine
 
   .. _download-aggregate-installer: 
     
-  - Download the `ODK Aggregate installer <https://opendatakit.org/downloads/>`_. Select the latest release for your operating system.
+  - Download the `ODK Aggregate installer <https://github.com/opendatakit/aggregate/releases/latest>`_. Select the latest release for your operating system.
 
 1. Go to `Google Cloud Platform <https://cloud.google.com/>`_ and click on :guilabel:`Console` in the top right corner.
 
