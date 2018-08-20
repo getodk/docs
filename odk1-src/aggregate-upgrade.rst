@@ -98,7 +98,7 @@ General steps for upgrading
 #. Use :doc:`ODK Briefcase  <briefcase-using>` to pull a copy of all data to your computer. 
 #. Log onto your server to confirm that it is still functioning.
 #. :ref:`Determine your current version number <determine-aggregate-version>`.
-#. Download the **next ODK Aggregate version** and upgrade to that version. `Find the download page for your platform here <https://opendatakit.org/downloads/download-category/aggregate/>`_, and then click :guilabel:`Previous versions` to find the right version.
+#. Download the **next ODK Aggregate version** and upgrade to that version. `Find previous versions here <https://github.com/opendatakit/aggregate/releases>`_.
 
    Do not simply upgrade from an old version of Aggregate 
    to the latest version.

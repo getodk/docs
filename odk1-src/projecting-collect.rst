@@ -221,7 +221,7 @@ Follow the procedures given below to run your app on the emulator:
 
   $ cd platform-tools
   
-18. Copy the :file:`collect.apk` into :file:`platform-tools` folder. You can `download <https://opendatakit.org/downloads/download-info/odk-collect-apk/>`_ the apk file from here.
+18. Copy the :file:`collect.apk` into :file:`platform-tools` folder. You can `download <https://github.com/opendatakit/collect/releases/latest>`_ the apk file from here.
 
 19. Type the following command to see the list connected devices:
 

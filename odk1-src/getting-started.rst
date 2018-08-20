@@ -61,7 +61,7 @@ The quickest and easiest way to start using your own survey forms is to create o
 
 .. seealso::
   
-  `Build desktop app <https://opendatakit.org/downloads/download-category/build/>`_
+  `Build desktop app <https://github.com/opendatakit/build/releases/latest>`_
     To use Build locally.
 
   :doc:`xlsform`
