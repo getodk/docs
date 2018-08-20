@@ -1036,7 +1036,7 @@ XLSForm
 
 - The `XLSForm format for describing form in an Excel spreadsheet <http://xlsform.org/>`_
 - A spreadsheet file that describes a form using the format.
-- An `online tool <http://opendatakit.org/use/xlsform/>`_ and an `offline tool <https://gumroad.com/l/xlsform-offline>`_ for converting :file:`*.xls(x)` files to XForm documents. 
+- An `online tool <https://docs.opendatakit.org/xlsform/>`_ and an `offline tool <https://gumroad.com/l/xlsform-offline>`_ for converting :file:`*.xls(x)` files to XForm documents. 
 
 When writing about any of these things, make sure you are clear --- in your mind as well as in your writing --- which one you are talking about.
 
