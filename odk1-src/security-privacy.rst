@@ -49,7 +49,7 @@ Our user website (`opendatakit <https://opendatakit.org/>`_.org) does not knowin
 
 Our software uses a number of open-source 3rd-party libraries from well-known and/or reputable sources, and a few from obscure sources. We do not vet the security of those software libraries.
 
-Your security people may want to review the libraries and source code on our `source code site <https://github.com/opendatakit/opendatakit/>`_.
+Your security people may want to review the libraries and source code on `GitHub <https://github.com/opendatakit>`_.
 
 .. _odk-aggregate-communications:
 
