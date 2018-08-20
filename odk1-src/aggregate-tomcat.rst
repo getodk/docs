@@ -20,7 +20,7 @@ This document guides you through the installation and initial setup of a self-ho
 
   - Local hosting implies that you are taking ownership of the off-site back up and restoration of your data and are documenting the steps necessary to return your systems to operation in circumstances that might include a full hardware failure or the destruction of your facility. You must also plan for the security of your data and systems. 
 
-  -  Local hosting requires that you `configure your network routers <https://docs.opendatakit.org/aggregate-tomcat/#installation-procedure>`_. It is recommended to seek assistance from your local computer technical support community before proceeding. The set-up of the ODK Aggregate web server and database are very easy in comparison.
+  -  Local hosting requires that you configure your network routers. It is recommended to seek assistance from your local computer technical support community before proceeding. The set-up of the ODK Aggregate web server and database are very easy in comparison.
 
 
 Considerations before you begin
