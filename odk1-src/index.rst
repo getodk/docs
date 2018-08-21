@@ -141,5 +141,4 @@ While this is the *typical* use pattern, it is not the only way to do things. OD
   :caption: Reference
   
   security-privacy
-  faq
   glossary

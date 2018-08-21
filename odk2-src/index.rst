@@ -130,5 +130,3 @@ Platform Developers should already be familiar with everything from the User and
   :maxdepth: 2
   :hidden:
   :caption: Reference
-
-  faq
