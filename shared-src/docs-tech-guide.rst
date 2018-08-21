@@ -384,7 +384,7 @@ This will add a line to :file:`.gitattributes`.
 
 .. tip::
 
-  If the command :command:`glfs` does not work, you may be using a version of GLFS that is organized as a git subcommand. In that case, substitue :command:`git lfs`.
+  If the command :command:`glfs` does not work, you may be using a version of GLFS that is organized as a git subcommand. In that case, substitute :command:`git lfs`.
 
 
 .. warning::
