@@ -338,6 +338,16 @@ __ GitLFS_
 
   Make sure :file:`git-lfs.exe` and  :file:`git.exe` are under the same main directory on Windows. (See `this page <https://github.com/git-lfs/git-lfs/issues/919>`_ for reference.
 
+.. tip::
+
+  **Debian Linux-based systems**
+
+  If the installation script on the GLFS website does not work correctly for your distribution, try installing it from the terminal using the package manager.
+
+  .. code-block:: console
+
+    $ sudo apt install git-lfs
+
 GLFS tracks binary files as defined in the :file:`.gitattributes` file `in the repo <https://github.com/opendatakit/docs/blob/master/.gitattributes>`_. Most common binary file formats are already listed, but there might be others we haven't thought of yet.
 
 .. _adding-new-glfs-formats:
@@ -371,6 +381,11 @@ This will add a line to :file:`.gitattributes`.
   by placing the new file format declaration 
   in the appropriate section, 
   or creating a new section as needed.
+
+.. tip::
+
+  If the command :command:`glfs` does not work, you may be using a version of GLFS that is organized as a git subcommand. In that case, substitue :command:`git lfs`.
+
 
 .. warning::
 
