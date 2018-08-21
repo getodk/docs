@@ -52,9 +52,9 @@ You can also use `make` to build both ODK and ODK2 docs, or to run just a portio
 
 For both ODK 1 and ODK 2:
 
-|          |    Build     |     Clean     |     Check Style & Spell     |
-| -------- | :---------: | :-----------: | :-----------------: |
-| **Options** | build-all |  clean |  check-all |
+|          |    Build     |     Clean     |     Check Style & Spell     |    Test    |
+| -------- | :---------:  | :-----------: | :-------------------------: | :--------: |
+| **Options** | build-all |  clean |  check-all | test |
 
 For a specific ODK version:
 

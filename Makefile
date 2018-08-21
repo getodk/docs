@@ -102,3 +102,6 @@ odk1-check: odk1-style-check odk1-spell-check
 odk2-check: odk2-style-check odk2-spell-check
 
 check-all: odk1-check odk2-check
+
+test:
+	pytest

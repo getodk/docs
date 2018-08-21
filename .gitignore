@@ -20,3 +20,10 @@ tmp*
 # literate programming
 style-checks.py
 extra.py
+
+# Testing
+.hypothesis/
+.pytest_cache/
+
+# IDE files
+.idea/
