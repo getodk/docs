@@ -81,3 +81,21 @@ XLSForm
 The ``intent`` attribute is only used when the group has an ``appearance`` of ``field-list``. The format and the functionality of the ``intent`` value is the same as above. If bundle of values returned by the external application contains values whose keys match the type and the name of the sub-fields, then these values overwrite the current values of those sub-fields.
 
 The external app is launched with the parameters that are defined in the intent string plus the values of all the sub-fields that are either text, decimal, or integer. Any other sub-field is invisible to the external app.
+
+.. _launch-apps-uri-data:
+
+Specifying a URI as intent data
+---------------------------------
+
+Since Collect v1.16.0, the value for the reserved parameter name ``uri_data`` is converted to a URI and used as the data for the intent. The intent data determines which application to launch when using implicit intents such as `SENDTO <https://developer.android.com/reference/android/content/Intent#ACTION_SENDTO>`_. For example:
+
+``ex:android.intent.action.SENDTO(uri_data='smsto:5555555', sms_body=${message})``
+  Launches a new message in an SMS app with the destination number set to ``5555555`` and the message body set to the contents of the ``message`` field.
+
+``ex:android.intent.action.SENDTO(uri_data='mailto:example@example.com?subject=${subject}&body=${message})``
+  Launches a new message in an email app with destination address set to ``example@example.com``, the subject set to the contents of the ``subject`` field and the body set to the contents of the ``message`` field.
+
+``ex:android.intent.action.DIAL(uri_data='tel:5555555')``
+  Launches a phone dialer with the number ``5555555`` as the number to dial.
+
+Notice that the URI must include a `scheme <https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml>`_, such as ``mailto:`` or ``https://``.
