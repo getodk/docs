@@ -21,7 +21,23 @@ Launching External Apps
 Launching external apps to populate single fields
 ------------------------------------------------------
 
-ODK Collect can launch external applications to populate string, integer or decimal fields using the ``ex:intentString`` appearance. A ``value`` parameter that holds the current value for that field is passed to the application. Since v1.4.3, additional parameters can be specified. The names of these parameters are user defined and ``value`` is the only reserved name. 
+ODK Collect can launch external applications to populate string, integer or decimal fields using the ``ex:intentAction(intentExtras)`` appearance.
+
+This feature configures an Android intent. Intents are messaging objects used to request an action from another app component. Learn more in `the Android docs <https://developer.android.com/guide/components/intents-filters.html>`_.
+
+Collect builds the action using the text immediately after ``ex:`` and before an opening parenthesis (if it exists). For example, in the string ``ex:org.opendatakit.counter(intentExtras)``, the action name is ``org.opendatakit.counter``. An action name must include a namespace, such as ``org.opendatakit`` or ``com.google``. For example, ``ex:org.opendatakit.counter`` is valid but ``ex:counter`` is not.
+
+The parameters defined in the optional parentheses represent extended data ("extras") to be added to the intent. Extras are specified by a comma-delimited list of ``name=value`` pairs. The text to the left of the equals sign represents the extra name and may require a namespace. The text to the right of the equals sign represents the extra value.
+
+The values of extras can be:
+
+- XPath expressions referring to other fields and including function calls
+- String literals defined in single quotes
+- Raw integers or decimals
+
+An extra named ``value`` that holds the current value for the current field is always passed with the intent. Since v1.4.3, additional parameters with user-defined names can be specified. There are two reserved names: ``value`` and ``uri_data``.
+
+Since Collect v1.16.0, the data that the intent operates on can be set by :ref:`using the reserved uri_data parameter <launch-apps-uri-data>`. This is particularly useful for implicit intents such as ``android.intent.action.SENDTO``.
 
 XLSForm
 ~~~~~~~~~
