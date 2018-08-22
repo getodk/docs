@@ -47,20 +47,7 @@ XLSForm
 
   integer, counter, Click launch to start the counter app, "ex:org.opendatakit.counter(form_id='counter-form', form_name='Counter Form', question_id='1', question_name='Counter')"
 
-XForm XML
-~~~~~~~~~~~
-
-.. code-block:: xml
-
-  <input appearance="ex:org.opendatakit.counter(form_id='counter-form', form_name='Counter Form', question_id='1', question_name='Counter')" ref="/counter/counter">
-      <label>Click launch to start the counter app</label>
-  </input>
-
-In the examples above, the parameters specified are ``form_id``, ``form_name``, ``question_id`` and ``question_name``. Any number of extra parameters can be specified. The parameter values can be:
-
-  - XPath expressions referring to other fields and including function calls
-  - String literals defined in single quotes
-  - Raw integers or decimals
+In the examples above, the extras specified have names ``form_id``, ``form_name``, ``question_id``, and ``question_name``.
 
 .. _launch-apps-multiple-fields:
 
