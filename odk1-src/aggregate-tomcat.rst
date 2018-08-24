@@ -77,6 +77,20 @@ MySQL is the most popular, so you will likely find more qualified professionals 
 
 PostgreSQL has better built-in support for geographic data, and MySQL's tables have a row size limit that will affect performance for very large forms.
 
+Component versions
+~~~~~~~~~~~~~~~~~~~
+
+ODK Aggregate should work with these minimum component versions. In most cases, newer versions should also work.
+
+.. csv-table::
+  :header: , ≥ v1.4.13
+
+  Java, 8
+  Tomcat, 8.0
+  PostgreSQL, 9.4
+  MySQL, 5.7
+  MS SQL, 2016
+  Azure SQL, 2016
 
 Installation procedure
 --------------------------
