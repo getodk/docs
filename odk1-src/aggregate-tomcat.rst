@@ -55,6 +55,10 @@ Encrypted forms can be used in conjunction with either of the first two suggesti
 
 If you are not using encrypted forms and are handling sensitive data, a computer security specialist should review your system and your security procedures. 
 
+.. note::
+
+  Use of an SSL and `https` is recommended for any deployment accessed from the internet.
+
 Database Systems
 ~~~~~~~~~~~~~~~~~~
 
@@ -74,9 +78,6 @@ MySQL is the most popular, so you will likely find more qualified professionals 
 
 PostgreSQL has better built-in support for geographic data, and MySQL's tables have a row size limit that will affect performance for very large forms.  
 
-.. note::
-
-  Use of an SSL and `https` is recommended for any deployment accessed from the internet.
 
 Installation procedure
 --------------------------
