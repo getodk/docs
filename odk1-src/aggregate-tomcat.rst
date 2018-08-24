@@ -31,18 +31,18 @@ Availability
 
 Decide the availability of your server depending on how frequently you want to update and upload forms. If you do need a high-availability server, you need to talk to your Internet Service Provider (ISP) as to their availability guarantees.
    
-Data Loss
+Data loss
 ~~~~~~~~~~~
    
 Your tolerance to data loss will impact your backup schedule and your server hardware.  Invest in a storage system based on your tolerance to data loss. Seek technical assistance for these requirements. If you cannot tolerate any data loss, or less than 24 hours of data loss, you should invest in a RAID storage array with battery-backed controller cards. If you can tolerate a day or longer interval of data loss, be sure you have a periodic tape or other means of backup for your system that matches or is shorter than the data loss interval.
    
-Dataset Size
+Dataset size
 ~~~~~~~~~~~~~~
    
 The quantity of data you intend to collect will affect the size of the machine required to host the ODK Aggregate instance and of your database server. For most use cases, the default size should be fine. If you are collecting more than 6000 submissions, you may need to increase the JVM size. Note that the maximum size of the JVM is limited by the size of the physical memory on your machine.
    
    
-Secure and Protected Data
+Secure and protected data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~   
 
 If you need to prevent eavesdroppers from seeing your data as it is transmitted to your ODK Aggregate instance, you need to do one of the following:
@@ -59,7 +59,7 @@ If you are not using encrypted forms and are handling sensitive data, a computer
 
   Use of an SSL and `https` is recommended for any deployment accessed from the internet.
 
-Database Systems
+Database systems
 ~~~~~~~~~~~~~~~~~~
 
 ODK Aggregate works with any of these database servers:
