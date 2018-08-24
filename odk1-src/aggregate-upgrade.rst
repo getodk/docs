@@ -107,10 +107,7 @@ General steps for upgrading
    from an older one.
    
    Some versions will require manual changes upon upgrade. 
-   Complete notes about upgrading can be found in the release notes:
-
-   * `v1.4.15 and earlier <https://github.com/opendatakit/opendatakit/wiki/Aggregate-Release-Notes>`_
-   * `v1.5.0 and later <https://github.com/opendatakit/aggregate/releases>`_
+   Complete notes about upgrading can be found in each version's `release notes <https://github.com/opendatakit/aggregate/releases>`_.
 
 #. Log onto your server to confirm that it is still functioning.
 #. Repeat the steps 4-7 until you have upgraded to the current version.
