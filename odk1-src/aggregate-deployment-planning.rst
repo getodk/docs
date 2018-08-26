@@ -20,7 +20,7 @@ We recommend using Google App Engine or the ODK Aggregate VM before attempting a
 
 You can also go without Aggregate altogether and use :doc:`ODK Briefcase  <briefcase-intro>`.
 
-This document provides general advise for thinking through your deployment decisions.
+This document provides general advice for thinking through your deployment decisions.
 
 .. _aggregate-deployment-considerations:
 
