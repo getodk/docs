@@ -9,7 +9,9 @@ To find the Form submissions page, first find the form in the Form listings page
 
    .. image:: /img/central-submissions/listing.png
 
-It is not yet possible to screen or delete submissions for quality, edit form data, or to see the form data itself. These features are planned for future releases. For now, you will need to pull your data out of Central before you can work with it. Right now, you can do this in one of two ways:
+The table preview you see here will show you the first ten fields of your survey and their results, with the latest submissions shown closest to the top. Any downloadable files will appear with a green download link you can use to directly download that media attachment. The submission's instance ID will always be shown at the right side of this preview table.
+
+It is not yet possible to screen or delete submissions for quality or edit submission data. These features are planned for future releases. For now, you will need to pull your data out of Central before you can work with it. Right now, you can do this in one of two ways:
 
 1. The **CSV Download** option will get you a :file:`.zip` file containing one or more :file:`.csv` tables, along with any multimedia submitted to the form. This is a good option if you already have custom tools you wish to use, or you want to import it into an offline analysis tool like SPSS or Stata.
 2. The **OData connector** allows you connect a live representation of the data to OData-capable tools like Microsoft Excel, Microsoft Power BI, Tableau, SAP, and others. This option has some advantages: the data is transferred more richly to maintain more data format information, and the feed is always live, meaning any analysis or reports you perform in your tool over an OData connection can be easily refreshed as more submissions come in.

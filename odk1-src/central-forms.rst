@@ -51,6 +51,43 @@ The documentation on this page is a more detailed introductory explanation of fo
 
 In the future, look forward to seeing even more useful information at-a-glance on this page.
 
+.. _central-forms-attachments:
+
+Forms With Attachments
+----------------------
+
+If your uploaded form references any external files (images, audio, or video included as part of your question prompts, or data lookup files used to populate selection lists), Central will see this and open up some additional displays and controls you will need to provide those external files:
+
+   .. image:: /img/central-forms/attachments-overview.png
+
+If you see this extra **Upload Form Media Files** checklist step and **Media Files** tab at the top of your form overview, then Central believes you need to upload some files associated with this form. If the checklist step has been checked off, then you've already completed this task: great work! Otherwise, click on the :menuselection:`--> Media Files` tab at the top to see what files you'll need to provide.
+
+   .. image:: /img/central-forms/attachments-listing.png
+
+This form design references three files that we'll need to provide, one of which we've already uploaded. You can see the name and expected type of the file in the table, as well as when the file was last uploaded. You can click on the name of any uploaded file to download what Central has for it. To upload a new one, you'll want to drag-and-drop one or more files onto the table.
+
+.. admonition:: On File Types and Contents
+
+   While Central will detect the type of file the form design expects, and will verify that the name of any uploaded file matches one that is expected, Central will *not* double-check the *type* of the file, nor the *contents* of the file for you. So, just because Central accepts your file does not necessarily mean that it will work correctly.
+
+.. _central-forms-attachments-multi:
+
+Bulk-uploading Many Attachments At Once
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   .. image:: /img/central-forms/attachments-multi.png
+
+If you select and drag many files at once onto the table, Central will automatically try to match each file with a name in the table. You'll have a chance to see what it came up with and confirm that things look okay before the upload begins. You will see a warning if one or more of your dragged files don't match any of the expected names.
+
+.. _central-forms-attachments-single:
+
+Uploading One Attachment
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+   .. image:: /img/central-forms/attachments-single.png
+
+If you drag a single file onto the table, you'll have the option of which table row you'd like to upload that file into. This way, if the file isn't named exactly what Central expects, you can still upload a file into that slot without having to rename it on your own computer. But if the file does have the appropriate name, you can drop it somewhere other than a specific slot (for example, just below or just above the table) to have Central match it up with the correct slot automatically.
+
 .. _central-forms-submissions:
 
 Seeing Form Submissions
