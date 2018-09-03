@@ -70,6 +70,10 @@ Text widgets
 All of the text widgets share the :tc:`text` type,
 and the inputs from them are saved as literal strings.
 
+.. warning::
+
+  If you are using Aggregate and expect answers to be more than 255 characters, you should :doc:`increase the database field length to over 255 characters <aggregate-field-length>`.
+
 .. contents::
  :local:
 
@@ -941,6 +945,10 @@ Multi select questions support multiple answers.
   opt_abcd,c,C
   opt_abcd,d,D
 
+.. warning::
+
+  If you are using Aggregate and expect users to select many options, you may need to :doc:`increase the database field length to over 255 characters <aggregate-field-length>`.
+
      
 .. _image-map-select:
   
@@ -1292,6 +1300,10 @@ Automatic Mode
   :header: type, name, label
 
   geotrace, trace_example, Where have you been?
+
+.. warning::
+
+  If you are using Aggregate and you would like to collect more than 5 points at a time, you should :doc:`increase the database field length to over 255 characters <aggregate-field-length>`. Otherwise, additional points will be lost.
   
   
 .. _geoshape-widget:
@@ -1327,6 +1339,10 @@ Captures a user-entered series of location coordinates, forming a polygon.
   :header: type, name, label
 
   geoshape, shape_example, Select an area
+
+.. warning::
+
+  If you are using Aggregate and you would like to collect more than 5 points at a time, you should :doc:`increase the database field length to over 255 characters <aggregate-field-length>`. Otherwise, additional points will be lost.
 
 .. _geoshape-area:
     
