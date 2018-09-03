@@ -78,6 +78,10 @@ the :ref:`data export feature <export-data>` will stop working. To correct this,
 
 On Google App Engine, a larger server will incur higher billing costs. Additionally, for datasets of over 100,000 records, it is likely that performance will be better when using MySQL or PostgreSQL, rather than Google App Engine's data store. You also have more optimization opportunities when running your own database servers than are available through Google's cloud services.
 
+.. note::
+
+  Individual text database fields are capped at a length of 255 by default for performance reasons. If you intend to collect text data longer than 255 characters (including using types :ref:`geotrace <geotrace-widget>`, :ref:`geoshape <geoshape-widget>` or :ref:`select multiple <multi-select-widget>`), your forms should :doc:`specify database field lengths greater than 255 <aggregate-field-length>`.
+
 .. _aggregate-deployment-data-locality:
 
 Data locality and security
