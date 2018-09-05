@@ -15,9 +15,34 @@
 Form Styling
 ==============
 
-Labels, hints, and choices in an :doc:`xlsform`
+Questions can include :ref:`media` such as images, sound or video. 
+Additionally, labels, hints, and choices in an :doc:`xlsform`
 can all be styled using 
 :ref:`markdown-in-forms`, :ref:`fonts and colors <custom-fonts-colors>`, and :ref:`emoji`.
+
+.. _media:
+
+Media
+------
+
+You can include questions in your form that display images or that play video or audio files by including a :th:`media` column in your `XLSForm <http://xlsform.org/#media>`_.
+
+.. image:: /img/form-styling/media-image.* 
+  :alt: A single select widget in Collect. The label text is "Do you want coffee?" The label text is accompanied by a picture of a mug of coffee. The options are "yes", "no", and "I don't know".
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, media::image
+  
+  select_one yesnodk, coffee, Do you want coffee?, mug.jpg 
+  
+.. csv-table:: choices
+  :header: list_name, name, label
+  
+  yesnodk, y, yes
+  yesnodk, n, no
+  yesnodk, dk, I don't know
 
 
 .. _markdown-in-forms:
@@ -283,27 +308,6 @@ Emoji can be used in form labels, hints, and answer choices.
   pain, 7, 😱
 
   
-Media
-------
-
-You can include questions in your form that display images or that play video or audio files by including a :th:`media` column in your `XLSForm <http://xlsform.org/#media>`_.
-
-.. image:: /img/form-styling/media-image.* 
-  :alt: A single select widget in Collect. The label text is "Do you want coffee?" The label text is accompanied by a picture of a mug of coffee. The options are "yes", "no", and "I don't know".
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, media::image
-  
-  select_one yesnodk, coffee, Do you want coffee?, mug.jpg 
-  
-.. csv-table:: choices
-  :header: list_name, name, label
-  
-  yesnodk, y, yes
-  yesnodk, n, no
-  yesnodk, dk, I don't know
 
 ------
 
