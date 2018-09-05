@@ -112,6 +112,13 @@ For example:
   will be blank in the form when that language is active,
   even if the "default" column has a value.
 
+.. rubric:: XLSForm --- Multiple languages with media example
+
+.. csv-table:: survey
+  :header: type, name, label::English (en), label::Español (es), media::image::Español (es), media::image::English (en)
+  
+  text, coffee, Do you want coffee?, ¿Quieres café?, mug_es.jpg, mug_en.jpg
+  
     
 .. _switching-languages:
   
