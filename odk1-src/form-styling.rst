@@ -292,9 +292,9 @@ You can include questions in your form that display images or that play video or
 .. rubric:: XLSForm
 
 .. csv-table:: survey
-  :header: type, name, label
+  :header: type, name, label, media::image
   
-  select_one yesnodk, coffee, Do you want coffee?
+  select_one yesnodk, coffee, Do you want coffee?, mug.jpg 
   
 .. csv-table:: choices
   :header: list_name, name, label
