@@ -3,11 +3,13 @@
   CSS
   Emoji
   bolding
+  dk
   emoji
   md
   monospace
   supertext
   tt
+  yesnodk
   yn
 	
 Form Styling

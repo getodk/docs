@@ -46,7 +46,6 @@ datatypes
 datestamp
 Debian
 deviceID
-dk
 docutils
 Docutils
 downloadable
@@ -276,5 +275,4 @@ XLSForm
 xml
 xmlns
 XPath
-yesnodk
 zeroes
