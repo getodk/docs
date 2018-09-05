@@ -283,6 +283,28 @@ Emoji can be used in form labels, hints, and answer choices.
   
 ------
 
+Media
+------
+
+You can include questions in your form that display images or that play video or audio files by including a :th:`media` column in your `XLSForm <http://xlsform.org/#media>`_.
+
+.. image:: /img/form-styling/media-image.* 
+  :alt: A single select widget in Collect. The label text is "Do you want coffee?" The label text is accompanied by a picture of a mug of coffee. The options are "yes", "no", and "I don't know".
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label
+  
+  select_one yesnodk, coffee, Do you want coffee?
+  
+.. csv-table:: choices
+  :header: list_name, name, label
+  
+  yesnodk, y, yes
+  yesnodk, n, no
+  yesnodk, dk, I don't know
+
 .. seealso:: 
   
   - `Styling prompts in XLSForm <http://xlsform.org/#styling>`_
