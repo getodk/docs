@@ -3,7 +3,7 @@
 ODK Central
 ===========
 
-:dfn:`ODK Central` is an early alpha Open Data Kit server alternative. Like ODK Aggregate, it manages user accounts and permissions, stores form definitions, and allows data collection clients like ODK Collect to connect to it for form download and submission upload.
+:dfn:`ODK Central` is an Open Data Kit server alternative that is early in its development. Like ODK Aggregate, it manages user accounts and permissions, stores form definitions, and allows data collection clients like ODK Collect to connect to it for form download and submission upload.
 
 Our goal with Central is to create a modern sibling to Aggregate that is easier to install, easier to use, and more extensible with new features and functionality both directly in the software and with the use of our REST, OpenRosa, and OData programmatic APIs.
 
@@ -37,7 +37,7 @@ Here are some (but not all) key features we **do not yet** support:
 Who should use ODK Central?
 ---------------------------
 
-Central is still quite early in alpha testing and is missing many features that some more complicated projects will rely on (see the above list). But we do feel good about the features that we do already support.
+Central is still early in its development and is missing many features that some more complicated projects will rely on (see the above list). But we do feel good about the features that we do already support.
 
 If you are an adventurous user who is comfortable with (new) technology, you don't need the features we don't already support, and you are okay with the risks with using early release software, please consider giving Central a try and giving us your `feedback <https://forum.opendatakit.org/t/odk-central-v0-1-0-alpha/13437>`_.
 
