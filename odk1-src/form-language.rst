@@ -38,6 +38,11 @@ For example:
 
 - :th:`label::English (en)`
 - :th:`hint::French (fr)`
+- :th:`media::image::Español (es)`
+
+.. note::
+
+  All columns that can be made multi-lingual, need to be created as such for a multi-language form. For example, even if using the same image for a question prompt you will need a :th:`media::image::*` column for each language. However, you may provide the same media filename for each.
 
 .. note::
 
