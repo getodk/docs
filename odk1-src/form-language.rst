@@ -103,7 +103,7 @@ For example:
   will be treated as if it were a separate language.
   (The :menuselection:`Change Language` menu will list it as :guilabel:`Default`.)
   
-  To avoid this, all columns that can be made multi-lingual, need to be created 
+  To avoid this, all columns that can be made multi-lingual need to be created 
   as such for a multi-language form. For example, even if using the same image 
   for a question prompt you will need a :th:`media::image::*` column for each 
   language. However, you may provide the same media filename for each.
