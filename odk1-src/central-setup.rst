@@ -6,5 +6,6 @@ Setting up ODK Central
 
   central-install
   central-command-line
+  central-upgrade
   central-backup
 
