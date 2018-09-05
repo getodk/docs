@@ -42,10 +42,6 @@ For example:
 
 .. note::
 
-  All columns that can be made multi-lingual, need to be created as such for a multi-language form. For example, even if using the same image for a question prompt you will need a :th:`media::image::*` column for each language. However, you may provide the same media filename for each.
-
-.. note::
-
   The text shown in Collect's user interface (e.g., buttons, menus, dialogs)
   is controlled by device language, not the form language.
   If you would like Collect's user interface to support your language,
@@ -106,6 +102,11 @@ For example:
   the non-specific version of that column
   will be treated as if it were a separate language.
   (The :menuselection:`Change Language` menu will list it as :guilabel:`Default`.)
+  
+  To avoid this, all columns that can be made multi-lingual, need to be created 
+  as such for a multi-language form. For example, even if using the same image 
+  for a question prompt you will need a :th:`media::image::*` column for each 
+  language. However, you may provide the same media filename for each.
 
   Blank cells in a language-specific column
   will be blank in the form when that language is active,
