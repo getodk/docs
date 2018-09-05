@@ -281,8 +281,6 @@ Emoji can be used in form labels, hints, and answer choices.
   pain, 7, 😱
 
   
-------
-
 Media
 ------
 
@@ -304,6 +302,8 @@ You can include questions in your form that display images or that play video or
   yesnodk, y, yes
   yesnodk, n, no
   yesnodk, dk, I don't know
+
+------
 
 .. seealso:: 
   
