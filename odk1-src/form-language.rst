@@ -5,6 +5,7 @@
   Español
   Púrpura
   Qué
+  Quieres
   Rojo
   Seleccione
   colores
