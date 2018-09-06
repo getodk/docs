@@ -5,6 +5,7 @@
   Español
   Púrpura
   Qué
+  Quieres
   Rojo
   Seleccione
   colores
@@ -38,6 +39,7 @@ For example:
 
 - :th:`label::English (en)`
 - :th:`hint::French (fr)`
+- :th:`media::image::Español (es)`
 
 .. note::
 
@@ -101,11 +103,23 @@ For example:
   the non-specific version of that column
   will be treated as if it were a separate language.
   (The :menuselection:`Change Language` menu will list it as :guilabel:`Default`.)
+  
+  To avoid this, all columns that can be made multi-lingual need to be created 
+  as such for a multi-language form. For example, even if using the same image 
+  for a question prompt you will need a :th:`media::image::*` column for each 
+  language. However, you may provide the same media filename for each.
 
   Blank cells in a language-specific column
   will be blank in the form when that language is active,
   even if the "default" column has a value.
 
+.. rubric:: XLSForm --- Multiple languages with media example
+
+.. csv-table:: survey
+  :header: type, name, label::English (en), label::Español (es), media::image::Español (es), media::image::English (en)
+  
+  text, coffee, Do you want coffee?, ¿Quieres café?, mug_es.jpg, mug_en.jpg
+  
     
 .. _switching-languages:
   
