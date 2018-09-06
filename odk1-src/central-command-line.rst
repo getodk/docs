@@ -60,7 +60,7 @@ You will be prompted for a new password. Type it in and press Enter, and if you 
 Promoting a Web User to administrator by command line
 -----------------------------------------------------
 
-In the current alpha release of ODK Central, all users created by the website interface are automatically administrators. If you create a user using the ``user-create`` tool shown above, however, you'll have to perform that step manually. If you do not, the user will be unable to do much of anything at all once they log in.
+In the current release of ODK Central, all users created by the website interface are automatically administrators. If you create a user using the ``user-create`` tool shown above, however, you'll have to perform that step manually. If you do not, the user will be unable to do much of anything at all once they log in.
 
 Please start by performing the steps above in the :ref:`central-command-line-basics` section. Once you do, here is what you would type, assuming the email address of the account you wish to make an administrator is ``example@opendatakit.org``:
 
