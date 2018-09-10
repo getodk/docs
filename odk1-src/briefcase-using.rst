@@ -217,9 +217,25 @@ To get help about the command line operation:
 Pulling form data from Aggregate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: console
+- CLI flag: `-plla` or `--pull_aggregate`
+- Usage:
 
-  $ java -jar {path/to/briefcase-jar-file} --pull_aggregate --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --aggregate_url {aggregate-url} --odk_username {username} --odk_password {password}
+  .. code-block:: console
+
+      $ java -jar {path/to/briefcase-jar-file} --pull_aggregate --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --aggregate_url {aggregate-url} --odk_username {username} --odk_password {password}
+
+- Help section:
+
+  .. code-block:: console
+
+      Params for -plla operation:
+        -id,--form_id <arg>                 Form ID
+        -p,--odk_password <arg>             ODK Password
+        -sd,--storage_directory <arg>       Briefcase storage directory
+        -u,--odk_username <arg>             ODK Username
+        -url,--aggregate_url <arg>          Aggregate server URL
+      Optional params for -plla operation:
+        -pp,--parallel_pull                 Pull submissions in parallel
 
 .. _pull-from-collect-cli:
   
@@ -228,35 +244,90 @@ Pulling form data from Collect
 
 This command assumes you have already copied and unzipped the :file:`odk` file :ref:`as described here <pull-from-collect>`.
 
-.. code-block:: console
+- CLI flag: `-pc` or `--pull_collect`
+- Usage:
 
-  $ java -jar {path/to/briefcase-jar-file} --pull_collect --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --odk_directory {path/to/unzipped-odk-file}
+  .. code-block:: console
+
+      $ java -jar {path/to/briefcase-jar-file} --pull_collect --storage_directory {path/to/briefcase-storage-location} --odk_directory {path/to/unzipped-odk-file}
+
+- Help section:
+
+  .. code-block:: console
+
+      Params for -pc operation:
+        -od,--odk_directory <arg>           ODK directory
+        -sd,--storage_directory <arg>       Briefcase storage directory
+      Optional params for -pc operation:
+        -id,--form_id <arg>                 Form ID
+
+.. warning::
+
+  This CLI operation **will pull all forms** present on the :file:`odk` directory if no `-id` parameter is defined.
 
 .. _push-to-aggregate-cli:
 
 Pushing form data to Aggregate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: console
+- CLI flag: `-psha` or `--push_aggregate`
+- Usage:
 
-  $ java -jar {path/to/briefcase-jar-file} --push_aggregate --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --aggregate_url {aggregate-url} --odk_username {username} --odk_password {password}
+  .. code-block:: console
+
+      $ java -jar {path/to/briefcase-jar-file} --push_aggregate --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --aggregate_url {aggregate-url} --odk_username {username} --odk_password {password}
+
+- Help section:
+
+  .. code-block:: console
+
+      Params for -psha operation:
+        -id,--form_id <arg>                 Form ID
+        -p,--odk_password <arg>             ODK Password
+        -sd,--storage_directory <arg>       Briefcase storage directory
+        -u,--odk_username <arg>             ODK Username
+        -url,--aggregate_url <arg>          Aggregate server URL
+      Optional params for -psha operation:
+        -fsb,--force_send_blank             Force sending the blank form to the Aggregate instance
 
 .. _export-to-csv-cli:
   
 Exporting form data to CSV
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: console
+- CLI flag: `-e` or `--export`
+- Usage:
 
-  $ java -jar {path/to/briefcase-jar-file} --export --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --export_directory {path/to/output-directory} --export_filename {output-file-name.csv}
+  .. code-block:: console
 
-The export operation also accepts these optional parameters to set encryption private keys, to set a range of dates, to exclude media files, or to toggle overwriting output files. Check :ref:`how to get help <briefcase-cli-help>` for more information.
+    $ java -jar {path/to/briefcase-jar-file} --export --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --export_directory {path/to/output-directory} --export_filename {output-file-name.csv}
+
+- Help section:
+
+  .. code-block:: console
+
+      Params for -e operation:
+        -ed,--export_directory <arg>        Export directory
+        -f,--export_filename <arg>          Filename for export operation
+        -id,--form_id <arg>                 Form ID
+        -sd,--storage_directory <arg>       Briefcase storage directory
+      Optional params for -e operation:
+        -em,--exclude_media_export          Exclude media in export
+        -end,--export_end_date <arg>        Export end date (inclusive) (yyyy-MM-dd or yyyy/MM/dd)
+        -oc,--overwrite_csv_export          Overwrite files during export
+        -pb,--pull_before                   Pull before export
+        -pf,--pem_file <arg>                PEM file for form decryption
+        -ssm,--split_select_multiples       Split select multiple fields
+        -start,--export_start_date <arg>    Export start date (inclusive) (yyyy-MM-dd or yyyy/MM/dd)
 
 .. _clear-saved-preferences:
 
 Clear saved preferences
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: console
+- CLI flag: `-c` or `--clear_prefs`
+- Usage:
 
-  $ java -jar {path/to/briefcase-jar-file} --clear_prefs
+  .. code-block:: console
+
+    $ java -jar {path/to/briefcase-jar-file} --clear_prefs
