@@ -18,7 +18,7 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
    
    .. _Aggregate Demo Server: https://opendatakit.appspot.com
 
-#. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to :file:`ODK Briefcase Storage` on your local system.
+#. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to your :ref:`Briefcase Storage <briefcase_storage>`.
 
    For each selected form, Briefcase will pull down:
    

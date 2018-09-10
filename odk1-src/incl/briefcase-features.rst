@@ -1,7 +1,7 @@
 With Briefcase you can:
 
-- Pull blank form definitions and completed form instances :ref:`from Collect <pull-from-collect>` or :ref:`Aggregate <pull-from-aggregate>` to local storage.
-- :ref:`Push blank form definitions and completed form instances <push-to-aggregate>` from local storage to an Aggregate server.
+- Pull blank form definitions and completed form instances :ref:`from Collect <pull-from-collect>` or :ref:`Aggregate <pull-from-aggregate>`.
+- :ref:`Push blank form definitions and completed form instances <push-to-aggregate>` to an Aggregate server.
 - :ref:`Export data from completed form instances <briefcase-export-to-csv>` to :term:`CSV` files.
 - :ref:`Transfer data across upgrade-incompatible versions of Aggregate <aggregate-upgrade-with-briefcase>`.
 - :doc:`Decrypt encrypted submissions <encrypted-forms>`.
