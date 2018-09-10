@@ -28,7 +28,7 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
 
    If you have previously pulled the form:
    
-   - New instances will be downloaded to the same location as previously downloaded ones.
+   - New instances will be downloaded.
    - The form definition file and media files will not be re-copied.
    
    .. warning::
