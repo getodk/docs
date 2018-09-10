@@ -134,7 +134,7 @@ To upload blank forms and completed form instances to an :doc:`Aggregate <aggreg
    
    .. _Aggregate Demo Server: https://opendatakit.appspot.com
 
-#. Select the forms you want to upload and click :guilabel:`Push`. The selected forms will be pushed from :file:`Briefcase Storage` on your local system to the Aggregate server.
+#. Select the forms you want to upload and click :guilabel:`Push`. The selected forms will be pushed from your :ref:`Briefcase Storage <briefcase_storage>` to the Aggregate server.
 
    For each selected form, Briefcase will upload:
    
@@ -143,7 +143,7 @@ To upload blank forms and completed form instances to an :doc:`Aggregate <aggreg
      - The form definition file (that is, the blank XForm).
      - All media associated with the form.
    
-   - Completed form instances.
+   - Completed form instances, including all their attached media files.
 
    .. warning::
 
@@ -153,11 +153,11 @@ To upload blank forms and completed form instances to an :doc:`Aggregate <aggreg
      
      If the form definition has changed, but the changes only affect the question text and do not alter the structure of the collected data (or change the form ID or version), you can:
      
-     #. In :guilabel:`Settings`, temporarily change the location of :file:`Briefcase Storage`.
+     #. In :guilabel:`Settings`, temporarily change the :ref:`Briefcase Storage <briefcase_storage>` location.
      #. Manually copy the form directory from your original storage location to the temporary location.
      #. Replace the local form definition file with a copy of the version from your Aggregate server.
      #. Push your form instances. 
-     #. Update :guilabel:`Settings` back to the original storage location.
+     #. Update :guilabel:`Settings` back to the original :ref:`Briefcase Storage <briefcase_storage>` location.
      
 .. tip::
        
