@@ -39,10 +39,10 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
      
      If the form definition has changed, but the changes only affect the question text and do not alter the structure of the collected data (or change the form ID or version), you can:
      
-     #. In :guilabel:`Settings`, temporarily change the location of :file:`ODK Briefcase Storage`.
+     #. In :guilabel:`Settings`, temporarily change the :ref:`Briefcase Storage <briefcase_storage>` location.
      #. Pull data into to the new location.
      #. Manually copy the instances from the temporary location to your original storage location.
-     #. Update :guilabel:`Settings` back to the original storage location.
+     #. Update :guilabel:`Settings` back to the original :ref:`Briefcase Storage <briefcase_storage>` location.
 
 .. note::
   :name: briefcase-parallel-connections
