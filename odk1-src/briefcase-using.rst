@@ -173,19 +173,22 @@ Export forms to CSV
 -------------------
 
 #. Open the :guilabel:`Export` tab.
-#. Choose an Export Location.
-#. If exporting :doc:`encrypted-forms`, identify the location of your :ref:`PEM file <create-key>`.
-#. If you wish, select Start and End dates to specify a limited date range to export.
+#. Click on the :guilabel:`Set Default Configuration` button.
+
+  - Set an :guilabel:`Export directory`.
+  - If exporting :doc:`encrypted-forms`, set the corresponding :guilabel:`PEM file location`. See :ref:`the Encrypted forms section <create-key>` for more information.
+  - If you wish, select a :guilabel:`Start date` and an :guilabel:`End date` to specify a limited date range to export.
+  - Toggle export parameters as needed:
+
+    - :guilabel:`Export media files` enables exporting media files into the chosen export directory
+    - :guilabel:`Ovewrite existing files` enables overwriting form instance data in the output files. The default behavior is to append data.
+    - :guilabel:`Pull before export` enables trying to pull the selected forms in case there are new form instances to be exported.
+
 #. Select the forms to export.
 
-   If you are selecting and exporting more than one form,
-   you may need to individualize your export settings
-   (export location, PEM file, start date, end date).
-   To do this,
-   click the gear icon (:guilabel:`⚙`) next to the form name.
+   If you are selecting and exporting more than one form, you may need to set individual export settings. To do this, click the gear icon (:guilabel:`⚙`) next to the form name.
    
 #. Click :guilabel:`Export`.
-
 
 .. _cli-use:
 
