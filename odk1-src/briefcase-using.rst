@@ -57,6 +57,46 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
 
     However, if your Aggregate server is :doc:`installed on Google App engine <aggregate-app-engine>`, this setting may cause problems with large attachments. If your form has submission attachments (file uploads, videos, images, sound recordings) you should experiment with this setting and see if it improves or worsens performance.
 
+.. _pull-from-collect:
+
+Pulling forms from Collect
+--------------------------
+
+#. Ensure all filled-in forms are finalized.
+
+   If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy of :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
+
+#. Create a zip archive of the entire :file:`odk` directory.
+
+   .. tip::
+
+     You'll need to use an app for this.
+
+     One option is `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
+
+#. Connect your Android device to your computer using a USB cable and choose to mount it as a Media device.
+#. Copy the zip file you created from the Android device to your local hard drive.
+#. Once it is copied onto your local hard drive, unzip the file.
+#. In Briefcase, open the :guilabel:`Pull` tab.
+#. Select *Custom Path to ODK Directory* in the :guilabel:`pull data from` drop-down.
+#. Select the unzipped :file:`odk` folder.
+#. Click :guilabel:`Pull`.
+#. On the Android device, open ODK Collect and delete the filled-in forms.
+
+
+   .. tip::
+
+     - You can use the *Custom path to ODK Directory* any time you want to pull forms from custom location.
+     - You can confirm that the forms have been successfully pulled into Briefcase by confirming a successful pull status or by verifying the data appearing in a :ref:`CSV export file <briefcase-export-to-csv>`.
+
+.. warning::
+
+  Briefcase cannot discriminate between duplicate form instances. After you pull completed forms into Briefcase, it is important that you delete them from Collect. Otherwise, the next time you pull in forms, you will create duplicates.
+
+.. note::
+
+  ODK Briefcase does not support pushing blank forms to ODK Collect. Instead, :ref:`manually load the forms on your ODK Collect device <loading-forms-directly>`.
+
 .. _push-to-aggregate:
 
 Pushing forms to Aggregate
@@ -106,47 +146,6 @@ To upload blank forms and completed form instances to :doc:`Aggregate <aggregate
   .. _aggregate-upgrade-with-briefcase:
        
   By pulling data into the local Briefcase Storage location and then pushing data up to an Aggregate instance, Briefcase provides a mechanism to transfer data across upgrade-incompatible versions of Aggregate.
-
-
-.. _pull-from-collect:
-
-Pulling forms from Collect
---------------------------
-
-#. Ensure all filled-in forms are finalized. 
-
-   If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy of :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
-
-#. Create a zip archive of the entire :file:`odk` directory.
-
-   .. tip::
-   
-     You'll need to use an app for this. 
-     
-     One option is `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
-     
-#. Connect your Android device to your computer using a USB cable and choose to mount it as a Media device.
-#. Copy the zip file you created from the Android device to your local hard drive.
-#. Once it is copied onto your local hard drive, unzip the file.
-#. In Briefcase, open the :guilabel:`Pull` tab.
-#. Select *Custom Path to ODK Directory* in the :guilabel:`pull data from` drop-down.
-#. Select the unzipped :file:`odk` folder.
-#. Click :guilabel:`Pull`.
-#. On the Android device, open ODK Collect and delete the filled-in forms.
-
-
-   .. tip::
-  
-     - You can use the *Custom path to ODK Directory* any time you want to pull forms from custom location.
-     - You can confirm that the forms have been successfully pulled into Briefcase by confirming a successful pull status or by verifying the data appearing in a :ref:`CSV export file <briefcase-export-to-csv>`.
-
-.. warning::
-
-  Briefcase cannot discriminate between duplicate form instances. After you pull completed forms into Briefcase, it is important that you delete them from Collect. Otherwise, the next time you pull in forms, you will create duplicates.
-
-.. note:: 
-
-  ODK Briefcase does not support pushing blank forms to ODK Collect. Instead, :ref:`manually load the forms on your ODK Collect device <loading-forms-directly>`.
 
 .. _briefcase-export-to-csv:
 
