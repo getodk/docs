@@ -24,7 +24,7 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
    
    - The form definition file (that is, the blank XForm).
    - All media associated with the form.
-   - Completed form instances.
+   - Completed form instances, including all their attached media files.
 
    If you have previously pulled the form:
    
