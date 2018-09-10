@@ -28,9 +28,9 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
 
    If you have previously pulled the form:
    
-   - New instances will be downloaded.
    - The form definition file and media files will not be re-copied.
-   
+   - New instances will be downloaded.
+
    .. warning::
 
      If your local copy and the remote copy of the blank form definition file are different, the pull will be aborted.
