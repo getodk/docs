@@ -9,7 +9,7 @@ Pulling forms from Aggregate
 To download blank forms and completed form instances from an :doc:`Aggregate <aggregate-intro>` server:
 
 #. Open the :guilabel:`Pull` tab.
-#. Select *Aggregate* in the :guilabel:`Pull data from` drop-down.
+#. Select *Aggregate* in the :guilabel:`Pull from` drop-down.
 #. Click the :guilabel:`Connect` button and enter the URL and login credentials for your Aggregate server.
 
    If you have anonymous login enabled on Aggregate, no login credentials are needed here.
@@ -78,7 +78,7 @@ Pulling forms from ODK Collect
 #. Copy the zip file you created from the Android device to your local hard drive.
 #. Once it is copied onto your local hard drive, unzip the file.
 #. In Briefcase, open the :guilabel:`Pull` tab.
-#. Select *Collect Directory* in the :guilabel:`Pull data from` drop-down.
+#. Select *Collect Directory* in the :guilabel:`Pull from` drop-down.
 #. Click the :guilabel:`Connect` button and select the unzipped :file:`odk` folder.
 #. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to your :ref:`Briefcase Storage <briefcase_storage>`.
 #. On the Android device, open Collect and delete the filled-in forms.
@@ -102,7 +102,7 @@ Pulling form definitions
 ------------------------
 
 #. Open the :guilabel:`Pull` tab.
-#. Select *Form definition* in the :guilabel:`Pull data from` drop-down.
+#. Select *Form definition* in the :guilabel:`Pull from` drop-down.
 #. Click the :guilabel:`Connect` button and select the :file:`.xml` form definition file.
 #. Select the form and click :guilabel:`Pull`. The form will be pulled to your :ref:`Briefcase Storage <briefcase_storage>`.
 
@@ -110,7 +110,7 @@ Pulling form definitions
 
   This enables a workflow to upload forms with media attachments to Aggregate:
 
-  #. Pull the form using the :guilabel:`Pull data from` option.
+  #. Pull the form using the :guilabel:`Pull from` option.
   #. :ref:`Push the form to your Aggregate server <push-to-aggregate>`.
 
 .. warning::
@@ -122,10 +122,10 @@ Pulling form definitions
 Pushing forms to Aggregate
 --------------------------
 
-To upload blank forms and completed form instances to :doc:`Aggregate <aggregate-intro>`:
+To upload blank forms and completed form instances to an :doc:`Aggregate <aggregate-intro>` server:
 
 #. Open the :guilabel:`Push` tab.
-#. Select *Aggregate* in the :guilabel:`Push data to` drop-down.
+#. Select *Aggregate* in the :guilabel:`Push to` drop-down.
 #. Click the :guilabel:`Connect` button and enter the URL and login credentials for your Aggregate server.
 
    If you have anonymous login enabled on Aggregate, no login credentials are needed here.
