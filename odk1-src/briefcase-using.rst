@@ -96,6 +96,27 @@ Pulling forms from ODK Collect
 
   Briefcase does not support pushing blank forms to Collect. Instead, :ref:`manually load the forms on your Collect device <loading-forms-directly>`.
 
+.. _pull-form-definition:
+
+Pulling form definitions
+------------------------
+
+#. Open the :guilabel:`Pull` tab.
+#. Select *Form definition* in the :guilabel:`Pull data from` drop-down.
+#. Click the :guilabel:`Connect` button and select the :file:`.xml` form definition file.
+#. Select the form and click :guilabel:`Pull`. The form will be pulled to your :ref:`Briefcase Storage <briefcase_storage>`.
+
+.. tip::
+
+  This enables a workflow to upload forms with media attachments to Aggregate:
+
+  #. Pull the form using the :guilabel:`Pull data from` option.
+  #. :ref:`Push the form to your Aggregate server <push-to-aggregate>`.
+
+.. warning::
+
+  Ensure that all attached media is available relative to the form definition file location.
+
 .. _push-to-aggregate:
 
 Pushing forms to Aggregate
