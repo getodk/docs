@@ -78,15 +78,14 @@ Pulling forms from Collect
 #. Copy the zip file you created from the Android device to your local hard drive.
 #. Once it is copied onto your local hard drive, unzip the file.
 #. In Briefcase, open the :guilabel:`Pull` tab.
-#. Select *Custom Path to ODK Directory* in the :guilabel:`pull data from` drop-down.
-#. Select the unzipped :file:`odk` folder.
-#. Click :guilabel:`Pull`.
+#. Select *Collect Directory* in the :guilabel:`Pull data from` drop-down.
+#. Click the :guilabel:`Connect` button and select the unzipped :file:`odk` folder.
+#. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to your :ref:`Briefcase Storage <briefcase_storage>`.
 #. On the Android device, open ODK Collect and delete the filled-in forms.
-
 
    .. tip::
 
-     - You can use the *Custom path to ODK Directory* any time you want to pull forms from custom location.
+     - You can use the *Collect Directory* any time you want to pull forms from custom location.
      - You can confirm that the forms have been successfully pulled into Briefcase by confirming a successful pull status or by verifying the data appearing in a :ref:`CSV export file <briefcase-export-to-csv>`.
 
 .. warning::
