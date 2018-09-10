@@ -59,8 +59,8 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
 
 .. _pull-from-collect:
 
-Pulling forms from Collect
---------------------------
+Pulling forms from ODK Collect
+------------------------------
 
 #. Ensure all filled-in forms are finalized.
 
@@ -81,7 +81,7 @@ Pulling forms from Collect
 #. Select *Collect Directory* in the :guilabel:`Pull data from` drop-down.
 #. Click the :guilabel:`Connect` button and select the unzipped :file:`odk` folder.
 #. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to your :ref:`Briefcase Storage <briefcase_storage>`.
-#. On the Android device, open ODK Collect and delete the filled-in forms.
+#. On the Android device, open Collect and delete the filled-in forms.
 
    .. tip::
 
@@ -94,7 +94,7 @@ Pulling forms from Collect
 
 .. note::
 
-  ODK Briefcase does not support pushing blank forms to ODK Collect. Instead, :ref:`manually load the forms on your ODK Collect device <loading-forms-directly>`.
+  Briefcase does not support pushing blank forms to Collect. Instead, :ref:`manually load the forms on your Collect device <loading-forms-directly>`.
 
 .. _push-to-aggregate:
 
@@ -113,7 +113,7 @@ To upload blank forms and completed form instances to :doc:`Aggregate <aggregate
    
    .. _Aggregate Demo Server: https://opendatakit.appspot.com
 
-#. Select the forms you want to upload and click :guilabel:`Push`. The selected forms will be pushed from :file:`ODK Briefcase Storage` on your local system to the Aggregate server.
+#. Select the forms you want to upload and click :guilabel:`Push`. The selected forms will be pushed from :file:`Briefcase Storage` on your local system to the Aggregate server.
 
    For each selected form, Briefcase will upload:
    
@@ -132,7 +132,7 @@ To upload blank forms and completed form instances to :doc:`Aggregate <aggregate
      
      If the form definition has changed, but the changes only affect the question text and do not alter the structure of the collected data (or change the form ID or version), you can:
      
-     #. In :guilabel:`Settings`, temporarily change the location of :file:`ODK Briefcase Storage`.
+     #. In :guilabel:`Settings`, temporarily change the location of :file:`Briefcase Storage`.
      #. Manually copy the form directory from your original storage location to the temporary location.
      #. Replace the local form definition file with a copy of the version from your Aggregate server.
      #. Push your form instances. 
