@@ -1,0 +1,52 @@
+   Ideally, each issue represents a single small project
+   to fix one well-defined problem with the documentation.
+   Examples of well-defined single issues include:
+
+   - Write a section to the form questions document describing new type of question
+   - Fix the formatting in the contributor's guide
+   - Redirect old page URI to new
+   - Add style testing for ODK2 branding
+   - Change the display font
+
+   As these examples show, documentation projects include:
+
+   - writing new documentation
+   - editing existing documentation
+   - coding related to the design of the documentation website
+   - coding related to how the documentation is built, tested, and published
+
+   This means that, whatever your skill or interest,
+   there is probably an issue you can work on.
+
+   Sometimes, issues are not well defined yet.
+   This might be because we only have a vague idea of a need,
+   or because we're not yet sure how to solve a problem,
+   or because no one has had the time to write down the details.
+   As you are getting started, 
+   try to focus on issues that have a clear goal.
+   Once you have some experience with the documentation,
+   you can start to help clarify issues so we can move forward on them.
+
+
+
+
+
+
+.. note::
+
+   If you rename a document file (:file:`*.rst`), 
+   be sure that you add the redirect in your PR.
+
+   To add the redirect, go to :file:`s3_website.yml`, 
+   and add a mapping from the old file name to the new file name 
+   below the **redirects:** line, one mapping per line. 
+    
+   If you have renamed :file:`old-name.rst` to :file:`new-name.rst`:
+
+   .. code-block:: yaml
+
+     redirects:
+      old-name/index.html: new-name
+      
+   Notice the inclusion of ``/index.html`` on the left side.
+

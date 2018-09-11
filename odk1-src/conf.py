@@ -281,6 +281,9 @@ rst_prolog="""
 .. role:: arg
     :class: arg
 """
+# if you add lines to rst_prolog, 
+# please update the note about warnings offsets
+# in shared-src/docs-tech-guide.rst
 
 # At bottom of every document
 download_pdf = """
