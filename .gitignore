@@ -20,3 +20,6 @@ tmp*
 # literate programming
 style-checks.py
 extra.py
+
+# vscode
+.vscode
