@@ -10,7 +10,7 @@ Using Offline Maps
 
 Collect's :ref:`location-widgets` can be configured to display different maps. To use online maps, :ref:`set the mapping engine and basemap <mapping-settings>` in :ref:`interface-settings`. Users will need to be online to load questions with maps.
 
-Offline maps are useful for low-connectivity environments or to present custom geospatial data. Use them to display high-resolution imagery, annotated maps, heatmaps, and more. ODK Collect can display any map layer saved as a set of tiles in the `MBTiles format <https://github.com/mapbox/mbtiles-spec)>`_. Tiles are images that represent a subset of a map. The only limitation is that tile data in Mapbox's pbf format are not supported.
+Offline maps are useful for low-connectivity environments or to present custom geospatial data. Use them to display high-resolution imagery, annotated maps, heatmaps, and more. ODK Collect can display any map layer saved as a set of tiles in the `MBTiles format <https://github.com/mapbox/mbtiles-spec>`_. Tiles are images that represent a subset of a map. The only limitation is that tile data in Mapbox's pbf format are not supported.
 
 .. _offline-maps-quick-start:
 
