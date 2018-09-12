@@ -41,7 +41,7 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
      
      #. In :guilabel:`Settings`, temporarily change the :ref:`Briefcase Storage <briefcase_storage>` location.
      #. Pull data into to the new location.
-     #. Manually copy the instances from the temporary location to your original storage location.
+     #. Manually copy the instances from the temporary location of your original storage location.
      #. Update :guilabel:`Settings` back to the original :ref:`Briefcase Storage <briefcase_storage>` location.
 
 .. note::
@@ -154,7 +154,7 @@ To upload blank forms and completed form instances to an :doc:`Aggregate <aggreg
      If the form definition has changed, but the changes only affect the question text and do not alter the structure of the collected data (or change the form ID or version), you can:
      
      #. In :guilabel:`Settings`, temporarily change the :ref:`Briefcase Storage <briefcase_storage>` location.
-     #. Manually copy the form directory from your original storage location to the temporary location.
+     #. Manually copy the form directory from your original storage location of the temporary location.
      #. Replace the local form definition file with a copy of the version from your Aggregate server.
      #. Push your form instances. 
      #. Update :guilabel:`Settings` back to the original :ref:`Briefcase Storage <briefcase_storage>` location.

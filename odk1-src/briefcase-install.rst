@@ -30,7 +30,7 @@ Setting Up ODK Briefcase
 
    .. note::
 
-     We will refer to the term `Briefcase Storage` from now on to indicate the location to the :file:`ODK Briefcase Storage` directory
+     We will refer to the term `Briefcase Storage` from now on to indicate the location of the :file:`ODK Briefcase Storage` directory
 
    .. tip::
 
