@@ -2,20 +2,21 @@
 
   src
 
-Docs Technical Guide
-==========================
+Docs Contributor Technical Guide
+=================================
 
-This document explains how to contribute to ODK Docs.
+This document explains how to set up your computer
+and work locally as an ODK Docs contributor.
+Local set up includes installing some software,
+and working locally involves:
 
-.. note::
+- writing documentation text or code in a code editor
+- using the Terminal (the "Shell" or "Command Line")
 
-  Developer and authoring tools 
-  have a lot of options and alternatives. 
-  Local tools and workflows presented in this guide 
-  are what the authors feel would be easiest 
-  for newcomers and those unfamiliar with open source.
-  
-  You should feel free to use your preferred tools.
+We encourage all potential contributors to try to work locally,
+following this guide.
+However, for small edits that only change a single file,
+we have a :doc:`simpler online contribution process <docs-quick-edit>`.
 
 .. _docs-before-you-begin:
 
@@ -60,9 +61,9 @@ and the :ref:`ODK Forum <join-forum>`
       (But it is okay if you are unable or uncomfortable
       adding a picture.)
 
-.. _get-gh-account:
-
 #. Set up a `GitHub`_ account.
+
+   .. _get-gh-account:
 
    `GitHub`_ is a popular code storage and collaboration platform.
    You will need a GitHub account to contribute to Open Date Kit documentation,
@@ -75,9 +76,9 @@ and the :ref:`ODK Forum <join-forum>`
    .. _ODK Docs on GitHub: https://github.com/opendatakit/docs
    .. _GitHub: https://github.com/
 
-.. _join-slack:
-
 #. Join the `ODK Developer Slack`_.
+
+   .. _join-slack:
 
    Slack is a popular chat platform.
    The Open Data Kit contributor community uses Slack
@@ -95,23 +96,9 @@ and the :ref:`ODK Forum <join-forum>`
 
    .. _ODK Developer Slack: http://slack.opendatakit.org/
 
-   .. tip::
-   
-      It is helpful (but not required) to use the same (or similar) username
-      on Slack that you use on :ref:`Github <get-gh-account>`
-      and the :ref:`ODK Forum <join-forum>`.
-
-      This makes it easy for other people to keep track of conversations
-      which sometimes span multiple online platforms.
-
-      If you are willing and able to do so,
-      a profile picture is also very helpful.
-      (But it is okay if you are unable or uncomfortable
-      adding a picture.)
-
-.. _join-forum:
-
 #. Join the `ODK Forum`_
+
+   .. _join-forum:
 
    The `Open Data Kit Forum <ODK Forum>`_ is the main place for 
    support questions and conversations that affect the whole ODK community
@@ -180,6 +167,16 @@ and the :ref:`ODK Forum <join-forum>`
 Initial Setup
 -------------
 
+.. note::
+
+  Developer and authoring tools 
+  have a lot of options and alternatives. 
+  Local tools and workflows presented in this guide 
+  are what the authors feel would be easiest 
+  for newcomers and those unfamiliar with open source.
+  
+  You should feel free to use your preferred tools.
+
 Before you begin working the first time
 you will need to install a few tools 
 on your computer.
@@ -193,7 +190,7 @@ on any computer.
    
       .. group-tab:: Windows
       
-         .. rubric:: Windows version prior to Windows 10
+         .. rubric:: Windows versions prior to Windows 10
 
          Use `Windows PowerShell`_. (Not the DOS Prompt.)
 
@@ -242,16 +239,16 @@ on any computer.
          Follow the **Bash** or **Mac** instructions
          throughout the contributor guide.
          
-         .. rubric: Install Homebrew
+         .. admonition:: Optional: Install Homebrew
          
-         `Homebrew`_ is a package manager for Mac OS. 
-         It makes it easier to install other apps and tools
-         from the command line. 
-         
-         Follow the `installation instructions`_.
-         
-         .. _Homebrew: https://brew.sh/
-         .. _installation instructions: Homebrew
+            `Homebrew`_ is a package manager for Mac OS. 
+            It makes it easier to install other apps and tools
+            from the command line. 
+            
+            Follow the `installation instructions`_.
+            
+            .. _Homebrew: https://brew.sh/
+            .. _installation instructions: Homebrew
 
       .. group-tab:: Linux
       
@@ -425,135 +422,135 @@ on any computer.
 
 #. Install Python 3
 
-`Python`_ is a programming language.
+   `Python`_ is a programming language.
 
-.. _Python: https://www.python.org/
+   .. _Python: https://www.python.org/
 
-Most of the ODK Docs tools are written in Python,
-so you need it installed on your computer in order to use those tools.
-(Don't worry. You don't need to know how to program in Python.)
+   Most of the ODK Docs tools are written in Python,
+   so you need it installed on your computer in order to use those tools.
+   (Don't worry. You don't need to know how to program in Python.)
 
-We require Python 3 and **strongly recommend** version 3.6 or later.
+   We require Python 3, version 3.6 or later.
 
-.. tabs::
+   .. tabs::
 
-   .. group-tab:: Linux
+      .. group-tab:: Linux
 
-      Use your distribution's package management system
-      to `install Python 3.6+ on Linux`_.
+         Use your distribution's package management system
+         to `install Python 3.6+ on Linux`_.
 
-      (For more help, 
-      see `Installing Python on Linux`_.)
+         (For more help, 
+         see `Installing Python on Linux`_.)
 
-      .. _install Python 3.6+ on Linux: https://docs.python-guide.org/starting/install3/linux/
-      .. _Installing Python on Linux: https://realpython.com/installing-python/#linux
+         .. _install Python 3.6+ on Linux: https://docs.python-guide.org/starting/install3/linux/
+         .. _Installing Python on Linux: https://realpython.com/installing-python/#linux
 
-   .. group-tab:: Mac
+      .. group-tab:: Mac
 
-      .. tip::
+         .. tip::
 
-         Mac OS includes a legacy (outdated) version of Python.
-         It's best to just ignore it.
+            Mac OS includes a legacy (outdated) version of Python.
+            It's best to just ignore it.
 
-      .. rubric:: Option 1: Use the Python Installer for Mac
+         .. rubric:: Option 1: Use the Python Installer for Mac
 
-      #. Download the latest `Python installer for Mac`_.
+         #. Download the latest `Python installer for Mac`_.
 
-         .. _mac-64-or-32:
+            .. _mac-64-or-32:
 
-         .. admonition:: 64-bit or 32-bit?
+            .. admonition:: 64-bit or 32-bit?
 
-            Python provides 64-bit and 32-bit installers.
-            You probably need the 64-bit installer.
+               Python provides 64-bit and 32-bit installers.
+               You probably need the 64-bit installer.
 
-            If you are running a relatively recent Mac OS update
-            (Mountain Lion or later — any Mac from the last several years)
-            the 64-bit installer is for you.
+               If you are running a relatively recent Mac OS update
+               (Mountain Lion or later — any Mac from the last several years)
+               the 64-bit installer is for you.
 
-            If you have an older Mac, 
-            and are unsure if it can run a 64-bit installer,
-            `check the processor details`_ in :menuselection:` -> About This Mac`.
+               If you have an older Mac, 
+               and are unsure if it can run a 64-bit installer,
+               `check the processor details`_ in :menuselection:` -> About This Mac`.
 
-            .. _check the processor details: https://www.alesis.com/kb/article/1616#mac
+               .. _check the processor details: https://www.alesis.com/kb/article/1616#mac
 
-      #. Open the Installer.
-      #. Follow the prompts.
-      #. Accept the default settings.
-      #. Open the Terminal to see if Python installed properly.
+         #. Open the Installer.
+         #. Follow the prompts.
+         #. Accept the default settings.
+         #. Open the Terminal to see if Python installed properly.
+
+            .. code:: console
+
+               $ python3 --version
+               Python 3.7.0
+
+            The output from :command:`python3 --version` might be a little different,
+            but it should be higher than ``3.6``.
+
+            If you get an error here, something went wrong.
+            Try running the installer again. 
+            If the problem persists, and you can't debug it yourself,
+            asks us about it on |odk-slack|_.
+
+         .. _Python installer for Mac: https://www.python.org/downloads/mac-osx/
+
+         .. rubric:: Option 2: Use Homebrew to install Python 3.6+
 
          .. code:: console
-
-            $ python3 ---version
+         
+            $ brew install python
+            .
+            .
+            .
+            $ python3 --version
             Python 3.7.0
 
          The output from :command:`python3 --version` might be a little different,
          but it should be higher than ``3.6``.
 
          If you get an error here, something went wrong.
-         Try running the installer again. 
+         Try running :command:`brew install python` again. 
          If the problem persists, and you can't debug it yourself,
          asks us about it on |odk-slack|_.
 
-      .. _Python installer for Mac: https://www.python.org/downloads/mac-osx/
+      .. group-tab:: Windows
 
-      .. rubric:: Option 2: Use Homebrew to install Python 3.6+
+         #. Go to the `Python Releases for Windows`_ page.
+         #. Under the latest numbered release for Python 3, find and download the 
+            :program:`Windows x86-64 web-based installer` (for a 64-bit system)
+            or the :program:`Windows x86 web-based installer` (for a 32-bit system).
 
-      .. code:: console
-      
-         $ brew install python
-         .
-         .
-         .
-         $ python3 --version
-         Python 3.7.0
+            .. _win-64-or-32:
+            .. admonition:: 64-bit or 32-bit?
 
-      The output from :command:`python3 --version` might be a little different,
-      but it should be higher than ``3.6``.
+               Well over 90% of copmuters running Windows are 64-bit.
+               So you probably need the 64-bit version.
 
-      If you get an error here, something went wrong.
-      Try running :command:`brew install python` again. 
-      If the problem persists, and you can't debug it yourself,
-      asks us about it on |odk-slack|_.
+               If you are running a very old or low-powered computer,
+               and you are unsure if it is 64-bit or 32-bit,
+               you can use `this guide from HP` (which will work for other computer brands)
+               to find that information.
 
-   .. group-tab:: Windows
+               .. _this guide from HP: https://support.hp.com/us-en/document/c02002390
 
-      #. Go to the `Python Releases for Windows`_ page.
-      #. Under the latest numbered release for Python 3, find and download the 
-         :program:`Windows x86-64 web-based installer` (for a 64-bit system)
-         or the :program:`Windows x86 web-based installer` (for a 32-bit system).
+         #. Open the downloaded installer.
+         #. Follow the prompts.
+         #. Accept all default settings.
+         #. Open Powershell and make sure the installation completed.
 
-         .. _win-64-or-32:
-         .. admonition:: 64-bit or 32-bit?
+            .. code:: powershell
 
-            Well over 90% of copmuters running Windows are 64-bit.
-            So you probably need the 64-bit version.
+               > python --version
+               Python 3.7.0
 
-            If you are running a very old or low-powered computer,
-            and you are unsure if it is 64-bit or 32-bit,
-            you can use `this guide from HP` (which will work for other computer brands)
-            to find that information.
+            The output from :command:`python --version` might be a little different,
+            but it should be whatever numbered version you downloaded.
 
-            .. _this guide from HP: https://support.hp.com/us-en/document/c02002390
+            If you get an error here, something went wrong.
+            Try running the installer again. 
+            If the problem persists, and you can't debug it yourself,
+            asks us about it on |odk-slack|_.
 
-      #. Open the downloaded installer.
-      #. Follow the prompts.
-      #. Accept all default settings.
-      #. Open Powershell and make sure the installation copmleted.
-
-         .. code:: powershell
-
-            > python --version
-            Python 3.7.0
-
-         The output from :command:`python --version` might be a little different,
-         but it should be whatever numbered version you downloaded.
-
-         If you get an error here, something went wrong.
-         Try running the installer again. 
-         If the problem persists, and you can't debug it yourself,
-         asks us about it on |odk-slack|_.
-
-      .. _Python Releases for Windows: https://www.python.org/downloads/windows/
+         .. _Python Releases for Windows: https://www.python.org/downloads/windows/
 
 #. Set up your working directory
 
@@ -567,15 +564,19 @@ We require Python 3 and **strongly recommend** version 3.6 or later.
 
       .. group-tab:: Bash
 
-         $ mkdir odk
-         $ cd odk
-         /odk/ $
+         .. code:: console
+
+            $ mkdir odk
+            $ cd odk
+            /odk/ $
 
       .. group-tab:: PowerShell
 
-         > mkdir odk
-         > cd odk
-         /odk/ >
+         .. code:: powershell
+
+            > mkdir odk
+            > cd odk
+            /odk/ >
 
    For the rest of this guide,
    we assume you are in the :file:`/odk/` directory,
@@ -583,27 +584,27 @@ We require Python 3 and **strongly recommend** version 3.6 or later.
 
 #. Set up a virtual environment
 
-   A `virtual environment` is a Python construct
+   A `virtual environment`_ is a Python construct
    that lets you download and install tools for a specific project
    without installing them for your entire computer.
 
-   .. _virtual environment: http://.......
+   .. _virtual environment: https://docs.python.org/3/tutorial/venv.html
 
    #. Create the virtual environment.
 
-   .. tabs::
+      .. tabs::
 
-      .. group-tab:: Bash
+         .. group-tab:: Bash
 
-         .. code:: console
+            .. code:: console
 
-            /odk/ $ python3 -m venv odkenv
+               /odk/ $ python3 -m venv odkenv
 
-      .. group-tab:: PowerShell
+         .. group-tab:: PowerShell
 
-         .. code:: powershell
+            .. code:: powershell
 
-            /odk/ > python-m venv odkenv
+               /odk/ > python -m venv odkenv
 
    #. Activate the virtual environment.
 
@@ -635,26 +636,26 @@ We require Python 3 and **strongly recommend** version 3.6 or later.
             .. code:: console
 
                (odkenv) /odk/ $ deactivate
-                /odk/ $
+               /odk/ $
 
          .. group-tab:: PowerShell
 
             .. code:: console
 
-               (odkenv)/odk/ > deactivate
+               (odkenv) /odk/ > deactivate
                /odk/ >
 
 
-.. _fork-the-docs:
-
 #. Fork the ODK Docs repository to your own GitHub account.
 
-   A repository (repo) is a store of all the code and text for a project.
+   .. _fork-the-docs:
+
+   A :dfn:`repository` (:dfn:`repo`) is a store of all the code and text for a project.
    The `ODK Docs repo`_ is kept at GitHub.
 
-   On GitHub, a "fork" is a copy of a repo,
+   On GitHub, a :dfn:`fork` is a copy of a repo,
    cloned from one user to another.
-   In order to work on OFK Docs,
+   In order to work on ODK Docs,
    you will create your own fork.
 
    #. Go to the `ODK Docs repo`_ on GitHub. 
@@ -663,19 +664,18 @@ We require Python 3 and **strongly recommend** version 3.6 or later.
 
    .. _ODK Docs repo: https://github.com/opendatakit/docs
 
-.. _clone-the-docs:
-
 #. Clone down your copy to your local computer
+
+   .. _clone-the-docs:
 
    #. From your own fork of the repo on GitHub, select the :guilabel:`Clone or download` button. 
    #. Copy the URI from the text box that opens. 
-   
       It will be something like: 
       ``https://github.com/your-gh-username/docs.git``
 
    #. Use your terminal to clone the repository.
 
-      You should already be in the :file:`/odk` directory,
+      You should already be in the :file:`odk` directory,
       with the virtual environment active.
 
       .. tabs::
@@ -720,6 +720,7 @@ We require Python 3 and **strongly recommend** version 3.6 or later.
          you should now have the following directory structure:
 
          -  :file:`odk`
+
             - :file:`docs`
             - :file:`odkenv`
 
@@ -740,16 +741,16 @@ We require Python 3 and **strongly recommend** version 3.6 or later.
          you may want to create a directory called :file:`odk/forms`
          to hold XLSForm and XForm files.)
 
-.. _upstream-the-docs:
-
 #. Set the upstream remote
+
+   .. _upstream-the-docs:
 
    In git, a :dfn:`remote` is a copy of a repo somewhere else.
    From your local computer's point of view,
    your online copy at GitHub is a remote.
 
    When you cloned down a repo, 
-   your local copy gives your GitHub copy the name``origin``.
+   your local copy gives your GitHub copy the name ``origin``.
 
    You also need to give the primary ODK Docs repo a name,
    and our convention is to name it ``upstream``.
@@ -782,13 +783,15 @@ We require Python 3 and **strongly recommend** version 3.6 or later.
    If everything went right,
    you should see output similar to what is shown above.
 
-.. _install-doc-dependencies:
-
 #. Install Python tools with pip
 
-   Pip is a package management tool that comes with Python.
+   .. _install-doc-dependencies:
+
+   `Pip`_ is a package management tool that comes with Python.
    We use it to download and install our documentation tools.
    These Python tools are listed in :file:`requirements.txt`.
+
+   .. _Pip: https://pip.pypa.io/en/stable/user_guide/
 
    .. tabs::
 
@@ -806,9 +809,11 @@ We require Python 3 and **strongly recommend** version 3.6 or later.
             (odkenv) /odk/docs/ > pip install --upgrade pip
             (odkenv) /odk/docs/ > pip install -r requirements.txt
 
-   The first command upgrades pip itself to the latest version.
+   The first command `upgrades pip`_ itself to the latest version.
    Then second checks :file:`requirements.txt` and installs everything listed in it.
    This will take several moments.
+
+   .. _upgrades pip: https://pip.pypa.io/en/stable/installing/#upgrading-pip
 
    .. note::
 
@@ -819,9 +824,9 @@ We require Python 3 and **strongly recommend** version 3.6 or later.
       Run the installation again
       and then retry your build.
 
-.. _choose-editor:
-
 #. Choose a text/code editor
+
+   .. _choose-editor:
 
    The documentation source files are written in a plain text format called `reStructuredText`_.
    This means special formatting (bullets, headers, bold text) is represented by visible characters,
@@ -837,6 +842,8 @@ We require Python 3 and **strongly recommend** version 3.6 or later.
 
          The documentation source files 
          are written in a plain text format called `reStructuredText`_.
+
+         .. _reStructuredText: http://docutils.sourceforge.net/docs/user/rst/quickref.html
 
    You cannot write and edit these files
    in a typical document preparation program like :program:`MS Word` or :program:`Google Docs`.
@@ -871,15 +878,14 @@ Working on the docs
 
    #. Browse the `issue tracker`_ and find one you may want to work on.
    #. Make sure you understand the goal of the project.
-      If goal isn't clear, ask.
-      If there is anything in the issue that doesn't make sense,
-      ask about it.
+      If the goal isn't clear, ask.
+      If there is anything in the issue that doesn't make sense, ask about it.
       Feel free to make suggestions about how something could be accomplished.
    #. If you decide to work on an issue, 
       assign yourself to it by writing **@opendatakit-bot claim** in a comment.
    #. If the issue requires a novel or creative solution not defined in the issue already
       (we've stated a problem and you think you know a way to fix it)
-      write a comment descibing your plan.
+      write a comment describing your plan.
       It is a good idea to get feedback on an idea before working on it.
       Often, other contributors can provide additional context
       about why a particular solution may or may not work.
@@ -900,11 +906,9 @@ Working on the docs
 
       .. _Issue 96 --- Line Edits: https://github.com/opendatakit/docs/issues/96
 
-.. add a link to a new Finding a Good Issue section/doc
-
-.. _check-at-master:
-
 #. Make sure you are on the master branch
+
+   .. _check-at-master:
 
    A branch is a named sequence of changes representing work on the repo.
    For example, if you were going to work on `Issue 96 --- Line Edits`_,
@@ -966,10 +970,9 @@ Working on the docs
                Switched to branch 'master'
                Your branch is up to date with 'origin/master'.
 
-
-.. _git-pull-the-docs:
-
 #. Pull in changes from upstream
+
+   .. _git-pull-the-docs:
 
    Other people are constantly making changes to the docs,
    so you need to keep your local copy up to date.
@@ -1010,11 +1013,9 @@ Working on the docs
             If everything seems to be working,
             you can ignore these.
 
-
-
-.. _git-branch-the-docs:
-
 #. Create a new branch for your work.
+
+   .. _git-branch-the-docs:
 
    .. tabs::
 
@@ -1041,16 +1042,16 @@ Working on the docs
    - ``contributing``
    - ``fix-issue-13``
 
-  Bad branch names:
+   Bad branch names:
 
    - ``getting started guide``
    - ``Getting started guide``
    - ``Getting_started_guide``
    - ``writing-the-getting-started-guide-adammichaelwood-july-2017-draft``
 
-.. _write-the-docs:
-
 #. Work on the documentation
+
+   .. _write-the-docs:
 
    Finally, you can open an :ref:`editor of your choice <choose-editor>`
    and work on the documentation.
@@ -1063,18 +1064,20 @@ Working on the docs
       Files for the pages at http://docs.opendatakit.com/odk2
    :file:`shared-src`
       Files for pages shared by both ODK1 and ODK2 docs.
-      (This page the other contributor guide pages.)
+      (This page and the other contributor guide pages.)
 
    If you're going to write or edit documentation text, please read:
    
    - :doc:`docs-syntax-guide`
    - :doc:`docs-style-guide`
 
-   If you're working on code, please read:
+   If you're working on code or deployment, please read:
    
    - :doc:`docs-developer-guide`
 
-#. Local checks 
+#. Local checks
+
+   .. _test-the-docs:
 
    Once you have worked on the documentation,
    we want to make sure your contribution 
@@ -1084,9 +1087,9 @@ Working on the docs
    you should run the tests locally first
    and correct any problems.
 
-   .. _spell-check:
-
    #. Spell check
+
+      .. _spell-check:
 
       If you've been working on files in :file:`odk1-src` or :file:`shared-src`:
 
@@ -1159,23 +1162,22 @@ Working on the docs
       When adding new words to :file:`spelling_wordlist.txt` or the top of a document file,
       please keep the words in alphabetical order.
 
-.. style-test-docs
-.. style testing individual files and diffs does not currently work
-
-.. _build-the-docs:
+   #. Style check 
 
 #. Build and check
 
-   We use a Python tool called Sphinx 
+   .. _build-the-docs:
+
+   We use a Python tool called `Sphinx`_ 
    to compile all the :file:`.rst` files into a working website.
+
+   .. _Sphinx: http://www.sphinx-doc.org
 
    If you've been working on files in :file:`odk1-src` or :file:`shared-src`:
 
    .. tabs::
 
       .. group-tab:: Bash
-
-         Build the website:
 
          .. code:: console
 
@@ -1243,7 +1245,7 @@ Working on the docs
       Because of a `bug in Sphinx`_ 
       the line numbers in error and warning messages 
       will be off by about 15 lines
-      (the length of ``rst_prolog`` in :file:`conf.py`.).
+      (the length of ``rst_prolog`` in :file:`conf.py`).
 
       .. _bug in Sphinx: https://github.com/sphinx-doc/sphinx/issues/2617
 
@@ -1266,10 +1268,11 @@ Working on the docs
       include a note about the warning.
       Other contributors will help solve the problem before merging.
 
-
    Once you've corrected all the warnings that can be corrected...
 
 #. Serve the documentation website locally and view it.
+
+   .. _serve-the-docs-locally:
 
    If you've been working on files in :file:`odk1-src` or :file:`shared-src`:
 
@@ -1311,19 +1314,23 @@ Working on the docs
    #. Read through your doc edits in the browser.
    #. Go back to the source files to correct any errors you find.
    #. Go to your terminal, and press :kbd:`CTRL C` to shut down the local web server.
-   #. Re-run the build and serve steps, continue proofreading.
+   #. Re-run the build and serve steps.
+   #. Continue proofreading.
 
    Once you are reasonably sure your changes are ready...
 
 #. Commit your changes to your local repository.
 
-   A commit is snaphot of your working files in a particular state,
-   along with record of all the changes that led up to that state.
-   That snapshot is what you will submit to main repository.
+   .. _commit-the-docs:
+
+   A :dfn:`commit` is snaphot of your working files in a particular state,
+   along with a record of all the changes that led up to that state.
+   That snapshot is what you will submit to the main repository.
 
    .. note:: 
 
-      We explain commit at this step because you need to do it before you can submit your changes.
+      We explain how to do a commit at this step
+      because you need to do it before you can submit your changes.
       However, you don't have to wait until you are done to commit.
       You can commit as many times as you like while working.
 
@@ -1346,9 +1353,7 @@ Working on the docs
 
             .. code:: powershell
 
-               (odkenv) /odk/docs/ # git add -A 
-
-.. add link to staging subset of files
+               (odkenv) /odk/docs/ > git add -A 
 
    #. Commit the staged files with :command:`git commit`.
 
@@ -1364,12 +1369,14 @@ Working on the docs
 
             .. code:: powershell
 
-               (odkenv) /odk/docs/ # git commit -m "Write a commit message here."
+               (odkenv) /odk/docs/ > git commit -m "Write a commit message here."
 
       Your commit message needs to be wrapped in quote marks.
       It should, in a sentence or less, explain your work.
 
 #. Push your commited changes to your GitHub repo with :command:`git push`.
+
+   .. _push-the-docs:
 
    .. tabs::
 
@@ -1398,15 +1405,16 @@ Working on the docs
          When entering your password, the curser won't move --- 
          it will look like you aren't entering anything,
          even though you are.
-         (You can `store your GitHub credentials locally`_
-         so you don't have to re-enter them every time.)
+
+         To avoid having to retype these every time,
+         you can `store your GitHub credentials locally`_.
 
          .. _store your GitHub credentials locally:
             https://help.github.com/articles/caching-your-github-password-in-git/
 
-.. _pr-the-docs:
-
 #. Issue a pull request from your GitHub repo to the main ODK Docs repo.
+
+   .. _pr-the-docs:
 
    A :dfn:`pull request` (or PR) 
    is a request from you to the ODK Docs maintainers 
@@ -1428,7 +1436,11 @@ Working on the docs
       - :guilabel:`base` should be ``master``. 
       - Your repo and working branch name should be listed beside them. 
       
-      If there is a green **Able to be merged** message, you can proceed.
+      You will see either a green **Able to be merged** message
+      or a message informing that the branch can not be merged.
+      You can proceed in either case. 
+      If the branch cannot be merged,
+      the maintainers will work with you to resolve the problem.
 
    #. Write a PR message explaining your work.
 
@@ -1444,7 +1456,7 @@ Working on the docs
       - Details of work that still needs to be done.
       - Details of new work created or implied by this PR.
       - Details of any unresolved errors or warnings,
-        including detals of what you tried.
+        including details of what you tried.
       - Justification for any changes to :file:`requirements.txt`.
       - Details of any difficulties, questions, or concerns 
         that came up while working on this issue.
@@ -1455,12 +1467,15 @@ Working on the docs
    They may request changes to your work.
    If changes are needed:
 
-      #. Work on the files locally again. 
+      #. **Don't worry.** 
+         Revision is a normal part of technical writing,
+         and everyone (even the project's founders and leaders)
+         has their work reviewed and are frequently asked to revise it.
+      #. Work on the files again locally.
          (Use :command:`git branch` to make sure you are still in the same working branch.)
-      #. Stage (:command:`git add -A`) 
-         and commit (:command:`git commit -m "Commit message"`) 
-         your changes locally again.
-      #. Push your commit (:command:`git push origin branch-name`).
+      #. :ref:`Stage and commit <commit-the-docs>` your changes locally again
+         (:command:`git add -A`; :command:`git commit -m "Commit message"`).
+      #. :ref:`Push your commit <push-the-docs>` (:command:`git push origin branch-name`).
       #. Your new commits will automatically update the PR.
          Do not start a new PR.
 
@@ -1481,7 +1496,7 @@ the process is the same as outline above.
 
 Here are a few things to keep in mind when you start your next contribution.
 
-#. Return to ``master`` with :command:`git checkout`.
+#. Return to ``master`` with :command:`git checkout master`.
 
    New work is done on new branches which are started from master.
    So, before you start a new branch, return to the master branch.
@@ -1500,9 +1515,9 @@ Here are a few things to keep in mind when you start your next contribution.
 
             (odkenv) /odk/docs/ > git checkout master
 
-#. Pull in changes with :command:`git pull`.
+#. Pull in changes with :command:`git pull upstream master`.
 
-   You want to start your new work with 
+   You need to start your new work from 
    the latest version of everyone else's work.
 
    .. tabs::
@@ -1536,7 +1551,7 @@ Here are a few things to keep in mind when you start your next contribution.
             (odkenv) /odk/docs/ > git push origin master
 
 #. Find a `new issue to work on`_.
-#. Start a new branch for your work with :command:`git checkout -b branch-name`.
+#. `Start a new branch for your work <git-branch-the-docs>`_ with :command:`git checkout -b branch-name`.
 
 .. _new issue to work on: https://github.com/opendatakit/docs/issues/
 

@@ -1,5 +1,5 @@
 *****************
-Style Guide
+Docs Style Guide
 *****************
 
 .. _spelling-and-grammar:
