@@ -226,7 +226,7 @@ Pulling form data from Aggregate
 
 - Help section:
 
-  .. code-block:: console
+  .. code-block:: none
 
       Params for -plla operation:
         -id,--form_id <arg>                 Form ID
@@ -253,7 +253,7 @@ This command assumes you have already copied and unzipped the :file:`odk` file :
 
 - Help section:
 
-  .. code-block:: console
+  .. code-block:: none
 
       Params for -pc operation:
         -od,--odk_directory <arg>           ODK directory
@@ -279,7 +279,7 @@ Pushing form data to Aggregate
 
 - Help section:
 
-  .. code-block:: console
+  .. code-block:: none
 
       Params for -psha operation:
         -id,--form_id <arg>                 Form ID
@@ -304,7 +304,7 @@ Exporting form data to CSV
 
 - Help section:
 
-  .. code-block:: console
+  .. code-block:: none
 
       Params for -e operation:
         -ed,--export_directory <arg>        Export directory
