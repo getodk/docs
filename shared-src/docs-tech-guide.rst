@@ -5,8 +5,7 @@
 Docs Technical Guide
 ==========================
 
-This document explains how to contribute to 
-ODK Docs.
+This document explains how to contribute to ODK Docs.
 
 .. note::
 
@@ -16,8 +15,7 @@ ODK Docs.
   are what the authors feel would be easiest 
   for newcomers and those unfamiliar with open source.
   
-  You should feel free
-  to use your preferred tools.
+  You should feel free to use your preferred tools.
 
 .. _docs-before-you-begin:
 
@@ -30,6 +28,8 @@ Learn a little about Open Data Kit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Read about the project and the community at `Open Data Kit's website`_.
+
+.. _Open Data Kit's website: http://opendatakit.org
 
 .. _odk-accounts:
 
@@ -61,6 +61,7 @@ and the :ref:`ODK Forum <join-forum>`
       adding a picture.)
 
 .. _get-gh-account:
+
 #. Set up a `GitHub`_ account.
 
    `GitHub`_ is a popular code storage and collaboration platform.
@@ -75,6 +76,7 @@ and the :ref:`ODK Forum <join-forum>`
    .. _GitHub: https://github.com/
 
 .. _join-slack:
+
 #. Join the `ODK Developer Slack`_.
 
    Slack is a popular chat platform.
@@ -108,6 +110,7 @@ and the :ref:`ODK Forum <join-forum>`
       adding a picture.)
 
 .. _join-forum:
+
 #. Join the `ODK Forum`_
 
    The `Open Data Kit Forum <ODK Forum>`_ is the main place for 
@@ -129,9 +132,8 @@ and the :ref:`ODK Forum <join-forum>`
    .. _ODK Forum: http://forum.opendatakit.org
 
 .. _forum-or-slack-or-gh:
-.. tip::
 
-   .. rubric:: Should I ask in the Forum, the Slack, or a GitHub issue?
+.. admonition:: Should I ask in the Forum, the Slack, or a GitHub issue?
 
    The ODK community talks a lot, in a lot of places.
    Sometimes it's hard to know where to ask a question.
@@ -166,9 +168,8 @@ and the :ref:`ODK Forum <join-forum>`
    - How do I add a specific feature to a form?
    - My ODK application crashed.
 
-   ------
-
-   But don't worry about posting a question in the wrong place.
+   .. rubric:: But don't worry about posting a question in the wrong place.
+   
    It is better to ask a question in the "wrong" venue
    than to not ask the question at all.
    Many of the same people are present in all three places,
@@ -206,7 +207,7 @@ on any computer.
          .. _Run as Administrator: https://docs.microsoft.com/en-us/powershell/scripting/setup/starting-windows-powershell?view=powershell-6#with-administrative-privileges-run-as-administrator
 
          Throughout the rest of the instructions in this guide,
-         follow the instructions labelled **PowerShell** or **Windows**.
+         follow the instructions labeled **PowerShell** or **Windows**.
 
          .. rubric:: Windows 10
 
@@ -243,7 +244,7 @@ on any computer.
          
          .. rubric: Install Homebrew
          
-         `Homebrew`_ is a :term:`package manager` for Mac OS. 
+         `Homebrew`_ is a package manager for Mac OS. 
          It makes it easier to install other apps and tools
          from the command line. 
          
@@ -432,10 +433,7 @@ Most of the ODK Docs tools are written in Python,
 so you need it installed on your computer in order to use those tools.
 (Don't worry. You don't need to know how to program in Python.)
 
-We require Python 3 (`the current, supported version of the language`__),
-and **strongly recommend** version 3.6 or later.
-
-.. __: https://wiki.python.org/moin/Python2orPython3
+We require Python 3 and **strongly recommend** version 3.6 or later.
 
 .. tabs::
 
@@ -462,20 +460,21 @@ and **strongly recommend** version 3.6 or later.
       #. Download the latest `Python installer for Mac`_.
 
          .. _mac-64-or-32:
+
          .. admonition:: 64-bit or 32-bit?
 
-         Python provides 64-bit and 32-bit installers.
-         You probably need the 64-bit installer.
+            Python provides 64-bit and 32-bit installers.
+            You probably need the 64-bit installer.
 
-         If you are running a relatively recent Mac OS update
-         (Mountain Lion or later — any Mac from the last several years)
-         the 64-bit installer is for you.
+            If you are running a relatively recent Mac OS update
+            (Mountain Lion or later — any Mac from the last several years)
+            the 64-bit installer is for you.
 
-         If you have an older Mac, 
-         and are unsure if it can run a 64-bit installer,
-         `check the processor details`_ in :menuselection:` -> About This Mac`.
+            If you have an older Mac, 
+            and are unsure if it can run a 64-bit installer,
+            `check the processor details`_ in :menuselection:` -> About This Mac`.
 
-         .. _check the processor details: https://www.alesis.com/kb/article/1616#mac
+            .. _check the processor details: https://www.alesis.com/kb/article/1616#mac
 
       #. Open the Installer.
       #. Follow the prompts.
@@ -629,7 +628,7 @@ and **strongly recommend** version 3.6 or later.
 
       Later, to deactivate the virtual environment:
 
-            .. tabs::
+      .. tabs::
 
          .. group-tab:: Bash
       
@@ -647,6 +646,7 @@ and **strongly recommend** version 3.6 or later.
 
 
 .. _fork-the-docs:
+
 #. Fork the ODK Docs repository to your own GitHub account.
 
    A repository (repo) is a store of all the code and text for a project.
@@ -657,13 +657,14 @@ and **strongly recommend** version 3.6 or later.
    In order to work on OFK Docs,
    you will create your own fork.
 
-   #. Go to the `ODK Doc repo`_ on GitHub. 
+   #. Go to the `ODK Docs repo`_ on GitHub. 
    #. Use the :guilabel:`Fork` button (top right) to create your own copy. 
    #. After the process completes, you'll be looking at your own fork on GitHub.
 
    .. _ODK Docs repo: https://github.com/opendatakit/docs
 
 .. _clone-the-docs:
+
 #. Clone down your copy to your local computer
 
    #. From your own fork of the repo on GitHub, select the :guilabel:`Clone or download` button. 
@@ -679,7 +680,7 @@ and **strongly recommend** version 3.6 or later.
 
       .. tabs::
 
-         .. group-tabs:: Bash
+         .. group-tab:: Bash
          
             .. code:: console
 
@@ -690,7 +691,7 @@ and **strongly recommend** version 3.6 or later.
                (odkenv) /odk/ $ cd docs
                (odkenv) /odk/docs/ $
 
-         .. group-tabs:: Powershell
+         .. group-tab:: Powershell
          
             .. code:: powershell
 
@@ -828,12 +829,14 @@ and **strongly recommend** version 3.6 or later.
    When working on a documentation file, 
    you see and write something that looks like:
 
+   .. _reStructuredText: http://docutils.sourceforge.net/docs/user/rst/quickref.html
+
    .. code:: rst
 
       #. Choose a text/code editor
 
-      The documentation source files 
-      are written in a plain text format called `reStructuredText`_.
+         The documentation source files 
+         are written in a plain text format called `reStructuredText`_.
 
    You cannot write and edit these files
    in a typical document preparation program like :program:`MS Word` or :program:`Google Docs`.
@@ -978,7 +981,7 @@ Working on the docs
 
    .. tabs::
 
-      .. group-tabs:: Bash
+      .. group-tab:: Bash
 
          .. code:: console
 
@@ -989,7 +992,7 @@ Working on the docs
 
             nothing to commit, working tree clean
 
-      .. group-tabs:: PowerShell
+      .. group-tab:: PowerShell
 
          .. code:: powershell
 
@@ -1112,13 +1115,13 @@ Working on the docs
 
       .. tabs::
 
-         .. group-tabs:: Bash
+         .. group-tab:: Bash
 
             .. code:: console
             
                (odkenv) /odk/docs/ $ make odk2-spell-check
 
-         .. group-tabs:: PowerShell
+         .. group-tab:: PowerShell
 
             .. code:: powershell
 
@@ -1213,7 +1216,7 @@ Working on the docs
    This generates a lot of output.
    Near the end of the output you may see a statement like:
 
-   .. code:: none 
+   .. code-block:: none 
    
       build succeeded, 18 warnings.
 
@@ -1224,7 +1227,7 @@ Working on the docs
 
    A Sphinx warning looks like this:
 
-   .. code:: none
+   .. code-block:: none
 
       /path/to/file-name.rst:LINENUMBER: WARNING: warning message
 
@@ -1239,7 +1242,7 @@ Working on the docs
 
    .. note::
 
-      Because of `a bug in Sphinx`_ 
+      Because of a `bug in Sphinx`_ 
       the line numbers in error and warning messages 
       will be off by about 15 lines
       (the length of ``rst_prolog`` in :file:`conf.py`.).
@@ -1411,7 +1414,11 @@ Working on the docs
    is a request from you to the ODK Docs maintainers 
    to pull in your changes to the main repo.
 
-   #. Go to the `ODK Docs repo on GitHub`__. (Make sure you are logged in.)
+   #. Go to the `ODK Docs repo on GitHub`_.
+      (Make sure you are logged in.)
+
+      .. _ODK Docs repo on GitHub: https://github.com/opendatakit/docs
+
    #. Find the message near the top of the page that mentions your recent pushed branches.
       Select :guilabel:`Compare & pull request` to start a pull request.
    #. Follow GitHub's instructions to start the pull request.
@@ -1541,11 +1548,11 @@ Keep improving
 --------------
 
 As you are getting comfortable with the contribution process,
-take a few minutes to read our :doc:`conributing-tips`.
+take a few minutes to read our :doc:`contributing-tips`.
 You may also want to dig deeper into the 
 :doc:`docs-style-guide` and the :doc:`docs-syntax-guide`.
 (And if you are writing code, 
-check out the :doc:`doc-developers-guide`.)
+check out the :doc:`docs-developer-guide`.)
 
 And don't forget to join us on the |odk-slack|_.
 
