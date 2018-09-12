@@ -18,7 +18,7 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
    
    .. _Aggregate Demo Server: https://opendatakit.appspot.com
 
-#. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to your :ref:`Briefcase Storage <briefcase_storage>`.
+#. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to your :ref:`Briefcase Storage <briefcase_storage>` location.
 
    For each selected form, Briefcase will pull down:
    
@@ -80,7 +80,7 @@ Pulling forms from ODK Collect
 #. In Briefcase, open the :guilabel:`Pull` tab.
 #. Select *Collect Directory* in the :guilabel:`Pull from` drop-down.
 #. Click the :guilabel:`Connect` button and select the unzipped :file:`odk` folder.
-#. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to your :ref:`Briefcase Storage <briefcase_storage>`.
+#. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to your :ref:`Briefcase Storage <briefcase_storage>` location.
 #. On the Android device, open Collect and delete the filled-in forms.
 
    .. tip::
@@ -104,7 +104,7 @@ Pulling form definitions
 #. Open the :guilabel:`Pull` tab.
 #. Select *Form definition* in the :guilabel:`Pull from` drop-down.
 #. Click the :guilabel:`Connect` button and select the :file:`.xml` form definition file.
-#. Select the form and click :guilabel:`Pull`. The form will be pulled to your :ref:`Briefcase Storage <briefcase_storage>`.
+#. Select the form and click :guilabel:`Pull`. The form will be pulled to your :ref:`Briefcase Storage <briefcase_storage>` location.
 
 .. tip::
 
