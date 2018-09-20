@@ -56,7 +56,7 @@ Questions with response choices can be answered by touching the selected items. 
 Capture answer from device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Many question formats launch additional features, form widgets, or apps to collect an answer. This includes audio and video recording, signature collection, photo capture, date and time widgets, geolocation widgets, and barcodes. 
+Many question formats launch additional features, form widgets, or apps to collect an answer. This includes audio and video recording, signature collection, photo capture, date and time widgets, location widgets, and barcodes. 
 
 In all cases, buttons below the question text will guide you through providing the response.
 
