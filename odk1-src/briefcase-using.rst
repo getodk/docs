@@ -323,7 +323,7 @@ Exporting form data to CSV
         -oc,--overwrite_csv_export          Overwrite files during export
         -pb,--pull_before                   Pull before export
         -pf,--pem_file <arg>                PEM file for form decryption
-        -ssm,--split_select_multiples       Split select multiple fields
+        -sms,--split_multiple_selects       Split multiple select fields
         -start,--export_start_date <arg>    Export start date (inclusive) (yyyy-MM-dd or yyyy/MM/dd)
 
 .. _clear-saved-preferences:
