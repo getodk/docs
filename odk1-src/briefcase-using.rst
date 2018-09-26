@@ -184,6 +184,10 @@ Export forms to CSV
 
     - :guilabel:`Export media files` enables exporting media files into the chosen export directory
     - :guilabel:`Ovewrite existing files` enables overwriting form instance data in the output files. The default behavior is to append data.
+    - :guilabel:`Split multiple selects` enables splitting multiple select fields (a.k.a. choice lists). Enabling this setting will create an extra output column per select option, with a `1` if the option was selected, or `0` otherwise.
+
+      This will affect only to select fields that have a static list of options, as opposed to selects that use dynamic `<itemset>` options.
+
     - :guilabel:`Pull before export` enables trying to pull the selected forms in case there are new form instances to be exported.
 
 #. Select the forms to export.
