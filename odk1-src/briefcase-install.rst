@@ -22,11 +22,16 @@ Setting Up ODK Briefcase
        
        $ java -jar {path/to/Briefcase}
    
+#. Set your local **Briefcase Storage** location.
 
-#. Set the location for Briefcase Storage.
+   .. _briefcase_storage:
 
    The first time you open Briefcase, you will need to select a directory for storing forms and submission data. A new directory called :file:`ODK Briefcase Storage` will be created under the directory you select.
 
+   .. note::
+
+     We will refer to the term `Briefcase Storage` from now on to indicate the location of the :file:`ODK Briefcase Storage` directory
+
    .. tip::
 
-     You can change the storage location later, from the :guilabel:`Settings` tab.
+     You can change the Briefcase Storage location later, from the :guilabel:`Settings` tab.
