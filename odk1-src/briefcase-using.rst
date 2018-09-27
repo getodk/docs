@@ -139,9 +139,7 @@ To upload blank forms and completed form instances to an :doc:`Aggregate <aggreg
 #. Select the forms you want to upload and click :guilabel:`Push`. The selected forms will be pushed from your :ref:`Briefcase Storage <briefcase_storage>` to the Aggregate server.
 
    For each selected form, Briefcase will upload:
-   
-   - If not on the server already:
-   
+
      - The form definition file (that is, the blank XForm).
      - All media associated with the form.
    
@@ -292,6 +290,10 @@ Pushing forms to Aggregate
         -url,--aggregate_url <arg>          Aggregate server URL
       Optional params for -psha operation:
         -fsb,--force_send_blank             Force sending the blank form to the Aggregate instance
+
+.. warning::
+
+  This CLI operation will only update the blank form if it does not already exist, whereas the GUI will always update the form.
 
 .. _export-to-csv-cli:
   
