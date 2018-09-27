@@ -19,6 +19,9 @@ help:
 
 .PHONY: help Makefile
 
+build-env:
+	docker build -t odk-docs ./
+
 odk1-clean:
 	rm -rf $(COMPILE1_SRCDIR)
 	rm -rf $(ODK1_BUILDDIR)
