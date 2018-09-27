@@ -27,6 +27,10 @@ Need for Upgrading
 
 It is important to upgrade to newer ODK Aggregate versions as they come out. You don't need to do this immediately, but this should be something you do at least once a year.
 
+.. tip::
+
+  ODK Briefcase's :doc:`pull and push functionality <briefcase-using>` provides a mechanism to transfer data between upgrade-incompatible versions of Aggregate or other ODK-compatible servers.
+
 There are several reasons for this.
 
 Security vulnerabilities

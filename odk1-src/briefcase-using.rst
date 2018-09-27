@@ -56,7 +56,7 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
 
     .. image:: /img/briefcase-using/pull-in-parallel.*
 
-    However, if your Aggregate server is :doc:`installed on Google App engine <aggregate-app-engine>`, this setting may cause problems with large attachments. If your form has submission attachments (file uploads, videos, images, sound recordings) you should experiment with this setting and see if it improves or worsens performance.
+    However, if your Aggregate server is :doc:`installed on Google App Engine <aggregate-app-engine>`, this setting may cause problems with large attachments. If your form has submission attachments (file uploads, videos, images, sound recordings) you should experiment with this setting and see if it improves or worsens performance.
 
 .. _pull-from-collect:
 
@@ -158,14 +158,6 @@ To upload blank forms and completed form instances to an :doc:`Aggregate <aggreg
      #. Replace the local form definition file with a copy of the version from your Aggregate server.
      #. Push your form instances. 
      #. Update :guilabel:`Settings` back to the original :ref:`Briefcase Storage <briefcase_storage>` location.
-     
-.. tip::
-       
-  .. Move this to Aggregate docs, or the Agg-v-Briefcase page.
-       
-  .. _aggregate-upgrade-with-briefcase:
-       
-  By pulling data into the local Briefcase Storage location and then pushing data up to an Aggregate instance, Briefcase provides a mechanism to transfer data across upgrade-incompatible versions of Aggregate.
 
 .. _briefcase-export-to-csv:
 
