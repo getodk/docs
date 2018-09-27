@@ -196,6 +196,8 @@ Export forms to CSV
 Working with the command line
 -----------------------------
 
+Briefcase has a command line interface (CLI) to enable scripting of many of the actions that can be taken in the graphical user interface (GUI).
+
 .. versionadded:: 1.4.4
   A CLI was added.
 
