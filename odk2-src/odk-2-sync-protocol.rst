@@ -91,7 +91,7 @@ Requests should specify 3 or 4 headers:
 
   - **X-OpenDataKit-Version** -- this should be set to `2.0`
   - **X-OpenDataKit-Installation-Id** -- this should be set to a UUID that identifies this client device. This UUID will generally be generated on first install of the ODK Services APK. Using "Clear Data" in the device settings will cause a new UUID to be generated. This is used to track the devices responsible for changes to the configuration (resetting the server) and for tracking the status of all devices as they synchronize with the server.
-  - **User-Agent** -- this is required by Google AppEngine infrastructure before it will honor requests for GZIP content compression of response entities (i.e., it ignores "Accept-Encoding" directives on requests if this is not present). The value supplied must end with " (gzip)". Services uses a value of: `"Sync " + versionCode + " (gzip)"` where `versionCode` is is the revision code of the software release (e.g., 210). While optional, it is highly recommended that all requests supply this header.
+  - **User-Agent** -- this is required by Google App Engine infrastructure before it will honor requests for GZIP content compression of response entities (i.e., it ignores "Accept-Encoding" directives on requests if this is not present). The value supplied must end with " (gzip)". Services uses a value of: `"Sync " + versionCode + " (gzip)"` where `versionCode` is is the revision code of the software release (e.g., 210). While optional, it is highly recommended that all requests supply this header.
   - **Accept-Encoding** -- this should be set to "gzip" when an entity body is returned.
 
 .. _sync-protocol-rest-data-structures:

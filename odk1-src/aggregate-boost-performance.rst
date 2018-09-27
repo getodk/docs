@@ -54,7 +54,7 @@ To change the Google App Engine web server size:
  
    To change the size of the web server, replace **F2** with a different instance class size. 
    
-   There are several different instance classes available. Select from among the instance classes beginning with the letter **F**. See `instance classes <https://cloud.google.com/appengine/docs/about-the-standard-environment#instance_classes>`_  for their descriptions or search for `Google AppEngine instance classes standard environment` on the web. 
+   There are several different instance classes available. Select from among the instance classes beginning with the letter **F**. See `instance classes <https://cloud.google.com/appengine/docs/about-the-standard-environment#instance_classes>`_  for their descriptions or search for `Google App Engine instance classes standard environment` on the web. 
    
 4. Re-run the upload tool within the ODKAggregate folder.
 

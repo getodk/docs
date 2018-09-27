@@ -39,7 +39,7 @@ Hosting revisions
 
 If you are using Google App Engine as we recommend, your hosting environment is being continuously updated.
 
-Google AppEngine is a managed environment, unlike AWS or other "bare-box" hosting services. Google is continuously updating features and removing support for older features in this environment. 
+Google App Engine is a managed environment, unlike AWS or other "bare-box" hosting services. Google is continuously updating features and removing support for older features in this environment.
 
 The Aggregate development team is committed to supporting Google App Engine, so we update our application as the platform changes. If you do not upgrade gradually as new versions come out, your installation may stop working or cease to have a viable upgrade path.
 
