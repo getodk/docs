@@ -51,6 +51,54 @@ Our software uses a number of open-source 3rd-party libraries from well-known an
 
 Your security people may want to review the libraries and source code on `GitHub <https://github.com/opendatakit>`_.
 
+.. _security-privacy-odk-briefcase:
+
+ODK Briefcase
+-------------
+
+We gather anonymous aggregate user behavior through Google Analytics and gather anonymous crash logs through Sentry. We use secure HTTPS communication to transfer this data to ODK's maintainers. Users may disable analytics in the settings of the application. Crash logging cannot be disabled.
+
+.. _security-privacy-odk-build:
+
+ODK Build
+---------
+
+We require secure HTTPS connections to ODK Build. We gather anonymous aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data to ODK's maintainers.
+
+.. _security-privacy-odk-collect:
+
+ODK Collect
+-----------
+
+We gather anonymous aggregate user behavior through Google Analytics and gather anonymous crash logs through Google Firebase Crashlytics. We use secure HTTPS communication to transfer this data to ODK's maintainers. Users may disable analytics in the settings of the application. Crash logging cannot be disabled.
+
+.. _security-privacy-xlsform-online:
+
+XLSForm Online
+--------------
+
+We require secure HTTPS connections to XLSForm Online. We gather anonymous aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data to ODK's maintainers.
+
+XLSForm Online stores both your submitted XLS and the generated XML form for a period of time on its disk drive before being deleted (this is necessary for the operation of the tool).
+
+XLSForm Offline operates locally without any network communications and provides a secure alternative to the convenience of this online tool.
+
+.. _security-privacy-odk-websites:
+
+Websites
+-------------
+
+Our websites under the opendatakit.org domain can or do use cookies and can or do log all interactions. We also utilize security software, spam-blocking, and web-analytics tools (for example, Google Web Analytics) that may track visitors and their access patterns on our web properties.
+
+.. _security-privacy-google-play-store:
+
+Google Play Store
+-----------------------
+
+Downloads from the Google Play store are compiled into aggregated usage statistics on our management portal.
+
+Crash reports you elect to send are provided to us as anonymous crash reports. By design, these do not contain survey field values or other device- or user- specific data.
+
 .. _odk-aggregate-communications:
 
 ODK Aggregate Communications
@@ -127,53 +175,6 @@ During data submission, some identifying information is transmitted and stored o
 
 While interacting with an :ref:`ODK Aggregate <aggregate-introduction>` website, any actions that require authentication and that modify the server settings, set of form definitions, filters, exports, publishers, or data tables, will cause the authenticated username or Google account to be written into the audit fields of the database tables that are being updated. If these modifications result in delete actions being performed against a database table, then this authenticated username or Google account will be identified in the server log together with summary information on what was deleted.
 
-.. _security-privacy-odk-briefcase:
-
-ODK Briefcase
--------------
-
-We gather anonymous aggregate user behavior through Google Analytics and gather anonymous crash logs through Sentry. We use secure HTTPS communication to transfer this data to ODK's maintainers. Users may disable analytics in the settings of the application. Crash logging cannot be disabled.
-
-.. _security-privacy-odk-build:
-
-ODK Build
----------
-
-We require secure HTTPS connections to ODK Build. We gather anonymous aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data to ODK's maintainers.
-
-.. _security-privacy-odk-collect:
-
-ODK Collect
------------
-
-We gather anonymous aggregate user behavior through Google Analytics and gather anonymous crash logs through Google Firebase Crashlytics. We use secure HTTPS communication to transfer this data to ODK's maintainers. Users may disable analytics in the settings of the application. Crash logging cannot be disabled.
-
-.. _security-privacy-xlsform-online:
-
-XLSForm Online
---------------
-
-We require secure HTTPS connections to XLSForm Online. We gather anonymous aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data to ODK's maintainers.
-
-XLSForm Online stores both your submitted XLS and the generated XML form for a period of time on its disk drive before being deleted (this is necessary for the operation of the tool).
-
-XLSForm Offline operates locally without any network communications and provides a secure alternative to the convenience of this online tool.
-
-.. _security-privacy-odk-websites:
-
-Websites
--------------
-
-Our websites under the opendatakit.org domain can or do use cookies and can or do log all interactions. We also utilize security software, spam-blocking, and web-analytics tools (for example, Google Web Analytics) that may track visitors and their access patterns on our web properties.
-
-.. _security-privacy-google-play-store:
-
-Google Play Store
------------------------
-
-Downloads from the Google Play store are compiled into aggregated usage statistics on our management portal.
-
-Crash reports you elect to send are provided to us as anonymous crash reports. By design, these do not contain survey field values or other device- or user- specific data.
 
 ----
 
