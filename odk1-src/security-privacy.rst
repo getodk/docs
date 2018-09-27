@@ -36,7 +36,7 @@ All our installers, programs, source code, and documentation are provided AS-IS 
 Communication Channels
 ---------------------------
 
-None of the downloadable ODK software transmits or communicates any information back to us and the software we have written does not have any mechanisms that might allow us to access or control your devices or systems.
+Outside of usage analytics and crash reports, ODK software does not transmit or communicate any information back to ODK's maintainers. Further, the software we have written does not have any mechanisms that might allow us to access or control your devices or systems.
 
 There is always the possibility that hackers can discover and exploit deficiencies or bugs in our software or in 3rd-party libraries to access or control your devices or systems.
 
@@ -127,30 +127,37 @@ During data submission, some identifying information is transmitted and stored o
 
 While interacting with an :ref:`ODK Aggregate <aggregate-introduction>` website, any actions that require authentication and that modify the server settings, set of form definitions, filters, exports, publishers, or data tables, will cause the authenticated username or Google account to be written into the audit fields of the database tables that are being updated. If these modifications result in delete actions being performed against a database table, then this authenticated username or Google account will be identified in the server log together with summary information on what was deleted.
 
-.. _security-privacy-odk-collect:
+.. _security-privacy-odk-briefcase:
 
-ODK Collect
+ODK Briefcase
 -------------
 
-We gather anonymous aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data off the device and the data are available to ODK's maintainers. Users may disable analytics in the settings of :ref:`ODK Collect <collect-introduction>`.
+We gather anonymous aggregate user behavior through Google Analytics and gather anonymous crash logs through Sentry. We use secure HTTPS communication to transfer this data to ODK's maintainers. Users may disable analytics in the settings of the application. Crash logging cannot be disabled.
 
 .. _security-privacy-odk-build:
 
 ODK Build
----------------
+---------
 
-We require secure HTTPS connections to ODK Build. We gather anonymous aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data and the data are available to ODK's maintainers.
+We require secure HTTPS connections to ODK Build. We gather anonymous aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data to ODK's maintainers.
+
+.. _security-privacy-odk-collect:
+
+ODK Collect
+-----------
+
+We gather anonymous aggregate user behavior through Google Analytics and gather anonymous crash logs through Google Firebase Crashlytics. We use secure HTTPS communication to transfer this data to ODK's maintainers. Users may disable analytics in the settings of the application. Crash logging cannot be disabled.
 
 .. _security-privacy-xlsform-online:
 
 XLSForm Online
--------------------------
+--------------
 
-ref:`XLSForm Online <xlsform-introduction>` does not use a secure connection. This means that your form definition files (both XLS and XML) are visible to a determined observer when submitted and downloaded from that site, as are any reported errors in the form.
+We require secure HTTPS connections to XLSForm Online. We gather anonymous aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data to ODK's maintainers.
 
-Furthermore, XLSForm Online stores both your submitted XLS and the generated XML form for a period of time on its disk drive before being deleted (this is necessary for the operation of the tool).
+XLSForm Online stores both your submitted XLS and the generated XML form for a period of time on its disk drive before being deleted (this is necessary for the operation of the tool).
 
-XLSForm Offline and ODK Validate, because they operate locally without any network communications, provide a secure alternative to the convenience of this online tool.
+XLSForm Offline operates locally without any network communications and provides a secure alternative to the convenience of this online tool.
 
 .. _security-privacy-odk-websites:
 
