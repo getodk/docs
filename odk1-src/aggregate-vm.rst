@@ -76,13 +76,15 @@ If you'd like to connect to the VM from an external device (for example, :doc:`c
 To set the FQDN, do the following:
 
 1. :ref:`Secure the VM <securing-the-vm>`.
-2. Change the VM's network adapter settings in VirtualBox from NAT to Bridged.
-3. Reboot the VM. After the reboot, the VM will behave like any other machine on your network and get an IP address from your router.
-4. Log into the command line interface of the VM. Run the :command:`aggregate-config` script to set a fully qualified domain name (FQDN).
+2. Change the VM's network adapter settings in VirtualBox from NAT to Bridged and reset/reboot the VM.
+3. After the reset/reboot, the VM will behave like any other machine on your network and get an IP address from your router. The IP address will be shown to you after the **Welcome to ODK Aggregate VM** message.
+4. Log into the command line interface of the VM and run the :command:`aggregate-config` script to set a fully qualified domain name (FQDN) using the IP address that was shown to you (e.g., ``192.168.5.2``).
 
   .. code-block:: console
 
-    aggregate-config --fqdn 192.168.5.2 --http-port 1234
+    aggregate-config --fqdn 192.168.5.2 --http-port 8080 --https-port 8443 --net-mode bridge
+
+5. After the configuration, use your host computer or any other computer on your network to log into Aggregate at the FQDN and port (e.g., ``http://192.168.5.2:8080``).
 
 .. note::
 
