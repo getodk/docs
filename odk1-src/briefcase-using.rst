@@ -186,7 +186,7 @@ Export forms to CSV
     - :guilabel:`Ovewrite existing files` enables overwriting form instance data in the output files. The default behavior is to append data.
     - :guilabel:`Split select multiples` enables splitting select multiple fields. Enabling this setting will create an extra output column per select choice, with a `1` if the choice was selected, or `0` otherwise.
 
-      This will affect only select fields that have a static list of choices, as opposed to selects that use dynamic `<itemset>` choices.
+      This only affects select fields without a choice filter and that are not from an external file.
 
     - :guilabel:`Pull before export` enables trying to pull the selected forms in case there are new form instances to be exported.
 
