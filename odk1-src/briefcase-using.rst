@@ -184,9 +184,9 @@ Export forms to CSV
 
     - :guilabel:`Export media files` enables exporting media files into the chosen export directory
     - :guilabel:`Ovewrite existing files` enables overwriting form instance data in the output files. The default behavior is to append data.
-    - :guilabel:`Split multiple selects` enables splitting multiple select fields (a.k.a. choice lists). Enabling this setting will create an extra output column per select option, with a `1` if the option was selected, or `0` otherwise.
+    - :guilabel:`Split select multiples` enables splitting select multiple fields. Enabling this setting will create an extra output column per select choice, with a `1` if the choice was selected, or `0` otherwise.
 
-      This will affect only to select fields that have a static list of options, as opposed to selects that use dynamic `<itemset>` options.
+      This only affects select fields without a choice filter and that are not from an external file.
 
     - :guilabel:`Pull before export` enables trying to pull the selected forms in case there are new form instances to be exported.
 
@@ -323,7 +323,7 @@ Exporting form data to CSV
         -oc,--overwrite_csv_export          Overwrite files during export
         -pb,--pull_before                   Pull before export
         -pf,--pem_file <arg>                PEM file for form decryption
-        -sms,--split_multiple_selects       Split multiple select fields
+        -ssm,--split_select_multiples       Split select multiple fields
         -start,--export_start_date <arg>    Export start date (inclusive) (yyyy-MM-dd or yyyy/MM/dd)
 
 .. _clear-saved-preferences:
