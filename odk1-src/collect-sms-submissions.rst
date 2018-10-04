@@ -58,7 +58,7 @@ Optionally, a ``prefix`` can be specified for the form to identify submissions f
 
 Additionally, an optional ``delimiter`` can be specified. This value will be included between each prefix, tag and form value. By default, the delimiter is a single space. If you allow spaces in the form values and expect to process your SMS messages by splitting on delimiters, you should set a delimiter other than space. For example, you could use ``+`` for the following result:
 
-``my-form|fn|Sally Sue|ln|David|a|23``
+``my-form+fn+Sally Sue+ln+David+a+23``
 
 .. csv-table:: settings
   :header: prefix, delimiter
