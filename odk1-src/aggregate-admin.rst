@@ -70,7 +70,7 @@ In the :guilabel:`Preferences` sub-tab under :guilabel:`Site Admin` tab, you can
 
 - **Aggregate features**: These settings affect the operations of the server.
    
-   - *Disable faster background actions* - check this to reduce AppEngine quota usage.
+   - *Disable faster background actions* - check this to reduce App Engine quota usage.
    - *Skip malformed submissions* - check this to ignore corrupted submissions.
 
 .. image:: /img/aggregate-use/preferences-options.*

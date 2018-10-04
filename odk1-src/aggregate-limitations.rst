@@ -22,7 +22,7 @@ The 60-second request limit can be very commonly exceeded over low-bandwidth con
 
 .. note::
    
-   - The above two limitations, the global mutex and the in-memory copies/full-packet-assembly, are a result of implementing on top of AppEngine and its Datastore.
+   - The above two limitations, the global mutex and the in-memory copies/full-packet-assembly, are a result of implementing on top of App Engine and its Datastore.
    - A server that used database transactions and that used streaming servlet 3.0 functionality would have less trouble with concurrent requests.
 
 Media held in memory
@@ -32,7 +32,7 @@ When a form submission is uploaded, and when blank forms are downloaded, all the
 
 The previous section already suggested serializing form submission uploads. This is not absolutely critical for form downloads, but you should probably manage how many form download requests are being handled concurrently, in order to avoid memory problems.
 
-..  Spinning up of copies of the frontend will incur faster quota usage on AppEngine. For that reason, the Aggregate configuration here specifies a 14-second queuing time threshold before a new instance is spun up. Only if at least one request is queued for longer than 14 seconds will a new instance be spun up, and then that new instance will take about 30 seconds to become live. Leaving a 15-second processing interval. This is why ODK Collect tried twice before failing a submit.
+..  Spinning up of copies of the frontend will incur faster quota usage on App Engine. For that reason, the Aggregate configuration here specifies a 14-second queuing time threshold before a new instance is spun up. Only if at least one request is queued for longer than 14 seconds will a new instance be spun up, and then that new instance will take about 30 seconds to become live. Leaving a 15-second processing interval. This is why ODK Collect tried twice before failing a submit.
 
 Uploading blank forms with media exceeding 10MB
 -------------------------------------------------
