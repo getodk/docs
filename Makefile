@@ -19,9 +19,6 @@ help:
 
 .PHONY: help Makefile
 
-build-env:
-	docker build -t odk-docs ./
-
 odk1-autobuild:
 	sphinx-autobuild --poll -p 8080 -H 0.0.0.0 odk1-src odk1-build
 
