@@ -60,7 +60,7 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
 
 .. _pull-from-collect:
 
-Pulling forms from ODK Collect
+Pulling forms from Collect
 ------------------------------
 
 #. Ensure all filled-in forms are finalized.
@@ -79,14 +79,14 @@ Pulling forms from ODK Collect
 #. Copy the zip file you created from the Android device to your local hard drive.
 #. Once it is copied onto your local hard drive, unzip the file.
 #. In Briefcase, open the :guilabel:`Pull` tab.
-#. Select *Collect Directory* in the :guilabel:`Pull from` drop-down.
+#. Select *Collect directory* in the :guilabel:`Pull from` drop-down.
 #. Click the :guilabel:`Configure` button and select the unzipped :file:`odk` folder.
 #. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to your :ref:`Briefcase Storage <briefcase_storage>` location.
 #. On the Android device, open Collect and delete the filled-in forms.
 
    .. tip::
 
-     - You can use the *Collect Directory* any time you want to pull forms from custom location.
+     - You can use the *Collect directory* any time you want to pull forms from custom location.
      - You can confirm that the forms have been successfully pulled into Briefcase by confirming a successful pull status or by verifying the data appearing in a :ref:`CSV export file <briefcase-export-to-csv>`.
 
 .. warning::
@@ -126,7 +126,7 @@ Pushing forms to Aggregate
 To upload blank forms and completed form instances to an :doc:`Aggregate <aggregate-intro>` server:
 
 #. Open the :guilabel:`Push` tab.
-#. Select *Aggregate* in the :guilabel:`Push to` drop-down.
+#. Select *Aggregate server* in the :guilabel:`Push to` drop-down.
 #. Click the :guilabel:`Configure` button.
 #. Enter the URL and login credentials for your Aggregate server in the dialog that pops up and click the :guilabel:`Connect` button.
 
@@ -183,11 +183,8 @@ Export forms to CSV
   - Toggle export parameters as needed:
 
     - :guilabel:`Export media files` enables exporting media files into the chosen export directory
-    - :guilabel:`Ovewrite existing files` enables overwriting form instance data in the output files. The default behavior is to append data.
-    - :guilabel:`Split select multiples` enables splitting select multiple fields. Enabling this setting will create an extra output column per select choice, with a `1` if the choice was selected, or `0` otherwise.
-
-      This only affects select fields without a choice filter and that are not from an external file.
-
+    - :guilabel:`Overwrite existing files` enables overwriting form instance data in the output files. The default behavior is to append data.
+    - :guilabel:`Split select multiples` enables splitting select multiple fields. Enabling this setting will create an extra output column per select choice, with a `1` if the choice was selected, or `0` otherwise. This only affects select fields without a choice filter and that are not from an external file.
     - :guilabel:`Pull before export` enables trying to pull the selected forms in case there are new form instances to be exported.
 
 #. Select the forms to export.
@@ -220,8 +217,8 @@ To get help about the command line operation:
 
 .. _pull-from-aggregate-cli:
   
-Pulling form data from Aggregate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Pulling forms from Aggregate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - CLI flag: `-plla` or `--pull_aggregate`
 - Usage:
@@ -245,8 +242,8 @@ Pulling form data from Aggregate
 
 .. _pull-from-collect-cli:
   
-Pulling form data from Collect
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Pulling forms from Collect
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This command assumes you have already copied and unzipped the :file:`odk` file :ref:`as described here <pull-from-collect>`.
 
@@ -273,8 +270,8 @@ This command assumes you have already copied and unzipped the :file:`odk` file :
 
 .. _push-to-aggregate-cli:
 
-Pushing form data to Aggregate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Pushing forms to Aggregate
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - CLI flag: `-psha` or `--push_aggregate`
 - Usage:
@@ -298,8 +295,8 @@ Pushing form data to Aggregate
 
 .. _export-to-csv-cli:
   
-Exporting form data to CSV
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Exporting forms to CSV
+~~~~~~~~~~~~~~~~~~~~~~
 
 - CLI flag: `-e` or `--export`
 - Usage:
