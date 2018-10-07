@@ -682,32 +682,38 @@ Write and edit files in your favorite code editor.
 
 .. _spell-check:
 
-Spell check your work
-~~~~~~~~~~~~~~~~~~~~~~
+Check your spelling
+~~~~~~~~~~~~~~~~~~~
 
 After making changes to the docs,
-you need to run the spell checker.
-To run the spell checker:
+run the spelling checker with:
 
 .. code-block:: console
 
-  $ sphinx-build -b spelling src build/spelling
+  $ sphinx-build -b spelling odk1-src build/spelling
+
+or:
+
+.. code-block:: console
+
+  $ sphinx-build -b spelling odk2-src build/spelling
 
 If there are any warnings, make sure that you fix them
 to avoid a build failure.
 
 The error messages will be displayed in the terminal
-as well as stored in a file :file:`/build/spelling/output.txt`.
+as well as stored in a file :file:`build/spelling/output.txt`.
 
-If you find a word which is not misspelled
-and will have repeated use in docs,
+If you find a word that is not misspelled
+and will have repeated use in the docs,
 add it to the spelling list
-in the file :file:`/src/spelling_wordlist.txt`.
+in :file:`odk1-src/spelling_wordlist.txt`
+or :file:`odk2-src/spelling_wordlist.txt`.
 
-If you find a word which is not misspelled
+If you find a word that is not misspelled
 and is only required in a particular file,
 use the :rst:dir:`spelling` directive
-to list the words before the file content.
+to list the words before the file content; for example:
 
 .. code-block:: rst
 
