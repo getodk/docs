@@ -9,7 +9,7 @@ The published documentation is at:
  - https://docs.opendatakit.org
  - https://docs.opendatakit.org/odk2/
 
-If you can't find what you are looking for, try the [old docs on the ODK website](https://opendatakit.org/). Also, please [file an issue](https://github.com/opendatakit/docs/issues) so that we know to add the information you are looking for.
+Please [file an issue](https://github.com/opendatakit/docs/issues) if you can't find what you are looking for.
 
 ## Building and viewing documentation locally
 
