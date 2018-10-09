@@ -17,6 +17,77 @@ The following steps help you build and view ODK docs locally. For details on eac
 
 ### Prerequisites
 
+ * Install Docker
+   * Windows and Mac users should follow the instructions at [the get started guide](https://www.docker.com/get-started)
+   * Linux users should follow the instructions for their specific distribution: [CentOS](https://docs.docker.com/install/linux/docker-ce/centos/), [Debian](https://docs.docker.com/install/linux/docker-ce/debian/), [Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/), [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/), [Binaries](https://docs.docker.com/install/linux/docker-ce/binaries/)
+   
+   More info at the [Docker CE docs page](https://docs.docker.com/install/)
+ * Install [Git-LFS](https://git-lfs.github.com/).
+
+### Cloning the repo
+
+After that, you need to clone the docs repo
+
+```
+git clone https://github.com/opendatakit/docs.git
+```
+
+It can take a long time (>10 minutes) to clone the repo due to the large number of images in the docs. If you get an error such as `Smudge error` or `GitHub's rate limit reached`, run `git checkout -f HEAD` until you get the message `Checking out files: 100% done`.
+
+### Building the Docker image
+
+Next, you need to build the Docker image with all the tools you will be using to work with ODK's docs.
+
+```
+docker build -t odk-docs .
+```
+
+It can take a long time to build the Docker image, but you only need to do this once.
+
+**Windows users**
+ * All commands should be run in an elevated PowerShell window. Right click on PowerShell and select the "Run as administrator" option.
+ * Ensure Docker is running by checking your system tray. If Docker is not running, launch "Docker for Windows" app and wait until a notification confirms that Docker is running.
+
+### Building and serving the docs locally 
+
+Build and serve the docs locally with:
+ * Windows: `.\run-task.bat odk1-autobuild`
+ * Linux/macOS: `./run-task.sh odk1-autobuild`
+ 
+Once your terminal shows a "Serving on http://0.0.0.0:8080" message, you can then view the docs in your browser at http://localhost:8080.
+
+Changes you make in the source files will automatically be built and shown in your browser.
+
+Press `Ctrl-C` on your keyboard to stop the build server. It could take a while to effectively stop, and you can always close the terminal window.
+
+If you get a `The name "odk-docs" is already in use by container` error message, run the following command:
+
+```
+docker kill odk-docs
+```
+
+### Other build tasks  
+
+You can also use the `run-task` script to build both ODK 1 and ODK 2 docs, or to run just a portion of the build process.
+
+For both ODK 1 and ODK 2:
+
+|          |    Build     |     Clean     |     Check Style & Spell     |    Test    |
+| -------- | :---------:  | :-----------: | :-------------------------: | :--------: |
+| **Options** | build-all |  clean |  check-all | test |
+
+For a specific ODK version:
+
+|          | Build & Serve | Build |    Copy     |     LaTeX     |     Style Check     |    Spell Check     |    Check All   |
+| -------- | :-----------: | :---: | :---------: | :-----------: | :-----------------: | :----------------: | :----------------: |
+| **Options** | odk1-autobuild | odk1-build | odk1-copy |  odk1-latex |  odk1-style-check | odk1-spell-check |    odk1-check     |
+
+To build ODK 2 docs, replace `odk1` with `odk2`. 
+
+## Alternative way of building and viewing documentation locally
+
+### Prerequisites
+
  * Install [Python 3](https://www.python.org/downloads/).
  * Install [Git-LFS](https://git-lfs.github.com/).
  
@@ -32,9 +103,9 @@ $ cd docs/
 $ pip install -r requirements.txt
 ```
 
-It can take a long time (>10 minutes) to clone the repo due to the large number of images in the docs. If you get an error such as `Smudge error` or `github's rate limit reached`, run `git checkout -f HEAD` until you get the message `Checking out files: 100% done`.
+It can take a long time (>10 minutes) to clone the repo due to the large number of images in the docs. If you get an error such as `Smudge error` or `GitHub's rate limit reached`, run `git checkout -f HEAD` until you get the message `Checking out files: 100% done`.
 
-### Building the docs
+### Building the docs 
 
 Once your environment is set up, build and serve the docs locally with:
 

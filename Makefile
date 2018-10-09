@@ -19,14 +19,11 @@ help:
 
 .PHONY: help Makefile
 
-build-env:
-	docker build -t odk-docs ./
-
 odk1-autobuild:
-	sphinx-autobuild -p 8080 -H 0.0.0.0 odk1-src odk1-build
+	sphinx-autobuild --poll -p 8080 -H 0.0.0.0 odk1-src odk1-build
 
 odk2-autobuild:
-	sphinx-autobuild -p 8080 -H 0.0.0.0 odk2-src odk2-build
+	sphinx-autobuild --poll -p 8080 -H 0.0.0.0 odk2-src odk2-build
 
 odk1-clean:
 	rm -rf $(COMPILE1_SRCDIR)
