@@ -13,20 +13,24 @@ If you can't find what you are looking for, try the [old docs on the ODK website
 
 ## Building and viewing documentation locally
 
-The following steps help you build and view ODK docs locally. For details on each of these steps, see the [Contributor Guide](http://docs.opendatakit.org/contributing).
+There are two options for building and viewing ODK docs locally: [using Docker](#docker) or [setting up a local Python/Sphinx environment](#python-environment). We generally recommend starting with the Docker image unless you already have a Sphinx environment set up. The [Contributor Guide](http://docs.opendatakit.org/contributing) describes the philosophy behind the docs, style considerations, how to write restructured text and more.
+
+## <a name="docker"></a>Using Docker
+
+[Docker](https://www.docker.com/) is a platform that makes it easier to package applications so that they can work on any computer. This is particularly valuable when setting up development environments which can work very differently based on versions of the tools involved. 
 
 ### Prerequisites
-
  * Install Docker
-   * Windows and Mac users should follow the instructions at [the get started guide](https://www.docker.com/get-started)
+   * Windows and Mac users should follow the instructions in [the get started guide](https://www.docker.com/get-started)
    * Linux users should follow the instructions for their specific distribution: [CentOS](https://docs.docker.com/install/linux/docker-ce/centos/), [Debian](https://docs.docker.com/install/linux/docker-ce/debian/), [Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/), [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/), [Binaries](https://docs.docker.com/install/linux/docker-ce/binaries/)
    
    More info at the [Docker CE docs page](https://docs.docker.com/install/)
- * Install [Git-LFS](https://git-lfs.github.com/).
+ * Install [git](https://git-scm.com/downloads)
+ * Install [Git-LFS](https://git-lfs.github.com/)
 
 ### Cloning the repo
 
-After that, you need to clone the docs repo
+Clone the docs repo. For example, at the command line:
 
 ```
 git clone https://github.com/opendatakit/docs.git
@@ -68,34 +72,21 @@ docker kill odk-docs
 
 ### Other build tasks  
 
-You can also use the `run-task` script to build both ODK 1 and ODK 2 docs, or to run just a portion of the build process.
+You can also use the `run-task` script described above to build both ODK 1 and ODK 2 docs, or to run just a portion of the build process. See available [build tasks](#tasks) below.
 
-For both ODK 1 and ODK 2:
-
-|          |    Build     |     Clean     |     Check Style & Spell     |    Test    |
-| -------- | :---------:  | :-----------: | :-------------------------: | :--------: |
-| **Options** | build-all |  clean |  check-all | test |
-
-For a specific ODK version:
-
-|          | Build & Serve | Build |    Copy     |     LaTeX     |     Style Check     |    Spell Check     |    Check All   |
-| -------- | :-----------: | :---: | :---------: | :-----------: | :-----------------: | :----------------: | :----------------: |
-| **Options** | odk1-autobuild | odk1-build | odk1-copy |  odk1-latex |  odk1-style-check | odk1-spell-check |    odk1-check     |
-
-To build ODK 2 docs, replace `odk1` with `odk2`. 
-
-## Alternative way of building and viewing documentation locally
+## <a name="python-environment"></a>Python environment
 
 ### Prerequisites
 
- * Install [Python 3](https://www.python.org/downloads/).
- * Install [Git-LFS](https://git-lfs.github.com/).
+ * Install [Python 3](https://www.python.org/downloads/)
+ * Install [git](https://git-scm.com/downloads)
+ * Install [Git-LFS](https://git-lfs.github.com/)
  
 We highly recommend you use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/) or a Python version management like [pyenv](https://github.com/pyenv/pyenv). (Type `python --version` to see your current version.)
 
 ### Cloning the repo
 
-After that, you need to clone the docs repo and make sure all the requirements are installed:
+Clone the docs repo and make sure all the requirements are installed:
 
 ```bash
 $ git clone https://github.com/opendatakit/docs.git
@@ -119,7 +110,9 @@ You can then view the docs in your browser at http://localhost:8000.
 
 (Use `odk2` instead of `odk1` to build and serve the ODK2 docs.)
 
-You can also use `make` to build both ODK and ODK2 docs, or to run just a portion of the build process.
+You can also use `make` to build both ODK and ODK2 docs, or to run just a portion of the build process. See available [build tasks](#tasks) below.
+
+## <a name="tasks"></a>Build tasks
 
 For both ODK 1 and ODK 2:
 
