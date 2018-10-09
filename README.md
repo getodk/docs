@@ -122,9 +122,9 @@ For both ODK 1 and ODK 2:
 
 For a specific ODK version:
 
-|          |    Copy     |     LaTeX     |     Style Check     |    Spell Check     |    Check All   |
-| -------- | :---------: | :-----------: | :-----------------: | :----------------: | :----------------: |
-| **Options** | odk1-copy |  odk1-latex |  odk1-style-check | odk1-spell-check |    odk1-check     |
+|          | Build & Serve | Build |    Copy     |     LaTeX     |     Style Check     |    Spell Check     |    Check All   |
+| -------- | :-----------: | :---: | :---------: | :-----------: | :-----------------: | :----------------: | :----------------: |
+| **Options** | odk1-autobuild | odk1-build | odk1-copy |  odk1-latex |  odk1-style-check | odk1-spell-check |    odk1-check     |
 
 To build ODK 2 docs, just replace `odk1` with `odk2`. 
 
