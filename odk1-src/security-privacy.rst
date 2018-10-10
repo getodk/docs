@@ -38,7 +38,7 @@ All our installers, programs, source code, and documentation are provided AS-IS 
 Communication Channels
 ----------------------
 
-Outside of anonymous usage analytics (typically opt-out) and anonymous crash reports (typically required), ODK software does not transmit or communicate any information (e.g., survey data) back to ODK's maintainers.
+Outside of usage analytics (typically opt-out) and crash reports (typically required), ODK software does not transmit or communicate any information (e.g., survey data) back to ODK's maintainers. When we do gather data, we default to anonymous or aggregate methods.
 
 The software we have written does not have any mechanisms that might allow us to access or control your devices or systems.
 
@@ -58,7 +58,7 @@ Your security staff may want to review the libraries and source code on `GitHub 
 Websites
 --------
 
-Our websites under the opendatakit.org domain use cookies and log all interactions. We also web analytics tools (for example, Google Analytics) that may track visitors and their access patterns on our web properties.
+Our websites under the opendatakit.org domain use cookies and log all interactions. We also use web analytics tools (for example, Google Analytics) that may track visitors and their access patterns on our web properties.
 
 .. _security-privacy-google-play-store:
 
@@ -67,7 +67,7 @@ Google Play Store
 
 Downloads from the Google Play Store are compiled into aggregated usage statistics.
 
-Crash reports you elect to send are provided to us as anonymous crash reports. By design, these do not contain device or user specific data.
+Crash reports you elect to send are provided to us anonymously. By design, these do not contain device or user specific data.
 
 .. _security-privacy-odk-aggregate:
 
@@ -110,28 +110,28 @@ An encoded form of the username's password is stored on the server. If that enco
 ODK Briefcase
 -------------
 
-We gather anonymous aggregate user behavior through Google Analytics and gather anonymous crash logs through Sentry. We use secure HTTPS communication to transfer this data to ODK's maintainers. Users may disable analytics in the settings of the application. Crash logging cannot be disabled.
+We gather aggregate user behavior through Google Analytics and gather crash logs through Sentry. We use secure HTTPS communication to transfer this data to ODK's maintainers. Users may disable analytics in the settings of the application. Crash logging cannot be disabled.
 
 .. _security-privacy-odk-build:
 
 ODK Build
 ---------
 
-We require secure HTTPS connections to ODK Build. We gather anonymous aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data to ODK's maintainers.
+We require secure HTTPS connections to ODK Build. We gather aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data to ODK's maintainers.
 
 .. _security-privacy-odk-collect:
 
 ODK Collect
 -----------
 
-We gather anonymous aggregate user behavior through Google Analytics and gather anonymous crash logs through Google Firebase Crashlytics. We use secure HTTPS communication to transfer this data to ODK's maintainers. Users may disable analytics in the settings of the application. Crash logging cannot be disabled.
+We gather aggregate user behavior through Google Analytics and gather crash logs through Google Firebase Crashlytics. We use secure HTTPS communication to transfer this data to ODK's maintainers. Users may disable analytics in the settings of the application. Crash logging cannot be disabled.
 
 .. _security-privacy-xlsform-online:
 
 XLSForm Online
 --------------
 
-We require secure HTTPS connections to XLSForm Online. We gather anonymous aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data to ODK's maintainers.
+We require secure HTTPS connections to XLSForm Online. We gather aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data to ODK's maintainers.
 
 XLSForm Online stores both your submitted XLS and the generated XML form for a period of time on its disk drive before being deleted. This is necessary for the operation of the tool.
 
