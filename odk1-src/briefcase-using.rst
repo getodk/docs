@@ -19,6 +19,8 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
    
    .. _Aggregate Demo Server: https://opendatakit.appspot.com
 
+#. Briefcase will show a list of forms for download. Only forms that are marked in Aggregate as downloadable will be shown.
+
 #. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to your :ref:`Briefcase Storage <briefcase_storage>` location.
 
    For each selected form, Briefcase will pull down:
@@ -29,7 +31,7 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
 
    If you have previously pulled the form:
    
-   - The form definition file and media files will not be re-copied.
+   - The form definition file and media files will not be pulled.
    - New instances will be downloaded.
 
    .. warning::
@@ -56,11 +58,11 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
 
     .. image:: /img/briefcase-using/pull-in-parallel.*
 
-    However, if your Aggregate server is :doc:`installed on Google App engine <aggregate-app-engine>`, this setting may cause problems with large attachments. If your form has submission attachments (file uploads, videos, images, sound recordings) you should experiment with this setting and see if it improves or worsens performance.
+    However, if your Aggregate server is :doc:`installed on Google App Engine <aggregate-app-engine>`, this setting may cause problems with large attachments. If your form has submission attachments (file uploads, videos, images, sound recordings) you should experiment with this setting and see if it improves or worsens performance.
 
 .. _pull-from-collect:
 
-Pulling forms from ODK Collect
+Pulling forms from Collect
 ------------------------------
 
 #. Ensure all filled-in forms are finalized.
@@ -79,14 +81,14 @@ Pulling forms from ODK Collect
 #. Copy the zip file you created from the Android device to your local hard drive.
 #. Once it is copied onto your local hard drive, unzip the file.
 #. In Briefcase, open the :guilabel:`Pull` tab.
-#. Select *Collect Directory* in the :guilabel:`Pull from` drop-down.
+#. Select *Collect directory* in the :guilabel:`Pull from` drop-down.
 #. Click the :guilabel:`Configure` button and select the unzipped :file:`odk` folder.
 #. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to your :ref:`Briefcase Storage <briefcase_storage>` location.
 #. On the Android device, open Collect and delete the filled-in forms.
 
    .. tip::
 
-     - You can use the *Collect Directory* any time you want to pull forms from custom location.
+     - You can use the *Collect directory* any time you want to pull forms from custom location.
      - You can confirm that the forms have been successfully pulled into Briefcase by confirming a successful pull status or by verifying the data appearing in a :ref:`CSV export file <briefcase-export-to-csv>`.
 
 .. warning::
@@ -126,7 +128,7 @@ Pushing forms to Aggregate
 To upload blank forms and completed form instances to an :doc:`Aggregate <aggregate-intro>` server:
 
 #. Open the :guilabel:`Push` tab.
-#. Select *Aggregate* in the :guilabel:`Push to` drop-down.
+#. Select *Aggregate server* in the :guilabel:`Push to` drop-down.
 #. Click the :guilabel:`Configure` button.
 #. Enter the URL and login credentials for your Aggregate server in the dialog that pops up and click the :guilabel:`Connect` button.
 
@@ -139,9 +141,7 @@ To upload blank forms and completed form instances to an :doc:`Aggregate <aggreg
 #. Select the forms you want to upload and click :guilabel:`Push`. The selected forms will be pushed from your :ref:`Briefcase Storage <briefcase_storage>` to the Aggregate server.
 
    For each selected form, Briefcase will upload:
-   
-   - If not on the server already:
-   
+
      - The form definition file (that is, the blank XForm).
      - All media associated with the form.
    
@@ -160,14 +160,6 @@ To upload blank forms and completed form instances to an :doc:`Aggregate <aggreg
      #. Replace the local form definition file with a copy of the version from your Aggregate server.
      #. Push your form instances. 
      #. Update :guilabel:`Settings` back to the original :ref:`Briefcase Storage <briefcase_storage>` location.
-     
-.. tip::
-       
-  .. Move this to Aggregate docs, or the Agg-v-Briefcase page.
-       
-  .. _aggregate-upgrade-with-briefcase:
-       
-  By pulling data into the local Briefcase Storage location and then pushing data up to an Aggregate instance, Briefcase provides a mechanism to transfer data across upgrade-incompatible versions of Aggregate.
 
 .. _briefcase-export-to-csv:
 
@@ -183,11 +175,8 @@ Export forms to CSV
   - Toggle export parameters as needed:
 
     - :guilabel:`Export media files` enables exporting media files into the chosen export directory
-    - :guilabel:`Ovewrite existing files` enables overwriting form instance data in the output files. The default behavior is to append data.
-    - :guilabel:`Split select multiples` enables splitting select multiple fields. Enabling this setting will create an extra output column per select choice, with a `1` if the choice was selected, or `0` otherwise.
-
-      This only affects select fields without a choice filter and that are not from an external file.
-
+    - :guilabel:`Overwrite existing files` enables overwriting form instance data in the output files. The default behavior is to append data.
+    - :guilabel:`Split select multiples` enables splitting select multiple fields. Enabling this setting will create an extra output column per select choice, with a `1` if the choice was selected, or `0` otherwise. This only affects select fields without a choice filter and that are not from an external file.
     - :guilabel:`Pull before export` enables trying to pull the selected forms in case there are new form instances to be exported.
 
 #. Select the forms to export.
@@ -200,6 +189,8 @@ Export forms to CSV
 
 Working with the command line
 -----------------------------
+
+Briefcase has a command line interface (CLI) to enable scripting of many of the actions that can be taken in the graphical user interface (GUI).
 
 .. versionadded:: 1.4.4
   A CLI was added.
@@ -220,8 +211,8 @@ To get help about the command line operation:
 
 .. _pull-from-aggregate-cli:
   
-Pulling form data from Aggregate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Pulling forms from Aggregate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - CLI flag: `-plla` or `--pull_aggregate`
 - Usage:
@@ -245,8 +236,8 @@ Pulling form data from Aggregate
 
 .. _pull-from-collect-cli:
   
-Pulling form data from Collect
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Pulling forms from Collect
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This command assumes you have already copied and unzipped the :file:`odk` file :ref:`as described here <pull-from-collect>`.
 
@@ -273,8 +264,8 @@ This command assumes you have already copied and unzipped the :file:`odk` file :
 
 .. _push-to-aggregate-cli:
 
-Pushing form data to Aggregate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Pushing forms to Aggregate
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - CLI flag: `-psha` or `--push_aggregate`
 - Usage:
@@ -296,10 +287,14 @@ Pushing form data to Aggregate
       Optional params for -psha operation:
         -fsb,--force_send_blank             Force sending the blank form to the Aggregate instance
 
+.. warning::
+
+  This CLI operation will only update the blank form if it does not already exist, whereas the GUI will always update the form.
+
 .. _export-to-csv-cli:
   
-Exporting form data to CSV
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Exporting forms to CSV
+~~~~~~~~~~~~~~~~~~~~~~
 
 - CLI flag: `-e` or `--export`
 - Usage:
