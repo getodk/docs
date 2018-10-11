@@ -15,8 +15,6 @@ and working locally involves:
 
 We encourage all potential contributors to try to work locally,
 following this guide.
-However, for small edits that only change a single file,
-we have a :doc:`simpler online contribution process <docs-quick-edit>`.
 
 .. _docs-before-you-begin:
 
