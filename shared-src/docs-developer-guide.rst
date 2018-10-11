@@ -340,3 +340,19 @@ To exclude an built-in proselint check,
 specify the check name in the check list
 in the function :py:func:`exclude_checks`
 in the file :file:`style-test.py`.
+
+
+
+
+
+
+
+.. 
+  If you are working on 
+  the design, testing, or deployment of the docs, 
+  you might need to install an additional PyPi package. 
+  If so, 
+  please update the :file:`requirements.txt` file with 
+  :command:`pip freeze > requirements.txt`. 
+  Pull requests which change :file:`requirements.txt` 
+  should include a note about why the new package is needed.
