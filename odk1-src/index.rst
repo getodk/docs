@@ -88,7 +88,7 @@ While this is the *typical* use pattern, it is not the only way to do things. OD
 .. toctree::
   :hidden:
   :maxdepth: 2
-  :caption: Central (Alpha)
+  :caption: Central
 
   central-intro
   central-setup
@@ -141,5 +141,4 @@ While this is the *typical* use pattern, it is not the only way to do things. OD
   :caption: Reference
   
   security-privacy
-  faq
   glossary

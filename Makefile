@@ -19,6 +19,12 @@ help:
 
 .PHONY: help Makefile
 
+odk1-autobuild:
+	sphinx-autobuild --poll -p 8080 -H 0.0.0.0 odk1-src odk1-build
+
+odk2-autobuild:
+	sphinx-autobuild --poll -p 8080 -H 0.0.0.0 odk2-src odk2-build
+
 odk1-clean:
 	rm -rf $(COMPILE1_SRCDIR)
 	rm -rf $(ODK1_BUILDDIR)
@@ -102,3 +108,6 @@ odk1-check: odk1-style-check odk1-spell-check
 odk2-check: odk2-style-check odk2-spell-check
 
 check-all: odk1-check odk2-check
+
+test:
+	pytest

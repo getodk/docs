@@ -7,7 +7,7 @@ ODK Collect
 
 ODK Collect renders forms into a sequence of input prompts that apply form logic, entry constraints, and repeating sub-structures. Users work through the prompts and can save the submission at any point. Finalized submissions can be sent to (and new forms downloaded from) a server. 
 
-Collect supports geolocation, audio, images, video, barcodes, signatures, multiple-choice, free text, and numeric answers. It can even accept answers from other apps on your device. :doc:`See a complete list of supported question types here.  <form-question-types>`
+Collect supports location, audio, images, video, barcodes, signatures, multiple-choice, free text, and numeric answers. It can even accept answers from other apps on your device. :doc:`See a complete list of supported question types here.  <form-question-types>`
 
 .. image:: /img/form-widgets/string-input.*
   :alt: String input form widget, displayed in ODK Collect on an Android phone. The label is "What is your name?"

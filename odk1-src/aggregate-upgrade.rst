@@ -27,6 +27,10 @@ Need for Upgrading
 
 It is important to upgrade to newer ODK Aggregate versions as they come out. You don't need to do this immediately, but this should be something you do at least once a year.
 
+.. tip::
+
+  ODK Briefcase's :doc:`pull and push functionality <briefcase-using>` provides a mechanism to transfer data between upgrade-incompatible versions of Aggregate or other ODK-compatible servers.
+
 There are several reasons for this.
 
 Security vulnerabilities
@@ -39,7 +43,7 @@ Hosting revisions
 
 If you are using Google App Engine as we recommend, your hosting environment is being continuously updated.
 
-Google AppEngine is a managed environment, unlike AWS or other "bare-box" hosting services. Google is continuously updating features and removing support for older features in this environment. 
+Google App Engine is a managed environment, unlike AWS or other "bare-box" hosting services. Google is continuously updating features and removing support for older features in this environment.
 
 The Aggregate development team is committed to supporting Google App Engine, so we update our application as the platform changes. If you do not upgrade gradually as new versions come out, your installation may stop working or cease to have a viable upgrade path.
 
@@ -107,10 +111,7 @@ General steps for upgrading
    from an older one.
    
    Some versions will require manual changes upon upgrade. 
-   Complete notes about upgrading can be found in the release notes:
-
-   * `v1.4.15 and earlier <https://github.com/opendatakit/opendatakit/wiki/Aggregate-Release-Notes>`_
-   * `v1.5.0 and later <https://github.com/opendatakit/aggregate/releases>`_
+   Complete notes about upgrading can be found in each version's `release notes <https://github.com/opendatakit/aggregate/releases>`_.
 
 #. Log onto your server to confirm that it is still functioning.
 #. Repeat the steps 4-7 until you have upgraded to the current version.

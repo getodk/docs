@@ -17,7 +17,7 @@ When connected to a device that has ODK Collect installed,
 it can be used to push blank form definitions
 and pull completed forms.
 
-.. _Android Debug Bridge: https://developer.android.com/studio/command-line/adb.htlm
+.. _Android Debug Bridge: https://developer.android.com/studio/command-line/adb
 
 .. _install-adb:
 

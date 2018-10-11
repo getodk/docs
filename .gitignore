@@ -21,5 +21,10 @@ tmp*
 style-checks.py
 extra.py
 
-# vscode
-.vscode
+# testing
+.hypothesis/
+.pytest_cache/
+
+# IDE files
+.idea/
+.vscode/

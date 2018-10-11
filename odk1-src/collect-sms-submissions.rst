@@ -23,7 +23,9 @@ SMS submission format
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A form that asks for a user's first name, last name and age might result in submissions as the following SMS messages:
+
 ``my-form fn Sally ln David a 23``
+
 ``my-form fn Owen ln Krishnamurti a 22``
 
 In this example, ``my-form`` is a prefix specified in the blank form definition to identify submissions from that form. ``fn``, ``ln`` and ``a`` are short tags that are specified in the blank form to identify first name, last name and age. Each tag is followed by the value for the question. 
@@ -49,23 +51,24 @@ To send submissions via SMS, a blank form must specify a ``compact_tag`` for at 
   text, favorite_colors, , What are your top 3 favorite colors?
   int, age, a, What is your age?
 
-Optionally, a ``prefix`` can be specified for the form to identify submissions from that form. The prefix value is included once at the beginning of each SMS message. 
+Optionally, a ``prefix`` can be specified to identify submissions from that form. The prefix value is included once at the beginning of each SMS message. 
 
 .. csv-table:: settings
   :header: prefix
 
   my-form
 
-Additionally, an optional ``delimiter`` can be specified. This value will be included between each prefix, tag and form value. By default, the delimiter is a single space. If you allow spaces in the form values and expect to process your SMS messages by splitting on delimiters, you should set a delimiter other than space. For example, you could use ``+`` for the following result:
+Additionally, an optional ``delimiter`` can be specified. This value will be included between each prefix, tag and form value. By default, the delimiter is a single space. If you allow spaces in the form values and want to process your SMS messages by splitting on delimiters, you should set a delimiter other than space. For example, you could use ``+`` for the following result:
 
-``my-form|fn|Sally Sue|ln|David|a|23``
+``my-form+fn+Sally Sue+ln+David+a+23``
 
 .. csv-table:: settings
   :header: prefix, delimiter
   
-  my-form, |
+  my-form, \+
 
-  If the delimiter value is used in a form answer, a '\' will be added before it. For example:
+
+If the delimiter value is used in a form answer, a backslash ("`\\`") will be added before it. In the example below, the form uses spaces as delimiters and a name with spaces ("Sally Sue") is included:
 
 ``my-form fn Sally\ Sue ln David 23``
 

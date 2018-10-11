@@ -42,7 +42,7 @@ Successful server responses MUST include an ``X-OpenRosa-Accept-Content-Length``
 Servers SHOULD include this header in their error responses. However, clients MUST NOT rely on the presence of this header (or any OpenRosa header) in every error response.
 
 .. note:: 
-  Overly-large requests sent to Google AppEngine will be rejected prior to being sent to any server, and will therefore not contain this (or any) OpenRosa header.
+  Overly-large requests sent to Google App Engine will be rejected prior to being sent to any server, and will therefore not contain this (or any) OpenRosa header.
   
 OpenRosa submissions are POSTed to servers as a multipart MIME Envelope with at least 1 part --- the XML content of the form itself. Each of these parts should adhere to the following requirements
 

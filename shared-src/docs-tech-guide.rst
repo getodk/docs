@@ -1,6 +1,7 @@
 .. spelling::
 
   src
+  Homebrew
 
 Docs Contributor Technical Guide
 =================================
@@ -15,8 +16,6 @@ and working locally involves:
 
 We encourage all potential contributors to try to work locally,
 following this guide.
-However, for small edits that only change a single file,
-we have a :doc:`simpler online contribution process <docs-quick-edit>`.
 
 .. _docs-before-you-begin:
 
@@ -204,7 +203,7 @@ on any computer.
          .. _Run as Administrator: https://docs.microsoft.com/en-us/powershell/scripting/setup/starting-windows-powershell?view=powershell-6#with-administrative-privileges-run-as-administrator
 
          Throughout the rest of the instructions in this guide,
-         follow the instructions labelled **PowerShell** or **Windows**.
+         follow the instructions labeled **PowerShell** or **Windows**.
 
          .. rubric:: Windows 10
 
@@ -522,7 +521,7 @@ on any computer.
             .. _win-64-or-32:
             .. admonition:: 64-bit or 32-bit?
 
-               Well over 90% of copmuters running Windows are 64-bit.
+               Well over 90% of computers running Windows are 64-bit.
                So you probably need the 64-bit version.
 
                If you are running a very old or low-powered computer,
@@ -1323,7 +1322,7 @@ Working on the docs
 
    .. _commit-the-docs:
 
-   A :dfn:`commit` is snaphot of your working files in a particular state,
+   A :dfn:`commit` is snapshot of your working files in a particular state,
    along with a record of all the changes that led up to that state.
    That snapshot is what you will submit to the main repository.
 
@@ -1374,7 +1373,7 @@ Working on the docs
       Your commit message needs to be wrapped in quote marks.
       It should, in a sentence or less, explain your work.
 
-#. Push your commited changes to your GitHub repo with :command:`git push`.
+#. Push your committed changes to your GitHub repo with :command:`git push`.
 
    .. _push-the-docs:
 
@@ -1402,7 +1401,7 @@ Working on the docs
       .. tip::
 
          You may be prompted to enter your GitHub username and password.
-         When entering your password, the curser won't move --- 
+         When entering your password, the cursor won't move ---
          it will look like you aren't entering anything,
          even though you are.
 

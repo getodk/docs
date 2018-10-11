@@ -6,3 +6,4 @@ Tips and Best Practices
   form-repeats
   form-regex
   form-update
+  aggregate-field-length
