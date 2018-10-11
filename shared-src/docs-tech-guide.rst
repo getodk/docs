@@ -1,6 +1,7 @@
 .. spelling::
 
   src
+  Homebrew
 
 Docs Contributor Technical Guide
 =================================
@@ -520,7 +521,7 @@ on any computer.
             .. _win-64-or-32:
             .. admonition:: 64-bit or 32-bit?
 
-               Well over 90% of copmuters running Windows are 64-bit.
+               Well over 90% of computers running Windows are 64-bit.
                So you probably need the 64-bit version.
 
                If you are running a very old or low-powered computer,
@@ -1321,7 +1322,7 @@ Working on the docs
 
    .. _commit-the-docs:
 
-   A :dfn:`commit` is snaphot of your working files in a particular state,
+   A :dfn:`commit` is snapshot of your working files in a particular state,
    along with a record of all the changes that led up to that state.
    That snapshot is what you will submit to the main repository.
 
@@ -1372,7 +1373,7 @@ Working on the docs
       Your commit message needs to be wrapped in quote marks.
       It should, in a sentence or less, explain your work.
 
-#. Push your commited changes to your GitHub repo with :command:`git push`.
+#. Push your committed changes to your GitHub repo with :command:`git push`.
 
    .. _push-the-docs:
 
@@ -1400,7 +1401,7 @@ Working on the docs
       .. tip::
 
          You may be prompted to enter your GitHub username and password.
-         When entering your password, the curser won't move --- 
+         When entering your password, the cursor won't move ---
          it will look like you aren't entering anything,
          even though you are.
 
