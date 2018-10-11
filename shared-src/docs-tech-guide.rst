@@ -1,12 +1,170 @@
 .. spelling::
 
   src
+  Homebrew
 
-Docs Technical Guide
-==========================
+Docs Contributor Technical Guide
+=================================
 
-This document explains the tools and workflows used 
-when contributing to ODK Documentation.
+This document explains how to set up your computer
+and work locally as an ODK Docs contributor.
+Local set up includes installing some software,
+and working locally involves:
+
+- writing documentation text or code in a code editor
+- using the Terminal (the "Shell" or "Command Line")
+
+We encourage all potential contributors to try to work locally,
+following this guide.
+
+.. _docs-before-you-begin:
+
+Before you begin
+----------------
+
+.. _learn-about-odk:
+
+Learn a little about Open Data Kit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Read about the project and the community at `Open Data Kit's website`_.
+
+.. _Open Data Kit's website: http://opendatakit.org
+
+.. _odk-accounts:
+
+Set up collaboration accounts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Open Data Kit is a collaborative community.
+Before diving in as a contributor,
+set up accounts on our three main collaboration platforms, 
+:ref:`GitHub <get-gh-account>`,
+the :ref:`ODK Developer Slack <join-slack>`,
+and the :ref:`ODK Forum <join-forum>`
+
+.. tip::
+   
+      As you are setting up your accounts,
+      keep in mind that it is very helpful (but not required)
+      to use the same (or similar) username
+      on :ref:`GitHub <get-gh-account>`,
+      the :ref:`ODK Developer Slack <join-slack>`,
+      and the :ref:`ODK Forum <join-forum>`.
+
+      This makes it easy for other people to keep track of conversations
+      which sometimes span multiple online platforms.
+
+      If you are willing and able to do so,
+      a profile picture in each place is also very helpful.
+      (But it is okay if you are unable or uncomfortable
+      adding a picture.)
+
+#. Set up a `GitHub`_ account.
+
+   .. _get-gh-account:
+
+   `GitHub`_ is a popular code storage and collaboration platform.
+   You will need a GitHub account to contribute to Open Date Kit documentation,
+   or any other Open Date Kit projects.
+
+   - `Open Data Kit on GitHub`_
+   - `ODK Docs on GitHub`_
+
+   .. _Open Data Kit on GitHub: https://github.com/opendatakit/
+   .. _ODK Docs on GitHub: https://github.com/opendatakit/docs
+   .. _GitHub: https://github.com/
+
+#. Join the `ODK Developer Slack`_.
+
+   .. _join-slack:
+
+   Slack is a popular chat platform.
+   The Open Data Kit contributor community uses Slack
+   to discuss development, plan work, and generally keep in touch.
+   If you have a question about how to contribute to ODK Docs,
+   or any other ODK project,
+   the ODK Slack is the best place to ask it.
+
+   Conversations related to documentation are held in the ``#docs-code`` channel.
+   You may also want to check in with ``#general`` and ``#random``.
+
+   #. Get an automated invitation from http://slack.opendatakit.org
+   #. Check your email for the invitation.
+   #. Follow the link in your email and set up your account.
+
+   .. _ODK Developer Slack: http://slack.opendatakit.org/
+
+#. Join the `ODK Forum`_
+
+   .. _join-forum:
+
+   The `Open Data Kit Forum <ODK Forum>`_ is the main place for 
+   support questions and conversations that affect the whole ODK community
+   (users and other stake holders, as well as contributors).
+
+   If you have a question about how to use any ODK software,
+   or want to get connected with the larger ODK community,
+   the forum is the best venue for that.
+
+   .. tip::
+
+      The forum has a search feature, and a long history of archived support posts.
+      When writing new documentation about an existing feature,
+      old forum posts are an excellent source for figuring out what people need to know:
+      If someone has asked a question about it,
+      it should probably be in the documentation.
+
+   .. _ODK Forum: http://forum.opendatakit.org
+
+.. _forum-or-slack-or-gh:
+
+.. admonition:: Should I ask in the Forum, the Slack, or a GitHub issue?
+
+   The ODK community talks a lot, in a lot of places.
+   Sometimes it's hard to know where to ask a question.
+
+   **Contribution-related questions and problems should be asked in Slack.**
+   This includes things like:
+
+   - How do I set up my local editing environment?
+   - How do I use git?
+   - I'm having a merge conflict.
+   - I got an error at the terminal which I don't understand.
+   - How do I add a picture to a document?
+   - What issue should I work on?
+
+   **Work-specific questions and discussion should take place on the GitHub issue defining the work.**
+   This includes things like:
+
+   - I'm writing a piece of content, but I'm not sure where it should be organized.
+   - I'd like to work on this feature, but I don't know how to implement it.
+   - Here's my idea for solving this problem. Is that a good idea?
+   - I'm going to be working on this for the next few days.
+     No one else should also work on it at the same time.
+   - I said I was working on this, but I didn't finish and I'm no longer working on it.
+
+   **User-related questions and problems should be asked in the Forum.**
+   (You should use the search feature first,
+   since someone else may have already asked the same question.)
+   This includes things like:
+
+   - How do I install an ODK application?
+   - How do I create a form?
+   - How do I add a specific feature to a form?
+   - My ODK application crashed.
+
+   .. rubric:: But don't worry about posting a question in the wrong place.
+   
+   It is better to ask a question in the "wrong" venue
+   than to not ask the question at all.
+   Many of the same people are present in all three places,
+   and we will help you wherever you happen to show up.
+
+.. _docs-local-setup:
+
+Initial Setup
+-------------
 
 .. note::
 
@@ -14,1063 +172,1403 @@ when contributing to ODK Documentation.
   have a lot of options and alternatives. 
   Local tools and workflows presented in this guide 
   are what the authors feel would be easiest 
-  for a non-coding contributor to set up and use.
+  for newcomers and those unfamiliar with open source.
   
-  You should feel free
-  to use your preferred tools.
+  You should feel free to use your preferred tools.
+
+Before you begin working the first time
+you will need to install a few tools 
+on your computer.
+
+You should only need to do this one time
+on any computer.
+
+#. Find and open a terminal or command line.
+
+   .. tabs::
+   
+      .. group-tab:: Windows
+      
+         .. rubric:: Windows versions prior to Windows 10
+
+         Use `Windows PowerShell`_. (Not the DOS Prompt.)
+
+         .. _Windows PowerShell: https://docs.microsoft.com/en-us/powershell/scripting/getting-started/getting-started-with-windows-powershel
+
+         We recommend using the :program:`Windows PowerShell ISE`.
+
+         During initial setup (this section of the guide)
+         you will need to `Run as Administrator`_.
+
+         .. _Run as Administrator: https://docs.microsoft.com/en-us/powershell/scripting/setup/starting-windows-powershell?view=powershell-6#with-administrative-privileges-run-as-administrator
+
+         Throughout the rest of the instructions in this guide,
+         follow the instructions labeled **PowerShell** or **Windows**.
+
+         .. rubric:: Windows 10
+
+         In Windows 10, you have a choice:
+
+         - Use the Powershell (as described above)
+         - Use the `Windows Subsystem for Linux`_.
+
+         .. _Windows Subsystem for Linux: https://docs.microsoft.com/en-us/windows/wsl/install-win10
+
+         If you decide to use the Powershell, 
+         follow the **Powershell** or **Windows** instructions 
+         throughout the contributor guides.
+
+         If you decide to use the Linux subsystem,
+         follow the **Bash** or **Windows** instructions 
+         throughout the contributor guide.
+
+
+      .. group-tab:: Mac
+      
+         Use the :program:`Terminal` app,
+         or another Bash-like shell.
+
+         .. image:: /img/docs-tech-guide/terminal-icon.*
+            :alt: The Terminal Icon in Mac OS.
+            
+         If you've never used it before,
+         the Terminal is probably in the :guilabel:`Other` directory
+         in your App collection.
+         
+         Follow the **Bash** or **Mac** instructions
+         throughout the contributor guide.
+         
+         .. admonition:: Optional: Install Homebrew
+         
+            `Homebrew`_ is a package manager for Mac OS. 
+            It makes it easier to install other apps and tools
+            from the command line. 
+            
+            Follow the `installation instructions`_.
+            
+            .. _Homebrew: https://brew.sh/
+            .. _installation instructions: Homebrew
+
+      .. group-tab:: Linux
+      
+         Use a Bash-like shell of your choosing,
+         and follow the **Bash** or **Linux** instructions
+         throughout the contributor guide.
+         
+         You will also need to be familiar with 
+         the relevant package manager for your system.
+
+   .. admonition: Understanding terminal commands
+      :name: understanding-terminal 
+
+      When you open the Terminal or PowerShell,
+      you will see a bunch of symbols that include 
+      your username and computer name.
+      This is called the :term:`prompt`.
+      You type commands after the prompt,
+      and hit :kbd:`RETURN` or :kbd:`ENTER` to run that command.
+
+      Everybody's prompt looks different,
+      so we can't make our documentation match what you see.
+      Instead, we use the ``$`` symbol to represent the Bash prompt
+      and the ``>`` symbol to represent the PowerShell prompt.
+      The text that follows the ``$`` or ``>`` symbol
+      is the command you need to type or copy.
+      
+      Below the command, there is sometimes output from the command.
+      
+      .. tabs::
+      
+         .. group-tab:: bash
+      
+            .. code-block::
+            
+               $ command is here - type this
+               Output is here. Don't type this.
+       
+         .. group-tab:: PowerShell
+         
+            .. code-block::
+            
+               > command is here - type this
+               Output is here. Don't type this.
 
-.. _docs-as-code:
+      Not all commands have output,
+      and we don't always include the output in our documentation
+      unless it is relevant.
+      It it is a good idea to glance at your own terminals output
+      for unexpected errors.
 
-Docs as Code
-----------------
+      To make things more clear,
+      the docs will additionally prefix the prompt with a
+      :term:`path` (showing what directory you are in) 
+      whenever that is important.
 
-ODK Documentation follows 
-(as much as possible) 
-the `Docs as Code`_ philosophy. 
+      .. tabs::
+      
+         .. group-tab:: bash
+      
+            .. code-block::
+            
+               /odk-docs/ $ command is here - type this
+               Output is here. Don't type this.
+       
+         .. group-tab:: PowerShell
+         
+            .. code-block::
+            
+               /odk-docs/ > command is here - type this
+               Output is here. Don't type this.
 
-.. _Docs as Code: http://www.writethedocs.org/guide/docs-as-code/ 
+#. Install git.
 
-This means:
+   Git is a version control system.
+   It helps us keep track of changes to the documentation.
+   (Similar to the undo history in a document editing program.)
 
-- Documentation source files are written in a plain text format. 
-  (We use `reStructuredText`_.)
-- Documentation source files are kept under version control.
-  (We use git and `Github`_.)
-- Documentation is built from source 
-  to a published output using a 
-  static site generator. 
-  (We use `Sphinx`_.)
-- Documentation builds are 
-  run, tested, and deployed automatically 
-  using continuous integration tools. 
-  (We use `CircleCI`_.)
-
-.. _reStructuredText: http://docutils.sourceforge.net/rst.html
-.. _Github: http://github.com
-.. _Sphinx: http://sphinx-doc.org
-.. _CircleCI: https://circleci.com
-
-The 'Docs as Code' approach has many advantages, 
-but we are aware that this approach can feel difficult 
-for writers who aren't used to dealing with the command line. 
-It can also be difficult for coders who are used to this approach, 
-but who typically use simpler authoring tools 
-like `Jekyll`_ and `Markdown`_. 
-
-.. _Jekyll: http://jekyllrb.com
-.. _Markdown: https://guides.github.com/features/mastering-markdown/
-
-This section of the Contributor Guide 
-walks through our authoring and publishing workflow and toolchain, 
-to make it as easy as possible for you to contribute.
-
-.. _docs-workflow-overview:
-
-Overview of Workflow
------------------------
+   .. tabs::
+   
+      .. group-tab:: Linux
 
-When you first get started you'll need to:
+         Use your distribution's package management system
+         to `install git on Linux`_.
 
-1. Fork the `ODK Docs repo`_ to your own Github Account
-2. Clone it down to your local machine
-3. Install dependencies
+         .. _install git on Linux: https://git-scm.com/download/linux
 
-.. _ODK Docs repo: https://github.com/opendatakit/docs
+      .. group-tab:: Mac
 
-And then each time you work you will:
+         .. rubric:: Option 1: Download an installer
 
-1. Make a branch for a specific task
-2. Make commits as you go
-3. Build and view the docs locally,
-   running the style guide tests.
+         #. Download the `git installer for Mac`_.
+         #. Open the installer package.
+         #. Follow the prompts.
+         #. Accept any default settings.
 
-  - Correct any errors 
-    and commit those changes
+         .. _git installer for Mac: https://git-scm.com/download/mac
 
-4. Push your branch to your Github fork
-5. Issue a pull request 
-   against the current working branch 
-   of the main repo (usually ``master``)
-6. Pull the latest changes to ``master``
-   back to your local machine from the main repo.
-7. Repeat
+         .. rubric:: Option 2: Use Homebrew to install git
+         
+         .. code:: console
 
-.. _docs-dev-setup:
+            $ brew install git
 
-Setting up your Environment
-----------------------------
+      .. group-tab:: Windows
 
-.. _docs-terminal:
+         #. Download the `git installer for Windows`_.
+         #. Open the installer package.
+         #. Follow the prompts.
+         #. Accept any default settings.
 
-Terminal (Command Line)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         .. _git installer for Windows: https://git-scm.com/download/windows
 
-.. warning::
+#. Install Git LFS
 
-  This contributor guide is written
-  from a Linux/Unix (Bash terminal) perspective, 
-  which is relevant to all flavors of Linux and macOS. 
-  We consider the Bash terminal commands to be 
-  the canonical way to build and work with the docs.
+   Git Large File Storage (Git LFS) is a tool that helps us 
+   manage images, videos, and other files which are neither text nor code.
 
-  We have also provided explanations for 
-  how to adapt these commands to the Windows Command Prompt. 
-  This is different than Windows Powershell, 
-  and not all the commands will work in Powershell. 
-  For more details on the Windows Command Prompt, 
-  `see this article`__.
-  
-  __  https://www.lifewire.com/how-to-open-command-prompt-2618089
+   .. tabs::
 
-  If you are on a Windows machine, 
-  you may prefer to use the adapted Windows instructions here.    
-  Alternatively, you can follow the Bash commands:
+      .. group-tab:: Linux
 
-  - use the `Linux subsystem`_ (Windows 10) 
-  - use a bash terminal emulator, such as
+         Use your distribution's package management system
+         to `install Git LFS on Linux`_.
 
-    - :doc:`Cygwin <cygwin>`
-    - `gitbash`_
-  
-  .. _Linux subsystem: https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/
-  .. _gitbash: https://git-for-windows.github.io/
-    
-  The lead maintainers of this docs repo 
-  are not Windows users, 
-  so we rely on our contributor community 
-  to keep Windows-specific information complete and accurate. 
-  Contributions to this guide
-  with explanations and help for Windows users 
-  are greatly appreciated.
+         .. _install Git LFS on Linux: https://github.com/git-lfs/git-lfs/wiki/Installation
 
-  
-Contributing to the docs requires interacting with 
-git, GitHub, Python, and Sphinx, 
-which requires the use of the Terminal. 
-This is common among Linux users. 
-Mac users unfamiliar with the Terminal 
-can learn more from `this tutorial`__.
+         After initial installation by the package manager,
+         complete the install by running:
 
-__ https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855
+         .. code:: console
 
-.. _docs-python:
+            $ git lfs install
 
-Python
-~~~~~~~~
+      .. group-tab:: Mac
 
-.. _docs-python3:
+         .. Option 1: Download an Installer
 
-Python 3
-""""""""""""
+         #. `Download Git LFS from the Git LFS website`_.
+         #. Open the downloaded installer.
+         #. Follow the prompts.
+         #. Accept any default settings.
+         #. Open the Terminal and add LFS to git:
 
-If you don't know, 
-check to see if you have Python 3 installed:
+            .. code:: console
 
+               $ git lfs install
 
-.. code-block:: console
+         .. _Download Git LFS from the Git LFS website: https://git-lfs.github.com/
 
-  $ python3
+         .. rubric:: Option 2: Use Homebrew to install Git LFS.
 
-On windows:
+         .. code:: console
 
-.. code-block:: doscon
+            $ brew install git-lfs
+            $ git lfs install
 
-   > python
+      .. group-tab:: Windows
 
+         #. `Download Git LFS from the Git LFS website`_.
+         #. Open the downloaded installer.
+         #. Follow the prompts.
+         #. Accept any default settings.
+         #. Open Powershell and add LFS to git:
 
-If you get an error, 
-you probably don't have it and will need to 
-`install Python 3`__.
+            .. code:: powershell
 
-__ https://www.python.org/downloads/
+               > git lfs install
 
-On Windows 
-make sure to select the option 
-"Add python to the Path" 
-while installing,
-otherwise you'll need to `add it manually`__. 
+         .. _Download Git LFS from the Git LFS website: https://git-lfs.github.com/
 
-__ https://youtu.be/UTUlp6L2zkw
+#. Install Python 3
 
-See `this video`__ for more details.
+   `Python`_ is a programming language.
 
-__ https://www.youtube.com/watch?v=oHOiqFs_x8Y 
+   .. _Python: https://www.python.org/
 
-If the Python command-line interpreter starts up, 
-type :py:func:`quit()` to exit.
+   Most of the ODK Docs tools are written in Python,
+   so you need it installed on your computer in order to use those tools.
+   (Don't worry. You don't need to know how to program in Python.)
 
-.. _docs-venv:
+   We require Python 3, version 3.6 or later.
 
-Virtual Environment
-""""""""""""""""""""""""
+   .. tabs::
 
-A virtual environment is a Python tool for sandboxing dependencies. 
-It lets you install whatever you need for a particular project, 
-without messing up any other Python environments you might need.
+      .. group-tab:: Linux
 
-Check to see if you have virtualenv installed:
+         Use your distribution's package management system
+         to `install Python 3.6+ on Linux`_.
 
-.. code-block:: console
+         (For more help, 
+         see `Installing Python on Linux`_.)
 
-  $ virtualenv
+         .. _install Python 3.6+ on Linux: https://docs.python-guide.org/starting/install3/linux/
+         .. _Installing Python on Linux: https://realpython.com/installing-python/#linux
 
-If you get a help message with information about commands, 
-you have it. 
-If you don't have it, 
-you'll get a ``command not found`` message.
+      .. group-tab:: Mac
 
-If you don't have it, 
-install it using ``pip`` by running:
+         .. tip::
 
-.. code-block:: console
+            Mac OS includes a legacy (outdated) version of Python.
+            It's best to just ignore it.
 
-  $ pip install virtualenv
+         .. rubric:: Option 1: Use the Python Installer for Mac
 
-Then, create a directory called :file:`odk`.
-This will contain your virtualenv and the docs repo as subdirectories.
+         #. Download the latest `Python installer for Mac`_.
 
-.. code-block:: console
+            .. _mac-64-or-32:
 
-  $ mkdir odk
-  $ cd odk
+            .. admonition:: 64-bit or 32-bit?
 
-Now, inside that directory, create a python3 virtualenv.
+               Python provides 64-bit and 32-bit installers.
+               You probably need the 64-bit installer.
 
-.. code-block:: console
+               If you are running a relatively recent Mac OS update
+               (Mountain Lion or later — any Mac from the last several years)
+               the 64-bit installer is for you.
 
-  $ virtualenv -p python3 odkenv
+               If you have an older Mac, 
+               and are unsure if it can run a 64-bit installer,
+               `check the processor details`_ in :menuselection:` -> About This Mac`.
 
-On Windows use:
+               .. _check the processor details: https://www.alesis.com/kb/article/1616#mac
 
-.. code-block:: doscon
+         #. Open the Installer.
+         #. Follow the prompts.
+         #. Accept the default settings.
+         #. Open the Terminal to see if Python installed properly.
 
-  > path\to\python\python -m venv odkenv
+            .. code:: console
 
-The last part, ``odkenv``, is the name of virtual environment.
-It can be whatever name you'd like to call it,
-but we'll use ``odkenv`` throughout these docs.
+               $ python3 --version
+               Python 3.7.0
 
-Activate your virtual environment with:
+            The output from :command:`python3 --version` might be a little different,
+            but it should be higher than ``3.6``.
 
-.. code-block:: console
+            If you get an error here, something went wrong.
+            Try running the installer again. 
+            If the problem persists, and you can't debug it yourself,
+            asks us about it on |odk-slack|_.
 
-  $ source odkenv/bin/activate
+         .. _Python installer for Mac: https://www.python.org/downloads/mac-osx/
 
-On Windows use:
+         .. rubric:: Option 2: Use Homebrew to install Python 3.6+
 
-.. code-block:: doscon
+         .. code:: console
+         
+            $ brew install python
+            .
+            .
+            .
+            $ python3 --version
+            Python 3.7.0
 
-  > odkenv\Scripts\activate
+         The output from :command:`python3 --version` might be a little different,
+         but it should be higher than ``3.6``.
 
+         If you get an error here, something went wrong.
+         Try running :command:`brew install python` again. 
+         If the problem persists, and you can't debug it yourself,
+         asks us about it on |odk-slack|_.
 
-When you are done working, deactivate it with:
+      .. group-tab:: Windows
 
-.. code-block:: console
+         #. Go to the `Python Releases for Windows`_ page.
+         #. Under the latest numbered release for Python 3, find and download the 
+            :program:`Windows x86-64 web-based installer` (for a 64-bit system)
+            or the :program:`Windows x86 web-based installer` (for a 32-bit system).
 
-  $ deactivate
+            .. _win-64-or-32:
+            .. admonition:: 64-bit or 32-bit?
 
+               Well over 90% of computers running Windows are 64-bit.
+               So you probably need the 64-bit version.
 
-.. _docs-gh-git:
+               If you are running a very old or low-powered computer,
+               and you are unsure if it is 64-bit or 32-bit,
+               you can use `this guide from HP` (which will work for other computer brands)
+               to find that information.
 
-Github and git
-~~~~~~~~~~~~~~~~~
+               .. _this guide from HP: https://support.hp.com/us-en/document/c02002390
 
-`Git`_ is a distributed version control system. 
-It makes it possible to track changes in files over time, 
-merge changes made by different contributors, 
-compare different versions of the same file, 
-and revert a file to an earlier point. 
+         #. Open the downloaded installer.
+         #. Follow the prompts.
+         #. Accept all default settings.
+         #. Open Powershell and make sure the installation completed.
 
-.. _git: https://git-scm.com/
+            .. code:: powershell
 
-Git is complicated, 
-but you do not need to understand its advanced features or inner workings
-to use it.
+               > python --version
+               Python 3.7.0
 
-`GitHub`_ is an online service 
-for hosting git repositories. 
-It also provides additional collaboration tools 
-like issue trackers and project boards. 
-Open Data Kit uses GitHub 
-for its public code and documentation projects.
+            The output from :command:`python --version` might be a little different,
+            but it should be whatever numbered version you downloaded.
 
-.. github: http://github.com
+            If you get an error here, something went wrong.
+            Try running the installer again. 
+            If the problem persists, and you can't debug it yourself,
+            asks us about it on |odk-slack|_.
 
-You will need to:
+         .. _Python Releases for Windows: https://www.python.org/downloads/windows/
 
-1. `Install git <https://git-scm.com/downloads>`_
-2. Make sure that git is installed properly by typing (git) in the terminal or command prompt
+#. Set up your working directory
 
-   - On Windows: If you get any errors, 
-     check if your environment variables are set up correctly.
-     (See `this StackOverflow answer`__ for details.)
+   In whatever directory (folder) on your computer where you organize projects,
+   create a new directory for Open Data Kit,
+   and then navigate to that directory.
+   (We recommend calling this directory :file:`odk`,
+   and the rest of the guide will assume that's what you called it.)
 
-3. Get a `GitHub`_ account. 
+   .. tabs::
 
-.. GitHub: https://github.com/
+      .. group-tab:: Bash
 
-__ https://stackoverflow.com/questions/26620312/installing-git-in-path-with-github-client-for-windows#answer-34767523
+         .. code:: console
 
+            $ mkdir odk
+            $ cd odk
+            /odk/ $
 
-.. _glfs:
+      .. group-tab:: PowerShell
 
-GLFS
-""""""
+         .. code:: powershell
 
-We use `Git Large File Storage (GLFS)`__
-to handle large binary files 
-like images and videos. 
-Once installed, 
-you normally won't need to do anything else. 
-GLFS is largely transparent when using git.
+            > mkdir odk
+            > cd odk
+            /odk/ >
 
-.. _GitLFS: https://git-lfs.github.com
-__ GitLFS_
+   For the rest of this guide,
+   we assume you are in the :file:`/odk/` directory,
+   or a subdirectory of it.
 
+#. Set up a virtual environment
 
-1. Install GLFS__.
+   A `virtual environment`_ is a Python construct
+   that lets you download and install tools for a specific project
+   without installing them for your entire computer.
 
-__ GitLFS_
+   .. _virtual environment: https://docs.python.org/3/tutorial/venv.html
 
-.. warning::
+   #. Create the virtual environment.
 
-  **On Windows**
+      .. tabs::
 
-  Make sure :file:`git-lfs.exe` and  :file:`git.exe` are under the same main directory on Windows. (See `this page <https://github.com/git-lfs/git-lfs/issues/919>`_ for reference.
+         .. group-tab:: Bash
 
-.. tip::
+            .. code:: console
 
-  **Debian Linux-based systems**
+               /odk/ $ python3 -m venv odkenv
 
-  If the installation script on the GLFS website does not work correctly for your distribution, try installing it from the terminal using the package manager.
+         .. group-tab:: PowerShell
 
-  .. code-block:: console
+            .. code:: powershell
 
-    $ sudo apt install git-lfs
+               /odk/ > python -m venv odkenv
 
-GLFS tracks binary files as defined in the :file:`.gitattributes` file `in the repo <https://github.com/opendatakit/docs/blob/master/.gitattributes>`_. Most common binary file formats are already listed, but there might be others we haven't thought of yet.
+   #. Activate the virtual environment.
 
-.. _adding-new-glfs-formats:
+      .. tabs::
 
-Adding new file formats to GLFS tracking
-'''''''''''''''''''''''''''''''''''''''''''''
+         .. group-tab:: Bash
+      
+            .. code:: console
 
-If you are adding binary files to the repo, 
-and they are in formats not already tracked, 
-**it is your responsibility to make sure they are tracked by GLFS.** 
+               /odk/ $ source odkenv/bin/activate
+               (odkenv) /odk/ $
 
-To make sure they are properly tracked, 
-add them to the :file:`.gitattributes` file.
+         .. group-tab:: PowerShell
 
-.. code-block:: none
+            .. code:: console
 
-  # file type section heading
-  *.{extension-to-track} filter=lfs diff=lfs merge=lfs -text
+               /odk/ > source odkenv/bin/activate
+               (odkenv) /odk/ >
 
-You can also use the command line.
+      The ``(odkenv)`` before the prompt shows that the virtual environment is active.
+      You will need to have this active any time you are working on the docs.
 
-.. code-block:: console
+      Later, to deactivate the virtual environment:
 
-  $ glfs track *.{file-extension}
+      .. tabs::
 
-This will add a line to :file:`.gitattributes`.
+         .. group-tab:: Bash
+      
+            .. code:: console
 
-.. note:: 
+               (odkenv) /odk/ $ deactivate
+               /odk/ $
 
-  Please keep :file:`.gitattributes` organized 
-  by placing the new file format declaration 
-  in the appropriate section, 
-  or creating a new section as needed.
+         .. group-tab:: PowerShell
 
-.. tip::
+            .. code:: console
 
-  If the command :command:`glfs` does not work, you may be using a version of GLFS that is organized as a git subcommand. In that case, substitute :command:`git lfs`.
+               (odkenv) /odk/ > deactivate
+               /odk/ >
 
 
-.. warning::
+#. Fork the ODK Docs repository to your own GitHub account.
 
-  Updates to :file:`.gitattributes` must be done 
-  in a commit before the commit 
-  that adds the new binary files.
+   .. _fork-the-docs:
 
-  We will not accept pull requests 
-  that include binary files untracked by GLFS.
+   A :dfn:`repository` (:dfn:`repo`) is a store of all the code and text for a project.
+   The `ODK Docs repo`_ is kept at GitHub.
 
+   On GitHub, a :dfn:`fork` is a copy of a repo,
+   cloned from one user to another.
+   In order to work on ODK Docs,
+   you will create your own fork.
 
-.. _android-tools:
+   #. Go to the `ODK Docs repo`_ on GitHub. 
+   #. Use the :guilabel:`Fork` button (top right) to create your own copy. 
+   #. After the process completes, you'll be looking at your own fork on GitHub.
 
-Android Tools
-~~~~~~~~~~~~~~~~~
+   .. _ODK Docs repo: https://github.com/opendatakit/docs
 
-Some testing and documentation tasks 
-(including :ref:`making screenshots from ODK Collect <screenshots>`)
-require the `Android Debug Bridge <https://developer.android.com/studio/command-line/adb.html>`_ command line tool.
-You can either install Android Studio 
-or install ADB as a standalone SDK tool.
+#. Clone down your copy to your local computer
 
-.. _android-studio:
+   .. _clone-the-docs:
 
-Android Studio
-""""""""""""""""""
+   #. From your own fork of the repo on GitHub, select the :guilabel:`Clone or download` button. 
+   #. Copy the URI from the text box that opens. 
+      It will be something like: 
+      ``https://github.com/your-gh-username/docs.git``
 
-:abbr:`ADB (Android Debug Bridge)` is part of `Android Studio`_,
-and is typically installed by default when you install Android Studio. 
+   #. Use your terminal to clone the repository.
 
-.. _Android Studio: https://developer.android.com/studio/index.html
+      You should already be in the :file:`odk` directory,
+      with the virtual environment active.
 
-This is the best way to get :command:`adb` 
-if you plan to do any other Android development. 
-To use it from the command line, 
-add the SDK Platform tools to your path.
+      .. tabs::
 
-On Mac, add the following to your :file:`.bash_profile`
+         .. group-tab:: Bash
+         
+            .. code:: console
 
-.. code-block:: sh
+               (odkenv) /odk/ $ git clone https://github.com/your-github-username/docs.git
+               .
+               .
+               .
+               (odkenv) /odk/ $ cd docs
+               (odkenv) /odk/docs/ $
 
-  export PATH=$PATH:~/Library/Android/sdk/tools/
+         .. group-tab:: Powershell
+         
+            .. code:: powershell
 
+               (odkenv) /odk/ > git clone https://github.com/your-github-username/docs.git
+               .
+               .
+               .
+               (odkenv) /odk/ > cd docs
+               (odkenv) /odk/docs/ >
 
-.. note::
+            .. warning::
 
-    On Windows, 
-    you have to run Android Studio once 
-    to complete the installation of ADB. 
-    The tool can be found in
-    :file:`C:/Users/user-name/AppData/Local/Android/sdk/platform-tools`. 
-    To add it to the environment variable path, 
-    use the following command:
+               Some of the git commands produce meaningless errors in PowerShell.
+               If you get an error when using git, but everything seems to work otherwise,
+               ignore the error.
 
-    .. code-block:: none
+         .. note::
 
-      set PATH=%PATH%;C:\Users\your user name\AppData\Local\Android\sdk\platform-tools
+            This will cause your computer to download the entire ODK Docs repository,
+            including a large number of images.
+            It will take several minutes to complete.
 
+      .. admonition:: Your local directory 
 
+         If you followed the instructions,
+         you should now have the following directory structure:
 
-.. warning::
+         -  :file:`odk`
 
-  The path specified above 
-  assumes a default installation of Android Studio. 
-  You may have installed Android Studio in a different location.
+            - :file:`docs`
+            - :file:`odkenv`
 
+         The :file:`odkenv` directory stores your virtual environment,
+         and you should not need to open it or directly view its content.
+         Just ignore it.
 
-.. _docs-workflow-setup:
+         The :file:`docs` directory is your copy of the ODK Docs repo.
+         You will do most of your work in this directory.
 
-Getting ready to work
------------------------
+         If you need to download or create additional files 
+         which are not actually a part of the ODK Docs repository,
+         keep them out of the :file:`docs` directory.
 
-.. _fork-the-docs:
+         You can use the main :file:`odk` directory 
+         for any other files you need to work on. 
+         (For example,
+         you may want to create a directory called :file:`odk/forms`
+         to hold XLSForm and XForm files.)
 
-Fork the docs
-~~~~~~~~~~~~~~
+#. Set the upstream remote
 
-Go to the `ODK Doc repo on GitHub`__ 
-and use the :guilabel:`Fork` button (top right) 
-to create your own copy. 
-After the process completes, 
-you'll be looking at your own fork on GitHub.
+   .. _upstream-the-docs:
 
-__ https://github.com/opendatakit/docs
+   In git, a :dfn:`remote` is a copy of a repo somewhere else.
+   From your local computer's point of view,
+   your online copy at GitHub is a remote.
 
-.. _clone-the-docs:
+   When you cloned down a repo, 
+   your local copy gives your GitHub copy the name ``origin``.
 
-Clone to local
-~~~~~~~~~~~~~~~~
+   You also need to give the primary ODK Docs repo a name,
+   and our convention is to name it ``upstream``.
 
-From your own fork of the repo on GitHub, 
-select the :guilabel:`Clone or download` button. 
-Copy the URI from the text box that opens. 
-It will be something like: 
-``https://github.com/your-gh-username/docs.git``
+   .. tabs::
 
-Open your terminal 
-and `cd` to your preferred directory. 
-Then `git clone` the repo:
+      .. group-tab:: Bash
 
-.. code-block:: console
+         .. code:: console
 
-  $ git clone https://github.com/your-github-username/docs.git
-  .
-  .
-  .
-  $ cd docs
+            (odkenv) /odk/docs/ $ git remote add upstream https://github.com/opendatakit/docs.git
+            (odkenv) /odk/docs/ $ git remote -v
+            origin https://github.com/your-github-username/docs.git (fetch)
+            origin https://github.com/your-github-username/docs.git (push)
+            upstream https://github.com/opendatakit/docs.git (fetch)
+            upstream https://github.com/opendatakit/docs.git (push)
 
-The rest of the documentation assumes 
-you are in the directory for the repo 
-(the directory containing :file:`conf.py` and :file:`index.rst`).
 
-.. tip::
+      .. group-tab:: PowerShell
 
-  - The :command:`clone` command creates a new directory inside the current directory.
-    You do not need to create a new `odk-docs` directory first.
-  - As noted above,
-    we recommend a master :file:`odk` directory 
-    that holds your virtualenv directory and your git repo 
-    in two separate subdirectories. 
-    So you would be in that master :file:`odk` directory 
-    when you clone the repo.
-  - Double-check that the right folders are in the right places:
+         .. code:: powershell
 
-  .. code-block:: none
+            (odkenv) /odk/docs/ > git remote add upstream https://github.com/opendatakit/docs.git
+            (odkenv) /odk/docs/ > git remote -v
+            origin https://github.com/your-github-username/docs.git (fetch)
+            origin https://github.com/your-github-username/docs.git (push)
+            upstream https://github.com/opendatakit/docs.git (fetch)
+            upstream https://github.com/opendatakit/docs.git (push)
 
-    - odk/
-      - odkenv/
-      - docs/
+   If everything went right,
+   you should see output similar to what is shown above.
 
-.. _upstream-the-docs:
+#. Install Python tools with pip
 
-Set the upstream remote
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   .. _install-doc-dependencies:
 
-When you clone down a repo, 
-the local copy names your GitHub copy ``origin``. 
-You should also set ``upstream`` 
-as the name of the main ODK Docs GitHub repo.
+   `Pip`_ is a package management tool that comes with Python.
+   We use it to download and install our documentation tools.
+   These Python tools are listed in :file:`requirements.txt`.
 
-.. code-block:: console
+   .. _Pip: https://pip.pypa.io/en/stable/user_guide/
 
-  $ git remote add upstream https://github.com/opendatakit/docs.git
+   .. tabs::
 
-Or in Windows:
+      .. group-tab:: Bash
 
-.. code-block:: doscon
+         .. code:: console
 
-  > git remote add upstream https://github.com/opendatakit/docs.git
+            (odkenv) /odk/docs/ $ pip install --upgrade pip
+            (odkenv) /odk/docs/ $ pip install -r requirements.txt
 
-Run ``git remote -v`` to check the status, you should see something like this:
+      .. group-tab:: PowerShell
 
-.. code-block:: console
+         .. code:: powershell
 
-  $ origin https://github.com/your-github-username/docs.git (fetch)
-  $ origin https://github.com/your-github-username/docs.git (push)
-  $ upstream https://github.com/opendatakit/docs.git (fetch)
-  $ upstream https://github.com/opendatakit/docs.git (push)
+            (odkenv) /odk/docs/ > pip install --upgrade pip
+            (odkenv) /odk/docs/ > pip install -r requirements.txt
 
-.. _install-doc-dependencies:
+   The first command `upgrades pip`_ itself to the latest version.
+   Then second checks :file:`requirements.txt` and installs everything listed in it.
+   This will take several moments.
 
-Install Dependencies
-~~~~~~~~~~~~~~~~~~~~~~~
+   .. _upgrades pip: https://pip.pypa.io/en/stable/installing/#upgrading-pip
 
-The first time you clone down the repo, 
-you need to install the dependencies. 
-Make sure you have your Python 3 virtual environment 
-set up and activated, then:
+   .. note::
 
-.. code-block:: console
+      If you are ever running one of the build commands shown below
+      and it fails with a message that includes ``ModuleNotFoundError``,
+      there might be changes to :file:`requirements.txt`
+      since you originally ran :command:`pip install -r requirement.txt`.
+      Run the installation again
+      and then retry your build.
 
-  $ pip install -r requirements.txt
+#. Choose a text/code editor
 
-.. note::
+   .. _choose-editor:
 
-  If you are working on 
-  the design, testing, or deployment of the docs, 
-  you might need to install an additional PyPi package. 
-  If so, 
-  please update the :file:`requirements.txt` file with 
-  :command:`pip freeze > requirements.txt`. 
-  Pull requests which change :file:`requirements.txt` 
-  should include a note about why the new package is needed.
+   The documentation source files are written in a plain text format called `reStructuredText`_.
+   This means special formatting (bullets, headers, bold text) is represented by visible characters,
+   not hidden behind a graphical display.
+   When working on a documentation file, 
+   you see and write something that looks like:
 
-.. note::
+   .. _reStructuredText: http://docutils.sourceforge.net/docs/user/rst/quickref.html
 
-  If you have problems when running Sphinx commands (see below), 
-  you may have a dependency issue. 
-  Try running :command:`pip install -r requirements.txt` again.
+   .. code:: rst
+
+      #. Choose a text/code editor
+
+         The documentation source files 
+         are written in a plain text format called `reStructuredText`_.
+
+         .. _reStructuredText: http://docutils.sourceforge.net/docs/user/rst/quickref.html
+
+   You cannot write and edit these files
+   in a typical document preparation program like :program:`MS Word` or :program:`Google Docs`.
+   Instead, you need a coding editor.
+
+   There are a lot of editors, 
+   and people who use them often have very strong opinions about them.
+   You are free to choose any editor you like.
+
+   If you've never used an editor before, 
+   you might want to start with one of the easier and more popular ones:
+
+   - `Atom <https://atom.io/>`_
+   - `Sublime <https://www.sublimetext.com/>`_
+   - `VS Code <https://code.visualstudio.com/>`_
+   - `Notebook++ <https://notepad-plus-plus.org/>`_ (Windows only)
+
+   Most of these have plugins that will make writing reStructuredText easier
+   by color-coding the markup.
+
+This completes the setup of your local working environment.
+Take a break before diving into how you actually work.
 
 .. _docs-workflow-details:
 
-Workflow details
+Working on the docs
 -------------------
 
-.. _git-pull-the-docs:
+#. Find an issue to work on.
 
-Pull in changes from upstream
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   Work on ODK Docs is planned using the GitHub repository's `issue tracker`_.
 
-As other people make changes to the docs,
-you need to keep your local copy up to date.
+   #. Browse the `issue tracker`_ and find one you may want to work on.
+   #. Make sure you understand the goal of the project.
+      If the goal isn't clear, ask.
+      If there is anything in the issue that doesn't make sense, ask about it.
+      Feel free to make suggestions about how something could be accomplished.
+   #. If you decide to work on an issue, 
+      assign yourself to it by writing **@opendatakit-bot claim** in a comment.
+   #. If the issue requires a novel or creative solution not defined in the issue already
+      (we've stated a problem and you think you know a way to fix it)
+      write a comment describing your plan.
+      It is a good idea to get feedback on an idea before working on it.
+      Often, other contributors can provide additional context
+      about why a particular solution may or may not work.
 
-You probably won't need to do this the first time, 
-but you should always pull in any changes from the main repository
-before you begin working.
+   .. _issue tracker: https://github.com/opendatakit/docs/issues
 
+   .. admonition:: Your first issue
 
-.. code-block:: console
+      The very first issue you should work on as a new ODK Docs contributor is
+      `Issue 96 --- Line Edits`_.
+      The issue is very simple:
 
-  $ git pull upstream
+      1. Find a typo.
+      2. Fix the typo.
 
-.. note::
+      This will help you get used to working with the documentation tools,
+      and helps us get rid of the inevitable errors that creep in to our writing.
 
-  If you get this message:
+      .. _Issue 96 --- Line Edits: https://github.com/opendatakit/docs/issues/96
 
-  .. code-block:: none
+#. Make sure you are on the master branch
 
-        You asked to pull from the remote 'upstream', but did not specify a branch.
-        Because this is not the default configured remote for your current branch,
-        you must specify a branch on the command line.
+   .. _check-at-master:
 
+   A branch is a named sequence of changes representing work on the repo.
+   For example, if you were going to work on `Issue 96 --- Line Edits`_,
+   you would create a new branch called ``line-edits`` to hold that work.
+   When you were done,
+   you would merge those changes back to the main branch,
+   which we call ``master``.
 
-  Try running ``git pull upstream master`` instead.
+   The first time you clone the docs repo and start working,
+   you will be on the `master` branch.
 
-.. _git-branch-the-docs:
+   Each time you come back to starting work on a new issue,
+   make sure you are on the ``master`` branch before continuing.
 
-Make a New Branch
-~~~~~~~~~~~~~~~~~~~
+   #. Check the current branch with :command:`git branch`. 
+      This will output a list of branches, with a star next to the current one.
 
-Choose a specific, deliverable issue to work on. 
-This should be an `active issue from our issue tracker on GitHub`__. 
+      .. tabs::
 
-__ https://github.com/opendatakit/docs/issues
+         .. group-tab:: Bash
 
-Create a new branch in which to work on this specific issue. 
-Your branch name should briefly describe what you are doing. 
-For example, 
-the original author of this contributor guide 
-worked in a branch called ``contributing``. 
+            .. code:: console
 
-Also, 
-make sure that all your branches are derived from ``master``
-to avoid confusing work from different commits.
+               (odkenv) /odk/docs/ $ git branch
+                  branch-name
+                  branch-name
+                  branch-name
+                * master
+                  branch-name
 
-.. code-block:: console
+         .. group-tab:: PowerShell
 
-  $ git checkout -b branch-name
+            .. code:: powershell
 
-.. tip::
+               (odkenv) /odk/docs/ > git branch
+                  branch-name
+                  branch-name
+                  branch-name
+                * master
+                  branch-name
 
-  Branch names should be short, lowercase, and use hyphens as separators.
+   #. If you are not on master, switch to master with :command:`git checkout`.
 
-  Good branch names:
+      .. tabs::
 
-  - ``getting-started-guide``
-  - ``contributing``
-  - ``fix-issue-13``
+         .. group-tab:: Bash
 
-  Bad branch names:
+            .. code:: console
 
-  - ``getting started guide``
-  - ``Getting started guide``
-  - ``Getting_started_guide``
-  - ``writing-the-getting-started-guide-adammichaelwood-july-2017-draft``
+               (odkenv) /odk/docs/ $  git checkout master
+               Switched to branch 'master'
+               Your branch is up to date with 'origin/master'.
 
-.. _write-the-docs:
+         .. group-tab:: PowerShell
 
-Work on the Docs
-~~~~~~~~~~~~~~~~~~~
+            .. code:: powershell
 
-Write and edit files in your favorite code editor.
+               (odkenv) /odk/docs/ >  git checkout master
+               Switched to branch 'master'
+               Your branch is up to date with 'origin/master'.
 
+#. Pull in changes from upstream
 
-.. note::
+   .. _git-pull-the-docs:
 
-  You need to use a code editor to work on ODK docs.
+   Other people are constantly making changes to the docs,
+   so you need to keep your local copy up to date.
 
-  If you've never used a code editor before, 
-  you should know that they are a little different
-  from other writing environments
-  like MS Word or your email editor.
-  
-  People have strong opinions about code editors,
-  and almost everyone has a favorite.
-  
-  If you're new to using an editor, 
-  you might want to try `Atom`_ or `Sublime`_,
-  which are both popular and easy to use, 
-  and they both have decent support for reStructuredText syntax.
-  
-  .. _Atom: https://atom.io/
-  .. _Sublime: https://www.sublimetext.com/
+   Before you start working, use :command:`git pull`
+   to pull in the changes from the upstream repository's master branch.
+   Then, just to be sure, you can use :command:`git status`
+   to make sure everything is up to date.
 
-.. _spell-check:
+   .. tabs::
 
-Check your spelling
-~~~~~~~~~~~~~~~~~~~
+      .. group-tab:: Bash
 
-After making changes to the docs,
-run the spelling checker with:
+         .. code:: console
 
-.. code-block:: console
+            (odkenv) /odk/docs/ $ git pull upstream master
+            (odkenv) /odk/docs/ $ git status
+            On branch master
+            Your branch is up to date with 'origin/master'.
 
-  $ sphinx-build -b spelling odk1-src build/spelling
+            nothing to commit, working tree clean
 
-or:
+      .. group-tab:: PowerShell
 
-.. code-block:: console
+         .. code:: powershell
 
-  $ sphinx-build -b spelling odk2-src build/spelling
+            (odkenv) /odk/docs/ > git pull upstream master
+            (odkenv) /odk/docs/ > git status
+            On branch master
+            Your branch is up to date with 'origin/master'.
 
-If there are any warnings, make sure that you fix them
-to avoid a build failure.
+            nothing to commit, working tree clean
 
-The error messages will be displayed in the terminal
-as well as stored in a file :file:`build/spelling/output.txt`.
+         .. warning:: 
 
-If you find a word that is not misspelled
-and will have repeated use in the docs,
-add it to the spelling list
-in :file:`odk1-src/spelling_wordlist.txt`
-or :file:`odk2-src/spelling_wordlist.txt`.
+            Some git commands (including :command:`git pull` and :command:`git checkout`)
+            send error messages to PowerShell even when they work correctly.
+            If everything seems to be working,
+            you can ignore these.
 
-If you find a word that is not misspelled
-and is only required in a particular file,
-use the :rst:dir:`spelling` directive
-to list the words before the file content; for example:
+#. Create a new branch for your work.
 
-.. code-block:: rst
+   .. _git-branch-the-docs:
 
-  .. spelling::
+   .. tabs::
 
-    vN.N
+      .. group-tab:: Bash
 
-  Upgrading Aggregate
-  ========================
+         .. code:: console
+         
+            (odkenv) /odk/docs/ $ git checkout -b branch-name
+            Switched to a new branch 'branch-name'
 
-.. _style-test-docs:
+      .. group-tab:: PowerShell
 
-Style-test your work
-~~~~~~~~~~~~~~~~~~~~~
+         .. code:: powershell
+         
+            (odkenv) /odk/docs/ > git checkout -b branch-name
+            Switched to a new branch 'branch-name'
 
-After making changes to the docs,
-you need to run the style-guide checks.
-To run the style guide checks on all the docs:
+   Branch names should be short, lowercase, and use hyphens as separators.
+   They do not need to carry a lot of information (like your name or the date).
 
-.. code-block:: console
+   Good branch names:
 
-  $ python style-test.py
+   - ``getting-started-guide``
+   - ``contributing``
+   - ``fix-issue-13``
 
-To run the style guide checks on specified files:
+   Bad branch names:
 
-.. code-block:: console
+   - ``getting started guide``
+   - ``Getting started guide``
+   - ``Getting_started_guide``
+   - ``writing-the-getting-started-guide-adammichaelwood-july-2017-draft``
 
-  $ python style-test.py filename1.rst filename2.rst ...
+#. Work on the documentation
 
-If you want to run the style guide checks
-on the files you modified,
-use the option :option:`-d` or :option:`--diff`.
+   .. _write-the-docs:
 
-.. code-block:: console
+   Finally, you can open an :ref:`editor of your choice <choose-editor>`
+   and work on the documentation.
 
-  $ python style-test.py -d
+   The source files for documentation text are in these directories:
 
-.. note::
+   :file:`odk1-src`
+      Files for the pages at http://docs.opendatakit.com
+   :file:`odk2-src`
+      Files for the pages at http://docs.opendatakit.com/odk2
+   :file:`shared-src`
+      Files for pages shared by both ODK1 and ODK2 docs.
+      (This page and the other contributor guide pages.)
 
-  This option checks only the files
-  that have been edited since the last :command:`git commit`.
-  So, if you modify the files,
-  make sure to check them
-  before making a commit.
+   If you're going to write or edit documentation text, please read:
+   
+   - :doc:`docs-syntax-guide`
+   - :doc:`docs-style-guide`
 
-To run the tests on modified files and other specified files:
+   If you're working on code or deployment, please read:
+   
+   - :doc:`docs-developer-guide`
 
-.. code-block:: console
+#. Local checks
 
-  $ python style-test.py -d filename1.rst filename2.rst ...
+   .. _test-the-docs:
 
-The output will consist of a list of warnings and errors.
-Read through the warnings
-and eliminate the ones that violate the style guide rules.
+   Once you have worked on the documentation,
+   we want to make sure your contribution 
+   will get accepted and published right away.
 
-.. note::
+   To ensure your changes will pass all the deployment tests,
+   you should run the tests locally first
+   and correct any problems.
 
-  It is not necessary to fix all the warnings,
-  but you should review each warning
-  and decide if a change based on the warning makes sense.
+   #. Spell check
 
-If there are any errors, you need to fix them to avoid build failure.
-You can either fix the errors or
-use the option :option:`-f` or :option:`--fix`.
+      .. _spell-check:
 
-.. code-block:: console
+      If you've been working on files in :file:`odk1-src` or :file:`shared-src`:
 
-  $ python style-test.py -f
+      .. tabs::
 
-If you want to fix the errors in specified files:
+         .. group-tab:: Bash
 
-.. code-block:: console
+            .. code:: console
 
-  $ python style-test.py -f filename1.rst filename2.rst ...
+               (odkenv) /odk/docs/ $ make odk1-spell-check
 
-.. tip::
+         .. group-tab:: PowerShell
 
-  After automatic error fixing, be sure to review the changes that were made.
+            .. code:: powershell
 
-To keep any part of a file from being checked, you can enclose the text in comments:
+               (odkenv) /odk/docs/ > rm -r -fo tmp1-src
+               (odkenv) /odk/docs/ > rm -r -fo odk1-build
+               (odkenv) /odk/docs/ > Copy-Item odk1-src -Destination tmp1-src -Recurse
+               (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmp1-src -Recurse
+               (odkenv) /odk/docs/ > sphinx-build -b spelling tmp1-src odk1-build/spelling
+               (odkenv) /odk/docs/ > python util/check-spelling-output.py odk1-build
 
-.. code-block:: rst
+      If you've been working on files in :file:`odk2-src`:
 
-  .. startignore
+      .. tabs::
 
-  Some text to ignore while testing.
+         .. group-tab:: Bash
 
-  .. endignore
+            .. code:: console
+            
+               (odkenv) /odk/docs/ $ make odk2-spell-check
 
-You can also generate :file:`.csv` format output
-using the :option:`-o` or :option:`--out_path` with the output filename:
+         .. group-tab:: PowerShell
 
-.. code-block:: console
+            .. code:: powershell
 
-  $ python style-test.py -o output.csv
+               (odkenv) /odk/docs/ > rm -r -fo tmp2-src
+               (odkenv) /odk/docs/ > rm -r -fo odk2-build
+               (odkenv) /odk/docs/ > Copy-Item odk2-src -Destination tmp2-src -Recurse
+               (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmp2-src -Recurse
+               (odkenv) /odk/docs/ > sphinx-build -b spelling tmp1-src odk2-build/spelling
+               (odkenv) /odk/docs/ > python util/check-spelling-output.py odk2-build
 
-To generate output for specified files:
 
-.. code-block:: console
+      This will send some output to the terminal,
+      which will include mentions of any words not in the dictionary.
 
-  $ python style-test.py -o output.csv filename1.rst filename2.rst ...
+      -  If the flagged words are really misspellings, correct them.
 
-.. note::
+      -  If the flagged words are not misspelled, and *should* be in the dictionary
+         add them to :file:`spelling_wordlist.txt`.
 
-  Make sure to specify the output file before the input files
-  when you use the option :option:`-o`.
+      -  If the flagged words are not misspelled, but *should not* be in the dictionary
+         (for example, they are non-words that make sense on a single page for a specific reason)
+         add them at the top of the file in which they are being used,
+         before the title heading:
 
-When you run the style guide checks,
-style testing scripts are generated
-before the test starts and are removed automatically
-after the testing is complete.
-If you want to keep these scripts for debugging,
-use the option :option:`-s` or :option:`--store`:
+         .. code:: rst
 
-.. code-block:: console
+            .. spelling::
 
-  $ python style-test.py -s
+               abc
+               def
+               exe
+               functool
 
-Use the option :option:`-h` or :option:`--help`
-to get any help about style guide testing:
+            This Is The Page Title
+            ======================
 
-.. code-block:: console
+      When adding new words to :file:`spelling_wordlist.txt` or the top of a document file,
+      please keep the words in alphabetical order.
 
-  $ python style-test.py -h
+   #. Style check 
 
-.. _build-the-docs:
+#. Build and check
 
-Build, View, and Debug
-~~~~~~~~~~~~~~~~~~~~~~~~
+   .. _build-the-docs:
 
-To build the documentation into a viewable website:
+   We use a Python tool called `Sphinx`_ 
+   to compile all the :file:`.rst` files into a working website.
 
-.. code-block:: console
+   .. _Sphinx: http://www.sphinx-doc.org
 
-  $ sphinx-build -b dirhtml src build
+   If you've been working on files in :file:`odk1-src` or :file:`shared-src`:
 
-This calls the sphinx-build utility. 
-The :option:`-b` switch specifies the builder, 
-which in this case is ``html``. 
-``src`` refers to the src directory which contains all :file:`.rst` files (the build source) 
-and ``build`` refers to the target of the build 
-(the built files will be put into a directory labeled :file:`build`).
+   .. tabs::
 
-When you run the build, 
-you may see error or warning messages. 
-These indicate potential problems with the documentation, such as:
+      .. group-tab:: Bash
 
-- syntax errors
-- broken links
-- terms not included in the glossary
+         .. code:: console
 
-Error and warning messages 
-include a file name and line number to make it easy to locate them. 
-Try to resolve all your errors and warnings 
-before issuing a pull request. 
-If this is not possible, 
-please add a note in your pull request 
-so that we can help you debug the problem.
+            (odkenv) /odk/docs/ $ make odk1
 
-**We will not merge Pull Requests that have warnings or errors in them.**
+      .. group-tab:: PowerShell
 
-.. note::
+         .. code:: powershell
 
-  Because of `a bug in Sphinx`__ 
-  the line numbers in error and warning messages 
-  will be off by the length of `rst_prolog` in :file:`conf.py`.
+            (odkenv) /odk/docs/ > rm -r -fo tmp1-src
+            (odkenv) /odk/docs/ > rm -r -fo odk1-build
+            (odkenv) /odk/docs/ > Copy-Item odk1-src -Destination tmp1-src -Recurse
+            (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmp1-src -Recurse
+            (odkenv) /odk/docs/ > sphinx-build -b dirhtml tmp1-src odk1-build
 
-__ https://github.com/sphinx-doc/sphinx/issues/2617
+   If you've been working on files in :file:`odk2-src`:
 
-To view the documentation in your web browser, 
-you can use Python's built-in web server.
+   .. tabs::
 
-.. code-block:: console
+      .. group-tab:: Bash
 
-  $ cd build
-  $ python -m http.server 8000
+         .. code:: console
 
-Then open your browser and go to http://localhost:8000 
+            make odk2
 
-Read through your doc edits in the browser 
-and correct any issues in your source files. 
-You'll need to shut down the web server (:kbd:`CTRL C`) 
-before rebuilding, 
-then return to the main directory of the repo ( :command:`cd ..` ).
+      .. group-tab:: PowerShell
 
-It's a good idea to delete the ``build`` directory before each rebuild.
+         .. code:: powershell
 
-.. code-block:: console
+            (odkenv) /odk/docs/ > rm -r -fo tmp2-src
+            (odkenv) /odk/docs/ > rm -r -fo odk2-build
+            (odkenv) /odk/docs/ > Copy-Item odk2-src -Destination tmp2-src -Recurse
+            (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmp2-src -Recurse
+            (odkenv) /odk/docs/ > sphinx-build -b dirhtml tmp2-src odk2-build
 
-  $ rm -rf build
-  $ sphinx-build -b dirhtml . build
+   This generates a lot of output.
+   Near the end of the output you may see a statement like:
 
-.. tip::
+   .. code-block:: none 
+   
+      build succeeded, 18 warnings.
 
-  The script :file:`b.sh` automatically runs all the build commands.
-  It saves typing.
-  In the future, 
-  it will also become the canonical build script for ODK Docs,
-  including additional tests and other build tasks.
+   Those warnings are problems with the text 
+   which you need to fix before submitting your changes.
+   Scroll up in the terminal to find each warning, 
+   so that you can address it in the source files.
 
-.. _build-pdf:
+   A Sphinx warning looks like this:
 
-Build the Docs as a PDF
-~~~~~~~~~~~~~~~~~~~~~~~
+   .. code-block:: none
 
-To build the docs as a PDF, follow these steps:
+      /path/to/file-name.rst:LINENUMBER: WARNING: warning message
 
-.. note::
+      short excerpt from the file
 
-  The steps below explain the build process for ODK 1's docs. To build the PDF for ODK 2's docs, replace **1** with **2** in the below commands.
+   This tells you what file the problem is in, 
+   the approximate line number,
+   and the nature of the problem.
+   Usually that is enough to fix it. 
+   If you can not figure out the meaning of a particular warning,
+   you can always ask about it on the |odk-slack|_.
 
-1. Install XeLatex
+   .. note::
 
-  - For macOS, use `MacTex <https://www.tug.org/mactex/>`_.
-  - For Windows, use `MiKTeX <https://miktex.org/>`_.
-  - For Ubuntu (or Debian), run
+      Because of a `bug in Sphinx`_ 
+      the line numbers in error and warning messages 
+      will be off by about 15 lines
+      (the length of ``rst_prolog`` in :file:`conf.py`).
 
-    .. code-block:: console
+      .. _bug in Sphinx: https://github.com/sphinx-doc/sphinx/issues/2617
 
-      $ sudo apt-get install texlive-xetex
+   As you fix each warning,
+   run the build again to see if it disappears from the output.
 
-  .. note::
+   .. note::
 
-    Instead of installing XeLatex directly on your system, you can also use this `Docker image <https://github.com/schickling/dockerfiles/tree/master/latex>`_.
+      The warning messages will refer to the file name
+      using the temporary directory path :file:`tmp1-src` or :file:`tmp2-src`.
+      You need to correct the problems in the real source directory
+      (:file:`odk1-src`, :file:`odk2-src`, or :file:`shared-src`).
 
-2. Build LaTex file
+   .. admonition:: When you just can't fix the error...
 
-  .. code-block:: console
+      If you've done your best and asked on the |odk-slack|_,
+      and you still cannot correct the warning,
+      stop worrying about it and skip to the next step.
+      When you submit your changes on GitHub,
+      include a note about the warning.
+      Other contributors will help solve the problem before merging.
 
-    $ make odk1-latex
+   Once you've corrected all the warnings that can be corrected...
 
-3. Generate PDF for the produced LaTex file
+#. Serve the documentation website locally and view it.
 
-  .. code-block:: console
+   .. _serve-the-docs-locally:
 
-    $ make odk1-pdf
+   If you've been working on files in :file:`odk1-src` or :file:`shared-src`:
 
-  The PDF will be generated in :file:`/odk1-build/_downloads/ODK-Documentation.pdf`
+   .. tabs::
 
-.. _push-the-docs:
+      .. group-tab:: Bash
 
-Push Your Branch
-~~~~~~~~~~~~~~~~~~
+         .. code:: console
 
-Once your work on an issue is complete, 
-add the files you've changed or created, 
-and write a relevant commit message describing the changes.
+            (odkenv) /odk/docs/ $ python -m http.server -d odk-build 8000
+            Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
 
-.. code-block:: console
+      .. group-tab:: PowerShell
 
-  $ git add my_changed_files
-  $ git commit -m "A small but relevant commit message"
+         .. code:: powershell
 
-Then, push the changes. 
-The first time you do this, you need to specify the branch name:
+            (odkenv) /odk/docs/ > python -m http.server -d odk1-build 8000
+            Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
 
-.. code-block:: console
+   If you've been working on files in :file:`odk2-src`:
 
-  $ git push origin branch-name
+   .. tabs::
 
-After that, you only need to use the :command:`push` command:
+      .. group-tab:: Bash
 
-.. code-block:: console
+         .. code:: console
 
-  $ git push
+            (odkenv) /odk/docs/ $ python -m http.server -d odk2-build 8000
+            Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
 
+      .. group-tab:: PowerShell
 
-.. note:: ``origin`` is the local label for your GitHub fork.
+         .. code:: powershell
 
-.. _pr-the-docs:
+            (odkenv) /odk/docs/ > python -m http.server -d odk2-build 8000
+            Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
 
-Issue a Pull Request
-~~~~~~~~~~~~~~~~~~~~~~
+   #. Open your browser and go to http://localhost:8000.
+   #. Read through your doc edits in the browser.
+   #. Go back to the source files to correct any errors you find.
+   #. Go to your terminal, and press :kbd:`CTRL C` to shut down the local web server.
+   #. Re-run the build and serve steps.
+   #. Continue proofreading.
 
-A :dfn:`pull request` (or PR) 
-is a request from you to the ODK Docs maintainers 
-to pull in your changes to the main repo.
+   Once you are reasonably sure your changes are ready...
 
-Go to the `main docs repo on GitHub`__. 
-You'll see a message there referencing your recently pushed branches. Select :guilabel:`Compare & pull request` to start a pull request.
+#. Commit your changes to your local repository.
 
-__ https://github.com/opendatakit/docs>
+   .. _commit-the-docs:
 
-Follow GitHub's instructions. 
-The :guilabel:`Base fork` should be the main repo, 
-and :guilabel:`base` should be ``master``. 
-Your repo and working fork should be listed beside them. 
-(This information should populate by default, 
-but be sure to double check.) 
-If there is a green **Able to be merged** message, 
-you can proceed.
+   A :dfn:`commit` is snapshot of your working files in a particular state,
+   along with a record of all the changes that led up to that state.
+   That snapshot is what you will submit to the main repository.
 
-You must include a PR comment. Things to include:
+   .. note:: 
 
-- A summary of what you did.
-- A note about anything that probably should have been done, 
-  but you didn't do.
-- A note about any new work this PR will create.
-- The issue number you are working on. 
-  If the PR completes the issue, 
-  include the text ``Closes #`` and the issue number.
-- A note about any errors or warnings, 
-  and why you did not or could not resolve them.
-- A note justifying any changes to :file:`requirements.txt`.
-- A note about any difficulties, questions, or concerns 
-  that came up while working on this issue.
+      We explain how to do a commit at this step
+      because you need to do it before you can submit your changes.
+      However, you don't have to wait until you are done to commit.
+      You can commit as many times as you like while working.
 
-Complete the pull request. 
-The maintainers will review it as quickly as possible. 
-If there are any problems the maintainers can't deal with, 
-they will reach out to you.
+      This can be especially helpful if you are working on a complicated set of changes,
+      over several working sessions.
 
-.. note::
+   #. Stage the files for commit with :command:`git add`.
 
-   If you rename a document file (:file:`*.rst`), 
-   be sure that you add the redirect in your PR.
+      To stage all changes for commit:
 
-   To add the redirect, go to :file:`s3_website.yml`, 
-   and add a mapping from the old file name to the new file name 
-   below the **redirects:** line, one mapping per line. 
-    
-   If you have renamed :file:`old-name.rst` to :file:`new-name.rst`:
+      .. tabs::
 
-   .. code-block:: yaml
+         .. group-tab:: Bash
 
-     redirects:
-      old-name/index.html: new-name
+            .. code:: console
+
+               (odkenv) /odk/docs/ $ git add -A 
+
+         .. group-tab:: PowerShell
+
+            .. code:: powershell
+
+               (odkenv) /odk/docs/ > git add -A 
+
+   #. Commit the staged files with :command:`git commit`.
+
+      .. tabs::
+
+         .. group-tab:: Bash
+
+            .. code:: console
+
+               (odkenv) /odk/docs/ $ git commit -m "Write a commit message here."
+
+         .. group-tab:: PowerShell
+
+            .. code:: powershell
+
+               (odkenv) /odk/docs/ > git commit -m "Write a commit message here."
+
+      Your commit message needs to be wrapped in quote marks.
+      It should, in a sentence or less, explain your work.
+
+#. Push your committed changes to your GitHub repo with :command:`git push`.
+
+   .. _push-the-docs:
+
+   .. tabs::
+
+      .. group-tab:: Bash
+
+         .. code:: console
+
+            (odkenv) /odk/docs/ $ git push origin branch-name
+
+      .. group-tab:: PowerShell
+
+         .. code:: powershell
+
+            (odkenv) /odk/docs/ > git push origin branch-name
+
+         .. warning::
+
+            The :command:`git push` command produces meaningless errors in PowerShell.
+            If you get an error when using :command:`git push`, 
+            but everything seems to work otherwise,
+            ignore the error.
+
+      .. tip::
+
+         You may be prompted to enter your GitHub username and password.
+         When entering your password, the cursor won't move ---
+         it will look like you aren't entering anything,
+         even though you are.
+
+         To avoid having to retype these every time,
+         you can `store your GitHub credentials locally`_.
+
+         .. _store your GitHub credentials locally:
+            https://help.github.com/articles/caching-your-github-password-in-git/
+
+#. Issue a pull request from your GitHub repo to the main ODK Docs repo.
+
+   .. _pr-the-docs:
+
+   A :dfn:`pull request` (or PR) 
+   is a request from you to the ODK Docs maintainers 
+   to pull in your changes to the main repo.
+
+   #. Go to the `ODK Docs repo on GitHub`_.
+      (Make sure you are logged in.)
+
+      .. _ODK Docs repo on GitHub: https://github.com/opendatakit/docs
+
+   #. Find the message near the top of the page that mentions your recent pushed branches.
+      Select :guilabel:`Compare & pull request` to start a pull request.
+   #. Follow GitHub's instructions to start the pull request.
+
+      These details should fill-in automatically,
+      but be sure to double-check them:
+
+      - :guilabel:`Base fork` should be the main repo (``opendatakit/docs``).
+      - :guilabel:`base` should be ``master``. 
+      - Your repo and working branch name should be listed beside them. 
       
-   Notice the inclusion of ``/index.html`` on the left side.
+      You will see either a green **Able to be merged** message
+      or a message informing that the branch can not be merged.
+      You can proceed in either case. 
+      If the branch cannot be merged,
+      the maintainers will work with you to resolve the problem.
 
+   #. Write a PR message explaining your work.
+
+      The PR message field includes a template to remind you of what to include.
+      Fill in the template and delete any sections which are not applicable.
+
+      A good PR message includes:
+
+      - The issue number you are working on.
+        (Write ``closes #123`` if the PR completes the work for the issue.
+        If there's still work to do, write ``addresses #123``.)
+      - A summary of what you did.
+      - Details of work that still needs to be done.
+      - Details of new work created or implied by this PR.
+      - Details of any unresolved errors or warnings,
+        including details of what you tried.
+      - Justification for any changes to :file:`requirements.txt`.
+      - Details of any difficulties, questions, or concerns 
+        that came up while working on this issue.
+
+   #. Submit your pull request.
+
+   The maintainers and other contributors will review your PR as quickly as possible.
+   They may request changes to your work.
+   If changes are needed:
+
+      #. **Don't worry.** 
+         Revision is a normal part of technical writing,
+         and everyone (even the project's founders and leaders)
+         has their work reviewed and are frequently asked to revise it.
+      #. Work on the files again locally.
+         (Use :command:`git branch` to make sure you are still in the same working branch.)
+      #. :ref:`Stage and commit <commit-the-docs>` your changes locally again
+         (:command:`git add -A`; :command:`git commit -m "Commit message"`).
+      #. :ref:`Push your commit <push-the-docs>` (:command:`git push origin branch-name`).
+      #. Your new commits will automatically update the PR.
+         Do not start a new PR.
+
+   Once everything has been approved,
+   the changes will be merged in and will appear on :doc:`this website <index>`.
+   At that point... congratulations!
+   You are now a contributor to Open Data Kit.
 
 .. _keep-working-the-docs:
 
-Keep Going
-~~~~~~~~~~~
+The next time you work
+----------------------
 
-Once the PR is merged, 
-you'll need to pull in the changes from the main repo ( ``upstream`` )
-into your local copy.
+We hope that contributing to ODK Docs is a rewarding experience
+and that you'll want to keep going.
+Each time you start work on a new issue
+the process is the same as outline above.
 
-.. code-block:: console
+Here are a few things to keep in mind when you start your next contribution.
 
-  $ git checkout master
-  $ git pull upstream master
+#. Return to ``master`` with :command:`git checkout master`.
 
-Then you should push those change to your copy on GitHub ( ``origin`` ).
+   New work is done on new branches which are started from master.
+   So, before you start a new branch, return to the master branch.
 
-.. code-block:: console
+   .. tabs::
 
-  $ git push
+      .. group-tab:: Bash
+      
+         .. code:: console
 
-If you want, you can delete your previous branch.
+            (odkenv) /odk/docs/ $ git checkout master
 
-.. code-block:: console
+      .. group-tab:: PowerShell
+      
+         .. code:: console
 
-  $ git branch -d branch-name
+            (odkenv) /odk/docs/ > git checkout master
 
-Now you can find a new issue to work on, 
-create a new branch, 
-and get to work again.
+#. Pull in changes with :command:`git pull upstream master`.
+
+   You need to start your new work from 
+   the latest version of everyone else's work.
+
+   .. tabs::
+
+      .. group-tab:: Bash
+      
+         .. code:: console
+
+            (odkenv) /odk/docs/ $ git pull upstream master
+
+      .. group-tab:: PowerShell
+      
+         .. code:: console
+
+            (odkenv) /odk/docs/ > git pull upstream master
+
+#. Update the master branch of your online GitHub repository.
+
+   .. tabs::
+
+      .. group-tab:: Bash
+      
+         .. code:: console
+
+            (odkenv) /odk/docs/ $ git push origin master
+
+      .. group-tab:: PowerShell
+      
+         .. code:: console
+
+            (odkenv) /odk/docs/ > git push origin master
+
+#. Find a `new issue to work on`_.
+#. `Start a new branch for your work <git-branch-the-docs>`_ with :command:`git checkout -b branch-name`.
+
+.. _new issue to work on: https://github.com/opendatakit/docs/issues/
+
+.. _keep-improving:
+
+Keep improving
+--------------
+
+As you are getting comfortable with the contribution process,
+take a few minutes to read our :doc:`contributing-tips`.
+You may also want to dig deeper into the 
+:doc:`docs-style-guide` and the :doc:`docs-syntax-guide`.
+(And if you are writing code, 
+check out the :doc:`docs-developer-guide`.)
+
+And don't forget to join us on the |odk-slack|_.
+
+Open Data Kit is a community,
+and we depend on each other's work.
+Thank you for your contribution to ODK Docs
+and your presence in this community.
