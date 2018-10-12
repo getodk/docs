@@ -14,7 +14,7 @@ You will:
 Install Collect
 ---------------------
 
-The easiest way to install the Collect App is `to get it from the Google Play store <https://play.google.com/store/apps/details?id=org.odk.collect.android&hl=en>`_.
+The easiest way to install the Collect app is `to get it from the Google Play store <https://play.google.com/store/apps/details?id=org.odk.collect.android&hl=en>`_.
 
 .. seealso:: :doc:`collect-install`
 
