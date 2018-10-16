@@ -14,7 +14,9 @@ Installing on Google App Engine
   
   - You will need a Gmail account to use App Engine. This Gmail account will be the owner of the Google Cloud Platform project under which your App Engine will execute.
 
-  - Read the `Google Cloud Platform term of service <https://cloud.google.com/terms/>`_.
+  - You will need to provide a credit card or banking details to verify your identify to the Google Cloud Platform.
+
+  - Read the `Google Cloud Platform terms of service <https://cloud.google.com/terms/>`_.
 
   .. _download-aggregate-installer: 
     

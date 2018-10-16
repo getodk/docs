@@ -100,25 +100,21 @@ In some circumstances, you might be able to use :ref:`encrypted-forms` to achiev
 Billing
 ~~~~~~~~~
 
-Google App Engine has 24-hour activity quotas that typically enable free use of ODK Aggregate during evaluation and small pilot studies. 
+For identity verification purposes, Google requires a credit card or banking details to use the Google Cloud Platform that Google App Engine runs on. Accounts that meet this requirement receive a recurring $200 monthly credit per billing account.
 
-You may be able to run a full study within these activity thresholds provided you:
+Independent of Cloud Platform credits, App Engine allows a certain amount of free activity. These free quotas reset every 24 hours and are high enough to enable free use of ODK Aggregate during evaluation and small pilot studies.
+
+You may be able to run a full deployment within these activity thresholds provided you:
 
 - collect fewer than 2000 responses
-- access the site only during the work day
+- access the site a limited number of times a day
 - can be flexible about when you upload and access data
 
-Otherwise, you will need to set up a billing account with Google.
+Deployments with more activity that do not wish to wait 24 hours for quotas to reset can enable billing on their App Engine project.
 
-.. note::
+Once billing is enabled, ODK Aggregate will start using the monthly credit that comes from the Cloud Platform. Once those credits are finished, the credit card or bank on file will then be used. Billing account owners can set spending limits to manage application costs.
 
-  These usage limits are well within what is needed to try out ODK,
-  to determine if it would be a good fit for your data collection needs.
-  
-  Because of this, and its ease of setup,
-  we recommend using Google App Engine 
-  in test deployments and pilot studies,
-  even if you will likely need a custom deployment later on.
+Most ODK deployments will not surpass the $200/month credit and non-profits using more than that can apply for more credits through `Google for Nonprofits <https://www.google.com/nonprofits/>`_.
   
 .. _aggregate-deployment-open-source:
 
