@@ -1109,7 +1109,7 @@ Bad sequentially numbered image file names:
 Screenshots from ODK Collect
 """""""""""""""""""""""""""""""
 
-If you have set up local :ref:`android-tools`, you can connect your Android device to your computer and take screenshots from the command line.
+If you have set up :doc:`Android Debug Bridge <collect-adb>`, you can connect your Android device to your computer and take screenshots from the command line.
 
 - Connect your device via USB
 - Enable Developer Settings
@@ -1135,7 +1135,7 @@ Now, at the command line, from the root directory of the :file:`odk-docs` repo:
   Make sure you do not overwrite an existing image.
 
 .. tip::
-  If you have a problem running ss.py, check to make sure your :ref:`Python 3 virtual environment <docs-venv>` is activated.
+  If you have a problem running ss.py, check to make sure your Python 3 virtual environment is activated.
 
   
 .. tip::
