@@ -646,7 +646,7 @@ Converting dates and time
   
 .. function:: decimal-date-time(dateTime)
 
-  Converts :arg:`dateTime` value to the number of days since January 1, 1970 UTC. This is the format used by Excel.
+  Converts :arg:`dateTime` value to the number of days since January 1, 1970 UTC.
   
   This is the inverse of :func:`date`.
 
