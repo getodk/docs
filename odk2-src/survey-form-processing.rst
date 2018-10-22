@@ -581,7 +581,7 @@ The controller's progress through this program is tracked by the history stack m
         screenManager.setScreen(ctxt, screenOp, options);
     }
 
-Processing flow, for example, eventually calls `screenManager` to display a screen (via `setScreen(ctxt, screenOp, options)`) and perhaps also shows a pop-up with some sort of alert or error message (via `showScreenPopup(m)`).
+Simply put, the processing flow eventually calls `screenManager` to display a screen (via `setScreen(ctxt, screenOp, options)`) and perhaps also shows a pop-up with some sort of alert or error message (via `showScreenPopup(m)`).
 
 When the *next button* is pressed or the screen is swiped forwards, the framework calls :code:`controller.gotoNextScreen()` which verifies that all required fields are filled-in and all constraints are applied. It then triggers much the same processing sequence -- calling `doActionAt()` with the operation *after* the currently-rendered screen.
 
