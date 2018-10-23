@@ -60,7 +60,7 @@ Form Properties
 
 In the workspace to the left of the form you are creating is a box titled :guilabel:`Form Properties`. This is were you can tailor each field for style and for establishing how the data will be organized and presented after it is scanned and digitized. The key properties to note at this point are:
 
-  - :guilabel:`Name`: An identifier for the ODK tools back end. A name is generated automatically but can be customized if desired. No spaces allowed; if blanks are entered (for example: "Date mo 1" it will be saved with underscores (i.e. "Date_mo1"). If desired, the name can be the same as the display text.
+  - :guilabel:`Name`: An identifier for the ODK tools back end. A name is generated automatically but can be customized if desired. No spaces allowed; if blanks are entered (for example: "Date mo 1" it will be saved with underscores (for example, "Date_mo1"). If desired, the name can be the same as the display text.
   - :guilabel:`Display Text`: A label for the field that relates the nature of the data input and will be a reference point in Survey when looking at the data answers after collection (for example: "PolioVaccDate"). If desired, this can be the same as the name. The display text can include spaces if desired.
   - :guilabel:`Verify field`: Choose whether the field requires validation by the user reviewing the scan when transcribing in Survey.
   - :guilabel:`Order of fields`: Enter the order that the fields will be presented to the person verifying each field of data in Survey. Provide order by listing number, for example: 1, 2, 3.

@@ -842,7 +842,7 @@ Custom columns can be used within a workbook that are used to store functions, f
   * - column_type_name
     - | The name that will be used to reference the column.
   * - type
-    - | The type of information that will be stored in the column (i.e. function,
+    - | The type of information that will be stored in the column (for instance, function,
       | formula, app_path_localized).
 
 .. _xlsx-ref-framework-translations:
@@ -866,15 +866,15 @@ The **framework_translations** sheet is only present in the :file:`framework.xls
   * - image.<locale>
     - | The value of the image url fragment relative to the appName directory
       | for this locale.  There can be as many of these columns as you want
-      | translated languages (i.e. :th:`image.default`, :th:`image.gr`, :th:`image.es`).
+      | translated languages (such as :th:`image.default`, :th:`image.gr`, :th:`image.es`).
   * - audio.<locale>
     - | The value of the audio url fragment relative to the appName directory
       | for this locale.  There can be as many of these columns as you want
-      | translated languages (i.e. :th:`audio.default`, :th:`audio.gr`, :th:`audio.es`).
+      | translated languages (such as :th:`audio.default`, :th:`audio.gr`, :th:`audio.es`).
   * - video.<locale>
     - | The value of the videourl fragment relative to the appName directory
       | for this locale.  There can be as many of these columns as you want
-      | translated languages (i.e. :th:`video.default`, :th:`video.gr`, :th:`video.es`).
+      | translated languages (such as :th:`video.default`, :th:`video.gr`, :th:`video.es`).
 
 The locale code should generally be the 2-letter language code, or, if necessary, the *language_COUNTRY* naming used by Android can be used to identify a specific language variant. For example: *en_US*, *en_UK* for US English and UK English, respectively.
 
@@ -901,15 +901,15 @@ The format for this sheet is the same as that for the **framework_translations**
   * - image.<locale>
     - | The value of the image url fragment relative to the appName directory
       | for this locale.  There can be as many of these columns as you want
-      | translated languages (i.e. :th:`image.default`, :th:`image.gr`, :th:`image.es`).
+      | translated languages (such as :th:`image.default`, :th:`image.gr`, :th:`image.es`).
   * - audio.<locale>
     - | The value of the audio url fragment relative to the appName directory
       | for this locale.  There can be as many of these columns as you want
-      | translated languages (i.e. :th:`audio.default`, :th:`audio.gr`, :th:`audio.es`).
+      | translated languages (such as :th:`audio.default`, :th:`audio.gr`, :th:`audio.es`).
   * - video.<locale>
     - | The value of the videourl fragment relative to the appName directory
       | for this locale.  There can be as many of these columns as you want
-      | translated languages (i.e. :th:`video.default`, :th:`video.gr`, :th:`video.es`).
+      | translated languages (such as :th:`video.default`, :th:`video.gr`, :th:`video.es`).
 
 The locale code should generally be the 2-letter language code, or, if necessary, the *language_COUNTRY* naming used by Android can be used to identify a specific language variant. For example: *en_US*, *en_UK* for US English and UK English, respectively.
 
@@ -934,15 +934,15 @@ The **table_specific_translations** sheet is optional. It should only be present
   * - image.<locale>
     - | The value of the image url fragment relative to the appName directory
       | for this locale.  There can be as many of these columns as you want
-      | translated languages (i.e. :th:`image.default`, :th:`image.gr`, :th:`image.es`).
+      | translated languages (such as :th:`image.default`, :th:`image.gr`, :th:`image.es`).
   * - audio.<locale>
     - | The value of the audio url fragment relative to the appName directory
       | for this locale.  There can be as many of these columns as you want
-      | translated languages (i.e. :th:`audio.default`, :th:`audio.gr`, :th:`audio.es`).
+      | translated languages (such as :th:`audio.default`, :th:`audio.gr`, :th:`audio.es`).
   * - video.<locale>
     - | The value of the videourl fragment relative to the appName directory
       | for this locale.  There can be as many of these columns as you want
-      | translated languages (i.e. :th:`video.default`, :th:`video.gr`, :th:`video.es`).
+      | translated languages (such as :th:`video.default`, :th:`video.gr`, :th:`video.es`).
 
 The locale code should generally be the 2-letter language code, or, if necessary, the *language_COUNTRY* naming used by Android can be used to identify a specific language variant. For example: *en_US*, *en_UK* for US English and UK English, respectively.
 

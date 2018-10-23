@@ -36,7 +36,7 @@ The primary building blocks of this generic Survey JavaScript framework are:
   * underscore - generic utility functions
   * moment     - date and time handling support
 
-Some additional libraries are use for specific widgets and capabilities (e.g., d3 for graphing, combodate for calendar widgets).
+Some additional libraries are use for specific widgets and capabilities (for example, d3 for graphing, combodate for calendar widgets).
 
 The Survey JavaScript framework then adds form navigation, data validation, data storage and data retrieval functions. Central to this framework is the **calling context** which provides a continuation abstraction for chaining and resuming processing during asynchronous interactions.
 
@@ -181,7 +181,7 @@ Listed alphabetically, these are:
   - **parsequery** - responsible for parsing the hash fragment and triggering the building of the form, the triggering the initialization of the data table, changing of the viewed page, etc.
   - **prompts** - the core set of prompts defined by the Survey JavaScript framework.  The first of these, `base`, defines the basic operation of a prompt.
   - **promptTypes** - due to the way `requirejs` works, this defines an empty object into which the prompts (above) are inserted.
-  - **screenManager** - handles the rendering of a screen, including any please-wait or other in-progress notifications, and the events that initiate actions on that screen (e.g., change language, swipe left/right, back/forward button clicks).  Many of those actions invoke methods on the `controller` to complete.  Note that rendering of the prompts within a screen (equivalent to an ODK Collect field-list) are handled within the definition of the screen.
+  - **screenManager** - handles the rendering of a screen, including any please-wait or other in-progress notifications, and the events that initiate actions on that screen (for example, change language, swipe left/right, back/forward button clicks).  Many of those actions invoke methods on the `controller` to complete.  Note that rendering of the prompts within a screen (equivalent to an ODK Collect field-list) are handled within the definition of the screen.
   - **screens** - the core set of screen renderers defined by the Survey JavaScript framework. This includes the templating screen for customized layouts and the standard screen renderer.
   - **screenTypes** - due to the way `requirejs` works, this defines an empty object into which the screens (above) are inserted.
 
@@ -331,7 +331,7 @@ From this flow, you can see that the rough sequence of flow is:
   #. :code:`builder.buildSurvey()` to process the raw formDef.json file.
   #. :code:`database.initializeInstance()` creates the initial (largely empty) row of an instanceId (if it is new) and reads the data for the instanceId from the database (if it is pre-existing), sets the current instance id and populates the mdl with the values for that instance id.
   #. :code:`controller.startAtScreenPath()` is called to direct the Survey JavaScript framework to display the requested screen.
-  #. :code:`controller.registerQueuedActionAvailableListener()` is called to initiate the processing of any Java data callbacks (e.g., responses from intents).
+  #. :code:`controller.registerQueuedActionAvailableListener()` is called to initiate the processing of any Java data callbacks (for instance, responses from intents).
 
 .. _form-processing-control-flow-builder:
 
@@ -360,7 +360,7 @@ The `column_types` field in the `specification` object within the :file:`formDef
   * formula(arg1[, arg2[,...]])
   * requirejs_path
 
-Columns with the `function` type are expected to contain column values ({columnValue}) that are a text string that can be evaluated as a function definition -- e.g., {columnValue} would be something like: :code:`function() { return 3; }`.
+Columns with the `function` type are expected to contain column values ({columnValue}) that are a text string that can be evaluated as a function definition -- for example, {columnValue} would be something like: :code:`function() { return 3; }`.
 
 The `formula` type and the :code:`formula(...)` type are expected to have {columnValue} be an expression that is the return value of a function. These are wrapped by the builder to construct either
 
@@ -432,7 +432,7 @@ Database
 
 The Survey database layer is a fairly thin wrapper around the `odkData` object. It maintains a cache of all of the field values in the referenced instanceId (row) within the current form. This cache is synchronously referenced and modified within the presentation layer and asynchronously updated via calls to the `odkData` object. In general, these asynchronous writes occur during lose-focus event processing.
 
-Additionally, it maintains a copy of the properties of that table (e.g., display name of the table and display names of the fields) and a description of the field types in the database table (the table definition). These are returned via the `odkData` object. This information is used within Survey to enable formulas to refer to field values either via their `elementPath` or via the database column in which they are stored (`elementKey`). A prime example of this is a *geopoint*. If the name of the *geopoint* field is `mylocation` then the individual `latitude`, `longitude`, etc. values are maintained within the cache as individual keys within a `mylocation` object -- you can refer to them naturally as `mylocation.latitude`, `mylocation.longitude`, etc. This is the `elementPath` representation of these fields. However, within the database layer, these are stored as individual columns with column names of `mylocation_latitude`, `mylocation_longitude` etc. That is the `elementKey` representation. A similar transformation occurs for file attachments and any user-defined complex data type (multi-valued prompts). Simple select-multiple prompts, which manipulate arrays of values, have an `elementPath` representation within the cache as a Javascript array of selected values. Within the database layer, their `elementKey` representation is a JSON serialization of this array (in contrast, select-multiple prompts that reference linked tables would not store their selections in the dominant data table but rely upon filter conditions and storing a (foreign) key in the subordinate table, or in an association table, to establish their linkage).
+Additionally, it maintains a copy of the properties of that table (for example, display name of the table and display names of the fields) and a description of the field types in the database table (the table definition). These are returned via the `odkData` object. This information is used within Survey to enable formulas to refer to field values either via their `elementPath` or via the database column in which they are stored (`elementKey`). A prime example of this is a *geopoint*. If the name of the *geopoint* field is `mylocation` then the individual `latitude`, `longitude`, etc. values are maintained within the cache as individual keys within a `mylocation` object -- you can refer to them naturally as `mylocation.latitude`, `mylocation.longitude`, etc. This is the `elementPath` representation of these fields. However, within the database layer, these are stored as individual columns with column names of `mylocation_latitude`, `mylocation_longitude` etc. That is the `elementKey` representation. A similar transformation occurs for file attachments and any user-defined complex data type (multi-valued prompts). Simple select-multiple prompts, which manipulate arrays of values, have an `elementPath` representation within the cache as a Javascript array of selected values. Within the database layer, their `elementKey` representation is a JSON serialization of this array (in contrast, select-multiple prompts that reference linked tables would not store their selections in the dominant data table but rely upon filter conditions and storing a (foreign) key in the subordinate table, or in an association table, to establish their linkage).
 
 The support this synchronous cache and this data abstraction, the main entry points for this layer can be divided into 4 sections:
 
@@ -474,7 +474,7 @@ If `sameInstance` is false and `instanceId` is null (we are not yet editing a ro
 
 If `sameInstance` is false and `instanceId` is not null, the row's values are fetched from the database. If the row does not exist, it is initialized with the default values specified in the form for each of the row's fields, and then those changes are overlaid with the changes specified in the `keyValueMap`. And, finally, any initial values for the form's session variables that are specified within the `keyValueMap` are applied.
 
-The second method, `get_linked_instances` is used by linked table prompts to retrieve rows from other data tables (e.g., for linked table prompts).
+The second method, `get_linked_instances` is used by linked table prompts to retrieve rows from other data tables (for example, for linked table prompts).
 
 The remaining methods (`save_all_changes`, `ignore_all_changes` and `delete_checkpoints_and_row`) manage the retention and deletion of the row in the database table.
 
@@ -514,9 +514,9 @@ Controller
 
 The initial load of a form ends with a call to :code:`controller.startAtScreenPath()` followed by a call to  :code:`controller.registerQueuedActionAvailableListener()`.
 
-The `controller` object is responsible for navigating the form, ensuring that required fields are populated, that constraints are applied, that all validation logic is executed, and that appropriate actions are taken when the user launches an external application (e.g., for media capture), launches a sub-form, saves the form, exits without saving, or elects to delete a row from the database.
+The `controller` object is responsible for navigating the form, ensuring that required fields are populated, that constraints are applied, that all validation logic is executed, and that appropriate actions are taken when the user launches an external application (for example, media capture), launches a sub-form, saves the form, exits without saving, or elects to delete a row from the database.
 
-To implement *back button* functionality, the controller maintains a history of how the user has navigated through the form. This navigation history is necessary because there is no fixed execution path through an Survey form (user-directed navigation is one of the big changes between the javarosa-based tools and Survey).  The `odkSurveyStateManagement` injected Java interface provides the underlying storage mechanism for this functionality and is directly called by `controller` during its processing.
+To implement *back button* functionality, the controller maintains a history of how the user has navigated through the form. This navigation history is necessary because there is no fixed execution path through an Survey form (user-directed navigation is one of the big changes between the javarosa-based tools and Survey). The `odkSurveyStateManagement` injected Java interface provides the underlying storage mechanism for this functionality and is directly called by `controller` during its processing.
 
 The types of actions that the controller can perform, and how these are defined in the `formDef.json` will be described later in this document. At this time, it is sufficient to know that the controller is executing a program that performs actions, such as the rendering of a screen containing one or more prompts, as well as performing conditional and unconditional branches within that program.
 
@@ -581,13 +581,13 @@ The controller's progress through this program is tracked by the history stack m
         screenManager.setScreen(ctxt, screenOp, options);
     }
 
-i.e., the processing flow eventually calls `screenManager` to display a screen (via `setScreen(ctxt, screenOp, options)`) and perhaps also shows a pop-up with some sort of alert or error message (via `showScreenPopup(m)`).
+Simply put, the processing flow eventually calls `screenManager` to display a screen (via `setScreen(ctxt, screenOp, options)`) and perhaps also shows a pop-up with some sort of alert or error message (via `showScreenPopup(m)`).
 
 When the *next button* is pressed or the screen is swiped forwards, the framework calls :code:`controller.gotoNextScreen()` which verifies that all required fields are filled-in and all constraints are applied. It then triggers much the same processing sequence -- calling `doActionAt()` with the operation *after* the currently-rendered screen.
 
 When the *back button* is pressed or the screen is swiped backward, the framework calls :code:`controller.gotoPreviousScreen()` which pops the operation history stack for the current survey sheet until a screen-rendering operation is found, and that screen is then rendered. And, if the history for the current survey sheet is exhausted, then the contents screen for that sheet is displayed.
 
-Finally, returning to the discussion of the control flow on the initial load of a form, after the current screen is rendered, the call to :code:`controller.registerQueuedActionAvailableListener()` causes an action listener to be registered with `odkCommon` and then calls that listener to process any results that became available before the listener was registered. If there are any results from a previous :code:`odkCommon.doAction(...intentArgs...)` request (e.g., a media-file capture request), then the controller's action listener will interpret the results to identify what prompt in the current screen should receive and process these results and then invoke that prompt to complete the processing. Otherwise, if there are no results, no additional actions are taken.  This completes the control flow on the initial load of the form.
+Finally, returning to the discussion of the control flow on the initial load of a form, after the current screen is rendered, the call to :code:`controller.registerQueuedActionAvailableListener()` causes an action listener to be registered with `odkCommon` and then calls that listener to process any results that became available before the listener was registered. If there are any results from a previous :code:`odkCommon.doAction(...intentArgs...)` request (for example, a media-file capture request), then the controller's action listener will interpret the results to identify what prompt in the current screen should receive and process these results and then invoke that prompt to complete the processing. Otherwise, if there are no results, no additional actions are taken.  This completes the control flow on the initial load of the form.
 
 .. _form-processing-control-flow-screenManager:
 
