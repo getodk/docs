@@ -646,13 +646,13 @@ Converting dates and time
   
 .. function:: decimal-date-time(dateTime)
 
-  Converts :arg:`dateTime` value to the number of days since January 1, 1970 UTC.
+  Converts :arg:`dateTime` value to the number of days since January 1, 1970 (the `Unix Epoch`_).
   
   This is the inverse of :func:`date`.
 
 .. function:: date(days)
 
-  Converts an integer representing a number of :arg:`days` from 01 January 1970 (the `Unix Epoch`_) to a standard date value.
+  Converts an integer representing a number of :arg:`days` from January 1, 1970 (the `Unix Epoch`_) to a standard date value.
 
   .. _Unix Epoch: https://en.wikipedia.org/wiki/Unix_time
     
