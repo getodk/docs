@@ -13,7 +13,8 @@ Publishing your data into Google Spreadsheets or Google Fusion Tables requires a
 
 .. note::
 
-   - Google now throttles requests for all of its APIs. This impacts ODK Aggregate's Map visualization (which requires an API key) and the publishing to Google Sheets and the publishing to Google Fusion Tables (both of which require a service account). 
+   - Google requires a credit card or banking details to use the Google Cloud Platform that the Oauth2 Service Account runs on. The billing details are used for identity verification.
+   - Google throttles requests for all of its APIs. This impacts ODK Aggregate's Map visualization (which requires an API key) and the publishing to Google Sheets and the publishing to Google Fusion Tables (both of which require a service account). 
    - If you have difficulties with any of these, go to the Google Cloud Platform project in which you created your service account, navigate to the API Manager tab, navigate to the appropriate API (either via the Dashboard list or via the links on the library sub-tab). 
    - If the API is enabled, you will have a graphical overview of your use of the API. Click on the Quota heading on the page to see the quotas for the API. By clicking on the pencil icons to the right of these quotas, you will get a pop-up from which you can request an increase in a quota. 
    - The quota that most critically needs to be increased is the Google Sheets quota for write requests per second per user. A better limit is 500 per second per user, or perhaps higher if your forms have many fields and/or repeat groups.
