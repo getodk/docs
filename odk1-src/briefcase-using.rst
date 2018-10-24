@@ -332,3 +332,72 @@ Clear saved preferences
   .. code-block:: console
 
     $ java -jar {path/to/briefcase-jar-file} --clear_prefs
+
+.. _briefcase-log-files:
+
+Briefcase log files
+-------------------
+
+Briefcase creates a log file with warnings and errors that might be useful for troubleshooting.
+
+.. _briefcase-default-log-file-location:
+
+Default log file location
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If something goes wrong while using Briefcase and you look for help, it's possible that you're asked to provide your log file.
+
+The default location for the log file is the directory where you are when launching Briefcase, and the default filename is "briefcase.log"
+
+Briefcase will create the log file on launch if it doesn't previously exist. Otherwise, it will append lines at the end of a pre-existing log file.
+
+.. _briefcase-custom-log-configuration:
+
+How to use a custom log configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Optionally, you can use a custom log configuration file to override the default log settings on Briefcase.
+
+First, you need to create a "logback.xml" file somewhere in your computer to contain your custom log configuration. This is a sample configuration file you can use as a template:
+
+.. code-block:: xml
+
+  <configuration>
+    <appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <file>briefcase.log</file>
+      <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <fileNamePattern>briefcase.%d{yyyy-MM-dd}.log</fileNamePattern>
+        <maxHistory>30</maxHistory>
+        <totalSizeCap>100MB</totalSizeCap>
+      </rollingPolicy>
+      <encoder>
+        <pattern>%d [%thread] %-5level %logger{36} - %msg%n</pattern>
+      </encoder>
+    </appender>
+
+    <root level="info">
+      <appender-ref ref="ROLLINGFILE" />
+    </root>
+  </configuration>
+
+
+Check the full syntax of Logback configuration files `here`_.
+
+  .. _here: https://logback.qos.ch/manual/configuration.html#syntax
+
+You can set all sorts of new log configurations to adapt Briefcase to your needs:
+
+ - Set a fixed log file location
+ - Fine tune the log's verbosity by setting a different log level
+ - Silence specific log lines while keeping others
+ - Set a custom log format (see the `Encoders`_ chapter)
+ - Set custom appenders, to define a file rolling policy (daily, by log file size, for example), for example (see the `Appenders`_ chapter)
+
+  .. _Encoders: https://logback.qos.ch/manual/encoders.html
+  .. _Appenders: https://logback.qos.ch/manual/appenders.html
+
+Once you have your configuration file ready, you can use it by adding a `-Dlogging.config` argument when launching Briefcase:
+
+.. code-block:: console
+
+  $ java -Dlogging.config="{path/to/logback.xml}" -jar {path/to/briefcase-jar-file}

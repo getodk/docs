@@ -117,6 +117,8 @@ LDAP
 ldaps
 Lifecycle
 lifecycle
+logback
+LogBack
 macOS
 malware
 Metadata
