@@ -51,7 +51,7 @@ For such changes you can update the version and re-upload the form.
 
 .. tip::
 
-  Form version in XLSForm is a string of up to 10 numbers that describes this revision. Revised form definitions must have alphabetically greater versions than previous ones. A common convention is to use strings of the form **yyyymmddrr**. For example, 2017120701 is the 1st revision from Dec 7th, 2017. 
+  Form version in XLSForm is a string of up to 10 numbers that describes this revision. Revised form definitions must have numerically greater versions than previous ones. A common convention is to use strings of the form **yyyymmddrr**. For example, 2017120701 is the 1st revision from Dec 7th, 2017.
 
 For example:
 

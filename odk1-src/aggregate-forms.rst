@@ -52,8 +52,15 @@ From the :ref:`form list <aggregate-view-blank-form-list>`,  click on form's :gu
 .. image:: /img/aggregate-use/xml-viewer.*
    :alt: Image showing xml viewer for form.
 
+.. note::
+
+  Please, be aware that Aggregate doesn't store the original uploaded blank form. Instead, it rebuilds a blank form with what's stored in the database. This implies that there could be some slight differences:
+
+  - All blank forms downloaded from Aggregate will include an XML comment with the build date.
+  - Any left padding with zeroes will be lost on the form's version number if it was originally present (`000042` will become `42`).
+
 .. _aggregate-toggle-form-download:
-   
+
 Disabling or enabling downloading of a form
 ----------------------------------------------
    
