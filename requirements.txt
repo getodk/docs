@@ -28,7 +28,7 @@ Pygments==2.2.0
 pytest==3.7.2
 pytz==2017.2
 PyYAML==3.13
-requests==2.14.2
+requests==2.20.0
 six==1.10.0
 smmap2==2.0.4
 snowballstemmer==1.2.1
