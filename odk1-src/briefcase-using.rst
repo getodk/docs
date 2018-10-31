@@ -14,9 +14,9 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
 #. Enter the URL and login credentials for your Aggregate server in the dialog that pops up and click the :guilabel:`Connect` button.
 
    If you have anonymous login enabled on Aggregate, no login credentials are needed here.
-   
+
    To connect to the `Aggregate Demo Server`_, the URL is https://opendatakit.appspot.com.
-   
+
    .. _Aggregate Demo Server: https://opendatakit.appspot.com
 
 #. Briefcase will show a list of forms for download. Only forms that are marked in Aggregate as downloadable will be shown.
@@ -24,13 +24,13 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
 #. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to your :ref:`Briefcase Storage <briefcase_storage>` location.
 
    For each selected form, Briefcase will pull down:
-   
+
    - The form definition file (that is, the blank XForm).
    - All media associated with the form.
    - Completed form instances, including all their attached media files.
 
    If you have previously pulled the form:
-   
+
    - The form definition file and media files will not be pulled.
    - New instances will be downloaded.
 
@@ -39,9 +39,9 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
      If your local copy and the remote copy of the blank form definition file are different, the pull will be aborted.
 
      .. rubric:: Workaround
-     
+
      If the form definition has changed, but the changes only affect the question text and do not alter the structure of the collected data (or change the form ID or version), you can:
-     
+
      #. In :guilabel:`Settings`, temporarily change the :ref:`Briefcase Storage <briefcase_storage>` location.
      #. Pull data into to the new location.
      #. Manually copy the instances from the temporary location of your original storage location.
@@ -51,9 +51,9 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
   :name: briefcase-parallel-connections
 
   .. rubric:: Pull forms faster with parallel connections
-  
+
   .. container:: details
-  
+
     To speed up pulling forms from Aggregate, enable :guilabel:`Pull submissions in parallel` in the :guilabel:`Settings` tab.
 
     .. image:: /img/briefcase-using/pull-in-parallel.*
@@ -133,9 +133,9 @@ To upload blank forms and completed form instances to an :doc:`Aggregate <aggreg
 #. Enter the URL and login credentials for your Aggregate server in the dialog that pops up and click the :guilabel:`Connect` button.
 
    If you have anonymous login enabled on Aggregate, no login credentials are needed here.
-   
+
    To connect to the `Aggregate Demo Server`_, the URL is https://opendatakit.appspot.com.
-   
+
    .. _Aggregate Demo Server: https://opendatakit.appspot.com
 
 #. Select the forms you want to upload and click :guilabel:`Push`. The selected forms will be pushed from your :ref:`Briefcase Storage <briefcase_storage>` to the Aggregate server.
@@ -144,21 +144,20 @@ To upload blank forms and completed form instances to an :doc:`Aggregate <aggreg
 
      - The form definition file (that is, the blank XForm).
      - All media associated with the form.
-   
-   - Completed form instances, including all their attached media files.
+     - Completed form instances, including all their attached media files.
 
    .. warning::
 
      If your local copy and the remote copy of the blank form definition file are different, the push will be aborted.
-   
+
      .. rubric:: Workaround
-     
+
      If the form definition has changed, but the changes only affect the question text and do not alter the structure of the collected data (or change the form ID or version), you can:
-     
+
      #. In :guilabel:`Settings`, temporarily change the :ref:`Briefcase Storage <briefcase_storage>` location.
      #. Manually copy the form directory from your original storage location of the temporary location.
      #. Replace the local form definition file with a copy of the version from your Aggregate server.
-     #. Push your form instances. 
+     #. Push your form instances.
      #. Update :guilabel:`Settings` back to the original :ref:`Briefcase Storage <briefcase_storage>` location.
 
 .. _briefcase-export-to-csv:
@@ -182,7 +181,7 @@ Export forms to CSV
 #. Select the forms to export.
 
    If you are selecting and exporting more than one form, you may need to set individual export settings. To do this, click the gear icon (:guilabel:`⚙`) next to the form name.
-   
+
 #. Click :guilabel:`Export`.
 
 .. _cli-use:
@@ -210,7 +209,7 @@ To get help about the command line operation:
   $ java -jar {path/to/briefcase-jar-file} --help
 
 .. _pull-from-aggregate-cli:
-  
+
 Pulling forms from Aggregate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -235,7 +234,7 @@ Pulling forms from Aggregate
         -pp,--parallel_pull                 Pull submissions in parallel
 
 .. _pull-from-collect-cli:
-  
+
 Pulling forms from Collect
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -292,7 +291,7 @@ Pushing forms to Aggregate
   This CLI operation will only update the blank form if it does not already exist, whereas the GUI will always update the form.
 
 .. _export-to-csv-cli:
-  
+
 Exporting forms to CSV
 ~~~~~~~~~~~~~~~~~~~~~~
 
