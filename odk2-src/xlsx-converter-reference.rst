@@ -1012,6 +1012,16 @@ JavaScript Operators
 
 The built in formula functions can be combined in advanced ways using any valid JavaScript expression. This is particularly useful for creating complex condition statements to implement skip patterns or conditional statements for required variables. JavaScript operators will allow the expressions to involve more than one variable or more than one response from a single variable. Parentheses can be used in creating particularly complex conditions. A few basic JavaScript operators:
 
+.. list-table:: javascript operators
+  :header-rows: 1
+
+  * - Name
+    - | Description
+    - Example
+  * - :code:`&&`
+    - | And
+    - :code:`data('person_age')>=18 && selected(data('pizza_type'), 'mushroom')`
+
 .. warning::
 
   The *opendatakit* object contains many useful functions but these should be considered internal methods subject to change. When upgrading, be sure to confirm that the methods you use have not disappeared!
