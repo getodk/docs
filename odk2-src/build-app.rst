@@ -767,6 +767,20 @@ If you pull the CSV files, they will be under the :file:`output/csv/` directory.
 .. tip::
   There are a number of additional grunt tasks available. Assuming you have installed grunt and node, you can view the available tasks by running :command:`grunt --help` anywhere in the repo.
 
+Troubleshooting
+~~~~~~~~~~~~~~~
+
+There are several issues that may occur while trying to push your survey onto your device. Below are some common issues and tips and tricks to help:
+
+•	Try checking adb –version. If the version does not show, make sure that Android SDK is appropriately installed on your computer because this is what installs the Android Debug Bridge (adb) software.
+•	Check that your computer sees your device. In your command window type the command adb devices. It should show a device detected.
+•	Check device to see if it has a message about authorizing the computer. If so, authorize the device.
+•
+•	Check device settings to ensure USB debugging is enabled and device is liked as a media device (not camera or other settings)
+•	Make sure your app-designer only has the necessary working files. Any random files or older versions of your survey saved within app-designer will cause the push to fail.
+•	Do not have any Excel forms open on your computer. If you do, this will cause errors with $filename or ~$filename in the filepath when pushing.
+•	Check that your computer sees your device. In your command window type the command adb devices. It should show a device detected.
+•	Check device to see if it has a message about authorizing the computer. If so, authorize the device. 
 
 .. _build-app-deploying:
 
