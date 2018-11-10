@@ -951,7 +951,7 @@ The locale code should generally be the 2-letter language code, or, if necessary
 Built-in Functionality
 --------------------------
 
-The :program:`jquery` and :program:`underscore` libraries are available when defining calculates expressions.
+The :program:`jquery` and :program:`underscore` libraries are available when defining calculates expressions or writing statements for the condition column or the required column.
 
 ODK Survey exposes built-in functionality through formula functions to decrease form development time.
 
@@ -1004,6 +1004,10 @@ The following formula functions can be used to simplify calculations or expressi
     - :code:`selected(data('visited_continents'), 'NorthAmerica')`
 
 And, additionally, the *opendatakit* object is also available for use in calculates expressions.
+
+JavaScript Operators
+
+The built in formula functions can be combined in advanced ways using any valid JavaScript expression. This is particularly useful for creating complex condition statements to implement skip patterns or conditional statements for required variables. JavaScript operators will allow the expressions to involve more than one variable or more than one response from a single variable. Parentheses can be used in creating particularly complex conditions. A few basic JavaScript operators:
 
 .. warning::
 
