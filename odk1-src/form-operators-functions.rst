@@ -25,9 +25,9 @@
   te
   tres
   π
-  
-  
-	
+
+
+
 ******************************
 Form Operators and Functions
 ******************************
@@ -36,26 +36,26 @@ Form Operators and Functions
 can contain operators and functions.
 
 .. contents::
-  :local:   
+  :local:
   :depth: 2
-    
+
 .. _form-operators:
 
 Operators
 ==========
 
 .. _math-operators:
-  
+
 Math operators
 ---------------
 
 .. csv-table::
   :header: , Explanation, Example
-  
+
   \+, addition, ${salary_income} + ${self_employed_income}
   \-, subtraction, ${income} - ${expenses}
   \*, multiplication, ${bill} * 1.18
-  div, division, ${percent_int} div 100 
+  div, division, ${percent_int} div 100
   mod, `modulo`_ (division remainder), (${even_number} mod 2) = 0
 
 .. _modulo: https://en.wikipedia.org/wiki/Modulo_operation
@@ -63,41 +63,41 @@ Math operators
 .. warning::
 
   Math operators only work with numbers.
-  
+
   - The addition operator cannot be used to concatenate strings.
     Use the :func:`concat` function instead.
-  - Empty values 
+  - Empty values
     (that is, :ref:`variables <variables>` referencing unanswered questions)
-    are actually empty strings, 
+    are actually empty strings,
     :ref:`and will not be automatically converted to zero (0) <empty-values>`.
-  
+
 .. _comparison-operators:
-  
+
 Comparison operators
 -----------------------
-  
+
 Comparison operators are used to compare values.
 The result of a comparison is always ``True`` or ``False``.
-  
+
 .. csv-table::
   :header: , Explanation, Example, Notes
-  
+
   =, equal to, ${enrolled} = 'yes', Can compare numbers or strings.
   !=, not equal to, ${enrolled} != 'yes', Can compare numbers or strings.
-  >, greater than, ${age} > 17, 
+  >, greater than, ${age} > 17,
   >=, greater than or equal to, ${age} >= 18,
-  <, less than, ${age} < 65, 
+  <, less than, ${age} < 65,
   <=, less than or equal to, ${age} <= 64,
-  
+
 .. warning::
 
   - The relational operators (``>``, ``>=``, ``<``, ``<=``)
     only work with numbers.
-  - :ref:`Empty response values 
+  - :ref:`Empty response values
     are not automatically converted to zero (0) <empty-values>`.
-  
+
 .. _boolean-operators:
-  
+
 Boolean operators
 ------------------
 
@@ -118,30 +118,30 @@ Path operators
 
 .. csv-table::
   :header: , Explanation, Example, Notes
-  
+
   ., current question's value, . >= 18, Used in :ref:`constraints <constraints>`.
   \.\., current question's parent group, position(..), Used with :func:`position` to get the iteration index.
 
-.. note:: 
+.. note::
 
-  Formally, these are not operators but rather XPath references 
-  to the current node (``..``) and the containing node (``.``). 
+  Formally, these are not operators but rather XPath references
+  to the current node (``..``) and the containing node (``.``).
   `XPath paths`_ can be used to reference nodes of a form.
-  
+
   .. _XPath paths: https://opendatakit.github.io/xforms-spec/#xpath-paths
-    
-  
+
+
 .. _form-functions:
-  
+
 Functions
 ===========
 
 .. contents::
   :local:
-    
+
 .. seealso:: `Functions in the ODK XForm Specification <https://opendatakit.github.io/xforms-spec/#xpath-functions>`_
 
-    
+
 .. _control-flow-functions:
 
 Control flow
@@ -149,22 +149,22 @@ Control flow
 
 .. function:: if(expression, then, else)
 
-  Returns :arg:`then` if :arg:`expression` evaluates to ``True``. 
+  Returns :arg:`then` if :arg:`expression` evaluates to ``True``.
   Otherwise, returns :arg:`else`.
 
-  
-  
+
+
 .. function:: position(xpath)
 
   Returns an integer equal to the 1-indexed position of the current node
   within the node defined by :arg:`xpath`.
-  
+
   Most often this is used in the form :tc:`position(..)`
   to identify the current iteration index
-  within a repeat group.  
-  
+  within a repeat group.
+
   .. container:: details
-  
+
     .. include:: incl/form-examples/parallel-repeat-groups.rst
 
 .. function:: once(expression)
@@ -181,7 +181,7 @@ Control flow
     This function is often misunderstood. Read :ref:`when expressions are evaluated <when-expressions-are-evaluated>` to learn more.
 
 .. _response-access-functions:
-  
+
 Accessing response values
 --------------------------
 
@@ -189,58 +189,58 @@ Accessing response values
 
   The response from most question types
   can be accessed using :ref:`variables <variables>`.
-  Functions are needed for accessing responses to 
+  Functions are needed for accessing responses to
   :ref:`multi select questions <select-functions>` and
   questions inside :ref:`repeat groups <repeat-functions>`.
 
 .. _select-functions:
-  
+
 Select questions
 ~~~~~~~~~~~~~~~~~~~
 
 .. function:: selected(space_delimited_array, string)
 
-  Returns ``True`` if :arg:`string` 
+  Returns ``True`` if :arg:`string`
   is a member of :arg:`space_delimited_array`,
   otherwise returns ``False``.
-  
+
   Commonly used to determined if a specific choice was selected
-  in a :ref:`select question <select-widgets>`. 
-  (This is possible because 
+  in a :ref:`select question <select-widgets>`.
+  (This is possible because
   a :ref:`reference to <variables>` a select question
   returns a space-delimited array of choice names.)
 
   .. container:: details
-      
+
     .. include:: incl/form-examples/constraint-on-selected.rst
-  
+
 .. function:: selected-at(space_delimited_array, n)
 
-  Returns the string at the :arg:`n`\ :sup:`th` position 
+  Returns the string at the :arg:`n`\ :sup:`th` position
   of the :arg:`space_delimited_array`.
   (The array is zero-indexed.)
-  Returns an empty string if the index does not exist.  
-  
-  This can be used to get the :th:`name` of a selected choice 
+  Returns an empty string if the index does not exist.
+
+  This can be used to get the :th:`name` of a selected choice
   from a :ref:`multi-select question <multi-select-widget>`.
-  (This is possible because 
+  (This is possible because
   a :ref:`reference to <variables>` a select question
   returns a space-delimited array of choice names.)
-  
+
   .. note::
-  
+
     If used to get a choice name from a select question,
     this function returns the :th:`name`, not the :th:`label`,
     of the selected choice.
     To get the label in the current language,
     use :func:`jr:choice-name`.
-  
+
   .. container:: details
-  
-    .. image:: /img/form-functions/selected-at-0.* 
+
+    .. image:: /img/form-functions/selected-at-0.*
       :alt: A multi-select widget in Collect. The label is "What colors do you like?" Several color names are presented as options. Red, Green, and Purple are selected.
 
-    .. image:: /img/form-functions/selected-at-1.* 
+    .. image:: /img/form-functions/selected-at-1.*
       :alt: A note widget in Collect. The label is "Selected Colors". The hint text is "red, green, purple".
 
     .. rubric:: XLSForm
@@ -252,7 +252,7 @@ Select questions
       calculate, color_0, , ,"selected-at(${color_prefs}, 0)"
       calculate, color_1, , ,"selected-at(${color_prefs}, 1)"
       calculate, color_2, , ,"selected-at(${color_prefs}, 2)"
-      note, color_note, Selected colors:, ${color_0} <br> ${color_1} <br> ${color_2}  
+      note, color_note, Selected colors:, ${color_0} <br> ${color_1} <br> ${color_2}
 
     .. csv-table:: choices
       :header: list_name, name, label
@@ -267,10 +267,10 @@ Select questions
 .. function:: count-selected(multi_select_question)
 
   Returns the number of choices selected in ``multi_select_question``.
-  
+
   .. container:: details
-  
-    .. image:: /img/form-functions/count-selected-constraint.* 
+
+    .. image:: /img/form-functions/count-selected-constraint.*
       :alt: A multi-select widget in Collect. The label is "What colors do you like?" The hint text is "Select three." Four colors are selected. A message modal overlays the widget with the text "Select exactly three."
 
     .. rubric:: XLSForm
@@ -293,27 +293,27 @@ Select questions
 .. function:: jr:choice-name(choice_name, 'select_question')
 
   Returns the label value, in the active language, associated with the :arg:`choice_name` in the list of choices for the :arg:`select_question`.
-  
+
   .. note::
-  
+
     You have to wrap the :arg:`select_question` reference in quotes.
-    
+
     .. code-block:: none
-    
+
       '${question_name}'
-      
-  .. container:: details  
-  
-    .. image:: /img/form-functions/choice-name-multi-lang-english-0.* 
+
+  .. container:: details
+
+    .. image:: /img/form-functions/choice-name-multi-lang-english-0.*
       :alt: A multi-select widget in Collect. The label is "What colors do you like?" Several color names are presented as options. Red, Green, and Purple are selected.
 
-    .. image:: /img/form-functions/choice-name-multi-lang-english-1.* 
+    .. image:: /img/form-functions/choice-name-multi-lang-english-1.*
       :alt: A note widget in Collect. The label is "Selected colors". The hint text is "Red, Green, Purple."
 
-    .. image:: /img/form-functions/choice-name-multi-lang-spanish-0.* 
+    .. image:: /img/form-functions/choice-name-multi-lang-spanish-0.*
       :alt: A multi-select widget in Collect. The label is "¿Qué colores te gustan?" Several color names, in Spanish, are presented as options. Rojo, Verde, and Púrpura are selected.
 
-    .. image:: /img/form-functions/choice-name-multi-lang-spanish-1.* 
+    .. image:: /img/form-functions/choice-name-multi-lang-spanish-1.*
       :alt: A note widget in Collect. The label is "Colores seleccionados." The hint text is "Rojo, Verde, Púrpura".
 
     .. rubric:: XLSForm
@@ -338,7 +338,7 @@ Select questions
       colors, purple, Purple, Púrpura
 
 .. _repeat-functions:
-    
+
 Repeat groups
 ~~~~~~~~~~~~~~~~
 
@@ -350,28 +350,28 @@ Repeat groups
     nodeset
 
       A collection of XML nodes.
-      In XLSForms, this is typically a collection of response values. 
+      In XLSForms, this is typically a collection of response values.
 
-      Outside a :ref:`repeat group <repeats>`, 
+      Outside a :ref:`repeat group <repeats>`,
       :ref:`referring to a question by name <variables>`
       will return a nodeset containing all the responses to that question.
-      
+
       Nodesets can also be created by joining two or more nodes with pipes: :tc:`/data/age | /data/name`.
 
-        
+
 .. function:: indexed-repeat(name, group, i [, sub_grp, sub_i [, sub_sub_grp, sub_sub_i ]])
 
   Returns the response value of question :arg:`name`
   from the repeat-group :arg:`group`,
   in iteration :arg:`i`.
-  
-  Nested repeat groups can be accessed 
+
+  Nested repeat groups can be accessed
   using the :arg:`sub` and :arg:`sub_sub` parameters.
 
   .. seealso:: :ref:`referencing-answers-in-repeats`
 
   .. container:: details
-  
+
     .. include:: incl/form-examples/parallel-repeat-groups.rst
 
 .. function:: count(nodeset)
@@ -379,9 +379,9 @@ Repeat groups
   Returns the number of items in :arg:`nodeset`. This can be used to count the number of repetitions in a :ref:`repeat group <repeats>`.
 
   .. container:: details
-  
+
     .. include:: incl/form-examples/parallel-repeat-groups.rst
-  
+
 .. function:: count-non-empty(nodeset)
 
   Returns the number of non-empty members of :arg:`nodeset`.
@@ -389,19 +389,19 @@ Repeat groups
 .. function:: sum(nodeset)
 
   Returns the sum of the members of :arg:`nodeset`.
-  
+
   Can be used to :ref:`tally responses to a repeated select question <counting-answers>`.
-  
+
   .. container:: details
-  
+
     .. include::  incl/form-examples/sum-to-count-responses.rst
 
 .. function:: max(nodeset)
 
   Returns the largest member of :arg:`nodeset`.
-  
+
   .. container:: details
-  
+
     .. rubric:: XLSForm
 
     .. csv-table:: survey
@@ -417,8 +417,8 @@ Repeat groups
 
   Returns the smallest member of :arg:`nodeset`.
 
-  .. container:: details 
-   
+  .. container:: details
+
     .. rubric:: XLSForm
 
     .. csv-table:: survey
@@ -428,20 +428,20 @@ Repeat groups
       text, child_name, Child's name
       integer, child_age, Child's age
       end_repeat
-      calculate, age_of_youngest_child, , min(${child_age}) 
+      calculate, age_of_youngest_child, , min(${child_age})
 
-      
+
 .. warning::
 
   The :func:`min` and :func:`max` functions
   only work sets of numbers.
-  Empty values 
+  Empty values
   (that is, :ref:`variables <variables>` referencing unanswered questions)
-  are actually empty strings, 
+  are actually empty strings,
   :ref:`and will not be automatically converted to zero (0) <empty-values>`.
-       
+
 .. _string-functions:
-  
+
 Strings
 --------
 
@@ -458,7 +458,7 @@ Searching and matching strings
   .. seealso:: :doc:`form-regex`
 
   .. container:: details
-    
+
     .. include:: incl/form-examples/regex-middle-initial.rst
 
 
@@ -475,30 +475,34 @@ Searching and matching strings
   Returns ``True`` if the :arg:`string` ends with :arg:`substring`.
 
 
-.. function:: substr(string, start[, end]) 	
+.. function:: substr(string, start[, end])
 
   Returns the substring of :arg:`string` beginning at the index :arg:`start` and extending to (but not including) index :arg:`end` (or to the termination of :arg:`string`, if :arg:`end` is not provided). Members of arg:`string` are zero-indexed.
-  
+
 .. function:: string-length(string)
 
   Returns the number of characters in :arg:`string`.
-  
+
+.. function:: digest(string src, string algorithm, string encoding?)
+
+  This function accepts a string of data, a string indicating a cryptographic hashing algorithm, and an author-optional string indicating an encoding method. The data string is serialized as UTF-8, the hash value is then computed using the indicated hash algorithm, and the hash value is then encoded by the indicated method, and the result is returned by the function.
+
 .. _string-combination-functions:
-  
+
 Combining strings
-~~~~~~~~~~~~~~~~~~  
+~~~~~~~~~~~~~~~~~~
 
 .. function:: concat(arg [, arg [, arg [, arg [...]]]])
 
   Concatenates one or more arguments into a single string. If any :arg:`arg` is a :term:`nodeset`, the values within the set are concatenated into a string.
 
-  
+
 .. function:: join(separator, nodeset)
 
   Joins the members of :arg:`nodeset`, using the string :arg:`separator`.
 
 .. _string-conversion-functions:
-  
+
 Converting to and from strings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -512,22 +516,22 @@ Converting to and from strings
    Converts :arg:`arg` to a string.
 
 .. _math-functions:
-  
-Math 
+
+Math
 ------
 
 .. warning::
 
   Math functions (except :func:`number`) only work with number values.
-  
+
   You can use :func:`number` to convert a string of digits to a number,
   but it is usually better to :ref:`get a number value directly <number-widgets>`.
-  
-  Empty values 
+
+  Empty values
   (that is, :ref:`variables <variables>` referencing unanswered questions)
-  are actually empty strings, 
+  are actually empty strings,
   :ref:`and will not be automatically converted to zero (0) <empty-values>`.
-  
+
 .. _number-functions:
 
 Number handling
@@ -537,25 +541,25 @@ Number handling
 
   Rounds a decimal :arg:`number` to some number of decimal :arg:`places`.
 
-.. function:: int(number) 	
+.. function:: int(number)
 
   Truncates the fractional portion of a decimal :arg:`number` to return an integer.
 
 .. function:: number(arg)
 
   Converts :arg:`arg` to number value.
-  
+
   If :arg:`arg` is a string of digits, returns the number value.
-  
+
   If :arg:`arg` is ``True``, returns 1. If :arg:`arg` is ``False``, returns 0.
-  
+
   If :arg:`arg` cannot be converted, returns ``NaN`` (not a number).
 
-  
+
 .. seealso:: :func:`count`, :func:`max`, :func:`min`, :func:`number`
-  
+
 .. _calculation-functions:
-  
+
 Calculation
 ~~~~~~~~~~~~~
 
@@ -582,7 +586,7 @@ Calculation
 .. function:: cos(number)
 
   Returns the cosine of :arg:`number`.
-  
+
 .. function:: tan(number)
 
   Returns the tangent of :arg:`number`.
@@ -590,7 +594,7 @@ Calculation
 .. function:: asin(number)
 
   Returns the arc sine of :arg:`number`.
-  
+
 .. function:: acos(number)
 
   Returns the arc cosine of :arg:`number`.
@@ -603,11 +607,11 @@ Calculation
 
   Returns the multi-valued inverse tangent of :arg:`y`, :arg:`x`.
 
-.. function:: sqrt(number) 
+.. function:: sqrt(number)
 
   Returns the square root of :arg:`number`.
 
-.. function:: exp(x) 
+.. function:: exp(x)
 
   Returns ``e^x``.
 
@@ -619,9 +623,9 @@ Calculation
 
   Returns an approximation of the mathematical constant π.
 
-  
+
 .. _date-time-functions:
-    
+
 Date and time
 ----------------
 
@@ -632,7 +636,7 @@ Date and time
 .. function:: now()
 
   Returns the current datetime in `ISO 8601 format`_, including the timezone.
-  
+
   .. _ISO 8601 format: https://en.wikipedia.org/wiki/ISO_8601
 
   .. warning::
@@ -640,14 +644,14 @@ Date and time
     This function is often misused. Read :ref:`when expressions are evaluated <when-expressions-are-evaluated>` to learn more.
 
 .. _date-time-conversion-functions:
-  
+
 Converting dates and time
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  
+
 .. function:: decimal-date-time(dateTime)
 
   Converts :arg:`dateTime` value to the number of days since January 1, 1970 (the `Unix Epoch`_).
-  
+
   This is the inverse of :func:`date`.
 
 .. function:: date(days)
@@ -655,10 +659,10 @@ Converting dates and time
   Converts an integer representing a number of :arg:`days` from January 1, 1970 (the `Unix Epoch`_) to a standard date value.
 
   .. _Unix Epoch: https://en.wikipedia.org/wiki/Unix_time
-    
+
   This is the inverse of :func:`decimal-date-time`.
 
-    
+
 .. function:: decimal-time(time)
 
   Converts :arg:`time` to a number representing a fractional day.
@@ -668,15 +672,15 @@ Converting dates and time
 .. _date-time-formatting-functions:
 
 Formatting dates and times for display
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
-  
-  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 .. function:: format-date(date, format)
 
   Returns :arg:`date` as a string formatted as defined by :arg:`format`.
-  
+
   .. container:: details
-  
+
     The following identifiers are used in the :arg:`format` string:
 
     .. csv-table::
@@ -685,22 +689,22 @@ Formatting dates and times for display
       %y, 2-digit year
       %m, 0-padded month
       %n, numeric month
-      %b, "short text month (Jan, Feb, Mar...)" 
+      %b, "short text month (Jan, Feb, Mar...)"
       %d, 0-padded day of month
       %e, day of month
       %a, "short text day (Sun, Mon, Tue...)."
 
-    .. note:: 
-    
+    .. note::
+
       Month and day abbreviations are language and locale specific. If form locale can be determined, that locale will be used. Otherwise, the device locale will be used.
-  
+
 .. function:: format-date-time(dateTime, format)
 
   Returns :arg:`dateTime` as a string formatted as defined by :arg:`format`.
 
   .. container:: details
-  
-    The identifiers list in :func:`format-date` are available, 
+
+    The identifiers list in :func:`format-date` are available,
     plus the following:
 
     .. csv-table::
@@ -712,25 +716,25 @@ Formatting dates and times for display
       %3, 0-padded millisecond ticks.
 
 .. _geography-functions:
-    
+
 Geography
 ------------
 
-.. function:: area(nodeset | geoshape) 	
+.. function:: area(nodeset | geoshape)
 
-  Returns the area, in square meters, 
+  Returns the area, in square meters,
   of either a :arg:`nodeset` of geopoints or a :arg:`geoshape` value.
-  
+
   It takes into account the circumference of the Earth around the Equator but does not take altitude into account.
 
 .. function:: distance(nodeset | geoshape | geotrace)
 
   Returns the distance, in meters, of either:
-  
+
   - a :arg:`nodeset` of geopoints
   - the perimeter of a :arg:`geoshape`
   - the length of a :arg:`geotrace` value
-  
+
   It takes into account the circumference of the Earth around the Equator and does not take altitude into account.
 
 .. _utility-functions:
@@ -747,69 +751,69 @@ Utility
     This function is often misused. Read :ref:`when expressions are evaluated <when-expressions-are-evaluated>` to learn more.
 
 
-.. function:: randomize(nodeset[, seed]) 	
+.. function:: randomize(nodeset[, seed])
 
   Returns a shuffled :arg:`nodeset`.
-  
+
   A shuffle with a numeric :arg:`seed` is deterministic and reproducible.
-  
+
   The primary use for this function is to randomize the order of choices for a select question. The :ref:`documentation on select widgets <randomize-choice-order>` describes how this is done in XLSForm.
 
   :func:`randomize` can only be used in a context where a :arg:`nodeset` is accepted. Note that questions of type **calculate** cannot reference a :arg:`nodeset`.
-    
-.. function:: uuid([length]) 	
 
-  Without argument, returns a random `RFC 4122 version 4 compliant UUID`__. 
-  
+.. function:: uuid([length])
+
+  Without argument, returns a random `RFC 4122 version 4 compliant UUID`__.
+
   __ https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random)
-  
-  With an argument it returns a random GUID of specified :arg:`length`.  
 
-    
-.. function:: boolean(arg) 
+  With an argument it returns a random GUID of specified :arg:`length`.
+
+
+.. function:: boolean(arg)
 
   Returns ``True`` if :arg:`arg` is:
-  
+
   - a number other than zero
   - a non-empty string
   - a non-empty collection
   - a comparison or expressions that evaluates to ``True``.
-   
+
   Returns ``False`` if :arg:`arg` is:
-  
+
   - the number 0
   - an empty string
   - an empty collection
   - a comparison or expression that evaluates to ``False``.
 
-    
+
 .. function:: not(arg)
 
   Returns the opposite of :func:`boolean(arg) <boolean>`.
 
-  
-.. function:: coalesce(arg, arg) 	
+
+.. function:: coalesce(arg, arg)
 
   Returns first non-empty value of the two :arg:`arg`\ s.
   Returns an empty string if both are empty or non-existent.
 
-  
+
 .. function:: checklist(min, max, response[, response[, response [, ... ]]])
 
-  Returns ``True`` if the number of :arg:`response`\ s that are exactly the string "yes" is between :arg:`min` and :arg:`max`, inclusive.  
-  
+  Returns ``True`` if the number of :arg:`response`\ s that are exactly the string "yes" is between :arg:`min` and :arg:`max`, inclusive.
+
   Set :arg:`min` or :arg:`max` to ``-1`` to make the argument not applicable.
 
 .. function:: weighted-checklist(min, max, reponse, weight[, response, weight[, response, weight[, response, weight[, ... ]]])
 
-  Returns ``True`` if 
-  the sum of the :arg:`weight`\ s 
+  Returns ``True`` if
+  the sum of the :arg:`weight`\ s
   of each :arg:`response` that is exactly the string "yes"
   is between :arg:`min` and :arg:`max`, inclusive.
-  
-  Set :arg:`min` or :arg:`max` to ``-1`` to make the argument not 
 
-  
+  Set :arg:`min` or :arg:`max` to ``-1`` to make the argument not
+
+
 .. function:: true()
 
   Evaluates to ``True``.
@@ -817,5 +821,3 @@ Utility
 .. function:: false()
 
   Evaluates to ``False``.
-  
-  
