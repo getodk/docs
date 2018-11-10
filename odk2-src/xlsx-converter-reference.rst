@@ -1012,7 +1012,7 @@ JavaScript Operators
 
 The built in formula functions can be combined in advanced ways using any valid JavaScript expression. This is particularly useful for creating complex condition statements to implement skip patterns or conditional statements for required variables. JavaScript operators will allow the expressions to involve more than one variable or more than one response from a single variable. Parentheses can be used in creating particularly complex conditions. A few basic JavaScript operators:
 
-.. list-table:: javascript operators
+.. list-table:: JavaScript Operators
   :header-rows: 1
 
   * - Name
