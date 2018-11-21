@@ -315,9 +315,11 @@ Exporting forms to CSV
       Optional params for -e operation:
         -em,--exclude_media_export          Exclude media in export
         -end,--export_end_date <arg>        Export end date (inclusive) (yyyy-MM-dd or yyyy/MM/dd)
+        -ig,--include_geojson               Include a GeoJSON companion file with spatial data
         -oc,--overwrite_csv_export          Overwrite files during export
         -pb,--pull_before                   Pull before export
         -pf,--pem_file <arg>                PEM file for form decryption
+        -rgn,--remove_group_names           Remove group names from column names
         -ssm,--split_select_multiples       Split select multiple fields
         -start,--export_start_date <arg>    Export start date (inclusive) (yyyy-MM-dd or yyyy/MM/dd)
 
