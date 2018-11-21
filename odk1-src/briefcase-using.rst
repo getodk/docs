@@ -231,6 +231,7 @@ Pulling forms from Aggregate
         -u,--odk_username <arg>             ODK Username
         -url,--aggregate_url <arg>          Aggregate server URL
       Optional params for -plla operation:
+        -ii,--include_incomplete            Include incomplete submissions
         -pp,--parallel_pull                 Pull submissions in parallel
 
 .. _pull-from-collect-cli:
