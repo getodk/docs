@@ -185,6 +185,24 @@ Export forms to CSV
 
 #. Click :guilabel:`Export`.
 
+Output files
+~~~~~~~~~~~~
+
+Briefcase will generate a different number of files and directories depending on the form's contents and the export configuration selected by the user. This can include, per form:
+
+  - One main CSV file. For example: `Form Name.csv`
+  - If the form includes any repeat group, one CSV file for each one of them. For example: `Form Name-repeat group name.csv`
+  - If any submission includes binary attachments, they are copied to a `media` directory, relative to the export directory. For example: `media/1538040007350.jpg`
+  - If the user enables the :guilabel:`Include GeoJSON export` configuration option, one GeoJSON file with spatial data. For example: `Form Name.geojson`
+  - If the form includes audit metadata:
+
+    - One CSV file with audit data from all submissions. For example: `Form Name - audit.csv`
+    - One CSV audit file for each exported submission in the `media` directory, relative to the export directory. For example: `media/audit-uuid56880d5e-ee8a-4832-b69d-6dfdd526e2dc.csv`
+
+There's more information available about the CSV file content structure and filename patterns in `the export format documentation`_.
+
+.. _the export format documentation: https://github.com/opendatakit/briefcase/blob/master/docs/export-format.md
+
 .. _cli-use:
 
 Working with the command line
