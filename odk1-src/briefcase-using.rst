@@ -199,6 +199,16 @@ Briefcase will generate a different number of files and directories depending on
     - One CSV file with audit data from all submissions. For example: `Form Name - audit.csv`
     - One CSV audit file for each exported submission in the `media` directory, relative to the export directory. For example: `media/audit-uuid56880d5e-ee8a-4832-b69d-6dfdd526e2dc.csv`
 
+.. csv-table:: Summary Table
+  :header: Output file, How many?, Conditions, Path, Example
+
+  Main CSV, One, , `./`, `Form Name.csv`
+  Repeat CSV, One per repeat group, , `./`, `Form Name-repeat group name.csv`
+  Binary attachment, As many as there are in submissions, , `./media`, `media/1538040007350.jpg`
+  GeoJSON, One, The user enables `Include GeoJSON export`, `./`, `Form Name.geojson`
+  Audit CSV, One, The form includes audit metadata, `./`, `Form Name - audit.csv`
+  Individual audit CSV, One per submission, The form includes audit metadata, `./media`, `audit-uuid56880d5e-ee8a-4832-b69d-6dfdd526e2dc.csv`
+
 There's more information available about the CSV file content structure and filename patterns in `the export format documentation`_.
 
 .. _the export format documentation: https://github.com/opendatakit/briefcase/blob/master/docs/export-format.md
