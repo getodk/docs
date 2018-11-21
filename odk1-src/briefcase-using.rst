@@ -175,7 +175,7 @@ Export forms to CSV
 
     - :guilabel:`Export media files` enables exporting media files into the chosen export directory
     - :guilabel:`Overwrite existing files` enables overwriting form instance data in the output files. The default behavior is to append data.
-    - :guilabel:`Split select multiples` enables splitting select multiple fields. Enabling this setting will create an extra output column per select choice, with a `1` if the choice was selected, or `0` otherwise. This only affects select fields without a choice filter and that are not from an external file.
+    - :guilabel:`Split select multiples` enables splitting select multiple fields. Enabling this setting will create an extra output column per select choice, with a `1` if the choice was selected, or `0` otherwise. This only affects select fields without a choice filter and that are not from an external file (including widgets with search appearance).
     - :guilabel:`Include GeoJSON export` enables generating a GeoJSON file with spatial data from all exported submissions.
     - :guilabel:`Pull before export` enables trying to pull the selected forms in case there are new form instances to be exported.
 
