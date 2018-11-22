@@ -1877,7 +1877,7 @@ type
 appearance
   :tc:`rating`
 
-When the :tc:`rating` appearance is added, the range widget is displayed with stars having equal spacing. Number of stars is calculated using `end` parameter. When the user taps on an empty star, the stars up to and including that star will be filled. If the stars don't fit in the device width, they will be wrap onto additional lines.
+When the :tc:`rating` appearance is added, the range widget is displayed with stars having equal spacing. Number of stars is calculated using the `end` parameter. When the user taps on an empty star, the stars up to and including that star will be filled. If the stars don't fit in the device width, they will wrap onto additional lines.
 
 .. image:: /img/form-widgets/range-widget-rating.*
   :alt: The range rating widget, as displayed in the ODK Collect app. The question label is "Range rating integer widget".
