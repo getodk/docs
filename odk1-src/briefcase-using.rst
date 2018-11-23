@@ -175,7 +175,8 @@ Export forms to CSV
 
     - :guilabel:`Export media files` enables exporting media files into the chosen export directory
     - :guilabel:`Overwrite existing files` enables overwriting form instance data in the output files. The default behavior is to append data.
-    - :guilabel:`Split select multiples` enables splitting select multiple fields. Enabling this setting will create an extra output column per select choice, with a `1` if the choice was selected, or `0` otherwise. This only affects select fields without a choice filter and that are not from an external file.
+    - :guilabel:`Split select multiples` enables splitting select multiple fields. Enabling this setting will create an extra output column per select choice, with a `1` if the choice was selected, or `0` otherwise. This only affects select fields without a choice filter and that are not from an external file (including widgets with search appearance).
+    - :guilabel:`Include GeoJSON export` enables generating a GeoJSON file with spatial data from all exported submissions.
     - :guilabel:`Pull before export` enables trying to pull the selected forms in case there are new form instances to be exported.
 
 #. Select the forms to export.
@@ -183,6 +184,34 @@ Export forms to CSV
    If you are selecting and exporting more than one form, you may need to set individual export settings. To do this, click the gear icon (:guilabel:`⚙`) next to the form name.
 
 #. Click :guilabel:`Export`.
+
+Output files
+~~~~~~~~~~~~
+
+Briefcase will generate a different number of files and directories depending on the form's contents and the export configuration selected by the user. This can include, per form:
+
+  - One main CSV file. For example: `Form Name.csv`
+  - If the form includes any repeat group, one CSV file for each one of them. For example: `Form Name-repeat group name.csv`
+  - If any submission includes binary attachments, they are copied to a `media` directory, relative to the export directory. For example: `media/1538040007350.jpg`
+  - If the user enables the :guilabel:`Include GeoJSON export` configuration option, one GeoJSON file with spatial data. For example: `Form Name.geojson`
+  - If the form includes audit metadata:
+
+    - One CSV file with audit data from all submissions. For example: `Form Name - audit.csv`
+    - One CSV audit file for each exported submission in the `media` directory, relative to the export directory. For example: `media/audit-uuid56880d5e-ee8a-4832-b69d-6dfdd526e2dc.csv`
+
+.. csv-table:: Summary Table
+  :header: Output file, How many?, Conditions, Path, Example
+
+  Main CSV, One, , `./`, `Form Name.csv`
+  Repeat CSV, One per repeat group, , `./`, `Form Name-repeat group name.csv`
+  Binary attachment, As many as there are in submissions, , `./media`, `media/1538040007350.jpg`
+  GeoJSON, One, The user enables `Include GeoJSON export`, `./`, `Form Name.geojson`
+  Audit CSV, One, The form includes audit metadata, `./`, `Form Name - audit.csv`
+  Individual audit CSV, One per submission, The form includes audit metadata, `./media`, `audit-uuid56880d5e-ee8a-4832-b69d-6dfdd526e2dc.csv`
+
+There's more information available about the CSV file content structure and filename patterns in `the export format documentation`_.
+
+.. _the export format documentation: https://github.com/opendatakit/briefcase/blob/master/docs/export-format.md
 
 .. _cli-use:
 
@@ -231,6 +260,7 @@ Pulling forms from Aggregate
         -u,--odk_username <arg>             ODK Username
         -url,--aggregate_url <arg>          Aggregate server URL
       Optional params for -plla operation:
+        -ii,--include_incomplete            Include incomplete submissions
         -pp,--parallel_pull                 Pull submissions in parallel
 
 .. _pull-from-collect-cli:
@@ -314,9 +344,11 @@ Exporting forms to CSV
       Optional params for -e operation:
         -em,--exclude_media_export          Exclude media in export
         -end,--export_end_date <arg>        Export end date (inclusive) (yyyy-MM-dd or yyyy/MM/dd)
+        -ig,--include_geojson               Include a GeoJSON file with spatial data
         -oc,--overwrite_csv_export          Overwrite files during export
         -pb,--pull_before                   Pull before export
         -pf,--pem_file <arg>                PEM file for form decryption
+        -rgn,--remove_group_names           Remove group names from column names
         -ssm,--split_select_multiples       Split select multiple fields
         -start,--export_start_date <arg>    Export start date (inclusive) (yyyy-MM-dd or yyyy/MM/dd)
 
