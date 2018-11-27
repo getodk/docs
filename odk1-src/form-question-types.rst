@@ -1056,6 +1056,10 @@ To include images as choices for select questions:
 Randomizing choice order
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. note::
+
+  Randomizing choice order was added in Collect v1.16 and requires XLSForm Online ≥ v1.2.0, XLSForm Offline ≥ v1.7.0, or pyxform ≥ v0.11.3.
+
 To reduce bias, choice order can be randomized for any of the select question types described above. To display the choices in a different order each time the question is displayed, set **randomize** to **true** in the :th:`parameters` column of the XLSForm **survey** sheet:
 
 .. rubric:: XLSForm
