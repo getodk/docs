@@ -195,9 +195,14 @@ will also be ``NaN``,
 which may not be the behavior you want or expect.
 
 To convert empty values to zero,
-use either the :func:`coalesce` function
+use either the :func:`number-or-zero` function
+or the :func:`coalesce` function
 or the :func:`if` function.
 
+.. code-block:: none
+
+  number-or-zero(${potentially_empty_value})
+  
 .. code-block:: none
 
   coalesce(${potentially_empty_value}, 0)
