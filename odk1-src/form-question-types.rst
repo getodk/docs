@@ -2,10 +2,10 @@
 
   abcd
   ack
-  concat
   br
   BREATHCOUNT
   Codabar
+  concat
   Datetime
   dateTime
   deviceid
@@ -18,6 +18,7 @@
   rect
   simserial
   subscriberid
+  substr
   uw
   ZXing
 
@@ -1058,7 +1059,7 @@ Randomizing choice order
 
 .. note::
 
-  Randomizing choice order was added in Collect v1.16 and requires XLSForm Online ≥ v1.2.0, XLSForm Offline ≥ v1.7.0, or pyxform ≥ v0.11.3.
+  Randomizing choice order support was added in Collect v1.18.2 and Aggregate v1.7.1. Form conversion requires XLSForm Online ≥ v1.2.2, XLSForm Offline ≥ v1.7.1, or pyxform ≥ v0.11.6.
 
 To reduce bias, choice order can be randomized for any of the select question types described above. To display the choices in a different order each time the question is displayed, set **randomize** to **true** in the :th:`parameters` column of the XLSForm **survey** sheet:
 
@@ -1077,14 +1078,14 @@ To reduce bias, choice order can be randomized for any of the select question ty
   opt_abcd,c,C
   opt_abcd,d,D
 
-In the example above, each time the question is displayed, the choices will be in a different order. It is often preferable to pick one order that the choices will always be displayed in for a given filled form. This can be accomplished by setting a seed for the randomization:
+In the example above, each time the question is displayed, the choices will be in a different order. It is often preferable to pick one order that the choices will always be displayed in for a given filled form. This can be accomplished by setting an integer seed for the randomization.
 
 .. rubric:: XLSForm
 
 .. csv-table:: survey
-  :header: type, parameters, name, label, hint, calculation
+  :header: type, parameters, name, label, calculation
 
-  calculate,,my_seed,,,once(decimal-date-time(now()))
+  calculate,,my_seed,,"once(substr(decimal-date-time(now()), 10))"
   select_one opt_abcd,"randomize=true,seed=${my_seed}",select_one_widget,Select one with random choice order set once per filled form
 
 .. csv-table:: choices
@@ -1099,7 +1100,7 @@ This seed can also be used to recreate the order choices were displayed in. See 
 
 .. note::
 
-  In the seed expression, :func:`once` is important because it makes sure the seed is not changed if the same filled form is opened more than once.
+  In the example above, the integer seed is created from the last 8 numbers of the :func:`decimal-date-time()` which is unlikely to repeat across devices. In the seed expression, :func:`once` is important because it makes sure the seed is not changed if the same filled form is opened more than once.
 
 .. _or-other:  
 
