@@ -1066,9 +1066,9 @@ To reduce bias, choice order can be randomized for any of the select question ty
 .. rubric:: XLSForm
 
 .. csv-table:: survey
-  :header: type, parameters, name, label, hint
+  :header: type, parameters, name, label
 
-  select_one opt_abcd,randomize=true,select_one_random_widget,Select one widget,"Select one with random choice order set on each display"
+  select_one opt_abcd,randomize=true,select_one_random_widget,"Select one with random choice order set on each display"
 
 .. csv-table:: choices
   :header: list_name, name, label
