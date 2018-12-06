@@ -1,0 +1,8 @@
+{
+	"path-name1": {
+		"old-hash-id": "new-hash-id"
+	},
+	"path-name2": {
+		"old-hash-id": "new-hash-id"
+	}
+}

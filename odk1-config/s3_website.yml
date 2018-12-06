@@ -27,6 +27,7 @@ cloudfront_distribution_config:
 
 cloudfront_wildcard_invalidation: true
 
+# For hash redirects, add pathname along with old and new hash to /shared-src/_static/hash-redirects.json
 redirects:
   # use url/index.html syntax to enable url, url/, url/index.html and hash passthrough
   aggregate-guide/index.html: aggregate-intro

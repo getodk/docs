@@ -1074,6 +1074,8 @@ Working on the docs
    
    - :doc:`docs-developer-guide`
 
+   If you're renaming any hash, make sure to add a redirect in :file:`/shared-src/_static/hash-redirects.json`. Add the old hash and new hash mapping in the corresponding pathname for which the change is made.
+
 #. Local checks
 
    .. _test-the-docs:
