@@ -1773,6 +1773,8 @@ Range widgets
 ----------------
 
 Range widgets allow the user to select numbers from within a range that is visually represented as a number line. The parameters of the range widget are defined by :tc:`start`, :tc:`end`, and :tc:`step` values defined in the :th:`parameters` column of your XLSForm. The parameter values can be integers or decimals.
+
+Since Range widget fields are numeric, they can be used to filter secondary instances using numeric operators such as `=` (equals), `<` (less than), `>` (greater than), and their combinations `<=` (less or equal to), and `>=` (greater or equal to).
   
 .. contents:: 
   :local:
