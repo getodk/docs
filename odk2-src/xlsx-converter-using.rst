@@ -112,7 +112,7 @@ The pizza survey example used earlier can be improved upon with multiple choice 
   "if", "selected(data('person_age'), 'yes')",
   "begin screen",
   ,,"select_multiple", "topping_list", "pizza_type", "What are your favorite kind of pizza toppings (select up to 3)?"
-  ,,"integer", "num_slice", "How many slices would you like?"
+  ,,"integer",, "num_slice", "How many slices would you like?"
   "end screen",
   "else",
   ,,"note", "You are too young to be eating pizza"
@@ -123,7 +123,7 @@ and the corresponding **choices** worksheet would look like this:
 .. csv-table:: Adding Multiple Choice Questions Example Choices Worksheet
   :header: "choice_list_name", "data_value", "display.title.text"
 
-  "yes_no", "ye", "Yes"
+  "yes_no", "yes", "Yes"
   "yes_no", "no", "No"
   "topping_list", "pepperoni", "Pepperoni"
   "topping_list", "olives", "Black Olives"
