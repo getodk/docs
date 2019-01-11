@@ -60,7 +60,11 @@ Setup instructions:
 
     $ git clone https://github.com/opendatakit/sync-endpoint
    
-  3. Navigate into the sync-endpoint directory (e.g., cd sync-endpoint)
+  3. Navigate into the sync-endpoint directory. Most likely
+
+  .. code-block:: console
+
+    $ cd sync-endpoint
 	
   4. Build sync endpoint by running the following: (NOTE: you will need Apache Maven installed >= 3.3.3)
   
@@ -68,27 +72,27 @@ Setup instructions:
 
     $ mvn clean install
 	
-  5. Navigate back to the "sync-endpoint-default-setup" directory.
+  5. Navigate back to the parent "sync-endpoint-default-setup" directory. 
   
-  6. Then run:
+  6. In the "sync-endpoint-default-setup" directory run:
 
   .. code-block:: console
 
     $ docker build --pull -t odk/sync-web-ui https://github.com/opendatakit/sync-endpoint-web-ui.git
 
-  7. In the cloned repository,
+  7. In the "sync-endpoint-default-setup" cloned repository run:
 
   .. code-block:: console
 
     $ docker build --pull -t odk/db-bootstrap db-bootstrap
 
-  8. In the cloned repository,
+  8. In the "sync-endpoint-default-setup" cloned repository run:
 
   .. code-block:: console
 
     $ docker build --pull -t odk/openldap openldap
 
-  9. In the cloned repository,
+  9. In the "sync-endpoint-default-setup" cloned repository run:
 
   .. code-block:: console
 
