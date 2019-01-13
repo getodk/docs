@@ -52,57 +52,73 @@ Setup instructions:
 
     $ git clone https://github.com/opendatakit/sync-endpoint-default-setup
 
-  2. Then run:
+  2. Navigate into the the "sync-endpoint-default-setup" directory
+  
+  3. Checkout the sync-endpoint code by running:
 
   .. code-block:: console
 
-    $ docker build --pull -t odk/sync_endpoint https://github.com/opendatakit/sync-endpoint-containers.git
+    $ git clone https://github.com/opendatakit/sync-endpoint
+   
+  3. Navigate into the sync-endpoint directory. Most likely
 
-  3. Then run:
+  .. code-block:: console
+
+    $ cd sync-endpoint
+	
+  4. Build sync endpoint by running the following: (NOTE: you will need Apache Maven installed >= 3.3.3)
+  
+  .. code-block:: console
+
+    $ mvn clean install
+	
+  5. Navigate back to the parent "sync-endpoint-default-setup" directory. 
+  
+  6. In the "sync-endpoint-default-setup" directory run:
 
   .. code-block:: console
 
     $ docker build --pull -t odk/sync-web-ui https://github.com/opendatakit/sync-endpoint-web-ui.git
 
-  4. In the cloned repository,
+  7. In the "sync-endpoint-default-setup" cloned repository run:
 
   .. code-block:: console
 
     $ docker build --pull -t odk/db-bootstrap db-bootstrap
 
-  5. In the cloned repository,
+  8. In the "sync-endpoint-default-setup" cloned repository run:
 
   .. code-block:: console
 
     $ docker build --pull -t odk/openldap openldap
 
-  6. In the cloned repository,
+  9. In the "sync-endpoint-default-setup" cloned repository run:
 
   .. code-block:: console
 
     $ docker build --pull -t odk/phpldapadmin phpldapadmin
 
-  7. Enter your hostname in the :code:`security.server.hostname` field in the :file:`security.properties` file.
+  10. Enter your hostname in the :code:`security.server.hostname` field in the :file:`security.properties` file.
 
-  8. If you're not using the standard ports (80 for *HTTP* and 443 for *HTTPS*) enter the ports you're using in the :code:`security.server.port` and :code:`security.server.securePort` fields in the :file:`security.properties`. Then edit the **ports** section under the **sync** section in :file:`docker-compose.yml` to be :code:`YOUR_PORT:8080`.
+  11. If you're not using the standard ports (80 for *HTTP* and 443 for *HTTPS*) enter the ports you're using in the :code:`security.server.port` and :code:`security.server.securePort` fields in the :file:`security.properties`. Then edit the **ports** section under the **sync** section in :file:`docker-compose.yml` to be :code:`YOUR_PORT:8080`.
 
     .. note::
 
       It is important that the right side of the colon stays as 8080. This is the internal port that the web server is looking for.
 
-  9. If you're using your own *LDAP* directory or database, continue with the instructions:
+  12. If you're using your own *LDAP* directory or database, continue with the instructions:
 
     - :ref:`Custom database instructions <sync-endpoint-setup-database>`
     - :ref:`Custom LDAP instructions <sync-endpoint-setup-ldap>`
 
-  10. In the cloned repository:
+  13. In the cloned repository:
 
   .. code-block:: console
 
     $ docker stack deploy -c docker-compose.yml syncldap
 
-  11. The server takes about 30s to start, then it will be running at http://127.0.0.1.
-  12. See the :ref:`LDAP section <sync-endpoint-ldap>` for instructions on configuring users and groups.
+  14. The server takes about 30s to start, then it will be running at http://127.0.0.1.
+  15. See the :ref:`LDAP section <sync-endpoint-ldap>` for instructions on configuring users and groups.
 
 .. _sync-endpoint-setup-database:
 
