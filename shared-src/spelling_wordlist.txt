@@ -26,6 +26,7 @@ barcodes
 Bluetooth
 bluetooth
 camelCase
+cd
 checkbox
 checkboxes
 clickable
