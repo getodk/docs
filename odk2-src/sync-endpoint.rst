@@ -182,7 +182,7 @@ Stopping ODK Sync Endpoint
 LDAP
 -----------
 
-  - The default admin account is *cn=admin,dc=example,dc=org*.
+  - The default admin account is  *cn=admin,dc=example,dc=org*.
   - The default password is *admin* - it can be changed with the *LDAP_ADMIN_PASSWORD* environment variable in :file:`ldap.env`
 
   - The default readonly account is *cn=readonly,dc=example,dc=org*.
@@ -208,15 +208,15 @@ If you'd prefer to use the :program:`OpenLDAP` command line utilities, they're i
 
   The phpLDAPadmin server listens on port 40000, it is important that you do not expose this port to the internet.
 
-The following guides assume that you're using :program:`phpLDAPadmin`.
+The following guides assume that you're using :program:`phpLDAPadmin`. In order to perform the following operation, please go to https:127.0.0.1:40000 in your browser.
 
 .. _sync-endpoint-ldap-users:
 
 Creating users
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  1. Click: :guilabel:`login` on the right and login as *admin*.
-  2. Expand the tree view on the right until you see :guilabel:`ou=people`.
+  1. Click: :guilabel:`login` on the left and login as *admin*.
+  2. Expand the tree view on the left until you see :guilabel:`ou=people`.
   3. Click on :guilabel:`ou=people` and choose :guilabel:`Create a child entry`.
   4. Choose the :guilabel:`Generic: User Account` template.
   5. Fill out the form and click :guilabel:`Create Object`.
@@ -227,8 +227,8 @@ Creating users
 Creating groups
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  1. Click: :guilabel:`login` on the right and login as *admin*.
-  2. Expand the tree view on the right until you see :guilabel:`ou=groups`.
+  1. Click: :guilabel:`login` on the left and login as *admin*.
+  2. Expand the tree view on the left until you see :guilabel:`ou=groups`.
   3. Click on :guilabel:`ou=default_prefix` and choose :guilabel:`Create a child entry`.
   4. Choose the :guilabel:`Generic: Posix Group` template.
   5. Fill out the form and click :guilabel:`Create Object`.
