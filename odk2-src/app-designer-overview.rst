@@ -24,7 +24,6 @@ Preview
 -----------
 The :guilabel:`Preview` tab (shown above) has several controls:
 
-  - :guilabel:`Launch Page` -- what webpage to launch in the window below.
   - :guilabel:`Purge Database` -- during development, if you are adding new fields or changing their data types, you will need to purge the database so that the database structure can be re-generated with the proper fields and data types.
   - :guilabel:`Device Dimensions` -- what dimensions to make the window below.
   - :guilabel:`Back Button` -- this is generally only useful when viewing ODK Tables web pages.
