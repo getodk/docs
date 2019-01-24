@@ -202,7 +202,7 @@ On the survey worksheet, after the image-capture prompt, add a row that looks li
 
   * - type
     - name
-    .- displaytext
+    - displaytext
     - display.hint
   * - string
     - Direction
