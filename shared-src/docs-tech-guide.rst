@@ -546,6 +546,9 @@ on any computer.
 
             If you get an error here, something went wrong.
             Try running the installer again. 
+            You may also have to add python to your windows search path.
+            You can do this by going to advanced system settings -> Environmental Variables
+            -> Edit System Variables, then adding the path to the directory containing python.
             If the problem persists, and you can't debug it yourself,
             asks us about it on |odk-slack|_.
 
