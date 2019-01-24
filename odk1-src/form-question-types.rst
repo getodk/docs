@@ -1872,6 +1872,28 @@ When the :tc:`picker` appearance is added, the range widget is displayed with a 
 
   range, range_integer_widget_picker, Range picker integer widget, picker, range integer widget with picker appearance, start=1;end=10;step=1
 
+.. _range-rating-widget:
+
+Range widget with rating
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`range`
+appearance
+  :tc:`rating`
+
+When the :tc:`rating` appearance is added, the range widget is displayed with stars having equal spacing. Number of stars is calculated using the `end` parameter. When the user taps on an empty star, the stars up to and including that star will be filled. If the stars don't fit in the device width, they will wrap onto additional lines.
+
+.. image:: /img/form-widgets/range-widget-rating.*
+  :alt: The range rating widget, as displayed in the ODK Collect app. The question label is "Range rating integer widget".
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint, parameters
+
+  range, range_integer_widget_rating, Range rating widget, rating, range integer widget with rating appearance, end=9
+
   
 .. _note-widget:
 
