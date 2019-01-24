@@ -38,7 +38,7 @@ A major goal of the 2 tools was to eliminate the need for any software engineeri
 Joining a device to an Existing Aggregate Server
 ------------------------------------------------------
 
-ODK uses a server called Aggregate to distribute blank forms, accept finalized forms, publish data, and more. We will use an Aggregate Server to get the data for a sample application.
+Aggregate is a server that distributes blank forms, accepts finalized forms, publishes data, and more. We will use an Aggregate Server to get the data for a sample application for ODK Tables and ODK Survey.
 
 The steps for joining a device to an existing Aggregate server are straightforward.
 
