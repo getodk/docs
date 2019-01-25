@@ -52,7 +52,7 @@ Follow the steps described above to join the ODK Aggregate server hosting our si
   #. Launch ODK Tables (the *home_screen* APK).
   #. Click on the circular arrows button to launch the ODK Services.
   #. The default Sync Configuration should be *https://open-data-kit.appspot.com* and :menuselection:`None (anonymous access)`. You will need to change that. It will also default to :menuselection:`Fully Sync Attachments`.
-  #. Click on the gear button in the menu bar, select :menuselection:`Server Settings`.
+  #. Click on the gear - shaped button in the menu bar, then select :menuselection:`Server Settings` in the pop-up screen.
   #. Click on :menuselection:`Server URL` and replace the default server with *https://opendatakit-simpledemo.appspot.com* then click :guilabel:`OK`.
   #. Back out of settings then choose :guilabel:`Sync Now`.
 
