@@ -42,7 +42,7 @@ The steps for joining a device to an existing Aggregate server are straightforwa
 
   #. Install the APKs your application uses.
   #. Launch the *home screen* APK, either ODK Survey or ODK Tables.
-  #. Click on the three vertical dots in the upper right corner of the menu bar and choose :menuselection:`Sync` to launch the ODK Services sync activity in the context of your *home screen* APK.
+  #. Click on the circular arrows button to launch the ODK Services sync activity in the context of your *home screen* APK.
   #. Configure ODK Services to point to the ODK Aggregate instance you want to join.
   #. Choose :guilabel:`Sync now` to make the device mirror the contents on that ODK Aggregate server.
 
@@ -50,9 +50,9 @@ Follow the steps described above to join the ODK Aggregate server hosting our si
 
   #. Download and install ODK Services, ODK Tables, and ODK Survey.
   #. Launch ODK Tables (the *home_screen* APK).
-  #. Click on the three vertical dots in the upper right corner of the menu bar and choose :menuselection:`Sync` to launch the ODK Services.
+  #. Click on the circular arrows button to launch the ODK Services.
   #. The default Sync Configuration should be *https://open-data-kit.appspot.com* and :menuselection:`None (anonymous access)`. You will need to change that. It will also default to :menuselection:`Fully Sync Attachments`.
-  #. Click on the three vertical dots in the menu bar, select :menuselection:`Settings --> Server Settings`.
+  #. Click on the gear button in the menu bar, select :menuselection:`Server Settings`.
   #. Click on :menuselection:`Server URL` and replace the default server with *https://opendatakit-simpledemo.appspot.com* then click :guilabel:`OK`.
   #. Back out of settings then choose :guilabel:`Sync Now`.
 
