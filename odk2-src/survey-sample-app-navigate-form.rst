@@ -98,7 +98,7 @@ This prompt is requesting a value that will be used to render the next question.
     :alt: Survey Example Form Coffee Autofill
     :class: device-screen-vertical
 
-This prompt will prepopulate the entered data with the value from the previous prompt. In general, you can prepopulate the a prompt with any previously collected value. In another example you might record a subject's address and then prepopulate that address on their household members address prompts.
+This prompt will prepopulate the entered data with the value from the previous prompt. In general, you can prepopulate a prompt with any previously collected value. In another example you might record a subject's address and then prepopulate that address on their household members address prompts.
 
 Press :guilabel:`Next` to advance to the next section.
 

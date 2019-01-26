@@ -23,7 +23,7 @@ Migrating / Setting-up an ODK 2 application
 
 Now that we have seen how a device can join an already-configured application, and synchronize its view of the data with the ODK Aggregate server hosting the application, it is time to set up our own ODK Aggregate server.
 
-The starting point for this is to have a fully configured application on your device. Only after you have your device configured as you want it to appear, would you proceed with the following steps. In this case, we already have the device configured with the *Geotagger* demo, so let's proceed to create an ODK Aggregate server and configure it to serve that demo to your devices.
+The starting point for this is to have a fully configured application on your device. Only proceed with the following steps after you have your device configured as you want it to appear. In this case, we already have the device configured with the *Geotagger* demo, so let's proceed to create an ODK Aggregate server and configure it to serve that demo to your devices.
 
 .. _architect-odk-2-setting-up-server:
 
@@ -50,10 +50,10 @@ Return to your device, start ODK Tables:
   #. Choose :menuselection:`Settings --> Server Settings`.
   #. Edit the :guilabel:`Server URL` to be the URL for this newly configured ODK Aggregate server (https://myodk-test.appspot.com).
   #. Click on :guilabel:`Server Sign-on Credential` and choose :menuselection:`Username`.
-  #. Choose :guilabel:`Username` and enter the superuser username for your ODK Aggregate server
+  #. Choose :guilabel:`Username` and enter the superuser username for your ODK Aggregate server.
   #. Choose :guilabel:`Server Password` and enter the ODK Aggregate server password for that superuser username.
   #. Click the back button until you have returned to the sync screen.
-  #. Click on :guilabel:`Reset App Server` to push your device configuration up to your ODK Aggregate server
+  #. Click on :guilabel:`Reset App Server` to push your device configuration up to your ODK Aggregate server.
 
 After this has completed, you have created your own server that replicates the configuration and contents of the https://opendatakit-simpledemo.appspot.com site. Congratulations!
 
@@ -107,7 +107,7 @@ Deploying to the Device
 Now that we have the design environment installed and functioning, and because that environment has a copy of the fully-configured *Geotagger* application that is running on https://opendatakit-simpledemo.appspot.com (minus any data that users have submitted to the server), we can work through the steps of deploying that application to your device, and then resetting your server to push that configuration up to your server.
 
 
-First, confirm that your device has :guilabel:`USB debugging` enabled inside your device's :guilabel:`Settings`. This checkbox is in different places on different devices and may be hidden by default on some. See this guide to `USB debuggin on Android <https://www.phonearena.com/news/How-to-enable-USB-debugging-on-Android_id53909>`_ for instructions.
+First, confirm that your device has :guilabel:`USB debugging` enabled inside your device's :guilabel:`Settings`. This checkbox is in different places on different devices and may be hidden by default on some. See this guide to `USB debugging on Android <https://www.phonearena.com/news/How-to-enable-USB-debugging-on-Android_id53909>`_ for instructions.
 
 Return to the :program:`cmd` window on your computer. :kbd:`Control-C` to stop the :program:`grunt` command that popped-open the :program:`Chrome` browser. On Windows, you will be asked to confirm this ``Terminate batch job (Y/N)?``. Enter ``Y`` to confirm.
 
