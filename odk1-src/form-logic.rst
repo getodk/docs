@@ -486,8 +486,8 @@ Complex example
     
 .. _repeats:
 
-Repeating questions and groups of questions
-==============================================
+Repeating questions and repeating groups of questions
+======================================================
 
 .. note::
   Using repetition in a form is very powerful but can also make training and data analysis more time-consuming. Aggregate does not export repeats so Briefcase or one of the data publishers will be needed to :doc:`transfer data from Aggregate <aggregate-data-access>`. Repeats will be in their own documents and will need to be joined with their parent records for analysis.
