@@ -404,6 +404,11 @@ Collects only a month and year.
 Year only
 """"""""""""
 
+type
+  :tc:`date`
+appearance
+  :tc:`year`
+
 Collects only a year.
 
 .. image:: /img/form-widgets/year-spinner.*
