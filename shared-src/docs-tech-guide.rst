@@ -547,7 +547,7 @@ on any computer.
             If you get an error here, something went wrong.
             Try running the installer again. 
             You may also have to add Python to your Windows search path.
-            You can do this by going to advanced system settings -> Environmental Variables
+            You can do this by going to 
            :menuselection:`Advanced System Settings -> Environmental Variables -> Edit System Variables`,
            then adding the path to the directory containing Python.
             If the problem persists, and you can't debug it yourself,
