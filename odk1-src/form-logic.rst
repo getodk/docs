@@ -482,8 +482,34 @@ Complex example
     integer, b, b =,
     calculate, a_plus_b, ,"if(${a} != '' and ${b} != '', ${a} + ${b}, '')"
     note, display_sum, a + b = ${a_plus_b}, 	
-  
-    
+
+.. _groups:
+
+Groups of questions
+====================
+
+To group questions, use the :tc:`begin_group...end_group` syntax.
+
+.. rubric:: XLSForm (Question group)
+
+.. csv-table:: survey
+  :header: type, name, label
+
+  begin_group, my_group, My text widgets
+  text, question_1, Text widget 1
+  text, question_2, These questions will both be grouped together
+  end_group, ,
+
+If given a :th:`label`, groups will be visible in the form path to help orient the user
+(e.g. :guilabel:`My text widgets > Text widget 1`).
+
+If given a :th:`label` and also a :th:`ref`, groups will be visible as clickable items in the jump menu:
+
+.. image:: /img/form-logic/jump-menu-groups.*
+  :alt: The jump menu with a few grouped questions.
+
+Groups can also be a convenient way to :ref:`conditionally show certain questions <relevants>`.
+
 .. _repeats:
 
 Repeating questions and groups of questions
