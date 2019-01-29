@@ -84,6 +84,9 @@ You can also use the `run-task` script described above to build both ODK 1 and O
  
 We highly recommend you use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/) or a Python version management like [pyenv](https://github.com/pyenv/pyenv). (Type `python --version` to see your current version.)
 
+- Instructions for setting up virtual environment:
+
+
 ### Cloning the repo
 
 Clone the docs repo and make sure all the requirements are installed:
