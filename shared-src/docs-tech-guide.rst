@@ -31,7 +31,7 @@ Read about the project and the community at `Open Data Kit's website`_.
 Get started with the docs by going to the `ODK Docs GitHub README`_.
 
 .. _Open Data Kit's website: http://opendatakit.org
-.. _ODK Docs on GitHub: https://github.com/opendatakit/docs/blob/master/README.md
+.. _ODK Docs GitHub README: https://github.com/opendatakit/docs/blob/master/README.md
 
 .. _odk-accounts:
 
