@@ -28,6 +28,7 @@ Learn a little about Open Data Kit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Read about the project and the community at `Open Data Kit's website`_.
+
 Get started with the docs by going to the `ODK Docs GitHub README`_.
 
 .. _Open Data Kit's website: http://opendatakit.org
