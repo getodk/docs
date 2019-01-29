@@ -86,6 +86,71 @@ We highly recommend you use a virtual environment like [virtualenv](https://virt
 
 - Instructions for setting up virtual environment:
 
+   #. Set up a virtual environment
+
+      A `virtual environment`_ is a Python construct
+      that lets you download and install tools for a specific project
+      without installing them for your entire computer.
+
+      .. _virtual environment: https://docs.python.org/3/tutorial/venv.html
+
+      #. Create the virtual environment.
+
+         .. tabs::
+   
+            .. group-tab:: Bash
+
+               .. code:: console
+
+                  /odk/ $ python3 -m venv odkenv
+
+            .. group-tab:: PowerShell
+
+               .. code:: powershell
+
+                  /odk/ > python -m venv odkenv
+
+      #. Activate the virtual environment.
+
+         .. tabs::
+
+            .. group-tab:: Bash
+      
+               .. code:: console
+
+                  /odk/ $ source odkenv/bin/activate
+                  (odkenv) /odk/ $
+
+            .. group-tab:: PowerShell
+
+               .. code:: console
+
+                  /odk/ > source odkenv/bin/activate
+                  (odkenv) /odk/ >
+
+         The ``(odkenv)`` before the prompt shows that the virtual environment is active.
+         You will need to have this active any time you are working on the docs.
+      
+         If the file cannot be found, your activate file may be located under odkenv/scripts/activate.
+
+         Later, to deactivate the virtual environment:
+
+         .. tabs::
+
+            .. group-tab:: Bash
+      
+               .. code:: console
+
+                  (odkenv) /odk/ $ deactivate
+                  /odk/ $
+
+            .. group-tab:: PowerShell
+
+               .. code:: console
+
+                  (odkenv) /odk/ > deactivate
+                  /odk/ >
+		  
 
 ### Cloning the repo
 
