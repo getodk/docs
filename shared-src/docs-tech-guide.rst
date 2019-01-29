@@ -28,8 +28,10 @@ Learn a little about Open Data Kit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Read about the project and the community at `Open Data Kit's website`_.
+Get started with the docs by going to the `ODK Docs GitHub README`_.
 
 .. _Open Data Kit's website: http://opendatakit.org
+.. _ODK Docs on GitHub: https://github.com/opendatakit/docs/blob/master/README.md
 
 .. _odk-accounts:
 
@@ -65,8 +67,8 @@ and the :ref:`ODK Forum <join-forum>`
    .. _get-gh-account:
 
    `GitHub`_ is a popular code storage and collaboration platform.
-   You will need a GitHub account to contribute to Open Date Kit documentation,
-   or any other Open Date Kit projects.
+   You will need a GitHub account to contribute to Open Data Kit documentation,
+   or any other Open Data Kit projects.
 
    - `Open Data Kit on GitHub`_
    - `ODK Docs on GitHub`_
