@@ -171,13 +171,17 @@ Initial Setup
 
 .. note::
 
-  Developer and authoring tools 
-  have a lot of options and alternatives. 
+  We generally recommend `starting with the Docker platform`_ for editing
+  docs unless you already have a Sphinx environment set up. 
   Local tools and workflows presented in this guide 
   are what the authors feel would be easiest 
   for newcomers and those unfamiliar with open source.
   
+  However, developer and authoring tools 
+  have a lot of options and alternatives.   
   You should feel free to use your preferred tools.
+  
+  .. _starting with the Docker platform: https://github.com/opendatakit/docs/blob/master/README.md#using-docker
 
 Before you begin working the first time
 you will need to install a few tools 
