@@ -86,8 +86,6 @@ We highly recommend you use a virtual environment like [virtualenv](https://virt
 
 - Instructions for setting up virtual environment:
 
-   #. Set up a virtual environment
-
       A `virtual environment`_ is a Python construct
       that lets you download and install tools for a specific project
       without installing them for your entire computer.
