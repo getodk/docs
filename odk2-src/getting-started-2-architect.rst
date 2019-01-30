@@ -111,7 +111,7 @@ First, confirm that your device has :guilabel:`USB debugging` enabled inside you
 
 Return to the :program:`cmd` window on your computer. :kbd:`Control-C` to stop the :program:`grunt` command that popped-open the :program:`Chrome` browser. On Windows, you will be asked to confirm this ``Terminate batch job (Y/N)?``. Enter ``Y`` to confirm.
 
-Connect your device to your computer via USB. Wait for the storage connection to be established (on Windows, this will generally pop up a file browser or an options box that enables you to select a file browser).
+Connect your device to your computer via USB. Wait for the storage connection to be established (on Windows, this will generally pop up a file browser or an options box that enables you to select a file browser). Be sure you trust your computer on your device, or it will cause unexpected errors.
 
 At the command prompt, type:
 
