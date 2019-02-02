@@ -16,7 +16,7 @@ All of these actions can be done through the website, and if everything is worki
 Getting to the tools
 --------------------
 
-First, you'll need to get to the tools. You'll need to log into your server's command line prompt again, like you did when you first set up the server. If you used our `DigitalOcean installation steps <https://github.com/opendatakit/central#running-on-digitalocean>`_ but can't quite remember how to do this, we suggest reviewing steps 7 and 8 as a reminder, or if you can't remember your password to revisit steps 6, 7, and 8.
+First, you'll need to get to the tools. You'll need to log into your server's command line prompt again, like you did when you first set up the server. If you used our :doc:`DigitalOcean installation steps <central-install-digital-ocean>` but can't quite remember how to do this, we suggest reviewing the section :ref:`central-install-digital-ocean-build` as a reminder, or if you can't remember your password to start at the top of that section to reset your password.
 
 Once you have a command line in front of you (it should say something like ``root@server-name:~#``), you'll want to enter the following commands:
 
@@ -32,7 +32,7 @@ If you see instructions appear with the section headings *Usage*, *Options*, and
 Creating a Web User by command line
 -----------------------------------
 
-If you followed our `DigitalOcean installation steps <https://github.com/opendatakit/central#running-on-digitalocean>`_, then you've already done this once down in step 15. You shouldn't have to do this again unless you deleted all your users. But if you do, please start by performing the steps above in the :ref:`central-command-line-basics` section. Then, this is what you would type, assuming your email address is ``example@opendatakit.org``:
+If you followed our :doc:`DigitalOcean installation steps <central-install-digital-ocean>`, then you've already done this once down in step 15. You shouldn't have to do this again unless you deleted all your users. But if you do, please start by performing the steps above in the :ref:`central-command-line-basics` section. Then, this is what you would type, assuming your email address is ``example@opendatakit.org``:
 
 .. code-block:: console
 

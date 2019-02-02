@@ -60,7 +60,7 @@ Restoring a backup to an ODK Central instance will entirely replace all of its d
 
    .. tip::
 
-     If you used our `DigitalOcean installation steps <https://github.com/opendatakit/central#running-on-digitalocean>`_ but can't quite remember how to do this, we suggest reviewing steps 7 and 8 as a reminder, or if you can't remember your password to revisit steps 6, 7, and 8.
+     If you used our :ref:`DigitalOcean installation steps <central-install-digital-ocean>` but can't quite remember how to do this, we suggest reviewing steps 7 and 8 as a reminder, or if you can't remember your password to revisit steps 6, 7, and 8.
 
 #. Now you'll want to put it in a special place where it can be used by the restore tool: :file:`/data/transfer`. If, for example, you uploaded the file to :file:`/root/backup-2018-01-01T00:00:00Z.zip`, you'll want to run this command in order to move it:
 
