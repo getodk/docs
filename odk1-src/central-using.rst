@@ -5,6 +5,7 @@ Using ODK Central
   :maxdepth: 3
 
   central-users
+  central-projects
   central-forms
   central-submissions
   central-api
