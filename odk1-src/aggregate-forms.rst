@@ -112,7 +112,7 @@ You can get a view of the published data you have created for a particular form 
 - :guilabel:`Action` is based on your selection of upload only, stream only, or both in the :guilabel:`Publish` form.
 - :guilabel:`Type` shows the type you choose to publish your data to.
 - :guilabel:`Owner` shows the owner of the published data.
-- :guilabel:`Name` is the place where you published your data. If the type was a Google Fusion Table, click on the link to view the Fusion Table.
+- :guilabel:`Name` is the place where you published your data.
 - Select delete box in the :guilabel:`Delete` column if you want to delete your published file.     
 
 .. _managing-form-submissions:

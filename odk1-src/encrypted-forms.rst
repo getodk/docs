@@ -14,7 +14,7 @@ This process ensures that the finalized form's data (and media attachments) are 
 
 .. note::
 
-  - ODK Aggregate cannot meaningfully publish encrypted forms to Google Spreadsheets or Fusion Tables since the encryption obscures the entire contents of the form and ODK Aggregate never possesses the asymmetric key required to decrypt the form.
+  - ODK Aggregate cannot meaningfully publish encrypted forms to Google Spreadsheets since the encryption obscures the entire contents of the form and ODK Aggregate never possesses the asymmetric key required to decrypt the form.
   - When using encrypted forms, ODK Aggregate serves only as a data aggregation point — you must download, decrypt, and export the data using ODK Briefcase to access the unencrypted data
 
 The non-encrypted data is available on the ODK Collect device during data collection and whenever a form is saved without marking it as complete. Once you mark a form as complete (finalize it), ODK Collect will generate a random 256-bit symmetric key, encrypt the form contents and all attachments with this key, then construct a submission manifest which describes the encrypted submission and an asymmetric-key encryption of the symmetric key used for the encryption. This manifest is the "form" that is uploaded to ODK Aggregate, with the encrypted form contents and its encrypted attachments appearing as attachments to this submission manifest "form."

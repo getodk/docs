@@ -7,14 +7,14 @@ OAuth2 Service Account
 .. An orphan page does not create a warning if it is not included in a TOC.
    This page is linked from aggregate-data-access and is only relevant there. 
 
-Publishing your data into Google Spreadsheets or Google Fusion Tables requires a Google Oauth2 Service Account.
+Publishing your data into Google Spreadsheets requires a Google Oauth2 Service Account.
 
 .. _api-request:
 
 .. note::
 
    - Google requires a credit card or banking details to use the Google Cloud Platform that the Oauth2 Service Account runs on. The billing details are used for identity verification.
-   - Google throttles requests for all of its APIs. This impacts ODK Aggregate's Map visualization (which requires an API key) and the publishing to Google Sheets and the publishing to Google Fusion Tables (both of which require a service account). 
+   - Google throttles requests for all of its APIs. This impacts ODK Aggregate's Map visualization (which requires an API key) and the publishing to Google Sheets.
    - If you have difficulties with any of these, go to the Google Cloud Platform project in which you created your service account, navigate to the API Manager tab, navigate to the appropriate API (either via the Dashboard list or via the links on the library sub-tab). 
    - If the API is enabled, you will have a graphical overview of your use of the API. Click on the Quota heading on the page to see the quotas for the API. By clicking on the pencil icons to the right of these quotas, you will get a pop-up from which you can request an increase in a quota. 
    - The quota that most critically needs to be increased is the Google Sheets quota for write requests per second per user. A better limit is 500 per second per user, or perhaps higher if your forms have many fields and/or repeat groups.
@@ -56,12 +56,11 @@ Credentials are associated with a Google Cloud Platform project.
    :alt: Image showing lists pf application of APIs.
 
 
-To be able to publish to Google Sheets and Fusion Tables, and to be able to view maps, we need to enable this project to use 4 of these application APIs. The 4 application APIs we need to enable are:
+To be able to publish to Google Sheets, and to be able to view maps, we need to enable this project to use these application APIs:
 
 - Google Maps Javascript API v3
 - Drive API
 - Sheets API
-- Fusion Tables API
 
 The Sheets API is under the same section heading as the Drive API.
 
@@ -146,7 +145,7 @@ Otherwise, after enabling it, click on the :guilabel:`Create Credentials` button
    
 .. note::
 
-  - The **Service Account** information and the downloaded private key file must be uploaded to ODK Aggregate to enable publishing to Google Spreadsheets and Google Fusion Tables.
+  - The **Service Account** information and the downloaded private key file must be uploaded to ODK Aggregate to enable publishing to Google Spreadsheets.
   - The **API Key** is for use by Google Maps.
   
 .. _entering-credential-odk-aggregate:
@@ -182,7 +181,7 @@ To upload the credentials:
 .. image:: /img/oauth2-service/site-admin.*
    :alt: Image showing updated information.
    
-Your ODK Aggregate server is now configured to support publishing of data to Google Spreadsheets and Google Fusion Tables.
+Your ODK Aggregate server is now configured to support publishing of data to Google Spreadsheets.
 
 .. tip::
 
