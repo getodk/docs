@@ -19,24 +19,18 @@ Permissions
 .. warning::
    Remember to change the default password of your super-user account. Otherwise, anyone can take complete control of your server!
 
-Please visit the :guilabel:`Permissions` sub-tab under the :guilabel:`Site Admin` tab to change this user's password.
+You can manage the credentials to access Aggregate in the :guilabel:`Site Admin` > :guilabel:`Permissions` sub-tab.
 
-You can specify additional usernames with browser access to the server under the :guilabel:`Permissions` sub-tab. Privileges are as follows:
+Privileges are as follows:
 
 - **Data Collector**: able to download forms to ODK Collect and submit data from ODK Collect to ODK Aggregate.
-
-.. note::
-
-   - Only ODK accounts and the anonymousUser can be granted Data Collector rights.
-   - The anonymousUser must be granted Data Collector rights to accept submissions from unidentified sources (e.g., from ODK Collect 1.1.5 and earlier, or from ODK Collect 1.1.7 and later if not authenticating).
-
-- **Data Viewer**: able to log onto the ODK Aggregate website, filter and view submissions, and generate csv or kml files for download.
+- **Data Viewer**: able to log onto the ODK Aggregate website, filter, view, and export submissions.
 - **Form Manager**: all the capabilities of a Data Viewer plus the abilities to upload a form definition, delete a form and its data, and upload submissions manually through the ODK Aggregate website.
 - **Site Administrator**: all the capabilities of a Form Manager plus the ability to add users, set passwords, and grant these capabilities to other users.
 
-Remember to click :guilabel:`Save Changes` to make these changes take effect. You can also edit the privileges for current users.
+You can also download a :file:`.csv` template file with all the credentials and upload it to make changes in bulk.
 
-You can upload a :file:`.csv` file of users and their capabilities as well as download the current file.
+Remember to click :guilabel:`Save Changes` to make these changes take effect. You can also edit the privileges for current users.
 
 .. _preference-tab:
 
