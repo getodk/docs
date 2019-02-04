@@ -1,25 +1,27 @@
-Installing on Google App Engine
-==================================
+(Legacy) Installing Aggregate v1 on Google App Engine
+=====================================================
 
-.. note:: 
+.. warning::
 
-  Google App Engine is the recommended deployment platform for Aggregate. 
-  
+  This document refers only to ODK Aggregate v1
+
+.. note::
+
   There is no charge to set up an Aggregate server on App Engine, and lightly used instances will usually incur no charges.
 
 
 .. admonition:: Before you begin...
 
   - Make sure the `Java 8 JDK <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>`_ or `higher <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_ is installed on your system.
-  
+
   - You will need a Gmail account to use App Engine. This Gmail account will be the owner of the Google Cloud Platform project under which your App Engine will execute.
 
   - You will need to provide a credit card or banking details to verify your identify to the Google Cloud Platform.
 
   - Read the `Google Cloud Platform terms of service <https://cloud.google.com/terms/>`_.
 
-  .. _download-aggregate-installer: 
-    
+  .. _download-aggregate-installer:
+
   - Download the `ODK Aggregate installer <https://github.com/opendatakit/aggregate/releases/latest>`_. Select the latest release for your operating system.
 
 1. Go to `Google Cloud Platform <https://cloud.google.com/>`_ and click on :guilabel:`Console` in the top right corner.
@@ -35,7 +37,7 @@ Installing on Google App Engine
 #. If you have never configured a Google Cloud Platform project, click on :guilabel:`Create an Empty Project`.
 
    .. image:: /img/aggregate-install/empty-project.*
-     :alt: Image showing Create an empty project option for first projects. 
+     :alt: Image showing Create an empty project option for first projects.
 
 #. If you have configured a Google Cloud Platform project before, you may see a listing of all your projects and a button labeled :guilabel:`Create Project`. Click that button.
 
@@ -44,7 +46,7 @@ Installing on Google App Engine
    .. image:: /img/aggregate-install/project.*
      :alt: Image showing previous project name `Project-edu`.
 
-   - Upon clicking the project name, a window appears with a :guilabel:`+` symbol. Click on it to create a new project.   
+   - Upon clicking the project name, a window appears with a :guilabel:`+` symbol. Click on it to create a new project.
 
      .. image:: /img/aggregate-install/create-project.*
        :alt: Image showing the + sign which denotes creating a new project.
@@ -52,22 +54,22 @@ Installing on Google App Engine
 #. Name your project.
 
    On the project-creation popup dialog, type in a project name that makes sense to you. If you want to edit the project ID, which will be a part of your project URI, click the small :guilabel:`Edit` link. When you are done, click :guilabel:`Create`.
-   
+
    .. image:: /img/aggregate-install/project-name.png
      :alt: Image showing the window to enter a project name.
 
    .. tip::
 
-     You may want to use a project id that combines your organization name and the name of your data collection group or project. 
-     
+     You may want to use a project id that combines your organization name and the name of your data collection group or project.
+
 
 #. After few seconds, you will see a notification in the top right corner of the window. Click on the notification icon and select the notification message **Create Project: project-name**. An empty project screen will open.
-  
+
    .. image:: /img/aggregate-install/notification.*
      :alt: Image showing blue notification icon.
 
    .. image:: /img/aggregate-install/go-to-project.*
-     :alt: Image showing the option to create your project.      
+     :alt: Image showing the option to create your project.
 
 #. Click on the menu icon (:guilabel:`☰`) to the left of :guilabel:`Google Cloud Platform` in the upper left side of the screen, and select :guilabel:`App Engine` from the dropdown menu.
 
@@ -82,13 +84,13 @@ Installing on Google App Engine
    .. image:: /img/aggregate-install/select-java.*
      :alt: Image showing various language options to choose from.
 
-#. Select your preferred datacenter location and click :guilabel:`Next`. 
+#. Select your preferred datacenter location and click :guilabel:`Next`.
 
    .. image:: /img/aggregate-install/select-region.*
      :alt: Image showing options to choose a region where the server will operate.
 
    Google will then configure the server. This may take a moment.
-        
+
     .. image:: /img/aggregate-install/prepare-engine.*
       :alt: Image showing Google configuring the server.
 
@@ -98,7 +100,7 @@ Installing on Google App Engine
      :alt: Image showing option to cancel the tutorial.
 
 #. Launch the ODK Aggregate installer on your computer. (:ref:`See download info here. <download-aggregate-installer>`)
-     
+
     .. tabs::
 
      .. group-tab:: Linux
@@ -139,7 +141,7 @@ Installing on Google App Engine
 #. Select a parent directory under which an :file:`ODK Aggregate` directory will be created to contain the configured software. Click on the :guilabel:`folder` icon to choose a directory.
 
    .. image:: /img/aggregate-install/directory-setup.*
-     :alt: Image showing window to choose a parent directory. 
+     :alt: Image showing window to choose a parent directory.
 
 #. Select :guilabel:`Google App Engine` as the platform for the Aggregate server.
 
@@ -151,7 +153,7 @@ Installing on Google App Engine
    .. image:: /img/aggregate-install/set-name.*
      :alt: Image showing window to select a name for your Aggregate instance.
 
-   .. note::    
+   .. note::
 
     - The Aggregate instance name will be displayed to your users when they log into Aggregate using their username and password.
     - The instance name does not need to be the same as the Project Name you set in Google App Engine. However, it might be helpful to use the same name.
@@ -177,11 +179,11 @@ Installing on Google App Engine
    .. image:: /img/aggregate-install/application-id.*
      :alt: Image showing project id of the project created earlier entered in the application id box.
 
-   The installer will configure Aggregate and launch an upload tool.  
+   The installer will configure Aggregate and launch an upload tool.
 
    .. tip::
 
-     Depending on your Java version, security settings may prevent the upload tool from running. 
+     Depending on your Java version, security settings may prevent the upload tool from running.
      A possible workaround is to add ``file://`` to the `Exception Site List <https://blogs.oracle.com/java-platform-group/upcoming-exception-site-list-in-7u51>`_.
 
 #. Enter the Gmail account that you specified when setting up the App Engine project and click the :guilabel:`Get Token` button.
@@ -194,11 +196,11 @@ Installing on Google App Engine
    .. image:: /img/aggregate-install/allow.*
      :alt: Image showing window asking for App Engine Permissions.
 
-   At the same time, the install wizard should display a popup dialog box. 
+   At the same time, the install wizard should display a popup dialog box.
 
    .. tip::
 
-     If the popup dialog does not appear, relaunch the upload tool: 
+     If the popup dialog does not appear, relaunch the upload tool:
 
      .. tabs::
 
@@ -221,7 +223,7 @@ Installing on Google App Engine
 	 1. Close the upload tool.
 	 2. Open a file explorer window.
 	 3. Navigate to the directory you specified earlier.
-	 4. Double-click :program:`ODKAggregateAppEngineUpdater.jar`   
+	 4. Double-click :program:`ODKAggregateAppEngineUpdater.jar`
 
      Re-enter the email address, and click :guilabel:`Get Token` again.
      The popup dialog should now appear.
@@ -232,11 +234,11 @@ Installing on Google App Engine
       :alt: Image showing pop-up dialog to enter a token.
 
     .. tip::
-    
-      The text box on Google's site is not as wide as the code. Be sure to copy the entire code. 
+
+      The text box on Google's site is not as wide as the code. Be sure to copy the entire code.
 
 #. If everything went well, you should see a status message letting you know the ``Action Succeeded``.
-  
+
    .. image:: /img/aggregate-install/success-output.*
      :alt: Image showing output for a successful result.
 
@@ -246,9 +248,9 @@ Installing on Google App Engine
 
      - If you see a failure message in the output window, it is likely that you have several different Gmail accounts and Google has gotten confused during the token-issuing process. In you suspect this is the case, click :guilabel:`Delete Token` and try again:
 
-       1. When the browser window opens, before selecting an account, copy the URL. 
+       1. When the browser window opens, before selecting an account, copy the URL.
        2. Open a Private Browsing or Incognito Window in your browser.
-       3. Paste the URL into the private window. 
+       3. Paste the URL into the private window.
        4. Proceed with the other steps as above.
 
 #. Click :guilabel:`Upload ODK Aggregate`.
@@ -256,7 +258,7 @@ Installing on Google App Engine
    .. image:: /img/aggregate-install/upload.*
      :alt: Image showing successful output and upload option.
 
-   Clicking on :guilabel:`Upload ODK Aggregate` will generate a long list of progress messages in the Output window. You will see a number of warnings and errors. Don't worry, this is expected. 
+   Clicking on :guilabel:`Upload ODK Aggregate` will generate a long list of progress messages in the Output window. You will see a number of warnings and errors. Don't worry, this is expected.
 
    For reference, here is a list of few of those errors:
 
@@ -265,7 +267,7 @@ Installing on Google App Engine
 
        listBackends : Warning: This application uses Backends, a deprecated feature that has been replaced by Modules, which offers additional functionality. Please convert your backends to modules as described at: https://developers.google.com/appengine/docs/java/modules/converting.
 
-       listBackends! : WARNING: Error posting to URL: https://appengine.google.com/api/backends/delete?backend=background&app_id=project-123-181306&   
+       listBackends! : WARNING: Error posting to URL: https://appengine.google.com/api/backends/delete?backend=background&app_id=project-123-181306&
        listBackends! : 500 Internal Server Error
 
        listBackends : Unable to list backends: Error posting to URL: https://appengine.google.com/api/backends/list?app_id=project-123-181306&
@@ -274,22 +276,22 @@ Installing on Google App Engine
        deleteBackendBackground : Warning: This application uses Backends, a deprecated feature that has been replaced by Modules, which offers additional functionality. Please convert your backends to modules as described at: https://developers.google.com/appengine/docs/java/modules/converting.
 
        deleteBackendBackground!: WARNING: Error posting to URL: https://appengine.google.com/api/backends/delete?backend=background&app_id=project-123-181306&
-       deleteBackendBackground!: 400 Bad Request      
+       deleteBackendBackground!: 400 Bad Request
 
-       deleteBackendBackground : Unable to delete backend: Error posting to URL: https://appengine.google.com/api/backends/delete?backend=background&app_id=project-123-181306& 
-       deleteBackendBackground : 400 Bad Request     
+       deleteBackendBackground : Unable to delete backend: Error posting to URL: https://appengine.google.com/api/backends/delete?backend=background&app_id=project-123-181306&
+       deleteBackendBackground : 400 Bad Request
 
 
-#. Finally, you should see the message ``status : Action Succeeded!``.    
-    
-#. Once the installer has run and uploaded the ODK Aggregate configuration to App Engine, return to the Google Cloud Platform console. 
+#. Finally, you should see the message ``status : Action Succeeded!``.
+
+#. Once the installer has run and uploaded the ODK Aggregate configuration to App Engine, return to the Google Cloud Platform console.
 
 #. Open your Aggregate server from your project's screen, by selecting :menuselection:`☰ --> App Engine` and clicking on the project's URI.
 
    .. image:: /img/aggregate-install/project-aggregate.*
      :alt: Image showing a window where server URI is displayed on top right corner.
 
-#. :guilabel:`Log In` with the superuser username that you specified in the installer (the initial password for this username will be ``aggregate``), and access the site administration screens for your server.  
+#. :guilabel:`Log In` with the superuser username that you specified in the installer (the initial password for this username will be ``aggregate``), and access the site administration screens for your server.
 
    .. image:: /img/aggregate-install/server.*
      :alt: Image showing ODK Aggregate server and log in option.
