@@ -136,6 +136,10 @@ Aggregate Preferences
 Backing Up Aggregate
 --------------------
 
+.. warning::
+
+  Although the following instructions are what was available in these docs before Aggregate v2, Google now recommends using the more up-to-date method of `extracting and importing entities <https://cloud.google.com/datastore/docs/export-import-entities>`_. This is explained in more depth at the `ODK Aggregate data wrangling compendium <https://forum.opendatakit.org/t/odk-aggregate-data-wrangling-compendium/14174>`_ forum post.
+
 Create backup
 ~~~~~~~~~~~~~~~
 
