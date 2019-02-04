@@ -129,7 +129,7 @@ Briefcase CLI
 
 ODK Briefcase includes a CLI (Command Line Interface) to automate downloading forms from ODK Aggregate (or ODK Collect) and exporting the forms to an Excel-compatible format like CSV. For more details, see :ref:`Working with command line on Briefcase <cli-use>`.
 
-.. _briefacse-aggregate-api:
+.. _briefcase-aggregate-api:
 
 Briefcase-Aggregate API
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
