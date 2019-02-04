@@ -129,15 +129,12 @@ With larger datasets, there are two modes of operation:
 Installing Aggregate
 --------------------
 
-.. toctree::
-  :maxdepth: 1
-
-  aggregate-app-engine
+See :doc:`Installing Aggregate on Google App Engine <aggregate-app-engine>`.
 
 Backing up Aggregate
 --------------------
 
-  You can export and import Datastore entities using the `managed export and import service <https://cloud.google.com/datastore/docs/export-import-entities>`_. See `ODK Aggregate data wrangling for App Engine <https://forum.opendatakit.org/t/odk-aggregate-data-wrangling-compendium/14174>`_ for more detail.
+You can export and import Datastore entities using the `managed export and import service <https://cloud.google.com/datastore/docs/export-import-entities>`_. See `ODK Aggregate data wrangling for App Engine <https://forum.opendatakit.org/t/odk-aggregate-data-wrangling-compendium/14174>`_ for more detail.
 
 Tips and best practices
 -----------------------
