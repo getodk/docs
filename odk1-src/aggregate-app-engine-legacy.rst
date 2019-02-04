@@ -292,3 +292,11 @@ Restoring data from Backup
 
   - If you back up your data using Google Cloud Storage, you can restore backups to applications other than the application used to create the backup. To restore backup data from a source application to a target application, see this `guide <https://cloud.google.com/appengine/docs/standard/python/console/datastore-backing-up-restoring>`_.
   - Google has new beta service for `exporting and importing <https://cloud.google.com/datastore/docs/export-import-entities>`_. Only Cloud Platform projects with `billable accounts <https://cloud.google.com/support/billing/>`_ can use the export and import functionality.
+
+Tips and best practices
+-----------------------
+
+.. toctree::
+  :maxdepth: 2
+
+  aggregate-boost-performance
