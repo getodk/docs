@@ -26,37 +26,7 @@ This document guides you through the installation and initial setup of a self-ho
 Considerations before you begin
 ----------------------------------
 
-Availability
-~~~~~~~~~~~~~~
-
-Decide the availability of your server depending on how frequently you want to update and upload forms. If you do need a high-availability server, you need to talk to your Internet Service Provider (ISP) as to their availability guarantees.
-
-Data loss
-~~~~~~~~~~~
-
-Your tolerance to data loss will impact your backup schedule and your server hardware. Invest in a storage system based on your tolerance to data loss. Seek technical assistance for these requirements. If you cannot tolerate any data loss, or less than 24 hours of data loss, you should invest in a RAID storage array with battery-backed controller cards. If you can tolerate a day or longer interval of data loss, be sure you have a periodic tape or other means of backup for your system that matches or is shorter than the data loss interval.
-
-Dataset size
-~~~~~~~~~~~~~~
-
-The quantity of data you intend to collect will affect the size of the machine required to host the ODK Aggregate instance and of your database server. For most use cases, the default size should be fine. If you are collecting more than 6000 submissions, you may need to increase the JVM size. Note that the maximum size of the JVM is limited by the size of the physical memory on your machine.
-
-Secure and protected data
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If you need to prevent eavesdroppers from seeing your data as it is transmitted to your ODK Aggregate instance, you need to do one of the following:
-
-- only connect to ODK Aggregate from within your organization's network (when the ODK Collect devices are on your premises)
-- obtain an SSL certificate and install it on your Tomcat server (a certificate is required to secure transmissions over `https`)
-- use :doc:`encrypted-forms`
-
-Encrypted forms can be used in conjunction with either of the first two suggestions.
-
-If you are not using encrypted forms and are handling sensitive data, a computer security specialist should review your system and your security procedures.
-
-.. note::
-
-  Use of an SSL and `https` is recommended for any deployment accessed from the internet.
+Please, read the :doc:`Aggregate deployment planning <aggregate-deployment-planning>` guide before continuing.
 
 Database systems
 ~~~~~~~~~~~~~~~~~~
@@ -76,21 +46,6 @@ MySQL is the most popular, so you will likely find more qualified professionals 
 - use forms with a very high number of questions (over 200)
 
 PostgreSQL has better built-in support for geographic data, and MySQL's tables have a row size limit that will affect performance for very large forms.
-
-Component versions
-~~~~~~~~~~~~~~~~~~~
-
-ODK Aggregate should work with these minimum component versions. In most cases, newer versions should also work.
-
-.. csv-table::
-  :header: , ≥ v1.4.13
-
-  Java, 8
-  Tomcat, 8.0
-  PostgreSQL, 9.4
-  MySQL, 5.7
-  MS SQL, 2016
-  Azure SQL, 2016
 
 Installation procedure
 --------------------------
