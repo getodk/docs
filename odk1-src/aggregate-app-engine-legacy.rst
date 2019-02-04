@@ -127,3 +127,8 @@ Installing Aggregate
   :maxdepth: 1
 
   aggregate-app-engine
+
+Aggregate Preferences
+---------------------
+
+- You can *disable faster background actions* to reduce App Engine quota usage.
