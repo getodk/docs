@@ -147,18 +147,6 @@ OpenRosa API
 
 Collect and Aggregate communicate using a standard set of API calls defined in the :doc:`openrosa` specification, which can also be used by alternative clients.
 
-
-.. _direct-database:
-
-Direct database connection
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If you are running on a Tomcat server, you have access to the underlying MySQL or PostgreSQL tables. The structure of those tables are documented at `Aggregate Database Structure <https://github.com/opendatakit/opendatakit/wiki/Aggregate-Database-Structure>`_.
-
-.. warning::
-
-  This is a fragile way to pull data from Aggregate because table structure could change between versions. Moreover, changing any of this data could corrupt your Aggregate install.
-
 .. _media-access:
 
 Accessing Media
