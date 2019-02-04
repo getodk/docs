@@ -80,26 +80,6 @@ Aggregate provides mechanism for either bulk publishing data to another service,
 
 Aggregate currently supports publishing data to the following services or in the following formats:
 
-.. _fusion-table:
-
-Google Fusion Tables
-~~~~~~~~~~~~~~~~~~~~~~~
-
-Fusion Tables is an experimental data visualization web application to gather, visualize, and share larger data tables. Multimedia files are represented by including standard web links to the files. Repeating groups of questions are split into separate tables. All metadata is preserved. Fusion Tables is hosted in Google’s cloud infrastructure. We know of no row limit, but one may exist. Fusion Tables also has an API that can be used to export/publish data.
-
-.. _non-repeat-group-warning:
-
-.. warning::
-
-  Non-repeating grouping information is not preserved. This implies that if your form has a non-repeating group `purchaser` and a second non-repeating group `supplier` and within each of these groups, you have a `name` field, then when you publish to Fusion Tables, there will be two columns called `name`. Unfortunately, that badly confuses Fusion Tables, and generally results in data not transferring successfully into Fusion Tables.
-
-  The solution is to this problem is to design your forms with field names such as `purchaser_name` and `supplier_name`. In other words, use unique names throughout your form.
-
-.. admonition:: OAuth2 Service Account Required
-
-  Publishing data to Google Fusion Tables requires an :doc:`oauth2-service`.
-
-
 .. _google-spreadsheet:
 
 Google Spreadsheets
@@ -109,7 +89,9 @@ Spreadsheets is Google’s cloud-hosted spreadsheet solution. Multimedia files a
 
 .. warning::
 
-  As with Google Fusion tables, :ref:`non-repeating grouping information is not preserved <non-repeat-group-warning>`.
+  Non-repeating grouping information is not preserved. This implies that if your form has a non-repeating group `purchaser` and a second non-repeating group `supplier` and within each of these groups, you have a `name` field, then when you publish to Fusion Tables, there will be two columns called `name`. Unfortunately, that badly confuses Fusion Tables, and generally results in data not transferring successfully into Fusion Tables.
+
+  The solution is to this problem is to design your forms with field names such as `purchaser_name` and `supplier_name`. In other words, use unique names throughout your form.
 
 .. admonition:: OAuth2 Service Account Required
 
@@ -121,40 +103,6 @@ JSON Server
 ~~~~~~~~~~~~~
 
 JSON preserves grouping and repeat structures. The user can choose to let multimedia files be represented as web links or embedded as base64 encoded strings. All metadata is preserved.
-
-.. _google-map-engine:
-
-Google Maps Engine
-~~~~~~~~~~~~~~~~~~~~~
-
-Maps Engine is a cloud-hosted service to easily create and share maps. Multimedia files are represented by including standard web links to the files. Grouping information is preserved in the variable names. Repeating groups are forbidden and submissions must have at least one geopoint. Maps Engine also has an API that can be used to export/publish data.
-
-.. _redcap-server:
-
-RedCap Server
-~~~~~~~~~~~~~~~
-
-RedCap servers ignore grouping and repeating information. Multimedia files are sent as binary form elements in POST.
-
-.. _ohmag-json-server:
-
-Ohmage JSON Server
-~~~~~~~~~~~~~~~~~~~~~~~
-
-Ohmage JSON preserves grouping and repeat structures. Multimedia files are sent as binary form elements in POST.
-
-For more details on JSON Server, RedCap Server and Ohmage JSON Server see `Aggregate Publishers Implementation Details <https://github.com/opendatakit/opendatakit/wiki/Aggregate-Publishers-Implementation-Details>`_
-
-.. csv-table:: **Publish data Summary**
-   :header: "Service", "Groups", "Repeats", "Multimedia", "Metadata"
-   :widths: auto
-
-   "Google Fusion Tables", "not preserved", "split into separate tables", "links to", "preserved"
-   "Google Spreadsheets", "not preserved", "links to", "links to", "preserved"
-   "JSON Server", "preserved", "preserved", "links to or embedded as base64", "preserved"
-   "Google Maps Engine", "preserved", "forbidden", "links to", "not preserved"
-   "RedCap Server", "not preserved", "not preserved", "binary elements in POST"
-   "Ohmage JSON Server", "preserved", "preserved", "binary elements in POST"
 
 .. _odk-api:
 
