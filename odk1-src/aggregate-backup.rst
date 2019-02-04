@@ -1,53 +1,122 @@
+.. spelling::
+
+  macOS
+
 Backing Up Aggregate
-================================
+====================
 
-.. _briefcase-backup:
+Backup and restore forms and submissions with Briefcase
+-------------------------------------------------------
 
-Recovering data from Briefcase
-------------------------------
+You can use :doc:`ODK Briefcase  <briefcase-intro>` to backup your forms and submissions by :ref:`pulling <pull-from-aggregate>` them from Aggregate, and restore them by :ref:`pushing <push-to-aggregate>` them back to Aggregate.
 
-Use :doc:`ODK Briefcase  <briefcase-intro>` to back up all forms and submissions on Aggregate. You can :ref:`pull forms from your Aggregate server <pull-from-aggregate>` into your local machine using Briefcase. In particular, Briefcase's :ref:`command line interface <cli-use>` makes this easier.
+.. warning::
 
-.. _mysql-backup:
+  Please, be aware that this procedure doesn't backup your server's configuration, users, exported forms, publisher configurations, and other important settings that you might still want to account for.
 
-Recovering database from MySQL dump
---------------------------------------
+PostgreSQL backup & restore
+---------------------------
 
+Backup
+~~~~~~
+
+1. Stop running Tomcat. This step, although optional, is recommended to produce full and coherent database dumps.
+
+2. Produce a database backup file:
+
+  .. tabs::
+
+    .. group-tab:: Windows
+
+      .. code-block:: console
+
+        pg_dump.exe [ dbname ] > [ backup file location ]
+
+    .. group-tab:: macOS and Linux:
+
+      .. code-block:: console
+
+        pg_dump [ dbname ] > [ backup destination ]
+
+3. Start Tomcat if you stopped it on the first step.
+
+You could get some errors depending on your particular PostgreSQL users and server configuration. Refer to the `pg_dump documentation <https://www.postgresql.org/docs/10/app-pgdump.html>`_ for more information on the options you can add to this command.
+
+Restore
+~~~~~~~
 1. Stop running Tomcat.
-2. :doc:`Upgrade to the latest version of Aggregate <aggregate-upgrade>`.
-3. Finally, restore it from MySQL dump. An SQL dump of a database is a common method to safely store away a snapshot of the database for archival purposes or to migrate data between database instances, e.g. between two major system releases. The content of a SQL dump is a large collection of SQL commands in ASCII. Running the script will recreate the database in the same state as it was when the dump was created. The primary tool to consider for making an ASCII dump is `mysqldump <https://dev.mysql.com/doc/mysql-backup-excerpt/5.7/en/using-mysqldump.html>`_, which includes a wide variety of options.
 
-.. code-block:: console
+2. Load the backup file:
 
-  $ mysqldump [ options ] [ dbname ]
+  .. tabs::
 
-Some of the useful options are:
+    .. group-tab:: Windows
 
-- :option:`-h hostname` or :option:`--host=hostname` specifies host to connect to.
-- :option:`-p portnr` or :option:`--port=portnr` specifies port to connect to.
-- :option:`-u user` or :option:`--user=user` specifies user id.
-- :option:`-d database` or :option:`--database=database` specifies database to connect to.
+      .. code-block:: console
 
-To take a backup of database:
+        psql.exec -f [ backup file location ] [ dbname ]
 
-.. code-block:: console
+    .. group-tab:: macOS and Linux:
 
-  $ mysqldump database > backup-file.sql;
+      .. code-block:: console
 
-To restore a database:
+        psql -f [ backup file location ] [ dbname ]
 
-.. code-block:: console
+You could get some errors depending on your particular PostgreSQL users and server configuration. Refer to the `psql documentation <https://www.postgresql.org/docs/10/app-psql.html>`_ for more information on the options you can add to this command.
 
-  $ mysql database < backup-file.sql;
+MySQL backup & restore
+----------------------
 
-To copy a database from one server to another
+Backup
+~~~~~~
 
-.. code-block:: console
+1. Stop running Tomcat. This step, although optional, is recommended to produce full and coherent database dumps.
 
-  $ mysqldump --opt database | mysql --host=remote_host -C database
+2. Produce a database backup file:
 
-**remote_host** indicates a remote server where you want to take backup.
+  .. tabs::
 
-.. note::
+    .. group-tab:: Windows
 
-  Creation of the dump respects your credentials, which means you only can dump the tables you have access to.
+      .. code-block:: console
+
+        mysqldump.exe [ dbname ] > [ backup file location ]
+
+    .. group-tab:: macOS and Linux:
+
+      .. code-block:: console
+
+        mysqldump [ dbname ] > [ backup destination ]
+
+3. Start Tomcat if you stopped it on the first step.
+
+You could get some errors depending on your particular MySQL users and server configuration. Refer to the `mysqldump documentation <https://dev.mysql.com/doc/refman/5.6/en/mysqldump.html>`_ for more information on the options you can add to this command.
+
+Restore
+~~~~~~~
+1. Stop running Tomcat.
+
+2. Load the backup file:
+
+  .. tabs::
+
+    .. group-tab:: Windows
+
+      .. code-block:: console
+
+        mysql.exec [ dbname ] < [ backup file location ]
+
+    .. group-tab:: macOS and Linux
+
+      .. code-block:: console
+
+        mysql [ dbname ] < [ backup file location ]
+
+3. Start Tomcat.
+
+You could get some errors depending on your particular MySQL users and server configuration. Refer to the `mysql documentation <https://dev.mysql.com/doc/refman/5.6/en/mysql.html>`_ for more information on the options you can add to this command.
+
+(Legacy) Backup and recovery on Google App Engine
+-------------------------------------------------
+
+Please, refer to the `ODK Aggregate data wrangling compendium <https://forum.opendatakit.org/t/odk-aggregate-data-wrangling-compendium/14174>`_ and the `An Aggregate data maintenance case <https://forum.opendatakit.org/t/an-aggregate-data-maintenance-case/17095>`_ forum posts that cover this with great detail.
