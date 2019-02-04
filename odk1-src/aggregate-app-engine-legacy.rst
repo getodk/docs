@@ -1,3 +1,7 @@
+.. spelling::
+
+  Mumbai
+
 (Legacy) Installing Aggregate v1 on Google App Engine
 =====================================================
 
@@ -14,7 +18,7 @@ Remember that all the information in this page and others linked here refers onl
 Planning Your Aggregate Deployment
 ----------------------------------
 
-We recommend using Google App Engine before attempting an EC2 or Tomcat deployment of Aggregate v1. Once you have tried Aggregate together with :doc:`ODK Collect <collect-intro>` and familiarized yourself with their use, you can consider alternative hosting platforms.
+The recommended method to deploy Aggregate v1 is using Google App Engine or the ODK Aggregate VM before attempting an EC2 or Tomcat deployment.
 
 Internet access
 ~~~~~~~~~~~~~~~~~
@@ -27,7 +31,7 @@ Dataset size
 Google App Engine can store a virtually unlimited amount of data --- well in excess of a million submissions.
 
 However, in deployments with data sets exceeding 7,000 submissions,
-the :ref:`data export feature <export-data>` will stop working. To correct this, you will need a custom deployment with a larger virtual machine. This problem affects both Google App Engine and Tomcat deployments.
+the :ref:`data export feature <export-data>` will stop working. To correct this, you will need a custom deployment with a larger virtual machine.
 
 On Google App Engine, a larger server will incur higher billing costs. Additionally, for datasets of over 100,000 records, it is likely that performance will be better when using MySQL or PostgreSQL, rather than Google App Engine's data store. You also have more optimization opportunities when running your own database servers than are available through Google's cloud services.
 
@@ -133,8 +137,8 @@ Aggregate Preferences
 
 - You can *disable faster background actions* to reduce App Engine quota usage.
 
-Backing Up Aggregate
---------------------
+Backup and recovery on Google App Engine
+----------------------------------------
 
 .. warning::
 
@@ -237,8 +241,6 @@ Click on :guilabel:`Info` to get more information about the backup. On the info 
   .. image:: /img/aggregate-backup/enable-writes.png
     :alt: Image showing Enable writes option.
 
-.. _restore-backup:
-
 Restoring data from Backup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -322,8 +324,6 @@ The 60-second request limit can be very commonly exceeded over low-bandwidth con
 
    - The above two limitations, the global mutex and the in-memory copies/full-packet-assembly, are a result of implementing on top of App Engine and its Datastore.
    - A server that used database transactions and that used streaming servlet 3.0 functionality would have less trouble with concurrent requests.
-
-.. _legacy-media-held-in-memory:
 
 Media held in memory
 ----------------------
