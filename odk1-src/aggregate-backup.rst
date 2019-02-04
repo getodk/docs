@@ -8,7 +8,7 @@ Backing Up Aggregate
 Backup and restore forms and submissions with Briefcase
 -------------------------------------------------------
 
-You can use :doc:`ODK Briefcase  <briefcase-intro>` to backup your forms and submissions by :ref:`pulling <pull-from-aggregate>` them from Aggregate, and restore them by :ref:`pushing <push-to-aggregate>` them back to Aggregate.
+You can use :doc:`ODK Briefcase <briefcase-intro>` to backup your forms and submissions by :ref:`pulling <pull-from-aggregate>` them from Aggregate, and restore them by :ref:`pushing <push-to-aggregate>` them back to Aggregate.
 
 .. warning::
 
