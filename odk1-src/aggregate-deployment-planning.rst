@@ -23,14 +23,10 @@ You can also go without Aggregate altogether and use :doc:`ODK Briefcase <briefc
 This document provides general advice for thinking through your deployment decisions.
 
 .. _aggregate-deployment-considerations:
-
-Things to Consider
------------------------
-
 .. _aggregate-deployment-internet-access:
 
 Internet access
-~~~~~~~~~~~~~~~~~
+---------------
 
 DigitalOcean and Amazon Web Services both require internet access. If you don't have consistent internet access, :doc:`ODK Briefcase <briefcase-intro>` may be more appropriate.
 
@@ -39,7 +35,7 @@ Tomcat deployments can operate without internet access. In such an environment, 
 .. _aggregate-deployment-computer-skills:
 
 Computer skills
-~~~~~~~~~~~~~~~~~~~
+---------------
 
 Custom `Tomcat deployments in local or cloud servers <aggregate-tomcat>`_, including the one described in the :doc:`Amazon Web Services <aggregate-aws>` guide, have a steep learning curve and require technical aptitude. At a minimum you will be:
 
@@ -53,7 +49,7 @@ If this level of systems administration skill is not available, you will have mo
 .. _aggregate-deployment-component-versions:
 
 Component versions
-~~~~~~~~~~~~~~~~~~~
+------------------
 
 ODK Aggregate should work with these minimum component versions. In most cases, newer versions should also work.
 
@@ -68,7 +64,7 @@ ODK Aggregate should work with these minimum component versions. In most cases, 
 .. _aggregate-deployment-ongoing-support:
 
 Ongoing support
-~~~~~~~~~~~~~~~~
+---------------
 
 - You should consider doing periodic backups of your data.
 
@@ -77,7 +73,7 @@ Ongoing support
 .. _aggregate-deployment-dataset-size:
 
 Infrastructure architecture
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------
 
 In these docs we explain how to deploy a monolithic server with everything Aggregate needs to run (Tomcat, PostgreSQL, SSL support), but there are a multitude of scenarios that you might want to consider:
 
@@ -88,7 +84,7 @@ In these docs we explain how to deploy a monolithic server with everything Aggre
 If you are considering alternative architectures for your specific needs, we recommend you ask for help in the `support forum <https://forum.opendatakit.org/c/support>`_.
 
 Dataset size
-~~~~~~~~~~~~
+------------
 
 You have to take into account the size of the data set you need to store, which grows not only with the number of submissions but also with the structure of the forms. Forms with more media attachments will produce larger data sets.
 
@@ -105,7 +101,7 @@ When sizing your infrastructure, take into account:
 .. _aggregate-deployment-data-locality:
 
 Data locality
-~~~~~~~~~~~~~~
+-------------
 
 Cloud providers have servers located all over the world. Most of these providers will let you choose where your server should be located.
 
@@ -114,7 +110,7 @@ Depending on the sensitivity of the data and specific storage rule, regulations,
 .. _aggregate-deployment-security-and-protected-data:
 
 Secure and protected data
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 
 If you need to prevent eavesdroppers from seeing your data as it is transmitted to your ODK Aggregate instance, you need to do one of the following:
 
@@ -134,14 +130,14 @@ If you are not using encrypted forms and are handling sensitive data, a computer
 .. _aggregate-deployment-availability:
 
 Availability
-~~~~~~~~~~~~
+------------
 
 Decide the availability of your server depending on how frequently you want to update and upload forms. If you do need a high-availability server, you need to talk to your Internet Service Provider (ISP) as to their availability guarantees.
 
 .. _aggregate-deployment-data-loss:
 
 Data loss
-~~~~~~~~~
+---------
 
 Your tolerance to data loss will impact your backup schedule and your server hardware. Invest in a system based on your tolerance to data loss. Seek technical assistance for these requirements.
 
