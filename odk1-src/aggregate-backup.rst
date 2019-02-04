@@ -117,8 +117,3 @@ Restore
 3. Start Tomcat.
 
 You could get some errors depending on your particular MySQL users and server configuration. Refer to the `mysql documentation <https://dev.mysql.com/doc/refman/5.6/en/mysql.html>`_ for more information on the options you can add to this command.
-
-(Legacy) Backup and recovery on Google App Engine
--------------------------------------------------
-
-Please, refer to the `ODK Aggregate data wrangling compendium <https://forum.opendatakit.org/t/odk-aggregate-data-wrangling-compendium/14174>`_ and the `An Aggregate data maintenance case <https://forum.opendatakit.org/t/an-aggregate-data-maintenance-case/17095>`_ forum posts that cover this with great detail.
