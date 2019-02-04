@@ -83,6 +83,10 @@ You can enable billing on an as-needed weekly basis. You will incur no charges a
 Minimizing fees
 ~~~~~~~~~~~~~~~~
 
+.. hint::
+
+  In the :guilabel:`Preferences` sub-tab under :guilabel:`Site Admin` tab, you can *Disable faster background actions* to reduce App Engine quota usage.
+
 On App Engine, the major driver of cost is Datastore Reads. These add up quickly:
 
 - Viewing a page of form submissions incurs *at least* one Read for each submission.
@@ -129,11 +133,6 @@ Installing Aggregate
   :maxdepth: 1
 
   aggregate-app-engine
-
-Aggregate Preferences
----------------------
-
-- You can *disable faster background actions* to reduce App Engine quota usage.
 
 Backing up Aggregate
 --------------------
