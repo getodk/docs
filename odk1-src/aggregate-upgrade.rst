@@ -88,7 +88,7 @@ General steps for upgrading
 ------------------------------------
 
 1. Disable all submissions to ODK Aggregate, in the :guilabel:`Form Management` tab.
-2. Use :doc:`ODK Briefcase  <briefcase-using>` to pull a copy of all data to your computer.
+2. Use :doc:`ODK Briefcase <briefcase-using>` to pull a copy of all data to your computer.
 3. Log onto your server to confirm that it is still functioning.
 4. :ref:`Determine your current version number <determine-aggregate-version>`.
 5. Download the **next ODK Aggregate version** and upgrade to that version. `Find previous versions here <https://github.com/opendatakit/aggregate/releases>`_.
@@ -115,4 +115,4 @@ General steps for upgrading
 Upgrading DigitalOcean deployments
 ----------------------------------
 
-Please, refer to the `Aggregate - Cloud-Config - Updates <https://github.com/opendatakit/aggregate/tree/master/cloud-config#updates>`_ guide
+Please, refer to the `Aggregate Cloud-Config updates <https://github.com/opendatakit/aggregate/tree/master/cloud-config#updates>`_ guide

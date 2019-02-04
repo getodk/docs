@@ -36,7 +36,7 @@ ODK Aggregate works with any of these database servers:
 
 - PostgreSQL
 
-  **PostgreSQL is the recommended database server for Aggregate.** It has better built-in support for geographic data.
+  PostgreSQL is the recommended database server for Aggregate.
 
 - MySQL
 
@@ -98,7 +98,7 @@ Installation procedure
 
 5. `Obtain and Install an SSL certificate <https://gist.github.com/yanokwa/399a7fcbc3d9ad8a0bd3>`_ if you need secure ``https`` access.
 
-6. Install PostgreSQL.
+6. Install PostgreSQL:
 
   .. tabs::
 
@@ -118,7 +118,7 @@ Installation procedure
 
 7. Install `ODK Aggregate <https://github.com/opendatakit/aggregate/releases/latest>`_. Select the latest release for your operating system.
 
-  The installer will guide you through configuring ODK Aggregate for your setup. The installer will produce a WAR file (web archive) containing the configured ODK Aggregate server, a :file:`create_db_and_user.sql` script for creating the database and user that ODK Aggregate will use to access this database, and a :file:`Readme.html` file with instructions on how to complete the installation.
+  The installer will guide you through configuring ODK Aggregate for your setup. The installer will produce a WAR file (web archive) containing the configured ODK Aggregate code, a :file:`create_db_and_user.sql` script for creating the database and user that ODK Aggregate will use to access this database, and a :file:`Readme.html` file with instructions on how to complete the installation.
 
   .. tip::
 
@@ -126,4 +126,4 @@ Installation procedure
     - The install also asks for a database name, user and password. The user should not be postgres (PostgreSQL), or root (MySQL).
     - ODK Aggregate will use this user when accessing this database (and it will only access this database).
     - By specifying different databases and users, you can set up multiple ODK Aggregate servers that share the same database server, store their data in different databases, and operate without interfering with each other.
-    - If you are upgrading to a newer version of ODK Aggregate, as long as you specify the same database name, user and password, you do not need to re-run the :file:`create_db_and_user.sql` script (it only needs to be executed once).
+    - If you are upgrading to a newer version of ODK Aggregate, as long as you specify the same database name, user and password, you do not need to re-run the :file:`create_db_and_user.sql` script.

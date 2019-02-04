@@ -62,6 +62,8 @@ Restore
 
         psql -f [ backup file location ] [ dbname ]
 
+3. Start Tomcat.
+
 You could get some errors depending on your particular PostgreSQL users and server configuration. Refer to the `psql documentation <https://www.postgresql.org/docs/10/app-psql.html>`_ for more information on the options you can add to this command.
 
 MySQL backup & restore
