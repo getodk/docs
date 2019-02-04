@@ -89,9 +89,7 @@ Spreadsheets is Google’s cloud-hosted spreadsheet solution. Multimedia files a
 
 .. warning::
 
-  Non-repeating grouping information is not preserved. This implies that if your form has a non-repeating group `purchaser` and a second non-repeating group `supplier` and within each of these groups, you have a `name` field, then when you publish to Fusion Tables, there will be two columns called `name`. Unfortunately, that badly confuses Fusion Tables, and generally results in data not transferring successfully into Fusion Tables.
-
-  The solution is to this problem is to design your forms with field names such as `purchaser_name` and `supplier_name`. In other words, use unique names throughout your form.
+  Non-repeating grouping information is not preserved with Google Sheets. Use globally unique names throughout your form or data might not transfer correctly to Google Sheets.
 
 .. admonition:: OAuth2 Service Account Required
 
