@@ -3,9 +3,6 @@ Administering Aggregate
 
 Click the :guilabel:`Log In` link in the upper right corner of the screen to be presented with the Log onto Aggregate screen. Choose the :guilabel:`Sign in with Aggregate password` button and enter the super-user username you specified within the installer. The initial password for this account is `aggregate`. When you log in, :guilabel:`Site Admin` will be visible to you.
 
-.. image:: /img/aggregate-use/sign-in.*
-   :alt: Image showing sign in option.
-
 .. tip::
 
    - When signing in with this method, if you do not enter the password correctly, you may need to close all your browser windows and quit your browser before you can try again.
@@ -26,13 +23,7 @@ If you have not yet changed your super-user password to something other than the
 .. warning::
    If you do not change the default password, anyone can take complete control of your server!
 
-.. image:: /img/aggregate-use/warning.*
-   :alt: Image showing server not secure warning.
-
 Please visit the :guilabel:`Permissions` sub-tab under the :guilabel:`Site Admin` tab to change this user's password.
-
-.. image:: /img/aggregate-use/permissions.*
-   :alt: Image showing permissions sub-tab.
 
 You can specify additional usernames with browser access to the server under the :guilabel:`Permissions` sub-tab. Privileges are as follows:
 
@@ -47,9 +38,6 @@ You can specify additional usernames with browser access to the server under the
 - **Form Manager**: all the capabilities of a Data Viewer plus the abilities to upload a form definition, delete a form and its data, and upload submissions manually through the ODK Aggregate website.
 - **Site Administrator**: all the capabilities of a Form Manager plus the ability to add users, set passwords, and grant these capabilities to other users.
 
-.. image:: /img/aggregate-use/privileges.*
-   :alt: Image showing privileges.
-
 Remember to click :guilabel:`Save Changes` to make these changes take effect. You can also edit the privileges for current users.
 
 You can upload a :file:`.csv` file of users and their capabilities as well as download the current file.
@@ -62,9 +50,6 @@ Preferences
 In the :guilabel:`Preferences` sub-tab under :guilabel:`Site Admin` tab, you can manage:
 
 - Google API credentials: These credentials are used when publishing into Google services. For details on this, see :doc:`Aggregate OAuth2 info <oauth2-service>`.
-
-.. image:: /img/aggregate-use/google-api-option.*
-   :alt: Image showing google api option.
 
 - **Enketo credentials**: These credentials are used for Enketo webforms integration. To link Enketo with Aggregate, see `this <https://accounts.enketo.org/support/aggregate/>`_.
 - **ODK 2.0 App name**
