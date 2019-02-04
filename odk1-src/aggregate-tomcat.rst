@@ -18,7 +18,7 @@ This document guides you through the installation and initial setup of a self-ho
 
 .. note::
 
-  - Local hosting implies that you are taking ownership of the off-site back up and restoration of your data and are documenting the steps necessary to return your systems to operation in circumstances that might include a full hardware failure or the destruction of your facility. You must also plan for the security of your data and systems. 
+  - Local hosting implies that you are taking ownership of the off-site back up and restoration of your data and are documenting the steps necessary to return your systems to operation in circumstances that might include a full hardware failure or the destruction of your facility. You must also plan for the security of your data and systems.
 
   - Local hosting requires that you configure your network routers. It is recommended to seek assistance from your local computer technical support community before proceeding. The set-up of the ODK Aggregate web server and database are very easy in comparison.
 
@@ -52,7 +52,7 @@ If you need to prevent eavesdroppers from seeing your data as it is transmitted 
 
 Encrypted forms can be used in conjunction with either of the first two suggestions.
 
-If you are not using encrypted forms and are handling sensitive data, a computer security specialist should review your system and your security procedures. 
+If you are not using encrypted forms and are handling sensitive data, a computer security specialist should review your system and your security procedures.
 
 .. note::
 
@@ -124,13 +124,13 @@ Installation procedure
 
                $ sudo -E /etc/init.d/tomcat8 restart
 
-             The **E** flag on the last command is critical. It forces Ubuntu to reload the environment settings for the service, causing it to pick up the new *JAVA_HOME* setting.  
-    
+             The **E** flag on the last command is critical. It forces Ubuntu to reload the environment settings for the service, causing it to pick up the new *JAVA_HOME* setting.
+
         - Apply or change the administrator password for Tomcat; the administration functions should be secured.
         - ODK Aggregate v1.4.13 and higher are supported on Tomcat 8.0; these newer releases should also work, without modification on other webservers.
         - Prior to ODK Aggregate v1.4.13, we only supported Tomcat 6. Tomcat 7, Tomcat 8, Glassfish and Jetty require additional configuration steps to run ODK Aggregate v1.4.12 and earlier. All of these webservers require configuration settings to enable cookies under HTTPS.
 
-          - **For Tomcat 7**: Edit :file:`context.xml` (under Tomcat 7's conf directory) to have the attribute 'useHttpOnly' set to false. 
+          - **For Tomcat 7**: Edit :file:`context.xml` (under Tomcat 7's conf directory) to have the attribute 'useHttpOnly' set to false.
 
             .. code-block:: xml
 
@@ -169,9 +169,9 @@ Installation procedure
                   </Get>
                 </Get>
               </Configure>
-  
 
-2. Configure your server and network devices so that laptops or Android devices connecting to the internet from an external access point can access your server. 
+
+2. Configure your server and network devices so that laptops or Android devices connecting to the internet from an external access point can access your server.
 
    If your organization has a network or systems administrator, contact them for assistance. The steps for this are:
 
@@ -191,7 +191,7 @@ Installation procedure
    - Azure SQL Server (requires Java 8)
 
    |
-   
+
    - For MySQL, download and install MySQL Community Server 5.7 or higher from `MySQL download site <https://dev.mysql.com/downloads/>`_. Be sure to set a root password for the database. Stop the MySQL database server, then configure the database (via the :file:`my.cnf` or the :file:`my.ini` file) with these lines added to the [mysqld] section:
 
      .. code-block:: none
@@ -200,21 +200,21 @@ Installation procedure
         collation_server=utf8_unicode_ci
         max_allowed_packet=1073741824
 
-    and restart the MySQL databaseserver. Then, download the `MySQL Connector/J`, unzip it, and copy the :file:`mysql-connector-java-x.x.x-bin.jar` file into the Tomcat server's libs directory. After copying it into that directory, you should stop and restart the Tomcat server. The `max_allowed_packet` setting defines the maximum size of the communications buffer to the server. The value used in the snippet above is 1GB, the maximum value supported. For ODK Aggregate 1.4.11 through 1.4.7, and 1.2.x, the maximum media (e.g., image or video) attachment is limited to the value you set for max_allowed_packet minus some unknown overhead -- e.g., a storage size of something less than 1GB. For ODK Aggregate 1.4.6 and earlier (excluding 1.2.x), the maximum media attachment is unlimited and the setting for max_allowed_packet does not need to be specified. For ODK Aggregate 1.4.12 and later, the max_allowed_packet value should be set to a value greater than 16842752 (this is the minimum value that should be used: 16MB plus 64kB); with that setting, media attachments of unlimited size are once again supported. If you are upgrading to a newer ODK Aggregate, you must continue to use the setting you already have, or 16842752, whichever is greater. If you experience problems uploading large attachments, change this setting to its maximum value, 1073741824. Finally, if you are using MySQL 5.7 or later, some of releases `expire all database passwords <https://dev.mysql.com/doc/refman/5.7/en/password-management.html>`_ after 360 days. Please verify the behavior of your version of MySQL and either change the password expiration policy or create a calendar reminder to change the password before it expires. For ODK Aggregate, you will need to re-run the installer to specify the new password. 
+    and restart the MySQL databaseserver. Then, download the `MySQL Connector/J`, unzip it, and copy the :file:`mysql-connector-java-x.x.x-bin.jar` file into the Tomcat server's libs directory. After copying it into that directory, you should stop and restart the Tomcat server. The `max_allowed_packet` setting defines the maximum size of the communications buffer to the server. The value used in the snippet above is 1GB, the maximum value supported. For ODK Aggregate 1.4.11 through 1.4.7, and 1.2.x, the maximum media (e.g., image or video) attachment is limited to the value you set for max_allowed_packet minus some unknown overhead -- e.g., a storage size of something less than 1GB. For ODK Aggregate 1.4.6 and earlier (excluding 1.2.x), the maximum media attachment is unlimited and the setting for max_allowed_packet does not need to be specified. For ODK Aggregate 1.4.12 and later, the max_allowed_packet value should be set to a value greater than 16842752 (this is the minimum value that should be used: 16MB plus 64kB); with that setting, media attachments of unlimited size are once again supported. If you are upgrading to a newer ODK Aggregate, you must continue to use the setting you already have, or 16842752, whichever is greater. If you experience problems uploading large attachments, change this setting to its maximum value, 1073741824. Finally, if you are using MySQL 5.7 or later, some of releases `expire all database passwords <https://dev.mysql.com/doc/refman/5.7/en/password-management.html>`_ after 360 days. Please verify the behavior of your version of MySQL and either change the password expiration policy or create a calendar reminder to change the password before it expires. For ODK Aggregate, you will need to re-run the installer to specify the new password.
 
    - For PostgreSQL, download and install the appropriate binary package from `PostgreSQL download site <https://www.postgresql.org/download/>`_. Be sure to set the password for the postgres (root) user and set the default character set and collation sequence.
 
    - For either database, you should ensure that the default character set is configured to be UTF-8 and that the collation sequence (dictionary order) is set appropriately for your circumstances. If it isn't, any non-Latin characters may display as question marks. Refer to the character set and collation sections of your database's documentation for how to do this.
-   
+
    - For Microsoft SQL Server or Azure SQL Server, you should configure these with UTF-8 character sets and to use Windows authentication. When using Windows authentication, the user under which the webserver executes must be granted permissions to access the SQL Server instance. The install wizard for ODK Aggregate will produce a :file:`Readme.html` file that contains additional information on how to complete the configuration of the database and webserver service.
 
 5. Download and install `ODK Aggregate <https://github.com/opendatakit/aggregate/releases/latest>`_. Select the latest release for your operating system.
 
    .. note::
 
-     The installer will guide you through configuring ODK Aggregate for Tomcat and MySQL/PostgreSQL/SQLServer. The installer will produce a WAR file (web archive) containing the configured ODK Aggregate server, a :file:`create_db_and_user.sql` script for creating the database and user that ODK Aggregate will use to access this database, and a :file:`Readme.html` file with instructions on how to complete the installation. 
+     The installer will guide you through configuring ODK Aggregate for Tomcat and MySQL/PostgreSQL/SQLServer. The installer will produce a WAR file (web archive) containing the configured ODK Aggregate server, a :file:`create_db_and_user.sql` script for creating the database and user that ODK Aggregate will use to access this database, and a :file:`Readme.html` file with instructions on how to complete the installation.
 
-   .. tip::   
-   
+   .. tip::
+
      - When asked for the fully qualified hostname of the ODK Aggregate server, you should enter the DNS name you established above. The install also asks for a database name, user and password. The user should not be root (MySQL) or postgres (PostgreSQL). ODK Aggregate will use this user when accessing this database (and it will only access this database). By specifying different databases and users, you can set up multiple ODK Aggregate servers that share the same database server, store their data in different databases, and operate without interfering with each other.
      - If you are upgrading to a newer version of ODK Aggregate, as long as you specify the same database name, user and password, you do not need to re-run the :file:`create_db_and_user.sql` script (it only needs to be executed once).

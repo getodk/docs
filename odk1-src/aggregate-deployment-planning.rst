@@ -12,11 +12,11 @@ ODK Aggregate can be deployed to:
 
 - :doc:`Google App Engine <aggregate-app-engine>`
 - :doc:`Amazon's EC2 cloud services <aggregate-aws>`
-- :doc:`any web server running Tomcat with MySQL or PostgreSQL <aggregate-tomcat>`. 
+- :doc:`any web server running Tomcat with MySQL or PostgreSQL <aggregate-tomcat>`.
 
 There is also a fully set-up :doc:`virtual machine <aggregate-vm>` that can be run in nearly any environment.
 
-We recommend using Google App Engine or the ODK Aggregate VM before attempting an EC2 or Tomcat deployment. Once you have tried Aggregate together with :doc:`ODK Collect <collect-intro>` and familiarized yourself with their use, you can consider alternative hosting platforms. 
+We recommend using Google App Engine or the ODK Aggregate VM before attempting an EC2 or Tomcat deployment. Once you have tried Aggregate together with :doc:`ODK Collect <collect-intro>` and familiarized yourself with their use, you can consider alternative hosting platforms.
 
 You can also go without Aggregate altogether and use :doc:`ODK Briefcase  <briefcase-intro>`.
 
@@ -32,7 +32,7 @@ Things to Consider
 Internet access
 ~~~~~~~~~~~~~~~~~
 
-Google App Engine and Amazon Web Services both require internet access. If you don't have consistent internet access, Briefcase may be more appropriate. 
+Google App Engine and Amazon Web Services both require internet access. If you don't have consistent internet access, Briefcase may be more appropriate.
 
 Tomcat deployments can operate without internet access. In such an environment, Collect would only be able to upload finalized forms after it connects to the network containing the Tomcat deployment.
 
@@ -55,7 +55,7 @@ If this level of systems administration skill is not available, you will have mo
 Ongoing support
 ~~~~~~~~~~~~~~~~
 
-Tomcat deployments require periodic backups of your data. If data security is a concern, you should have a system administrator or database administrator periodically review logs and look for malicious activity. 
+Tomcat deployments require periodic backups of your data. If data security is a concern, you should have a system administrator or database administrator periodically review logs and look for malicious activity.
 
 .. _aggregate-deployment-availability:
 
@@ -64,7 +64,7 @@ Availability
 
 Google App Engine provides highly available servers and data storage. Tomcat deployments with similar availability will be expensive to operate unless your organization already has its own information technology department. The less downtime you can tolerate, the more expensive a Tomcat deployment will be.
 
-On the other hand, high availability is not an issue for many deployments. Most users of Collect download blank forms once and rarely update those forms over the course of a study. Surveyors upload finalized forms to Aggregate infrequently and opportunistically. If that is your situation, you likely do not need a server that is as highly available as Google App Engine provides. 
+On the other hand, high availability is not an issue for many deployments. Most users of Collect download blank forms once and rarely update those forms over the course of a study. Surveyors upload finalized forms to Aggregate infrequently and opportunistically. If that is your situation, you likely do not need a server that is as highly available as Google App Engine provides.
 
 .. _aggregate-deployment-dataset-size:
 
@@ -87,13 +87,13 @@ On Google App Engine, a larger server will incur higher billing costs. Additiona
 Data locality and security
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Google App Engine servers may be located anywhere in the world. 
+Google App Engine servers may be located anywhere in the world.
 
-Depending on the sensitivity of the data and specific storage rule, regulations, or restrictions of your country or organization, the server infrastructure may not have all necessary locality guarantees or security precautions. 
+Depending on the sensitivity of the data and specific storage rule, regulations, or restrictions of your country or organization, the server infrastructure may not have all necessary locality guarantees or security precautions.
 
-In some circumstances, you might be able to use :ref:`encrypted-forms` to achieve compliance. You should research and comply with applicable laws and regulations before storing data on Google App Engine. 
+In some circumstances, you might be able to use :ref:`encrypted-forms` to achieve compliance. You should research and comply with applicable laws and regulations before storing data on Google App Engine.
 
-.. seealso:: `Google Cloud Services Terms of Service <https://cloud.google.com/terms/>`_. 
+.. seealso:: `Google Cloud Services Terms of Service <https://cloud.google.com/terms/>`_.
 
 .. _aggregate-deployment-billing:
 
@@ -115,17 +115,17 @@ Deployments with more activity that do not wish to wait 24 hours for quotas to r
 Once billing is enabled, ODK Aggregate will start using the monthly credit that comes from the Cloud Platform. Once those credits are finished, the credit card or bank on file will then be used. Billing account owners can set spending limits to manage application costs.
 
 Most ODK deployments will not surpass the $200/month credit and non-profits using more than that can apply for more credits through `Google for Nonprofits <https://www.google.com/nonprofits/>`_.
-  
+
 .. _aggregate-deployment-open-source:
 
 Open source
 ~~~~~~~~~~~~~~~
 
-The ODK software is `free <https://www.gnu.org/philosophy/free-sw.en.html>`_, `open source <https://opensource.com/resources/what-open-source>`_, and available for use without charge. 
+The ODK software is `free <https://www.gnu.org/philosophy/free-sw.en.html>`_, `open source <https://opensource.com/resources/what-open-source>`_, and available for use without charge.
 
 It is important to recognize that the open source software model does place additional responsibilities on the users of that software.
 
-Unless you pay for assistance when technical support is needed, you will be required to take the initiative to research and find answers, and to perform technical support tasks yourself. 
+Unless you pay for assistance when technical support is needed, you will be required to take the initiative to research and find answers, and to perform technical support tasks yourself.
 
 Finally, unless you and others contribute back to Open Data Kit through involvement in the community and contributions to the project, this software will become irrelevant and obsolete.
 
@@ -134,15 +134,15 @@ Finally, unless you and others contribute back to Open Data Kit through involvem
 .. _aggregate-deployment-app-engine-sufficient:
 
 .. App Engine is usually sufficient
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   For most users, Google App Engine will be the easiest and most cost-effective option. 
+   For most users, Google App Engine will be the easiest and most cost-effective option.
 
    Two examples illustrate the cost-effectiveness of Google App Engine:
 
    - The fee to run the `ODK Aggregate Demo Server <http://opendatakit.appspot.com>`_ is near the minimum weekly charge, costing a few dollars a week.
 
-   - A 6000 hour study in Mumbai that ran from 01 September 2011 through 29 February 2012 also incurred the minimum charge of $2.10/week for mid-November onward (Google did not begin billing until mid November 2011). 
+   - A 6000 hour study in Mumbai that ran from 01 September 2011 through 29 February 2012 also incurred the minimum charge of $2.10/week for mid-November onward (Google did not begin billing until mid November 2011).
 
    You can enable billing on an as-needed weekly basis. You will incur no charges at all if you disable billing (for example, between data gathering campaigns, while you are developing the forms for the next campaign). When disabled, access is restricted to the free daily usage limit.
 
@@ -160,14 +160,14 @@ On App Engine, the major driver of cost is Datastore Reads. These add up quickly
 - The default view shows 100 submissions.
 - The form submissions display refreshes every six seconds.
 
-For example, if your survey has 500 questions (*q*), with a repeat group containing an additional 300 questions, the typical survey has 4 filled-in repeats (*rpt*), and 100 submissions (*s*) are shown on each page load (*pl*), then the cost to display the Submissions tab is a minimum of 1100 Reads (*R*) with each refresh of the Submissions tab. 
+For example, if your survey has 500 questions (*q*), with a repeat group containing an additional 300 questions, the typical survey has 4 filled-in repeats (*rpt*), and 100 submissions (*s*) are shown on each page load (*pl*), then the cost to display the Submissions tab is a minimum of 1100 Reads (*R*) with each refresh of the Submissions tab.
 
 .. math::
 
   100 s/pl \times (500 q/s  \times  \lfloor 1 R / 200 q \rfloor + 4 rpt/s \times 300 q/rpt \times \lfloor 1 R / 200 q \rfloor) = 1100 \ R/pl
- 
 
-At this rate, the free quota would be exceeded within 5 minutes! 
+
+At this rate, the free quota would be exceeded within 5 minutes!
 
 And this hypothetical survey did not contain any select-one or select-multiple questions, or any audio, video or image captures, all of which would require more Reads.
 
@@ -177,15 +177,15 @@ Therefore, to reduce datastore reads:
  - do not keep the browser window open on the submissions tab
  - :doc:`export or publish your data <aggregate-data-access>`, and do your analysis in a different tool
  - use :doc:`briefcase-intro` instead of Aggregate to generate CSV files
- 
+
 It is generally more efficient to use Briefcase to generate CSV files than to use Aggregate, as Briefcase will use the locally cached data to generate the CSV files.
 
 With larger datasets, there are two modes of operation:
 
-    - Aggregate retains the full dataset. 
-    
+    - Aggregate retains the full dataset.
+
       In this mode, it is slightly more efficient to Pull data to your local computer then immediately Push it back up. This sets some internal tracking logic within Briefcase so that the next Pull is somewhat more efficient, as the Push only verifies that what you have locally matches the content on Aggregate, rather than re-uploading all of it.
-    
-    - Aggregate retains only a portion of the dataset. 
-    
+
+    - Aggregate retains only a portion of the dataset.
+
       In this mode, you periodically purge older data collection records and never Push data up to Aggregate, as that would restore the purged data.

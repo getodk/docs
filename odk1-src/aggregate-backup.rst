@@ -10,7 +10,7 @@ Use :doc:`ODK Briefcase  <briefcase-intro>` to back up all forms and submissions
 
 .. _mysql-backup:
 
-Recovering database from MySQL dump 
+Recovering database from MySQL dump
 --------------------------------------
 
 1. Stop running Tomcat.
@@ -32,7 +32,7 @@ To take a backup of database:
 
 .. code-block:: console
 
-  $ mysqldump database > backup-file.sql; 
+  $ mysqldump database > backup-file.sql;
 
 To restore a database:
 
@@ -46,11 +46,11 @@ To copy a database from one server to another
 
   $ mysqldump --opt database | mysql --host=remote_host -C database
 
-**remote_host** indicates a remote server where you want to take backup.      
+**remote_host** indicates a remote server where you want to take backup.
 
 .. note::
 
-  Creation of the dump respects your credentials, which means you only can dump the tables you have access to. 
+  Creation of the dump respects your credentials, which means you only can dump the tables you have access to.
 
 .. _gae-backup:
 
@@ -96,14 +96,14 @@ Create backup
    :alt: Image showing Open Datastore Admin option.
 
 .. tip::
-   
+
   It is recommended to disable writes during creation of backup. To disable writes, click on :guilabel:`Disable writes` on the Admin page.
 
   .. image:: /img/aggregate-backup/disable-writes.png
     :alt: Image showing Disable writes option.
 
 .. warning::
-   
+
   Your Aggregate server may become unstable when you disable writes. It will be fine when you enable writes again.
 
 7. Select the entity kinds that you wish to back up and then click on :guilabel:`Backup Entities`.
@@ -125,25 +125,25 @@ Create backup
 In the bucket name box, enter *your-project-id.appspot.com*. You can alternatively preface the bucket name with **/gs/**, for example, /gs/[BUCKET_NAME].
 
 .. note::
-  
-  Buckets are containers where your backup will be stored. You can also `create buckets <https://cloud.google.com/storage/docs/creating-buckets>`_ for your project.  
 
-Now click on :guilabel:`Backup Entities` to start the backup jobs.  
+  Buckets are containers where your backup will be stored. You can also `create buckets <https://cloud.google.com/storage/docs/creating-buckets>`_ for your project.
 
-9. A job status page is displayed. Click on :guilabel:`Back to Datastore Admin` to see the backup status. 
+Now click on :guilabel:`Backup Entities` to start the backup jobs.
+
+9. A job status page is displayed. Click on :guilabel:`Back to Datastore Admin` to see the backup status.
 
 .. image:: /img/aggregate-backup/backup-job.png
    :alt: Image showing backup job status page.
 
-You can abort a backup by selecting a backup from the list of pending backups and clicking on :guilabel:`Abort`. 
+You can abort a backup by selecting a backup from the list of pending backups and clicking on :guilabel:`Abort`.
 
 .. image:: /img/aggregate-backup/pending-backup.png
    :alt: Image showing Abort and Info option.
 
 .. warning::
 
-  When you abort a backup job, App Engine attempts to delete backup data that has been saved up to that point. However, in some cases, some files can remain after the abort. You can locate these files in the location you chose for your backups in Google Cloud Storage and safely delete them after the abort completes. The names of such files start with the following pattern: **datastore_backup_[BUCKET_NAME]**. 
-  
+  When you abort a backup job, App Engine attempts to delete backup data that has been saved up to that point. However, in some cases, some files can remain after the abort. You can locate these files in the location you chose for your backups in Google Cloud Storage and safely delete them after the abort completes. The names of such files start with the following pattern: **datastore_backup_[BUCKET_NAME]**.
+
 Click on :guilabel:`Info` to get more information about the backup. On the info page, click :guilabel:`Back to Datastore Admin` to return to the main Cloud Datastore Admin screen.
 
 .. image:: /img/aggregate-backup/backup-info.png
@@ -188,11 +188,11 @@ Restoring data from Backup
 .. image:: /img/aggregate-backup/restore-backup.png
    :alt: Image showing restore option.
 
-.. note::   
+.. note::
 
   In the advisory page, notice that the default queue, with its pre-configured performance settings, is used for the restore job. Change this to another queue that you have configured differently if you need different queue performance characteristics, making sure the queue chosen does not have any target specified in **queue.yaml** other than **ah-builtin-python-bundle**. To know more about queues, see `this <https://cloud.google.com/appengine/docs/standard/java/taskqueue/>`_.
 
-5. A job status page is displayed. Click on :guilabel:`Back to Datastore Admin` to see the status of the restore. 
+5. A job status page is displayed. Click on :guilabel:`Back to Datastore Admin` to see the status of the restore.
 
 .. image:: /img/aggregate-backup/restore-job.png
    :alt: Image showing job status page.
@@ -210,4 +210,4 @@ Restoring data from Backup
 .. note::
 
   - If you back up your data using Google Cloud Storage, you can restore backups to applications other than the application used to create the backup. To restore backup data from a source application to a target application, see this `guide <https://cloud.google.com/appengine/docs/standard/python/console/datastore-backing-up-restoring>`_.
-  - Google has new beta service for `exporting and importing <https://cloud.google.com/datastore/docs/export-import-entities>`_. Only Cloud Platform projects with `billable accounts <https://cloud.google.com/support/billing/>`_ can use the export and import functionality. 
+  - Google has new beta service for `exporting and importing <https://cloud.google.com/datastore/docs/export-import-entities>`_. Only Cloud Platform projects with `billable accounts <https://cloud.google.com/support/billing/>`_ can use the export and import functionality.
