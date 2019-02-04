@@ -12,40 +12,44 @@ Google App Engine Support (Legacy)
 Planning Your Aggregate Deployment
 ----------------------------------
 
-The recommended method to deploy Aggregate v1 is using Google App Engine or the ODK Aggregate VM before attempting an EC2 or Tomcat deployment.
+The recommended method to deploy Aggregate v1.x is using Google App Engine or the :doc:`ODK Aggregate VM <aggregate-vm>`. Try those first before attempting other methods.
 
 Internet access
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 
-Google App Engine and Amazon Web Services both require internet access. If you don't have consistent internet access, Briefcase may be more appropriate.
+Google App Engine requires internet access. If you don't have consistent internet access, :doc:`ODK Briefcase <briefcase-intro>` may be more appropriate.
+
+Availability
+~~~~~~~~~~~~
+
+Google App Engine provides highly available servers and data storage.
 
 Dataset size
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
 
 Google App Engine can store a virtually unlimited amount of data --- well in excess of a million submissions.
 
-However, in deployments with data sets exceeding 7,000 submissions,
-the :ref:`data export feature <export-data>` will stop working. To correct this, you will need a custom deployment with a larger virtual machine.
+However, in deployments with data sets exceeding 7,000 submissions, the :ref:`data export feature <export-data>` will stop working. To correct this, you will need to :doc:`increase web server size <aggregate-boost-performance>`.
 
-On Google App Engine, a larger server will incur higher billing costs. Additionally, for datasets of over 100,000 records, it is likely that performance will be better when using MySQL or PostgreSQL, rather than Google App Engine's data store. You also have more optimization opportunities when running your own database servers than are available through Google's cloud services.
+On Google App Engine, a larger instance will incur higher billing costs. Additionally, for datasets of over 100,000 records, it is likely that performance will be better when using MySQL or PostgreSQL, rather than Google App Engine's data store. You also have more optimization opportunities when running your own database servers than are available through Google's cloud services.
 
 .. note::
 
   Individual text database fields are capped at a length of 255 by default for performance reasons. If you intend to collect text data longer than 255 characters (including using types :ref:`geotrace <geotrace-widget>`, :ref:`geoshape <geoshape-widget>` or :ref:`select multiple <multi-select-widget>`), your forms should :doc:`specify database field lengths greater than 255 <aggregate-field-length>`.
 
 Data locality and security
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Google App Engine servers may be located anywhere in the world.
 
 Depending on the sensitivity of the data and specific storage rule, regulations, or restrictions of your country or organization, the server infrastructure may not have all necessary locality guarantees or security precautions.
 
-In some circumstances, you might be able to use :ref:`encrypted-forms` to achieve compliance. You should research and comply with applicable laws and regulations before storing data on Google App Engine.
+In some circumstances, you might be able to use :ref:`encrypted forms <encrypted-forms>` to achieve compliance. You should research and comply with applicable laws and regulations before storing data on Google App Engine.
 
 .. seealso:: `Google Cloud Services Terms of Service <https://cloud.google.com/terms/>`_.
 
 Billing
-~~~~~~~~~
+~~~~~~~
 
 For identity verification purposes, Google requires a credit card or banking details to use the Google Cloud Platform that Google App Engine runs on. Accounts that meet this requirement receive a recurring $200 monthly credit per billing account.
 
@@ -63,8 +67,8 @@ Once billing is enabled, ODK Aggregate will start using the monthly credit that 
 
 Most ODK deployments will not surpass the $200/month credit and non-profits using more than that can apply for more credits through `Google for Nonprofits <https://www.google.com/nonprofits/>`_.
 
-App Engine is usually sufficient
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Cost effectiveness
+~~~~~~~~~~~~~~~~~~
 
 For most users, Google App Engine will be the easiest and most cost-effective option.
 
@@ -76,8 +80,8 @@ Two examples illustrate the cost-effectiveness of Google App Engine:
 
 You can enable billing on an as-needed weekly basis. You will incur no charges at all if you disable billing (for example, between data gathering campaigns, while you are developing the forms for the next campaign). When disabled, access is restricted to the free daily usage limit.
 
-Minimizing App Engine fees
-------------------------------------
+Minimizing fees
+~~~~~~~~~~~~~~~~
 
 On App Engine, the major driver of cost is Datastore Reads. These add up quickly:
 
