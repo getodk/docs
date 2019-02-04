@@ -12,6 +12,7 @@
   :maxdepth: 1
 
   aggregate-tomcat
+  aggregate-do
   aggregate-aws
   aggregate-vm
 
