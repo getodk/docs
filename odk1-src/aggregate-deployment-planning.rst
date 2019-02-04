@@ -22,7 +22,7 @@ If you have some development background, you can try using:
 - A `Docker image <https://github.com/opendatakit/aggregate/blob/master/docs/build-and-run-a-docker-image.md>`_
 - A `Docker Compose setup <https://github.com/opendatakit/aggregate/blob/master/docs/build-and-run-with-docker-compose.md>`_
 
-Previous versions of Aggregate can be deployed in :doc:`Google AppEngine <aggregate-app-engine>`, but we strongly recommend deploying Aggregate v2 using any of the guides above.
+Previous versions of Aggregate can be deployed in :doc:`Google App Engine <aggregate-app-engine>`, but we strongly recommend deploying Aggregate v2 using any of the guides above.
 
 You can also go without Aggregate altogether and use :doc:`ODK Briefcase  <briefcase-intro>`.
 
