@@ -29,7 +29,7 @@ Dataset size
 
 Google App Engine can store a virtually unlimited amount of data --- well in excess of a million submissions.
 
-However, in deployments with data sets exceeding 7,000 submissions, the :ref:`data export feature <export-data>` will stop working. To correct this, you will need to :doc:`increase web server size <aggregate-boost-performance>`.
+However, in deployments with data sets exceeding 7,000 submissions, the :ref:`data export feature <export-data>` will stop working. To correct this, you will need to :doc:`increase server size <aggregate-boost-performance>`.
 
 On Google App Engine, a larger instance will incur higher billing costs. Additionally, for datasets of over 100,000 records, it is likely that performance will be better when using MySQL or PostgreSQL, rather than Google App Engine's data store. You also have more optimization opportunities when running your own database servers than are available through Google's cloud services.
 
@@ -136,28 +136,24 @@ Backing up Aggregate
 
 You can export and import Datastore entities using the `managed export and import service <https://cloud.google.com/datastore/docs/export-import-entities>`_. See `ODK Aggregate data wrangling for App Engine <https://forum.opendatakit.org/t/odk-aggregate-data-wrangling-compendium/14174>`_ for more detail.
 
-Tips and best practices
+Tips and Best Practices
 -----------------------
 
-.. toctree::
-  :maxdepth: 2
+Aggregate Limitations
+~~~~~~~~~~~~~~~~~~~~~
 
-  aggregate-boost-performance
-
-Pushing Data to Aggregate on Google App Engine
--------------------------------------------------
+Pushing Data to Aggregate
+"""""""""""""""""""""""""
 
 If Aggregate is :doc:`installed on Google App Engine <aggregate-app-engine>`, using the default datastore as described in our documentation, a combination of request time limits and datastore implementation create the following issues.
 
-Simultaneous push requests will block each other and may time out
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Simultaneous push requests will block each other and may time out**
 
 Within ODK Aggregate, there is a global mutex (*TaskLock* across all server instances, mediated by the datastore layer) in the server when inserting submissions. Having multiple push requests occurring simultaneously will cause them to block on the mutex, chewing up their 60-second request limit, as they get processed in single file no matter how many server instances are spun up.
 
-The solution to this is: **Serialize your push requests.**
+The solution to this is: Serialize your push requests.
 
-Time limit may be exceeded on low-bandwidth connections
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Time limit may be exceeded on low-bandwidth connections**
 
 The 60-second request limit can be very commonly exceeded over low-bandwidth connections, and even text-only submissions can be impacted on satellite connections. That is why ODK Collect splits submissions into multiple 10MB submission requests. The timer starts upon receipt of the first byte, so a slow connection can account for a sizeable portion of those 60 seconds. The same applies for sending a response. The processing on the server is generally negligible in relation to the transmission times.
 
@@ -167,10 +163,15 @@ The 60-second request limit can be very commonly exceeded over low-bandwidth con
    - A server that used database transactions and that used streaming servlet 3.0 functionality would have less trouble with concurrent requests.
 
 Media held in memory
-----------------------
+""""""""""""""""""""
 
 When a form submission is uploaded, and when blank forms are downloaded, all the associated media files are held in memory at the same time, twice. For forms with a lot of media files, this can consume a lot of memory.
 
 The previous section already suggested serializing form submission uploads. This is not absolutely critical for form downloads, but you should probably manage how many form download requests are being handled concurrently, in order to avoid memory problems.
 
 ..  Spinning up of copies of the frontend will incur faster quota usage on App Engine. For that reason, the Aggregate configuration here specifies a 14-second queuing time threshold before a new instance is spun up. Only if at least one request is queued for longer than 14 seconds will a new instance be spun up, and then that new instance will take about 30 seconds to become live. Leaving a 15-second processing interval. This is why ODK Collect tried twice before failing a submit.
+
+Reducing Data Corruption and Boosting Performance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+See :doc:`Reducing Data Corruption and Boosting Performance on Google App Engine <aggregate-boost-performance>`.
