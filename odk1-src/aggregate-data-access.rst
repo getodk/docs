@@ -47,7 +47,9 @@ KML (Keyhole Markup Language)
 
 KML is a text only representation of the data similar to XML, but used for mapping applications like Google Earth. Multimedia files are represented by including standard web links to the files hosted on the server. Pictures will appear embedded in popup windows (when pushpins are clicked) in programs that render .kml files. Repeats and grouping information is not preserved. Metadata is only preserved if a filter is created with the metadata.
 
-.. csv-table:: **Export Data Summary**
+Export Data Summary
+~~~~~~~~~~~~~~~~~~~
+.. csv-table::
    :header: "Format", "Groups", "Repeats", "Multimedia", "Metadata"
    :widths: auto
 
@@ -101,6 +103,17 @@ JSON Server
 ~~~~~~~~~~~~~
 
 JSON preserves grouping and repeat structures. The user can choose to let multimedia files be represented as web links or embedded as base64 encoded strings. All metadata is preserved.
+
+
+Publish Data Summary
+~~~~~~~~~~~~~~~~~~~~
+
+.. csv-table::
+   :header: "Service", "Groups", "Repeats", "Multimedia", "Metadata"
+   :widths: auto
+
+   "Google Spreadsheets", "not preserved", "links to", "links to", "preserved"
+   "JSON Server", "preserved", "preserved", "links to or embedded as base64", "preserved"
 
 .. _odk-api:
 
