@@ -119,3 +119,11 @@ With larger datasets, there are two modes of operation:
 - Aggregate retains only a portion of the dataset.
 
   In this mode, you periodically purge older data collection records and never Push data up to Aggregate, as that would restore the purged data.
+
+Installing Aggregate
+--------------------
+
+.. toctree::
+  :maxdepth: 1
+
+  aggregate-app-engine
