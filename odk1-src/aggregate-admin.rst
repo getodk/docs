@@ -39,13 +39,8 @@ Preferences
 
 In the :guilabel:`Preferences` sub-tab under :guilabel:`Site Admin` tab, you can manage:
 
-- Google API credentials: These credentials are used when publishing into Google services. For details on this, see :doc:`Aggregate OAuth2 info <oauth2-service>`.
-
+- **Google API credentials**: These credentials are used when publishing into Google services. For details on this, see :doc:`Aggregate OAuth2 info <oauth2-service>`.
 - **Enketo credentials**: These credentials are used for Enketo webforms integration. To link Enketo with Aggregate, see `this <https://accounts.enketo.org/support/aggregate/>`_.
-- **ODK 2.0 App name**
-
-   - *ODK Tables Synchronization Functionality* - check this to enable ODK Tables functionality to download, upload and alter data records within ODK Tables as restricted by table-access privileges granted to the user.
-
 - **Aggregate features**: These settings affect the operations of the server.
 
    - *Skip malformed submissions* - check this to ignore corrupted submissions.
