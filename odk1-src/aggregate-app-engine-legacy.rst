@@ -69,18 +69,18 @@ Once billing is enabled, ODK Aggregate will start using the monthly credit that 
 
 Most ODK deployments will not surpass the $200/month credit and non-profits using more than that can apply for more credits through `Google for Nonprofits <https://www.google.com/nonprofits/>`_.
 
-.. App Engine is usually sufficient
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+App Engine is usually sufficient
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   For most users, Google App Engine will be the easiest and most cost-effective option.
+For most users, Google App Engine will be the easiest and most cost-effective option.
 
-   Two examples illustrate the cost-effectiveness of Google App Engine:
+Two examples illustrate the cost-effectiveness of Google App Engine:
 
-   - The fee to run the `ODK Aggregate Demo Server <http://opendatakit.appspot.com>`_ is near the minimum weekly charge, costing a few dollars a week.
+- The fee to run the `ODK Aggregate Demo Server <http://opendatakit.appspot.com>`_ is near the minimum weekly charge, costing a few dollars a week.
 
-   - A 6000 hour study in Mumbai that ran from 01 September 2011 through 29 February 2012 also incurred the minimum charge of $2.10/week for mid-November onward (Google did not begin billing until mid November 2011).
+- A 6000 hour study in Mumbai that ran from 01 September 2011 through 29 February 2012 also incurred the minimum charge of $2.10/week for mid-November onward (Google did not begin billing until mid November 2011).
 
-   You can enable billing on an as-needed weekly basis. You will incur no charges at all if you disable billing (for example, between data gathering campaigns, while you are developing the forms for the next campaign). When disabled, access is restricted to the free daily usage limit.
+You can enable billing on an as-needed weekly basis. You will incur no charges at all if you disable billing (for example, between data gathering campaigns, while you are developing the forms for the next campaign). When disabled, access is restricted to the free daily usage limit.
 
 Minimizing App Engine fees
 ------------------------------------
@@ -143,6 +143,8 @@ Backup and recovery on Google App Engine
 .. warning::
 
   Although the following instructions are what was available in these docs before Aggregate v2, Google now recommends using the more up-to-date method of `extracting and importing entities <https://cloud.google.com/datastore/docs/export-import-entities>`_. This is explained in more depth at the `ODK Aggregate data wrangling compendium <https://forum.opendatakit.org/t/odk-aggregate-data-wrangling-compendium/14174>`_ forum post.
+
+.. _create-backup:
 
 Create backup
 ~~~~~~~~~~~~~~~
