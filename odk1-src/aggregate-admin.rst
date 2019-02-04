@@ -16,10 +16,8 @@ Click the :guilabel:`Log In` link in the upper right corner of the screen to be 
 Permissions
 ~~~~~~~~~~~~~
 
-If you have not yet changed your super-user password to something other than the default password of `aggregate`, the server will display a warning at the top of the web page.
-
 .. warning::
-   If you do not change the default password, anyone can take complete control of your server!
+   Remember to change the default password of your super-user account. Otherwise, anyone can take complete control of your server!
 
 Please visit the :guilabel:`Permissions` sub-tab under the :guilabel:`Site Admin` tab to change this user's password.
 
