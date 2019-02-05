@@ -6,7 +6,7 @@
 Welcome to ODK's Docs!
 ======================
 
-:dfn:`Open Data Kit` (ODK) is a suite of open source tools that help organizations collect and manage data. 
+:dfn:`Open Data Kit` (ODK) is a suite of open source tools that help organizations collect and manage data.
 
 The core ODK tools are:
 
@@ -50,7 +50,7 @@ While this is the *typical* use pattern, it is not the only way to do things. OD
 
 
 .. toctree::
-  :maxdepth: 1 
+  :maxdepth: 1
   :hidden:
 
   getting-started
@@ -64,7 +64,7 @@ While this is the *typical* use pattern, it is not the only way to do things. OD
   collect-setup
   collect-using
   collect-best-practices
-  
+
 .. toctree::
   :hidden:
   :maxdepth: 2
@@ -74,6 +74,7 @@ While this is the *typical* use pattern, it is not the only way to do things. OD
   aggregate-setup
   aggregate-use
   aggregate-best-practices
+  aggregate-app-engine-legacy
 
 .. toctree::
   :hidden:
@@ -110,35 +111,35 @@ While this is the *typical* use pattern, it is not the only way to do things. OD
   launch-apps-from-collect
   form-tools
   form-best-practices
-  
+
 .. toctree::
   :hidden:
   :maxdepth: 2
-  :caption: Contributing 
+  :caption: Contributing
 
   contributing
 
 .. toctree::
   :hidden:
   :maxdepth: 2
-  :caption: Developing with ODK 
-  
+  :caption: Developing with ODK
+
   openrosa
   javarosa
   launch-collect-from-app
   briefcase-api
-  
+
 .. toctree::
   :hidden:
   :maxdepth: 2
   :caption: Integration
-  
+
   encrypted-forms
 
 .. toctree::
   :hidden:
   :maxdepth: 2
   :caption: Reference
-  
+
   security-privacy
   glossary

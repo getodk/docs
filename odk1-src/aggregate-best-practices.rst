@@ -5,4 +5,3 @@ Tips and Best Practices
   :maxdepth: 2
 
   aggregate-limitations
-  aggregate-boost-performance 
