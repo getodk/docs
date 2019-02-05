@@ -508,6 +508,11 @@ If given a :th:`label` and also a :th:`ref`, groups will be visible as clickable
 .. image:: /img/form-logic/jump-menu-groups.*
   :alt: The jump menu with a few grouped questions.
 
+.. warning::
+
+  If you use ODK Build v0.3.4 or earlier, your groups will not be visible in the jump menu.
+  The items inside the groups will display as if they weren't grouped at all.
+
 Groups can also be a convenient way to :ref:`conditionally show certain questions <relevants>`.
 
 .. _repeats:
