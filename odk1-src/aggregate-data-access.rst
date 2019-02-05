@@ -47,7 +47,9 @@ KML (Keyhole Markup Language)
 
 KML is a text only representation of the data similar to XML, but used for mapping applications like Google Earth. Multimedia files are represented by including standard web links to the files hosted on the server. Pictures will appear embedded in popup windows (when pushpins are clicked) in programs that render .kml files. Repeats and grouping information is not preserved. Metadata is only preserved if a filter is created with the metadata.
 
-.. csv-table:: **Export Data Summary**
+Export Data Summary
+~~~~~~~~~~~~~~~~~~~
+.. csv-table::
    :header: "Format", "Groups", "Repeats", "Multimedia", "Metadata"
    :widths: auto
 
@@ -89,9 +91,7 @@ Spreadsheets is Google’s cloud-hosted spreadsheet solution. Multimedia files a
 
 .. warning::
 
-  Non-repeating grouping information is not preserved. This implies that if your form has a non-repeating group `purchaser` and a second non-repeating group `supplier` and within each of these groups, you have a `name` field, then when you publish to Fusion Tables, there will be two columns called `name`. Unfortunately, that badly confuses Fusion Tables, and generally results in data not transferring successfully into Fusion Tables.
-
-  The solution is to this problem is to design your forms with field names such as `purchaser_name` and `supplier_name`. In other words, use unique names throughout your form.
+  Non-repeating grouping information is not preserved with Google Sheets. Use globally unique names throughout your form or data might not transfer correctly to Google Sheets.
 
 .. admonition:: OAuth2 Service Account Required
 
@@ -103,6 +103,17 @@ JSON Server
 ~~~~~~~~~~~~~
 
 JSON preserves grouping and repeat structures. The user can choose to let multimedia files be represented as web links or embedded as base64 encoded strings. All metadata is preserved.
+
+
+Publish Data Summary
+~~~~~~~~~~~~~~~~~~~~
+
+.. csv-table::
+   :header: "Service", "Groups", "Repeats", "Multimedia", "Metadata"
+   :widths: auto
+
+   "Google Spreadsheets", "not preserved", "links to", "links to", "preserved"
+   "JSON Server", "preserved", "preserved", "links to or embedded as base64", "preserved"
 
 .. _odk-api:
 
@@ -118,7 +129,7 @@ Briefcase CLI
 
 ODK Briefcase includes a CLI (Command Line Interface) to automate downloading forms from ODK Aggregate (or ODK Collect) and exporting the forms to an Excel-compatible format like CSV. For more details, see :ref:`Working with command line on Briefcase <cli-use>`.
 
-.. _briefacse-aggregate-api:
+.. _briefcase-aggregate-api:
 
 Briefcase-Aggregate API
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -146,6 +157,17 @@ OpenRosa API
 ~~~~~~~~~~~~~~~
 
 Collect and Aggregate communicate using a standard set of API calls defined in the :doc:`openrosa` specification, which can also be used by alternative clients.
+
+.. _direct-database:
+
+Direct database connection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. warning::
+
+  This is an extremely dangerous way to access data from Aggregate because table structure can and does change between versions. Moreover, changing any of this data could corrupt your Aggregate install.
+
+If you are running on a Tomcat server, you have access to the underlying MySQL or PostgreSQL tables. The structure of those tables are documented at `Aggregate Database Structure <https://github.com/opendatakit/opendatakit/wiki/Aggregate-Database-Structure>`_.
 
 .. _media-access:
 

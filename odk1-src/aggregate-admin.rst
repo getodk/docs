@@ -9,7 +9,7 @@ Click the :guilabel:`Log In` link in the upper right corner of the screen to be 
 
 .. warning::
 
-  If the instance name of the server changes (the installer asks for this name), then the passwords for all ODK Aggregate usernames will be cleared (preventing their use) and the super-user username's password will be reset to aggregate and the above message will also be displayed. In this case, you should log in, change the super-user's password, and change the passwords for all of your ODK Aggregate usernames.
+  If the instance name of the server changes (the installer asks for this name), then the passwords for all ODK Aggregate usernames will no longer be valid and the super-user username's password will be reset to *aggregate*. In this case, you should log in, change the super-user's password, and change the passwords for all of your ODK Aggregate usernames.
 
 .. _aggregate-permissions:
 
@@ -42,5 +42,4 @@ In the :guilabel:`Preferences` sub-tab under :guilabel:`Site Admin` tab, you can
 - **Google API credentials**: These credentials are used when publishing into Google services. For details on this, see :doc:`Aggregate OAuth2 info <oauth2-service>`.
 - **Enketo credentials**: These credentials are used for Enketo webforms integration. To link Enketo with Aggregate, see `this <https://accounts.enketo.org/support/aggregate/>`_.
 - **Aggregate features**: These settings affect the operations of the server.
-
    - *Skip malformed submissions* - check this to ignore corrupted submissions.

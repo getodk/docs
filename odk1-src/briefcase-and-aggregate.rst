@@ -1,7 +1,7 @@
 Briefcase and Aggregate
 =========================
 
-:doc:`ODK Briefcase  <briefcase-intro>` and
+:doc:`ODK Briefcase <briefcase-intro>` and
 :doc:`ODK Aggregate <aggregate-intro>` have
 complementary and overlapping features.
 For some deployments,
@@ -34,7 +34,7 @@ With Aggregate you can:
 - Accept finalized form instances from Collect.
 - Review and visualize submitted form data.
 - Export submitted form data to :term:`CSV`, :term:`KML`, and :term:`JSON`.
-- Publish data to Google Sheets, or JSON servers.
+- Publish data to Google Sheets or JSON servers.
 - Work offline.
 
 

@@ -1,9 +1,11 @@
-(Legacy) Installing Aggregate v1 on Google App Engine
-=====================================================
+:orphan:
+
+Installing Aggregate on Google App Engine
+=========================================
 
 .. warning::
 
-  This document refers only to ODK Aggregate v1
+  This document only applies ODK Aggregate v1.x. See `why we are removing App Engine support <https://forum.opendatakit.org/t/upcoming-changes-to-aggregate/17582>`_ for more information.
 
 .. note::
 
