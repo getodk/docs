@@ -582,7 +582,7 @@ the user is asked if they want to add another repeat group.
   :alt: The Collect app. A modal dialog labeled "Add new group?" with the question: "Add a new 'repeat group label' group?" and options "Do not add" and "Add Group".
   
   The user is given the option to add each iteration.
-  
+
 .. rubric:: XLSForm
 
 .. csv-table:: survey
@@ -595,6 +595,10 @@ the user is asked if they want to add another repeat group.
 .. note::
 
   This interaction may be confusing to users the first time they see it. If enumerators know the number of repetitions ahead of time, consider using :ref:`dynamically defined repeats <dynamically-defined-repeats>`.
+
+.. tip::
+
+  The :ref:`jump <jumping>` menu also provides shortcuts to :ref:`add <adding_repeats>` or :ref:`remove <removing_repeats>` instances of repeating groups.
 
 .. _statically-defined-repeats:
 
