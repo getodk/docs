@@ -75,7 +75,7 @@ Ongoing support
 Infrastructure architecture
 ---------------------------
 
-In these docs we explain how to deploy a monolithic server with everything Aggregate needs to run (Tomcat, PostgreSQL, SSL support), but there are a multitude of scenarios that you might want to consider:
+In these docs we explain how to deploy a monolithic server with everything Aggregate needs to run (Tomcat, PostgreSQL, SSL support), but there is a multitude of scenarios that you might want to consider:
 
 - You could deploy Aggregate on one machine and the database in a separate machine, or even use a cloud database.
 - You could have high-availability or an horizontal scalability option by using a load balancer.
