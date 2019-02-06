@@ -175,7 +175,7 @@ The following calculate will keep track of the first time the enumerator set a v
   :header: type, name, label, calculation
 
   integer, age, What is your age?,
-  calculate, age_timestamp, , "if(age = '', '', once(now()))"
+  calculate, age_timestamp, , "if(${age} = '', '', once(now()))"
 
 
 .. _empty-values:
