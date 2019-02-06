@@ -99,7 +99,7 @@ If you have a looped group, you can add new instances of that group in the follo
 2. By clicking the "add" button in the :ref:`jump menu <jumping>`:
 
 .. image:: /img/collect-forms/jump-button-add.*
-    :alt: The "add" button.
+    :alt: The "add" button displayed on an Android phone.
     :class: device-screen-vertical
 
 .. _removing_repeats:
@@ -114,7 +114,7 @@ If you have a looped group, you can remove existing instances of that group in t
 2. By clicking the "remove" button in the :ref:`jump menu <jumping>`:
 
 .. image:: /img/collect-forms/jump-button-remove.*
-    :alt: The "remove" button.
+    :alt: The "remove" button displayed on an Android phone.
     :class: device-screen-vertical
 
 .. _navigating:
@@ -186,6 +186,12 @@ The arrow icon (|arrow|) in the top right corner opens the jump menu. From the j
 
 .. image:: /img/collect-forms/jumpmenu.*
     :alt: Jump menu displayed in ODK Collect on an Android phone.
+    :class: device-screen-vertical
+
+If you're inside of a group of questions, you can navigate "up" in the hierarchy using the "go up" button:
+
+.. image:: /img/collect-forms/jump-button-up.*
+    :alt: The "go up" button displayed on an Android phone.
     :class: device-screen-vertical
 
 The jump menu also provides shortcuts to :ref:`add <adding_repeats>` or :ref:`remove <removing_repeats>` instances of looped groups.
