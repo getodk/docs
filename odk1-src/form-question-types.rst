@@ -1646,7 +1646,7 @@ Records audio from an external app.
 .. image:: /img/form-widgets/audio-start.*
   :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "Please record your name." There are three buttons: Record Sound, Choose Sound and Play Sound. The "Play Sound" button is disabled.
 
-.. rubric:: XLSForm Rows
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label
@@ -1670,7 +1670,7 @@ Records video, using the device camera.
 .. image:: /img/form-widgets/video2.*
   :alt: The Video form widget as displayed previously. The question text is "Please record a video of yourself blinking." The hint text is "Three times is probably sufficient." Below that are three buttons: Record Video, Choose Video, and Play Video. All three buttons are enabled.
 
-.. rubric:: XLSForm Rows
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, hint

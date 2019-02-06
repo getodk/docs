@@ -490,7 +490,7 @@ Groups of questions
 
 To group questions, use the :tc:`begin_group...end_group` syntax.
 
-.. rubric:: XLSForm (Question group)
+.. rubric:: XLSForm --- Question group
 
 .. csv-table:: survey
   :header: type, name, label
@@ -542,7 +542,7 @@ Repeating questions and groups of questions
 To repeat questions or groups of questions
 use the :tc:`begin_repeat...end_repeat` syntax.
 
-.. rubric:: XLSForm (Single question repeat)
+.. rubric:: XLSForm --- Single question repeat
 
 .. csv-table:: survey
   :header: type, name, label 
@@ -551,7 +551,7 @@ use the :tc:`begin_repeat...end_repeat` syntax.
   text, repeated_question, This question will be repeated.
   end_repeat, , 
 
-.. rubric:: XLSForm (Multi-question repeat)
+.. rubric:: XLSForm --- Multi-question repeat
 
 .. csv-table:: survey
   :header: type, name, label 
