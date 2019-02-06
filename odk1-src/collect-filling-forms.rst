@@ -76,6 +76,7 @@ In all cases, buttons below the question text will guide you through providing t
 
   For a (mostly) complete guide to form question appearance, see :doc:`form-question-types`.
 
+.. _removing_answers:
 
 Removing answers
 -------------------
@@ -86,7 +87,38 @@ To remove a response, :gesture:`Long Press` on the :term:`question label`.
   :alt: To remove an answer to a question, long press the question label and follow the on-screen prompts.
   :class: details
 
-  
+.. _adding_repeats:
+
+Adding instances of looped groups
+-----------------------------------
+
+If you have a looped group, you can add new instances of that group in the following ways:
+
+1. By :ref:`navigating <navigating>` into an empty looped group, or to the next question at the very end of the group, you will automatically be prompted to add a new instance
+
+2. By clicking the "add" button in the :ref:`jump menu <jumping>`:
+
+.. image:: /img/collect-forms/jump-button-add.*
+    :alt: The "add" button displayed on an Android phone.
+    :class: device-screen-vertical
+
+.. _removing_repeats:
+
+Removing instances of looped groups
+-------------------------------------
+
+If you have a looped group, you can remove existing instances of that group in the following ways:
+
+1. By :gesture:`long pressing` on the :term:`question label` in the same way as for :ref:`removing answers <removing_answers>`
+
+2. By clicking the "remove" button in the :ref:`jump menu <jumping>`:
+
+.. image:: /img/collect-forms/jump-button-remove.*
+    :alt: The "remove" button displayed on an Android phone.
+    :class: device-screen-vertical
+
+.. _navigating:
+
 Navigating the form 
 ------------------------
 
@@ -135,7 +167,8 @@ If you prefer Forward and Back buttons for navigation, you can switch to that in
   
 .. image:: /img/collect-completing-forms/question-screen-with-buttons.* 
   :alt: A question screen in the Collect App. There are now two buttons below the question text, with left (backwards) and right (forwards) buttons.
- 
+
+.. _jumping:
 
 Jumping to questions
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -143,17 +176,26 @@ Jumping to questions
 The arrow icon (|arrow|) in the top right corner opens the jump menu. From the jump menu, you can go to any question or go to the beginning/ending of the form.
 
 .. |arrow| image:: /img/collect-forms/jumpicon.*
-             :alt: Opens the jump menu. 
+    :alt: Opens the jump menu.
+    :scale: 25%
+    :class: icon-inline
 
- 
 .. image:: /img/collect-forms/jumpscreen.*
-    :alt: Screen with the arrow icon displayed in ODK Collect on an Android phone. 
+    :alt: Screen with the arrow icon displayed in ODK Collect on an Android phone.
     :class: device-screen-vertical
-  
+
 .. image:: /img/collect-forms/jumpmenu.*
-    :alt: Jump menu displayed in ODK Collect on an Android phone. 
+    :alt: Jump menu displayed in ODK Collect on an Android phone.
     :class: device-screen-vertical
- 
+
+If you're inside of a group of questions, you can navigate "up" in the hierarchy using the "go up" button:
+
+.. image:: /img/collect-forms/jump-button-up.*
+    :alt: The "go up" button displayed on an Android phone.
+    :class: device-screen-vertical
+
+The jump menu also provides shortcuts to :ref:`add <adding_repeats>` or :ref:`remove <removing_repeats>` instances of looped groups.
+
 .. note::
 
   If a form contains questions in a looped group, those questions will only appear in the Jump menu once an actual record is created.
