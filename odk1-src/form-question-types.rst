@@ -2141,6 +2141,10 @@ The :tc:`field-list` appearance attribute, applied to a group of widgets, displa
   including a question and its dependent together in a field list
   will not work as expected.
 
+.. seealso::
+
+  :ref:`groups` and :ref:`repeats`.
+
 Select widgets included in a :tc:`field-list` group can have one of several :th:`appearance` attributes:
 
 :tc:`label`
