@@ -87,6 +87,8 @@ To remove a response, :gesture:`Long Press` on the :term:`question label`.
   :alt: To remove an answer to a question, long press the question label and follow the on-screen prompts.
   :class: details
 
+.. _adding_repeats:
+
 Adding instances of looped groups
 -----------------------------------
 
@@ -99,6 +101,8 @@ If you have a looped group, you can add new instances of that group in the follo
 .. image:: /img/collect-forms/jump-button-add.*
     :alt: The "add" button.
     :class: device-screen-vertical
+
+.. _removing_repeats:
 
 Removing instances of looped groups
 -------------------------------------
@@ -183,6 +187,8 @@ The arrow icon (|arrow|) in the top right corner opens the jump menu. From the j
 .. image:: /img/collect-forms/jumpmenu.*
     :alt: Jump menu displayed in ODK Collect on an Android phone.
     :class: device-screen-vertical
+
+The jump menu also provides shortcuts to :ref:`add <adding_repeats>` or :ref:`remove <removing_repeats>` instances of looped groups.
 
 .. note::
 
