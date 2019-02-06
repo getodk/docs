@@ -526,8 +526,8 @@ Logical groups can be a convenient way to :ref:`conditionally show certain quest
 
 .. _repeats:
 
-Repeating questions and groups of questions
-==============================================
+Repeating groups of questions
+=============================
 
 .. note::
   Using repetition in a form is very powerful but can also make training and data analysis more time-consuming. Aggregate does not export repeats so Briefcase or one of the data publishers will be needed to :doc:`transfer data from Aggregate <aggregate-data-access>`. Repeats will be in their own documents and will need to be joined with their parent records for analysis.
@@ -542,7 +542,7 @@ Repeating questions and groups of questions
 To repeat questions or groups of questions
 use the :tc:`begin_repeat...end_repeat` syntax.
 
-.. rubric:: XLSForm --- Single question repeat
+.. rubric:: XLSForm --- Single question repeat group
 
 .. csv-table:: survey
   :header: type, name, label 
@@ -551,7 +551,7 @@ use the :tc:`begin_repeat...end_repeat` syntax.
   text, repeated_question, This question will be repeated.
   end_repeat, , 
 
-.. rubric:: XLSForm --- Multi-question repeat
+.. rubric:: XLSForm --- Multi-question repeat group
 
 .. csv-table:: survey
   :header: type, name, label 
