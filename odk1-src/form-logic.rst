@@ -500,29 +500,18 @@ To group questions, use the :tc:`begin_group...end_group` syntax.
   text, question_2, These questions will both be grouped together
   end_group, ,
 
-.. note::
+If given a :th:`label`, groups will be visible in the form path to help orient the user
+(e.g. :guilabel:`My text widgets > Text widget 1`). Labeled groups will also be visible as clickable items in the jump menu:
 
-  If a group has a label, it's considered a "presentation group".
-  If it doesn't have a label, it may be considered a "logical group".
-  Read more on the `XForms Spec <https://opendatakit.github.io/xforms-spec/#groups>`_.
+.. image:: /img/form-logic/jump-menu-groups.*
+  :alt: The jump menu with a few grouped questions.
 
 .. warning::
 
   If you use ODK Build v0.3.4 or earlier, your groups will not be visible in the jump menu.
   The items inside the groups will display as if they weren't grouped at all.
 
-If given a :th:`label`, groups will be visible in the form path to help orient the user
-(e.g. :guilabel:`My text widgets > Text widget 1`).
-
-Labeled groups will also be visible as clickable items in the jump menu:
-
-.. image:: /img/form-logic/jump-menu-groups.*
-  :alt: The jump menu with a few grouped questions.
-
-Groups without labels can be helpful for organizing questions in a way that's invisible to the user.
-This technique can be helpful for internal organization of the form.
-
-Logical groups can be a convenient way to :ref:`conditionally show certain questions <relevants>`.
+Groups without labels can be helpful for organizing questions in a way that's invisible to the user. This technique can be helpful for internal organization of the form. These groups can also be a convenient way to :ref:`conditionally show certain questions <relevants>`.
 
 .. _repeats:
 
