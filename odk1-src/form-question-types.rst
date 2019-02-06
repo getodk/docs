@@ -1038,14 +1038,21 @@ To make an image with selectable regions:
 
 .. _image-options:
 
-Including images as choices
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Including image, video or audio files as choices
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To include images as choices for select questions:
+To include image, video or audio files as choices for select questions:
 
-#. Specify the file name in the **choices** worksheet,
-   in a column labeled :th:`media::image`. 
-#. Add the images to a folder named
+#. Specify the file names in the **choices** worksheet,in a column labeled as :th:`media::image` for image files, :th:`media::video` for video files and :th:`media::audio` for audio files respectively.
+
+  .. csv-table:: choices
+    :header: list_name, name, label, media::image, media::video, media::audio
+
+    opt_media,a,A,a.jpg
+    opt_media,b,B,,b.mp4
+    opt_media,c,C,,,c.mp3
+
+#. Add the files to a folder named
    :file:`{form-name}-media`.
 #. Upload the media folder with your form.
 
