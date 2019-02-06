@@ -143,17 +143,18 @@ Jumping to questions
 The arrow icon (|arrow|) in the top right corner opens the jump menu. From the jump menu, you can go to any question or go to the beginning/ending of the form.
 
 .. |arrow| image:: /img/collect-forms/jumpicon.*
-             :alt: Opens the jump menu. 
+    :alt: Opens the jump menu.
+    :scale: 25%
+    :class: icon-inline
 
- 
 .. image:: /img/collect-forms/jumpscreen.*
-    :alt: Screen with the arrow icon displayed in ODK Collect on an Android phone. 
+    :alt: Screen with the arrow icon displayed in ODK Collect on an Android phone.
     :class: device-screen-vertical
-  
+
 .. image:: /img/collect-forms/jumpmenu.*
-    :alt: Jump menu displayed in ODK Collect on an Android phone. 
+    :alt: Jump menu displayed in ODK Collect on an Android phone.
     :class: device-screen-vertical
- 
+
 .. note::
 
   If a form contains questions in a looped group, those questions will only appear in the Jump menu once an actual record is created.

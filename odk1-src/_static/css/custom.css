@@ -98,6 +98,12 @@ caption .headerlink::after {
     max-width: 45%
 }
 
+/* styling for inline images (e.g. icons within text). */
+
+.rst-content img.icon-inline {
+    margin-bottom: 0;
+}
+
 /* Figure caption styling PR #371 */
 
 .figure{
