@@ -490,7 +490,7 @@ Groups of questions
 
 To group questions, use the :tc:`begin_group...end_group` syntax.
 
-.. rubric:: XLSForm (Question group)
+.. rubric:: XLSForm --- Question group
 
 .. csv-table:: survey
   :header: type, name, label
@@ -500,34 +500,23 @@ To group questions, use the :tc:`begin_group...end_group` syntax.
   text, question_2, These questions will both be grouped together
   end_group, ,
 
-.. note::
+If given a :th:`label`, groups will be visible in the form path to help orient the user
+(e.g. :guilabel:`My text widgets > Text widget 1`). Labeled groups will also be visible as clickable items in the jump menu:
 
-  If a group has a label, it's considered a "presentation group".
-  If it doesn't have a label, it may be considered a "logical group".
-  Read more on the `XForms Spec <https://opendatakit.github.io/xforms-spec/#groups>`_.
+.. image:: /img/form-logic/jump-menu-groups.*
+  :alt: The jump menu with a few grouped questions.
 
 .. warning::
 
   If you use ODK Build v0.3.4 or earlier, your groups will not be visible in the jump menu.
   The items inside the groups will display as if they weren't grouped at all.
 
-If given a :th:`label`, groups will be visible in the form path to help orient the user
-(e.g. :guilabel:`My text widgets > Text widget 1`).
-
-Labeled groups will also be visible as clickable items in the jump menu:
-
-.. image:: /img/form-logic/jump-menu-groups.*
-  :alt: The jump menu with a few grouped questions.
-
-Groups without labels can be helpful for organizing questions in a way that's invisible to the user.
-This technique can be helpful for internal organization of the form.
-
-Logical groups can be a convenient way to :ref:`conditionally show certain questions <relevants>`.
+Groups without labels can be helpful for organizing questions in a way that's invisible to the user. This technique can be helpful for internal organization of the form. These groups can also be a convenient way to :ref:`conditionally show certain questions <relevants>`.
 
 .. _repeats:
 
-Repeating questions and groups of questions
-==============================================
+Repeating groups of questions
+=============================
 
 .. note::
   Using repetition in a form is very powerful but can also make training and data analysis more time-consuming. Aggregate does not export repeats so Briefcase or one of the data publishers will be needed to :doc:`transfer data from Aggregate <aggregate-data-access>`. Repeats will be in their own documents and will need to be joined with their parent records for analysis.
@@ -542,7 +531,7 @@ Repeating questions and groups of questions
 To repeat questions or groups of questions
 use the :tc:`begin_repeat...end_repeat` syntax.
 
-.. rubric:: XLSForm (Single question repeat)
+.. rubric:: XLSForm --- Single question repeat group
 
 .. csv-table:: survey
   :header: type, name, label 
@@ -551,7 +540,7 @@ use the :tc:`begin_repeat...end_repeat` syntax.
   text, repeated_question, This question will be repeated.
   end_repeat, , 
 
-.. rubric:: XLSForm (Multi-question repeat)
+.. rubric:: XLSForm --- Multi-question repeat group
 
 .. csv-table:: survey
   :header: type, name, label 
@@ -593,7 +582,7 @@ the user is asked if they want to add another repeat group.
   :alt: The Collect app. A modal dialog labeled "Add new group?" with the question: "Add a new 'repeat group label' group?" and options "Do not add" and "Add Group".
   
   The user is given the option to add each iteration.
-  
+
 .. rubric:: XLSForm
 
 .. csv-table:: survey
@@ -606,6 +595,10 @@ the user is asked if they want to add another repeat group.
 .. note::
 
   This interaction may be confusing to users the first time they see it. If enumerators know the number of repetitions ahead of time, consider using :ref:`dynamically defined repeats <dynamically-defined-repeats>`.
+
+.. tip::
+
+  The :ref:`jump <jumping>` menu also provides shortcuts to :ref:`add <adding_repeats>` or :ref:`remove <removing_repeats>` instances of repeating groups.
 
 .. _statically-defined-repeats:
 

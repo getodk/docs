@@ -89,12 +89,12 @@ To remove a response, :gesture:`Long Press` on the :term:`question label`.
 
 .. _adding_repeats:
 
-Adding instances of looped groups
------------------------------------
+Adding instances of repeats
+---------------------------
 
-If you have a looped group, you can add new instances of that group in the following ways:
+If you have a repeating group, you can add new instances of that repeat in the following ways:
 
-1. By :ref:`navigating <navigating>` into an empty looped group, or to the next question at the very end of the group, you will automatically be prompted to add a new instance
+1. By :ref:`navigating <navigating>` into an empty repeat, or to the next question at the very end of the repeat, you will automatically be prompted to add a new instance of that repeat.
 
 2. By clicking the "add" button in the :ref:`jump menu <jumping>`:
 
@@ -104,10 +104,10 @@ If you have a looped group, you can add new instances of that group in the follo
 
 .. _removing_repeats:
 
-Removing instances of looped groups
--------------------------------------
+Removing instances of repeats
+-----------------------------
 
-If you have a looped group, you can remove existing instances of that group in the following ways:
+If you have a repeating group, you can remove existing instances of that repeat in the following ways:
 
 1. By :gesture:`long pressing` on the :term:`question label` in the same way as for :ref:`removing answers <removing_answers>`
 
@@ -194,11 +194,11 @@ If you're inside of a group of questions, you can navigate "up" in the hierarchy
     :alt: The "go up" button displayed on an Android phone.
     :class: device-screen-vertical
 
-The jump menu also provides shortcuts to :ref:`add <adding_repeats>` or :ref:`remove <removing_repeats>` instances of looped groups.
+The jump menu also provides shortcuts to :ref:`add <adding_repeats>` or :ref:`remove <removing_repeats>` instances of repeating groups.
 
 .. note::
 
-  If a form contains questions in a looped group, those questions will only appear in the Jump menu once an actual record is created.
+  If a form contains questions in a repeats, those questions will only appear in the Jump menu once an actual record is created.
  
 Autoadvance Questions
 ~~~~~~~~~~~~~~~~~~~~~~~~
