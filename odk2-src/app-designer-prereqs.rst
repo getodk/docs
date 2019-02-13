@@ -35,6 +35,10 @@ You must install the following software on your computer in order to use Applica
 
   It is tricky to foresee all the issues that can crop up on many different machines and setups. If something in this process does not go as expected, please check the |forum|_.
 
+.. warning::
+
+  Android Studio is not supported on the Windows Linux subsystem, so you will not be able to run Application Designer if you are using it. 
+
 .. _app-designer-prereqs-java:
 
 Java
@@ -52,7 +56,8 @@ You must use Version 6.2.2 or higher. To avoid directory path problems on Window
 For Windows
 ~~~~~~~~~~~~~~~
 
-After installing NodeJS, ensure the location of the :file:`npm` folder is added to the *PATH* variable of your system. If it is not, subsequent calls to access grunt will fail. For example: :file:`C:\\Users\\[username]\\AppData\\Roaming\\npm`
+After installing NodeJS, ensure the location of the :file:`npm` folder is added to the *PATH* variable of your system. If it is not, subsequent calls to access grunt will fail. For example: :file:`C:\\Users\\[username]\\AppData\\Roaming\\npm`.
+For instructions on modifying *PATH*, see the section at the bottom of this page called Add adb to your *PATH* For Windows. Instead of navigating to the location of Android SDK, navigate to the location of the :file:`npm` folder.
 
 .. _app-designer-prereqs-nodejs-unix:
 
