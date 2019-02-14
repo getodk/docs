@@ -60,6 +60,19 @@ To download blank forms and completed form instances from an :doc:`Aggregate <ag
 
     However, if your Aggregate server is :doc:`installed on Google App Engine <aggregate-app-engine>`, this setting may cause problems with large attachments. If your form has submission attachments (file uploads, videos, images, sound recordings) you should experiment with this setting and see if it improves or worsens performance.
 
+.. note::
+  :name: briefcase-start-pull-from-last-submission-pulled
+
+  .. rubric:: Start pull from last submission pulled
+
+  .. container:: details
+
+    If your forms have more than 100 submissions, enable the configuration parameter :guilabel:`Start pull from last submission pulled` in the :guilabel:`Settings` tab to improve pull performance on slow connections.
+
+    .. image:: /img/briefcase-using/start-pull-from-last-submission-pulled.*
+
+    You can clear the pull history and pull every submission by clicking on the :guilabel:`Clear pull history` button at the bottom of the :guilabel:`Settings` tab.
+
 .. _pull-from-collect:
 
 Pulling forms from Collect
