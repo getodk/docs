@@ -263,6 +263,7 @@ Pulling forms from Aggregate
       Optional params for -plla operation:
         -ii,--include_incomplete            Include incomplete submissions
         -pp,--parallel_pull                 Pull submissions in parallel
+        -sfl,--start_from_last              Start pull from last submission pulled
 
 .. _pull-from-collect-cli:
 
