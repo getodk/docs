@@ -5,8 +5,8 @@ Managing Users in Central
 
 There are two types of user accounts in ODK Central: **web users** and **app users**.
 
- - **Web users** have accounts on the Central management website. They can log into the web interface and perform administrative actions like user management, form upload and management, and submission data viewing and download.
- - **App users** can use mobile data collection apps like ODK Collect to :ref:`connect to Central <central-users-app-configure>`. Once connected through the app, they will be able to see the list of forms, download the ones they need, and upload completed submissions to those forms.
+ - **Web users** have accounts on the Central management website. These accounts are global across all projects on the server. They can log into the web interface and perform administrative actions like user management, form upload and management, and submission data viewing and download.
+ - **App users** can use mobile data collection apps like ODK Collect to :ref:`connect to Central <central-users-app-configure>`. App Users are limited to a single project at a time. Once connected through the app, they will be able to see the list of forms, download the ones they need, and upload completed submissions to those forms.
 
 You will need both types of users in order to run a successful data collection project: a web user must upload a valid form definition, an app user must upload submissions to it from their mobile device, and the web user will then be able to see those submissions in the web interface and download or sync them for analysis.
 
@@ -21,6 +21,8 @@ In the current alpha release of Central, all web users are administrators. This 
     - Create new web users
     - See all current web users and their email addresses
     - Revoke web user passwords
+ - Manage projects
+    - Create new projects
  - Manage app users
     - Create new app users
     - See all current app users
@@ -29,6 +31,7 @@ In the current alpha release of Central, all web users are administrators. This 
  - Manage forms
     - Create new forms
     - See all current forms
+    - Manage form attachments
     - Set form lifecycle state
     - Delete any form
     - See all submissions for any form
@@ -91,11 +94,11 @@ This is not yet possible in the current alpha release of ODK Central.
 Managing App Users
 ------------------
 
-App Users never gain any access to the management website: they do not have email addresses or passwords associated with their account, only a nickname so you can tell which is which. Once a Web User creates an App User, a :doc:`configuration QR Code <collect-import-export>` will be generated which will grant a mobile device access to the ODK Central server as that App User. Access can be revoked at any time, and Web Users can see which App Users uploaded which submissions.
+App Users never gain any access to the management website: they do not have email addresses or passwords associated with their account, only a nickname so you can tell which is which. Once a Web User creates an App User within some project, a :doc:`configuration QR Code <collect-import-export>` will be generated which will grant a mobile device access to that project as that App User. Access can be revoked at any time, and Web Users can see which App Users uploaded which submissions.
 
-In the current alpha release of ODK Central, all App Users can download any :ref:`Open form  <central-forms-lifecycle>` and upload submissions to any :ref:`non-Closed form <central-forms-lifecycle>`. Future versions will feature more options to restrict certain App Users to certain forms or groups of forms.
+In the current alpha release of ODK Central, all App Users can download any :ref:`Open form  <central-forms-lifecycle>` and upload submissions to any :ref:`non-Closed form <central-forms-lifecycle>` within their project. Future versions will feature more options to restrict certain App Users to certain forms.
 
-To manage app users, navigate to :menuselection:`--> Users --> App Users` at the top of the Central management website (you will see App Users in the second row of tabs). You should see a listing of users that looks like this:
+To manage App Users, navigate to the project whose App Users you wish to manage, and then click on the :guilabel:`App Users` tab just below the project name. You should see a listing of users that looks like this:
 
    .. image:: /img/central-users/app-users-listing.png
 
@@ -112,14 +115,14 @@ Once you provide a nickname for the user (usually the name of the data enumerato
 
    .. image:: /img/central-users/app-users-created.png
 
-That App User has now been created and granted access to use their mobile device to list, download, and submit to all :ref:`available forms <central-forms-lifecycle>` on the server. To do so, however, their mobile device will have to get set up with this new account. That is what the QR Code you see on this screen is for. Read on to the next section to find out how to use it.
+That App User has now been created and granted access to use their mobile device to list, download, and submit to all :ref:`available forms <central-forms-lifecycle>` within their project. To do so, however, their mobile device will have to get set up with this new account. That is what the QR Code you see on this screen is for. Read on to the next section to find out how to use it.
 
 .. _central-users-app-configure:
 
 Configuring an App User mobile device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A mobile device will need to be configured to access your ODK Central server as a particular App User in order to gain access to the forms and upload submissions on the server. This is done by way of the Collect Settings QR Code.
+A mobile device will need to be configured to access your ODK Central server as a particular App User in order to gain access to the forms and upload submissions within their project. This is done by way of the Collect Settings QR Code.
 
 The QR Code contains information about how to find your ODK Central server, and how to prove to the server that the mobile device belongs to a valid App User. In future versions of ODK Central, it will be possible to specify other settings to be imported to the device as well.
 
@@ -140,5 +143,5 @@ You may wish to revoke an App User's access, for instance if their QR Code has b
 
    .. image:: /img/central-users/app-users-revoke.png
 
-App Users whose access has been revoked will still appear in the App Users listing table, and will still be visible as the submitter of any submissions they uploaded. However, they no longer have a valid QR Code with which they can configure an ODK Collect installation, and any mobile devices already configured with their code will no longer have access to the server.
+App Users whose access has been revoked will still appear in the App Users listing table, and will still be visible as the submitter of any submissions they uploaded. However, they no longer have a valid QR Code with which they can configure an ODK Collect installation, and any mobile devices already configured with their code will no longer have access to the project.
 

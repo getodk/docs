@@ -21,7 +21,7 @@ Installing on DigitalOcean
 
 If you want your own server but you're not sure what to do, we recommend installing ODK Central on DigitalOcean, which provides an excellent starting point for Docker installations like ours. For most projects, the $5/month tier will be more than enough for your needs.
 
-To learn more about installing on DigitalOcean, please see the instructions `here <https://github.com/opendatakit/central#running-on-digitalocean>`_.
+To learn more about installing on DigitalOcean, please see :doc:`here <central-install-digital-ocean>`.
 
 .. _central-install-custom:
 
@@ -30,5 +30,5 @@ Installing elsewhere
 
 If you got excited when you heard mention of Docker above, and you already have your own destination and process for managing Docker deployments, you're all set to go. ODK Central is entirely defined via **Docker Compose**, which means the ``docker-compose`` command will be all you need to manage the entire system.
 
-We would still recommend reviewing the `instructions we've provided <https://github.com/opendatakit/central#running-on-digitalocean>`_ for DigitalOcean starting from step 9. In particular, you'll need to update your submodules after you clone the repository, and configure your :file:`.env` file for your installation.
+We would still recommend reviewing the :doc:`instructions we've provided <central-install-digital-ocean>` for DigitalOcean starting from step 9. In particular, you'll need to update your submodules after you clone the repository, and configure your :file:`.env` file for your installation.
 

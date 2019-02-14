@@ -8,7 +8,7 @@ Forms are at the heart of Open Data Kit. Once fetched onto a mobile device from 
 In ODK Central, there are four important steps to understand when managing a data collection project:
 
 1. **Form design** is where you define the form itself, laying out many details like the questions and acceptable responses. ODK Central itself does not help with form design. Instead, please take a look at the many :doc:`available tools <form-tools>` and the :doc:`introduction to form design <form-design-intro>` for help creating your form.
-2. **Form upload** is done after you have a working form design. Here you log into ODK Central and upload your new form so that Central knows that it exists. Once you do this, it will become available to any mobile device connected to the server for download and submission upload.
+2. **Form upload** is done after you have a working form design. Here you log into ODK Central and upload your new form so that Central knows that it exists. Once you do this, it will become available to any mobile device connected to the project for download and submission upload.
 3. **Data extraction and analysis** can occur either at the end of the project, or continually as the project runs. Either way, ODK Central provides several different methods for extracting and analyzing your submission data. This is covered in the :doc:`Form Submissions <central-submissions>` article.
 4. **Form lifecycle** tools let you manage the lifecycle of your data collection project: ongoing projects can be left alone to stay open, but many projects need a way to wrap things up. ODK Central provides tools to help control, for example, when workers using ODK Collect are allowed to download each form's definition, or separately to upload submissions to each form.
 
@@ -21,11 +21,11 @@ Uploading a form to ODK Central
 
 As mentioned, ODK Central does not feature a built-in form design utility. Please take a look at the many :doc:`available tools <form-tools>` and the :doc:`introduction to form design <form-design-intro>` for help creating your form.
 
-Once you have an XForms :file:`.xml` file in hand, we strongly recommend that you first double check that it is valid using :doc:`ODK Validate <validate>`. Once you have confirmation that your form will work, the next step will be to upload it into ODK Central. To do this, log into the management website, and navigate to the Forms listing page by clicking on :menuselection:`--> Forms` at the top of the screen.
+Once you have an XForms :file:`.xml` file in hand, we strongly recommend that you first double check that it is valid using :doc:`ODK Validate <validate>`. Once you have confirmation that your form will work, the next step will be to upload it into ODK Central. To do this, navigate to the Project (click on its name from the ODK Central homepage) to which you would like to add the Form, and locate the Forms listing section at the bottom of that page:
 
    .. image:: /img/central-forms/listing.png
 
-From there, click on the :guilabel:`Create a new form` button on the right side of the screen, and you should see a popup appear:
+From there, click on the :guilabel:`New` button next to the section header, and you should see a popup appear:
 
    .. image:: /img/central-forms/new.png
 
@@ -33,8 +33,8 @@ You can either click on the :guilabel:`choose one` button to browse for your XFo
 
 .. admonition:: Some errors you may see:
 
-   - You may see a message that reads **A resource already exists with xmlFormId value(s) of xyz.** If you do, there already exists a form on this server with the same unique designation. If you are using XLSForm, try changing the name of the file. If you designed the form by hand, please check the ``id="…"`` attribute immediately inside the ``<instance>`` tag.
-   - You may see a message that says **A form previously existed which had the same formId and version as the one you are attempting to create now. To prevent confusion, please change one or both and try creating the form again.** This means there once was a form on the server that has since been deleted that has exactly the same formId (see the previous bullet point) *and* version designation as the one you are now trying to upload. Central won't accept the new form, because this conflict could cause confusion with mobile devices that still have the old form sitting around. To upload this form, change either the formId (again, see the previous bullet point) or `update the version <https://opendatakit.github.io/xforms-spec/#primary-instance>`_ and try again.
+   - You may see a message that reads **A resource already exists with xmlFormId value(s) of xyz.** If you do, there already exists a form within this project with the same unique designation. If you are using XLSForm, try changing the name of the file. If you designed the form by hand, please check the ``id="…"`` attribute immediately inside the ``<instance>`` tag.
+   - You may see a message that says **A form previously existed which had the same formId and version as the one you are attempting to create now. To prevent confusion, please change one or both and try creating the form again.** This means there once was a form within this project that has since been deleted that has exactly the same formId (see the previous bullet point) *and* version designation as the one you are now trying to upload. Central won't accept the new form, because this conflict could cause confusion with mobile devices that still have the old form sitting around. To upload this form, change either the formId (again, see the previous bullet point) or `update the version <https://opendatakit.github.io/xforms-spec/#primary-instance>`_ and try again.
 
 Once the form is successfully uploaded, you will be taken to the Form Overview page.
 
@@ -47,7 +47,7 @@ Here, you can get a brief summary of the status of your form, and recommended ne
 
    .. image:: /img/central-forms/checklist.png
 
-The documentation on this page is a more detailed introductory explanation of form management in ODK Central, but the checklist you find on the Overview page is tailored to the current status of your form and your server and is a great place to look when you aren't sure what to do next.
+The documentation on this page is a more detailed introductory explanation of form management in ODK Central, but the checklist you find on the Overview page is tailored to the current status of your form and your project and is a great place to look when you aren't sure what to do next.
 
 In the future, look forward to seeing even more useful information at-a-glance on this page.
 
