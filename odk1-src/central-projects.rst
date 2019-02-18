@@ -3,7 +3,7 @@
 Managing Projects in Central
 ============================
 
-New as of `version 0.4 <https://github.com/opendatakit/central/releases/tag/v0.4.0-beta.0>`_, almost everything in ODK Central is organized by Project. Forms, Managers, and App Users are all partitioned by project. Both on the administration website as well as on a mobile device (within ODK Collect, for example), access to each project and its forms can be managed person-by-person. Only the Central administrative staff can create and grant initial access to projects.
+New as of `version 0.4 <https://github.com/opendatakit/central/releases/tag/v0.4.0-beta.1>`_, almost everything in ODK Central is organized by Project. Forms, Managers, and App Users are all partitioned by project. Both on the administration website as well as on a mobile device (within ODK Collect, for example), access to each project and its forms can be managed person-by-person. Only the Central administrative staff can create and grant initial access to projects.
 
 .. _central-projects-overview:
 
