@@ -74,7 +74,7 @@ Installing ODK Central
 
 In this phase of installation, we will log into your new server, obtain the ODK Central software, load some settings into it, and install it.
 
-First, you'll need to be able to log into the server itself. If you are an advanced user who filled in an SSH key above, you're good to go. Otherwise, click on your new server's name in the **Droplets** management panel, then go to **Access** on the left. Choose to Reset the root password so that a password gets emailed to you.
+First, you'll need to be able to log into the server itself. If you are an advanced user who filled in an SSH key above, you're good to go. Otherwise, click your email for a message from DigitalOcean with your server password.
 
 Once you have that password in hand, you'll be able to use the **Launch Console** button to log into your server: when it asks for ``login``, type ``root`` and press **Enter**. Then type the password you were emailed and press **Enter** again.
 
