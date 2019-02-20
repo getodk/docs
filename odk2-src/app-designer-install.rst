@@ -12,6 +12,7 @@ Download the |app_designer_link| zip file.
 Unzip the file you downloaded and move the resulting folder to somewhere other than your :file:`Downloads` directory; such as your :file:`Documents` folder.
 
 To open Application Designer, navigate to the location of your unzipped folder in :program:`cmd`, and type: 
+
 .. code-block:: console
 
    $ grunt
