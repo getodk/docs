@@ -13,6 +13,8 @@ Collect can log the behavior of enumerators as they navigate through a form. Thi
 
 - enumerators who take a particularly long or short time to answer
 
+- if enumerators were at the correct location when filling out a form
+
 This information can inform form design and training.
 
 .. admonition:: Aggregate 1.5.0+ required
