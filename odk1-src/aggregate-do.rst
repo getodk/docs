@@ -63,16 +63,20 @@ Set up your domain
 Enable HTTPS
 ------------
 
-1. SSH into your Droplet using the command: :command:`ssh root@your.domain`
+1. From the DigitalOcean Control Panel, click the name of your droplet, then select :guilabel:`Access` from the left navigation. Click the :guilabel:`Launch Console` button to open a web-based console session.
 
-    Your password will be the root password that Digital Ocean emailed you. If you entered your public SSH keys when creating the Droplet, login with your private key.
+2. When the console opens, click the console screen, and at the login prompt, enter the user: `root`. Your password will be the root password that DigitalOcean emailed you.
 
-2. Run the command: :command:`certbot run --nginx --non-interactive --agree-tos -m {YOUR_EMAIL} --redirect -d {YOUR_DOMAIN}`
+    If you do not have the root password, click the name of your droplet, select :guilabel:`Access` from the left navigation and choose :guilabel:`Reset the root password` so that a password gets emailed to you.
+
+    You may also login over `SSH <https://www.digitalocean.com/docs/droplets/how-to/connect-with-ssh/>`_ using the :command:`ssh root@your.domain`.
+
+3. Run the command: :command:`certbot run --nginx --non-interactive --agree-tos -m YOUR_EMAIL --redirect -d YOUR_DOMAIN`
 
     Lets Encrypt uses the email you provide to send notifications about expiration of certificates.
 
 Log into Aggregate
 ------------------
 
-1. Go to https::{YOUR_DOMAIN} and check that Aggregate is running.
+1. Go to https::YOUR_DOMAIN and check that Aggregate is running.
 2. Login and change the administrator account's password!
