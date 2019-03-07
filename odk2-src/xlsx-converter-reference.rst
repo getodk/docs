@@ -357,7 +357,7 @@ The following prompt types are available in ODK Survey.
       | to the users inline, and allows the user to click one item.
   * - select_one_integer
     - | Used to ask the user a multiple choice question and allows the user
-      | to click one item. Each item can be set to return an integer value.
+      | to click one item. Each item must be set to return an integer value.
   * - select_one_with_other
     - | Used to ask the user a multiple choice question, displays the choices
       | to the user, and allows the user to click one item. One of the
