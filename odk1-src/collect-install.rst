@@ -68,8 +68,9 @@ The only permission that is required for using Collect is the storage permission
 +------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | Phone      | optional on form send to include deviceID in the submission and required for forms that capture :ref:`device metadata <metadata>` |
 +------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| SMS        | required to send :doc:`SMS submissions <collect-sms-submissions>`                                                                 |
-+------------+-----------------------------------------------------------------------------------------------------------------------------------+
+
+.. | SMS        | required to send :doc:`SMS submissions <collect-sms-submissions>`                                                                 |
+.. +------------+-----------------------------------------------------------------------------------------------------------------------------------+
 
 Changing permissions from settings in Android 6+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

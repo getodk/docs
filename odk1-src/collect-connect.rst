@@ -5,7 +5,7 @@
 Connecting to a Server
 ================================
 
-ODK Collect is used to complete surveys with participants. Filled surveys then need to be aggregated in a central location for review and analysis. Generally, organizations do this by configuring Collect to send forms to a server. For those working in environments without any internet connectivity, there are :ref:`other options <other-collect-server-options>` for entirely offline or SMS-based workflows. 
+ODK Collect is used to complete surveys with participants. Filled surveys then need to be aggregated in a central location for review and analysis. Generally, organizations do this by configuring Collect to send forms to a server. For those working in environments without any internet connectivity, there are :ref:`other options <other-collect-server-options>`.
 
 .. note::
 
@@ -36,4 +36,5 @@ Managing forms from an ODK Aggregate server or Google Drive is typical. However,
  - :ref:`Transfer blank forms directly to your device <loading-forms-directly>`
  - :doc:`Pull completed forms directly with adb <collect-adb>`
  - :doc:`Use ODK Briefcase  <briefcase-using>`
- - :doc:`Send submissions via SMS (text message) <collect-sms-submissions>`
+
+.. - :doc:`Send submissions via SMS (text message) <collect-sms-submissions>`
