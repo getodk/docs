@@ -282,3 +282,5 @@ xml
 xmlns
 XPath
 zeroes
+bikram
+sambat

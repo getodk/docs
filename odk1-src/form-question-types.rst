@@ -474,6 +474,19 @@ appearance
   
 .. image:: /img/form-widgets/islamic-calendar-widget.* 
   :alt:
+
+.. _bikram-sambat-calendar:
+
+Bikram Sambat calendar
+""""""""""""""""""""""""
+
+type
+  :tc:`date`
+appearance
+  :tc:`bikram-sambat`
+
+.. image:: /img/form-widgets/bikram-sambat-calendar-widget.*
+  :alt:
    
 .. _time-widget:
 
