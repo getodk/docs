@@ -1,6 +1,9 @@
 Connecting to a Google Drive Account
 =======================================
     
+.. warning::
+   Spreadsheets have `cell limits <https://support.google.com/drive/answer/37603>`_ (currently 5 million) above which errors will be reported.
+
 1. From the Action Button (:guilabel:`⋮`), select :menuselection:`General Settings`
 
    .. image:: /img/collect-connect/main-menu-highlight-kebab.* 
