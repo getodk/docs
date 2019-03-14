@@ -1547,10 +1547,10 @@ An image widget that does not include a :guilabel:`Choose Image` button. This re
   image, image_widget_no_choose, Image widget without Choose button, new, image type with new appearance (can also be added with annotate appearance and on audio and video types)
   
   
-.. _self-portrait-widget:
+.. _self-portrait-image-widget:
 
-Self portrait (*selfie*) widget
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Self portrait (*selfie*) image widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
   :tc:`image`
@@ -1671,6 +1671,14 @@ Records audio from an external app.
 Video widget
 ----------------
 
+.. contents::
+ :local:
+
+.. _default-video-widget:
+
+Default video widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Records video, using the device camera.
 
 .. image:: /img/form-widgets/video-start.*
@@ -1690,6 +1698,29 @@ Records video, using the device camera.
 
   video, blinking, Please record a video of yourself blinking., Three times is probably sufficient.
 
+
+.. _self-portrait-video-widget:
+
+Self portrait (*selfie*) video widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Records video, using the front-facing ("selfie") camera. The :guilabel:`Choose Video` button is not displayed.
+
+.. image:: /img/form-widgets/selfie-video-widget.*
+  :alt: The Self portrait (*selfie*) video widget form widget as displayed in the ODK Collect App on an Android phone. The question text is "Self portrait (*selfie*) video widget". The hint text is "video type with new-front appearance". Below that are two buttons: Record Video and Play Video. The Play Video button is disabled.
+
+.. image:: /img/form-widgets/selfie-video-widget-recording.*
+  :alt: The camera view with a person's face.
+
+.. image:: /img/form-widgets/selfie-video-widget-recorded.*
+  :alt: The Self portrait (*selfie*) video widget form widget as displayed previously. The question text is "Self portrait (*selfie*) video widget". The hint text is "video type with new-front appearance". Below that are two buttons: Record Video and Play Video. Both buttons are enabled.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  video, selfie-video, Self portrait (*selfie*) video widget, new-front, video type with new-front appearance
 
 .. _file-upload:
 
