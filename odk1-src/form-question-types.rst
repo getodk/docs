@@ -56,7 +56,7 @@ are specified in your `XLSForm`_ definition using the
 .. note::
 
   This document covers the full range of question types and options
-  available when creating forms using `XLSForm`_.
+  available when creating forms using `XLSForm`_. You can find an xls form with all available widgets `here <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ/edit#gid=0>`_.
   
   For simpler forms
   you can use :doc:`build-intro`,
