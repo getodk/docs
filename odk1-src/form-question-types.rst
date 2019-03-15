@@ -1743,8 +1743,7 @@ Uploads any file from the device to the form.
 Barcode widget
 ----------------
 
-Scans, decodes, and captures the content of a barcode,
-using the device camera.
+Scans, decodes, and captures the content of a barcode, using the device camera.
 
 The following barcode formats are supported:
 
@@ -1765,6 +1764,21 @@ The following barcode formats are supported:
 - PDF 417 (beta)
 - MaxiCode
 
+.. note::
+  Barcode scanning is built into Collect versions 1.7.0 and greater.
+  
+  Versions of Collect prior to 1.7.0 require the `Barcode Scanner app`_ to be installed.
+  
+.. _Barcode Scanner app: https://play.google.com/store/apps/details?id=com.google.zxing.client.android
+
+.. contents::
+ :local:
+
+.. _default-barcode-widget:
+
+Default barcode widget
+~~~~~~~~~~~~~~~~~~~~~~~~
+
 The flash can be used as a light source when scanning barcodes in a poorly lit environment.
 
 .. image:: /img/form-widgets/barcode-start.*
@@ -1783,14 +1797,20 @@ The flash can be used as a light source when scanning barcodes in a poorly lit e
 
   barcode, barcode_example, Scan any barcode.
 
-.. note::
-  Barcode scanning is built into Collect versions 1.7.0 and greater.
-  
-  Versions of Collect prior to 1.7.0 require the `Barcode Scanner app`_ to be installed.
-  
-.. _Barcode Scanner app: https://play.google.com/store/apps/details?id=com.google.zxing.client.android
 
+.. _self-portrait-barcode-widget:
 
+Self portrait (*selfie*) barcode widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In some cases a front camera may work better. The flash can't be used in this case.
+
+.. rubric:: XLSForm
+  
+.. csv-table:: survey
+  :header: type, name, label, appearance
+
+  barcode, barcode_example, Scan any barcode., front
   
 .. _range-widgets:
   
