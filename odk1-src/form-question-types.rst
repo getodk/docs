@@ -58,10 +58,6 @@ are specified in your `XLSForm`_ definition using the
       The :th:`type` and :th:`appearance` of a question
       determine the widget that is displayed.
 
-.. tip::
-
-
-
   
 .. _text-widget:
 
