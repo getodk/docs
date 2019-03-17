@@ -36,6 +36,9 @@ are specified in your `XLSForm`_ definition using the
 .. contents:: :depth: 1
   :local:
 
+.. tip::
+  
+  You can find an XLSForm with all available question types `here <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ/edit#gid=0>`_.
 
 .. admonition:: Helpful terminology
 
@@ -53,11 +56,8 @@ are specified in your `XLSForm`_ definition using the
       The :th:`type` and :th:`appearance` of a question
       determine the widget that is displayed.
 
-.. note::
+.. tip::
 
-  This document covers the full range of question types and options
-  available when creating forms using `XLSForm`_. You can find an XLSForm with all available question types `here <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ/edit#gid=0>`_.
-  
   For simpler forms
   you can use :doc:`build-intro`,
   which provides a visual, drag-and-drop interface.
