@@ -1668,7 +1668,7 @@ Records audio from an external app.
 
 .. _video:
 
-Video widget
+Video widgets
 ----------------
 
 .. contents::
