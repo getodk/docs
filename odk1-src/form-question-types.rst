@@ -39,7 +39,9 @@ are specified in your `XLSForm`_ definition using the
 .. tip::
   
   You can find an XLSForm with all available question types `here <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ/edit#gid=0>`_.
-
+  
+  For simpler forms you can use :doc:`build-intro`, which provides a visual, drag-and-drop interface.
+  
 .. admonition:: Helpful terminology
 
   .. glossary::
@@ -58,9 +60,7 @@ are specified in your `XLSForm`_ definition using the
 
 .. tip::
 
-  For simpler forms
-  you can use :doc:`build-intro`,
-  which provides a visual, drag-and-drop interface.
+
 
   
 .. _text-widget:
