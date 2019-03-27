@@ -26,11 +26,6 @@ The :guilabel:`Preview` tab (shown above) has several controls:
 
   - :guilabel:`Purge Database` -- during development, if you are adding new fields or changing their data types, you will need to purge the database so that the database structure can be re-generated with the proper fields and data types.
   - :guilabel:`Device Dimensions` -- what dimensions to make the window below.
-  - :guilabel:`Back Button` -- this is generally only useful when viewing ODK Tables web pages.
-
-.. warning::
-
-  The :guilabel:`Back Button` may cause unpredictable results when used while displaying ODK Survey forms.
 
 The Launch Page opens the ODK Survey Framework Page. This is the :file:`formDef.json` in the Android device's application frameworks folder (:file:`/sdcard/opendatakit/default/config/assets/framework/forms/framework`). The contents of this form are defined by the :file:`framework.xlsx` file in that same directory.
 
