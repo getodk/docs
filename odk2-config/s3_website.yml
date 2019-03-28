@@ -1,6 +1,6 @@
 s3_bucket: odk2-docs-web
 s3_endpoint: us-west-2
-s3_key_prefix: odk2
+s3_key_prefix: odk-x
 
 site: ../odk2-build
 
@@ -27,3 +27,10 @@ cloudfront_distribution_config:
       - docs.opendatakit.org
 
 cloudfront_wildcard_invalidation: true
+
+routing_rules:
+  - condition:
+      key_prefix_equals: odk2
+    redirect:
+      replace_key_with: odk-x
+      http_redirect_code: 301
