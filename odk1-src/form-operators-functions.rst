@@ -477,8 +477,20 @@ Searching and matching strings
 
 .. function:: substr(string, start[, end]) 	
 
-  Returns the substring of :arg:`string` beginning at the index :arg:`start` and extending to (but not including) index :arg:`end` (or to the termination of :arg:`string`, if :arg:`end` is not provided). Members of arg:`string` are zero-indexed.
+  Returns the substring of :arg:`string` beginning at the index :arg:`start` and extending to (but not including) index :arg:`end` (or to the termination of :arg:`string`, if :arg:`end` is not provided). Members of :arg:`string` are zero-indexed.
   
+.. function:: substring-before(string, target)
+
+  Returns the substring of :arg:`string` *before* the first occurrence of the :arg:`target` substring. If the :arg:`target` is not found, or :arg:`string` begins with the :arg:`target` substring, then this will return an empty string.
+
+.. function:: substring-after(string, target)
+
+  Returns the substring of :arg:`string` *after* the first occurrence of the :arg:`target` substring. If the :arg:`target` is not found this will return an empty string.
+
+.. function:: translate(string, fromchars, tochars)
+
+  Returns a copy of :arg:`string`, where every occurrence of a character in :arg:`fromchars` is replaced by the corresponding character in :arg:`tochars`. If :arg:`fromchars` is longer than :arg:`tochars` then every occurrence of a character in :arg:`fromchars` that does not have a corresponding character in :arg:`tochars` will be removed.
+
 .. function:: string-length(string)
 
   Returns the number of characters in :arg:`string`.
