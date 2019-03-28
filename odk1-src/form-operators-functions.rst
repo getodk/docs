@@ -489,7 +489,7 @@ Searching and matching strings
 
 .. function:: translate(string, fromchars, tochars)
 
-  Returns a copy of :arg:`string`, where every occurance of a character in :arg:`fromchars` is replaced by the corresponding character in :arg:`tochars`. If :arg:`fromchars` is longer than :arg:`tochars` then every occurrence of a character in :arg:`fromchars` that does not have a corresponding character in :arg:`tochars` will be removed.
+  Returns a copy of :arg:`string`, where every occurance of a character in :arg:`fromchars` is replaced by the corresponding character in :arg:`tochars`. If :arg:`fromchars` is longer than :arg:`tochars` then every occurrance of a character in :arg:`fromchars` that does not have a corresponding character in :arg:`tochars` will be removed.
 
 .. function:: string-length(string)
 
