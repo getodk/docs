@@ -33,7 +33,7 @@ routing_rules:
       key_prefix_equals: odk2/
     redirect:
       host_name: docs.opendatakit.org
-      replace_key_with: odk-x/
+      replace_key_prefix_with: odk-x/
       http_redirect_code: 301
 
 redirects:
