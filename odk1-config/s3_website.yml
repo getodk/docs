@@ -27,6 +27,15 @@ cloudfront_distribution_config:
 
 cloudfront_wildcard_invalidation: true
 
+# folder redirects. executed from top to bottom.
+routing_rules:
+  - condition:
+      key_prefix_equals: odk2/
+    redirect:
+      host_name: docs.opendatakit.org
+      replace_key_with: odk-x/
+      http_redirect_code: 301
+
 redirects:
   # use url/index.html syntax to enable url, url/, url/index.html and hash passthrough
   aggregate-guide/index.html: aggregate-intro
@@ -42,3 +51,4 @@ redirects:
   pyxform/index.html: xlsform
   style-guide/index.html: docs-style-guide
   visualize/index.html: aggregate-visualize
+  odk2/index.html: http://docs.opendatakit.org/odk-x
