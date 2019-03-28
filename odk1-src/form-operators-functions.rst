@@ -485,7 +485,7 @@ Searching and matching strings
 
 .. function:: substring-after(string, target)
 
-  Returns the substring of :arg:`string` *after* the first occurence of the :arg:`target` substring. If the :arg:`target` is not found this will return an empty string.
+  Returns the substring of :arg:`string` *after* the first occurrence of the :arg:`target` substring. If the :arg:`target` is not found this will return an empty string.
 
 .. function:: translate(string, fromchars, tochars)
 
