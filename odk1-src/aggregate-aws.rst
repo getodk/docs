@@ -4,8 +4,8 @@
   GiB
   IPv
 
-Installing on Amazon Web Services (Cloud)
-=========================================
+Installing on Amazon Web Services
+=================================
 
 .. warning::
 
@@ -121,7 +121,7 @@ Create an EC2 machine
 14. Click on :guilabel:`Next: Configure Security Group`.
 
 15. :guilabel:`Select an existing security group` and select the security group you previously created.
-  
+
 16. Click on :guilabel:`Review and Launch` and after review, click on :guilabel:`Launch`.
 
 17. You will be offered the option of using an existing key pair or creating one. It's very important that you follow the dialog's instructions carefully to be able to access your machine once it's created.
@@ -134,7 +134,7 @@ Set up your domain
 
 1. Go to the `EC2 - Instances <https://console.aws.amazon.com/ec2/v2/home#Instances:>`_ tab and find your machine.
 
-2. Take note of the IPv4 Public IP address (e.g., 12.34.56.79) and set a *DNS A record* pointing to it.
+2. Take note of the IPv4 Public IP address (e.g., 12.34.56.78) and set a *DNS A record* pointing to it.
 
     After clicking on the instance from the list, look for under the Description tab at the bottom of the window. The IPv4 Public IP field is in the right column.
   
@@ -142,7 +142,7 @@ Set up your domain
 
     Your domain's *TTL* setting will affect to how much time you will have to wait until you can proceed to the next step. If your provider gives you the option of setting a TTL, use the lowest value you can.
 
-3.  Open a web browser, and periodically check the domain until you see the ODK Aggregate website. You won't be able to continue the install until you see the website load.
+3. Open a web browser, and periodically check the domain until you see the Aggregate website. You won't be able to continue the install until you see the website load.
 
 
 Enable HTTPS
@@ -153,11 +153,11 @@ Enable HTTPS
     Make sure your PEM key pair file has the `correct file permissions <https://docs.aws.amazon.com/es_es/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html#troubleshoot-unprotected-key>`_.
 
 2. Once you are logged in, run :command:`sudo certbot run --nginx --non-interactive --agree-tos -m YOUR_EMAIL --redirect -d YOUR_DOMAIN`. 
-    
+
     Be sure to replace YOUR_EMAIL and YOUR_DOMAIN with your email address and your domain.
 
     Lets Encrypt uses the email you provide to send notifications about expiration of certificates.
-  
+
 
 Log into Aggregate
 ------------------
