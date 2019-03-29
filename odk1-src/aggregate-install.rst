@@ -8,6 +8,7 @@
   aggregate-tomcat
   aggregate-do
   aggregate-aws
+  aggregate-google-cloud
   aggregate-vm
 
 
