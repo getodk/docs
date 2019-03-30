@@ -153,12 +153,7 @@ Every expression is constantly re-evaluated as an enumerator progresses through 
 - a repeat group is added or deleted
 - a form is saved or finalized
 
-A common misconception is that expressions are only evaluated when a question that uses it is reached. This faulty mental model leads form designers to include functions such as :func:`random` or :func:`now` and to expect them to be evaluated exactly once. In fact, they will be re-evaluated over and over again until the form is finalized for the last time. For example, the following calculate will keep track of the last time the form was saved:
-
-.. csv-table:: survey
-  :header: type, name, label, calculation
-
-  calculate, datetime_last_saved, , now()
+This is particularly important to remember when using functions that access state outside of the form such as :func:`random` or :func:`now`. The value they represent will change over and over again as an enumerator fills out a form.
 
 The :func:`once` function prevents multiple evaluation by only evaluating the expression passed into it if the node has no value. That means the expression will be evaluated once either on form open or when any values the expression depends on are set.
 
