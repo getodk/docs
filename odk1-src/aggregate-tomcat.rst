@@ -16,6 +16,7 @@ If you're planning on hosting your server on DigitalOcean, or Amazon Web Service
 
 - :doc:`DigitalOcean <aggregate-do>`
 - :doc:`Amazon Web Services <aggregate-aws>`
+- :doc:`Google Cloud <aggregate-google-cloud>`
 
 .. note::
 
