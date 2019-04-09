@@ -54,7 +54,7 @@ Set up your domain
 
     Your domain's *TTL* setting will affect to how much time you will have to wait until you can proceed to the next step. If your provider gives you the option of setting a TTL, use the lowest value you can.
 
-3.  Open a web browser, and periodically check the domain until you see the Aggregate website. You won't be able to continue the install until you see the website load.
+2.  Open a web browser, and periodically check the domain until you see the Aggregate website. You won't be able to continue the install until you see the website load.
 
 Enable HTTPS
 ------------
@@ -67,7 +67,7 @@ Enable HTTPS
 
     You may also login over `SSH <https://www.digitalocean.com/docs/droplets/how-to/connect-with-ssh/>`_ using the :command:`ssh root@your.domain`.
 
-2. Once you are logged in, run :command:`sudo certbot run --nginx --non-interactive --agree-tos -m YOUR_EMAIL --redirect -d YOUR_DOMAIN`.
+3. Once you are logged in, run :command:`sudo certbot run --nginx --non-interactive --agree-tos -m YOUR_EMAIL --redirect -d YOUR_DOMAIN`.
 
     Be sure to replace YOUR_EMAIL and YOUR_DOMAIN with your email address and your domain.
 
