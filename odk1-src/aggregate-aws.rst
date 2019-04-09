@@ -164,4 +164,9 @@ Log into Aggregate
 
 1. Go to https://your.domain and check that Aggregate is running.
 
-2. Login and change the administrator account's password!
+2. Click :guilabel:`Sign in with Aggregate password` to login with the default username and password.
+
+    | username: ``administrator``
+    | password: ``aggregate``
+
+3. Change the administrator account's password!
