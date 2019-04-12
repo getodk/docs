@@ -455,7 +455,7 @@ A sample **settings** worksheet might look like this:
   :header-rows: 1
 
   * - setting_name
-    - Value
+    - value
     - :th:`display.title.text`
     - display.locale.text
     - display.locale.text.hindi
