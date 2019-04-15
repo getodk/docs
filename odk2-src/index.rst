@@ -51,10 +51,11 @@ These perspectives are:
 List of Tools
 ---------------
 The ODK 2 Tool Suite consists of:
-  - :doc:`app-designer-intro` - a design environment for creating, customizing, and previewing your forms, data curation, and visualization applications.
+ 
   - :doc:`survey-intro` - a data collection application based upon HTML, CSS, JavaScript.
   - :doc:`tables-intro` - a data curation and visualization application running on your mobile device.
   - :doc:`services-intro` - an application for handling database access, file access, and data synchronization services between all the ODK 2 applications. It allows you to synchronize data collected by the ODK 2 Android tools with a cloud endpoint.
+  - :doc:`app-designer-intro` - a design environment for creating, customizing, and previewing your forms, data curation, and visualization applications. This is a good place to start the process of learning how to use ODK tools.
   - :doc:`cloud-endpoints-intro` - a cloud server to host data and application files, and to support bi-directional data synchronization across disconnected mobile devices.
   - :doc:`suitcase-intro` - a desktop tool for synchronizing data with a cloud endpoint.
   
