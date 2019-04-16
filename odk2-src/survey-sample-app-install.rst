@@ -13,7 +13,7 @@ To access the sample application and its six sample forms:
       :alt: Survey Setting Button
       :class: device-screen-vertical
 
-  2. Follow the :ref:`services-managing-server-config` instructions to set up your server.
+  2. Select Settings -> Server Settings
 
     - Set your :guilabel:`Server URL` to :file:`https://opendatakit-2.appspot.com`.
 
@@ -21,7 +21,7 @@ To access the sample application and its six sample forms:
 
         The server URL starts with :file:`https://` not :file:`http://`. Don't forget to include the *s*.
 
-    - Leave your authentication as :guilabel:`None (anonymous access)`.
+    - Leave your authentication (Server Sign-on Credential) as :guilabel:`None (anonymous access)`.
 
   3. Back out until you return to Survey.
   4. Follow the :ref:`services-using-sync` instructions (see :ref:`launching from Survey <services-using-sync-launch-other>`).
