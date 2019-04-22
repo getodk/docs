@@ -38,7 +38,25 @@ and set a constraint on that question.
   text, guest_name, Guest's name, ,
   text, guest_dietary, Does this guest have any dietary restrictions?, , 
   end_repeat,,,,
+
+.. note::
+
+  If the count is decreased by a user, no groups will be deleted. This avoids accidental data loss: a user who accidentally sets the count too low can set it to a higher number and still have the repetitions that were previously created.
+
+A recommended way to handle this case is using relevance to hide any extra values:
   
+.. csv-table:: survey
+  :header: type, name, label, constraint, repeat_count, relevant
+  
+  integer, number_in_party, How many guests are in your party?, . <= 8
+  note, party_names_note, Please provide details for each guest., ,
+  begin_repeat, guest_details, Guest details,,${number_in_party}
+  begin_group, guest_details_gr,,,,position(..) <= ${number_in_party}
+  text, guest_name, Guest's name, ,
+  text, guest_dietary, Does this guest have any dietary restrictions?, , 
+  end_group,,,,,
+  end_repeat,,,,
+
 .. _use-relevant-for-max-repeats:
   
 Using relevants to limit repetitions
