@@ -69,9 +69,9 @@ Use the :doc:`xlsx-converter-reference` to find all the features you can use in 
 Launching With a Different AppName
 ---------------------------------------------
 
-The ODK 2 tools are designed to support multiple independent Data Management Applications running on the Android device. Each of our tools has the ability to run in the context of either a default application name, or a specified application name.
+The ODK-X tools are designed to support multiple independent Data Management Applications running on the Android device. Each of our tools has the ability to run in the context of either a default application name, or a specified application name.
 
-By default, ODK Survey runs under the *default* application name (as does ODK Tables and the other ODK 2 tools). Application names correspond to the name of the directory under :file:`/sdcard/opendatakit` where the configuration and data files for that application are stored.
+By default, ODK Survey runs under the *default* application name (as does ODK Tables and the other ODK-X tools). Application names correspond to the name of the directory under :file:`/sdcard/opendatakit` where the configuration and data files for that application are stored.
 
 .. warning::
 
@@ -79,7 +79,7 @@ By default, ODK Survey runs under the *default* application name (as does ODK Ta
 
   Each Data Management Application will store its own server configuration. Therefore after an initial setup that points each application at its proper server, the user will not need to remember which server hosts which app.
 
-Here we describe how to launch the ODK 2 tools into an application name of your choice with the use of widget shortcuts.
+Here we describe how to launch the ODK-X tools into an application name of your choice with the use of widget shortcuts.
 
 First, you must create an alternative application. As a contrived example, we will make an exact copy of the *default* application on the device with a new name. To do so, first load an application to the device (such as the :ref:`sample application <survey-sample-app-install>`). Then open :program:`OI File Manager`, navigate to the :file:`/sdcard/opendatakit` directory, and copy the *default* directory, renaming it *myapp*. You have now created the *myapp* application! It is isolated from and operates independently of the default application.
 
@@ -112,7 +112,7 @@ Trying the New Launcher
 
 Now, play around with launching ODK Survey using this application shortcut and :guilabel:`Finalizing` a new filled-in form. Exit ODK Survey, and launch it from the applications list (so that it launches as the default application). Verify that you do not see that newly filled-in form. You can also create a new filled-in form in this default application and confirm that it is not visible in the myapp application.
 
-This highlights the isolation of Data Management Applications in the ODK 2 tools. This is even more powerful with applications that use ODK Tables because you can create entirely isolated applications, such as a forestry app and a health clinic app, and have the forms and data entirely independent of each other.
+This highlights the isolation of Data Management Applications in the ODK-X tools. This is even more powerful with applications that use ODK Tables because you can create entirely isolated applications, such as a forestry app and a health clinic app, and have the forms and data entirely independent of each other.
 
 This eliminates the need for different groups to fork the ODK code base.
 

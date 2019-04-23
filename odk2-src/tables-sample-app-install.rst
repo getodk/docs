@@ -3,9 +3,9 @@ Install the Sample Application
 
 .. _tables-sample-app-install:
 
-Unlike ODK Collect, the ODK 2 tools are application-focused. An application is identified by the name of the directory under the :file:`/sdcard/opendatakit/` folder. The sample application is named *default*, as is the sample applications provided for :doc:`survey-intro`. This means that you can only deploy one of these sample application at a time onto a device. We also provide :ref:`instructions <survey-launching-appname>` to rename one of these so that two or more applications can co-exist and not interfere with each other on this same device.
+Unlike ODK Collect, the ODK-X tools are application-focused. An application is identified by the name of the directory under the :file:`/sdcard/opendatakit/` folder. The sample application is named *default*, as is the sample applications provided for :doc:`survey-intro`. This means that you can only deploy one of these sample application at a time onto a device. We also provide :ref:`instructions <survey-launching-appname>` to rename one of these so that two or more applications can co-exist and not interfere with each other on this same device.
 
-We will use the ODK 2 synchronization mechanism to install this app. It is about 26 MB in size and takes a few minutes to download from the web.
+We will use the ODK-X synchronization mechanism to install this app. It is about 26 MB in size and takes a few minutes to download from the web.
 
   1. Launch ODK Tables. Press the Action Button (:guilabel:`⋮`) and press :menuselection:`Preferences` from the menu.
 

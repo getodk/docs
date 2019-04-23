@@ -16,14 +16,14 @@ Syncing has two phases. In the first phase, data tables are created on the devic
 
 In the second phase, it synchronizes the contents of the local data tables with the contents on the server, including any row-level file attachments associated with individual records in the data table. Row-level file attachments are bundled and synced one row at a time.
 
-Unlike ODK Collect, where individual forms can be added and removed at will, ODK Services and the ODK 2 tools are organized Data Management Applications consisting of a set of interrelated data tables and forms. All the forms and tables on the server collectively define the Data Management Application* and ODK Services ensures that the device conforms to that Data Management Application definition. You can operate multiple independent Data Management Applications on a single device by placing their files and forms under different application folders within the :file:`/sdcard/opendatakit/` folder. Each such application will publish to a different ODK Cloud Endpoint. This is a significant and powerful change from the ODK 1 mindset.
+Unlike ODK Collect, where individual forms can be added and removed at will, ODK Services and the ODK-X tools are organized Data Management Applications consisting of a set of interrelated data tables and forms. All the forms and tables on the server collectively define the Data Management Application* and ODK Services ensures that the device conforms to that Data Management Application definition. You can operate multiple independent Data Management Applications on a single device by placing their files and forms under different application folders within the :file:`/sdcard/opendatakit/` folder. Each such application will publish to a different ODK Cloud Endpoint. This is a significant and powerful change from the ODK 1 mindset.
 
 .. _services-managing-app-files:
 
 Database Details
 ---------------------------------------------
 
-ODK 2 data is stored in a `SQLite Database <http://sqlite.org/index.html>`_ running on the Android device. After a device synchronizes with the server, this database will fully match the schema and contents of the database running in the :doc:`cloud-endpoints-intro`.
+ODK-X data is stored in a `SQLite Database <http://sqlite.org/index.html>`_ running on the Android device. After a device synchronizes with the server, this database will fully match the schema and contents of the database running in the :doc:`cloud-endpoints-intro`.
 
 Each Survey form instance will write to a row in the database. However, this mapping is not one-to-one: the form may not fill the entire row's columns and another form might fill other fields in the same row. Furthermore, sub-forms allow you to launch forms that write to other database rows. See :doc:`app-designer-intro` and :doc:`survey-intro` for more details.
 

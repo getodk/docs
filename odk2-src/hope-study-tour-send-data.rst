@@ -17,7 +17,7 @@ This module is the synchronization interface, see the :ref:`Services User Guide 
 Implementation
 ----------------------
 
-The synchronization interface is implemented completely by the ODK 2 platform and it is not customizable. For details on how to launch it through your application files (rather than the default provided sync button), see the :ref:`Main Menu implementation details <hope-study-tour-main-menu-implementation>`.
+The synchronization interface is implemented completely by the ODK-X platform and it is not customizable. For details on how to launch it through your application files (rather than the default provided sync button), see the :ref:`Main Menu implementation details <hope-study-tour-main-menu-implementation>`.
 
 .. _hope-study-tour-send-data-implementation-files:
 
