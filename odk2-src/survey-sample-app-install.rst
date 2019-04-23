@@ -13,7 +13,7 @@ To access the sample application and its six sample forms:
       :alt: Survey Setting Button
       :class: device-screen-vertical
 
-  2. Select Settings -> Server Settings
+  2. Select Settings -> Server Settings (more info on setting up your server can be found here: :ref:`services-managing-server-config`)
 
     - Set your :guilabel:`Server URL` to :file:`https://opendatakit-2.appspot.com`.
 
