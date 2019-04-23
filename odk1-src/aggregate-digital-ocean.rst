@@ -23,13 +23,13 @@ Create your Droplet
     .. image:: /img/aggregate-digital-ocean/distribution.*
       :alt: Selecting the Droplet's distribution
 
-3.  Choose a size fit for your intended usage. The :guilabel:`$5 Standard Droplet` should be enough for light Aggregate use. If you find yourself needing more, DigitalOcean makes it easy to resize to a bigger Droplet.
+3.  Select a size fit for your intended usage. The :guilabel:`$5 Standard Droplet` should be enough for light Aggregate use. If you find yourself needing more, DigitalOcean makes it easy to resize to a bigger Droplet.
 
 4.  If you would like automatic weekly backups, enable them.
 
 5.  You will not need block storage.
 
-6.  Choose a datacenter region physically close to where data collection
+6.  Select a datacenter region physically close to where data collection
     is going to happen.
 
 7.  Under :guilabel:`Select additional options`, check the :guilabel:`User data` checkbox. Copy and paste the contents of `this Cloud-Config script <https://raw.githubusercontent.com/opendatakit/aggregate/master/cloud-config/digital-ocean/cloud-config.yml>`_.
