@@ -12,11 +12,12 @@ Installing on Tomcat (Local or Cloud)
 
 This document guides you through the installation and initial setup of a self-hosted instance of ODK Aggregate, running on Tomcat with a `PostgreSQL <https://www.postgresql.org/>`_, or `MySQL <https://www.mysql.com/>`_ database server. "Self-hosted" could mean on your own hardware or on a cloud-based server.
 
-If you're planning on hosting your server on DigitalOcean, or Amazon Web Services, you can use the specific guides:
+If you're planning on hosting your server on a cloud provider, you can use these provider-specific guides:
 
-- :doc:`DigitalOcean <aggregate-do>`
+- :doc:`DigitalOcean <aggregate-do>` (recommended)
 - :doc:`Amazon Web Services <aggregate-aws>`
 - :doc:`Google Cloud <aggregate-google-cloud>`
+- :doc:`Microsoft Azure <aggregate-azure>`
 
 .. note::
 
