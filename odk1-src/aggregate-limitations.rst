@@ -28,7 +28,7 @@ Aggregate 1.4.7 and earlier use a deprecated backend technology. Google may term
 Aggregate 1.4.15 changed sync protocol
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Aggregate 1.4.15 fixed the ODK-X.0 rev 210 sync protocol. Prior to this, user permissions were incorrectly being computed and filtered. This prevented resetting the server with new content from the device (but syncing with existing content worked fine). The rev 210 sync protocol is incompatible with anything prior to rev 210.
+Aggregate 1.4.15 fixed the ODK-X rev 210 sync protocol. Prior to this, user permissions were incorrectly being computed and filtered. This prevented resetting the server with new content from the device (but syncing with existing content worked fine). The rev 210 sync protocol is incompatible with anything prior to rev 210.
 
 Basic Auth broken prior to Aggregate 1.4.14
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

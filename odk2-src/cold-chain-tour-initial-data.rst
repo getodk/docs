@@ -38,7 +38,7 @@ The :th:`_group_priviledged` column should be set to :tc:`GROUP_ADMIN` for all r
 
 .. note::
 
-  This group organization and permissions set up is specific to the default data set provided with the reference application. However, this is not a requirement of the ODK 2 tools. Groups could be set up to modify regions and view everything, or only read the region they belong to, or even restrict some users from modifying anything and only reading data. See :doc:`data-permission-filters` for more details.
+  This group organization and permissions set up is specific to the default data set provided with the reference application. However, this is not a requirement of the ODK-X tools. Groups could be set up to modify regions and view everything, or only read the region they belong to, or even restrict some users from modifying anything and only reading data. See :doc:`data-permission-filters` for more details.
 
 The JavaScript is configured to expect these groups and this set up. To use the application you will need to configure your :doc:`sync-endpoint` to have at least one table administrator. You should also add users to the various groups, and set their default group as the region where they can edit records. For example, user `dana` might belong to groups *synchronize_tables*, *region_south* and *region_south_east* and have their default group set to *region_south_east*. In this scenario `data` can modify data in the group *region_south_east* and can see but not modify the rest of *region south* (namely, *region_south_west*).
 

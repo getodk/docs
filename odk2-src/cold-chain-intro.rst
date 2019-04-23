@@ -15,7 +15,7 @@ The Cold Chain application is a health facility maintenance application original
 Key Features
 ----------------------------
 
-The Cold Chain application provides a good example of the following ODK 2 platform features:
+The Cold Chain application provides a good example of the following ODK-X platform features:
 
   - **Data Synchronization and Reuse**: The health facility, refrigerator, and maintenance log data set is stateful rather than the traditional model of being actively collected. If a refrigerator breaks, it is synchronized and the state is updated so other users can see this state change.
   - **Custom Web Views**: Finding and viewing the details of health facilities, refrigerator models, and individual refrigerators is completely customized to the needs of this application. Custom visualizations provide statistics on the full data set, such as refrigerator age.
@@ -31,7 +31,7 @@ The Cold Chain application provides a good example of the following ODK 2 platfo
 Installing Cold Chain
 --------------------------
 
-Source code for this Data Management Application can be found in the `cold-chain-demo branch ofthe App Designer repository <https://github.com/opendatakit/app-designer/tree/cold-chain-demo>`_. As with all of the ODK 2 reference applications (and the ODK 2 platform itself), the code is free and open source. Feel free to reuse, modify, or extend this application and its component parts to suit your organization's needs.
+Source code for this Data Management Application can be found in the `cold-chain-demo branch ofthe App Designer repository <https://github.com/opendatakit/app-designer/tree/cold-chain-demo>`_. As with all of the ODK-X reference applications (and the ODK-X platform itself), the code is free and open source. Feel free to reuse, modify, or extend this application and its component parts to suit your organization's needs.
 
 .. warning::
 

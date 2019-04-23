@@ -35,7 +35,7 @@ You will need to install:
   - :doc:`survey-intro`
   - :doc:`tables-intro`
 
-Before getting started, be sure you have familiarized yourself with the ODK 2 platform. The :doc:`getting-started-2-user` and :doc:`getting-started-2-architect` guides are a good place to start. The :doc:`survey-sample-app` and :doc:`tables-sample-app` are also good reference points.
+Before getting started, be sure you have familiarized yourself with the ODK-X platform. The :doc:`getting-started-2-user` and :doc:`getting-started-2-architect` guides are a good place to start. The :doc:`survey-sample-app` and :doc:`tables-sample-app` are also good reference points.
 
 .. _build-app-clean-app-designer:
 
