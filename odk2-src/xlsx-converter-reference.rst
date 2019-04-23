@@ -853,7 +853,7 @@ Custom columns can be used within a workbook that are used to store functions, f
 framework_translations
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The **framework_translations** sheet is only present in the :file:`framework.xlsx file`. It defines the translations for all of the standard prompts provided by the ODK 2 framework.
+The **framework_translations** sheet is only present in the :file:`framework.xlsx file`. It defines the translations for all of the standard prompts provided by the ODK-X framework.
 
 .. list-table:: framework_translations Worksheet Columns
   :header-rows: 1

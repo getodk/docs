@@ -209,7 +209,7 @@ Tapping the :guilabel:`Columns` item will launch a list of all the columns in th
 
   .. note::
 
-      The columns list excludes the status and metadata columns that the ODK 2 platform automatically adds. It only shows the columns holding data defined by the Deployment Architect.
+      The columns list excludes the status and metadata columns that the ODK-X platform automatically adds. It only shows the columns holding data defined by the Deployment Architect.
 
   .. image:: /img/tables-managing/table-properties-column-list.*
     :alt: Table Properties Column List
@@ -375,7 +375,7 @@ Creating Customized Web Views
 
 Instructions for creating your own custom web views for presenting and modifying data, and implementing your custom workflow, go to the :ref:`web view design guide <build-app-design-view>`.
 
-For the convenience of Data Management Application developers, the ODK 2 platform provides a number of basic view types, such as *List Views* and *Detail Views*. These can be used and extended in your applications, or you can create something completely unique to your requirements with a custom view. Some of these views can be configured as defaults in :ref:`tables-managing-table-properties`, and you can also launch directly into them with JavaScript calls from :file:`/system/tables/js/odkTables.js`. Examples include:
+For the convenience of Data Management Application developers, the ODK-X platform provides a number of basic view types, such as *List Views* and *Detail Views*. These can be used and extended in your applications, or you can create something completely unique to your requirements with a custom view. Some of these views can be configured as defaults in :ref:`tables-managing-table-properties`, and you can also launch directly into them with JavaScript calls from :file:`/system/tables/js/odkTables.js`. Examples include:
 
   - :code:`openDetailView` to launch a *Detail View*, providing a query to select the desired record.
   - :code:`openListView` to launch a *List View*, providing a query to select the desired list of records.
@@ -447,6 +447,6 @@ As mentioned earlier, this file is never uploaded to the server. After you have 
 Launching With a Different AppName
 ----------------------------------------
 
-The ODK 2 tools are designed to support multiple independent Data Management Applications running on the Android device. Each of our tools has the ability to run in the context of either a default application name, or a specified application name.
+The ODK-X tools are designed to support multiple independent Data Management Applications running on the Android device. Each of our tools has the ability to run in the context of either a default application name, or a specified application name.
 
 For further details on how to launch multiple AppNames and create your own new AppNames, see Survey's guide to :ref:`survey-launching-appname`.
