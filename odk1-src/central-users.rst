@@ -30,7 +30,7 @@ By default, Central roles are configured to allow the following:
 +------------------+---------------+-----------------+
 | Edit Details     | x             |                 |
 +------------------+---------------+-----------------+
-| View Email Addrs | x             |                 |
+| View Email Addr. | x             |                 |
 +------------------+---------------+-----------------+
 | Revoke Password  | x             |                 |
 +------------------+---------------+-----------------+
@@ -88,7 +88,7 @@ By default, Central roles are configured to allow the following:
 Managing Web Users
 ~~~~~~~~~~~~~~~~~~
 
-You can make Users into Administrators from the :ref:`main Users panel <central-users-role>`, and you can assign them as Project Managers on the :ref:`Settings tab <central-project-settings>` within the Project.
+You can make Users into Administrators from the :ref:`main Users panel <central-users-web-role>`, and you can assign them as Project Managers on the :ref:`Settings tab <central-project-settings>` within the Project.
 
 To manage web users, navigate to :menuselection:`--> Users --> Web Users` at the top of the Central management website. You should see a listing of users that looks like this:
 
@@ -113,8 +113,8 @@ Newly created Web Users are only able to log in and edit their profile informati
 
 .. _central-users-web-role:
 
-Assigning a sitewide Web User Role
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Assigning a site-wide Web User Role
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As mentioned under :ref:`central-users-web-roles` above, there are two Roles you may assign to Web Users in the current release of ODK Central: Administrator and Project Manager. Administrators may perform any action on the system, while Project Managers may perform any action on their assigned Project(s).
 

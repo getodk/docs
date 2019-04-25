@@ -21,7 +21,7 @@ If you have upgraded to **version 0.5**, the following changes have been made:
 
  - Only **Web Users** (who are allowed to administer ODK Central through the management website) marked **Administrator** have administrative access to the main site settings and all projects.
 
-   - However, all Web Users created before version 0.5 were already marked Administrator. You will have to go change their :ref:`Sitewide Role <central-users-web-role>` to None if you wish to remove these privileges.
+   - However, all Web Users created before version 0.5 were already marked Administrator. You will have to go change their :ref:`Site-wide Role <central-users-web-role>` to None if you wish to remove these privileges.
 
  - Normal Web Users who are not Administrators can be made Managers on select projects. These users have the ability to manage anything about the project. They can:
 
@@ -102,11 +102,11 @@ From here, you will be able to edit the Project Name. You will also see a sectio
 Managing Project Managers
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Any Web User may be assigned as a Project Manager on a Project. Project Managers may perform any action upon and within that Project, including changing its name, adding more Project Managers, and uploading and managing Forms and Submissions. Any Web Users that are sitewide Administrators will already be able to perform these actions on any Project without being explicitly named a Manager.
+Any Web User may be assigned as a Project Manager on a Project. Project Managers may perform any action upon and within that Project, including changing its name, adding more Project Managers, and uploading and managing Forms and Submissions. Any Web Users that are site-wide Administrators will already be able to perform these actions on any Project without being explicitly named a Manager.
 
 You will find a detailed breakdown of user roles :ref:`here <central-users-web-roles>`.
 
-To assign or unassign Managers for a Project, first go to the Project overview page, then click on the :guilabel:`Project Managers` tab under the Project name. You should see the following page:
+To assign or remove Managers for a Project, first go to the Project overview page, then click on the :guilabel:`Project Managers` tab under the Project name. You should see the following page:
 
    .. image:: /img/central-projects/roles.png
 
