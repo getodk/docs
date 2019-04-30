@@ -94,6 +94,8 @@ With the proper directory structure in place, you can now create your form. The 
     - :th:`value`: the value of the named setting.
     - :th:`display.title.text`: the text shown to the user inside Survey.
 
+    Reminder: the *settings* worksheet, and any other worksheets to be defined later, are to be created within the .xlsx file you created above. DO NOT create separate .xlsx files for each worksheet.
+
   3. Create the following rows:
 
     .. list-table:: *settings* worksheet
