@@ -7,7 +7,7 @@ Welcome to Open Data Kit 2's documentation!
 
 .. _odk-2-introduction:
 
-The :dfn:`ODK-X Tool Suite` is a new set of ODK tools that will co-exist with the existing ODK 1 Tool Suite. It targets advanced users who find themselves limited by the ODK 1 data collection workflows. It provides:
+The :dfn:`ODK-X Tool Suite` is a new set of ODK tools that will co-exist with the existing ODK Tool Suite. It targets advanced users who find themselves limited by the ODK data collection workflows. It provides:
 
 - **Fully customizable layout of prompts on the Android device**. The ODK-X tools use HTML, JavaScript, and CSS to specify the layout of nearly all the screens viewed by the data collectors. This enables individuals and organizations with basic web development skills to modify and customize the appearance of their surveys and workflow. At the same time, we retain the easy-to-use spreadsheet-based definition of the survey questions (however, this XLSX Converter mechanism is not cross-compatible with XLSForm).
 - **More flexible, user-directed, navigation of a survey**. The ODK-X tools do not impose a strict sequential advancement through a form like ODK Collect. Form designers can allow users to traverse a form in any order, yet impose validation of collected data prior to traversing into subsequent steps in a workflow.
@@ -18,9 +18,9 @@ The :dfn:`ODK-X Tool Suite` is a new set of ODK tools that will co-exist with th
 
 .. note::
 
-  The ODK-X tool suite is targeted at advanced users who are unable to complete their workflows with the ODK 1 tools. If you find that the ODK 1 tools meet your needs then there is no reason to switch.
+  The ODK-X tool suite is targeted at advanced users who are unable to complete their workflows with the ODK tools. If you find that the ODK tools meet your needs then there is no reason to switch.
 
-ODK-X is a platform that will run your :dfn:`data management applications`. With ODK 1 you create survey forms that ODK Collect renders and are used to collect data and submit it to the ODK Aggregate server. In ODK-X, you create `data management applications` that consist of survey forms (similar to those used in Collect) as well as Javascript based web apps that allow you to render a fully customized user interface and implement business logic in order to collect, manage, and visualize data all on the Android device.
+ODK-X is a platform that will run your :dfn:`data management applications`. With ODK you create survey forms that ODK Collect renders and are used to collect data and submit it to the ODK Aggregate server. In ODK-X, you create `data management applications` that consist of survey forms (similar to those used in Collect) as well as Javascript based web apps that allow you to render a fully customized user interface and implement business logic in order to collect, manage, and visualize data all on the Android device.
 
 .. _odk-2-intro-learn-more:
 

@@ -72,7 +72,7 @@ docker kill odk-docs
 
 ### Other build tasks  
 
-You can also use the `run-task` script described above to build both ODK 1 and ODK-X docs, or to run just a portion of the build process. See available [build tasks](#tasks) below.
+You can also use the `run-task` script described above to build both ODK and ODK-X docs, or to run just a portion of the build process. See available [build tasks](#tasks) below.
 
 ## <a name="python-environment"></a>Python environment
 
@@ -180,7 +180,7 @@ You can also use `make` to build both ODK and ODK2 docs, or to run just a portio
 
 ## <a name="tasks"></a>Build tasks
 
-For both ODK 1 and ODK-X:
+For both ODK and ODK-X:
 
 |          |    Build     |     Clean     |     Check Style & Spell     |    Test    |
 | -------- | :---------:  | :-----------: | :-------------------------: | :--------: |

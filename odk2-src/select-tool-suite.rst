@@ -1,19 +1,19 @@
 Selecting the Appropriate Tool Suite
 =====================================
 
-Generally, we suggest starting with the ODK 1 tool suite. If it does not fulfill your requirements then move on to the more flexible, but also more complex, ODK-X tool suite.
+Generally, we suggest starting with the ODK tool suite. If it does not fulfill your requirements then move on to the more flexible, but also more complex, ODK-X tool suite.
 
 .. note::
-  It is tempting to look at the version number and assume the latest is the greatest, but this is not always the case. The ODK-X tool suite was designed to co-exist with the ODK 1 tool suite and does not replace any 1.x tools. In general, the ODK 1 tools are easier to use, require less setup, and are widely adopted.  However, if you have a complex longitudinal study and possess some technical skills, then the ODK-X tools may be better suited to your needs.
+  It is tempting to look at the version number and assume the latest is the greatest, but this is not always the case. The ODK-X tool suite was designed to co-exist with the ODK tool suite and does not replace any 1.x tools. In general, the ODK tools are easier to use, require less setup, and are widely adopted.  However, if you have a complex longitudinal study and possess some technical skills, then the ODK-X tools may be better suited to your needs.
 
 
-The feature comparison table below illustrates the differences between the ODK 1 and ODK-X tools.
+The feature comparison table below illustrates the differences between the ODK and ODK-X tools.
 
 .. list-table:: Feature Comparison Table
   :header-rows: 1
 
   * - | Feature
-    - ODK 1
+    - ODK
     - ODK-X
   * - | Stage of technology lifecycle
     - Maturity
