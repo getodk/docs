@@ -132,14 +132,15 @@ Archiving a Project
 
 When you Archive a Project, the following things become frozen:
 
- - Any Forms that are still in :guilabel:`Open` or :guilabel:`Closing` states will remain in those states.
- - Any users who are Project Managers will retain their access.
- - All Project data, including Forms, Form Attachments, and all Submission data will remain available for viewing, download, and access over OData.
+ - Form settings and states. Any Forms that are still in :guilabel:`Open` or :guilabel:`Closing` states will remain in those states.
+ - Web User access. Any users who are Project Managers will retain their access.
+ - App User access. All active App Users will retain their ability to download :guilabel:`Open` forms and upload non-:guilabel:`Closed` forms.
+ - Project data access. All Project data, including Forms, Form Attachments, and all Submission data will remain available for viewing, download, and OData access.
 
 And, the following things are changed:
 
  - The Project will be sorted to the bottom of the Projects list, with :guilabel:`(archived)` added onto the end of the Project Name.
- - All management features on the Project and Forms within will be disabled in the web interface.
+ - All management features (e.g. editing Project or Form details) on the Project and Forms within will be disabled in the web interface.
 
 .. admonition:: Before you archive
 
