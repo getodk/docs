@@ -110,7 +110,7 @@ Now, we want to run your new ODK server software. But we don't want to only run 
 
 Once that's done, run ``systemctl start docker-compose@central`` (type it in and press **Enter**) to start Docker, which will then load the ODK server. The first time you start it, it will take a while to set itself up. Once you give it a few minutes and you have input control again, you'll want to see whether everything is running correctly:
 
- - To see if Docker itself is working correctly, you can run ``systemctl status docker-compose@central``. If you see text that says ``Active: active (running)`` then everything is working great. If not, give it some time: it may take many minutes for it to set itself up for the very first time.
+ - To see if Docker itself is working correctly, you can run ``systemctl status docker-compose@central``. If you see text that says ``Active: active (running)`` then everything is working great. If not, give it some time: it may take many minutes for it to set itself up for the first time.
  - To see if ODK has finished loading inside of Docker, run ``docker-compose ps``. Under the ``State`` column, you will want to see text that reads ``Up (healthy)``. If you see ``Up (health: starting)``, give it a few minutes. If you see some other text, something has gone wrong.
  - If your domain name has started working, you can visit it in a web browser to check that you get the ODK Central management website.
 

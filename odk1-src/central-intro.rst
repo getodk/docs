@@ -33,7 +33,7 @@ Here are some (but not all) key features we **do not yet** support:
 
  - Customizable user roles
  - Encrypted forms
- - Full ODK Briefcase sync compatibility
+ - ODK Briefcase push/pull support
 
 .. _central-intro-who:
 

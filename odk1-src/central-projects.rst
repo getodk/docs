@@ -130,12 +130,20 @@ To manage App Users for a Project, you can navigate to the Project overview page
 Archiving a Project
 ~~~~~~~~~~~~~~~~~~~
 
-When you Archive a Project, the following things will happen:
+When you Archive a Project, the following things become frozen:
+
+ - Any Forms that are still in :guilabel:`Open` or :guilabel:`Closing` states will remain in those states.
+ - Any users who are Project Managers will retain their access.
+ - All Project data, including Forms, Form Attachments, and all Submission data will remain available for viewing, download, and access over OData.
+
+And, the following things are changed:
 
  - The Project will be sorted to the bottom of the Projects list, with :guilabel:`(archived)` added onto the end of the Project Name.
  - All management features on the Project and Forms within will be disabled in the web interface.
- - Any Forms that are still in :guilabel:`Open` or :guilabel:`Closing` states will still accept submissions.
- - All Project data, including Forms, Form Attachments, and all Submission data will remain available for viewing, download, and access over OData.
+
+.. admonition:: Before you archive
+
+  Because form states become non-editable, you should review them and make sure you are happy with how they'll be frozen.
 
 To Archive a Project, first navigate to the Project, then click on the :guilabel:`Settings` tab underneath the Project name.
 

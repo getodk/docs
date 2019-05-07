@@ -8,34 +8,20 @@ There are two types of user accounts in ODK Central: **Web Users** and **App Use
  - **Web Users** have accounts on the Central management website. These accounts are global across all projects on the server. They can log into the web interface and perform administrative actions like user management, form upload and management, and submission data viewing and download.
  - **App Users** can use mobile data collection apps like ODK Collect to :ref:`connect to Central <central-users-app-configure>`. App Users are limited to a single project at a time. Once connected through the app, they will be able to see the list of forms, download the ones they need, and upload completed submissions to those forms.
 
-You will need both types of users in order to run a successful data collection project: a Web User must upload a valid form definition, an App User must upload submissions to it from their mobile device, and the Web User will then be able to see those submissions in the web interface and download or sync them for analysis.
+You will need both types of users in order to run a successful data collection project: a Web User must upload a valid form definition, an App User must upload submissions to it from their mobile device, and the Web User will then be able to see those submissions in the web interface and download them for analysis.
 
 .. _central-users-web-roles:
 
 Web User Roles
 --------------
 
-Central features Role-based User permissioning. In the current release of Central, we provide two predetermined roles: Administrator and Project Manager. In future releases, more default roles will be added and eventually you will be able to define your own roles as you see fit.
+Central features Role-based User permissioning. In the current release of Central, we provide two roles: Administrator and Project Manager. In future releases, more default roles will be added and eventually you will be able to define your own roles as you see fit.
 
 By default, Central roles are configured to allow the following:
 
 +------------------+---------------+-----------------+
 | Action           | Administrator | Project Manager |
 +==================+===============+=================+
-| **Web Users**                                      |
-+------------------+---------------+-----------------+
-| Create           | x             |                 |
-+------------------+---------------+-----------------+
-| List All         | x             |                 |
-+------------------+---------------+-----------------+
-| Edit Details     | x             |                 |
-+------------------+---------------+-----------------+
-| View Email Addr. | x             |                 |
-+------------------+---------------+-----------------+
-| Revoke Password  | x             |                 |
-+------------------+---------------+-----------------+
-| Delete           | x             |                 |
-+------------------+---------------+-----------------+
 | **Projects**                                       |
 +------------------+---------------+-----------------+
 | Create           | x             |                 |
@@ -43,16 +29,6 @@ By default, Central roles are configured to allow the following:
 | Edit Details     | x             | x               |
 +------------------+---------------+-----------------+
 | Archive          | x             | x               |
-+------------------+---------------+-----------------+
-| **Project App Users**                              |
-+------------------+---------------+-----------------+
-| Create           | x             | x               |
-+------------------+---------------+-----------------+
-| List All         | x             | x               |
-+------------------+---------------+-----------------+
-| Revoke Access    | x             | x               |
-+------------------+---------------+-----------------+
-| See Code         | x             | x               |
 +------------------+---------------+-----------------+
 | **Project Forms**                                  |
 +------------------+---------------+-----------------+
@@ -76,6 +52,30 @@ By default, Central roles are configured to allow the following:
 +------------------+---------------+-----------------+
 | OData Access     | x             | x               |
 +------------------+---------------+-----------------+
+| **Project App Users**                              |
++------------------+---------------+-----------------+
+| Create           | x             | x               |
++------------------+---------------+-----------------+
+| List All         | x             | x               |
++------------------+---------------+-----------------+
+| Revoke Access    | x             | x               |
++------------------+---------------+-----------------+
+| See Code         | x             | x               |
++------------------+---------------+-----------------+
+| **Web Users**                                      |
++------------------+---------------+-----------------+
+| Create           | x             |                 |
++------------------+---------------+-----------------+
+| List All         | x             |                 |
++------------------+---------------+-----------------+
+| Edit Details     | x             |                 |
++------------------+---------------+-----------------+
+| View Email Addr. | x             |                 |
++------------------+---------------+-----------------+
+| Revoke Password  | x             |                 |
++------------------+---------------+-----------------+
+| Delete           | x             |                 |
++------------------+---------------+-----------------+
 | **Server Configuration**                           |
 +------------------+---------------+-----------------+
 | Setup Backups    | x             |                 |
@@ -88,7 +88,7 @@ By default, Central roles are configured to allow the following:
 Managing Web Users
 ~~~~~~~~~~~~~~~~~~
 
-You can make Users into Administrators from the :ref:`main Users panel <central-users-web-role>`, and you can assign them as Project Managers on the :ref:`Settings tab <central-project-settings>` within the Project.
+You can make Users into Administrators from the :ref:`site-wide Users panel <central-users-web-role>`, and you can assign them as Project Managers on the :ref:`Settings tab <central-project-settings>` within the Project.
 
 To manage web users, navigate to :menuselection:`--> Users --> Web Users` at the top of the Central management website. You should see a listing of users that looks like this:
 
