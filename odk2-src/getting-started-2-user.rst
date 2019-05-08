@@ -3,7 +3,7 @@ Getting Started User Guide
 
 .. _using-odk-2:
 
-The ODK-X tools are intended to address limitations of the existing tool set. The 2 Tool Suite consists of:
+The ODK-X tools are intended to address limitations of the existing tool set. The ODK-X Tool Suite consists of:
 
 - :doc:`services-intro` - an application that handles database access, file access, and data synchronization services between all of the ODK-X applications. It also allows you to synchronize data collected by the ODK-X tools using the 2 protocol with an ODK Aggregate instance.
 - :doc:`survey-intro` - a data collection application based upon HTML, CSS, and JavaScript.
@@ -31,7 +31,7 @@ ODK-X tools access configuration files and store data under sub-directories of t
 
 This is handled in such a way that each user application is isolated from all other user applications, with separate configurations, data tables, and server settings. This allows one device to run multiple user applications built on top of the ODK-X tools without any coordination among the teams developing those applications.
 
-A major goal of the 2 tools was to eliminate the need for any software engineering skills (for example: Java programming, Android software development environment, source code version control systems) when designing data management applications. The skills required to build a data management application range from scripting a form definition in XLSX (similar to constructing ODK Collect forms using XLSX files processed by the XLSForm tool), to simple web programming -- modifying boilerplate HTML and JavaScript for custom presentations of the collected data. Advanced web programmers can also easily implement entirely custom web pages.
+A major goal of the ODK-X tools was to eliminate the need for any software engineering skills (for example: Java programming, Android software development environment, source code version control systems) when designing data management applications. The skills required to build a data management application range from scripting a form definition in XLSX (similar to constructing ODK Collect forms using XLSX files processed by the XLSForm tool), to simple web programming -- modifying boilerplate HTML and JavaScript for custom presentations of the collected data. Advanced web programmers can also easily implement entirely custom web pages.
 
 .. _using-odk-2-joining-a-server:
 
