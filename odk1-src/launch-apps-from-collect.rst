@@ -81,7 +81,7 @@ XLSForm
     </input>
   </group>
 
-The ``intent`` attribute is only used when the group has an ``appearance`` of ``field-list``. The format and the functionality of the ``intent`` value is the same as above. If bundle of values returned by the external application contains values whose keys match the type and the name of the sub-fields, then these values overwrite the current values of those sub-fields.
+The ``intent`` attribute is only used when the group has an ``appearance`` of ``field-list``. The format and the functionality of the ``intent`` value is the same as above. If the bundle of values returned by the external application contains values with keys that match the type and the name of the sub-fields, then the values from the bundle overwrite the current values of those sub-fields.
 
 The external app is launched with the parameters that are defined in the intent string plus the values of all the sub-fields that are either text, decimal, or integer. Any other sub-field is invisible to the external app.
 
