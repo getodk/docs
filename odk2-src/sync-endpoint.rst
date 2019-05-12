@@ -51,6 +51,9 @@ Setup instructions:
   .. code-block:: console
 
     $ git clone https://github.com/opendatakit/sync-endpoint-default-setup
+.. note::
+
+  If you are using Git on Windows, pay attention to how line endings are handled. Git configured with "core.autocrlf=true" will convert LF to CRLF, which will cause problems with the .sh-files when used in the Docker containers, thus preventing odk/sync-endpoint from starting and instead just returning with an ":invalid argument"-error. 
 
   2. Navigate into the the "sync-endpoint-default-setup" directory
   
