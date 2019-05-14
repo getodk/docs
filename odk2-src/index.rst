@@ -2,7 +2,7 @@
 
   geotagging
 
-Welcome to Open Data Kit 2's documentation!
+Welcome to Open Data Kit X's documentation!
 ==================================================
 
 .. _odk-2-introduction:
