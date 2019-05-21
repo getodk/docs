@@ -295,6 +295,21 @@ You could now log onto your server, delete the geotagger table, reset your serve
 
 .. _architect-odk2-next:
 
+Useful Grunt Commands
+-----------------------
+
+:guilabel:`grunt addtable:tableid` : Will create the required directory structure for an individual table, including the forms directory.
+
+:guilabel:`grunt xlsx-convert-all` : Takes all `.xlsx` files and converts them into a `formDef.json file`. Can be used instead of `XLSX` converter on the app designer. 
+
+:guilabel:`grunt wipe-data` : Allows users to get rid of the default tables/data included with app designer.
+
+:guilabel:`grunt setup` : Launches the login and sync screen on the connected device. 
+
+:guilabel:`grunt kill all` : Force stops survey, tables and services on the connected device.
+
+:guilabel:`grunt uninstall` : Uninstall ODK tools from the connected device.
+
 Next Steps
 -----------------------
 
