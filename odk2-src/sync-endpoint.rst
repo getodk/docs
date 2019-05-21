@@ -44,6 +44,8 @@ ODK Sync Endpoint requires a database and a *LDAP* directory, you could follow t
 
   All of the following commands should be run on your server.
 
+  If you are using git on Windows, make sure git is configured with "core.autocrlf=false" - otherwise it will convert line endings with LF to CRLF, which will cause problems with the .sh-files when used in the Docker containers, thus preventing odk/sync-endpoint from starting and instead just returning with an ":invalid argument"-error. 
+
 Setup instructions:
 
   1. Choose a directory to store you endpoint in. In that directory, run:
@@ -51,10 +53,7 @@ Setup instructions:
   .. code-block:: console
 
     $ git clone https://github.com/opendatakit/sync-endpoint-default-setup
-.. note::
-
-  If you are using Git on Windows, pay attention to how line endings are handled. Git configured with "core.autocrlf=true" will convert LF to CRLF, which will cause problems with the .sh-files when used in the Docker containers, thus preventing odk/sync-endpoint from starting and instead just returning with an ":invalid argument"-error. 
-
+    
   2. Navigate into the the "sync-endpoint-default-setup" directory
   
   3. Checkout the sync-endpoint code by running:
