@@ -132,6 +132,8 @@ Create an EC2 machine
 Set up your domain
 ------------------
 
+.. tip:: EC2 machines use IP addresses which can change if you stop and start (but not reboot) the machine. To ensure your Aggregate install will always be reachable using the same IP address, use an Elastic IP by following `these instructions <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html>`_.
+
 1. Go to the `EC2 - Instances <https://console.aws.amazon.com/ec2/v2/home#Instances:>`_ tab and find your machine.
 
 2. Take note of the IPv4 Public IP address (e.g., 12.34.56.78) and set a *DNS A record* pointing to it.

@@ -48,6 +48,8 @@ Create your Droplet
 Set up your domain
 ------------------
 
+.. tip:: DigitalOcean Droplets use IP addresses which can change if you destroy the machine. To ensure your Aggregate install will always be reachable using the same IP address, use a Floating IP by following `these instructions <https://www.digitalocean.com/docs/networking/floating-ips>`_.
+
 1.  Once the Droplet is running, take note of its public IP address (e.g., 12.34.56.78) and set a *DNS A record* pointing to it.
 
     If you own a domain, check your domain registrar's instructions. If you don't own a domain, we recommend using `FreeDNS <https://freedns.afraid.org>`_ to get a free sub-domain.
