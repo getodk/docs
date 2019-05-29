@@ -90,9 +90,9 @@ You now have the framework of the server software, but some components are missi
 
 Next, you need to update some settings. Type ``nano .env`` and press **Enter**. This will launch a text editing application.
 
- - Change the ``SSLTYPE`` line to read: ``SSLTYPE=letsencrypt``. This instructs the server to attempt to obtain a security certificate from the free Let's Encrypt provider.
- - Change the ``SSLDOMAIN`` line so that after the ``=`` is the domain name you registered above. As an example: ``SSLDOMAIN=MyOdkCollectionServer.com``. Do not include anything like ``http://``.
- - Change the ``SSLEMAIL`` line so that after the ``=`` is your own email address. The Let's Encrypt service will use this address only to notify you if something is wrong with your security certificate.
+ - Change the ``SSL_TYPE`` line to read: ``SSL_TYPE=letsencrypt``. This instructs the server to attempt to obtain a security certificate from the free Let's Encrypt provider.
+ - Change the ``DOMAIN`` line so that after the ``=`` is the domain name you registered above. As an example: ``DOMAIN=MyOdkCollectionServer.com``. Do not include anything like ``http://``.
+ - Change the ``SYSADMIN_EMAIL`` line so that after the ``=`` is your own email address. The Let's Encrypt service will use this address only to notify you if something is wrong with your security certificate.
  - Hold ``Ctrl`` and press ``x`` to quit the text editor. Press ``y`` to indicate that you want to save the file, and then press **Enter** to confirm the file name. Do not change the file name.
 
    .. image:: /img/central-install/nano.png
