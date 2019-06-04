@@ -1,5 +1,6 @@
 .. spelling::
 
+  validator
   vN
 
 ODK Validate
