@@ -118,7 +118,7 @@ Services will contact the Cloud Endpoint and synchronize your data. A progress d
 Resolving Sync Conflicts
 ---------------------------------------
 
-When you return from ODK Services and next access data, the ODK 2 tools will scan all tables looking for conflicts arising from the synchronization process. If any conflicts are found, you are required to resolve the conflict before proceeding to your activity. The options for resolving conflicts are as follows.
+When you return from ODK Services and next access data, the ODK-X tools will scan all tables looking for conflicts arising from the synchronization process. If any conflicts are found, you are required to resolve the conflict before proceeding to your activity. The options for resolving conflicts are as follows.
 
   - :guilabel:`Take Local Version` - Use the version on the device, deleting the server version.
   - :guilabel:`Take Server Version` - Use the server version, deleting the version that is on the device.
@@ -150,7 +150,7 @@ The device settings allow you to change configuration on your individual device.
       :class: device-screen-vertical
 
   - :menuselection:`Default Locale` specifies your preferred localization. By default this is set to US English. If you provide translations for your Data Management Application, this is where to enable them.
-  - :menuselection:`Text Font Size` customizes the text size across the ODK 2 tools
+  - :menuselection:`Text Font Size` customizes the text size across the ODK-X tools
   - :menuselection:`Show Splash Screen` chooses whether to show a splash screen while each app launches.
   - :menuselection:`Selected Splash Image` holds the image that will be displayed in the splash screen. By default this is an ODK logo, but can be set to your organization's own logo or another image.
 

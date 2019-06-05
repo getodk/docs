@@ -3,9 +3,9 @@ Getting Started User Guide
 
 .. _using-odk-2:
 
-A major goal of these ODK 2 tools was to eliminate the need for any software engineering skills (for example: Java programming, Android software development environment, source code version control systems) when designing data management applications. The skills required to build a data management application range from scripting a form definition in XLSX (similar to constructing ODK Collect forms using XLSX files processed by the XLSForm tool), to simple web programming -- modifying boilerplate HTML and JavaScript for custom presentations of the collected data. Advanced web programmers can also easily implement entirely custom web pages. 
+A major goal of these ODK-X tools was to eliminate the need for any software engineering skills (for example: Java programming, Android software development environment, source code version control systems) when designing data management applications. The skills required to build a data management application range from scripting a form definition in XLSX (similar to constructing ODK Collect forms using XLSX files processed by the XLSForm tool), to simple web programming -- modifying boilerplate HTML and JavaScript for custom presentations of the collected data. Advanced web programmers can also easily implement entirely custom web pages.
 
-The ODK 2 tools are intended to address limitations of the existing tool set. The 2 Tool Suite consists of:
+The ODK-X tools are intended to address limitations of the existing tool set. The ODK-X Tool Suite consists of:
 
 - :doc:`survey-intro` - a data collection application based upon HTML, CSS, and JavaScript.
 - :doc:`tables-intro` - a data collection and visualization application running on your device. TODO: note difference betweeen survey and tables
@@ -13,9 +13,9 @@ The ODK 2 tools are intended to address limitations of the existing tool set. Th
 - :doc:`scan` (beta) - not yet fully released! It will be an Android application that uses the device’s camera and specialized code to automatically digitize written data from paper forms.
 - :doc:`app-designer-intro` - a design environment for creating, customizing, and previewing your forms.
 - :doc:`cloud-endpoints-intro` - a ready-to-deploy server and data repository with enhancements to support bi-directional data synchronization across disconnected devices.
-- :doc:`suitcase-intro` - a desktop tool for synchronizing data from an ODK 2 server so the data can be exported to CSV format.
+- :doc:`suitcase-intro` - a desktop tool for synchronizing data from an ODK-X server so the data can be exported to CSV format.
 
-This page provides a brief end-to-end walk-through of the ODK 2 tools. It will cover the following topics:
+This page provides a brief end-to-end walk-through of the ODK-X tools. It will cover the following topics:
 
 .. contents:: :local:
 
@@ -24,15 +24,15 @@ This page provides a brief end-to-end walk-through of the ODK 2 tools. It will c
 ODK Data Management Applications
 ----------------------------------------
 
-The ODK 2 Android tools (ODK Survey, ODK Tables, ODK Services, ODK Scan, ODK Sensors Framework, and various ODK Sensor implementations) are Android Application Packages (APKs) that are designed to work together to create a coherent tailored application experience for an end-user.
+The ODK-X Android tools (ODK Survey, ODK Tables, ODK Services, ODK Scan, ODK Sensors Framework, and various ODK Sensor implementations) are Android Application Packages (APKs) that are designed to work together to create a coherent tailored application experience for an end-user.
 
 .. note::
 
-  Together the ODK 2 tools create a platform, on top of which you can build your own data management applications.
+  Together the ODK-X tools create a platform, on top of which you can build your own data management applications.
 
-ODK 2 tools access configuration files and store data under sub-directories of the :file:`opendatakit` directory in the :file:`sdcard` root directory (whether your device has a physical SD card or not): :file:`/sdcard/opendatakit`. User applications constructed using the ODK 2 tools are identified by the name of the sub-directory holding those configuration and data files. Thus, :file:`/sdcard/opendatakit/mytestapp` would contain all the files and data for the *mytestapp* application, where *mytestapp,* is the **AppName** of that application. The default **AppName** for the ODK tools is *default.* However, when configured appropriately, the ODK tools can run under another **AppName**, accessing configuration and saving data in a different subdirectory under opendatakit.
+ODK-X tools access configuration files and store data under sub-directories of the :file:`opendatakit` directory in the :file:`sdcard` root directory (whether your device has a physical SD card or not): :file:`/sdcard/opendatakit`. User applications constructed using the ODK-X tools are identified by the name of the sub-directory holding those configuration and data files. Thus, :file:`/sdcard/opendatakit/mytestapp` would contain all the files and data for the *mytestapp* application, where *mytestapp,* is the **AppName** of that application. The default **AppName** for the ODK tools is *default.* However, when configured appropriately, the ODK tools can run under another **AppName**, accessing configuration and saving data in a different subdirectory under opendatakit.
 
-This is handled in such a way that each user application is isolated from all other user applications, with separate configurations, data tables, and server settings. This allows one device to run multiple user applications built on top of the ODK 2 tools without any coordination among the teams developing those applications.
+This is handled in such a way that each user application is isolated from all other user applications, with separate configurations, data tables, and server settings. This allows one device to run multiple user applications built on top of the ODK-X tools without any coordination among the teams developing those applications.
 
 .. _using-odk-2-joining-a-server:
 

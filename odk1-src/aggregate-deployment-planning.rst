@@ -59,7 +59,7 @@ ODK Aggregate should work with these minimum component versions. In most cases, 
   Java, 8
   Tomcat, 8.0
   PostgreSQL, 9.4
-  MySQL, 5.7
+  MySQL (not MariaDB), 5.7
 
 .. _aggregate-deployment-ongoing-support:
 

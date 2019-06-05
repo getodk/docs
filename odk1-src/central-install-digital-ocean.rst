@@ -90,14 +90,14 @@ You now have the framework of the server software, but some components are missi
 
 Next, you need to update some settings. Type ``nano .env`` and press **Enter**. This will launch a text editing application.
 
- - Change the ``SSLTYPE`` line to read: ``SSLTYPE=letsencrypt``. This instructs the server to attempt to obtain a security certificate from the free Let's Encrypt provider.
- - Change the ``SSLDOMAIN`` line so that after the ``=`` is the domain name you registered above. As an example: ``SSLDOMAIN=MyOdkCollectionServer.com``. Do not include anything like ``http://``.
- - Change the ``SSLEMAIL`` line so that after the ``=`` is your own email address. The Let's Encrypt service will use this address only to notify you if something is wrong with your security certificate.
+ - Change the ``SSL_TYPE`` line to read: ``SSL_TYPE=letsencrypt``. This instructs the server to attempt to obtain a security certificate from the free Let's Encrypt provider.
+ - Change the ``DOMAIN`` line so that after the ``=`` is the domain name you registered above. As an example: ``DOMAIN=MyOdkCollectionServer.com``. Do not include anything like ``http://``.
+ - Change the ``SYSADMIN_EMAIL`` line so that after the ``=`` is your own email address. The Let's Encrypt service will use this address only to notify you if something is wrong with your security certificate.
  - Hold ``Ctrl`` and press ``x`` to quit the text editor. Press ``y`` to indicate that you want to save the file, and then press **Enter** to confirm the file name. Do not change the file name.
 
    .. image:: /img/central-install/nano.png
 
-Now, we will bundle everything together into a server. Type ``docker-compose build`` and press **Enter** to do this. This will take a long time and generate quite a lot of text output. Don't worry if it seems to pause without saying anything for a while. When it finishes, you should see some "Successfully built" type text and get your input prompt back. When that happens, type ``docker-compose create`` and press **Enter**.
+Now, we will bundle everything together into a server. Type ``docker-compose build`` and press **Enter** to do this. This will take a long time and generate quite a lot of text output. Don't worry if it seems to pause without saying anything for a while. When it finishes, you should see some "Successfully built" type text and get your input prompt back. When that happens, type ``docker-compose up --no-start`` and press **Enter**.
 
 Once that is complete, congratulations! You have installed your copy of ODK Central. Next, we need to teach the server how to start it up, and do so.
 
@@ -110,7 +110,7 @@ Now, we want to run your new ODK server software. But we don't want to only run 
 
 Once that's done, run ``systemctl start docker-compose@central`` (type it in and press **Enter**) to start Docker, which will then load the ODK server. The first time you start it, it will take a while to set itself up. Once you give it a few minutes and you have input control again, you'll want to see whether everything is running correctly:
 
- - To see if Docker itself is working correctly, you can run ``systemctl status docker-compose@central``. If you see text that says ``Active: active (running)`` then everything is working great.
+ - To see if Docker itself is working correctly, you can run ``systemctl status docker-compose@central``. If you see text that says ``Active: active (running)`` then everything is working great. If not, give it some time: it may take many minutes for it to set itself up for the first time.
  - To see if ODK has finished loading inside of Docker, run ``docker-compose ps``. Under the ``State`` column, you will want to see text that reads ``Up (healthy)``. If you see ``Up (health: starting)``, give it a few minutes. If you see some other text, something has gone wrong.
  - If your domain name has started working, you can visit it in a web browser to check that you get the ODK Central management website.
 

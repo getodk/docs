@@ -261,22 +261,27 @@ Pulling forms from Aggregate
 
   .. code-block:: console
 
-      $ java -jar {path/to/briefcase-jar-file} --pull_aggregate --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --aggregate_url {aggregate-url} --odk_username {username} --odk_password {password}
+      $ java -jar {path/to/briefcase-jar-file} --pull_aggregate --storage_directory {path/to/briefcase-storage-location} --aggregate_url {aggregate-url} --odk_username {username} --odk_password {password}
 
 - Help section:
 
   .. code-block:: none
 
       Params for -plla operation:
-        -id,--form_id <arg>                 Form ID
         -p,--odk_password <arg>             ODK Password
         -sd,--storage_directory <arg>       Briefcase storage directory
         -u,--odk_username <arg>             ODK Username
         -url,--aggregate_url <arg>          Aggregate server URL
       Optional params for -plla operation:
+        -id,--form_id <arg>                 Form ID
         -ii,--include_incomplete            Include incomplete submissions
         -pp,--parallel_pull                 Pull submissions in parallel
+        -sfd,--start_from_date <arg>        Start pull from date
         -sfl,--start_from_last              Start pull from last submission pulled
+
+.. warning::
+
+  This CLI operation **will pull all forms** Briefcase has permissions to if no `-id` parameter is defined.
 
 .. _pull-from-collect-cli:
 

@@ -18,7 +18,7 @@
   timestamp
 
 
-ODK 2 Sync Protocol
+ODK-X Sync Protocol
 ========================
 
 .. _sync-protocol:
@@ -29,9 +29,9 @@ ODK 2 Sync Protocol
 Introduction
 ---------------
 
-This documents the Synchronization API used in ODK 2.
+This documents the Synchronization API used in ODK-X.
 
-The ODK 2 tools utilize a REST API to exchange configuration and data values with the server.
+The ODK-X tools utilize a REST API to exchange configuration and data values with the server.
 
 .. _sync-protocol-rest-url:
 
@@ -47,7 +47,7 @@ That is assumed to be supplied by a configuration setting.
 When describing the REST URL, path elements surrounded by curly braces (`{}`) indicate the use of the value for that term in that location within the path. There are a handful of these substitution terms used within the REST URLs. The most common of these are:
 
   * `appId`-- identifies the 'application', which is a collection of configuration files and data tables that provide a self-contained user experience. e.g., a survey campaign, a specific set of workflows, etc. Applications live on the Android device under different subdirectories within the :file:`/sdcard/opendatakit` directory. The name of the subdirectory is the `appId` of the application contained in the directory. The default application, with an `appId` of *default* lives under the :file:`/sdcard/opendatakit/default/` directory.
-  * `odkClientVersion` -- the "major version" of ODK 2 software on the device. This is the 100's digit of the Android manifest version code.  Also referred to as the "rev number" of the release. I.e., for rev 206, the `odkClientVersion` would be 2. Non-backward-compatible changes to the JS API would bump this up. It allows groups to maintain and move across incompatible API changes by supporting different versions of the :file:`formDef.json`, HTML and JS configuration files. Until we reach a release candidate, we are not strictly tracking non-backward-compatible client versions. The exception being the transition from jQuery-mobile-based JavaScript (version 1) and the current bootstrap-based JavaScript (version 2).
+  * `odkClientVersion` -- the "major version" of ODK-X software on the device. This is the 100's digit of the Android manifest version code.  Also referred to as the "rev number" of the release. I.e., for rev 206, the `odkClientVersion` would be 2. Non-backward-compatible changes to the JS API would bump this up. It allows groups to maintain and move across incompatible API changes by supporting different versions of the :file:`formDef.json`, HTML and JS configuration files. Until we reach a release candidate, we are not strictly tracking non-backward-compatible client versions. The exception being the transition from jQuery-mobile-based JavaScript (version 1) and the current bootstrap-based JavaScript (version 2).
   * `tableId` -- identifies a particular data table.
   * `schemaETag` -- identifies a particular manifestation of a table. If you drop the table and recreate it, the re-creation will have a different `schemaETag` that the original table, even if it is otherwise identical.  In contrast, adding, updating or deleting individual rows in a table does not change the `schemaETag` for that table.
   * `rowId` -- the primary key for a particular row within a table.
@@ -108,7 +108,7 @@ In the following presentation, we provide the Jackson 2.0 annotations used in ou
 Data Groupings
 -----------------
 
-Before discussing the API, it is useful to identify the data on the system. The ODK 2 tools assume all data fall into one of six groupings:
+Before discussing the API, it is useful to identify the data on the system. The ODK-X tools assume all data fall into one of six groupings:
 
   1. (**Data Grouping #1**) HTML, JavaScript and tool configuration files that are not specific to any data table. These include custom home screens, CSS, logo icons, and settings for the tools (e.g., default font size, what settings options to show or hide).
   2. (**Data Grouping #2**) Data table definition, properties, HTML and JavaScript associated with a specific data table. These include all ODK Survey forms used to create or edit this data table, ODK Tables HTML and CSS files for list views, map displays and graphical displays of the data, and ODK Scan mark-sense form definitions.

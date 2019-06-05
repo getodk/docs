@@ -13,5 +13,9 @@ Once you are logged into your server, navigate back to the project folder (``cd 
 
 Now, get the latest client and server: ``git submodule update -i``. Then, build your server from the latest code you just fetched: ``docker-compose build``.
 
+.. admonition:: Note
+
+  If you run into problems with this step, try stopping the Central software (``systemctl stop docker-compose@central``) and retry ``docker-compose build`` after it has shut down the Central website.
+
 Finally, restart the running server to pick up the changes: ``systemctl restart docker-compose@central``.
 

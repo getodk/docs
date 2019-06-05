@@ -22,7 +22,7 @@ When the data collector arrives at the household, they can tap the :guilabel:`Ar
 Implementation
 ------------------
 
-This view is provided by the ODK 2 platform and is not customizable. The view is launched by a call to :code:`odkTables.openTableToNavigateView(...)` with query parameters to select the map markers. The query that selects the map markers is discussed in the :ref:`episample-tour-main-menu-implementation` section. The handling of the results of the :guilabel:`Arrive` and :guilabel:`Cancel` button presses are also discussed in that section.
+This view is provided by the ODK-X platform and is not customizable. The view is launched by a call to :code:`odkTables.openTableToNavigateView(...)` with query parameters to select the map markers. The query that selects the map markers is discussed in the :ref:`episample-tour-main-menu-implementation` section. The handling of the results of the :guilabel:`Arrive` and :guilabel:`Cancel` button presses are also discussed in that section.
 
 .. _episample-tour-nav-implementation-files:
 

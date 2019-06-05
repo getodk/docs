@@ -7,9 +7,9 @@ ODK Sync Endpoint
 
 .. _sync-endpoint-intro:
 
-:dfn:`ODK Sync Endpoint` is an implementation of :doc:`cloud-endpoints-intro`. It runs a server inside a :program:`Docker` container that implements the `ODK 2 REST Protocol <https://github.com/opendatakit/opendatakit/wiki/ODK-2.0-Synchronization-API-(RESTful)>`_.
+:dfn:`ODK Sync Endpoint` is an implementation of :doc:`cloud-endpoints-intro`. It runs a server inside a :program:`Docker` container that implements the `ODK-X REST Protocol <https://github.com/opendatakit/opendatakit/wiki/ODK-2.0-Synchronization-API-(RESTful)>`_.
 
-It communicates with your ODK 2 Android applications to synchronize your data and application files.
+It communicates with your ODK-X Android applications to synchronize your data and application files.
 
 .. _sync-endpoint-auth:
 
@@ -42,7 +42,9 @@ ODK Sync Endpoint requires a database and a *LDAP* directory, you could follow t
 
 .. note::
 
-  All of the following command should be run on your server
+  All of the following commands should be run on your server.
+
+  If you are using git on Windows, make sure git is configured with "core.autocrlf=false" - otherwise it will convert line endings with LF to CRLF, which will cause problems with the .sh-files when used in the Docker containers, thus preventing odk/sync-endpoint from starting and instead just returning with an ":invalid argument"-error. 
 
 Setup instructions:
 
@@ -51,7 +53,7 @@ Setup instructions:
   .. code-block:: console
 
     $ git clone https://github.com/opendatakit/sync-endpoint-default-setup
-
+    
   2. Navigate into the the "sync-endpoint-default-setup" directory
   
   3. Checkout the sync-endpoint code by running:

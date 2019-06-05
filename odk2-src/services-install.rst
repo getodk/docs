@@ -10,7 +10,7 @@ Before installing ODK Services, you will need the following third party apps:
 
   - `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_
 
-There are no other ODK Android tools that are prerequisites to installing ODK Services. However, this tool is a prerequisite for all the other ODK 2 Android tools.
+There are no other ODK Android tools that are prerequisites to installing ODK Services. However, this tool is a prerequisite for all the other ODK-X Android tools.
 
 .. _services-install:
 

@@ -10,7 +10,7 @@ ODK Scan shares a database with the rest of the ODK tools, and the data can be a
 Suitcase Formatting
 ------------------------------------------
 
-:doc:`suitcase-intro` is the mechanism for downloading and exporting data from the ODK 2 data tables into local :file:`.csv` files. Suitcase has a specific option to format Scan's :file:`.csv` files more to be more readable. The image below shows this option underlined in red.
+:doc:`suitcase-intro` is the mechanism for downloading and exporting data from the ODK-X data tables into local :file:`.csv` files. Suitcase has a specific option to format Scan's :file:`.csv` files more to be more readable. The image below shows this option underlined in red.
 
 .. image:: /img/scan-data/suitcase-scan.*
   :alt: Scan formatting option in Suitcase

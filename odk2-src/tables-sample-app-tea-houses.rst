@@ -69,7 +69,7 @@ Spreadsheet View
     :alt: Tea Houses Spreadsheet View
     :class: device-screen-vertical
 
-This view renders a full data table from the database, including all rows and columns. Unlike the views we have seen so far, this view is NOT customized via HTML, CSS, and JavaScript. This view is provided by the ODK 2 platform for convenience in viewing and editing your data directly. It is meant to be a familiar view as if you were looking at it on a spreadsheet program, such as :program:`Excel`. Each row here represents a tea, and each was a row in the *List View*.
+This view renders a full data table from the database, including all rows and columns. Unlike the views we have seen so far, this view is NOT customized via HTML, CSS, and JavaScript. This view is provided by the ODK-X platform for convenience in viewing and editing your data directly. It is meant to be a familiar view as if you were looking at it on a spreadsheet program, such as :program:`Excel`. Each row here represents a tea, and each was a row in the *List View*.
 
 Return to the *List View* by using the lined paper icon as before and selecting :menuselection:`List`. Tap the :menuselection:`Stonehouse` tea to launch a *Detail View* for that tea.
 
@@ -153,7 +153,7 @@ Map View
 
 All the fictional tea houses in Benin appear on the map. Pinch and squeeze or widen to zoom out and in, respectively. The tea house location is plotted based on what appeared in the *Location_latitude* and *Location_longitude* columns in the database. These can be viewed with the :ref:`tables-sample-app-spreadsheet-view`. When you click on a map marker, the *List View* will redraw with that marker's information at the top of the *List View*.
 
-The *List View* at the top portion of the screen is rendered in custom HTML, CSS, and JavaScript, but the map portion is provided by the ODK 2 platform and rendered using :program:`Google Maps`.
+The *List View* at the top portion of the screen is rendered in custom HTML, CSS, and JavaScript, but the map portion is provided by the ODK-X platform and rendered using :program:`Google Maps`.
 
 .. _tables-sample-app-map-view-learn-more:
 
