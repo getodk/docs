@@ -8,7 +8,7 @@ A major goal of these ODK-X tools was to eliminate the need for any software eng
 The ODK-X tools are intended to address limitations of the existing tool set. The ODK-X Tool Suite consists of:
 
 - :doc:`survey-intro` - a data collection application based upon HTML, CSS, and JavaScript.
-- :doc:`tables-intro` - a data collection and visualization application running on your device. TODO: note difference betweeen survey and tables
+- :doc:`tables-intro` - a data collection and visualization application running on your device.
 - :doc:`services-intro` - an application that handles database access, file access, and data synchronization services between all of the ODK 2 applications. It also allows you to synchronize data collected by the ODK 2 tools using the 2 protocol with an ODK Aggregate instance.
 - :doc:`app-designer-intro` - a design environment for creating, customizing, and previewing your forms.
 - :doc:`cloud-endpoints-intro` - a ready-to-deploy server and data repository with enhancements to support bi-directional data synchronization across disconnected devices.
