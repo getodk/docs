@@ -51,12 +51,26 @@ These perspectives are:
 List of Tools
 ---------------
 The ODK-X Tool Suite consists of:
-  - :doc:`app-designer-intro` - a design environment for creating, customizing, and previewing your forms, data curation, and visualization applications.
+
   - :doc:`survey-intro` - a data collection application based upon HTML, CSS, JavaScript.
   - :doc:`tables-intro` - a data curation and visualization application running on your mobile device.
   - :doc:`services-intro` - an application for handling database access, file access, and data synchronization services between all the ODK-X applications. It allows you to synchronize data collected by the ODK-X Android tools with a cloud endpoint.
+  - :doc:`app-designer-intro` - a design environment for creating, customizing, and previewing your forms, data curation, and visualization applications. This is a good place to start the process of learning how to use ODK tools.
   - :doc:`cloud-endpoints-intro` - a cloud server to host data and application files, and to support bi-directional data synchronization across disconnected mobile devices.
   - :doc:`suitcase-intro` - a desktop tool for synchronizing data with a cloud endpoint.
+
+  These tools are used in application design, which consists of:
+
+  - designing the forms used in data collection (by ODK Survey)
+  - designing the HTML landing pages and screens used for navigating, curating, and visualizing that data on your Android device (within ODK Tables).
+  - customizing the look-and-feel of both of these via customized images, logos, and CSS rules.
+  - designing mark-sense forms for paper-based data entry (by ODK Scan)
+  - synchronizing database access, file access, and data synchronization services between all the ODK 2 applications (using ODK Services). This happens behind the scenes, but you will need to install ODK Services as a prerequisite to using the other ODK 2 tools.
+
+.. tip::
+  The tools operate independently -- you are not required to use all the tools, or even install them on your device. If you are only interested in data collection, you may only want ODK Survey. Or if you are only interested in data dissemination and visualization, you might only want ODK Tables.
+
+  Simply select the combination or individual tool that fits your needs. However, all of these tools require ODK Services to access the database, sync to a server, and vend HTML files.
 
 .. _odk-2-intro-trying-it-out:
 
