@@ -31,7 +31,7 @@ If you haven't already, create an account on `DigitalOcean <https://m.do.co/c/39
 
    .. image:: /img/central-install/create-droplet.png
 
-At the very top, under **Choose an image**, switch to the **One-click apps** tab and select the **Docker** option. The version does not matter.
+At the very top, under **Choose an image**, switch to the **Marketplace** tab and select the **Docker** option. The version does not matter.
 
    .. image:: /img/central-install/docker-app.png
 
@@ -156,7 +156,7 @@ DKIM is a security trust protocol which is used to help verify mail server ident
    .. code-block:: console
 
      cd ~/central/files/dkim
-     openssl genrsa -out rsa.private 1024 
+     openssl genrsa -out rsa.private 1024
      openssl rsa -in rsa.private -out rsa.public -pubout -outform PEM
      cp config.disabled config
 
@@ -209,4 +209,3 @@ By default, ODK Central uses Let's Encrypt to obtain an SSL security certificate
 2. Copy those files into ``files/local/customssl/`` within the repository root.
 3. In ``.env``, set ``SSL_TYPE`` to ``customssl`` and set ``DOMAIN`` to ``local``.
 4. Build and run: ``docker-compose build nginx`` and ``systemctl restart docker-compose@central``. If that doesn't work, you may need to first remove your old nginx container (``docker-compose rm nginx``).
-
