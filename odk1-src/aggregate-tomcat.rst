@@ -5,8 +5,8 @@
   useHttpOnly
   sudo
 
-Installing on Tomcat (Local or Cloud)
-=========================================
+Installing on Tomcat
+====================
 
 `Apache Tomcat <http://tomcat.apache.org/>`_ is an open source Java web server that can be used to serve ODK Aggregate.
 
@@ -14,7 +14,7 @@ This document guides you through the installation and initial setup of a self-ho
 
 If you're planning on hosting your server on a cloud provider, you can use these provider-specific guides:
 
-- :doc:`DigitalOcean <aggregate-do>` (recommended)
+- :doc:`DigitalOcean (recommended) <aggregate-digital-ocean>`
 - :doc:`Amazon Web Services <aggregate-aws>`
 - :doc:`Google Cloud <aggregate-google-cloud>`
 - :doc:`Microsoft Azure <aggregate-azure>`

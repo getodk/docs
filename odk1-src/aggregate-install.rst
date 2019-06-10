@@ -6,7 +6,7 @@
   :maxdepth: 1
 
   aggregate-tomcat
-  aggregate-do
+  aggregate-digital-ocean
   aggregate-aws
   aggregate-google-cloud
   aggregate-azure
