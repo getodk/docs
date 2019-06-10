@@ -14,7 +14,7 @@ This document guides you through the installation and initial setup of a self-ho
 
 If you're planning on hosting your server on a cloud provider, you can use these provider-specific guides:
 
-- :doc:`DigitalOcean <aggregate-do>` (recommended)
+- :doc:`DigitalOcean <aggregate-digital-ocean>` (recommended)
 - :doc:`Amazon Web Services <aggregate-aws>`
 - :doc:`Google Cloud <aggregate-google-cloud>`
 - :doc:`Microsoft Azure <aggregate-azure>`

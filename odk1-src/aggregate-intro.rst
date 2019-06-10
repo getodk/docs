@@ -13,7 +13,7 @@ With Aggregate, data collection teams can:
 - Visualize collected data using :doc:`maps <aggregate-visualize>` and :ref:`simple graphs <visualize-submissions>`
 - :doc:`Export and publish data in a variety of formats <aggregate-data-access>`
 
-Aggregate can be hosted on cloud providers such as :doc:`DigitalOcean <aggregate-do>`, and :doc:`Amazon Web Services <aggregate-aws>`, or :doc:`your own local or cloud server <aggregate-tomcat>`.
+Aggregate can be hosted on cloud providers such as :doc:`DigitalOcean <aggregate-digital-ocean>`, and :doc:`Amazon Web Services <aggregate-aws>`, or :doc:`your own local or cloud server <aggregate-tomcat>`.
 There's also a :doc:`pre-configured virtual machine image <aggregate-vm>`
 that is ready to deploy on any computer.
 

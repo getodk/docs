@@ -20,7 +20,7 @@ Create your Droplet
 
 2.  Select the distribution for your new Droplet: Select the option :guilabel:`18.04.x x64` from the Ubuntu box.
 
-    .. image:: /img/aggregate-do/distribution.*
+    .. image:: /img/aggregate-digital-ocean/distribution.*
       :alt: Selecting the Droplet's distribution
 
 3.  Choose a size fit for your intended usage. The :guilabel:`$5 Standard Droplet` should be enough for light Aggregate use. If you find yourself needing more, DigitalOcean makes it easy to resize to a bigger Droplet.
@@ -34,7 +34,7 @@ Create your Droplet
 
 7.  Under :guilabel:`Select additional options`, check the :guilabel:`User data` checkbox. Copy and paste the contents of `this Cloud-Config script <https://raw.githubusercontent.com/opendatakit/aggregate/master/cloud-config/digital-ocean/cloud-config.yml>`_.
 
-    .. image:: /img/aggregate-do/user-data.*
+    .. image:: /img/aggregate-digital-ocean/user-data.*
       :alt: Inserting Cloud-Config script under User Data section
 
 
