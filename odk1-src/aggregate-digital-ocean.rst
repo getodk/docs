@@ -1,8 +1,8 @@
 .. spelling::
   sub-domains
 
-Installing on DigitalOcean
-==========================
+Installing on DigitalOcean (recommended)
+========================================
 
 .. warning::
 
