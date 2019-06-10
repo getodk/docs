@@ -167,19 +167,13 @@ These are the :file:`.xlsx` files for the above forms:
 
 .. note::
 
-  ODK Collect treats different versions of the same form completely independently. It won't explicitly notify the users of the existence of new versions. When a user tries to get new blank forms, a form with updated version will be selected by default in the list but there will be no explicit notification unless a user tries to get new blank forms.
+  When a user tries to get new blank forms, a form with updated version will be selected by default in the list and will contain an additional message to indicate it's an update.
 
   .. image:: /img/form-update/get-new-version.png
    :alt: Image showing new version 2017120708 selected in the list of forms to be downloaded.
    :class: device-screen-vertical
 
-  |
-
-  Both versions of the form exist in the device of the user and the user will be allowed to fill an older version and submit the form to the Aggregate server. You will need to manually delete an older version from your device. 
-
-  .. image:: /img/form-update/two-version-form.png
-   :alt: Image showing two versions 2017120700 and 2017120701 in the form list.
-   :class: device-screen-vertical
+  Both versions of the form will exist in the device of the user but only the newer one will be visible on the list. Thanks to that the user will be able to edit forms he has started using the older version and upload them to the server, but new forms will be started using the newest available form version.
 
 .. _replace-form:
 
