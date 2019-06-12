@@ -14,7 +14,7 @@ Building an Application
 
 .. _build-app:
 
-This will walk you through the steps of building a Data Management Application from scratch. The goal is to start with an empty folder and show you the necessary steps to create a working application that runs on you Android device.
+This will walk you through the steps of building a Data Management Application from scratch. The goal is to start with an empty folder and show you the necessary steps to create a working application that runs on your Android device.
 
 .. note::
 

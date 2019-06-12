@@ -15,6 +15,8 @@ ODK Central Features
 We have a lot of exciting ideas for the future of Central, and we look forward to hearing yours as well. Here are the features we already support today:
 
  - User accounts and management
+ - Role-based user permissioning
+ - Projects to organize users, permissions, and forms
  - Form and submission upload and management
 
    - With form and submission multimedia or data attachments
@@ -25,12 +27,13 @@ We have a lot of exciting ideas for the future of Central, and we look forward t
  - Automatic, encrypted off-site data backups to Google Drive
  - Clean and modern REST API for integration and extensibility
  - High performance on low-cost hardware or cloud providers
+ - ODK Briefcase-compatible data output
 
 Here are some (but not all) key features we **do not yet** support:
 
- - Advanced user permissioning
+ - Customizable user roles
  - Encrypted forms
- - ODK Briefcase compatibility
+ - ODK Briefcase push/pull support
 
 .. _central-intro-who:
 

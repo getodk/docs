@@ -62,6 +62,8 @@ Create a VPC
 Set up your domain
 ------------------
 
+.. tip:: Azure VPCs use IP addresses which can change if you destroy the VPC. To ensure your Aggregate install will always be reachable using the same IP address, use a static IP by following `these instructions <https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-deploy-static-pip-arm-portal>`_.
+
 1. In `Virtual machines <https://portal.azure.com/?l=en.en-us#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2FVirtualMachines>`_ dashboard, find your VM from the list. Click on it and find the value of the :guilabel:`Public IP address` field in the overview section.
 
 2. Take note of the IP address (e.g., 12.34.56.78) and set a *DNS A record* pointing to it.

@@ -6,7 +6,7 @@ ODK Aggregate can be deployed to :doc:`any local or cloud server that runs Tomca
 
 You can also use these guides for some specific cloud providers:
 
-- :doc:`DigitalOcean <aggregate-do>`
+- :doc:`DigitalOcean <aggregate-digital-ocean>`
 - :doc:`Amazon Web Services <aggregate-aws>`
 
 There is also a fully set-up :doc:`virtual machine <aggregate-vm>` that can be run in nearly any environment.
@@ -44,7 +44,7 @@ Custom `Tomcat deployments in local or cloud servers <aggregate-tomcat>`_, inclu
 - installing software
 - ensuring that your site has proper power-failure and data-backup systems in place
 
-If this level of systems administration skill is not available, you will have more success using the :doc:`DigitalOcean <aggregate-do>` guide, which leverages a Cloud-Config stack that will do most of the heavy lifting for you.
+If this level of systems administration skill is not available, you will have more success using the :doc:`DigitalOcean <aggregate-digital-ocean>` guide, which leverages a Cloud-Config stack that will do most of the heavy lifting for you.
 
 .. _aggregate-deployment-component-versions:
 
@@ -59,7 +59,7 @@ ODK Aggregate should work with these minimum component versions. In most cases, 
   Java, 8
   Tomcat, 8.0
   PostgreSQL, 9.4
-  MySQL, 5.7
+  MySQL (not MariaDB), 5.7
 
 .. _aggregate-deployment-ongoing-support:
 

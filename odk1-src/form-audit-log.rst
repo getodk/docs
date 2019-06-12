@@ -78,6 +78,17 @@ For the most accurate locations, set :tc:`location-priority` to `high-accuracy`.
 
 .. _viewing-audit-logs:
 
+Answer tracking
+~~~~~~~~~~~~~~~~~
+
+You can enable answer tracking so that old answers and new answers will be added to the question events. To do this, add the following parameter to the XLSForm. track-changes=true.
+
+.. csv-table:: survey
+  :header: type, name, parameters
+
+  audit, audit, track-changes=true
+
+
 Viewing audit logs
 -------------------
 
@@ -114,30 +125,33 @@ Values in the :th:`node` column represent the node in the form that the event re
 
 Values in the :th:`start` and :th:`end` columns are timestamps represented as the number of milliseconds since midnight, January 1, 1970 UTC. This is known as epoch time and provides a standard way of representing date/time even across timezones. The :ref:`audit-timestamps` section contains more information about timestamps.
 
-If location is enabled in the log, the CSV will look like this:
+If both location tracking and answer tracking are enabled in the log, the CSV will look like this:
 
 .. csv-table:: audit.csv
-  :header: event, node, start, end, latitude, longitude, accuracy
+  :header: event, node, start, end, latitude, longitude, accuracy, old-value, new-value
 
-  form start,,1550615022663,
-  location tracking enabled,,1550615022671,
-  question,/data/name,1550615022682,1550615097082,37.4229983,-122.084,14.086999893188477
-  location permissions granted,,1550615068610,
-  location providers enabled,,1550615068665,
-  location tracking disabled,,1550615095914,,37.4229983,-122.084,14.086999893188477
-  question,/data/age,1550615097082,1550615097655,37.4229983,-122.084,14.086999893188477
-  question,/data/name,1550615097656,1550615102351,37.4229983,-122.084,14.086999893188477
-  location tracking enabled,,1550615099271,,37.4229983,-122.084,14.086999893188477
-  question,/data/age,1550615102351,1550615107630,37.4229983,-122.084,14.086999893188477
-  end screen,,1550615107631,1550615109199,37.4229983,-122.084,14.086999893188477
-  form save,,1550615109199,,37.4229983,-122.084,14.086999893188477
-  form exit,,1550615109199,,37.4229983,-122.084,14.086999893188477
-  form finalize,,1550615109199,,37.4229983,-122.084,14.086999893188477
+  form start,,1550615022663,,,,,
+  location tracking enabled,,1550615022671,,,,,
+  question,/data/name,1550615022682,1550615097082,37.4229983,-122.084,14.086999893188477,,John
+  location permissions granted,,1550615068610,,,,,
+  location providers enabled,,1550615068665,,,,,
+  location tracking disabled,,1550615095914,,37.4229983,-122.084,14.086999893188477,,
+  question,/data/age,1550615097082,1550615097655,37.4229983,-122.084,14.086999893188477,,20
+  question,/data/name,1550615097656,1550615102351,37.4229983,-122.084,14.086999893188477,John,John Smith
+  location tracking enabled,,1550615099271,,37.4229983,-122.084,14.086999893188477,,
+  question,/data/age,1550615102351,1550615107630,37.4229983,-122.084,14.086999893188477,,
+  end screen,,1550615107631,1550615109199,37.4229983,-122.084,14.086999893188477,,
+  form save,,1550615109199,,37.4229983,-122.084,14.086999893188477,,
+  form exit,,1550615109199,,37.4229983,-122.084,14.086999893188477,,
+  form finalize,,1550615109199,,37.4229983,-122.084,14.086999893188477,,
 
 Values in the :th:`latitude` and :th:`longitude` columns represent the latitude and longitude in decimal degrees. Values in the :th:`accuracy` column represents accuracy in seconds.
 
 .. note::
   Locations will often be repeated in the log. This is because locations are not captured at the time of the event, but rather retrieved from a cache of the most accurate points captured over the last :tc:`location-max-age`.
+
+.. note::
+  Answers will be recorded only if they differ (if the new answer is different than the old one), otherwise, cells should be empty. Answers which contain commas will be surrounded by double quotes.
 
 .. _audit-event-types:
 
@@ -146,43 +160,43 @@ Event types
 
 The event column of the audit log can have the following values:
 
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
-|      Event                               |                           Description                            | Node? |  Timestamps?     |
-+==========================================+==================================================================+=======+==================+
-| form start                               | Start filling in the form                                        | No    | :th:`start` only |
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
-| question                                 | View a question                                                  | Yes   | Yes              |
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
-| group questions                          | View multiple questions on one screen (``field-list``)           | Yes   | Yes              |
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
-| jump                                     | View the jump screen                                             | No    | :th:`start` only |
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
-| add repeat                               | Add a repeat                                                     | Yes   | Yes              |
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
-| delete repeat                            | Delete a repeat                                                  | Yes   | Yes              |
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
-| end screen                               | View the end screen                                              | No    | Yes              |
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
-| form save                                | Save the form                                                    | No    | :th:`start` only |
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
-| form exit                                | Exit the form                                                    | No    | :th:`start` only |
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
-| form resume                              | Resume the form                                                  | No    | :th:`start` only |
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
-| form finalize                            | Finalize the form                                                | No    | :th:`start` only |
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
-| save error                               | Error trying to save                                             | No    | :th:`start` only |
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
-| finalize error                           | Error trying to finalize the form (probably encryption related)  | No    | :th:`start` only |
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
-| constraint error                         | Constraint or required error on finalize                         | No    | :th:`start` only |
-+------------------------------------------+------------------------------------------------------------------+-------+-------+----------+
-| location tracking enabled/disabled       | Toggle location tracking in Collect                              | No    | Yes              |
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
-| location providers enabled/disabled      | Toggle location providers in Android                             | No    | Yes              |
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
-| location permissions granted/not granted | Toggle location permission in Android                            | No    | Yes              |
-+------------------------------------------+------------------------------------------------------------------+-------+------------------+
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
+|      Event                               |                           Description                            | Node? |  Timestamps?     | Coordinates?             | Answers?         |
++==========================================+==================================================================+=======+==================+==========================+==================+
+| form start                               | Start filling in the form                                        | No    | :th:`start` only | If enabled and available | No               |
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
+| question                                 | View a question                                                  | Yes   | Yes              | If enabled and available | If enabled       |
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
+| group questions                          | View multiple questions on one screen (``field-list``)           | Yes   | Yes              | If enabled and available | No               |
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
+| jump                                     | View the jump screen                                             | No    | :th:`start` only | If enabled and available | No               |
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
+| add repeat                               | Add a repeat                                                     | Yes   | Yes              | If enabled and available | No               |
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
+| delete repeat                            | Delete a repeat                                                  | Yes   | Yes              | If enabled and available | No               |
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
+| end screen                               | View the end screen                                              | No    | Yes              | If enabled and available | No               |
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
+| form save                                | Save the form                                                    | No    | :th:`start` only | If enabled and available | No               |
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
+| form exit                                | Exit the form                                                    | No    | :th:`start` only | If enabled and available | No               |
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
+| form resume                              | Resume the form                                                  | No    | :th:`start` only | If enabled and available | No               |
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
+| form finalize                            | Finalize the form                                                | No    | :th:`start` only | If enabled and available | No               |
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
+| save error                               | Error trying to save                                             | No    | :th:`start` only | If enabled and available | No               |
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
+| finalize error                           | Error trying to finalize the form (probably encryption related)  | No    | :th:`start` only | If enabled and available | No               |
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
+| constraint error                         | Constraint or required error on finalize                         | No    | :th:`start` only | If enabled and available | No               |
++------------------------------------------+------------------------------------------------------------------+-------+-------+----------+--------------------------+------------------+
+| location tracking enabled/disabled       | Toggle location tracking in Collect                              | No    | Yes              | If enabled and available | No               |
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
+| location providers enabled/disabled      | Toggle location providers in Android                             | No    | Yes              | If enabled and available | No               |
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
+| location permissions granted/not granted | Toggle location permission in Android                            | No    | Yes              | If enabled and available | No               |
++------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
 
 .. _audit-timestamps:
 

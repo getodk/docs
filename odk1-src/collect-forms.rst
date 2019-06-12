@@ -114,7 +114,7 @@ If a form :ref:`includes images or other media <image-options>`, those files hav
 Media files should be placed in a folder labeled :file:`{form-name}-media`. 
 
 - When using ODK Aggregate, the form upload prompt includes instructions to upload the :file:`-media` folder. The files are downloaded automatically when :ref:`fetching forms from Aggregate <in-app-get-blank-forms>`.
-- When using Google Drive, the :file:`-media` folder should be uploaded to the same location as the form.
+- When using Google Drive, the :file:`-media` folder should be uploaded to the same location as the form. If you share forms with another user, you need to share the parent folder which contains a form and a folder with media files. Sharing both of them separately wouldn't be enough.
 - If :ref:`loading forms directly to your device <loading-forms-directly>`, the :file:`-media` folder needs to be placed in the :file:`sdcard/odk/forms` directory, alongside the form itself.
 
 

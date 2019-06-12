@@ -3,8 +3,8 @@
   readme
   VirtualBox
 
-Installing the Virtual Machine (VM)
-===================================
+Installing the Virtual Machine
+==============================
 
 This document provides instructions for installing :doc:`aggregate-intro` using the Virtual Machine (VM) and `VirtualBox <https://www.virtualbox.org>`_.
 

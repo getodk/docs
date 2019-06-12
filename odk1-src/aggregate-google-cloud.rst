@@ -54,7 +54,7 @@ Create an instance
 Set up your domain
 ------------------
 
-.. warning:: GCP instances use ephemeral IP addresses which can change under certain circumstances. To ensure your Aggregate install will always be reachable using the same IP address, you can promote the ephemeral IP address to a static IP address using `these instructions <https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address#promote_ephemeral_ip>`_.
+.. tip:: GCP instances use IP addresses which can change if you delete the instance. To ensure your Aggregate install will always be reachable using the same IP address, use a static IP address by following `these instructions <https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address#promote_ephemeral_ip>`_.
 
 1. Go to the `GCP - VM Instances <https://console.cloud.google.com/compute/instances>`_ page and find your instance.
 

@@ -1,8 +1,8 @@
 .. spelling::
   sub-domains
 
-Installing on DigitalOcean
-==========================
+Installing on DigitalOcean (recommended)
+========================================
 
 .. warning::
 
@@ -20,21 +20,21 @@ Create your Droplet
 
 2.  Select the distribution for your new Droplet: Select the option :guilabel:`18.04.x x64` from the Ubuntu box.
 
-    .. image:: /img/aggregate-do/distribution.*
+    .. image:: /img/aggregate-digital-ocean/distribution.*
       :alt: Selecting the Droplet's distribution
 
-3.  Choose a size fit for your intended usage. The :guilabel:`$5 Standard Droplet` should be enough for light Aggregate use. If you find yourself needing more, DigitalOcean makes it easy to resize to a bigger Droplet.
+3.  Select a size fit for your intended usage. The :guilabel:`$5 Standard Droplet` should be enough for light Aggregate use. If you find yourself needing more, DigitalOcean makes it easy to resize to a bigger Droplet.
 
 4.  If you would like automatic weekly backups, enable them.
 
 5.  You will not need block storage.
 
-6.  Choose a datacenter region physically close to where data collection
+6.  Select a datacenter region physically close to where data collection
     is going to happen.
 
 7.  Under :guilabel:`Select additional options`, check the :guilabel:`User data` checkbox. Copy and paste the contents of `this Cloud-Config script <https://raw.githubusercontent.com/opendatakit/aggregate/master/cloud-config/digital-ocean/cloud-config.yml>`_.
 
-    .. image:: /img/aggregate-do/user-data.*
+    .. image:: /img/aggregate-digital-ocean/user-data.*
       :alt: Inserting Cloud-Config script under User Data section
 
 
@@ -47,6 +47,8 @@ Create your Droplet
 
 Set up your domain
 ------------------
+
+.. tip:: DigitalOcean Droplets use IP addresses which can change if you destroy the machine. To ensure your Aggregate install will always be reachable using the same IP address, use a Floating IP by following `these instructions <https://www.digitalocean.com/docs/networking/floating-ips>`_.
 
 1.  Once the Droplet is running, take note of its public IP address (e.g., 12.34.56.78) and set a *DNS A record* pointing to it.
 
