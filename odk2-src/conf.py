@@ -282,7 +282,7 @@ Download this documentation as a PDF.
 """
 odk_pdf = """
 
-_downloads/ODKX-Documentation.pdf
+_downloads/ODK2-Documentation.pdf
 
 """
 prob_in_doc = """
