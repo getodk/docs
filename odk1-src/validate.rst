@@ -1,5 +1,6 @@
 .. spelling::
 
+  validator
   vN
 
 ODK Validate
@@ -44,6 +45,9 @@ Setting up Validate
 Using Validate
 ---------------
 
+GUI
+~~~
+
 #. Open :program:`Validate`.
 #. Find your XForms :file:`*.xml` file using :guilabel:`Choose file`, 
    and :guilabel:`Open` it.
@@ -55,6 +59,13 @@ Using Validate
 
    .. image:: /img/validate/validform.png
 
+Command Line
+~~~~~~~~~~~~
+
+``java -jar ODKValidate.jar [--fail-fast] path/to/xform.xml [FORM...]``. The
+``--failFast/--fail-fast`` command line argument tells the validator to abort
+on the first error rather than validating all files and reporting an error at
+the end.
   
 .. warning::
 
