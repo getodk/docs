@@ -105,7 +105,7 @@ This displays a popup with the audit contents:
   :alt: An example audit log in Aggregate.
 
 .. tip::
-  Aggregate currently does not display locations in the audit popup. To view locations or to perform more sophisticated analysis, logs can be downloaded along with their submissions using :ref:`Briefcase <pull-from-aggregate>`.
+  Aggregate currently only displays event, node, start, and end in the audit popup. To view locations, changed answers, or to perform more sophisticated analysis, logs can be downloaded along with their submissions using :ref:`Briefcase <pull-from-aggregate>`.
 
 .. _audit-log-structure:
 
