@@ -483,6 +483,17 @@ appearance
 
 .. image:: /img/form-widgets/bikram-sambat-calendar-widget.*
   :alt:
+
+Myanmar calendar
+""""""""""""""""""
+
+type
+  :tc:`date`
+appearance
+  :tc:`myanmar`
+
+.. image:: /img/form-widgets/myanmar-calendar-widget.*
+  :alt:
    
 .. _time-widget:
 
