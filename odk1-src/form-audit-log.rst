@@ -78,10 +78,10 @@ For the most accurate locations, set :tc:`location-priority` to `high-accuracy`.
 
 .. _viewing-audit-logs:
 
-Answer tracking
-~~~~~~~~~~~~~~~~~
+Change tracking
+~~~~~~~~~~~~~~~
 
-You can enable answer tracking so that old answers and new answers will be added to the question events. To do this, add the following parameter to the XLSForm. track-changes=true.
+You can enable change tracking so that old answers and new answers will be added to the question events. To do this, add the following parameter to the XLSForm: :tc:`track-changes=true`.
 
 .. csv-table:: survey
   :header: type, name, parameters
@@ -125,7 +125,7 @@ Values in the :th:`node` column represent the node in the form that the event re
 
 Values in the :th:`start` and :th:`end` columns are timestamps represented as the number of milliseconds since midnight, January 1, 1970 UTC. This is known as epoch time and provides a standard way of representing date/time even across timezones. The :ref:`audit-timestamps` section contains more information about timestamps.
 
-If both location tracking and answer tracking are enabled in the log, the CSV will look like this:
+If both location tracking and change tracking are enabled in the log, the CSV will look like this:
 
 .. csv-table:: audit.csv
   :header: event, node, start, end, latitude, longitude, accuracy, old-value, new-value
