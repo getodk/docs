@@ -15,7 +15,7 @@ Uploading blank forms with media exceeding 10MB
 
 Adding blank forms through the ODK Aggregate website is limited to an overall form and media size of 10MB. Beyond that, you have to perform multiple uploads of the form definition file with different subsets of the media files in order to fully upload the blank form and its media attachments.
 
-An easier solution is use :doc:`ODK Briefcase <briefcase-intro>`.
+An easier solution is to use :doc:`ODK Briefcase <briefcase-intro>`.
 
 Issues with older versions of Aggregate
 ----------------------------------------

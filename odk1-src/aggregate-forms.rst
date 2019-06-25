@@ -85,7 +85,7 @@ Click on the :guilabel:`Delete` button for the form in the :ref:`blank forms lis
 Exporting form data
 ---------------------
 
-Click on :guilabel:`Export` option in the form list to export form into useful formats and choose the format in which you want to export data. You can also choose a filter which you have saved for the form to export only a certain subset of form. Details on :ref:`exporting data <export-data>` are given in the :doc:`data transfer  <aggregate-data-access>` section.   
+Click on :guilabel:`Export` option in the form list to export form into useful formats and choose the format in which you want to export data. You can also choose a filter which you have saved for the form to export only a certain subset of the form. Details on :ref:`exporting data <export-data>` are given in the :doc:`data transfer  <aggregate-data-access>` section.   
 
 .. _publish-form:
 
@@ -137,7 +137,7 @@ To manually upload form submissions, click on :guilabel:`Manually upload submiss
 
 .. note::
 
-  Submissions in the Collect app are located under the /odk/instances directory on the phone's sdcard. This directory will contain subdirectories with names of the form in the format ``formID_yyyy-mm-dd_hh-MM-ss``. Within each of these subdirectories are the submission data file (``formID_yyyy-mm-dd_hh-MM-ss.xml``), and zero or more associated media files (images, audio, video) associated with this submission.
+  Submissions in the Collect app are located under the /odk/instances directory on the phone's SD card. This directory will contain subdirectories with names of the form in the format ``formID_yyyy-mm-dd_hh-MM-ss``. Within each of these subdirectories are the submission data file (``formID_yyyy-mm-dd_hh-MM-ss.xml``), and zero or more associated media files (images, audio, video) associated with this submission.
 
     .. add link to collect file structure 
     
