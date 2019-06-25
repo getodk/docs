@@ -30,7 +30,7 @@ It is important to upgrade to newer ODK Aggregate versions as they come out. You
 Security vulnerabilities
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ODK developers are constantly upgrading the libraries we use with newer, safer, versions. The older your software, the greater the number of vulnerabilities in it.
+The ODK developers are constantly upgrading the libraries we use with newer, safer versions. The older your software, the greater the number of vulnerabilities in it.
 
 Performance improvements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -72,7 +72,7 @@ If you are unable to log onto your server, you will need to search for the versi
    :alt: Image showing searching log.
 
 4. In the filter text box paste this text : `afterPropertiesSet` and hit enter.
-5. Expand the list of logs and find the log which shows the version of Aggregate. It will of the following format:
+5. Expand the list of logs and find the log which shows the version of Aggregate. It will be of the following format:
 
 .. code-block:: none
 
@@ -108,7 +108,7 @@ General steps for upgrading
 
 .. tip::
 
-  You need to know the exact *instance name* that was used in prior installs for your username and password to continue to work. If you add a space or change capitalization or spelling, the passwords will be invalid (you just need to re-run the installer with the correct string to correct the problem).
+  You need to know the exact *instance name* that was used in prior installations for your username and password to continue to work. If you add a space or change capitalization or spelling, the passwords will be invalid (you just need to re-run the installer with the correct string to correct the problem).
 
 .. _upgrading-digital-ocean:
 
