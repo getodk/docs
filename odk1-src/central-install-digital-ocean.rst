@@ -204,19 +204,21 @@ If on the other hand you wish to use your own Sentry instance, take these steps:
 2. The new project will generate a ``DSN`` of the format ``https://SENTRY_KEY@sentry.io/SENTRY_PROJECT``.
 3. In ``files/service/config.json.template``, replace ``SENTRY_KEY`` and ``SENTRY_PROJECT`` with the values from step 2. 
 
-    {
-      "default": {
-        "database": {...},
-        "email": {...},
-        "env": {...},
-        "external": {
-          "sentry": {
-            "key": "SENTRY_KEY",
-            "project": "SENTRY_PROJECT"
-          }
+.. code-block:: json
+
+  {
+    "default": {
+      "database": {...},
+      "email": {...},
+      "env": {...},
+      "external": {
+        "sentry": {
+          "key": "SENTRY_KEY",
+          "project": "SENTRY_PROJECT"
         }
       }
     }
+  }
 
 The error logs sent to Sentry (if enabled) are also being written to ``/var/log/odk/stderr.log`` in the running backend container.
 
