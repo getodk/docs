@@ -204,7 +204,7 @@ If on the other hand you wish to use your own Sentry instance, take these steps:
 2. The new project will generate a ``DSN`` of the format ``https://SENTRY_KEY@sentry.io/SENTRY_PROJECT``.
 3. In ``files/service/config.json.template``, replace ``SENTRY_KEY`` and ``SENTRY_PROJECT`` with the values from step 2. 
 
-.. code-block:: json
+.. code-block:: rst
 
   {
     "default": {
