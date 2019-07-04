@@ -85,6 +85,8 @@ Briefcase will as you to choose the location of the blank form file in your comp
 
   Ensure that all attached media is available relative to the form definition file location.
 
+
+
 .. _push-to-central:
 
 Pushing forms to Central
@@ -131,6 +133,31 @@ To upload blank forms and completed form instances to an :doc:`Aggregate <aggreg
      #. Replace the local form definition file with a copy of the version from your Aggregate server.
      #. Push your form instances.
      #. Update :guilabel:`Settings` back to the original :ref:`Briefcase Storage <briefcase_storage>` location.
+
+.. _pull-push-settings:
+
+Pull & Push settings
+--------------------
+
+The pull operation can be configured in the :guilabel:`Settings` tab:
+
+- You can set a number of :guilabel:`Maximum simultaneous HTTP connections`. This can be increased to speed-up big pull operations or decreased to prevent from saturating servers.
+
+- You can enable :guilabel:`Start pull from last submission pulled` to resume pulling a form starting from the last submission you pulled last time, saving time and bandwidth.
+
+  This is only available for Aggregate servers at this moment, and it won't have beneficial effects for forms with less than 100 submissions.
+
+  You can clear the pull history and pull every submission by clicking on :guilabel:`Clear pull history`.
+
+- You can enable :guilabel:`Remember passwords (unencrypted)`. This will enable a couple of features:
+
+  - Briefcase will remember the pull sources and push targets you configure when they require providing user credentials. As a result, you won't need to configure them again when launching Briefcase again.
+
+  - Briefcase will let you enable the :guilabel:`Pull before export` option when exporting forms.
+
+- You can enable :guilabel:`Use HTTP proxy` to route your HTTP requests through a proxy host.
+
+  You will have to provide the proxy's :guilabel:`Host` (IP address or hostname), and the :guilabel:`Port` number.
 
 .. _briefcase-export-to-csv:
 
