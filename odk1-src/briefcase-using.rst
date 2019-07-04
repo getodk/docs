@@ -1,6 +1,13 @@
 Using ODK Briefcase
 ======================
 
+.. _pull-from-central:
+
+Pulling forms from Central
+--------------------------
+
+Stub section
+
 .. _pull-from-aggregate:
 
 Pulling forms from Aggregate
@@ -132,6 +139,13 @@ Pulling form definitions
 .. warning::
 
   Ensure that all attached media is available relative to the form definition file location.
+
+.. _push-to-central:
+
+Pushing forms to Central
+--------------------------
+
+Stub section
 
 .. _push-to-aggregate:
 
