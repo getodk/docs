@@ -6,11 +6,11 @@ Using ODK Briefcase
 Pulling forms
 -------------
 
-To download blank forms and completed form instances from a server:
+To pull blank forms and submissions:
 
 1. Open the :guilabel:`Pull` tab.
 
-2. Select a pull source option from the :guilabel:`Pull from` drop-down, and click on the :guilabel:`Configure` button. Fill in any information needed to use the selected option. More information about Pull sources below.
+2. Select a pull source option from the :guilabel:`Pull from` drop-down, and click on the :guilabel:`Configure` button. Fill in any information needed to use the selected source. More information about all the available pull sources below.
 
 3. Select the forms you want to pull and click :guilabel:`Pull`. You can see the details of the operation by clicking on the |details_button| button.
 
@@ -65,7 +65,7 @@ Briefcase will ask you to choose a directory in your computer where you have dow
 
 .. warning::
 
-  Briefcase cannot discriminate between duplicate form instances. After you pull completed forms into Briefcase, it is important that you delete them from Collect. Otherwise, the next time you pull in forms, you will create duplicates.
+  Briefcase cannot discriminate between duplicate submissions. After you pull completed forms into Briefcase, it is important that you delete them from Collect. Otherwise, the next time you pull in forms, you will create duplicates.
 
 .. _pull-form-definition:
 
