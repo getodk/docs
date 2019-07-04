@@ -55,12 +55,12 @@ Briefcase will ask for the directory on your computer where you have placed Coll
   If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy of :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
 
 2. Using your device, create a zip archive of the entire :file:`odk` directory with a file managing app such as `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
-3. Transfer the zip file to your local hard drive via a USB cable. You can also use the Share feature in your file manager to transfer it to a third-party service like Google Drive or Dropbox then download it to your local hard drive.
+3. Transfer the zip file to your local hard drive via a USB cable. You can also use the Share feature in your file manager to transfer it to a third-party service like Google Drive then download it to your local hard drive.
 4. Once the zip file is on your local hard drive, unzip the file.
 
 .. warning::
 
-  Briefcase cannot discriminate between duplicate submissions. After you pull completed forms into Briefcase, it is important that you delete them from Collect. Otherwise, the next time you pull in forms, you will create duplicates.
+  When pulling from Collect, Briefcase pulls incomplete, saved, or finalized forms. After you pull forms into Briefcase, it is important that you delete them from Collect. Otherwise, the next time you pull, you will create duplicates.
 
 .. _pull-form-definition:
 
@@ -71,7 +71,7 @@ Briefcase will ask for the location of the blank form definition in your compute
 
 .. tip::
 
-  This enables a workflow to upload forms with many media attachments to Aggregate:
+  This enables a workflow to upload blank form definitions with many media attachments to Aggregate:
 
   #. Pull the form using the :guilabel:`Pull from` option.
   #. :ref:`Push the form to your Aggregate server <push-to-aggregate>`.
@@ -119,7 +119,7 @@ Briefcase will ask for the following information when using a Central server as 
 Aggregate server
 ~~~~~~~~~~~~~~~~
 
-Briefcase will ask for the ollowing information when using an Aggregate server as the push source:
+Briefcase will ask for the following information when using an Aggregate server as the push source:
 
 - A :guilabel:`URL`
 - A :guilabel:`Username` (optional)
@@ -162,11 +162,11 @@ Export forms to CSV
   - Toggle export parameters as needed:
 
     - :guilabel:`Export media files` enables exporting media files into the chosen export directory
-    - :guilabel:`Overwrite existing files` enables overwriting form instance data in the output files. The default behavior is to append data.
+    - :guilabel:`Overwrite existing files` enables overwriting form submission data in the output files. The default behavior is to append data.
     - :guilabel:`Split select multiples` enables splitting select multiple fields. Enabling this setting will create an extra output column per select choice, with a `1` if the choice was selected, or `0` otherwise. This only affects select fields without a choice filter and that are not from an external file (including widgets with search appearance).
     - :guilabel:`Include GeoJSON` enables generating a GeoJSON file with spatial data from all exported submissions.
     - :guilabel:`Remove group names` enables removing non-repeat group names from column names in the CSV.
-    - :guilabel:`Pull before export` enables trying to pull the selected forms in case there are new form instances to be exported.
+    - :guilabel:`Pull before export` enables trying to pull the selected forms in case there are new form submissions to be exported.
 
 #. Select the forms to export.
 
