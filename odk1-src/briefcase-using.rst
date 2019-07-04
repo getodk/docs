@@ -10,18 +10,18 @@ To pull blank forms and submissions:
 
 1. Open the :guilabel:`Pull` tab.
 
-2. Select a pull source option from the :guilabel:`Pull from` drop-down, and click on the :guilabel:`Configure` button. Fill in any information needed to use the selected source. More information about all the available pull sources below.
+2. Select a pull source option from the :guilabel:`Pull from` drop-down, and click on the :guilabel:`Configure` button. Fill in any information needed to use the selected source. See more on the various sources below.
 
 3. Select the forms you want to pull and click :guilabel:`Pull`. You can see the details of the operation by clicking on the |details-button| button.
 
-You can cancel an ongoing pull operation at any point by clicking :guilabel:`Cancel`.
+4. You can cancel an ongoing pull operation at any point by clicking :guilabel:`Cancel`.
 
 .. _pull-from-central:
 
 Central server
 ~~~~~~~~~~~~~~
 
-Briefcase will ask you to provide the following information when setting a Central server as the pull source:
+Briefcase will ask for the following information when choosing a Central server as the pull source:
 
 - A :guilabel:`URL`
 - A :guilabel:`Project ID` number
@@ -37,28 +37,28 @@ Briefcase will ask you to provide the following information when setting a Centr
 Aggregate server
 ~~~~~~~~~~~~~~~~
 
-Briefcase will ask you to provide the following information when setting an Aggregate server as the pull source:
+Briefcase will ask for the following information when setting an Aggregate server as the pull source:
 
 - A :guilabel:`URL`
-- An optional :guilabel:`Username`
-- An optional :guilabel:`Password`
+- A :guilabel:`Username` (optional)
+- A :guilabel:`Password` (optional)
 
 .. _pull-from-collect:
 
-Collect storage folder
-~~~~~~~~~~~~~~~~~~~~~~
+Collect directory
+~~~~~~~~~~~~~~~~~
 
-Briefcase will ask you to choose a directory in your computer where you have downloaded Collect's storage folder. We recommend to follow this steps to get a copy of Collect's storage folder into your computer:
+Briefcase will ask for the directory on your computer where you have placed Collect's :file:`/odk` directory. We recommend following these steps to get a copy of Collect's :file:`/odk` directory into your computer:
 
-#. Ensure all filled-in forms are finalized.
+1. Ensure all filled-in forms are finalized.
 
   If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy of :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
 
-#. Using your device, create a zip archive of the entire :file:`odk` directory with an app such as `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
+2. Using your device, create a zip archive of the entire :file:`odk` directory with an app such as `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
 
-#. Connect your Android device to your computer using a USB cable and choose to mount it as a Media device.
-#. Copy the zip file you created from the Android device to your local hard drive.
-#. Once it is copied onto your local hard drive, unzip the file.
+3. Connect your Android device to your computer using a USB cable and choose to mount it as a Media device.
+4. Copy the zip file you created from the Android device to your local hard drive.
+5. Once it is copied onto your local hard drive, unzip the file.
 
 .. warning::
 
@@ -66,14 +66,14 @@ Briefcase will ask you to choose a directory in your computer where you have dow
 
 .. _pull-form-definition:
 
-Individual form definition
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Form definition
+~~~~~~~~~~~~~~~
 
-Briefcase will as you to choose the location of the blank form file in your computer.
+Briefcase will ask for the location of the blank form definition in your computer.
 
 .. tip::
 
-  This enables a workflow to upload forms with media attachments to Aggregate:
+  This enables a workflow to upload forms with many media attachments to Aggregate:
 
   #. Pull the form using the :guilabel:`Pull from` option.
   #. :ref:`Push the form to your Aggregate server <push-to-aggregate>`.
@@ -91,64 +91,64 @@ To push blank forms and submissions:
 
 1. Open the :guilabel:`Push` tab.
 
-2. Select a push target option from the :guilabel:`Push to` drop-down, and click on the :guilabel:`Configure` button. Fill in any information needed to use the selected source. More information about all the available push targets below.
+2. Select a push target option from the :guilabel:`Push to` drop-down, and click on the :guilabel:`Configure` button. Fill in any information needed to use the selected source. See more on the various targets below.
 
 3. Select the forms you want to push and click :guilabel:`Push`. You can see the details of the operation by clicking on the |details-button| button.
 
-You can cancel an ongoing push operation at any point by clicking :guilabel:`Cancel`.
+4. You can cancel an ongoing push operation at any point by clicking :guilabel:`Cancel`.
 
 .. _push-to-central:
 
 Central server
 ~~~~~~~~~~~~~~
 
-Briefcase will ask you to provide the following information when setting a Central server as the push target:
+Briefcase will ask for the following information when using a Central server as the push target:
 
 - A :guilabel:`URL`
 - A :guilabel:`Project ID` number
 - An :guilabel:`Email` address
 - A :guilabel:`Password`
 
-We are working to make the integration between Briefcase and Central as smooth as possible but, at this moment, pushing forms and submissions to Central has the following quirks:
+.. warning::
 
-- Central will reject files that might have already been pushed before, even if they're different the second time.
-- Central will reject submissions belonging to a form version that it doesn't know about.
+  Pushing forms and submissions to Central currently has the following limitations:
+
+  - Central will reject files that might have already been pushed before, even if they're different the second time.
+  - Central will reject submissions belonging to a form version that it doesn't know about.
 
 .. _push-to-aggregate:
 
 Aggregate server
 ~~~~~~~~~~~~~~~~
 
-Briefcase will ask you to provide the following information when setting an Aggregate server as the push source:
+Briefcase will ask for the ollowing information when using an Aggregate server as the push source:
 
 - A :guilabel:`URL`
-- An optional :guilabel:`Username`
-- An optional :guilabel:`Password`
+- A :guilabel:`Username` (optional)
+- A :guilabel:`Password` (optional)
 
 .. _pull-push-settings:
 
-Pull & Push settings
---------------------
+Pull and push settings
+----------------------
 
-The pull operation can be configured in the :guilabel:`Settings` tab:
+The settings for push and pull can be configured in the :guilabel:`Settings` tab:
 
-- You can set a number of :guilabel:`Maximum simultaneous HTTP connections`. This can be increased to speed-up big pull operations or decreased to prevent from saturating servers.
+- You can set a number of :guilabel:`Maximum simultaneous HTTP connections`. This can be increased to speed-up big pull operations or decreased to prevent saturating server bandwidth.
 
-- You can enable :guilabel:`Start pull from last submission pulled` to resume pulling a form starting from the last submission you pulled last time, saving time and bandwidth.
+- You can enable :guilabel:`Start pull from last submission pulled` to save time and bandwidth by not pulling from the first submission.
 
-  This is only available for Aggregate servers at this moment, and it won't have beneficial effects for forms with less than 100 submissions.
+  - This is only available for Aggregate servers at this moment and only benefits forms with more than 100 submissions.
 
-  You can clear the pull history and pull every submission by clicking on :guilabel:`Clear pull history`.
+  - You can clear the pull history and pull every submission by clicking on :guilabel:`Clear pull history`.
 
 - You can enable :guilabel:`Remember passwords (unencrypted)`. This will enable a couple of features:
 
-  - Briefcase will remember the pull sources and push targets you configure when they require providing user credentials. As a result, you won't need to configure them again when launching Briefcase again.
+  - Briefcase will remember the pull sources and push targets you configure when they require user credentials. As a result, you won't need to configure them when launching Briefcase again.
 
   - Briefcase will let you enable the :guilabel:`Pull before export` option when exporting forms.
 
-- You can enable :guilabel:`Use HTTP proxy` to route your HTTP requests through a proxy host.
-
-  You will have to provide the proxy's :guilabel:`Host` (IP address or hostname), and the :guilabel:`Port` number.
+- You can enable :guilabel:`Use HTTP proxy` to route your HTTP requests through a proxy host. You will have to provide the proxy's :guilabel:`Host` (IP address or hostname), and the :guilabel:`Port` number.
 
 .. _briefcase-export-to-csv:
 
