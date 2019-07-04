@@ -1,126 +1,75 @@
 Using ODK Briefcase
 ======================
 
+.. _pull-forms:
+
+Pulling forms
+-------------
+
+To pull blank forms and submissions:
+
+1. Open the :guilabel:`Pull` tab.
+
+2. Select a pull source option from the :guilabel:`Pull from` drop-down, and click on the :guilabel:`Configure` button. Fill in any information needed to use the selected source. More information about all the available pull sources below.
+
+3. Select the forms you want to pull and click :guilabel:`Pull`. You can see the details of the operation by clicking on the |details_button| button.
+
+You can cancel an ongoing pull operation at any point by clicking :guilabel:`Cancel`.
+
+.. _pull-from-central:
+
+Central server
+~~~~~~~~~~~~~~
+
+Briefcase will ask you to provide the following information when setting a Central server as the pull source:
+
+- A :guilabel:`URL`
+- A :guilabel:`Project ID` number
+- An :guilabel:`Email` address
+- A :guilabel:`Password`
+
+.. warning::
+
+  The :guilabel:`Start pull from last submission pulled` setting will have no effect while pulling forms from a Central server.
+
 .. _pull-from-aggregate:
 
-Pulling forms from Aggregate
-----------------------------
+Aggregate server
+~~~~~~~~~~~~~~~~
 
-To download blank forms and completed form instances from an :doc:`Aggregate <aggregate-intro>` server:
+Briefcase will ask you to provide the following information when setting an Aggregate server as the pull source:
 
-#. Open the :guilabel:`Pull` tab.
-#. Select *Aggregate server* in the :guilabel:`Pull from` drop-down.
-#. Click the :guilabel:`Configure` button.
-#. Enter the URL and login credentials for your Aggregate server in the dialog that pops up and click the :guilabel:`Connect` button.
-
-   If you have anonymous login enabled on Aggregate, no login credentials are needed here.
-
-   To connect to the `Aggregate Demo Server`_, the URL is https://opendatakit.appspot.com.
-
-   .. _Aggregate Demo Server: https://opendatakit.appspot.com
-
-#. Briefcase will show a list of forms for download. Only forms that are marked in Aggregate as downloadable will be shown.
-
-#. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to your :ref:`Briefcase Storage <briefcase_storage>` location.
-
-   For each selected form, Briefcase will pull down:
-
-   - The form definition file (that is, the blank XForm).
-   - All media associated with the form.
-   - Completed form instances, including all their attached media files.
-
-   If you have previously pulled the form:
-
-   - The form definition file and media files will not be pulled.
-   - New instances will be downloaded.
-
-   .. warning::
-
-     If your local copy and the remote copy of the blank form definition file are different, the pull will be aborted.
-
-     .. rubric:: Workaround
-
-     If the form definition has changed, but the changes only affect the question text and do not alter the structure of the collected data (or change the form ID or version), you can:
-
-     #. In :guilabel:`Settings`, temporarily change the :ref:`Briefcase Storage <briefcase_storage>` location.
-     #. Pull data into to the new location.
-     #. Manually copy the instances from the temporary location of your original storage location.
-     #. Update :guilabel:`Settings` back to the original :ref:`Briefcase Storage <briefcase_storage>` location.
-
-.. note::
-  :name: briefcase-parallel-connections
-
-  .. rubric:: Pull forms faster with parallel connections
-
-  .. container:: details
-
-    To speed up pulling forms from Aggregate, enable :guilabel:`Pull submissions in parallel` in the :guilabel:`Settings` tab.
-
-    .. image:: /img/briefcase-using/pull-in-parallel.*
-
-    However, if your Aggregate server is :doc:`installed on Google App Engine <aggregate-app-engine>`, this setting may cause problems with large attachments. If your form has submission attachments (file uploads, videos, images, sound recordings) you should experiment with this setting and see if it improves or worsens performance.
-
-.. note::
-  :name: briefcase-start-pull-from-last-submission-pulled
-
-  .. rubric:: Start pull from last submission pulled
-
-  .. container:: details
-
-    If your forms have more than 100 submissions, enable the configuration parameter :guilabel:`Start pull from last submission pulled` in the :guilabel:`Settings` tab to improve pull performance on slow connections.
-
-    .. image:: /img/briefcase-using/start-pull-from-last-submission-pulled.*
-
-    You can clear the pull history and pull every submission by clicking on the :guilabel:`Clear pull history` button at the bottom of the :guilabel:`Settings` tab.
+- A :guilabel:`URL`
+- An optional :guilabel:`Username`
+- An optional :guilabel:`Password`
 
 .. _pull-from-collect:
 
-Pulling forms from Collect
-------------------------------
+Collect storage folder
+~~~~~~~~~~~~~~~~~~~~~~
+
+Briefcase will ask you to choose a directory in your computer where you have downloaded Collect's storage folder. We recommend to follow this steps to get a copy of Collect's storage folder into your computer:
 
 #. Ensure all filled-in forms are finalized.
 
-   If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy of :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
+  If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy of :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
 
-#. Create a zip archive of the entire :file:`odk` directory.
-
-   .. tip::
-
-     You'll need to use an app for this.
-
-     One option is `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
+#. Using your device, create a zip archive of the entire :file:`odk` directory with an app such as `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
 
 #. Connect your Android device to your computer using a USB cable and choose to mount it as a Media device.
 #. Copy the zip file you created from the Android device to your local hard drive.
 #. Once it is copied onto your local hard drive, unzip the file.
-#. In Briefcase, open the :guilabel:`Pull` tab.
-#. Select *Collect directory* in the :guilabel:`Pull from` drop-down.
-#. Click the :guilabel:`Configure` button and select the unzipped :file:`odk` folder.
-#. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to your :ref:`Briefcase Storage <briefcase_storage>` location.
-#. On the Android device, open Collect and delete the filled-in forms.
-
-   .. tip::
-
-     - You can use the *Collect directory* any time you want to pull forms from custom location.
-     - You can confirm that the forms have been successfully pulled into Briefcase by confirming a successful pull status or by verifying the data appearing in a :ref:`CSV export file <briefcase-export-to-csv>`.
 
 .. warning::
 
-  Briefcase cannot discriminate between duplicate form instances. After you pull completed forms into Briefcase, it is important that you delete them from Collect. Otherwise, the next time you pull in forms, you will create duplicates.
-
-.. note::
-
-  Briefcase does not support pushing blank forms to Collect. Instead, :ref:`manually load the forms on your Collect device <loading-forms-directly>`.
+  Briefcase cannot discriminate between duplicate submissions. After you pull completed forms into Briefcase, it is important that you delete them from Collect. Otherwise, the next time you pull in forms, you will create duplicates.
 
 .. _pull-form-definition:
 
-Pulling form definitions
-------------------------
+Individual form definition
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Open the :guilabel:`Pull` tab.
-#. Select *Form definition* in the :guilabel:`Pull from` drop-down.
-#. Click the :guilabel:`Configure` button and select the :file:`.xml` form definition file.
-#. Select the form and click :guilabel:`Pull`. The form will be pulled to your :ref:`Briefcase Storage <briefcase_storage>` location.
+Briefcase will as you to choose the location of the blank form file in your computer.
 
 .. tip::
 
@@ -133,45 +82,73 @@ Pulling form definitions
 
   Ensure that all attached media is available relative to the form definition file location.
 
+.. _push-forms:
+
+Pushing forms
+-------------
+
+To push blank forms and submissions:
+
+1. Open the :guilabel:`Push` tab.
+
+2. Select a push target option from the :guilabel:`Push to` drop-down, and click on the :guilabel:`Configure` button. Fill in any information needed to use the selected source. More information about all the available push targets below.
+
+3. Select the forms you want to push and click :guilabel:`Push`. You can see the details of the operation by clicking on the |details_button| button.
+
+You can cancel an ongoing push operation at any point by clicking :guilabel:`Cancel`.
+
+.. _push-to-central:
+
+Central server
+~~~~~~~~~~~~~~
+
+Briefcase will ask you to provide the following information when setting a Central server as the push target:
+
+- A :guilabel:`URL`
+- A :guilabel:`Project ID` number
+- An :guilabel:`Email` address
+- A :guilabel:`Password`
+
+We are working to make the integration between Briefcase and Central as smooth as possible but, at this moment, pushing forms and submissions to Central has the following quirks:
+
+- Central will reject files that might have already been pushed before, even if they're different the second time.
+- Central will reject submissions belonging to a form version that it doesn't know about.
+
 .. _push-to-aggregate:
 
-Pushing forms to Aggregate
---------------------------
+Aggregate server
+~~~~~~~~~~~~~~~~
 
-To upload blank forms and completed form instances to an :doc:`Aggregate <aggregate-intro>` server:
+Briefcase will ask you to provide the following information when setting an Aggregate server as the push source:
 
-#. Open the :guilabel:`Push` tab.
-#. Select *Aggregate server* in the :guilabel:`Push to` drop-down.
-#. Click the :guilabel:`Configure` button.
-#. Enter the URL and login credentials for your Aggregate server in the dialog that pops up and click the :guilabel:`Connect` button.
+- A :guilabel:`URL`
+- An optional :guilabel:`Username`
+- An optional :guilabel:`Password`
 
-   If you have anonymous login enabled on Aggregate, no login credentials are needed here.
+.. _pull-push-settings:
 
-   To connect to the `Aggregate Demo Server`_, the URL is https://opendatakit.appspot.com.
+Pull & Push settings
+--------------------
 
-   .. _Aggregate Demo Server: https://opendatakit.appspot.com
+The pull operation can be configured in the :guilabel:`Settings` tab:
 
-#. Select the forms you want to upload and click :guilabel:`Push`. The selected forms will be pushed from your :ref:`Briefcase Storage <briefcase_storage>` to the Aggregate server.
+- You can set a number of :guilabel:`Maximum simultaneous HTTP connections`. This can be increased to speed-up big pull operations or decreased to prevent from saturating servers.
 
-   For each selected form, Briefcase will upload:
+- You can enable :guilabel:`Start pull from last submission pulled` to resume pulling a form starting from the last submission you pulled last time, saving time and bandwidth.
 
-     - The form definition file (that is, the blank XForm).
-     - All media associated with the form.
-     - Completed form instances, including all their attached media files.
+  This is only available for Aggregate servers at this moment, and it won't have beneficial effects for forms with less than 100 submissions.
 
-   .. warning::
+  You can clear the pull history and pull every submission by clicking on :guilabel:`Clear pull history`.
 
-     If your local copy and the remote copy of the blank form definition file are different, the push will be aborted.
+- You can enable :guilabel:`Remember passwords (unencrypted)`. This will enable a couple of features:
 
-     .. rubric:: Workaround
+  - Briefcase will remember the pull sources and push targets you configure when they require providing user credentials. As a result, you won't need to configure them again when launching Briefcase again.
 
-     If the form definition has changed, but the changes only affect the question text and do not alter the structure of the collected data (or change the form ID or version), you can:
+  - Briefcase will let you enable the :guilabel:`Pull before export` option when exporting forms.
 
-     #. In :guilabel:`Settings`, temporarily change the :ref:`Briefcase Storage <briefcase_storage>` location.
-     #. Manually copy the form directory from your original storage location of the temporary location.
-     #. Replace the local form definition file with a copy of the version from your Aggregate server.
-     #. Push your form instances.
-     #. Update :guilabel:`Settings` back to the original :ref:`Briefcase Storage <briefcase_storage>` location.
+- You can enable :guilabel:`Use HTTP proxy` to route your HTTP requests through a proxy host.
+
+  You will have to provide the proxy's :guilabel:`Host` (IP address or hostname), and the :guilabel:`Port` number.
 
 .. _briefcase-export-to-csv:
 
@@ -268,16 +245,16 @@ Pulling forms from Aggregate
   .. code-block:: none
 
       Params for -plla operation:
-        -p,--odk_password <arg>             ODK Password
-        -sd,--storage_directory <arg>       Briefcase storage directory
-        -u,--odk_username <arg>             ODK Username
-        -url,--aggregate_url <arg>          Aggregate server URL
+        -p,--odk_password <arg>              ODK Password
+        -sd,--storage_directory <arg>        Briefcase storage directory
+        -u,--odk_username <arg>              ODK Username
+        -url,--aggregate_url <arg>           Aggregate server URL
       Optional params for -plla operation:
-        -id,--form_id <arg>                 Form ID
-        -ii,--include_incomplete            Include incomplete submissions
-        -pp,--parallel_pull                 Pull submissions in parallel
-        -sfd,--start_from_date <arg>        Start pull from date
-        -sfl,--start_from_last              Start pull from last submission pulled
+        -id,--form_id <arg>                  Form ID
+        -ii,--include_incomplete             Include incomplete submissions
+        -mhc,--max_http_connections <arg>    Maximum simultaneous HTTP connections (defaults to 8)
+        -sfd,--start_from_date <arg>         Start pull from date
+        -sfl,--start_from_last               Start pull from last submission pulled
 
 .. warning::
 
@@ -328,13 +305,14 @@ Pushing forms to Aggregate
   .. code-block:: none
 
       Params for -psha operation:
-        -id,--form_id <arg>                 Form ID
-        -p,--odk_password <arg>             ODK Password
-        -sd,--storage_directory <arg>       Briefcase storage directory
-        -u,--odk_username <arg>             ODK Username
-        -url,--aggregate_url <arg>          Aggregate server URL
+        -id,--form_id <arg>                  Form ID
+        -p,--odk_password <arg>              ODK Password
+        -sd,--storage_directory <arg>        Briefcase storage directory
+        -u,--odk_username <arg>              ODK Username
+        -url,--aggregate_url <arg>           Aggregate server URL
       Optional params for -psha operation:
-        -fsb,--force_send_blank             Force sending the blank form to the Aggregate instance
+        -fsb,--force_send_blank              Force sending the blank form to the Aggregate instance
+        -mhc,--max_http_connections <arg>    Maximum simultaneous HTTP connections (defaults to 8)
 
 .. warning::
 
@@ -452,3 +430,6 @@ Once you have your configuration file ready, you can use it by adding a `-Dloggi
 .. code-block:: console
 
   $ java -Dlogging.config="{path/to/logback.xml}" -jar {path/to/briefcase-jar-file}
+
+.. |details_button| image:: img/briefcase-using/details_button.png
+   :align: top
