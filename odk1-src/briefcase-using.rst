@@ -21,118 +21,58 @@ You can cancel an ongoing pull operation at any point by clicking :guilabel:`Can
 
 .. _pull-from-central:
 
-Pulling forms from Central
---------------------------
+Central server
+~~~~~~~~~~~~~~
 
-Stub section
+Briefcase will ask you to provide the following information when setting a Central server as the pull source:
+
+- A :guilabel:`URL`
+- A :guilabel:`Project ID` number
+- An :guilabel:`Email` address
+- A :guilabel:`Password`
+
+.. warning::
+
+  The :guilabel:`Start pull from last submission pulled` setting will have no effect while pulling forms from a Central server.
 
 .. _pull-from-aggregate:
 
-Pulling forms from Aggregate
-----------------------------
+Aggregate server
+~~~~~~~~~~~~~~~~
 
-To download blank forms and completed form instances from an :doc:`Aggregate <aggregate-intro>` server:
+Briefcase will ask you to provide the following information when setting an Aggregate server as the pull source:
 
-#. Open the :guilabel:`Pull` tab.
-#. Select *Aggregate server* in the :guilabel:`Pull from` drop-down.
-#. Click the :guilabel:`Configure` button.
-#. Enter the URL and login credentials for your Aggregate server in the dialog that pops up and click the :guilabel:`Connect` button.
-
-   If you have anonymous login enabled on Aggregate, no login credentials are needed here.
-
-   To connect to the `Aggregate Demo Server`_, the URL is https://opendatakit.appspot.com.
-
-   .. _Aggregate Demo Server: https://opendatakit.appspot.com
-
-#. Briefcase will show a list of forms for download. Only forms that are marked in Aggregate as downloadable will be shown.
-
-#. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to your :ref:`Briefcase Storage <briefcase_storage>` location.
-
-   For each selected form, Briefcase will pull down:
-
-   - The form definition file (that is, the blank XForm).
-   - All media associated with the form.
-   - Completed form instances, including all their attached media files.
-
-   If you have previously pulled the form:
-
-   - The form definition file and media files will not be pulled.
-   - New instances will be downloaded.
-
-   .. warning::
-
-     If your local copy and the remote copy of the blank form definition file are different, the pull will be aborted.
-
-     .. rubric:: Workaround
-
-     If the form definition has changed, but the changes only affect the question text and do not alter the structure of the collected data (or change the form ID or version), you can:
-
-     #. In :guilabel:`Settings`, temporarily change the :ref:`Briefcase Storage <briefcase_storage>` location.
-     #. Pull data into to the new location.
-     #. Manually copy the instances from the temporary location of your original storage location.
-     #. Update :guilabel:`Settings` back to the original :ref:`Briefcase Storage <briefcase_storage>` location.
-
-.. note::
-  :name: briefcase-start-pull-from-last-submission-pulled
-
-  .. rubric:: Start pull from last submission pulled
-
-  .. container:: details
-
-    If your forms have more than 100 submissions, enable the configuration parameter :guilabel:`Start pull from last submission pulled` in the :guilabel:`Settings` tab to improve pull performance on slow connections.
-
-    .. image:: /img/briefcase-using/start-pull-from-last-submission-pulled.*
-
-    You can clear the pull history and pull every submission by clicking on the :guilabel:`Clear pull history` button at the bottom of the :guilabel:`Settings` tab.
+- A :guilabel:`URL`
+- An optional :guilabel:`Username`
+- An optional :guilabel:`Password`
 
 .. _pull-from-collect:
 
-Pulling forms from Collect
-------------------------------
+Collect storage folder
+~~~~~~~~~~~~~~~~~~~~~~
+
+Briefcase will ask you to choose a directory in your computer where you have downloaded Collect's storage folder. We recommend to follow this steps to get a copy of Collect's storage folder into your computer:
 
 #. Ensure all filled-in forms are finalized.
 
-   If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy of :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
+  If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy of :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
 
-#. Create a zip archive of the entire :file:`odk` directory.
-
-   .. tip::
-
-     You'll need to use an app for this.
-
-     One option is `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
+#. Using your device, create a zip archive of the entire :file:`odk` directory with an app such as `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
 
 #. Connect your Android device to your computer using a USB cable and choose to mount it as a Media device.
 #. Copy the zip file you created from the Android device to your local hard drive.
 #. Once it is copied onto your local hard drive, unzip the file.
-#. In Briefcase, open the :guilabel:`Pull` tab.
-#. Select *Collect directory* in the :guilabel:`Pull from` drop-down.
-#. Click the :guilabel:`Configure` button and select the unzipped :file:`odk` folder.
-#. Select the forms you want to download and click :guilabel:`Pull`. The selected forms will be pulled to your :ref:`Briefcase Storage <briefcase_storage>` location.
-#. On the Android device, open Collect and delete the filled-in forms.
-
-   .. tip::
-
-     - You can use the *Collect directory* any time you want to pull forms from custom location.
-     - You can confirm that the forms have been successfully pulled into Briefcase by confirming a successful pull status or by verifying the data appearing in a :ref:`CSV export file <briefcase-export-to-csv>`.
 
 .. warning::
 
   Briefcase cannot discriminate between duplicate form instances. After you pull completed forms into Briefcase, it is important that you delete them from Collect. Otherwise, the next time you pull in forms, you will create duplicates.
 
-.. note::
-
-  Briefcase does not support pushing blank forms to Collect. Instead, :ref:`manually load the forms on your Collect device <loading-forms-directly>`.
-
 .. _pull-form-definition:
 
-Pulling form definitions
-------------------------
+Individual form definition
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Open the :guilabel:`Pull` tab.
-#. Select *Form definition* in the :guilabel:`Pull from` drop-down.
-#. Click the :guilabel:`Configure` button and select the :file:`.xml` form definition file.
-#. Select the form and click :guilabel:`Pull`. The form will be pulled to your :ref:`Briefcase Storage <briefcase_storage>` location.
+Briefcase will as you to choose the location of the blank form file in your computer.
 
 .. tip::
 
