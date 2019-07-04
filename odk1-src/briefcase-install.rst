@@ -1,16 +1,14 @@
 Setting Up ODK Briefcase
 ===================================
 
-.. note:: 
+.. note::
 
   The ODK Briefcase file available for download is an executable Java application. Once downloaded, it can be run directly and does not need to be "installed."
 
 .. admonition:: Before you begin...
 
-  Make sure `Oracle Java 8 <https://java.com/en/download/>`_ or higher is `installed on your system <https://www.java.com/en/download/help/download_options.xml>`_.
+  You should be able to run Briefcase with Java 8 or higher, but we recommend using `Java 11 LTS <https://www.oracle.com/technetwork/java/javase/downloads/index.html>`_.
 
-  We require Oracle's Java because OpenJDK has encryption shortcomings.
-  
 #. Download `ODK Briefcase <https://github.com/opendatakit/briefcase/releases/latest>`_.
 
    You may wish to move the Briefcase file to your desktop, your Applications directory, or another location.
@@ -19,11 +17,11 @@ Setting Up ODK Briefcase
 
    - Double click the file icon.
    - Or, from the command line:
-   
-     .. code-block:: console 
-       
+
+     .. code-block:: console
+
        $ java -jar {path/to/Briefcase}
-   
+
 #. Set your local **Briefcase Storage** location.
 
    .. _briefcase_storage:
