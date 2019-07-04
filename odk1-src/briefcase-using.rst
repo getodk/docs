@@ -105,50 +105,31 @@ You can cancel an ongoing push operation at any point by clicking :guilabel:`Can
 
 .. _push-to-central:
 
-Pushing forms to Central
---------------------------
+Central server
+~~~~~~~~~~~~~~
 
-Stub section
+Briefcase will ask you to provide the following information when setting a Central server as the push target:
+
+- A :guilabel:`URL`
+- A :guilabel:`Project ID` number
+- An :guilabel:`Email` address
+- A :guilabel:`Password`
+
+We are working to make the integration between Briefcase and Central as smooth as possible but, at this moment, pushing forms and submissions to Central has the following quirks:
+
+- Central will reject files that might have already been pushed before, even if they're different the second time.
+- Central will reject submissions belonging to a form version that it doesn't know about.
 
 .. _push-to-aggregate:
 
-Pushing forms to Aggregate
---------------------------
+Aggregate server
+~~~~~~~~~~~~~~~~
 
-To upload blank forms and completed form instances to an :doc:`Aggregate <aggregate-intro>` server:
+Briefcase will ask you to provide the following information when setting an Aggregate server as the push source:
 
-#. Open the :guilabel:`Push` tab.
-#. Select *Aggregate server* in the :guilabel:`Push to` drop-down.
-#. Click the :guilabel:`Configure` button.
-#. Enter the URL and login credentials for your Aggregate server in the dialog that pops up and click the :guilabel:`Connect` button.
-
-   If you have anonymous login enabled on Aggregate, no login credentials are needed here.
-
-   To connect to the `Aggregate Demo Server`_, the URL is https://opendatakit.appspot.com.
-
-   .. _Aggregate Demo Server: https://opendatakit.appspot.com
-
-#. Select the forms you want to upload and click :guilabel:`Push`. The selected forms will be pushed from your :ref:`Briefcase Storage <briefcase_storage>` to the Aggregate server.
-
-   For each selected form, Briefcase will upload:
-
-     - The form definition file (that is, the blank XForm).
-     - All media associated with the form.
-     - Completed form instances, including all their attached media files.
-
-   .. warning::
-
-     If your local copy and the remote copy of the blank form definition file are different, the push will be aborted.
-
-     .. rubric:: Workaround
-
-     If the form definition has changed, but the changes only affect the question text and do not alter the structure of the collected data (or change the form ID or version), you can:
-
-     #. In :guilabel:`Settings`, temporarily change the :ref:`Briefcase Storage <briefcase_storage>` location.
-     #. Manually copy the form directory from your original storage location of the temporary location.
-     #. Replace the local form definition file with a copy of the version from your Aggregate server.
-     #. Push your form instances.
-     #. Update :guilabel:`Settings` back to the original :ref:`Briefcase Storage <briefcase_storage>` location.
+- A :guilabel:`URL`
+- An optional :guilabel:`Username`
+- An optional :guilabel:`Password`
 
 .. _pull-push-settings:
 
