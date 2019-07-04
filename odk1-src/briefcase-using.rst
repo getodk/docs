@@ -12,7 +12,7 @@ To pull blank forms and submissions:
 
 2. Select a pull source option from the :guilabel:`Pull from` drop-down, and click on the :guilabel:`Configure` button. Fill in any information needed to use the selected source. More information about all the available pull sources below.
 
-3. Select the forms you want to pull and click :guilabel:`Pull`. You can see the details of the operation by clicking on the |details_button| button.
+3. Select the forms you want to pull and click :guilabel:`Pull`. You can see the details of the operation by clicking on the |details-button| button.
 
 You can cancel an ongoing pull operation at any point by clicking :guilabel:`Cancel`.
 
@@ -93,7 +93,7 @@ To push blank forms and submissions:
 
 2. Select a push target option from the :guilabel:`Push to` drop-down, and click on the :guilabel:`Configure` button. Fill in any information needed to use the selected source. More information about all the available push targets below.
 
-3. Select the forms you want to push and click :guilabel:`Push`. You can see the details of the operation by clicking on the |details_button| button.
+3. Select the forms you want to push and click :guilabel:`Push`. You can see the details of the operation by clicking on the |details-button| button.
 
 You can cancel an ongoing push operation at any point by clicking :guilabel:`Cancel`.
 
@@ -431,5 +431,5 @@ Once you have your configuration file ready, you can use it by adding a `-Dloggi
 
   $ java -Dlogging.config="{path/to/logback.xml}" -jar {path/to/briefcase-jar-file}
 
-.. |details_button| image:: img/briefcase-using/details_button.png
+.. |details-button| image:: img/briefcase-using/details-button.png
    :align: top
