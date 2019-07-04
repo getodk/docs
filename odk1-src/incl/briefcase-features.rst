@@ -4,6 +4,7 @@ With Briefcase you can:
 - Push blank form definitions and completed form instances to a :ref:`Central <push-to-central>` or :ref:`Aggregate <push-to-aggregate>` server.
 - :ref:`Export data from completed form instances <briefcase-export-to-csv>` to :term:`CSV` files.
 - :doc:`Decrypt encrypted submissions <encrypted-forms>`.
-- Back up form data from a server.
-- Transfer data across servers.
+- Back up form data from servers.
+- Transfer data between servers.
 - :ref:`Work from a command line <cli-use>`.
+- Work offline.

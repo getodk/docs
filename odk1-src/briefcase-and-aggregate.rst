@@ -35,7 +35,6 @@ With Aggregate you can:
 - Review and visualize submitted form data.
 - Export submitted form data to :term:`CSV`, :term:`KML`, and :term:`JSON`.
 - Publish data to Google Sheets or JSON servers.
-- Work offline.
 
 
 .. _briefcase-aggregate-differences:
