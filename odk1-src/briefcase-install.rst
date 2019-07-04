@@ -1,10 +1,6 @@
 Setting Up ODK Briefcase
 ===================================
 
-.. note::
-
-  The ODK Briefcase file available for download is an executable Java application. Once downloaded, it can be run directly and does not need to be "installed."
-
 .. admonition:: Before you begin...
 
   You should be able to run Briefcase with Java 8 or higher, but we recommend using `Java 11 LTS <https://www.oracle.com/technetwork/java/javase/downloads/index.html>`_.
