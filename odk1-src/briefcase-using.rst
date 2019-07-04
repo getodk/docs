@@ -251,16 +251,16 @@ Pulling forms from Aggregate
   .. code-block:: none
 
       Params for -plla operation:
-        -p,--odk_password <arg>             ODK Password
-        -sd,--storage_directory <arg>       Briefcase storage directory
-        -u,--odk_username <arg>             ODK Username
-        -url,--aggregate_url <arg>          Aggregate server URL
+        -p,--odk_password <arg>              ODK Password
+        -sd,--storage_directory <arg>        Briefcase storage directory
+        -u,--odk_username <arg>              ODK Username
+        -url,--aggregate_url <arg>           Aggregate server URL
       Optional params for -plla operation:
-        -id,--form_id <arg>                 Form ID
-        -ii,--include_incomplete            Include incomplete submissions
-        -pp,--parallel_pull                 Pull submissions in parallel
-        -sfd,--start_from_date <arg>        Start pull from date
-        -sfl,--start_from_last              Start pull from last submission pulled
+        -id,--form_id <arg>                  Form ID
+        -ii,--include_incomplete             Include incomplete submissions
+        -mhc,--max_http_connections <arg>    Maximum simultaneous HTTP connections (defaults to 8)
+        -sfd,--start_from_date <arg>         Start pull from date
+        -sfl,--start_from_last               Start pull from last submission pulled
 
 .. warning::
 
@@ -311,13 +311,14 @@ Pushing forms to Aggregate
   .. code-block:: none
 
       Params for -psha operation:
-        -id,--form_id <arg>                 Form ID
-        -p,--odk_password <arg>             ODK Password
-        -sd,--storage_directory <arg>       Briefcase storage directory
-        -u,--odk_username <arg>             ODK Username
-        -url,--aggregate_url <arg>          Aggregate server URL
+        -id,--form_id <arg>                  Form ID
+        -p,--odk_password <arg>              ODK Password
+        -sd,--storage_directory <arg>        Briefcase storage directory
+        -u,--odk_username <arg>              ODK Username
+        -url,--aggregate_url <arg>           Aggregate server URL
       Optional params for -psha operation:
-        -fsb,--force_send_blank             Force sending the blank form to the Aggregate instance
+        -fsb,--force_send_blank              Force sending the blank form to the Aggregate instance
+        -mhc,--max_http_connections <arg>    Maximum simultaneous HTTP connections (defaults to 8)
 
 .. warning::
 
