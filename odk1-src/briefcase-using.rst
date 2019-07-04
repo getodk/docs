@@ -1,6 +1,24 @@
 Using ODK Briefcase
 ======================
 
+.. _pull-forms:
+
+Pulling forms
+-------------
+
+To download blank forms and completed form instances from a server:
+
+1. Open the :guilabel:`Pull` tab.
+
+2. Select a pull source option from the :guilabel:`Pull from` drop-down, and click on the :guilabel:`Configure` button. Fill in any information needed to use the selected option. More information about Pull sources below.
+
+3. Select the forms you want to pull and click :guilabel:`Pull`. You can see the details of the operation by clicking on the |details_button| button.
+
+.. |details_button| image:: img/briefcase-using/details_button.png
+   :align: top
+
+You can cancel an ongoing pull operation at any point by clicking :guilabel:`Cancel`.
+
 .. _pull-from-central:
 
 Pulling forms from Central
