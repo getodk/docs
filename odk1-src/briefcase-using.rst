@@ -54,11 +54,9 @@ Briefcase will ask for the directory on your computer where you have placed Coll
 
   If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy of :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
 
-2. Using your device, create a zip archive of the entire :file:`odk` directory with an app such as `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
-
-3. Connect your Android device to your computer using a USB cable and choose to mount it as a Media device.
-4. Copy the zip file you created from the Android device to your local hard drive.
-5. Once it is copied onto your local hard drive, unzip the file.
+2. Using your device, create a zip archive of the entire :file:`odk` directory with a file managing app such as `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
+3. Transfer the zip file to your local hard drive via a USB cable. You can also use the Share feature in your file manager to transfer it to a third-party service like Google Drive or Dropbox then download it to your local hard drive.
+4. Once the zip file is on your local hard drive, unzip the file.
 
 .. warning::
 
