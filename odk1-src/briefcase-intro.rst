@@ -8,7 +8,19 @@ archive the form data locally, or export it into useful formats.
 
 .. include:: incl/briefcase-features.rst
 
-.. image:: img/briefcase-intro/briefcase-pull.*
+.. tabs::
+
+  .. group-tab:: Windows
+
+    .. image:: img/briefcase-intro/briefcase_v1.16.0_windows.png
+
+  .. group-tab:: macOS
+
+    .. image:: img/briefcase-intro/briefcase_v1.16.0_macos.png
+
+  .. group-tab:: Linux
+
+    .. image:: img/briefcase-intro/briefcase_v1.16.0_linux.png
 
 .. _briefcase-learn-more:
 
