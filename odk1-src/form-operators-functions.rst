@@ -567,9 +567,9 @@ Number handling
 
   Computes and returns the hash value of the data :arg:`string` using the indicated hash algorithm :arg:`string`, and encoding this hash value using the optional encoding :arg:`string`.
   
-  Options for the algorithm are :arg:`'MD5'`, :arg:`'SHA-1'`, :arg:`'SHA-256'`, :arg:`SHA-384`, :arg:`SHA-512`. 
+  Options for the algorithm are :arg:`MD5`, :arg:`SHA-1`, :arg:`SHA-256`, :arg:`SHA-384`, :arg:`SHA-512`. 
   
-  If the third parameter is not specified, the encoding is :arg:`'base64'`. Valid options for the encoding are :arg:`'base64'` and :arg:`'hex'`.
+  If the third parameter is not specified, the encoding is :arg:`base64`. Valid options for the encoding are :arg:`base64` and :arg:`hex`.
 
   This function can be useful if, for example, someone wants to build a unique identifier from sensitive data like a national ID number without compromising that data.
   
