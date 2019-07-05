@@ -565,7 +565,7 @@ Number handling
 
 .. function:: digest(data, algorithm, encoding method (optional))   
 
-  Returns the encoded string by computing the hash value of the data :arg:`string` using the indicated hash algorithm :arg:`string`, and encoding this hash value using the optional encoding :arg:`string`.
+  Computes and returns the hash value of the data :arg:`string` using the indicated hash algorithm :arg:`string`, and encoding this hash value using the optional encoding :arg:`string`.
   
   Options for the algorithm are :arg:`'MD5'`, :arg:`'SHA-1'`, :arg:`'SHA-256'`, :arg:`SHA-384`, :arg:`SHA-512`. 
   
