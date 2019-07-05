@@ -10,9 +10,13 @@ To pull blank forms and submissions:
 
 1. Open the :guilabel:`Pull` tab.
 
-2. Select a pull source option from the :guilabel:`Pull from` drop-down, and click on the :guilabel:`Configure` button. Fill in any information needed to use the selected source. See more on the various sources below.
+2. Select a pull source option from the :guilabel:`Pull from` drop-down, and click on the :guilabel:`Configure` button. Fill in any information needed to use the selected source.
 
-3. Select the forms you want to pull and click :guilabel:`Pull`. You can see the details of the operation by clicking on the |details-button| button.
+    See more on the various sources below.
+
+3. Select the forms you want to pull and click :guilabel:`Pull`.
+
+    You can see the details of the operation by clicking on the |details-button| button.
 
 4. You can cancel an ongoing pull operation at any point by clicking :guilabel:`Cancel`.
 
@@ -52,7 +56,7 @@ Briefcase will ask for the directory on your computer where you have placed Coll
 
 1. Ensure all filled-in forms are finalized.
 
-  If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy of :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
+    If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy of :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
 
 2. Using your device, create a zip archive of the entire :file:`odk` directory with a file managing app such as `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
 3. Transfer the zip file to your local hard drive via a USB cable. You can also use the Share feature in your file manager to transfer it to a third-party service like Google Drive then download it to your local hard drive.
@@ -89,9 +93,13 @@ To push blank forms and submissions:
 
 1. Open the :guilabel:`Push` tab.
 
-2. Select a push target option from the :guilabel:`Push to` drop-down, and click on the :guilabel:`Configure` button. Fill in any information needed to use the selected source. See more on the various targets below.
+2. Select a push target option from the :guilabel:`Push to` drop-down, and click on the :guilabel:`Configure` button. Fill in any information needed to use the selected source.
 
-3. Select the forms you want to push and click :guilabel:`Push`. You can see the details of the operation by clicking on the |details-button| button.
+    See more on the various targets below.
+
+3. Select the forms you want to push and click :guilabel:`Push`.
+
+    You can see the details of the operation by clicking on the |details-button| button.
 
 4. You can cancel an ongoing push operation at any point by clicking :guilabel:`Cancel`.
 
