@@ -174,6 +174,10 @@ Export forms to CSV
 
 #. Click :guilabel:`Export`.
 
+.. tip::
+
+ To import CSVs into Excel, you cannot download and open in one step; nor can you double-click on the CSV. You must open Excel and choose Import. If you are asked, the file origin or encoding is UTF-8.
+
 Output files
 ~~~~~~~~~~~~
 
