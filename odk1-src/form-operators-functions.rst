@@ -563,6 +563,11 @@ Number handling
   
   If :arg:`arg` cannot be converted, returns ``NaN`` (not a number).
 
+.. function:: digest(string,string,string)   
+
+  Returns the encoded string by computing the hash value of the data :arg:`string` using the indicated hash algorithm :arg:`string`, and encoding this hash value using the author-optional :arg:`string`. 
+
+  This function can be useful if, for example, someone wants to build a unique identifier from sensitive data like a national ID number without compromising that data.
   
 .. seealso:: :func:`count`, :func:`max`, :func:`min`, :func:`number`
   
