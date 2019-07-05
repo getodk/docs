@@ -30,12 +30,11 @@ Aggregate
 
 With Aggregate you can:
 
-- Host blank form definitions to be downloaded by Collect.
+- Host blank forms to be downloaded by Collect.
 - Accept finalized form instances from Collect.
 - Review and visualize submitted form data.
 - Export submitted form data to :term:`CSV`, :term:`KML`, and :term:`JSON`.
 - Publish data to Google Sheets or JSON servers.
-- Work offline.
 
 
 .. _briefcase-aggregate-differences:
@@ -44,7 +43,7 @@ Notable Differences
 ----------------------
 
 - Aggregate supports export to KML and JSON. Briefcase does not.
-- Aggregate can host blank form definitions for Collect users to download over the internet. Briefcase cannot.
+- Aggregate can host blank forms for Collect users to download over the internet. Briefcase cannot.
 - Aggregate can receive form data from Collect over the internet. Briefcase cannot.
 - When moving forms from Collect to Aggregate, form instances are ignored if they have not been :formstate:`finalized`. When using Briefcase, all form instances are transferred.
 - Aggregate supports simple visualizations. Briefcase does not.
