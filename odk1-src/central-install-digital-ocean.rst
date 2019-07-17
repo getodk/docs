@@ -190,8 +190,8 @@ ODK Central ships with a basic EXIM server bundled to forward mail out to the in
 
 .. _central-install-digital-ocean-sentry:
 
-Customizing Sentry
-------------------
+Disabling or Customizing Sentry
+-------------------------------
 
 By default, we enable `Sentry error logging <https://sentry.io>`_ on the backend server, which provides the ODK Central development team with an anonymized log of unexpected programming errors that occur while your server is running. This information is only visible to the development team and should never contain any of your user or form data, but if you feel uncomfortable with this anyway, you can take the following steps to disable Sentry:
 
