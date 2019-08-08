@@ -10,7 +10,7 @@ jobs:
           docker_layer_caching: true
       - run:
           name: build Docker test image
-          command: docker build -t odk-test/python:latest .
+          command: docker build -t odk-test/python:latest -f Dockerfile.test .
   build-odk1:
     working_directory: ~/work
     docker:

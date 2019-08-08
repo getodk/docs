@@ -1,0 +1,19 @@
+FROM circleci/python:latest
+
+WORKDIR /build
+
+# Install the git-lfs repository
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+
+# Checkout Debian packages and install git large file storage (git-lfs)
+# We install all Debian packages in one command to fail fast and to avoid generating additional layers
+RUN sudo apt-get install -y git-lfs png-quant python-enchant
+
+# Install git-lfs and checkout the binaries
+RUN git lfs install
+COPY .git .git
+RUN git lfs pull
+
+# Install the Python dependencies
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
