@@ -24,6 +24,9 @@
   su
   todos
   totales
+  el
+  las
+  th
 
 Updating forms
 =================
@@ -72,7 +75,7 @@ For example:
   :widths: auto
 
   "dept", "Physics", "PHY"
-  "dept", "Maths", "MAT"
+  "dept", "Math", "MAT"
   "dept", "Chemistry", "CHEM"
   "dept", "none", "none"
 
@@ -93,7 +96,7 @@ If you want to make the following changes to the above form:
 - Change the relevant for calculate to **${course}!='none' and ${course_cnt}!=''**
 - Change the list name in choices from **dept** to **dept_name**
 - Add a new choice in department list as **Computer**
-- Change **Maths** to **Mathematics** and **MAT** to **MATHS** in choices
+- Change **Math** to **Mathematics** and **MAT** to **MATH** in choices
 
 These changes can be made as:
 
@@ -114,7 +117,7 @@ These changes can be made as:
   :widths: auto
 
   "dept_name", "Physics", "PHY"
-  "dept_name", "Mathematics", "MATHS"
+  "dept_name", "Mathematics", "MATH"
   "dept_name", "Chemistry", "CHEM"
   "dept_name", "Computer", "COMP"
   "dept_name", "none", "none"

@@ -29,7 +29,7 @@ This file creates its HTML :code:`<body>` dynamically with embedded JavaScript. 
   - :guilabel:`Follow Up with Existing Client`: Calls :code:`odkTables.openTableToListView(...)` to launch the Existing Client module.
   - :guilabel:`Send Data`: Calls :code:`odkCommon.doAction(...)` to launch the *SyncActivity*. This is the same functionality as pressing the sync button in the upper right of the screen, but with two advantages.
 
-    1. The call is embedded within the custom workflow of the application so the user can be instructed to use it at th appropriate time.
+    1. The call is embedded within the custom workflow of the application so the user can be instructed to use it at the appropriate time.
     2. The :code:`doAction` function supports the Action-Callback workflow, which means further actions could be triggered after synchronization is completed.
 
 

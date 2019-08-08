@@ -1,3 +1,7 @@
+.. spelling::
+
+  teahouse
+
 Tea Houses Demo
 =====================
 

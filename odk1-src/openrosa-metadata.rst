@@ -56,7 +56,7 @@ These values should be in the form of ``scheme:value``.
 
 If specified, the id value takes precedence over any explicit ``xmlns`` declaration. 
 
-For ``id``, the implementor's registered domain name should be used as part of the scheme (for example:``opendatakit.org:widgetForm``). 
+For ``id``, the implementer's registered domain name should be used as part of the scheme (for example:``opendatakit.org:widgetForm``). 
 
 Compliant systems MUST support ``id`` or ``xmlns`` lengths up to 249 chars; ideally, servers SHOULD be able to support arbitrary lengths.
 
