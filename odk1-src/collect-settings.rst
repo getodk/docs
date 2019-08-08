@@ -1,3 +1,10 @@
+.. spelling:: 
+  basemap
+  Basemap
+  basemaps
+  Basemaps
+  Mapbox
+
 Collect Menus, Settings, and Security
 =====================================
 
@@ -148,7 +155,7 @@ Basemap settings configure the background of maps shown by the :ref:`location qu
 
 Reference layer settings
 """""""""""""""""""""""""
-Reference layer settings configure map data shown on top of the basemap. Currently, a reference layer can only be defined by an offline MBtiles file as described in :doc:`collect-offline-maps`. If a reference layer has no transparency, it will fully cover the basemap selected above and behave like an offline basemap. Vector MBTiles files will only be available in the :guilabel:`Layer data file` menu if a Mapbox basemap is selected. Raster MBTiles files will be available for any basemap source and style.
+Reference layer settings configure map data shown on top of the basemap. Currently, a reference layer can only be defined by an offline MBTiles file as described in :doc:`collect-offline-maps`. If a reference layer has no transparency, it will fully cover the basemap selected above and behave like an offline basemap. Vector MBTiles files will only be available in the :guilabel:`Layer data file` menu if a Mapbox basemap is selected. Raster MBTiles files will be available for any basemap source and style.
 
 .. _form-management-settings:
 
