@@ -7,7 +7,7 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
 
 # Checkout Debian packages and install git large file storage (git-lfs)
 # We install all Debian packages in one command to fail fast and to avoid generating additional layers
-RUN sudo apt-get install -y git-lfs png-quant python-enchant
+RUN sudo apt-get install -y git-lfs pngquant python-enchant
 
 # Install git-lfs and checkout the binaries
 RUN git lfs install
