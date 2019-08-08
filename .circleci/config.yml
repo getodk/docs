@@ -1,26 +1,21 @@
 version: 2
 jobs:
-  build-odk1:
+  build-docker:
     working_directory: ~/work
     docker:
       - image: circleci/python:latest
     steps:
       - checkout
+      - setup_remote_docker: # Caches the image layer to speed up the testing build
+          docker_layer_caching: true
       - run:
-          name: Install checkout requirements
-          command: |
-            curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-            sudo apt-get install git-lfs
-            git lfs install
-      - run:
-          name: Checkout binaries
-          command: git lfs pull
-      - run:
-          name: Install build requirements
-          command: |
-            sudo apt-get install pngquant
-            sudo apt-get install python-enchant
-            sudo pip install -r requirements.txt
+          name: build Docker test image
+          command: docker build -t odk-test/python:latest .
+  build-odk1:
+    working_directory: ~/work
+    docker:
+      - image: odk-test/python:latest
+    steps:
       - run:
           name: Style Guide Check
           command: |
@@ -73,24 +68,8 @@ jobs:
   build-odk2:
     working_directory: ~/work
     docker:
-      - image: circleci/python:latest
+      - image: odk-test/python:latest
     steps:
-      - checkout
-      - run:
-          name: Install checkout requirements
-          command: |
-            curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-            sudo apt-get install git-lfs
-            git lfs install
-      - run:
-          name: Checkout binaries
-          command: git lfs pull
-      - run:
-          name: Install build requirements
-          command: |
-            sudo apt-get install pngquant
-            sudo apt-get install python-enchant
-            sudo pip install -r requirements.txt
       - run:
           name: Style Guide Check
           command: |
@@ -205,11 +184,16 @@ workflows:
   version: 2
   build_deploy:
     jobs:
-      - build-odk1
+      - build-docker
+      - build-odk1:
+          requires:
+            - build-docker
       - build-pdf-odk1:
           requires:
             - build-odk1
-      - build-odk2
+      - build-odk2:
+          requires:
+            - build-docker
       - build-pdf-odk2:
           requires:
             - build-odk2
