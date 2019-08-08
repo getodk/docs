@@ -1,6 +1,6 @@
 .. video:: /vid/form-logic/conditional-complex.mp4
 
-  Video showing a series of select questions. The questions displayed change depending on what choices are selected in th first questions.
+  Video showing a series of select questions. The questions displayed change depending on what choices are selected in the first questions.
 
 .. rubric:: XLSForm
 

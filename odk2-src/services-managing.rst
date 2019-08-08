@@ -93,7 +93,7 @@ Before you are able to synchronize data or application files to a device, you wi
 
 .. _services-using-reset-app-server:
 
-Reseting the App Server
+Resetting the App Server
 -------------------------
 
 Resetting your app server pushes the configuration and data on your tablet up to the server. After pushing files from :doc:`app-designer-intro` to the device, this is how to push those files to the server to initialize your Data Management Application. All other devices synchronizing with your server will receive these configuration and data files.

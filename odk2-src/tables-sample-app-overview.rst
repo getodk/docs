@@ -1,6 +1,7 @@
 .. spelling::
 
   geotagging
+  Teahouse
 
 Sample Application Overview
 ===================================
