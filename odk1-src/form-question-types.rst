@@ -1275,10 +1275,14 @@ appearance
 
 The default :ref:`geopoint-widget` does not allow the user to select a location.
 
-A geopoint with the appearance attribute :tc:`placement-map` allows the user to select a geopoint from a map.
+A geopoint with the appearance attribute :tc:`placement-map` allows the user to select a geopoint from a map. The user can either long press to select any location or, if the current location is known, tap on the "add marker" button at the top right of the screen. The selected location is represented by a small circle with a red outline (see arrow in screenshot). 
+
+The save button saves the current location and returns to the question screen. If the location was selected by long pressing, the accuracy and altitude will both be 0. If the user's current location was selected, the accuracy will be non-0.
+
+When the map view is opened again with an existing position, the map is centered on the selected location. To change the selection, first tap the Trash icon and then select a new location.
 
 .. image:: /img/form-widgets/geopoint-placement-map.*
-  :alt: A map app opens on an Android phone. Above the map is the message: "Long press to place mark or tap add marker button." Along the right side of the map are buttons: Add Marker, Zoom to point, Layers, Trash, Save.
+  :alt: A map opens on an Android phone. Above the map is the message: "Long press to place mark or tap add marker button." Along the right side of the map are buttons: Add Marker, Zoom to point, Layers, Trash, Save. A small circle with red outline identifies the selected location. An arrow points to that marker.
 
 .. rubric:: XLSForm 
 
