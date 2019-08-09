@@ -1250,11 +1250,13 @@ type
 appearance
   :tc:`maps`
 
-The default :ref:`geopoint-widget` does not display a map to the user. With the :tc:`maps` appearance attribute, a map of the recorded location is shown to the user.
+The default :ref:`geopoint-widget` does not display a map to the user. With the :tc:`maps` appearance attribute, map data is displayed to help the user get oriented and confirm that the location is correct and sufficiently accurate. 
 
-The user cannot select a different location on the map. 
-For a geopoint with a user-selected location,
-see :ref:`placement-map-widget`.
+When the user's location is available, it is displayed on the map by a blue cross. A blue shaded circle around the cross represents the accuracy of the location. The "add marker" button at the top right of the screen can be tapped to select the current location in the middle of the blue cross. The selected location is represented by a small circle with a red outline.
+
+When the map view is opened again with an existing position, the map is centered on the selected location. To change the selection, first tap the Trash icon and then select a new location.
+
+For a geopoint with a location that the user can manually select or adjust, see :ref:`placement-map-widget`.
 
 .. rubric:: XLSForm
 
@@ -1275,7 +1277,7 @@ appearance
 
 The default :ref:`geopoint-widget` does not allow the user to select a location.
 
-A geopoint with the appearance attribute :tc:`placement-map` allows the user to select a geopoint from a map. The user can either long press to select any location or, if the current location is known, tap on the "add marker" button at the top right of the screen. The selected location is represented by a small circle with a red outline (see arrow in screenshot). 
+A geopoint with the appearance attribute :tc:`placement-map` allows the user to select a geopoint from a map. The user can either long press to select any location or, if the current location is known, tap on the "add marker" button at the top right of the screen. The selected location is represented by a small circle with a red outline (see arrow in screenshot).
 
 The save button saves the current location and returns to the question screen. If the location was selected by long pressing, the accuracy and altitude will both be 0. If the user's current location was selected, the accuracy will be non-0.
 
