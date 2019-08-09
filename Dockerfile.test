@@ -12,6 +12,7 @@ RUN sudo apt-get install -y git-lfs pngquant python-enchant
 # Install git-lfs and checkout the binaries
 RUN git lfs install
 COPY .git .git
+COPY .gitattributes .gitattributes
 RUN git lfs pull
 
 # Install the Python dependencies
