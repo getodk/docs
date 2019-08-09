@@ -1279,12 +1279,12 @@ The default :ref:`geopoint-widget` does not allow the user to select a location.
 
 A geopoint with the appearance attribute :tc:`placement-map` allows the user to select a geopoint from a map. The user can either long press to select any location or, if the current location is known, tap on the "add marker" button at the top right of the screen. The selected location is represented by a small circle with a red outline (see arrow in screenshot).
 
-The save button saves the current location and returns to the question screen. If the location was selected by long pressing, the accuracy and altitude will both be 0. If the user's current location was selected, the accuracy will be non-0.
+The save button saves the current location and returns to the question screen. If the location was selected by long pressing, the accuracy and altitude will both be 0. If the user's current location was selected, the accuracy will be greater than 0.
 
 When the map view is opened again with an existing position, the map is centered on the selected location. To change the selection, first tap the Trash icon and then select a new location.
 
 .. image:: /img/form-widgets/geopoint-placement-map.*
-  :alt: A map opens on an Android phone. Above the map is the message: "Long press to place mark or tap add marker button." Along the right side of the map are buttons: Add Marker, Zoom to point, Layers, Trash, Save. A small circle with red outline identifies the selected location. An arrow points to that marker.
+  :alt: A map opens on an Android phone. Above the map is the message: "Long press to place mark or tap add marker button." Along the right side of the map are buttons: Add marker, Delete marker, Zoom to point, Layers, Trash, Save. A small circle with red outline identifies the selected location. An arrow points to that marker.
 
 .. rubric:: XLSForm 
 
@@ -1303,39 +1303,35 @@ type
 appearance
   *none*
 
-A line or polygon of coordinates tracking actual device movement. The user can specify one of two location-recording modes:
+A line of coordinates. On a map, each coordinate is represented by small circles with red outlines. These are connected by red lines.
 
-Manual Mode 
-  The user taps the device to place a marker as desired while moving.
+To collect a geotrace, first select the location-recording mode by tapping the "add marker" button in the upper right side of the screen. The selected mode will be displayed in the gray bar at the bottom of the screen. While point collection is ongoing, the "add marker" button changes to a "pause" button. The "back arrow" button can be used to remove the last-entered point either when actively collecting points or when paused. Any point can be manually moved at any time by tapping on it and dragging it. The mode can only be changed if an existing line is first cleared by tapping the "trash" button. Recording must be paused to clear the existing line.
 
-Automatic Mode
-  The app creates a marker on a regular time interval (default: 20 seconds) as the user moves.
+.. tip::
+  Points that were entered by tapping or adjusted by dragging will always have an accuracy of 0. Points that were read from the device location will never have an accuracy of 0.
 
+Once the trace has been saved, the coordinates of its points will be displayed on the question screen. The trace can be opened for manual editing by tapping to add more points, moving existing points or deleting points from the last added. After a trace has been saved once, it cannot be added to in manual or automatic location recording modes.
 
-.. image:: /img/form-widgets/geotrace-start.*
+The three location recording modes are:
+
+Placement by tapping
+  The user taps the device to place markers.
+
+Manual location recording
+  The user chooses when to tap the "Record a point" button at the top of the screen to capture the device location at that moment.
+
+Automatic location recording
+  The user is prompted to select a recording interval and accuracy requirement. If the accuracy requirement is set to None, points are always collected at the recording interval. If the accuracy requirement is set to any other value, a point will only be captured if it meets the requirement. For example, given a recording interval of 20 seconds and an accuracy requirement of 10m, the app places a marker at the device location every 20s if the location is accurate to 10m or better. 
+
+.. warning::
+
+  If you are using Aggregate and you would like to collect more than 5 points at a time, you should :doc:`increase the database field length to over 255 characters <aggregate-field-length>`. Otherwise, additional points will be lost.
+
+.. image:: /img/form-widgets/geotrace-question.*
   :alt: A geotrace form widget displayed in the ODK Collect app on an Android phone. The question text is "Where have you been?" and below that is a button with the label "Start GeoTrace."
 
-.. image:: /img/form-widgets/geotrace1.*
-  :alt: A modal popup over a map. The modal headline is "Zoom to..." Below that are two options: "Zoom to current location" (selected) and "Zoom to saved feature". In the bottom-right of the modal is a Cancel button.
-
-.. image:: /img/form-widgets/geotrace2.*
-  :alt: A map displayed in the ODK Collect App on an Android phone. Above the map is the instruction: Wait for lock, then tap add marker button start. On the right side are five icon buttons stacked vertically: Add marker, Zoom, Layers, Trash, Save.
-
-.. image:: /img/form-widgets/geotrace3.*
-  :alt: The same map as displayed in the previous image. Over the map is a modal popup. The modal headline is "Select GeoTrace Mode," followed by two radio-button (single select) options: Manual Mode (selected) and Automatic Mode. In the bottom-right are buttons for Cancel and Start.
-
-.. image:: /img/form-widgets/geotrace4.*
-  :alt: The same modal popup as in the previous image, but the Automatic Mode radio button is not selected. Below it are two drop-down select boxes. Their values are "20" and "seconds."
-
-.. image:: /img/form-widgets/geotrace5.*
-  :alt: The same map as displayed previously, but now a series of red markers form a line across the map.
-
-.. image:: /img/form-widgets/geotrace6.*
-  :alt: The same map as previously, with a new modal popup. The headline of the modal is "Save GeoTrace as" followed by two options: Save as Polygon and Save as Polyline. In the bottom-right is a Cancel button.
-
-.. image:: /img/form-widgets/geotrace7.*
-  :alt: The Geotrace form widget, as shown previously. The question text is "Where have you been?" and the button label is "View or Change GeoTrace." Below that is a list of lat/long coordinates.
-
+.. image:: /img/form-widgets/geotrace-collected.*
+  :alt: A map displayed in the ODK Collect App on an Android phone. Above the map is a green bar showing current location accuracy. On the right side are six icon buttons stacked vertically: Add marker, Delete marker, Zoom, Layers, Trash, Save. A series of markers form a line across the map.
 
 .. rubric:: XLSForm
 
@@ -1344,11 +1340,6 @@ Automatic Mode
 
   geotrace, trace_example, Where have you been?
 
-.. warning::
-
-  If you are using Aggregate and you would like to collect more than 5 points at a time, you should :doc:`increase the database field length to over 255 characters <aggregate-field-length>`. Otherwise, additional points will be lost.
-  
-  
 .. _geoshape-widget:
 
 Geoshape
@@ -1364,8 +1355,6 @@ Captures a user-entered series of location coordinates, forming a polygon.
 .. image:: /img/form-widgets/geoshape-start.*
   :alt: The GeoShape form widget, as displayed in the ODK Collect app on an Android phone. The question text is "Select an Area." Below that is a button labeled "Start GeoShape."
 
-.. image:: /img/form-widgets/geoshape1.*
-  :alt: A modal popup over a map. The modal headline is "Zoom to..." Below that are two options: "Zoom to current location" (selected) and "Zoom to saved feature". In the bottom-right of the modal is a Cancel button.
 
 .. image:: /img/form-widgets/geoshape2.*
   :alt: A map displayed in the ODK Collect App on an Android phone. Above the map is the instruction: "Long press to place marks." On the right side are five icon buttons stacked vertically: Add marker, Zoom, Layers, Trash, Save.
