@@ -5,6 +5,7 @@
   Basemaps
   geospatial
   heatmaps
+  mapbox
   Mapbox
   pbf
   tileset
@@ -44,6 +45,8 @@ If the tileset has transparency (PNG or PBF tiles only), the selected basemap wi
 
 Getting map tilesets
 -------------------------
+For non-commercial community mapping activities, `Mapbox <https://www.mapbox.com/maps/>`_ can arrange for offline MBTiles, including processed streets, satellite, and custom data. Contact community[at]mapbox.com for offline Terms of Service exemptions and to receive technical guidance.
+
 `OpenMapTiles <https://openmaptiles.org/>`_ hosts many free map tile files that can be used in Collect.
 
 To create MBTiles files, use one of the `compatible applications <https://github.com/mapbox/mbtiles-spec/wiki/Implementations#applications>`_ . Commonly used free software packages are `TileMill <https://tilemill-project.github.io/tilemill/>`_ and `QGIS <https://qgis.org/en/site/>`_ with the `QTiles plugin <https://github.com/nextgis/QTiles#qtiles>`_.
