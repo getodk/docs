@@ -13,6 +13,7 @@
   prefs
   te
   tres
+  café
 	
 Form Language
 ===================

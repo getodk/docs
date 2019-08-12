@@ -1,6 +1,7 @@
 .. spelling::
   Goodall
   allfields
+  teahouse
 
 Managing ODK Tables
 =======================

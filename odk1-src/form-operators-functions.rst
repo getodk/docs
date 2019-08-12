@@ -494,6 +494,10 @@ Searching and matching strings
 .. function:: string-length(string)
 
   Returns the number of characters in :arg:`string`.
+
+.. function:: normalize-space(string)
+
+  Returns a string with normalized whitespace by stripping leading and trailing whitespace of :arg:`string` and replacing sequences of whitespace characters with a single space.
   
 .. _string-combination-functions:
   

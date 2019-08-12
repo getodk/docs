@@ -190,13 +190,37 @@ ODK Central ships with a basic EXIM server bundled to forward mail out to the in
 
 .. _central-install-digital-ocean-sentry:
 
-Disabling Sentry
-----------------
+Disabling or Customizing Sentry
+-------------------------------
 
-By default, we enable `Sentry error logging <https://sentry.io>`_ on the backend server, which provides the ODK Central development team with an anonymized log of unexpected programming errors that occur while your server is running. This information is only visible to the development team and should never any of your user or form data, but if you feel uncomfortable with this anyway, you can take the following steps to disable Sentry:
+By default, we enable `Sentry error logging <https://sentry.io>`_ on the backend server, which provides the ODK Central development team with an anonymized log of unexpected programming errors that occur while your server is running. This information is only visible to the development team and should never contain any of your user or form data, but if you feel uncomfortable with this anyway, you can take the following steps to disable Sentry:
 
 1. Edit the file ``files/service/config.json.template`` and remove the ``sentry`` lines, starting with ``"sentry": {`` through the next three lines until you remove the matching ``}``.
 2. Build and run: ``docker-compose build service`` and ``systemctl restart docker-compose@central``.
+
+If on the other hand you wish to use your own Sentry instance, take these steps:
+
+1. Create a free account on `Sentry <https://sentry.io>`_, and create a new ``nodejs`` project.
+2. The new project will generate a ``DSN`` of the format ``https://SENTRY_KEY@sentry.io/SENTRY_PROJECT``.
+3. In ``files/service/config.json.template``, replace ``SENTRY_KEY`` and ``SENTRY_PROJECT`` with the values from step 2. 
+
+.. code-block:: rst
+
+  {
+    "default": {
+      "database": {...},
+      "email": {...},
+      "env": {...},
+      "external": {
+        "sentry": {
+          "key": "SENTRY_KEY",
+          "project": "SENTRY_PROJECT"
+        }
+      }
+    }
+  }
+
+The error logs sent to Sentry (if enabled) are also being written to ``/var/log/odk/stderr.log`` in the running backend container.
 
 .. _central-install-digital-ocean-custom-ssl:
 

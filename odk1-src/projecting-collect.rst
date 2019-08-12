@@ -319,7 +319,7 @@ You can also run the emulator using command line. Follow the steps given below t
 	 
     - The :option:`create avd` option creates a new Android virtual device.
     - :option:`--name` option is a **required** option which is used to specify name of the AVD. Here, the name of the AVD is testAVD.
-    - The :option:`-g` specifies the sys-img tag to use for the AVD.
+    - The :option:`-g` specifies the system image tag to use for the AVD.
     - :option:`-k` specifies package path of the system image for the AVD.
    
 .. seealso::
