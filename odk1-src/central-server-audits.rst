@@ -1,7 +1,7 @@
 .. _central_server_audits:
 
-Central Server Audit Logs
-=========================
+Server Audit Logs in Central
+============================
 
 As of `version 0.6 <https://github.com/opendatakit/central/releases/tag/v0.6.0-beta.0>`_, ODK Central tracks and logs audit actions for most administrative actions performed on the server. The following actions are logged:
 
@@ -29,7 +29,7 @@ To access the audit logs, navigate to :guilabel:`System`, then select :guilabel:
 
    .. image:: /img/central-server-audits/overview.png
 
-Some details will sometimes appear in the :guilabel:`Details` column. As of version 0.6 this information is not formatted in a friendly manner. This will be improved in future versions.
+Some details will sometimes appear in the :guilabel:`Details` column. The details view will be improved in future versions.
 
 The table always defaults to only showing audit events from the current calendar day. To select a different date range, click on the date in the filter bar. A calendar will appear:
 
