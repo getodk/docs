@@ -147,7 +147,7 @@ This will reopen the form instance, which you are then free to edit. Form instan
 
 .. _uploading-forms:
 
-Aggregating Finalized Forms
+Transferring Finalized Forms
 ============================
 
 To perform analysis on data collected with the Collect app, you will need to get the filled forms off of the devices. Generally, this is done by uploading them to an ODK server or Google Sheets. To do this, you will first need to :doc:`configure a server <collect-connect>`.
@@ -156,8 +156,8 @@ In some cases, you may want to :ref:`pull filled forms directly from a device <p
 
 .. _uploading-to-aggregate-or-google-drive:
 
-Uploading Finalized Forms to a Server
-----------------------------------------
+Sending Finalized Forms to a Server
+-----------------------------------
 
 If you are connected to :doc:`a server <collect-connect-aggregate>` or :doc:`Google Drive Account <collect-connect-google>`, use :guilabel:`Send Finalized Forms` to upload :formstate:`Finalized` form instances.
 
@@ -179,8 +179,8 @@ Uploading a filled form from within the Collect app marks that form as :formstat
 
 .. _uploading-previously-sent-forms:
 
-Uploading Previously-Sent Forms
---------------------------------
+Sending Previously-Sent Forms
+-----------------------------
 
 If you can't find a submission that you expect on your server or need to re-send a submission for other reasons, you can change the view of the :guilabel:`Send Finalized Forms` screen to show both sent and unsent forms.
 
@@ -193,10 +193,10 @@ To show sent and unsent forms:
 
 .. _pulling-forms-with-briefcase:
 
-Pulling Forms Into Briefcase
+Pulling Forms into Briefcase
 -----------------------------
 
-:doc:`ODK Briefcase  <briefcase-using>` is a desktop application that can be used to aggregate filled forms. You will first need to :ref:`transfer the filled forms to your computer <pull-from-collect>`. This will not update the state of the form to :formstate:`Sent`.
+:doc:`ODK Briefcase  <briefcase-using>` is a desktop application that can be used to pull filled forms to your local computer. You will first need to :ref:`transfer the filled forms to your computer <pull-from-collect>`. This will not update the state of the form to :formstate:`Sent`.
 
 .. _deleting-forms:
 
