@@ -1190,6 +1190,18 @@ type
 Location widgets
 ------------------
 
+Location widgets capture one or more points representing locations on Earth. Each point is represented as four numbers separated by spaces: latitude, longitude, altitude in meters, and accuracy radius in meters.
+
+For example, if a Collect user captured a point while at the coordinates 12°22'17.0"N 1°31'10.9"W, with a reported accuracy radius of 17.4 meters, and at 305 meters above sea level, the geopoint representation would be:
+
+`12.371400 -1.519700 305 17.4`
+
+Multiple points that form lines or shapes are separated by semicolons.
+
+.. note::
+
+  The accuracy radius is an estimate of what Android calls the `radius of 68% confidence <https://developer.android.com/reference/android/location/Location.html#getAccuracy()>`_: there is a 68% chance that the true location falls within this radius. This is only an estimate reported by the Android system based on the available sensors (GPS, network, etc). The accuracy radius itself may be more or less reliable depending on the sensor(s) used and current conditions.
+
 .. contents::
   :local:
 
@@ -1203,7 +1215,7 @@ type
 appearance
   *none*
 
-Captures the current location from the device.
+Captures the current geolocation from the device.
 
 For a geopoint with a user-selected location,
 see :ref:`placement-map-widget` 
@@ -1250,11 +1262,11 @@ type
 appearance
   :tc:`maps`
 
-The default :ref:`geopoint-widget` does not display a map to the user. With the :tc:`maps` appearance attribute, map data is displayed to help the user get oriented and confirm that the location is correct and sufficiently accurate. 
+The default :ref:`geopoint-widget` does not display a map to the user. When the appearance attribute is :tc:`maps`, the widget displays a map to help the user get oriented and confirm that the selected point is correct and sufficiently accurate.
 
-When the user's location is available, it is displayed on the map by a blue cross. A blue shaded circle around the cross represents the accuracy of the location. The "add marker" button at the top right of the screen can be tapped to select the current location in the middle of the blue cross. The selected location is represented by a small circle with a red outline.
+When the device's geolocation is available, it is displayed on the map by a blue cross. A blue shaded circle around the cross represents the accuracy radius of the geolocation. The "add marker" button at the top right of the screen can be tapped to add a point at the location indicated by the middle of the blue cross. The selected point is represented by a small circle with a red outline.
 
-When the map view is opened again with an existing position, the map is centered on the selected location. To change the selection, first tap the Trash icon and then select a new location.
+When the map view is opened again with a selected point, the map is centered on that point. To change the selection, first tap the "trash" icon and then select a new point.
 
 For a geopoint with a location that the user can manually select or adjust, see :ref:`placement-map-widget`.
 
@@ -1275,16 +1287,16 @@ type
 appearance
   :tc:`placement-map`
 
-The default :ref:`geopoint-widget` does not allow the user to select a location.
+The default :ref:`geopoint-widget` does not allow the user to place the point anywhere other than the device's current geolocation.
 
-A geopoint with the appearance attribute :tc:`placement-map` allows the user to select a geopoint from a map. The user can either long press to select any location or, if the current location is known, tap on the "add marker" button at the top right of the screen. The selected location is represented by a small circle with a red outline (see arrow in screenshot).
+A geopoint with the appearance attribute :tc:`placement-map` allows the user to select any point from a map. The user can either long press to place the point anywhere, or, if the device knows its geolocation, tap on the "add point" button at the top right of the screen. The selected point is represented by a small circle with a red outline (see arrow in screenshot).
 
-The save button saves the current location and returns to the question screen. If the location was selected by long pressing, the accuracy and altitude will both be 0. If the user's current location was selected, the accuracy will be greater than 0.
+The save button saves the selected point and returns to the question screen. If the point was selected by long pressing, the accuracy radius and altitude will both be 0. If the device's geolocation was selected, the accuracy radius will be greater than 0.
 
-When the map view is opened again with an existing position, the map is centered on the selected location. To change the selection, first tap the Trash icon and then select a new location.
+When the map view is opened again with an existing point, the map is centered on the selected point. To change the selection, first tap the "trash" icon and then select a new point.
 
 .. image:: /img/form-widgets/geopoint-placement-map.*
-  :alt: A map opens on an Android phone. Above the map is the message: "Long press to place mark or tap add marker button." Along the right side of the map are buttons: Add marker, Delete marker, Zoom to point, Layers, Trash, Save. A small circle with red outline identifies the selected location. An arrow points to that marker.
+  :alt: A map opens on an Android phone. Above the map is the message: "Long press to place mark or tap add marker button." Along the right side of the map are buttons: Add point, Delete point, Zoom to geolocation, Layers, Trash, Save. A small circle with red outline identifies the selected location. An arrow points to that point.
 
 .. rubric:: XLSForm 
 
@@ -1303,25 +1315,25 @@ type
 appearance
   *none*
 
-A line of coordinates. On a map, each coordinate is represented by small circles with red outlines. These are connected by red lines.
+A series of points, which can be entered either by tapping the screen to place each point, or by taking readings of the device's geolocation over time. On a map, each coordinate is represented by small circles with red outlines. These are connected by red lines.
 
-To collect a geotrace, first select the location-recording mode by tapping the "add marker" button in the upper right side of the screen. The selected mode will be displayed in the gray bar at the bottom of the screen. While point collection is ongoing, the "add marker" button changes to a "pause" button. The "back arrow" button can be used to remove the last-entered point either when actively collecting points or when paused. Any point can be manually moved at any time by tapping on it and dragging it. The mode can only be changed if an existing line is first cleared by tapping the "trash" button. Recording must be paused to clear the existing line.
+To collect a geotrace, first select the location-recording mode by tapping the "add point" button in the upper right side of the screen. The selected mode will be displayed in the gray bar at the bottom of the screen. While point collection is ongoing, the "add marker" button changes to a "pause" button. The "back arrow" button can be used to remove the last-entered point either when actively collecting points or when paused. Any point can be manually moved at any time by tapping on it and dragging it. The mode can only be changed if an existing line is first cleared by tapping the "trash" button. Recording must be paused to clear the existing line.
 
 .. tip::
-  Points that were entered by tapping or adjusted by dragging will always have an accuracy of 0. Points that were read from the device location will never have an accuracy of 0.
+  Points that were entered by tapping or adjusted by dragging will always have an accuracy radius of 0. Points that were read from the device location will never have an accuracy radius of 0.
 
-Once the trace has been saved, the coordinates of its points will be displayed on the question screen. The trace can be opened for manual editing by tapping to add more points, moving existing points or deleting points from the last added. After a trace has been saved once, it cannot be added to in manual or automatic location recording modes.
+Once the trace has been saved, the coordinates of its points will be displayed on the question screen. The trace can be opened for manual editing by tapping to add more points, moving existing points or deleting the last-added point. After a trace has been saved once, it cannot be added to in manual or automatic location recording modes.
 
 The three location recording modes are:
 
 Placement by tapping
-  The user taps the device to place markers.
+  The user taps the device to place points.
 
 Manual location recording
-  The user chooses when to tap the "Record a point" button at the top of the screen to capture the device location at that moment.
+  The user chooses when to tap the "Record a point" button at the top of the screen to capture the device geolocation at that moment.
 
 Automatic location recording
-  The user is prompted to select a recording interval and accuracy requirement. If the accuracy requirement is set to None, points are always collected at the recording interval. If the accuracy requirement is set to any other value, a point will only be captured if it meets the requirement. For example, given a recording interval of 20 seconds and an accuracy requirement of 10m, the app places a marker at the device location every 20s if the location is accurate to 10m or better. 
+  The user is prompted to select a recording interval and accuracy requirement. If the accuracy requirement is set to None, points are always collected at the recording interval. If the accuracy requirement is set to any other value, a point will only be captured if it meets the requirement. For example, given a recording interval of 20 seconds and an accuracy requirement of 10m, the app places a point at the device location every 20s if the location is accurate to 10m or better.
 
 .. warning::
 
@@ -1331,7 +1343,7 @@ Automatic location recording
   :alt: A geotrace form widget displayed in the ODK Collect app on an Android phone. The question text is "Where have you been?" and below that is a button with the label "Start GeoTrace."
 
 .. image:: /img/form-widgets/geotrace-collected.*
-  :alt: A map displayed in the ODK Collect App on an Android phone. Above the map is a green bar showing current location accuracy. On the right side are six icon buttons stacked vertically: Add marker, Delete marker, Zoom, Layers, Trash, Save. A series of markers form a line across the map.
+  :alt: A map displayed in the ODK Collect App on an Android phone. Above the map is a green bar showing current location accuracy radius. On the right side are six icon buttons stacked vertically: Add point, Delete point, Zoom to geolocation, Layers, Trash, Save. A series of markers form a line across the map.
 
 .. rubric:: XLSForm
 
