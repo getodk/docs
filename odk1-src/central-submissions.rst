@@ -50,9 +50,11 @@ Once you click on it, you should see this popup appear:
 
    .. image:: /img/central-submissions/odata.png
 
-Because OData is a industry standard, only one link is necessary to make most tools work. However, because it is a relatively new technology, some tools need a little bit of customization to work correctly. If you are using such a tool, like Tableau, click on its tab to get the special link we provide for it. Otherwise, copy the link as-is and paste it into your tool.
+Because OData is a industry standard, only one link is necessary to make most tools work. However, because it is a relatively new technology, some tools need a little bit of customization to work correctly. If you are using such a tool, like Power BI, click on its tab to get the special link we provide for it. Otherwise, copy the link as-is and paste it into your tool.
 
-For information on how to create an OData connection in Microsoft Excel, `click here <https://support.office.com/en-us/article/connect-to-an-odata-feed-power-query-4441a94d-9392-488a-a6a9-739b6d2ad500>`_. For instructions in Microsoft Power BI, `see this page <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`_. And for help with Tableau, make sure you have the appropriate tab selected before you copy the link, and click `here <https://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_odata.html>`_ for more information.
+For information on how to create an OData connection in Microsoft Excel, `click here <https://support.office.com/en-us/article/connect-to-an-odata-feed-power-query-4441a94d-9392-488a-a6a9-739b6d2ad500>`_. For instructions in Microsoft Power BI, `see this page <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`_.
+
+If you want to use the free and popular `R statistics and analysis tool <https://www.r-project.org/>`_, we recommend you use `ruODK <https://dbca-wa.github.io/ruODK/>`_. A guide for getting started with it can be found `here <https://dbca-wa.github.io/ruODK/articles/odata.html>`_. Just like ODK itself, ruODK is developed and supported by community members. If you wish to help improve it, you can find information `on GitHub <https://github.com/dbca-wa/ruODK/blob/master/CONTRIBUTING.md>`_.
 
 When asked for login information, provide the email address and password you use to log into ODK Central. Make sure you trust the tool you are using before you do this.
 
