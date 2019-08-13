@@ -54,7 +54,7 @@ In the examples above, the extras specified have names ``form_id``, ``form_name`
 Launching external apps to populate multiple fields
 -------------------------------------------------------
 
-Since v1.4.3, a ``field-list`` group can have an ``intent`` attribute that allows an external application to populate it. 
+Since v1.4.3, a ``field-list`` group can have an ``intent`` attribute that allows an external application to populate it. Notice that the ex:prefix is not included.
 
 XLSForm
 ~~~~~~~~~
