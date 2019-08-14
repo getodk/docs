@@ -169,6 +169,8 @@ If you are connected to :doc:`an ODK Aggregate server  <collect-connect-aggregat
   - Use the `TRIM <https://support.google.com/docs/answer/3094140?hl=en>`_ function in the google sheets to remove the leading and trailing spaces from the cells.
   - Define empty cell in your tests to be a cell that is either empty or contains a single space.
 
+  Other values will be preceded by an apostrophe. Thanks to that they won't be parsed automatically in google sheets (e.g. strings to dates) and will be stored as-is.
+
 .. note::
 
   Using Google Drive as a server, filled forms are sent to the first sheet in a given spreadsheet, no matter what its name is. If you use one spreadsheet to keep a form definition and to collect filled forms make sure the sheet you expect to be filled is in the first place.
