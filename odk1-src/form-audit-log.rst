@@ -229,4 +229,6 @@ When the cell is set to type :th:`date time` in common spreadsheet programs, it 
 Known limitations
 -------------------
 
-If the device is turned off while a form is being filled, Collect will not record a log entry for the screen that was shown at the time of device shutdown. Events before and after the shutdown will be logged.
+- If the device is turned off while a form is being filled, Collect will not record a log entry for the screen that was shown at the time of device shutdown. Events before and after the shutdown will be logged.
+
+- Editing a saved form that was saved using different audit log options can result in a corrupt audit. It might take place when a user saves a form then updates a form definition (changing audit log options) and tries to edit the saved form.
