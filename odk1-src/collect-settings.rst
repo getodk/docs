@@ -1,3 +1,10 @@
+.. spelling:: 
+  basemap
+  Basemap
+  basemaps
+  Basemaps
+  Mapbox
+
 Collect Menus, Settings, and Security
 =====================================
 
@@ -116,23 +123,39 @@ To access User Interface settings:
 
 .. _mapping-settings:
 
-.. rubric:: Mapping
+Maps Settings
+~~~~~~~~~~~~~~~
 
-:guilabel:`Mapping SDK` 
-  Sets the mapping engine that will be used for 
-  form question types that require map integration.
+Maps settings configure the maps shown by the :ref:`location question types <location-widgets>`.
+
+To access Maps settings:
+  :menuselection:`⋮ --> General Settings --> Maps` 
+
+.. note::
+
+  Prior to ODK Collect v1.23, map settings were available in the :ref:`interface-settings`. The basemap was configured by first selecting a :guilabel:`Mapping SDK` and then a :guilabel:`Basemap`.
+
+.. _basemap-settings:
+
+Basemap settings
+""""""""""""""""""
+Basemap settings configure the background of maps shown by the :ref:`location question types <location-widgets>`. Basemaps are provided by several different :guilabel:`Sources` which may each make several different map :guilabel:`Styles` available. A basemap is intended to provide details that help users orient a map and to make the map easy to use in a particular data collection environment. For example, if the data to be collected relates to elevation, consider selecting a topographic basemap.
   
-  Options:
-  
-  - Google Maps (default)
-  - OpenStreetMap
- 
-  .. seealso:: :ref:`geopoint-widget`, :ref:`geoshape-widget`, :ref:`geotrace-widget`, :doc:`offline maps <collect-offline-maps>`
-  
-  
-:guilabel:`Basemap` 
-  Sets the map to be displayed 
-  when a question with a mapping component is opened.
+:guilabel:`Sources` 
+  A basemap source provides one or more map styles:
+
+  - :guilabel:`Google` basemap styles are used by Google Maps and other Google products.
+  - :guilabel:`Mapbox` basemap styles are `used in many familiar products <https://www.mapbox.com/maps/streets/>`_.
+  - :guilabel:`OpenStreetMap` provides one style which also powers `openstreetmap.org <https://www.openstreetmap.org>`_. OpenStreetMap data is used in basemaps provided by all other sources as well.
+  - :guilabel:`USGS` is the United States Geological Survey. It provides `topograpic and satellite basemaps <https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer>`_ for the United States only.
+  - :guilabel:`Stamen` provides `a terrain basemap with large labels <http://maps.stamen.com/terrain>`_.
+  - :guilabel:`Carto` basemap styles are `designed to be used with data layers <https://carto.com/blog/getting-to-know-positron-and-dark-matter/>`_.
+
+  .. _reference-layer-settings:
+
+Reference layer settings
+"""""""""""""""""""""""""
+Reference layer settings configure map data shown on top of the basemap. Currently, a reference layer can only be defined by an offline MBTiles file as described in :doc:`collect-offline-maps`. The reference layer will appear when the zoom level is within the range supported by the file. If a reference layer has no transparency, it will fully cover the basemap selected above and behave like an offline basemap. Vector MBTiles files will only be available in the :guilabel:`Layer data file` menu if a Mapbox basemap is selected. Raster MBTiles files will be available for any basemap source and style.
 
 .. _form-management-settings:
 
