@@ -80,7 +80,7 @@ The Android tools use two dimensions of `product flavors <https://developer.andr
 
 .. warning::
 
-  The ODK 2 tools prefers pull requests to *development*. In unusual circumstances when *development* is undergoing heavy change we may accept pull requests to *demo* or *master* depending on the level of incompatibility that might exist.
+  The ODK-X tools prefers pull requests to *development*. In unusual circumstances when *development* is undergoing heavy change we may accept pull requests to *demo* or *master* depending on the level of incompatibility that might exist.
 
 The other dimension determines whether to apply changes necessary to run the UI tests. The two options are:
 
@@ -185,7 +185,7 @@ The dependency versions are also managed here.
 :file:`root/app/build.gradle`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The file contains the specific build configuration for this project. The ODK 2 projects do not differ greatly from established norms in this configuration. However, many of the constants and version numbers are stored in :ref:`build-scripts-external-variables` and variables are used here. This allows the tools to be upgraded and maintained in unison, and they can be forced to stay in sync.
+The file contains the specific build configuration for this project. The ODK-X projects do not differ greatly from established norms in this configuration. However, many of the constants and version numbers are stored in :ref:`build-scripts-external-variables` and variables are used here. This allows the tools to be upgraded and maintained in unison, and they can be forced to stay in sync.
 
 This file also establishes the product flavors, signing configs, build types, and other standard options found in many Android projects. The unique aspect comes in the :code:`dependencies` block. The different flavors have different dependencies (they will download different prebuilt binaries for their library projects). The demo and snapshot flavors build against the latest from their repositories, while the master flavor is hard coded to a specific version.
 
@@ -208,7 +208,7 @@ This file contains all the versions and variables strings shared among the proje
 :file:`runnables.gradle`
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This file contains miscellaneous Gradle tasks necessary to the ODK 2 tools. Mostly these exist to make Jenkins or Artifactory work.
+This file contains miscellaneous Gradle tasks necessary to the ODK-X tools. Mostly these exist to make Jenkins or Artifactory work.
 
 .. _build-scripts-external-uitests:
 

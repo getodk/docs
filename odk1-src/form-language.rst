@@ -13,6 +13,7 @@
   prefs
   te
   tres
+  café
 	
 Form Language
 ===================
@@ -51,7 +52,7 @@ For example:
 .. _XLSForm: http://xlsform.org
 .. _two letter language code: http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
 
-.. rubric:: XLSForm -- Single language
+.. rubric:: XLSForm --- Single language
 
 .. csv-table:: survey
   :header: type, name, label, hint

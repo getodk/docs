@@ -355,6 +355,9 @@ The following prompt types are available in ODK Survey.
   * - select_one_inline
     - | Used to ask the user a multiple choice question, displays the choices
       | to the users inline, and allows the user to click one item.
+  * - select_one_integer
+    - | Used to ask the user a multiple choice question and allows the user
+      | to click one item. Each item must be set to return an integer value.
   * - select_one_with_other
     - | Used to ask the user a multiple choice question, displays the choices
       | to the user, and allows the user to click one item. One of the
@@ -452,7 +455,7 @@ A sample **settings** worksheet might look like this:
   :header-rows: 1
 
   * - setting_name
-    - Value
+    - value
     - :th:`display.title.text`
     - display.locale.text
     - display.locale.text.hindi
@@ -850,7 +853,7 @@ Custom columns can be used within a workbook that are used to store functions, f
 framework_translations
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The **framework_translations** sheet is only present in the :file:`framework.xlsx file`. It defines the translations for all of the standard prompts provided by the ODK 2 framework.
+The **framework_translations** sheet is only present in the :file:`framework.xlsx file`. It defines the translations for all of the standard prompts provided by the ODK-X framework.
 
 .. list-table:: framework_translations Worksheet Columns
   :header-rows: 1

@@ -18,12 +18,12 @@ Prerequisites
 
 .. _architect-odk-2-setting-up:
 
-Migrating / Setting-up an ODK 2 application
+Migrating / Setting-up an ODK-X application
 ------------------------------------------------
 
 Now that we have seen how a device can join an already-configured application, and synchronize its view of the data with the ODK Aggregate server hosting the application, it is time to set up our own ODK Aggregate server.
 
-The starting point for this is to have a fully configured application on your device. Only after you have your device configured as you want it to appear, would you proceed with the following steps. In this case, we already have the device configured with the *Geotagger* demo, so let's proceed to create an ODK Aggregate server and configure it to serve that demo to your devices.
+The starting point for this is to have a fully configured application on your device. Only proceed with the following steps after you have your device configured as you want it to appear. In this case, we already have the device configured with the *Geotagger* demo, so let's proceed to create an ODK Aggregate server and configure it to serve that demo to your devices.
 
 .. _architect-odk-2-setting-up-server:
 
@@ -50,23 +50,23 @@ Return to your device, start ODK Tables:
   #. Choose :menuselection:`Settings --> Server Settings`.
   #. Edit the :guilabel:`Server URL` to be the URL for this newly configured ODK Aggregate server (https://myodk-test.appspot.com).
   #. Click on :guilabel:`Server Sign-on Credential` and choose :menuselection:`Username`.
-  #. Choose :guilabel:`Username` and enter the superuser username for your ODK Aggregate server
+  #. Choose :guilabel:`Username` and enter the superuser username for your ODK Aggregate server.
   #. Choose :guilabel:`Server Password` and enter the ODK Aggregate server password for that superuser username.
   #. Click the back button until you have returned to the sync screen.
-  #. Click on :guilabel:`Reset App Server` to push your device configuration up to your ODK Aggregate server
+  #. Click on :guilabel:`Reset App Server` to push your device configuration up to your ODK Aggregate server.
 
 After this has completed, you have created your own server that replicates the configuration and contents of the https://opendatakit-simpledemo.appspot.com site. Congratulations!
 
 .. note::
 
-  Any device with a user account with :guilabel:`Administer Tables` permissions can reset the app server. If you configure a device with a user account (or Anonymous user) with only the :guilabel:`Synchronize Tables` permissions, they will not be able to reset the app server and will only be able to sync and join into the existing ODK 2 application on this ODK Aggregate server.
+  Any device with a user account with :guilabel:`Administer Tables` permissions can reset the app server. If you configure a device with a user account (or Anonymous user) with only the :guilabel:`Synchronize Tables` permissions, they will not be able to reset the app server and will only be able to sync and join into the existing ODK-X application on this ODK Aggregate server.
 
 .. _architect-odk-2-config:
 
 Configuring your Device with an Application
 -----------------------------------------------
 
-Next, we will work through the steps to configure your device with an ODK 2 application (rather than downloading an existing application from a server).
+Next, we will work through the steps to configure your device with an ODK-X application (rather than downloading an existing application from a server).
 
 This task begins with setting up the :doc:`app-designer-intro` on your computer.
 
@@ -77,7 +77,7 @@ For the purposes of this tutorial, we have created a copy of the Application Des
 Setting up ODK Application Designer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Read the :ref:`Intro <app-designer-intro>` and :ref:`Overview <app-designer-overview>` sections to get a sense of the features and functionality of the ODK 2 Application Designer environment (we will install it below). Follow this guide to :doc:`app-designer-setup`.
+Read the :ref:`Intro <app-designer-intro>` and :ref:`Overview <app-designer-overview>` sections to get a sense of the features and functionality of the ODK-X Application Designer environment (we will install it below). Follow this guide to :doc:`app-designer-setup`.
 
 Finally, follow this guide to :doc:`app-designer-launching`.
 
@@ -107,11 +107,11 @@ Deploying to the Device
 Now that we have the design environment installed and functioning, and because that environment has a copy of the fully-configured *Geotagger* application that is running on https://opendatakit-simpledemo.appspot.com (minus any data that users have submitted to the server), we can work through the steps of deploying that application to your device, and then resetting your server to push that configuration up to your server.
 
 
-First, confirm that your device has :guilabel:`USB debugging` enabled inside your device's :guilabel:`Settings`. This checkbox is in different places on different devices and may be hidden by default on some. See this guide to `USB debuggin on Android <https://www.phonearena.com/news/How-to-enable-USB-debugging-on-Android_id53909>`_ for instructions.
+First, confirm that your device has :guilabel:`USB debugging` enabled inside your device's :guilabel:`Settings`. This checkbox is in different places on different devices and may be hidden by default on some. See this guide to `USB debugging on Android <https://www.phonearena.com/news/How-to-enable-USB-debugging-on-Android_id53909>`_ for instructions.
 
 Return to the :program:`cmd` window on your computer. :kbd:`Control-C` to stop the :program:`grunt` command that popped-open the :program:`Chrome` browser. On Windows, you will be asked to confirm this ``Terminate batch job (Y/N)?``. Enter ``Y`` to confirm.
 
-Connect your device to your computer via USB. Wait for the storage connection to be established (on Windows, this will generally pop up a file browser or an options box that enables you to select a file browser).
+Connect your device to your computer via USB. Wait for the storage connection to be established (on Windows, this will generally pop up a file browser or an options box that enables you to select a file browser). Be sure you trust your computer on your Android device, or it will cause unexpected errors.
 
 At the command prompt, type:
 
@@ -121,9 +121,9 @@ At the command prompt, type:
 
 .. warning::
 
-  This command will force-close ODK Services, Survey, and Tables, and it will clear all ODK 2 data from the device. The data you are pushing will overwrite any exiting application or collected data you might have. Be sure to make backups and be sure you are ready before running this command.
+  This command will force-close ODK Services, Survey, and Tables, and it will clear all ODK-X data from the device. The data you are pushing will overwrite any exiting application or collected data you might have. Be sure to make backups and be sure you are ready before running this command.
 
-This pushes the configured ODK 2 application within this ODK 2 Application Designer directory to your device. Because this is a stripped-down version of the Application Designer that only contains the simple demo files, this will copy only those files to the device. When you issue this command, the :program:`cmd` window will display a long series of commands and conclude with a display of overall progress and timings:
+This pushes the configured ODK-X application within this ODK-X Application Designer directory to your device. Because this is a stripped-down version of the Application Designer that only contains the simple demo files, this will copy only those files to the device. When you issue this command, the :program:`cmd` window will display a long series of commands and conclude with a display of overall progress and timings:
 
 .. image:: /img/getting-started-2/geotagger-cmd-gruntpush.*
   :alt: Geotagger Grunt Push
@@ -132,7 +132,7 @@ Now, on your device, launch ODK Tables.
 
 This will initiate the configuration of ODK Tables and conclude with a :guilabel:`Configuration Summary` pop-up reporting that everything was imported successfully. Click :guilabel:`OK`.
 
-Everything should now appear as it did with the application you first joined on https://opendatakit-simpledemo.appspot.com, except you will only have the data rows configured by the ODK 2 Application Designer zip, and not any added or modified since that time.
+Everything should now appear as it did with the application you first joined on https://opendatakit-simpledemo.appspot.com, except you will only have the data rows configured by the ODK-X Application Designer zip, and not any added or modified since that time.
 
 .. _architect-odk-2-config-reset-server:
 
@@ -163,7 +163,7 @@ You have now successfully set up the Application Designer, used it to deploy an 
 
 .. _architect-odk-2-modify:
 
-Modifying an ODK 2 application
+Modifying an ODK-X application
 -------------------------------------
 
 The final task is to modify the *Geotagger* example by adding a new data field to it.
@@ -183,7 +183,7 @@ And then follow the steps in the preceding section to deploy the modified applic
 Modifying the data entry form
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Return to your :program:`cmd` window and once again launch the ODK 2 Application Designer environment (and a :program:`Chrome` browser) by typing:
+Return to your :program:`cmd` window and once again launch the ODK-X Application Designer environment (and a :program:`Chrome` browser) by typing:
 
 .. code-block:: console
 
@@ -289,11 +289,26 @@ Save the file. Once again, push the application to the device. Confirm that when
   :alt: Geotagging Image Direction
   :class: device-screen-vertical
 
-Congratulations, you have successfully modified this ODK 2 application to add a new data field and display it as a field in the HTML detail-view page.
+Congratulations, you have successfully modified this ODK-X application to add a new data field and display it as a field in the HTML detail-view page.
 
 You could now log onto your server, delete the geotagger table, reset your server, and start collecting geopoints with the new image direction field.
 
 .. _architect-odk2-next:
+
+Useful Grunt Commands
+-----------------------
+
+:guilabel:`grunt addtable:tableid` : Will create the required directory structure for an individual table, including the forms directory.
+
+:guilabel:`grunt xlsx-convert-all` : Takes all `.xlsx` files and converts them into a `formDef.json file`. Can be used instead of `XLSX` converter on the app designer. 
+
+:guilabel:`grunt wipe-data` : Allows users to get rid of the default tables/data included with app designer.
+
+:guilabel:`grunt setup` : Launches the login and sync screen on the connected device. 
+
+:guilabel:`grunt kill all` : Force stops survey, tables and services on the connected device.
+
+:guilabel:`grunt uninstall` : Uninstall ODK tools from the connected device.
 
 Next Steps
 -----------------------

@@ -7,7 +7,7 @@ In this guide we will be demonstrating how to use ODK Survey via a guided tour o
 
 .. warning::
 
-  ODK Survey performs a similar role to ODK Collect in the ODK 2 Tool Suite. However, it is more complex and not every organization will need its features. The choice of whether to use ODK Collect or ODK Survey and the ODK 2 tools should be made carefully based on your organization's needs. A brief comparison can be found in the guide for :doc:`select-tool-suite`.
+  ODK Survey performs a similar role to ODK Collect in the ODK-X Tool Suite. However, it is more complex and not every organization will need its features. The choice of whether to use ODK Collect or ODK Survey and the ODK-X tools should be made carefully based on your organization's needs. A brief comparison can be found in the guide for :doc:`select-tool-suite`.
 
 .. toctree::
   :maxdepth: 2

@@ -477,11 +477,27 @@ Searching and matching strings
 
 .. function:: substr(string, start[, end]) 	
 
-  Returns the substring of :arg:`string` beginning at the index :arg:`start` and extending to (but not including) index :arg:`end` (or to the termination of :arg:`string`, if :arg:`end` is not provided). Members of arg:`string` are zero-indexed.
+  Returns the substring of :arg:`string` beginning at the index :arg:`start` and extending to (but not including) index :arg:`end` (or to the termination of :arg:`string`, if :arg:`end` is not provided). Members of :arg:`string` are zero-indexed.
   
+.. function:: substring-before(string, target)
+
+  Returns the substring of :arg:`string` *before* the first occurrence of the :arg:`target` substring. If the :arg:`target` is not found, or :arg:`string` begins with the :arg:`target` substring, then this will return an empty string.
+
+.. function:: substring-after(string, target)
+
+  Returns the substring of :arg:`string` *after* the first occurrence of the :arg:`target` substring. If the :arg:`target` is not found this will return an empty string.
+
+.. function:: translate(string, fromchars, tochars)
+
+  Returns a copy of :arg:`string`, where every occurrence of a character in :arg:`fromchars` is replaced by the corresponding character in :arg:`tochars`. If :arg:`fromchars` is longer than :arg:`tochars` then every occurrence of a character in :arg:`fromchars` that does not have a corresponding character in :arg:`tochars` will be removed.
+
 .. function:: string-length(string)
 
   Returns the number of characters in :arg:`string`.
+
+.. function:: normalize-space(string)
+
+  Returns a string with normalized whitespace by stripping leading and trailing whitespace of :arg:`string` and replacing sequences of whitespace characters with a single space.
   
 .. _string-combination-functions:
   
@@ -551,6 +567,15 @@ Number handling
   
   If :arg:`arg` cannot be converted, returns ``NaN`` (not a number).
 
+.. function:: digest(data, algorithm, encoding method (optional))   
+
+  Computes and returns the hash value of the data :arg:`string` using the indicated hash algorithm :arg:`string`, and encoding this hash value using the optional encoding :arg:`string`.
+  
+  Options for the algorithm are :arg:`MD5`, :arg:`SHA-1`, :arg:`SHA-256`, :arg:`SHA-384`, :arg:`SHA-512`. 
+  
+  If the third parameter is not specified, the encoding is :arg:`base64`. Valid options for the encoding are :arg:`base64` and :arg:`hex`.
+
+  This function can be useful if, for example, someone wants to build a unique identifier from sensitive data like a national ID number without compromising that data.
   
 .. seealso:: :func:`count`, :func:`max`, :func:`min`, :func:`number`
   

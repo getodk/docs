@@ -54,7 +54,7 @@ Requests from the device SHOULD set the ``Accept-Language`` header to indicate t
   
   http://www.w3.org/International/questions/qa-accept-lang-locales
 
-Aside from the query parameters, the structure of the server URI and whether the request is made over ``http`` or ``https``, is entirely implementor- and server- dependent. 
+Aside from the query parameters, the structure of the server URI and whether the request is made over ``http`` or ``https``, is entirely implementer- and server- dependent. 
 
 Compliant servers MUST NOT require additional query parameters on this request. 
 

@@ -60,7 +60,7 @@ Restoring a backup to an ODK Central instance will entirely replace all of its d
 
    .. tip::
 
-     If you used our `DigitalOcean installation steps <https://github.com/opendatakit/central#running-on-digitalocean>`_ but can't quite remember how to do this, we suggest reviewing steps 7 and 8 as a reminder, or if you can't remember your password to revisit steps 6, 7, and 8.
+     If you used our :ref:`DigitalOcean installation steps <central-install-digital-ocean>` but can't quite remember how to do this, we suggest reviewing steps 7 and 8 as a reminder, or if you can't remember your password to revisit steps 6, 7, and 8.
 
 #. Now you'll want to put it in a special place where it can be used by the restore tool: :file:`/data/transfer`. If, for example, you uploaded the file to :file:`/root/backup-2018-01-01T00:00:00Z.zip`, you'll want to run this command in order to move it:
 
@@ -74,13 +74,13 @@ Restoring a backup to an ODK Central instance will entirely replace all of its d
 
      cd
      cd central
-     docker-compose exec node /usr/odk/lib/bin/restore.js /data/transfer/backup-2018-01-01T00:00:00Z.zip 'SECRET_PASSPHRASE'
+     docker-compose exec service node /usr/odk/lib/bin/restore.js /data/transfer/backup-2018-01-01T00:00:00Z.zip 'SECRET_PASSPHRASE'
 
    You'll have to replace the filename following :file:`/data/transfer` with your own snapshot filename, and the text ``SECRET_PASSPHRASE`` with the passphrase you typed when backups were first set up. If you did not set up a passphrase, immediately press Enter after you have finished putting the :file`.zip` filename in:
 
    .. code-block:: console
 
-     docker-compose exec node /usr/odk/lib/bin/restore.js /data/transfer/backup-2018-01-01T00:00:00Z.zip
+     docker-compose exec service node /usr/odk/lib/bin/restore.js /data/transfer/backup-2018-01-01T00:00:00Z.zip
 
 #. The server will think for a while, and then print some more instructions. You will have to refresh any browser windows you have open to ODK Central to proceed. If you run into error messages at this step, please read them carefully and then seek help on the ODK Forum if you are not sure what to do.
 

@@ -1,5 +1,6 @@
 .. spelling::
 
+  validator
   vN
 
 ODK Validate
@@ -55,7 +56,23 @@ Using Validate
 
    .. image:: /img/validate/validform.png
 
-  
+Command line
+~~~~~~~~~~~~
+
+Validating a single form:
+
+.. code-block:: console
+
+  $ java -jar {path/to/validate-jar-file} {path/to/xform.xml}
+
+Validating multiple forms:
+
+.. code-block:: console
+
+  $ java -jar {path/to/validate-jar-file} [--fail-fast] {path/to/xform1.xml} {path/to/xform2.xml} {path/to/xform3.xml}
+
+The optional `--fail-fast` flag tells Validate to exit on the first error rather than validating all forms and reporting an error at the end.
+
 .. warning::
 
   This tool validates XML files against the XForms specification.

@@ -7,7 +7,7 @@ Navigating a Form
 
 .. _survey-sample-app-navigating-form:
 
-Forms in Survey are defined in HTML, CSS, and JavaScript. A default look-and-feel, along with an extensive selection of prompt widgets, is provided by the ODK 2 framework, but this can be customized by your organization.
+Forms in Survey are defined in HTML, CSS, and JavaScript. A default look-and-feel, along with an extensive selection of prompt widgets, is provided by the ODK-X framework, but this can be customized by your organization.
 
 To navigate forms using the default look-and-feel:
 
@@ -98,7 +98,7 @@ This prompt is requesting a value that will be used to render the next question.
     :alt: Survey Example Form Coffee Autofill
     :class: device-screen-vertical
 
-This prompt will prepopulate the entered data with the value from the previous prompt. In general, you can prepopulate the a prompt with any previously collected value. In another example you might record a subject's address and then prepopulate that address on their household members address prompts.
+This prompt will prepopulate the entered data with the value from the previous prompt. In general, you can prepopulate a prompt with any previously collected value. In another example you might record a subject's address and then prepopulate that address on their household members address prompts.
 
 Press :guilabel:`Next` to advance to the next section.
 
@@ -125,7 +125,7 @@ Enter a valid age, weight, and height, and press :guilabel:`Next`.
     :alt: Survey Example Form Graph Render
     :class: device-screen-vertical
 
-This prompt will show the data point you entered in the previous prompt, rendered on a plot of average weights. This is a custom prompt defined in JavaScript for this example, it is not a default display option provided by the ODK 2 framework. It demonstrates that Survey can be customized to whatever level your organization requires without the effort of rewriting and recompiling the Android tools.
+This prompt will show the data point you entered in the previous prompt, rendered on a plot of average weights. This is a custom prompt defined in JavaScript for this example, it is not a default display option provided by the ODK-X framework. It demonstrates that Survey can be customized to whatever level your organization requires without the effort of rewriting and recompiling the Android tools.
 
 Press :guilabel:`Next` to advance to the next section.
 

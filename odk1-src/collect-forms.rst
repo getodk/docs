@@ -114,7 +114,7 @@ If a form :ref:`includes images or other media <image-options>`, those files hav
 Media files should be placed in a folder labeled :file:`{form-name}-media`. 
 
 - When using ODK Aggregate, the form upload prompt includes instructions to upload the :file:`-media` folder. The files are downloaded automatically when :ref:`fetching forms from Aggregate <in-app-get-blank-forms>`.
-- When using Google Drive, the :file:`-media` folder should be uploaded to the same location as the form.
+- When using Google Drive, the :file:`-media` folder should be uploaded to the same location as the form. If you share forms with another user, you need to share the parent folder which contains a form and a folder with media files. Sharing both of them separately wouldn't be enough.
 - If :ref:`loading forms directly to your device <loading-forms-directly>`, the :file:`-media` folder needs to be placed in the :file:`sdcard/odk/forms` directory, alongside the form itself.
 
 
@@ -169,6 +169,9 @@ If you are connected to :doc:`an ODK Aggregate server  <collect-connect-aggregat
   - Use the `TRIM <https://support.google.com/docs/answer/3094140?hl=en>`_ function in the google sheets to remove the leading and trailing spaces from the cells.
   - Define empty cell in your tests to be a cell that is either empty or contains a single space.
 
+.. note::
+
+  Using Google Drive as a server, filled forms are sent to the first sheet in a given spreadsheet, no matter what its name is. If you use one spreadsheet to keep a form definition and to collect filled forms make sure the sheet you expect to be filled is in the first place.
 
 Pulling forms with Briefcase
 -------------------------------

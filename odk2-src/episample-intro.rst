@@ -15,7 +15,7 @@ EpiSample is a geographic health survey application originally developed by `Bel
 Key Features
 ----------------------------
 
-The EpiSample application provides a good example of the following ODK 2 platform features:
+The EpiSample application provides a good example of the following ODK-X platform features:
 
   - **Data Synchronization and Reuse**: Collected data is reused to generate tasks across devices. Shared configuration is set by a supervisor and synchronized across devices.
   - **Custom Web Views**: Location data is displayed and updated in real time. Custom data visualizations are used on data entry screens to help guide collection.
@@ -28,7 +28,7 @@ The EpiSample application provides a good example of the following ODK 2 platfor
 Installing EpiSample
 --------------------------
 
-Source code for this Data Management Application can be found in the `malaria-demo branch of the App Designer repository <https://github.com/opendatakit/app-designer/tree/malaria-demo>`_. As with all of the ODK 2 reference applications (and the ODK 2 platform itself), the code is free and open source. Feel free to reuse, modify, or extend this application and its component parts to suit your organization's needs.
+Source code for this Data Management Application can be found in the `malaria-demo branch of the App Designer repository <https://github.com/opendatakit/app-designer/tree/malaria-demo>`_. As with all of the ODK-X reference applications (and the ODK-X platform itself), the code is free and open source. Feel free to reuse, modify, or extend this application and its component parts to suit your organization's needs.
 
 .. note::
   The EpiSample application (and all other Data Management Applications provided in these docs) come with a full copy of the Application Designer they were developed in.

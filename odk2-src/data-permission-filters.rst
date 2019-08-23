@@ -15,7 +15,7 @@ Data Permission Filters
 Limitations
 ----------------------------
 
-Traditional access control frameworks provide strong protections for data and the management of which users can modify that data. The permission filtering introduced in ODK 2.0 is weaker. When syncing devices with the server, all data rows for all data tables are currently synced and shared across all devices. Every device gets a full copy of all data. Permission filtering enables a supervisor to restrict the visibility of that data and to manage who can modify or delete the data through the programmatic means provided by the ODK 2.0 tools.
+Traditional access control frameworks provide strong protections for data and the management of which users can modify that data. The permission filtering introduced in ODK-X is weaker. When syncing devices with the server, all data rows for all data tables are currently synced and shared across all devices. Every device gets a full copy of all data. Permission filtering enables a supervisor to restrict the visibility of that data and to manage who can modify or delete the data through the programmatic means provided by the ODK-X tools.
 
 This is weaker than traditional access control frameworks in that application designers can:
 
@@ -31,7 +31,7 @@ Overview
 
 By default, all tables can be altered by all users.
 
-The ODK 2.0 data access filtering mechanism relies on five interacting features:
+The ODK-X data access filtering mechanism relies on five interacting features:
 
   - Verified user identities
   - Verified user capabilities
@@ -65,7 +65,7 @@ Clicking the :guilabel:`Verify User Permissions` button on this screen will init
 Verified User Capabilities
 --------------------------------
 
-As part of the user-verification process, once the user's identity has been verified, the list of groups to which this user belongs and the capabilities (roles) assigned to that user are downloaded from the server. These are cached on the device for use during data access filtering until the user logs out of the ODK 2.0 tools on the device or a different server sign-on credential is specified.
+As part of the user-verification process, once the user's identity has been verified, the list of groups to which this user belongs and the capabilities (roles) assigned to that user are downloaded from the server. These are cached on the device for use during data access filtering until the user logs out of the ODK-X tools on the device or a different server sign-on credential is specified.
 
 For the purposes of the data access filtering mechanism, there are 4 user capabilities of interest:
 
@@ -135,7 +135,7 @@ Inside ODK Survey and ODK Tables web pages, the default group of the current ver
 
 .. note::
 
-  Default groups are not directly used within the ODK 2.0 framework. These are provided for use by an application designer when crafting their application.
+  Default groups are not directly used within the ODK-X framework. These are provided for use by an application designer when crafting their application.
 
 .. _data-permission-filters-obtaining-other-info:
 
@@ -157,7 +157,7 @@ This list will contain entries of the form:
 
 The *Full Name* field on the server (on the :menuselection:`Site Admin -->  Permissions` sub-tab) is provided here to allow super-users and administrators to select people by *name*. *user_id* should be stored in the :th:`_ROW_OWNER` column to assign ownership to this user. The list of roles (and groups) is provided to allow super-users and administrators to choose users based upon their capabilities.
 
-If the user has been assigned to a default group it will be provided.  Default groups are not directly used within the ODK 2.0 framework. These are provided for use by an application designer when crafting their application.
+If the user has been assigned to a default group it will be provided.  Default groups are not directly used within the ODK-X framework. These are provided for use by an application designer when crafting their application.
 
 Inside ODK Survey and ODK Tables web pages, the list of all configured users is available in JavaScript via the API:
 

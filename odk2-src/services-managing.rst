@@ -93,7 +93,7 @@ Before you are able to synchronize data or application files to a device, you wi
 
 .. _services-using-reset-app-server:
 
-Reseting the App Server
+Resetting the App Server
 -------------------------
 
 Resetting your app server pushes the configuration and data on your tablet up to the server. After pushing files from :doc:`app-designer-intro` to the device, this is how to push those files to the server to initialize your Data Management Application. All other devices synchronizing with your server will receive these configuration and data files.
@@ -285,7 +285,7 @@ When you have finished configuring the administrator settings, back out of the m
 Resetting Configuration
 ------------------------
 
-This option will clear the ODK 2 cache of table and form definitions and scan the file system to refill that cache. This is automatically run after each successful sync operation to ensure that Survey and Tables display the correct information. If you have manually modified files inside of the :file:`/sdcard/opendatakit/` folder via :program:`grunt` commands, with :program:`OI File Manager`, or by some other means, you may need to use this option to refresh the cache. If you are not seeing forms or tables that you expect, this option may fix that problem.
+This option will clear the ODK-X cache of table and form definitions and scan the file system to refill that cache. This is automatically run after each successful sync operation to ensure that Survey and Tables display the correct information. If you have manually modified files inside of the :file:`/sdcard/opendatakit/` folder via :program:`grunt` commands, with :program:`OI File Manager`, or by some other means, you may need to use this option to refresh the cache. If you are not seeing forms or tables that you expect, this option may fix that problem.
 
 .. note::
 

@@ -3,7 +3,7 @@ ODK Survey
 
 .. _survey-intro:
 
-:dfn:`ODK Survey` is an Android application for performing data collection in the ODK 2 framework. It operates similarly to ODK Collect, but is based on HTML, CSS, and Javascript rather than native Android, and is more flexible in its presentation and execution.
+:dfn:`ODK Survey` is an Android application for performing data collection in the ODK-X framework. It operates similarly to ODK Collect, but is based on HTML, CSS, and Javascript rather than native Android, and is more flexible in its presentation and execution.
 
 .. note::
 
@@ -11,7 +11,7 @@ ODK Survey
 
 .. note::
 
-  ODK Survey cannot read or display the forms created for ODK Collect (that is, those created via ODK Build, XLSForm, or other form design tools). ODK Survey operates with ODK 2 Data Management Applications*.
+  ODK Survey cannot read or display the forms created for ODK Collect (that is, those created via ODK Build, XLSForm, or other form design tools). ODK Survey operates with ODK-X Data Management Applications*.
 
 .. _survey-intro-user-guide:
 

@@ -136,23 +136,27 @@ Following is the list of keys for all settings and the set of values they can ta
       "submission_url": String,
       
       // User interface
-      "app_language": { "en", "af", "am", "ar", "bn", "ca", "cs", "de", "es", "km", 
-           "et", "fa", "fi", "fr", "ha", "hi", "hu", "in", "it", "ja", "ka", "zu",
-           "lt", "mg", "mr", "my", "ml", "nb", "nl", "no", "pl", "ps", "pt", "ro",
-           "ru", "so","sq", "sw", "ta", "ti", "tl", "tr", "uk", "ur", "vi", "zh"
-           },
+      "app_language": "af", "am", "ar", "bn", "ca", "cs", "de", "en", "es", "et", 
+            "fa", "fi", "fr", "hi", "in", "it", "ja", "ka", "km", "ln", 
+            "lo_LA", "lt", "mg", "ml", "mr", "ms", "my", "ne_NP", "nl", "no", 
+            "pl", "ps", "pt", "ro", "ru", "si", "sl", "so", "sq", "sr", 
+            "sv_SE", "sw", "sw_KE", "th_TH", "ti", "tl", "tr", "uk", "ur", "ur_PK",
+            "vi", "zh", "zu",
       "font_size": {13, 17, 21, 25, 29},
       "navigation": {"swipe" ,"buttons" ,"swipe_buttons"},
       "showSplash": Boolean,
       "splashPath": String, // If showSplash is true, then you specify the path of image here.
-      "map_sdk_behavior": {"google_maps", "osmdroid"},
+      
+      "map_sdk_behavior": {"google_maps", "osmdroid", "mapbox_maps"},
       // if map_sdk_behavior is google_maps, then map_basemap_behavior can take the following values:
       "map_basemap_behavior": {"streets", "satellite", "terrain", "hybrid"},
       // if map_sdk_behavior is osmdroid, then map_basemap_behavior can take the following values:
       "map_basemap_behavior": { "openmap_streets", "openmap_usgs_topo", 
                                 "openmap_usgs_sat", "openmap_stamen_terrain",
-                                "openmap_cartodb_positron", "openmap_cartodb_darkmatter"
-                            },
+                                "openmap_cartodb_positron", "openmap_cartodb_darkmatter"},
+      // if map_sdk_behavior is mapbox_maps, then map_basemap_behavior can take the following values:
+      "map_basemap_behavior": {"mapbox_streets", "mapbox_light", "mapbox_dark", "mapbox_satellite",
+          "mapbox_satellite_streets", "mapbox_outdoors"},
       
       // Form submission
       "delete_send": Boolean,

@@ -1,39 +1,18 @@
 Setting Up ODK Briefcase
 ===================================
 
-.. note:: 
-
-  The ODK Briefcase file available for download is an executable Java application. Once downloaded, it can be run directly and does not need to be "installed."
-
 .. admonition:: Before you begin...
 
-  Make sure `Oracle Java 8 <https://java.com/en/download/>`_ or higher is `installed on your system <https://www.java.com/en/download/help/download_options.xml>`_.
+  You should be able to run Briefcase with Java 8 or higher, but we recommend using `Java 11 LTS <https://www.oracle.com/technetwork/java/javase/downloads/index.html>`_.
 
-  We require Oracle's Java because OpenJDK has encryption shortcomings.
-  
-#. Download `ODK Briefcase <https://github.com/opendatakit/briefcase/releases/latest>`_.
+#. Download the ODK Briefcase JAR file from `GitHub <https://github.com/opendatakit/briefcase/releases/latest>`_.
 
-   You may wish to move the Briefcase file to your desktop, your Applications directory, or another location.
+	Some browsers may warn that JAR files might harm your computer. Do not worry, Briefcase when downloaded from our GitHub page is safe.
 
-#. Open the file.
+#. Double-click the downloaded JAR file or, from the command line, run :code:`java -jar {path/to/ODK-Briefcase-vX.Y.Z.jar}`
 
-   - Double click the file icon.
-   - Or, from the command line:
-   
-     .. code-block:: console 
-       
-       $ java -jar {path/to/Briefcase}
-   
-#. Set your local **Briefcase Storage** location.
+	macOS will warn that Briefcase is from an unidentified developer. This is normal and expected. Follow `these instructions from Apple <https://support.apple.com/kb/ph25088?locale=en_US>`_ to open the file.
 
-   .. _briefcase_storage:
+#. Follow the instructions to start using Briefcase
 
-   The first time you open Briefcase, you will need to select a directory for storing forms and submission data. A new directory called :file:`ODK Briefcase Storage` will be created under the directory you select.
-
-   .. note::
-
-     We will refer to the term `Briefcase Storage` from now on to indicate the location of the :file:`ODK Briefcase Storage` directory
-
-   .. tip::
-
-     You can change the Briefcase Storage location later, from the :guilabel:`Settings` tab.
+  .. image:: img/briefcase-install/welcome.png

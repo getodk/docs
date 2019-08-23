@@ -10,8 +10,8 @@ Layout of Application Files
 
 The layout of a Data Management Application is as follows:
 
-  - :file:`/sdcard/opendatakit`-- directory containing all ODK 2 applications. Each application is a sub-directory within this directory.
-  - :file:`/sdcard/opendatakit/default` -- default application name (directory) for the ODK 2 tools
+  - :file:`/sdcard/opendatakit`-- directory containing all ODK-X applications. Each application is a sub-directory within this directory.
+  - :file:`/sdcard/opendatakit/default` -- default application name (directory) for the ODK-X tools
 
 Within the application folder (:file:`/sdcard/opendatakit/default`), the following directories are present:
 

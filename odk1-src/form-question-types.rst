@@ -36,7 +36,12 @@ are specified in your `XLSForm`_ definition using the
 .. contents:: :depth: 1
   :local:
 
-
+.. tip::
+  
+  You can find an XLSForm with all available question types `here <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ/edit#gid=0>`_.
+  
+  For simpler forms you can use :doc:`build-intro`, which provides a visual, drag-and-drop interface.
+  
 .. admonition:: Helpful terminology
 
   .. glossary::
@@ -52,15 +57,6 @@ are specified in your `XLSForm`_ definition using the
       A rendered question screen in Collect.
       The :th:`type` and :th:`appearance` of a question
       determine the widget that is displayed.
-
-.. note::
-
-  This document covers the full range of question types and options
-  available when creating forms using `XLSForm`_.
-  
-  For simpler forms
-  you can use :doc:`build-intro`,
-  which provides a visual, drag-and-drop interface.
 
   
 .. _text-widget:
@@ -404,6 +400,11 @@ Collects only a month and year.
 Year only
 """"""""""""
 
+type
+  :tc:`date`
+appearance
+  :tc:`year`
+
 Collects only a year.
 
 .. image:: /img/form-widgets/year-spinner.*
@@ -468,6 +469,30 @@ appearance
   :tc:`islamic`
   
 .. image:: /img/form-widgets/islamic-calendar-widget.* 
+  :alt:
+
+.. _bikram-sambat-calendar:
+
+Bikram Sambat calendar
+""""""""""""""""""""""""
+
+type
+  :tc:`date`
+appearance
+  :tc:`bikram-sambat`
+
+.. image:: /img/form-widgets/bikram-sambat-calendar-widget.*
+  :alt:
+
+Myanmar calendar
+""""""""""""""""""
+
+type
+  :tc:`date`
+appearance
+  :tc:`myanmar`
+
+.. image:: /img/form-widgets/myanmar-calendar-widget.*
   :alt:
    
 .. _time-widget:
@@ -1033,16 +1058,23 @@ To make an image with selectable regions:
 
 .. _image-options:
 
-Including images as choices
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Including image, video, or audio files as choices
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To include images as choices for select questions:
+To include image, video, or audio files as choices for select questions:
 
-#. Specify the file name in the **choices** worksheet,
-   in a column labeled :th:`media::image`. 
-#. Add the images to a folder named
+1. Specify the file names in the **choices** worksheet, in a column labeled as :th:`media::image` for image files, :th:`media::video` for video files, and :th:`media::audio` for audio files respectively.
+
+  .. csv-table:: choices
+    :header: list_name, name, label, media::image, media::video, media::audio
+
+    opt_media,a,A,a.jpg
+    opt_media,b,B,,b.mp4
+    opt_media,c,C,,,c.mp3
+
+2. Add the files to a folder named
    :file:`{form-name}-media`.
-#. Upload the media folder with your form.
+3. Upload the media folder with your form.
 
    - If you are hosting your form in :doc:`aggregate-intro`,
      you will have the option to upload the media file with your form,
@@ -1522,10 +1554,10 @@ An image widget that does not include a :guilabel:`Choose Image` button. This re
   image, image_widget_no_choose, Image widget without Choose button, new, image type with new appearance (can also be added with annotate appearance and on audio and video types)
   
   
-.. _self-portrait-widget:
+.. _self-portrait-image-widget:
 
-Self portrait (*selfie*) widget
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Self portrait (*selfie*) image widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
   :tc:`image`
@@ -1634,7 +1666,7 @@ Records audio from an external app.
 .. image:: /img/form-widgets/audio-start.*
   :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "Please record your name." There are three buttons: Record Sound, Choose Sound and Play Sound. The "Play Sound" button is disabled.
 
-.. rubric:: XLSForm Rows
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label
@@ -1643,8 +1675,16 @@ Records audio from an external app.
 
 .. _video:
 
-Video widget
+Video widgets
 ----------------
+
+.. contents::
+ :local:
+
+.. _default-video-widget:
+
+Default video widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Records video, using the device camera.
 
@@ -1658,13 +1698,36 @@ Records video, using the device camera.
 .. image:: /img/form-widgets/video2.*
   :alt: The Video form widget as displayed previously. The question text is "Please record a video of yourself blinking." The hint text is "Three times is probably sufficient." Below that are three buttons: Record Video, Choose Video, and Play Video. All three buttons are enabled.
 
-.. rubric:: XLSForm Rows
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, hint
 
   video, blinking, Please record a video of yourself blinking., Three times is probably sufficient.
 
+
+.. _self-portrait-video-widget:
+
+Self portrait (*selfie*) video widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Records video, using the front-facing ("selfie") camera. The :guilabel:`Choose Video` button is not displayed.
+
+.. image:: /img/form-widgets/selfie-video-widget.*
+  :alt: The Self portrait (*selfie*) video widget form widget as displayed in the ODK Collect App on an Android phone. The question text is "Self portrait (*selfie*) video widget". The hint text is "video type with new-front appearance". Below that are two buttons: Record Video and Play Video. The Play Video button is disabled.
+
+.. image:: /img/form-widgets/selfie-video-widget-recording.*
+  :alt: The camera view with a person's face.
+
+.. image:: /img/form-widgets/selfie-video-widget-recorded.*
+  :alt: The Self portrait (*selfie*) video widget form widget as displayed previously. The question text is "Self portrait (*selfie*) video widget". The hint text is "video type with new-front appearance". Below that are two buttons: Record Video and Play Video. Both buttons are enabled.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  video, selfie-video, Self portrait (*selfie*) video widget, new-front, video type with new-front appearance
 
 .. _file-upload:
 
@@ -1718,8 +1781,7 @@ Uploads any file from the device to the form.
 Barcode widget
 ----------------
 
-Scans, decodes, and captures the content of a barcode,
-using the device camera.
+Scans, decodes, and captures the content of a barcode, using the device camera.
 
 The following barcode formats are supported:
 
@@ -1740,6 +1802,21 @@ The following barcode formats are supported:
 - PDF 417 (beta)
 - MaxiCode
 
+.. note::
+  Barcode scanning is built into Collect versions 1.7.0 and greater.
+  
+  Versions of Collect prior to 1.7.0 require the `Barcode Scanner app`_ to be installed.
+  
+.. _Barcode Scanner app: https://play.google.com/store/apps/details?id=com.google.zxing.client.android
+
+.. contents::
+ :local:
+
+.. _default-barcode-widget:
+
+Default barcode widget
+~~~~~~~~~~~~~~~~~~~~~~~~
+
 The flash can be used as a light source when scanning barcodes in a poorly lit environment.
 
 .. image:: /img/form-widgets/barcode-start.*
@@ -1758,14 +1835,20 @@ The flash can be used as a light source when scanning barcodes in a poorly lit e
 
   barcode, barcode_example, Scan any barcode.
 
-.. note::
-  Barcode scanning is built into Collect versions 1.7.0 and greater.
-  
-  Versions of Collect prior to 1.7.0 require the `Barcode Scanner app`_ to be installed.
-  
-.. _Barcode Scanner app: https://play.google.com/store/apps/details?id=com.google.zxing.client.android
 
+.. _self-portrait-barcode-widget:
 
+Self portrait (*selfie*) barcode widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In some cases a front camera may work better. The flash can't be used in this case.
+
+.. rubric:: XLSForm
+  
+.. csv-table:: survey
+  :header: type, name, label, appearance
+
+  barcode, barcode_example, Scan any barcode., front
   
 .. _range-widgets:
   
@@ -1871,6 +1954,28 @@ When the :tc:`picker` appearance is added, the range widget is displayed with a 
   :header: type, name, label, appearance, hint, parameters
 
   range, range_integer_widget_picker, Range picker integer widget, picker, range integer widget with picker appearance, start=1;end=10;step=1
+
+.. _range-rating-widget:
+
+Range widget with rating
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`range`
+appearance
+  :tc:`rating`
+
+When the :tc:`rating` appearance is added, the range widget is displayed with stars having equal spacing. Number of stars is calculated using the `end` parameter. When the user taps on an empty star, the stars up to and including that star will be filled. If the stars don't fit in the device width, they will wrap onto additional lines.
+
+.. image:: /img/form-widgets/range-widget-rating.*
+  :alt: The range rating widget, as displayed in the ODK Collect app. The question label is "Range rating integer widget".
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint, parameters
+
+  range, range_integer_widget_rating, Range rating widget, rating, range integer widget with rating appearance, end=9
 
   
 .. _note-widget:
@@ -2106,6 +2211,10 @@ The :tc:`field-list` appearance attribute, applied to a group of widgets, displa
   Therefore,
   including a question and its dependent together in a field list
   will not work as expected.
+
+.. seealso::
+
+  :ref:`groups` and :ref:`repeats`.
 
 Select widgets included in a :tc:`field-list` group can have one of several :th:`appearance` attributes:
 

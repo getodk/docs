@@ -3,42 +3,92 @@
 Managing Users in Central
 =========================
 
-There are two types of user accounts in ODK Central: **web users** and **app users**.
+There are two types of user accounts in ODK Central: **Web Users** and **App Users**.
 
- - **Web users** have accounts on the Central management website. They can log into the web interface and perform administrative actions like user management, form upload and management, and submission data viewing and download.
- - **App users** can use mobile data collection apps like ODK Collect to :ref:`connect to Central <central-users-app-configure>`. Once connected through the app, they will be able to see the list of forms, download the ones they need, and upload completed submissions to those forms.
+ - **Web Users** have accounts on the Central management website. These accounts are global across all projects on the server. They can log into the web interface and perform administrative actions like user management, form upload and management, and submission data viewing and download.
+ - **App Users** can use mobile data collection apps like ODK Collect to :ref:`connect to Central <central-users-app-configure>`. App Users are limited to a single project at a time. Once connected through the app, they will be able to see the list of forms, download the ones they need, and upload completed submissions to those forms.
 
-You will need both types of users in order to run a successful data collection project: a web user must upload a valid form definition, an app user must upload submissions to it from their mobile device, and the web user will then be able to see those submissions in the web interface and download or sync them for analysis.
+You will need both types of users in order to run a successful data collection project: a Web User must upload a valid form definition, an App User must upload submissions to it from their mobile device, and the Web User will then be able to see those submissions in the web interface and download them for analysis.
+
+.. _central-users-web-roles:
+
+Web User Roles
+--------------
+
+Central features Role-based User permissioning. In the current release of Central, we provide two roles: Administrator and Project Manager. In future releases, more default roles will be added and eventually you will be able to define your own roles as you see fit.
+
+By default, Central roles are configured to allow the following:
+
++------------------+---------------+-----------------+
+| Action           | Administrator | Project Manager |
++==================+===============+=================+
+| **Projects**                                       |
++------------------+---------------+-----------------+
+| Create           | x             |                 |
++------------------+---------------+-----------------+
+| Edit Details     | x             | x               |
++------------------+---------------+-----------------+
+| Archive          | x             | x               |
++------------------+---------------+-----------------+
+| **Project Forms**                                  |
++------------------+---------------+-----------------+
+| Create           | x             | x               |
++------------------+---------------+-----------------+
+| List All         | x             | x               |
++------------------+---------------+-----------------+
+| Edit Attachments | x             | x               |
++------------------+---------------+-----------------+
+| Edit Details     | x             | x               |
++------------------+---------------+-----------------+
+| Set State        | x             | x               |
++------------------+---------------+-----------------+
+| Delete           | x             | x               |
++------------------+---------------+-----------------+
+| **Project Form Submissions**                       |
++------------------+---------------+-----------------+
+| Create (API)     | x             | x               |
++------------------+---------------+-----------------+
+| View & Download  | x             | x               |
++------------------+---------------+-----------------+
+| OData Access     | x             | x               |
++------------------+---------------+-----------------+
+| **Project App Users**                              |
++------------------+---------------+-----------------+
+| Create           | x             | x               |
++------------------+---------------+-----------------+
+| List All         | x             | x               |
++------------------+---------------+-----------------+
+| Revoke Access    | x             | x               |
++------------------+---------------+-----------------+
+| See Code         | x             | x               |
++------------------+---------------+-----------------+
+| **Web Users**                                      |
++------------------+---------------+-----------------+
+| Create           | x             |                 |
++------------------+---------------+-----------------+
+| List All         | x             |                 |
++------------------+---------------+-----------------+
+| Edit Details     | x             |                 |
++------------------+---------------+-----------------+
+| View Email Addr. | x             |                 |
++------------------+---------------+-----------------+
+| Revoke Password  | x             |                 |
++------------------+---------------+-----------------+
+| Delete           | x             |                 |
++------------------+---------------+-----------------+
+| **Server Configuration**                           |
++------------------+---------------+-----------------+
+| Setup Backups    | x             |                 |
++------------------+---------------+-----------------+
+| Stop Backups     | x             |                 |
++------------------+---------------+-----------------+
 
 .. _central-users-web-overview:
 
 Managing Web Users
-------------------
+~~~~~~~~~~~~~~~~~~
 
-In the current alpha release of Central, all web users are administrators. This means that all web users will be able to see and do everything any other web user can:
-
- - Manage web users
-    - Create new web users
-    - See all current web users and their email addresses
-    - Revoke web user passwords
- - Manage app users
-    - Create new app users
-    - See all current app users
-    - Revoke app user access
-    - See app user provisioning code
- - Manage forms
-    - Create new forms
-    - See all current forms
-    - Set form lifecycle state
-    - Delete any form
-    - See all submissions for any form
-       - Download all submissions for any form
-       - Access submission data via OData
- - Configure the server
-    - Set up automated backups
-    - Terminate a scheduled automated backup
-
-Also in the current alpha release, all users are known only by their email addresses, which cannot currently be altered once set. Nicknames, profile edit, and user delete are all coming soon.
+You can make Users into Administrators from the :ref:`site-wide Users panel <central-users-web-role>`, and you can assign them as Project Managers on the :ref:`Settings tab <central-project-settings>` within the Project.
 
 To manage web users, navigate to :menuselection:`--> Users --> Web Users` at the top of the Central management website. You should see a listing of users that looks like this:
 
@@ -53,11 +103,30 @@ To create a new Web User, click on the :guilabel:`Create web user` button on the
 
    .. image:: /img/central-users/web-users-create.png
 
-To create a new Web User, input the email address of the person who should receive access. As :ref:`noted above <central-users-web-overview>`, in the current alpha release the person will get full administrative access to the site. Press :guilabel:`Create` once you are satisfied with the email address.
+To create a new Web User, input the email address of the person who should receive access. Press :guilabel:`Create` once you are satisfied with the email address.
 
 That email account will shortly receive an email with the subject line "ODK Central account created". If you do not see the email, check your spam folder. In the email, there will be a link which will allow the recipient to set a password for their new account, after which they will be able to log in.
 
 The link is only valid for 24 hours. If 24 hours pass and it has not been used, you should use the :ref:`Reset Password <central-users-web-reset-password>` tool to send them a new link.
+
+Newly created Web Users are only able to log in and edit their profile information. In order to give them access to do useful work on the server, please read the following section.
+
+.. _central-users-web-role:
+
+Assigning a site-wide Web User Role
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As mentioned under :ref:`central-users-web-roles` above, there are two Roles you may assign to Web Users in the current release of ODK Central: Administrator and Project Manager. Administrators may perform any action on the system, while Project Managers may perform any action on their assigned Project(s).
+
+To learn how to assign a Project Manager role, please see the :ref:`central-project-roles` section in the Projects guide.
+
+To assign an Administrator role, navigate to the Web Users administration panel. There, you should see a table like this one:
+
+   .. image:: /img/central-users/web-users-role.png
+
+Under the :guilabel:`Sitewide Role` column in the table, you will see dropdown inputs with the options :guilabel:`Administrator` and :guilabel:`None`. To make a Web User an Administrator, change the dropdown next to their name to :guilabel:`Administrator`. You will see the page think for a moment, and then it will inform you that the action is done. To take away Administrator rights from a Web User, change the dropdown to :guilabel:`None`.
+
+You will not be able to change your own Role in the system. To change your own Role, you will need to get somebody else to log in and change it for you.
 
 .. _central-users-web-reset-password:
 
@@ -79,23 +148,31 @@ With the administrative reset, the user's password **stops working immediately**
 
    .. image:: /img/central-users/web-users-admin-reset.png
 
-.. _central-users-web-delete:
+.. _central-users-web-retire:
 
-Deleting a Web User
+Retiring a Web User
 ~~~~~~~~~~~~~~~~~~~
 
-This is not yet possible in the current alpha release of ODK Central.
+When you retire a Web User, their login access will be revoked and they will be immediately signed out everywhere. They will disappear from the Web Users management list, but any records that trace their actions (submission uploader or form creator name, or audit log action initiator, for example) will still show their information.
+
+If a retired Web User attempts to reset their password, they will receive a special email explaining that their account has been retired.
+
+To retire a Web User, find them on the Web User administration panel, and open the Actions menu:
+
+   .. image:: /img/central-users/web-users-retire.png
+
+From here, select :guilabel:`Retire User` and follow the on-screen instructions.
 
 .. _central-users-app-overview:
 
 Managing App Users
 ------------------
 
-App Users never gain any access to the management website: they do not have email addresses or passwords associated with their account, only a nickname so you can tell which is which. Once a Web User creates an App User, a :doc:`configuration QR Code <collect-import-export>` will be generated which will grant a mobile device access to the ODK Central server as that App User. Access can be revoked at any time, and Web Users can see which App Users uploaded which submissions.
+App Users never gain any access to the management website: they do not have email addresses or passwords associated with their account, only a nickname so you can tell which is which. Once a Web User creates an App User within some project, a :doc:`configuration QR Code <collect-import-export>` will be generated which will grant a mobile device access to that project as that App User. Access can be revoked at any time, and Web Users can see which App Users uploaded which submissions.
 
-In the current alpha release of ODK Central, all App Users can download any :ref:`Open form  <central-forms-lifecycle>` and upload submissions to any :ref:`non-Closed form <central-forms-lifecycle>`. Future versions will feature more options to restrict certain App Users to certain forms or groups of forms.
+In the current alpha release of ODK Central, all App Users can download any :ref:`Open form  <central-forms-lifecycle>` and upload submissions to any :ref:`non-Closed form <central-forms-lifecycle>` within their project. Future versions will feature more options to restrict certain App Users to certain forms.
 
-To manage app users, navigate to :menuselection:`--> Users --> App Users` at the top of the Central management website (you will see App Users in the second row of tabs). You should see a listing of users that looks like this:
+To manage App Users, navigate to the project whose App Users you wish to manage, and then click on the :guilabel:`App Users` tab just below the project name. You should see a listing of users that looks like this:
 
    .. image:: /img/central-users/app-users-listing.png
 
@@ -112,14 +189,14 @@ Once you provide a nickname for the user (usually the name of the data enumerato
 
    .. image:: /img/central-users/app-users-created.png
 
-That App User has now been created and granted access to use their mobile device to list, download, and submit to all :ref:`available forms <central-forms-lifecycle>` on the server. To do so, however, their mobile device will have to get set up with this new account. That is what the QR Code you see on this screen is for. Read on to the next section to find out how to use it.
+That App User has now been created and granted access to use their mobile device to list, download, and submit to all :ref:`available forms <central-forms-lifecycle>` within their project. To do so, however, their mobile device will have to get set up with this new account. That is what the QR Code you see on this screen is for. Read on to the next section to find out how to use it.
 
 .. _central-users-app-configure:
 
 Configuring an App User mobile device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A mobile device will need to be configured to access your ODK Central server as a particular App User in order to gain access to the forms and upload submissions on the server. This is done by way of the Collect Settings QR Code.
+A mobile device will need to be configured to access your ODK Central server as a particular App User in order to gain access to the forms and upload submissions within their project. This is done by way of the Collect Settings QR Code.
 
 The QR Code contains information about how to find your ODK Central server, and how to prove to the server that the mobile device belongs to a valid App User. In future versions of ODK Central, it will be possible to specify other settings to be imported to the device as well.
 
@@ -140,5 +217,5 @@ You may wish to revoke an App User's access, for instance if their QR Code has b
 
    .. image:: /img/central-users/app-users-revoke.png
 
-App Users whose access has been revoked will still appear in the App Users listing table, and will still be visible as the submitter of any submissions they uploaded. However, they no longer have a valid QR Code with which they can configure an ODK Collect installation, and any mobile devices already configured with their code will no longer have access to the server.
+App Users whose access has been revoked will still appear in the App Users listing table, and will still be visible as the submitter of any submissions they uploaded. However, they no longer have a valid QR Code with which they can configure an ODK Collect installation, and any mobile devices already configured with their code will no longer have access to the project.
 

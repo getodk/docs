@@ -29,7 +29,10 @@ Learn a little about Open Data Kit
 
 Read about the project and the community at `Open Data Kit's website`_.
 
+Get started with the docs by going to the `ODK Docs GitHub README`_.
+
 .. _Open Data Kit's website: http://opendatakit.org
+.. _ODK Docs GitHub README: https://github.com/opendatakit/docs/blob/master/README.md
 
 .. _odk-accounts:
 
@@ -65,8 +68,8 @@ and the :ref:`ODK Forum <join-forum>`
    .. _get-gh-account:
 
    `GitHub`_ is a popular code storage and collaboration platform.
-   You will need a GitHub account to contribute to Open Date Kit documentation,
-   or any other Open Date Kit projects.
+   You will need a GitHub account to contribute to Open Data Kit documentation,
+   or any other Open Data Kit projects.
 
    - `Open Data Kit on GitHub`_
    - `ODK Docs on GitHub`_
@@ -168,13 +171,17 @@ Initial Setup
 
 .. note::
 
-  Developer and authoring tools 
-  have a lot of options and alternatives. 
+  We generally recommend `starting with the Docker platform`_ for editing
+  docs unless you already have a Sphinx environment set up. 
   Local tools and workflows presented in this guide 
   are what the authors feel would be easiest 
   for newcomers and those unfamiliar with open source.
   
+  However, developer and authoring tools 
+  have a lot of options and alternatives.   
   You should feel free to use your preferred tools.
+  
+  .. _starting with the Docker platform: https://github.com/opendatakit/docs/blob/master/README.md#using-docker
 
 Before you begin working the first time
 you will need to install a few tools 
@@ -546,6 +553,10 @@ on any computer.
 
             If you get an error here, something went wrong.
             Try running the installer again. 
+            You may also have to add Python to your Windows search path.
+            You can do this by going to 
+            :menuselection:`Advanced System Settings -> Environmental Variables -> Edit System Variables`,
+            then adding the path to the directory containing Python.
             If the problem persists, and you can't debug it yourself,
             asks us about it on |odk-slack|_.
 
@@ -625,6 +636,8 @@ on any computer.
 
       The ``(odkenv)`` before the prompt shows that the virtual environment is active.
       You will need to have this active any time you are working on the docs.
+      
+      If the file cannot be found, your activate file may be located under odkenv/scripts/activate.
 
       Later, to deactivate the virtual environment:
 

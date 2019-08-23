@@ -24,7 +24,7 @@ To use ODK Collect:
   collect-filling-forms
   collect-settings
   collect-offline-maps
-  collect-sms-submissions
+..  collect-sms-submissions
 
   
 - Advanced Use and Best Practices

@@ -159,7 +159,7 @@ To delete a form instance, tap the :guilabel:`X` icon next to the instance in th
 Navigating a Form
 -----------------------
 
-Forms in Survey are defined in HTML, CSS, and JavaScript. A default look-and-feel, along with an extensive selection of prompt widgets, is provided by the ODK 2 framework, but this can be customized by your organization. This guide assumes you are using the default look-and-feel.
+Forms in Survey are defined in HTML, CSS, and JavaScript. A default look-and-feel, along with an extensive selection of prompt widgets, is provided by the ODK-X framework, but this can be customized by your organization. This guide assumes you are using the default look-and-feel.
 
   - To advance to the next prompt in a form, press the :guilabel:`Next` button in the upper right.
 

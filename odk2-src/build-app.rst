@@ -14,7 +14,7 @@ Building an Application
 
 .. _build-app:
 
-This will walk you through the steps of building a Data Management Application from scratch. The goal is to start with an empty folder and show you the necessary steps to create a working application that runs on you Android device.
+This will walk you through the steps of building a Data Management Application from scratch. The goal is to start with an empty folder and show you the necessary steps to create a working application that runs on your Android device.
 
 .. note::
 
@@ -35,7 +35,7 @@ You will need to install:
   - :doc:`survey-intro`
   - :doc:`tables-intro`
 
-Before getting started, be sure you have familiarized yourself with the ODK 2 platform. The :doc:`getting-started-2-user` and :doc:`getting-started-2-architect` guides are a good place to start. The :doc:`survey-sample-app` and :doc:`tables-sample-app` are also good reference points.
+Before getting started, be sure you have familiarized yourself with the ODK-X platform. The :doc:`getting-started-2-user` and :doc:`getting-started-2-architect` guides are a good place to start. The :doc:`survey-sample-app` and :doc:`tables-sample-app` are also good reference points.
 
 .. _build-app-clean-app-designer:
 
@@ -58,7 +58,7 @@ When creating a new form, the appropriate directory structure must be created. O
 Creating the Directory Structure
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-New forms must be placed under the :file:`app/config/tables/` directory as described in the :ref:`app-designer-dirs-app-config-tables` section. Given a form with the name *formId*, it will have a *tableId* of the same name unless you explicitly specify otherwise. The directory structure that should be created is :file:`app/config/tables/tableId/forms/formId` (where, under many circumstances, the value for *tableId* will be the same as the value for *formId*). To get started, for Windows open a:program:`cmd` window within your :file:`Application Designer` folder (click the :program:`cmd` shortcut you created earlier), and for Mac/Unix open a :program:`terminal` window within your :file:`Application Designer` folder. Type:
+New forms must be placed under the :file:`app/config/tables/` directory as described in the :ref:`app-designer-dirs-app-config-tables` section. Given a form with the name *formId*, it will have a *tableId* of the same name unless you explicitly specify otherwise. The directory structure that should be created is :file:`app/config/tables/tableId/forms/formId` (where, under many circumstances, the value for *tableId* will be the same as the value for *formId*). To get started, for Windows open a :program:`cmd` window within your :file:`Application Designer` folder (click the :program:`cmd` shortcut you created earlier), and for Mac/Unix open a :program:`terminal` window within your :file:`Application Designer` folder. Type:
 
 .. code-block:: console
 
@@ -93,6 +93,8 @@ With the proper directory structure in place, you can now create your form. The 
     - :th:`setting_name`: has defined options, such as :tc:`form_id`.
     - :th:`value`: the value of the named setting.
     - :th:`display.title.text`: the text shown to the user inside Survey.
+
+    Reminder: the *settings* worksheet, and any other worksheets to be defined later, are to be created within the `.xlsx` file you created above. DO NOT create separate `.xlsx` files for each worksheet.
 
   3. Create the following rows:
 

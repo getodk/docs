@@ -11,6 +11,14 @@ Download the |app_designer_link| zip file.
 
 Unzip the file you downloaded and move the resulting folder to somewhere other than your :file:`Downloads` directory; such as your :file:`Documents` folder.
 
+To open Application Designer, navigate to the location of your unzipped folder in :program:`cmd`, and type: 
+
+.. code-block:: console
+
+   $ grunt
+
+This command runs the script contained in :file:`Gruntfile.js`, so be sure it is in the current directory.  
+
 .. admonition:: Windows Users Tip
 
   You will be opening a :program:`cmd` window and changing your current directory (using the :program:`cd` command) into this directory every time you use this tool. It is therefore useful to create a shortcut that opens a :program:`cmd` window directly into this directory:

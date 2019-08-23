@@ -7,9 +7,9 @@ ODK Sync Endpoint
 
 .. _sync-endpoint-intro:
 
-:dfn:`ODK Sync Endpoint` is an implementation of :doc:`cloud-endpoints-intro`. It runs a server inside a :program:`Docker` container that implements the `ODK 2 REST Protocol <https://github.com/opendatakit/opendatakit/wiki/ODK-2.0-Synchronization-API-(RESTful)>`_.
+:dfn:`ODK Sync Endpoint` is an implementation of :doc:`cloud-endpoints-intro`. It runs a server inside a :program:`Docker` container that implements the `ODK-X REST Protocol <https://github.com/opendatakit/opendatakit/wiki/ODK-2.0-Synchronization-API-(RESTful)>`_.
 
-It communicates with your ODK 2 Android applications to synchronize your data and application files.
+It communicates with your ODK-X Android applications to synchronize your data and application files.
 
 .. _sync-endpoint-auth:
 
@@ -42,7 +42,9 @@ ODK Sync Endpoint requires a database and a *LDAP* directory, you could follow t
 
 .. note::
 
-  All of the following command should be run on your server
+  All of the following commands should be run on your server.
+
+  If you are using git on Windows, make sure git is configured with "core.autocrlf=false" - otherwise it will convert line endings with LF to CRLF, which will cause problems with the .sh-files when used in the Docker containers, thus preventing odk/sync-endpoint from starting and instead just returning with an ":invalid argument"-error. 
 
 Setup instructions:
 
@@ -51,58 +53,74 @@ Setup instructions:
   .. code-block:: console
 
     $ git clone https://github.com/opendatakit/sync-endpoint-default-setup
-
-  2. Then run:
+    
+  2. Navigate into the the "sync-endpoint-default-setup" directory
+  
+  3. Checkout the sync-endpoint code by running:
 
   .. code-block:: console
 
-    $ docker build --pull -t odk/sync_endpoint https://github.com/opendatakit/sync-endpoint-containers.git
+    $ git clone https://github.com/opendatakit/sync-endpoint
+   
+  3. Navigate into the sync-endpoint directory. Most likely
 
-  3. Then run:
+  .. code-block:: console
+
+    $ cd sync-endpoint
+	
+  4. Build sync endpoint by running the following: (NOTE: you will need Apache Maven installed >= 3.3.3)
+  
+  .. code-block:: console
+
+    $ mvn clean install
+	
+  5. Navigate back to the parent "sync-endpoint-default-setup" directory. 
+  
+  6. In the "sync-endpoint-default-setup" directory run:
 
   .. code-block:: console
 
     $ docker build --pull -t odk/sync-web-ui https://github.com/opendatakit/sync-endpoint-web-ui.git
 
-  4. In the cloned repository,
+  7. In the "sync-endpoint-default-setup" cloned repository run:
 
   .. code-block:: console
 
     $ docker build --pull -t odk/db-bootstrap db-bootstrap
 
-  5. In the cloned repository,
+  8. In the "sync-endpoint-default-setup" cloned repository run:
 
   .. code-block:: console
 
     $ docker build --pull -t odk/openldap openldap
 
-  6. In the cloned repository,
+  9. In the "sync-endpoint-default-setup" cloned repository run:
 
   .. code-block:: console
 
     $ docker build --pull -t odk/phpldapadmin phpldapadmin
 
-  7. Enter your hostname in the :code:`security.server.hostname` field in the :file:`security.properties` file.
+  10. Enter your hostname in the :code:`security.server.hostname` field in the :file:`security.properties` file.
 
-  8. If you're not using the standard ports (80 for *HTTP* and 443 for *HTTPS*) enter the ports you're using in the :code:`security.server.port` and :code:`security.server.securePort` fields in the :file:`security.properties`. Then edit the **ports** section under the **sync** section in :file:`docker-compose.yml` to be :code:`YOUR_PORT:8080`.
+  11. If you're not using the standard ports (80 for *HTTP* and 443 for *HTTPS*) enter the ports you're using in the :code:`security.server.port` and :code:`security.server.securePort` fields in the :file:`security.properties`. Then edit the **ports** section under the **sync** section in :file:`docker-compose.yml` to be :code:`YOUR_PORT:8080`.
 
     .. note::
 
       It is important that the right side of the colon stays as 8080. This is the internal port that the web server is looking for.
 
-  9. If you're using your own *LDAP* directory or database, continue with the instructions:
+  12. If you're using your own *LDAP* directory or database, continue with the instructions:
 
     - :ref:`Custom database instructions <sync-endpoint-setup-database>`
     - :ref:`Custom LDAP instructions <sync-endpoint-setup-ldap>`
 
-  10. In the cloned repository:
+  13. In the cloned repository:
 
   .. code-block:: console
 
     $ docker stack deploy -c docker-compose.yml syncldap
 
-  11. The server takes about 30s to start, then it will be running at http://127.0.0.1.
-  12. See the :ref:`LDAP section <sync-endpoint-ldap>` for instructions on configuring users and groups.
+  14. The server takes about 30s to start, then it will be running at http://127.0.0.1.
+  15. See the :ref:`LDAP section <sync-endpoint-ldap>` for instructions on configuring users and groups.
 
 .. _sync-endpoint-setup-database:
 
@@ -182,7 +200,7 @@ Stopping ODK Sync Endpoint
 LDAP
 -----------
 
-  - The default admin account is *cn=admin,dc=example,dc=org*.
+  - The default admin account is  *cn=admin,dc=example,dc=org*.
   - The default password is *admin* - it can be changed with the *LDAP_ADMIN_PASSWORD* environment variable in :file:`ldap.env`
 
   - The default readonly account is *cn=readonly,dc=example,dc=org*.
@@ -208,15 +226,15 @@ If you'd prefer to use the :program:`OpenLDAP` command line utilities, they're i
 
   The phpLDAPadmin server listens on port 40000, it is important that you do not expose this port to the internet.
 
-The following guides assume that you're using :program:`phpLDAPadmin`.
+The following guides assume that you're using :program:`phpLDAPadmin`. In order to perform the following operation, please go to https://127.0.0.1:40000 in your browser.
 
 .. _sync-endpoint-ldap-users:
 
 Creating users
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  1. Click: :guilabel:`login` on the right and login as *admin*.
-  2. Expand the tree view on the right until you see :guilabel:`ou=people`.
+  1. Click: :guilabel:`login` on the left and login as *admin*.
+  2. Expand the tree view on the left until you see :guilabel:`ou=people`.
   3. Click on :guilabel:`ou=people` and choose :guilabel:`Create a child entry`.
   4. Choose the :guilabel:`Generic: User Account` template.
   5. Fill out the form and click :guilabel:`Create Object`.
@@ -227,8 +245,8 @@ Creating users
 Creating groups
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  1. Click: :guilabel:`login` on the right and login as *admin*.
-  2. Expand the tree view on the right until you see :guilabel:`ou=groups`.
+  1. Click: :guilabel:`login` on the left and login as *admin*.
+  2. Expand the tree view on the left until you see :guilabel:`ou=groups`.
   3. Click on :guilabel:`ou=default_prefix` and choose :guilabel:`Create a child entry`.
   4. Choose the :guilabel:`Generic: Posix Group` template.
   5. Fill out the form and click :guilabel:`Create Object`.

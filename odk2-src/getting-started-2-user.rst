@@ -3,16 +3,18 @@ Getting Started User Guide
 
 .. _using-odk-2:
 
-The ODK 2 tools are intended to address limitations of the existing tool set. The 2 Tool Suite consists of:
+A major goal of these ODK-X tools was to eliminate the need for any software engineering skills (for example: Java programming, Android software development environment, source code version control systems) when designing data management applications. The skills required to build a data management application range from scripting a form definition in XLSX (similar to constructing ODK Collect forms using XLSX files processed by the XLSForm tool), to simple web programming -- modifying boilerplate HTML and JavaScript for custom presentations of the collected data. Advanced web programmers can also easily implement entirely custom web pages.
 
-- :doc:`services-intro` - an application that handles database access, file access, and data synchronization services between all of the ODK 2 applications. It also allows you to synchronize data collected by the ODK 2 tools using the 2 protocol with an ODK Aggregate instance.
+The ODK-X tools are intended to address limitations of the existing tool set. The ODK-X Tool Suite consists of:
+
 - :doc:`survey-intro` - a data collection application based upon HTML, CSS, and JavaScript.
 - :doc:`tables-intro` - a data collection and visualization application running on your device.
-- :doc:`cloud-endpoints-intro` - a ready-to-deploy server and data repository with enhancements to support bi-directional data synchronization across disconnected devices.
+- :doc:`services-intro` - an application that handles database access, file access, and data synchronization services between all of the ODK 2 applications. It also allows you to synchronize data collected by the ODK 2 tools using the 2 protocol with an ODK Aggregate instance.
 - :doc:`app-designer-intro` - a design environment for creating, customizing, and previewing your forms.
-- :doc:`suitcase-intro` - a desktop tool for synchronizing data from an ODK 2 server so the data can be exported to CSV format.
+- :doc:`cloud-endpoints-intro` - a ready-to-deploy server and data repository with enhancements to support bi-directional data synchronization across disconnected devices.
+- :doc:`suitcase-intro` - a desktop tool for synchronizing data from an ODK-X server so the data can be exported to CSV format.
 
-This page provides a brief end-to-end walk-through of the ODK 2 tools. It will cover the following topics:
+This page provides a brief end-to-end walk-through of the ODK-X tools. It will cover the following topics:
 
 .. contents:: :local:
 
@@ -21,28 +23,28 @@ This page provides a brief end-to-end walk-through of the ODK 2 tools. It will c
 ODK Data Management Applications
 ----------------------------------------
 
-The ODK 2 Android tools (ODK Survey, ODK Tables, ODK Services, ODK Scan, ODK Sensors Framework, and various ODK Sensor implementations) are APKs that are designed to work together to create a coherent tailored application experience for an end-user.
+The ODK-X Android tools (ODK Survey, ODK Tables, ODK Services, ODK Scan, ODK Sensors Framework, and various ODK Sensor implementations) are Android Application Packages (APKs) that are designed to work together to create a coherent tailored application experience for an end-user.
 
 .. note::
 
-  Together the ODK 2 tools create a platform, on top of which you can build your own data management applications.
+  Together the ODK-X tools create a platform, on top of which you can build your own data management applications.
 
-ODK 2 tools access configuration files and store data under sub-directories of the :file:`opendatakit` directory in the :file:`sdcard` root directory (whether your device has a physical SD card or not): :file:`/sdcard/opendatakit`. User applications constructed using the ODK 2 tools are identified by the name of the sub-directory holding those configuration and data files. Thus, :file:`/sdcard/opendatakit/mytestapp` would contain all the files and data for the *mytestapp* application. The name of that sub-directory, *mytestapp,* is referred to as the **AppName** of that application. The default **AppName** for the ODK tools is *default.* However, when configured appropriately, the ODK tools can run under another **AppName**, accessing configuration and saving data in a different subdirectory under opendatakit.
+ODK-X tools access configuration files and store data under sub-directories of the :file:`opendatakit` directory in the :file:`sdcard` root directory (whether your device has a physical SD card or not): :file:`/sdcard/opendatakit`. User applications constructed using the ODK-X tools are identified by the name of the sub-directory holding those configuration and data files. Thus, :file:`/sdcard/opendatakit/mytestapp` would contain all the files and data for the *mytestapp* application, where *mytestapp,* is the **AppName** of that application. The default **AppName** for the ODK tools is *default.* However, when configured appropriately, the ODK tools can run under another **AppName**, accessing configuration and saving data in a different subdirectory under opendatakit.
 
-This is handled in such a way that each user application is isolated from all other user applications, with separate configurations, data tables, and server settings. This allows one device to run multiple user applications built on top of the ODK 2 tools without any coordination among the teams developing those applications.
-
-A major goal of the 2 tools was to eliminate the need for any software engineering skills (for example: Java programming, Android software development environment, source code version control systems) when designing data management applications. The skills required to build a data management application range from scripting a form definition in XLSX (similar to constructing ODK Collect forms using XLSX files processed by the XLSForm tool), to simple web programming -- modifying boilerplate HTML and JavaScript for custom presentations of the collected data. Advanced web programmers can also easily implement entirely custom web pages.
+This is handled in such a way that each user application is isolated from all other user applications, with separate configurations, data tables, and server settings. This allows one device to run multiple user applications built on top of the ODK-X tools without any coordination among the teams developing those applications.
 
 .. _using-odk-2-joining-a-server:
 
 Joining a device to an Existing Aggregate Server
 ------------------------------------------------------
 
+We will use a Server called Aggregate to get the data for a demo application that we will walk through.
+
 The steps for joining a device to an existing Aggregate server are straightforward.
 
   #. Install the APKs your application uses.
   #. Launch the *home screen* APK, either ODK Survey or ODK Tables.
-  #. Click on the three vertical dots in the upper right corner of the menu bar and choose :menuselection:`Sync` to launch the ODK Services sync activity in the context of your *home screen* APK.
+  #. Click on the circular arrows button to launch the ODK Services sync activity in the context of your *home screen* APK.
   #. Configure ODK Services to point to the ODK Aggregate instance you want to join.
   #. Choose :guilabel:`Sync now` to make the device mirror the contents on that ODK Aggregate server.
 
@@ -50,9 +52,9 @@ Follow the steps described above to join the ODK Aggregate server hosting our si
 
   #. Download and install ODK Services, ODK Tables, and ODK Survey.
   #. Launch ODK Tables (the *home_screen* APK).
-  #. Click on the three vertical dots in the upper right corner of the menu bar and choose :menuselection:`Sync` to launch the ODK Services.
+  #. Click on the circular arrows button to launch the ODK Services.
   #. The default Sync Configuration should be *https://open-data-kit.appspot.com* and :menuselection:`None (anonymous access)`. You will need to change that. It will also default to :menuselection:`Fully Sync Attachments`.
-  #. Click on the three vertical dots in the menu bar, select :menuselection:`Settings --> Server Settings`.
+  #. Click on the gear - shaped button in the menu bar, then select :menuselection:`Server Settings` in the pop-up screen.
   #. Click on :menuselection:`Server URL` and replace the default server with *https://opendatakit-simpledemo.appspot.com* then click :guilabel:`OK`.
   #. Back out of settings then choose :guilabel:`Sync Now`.
 
