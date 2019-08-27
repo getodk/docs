@@ -7,7 +7,7 @@ This repo is the source for ODK documentation.
 The published documentation is at:
 
  - https://docs.opendatakit.org
- - https://docs.opendatakit.org/odk2/
+ - https://docs.opendatakit.org/odk-x/
 
 Please [file an issue](https://github.com/opendatakit/docs/issues) if you can't find what you are looking for.
 
@@ -163,6 +163,7 @@ $ pip install -r requirements.txt
 It can take a long time (>10 minutes) to clone the repo due to the large number of images in the docs. If you get an error such as `Smudge error` or `GitHub's rate limit reached`, run `git checkout -f HEAD` until you get the message `Checking out files: 100% done`.
 
 ### Building the docs 
+### Building the docs
 
 Once your environment is set up, build and serve the docs locally with:
 
@@ -174,9 +175,9 @@ $ python -m http.server 8000
 
 You can then view the docs in your browser at http://localhost:8000.
 
-(Use `odk2` instead of `odk1` to build and serve the ODK2 docs.)
+(Use `odkx` instead of `odk1` to build and serve the ODK-X docs.)
 
-You can also use `make` to build both ODK and ODK2 docs, or to run just a portion of the build process. See available [build tasks](#tasks) below.
+You can also use `make` to build both ODK and ODK-X docs, or to run just a portion of the build process. See available [build tasks](#tasks) below.
 
 ## <a name="tasks"></a>Build tasks
 
@@ -192,7 +193,7 @@ For a specific ODK version:
 | -------- | :-----------: | :---: | :---------: | :-----------: | :-----------------: | :----------------: | :----------------: |
 | **Options** | odk1-autobuild | odk1-build | odk1-copy |  odk1-latex |  odk1-style-check | odk1-spell-check |    odk1-check     |
 
-To build ODK-X docs, just replace `odk1` with `odk2`. 
+To build ODK-X docs, just replace `odk1` with `odkx`. 
 
 
 ## How to contribute?
