@@ -147,17 +147,21 @@ This will reopen the form instance, which you are then free to edit. Form instan
 
 .. _uploading-forms:
 
-Uploading Finalized Forms
-===========================
+Transferring Finalized Forms
+============================
 
-Eventually, you will want to upload completed form instances for analysis and data aggregation. 
+To perform analysis on data collected with the Collect app, you will need to get the filled forms off of the devices. Generally, this is done by uploading them to an ODK server or Google Sheets. To do this, you will first need to :doc:`configure a server <collect-connect>`.
 
-Doing this from within the Collect app marks the forms as :formstate:`sent`. :formstate:`Sent` forms are no longer editable, but they remain viewable until they are deleted. 
+In some cases, you may want to :ref:`pull filled forms directly from a device <pulling-forms-with-briefcase>`. This can be simpler than setting up a server if you are only using a small number of devices or when there is no Internet access. It can also be helpful to recover from submission failures.
 
-Uploading to Aggregate or Google Drive
-----------------------------------------
+.. _uploading-to-aggregate-or-google-drive:
 
-If you are connected to :doc:`an ODK Aggregate server  <collect-connect-aggregate>` or :doc:`Google Drive Account  <collect-connect-google>`, use :guilabel:`Send Finalized Forms` to upload :formstate:`Finalized` form instances. 
+Sending Finalized Forms to a Server
+-----------------------------------
+
+If you are connected to :doc:`a server <collect-connect-aggregate>` or :doc:`Google Drive Account <collect-connect-google>`, use :guilabel:`Send Finalized Forms` to upload :formstate:`Finalized` form instances.
+
+Uploading a filled form from within the Collect app marks that form as :formstate:`sent`. :formstate:`Sent` forms are no longer editable, but they remain viewable until they are deleted. 
 
 .. image:: /img/collect-forms/main-menu-send-finalized.* 
   :alt: The Main Menu of the Collect app. The *Send Finalized Form* option is circled in red.
@@ -173,16 +177,26 @@ If you are connected to :doc:`an ODK Aggregate server  <collect-connect-aggregat
 
   Using Google Drive as a server, filled forms are sent to the first sheet in a given spreadsheet, no matter what its name is. If you use one spreadsheet to keep a form definition and to collect filled forms make sure the sheet you expect to be filled is in the first place.
 
-Pulling forms with Briefcase
--------------------------------
+.. _uploading-previously-sent-forms:
 
-For local form management, use :doc:`ODK Briefcase  <briefcase-using>` to pull :formstate:`Finalized` form instances to your local computer.
+Sending Previously-Sent Forms
+-----------------------------
+
+If you can't find a submission that you expect on your server or need to re-send a submission for other reasons, you can change the view of the :guilabel:`Send Finalized Forms` screen to show both sent and unsent forms.
+
+To show sent and unsent forms:
+  :menuselection:`⋮ --> Change View --> Show Sent and Unsent Forms`
+
+.. image:: /img/collect-forms/send-finalized-change-view.*
+  :alt: The Send Finalized Forms screen of the Collect app. The *Change View* option is circled in red.
 
 
-Pulling forms with ``adb``
-----------------------------
+.. _pulling-forms-with-briefcase:
 
-You can copy form instances from the device using :command:`adb pull`, however this will not update the state of the form to :formstate:`Sent`.
+Pulling Forms into Briefcase
+-----------------------------
+
+:doc:`ODK Briefcase  <briefcase-using>` is a desktop application that can be used to pull filled forms to your local computer. You will first need to :ref:`transfer the filled forms to your computer <pull-from-collect>`. This will not update the state of the form to :formstate:`Sent`.
 
 .. _deleting-forms:
 
