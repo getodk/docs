@@ -494,6 +494,17 @@ appearance
 
 .. image:: /img/form-widgets/myanmar-calendar-widget.*
   :alt:
+
+Persian calendar
+""""""""""""""""""
+
+type
+  :tc:`date`
+appearance
+  :tc:`persian`
+
+.. image:: /img/form-widgets/persian-calendar-widget.*
+  :alt:
    
 .. _time-widget:
 
