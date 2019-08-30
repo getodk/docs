@@ -37,7 +37,7 @@ Offline maps quick start
 #. Open a :ref:`geopoint <geopoint-maps>`, :ref:`geotrace <geotrace-widget>`, or :ref:`geoshape <geoshape-widget>` question.
 #. While viewing the map, you can also select the offline layer using the button that looks like a stack of layers.
 
-MBTiles files typically contain `metadata <https://github.com/mapbox/mbtiles-spec/blob/master/1.3/spec.md#metadata>` that specifies the range of zoom levels in which they are visible.  If you are viewing at an appropriate zoom level, your offline layer should be displayed. If you don't see it, you might need to zoom in or out until the zoom level is in the range specified by the MBTiles file.
+MBTiles files typically contain `metadata <https://github.com/mapbox/mbtiles-spec/blob/master/1.3/spec.md#metadata>`_ that specifies the range of zoom levels in which they are visible.  If you are viewing at an appropriate zoom level, your offline layer should be displayed. If you don't see it, you might need to zoom in or out until the zoom level is in the range specified by the MBTiles file.
 
 If the tileset has transparency (PNG or PBF tiles only), the selected basemap will show through. If it does not have transparency or you are offline, only your offline layer will be displayed.
 
