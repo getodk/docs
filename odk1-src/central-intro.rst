@@ -21,6 +21,7 @@ We have a lot of exciting ideas for the future of Central, and we look forward t
 
    - With form and submission multimedia or data attachments
    - With a table preview of submission data
+   - Encrypted forms (self-supplied or project managed keys)
    - OData live data feed for analysis with tools like Excel, Power BI, and Tableau
 
  - Integrated checklist-based help system
@@ -28,12 +29,13 @@ We have a lot of exciting ideas for the future of Central, and we look forward t
  - Clean and modern REST API for integration and extensibility
  - High performance on low-cost hardware or cloud providers
  - ODK Briefcase-compatible data output
+ - ODK Briefcase push/pull support
 
 Here are some (but not all) key features we **do not yet** support:
 
  - Customizable user roles
- - Encrypted forms
- - ODK Briefcase push/pull support
+
+See `What is coming in Central <https://forum.opendatakit.org/t/whats-coming-in-central-over-the-next-few-years/19677>`_ for more on future features.
 
 .. _central-intro-who:
 
