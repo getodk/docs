@@ -22,8 +22,8 @@ help:
 odk1-autobuild:
 	sphinx-autobuild --poll -p 8080 -H 0.0.0.0 odk1-src odk1-build
 
-odkX-autobuild:
-	sphinx-autobuild --poll -p 8080 -H 0.0.0.0 odkX-src odkX-build
+odkx-autobuild:
+	sphinx-autobuild --poll -p 8080 -H 0.0.0.0 odkx-src odkx-build
 
 odk1-clean:
 	rm -rf $(COMPILE1_SRCDIR)
