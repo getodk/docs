@@ -656,7 +656,7 @@ and can be extended to any depth.
 `This example form`__ shows a three-tiered cascade:
 state, county, city.
 
-.. _cascading select: http://xlsform.org/#cascade
+.. _cascading select: http://xlsform.org/#cascading-selects
 
 __ https://docs.google.com/spreadsheets/d/1CCjRRHCyJXaSEBHPjMWrGotnORR4BI49PoON6qK01BE/edit#gid=0
 

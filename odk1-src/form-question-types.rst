@@ -494,6 +494,17 @@ appearance
 
 .. image:: /img/form-widgets/myanmar-calendar-widget.*
   :alt:
+
+Persian calendar
+""""""""""""""""""
+
+type
+  :tc:`date`
+appearance
+  :tc:`persian`
+
+.. image:: /img/form-widgets/persian-calendar-widget.*
+  :alt:
    
 .. _time-widget:
 
@@ -1190,6 +1201,18 @@ type
 Location widgets
 ------------------
 
+Location widgets capture one or more points representing locations on Earth. Each point is represented as four numbers separated by spaces: latitude, longitude, altitude in meters, and accuracy radius in meters.
+
+For example, if a Collect user captured a point while at the coordinates 12°22'17.0"N 1°31'10.9"W, with a reported accuracy radius of 17.4 meters, and at 305 meters above sea level, the geopoint representation would be:
+
+`12.371400 -1.519700 305 17.4`
+
+Multiple points that form lines or shapes are separated by semicolons.
+
+.. note::
+
+  The accuracy radius is an estimate of what Android calls the `radius of 68% confidence <https://developer.android.com/reference/android/location/Location.html#getAccuracy()>`_: there is a 68% chance that the true location falls within this radius. This is only an estimate reported by the Android system based on the available sensors (GPS, network, etc). The accuracy radius itself may be more or less reliable depending on the sensor(s) used and current conditions.
+
 .. contents::
   :local:
 
@@ -1203,7 +1226,7 @@ type
 appearance
   *none*
 
-Captures the current location from the device.
+Captures the current geolocation from the device.
 
 For a geopoint with a user-selected location,
 see :ref:`placement-map-widget` 
@@ -1250,11 +1273,13 @@ type
 appearance
   :tc:`maps`
 
-The default :ref:`geopoint-widget` does not display a map to the user. With the :tc:`maps` appearance attribute, a map of the recorded location is shown to the user.
+The default :ref:`geopoint-widget` does not display a map to the user. When the appearance attribute is :tc:`maps`, the widget displays a map to help the user get oriented and confirm that the selected point is correct and sufficiently accurate.
 
-The user cannot select a different location on the map. 
-For a geopoint with a user-selected location,
-see :ref:`placement-map-widget`.
+When the device's geolocation is available, it is displayed on the map by a blue cross. A blue shaded circle around the cross represents the accuracy radius of the geolocation. The "add marker" button at the top right of the screen can be tapped to add a point at the location indicated by the middle of the blue cross. The selected point is represented by a small circle with a red outline.
+
+When the map view is opened again with a selected point, the map is centered on that point. To change the selection, first tap the "trash" icon and then select a new point.
+
+For a geopoint with a location that the user can manually select or adjust, see :ref:`placement-map-widget`.
 
 .. rubric:: XLSForm
 
@@ -1273,12 +1298,16 @@ type
 appearance
   :tc:`placement-map`
 
-The default :ref:`geopoint-widget` does not allow the user to select a location.
+The default :ref:`geopoint-widget` does not allow the user to place the point anywhere other than the device's current geolocation.
 
-A geopoint with the appearance attribute :tc:`placement-map` allows the user to select a geopoint from a map.
+A geopoint with the appearance attribute :tc:`placement-map` allows the user to select any point from a map. The user can either long press to place the point anywhere, or, if the device knows its geolocation, tap on the "add point" button at the top right of the screen. The selected point is represented by a small circle with a red outline (see arrow in screenshot).
+
+The save button saves the selected point and returns to the question screen. If the point was selected by long pressing, the accuracy radius and altitude will both be 0. If the device's geolocation was selected, the accuracy radius will be greater than 0.
+
+When the map view is opened again with an existing point, the map is centered on the selected point. To change the selection, first tap the "trash" icon and then select a new point.
 
 .. image:: /img/form-widgets/geopoint-placement-map.*
-  :alt: A map app opens on an Android phone. Above the map is the message: "Long press to place mark or tap add marker button." Along the right side of the map are buttons: Add Marker, Zoom to point, Layers, Trash, Save.
+  :alt: A map opens on an Android phone. Above the map is the message: "Long press to place mark or tap add marker button." Along the right side of the map are buttons: Add point, Delete point, Zoom to geolocation, Layers, Trash, Save. A small circle with red outline identifies the selected location. An arrow points to that point.
 
 .. rubric:: XLSForm 
 
@@ -1297,39 +1326,37 @@ type
 appearance
   *none*
 
-A line or polygon of coordinates tracking actual device movement. The user can specify one of two location-recording modes:
+A series of points. Identical to :ref:`geoshape <geoshape-widget>` except that the first and last point may be different and at least 2 points are required.
 
-Manual Mode 
-  The user taps the device to place a marker as desired while moving.
+Points can be entered either by tapping the screen to place each point, or by taking readings of the device's geolocation over time. On a map, each coordinate is represented by small circles with red outlines. These are connected by red lines.
 
-Automatic Mode
-  The app creates a marker on a regular time interval (default: 20 seconds) as the user moves.
+To collect a geotrace, first select the location-recording mode by tapping the "add point" button in the upper right side of the screen. The selected mode will be displayed in the gray bar at the bottom of the screen. While point collection is ongoing, the "add marker" button changes to a "pause" button. The "back arrow" button can be used to remove the last-entered point either when actively collecting points or when paused. Any point can be manually moved at any time by tapping on it and dragging it. The mode can only be changed if an existing line is first cleared by tapping the "trash" button. Recording must be paused to clear the existing line.
 
+.. tip::
+  Points that were entered by tapping or adjusted by dragging will always have an accuracy radius of 0. Points that were read from the device location will never have an accuracy radius of 0.
 
-.. image:: /img/form-widgets/geotrace-start.*
+Once the trace has been saved, the coordinates of its points will be displayed on the question screen. The trace can be opened for manual editing by tapping to add more points, moving existing points or deleting the last-added point. After a trace has been saved once, it cannot be added to in manual or automatic location recording modes.
+
+The three location recording modes are:
+
+Placement by tapping
+  The user taps the device to place points.
+
+Manual location recording
+  The user chooses when to tap the "record a point" button at the top of the screen to capture the device geolocation at that moment.
+
+Automatic location recording
+  The user is prompted to select a recording interval and accuracy requirement. If the accuracy requirement is set to None, points are always collected at the recording interval. If the accuracy requirement is set to any other value, a point will only be captured if it meets the requirement. For example, given a recording interval of 20s and an accuracy requirement of 10m, the app places a point at the device location every 20s if the location is accurate to 10m or better.
+
+.. warning::
+
+  If you are using Aggregate and you would like to collect more than 5 points at a time, you should :doc:`increase the database field length to over 255 characters <aggregate-field-length>`. Otherwise, additional points will be lost.
+
+.. image:: /img/form-widgets/geotrace-question.*
   :alt: A geotrace form widget displayed in the ODK Collect app on an Android phone. The question text is "Where have you been?" and below that is a button with the label "Start GeoTrace."
 
-.. image:: /img/form-widgets/geotrace1.*
-  :alt: A modal popup over a map. The modal headline is "Zoom to..." Below that are two options: "Zoom to current location" (selected) and "Zoom to saved feature". In the bottom-right of the modal is a Cancel button.
-
-.. image:: /img/form-widgets/geotrace2.*
-  :alt: A map displayed in the ODK Collect App on an Android phone. Above the map is the instruction: Wait for lock, then tap add marker button start. On the right side are five icon buttons stacked vertically: Add marker, Zoom, Layers, Trash, Save.
-
-.. image:: /img/form-widgets/geotrace3.*
-  :alt: The same map as displayed in the previous image. Over the map is a modal popup. The modal headline is "Select GeoTrace Mode," followed by two radio-button (single select) options: Manual Mode (selected) and Automatic Mode. In the bottom-right are buttons for Cancel and Start.
-
-.. image:: /img/form-widgets/geotrace4.*
-  :alt: The same modal popup as in the previous image, but the Automatic Mode radio button is not selected. Below it are two drop-down select boxes. Their values are "20" and "seconds."
-
-.. image:: /img/form-widgets/geotrace5.*
-  :alt: The same map as displayed previously, but now a series of red markers form a line across the map.
-
-.. image:: /img/form-widgets/geotrace6.*
-  :alt: The same map as previously, with a new modal popup. The headline of the modal is "Save GeoTrace as" followed by two options: Save as Polygon and Save as Polyline. In the bottom-right is a Cancel button.
-
-.. image:: /img/form-widgets/geotrace7.*
-  :alt: The Geotrace form widget, as shown previously. The question text is "Where have you been?" and the button label is "View or Change GeoTrace." Below that is a list of lat/long coordinates.
-
+.. image:: /img/form-widgets/geotrace-collected.*
+  :alt: A map displayed in the ODK Collect App on an Android phone. Above the map is a green bar showing current location accuracy radius. On the right side are six icon buttons stacked vertically: Add point, Delete point, Zoom to geolocation, Layers, Trash, Save. A series of markers form a line across the map.
 
 .. rubric:: XLSForm
 
@@ -1338,11 +1365,6 @@ Automatic Mode
 
   geotrace, trace_example, Where have you been?
 
-.. warning::
-
-  If you are using Aggregate and you would like to collect more than 5 points at a time, you should :doc:`increase the database field length to over 255 characters <aggregate-field-length>`. Otherwise, additional points will be lost.
-  
-  
 .. _geoshape-widget:
 
 Geoshape
@@ -1353,22 +1375,38 @@ type
 appearance
   *none*
 
-Captures a user-entered series of location coordinates, forming a polygon.
+A series of points that form a closed polygon. Identical to :ref:`geotrace <geotrace-widget>` except that the first and last point are always the same and at least 3 points are required.
 
-.. image:: /img/form-widgets/geoshape-start.*
-  :alt: The GeoShape form widget, as displayed in the ODK Collect app on an Android phone. The question text is "Select an Area." Below that is a button labeled "Start GeoShape."
+Points can be entered either by tapping the screen to place each point, or by taking readings of the device's geolocation over time. On a map, each coordinate is represented by small circles with red outlines. These are connected by red lines.
 
-.. image:: /img/form-widgets/geoshape1.*
-  :alt: A modal popup over a map. The modal headline is "Zoom to..." Below that are two options: "Zoom to current location" (selected) and "Zoom to saved feature". In the bottom-right of the modal is a Cancel button.
+To collect a geoshape, first select the location-recording mode by tapping the "add point" button in the upper right side of the screen. The selected mode will be displayed in the gray bar at the bottom of the screen. While point collection is ongoing, the "add marker" button changes to a "pause" button. The "back arrow" button can be used to remove the last-entered point either when actively collecting points or when paused. Any point can be manually moved at any time by tapping on it and dragging it. The mode can only be changed if an existing line is first cleared by tapping the "trash" button. Recording must be paused to clear the existing line.
 
-.. image:: /img/form-widgets/geoshape2.*
-  :alt: A map displayed in the ODK Collect App on an Android phone. Above the map is the instruction: "Long press to place marks." On the right side are five icon buttons stacked vertically: Add marker, Zoom, Layers, Trash, Save.
+.. tip::
+  Points that were entered by tapping or adjusted by dragging will always have an accuracy radius of 0. Points that were read from the device location will never have an accuracy radius of 0.
 
-.. image:: /img/form-widgets/geoshape3.*
-  :alt: The same map as displayed previously, but now a series of red markers form a polygon across the map.
+Once the shape has been saved, the coordinates of its points will be displayed on the question screen. The shape can be opened for manual editing by tapping to add more points, moving existing points or deleting the last-added point. After a shape has been saved once, it cannot be added to in manual or automatic location recording modes.
 
-.. image:: /img/form-widgets/geoshape4.*
-  :alt: The GeoShape form widget shown previously. The question text is "Select an Area." The button label is now "View or Change GeoShape." Below the button is a list of lat/long coordinates.
+The three location recording modes are:
+
+Placement by tapping
+  The user taps the device to place points.
+
+Manual location recording
+  The user chooses when to tap the "record a point" button at the top of the screen to capture the device geolocation at that moment.
+
+Automatic location recording
+  The user is prompted to select a recording interval and accuracy requirement. If the accuracy requirement is set to None, points are always collected at the recording interval. If the accuracy requirement is set to any other value, a point will only be captured if it meets the requirement. For example, given a recording interval of 20s and an accuracy requirement of 10m, the app places a point at the device location every 20s if the location is accurate to 10m or better.
+
+.. warning::
+
+  If you are using Aggregate and you would like to collect more than 5 points at a time, you should :doc:`increase the database field length to over 255 characters <aggregate-field-length>`. Otherwise, additional points will be lost.
+
+.. image:: /img/form-widgets/geoshape-question.*
+  :alt: A geoshape form widget displayed in the ODK Collect app on an Android phone. The question text is "Select an Area." Below that is a button labeled "Start GeoShape."
+
+
+.. image:: /img/form-widgets/geoshape-collected.*
+  :alt: A map displayed in the ODK Collect App on an Android phone. Above the map is a green bar showing current location accuracy radius. On the right side are six icon buttons stacked vertically: Add point, Delete point, Zoom, Layers, Trash, Save.
 
 .. rubric:: XLSForm
 
@@ -1376,10 +1414,6 @@ Captures a user-entered series of location coordinates, forming a polygon.
   :header: type, name, label
 
   geoshape, shape_example, Select an area
-
-.. warning::
-
-  If you are using Aggregate and you would like to collect more than 5 points at a time, you should :doc:`increase the database field length to over 255 characters <aggregate-field-length>`. Otherwise, additional points will be lost.
 
 .. _geoshape-area:
     

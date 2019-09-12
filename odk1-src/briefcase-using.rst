@@ -66,6 +66,14 @@ Briefcase will ask for the directory on your computer where you have placed Coll
 
   When pulling from Collect, Briefcase pulls incomplete, saved, or finalized forms. After you pull forms into Briefcase, it is important that you delete them from Collect. Otherwise, the next time you pull, you will create duplicates.
 
+.. tip::
+
+  If you have Android developer tools installed, another option is to use :doc:`the Android Debug Bridge <collect-adb>` to pull filled forms:
+
+  .. code-block:: console
+
+      $ adb pull /sdcard/odk/instances
+
 .. _pull-form-definition:
 
 Form definition
