@@ -48,23 +48,23 @@ ODK Aggregate works with any of these database servers:
 Installation procedure
 --------------------------
 
-1. Install the Java 8 JRE:
+1. Install Java 8.0.221 or higher. We recommend using OpenJDK 11 LTS from AdoptOpenJDK:
 
   .. tabs::
 
     .. group-tab:: Windows
 
-      Download `the Windows installer <https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html>`_, and run it as administrator.
+      Download `OpenJDK 11 LTS <https://adoptopenjdk.net/>`_ and run it as administrator.
 
     .. group-tab:: macOS
 
-      Download `the macOS DMG installer <https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html>`_, and open it.
+      Download `OpenJDK 11 LTS <https://adoptopenjdk.net/>`_ and install it.
 
     .. group-tab:: Ubuntu
 
       .. code-block:: console
 
-        sudo apt-get install openjdk-8-jre
+        sudo apt-get install openjdk-11-jre
 
 2. Ensure that the installed Java bin directory is in the `PATH environment variable <https://docs.oracle.com/javase/tutorial/essential/environment/paths.html>`_.
 
