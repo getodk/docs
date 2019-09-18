@@ -3,7 +3,7 @@ Setting Up ODK Briefcase
 
 .. admonition:: Before you begin...
 
-  You should be able to run Briefcase with Java 8 or higher, but we recommend using `Java 11 LTS <https://www.oracle.com/technetwork/java/javase/downloads/index.html>`_.
+  You must run Briefcase with Java 8.0.221 or higher. We recommend installing `OpenJDK 11 LTS <https://adoptopenjdk.net/>`_ from AdoptOpenJDK.
 
 #. Download the ODK Briefcase JAR file from `GitHub <https://github.com/opendatakit/briefcase/releases/latest>`_.
 

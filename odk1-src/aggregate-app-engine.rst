@@ -14,7 +14,7 @@ Installing Aggregate on Google App Engine
 
 .. admonition:: Before you begin...
 
-  - Make sure the `Java 8 JDK <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>`_ or `higher <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`_ is installed on your system.
+  - Make sure Java 8.0.221 or higher is installed on your system. We recommend using `OpenJDK 11 LTS <https://adoptopenjdk.net/>`_ from AdoptOpenJDK.
 
   - You will need a Gmail account to use App Engine. This Gmail account will be the owner of the Google Cloud Platform project under which your App Engine will execute.
 
