@@ -25,9 +25,9 @@ Requirements
 ====================
 Encrypted forms require the following *minimum versions* of the ODK tools
 
-- :doc:`ODK Collect 1.2 Release Candidate 1 (RC1) or higher  <collect-install>`
+- :doc:`ODK Collect 1.2 Release Candidate 1 (RC1) or higher <collect-install>`
 - :doc:`ODK Aggregate 1.0.4 Production or higher <aggregate-install>`
-- :doc:`ODK Briefcase 1.0 Production or higher<briefcase-install>`
+- :doc:`ODK Briefcase 1.0 Production or higher <briefcase-install>`
 
 .. warning::
 
@@ -50,13 +50,7 @@ While ODK Collect attempts to remove all unencrypted copies of a finalized form 
 Configuration
 ====================
 
-For ODK Briefcase, you must download and install the *Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 6* from the `Java download site <http://www.oracle.com/technetwork/java/javase/downloads/index.html#other>`_; for previous versions of Java, it is available `here <http://www.oracle.com/technetwork/java/javase/downloads/jce-7-download-432124.html>`_. This is required for decryption to be successful.
-
-To install the JCE:
-
-   1. Select the downloaded UCE zip archive file in the file viewer.
-   2. Right-click, choose :guilabel:`Extract files...` and extract the files from the downloaded zip archive.
-   3. Navigate into the extracted directory tree and copy the :file:`local_policy.jar` and :file:`US_export_policy.jar` files to the :file:`lib\security` directory under the installation directory of the Java Runtime Environment (JRE) of your computer, replacing earlier versions of these files.
+For ODK Briefcase, you must use Java 8.0.221 or higher. We recommend installing `OpenJDK 11 LTS <https://adoptopenjdk.net/>`_ from AdoptOpenJDK.
 
 Windows
 ~~~~~~~~~~~~~~~

@@ -38,6 +38,8 @@ To enable logging for a form, add a row of :th:`type` :tc:`audit` and :th:`name`
 
 A form may contain at most one row of :th:`type` :tc:`audit`.
 
+.. _audit-geolocation-tracking:
+
 Location tracking
 ~~~~~~~~~~~~~~~~~
 
