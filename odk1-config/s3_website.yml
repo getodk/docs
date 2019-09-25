@@ -30,11 +30,18 @@ cloudfront_wildcard_invalidation: true
 # folder redirects. executed from top to bottom.
 routing_rules:
   - condition:
+      key_prefix_equals: odk2/
+    redirect:
+      host_name: docs.opendatakit.org
+      replace_key_prefix_with: odk-x/
+      http_redirect_code: 301
+  - condition:
       key_prefix_equals: odkx/
     redirect:
       host_name: docs.opendatakit.org
       replace_key_prefix_with: odk-x/
       http_redirect_code: 301
+
 
 redirects:
   # use url/index.html syntax to enable url, url/, url/index.html and hash passthrough
