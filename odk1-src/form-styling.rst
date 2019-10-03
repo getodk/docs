@@ -25,7 +25,9 @@ can all be styled using
 Media
 ------
 
-You can include questions in your form that display images or that play video or audio files by including a :th:`media` column in your `XLSForm <http://xlsform.org/#media>`_.
+You can include questions in your form that display images or that play video or
+audio files by including a :th:`media` column in your `XLSForm <http://xlsform.org/#media>`_.
+Files referenced should be included :ref:`in your form's media folder <loading-form-media>`.
 
 Images
 ~~~~~~~~
