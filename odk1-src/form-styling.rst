@@ -79,10 +79,8 @@ Adding video to a question adds a button that will play the video clip full scre
 
   integer, people, How many people do you see in the video?, people.mp4
 
-.. _markdown-in-forms:
-
 Autoplaying Media
-~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 Audio and video on questions can also be played automatically when a question is viewed by adding
 an :th:`autoplay` column specifying either :th:`audio` or :th:`video`.
@@ -99,6 +97,8 @@ Some considerations for autoplaying:
 * Audio/video included in select choices will be autoplayed after the question's media in display order
 * If using a `field-list` appearance for a group no media will be autoplayed
 * Appearances for selects that hide buttons will disable autoplay for media
+
+.. _markdown-in-forms:
 
 Markdown
 ---------
