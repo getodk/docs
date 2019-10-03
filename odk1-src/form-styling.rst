@@ -81,6 +81,25 @@ Adding video to a question adds a button that will play the video clip full scre
 
 .. _markdown-in-forms:
 
+Autoplaying Media
+~~~~~~~~
+
+Audio and video on questions can also be played automatically when a question is viewed by adding
+an :th:`autoplay` column specifying either :th:`audio` or :th:`video`.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, media::audio, autoplay
+
+  text, feel, How does this song make you feel?, amazing.mp3, audio
+
+Some considerations for autoplaying:
+
+* Audio/video included in select choices will be autoplayed after the question's media in display order
+* If using a `field-list` appearance for a group no media will be autoplayed
+* Appearances for selects that hide buttons will disable autoplay for media
+
 Markdown
 ---------
 
