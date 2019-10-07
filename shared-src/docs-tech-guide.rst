@@ -31,7 +31,7 @@ Read about the project and the community at `Open Data Kit's website`_.
 
 Get started with the docs by going to the `ODK Docs GitHub README`_.
 
-.. _Open Data Kit's website: http://opendatakit.org
+.. _Open Data Kit's website: https://opendatakit.org
 .. _ODK Docs GitHub README: https://github.com/opendatakit/docs/blob/master/README.md
 
 .. _odk-accounts:
@@ -41,13 +41,13 @@ Set up collaboration accounts
 
 Open Data Kit is a collaborative community.
 Before diving in as a contributor,
-set up accounts on our three main collaboration platforms, 
+set up accounts on our three main collaboration platforms,
 :ref:`GitHub <get-gh-account>`,
 the :ref:`ODK Developer Slack <join-slack>`,
 and the :ref:`ODK Forum <join-forum>`
 
 .. tip::
-   
+
       As you are setting up your accounts,
       keep in mind that it is very helpful (but not required)
       to use the same (or similar) username
@@ -102,7 +102,7 @@ and the :ref:`ODK Forum <join-forum>`
 
    .. _join-forum:
 
-   The `Open Data Kit Forum <ODK Forum>`_ is the main place for 
+   The `Open Data Kit Forum <ODK Forum>`_ is the main place for
    support questions and conversations that affect the whole ODK community
    (users and other stake holders, as well as contributors).
 
@@ -158,7 +158,7 @@ and the :ref:`ODK Forum <join-forum>`
    - My ODK application crashed.
 
    .. rubric:: But don't worry about posting a question in the wrong place.
-   
+
    It is better to ask a question in the "wrong" venue
    than to not ask the question at all.
    Many of the same people are present in all three places,
@@ -172,19 +172,19 @@ Initial Setup
 .. note::
 
   We generally recommend `starting with the Docker platform`_ for editing
-  docs unless you already have a Sphinx environment set up. 
-  Local tools and workflows presented in this guide 
-  are what the authors feel would be easiest 
+  docs unless you already have a Sphinx environment set up.
+  Local tools and workflows presented in this guide
+  are what the authors feel would be easiest
   for newcomers and those unfamiliar with open source.
-  
-  However, developer and authoring tools 
-  have a lot of options and alternatives.   
+
+  However, developer and authoring tools
+  have a lot of options and alternatives.
   You should feel free to use your preferred tools.
-  
+
   .. _starting with the Docker platform: https://github.com/opendatakit/docs/blob/master/README.md#using-docker
 
 Before you begin working the first time
-you will need to install a few tools 
+you will need to install a few tools
 on your computer.
 
 You should only need to do this one time
@@ -193,9 +193,9 @@ on any computer.
 #. Find and open a terminal or command line.
 
    .. tabs::
-   
+
       .. group-tab:: Windows
-      
+
          .. rubric:: Windows versions prior to Windows 10
 
          Use `Windows PowerShell`_. (Not the DOS Prompt.)
@@ -221,55 +221,55 @@ on any computer.
 
          .. _Windows Subsystem for Linux: https://docs.microsoft.com/en-us/windows/wsl/install-win10
 
-         If you decide to use the Powershell, 
-         follow the **Powershell** or **Windows** instructions 
+         If you decide to use the Powershell,
+         follow the **Powershell** or **Windows** instructions
          throughout the contributor guides.
 
          If you decide to use the Linux subsystem,
-         follow the **Bash** or **Windows** instructions 
+         follow the **Bash** or **Windows** instructions
          throughout the contributor guide.
 
 
       .. group-tab:: Mac
-      
+
          Use the :program:`Terminal` app,
          or another Bash-like shell.
 
          .. image:: /img/docs-tech-guide/terminal-icon.*
             :alt: The Terminal Icon in Mac OS.
-            
+
          If you've never used it before,
          the Terminal is probably in the :guilabel:`Other` directory
          in your App collection.
-         
+
          Follow the **Bash** or **Mac** instructions
          throughout the contributor guide.
-         
+
          .. admonition:: Optional: Install Homebrew
-         
-            `Homebrew`_ is a package manager for Mac OS. 
+
+            `Homebrew`_ is a package manager for Mac OS.
             It makes it easier to install other apps and tools
-            from the command line. 
-            
+            from the command line.
+
             Follow the `installation instructions`_.
-            
+
             .. _Homebrew: https://brew.sh/
             .. _installation instructions: Homebrew
 
       .. group-tab:: Linux
-      
+
          Use a Bash-like shell of your choosing,
          and follow the **Bash** or **Linux** instructions
          throughout the contributor guide.
-         
-         You will also need to be familiar with 
+
+         You will also need to be familiar with
          the relevant package manager for your system.
 
    .. admonition: Understanding terminal commands
-      :name: understanding-terminal 
+      :name: understanding-terminal
 
       When you open the Terminal or PowerShell,
-      you will see a bunch of symbols that include 
+      you will see a bunch of symbols that include
       your username and computer name.
       This is called the :term:`prompt`.
       You type commands after the prompt,
@@ -281,22 +281,22 @@ on any computer.
       and the ``>`` symbol to represent the PowerShell prompt.
       The text that follows the ``$`` or ``>`` symbol
       is the command you need to type or copy.
-      
+
       Below the command, there is sometimes output from the command.
-      
+
       .. tabs::
-      
+
          .. group-tab:: bash
-      
+
             .. code-block::
-            
+
                $ command is here - type this
                Output is here. Don't type this.
-       
+
          .. group-tab:: PowerShell
-         
+
             .. code-block::
-            
+
                > command is here - type this
                Output is here. Don't type this.
 
@@ -308,22 +308,22 @@ on any computer.
 
       To make things more clear,
       the docs will additionally prefix the prompt with a
-      :term:`path` (showing what directory you are in) 
+      :term:`path` (showing what directory you are in)
       whenever that is important.
 
       .. tabs::
-      
+
          .. group-tab:: bash
-      
+
             .. code-block::
-            
+
                /odk-docs/ $ command is here - type this
                Output is here. Don't type this.
-       
+
          .. group-tab:: PowerShell
-         
+
             .. code-block::
-            
+
                /odk-docs/ > command is here - type this
                Output is here. Don't type this.
 
@@ -334,7 +334,7 @@ on any computer.
    (Similar to the undo history in a document editing program.)
 
    .. tabs::
-   
+
       .. group-tab:: Linux
 
          Use your distribution's package management system
@@ -354,7 +354,7 @@ on any computer.
          .. _git installer for Mac: https://git-scm.com/download/mac
 
          .. rubric:: Option 2: Use Homebrew to install git
-         
+
          .. code:: console
 
             $ brew install git
@@ -370,7 +370,7 @@ on any computer.
 
 #. Install Git LFS
 
-   Git Large File Storage (Git LFS) is a tool that helps us 
+   Git Large File Storage (Git LFS) is a tool that helps us
    manage images, videos, and other files which are neither text nor code.
 
    .. tabs::
@@ -445,7 +445,7 @@ on any computer.
          Use your distribution's package management system
          to `install Python 3.6+ on Linux`_.
 
-         (For more help, 
+         (For more help,
          see `Installing Python on Linux`_.)
 
          .. _install Python 3.6+ on Linux: https://docs.python-guide.org/starting/install3/linux/
@@ -473,7 +473,7 @@ on any computer.
                (Mountain Lion or later — any Mac from the last several years)
                the 64-bit installer is for you.
 
-               If you have an older Mac, 
+               If you have an older Mac,
                and are unsure if it can run a 64-bit installer,
                `check the processor details`_ in :menuselection:` -> About This Mac`.
 
@@ -493,7 +493,7 @@ on any computer.
             but it should be higher than ``3.6``.
 
             If you get an error here, something went wrong.
-            Try running the installer again. 
+            Try running the installer again.
             If the problem persists, and you can't debug it yourself,
             asks us about it on |odk-slack|_.
 
@@ -502,7 +502,7 @@ on any computer.
          .. rubric:: Option 2: Use Homebrew to install Python 3.6+
 
          .. code:: console
-         
+
             $ brew install python
             .
             .
@@ -514,14 +514,14 @@ on any computer.
          but it should be higher than ``3.6``.
 
          If you get an error here, something went wrong.
-         Try running :command:`brew install python` again. 
+         Try running :command:`brew install python` again.
          If the problem persists, and you can't debug it yourself,
          asks us about it on |odk-slack|_.
 
       .. group-tab:: Windows
 
          #. Go to the `Python Releases for Windows`_ page.
-         #. Under the latest numbered release for Python 3, find and download the 
+         #. Under the latest numbered release for Python 3, find and download the
             :program:`Windows x86-64 web-based installer` (for a 64-bit system)
             or the :program:`Windows x86 web-based installer` (for a 32-bit system).
 
@@ -552,9 +552,9 @@ on any computer.
             but it should be whatever numbered version you downloaded.
 
             If you get an error here, something went wrong.
-            Try running the installer again. 
+            Try running the installer again.
             You may also have to add Python to your Windows search path.
-            You can do this by going to 
+            You can do this by going to
             :menuselection:`Advanced System Settings -> Environmental Variables -> Edit System Variables`,
             then adding the path to the directory containing Python.
             If the problem persists, and you can't debug it yourself,
@@ -621,7 +621,7 @@ on any computer.
       .. tabs::
 
          .. group-tab:: Bash
-      
+
             .. code:: console
 
                /odk/ $ source odkenv/bin/activate
@@ -636,7 +636,7 @@ on any computer.
 
       The ``(odkenv)`` before the prompt shows that the virtual environment is active.
       You will need to have this active any time you are working on the docs.
-      
+
       If the file cannot be found, your activate file may be located under odkenv/scripts/activate.
 
       Later, to deactivate the virtual environment:
@@ -644,7 +644,7 @@ on any computer.
       .. tabs::
 
          .. group-tab:: Bash
-      
+
             .. code:: console
 
                (odkenv) /odk/ $ deactivate
@@ -670,8 +670,8 @@ on any computer.
    In order to work on ODK Docs,
    you will create your own fork.
 
-   #. Go to the `ODK Docs repo`_ on GitHub. 
-   #. Use the :guilabel:`Fork` button (top right) to create your own copy. 
+   #. Go to the `ODK Docs repo`_ on GitHub.
+   #. Use the :guilabel:`Fork` button (top right) to create your own copy.
    #. After the process completes, you'll be looking at your own fork on GitHub.
 
    .. _ODK Docs repo: https://github.com/opendatakit/docs
@@ -680,9 +680,9 @@ on any computer.
 
    .. _clone-the-docs:
 
-   #. From your own fork of the repo on GitHub, select the :guilabel:`Clone or download` button. 
-   #. Copy the URI from the text box that opens. 
-      It will be something like: 
+   #. From your own fork of the repo on GitHub, select the :guilabel:`Clone or download` button.
+   #. Copy the URI from the text box that opens.
+      It will be something like:
       ``https://github.com/your-gh-username/docs.git``
 
    #. Use your terminal to clone the repository.
@@ -693,7 +693,7 @@ on any computer.
       .. tabs::
 
          .. group-tab:: Bash
-         
+
             .. code:: console
 
                (odkenv) /odk/ $ git clone https://github.com/your-github-username/docs.git
@@ -704,7 +704,7 @@ on any computer.
                (odkenv) /odk/docs/ $
 
          .. group-tab:: Powershell
-         
+
             .. code:: powershell
 
                (odkenv) /odk/ > git clone https://github.com/your-github-username/docs.git
@@ -726,7 +726,7 @@ on any computer.
             including a large number of images.
             It will take several minutes to complete.
 
-      .. admonition:: Your local directory 
+      .. admonition:: Your local directory
 
          If you followed the instructions,
          you should now have the following directory structure:
@@ -743,12 +743,12 @@ on any computer.
          The :file:`docs` directory is your copy of the ODK Docs repo.
          You will do most of your work in this directory.
 
-         If you need to download or create additional files 
+         If you need to download or create additional files
          which are not actually a part of the ODK Docs repository,
          keep them out of the :file:`docs` directory.
 
-         You can use the main :file:`odk` directory 
-         for any other files you need to work on. 
+         You can use the main :file:`odk` directory
+         for any other files you need to work on.
          (For example,
          you may want to create a directory called :file:`odk/forms`
          to hold XLSForm and XForm files.)
@@ -761,7 +761,7 @@ on any computer.
    From your local computer's point of view,
    your online copy at GitHub is a remote.
 
-   When you cloned down a repo, 
+   When you cloned down a repo,
    your local copy gives your GitHub copy the name ``origin``.
 
    You also need to give the primary ODK Docs repo a name,
@@ -843,7 +843,7 @@ on any computer.
    The documentation source files are written in a plain text format called `reStructuredText`_.
    This means special formatting (bullets, headers, bold text) is represented by visible characters,
    not hidden behind a graphical display.
-   When working on a documentation file, 
+   When working on a documentation file,
    you see and write something that looks like:
 
    .. _reStructuredText: http://docutils.sourceforge.net/docs/user/rst/quickref.html
@@ -852,7 +852,7 @@ on any computer.
 
       #. Choose a text/code editor
 
-         The documentation source files 
+         The documentation source files
          are written in a plain text format called `reStructuredText`_.
 
          .. _reStructuredText: http://docutils.sourceforge.net/docs/user/rst/quickref.html
@@ -861,11 +861,11 @@ on any computer.
    in a typical document preparation program like :program:`MS Word` or :program:`Google Docs`.
    Instead, you need a coding editor.
 
-   There are a lot of editors, 
+   There are a lot of editors,
    and people who use them often have very strong opinions about them.
    You are free to choose any editor you like.
 
-   If you've never used an editor before, 
+   If you've never used an editor before,
    you might want to start with one of the easier and more popular ones:
 
    - `Atom <https://atom.io/>`_
@@ -893,7 +893,7 @@ Working on the docs
       If the goal isn't clear, ask.
       If there is anything in the issue that doesn't make sense, ask about it.
       Feel free to make suggestions about how something could be accomplished.
-   #. If you decide to work on an issue, 
+   #. If you decide to work on an issue,
       assign yourself to it by writing **@opendatakit-bot claim** in a comment.
    #. If the issue requires a novel or creative solution not defined in the issue already
       (we've stated a problem and you think you know a way to fix it)
@@ -935,7 +935,7 @@ Working on the docs
    Each time you come back to starting work on a new issue,
    make sure you are on the ``master`` branch before continuing.
 
-   #. Check the current branch with :command:`git branch`. 
+   #. Check the current branch with :command:`git branch`.
       This will output a list of branches, with a star next to the current one.
 
       .. tabs::
@@ -1018,7 +1018,7 @@ Working on the docs
 
             nothing to commit, working tree clean
 
-         .. warning:: 
+         .. warning::
 
             Some git commands (including :command:`git pull` and :command:`git checkout`)
             send error messages to PowerShell even when they work correctly.
@@ -1034,14 +1034,14 @@ Working on the docs
       .. group-tab:: Bash
 
          .. code:: console
-         
+
             (odkenv) /odk/docs/ $ git checkout -b branch-name
             Switched to a new branch 'branch-name'
 
       .. group-tab:: PowerShell
 
          .. code:: powershell
-         
+
             (odkenv) /odk/docs/ > git checkout -b branch-name
             Switched to a new branch 'branch-name'
 
@@ -1071,20 +1071,20 @@ Working on the docs
    The source files for documentation text are in these directories:
 
    :file:`odk1-src`
-      Files for the pages at http://docs.opendatakit.com
+      Files for the pages at https://docs.opendatakit.org
    :file:`odk2-src`
-      Files for the pages at http://docs.opendatakit.com/odk2
+      Files for the pages at https://docs.opendatakit.org/odk-x
    :file:`shared-src`
       Files for pages shared by both ODK1 and ODK2 docs.
       (This page and the other contributor guide pages.)
 
    If you're going to write or edit documentation text, please read:
-   
+
    - :doc:`docs-syntax-guide`
    - :doc:`docs-style-guide`
 
    If you're working on code or deployment, please read:
-   
+
    - :doc:`docs-developer-guide`
 
 #. Local checks
@@ -1092,7 +1092,7 @@ Working on the docs
    .. _test-the-docs:
 
    Once you have worked on the documentation,
-   we want to make sure your contribution 
+   we want to make sure your contribution
    will get accepted and published right away.
 
    To ensure your changes will pass all the deployment tests,
@@ -1131,7 +1131,7 @@ Working on the docs
          .. group-tab:: Bash
 
             .. code:: console
-            
+
                (odkenv) /odk/docs/ $ make odk2-spell-check
 
          .. group-tab:: PowerShell
@@ -1174,13 +1174,13 @@ Working on the docs
       When adding new words to :file:`spelling_wordlist.txt` or the top of a document file,
       please keep the words in alphabetical order.
 
-   #. Style check 
+   #. Style check
 
 #. Build and check
 
    .. _build-the-docs:
 
-   We use a Python tool called `Sphinx`_ 
+   We use a Python tool called `Sphinx`_
    to compile all the :file:`.rst` files into a working website.
 
    .. _Sphinx: http://www.sphinx-doc.org
@@ -1228,13 +1228,13 @@ Working on the docs
    This generates a lot of output.
    Near the end of the output you may see a statement like:
 
-   .. code-block:: none 
-   
+   .. code-block:: none
+
       build succeeded, 18 warnings.
 
-   Those warnings are problems with the text 
+   Those warnings are problems with the text
    which you need to fix before submitting your changes.
-   Scroll up in the terminal to find each warning, 
+   Scroll up in the terminal to find each warning,
    so that you can address it in the source files.
 
    A Sphinx warning looks like this:
@@ -1245,17 +1245,17 @@ Working on the docs
 
       short excerpt from the file
 
-   This tells you what file the problem is in, 
+   This tells you what file the problem is in,
    the approximate line number,
    and the nature of the problem.
-   Usually that is enough to fix it. 
+   Usually that is enough to fix it.
    If you can not figure out the meaning of a particular warning,
    you can always ask about it on the |odk-slack|_.
 
    .. note::
 
-      Because of a `bug in Sphinx`_ 
-      the line numbers in error and warning messages 
+      Because of a `bug in Sphinx`_
+      the line numbers in error and warning messages
       will be off by about 15 lines
       (the length of ``rst_prolog`` in :file:`conf.py`).
 
@@ -1339,7 +1339,7 @@ Working on the docs
    along with a record of all the changes that led up to that state.
    That snapshot is what you will submit to the main repository.
 
-   .. note:: 
+   .. note::
 
       We explain how to do a commit at this step
       because you need to do it before you can submit your changes.
@@ -1359,13 +1359,13 @@ Working on the docs
 
             .. code:: console
 
-               (odkenv) /odk/docs/ $ git add -A 
+               (odkenv) /odk/docs/ $ git add -A
 
          .. group-tab:: PowerShell
 
             .. code:: powershell
 
-               (odkenv) /odk/docs/ > git add -A 
+               (odkenv) /odk/docs/ > git add -A
 
    #. Commit the staged files with :command:`git commit`.
 
@@ -1407,7 +1407,7 @@ Working on the docs
          .. warning::
 
             The :command:`git push` command produces meaningless errors in PowerShell.
-            If you get an error when using :command:`git push`, 
+            If you get an error when using :command:`git push`,
             but everything seems to work otherwise,
             ignore the error.
 
@@ -1428,8 +1428,8 @@ Working on the docs
 
    .. _pr-the-docs:
 
-   A :dfn:`pull request` (or PR) 
-   is a request from you to the ODK Docs maintainers 
+   A :dfn:`pull request` (or PR)
+   is a request from you to the ODK Docs maintainers
    to pull in your changes to the main repo.
 
    #. Go to the `ODK Docs repo on GitHub`_.
@@ -1445,12 +1445,12 @@ Working on the docs
       but be sure to double-check them:
 
       - :guilabel:`Base fork` should be the main repo (``opendatakit/docs``).
-      - :guilabel:`base` should be ``master``. 
-      - Your repo and working branch name should be listed beside them. 
-      
+      - :guilabel:`base` should be ``master``.
+      - Your repo and working branch name should be listed beside them.
+
       You will see either a green **Able to be merged** message
       or a message informing that the branch can not be merged.
-      You can proceed in either case. 
+      You can proceed in either case.
       If the branch cannot be merged,
       the maintainers will work with you to resolve the problem.
 
@@ -1470,7 +1470,7 @@ Working on the docs
       - Details of any unresolved errors or warnings,
         including details of what you tried.
       - Justification for any changes to :file:`requirements.txt`.
-      - Details of any difficulties, questions, or concerns 
+      - Details of any difficulties, questions, or concerns
         that came up while working on this issue.
 
    #. Submit your pull request.
@@ -1479,7 +1479,7 @@ Working on the docs
    They may request changes to your work.
    If changes are needed:
 
-      #. **Don't worry.** 
+      #. **Don't worry.**
          Revision is a normal part of technical writing,
          and everyone (even the project's founders and leaders)
          has their work reviewed and are frequently asked to revise it.
@@ -1516,32 +1516,32 @@ Here are a few things to keep in mind when you start your next contribution.
    .. tabs::
 
       .. group-tab:: Bash
-      
+
          .. code:: console
 
             (odkenv) /odk/docs/ $ git checkout master
 
       .. group-tab:: PowerShell
-      
+
          .. code:: console
 
             (odkenv) /odk/docs/ > git checkout master
 
 #. Pull in changes with :command:`git pull upstream master`.
 
-   You need to start your new work from 
+   You need to start your new work from
    the latest version of everyone else's work.
 
    .. tabs::
 
       .. group-tab:: Bash
-      
+
          .. code:: console
 
             (odkenv) /odk/docs/ $ git pull upstream master
 
       .. group-tab:: PowerShell
-      
+
          .. code:: console
 
             (odkenv) /odk/docs/ > git pull upstream master
@@ -1551,13 +1551,13 @@ Here are a few things to keep in mind when you start your next contribution.
    .. tabs::
 
       .. group-tab:: Bash
-      
+
          .. code:: console
 
             (odkenv) /odk/docs/ $ git push origin master
 
       .. group-tab:: PowerShell
-      
+
          .. code:: console
 
             (odkenv) /odk/docs/ > git push origin master
@@ -1574,9 +1574,9 @@ Keep improving
 
 As you are getting comfortable with the contribution process,
 take a few minutes to read our :doc:`contributing-tips`.
-You may also want to dig deeper into the 
+You may also want to dig deeper into the
 :doc:`docs-style-guide` and the :doc:`docs-syntax-guide`.
-(And if you are writing code, 
+(And if you are writing code,
 check out the :doc:`docs-developer-guide`.)
 
 And don't forget to join us on the |odk-slack|_.
