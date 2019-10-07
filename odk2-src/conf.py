@@ -358,7 +358,7 @@ rst_epilog = """
 .. _forum: https://forum.opendatakit.org
 
 .. |contrib-guide| replace:: contributors guide
-.. _contrib-guide: http://docs.opendatakit.org/contributing/
+.. _contrib-guide: https://docs.opendatakit.org/contributing/
 
 """
 

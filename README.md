@@ -13,7 +13,7 @@ Please [file an issue](https://github.com/opendatakit/docs/issues) if you can't 
 
 ## Building and viewing documentation locally
 
-There are two options for building and viewing ODK docs locally: [using Docker](#docker) or [setting up a local Python/Sphinx environment](#python-environment). We generally recommend starting with the Docker image unless you already have a Sphinx environment set up. The [Contributor Guide](http://docs.opendatakit.org/contributing) describes the philosophy behind the docs, style considerations, how to write restructured text and more.
+There are two options for building and viewing ODK docs locally: [using Docker](#docker) or [setting up a local Python/Sphinx environment](#python-environment). We generally recommend starting with the Docker image unless you already have a Sphinx environment set up. The [Contributor Guide](https://docs.opendatakit.org/contributing) describes the philosophy behind the docs, style considerations, how to write restructured text and more.
 
 ## <a name="docker"></a>Using Docker
 
@@ -199,7 +199,7 @@ To build ODK-X docs, just replace `odk1` with `odk2`.
 
 We are open for new issues and pull requests.
 
- - Please read the [Contributors Guide](http://docs.opendatakit.org/contributing) before working on the documentation.
+ - Please read the [Contributors Guide](https://docs.opendatakit.org/contributing) before working on the documentation.
  - Find issues to work on.
     - First time contributors are encouraged to complete a [line edit](https://github.com/opendatakit/docs/issues/96) as a way to get familiar with our contribution process.
 	- Issues labelled [easy](https://github.com/opendatakit/docs/labels/easy) do not require much specific technical knowledge.
