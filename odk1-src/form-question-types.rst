@@ -1081,6 +1081,12 @@ As with questions themselves, choices can include :ref:`media <media>` (image, v
   opt_media,b,B,,b.mp4
   opt_media,c,C,,,c.mp3
 
+.. note::
+
+  ``select_one`` and ``select_multiple`` questions using the ``compact`` appearances will not
+  display media buttons next to choices. However, if a choice has audio, it will be played when
+  the choice is selected.
+
 .. _randomize-choice-order:
 
 Randomizing choice order
