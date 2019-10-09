@@ -32,7 +32,7 @@ Files referenced should be included :ref:`in your form's media folder <loading-f
 Images
 ~~~~~~~~
 
-Adding image to a question adds a displays the image as part of the question.
+Adding an image to a question displays the image as part of the question.
 
 .. image:: /img/form-styling/media-image.*
   :alt: A single select widget in Collect. The label text is "Do you want coffee?" The label text is accompanied by a picture of a mug of coffee. The options are "yes", "no", and "I don't know".
