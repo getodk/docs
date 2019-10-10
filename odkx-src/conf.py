@@ -133,7 +133,7 @@ html_favicon = "_static/img/odk-favicon.ico"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-# Add paths that contain extra files which are not directly related to the 
+# Add paths that contain extra files which are not directly related to the
 # documentation and which are copied to the output directory.
 # html_extra_path = []
 
@@ -164,14 +164,14 @@ latex_elements = {
         \\fancyfoot[LE,RO]{{\py@HeaderFamily\\thepage}}
         \\fancyhead[LO]{{\py@HeaderFamily\\nouppercase{\\rightmark}}}
         \\fancyhead[RE]{{\py@HeaderFamily\\nouppercase{\\leftmark}}}
-        \\fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.opendatakit.org/odk2}{https://docs.opendatakit.org/odk2}.}}}
+        \\fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.opendatakit.org/odk-x}{https://docs.opendatakit.org/odk-x}.}}}
         \\renewcommand{\\headrulewidth}{0.4pt}
         \\renewcommand{\\footrulewidth}{0.4pt}
       }
       \\fancypagestyle{plain}{
         \\fancyhf{}
         \\fancyfoot[LE,RO]{{\py@HeaderFamily\\thepage}}
-        \\fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.opendatakit.org/odk2}{https://docs.opendatakit.org/odk2}.}}}
+        \\fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.opendatakit.org/odk-x}{https://docs.opendatakit.org/odk-x}.}}}
         \\renewcommand{\\headrulewidth}{0pt}
         \\renewcommand{\\footrulewidth}{0.4pt}
       }
@@ -263,13 +263,13 @@ def setup(app):
 rst_prolog="""
 .. role:: th
     :class: th
-    
+
 .. role:: tc
     :class: tc
 
 .. role:: formstate
     :class: formstate
-    
+
 .. role:: gesture
     :class: gesture
 """
@@ -282,12 +282,12 @@ Download this documentation as a PDF.
 """
 odk_pdf = """
 
-_downloads/ODK2-Documentation.pdf
+_downloads/ODK-X-Documentation.pdf
 
 """
 prob_in_doc = """
 
-If you find a problem with this documentation, please 
+If you find a problem with this documentation, please
 
 """
 file_issue = """
@@ -307,24 +307,24 @@ You are also encouraged to
 """
 fork_repo = """
 
-fork our Github repo 
+fork our Github repo
 
 """
-repo_here = """ 
+repo_here = """
 
 https://github.com/opendatakit/docs/
 
 """
-join = """ 
+join = """
 
-and 
+and
 
 """
 contri = """
 
 become a contributor
 
-""" 
+"""
 contri_guide = """
 
 /contributing/
@@ -352,7 +352,7 @@ rst_epilog = """
 .. _odk-slack: https://opendatakit.slack.com
 
 .. |docs-issue| replace:: issue
-.. _docs-issue: https://github.com/opendatakit/docs/issues 
+.. _docs-issue: https://github.com/opendatakit/docs/issues
 
 .. |forum| replace:: ODK Forum
 .. _forum: https://forum.opendatakit.org
@@ -365,20 +365,20 @@ rst_epilog = """
 html_context = {'download_pdf' : download_pdf,
                 'odk_pdf' : odk_pdf,
                 'prob_in_doc' : prob_in_doc ,
-                'contri_start' : contri_start , 
-                'join' : join , 
-                'faq_help' : faq_help , 
-                'file_issue' : file_issue , 
+                'contri_start' : contri_start ,
+                'join' : join ,
+                'faq_help' : faq_help ,
+                'file_issue' : file_issue ,
                 'fork_repo' : fork_repo ,
-                'contri' : contri , 
-                'forum' : forum , 
-                'file_issue_here' : file_issue_here , 
-                'repo_here' : repo_here , 
-                'contri_guide' : contri_guide , 
+                'contri' : contri ,
+                'forum' : forum ,
+                'file_issue_here' : file_issue_here ,
+                'repo_here' : repo_here ,
+                'contri_guide' : contri_guide ,
                 'forum_here' : forum_here ,
                 'display_github' : True,
                 'github_user' : "opendatakit", # Username
                 'github_repo' : "docs", # Repo name
                 'github_version' : "master", # Version
-                'conf_py_path' : "/odk2-src/" # Path in the checkout to the docs root
+                'conf_py_path' : "/odkx-src/" # Path in the checkout to the docs root
             }

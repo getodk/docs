@@ -190,7 +190,7 @@ The conflict details screen displays the values of the field(s) in conflict, wit
 
 This concludes the tour of the *Geotagger* example application's screens, and the functionality within ODK Tables. For larger tours of sample applications, try the :doc:`survey-sample-app` and :doc:`tables-sample-app`.
 
-.. _user-odk2-next:
+.. _user-odkx-next:
 
 Next Steps
 -----------------------
