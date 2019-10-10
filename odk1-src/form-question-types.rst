@@ -28,7 +28,7 @@ Question Types
 
 :doc:`collect-intro` supports forms with a wide variety of question types.
 The exact functionality and display style of each question
-are specified in your `XLSForm`_ definition using the 
+are specified in your `XLSForm`_ definition using the
 :th:`type` and :th:`appearance` columns.
 
 .. _XLSForm: http://xlsform.org
@@ -37,11 +37,11 @@ are specified in your `XLSForm`_ definition using the
   :local:
 
 .. tip::
-  
+
   You can find an XLSForm with all available question types `here <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ/edit#gid=0>`_.
-  
+
   For simpler forms you can use :doc:`build-intro`, which provides a visual, drag-and-drop interface.
-  
+
 .. admonition:: Helpful terminology
 
   .. glossary::
@@ -58,7 +58,7 @@ are specified in your `XLSForm`_ definition using the
       The :th:`type` and :th:`appearance` of a question
       determine the widget that is displayed.
 
-  
+
 .. _text-widget:
 
 Text widgets
@@ -83,8 +83,8 @@ type
   :tc:`text`
 appearance
   *none*
-  
-A simple text input. 
+
+A simple text input.
 
 The text entry field expands as the user types, and line breaks can be included. The keyboard displayed depends on the Android device and user settings.
 
@@ -129,7 +129,7 @@ This is useful for phone numbers, ID numbers, IP addresses, and similar data. It
 .. note::
 
   This appearance can be combined with the :ref:`thousands-sep <thousands-sep>` appearance.
-  
+
 
 .. _external-app-widget:
 
@@ -167,7 +167,7 @@ Number widgets
 ---------------------
 
 Number widgets collect and store number inputs ---
-either :ref:`integers <default-integer-widget>` or 
+either :ref:`integers <default-integer-widget>` or
 :ref:`floating-point decimals <default-decimal-widget>`.
 
 Number values can also be captured by the :ref:`range-widgets`.
@@ -185,7 +185,7 @@ type
 appearance
   *none*
 
-  
+
 A whole number entry input.
 
 Integer widgets will not accept decimal points,
@@ -218,7 +218,7 @@ type
   :tc:`decimal`
 appearance
   *none*
-  
+
 A numeric input that will accept decimal points.
 
 Decimal number entry is capped at 15 characters
@@ -243,12 +243,12 @@ The decimal widget supports:
   decimal, weight, Weight in kilograms.
 
 .. _numeric-appearance-attributes:
-  
+
 Number widget appearance options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  
+
 .. _thousands-sep:
-  
+
 Thousands separator
 """"""""""""""""""""
 
@@ -256,30 +256,30 @@ type
   :tc:`integer`, :tc:`decimal`, (:tc:`text`)
 appearance
   :tc:`thousands-sep`, (:tc:`numbers`)
-  
+
 
 If :tc:`thousands-sep` is added to :th:`appearance`,
-:ref:`integer <default-integer-widget>`, 
-:ref:`decimal <default-decimal-widget>`, 
+:ref:`integer <default-integer-widget>`,
+:ref:`decimal <default-decimal-widget>`,
 and :ref:`number text <number-text-widget>` widgets
 will display their values using locale-specific thousands separators.
 
 .. note::
-  
+
   For locales that use the point separator (``.``),
   a space is used instead.
 
-.. figure:: /img/form-widgets/integer-thousands-sep-widget.* 
+.. figure:: /img/form-widgets/integer-thousands-sep-widget.*
   :alt: An integer widget as displayed in the Collect app. The question text is "Integer widget with thousands separators". The answer value is "1,000,000". The number keyboard is active.
-  
+
   The comma separator, used in English/U.S. (and others).
-  
-.. figure:: /img/form-widgets/integer-thousands-sep-widget-spaces.* 
+
+.. figure:: /img/form-widgets/integer-thousands-sep-widget-spaces.*
   :alt: The same image as previously, but the answer value is "1 000 000". (That is, it uses spaces instead of commas as thousand separators.
-  
+
   The space separator, used in *Français*/France (and others).
-  
-  
+
+
 .. _external-number-widget:
 
 Number from an external app
@@ -290,11 +290,11 @@ type
 appearance
   :tc:`ex:*`
 
-By specifying an external app in the :th:`appearance`, 
-your form can launches an external app and receive a number 
-(integer or decimal) 
-from the external app as input. 
-If the specified external app is not available, 
+By specifying an external app in the :th:`appearance`,
+your form can launches an external app and receive a number
+(integer or decimal)
+from the external app as input.
+If the specified external app is not available,
 a manual input is prompted.
 
 .. image:: /img/form-widgets/external-integer-widget-start.*
@@ -418,7 +418,7 @@ Collects only a year.
   date,date_widget_year,Date widget,year,date type with year appearance
 
 .. _non-gregorian-date-widgets:
-  
+
 Date widgets with non-Gregorian calendars
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -433,7 +433,7 @@ Collect supports several non-Gregorian calendars.
   The dates are converted and stored as standard Gregorian dates
 
 .. _coptic-calendar:
-  
+
 Coptic calendar
 """""""""""""""""
 
@@ -441,10 +441,10 @@ type
   :tc:`date`
 appearance
   :tc:`coptic`
-  
-.. image:: /img/form-widgets/coptic-calendar-widget.* 
+
+.. image:: /img/form-widgets/coptic-calendar-widget.*
   :alt:
-  
+
 .. _ethiopian-calendar:
 
 Ethiopian calendar
@@ -454,12 +454,12 @@ type
   :tc:`date`
 appearance
   :tc:`ethiopian`
-  
-.. image:: /img/form-widgets/ethiopian-calendar-widget.* 
+
+.. image:: /img/form-widgets/ethiopian-calendar-widget.*
   :alt:
-  
+
 .. _islamic-calendar:
-  
+
 Islamic calendar
 """"""""""""""""""
 
@@ -467,8 +467,8 @@ type
   :tc:`date`
 appearance
   :tc:`islamic`
-  
-.. image:: /img/form-widgets/islamic-calendar-widget.* 
+
+.. image:: /img/form-widgets/islamic-calendar-widget.*
   :alt:
 
 .. _bikram-sambat-calendar:
@@ -505,7 +505,7 @@ appearance
 
 .. image:: /img/form-widgets/persian-calendar-widget.*
   :alt:
-   
+
 .. _time-widget:
 
 Time widget
@@ -526,26 +526,26 @@ The time widget does not accept any :th:`appearance` attributes.
 
   The time widget stores the time along with a time zone.
   This can cause unexpected behavior around `Daylight saving time`_.
-  
+
   .. _Daylight saving time: https://en.wikipedia.org/wiki/Daylight_saving_time
-  
+
   For example, if you record a time before the clock change,
   and then view the time after the clock change,
   it will appear to be an hour off.
   This happens because the recorded time data
   is understood as a specific moment in time
   that is being "translated" into your current, local time zone.
-  
+
   A similar problem occurs when moving between geographic time zones.
-  
-  This makes the time widget unsuitable for abstract 
+
+  This makes the time widget unsuitable for abstract
   time-of-day questions such as *What time do you usually wake up?*
   For questions like this, you may want to use a :ref:`select-minimal`.
-  You can set the options at whatever level of accuracy you need --- 
+  You can set the options at whatever level of accuracy you need ---
   for example, 15 or 30 minute increments.
   Alternatively, you could use the select widget for hours,
   and an :ref:`default-integer-widget` for minutes.
-  
+
 .. image:: /img/form-widgets/time-start.*
   :alt: The Time form widget as displayed in the ODK Collect App on an Android phone. The question text is "What time do you usually wake up?" The button label is "Select time." Below the button is the message "No time selected."
 
@@ -563,11 +563,11 @@ The time widget does not accept any :th:`appearance` attributes.
   time, wakeup, What time do you usually wakeup?
 
 .. _datetime-widget:
-  
+
 Datetime widget
 ~~~~~~~~~~~~~~~~~~~
-  
-A date and time selector. 
+
+A date and time selector.
 
 For date only, see :ref:`default-date-widget`. For time only, see :ref:`time-widget`.
 
@@ -597,15 +597,15 @@ For date only, see :ref:`default-date-widget`. For time only, see :ref:`time-wid
 
   The :ref:`datetime-widget` supports the :ref:`no-calendar <date-no-calendar>` spinner-style appearance.
 
-  
-  
+
+
 .. _select-widgets:
-  
+
 Select widgets
 -----------------
 
 Select widgets offer the :term:`participant` options to pick from.
-You can offer the participant 
+You can offer the participant
 a :ref:`single choice <single-select-widget>`,
 or the ability to :ref:`choose multiple answers <multi-select-widget>`. The order of the choices can be :ref:`randomized <randomize-choice-order>` for any of the select types described below.
 
@@ -620,7 +620,7 @@ The **choices** sheet has at least three columns:
 
 :th:`name`
   The canonical identifier for a specific choice. This value is what is stored on the completed form. If you :ref:`refer to a select response using a variable <variables>`, the :th:`name` string is returned.
-  
+
   As with the **survey** sheet, :th:`name` must not include spaces.
 
 :th:`label`
@@ -628,9 +628,9 @@ The **choices** sheet has at least three columns:
 
 Select widgets can :ref:`include images as choices <select-image-widget>`.
 
-.. contents:: 
+.. contents::
   :local:
- 
+
 .. _single-select-widget:
 
 Single select widget
@@ -694,11 +694,11 @@ places the choices into a modal overlay menu.
 
 .. note::
 
-  In web rendered form views 
+  In web rendered form views
   (such as Enketo form viewer)
   a select widget with :tc:`minimal` appearance
   will appear in a drop-down (select) menu.
-  
+
 .. _autoadvance:
 
 Select widget with autoadvance
@@ -781,7 +781,7 @@ appearance
 
 Select widgets support image choices.
 The images are referenced in the **choices** sheet,
-and the image files 
+and the image files
 need to be included in the :file:`media` folder.
 
 See :ref:`image-options` to learn more about including images in surveys.
@@ -814,7 +814,7 @@ type
   :tc:`select_one {list_name}`
 appearance
   :tc:`compact`
-  
+
 When the :tc:`compact` appearance is added,
 the answer choices display in a single line.
 
@@ -847,10 +847,10 @@ type
 appearance
   :tc:`compact-{x}`
 
-With the :tc:`compact-{x}` appearance, 
-you can specify the number of images to display on each row. 
+With the :tc:`compact-{x}` appearance,
+you can specify the number of images to display on each row.
 
-For example, to display two images on each row, 
+For example, to display two images on each row,
 specify an :th:`appearance` of :tc:`compact-2`.
 
 .. image:: /img/form-widgets/single-image-select-compact-2.*
@@ -881,7 +881,7 @@ type
 appearance
   :tc:`quickcompact`
 
-The :tc:`quickcompact` appearance 
+The :tc:`quickcompact` appearance
 adds :ref:`autoadvance <autoadvance>` functionality
 to the design of the :ref:`compact-image-select`.
 
@@ -917,9 +917,9 @@ appearance
 
 
 As with :ref:`compact <compact-2>`,
-you can specify a width when using :tc:`quickcompact`. 
+you can specify a width when using :tc:`quickcompact`.
 
-For example, 
+For example,
 to display two images on each row, set the :th:`appearance` attribute to :tc:`quickcompact-2`.
 
 .. video:: /vid/form-widgets/quickcompact2.mp4
@@ -941,7 +941,7 @@ to display two images on each row, set the :th:`appearance` attribute to :tc:`qu
   abcd_icon,c,C,c.jpg
   abcd_icon,d,D,d.jpg
 
-  
+
 .. _multi-select-widget:
 
 Multi select widget
@@ -956,10 +956,10 @@ Multi select questions support multiple answers.
 
 .. note::
 
-  The multi select widget supports 
-  many of the same :th:`appearance` attributes 
+  The multi select widget supports
+  many of the same :th:`appearance` attributes
   as the :ref:`single-select-widget`:
-  
+
   - :ref:`minimal appearance <select-minimal>`
   - :ref:`compact appearance with images <compact-image-select>`
   - :ref:`width-specified compact appearance with images <compact-2>`
@@ -986,19 +986,19 @@ Multi select questions support multiple answers.
 
   If you are using Aggregate and expect users to select many options, you may need to :doc:`increase the database field length to over 255 characters <aggregate-field-length>`.
 
-     
+
 .. _image-map-select:
-  
+
 Image map select widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. versionadded:: 1.13
 
 type
-  :tc:`select_one {list_name}`, :tc:`select_multiple {list-name}` 
+  :tc:`select_one {list_name}`, :tc:`select_multiple {list-name}`
 appearance
   :tc:`image-map`
-  
+
 The image map widget displays an `SVG`_ image with selectable regions.
 
 .. _SVG: https://en.wikipedia.org/wiki/Scalable_Vector_Graphics
@@ -1014,27 +1014,27 @@ To make an image with selectable regions:
 
   `Inkscape`_
     An open source vector graphics editor.
-    
+
   `SVG Documentation`_
     From Mozilla Developer Network.
-  
+
   `Free SVG Files`_
     From Wikimedia Commons.
-  
+
   .. _Inkscape: https://inkscape.org
   .. _SVG Documentation: https://developer.mozilla.org/en-US/docs/Web/SVG
   .. _Free SVG Files: https://commons.wikimedia.org/wiki/Category:SVG_files
 
-.. image:: /img/form-widgets/image-map-choose-shape-0.* 
+.. image:: /img/form-widgets/image-map-choose-shape-0.*
   :alt:
-  
-.. image:: /img/form-widgets/image-map-choose-shape-1.* 
+
+.. image:: /img/form-widgets/image-map-choose-shape-1.*
   :alt:
-  
-.. image:: /img/form-widgets/image-map-choose-shapes-0.* 
+
+.. image:: /img/form-widgets/image-map-choose-shapes-0.*
   :alt:
-  
-.. image:: /img/form-widgets/image-map-choose-shapes-1.* 
+
+.. image:: /img/form-widgets/image-map-choose-shapes-1.*
   :alt:
 
 .. rubric:: SVG
@@ -1050,7 +1050,7 @@ To make an image with selectable regions:
       <ellipse id="ellipse" fill="#41A317" stroke="#000000" stroke-width="5" cx="423" cy="143" rx="107" ry="78"/>
     </g>
   </svg>
-  
+
 .. rubric:: XLSForm
 
 .. csv-table:: survey
@@ -1058,42 +1058,34 @@ To make an image with selectable regions:
 
   select_one shapes, choose-shape, Choose a shape, image-map, shapes.svg
   select_multiple shapes, choose-shapes, Choose multiple shapes, image-map, shapes.svg
-  
+
 .. csv-table:: choices
   :header: list_name, name, label
-  
+
   shapes, path, blob
   shapes, rect, rectangle
   shapes, ellipse, ellipse
-  
+
 
 .. _image-options:
 
-Including image, video, or audio files as choices
+Including media files in choices
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To include image, video, or audio files as choices for select questions:
+As with questions themselves, choices can include :ref:`media <media>` (image, video, or audio files):
 
-1. Specify the file names in the **choices** worksheet, in a column labeled as :th:`media::image` for image files, :th:`media::video` for video files, and :th:`media::audio` for audio files respectively.
+.. csv-table:: choices
+  :header: list_name, name, label, media::image, media::video, media::audio
 
-  .. csv-table:: choices
-    :header: list_name, name, label, media::image, media::video, media::audio
+  opt_media,a,A,a.jpg
+  opt_media,b,B,,b.mp4
+  opt_media,c,C,,,c.mp3
 
-    opt_media,a,A,a.jpg
-    opt_media,b,B,,b.mp4
-    opt_media,c,C,,,c.mp3
+.. note::
 
-2. Add the files to a folder named
-   :file:`{form-name}-media`.
-3. Upload the media folder with your form.
-
-   - If you are hosting your form in :doc:`aggregate-intro`,
-     you will have the option to upload the media file with your form,
-     and it will be automatically downloaded to your device
-     when you pull down the blank form.
-   - If you are adding the form to your device directly,
-     make sure the media folder is placed in
-     :file:`/sdcard/odk/forms/`.
+  ``select_one`` and ``select_multiple`` questions using the ``compact`` appearances will not
+  display media buttons next to choices. However, if a choice has audio, it will be played when
+  the choice is selected.
 
 .. _randomize-choice-order:
 
@@ -1145,7 +1137,7 @@ This seed can also be used to recreate the order choices were displayed in. See 
 
   In the example above, the integer seed is created from the last 8 numbers of the :func:`decimal-date-time()` which is unlikely to repeat across devices. In the seed expression, :func:`once` is important because it makes sure the seed is not changed if the same filled form is opened more than once.
 
-.. _or-other:  
+.. _or-other:
 
 Including "other" as a choice
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1195,7 +1187,7 @@ type
   opt_abcd,c,C
   opt_abcd,d,D
 
-  
+
 .. _location-widgets:
 
 Location widgets
@@ -1229,7 +1221,7 @@ appearance
 Captures the current geolocation from the device.
 
 For a geopoint with a user-selected location,
-see :ref:`placement-map-widget` 
+see :ref:`placement-map-widget`
 
 .. tip::
 
@@ -1237,19 +1229,19 @@ see :ref:`placement-map-widget`
 
   While determining the current coordinates,
   you will see a dialog box displaying:
-  
+
   - Number of satellites found
   - Elapsed time
-  
-  To get an accurate fix on your location, 
+
+  To get an accurate fix on your location,
   the device must find at least four (4) satellites.
   If the device can not find at least four satellites,
   make sure there is nothing obstructing the device's view of the sky.
-  
-  If you have problems with the geopoint widget, 
+
+  If you have problems with the geopoint widget,
   be sure to note the elapsed time
   and accuracy (if applicable),
-  so that you can share it with your support staff 
+  so that you can share it with your support staff
   or with the |forum|_.
 
 .. image:: /img/form-widgets/default-geopoint.*
@@ -1262,7 +1254,7 @@ see :ref:`placement-map-widget`
 
   geopoint,geopoint_widget,Geopoint widget,geopoint type with no appearance
 
-  
+
 .. _geopoint-maps:
 
 Geopoint with map display
@@ -1287,7 +1279,7 @@ For a geopoint with a location that the user can manually select or adjust, see 
   :header: type, name, label, appearance, hint
 
   geopoint,geopoint_widget_maps,Geopoint widget,maps,geopoint type with maps appearance
-  
+
 .. _placement-map-widget:
 
 Geopoint with user-selected location
@@ -1309,7 +1301,7 @@ When the map view is opened again with an existing point, the map is centered on
 .. image:: /img/form-widgets/geopoint-placement-map.*
   :alt: A map opens on an Android phone. Above the map is the message: "Long press to place mark or tap add marker button." Along the right side of the map are buttons: Add point, Delete point, Zoom to geolocation, Layers, Trash, Save. A small circle with red outline identifies the selected location. An arrow points to that point.
 
-.. rubric:: XLSForm 
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
@@ -1416,7 +1408,7 @@ Automatic location recording
   geoshape, shape_example, Select an area
 
 .. _geoshape-area:
-    
+
 Calculating the area of a geoshape
 """""""""""""""""""""""""""""""""""
 
@@ -1424,35 +1416,35 @@ type
   :tc:`calculate`
 calculation
   :tc:`area(${geoshape})`
-  
+
 The :tc:`area()` function calculates the land area,
 in square meters,
 of a polygon defined in a :ref:`geoshape-widget`.
 The value will be included in your completed survey data,
 and can also be used in later widgets in the form.
 
-.. image:: /img/form-widgets/area-calc-0.* 
+.. image:: /img/form-widgets/area-calc-0.*
   :alt: The geoshape widget. The question label is "Record a geoshape". The button label is "Start GeoShape".
 
-.. image:: /img/form-widgets/area-calc-1.* 
+.. image:: /img/form-widgets/area-calc-1.*
   :alt: A map with four pins defining an area around a city block.
-    
-.. image:: /img/form-widgets/area-calc-2.* 
+
+.. image:: /img/form-widgets/area-calc-2.*
   :alt: The geoshape widget with a series of lat/long coordinates.
-  
-.. image:: /img/form-widgets/area-calc-3.* 
+
+.. image:: /img/form-widgets/area-calc-3.*
   :alt: A note widget. "The area of the recorded geoshape is 19322 square meters."
-  
+
 .. rubric:: XLSForm
 
 .. csv-table::
   :header: type, name, label, calculation
-  
-  geoshape, shape, Record a Geoshape, 
+
+  geoshape, shape, Record a Geoshape,
   calculate, shape_area, ,area(${shape})
   calculate, rounded_shape_area, ,"round(${shape_area}, 2)"
   note, shape_area_note, "| The area of the recorded geoshape is:
-  | ${rounded_shape_area} m²",  
+  | ${rounded_shape_area} m²",
 
 .. _bearing-widget:
 
@@ -1482,20 +1474,20 @@ Captures a compass reading, which is stored as a decimal.
 
   decimal,bearing_widget,Bearing widget,bearing,decimal type with bearing appearance
 
-  
+
 .. _openmapkit-widget:
 
 OpenMapKit widget
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-`OpenMapKit`_ allows you to add questions about 
+`OpenMapKit`_ allows you to add questions about
 OpenStreetMap features in a Collect-rendered form.
 
 For more details, see the `OpenMapKit`_ documentation.
 
 .. _OpenMapKit: http://www.openmapkit.org
 
-  
+
 .. _image-widgets:
 
 Image widgets
@@ -1519,7 +1511,7 @@ Captures an image from the device. The user can choose to take a new picture wit
 .. image:: /img/form-widgets/default-image-widget.*
   :alt: The default Image form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Image Widget." The hint text is, "image type with no appearance." Below that are two buttons: "Take Picture" and "Choose Image." Above the question text is the form group name "Image widgets."
 
-.. rubric:: XLSForm 
+.. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, hint
@@ -1577,17 +1569,17 @@ appearance
 
 An image widget that does not include a :guilabel:`Choose Image` button. This requires the user to take a new picture.
 
-.. image:: /img/form-widgets/new-image-widget.* 
+.. image:: /img/form-widgets/new-image-widget.*
   :alt: The new image widget, as displayed in the ODK Collect app on Android. It is largely identical to the previous image widget, except that there is only a Take Picture button, and there is no Choose Image button.
-  
+
 .. rubric:: XLSForm
 
 .. csv-table::
   :header: type, name, label, appearance, hint
-  
+
   image, image_widget_no_choose, Image widget without Choose button, new, image type with new appearance (can also be added with annotate appearance and on audio and video types)
-  
-  
+
+
 .. _self-portrait-image-widget:
 
 Self portrait (*selfie*) image widget
@@ -1605,24 +1597,24 @@ Takes a picture using the front-facing ("selfie") camera. The :guilabel:`Choose 
   Prior to v1.15, the appearance attribute for this was :tc:`selfie`.
   The old appearance attribute will continue to work on existing forms, but new forms should use the :tc:`new-front` appearance.
 
-  
-.. image:: /img/form-question-types/self-portrait-0.* 
+
+.. image:: /img/form-question-types/self-portrait-0.*
  :alt: The self portrait widget in Collect. The label text is "Self portrait (selfie) widget)". The hint text is "Image type with new-front appearance". There is a button labeled "Take Picture".
- 
-.. image:: /img/form-question-types/self-portrait-1.* 
+
+.. image:: /img/form-question-types/self-portrait-1.*
  :alt: The camera screen on a device, taking a self-portrait of a person.
- 
-.. image:: /img/form-question-types/self-portrait-2.* 
- :alt: The self portrait widget as described above. Below the button is the self-portrait image captured in the previous image.  
-  
-  
+
+.. image:: /img/form-question-types/self-portrait-2.*
+ :alt: The self portrait widget as described above. Below the button is the self-portrait image captured in the previous image.
+
+
 .. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, hint, appearance
 
   image, self-portrait, Self portrait (*selfie*) widget, image type with new-front appearance, new-front
-  
+
 
 
 .. _draw-widget:
@@ -1634,7 +1626,7 @@ type
   :tc:`image`
 appearance
   :tc:`draw`
-  
+
 
 Provides the user a drawing pad and collects the drawn image.
 
@@ -1656,11 +1648,11 @@ Provides the user a drawing pad and collects the drawn image.
   :header: type, name, label, appearance, hint
 
   image,draw_image_widget,Draw widget ,draw,image type with draw appearance
-  
+
 Scaling down images
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Images created with any of the image widgets described above can be automatically scaled down on save by using the ``max-pixels`` parameter. If the long edge of the image is larger than the maximum size specified, the image is resized proportionally so that the long edge matches the provided pixel value. This is useful to reduce the upload size when bandwidth is limited. 
+Images created with any of the image widgets described above can be automatically scaled down on save by using the ``max-pixels`` parameter. If the long edge of the image is larger than the maximum size specified, the image is resized proportionally so that the long edge matches the provided pixel value. This is useful to reduce the upload size when bandwidth is limited.
 
 Available in Collect since v1.10.0 and in XLSForm since 7/2018.
 
@@ -1684,14 +1676,14 @@ Records audio from an external app.
 .. note::
 
   Some Android devices provide a default application for audio recording.
-  Others do not, 
+  Others do not,
   and the user will need to install an audio recording app.
-  
+
   There are many apps available for this, including:
-  
+
   - `Audio Recorder from Sony <https://play.google.com/store/apps/details?id=com.sonymobile.androidapp.audiorecorder&hl=en>`_
   - `RecForge II <https://play.google.com/store/apps/details?id=dje073.android.modernrecforge&hl=en>`_
-  
+
   Any app that responds to
   `android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION`
   will be compatible.
@@ -1780,24 +1772,24 @@ Uploads any file from the device to the form.
   which includes potentially malicious files.
   You should not include this widget
   unless you trust the people using the form.
-  
-  Even then, you should take precautions 
+
+  Even then, you should take precautions
   before downloading or opening files.
-  
+
   - Run an antimalware scan.
-  - Verify the file is a type you expect 
+  - Verify the file is a type you expect
     (such as a :file:`.pdf` document),
     and not a `potentially dangerous file`_
     (such as :file:`.exe` or :file:`.ini`).
-    
+
   .. _potentially dangerous file: https://support.symantec.com/en_US/article.INFO3768.html
 
-.. image:: /img/form-question-types/file-upload-widget.* 
+.. image:: /img/form-question-types/file-upload-widget.*
   :alt: The file upload widget in Collect.
        The question label is "Select a file to upload."
        Below that is a button labeled "Choose File".
-       
-.. image:: /img/form-question-types/file-upload-open-from.* 
+
+.. image:: /img/form-question-types/file-upload-open-from.*
   :alt: A  file selection screen on an Android device.
 	A sidebar overlay is labeled "Open from".
 	This sidebar has several file locations such as "Recent", "Google Drive", "Images", "Downloads".
@@ -1809,7 +1801,7 @@ Uploads any file from the device to the form.
 
   file, some-file, Select a file to upload.
 
-  
+
 .. _barcode:
 
 Barcode widget
@@ -1838,9 +1830,9 @@ The following barcode formats are supported:
 
 .. note::
   Barcode scanning is built into Collect versions 1.7.0 and greater.
-  
+
   Versions of Collect prior to 1.7.0 require the `Barcode Scanner app`_ to be installed.
-  
+
 .. _Barcode Scanner app: https://play.google.com/store/apps/details?id=com.google.zxing.client.android
 
 .. contents::
@@ -1863,7 +1855,7 @@ The flash can be used as a light source when scanning barcodes in a poorly lit e
   :alt: The Barcode form widget as displayed previously. The button label is now "Replace Barcode." Below the button is a string of numbers representing the decoded content of the scanned barcode.
 
 .. rubric:: XLSForm
-  
+
 .. csv-table:: survey
   :header: type, name, label
 
@@ -1878,22 +1870,22 @@ Self portrait (*selfie*) barcode widget
 In some cases a front camera may work better. The flash can't be used in this case.
 
 .. rubric:: XLSForm
-  
+
 .. csv-table:: survey
   :header: type, name, label, appearance
 
   barcode, barcode_example, Scan any barcode., front
-  
+
 .. _range-widgets:
-  
+
 Range widgets
 ----------------
 
 Range widgets allow the user to select numbers from within a range that is visually represented as a number line. The parameters of the range widget are defined by :tc:`start`, :tc:`end`, and :tc:`step` values defined in the :th:`parameters` column of your XLSForm. The parameter values can be integers or decimals.
-  
-.. contents:: 
+
+.. contents::
   :local:
-  
+
 .. _range-widget-integers:
 
 Default range widget with integers
@@ -1903,22 +1895,22 @@ type
   :tc:`range`
 appearance
   *none*
-  
+
 If all three parameter values are integers,
 the input will be stored as an integer.
 
-.. image:: /img/form-widgets/range-integer-default-widget.* 
+.. image:: /img/form-widgets/range-integer-default-widget.*
   :alt: The range widget, as displayed in the ODK Collect app on Android. The question text is "Range integer widget". The main part of the widget shows a horizontal line labeled "1" on the left end and "10" on the right. There are ten points on the line.
-  
+
 .. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint, parameters
-  
+
   range, range_integer_widget, Range integer widget,,range integer widget with no appearance, start=1;end=10;step=1
 
 .. _range-widget-decimal:
-  
+
 Default range widget with decimals
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1930,19 +1922,19 @@ appearance
 If any of the parameter values are decimals,
 the input will be stored as a decimal.
 
-.. image:: /img/form-widgets/range-decimal-default-widget.* 
+.. image:: /img/form-widgets/range-decimal-default-widget.*
   :alt: The range widget as displayed previously. The number selection choices range from 1.5 to 5.5, and the selection line is horizontal.
 
 .. rubric:: XLSForm
-    
+
 .. csv-table:: survey
   :header: type, name, label, appearance, hint, parameters
-  
-  range, range_decimal_widget, Range decimal widget,,range decimal widget with no appearance, start=1.5;end=5.5;step=0.5
-  
-.. _vertical-range-widget:  
 
-Vertical range widget 
+  range, range_decimal_widget, Range decimal widget,,range decimal widget with no appearance, start=1.5;end=5.5;step=0.5
+
+.. _vertical-range-widget:
+
+Vertical range widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
@@ -1954,11 +1946,11 @@ To display the range widget's number line vertically,
 use the :tc:`vertical` appearance.
 Both integers and decimals are supported.
 
-.. image:: /img/form-widgets/range-integer-vertical-widget.* 
+.. image:: /img/form-widgets/range-integer-vertical-widget.*
   :alt: The range widget, as displayed in the previous image, but the range number line is vertical instead of horizontal.
-  
+
 .. rubric:: XLSForm
-  
+
 .. csv-table:: survey
   :header: type, name, label, appearance, hint, parameters
 
@@ -1973,13 +1965,13 @@ type
   :tc:`range`
 appearance
   :tc:`picker`
-  
+
 When the :tc:`picker` appearance is added, the range widget is displayed with a spinner-style select menu in a dialog. The value between horizontal lines is the selected value. Users can scroll the spinner up and down or can tap on the value above to go up by one and on the value below to go down by one.
 
-.. image:: /img/form-widgets/range-widget-picker-0.* 
+.. image:: /img/form-widgets/range-widget-picker-0.*
   :alt: The range picker widget, as displayed in the ODK Collect app. The question label is "Range picker integer widget". There is a button labeled "Select Value".
-  
-.. image:: /img/form-widgets/range-widget-picker-1.* 
+
+.. image:: /img/form-widgets/range-widget-picker-1.*
   :alt: The range widget as shown in the previous image. Over it is a modal window labeled "Number Picker", with a spinner-style number select. Below are buttons for OK and CANCEL.
 
 .. rubric:: XLSForm
@@ -2011,7 +2003,7 @@ When the :tc:`rating` appearance is added, the range widget is displayed with st
 
   range, range_integer_widget_rating, Range rating widget, rating, range integer widget with rating appearance, end=9
 
-  
+
 .. _note-widget:
 
 Note widget
@@ -2046,7 +2038,7 @@ type
 appearance
   :tc:`url`
 
-Provides a link which the user can open from the survey. 
+Provides a link which the user can open from the survey.
 Takes no input.
 
 The URL to open is specified with :th:`default`.
@@ -2060,8 +2052,8 @@ The URL to open is specified with :th:`default`.
   :header: type, name, label, appearance, hint, default
 
   text,url_widget,URL widget,url,text type with url appearance and default value of http://opendatakit.org/,http://opendatakit.org/
-  
-  
+
+
 .. _print-widget:
 
 Printer widget
@@ -2085,7 +2077,7 @@ See :doc:`printer-widget` for complete details.
   :header: type, name, label, appearance, calculation
 
    text,ex_printer_widget,Ex printer widget,printer:org.opendatakit.sensors.ZebraPrinter, "concat('123456789','<br>’,'QR CODE','<br>','Text')"
-     
+
 .. _trigger-widget:
 
 Trigger/acknowledge widget
@@ -2096,7 +2088,7 @@ type
 appearance
   *none*
 
-The trigger widget, 
+The trigger widget,
 also known as the acknowledge widget,
 presents a single checkbox.
 
@@ -2161,10 +2153,10 @@ and available in Aggregate and other data analysis tools.
 
 .. contents::
   :local:
-  
+
 .. _metadata:
 
-Metadata 
+Metadata
 ~~~~~~~~~~
 
 Metadata questions capture information about the device or a survey collection event and are not visible to the user.
@@ -2184,12 +2176,12 @@ These items are defined by the device and cannot be changed:
 - :tc:`subscriberid`
 - :tc:`simserial`
 
-These items are defined in Collect, 
+These items are defined in Collect,
 and :ref:`can be edited in Settings <form-metadata-settings>`:
 
 - :tc:`username`
 - :tc:`phonenumber`
-  
+
 .. rubric:: XLSForm
 
 .. csv-table:: survey
@@ -2240,9 +2232,9 @@ Calculate questions let you evaluate complex :ref:`expressions <expressions>`,
 storing the values for later use.
 
 For more details, see :ref:`calculations`.
-    
+
 --------
-  
+
 .. _field-list:
 
 Grouping multiple widgets on the same screen
@@ -2259,7 +2251,7 @@ The :tc:`field-list` appearance attribute, applied to a group of widgets, displa
 
   Do not include a question that depends on a previous answer
   in the same field list as the previous question it depends on.
-  
+
   Relevance and calculation values are determined
   when the screen advances,
   which does not happen between questions
