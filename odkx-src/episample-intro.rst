@@ -10,7 +10,7 @@ EpiSample is a geographic health survey application originally developed by `Bel
     :class: device-screen-vertical side-by-side
 
 
-.. _episample-odk2-features:
+.. _episample-odk-x-features:
 
 Key Features
 ----------------------------
@@ -47,4 +47,3 @@ A walk-through of the features and the application and an overview of how they a
   :maxdepth: 2
 
   episample-tour
-

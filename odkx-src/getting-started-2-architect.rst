@@ -293,18 +293,18 @@ Congratulations, you have successfully modified this ODK-X application to add a 
 
 You could now log onto your server, delete the geotagger table, reset your server, and start collecting geopoints with the new image direction field.
 
-.. _architect-odk2-next:
+.. _architect-odkx-next:
 
 Useful Grunt Commands
 -----------------------
 
 :guilabel:`grunt addtable:tableid` : Will create the required directory structure for an individual table, including the forms directory.
 
-:guilabel:`grunt xlsx-convert-all` : Takes all `.xlsx` files and converts them into a `formDef.json file`. Can be used instead of `XLSX` converter on the app designer. 
+:guilabel:`grunt xlsx-convert-all` : Takes all `.xlsx` files and converts them into a `formDef.json file`. Can be used instead of `XLSX` converter on the app designer.
 
 :guilabel:`grunt wipe-data` : Allows users to get rid of the default tables/data included with app designer.
 
-:guilabel:`grunt setup` : Launches the login and sync screen on the connected device. 
+:guilabel:`grunt setup` : Launches the login and sync screen on the connected device.
 
 :guilabel:`grunt kill all` : Force stops survey, tables and services on the connected device.
 
@@ -337,5 +337,3 @@ We also provide guides geared towards Deployment Architects for each of the Andr
 However the user guides for these tools are also useful for everyone.
 
 Finally, to expand your knowledge of the more advanced features of the platform, such as data permission filters, read the :doc:`advanced-topics-architect`.
-
-

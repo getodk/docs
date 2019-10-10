@@ -77,9 +77,9 @@ The ODK-X Tool Suite consists of:
 Trying It Out
 ----------------
 
-The first step to get a feel for the ODK-X tools and how they fit together is to do the :doc:`getting-started-2-user`. This guide walks you through the process of using a basic geotagging application and submitting data to the server. After this is completed, the guide provides a list of :ref:`user-odk2-next` for the user.
+The first step to get a feel for the ODK-X tools and how they fit together is to do the :doc:`getting-started-2-user`. This guide walks you through the process of using a basic geotagging application and submitting data to the server. After this is completed, the guide provides a list of :ref:`user-odkx-next` for the user.
 
-Deployment Architects should follow this up with the :doc:`getting-started-2-architect` to get an introduction into revising and editing their own forms. That guide walks you through modifying the *Geotagger* demo application to add a new field to it. Similar to the user guide, this guide provides a list of :ref:`architect-odk2-next` for the Deployment Architect.
+Deployment Architects should follow this up with the :doc:`getting-started-2-architect` to get an introduction into revising and editing their own forms. That guide walks you through modifying the *Geotagger* demo application to add a new field to it. Similar to the user guide, this guide provides a list of :ref:`architect-odkx-next` for the Deployment Architect.
 
 System Administrators should learn about :doc:`cloud-endpoints-intro`.
 
