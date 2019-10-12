@@ -55,7 +55,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Open Data Kit 2'
+project = 'Open Data Kit X'
 copyright = '2017, Open Data Kit. This document is licensed under a Creative Commons Attribution 4.0 International License'
 author = 'Open Data Kit'
 
@@ -118,7 +118,7 @@ html_theme_options = {
     'logo_only': True,
     'display_version': False,
 }
-html_title = "Open Data Kit 2 Docs"
+html_title = "Open Data Kit X Docs"
 
 html_favicon = "_static/img/odk-favicon.ico"
 
@@ -140,7 +140,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'OpenDataKit2doc'
+htmlhelp_basename = 'OpenDataKitXdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -196,8 +196,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'OpenDataKit2.tex', 'Open Data Kit 2 Documentation',
-     'Open Data Kit 2', 'manual'),
+    (master_doc, 'OpenDataKitX.tex', 'Open Data Kit X Documentation',
+     'Open Data Kit X', 'manual'),
 ]
 
 
@@ -206,7 +206,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'opendatakit2', 'Open Data Kit 2 Documentation',
+    (master_doc, 'opendatakitx', 'Open Data Kit X Documentation',
      [author], 1)
 ]
 
@@ -217,8 +217,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'OpenDataKit2', 'Open Data Kit 2 Documentation',
-     author, 'OpenDataKit2', 'One line description of project.',
+    (master_doc, 'OpenDataKitX', 'Open Data Kit X Documentation',
+     author, 'OpenDataKitX', 'One line description of project.',
      'Miscellaneous'),
 ]
 
