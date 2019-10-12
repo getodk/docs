@@ -1,4 +1,4 @@
-s3_bucket: odkx-docs-web
+s3_bucket: odk2-docs-web
 s3_endpoint: us-west-2
 s3_key_prefix: odk-x
 
