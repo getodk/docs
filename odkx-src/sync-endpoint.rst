@@ -100,7 +100,7 @@ Setup instructions:
 
     $ docker build --pull -t odk/phpldapadmin phpldapadmin
 
-  10. Enter your hostname in the :code:`security.server.hostname` field in the :file:`security.properties` file.
+  10. Enter your hostname in the :code:`security.server.hostname` field in the :file:`security.properties` file (under the directory :file:`config/sync-endpoint`).
 
   11. If you're not using the standard ports (80 for *HTTP* and 443 for *HTTPS*) enter the ports you're using in the :code:`security.server.port` and :code:`security.server.securePort` fields in the :file:`security.properties`. Then edit the **ports** section under the **sync** section in :file:`docker-compose.yml` to be :code:`YOUR_PORT:8080`.
 
@@ -113,7 +113,7 @@ Setup instructions:
     - :ref:`Custom database instructions <sync-endpoint-setup-database>`
     - :ref:`Custom LDAP instructions <sync-endpoint-setup-ldap>`
 
-  13. In the cloned repository:
+  13. In the "sync-endpoint-default-setup" cloned repository run:
 
   .. code-block:: console
 
