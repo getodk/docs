@@ -173,6 +173,8 @@ Uploading a filled form from within the Collect app marks that form as :formstat
   - Use the `TRIM <https://support.google.com/docs/answer/3094140?hl=en>`_ function in the google sheets to remove the leading and trailing spaces from the cells.
   - Define empty cell in your tests to be a cell that is either empty or contains a single space.
 
+  Other values will be preceded by an apostrophe. This prevents Google Sheets from guessing at the data type and applying a format that may not be appropriate (e.g. making 1940 10 5 into a date when it actually is the value of a select multiple). Raw values may be used in any kind of computation and the apostrophes only are visible when editing a value. You may choose to manually apply a format for certain columns if desired.
+
 .. note::
 
   Using Google Drive as a server, filled forms are sent to the first sheet in a given spreadsheet, no matter what its name is. If you use one spreadsheet to keep a form definition and to collect filled forms make sure the sheet you expect to be filled is in the first place.
