@@ -130,21 +130,9 @@ To manage App Users for a Project, you can navigate to the Project overview page
 Archiving a Project
 ~~~~~~~~~~~~~~~~~~~
 
-When you Archive a Project, the following things become frozen:
+When you Archive a Project, it will appear at the bottom of the Project List on the homepage, with :guilabel:`(archived)` added onto the end of its name.
 
- - Form settings and states. Any Forms that are still in :guilabel:`Open` or :guilabel:`Closing` states will remain in those states.
- - Web User access. Any users who are Project Managers will retain their access.
- - App User access. All active App Users will retain their ability to download :guilabel:`Open` forms and upload non-:guilabel:`Closed` forms.
- - Project data access. All Project data, including Forms, Form Attachments, and all Submission data will remain available for viewing, download, and OData access.
-
-And, the following things are changed:
-
- - The Project will be sorted to the bottom of the Projects list, with :guilabel:`(archived)` added onto the end of the Project Name.
- - All management features (e.g. editing Project or Form details) on the Project and Forms within will be disabled in the web interface.
-
-.. admonition:: Before you archive
-
-  Because form states become non-editable, you should review them and make sure you are happy with how they'll be frozen.
+In version 0.6 of Central, archiving a Project would disable certain features on it. We have eliminated this behaviour, so all your archived Projects can still be used and manipulated freely.
 
 To Archive a Project, first navigate to the Project, then click on the :guilabel:`Settings` tab underneath the Project name.
 
