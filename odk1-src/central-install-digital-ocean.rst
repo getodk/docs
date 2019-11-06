@@ -185,7 +185,7 @@ Adding Swap
 
 If you have installed Central on a 1GB droplet, you may encounter problems exporting submission .zip files when there are many attachments. Usually, the .zip file will end up being empty, or much smaller than expected and possibly corrupt.
 
-In this case, the first thing you can try is to add a swapfile. We **do not** recommend adding swap unless you are struggling with attachment exports, and if you can afford it, upgrading to a 2GB machine will yield much better results than adding swap. But if you just need your export to work for now, this can be an effective workaround.
+In this case, the first thing you can try is to add a swap file. We **do not** recommend adding swap unless you are struggling with attachment exports, and if you can afford it, upgrading to a 2GB machine will yield much better results than adding swap. But if you just need your export to work for now, this can be an effective workaround.
 
 Log into your server so you have a console prompt, and run these commands, adapted from `this article <https://linuxize.com/post/create-a-linux-swap-file/>`_:
 

@@ -144,7 +144,7 @@ Right now, Central offers two features around Form Workflow:
 
 In the future, additional workflow features are planned to make processes like training and drafting Forms easier.
 
-We place these workflow controls for all Forms in a single place, on the Form Workflow tab at the Project level. To access it, navigate to the Project and select the tab at the top of the page labelled :guilabel:`Form Workflow`.
+We place these workflow controls for all Forms in a single place, on the Form Workflow tab at the Project level. To access it, navigate to the Project and select the tab at the top of the page labeled :guilabel:`Form Workflow`.
 
    .. image:: /img/central-projects/workflow.png
 
@@ -166,7 +166,7 @@ Archiving a Project
 
 When you Archive a Project, it will appear at the bottom of the Project List on the homepage, with :guilabel:`(archived)` added onto the end of its name.
 
-In version 0.6 of Central, archiving a Project would disable certain features on it. We have eliminated this behaviour, so all your archived Projects can still be used and manipulated freely.
+In version 0.6 of Central, archiving a Project would disable certain features on it. We have eliminated this behavior, so all your archived Projects can still be used and manipulated freely.
 
 To Archive a Project, first navigate to the Project, then click on the :guilabel:`Settings` tab underneath the Project name.
 
