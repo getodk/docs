@@ -176,7 +176,7 @@ DKIM is a security trust protocol which is used to help verify mail server ident
      docker-compose build mail
      systemctl restart docker-compose@central
 
-   If that doesn't work, you may need to first remove your old mail container (``docker-compose rm mail``).
+   If you see an error that says ``Can't open "rsa.private" for writing, Is a directory.``, you will need to ``rmdir ~/central/files/dkim/rsa.private``, then attempt ``docker-compose build mail`` again. If you see some other error, you may need to first remove your old mail container (``docker-compose rm mail``).
 
 .. _central-install-digital-ocean-swap:
 
