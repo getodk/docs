@@ -170,7 +170,10 @@ Managing App Users
 
 App Users never gain any access to the management website: they do not have email addresses or passwords associated with their account, only a nickname so you can tell which is which. Once a Web User creates an App User within some project, a :doc:`configuration QR Code <collect-import-export>` will be generated which will grant a mobile device access to that project as that App User. Access can be revoked at any time, and Web Users can see which App Users uploaded which submissions.
 
-In the current alpha release of ODK Central, all App Users can download any :ref:`Open form  <central-forms-lifecycle>` and upload submissions to any :ref:`non-Closed form <central-forms-lifecycle>` within their project. Future versions will feature more options to restrict certain App Users to certain forms.
+A newly created App User does not have access to any Forms. To give them access once they are created, use the :ref:`Form Workflow <central-projects-form-workflow>` tab on the Project. You will be able to allow access to particular Forms within the Project for each App User.
+
+.. tip::
+  In version 0.6 and earlier of ODK Central, all App Users were granted download and submission rights on all Forms within their Project. These users retain their access when you first upgrade to version 0.7. Once you have version 0.7 installed, you can adjust these Users' access per form.
 
 To manage App Users, navigate to the project whose App Users you wish to manage, and then click on the :guilabel:`App Users` tab just below the project name. You should see a listing of users that looks like this:
 
