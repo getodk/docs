@@ -99,24 +99,28 @@ From here, you will be able to edit the Project Name. You will also see a sectio
 
 .. _central-project-roles:
 
-Managing Project Managers
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Managing Project Roles
+~~~~~~~~~~~~~~~~~~~~~~
 
-Any Web User may be assigned as a Project Manager on a Project. Project Managers may perform any action upon and within that Project, including changing its name, adding more Project Managers, and uploading and managing Forms and Submissions. Any Web Users that are site-wide Administrators will already be able to perform these actions on any Project without being explicitly named a Manager.
+Any Web User may be assigned as a Project Manager or Project Viewer on a Project.
+
+Project Managers may perform any action upon and within that Project, including changing its name, adding more Project Managers, and uploading and managing Forms and Submissions. Any Web Users that are site-wide Administrators will already be able to perform these actions on any Project without being explicitly named a Manager.
+
+Project Viewers can view basic information about all Forms in the Project, and download Submission data or access it over OData for analysis. They cannot make any modifications to any data or settings.
 
 You will find a detailed breakdown of user roles :ref:`here <central-users-web-roles>`.
 
-To assign or remove Managers for a Project, first go to the Project overview page, then click on the :guilabel:`Project Managers` tab under the Project name. You should see the following page:
+To assign or remove Managers or Viewers for a Project, first go to the Project overview page, then click on the :guilabel:`Project Managers` tab under the Project name. You should see the following page:
 
    .. image:: /img/central-projects/roles.png
 
-If Managers have not already been assigned to the Project, the table will be empty. This is normal: the table only shows Users with assigned roles on the Project at first. To find a Web User to make them a Project Manager, search for them in the :guilabel:`Search for a user` field above the table. You can find users by their Display Name or their Email. Type part or all of either into the box, and press :kbd:`Enter`. The search results will appear in the table.
+If roles have not already been assigned to the Project, the table will be empty. This is normal: the table only shows Users with assigned roles on the Project at first. To find a Web User to assign them a role, search for them in the :guilabel:`Search for a user` field above the table. You can find users by their Display Name or their Email. Type part or all of either into the box, and press :kbd:`Enter`. The search results will appear in the table.
 
    .. image:: /img/central-projects/role.png
 
-To make a Web User into a Project Manager, change the dropdown next to their name in the :guilabel:`Project Role` column from :guilabel:`None` to :guilabel:`Manager`. You should see the page think for a moment, and then a confirmation of success. If you clear the search in the text box, the new Project Manager should remain.
+To make a Web User into a Project Manager or Viewer, change the dropdown next to their name in the :guilabel:`Project Role` column from :guilabel:`None` to :guilabel:`Manager`. You should see the page think for a moment, and then a confirmation of success. If you clear the search in the text box, the newly assigned user should remain.
 
-To demote a Web User from being a Project Manager, change the dropdown back to :guilabel:`None`.
+To demote a Web User from any role, change the dropdown back to :guilabel:`None`.
 
 .. _central-project-app-users:
 
