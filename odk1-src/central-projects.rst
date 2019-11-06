@@ -31,7 +31,12 @@ If you have upgraded to **version 0.5**, the following changes have been made:
    - Create, manage, and retire App Users for the project.
    - Manage and archive the project itself.
 
-In future releases beyond 0.5, we have a `loose roadmap <https://github.com/opendatakit/central/issues/35>`_ with at least the following goals:
+Since the major changes that occurred in version 0.5, we have additionally made the following improvements:
+
+ - Better, centralized form workflow/status management.
+ - More granular project access, in the form a Project Viewer role which allows read-only access only to Forms and Submission data.
+
+In future releases, we have a `loose roadmap <https://github.com/opendatakit/central/issues/35>`_ with at least the following goals:
 
  - Change the relationship between Collect and Central so that with one button you can synchronize the mobile device to some centrally managed desired state.
 
@@ -39,8 +44,6 @@ In future releases beyond 0.5, we have a `loose roadmap <https://github.com/open
    - Eventually, Collect app settings may be synchronized this way as well.
    - And eventually, different App Users of different roles may be assigned different device states.
 
- - Better, centralized form workflow/status management.
- - More granular project access: for example, a project Web User role type that grants read-only access to submitted data.
  - Download an entire project’s data at once.
 
 If you have ideas on how projects might be made more useful for you, please do not hesitate to leave us feedback on the `ODK Forum <https://forum.opendatakit.org/c/features>`_.
