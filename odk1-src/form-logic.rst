@@ -514,8 +514,12 @@ Groups without labels can be helpful for organizing questions in a way that's in
 
 .. _repeats:
 
-Repeating groups of questions
-=============================
+Repeating questions
+=====================
+You can ask the same question or questions multiple times by wrapping them in :tc:`begin_repeat...end_repeat`. By default, enumerators are asked before each repetition whether they would like to add another repeat. It is also possible to :ref:`determine the number of repetitions ahead of time <statically-defined-repeats>` which can make the user interaction more intuitive.
+
+.. seealso::
+    :doc:`form-repeats` describes strategies to address common repetition scenarios.
 
 .. note::
   Using repetition in a form is very powerful but can also make training and data analysis more time-consuming. Aggregate does not export repeats so Briefcase or one of the data publishers will be needed to :doc:`transfer data from Aggregate <aggregate-data-access>`. Repeats will be in their own documents and will need to be joined with their parent records for analysis.
@@ -527,25 +531,13 @@ Repeating groups of questions
 
   If repeats are needed, consider adding some summary calculations at the end so that analysis will not require joining the repeats with their parent records. For example, if you are gathering household information and would like to compute the total number of households visited across all enumerators, add a calculation after the repeats that counts the repetitions in each submission.
 
-To repeat questions or groups of questions
-use the :tc:`begin_repeat...end_repeat` syntax.
-
-.. rubric:: XLSForm --- Single question repeat group
+.. rubric:: XLSForm --- Repeating one or more questions
 
 .. csv-table:: survey
   :header: type, name, label 
 
-  begin_repeat, my_repeat_group, Repeat group label
-  text, repeated_question, This question will be repeated.
-  end_repeat, , 
-
-.. rubric:: XLSForm --- Multi-question repeat group
-
-.. csv-table:: survey
-  :header: type, name, label 
-
-  begin_repeat, my_repeat, Repeat group label
-  note, repeated_note, These questions will be repeated as an entire group.
+  begin_repeat, my_repeat, Repeat label
+  note, repeated_note, All of these questions will be repeated.
   text, name, What is your name?
   text, quest, What is your quest?
   text, fave_color, What is your favorite color?
@@ -562,12 +554,9 @@ Controlling the number of repetitions
 User-controlled repeats
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default,
-the user controls how many times 
-the questions are repeated.
+By default, the enumerator controls how many times the questions are repeated.
 
-Before each repetition,
-the user is asked if they want to add another repeat group.
+Before each repetition, the user is asked if they want to add another.
 
 .. note::
 
@@ -580,32 +569,22 @@ the user is asked if they want to add another repeat group.
 .. figure:: /img/form-logic/repeat-iteration-modal.* 
   :alt: The Collect app. A modal dialog labeled "Add new group?" with the question: "Add a new 'repeat group label' group?" and options "Do not add" and "Add Group".
   
-  The user is given the option to add each iteration.
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label
-  
-  begin_repeat, repeat_example, repeat group label
-  text, repeat_test, Question label
-  end_repeat,,
+  The user is given the option to add each repetition.
 
 .. note::
 
-  This interaction may be confusing to users the first time they see it. If enumerators know the number of repetitions ahead of time, consider using :ref:`dynamically defined repeats <dynamically-defined-repeats>`.
+  This interaction may be confusing to users the first time they see it. If enumerators know the number of repetitions ahead of time, consider using a :ref:`dynamically defined repeat count <dynamically-defined-repeats>`.
 
 .. tip::
 
-  The :ref:`jump <jumping>` menu also provides shortcuts to :ref:`add <adding_repeats>` or :ref:`remove <removing_repeats>` instances of repeating groups.
+  The :ref:`jump <jumping>` menu also provides shortcuts to :ref:`add <adding_repeats>` or :ref:`remove <removing_repeats>` repeat instances.
 
 .. _statically-defined-repeats:
 
-Statically defined repeats
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Fixed repeat count
+~~~~~~~~~~~~~~~~~~~~
 
-Use the :th:`repeat_count` column
-to define the number of times a group will repeat.
+Use the :th:`repeat_count` column to define the number of times that questions will repeat.
 
 
 .. rubric:: XLSForm
@@ -614,7 +593,7 @@ to define the number of times a group will repeat.
   :header: type, name, label, repeat_count
 
   begin_repeat, my_repeat, Repeat group label, 3
-  note, repeated_note, These questions will be repeated as an entire group.
+  note, repeated_note, These questions will be repeated exactly three times.
   text, name, What is your name?
   text, quest, What is your quest?
   text, fave_color, What is your favorite color?
@@ -622,11 +601,10 @@ to define the number of times a group will repeat.
  
 .. _dynamically-defined-repeats:
  
-Dynamically defined repeats
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dynamically defined repeat count
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The :th:`repeat_count` column can reference
-:ref:`previous responses <variables>` and :ref:`calculations <calculations>`.
+The :th:`repeat_count` column can reference :ref:`previous responses <variables>` and :ref:`calculations <calculations>`.
 
 .. rubric:: XLSForm
 
@@ -638,9 +616,6 @@ The :th:`repeat_count` column can reference
   text, child_name, Child's name,
   integer, child_age, Child's age,
   end_repeat, , , 
-
-
-.. seealso:: :doc:`form-repeats`
   
 .. _cascading-selects:
   

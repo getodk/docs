@@ -9,6 +9,12 @@
 Repeat Recipes and Tips
 ========================
 
+.. seealso::
+    :ref:`repeats` describes repeat basics.
+
+.. contents:: :depth: 2
+ :local:
+
 .. _setting-max-repeats:
 
 Setting a max limit on repetitions
