@@ -516,7 +516,7 @@ Groups without labels can be helpful for organizing questions in a way that's in
 
 Repeating questions
 =====================
-You can ask the same question or questions multiple times by wrapping them in :tc:`begin_repeat...end_repeat`. By default, enumerators are asked before each repetition whether they would like to add another repeat. It is also possible to :ref:`determine the number of repetitions ahead of time <statically-defined-repeats>` which can make the user interaction more intuitive.
+You can ask the same question or questions multiple times by wrapping them in :tc:`begin_repeat...end_repeat`. By default, enumerators are asked before each repetition whether they would like to add another repeat. It is also possible to :ref:`determine the number of repetitions ahead of time <statically-defined-repeats>` which can make the user interaction more intuitive. You can also :ref:`add repeats as long as a condition is met <repeat_based_on_condition>`.
 
 .. seealso::
     :doc:`form-repeats` describes strategies to address common repetition scenarios.
@@ -616,6 +616,33 @@ The :th:`repeat_count` column can reference :ref:`previous responses <variables>
   text, child_name, Child's name,
   integer, child_age, Child's age,
   end_repeat, , , 
+
+.. _repeat_based_on_condition:
+
+Repeating as long as a condition is met
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If the enumerator won't know how many repetitions are needed ahead of time, you can still avoid the "Add new group?" dialog by using the answer to a question to decide whether another repeat instance should be added. In the example below, repeated questions about plants will be asked as long as the user answers "yes" to the last question.
+
+.. csv-table:: survey
+  :header: type, name, label, calculation, repeat_count
+  
+  calculate, count, , count(${plant})
+  begin_repeat, plant, Plant, , if(${count} = 0 or ${plant}[position()=${count}]/more_plants = 'yes', ${count} + 1, ${count})
+  text, species, Species,
+  integer, estimated_size, Estimated size,
+  select_one yes_no, more_plants, Are there more plants in this area?,
+  end_repeat, , , ,
+
+.. csv-table:: choices
+  :header: list_name, name, label
+  
+  yes_no, yes, Yes
+  yes_no, no, No
+
+This works by maintaining a :func:`count` of the existing repetitions and either making :th:`repeat_count` one more than that if the continuing condition is met or keeping the :th:`repeat_count` the same if the ending condition is met. 
+
+In the `repeat_count` expression, `${count} = 0` ensures that there is always at least one repeat instance created. The continuing condition is `${plant}[position()=${count}]/more_plants = 'yes'` which means "the answer to `more_plants` was `yes` the last time it was asked." The expression `position()=${count}` uses the :func:`position` function to select the last plant that was added. Adding `/more_plants` to the end of that selects the `more_plants` question.
 
 .. _zero-repetitions:
 
