@@ -165,7 +165,7 @@ Control flow
   
   .. container:: details
   
-    .. include:: incl/form-examples/parallel-repeat-groups.rst
+    .. include:: incl/form-examples/parallel-repeats.rst
 
 .. function:: once(expression)
 
@@ -372,7 +372,7 @@ Repeat groups
 
   .. container:: details
   
-    .. include:: incl/form-examples/parallel-repeat-groups.rst
+    .. include:: incl/form-examples/parallel-repeats.rst
 
 .. function:: count(nodeset)
 
@@ -380,7 +380,7 @@ Repeat groups
 
   .. container:: details
   
-    .. include:: incl/form-examples/parallel-repeat-groups.rst
+    .. include:: incl/form-examples/parallel-repeats.rst
   
 .. function:: count-non-empty(nodeset)
 
