@@ -536,7 +536,7 @@ You can ask the same question or questions multiple times by wrapping them in :t
 .. csv-table:: survey
   :header: type, name, label 
 
-  begin_repeat, my_repeat, Repeat label
+  begin_repeat, my_repeat, repeat group label
   note, repeated_note, All of these questions will be repeated.
   text, name, What is your name?
   text, quest, What is your quest?
