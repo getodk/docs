@@ -598,7 +598,7 @@ Use the :th:`repeat_count` column to define the number of times that questions w
   text, quest, What is your quest?
   text, fave_color, What is your favorite color?
   end_repeat, , 
- 
+
 .. _dynamically-defined-repeats:
  
 Dynamically defined repeat count
@@ -616,7 +616,29 @@ The :th:`repeat_count` column can reference :ref:`previous responses <variables>
   text, child_name, Child's name,
   integer, child_age, Child's age,
   end_repeat, , , 
+
+.. _zero-repetitions:
+
+Representing zero or more repetitions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sometimes it only makes sense to collect information represented by the questions in a repeat under certain conditions. If the number of total repetitions is known ahead of time, use :ref:`dynamically-defined-repeats` and allow a count of 0. If the count is not known ahead of time, :ref:`relevants` can be used to represent 0 or more repetitions. In the example below, questions about trees will only be asked if the user indicates that there are trees to survey.
+
+.. csv-table:: survey
+  :header: type, name, label, relevant
   
+  select_one yes_no, trees_present, Are there any trees in this area?,
+  begin_repeat, tree, Tree, ${trees_present} = 'yes'
+  text, species, Species,
+  integer, estimated_age, Estimated age,
+  end_repeat, , , ,
+
+.. csv-table:: choices
+  :header: list_name, name, label
+  
+  yes_no, yes, Yes
+  yes_no, no, No
+
 .. _cascading-selects:
   
 Filtering options in select questions
