@@ -2052,14 +2052,14 @@ Takes no input.
 The URL to open is specified with :th:`default`.
 
 .. image:: /img/form-widgets/url-widget.*
-  :alt: The URL form widget, as displayed in the ODK Collect app on an Android phone. The question text is "URL Widget." The hint text is "text type with url appearance and default value of https://opendatakit.org/" Below that is a button labeled, "Open URL." Below the button is the URL, "https://opendatakit.org/" Above the question text is the form group name "Text widgets."
+  :alt: The URL form widget, as displayed in the ODK Collect app on an Android phone. The question text is "URL Widget." The hint text is "text type with url appearance and default value of http://opendatakit.org/" Below that is a button labeled, "Open URL." Below the button is the URL, "http://opendatakit.org/" Above the question text is the form group name "Text widgets."
 
 .. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint, default
 
-  text,url_widget,URL widget,url,text type with url appearance and default value of https://opendatakit.org/,https://opendatakit.org/
+  text,url_widget,URL widget,url,text type with url appearance and default value of http://opendatakit.org/,http://opendatakit.org/
   
   
 .. _print-widget:
