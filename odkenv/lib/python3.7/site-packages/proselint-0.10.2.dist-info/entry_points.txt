@@ -1,0 +1,3 @@
+[console_scripts]
+proselint = proselint.command_line:proselint
+

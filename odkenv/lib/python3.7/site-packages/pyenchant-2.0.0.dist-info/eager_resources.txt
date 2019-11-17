@@ -1,0 +1,11 @@
+enchant/lib
+enchant/share
+enchant/lib/libenchant.1.dylib
+enchant/lib/enchant
+enchant/lib/libenchant.1.dylib
+enchant/lib/libglib-2.0.0.dylib
+enchant/lib/libgmodule-2.0.0.dylib
+enchant/lib/libintl.8.dylib
+enchant/lib/libpcre.1.dylib
+enchant/lib/enchant/libenchant_ispell.so
+enchant/lib/enchant/libenchant_myspell.so

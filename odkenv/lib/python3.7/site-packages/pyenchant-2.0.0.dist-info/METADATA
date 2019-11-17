@@ -1,0 +1,22 @@
+Metadata-Version: 2.0
+Name: pyenchant
+Version: 2.0.0
+Summary: Python bindings for the Enchant spellchecking system
+Home-page: https://pythonhosted.org/pyenchant/
+Author: Ryan Kelly
+Author-email: ryan@rfk.id.au
+License: LGPL
+Keywords: spelling spellcheck enchant
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Text Processing :: Linguistic
+
+UNKNOWN
+
+

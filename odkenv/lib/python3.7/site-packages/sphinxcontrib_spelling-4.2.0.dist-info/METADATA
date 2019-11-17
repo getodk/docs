@@ -1,0 +1,73 @@
+Metadata-Version: 2.0
+Name: sphinxcontrib-spelling
+Version: 4.2.0
+Summary: Sphinx spelling extension
+Home-page: https://github.com/sphinx-contrib/spelling
+Author: Doug Hellmann
+Author-email: doug@doughellmann.com
+License: UNKNOWN
+Description-Content-Type: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Documentation
+Classifier: Topic :: Utilities
+Requires-Dist: PyEnchant (>=1.6.5)
+Requires-Dist: Sphinx (>=0.6)
+Requires-Dist: six
+Provides-Extra: linter
+Requires-Dist: flake8 (==3.5.0); extra == 'linter'
+Provides-Extra: test
+Requires-Dist: fixtures (>=3.0.0); extra == 'test'
+Requires-Dist: python-subunit (>=0.0.18); extra == 'test'
+Requires-Dist: testrepository (>=0.0.18); extra == 'test'
+Requires-Dist: testscenarios (>=0.4); extra == 'test'
+Requires-Dist: testtools (>=1.4.0); extra == 'test'
+Requires-Dist: coverage (!=4.4,>=4.0); extra == 'test'
+
+.. -*- mode: rst -*-
+
+=========================
+ sphinxcontrib-spelling
+=========================
+
+This package contains sphinxcontrb.spelling, a spelling checker for
+Sphinx-based documentation.  It uses PyEnchant_ to produce a report
+showing misspelled words.  Note: PyEnchant is now unmaintained.
+
+Refer to the `main documentation page
+<http://www.doughellmann.com/docs/sphinxcontrib.spelling/>`__ for
+installation and setup details.
+
+License
+=======
+
+Copyright Doug Hellmann, All Rights Reserved
+
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
+provided that the above copyright notice appear in all copies and that
+both that copyright notice and this permission notice appear in
+supporting documentation, and that the name of Doug Hellmann not be used
+in advertising or publicity pertaining to distribution of the software
+without specific, written prior permission.
+
+DOUG HELLMANN DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
+INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO
+EVENT SHALL DOUG HELLMANN BE LIABLE FOR ANY SPECIAL, INDIRECT OR
+CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF
+USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+
+.. _PyEnchant: https://github.com/rfk/pyenchant
+
+
+
