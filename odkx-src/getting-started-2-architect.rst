@@ -5,16 +5,13 @@ Getting Started Deployment Architect Guide
 
 This guide is intended for Deployment Architects. A Deployment Architect is an author of a data management application or a consumer of collected data. This person might create forms and edit Javascript on their computer to deploy to the Android device. Or they might download data from the server and use Excel to perform analysis. Examples include technical staff and data analytics staff.
 
-Other perspective definitions can be found :ref:`here <odk-2-perspectives>`.
-
-
 .. contents:: :local:
 
 .. _architect-odk-2-prereqs:
 
 Prerequisites
 ------------------
-This guide continues the tour were :doc:`getting-started-2-user` left off. If you haven't yet completed that guide, do it first. When you have concluded the tour of the *Geotagger* example application's screens, return to this guide and we will turn to setting up our own application and server.
+This guide continues the tour were :doc:`getting-started-2-user` left off. If you haven't yet completed that tour, do it first. When you have concluded the tour of the *Geotagger* example application's screens, return to this guide and we will turn to setting up our own application and server.
 
 .. _architect-odk-2-setting-up:
 
