@@ -7,7 +7,7 @@ Open Data Kit Tool Suite X (ODK-X) documentation
 
 .. _odk-2-introduction:
 
-The ODK-X Tool Suite is free and open-source software for collecting, managing, and using data in resource-constrained environments.  
+The ODK-X Tool Suite is free and open-source software for collecting, managing, and using data in resource-constrained environments.
 
 In ODK-X, developers and data managers can create data management applications that consist of survey forms as well as Javascript-based apps. These allow you to render a fully customizable user interface to gather, manage, and visualize data on an Android device.
 
@@ -20,7 +20,7 @@ Two-way data sync
 """""""""""""""""
 A two-way synchronization protocol allows you to create data management applications with:
 
- - Follow-up surveys and repeat data collection locations 
+ - Follow-up surveys and repeat data collection locations
 
  - Pre-filled forms for faster data collection
 
@@ -44,7 +44,7 @@ Control data viewing, editing and deleting privileges for different users and gr
 
 Customizable survey flows and appearance
 """"""""""""""""""""""""""""""""""""""""
-Use basic web development (HTML, JavaScript, and CSS) to specify the layout of nearly all the screens viewed by the data collectors. 
+Use basic web development (HTML, JavaScript, and CSS) to specify the layout of nearly all the screens viewed by the data collectors.
 
 .. _odk-2-intro-list-of-tools:
 
@@ -54,13 +54,13 @@ The ODK-X Tool Suite consists of:
 
   - :doc:`survey-intro` - a customizable data **collection** application.
   - :doc:`tables-intro` - a data **curation and visualization** application that can also run custom-built data collection workflows.
-  - :doc:`services-intro` - an application for **user authentication and data synchronisation** between the ODK-X applications.
+  - :doc:`services-intro` - an application for **user authentication and data synchronization** between the ODK-X applications.
   - :doc:`cloud-endpoints-intro` - a **cloud server** to host data and application files, and to support bi-directional data synchronization across mobile devices.
   - :doc:`suitcase-intro` - a **desktop tool** for synchronizing data with a cloud endpoint.
   - :doc:`app-designer-intro` - a design environment for **creating, customizing, and previewing** your forms, data curation, and visualization applications. This is where you build your ODK applications.
-  
+
 .. note::
-  ODK-X mobile applications are available for Android devices only. 
+  ODK-X mobile applications are available for Android devices only.
 
 .. _odk-2-intro-selecting-the-right-tools:
 
@@ -75,14 +75,14 @@ Field data collection
  - ODK-X Application Designer: data collection form creation
  - ODK-X Survey: data collection
  - ODK-X Services: data sync and database access
- - ODK-X Cloud Endpoints: data and application files cloud server 
+ - ODK-X Cloud Endpoints: data and application files cloud server
 
 Data sharing and visualization
 """"""""""""""""""""""""""""""
 
  - ODK-X Tables: data display and visualization
  - ODK-X Services: data sync and database access
- - ODK-X Cloud Endpoints: data and application files cloud server 
+ - ODK-X Cloud Endpoints: data and application files cloud server
 
 See :doc:`reference-apps` for examples of ODK-X tools in use.
 
@@ -91,7 +91,7 @@ See :doc:`reference-apps` for examples of ODK-X tools in use.
 Trying It Out
 -------------
 
-The :doc:`getting-started-2-user` walks you through the process of using a basic geotagging application and submitting data to the server. 
+The :doc:`getting-started-2-user` walks you through the process of using a basic geotagging application and submitting data to the server.
 
 
 .. toctree::
