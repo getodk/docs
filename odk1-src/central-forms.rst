@@ -39,7 +39,7 @@ You can either click on the :guilabel:`choose one` button to browse for your XFo
 Once the form is successfully uploaded, you will be taken to the Form Overview page.
 
 .. tip::
-  When a form is first created, none of the existing App Users on the project will be able to access it for download or submission. Once you are ready to allow App Users to access the form, use the Project `:ref:`Form Workflow <central-projects-form-workflow>` tab.
+  When a form is first created, none of the existing App Users on the project will be able to access it for download or submission. Once you are ready to allow App Users to access the form, use the Project `:ref:`Form Access <central-projects-form-access>` tab.
 
 .. _central-forms-checklist:
 
@@ -115,9 +115,9 @@ Closed    no                               no
 
 As you can see, you can use the **Closing** state to prevent further distribution of a form while still allowing the final few submissions to come in, while the **Closed** state effectively turns the form off completely. You can always set the form lifecycle stage to whatever you want: you can always, for example, re-open a closed form.
 
-To set the form lifecycle stage, go to the :ref:`Form Workflow <central-projects-form-workflow>` tab for the Project, under the name of the Project at the top of the page. You may have to navigate back out of the Form first by clicking on the :guilabel:`Back to Project Overview` link at the top of the page. Here, you will find the three possible stages in a dropdown for each form on the left side of the page. Select the ones you want for each Form, then click :guilabel:`Save` at the top-right to save the changes.
+To set the form lifecycle stage, go to the :ref:`Form Access <central-projects-form-access>` tab for the Project, under the name of the Project at the top of the page. You may have to navigate back out of the Form first by clicking on the :guilabel:`Back to Project Overview` link at the top of the page. Here, you will find the three possible stages in a dropdown for each form on the left side of the page. Select the ones you want for each Form, then click :guilabel:`Save` at the top-right to save the changes.
 
-You can find more information about the Form Workflow page :ref:`here <central-projects-form-workflow>`.
+You can find more information about the Form Access page :ref:`here <central-projects-form-access>`.
 
 .. _central-forms-delete:
 

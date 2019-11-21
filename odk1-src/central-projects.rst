@@ -33,7 +33,7 @@ If you have upgraded to **version 0.5**, the following changes have been made:
 
 Since the major changes that occurred in version 0.5, we have additionally made the following improvements:
 
- - Better, centralized form workflow/status management.
+ - Better, centralized form state and access management.
  - More granular project access, in the form a Project Viewer role which allows read-only access only to Forms and Submission data.
 
 In future releases, we have a `loose roadmap <https://github.com/opendatakit/central/issues/35>`_ with at least the following goals:
@@ -132,27 +132,25 @@ Managing Project App Users
 
 To manage App Users for a Project, you can navigate to the Project overview page, then click on the :guilabel:`App Users` tab under the Project name. For more information about creating, managing, and retiring Project App Users, please see :ref:`this section <central-users-app-overview>`.
 
-.. _central-projects-form-workflow:
+.. _central-projects-form-access:
 
-Managing Project Form Workflow
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Managing Form Access
+~~~~~~~~~~~~~~~~~~~~
 
-Right now, Central offers two features around Form Workflow:
+Right now, Central offers two ways to control around Form Access within each Project:
 
- - Each Form's :ref:`Lifecycle State <central-forms-lifecycle>` controls whether App Users can download and/or submit to that Form. Near the end of a Form's life, for example, it makes sense to disallow downloading the Form as a blank, but still receive any submissions that have already been created.
+ - Each Form's :ref:`Lifecycle State <central-forms-lifecycle>` controls whether any App User can download and/or submit to that Form. Near the end of a Form's life, for example, it makes sense to disallow downloading the Form as a blank, but still receive any submissions that have already been created.
  - Access to download and submit each Form can be customized per App User associated with the Project. When first creating a Form, for example, it makes sense to only allow a testing user access to the Form so that one can be sure that it works before rolling it out to all users.
 
-In the future, additional workflow features are planned to make processes like training and drafting Forms easier.
+We place these access controls for all Forms in a single place, on the Form Access tab at the Project level. To access it, navigate to the Project and select the tab at the top of the page labeled :guilabel:`Form Access`.
 
-We place these workflow controls for all Forms in a single place, on the Form Workflow tab at the Project level. To access it, navigate to the Project and select the tab at the top of the page labeled :guilabel:`Form Workflow`.
+   .. image:: /img/central-projects/access.png
 
-   .. image:: /img/central-projects/workflow.png
-
-On the left side of the Form Workflow page, you will find a list of all the Forms in the Project, along with a dropdown selection to set the lifecycle state for each one. Along the top, you will see all active App Users in the Project. At each row/column intersection, there is a checkbox that governs whether each App User is allowed access to each Form.
+On the left side of the Form Access page, you will find a list of all the Forms in the Project, along with a dropdown selection to set the lifecycle state for each one. Along the top, you will see all active App Users in the Project. At each row/column intersection, there is a checkbox that governs whether each App User is allowed access to each Form.
 
 If you are having trouble recalling what each Form State means, the :guilabel:`?` icon in the header will give you a quick recap:
 
-   .. image:: /img/central-projects/workflow-states.png
+   .. image:: /img/central-projects/access-states.png
 
 As you make changes to Form States and App User access, they will be highlighted in yellow. You can make all the changes you'd like to apply at once (marking an old version of a Form as Closing while granting Open access to the new one, for example), and once you are satisfied with what you see you can click the Save button at the top-right of the screen to apply them all at once.
 
