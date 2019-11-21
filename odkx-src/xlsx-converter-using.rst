@@ -14,6 +14,11 @@
   getTime
   daysOld
   num
+  async
+  isSessionVariable
+  fieldName
+  openRowInitialElementKeyToValueMap
+  promptTypes
 
 Using ODK XLSX Converter
 =============================
@@ -501,7 +506,7 @@ A custom prompt type available in the Application Designer repository is :th:`as
 .. tip::  
   :th:`async_assign` must be used on a screen previous to where the prompt value will be needed.
 
-Thus, a user should not use :th:`async_assign` to assign a value to a prompt and then attempt to use the prompt within that same screen as the value may not have been assigned yet.  Once the value is assigned to the prompt, it can be used in subsequent screens.  
+Thus, a user should not use :th:`async_assign` to assign a value to a prompt and then attempt to use the prompt within that same screen as the value may not have been assigned yet. Once the value is assigned to the prompt, it can be used in subsequent screens.  
 
 The reason for not being able to use the value of a prompt from an :th:`aync_assign` within the same screen has to do with the design of Survey. Every instance of a Survey form that a user fills out creates a row in a database table. Although the database interactions in Survey are asynchronous, you are able to see your data changes on the screen immediately because the data for the row is cached in a model data structure. When :th:`async_assign` is used, the :file:`formDef.json` file for the other form is read to create a model. 
 After that, the database table used to store the instances for the other form is queried to return the value(s) that are relevant for the assignment. These value(s) can then be manipulated for the assignment.
