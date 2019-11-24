@@ -5,63 +5,20 @@ Getting Started Deployment Architect Guide
 
 This guide is intended for Deployment Architects. A Deployment Architect is an author of a data management application or a consumer of collected data. This person might create forms and edit Javascript on their computer to deploy to the Android device. Or they might download data from the server and use Excel to perform analysis. Examples include technical staff and data analytics staff.
 
-Other perspective definitions can be found :ref:`here <odk-2-perspectives>`.
-
-
 .. contents:: :local:
 
 .. _architect-odk-2-prereqs:
 
 Prerequisites
 ------------------
- This guide continues the tour were :doc:`getting-started-2-user` left off. If you haven't yet completed that tour, do it first. When you have concluded the tour of the *Geotagger* example application's screens, return to this guide and we will turn to setting up our own ODK Aggregate server, and setting the application up to run on that server.
+This guide continues the tour were :doc:`getting-started-2-user` left off. If you haven't yet completed that tour, do it first. When you have concluded the tour of the *Geotagger* example application's screens, return to this guide and we will turn to setting up our own application and server.
 
 .. _architect-odk-2-setting-up:
 
-Migrating / Setting-up an ODK-X application
+Setting-up an ODK-X application
 ------------------------------------------------
 
-Now that we have seen how a device can join an already-configured application, and synchronize its view of the data with the ODK Aggregate server hosting the application, it is time to set up our own ODK Aggregate server.
-
-The starting point for this is to have a fully configured application on your device. Only proceed with the following steps after you have your device configured as you want it to appear. In this case, we already have the device configured with the *Geotagger* demo, so let's proceed to create an ODK Aggregate server and configure it to serve that demo to your devices.
-
-.. _architect-odk-2-setting-up-server:
-
-Setting up the ODK Aggregate server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Follow the instructions for :doc:`aggregate-install`. You must install the **ODK Aggregate v1.4.15** release. This is because we are transitioning away from Aggregate and towards :doc:`sync-endpoint`, but v1.4.15 will suit the purposes of this demo fine.
-
-Once you have installed ODK Aggregate, log in with your super-user account. That process is also covered in :doc:`aggregate-install`.
-
-Once logged in, enable the :doc:`aggregate-tables-extension`. You should grant the user account on your device the :guilabel:`Administer Tables` permissions.
-
-.. _architect-odk-2-setting-up-reset:
-
-Resetting the Application on the Server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Resetting the application on the ODK Aggregate server will push the application configuration on your device up to your server, replacing the configuration that is already on your server. Once the configuration is updated, data tables on the server and device will be synced. This process does not destroy data on the server, but instead merges changes on the client with any existing data tables on the server (this enables you to update your configuration without worrying about damaging or destroying the data already captured on the server).
-
-Return to your device, start ODK Tables:
-
-  #. Click the diminishing-lines icon to leave the custom home screen.
-  #. Click the three vertical dots and select :guilabel:`Sync` to launch ODK Services onto the sync screen.
-  #. Choose :menuselection:`Settings --> Server Settings`.
-  #. Edit the :guilabel:`Server URL` to be the URL for this newly configured ODK Aggregate server (https://myodk-test.appspot.com).
-  #. Click on :guilabel:`Server Sign-on Credential` and choose :menuselection:`Username`.
-  #. Choose :guilabel:`Username` and enter the superuser username for your ODK Aggregate server.
-  #. Choose :guilabel:`Server Password` and enter the ODK Aggregate server password for that superuser username.
-  #. Click the back button until you have returned to the sync screen.
-  #. Click on :guilabel:`Reset App Server` to push your device configuration up to your ODK Aggregate server.
-
-After this has completed, you have created your own server that replicates the configuration and contents of the https://opendatakit-simpledemo.appspot.com site. Congratulations!
-
-.. note::
-
-  Any device with a user account with :guilabel:`Administer Tables` permissions can reset the app server. If you configure a device with a user account (or Anonymous user) with only the :guilabel:`Synchronize Tables` permissions, they will not be able to reset the app server and will only be able to sync and join into the existing ODK-X application on this ODK Aggregate server.
-
-.. _architect-odk-2-config:
+Now that we have seen how a device can join an already-configured application, and synchronize its view of the data with the ODK Aggregate server hosting the application, it is time to set up our own ODK-X application.
 
 Configuring your Device with an Application
 -----------------------------------------------
@@ -74,7 +31,7 @@ For the purposes of this tutorial, we have created a copy of the Application Des
 
 .. _architect-odk-2-config-setup-app-designer:
 
-Setting up ODK Application Designer
+Setting up ODK-X Application Designer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Read the :ref:`Intro <app-designer-intro>` and :ref:`Overview <app-designer-overview>` sections to get a sense of the features and functionality of the ODK-X Application Designer environment (we will install it below). Follow this guide to :doc:`app-designer-setup`.
@@ -104,7 +61,7 @@ We will return to this design environment later.
 Deploying to the Device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now that we have the design environment installed and functioning, and because that environment has a copy of the fully-configured *Geotagger* application that is running on https://opendatakit-simpledemo.appspot.com (minus any data that users have submitted to the server), we can work through the steps of deploying that application to your device, and then resetting your server to push that configuration up to your server.
+Now that we have the design environment installed and functioning, and because that environment has a copy of the fully-configured *Geotagger* application that is running on https://opendatakit-simpledemo.appspot.com (minus any data that users have submitted to the server), we can work through the steps of deploying that application to your device, and then setting up your server to push that configuration up to your server.
 
 
 First, confirm that your device has :guilabel:`USB debugging` enabled inside your device's :guilabel:`Settings`. This checkbox is in different places on different devices and may be hidden by default on some. See this guide to `USB debugging on Android <https://www.phonearena.com/news/How-to-enable-USB-debugging-on-Android_id53909>`_ for instructions.
@@ -134,39 +91,11 @@ This will initiate the configuration of ODK Tables and conclude with a :guilabel
 
 Everything should now appear as it did with the application you first joined on https://opendatakit-simpledemo.appspot.com, except you will only have the data rows configured by the ODK-X Application Designer zip, and not any added or modified since that time.
 
-.. _architect-odk-2-config-reset-server:
-
-Resetting the Server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Once you have the application running on the device, you will typically need to reset the contents of the application server. While the :guilabel:`Reset App Server` button on the device can shuffle the various supporting files between the device and the server, it will not destroy data tables that already exist on the server. This is intentional -- we want to minimize the potential for accidental loss of data.
-
-.. note::
-
-  Whenever you are developing an application, and have found a need to add a new column to an existing table, you will need to manually delete the data tables from the server before using the :guilabel:`Reset App Server` button from the device.
-
-Open a browser window to the server, log in with a user that has :guilabel:`Administer Tables` or :guilabel:`Site Admin` privileges.
-
-Navigate to the :guilabel:`ODK Tables / Current Tables` sub-tab.
-
-Delete each of the tables here. In this case, there will be only one, *Geotagger*. The server will now have a set of App-Level files but no data tables, forms for those tables, or data files. Except for the app-level files, it is clean.
-
-.. note::
-
-  If your table has a large number of configuration files or data rows, the server may time out during the deletion process. In this case, the next time you try to create the table on the server, it will resume the deletion process, and potentially time out again until such time as it is able to finish the deletion. Only then will it re-create the table.
-
-Now, from your device, launch ODK Tables, click on the sync icon (two curved arrows) to launch ODK Services, make sure you are logging in as a user with :guilabel:`Administer Tables` or :guilabel:`Site Admin` privileges, and choose :guilabel:`Reset App Server`.
-
-The synchronization process will create the tables and push your content up to this server. Note that the server now only contains the data rows present on the device -- it no longer has any of the additional data records from the demo site.
-
-You have now successfully set up the Application Designer, used it to deploy an application to a device, and, from that device, configured an ODK Aggregate server to supply that application to other devices you join to that server.
-
-.. _architect-odk-2-modify:
 
 Modifying an ODK-X application
 -------------------------------------
 
-The final task is to modify the *Geotagger* example by adding a new data field to it.
+The next task is to modify the *Geotagger* example by adding a new data field to it.
 
 
 The overall development process is:
@@ -176,7 +105,7 @@ The overall development process is:
   #. :ref:`Update the preloaded data values as needed <architect-odk-2-modify-preload>`
   #. :ref:`Update the HTML to include the new field <architect-odk-2-modify-html>`
 
-And then follow the steps in the preceding section to deploy the modified application to the device and push the application up to an ODK Aggregate server.
+And then follow the steps in the preceding section to deploy the modified application to the device and the subsequent steps to push the application up to an ODK Aggregate server.
 
 .. _architect-odk-2-modify-data-entry:
 
@@ -229,7 +158,7 @@ You have now successfully modified the form.
 
 .. _architect-odk-2-modify-init:
 
-Updating the Initialization Files
+Initialization Files Update Automatically
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Fortunately, because the geotagger *formId* matches the *tableId*, by using the :guilabel:`Save to File System` button on the CSV, the tool will automatically regenerate the :file:`definition.csv` and :file:`properties.csv` files for this form. Furthermore, the configuration that ODK Tables uses to specify what HTML files to use for the list, detail, and map views are all specified within the XLSX file on the properties sheet. No manual actions are required!
@@ -291,9 +220,76 @@ Save the file. Once again, push the application to the device. Confirm that when
 
 Congratulations, you have successfully modified this ODK-X application to add a new data field and display it as a field in the HTML detail-view page.
 
-You could now log onto your server, delete the geotagger table, reset your server, and start collecting geopoints with the new image direction field.
+You will now log onto your server, delete the geotagger table, reset your server, and start collecting geopoints with the new image direction field.
 
 .. _architect-odkx-next:
+.. _architect-odk-2-config-reset-server:
+
+Setting up the ODK Aggregate server
+------------------------------------------------
+
+The starting point for this is to have a fully configured application on your device. Only proceed with the following steps after you have your device configured as you want it to appear. In this case, we already have the device configured with the *Geotagger* demo, so let's proceed to create an ODK Aggregate server and configure it to serve that demo to your devices.
+
+.. _architect-odk-2-setting-up-server:
+
+
+Follow the instructions for :doc:`aggregate-install`. You must install the **ODK Aggregate v1.4.15** release. This is because we are transitioning away from Aggregate and towards :doc:`sync-endpoint`, but v1.4.15 will suit the purposes of this demo fine.
+
+Once you have installed ODK Aggregate, log in with your super-user account. That process is also covered in :doc:`aggregate-install`.
+
+Once logged in, enable the :doc:`aggregate-tables-extension`. You should grant the user account on your device the :guilabel:`Administer Tables` permissions.
+
+.. _architect-odk-2-setting-up-reset:
+
+Resetting the Application on the Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Resetting the application on the ODK Aggregate server will push the application configuration on your device up to your server, replacing the configuration that is already on your server. Once the configuration is updated, data tables on the server and device will be synced. This process does not destroy data on the server, but instead merges changes on the client with any existing data tables on the server (this enables you to update your configuration without worrying about damaging or destroying the data already captured on the server).
+
+Return to your device, start ODK Tables:
+
+  #. Click the diminishing-lines icon to leave the custom home screen.
+  #. Click the three vertical dots and select :guilabel:`Sync` to launch ODK Services onto the sync screen.
+  #. Choose :menuselection:`Settings --> Server Settings`.
+  #. Edit the :guilabel:`Server URL` to be the URL for this newly configured ODK Aggregate server (https://myodk-test.appspot.com).
+  #. Click on :guilabel:`Server Sign-on Credential` and choose :menuselection:`Username`.
+  #. Choose :guilabel:`Username` and enter the superuser username for your ODK Aggregate server.
+  #. Choose :guilabel:`Server Password` and enter the ODK Aggregate server password for that superuser username.
+  #. Click the back button until you have returned to the sync screen.
+  #. Click on :guilabel:`Reset App Server` to push your device configuration up to your ODK Aggregate server.
+
+After this has completed, you have created your own server that replicates the configuration and contents of the https://opendatakit-simpledemo.appspot.com site. Congratulations!
+
+.. note::
+
+  Any device with a user account with :guilabel:`Administer Tables` permissions can reset the app server. If you configure a device with a user account (or Anonymous user) with only the :guilabel:`Synchronize Tables` permissions, they will not be able to reset the app server and will only be able to sync and join into the existing ODK-X application on this ODK Aggregate server.
+
+.. _architect-odk-2-config:
+
+When you modify the application running on the device, you will typically need to reset the contents of the application server. While the :guilabel:`Reset App Server` button on the device can shuffle the various supporting files between the device and the server, it will not destroy data tables that already exist on the server. This is intentional -- we want to minimize the potential for accidental loss of data.
+
+.. note::
+
+  Whenever you are developing an application, and have found a need to add a new column to an existing table, you will need to manually delete the data tables from the server before using the :guilabel:`Reset App Server` button from the device.
+
+Open a browser window to the server, log in with a user that has :guilabel:`Administer Tables` or :guilabel:`Site Admin` privileges.
+
+Navigate to the :guilabel:`ODK Tables / Current Tables` sub-tab.
+
+Delete each of the tables here. In this case, there will be only one, *Geotagger*. The server will now have a set of App-Level files but no data tables, forms for those tables, or data files. Except for the app-level files, it is clean.
+
+.. note::
+
+  If your table has a large number of configuration files or data rows, the server may time out during the deletion process. In this case, the next time you try to create the table on the server, it will resume the deletion process, and potentially time out again until such time as it is able to finish the deletion. Only then will it re-create the table.
+
+Now, from your device, launch ODK Tables, click on the sync icon (two curved arrows) to launch ODK Services, make sure you are logging in as a user with :guilabel:`Administer Tables` or :guilabel:`Site Admin` privileges, and choose :guilabel:`Reset App Server`.
+
+The synchronization process will create the tables and push your content up to this server. Note that the server now only contains the data rows present on the device -- it no longer has any of the additional data records from the demo site.
+
+You have now successfully set up the Application Designer, used it to deploy an application to a device, and, from that device, configured an ODK Aggregate server to supply that application to other devices you join to that server.
+
+.. _architect-odk-2-modify:
+
 
 Useful Grunt Commands
 -----------------------
