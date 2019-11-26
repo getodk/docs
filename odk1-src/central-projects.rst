@@ -34,7 +34,7 @@ If you have upgraded to **version 0.5**, the following changes have been made:
 Since the major changes that occurred in version 0.5, we have additionally made the following improvements:
 
  - Better, centralized form state and access management.
- - More granular project access, in the form a Project Viewer role which allows read-only access only to Forms and Submission data.
+ - More granular project access, in the form of a Project Viewer role which allows read-only access only to Forms and Submission data.
 
 In future releases, we have a `loose roadmap <https://github.com/opendatakit/central/issues/35>`_ with at least the following goals:
 
@@ -152,7 +152,7 @@ If you are having trouble recalling what each Form State means, the :guilabel:`?
 
    .. image:: /img/central-projects/access-states.png
 
-As you make changes to Form States and App User access, they will be highlighted in yellow. You can make all the changes you'd like to apply at once (marking an old version of a Form as Closing while granting Open access to the new one, for example), and once you are satisfied with what you see you can click the Save button at the top-right of the screen to apply them all at once.
+As you make changes to Form States and App User access, they will be highlighted in yellow. You can make all the changes you'd like to apply at once (for example, marking an old version of a Form as Closing while granting Open access to the new one), and once you are satisfied with what you see you can click the Save button at the top-right of the screen to apply them all at once.
 
 .. tip::
   When you first create an App User, it will not have access to any Forms. When you first create a Form, no App Users will be allowed to access it.

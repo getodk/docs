@@ -21,9 +21,9 @@ Uploading a form to ODK Central
 
 As mentioned, ODK Central does not feature a built-in form design utility. Please take a look at the many :doc:`available tools <form-tools>` and the :doc:`introduction to form design <form-design-intro>` for help creating your form.
 
-As of version 0.7, Central will accept either XForms :file:`.xml` or XLSForm :file:`.xls`/:file:`.xlsx` files. If you have written your own :file:`.xml` file, we strongly recommend that you first double check that it is valid using :doc:`ODK Validate <validate>`. If you upload an XLSForm spreadsheet, Central will convert it to an XForm for you, and it will be automatically verified as part of that process.
+As of version 0.7, Central will accept either XForms :file:`.xml` or XLSForm :file:`.xls`/:file:`.xlsx` files. If you have written your own :file:`.xml` file, we strongly recommend that you first double check that it is valid using :doc:`ODK Validate <validate>`. If you upload an XLSForm spreadsheet, Central will convert it to an XForm for you, and it will be automatically validated as part of that process.
 
-Once you have your form file in hand and you feel good about it, the next step will be to upload it into ODK Central. To do this, navigate to the Project (click on its name from the ODK Central homepage) to which you would like to add the Form, and locate the Forms listing section at the bottom of that page:
+Once you have your form file, the next step will be to upload it into ODK Central. To do this, navigate to the Project (click on its name from the ODK Central homepage) to which you would like to add the Form, and locate the Forms listing section at the bottom of that page:
 
    .. image:: /img/central-forms/listing.png
 
@@ -31,7 +31,7 @@ From there, click on the :guilabel:`New` button next to the section header, and 
 
    .. image:: /img/central-forms/new.png
 
-You can either click on the :guilabel:`choose one` button to browse for your :file:`.xml`, :file:`.xls`, or :file:`.xlsx` file, or if you already have it handy somewhere, you can drag it over the gray box and drop it to select it. Either way, once you have chosen your file (you will see the name of your file at the bottom of the gray box when you do), you can click on the :guilabel:`Create` button immediately below to upload the form.
+You can either click on the :guilabel:`choose one` button to browse for your :file:`.xml`, :file:`.xls`, or :file:`.xlsx` file, or if you already have it handy somewhere, you can drag it over the gray box and drop it to choose it. Either way, once you have chosen your file (you will see the name of your file at the bottom of the gray box when you do), you can click on the :guilabel:`Create` button immediately below to upload the form.
 
 .. admonition:: Some errors you may see:
 
@@ -118,7 +118,7 @@ Closed    no                               no
 
 As you can see, you can use the **Closing** state to prevent further distribution of a form while still allowing the final few submissions to come in, while the **Closed** state effectively turns the form off completely. You can always set the form lifecycle stage to whatever you want: you can always, for example, re-open a closed form.
 
-To set the form lifecycle stage, go to the :ref:`Form Access <central-projects-form-access>` tab for the Project, under the name of the Project at the top of the page. You may have to navigate back out of the Form first by clicking on the :guilabel:`Back to Project Overview` link at the top of the page. Here, you will find the three possible stages in a dropdown for each form on the left side of the page. Select the ones you want for each Form, then click :guilabel:`Save` at the top-right to save the changes.
+To set the form lifecycle stage, go to the :ref:`Form Access <central-projects-form-access>` tab for the Project, under the name of the Project at the top of the page. You may have to navigate back out of the Form first by clicking on the :guilabel:`Back to Project Overview` link at the top of the page. Here, you will find the three possible stages in a dropdown for each Form on the left side of the page. Select the ones you want for each Form, then click :guilabel:`Save` at the top-right to save the changes.
 
 You can find more information about the Form Access page :ref:`here <central-projects-form-access>`.
 

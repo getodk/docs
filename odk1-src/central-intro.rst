@@ -42,13 +42,13 @@ See `What is coming in Central <https://forum.opendatakit.org/t/whats-coming-in-
 Who should use ODK Central?
 ---------------------------
 
-Central is much younger than Aggregate. Because of this, it isn't as heavily battle-tested, and you might come across quirks and problems while using it. Among other things, it can be a little tricky to install. But the issues people have run into have been minor so far, and we haven't yet heard of anybody losing any data. As long as you :doc:`enable backups <central-backup>`, we feel good about the reliability and integrity of your data. Part of this comes from how careful Central is about handling your uploaded data.
+Central is much younger than Aggregate. Because of this, it isn't as heavily battle-tested, and you might come across quirks and problems while using it. Among other things, it can be a little tricky to install. But the issues people have run into have been minor so far.
 
 Additionally, Central does not support every feature that Aggregate does. There are some Aggregate features that we do not intend to ever support in Central, especially around data preview and visualization. You can find a list of these differences and some of the planned improvements to Central `here <https://forum.opendatakit.org/t/whats-coming-in-central-over-the-next-few-years/19677>`_.
 
 On the other hand, Central supports some things that Aggregate does not. Projects let you partition your server into different sandboxes to support multiple independent teams. Managed encryption makes the process of handling encrypted form data significantly easier and in many cases more securely. Central allows direct upload of XLSForm files. It also offers an OData API to easily synchronize your live form data to desktop visualization and dashboard tools.
 
-If you are an adventurous user who is comfortable with (new) technology, you don't need the features we don't already support, and you are okay with the risks with using early release software, please consider giving Central a try and giving us your `feedback <https://forum.opendatakit.org/c/features>`_.
+If you are an adventurous user who is comfortable with (new) technology, you are happy with the supported features, and you are okay with the risks with using early release software, please consider giving Central a try and giving us your `feedback <https://forum.opendatakit.org/c/features>`_.
 
 If you finished reading all the above and you're not feeling too sure about it, we suggest sitting it out for a little while longer. Keep watching the `release announcements board <https://forum.opendatakit.org/c/releases>`_ for future updates, and we'll be sure to sound the bells when we're sure things are ready for a broader audience.
 
