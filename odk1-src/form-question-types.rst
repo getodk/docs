@@ -809,6 +809,10 @@ See :ref:`image-options` to learn more about including images in surveys.
 
 Select widget with likert
 """"""""""""""""""""""""""""""""""
+.. versionadded:: 1.25
+
+  `ODK Collect v1.25.0 <https://github.com/opendatakit/collect/releases/tag/v1.25.0>`_
+
 type
  :tc:`select_one {list_name}`
 appearance
