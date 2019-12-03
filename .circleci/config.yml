@@ -70,7 +70,7 @@ jobs:
           root: ~/work
           paths:
             - odk1-build/*
-  build-odk2:
+  build-odkx:
     working_directory: ~/work
     docker:
       - image: circleci/python:latest
@@ -96,29 +96,29 @@ jobs:
           command: |
             paths=$(git diff origin/master... --name-only)
             echo $paths
-            sudo python style-test.py $paths -r odk2-src
+            sudo python style-test.py $paths -r odkx-src
             sudo python style-test.py $paths -r shared-src
       - run:
-          name: Build ODK2 Documentation
-          command: make odk2-deploy
+          name: Build ODK-X Documentation
+          command: make odkx-deploy
       - run:
-          name: Check spelling of ODK2 Documentation
-          command: make odk2-spell-check
+          name: Check spelling of ODK-X Documentation
+          command: make odkx-spell-check
       - run:
-          name: Build LaTex of ODK2 Documentation
-          command: make odk2-latex
+          name: Build LaTex of ODK-X Documentation
+          command: make odkx-latex
       - run:
           name: Compress images
-          command: pngquant odk2-build/_images/*.png --force --ext .png --verbose
+          command: pngquant odkx-build/_images/*.png --force --ext .png --verbose
       - store_artifacts:
-          path: odk2-build
-          destination: odk2-build
+          path: odkx-build
+          destination: odkx-build
       - persist_to_workspace:
           root: ~/work
           paths:
-            - odk2-build/*
-            - odk2-config/*
-  build-pdf-odk2:
+            - odkx-build/*
+            - odkx-config/*
+  build-pdf-odkx:
     working_directory: ~/work
     docker:
       - image: schickling/latex
@@ -128,18 +128,18 @@ jobs:
       - run:
           name: Build PDF
           command: |
-              cd odk2-build/latex
-              xelatex OpenDataKit2.tex
-              xelatex OpenDataKit2.tex
+              cd odkx-build/latex
+              xelatex OpenDataKitX.tex
+              xelatex OpenDataKitX.tex
               mkdir -p ../_downloads
-              mv OpenDataKit2.pdf ../_downloads/ODK2-Documentation.pdf
+              mv OpenDataKitX.pdf ../_downloads/ODK-X-Documentation.pdf
       - store_artifacts:
-          path: odk2-build/_downloads/ODK2-Documentation.pdf
-          destination: ODK2-Documentation.pdf
+          path: odkx-build/_downloads/ODK-X-Documentation.pdf
+          destination: ODK-X-Documentation.pdf
       - persist_to_workspace:
           root: ~/work
           paths:
-            - odk2-build/*
+            - odkx-build/*
   deploy-odk1:
     working_directory: ~/work
     docker:
@@ -164,7 +164,7 @@ jobs:
               if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
                 s3_website push --config-dir=odk1-config
               fi
-  deploy-odk2:
+  deploy-odkx:
     working_directory: ~/work
     docker:
       - image: circleci/ruby:latest
@@ -186,7 +186,7 @@ jobs:
           name: Push to S3
           command: |
               if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
-                s3_website push --config-dir=odk2-config
+                s3_website push --config-dir=odkx-config
               fi
   deploy-shared:
     working_directory: ~/work
@@ -221,10 +221,10 @@ workflows:
       - build-pdf-odk1:
           requires:
             - build-odk1
-      - build-odk2
-      - build-pdf-odk2:
+      - build-odkx
+      - build-pdf-odkx:
           requires:
-            - build-odk2
+            - build-odkx
       - deploy-odk1:
           requires:
             - build-odk1
@@ -232,10 +232,10 @@ workflows:
           filters:
             branches:
               only: master
-      - deploy-odk2:
+      - deploy-odkx:
           requires:
-            - build-odk2
-            - build-pdf-odk2
+            - build-odkx
+            - build-pdf-odkx
           filters:
             branches:
               only: master

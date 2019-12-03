@@ -10,7 +10,7 @@ The Cold Chain application is a health facility maintenance application original
     :class: device-screen-vertical side-by-side
 
 
-.. _cold-chain-odk2-features:
+.. _cold-chain-odk-x-features:
 
 Key Features
 ----------------------------
@@ -67,4 +67,3 @@ A walk-through of the features and the application and an overview of how they a
   :maxdepth: 2
 
   cold-chain-tour
-

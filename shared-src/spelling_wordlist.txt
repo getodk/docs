@@ -21,6 +21,12 @@ autoadvance
 Autoadvance
 autocomplete
 Autocomplete
+autoplay
+Autoplay
+autoplayed
+Autoplayed
+autoplaying
+Autoplaying
 autocrlf
 AWS
 backend

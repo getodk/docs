@@ -14,7 +14,7 @@ The Hope Study is a longitudinal clinical trial originally developed at the Univ
     :alt: Hope Study Home Screen
     :class: device-screen-vertical side-by-side
 
-.. _hope-study-odk2-features:
+.. _hope-study-odkx-features:
 
 Key Features
 ----------------------------
@@ -51,4 +51,3 @@ A walk-through of the features and the application and an overview of how they a
   :maxdepth: 2
 
   hope-study-tour
-

@@ -1,4 +1,4 @@
-Setting up ODK Central
+Setting Up ODK Central
 ======================
 
 .. toctree::

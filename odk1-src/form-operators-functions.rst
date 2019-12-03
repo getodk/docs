@@ -323,7 +323,7 @@ Select questions
 
       select_multiple colors, color_prefs, What colors do you like?, ¿Qué colores te gustan?, Select three., Seleccione tres.
       calculate, color_0, , , , ,"jr:choice-name( selected-at(${color_prefs}, 0), '${color_prefs}')"
-      calculate, color_1, , , , ,"jr:choice-name( selected-at(${color_prefs}, 2), '${color_prefs}')"
+      calculate, color_1, , , , ,"jr:choice-name( selected-at(${color_prefs}, 1), '${color_prefs}')"
       calculate, color_2, , , , ,"jr:choice-name( selected-at(${color_prefs}, 2), '${color_prefs}')"
       note, color_note, Selected colors:, Colores seleccionados:, ${color_0} <br> ${color_1} <br> ${color_2}, ${color_0} <br> ${color_1} <br> ${color_2}
 
