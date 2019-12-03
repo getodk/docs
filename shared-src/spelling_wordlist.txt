@@ -149,6 +149,8 @@ LDAP
 ldaps
 lifecycle
 Lifecycle
+likert
+Likert
 locater
 logback
 LogBack
