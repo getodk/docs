@@ -820,7 +820,7 @@ appearance
 
 Select widget supports likert options. Options can include text, images or both. If both are provided, images appear above text.
 
-Take into consideration that likert options DO NOT wrap to next line.
+Take into consideration that likert options DO NOT wrap to next line and will overlap instead. If you have long option text, make sure to try the question on the device you will use for data collection.
 
 If adding images note that the images are referenced in the choices sheet, and the image files need to be included in the media folder.
 
