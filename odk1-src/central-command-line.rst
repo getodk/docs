@@ -32,7 +32,7 @@ If you see instructions appear with the section headings *Usage*, *Options*, and
 Creating a Web User by command line
 -----------------------------------
 
-If you followed our :doc:`DigitalOcean installation steps <central-install-digital-ocean>`, then you've already done this once down in step 15. You shouldn't have to do this again unless you deleted all your users. But if you do, please start by performing the steps above in the :ref:`central-command-line-basics` section. Then, this is what you would type, assuming your email address is ``example@opendatakit.org``:
+If you followed our :doc:`DigitalOcean installation steps <central-install-digital-ocean>`, then you've already done this once down in :ref:`this section <central-install-digital-ocean-account>`. You shouldn't have to do this again unless you deleted all your users. But if you do, please start by performing the steps above in the :ref:`central-command-line-basics` section. Then, this is what you would type, assuming your email address is ``example@opendatakit.org``:
 
 .. code-block:: console
 

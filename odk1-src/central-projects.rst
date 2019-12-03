@@ -31,7 +31,12 @@ If you have upgraded to **version 0.5**, the following changes have been made:
    - Create, manage, and retire App Users for the project.
    - Manage and archive the project itself.
 
-In future releases beyond 0.5, we have a `loose roadmap <https://github.com/opendatakit/central/issues/35>`_ with at least the following goals:
+Since the major changes that occurred in version 0.5, we have additionally made the following improvements:
+
+ - Better, centralized form state and access management.
+ - More granular project access, in the form of a Project Viewer role which allows read-only access only to Forms and Submission data.
+
+In future releases, we have a `loose roadmap <https://github.com/opendatakit/central/issues/35>`_ with at least the following goals:
 
  - Change the relationship between Collect and Central so that with one button you can synchronize the mobile device to some centrally managed desired state.
 
@@ -39,8 +44,6 @@ In future releases beyond 0.5, we have a `loose roadmap <https://github.com/open
    - Eventually, Collect app settings may be synchronized this way as well.
    - And eventually, different App Users of different roles may be assigned different device states.
 
- - Better, centralized form workflow/status management.
- - More granular project access: for example, a project Web User role type that grants read-only access to submitted data.
  - Download an entire project’s data at once.
 
 If you have ideas on how projects might be made more useful for you, please do not hesitate to leave us feedback on the `ODK Forum <https://forum.opendatakit.org/c/features>`_.
@@ -99,24 +102,28 @@ From here, you will be able to edit the Project Name. You will also see a sectio
 
 .. _central-project-roles:
 
-Managing Project Managers
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Managing Project Roles
+~~~~~~~~~~~~~~~~~~~~~~
 
-Any Web User may be assigned as a Project Manager on a Project. Project Managers may perform any action upon and within that Project, including changing its name, adding more Project Managers, and uploading and managing Forms and Submissions. Any Web Users that are site-wide Administrators will already be able to perform these actions on any Project without being explicitly named a Manager.
+Any Web User may be assigned as a Project Manager or Project Viewer on a Project.
+
+Project Managers may perform any action upon and within that Project, including changing its name, adding more Project Managers, and uploading and managing Forms and Submissions. Any Web Users that are site-wide Administrators will already be able to perform these actions on any Project without being explicitly named a Manager.
+
+Project Viewers can view basic information about all Forms in the Project, and download Submission data or access it over OData for analysis. They cannot make any modifications to any data or settings.
 
 You will find a detailed breakdown of user roles :ref:`here <central-users-web-roles>`.
 
-To assign or remove Managers for a Project, first go to the Project overview page, then click on the :guilabel:`Project Managers` tab under the Project name. You should see the following page:
+To assign or remove Managers or Viewers for a Project, first go to the Project overview page, then click on the :guilabel:`Project Managers` tab under the Project name. You should see the following page:
 
    .. image:: /img/central-projects/roles.png
 
-If Managers have not already been assigned to the Project, the table will be empty. This is normal: the table only shows Users with assigned roles on the Project at first. To find a Web User to make them a Project Manager, search for them in the :guilabel:`Search for a user` field above the table. You can find users by their Display Name or their Email. Type part or all of either into the box, and press :kbd:`Enter`. The search results will appear in the table.
+If roles have not already been assigned to the Project, the table will be empty. This is normal: the table only shows Users with assigned roles on the Project at first. To find a Web User to assign them a role, search for them in the :guilabel:`Search for a user` field above the table. You can find users by their Display Name or their Email. Type part or all of either into the box, and press :kbd:`Enter`. The search results will appear in the table.
 
    .. image:: /img/central-projects/role.png
 
-To make a Web User into a Project Manager, change the dropdown next to their name in the :guilabel:`Project Role` column from :guilabel:`None` to :guilabel:`Manager`. You should see the page think for a moment, and then a confirmation of success. If you clear the search in the text box, the new Project Manager should remain.
+To make a Web User into a Project Manager or Viewer, change the dropdown next to their name in the :guilabel:`Project Role` column from :guilabel:`None` to :guilabel:`Manager`. You should see the page think for a moment, and then a confirmation of success. If you clear the search in the text box, the newly assigned user should remain.
 
-To demote a Web User from being a Project Manager, change the dropdown back to :guilabel:`None`.
+To demote a Web User from any role, change the dropdown back to :guilabel:`None`.
 
 .. _central-project-app-users:
 
@@ -125,26 +132,39 @@ Managing Project App Users
 
 To manage App Users for a Project, you can navigate to the Project overview page, then click on the :guilabel:`App Users` tab under the Project name. For more information about creating, managing, and retiring Project App Users, please see :ref:`this section <central-users-app-overview>`.
 
+.. _central-projects-form-access:
+
+Managing Form Access
+~~~~~~~~~~~~~~~~~~~~
+
+Right now, Central offers two ways to control around Form Access within each Project:
+
+ - Each Form's :ref:`Lifecycle State <central-forms-lifecycle>` controls whether any App User can download and/or submit to that Form. Near the end of a Form's life, for example, it makes sense to disallow downloading the Form as a blank, but still receive any submissions that have already been created.
+ - Access to download and submit each Form can be customized per App User associated with the Project. When first creating a Form, for example, it makes sense to only allow a testing user access to the Form so that one can be sure that it works before rolling it out to all users.
+
+We place these access controls for all Forms in a single place, on the Form Access tab at the Project level. To access it, navigate to the Project and select the tab at the top of the page labeled :guilabel:`Form Access`.
+
+   .. image:: /img/central-projects/access.png
+
+On the left side of the Form Access page, you will find a list of all the Forms in the Project, along with a dropdown selection to set the lifecycle state for each one. Along the top, you will see all active App Users in the Project. At each row/column intersection, there is a checkbox that governs whether each App User is allowed access to each Form.
+
+If you are having trouble recalling what each Form State means, the :guilabel:`?` icon in the header will give you a quick recap:
+
+   .. image:: /img/central-projects/access-states.png
+
+As you make changes to Form States and App User access, they will be highlighted in yellow. You can make all the changes you'd like to apply at once (for example, marking an old version of a Form as Closing while granting Open access to the new one), and once you are satisfied with what you see you can click the Save button at the top-right of the screen to apply them all at once.
+
+.. tip::
+  When you first create an App User, it will not have access to any Forms. When you first create a Form, no App Users will be allowed to access it.
+
 .. _central-project-archive:
 
 Archiving a Project
 ~~~~~~~~~~~~~~~~~~~
 
-When you Archive a Project, the following things become frozen:
+When you Archive a Project, it will appear at the bottom of the Project List on the homepage, with :guilabel:`(archived)` added onto the end of its name.
 
- - Form settings and states. Any Forms that are still in :guilabel:`Open` or :guilabel:`Closing` states will remain in those states.
- - Web User access. Any users who are Project Managers will retain their access.
- - App User access. All active App Users will retain their ability to download :guilabel:`Open` forms and upload non-:guilabel:`Closed` forms.
- - Project data access. All Project data, including Forms, Form Attachments, and all Submission data will remain available for viewing, download, and OData access.
-
-And, the following things are changed:
-
- - The Project will be sorted to the bottom of the Projects list, with :guilabel:`(archived)` added onto the end of the Project Name.
- - All management features (e.g. editing Project or Form details) on the Project and Forms within will be disabled in the web interface.
-
-.. admonition:: Before you archive
-
-  Because form states become non-editable, you should review them and make sure you are happy with how they'll be frozen.
+In version 0.6 of Central, archiving a Project would disable certain features on it. We have eliminated this behavior, so all your archived Projects can still be used and manipulated freely.
 
 To Archive a Project, first navigate to the Project, then click on the :guilabel:`Settings` tab underneath the Project name.
 

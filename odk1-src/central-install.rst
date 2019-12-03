@@ -30,7 +30,7 @@ Installing elsewhere
 
 If you got excited when you heard mention of Docker above, and you already have your own destination and process for managing Docker deployments, you're all set to go. ODK Central is entirely defined via **Docker Compose**, which means the ``docker-compose`` command will be all you need to manage the entire system.
 
-We would still recommend reviewing the :doc:`instructions we've provided <central-install-digital-ocean>` for DigitalOcean starting from step 9. In particular, you'll need to update your submodules after you clone the repository, and configure your :file:`.env` file for your installation.
+We would still recommend reviewing the :doc:`instructions we've provided <central-install-digital-ocean>` for DigitalOcean starting from :ref:`this section <central-install-digital-ocean-build>`. In particular, you'll need to update your submodules after you clone the repository, and configure your :file:`.env` file for your installation.
 
 Installing on Amazon EC2
 ~~~~~~~~~~~~~~~~~~~~~~~~

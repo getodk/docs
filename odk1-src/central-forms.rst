@@ -21,7 +21,9 @@ Uploading a form to ODK Central
 
 As mentioned, ODK Central does not feature a built-in form design utility. Please take a look at the many :doc:`available tools <form-tools>` and the :doc:`introduction to form design <form-design-intro>` for help creating your form.
 
-Once you have an XForms :file:`.xml` file in hand, we strongly recommend that you first double check that it is valid using :doc:`ODK Validate <validate>`. Once you have confirmation that your form will work, the next step will be to upload it into ODK Central. To do this, navigate to the Project (click on its name from the ODK Central homepage) to which you would like to add the Form, and locate the Forms listing section at the bottom of that page:
+As of version 0.7, Central will accept either XForms :file:`.xml` or XLSForm :file:`.xls`/:file:`.xlsx` files. If you have written your own :file:`.xml` file, we strongly recommend that you first double check that it is valid using :doc:`ODK Validate <validate>`. If you upload an XLSForm spreadsheet, Central will convert it to an XForm for you, and it will be automatically validated as part of that process.
+
+Once you have your form file, the next step will be to upload it into ODK Central. To do this, navigate to the Project (click on its name from the ODK Central homepage) to which you would like to add the Form, and locate the Forms listing section at the bottom of that page:
 
    .. image:: /img/central-forms/listing.png
 
@@ -29,14 +31,18 @@ From there, click on the :guilabel:`New` button next to the section header, and 
 
    .. image:: /img/central-forms/new.png
 
-You can either click on the :guilabel:`choose one` button to browse for your XForms :file:`.xml` file, or if you already have it handy somewhere, you can drag it over the gray box and drop it to select it. Either way, once you have chosen your file (you will see the name of your file at the bottom of the gray box when you do), you can click on the :guilabel:`Create` button immediately below to upload the form.
+You can either click on the :guilabel:`choose one` button to browse for your :file:`.xml`, :file:`.xls`, or :file:`.xlsx` file, or if you already have it handy somewhere, you can drag it over the gray box and drop it to choose it. Either way, once you have chosen your file (you will see the name of your file at the bottom of the gray box when you do), you can click on the :guilabel:`Create` button immediately below to upload the form.
 
 .. admonition:: Some errors you may see:
 
+   - If you are uploading an XLSForm, and the converter flags warnings with it, your form will not be immediately created. You'll be shown the warnings, and given the option to either ignore them and create the form anyway, or else you can fix the issues and start over by uploading a new file.
    - You may see a message that reads **A resource already exists with xmlFormId value(s) of xyz.** If you do, there already exists a form within this project with the same unique designation. If you are using XLSForm, try changing the name of the file or the ``form_id`` in the settings sheet. If you designed the form by hand, please check the ``id="…"`` attribute immediately inside the ``<instance>`` tag.
    - You may see a message that says **A form previously existed which had the same formId and version as the one you are attempting to create now. To prevent confusion, please change one or both and try creating the form again.** This means there once was a form within this project that has since been deleted that has exactly the same formId (see the previous bullet point) *and* version designation as the one you are now trying to upload. Central won't accept the new form, because this conflict could cause confusion with mobile devices that still have the old form sitting around. To upload this form, change either the formId (again, see the previous bullet point) or `update the version <https://opendatakit.github.io/xforms-spec/#primary-instance>`_ and try again.
 
 Once the form is successfully uploaded, you will be taken to the Form Overview page.
+
+.. tip::
+  When a form is first created, none of the existing App Users on the project will be able to access it for download or submission. Once you are ready to allow App Users to access the form, use the Project :ref:`Form Access <central-projects-form-access>` tab.
 
 .. _central-forms-checklist:
 
@@ -112,9 +118,9 @@ Closed    no                               no
 
 As you can see, you can use the **Closing** state to prevent further distribution of a form while still allowing the final few submissions to come in, while the **Closed** state effectively turns the form off completely. You can always set the form lifecycle stage to whatever you want: you can always, for example, re-open a closed form.
 
-To set the form lifecycle stage, go to the Form Settings page by clicking on the :menuselection:`--> Settings` tab under the name of the form at the top of the page. Here, you will find the three possible stages on the left side. Clicking on one will immediately set the new stage: it is not necessary to click on any Save button.
+To set the form lifecycle stage, go to the :ref:`Form Access <central-projects-form-access>` tab for the Project, under the name of the Project at the top of the page. You may have to navigate back out of the Form first by clicking on the :guilabel:`Back to Project Overview` link at the top of the page. Here, you will find the three possible stages in a dropdown for each Form on the left side of the page. Select the ones you want for each Form, then click :guilabel:`Save` at the top-right to save the changes.
 
-   .. image:: /img/central-forms/settings.png
+You can find more information about the Form Access page :ref:`here <central-projects-form-access>`.
 
 .. _central-forms-delete:
 

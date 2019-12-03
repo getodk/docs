@@ -43,6 +43,9 @@ As you continue down this page, there are a few options that may be important to
  - If you plan on setting up DKIM (see below), you will want to set the name of the server to the full domain name you intend to host your server.
  - If you are technically savvy and understand what an SSH key is, there is a field here that you will want to fill in. If not, don't worry about it.
 
+.. tip::
+  If you choose a 1GB machine and you have problems with exporting attachments, you may wish to :ref:`add a swapfile <central-install-digital-ocean-swap>`.
+
 Once you click on **Create**, you'll be taken back to the Droplet management page. It may think for a moment, and then your new server should appear. Next to it will be an IP address, which should look something like ``183.47.101.24``. This is where your server is publicly located on the Internet. Don't worry, nobody can do anything with it until you let them.
 
 Congratulations! With those steps, you have now created a new server which you can access over the Internet, and started it up. Next, we will get a web domain name address (like ``opendatakit.org``) to point at it.
@@ -173,7 +176,26 @@ DKIM is a security trust protocol which is used to help verify mail server ident
      docker-compose build mail
      systemctl restart docker-compose@central
 
-   If that doesn't work, you may need to first remove your old mail container (``docker-compose rm mail``).
+   If you see an error that says ``Can't open "rsa.private" for writing, Is a directory.``, you will need to ``rmdir ~/central/files/dkim/rsa.private``, then attempt ``docker-compose build mail`` again. If you see some other error, you may need to first remove your old mail container (``docker-compose rm mail``).
+
+.. _central-install-digital-ocean-swap:
+
+Adding Swap
+-----------
+
+If you have installed Central on a 1GB droplet, you may encounter problems exporting submission .zip files when there are many attachments. Usually, the .zip file will end up being empty, or much smaller than expected and possibly corrupt.
+
+In this case, the first thing you can try is to add a swap file. We **do not** recommend adding swap unless you are struggling with attachment exports, and if you can afford it, upgrading to a 2GB machine will yield much better results than adding swap. But if you just need your export to work for now, this can be an effective workaround.
+
+Log into your server so you have a console prompt, and run these commands, adapted from `this article <https://linuxize.com/post/create-a-linux-swap-file/>`_:
+
+   .. code-block:: console
+
+     fallocate -l 1G /swap
+     dd if=/dev/zero of=/swap bs=1024 count=1048576
+     chmod 600 /swap
+     mkswap /swap
+     swapon /swap
 
 .. _central-install-digital-ocean-custom-mail:
 
