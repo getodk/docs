@@ -22,7 +22,7 @@ We have a lot of exciting ideas for the future of Central, and we look forward t
    - With form and submission multimedia or data attachments
    - With a table preview of submission data
    - Encrypted forms (self-supplied or project managed keys)
-   - OData live data feed for analysis with tools like Excel, Power BI, and Tableau
+   - OData live data feed for analysis with tools like Excel and Power BI
 
  - Integrated checklist-based help system
  - Automatic, encrypted off-site data backups to Google Drive

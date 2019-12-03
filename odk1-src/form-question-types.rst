@@ -2249,16 +2249,7 @@ The :tc:`field-list` appearance attribute, applied to a group of widgets, displa
 
 .. warning::
 
-  Do not include a question that depends on a previous answer
-  in the same field list as the previous question it depends on.
-
-  Relevance and calculation values are determined
-  when the screen advances,
-  which does not happen between questions
-  that are grouped on the same page.
-  Therefore,
-  including a question and its dependent together in a field list
-  will not work as expected.
+  Relevance, constraint and calculation evaluation within the same screen is supported in Collect v1.22 and later.
 
 .. seealso::
 

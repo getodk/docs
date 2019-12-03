@@ -55,4 +55,4 @@ if __name__ == "__main__":
         print("  The caption is here.")
         print("")
         print("")
-        print("See http://docs.opendatakit.org/contributing/#images-and-figures for more details.")
+        print("See https://docs.opendatakit.org/contributing/#images-and-figures for more details.")

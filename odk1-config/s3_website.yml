@@ -56,7 +56,7 @@ redirects:
   form-uploader/index.html: briefcase-using#pulling-form-definitions
   form-widgets/index.html: form-question-types
   odk-build/index.html: build-intro
-  odk2/index.html: http://docs.opendatakit.org/odk-x
+  odk2/index.html: https://docs.opendatakit.org/odk-x
   pyxform/index.html: xlsform
   style-guide/index.html: docs-style-guide
   visualize/index.html: aggregate-visualize
