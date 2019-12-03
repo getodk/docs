@@ -942,6 +942,35 @@ to display two images on each row, set the :th:`appearance` attribute to :tc:`qu
   abcd_icon,d,D,d.jpg
 
 
+.. _likert-widget:
+
+Likert widget
+""""""""""""""""
+
+type
+  :tc:`select_one {list_name}`
+appearance
+  :tc:`likert`
+
+.. image:: /img/form-widgets/likert-widget.*
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance
+
+  select_one likert_options,LikertWidget,Likert Widget,likert
+
+.. csv-table:: choices
+  :header: list_name, name, label, media::image
+
+  likert_options,strongly_disagree,Strongly Disagree,angry.png
+  likert_options,disagree,Disagree,sad.png
+  likert_options,neutral,Neutral,neutral.png
+  likert_options,agree,Agree,smiling.png
+  likert_options,strongly_agree,Strongly Agree,happy.png
+
+
 .. _multi-select-widget:
 
 Multi select widget
