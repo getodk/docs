@@ -805,9 +805,9 @@ See :ref:`image-options` to learn more about including images in surveys.
   abcd_icon,d,D,d.jpg
 
 
-.. _likert-image-widget:
+.. _likert-widget:
 
-Select widget with likert
+Likert widget
 """"""""""""""""""""""""""""""""""
 .. versionadded:: 1.25
 
@@ -818,13 +818,9 @@ type
 appearance
  :tc:`likert`
 
-Select widget supports likert options. Options can include text, images or both. If both are provided, images appear above text.
+A single-select question can be styled as a `Likert scale <https://en.wikipedia.org/wiki/Likert_scale>`_. Options can include text, images or both. If both are provided, images appear above text.
 
-Take into consideration that likert options DO NOT wrap to next line and will overlap instead. If you have long option text, make sure to try the question on the device you will use for data collection.
-
-If adding images note that the images are referenced in the choices sheet, and the image files need to be included in the media folder.
-
-See :ref:`image-options` to learn more about including images in surveys.
+If adding images, note that the images are referenced in the choices sheet, and the image files need to be included in the media folder. See :ref:`image-options` to learn more about including images in choices.
 
 .. image:: /img/form-widgets/likert_widget.*
  :alt: The Single Select form likert widget with images, as displayed in the ODK Collect app on an Android phone. The question text is, "Likert Image Widget." The hint text is, "Likert type widget with images (happy case)" Below that is a set of radio buttons labeled Strongly Disagree, Disagree, Neutral, Agree, and Strongly Agree. Below each radio button is a small icon of a face: Strongly Disagree - angry, Disagree - sad, Neutral - neutral, Agree - happy, Strongly Agree - very happy. Above the question text is the form group name "All widgets likert."
