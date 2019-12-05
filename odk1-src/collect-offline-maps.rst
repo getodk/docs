@@ -47,9 +47,7 @@ Getting map tilesets
 -------------------------
 For non-commercial community mapping activities, `Mapbox <https://www.mapbox.com/maps/>`_ can arrange for offline MBTiles, including processed streets, satellite, and custom data. Contact community[at]mapbox.com for offline Terms of Service exemptions and to receive technical guidance.
 
-`OpenMapTiles <https://openmaptiles.org/>`_ hosts many free map tile files that can be used in Collect.
-
-To create MBTiles files, use one of the `compatible applications <https://github.com/mapbox/mbtiles-spec/wiki/Implementations#applications>`_ . Commonly used free software packages are `TileMill <https://tilemill-project.github.io/tilemill/>`_ and `QGIS <https://qgis.org/en/site/>`_ with the `QTiles plugin <https://github.com/nextgis/QTiles#qtiles>`_.
+To create MBTiles files, use one of the `compatible applications <https://github.com/mapbox/mbtiles-spec/wiki/Implementations#applications>`_ . Commonly used free software packages are `TileMill <https://tilemill-project.github.io/tilemill/>`_ and `QGIS <https://qgis.org/en/site/>`_ with the `QTiles plugin <https://github.com/nextgis/QTiles#qtiles>`_. In general, you should build raster (jpg or png) MBTiles files. Vector (pbf) MBTiles files are only supported with Mapbox basemaps and are currently displayed without styling.
 
 If you have existing geospatial data that is not in an MBTiles file, you may be able to convert it for use in Collect. For example, `Tippecanoe <https://github.com/mapbox/tippecanoe>`_ is a tool to build vector MBTiles files from GeoJSON features (see warning above: vector MBTiles files are only supported with Mapbox basemaps and are displayed without styling).
 
