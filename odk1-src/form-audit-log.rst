@@ -90,6 +90,17 @@ You can enable change tracking so that old answers and new answers will be added
 
   audit, audit, track-changes=true
 
+Enumerator identification
+~~~~~~~~~~~~~~~
+
+If your form needs a record of the identity of the enumerator you can use :tc:`identify-user=true`.
+
+.. csv-table:: survey
+  :header: type, name, parameters
+
+  audit, audit, identify-user=true
+
+This will cause Collect to prompt the enumerator for their identity before filling out or editing a form instance. In the audit log, a :tc:`user` column will be included that will be populated for each event. The enumerator will not be able to fill in or edit the form without entering a non-blank identity.
 
 Viewing audit logs
 -------------------
