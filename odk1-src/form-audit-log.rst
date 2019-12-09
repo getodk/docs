@@ -91,7 +91,7 @@ You can enable change tracking so that old answers and new answers will be added
   audit, audit, track-changes=true
 
 Enumerator identification
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If your form needs a record of the identity of the enumerator you can use :tc:`identify-user=true`.
 
