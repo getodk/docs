@@ -205,7 +205,7 @@ Pulling Forms into Briefcase
 Deleting Forms
 ===============
 
-You can delete :formstate:`Saved`, :formstate:`Finalized`, :formstate:`Sent`, and :formstate:`Blank` forms.
+You can delete :formstate:`Blank` forms as well as filled forms in any state (:formstate:`Saved`, :formstate:`Finalized`, or :formstate:`Sent`). Deleting :formstate:`Blank` forms or filled forms in :formstate:`Saved` or :formstate:`Finalized` state removes every trace of that form definition or filled form. Deleting a :formstate:`Sent` form deletes the form contents but metadata associated with it including the deletion date and the instance name are maintained for display in the :guilabel:`View Sent Form` list.
 
 1. Select :guilabel:`Delete Saved Form` on the app home screen.
 
