@@ -102,6 +102,11 @@ If your form needs a record of the identity of the enumerator you can use :tc:`i
 
 This will cause Collect to prompt the enumerator for their identity before filling out or editing a form instance. In the audit log, a :tc:`user` column will be included that will be populated for each event. The enumerator will not be able to fill in or edit the form without entering a non-blank identity.
 
+.. tip::
+  :tc:`identify-user` feature is useful for data collection workflows where devices might be passed between multiple enumerators for data verification or completion.
+
+  In cases where a device will only ever used by a single enumerator, it might make more sense to use :ref:`username metadata <metadata>`. This will write the username to each submission instead of to the audit log.
+
 Viewing audit logs
 -------------------
 
