@@ -93,6 +93,10 @@ You can enable change tracking so that old answers and new answers will be added
 Enumerator identification
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. versionadded:: 1.25
+
+  `ODK Collect v1.25.0 <https://github.com/opendatakit/collect/releases/tag/v1.25.0>`_
+
 If your form needs a record of the identity of the enumerator you can use :tc:`identify-user=true`.
 
 .. csv-table:: survey
