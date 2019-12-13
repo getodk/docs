@@ -3,7 +3,7 @@
   readonly
 
 Setup using Cloud Services
-=====================
+===========================
 
 .. _sync-endpoint-setup-intro:
 
@@ -18,8 +18,9 @@ This tutorial will help you launch ODK Sync Endpoint on a virtual machine hosted
 
 
 .. _sync-endpoint-setup-digital-ocean:
+
 Option 1: Using Python script to automatically set up a virtual machine on DigitalOcean
-----------------------
+-----------------------------------------------------------------------------------------
 
 | If you'd like to set up an ODK server that's accessible from anywhere via the Internet, DigitalOcean provides a one-click configuration that's nicely geared with nearly all the tools you'll need to set up your new server. The only thing it doesn't do is register a domain name, which you will have to do in order to obtain a security certificate for your server. These instructions walk you through:
 |   -	:ref:`Setting up a DigitalOcean account <sync-endpoint-setup-digital-ocean-account>`
@@ -29,12 +30,14 @@ Option 1: Using Python script to automatically set up a virtual machine on Digit
 |   -	:ref:`Launching the ODK-X Server <sync-endpoint-setup-digital-ocean-launching>`
 
 .. _sync-endpoint-setup-digital-ocean-account:
+
 Setting up a DigitalOcean account
-"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""
 
 1.	If you haven’t already, create an account on `DigitalOcean <https://www.digitalocean.com>`_.
 
 .. _sync-endpoint-setup-digital-ocean-droplet:
+
 Setting up a Droplet
 """""""""""""""""""""""""""""
 
@@ -74,6 +77,7 @@ Setting up a Droplet
 
 
 .. _sync-endpoint-setup-digital-ocean-connecting:
+
 Connecting to your Droplet
 """""""""""""""""""""""""""""
 
@@ -152,8 +156,9 @@ Connecting to your Droplet
 8.	Read our section on *Creating a Sample User* to learn how to create a user from within the admin interface. This section can be found :ref:`here <sync-endpoint-setup-create-user>`.
 
 .. _sync-endpoint-setup-digital-ocean-firewall:
+
 Enabling a firewall to prevent unintended traffic
-"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 1.	On the DigitalOcean console, navigate to the *Networking* section under **MANAGE** Go to the *Firewalls* section and click :guilabel:`Create Firewall`.
 
@@ -174,6 +179,7 @@ Enabling a firewall to prevent unintended traffic
    :width: 600
 
 .. _sync-endpoint-setup-digital-ocean-launching:
+
 Launching the ODK-X Server
 """""""""""""""""""""""""""""
 
@@ -185,8 +191,9 @@ Launching the ODK-X Server
   Once a user has been created in the admin interface, this is the login screen that the user will use to log in and access their data. 
 
 .. _sync-endpoint-setup-azure:
+
 Option 2: Azure console
-----------------------
+-------------------------
 
 | We have noticed that sync-endpoint runs the smoothest on Azure. These instructions will walk you through the following:
 | -	:ref:`Setting up an Azure account <sync-endpoint-setup-azure-account>`
@@ -195,12 +202,14 @@ Option 2: Azure console
 | -	:ref:`Launching the ODK-X Server <sync-endpoint-setup-azure-launch>`
 
 .. _sync-endpoint-setup-azure-account:
+
 Setting up an Azure account
 """""""""""""""""""""""""""""
 
 1.	If you haven’t already, create an account on `Azure <https://azure.microsoft.com/en-us/>`_.
 
 .. _sync-endpoint-setup-azure-vm:
+
 Setting up a virtual machine
 """""""""""""""""""""""""""""
 
@@ -235,8 +244,9 @@ Setting up a virtual machine
     :width: 600
 
 .. _sync-endpoint-setup-azure-connect:
+
 Connecting to your virtual machine
-"""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""
 
 1.	Within the Virtual Machine overview section, locate the IP address of your machine. 
 
@@ -309,6 +319,7 @@ Connecting to your virtual machine
 8. After going through the instructions for *Creating a Sample User,* we no longer need access to this admin interface anymore. This admin interface is running on port 40000, and in order to ensure that this admin interface is not publicly accessible to anyone, we want to remove the rule that accepts incoming traffic to that port. We do this the same way we added the rules above. 
 
 .. _sync-endpoint-setup-azure-launch:
+
 Launching the ODK-X Server
 """""""""""""""""""""""""""""
 
@@ -321,8 +332,9 @@ Launching the ODK-X Server
 
 
 .. _sync-endpoint-setup-aws:
+
 Option 3: Amazon Web Services console
-----------------------
+---------------------------------------
 
 | These instructions will walk you through the following:
 | -	:ref:`Setting up an AWS account <sync-endpoint-setup-aws-account>`
@@ -331,12 +343,14 @@ Option 3: Amazon Web Services console
 | -	:ref:`Launching the ODK-X Server <sync-endpoint-setup-aws-launch>`
 
 .. _sync-endpoint-setup-aws-account:
+
 Setting up an AWS account
 """""""""""""""""""""""""""""
 
 1.	If you haven’t already, create an account on `Amazon Web Services <https://aws.amazon.com/>`_.
 
 .. _sync-endpoint-setup-aws-vm:
+
 Setting up a virtual machine
 """""""""""""""""""""""""""""
 
@@ -368,8 +382,9 @@ Setting up a virtual machine
    :width: 600
 
 .. _sync-endpoint-setup-aws-connect:
+
 Connecting to your virtual machine
-"""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""
 
 1. Go back to the EC2 dashboard and click on :guilabel:`Running instances`.
 
@@ -455,6 +470,7 @@ Connecting to your virtual machine
 
 
 .. _sync-endpoint-setup-aws-launch:
+
 Launching the ODK-X Server
 """""""""""""""""""""""""""""
 
@@ -466,6 +482,7 @@ Launching the ODK-X Server
   Once a user has been created in the admin interface, this is the login screen that the user will use to log in and access their data. 
 
 .. _sync-endpoint-setup-create-user:
+
 Creating a Sample User
 ----------------------
 
