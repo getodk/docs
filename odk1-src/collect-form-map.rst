@@ -28,7 +28,8 @@ Tapping on a map marker will open the filled form for viewing or editing dependi
 
 The bar at the bottom of the screen displays the total number of saved forms and how many of these are shown on the map. All filled forms with a value for the first geopoint question will be displayed. To ensure that all filled forms are displayed, make the identifying geopoint question :ref:`required <requiring-responses>`.
 
-Deleted or :doc:`encrypted <encrypted-forms>` filled forms are not shown on the map. However, forms that were successfully sent and then deleted and forms that are encrypted both contribute to the total number of saved forms. See :ref:`deleting-forms` for more on how filled form deletion works. 
+.. note::
+  Deleted or :doc:`encrypted <encrypted-forms>` filled forms are not shown on the map. However, forms that were successfully sent and then deleted and forms that are encrypted both contribute to the total number of saved forms. See :ref:`deleting-forms` for more on how filled form deletion works.
 
 There are three control buttons clustered at the top right of the map. The top button is used to zoom to the current location. The middle button adjusts the zoom level to ensure that all mapped filled forms are displayed on the screen. The last button is used to change layers if :doc:`offline layers <collect-offline-maps>` are available. The basemap and reference layer settings are used across all of Collect so the same ones will be used for this form map as for :ref:`location widgets with maps <location-widgets>`.
 
