@@ -21,7 +21,7 @@ Launching External Apps
 Launching external apps to populate single fields
 ------------------------------------------------------
 
-ODK Collect can launch external applications to populate string, integer or decimal fields using the ``ex:intentAction(intentExtras)`` appearance.
+ODK Collect can launch external applications using the ``ex:intentAction(intentExtras)`` appearance on string, integer or decimal fields. The application launched could be one that the enumerator uses and quits without Collect needing any data from it. For example, a form could configure `the Maps.me application <https://github.com/mapsme/api-android/wiki/Build-Route-and-Show-On-Map-via-Intent>`_ to provide directions to a destination and not need any information back from the app. An external application could also be used to populate the string, integer or decimal field that launched it. In order to populate a field, the app that is launched must be designed to returned a value as described in the :ref:`external app design <external-app-design>` section below.
 
 This feature configures an Android intent. Intents are messaging objects used to request an action from another app component. Learn more in `the Android docs <https://developer.android.com/guide/components/intents-filters.html>`_.
 
@@ -48,6 +48,12 @@ XLSForm
   integer, counter, Click launch to start the counter app, "ex:org.opendatakit.counter(form_id='counter-form', form_name='Counter Form', question_id='1', question_name='Counter')"
 
 In the examples above, the extras specified have names ``form_id``, ``form_name``, ``question_id``, and ``question_name``.
+
+.. _external-app-design:
+
+Designing an external app to return a single value to Collect
+---------------------------------------------------------------
+When an activity that is launched returns to Collect, Collect will look for an intent extra named ``value`` and use its value to populate the field that triggered the application launch. See `a counter app <https://github.com/opendatakit/counter/blob/master/app/src/main/java/org/opendatakit/counter/activities/CounterActivity.java#L100>`_ to see an example of how this is done.
 
 .. _launch-apps-multiple-fields:
 
