@@ -409,7 +409,7 @@ constructSurveyUri
 
 Constructs a uri of the form "content://org.opendatakit.provider.forms/<appName>/<tableId>
 /<formId>/#instanceId=<rowId>&screenPath=<screenPath>" followed by "&<key>=<value>" for each
-key in the elementKeyToValueMap).
+key in the elementKeyToValueMap.
 
 doAction
 -----------------------
