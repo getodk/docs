@@ -58,6 +58,11 @@ The explicit session variable interfaces (:code:`odkCommon.getSessionVariable(el
 
 .. _injected-interfaces-odkdata:
 
+Method Documentation
+~~~~~~~~~~~~~~~~~~~~
+
+A full documentation of the available methods in odkCommon.js can be found here: :doc:`injected-interfaces-methods`.
+
 odkData.js
 --------------------
 
