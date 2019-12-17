@@ -5,7 +5,9 @@ Here you will find a list of all available methods for you to use that can be fo
 
 We also provide access to this array of field names: i18nFieldNames: [ 'text', 'image', 'audio', 'video' ]
 
-reigsterListener(listener)
+.. contents:: :local:
+
+reigsterListener
 -----------------------
 
   **Parameters**:
@@ -15,17 +17,17 @@ reigsterListener(listener)
   
 Should be invoked once after registration and after all initialization is complete to ensure that any queued action is processed. 
 
-hasListener()
+hasListener
 -----------------------
 
   **Returns**: True if there is a listener already registered.
 
-getPlatformInfo()
+getPlatformInfo
 -----------------------
 
   **Returns**: The platform info as a stringified JSON object containing the keys: container, version, appName, baseUri, and logLevel.
 
-getFileAsUrl(relativePath)
+getFileAsUrl
 -----------------------
 
   **Parameters**:
@@ -34,7 +36,7 @@ getFileAsUrl(relativePath)
   
   **Returns**: An absolute url by which the file can be accessed.
 
-getRowFileAsUrl(tableId, rowId, rowPathUri)
+getRowFileAsUrl
 -----------------------
 
   **Parameters**:
@@ -47,7 +49,7 @@ getRowFileAsUrl(tableId, rowId, rowPathUri)
   
 Convert the rowpath value for a media attachment (e.g. uriFragment) field into a url by which it can be accessed.
 
-isString(obj)
+isString
 -----------------------
 
   **Parameters**:
@@ -56,7 +58,7 @@ isString(obj)
   
   **Returns**: True if obj is a String.
 
-lookupToken(stringToken)
+lookupToken
 -----------------------
 
   **Parameters**:
@@ -67,7 +69,7 @@ lookupToken(stringToken)
   
 Note that the return might include text, hint, image, etc. that are then localizable. In general, the resulting object can be customized further in survey XLSX files by specifying overrides for these fields.
 
-extractLangOnlyLocale(locale)
+extractLangOnlyLocale
 -----------------------
 
   **Parameters**:
@@ -76,12 +78,12 @@ extractLangOnlyLocale(locale)
   
   **Returns**: The language String extracted from the locale String.
 
-getPreferredLocale()
+getPreferredLocale
 -----------------------
 
   **Returns**: An object representing the locale that was configured by the user in the Java-side's Device Settings.
 
-getLocaleDetails()
+getLocaleDetails
 -----------------------
 
   **Returns**: Object containing details about the locale.
@@ -90,7 +92,7 @@ Get an object containing details about the preferred locale (preferredLocale), w
 the preferred locale is the same as the Device's locale (usingDeviceLocale), and other
 information about the device locale (isoCountry, displayCountry, isoLanguage, displayLanguage)
 
-hasLocalization(locale, i18nToken)
+hasLocalization
 -----------------------
 
   **Parameters**:
@@ -103,7 +105,7 @@ hasLocalization(locale, i18nToken)
 
 The localization might be any of: a text, image, audio, or video element (i.e., the field name that can be localized is not specified).
 
-hasFieldLocalization(locale, i18nToken, fieldName)
+hasFieldLocalization
 -----------------------
 
   **Parameters**:
@@ -115,7 +117,7 @@ hasFieldLocalization(locale, i18nToken, fieldName)
   **Returns**: True if there is some type of localization for the given fieldName in the given
   i18nToken and locale.
 
-localizeTokenField(locale, i18nToken, fieldName)
+localizeTokenField
 -----------------------
 
   **Parameters**:
@@ -126,33 +128,58 @@ localizeTokenField(locale, i18nToken, fieldName)
   
   **Returns**: The localization for a given fieldName in a given i18nToken and locale.
 
-hasTextLocalization(locale, i18nToken)
+hasTextLocalization
 -----------------------
+    
+  **Parameters**:
+    
+  - locale
+  - i18nToken
   
   **Returns**: True if there is a localization for text in a given i18nToken and locale.
 
-localizeText(locale, i18nToken)
+localizeText
 -----------------------
 
+  **Parameters**:
+    
+  - locale
+  - i18nToken
+  
   **Returns**: The localization for text in a given i18nToken and locale.
 
-hasImageLocalization(locale, i18nToken)
+hasImageLocalization
 -----------------------
 
+  **Parameters**:
+    
+  - locale
+  - i18nToken
+  
   **Returns**: True if there is a localization for an image in a given i18nToken and locale.
 
 
-hasAudioLocalization(locale, i18nToken)
+hasAudioLocalization
 -----------------------
 
+  **Parameters**:
+    
+  - locale
+  - i18nToken
+  
   **Returns**: True if there is a localization for audio in a given i18nToken and locale.
 
-hasVideoLocalization(locale, i18nToken)
+hasVideoLocalization
 -----------------------
 
+  **Parameters**:
+    
+  - locale
+  - i18nToken
+  
   **Returns**: True if there is a localization for video in a given i18nToken and locale.
 
-localizeUrl(locale, i18nToken, fieldName, formPath)
+localizeUrl
 -----------------------
 
   **Parameters**:
@@ -165,7 +192,7 @@ localizeUrl(locale, i18nToken, fieldName, formPath)
   **Returns**: The localization for a given fieldName in a given i18nToken and locale and prefixes
   it with the given formPath if the url is not already prefixed with a slash or http prefix.
 
-toDateFromOdkTimeStamp(timestamp)
+toDateFromOdkTimeStamp
 -----------------------
 
   **Parameters**:
@@ -182,7 +209,7 @@ Convert an ODK Timestamp string to a Javascript Date() object.
 
 NOTE: This method discards the nano fields.
 
-toDateFromOdkTime(refJsDate, time)
+toDateFromOdkTime
 -----------------------
 
   **Parameters**:
@@ -200,7 +227,7 @@ in daylight savings and standard time do not affect the calculations (HH can rea
 
 NOTE: This method discards the nano fields.
 
-toDateFromOdkTimeInterval(refJsDate, timeInterval)
+toDateFromOdkTimeInterval
 -----------------------
 
   **Parameters**:
@@ -224,7 +251,7 @@ The padded
 precision of the hour allows representation of the full 9999 year AD calendar range 
 of time intervals. 
 
-padWithLeadingZeros(value, places)
+padWithLeadingZeros
 -----------------------
 
   **Parameters**:
@@ -238,7 +265,7 @@ padWithLeadingZeros(value, places)
  
 Examples: padWithLeadingZeros(45, 4) => '0045'. padWithLeadingZeros(-45, 4) => '-0045'.
 
-padWithLeadingSpaces(value, places)
+padWithLeadingSpaces
 -----------------------
 
 
@@ -254,7 +281,7 @@ padWithLeadingSpaces(value, places)
 Examples: padWithLeadingSpaces(0, 4) => '   0'. padWithLeadingSpaces(45, 4) => '  45'.
 padWithLeadingSpaces(-45, 4) => '-  45'.
 
-toOdkTimeStampFromDate(jsDate)
+toOdkTimeStampFromDate
 -----------------------
 
   **Parameters**:
@@ -275,7 +302,7 @@ Values destined for 'date' types should set
 the UTC time to all-zeros for the time portion of the timestamp.  Or adjust this 
 after-the-fact in their own code.
 
-toOdkTimeFromDate(jsDate)
+toOdkTimeFromDate
 -----------------------
 
   **Parameters**:
@@ -290,7 +317,7 @@ the start of the local day, and then converted to a string representation. This 
 that changes in daylight savings time / standard time are properly handled and can result 
 in HH being 24 during "fall back" days.
 
-toOdkTimeIntervalFromDate(refJsDate, newJsDate)
+toOdkTimeIntervalFromDate
 -----------------------
 
   **Parameters**:
@@ -311,7 +338,7 @@ The padded
 precision of the hour allows representation of the full 9999 year AD calendar range of 
 time intervals.
 
-log(level, loggingString, detail)
+log
 -----------------------
 
   **Parameters**:
@@ -323,19 +350,24 @@ log(level, loggingString, detail)
 Log messages using WebLogger.  Given loggingString will 
 be logged with given detail added.
 
-getActiveUser()
+getActiveUser
 -----------------------
   **Returns**: Active user.
 
-getProperty(propertyId)
+getProperty
 -----------------------
+
+  **Parameters**:
+    
+  - propertyId
+
   **Returns**: Device properties.
 
-getBaseUrl()
+getBaseUrl
 -----------------------
   **Returns**: The base url.
 
-setSessionVariable(elementPath, jsonValue)
+setSessionVariable
 -----------------------
 
   **Parameters**:
@@ -346,7 +378,7 @@ setSessionVariable(elementPath, jsonValue)
 Store a persistent key-value. This lasts for the duration of this screen and is retained
 under screen rotations. Useful if browser cookies don't work.
 
-getSessionVariable(elementPath)
+getSessionVariable
 -----------------------
 
   **Parameters**:
@@ -358,11 +390,11 @@ getSessionVariable(elementPath)
 Retrieve a persistent key-value. This lasts for the duration of this screen and is retained
 under screen rotations. Useful if browser cookies don't work.
 
-genUUID()
+genUUID
 -----------------------
   **Returns**: A generated globally unique id.
 
-constructSurveyUri(tableId, formId, rowId, screenPath, elementKeyToValueMap)
+constructSurveyUri
 -----------------------
 
   **Parameters**:
@@ -379,9 +411,8 @@ Constructs a uri of the form "content://org.opendatakit.provider.forms/<appName>
 /<formId>/#instanceId=<rowId>&screenPath=<screenPath>" followed by "&<key>=<value>" for each
 key in the elementKeyToValueMap).
 
-doAction(dispatchStruct, action, intentObject)
+doAction
 -----------------------
-
 
   **Parameters**: 
   
@@ -421,7 +452,7 @@ odkCommon.viewFirstQueuedAction().
 And they are removed from the queue via
 odkCommon.removeFirstQueuedAction();
 
-closeWindow(resultCode, keyValueBundle)
+closeWindow
 -----------------------
 
   **Parameters**:
@@ -444,7 +475,7 @@ Where the intent's extras are set to the content of the keyValueBundle.
 This will log errors but any errors will cause a RESULT_CANCELLED exit. 
 See the logs for what the error was.
 
-viewFirstQueuedAction()
+viewFirstQueuedAction
 -----------------------
   
   **Returns**: The oldest queued action outcome or Url change or null if there are none.
@@ -462,7 +493,7 @@ viewFirstQueuedAction()
 
     + "#urlhash"   (if the Java code wants the Javascript to take some action without a reload)
 
-removeFirstQueuedAction()
+removeFirstQueuedAction
 -----------------------
 
 Removes the first queued action.
