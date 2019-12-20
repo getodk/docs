@@ -97,12 +97,12 @@ Tracking reason for edit
 
   `ODK Collect v1.25.0 <https://github.com/opendatakit/collect/releases/tag/v1.25.0>`_
 
-You can add to :tc:`track-changes-reason=on-form-edit` to prompt enumerators to enter a reason before they save changes to a form:
+You can add to :tc:`track-changes-reasons=on-form-edit` to prompt enumerators to enter a reason before they save changes to a form:
 
 .. csv-table:: survey
   :header: type, name, parameters
 
-  audit, audit, track-changes-reason=on-form-edit
+  audit, audit, track-changes-reasons=on-form-edit
 
 This will prevent filled out forms being edited without a reason being given. If a reason is given the form will be saved normally and the audit log will include a :tc:`change reason` event with the reason recorded in the :tc:`change-reason` column.
 
