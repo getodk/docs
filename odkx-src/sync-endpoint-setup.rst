@@ -362,7 +362,7 @@ Setting up a virtual machine
   .. image:: /img/setup-aws/aws2.png
    :width: 600
 
-2. You must start by choosing an Amazon Machine Image (AMI). Scroll through the options and select *Ubuntu Server 18.04 LTS (HVM), SSD Volume Type* which should be the 5th option from the top.  
+2. You must start by choosing an Amazon Machine Image (AMI). Scroll through the options and select *Ubuntu Server 18.04 LTS (HVM), SSD Volume Type* which should be the fifth option from the top.  
 
   .. image:: /img/setup-aws/aws3.png
    :width: 600
