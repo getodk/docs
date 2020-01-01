@@ -18,5 +18,6 @@ System Administrator Guide
 .. toctree::
 
   sync-endpoint
+  sync-endpoint-setup
   aggregate-tables-extension
 
