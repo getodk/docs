@@ -518,19 +518,6 @@ Repeating questions
 =====================
 You can ask the same question or questions multiple times by wrapping them in :tc:`begin_repeat...end_repeat`. By default, enumerators are asked before each repetition whether they would like to add another repeat. It is also possible to :ref:`determine the number of repetitions ahead of time <statically-defined-repeats>` which can make the user interaction more intuitive. You can also :ref:`add repeats as long as a condition is met <repeat_based_on_condition>`.
 
-.. seealso::
-    :doc:`form-repeats` describes strategies to address common repetition scenarios.
-
-.. note::
-  Using repetition in a form is very powerful but can also make training and data analysis more time-consuming. Aggregate does not export repeats so Briefcase or one of the data publishers will be needed to :doc:`transfer data from Aggregate <aggregate-data-access>`. Repeats will be in their own documents and will need to be joined with their parent records for analysis.
-  
-  Before adding repeats to your form, consider other options:
-
-  - if the number of repetitions is small and known ahead of time, consider "unrolling" the repeat by copying the same questions several times.
-  - if the number of repetitions is large and includes many questions, consider building a separate form that enumerators fill out multiple times and link the forms with some parent key (e.g., a household ID).
-
-  If repeats are needed, consider adding some summary calculations at the end so that analysis will not require joining the repeats with their parent records. For example, if you are gathering household information and would like to compute the total number of households visited across all enumerators, add a calculation after the repeats that counts the repetitions in each submission.
-
 .. rubric:: XLSForm --- Repeating one or more questions
 
 .. csv-table:: survey
@@ -542,6 +529,19 @@ You can ask the same question or questions multiple times by wrapping them in :t
   text, quest, What is your quest?
   text, fave_color, What is your favorite color?
   end_repeat, , 
+
+.. seealso::
+    :doc:`form-repeats` describes strategies to address common repetition scenarios.
+
+.. tip::
+  Using repetition in a form is very powerful but can also make training and data analysis more time-consuming. Aggregate does not export repeats so Briefcase or one of the data publishers will be needed to :doc:`transfer data from Aggregate <aggregate-data-access>`. Repeats will be in their own documents and will need to be joined with their parent records for analysis.
+
+  Before adding repeats to your form, consider other options:
+
+  - if the number of repetitions is small and known ahead of time, consider "unrolling" the repeat by copying the same questions several times.
+  - if the number of repetitions is large and includes many questions, consider building a separate form that enumerators fill out multiple times and link the forms with some parent key (e.g., a household ID).
+
+  If repeats are needed, consider adding some summary calculations at the end so that analysis will not require joining the repeats with their parent records. For example, if you are gathering household information and would like to compute the total number of households visited across all enumerators, add a calculation after the repeats that counts the repetitions in each submission.
  
   
 .. _controlling-number-of-repeats:
@@ -566,14 +566,12 @@ Before each repetition, the user is asked if they want to add another.
   A meaningful label will help enumerators and participants 
   navigate the form as intended.
 
+  This interaction may be confusing to users the first time they see it. If enumerators know the number of repetitions ahead of time, consider using a :ref:`dynamically defined repeat count <dynamically-defined-repeats>`.
+
 .. figure:: /img/form-logic/repeat-iteration-modal.* 
   :alt: The Collect app. A modal dialog labeled "Add new group?" with the question: "Add a new 'repeat group label' group?" and options "Do not add" and "Add Group".
   
   The user is given the option to add each repetition.
-
-.. note::
-
-  This interaction may be confusing to users the first time they see it. If enumerators know the number of repetitions ahead of time, consider using a :ref:`dynamically defined repeat count <dynamically-defined-repeats>`.
 
 .. tip::
 
@@ -646,8 +644,8 @@ In the `repeat_count` expression, `${count} = 0` ensures that there is always at
 
 .. _zero-repetitions:
 
-Representing zero or more repetitions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Repeating zero or more times
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Sometimes it only makes sense to collect information represented by the questions in a repeat under certain conditions. If the number of total repetitions is known ahead of time, use :ref:`dynamically-defined-repeats` and allow a count of 0. If the count is not known ahead of time, :ref:`relevants` can be used to represent 0 or more repetitions. In the example below, questions about trees will only be asked if the user indicates that there are trees to survey.
 
