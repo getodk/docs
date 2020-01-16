@@ -514,42 +514,34 @@ Groups without labels can be helpful for organizing questions in a way that's in
 
 .. _repeats:
 
-Repeating groups of questions
-=============================
+Repeating questions
+=====================
+You can ask the same question or questions multiple times by wrapping them in :tc:`begin_repeat...end_repeat`. By default, enumerators are asked before each repetition whether they would like to add another repeat. It is also possible to :ref:`determine the number of repetitions ahead of time <statically-defined-repeats>` which can make the user interaction more intuitive. You can also :ref:`add repeats as long as a condition is met <repeat_based_on_condition>`.
 
-.. note::
+.. rubric:: XLSForm --- Repeating one or more questions
+
+.. csv-table:: survey
+  :header: type, name, label 
+
+  begin_repeat, my_repeat, repeat group label
+  note, repeated_note, All of these questions will be repeated.
+  text, name, What is your name?
+  text, quest, What is your quest?
+  text, fave_color, What is your favorite color?
+  end_repeat, , 
+
+.. seealso::
+    :doc:`form-repeats` describes strategies to address common repetition scenarios.
+
+.. tip::
   Using repetition in a form is very powerful but can also make training and data analysis more time-consuming. Aggregate does not export repeats so Briefcase or one of the data publishers will be needed to :doc:`transfer data from Aggregate <aggregate-data-access>`. Repeats will be in their own documents and will need to be joined with their parent records for analysis.
-  
+
   Before adding repeats to your form, consider other options:
 
   - if the number of repetitions is small and known ahead of time, consider "unrolling" the repeat by copying the same questions several times.
   - if the number of repetitions is large and includes many questions, consider building a separate form that enumerators fill out multiple times and link the forms with some parent key (e.g., a household ID).
 
   If repeats are needed, consider adding some summary calculations at the end so that analysis will not require joining the repeats with their parent records. For example, if you are gathering household information and would like to compute the total number of households visited across all enumerators, add a calculation after the repeats that counts the repetitions in each submission.
-
-To repeat questions or groups of questions
-use the :tc:`begin_repeat...end_repeat` syntax.
-
-.. rubric:: XLSForm --- Single question repeat group
-
-.. csv-table:: survey
-  :header: type, name, label 
-
-  begin_repeat, my_repeat_group, Repeat group label
-  text, repeated_question, This question will be repeated.
-  end_repeat, , 
-
-.. rubric:: XLSForm --- Multi-question repeat group
-
-.. csv-table:: survey
-  :header: type, name, label 
-
-  begin_repeat, my_repeat, Repeat group label
-  note, repeated_note, These questions will be repeated as an entire group.
-  text, name, What is your name?
-  text, quest, What is your quest?
-  text, fave_color, What is your favorite color?
-  end_repeat, , 
  
   
 .. _controlling-number-of-repeats:
@@ -562,12 +554,9 @@ Controlling the number of repetitions
 User-controlled repeats
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-By default,
-the user controls how many times 
-the questions are repeated.
+By default, the enumerator controls how many times the questions are repeated.
 
-Before each repetition,
-the user is asked if they want to add another repeat group.
+Before each repetition, the user is asked if they want to add another.
 
 .. note::
 
@@ -577,35 +566,23 @@ the user is asked if they want to add another repeat group.
   A meaningful label will help enumerators and participants 
   navigate the form as intended.
 
+  This interaction may be confusing to users the first time they see it. If enumerators know the number of repetitions ahead of time, consider using a :ref:`dynamically defined repeat count <dynamically-defined-repeats>`.
+
 .. figure:: /img/form-logic/repeat-iteration-modal.* 
   :alt: The Collect app. A modal dialog labeled "Add new group?" with the question: "Add a new 'repeat group label' group?" and options "Do not add" and "Add Group".
   
-  The user is given the option to add each iteration.
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label
-  
-  begin_repeat, repeat_example, repeat group label
-  text, repeat_test, Question label
-  end_repeat,,
-
-.. note::
-
-  This interaction may be confusing to users the first time they see it. If enumerators know the number of repetitions ahead of time, consider using :ref:`dynamically defined repeats <dynamically-defined-repeats>`.
+  The user is given the option to add each repetition.
 
 .. tip::
 
-  The :ref:`jump <jumping>` menu also provides shortcuts to :ref:`add <adding_repeats>` or :ref:`remove <removing_repeats>` instances of repeating groups.
+  The :ref:`jump <jumping>` menu also provides shortcuts to :ref:`add <adding_repeats>` or :ref:`remove <removing_repeats>` repeat instances.
 
 .. _statically-defined-repeats:
 
-Statically defined repeats
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Fixed repeat count
+~~~~~~~~~~~~~~~~~~~~
 
-Use the :th:`repeat_count` column
-to define the number of times a group will repeat.
+Use the :th:`repeat_count` column to define the number of times that questions will repeat.
 
 
 .. rubric:: XLSForm
@@ -614,19 +591,18 @@ to define the number of times a group will repeat.
   :header: type, name, label, repeat_count
 
   begin_repeat, my_repeat, Repeat group label, 3
-  note, repeated_note, These questions will be repeated as an entire group.
+  note, repeated_note, These questions will be repeated exactly three times.
   text, name, What is your name?
   text, quest, What is your quest?
   text, fave_color, What is your favorite color?
   end_repeat, , 
- 
+
 .. _dynamically-defined-repeats:
  
-Dynamically defined repeats
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dynamically defined repeat count
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The :th:`repeat_count` column can reference
-:ref:`previous responses <variables>` and :ref:`calculations <calculations>`.
+The :th:`repeat_count` column can reference :ref:`previous responses <variables>` and :ref:`calculations <calculations>`.
 
 .. rubric:: XLSForm
 
@@ -639,9 +615,55 @@ The :th:`repeat_count` column can reference
   integer, child_age, Child's age,
   end_repeat, , , 
 
+.. _repeat_based_on_condition:
 
-.. seealso:: :doc:`form-repeats`
+Repeating as long as a condition is met
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If the enumerator won't know how many repetitions are needed ahead of time, you can still avoid the "Add new group?" dialog by using the answer to a question to decide whether another repeat instance should be added. In the example below, repeated questions about plants will be asked as long as the user answers "yes" to the last question.
+
+.. csv-table:: survey
+  :header: type, name, label, calculation, repeat_count
   
+  calculate, count, , count(${plant})
+  begin_repeat, plant, Plant, , if(${count} = 0 or ${plant}[position()=${count}]/more_plants = 'yes', ${count} + 1, ${count})
+  text, species, Species,
+  integer, estimated_size, Estimated size,
+  select_one yes_no, more_plants, Are there more plants in this area?,
+  end_repeat, , , ,
+
+.. csv-table:: choices
+  :header: list_name, name, label
+  
+  yes_no, yes, Yes
+  yes_no, no, No
+
+This works by maintaining a :func:`count` of the existing repetitions and either making :th:`repeat_count` one more than that if the continuing condition is met or keeping the :th:`repeat_count` the same if the ending condition is met. 
+
+In the `repeat_count` expression, `${count} = 0` ensures that there is always at least one repeat instance created. The continuing condition is `${plant}[position()=${count}]/more_plants = 'yes'` which means "the answer to `more_plants` was `yes` the last time it was asked." The expression `position()=${count}` uses the :func:`position` function to select the last plant that was added. Adding `/more_plants` to the end of that selects the `more_plants` question.
+
+.. _zero-repetitions:
+
+Repeating zero or more times
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sometimes it only makes sense to collect information represented by the questions in a repeat under certain conditions. If the number of total repetitions is known ahead of time, use :ref:`dynamically-defined-repeats` and allow a count of 0. If the count is not known ahead of time, :ref:`relevants` can be used to represent 0 or more repetitions. In the example below, questions about trees will only be asked if the user indicates that there are trees to survey.
+
+.. csv-table:: survey
+  :header: type, name, label, relevant
+  
+  select_one yes_no, trees_present, Are there any trees in this area?,
+  begin_repeat, tree, Tree, ${trees_present} = 'yes'
+  text, species, Species,
+  integer, estimated_age, Estimated age,
+  end_repeat, , , ,
+
+.. csv-table:: choices
+  :header: list_name, name, label
+  
+  yes_no, yes, Yes
+  yes_no, no, No
+
 .. _cascading-selects:
   
 Filtering options in select questions
