@@ -73,6 +73,6 @@ The feature comparison table below illustrates the differences between the ODK a
 
 Trying Them Out
 -----------------------------
-  - Try the 1.x tools with the :doc:`getting-started` guide.
-  - Try the 2.x tools with the :doc:`getting-started-2-user`.
+  - Try the ODK tools with the :doc:`getting-started` guide.
+  - Try the ODK-X tools with the :doc:`getting-started-2-user`.
 
