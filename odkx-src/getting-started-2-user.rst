@@ -9,7 +9,7 @@ The ODK-X tools are intended to address limitations of the existing tool set. Th
 
 - :doc:`survey-intro` - a data collection application based upon HTML, CSS, and JavaScript.
 - :doc:`tables-intro` - a data collection and visualization application running on your device.
-- :doc:`services-intro` - an application that handles database access, file access, and data synchronization services between all of the ODK 2 applications. It also allows you to synchronize data collected by the ODK 2 tools using the 2 protocol with an ODK Aggregate instance.
+- :doc:`services-intro` - an application that handles database access, file access, and data synchronization services between all of the ODK-X applications. It also allows you to synchronize data collected by the ODK-X tools using the 2 protocol with an ODK Aggregate instance.
 - :doc:`app-designer-intro` - a design environment for creating, customizing, and previewing your forms.
 - :doc:`cloud-endpoints-intro` - a ready-to-deploy server and data repository with enhancements to support bi-directional data synchronization across disconnected devices.
 - :doc:`suitcase-intro` - a desktop tool for synchronizing data from an ODK-X server so the data can be exported to CSV format.
@@ -202,4 +202,4 @@ Users can browse the user guides for the Android tools. Tables and Survey's docu
   - :doc:`services-intro`
 
 
-Development Architects should continue this tour in the :doc:`getting-started-2-architect`.
+Those interested in building applications should continue this tour in the :doc:`getting-started-2-architect`.

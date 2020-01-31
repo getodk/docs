@@ -210,7 +210,7 @@ Tapping the :guilabel:`Columns` item will launch a list of all the columns in th
 
   .. note::
 
-      The columns list excludes the status and metadata columns that the ODK-X platform automatically adds. It only shows the columns holding data defined by the Deployment Architect.
+      The columns list excludes the status and metadata columns that the ODK-X platform automatically adds. It only shows the columns holding data as defined by your organization.
 
   .. image:: /img/tables-managing/table-properties-column-list.*
     :alt: Table Properties Column List

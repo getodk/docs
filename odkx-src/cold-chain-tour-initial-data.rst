@@ -9,7 +9,7 @@ Initial Data Set
 Function
 -----------------
 
-The initial data set is not part of the actual workflow of the application, but is described here to provide context for how this application is set up and how it might be used in the field. This initial data set is the full list of health facilities, refrigerators, and refrigerator types that currently exist in the health system to be modeled. The initial Deployment Architect could choose to collect this data via survey forms within the application itself (which are already provided, and used for adding data as the current state changes), but if they already have a database of health facility inventory, this might be the more convenient method.
+The initial data set is not part of the actual workflow of the application, but is described here to provide context for how this application is set up and how it might be used in the field. This initial data set is the full list of health facilities, refrigerators, and refrigerator types that currently exist in the health system to be modeled. The initial person configuring the application could choose to collect this data via survey forms within the application itself (which are already provided, and used for adding data as the current state changes), but if they already have a database of health facility inventory, this might be the more convenient method.
 
 For demonstration purposes the provided default data set also has maintenance logs that are seeded into the database.
 

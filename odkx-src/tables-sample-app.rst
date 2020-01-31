@@ -1,4 +1,4 @@
-ODK Tables: Sample Application
+Sample ODK Tables Application
 ===============================================
 
 In this guide we will be demonstrating how to use ODK Tables via a guided tour of a sample application.
