@@ -147,13 +147,13 @@ Values from the last saved record
 
 .. warning::
 
-  Support for last-saved was added in Collect v1.21.0. Form conversion requires XLSForm Online ≥ v2.0.0 or pyxform ≥ v1.0.0.
+  Support for last-saved was added in Collect v1.21.0. Form conversion requires XLSForm Online ≥ v2.0.0 or pyxform ≥ v1.0.0. Using older versions will have unpredictable results.
 
-You can refer to values from the last saved record by wrapping a question name in ``${last-saved#`` and ``}``:
+You can refer to values from the last saved record of this form definition:
 
 :tc:`${last-saved#question-name}`
 
-This can be very useful when an enumerator is expected to fill out the same  form definition for groups of things with the same property. For example, if an enumerator is walking through a town and collecting information about people including the street that they live on, the street name will be the same for several records in a row.
+This can be very useful when an enumerator has to enter the same value for multiple consecutive records. An example of this would be entering in the same district for a series of households.
 
 .. rubric:: XLSForm that shows using a last-saved value as a dynamic default
 
@@ -162,7 +162,7 @@ This can be very useful when an enumerator is expected to fill out the same  for
 
   text, street, Street, ${last-saved#street}
 
-The last saved instance can either be the last record that an enumerator started filling from a blank form or the last record that an enumerator opened to edit and then saved.
+The value is pulled from the last saved record. This is often the most recently created record but it could also be a previously-existing record that was edited and saved.
 
 .. _form-logic-gotchas:
 
@@ -264,7 +264,7 @@ without answering the question.
 Setting default responses
 ===========================
 
-To provide a default response to a question, put a value in the :th:`default` column. Defaults are set once when each instance of a form definition is first opened for filling and can then be changed by enumerators. Defaults can either be fixed values (:ref:`static defaults <static-defaults>`) or the result of some expression (:ref:`dynamic defaults <dynamic-defaults>`).
+To provide a default response to a question, put a value in the :th:`default` column. Defaults are set once when a record is first created from a form definition. Defaults can either be fixed values (:ref:`static defaults <static-defaults>`) or the result of some expression (:ref:`dynamic defaults <dynamic-defaults>`). 
 
 .. _static-defaults:
 
@@ -296,9 +296,9 @@ Dynamic defaults
 
 .. warning::
   
-  Support for :ref:`dynamic defaults <dynamic-defaults>` was added in Collect v1.24.0. Form conversion requires XLSForm Online ≥ v2.0.0 or pyxform ≥ v1.0.0.
+  Support for :ref:`dynamic defaults <dynamic-defaults>` was added in Collect v1.24.0. Form conversion requires XLSForm Online ≥ v2.0.0 or pyxform ≥ v1.0.0. Using older versions will have unpredictable results.
 
-If you put an expression in the :th:`default` column for a question, that expression will be evaluated once when a record is first created from a blank form definition. This allows you to use values from outside the form like the current date or the :ref:`server username <metadata>`.
+If you put an expression in the :th:`default` column for a question, that expression will be evaluated once when a record is first created from a blank form definition. This allows you to use values from outside the form like the current date or the :ref:`server username <metadata>`. Dynamic defaults can't be used to base the default value of one field on the value of another field in the form. For example, if you have an ``age`` question and you want to default the diagnosis age to the value of the ``age`` question, see :ref:`the tip below <defaults-from-form-data>`.
 
 .. rubric:: XLSForm to set the current date as default
 
@@ -317,7 +317,7 @@ In the example below, if a username is set either in the :ref:`server configurat
   username, username
   text, confirmed_username, What is your username?, ${username}
 
-If enumerators are creating records representing groups of things with the same property, dynamic defaults can be combined with :ref:`last saved <last-saved>`.
+If enumerators will need to enter the same value for multiple consecutive records, dynamic defaults can be combined with :ref:`last saved <last-saved>`.
 
 Dynamic defaults in repeats are evaluated when a new repeat instance is added.
 
