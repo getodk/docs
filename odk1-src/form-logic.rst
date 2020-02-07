@@ -264,7 +264,7 @@ without answering the question.
 Setting default responses
 ===========================
 
-To provide a default response to a question, put a value in the :th:`default` column. Defaults are set once when a record is first created from a form definition. Defaults can either be fixed values (:ref:`static defaults <static-defaults>`) or the result of some expression (:ref:`dynamic defaults <dynamic-defaults>`). 
+To provide a default response to a question, put a value in the :th:`default` column. Defaults are set when a record is first created from a form definition. Defaults can either be fixed values (:ref:`static defaults <static-defaults>`) or the result of some expression (:ref:`dynamic defaults <dynamic-defaults>`).
 
 .. _static-defaults:
 
@@ -298,7 +298,7 @@ Dynamic defaults
   
   Support for :ref:`dynamic defaults <dynamic-defaults>` was added in Collect v1.24.0. Form conversion requires XLSForm Online ≥ v2.0.0 or pyxform ≥ v1.0.0. Using older versions will have unpredictable results.
 
-If you put an expression in the :th:`default` column for a question, that expression will be evaluated once when a record is first created from a blank form definition. This allows you to use values from outside the form like the current date or the :ref:`server username <metadata>`. Dynamic defaults can't be used to base the default value of one field on the value of another field in the form. For example, if you have an ``age`` question and you want to default the diagnosis age to the value of the ``age`` question, see :ref:`the tip below <defaults-from-form-data>`.
+If you put an expression in the :th:`default` column for a question, that expression will be evaluated once when a record is first created from a form definition. This allows you to use values from outside the form like the current date or the :ref:`server username <metadata>`. Dynamic defaults can't be used to set the default value of one field to the value of another field in the form. Learn about alternatives in :ref:`the tip below <defaults-from-form-data>`.
 
 .. rubric:: XLSForm to set the current date as default
 
