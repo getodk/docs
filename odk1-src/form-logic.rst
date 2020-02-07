@@ -140,6 +140,30 @@ you must first use a :tc:`calculate` row and then a variable.
   | Tip (18%): $${tip_18}
   | Total: $${tip_18_total}",
 
+.. _last-saved:
+
+Values from the last saved record
+----------------------------------
+
+.. warning::
+
+  Support for last-saved was added in Collect v1.21.0. Form conversion requires XLSForm Online ≥ v2.0.0 or pyxform ≥ v1.0.0.
+
+You can refer to values from the last saved record by wrapping a question name in ``${last-saved#`` and ``}``:
+
+:tc:`${last-saved#question-name}`
+
+This can be very useful when an enumerator is expected to fill out the same  form definition for groups of things with the same property. For example, if an enumerator is walking through a town and collecting information about people including the street that they live on, the street name will be the same for several records in a row.
+
+.. rubric:: XLSForm that shows using a last-saved value as a dynamic default
+
+.. csv-table:: survey
+  :header: type, name, label, default
+
+  text, street, Street, ${last-saved#street}
+
+The last saved instance can either be the last record that an enumerator started filling from a blank form or the last record that an enumerator opened to edit and then saved.
+
 .. _form-logic-gotchas:
 
 Form logic gotchas
@@ -274,7 +298,7 @@ Dynamic defaults
   
   Support for :ref:`dynamic defaults <dynamic-defaults>` was added in Collect v1.24.0. Form conversion requires XLSForm Online ≥ v2.0.0 or pyxform ≥ v1.0.0.
 
-If you put an expression in the :th:`default` column for a question, that expression will be evaluated once when an instance of a form definition is first opened. This allows you to use values from outside the form like the current date or the :ref:`server username <metadata>`.
+If you put an expression in the :th:`default` column for a question, that expression will be evaluated once when a record is first created from a blank form definition. This allows you to use values from outside the form like the current date or the :ref:`server username <metadata>`.
 
 .. rubric:: XLSForm to set the current date as default
 
@@ -293,12 +317,14 @@ In the example below, if a username is set either in the :ref:`server configurat
   username, username
   text, confirmed_username, What is your username?, ${username}
 
+If enumerators are creating records representing groups of things with the same property, dynamic defaults can be combined with :ref:`last saved <last-saved>`.
+
 Dynamic defaults in repeats are evaluated when a new repeat instance is added.
 
 .. tip:: 
   :name: defaults-from-form-data
 
-  You may want to use a value filled out by the enumerator as a default for another question that the enumerator will later fill in. Dynamic defaults can't be used for this because they are evaluated once when a form definition is first loaded and before an enumerator fills in any data.
+  You may want to use a value filled out by the enumerator as a default for another question that the enumerator will later fill in. Dynamic defaults can't be used for this because they are evaluated once when a record is first created which is before an enumerator fills in any data.
   
   One option is to use the :th:`calculation` column and wrap your default value expression in a :func:`once` function.
   
