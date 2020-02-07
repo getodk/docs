@@ -140,6 +140,30 @@ you must first use a :tc:`calculate` row and then a variable.
   | Tip (18%): $${tip_18}
   | Total: $${tip_18_total}",
 
+.. _last-saved:
+
+Values from the last saved record
+----------------------------------
+
+.. warning::
+
+  Support for last-saved was added in Collect v1.21.0. Form conversion requires XLSForm Online ≥ v2.0.0 or pyxform ≥ v1.0.0. Using older versions will have unpredictable results.
+
+You can refer to values from the last saved record of this form definition:
+
+:tc:`${last-saved#question-name}`
+
+This can be very useful when an enumerator has to enter the same value for multiple consecutive records. An example of this would be entering in the same district for a series of households.
+
+.. rubric:: XLSForm that shows using a last-saved value as a dynamic default
+
+.. csv-table:: survey
+  :header: type, name, label, default
+
+  text, street, Street, ${last-saved#street}
+
+The value is pulled from the last saved record. This is often the most recently created record but it could also be a previously-existing record that was edited and saved.
+
 .. _form-logic-gotchas:
 
 Form logic gotchas
@@ -240,44 +264,71 @@ without answering the question.
 Setting default responses
 ===========================
 
-To provide a default response to a question,
-put the response value in the :th:`default` column.
+To provide a default response to a question, put a value in the :th:`default` column. Defaults are set when a record is first created from a form definition. Defaults can either be fixed values (:ref:`static defaults <static-defaults>`) or the result of some expression (:ref:`dynamic defaults <dynamic-defaults>`).
 
-Default values must be static values,
-not expressions or variables.
+.. _static-defaults:
 
-.. note::
+Static defaults
+----------------
 
-  The content of the :th:`default` row in a question
-  is taken literally as the default value.
-  Quotes should **not** be used to wrap string values,
-  unless you actually want those quote marks to appear
-  in the default response value.
+The text in the :th:`default` column for a question is taken literally as the default value. Quotes should **not** be used to wrap values, unless you actually want those quote marks to appear in the default response value.
 
-.. rubric:: XLSForm
+In the example below, the "Phone call" option with underlying value ``phone_call`` will be selected when the question is first displayed. The enumerator can either keep that selection or change it.
+
+.. rubric:: XLSForm to select "Phone call" as the default contact method
 
 .. csv-table:: survey
   :header: type, name, label, default
-  
+
   select_one contacts, contact_method, How should we contact you?, phone_call
-  
+
 .. csv-table:: choices
   :header: list_name, name, label
-  
+
   contacts, phone_call, Phone call
   contacts, text_message, Text message
   contacts, email, Email
-  
-.. tip:: 
-  :name: dynamic-defaults
 
-  You may want to use a previously entered value as a default,
-  but the :th:`default` column does not accept dynamic values.
+.. _dynamic-defaults:
+
+Dynamic defaults
+----------------
+
+.. warning::
   
-  To work around this, use the :th:`calculation` column instead,
-  and wrap your default value expression in a :func:`once` function.
+  Support for :ref:`dynamic defaults <dynamic-defaults>` was added in Collect v1.24.0. Form conversion requires XLSForm Online ≥ v2.0.0 or pyxform ≥ v1.0.0. Using older versions will have unpredictable results.
+
+If you put an expression in the :th:`default` column for a question, that expression will be evaluated once when a record is first created from a form definition. This allows you to use values from outside the form like the current date or the :ref:`server username <metadata>`. Dynamic defaults can't be used to set the default value of one field to the value of another field in the form. Learn about alternatives in :ref:`the tip below <defaults-from-form-data>`.
+
+.. rubric:: XLSForm to set the current date as default
+
+.. csv-table:: survey
+  :header: type, name, label, default
+
+  date, fever_onset, When did the fever start?, now()
+
+In the example below, if a username is set either in the :ref:`server configuration <server-settings>` or the :ref:`metadata settings <form-metadata-settings>`, that username will be used as the default for the question asked to the enumerator.
+
+.. rubric:: XLSForm to set the default username as the server username
+
+.. csv-table:: survey
+  :header: type, name, label, default
+
+  username, username
+  text, confirmed_username, What is your username?, ${username}
+
+If enumerators will need to enter the same value for multiple consecutive records, dynamic defaults can be combined with :ref:`last saved <last-saved>`.
+
+Dynamic defaults in repeats are evaluated when a new repeat instance is added.
+
+.. tip:: 
+  :name: defaults-from-form-data
+
+  You may want to use a value filled out by the enumerator as a default for another question that the enumerator will later fill in. Dynamic defaults can't be used for this because they are evaluated once when a record is first created which is before an enumerator fills in any data.
   
-  .. rubric:: XLSForm
+  One option is to use the :th:`calculation` column and wrap your default value expression in a :func:`once` function.
+  
+  .. rubric:: XLSForm that uses a child's current age as the default for diagnosis age
   
   .. csv-table:: survey
     :header: type, name, label, calculation
@@ -287,7 +338,7 @@ not expressions or variables.
     select_one gndr, gender, Gender,
     integer, malaria_age, Age at malaria diagnosis, once(${current_age}) 
     
-  This solution has some limitations, though.
+  This solution has some limitations:
   
   - The value of the calculated default
     will get set to the first value that the earlier question receives,
