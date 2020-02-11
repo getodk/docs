@@ -734,9 +734,9 @@ Pushing and Pulling Files
 .. note::
   You must have USB debugging enabled on your device in order to perform this step. See `these instructions <https://www.phonearena.com/news/How-to-enable-USB-debugging-on-Android_id53909>`_ for help.
 
-There are several times during app development where you will need to push and pull files to and from the phone. You will have to open one of the ODK tools on the device before these commands succeed.
+There are several times during app development where you will need to push and pull files to and from your device.
 
- - The :command:`push` command is used to push the entire app directory to the mobile device.
+ - The :command:`push` command is used to push the entire app directory to the device.
  - The :command:`pull` command is used to pull the database or exported CSVs from the device to the desktop computer.
 
 .. tip::
@@ -754,7 +754,7 @@ The pull commands will place the pulled content in the :file:`app/output/` direc
 
 The database is a :program:`SQLite` database and can be viewed using :program:`SQLite Browser`. This tool can also be used to view the content of the database used by :program:`Chrome` on your computer (the location of that file is OS dependent).
 
-If you pull the CSV files, they will be under the :file:`output/csv/` directory. You can then copy them to the :file:`config/assets/csv/` directory and set up the :file:`tables.init` file to read them in order to provision test data for your development effort. If you need any of this data in production, you will want to sync to a server then export the CSV files and copy them to the :file:`config/assets/csv/` directory so that they have all of their metadata field values populated.
+If you pull the CSV files, they will be under the :file:`output/csv/` directory. You can then copy them to the :file:`config/assets/csv/` directory and set up the :file:`tables.init` file to read them in order to provision test data for your development effort. If you need any of this data in production, you will want to sync to a server, then export the CSV files and copy them to the :file:`config/assets/csv/` directory so that they have all of their metadata field values populated.
 
 .. tip::
   Running :command:`grunt adbpull` will perform all the pull tasks.
