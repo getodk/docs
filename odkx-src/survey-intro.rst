@@ -13,24 +13,13 @@ ODK Survey
 
   ODK Survey cannot read or display the forms created for ODK Collect (that is, those created via ODK Build, XLSForm, or other form design tools). ODK Survey operates with ODK-X Data Management Applications*.
 
-.. _survey-intro-user-guide:
+.. _survey-intro-learn-more:
 
-User Guide
+Learn more about ODK Survey
 ---------------------------------
 
-.. toctree::
-  :maxdepth: 2
+- :doc:`survey-install`
+- :doc:`survey-sample-app`
+- :doc:`survey-using`
+- :doc:`survey-managing`
 
-  survey-install
-  survey-sample-app
-  survey-using
-
-.. _survey-intro-architect-guide:
-
-Deployment Architect Guide
----------------------------------
-
-.. toctree::
-  :maxdepth: 2
-
-  survey-managing

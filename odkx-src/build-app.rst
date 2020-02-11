@@ -16,11 +16,6 @@ Building an Application
 
 This will walk you through the steps of building a Data Management Application from scratch. The goal is to start with an empty folder and show you the necessary steps to create a working application that runs on your Android device.
 
-.. note::
-
-  This section covers topics useful to Deployment Architects. A Deployment Architect is an author of a data management application or a consumer of collected data. This person might create forms and edit Javascript on their computer to deploy to the Android device. Or they might download data from the server and use Excel to perform analysis. Examples include technical staff and data analytics staff.
-
-
 .. _build-app-prereqs:
 
 Prerequisites

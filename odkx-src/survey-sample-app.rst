@@ -1,4 +1,4 @@
-ODK Survey: Sample Application
+Sample ODK Survey Application
 ====================================
 
 .. _survey-sample-app:
