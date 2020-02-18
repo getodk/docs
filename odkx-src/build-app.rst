@@ -772,7 +772,7 @@ There are several issues that may occur while trying to push your survey onto yo
 - Check device to see if it has a message about authorizing the computer. If so, authorize the device.
 - Check device settings to ensure USB debugging is enabled and device is linked as a media device (not camera or other settings)
 - Make sure your app-designer only has the necessary working files. Any random files or older versions of your survey saved within app-designer will cause the push to fail.
-- Do not have any :program:`Excel` forms open on your computer. If you do, this will cause errors with $filename or ~$filename in the filepath when pushing.
+- Do not have any :program:`Excel` forms open on your computer. If you do, this will cause errors with $filename or ~$filename in the file path when pushing.
 - Check that your computer sees your device. In your command window type the command adb devices. It should show a device detected.
 - Check device to see if it has a message about authorizing the computer. If so, authorize the device.
 - Enter :command:`adb devices` in command line. Should show a *device detected*.
