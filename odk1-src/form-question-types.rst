@@ -2243,7 +2243,7 @@ Geolocation at survey start
   :ref:`Audit log geolocation tracking <audit-geolocation-tracking>`
 
 .. note::
-  Geolocation tracking was added in Collect v1.23. Form conversion requires XLSForm Online ≥ v1.6.1, XLSForm Offline ≥ v1.11.1 or pyxform ≥ v0.15.1.
+  Geolocation tracking was added in Collect v1.23 and Aggregate v2.0.4. Form conversion requires XLSForm Online ≥ v1.6.1, XLSForm Offline ≥ v1.11.1 or pyxform ≥ v0.15.1.
 
 The :tc:`start-geopoint` question type is used to capture a single geolocation in :ref:`geopoint format <location-widgets>` when the survey is first started. Questions of type :tc:`start-geopoint` may be given any allowable name. Although it is possible to have more than one :tc:`start-geopoint` question in a form, all will have the same value.
 
