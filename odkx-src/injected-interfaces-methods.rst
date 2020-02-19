@@ -1,18 +1,123 @@
+.. spelling::
+  odkCommon
+  js
+  registerListener
+  hasListener
+  getPlatformInfo
+  stringified
+  appName
+  baseUri
+  logLevel
+  getFileAsUrl
+  getRowFileAsUrl
+  relativePath
+  url
+  tableId
+  rowId
+  rowPathUri
+  rowpath
+  uriFragment
+  isString
+  lookupToken
+  stringToken
+  localizable
+  extractLangOnlyLocale
+  getPreferredLocale
+  getLocaleDetails
+  usingDeviceLocale
+  preferredLocale
+  isoLanguage
+  displayLanguage
+  hasLocalization
+  nToken
+  hasFieldLocalization
+  fieldName
+  hasTextLocalization
+  localizeText
+  hasImageLocalization
+  hasAudioLocalization
+  hasVideoLocalization
+  localizeUrl
+  formPath
+  toDateFromOdkTimeStamp
+  dateTime
+  iso
+  nano
+  toDateFromOdkTime
+  refJsDate
+  toDateFromOdkTimeInterval
+  timeInterval
+  padWithLeadingZeros
+  padWithLeadingSpaces
+  toOdkTimeStampFromDate
+  jsDate
+  toOdkTimeFromDate
+  toOdkTimeIntervalFromDate
+  loggingString
+  getActiveUser
+  getProperty
+  propertyId
+  getBaseUrl
+  setSessionVariable
+  elementPath
+  jsonValue
+  getSessionVariable
+  genUUID
+  constructSurveyUri
+  screenPath
+  elementKeyToValueMap
+  doAction
+  dispatchStruct
+  webkit
+  MediaCaptureImageActivity
+  intentObject
+  setData
+  setPackage
+  setType
+  setAction
+  addCategory
+  componentPackage
+  componentActivity
+  setComponent
+  getProperty
+  appName
+  dispatchStruct
+  viewFirstQueuedAction
+  removeFirstQueuedAction
+  closeWindow
+  resultCode
+  keyValueBundle
+  viewFirstQueuedAction
+  refAction
+  jsonValue
+  urlhash
+  uri
+  opendatakit
+  Url
+  resultCodeOfAction
+  newJsDate
+  formId
+  instanceId
+  isoCountry
+  displayCountry
+  localizeTokenField
+  setResult
+
 List of Available Methods in odkCommon.js
 ===========================
 
 Here you will find a list of all available methods for you to use that can be found in :file:`system/js/odkCommon.js`.
 
-We also provide access to this array of field names: i18nFieldNames: [ 'text', 'image', 'audio', 'video' ]
+We also provide access to this array of field names: in FieldNames: [ 'text', 'image', 'audio', 'video' ]
 
 .. contents:: :local:
 
-reigsterListener
+registerListener
 -----------------------
 
   **Parameters**:
     
-  - listener: A listener that will be invoked when an action is available. i.e., the Java code can direct a change in 
+  - listener: A listener that will be invoked when an action is available. For example, the Java code can direct a change in 
     the JS code without it being initiated by the JS side.
   
 Should be invoked once after registration and after all initialization is complete to ensure that any queued action is processed. 
@@ -47,7 +152,7 @@ getRowFileAsUrl
   
   **Returns**: URL that media attachment can be accessed by.
   
-Convert the rowpath value for a media attachment (e.g. uriFragment) field into a url by which it can be accessed.
+Convert the rowpath value for a media attachment (For example, uriFragment) field into a url by which it can be accessed.
 
 isString
 -----------------------
@@ -103,7 +208,7 @@ hasLocalization
   **Returns**: True if there is some type of localization for the given i18nToken and locale OR
   if there is a 'default' localization value. 
 
-The localization might be any of: a text, image, audio, or video element (i.e., the field name that can be localized is not specified).
+The localization might be any of: a text, image, audio, or video element (For example, the field name that can be localized is not specified).
 
 hasFieldLocalization
 -----------------------
@@ -200,12 +305,12 @@ toDateFromOdkTimeStamp
   - timestamp: The ODK Timestamp string 
     used to represent dateTime and date values. It is an iso8601-style UTC date
     extended to nanosecond precision: yyyy-mm-ddTHH:MM:SS.sssssssss. This value is assumed 
-    to be UTC and the value is assumed to be in the AD calendar (no BC dates please!).
+    to be UTC and the value is assumed to be in the AD calendar (no BC dates please).
     'date' types use T00:00:00.000000000 for the time portion of the timestamp.
   
-  **Returns**: A Javascript Date() object.
+  **Returns**: A JavaScript Date() object.
 
-Convert an ODK Timestamp string to a Javascript Date() object. 
+Convert an ODK Timestamp string to a JavaScript Date() object. 
 
 NOTE: This method discards the nano fields.
 
@@ -217,13 +322,13 @@ toDateFromOdkTime
   - refJsDate: A Date() object.
   - time: Time to start at. 00-24hr nanosecond-extended iso8601-style representation: HH:MM:SS.sssssssss. 
   
-  **Returns**: A Javascript Date() object.
+  **Returns**: A JavaScript Date() object.
 
 A conversion that retrieves the LOCAL TIME ZONE year, month, day from 'refJsDate', then CONSTRUCTS A NEW DATE OBJECT beginning 
-with that LOCAL TIME ZONE year, month, day and applying the time to that object and 
+with that LOCAL TIME ZONE year, month, day, and applying the time to that object and 
 returns the adjusted Date() object. The time is added to the zero hour, so that changes 
 in daylight savings and standard time do not affect the calculations (HH can reach 
-24 hr during "fall back" days).
+24 hr during fall back days).
 
 NOTE: This method discards the nano fields.
 
@@ -237,7 +342,7 @@ toDateFromOdkTimeInterval
     HHHHHHHH:MM:SS.sssssssss OR HHHHHHHH:MM:SS.sssssssss-. The negative sign, if present, 
     is at the far right end.
   
-  **Returns**: A Javascript Date() object.
+  **Returns**: A JavaScript Date() object.
 
 A conversion that retrieves the LOCAL TIME ZONE year, month, day from 'refJsDate', then CONSTRUCTS A NEW DATE 
 OBJECT beginning with that UTC date and applying the +/- time interval to that object 
@@ -245,7 +350,7 @@ and returns the adjusted Date() object.
 
 If the 'refJsDate' and 00:00:00.0000 for the 
 time portion, if a timeInterval is positive, this produces a Date() with the time-of-day 
-of the time interval.  I.e., this works correctly for the 'time' data type. 
+of the time interval. For example, this works correctly for the 'time' data type. 
 
 The padded 
 precision of the hour allows representation of the full 9999 year AD calendar range 
@@ -276,7 +381,7 @@ padWithLeadingSpaces
   
   **Returns**: A string after padding the indicated integer value with leading spaces so that 
   the string representation ends up with at least 'places' number of characters (more if 
-  the value has more significant digits than that). Note the treatment of negative values!
+  the value has more significant digits than that). Note the treatment of negative values
  
 Examples: padWithLeadingSpaces(0, 4) => '   0'. padWithLeadingSpaces(45, 4) => '  45'.
 padWithLeadingSpaces(-45, 4) => '-  45'.
@@ -286,20 +391,20 @@ toOdkTimeStampFromDate
 
   **Parameters**:
     
-  - jsDate: Javascript Date. This value is assumed to be UTC and the value is assumed to be in 
-    the AD calendar (no BC dates please!). 
+  - jsDate: JavaScript Date. This value is assumed to be UTC and the value is assumed to be in 
+    the AD calendar (no BC dates please). 
   
   **Returns**: ODK Timestamp.
 
-Converts a Javascript Date to an ODK Timestamp. See toDateFromOdkTimeStamp() for the 
-format of a timestamp. This zero-fills to extend the accuracy of the Javascript Date 
+Converts a JavaScript Date to an ODK Timestamp. See toDateFromOdkTimeStamp() for the 
+format of a timestamp. This zero-fills to extend the accuracy of the JavaScript Date 
 object to nanosecond accuracy. 
 
-The UTC values of the supplied Javascript dateTime
+The UTC values of the supplied JavaScript dateTime
 object are used. 
  
 Values destined for 'date' types should set 
-the UTC time to all-zeros for the time portion of the timestamp.  Or adjust this 
+the UTC time to all-zeros for the time portion of the timestamp. Or adjust this 
 after-the-fact in their own code.
 
 toOdkTimeFromDate
@@ -307,31 +412,31 @@ toOdkTimeFromDate
 
   **Parameters**:
     
-  - jsDate: Javascript Date. Times are padded with leading zeros 
+  - jsDate: JavaScript Date. Times are padded with leading zeros 
     and are 00-23hr form: HH:MM:SS.sssssssss. 
   
-  **Returns**: The LOCAL TIME of a Javascript Date object. 
+  **Returns**: The LOCAL TIME of a JavaScript Date object. 
  
 Time is extracted as the millisecond offset from 
 the start of the local day, and then converted to a string representation. This ensures 
 that changes in daylight savings time / standard time are properly handled and can result 
-in HH being 24 during "fall back" days.
+in HH being 24 during fall back days.
 
 toOdkTimeIntervalFromDate
 -----------------------
 
   **Parameters**:
     
-  - refJsDate: Javascript Date. Time intervals are padded with leading zeros and are of the form: 
-    HHHHHHHH:MM:SS.sssssssss OR HHHHHHHH:MM:SS.sssssssss-. i.e., the negative sign, if present, 
+  - refJsDate: JavaScript Date. Time intervals are padded with leading zeros and are of the form: 
+    HHHHHHHH:MM:SS.sssssssss OR HHHHHHHH:MM:SS.sssssssss-. For example, the negative sign, if present, 
     is at the far right end. 
-  - newJsDate: Javascript Date. Time intervals are padded with leading zeros and are of the form: 
-    HHHHHHHH:MM:SS.sssssssss OR HHHHHHHH:MM:SS.sssssssss-. i.e., the negative sign, if present, 
+  - newJsDate: JavaScript Date. Time intervals are padded with leading zeros and are of the form: 
+    HHHHHHHH:MM:SS.sssssssss OR HHHHHHHH:MM:SS.sssssssss-. For example, the negative sign, if present, 
     is at the far right end. 
   
   **Returns**: A ODKTimeInterval that represents (newJsDate - refJsDate).
   
-Calculates the interval of time between two Javascript Date objects and returns an 
+Calculates the interval of time between two JavaScript Date objects and returns an 
 OdkTimeInterval. 
  
 The padded 
@@ -347,7 +452,7 @@ log
   - loggingString: String to log.
   - detail: Detail to add to log.
   
-Log messages using WebLogger.  Given loggingString will 
+Log messages using WebLogger. Given loggingString will 
 be logged with given detail added.
 
 getActiveUser
@@ -375,7 +480,7 @@ setSessionVariable
   - elementPath
   - jsonValue
 
-Store a persistent key-value. This lasts for the duration of this screen and is retained
+Store a persistent key-value. This lasts throughout the duration of this screen and is retained
 under screen rotations. Useful if browser cookies don't work.
 
 getSessionVariable
@@ -387,7 +492,7 @@ getSessionVariable
   
   **Returns**: A persistent key-value.
   
-Retrieve a persistent key-value. This lasts for the duration of this screen and is retained
+Retrieve a persistent key-value. This lasts throughout the duration of this screen and is retained
 under screen rotations. Useful if browser cookies don't work.
 
 genUUID
@@ -417,10 +522,10 @@ doAction
   **Parameters**: 
   
   - dispatchStruct: Can be anything -- holds reconstructive state for JS If this is null, 
-    then the Javascript layer is not notified of the result of this action. It just 
+    then the JavaScript layer is not notified of the result of this action. It 
     transparently happens and the webkit might reload as a result of the activity
     swapping out.
-  - action: The intent. e.g., org.opendatakit.survey.activities.MediaCaptureImageActivity
+  - action: The intent. For example, org.opendatakit.survey.activities.MediaCaptureImageActivity
   - intentObject: An object with the following structure:
   
     + "uri" : intent.setData(value)
@@ -446,11 +551,11 @@ doAction
 Execute an action (intent call).
 
 If the request has been issued, and the dispatchStruct is not null then
-the javascript will be notified of the availability of a result via the
-registerListener callback. That callback should fetch the the results via
-odkCommon.viewFirstQueuedAction().
+the JavaScript will be notified of the availability of a result via the
+registerListener callback. That callback should fetch the results via
+``odkCommon.viewFirstQueuedAction()``.
 And they are removed from the queue via
-odkCommon.removeFirstQueuedAction();
+``odkCommon.removeFirstQueuedAction();``
 
 closeWindow
 -----------------------
@@ -491,7 +596,7 @@ viewFirstQueuedAction
       - result: JSON representation of Extras bundle from result intent
   - or, a string value beginning with #:
 
-    + "#urlhash"   (if the Java code wants the Javascript to take some action without a reload)
+    + "#urlhash"   (if the Java code wants the JavaScript to take some action without a reload)
 
 removeFirstQueuedAction
 -----------------------
