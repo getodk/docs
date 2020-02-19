@@ -162,7 +162,9 @@ This can be very useful when an enumerator has to enter the same value for multi
 
   text, street, Street, ${last-saved#street}
 
-The value is pulled from the last saved record. This is often the most recently created record but it could also be a previously-existing record that was edited and saved.
+The value is pulled from the last saved record. This is often the most recently created record but it could also be a previously-existing record that was edited and saved. For the first record ever saved for a form definition, the last saved value for any field will be blank.
+
+Questions of any type can have their defaults set based on the last saved record. References to the last saved record can be used as part of any expression wherever expressions are allowed.
 
 .. _form-logic-gotchas:
 
