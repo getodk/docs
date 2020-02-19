@@ -25,15 +25,13 @@ The major goals of the ODK Application Designer are:
   #. Simplify the conversion of the XLSX file into a form definition by providing a drag-and-drop conversion app running locally on your desktop.
   #. Enable the creation of mark-sense forms (ODK Scan Form Designer) that can be scanned by your Android device for data input. The resulting data is available to the other ODK-X tools without need to communicate with a remote server.
 
-.. _app-designer-intro-architect-guide:
+.. _app-designer-intro-learn-more:
 
-Deployment Architect Guide
+Learn more about ODK Application Designer
 -----------------------------------------------------
-.. toctree::
-  :maxdepth: 2
 
-  app-designer-setup
-  app-designer-using
-  xlsx-converter-intro
-  scan-form-designer-intro
+- :doc:`app-designer-setup`
+- :doc:`app-designer-using`
+- :doc:`xlsx-converter-intro`
+- :doc:`scan-form-designer-intro`
 

@@ -5,6 +5,10 @@ Upgrading Central
 
 We release new versions of Central regularly. You do not have to upgrade to the latest version immediately, but we generally recommend that you do so to get access to the newest features, bug fixes, and security updates.
 
+.. admonition:: Note
+
+  You can check your current version by adding ``version.txt`` to the URL. For example `https://sandbox.central.opendatakit.org/version.txt <https://sandbox.central.opendatakit.org/version.txt>`_.
+
 To perform an upgrade, you'll first need to get to the software. You'll need to log into your server's command line prompt again, like you did when you first set up the server. If you used our :doc:`DigitalOcean installation steps <central-install-digital-ocean>` but can't quite remember how to do this, we suggest reviewing the section :ref:`central-install-digital-ocean-build` as a reminder, or if you can't remember your password to start at the top of that section to reset your password.
 
 Once you are logged into your server, navigate back to the project folder (``cd central``). Then, get the latest version of the infrastructure: ``git pull``.

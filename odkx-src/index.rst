@@ -105,21 +105,75 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
 .. toctree::
   :maxdepth: 2
   :hidden:
-  :caption: Mobile Tools
+  :caption: Survey
 
   survey-intro
-  tables-intro
-  services-intro
-  scan-intro
+  survey-install
+  survey-sample-app
+  survey-using
+  survey-managing
 
 .. toctree::
   :maxdepth: 2
   :hidden:
-  :caption: Desktop and Server Tools
+  :caption: Tables
+  
+  tables-intro
+  tables-install
+  tables-sample-app
+  tables-using
+  tables-managing
+  tables-internals
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Services
+  
+  services-intro
+  services-install
+  services-using
+  services-managing
+  services-internals
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Scan
+  
+  scan-intro
+  scan-install
+  scan-using
+  scan-managing
+  scan-data
+  
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Application Designer
 
   app-designer-intro
+  app-designer-setup
+  app-designer-using
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Cloud Endpoints
+
   cloud-endpoints-intro
+  sync-endpoint
+  sync-endpoint-setup
+  aggregate-tables-extension
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Suitcase
+
   suitcase-intro
+  suitcase-install
+  suitcase-using
 
 .. toctree::
   :maxdepth: 2

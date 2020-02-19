@@ -50,7 +50,7 @@ To enable or disable the use of the custom home screen, follow the instructions 
 Table Manager
 ------------------
 
-The *Table Manager* allows you to modify table settings, delete tables, and import or export data into your tables. See the :ref:`Deployment Architect instructions <tables-managing-table-manager>` for details.
+The *Table Manager* allows you to modify table settings, delete tables, and import or export data into your tables. See the :ref:`Table Manager instructions <tables-managing-table-manager>` for details.
 
 .. _tables-using-view-data:
 
@@ -64,7 +64,7 @@ Tables supports viewing collected data in a variety of formats. Survey allows yo
 View Types
 ~~~~~~~~~~~~~~~~~
 
-Tables offers a number of view options for presenting data. These will have been configured by your organizations Deployment Architect and you may not always have a choice in how you view your data. These view types are:
+Tables offers a number of view options for presenting data. The person at your organization who built this ODK Tables application will have already configured these options, so you may not always have a choice in how you view your data. These view types are:
 
   - :ref:`Spreadsheet View <tables-using-view-data-spreadsheet>`
   - :ref:`List View <tables-using-view-data-list>`
@@ -77,7 +77,7 @@ Tables offers a number of view options for presenting data. These will have been
 
 .. warning::
 
-  Many of the view types in Tables are customizable by a Deployment Architect. This guide will provide some basic outlines of how to use these view types, but for more accurate instructions you may need to contact your organization's Deployment Architect.
+  Many of the view types in Tables are customizable. This guide will provide some basic outlines of how to use these view types. However, for more accurate instructions you may need to contact the person who built or manages your organization’s ODK Tables application. 
 
 
 .. _tables-using-view-data-spreadsheet:
@@ -239,7 +239,7 @@ Custom View
 Changing View Types: The Lined Paper Button
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The view types that represent multiple records (:ref:`tables-using-view-data-spreadsheet`, :ref:`tables-using-view-data-list`, :ref:`tables-using-view-data-map`, :ref:`tables-using-view-data-navigate`) can be alternately chosen, depending on what the Deployment Architect has configured in the table's settings.
+The view types that represent multiple records (:ref:`tables-using-view-data-spreadsheet`, :ref:`tables-using-view-data-list`, :ref:`tables-using-view-data-map`, :ref:`tables-using-view-data-navigate`) can be alternately chosen, depending on what was configured in the table's settings.
 
 To change to another view type, tap the lined paper icon from the upper right:
 

@@ -7,24 +7,15 @@ ODK Services
 
 It also allows you to sync data collected by the ODK-X tools with an ODK Cloud Endpoint. The Services application can be used to reset the Cloud Endpoint with the data that is on a tablet or to sync the data on the tablet with what is currently on the Cloud Endpoint.
 
-.. _services-intro-user-guide:
+.. _services-intro-learn-more:
 
-User Guide
+Learn more about ODK Services
 -----------------------------
 
-.. toctree::
-  :maxdepth: 2
+- :doc:`services-install`
+- :doc:`services-using`
+- :doc:`services-managing`
+- :doc:`services-internals`
 
-  services-install
-  services-using
-
-.. _services-intro-architect-guide:
-
-Deployment Architect Guide
-----------------------------------
-
-.. toctree::
-  :maxdepth: 2
-
-  services-managing
-  services-internals
+  
+  

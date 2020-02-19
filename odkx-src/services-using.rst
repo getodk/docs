@@ -7,7 +7,7 @@ Using ODK Services
 
 Initial Server Configuration
 -----------------------------------
-Before you are able to synchronize your data or application files, you will need to configure your server settings. Instructions are provided in the :ref:`deployment architect guide <services-managing-server-config>`.
+Before you are able to synchronize your data or application files, you will need to configure your server settings. Instructions are provided in the :ref:`Server Configuration guide <services-managing-server-config>`.
 
 .. _services-using-change-user:
 
@@ -39,7 +39,7 @@ Within this page you can enter a new :guilabel:`username` and :guilabel:`passwor
 
 .. note::
 
-  To authenticate a new user, you must have a network connection and have the Server URL set appropriately. See the :ref:`deployment architect guide <services-managing-server-config>` for instructions on how to set this.
+  To authenticate a new user, you must have a network connection and have the Server URL set appropriately. See the :ref:`Server Configuration guide <services-managing-server-config>` for instructions on how to set this.
 
 If you want to log out of your current user without logging into a new user, click the :guilabel:`Log Out` button. This does not require a network connection.
 
@@ -48,7 +48,7 @@ If you want to log out of your current user without logging into a new user, cli
 Syncing
 ---------------
 
-Use this option to submit your data and download the latest updates from the server. When this process is finished, the data on your device and the server will match. You will also receive any updates to your application that your Deployment Architect might have made.
+Use this option to submit your data and download the latest updates from the server. When this process is finished, the data on your device and the server will match. You will also receive any updates to your application that those at your organization managing the application might have made.
 
 There are two ways to launch the Sync screen.
 

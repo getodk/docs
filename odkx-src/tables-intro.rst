@@ -16,23 +16,10 @@ We have included a sample application built on top of Tables along with a handfu
 
 .. _tables-intro-user-guide:
 
-User Guide
--------------------------------
-
-.. toctree::
-  :maxdepth: 2
-
-  tables-install
-  tables-sample-app
-  tables-using
-
-.. _tables-intro-architect-guide:
-
-Deployment Architect Guide
--------------------------------
-
-.. toctree::
-  :maxdepth: 2
-
-  tables-managing
-  tables-internals
+Learn more about ODK Aggregate
+--------------------------------
+- :doc:`tables-install`
+- :doc:`tables-sample-app`
+- :doc:`tables-using`
+- :doc:`tables-managing`
+- :doc:`tables-internals`

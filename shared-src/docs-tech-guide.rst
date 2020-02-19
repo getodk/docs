@@ -187,6 +187,7 @@ Before you begin working the first time
 you will need to install a few tools
 on your computer.
 
+
 You should only need to do this one time
 on any computer.
 
@@ -228,7 +229,13 @@ on any computer.
          If you decide to use the Linux subsystem,
          follow the **Bash** or **Windows** instructions
          throughout the contributor guide.
+		
+	  .. note::
 
+		 Computers with the Windows 10 Home operating system are incapable of 
+		 installing some of the tools necessary to edit the docs. Other Windows
+		 operating systems, such as Windows 10 Enterprise or Pro, can be used
+		 to edit the docs. 
 
       .. group-tab:: Mac
 
@@ -871,7 +878,7 @@ on any computer.
    - `Atom <https://atom.io/>`_
    - `Sublime <https://www.sublimetext.com/>`_
    - `VS Code <https://code.visualstudio.com/>`_
-   - `Notebook++ <https://notepad-plus-plus.org/>`_ (Windows only)
+   - `Notepad++ <https://notepad-plus-plus.org/>`_ (Windows only)
 
    Most of these have plugins that will make writing reStructuredText easier
    by color-coding the markup.
@@ -1071,9 +1078,9 @@ Working on the docs
    The source files for documentation text are in these directories:
 
    :file:`odk1-src`
-      Files for the pages at https://docs.opendatakit.com
+      Files for the pages at https://docs.opendatakit.org
    :file:`odkx-src`
-      Files for the pages at https://docs.opendatakit.com/odk-x
+      Files for the pages at https://docs.opendatakit.org/odk-x
    :file:`shared-src`
       Files for pages shared by both ODK1 and ODK-X docs.
       (This page and the other contributor guide pages.)

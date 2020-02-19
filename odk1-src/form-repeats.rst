@@ -9,6 +9,82 @@
 Repeat Recipes and Tips
 ========================
 
+.. seealso::
+    :ref:`repeats` describes repeat basics.
+
+.. contents:: :depth: 2
+ :local:
+
+.. _referencing-answers-in-repeats:
+
+Referencing repeated questions from inside the repeat
+-----------------------------------------------------
+
+Within a repeat, you can reference other questions **in that same repeat instance** :ref:`in the usual manner <variables>`.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label
+
+  note, child_questions_note, Please provide the following details about each child in your household.
+  begin_repeat, child_details, Children in household
+  text, child_first_name, Name
+  text, child_age, Age of ${child_first_name}
+  end_repeat
+
+To reference a question from a different repeat instance, or from outside the repeat, use :func:`indexed-repeat` and :func:`position`.
+ 
+.. _referencing-responses-from-outside-repeat-loop:
+  
+Referencing repeated questions from outside the repeat
+-------------------------------------------------------
+
+A question in a repeat can be referenced from outside the repeat with :tc:`indexed-repeat(${question-name}, ${repeat-name}, index)`.
+
+.. _counting-repeats-and-answers:
+
+Counting repeats and answers
+------------------------------
+
+.. _counting-iterations:
+
+Counting the total number of repeat instances
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use `count(${name-of-repeat})` to get the number of repeat instances.
+
+.. _counting-answers:
+
+Counting the number of times a particular answer was given
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To count the number of times
+a specific response is given,
+add a calculate field inside the repeat
+which evaluates to ``1`` or ``0`` depending on the answer.
+Then, outside the repeat,
+calculate the :tc:`sum()` of the calculate field.
+
+.. include::  incl/form-examples/sum-to-count-responses.rst
+
+.. _using-parallel-repeat-groups:
+
+Using additional repeats to follow up on repeated questions
+-----------------------------------------------------------
+
+Sometimes it is convenient to gather an initial set of responses,
+and then ask more detailed question after you have collected the whole set.
+
+For example:
+
+ - collecting the names of all the people in a household, and then asking questions about each person
+ - collecting the names of each type of crop being grown, and then asking questions about each crop
+
+This can be done by using `count()` and `position(..)`. `count()` is used to guarantee that the second repeat has the same number of instances as the original repeat. `position(..)` provides the index of the repeat instance it was called from. This is used to refer to questions from the first repeat in the follow-up repeat.
+
+.. include:: incl/form-examples/parallel-repeats.rst
+
 .. _setting-max-repeats:
 
 Setting a max limit on repetitions
@@ -101,92 +177,3 @@ to enforce a minimum number of responses.
   image, image_3, Image 3, yes,
   image, image_4, Image 4, ,${image_3}
   image, image_5, Image 5, ,${image_4}
-
-.. _referencing-answers-in-repeats:
-  
-Referencing answers from repeated questions
---------------------------------------------
-
-Within a repeat group iteration,
-you can reference previous answers **in that same iteration**
-:ref:`in the usual manner <variables>`.
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label
-  
-  note, child_questions_note, Please provide the following details about each child in your household.
-  begin_repeat, child_details, Children in household
-  text, child_first_name, Name
-  text, child_age, Age of ${child_first_name}
-  end_repeat
-  
-To reference a response from a later iteration,
-or from outside the loop,
-use :func:`indexed-repeat` and :func:`position`.
-  
-
-
-.. _referencing-responses-from-outside-repeat-loop:
-  
-Referencing responses from outside the repeat loop
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The response to a question from
-any iteration of a repeat group can be referenced
-from outside the repeat group with
-:tc:`indexed-repeat(${question-name}, ${group-name}, index`.
-
-.. _using-parallel-repeat-groups:
-
-Using additional repeat groups to iterate through responses
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Sometimes it is convenient to gather an initial set of responses,
-and then ask more detailed question after you have collected the whole set.
-
-For example:
-
- - collecting the names of all the people in a household, and then asking questions about each person
- - collecting the names of each type of crop being grown, and then asking questions about each crop
- 
-This can be done by using `count()` and `position(..)` 
-to iterate through a repeat group 
-in a second repeat group.
-
-.. include:: incl/form-examples/parallel-repeat-groups.rst
-
-.. _counting-repeats-and-answers:
-
-Counting repeats and answers
-------------------------------
-
-.. _counting-iterations:
-
-Counting the total number of iterations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If there is a required response in the repeat group,
-use `count(${required-question-name})` to get the number of responses,
-which will be the same as the number of iterations.
-
-If you don't have at least one required field,
-use the `max()` function and refer to a calculate row
-with the calculation `position(..)`. 
-This will return the highest index,
-which is also the total number of iterations.
-
-.. _counting-answers:
-
-Counting the number of times a particular answer was given
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To count the number of times
-a specific response is given,
-add a calculate field inside the loop
-which evaluates to ``1`` or ``0`` depending on the answer.
-Then, outside the loop,
-calculate the :tc:`sum()` of the calculate field.
-
-.. include::  incl/form-examples/sum-to-count-responses.rst

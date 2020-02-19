@@ -1,9 +1,7 @@
-Getting Started Deployment Architect Guide
+Getting Started Building an Application
 ==========================================================
 
-.. _architect-odk-2:
-
-This guide is intended for Deployment Architects. A Deployment Architect is an author of a data management application or a consumer of collected data. This person might create forms and edit Javascript on their computer to deploy to the Android device. Or they might download data from the server and use Excel to perform analysis. Examples include technical staff and data analytics staff.
+Now that we have seen how a device can join an already-configured application, and synchronize its view of the data with the ODK Aggregate server hosting the application, it is time to set up our own ODK-X application.
 
 .. contents:: :local:
 
@@ -11,14 +9,9 @@ This guide is intended for Deployment Architects. A Deployment Architect is an a
 
 Prerequisites
 ------------------
-This guide continues the tour were :doc:`getting-started-2-user` left off. If you haven't yet completed that tour, do it first. When you have concluded the tour of the *Geotagger* example application's screens, return to this guide and we will turn to setting up our own application and server.
+This guide continues the tour where :doc:`getting-started-2-user` left off. If you haven't yet completed that tour, do it first. When you have concluded the tour of the *Geotagger* example application's screens, return to this guide and we will turn to setting up our own application and server.
 
 .. _architect-odk-2-setting-up:
-
-Setting-up an ODK-X application
-------------------------------------------------
-
-Now that we have seen how a device can join an already-configured application, and synchronize its view of the data with the ODK Aggregate server hosting the application, it is time to set up our own ODK-X application.
 
 Configuring your Device with an Application
 -----------------------------------------------
@@ -323,7 +316,7 @@ A more complete guide to using ODK XLSX Converter is provided in the :doc:`xlsx-
 
 For examples of real world applications and details about they are implemented, try out the: :doc:`reference-apps`.
 
-We also provide guides geared towards Deployment Architects for each of the Android and Desktop tools.
+We also provide guides for setting up your own ODK-X application for each of the Android and Desktop tools.
 
   - :doc:`survey-managing`
   - :doc:`tables-managing`
