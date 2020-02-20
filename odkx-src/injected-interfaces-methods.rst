@@ -117,7 +117,7 @@ registerListener
 
   **Parameters**:
     
-  - listener: A listener that will be invoked when an action is available. For example, the Java code can direct a change in the JS code without it being initiated by the JS side.
+listener: A listener that will be invoked when an action is available. For example, the Java code can direct a change in the JS code without it being initiated by the JS side.
   
 Should be invoked once after registration and after all initialization is complete to ensure that any queued action is processed. 
 
@@ -332,7 +332,7 @@ in daylight savings and standard time do not affect the calculations (HH can rea
 NOTE: This method discards the nano fields.
 
 toDateFromOdkTimeInterval
------------------------
+------------------------------
 
   **Parameters**:
     
@@ -386,7 +386,7 @@ Examples: padWithLeadingSpaces(0, 4) => '   0'. padWithLeadingSpaces(45, 4) => '
 padWithLeadingSpaces(-45, 4) => '-  45'.
 
 toOdkTimeStampFromDate
------------------------
+--------------------------
 
   **Parameters**:
     
@@ -422,7 +422,7 @@ that changes in daylight savings time / standard time are properly handled and c
 in HH being 24 during fall back days.
 
 toOdkTimeIntervalFromDate
------------------------
+---------------------------
 
   **Parameters**:
     
@@ -580,7 +580,7 @@ This will log errors but any errors will cause a RESULT_CANCELLED exit.
 See the logs for what the error was.
 
 viewFirstQueuedAction
------------------------
+-------------------------
   
   **Returns**: The oldest queued action outcome or Url change or null if there are none.
   The action remains queued until removeFirstQueuedAction is called.
@@ -598,7 +598,7 @@ viewFirstQueuedAction
     + "#urlhash"   (if the Java code wants the JavaScript to take some action without a reload)
 
 removeFirstQueuedAction
------------------------
+--------------------------
 
 Removes the first queued action.
 
