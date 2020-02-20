@@ -184,6 +184,7 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
   xlsx-converter-intro
   tables-web-pages
   injected-interfaces
+  injected-interfaces-methods
   scan-form-designer-intro
   reference-apps
 
