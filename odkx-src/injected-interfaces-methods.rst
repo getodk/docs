@@ -117,7 +117,7 @@ registerListener
 
   **Parameters**:
     
-  - listener: A listener that will be invoked when an action is available. For example, the Java code can direct a change in the JS code without it being initiated by the JS side.
+listener: A listener that will be invoked when an action is available. For example, the Java code can direct a change in the JS code without it being initiated by the JS side.
   
 Should be invoked once after registration and after all initialization is complete to ensure that any queued action is processed. 
 
