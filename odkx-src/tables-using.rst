@@ -1,4 +1,4 @@
-Using ODK Tables
+Using ODK-X Tables
 ===================
 
 .. _tables-using:
@@ -64,7 +64,7 @@ Tables supports viewing collected data in a variety of formats. Survey allows yo
 View Types
 ~~~~~~~~~~~~~~~~~
 
-Tables offers a number of view options for presenting data. The person at your organization who built this ODK Tables application will have already configured these options, so you may not always have a choice in how you view your data. These view types are:
+Tables offers a number of view options for presenting data. The person at your organization who built this ODK-X Tables application will have already configured these options, so you may not always have a choice in how you view your data. These view types are:
 
   - :ref:`Spreadsheet View <tables-using-view-data-spreadsheet>`
   - :ref:`List View <tables-using-view-data-list>`
@@ -77,7 +77,7 @@ Tables offers a number of view options for presenting data. The person at your o
 
 .. warning::
 
-  Many of the view types in Tables are customizable. This guide will provide some basic outlines of how to use these view types. However, for more accurate instructions you may need to contact the person who built or manages your organization’s ODK Tables application. 
+  Many of the view types in Tables are customizable. This guide will provide some basic outlines of how to use these view types. However, for more accurate instructions you may need to contact the person who built or manages your organization’s ODK-X Tables application. 
 
 
 .. _tables-using-view-data-spreadsheet:
@@ -340,7 +340,7 @@ For more information on how to edit data with these custom views, see :ref:`tabl
 Syncing Data
 --------------------------
 
-See the instructions in the :ref:`ODK Services user guide <services-using-sync>`.
+See the instructions in the :ref:`ODK-X Services user guide <services-using-sync>`.
 
 .. warning::
 

@@ -90,7 +90,7 @@ Health Facility Menu
 Function
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The Health Facility Menu is a *Detail View* that lists all the information about the chosen health facility. This includes :guilabel:`Basic Facility Information`, :guilabel:`Power Information`, :guilabel:`Location Information`, and :guilabel:`Stock Information`. If any of this information is out of date or needs to be modified, the :guilabel:`Edit Health Facility` button launches an ODK Survey form that allows you to modify these values:
+The Health Facility Menu is a *Detail View* that lists all the information about the chosen health facility. This includes :guilabel:`Basic Facility Information`, :guilabel:`Power Information`, :guilabel:`Location Information`, and :guilabel:`Stock Information`. If any of this information is out of date or needs to be modified, the :guilabel:`Edit Health Facility` button launches an ODK-X Survey form that allows you to modify these values:
 
   .. image:: /img/cold-chain-tour/cold-chain-health-facility-edit-facility.*
     :alt: Selecting a Region

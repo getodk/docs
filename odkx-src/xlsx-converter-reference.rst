@@ -18,7 +18,7 @@
   detailViewFileName
 
 
-ODK XLSX Converter Reference
+ODK-X XLSX Converter Reference
 ================================
 
 .. contents:: :local:
@@ -257,7 +257,7 @@ A list of the optional columns that can be incorporated into a **survey** worksh
   * - display.title
     - | A string token identifying the translation entry that can
       | define the text to display for this prompt in the contents
-      | screen and as the column name in ODK Tables.
+      | screen and as the column name in ODK-X Tables.
       |
       | Alternatively, this column can be omitted and this information
       | can be specified directly via the :th:`display.title.text` column.
@@ -299,7 +299,7 @@ A list of the optional columns that can be incorporated into a **survey** worksh
 Prompt Types
 """""""""""""""""""""""""""""
 
-The following prompt types are available in ODK Survey.
+The following prompt types are available in ODK-X Survey.
 
 .. list-table:: Survey Prompt Types
   :header-rows: 1
@@ -422,7 +422,7 @@ Available :th:`setting_name` values that can be used:
   * - form_id
     - | Optional
     - | A unique identifier for the form. Default value is
-      | the unique id that ODK Survey uses to identify the
+      | the unique id that ODK-X Survey uses to identify the
       | form.
   * - form_version
     - | Optional
@@ -589,7 +589,7 @@ Each row of the **calculates** page represents a function that can be used elsew
 
 .. tip::
 
-  There are  built in functions for ODK Survey that can be used anywhere in the workbook. See the :ref:`Forumla Functions <xlsx-ref-formula>` section for more details.
+  There are  built in functions for ODK-X Survey that can be used anywhere in the workbook. See the :ref:`Forumla Functions <xlsx-ref-formula>` section for more details.
 
 If a complex calculation is required, you can access the full power of Javascript and the :program:`jquery.js` (that is: :code:`$.some_func(...)` ) and :program:`underscore.js` (that is: :code:`_.some_func(...)` ) libraries. Internally, the calculate column is wrapped and evaluated as a Javascript function:
 
@@ -956,7 +956,7 @@ Built-in Functionality
 
 The :program:`jquery` and :program:`underscore` libraries are available when defining calculates expressions.
 
-ODK Survey exposes built-in functionality through formula functions to decrease form development time.
+ODK-X Survey exposes built-in functionality through formula functions to decrease form development time.
 
 .. _xlsx-ref-formula:
 

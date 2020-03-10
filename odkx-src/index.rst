@@ -57,7 +57,7 @@ The ODK-X Tool Suite consists of:
   - :doc:`services-intro` - an application for **user authentication and data synchronization** between the ODK-X applications.
   - :doc:`cloud-endpoints-intro` - a **cloud server** to host data and application files, and to support bi-directional data synchronization across mobile devices.
   - :doc:`suitcase-intro` - a **desktop tool** for synchronizing data with a cloud endpoint.
-  - :doc:`app-designer-intro` - a design environment for **creating, customizing, and previewing** your forms, data curation, and visualization applications. This is where you build your ODK applications.
+  - :doc:`app-designer-intro` - a design environment for **creating, customizing, and previewing** your forms, data curation, and visualization applications. This is where you build your ODK-X applications.
 
 .. note::
   ODK-X mobile applications are available for Android devices only.

@@ -7,7 +7,7 @@ Unlike ODK Collect, the ODK-X tools are application-focused. An application is i
 
 We will use the ODK-X synchronization mechanism to install this app. It is about 26 MB in size and takes a few minutes to download from the web.
 
-  1. Launch ODK Tables. Press the Action Button (:guilabel:`⋮`) and press :menuselection:`Preferences` from the menu.
+  1. Launch ODK-X Tables. Press the Action Button (:guilabel:`⋮`) and press :menuselection:`Preferences` from the menu.
 
     .. image:: /img/tables-sample-app/tables-menu-prefs.*
       :alt: Tables Setting Button
@@ -35,13 +35,13 @@ Once the configuration and data on the device is an exact match to that of the s
 
 When complete, click :guilabel:`OK` on the :guilabel:`Sync Outcome` dialog and back out of the Services, returning to Tables.
 
-If the sync was successful, ODK Tables will scan through the downloaded configuration, updating its list of available forms.
+If the sync was successful, ODK-X Tables will scan through the downloaded configuration, updating its list of available forms.
 
   .. image:: /img/tables-sample-app/tables-sample-scan.*
     :alt: Tables Update Configuration
     :class: device-screen-vertical
 
-After this configuration is set up, ODK Tables should now present a custom home screen with five tabs, one for each of the demos. If it does not, back out of ODK Tables and re-launch it.
+After this configuration is set up, ODK-X Tables should now present a custom home screen with five tabs, one for each of the demos. If it does not, back out of ODK-X Tables and re-launch it.
 
 
 .. _tables-sample-app-installing-learn-more:

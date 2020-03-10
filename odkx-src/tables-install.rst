@@ -1,4 +1,4 @@
-Installing ODK Tables
+Installing ODK-X Tables
 ===========================
 
 .. _tables-install:
@@ -13,7 +13,7 @@ Prerequisites
 Required
 ~~~~~~~~~~~~~~~
 
-Before installing ODK Tables, you will need the following ODK Tools:
+Before installing ODK-X Tables, you will need the following ODK-X Tools:
 
   - :doc:`services-intro`
 
@@ -30,11 +30,11 @@ We also recommend installing:
 
   - :doc:`survey-intro`
 
-ODK Survey is not required, but Tables and Survey are most versatile when used together. Survey offers a simple, form based data collected workflow similar to ODK Collect that can be seamlessly integrated with Tables to create and modify records.
+ODK-X Survey is not required, but Tables and Survey are most versatile when used together. Survey offers a simple, form based data collected workflow similar to ODK Collect that can be seamlessly integrated with Tables to create and modify records.
 
 .. _tables-install-app:
 
-Installing the ODK Tables App
+Installing the ODK-X Tables App
 -----------------------------------
 
 
@@ -44,7 +44,7 @@ Installing the ODK Tables App
     - (On older versions of Android, this setting is in :menuselection:`Applications` rather than :menuselection:`Security`)
 
   2. Open a web browser on your phone.
-  3. Navigate to https://github.com/opendatakit/tables/releases/latest and download the latest ODK Tables APK.
+  3. Navigate to https://github.com/opendatakit/tables/releases/latest and download the latest ODK-X Tables APK.
   4. In the download window, you will see ODK_Tables.N.N.apk. - Select it to download the file.
 
    - On older devices, the APK will automatically install after you approve the security settings.
@@ -52,9 +52,9 @@ Installing the ODK Tables App
 
 .. note::
 
-  You can also `download the ODK Tables APK <https://opendatakit-dev.cs.washington.edu/2_0_tools/download/>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
+  You can also `download the ODK-X Tables APK <https://opendatakit-dev.cs.washington.edu/2_0_tools/download/>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
 
 .. tip::
 
-  You can also `install ODK Tables on an Android emulator <https://github.com/opendatakit/opendatakit/wiki/DevEnv-Setup>`_. However, this can be slow and is only recommended for developers actively working on Tables.
+  You can also `install ODK-X Tables on an Android emulator <https://github.com/opendatakit/opendatakit/wiki/DevEnv-Setup>`_. However, this can be slow and is only recommended for developers actively working on Tables.
 

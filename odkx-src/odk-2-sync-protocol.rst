@@ -90,7 +90,7 @@ In general, the server supports GZIP compression of entity bodies in both direct
 Requests should specify 3 or 4 headers:
 
   - **X-OpenDataKit-Version** -- this should be set to `2.0`
-  - **X-OpenDataKit-Installation-Id** -- this should be set to a UUID that identifies this client device. This UUID will generally be generated on first install of the ODK Services APK. Using "Clear Data" in the device settings will cause a new UUID to be generated. This is used to track the devices responsible for changes to the configuration (resetting the server) and for tracking the status of all devices as they synchronize with the server.
+  - **X-OpenDataKit-Installation-Id** -- this should be set to a UUID that identifies this client device. This UUID will generally be generated on first install of the ODK-X Services APK. Using "Clear Data" in the device settings will cause a new UUID to be generated. This is used to track the devices responsible for changes to the configuration (resetting the server) and for tracking the status of all devices as they synchronize with the server.
   - **User-Agent** -- this is required by Google App Engine infrastructure before it will honor requests for GZIP content compression of response entities (i.e., it ignores "Accept-Encoding" directives on requests if this is not present). The value supplied must end with " (gzip)". Services uses a value of: `"Sync " + versionCode + " (gzip)"` where `versionCode` is is the revision code of the software release (e.g., 210). While optional, it is highly recommended that all requests supply this header.
   - **Accept-Encoding** -- this should be set to "gzip" when an entity body is returned.
 
@@ -111,7 +111,7 @@ Data Groupings
 Before discussing the API, it is useful to identify the data on the system. The ODK-X tools assume all data fall into one of six groupings:
 
   1. (**Data Grouping #1**) HTML, JavaScript and tool configuration files that are not specific to any data table. These include custom home screens, CSS, logo icons, and settings for the tools (e.g., default font size, what settings options to show or hide).
-  2. (**Data Grouping #2**) Data table definition, properties, HTML and JavaScript associated with a specific data table. These include all ODK Survey forms used to create or edit this data table, ODK Tables HTML and CSS files for list views, map displays and graphical displays of the data, and ODK Scan mark-sense form definitions.
+  2. (**Data Grouping #2**) Data table definition, properties, HTML and JavaScript associated with a specific data table. These include all ODK-X Survey forms used to create or edit this data table, ODK-X Tables HTML and CSS files for list views, map displays and graphical displays of the data, and ODK-X Scan mark-sense form definitions.
   3. (**Data Grouping #3**) Data rows and the file attachments (e.g., images, audio, video or other files) associated with specific revision(s) of each data row.
   4. Other files and data that are not synchronized with the server and are for internal use only; e.g., the tools' internal configuration files and device-specific configuration.
   5. Other files that are not synchronized with the server but are generated for external use such as exported csv files and detailed log files for troubleshooting.
@@ -226,7 +226,7 @@ The authentication header information is verified against the user list.
 
 If successful, a `PrivilegesInfo` object is returned. This object contains the internal user_id that identifies this user and the friendly name (full_name) of the user. It also provides the user's default group, if configured, and the list of privileges that the user has.
 
-That list will consist of `ROLE_...` and `GROUP_...` values. The `ROLE_...` values are predefined permissions within the ODK tools. The `GROUP_...` values are user-defined and generally correspond to organizational groups to which users belong. This allows application designers to create workflows on the device that are appropriate for the organizational privileges of the user on that device.
+That list will consist of `ROLE_...` and `GROUP_...` values. The `ROLE_...` values are predefined permissions within the ODK-X tools. The `GROUP_...` values are user-defined and generally correspond to organizational groups to which users belong. This allows application designers to create workflows on the device that are appropriate for the organizational privileges of the user on that device.
 
 The returned object is defined as:
 
@@ -1103,7 +1103,7 @@ Attachments: BLOBs and Documents
 
 BLOBs, long strings (e.g., MySQL TEXT fields) and arbitrary files can be associated with any data row. These are stored as files and viewed as 'attachments' of the row. If a row has an attachment, the row is expected to have one or more columns in its data table that contain the path to that attachment.
 
-For example, the ODK Tools use a `rowpath` elementType (see the Column object, presented earlier), the attachment field definition in Survey (either an `imageUri`, `audioUri` or `videoUri` object) consists of two parts, a `uriFragment` that is a `rowpath` elementType and a `contentType` that is a string containing the mime type of the attachment. The `rowpath` is a path relative to the storage location for files associated with this `rowId`. e.g.,
+For example, the ODK-X Tools use a `rowpath` elementType (see the Column object, presented earlier), the attachment field definition in Survey (either an `imageUri`, `audioUri` or `videoUri` object) consists of two parts, a `uriFragment` that is a `rowpath` elementType and a `contentType` that is a string containing the mime type of the attachment. The `rowpath` is a path relative to the storage location for files associated with this `rowId`. e.g.,
 
 .. code-block:: javascript
 
@@ -1578,7 +1578,7 @@ The `RowOutcomeList` contains the dataETag of the resulting change set on the se
     /**
      * OdkTables metadata column.
      *
-     * The ODK Survey form that
+     * The ODK-X Survey form that
      * was used when revising this
      * row.
      *
@@ -1620,7 +1620,7 @@ The `RowOutcomeList` contains the dataETag of the resulting change set on the se
      * For Mezuri, the timestamp
      * of this data value.
      *
-     * For ODK Survey, the last
+     * For ODK-X Survey, the last
      * save time of the survey.
      *
      * For sensor data,
@@ -1633,7 +1633,7 @@ The `RowOutcomeList` contains the dataETag of the resulting change set on the se
     /**
      * OdkTables metadata column.
      *
-     * For ODK Survey, the user
+     * For ODK-X Survey, the user
      * that filled out the survey.
      *
      * Unclear what this would be
@@ -1911,15 +1911,15 @@ The `dataETagAtModification` field tracks the change entry that can be used with
 
 The `createUser` and `lastUpdateUser` fields may be set and returned by the server.  These are intended for data-dump and data-restore functionality and are not normally provided by a client.
 
-The `formId` field identifies the ODK Survey form that last modified this record.  This is useful for implementing multi-stage client workflows.
+The `formId` field identifies the ODK-X Survey form that last modified this record.  This is useful for implementing multi-stage client workflows.
 
-The `locale` field tracks the last ODK Survey locale in which the form was opened and perhaps modified.
+The `locale` field tracks the last ODK-X Survey locale in which the form was opened and perhaps modified.
 
-The `savepointType` is one of `INCOMPLETE` or `COMPLETE`; it indicates whether the data is considered to be in a possibly-incomplete state or if it is complete (i.e., in ODK Survey, if it has been validated and marked as finalized). Together with the `formId`, this can indicate whether the client processing can advance from one workflow stage (`formId`) to another (i.e., when the record is 'COMPLETE' in the current stage) or whether to stall within the current workflow stage (`formId`). For autonomous data publishing (e.g., ODK Sensors Framework), this should be set to `COMPLETE`.
+The `savepointType` is one of `INCOMPLETE` or `COMPLETE`; it indicates whether the data is considered to be in a possibly-incomplete state or if it is complete (i.e., in ODK-X Survey, if it has been validated and marked as finalized). Together with the `formId`, this can indicate whether the client processing can advance from one workflow stage (`formId`) to another (i.e., when the record is 'COMPLETE' in the current stage) or whether to stall within the current workflow stage (`formId`). For autonomous data publishing (e.g., ODK-X Sensors Framework), this should be set to `COMPLETE`.
 
 The `savepointTimestamp` is the timestamp of the last save of this data record, as reported on the client (whose time clock may be inaccurate).
 
-The `savepointCreator` is the entity modifying/writing this data row. For ODK Survey, this is the user as identified by the Android device.
+The `savepointCreator` is the entity modifying/writing this data row. For ODK-X Survey, this is the user as identified by the Android device.
 
 The `filterScope` should default to `{type: 'Default', value: null}`. It is used to control access to the data record. Future updates to this protocol will likely make this unmodifiable on the server unless the requesting user has appropriate permissions. The contents, interpretation and use of this field is evolving at this time.
 

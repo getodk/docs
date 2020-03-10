@@ -32,7 +32,7 @@ The Hope Study application provides a good example of the following ODK-X platfo
 Installing Hope Study
 --------------------------
 
-Source code for this Data Management Application can be found in the `master branch of the App Designer repository <https://github.com/opendatakit/app-designer/tree/master>`_. It is one of the five demo applications for ODK Tables. As with all of the ODK-X reference applications (and the ODK-X platform itself), the code is free and open source. Feel free to reuse, modify, or extend this application and its component parts to suit your organization's needs.
+Source code for this Data Management Application can be found in the `master branch of the App Designer repository <https://github.com/opendatakit/app-designer/tree/master>`_. It is one of the five demo applications for ODK-X Tables. As with all of the ODK-X reference applications (and the ODK-X platform itself), the code is free and open source. Feel free to reuse, modify, or extend this application and its component parts to suit your organization's needs.
 
 .. note::
   The Hope Study application (and all other Data Management Applications provided in these docs) come with a full copy of the Application Designer they were developed in.

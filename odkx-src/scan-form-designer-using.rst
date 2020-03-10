@@ -1,4 +1,4 @@
-Using ODK Scan Form Designer
+Using ODK-X Scan Form Designer
 ================================
 
 .. _scan-form-using-getting-started:
@@ -15,7 +15,7 @@ After :doc:`app-designer-launching`, find the Scan Form Designer inside a tab (s
 The Scan Form designer presents a default page, the toolbar across the top of the screen, and Form Properties in the gray editing area surrounding the the page.
 
 .. image:: /img/scan-form-designer/scan-form-blank.*
-  :alt: ODK Scan Form Designer Homepage
+  :alt: ODK-X Scan Form Designer Homepage
 
 .. _scan-form-using-getting-started-tips:
 
@@ -60,7 +60,7 @@ Form Properties
 
 In the workspace to the left of the form you are creating is a box titled :guilabel:`Form Properties`. This is were you can tailor each field for style and for establishing how the data will be organized and presented after it is scanned and digitized. The key properties to note at this point are:
 
-  - :guilabel:`Name`: An identifier for the ODK tools back end. A name is generated automatically but can be customized if desired. No spaces allowed; if blanks are entered (for example: "Date mo 1" it will be saved with underscores (for example, "Date_mo1"). If desired, the name can be the same as the display text.
+  - :guilabel:`Name`: An identifier for the ODK-X tools back end. A name is generated automatically but can be customized if desired. No spaces allowed; if blanks are entered (for example: "Date mo 1" it will be saved with underscores (for example, "Date_mo1"). If desired, the name can be the same as the display text.
   - :guilabel:`Display Text`: A label for the field that relates the nature of the data input and will be a reference point in Survey when looking at the data answers after collection (for example: "PolioVaccDate"). If desired, this can be the same as the name. The display text can include spaces if desired.
   - :guilabel:`Verify field`: Choose whether the field requires validation by the user reviewing the scan when transcribing in Survey.
   - :guilabel:`Order of fields`: Enter the order that the fields will be presented to the person verifying each field of data in Survey. Provide order by listing number, for example: 1, 2, 3.
@@ -76,7 +76,7 @@ Adding Images
 Anchor Images
 ~~~~~~~~~~~~~~~~
 
-You'll find that the default starting page of the Form Designer has images in each corner. These anchor images act as fiducial markers, or points of reference for the ODK Scan app when the form is eventually photographed with ODK Scan. Points of reference help the app orient the form so it knows which fields on the paper form correspond to the fields in the digital template. Additionally, any typed text fields that you added to the form will be viewed as images by the app and give the app additional points of reference to orient the form for processing.
+You'll find that the default starting page of the Form Designer has images in each corner. These anchor images act as fiducial markers, or points of reference for the ODK-X Scan app when the form is eventually photographed with ODK-X Scan. Points of reference help the app orient the form so it knows which fields on the paper form correspond to the fields in the digital template. Additionally, any typed text fields that you added to the form will be viewed as images by the app and give the app additional points of reference to orient the form for processing.
 
 .. note::
 
@@ -113,7 +113,7 @@ Add Images
 Uses for Images
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition to customizing the anchor images on your form and adding additional points of reference to guide the ODK Scan app, you may also want to use images to:
+In addition to customizing the anchor images on your form and adding additional points of reference to guide the ODK-X Scan app, you may also want to use images to:
 
   - Add a logo or picture
   - Add tables or charts to the form
@@ -129,7 +129,7 @@ To begin adding data fields, you must first be working on the :guilabel:`Fields`
 .. image:: /img/scan-form-designer/edit-fields-menu.*
   :alt: Editing Data Fields in Scan Form Designer
 
-There are seven different field inputs that are supported by the ODK Scan Form Designer. Two of these field do NOT support digitization:
+There are seven different field inputs that are supported by the ODK-X Scan Form Designer. Two of these field do NOT support digitization:
 
   - :ref:`Text Box <scan-form-using-adding-fields-text-box>`
   - :ref:`Text <scan-form-using-adding-fields-text>`
@@ -153,14 +153,14 @@ This will be a blank field where users will write in information. In the scannin
 
 .. note::
 
-  To digitize a text box, a user will manually transcribe the image of the text box into a text prompt in ODK Survey.
+  To digitize a text box, a user will manually transcribe the image of the text box into a text prompt in ODK-X Survey.
 
 .. _scan-form-using-adding-fields-text:
 
 Text
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This is one way you add typed text to a form. Text fields are not an input field for users and will not be digitized by scan, but act more as labels for fields that will be automatically digitized. Text fields also help ODK Scan orient the photo of the scanned form to the template file by providing additional points of reference.
+This is one way you add typed text to a form. Text fields are not an input field for users and will not be digitized by scan, but act more as labels for fields that will be automatically digitized. Text fields also help ODK-X Scan orient the photo of the scanned form to the template file by providing additional points of reference.
 
 .. tip::
 
@@ -173,7 +173,7 @@ QR Code
 
 A matrix barcode that can contained encoded numbers, words, or other data.
 
-When a form with a QR code box is scanned, the ODK Scan App will process any QR code data inside that area. This is designed for a process such as placing a unique patient ID code sticker on a printed form and then using the ODK Scan app to automatically link the encoded data with the other data elements on the form. The only stipulation is that the QR code must fit inside the box whose size you specify in the form designer.
+When a form with a QR code box is scanned, the ODK-X Scan App will process any QR code data inside that area. This is designed for a process such as placing a unique patient ID code sticker on a printed form and then using the ODK-X Scan app to automatically link the encoded data with the other data elements on the form. The only stipulation is that the QR code must fit inside the box whose size you specify in the form designer.
 
 To create a custom QR code, you can use an online QR code generator, such as these example: `QR Code Generator <https://www.the-qrcode-generator.com/>`_ or `QR Stuff <http://www.qrstuff.com/>`_.
 
@@ -184,7 +184,7 @@ Once you have a QR code saved as an image, you can add it to your form like any 
 Checkboxes and Fill-in Bubbles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For ODK Scan, Fill-In Bubbles and Checkboxes have the same functionalities and options; they only vary in how they look.
+For ODK-X Scan, Fill-In Bubbles and Checkboxes have the same functionalities and options; they only vary in how they look.
 
 .. note::
 
@@ -196,7 +196,7 @@ Bubble Type
 """""""""""""""
 
 The :guilabel:`Bubble type` field allows you to select how to categorize and count user entries.
-  - :menuselection:`Tally`: Filled bubbles will be read by ODK Scan as one unit each and will be added up to result in a number value. Each filled bubble/checkbox is one tally mark. (for example, one filled bubble for each child vaccinated).
+  - :menuselection:`Tally`: Filled bubbles will be read by ODK-X Scan as one unit each and will be added up to result in a number value. Each filled bubble/checkbox is one tally mark. (for example, one filled bubble for each child vaccinated).
   - :menuselection:`Select one`: User chooses only one answer to the prompt. (for example, Male or Female).
   - :menuselection:`Select many`: User chooses all applicable answers. (for example, Reasons for extra care: Low birth weight, family history of infant death, twins...).
 
@@ -206,7 +206,7 @@ The :guilabel:`Bubble type` field allows you to select how to categorize and cou
 Grid Values
 """""""""""""
 
-:guilabel:`Grid Values` are the values designated to each bubble or box. The default value for each bubble or box filled in by the user is 1, and you can customize the answers ODK Scan attributes to each box or bubble. For example, if in a grid of one row and two columns, row 1, col 1 is given the value of "yes," when that box is marked by a user in Survey and Tables the digitized answer will be "yes."
+:guilabel:`Grid Values` are the values designated to each bubble or box. The default value for each bubble or box filled in by the user is 1, and you can customize the answers ODK-X Scan attributes to each box or bubble. For example, if in a grid of one row and two columns, row 1, col 1 is given the value of "yes," when that box is marked by a user in Survey and Tables the digitized answer will be "yes."
 
 .. image:: /img/scan-form-designer/create-checkbox-menu.*
   :alt: Adding Checkbox Fields in Scan Form Designer
@@ -307,7 +307,7 @@ If you would prefer to export your Scan machine readable files externally from t
 .. image:: /img/scan-form-designer/scan-form-export.*
   :alt: Export a Complete Form in Scan Form Designer
 
-This will give you a :file:`.zip` file that you can unzip and use to print hard copies of your form and transfer your form :file:`.json` template to the ODK Scan App.
+This will give you a :file:`.zip` file that you can unzip and use to print hard copies of your form and transfer your form :file:`.json` template to the ODK-X Scan App.
 
 .. note::
 
@@ -324,7 +324,7 @@ After you have saved and exported your form, print hard copies for your user to 
   2. Within the folder, find and open the file called form :file:`.jpg`. This is the image of the form that you created in the Form Designer is the form you will print to hard copy.
 
   .. image:: /img/scan-form-designer/print-file-select.*
-    :alt: Print a File to Fill in for ODK Scan
+    :alt: Print a File to Fill in for ODK-X Scan
 
   3. Print the entire image on one page. Black and white is fine even for forms that were created with colored elements.
 

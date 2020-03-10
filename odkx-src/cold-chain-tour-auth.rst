@@ -38,7 +38,7 @@ Depending on the returned default group, the next action is:
   - *Null*: the user is either anonymous or has not been set up with a default group. The user is prompted to authenticate with a different identity.
   - *Anything else*: The user does not have privileges within this application and is prompted to authenticate with a different identity.
 
-In either of the bottom two options, the log in screen is shown. The :guilabel:`Log In` button launches an intent to the log in screen of ODK Services. The API :code:`odkCommon.doAction(...)` takes the intent as an argument, which should be pointed at the *SyncActivity*. To specifically get the log in screen the bundle should include the *showLogin* value set to *true*.
+In either of the bottom two options, the log in screen is shown. The :guilabel:`Log In` button launches an intent to the log in screen of ODK-X Services. The API :code:`odkCommon.doAction(...)` takes the intent as an argument, which should be pointed at the *SyncActivity*. To specifically get the log in screen the bundle should include the *showLogin* value set to *true*.
 
 When the user returns from authentication this process will repeat until a *Valid Group* or a *Table Administrator* is found.
 

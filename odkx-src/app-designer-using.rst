@@ -1,4 +1,4 @@
-Using ODK Application Designer
+Using ODK-X Application Designer
 ===============================
 
 .. toctree::

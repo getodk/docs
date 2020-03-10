@@ -42,4 +42,4 @@ This command runs the script contained in :file:`Gruntfile.js`, so be sure it is
 
   :program:`Terminal` will open a new :program:`terminal` window if you drag a folder (or pathname) onto the :program:`Terminal` application icon, and you can also drag a folder to the tab bar of an existing window to create a new tab in that folder.
 
-You have now completed the installation of the ODK Application Designer software.
+You have now completed the installation of the ODK-X Application Designer software.

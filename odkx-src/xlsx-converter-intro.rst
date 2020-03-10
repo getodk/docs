@@ -1,13 +1,13 @@
-ODK XLSX Converter
+ODK-X XLSX Converter
 ====================
 
 .. _xlsx-converter-intro:
 
-:dfn:`ODK XLSX Converter` is a tool, similar to XLSForm, that converts XLSX files (created with :program:`Excel`) into ODK Survey definition files that are used by ODK Survey.
+:dfn:`ODK-X XLSX Converter` is a tool, similar to XLSForm, that converts XLSX files (created with :program:`Excel`) into ODK-X Survey definition files that are used by ODK-X Survey.
 
 .. warning::
 
-  Forms created with XLSX Converter are not compatible with ODK Collect. They only work with ODK Survey.
+  Forms created with XLSX Converter are not compatible with ODK Collect. They only work with ODK-X Survey.
 
 For example, a spreadsheet like this:
 
@@ -22,7 +22,7 @@ For example, a spreadsheet like this:
 Will result in a survey like this:
 
 .. image:: /img/xlsxconverter/survey-screen.*
-  :alt: An example rendering of a basic XLSX file in ODK Survey
+  :alt: An example rendering of a basic XLSX file in ODK-X Survey
   :class: device-screen-vertical
 
 .. tip::

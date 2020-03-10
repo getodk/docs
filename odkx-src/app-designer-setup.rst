@@ -1,4 +1,4 @@
-Setting Up ODK Application Designer
+Setting Up ODK-X Application Designer
 =====================================
 
 .. toctree::

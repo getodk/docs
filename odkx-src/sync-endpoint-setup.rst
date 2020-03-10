@@ -7,7 +7,7 @@ Setup using Cloud Services
 
 .. _sync-endpoint-setup-intro:
 
-This tutorial will help you launch ODK Sync Endpoint on a virtual machine hosted on a cloud service provider.  ODK Sync Endpoint communicates with your ODK-X Android applications in order to synchronize your data and application files.  
+This tutorial will help you launch ODK-X Sync Endpoint on a virtual machine hosted on a cloud service provider.  ODK-X Sync Endpoint communicates with your ODK-X Android applications in order to synchronize your data and application files.  
 
 | There are 3 main options that we have documented to set up ODK-X Sync Endpoint
 | :program:`Easiest (recommended, especially for Windows machines)`
@@ -22,7 +22,7 @@ This tutorial will help you launch ODK Sync Endpoint on a virtual machine hosted
 Option 1: Using Python script to automatically set up a virtual machine on DigitalOcean
 -----------------------------------------------------------------------------------------
 
-| If you'd like to set up an ODK server that's accessible from anywhere via the Internet, DigitalOcean provides a one-click configuration that's nicely geared with nearly all the tools you'll need to set up your new server. The only thing it doesn't do is register a domain name, which you will have to do in order to obtain a security certificate for your server. These instructions walk you through:
+| If you'd like to set up an ODK-X server that's accessible from anywhere via the Internet, DigitalOcean provides a one-click configuration that's nicely geared with nearly all the tools you'll need to set up your new server. The only thing it doesn't do is register a domain name, which you will have to do in order to obtain a security certificate for your server. These instructions walk you through:
 |   -	:ref:`Setting up a DigitalOcean account <sync-endpoint-setup-digital-ocean-account>`
 |   -	:ref:`Setting up a Droplet, DigitalOcean’s name for a server you can access and manage <sync-endpoint-setup-digital-ocean-droplet>`
 |   -	:ref:`Connecting to your Droplet <sync-endpoint-setup-digital-ocean-connecting>`

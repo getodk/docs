@@ -1,7 +1,7 @@
 .. spelling::
   prepopulated
 
-Using ODK Survey
+Using ODK-X Survey
 =======================
 
 .. warning::
@@ -100,7 +100,7 @@ There are three ways to save a form:
       :alt: Survey Save Menu
       :class: device-screen-vertical
 
-  3. Press the Android back button. This is not the :guilabel:`Back` button provided by ODK in the upper right. This is the button to back out of apps. This will launch a menu with the option to :menuselection:`Save Changes` which will save the form as **Incomplete**.
+  3. Press the Android back button. This is not the :guilabel:`Back` button provided by ODK-X Survey in the upper right. This is the button to back out of apps. This will launch a menu with the option to :menuselection:`Save Changes` which will save the form as **Incomplete**.
 
     .. image:: /img/survey-using/survey-save-back.*
       :alt: Survey Save Back Button
@@ -192,7 +192,7 @@ Every change you make to the data in the form is written immediately to the data
 Syncing Forms and Data
 --------------------------
 
-See the instructions in the :ref:`ODK Services user guide <services-using-sync>`.
+See the instructions in the :ref:`ODK-X Services user guide <services-using-sync>`.
 
 .. warning::
 
