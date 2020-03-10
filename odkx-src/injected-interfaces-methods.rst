@@ -305,7 +305,7 @@ toDateFromOdkTimeStamp
 
   **Parameters**:
     
-  - timestamp: The ODK Timestamp string 
+  - timestamp: The ODK-X Timestamp string 
     used to represent dateTime and date values. It is an iso8601-style UTC date
     extended to nanosecond precision: yyyy-mm-ddTHH:MM:SS.sssssssss. This value is assumed 
     to be UTC and the value is assumed to be in the AD calendar (no BC dates please).
@@ -313,7 +313,7 @@ toDateFromOdkTimeStamp
   
   **Returns**: A JavaScript Date() object.
 
-Convert an ODK Timestamp string to a JavaScript Date() object. 
+Convert an ODK-X Timestamp string to a JavaScript Date() object. 
 
 NOTE: This method discards the nano fields.
 
@@ -397,9 +397,9 @@ toOdkTimeStampFromDate
   - jsDate: JavaScript Date. This value is assumed to be UTC and the value is assumed to be in 
     the AD calendar (no BC dates please). 
   
-  **Returns**: ODK Timestamp.
+  **Returns**: ODK-X Timestamp.
 
-Converts a JavaScript Date to an ODK Timestamp. See toDateFromOdkTimeStamp() for the 
+Converts a JavaScript Date to an ODK-X Timestamp. See toDateFromOdkTimeStamp() for the 
 format of a timestamp. This zero-fills to extend the accuracy of the JavaScript Date 
 object to nanosecond accuracy. 
 

@@ -1,7 +1,7 @@
 .. spelling::
   Plexiglass
 
-Using ODK Scan
+Using ODK-X Scan
 ====================
 
 .. _scan-using:
@@ -43,7 +43,7 @@ Scanning the form
 
   3. If the preview of the photo looks good, tap the checkbox icon to move onto the next step. To retake the photo tap the :guilabel:`Back` button and to exit the camera tap the :guilabel:`X`.
   4. Once you select the check mark to begin photo processing, a small message will pop up saying *Processing photo in background.*
-  5. When the photo has been successfully (or unsuccessfully) processed, you will see a notification at the top of the screen in the Android toolbar. Pull the top toolbar down and tap the ODK Scan notification. This will open Scan and pull up the photo of the selected scan.
+  5. When the photo has been successfully (or unsuccessfully) processed, you will see a notification at the top of the screen in the Android toolbar. Pull the top toolbar down and tap the ODK-X Scan notification. This will open Scan and pull up the photo of the selected scan.
 
     - The successfully processed photo will show an overlay of colored boxes that indicate the fields that Scan has detected. Any bubbles or checkboxes recognized as filled will show an overlay of the value that was assigned to them in the form designer. Number fields will show an overlay of the number that the app recognized for each digit.
     - If the photo was unsuccessfully processed you will be prompted to retake the photo.
@@ -51,7 +51,7 @@ Scanning the form
     .. image:: /img/scan-using/scan-image-markup.*
       :alt: Scan image with markup overlay
 
-  6. From this screen, you can choose to either begin reviewing the data from this scan, or save it to review later. Press :guilabel:`Transcribe` to be taken into ODK Survey where you will be able to view and edit data.
+  6. From this screen, you can choose to either begin reviewing the data from this scan, or save it to review later. Press :guilabel:`Transcribe` to be taken into ODK-X Survey where you will be able to view and edit data.
 
     - Or press :guilabel:`Save`. This scan is now accessible by tapping the drop down options (at the top right of the screen), then :menuselection:`Main Menu --> View Scanned Forms`). From the drop down options, you can select :guilabel:`Scan New Form` to continue scanning and saving forms.
 
@@ -75,7 +75,7 @@ Reviewing Your Data
 You'll be taken to Survey after pressing :guilabel:`Transcribe` on a scan. There you'll see a clickable list of all of the fields pulled from your form template, your :guilabel:`Table of Contents`. You can return to this screen when transcribing data by pressing the button on the top, left (with your form template's name, the example image below being *scan_TB03_Register1*).
 
 .. image:: /img/scan-using/scan-review-data.*
-  :alt: View of a scanned form in ODK Survey
+  :alt: View of a scanned form in ODK-X Survey
   :class: device-screen-vertical
 
 .. _scan-using-survey-verify:
@@ -86,10 +86,10 @@ To verify and edit any of the data
 Select the field you want to view, and you'll be taken to a screen where you'll find an image of the field and the data, as interpreted by Scan, and an editable box below. Type in any changes if there are discrepancies between the data digitized by Scan and the ground truth data.
 
 .. image:: /img/scan-using/scan-verify-number.*
-  :alt: View of a scanned number field in ODK Survey
+  :alt: View of a scanned number field in ODK-X Survey
   :class: device-screen-vertical side-by-side
 .. image:: /img/scan-using/scan-verify-bubble.*
-  :alt: View of a scanned bubble field in ODK Survey
+  :alt: View of a scanned bubble field in ODK-X Survey
   :class: device-screen-vertical side-by-side
 
 Navigate to the next section to validate and edit either by:
@@ -106,7 +106,7 @@ Navigate to the next section to validate and edit either by:
   Text boxes and text fields cannot be digitized. However, Scan will capture an image of text boxes (not text fields: text fields are to be used primarily as labels on your form), and when verifying data in Survey you can type in the data directly into the app.
 
   .. image:: /img/scan-using/scan-transcribe-text.*
-    :alt: View of a scanned text field in ODK Survey
+    :alt: View of a scanned text field in ODK-X Survey
     :class: device-screen-vertical
 
 .. _scan-using-survey-finalize:
@@ -121,7 +121,7 @@ If you've made changes you don't want to keep, :menuselection:`Form Name --> Ign
 Once you've verified all the fields, select :menuselection:`Form Name --> Finalize Changes + Exit`. You will also have the option to :menuselection:`Finalize Changes` if you are navigating through the data fields by using the next button and reach the end of the data contents. Once you are finished here you will return to Scan, where you can scan a new form or transcribe a saved scan. Both options accessible through navigating to Scan's Main Menu.
 
 .. image:: /img/scan-using/scan-finalize.*
-  :alt: Finalizing changes in ODK Survey
+  :alt: Finalizing changes in ODK-X Survey
   :class: device-screen-vertical
 
 .. _scan-using-tables:
@@ -136,5 +136,5 @@ With each verified and finalized scan, a new line of data will be entered into T
   3. You can change the :guilabel:`View Type`, :guilabel:`Color Settings`, and more by pressing the settings wheel and making any changes you need.
 
 .. image:: /img/scan-using/scan-tables-view.*
-  :alt: Viewing scanned data in ODK Tables
+  :alt: Viewing scanned data in ODK-X Tables
 

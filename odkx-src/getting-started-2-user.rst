@@ -20,16 +20,16 @@ This page provides a brief end-to-end walk-through of the ODK-X tools. It will c
 
 .. _using-odk-2-apps:
 
-ODK Data Management Applications
+ODK-X Data Management Applications
 ----------------------------------------
 
-The ODK-X Android tools (ODK Survey, ODK Tables, ODK Services, ODK Scan, ODK Sensors Framework, and various ODK Sensor implementations) are Android Application Packages (APKs) that are designed to work together to create a coherent tailored application experience for an end-user.
+The ODK-X Android tools (ODK-X Survey, ODK-X Tables, ODK-X Services, ODK-X Scan, ODK-X Sensors Framework, and various ODK-X Sensor implementations) are Android Application Packages (APKs) that are designed to work together to create a coherent tailored application experience for an end-user.
 
 .. note::
 
   Together the ODK-X tools create a platform, on top of which you can build your own data management applications.
 
-ODK-X tools access configuration files and store data under sub-directories of the :file:`opendatakit` directory in the :file:`sdcard` root directory (whether your device has a physical SD card or not): :file:`/sdcard/opendatakit`. User applications constructed using the ODK-X tools are identified by the name of the sub-directory holding those configuration and data files. Thus, :file:`/sdcard/opendatakit/mytestapp` would contain all the files and data for the *mytestapp* application, where *mytestapp,* is the **AppName** of that application. The default **AppName** for the ODK tools is *default.* However, when configured appropriately, the ODK tools can run under another **AppName**, accessing configuration and saving data in a different subdirectory under opendatakit.
+ODK-X tools access configuration files and store data under sub-directories of the :file:`opendatakit` directory in the :file:`sdcard` root directory (whether your device has a physical SD card or not): :file:`/sdcard/opendatakit`. User applications constructed using the ODK-X tools are identified by the name of the sub-directory holding those configuration and data files. Thus, :file:`/sdcard/opendatakit/mytestapp` would contain all the files and data for the *mytestapp* application, where *mytestapp,* is the **AppName** of that application. The default **AppName** for the ODK-X tools is *default.* However, when configured appropriately, the ODK-X tools can run under another **AppName**, accessing configuration and saving data in a different subdirectory under opendatakit.
 
 This is handled in such a way that each user application is isolated from all other user applications, with separate configurations, data tables, and server settings. This allows one device to run multiple user applications built on top of the ODK-X tools without any coordination among the teams developing those applications.
 
@@ -43,16 +43,16 @@ We will use a Server called Aggregate to get the data for a demo application tha
 The steps for joining a device to an existing Aggregate server are straightforward.
 
   #. Install the APKs your application uses.
-  #. Launch the *home screen* APK, either ODK Survey or ODK Tables.
-  #. Click on the circular arrows button to launch the ODK Services sync activity in the context of your *home screen* APK.
-  #. Configure ODK Services to point to the ODK Aggregate instance you want to join.
+  #. Launch the *home screen* APK, either ODK-X Survey or ODK-X Tables.
+  #. Click on the circular arrows button to launch the ODK-X Services sync activity in the context of your *home screen* APK.
+  #. Configure ODK-X Services to point to the ODK Aggregate instance you want to join.
   #. Choose :guilabel:`Sync now` to make the device mirror the contents on that ODK Aggregate server.
 
-Follow the steps described above to join the ODK Aggregate server hosting our simple demo, which uses ODK Tables as its *home_screen* APK. The detailed steps are:
+Follow the steps described above to join the ODK Aggregate server hosting our simple demo, which uses ODK-X Tables as its *home_screen* APK. The detailed steps are:
 
-  #. Download and install ODK Services, ODK Tables, and ODK Survey.
-  #. Launch ODK Tables (the *home_screen* APK).
-  #. Click on the circular arrows button to launch the ODK Services.
+  #. Download and install ODK-X Services, ODK-X Tables, and ODK-X Survey.
+  #. Launch ODK-X Tables (the *home_screen* APK).
+  #. Click on the circular arrows button to launch the ODK-X Services.
   #. The default Sync Configuration should be *https://open-data-kit.appspot.com* and :menuselection:`None (anonymous access)`. You will need to change that. It will also default to :menuselection:`Fully Sync Attachments`.
   #. Click on the gear - shaped button in the menu bar, then select :menuselection:`Server Settings` in the pop-up screen.
   #. Click on :menuselection:`Server URL` and replace the default server with *https://opendatakit-simpledemo.appspot.com* then click :guilabel:`OK`.
@@ -64,7 +64,7 @@ The synchronization process will now occur.
 
   If there is an error, check to make sure the server URL is correct, then choose :guilabel:`Sync Now` again until it completes successfully.
 
-Once successful, back out of ODK Services, returning to ODK Tables. And back out of ODK Tables. Then relaunch ODK Tables.
+Once successful, back out of ODK-X Services, returning to ODK-X Tables. And back out of ODK-X Tables. Then relaunch ODK-X Tables.
 
 .. _using-odk-2-demo-tour:
 
@@ -85,17 +85,17 @@ When you launch the demo by clicking the blue launch button, you see a map showi
   :alt: Phinney Ridge
   :class: device-screen-vertical
 
-You can add a new data record by choosing the :guilabel:`+` icon in top menu bar. This opens ODK Survey.
+You can add a new data record by choosing the :guilabel:`+` icon in top menu bar. This opens ODK-X Survey.
 
 .. note::
 
-  Since ODK Survey is being opened for the first time, it will initialize itself. This may take a few moments.
+  Since ODK-X Survey is being opened for the first time, it will initialize itself. This may take a few moments.
 
 .. image:: /img/getting-started-2/geotagger-new-location.*
   :alt: Geotagger New Location
   :class: device-screen-vertical
 
-Advance through and finalize this form. Upon finalizing the form, you will be returned to ODK Tables and its map view. You can then highlight the marker you added and view the image in the list view:
+Advance through and finalize this form. Upon finalizing the form, you will be returned to ODK-X Tables and its map view. You can then highlight the marker you added and view the image in the list view:
 
 .. image:: /img/getting-started-2/geotagger-odk-laboratory.*
   :alt: Geotagger ODK Lab
@@ -103,7 +103,7 @@ Advance through and finalize this form. Upon finalizing the form, you will be re
 
 If you then click or tap in the list item details area (on the image), a detail view of the item will be displayed.
 
-From here, if you were to choose the pencil icon, ODK Survey would be launched to edit this record.
+From here, if you were to choose the pencil icon, ODK-X Survey would be launched to edit this record.
 
 You can also view the data in a list view or spreadsheet view by choosing the sheet icon in the menu bar and selecting the view you want:
 
@@ -115,7 +115,7 @@ You can also view the data in a list view or spreadsheet view by choosing the sh
 
   These other views can be useful if you need to access and complete data records that do not yet have location data and cannot therefore be displayed on a map. Try these other views now.
 
-Now back out of the *geotagger* table view and return to the custom home screen. Choose the three-horizontal-line icon on the top menu bar and choose :menuselection:`Sync`. This opens up ODK Services in its sync activity. Sync your device with the server (choose :guilabel:`Sync Noaw`). This will push your newly added record to the server. You can see this by browsing to https://opendatakit-simpledemo.appspot.com click on the :guilabel:`ODK Tables` tab, choose the :guilabel:`View Table` sub-tab, and select the *geotagger* table.
+Now back out of the *geotagger* table view and return to the custom home screen. Choose the three-horizontal-line icon on the top menu bar and choose :menuselection:`Sync`. This opens up ODK-X Services in its sync activity. Sync your device with the server (choose :guilabel:`Sync Noaw`). This will push your newly added record to the server. You can see this by browsing to https://opendatakit-simpledemo.appspot.com click on the :guilabel:`ODK-X Tables` tab, choose the :guilabel:`View Table` sub-tab, and select the *geotagger* table.
 
 If you then repeat these steps with a different device, you can see that the two devices can share and exchange data, and revisions to this data, whenever they synchronize to the server.
 
@@ -123,15 +123,15 @@ If you then repeat these steps with a different device, you can see that the two
 
   During this process, there are two problem-resolution screens you are likely to encounter:
 
-    - :ref:`Checkpoint Resolution <using-odk-2-demo-tour-checkpoints>` - if ODK Survey exits without the user explicitly saving their additions or changes.
-    - :ref:`Conflict Resolution <using-odk-2-demo-tour-conflicts>` - if ODK Services detects a change on the server to a data record that was also changed on the device.
+    - :ref:`Checkpoint Resolution <using-odk-2-demo-tour-checkpoints>` - if ODK-X Survey exits without the user explicitly saving their additions or changes.
+    - :ref:`Conflict Resolution <using-odk-2-demo-tour-conflicts>` - if ODK-X Services detects a change on the server to a data record that was also changed on the device.
 
 .. _using-odk-2-demo-tour-checkpoints:
 
 Checkpoint Resolution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The checkpoint resolution screen can be triggered a variety of ways. For this tour, choose the :guilabel:`+` icon then back out of ODK Survey:
+The checkpoint resolution screen can be triggered a variety of ways. For this tour, choose the :guilabel:`+` icon then back out of ODK-X Survey:
 
 .. image:: /img/getting-started-2/checkpoint-resolution.*
   :alt: Checkpoint Resolution
@@ -143,7 +143,7 @@ When presented with this screen, there are three choices:
   - Ignore changes and discard the entire partially filled-out form.
   - Save it even though it is incomplete. In this case, since there is no entered data for this record, we can ignore changes.
 
-In rare cases, a second form of checkpoint resolution screen can be triggered. This most often happens if ODK Survey experiences a failure and closes. In this case, you may have several data records with unsaved checkpoint changes (changes that the user has not explicitly saved as incomplete or finalized). This will lead to a screen like:
+In rare cases, a second form of checkpoint resolution screen can be triggered. This most often happens if ODK-X Survey experiences a failure and closes. In this case, you may have several data records with unsaved checkpoint changes (changes that the user has not explicitly saved as incomplete or finalized). This will lead to a screen like:
 
 .. image:: /img/getting-started-2/checkpoint-list.*
   :alt: Checkpoint List
@@ -188,7 +188,7 @@ The conflict details screen displays the values of the field(s) in conflict, wit
 
   When you resolve a conflict, your decision does not only affect you. The value you choose becomes the new true value and the next time you sync it will be written to the server.
 
-This concludes the tour of the *Geotagger* example application's screens, and the functionality within ODK Tables. For larger tours of sample applications, try the :doc:`survey-sample-app` and :doc:`tables-sample-app`.
+This concludes the tour of the *Geotagger* example application's screens, and the functionality within ODK-X Tables. For larger tours of sample applications, try the :doc:`survey-sample-app` and :doc:`tables-sample-app`.
 
 .. _user-odkx-next:
 

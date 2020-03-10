@@ -1,4 +1,4 @@
-Using ODK Services
+Using ODK-X Services
 ====================
 
 .. _services-using:
@@ -62,7 +62,7 @@ There are two ways to launch the Sync screen.
 
 .. _services-using-sync-launch-other:
 
-  - **Launching From Another Tool**: From within Survey or Tables click the :guilabel:`Sync` icon (same as above). This will launch Services to the Sync screen. Below this is shown in ODK Survey.
+  - **Launching From Another Tool**: From within Survey or Tables click the :guilabel:`Sync` icon (same as above). This will launch Services to the Sync screen. Below this is shown in ODK-X Survey.
 
 
     .. image:: /img/services-using/survey-homescreen-sync.*
@@ -118,7 +118,7 @@ Services will contact the Cloud Endpoint and synchronize your data. A progress d
 Resolving Sync Conflicts
 ---------------------------------------
 
-When you return from ODK Services and next access data, the ODK-X tools will scan all tables looking for conflicts arising from the synchronization process. If any conflicts are found, you are required to resolve the conflict before proceeding to your activity. The options for resolving conflicts are as follows.
+When you return from ODK-X Services and next access data, the ODK-X tools will scan all tables looking for conflicts arising from the synchronization process. If any conflicts are found, you are required to resolve the conflict before proceeding to your activity. The options for resolving conflicts are as follows.
 
   - :guilabel:`Take Local Version` - Use the version on the device, deleting the server version.
   - :guilabel:`Take Server Version` - Use the server version, deleting the version that is on the device.
@@ -159,7 +159,7 @@ The device settings allow you to change configuration on your individual device.
 Tables Settings
 ------------------------
 
-The tables specific settings modify the behavior of the ODK Tables tool. These settings will not be synchronized with the server.
+The tables specific settings modify the behavior of the ODK-X Tables tool. These settings will not be synchronized with the server.
 
   1. Open Services. Press the Action Button (:guilabel:`⋮`)
 
@@ -177,13 +177,13 @@ The tables specific settings modify the behavior of the ODK Tables tool. These s
       :alt: Tables Settings
       :class: device-screen-vertical
 
-  - :menuselection:`Use Custom Home Screen` chooses whether to display the :file:`index.html` file of your Data Management Application or the list of tables when ODK Tables is launched.
+  - :menuselection:`Use Custom Home Screen` chooses whether to display the :file:`index.html` file of your Data Management Application or the list of tables when ODK-X Tables is launched.
 
 .. _services-using-troubleshooting:
 
 Troubleshooting
 -------------------------
 
-  - If you are not seeing your forms in ODK Survey or your data tables in ODK Tables, try :ref:`services-managing-reset-config`
-  - If you are seeing a list of data tables instead of your Data Management Application home screen when you launch ODK Tables, enable the :guilabel:`Use custom home screen` option in :ref:`services-user-tables-settings`.
+  - If you are not seeing your forms in ODK-X Survey or your data tables in ODK-X Tables, try :ref:`services-managing-reset-config`
+  - If you are seeing a list of data tables instead of your Data Management Application home screen when you launch ODK-X Tables, enable the :guilabel:`Use custom home screen` option in :ref:`services-user-tables-settings`.
   - If you are having trouble syncing, check your :ref:`services-managing-server-config`.

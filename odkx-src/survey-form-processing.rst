@@ -17,7 +17,7 @@
   screenManager
   mutexes
 
-ODK Survey Form Processing
+ODK-X Survey Form Processing
 ==============================
 
 .. _form-processing:
@@ -221,7 +221,7 @@ The :file:`main.js` file declares the interdependencies among the various JavaSc
                             'builder', 'controller', 'd3', 'jqueryCsv', 'combodate'],
       function(...) {...})
 
-Once the ODK frameworks has loaded, the body of the function is executed. The body then initializes the parsequery object (needed to avoid circular references):
+Once the ODK-X frameworks has loaded, the body of the function is executed. The body then initializes the parsequery object (needed to avoid circular references):
 
 .. code-block:: javascript
 

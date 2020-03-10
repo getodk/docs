@@ -71,16 +71,16 @@ At the command prompt, type:
 
 .. warning::
 
-  This command will force-close ODK Services, Survey, and Tables, and it will clear all ODK-X data from the device. The data you are pushing will overwrite any exiting application or collected data you might have. Be sure to make backups and be sure you are ready before running this command.
+  This command will force-close ODK-X Services, Survey, and Tables, and it will clear all ODK-X data from the device. The data you are pushing will overwrite any exiting application or collected data you might have. Be sure to make backups and be sure you are ready before running this command.
 
 This pushes the configured ODK-X application within this ODK-X Application Designer directory to your device. Because this is a stripped-down version of the Application Designer that only contains the simple demo files, this will copy only those files to the device. When you issue this command, the :program:`cmd` window will display a long series of commands and conclude with a display of overall progress and timings:
 
 .. image:: /img/getting-started-2/geotagger-cmd-gruntpush.*
   :alt: Geotagger Grunt Push
 
-Now, on your device, launch ODK Tables.
+Now, on your device, launch ODK-X Tables.
 
-This will initiate the configuration of ODK Tables and conclude with a :guilabel:`Configuration Summary` pop-up reporting that everything was imported successfully. Click :guilabel:`OK`.
+This will initiate the configuration of ODK-X Tables and conclude with a :guilabel:`Configuration Summary` pop-up reporting that everything was imported successfully. Click :guilabel:`OK`.
 
 Everything should now appear as it did with the application you first joined on https://opendatakit-simpledemo.appspot.com, except you will only have the data rows configured by the ODK-X Application Designer zip, and not any added or modified since that time.
 
@@ -94,7 +94,7 @@ The next task is to modify the *Geotagger* example by adding a new data field to
 The overall development process is:
 
   #. :ref:`Revise the data entry form <architect-odk-2-modify-data-entry>`
-  #. :ref:`Update the initialization files needed by ODK Tables <architect-odk-2-modify-init>`
+  #. :ref:`Update the initialization files needed by ODK-X Tables <architect-odk-2-modify-init>`
   #. :ref:`Update the preloaded data values as needed <architect-odk-2-modify-preload>`
   #. :ref:`Update the HTML to include the new field <architect-odk-2-modify-html>`
 
@@ -111,9 +111,9 @@ Return to your :program:`cmd` window and once again launch the ODK-X Application
 
   $ grunt
 
-Now, open a file browser and navigate to the directory where you downloaded the Application Designer. Then navigate within that directory to :file:`app/config/tables/geotagger`. Rename the :file:`properties.csv` and :file:`definition.csv` files in this directory to :file:`orig.properties.csv` and :file:`orig.definition.csv`. These were the initialization files needed by ODK Tables and they will need to be regenerated because we are altering the data table to incorporate an additional question.
+Now, open a file browser and navigate to the directory where you downloaded the Application Designer. Then navigate within that directory to :file:`app/config/tables/geotagger`. Rename the :file:`properties.csv` and :file:`definition.csv` files in this directory to :file:`orig.properties.csv` and :file:`orig.definition.csv`. These were the initialization files needed by ODK-X Tables and they will need to be regenerated because we are altering the data table to incorporate an additional question.
 
-Navigate within that directory to :file:`app/config/tables/geotagger/forms/geotagger`. Open the :file:`geotagger.xlsx` file in :program:`Excel` (or :program:`OpenOffice`). This is the form definition used by ODK Survey.
+Navigate within that directory to :file:`app/config/tables/geotagger/forms/geotagger`. Open the :file:`geotagger.xlsx` file in :program:`Excel` (or :program:`OpenOffice`). This is the form definition used by ODK-X Survey.
 
 We will be adding a question to ask the user what direction they were facing when they took the photo. For this example, we will be collecting a text response. A more realistic modification might restrict the user to a set of choices (North, Northwest, West, Southwest, South, and so on).
 
@@ -135,7 +135,7 @@ Save your changes and go back to the Application Designer. Click on the tab that
 
 You should now see some JSON in the output window. Hit the :guilabel:`Save to File System` button. This will display three pop-up notifications announcing that the Application Designer is
 
-  1. Writing the updated ODK Survey form definition into the :file:`formDef.json` file in the same location as the :file:`geotagger.xlsx` file.
+  1. Writing the updated ODK-X Survey form definition into the :file:`formDef.json` file in the same location as the :file:`geotagger.xlsx` file.
   2. Updating the :file:`definition.csv` file.
   3. Updating the :file:`properties.csv` file.
 
@@ -154,9 +154,9 @@ You have now successfully modified the form.
 Initialization Files Update Automatically
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Fortunately, because the geotagger *formId* matches the *tableId*, by using the :guilabel:`Save to File System` button on the CSV, the tool will automatically regenerate the :file:`definition.csv` and :file:`properties.csv` files for this form. Furthermore, the configuration that ODK Tables uses to specify what HTML files to use for the list, detail, and map views are all specified within the XLSX file on the properties sheet. No manual actions are required!
+Fortunately, because the geotagger *formId* matches the *tableId*, by using the :guilabel:`Save to File System` button on the CSV, the tool will automatically regenerate the :file:`definition.csv` and :file:`properties.csv` files for this form. Furthermore, the configuration that ODK-X Tables uses to specify what HTML files to use for the list, detail, and map views are all specified within the XLSX file on the properties sheet. No manual actions are required!
 
-Now, deploy your updated application to your device. Launch ODK Tables to initialize and load your application. Confirm that when you edit a data row that you are now asked for the direction in which the photo was taken.
+Now, deploy your updated application to your device. Launch ODK-X Tables to initialize and load your application. Confirm that when you edit a data row that you are now asked for the direction in which the photo was taken.
 
 .. _architect-odk-2-modify-preload:
 
@@ -165,11 +165,11 @@ Updating the Preloaded Data
 
 At this point, we have added the new field to the data table, but have not yet updated the initial set of *Geotagger* locations with values for that field.
 
-Return to your :file:`Application Designer` directory. Recall that when an ODK Tables application first starts up, it reads the :file:`assets/tables.init` file. That file identifies CSV files within :file:`config/assets/csv` that should be imported into the data tables upon first start-up. Read more about importing data into a table from a CSV in the :ref:`ODK Tables guide <tables-managing-import-data>`.
+Return to your :file:`Application Designer` directory. Recall that when an ODK-X Tables application first starts up, it reads the :file:`assets/tables.init` file. That file identifies CSV files within :file:`config/assets/csv` that should be imported into the data tables upon first start-up. Read more about importing data into a table from a CSV in the :ref:`ODK-X Tables guide <tables-managing-import-data>`.
 
 In this example application, the file being imported is :file:`config/assets/csv/geotagger.updated.csv`. If we wanted to, we could edit this file, add a column for the new data field (:th:`Direction`), and supply values for this field for all of the data rows that form the initial set of *Geotagger* locations.
 
-Alternatively, we can return to the device and use the CSV export functionality within ODK Tables to export the CSV file (into :file:`/sdcard/opendatakit/default/output/csv`). Then pull it off the device and overwrite the CSV file under the Application Designer at :file:`app/config/assets/csv/geotagger.updated.csv`. Finally, open that file and fill in values for the :th:`Direction` column.
+Alternatively, we can return to the device and use the CSV export functionality within ODK-X Tables to export the CSV file (into :file:`/sdcard/opendatakit/default/output/csv`). Then pull it off the device and overwrite the CSV file under the Application Designer at :file:`app/config/assets/csv/geotagger.updated.csv`. Finally, open that file and fill in values for the :th:`Direction` column.
 
 .. warning::
 
@@ -239,10 +239,10 @@ Resetting the Application on the Server
 
 Resetting the application on the ODK Aggregate server will push the application configuration on your device up to your server, replacing the configuration that is already on your server. Once the configuration is updated, data tables on the server and device will be synced. This process does not destroy data on the server, but instead merges changes on the client with any existing data tables on the server (this enables you to update your configuration without worrying about damaging or destroying the data already captured on the server).
 
-Return to your device, start ODK Tables:
+Return to your device, start ODK-X Tables:
 
   #. Click the diminishing-lines icon to leave the custom home screen.
-  #. Click the three vertical dots and select :guilabel:`Sync` to launch ODK Services onto the sync screen.
+  #. Click the three vertical dots and select :guilabel:`Sync` to launch ODK-X Services onto the sync screen.
   #. Choose :menuselection:`Settings --> Server Settings`.
   #. Edit the :guilabel:`Server URL` to be the URL for this newly configured ODK Aggregate server (https://myodk-test.appspot.com).
   #. Click on :guilabel:`Server Sign-on Credential` and choose :menuselection:`Username`.
@@ -267,7 +267,7 @@ When you modify the application running on the device, you will typically need t
 
 Open a browser window to the server, log in with a user that has :guilabel:`Administer Tables` or :guilabel:`Site Admin` privileges.
 
-Navigate to the :guilabel:`ODK Tables / Current Tables` sub-tab.
+Navigate to the :guilabel:`ODK-X Tables / Current Tables` sub-tab.
 
 Delete each of the tables here. In this case, there will be only one, *Geotagger*. The server will now have a set of App-Level files but no data tables, forms for those tables, or data files. Except for the app-level files, it is clean.
 
@@ -275,7 +275,7 @@ Delete each of the tables here. In this case, there will be only one, *Geotagger
 
   If your table has a large number of configuration files or data rows, the server may time out during the deletion process. In this case, the next time you try to create the table on the server, it will resume the deletion process, and potentially time out again until such time as it is able to finish the deletion. Only then will it re-create the table.
 
-Now, from your device, launch ODK Tables, click on the sync icon (two curved arrows) to launch ODK Services, make sure you are logging in as a user with :guilabel:`Administer Tables` or :guilabel:`Site Admin` privileges, and choose :guilabel:`Reset App Server`.
+Now, from your device, launch ODK-X Tables, click on the sync icon (two curved arrows) to launch ODK-X Services, make sure you are logging in as a user with :guilabel:`Administer Tables` or :guilabel:`Site Admin` privileges, and choose :guilabel:`Reset App Server`.
 
 The synchronization process will create the tables and push your content up to this server. Note that the server now only contains the data rows present on the device -- it no longer has any of the additional data records from the demo site.
 
@@ -297,7 +297,7 @@ Useful Grunt Commands
 
 :guilabel:`grunt kill all` : Force stops survey, tables and services on the connected device.
 
-:guilabel:`grunt uninstall` : Uninstall ODK tools from the connected device.
+:guilabel:`grunt uninstall` : Uninstall ODK-X tools from the connected device.
 
 Next Steps
 -----------------------
@@ -312,7 +312,7 @@ To get started building applications, first set up the :doc:`app-designer-intro`
 
   - :doc:`build-app`
 
-A more complete guide to using ODK XLSX Converter is provided in the :doc:`xlsx-converter-intro` documentation. More details about Tables web views are available in :doc:`tables-web-pages` and :doc:`injected-interfaces`.
+A more complete guide to using ODK-X XLSX Converter is provided in the :doc:`xlsx-converter-intro` documentation. More details about Tables web views are available in :doc:`tables-web-pages` and :doc:`injected-interfaces`.
 
 For examples of real world applications and details about they are implemented, try out the: :doc:`reference-apps`.
 

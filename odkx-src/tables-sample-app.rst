@@ -1,7 +1,7 @@
-Sample ODK Tables Application
+Sample ODK-X Tables Application
 ===============================================
 
-In this guide we will be demonstrating how to use ODK Tables via a guided tour of a sample application.
+In this guide we will be demonstrating how to use ODK-X Tables via a guided tour of a sample application.
 
 
 .. toctree::

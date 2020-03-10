@@ -7,7 +7,7 @@ Unlike ODK Collect, the ODK-X tools are application-focused. An application is i
 
 To access the sample application and its six sample forms:
 
-  1. Launch ODK Survey. Press the :guilabel:`Settings` button that resembles a gear. This will launch the ODK Services tool to the settings page.
+  1. Launch ODK-X Survey. Press the :guilabel:`Settings` button that resembles a gear. This will launch the ODK-X Services tool to the settings page.
 
     .. image:: /img/survey-sample-app/survey-settings-button.*
       :alt: Survey Setting Button
@@ -35,7 +35,7 @@ Once the configuration and data on the device is an exact match to that of the s
 
 When complete, click :guilabel:`OK` on the :guilabel:`Sync Outcome` dialog and back out of the Services, returning to Survey.
 
-If the sync was successful, ODK Survey will scan through the downloaded configuration, updating its list of available forms.
+If the sync was successful, ODK-X Survey will scan through the downloaded configuration, updating its list of available forms.
 
   .. image:: /img/survey-sample-app/survey-scanning.*
     :alt: Survey Scanning Form Definitions

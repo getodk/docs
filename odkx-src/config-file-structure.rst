@@ -53,7 +53,7 @@ A complementary description is provided in the user-level documentation. The too
             index.html -- Survey top-level HTML
             /js/mock/... -- mock interfaces used in App Designer
             /survey/js/... -- Survey javascript
-            /survey/templates/... -- ODK Survey handlebars templates
+            /survey/templates/... -- ODK-X Survey handlebars templates
         /output     - holds logging files, exported data
         /permanent  - available for device-only content (e.g., map tiles)
 

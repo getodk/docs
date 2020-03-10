@@ -2,12 +2,12 @@
   phpLDAPadmin
   readonly
 
-ODK Sync Endpoint
+ODK-X Sync Endpoint
 =====================
 
 .. _sync-endpoint-intro:
 
-:dfn:`ODK Sync Endpoint` is an implementation of :doc:`cloud-endpoints-intro`. It runs a server inside a :program:`Docker` container that implements the `ODK-X REST Protocol <https://github.com/opendatakit/opendatakit/wiki/ODK-2.0-Synchronization-API-(RESTful)>`_.
+:dfn:`ODK-X Sync Endpoint` is an implementation of :doc:`cloud-endpoints-intro`. It runs a server inside a :program:`Docker` container that implements the `ODK-X REST Protocol <https://github.com/opendatakit/opendatakit/wiki/ODK-2.0-Synchronization-API-(RESTful)>`_.
 
 It communicates with your ODK-X Android applications to synchronize your data and application files.
 
@@ -16,7 +16,7 @@ It communicates with your ODK-X Android applications to synchronize your data an
 Authentication
 ----------------------
 
-ODK Sync Endpoint does not store user information in its own database, instead it integrates with an *LDAP* directory or an *Active Directory*. That directory is then used to authenticate users and obtain user roles.
+ODK-X Sync Endpoint does not store user information in its own database, instead it integrates with an *LDAP* directory or an *Active Directory*. That directory is then used to authenticate users and obtain user roles.
 
 .. note::
 
@@ -24,7 +24,7 @@ ODK Sync Endpoint does not store user information in its own database, instead i
 
 .. _sync-endpoint-prereqs:
 
-ODK Sync Endpoint prerequisites
+ODK-X Sync Endpoint prerequisites
 -----------------------------------
 
 You must have :program:`Docker 17.06.1` or newer, and be running in *Swarm Mode*.
@@ -35,10 +35,10 @@ Follow these links for detailed instructions on installing :program:`Docker` and
 
 .. _sync-endpoint-setup:
 
-ODK Sync Endpoint Setup
+ODK-X Sync Endpoint Setup
 ----------------------------
 
-ODK Sync Endpoint requires a database and a *LDAP* directory, you could follow the instructions and deploy all three components together or supply your own database and/or *LDAP* directory.
+ODK-X Sync Endpoint requires a database and a *LDAP* directory, you could follow the instructions and deploy all three components together or supply your own database and/or *LDAP* directory.
 
 .. note::
 
@@ -147,7 +147,7 @@ Custom LDAP directory
   1. If you haven't followed the :ref:`common instructions <sync-endpoint-setup>`, start with those.
   2. OPTIONAL: If your LDAP directory uses a certificate that was signed by a self-signed CA,
 
-    a. Make the public key of the CA available to ODK Sync Endpoint with this command.
+    a. Make the public key of the CA available to ODK-X Sync Endpoint with this command.
 
     .. code-block:: console
 
@@ -160,7 +160,7 @@ Custom LDAP directory
 
   .. note::
 
-    The default configuration does not use ldaps or StartTLS because the LDAP directory communicates with the ODK Sync Endpoint over a secure overlay network. You should use ldaps or StartTLS to communicate with your LDAP directory.
+    The default configuration does not use ldaps or StartTLS because the LDAP directory communicates with the ODK-X Sync Endpoint over a secure overlay network. You should use ldaps or StartTLS to communicate with your LDAP directory.
 
   5. In the cloned repository:
 
@@ -172,7 +172,7 @@ Custom LDAP directory
 
 .. _sync-endpoint-stopping:
 
-Stopping ODK Sync Endpoint
+Stopping ODK-X Sync Endpoint
 -------------------------------
 
   1. Run:

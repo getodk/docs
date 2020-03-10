@@ -1,4 +1,4 @@
-Installing ODK Suitcase
+Installing ODK-X Suitcase
 =================================
 
 .. _suitcase-install:
@@ -18,10 +18,10 @@ Prerequisites
 
 .. _suitcase-intstall-app:
 
-Installing ODK Suitcase
+Installing ODK-X Suitcase
 ------------------------------
 
-  1. Navigate to https://github.com/opendatakit/suitcase/releases/latest and download the latest :file:`ODK Suitcase.jar` file.
+  1. Navigate to https://github.com/opendatakit/suitcase/releases/latest and download the latest :file:`ODK-X Suitcase.jar` file.
   2. Double click the file to start. If that fails, try running:
 
     .. code-block:: console

@@ -1,7 +1,7 @@
 .. spelling::
   myapp
 
-Managing ODK Survey
+Managing ODK-X Survey
 ==========================
 
 .. _survey-managing:
@@ -18,7 +18,7 @@ Prerequisites
 Required
 ~~~~~~~~~~~~~
 
-To create an Data Management Application that uses ODK Survey, you will need the ODK tools:
+To create an Data Management Application that uses ODK-X Survey, you will need the ODK-X tools:
 
   - :doc:`services-intro`
   - :doc:`app-designer-intro`
@@ -39,7 +39,7 @@ We also recommend:
 
   - :doc:`tables-intro`
 
-ODK Tables is not required, but Tables and Survey are built to seamlessly integrate and support more robust Data Management Applications.
+ODK-X Tables is not required, but Tables and Survey are built to seamlessly integrate and support more robust Data Management Applications.
 
 .. _survey-dev-environment:
 
@@ -71,7 +71,7 @@ Launching With a Different AppName
 
 The ODK-X tools are designed to support multiple independent Data Management Applications running on the Android device. Each of our tools has the ability to run in the context of either a default application name, or a specified application name.
 
-By default, ODK Survey runs under the *default* application name (as does ODK Tables and the other ODK-X tools). Application names correspond to the name of the directory under :file:`/sdcard/opendatakit` where the configuration and data files for that application are stored.
+By default, ODK-X Survey runs under the *default* application name (as does ODK-X Tables and the other ODK-X tools). Application names correspond to the name of the directory under :file:`/sdcard/opendatakit` where the configuration and data files for that application are stored.
 
 .. warning::
 
@@ -92,7 +92,7 @@ Android 4.x Devices
 
   #. Choose to view the installed applications.
   #. Select the :guilabel:`Widgets` tab at the top of that screen.
-  #. Navigate through the available widgets, and select and hold the :guilabel:`ODK Survey Form` widget. Drag and drop it onto one of your Android launcher (home) screens.
+  #. Navigate through the available widgets, and select and hold the :guilabel:`ODK-X Survey Form` widget. Drag and drop it onto one of your Android launcher (home) screens.
   #. A list of available applications and forms will appear, in the form of application name for applications, and :menuselection:`application name --> form name` for each form within an application. Pick the :menuselection:`myapp` application that you created via :program:`OI File Manager`.
 
 .. _survey-launching-appname-android-5:
@@ -102,7 +102,7 @@ Android 5.x and Higher Devices:
 
   #. Long press an open area of the device home screen
   #. Select the :guilabel:`Widgets` tab at the bottom of resulting screen.
-  #. Navigate through the available widgets, and select and hold the :guilabel:`ODK Survey Form` widget. Drag and drop it onto one of your Android launcher (home) screens.
+  #. Navigate through the available widgets, and select and hold the :guilabel:`ODK-X Survey Form` widget. Drag and drop it onto one of your Android launcher (home) screens.
   #. A list of available applications and forms will appear, in the form of application name for applications, and :menuselection:`application name --> form name` for each form within an application. Pick the :menuselection:`myapp` application that you created via :program:`OI File Manager`.
 
 .. _survey-launching-appname-try-new:
@@ -110,11 +110,11 @@ Android 5.x and Higher Devices:
 Trying the New Launcher
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now, play around with launching ODK Survey using this application shortcut and :guilabel:`Finalizing` a new filled-in form. Exit ODK Survey, and launch it from the applications list (so that it launches as the default application). Verify that you do not see that newly filled-in form. You can also create a new filled-in form in this default application and confirm that it is not visible in the myapp application.
+Now, play around with launching ODK-X Survey using this application shortcut and :guilabel:`Finalizing` a new filled-in form. Exit ODK-X Survey, and launch it from the applications list (so that it launches as the default application). Verify that you do not see that newly filled-in form. You can also create a new filled-in form in this default application and confirm that it is not visible in the myapp application.
 
-This highlights the isolation of Data Management Applications in the ODK-X tools. This is even more powerful with applications that use ODK Tables because you can create entirely isolated applications, such as a forestry app and a health clinic app, and have the forms and data entirely independent of each other.
+This highlights the isolation of Data Management Applications in the ODK-X tools. This is even more powerful with applications that use ODK-X Tables because you can create entirely isolated applications, such as a forestry app and a health clinic app, and have the forms and data entirely independent of each other.
 
-This eliminates the need for different groups to fork the ODK code base.
+This eliminates the need for different groups to fork the ODK-X code base.
 
 .. _survey-launching-appname-make-new:
 

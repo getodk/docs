@@ -3,7 +3,7 @@
   allfields
   teahouse
 
-Managing ODK Tables
+Managing ODK-X Tables
 =======================
 
 .. _tables-managing:
@@ -20,7 +20,7 @@ Prerequisites
 Required
 ~~~~~~~~~~~~~
 
-To create an Data Management Application that uses ODK Tables, you will need the ODK tools:
+To create an Data Management Application that uses ODK-X Tables, you will need the ODK-X tools:
 
   - :doc:`services-intro`
   - :doc:`app-designer-intro`
@@ -41,7 +41,7 @@ We also recommend:
 
   - :doc:`survey-intro`
 
-ODK Survey is not required, but Tables and Survey are built to seamlessly integrate and support more robust Data Management Applications.
+ODK-X Survey is not required, but Tables and Survey are built to seamlessly integrate and support more robust Data Management Applications.
 
 .. _tables-managing-table-manager:
 
@@ -79,7 +79,7 @@ This can be achieved by creating a spreadsheet in a spreadsheet editor and savin
 The upload process is as follows:
 
   1. Place the CSV file onto the device and place it in the :file:`config/assets/csv/` directory with a filename of :file:`tableid.csv`. For example, :file:`/sdcard/opendatakit/default/config/assets/csv/people.csv` would be the CSV file for the *people* table.
-  2. Launch ODK Tables and navigate to the *Table Manager* screen.
+  2. Launch ODK-X Tables and navigate to the *Table Manager* screen.
   3. Press the plus :guilabel:`+` button at the top of the *Table Manager* screen.
 
     .. image:: /img/tables-managing/table-manager-import-button.*
@@ -109,7 +109,7 @@ The data will be read from the file and appended to your data table.
 
   Prior to any deployment, you should sync your device to your server and export the data table and copy the exported CSV file back on top of the simple CSV file that you created above.
 
-  This ensures that the additional fields required by the ODK tools are properly populated and that a server-managed revision number is added to the data rows so that all devices will have the same internal ids for all of your data rows. This eliminates the possibility of the :file:`tables.init` mechanism introducing duplicate records and speeds the sync process and minimizes the occurrence of conflicts across the devices when these devices first sync to the server.
+  This ensures that the additional fields required by the ODK-X tools are properly populated and that a server-managed revision number is added to the data rows so that all devices will have the same internal ids for all of your data rows. This eliminates the possibility of the :file:`tables.init` mechanism introducing duplicate records and speeds the sync process and minimizes the occurrence of conflicts across the devices when these devices first sync to the server.
 
 .. warning::
 
@@ -132,7 +132,7 @@ A Tables-exported CSV includes all the metadata needed to allow the table to be 
 
 To export a table:
 
-  1. Launch ODK Tables and navigate to the *Table Manager* screen.
+  1. Launch ODK-X Tables and navigate to the *Table Manager* screen.
   2. Press the arrow :guilabel:`->` icon at the top of the *Table Manager* screen.
 
     .. image:: /img/tables-managing/table-manager-export-screen.*
@@ -358,11 +358,11 @@ To get started creating your own Data Management Applications, go to the :doc:`a
 Adding Your Own Tables
 ------------------------------
 
-The creation of data tables is handled within the :doc:`app-designer-intro`. ODK Tables can display and present data, but cannot create Tables on the fly. This enables the ODK Services application to enforce that the configuration of the device (its tables, HTML files, form definitions, and so on) are identical to those on the server.
+The creation of data tables is handled within the :doc:`app-designer-intro`. ODK-X Tables can display and present data, but cannot create Tables on the fly. This enables the ODK-X Services application to enforce that the configuration of the device (its tables, HTML files, form definitions, and so on) are identical to those on the server.
 
 .. _tables-managing-adding-tables-app-designer:
 
-Initialize from ODK Application Designer
+Initialize from ODK-X Application Designer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 See the documentation for :doc:`build-app` and :ref:`build-app-creating-web-file` for more details on adding your own tables and defining their properties.
@@ -403,7 +403,7 @@ Example code to explore these APIs and how they can be used (including the :doc:
 Custom Home Screen
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-ODK Tables allows you to customize the app home screen. If you supply a custom home screen (:file:`config/assets/index.html`), you will have the option of using this as the home screen of the app. For an example, see the :ref:`sample application <tables-sample-app-custom-home-screen>`.
+ODK-X Tables allows you to customize the app home screen. If you supply a custom home screen (:file:`config/assets/index.html`), you will have the option of using this as the home screen of the app. For an example, see the :ref:`sample application <tables-sample-app-custom-home-screen>`.
 
 
 .. _tables-managing-config-at-startup:
@@ -411,7 +411,7 @@ ODK Tables allows you to customize the app home screen. If you supply a custom h
 Configuring an App at Startup
 -----------------------------------
 
-If you are installing Tables on a new device and don’t have a server set up from which to pull the data (see the :ref:`section about syncing <tables-using-syncing>`, you can alternatively configure Tables to import data at startup. This is useful during forms development, as you can push the form definitions, HTML, and JavaScript for your application data down to the phone from your computer and launch ODK Tables, and it will load data from CSV files into your data tables.
+If you are installing Tables on a new device and don’t have a server set up from which to pull the data (see the :ref:`section about syncing <tables-using-syncing>`, you can alternatively configure Tables to import data at startup. This is useful during forms development, as you can push the form definitions, HTML, and JavaScript for your application data down to the phone from your computer and launch ODK-X Tables, and it will load data from CSV files into your data tables.
 
 The configuration file must be titled :file:`tables.init` and placed in the :file:`/sdcard/odk/tables/config/assets` directory. Below is the complete contents of the :file:`tables.init` file distributed with the sample application:
 
@@ -438,7 +438,7 @@ The table_keys key contains a comma and space separated list of table keys. Each
 
 .. tip::
 
-  Only one attempt is made to read and import data at start-up. If that attempt fails, some or all tables may not be initialized or may be partially initialized. You can trigger a re-processing of this file by going to :guilabel:`Settings` and clicking :guilabel:`Reset configuration` then exiting the ODK tool and re-opening it.
+  Only one attempt is made to read and import data at start-up. If that attempt fails, some or all tables may not be initialized or may be partially initialized. You can trigger a re-processing of this file by going to :guilabel:`Settings` and clicking :guilabel:`Reset configuration` then exiting the ODK-X tool and re-opening it.
 
 As mentioned earlier, this file is never uploaded to the server. After you have created your user application and loaded data onto your device using this mechanism, resetting the app server will push all the configuration files and all of data (the data rows loaded by the :file:`tables.init` script) up to the server (except for this :file:`tables.init` file). Other devices that synchronize with the server will retrieve all of those data rows during the data-row synchronization phase. There is no need for the devices that synchronize with the server to have a copy of the :file:`tables.init` file and independently perform these actions.
 

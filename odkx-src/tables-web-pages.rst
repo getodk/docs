@@ -2,7 +2,7 @@
 
   viewport
 
-ODK Tables Web Pages
+ODK-X Tables Web Pages
 ========================
 
 .. _tables-web-pages:

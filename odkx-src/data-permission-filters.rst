@@ -104,7 +104,7 @@ Individual users can belong to any number of groups, enabling arbitrarily comple
 Obtaining a User's Groups and Roles
 ----------------------------------------
 
-Inside ODK Survey and ODK Tables web pages, the groups and roles of the current verified user are available in JavaScript via the API:
+Inside ODK-X Survey and ODK-X Tables web pages, the groups and roles of the current verified user are available in JavaScript via the API:
 
 .. code-block:: javascript
 
@@ -121,7 +121,7 @@ Inside ODK Survey and ODK Tables web pages, the groups and roles of the current 
 Obtaining a User's Default Group
 ---------------------------------------
 
-Inside ODK Survey and ODK Tables web pages, the default group of the current verified user is available in JavaScript via the API:
+Inside ODK-X Survey and ODK-X Tables web pages, the default group of the current verified user is available in JavaScript via the API:
 
 .. code-block:: javascript
 
@@ -159,7 +159,7 @@ The *Full Name* field on the server (on the :menuselection:`Site Admin -->  Perm
 
 If the user has been assigned to a default group it will be provided.  Default groups are not directly used within the ODK-X framework. These are provided for use by an application designer when crafting their application.
 
-Inside ODK Survey and ODK Tables web pages, the list of all configured users is available in JavaScript via the API:
+Inside ODK-X Survey and ODK-X Tables web pages, the list of all configured users is available in JavaScript via the API:
 
 .. code-block:: javascript
 
@@ -333,7 +333,7 @@ Ordinary users will receive a not-authorized error if they attempt to set any of
 Implementation of the HIDDEN filter on queries
 -----------------------------------------------------
 
-When a SQL query is processed inside the ODK Services layer, it is first examined to see if the result set contains the columns :th:`_sync_state`, :th:`_default_access`, :th:`_row_owner`, :th:`_group_read_only`, :th:`_group_modify`, and :th:`_group_privileged`. If it contains all six columns, then the query is wrapped with a :code:`where` clause to exclude hidden rows and that, in turn, is wrapped by whatever :code:`limit` and :code:`offset` you have specified for the query.
+When a SQL query is processed inside the ODK-X Services layer, it is first examined to see if the result set contains the columns :th:`_sync_state`, :th:`_default_access`, :th:`_row_owner`, :th:`_group_read_only`, :th:`_group_modify`, and :th:`_group_privileged`. If it contains all six columns, then the query is wrapped with a :code:`where` clause to exclude hidden rows and that, in turn, is wrapped by whatever :code:`limit` and :code:`offset` you have specified for the query.
 
 .. warning::
 
@@ -358,7 +358,7 @@ When a SQL query is processed inside the ODK Services layer, it is first examine
 Effective Access
 -----------------------
 
-As mentioned above, when a SQL query is processed inside the ODK Services layer, it is first examined to see if the result set contains the columns :th:`_sync_state`, :th:`_default_access`, :th:`_row_owner`, :th:`_group_read_only`, :th:`_group_modify`, and :th:`_group_privileged`. If it contains all six columns, then a synthesized column, :th:`_effective_access` is added to the result set. That column returns one of *r*, *rw*, *rwd*, or *rwdp* (with the *p* indicating that a user can change permissions for the row as well) to indicate the level of access the current user has on the rows in the result set.
+As mentioned above, when a SQL query is processed inside the ODK-X Services layer, it is first examined to see if the result set contains the columns :th:`_sync_state`, :th:`_default_access`, :th:`_row_owner`, :th:`_group_read_only`, :th:`_group_modify`, and :th:`_group_privileged`. If it contains all six columns, then a synthesized column, :th:`_effective_access` is added to the result set. That column returns one of *r*, *rw*, *rwd*, or *rwdp* (with the *p* indicating that a user can change permissions for the row as well) to indicate the level of access the current user has on the rows in the result set.
 
 Additionally, once a result set is returned for a given table, you can determine whether the current user can create new rows on the table by calling :code:`getCanCreateRow`
 
@@ -420,14 +420,14 @@ To install the demo on the device:
 
       $ grunt adbpush-tables-rowlevelaccessdemo
 
-  #. Start ODK Survey and exit it.
-  #. Start ODK Tables.
+  #. Start ODK-X Survey and exit it.
+  #. Start ODK-X Tables.
 
 You will be presented with a demo launch screen.
 
 At this point, all the rows in all the tables have a :th:`_sync_state` of :tc:`new_row` and are fully editable and deletable. The demo will not become interesting until you set up and sync with a server.
 
-Set up an ODK Cloud Endpoint or ODK Aggregate 1.4.15 server with 2 ordinary users, 1 super-user and 1 tables administrator. :guilabel:`Reset App Server` to push the configuration and data up to the server.
+Set up an ODK-X Cloud Endpoint or ODK Aggregate 1.4.15 server with 2 ordinary users, 1 super-user and 1 tables administrator. :guilabel:`Reset App Server` to push the configuration and data up to the server.
 
 You are now an administrator (you needed to be in order to reset the server). You can choose :guilabel:`Change Row-Level Access Filters` to view and perhaps modify the default access and row owner of one or more rows. All rows in all tables are fully editable and deletable.
 
