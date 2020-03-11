@@ -1,5 +1,5 @@
 Installing ODK-X Services
-=========================
+============================
 
 .. _services-prereqs:
 

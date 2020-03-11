@@ -1,5 +1,5 @@
 Using ODK-X Scan Form Designer
-================================
+===================================
 
 .. _scan-form-using-getting-started:
 

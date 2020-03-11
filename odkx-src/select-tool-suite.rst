@@ -1,5 +1,5 @@
 Selecting the Appropriate Tool Suite
-=====================================
+======================================
 
 Generally, we suggest starting with the ODK tool suite. If it does not fulfill your requirements then move on to the more flexible, but also more complex, ODK-X tool suite.
 

@@ -1,5 +1,5 @@
 ODK-X Scan Form Designer
-=========================
+============================
 
 .. _scan-form-introduction:
 
