@@ -36,7 +36,7 @@ ODK-X Survey offers a rich set of features that can be seamlessly integrated int
 .. _xlsx-using-create-load-survey:
 
 Creating and Loading a Form into ODK-X Survey
----------------------------------------------
+-------------------------------------------------
 
 Below are the steps to create a new form from the *exampleForm*:
 

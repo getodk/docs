@@ -10,7 +10,7 @@ It also allows you to sync data collected by the ODK-X tools with an ODK-X Cloud
 .. _services-intro-learn-more:
 
 Learn more about ODK-X Services
------------------------------
+----------------------------------
 
 - :doc:`services-install`
 - :doc:`services-using`

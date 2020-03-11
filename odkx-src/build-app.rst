@@ -403,7 +403,7 @@ More :program:`grunt` commands can be found in :ref:`build-app-pushing`.
 .. _build-app-design-view:
 
 ODK-X Tables: Designing a Custom View
--------------------------------------
+----------------------------------------
 
 One of the most powerful aspects of ODK-X Tables is its ability to run HTML and
 JavaScript pages as the skin of the app. Through a JavaScript API presented to these files, you can query the database and control the app.
