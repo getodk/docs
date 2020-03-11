@@ -22,6 +22,7 @@ import sys
 sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath('../'))
 import video
+import sphinx_fontawesome
 
 # -- General configuration ------------------------------------------------
 
@@ -40,7 +41,8 @@ extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.mathjax',
     'sphinx_tabs.tabs',
     'sphinxcontrib.spelling',
-    'video']
+    'video',
+    'sphinx_fontawesome']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -56,7 +58,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Open Data Kit'
-copyright = '2017, Open Data Kit. This document is licensed under a Creative Commons Attribution 4.0 International License'
+copyright = '2020, Open Data Kit. This document is licensed under a Creative Commons Attribution 4.0 International License'
 author = 'Open Data Kit'
 
 # The version info for the project you're documenting, acts as replacement for

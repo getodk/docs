@@ -36,6 +36,7 @@ sphinx-autobuild==0.7.1
 sphinx-rtd-theme==0.4.1
 sphinx-tabs==1.1.7
 Sphinx==1.6.6
+sphinx_fontawesome==0.0.6
 sphinxcontrib-spelling==4.2.0
 sphinxcontrib-websupport==1.0.1
 tornado==5.1.1
