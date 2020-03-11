@@ -1,5 +1,5 @@
 Using ODK-X Application Designer
-===============================
+=================================
 
 .. toctree::
   :maxdepth: 3
