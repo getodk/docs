@@ -1,5 +1,5 @@
 ODK-X Tables: Internal Details
-==============================
+=================================
 
 .. _tables-internal-details:
 

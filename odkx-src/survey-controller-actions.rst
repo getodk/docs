@@ -6,7 +6,7 @@
 
 
 ODK-X Survey Controller Actions
-==================================
+====================================
 
 .. _survey-controller-actions:
 

@@ -1,5 +1,5 @@
 ODK-X Suitcase
-===============
+=================
 
 .. _suitcase-intro:
 

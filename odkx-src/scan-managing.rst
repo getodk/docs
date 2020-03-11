@@ -1,5 +1,5 @@
 Managing ODK-X Scan
-==================
+======================
 
 .. _scan-managing:
 

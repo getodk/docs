@@ -1,5 +1,5 @@
 ODK-X XLSX Converter
-====================
+=======================
 
 .. _xlsx-converter-intro:
 
