@@ -1,5 +1,5 @@
 ODK-X Application Designer Overview
-==================================
+=====================================
 
 .. _app-designer-overview:
 
