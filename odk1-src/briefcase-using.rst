@@ -56,9 +56,9 @@ Briefcase will ask for the directory on your computer where you have placed Coll
 
 1. Ensure all filled-in forms are finalized.
 
-    If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy of :file:`/sdcard/odk` before deleting them, and restore it after you are finished.
+    If you have incomplete forms that you cannot finalize before pulling into Briefcase, delete them. If you need to keep them, make a copy of :ref:`your Collect directory <collect-directory>` before deleting them, and restore it after you are finished.
 
-2. Using your device, create a zip archive of the entire :file:`odk` directory with a file managing app such as `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
+2. Using your device, create a zip archive of :ref:`your Collect directory <collect-directory>` with a file managing app such as `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_.
 3. Transfer the zip file to your local hard drive via a USB cable. You can also use the Share feature in your file manager to transfer it to a third-party service like Google Drive then download it to your local hard drive.
 4. Once the zip file is on your local hard drive, unzip the file.
 
@@ -72,7 +72,7 @@ Briefcase will ask for the directory on your computer where you have placed Coll
 
   .. code-block:: console
 
-      $ adb pull /sdcard/odk/instances
+      $ adb pull <collect-directory>/instances
 
 .. _pull-form-definition:
 
