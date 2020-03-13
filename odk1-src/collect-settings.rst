@@ -49,26 +49,25 @@ General Settings
 To access General Settings:
   :menuselection:`⋮ --> General Settings`
 
-.. image:: /img/collect-settings/general-settings.*
-  :alt: General settings
-  :class: device-screen-vertical
+  .. container:: details
+
+    .. image:: /img/collect-settings/general-settings.*
+      :alt: General settings
 
 .. _server-settings:
 
 Server Settings
 ~~~~~~~~~~~~~~~~~
 
-Server settings :doc:`control the connection to <collect-connect>`
-an :doc:`Aggregate <aggregate-intro>` or :doc:`openrosa` server
-or a :doc:`Google Drive account <collect-connect-google>`.
+Server settings :doc:`configure the connection to an <collect-connect>` :doc:`openrosa` server (:doc:`Aggregate <aggregate-intro>`, :doc:`Central <central-intro>`, etc) or a :doc:`Google Drive account <collect-connect-google>`.
 
 To access Server Settings:
   :menuselection:`⋮ --> General Settings --> Server`
 
+  .. container:: details
 
-.. image:: /img/collect-settings/server-settings.*
-  :alt: Server settings
-  :class: device-screen-vertical
+    .. image:: /img/collect-settings/server-settings.*
+      :alt: Server settings
 
 .. seealso:: :doc:`collect-connect`
 
@@ -82,11 +81,13 @@ User Interface settings control Collect's appearance and behavior.
 To access User Interface settings:
   :menuselection:`⋮ --> General Settings --> User Interface`
 
-.. image:: /img/collect-settings/ui-settings.*
-  :alt: User Interface settings
-  :class: device-screen-vertical
+  .. container:: details
+
+    .. image:: /img/collect-settings/ui-settings.*
+      :alt: User Interface settings
 
 :guilabel:`Theme`
+""""""""""""""""""
   Toggles Light and Dark themes.
 
   .. versionadded:: 1.15
@@ -102,14 +103,16 @@ To access User Interface settings:
       :alt: The main menu, with the dark theme enabled.
       :class: side-by-side
 
-
 :guilabel:`Language`
+"""""""""""""""""""""
   Sets the display language.
 
 :guilabel:`Text font size`
+""""""""""""""""""""""""""""
   Sets the display font size.
 
 :guilabel:`Navigation`
+"""""""""""""""""""""""
   Sets form navigation style for moving between questions.
 
   Options:
@@ -119,6 +122,7 @@ To access User Interface settings:
   - Both
 
 :guilabel:`Splash Screen`
+"""""""""""""""""""""""""""
   Sets an image to display while Collect loads.
 
 .. _mapping-settings:
@@ -162,40 +166,55 @@ Reference layer settings configure map data shown on top of the basemap. Current
 Form Management Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Form Management settings control default behavior
-when editing, finalizing, and importing forms.
+Form Management settings control default behavior when editing, finalizing, and importing forms.
 
 To access Form Management settings:
   :menuselection:`⋮ --> General Settings --> Form Management`
 
+  .. container:: details
 
-.. image:: /img/collect-settings/form-management.png
-  :alt: Form Management settings
-  :class: device-screen-vertical
+    .. image:: /img/collect-settings/form-management.png
+      :alt: Form Management settings
 
-.. image:: /img/collect-settings/form-management2.png
-  :alt: Form Management settings
-  :class: device-screen-vertical
+    .. image:: /img/collect-settings/form-management2.png
+      :alt: Form Management settings
 
+.. rubric:: Form update
+
+:guilabel:`Periodic form updates check`
+""""""""""""""""""""""""""""""""""""""""
+  Specifies the frequency at which the configured server should be polled for form updates.
+
+:guilabel:`Automatic download`
+"""""""""""""""""""""""""""""""
+  When enabled, any form currently on the device that has a new version available on the server will be automatically downloaded.
+
+:guilabel:`Hide old form versions`
+"""""""""""""""""""""""""""""""""""
+  When enabled, if there are multiple versions of the same form, only the most recently downloaded will be displayed on the :guilabel:`Fill Blank Form` screen.
 
 .. rubric:: Form submission
 
 :guilabel:`Auto send`
+""""""""""""""""""""""
   When enabled, forms are sent immediately when they are finalized,
   if the device can connect to the internet.
   You can specify whether to send over WiFi, cellular data, or both.
 
 :guilabel:`Delete after send`
+""""""""""""""""""""""""""""""
   When enabled, form instances are deleted once they are sent.
 
 .. rubric:: Form filling
 
 :guilabel:`Default to finalized`
+"""""""""""""""""""""""""""""""""
   When enabled, forms are automatically finalized
   upon reaching the end of the form.
   You can opt out of this on any specific form during form completion.
 
 :guilabel:`Constraint processing`
+"""""""""""""""""""""""""""""""""""
   Sets when form responses are validated against constraints_.
 
   Options:
@@ -206,11 +225,13 @@ To access Form Management settings:
   .. _constraints: http://xlsform.org/#constraints
 
 :guilabel:`High res video`
+"""""""""""""""""""""""""""""
   When enabled,
   :ref:`video` widgets will record high resolution video
   if possible.
 
 :guilabel:`Image size`
+""""""""""""""""""""""""
   .. versionadded:: 1.11.0
 
   Sets the default maximum size for images added to forms,
@@ -237,11 +258,15 @@ To access Form Management settings:
     but you want to reduce the size of image files
     as much as possible.
 
+:guilabel:`Show guidance for questions`
+""""""""""""""""""""""""""""""""""""""""
+  Guidance hints on questions can be used to display additional information that is not always needed. For example, they can be used to show extra instructions to be used during training or valuable only on a printout. If set to `Yes - always shown`, guidance hints will always be displayed below regular hints. If set to `Yes - collapsed`, the user will need to tap to view guidance hints.
+
 .. rubric:: Form import
 
-:guilabel:`Import saved forms as finalized`
-  When enabled, forms added directly to the :file:`instances/` directory
-  are automatically set to :formstate:`Finalized`.
+:guilabel:`Finalize forms on import`
+"""""""""""""""""""""""""""""""""""""
+  When enabled, forms added directly to the :file:`instances/` directory are automatically set to :formstate:`Finalized`. This is particularly relevant when putting records for an encrypted form directly to the device because encryption happens on finalization.
 
 .. _id-settings:
 
@@ -255,9 +280,10 @@ are used.
 To access User and device identity settings:
   :menuselection:`⋮ --> General Settings --> User and device identity`
 
-.. image:: /img/collect-settings/und-settings.*
-  :alt: User and Device Identity Settings
-  :class: device-screen-vertical
+  .. container:: details
+
+    .. image:: /img/collect-settings/und-settings.*
+      :alt: User and Device Identity Settings
 
 .. _form-metadata-settings:
 
@@ -270,10 +296,11 @@ is added to the :ref:`metadata of forms <metadata>` completed on the device.
 To access form metadata settings:
   :menuselection:`⋮ --> General Settings --> User and Device Identity --> Form Metadata`
 
+  .. container:: details
 
-.. image:: /img/collect-settings/form-metadata.*
-  :alt: Form Metadata Settings
-  :class: device-screen-vertical
+    .. image:: /img/collect-settings/form-metadata.*
+      :alt: Form Metadata Settings
+      :class: device-screen-vertical
 
 .. rubric:: User-defined
 
@@ -298,6 +325,9 @@ You cannot edit these:
 - Device ID
 - Subscriber ID
 - SIM serial number
+- Install ID
+
+:guilabel:`Device ID` is currently set to the device IMEI. Starting in August 2020, Google will no longer allow Android applications to read the IMEI. At that time, the Collect-generated :guilabel:`Install ID` will be used as the :guilabel:`Device ID`. Both are currently displayed to allow organizations to transition over. :guilabel:`Install ID` can be copied by long-pressing on its text.
 
 .. _usage-data-setting:
 
