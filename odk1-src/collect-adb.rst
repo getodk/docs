@@ -54,7 +54,7 @@ __ https://android.gadgethacks.com/how-to/android-basics-install-adb-fastboot-ma
 Managing forms with ADB
 ---------------------------
 
-Forms are stored on the device in  :file:`/sdcard/odk/forms/`.
+Form definitions are stored on the device in the :file:`forms` subdirectory of :ref:`your Collect directory <collect-directory>`.
 
 .. _loading-blank-forms-with-adb:
 
@@ -63,7 +63,7 @@ Loading blank forms
 
 .. code-block:: console
 
-  $ adb push local/path/to/form.xml /sdcard/odk/forms/form.xml
+  $ adb push local/path/to/form.xml <collect-directory>/forms/form.xml
 
 .. note::
 
@@ -78,18 +78,18 @@ Deleting forms
 
 .. code-block:: console
 
-  $ adb shell rm -d /sdcard/odk/forms/form.xml
+  $ adb shell rm -d <collect-directory>/forms/form.xml
 
 .. _downloading-forms:
 
 Downloading forms to your computer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To download a completed form or form instance from the computer:
+To download all filled records from a device:
 
 .. code-block:: console
 
-  $ adb pull /sdcard/odk/forms/form.xml
+  $ adb pull <collect-directory>/instances/*
 
   
 .. _adb-dev-tasks:
@@ -102,13 +102,13 @@ Developer tasks and troubleshooting with ADB
 Downloading Collect databases
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Collect stores settings and form state information
+Collect stores form definition and form record state information
 in a few SQLite databases, 
 which you can pull onto your local computer.
 
 .. code-block:: console
   
-  $  adb pull /sdcard/odk/metadata/*.db
+  $  adb pull <collect-directory>/metadata/*.db
   
 .. _saving-screenshot-with-adb:
 
@@ -175,7 +175,7 @@ use :command:`adb logcat` to capture log events during the crash.
 #. Type :kbd:`CTRL-C` to stop logging.
 
 You can then upload the :file:`logfile.txt` file to 
-a `Collect issue on GitHub <https://github.com/opendatakit/collect/issues>`_
+a `a support forum post <https://forum.opendatakit.org/c/support>`_
 or post in the |forum|.
 
 .. _bugreport:
@@ -196,3 +196,17 @@ along with information about the device's
 hardware, firmware, and operating system.
 
 .. seealso:: https://developer.android.com/studio/debug/bug-report.html
+
+.. _collect-directory:
+
+Identifying the Collect directory on your device
+-------------------------------------------------
+
+The ODK Collect directory on your device is:
+
+* :file:`/sdcard/odk` if you are running an ODK Collect version less than v1.26.0 or have a file migration banner on the main screen
+* :file:`/sdcard/Android/data/org.odk.collect.android/files` if you have ODK Collect version v1.26.0+ and don't have a file migration banner on the main screen
+
+Prior to ODK Collect v1.26.0, all Collect files were stored in the :file:`/sdcard/odk` directory. This directory was available to other applications to integrate with which can be very useful but can pose privacy risks.
+
+Starting August 2020, Google will no longer allow Android applications to read or write files directly to this folder. Instead, each application will only be able to write files to a special directory that only it has access to. You can read more about this change `on the forum <https://forum.opendatakit.org/t/odk-collect-v1-26-storage-migration/25268>`_.

@@ -77,18 +77,18 @@ Loading forms directly
 Loading forms with ``adb``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can load forms directly from a computer to your device via USB, using :doc:`Android Debug Bridge <collect-adb>`.
+You can load forms directly from a computer to your device's :ref:`Collect directory <collect-directory>` via USB, using :doc:`Android Debug Bridge <collect-adb>`.
 
 .. code-block:: none
 
-  $ adb push path/to/form.xml /sdcard/odk/forms/form.xml
+  $ adb push path/to/form.xml <collect-directory>/forms/form.xml
 
 .. _loading-forms-from-device-storage:
 
 Loading forms from device storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can also download forms to your device via a web browser, and move them to the :file:`odk/forms/` directory, using the device's file manager (:menuselection:`Settings -> Storage & USB -> Explore`).
+You can also download forms to your device via a web browser, and move them to the :file:`forms/` directory, using the device's file manager (:menuselection:`Settings -> Storage & USB -> Explore`).
 
 1. Go to the Settings menu (:guilabel:`⚙`) on your device and find :menuselection:`Storage & USB`
 
@@ -115,7 +115,7 @@ Media files should be placed in a folder labeled :file:`{form-name}-media`.
 
 - When using ODK Aggregate, the form upload prompt includes instructions to upload the :file:`-media` folder. The files are downloaded automatically when :ref:`fetching forms from Aggregate <in-app-get-blank-forms>`.
 - When using Google Drive, the :file:`-media` folder should be uploaded to the same location as the form. If you share forms with another user, you need to share the parent folder which contains a form and a folder with media files. Sharing both of them separately wouldn't be enough.
-- If :ref:`loading forms directly to your device <loading-forms-directly>`, the :file:`-media` folder needs to be placed in the :file:`sdcard/odk/forms` directory, alongside the form itself.
+- If :ref:`loading forms directly to your device <loading-forms-directly>`, the :file:`-media` folder needs to be placed in the :file:`forms` subdirectory of :ref:`your Collect directory <collect-directory>`, alongside the form itself.
 
 
 .. _editing-saved-forms:
@@ -236,4 +236,4 @@ You can delete :formstate:`Blank` forms as well as filled forms in any state (:f
 Deleting Forms with ``adb``
 -------------------------------
 
-You can also :ref:`delete form instances directly with <deleting-forms-with-adb>` :doc:`Android Debug Bridge <collect-adb>`. They are stored in :file:`sdcard/odk/instances`, with a directory for each instance.
+You can also :ref:`delete form instances directly with <deleting-forms-with-adb>` :doc:`Android Debug Bridge <collect-adb>`. They are stored in the :file:`instances` subdirectory of :ref:`your Collect directory <collect-directory>`, with a directory for each instance.

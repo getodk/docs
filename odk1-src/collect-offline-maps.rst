@@ -32,7 +32,7 @@ For the reference layer, however, you can select a file on the device, and it wi
 Offline maps quick start
 -------------------------
 #. :ref:`Get or create your MBTiles file <getting-map-tiles>` with `TileMill <https://tilemill-project.github.io/tilemill/>`_ or other software.
-#. :ref:`Transfer tiles to devices <transferring-offline-tiles>`. The MBTiles file must be placed on your device in the :file:`/sdcard/odk/layers` folder, and the filename must end in `.mbtiles`.
+#. :ref:`Transfer tiles to devices <transferring-offline-tiles>`. The MBTiles file must be placed on your device in the :file:`layers` subdirectory of :ref:`your Collect directory <collect-directory>`, and the filename must end in `.mbtiles`.
 #. Select your offline layer in the :ref:`reference layer settings <reference-layer-settings>`.
 #. Open a :ref:`geopoint <geopoint-maps>`, :ref:`geotrace <geotrace-widget>`, or :ref:`geoshape <geoshape-widget>` question.
 #. While viewing the map, you can also select the offline layer using the button that looks like a stack of layers.
@@ -55,7 +55,7 @@ If you have existing geospatial data that is not in an MBTiles file, you may be 
 
 Transferring offline tilesets to devices
 -----------------------------------------
-MBTiles files must be manually transferred to Android devices to be available to Collect. Place the MBTiles files in the :file:`/sdcard/odk/layers` folder, and ensure their filenames end in `.mbtiles`.
+MBTiles files must be manually transferred to Android devices to be available to Collect. Place the MBTiles files in the :file:`layers` subdirectory of :ref:`your Collect directory <collect-directory>`, and ensure their filenames end in `.mbtiles`.
 
 To transfer files, you can upload them to an online service such as Google Drive, connect your device to a computer and transfer them via USB, or use :doc:`adb <collect-adb>`.
 
@@ -63,7 +63,7 @@ To transfer files, you can upload them to an online service such as Google Drive
 
 Selecting offline tilesets
 ---------------------------
-Once an MBTiles file has been transferred to the :file:`/sdcard/odk/layers` folder, it will be available for selection as a reference layer. A reference layer provides useful reference information for a data collector. A reference layer with no transparency acts like a basemap.
+Once an MBTiles file has been transferred to the :file:`layers` subdirectory of :ref:`your Collect directory <collect-directory>`, it will be available for selection as a reference layer. A reference layer provides useful reference information for a data collector. A reference layer with no transparency acts like a basemap.
 
 There are two ways to set the reference layer:
 

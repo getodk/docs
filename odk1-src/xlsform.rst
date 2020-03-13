@@ -59,8 +59,8 @@ The :command:`xls2xform` command can then be used:
   
 .. tip::
 
-  Use pyxform together with :doc:`adb <collect-adb>` to quickly convert an XLSForm and load it to a device. Once you have both tools installed, convert and push in a single line:
+  Use pyxform together with :doc:`adb <collect-adb>` to quickly convert an XLSForm and load it to :ref:`a device's Collect directory <collect-directory>`. Once you have both tools installed, convert and push in a single line:
   
   .. code-block:: console
   
-    $ xls2xform form-name.xlsx form-name.xml && adb push form-name.xml /sdcard/odk/forms/form-name.xml
+    $ xls2xform form-name.xlsx form-name.xml && adb push form-name.xml <collect-directory>/forms/form-name.xml
