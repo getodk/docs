@@ -4,6 +4,8 @@
   basemaps
   Basemaps
   Mapbox
+  Transifex
+  Unfinalized
 
 Collect Menus, Settings, and Security
 =====================================
@@ -105,11 +107,11 @@ To access User Interface settings:
 
 :guilabel:`Language`
 """""""""""""""""""""
-  Sets the display language.
+  Forces the Collect interface to use a specific language. By default, Collect matches the device language. Note that this only sets the language for the Collect interface and not for form contents. For multi-language forms, the form language is set :ref:`while filling out that form <change-form-language>`. The Collect translations are provided by the ODK community through the `Transifex service <https://www.transifex.com/opendatakit/collect/>`_. You can join Transifex to add or correct translations in your language.
 
 :guilabel:`Text font size`
 """"""""""""""""""""""""""""
-  Sets the display font size.
+  Sets the size of fonts used in the form-filling interface.
 
 :guilabel:`Navigation`
 """""""""""""""""""""""
@@ -197,8 +199,7 @@ To access Form Management settings:
 
 :guilabel:`Auto send`
 """"""""""""""""""""""
-  When enabled, forms are sent immediately when they are finalized,
-  if the device can connect to the internet.
+  When enabled, forms are sent immediately when they are finalized, if the device can connect to the internet. If an internet connection is not available at the time of finalization, your finalized forms will be queued to send as soon as connectivity is established.
   You can specify whether to send over WiFi, cellular data, or both.
 
 :guilabel:`Delete after send`
@@ -209,9 +210,7 @@ To access Form Management settings:
 
 :guilabel:`Default to finalized`
 """""""""""""""""""""""""""""""""
-  When enabled, forms are automatically finalized
-  upon reaching the end of the form.
-  You can opt out of this on any specific form during form completion.
+  When enabled, records are set to be finalized when saved at the end of a form-filling session. You can opt out of this at the end of filling any specific record. This is particularly important to consider when using :doc:`encrypted forms <encrypted-forms>` because encryption happens on finalization. Finalized records for encrypted forms can't be opened because they are encrypted. Records for encrypted forms that have not been finalized are not encrypted and can be edited.
 
 :guilabel:`Constraint processing`
 """""""""""""""""""""""""""""""""""
@@ -290,8 +289,8 @@ To access User and device identity settings:
 Form metadata settings
 """"""""""""""""""""""""
 
-Form metadata settings control how identifying information
-is added to the :ref:`metadata of forms <metadata>` completed on the device.
+Form metadata settings control identifying information
+:ref:`added to forms <metadata>` filled on the device.
 
 To access form metadata settings:
   :menuselection:`⋮ --> General Settings --> User and Device Identity --> Form Metadata`
