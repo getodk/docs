@@ -210,7 +210,7 @@ To access Form Management settings:
 
 :guilabel:`Default to finalized`
 """""""""""""""""""""""""""""""""
-  When enabled, records are set to be finalized when saved at the end of a form-filling session. You can opt out of this at the end of filling any specific record. This is particularly important to consider when forms are encrypted because encryption happens on finalization. Finalized records for encrypted forms can't be opened because they are encrypted. Records for encrypted forms that have not been finalized are not encrypted and can be edited.
+  When enabled, records are set to be finalized when saved at the end of a form-filling session. You can opt out of this at the end of filling any specific record. This is particularly important to consider when using :doc:`encrypted forms <encrypted-forms>` because encryption happens on finalization. Finalized records for encrypted forms can't be opened because they are encrypted. Records for encrypted forms that have not been finalized are not encrypted and can be edited.
 
 :guilabel:`Constraint processing`
 """""""""""""""""""""""""""""""""""
