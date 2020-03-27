@@ -205,9 +205,20 @@ Using a Custom Mail Server
 ODK Central ships with a basic EXIM server bundled to forward mail out to the internet. To use your own custom mail server:
 
 1. Ensure you have an SMTP relay server visible to your Central server network host.
-2. Edit the file ``files/service/config.json.template``:
-   * Under ``email``, then ``transportOpts``, you'll find settings for ``host`` and ``port``.
-   * These correspond with the network hostname and the TCP port, respectively.
+2. Edit the file ``files/service/config.json.template`` to reflect your network hostname, the TCP port, and authentication details. The ``secure`` flag is for TLS and should be set to ``true`` if the port is 465 and ``false`` for other ports.
+
+  .. code-block:: console
+
+   "transportOpts": {
+     "host": "smtp.example.com",
+     "port": 587,
+     "secure": false,
+     "auth": {
+       "user": "my-smtp-user",
+       "pass": "my-smtp-password"
+     }
+   }
+
 3. Build and run: ``docker-compose build service`` and ``systemctl restart docker-compose@central``. If that doesn't work, you may need to first remove your old service container (``docker-compose rm service``).
 
 .. _central-install-digital-ocean-sentry:
