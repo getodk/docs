@@ -53,7 +53,7 @@ The contents of a settings QR code is a JSON object with two objects for general
 
 The JSON object is compressed using `zlib <http://www.zlib.net/manual.html>`_ before building the QR code. To build your own code:
 
-1) Write a foo object containing the changed settings with a structure as shown above. 
+1) Write a JSON object containing the changed settings with a structure as shown above. 
 2) Compress it using zlib.
 3) Build a QR code from the resulting data.
 
