@@ -189,13 +189,14 @@ In this case, the first thing you can try is to add a swap file. We **do not** r
 
 Log into your server so you have a console prompt, and run these commands, adapted from `this article <https://linuxize.com/post/create-a-linux-swap-file/>`_:
 
-   .. code-block:: console
+.. code-block:: console
 
-     fallocate -l 1G /swap
-     dd if=/dev/zero of=/swap bs=1024 count=1048576
-     chmod 600 /swap
-     mkswap /swap
-     swapon /swap
+ fallocate -l 1G /swap
+ dd if=/dev/zero of=/swap bs=1024 count=1048576
+ chmod 600 /swap
+ mkswap /swap
+ swapon /swap
+
 
 .. _central-install-digital-ocean-custom-mail:
 
@@ -237,21 +238,23 @@ If on the other hand you wish to use your own Sentry instance, take these steps:
 2. The new project will generate a ``DSN`` of the format ``https://SENTRY_KEY@sentry.io/SENTRY_PROJECT``.
 3. In ``files/service/config.json.template``, replace ``SENTRY_KEY`` and ``SENTRY_PROJECT`` with the values from step 2. 
 
-.. code-block:: rst
+  .. code-block:: console
 
-  {
-    "default": {
-      "database": {...},
-      "email": {...},
-      "env": {...},
-      "external": {
-        "sentry": {
-          "key": "SENTRY_KEY",
-          "project": "SENTRY_PROJECT"
-        }
-      }
-    }
-  }
+   {
+     "default": {
+       "database": {...},
+       "email": {...},
+       "env": {...},
+       "external": {
+         "sentry": {
+           "key": "SENTRY_KEY",
+           "project": "SENTRY_PROJECT"
+         }
+       }
+     }
+   }
+
+
 
 The error logs sent to Sentry (if enabled) are also being written to ``/var/log/odk/stderr.log`` in the running backend container.
 
