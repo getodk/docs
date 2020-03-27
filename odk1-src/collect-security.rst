@@ -241,7 +241,7 @@ Lowering your phone's sleep timeout can prevent opportunistic people from gettin
 Limit your lock screen notifications
 --------------------------------------
 
-Your lock screen can show a lot about your life. Your Android phone or tablet can limit what's shown on the lock screen in order to prevent others' from seeing your personal content as it comes in.
+Your lock screen can show a lot about your life. Your Android phone or tablet can limit what's shown on the lock screen in order to prevent others from seeing your personal content as it comes in.
 
 1. Go to Settings app then :gesture:`Tap` on :guilabel:`Sounds & notifications` under the :guilabel:`Device` section.
 
