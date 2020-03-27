@@ -6,3 +6,4 @@ Setting Up ODK Collect
   
   collect-install
   collect-connect
+  collect-configure
