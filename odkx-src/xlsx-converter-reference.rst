@@ -954,7 +954,7 @@ The locale code should generally be the 2-letter language code, or, if necessary
 Built-in Functionality
 --------------------------
 
-The :program:`jquery` and :program:`underscore` libraries are available when defining calculates expressions.
+The :program:`jquery` and :program:`underscore` libraries are available when defining calculates expressions or writing statements for the :th:`condition` column or the :th:`required` column.
 
 ODK-X Survey exposes built-in functionality through formula functions to decrease form development time.
 
@@ -1011,3 +1011,40 @@ And, additionally, the *opendatakit* object is also available for use in calcula
 .. warning::
 
   The *opendatakit* object contains many useful functions but these should be considered internal methods subject to change. When upgrading, be sure to confirm that the methods you use have not disappeared!
+
+.. _xlsx-ref-javascript:
+
+JavaScript Operators
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The built-in formula functions can be combined in advanced ways using any valid JavaScript expression. This is particularly useful for creating complex condition statements to implement skip patterns or conditional statements for required variables. JavaScript operators will allow the expressions to involve more than one variable or more than one response from a single variable. Parentheses can be used in creating particularly complex conditions. A few basic JavaScript operators:
+
+.. list-table:: JavaScript operators
+  :header-rows: 1
+
+  * - Name
+    - Description
+    - Example
+  * - :code:`&&`
+    - And
+    - :code:`data('person_age')>=18 && selected(data('pizza_type'), 'mushroom')`
+  * - :code:`||`
+    - Or
+    - :code:`(selected(data('pizza_type'), 'mushroom') || selected(data('pizza_type'),           | 'onions')`
+  * - :code:`==`
+    - Equal
+    - |:code:`data('person_number') == 1`
+  * - :code:`===`
+    - Strict equal of the same type
+    - :code:`data('consent')==="yes"`
+  * - :code:`>=`
+    - Greater than or equal to
+    - :code:`data('age') >=18`
+  * - :code:`<=`
+    - Less than or equal to
+    - :code:`data('age') <=17`
+
+.. Tip::
+Make sure that statements using :code:`&&` and :code:`||` operators for variables that were select_one type are logical and that they work as intended. For example, if the variable pizza_type had been a select_one, the statement :code:`(selected(data('pizza_type'), 'mushroom') && selected(data('pizza_type'), 'onions')` could never be valid, because the respondent could only have selected one or the other or neither, not both. Therefore, the example instead uses a :code:`||` statement.
+
+
