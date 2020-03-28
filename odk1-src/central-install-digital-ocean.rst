@@ -206,7 +206,7 @@ Using a Custom Mail Server
 ODK Central ships with a basic EXIM server bundled to forward mail out to the internet. To use your own custom mail server:
 
 1. Ensure you have an SMTP relay server visible to your Central server network host.
-2. Edit the file ``files/service/config.json.template`` to reflect your network hostname, the TCP port, and authentication details. The ``secure`` flag is for TLS and should be set to ``true`` if the port is 465 and ``false`` for other ports.
+2. Edit the file ``files/service/config.json.template`` to reflect your network hostname, the TCP port, and authentication details. The ``secure`` flag is for TLS and should be set to ``true`` if the port is 465 and ``false`` for other ports. If no authentication is required, remove the ``auth`` section.
 
   .. code-block:: console
 
