@@ -1,9 +1,14 @@
 Configuring Collect via QR code
 ================================
 
+.. image:: /img/collect-settings/import-settings-scanner.*
+  :alt: Import/export settings menu of ODK Collect
+  :class: device-screen-vertical
+  :width: 50 %
 .. image:: /img/collect-settings/import-settings.*
   :alt: Import/export settings menu of ODK Collect
   :class: device-screen-vertical
+  :width: 50 %
 
 Settings QR codes
 ------------------
@@ -19,7 +24,7 @@ QR codes can be used to configure Collect on a fleet of devices. The QR code dis
 Scanning a QR code
 -------------------
 
-:gesture:`Tap` the :guilabel:`Scan code from other device` button to scan an existing QR code and import all of its settings. The settings contained in the QR code will be set and all others will be reset to their defaults.
+:gesture:`Navigate` to the :guilabel:`Scan` page to scan an existing QR code and import all of its settings. The settings contained in the QR code will be set and all others will be reset to their defaults.
 
 Sharing a QR code
 ------------------
@@ -32,7 +37,7 @@ You can tap on the :fa:`share-alt` icon to share the QR code as an image. When y
 Importing settings from an image saved on your device
 ------------------------------------------------------
 
-You can import settings from a QR code saved on your device by clicking on :guilabel:`Select Code from SD Card` option.
+You can import settings from a QR code saved on your device by clicking on the :fa:`ellipsis-v` icon which is located to the right of the share icon. Then select the :guilabel:`Import QRCode` option.
 
 Making your own QR code
 ---------------------------
@@ -57,7 +62,7 @@ The JSON object is compressed using `zlib <http://www.zlib.net/manual.html>`_ be
 2) Compress it using zlib.
 3) Build a QR code from the resulting data.
 
-You can either scan the generated QR code or transfer it to your device and then import it by clicking on :guilabel:`Select Code from SD Card`  option.
+You can either scan the generated QR code or transfer it to your device and then import it by clicking on :guilabel:`Import QRCode`  option.
 
 List of keys for all settings
 ------------------------------
