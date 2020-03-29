@@ -189,13 +189,14 @@ In this case, the first thing you can try is to add a swap file. We **do not** r
 
 Log into your server so you have a console prompt, and run these commands, adapted from `this article <https://linuxize.com/post/create-a-linux-swap-file/>`_:
 
-   .. code-block:: console
+.. code-block:: console
 
-     fallocate -l 1G /swap
-     dd if=/dev/zero of=/swap bs=1024 count=1048576
-     chmod 600 /swap
-     mkswap /swap
-     swapon /swap
+ fallocate -l 1G /swap
+ dd if=/dev/zero of=/swap bs=1024 count=1048576
+ chmod 600 /swap
+ mkswap /swap
+ swapon /swap
+
 
 .. _central-install-digital-ocean-custom-mail:
 
@@ -205,9 +206,20 @@ Using a Custom Mail Server
 ODK Central ships with a basic EXIM server bundled to forward mail out to the internet. To use your own custom mail server:
 
 1. Ensure you have an SMTP relay server visible to your Central server network host.
-2. Edit the file ``files/service/config.json.template``:
-   * Under ``email``, then ``transportOpts``, you'll find settings for ``host`` and ``port``.
-   * These correspond with the network hostname and the TCP port, respectively.
+2. Edit the file ``files/service/config.json.template`` to reflect your network hostname, the TCP port, and authentication details. The ``secure`` flag is for TLS and should be set to ``true`` if the port is 465 and ``false`` for other ports. If no authentication is required, remove the ``auth`` section.
+
+  .. code-block:: console
+
+   "transportOpts": {
+     "host": "smtp.example.com",
+     "port": 587,
+     "secure": false,
+     "auth": {
+       "user": "my-smtp-user",
+       "pass": "my-smtp-password"
+     }
+   }
+
 3. Build and run: ``docker-compose build service`` and ``systemctl restart docker-compose@central``. If that doesn't work, you may need to first remove your old service container (``docker-compose rm service``).
 
 .. _central-install-digital-ocean-sentry:
@@ -226,21 +238,23 @@ If on the other hand you wish to use your own Sentry instance, take these steps:
 2. The new project will generate a ``DSN`` of the format ``https://SENTRY_KEY@sentry.io/SENTRY_PROJECT``.
 3. In ``files/service/config.json.template``, replace ``SENTRY_KEY`` and ``SENTRY_PROJECT`` with the values from step 2. 
 
-.. code-block:: rst
+  .. code-block:: console
 
-  {
-    "default": {
-      "database": {...},
-      "email": {...},
-      "env": {...},
-      "external": {
-        "sentry": {
-          "key": "SENTRY_KEY",
-          "project": "SENTRY_PROJECT"
-        }
-      }
-    }
-  }
+   {
+     "default": {
+       "database": {...},
+       "email": {...},
+       "env": {...},
+       "external": {
+         "sentry": {
+           "key": "SENTRY_KEY",
+           "project": "SENTRY_PROJECT"
+         }
+       }
+     }
+   }
+
+
 
 The error logs sent to Sentry (if enabled) are also being written to ``/var/log/odk/stderr.log`` in the running backend container.
 
