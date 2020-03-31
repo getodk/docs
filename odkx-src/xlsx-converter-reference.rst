@@ -1045,6 +1045,5 @@ The built-in formula functions can be combined in advanced ways using any valid 
     - :code:`data('age') <=17`
 
 .. Tip::
-Make sure that statements using :code:`&&` and :code:`||` operators for variables that were select_one type are logical and that they work as intended. For example, if the variable pizza_type had been a select_one, the statement :code:`(selected(data('pizza_type'), 'mushroom') && selected(data('pizza_type'), 'onions')` could never be valid, because the respondent could only have selected one or the other or neither, not both. Therefore, the example instead uses a :code:`||` statement.
-
+Make sure that statements using :code:`&&` and :code:`||` operators for variables that were select_one type are logical and that they work as intended. For example, if the variable :code:`pizza_type` had been a :menuselection:`select_one`, the statement :code:`(selected(data('pizza_type'), 'mushroom') && selected(data('pizza_type'), 'onions')` could never be valid, because the respondent could only have selected one or the other or neither, not both. Therefore, the example instead uses a :code:`||` statement.
 
