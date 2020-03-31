@@ -1030,10 +1030,10 @@ The built-in formula functions can be combined in advanced ways using any valid 
     - :code:`data('person_age')>=18 && selected(data('pizza_type'), 'mushroom')`
   * - :code:`||`
     - Or
-    - :code:`(selected(data('pizza_type'), 'mushroom') || selected(data('pizza_type'),           | 'onions')`
+    - :code:`(selected(data('pizza_type'), 'mushroom') || selected(data('pizza_type'), 'onions')`
   * - :code:`==`
     - Equal
-    - |:code:`data('person_number') == 1`
+    - :code:`data('person_number') == 1`
   * - :code:`===`
     - Strict equal of the same type
     - :code:`data('consent')==="yes"`
@@ -1045,5 +1045,7 @@ The built-in formula functions can be combined in advanced ways using any valid 
     - :code:`data('age') <=17`
 
 .. Tip::
-Make sure that statements using :code:`&&` and :code:`||` operators for variables that were select_one type are logical and that they work as intended. For example, if the variable :code:`pizza_type` had been a :menuselection:`select_one`, the statement :code:`(selected(data('pizza_type'), 'mushroom') && selected(data('pizza_type'), 'onions')` could never be valid, because the respondent could only have selected one or the other or neither, not both. Therefore, the example instead uses a :code:`||` statement.
+
+  Make sure that statements using :code:`&&` and :code:`||` operators for variables that were :th:`select_one` type are logical and that they work as intended. For example, if the variable :code:`pizza_type` had been a :th:`select_one`, the statement :code:`(selected(data('pizza_type'), 'mushroom') && selected(data('pizza_type'), 'onions')` could never be valid, because the respondent could only have selected one or the other or neither, not both. Therefore, the example instead uses a :code:`||` statement.
+
 
