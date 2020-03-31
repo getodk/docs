@@ -115,7 +115,7 @@ With the proper directory structure in place, you can now create your form. The 
     - :th:`type`: the prompt type.
     - :th:`values_list`: the name of the list of choices for a multiple choice question.
     - :th:`name`: the variable name.
-    - :th:`display.promp.text`: the question the user will see in Survey
+    - :th:`display.prompt.text`: the question the user will see in Survey
 
   5. Create the following rows:
 
