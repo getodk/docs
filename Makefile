@@ -7,7 +7,6 @@ SPHINXBUILD   = sphinx-build
 SPHINXPROJ    = ODKX
 ODKX_SRCDIR   = odkx-src
 SHARED_SRCDIR = shared-src
-COMPILE1_SRCDIR = tmp1-src
 COMPILE_X_SRCDIR = tmpx-src
 ODKX_BUILDDIR = odkx-build
 
@@ -49,8 +48,8 @@ odkx-latex: odkx
 
 odkx-pdf: odkx-latex
 	cd "$(ODKX_BUILDDIR)"/latex && \
-	xelatex OpenDataKitX.tex && \
-	xelatex OpenDataKitX.tex && \
+	docker run xelatex OpenDataKitX.tex && \
+	docker run xelatex OpenDataKitX.tex && \
 	mkdir -p ../_downloads && \
 	mv OpenDataKitX.pdf ../_downloads/ODK-X-Documentation.pdf
 
@@ -62,6 +61,9 @@ odkx-spell-check: odkx
 	python util/check-spelling-output.py $(ODKX_BUILDDIR)
 
 odkx-check: odkx-style-check odkx-spell-check
+
+odkx-compress: odkx
+	pngquant "$(ODKX_BUILDDIR)"/_images/*.png --force --ext .png --verbose
 
 check-all: odkx-check
 

@@ -1,6 +1,6 @@
 # ODK-X Docs
 
-![Platform](https://img.shields.io/badge/platform-Sphinx-blue.svg) [![License](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/) [![Build status](https://circleci.com/gh/opendatakit/docs.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/odk-x/docs/)  [![Netlify Status](https://api.netlify.com/api/v1/badges/d3788b3e-1abc-431d-a9a3-e5c71b20e053/deploy-status)](https://app.netlify.com/sites/blissful-bohr-7f32fb/deploys)
+![Platform](https://img.shields.io/badge/platform-Sphinx-blue.svg) [![License](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/) [![Build status](https://circleci.com/gh/odk-x/docs.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/odk-x/docs/)  [![Netlify Status](https://api.netlify.com/api/v1/badges/d3788b3e-1abc-431d-a9a3-e5c71b20e053/deploy-status)](https://app.netlify.com/sites/blissful-bohr-7f32fb/deploys)
 
 This repo is the source for ODK-X documentation.
 
