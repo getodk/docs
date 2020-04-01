@@ -546,7 +546,7 @@ After that, the database table used to store the instances for the other form is
     - | Returns the first string from a form instance 
       | that meets the query criteria.
 
-There are 2 forms that use :th:`async_assign` in the Application Designer repository – the `agriculture.xlsx <https://github.com/opendatakit/app-designer/blob/master/app/config/tables/agriculture/forms/agriculture/agriculture.xlsx>`_ and the `visit.xlsx <https://github.com/opendatakit/app-designer/blob/master/app/config/tables/visit/forms/visit/visit.xlsx>`_ forms. In this particular example, we will look at the usage of the :th:`async_assign_single_string` in the `visit.xlsx <https://github.com/opendatakit/app-designer/blob/master/app/config/tables/visit/forms/visit/visit.xlsx>`_  form. Only the relevant portions for the example are shown.  
+There are 2 forms that use :th:`async_assign` in the Application Designer repository – the `agriculture.xlsx <https://github.com/odk-x/app-designer/blob/master/app/config/tables/agriculture/forms/agriculture/agriculture.xlsx>`_ and the `visit.xlsx <https://github.com/odk-x/app-designer/blob/master/app/config/tables/visit/forms/visit/visit.xlsx>`_ forms. In this particular example, we will look at the usage of the :th:`async_assign_single_string` in the `visit.xlsx <https://github.com/odk-x/app-designer/blob/master/app/config/tables/visit/forms/visit/visit.xlsx>`_  form. Only the relevant portions for the example are shown.  
   
 .. csv-table:: async_assign_single_string visit survey Worksheet Excerpt
   :header: "clause", "condition", "type", "name", "values_list", "calculation", "display.prompt.text"
@@ -556,7 +556,7 @@ There are 2 forms that use :th:`async_assign` in the Application Designer reposi
   "end screen"
   ,, "assign", "plant_type", "data('plant_type_query_text')",,
   
-From the example, we can see that :tc:`plant_type_query_text` is assigned the value provided by :tc:`plant_type_query`. The value of :tc:`plant_type_query_text` is then used on the next screen to assign a value to :tc:`plant_type`. The **model** worksheet for the `visit.xlsx <https://github.com/opendatakit/app-designer/blob/master/app/config/tables/visit/forms/visit/visit.xlsx>`_ form shows that :tc:`plant_type_query_text` is of type :tc:`string`. The relevant portion of the **model** worksheet is provided.  
+From the example, we can see that :tc:`plant_type_query_text` is assigned the value provided by :tc:`plant_type_query`. The value of :tc:`plant_type_query_text` is then used on the next screen to assign a value to :tc:`plant_type`. The **model** worksheet for the `visit.xlsx <https://github.com/odk-x/app-designer/blob/master/app/config/tables/visit/forms/visit/visit.xlsx>`_ form shows that :tc:`plant_type_query_text` is of type :tc:`string`. The relevant portion of the **model** worksheet is provided.  
 
 .. csv-table:: visit model Worksheet Excerpt
   :header: "name", "type", "isSessionVariable"
@@ -572,8 +572,8 @@ The **queries** worksheet shows that the :tc:`plant_type_query` will assign the 
 
   
 How to use :th:`async_assign`:
-  1. Within *your_form* directory, include the `customPromptTypes.js <https://github.com/opendatakit/app-designer/blob/master/app/config/tables/visit/forms/visit/customPromptTypes.js>`_ file. If *your_form* was named :file:`test`, your directory would be :file:`app/config/test/forms/test`.
-  2. Create a folder named :file:`templates` in your :file:`app/config/your_form/forms/your_form` directory. Copy the `async_assign.handlebars <https://github.com/opendatakit/app-designer/blob/master/app/config/tables/visit/forms/visit/templates/async_assign.handlebars>`_ file into this directory. In keeping with the example, this file would be :file:`app/config/test/forms/test/templates/async_assign.handlebars`.
+  1. Within *your_form* directory, include the `customPromptTypes.js <https://github.com/odk-x/app-designer/blob/master/app/config/tables/visit/forms/visit/customPromptTypes.js>`_ file. If *your_form* was named :file:`test`, your directory would be :file:`app/config/test/forms/test`.
+  2. Create a folder named :file:`templates` in your :file:`app/config/your_form/forms/your_form` directory. Copy the `async_assign.handlebars <https://github.com/odk-x/app-designer/blob/master/app/config/tables/visit/forms/visit/templates/async_assign.handlebars>`_ file into this directory. In keeping with the example, this file would be :file:`app/config/test/forms/test/templates/async_assign.handlebars`.
   3. In your XLSX file, create a worksheet called **prompt_types**. Copy and paste the following into this worksheet:
   
   

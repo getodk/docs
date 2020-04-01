@@ -7,7 +7,7 @@ ODK-X Sync Endpoint
 
 .. _sync-endpoint-intro:
 
-:dfn:`ODK-X Sync Endpoint` is an implementation of :doc:`cloud-endpoints-intro`. It runs a server inside a :program:`Docker` container that implements the `ODK-X REST Protocol <https://github.com/opendatakit/opendatakit/wiki/ODK-2.0-Synchronization-API-(RESTful)>`_.
+:dfn:`ODK-X Sync Endpoint` is an implementation of :doc:`cloud-endpoints-intro`. It runs a server inside a :program:`Docker` container that implements the `ODK-X REST Protocol <https://github.com/odk-x/odk-x/wiki/ODK-2.0-Synchronization-API-(RESTful)>`_.
 
 It communicates with your ODK-X Android applications to synchronize your data and application files.
 
@@ -52,7 +52,7 @@ Setup instructions:
 
   .. code-block:: console
 
-    $ git clone https://github.com/opendatakit/sync-endpoint-default-setup
+    $ git clone https://github.com/odk-x/sync-endpoint-default-setup
     
   2. Navigate into the the "sync-endpoint-default-setup" directory
   
@@ -60,7 +60,7 @@ Setup instructions:
 
   .. code-block:: console
 
-    $ git clone https://github.com/opendatakit/sync-endpoint
+    $ git clone https://github.com/odk-x/sync-endpoint
    
   3. Navigate into the sync-endpoint directory. Most likely
 
@@ -80,7 +80,7 @@ Setup instructions:
 
   .. code-block:: console
 
-    $ docker build --pull -t odk/sync-web-ui https://github.com/opendatakit/sync-endpoint-web-ui.git
+    $ docker build --pull -t odk/sync-web-ui https://github.com/odk-x/sync-endpoint-web-ui.git
 
   7. In the "sync-endpoint-default-setup" cloned repository run:
 
@@ -129,7 +129,7 @@ Custom database
 
   1. If you haven't followed the :ref:`common instructions <sync-endpoint-setup>`, start with those.
   2. Remove the *db* and *db-bootstrap* sections in :file:`docker-compose.yml`.
-  3. Modify :file:`jdbc.properties` to match your database. Supported database systems are :program:`PostgreSQL`, :program:`MySQL` and :program:`Microsoft SQL Server`. Sample config for each type of database can be found `on Github <https://github.com/opendatakit/sync-endpoint-default-setup>`_.
+  3. Modify :file:`jdbc.properties` to match your database. Supported database systems are :program:`PostgreSQL`, :program:`MySQL` and :program:`Microsoft SQL Server`. Sample config for each type of database can be found `on Github <https://github.com/odk-x/sync-endpoint-default-setup>`_.
   4. Modify :file:`sync.env` to match your database
   5. In the cloned repository,
 

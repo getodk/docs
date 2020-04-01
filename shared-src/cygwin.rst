@@ -221,7 +221,7 @@ To use ADB, you must run Android Studio once. The default location of ADB is :fi
 Fork and Clone the ODK Docs repo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-From Github, fork the `ODK Docs <https://github.com/opendatakit/docs>`_. This will create a copy of the docs in your Github account called ``origin``. Move to the ODk working directory, and clone the ODk Docs into your local machine.
+From Github, fork the `ODK Docs <https://github.com/odk-x/docs>`_. This will create a copy of the docs in your Github account called ``origin``. Move to the ODk working directory, and clone the ODk Docs into your local machine.
 
 .. code-block:: doscon
 
@@ -233,7 +233,7 @@ Set the Upstream Remote
 """""""""""""""""""""""""
 .. code-block:: doscon
 
-  > git remote add upstream https://github.com/opendatakit/docs.git
+  > git remote add upstream https://github.com/odk-x/docs.git
 
 .. _requirments:
 

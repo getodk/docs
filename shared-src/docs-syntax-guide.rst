@@ -177,9 +177,9 @@ How ODK Docs uses main and secondary tables of content
 
   We use :rst:dir:`toctree` directives as our primary way of organizing the documentation for readers. We do not organize the source ``rst`` files into subfolders.
   
-  The reason is that if we put them into topic-related subfolders, it would affect the URI of the document. Keeping all of our document files in a single flat directory results in a flat URI structure. Every page's URI looks like ``docs.opendatakit.org/page-name``.
+  The reason is that if we put them into topic-related subfolders, it would affect the URI of the document. Keeping all of our document files in a single flat directory results in a flat URI structure. Every page's URI looks like ``docs.odk-x.org/page-name``.
   
-  If we used subdirectories, then our URIs would look like ``docs.opendatakit.org/subdirectory-name/page-name``. This would mean that our URIs would change every time we moved a document from one folder to another, greatly increasing the time cost and broken-link risk of reorganizing the docs.
+  If we used subdirectories, then our URIs would look like ``docs.odk-x.org/subdirectory-name/page-name``. This would mean that our URIs would change every time we moved a document from one folder to another, greatly increasing the time cost and broken-link risk of reorganizing the docs.
 
 
 .. _sections-titles:
@@ -941,21 +941,13 @@ We have added several custom text roles for writing about forms and the XForms a
 Other Semantic Markup
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. rst:role:: abbr
-
-  Marks up an abbreviation. If the role content contains a parenthesized explanation, it will be treated specially: it will be shown in a tool-tip in HTML.
-
-  .. code-block:: rst
-
-    :abbr:`ODK (Open Data Kit)`
-
 .. rst:role:: dfn
 
   Marks the defining instance of a term outside the glossary.
 
   .. code-block:: rst
 
-    :dfn:`Open Data Kit` (ODK) is a suite of open source applications that help organizations engaged in enumerator-mediated data collection.
+    :dfn:`ODK-X is a suite of open source applications that help organizations engaged in enumerator-mediated data collection.
 
 .. rst:role:: file
 

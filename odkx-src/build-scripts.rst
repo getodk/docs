@@ -164,7 +164,7 @@ This section covers the files that are stored inside each of the Android project
 
 This file determines where to look for the :ref:`build-scripts-external`.
 
-The :code:`gradleConfigVersion` corresponds to a tag in the `Gradle Config repository <https://github.com/opendatakit/gradle-config>`_. If the local gradle files are not found, the versions of those files committed under that tag will be downloaded and used.
+The :code:`gradleConfigVersion` corresponds to a tag in the `Gradle Config repository <https://github.com/odk-x/gradle-config>`_. If the local gradle files are not found, the versions of those files committed under that tag will be downloaded and used.
 
 
 Before downloading those files, this file checks the local :ref:`build-scripts-directory-structure` for gradle-config. If it is found, that is used. Whichever path is chosen, this linkage is established here and made available to all the rest of the gradle files.
@@ -194,7 +194,7 @@ This file also establishes the product flavors, signing configs, build types, an
 External Build Files
 ------------------------
 
-These build files are centralized in the `Gradle Config repository <https://github.com/opendatakit/gradle-config>`_. They included shared configuration, versions, and tasks.
+These build files are centralized in the `Gradle Config repository <https://github.com/odk-x/gradle-config>`_. They included shared configuration, versions, and tasks.
 
 .. _build-scripts-external-variables:
 

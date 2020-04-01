@@ -2,7 +2,7 @@
 
   geotagging
 
-Open Data Kit Tool Suite X (ODK-X) documentation
+ODK-X documentation
 ================================================
 
 .. _odk-2-introduction:

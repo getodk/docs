@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=_src
 set BUILDDIR=_build
-set SPHINXPROJ=OpenDataKit
+set SPHINXPROJ=ODKX
 
 if "%1" == "" goto help
 

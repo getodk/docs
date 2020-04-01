@@ -44,7 +44,7 @@ Installing the ODK-X Tables App
     - (On older versions of Android, this setting is in :menuselection:`Applications` rather than :menuselection:`Security`)
 
   2. Open a web browser on your phone.
-  3. Navigate to https://github.com/opendatakit/tables/releases/latest and download the latest ODK-X Tables APK.
+  3. Navigate to https://github.com/odk-x/tables/releases/latest and download the latest ODK-X Tables APK.
   4. In the download window, you will see ODK_Tables.N.N.apk. - Select it to download the file.
 
    - On older devices, the APK will automatically install after you approve the security settings.
@@ -56,5 +56,5 @@ Installing the ODK-X Tables App
 
 .. tip::
 
-  You can also `install ODK-X Tables on an Android emulator <https://github.com/opendatakit/opendatakit/wiki/DevEnv-Setup>`_. However, this can be slow and is only recommended for developers actively working on Tables.
+  You can also `install ODK-X Tables on an Android emulator <https://github.com/odk-x/odk-x/wiki/DevEnv-Setup>`_. However, this can be slow and is only recommended for developers actively working on Tables.
 

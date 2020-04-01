@@ -157,12 +157,12 @@ Once you have filed an issue, wait for comment and approval before diving into t
 
 .. _use-odk:
 
-Actually install and use Open Data Kit or other tools
+Actually install and use ODK-X or other tools
 ----------------------------------------------------------
 
 You cannot write effectively about tools you have not used. If you're going to write or edit documentation about any of the apps in the ODK ecosystem, you need to spend some time actually using it.
 
-Before diving into writing documentation, try out the core tools `here https://opendatakit.org/software` and become familiar with them.
+Before diving into writing documentation, try out the core tools `here https://odk-x.org/software` and become familiar with them.
 
 This is also true of writing about Sphinx or any of our documentation build tools. Reading existing documentation is not enough to write about something.
 
@@ -196,7 +196,7 @@ You can contribute to this community, no matter your background or skills.
 - If there is something you don't know how to do, you can ask.
 
   - If it is issue related, ask on the issue.
-  - If it is more general, try the #docs-code channel in the `ODK Developer Slack <http://slack.opendatakit.org>`_.
+  - If it is more general, try the #docs-code channel in the `ODK-X Developer Slack <TBC>`_.
 
 - If you want to try something even though you aren't sure you can do it, go ahead and try.
 

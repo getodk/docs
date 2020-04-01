@@ -883,24 +883,20 @@ ODK and ODK Docs
 
 .. rubric:: Wrong
 
-- Odk
-- odk
-- Open data kit
-- OpenDataKit
-- the Open Data Kit
-- ODK docs
-- ODK documentation
+- Odkx
+- odk-x
+- ODK-X docs
+- ODK-X documentation
 
 .. rubric:: Right
 
-- ODK
-- Open Data Kit
-- ODK Docs
-- ODK Documentation
+- ODK-X
+- ODK-X Docs
+- ODK-X Documentation
 
 .. rubric:: Probably want to avoid...
 
-- Open Data Kit Documentation
+- ODK-X Documentation
 
 .. code-block:: python
   :class: style-checks
@@ -913,36 +909,33 @@ ODK and ODK Docs
 
       preferences = [
 
-          ["Open Data Kit",         ["Open data kit"]],
-          ["Open Data Kit",         ["OpenDataKit"]],
-          ["ODK",                   ["Odk"]],
-          ["ODK",                   ["{0} odk"]],
-          ["ODK Docs",              ["ODK docs"]],
-          ["ODK Documentation",     ["ODK documentation"]]
+          ["ODK-X",                   ["Odk-x"]],
+          ["ODK-X",                   ["{0} odk-x"]],
+          ["ODK-X Docs",              ["ODK-X docs"]],
+          ["ODK-X Documentation",     ["ODK-X documentation"]]
       ]
 
       return preferred_forms_check(text, preferences, err, msg, ignore_case=False)
 
 .. _odk-app-project-names:
 
-ODK app and project names
+ODK-X app and project names
 ---------------------------
 
-ODK includes a number of components, including:
+ODK-X includes a number of components, including:
 
-- Collect
-- Aggregate
-- Briefcase
+- Survey
+- Tables
 
 These should always be capitalized.
 
-The **ODK** prefix (as in, *ODK Collect*) should be used the first time a document mentions the app or project, or any other time it would be unclear.
+The **ODK-X** prefix (as in, *ODK-X Survey*) should be used the first time a document mentions the app or project, or any other time it would be unclear.
 
-A few projects should *always* use the **ODK** prefix:
+A few projects should *always* use the **ODK-X** prefix:
 
-- ODK XForm
-- ODK Javarosa
-- ODK Docs
+- ODK-X Survey
+- ODK-X Sync
+- ODK-X Docs
 
 .. code-block:: python
   :class: style-checks
@@ -959,85 +952,5 @@ A few projects should *always* use the **ODK** prefix:
       ]
 
       return preferred_forms_check(text, preferences, err, msg, ignore_case=False)
-
-.. _xform-xlsform:
-
-XForms and XLSForm
--------------------
-
-- *XForms* refers to XML-encoded forms. 
-- *XLSForm* refers to a spreadsheet format used to define forms. 
-
-.. rubric:: Wrong
-
-- Xforms
-- X-Forms
-- xforms
-- XFORMS
-- XForm (no *s*, when referring to the specification)
-
-- xlsform
-- XLSform
-- Xlsform
-
-.. rubric:: Right
-
-- XForms
-- an Xform (when referring to a single form)
-- XLSForm
-
-.. code-block:: python
-  :class: style-checks
-
-  @memoize
-  def check_formspell(text):
-      """ODK spelling usage."""
-      err = "style-guide.spelling-odk"
-      msg = "ODK spell check. '{}' is the preferred usage."
-
-      preferences = [
-          ["XForms",                ["Xforms"]],
-          ["XForms",                ["X-Forms"]],
-          ["XForms",                ["{0} xforms"]],
-          ["XForms",                ["XFORMS"]],
-          ["an XForm",              ["a XForm"]],
-          ["an XLSForm",            ["a XLSForm"]],
-          ["XLSForm",               ["{0} xlsform"]],
-          ["XLSForm",               ["XLSform"]],
-          ["XLSForm",               ["Xlsform"]]
-      ]
-
-      return preferred_forms_check(text, preferences, err, msg, ignore_case=False)
-
-.. _writing-about-xform:
-
-XForms Spec, XForms Tools, XForms
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-*XForms* can refer to:
-
-- The `XML-based form format <https://en.wikipedia.org/wiki/XForms>`_
-- The `official XForms specification from the W3C <https://www.w3.org/TR/2009/REC-xforms-20091020/>`_
-- The `ODK XForms Specification <https://opendatakit.github.io/xforms-spec/>`_, which is a subset of the full W3C recommendation.
-- The general idea of an XML-based form.
-
-*XForm* (without an *s*) refers to:
-
-- A specific XML document that encodes a form.
-
-When writing about any of these things, make sure you are clear --- in your mind as well as in your writing --- which one you are talking about.
-
-.. _writing-about-xlsform:
-
-XLSForm
-~~~~~~~~~
-
-*XLSForm* can refer to:
-
-- The `XLSForm format for describing form in an Excel spreadsheet <http://xlsform.org/>`_
-- A spreadsheet file that describes a form using the format.
-- A :doc:`tool <xlsform>` for converting :file:`*.xls(x)` files to XForm documents.
-
-When writing about any of these things, make sure you are clear --- in your mind as well as in your writing --- which one you are talking about.
 
 .. endignore

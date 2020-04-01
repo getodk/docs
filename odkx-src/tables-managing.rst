@@ -396,7 +396,7 @@ The above APIs generally take a query as a parameter, run it in the background, 
 
 Third party libraries, such as *Math.js* or *Snap.js*, can also be included.
 
-Example code to explore these APIs and how they can be used (including the :doc:`tables-sample-app`) are available in the `App Designer Github Repository <https://github.com/opendatakit/app-designer>`_.
+Example code to explore these APIs and how they can be used (including the :doc:`tables-sample-app`) are available in the `App Designer Github Repository <https://github.com/odk-x/app-designer>`_.
 
 .. _tables-managing-custom-home:
 

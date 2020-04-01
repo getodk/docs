@@ -44,7 +44,7 @@ Installing the ODK-X Survey App
     - (On older versions of Android, this setting is in :menuselection:`Applications` rather than :menuselection:`Security`)
 
   2. Open a web browser on your phone.
-  3. Navigate to https://github.com/opendatakit/survey/releases/latest and download the latest ODK-X Survey APK.
+  3. Navigate to https://github.com/odk-x/survey/releases/latest and download the latest ODK-X Survey APK.
   4. In the download window, you will see ODK_Survey.N.N.apk. - Select it to download the file.
 
    - On older devices, the APK will automatically install after you approve the security settings.
@@ -52,9 +52,9 @@ Installing the ODK-X Survey App
 
 .. note::
 
-  You can also `download the ODK-X Survey APK <https://github.com/opendatakit/survey/releases/latest>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
+  You can also `download the ODK-X Survey APK <https://github.com/odk-x/survey/releases/latest>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
 
 .. tip::
 
-  You can also `install ODK-X Survey on an Android emulator <https://github.com/opendatakit/opendatakit/wiki/DevEnv-Setup>`_. However, this can be slow and is only recommended for developers actively working on Survey.
+  You can also `install ODK-X Survey on an Android emulator <https://github.com/odk-x/odk-x/wiki/DevEnv-Setup>`_. However, this can be slow and is only recommended for developers actively working on Survey.
 

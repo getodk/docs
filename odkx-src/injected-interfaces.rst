@@ -38,7 +38,7 @@ odkCommon.js
 
 This creates a `window.odkCommon` object that wraps calls to the injected `odkCommonIf` Java interface. When loaded inside the App Designer, it also creates a mock implementation of the injected interface.
 
-This `class <https://github.com/opendatakit/app-designer/blob/development/app/system/js/odkCommon.js>`_ provides support for:
+This `class <https://github.com/odk-x/app-designer/blob/development/app/system/js/odkCommon.js>`_ provides support for:
 
   #. obtaining information about the runtime environment (e.g., Android OS version, etc.)
   #. obtaining information about the currently-selected locale.
@@ -93,7 +93,7 @@ The interaction to get the active user's roles would be:
 
 If the request failed, the `errorMsg` is the message returned from within the Java layer. As noted, this is typically the :code:`getMessage()` of an exception.
 
-Otherwise, the :code:`resultObj` returned contains information about the outcome. This object is a wrapper object with accessor methods defined `here <https://github.com/opendatakit/app-designer/blob/development/app/system/js/odkData.js#L349)>`_.
+Otherwise, the :code:`resultObj` returned contains information about the outcome. This object is a wrapper object with accessor methods defined `here <https://github.com/odk-x/app-designer/blob/development/app/system/js/odkData.js#L349)>`_.
 
 .. note::
 

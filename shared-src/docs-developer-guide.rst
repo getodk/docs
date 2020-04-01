@@ -37,7 +37,7 @@ ODK Docs uses:
 .. _sphinx_rtd_theme: https://github.com/rtfd/sphinx_rtd_theme
 .. _proselint: http://proselint.com/
 .. _git: https://git-scm.com/
-.. _github: https://github.com/opendatakit/docs
+.. _github: https://github.com/odk-x/docs
 .. _circleci: https://circleci.com/
 .. _Amazon S3: https://aws.amazon.com/s3/
 

@@ -366,7 +366,7 @@ If the form is not being rendered correctly but your survey generates a :file:`f
 
 If that does not resolve the issue, try stopping the :program:`grunt` command (on Windows, :kbd:`Control-C` should produce a prompt asking to confirm whether to stop or not. On Mac, :kbd:`Control-C` kill the process with no prompt.), and re-running it. :program:`Grunt` can sometimes get overwhelmed with changes and stop working. After restarting, test your form.
 
-If there are other problems, the contents of the JavaScript Console will be helpful to the ODK-X core team for debugging. Open the JavaScript Console by clicking the icon with the three bars in the top right, select :guilabel:`More Tools`, select :guilabel:`Developer Tools`, and then select the :guilabel:`Console` tab. Select all of the debugging output, then copy it, save it to a file, and post it to the |forum|_ or create a ticket on the `Github Issue Tracker <https://github.com/opendatakit/opendatakit/issues>`_.
+If there are other problems, the contents of the JavaScript Console will be helpful to the ODK-X core team for debugging. Open the JavaScript Console by clicking the icon with the three bars in the top right, select :guilabel:`More Tools`, select :guilabel:`Developer Tools`, and then select the :guilabel:`Console` tab. Select all of the debugging output, then copy it, save it to a file, and post it to the |forum|_ or create a ticket on the `Github Issue Tracker <https://github.com/odk-x/odk-x/issues>`_.
 
 .. _build-app-move-to-device:
 
@@ -767,7 +767,7 @@ Troubleshooting
 
 There are several issues that may occur while trying to push your survey onto your device. Below are some common issues and tip and tricks to help:
 
-- Try checking :command:`adb -version`. If the version does not show, make sure that `Android SDK <https://docs.opendatakit.org/odk2/app-designer-prereqs/?highlight=android%20debug#android-sdk>`_ is appropriately installed on your computer because this is what installs the :program:`Android Debug Bridge (adb)` software.
+- Try checking :command:`adb -version`. If the version does not show, make sure that `Android SDK <https://docs.odk-x.org/app-designer-prereqs/?highlight=android%20debug#android-sdk>`_ is appropriately installed on your computer because this is what installs the :program:`Android Debug Bridge (adb)` software.
 - Check that your computer sees your device. In your command window type the command adb devices. It should show a device detected.
 - Check device to see if it has a message about authorizing the computer. If so, authorize the device.
 - Check device settings to ensure USB debugging is enabled and device is linked as a media device (not camera or other settings)

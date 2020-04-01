@@ -23,7 +23,7 @@ Installing Services
     - (On older versions of Android, this setting is in :menuselection:`Applications` rather than :menuselection:`Security`)
 
   2. Open a web browser on your phone.
-  3. Navigate to https://github.com/opendatakit/services/releases/latest and download the latest ODK-X Services APK.
+  3. Navigate to https://github.com/odk-x/services/releases/latest and download the latest ODK-X Services APK.
   4. In the download window, you will see ODK_Services_vN.N.N.apk. - Select it to download the file.
 
    - On older devices, the APK will automatically install after you approve the security settings.
@@ -31,9 +31,9 @@ Installing Services
 
 .. note::
 
-  You can also `download the ODK-X Services APK <https://github.com/opendatakit/services/releases/latest/>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
+  You can also `download the ODK-X Services APK <https://github.com/odk-x/services/releases/latest/>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
 
 .. tip::
 
-  You can also `install ODK-X Services on an Android emulator <https://github.com/opendatakit/opendatakit/wiki/DevEnv-Setup>`_. However, this can be slow and is only recommended for developers actively working on Services.
+  You can also `install ODK-X Services on an Android emulator <https://github.com/odk-x/odk-x/wiki/DevEnv-Setup>`_. However, this can be slow and is only recommended for developers actively working on Services.
 

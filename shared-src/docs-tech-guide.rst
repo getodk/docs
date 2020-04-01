@@ -24,26 +24,26 @@ Before you begin
 
 .. _learn-about-odk:
 
-Learn a little about Open Data Kit
+Learn a little about ODK-X
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Read about the project and the community at `Open Data Kit's website`_.
+Read about the project and the community at `ODK-X's website`_.
 
 Get started with the docs by going to the `ODK Docs GitHub README`_.
 
-.. _Open Data Kit's website: https://opendatakit.org
-.. _ODK Docs GitHub README: https://github.com/opendatakit/docs/blob/master/README.md
+.. _ODK-X's website: https://odk-x.org
+.. _ODK-X Docs GitHub README: https://github.com/odk-x/docs/blob/master/README.md
 
 .. _odk-accounts:
 
 Set up collaboration accounts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Open Data Kit is a collaborative community.
+ODK-X is a collaborative community.
 Before diving in as a contributor,
 set up accounts on our three main collaboration platforms,
 :ref:`GitHub <get-gh-account>`,
-the :ref:`ODK Developer Slack <join-slack>`,
+the :ref:`ODK-X Developer Slack <join-slack>`,
 and the :ref:`ODK Forum <join-forum>`
 
 .. tip::
@@ -52,7 +52,7 @@ and the :ref:`ODK Forum <join-forum>`
       keep in mind that it is very helpful (but not required)
       to use the same (or similar) username
       on :ref:`GitHub <get-gh-account>`,
-      the :ref:`ODK Developer Slack <join-slack>`,
+      the :ref:`ODK-X Developer Slack <join-slack>`,
       and the :ref:`ODK Forum <join-forum>`.
 
       This makes it easy for other people to keep track of conversations
@@ -68,22 +68,22 @@ and the :ref:`ODK Forum <join-forum>`
    .. _get-gh-account:
 
    `GitHub`_ is a popular code storage and collaboration platform.
-   You will need a GitHub account to contribute to Open Data Kit documentation,
-   or any other Open Data Kit projects.
+   You will need a GitHub account to contribute to ODK-X documentation,
+   or any other ODK-X projects.
 
-   - `Open Data Kit on GitHub`_
-   - `ODK Docs on GitHub`_
+   - `ODK-X on GitHub`_
+   - `ODK-X Docs on GitHub`_
 
-   .. _Open Data Kit on GitHub: https://github.com/opendatakit/
-   .. _ODK Docs on GitHub: https://github.com/opendatakit/docs
+   .. _ODK-X on GitHub: https://github.com/odk-x/
+   .. _ODK-X Docs on GitHub: https://github.com/odk-x/docs
    .. _GitHub: https://github.com/
 
-#. Join the `ODK Developer Slack`_.
+#. Join the `ODK-X Developer Slack`_.
 
    .. _join-slack:
 
    Slack is a popular chat platform.
-   The Open Data Kit contributor community uses Slack
+   The ODK-X contributor community uses Slack
    to discuss development, plan work, and generally keep in touch.
    If you have a question about how to contribute to ODK Docs,
    or any other ODK project,
@@ -96,13 +96,13 @@ and the :ref:`ODK Forum <join-forum>`
    #. Check your email for the invitation.
    #. Follow the link in your email and set up your account.
 
-   .. _ODK Developer Slack: http://slack.opendatakit.org/
+   .. _ODK-X Developer Slack: http://slack.opendatakit.org/
 
 #. Join the `ODK Forum`_
 
    .. _join-forum:
 
-   The `Open Data Kit Forum <ODK Forum>`_ is the main place for
+   The `ODK-X Forum <ODK Forum>`_ is the main place for
    support questions and conversations that affect the whole ODK community
    (users and other stake holders, as well as contributors).
 
@@ -118,7 +118,7 @@ and the :ref:`ODK Forum <join-forum>`
       If someone has asked a question about it,
       it should probably be in the documentation.
 
-   .. _ODK Forum: http://forum.opendatakit.org
+   .. _ODK Forum: http://forum.odk-x.org
 
 .. _forum-or-slack-or-gh:
 
@@ -181,7 +181,7 @@ Initial Setup
   have a lot of options and alternatives.
   You should feel free to use your preferred tools.
 
-  .. _starting with the Docker platform: https://github.com/opendatakit/docs/blob/master/README.md#using-docker
+  .. _starting with the Docker platform: https://github.com/odk-x/docs/blob/master/README.md#using-docker
 
 Before you begin working the first time
 you will need to install a few tools
@@ -572,7 +572,7 @@ on any computer.
 #. Set up your working directory
 
    In whatever directory (folder) on your computer where you organize projects,
-   create a new directory for Open Data Kit,
+   create a new directory for ODK-X,
    and then navigate to that directory.
    (We recommend calling this directory :file:`odk`,
    and the rest of the guide will assume that's what you called it.)
@@ -681,7 +681,7 @@ on any computer.
    #. Use the :guilabel:`Fork` button (top right) to create your own copy.
    #. After the process completes, you'll be looking at your own fork on GitHub.
 
-   .. _ODK Docs repo: https://github.com/opendatakit/docs
+   .. _ODK Docs repo: https://github.com/odk-x/docs
 
 #. Clone down your copy to your local computer
 
@@ -780,24 +780,24 @@ on any computer.
 
          .. code:: console
 
-            (odkenv) /odk/docs/ $ git remote add upstream https://github.com/opendatakit/docs.git
+            (odkenv) /odk/docs/ $ git remote add upstream https://github.com/odk-x/docs.git
             (odkenv) /odk/docs/ $ git remote -v
             origin https://github.com/your-github-username/docs.git (fetch)
             origin https://github.com/your-github-username/docs.git (push)
-            upstream https://github.com/opendatakit/docs.git (fetch)
-            upstream https://github.com/opendatakit/docs.git (push)
+            upstream https://github.com/odk-x/docs.git (fetch)
+            upstream https://github.com/odk-x/docs.git (push)
 
 
       .. group-tab:: PowerShell
 
          .. code:: powershell
 
-            (odkenv) /odk/docs/ > git remote add upstream https://github.com/opendatakit/docs.git
+            (odkenv) /odk/docs/ > git remote add upstream https://github.com/odk-x/docs.git
             (odkenv) /odk/docs/ > git remote -v
             origin https://github.com/your-github-username/docs.git (fetch)
             origin https://github.com/your-github-username/docs.git (push)
-            upstream https://github.com/opendatakit/docs.git (fetch)
-            upstream https://github.com/opendatakit/docs.git (push)
+            upstream https://github.com/odk-x/docs.git (fetch)
+            upstream https://github.com/odk-x/docs.git (push)
 
    If everything went right,
    you should see output similar to what is shown above.
@@ -909,7 +909,7 @@ Working on the docs
       Often, other contributors can provide additional context
       about why a particular solution may or may not work.
 
-   .. _issue tracker: https://github.com/opendatakit/docs/issues
+   .. _issue tracker: https://github.com/odk-x/docs/issues
 
    .. admonition:: Your first issue
 
@@ -923,7 +923,7 @@ Working on the docs
       This will help you get used to working with the documentation tools,
       and helps us get rid of the inevitable errors that creep in to our writing.
 
-      .. _Issue 96 --- Line Edits: https://github.com/opendatakit/docs/issues/96
+      .. _Issue 96 --- Line Edits: https://github.com/odk-x/docs/issues/96
 
 #. Make sure you are on the master branch
 
@@ -1078,9 +1078,9 @@ Working on the docs
    The source files for documentation text are in these directories:
 
    :file:`odk1-src`
-      Files for the pages at https://docs.opendatakit.org
+      Files for the pages at https://docs.odk-x.org
    :file:`odkx-src`
-      Files for the pages at https://docs.opendatakit.org/odk-x
+      Files for the pages at https://docs.odk-x.org/odk-x
    :file:`shared-src`
       Files for pages shared by both ODK1 and ODK-X docs.
       (This page and the other contributor guide pages.)
@@ -1442,7 +1442,7 @@ Working on the docs
    #. Go to the `ODK Docs repo on GitHub`_.
       (Make sure you are logged in.)
 
-      .. _ODK Docs repo on GitHub: https://github.com/opendatakit/docs
+      .. _ODK Docs repo on GitHub: https://github.com/odk-x/docs
 
    #. Find the message near the top of the page that mentions your recent pushed branches.
       Select :guilabel:`Compare & pull request` to start a pull request.
@@ -1501,7 +1501,7 @@ Working on the docs
    Once everything has been approved,
    the changes will be merged in and will appear on :doc:`this website <index>`.
    At that point... congratulations!
-   You are now a contributor to Open Data Kit.
+   You are now a contributor to ODK-X.
 
 .. _keep-working-the-docs:
 
@@ -1572,7 +1572,7 @@ Here are a few things to keep in mind when you start your next contribution.
 #. Find a `new issue to work on`_.
 #. `Start a new branch for your work <git-branch-the-docs>`_ with :command:`git checkout -b branch-name`.
 
-.. _new issue to work on: https://github.com/opendatakit/docs/issues/
+.. _new issue to work on: https://github.com/odk-x/docs/issues/
 
 .. _keep-improving:
 
@@ -1588,7 +1588,7 @@ check out the :doc:`docs-developer-guide`.)
 
 And don't forget to join us on the |odk-slack|_.
 
-Open Data Kit is a community,
+ODK-X is a community,
 and we depend on each other's work.
 Thank you for your contribution to ODK Docs
 and your presence in this community.
