@@ -226,9 +226,9 @@ The starting point for this is to have a fully configured application on your de
 .. _architect-odk-2-setting-up-server:
 
 
-Follow the instructions for :doc:`aggregate-install`. You must install the **ODK Aggregate v1.4.15** release. This is because we are transitioning away from Aggregate and towards :doc:`sync-endpoint`, but v1.4.15 will suit the purposes of this demo fine.
+Follow the instructions for ODK Aggregate installation. You must install the **ODK Aggregate v1.4.15** release. This is because we are transitioning away from Aggregate and towards :doc:`sync-endpoint`, but v1.4.15 will suit the purposes of this demo fine.
 
-Once you have installed ODK Aggregate, log in with your super-user account. That process is also covered in :doc:`aggregate-install`.
+Once you have installed ODK Aggregate, log in with your super-user account. 
 
 Once logged in, enable the :doc:`aggregate-tables-extension`. You should grant the user account on your device the :guilabel:`Administer Tables` permissions.
 

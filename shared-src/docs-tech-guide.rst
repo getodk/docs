@@ -29,7 +29,7 @@ Learn a little about ODK-X
 
 Read about the project and the community at `ODK-X's website`_.
 
-Get started with the docs by going to the `ODK Docs GitHub README`_.
+Get started with the docs by going to the `ODK-X Docs GitHub README`_.
 
 .. _ODK-X's website: https://odk-x.org
 .. _ODK-X Docs GitHub README: https://github.com/odk-x/docs/blob/master/README.md

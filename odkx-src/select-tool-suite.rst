@@ -69,6 +69,6 @@ The feature comparison table below illustrates the differences between the ODK a
 
 Trying Them Out
 -----------------------------
-  - Try the ODK tools with the :doc:`getting-started` guide.
+  - Try the ODK tools with TODO.
   - Try the ODK-X tools with the :doc:`getting-started-2-user`.
 

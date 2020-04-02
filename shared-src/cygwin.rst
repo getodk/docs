@@ -208,7 +208,7 @@ Git and GLFS
 Android Tools
 ~~~~~~~~~~~~~~~~~
 
-Install `Android Debug Bridge <collect-adb>` to learn more about ADB. ADB is part of Android studio, `To download <https://developer.android.com/studio/index.html/>`_
+Install Android Debug Bridge to learn more about ADB. ADB is part of Android studio, `To download <https://developer.android.com/studio/index.html/>`_
 
 To use ADB, you must run Android Studio once. The default location of ADB is :file:`C:/Users/your username/AppData/Local/Android/sdk/platform-tools`. Add it to ``Windows PATH`` by using the following command:
 

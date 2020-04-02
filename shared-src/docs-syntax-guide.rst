@@ -139,11 +139,11 @@ These :rst:dir:`toctree` directives control the sidebar navigation menu. To add 
 Secondary tables of content
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Collections of documents are sometimes given their own table of content on an individual page. (See, for example, :doc:`collect-setup` and :doc:`collect-using`.)
+Collections of documents are sometimes given their own table of content on an individual page. 
 
 In these cases, the page containing the :rst:dir:`toctree` serves as a sort of intro page for the collection. That intro must, itself, be included in the :ref:`main-nav-menu`.
 
-The contents of a :rst:dir:`toctree` appear as section links in another :rst:dir:`toctree` it is included in. That is, if a :rst:dir:`toctree` in :file:`index.rst` lists ``collect-using``, and :file:`collect-using.rst` has a :rst:dir:`toctree`, then the contents of that second :rst:dir:`toctree` will appear in the :ref:`main-nav-menu`, as sub-items to :doc:`collect-using`. (Indeed, this is precisely the case in the docs currently.)
+The contents of a :rst:dir:`toctree` appear as section links in another :rst:dir:`toctree` it is included in. That is, if a :rst:dir:`toctree` in :file:`index.rst` lists ``survey-using``, and :file:`survey-using.rst` has a :rst:dir:`toctree`, then the contents of that second :rst:dir:`toctree` will appear in the :ref:`main-nav-menu`, as sub-items to :doc:`survey-using`. (Indeed, this is precisely the case in the docs currently.)
 
 How ODK Docs uses main and secondary tables of content
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -786,12 +786,6 @@ Cross referencing is linking internally, from one place in the documentation to 
   - *title* is the :ref:`section title (headline) <sections-titles>`
 
 
-.. rst:role:: term
-
-  - Links to items in the :doc:`glossary`
-  - *target* is the term, in the glossary
-  - *title* is the term itself
-
 **To recap:** If you do not include an explicit ``target``, the text inside the role will be understood as the target, and the anchor text for the link in the output will be the title of the target.
 
 For example:
@@ -808,11 +802,6 @@ For example:
     - :ref:`cross-referencing`
     - :ref:`anchor text <cross-referencing>`
 
-  - Link to a term:
-
-    - :term:`participant`
-    - :term:`anchor text <participant>`
-
 - Link to this document:
 
   - :doc:`contributing`
@@ -822,11 +811,6 @@ For example:
 
   - :ref:`cross-referencing`
   - :ref:`anchor text <cross-referencing>`
-
-- Link to a term:
-
-  - :term:`participant`
-  - :term:`anchor text <participant>`
 
 .. _interface-writing:
 
@@ -923,7 +907,7 @@ We have added several custom text roles for writing about forms and the XForms a
 
 .. rst:role:: formstate
 
-  Specifies the state of the form in :doc:`collect-intro`, which could be one of the following:
+  Specifies the state of the form in :doc:`survey-intro`, which could be one of the following:
 
   - Blank
   - Finalized
@@ -1064,13 +1048,13 @@ Image file names should:
 
 Good image file names:
 
-- :file:`collect-home-screen.png`
+- :file:`survey-home-screen.png`
 - :file:`build-data-export-menu.png`
 
 Bad image file names:
 
-- :file:`Collect home screen.png`
-- :file:`collect_home_screen.png`
+- :file:`Survey home screen.png`
+- :file:`survey_home_screen.png`
 - :file:`3987948p2983768ohl84692p094.jpg-large`
 
 .. _sequentially-numbered-images:
@@ -1101,7 +1085,7 @@ Bad sequentially numbered image file names:
 Screenshots from ODK Collect
 """""""""""""""""""""""""""""""
 
-If you have set up :doc:`Android Debug Bridge <collect-adb>`, you can connect your Android device to your computer and take screenshots from the command line.
+If you have set up Android Debug Bridge, you can connect your Android device to your computer and take screenshots from the command line.
 
 - Connect your device via USB
 - Enable Developer Settings

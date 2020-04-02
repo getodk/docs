@@ -12,7 +12,7 @@ The `ODK-X REST Protocol <https://github.com/odk-x/odk-x/wiki/ODK-2.0-Synchroniz
 Server Setup
 -------------------
 
-First you’ll have to install ODK Aggregate v1.4.15 to a server (see :doc:`aggregate-install`).
+First you’ll have to install ODK Aggregate v1.4.15 to a server.
 
   #. Install ODK Aggregate v1.4.15 to a server.
   #. Log onto your ODK Aggregate v1.4.15 instance.
