@@ -44,7 +44,7 @@ Before diving in as a contributor,
 set up accounts on our three main collaboration platforms,
 :ref:`GitHub <get-gh-account>`,
 the :ref:`ODK Developer Slack <join-slack>`,
-and the :ref:`ODK Forum <join-forum>`
+and the `ODK Forum`
 
 .. tip::
 
@@ -102,7 +102,7 @@ and the :ref:`ODK Forum <join-forum>`
 
    .. _join-forum:
 
-   The `ODK Forum <ODK Forum>`_ is the main place for
+   The `ODK Forum` is the main place for
    support questions and conversations that affect the whole ODK community
    (users and other stake holders, as well as contributors).
 
