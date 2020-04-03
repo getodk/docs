@@ -31,7 +31,7 @@ A blank form must have two pieces of identifying metadata. These are provided as
   .
   .
     <instance>
-      <form-name id="opendatakit.org:all-widgets" version="2.1.30"
+      <form-name id="getodk.org:all-widgets" version="2.1.30"
       .
       .
       .
@@ -56,7 +56,7 @@ These values should be in the form of ``scheme:value``.
 
 If specified, the id value takes precedence over any explicit ``xmlns`` declaration. 
 
-For ``id``, the implementer's registered domain name should be used as part of the scheme (for example:``opendatakit.org:widgetForm``). 
+For ``id``, the implementer's registered domain name should be used as part of the scheme (for example:``getodk.org:widgetForm``). 
 
 Compliant systems MUST support ``id`` or ``xmlns`` lengths up to 249 chars; ideally, servers SHOULD be able to support arbitrary lengths.
 
@@ -142,7 +142,7 @@ If you implement a custom ID scheme, it should be prefixed with your domain name
 
 .. code-block:: xml
 
-  <instanceID>opendatakit.org:123456789</instanceID>
+  <instanceID>getodk.org:123456789</instanceID>
   
 .. _id-constraints:
 

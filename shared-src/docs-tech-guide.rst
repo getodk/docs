@@ -24,22 +24,22 @@ Before you begin
 
 .. _learn-about-odk:
 
-Learn a little about Open Data Kit
+Learn a little about ODK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Read about the project and the community at `Open Data Kit's website`_.
+Read about the project and the community at `ODK's website`_.
 
 Get started with the docs by going to the `ODK Docs GitHub README`_.
 
-.. _Open Data Kit's website: https://opendatakit.org
-.. _ODK Docs GitHub README: https://github.com/opendatakit/docs/blob/master/README.md
+.. _ODK's website: https://getodk.org
+.. _ODK Docs GitHub README: https://github.com/getodk/docs/blob/master/README.md
 
 .. _odk-accounts:
 
 Set up collaboration accounts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Open Data Kit is a collaborative community.
+ODK is a collaborative community.
 Before diving in as a contributor,
 set up accounts on our three main collaboration platforms,
 :ref:`GitHub <get-gh-account>`,
@@ -68,14 +68,14 @@ and the :ref:`ODK Forum <join-forum>`
    .. _get-gh-account:
 
    `GitHub`_ is a popular code storage and collaboration platform.
-   You will need a GitHub account to contribute to Open Data Kit documentation,
-   or any other Open Data Kit projects.
+   You will need a GitHub account to contribute to ODK documentation,
+   or any other ODK projects.
 
-   - `Open Data Kit on GitHub`_
+   - `ODK on GitHub`_
    - `ODK Docs on GitHub`_
 
-   .. _Open Data Kit on GitHub: https://github.com/opendatakit/
-   .. _ODK Docs on GitHub: https://github.com/opendatakit/docs
+   .. _ODK on GitHub: https://github.com/getodk/
+   .. _ODK Docs on GitHub: https://github.com/getodk/docs
    .. _GitHub: https://github.com/
 
 #. Join the `ODK Developer Slack`_.
@@ -83,7 +83,7 @@ and the :ref:`ODK Forum <join-forum>`
    .. _join-slack:
 
    Slack is a popular chat platform.
-   The Open Data Kit contributor community uses Slack
+   The ODK contributor community uses Slack
    to discuss development, plan work, and generally keep in touch.
    If you have a question about how to contribute to ODK Docs,
    or any other ODK project,
@@ -92,17 +92,17 @@ and the :ref:`ODK Forum <join-forum>`
    Conversations related to documentation are held in the ``#docs-code`` channel.
    You may also want to check in with ``#general`` and ``#random``.
 
-   #. Get an automated invitation from http://slack.opendatakit.org
+   #. Get an automated invitation from http://slack.getodk.org
    #. Check your email for the invitation.
    #. Follow the link in your email and set up your account.
 
-   .. _ODK Developer Slack: http://slack.opendatakit.org/
+   .. _ODK Developer Slack: http://slack.getodk.org/
 
 #. Join the `ODK Forum`_
 
    .. _join-forum:
 
-   The `Open Data Kit Forum <ODK Forum>`_ is the main place for
+   The `ODK Forum <ODK Forum>`_ is the main place for
    support questions and conversations that affect the whole ODK community
    (users and other stake holders, as well as contributors).
 
@@ -118,7 +118,7 @@ and the :ref:`ODK Forum <join-forum>`
       If someone has asked a question about it,
       it should probably be in the documentation.
 
-   .. _ODK Forum: http://forum.opendatakit.org
+   .. _ODK Forum: http://forum.getodk.org
 
 .. _forum-or-slack-or-gh:
 
@@ -181,7 +181,7 @@ Initial Setup
   have a lot of options and alternatives.
   You should feel free to use your preferred tools.
 
-  .. _starting with the Docker platform: https://github.com/opendatakit/docs/blob/master/README.md#using-docker
+  .. _starting with the Docker platform: https://github.com/getodk/docs/blob/master/README.md#using-docker
 
 Before you begin working the first time
 you will need to install a few tools
@@ -572,7 +572,7 @@ on any computer.
 #. Set up your working directory
 
    In whatever directory (folder) on your computer where you organize projects,
-   create a new directory for Open Data Kit,
+   create a new directory for ODK,
    and then navigate to that directory.
    (We recommend calling this directory :file:`odk`,
    and the rest of the guide will assume that's what you called it.)
@@ -681,7 +681,7 @@ on any computer.
    #. Use the :guilabel:`Fork` button (top right) to create your own copy.
    #. After the process completes, you'll be looking at your own fork on GitHub.
 
-   .. _ODK Docs repo: https://github.com/opendatakit/docs
+   .. _ODK Docs repo: https://github.com/getodk/docs
 
 #. Clone down your copy to your local computer
 
@@ -780,24 +780,24 @@ on any computer.
 
          .. code:: console
 
-            (odkenv) /odk/docs/ $ git remote add upstream https://github.com/opendatakit/docs.git
+            (odkenv) /odk/docs/ $ git remote add upstream https://github.com/getodk/docs.git
             (odkenv) /odk/docs/ $ git remote -v
             origin https://github.com/your-github-username/docs.git (fetch)
             origin https://github.com/your-github-username/docs.git (push)
-            upstream https://github.com/opendatakit/docs.git (fetch)
-            upstream https://github.com/opendatakit/docs.git (push)
+            upstream https://github.com/getodk/docs.git (fetch)
+            upstream https://github.com/getodk/docs.git (push)
 
 
       .. group-tab:: PowerShell
 
          .. code:: powershell
 
-            (odkenv) /odk/docs/ > git remote add upstream https://github.com/opendatakit/docs.git
+            (odkenv) /odk/docs/ > git remote add upstream https://github.com/getodk/docs.git
             (odkenv) /odk/docs/ > git remote -v
             origin https://github.com/your-github-username/docs.git (fetch)
             origin https://github.com/your-github-username/docs.git (push)
-            upstream https://github.com/opendatakit/docs.git (fetch)
-            upstream https://github.com/opendatakit/docs.git (push)
+            upstream https://github.com/getodk/docs.git (fetch)
+            upstream https://github.com/getodk/docs.git (push)
 
    If everything went right,
    you should see output similar to what is shown above.
@@ -909,7 +909,7 @@ Working on the docs
       Often, other contributors can provide additional context
       about why a particular solution may or may not work.
 
-   .. _issue tracker: https://github.com/opendatakit/docs/issues
+   .. _issue tracker: https://github.com/getodk/docs/issues
 
    .. admonition:: Your first issue
 
@@ -923,7 +923,7 @@ Working on the docs
       This will help you get used to working with the documentation tools,
       and helps us get rid of the inevitable errors that creep in to our writing.
 
-      .. _Issue 96 --- Line Edits: https://github.com/opendatakit/docs/issues/96
+      .. _Issue 96 --- Line Edits: https://github.com/getodk/docs/issues/96
 
 #. Make sure you are on the master branch
 
@@ -1078,9 +1078,7 @@ Working on the docs
    The source files for documentation text are in these directories:
 
    :file:`odk1-src`
-      Files for the pages at https://docs.opendatakit.org
-   :file:`odkx-src`
-      Files for the pages at https://docs.opendatakit.org/odk-x
+      Files for the pages at https://docs.getodk.org
    :file:`shared-src`
       Files for pages shared by both ODK1 and ODK-X docs.
       (This page and the other contributor guide pages.)
@@ -1130,28 +1128,6 @@ Working on the docs
                (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmp1-src -Recurse
                (odkenv) /odk/docs/ > sphinx-build -b spelling tmp1-src odk1-build/spelling
                (odkenv) /odk/docs/ > python util/check-spelling-output.py odk1-build
-
-      If you've been working on files in :file:`odkx-src`:
-
-      .. tabs::
-
-         .. group-tab:: Bash
-
-            .. code:: console
-
-               (odkenv) /odk/docs/ $ make odkx-spell-check
-
-         .. group-tab:: PowerShell
-
-            .. code:: powershell
-
-               (odkenv) /odk/docs/ > rm -r -fo tmpx-src
-               (odkenv) /odk/docs/ > rm -r -fo odkx-build
-               (odkenv) /odk/docs/ > Copy-Item odkx-src -Destination tmpx-src -Recurse
-               (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmpx-src -Recurse
-               (odkenv) /odk/docs/ > sphinx-build -b spelling tmp1-src odkx-build/spelling
-               (odkenv) /odk/docs/ > python util/check-spelling-output.py odkx-build
-
 
       This will send some output to the terminal,
       which will include mentions of any words not in the dictionary.
@@ -1212,26 +1188,6 @@ Working on the docs
             (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmp1-src -Recurse
             (odkenv) /odk/docs/ > sphinx-build -b dirhtml tmp1-src odk1-build
 
-   If you've been working on files in :file:`odkx-src`:
-
-   .. tabs::
-
-      .. group-tab:: Bash
-
-         .. code:: console
-
-            make odkx
-
-      .. group-tab:: PowerShell
-
-         .. code:: powershell
-
-            (odkenv) /odk/docs/ > rm -r -fo tmpx-src
-            (odkenv) /odk/docs/ > rm -r -fo odkx-build
-            (odkenv) /odk/docs/ > Copy-Item odkx-src -Destination tmpx-src -Recurse
-            (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmpx-src -Recurse
-            (odkenv) /odk/docs/ > sphinx-build -b dirhtml tmpx-src odkx-build
-
    This generates a lot of output.
    Near the end of the output you may see a statement like:
 
@@ -1276,7 +1232,7 @@ Working on the docs
       The warning messages will refer to the file name
       using the temporary directory path :file:`tmp1-src` or :file:`tmpx-src`.
       You need to correct the problems in the real source directory
-      (:file:`odk1-src`, :file:`odkx-src`, or :file:`shared-src`).
+      (:file:`odk1-src`, or :file:`shared-src`).
 
    .. admonition:: When you just can't fix the error...
 
@@ -1309,24 +1265,6 @@ Working on the docs
          .. code:: powershell
 
             (odkenv) /odk/docs/ > python -m http.server -d odk1-build 8000
-            Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
-
-   If you've been working on files in :file:`odkx-src`:
-
-   .. tabs::
-
-      .. group-tab:: Bash
-
-         .. code:: console
-
-            (odkenv) /odk/docs/ $ python -m http.server -d odkx-build 8000
-            Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
-
-      .. group-tab:: PowerShell
-
-         .. code:: powershell
-
-            (odkenv) /odk/docs/ > python -m http.server -d odkx-build 8000
             Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
 
    #. Open your browser and go to http://localhost:8000.
@@ -1442,7 +1380,7 @@ Working on the docs
    #. Go to the `ODK Docs repo on GitHub`_.
       (Make sure you are logged in.)
 
-      .. _ODK Docs repo on GitHub: https://github.com/opendatakit/docs
+      .. _ODK Docs repo on GitHub: https://github.com/getodk/docs
 
    #. Find the message near the top of the page that mentions your recent pushed branches.
       Select :guilabel:`Compare & pull request` to start a pull request.
@@ -1501,7 +1439,7 @@ Working on the docs
    Once everything has been approved,
    the changes will be merged in and will appear on :doc:`this website <index>`.
    At that point... congratulations!
-   You are now a contributor to Open Data Kit.
+   You are now a contributor to ODK.
 
 .. _keep-working-the-docs:
 
@@ -1572,7 +1510,7 @@ Here are a few things to keep in mind when you start your next contribution.
 #. Find a `new issue to work on`_.
 #. `Start a new branch for your work <git-branch-the-docs>`_ with :command:`git checkout -b branch-name`.
 
-.. _new issue to work on: https://github.com/opendatakit/docs/issues/
+.. _new issue to work on: https://github.com/getodk/docs/issues/
 
 .. _keep-improving:
 
@@ -1588,7 +1526,7 @@ check out the :doc:`docs-developer-guide`.)
 
 And don't forget to join us on the |odk-slack|_.
 
-Open Data Kit is a community,
+ODK is a community,
 and we depend on each other's work.
 Thank you for your contribution to ODK Docs
 and your presence in this community.

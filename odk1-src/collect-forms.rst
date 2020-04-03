@@ -11,7 +11,7 @@ Managing Forms in Collect
 Loading Blank Forms
 ====================
 
-A :dfn:`blank form` is a `.xml` file containing a form definition consistent with the `XForm specification <https://opendatakit.github.io/xforms-spec/>`_. Blank forms can be created using `ODK Build <https://build.opendatakit.org/>`_ or :doc:`XLSForm <xlsform>`.
+A :dfn:`blank form` is a `.xml` file containing a form definition consistent with the `XForm specification <https://getodk.github.io/xforms-spec/>`_. Blank forms can be created using `ODK Build <https://build.getodk.org/>`_ or :doc:`XLSForm <xlsform>`.
 
 In order to fill out forms with survey participants, you must first load blank forms into the Collect App.
 
@@ -173,7 +173,7 @@ Uploading a filled form from within the Collect app marks that form as :formstat
   - Use the `TRIM <https://support.google.com/docs/answer/3094140?hl=en>`_ function in the google sheets to remove the leading and trailing spaces from the cells.
   - Define empty cell in your tests to be a cell that is either empty or contains a single space.
 
-  Values from questions: `text <https://docs.opendatakit.org/form-question-types/#text-widgets>`_, `select_multiple <https://docs.opendatakit.org/form-question-types/#multi-select-widget>`_ and `barcode <https://docs.opendatakit.org/form-question-types/#barcode-widget>`_ will be preceded by an apostrophe. This prevents Google Sheets from guessing at the data type and applying a format that may not be appropriate (e.g. making 1940 10 5 into a date when it actually is the value of a select multiple). Raw values may be used in any kind of computation and the apostrophes only are visible when editing a value. You may choose to manually apply a format for certain columns if desired.
+  Values from questions: `text <https://docs.getodk.org/form-question-types/#text-widgets>`_, `select_multiple <https://docs.getodk.org/form-question-types/#multi-select-widget>`_ and `barcode <https://docs.getodk.org/form-question-types/#barcode-widget>`_ will be preceded by an apostrophe. This prevents Google Sheets from guessing at the data type and applying a format that may not be appropriate (e.g. making 1940 10 5 into a date when it actually is the value of a select multiple). Raw values may be used in any kind of computation and the apostrophes only are visible when editing a value. You may choose to manually apply a format for certain columns if desired.
 
 .. note::
 

@@ -23,6 +23,6 @@ cloudfront_distribution_config:
   aliases:
     quantity: 1
     items:
-      - docs.opendatakit.org
+      - docs.getodk.org
 
 cloudfront_wildcard_invalidation: true

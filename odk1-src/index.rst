@@ -1,4 +1,4 @@
-.. Open Data Kit documentation master file, created by
+.. ODK documentation master file, created by
    sphinx-quickstart on Wed May 24 09:46:59 2017.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -6,7 +6,7 @@
 Welcome to ODK's Docs!
 ======================
 
-:dfn:`Open Data Kit` (ODK) is a suite of open source tools that help organizations collect and manage data.
+:dfn:`ODK` is a suite of open source tools that help organizations collect and manage data.
 
 The core ODK tools are:
 
@@ -20,12 +20,12 @@ The core ODK tools are:
 The specifications and libraries that power the tools are:
 
 - :doc:`openrosa`, APIs for how ODK clients communicate with ODK servers.
-- `ODK XForms spec <https://opendatakit.github.io/xforms-spec/>`_, a subset of the W3C XForms specification, for use in the ODK ecosystem.
-- `ODK JavaRosa <https://github.com/opendatakit/javarosa>`_, a Java library that renders forms complying with ODK XForms.
-- `XLSForm spec <https://opendatakit.github.io/xforms-spec/>`_, a high-level Excel-based form specification.
+- `ODK XForms spec <https://getodk.github.io/xforms-spec/>`_, a subset of the W3C XForms specification, for use in the ODK ecosystem.
+- `ODK JavaRosa <https://github.com/getodk/javarosa>`_, a Java library that renders forms complying with ODK XForms.
+- `XLSForm spec <https://getodk.github.io/xforms-spec/>`_, a high-level Excel-based form specification.
 - `pyxform <https://github.com/xlsform/pyxform>`_, a Python library that converts XLSForms into ODK XForms.
 
-For a complete list of our tools, check out `Open Data Kit on GitHub <https://github.com/opendatakit>`_.
+For a complete list of our tools, check out `ODK on GitHub <https://github.com/getodk>`_.
 
 .. _using-odk:
 
@@ -34,7 +34,7 @@ How is ODK used?
 
 For a quick start, read :doc:`getting-started`. In most cases, users of ODK:
 
-- Create survey forms using `Build <https://build.opendatakit.org/>`_ or `XLSForm <http://xlsform.org/>`_.
+- Create survey forms using `Build <https://build.getodk.org/>`_ or `XLSForm <http://xlsform.org/>`_.
 - :ref:`Upload forms <aggregate-add-new-forms>` to an :doc:`aggregate-intro` server.
 - :ref:`Load forms <in-app-get-blank-forms>` into :doc:`collect-intro` on an Android device.
 - :doc:`Use Collect to fill out forms <collect-filling-forms>` with :term:`participants <participant>`.

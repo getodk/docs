@@ -32,11 +32,11 @@ If you see instructions appear with the section headings *Usage*, *Options*, and
 Creating a Web User by command line
 -----------------------------------
 
-If you followed our :doc:`DigitalOcean installation steps <central-install-digital-ocean>`, then you've already done this once down in :ref:`this section <central-install-digital-ocean-account>`. You shouldn't have to do this again unless you deleted all your users. But if you do, please start by performing the steps above in the :ref:`central-command-line-basics` section. Then, this is what you would type, assuming your email address is ``example@opendatakit.org``:
+If you followed our :doc:`DigitalOcean installation steps <central-install-digital-ocean>`, then you've already done this once down in :ref:`this section <central-install-digital-ocean-account>`. You shouldn't have to do this again unless you deleted all your users. But if you do, please start by performing the steps above in the :ref:`central-command-line-basics` section. Then, this is what you would type, assuming your email address is ``example@getodk.org``:
 
 .. code-block:: console
 
-  docker-compose exec service odk-cmd --email example@opendatakit.org user-create
+  docker-compose exec service odk-cmd --email example@getodk.org user-create
 
 You will be asked for a password for the account, and if everything worked correctly you should see some data printed out that among other things lists the email you entered a moment ago. The next thing you'll need to do is to :ref:`make the new account an administrator <central-command-line-user-promote>`, which is normally automatically done by the web interface. If you don't, the new user will not be able to do anything.
 
@@ -47,11 +47,11 @@ Setting a Web User password by command line
 
 You can always reset any user's password from the website login page, which will send them an email with a link to set their new password. However, if for instance that email address no longer works, or the email is getting lost somehow, you can directly set any user's password with the command line tools.
 
-Please start by performing the steps above in the :ref:`central-command-line-basics` section. Once you do, here is what you would type, assuming the email address of the account you wish to set a password for is ``example@opendatakit.org``:
+Please start by performing the steps above in the :ref:`central-command-line-basics` section. Once you do, here is what you would type, assuming the email address of the account you wish to set a password for is ``example@getodk.org``:
 
 .. code-block:: console
 
-  docker-compose exec service odk-cmd --email example@opendatakit.org user-set-password
+  docker-compose exec service odk-cmd --email example@getodk.org user-set-password
 
 You will be prompted for a new password. Type it in and press Enter, and if you see text that says ``true``, the action succeeded. You can then use the website to log into that user account.
 
@@ -62,11 +62,11 @@ Promoting a Web User to administrator by command line
 
 In the current release of ODK Central, all users created by the website interface are automatically administrators. If you create a user using the ``user-create`` tool shown above, however, you'll have to perform that step manually. If you do not, the user will be unable to do much of anything at all once they log in.
 
-Please start by performing the steps above in the :ref:`central-command-line-basics` section. Once you do, here is what you would type, assuming the email address of the account you wish to make an administrator is ``example@opendatakit.org``:
+Please start by performing the steps above in the :ref:`central-command-line-basics` section. Once you do, here is what you would type, assuming the email address of the account you wish to make an administrator is ``example@getodk.org``:
 
 .. code-block:: console
 
-  docker-compose exec service odk-cmd --email example@opendatakit.org user-promote
+  docker-compose exec service odk-cmd --email example@getodk.org user-promote
 
 If the action succeeded, you will see text that reads ``{"success":"true"}``.
 

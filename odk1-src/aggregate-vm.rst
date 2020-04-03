@@ -14,7 +14,7 @@ Setting up the VM
 -----------------
 
 1. Download and install `VirtualBox <https://www.virtualbox.org>`_.
-2. Download the latest Aggregate VM from the `GitHub releases page <https://github.com/opendatakit/aggregate/releases>`_ and unzip the file.
+2. Download the latest Aggregate VM from the `GitHub releases page <https://github.com/getodk/aggregate/releases>`_ and unzip the file.
 3. Double-click the OVA file inside the zip to let VirtualBox import the VM. Accept the default settings.
 4. After the import completes, start the VM. Select it with your mouse and click on the :guilabel:`Start` button on the VirtualBox top toolbar. A new black and white window will open.
 5. After the VM starts, wait for **Welcome to ODK Aggregate VM** message to appear.

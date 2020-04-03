@@ -56,6 +56,6 @@ Connecting to your own ODK Aggregate Server
 
   In :menuselection:`Server Settings`, there is currently a :guilabel:`Type` option of :menuselection:`Other`. It is unlikely you will need this option, since any server application will need to implement the same API as ODK Aggregate. 
 
-  If you think you might need to connect to a non-Aggregate server application, and are having trouble, we encourage you to visit our `Support Forum <https://forum.opendatakit.org/c/support>`_.
+  If you think you might need to connect to a non-Aggregate server application, and are having trouble, we encourage you to visit our `Support Forum <https://forum.getodk.org/c/support>`_.
 
   The :menuselection:`Other` option will likely be deprecated in the future, and its use is not recommended.  

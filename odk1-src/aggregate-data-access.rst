@@ -149,7 +149,7 @@ Interfaces used during push actions are:
 - ``view/submissionList`` to obtain a chunk of submission keys
 - OpenRosa Form Submission/Overwrite API (with extensions)
 
-For more details, see `Briefcase Aggregate API <https://github.com/opendatakit/opendatakit/wiki/Briefcase-Aggregate-API>`_.
+For more details, see `Briefcase Aggregate API <https://github.com/getodk/getodk/wiki/Briefcase-Aggregate-API>`_.
 
 .. _openrosa-api:
 
@@ -167,7 +167,7 @@ Direct database connection
 
   This is an extremely dangerous way to access data from Aggregate because table structure can and does change between versions. Moreover, changing any of this data could corrupt your Aggregate install.
 
-If you are running on a Tomcat server, you have access to the underlying MySQL or PostgreSQL tables. The structure of those tables are documented at `Aggregate Database Structure <https://github.com/opendatakit/opendatakit/wiki/Aggregate-Database-Structure>`_.
+If you are running on a Tomcat server, you have access to the underlying MySQL or PostgreSQL tables. The structure of those tables are documented at `Aggregate Database Structure <https://github.com/getodk/getodk/wiki/Aggregate-Database-Structure>`_.
 
 .. _media-access:
 

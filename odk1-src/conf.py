@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Open Data Kit documentation build configuration file, created by
+# ODK documentation build configuration file, created by
 # sphinx-quickstart on Wed May 24 09:46:59 2017.
 #
 # This file is execfile()d with the current directory set to its
@@ -57,9 +57,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Open Data Kit'
-copyright = '2020, Open Data Kit. This document is licensed under a Creative Commons Attribution 4.0 International License'
-author = 'Open Data Kit'
+project = 'ODK'
+copyright = '2020, ODK. This document is licensed under a Creative Commons Attribution 4.0 International License'
+author = 'ODK'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -125,7 +125,7 @@ html_theme_options = {
     'logo_only': True,
     'display_version': False,
 }
-html_title = "Open Data Kit Docs"
+html_title = "ODK Docs"
 
 html_favicon = "_static/img/odk-favicon.ico"
 
@@ -171,14 +171,14 @@ latex_elements = {
         \\fancyfoot[LE,RO]{{\py@HeaderFamily\\thepage}}
         \\fancyhead[LO]{{\py@HeaderFamily\\nouppercase{\\rightmark}}}
         \\fancyhead[RE]{{\py@HeaderFamily\\nouppercase{\\leftmark}}}
-        \\fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.opendatakit.org}{https://docs.opendatakit.org}.}}}
+        \\fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.getodk.org}{https://docs.getodk.org}.}}}
         \\renewcommand{\\headrulewidth}{0.4pt}
         \\renewcommand{\\footrulewidth}{0.4pt}
       }
       \\fancypagestyle{plain}{
         \\fancyhf{}
         \\fancyfoot[LE,RO]{{\py@HeaderFamily\\thepage}}
-        \\fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.opendatakit.org}{https://docs.opendatakit.org}.}}}
+        \\fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.getodk.org}{https://docs.getodk.org}.}}}
         \\renewcommand{\\headrulewidth}{0pt}
         \\renewcommand{\\footrulewidth}{0.4pt}
       }
@@ -203,8 +203,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'OpenDataKit.tex', 'Open Data Kit Documentation',
-     'Open Data Kit', 'manual'),
+    (master_doc, 'OpenDataKit.tex', 'ODK Documentation',
+     'ODK', 'manual'),
 ]
 
 
@@ -213,7 +213,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'opendatakit', 'Open Data Kit Documentation',
+    (master_doc, 'opendatakit', 'ODK Documentation',
      [author], 1)
 ]
 
@@ -224,7 +224,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'OpenDataKit', 'Open Data Kit Documentation',
+    (master_doc, 'OpenDataKit', 'ODK Documentation',
      author, 'OpenDataKit', 'One line description of project.',
      'Miscellaneous'),
 ]
@@ -250,15 +250,6 @@ epub_copyright = copyright
 
 # A list of files that should not be packed into the epub file.
 epub_exclude_files = ['search.html']
-
-
-
-# Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {
-    # 'py': ('https://docs.python.org/', None),
-    'odk2': ('https://docs.opendatakit.org/odk2', None),
-    'odkx': ('https://docs.opendatakit.org/odk-x', None)
-}
 
 # Add custom CSS
 
@@ -311,7 +302,7 @@ file an issue
 """
 file_issue_here = """
 
-https://github.com/opendatakit/docs/issues
+https://github.com/getodk/docs/issues
 
 """
 contri_start = """
@@ -326,7 +317,7 @@ fork our Github repo
 """
 repo_here = """ 
 
-https://github.com/opendatakit/docs/
+https://github.com/getodk/docs/
 
 """
 join = """ 
@@ -356,7 +347,7 @@ ODK Forum
 """
 forum_here = """
 
-https://forum.opendatakit.org/
+https://forum.getodk.org/
 
 """
 
@@ -366,13 +357,13 @@ rst_epilog = """
 .. _odk-slack: https://opendatakit.slack.com
 
 .. |docs-issue| replace:: issue
-.. _docs-issue: https://github.com/opendatakit/docs/issues 
+.. _docs-issue: https://github.com/getodk/docs/issues 
 
 .. |forum| replace:: ODK Forum
-.. _forum: https://forum.opendatakit.org
+.. _forum: https://forum.getodk.org
 
 .. |contrib-guide| replace:: contributors guide
-.. _contrib-guide: https://docs.opendatakit.org/contributing/
+.. _contrib-guide: https://docs.getodk.org/contributing/
 
 """
 

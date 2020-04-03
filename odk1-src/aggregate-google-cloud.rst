@@ -44,7 +44,7 @@ Create an instance
 
 10. Expand the :guilabel:`Management, security, disks, networking, sole tenancy` section.
 
-11. In the :guilabel:`Management` tab, under :guilabel:`Automation`, copy the contents of `this startup script <https://raw.githubusercontent.com/opendatakit/aggregate/master/cloud-config/google-cloud/startup-script.sh>`_ into the :guilabel:`Startup script` text box.
+11. In the :guilabel:`Management` tab, under :guilabel:`Automation`, copy the contents of `this startup script <https://raw.githubusercontent.com/getodk/aggregate/master/cloud-config/google-cloud/startup-script.sh>`_ into the :guilabel:`Startup script` text box.
 
 12. In the :guilabel:`Networking` tab, set the :guilabel:`Hostname` with the domain name (e.g., your.domain) you want to use for Aggregate. This hostname will be used by the startup script to configure your instance's HTTPS support.
 

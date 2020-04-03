@@ -220,7 +220,7 @@ Briefcase will generate a different number of files and directories depending on
 
 There's more information available about the CSV file content structure and filename patterns in `the export format documentation`_.
 
-.. _the export format documentation: https://github.com/opendatakit/briefcase/blob/master/docs/export-format.md
+.. _the export format documentation: https://github.com/getodk/briefcase/blob/master/docs/export-format.md
 
 .. _cli-use:
 

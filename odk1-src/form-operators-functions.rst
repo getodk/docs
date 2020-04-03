@@ -128,7 +128,7 @@ Path operators
   to the current node (``..``) and the containing node (``.``). 
   `XPath paths`_ can be used to reference nodes of a form.
   
-  .. _XPath paths: https://opendatakit.github.io/xforms-spec/#xpath-paths
+  .. _XPath paths: https://getodk.github.io/xforms-spec/#xpath-paths
     
   
 .. _form-functions:
@@ -139,7 +139,7 @@ Functions
 .. contents::
   :local:
     
-.. seealso:: `Functions in the ODK XForm Specification <https://opendatakit.github.io/xforms-spec/#xpath-functions>`_
+.. seealso:: `Functions in the ODK XForm Specification <https://getodk.github.io/xforms-spec/#xpath-functions>`_
 
     
 .. _control-flow-functions:

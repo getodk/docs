@@ -75,9 +75,9 @@ It can include `XPath functions`_, `operators`_,
 :ref:`values from previous responses <variables>`,
 and (in some cases) :ref:`the value of the current response <constraints>`. 
 
-.. _XPath functions: https://opendatakit.github.io/xforms-spec/#xpath-functions
+.. _XPath functions: https://getodk.github.io/xforms-spec/#xpath-functions
 
-.. _operators: https://opendatakit.github.io/xforms-spec/#xpath-operators
+.. _operators: https://getodk.github.io/xforms-spec/#xpath-operators
 
 .. _formula: http://xlsform.org/#formulas
 
@@ -516,7 +516,7 @@ Complex example
   use the `if() function`_ to check for the existence of a value,
   and put your calculation inside the ``then`` argument.
   
-  .. _if() function: https://opendatakit.github.io/xforms-spec/#fn:if
+  .. _if() function: https://getodk.github.io/xforms-spec/#fn:if
   
   For example,
   when adding together fields ``a`` and ``b``:

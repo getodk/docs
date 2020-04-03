@@ -1,19 +1,18 @@
 # ODK Docs
 
-![Platform](https://img.shields.io/badge/platform-Sphinx-blue.svg) [![License](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/) [![Build status](https://circleci.com/gh/opendatakit/docs.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/opendatakit/docs/) [![Slack status](http://slack.opendatakit.org/badge.svg)](http://slack.opendatakit.org/)
+![Platform](https://img.shields.io/badge/platform-Sphinx-blue.svg) [![License](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/) [![Build status](https://circleci.com/gh/getodk/docs.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/getodk/docs/) [![Slack status](http://slack.getodk.org/badge.svg)](http://slack.getodk.org/)
 
 This repo is the source for ODK documentation.
 
 The published documentation is at:
 
- - https://docs.opendatakit.org
- - https://docs.opendatakit.org/odk-x/
+ - https://docs.getodk.org
 
-Please [file an issue](https://github.com/opendatakit/docs/issues) if you can't find what you are looking for.
+Please [file an issue](https://github.com/getodk/docs/issues) if you can't find what you are looking for.
 
 ## Building and viewing documentation locally
 
-There are two options for building and viewing ODK docs locally: [using Docker](#docker) or [setting up a local Python/Sphinx environment](#python-environment). We generally recommend starting with the Docker image unless you already have a Sphinx environment set up. The [Contributor Guide](https://docs.opendatakit.org/contributing) describes the philosophy behind the docs, style considerations, how to write restructured text and more.
+There are two options for building and viewing ODK docs locally: [using Docker](#docker) or [setting up a local Python/Sphinx environment](#python-environment). We generally recommend starting with the Docker image unless you already have a Sphinx environment set up. The [Contributor Guide](https://docs.getodk.org/contributing) describes the philosophy behind the docs, style considerations, how to write restructured text and more.
 
 ## <a name="docker"></a>Using Docker
 
@@ -33,7 +32,7 @@ There are two options for building and viewing ODK docs locally: [using Docker](
 Clone the docs repo. For example, at the command line:
 
 ```
-git clone https://github.com/opendatakit/docs.git
+git clone https://github.com/getodk/docs.git
 ```
 
 It can take a long time (>10 minutes) to clone the repo due to the large number of images in the docs. If you get an error such as `Smudge error` or `GitHub's rate limit reached`, run `git checkout -f HEAD` until you get the message `Checking out files: 100% done`.
@@ -155,7 +154,7 @@ We highly recommend you use a virtual environment like [virtualenv](https://virt
 Clone the docs repo and make sure all the requirements are installed:
 
 ```bash
-$ git clone https://github.com/opendatakit/docs.git
+$ git clone https://github.com/getodk/docs.git
 $ cd docs/
 $ pip install -r requirements.txt
 ```
@@ -175,43 +174,32 @@ $ python -m http.server 8000
 
 You can then view the docs in your browser at http://localhost:8000.
 
-(Use `odkx` instead of `odk1` to build and serve the ODK-X docs.)
-
 You can also use `make` to build both ODK and ODK-X docs, or to run just a portion of the build process. See available [build tasks](#tasks) below.
 
 ## <a name="tasks"></a>Build tasks
 
-For both ODK and ODK-X:
-
-|          |    Build     |     Clean     |     Check Style & Spell     |    Test    |
-| -------- | :---------:  | :-----------: | :-------------------------: | :--------: |
-| **Options** | build-all |  clean |  check-all | test |
-
-For a specific ODK version:
 
 |          | Build & Serve | Build |    Copy     |     LaTeX     |     Style Check     |    Spell Check     |    Check All   |
 | -------- | :-----------: | :---: | :---------: | :-----------: | :-----------------: | :----------------: | :----------------: |
 | **Options** | odk1-autobuild | odk1-build | odk1-copy |  odk1-latex |  odk1-style-check | odk1-spell-check |    odk1-check     |
-
-To build ODK-X docs, just replace `odk1` with `odkx`. 
 
 
 ## How to contribute?
 
 We are open for new issues and pull requests.
 
- - Please read the [Contributors Guide](https://docs.opendatakit.org/contributing) before working on the documentation.
+ - Please read the [Contributors Guide](https://docs.getodk.org/contributing) before working on the documentation.
  - Find issues to work on.
-    - First time contributors are encouraged to complete a [line edit](https://github.com/opendatakit/docs/issues/96) as a way to get familiar with our contribution process.
-	- Issues labelled [easy](https://github.com/opendatakit/docs/labels/easy) do not require much specific technical knowledge.
-	- Issues labelled [contributor friendly](https://github.com/opendatakit/docs/labels/contributor%20friendly) are usually self-contained and don't require extensive knowledge of the ODK ecosystem as a whole.
+    - First time contributors are encouraged to complete a [line edit](https://github.com/getodk/docs/issues/96) as a way to get familiar with our contribution process.
+	- Issues labelled [easy](https://github.com/getodk/docs/labels/easy) do not require much specific technical knowledge.
+	- Issues labelled [contributor friendly](https://github.com/getodk/docs/labels/contributor%20friendly) are usually self-contained and don't require extensive knowledge of the ODK ecosystem as a whole.
 	
 You can also...
 
- - [Discuss the documentation from a user perspective in our forum](https://forum.opendatakit.org/c/development/documentation).
- - [Discuss the documentation from a contributor perspective in our developer Slack](slack.opendatakit.org). (Use the #docs-code channel.)
- - [File an issue](https://github.com/opendatakit/docs/issues) for any needed improvements.
- - [Watch](https://github.com/opendatakit/docs/subscription) and star this repo, to keep up with what we're doing.
+ - [Discuss the documentation from a user perspective in our forum](https://forum.getodk.org/c/development/documentation).
+ - [Discuss the documentation from a contributor perspective in our developer Slack](slack.getodk.org). (Use the #docs-code channel.)
+ - [File an issue](https://github.com/getodk/docs/issues) for any needed improvements.
+ - [Watch](https://github.com/getodk/docs/subscription) and star this repo, to keep up with what we're doing.
 
 ## Troubleshooting
 - If you get an `extension error` or a `configuration error`:

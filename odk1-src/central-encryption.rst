@@ -3,7 +3,7 @@
 Encrypted Forms in Central
 ==========================
 
-As of `version 0.6 <https://github.com/opendatakit/central/releases/tag/v0.6.0-beta.0>`_, ODK Central supports the encryption of submitted data, similar to ODK Aggregate.
+As of `version 0.6 <https://github.com/getodk/central/releases/tag/v0.6.0-beta.0>`_, ODK Central supports the encryption of submitted data, similar to ODK Aggregate.
 
 .. admonition:: For Aggregate users already using encryption
 

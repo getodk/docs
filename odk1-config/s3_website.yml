@@ -23,7 +23,7 @@ cloudfront_distribution_config:
   aliases:
     quantity: 1
     items:
-      - docs.opendatakit.org
+      - docs.getodk.org
 
 cloudfront_wildcard_invalidation: true
 
@@ -32,13 +32,13 @@ routing_rules:
   - condition:
       key_prefix_equals: odk2/
     redirect:
-      host_name: docs.opendatakit.org
+      host_name: docs.getodk.org
       replace_key_prefix_with: odk-x/
       http_redirect_code: 301
   - condition:
       key_prefix_equals: odkx/
     redirect:
-      host_name: docs.opendatakit.org
+      host_name: docs.getodk.org
       replace_key_prefix_with: odk-x/
       http_redirect_code: 301
 
@@ -56,7 +56,7 @@ redirects:
   form-uploader/index.html: briefcase-using#pulling-form-definitions
   form-widgets/index.html: form-question-types
   odk-build/index.html: build-intro
-  odk2/index.html: https://docs.opendatakit.org/odk-x
+  odk2/index.html: https://docs.getodk.org/odk-x
   pyxform/index.html: xlsform
   style-guide/index.html: docs-style-guide
   visualize/index.html: aggregate-visualize

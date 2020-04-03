@@ -13,7 +13,7 @@ Tips and Best Practices
 Related Topics
 ----------------
 
-- :doc:`Intro to Forms in Open Data Kit <form-design-intro>`
+- :doc:`Intro to Forms in ODK <form-design-intro>`
 
   - :doc:`Example form questions in Collect  <form-question-types>`
 

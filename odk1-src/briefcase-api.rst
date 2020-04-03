@@ -70,7 +70,7 @@ The response from the server looks like:
 
 	<OpenRosaResponse xmlns="http://openrosa.org/http/response">
 	<message>...</message>
-	<submissionMetadata xmlns="http://www.opendatakit.org/xforms"
+	<submissionMetadata xmlns="http://www.getodk.org/xforms"
    		id="formid" version="..." encrypted="yes" instanceID="..." 
    		submissionDate="..." 
    		isComplete="true" markedAsCompleteDate="..."/>
@@ -185,7 +185,7 @@ The returned XML document is of the form:
 
 .. code-block:: xml
 
-	<idChunk xmlns="http://opendatakit.org/submissions">
+	<idChunk xmlns="http://getodk.org/submissions">
 	 <idList>
 	  <id>uuid:e5aa4247-cfb8-4cc5-87cd-52fbfe491b13</id>
 	  <id>uuid:8ca4433a-fed2-4d1c-b333-c0378203f68f</id>
@@ -242,7 +242,7 @@ The response is of the form:
 
 .. code-block:: xml
 
-	<submission xmlns="http://opendatakit.org/submissions"
+	<submission xmlns="http://getodk.org/submissions"
 	            xmlns:orx="http://openrosa.org/xforms" >
 	 <data>
 	   ...reconstructed submission XML...

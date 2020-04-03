@@ -48,7 +48,7 @@ As you continue down this page, there are a few options that may be important to
 
 Once you click on **Create**, you'll be taken back to the Droplet management page. It may think for a moment, and then your new server should appear. Next to it will be an IP address, which should look something like ``183.47.101.24``. This is where your server is publicly located on the Internet. Don't worry, nobody can do anything with it until you let them.
 
-Congratulations! With those steps, you have now created a new server which you can access over the Internet, and started it up. Next, we will get a web domain name address (like ``opendatakit.org``) to point at it.
+Congratulations! With those steps, you have now created a new server which you can access over the Internet, and started it up. Next, we will get a web domain name address (like ``getodk.org``) to point at it.
 
 .. _central-install-digital-ocean-domain:
 
@@ -85,7 +85,7 @@ Once you have that password in hand, you'll be able to use the **Launch Console*
 
 Once you are in your server, you'll want to change your password so that people snooping your email do not gain access. You should be automatically asked for a new password the first time you log in. If you are not, type ``passwd`` and press **Enter**, then follow the instructions to choose a new password. From now on, you will use that password to log in.
 
-Now you'll need to download the software. In the server window, type ``git clone https://github.com/opendatakit/central`` and press **Enter**. It should think for some time and download many things. Then type `cd central` to start working with the software.
+Now you'll need to download the software. In the server window, type ``git clone https://github.com/getodk/central`` and press **Enter**. It should think for some time and download many things. Then type `cd central` to start working with the software.
 
    .. image:: /img/central-install/cloned.png
 

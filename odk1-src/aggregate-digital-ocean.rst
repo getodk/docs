@@ -32,7 +32,7 @@ Create your Droplet
 6.  Select a datacenter region physically close to where data collection
     is going to happen.
 
-7.  Under :guilabel:`Select additional options`, check the :guilabel:`User data` checkbox. Copy and paste the contents of `this Cloud-Config script <https://raw.githubusercontent.com/opendatakit/aggregate/master/cloud-config/digital-ocean/cloud-config.yml>`_.
+7.  Under :guilabel:`Select additional options`, check the :guilabel:`User data` checkbox. Copy and paste the contents of `this Cloud-Config script <https://raw.githubusercontent.com/getodk/aggregate/master/cloud-config/digital-ocean/cloud-config.yml>`_.
 
     .. image:: /img/aggregate-digital-ocean/user-data.*
       :alt: Inserting Cloud-Config script under User Data section

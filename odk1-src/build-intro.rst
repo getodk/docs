@@ -9,21 +9,21 @@ ODK Build
 
 .. tip::
 
-  For a more powerful form designer from Open Data Kit, try :doc:`XLSForm <xlsform>`.
+  For a more powerful form designer from ODK, try :doc:`XLSForm <xlsform>`.
 
 .. _use-build:  
 
 Using ODK Build
 ----------------
 
-Go to http://build.opendatakit.org and sign in.
+Go to http://build.getodk.org and sign in.
 
 .. image:: /img/odk-build/sign-in.png
    :alt: Image showing sign in window.
 
 .. note::
   
-  There is a `downloadable version of ODK Build <https://github.com/opendatakit/build/releases/latest>`_ available.
+  There is a `downloadable version of ODK Build <https://github.com/getodk/build/releases/latest>`_ available.
 
 .. tip::
 

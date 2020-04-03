@@ -118,7 +118,7 @@ Installation procedure
 
         sudo apt-get install postgresql-10
 
-7. Install `ODK Aggregate <https://github.com/opendatakit/aggregate/releases/latest>`_. Select the latest release for your operating system.
+7. Install `ODK Aggregate <https://github.com/getodk/aggregate/releases/latest>`_. Select the latest release for your operating system.
 
   The installer will guide you through configuring ODK Aggregate for your setup. The installer will produce a WAR file (web archive) containing the configured ODK Aggregate code, a :file:`create_db_and_user.sql` script for creating the database and user that ODK Aggregate will use to access this database, and a :file:`Readme.html` file with instructions on how to complete the installation.
 

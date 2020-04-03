@@ -70,76 +70,6 @@ jobs:
           root: ~/work
           paths:
             - odk1-build/*
-  build-odkx:
-    working_directory: ~/work
-    docker:
-      - image: circleci/python:latest
-    steps:
-      - checkout
-      - run:
-          name: Install checkout requirements
-          command: |
-            curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-            sudo apt-get install git-lfs
-            git lfs install
-      - run:
-          name: Checkout binaries
-          command: git lfs pull
-      - run:
-          name: Install build requirements
-          command: |
-            sudo apt-get install pngquant
-            sudo apt-get install python-enchant
-            sudo pip install -r requirements.txt
-      - run:
-          name: Style Guide Check
-          command: |
-            paths=$(git diff origin/master... --name-only)
-            echo $paths
-            sudo python style-test.py $paths -r odkx-src
-            sudo python style-test.py $paths -r shared-src
-      - run:
-          name: Build ODK-X Documentation
-          command: make odkx-deploy
-      - run:
-          name: Check spelling of ODK-X Documentation
-          command: make odkx-spell-check
-      - run:
-          name: Build LaTex of ODK-X Documentation
-          command: make odkx-latex
-      - run:
-          name: Compress images
-          command: pngquant odkx-build/_images/*.png --force --ext .png --verbose
-      - store_artifacts:
-          path: odkx-build
-          destination: odkx-build
-      - persist_to_workspace:
-          root: ~/work
-          paths:
-            - odkx-build/*
-            - odkx-config/*
-  build-pdf-odkx:
-    working_directory: ~/work
-    docker:
-      - image: schickling/latex
-    steps:
-      - attach_workspace:
-          at: ~/work
-      - run:
-          name: Build PDF
-          command: |
-              cd odkx-build/latex
-              xelatex OpenDataKitX.tex
-              xelatex OpenDataKitX.tex
-              mkdir -p ../_downloads
-              mv OpenDataKitX.pdf ../_downloads/ODK-X-Documentation.pdf
-      - store_artifacts:
-          path: odkx-build/_downloads/ODK-X-Documentation.pdf
-          destination: ODK-X-Documentation.pdf
-      - persist_to_workspace:
-          root: ~/work
-          paths:
-            - odkx-build/*
   deploy-odk1:
     working_directory: ~/work
     docker:
@@ -163,30 +93,6 @@ jobs:
           command: |
               if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
                 s3_website push --config-dir=odk1-config
-              fi
-  deploy-odkx:
-    working_directory: ~/work
-    docker:
-      - image: circleci/ruby:latest
-    steps:
-      - attach_workspace:
-          at: ~/work
-      - run:
-          name: Install deploy requirements
-          command: |
-              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
-                sudo apt-get install -y software-properties-common
-                wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
-                sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
-                sudo apt-get update
-                sudo apt-get install -y adoptopenjdk-8-hotspot
-                gem install s3_website && s3_website install
-              fi
-      - run:
-          name: Push to S3
-          command: |
-              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
-                s3_website push --config-dir=odkx-config
               fi
   deploy-shared:
     working_directory: ~/work
@@ -221,21 +127,10 @@ workflows:
       - build-pdf-odk1:
           requires:
             - build-odk1
-      - build-odkx
-      - build-pdf-odkx:
-          requires:
-            - build-odkx
       - deploy-odk1:
           requires:
             - build-odk1
             - build-pdf-odk1
-          filters:
-            branches:
-              only: master
-      - deploy-odkx:
-          requires:
-            - build-odkx
-            - build-pdf-odkx
           filters:
             branches:
               only: master

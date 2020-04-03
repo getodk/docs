@@ -2,7 +2,7 @@ Getting Started With ODK
 =========================
 
 This document walks you through a very basic setup process,
-to get you familiar with using Open Data Kit.
+to get you familiar with using ODK.
 
 You will:
 
@@ -38,7 +38,7 @@ you can use the `Aggregate sandbox server`_.
   The `Aggregate sandbox server`_ is for demo purposes only.
   All forms and data on this server are public and are deleted every 24 hours without notice.
   
-.. _Aggregate sandbox server: https://sandbox.aggregate.opendatakit.org
+.. _Aggregate sandbox server: https://sandbox.aggregate.getodk.org
 
 .. seealso:: :doc:`aggregate-install`
 
@@ -47,21 +47,21 @@ you can use the `Aggregate sandbox server`_.
 Create a form with Build and upload it to Aggregate
 ------------------------------------------------------
 
-The quickest and easiest way to start using your own survey forms is to create one online with `ODK Build <https://build.opendatakit.org/>`_.
+The quickest and easiest way to start using your own survey forms is to create one online with `ODK Build <https://build.getodk.org/>`_.
 
-#. Go to `build.opendatakit.org <https://build.opendatakit.org/>`_, create a new account, and log in. Once logged in, a blank survey is created. 
+#. Go to `build.getodk.org <https://build.getodk.org/>`_, create a new account, and log in. Once logged in, a blank survey is created. 
 #. Give your form a name (:guilabel:`rename` in the upper left-hand corner).
 #. Add a few questions (click on question types in the :guilabel:`+Add New` bar along the bottom).
 #. Once your new form is complete, go to :menuselection:`File --> Upload form to Aggregate...` to upload your form.
 
    If you have your own Aggregate server, use the URI and credentials you created during setup.
    
-   To use the sandbox, the :guilabel:`Aggregate Instance URI` is ``https://sandbox.aggregate.opendatakit.org``. You should not need additional credentials.
+   To use the sandbox, the :guilabel:`Aggregate Instance URI` is ``https://sandbox.aggregate.getodk.org``. You should not need additional credentials.
 
 
 .. seealso::
   
-  `Build desktop app <https://github.com/opendatakit/build/releases/latest>`_
+  `Build desktop app <https://github.com/getodk/build/releases/latest>`_
     To use Build locally.
 
   :doc:`xlsform`
@@ -78,7 +78,7 @@ Load a form into Collect from Aggregate
    (:menuselection:`⋮ --> General Settings --> Server`).
 #. Edit the server settings to connect to your Aggregate server or the sandbox server.
 
-   The URI for the sandbox server is ``https://sandbox.aggregate.opendatakit.org``.
+   The URI for the sandbox server is ``https://sandbox.aggregate.getodk.org``.
    
 #. Go back to the app home screen and select :guilabel:`Get Blank Form`, then select your form.
 

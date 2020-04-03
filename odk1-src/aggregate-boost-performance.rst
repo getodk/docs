@@ -5,7 +5,7 @@ Reducing Data Corruption and Boosting Performance
 
 .. warning::
 
-  This document only applies ODK Aggregate v1.x. See `why we are removing App Engine support <https://forum.opendatakit.org/t/upcoming-changes-to-aggregate/17582>`_ for more information.
+  This document only applies ODK Aggregate v1.x. See `why we are removing App Engine support <https://forum.getodk.org/t/upcoming-changes-to-aggregate/17582>`_ for more information.
 
 If you have many form definitions on your server, you may get better performance and reduce the likelihood of data corruption if you increase the size of your server.
 

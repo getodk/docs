@@ -811,7 +811,7 @@ Likert widget
 """"""""""""""""""""""""""""""""""
 .. versionadded:: 1.25
 
-  `ODK Collect v1.25.0 <https://github.com/opendatakit/collect/releases/tag/v1.25.0>`_
+  `ODK Collect v1.25.0 <https://github.com/getodk/collect/releases/tag/v1.25.0>`_
 
 type
  :tc:`select_one {list_name}`
@@ -1168,7 +1168,7 @@ In the example above, each time the question is displayed, the choices will be i
   opt_abcd,c,C
   opt_abcd,d,D
 
-This seed can also be used to recreate the order choices were displayed in. See `the XForms spec <https://opendatakit.github.io/xforms-spec/#fn:randomize>`_ for a description of the randomization algorithm used.
+This seed can also be used to recreate the order choices were displayed in. See `the XForms spec <https://getodk.github.io/xforms-spec/#fn:randomize>`_ for a description of the randomization algorithm used.
 
 .. note::
 
@@ -1799,7 +1799,7 @@ File upload widget
 
 .. versionadded:: 1.15
 
-  `ODK Collect v1.15.0 <https://github.com/opendatakit/collect/releases/tag/v1.15.0>`_
+  `ODK Collect v1.15.0 <https://github.com/getodk/collect/releases/tag/v1.15.0>`_
 
 Uploads any file from the device to the form.
 
@@ -2081,14 +2081,14 @@ Takes no input.
 The URL to open is specified with :th:`default`.
 
 .. image:: /img/form-widgets/url-widget.*
-  :alt: The URL form widget, as displayed in the ODK Collect app on an Android phone. The question text is "URL Widget." The hint text is "text type with url appearance and default value of http://opendatakit.org/" Below that is a button labeled, "Open URL." Below the button is the URL, "http://opendatakit.org/" Above the question text is the form group name "Text widgets."
+  :alt: The URL form widget, as displayed in the ODK Collect app on an Android phone. The question text is "URL Widget." The hint text is "text type with url appearance and default value of http://getodk.org/" Below that is a button labeled, "Open URL." Below the button is the URL, "http://getodk.org/" Above the question text is the form group name "Text widgets."
 
 .. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint, default
 
-  text,url_widget,URL widget,url,text type with url appearance and default value of http://opendatakit.org/,http://opendatakit.org/
+  text,url_widget,URL widget,url,text type with url appearance and default value of http://getodk.org/,http://getodk.org/
 
 
 .. _print-widget:

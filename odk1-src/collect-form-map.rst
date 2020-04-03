@@ -8,7 +8,7 @@ Viewing filled forms on a map
 
 .. versionadded:: 1.25
 
-  `ODK Collect v1.25.0 <https://github.com/opendatakit/collect/releases/tag/v1.25.0>`_
+  `ODK Collect v1.25.0 <https://github.com/getodk/collect/releases/tag/v1.25.0>`_
 
 If you are collecting data related to physical locations, you can see a map of all filled forms from the :doc:`Fill Blank Form <collect-filling-forms>` menu. Use the map view to see your progress, to identify filled forms with bad locations and to plan your travel to the next location to survey.
 

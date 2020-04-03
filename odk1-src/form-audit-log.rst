@@ -95,7 +95,7 @@ Tracking reason for edit
 
 .. versionadded:: 1.25
 
-  `ODK Collect v1.25.0 <https://github.com/opendatakit/collect/releases/tag/v1.25.0>`_
+  `ODK Collect v1.25.0 <https://github.com/getodk/collect/releases/tag/v1.25.0>`_
 
 You can add to :tc:`track-changes-reasons=on-form-edit` to prompt enumerators to enter a reason before they save changes to a form:
 
@@ -111,7 +111,7 @@ Enumerator identification
 
 .. versionadded:: 1.25
 
-  `ODK Collect v1.25.0 <https://github.com/opendatakit/collect/releases/tag/v1.25.0>`_
+  `ODK Collect v1.25.0 <https://github.com/getodk/collect/releases/tag/v1.25.0>`_
 
 If your form needs a record of the identity of the enumerator you can use :tc:`identify-user=true`.
 

@@ -11,7 +11,7 @@ Submitting filled forms via SMS (Disabled)
 
 .. warning:: 
 
-  Sending submissions via SMS has been disabled due to Google Play Store restrictions. See `Removal of sending submissions via SMS in Collect <https://forum.opendatakit.org/t/17973>`_ for more information.
+  Sending submissions via SMS has been disabled due to Google Play Store restrictions. See `Removal of sending submissions via SMS in Collect <https://forum.getodk.org/t/17973>`_ for more information.
 
 .. admonition:: SMS is not reliable
 

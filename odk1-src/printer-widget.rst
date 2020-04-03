@@ -90,4 +90,4 @@ of the survey :term:`participant`:
   without needing to also modify Collect.
 
 
-  .. _ODK Zebra Printer Driver source code: https://github.com/opendatakit/sensordrivers/tree/master/ZebraMzSeriesPrinter
+  .. _ODK Zebra Printer Driver source code: https://github.com/getodk/sensordrivers/tree/master/ZebraMzSeriesPrinter

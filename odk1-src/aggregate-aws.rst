@@ -108,7 +108,7 @@ Create an EC2 machine
 
 9. Select the IAM role you previously created in the :guilabel:`IAM role` dropdown.
 
-10. Toggle the :guilabel:`Advanced Details` section and copy and paste the contents of `this Cloud-Config script <https://raw.githubusercontent.com/opendatakit/aggregate/master/cloud-config/aws/cloud-config.yml>`_.
+10. Toggle the :guilabel:`Advanced Details` section and copy and paste the contents of `this Cloud-Config script <https://raw.githubusercontent.com/getodk/aggregate/master/cloud-config/aws/cloud-config.yml>`_.
 
 11. Click on :guilabel:`Next: Add Storage` and edit the storage settings. 
 

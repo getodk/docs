@@ -5,7 +5,7 @@ Installing Aggregate on Google App Engine
 
 .. warning::
 
-  This document only applies ODK Aggregate v1.x. See `why we are removing App Engine support <https://forum.opendatakit.org/t/upcoming-changes-to-aggregate/17582>`_ for more information.
+  This document only applies ODK Aggregate v1.x. See `why we are removing App Engine support <https://forum.getodk.org/t/upcoming-changes-to-aggregate/17582>`_ for more information.
 
 .. note::
 
@@ -24,7 +24,7 @@ Installing Aggregate on Google App Engine
 
   .. _download-aggregate-installer:
 
-  - Download the `ODK Aggregate installer <https://github.com/opendatakit/aggregate/releases/latest>`_. Select the latest release for your operating system.
+  - Download the `ODK Aggregate installer <https://github.com/getodk/aggregate/releases/latest>`_. Select the latest release for your operating system.
 
 1. Go to `Google Cloud Platform <https://cloud.google.com/>`_ and click on :guilabel:`Console` in the top right corner.
 
