@@ -885,7 +885,6 @@ ODK and ODK Docs
 
 - Odk
 - odk
-- ODK
 - OpenDataKit
 - the ODK
 - ODK docs
@@ -894,7 +893,7 @@ ODK and ODK Docs
 .. rubric:: Right
 
 - ODK
-- ODK
+- getodk
 - ODK Docs
 - ODK Documentation
 
@@ -913,7 +912,6 @@ ODK and ODK Docs
 
       preferences = [
 
-          ["ODK",         ["ODK"]],
           ["ODK",         ["OpenDataKit"]],
           ["ODK",                   ["Odk"]],
           ["ODK",                   ["{0} odk"]],
