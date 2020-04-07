@@ -48,10 +48,10 @@ odkx-latex: odkx
 
 odkx-pdf: odkx-latex
 	cd "$(ODKX_BUILDDIR)"/latex && \
-	xelatex OpenDataKitX.tex && \
-	xelatex OpenDataKitX.tex && \
+	xelatex ODK-X.tex && \
+	xelatex ODK-X.tex && \
 	mkdir -p ../_downloads && \
-	mv OpenDataKitX.pdf ../_downloads/ODK-X-Documentation.pdf
+	mv ODK-X.pdf ../_downloads/ODK-X-Documentation.pdf
 
 odkx-style-check: odkx
 	python style-test.py -r $(COMPILE_X_SRCDIR)

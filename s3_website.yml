@@ -14,6 +14,7 @@ exclude_from_upload:
   - .DS_Store
   - spelling
   - latex
+  - s3_website.yml
 
 cloudfront_distribution_id: EZKLUGDLNKXCZ
 

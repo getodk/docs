@@ -48,6 +48,7 @@ jobs:
           paths:
             - odkx-build/*
             - s3_website.yml
+            - robots.txt
   build-pdf-odkx:
     working_directory: ~/work
     docker:
@@ -59,10 +60,10 @@ jobs:
           name: Build PDF
           command: |
               cd odkx-build/latex
-              xelatex OpenDataKitX.tex
-              xelatex OpenDataKitX.tex
+              xelatex ODK-X.tex
+              xelatex ODK-X.tex
               mkdir -p ../_downloads
-              mv OpenDataKitX.pdf ../_downloads/ODK-X-Documentation.pdf
+              mv ODK-X.pdf ../_downloads/ODK-X-Documentation.pdf
       - store_artifacts:
           path: odkx-build/_downloads/ODK-X-Documentation.pdf
           destination: ODK-X-Documentation.pdf

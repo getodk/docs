@@ -140,7 +140,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'OpenDataKitXdoc'
+htmlhelp_basename = 'ODKXdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -196,7 +196,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'OpenDataKitX.tex', 'ODK-X Documentation',
+    (master_doc, 'ODK-X.tex', 'ODK-X Documentation',
      'ODK-X', 'manual'),
 ]
 
@@ -206,7 +206,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'opendatakitx', 'ODK-X Documentation',
+    (master_doc, 'odkx', 'ODK-X Documentation',
      [author], 1)
 ]
 
