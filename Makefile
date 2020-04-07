@@ -48,10 +48,10 @@ odk1-latex: odk1
 
 odk1-pdf: odk1-latex
 	cd "$(ODK1_BUILDDIR)"/latex && \
-	xelatex OpenDataKit.tex && \
-	xelatex OpenDataKit.tex && \
+	xelatex ODK.tex && \
+	xelatex ODK.tex && \
 	mkdir -p ../_downloads && \
-	mv OpenDataKit.pdf ../_downloads/ODK-Documentation.pdf
+	mv ODK.pdf ../_downloads/ODK-Documentation.pdf
 
 odk1-style-check: odk1
 	python style-test.py -r $(COMPILE1_SRCDIR)
@@ -63,9 +63,6 @@ odk1-spell-check: odk1
 odk1-check: odk1-style-check odk1-spell-check
 
 check-all: odk1-check
-
-odk1-compress: odk1
-	pngquant "$(ODK1_BUILDDIR)"/_images/*.png --force --ext .png --verbose
 
 test:
 	pytest

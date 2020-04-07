@@ -59,10 +59,10 @@ jobs:
           name: Build PDF
           command: |
               cd odk1-build/latex
-              xelatex OpenDataKit.tex
-              xelatex OpenDataKit.tex
+              xelatex ODK.tex
+              xelatex ODK.tex
               mkdir -p ../_downloads
-              mv OpenDataKit.pdf ../_downloads/ODK-Documentation.pdf
+              mv ODK.pdf ../_downloads/ODK-Documentation.pdf
       - store_artifacts:
           path: odk1-build/_downloads/ODK-Documentation.pdf
           destination: ODK-Documentation.pdf
@@ -92,31 +92,7 @@ jobs:
           name: Push to S3
           command: |
               if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
-                s3_website push --config-dir=odk1-config
-              fi
-  deploy-shared:
-    working_directory: ~/work
-    docker:
-      - image: circleci/ruby:latest
-    steps:
-      - attach_workspace:
-          at: ~/work
-      - run:
-          name: Install deploy requirements
-          command: |
-              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
-                sudo apt-get install -y software-properties-common
-                wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
-                sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
-                sudo apt-get update
-                sudo apt-get install -y adoptopenjdk-8-hotspot
-                gem install s3_website && s3_website install
-              fi
-      - run:
-          name: Push to S3
-          command: |
-              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
-                s3_website push --config-dir=shared-config
+                s3_website push
               fi
 
 workflows:
@@ -128,6 +104,7 @@ workflows:
           requires:
             - build-odk1
       - deploy-odk1:
+          context: AWS
           requires:
             - build-odk1
             - build-pdf-odk1
