@@ -47,7 +47,8 @@ jobs:
           root: ~/work
           paths:
             - odk1-build/*
-            - odk1-config/*
+            - s3_website.yml
+
   build-pdf-odk1:
     working_directory: ~/work
     docker:
