@@ -110,4 +110,4 @@ workflows:
             - build-pdf-odk1
           filters:
             branches:
-              only: master
+              only: odk
