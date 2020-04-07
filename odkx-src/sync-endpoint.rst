@@ -27,7 +27,7 @@ ODK-X Sync Endpoint does not store user information in its own database, instead
 ODK-X Sync Endpoint prerequisites
 -----------------------------------
 
-You must have :program:`Docker 17.06.1` or newer, and be running in *Swarm Mode*.
+You must have :program:`Docker 18.09.2` or newer, and be running in *Swarm Mode*.
 Follow these links for detailed instructions on installing :program:`Docker` and enabling Swarm Mode.
 
   - `Docker <https://docs.docker.com/install/>`_
