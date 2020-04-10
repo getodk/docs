@@ -113,14 +113,14 @@ DirectoryHTMLBuilder.supported_image_types = [
 html_theme = "sphinx_rtd_theme"
 
 # Add logo stuff
-html_logo = '_static/img/odk-logo-wide.png'
+html_logo = '_static/img/logo-wide.png'
 html_theme_options = {
     'logo_only': True,
     'display_version': False,
 }
 html_title = "ODK-X Docs"
 
-html_favicon = "_static/img/odk-favicon.ico"
+html_favicon = "_static/img/favicon.ico"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
