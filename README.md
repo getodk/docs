@@ -206,3 +206,4 @@ You can also...
   - Make sure your virtual environment is activated.
   - Type `python --version` to check your current python version (it should be 3.x).
   - Run `pip install -r requirements.txt`.
+  
