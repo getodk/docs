@@ -71,7 +71,7 @@ docker kill odk-docs
 
 ### Other build tasks  
 
-You can also use the `run-task` script described above to build both ODK and ODK-X docs, or to run just a portion of the build process. See available [build tasks](#tasks) below.
+You can also use the `run-task` script described above to run just a portion of the build process. See available [build tasks](#tasks) below.
 
 ## <a name="python-environment"></a>Python environment
 
@@ -174,7 +174,7 @@ $ python -m http.server 8000
 
 You can then view the docs in your browser at http://localhost:8000.
 
-You can also use `make` to build both ODK and ODK-X docs, or to run just a portion of the build process. See available [build tasks](#tasks) below.
+You can also use `make` to build just a portion of the build process. See available [build tasks](#tasks) below.
 
 ## <a name="tasks"></a>Build tasks
 
