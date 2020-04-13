@@ -197,6 +197,17 @@ Log into your server so you have a console prompt, and run these commands, adapt
  mkswap /swap
  swapon /swap
 
+.. _central-install-digital-ocean-custom-ssl:
+
+Using a Custom SSL Certificate
+------------------------------
+
+By default, ODK Central uses Let's Encrypt to obtain an SSL security certificate. For most users, this should work perfectly, but larger managed internal networks may have their own certificate trust infrastructure. To use your own custom SSL certificate rather than the automatic Let's Encrypt system:
+
+1. Generate appropriate ``fullchain.pem`` (``-out``) and ``privkey.pem`` (``-keyout``) files.
+2. Copy those files into ``files/local/customssl/`` within the repository root.
+3. In ``.env``, set ``SSL_TYPE`` to ``customssl`` and set ``DOMAIN`` to ``local``.
+4. Build and run: ``docker-compose build nginx`` and ``systemctl restart docker-compose@central``. If that doesn't work, you may need to first remove your old nginx container (``docker-compose rm nginx``).
 
 .. _central-install-digital-ocean-custom-mail:
 
@@ -295,18 +306,4 @@ If on the other hand you wish to use your own Sentry instance, take these steps:
      }
    }
 
-
-
 The error logs sent to Sentry (if enabled) are also being written to ``/var/log/odk/stderr.log`` in the running backend container.
-
-.. _central-install-digital-ocean-custom-ssl:
-
-Using a Custom SSL Certificate
-------------------------------
-
-By default, ODK Central uses Let's Encrypt to obtain an SSL security certificate. For most users, this should work perfectly, but larger managed internal networks may have their own certificate trust infrastructure. To use your own custom SSL certificate rather than the automatic Let's Encrypt system:
-
-1. Generate appropriate ``fullchain.pem`` (``-out``) and ``privkey.pem`` (``-keyout``) files.
-2. Copy those files into ``files/local/customssl/`` within the repository root.
-3. In ``.env``, set ``SSL_TYPE`` to ``customssl`` and set ``DOMAIN`` to ``local``.
-4. Build and run: ``docker-compose build nginx`` and ``systemctl restart docker-compose@central``. If that doesn't work, you may need to first remove your old nginx container (``docker-compose rm nginx``).
