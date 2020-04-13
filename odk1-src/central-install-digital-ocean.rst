@@ -210,13 +210,17 @@ ODK Central ships with a basic EXIM server bundled to forward mail out to the in
 
   .. code-block:: console
 
-   "transportOpts": {
-     "host": "smtp.example.com",
-     "port": 587,
-     "secure": false,
-     "auth": {
-       "user": "my-smtp-user",
-       "pass": "my-smtp-password"
+   "email": {
+     "serviceAccount": "my-replyto-email",
+     "transport": "smtp",
+     "transportOpts": {
+       "host": "smtp.example.com",
+       "port": 587,
+       "secure": false,
+       "auth": {
+         "user": "my-smtp-user",
+         "pass": "my-smtp-password"
+       }
      }
    }
 
