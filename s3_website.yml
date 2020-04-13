@@ -31,16 +31,22 @@ cloudfront_wildcard_invalidation: true
 # these redirects may not be necessary depending on how we redirect from docs.opendatakit.org
 routing_rules:
   - condition:
+      key_prefix_equals: odk-x/
+    redirect:
+      host_name: docs.odk-x.org
+      replace_key_prefix_with: 
+      http_redirect_code: 301
+  - condition:
       key_prefix_equals: odk2/
     redirect:
       host_name: docs.odk-x.org
-      replace_key_prefix_with: /
+      replace_key_prefix_with: 
       http_redirect_code: 301
   - condition:
       key_prefix_equals: odkx/
     redirect:
       host_name: docs.odk-x.org
-      replace_key_prefix_with: /
+      replace_key_prefix_with: 
       http_redirect_code: 301
 
 
