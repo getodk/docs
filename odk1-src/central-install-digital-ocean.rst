@@ -226,6 +226,43 @@ ODK Central ships with a basic EXIM server bundled to forward mail out to the in
 
 3. Build and run: ``docker-compose build service`` and ``systemctl restart docker-compose@central``. If that doesn't work, you may need to first remove your old service container (``docker-compose rm service``).
 
+.. _central-install-digital-ocean-custom-db:
+
+Using a Custom Database Server
+------------------------------
+
+.. warning::
+  Using a custom database server, especially one that is not local to your local network, may result in poor performance. We strongly recommend using the Postgres v9.6 server that is bundled with Central.
+
+ODK Central ships with a PostgreSQL database server. To use your own custom database server:
+
+1. Ensure you have a PostgresSQL database server visible to your Central server network host.
+2. Ensure your database has ``UTF8`` encoding by running the following command on the database.
+
+  .. code-block:: console
+
+    SHOW SERVER_ENCODING;
+
+3. Ensure ``CITEXT`` and ``pg_trgm`` extensions exist by running the following commands on the database.
+
+  .. code-block:: console
+
+    CREATE EXTENSION IF NOT EXISTS CITEXT;
+    CREATE EXTENSION IF NOT EXISTS pg_trgm;
+
+4. Edit the file ``files/service/config.json.template`` to reflect your database host, table, and authentication details.
+
+  .. code-block:: console
+
+    "database": {
+      "host": "my-db-host",
+      "user": "my-db-user",
+      "password": "my-db-password",
+      "database": "my-db-table"
+    },
+
+5. Build and run: ``docker-compose build service`` and ``systemctl restart docker-compose@central``. If that doesn't work, you may need to first remove your old service container (``docker-compose rm service``).
+
 .. _central-install-digital-ocean-sentry:
 
 Disabling or Customizing Sentry
