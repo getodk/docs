@@ -17,7 +17,7 @@ In ODK Central, there are four important tasks you'll perform while managing a d
 3. **Data extraction and analysis** can occur either at the end of the project, or continually as the project runs. Either way, ODK Central provides several different methods for extracting and analyzing your submission data. This is covered in the :doc:`Form Submissions <central-submissions>` article.
 4. **Form updates** allow you to make changes to a Form while it is already in use. Central allows you to create a new Draft of any Form at any time. As with initial Form creation, this Draft allows you to test your changes in a staging environment where it will not affect the live Form or its data. When you are satisfied with the Draft, you can again **Publish** it, and it will replace the live version.
 
-Drafting and version updates are new as of Central version 0.8. We will cover all of these topics in the sections below.
+Drafting and version updates are new as of Central 0.8. We will cover all of these topics in the sections below.
 
 .. _central-forms-upload:
 
@@ -48,10 +48,10 @@ Once the form is successfully uploaded, you will be taken to the Form Draft page
 
 .. _central-forms-draft:
 
-Working With Form Drafts
-------------------------
+Form Drafts
+-----------
 
-Form Drafts, available as of Central version 0.8, provide a way to safely and easily verify the design of your Form before you make it available for use. Drafts are accessible only to privileged Project staff. Each Form Draft has a unique access token which allows configured data collection clients to submit test submissions to the Draft. These test submissions disappear automatically when the Draft is published. Once a Draft is published, it is available for use according to the access rules you have specified in the :ref:`Form Access <central-projects-form-access>` tab on the Project.
+Form Drafts, available as of Central 0.8, provide a way to safely and easily verify the design of your Form before you make it available for use. Drafts are accessible only to privileged Project staff. Each Form Draft has a unique access token which allows configured data collection clients to submit test submissions to the Draft. These test submissions disappear automatically when the Draft is published. Once a Draft is published, it is available for use according to the access rules you have specified in the :ref:`Form Access <central-projects-form-access>` tab on the Project.
 
    .. image:: /img/central-forms/draft-overview.png
 
@@ -166,7 +166,7 @@ You can find more information about the Form Access page :ref:`here <central-pro
 Form Updates
 ------------
 
-As of Central version 0.8, it is possible to update a published Form with a new design definition, or new Media Files, and to test these changes before they are applied to the Form in use.
+As of Central 0.8, it is possible to update a published Form with a new design definition, or new Media Files, and to test these changes before they are applied to the Form in use.
 
 There is one primary restriction Central enforces on updated design definitions: once defined in a published Form version, each field Data Name (in technical terms, the Instance XPath) cannot change its Data Type. Unused fields may be removed, and new fields may be added, but if any field reuses a previously existing Data Name, it must have the same Type as it did before. If you run into an error with this restriction, the easiest solution is usually to rename the changed field to a new name.
 
