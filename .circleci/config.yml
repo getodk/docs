@@ -48,7 +48,6 @@ jobs:
           paths:
             - odkx-build/*
             - s3_website.yml
-            - robots.txt
   build-pdf-odkx:
     working_directory: ~/work
     docker:
