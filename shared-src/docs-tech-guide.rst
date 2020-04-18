@@ -43,7 +43,6 @@ ODK-X is a collaborative community.
 Before diving in as a contributor,
 set up accounts on our three main collaboration platforms,
 :ref:`GitHub <get-gh-account>`,
-the :ref:`ODK-X Developer Slack <join-slack>`,
 and the :ref:`ODK Forum <join-forum>`
 
 .. tip::
@@ -52,7 +51,6 @@ and the :ref:`ODK Forum <join-forum>`
       keep in mind that it is very helpful (but not required)
       to use the same (or similar) username
       on :ref:`GitHub <get-gh-account>`,
-      the :ref:`ODK-X Developer Slack <join-slack>`,
       and the :ref:`ODK Forum <join-forum>`.
 
       This makes it easy for other people to keep track of conversations
@@ -77,26 +75,6 @@ and the :ref:`ODK Forum <join-forum>`
    .. _ODK-X on GitHub: https://github.com/odk-x/
    .. _ODK-X Docs on GitHub: https://github.com/odk-x/docs
    .. _GitHub: https://github.com/
-
-#. Join the `ODK-X Developer Slack`_.
-
-   .. _join-slack:
-
-   Slack is a popular chat platform.
-   The ODK-X contributor community uses Slack
-   to discuss development, plan work, and generally keep in touch.
-   If you have a question about how to contribute to ODK Docs,
-   or any other ODK project,
-   the ODK Slack is the best place to ask it.
-
-   Conversations related to documentation are held in the ``#docs-code`` channel.
-   You may also want to check in with ``#general`` and ``#random``.
-
-   #. Get an automated invitation from http://slack.opendatakit.org
-   #. Check your email for the invitation.
-   #. Follow the link in your email and set up your account.
-
-   .. _ODK-X Developer Slack: http://slack.opendatakit.org/
 
 #. Join the `ODK Forum`_
 
@@ -502,7 +480,7 @@ on any computer.
             If you get an error here, something went wrong.
             Try running the installer again.
             If the problem persists, and you can't debug it yourself,
-            asks us about it on |odk-slack|_.
+            asks us about it on |forum|_.
 
          .. _Python installer for Mac: https://www.python.org/downloads/mac-osx/
 
@@ -523,7 +501,7 @@ on any computer.
          If you get an error here, something went wrong.
          Try running :command:`brew install python` again.
          If the problem persists, and you can't debug it yourself,
-         asks us about it on |odk-slack|_.
+         asks us about it on |forum|_.
 
       .. group-tab:: Windows
 
@@ -565,7 +543,7 @@ on any computer.
             :menuselection:`Advanced System Settings -> Environmental Variables -> Edit System Variables`,
             then adding the path to the directory containing Python.
             If the problem persists, and you can't debug it yourself,
-            asks us about it on |odk-slack|_.
+            asks us about it on |forum|_.
 
          .. _Python Releases for Windows: https://www.python.org/downloads/windows/
 
@@ -1257,7 +1235,7 @@ Working on the docs
    and the nature of the problem.
    Usually that is enough to fix it.
    If you can not figure out the meaning of a particular warning,
-   you can always ask about it on the |odk-slack|_.
+   you can always ask about it on the |forum|_.
 
    .. note::
 
@@ -1280,7 +1258,7 @@ Working on the docs
 
    .. admonition:: When you just can't fix the error...
 
-      If you've done your best and asked on the |odk-slack|_,
+      If you've done your best and asked on the |forum|_,
       and you still cannot correct the warning,
       stop worrying about it and skip to the next step.
       When you submit your changes on GitHub,
@@ -1586,7 +1564,7 @@ You may also want to dig deeper into the
 (And if you are writing code,
 check out the :doc:`docs-developer-guide`.)
 
-And don't forget to join us on the |odk-slack|_.
+And don't forget to join us on the |forum|_.
 
 ODK-X is a community,
 and we depend on each other's work.

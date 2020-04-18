@@ -151,7 +151,7 @@ Issues only
 
 All PRs must be directly connected to open issues. PRs should not represent suggestions, good ideas, or independent initiative.
 
-If you have a good idea, file an issue. If you are curious about whether something should be an issue, chat with one of the core team in the `#docs-code` channel on the `Slack <https://opendatakit.slack.com>`_.
+If you have a good idea, file an issue. 
 
 Once you have filed an issue, wait for comment and approval before diving into the work. We do not want surprise PRs.
 

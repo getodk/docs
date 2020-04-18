@@ -348,9 +348,6 @@ https://forum.odk-x.org/
 
 rst_epilog = """
 
-.. |odk-slack| replace:: ODK Slack
-.. _odk-slack: https://opendatakit.slack.com
-
 .. |docs-issue| replace:: issue
 .. _docs-issue: https://github.com/odk-x/docs/issues
 
