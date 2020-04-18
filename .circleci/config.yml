@@ -81,7 +81,7 @@ jobs:
       - run:
           name: Install deploy requirements
           command: |
-              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
+              if [[ "$CIRCLE_PROJECT_USERNAME" == "getodk" ]]; then \
                 sudo apt-get install -y software-properties-common
                 wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
                 sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
@@ -92,7 +92,7 @@ jobs:
       - run:
           name: Push to S3
           command: |
-              if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
+              if [[ "$CIRCLE_PROJECT_USERNAME" == "getodk" ]]; then \
                 s3_website cfg apply && s3_website push
               fi
 
@@ -111,4 +111,4 @@ workflows:
             - build-pdf-odk1
           filters:
             branches:
-              only: odk
+              only: master
