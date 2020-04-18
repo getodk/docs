@@ -3,7 +3,7 @@ Using ODK Collect
 
 .. admonition:: This is an in-depth guide to using the Collect App
   
-  To learn about the main features and try out Open Data Kit, :doc:`see the Getting Started Guide for a quick walk-through. <getting-started>`
+  To learn about the main features and try out ODK, :doc:`see the Getting Started Guide for a quick walk-through. <getting-started>`
 
 ODK Collect is used by :term:`enumerators <enumerator>` to collect survey data by filling out :doc:`forms <form-design-intro>` with :term:`participants <participant>`. 
 

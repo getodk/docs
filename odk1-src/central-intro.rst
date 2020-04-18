@@ -3,7 +3,7 @@
 ODK Central
 ===========
 
-:dfn:`ODK Central` is an Open Data Kit server alternative that is early in its development. Like ODK Aggregate, it manages user accounts and permissions, stores form definitions, and allows data collection clients like ODK Collect to connect to it for form download and submission upload.
+:dfn:`ODK Central` is an ODK server alternative that is early in its development. Like ODK Aggregate, it manages user accounts and permissions, stores form definitions, and allows data collection clients like ODK Collect to connect to it for form download and submission upload.
 
 Our goal with Central is to create a modern sibling to Aggregate that is easier to install, easier to use, and more extensible with new features and functionality both directly in the software and with the use of our REST, OpenRosa, and OData programmatic APIs.
 
@@ -35,7 +35,7 @@ Here are some (but not all) key features we **do not yet** support:
 
  - Customizable user roles
 
-See `What is coming in Central <https://forum.opendatakit.org/t/whats-coming-in-central-over-the-next-few-years/19677>`_ for more on future features.
+See `What is coming in Central <https://forum.getodk.org/t/whats-coming-in-central-over-the-next-few-years/19677>`_ for more on future features.
 
 .. _central-intro-who:
 
@@ -44,13 +44,13 @@ Who should use ODK Central?
 
 Central is much younger than Aggregate. Because of this, it isn't as heavily battle-tested, and you might come across quirks and problems while using it. Among other things, it can be a little tricky to install. But the issues people have run into have been minor so far.
 
-Additionally, Central does not support every feature that Aggregate does. There are some Aggregate features that we do not intend to ever support in Central, especially around data preview and visualization. You can find a list of these differences and some of the planned improvements to Central `here <https://forum.opendatakit.org/t/whats-coming-in-central-over-the-next-few-years/19677>`_.
+Additionally, Central does not support every feature that Aggregate does. There are some Aggregate features that we do not intend to ever support in Central, especially around data preview and visualization. You can find a list of these differences and some of the planned improvements to Central `here <https://forum.getodk.org/t/whats-coming-in-central-over-the-next-few-years/19677>`_.
 
 On the other hand, Central supports some things that Aggregate does not. Projects let you partition your server into different sandboxes to support multiple independent teams. Managed encryption makes the process of handling encrypted form data significantly easier and in many cases more securely. Central allows direct upload of XLSForm files. It also offers an OData API to easily synchronize your live form data to desktop visualization and dashboard tools.
 
-If you are an adventurous user who is comfortable with (new) technology, you are happy with the supported features, and you are okay with the risks with using early release software, please consider giving Central a try and giving us your `feedback <https://forum.opendatakit.org/c/features>`_.
+If you are an adventurous user who is comfortable with (new) technology, you are happy with the supported features, and you are okay with the risks with using early release software, please consider giving Central a try and giving us your `feedback <https://forum.getodk.org/c/features>`_.
 
-If you finished reading all the above and you're not feeling too sure about it, we suggest sitting it out for a little while longer. Keep watching the `release announcements board <https://forum.opendatakit.org/c/releases>`_ for future updates, and we'll be sure to sound the bells when we're sure things are ready for a broader audience.
+If you finished reading all the above and you're not feeling too sure about it, we suggest sitting it out for a little while longer. Keep watching the `release announcements board <https://forum.getodk.org/c/releases>`_ for future updates, and we'll be sure to sound the bells when we're sure things are ready for a broader audience.
 
 .. _central-performance:
 

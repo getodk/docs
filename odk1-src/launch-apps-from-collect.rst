@@ -53,7 +53,7 @@ In the examples above, the extras specified have names ``form_id``, ``form_name`
 
 Designing an external app to return a single value to Collect
 ---------------------------------------------------------------
-When an activity that is launched returns to Collect, Collect will look for an intent extra named ``value`` and use its value to populate the field that triggered the application launch. See `a counter app <https://github.com/opendatakit/counter/blob/master/app/src/main/java/org/opendatakit/counter/activities/CounterActivity.java#L100>`_ to see an example of how this is done.
+When an activity that is launched returns to Collect, Collect will look for an intent extra named ``value`` and use its value to populate the field that triggered the application launch. See `a counter app <https://github.com/getodk/counter/blob/master/app/src/main/java/org/opendatakit/counter/activities/CounterActivity.java#L100>`_ to see an example of how this is done.
 
 .. _launch-apps-multiple-fields:
 

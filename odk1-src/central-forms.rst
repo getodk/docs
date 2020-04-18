@@ -3,7 +3,7 @@
 Managing Forms in Central
 =========================
 
-Forms are at the heart of Open Data Kit. Once fetched onto a mobile device from ODK Central, they define the questions, validation, and logic to be presented during data collection. They also serve to organize the data coming back from mobile devices.
+Forms are at the heart of ODK. Once fetched onto a mobile device from ODK Central, they define the questions, validation, and logic to be presented during data collection. They also serve to organize the data coming back from mobile devices.
 
 In ODK Central, there are four important steps to understand when managing a data collection project:
 
@@ -37,7 +37,7 @@ You can either click on the :guilabel:`choose one` button to browse for your :fi
 
    - If you are uploading an XLSForm, and the converter flags warnings with it, your form will not be immediately created. You'll be shown the warnings, and given the option to either ignore them and create the form anyway, or else you can fix the issues and start over by uploading a new file.
    - You may see a message that reads **A resource already exists with xmlFormId value(s) of xyz.** If you do, there already exists a form within this project with the same unique designation. If you are using XLSForm, try changing the name of the file or the ``form_id`` in the settings sheet. If you designed the form by hand, please check the ``id="…"`` attribute immediately inside the ``<instance>`` tag.
-   - You may see a message that says **A form previously existed which had the same formId and version as the one you are attempting to create now. To prevent confusion, please change one or both and try creating the form again.** This means there once was a form within this project that has since been deleted that has exactly the same formId (see the previous bullet point) *and* version designation as the one you are now trying to upload. Central won't accept the new form, because this conflict could cause confusion with mobile devices that still have the old form sitting around. To upload this form, change either the formId (again, see the previous bullet point) or `update the version <https://opendatakit.github.io/xforms-spec/#primary-instance>`_ and try again.
+   - You may see a message that says **A form previously existed which had the same formId and version as the one you are attempting to create now. To prevent confusion, please change one or both and try creating the form again.** This means there once was a form within this project that has since been deleted that has exactly the same formId (see the previous bullet point) *and* version designation as the one you are now trying to upload. Central won't accept the new form, because this conflict could cause confusion with mobile devices that still have the old form sitting around. To upload this form, change either the formId (again, see the previous bullet point) or `update the version <https://getodk.github.io/xforms-spec/#primary-instance>`_ and try again.
 
 Once the form is successfully uploaded, you will be taken to the Form Overview page.
 

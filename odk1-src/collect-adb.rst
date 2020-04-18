@@ -175,7 +175,7 @@ use :command:`adb logcat` to capture log events during the crash.
 #. Type :kbd:`CTRL-C` to stop logging.
 
 You can then upload the :file:`logfile.txt` file to 
-a `a support forum post <https://forum.opendatakit.org/c/support>`_
+a `a support forum post <https://forum.getodk.org/c/support>`_
 or post in the |forum|.
 
 .. _bugreport:
@@ -209,4 +209,4 @@ The ODK Collect directory on your device is:
 
 Prior to ODK Collect v1.26.0, all Collect files were stored in the :file:`/sdcard/odk` directory. This directory was available to other applications to integrate with which can be very useful but can pose privacy risks.
 
-Starting August 2020, Google will no longer allow Android applications to read or write files directly to this folder. Instead, each application will only be able to write files to a special directory that only it has access to. You can read more about this change `on the forum <https://forum.opendatakit.org/t/odk-collect-v1-26-storage-migration/25268>`_.
+Starting August 2020, Google will no longer allow Android applications to read or write files directly to this folder. Instead, each application will only be able to write files to a special directory that only it has access to. You can read more about this change `on the forum <https://forum.getodk.org/t/odk-collect-v1-26-storage-migration/25268>`_.

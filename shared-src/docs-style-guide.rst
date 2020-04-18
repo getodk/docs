@@ -885,22 +885,21 @@ ODK and ODK Docs
 
 - Odk
 - odk
-- Open data kit
 - OpenDataKit
-- the Open Data Kit
+- the ODK
 - ODK docs
 - ODK documentation
 
 .. rubric:: Right
 
 - ODK
-- Open Data Kit
+- getodk
 - ODK Docs
 - ODK Documentation
 
 .. rubric:: Probably want to avoid...
 
-- Open Data Kit Documentation
+- ODK Documentation
 
 .. code-block:: python
   :class: style-checks
@@ -913,8 +912,7 @@ ODK and ODK Docs
 
       preferences = [
 
-          ["Open Data Kit",         ["Open data kit"]],
-          ["Open Data Kit",         ["OpenDataKit"]],
+          ["ODK",         ["OpenDataKit"]],
           ["ODK",                   ["Odk"]],
           ["ODK",                   ["{0} odk"]],
           ["ODK Docs",              ["ODK docs"]],
@@ -1018,7 +1016,7 @@ XForms Spec, XForms Tools, XForms
 
 - The `XML-based form format <https://en.wikipedia.org/wiki/XForms>`_
 - The `official XForms specification from the W3C <https://www.w3.org/TR/2009/REC-xforms-20091020/>`_
-- The `ODK XForms Specification <https://opendatakit.github.io/xforms-spec/>`_, which is a subset of the full W3C recommendation.
+- The `ODK XForms Specification <https://getodk.github.io/xforms-spec/>`_, which is a subset of the full W3C recommendation.
 - The general idea of an XML-based form.
 
 *XForm* (without an *s*) refers to:

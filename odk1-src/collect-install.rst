@@ -22,7 +22,7 @@ If you need a different version of Collect, you can download from the web and in
    - (On older versions of Android, this setting is in :menuselection:`Applications` rather than :menuselection:`Security`)
 
 2. Open a web browser on your phone.
-3. Navigate to https://github.com/opendatakit/collect/releases/latest and download the ODK Collect APK.
+3. Navigate to https://github.com/getodk/collect/releases/latest and download the ODK Collect APK.
 4. In the download window, you will see ODK_Collect_vN.N.N.apk. - Select it to download the file.
 
    - On older devices, the APK will automatically install after you approve the security settings.
@@ -30,7 +30,7 @@ If you need a different version of Collect, you can download from the web and in
 
 .. note::
   
-  You can also `download the ODK Collect APK <https://github.com/opendatakit/collect/releases/latest>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
+  You can also `download the ODK Collect APK <https://github.com/getodk/collect/releases/latest>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
 
 .. note::
 

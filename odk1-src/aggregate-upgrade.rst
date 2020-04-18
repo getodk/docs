@@ -91,7 +91,7 @@ General steps for upgrading
 2. Use :doc:`ODK Briefcase <briefcase-using>` to pull a copy of all data to your computer.
 3. Log onto your server to confirm that it is still functioning.
 4. :ref:`Determine your current version number <determine-aggregate-version>`.
-5. Download the **next ODK Aggregate version** and upgrade to that version. `Find previous versions here <https://github.com/opendatakit/aggregate/releases>`_.
+5. Download the **next ODK Aggregate version** and upgrade to that version. `Find previous versions here <https://github.com/getodk/aggregate/releases>`_.
 
    Do not simply upgrade from an old version of Aggregate
    to the latest version.
@@ -100,7 +100,7 @@ General steps for upgrading
    from an older one.
 
    Some versions will require manual changes upon upgrade.
-   Complete notes about upgrading can be found in each version's `release notes <https://github.com/opendatakit/aggregate/releases>`_.
+   Complete notes about upgrading can be found in each version's `release notes <https://github.com/getodk/aggregate/releases>`_.
 
 6. Log onto your server to confirm that it is still functioning.
 7. Repeat the steps 4-7 until you have upgraded to the current version.
@@ -115,4 +115,4 @@ General steps for upgrading
 Upgrading DigitalOcean deployments
 ----------------------------------
 
-Please, refer to the `Aggregate Cloud-Config updates <https://github.com/opendatakit/aggregate/tree/master/cloud-config#updates>`_ guide
+Please, refer to the `Aggregate Cloud-Config updates <https://github.com/getodk/aggregate/tree/master/cloud-config#updates>`_ guide

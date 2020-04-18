@@ -3,7 +3,7 @@
 Managing Projects in Central
 ============================
 
-New as of `version 0.4 <https://github.com/opendatakit/central/releases/tag/v0.4.0-beta.1>`_, almost everything in ODK Central is organized by Project. Forms, Managers, and App Users are all partitioned by project. Both on the administration website as well as on a mobile device (within ODK Collect, for example), access to each project and its forms can be managed person-by-person. Only the Central administrative staff can create and grant initial access to projects.
+New as of `version 0.4 <https://github.com/getodk/central/releases/tag/v0.4.0-beta.1>`_, almost everything in ODK Central is organized by Project. Forms, Managers, and App Users are all partitioned by project. Both on the administration website as well as on a mobile device (within ODK Collect, for example), access to each project and its forms can be managed person-by-person. Only the Central administrative staff can create and grant initial access to projects.
 
 .. _central-projects-overview:
 
@@ -36,7 +36,7 @@ Since the major changes that occurred in version 0.5, we have additionally made 
  - Better, centralized form state and access management.
  - More granular project access, in the form of a Project Viewer role which allows read-only access only to Forms and Submission data.
 
-In future releases, we have a `loose roadmap <https://github.com/opendatakit/central/issues/35>`_ with at least the following goals:
+In future releases, we have a `loose roadmap <https://github.com/getodk/central/issues/35>`_ with at least the following goals:
 
  - Change the relationship between Collect and Central so that with one button you can synchronize the mobile device to some centrally managed desired state.
 
@@ -46,7 +46,7 @@ In future releases, we have a `loose roadmap <https://github.com/opendatakit/cen
 
  - Download an entire project’s data at once.
 
-If you have ideas on how projects might be made more useful for you, please do not hesitate to leave us feedback on the `ODK Forum <https://forum.opendatakit.org/c/features>`_.
+If you have ideas on how projects might be made more useful for you, please do not hesitate to leave us feedback on the `ODK Forum <https://forum.getodk.org/c/features>`_.
 
 .. _central-projects-migrate:
 

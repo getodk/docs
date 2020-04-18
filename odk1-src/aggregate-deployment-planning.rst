@@ -13,8 +13,8 @@ There is also a fully set-up :doc:`virtual machine <aggregate-vm>` that can be r
 
 If you have highly-technical user, you can also try using:
 
-- A `Docker image <https://github.com/opendatakit/aggregate/blob/master/docs/build-and-run-a-docker-image.md>`_
-- A `Docker Compose setup <https://github.com/opendatakit/aggregate/blob/master/docs/build-and-run-with-docker-compose.md>`_
+- A `Docker image <https://github.com/getodk/aggregate/blob/master/docs/build-and-run-a-docker-image.md>`_
+- A `Docker Compose setup <https://github.com/getodk/aggregate/blob/master/docs/build-and-run-with-docker-compose.md>`_
 
 Previous versions of Aggregate (v1.x) can be deployed in :doc:`Google App Engine <aggregate-app-engine>`, but we strongly recommend deploying Aggregate v2.x using any of the guides above.
 
@@ -81,7 +81,7 @@ In these docs we explain how to deploy a monolithic server with everything Aggre
 - You could have high-availability or an horizontal scalability option by using a load balancer.
 - You could provide SSL security with a load balancer or proxy.
 
-If you are considering alternative architectures for your specific needs, we recommend you ask for help in the `support forum <https://forum.opendatakit.org/c/support>`_.
+If you are considering alternative architectures for your specific needs, we recommend you ask for help in the `support forum <https://forum.getodk.org/c/support>`_.
 
 Dataset size
 ------------

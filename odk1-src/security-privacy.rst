@@ -52,14 +52,14 @@ There is always the possibility that hackers can discover and exploit deficienci
 
 Our software uses a number of open-source 3rd-party libraries from well-known and/or reputable sources, and a few from obscure sources. We do not vet the security of those software libraries.
 
-Your security staff may want to review the libraries and source code on `GitHub <https://github.com/opendatakit>`_.
+Your security staff may want to review the libraries and source code on `GitHub <https://github.com/getodk>`_.
 
 .. _security-privacy-odk-websites:
 
 Websites
 --------
 
-Our websites under the opendatakit.org domain use cookies and log all interactions. We also use web analytics tools (for example, Google Analytics) that may track visitors and their access patterns on our web properties.
+Our websites under the getodk.org domain use cookies and log all interactions. We also use web analytics tools (for example, Google Analytics) that may track visitors and their access patterns on our web properties.
 
 .. _security-privacy-google-play-store:
 

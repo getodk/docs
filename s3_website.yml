@@ -1,7 +1,7 @@
-s3_bucket: odk1-docs-web
+s3_bucket: docs.getodk.org
 s3_endpoint: us-west-2
 
-site: ../odk1-build
+site: ./odk1-build
 
 error_document: index.html
 
@@ -15,7 +15,7 @@ exclude_from_upload:
   - spelling
   - latex
 
-cloudfront_distribution_id: E1IDKKW65Q2HVZ
+cloudfront_distribution_id: E39A2ZMIIK7FK3
 
 cloudfront_distribution_config:
   default_cache_behavior:
@@ -23,25 +23,9 @@ cloudfront_distribution_config:
   aliases:
     quantity: 1
     items:
-      - docs.opendatakit.org
+      - docs.getodk.org
 
 cloudfront_wildcard_invalidation: true
-
-# folder redirects. executed from top to bottom.
-routing_rules:
-  - condition:
-      key_prefix_equals: odk2/
-    redirect:
-      host_name: docs.opendatakit.org
-      replace_key_prefix_with: odk-x/
-      http_redirect_code: 301
-  - condition:
-      key_prefix_equals: odkx/
-    redirect:
-      host_name: docs.opendatakit.org
-      replace_key_prefix_with: odk-x/
-      http_redirect_code: 301
-
 
 redirects:
   # use url/index.html syntax to enable url, url/, url/index.html and hash passthrough
@@ -56,7 +40,7 @@ redirects:
   form-uploader/index.html: briefcase-using#pulling-form-definitions
   form-widgets/index.html: form-question-types
   odk-build/index.html: build-intro
-  odk2/index.html: https://docs.opendatakit.org/odk-x
+  odk2/index.html: https://docs.odk-x.org/odk-x
   pyxform/index.html: xlsform
   style-guide/index.html: docs-style-guide
   visualize/index.html: aggregate-visualize

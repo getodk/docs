@@ -10,7 +10,7 @@ ODK Validate
 that ensures an XForms XML file 
 conforms to the `XForms specification`_.
 
-.. _XForms specification: https://opendatakit.github.io/xforms-spec/
+.. _XForms specification: https://getodk.github.io/xforms-spec/
 
 Validate should be used to check hand-edited XForms.
 It is not needed when creating forms with 
@@ -35,7 +35,7 @@ Setting up Validate
 
 #. `Download Validate`_.
 
-   .. _Download Validate: https://github.com/opendatakit/validate/releases/latest
+   .. _Download Validate: https://github.com/getodk/validate/releases/latest
 
 #. If you wish, move :program:`Validate` to your :file:`Applications` directory or another suitable location.
    

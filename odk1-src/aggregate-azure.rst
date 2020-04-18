@@ -50,7 +50,7 @@ Create a VPC
 
 15. Click on the :guilabel:`Advanced`. It's in the tabs at the top of the screen.
 
-16. In the :guilabel:`Cloud init` text box, paste the contents of `this Cloud-Config script <https://raw.githubusercontent.com/opendatakit/aggregate/master/cloud-config/azure/cloud-config.yml>`_.
+16. In the :guilabel:`Cloud init` text box, paste the contents of `this Cloud-Config script <https://raw.githubusercontent.com/getodk/aggregate/master/cloud-config/azure/cloud-config.yml>`_.
 
 17. Click :guilabel:`Next : Tags >`.
 

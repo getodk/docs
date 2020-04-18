@@ -35,8 +35,8 @@ Glossary
 
     An application that lets you design forms with a drag-and-drop form interface.
 
-    - `Use ODK Build online <https://build.opendatakit.org/>`_.
-    - `Download a desktop version of ODK Build <https://github.com/opendatakit/build/releases/latest>`_.
+    - `Use ODK Build online <https://build.getodk.org/>`_.
+    - `Download a desktop version of ODK Build <https://github.com/getodk/build/releases/latest>`_.
 
   XLSForm
 
@@ -62,7 +62,7 @@ Glossary
 
     A specification defining valid XML-based forms for ODK. It is a subset of the `W3C XForms 1.0 specification <https://www.w3.org/TR/xforms/>`_
 
-    `View ODK XForms Specification <https://opendatakit.github.io/xforms-spec/>`_
+    `View ODK XForms Specification <https://getodk.github.io/xforms-spec/>`_
 
   ODK JavaRosa
 
@@ -70,7 +70,7 @@ Glossary
 
     A Java library that renders ODK Compliant XForms.
 
-    `ODK JavaRosa source on Github <https://github.com/opendatakit/javarosa>`_
+    `ODK JavaRosa source on Github <https://github.com/getodk/javarosa>`_
 
   form
 
