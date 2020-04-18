@@ -195,7 +195,6 @@ We are open for new issues and pull requests.
 You can also...
 
  - [Discuss the documentation from a user perspective in our forum](https://forum.odk-x.org/c/development/documentation).
- - [Discuss the documentation from a contributor perspective in our developer Slack - TODO: ADD SLACK CHANNEL]. (Use the #docs-code channel.)
  - [File an issue](https://github.com/odk-x/docs/issues) for any needed improvements.
  - [Watch](https://github.com/odk-x/docs/subscription) and star this repo, to keep up with what we're doing.
 

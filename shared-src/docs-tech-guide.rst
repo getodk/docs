@@ -100,12 +100,12 @@ and the :ref:`ODK Forum <join-forum>`
 
 .. _forum-or-slack-or-gh:
 
-.. admonition:: Should I ask in the Forum, the Slack, or a GitHub issue?
+.. admonition:: Should I ask in the Forum, or a GitHub issue?
 
    The ODK community talks a lot, in a lot of places.
    Sometimes it's hard to know where to ask a question.
 
-   **Contribution-related questions and problems should be asked in Slack.**
+   **Contribution-related questions and problems should be asked on Github.**
    This includes things like:
 
    - How do I set up my local editing environment?

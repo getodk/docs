@@ -196,7 +196,6 @@ You can contribute to this community, no matter your background or skills.
 - If there is something you don't know how to do, you can ask.
 
   - If it is issue related, ask on the issue.
-  - If it is more general, try the #docs-code channel in the `ODK-X Developer Slack <TBC>`_.
 
 - If you want to try something even though you aren't sure you can do it, go ahead and try.
 
