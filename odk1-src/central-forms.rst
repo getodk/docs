@@ -48,10 +48,15 @@ Once the form is successfully uploaded, you will be taken to the Form Draft page
 
 .. _central-forms-draft:
 
-Form Drafts
------------
+Understanding Form Drafts
+-------------------------
 
 Form Drafts, available as of Central 0.8, provide a way to safely and easily verify the design of your Form before you make it available for use. Drafts are accessible only to privileged Project staff. Each Form Draft has a unique access token which allows configured data collection clients to submit test submissions to the Draft. These test submissions disappear automatically when the Draft is published. Once a Draft is published, it is available for use according to the access rules you have specified in the :ref:`Form Access <central-projects-form-access>` tab on the Project.
+
+.. _central-forms-draft-tabs:
+
+Working with Form Drafts
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. image:: /img/central-forms/draft-overview.png
 
@@ -65,11 +70,6 @@ On the left, you will find the Draft Checklist, which suggests the steps you mig
 
 .. tip::
   When a form is first created, none of the existing App Users on the project will be able to access it for download or submission, even once the Form is published. Once you are ready to allow App Users to access the form, use the Project :ref:`Form Access <central-projects-form-access>` tab.
-
-.. _central-forms-draft-tabs:
-
-Form Draft Tabs
-~~~~~~~~~~~~~~~
 
 When you first create a new Form, the navigation tabs on the left will not be accessible. They pertain to the published version of the Form, and will become available once you publish your Draft. The tabs on the right, within the gray Draft section, relate to the Draft.
 
@@ -163,18 +163,18 @@ You can find more information about the Form Access page :ref:`here <central-pro
 
 .. _central-forms-updates:
 
-Form Updates
-------------
+Updating Forms to a New Version
+-------------------------------
 
-As of Central 0.8, it is possible to update a published Form with a new design definition, or new Media Files, and to test these changes before they are applied to the Form in use.
+As of Central 0.8, it is possible to update a published Form with a new definition, or new Media Files, and to test these changes before they are applied to the Form in use.
 
-There is one primary restriction Central enforces on updated design definitions: once defined in a published Form version, each field Data Name (in technical terms, the Instance XPath) cannot change its Data Type. Unused fields may be removed, and new fields may be added, but if any field reuses a previously existing Data Name, it must have the same Type as it did before. If you run into an error with this restriction, the easiest solution is usually to rename the changed field to a new name.
+There is one primary restriction Central enforces on updated definitions: once defined in a published Form version, each field Data Name (in technical terms, the Instance XPath) cannot change its Data Type. Unused fields may be removed, and new fields may be added, but if any field reuses a previously existing Data Name, it must have the same Type as it did before. If you run into an error with this restriction, the easiest solution is usually to rename the changed field to a new name.
 
 To begin the process of updating a published Form, click on the :guilabel:`Create a new Draft` button in the Draft navigation on the Form:
 
    .. image:: /img/central-forms/update-form.png
 
-Initially, the new Draft will have the same design definition as the published Form. If you only want to update attachment Media Files, this means you don't have to bother uploading a definition at all: you can go straight to the :guilabel:`Media Files` tab and :ref:`upload the changed files <central-forms-attachments>`.
+Initially, the new Draft will have the same definition as the published Form. If you only want to update attachment Media Files, this means you don't have to bother uploading a definition at all: you can go straight to the :guilabel:`Media Files` tab and :ref:`upload the changed files <central-forms-attachments>`.
 
 You can replace the Draft definition, Media Files, and make test submissions as with the :ref:`initial Form Draft <central-forms-draft>` before the Form was first published. Test submissions will not interfere with published Form submissions.
 
@@ -182,18 +182,26 @@ Once you are satisfied that your updated Form is ready to be published for immed
 
 .. admonition:: Form Version naming
 
-  If you did not change the design definition, or your updated design definition did not change the ``version`` of the Form, Central will not be able to publish the Form as-is. This is because the ``version`` must change in order for data collection clients to understand that they should update. You can upload a new design definition with a changed ``version``, or else Central will offer to change it in-place for you.
+  If you did not change the definition, or your updated definition did not change the ``version`` of the Form, Central will not be able to publish the Form as-is. This is because the ``version`` must change in order for data collection clients to understand that they should update. You can upload a new definition with a changed ``version``, or else Central will offer to change it in-place for you.
+
+Once the Draft has been published, it becomes the version in use and there will no longer be a Draft associated with the Form.
+
+.. admonition:: What happens to my submissions?
+
+  When a new Form version is published in place of an old one, all the previous submissions continue to exist, and will export along with all your data over Zip download or OData. However, only the current Form definition will be used in that export: if, for example, you have deleted a field that used to exist, that field will not appear in the export.
+
+  Draft testing submissions will never export with your final data, and only exist as long as the Draft does. If you delete, publish, or replace your current Draft, all test submissions will be cleared away.
 
 .. _central-forms-versions:
 
-Older Form Versions
--------------------
+Accessing Older Form Versions
+-----------------------------
 
 If you have published multiple version of a Form, you can each of them under the :guilabel:`Versions` tab.
 
    .. image:: /img/central-forms/versions.png
 
-Each published version of the Form will be listed, along with actions to download the design definition of each Form. In future versions of Central, the Media File attachments associated with each version of the Form will be downloadable as well.
+Each published version of the Form will be listed, along with actions to download the definition of each Form. In future versions of Central, the Media File attachments associated with each version of the Form will be downloadable as well.
 
 .. _central-forms-delete:
 
