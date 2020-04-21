@@ -15,6 +15,5 @@ There are currently two options for Cloud Endpoints to communicate with ODK-X to
 Learn more about ODK-X Cloud Endpoints
 -------------------------------------------
 
-- :doc:`sync-endpoint`
 - :doc:`sync-endpoint-setup`
 - :doc:`aggregate-tables-extension`
