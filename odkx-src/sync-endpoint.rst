@@ -115,9 +115,15 @@ Setup instructions:
 
   13. In the "sync-endpoint-default-setup" cloned repository run:
 
-  .. code-block:: console
+    - For HTTP:
+    .. code-block:: console
 
-    $ docker stack deploy -c docker-compose.yml syncldap
+      $ docker stack deploy -c docker-compose.yml syncldap
+
+    - For HTTPS:
+    .. code-block:: console
+
+       $ docker stack deploy -c docker-compose.yml -c docker-compose-https.yml syncldap
 
   14. The server takes about 30s to start, then it will be running at http://127.0.0.1.
   15. See the :ref:`LDAP section <sync-endpoint-ldap>` for instructions on configuring users and groups.
@@ -173,7 +179,7 @@ Custom LDAP directory
 .. _sync-endpoint-stopping:
 
 Stopping ODK-X Sync Endpoint
--------------------------------
+----------------------------
 
   1. Run:
 
@@ -182,6 +188,10 @@ Stopping ODK-X Sync Endpoint
     $ docker stack rm syncldap
 
   2. OPTIONAL: If you want to remove the volumes as well,
+
+    .. Warning:: Removing volumes will remove any provisioned TLS keys
+                 if https is enabled. These keys can only be
+                 provisioned at a rate of 50 valid keys/domain/week.
 
     - Linux/macOS:
 
@@ -198,7 +208,7 @@ Stopping ODK-X Sync Endpoint
 .. _sync-endpoint-ldap:
 
 LDAP
------------
+----
 
   - The default admin account is  *cn=admin,dc=example,dc=org*.
   - The default password is *admin* - it can be changed with the *LDAP_ADMIN_PASSWORD* environment variable in :file:`ldap.env`
@@ -281,20 +291,18 @@ Assigning users to groups
 .. _sync-endpoint-https:
 
 HTTPS
------------------
+-----
 
-  1. Store your certificate public key in a :program:`Docker` config with this command:
+  The Sync Endpoint stack integrates support for automatic certificate
+  provisioning via domain validation and letsencrypt. For most use
+  cases this should be sufficient. Certificate provisioning parameters
+  can be edited interactively during initialization or directly in
+  :file:`config/https.env`.
 
-  .. code-block:: console
-
-    $ docker config create example.com.fullchain.pem PATH_TO_PUBLIC_KEY
-
-  2. Store your certificate private key in a :program:`Docker` secret with this command:
-
-  .. code-block:: console
-
-    $ docker secret create examepl.com.privkey.pem PATH_TO_PRIVATE_KEY
-
-  3. Modify the *configs* section and *secrets* section in :guilabel:`docker-compose.yml` to include name of the :program:`Docker` config and :program:`Docker` secret created above.
-  4. Uncomment the relevant lines in the *nginx* section in :guilabel:`docker-compose.yml`.
-
+  .. Tip:: For advanced users, if you would like to use an externally
+           provisioned certificate one can be added by modifying the
+           cert-bootstrap service in :file:`docker-compose-https.yml`
+           to pull from the appropriate external files. Additionally
+           docker's builtin secrets and config infrastructure can be
+           used directly to expose the certificate and key only to the
+           NGINX container.
