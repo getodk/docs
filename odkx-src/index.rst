@@ -162,7 +162,7 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
   :caption: Cloud Endpoints
 
   cloud-endpoints-intro
-  sync-endpoint-setup
+  sync-endpoint
   aggregate-tables-extension
 
 .. toctree::

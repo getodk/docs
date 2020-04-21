@@ -23,6 +23,8 @@ Follow these links for detailed instructions on installing :program:`Docker` and
 If you wish to enable HTTPS, you also need to install `certbot <https://certbot.eff.org/>`_
 
 
+.. _sync-endpoint-manual-setup-common:
+
 ODK-X Sync Endpoint Setup
 -------------------------
 
@@ -121,7 +123,7 @@ Setup instructions:
 Custom database
 ~~~~~~~~~~~~~~~~~~~~~~
 
-  1. If you haven't followed the :ref:`common instructions <sync-endpoint-setup>`, start with those.
+  1. If you haven't followed the :ref:`common instructions <sync-endpoint-manual-setup-common>`, start with those.
   2. Remove the *db* and *db-bootstrap* sections in :file:`docker-compose.yml`.
   3. Modify :file:`jdbc.properties` to match your database. Supported database systems are :program:`PostgreSQL`, :program:`MySQL` and :program:`Microsoft SQL Server`. Sample config for each type of database can be found `on Github <https://github.com/odk-x/sync-endpoint-default-setup>`_.
   4. Modify :file:`sync.env` to match your database
@@ -138,7 +140,7 @@ Custom database
 Custom LDAP directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  1. If you haven't followed the :ref:`common instructions <sync-endpoint-setup>`, start with those.
+  1. If you haven't followed the :ref:`common instructions <sync-endpoint-manual-setup-common>`, start with those.
   2. OPTIONAL: If your LDAP directory uses a certificate that was signed by a self-signed CA,
 
     a. Make the public key of the CA available to ODK-X Sync Endpoint with this command.

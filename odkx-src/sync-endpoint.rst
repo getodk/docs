@@ -2,8 +2,8 @@
   phpLDAPadmin
   readonly
 
-ODK-X Sync Endpoint Setup
-=========================
+ODK-X Sync Endpoint
+===================
 
 .. _sync-endpoint-intro:
 
