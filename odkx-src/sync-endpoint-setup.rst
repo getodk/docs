@@ -25,6 +25,7 @@ Option 1: Using Python script to automatically set up a virtual machine on Digit
 | If you'd like to set up an ODK-X server that's accessible from anywhere via the Internet, DigitalOcean provides a one-click configuration that's nicely geared with nearly all the tools you'll need to set up your new server. The only thing it doesn't do is register a domain name, which you will have to do in order to obtain a security certificate for your server. These instructions walk you through:
 |   -	:ref:`Setting up a DigitalOcean account <sync-endpoint-setup-digital-ocean-account>`
 |   -	:ref:`Setting up a Droplet, DigitalOcean’s name for a server you can access and manage <sync-endpoint-setup-digital-ocean-droplet>`
+|   -	:ref:`Setting up a DNS record <sync-endpoint-setup-digital-ocean-dns>`
 |   -	:ref:`Connecting to your Droplet <sync-endpoint-setup-digital-ocean-connecting>`
 |   -	:ref:`Enabling a firewall to prevent unintended traffic <sync-endpoint-setup-digital-ocean-firewall>`
 |   -	:ref:`Launching the ODK-X Server <sync-endpoint-setup-digital-ocean-launching>`
@@ -211,7 +212,7 @@ Setting up an Azure account
 .. _sync-endpoint-setup-azure-vm:
 
 Setting up a virtual machine
-"""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""
 
 1. First, click on the :guilabel:`Virtual Machines` button underneath the **Azure Services** section on the portal. Then, click on :guilabel:`Add` to create a new virtual machine. 
 
@@ -246,7 +247,7 @@ Setting up a virtual machine
 .. _sync-endpoint-setup-azure-connect:
 
 Connecting to your virtual machine
-""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""
 
 1. Within the Virtual Machine overview section, locate the IP address of your machine. 
 
@@ -299,7 +300,7 @@ Connecting to your virtual machine
   .. code-block:: console
 
     $ docker stack ls
-  
+
   If there are 7 services running under the name `syncldap`, everything is running properly. 
 
 5. After obtaining the IP address of the virtual machine you created, navigate to https://[IP_ADDRESS]:40000 within your browser in order to access the services screen. It will warn you about your connection not being private but should give you the option to proceed at the bottom. 
@@ -400,9 +401,9 @@ Connecting to your virtual machine
 
   .. code-block:: console
 
-    $ chmod 400 KEY_NAME.pem 
+    $ chmod 400 KEY_NAME.pem
 
-  Now, use the following command in order to SSH into your virtual machine. 
+  Now, use the following command in order to SSH into your virtual machine.
 
   .. image:: /img/setup-aws/aws8.png
    :width: 600
@@ -413,7 +414,7 @@ Connecting to your virtual machine
 
 4. Before running our launch scripts, we need to check our logs to ensure that all the packages have been successfully installed, which should take about 2-3 minutes. The virtual machine may also reboot in this time. 
 
-  | Use the following command to get into the log directory. 
+  | Use the following command to get into the log directory.
 
   .. code-block:: console
 
@@ -486,7 +487,7 @@ Launching the ODK-X Server
 Creating a Sample User
 ----------------------
 
-| 1. Start by logging into the ldap-service. Copy the login below. 
+| 1. Start by logging into the ldap-service. Copy the login below.
 |   - login DN: :guilabel:`cn=admin,dc=example,dc=org`
 |   - password: :guilabel:`admin`
 
@@ -498,7 +499,7 @@ Creating a Sample User
   .. image:: /img/setup-create-user/setup-user2.png
     :width: 600
 
-3. Then, select the :guilabel:`Generic: User Account` template. 
+3. Then, select the :guilabel:`Generic: User Account` template.
 
   .. image:: /img/setup-create-user/setup-user3.png
     :width: 600
@@ -519,7 +520,7 @@ Creating a Sample User
 
   .. image:: /img/setup-create-user/setup-user6.png
     :width: 600
-  
+
   .. image:: /img/setup-create-user/setup-user7.png
     :width: 600
 
