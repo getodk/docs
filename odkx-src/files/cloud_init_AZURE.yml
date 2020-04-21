@@ -13,6 +13,7 @@ packages:
   - curl
   - gnupg-agent
   - software-properties-common
+  - certbot
 
 write_files:
   - path: /home/script_to_run.sh
