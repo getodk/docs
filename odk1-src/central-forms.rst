@@ -197,7 +197,7 @@ Once the Draft has been published, it becomes the version in use and there will 
 Accessing Older Form Versions
 -----------------------------
 
-If you have published multiple version of a Form, you can each of them under the :guilabel:`Versions` tab.
+If you have published multiple version of a Form, you can see each of them under the :guilabel:`Versions` tab.
 
    .. image:: /img/central-forms/versions.png
 
