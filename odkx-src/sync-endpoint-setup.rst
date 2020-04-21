@@ -16,6 +16,28 @@ This tutorial will help you launch ODK-X Sync Endpoint on a virtual machine host
 |   :ref:`2.	Azure console <sync-endpoint-setup-azure>`
 |   :ref:`3.	Amazon Web Services console <sync-endpoint-setup-aws>`
 
+.. _sync-endpoint-setup-domain:
+
+Step 0: Acquire a domain name or subdomain
+------------------------------------------
+
+Running the ODK-X Sync Endpoint in the cloud will require access to a
+publicly registered domain name to allow for a secure connection
+between Android devices and the Sync Endpoint. Domain names can be
+purchased via many providers. We have used `Google Domains
+<https://domains.google.com/>`_, `Amazon Route 53
+<https://aws.amazon.com/route53/>`_, Azure App Services Domains, and
+`Cloudflare Registrar
+<https://www.cloudflare.com/products/registrar/>`_ successfully.
+
+If you already own a domain, you may add a subdomain record for use
+with Sync Endpoint without purchasing a whole new domain. Before you
+go on, make sure you have a domain and know how to log into your
+domain management console to add a DNS record!
+
+.. Note:: Specific instructions for connecting ODK-X Sync Endpoint to
+          your domain will vary based on your registrar and DNS
+          provider.
 
 .. _sync-endpoint-setup-digital-ocean:
 
@@ -77,6 +99,28 @@ Setting up a Droplet
   | **[LOCATION]** represents the desired data center location, and those codes can be found `here <https://www.digitalocean.com/docs/platform/availability-matrix/>`_.
 
 
+.. _sync-endpoint-setup-digital-ocean-dns:
+
+Setting up a DNS Record
+"""""""""""""""""""""""
+
+1. From the DigitalOcean console, click on :guilabel:`Droplets` under
+   the **MANAGE** section.
+
+  .. image:: /img/setup-digital-ocean/do2.png
+   :width: 600
+
+
+2. Obtain the IP address of the droplet you created.
+
+3. Log into your account for your domain name registrar and DNS
+   provider. See :ref:`Acquiring a domain
+   name<sync-endpoint-setup-domain>` for more information and a list
+   of registrars and DNS providers.
+
+4. Add a dns 'A' record for the domain or subdomain you would like to
+   use for the Sync Endpoint with your droplet's IP address.
+
 .. _sync-endpoint-setup-digital-ocean-connecting:
 
 Connecting to your Droplet
@@ -112,11 +156,14 @@ Connecting to your Droplet
 
   .. code-block:: console
 
-    $ vi cloud-init-output.log
+    $ tail cloud-init-output.log
   
-  Click :guilabel:`SHIFT + G` to scroll to the very end of the file. If you see the message **“The system is finally up, after X seconds”** you can proceed to the next step! Otherwise, continue to wait. 
+  If you see the message **“The system is finally up, after X
+  seconds”** you can proceed to the next step! Otherwise, continue to
+  wait and check the log file again.
 
-5. Use *“:q!”* to now get out of the log file. In order to run our launch scripts, we must first navigate back to the root directory with the following command:
+5. In order to run our launch scripts, we must first navigate back to
+   the root directory with the following command:
 
   .. code-block:: console
 
@@ -128,7 +175,12 @@ Connecting to your Droplet
 
     $ ./script_to_run.sh
 
-  You should see a bunch of statements executing in your console. Wait approximately 5-10 minutes. 
+  The script will ask you for the server's domain and an
+  administration email address to configure https on the server.
+
+  After gathering this data the script will begin the install and you
+  should see a bunch of statements executing in your console. Wait
+  approximately 5-10 minutes for the installation to complete.
 
   .. image:: /img/setup-digital-ocean/do5.png
    :width: 600
@@ -138,8 +190,9 @@ Connecting to your Droplet
   .. code-block:: console
 
     $ docker stack ls
-  
-  If there are 7 services running under the name `syncldap`, everything is running properly. 
+
+   If there are 8 (or 7 without https) services running under the name
+  `syncldap`, everything is running properly.
 
 6. From the **Droplets** section of the console, obtain the IP address of the droplet you created. Now, navigate to https://[IP_ADDRESS]:40000 within your browser in order to access the services screen. It will warn you about your connection not being private but should give you the option to proceed at the bottom. 
 
@@ -199,6 +252,7 @@ Option 2: Azure console
 | We have noticed that sync-endpoint runs the smoothest on Azure. These instructions will walk you through the following:
 | -	:ref:`Setting up an Azure account <sync-endpoint-setup-azure-account>`
 | -	:ref:`Setting up a virtual machine <sync-endpoint-setup-azure-vm>`
+| -	:ref:`Setting up a DNS record <sync-endpoint-setup-azure-dns>`
 | -	:ref:`Connecting to your virtual machine <sync-endpoint-setup-azure-connect>`
 | -	:ref:`Launching the ODK-X Server <sync-endpoint-setup-azure-launch>`
 
@@ -244,6 +298,26 @@ Setting up a virtual machine
   .. image:: /img/setup-azure/azure6.png
     :width: 600
 
+.. _sync-endpoint-setup-azure-dns:
+
+Setting up a DNS Record
+"""""""""""""""""""""""
+
+1. Within the Virtual Machine overview section, locate the IP address
+   of your machine.
+
+  .. image:: /img/setup-azure/azure7.png
+    :width: 600
+
+2. Log into your account for your domain name registrar and DNS
+   provider. See :ref:`Acquiring a domain
+   name<sync-endpoint-setup-domain>` for more information and a list
+   of registrars and DNS providers.
+
+3. Add a dns 'A' record for the domain or subdomain you would like to
+   use for the Sync Endpoint with your droplet's IP address.
+
+
 .. _sync-endpoint-setup-azure-connect:
 
 Connecting to your virtual machine
@@ -274,11 +348,14 @@ Connecting to your virtual machine
 
   .. code-block:: console
 
-    $ vi cloud-init-output.log
+    $ tail cloud-init-output.log
   
-  Click :guilabel:`SHIFT + G` to scroll to the very end of the file. If you see the message **“The system is finally up, after X seconds”** you can proceed to the next step! Otherwise, continue to wait. 
+  If you see the message **“The system is finally up, after X
+  seconds”** you can proceed to the next step! Otherwise, continue to
+  wait and check the log again.
 
-4. Use *“:q!”* to now get out of the log file. In order to run our launch scripts, we must first navigate back to the home directory with the following command:
+4. In order to run our launch scripts, we must first navigate back to
+   the home directory with the following command:
 
   .. code-block:: console
 
@@ -290,7 +367,12 @@ Connecting to your virtual machine
 
     $ sudo ./script_to_run.sh
 
-  You should see a bunch of statements executing in your console. Wait approximately 5-10 minutes. 
+  The script will ask you for the server's domain and an
+  administration email address to configure https on the server.
+
+  After gathering this data the script will begin the install and you
+  should see a bunch of statements executing in your console. Wait
+  approximately 5-10 minutes for the installation to complete.
 
   .. image:: /img/setup-azure/azure8.png
     :width: 600
@@ -301,7 +383,8 @@ Connecting to your virtual machine
 
     $ docker stack ls
 
-  If there are 7 services running under the name `syncldap`, everything is running properly. 
+  If there are 8 (or 7 without https) services running under the name
+  `syncldap`, everything is running properly.
 
 5. After obtaining the IP address of the virtual machine you created, navigate to https://[IP_ADDRESS]:40000 within your browser in order to access the services screen. It will warn you about your connection not being private but should give you the option to proceed at the bottom. 
 
@@ -340,6 +423,7 @@ Option 3: Amazon Web Services console
 | These instructions will walk you through the following:
 | -	:ref:`Setting up an AWS account <sync-endpoint-setup-aws-account>`
 | -	:ref:`Setting up a virtual machine <sync-endpoint-setup-aws-vm>`
+| -	:ref:`Setting up a DNS record <sync-endpoint-setup-aws-dns>`
 | -	:ref:`Connecting to your virtual machine <sync-endpoint-setup-aws-connect>`
 | -	:ref:`Launching the ODK-X Server <sync-endpoint-setup-aws-launch>`
 
@@ -381,6 +465,27 @@ Setting up a virtual machine
 
   .. image:: /img/setup-aws/aws5.png
    :width: 600
+
+.. _sync-endpoint-setup-aws-dns:
+
+Setting up a DNS Record
+"""""""""""""""""""""""
+
+1. From the EC2 dashboard and click on :guilabel:`Running instances`.
+
+  .. image:: /img/setup-aws/aws6.png
+   :width: 600
+
+2. Select the instance you just created, and obtain its public IP address.
+
+3. Log into your account for your domain name registrar and DNS
+   provider. See :ref:`Acquiring a domain
+   name<sync-endpoint-setup-domain>` for more information and a list
+   of registrars and DNS providers.
+
+4. Add a dns 'A' record for the domain or subdomain you would like to
+   use for the Sync Endpoint with your droplet's IP address.
+
 
 .. _sync-endpoint-setup-aws-connect:
 
@@ -424,11 +529,14 @@ Connecting to your virtual machine
 
   .. code-block:: console
 
-    $ vi cloud-init-output.log
-  
-  Click :guilabel:`SHIFT + G` to scroll to the very end of the file. If you see the message **“The system is finally up, after X seconds”** you can proceed to the next step! Otherwise, continue to wait. 
+    $ tail cloud-init-output.log
 
-5. Use *“:q!”* to now get out of the log file. In order to run our launch scripts, we must first navigate back to the Ubuntu directory with the following command:
+  If you see the message **“The system is finally up, after X
+  seconds”** you can proceed to the next step! Otherwise, continue to
+  wait and check the log again.
+
+5. In order to run our launch scripts, we must first navigate back to
+   the Ubuntu directory with the following command:
 
   .. code-block:: console
 
@@ -440,7 +548,12 @@ Connecting to your virtual machine
 
     $ sudo ./script_to_run.sh
 
-  You should see a bunch of statements executing in your console. Wait approximately 5-10 minutes. 
+  The script will ask you for the server's domain and an
+  administration email address to configure https on the server.
+
+  After gathering this data the script will begin the install and you
+  should see a bunch of statements executing in your console. Wait
+  approximately 5-10 minutes for the installation to complete.
 
   .. image:: /img/setup-aws/aws9.png
     :width: 600
@@ -450,8 +563,9 @@ Connecting to your virtual machine
   .. code-block:: console
 
     $ docker stack ls
-  
-  If there are 7 services running under the name `syncldap`, everything is running properly. 
+
+  If there are 8 (or 7 without https) services running under the name
+  `syncldap`, everything is running properly.
 
 6. After obtaining the IP address of the virtual machine you created, navigate to https://[IP_ADDRESS]:40000 within your browser in order to access the services screen. It will warn you about your connection not being private but should give you the option to proceed at the bottom. 
 
