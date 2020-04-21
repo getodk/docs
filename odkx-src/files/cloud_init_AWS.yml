@@ -23,7 +23,7 @@ write_files:
       docker swarm init
       git clone https://github.com/odk-x/sync-endpoint-default-setup.git
       cd sync-endpoint-default-setup
-      python3 configure-odkx-sync.py
+      python3 init-odkx-sync-endpoint.py
 
 runcmd:
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
