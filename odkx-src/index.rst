@@ -98,9 +98,18 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
   :maxdepth: 1
   :hidden:
 
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Getting Started
+
   select-tool-suite
+  survey-sample-app
+  tables-sample-app
   getting-started-2-user
   getting-started-2-architect
+  reference-apps
+
 
 .. toctree::
   :maxdepth: 2
@@ -109,7 +118,6 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
 
   survey-intro
   survey-install
-  survey-sample-app
   survey-using
   survey-managing
 
@@ -117,10 +125,9 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
   :maxdepth: 2
   :hidden:
   :caption: Tables
-  
+
   tables-intro
   tables-install
-  tables-sample-app
   tables-using
   tables-managing
   tables-internals
@@ -129,7 +136,7 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
   :maxdepth: 2
   :hidden:
   :caption: Services
-  
+
   services-intro
   services-install
   services-using
@@ -140,13 +147,13 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
   :maxdepth: 2
   :hidden:
   :caption: Scan
-  
+
   scan-intro
   scan-install
   scan-using
   scan-managing
   scan-data
-  
+
 .. toctree::
   :maxdepth: 2
   :hidden:
@@ -186,7 +193,6 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
   injected-interfaces
   injected-interfaces-methods
   scan-form-designer-intro
-  reference-apps
 
 .. toctree::
   :maxdepth: 2
