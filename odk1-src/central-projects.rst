@@ -146,7 +146,10 @@ We place these access controls for all Forms in a single place, on the Form Acce
 
    .. image:: /img/central-projects/access.png
 
-On the left side of the Form Access page, you will find a list of all the Forms in the Project, along with a dropdown selection to set the lifecycle state for each one. Along the top, you will see all active App Users in the Project. At each row/column intersection, there is a checkbox that governs whether each App User is allowed access to each Form.
+On the left side of the Form Access page, you will find a list of all the Forms in the Project, along with a dropdown selection to set the Form Lifecycle state for each one. Along the top, you will see all active App Users in the Project. At each row/column intersection, there is a checkbox that governs whether each App User is allowed access to each Form.
+
+.. tip::
+  You may see a pencil icon next to the Lifecycle state dropdown on some Forms. This means that those Forms are currently Drafts, with no published version. They will not be visible to data collection clients no matter the Lifecycle state setting, or the checkboxes on this page. Once a Draft Form is published, then the settings on this page will immediately take effect.
 
 If you are having trouble recalling what each Form State means, the :guilabel:`?` icon in the header will give you a quick recap:
 

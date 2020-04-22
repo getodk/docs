@@ -19,6 +19,8 @@ We have a lot of exciting ideas for the future of Central, and we look forward t
  - Projects to organize users, permissions, and forms
  - Form and submission upload and management
 
+   - With support for form version updates
+   - With drafts and testing on initial creation, and on version updates
    - With form and submission multimedia or data attachments
    - With a table preview of submission data
    - Encrypted forms (self-supplied or project managed keys)
