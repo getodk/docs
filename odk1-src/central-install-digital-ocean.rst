@@ -206,7 +206,7 @@ By default, ODK Central uses Let's Encrypt to obtain an SSL security certificate
 
 1. Generate appropriate ``fullchain.pem`` (``-out``) and ``privkey.pem`` (``-keyout``) files.
 2. Copy those files into ``files/local/customssl/`` within the repository root.
-3. In ``.env``, set ``SSL_TYPE`` to ``customssl`` and set ``DOMAIN`` to ``local``.
+3. In ``.env``, set ``SSL_TYPE`` to ``customssl`` and set ``DOMAIN`` to the domain name you registered. As an example: ``DOMAIN=MyOdkCollectionServer.com``. Do not include anything like ``http://``.
 4. Build and run: ``docker-compose build nginx`` and ``systemctl restart docker-compose@central``. If that doesn't work, you may need to first remove your old nginx container (``docker-compose rm nginx``).
 
 .. _central-install-digital-ocean-custom-mail:
