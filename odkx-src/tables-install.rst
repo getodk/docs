@@ -19,7 +19,7 @@ Before installing ODK-X Tables, you will need the following ODK-X Tools:
 
 As well as the following third party apps:
 
-  - `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_
+  - `OI File Manager <https://github.com/openintents/filemanager/releases>`_
 
 .. _tables-install-recommended:
 
@@ -57,4 +57,3 @@ Installing the ODK-X Tables App
 .. tip::
 
   You can also `install ODK-X Tables on an Android emulator <https://github.com/odk-x/odk-x/wiki/DevEnv-Setup>`_. However, this can be slow and is only recommended for developers actively working on Tables.
-
