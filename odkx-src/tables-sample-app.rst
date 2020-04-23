@@ -1,4 +1,4 @@
-Sample ODK-X Tables Application
+Trying Out an ODK-X Tables Application
 ===============================================
 
 In this guide we will be demonstrating how to use ODK-X Tables via a guided tour of a sample application.
@@ -17,4 +17,3 @@ In this guide we will be demonstrating how to use ODK-X Tables via a guided tour
   tables-sample-app-jgi
   tables-sample-app-hope
   tables-sample-app-end
-

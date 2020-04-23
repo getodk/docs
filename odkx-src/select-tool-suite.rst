@@ -37,10 +37,10 @@ The feature comparison table below illustrates the differences between the ODK a
   * - | One to **many** mapping of a question to database fields
     - |
     - x
-  * - | Static input contraint checks
+  * - | Static input constraint checks
     - x
     - x
-  * - | Dynamic input contraint checks
+  * - | Dynamic input constraint checks
     -
     - x
   * - | Ability to control basic layout of question prompts on the
@@ -64,11 +64,3 @@ The feature comparison table below illustrates the differences between the ODK a
   * - | User permissions for row filtering of data available on the device
     -
     - x
-
-.. _select-tool-suite-trying-them-out:
-
-Trying Them Out
------------------------------
-  - Try the ODK tools with TODO.
-  - Try the ODK-X tools with the :doc:`getting-started-2-user`.
-
