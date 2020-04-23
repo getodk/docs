@@ -8,7 +8,7 @@ Prerequisites
 
 Before installing ODK-X Services, you will need the following third party apps:
 
-  - `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_
+  - `OI File Manager <https://github.com/openintents/filemanager/releases>`_
 
 There are no other ODK-X Android tools that are prerequisites to installing ODK-X Services. However, this tool is a prerequisite for all the other ODK-X Android tools.
 
@@ -36,4 +36,3 @@ Installing Services
 .. tip::
 
   You can also `install ODK-X Services on an Android emulator <https://github.com/odk-x/odk-x/wiki/DevEnv-Setup>`_. However, this can be slow and is only recommended for developers actively working on Services.
-
