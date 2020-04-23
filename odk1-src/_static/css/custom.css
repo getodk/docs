@@ -6,6 +6,10 @@
     font-family: Georgia, "Times New Roman", serif;
 } 
 
+.wy-side-nav-search>a img.logo {
+    height: 45px;
+}
+
 /* Styling for rst roles and directives starts */
 
 /* code-sample styling PR #90 */ 
