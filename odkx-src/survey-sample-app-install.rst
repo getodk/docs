@@ -21,7 +21,7 @@ To access the sample application and its six sample forms:
 
         The server URL starts with :file:`https://` not :file:`http://`. Don't forget to include the *s*.
 
-    - Click on Server Sign-on Credential and change your authentication from  :guilabel:`None (anonymous access)` to :guilabel:`Username`. Then, click Username, and enter “demo_user1” in the space. Also change your server password to “password.” When you are done, your screen should look like this:
+    - Click on Server Sign-on Credential and change your authentication from  :guilabel:`None (anonymous access)` to :guilabel:`Username`. Then, click Username, and enter :menuselection:`demo_user1` in the space. Also change your server password to :menuselection:`password`. When you are done, your screen should look like this:
 
   .. image:: /img/survey-sample-app/survey-demo-server-credential.*
     :alt: Server Sign-on Credential
