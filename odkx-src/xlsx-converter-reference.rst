@@ -579,7 +579,7 @@ The **calculates** worksheet is an optional worksheet.
   * - calculation_name
     - | The name used to reference the calculation in other worksheets.
   * - calculation
-    - | The JavaScriptf forumla to be evaluated.
+    - | The JavaScript formula to be evaluated.
 
 
 Each row of the **calculates** page represents a function that can be used elsewhere in the workbook by referencing the individual :th:`calculation_name`. The :th:`calculation` column can store any valid JavaScript expression. In general,
@@ -590,7 +590,7 @@ Each row of the **calculates** page represents a function that can be used elsew
 
 .. tip::
 
-  There are  built in functions for ODK-X Survey that can be used anywhere in the workbook. See the :ref:`Forumla Functions <xlsx-ref-formula>` section for more details.
+  There are  built in functions for ODK-X Survey that can be used anywhere in the workbook. See the :ref:`Formula Functions <xlsx-ref-formula>` section for more details.
 
 If a complex calculation is required, you can access the full power of Javascript and the :program:`jquery.js` (that is: :code:`$.some_func(...)` ) and :program:`underscore.js` (that is: :code:`_.some_func(...)` ) libraries. Internally, the calculate column is wrapped and evaluated as a Javascript function:
 
