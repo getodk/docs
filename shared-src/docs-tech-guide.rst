@@ -7,7 +7,7 @@ Docs Contributor Technical Guide
 =================================
 
 This document explains how to set up your computer
-and work locally as an ODK Docs contributor.
+and work locally as an ODK-X Docs contributor.
 Local set up includes installing some software,
 and working locally involves:
 
@@ -43,7 +43,7 @@ ODK-X is a collaborative community.
 Before diving in as a contributor,
 set up accounts on our three main collaboration platforms,
 :ref:`GitHub <get-gh-account>`,
-and the :ref:`ODK Forum <join-forum>`
+and the :ref:`ODK-X Forum <join-forum>`
 
 .. tip::
 
@@ -51,7 +51,7 @@ and the :ref:`ODK Forum <join-forum>`
       keep in mind that it is very helpful (but not required)
       to use the same (or similar) username
       on :ref:`GitHub <get-gh-account>`,
-      and the :ref:`ODK Forum <join-forum>`.
+      and the :ref:`ODK-X Forum <join-forum>`.
 
       This makes it easy for other people to keep track of conversations
       which sometimes span multiple online platforms.
@@ -76,16 +76,16 @@ and the :ref:`ODK Forum <join-forum>`
    .. _ODK-X Docs on GitHub: https://github.com/odk-x/docs
    .. _GitHub: https://github.com/
 
-#. Join the `ODK Forum`_
+#. Join the `ODK-X Forum`_
 
    .. _join-forum:
 
-   The `ODK-X Forum <ODK Forum>`_ is the main place for
-   support questions and conversations that affect the whole ODK community
+   The `ODK-X Forum`_ is the main place for
+   support questions and conversations that affect the whole ODK-X community
    (users and other stake holders, as well as contributors).
 
-   If you have a question about how to use any ODK software,
-   or want to get connected with the larger ODK community,
+   If you have a question about how to use any ODK-X software,
+   or want to get connected with the larger ODK-X community,
    the forum is the best venue for that.
 
    .. tip::
@@ -96,13 +96,13 @@ and the :ref:`ODK Forum <join-forum>`
       If someone has asked a question about it,
       it should probably be in the documentation.
 
-   .. _ODK Forum: http://forum.odk-x.org
+   .. _ODK-X Forum: http://forum.odk-x.org
 
 .. _forum-or-slack-or-gh:
 
 .. admonition:: Should I ask in the Forum, or a GitHub issue?
 
-   The ODK community talks a lot, in a lot of places.
+   The ODK-X community talks a lot, in a lot of places.
    Sometimes it's hard to know where to ask a question.
 
    **Contribution-related questions and problems should be asked on Github.**
@@ -130,10 +130,10 @@ and the :ref:`ODK Forum <join-forum>`
    since someone else may have already asked the same question.)
    This includes things like:
 
-   - How do I install an ODK application?
+   - How do I install an ODK-X application?
    - How do I create a form?
    - How do I add a specific feature to a form?
-   - My ODK application crashed.
+   - My ODK-X application crashed.
 
    .. rubric:: But don't worry about posting a question in the wrong place.
 
@@ -207,13 +207,13 @@ on any computer.
          If you decide to use the Linux subsystem,
          follow the **Bash** or **Windows** instructions
          throughout the contributor guide.
-		
+
 	  .. note::
 
-		 Computers with the Windows 10 Home operating system are incapable of 
+		 Computers with the Windows 10 Home operating system are incapable of
 		 installing some of the tools necessary to edit the docs. Other Windows
 		 operating systems, such as Windows 10 Enterprise or Pro, can be used
-		 to edit the docs. 
+		 to edit the docs.
 
       .. group-tab:: Mac
 
@@ -417,7 +417,7 @@ on any computer.
 
    .. _Python: https://www.python.org/
 
-   Most of the ODK Docs tools are written in Python,
+   Most of the ODK-X Docs tools are written in Python,
    so you need it installed on your computer in order to use those tools.
    (Don't worry. You don't need to know how to program in Python.)
 
@@ -643,23 +643,23 @@ on any computer.
                /odk/ >
 
 
-#. Fork the ODK Docs repository to your own GitHub account.
+#. Fork the ODK-X Docs repository to your own GitHub account.
 
    .. _fork-the-docs:
 
    A :dfn:`repository` (:dfn:`repo`) is a store of all the code and text for a project.
-   The `ODK Docs repo`_ is kept at GitHub.
+   The `ODK-X Docs repo`_ is kept at GitHub.
 
    On GitHub, a :dfn:`fork` is a copy of a repo,
    cloned from one user to another.
-   In order to work on ODK Docs,
+   In order to work on ODK-X Docs,
    you will create your own fork.
 
-   #. Go to the `ODK Docs repo`_ on GitHub.
+   #. Go to the `ODK-X Docs repo`_ on GitHub.
    #. Use the :guilabel:`Fork` button (top right) to create your own copy.
    #. After the process completes, you'll be looking at your own fork on GitHub.
 
-   .. _ODK Docs repo: https://github.com/odk-x/docs
+   .. _ODK-X Docs repo: https://github.com/odk-x/docs
 
 #. Clone down your copy to your local computer
 
@@ -707,7 +707,7 @@ on any computer.
 
          .. note::
 
-            This will cause your computer to download the entire ODK Docs repository,
+            This will cause your computer to download the entire ODK-X Docs repository,
             including a large number of images.
             It will take several minutes to complete.
 
@@ -725,11 +725,11 @@ on any computer.
          and you should not need to open it or directly view its content.
          Just ignore it.
 
-         The :file:`docs` directory is your copy of the ODK Docs repo.
+         The :file:`docs` directory is your copy of the ODK-X Docs repo.
          You will do most of your work in this directory.
 
          If you need to download or create additional files
-         which are not actually a part of the ODK Docs repository,
+         which are not actually a part of the ODK-X Docs repository,
          keep them out of the :file:`docs` directory.
 
          You can use the main :file:`odk` directory
@@ -749,7 +749,7 @@ on any computer.
    When you cloned down a repo,
    your local copy gives your GitHub copy the name ``origin``.
 
-   You also need to give the primary ODK Docs repo a name,
+   You also need to give the primary ODK-X Docs repo a name,
    and our convention is to name it ``upstream``.
 
    .. tabs::
@@ -871,7 +871,7 @@ Working on the docs
 
 #. Find an issue to work on.
 
-   Work on ODK Docs is planned using the GitHub repository's `issue tracker`_.
+   Work on ODK-X Docs is planned using the GitHub repository's `issue tracker`_.
 
    #. Browse the `issue tracker`_ and find one you may want to work on.
    #. Make sure you understand the goal of the project.
@@ -891,8 +891,8 @@ Working on the docs
 
    .. admonition:: Your first issue
 
-      The very first issue you should work on as a new ODK Docs contributor is
-      `Issue 96 --- Line Edits`_.
+      The very first issue you should work on as a new ODK-X Docs contributor is
+      `Issue 19 --- Line Edits`_.
       The issue is very simple:
 
       1. Find a typo.
@@ -901,14 +901,14 @@ Working on the docs
       This will help you get used to working with the documentation tools,
       and helps us get rid of the inevitable errors that creep in to our writing.
 
-      .. _Issue 96 --- Line Edits: https://github.com/odk-x/docs/issues/96
+      .. _Issue 19 --- Line Edits: https://github.com/odk-x/docs/issues/19
 
 #. Make sure you are on the master branch
 
    .. _check-at-master:
 
    A branch is a named sequence of changes representing work on the repo.
-   For example, if you were going to work on `Issue 96 --- Line Edits`_,
+   For example, if you were going to work on `Issue 19 --- Line Edits`_,
    you would create a new branch called ``line-edits`` to hold that work.
    When you were done,
    you would merge those changes back to the main branch,
@@ -1084,82 +1084,76 @@ Working on the docs
    you should run the tests locally first
    and correct any problems.
 
-   #. Spell check
+    If you've been working on files in :file:`odk1-src` or :file:`shared-src`:
 
-      .. _spell-check:
+    .. tabs::
 
-      If you've been working on files in :file:`odk1-src` or :file:`shared-src`:
+       .. group-tab:: Bash
 
-      .. tabs::
+          .. code:: console
 
-         .. group-tab:: Bash
+             (odkenv) /odk/docs/ $ make odk1-check
 
-            .. code:: console
+       .. group-tab:: PowerShell
 
-               (odkenv) /odk/docs/ $ make odk1-spell-check
+          .. code:: powershell
 
-         .. group-tab:: PowerShell
+             (odkenv) /odk/docs/ > rm -r -fo tmp1-src
+             (odkenv) /odk/docs/ > rm -r -fo odk1-build
+             (odkenv) /odk/docs/ > Copy-Item odk1-src -Destination tmp1-src -Recurse
+             (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmp1-src -Recurse
+             (odkenv) /odk/docs/ > sphinx-build -b spelling tmp1-src odk1-build/spelling
+             (odkenv) /odk/docs/ > python util/check-spelling-output.py odk1-build
 
-            .. code:: powershell
+    If you've been working on files in :file:`odkx-src`:
 
-               (odkenv) /odk/docs/ > rm -r -fo tmp1-src
-               (odkenv) /odk/docs/ > rm -r -fo odk1-build
-               (odkenv) /odk/docs/ > Copy-Item odk1-src -Destination tmp1-src -Recurse
-               (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmp1-src -Recurse
-               (odkenv) /odk/docs/ > sphinx-build -b spelling tmp1-src odk1-build/spelling
-               (odkenv) /odk/docs/ > python util/check-spelling-output.py odk1-build
+    .. tabs::
 
-      If you've been working on files in :file:`odkx-src`:
+       .. group-tab:: Bash
 
-      .. tabs::
+          .. code:: console
 
-         .. group-tab:: Bash
+             (odkenv) /odk/docs/ $ make odkx-spell-check
 
-            .. code:: console
+       .. group-tab:: PowerShell
 
-               (odkenv) /odk/docs/ $ make odkx-spell-check
+          .. code:: powershell
 
-         .. group-tab:: PowerShell
-
-            .. code:: powershell
-
-               (odkenv) /odk/docs/ > rm -r -fo tmpx-src
-               (odkenv) /odk/docs/ > rm -r -fo odkx-build
-               (odkenv) /odk/docs/ > Copy-Item odkx-src -Destination tmpx-src -Recurse
-               (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmpx-src -Recurse
-               (odkenv) /odk/docs/ > sphinx-build -b spelling tmp1-src odkx-build/spelling
-               (odkenv) /odk/docs/ > python util/check-spelling-output.py odkx-build
+             (odkenv) /odk/docs/ > rm -r -fo tmpx-src
+             (odkenv) /odk/docs/ > rm -r -fo odkx-build
+             (odkenv) /odk/docs/ > Copy-Item odkx-src -Destination tmpx-src -Recurse
+             (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmpx-src -Recurse
+             (odkenv) /odk/docs/ > sphinx-build -b spelling tmp1-src odkx-build/spelling
+             (odkenv) /odk/docs/ > python util/check-spelling-output.py odkx-build
 
 
-      This will send some output to the terminal,
-      which will include mentions of any words not in the dictionary.
+    This will send some output to the terminal,
+    which will include mentions of any words not in the dictionary.
 
-      -  If the flagged words are really misspellings, correct them.
+    -  If the flagged words are really misspellings, correct them.
 
-      -  If the flagged words are not misspelled, and *should* be in the dictionary
-         add them to :file:`spelling_wordlist.txt`.
+    -  If the flagged words are not misspelled, and *should* be in the dictionary
+       add them to :file:`spelling_wordlist.txt`.
 
-      -  If the flagged words are not misspelled, but *should not* be in the dictionary
-         (for example, they are non-words that make sense on a single page for a specific reason)
-         add them at the top of the file in which they are being used,
-         before the title heading:
+    -  If the flagged words are not misspelled, but *should not* be in the dictionary
+       (for example, they are non-words that make sense on a single page for a specific reason)
+       add them at the top of the file in which they are being used,
+       before the title heading:
 
-         .. code:: rst
+       .. code:: rst
 
-            .. spelling::
+          .. spelling::
 
-               abc
-               def
-               exe
-               functool
+             abc
+             def
+             exe
+             functool
 
-            This Is The Page Title
-            ======================
+          This Is The Page Title
+          ======================
 
-      When adding new words to :file:`spelling_wordlist.txt` or the top of a document file,
-      please keep the words in alphabetical order.
-
-   #. Style check
+    When adding new words to :file:`spelling_wordlist.txt` or the top of a document file,
+    please keep the words in alphabetical order.
 
 #. Build and check
 
@@ -1409,18 +1403,18 @@ Working on the docs
          .. _store your GitHub credentials locally:
             https://help.github.com/articles/caching-your-github-password-in-git/
 
-#. Issue a pull request from your GitHub repo to the main ODK Docs repo.
+#. Issue a pull request from your GitHub repo to the main ODK-X Docs repo.
 
    .. _pr-the-docs:
 
    A :dfn:`pull request` (or PR)
-   is a request from you to the ODK Docs maintainers
+   is a request from you to the ODK-X Docs maintainers
    to pull in your changes to the main repo.
 
-   #. Go to the `ODK Docs repo on GitHub`_.
+   #. Go to the `ODK-X Docs repo on GitHub`_.
       (Make sure you are logged in.)
 
-      .. _ODK Docs repo on GitHub: https://github.com/odk-x/docs
+      .. _ODK-X Docs repo on GitHub: https://github.com/odk-x/docs
 
    #. Find the message near the top of the page that mentions your recent pushed branches.
       Select :guilabel:`Compare & pull request` to start a pull request.
@@ -1486,7 +1480,7 @@ Working on the docs
 The next time you work
 ----------------------
 
-We hope that contributing to ODK Docs is a rewarding experience
+We hope that contributing to ODK-X Docs is a rewarding experience
 and that you'll want to keep going.
 Each time you start work on a new issue
 the process is the same as outline above.
@@ -1568,5 +1562,5 @@ And don't forget to join us on the |forum|_.
 
 ODK-X is a community,
 and we depend on each other's work.
-Thank you for your contribution to ODK Docs
+Thank you for your contribution to ODK-X Docs
 and your presence in this community.
