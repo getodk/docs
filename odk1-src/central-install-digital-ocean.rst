@@ -210,6 +210,17 @@ Log into your server so you have a console prompt, and run these commands, adapt
  mkswap /swap
  swapon /swap
 
+.. _central-install-digital-ocean-custom-ssl:
+
+Using a Custom SSL Certificate
+------------------------------
+
+By default, ODK Central uses Let's Encrypt to obtain an SSL security certificate. For most users, this should work perfectly, but larger managed internal networks may have their own certificate trust infrastructure. To use your own custom SSL certificate rather than the automatic Let's Encrypt system:
+
+1. Generate appropriate ``fullchain.pem`` (``-out``) and ``privkey.pem`` (``-keyout``) files.
+2. Copy those files into ``files/local/customssl/`` within the repository root.
+3. In ``.env``, set ``SSL_TYPE`` to ``customssl`` and set ``DOMAIN`` to the domain name you registered. As an example: ``DOMAIN=MyOdkCollectionServer.com``. Do not include anything like ``http://``.
+4. Build and run: ``docker-compose build nginx`` and ``systemctl restart docker-compose@central``. If that doesn't work, you may need to first remove your old nginx container (``docker-compose rm nginx``).
 
 .. _central-install-digital-ocean-custom-mail:
 
@@ -223,17 +234,58 @@ ODK Central ships with a basic EXIM server bundled to forward mail out to the in
 
   .. code-block:: console
 
-   "transportOpts": {
-     "host": "smtp.example.com",
-     "port": 587,
-     "secure": false,
-     "auth": {
-       "user": "my-smtp-user",
-       "pass": "my-smtp-password"
+   "email": {
+     "serviceAccount": "my-replyto-email",
+     "transport": "smtp",
+     "transportOpts": {
+       "host": "smtp.example.com",
+       "port": 587,
+       "secure": false,
+       "auth": {
+         "user": "my-smtp-user",
+         "pass": "my-smtp-password"
+       }
      }
    }
 
 3. Build and run: ``docker-compose build service`` and ``systemctl restart docker-compose@central``. If that doesn't work, you may need to first remove your old service container (``docker-compose rm service``).
+
+.. _central-install-digital-ocean-custom-db:
+
+Using a Custom Database Server
+------------------------------
+
+.. warning::
+  Using a custom database server, especially one that is not local to your local network, may result in poor performance. We strongly recommend using the Postgres v9.6 server that is bundled with Central.
+
+ODK Central ships with a PostgreSQL database server. To use your own custom database server:
+
+1. Ensure you have a PostgresSQL database server visible to your Central server network host.
+2. Ensure your database has ``UTF8`` encoding by running the following command on the database.
+
+  .. code-block:: console
+
+    SHOW SERVER_ENCODING;
+
+3. Ensure ``CITEXT`` and ``pg_trgm`` extensions exist by running the following commands on the database.
+
+  .. code-block:: console
+
+    CREATE EXTENSION IF NOT EXISTS CITEXT;
+    CREATE EXTENSION IF NOT EXISTS pg_trgm;
+
+4. Edit the file ``files/service/config.json.template`` to reflect your database host, table, and authentication details.
+
+  .. code-block:: console
+
+    "database": {
+      "host": "my-db-host",
+      "user": "my-db-user",
+      "password": "my-db-password",
+      "database": "my-db-table"
+    },
+
+5. Build and run: ``docker-compose build service`` and ``systemctl restart docker-compose@central``. If that doesn't work, you may need to first remove your old service container (``docker-compose rm service``).
 
 .. _central-install-digital-ocean-sentry:
 
@@ -267,18 +319,4 @@ If on the other hand you wish to use your own Sentry instance, take these steps:
      }
    }
 
-
-
 The error logs sent to Sentry (if enabled) are also being written to ``/var/log/odk/stderr.log`` in the running backend container.
-
-.. _central-install-digital-ocean-custom-ssl:
-
-Using a Custom SSL Certificate
-------------------------------
-
-By default, ODK Central uses Let's Encrypt to obtain an SSL security certificate. For most users, this should work perfectly, but larger managed internal networks may have their own certificate trust infrastructure. To use your own custom SSL certificate rather than the automatic Let's Encrypt system:
-
-1. Generate appropriate ``fullchain.pem`` (``-out``) and ``privkey.pem`` (``-keyout``) files.
-2. Copy those files into ``files/local/customssl/`` within the repository root.
-3. In ``.env``, set ``SSL_TYPE`` to ``customssl`` and set ``DOMAIN`` to ``local``.
-4. Build and run: ``docker-compose build nginx`` and ``systemctl restart docker-compose@central``. If that doesn't work, you may need to first remove your old nginx container (``docker-compose rm nginx``).
