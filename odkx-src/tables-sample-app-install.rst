@@ -1,6 +1,11 @@
 Install the Sample Application
 ==================================
 
+Prerequisites
+---------------
+
+Install ODK-X Tables and its prerequisites from the guide :doc:`basics-install`.
+
 .. _tables-sample-app-install:
 
 Unlike ODK Collect, the ODK-X tools are application-focused. An application is identified by the name of the directory under the :file:`/sdcard/opendatakit/` folder. The sample application is named *default*, as is the sample applications provided for :doc:`survey-intro`. This means that you can only deploy one of these sample application at a time onto a device. We also provide :ref:`instructions <survey-launching-appname>` to rename one of these so that two or more applications can co-exist and not interfere with each other on this same device.
@@ -50,5 +55,3 @@ Learn More
 ---------------
 
 For instructions on installing your own Tables application to a device, view the :ref:`build-app-move-to-device` guide.
-
-

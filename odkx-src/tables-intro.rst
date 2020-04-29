@@ -16,9 +16,9 @@ We have included a sample application built on top of Tables along with a handfu
 
 .. _tables-intro-user-guide:
 
-Learn more about ODK Aggregate
+Learn more about ODK Tables
 --------------------------------
-- :doc:`tables-install`
+- :doc:`basics-install`
 - :doc:`tables-sample-app`
 - :doc:`tables-using`
 - :doc:`tables-managing`
