@@ -91,7 +91,8 @@ See :doc:`reference-apps` for examples of ODK-X tools in use.
 Trying It Out
 -------------
 
-The :doc:`getting-started-2-user` walks you through the process of using a basic geotagging application and submitting data to the server.
+The :doc:`survey-sample-app` walks you through the process of using a basic survey-focused application and submitting data to the server.
+The :doc:`tables-sample-app` walks you through the process of using a basic tables-focused application and submitting data to the server.
 
 
 .. toctree::
@@ -104,6 +105,7 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
   :caption: Getting Started
 
   select-tool-suite
+  basics-install
   survey-sample-app
   tables-sample-app
   getting-started-2-user
@@ -117,7 +119,6 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
   :caption: Survey
 
   survey-intro
-  survey-install
   survey-using
   survey-managing
 
@@ -127,7 +128,6 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
   :caption: Tables
 
   tables-intro
-  tables-install
   tables-using
   tables-managing
   tables-internals
@@ -138,7 +138,6 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
   :caption: Services
 
   services-intro
-  services-install
   services-using
   services-managing
   services-internals

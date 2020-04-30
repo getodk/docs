@@ -28,7 +28,7 @@ As well as the third party apps:
 
 - `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_
 
-If you have not installed Survey already, follow our guide for :doc:`survey-install`
+If you have not installed Survey already, follow our guide for :doc:`basics-install`
 
 .. _survey-managing-prereqs-recommended:
 
@@ -134,4 +134,3 @@ Making a New AppName
   6. Develop your Data Management Application and push it to the device the normal way (instructions in the :ref:`guide <build-app-pushing>`).
 
 Using the above technique will keep your apps cleanly separated. You can also maintain multiple Data Management Applications in the same Application Designer instance by making alternative :file:`app-designer/app` directories and creating new :program:`Grunt` tasks to push them to the device.
-

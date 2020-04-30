@@ -1,6 +1,11 @@
 Installing the Sample Application
 ====================================
 
+Prerequisites
+---------------
+
+Install ODK-X Survey and its prerequisites from the guide :doc:`basics-install`.
+
 .. _survey-sample-app-install:
 
 Unlike ODK Collect, the ODK-X tools are application-focused. An application is identified by the name of the directory under the :file:`/sdcard/opendatakit/` folder. The sample application is named *default*, as are the sample applications provided for :doc:`tables-intro`. This means that you can only deploy one of these sample applications onto a device at a time. We also provide :ref:`instructions <survey-launching-appname>` to rename one of these so that two or more applications can co-exist on the same device without interfering with each other.

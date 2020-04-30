@@ -7,7 +7,6 @@ In this guide we will be demonstrating how to use ODK-X Tables via a guided tour
 .. toctree::
   :maxdepth: 2
 
-  tables-sample-app-prereqs
   tables-sample-app-overview
   tables-sample-app-install
   tables-sample-app-custom-home

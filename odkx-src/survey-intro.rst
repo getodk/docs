@@ -18,8 +18,7 @@ ODK-X Survey
 Learn more about ODK-X Survey
 ---------------------------------
 
-- :doc:`survey-install`
+- :doc:`basics-install`
 - :doc:`survey-sample-app`
 - :doc:`survey-using`
 - :doc:`survey-managing`
-

@@ -30,7 +30,7 @@ As well as the third party apps:
 
 - `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_
 
-If you have not installed Tables already, follow our guide for :doc:`tables-install`
+If you have not installed Tables already, follow our guide for :doc:`basics-install`
 
 .. _tables-managing-prereqs-recommended:
 

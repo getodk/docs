@@ -26,7 +26,7 @@ Finally, you will need the third party apps:
 
 - `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_
 
-If you have not installed Services already, follow our guide for :doc:`services-install`
+If you have not installed Services already, follow our guide for :doc:`basics-install`
 
 .. _services-managing-servers:
 
@@ -298,4 +298,3 @@ After pressing this option, you will be prompted to confirm this is what you wan
     :class: device-screen-vertical
 
 Press :guilabel:`OK` to clear the config. Back out of the :guilabel:`Settings` menu. The next time you run Tables or Survey they will rerun their initialization logic, which may take a few moments.
-
