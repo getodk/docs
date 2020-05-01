@@ -123,70 +123,9 @@ If you then repeat these steps with a different device, you can see that the two
 
   During this process, there are two problem-resolution screens you are likely to encounter:
 
-    - :ref:`Checkpoint Resolution <using-odk-2-demo-tour-checkpoints>` - if ODK-X Survey exits without the user explicitly saving their additions or changes.
-    - :ref:`Conflict Resolution <using-odk-2-demo-tour-conflicts>` - if ODK-X Services detects a change on the server to a data record that was also changed on the device.
+    - :ref:`Checkpoint Resolution <services-using-resolve-checkpoint>` - if ODK-X Survey exits without the user explicitly saving their additions or changes.
+    - :ref:`Conflict Resolution <services-using-resolve-conflict>` - if ODK-X Services detects a change on the server to a data record that was also changed on the device.
 
-.. _using-odk-2-demo-tour-checkpoints:
-
-Checkpoint Resolution
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The checkpoint resolution screen can be triggered a variety of ways. For this tour, choose the :guilabel:`+` icon then back out of ODK-X Survey:
-
-.. image:: /img/getting-started-2/checkpoint-resolution.*
-  :alt: Checkpoint Resolution
-  :class: device-screen-vertical
-
-When presented with this screen, there are three choices:
-
-  - Cancel and continue editing the form.
-  - Ignore changes and discard the entire partially filled-out form.
-  - Save it even though it is incomplete. In this case, since there is no entered data for this record, we can ignore changes.
-
-In rare cases, a second form of checkpoint resolution screen can be triggered. This most often happens if ODK-X Survey experiences a failure and closes. In this case, you may have several data records with unsaved checkpoint changes (changes that the user has not explicitly saved as incomplete or finalized). This will lead to a screen like:
-
-.. image:: /img/getting-started-2/checkpoint-list.*
-  :alt: Checkpoint List
-  :class: device-screen-vertical
-
-Clicking a row will display details about that individual checkpoint:
-
-.. image:: /img/getting-started-2/checkpoint-detail.*
-  :alt: Checkpoint Detail
-  :class: device-screen-vertical
-
-In all of these screens, you can choose whether to save the changes as incomplete or to discard them.
-
-.. _using-odk-2-demo-tour-conflicts:
-
-Conflict Resolution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The conflict resolution screen is triggered when another device has edited one or more rows and synchronized its changes to the server before your edits to those same rows have been synchronized. In this case, your synchronization attempt will end with an error, and a :guilabel:`Conflicts Detected` error will appear:
-
-.. image:: /img/getting-started-2/conflict-resolution.*
-  :alt: Conflicts Resolutino
-  :class: device-screen-vertical
-
-Once you click :guilabel:`OK`, the conflict resolution screen will be presented. If there are multiple rows in conflict, this screen will display the rows that are in conflict:
-
-.. image:: /img/getting-started-2/conflict-list.*
-  :alt: Conflict List
-  :class: device-screen-vertical
-
-Clicking a row will display details about the conflict:
-
-.. image:: /img/getting-started-2/conflict-detail.*
-  :alt: Conflict Detail
-  :class: device-screen-vertical
-
-And if only a single row is in conflict, the list-of-rows screen will be bypassed.
-
-The conflict details screen displays the values of the field(s) in conflict, with the field value on the device (Local) appearing first. In this case, the *Description* field is in conflict. The device has *Kite hill at Gasworks* and the server has *Kite Hill ... Gasworks*. You can select either to take your device values (:guilabel:`Take Local Version`) or take the server's values (:guilabel:`Take Server Version`) or pick-and-choose among the changes and merge them (the :guilabel:`Merge Changes as Indicated Below` button will be enabled after all fields have had either their Local or Server value picked for the merge). After selecting the local version or choosing to merge, you must again synchronize with the server to push that change up to the server.
-
-.. warning::
-
-  When you resolve a conflict, your decision does not only affect you. The value you choose becomes the new true value and the next time you sync it will be written to the server.
 
 This concludes the tour of the *Geotagger* example application's screens, and the functionality within ODK-X Tables. For larger tours of sample applications, try the :doc:`survey-sample-app` and :doc:`tables-sample-app`.
 
