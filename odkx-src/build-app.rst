@@ -16,6 +16,21 @@ Building an Application
 
 This will walk you through the steps of building a Data Management Application from scratch. The goal is to start with an empty folder and show you the necessary steps to create a working application that runs on your Android device.
 
+.. _build-app-data-mgt-apps:
+
+ODK-X Data Management Applications
+---------------------------------------
+
+The ODK-X Android tools (ODK-X Survey, ODK-X Tables, ODK-X Services, ODK-X Scan, ODK-X Sensors Framework, and various ODK-X Sensor implementations) are Android Application Packages (APKs) that are designed to work together to create a coherent tailored application experience for an end-user.
+
+.. note::
+
+  Together the ODK-X tools create a platform, on top of which you can build your own data management applications.
+
+ODK-X tools access configuration files and store data under sub-directories of the :file:`opendatakit` directory in the :file:`sdcard` root directory (whether your device has a physical SD card or not): :file:`/sdcard/opendatakit`. User applications constructed using the ODK-X tools are identified by the name of the sub-directory holding those configuration and data files. Thus, :file:`/sdcard/opendatakit/mytestapp` would contain all the files and data for the *mytestapp* application, where *mytestapp,* is the **AppName** of that application. The default **AppName** for the ODK-X tools is *default.* However, when configured appropriately, the ODK-X tools can run under another **AppName**, accessing configuration and saving data in a different subdirectory under opendatakit.
+
+This is handled in such a way that each user application is isolated from all other user applications, with separate configurations, data tables, and server settings. This allows one device to run multiple user applications built on top of the ODK-X tools without any coordination among the teams developing those applications.
+
 .. _build-app-prereqs:
 
 Prerequisites
@@ -28,7 +43,7 @@ You will need to install:
   - :doc:`survey-intro`
   - :doc:`tables-intro`
 
-Before getting started, be sure you have familiarized yourself with the ODK-X platform. The :doc:`getting-started-2-user` and :doc:`getting-started-2-architect` guides are a good place to start. The :doc:`survey-sample-app` and :doc:`tables-sample-app` are also good reference points.
+Before getting started, be sure you have familiarized yourself with the ODK-X platform. The :doc:`survey-intro`, :doc:`tables-intro` and :doc:`getting-started-2-architect` guides are a good place to start. The :doc:`survey-sample-app` and :doc:`tables-sample-app` are also good reference points.
 
 .. _build-app-clean-app-designer:
 
@@ -761,6 +776,22 @@ If you pull the CSV files, they will be under the :file:`output/csv/` directory.
 
 .. tip::
   There are a number of additional grunt tasks available. Assuming you have installed grunt and node, you can view the available tasks by running :command:`grunt --help` anywhere in the repo.
+
+Useful Grunt Commands
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:guilabel:`grunt addtable:tableid` : Will create the required directory structure for an individual table, including the forms directory.
+
+:guilabel:`grunt xlsx-convert-all` : Takes all `.xlsx` files and converts them into a `formDef.json file`. Can be used instead of `XLSX` converter on the app designer.
+
+:guilabel:`grunt wipe-data` : Deletes the default tables/data included with app designer.
+
+:guilabel:`grunt setup` : Launches the login and sync screen on the connected device.
+
+:guilabel:`grunt kill all` : Force stops survey, tables and services on the connected device.
+
+:guilabel:`grunt uninstall` : Uninstall ODK-X tools from the connected device.
+
 
 Troubleshooting
 ~~~~~~~~~~~~~~~~~~~~

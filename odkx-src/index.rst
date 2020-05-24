@@ -11,6 +11,8 @@ The ODK-X Tool Suite is free and open-source software for collecting, managing, 
 
 In ODK-X, developers and data managers can create data management applications that consist of survey forms as well as Javascript-based apps. These allow you to render a fully customizable user interface to gather, manage, and visualize data on an Android device.
 
+A major goal of these ODK-X tools was to eliminate the need for any software engineering skills (for example: Java programming, Android software development environment, source code version control systems) when designing data management applications. The skills required to build a data management application range from scripting a form definition in XLSX (similar to constructing ODK Collect forms using XLSX files processed by the XLSForm tool), to simple web programming -- modifying boilerplate HTML and JavaScript for custom presentations of the collected data. Advanced web programmers can also easily implement entirely custom web pages.
+
 .. _odk-2-intro-key-features:
 
 Key features
@@ -108,7 +110,6 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
   basics-install
   survey-sample-app
   tables-sample-app
-  getting-started-2-user
   getting-started-2-architect
   reference-apps
 
@@ -141,17 +142,6 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
   services-using
   services-managing
   services-internals
-
-.. toctree::
-  :maxdepth: 2
-  :hidden:
-  :caption: Scan
-
-  scan-intro
-  scan-install
-  scan-using
-  scan-managing
-  scan-data
 
 .. toctree::
   :maxdepth: 2
@@ -192,6 +182,17 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
   injected-interfaces
   injected-interfaces-methods
   scan-form-designer-intro
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Scan
+
+  scan-intro
+  scan-install
+  scan-using
+  scan-managing
+  scan-data
 
 .. toctree::
   :maxdepth: 2
