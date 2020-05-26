@@ -8,9 +8,9 @@ Prerequisites
 
 Before installing ODK-X Scan, you will need the following ODK-X Tools:
 
-  - :doc:`services-intro`
-  - :doc:`survey-intro`
-  - :doc:`tables-intro`
+  - :doc:`services-using`
+  - :doc:`survey-using`
+  - :doc:`tables-using`
 
 As well as the following third party apps:
 

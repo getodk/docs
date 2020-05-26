@@ -17,14 +17,10 @@ ODK-X Services is a prerequisite to all Data Management Application. You will al
 
 You will also need at least one of the following ODK-X tools:
 
-  - :doc:`survey-intro`
-  - :doc:`tables-intro`
+  - :doc:`survey-using`
+  - :doc:`tables-using`
 
 Survey and Tables can work independently and do not require you to use both.
-
-Finally, you will need the third party apps:
-
-- `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_
 
 If you have not installed Services already, follow our guide for :doc:`basics-install`
 

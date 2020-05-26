@@ -178,7 +178,7 @@ For examples of real world applications and details about they are implemented, 
 
 We also provide guides for setting up your own ODK-X application for each of the Android and Desktop tools.
 
-  - :doc:`survey-managing`
+  - :doc:`survey-using`
   - :doc:`tables-managing`
   - :doc:`services-managing`
   - :doc:`scan-managing`
