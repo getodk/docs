@@ -54,7 +54,7 @@ List of Tools
 --------------
 The ODK-X Tool Suite consists of:
 
-  - :doc:`survey-intro` - a customizable data **collection** application.
+  - :doc:`survey-using` - a customizable data **collection** application.
   - :doc:`tables-intro` - a data **curation and visualization** application that can also run custom-built data collection workflows.
   - :doc:`services-intro` - an application for **user authentication and data synchronization** between the ODK-X applications.
   - :doc:`cloud-endpoints-intro` - a **cloud server** to host data and application files, and to support bi-directional data synchronization across mobile devices.
@@ -119,16 +119,13 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
   :hidden:
   :caption: Survey
 
-  survey-intro
   survey-using
-  survey-managing
 
 .. toctree::
   :maxdepth: 2
   :hidden:
   :caption: Tables
 
-  tables-intro
   tables-using
   tables-managing
   tables-internals
@@ -138,7 +135,6 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
   :hidden:
   :caption: Services
 
-  services-intro
   services-using
   services-managing
   services-internals
@@ -146,11 +142,17 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
 .. toctree::
   :maxdepth: 2
   :hidden:
-  :caption: Application Designer
-
+  :caption: Application Building
+  
   app-designer-intro
   app-designer-setup
   app-designer-using
+  build-app
+  xlsx-converter-intro
+  tables-web-pages
+  injected-interfaces
+  injected-interfaces-methods
+  scan-form-designer-intro
 
 .. toctree::
   :maxdepth: 2
@@ -170,18 +172,6 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
   suitcase-intro
   suitcase-install
   suitcase-using
-
-.. toctree::
-  :maxdepth: 2
-  :hidden:
-  :caption: Application Building
-
-  build-app
-  xlsx-converter-intro
-  tables-web-pages
-  injected-interfaces
-  injected-interfaces-methods
-  scan-form-designer-intro
 
 .. toctree::
   :maxdepth: 2

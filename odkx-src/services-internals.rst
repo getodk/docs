@@ -25,14 +25,12 @@ Database Details
 
 ODK-X data is stored in a `SQLite Database <http://sqlite.org/index.html>`_ running on the Android device. After a device synchronizes with the server, this database will fully match the schema and contents of the database running in the :doc:`cloud-endpoints-intro`.
 
-Each Survey form instance will write to a row in the database. However, this mapping is not one-to-one: the form may not fill the entire row's columns and another form might fill other fields in the same row. Furthermore, sub-forms allow you to launch forms that write to other database rows. See :doc:`app-designer-intro` and :doc:`survey-intro` for more details.
+Each Survey form instance will write to a row in the database. However, this mapping is not one-to-one: the form may not fill the entire row's columns and another form might fill other fields in the same row. Furthermore, sub-forms allow you to launch forms that write to other database rows. See :doc:`app-designer-intro` and :doc:`survey-using` for more details.
 
-Data tables and schema can also be created manually and used as a back-end for your Data Management Application using :doc:`tables-intro`.
+Data tables and schema can also be created manually and used as a back-end for your Data Management Application using :doc:`tables-using`.
 
 At any point you can copy the local database on the Android device onto your desktop computer and inspect its contents and schema. If your application name is *default* then the database is stored in:
 
   :file:`/sdcard/opendatakit/default/data/webDb`
 
 To inspect the database, use the :code:`adb pull` command (Google documentation is available `here <https://developer.android.com/studio/command-line/adb.html#copyfiles>`_). Then use a program such as `DB Browser for SQLite <http://sqlitebrowser.org/>`_ to view the database. Further instructions are available in the :ref:`build-app-pushing` guide.
-
-

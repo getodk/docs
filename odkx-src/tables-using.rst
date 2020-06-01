@@ -1,5 +1,32 @@
+
 Using ODK-X Tables
 ======================
+
+.. _tables-intro:
+
+:dfn:`ODK-X Tables` is a program that allows you to visualize and update existing data. Using Tables as your entry-point to data collection, you will be able to gather data using ODK-X Survey, sync it to a server using ODK-X Services, and have other users download and edit this same data on their own devices.
+
+Tables also enables web developers to build powerful *data management applications* to handle their complex workflows. While Survey follows a traditional data collection workflow, similar to that of Collect, Tables gives you the flexibility to implement your own arbitrary complex workflow. For example you might collect data via a customized mapping interface: Tables allows you to build an application using web technologies to achieve that.
+
+.. note::
+
+  ODK-X Tables only works on Android 4.2 and newer devices.
+
+
+We have included a sample application built on top of Tables along with a handful of data tables that showcase some of its features in :doc:`tables-sample-app`.
+
+.. _tables-intro-user-guide:
+
+Learn more about ODK Tables
+--------------------------------
+- :doc:`tables-managing`
+- :doc:`tables-internals`
+
+
+Prerequisites
+---------------------
+
+If you have not installed Tables already, follow our guide for :doc:`basics-install`
 
 .. _tables-using:
 
@@ -77,7 +104,7 @@ Tables offers a number of view options for presenting data. The person at your o
 
 .. warning::
 
-  Many of the view types in Tables are customizable. This guide will provide some basic outlines of how to use these view types. However, for more accurate instructions you may need to contact the person who built or manages your organization’s ODK-X Tables application. 
+  Many of the view types in Tables are customizable. This guide will provide some basic outlines of how to use these view types. However, for more accurate instructions you may need to contact the person who built or manages your organization’s ODK-X Tables application.
 
 
 .. _tables-using-view-data-spreadsheet:
