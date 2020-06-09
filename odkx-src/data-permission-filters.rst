@@ -427,7 +427,7 @@ You will be presented with a demo launch screen.
 
 At this point, all the rows in all the tables have a :th:`_sync_state` of :tc:`new_row` and are fully editable and deletable. The demo will not become interesting until you set up and sync with a server.
 
-Set up an ODK-X Cloud Endpoint or ODK Aggregate 1.4.15 server with 2 ordinary users, 1 super-user and 1 tables administrator. :guilabel:`Reset App Server` to push the configuration and data up to the server.
+Set up an ODK-X Cloud Endpoint server with 2 ordinary users, 1 super-user and 1 tables administrator. :guilabel:`Reset App Server` to push the configuration and data up to the server.
 
 You are now an administrator (you needed to be in order to reset the server). You can choose :guilabel:`Change Row-Level Access Filters` to view and perhaps modify the default access and row owner of one or more rows. All rows in all tables are fully editable and deletable.
 

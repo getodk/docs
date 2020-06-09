@@ -29,7 +29,7 @@ If you have not installed Services already, follow our guide for :doc:`basics-in
 Compatible Servers
 ~~~~~~~~~~~~~~~~~~~~~~
 
-It is important to match your version of ODK-X Services with an appropriate version of a :doc:`cloud-endpoints-intro`. To do this, find the release from the `Services Releases page <https://github.com/odk-x/services/releases>`_ and match it to a release from the `Sync Endpoint Releases page <https://github.com/odk-x/sync-endpoint/releases>`_. Or, if you want to use ODK Aggregate, check the release notes for the appropriate version.
+It is important to match your version of ODK-X Services with an appropriate version of a :doc:`cloud-endpoints-intro`. To do this, find the release from the `Services Releases page <https://github.com/odk-x/services/releases>`_ and match it to a release from the `Sync Endpoint Releases page <https://github.com/odk-x/sync-endpoint/releases>`_. 
 
 
 .. _services-managing-server-config:

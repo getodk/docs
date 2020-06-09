@@ -8,7 +8,7 @@ ODK-X Cloud Endpoints
 There are currently two options for Cloud Endpoints to communicate with ODK-X tools.
 
   - :doc:`sync-endpoint` - Supports the full ODK-X REST Protocol
-  - :doc:`aggregate-tables-extension` - Supports the majority of the ODK-X REST Protocol; however, is missing group permission filtering support.
+  - :doc:`aggregate-tables-extension` - Previously supported the majority of the ODK-X REST Protocol; however, is no longer supported, please migrate to :doc:`sync-endpoint`.
 
 .. _cloud-endpoints_intro_learn-more:
 

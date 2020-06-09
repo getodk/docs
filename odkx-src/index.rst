@@ -55,8 +55,8 @@ List of Tools
 The ODK-X Tool Suite consists of:
 
   - :doc:`survey-using` - a customizable data **collection** application.
-  - :doc:`tables-intro` - a data **curation and visualization** application that can also run custom-built data collection workflows.
-  - :doc:`services-intro` - an application for **user authentication and data synchronization** between the ODK-X applications.
+  - :doc:`tables-using` - a data **curation and visualization** application that can also run custom-built data collection workflows.
+  - :doc:`services-using` - an application for **user authentication and data synchronization** between the ODK-X applications.
   - :doc:`cloud-endpoints-intro` - a **cloud server** to host data and application files, and to support bi-directional data synchronization across mobile devices.
   - :doc:`suitcase-intro` - a **desktop tool** for synchronizing data with a cloud endpoint.
   - :doc:`app-designer-intro` - a design environment for **creating, customizing, and previewing** your forms, data curation, and visualization applications. This is where you build your ODK-X applications.
@@ -143,7 +143,7 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
   :maxdepth: 2
   :hidden:
   :caption: Application Building
-  
+
   app-designer-intro
   app-designer-setup
   app-designer-using
@@ -151,7 +151,6 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
   xlsx-converter-intro
   tables-web-pages
   injected-interfaces
-  injected-interfaces-methods
   scan-form-designer-intro
 
 .. toctree::
@@ -170,8 +169,6 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
   :caption: Suitcase
 
   suitcase-intro
-  suitcase-install
-  suitcase-using
 
 .. toctree::
   :maxdepth: 2
