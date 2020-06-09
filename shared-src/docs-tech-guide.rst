@@ -229,13 +229,13 @@ on any computer.
          If you decide to use the Linux subsystem,
          follow the **Bash** or **Windows** instructions
          throughout the contributor guide.
-		
+
 	  .. note::
 
-		 Computers with the Windows 10 Home operating system are incapable of 
+		 Computers with the Windows 10 Home operating system are incapable of
 		 installing some of the tools necessary to edit the docs. Other Windows
 		 operating systems, such as Windows 10 Enterprise or Pro, can be used
-		 to edit the docs. 
+		 to edit the docs.
 
       .. group-tab:: Mac
 
@@ -901,7 +901,7 @@ Working on the docs
       If there is anything in the issue that doesn't make sense, ask about it.
       Feel free to make suggestions about how something could be accomplished.
    #. If you decide to work on an issue,
-      assign yourself to it by writing **@opendatakit-bot claim** in a comment.
+      assign yourself to it by writing **@getodk-bot claim** in a comment.
    #. If the issue requires a novel or creative solution not defined in the issue already
       (we've stated a problem and you think you know a way to fix it)
       write a comment describing your plan.
@@ -1389,7 +1389,7 @@ Working on the docs
       These details should fill-in automatically,
       but be sure to double-check them:
 
-      - :guilabel:`Base fork` should be the main repo (``opendatakit/docs``).
+      - :guilabel:`Base fork` should be the main repo (``getodk/docs``).
       - :guilabel:`base` should be ``master``.
       - Your repo and working branch name should be listed beside them.
 

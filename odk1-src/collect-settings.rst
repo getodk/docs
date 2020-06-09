@@ -107,7 +107,7 @@ To access User Interface settings:
 
 :guilabel:`Language`
 """""""""""""""""""""
-  Forces the Collect interface to use a specific language. By default, Collect matches the device language. Note that this only sets the language for the Collect interface and not for form contents. For multi-language forms, the form language is set :ref:`while filling out that form <change-form-language>`. The Collect translations are provided by the ODK community through the `Transifex service <https://www.transifex.com/opendatakit/collect/>`_. You can join Transifex to add or correct translations in your language.
+  Forces the Collect interface to use a specific language. By default, Collect matches the device language. Note that this only sets the language for the Collect interface and not for form contents. For multi-language forms, the form language is set :ref:`while filling out that form <change-form-language>`. The Collect translations are provided by the ODK community through the `Transifex service <https://www.transifex.com/getodk/collect/>`_. You can join Transifex to add or correct translations in your language.
 
 :guilabel:`Text font size`
 """"""""""""""""""""""""""""
