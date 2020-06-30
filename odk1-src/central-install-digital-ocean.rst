@@ -85,6 +85,24 @@ Once you have that password in hand, you'll be able to use the **Launch Console*
 
 Once you are in your server, you'll want to change your password so that people snooping your email do not gain access. You should be automatically asked for a new password the first time you log in. If you are not, type ``passwd`` and press **Enter**, then follow the instructions to choose a new password. From now on, you will use that password to log in.
 
+Changing Server Settings
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+First, we will want to ensure that Docker starts up whenever the server starts. Docker will in turn ensure that Central has started up. To do this, run ``systemctl enable docker``.
+
+You will need to change one more thing on this server before we proceed: you will need to modify the system firewall for Enketo features in Central to work correctly.
+
+The quickest way to do this is to run ``ufw disable`` while logged into your server's command line prompt. You should see the message ``Firewall stopped and disabled on system startup``. If so, you have configured the firewall correctly.
+
+.. admonition:: For advanced administrators
+
+  If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be really difficult to do correctly, so we don't recommend most people try.
+
+  The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. In particular, if you can successfully ``curl`` your ODK Central website over HTTPS on its public domain name, all Enketo features should work correctly.
+
+Obtaining and Setting Up ODK Central
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Now you'll need to download the software. In the server window, type ``git clone https://github.com/getodk/central`` and press **Enter**. It should think for some time and download many things. Then type `cd central` to start working with the software.
 
    .. image:: /img/central-install/cloned.png

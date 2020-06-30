@@ -23,3 +23,18 @@ Now, get the latest client and server: ``git submodule update -i``. Then, build 
 
 Finally, restart the running server to pick up the changes: ``systemctl restart docker-compose@central``.
 
+.. _central-upgrade-0.9:
+
+Upgrading to Central 0.9
+------------------------
+
+Particularly if you are installed on Digital Ocean, you will need to modify the system firewall for Enketo features in Central to work correctly.
+
+The quickest way to do this is to run ``ufw disable`` while logged into your server's command line prompt. You should see the message ``Firewall stopped and disabled on system startup``. If so, you have configured the firewall correctly.
+
+.. admonition:: For advanced administrators
+
+  If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be really difficult to do correctly, so we don't recommend most people try.
+
+  The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. In particular, if you can successfully ``curl`` your ODK Central website over HTTPS on its public domain name, all Enketo features should work correctly.
+
