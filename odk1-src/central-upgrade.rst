@@ -19,9 +19,9 @@ Now, get the latest client and server: ``git submodule update -i``. Then, build 
 
 .. admonition:: Note
 
-  If you run into problems with this step, try stopping the Central software (``systemctl stop docker-compose@central``) and retry ``docker-compose build`` after it has shut down the Central website.
+  If you run into problems with this step, try stopping the Central software (``docker-compose stop``) and retry ``docker-compose build`` after it has shut down the Central website.
 
-Finally, restart the running server to pick up the changes: ``systemctl restart docker-compose@central``.
+Finally, restart the running server to pick up the changes: ``docker-compose stop`` and ``docker-compose up -d``.
 
 .. _central-upgrade-0.9:
 
