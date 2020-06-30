@@ -48,15 +48,10 @@ Once the form is successfully uploaded, you will be taken to the Form Draft page
 
 .. _central-forms-draft:
 
-Understanding Form Drafts
--------------------------
+Working with Form Drafts
+------------------------
 
 Form Drafts, available as of Central 0.8, provide a way to safely and easily verify the design of your Form before you make it available for use. Drafts are accessible only to privileged Project staff. Each Form Draft has a unique access token which allows configured data collection clients to submit test submissions to the Draft. These test submissions disappear automatically when the Draft is published. Once a Draft is published, it is available for use according to the access rules you have specified in the :ref:`Form Access <central-projects-form-access>` tab on the Project.
-
-.. _central-forms-draft-tabs:
-
-Working with Form Drafts
-~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. image:: /img/central-forms/draft-overview.png
 
