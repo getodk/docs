@@ -3,18 +3,25 @@
   readonly
 
 ODK-X Sync Endpoint
-=====================
+===================
 
 .. _sync-endpoint-intro:
 
 :dfn:`ODK-X Sync Endpoint` is an implementation of :doc:`cloud-endpoints-intro`. It runs a server inside a :program:`Docker` container that implements the `ODK-X REST Protocol <https://github.com/odk-x/odk-x/wiki/ODK-2.0-Synchronization-API-(RESTful)>`_.
 
-It communicates with your ODK-X Android applications to synchronize your data and application files.
+It communicates with your ODK-X Android applications to synchronize
+your data and application files.
+
+Depending on your needs, ODK-X Sync Endpoint can either be installed
+in a cloud-based virtual machine, or on your own infrastructure.
+
+- :ref:`Cloud-based Setup<sync-endpoint-cloud-setup>`
+- :ref:`Manual Setup (on local infrastructure)<sync-endpoint-manual-setup>`
 
 .. _sync-endpoint-auth:
 
 Authentication
-----------------------
+--------------
 
 ODK-X Sync Endpoint does not store user information in its own database, instead it integrates with an *LDAP* directory or an *Active Directory*. That directory is then used to authenticate users and obtain user roles.
 
@@ -22,183 +29,35 @@ ODK-X Sync Endpoint does not store user information in its own database, instead
 
   As a consequence of the integration, Basic Authentication is the only supported authentication method.
 
-.. _sync-endpoint-prereqs:
 
-ODK-X Sync Endpoint prerequisites
------------------------------------
+.. include:: sync-endpoint-cloud-setup.rst
 
-You must have :program:`Docker 18.09.2` or newer, and be running in *Swarm Mode*.
-Follow these links for detailed instructions on installing :program:`Docker` and enabling Swarm Mode.
+.. include:: sync-endpoint-manual-setup.rst
 
-  - `Docker <https://docs.docker.com/install/>`_
-  - `Swarm Mode <https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/>`_
 
-.. _sync-endpoint-setup:
+.. _sync-endpoint-https:
 
-ODK-X Sync Endpoint Setup
-----------------------------
+HTTPS
+-----
 
-ODK-X Sync Endpoint requires a database and a *LDAP* directory, you could follow the instructions and deploy all three components together or supply your own database and/or *LDAP* directory.
+  The Sync Endpoint stack integrates support for automatic certificate
+  provisioning via domain validation and letsencrypt. For most use
+  cases this should be sufficient. Certificate provisioning parameters
+  can be edited interactively during initialization or directly in
+  :file:`config/https.env`.
 
-.. note::
-
-  All of the following commands should be run on your server.
-
-  If you are using git on Windows, make sure git is configured with "core.autocrlf=false" - otherwise it will convert line endings with LF to CRLF, which will cause problems with the .sh-files when used in the Docker containers, thus preventing odk/sync-endpoint from starting and instead just returning with an ":invalid argument"-error. 
-
-Setup instructions:
-
-  1. Choose a directory to store you endpoint in. In that directory, run:
-
-  .. code-block:: console
-
-    $ git clone https://github.com/odk-x/sync-endpoint-default-setup
-    
-  2. Navigate into the the "sync-endpoint-default-setup" directory
-  
-  3. Checkout the sync-endpoint code by running:
-
-  .. code-block:: console
-
-    $ git clone https://github.com/odk-x/sync-endpoint
-   
-  3. Navigate into the sync-endpoint directory. Most likely
-
-  .. code-block:: console
-
-    $ cd sync-endpoint
-	
-  4. Build sync endpoint by running the following: (NOTE: you will need Apache Maven installed >= 3.3.3)
-  
-  .. code-block:: console
-
-    $ mvn clean install
-	
-  5. Navigate back to the parent "sync-endpoint-default-setup" directory. 
-  
-  6. In the "sync-endpoint-default-setup" directory run:
-
-  .. code-block:: console
-
-    $ docker build --pull -t odk/sync-web-ui https://github.com/odk-x/sync-endpoint-web-ui.git
-
-  7. In the "sync-endpoint-default-setup" cloned repository run:
-
-  .. code-block:: console
-
-    $ docker build --pull -t odk/db-bootstrap db-bootstrap
-
-  8. In the "sync-endpoint-default-setup" cloned repository run:
-
-  .. code-block:: console
-
-    $ docker build --pull -t odk/openldap openldap
-
-  9. In the "sync-endpoint-default-setup" cloned repository run:
-
-  .. code-block:: console
-
-    $ docker build --pull -t odk/phpldapadmin phpldapadmin
-
-  10. Enter your hostname in the :code:`security.server.hostname` field in the :file:`security.properties` file (under the directory :file:`config/sync-endpoint`).
-
-  11. If you're not using the standard ports (80 for *HTTP* and 443 for *HTTPS*) enter the ports you're using in the :code:`security.server.port` and :code:`security.server.securePort` fields in the :file:`security.properties`. Then edit the **ports** section under the **sync** section in :file:`docker-compose.yml` to be :code:`YOUR_PORT:8080`.
-
-    .. note::
-
-      It is important that the right side of the colon stays as 8080. This is the internal port that the web server is looking for.
-
-  12. If you're using your own *LDAP* directory or database, continue with the instructions:
-
-    - :ref:`Custom database instructions <sync-endpoint-setup-database>`
-    - :ref:`Custom LDAP instructions <sync-endpoint-setup-ldap>`
-
-  13. In the "sync-endpoint-default-setup" cloned repository run:
-
-  .. code-block:: console
-
-    $ docker stack deploy -c docker-compose.yml syncldap
-
-  14. The server takes about 30s to start, then it will be running at http://127.0.0.1.
-  15. See the :ref:`LDAP section <sync-endpoint-ldap>` for instructions on configuring users and groups.
-
-.. _sync-endpoint-setup-database:
-
-Custom database
-~~~~~~~~~~~~~~~~~~~~~~
-
-  1. If you haven't followed the :ref:`common instructions <sync-endpoint-setup>`, start with those.
-  2. Remove the *db* and *db-bootstrap* sections in :file:`docker-compose.yml`.
-  3. Modify :file:`jdbc.properties` to match your database. Supported database systems are :program:`PostgreSQL`, :program:`MySQL` and :program:`Microsoft SQL Server`. Sample config for each type of database can be found `on Github <https://github.com/odk-x/sync-endpoint-default-setup>`_.
-  4. Modify :file:`sync.env` to match your database
-  5. In the cloned repository,
-
-  .. code-block:: console
-
-    $ docker stack deploy -c docker-compose.yml syncldap
-
-  6. The server takes about 30s to start, then it will be running at http://127.0.0.1.
-
-.. _sync-endpoint-setup-ldap:
-
-Custom LDAP directory
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  1. If you haven't followed the :ref:`common instructions <sync-endpoint-setup>`, start with those.
-  2. OPTIONAL: If your LDAP directory uses a certificate that was signed by a self-signed CA,
-
-    a. Make the public key of the CA available to ODK-X Sync Endpoint with this command.
-
-    .. code-block:: console
-
-      $ docker config create org.opendatakit.sync.ldapcert PATH_TO_CERT
-
-    b. Uncomment the relevant lines in the *configs* section in :file:`docker-compose.yml` and the *configs* section under the *sync* section in :file:`docker-compose.yml`.
-
-  3. Remove the *ldap-service* and *phpldapadmin* sections in :file:`docker-compose.yml`.
-  4. Modify the relevant sections in :file:`security.properties` to match your LDAP directory. Further instructions are in the file.
-
-  .. note::
-
-    The default configuration does not use ldaps or StartTLS because the LDAP directory communicates with the ODK-X Sync Endpoint over a secure overlay network. You should use ldaps or StartTLS to communicate with your LDAP directory.
-
-  5. In the cloned repository:
-
-  .. code-block:: console
-
-    $ docker stack deploy -c docker-compose.yml syncldap
-
-  6. The server takes about 30s to start, then it will be running at http://127.0.0.1.
-
-.. _sync-endpoint-stopping:
-
-Stopping ODK-X Sync Endpoint
--------------------------------
-
-  1. Run:
-
-  .. code-block:: console
-
-    $ docker stack rm syncldap
-
-  2. OPTIONAL: If you want to remove the volumes as well,
-
-    - Linux/macOS:
-
-    .. code-block:: console
-
-      $ docker volume rm $(docker volume ls -f "label=com.docker.stack.namespace=syncldap" -q)
-
-    - Windows:
-
-    .. code-block:: console
-
-      $ docker volume rm (docker volume ls -f "label=com.docker.stack.namespace=syncldap" -q)
+  .. Tip:: For advanced users, if you would like to use an externally
+           provisioned certificate one can be added by modifying the
+           cert-bootstrap service in :file:`docker-compose-https.yml`
+           to pull from the appropriate external files. Additionally
+           docker's builtin secrets and config infrastructure can be
+           used directly to expose the certificate and key only to the
+           NGINX container.
 
 .. _sync-endpoint-ldap:
 
 LDAP
------------
+----
 
   - The default admin account is  *cn=admin,dc=example,dc=org*.
   - The default password is *admin* - it can be changed with the *LDAP_ADMIN_PASSWORD* environment variable in :file:`ldap.env`
@@ -231,7 +90,7 @@ The following guides assume that you're using :program:`phpLDAPadmin`. In order 
 .. _sync-endpoint-ldap-users:
 
 Creating users
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
   1. Click: :guilabel:`login` on the left and login as *admin*.
   2. Expand the tree view on the left until you see :guilabel:`ou=people`.
@@ -243,7 +102,7 @@ Creating users
 .. _sync-endpoint-ldap-groups:
 
 Creating groups
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 
   1. Click: :guilabel:`login` on the left and login as *admin*.
   2. Expand the tree view on the left until you see :guilabel:`ou=groups`.
@@ -260,7 +119,7 @@ Creating groups
 .. _sync-endpoint-ldap-assign:
 
 Assigning users to groups
-"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""
 
   1. Click: :guilabel:`login` on the right and login as *admin*.
   2. Expand the tree view on the right until you see :guilabel:`ou=default_prefix`, then expand :guilabel:`ou=default_prefix`.
@@ -277,24 +136,3 @@ Assigning users to groups
 
     a. Navigate to the :guilabel:`memberUid` section.
     b. Click modify group members to manage members.
-
-.. _sync-endpoint-https:
-
-HTTPS
------------------
-
-  1. Store your certificate public key in a :program:`Docker` config with this command:
-
-  .. code-block:: console
-
-    $ docker config create example.com.fullchain.pem PATH_TO_PUBLIC_KEY
-
-  2. Store your certificate private key in a :program:`Docker` secret with this command:
-
-  .. code-block:: console
-
-    $ docker secret create examepl.com.privkey.pem PATH_TO_PRIVATE_KEY
-
-  3. Modify the *configs* section and *secrets* section in :guilabel:`docker-compose.yml` to include name of the :program:`Docker` config and :program:`Docker` secret created above.
-  4. Uncomment the relevant lines in the *nginx* section in :guilabel:`docker-compose.yml`.
-

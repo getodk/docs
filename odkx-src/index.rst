@@ -160,7 +160,6 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
 
   cloud-endpoints-intro
   sync-endpoint
-  sync-endpoint-setup
   aggregate-tables-extension
 
 .. toctree::
