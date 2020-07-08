@@ -21,23 +21,11 @@ This tutorial will help you launch ODK-X Sync Endpoint on a virtual machine host
 Step 0: Acquire a domain name or subdomain
 ------------------------------------------
 
-Running the ODK-X Sync Endpoint in the cloud will require access to a
-publicly registered domain name to allow for a secure connection
-between Android devices and the Sync Endpoint. Domain names can be
-purchased via many providers. We have used `Google Domains
-<https://domains.google.com/>`_, `Amazon Route 53
-<https://aws.amazon.com/route53/>`_, Azure App Services Domains, and
-`Cloudflare Registrar
-<https://www.cloudflare.com/products/registrar/>`_ successfully.
+Running the ODK-X Sync Endpoint in the cloud will require access to a publicly registered domain name to allow for a secure connection between Android devices and the Sync Endpoint. Domain names can be purchased via many providers. We have used `Google Domains<https://domains.google.com/>`_, `Amazon Route 53<https://aws.amazon.com/route53/>`_, Azure App Services Domains, and `Cloudflare Registrar<https://www.cloudflare.com/products/registrar/>`_ successfully.
 
-If you already own a domain, you may add a subdomain record for use
-with Sync Endpoint without purchasing a whole new domain. Before you
-go on, make sure you have a domain and know how to log into your
-domain management console to add a DNS record!
+If you already own a domain, you may add a subdomain record for use with Sync Endpoint without purchasing a whole new domain. Before you go on, make sure you have a domain and know how to log into your domain management console to add a DNS record!
 
-.. Note:: Specific instructions for connecting ODK-X Sync Endpoint to
-          your domain will vary based on your registrar and DNS
-          provider.
+.. Note:: Specific instructions for connecting ODK-X Sync Endpoint to your domain will vary based on your registrar and DNS provider.
 
 .. _sync-endpoint-setup-digital-ocean:
 
@@ -113,13 +101,9 @@ Setting up a DNS Record
 
 2. Obtain the IP address of the droplet you created.
 
-3. Log into your account for your domain name registrar and DNS
-   provider. See :ref:`Acquiring a domain
-   name<sync-endpoint-setup-domain>` for more information and a list
-   of registrars and DNS providers.
+3. Log into your account for your domain name registrar and DNS provider. See :ref:`Acquiring a domain name<sync-endpoint-setup-domain>` for more information and a list of registrars and DNS providers.
 
-4. Add a dns 'A' record for the domain or subdomain you would like to
-   use for the Sync Endpoint with your droplet's IP address.
+4. Add a dns 'A' record for the domain or subdomain you would like to use for the Sync Endpoint with your droplet's IP address.
 
 .. _sync-endpoint-setup-digital-ocean-connecting:
 
