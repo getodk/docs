@@ -191,8 +191,7 @@ Connecting to your Droplet
 
     $ docker stack ls
 
-   If there are 8 (or 7 without https) services running under the name
-  `syncldap`, everything is running properly.
+  If there are 8 (or 7 without https) services running under the name `syncldap`, everything is running properly.
 
 6. From the **Droplets** section of the console, obtain the IP address of the droplet you created. Now, navigate to https://[IP_ADDRESS]:40000 within your browser in order to access the services screen. It will warn you about your connection not being private but should give you the option to proceed at the bottom. 
 
@@ -350,9 +349,7 @@ Connecting to your virtual machine
 
     $ tail cloud-init-output.log
   
-  If you see the message **“The system is finally up, after X
-  seconds”** you can proceed to the next step! Otherwise, continue to
-  wait and check the log again.
+  If you see the message **“The system is finally up, after X seconds”** you can proceed to the next step! Otherwise, continue to wait and check the log again.
 
 4. In order to run our launch scripts, we must first navigate back to
    the home directory with the following command:
@@ -367,12 +364,9 @@ Connecting to your virtual machine
 
     $ sudo ./script_to_run.sh
 
-  The script will ask you for the server's domain and an
-  administration email address to configure https on the server.
+  The script will ask you for the server's domain and an administration email address to configure https on the server.
 
-  After gathering this data the script will begin the install and you
-  should see a bunch of statements executing in your console. Wait
-  approximately 5-10 minutes for the installation to complete.
+  After gathering this data the script will begin the install and you should see a bunch of statements executing in your console. Wait approximately 5-10 minutes for the installation to complete.
 
   .. image:: /img/setup-azure/azure8.png
     :width: 600
@@ -478,13 +472,9 @@ Setting up a DNS Record
 
 2. Select the instance you just created, and obtain its public IP address.
 
-3. Log into your account for your domain name registrar and DNS
-   provider. See :ref:`Acquiring a domain
-   name<sync-endpoint-setup-domain>` for more information and a list
-   of registrars and DNS providers.
+3. Log into your account for your domain name registrar and DNS provider. See :ref:`Acquiring a domain name<sync-endpoint-setup-domain>` for more information and a list of registrars and DNS providers.
 
-4. Add a dns 'A' record for the domain or subdomain you would like to
-   use for the Sync Endpoint with your droplet's IP address.
+4. Add a dns 'A' record for the domain or subdomain you would like to use for the Sync Endpoint with your droplet's IP address.
 
 
 .. _sync-endpoint-setup-aws-connect:
@@ -531,12 +521,9 @@ Connecting to your virtual machine
 
     $ tail cloud-init-output.log
 
-  If you see the message **“The system is finally up, after X
-  seconds”** you can proceed to the next step! Otherwise, continue to
-  wait and check the log again.
+  If you see the message **“The system is finally up, after X seconds”** you can proceed to the next step! Otherwise, continue to wait and check the log again.
 
-5. In order to run our launch scripts, we must first navigate back to
-   the Ubuntu directory with the following command:
+5. In order to run our launch scripts, we must first navigate back to the Ubuntu directory with the following command:
 
   .. code-block:: console
 
@@ -548,12 +535,9 @@ Connecting to your virtual machine
 
     $ sudo ./script_to_run.sh
 
-  The script will ask you for the server's domain and an
-  administration email address to configure https on the server.
+  The script will ask you for the server's domain and an administration email address to configure https on the server.
 
-  After gathering this data the script will begin the install and you
-  should see a bunch of statements executing in your console. Wait
-  approximately 5-10 minutes for the installation to complete.
+  After gathering this data the script will begin the install and you should see a bunch of statements executing in your console. Wait approximately 5-10 minutes for the installation to complete.
 
   .. image:: /img/setup-aws/aws9.png
     :width: 600
