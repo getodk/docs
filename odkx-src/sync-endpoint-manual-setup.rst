@@ -106,11 +106,13 @@ Setup instructions:
   13. In the "sync-endpoint-default-setup" cloned repository run:
 
     - For HTTP:
+	
     .. code-block:: console
 
       $ docker stack deploy -c docker-compose.yml syncldap
 
     - For HTTPS:
+	
     .. code-block:: console
 
        $ docker stack deploy -c docker-compose.yml -c docker-compose-https.yml syncldap
@@ -121,7 +123,7 @@ Setup instructions:
 .. _sync-endpoint-setup-database:
 
 Custom database
-~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 
   1. If you haven't followed the :ref:`common instructions <sync-endpoint-manual-setup-common>`, start with those.
   2. Remove the *db* and *db-bootstrap* sections in :file:`docker-compose.yml`.
@@ -138,7 +140,7 @@ Custom database
 .. _sync-endpoint-setup-ldap:
 
 Custom LDAP directory
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 
   1. If you haven't followed the :ref:`common instructions <sync-endpoint-manual-setup-common>`, start with those.
   2. OPTIONAL: If your LDAP directory uses a certificate that was signed by a self-signed CA,
