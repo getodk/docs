@@ -21,7 +21,7 @@ This tutorial will help you launch ODK-X Sync Endpoint on a virtual machine host
 Step 0: Acquire a domain name or subdomain
 ------------------------------------------
 
-Running the ODK-X Sync Endpoint in the cloud will require access to a publicly registered domain name to allow for a secure connection between Android devices and the Sync Endpoint. Domain names can be purchased via many providers. We have used `Google Domains<https://domains.google.com/>`_, `Amazon Route 53<https://aws.amazon.com/route53/>`_, Azure App Services Domains, and `Cloudflare Registrar<https://www.cloudflare.com/products/registrar/>`_ successfully.
+Running the ODK-X Sync Endpoint in the cloud will require access to a publicly registered domain name to allow for a secure connection between Android devices and the Sync Endpoint. Domain names can be purchased via many providers. We have used `Google Domains <https://domains.google.com/>`_, `Amazon Route 53 <https://aws.amazon.com/route53/>`_, Azure App Services Domains, and `Cloudflare Registrar <https://www.cloudflare.com/products/registrar/>`_ successfully.
 
 If you already own a domain, you may add a subdomain record for use with Sync Endpoint without purchasing a whole new domain. Before you go on, make sure you have a domain and know how to log into your domain management console to add a DNS record!
 
@@ -90,14 +90,12 @@ Setting up a Droplet
 .. _sync-endpoint-setup-digital-ocean-dns:
 
 Setting up a DNS Record
-"""""""""""""""""""""""
+""""""""""""""""""""""""
 
-1. From the DigitalOcean console, click on :guilabel:`Droplets` under
-   the **MANAGE** section.
+1. From the DigitalOcean console, click on :guilabel:`Droplets` under the **MANAGE** section.
 
   .. image:: /img/setup-digital-ocean/do2.png
    :width: 600
-
 
 2. Obtain the IP address of the droplet you created.
 
@@ -142,9 +140,7 @@ Connecting to your Droplet
 
     $ tail cloud-init-output.log
   
-  If you see the message **“The system is finally up, after X
-  seconds”** you can proceed to the next step! Otherwise, continue to
-  wait and check the log file again.
+  If you see the message **“The system is finally up, after X seconds”** you can proceed to the next step! Otherwise, continue to wait and check the log file again.
 
 5. In order to run our launch scripts, we must first navigate back to
    the root directory with the following command:

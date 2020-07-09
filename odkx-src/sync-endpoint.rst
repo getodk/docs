@@ -30,11 +30,6 @@ ODK-X Sync Endpoint does not store user information in its own database, instead
   As a consequence of the integration, Basic Authentication is the only supported authentication method.
 
 
-.. include:: sync-endpoint-cloud-setup.rst
-
-.. include:: sync-endpoint-manual-setup.rst
-
-
 .. _sync-endpoint-https:
 
 HTTPS
@@ -90,7 +85,7 @@ The following guides assume that you're using :program:`phpLDAPadmin`. In order 
 .. _sync-endpoint-ldap-users:
 
 Creating users
-~~~~~~~~~~~~~~
+"""""""""""""""""""""""""
 
   1. Click: :guilabel:`login` on the left and login as *admin*.
   2. Expand the tree view on the left until you see :guilabel:`ou=people`.
@@ -102,7 +97,7 @@ Creating users
 .. _sync-endpoint-ldap-groups:
 
 Creating groups
-~~~~~~~~~~~~~~~
+"""""""""""""""""""""""""
 
   1. Click: :guilabel:`login` on the left and login as *admin*.
   2. Expand the tree view on the left until you see :guilabel:`ou=groups`.

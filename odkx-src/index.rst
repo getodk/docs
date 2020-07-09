@@ -163,6 +163,8 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
 
   cloud-endpoints-intro
   sync-endpoint
+  sync-endpoint-cloud-setup
+  sync-endpoint-manual-setup
   aggregate-tables-extension
 
 .. toctree::
