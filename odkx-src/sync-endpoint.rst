@@ -1,6 +1,7 @@
 .. spelling::
   phpLDAPadmin
   readonly
+  letsencrypt
 
 ODK-X Sync Endpoint
 ===================

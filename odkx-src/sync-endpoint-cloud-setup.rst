@@ -1,6 +1,8 @@
 .. spelling::
   phpLDAPadmin
   readonly
+  dns
+  letsencrypt
 
 .. _sync-endpoint-cloud-setup:
 
