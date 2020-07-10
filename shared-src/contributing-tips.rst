@@ -76,7 +76,7 @@ Claim issues
 
 If you decide to work on an issue, let the community know you are working on it by *claiming* the issue.
 
-  @opendatakit-bot claim
+  @getodk-bot claim
 
 Once you've claimed an issue, other people won't work on it. So make sure you're actually going to work on it before claiming it.
 
@@ -121,7 +121,7 @@ Sometimes you simply cannot complete work you have said you were going to comple
 
 Please let the community know in the issue discussion.
 
-  @opendatakit-bot unclaim
+  @getodk-bot unclaim
 
 This way, everyone knows that someone else can take up the project (or that we need to rethink it).
 
@@ -151,7 +151,7 @@ Issues only
 
 All PRs must be directly connected to open issues. PRs should not represent suggestions, good ideas, or independent initiative.
 
-If you have a good idea, file an issue. If you are curious about whether something should be an issue, chat with one of the core team in the `#docs-code` channel on the `Slack <https://opendatakit.slack.com>`_.
+If you have a good idea, file an issue. If you are curious about whether something should be an issue, chat with one of the core team in the `#docs-code` channel on the `Slack <https://getodk.slack.com>`_.
 
 Once you have filed an issue, wait for comment and approval before diving into the work. We do not want surprise PRs.
 
@@ -200,4 +200,4 @@ You can contribute to this community, no matter your background or skills.
 
 - If you want to try something even though you aren't sure you can do it, go ahead and try.
 
-Another worry you may have is that something will take you a long time when an "expert" might be able to do it quickly. You may feel, then, you aren't the "right person" for the job. But if you are the only one with the time or desire to work on something, **you are the right person to work on it.** 
+Another worry you may have is that something will take you a long time when an "expert" might be able to do it quickly. You may feel, then, you aren't the "right person" for the job. But if you are the only one with the time or desire to work on something, **you are the right person to work on it.**

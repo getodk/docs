@@ -14,7 +14,7 @@
   te
   tres
   café
-	
+
 Form Language
 ===================
 
@@ -36,7 +36,7 @@ All columns representing user-facing text or media can be multi-lingual:
 Each language column adds two colons and the language name,
 followed by the `two letter language code` in parenthesis.
 
-For example: 
+For example:
 
 - :th:`label::English (en)`
 - :th:`hint::French (fr)`
@@ -47,7 +47,7 @@ For example:
   The text shown in Collect's user interface (e.g., buttons, menus, dialogs)
   is controlled by device language, not the form language.
   If you would like Collect's user interface to support your language,
-  contribute translations at https://www.transifex.com/opendatakit.
+  contribute translations at https://www.transifex.com/getodk.
 
 .. _XLSForm: http://xlsform.org
 .. _two letter language code: http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
@@ -56,13 +56,13 @@ For example:
 
 .. csv-table:: survey
   :header: type, name, label, hint
-  
+
   select_multiple colors, color_prefs, What colors do you like?, Select three.
 
 .. csv-table:: choices
 
   :header: list_name, name, label
-  
+
   colors, red, Red
   colors, blue, Blue
   colors, yellow, Yellow
@@ -74,12 +74,12 @@ For example:
 
 .. csv-table:: survey
   :header: type, name, label::English (en), label::Español (es), hint::English (en), hint::Español (es)
-  
+
   select_multiple colors, color_prefs, What colors do you like?, ¿Qué colores te gustan?, Select three., Seleccione tres.
-  
+
 .. csv-table:: choices
   :header: list_name, name, label::English (en), label::Español (es)
-  
+
   colors, red, Red, Rojo
   colors, blue, Blue, Azul
   colors, yellow, Yellow, Amarillo
@@ -87,16 +87,16 @@ For example:
   colors, orange, Orange, Anaranjado
   colors, purple, Purple, Púrpura
 
-  
-.. image:: /img/form-language/colors-english.* 
+
+.. image:: /img/form-language/colors-english.*
   :alt: A multi-select widget in Collect. The label is "What colors do you like?" The hint text is "Select three." The choices are: Red, Blue, Yellow, Green, Orange, and Purple.
-  
-.. image:: /img/form-language/colors-spanish.* 
+
+.. image:: /img/form-language/colors-spanish.*
   :alt: A multi-select widget in Collect. The label is "¿Qué colores te gustan?" The hint text is "Seleccione tres." The choices are Rojo, Azul, Amarillo, Verde, Anaranjado, and Púrpura.
 
-  
 
-.. warning:: 
+
+.. warning::
 
   There is no fallback language.
 
@@ -104,10 +104,10 @@ For example:
   the non-specific version of that column
   will be treated as if it were a separate language.
   (The :menuselection:`Change Language` menu will list it as :guilabel:`Default`.)
-  
-  To avoid this, all columns that can be made multi-lingual need to be created 
-  as such for a multi-language form. For example, even if using the same image 
-  for a question prompt you will need a :th:`media::image::*` column for each 
+
+  To avoid this, all columns that can be made multi-lingual need to be created
+  as such for a multi-language form. For example, even if using the same image
+  for a question prompt you will need a :th:`media::image::*` column for each
   language. However, you may provide the same media filename for each.
 
   Blank cells in a language-specific column
@@ -118,12 +118,12 @@ For example:
 
 .. csv-table:: survey
   :header: type, name, label::English (en), label::Español (es), media::image::Español (es), media::image::English (en)
-  
+
   text, coffee, Do you want coffee?, ¿Quieres café?, mug_es.jpg, mug_en.jpg
-  
-    
+
+
 .. _switching-languages:
-  
+
 Switching languages
 ---------------------
 
@@ -144,6 +144,6 @@ go to :menuselection:`⋮ --> Change Language`.
   Changing the form's language display
   will not change the device language.
   If you are in a context that requires switching languages often,
-  make sure you know where to do this in your device's 
+  make sure you know where to do this in your device's
   :menuselection:`Settings` menu.
 

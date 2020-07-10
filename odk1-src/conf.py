@@ -140,7 +140,7 @@ html_favicon = "_static/img/odk-favicon.ico"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-# Add paths that contain extra files which are not directly related to the 
+# Add paths that contain extra files which are not directly related to the
 # documentation and which are copied to the output directory.
 # html_extra_path = []
 
@@ -262,20 +262,20 @@ def setup(app):
 rst_prolog="""
 .. role:: th
     :class: th
-    
+
 .. role:: tc
     :class: tc
 
 .. role:: formstate
     :class: formstate
-    
+
 .. role:: gesture
     :class: gesture
 
 .. role:: arg
     :class: arg
 """
-# if you add lines to rst_prolog, 
+# if you add lines to rst_prolog,
 # please update the note about warnings offsets
 # in shared-src/docs-tech-guide.rst
 
@@ -292,7 +292,7 @@ _downloads/ODK-Documentation.pdf
 """
 prob_in_doc = """
 
-If you find a problem with this documentation, please 
+If you find a problem with this documentation, please
 
 """
 file_issue = """
@@ -312,24 +312,24 @@ You are also encouraged to
 """
 fork_repo = """
 
-fork our Github repo 
+fork our Github repo
 
 """
-repo_here = """ 
+repo_here = """
 
 https://github.com/getodk/docs/
 
 """
-join = """ 
+join = """
 
-and 
+and
 
 """
 contri = """
 
 become a contributor
 
-""" 
+"""
 contri_guide = """
 
 /contributing/
@@ -354,10 +354,10 @@ https://forum.getodk.org/
 rst_epilog = """
 
 .. |odk-slack| replace:: ODK Slack
-.. _odk-slack: https://opendatakit.slack.com
+.. _odk-slack: https://getodk.slack.com
 
 .. |docs-issue| replace:: issue
-.. _docs-issue: https://github.com/getodk/docs/issues 
+.. _docs-issue: https://github.com/getodk/docs/issues
 
 .. |forum| replace:: ODK Forum
 .. _forum: https://forum.getodk.org
@@ -370,16 +370,16 @@ rst_epilog = """
 html_context = {'download_pdf' : download_pdf,
                 'odk_pdf' : odk_pdf,
                 'prob_in_doc' : prob_in_doc ,
-                'contri_start' : contri_start , 
-                'join' : join , 
-                'faq_help' : faq_help , 
-                'file_issue' : file_issue , 
+                'contri_start' : contri_start ,
+                'join' : join ,
+                'faq_help' : faq_help ,
+                'file_issue' : file_issue ,
                 'fork_repo' : fork_repo ,
-                'contri' : contri , 
-                'forum' : forum , 
-                'file_issue_here' : file_issue_here , 
-                'repo_here' : repo_here , 
-                'contri_guide' : contri_guide , 
+                'contri' : contri ,
+                'forum' : forum ,
+                'file_issue_here' : file_issue_here ,
+                'repo_here' : repo_here ,
+                'contri_guide' : contri_guide ,
                 'forum_here' : forum_here ,
                 'display_github' : True,
                 'github_user' : "getodk", # Username
@@ -387,4 +387,4 @@ html_context = {'download_pdf' : download_pdf,
                 'github_version' : "master", # Version
                 'conf_py_path' : "/odk1-src/" # Path in the checkout to the docs root
             }
-            
+

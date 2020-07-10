@@ -30,11 +30,11 @@ Indentation is meaningful in Sphinx and reStructuredText text. Usually, indentin
 .. code-block:: rst
 
   .. figure:: path-to-image.*
-  
+
     This is the caption of the figure. Notice that it is indented under the line defining the figure.
 
 The rules for indentation are:
-    
+
 - Use **spaces, not tabs**.
 - Generally, indent **two spaces**.
 
@@ -43,18 +43,18 @@ The exception to the two spaces rule is :ref:`ol`, where indentation follows the
 .. code-block:: rst
 
   1. This is a list item.
-  
+
      This is some additional content related to Item 1. Notice that it is indented to the same column as the first line of content. In this case, that's three (3) spaces.
-     
+
   .
   .
   .
-  
+
   10. The tenth item in a list.
-      
-      This related content will be indented four spaces. 
-      
-      
+
+      This related content will be indented four spaces.
+
+
 
 .. _doc-files:
 
@@ -101,7 +101,7 @@ The :rst:dir:`toctree` directive defines a table of content. The content of a :r
 .. code-block:: rst
 
   .. toctree::
-  
+
     page-name
     another-page
     this-other-page
@@ -112,25 +112,25 @@ The depth of section and subsection links to display in the output can be contro
 
   .. toctree::
     :maxdepth: 2
-    
+
     this-page
     that-page
     thick-page
     flat-page
 
 
-.. seealso:: 
+.. seealso::
 
   `The TOC Tree <http://www.sphinx-doc.org/en/stable/markup/toctree.html>`_
-  
+
     The Sphinx documentation includes information about a number of other :rst:dir:`toctree` attributes.
 
 .. _main-nav-menu:
-    
+
 Sidebar navigation menu
-~~~~~~~~~~~~~~~~~~~~~~~~~    
-        
-The :file:`index.rst` file serves as a front-page to the documentation and contains the main tables of content, defined using :rst:dir:`toctree` directives. 
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The :file:`index.rst` file serves as a front-page to the documentation and contains the main tables of content, defined using :rst:dir:`toctree` directives.
 
 These :rst:dir:`toctree` directives control the sidebar navigation menu. To add a new document to a table of content, add the file name (without the ``.rst`` extension) to the relevant list of file names in :file:`index.rst`.
 
@@ -149,36 +149,36 @@ How ODK Docs uses main and secondary tables of content
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - Major topics get a :rst:dir:`toctree` in :file:`index.rst`
- 
+
   Major topics include things like:
- 
-  - Each major product (Collect, Aggregate, Briefcase) 
+
+  - Each major product (Collect, Aggregate, Briefcase)
   - Large, general categories like Contributing
-   
+
   Major topic tables of content include both sub-collection intro pages and also individual pages that don't fit into a sub-collection.
-   
+
   The :rst:role:`caption` attribute of the :rst:dir:`toctree` directive defines the section label in the :ref:`main-nav-menu`.
-   
+
 - Within a large topic, documents are grouped into collections of related pages, defined by a :rst:dir:`toctree` on a topic intro page.
- 
+
   Intro pages (pages that contain secondary :rst:dir:`toctree` directives) may include additional content, introducing the collection or providing contextual wayfinding. However, this is not always necessary or desirable. Use your judgment, and avoid stating things just for the sake of having some text. ("Here are the pages in this collection.")
-   
+
   We also (very occasionally) include :rst:dir:`toctree` directives in sub-collection pages.
 
-.. tip::  
- 
+.. tip::
+
   If it not obvious where a new document should appear in the navigation, the best practice is to simply ask about it in the GitHub issue driving the new page.
 
 .. note::
 
-  For wayfinding purposes, we sometimes create an :ref:`ul` of page links rather than a :rst:dir:`toctree` directive. (For example, see :file:`collect-intro`. We do this when using a :rst:dir:`toctree` would create redundant links in the :ref:`main-nav-menu`. 
-   
-.. admonition:: Why are the docs files not grouped into folders in the source? 
+  For wayfinding purposes, we sometimes create an :ref:`ul` of page links rather than a :rst:dir:`toctree` directive. (For example, see :file:`collect-intro`. We do this when using a :rst:dir:`toctree` would create redundant links in the :ref:`main-nav-menu`.
+
+.. admonition:: Why are the docs files not grouped into folders in the source?
 
   We use :rst:dir:`toctree` directives as our primary way of organizing the documentation for readers. We do not organize the source ``rst`` files into subfolders.
-  
+
   The reason is that if we put them into topic-related subfolders, it would affect the URI of the document. Keeping all of our document files in a single flat directory results in a flat URI structure. Every page's URI looks like ``docs.getodk.org/page-name``.
-  
+
   If we used subdirectories, then our URIs would look like ``docs.getodk.org/subdirectory-name/page-name``. This would mean that our URIs would change every time we moved a document from one folder to another, greatly increasing the time cost and broken-link risk of reorganizing the docs.
 
 
@@ -187,10 +187,10 @@ How ODK Docs uses main and secondary tables of content
 Sections and Titles
 -----------------------
 
-Headlines require two lines: 
+Headlines require two lines:
 
-- the text of the headline, followed by 
-- a line filled with a single character. 
+- the text of the headline, followed by
+- a line filled with a single character.
 
 Each level in a headline hierarchy uses a different character:
 
@@ -634,26 +634,26 @@ The :rst:role:`csv-table` role is used to create a table from CSV (comma-separat
    "Albatross", 2.99, "On a stick!"
    "Crunchy Frog", 1.49, "If we took the bones out, it wouldn't be
    crunchy, now would it?"
-   "Gannet Ripple", 1.99, "On a stick!"   
+   "Gannet Ripple", 1.99, "On a stick!"
 
 Some of the options recognized are:
 
-.. rst:role:: widths 
-    
+.. rst:role:: widths
+
   Contains a comma or space-separated list of relative column widths. The default is equal-width columns.
-   
+
   The special value ``auto`` may be used by writers to decide whether to delegate the determination of column widths to the backend.
-  
+
   In most cases, the best result is either the default or ``auto``. If you're unsure, try it both ways and see which looks better to you.
 
-.. rst:role:: header 
+.. rst:role:: header
 
-  Contains column titles. It must use the same CSV format as the main CSV data.  
+  Contains column titles. It must use the same CSV format as the main CSV data.
 
 .. rst:role:: delim
-  
+
   Contains a one character string used to separate fields. Default value is comma. It must be a single character or Unicode code.
-  
+
   The only reason to use something other than a comma is when copying large blocks of content from another source that uses a different style. If you are creating new table content yourself, use the comma.
 
   .. code-block:: rst
@@ -676,7 +676,7 @@ Some of the options recognized are:
 
 .. rst:role:: align
 
-  It specifies the horizontal alignment of the table. It can be `left`, `right` or `center`. 
+  It specifies the horizontal alignment of the table. It can be `left`, `right` or `center`.
 
   .. code-block:: rst
 
@@ -695,7 +695,7 @@ Some of the options recognized are:
     "Paul", "B"
 
 .. rst:role:: file
-  
+
   Contains the local file system path to a CSV data file.
 
 .. rst:role:: url
@@ -710,13 +710,13 @@ Some of the options recognized are:
 
       .. csv-table:: Table with different number of columns in each row
          :header: "Name", "Grade"
-   
+
          "Peter"
          "Paul", "B"
 
    .. csv-table:: Table with different number of columns in each row
       :header: "Name", "Grade"
-   
+
       "Peter"
       "Paul", "B"
 
@@ -860,10 +860,10 @@ Several roles are used when describing user interactions.
 .. note::
 
   In some situations you might not be clear about which option (:rst:role:`menuselection` or :rst:role:`guilabel`) to use. GUIs in real life can sometimes be ambiguous. The general rule is:
-  
+
   - Actual UI text will always receive :rst:role:`guilabel` role unless the text could reasonably be understood to be part of a menu.
   - If the actual UI text could be understood as a menu, :rst:role:`menuselection` should be used.
-  
+
   These both render the same on output, so don't worry too much if you get it wrong. Just use your judgment and take your best guess.
 
 .. rst:role:: kbd
@@ -873,7 +873,7 @@ Several roles are used when describing user interactions.
   .. code-block:: rst
 
     To stop the local server, type :kbd:`CTRL C`.
-    
+
 
 .. rst:role:: command
 
@@ -899,7 +899,7 @@ Several roles are used when describing user interactions.
 
     :gesture:`Swipe Left`
 
-    
+
 .. _writing-about-forms:
 
 Writing about forms
@@ -975,7 +975,7 @@ Other Semantic Markup
 
     launch the :program:`ODK Aggregate Installer`
 
-    
+
 .. _images-and-figures:
 
 Images and Figures
@@ -997,8 +997,8 @@ If you have to start in another format,
 use lossless formats whenever possible.
 These include BMP, GIF, and TIFF.
 (Avoid JPG/JPEG if possible,
-as this is a lossy format 
-that does not replicate screenshots very well.) 
+as this is a lossy format
+that does not replicate screenshots very well.)
 
 .. _where-to-put-image-files:
 
@@ -1012,12 +1012,12 @@ Image files should be put in the :file:`/src/img/` directory in the source, and 
 Image compression
 """"""""""""""""""""
 
-Before committing images locally, 
+Before committing images locally,
 run lossless compression on them
 using one of the following tools:
 
-- `ImageOptim`_ 
-- `Pngout`_ 
+- `ImageOptim`_
+- `Pngout`_
 
 .. _ImageOptim: https://imageoptim.com/howto.html
 .. _Pngout: http://docs.ewww.io/article/13-installing-pngout/
@@ -1050,7 +1050,7 @@ Use :rst:dir:`figure` to markup an image with a caption.
 
     The rest of the indented content will be the caption. This can be a short sentence or several paragraphs. Captions can contain any other rst markup.
 
-    
+
 .. _inline-images:
 
 Inline images
@@ -1059,7 +1059,7 @@ Inline images
 To information on creating inline images, see :ref:`substitutions`.
 
 .. _image-file-names:
-    
+
 Image File Names
 """"""""""""""""""
 
@@ -1137,12 +1137,12 @@ Now, at the command line, from the root directory of the :file:`odk-docs` repo:
 .. tip::
   If you have a problem running ss.py, check to make sure your Python 3 virtual environment is activated.
 
-  
+
 .. tip::
 
   Be sure to obscure any personally-identifiable information from screen shots. Crop to the smallest relevant screen area. Annotate screen shots with arrows or circles to indicate relevant information.
 
-  
+
 .. _videos:
 
 Videos
@@ -1154,26 +1154,26 @@ The purpose of on page videos is to illustrate complicated user interactions tha
 
 - The length of the videos must be less than a minute.
 - Videos should have no audio.
- 
- 
+
+
 To insert a video, use the custom :rst:dir:`video` directive.
 
 .. rst:directive:: .. video:: path/to/video
 
-  Specify the source path of the video and a descriptive alt content in the video directive. Alternate content is displayed when the video cannot be played. It can contain long texts as well as any other rst content. 
+  Specify the source path of the video and a descriptive alt content in the video directive. Alternate content is displayed when the video cannot be played. It can contain long texts as well as any other rst content.
 
   .. code-block:: rst
 
     .. video:: /vid/{document-subdirectory}/{file}.ext
-    
+
       Alt content. Every video should have descriptive alt content.
 
   The following optional attributes are supported:
 
-  .. rst:role:: autoplay 
+  .. rst:role:: autoplay
 
     Specifies whether the video should start playing as soon as it is ready. Can take boolean value: true, false, yes or no. Default is **no**.
-    
+
     It is almost never a good idea to turn ``autoplay`` on.
 
   .. rst:role:: controls
@@ -1184,15 +1184,15 @@ To insert a video, use the custom :rst:dir:`video` directive.
 
     Specifies whether the audio output of the video should be muted. Can take boolean value: true, false, yes or no. Default is **yes**.
 
-  .. rst:role:: loop 
+  .. rst:role:: loop
 
-    Specifies whether the video should start over again, every time it is finished. Can take boolean value: true, false, yes or no. Default is **no**.   
+    Specifies whether the video should start over again, every time it is finished. Can take boolean value: true, false, yes or no. Default is **no**.
 
-  .. rst:role:: preload   
+  .. rst:role:: preload
 
     Specifies if and how the author thinks the video should be loaded when the page loads. Can take one of the following three values: **auto**, **metadata** or **none**.
 
-  .. rst:role:: poster  
+  .. rst:role:: poster
 
     Contains the source address for an image to be shown while the video is downloading, or until the user hits the play button.
 
@@ -1200,7 +1200,7 @@ To insert a video, use the custom :rst:dir:`video` directive.
 
       Images to be used as poster for a video should be in the same directory as the video and should have a filename like :file:`[same-file-name-as-video]-poster.ext`.
 
-  .. rst:role:: class 
+  .. rst:role:: class
 
     Specifies a class for the video element.
 
@@ -1290,7 +1290,7 @@ Use the :rst:dir:`code-block` directive to insert code samples. Specify the lang
     }
 
 .. note::
-  
+
   **rst** code-blocks wrap overflow lines by default. To unwrap overflow lines, use **unwrap** class with **rst** code-blocks.
 
   .. code-block:: rst
@@ -1305,38 +1305,38 @@ Use the :rst:dir:`code-block` directive to insert code samples. Specify the lang
     .. code-block:: python
       :class: wrap
 
-    
+
 .. _substitutions:
 
 Substitutions
 ~~~~~~~~~~~~~~~~~
 
-Substitutions are a useful way to define a value which is needed in many places. 
+Substitutions are a useful way to define a value which is needed in many places.
 
-Substitution definitions are indicated by an explicit markup start (".. ") followed by a vertical bar, the substitution text (which gets substituted), another vertical bar, whitespace, and the definition block. 
+Substitution definitions are indicated by an explicit markup start (".. ") followed by a vertical bar, the substitution text (which gets substituted), another vertical bar, whitespace, and the definition block.
 
 A substitution definition block may contain inline-compatible directives such as :ref:`image  <images-and-figures>` or `replace <http://docutils.sourceforge.net/docs/ref/rst/directives.html#replace>`_. For more information, refer this `guide <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#substitution-definitions>`_.
 
 You can define the value once like this:
 
-.. code-block:: rst 
+.. code-block:: rst
 
   .. |RST| replace:: reStructuredText
-  
+
 and then reuse it like this:
 
-.. code-block:: rst 
+.. code-block:: rst
 
   We use |RST| to write documentation source files.
-  
+
 Here, ``|RST|`` will be replaced by reStructuredText
 
 You can also create a reference with styled text:
 
 .. code-block:: rst
-  
+
   .. |slack| replace:: **ODK Slack**
-  .. slack: https://opendatakit.slack.com
+  .. slack: https://getodk.slack.com
 
 You can use the hyperlink reference by appending a "_" at the end of the vertical bars, for example:
 
@@ -1345,7 +1345,7 @@ You can use the hyperlink reference by appending a "_" at the end of the vertica
   You can ask about your problem in |slack|_.
 
 .. |slack| replace:: **ODK Slack**
-.. _slack: https://opendatakit.slack.com  
+.. _slack: https://getodk.slack.com
 
 You can ask about your problem in |slack|_.
 
@@ -1356,47 +1356,47 @@ The ``rst_epilog`` in :file:`conf.py` contains a list of global substitutions th
   .. code-block:: rst
 
     You can use |odk-slack|_ to ask your questions.
-  
+
   You can use |odk-slack|_ to ask your questions.
-  
+
 |
-  
+
 - To create a hyperlink reference for docs related issues, use ``|docs-issue|_``.
 
   .. code-block:: rst
-  
+
     If you find a problem, file an |docs-issue|_.
-	
+
   If you find a problem, file an |docs-issue|_.
-  
+
 |
- 
+
 - To create a hyperlink reference for ODK Forum, use ``|forum|_``.
 
   .. code-block:: rst
-  
+
     You can ask support questions in |forum|_.
-	
+
   You can ask support questions in |forum|_.
 
-|  
-  
+|
+
 - To create a hyperlink reference for contributors guide, use ``|contrib-guide|_``.
 
   .. code-block:: rst
-    
+
 	Be sure to read the |contrib-guide|_.
-	
+
   Be sure to read the |contrib-guide|_.
 
-You can add inline images in the document using substitutions. The following block of code substitutes arrow in the text with the image specified.  
+You can add inline images in the document using substitutions. The following block of code substitutes arrow in the text with the image specified.
 
-.. code-block:: rst 
+.. code-block:: rst
 
   The |arrow| icon opens the jump menu.
-  
+
   .. |arrow| image:: /img/{document-subdirectory}/{file}.*
              :alt: Alt text.
 
-			 
+
 
