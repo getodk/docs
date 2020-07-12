@@ -46,7 +46,7 @@ HTTPS
            provisioned certificate one can be added by modifying the
            cert-bootstrap service in :file:`docker-compose-https.yml`
            to pull from the appropriate external files. Additionally
-           docker's builtin secrets and config infrastructure can be
+           docker's built in secrets and config infrastructure can be
            used directly to expose the certificate and key only to the
            NGINX container.
 
