@@ -1,6 +1,6 @@
 .. _central-install-digital-ocean:
 
-Installing Central on Digital Ocean
+Installing Central on DigitalOcean
 ===================================
 
 If you'd like to set up an ODK server that's accessible from anywhere via the Internet, DigitalOcean provides a one-click configuration that's nicely geared with nearly all the tools you'll need to set up your new server. The only thing it doesn't do is register a domain name, which you will have to do in order to obtain a security certificate for your server.
