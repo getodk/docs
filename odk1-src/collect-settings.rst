@@ -185,11 +185,11 @@ To access Form Management settings:
 
 :guilabel:`Periodic form updates check`
 """"""""""""""""""""""""""""""""""""""""
-  Specifies the frequency at which the configured server should be polled for form updates.
+  Specifies the frequency at which the configured server should be polled for updates to the forms on the device. The user will receive a notification when one or more forms has an update available to its form definition or media files. Tapping on the notification will go to :guilabel:`Get Blank Form` where the user can choose to download some or all of the updated forms.
 
 :guilabel:`Automatic download`
 """""""""""""""""""""""""""""""
-  When enabled, any form currently on the device that has a new version available on the server will be automatically downloaded.
+  Only available if :guilabel:`Periodic form updates check` is set. When :guilabel:`Automatic download` is enabled, the periodic form update check will trigger an automatic download of any forms on the device that have an update to their form definition or media files. The user will receive a notification when the automatic download completes with either a success or failure. Tapping on the notification will go to :guilabel:`Get Blank Form` where the user will see success or failure messages for each form for which an update was attempted.
 
 :guilabel:`Hide old form versions`
 """""""""""""""""""""""""""""""""""
