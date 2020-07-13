@@ -1,10 +1,14 @@
 Installing ODK-X Basic Tools
 ================================
 
+These instructions describe the steps to install the ODK-X basic tools on a tablet.
+
 .. _basic-prereqs:
 
 Prerequisites
 -------------------
+
+You must have an Android tablet with an operating system version 4.4 or higher.
 
 Before installing any of the ODK-X tools, you will need the following third party app:
 
