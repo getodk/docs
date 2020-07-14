@@ -85,6 +85,24 @@ Once you have that password in hand, you'll be able to use the **Launch Console*
 
 Once you are in your server, you'll want to change your password so that people snooping your email do not gain access. You should be automatically asked for a new password the first time you log in. If you are not, type ``passwd`` and press **Enter**, then follow the instructions to choose a new password. From now on, you will use that password to log in.
 
+Changing Server Settings
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+First, we will want to ensure that Docker starts up whenever the server starts. Docker will in turn ensure that Central has started up. To do this, run ``systemctl enable docker``.
+
+You will need to change one more thing on this server before we proceed: you will need to modify the system firewall for Enketo features in Central to work correctly.
+
+The quickest way to do this is to run ``ufw disable`` while logged into your server's command line prompt. You should see the message ``Firewall stopped and disabled on system startup``. If so, you have configured the firewall correctly.
+
+.. admonition:: For advanced administrators
+
+  If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be really difficult to do correctly, so we don't recommend most people try.
+
+  The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. In particular, if you can successfully ``curl`` your ODK Central website over HTTPS on its public domain name, all Enketo features should work correctly.
+
+Obtaining and Setting Up ODK Central
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Now you'll need to download the software. In the server window, type ``git clone https://github.com/getodk/central`` and press **Enter**. It should think for some time and download many things. Then type `cd central` to start working with the software.
 
    .. image:: /img/central-install/cloned.png
@@ -109,15 +127,10 @@ Once that is complete, congratulations! You have installed your copy of ODK Cent
 Starting up ODK Central
 -----------------------
 
-Now, we want to run your new ODK server software. But we don't want to only run it once: if we do that, then if your machine crashes or restarts, the software won't start back up. We want to tell the machine to always run the server. To teach it to do this, we have to copy a file to the right spot. To do this, run ``cp files/docker-compose@.service /etc/systemd/system``.
+Now, run ``docker-compose up -d`` to start the server software. The first time you start it, it will take a while to set itself up. Once you give it a few minutes and you have input control again, you'll want to see whether everything is running correctly:
 
-Once that's done, run ``systemctl start docker-compose@central`` (type it in and press **Enter**) to start Docker, which will then load the ODK server. The first time you start it, it will take a while to set itself up. Once you give it a few minutes and you have input control again, you'll want to see whether everything is running correctly:
-
- - To see if Docker itself is working correctly, you can run ``systemctl status docker-compose@central``. If you see text that says ``Active: active (running)`` then everything is working great. If not, give it some time: it may take many minutes for it to set itself up for the first time.
- - To see if ODK has finished loading inside of Docker, run ``docker-compose ps``. Under the ``State`` column, you will want to see text that reads ``Up (healthy)``. If you see ``Up (health: starting)``, give it a few minutes. If you see some other text, something has gone wrong.
+ - To see if ODK has finished loading, run ``docker-compose ps``. Under the ``State`` column, you will want to see text that reads ``Up (healthy)``. If you see ``Up (health: starting)``, give it a few minutes. If you see some other text, something has gone wrong.
  - If your domain name has started working, you can visit it in a web browser to check that you get the ODK Central management website.
-
-Once we're finally sure that everything is working, run ``systemctl enable docker-compose@central``. This will make sure the ODK server is always running, even if something goes wrong or the machine reboots.
 
 You're almost done! All you have to do is create an Administrator account so that you can log into Central.
 
@@ -187,7 +200,8 @@ DKIM is a security trust protocol which is used to help verify mail server ident
 
      cd ~/central
      docker-compose build mail
-     systemctl restart docker-compose@central
+     docker-compose stop mail
+     docker-compose up -d mail
 
    If you see an error that says ``Can't open "rsa.private" for writing, Is a directory.``, you will need to ``rmdir ~/central/files/dkim/rsa.private``, then attempt ``docker-compose build mail`` again. If you see some other error, you may need to first remove your old mail container (``docker-compose rm mail``).
 
@@ -220,7 +234,7 @@ By default, ODK Central uses Let's Encrypt to obtain an SSL security certificate
 1. Generate appropriate ``fullchain.pem`` (``-out``) and ``privkey.pem`` (``-keyout``) files.
 2. Copy those files into ``files/local/customssl/`` within the repository root.
 3. In ``.env``, set ``SSL_TYPE`` to ``customssl`` and set ``DOMAIN`` to the domain name you registered. As an example: ``DOMAIN=MyOdkCollectionServer.com``. Do not include anything like ``http://``.
-4. Build and run: ``docker-compose build nginx`` and ``systemctl restart docker-compose@central``. If that doesn't work, you may need to first remove your old nginx container (``docker-compose rm nginx``).
+4. Build and run: ``docker-compose build nginx``, ``docker-compose stop nginx``, ``docker-compose up -d nginx``. If that doesn't work, you may need to first remove your old nginx container (``docker-compose rm nginx``).
 
 .. _central-install-digital-ocean-custom-mail:
 
@@ -248,7 +262,7 @@ ODK Central ships with a basic EXIM server bundled to forward mail out to the in
      }
    }
 
-3. Build and run: ``docker-compose build service`` and ``systemctl restart docker-compose@central``. If that doesn't work, you may need to first remove your old service container (``docker-compose rm service``).
+3. Build and run: ``docker-compose build service``, ``docker-compose stop service``, ``docker-compose up -d service``.
 
 .. _central-install-digital-ocean-custom-db:
 
@@ -285,7 +299,7 @@ ODK Central ships with a PostgreSQL database server. To use your own custom data
       "database": "my-db-table"
     },
 
-5. Build and run: ``docker-compose build service`` and ``systemctl restart docker-compose@central``. If that doesn't work, you may need to first remove your old service container (``docker-compose rm service``).
+5. Build and run: ``docker-compose build service``, ``docker-compose stop service``, ``docker-compose up -d service``.
 
 .. _central-install-digital-ocean-sentry:
 
@@ -295,7 +309,7 @@ Disabling or Customizing Sentry
 By default, we enable `Sentry error logging <https://sentry.io>`_ on the backend server, which provides the ODK Central development team with an anonymized log of unexpected programming errors that occur while your server is running. This information is only visible to the development team and should never contain any of your user or form data, but if you feel uncomfortable with this anyway, you can take the following steps to disable Sentry:
 
 1. Edit the file ``files/service/config.json.template`` and remove the ``sentry`` lines, starting with ``"sentry": {`` through the next three lines until you remove the matching ``}``.
-2. Build and run: ``docker-compose build service`` and ``systemctl restart docker-compose@central``.
+2. Build and run: ``docker-compose build service``, ``docker-compose stop service``, ``docker-compose up -d service``.
 
 If on the other hand you wish to use your own Sentry instance, take these steps:
 
