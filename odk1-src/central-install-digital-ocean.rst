@@ -96,7 +96,9 @@ The quickest way to do this is to run ``ufw disable`` while logged into your ser
 
 .. admonition:: For advanced administrators
 
-  If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be really difficult to do correctly, so we don't recommend most people try.
+  While it sounds dangerous, disabling your system firewall does not put your server at greater risk. In fact, most Linux operating systems come with the system firewall disabled.
+
+  If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be really difficult to do correctly, so we don't recommend most people try. Another option is to use an upstream network firewall.
 
   The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. In particular, if you can successfully ``curl`` your ODK Central website over HTTPS on its public domain name, all Enketo features should work correctly.
 
