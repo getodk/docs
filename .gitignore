@@ -17,6 +17,9 @@ tmp*
 # pyenv
 .python-version
 
+# venv recommended environment
+odkenv/
+
 # literate programming
 style-checks.py
 extra.py
