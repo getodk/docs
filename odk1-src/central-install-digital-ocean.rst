@@ -66,7 +66,7 @@ For the rest of us, there are some options here:
  - You can pay one of the many popular commercial domain registrars for a full domain name, like ``MyOdkCollectionServer.com``. Search for "domain registrar" to find one of these. These often cost as little as $3/year.
  - You can use a free DNS service: we recommend `FreeDNS <https://freedns.afraid.org/>`_, which has run for a long time and has a good reputation. With it, you can obtain a free name, albeit with a fixed second half (like ``MyOdkCollectionServer.dynet.com``). If you choose this route, we recommend using one of the *less popular* names, as the heavily occupied names can run into trouble later on (in particular, obtaining a security certificate from Let's Encrypt).
 
-Whichever option you choose, once you obtain a domain name you'll want to look at `DigitalOcean's guide <https://www.digitalocean.com/community/tutorials/how-to-point-to-digitalocean-nameservers-from-common-domain-registrars>`_ on setting up domain names for your Droplet. In general, you'll point your domain name in DigitalOcean's direction at your registrar, then in DigitalOcean itself you'll want to create an A record that points to the IP address we found above.
+Whichever option you choose, once you obtain a domain name you'll want to look at `DigitalOcean's guide <https://www.digitalocean.com/docs/networking/dns>`_ on setting up domain names for your Droplet. In general, you'll point your domain name in DigitalOcean's direction at your registrar, then in DigitalOcean itself you'll want to create an A record that points to the IP address we found above.
 
 New domain names take a little bit to get working. Meanwhile, we can get working on installing the server software.
 
