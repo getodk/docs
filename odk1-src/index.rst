@@ -11,7 +11,7 @@ Welcome to ODK's Docs!
 For a quick start, read :doc:`getting-started`. In most cases, users of ODK:
 
 - Create survey forms using the `XLSForm <http://xlsform.org/>`_ standard in Excel or `Google Sheets <https://www.google.com/sheets/>`_.
-- :ref:`Upload forms <central-forms>` to an :doc:`ODK Central server <central-intro>`.
+- :ref:`Upload forms <central-forms-upload>` to an :doc:`ODK Central server <central-intro>`.
 - :ref:`Download forms <in-app-get-blank-forms>` into :doc:`collect-intro` on an Android device.
 - :doc:`Use Collect to fill out forms <collect-filling-forms>` with :term:`participants <participant>`.
 - :ref:`Upload survey data <uploading-forms>` from Collect to Central.
