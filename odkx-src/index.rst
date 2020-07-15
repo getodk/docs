@@ -185,6 +185,14 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
 .. toctree::
   :maxdepth: 2
   :hidden:
+  :caption: Notify
+
+  notify-intro
+  notify-install
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
   :caption: Advanced Topics
 
   advanced-topics-architect
