@@ -117,7 +117,7 @@ Here are the keys for all settings and the set of values they can take:
     "general" : {
 
       // Server
-      "protocol": {"odk_default", "google_sheets", "other"},
+      "protocol": {"odk_default", "google_sheets", "other_protocol"},
       "server_url": String,
       "username": String,
       "password": String,
@@ -152,7 +152,7 @@ Here are the keys for all settings and the set of values they can take:
       "constraint_behavior": {"on_swipe", "on_finalize"},
       "high_resolution": Boolean,
       "image_size": {"original", "small", "very_small", "medium", "large"},
-      "guidance_hint": {"no", "yes", "collapsed"},
+      "guidance_hint": {"no", "yes", "yes_collapsed"},
       "instance_sync": Boolean,
       "analytics": Boolean,
       "metadata_username": String,
