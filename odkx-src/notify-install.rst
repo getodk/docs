@@ -62,15 +62,15 @@ Setting up ODK-X Notify
 
 1. From your device's :guilabel:`Settings`, choose :menuselection:`Security`.
 
-    - Make sure *Unknown Sources* is checked.
-    - (On older versions of Android, this setting is in :menuselection:`Applications` rather than :menuselection:`Security`)
+  - Make sure *Unknown Sources* is checked.
+  - (On older versions of Android, this setting is in :menuselection:`Applications` rather than :menuselection:`Security`)
 
-  2. Open a web browser on your phone.
-  3. Navigate to https://github.com/odk-x/skunkworks-bat/releases/ and download the latest ODK-X Notify APK.
-  4. In the download window, you will see ODK-X_Notify.N.N.apk. - Select it to download the file.
+2. Open a web browser on your phone.
+3. Navigate to https://github.com/odk-x/skunkworks-bat/releases/ and download the latest ODK-X Notify APK.
+4. In the download window, you will see ODK-X_Notify.N.N.apk. - Select it to download the file.
 
-   - On older devices, the APK will automatically install after you approve the security settings.
-   - On newer devices, you must go to the download list, rename the file to restore the .apk extension (the extension will have been renamed to .man during the download process), then click on it to install it.
+  - On older devices, the APK will automatically install after you approve the security settings.
+  - On newer devices, you must go to the download list, rename the file to restore the .apk extension (the extension will have been renamed to .man during the download process), then click on it to install it.
 
 .. note::
 

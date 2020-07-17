@@ -90,6 +90,8 @@ ethiopian
 extensibility
 fallback
 fiducial
+firebase
+Firebase
 formDef
 formID
 formid
@@ -251,6 +253,8 @@ selfie
 Selfie
 servlet
 sizeable
+skunkworks
+Skunkworks
 slugified
 smartphone
 spam
@@ -309,6 +313,7 @@ username
 usernames
 versioned
 versioning
+viewable
 virtualenv
 Virtualenv
 Virtualenvwrapper
