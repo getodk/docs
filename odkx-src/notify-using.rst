@@ -32,7 +32,7 @@ Creating Notification:
 
   **Simple Notification:** Recipients of simple notification can not send a reply to that notification.
 
-  **Interactive Notification:** Recipients of interactive notification can send a reply to that notification which admin can view in Desktop app.
+  **Interactive Notification:** Recipients of interactive notification can send a reply to that notification which Desktop App user can view in Desktop app.
 
 
 Creating Group:
@@ -49,9 +49,11 @@ By default following ODK groups are present in the list of groups.
 - ROLE_SYNCHRONIZE_TABLES
 - ROLE_SITE_ACCESS_ADMIN
 
-Admin can send messages to any of the above groups and users who are part of that group will receive that message.
+Desktop App users can send messages to any of the above groups and users who are part of that group will receive that message.
 
-If the admin wants to create a new group apart from the above-mentioned default groups they can use Create Group Option.
+If the user wants to create a new group apart from the above-mentioned default groups they can use Create Group Option.
+
+Example: If Desktop App users want to send notifications to all the peoples working in a particular time slot, they can create a new group say "XYZ" of those peoples and can send notification to that group.
 
 For creating a new group:
 
@@ -79,7 +81,7 @@ To view sent messages and responses from users:
   
   .. image:: /img/notify-using/notify-view-messages.*
 
-4. To view the responses of Interactive messages double click on the notification row. A pop-up window as shown below will appear where admin can see responses to that notifications.
+4. To view the responses of Interactive messages double click on the notification row. A pop-up window as shown below will appear where user can see responses to that notifications.
 
   .. image:: /img/notify-using/notify-view-responses.*
 
