@@ -187,7 +187,6 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
   :hidden:
   :caption: Notify
 
-  notify-intro
   notify-install
   notify-using
 

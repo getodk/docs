@@ -1,27 +1,46 @@
-Installing ODK-X Notify
+
+ODK-X Notify
 =======================
+.. _notify-intro:
+
+:dfn:`ODK-X Notify` has 2 components:
+
+- Desktop application(Skunkworks-Parrot) 
+- Mobile application(Skunkworks-Bat)
+
+:program:`Skunkworks-Parrot` is the desktop application, written in Java, that provides a user interface for writing messages, creating user groups to receive them, and sending those messages via the Firebase Cloud Messaging. 
+
+:program:`Skunkworks-Bat` is the Android application that receives these messages via Firebase, checks the user credentials to see if the user is in the group that should receive this message, and displays the message to the user. 
+
+
+
+Installing ODK-X Notify
+-------------------------
 
 .. _notify-prereqs:
 
 Prerequisites
--------------------
+""""""""""""""""
 
-- :doc:`sync-endpoint`
-- :ref:`ODK-X Services<services-using>`
-- :ref:`ODK-X Tables<tables-using>`
-- `Java 8 or higher <https://java.com/en/download/>`_
+- **Skunkworks-Parrot:**
 
-.. note::
+  - :doc:`sync-endpoint`
+  - :ref:`ODK-X Services<services-using>`
+  - :ref:`ODK-X Tables<tables-using>`
+  - `Java 8 or higher <https://java.com/en/download/>`_
 
-    Users who need to use only Skunkworks-Bat app for receiving notifications, for them only :ref:`ODK-X Services<services-using>` is a prerequisite.
+- **Skunkworks-Bat:**
+
+  - :ref:`ODK-X Services<services-using>`
+
 
 .. _notify-setup:
 
 Setting up ODK-X Notify
--------------------------
+"""""""""""""""""""""""""
 
 :program:`Skunkworks-Parrot (Desktop App)`:
-"""""""""""""""""""""""""""""""""""""""""""
+''''''''''''''''''''''''''''''''''''''''''''''
 
   1. Navigate to https://github.com/odk-x/skunkworks-parrot/releases and download the latest ODK-X_Notify_Desktop.jar file.
   2. Double click the file to start. If that fails try running:
@@ -34,11 +53,13 @@ Setting up ODK-X Notify
 
     .. image:: /img/notify-setup/notify-setup.*
 
-  4. `Here <https://drive.google.com/file/d/1OBs5mITcIMREp_q7qKwEwO4XRQjzNnWj/view>`_ you can find step by step instructions for creating a firebase project and adding information in the configure window.
+  4. To use the Skunkworks-Parrot App, the user needs to create a firebase project and add that project's information in the configure window. `Here <https://drive.google.com/file/d/1OBs5mITcIMREp_q7qKwEwO4XRQjzNnWj/view>`_ you can find the step by step instructions for the same.
+
+  5. After adding all the required information in configure window, Click :menuselection:`Save`.
 
 
 :program:`Sync-Endpoint`:
-"""""""""""""""""""""""""""
+'''''''''''''''''''''''''''''''
 
 .. note::
 
@@ -54,7 +75,7 @@ Setting up ODK-X Notify
 
 
 :program:`Skunkworks-Bat (Android App)`:
-"""""""""""""""""""""""""""""""""""""""""
+'''''''''''''''''''''''''''''''''''''''''''
 
 .. note::
 
