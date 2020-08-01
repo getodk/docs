@@ -17,7 +17,7 @@ The easiest way to install the Collect app is `to get it from the Google Play st
 
 .. seealso:: :doc:`collect-install`
 
-.. _getting-started-install-aggregate:
+.. _getting-started-install-central:
 
 Install Central
 ----------------

@@ -17,7 +17,7 @@ Collect can log the behavior of enumerators as they navigate through a form. Thi
 
 This information can inform form design and training.
 
-.. admonition:: Aggregate 1.5.0+ required
+.. admonition:: If using Aggregate, Aggregate 1.5.0+ required
 
   If a version of Aggregate lower than 1.5.0 is used, **audit files will not be saved on the server**.
 
@@ -130,7 +130,9 @@ This will cause Collect to prompt the enumerator for their identity before filli
 Viewing audit logs
 -------------------
 
-Audit logs can be reviewed in Aggregate and downloaded for further analysis using Briefcase.
+Central will export a CSV with audits from all submissions if an export is requested for a form with an audit.
+
+If using Aggregate, audit logs can be reviewed and downloaded for further analysis using Briefcase.
 
 In Aggregate 1.5.0+, audit logs can be viewed by clicking on the media icon in the :th:`meta audit` column on the Submissions page:
 

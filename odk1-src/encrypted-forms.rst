@@ -8,16 +8,16 @@ Overview
 ====================
 Encrypted forms provide a mechanism to keep your data private even when using **http:** for communications (for example, when you do not have an **SSL certificate** or **https:** is not available). Encrypted forms may also enable Google App Engine deployments (and deployments using other web database services, such as, AWS) to comply with data privacy laws, eliminating the necessity for setting up your own servers to meet those requirements.
 
-Encrypted forms apply asymmetric public key encryption at the time the form is finalized within ODK Collect. This encrypted form can then be submitted up to ODK Aggregate and downloaded to ODK Briefcase. ODK Briefcase, when supplied with the asymmetric private key (which ODK Briefcase never stores), can then decrypt and export the form data as a CSV file for your use.
+Encrypted forms apply asymmetric public key encryption at the time the form is finalized within ODK Collect. This encrypted form can then be submitted to a server. ODK Central provides `a managed encryption option <central-encryption>` which means a decrypted data file can securely be downloaded without using any other tool. ODK Central self-managed encryption and other servers require using ODK Briefcase to download and decrypt the data. ODK Briefcase, when supplied with the asymmetric private key (which ODK Briefcase never stores), can then decrypt and export the form data as a CSV file for your use.
 
-This process ensures that the finalized form's data (and media attachments) are encrypted before being submitted to ODK Aggregate, remain encrypted while stored on ODK Aggregate, and remain encrypted as the data and attachments are pulled into ODK Briefcase, where they are again stored in encrypted form.
+The finalized form's data (and media attachments) are encrypted before being submitted to a server and remain encrypted while stored on the server. When using Briefcase, the data remains encrypted as it is pulled, where it is again stored in encrypted form.
 
 .. note::
 
-  - ODK Aggregate cannot meaningfully publish encrypted forms to Google Spreadsheets since the encryption obscures the entire contents of the form and ODK Aggregate never possesses the asymmetric key required to decrypt the form.
-  - When using encrypted forms, ODK Aggregate serves only as a data aggregation point — you must download, decrypt, and export the data using ODK Briefcase to access the unencrypted data
+  - A server cannot present or share the data with another service since the encryption obscures the entire contents of the form and the server never possesses the asymmetric key required to decrypt the form.
+  - When using encrypted forms, the server serves only as a data aggregation point.
 
-The non-encrypted data is available on the ODK Collect device during data collection and whenever a form is saved without marking it as complete. Once you mark a form as complete (finalize it), ODK Collect will generate a random 256-bit symmetric key, encrypt the form contents and all attachments with this key, then construct a submission manifest which describes the encrypted submission and an asymmetric-key encryption of the symmetric key used for the encryption. This manifest is the "form" that is uploaded to ODK Aggregate, with the encrypted form contents and its encrypted attachments appearing as attachments to this submission manifest "form."
+The non-encrypted data is available on the ODK Collect device during data collection and whenever a form is saved without marking it as complete. Once you mark a form as complete (finalize it), ODK Collect will generate a random 256-bit symmetric key, encrypt the form contents and all attachments with this key, then construct a submission manifest which describes the encrypted submission and an asymmetric-key encryption of the symmetric key used for the encryption. This manifest is the "form" that is uploaded to a server, with the encrypted form contents and its encrypted attachments appearing as attachments to this submission manifest "form."
 
 .. _encrypt-requirements:
 
@@ -121,21 +121,14 @@ Uploading Finalized Forms
 
 If you are using :doc:`XLSForm <xlsform>`, then form encryption is governed by the :guilabel:`settings` on the `Settings Worksheet <http://xlsform.org/#settings_ws>`_. Encrypted forms must specify a *submission_url* and a *public_key* on this worksheet. If both are specified, XLSForm will generate an encrypted-form definition. Skip to the following sections to see how to create a public-private key pair and specify the public key.
 
-The required element to make this form an encrypted form is the ``<submission/>`` tag. Within this tag, the method attribute should always be **form-data-post**. The action attribute should be the url to which the submission should be posted; this is the ODK Aggregate website url with Aggregate.html replaced by submission. Finally, what identifies the form as an encrypted form is the presence of a *base64RsaPublicKey* attribute. This should be the base64 encoding of the RSA public key that ODK Collect uses to encrypt the symmetric encryption key it creates to encrypt a finalized instance of this form (a different symmetric encryption key is created for every finalized form)
-
-.. note::
-
-  - The presence of the OpenRosa metadata block, as defined here: `OpenRosa 1.0 Metadata Schema <https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaMetaDataSchema>`_; is required.
-  - You can define any value for the instanceID field, but it must be unique across all collected surveys.
-  - As shown, the ``<bind/>`` calculates an instanceID value comparable to the instanceID value ODK Aggregate will generate when a form does not have an instanceID field.
-  - If you use punctuation other than colon and dash, or any special characters, please test thoroughly to ensure that ODK Aggregate correctly handles those characters during submissions and when the form is pulled down to ODK Briefcase.
+The required element to make this form an encrypted form is the ``<submission/>`` tag. Within this tag, the method attribute should always be **form-data-post**. The action attribute should be the url to which the submission should be posted. For Central, this is the server URL configured in Collect for the App User followed by `/submission`. For Aggregate, this is the ODK Aggregate website url with Aggregate.html replaced by `submission`. Finally, what identifies the form as an encrypted form is the presence of a *base64RsaPublicKey* attribute. This should be the base64 encoding of the RSA public key that ODK Collect uses to encrypt the symmetric encryption key it creates to encrypt a finalized instance of this form (a different symmetric encryption key is created for every finalized form)
 
 .. _create-RSA-key:
 
 Creating RSA Key pair
 ===========================
 
-RSA public-private key pairs are generated using the OpenSSL software package. This is pre-installed on OSX and Linux but needs to be downloaded and installed on Windows.
+RSA public-private key pairs are generated using the OpenSSL software package. This is pre-installed on macOS and Linux but needs to be downloaded and installed on Windows.
 
 .. _install-openssl:
 
@@ -238,8 +231,8 @@ Open the :file:`MyPublicKey.pem` file and copy the resulting very-long string in
 Operations
 ===========================
 
-Operationally, you would add the form definition to the ODK Aggregate server identified in the ``<submission>`` tag's action attribute, and deploy everything using ODK Collect 1.2 RC1 or later, figure out how you want to implement a periodic SD Card wiping protocol for your devices, and you're done. Submissions will be encrypted when marked as complete. Once the data is on ODK Aggregate, use ODK Briefcase to download the encrypted submissions to your PC, and then specify the private key PEM file when decrypting and generating the CSV files.
+Operationally, you would add the form definition to the server identified in the ``<submission>`` tag's action attribute, and deploy everything using ODK Collect, figure out how you want to implement a periodic SD Card wiping protocol for your devices, and you're done. Submissions will be encrypted when marked as complete. Once the data is on your server, use ODK Briefcase to download the encrypted submissions to your desktop computer, and then specify the private key PEM file when decrypting and generating the CSV files.
 
 .. note::
-  - ODK Aggregate will only hold the encrypted submission with no access to the private key
+  - ODK Central or ODK Aggregate will only hold the encrypted submission with no access to the private key
   - ODK Briefcase will emit the CSV with an extra final column that indicates whether the signature of the encrypted file was good or bad.  It would be bad if any of the attachments are missing or if there was tampering (other than the wholesale replacement of a submission, which can't be detected).

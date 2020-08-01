@@ -28,8 +28,12 @@
   las
   th
 
-Updating forms
-=================
+Updating forms in Aggregate
+============================
+
+.. note::
+
+  This page is only about ODK Aggregate. ODK Central allows any kind of form update that doesn't change the type of a field. See :ref:`central-forms-updates`.
 
 .. _change-existing:
 
