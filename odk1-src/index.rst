@@ -59,27 +59,6 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
 .. toctree::
   :hidden:
   :maxdepth: 2
-  :caption: Aggregate
-
-  aggregate-intro
-  aggregate-setup
-  aggregate-use
-  aggregate-best-practices
-  aggregate-app-engine-legacy
-
-.. toctree::
-  :hidden:
-  :maxdepth: 2
-  :caption: Briefcase
-
-  briefcase-intro
-  briefcase-install
-  briefcase-using
-  briefcase-and-aggregate
-
-.. toctree::
-  :hidden:
-  :maxdepth: 2
   :caption: Central
 
   central-intro
@@ -102,6 +81,27 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   launch-apps-from-collect
   form-tools
   form-best-practices
+
+.. toctree::
+  :hidden:
+  :maxdepth: 2
+  :caption: Briefcase
+
+  briefcase-intro
+  briefcase-install
+  briefcase-using
+  briefcase-and-aggregate
+
+.. toctree::
+  :hidden:
+  :maxdepth: 2
+  :caption: Aggregate
+
+  aggregate-intro
+  aggregate-setup
+  aggregate-use
+  aggregate-best-practices
+  aggregate-app-engine-legacy
 
 .. toctree::
   :hidden:
