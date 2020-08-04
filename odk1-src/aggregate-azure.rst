@@ -7,6 +7,9 @@ Installing on Microsoft Azure
 =============================
 
 .. warning::
+  Aggregate is no longer actively developed. Please use :doc:`ODK Central <central-intro>` instead.
+
+.. warning::
 
   To use this setup, you must able to link a domain name to the virtual machine's IP address. If you don’t own a domain, services such as `FreeDNS <https://freedns.afraid.org>`_ offer free sub-domains under a range of domains.
 

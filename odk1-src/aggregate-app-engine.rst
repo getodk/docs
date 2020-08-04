@@ -4,6 +4,9 @@ Installing Aggregate on Google App Engine
 =========================================
 
 .. warning::
+  Aggregate is no longer actively developed. Please use :doc:`ODK Central <central-intro>` instead.
+
+.. warning::
 
   This document only applies ODK Aggregate v1.x. See `why we are removing App Engine support <https://forum.getodk.org/t/upcoming-changes-to-aggregate/17582>`_ for more information.
 

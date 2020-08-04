@@ -1,6 +1,9 @@
 ODK Aggregate
 ===================
 
+.. warning::
+  Aggregate is no longer actively developed. Please use :doc:`ODK Central <central-intro>` instead.
+
 .. _aggregate-introduction:
 
 :dfn:`ODK Aggregate` is an open source Java application that

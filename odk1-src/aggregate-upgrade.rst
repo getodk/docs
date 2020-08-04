@@ -20,6 +20,9 @@
 Upgrading Aggregate
 =====================
 
+.. warning::
+  Aggregate is no longer actively developed. Please use :doc:`ODK Central <central-intro>` instead.
+
 .. _upgrade-aggregate:
 
 Need for Upgrading

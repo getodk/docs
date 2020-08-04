@@ -17,21 +17,19 @@ In order to fill out forms with survey participants, you must first load blank f
 
 .. _in-app-get-blank-forms:
 
-Loading Forms from ODK Aggregate Server or Google Drive
-------------------------------------------------------------
+Loading Forms from a server
+-----------------------------
 
-If you have :doc:`connected ODK Collect to a server  <collect-connect>` or :doc:`Google Drive  <collect-connect-google>`:
+If you have connected ODK Collect to a :doc:`server <collect-connect>` or :doc:`Google Drive Account <collect-connect-google>`:
 
 1. Select :guilabel:`Get blank forms` on the app home screen to browse available forms and download them to your device.
 
    .. image:: /img/collect-forms/main-menu-highlight-get-blank-form.*
      :alt: The Main Menu of the Collect app. The option *Get Blank Form* is circled in red.
 
-
-
 2. Find and download forms.
 
-   - If you are using ODK Aggregate, you will see a list of available forms. Select the ones you would like download, and tap :guilabel:`Get Selected`.
+   - If you are using a server, you will see a list of available forms. Select the ones you would like download, and tap :guilabel:`Get Selected`.
 
 
      .. image:: /img/collect-forms/get-blank-form.*
@@ -40,7 +38,7 @@ If you have :doc:`connected ODK Collect to a server  <collect-connect>` or :doc:
 
     .. note::
 
-      Before downloading blank forms from Aggregate to Collect, a form has to be uploaded. See :doc:`Form Management in ODK Aggregate  <aggregate-forms>`.
+      Before downloading blank forms from your server to Collect, a form has to be uploaded. See :doc:`Form Management in ODK Central  <central-forms>`.
 
    - If you are using Google Drive, the **Get Blank Form** screen will display the folders in your Google Drive account and any XML documents. Select and download the forms you want.
 
@@ -111,9 +109,9 @@ Loading form media
 
 If a form :ref:`includes images or other media <media>`, those files have to be loaded to the device along with the form.
 
-Media files should be placed in a folder labeled :file:`{form-name}-media`.
+Media files must be placed in a folder labeled :file:`{form-name}-media`.
 
-- When using ODK Aggregate, the form upload prompt includes instructions to upload the :file:`-media` folder. The files are downloaded automatically when :ref:`fetching forms from Aggregate <in-app-get-blank-forms>`.
+- When using ODK Central, first upload your form definition. Central will then prompt you to :ref:`add media files <central-forms-attachments>` if necessary. The files are downloaded automatically when :ref:`fetching blank forms <in-app-get-blank-forms>`.
 - When using Google Drive, the :file:`-media` folder should be uploaded to the same location as the form. If you share forms with another user, you need to share the parent folder which contains a form and a folder with media files. Sharing both of them separately wouldn't be enough.
 - If :ref:`loading forms directly to your device <loading-forms-directly>`, the :file:`-media` folder needs to be placed in the :file:`forms` subdirectory of :ref:`your Collect directory <collect-directory>`, alongside the form itself.
 
@@ -159,7 +157,7 @@ In some cases, you may want to :ref:`pull filled forms directly from a device <p
 Sending Finalized Forms to a Server
 -----------------------------------
 
-If you are connected to :doc:`a server <collect-connect-aggregate>` or :doc:`Google Drive Account <collect-connect-google>`, use :guilabel:`Send Finalized Forms` to upload :formstate:`Finalized` form instances.
+If you are connected to :doc:`a server <collect-connect>` or :doc:`Google Drive Account <collect-connect-google>`, use :guilabel:`Send Finalized Forms` to upload :formstate:`Finalized` form instances.
 
 Uploading a filled form from within the Collect app marks that form as :formstate:`sent`. :formstate:`Sent` forms are no longer editable, but they remain viewable until they are deleted.
 

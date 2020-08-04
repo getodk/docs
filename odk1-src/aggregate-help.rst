@@ -1,6 +1,9 @@
 Getting Help in Aggregate
 =============================
 
+.. warning::
+  Aggregate is no longer actively developed. Please use :doc:`ODK Central <central-intro>` instead.
+
 Aggregate provides three kinds of help accessible by pressing one of three buttons in the upper righthand corner.
 
 The red question mark will give you instructions for the tab you are currently viewing. When you click the button, a help panel will appear at the bottom of the screen. To hide the help panel, simply click the red question mark again.

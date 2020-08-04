@@ -1,8 +1,7 @@
 Getting Started With ODK
 =========================
 
-This document walks you through a very basic setup process,
-to get you familiar with using ODK.
+This document walks you through the recommended workflow to get started with ODK.
 
 You will:
 
@@ -18,78 +17,47 @@ The easiest way to install the Collect app is `to get it from the Google Play st
 
 .. seealso:: :doc:`collect-install`
 
-.. _getting-started-install-aggregate:
+.. _getting-started-install-central:
 
-Install Aggregate (optional)
-------------------------------
+Install Central
+----------------
 
-The easiest way to set up Aggregate is to
-:doc:`install it on Google App engine <aggregate-app-engine>`. 
+The easiest way to set up your own Central server is to :doc:`install it on DigitalOcean <central-install-digital-ocean>`, a cloud provider.
 
-You'll set up a new Google Cloud project, and then run the installer locally. This will connect to your Google Cloud account and install Aggregate there.
-
-Alternatively, if you only want to try things out,
-you can use the `Aggregate sandbox server`_.
-
-
+If you want to try Central out, you can :ref:`request access to the sandbox <central-install-sandbox>`.
 
 .. warning::
 
-  The `Aggregate sandbox server`_ is for demo purposes only.
-  All forms and data on this server are public and are deleted every 24 hours without notice.
+  The Central sandbox server is for evaluation purposes only. All forms and data on this server are public and may be deleted without notice.
   
-.. _Aggregate sandbox server: https://sandbox.aggregate.getodk.org
-
-.. seealso:: :doc:`aggregate-install`
+.. seealso:: :doc:`central-install`
 
 .. _getting-started-create-form:
 
-Create a form with Build and upload it to Aggregate
+Create a form with XLSForm and upload it to Central
 ------------------------------------------------------
-
-The quickest and easiest way to start using your own survey forms is to create one online with `ODK Build <https://build.getodk.org/>`_.
-
-#. Go to `build.getodk.org <https://build.getodk.org/>`_, create a new account, and log in. Once logged in, a blank survey is created. 
-#. Give your form a name (:guilabel:`rename` in the upper left-hand corner).
-#. Add a few questions (click on question types in the :guilabel:`+Add New` bar along the bottom).
-#. Once your new form is complete, go to :menuselection:`File --> Upload form to Aggregate...` to upload your form.
-
-   If you have your own Aggregate server, use the URI and credentials you created during setup.
-   
-   To use the sandbox, the :guilabel:`Aggregate Instance URI` is ``https://sandbox.aggregate.getodk.org``. You should not need additional credentials.
-
-
-.. seealso::
-  
-  `Build desktop app <https://github.com/getodk/build/releases/latest>`_
-    To use Build locally.
-
-  :doc:`xlsform`
-    A more robust form creation tool.
-  
+#. Create a document in your favorite spreadsheet tool (Excel, Google Sheets, etc)
+#. Design your form using :doc:`XLSForm <xlsform>` or try `a sample XLSForm <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ/edit#gid=0>`_.
+#. :ref:`Upload the form to Central <central-forms-upload>`.
     
 .. _getting-started-load-form:
 
-Load a form into Collect from Aggregate
+Load a form into Collect from Central
 ----------------------------------------------------------
 
-#. Open Collect on your Android device.
-#. Open server settings 
-   (:menuselection:`⋮ --> General Settings --> Server`).
-#. Edit the server settings to connect to your Aggregate server or the sandbox server.
-
-   The URI for the sandbox server is ``https://sandbox.aggregate.getodk.org``.
-   
+#. :ref:`Find or create an App User <central-users-app-overview>` in Central
+#. Open Collect on your Android device
+#. Tap :guilabel:`Configure via QR code` from the menu at the top right
+   (:menuselection:`⋮ --> Configure via QR code`)
+#. Scan the QR code from Central
 #. Go back to the app home screen and select :guilabel:`Get Blank Form`, then select your form.
-
 
 .. _getting-started-fill-form:
 
-Fill out a form and upload it to Aggregate
+Fill out a form and upload it to Central
 -------------------------------------------
 
 #. Select :guilabel:`Fill Blank Form` to complete a survey.
-#. Select :guilabel:`Send Finalized Form` to upload your completed survey to Aggregate.
+#. Select :guilabel:`Send Finalized Form` to upload your completed survey to Central.
 
-
-Now log back into Aggregate and see your completed survey results.
+Now log back into Central and see your completed survey results.

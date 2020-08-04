@@ -8,13 +8,26 @@ Welcome to ODK's Docs!
 
 :dfn:`ODK` is a suite of open source tools that help organizations collect and manage data.
 
-The core ODK tools are:
+For a quick start, read :doc:`getting-started`. In most cases, users of ODK:
 
-- :doc:`collect-intro`, an Android app that replaces paper-based forms.
-- :doc:`aggregate-intro`, a proven server for data storage and analysis tool.
-- :doc:`central-intro`, a modern server with a RESTful API.
-- :doc:`build-intro`, a drag-and-drop form designer.
-- :doc:`ODK XLSForm </xlsform>`, an Excel-based form designer.
+- Create survey forms using the `XLSForm <http://xlsform.org/>`_ standard in Excel or `Google Sheets <https://www.google.com/sheets/>`_.
+- :ref:`Upload forms <central-forms-upload>` to an :doc:`ODK Central server <central-intro>`.
+- :ref:`Download forms <in-app-get-blank-forms>` into :doc:`collect-intro` on an Android device.
+- :doc:`Use Collect to fill out forms <collect-filling-forms>` with :term:`participants <participant>`.
+- :ref:`Upload survey data <uploading-forms>` from Collect to Central.
+- :doc:`Analyze or export data from Central <central-submissions>`.
+
+This requires:
+
+- :doc:`Installing Collect on an Android device <collect-install>`
+- :doc:`Installing Central on a server <central-setup>`
+
+While this is the recommended workflow, it is not the only way to do things. ODK is a very flexible set of tools, and organizations will find their own best practices for adopting it.
+
+Additional ODK tools are:
+
+- :doc:`aggregate-intro`, a proven server. We now generally recommend Central but those with existing Aggregate servers may choose to continue using them.
+- :doc:`build-intro`, a drag-and-drop form designer. We generally recommend XLSForm for its flexibility but users only building very simple forms may prefer Build.
 - :doc:`briefcase-intro`, a desktop tool that pulls and exports data from Aggregate and Collect.
 
 The specifications and libraries that power the tools are:
@@ -26,28 +39,6 @@ The specifications and libraries that power the tools are:
 - `pyxform <https://github.com/xlsform/pyxform>`_, a Python library that converts XLSForms into ODK XForms.
 
 For a complete list of our tools, check out `ODK on GitHub <https://github.com/getodk>`_.
-
-.. _using-odk:
-
-How is ODK used?
-------------------
-
-For a quick start, read :doc:`getting-started`. In most cases, users of ODK:
-
-- Create survey forms using `Build <https://build.getodk.org/>`_ or `XLSForm <http://xlsform.org/>`_.
-- :ref:`Upload forms <aggregate-add-new-forms>` to an :doc:`aggregate-intro` server.
-- :ref:`Load forms <in-app-get-blank-forms>` into :doc:`collect-intro` on an Android device.
-- :doc:`Use Collect to fill out forms <collect-filling-forms>` with :term:`participants <participant>`.
-- :ref:`Upload survey data <uploading-forms>` from Collect to Aggregate.
-- :doc:`Analyze or export data in Aggregate <aggregate-data>`.
-
-This requires:
-
-- :doc:`Installing Collect on a phone or other mobile device <collect-install>`
-- :doc:`Installing Aggregate on a server <aggregate-install>`
-
-While this is the *typical* use pattern, it is not the only way to do things. ODK is a very flexible set of tools, and organizations will find their own best practices for adopting it.
-
 
 .. toctree::
   :maxdepth: 1
@@ -64,27 +55,6 @@ While this is the *typical* use pattern, it is not the only way to do things. OD
   collect-setup
   collect-using
   collect-best-practices
-
-.. toctree::
-  :hidden:
-  :maxdepth: 2
-  :caption: Aggregate
-
-  aggregate-intro
-  aggregate-setup
-  aggregate-use
-  aggregate-best-practices
-  aggregate-app-engine-legacy
-
-.. toctree::
-  :hidden:
-  :maxdepth: 2
-  :caption: Briefcase
-
-  briefcase-intro
-  briefcase-install
-  briefcase-using
-  briefcase-and-aggregate
 
 .. toctree::
   :hidden:
@@ -111,6 +81,27 @@ While this is the *typical* use pattern, it is not the only way to do things. OD
   launch-apps-from-collect
   form-tools
   form-best-practices
+
+.. toctree::
+  :hidden:
+  :maxdepth: 2
+  :caption: Briefcase
+
+  briefcase-intro
+  briefcase-install
+  briefcase-using
+  briefcase-and-aggregate
+
+.. toctree::
+  :hidden:
+  :maxdepth: 2
+  :caption: Aggregate
+
+  aggregate-intro
+  aggregate-setup
+  aggregate-use
+  aggregate-best-practices
+  aggregate-app-engine-legacy
 
 .. toctree::
   :hidden:

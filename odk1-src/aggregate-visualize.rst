@@ -2,6 +2,9 @@
 Visualizing Geographic Data
 ************************************
 
+.. warning::
+  Aggregate is no longer actively developed. Please use :doc:`ODK Central <central-intro>` instead.
+
 This guide helps the users to visualize the collected geodata uploaded on ODK Aggregate server using `Google Earth <https://www.google.com/intl/en_in/earth/>`_.
 
 .. rubric:: Prerequisites

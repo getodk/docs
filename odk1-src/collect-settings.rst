@@ -61,7 +61,7 @@ To access General Settings:
 Server Settings
 ~~~~~~~~~~~~~~~~~
 
-Server settings :doc:`configure the connection to an <collect-connect>` :doc:`openrosa` server (:doc:`Aggregate <aggregate-intro>`, :doc:`Central <central-intro>`, etc) or a :doc:`Google Drive account <collect-connect-google>`.
+Server settings :doc:`configure the connection to an <collect-connect>` :doc:`openrosa` server (:doc:`Central <central-intro>`, etc) or a :doc:`Google Drive account <collect-connect-google>`.
 
 To access Server Settings:
   :menuselection:`⋮ --> General Settings --> Server`

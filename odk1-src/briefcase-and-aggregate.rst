@@ -1,6 +1,9 @@
 Briefcase and Aggregate
 =========================
 
+.. warning::
+  Aggregate is no longer actively developed. Please use :doc:`ODK Central <central-intro>` instead.
+
 :doc:`ODK Briefcase <briefcase-intro>` and
 :doc:`ODK Aggregate <aggregate-intro>` have
 complementary and overlapping features.
