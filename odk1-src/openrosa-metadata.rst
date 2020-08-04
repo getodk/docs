@@ -168,14 +168,14 @@ The blank form **MUST** specify which of the metadata fields are expected when t
 
   <model>
     <instance>
-      <data xmlns:jr="http://openrosa.org/xforms"
+      <data xmlns:orx="http://openrosa.org/xforms"
             id="example.org:myFormId"
             version="1" >
-        <jr:meta>
-          <jr:timeStart/>
-	  <jr:timeEnd/>
-	  <jr:instanceID/>
-	  </jr:meta>
+        <orx:meta>
+          <orx:timeStart/>
+	        <orx:timeEnd/>
+	        <orx:instanceID/>
+	      </orx:meta>
 
 	  
 .. _metadata-examples:
@@ -194,15 +194,15 @@ Blank form metadata
     <h:title>Metablock example</h:title>
     <model>
       <instance>
-	<data xmlns:jr="http://openrosa.org/xforms"
+	<data xmlns:orx="http://openrosa.org/xforms"
 	      xmlns="http://example.org/meta"
 	      version="1" >
-	  <jr:meta>
-	    <jr:deviceID/>
-	    <jr:timeStart/>
-	    <jr:timeEnd/>
-	    <jr:instanceID/>
-	  </jr:meta>
+	  <orx:meta>
+	    <orx:deviceID/>
+	    <orx:timeStart/>
+	    <orx:timeEnd/>
+	    <orx:instanceID/>
+	  </orx:meta>
 	  .
 	  .
 	  .
@@ -223,15 +223,15 @@ Form submission metadata
 
   <?xml version='1.0'?>
     <data version="1" 
-          xmlns:jr="http://openrosa.org/xforms"         
+          xmlns:orx="http://openrosa.org/xforms"         
 	  xmlns="http://example.org/meta">
-      <jr:meta>
-        <jr:deviceID>uuid:38DN0236SAKWJOJNQB3XJI9RW</jr:deviceID>
-        <jr:timeStart>2010-08-12T04:08:29.765-5:00</jr:timeStart>
-        <jr:timeEnd>2010-08-12T04:10:23.062-5:00</jr:timeEnd>
-        <jr:instanceID>uuid.dimagi.org:GEPSJLOGH13TY8L77066GEJJW</jr:instanceID>
-        <jr:userID>chwid.dimagi.org:Akende</jr:userID>
-      </jr:meta>
+      <orx:meta>
+        <orx:deviceID>uuid:38DN0236SAKWJOJNQB3XJI9RW</orx:deviceID>
+        <orx:timeStart>2010-08-12T04:08:29.765-5:00</orx:timeStart>
+        <orx:timeEnd>2010-08-12T04:10:23.062-5:00</orx:timeEnd>
+        <orx:instanceID>uuid.dimagi.org:GEPSJLOGH13TY8L77066GEJJW</orx:instanceID>
+        <orx:userID>chwid.dimagi.org:Akende</orx:userID>
+      </orx:meta>
       .
       .
       .
