@@ -6,9 +6,7 @@ ODK Aggregate
 
 .. _aggregate-introduction:
 
-:dfn:`ODK Aggregate` is the original ODK server. We now encourage using :doc:`ODK Central <central-intro>` which has been developed to address many of the challenges reported by Aggregate users. However, we know that switching may not be immediately practical so we intend to continue providing this documentation.
-
-Aggregate is an open source Java application that
+:dfn:`ODK Aggregate` is an open source Java application that
 stores, analyzes, and presents :doc:`XForm <form-design-intro>` survey data collected using :doc:`collect-intro` or other :doc:`OpenRosa-compliant applications <openrosa>`. It supports a wide range of data types, and is designed to work well in any hosting environment.
 
 With Aggregate, data collection teams can:
