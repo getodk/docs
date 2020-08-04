@@ -587,7 +587,7 @@ You can ask the same question or questions multiple times by wrapping them in :t
     :doc:`form-repeats` describes strategies to address common repetition scenarios.
 
 .. tip::
-  Using repetition in a form is very powerful but can also make training and data analysis more time-consuming. Repeats exported from Central or Briefcase be in their own documents and will need to be joined with their parent records for analysis.
+  Using repetition in a form is very powerful but can also make training and data analysis more time-consuming. Repeats exported from Central or Briefcase be in their own files and will need to be joined with their parent records for analysis.
 
   Before adding repeats to your form, consider other options:
 
