@@ -2,7 +2,7 @@ ODK Aggregate
 ===================
 
 .. warning::
-  Aggregate is no longer actively developed. Please consider using :doc:`ODK Central <central-intro>`.
+  Aggregate is no longer actively developed. Please use :doc:`ODK Central <central-intro>` instead.
 
 .. _aggregate-introduction:
 

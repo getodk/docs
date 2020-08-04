@@ -8,6 +8,9 @@
 Installing on Tomcat
 ====================
 
+.. warning::
+  Aggregate is no longer actively developed. Please use :doc:`ODK Central <central-intro>` instead.
+
 `Apache Tomcat <http://tomcat.apache.org/>`_ is an open source Java web server that can be used to serve ODK Aggregate.
 
 This document guides you through the installation and initial setup of a self-hosted instance of ODK Aggregate, running on Tomcat with a `PostgreSQL <https://www.postgresql.org/>`_, or `MySQL <https://www.mysql.com/>`_ database server. "Self-hosted" could mean on your own hardware or on a cloud-based server.

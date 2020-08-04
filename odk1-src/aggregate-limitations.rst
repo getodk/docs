@@ -1,6 +1,9 @@
 Aggregate Limitations
 ========================
 
+.. warning::
+  Aggregate is no longer actively developed. Please use :doc:`ODK Central <central-intro>` instead.
+
 This is a listing of known limitations and potential "gotchas" users of Aggregate may encounter.
 
 Media held in memory

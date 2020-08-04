@@ -6,6 +6,9 @@
 Installing the Virtual Machine
 ==============================
 
+.. warning::
+  Aggregate is no longer actively developed. Please use :doc:`ODK Central <central-intro>` instead.
+
 This document provides instructions for installing :doc:`aggregate-intro` using the Virtual Machine (VM) and `VirtualBox <https://www.virtualbox.org>`_.
 
 .. _setting-up-the-vm:
