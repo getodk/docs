@@ -3,7 +3,7 @@
 ODK Central
 ===========
 
-:dfn:`ODK Central` is the server component of ODK. It manages user accounts and permissions, stores form definitions, and allows data collection clients like :doc:`ODK Collect <collect-intro>` to connect to it for form download and submission upload.
+:dfn:`ODK Central` is the ODK server. It manages user accounts and permissions, stores form definitions, and allows data collection clients like :doc:`ODK Collect <collect-intro>` to connect to it for form download and submission upload.
 
 Our goal with Central is to create a server that is straightforward to install, easy to use and extensible with new features and functionality both directly in the software and with the use of our REST, OpenRosa, and OData programmatic APIs.
 
@@ -44,19 +44,17 @@ See `What is coming in Central <https://forum.getodk.org/t/whats-coming-in-centr
 Who should use ODK Central?
 ---------------------------
 
-We recommend that all new data collection projects consider using ODK Central because it is in active development by the core ODK team. ODK Central is a relatively new server. It replaces :doc:`aggregate-intro` which is no longer actively maintained. Central isn't as heavily battle-tested as Aggregate, but its developers have put it through stress testing and it is used in production by many projects including several large ones.
+We recommend that all new data collection projects use ODK Central because it is in active development by the core ODK team. ODK Central is a relatively new server. It replaces :doc:`aggregate-intro` which is no longer actively developed. Central isn't as widely deployed as Aggregate, but its developers have put it through stress testing and it is used in production by many projects including several large ones.
 
-Please note that Central does not support every feature that Aggregate does. There are some Aggregate features that we do not intend to ever support in Central, especially around data preview and visualization. You can find a list of these differences and some of the planned improvements to Central `here <https://forum.getodk.org/t/whats-coming-in-central-over-the-next-few-years/19677>`_.
+Central solves some of the biggest problems with Aggregate. Some of our favorite features are:
 
-On the other hand, Central supports some things that Aggregate does not. For example:
-
-- :ref:`direct upload of XLSForm files <central-forms-upload>` makes form management easier
 - :doc:`projects <central-projects>` let you partition your server into different sandboxes to support multiple independent teams
+- :ref:`direct upload of XLSForm files <central-forms-upload>` makes form management easier
 - :ref:`the OData API <central-submissions-odata>` makes it easy to synchronize your live form data to desktop visualization and dashboard tools
 - :doc:`managed encryption <central-encryption>` makes the process of handling encrypted form data significantly easier and in many cases more secure
 
 
-If you are happy with the supported features, please give Central a try and provide your `feedback <https://forum.getodk.org/c/features>`_.
+Please give Central a try and provide your `feedback <https://forum.getodk.org/c/support>`_.
 
 .. _central-performance:
 
@@ -73,7 +71,7 @@ We have done some work to benchmark Central to verify these claims, and produce 
  - A larger 5000 question form, without attachments, could also support 500 devices submitting data at once, but runs more slowly (~12 submissions/second) and fails about one submission in every 1000 (which can then be re-submitted without issues).
  - Including attachments slows the process down, since there is more data to shuffle around. Realistically, the number of concurrent users supported in this scenario will decrease simply because Internet bandwidth in and out of Central will limit the number of submissions it can see at a time. But we have tried situations featuring 5MB submissions with 50 devices at once without seeing issues (though for the mentioned reasons the response rate drops to between 1 and 2 submissions/second). Additionally, data exports with attachments take longer and are more memory-intensive.
 
- When you are planning for your installation and selecting a destination to deploy Central to, keep these numbers in mind. If 500 people submitting data *all at the same time* is a laughably distant scenario, you can probably get by with a lower-performance option. If your deployment is larger than these numbers, consider bumping up to a more powerful machine. If you aren't sure, ask around in the forums.
+ When you are planning for your installation and selecting a destination to deploy Central to, keep these numbers in mind. If 500 people submitting data *all at the same time* is a distant scenario, you can probably get by with a lower-performance option. If your deployment is larger than these numbers, consider bumping up to a more powerful machine. If you aren't sure, ask around in the forums.
 
 .. _central-intro-learn-more:
 
