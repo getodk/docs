@@ -195,9 +195,9 @@ To access Form Management settings:
   :guilabel:`Exactly match server`
     Collect will automatically download and update forms based on what's on the server. In addition, forms not on the server will be deleted from Collect. This mode hides :guilabel:`Get Blank Form` and the :guilabel:`Blank Forms` tab in :guilabel:`Delete Saved Form` as they are not required. The enumerator is still able to manually update forms with the server on the :guilabel:`Fill Blank Form` screen.
 
-:guilabel:`Periodic form updates check`
+:guilabel:`Automatic update frequency`
 """"""""""""""""""""""""""""""""""""""""
-  Specifies the frequency at which the configured server should be polled for updates to the forms on the device. The user will receive a notification when one or more forms has an update available to its form definition or media files. Tapping on the notification will go to :guilabel:`Get Blank Form` where the user can choose to download some or all of the updated forms.
+  Specifies how frequently Collect should check for updates to the forms on the server when using :guilabel:`Previously downloaded forms only` or :guilabel:`Exactly match server`.
 
 :guilabel:`Automatic download`
 """""""""""""""""""""""""""""""
