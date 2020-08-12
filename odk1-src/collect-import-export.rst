@@ -155,6 +155,8 @@ Here are the keys for all settings and the set of values they can take:
       "image_size": {"original", "small", "very_small", "medium", "large"},
       "guidance_hint": {"no", "yes", "yes_collapsed"},
       "instance_sync": Boolean,
+
+      // User and device identity
       "analytics": Boolean,
       "metadata_username": String,
       "metadata_phonenumber": String,
