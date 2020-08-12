@@ -197,11 +197,11 @@ To access Form Management settings:
 
 :guilabel:`Automatic update frequency`
 """"""""""""""""""""""""""""""""""""""""
-  Specifies how frequently Collect should check for updates to the forms on the server when using :guilabel:`Previously downloaded forms only` or :guilabel:`Exactly match server`.
+  Specifies how frequently Collect should check for updates to the forms on the server when using :guilabel:`Previously downloaded forms only` or :guilabel:`Exactly match server`. This option is not available if :guilabel:`Manually` is selected.
 
 :guilabel:`Automatic download`
 """""""""""""""""""""""""""""""
-  Only available if :guilabel:`Periodic form updates check` is set. When :guilabel:`Automatic download` is enabled, the periodic form update check will trigger an automatic download of any forms on the device that have an update to their form definition or media files. The user will receive a notification when the automatic download completes with either a success or failure. Tapping on the notification will go to :guilabel:`Get Blank Form` where the user will see success or failure messages for each form for which an update was attempted.
+  Only available if :guilabel:`Previously downloaded forms only` is selected. When :guilabel:`Automatic download` is enabled, the form update check will trigger an automatic download of any forms on the device that have updated definitions or media files. The user will receive a notification when the automatic download completes with either a success or failure. Tapping on the notification will go to :guilabel:`Get Blank Form` where the user will see success or failure messages for each form for which an update was attempted.
 
 :guilabel:`Hide old form versions`
 """""""""""""""""""""""""""""""""""
