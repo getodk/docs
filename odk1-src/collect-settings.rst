@@ -199,9 +199,9 @@ Specifies how blank forms should be updated:
 
   If your server is configured to provide the exact set of forms enumerators need and you'd like to ensure they always have the most up to date versions on device then we'd recommend using :guilabel:`Exactly match server`.
 
-  However, if your server is setup to provide forms that aren't relevant to every enumerator then we'd recommend using :guilabel:`Previously downloaded forms only` (ideally with :guilabel:`Automatic download`) so that enumerators are still notified when the forms they do use are updated.
+  However, if your server is set up to provide forms that aren't relevant to every enumerator then we'd recommend using :guilabel:`Previously downloaded forms only` (ideally with :guilabel:`Automatic download`) so that enumerators are still notified when the forms they do use are updated.
 
-  :guilabel:`Manually` makes the most sense when forms only need to be downloaded once and will never change, if you are extremely bandwidth-limited or in cases where the enumerator and the person creating and updating forms are one and the same.
+  :guilabel:`Manually` makes the most sense when forms only need to be downloaded once and will never change or if you are extremely bandwidth-limited.
 
 :guilabel:`Automatic update frequency`
 """"""""""""""""""""""""""""""""""""""""
