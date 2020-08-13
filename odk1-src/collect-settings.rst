@@ -186,14 +186,20 @@ To access Form Management settings:
 :guilabel:`Blank form update mode`
 """""""""""""""""""""""""""""""""""
 
-  Specifies how blank forms should be updated:
+Specifies how blank forms should be updated:
 
   :guilabel:`Manually`
-    Enumerators manually manage blank forms on the device using :guilabel:`Get Blank Form` and :guilabel:`Delete Saved Form`.
+    The default mode in Collect. Enumerators manually manage blank forms on the device using :guilabel:`Get Blank Form` and :guilabel:`Delete Saved Form`.
   :guilabel:`Previously downloaded forms only`
     Enumerators will receive a notification when one or more forms on the device have an update available to their form definition or media files. Tapping on the notification will go to :guilabel:`Get Blank Form` where the user can choose to download some or all of the updated forms.
   :guilabel:`Exactly match server`
     Collect will automatically download and update forms based on what's on the server. In addition, forms not on the server will be deleted from Collect. This mode hides :guilabel:`Get Blank Form` and the :guilabel:`Blank Forms` tab in :guilabel:`Delete Saved Form` as they are not required. The enumerator can trigger an update from the server on the :guilabel:`Fill Blank Form` screen.
+
+.. tip::
+
+   If your forms only need to be downloaded once and will never change, if you are extremely bandwidth-limited or if your server configuration provides forms that are not relevant to every enumerator then we'd recommend using :guilabel:`Manually` here.
+
+   However, if your server is configured to provide exactly the set of forms enumerators need and you'd like to make sure they always have the most up to date versions then we'd recommend using :guilabel:`Exactly match server`.
 
 :guilabel:`Automatic update frequency`
 """"""""""""""""""""""""""""""""""""""""
