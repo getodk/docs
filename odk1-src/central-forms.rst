@@ -140,7 +140,7 @@ To see the current submissions uploaded to Central for a form, you can click on 
 Managing Public Access Links
 ----------------------------
 
-Public Access Links allow broad web-based distribution of a Form for direct responses from subjects. They can be used to conduct large remote self-administered data collection campaigns, or allow direct surveying of the public at large. Respondents will fill the Form directly in their web browser using Enketo.
+Public Access Links allow broad web-based distribution of a Form for direct responses from subjects. They can be used to conduct large remote self-administered data collection campaigns, or allow direct surveying of the public at large. Respondents will fill the Form directly in their web browser.
 
 For more information, please see the :ref:`relevant section <central-submissions-public-link>` in the Submission article.
 
