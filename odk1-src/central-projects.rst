@@ -111,9 +111,11 @@ Project Managers may perform any action upon and within that Project, including 
 
 Project Viewers can view basic information about all Forms in the Project, and download Submission data or access it over OData for analysis. They cannot make any modifications to any data or settings.
 
+Data Collectors may view the list of Forms, retrieve basic information about them, and submit new records to any Form in the Project.
+
 You will find a detailed breakdown of user roles :ref:`here <central-users-web-roles>`.
 
-To assign or remove Managers or Viewers for a Project, first go to the Project overview page, then click on the :guilabel:`Project Managers` tab under the Project name. You should see the following page:
+To assign or remove Managers, Viewers, or Collectors for a Project, first go to the Project overview page, then click on the :guilabel:`Project Managers` tab under the Project name. You should see the following page:
 
    .. image:: /img/central-projects/roles.png
 
@@ -121,7 +123,7 @@ If roles have not already been assigned to the Project, the table will be empty.
 
    .. image:: /img/central-projects/role.png
 
-To make a Web User into a Project Manager or Viewer, change the dropdown next to their name in the :guilabel:`Project Role` column from :guilabel:`None` to :guilabel:`Manager`. You should see the page think for a moment, and then a confirmation of success. If you clear the search in the text box, the newly assigned user should remain.
+To make a Web User into a Project Manager, Viewer, or a Data Collector, change the dropdown next to their name in the :guilabel:`Project Role` column from :guilabel:`None` to the desired role. You should see the page think for a moment, and then a confirmation of success. If you clear the search in the text box, the newly assigned user should remain.
 
 To demote a Web User from any role, change the dropdown back to :guilabel:`None`.
 

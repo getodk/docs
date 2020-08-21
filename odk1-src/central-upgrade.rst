@@ -21,6 +21,8 @@ Now, get the latest client and server: ``git submodule update -i``. Then, build 
 
   If you run into problems with this step, try stopping the Central software (``docker-compose stop``) and retry ``docker-compose build`` after it has shut down the Central website.
 
+Next, you need to do a little bit of maintenance. Run ``docker prune``. If it thinks ``prune`` is not a docker command, run ``docker image prune`` instead. You'll be asked to confirm the removal of all dangling images. Agree by typing the letter ``y`` and pressing ``Enter``.
+
 Finally, restart the running server to pick up the changes: ``docker-compose stop`` and ``docker-compose up -d``.
 
 .. _central-upgrade-0.9:

@@ -3,7 +3,70 @@
 Managing Form Submissions in Central
 ====================================
 
-Once you have :ref:`uploaded a form <central-forms-upload>` to ODK Central, :ref:`connected to it from your mobile device <central-users-app-configure>`, and :ref:`uploaded submissions <uploading-forms>` back to Central, you will see them appear in the Form submissions page in Central.
+The most common way to use ODK Central is in conjunction with a data collection client, typically on a mobile device, such as ODK Collect. To do this, you will need to :ref:`connect to it from your mobile device <central-users-app-configure>`, after which you will be able to 
+:ref:`uploaded submissions <uploading-forms>` back to Central.
+
+ODK Central also bundles `Enketo <https://enketo.org>`_, which enables preview and submission of forms directly from a web browser. Please note that as with all ODK clients, Enketo does not always behave quite the same as Collect, or support the same features. Any authorized Web User may fill out a Form directly from the browser, as will be described in more detail below.
+
+Finally, ODK Central offers Public Access Links. A Public Access Link grants anybody in possession of the link the ability to submit to a Form on your server. You can control whether each respondent can submit more than once, and revoke access from any Link at any time.
+
+Submissions sent to Central are available to browse in a preview table, to connect directly to data analysis tools, and for download.
+
+.. _central-submissions-direct:
+
+Direct Web Browser Submissions
+------------------------------
+
+Web Users who are Administrators, Project Managers, or Data Collectors can directly fill Forms in the web browser from the Central administration website. This functionality is provided by Enketo, which does not always behave quite the same as Collect, or support the same features.
+
+   .. image:: /img/central-submissions/new.png
+
+Administrators and Project Managers can begin a survey by going to the :guilabel:`Submissions` tab of the Form, and clicking on the :guilabel:`New` button next to the Submissions header. This will open a new tab which will load the Form in Enketo.
+
+   .. image:: /img/central-submissions/data-collector-form-listing.png
+
+Data Collectors do not have access to the detailed Form management pages. Instead, they will find a :guilabel:`Fill Form` button next to the Form name in the list of Forms on the Project Overview page.
+
+.. _central-submissions-public-link:
+
+Public Access Links
+-------------------
+
+ODK Central allows the distribution of surveys to a broad or open respondent group using Public Access Links. These Links take recipients directly to the Form in their web browser, administered by Enketo.
+
+To create a Public Access Link, go to the Form's :guilabel:`Public Access` tab. Click on :guilabel:`Create Public Access Link…` to begin.
+
+   .. image:: /img/central-submissions/public-link-new.png
+
+In the window that appears, you'll need to name the Link. This name is for your own identification purposes in the administration website, and is not displayed to respondents.
+
+You'll also need to decide whether to allow multiple submissions per respondent. Normally, respondents filling a Form through a Public Link will be redirected to a thank you page after sending a Submission. Pressing the back button will not bring them back to the Form but they could send in another Submission by visiting the Link again. Checking the :guilabel:`Single Submission` checkbox enables basic protection against more than one Submission being made from the same browser.
+
+.. admonition:: Single submission enforcement
+
+  In Enketo, the enforcement limiting each respondent to a single response is done with in-browser tracking. This means that a user could submit multiple times using different devices or browsers, or distribute the link beyond the intended group.
+
+  Also because of this tracking method, respondents will only be able to respond once *per Form*, not once per single-submission Link. Future versions of Central may change how this works. Please leave `feedback on the community forum <https://forum.getodk.org/c/features/9>`_ if this is something you'd like to see.
+
+Once a Link is created, it will appear in the table, along with a web address you can copy and paste to distribute the Link to respondents.
+
+   .. image:: /img/central-submissions/public-link-listing.png
+
+You cannot yet edit any of the details of a Public Link. This will come in a future version of Central.
+
+.. _central-submissions-link-revoke:
+
+Revoking a Link
+~~~~~~~~~~~~~~~
+
+You can revoke a Link at any time to prevent any further Submissions through it. Once a Link is revoked, all Submissions will be immediately denied, and new attempts to load the Form using the Link will result in an error instead.
+
+To revoke a Link, click on the :guilabel:`Revoke` button in the Link's row in the table. You will be asked to confirm the action. Once a Link is revoked, there is no way to restore it.
+
+.. _central-submissions-accessing:
+
+Accessing Submissions
+---------------------
 
 To find the Form submissions page, first find the form in the Form listings page (:menuselection:`--> Forms`) and click on it. You will be taken to the :ref:`Form Overview <central-forms-checklist>` page for that form. Click on the :menuselection:`--> Submissions` tab below the form name to find the submissions.
 

@@ -135,6 +135,15 @@ Seeing Form Submissions
 
 To see the current submissions uploaded to Central for a form, you can click on the :menuselection:`--> Submissions` tab below the name of the form. Here, you will see a summary table of all known submissions, and you will find multiple options for downloading and analyzing your submission data. This page and these options are covered in more detail in the :doc:`central-submissions` article.
 
+.. _central-forms-public-links:
+
+Managing Public Access Links
+----------------------------
+
+Public Access Links allow broad web-based distribution of a Form for direct responses from subjects. They can be used to conduct large remote self-administered data collection campaigns, or allow direct surveying of the public at large. Respondents will fill the Form directly in their web browser.
+
+For more information, please see the :ref:`relevant section <central-submissions-public-link>` in the Submission article.
+
 .. _central-forms-lifecycle:
 
 Managing Form Lifecycle

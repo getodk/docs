@@ -5,7 +5,7 @@ Managing Users in Central
 
 There are two types of user accounts in ODK Central: **Web Users** and **App Users**.
 
- - **Web Users** have accounts on the Central management website. These accounts are global across all projects on the server. They can log into the web interface and perform administrative actions like user management, form upload and management, and submission data viewing and download.
+ - **Web Users** have accounts on the Central management website. These accounts are global across all projects on the server. They can log into the web interface and perform administrative actions like user management, form upload and management, and submission data viewing and download. They can also fill and submit Forms directly in their web browser.
  - **App Users** can use mobile data collection apps like ODK Collect to :ref:`connect to Central <central-users-app-configure>`. App Users are limited to a single project at a time. Once connected through the app, they will be able to see the list of forms, download the ones they need, and upload completed submissions to those forms.
 
 You will need both types of users in order to run a successful data collection project: a Web User must upload a valid form definition, an App User must upload submissions to it from their mobile device, and the Web User will then be able to see those submissions in the web interface and download them for analysis.
@@ -15,73 +15,75 @@ You will need both types of users in order to run a successful data collection p
 Web User Roles
 --------------
 
-Central features Role-based User permissioning. In the current release of Central, we provide three roles: Administrator, Project Manager, and Project Viewer. In a future release, you will be able to define your own roles as you see fit.
+Central features Role-based User permissioning. In the current release of Central, we provide four roles: Administrator, Project Manager, Project Viewer, and Data Collector. In a future release, you will be able to define your own roles as you see fit.
 
 By default, Central roles are configured to allow the following:
 
-+------------------+---------------+-----------------+----------------+
-| Action           | Administrator | Project Manager | Project Viewer |
-+==================+===============+=================+================+
-| **Projects**                                                        |
-+------------------+---------------+-----------------+----------------+
-| Create           | x             |                 |                |
-+------------------+---------------+-----------------+----------------+
-| Edit Details     | x             | x               |                |
-+------------------+---------------+-----------------+----------------+
-| Archive          | x             | x               |                |
-+------------------+---------------+-----------------+----------------+
-| **Project Forms**                                                   |
-+------------------+---------------+-----------------+----------------+
-| Create           | x             | x               |                |
-+------------------+---------------+-----------------+----------------+
-| List All         | x             | x               | x              |
-+------------------+---------------+-----------------+----------------+
-| Edit Attachments | x             | x               |                |
-+------------------+---------------+-----------------+----------------+
-| Edit Details     | x             | x               |                |
-+------------------+---------------+-----------------+----------------+
-| Set State        | x             | x               |                |
-+------------------+---------------+-----------------+----------------+
-| Delete           | x             | x               |                |
-+------------------+---------------+-----------------+----------------+
-| **Project Form Submissions**                                        |
-+------------------+---------------+-----------------+----------------+
-| Create (API)     | x             | x               |                |
-+------------------+---------------+-----------------+----------------+
-| View & Download  | x             | x               | x              |
-+------------------+---------------+-----------------+----------------+
-| OData Access     | x             | x               | x              |
-+------------------+---------------+-----------------+----------------+
-| **Project App Users**                                               |
-+------------------+---------------+-----------------+----------------+
-| Create           | x             | x               |                |
-+------------------+---------------+-----------------+----------------+
-| List All         | x             | x               |                |
-+------------------+---------------+-----------------+----------------+
-| Revoke Access    | x             | x               |                |
-+------------------+---------------+-----------------+----------------+
-| See Code         | x             | x               |                |
-+------------------+---------------+-----------------+----------------+
-| **Web Users**                                                       |
-+------------------+---------------+-----------------+----------------+
-| Create           | x             |                 |                |
-+------------------+---------------+-----------------+----------------+
-| List All         | x             |                 |                |
-+------------------+---------------+-----------------+----------------+
-| Edit Details     | x             |                 |                |
-+------------------+---------------+-----------------+----------------+
-| View Email Addr. | x             |                 |                |
-+------------------+---------------+-----------------+----------------+
-| Revoke Password  | x             |                 |                |
-+------------------+---------------+-----------------+----------------+
-| Delete           | x             |                 |                |
-+------------------+---------------+-----------------+----------------+
-| **Server Configuration**                                            |
-+------------------+---------------+-----------------+----------------+
-| Setup Backups    | x             |                 |                |
-+------------------+---------------+-----------------+----------------+
-| Stop Backups     | x             |                 |                |
-+------------------+---------------+-----------------+----------------+
++------------------+---------------+-----------------+----------------+----------------+
+| Action           | Administrator | Project Manager | Project Viewer | Data Collector |
++==================+===============+=================+================+================+
+| **Projects**                                                                         |
++------------------+---------------+-----------------+----------------+----------------+
+| Create           | x             |                 |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| Edit Details     | x             | x               |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| Archive          | x             | x               |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| **Project Forms**                                                                    |
++------------------+---------------+-----------------+----------------+----------------+
+| Create           | x             | x               |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| List All         | x             | x               | x              | x              |
++------------------+---------------+-----------------+----------------+----------------+
+| Edit Attachments | x             | x               |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| Edit Details     | x             | x               |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| Set State        | x             | x               |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| Delete           | x             | x               |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| **Project Form Submissions**                                                         |
++------------------+---------------+-----------------+----------------+----------------+
+| Create (API)     | x             | x               |                | x              |
++------------------+---------------+-----------------+----------------+----------------+
+| Create (browser) | x             | x               |                | x              |
++------------------+---------------+-----------------+----------------+----------------+
+| View & Download  | x             | x               | x              |                |
++------------------+---------------+-----------------+----------------+----------------+
+| OData Access     | x             | x               | x              |                |
++------------------+---------------+-----------------+----------------+----------------+
+| **Project App Users**                                                                |
++------------------+---------------+-----------------+----------------+----------------+
+| Create           | x             | x               |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| List All         | x             | x               |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| Revoke Access    | x             | x               |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| See Code         | x             | x               |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| **Web Users**                                                                        |
++------------------+---------------+-----------------+----------------+----------------+
+| Create           | x             |                 |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| List All         | x             |                 |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| Edit Details     | x             |                 |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| View Email Addr. | x             |                 |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| Revoke Password  | x             |                 |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| Delete           | x             |                 |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| **Server Configuration**                                                             |
++------------------+---------------+-----------------+----------------+----------------+
+| Setup Backups    | x             |                 |                |                |
++------------------+---------------+-----------------+----------------+----------------+
+| Stop Backups     | x             |                 |                |                |
++------------------+---------------+-----------------+----------------+----------------+
 
 .. _central-users-web-overview:
 
@@ -116,7 +118,7 @@ Newly created Web Users are only able to log in and edit their profile informati
 Assigning a site-wide Web User Role
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As mentioned under :ref:`central-users-web-roles` above, there are three Roles you may assign to Web Users in the current release of ODK Central: Administrator, Project Manager, and Project Viewer. Administrators may perform any action on the system, while Project Managers may perform any action on their assigned Project(s). Project Viewers may only see created forms and submissions within the Project they are assigned to, and cannot edit anything.
+As mentioned under :ref:`central-users-web-roles` above, there are four Roles you may assign to Web Users in the current release of ODK Central: Administrator, Project Manager, Project Viewer, and Data Collector. Administrators may perform any action on the system, while Project Managers may perform any action on their assigned Project(s). Project Viewers may only see created forms and submissions within the Project they are assigned to, and cannot edit anything. Data Collectors may see the list of all Forms in the Project, and retrieve basic information about them, but may only create new Submissions. They cannot see any Submissions.
 
 To learn how to assign a Project Manager or Viewer role, please see the :ref:`central-project-roles` section in the Projects guide.
 

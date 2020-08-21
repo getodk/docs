@@ -26,6 +26,7 @@ We have a lot of exciting ideas for the future of Central, and we look forward t
    - Encrypted forms (self-supplied or project managed keys)
    - OData live data feed for analysis with tools like Excel and Power BI
 
+ - Form filling directly in the web browser using `Enketo <https://enketo.org>`_
  - Integrated checklist-based help system
  - Automatic, encrypted off-site data backups to Google Drive
  - Clean and modern REST API for integration and extensibility
