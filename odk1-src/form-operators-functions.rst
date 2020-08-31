@@ -677,7 +677,7 @@ Converting dates and time
 
 .. function:: date(days)
 
-  Converts an integer representing a number of :arg:`days` from January 1, 1970 (the `Unix Epoch`_) to a standard date value.
+  Converts an integer representing a number of :arg:`days` from January 1, 1970 (the `Unix Epoch`_) or a string in ISO 8601 format to a standard date value.
 
   .. _Unix Epoch: https://en.wikipedia.org/wiki/Unix_time
     
