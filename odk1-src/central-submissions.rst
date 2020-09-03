@@ -114,7 +114,7 @@ Because OData is a industry standard, only one link is necessary to make most to
 
 For information on how to create an OData connection in Microsoft Excel, `click here <https://support.office.com/en-us/article/connect-to-an-odata-feed-power-query-4441a94d-9392-488a-a6a9-739b6d2ad500>`_. For instructions in Microsoft Power BI, `see this page <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`_.
 
-If you want to use the free and popular `R statistics and analysis tool <https://www.r-project.org/>`_, we recommend you use `ruODK <https://dbca-wa.github.io/ruODK/>`_. A guide for getting started with it can be found `here <https://dbca-wa.github.io/ruODK/articles/odata.html>`_. Just like ODK itself, ruODK is developed and supported by community members. If you wish to help improve it, you can find information `on GitHub <https://github.com/dbca-wa/ruODK/blob/master/CONTRIBUTING.md>`_.
+If you want to use the free and popular `R statistics and analysis tool <https://www.r-project.org/>`_, we recommend you use `ruODK <https://docs.ropensci.org/ruODK/>`_. A guide for getting started with it can be found `here <https://docs.ropensci.org/ruODK/articles/odata-api.html>`_. Just like ODK itself, ruODK is developed and supported by community members. If you wish to help improve it, you can find information `on GitHub <https://docs.ropensci.org/ruODK/CONTRIBUTING.html>`_.
 
 When asked for login information, provide the email address and password you use to log into ODK Central. Make sure you trust the tool you are using before you do this.
 
