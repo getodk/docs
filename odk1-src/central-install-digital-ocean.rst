@@ -292,6 +292,8 @@ ODK Central ships with a PostgreSQL database server. To use your own custom data
     CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
 4. Edit the file ``files/service/config.json.template`` to reflect your database host, table, and authentication details.
+The key `"ssl": {"rejectUnauthorized": false}` is only required if the external database requires TLS/SSL 
+(see [node-postgres docs](https://node-postgres.com/features/ssl)), otherwise it can be omitted.
 
   .. code-block:: console
 
@@ -299,7 +301,8 @@ ODK Central ships with a PostgreSQL database server. To use your own custom data
       "host": "my-db-host",
       "user": "my-db-user",
       "password": "my-db-password",
-      "database": "my-db-table"
+      "database": "my-db-name",
+      "ssl": {"rejectUnauthorized": false}
     },
 
 5. Build and run: ``docker-compose build service``, ``docker-compose stop service``, ``docker-compose up -d service``.
