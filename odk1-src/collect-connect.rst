@@ -14,15 +14,15 @@ Simple projects can choose to send data directly to Google Sheets.
 Configure server from QR code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. From the Action Button (:guilabel:`⋮`), select :menuselection:`Configure via QR code`
+#. From the Action Button (:guilabel:`⋮`), select :menuselection:`Configure via QR code`
 
-.. image:: /img/collect-configure/quick-qr-code.*
-  :alt: Configure via QR code
-  :class: device-screen-vertical
+    .. image:: /img/collect-configure/quick-qr-code.*
+      :alt: Configure via QR code
+      :class: device-screen-vertical
 
-2. Position the QR code in the center of the camera field, under the red line. When the camera focuses on the code, it will beep and scan the code.
+#. Position the QR code in the center of the camera field, under the red line. When the camera focuses on the code, it will beep and scan the code.
 
-3. Collect will apply the settings from the code and go back to the landing screen.
+#. Collect will apply the settings from the code and go back to the landing screen.
 
 .. seealso::
 
@@ -36,7 +36,7 @@ Configure server from QR code
 Configure server from settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. From the Action Button (:guilabel:`⋮`), select :menuselection:`General Settings`
+#. From the Action Button (:guilabel:`⋮`), select :menuselection:`General Settings`
 
 
    .. image:: /img/collect-connect/main-menu-highlight-kebab.*
@@ -45,12 +45,12 @@ Configure server from settings
    .. image:: /img/collect-connect/kebab-menu-general-settings.*
      :alt: The Main Menu screen of the Collect App. A modal menu has unrolled in the top-right corner, with the option *About*, *General Settings*, and *Admin Settings*. *General Settings* is circled in red.
 
-2. Select :guilabel:`Server`
+#. Select :guilabel:`Server`
 
    .. image:: /img/collect-connect/general-settings-server.*
      :alt: The General Settings menu in the Collect app. The options are *Server*, *User Interface*, *Form management*, and *User and device identity*. *Server* is circled in red.
 
-3. Make sure :guilabel:`ODK` is selected under :guilabel:`Type` and then fill in the :guilabel:`URL`, :guilabel:`Username` and :guilabel:`Password` for your server:
+#. Make sure :guilabel:`ODK` is selected under :guilabel:`Type` and then fill in the :guilabel:`URL`, :guilabel:`Username` and :guilabel:`Password` for your server:
 
    .. image:: /img/collect-connect/server-settings-odk.*
      :alt: The Server Settings screen in the Collect app. Below the *Type* option there are three items labeled *URL*, *Username*, and *Password*.
