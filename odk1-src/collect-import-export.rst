@@ -117,7 +117,7 @@ Here are the keys for all settings and the set of values they can take:
     "general" : {
 
       // Server
-      "protocol": {"odk_default", "google_sheets", "other_protocol"},
+      "protocol": {"odk_default", "google_sheets"},
       "server_url": String,
       "username": String,
       "password": String,
