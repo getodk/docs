@@ -193,7 +193,7 @@ Specifies how blank forms should be updated:
   :guilabel:`Previously downloaded forms only`
     Enumerators will receive a notification when one or more forms on the device have an update available to their form definition or media files. Tapping on the notification will go to :guilabel:`Get Blank Form` where the user can choose to download some or all of the updated forms.
   :guilabel:`Exactly match server`
-    Collect will automatically download and update forms based on what's on the server. In addition, forms not on the server will be deleted from Collect. This mode hides :guilabel:`Get Blank Form` and the :guilabel:`Blank Forms` tab in :guilabel:`Delete Saved Form` as they are not required. The enumerator can trigger an update from the server on the :guilabel:`Fill Blank Form` screen.
+    Collect will automatically download and update forms based on what's on the server. In addition, forms not on the server will be deleted from Collect. This mode hides :guilabel:`Get Blank Form` and the :guilabel:`Blank Forms` tab in :guilabel:`Delete Saved Form` as they are not required. The enumerator can trigger an update from the server on the :guilabel:`Fill Blank Form` screen. Filled instances of blank forms deleted during server updates will still be editable.
 
 .. tip::
 
