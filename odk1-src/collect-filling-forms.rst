@@ -96,10 +96,16 @@ If you have a repeating group, you can add new instances of that repeat in the f
 
 1. By :ref:`navigating <navigating>` into an empty repeat, or to the next question at the very end of the repeat, you will automatically be prompted to add a new instance of that repeat.
 
-2. By clicking the "add" button in the :ref:`jump menu <jumping>`:
+2. By clicking the "add" button while in a repeat:
+
+.. image:: /img/collect-forms/repeat-inline-add.*
+    :alt: The "add" button displayed in form entry
+    :class: device-screen-vertical
+
+3. By clicking the "add" button in the :ref:`jump menu <jumping>`:
 
 .. image:: /img/collect-forms/jump-button-add.*
-    :alt: The "add" button displayed on an Android phone.
+    :alt: The "add" button displayed in the jump menu.
     :class: device-screen-vertical
 
 .. _removing_repeats:
