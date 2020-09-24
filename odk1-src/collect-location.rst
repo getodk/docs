@@ -1,108 +1,25 @@
-.. spelling::
-
-  doesn
-  Fi
-  Wi
-
 Improving Location Performance
 ==================================
-	
-When you need to specify location in any survey form, you may get a warning message which says: **Sorry, location providers are disabled** and a screen will open asking you to enable location providers.
 
-.. image:: /img/collect-best-practices/example-form.png
-   :alt: Image showing form with a question to specify location.
-   :class: device-screen-vertical
+ODK Collect uses Android's `Fused Location Provider <https://developers.google.com/location-context/fused-location-provider>`_ to get a device's geolocation. This means data from multiple sensors including GPS, WiFi and Bluetooth are combined to quickly compute accurate geolocation readings. When Collect is accessing your device's geolocation, you will see a location (:fa:`map-marker`) icon in the upper right corner of your screen. Learn more about geolocation-based questions in :ref:`the question types section <location-widgets>`.
 
-.. image:: /img/collect-best-practices/warning-message.png
-   :alt: Image showing warning message.
-   :class: device-screen-vertical
 
-.. _location-providers:
+.. warning::
+  Some versions of ODK Collect prior to v1.28.0 use raw location sensors because of an Android bug. If you are having trouble getting a geolocation reading, first make sure you are using the latest version of ODK Collect.
 
-Enable/Disable location providers
------------------------------------
+Devices
+--------
 
-To turn your device's location providers on/off:
+Different devices can have dramatically different quality sensors. If you are having trouble getting a geolocation reading from a specific device, it is likely either because the device model does not have high-quality sensors or because the specific device has a faulty sensor. If you can, try going to the same geolocation with a different device to compare performance. Sensor quality has dramatically improved over the years so in general, newer devices will get higher-accuracy readings more quickly.
 
-1. Open your device's Settings app.
+Android Location Settings
+--------------------------
 
-.. image:: /img/collect-best-practices/settings.png
-   :alt: Image showing Settings app.
-   :class: device-screen-vertical
+Different Android versions provide different settings for controlling how geolocation is captured. See how to configure Android location `in the Android documentation <https://support.google.com/accounts/answer/3467281>`_. In general, the more different sensors are available to Android, the better its geolocation estimation will be so make sure they are all enabled.
 
-2. :gesture:`Tap` :guilabel:`Location`. 
+Helping the GPS Sensor
+------------------------
 
-.. image:: /img/collect-best-practices/location.png
-   :alt: Image showing Location option.
-   :class: device-screen-vertical
+GPS works by receiving signals from specific satellites so to help your device get a geolocation reading, get as clear of a view of the sky as possible. GPS does not work inside of buildings and will be affected by obstacles like dense forest canopy or tall buildings. It is typically the main technology used to identify a device's geolocation anywhere other than in urban areas where multiple WiFi access points and cell towers can be accessed at the same time. 
 
-.. tip::
-
-  If you don't see "Location",  :gesture:`tap` :guilabel:`Security & Location` and then :guilabel:`Location`.
-
-3. Turn Location on or off.
-
-.. figure:: /img/collect-best-practices/location-off.png
-   :alt: Image showing Location off.
-   :class: device-screen-vertical
-
-   Location providers disabled.
-
-.. figure:: /img/collect-best-practices/location-on.png
-   :alt: Image showing Location on.
-   :class: device-screen-vertical
-
-   Location providers enabled.   
-
-.. _location-mode:
-
-Change location mode   
--------------------------
-
-You can also choose your location mode based on accuracy, speed, and battery use. Android can help improve location accuracy by triangulating your location off nearby Wi-Fi access points or cell towers. Combined with data available from your ailing GPS signal, turning on Wi-Fi will greatly improve location accuracy under most conditions.
-
-In the Location section, :gesture:`tap` on :guilabel:`Mode`. 
-
-.. image:: /img/collect-best-practices/mode.png
-   :alt: Image showing Mode option.
-   :class: device-screen-vertical
-
-Then pick:
-
-  - **High accuracy**: This mode uses GPS, Wi-Fi, mobile networks, and other sensors to get the highest-accuracy location. It uses Google's Location service to help estimate your device's location faster and more accurately.
- 
-  - **Power saving** or **Battery saving**: This mode uses sources that use less battery, like Wi-Fi and mobile networks. It uses Google's Location service to help estimate your device's location faster and more accurately.
-
-  - **GPS only** or **Device only**: This mode uses only GPS. It doesn’t use Google's Location service to provide location information. It can estimate your device's location slower and use more battery.
-
-.. image:: /img/collect-best-practices/accuracy-mode.png
-   :alt: Image showing different accuracy modes.
-   :class: device-screen-vertical
-
-.. _improve-accuracy:
-
-Improve location accuracy
-----------------------------
-
-You can also improve accuracy of location.
-
-:gesture:`Tap` on :guilabel:`Improve accuracy` in Location section.
-
-.. image:: /img/collect-best-practices/improve-accuracy.png
-   :alt: Image showing Improve-accuracy option.
-   :class: device-screen-vertical
-
-Then enable:
-
-- **Wi-Fi scanning**: Allow apps and services to scan for Wi-Fi networks automatically, even when Wi-Fi is turned off.
-- **Bluetooth scanning**: Allow apps and services to scan for and connect to nearby devices automatically via Bluetooth, even when Bluetooth is turned off.
-
-.. image:: /img/collect-best-practices/improve-accuracy-mode.png
-   :alt: Image showing Wi-Fi scanning and Bluetooth scanning options.
-   :class: device-screen-vertical
-
-.. note::
-
-  Google has added Bluetooth scanning support to further improve location accuracy with  Android 6.0 Marshmallow.
-
-For more details on location services, see `this guide <https://support.google.com/nexus/answer/3467281?hl=en>`_.
+It can take a while to get satellite lock when first attempting to get a geolocation. You can use a :ref:`background location question <metadata-start-geopoint>` at the beginning of your form definition to "warm" the GPS before data collectors to answer a :ref:`location question <location-widgets>`. You can also use an external app such as `GPS Status & Toolbox <https://play.google.com/store/apps/details?id=com.eclipsim.gpsstatus2>`_ for this purpose. Additionally, this application can help you troubleshoot GPS issues. See `its documentation <https://mobiwia.com/gpsstatus/>`_ for more details.
