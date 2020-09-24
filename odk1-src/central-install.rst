@@ -50,4 +50,4 @@ Before installing ODK Central on your server, you need to install software depen
 After installing Docker and Docker Compose you can follow our DigitalOcean instructions from running ``git clone https://github.com/getodk/central``. Continue with the DigitalOcean instructions for logging into ODK Central.
 
 .. warning::
-  You will need to :ref:`configure an e-mail service <central-install-digital-ocean-custom-mail>` such as `Amazon SES <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-smtp.html>`_ or `SendGrid <https://sendgrid.com/>`_ because Amazon restricts email sent from EC2.
+  You will need to :ref:`configure an e-mail service <central-install-digital-ocean-custom-mail>` such as `Amazon SES <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-smtp.html>`_ or `Mailgun <https://www.mailgun.com/smtp/>`_ because Amazon restricts email sent from EC2.
