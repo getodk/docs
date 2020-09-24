@@ -16,8 +16,6 @@
   phonenumber
   placementmap
   rect
-  simserial
-  subscriberid
   substr
   uw
   ZXing
@@ -2207,11 +2205,9 @@ These items are dependent on the survey collection event:
 - :tc:`today` --- The date the survey was started in ISO 8601 format (e.g, 2019-09-27).
 - :tc:`start-geopoint` --- The geolocation when the survey was started. :ref:`Read more <metadata-start-geopoint>`.
 
-These items are defined by the device and cannot be changed:
+This item is defined at installation time and cannot be changed:
 
 - :tc:`deviceid`
-- :tc:`subscriberid`
-- :tc:`simserial`
 
 These items are defined in Collect,
 and :ref:`can be edited in Settings <form-metadata-settings>`:
@@ -2228,8 +2224,6 @@ and :ref:`can be edited in Settings <form-metadata-settings>`:
   end,end
   today,today
   deviceid,deviceid
-  subscriberid,subscriberid
-  simserial,simserial
   username,username
   phonenumber,phonenumber
   start-geopoint,start-geopoint
