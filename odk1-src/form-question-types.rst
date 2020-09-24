@@ -1718,8 +1718,8 @@ Records audio from an external app.
 
   There are many apps available for this, including:
 
-  - `Audio Recorder from Sony <https://play.google.com/store/apps/details?id=com.sonymobile.androidapp.audiorecorder&hl=en>`_
-  - `RecForge II <https://play.google.com/store/apps/details?id=dje073.android.modernrecforge&hl=en>`_
+  - `Axet Audio Recorder (open source) <https://play.google.com/store/apps/details?id=com.github.axet.audiorecorder>`_
+  - `RecForge II <https://play.google.com/store/apps/details?id=dje073.android.modernrecforge>`_
 
   Any app that responds to
   `android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION`
