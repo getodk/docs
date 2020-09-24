@@ -203,7 +203,14 @@ Pulling Forms into Briefcase
 Deleting Forms
 ===============
 
-You can delete :formstate:`Blank` forms as well as filled forms in any state (:formstate:`Saved`, :formstate:`Finalized`, or :formstate:`Sent`). Deleting :formstate:`Blank` forms or filled forms in :formstate:`Saved` or :formstate:`Finalized` state removes every trace of that form definition or filled form. Deleting a :formstate:`Sent` form deletes the form contents but metadata associated with it including the deletion date and the instance name are maintained for display in the :guilabel:`View Sent Form` list.
+.. warning::
+    In versions prior to v1.28, deleting a blank form makes it impossible to edit filled instances of that form.
+
+    In Collect v1.28 and later, filled instances of forms will still be editable after their blank form is deleted. This means that the form definition and media files will remain on the device until all the filled instances have been deleted.
+
+    
+
+You can delete :formstate:`Blank` forms as well as filled forms in any state (:formstate:`Saved`, :formstate:`Finalized`, or :formstate:`Sent`). Deleting a :formstate:`Sent` form deletes the form contents but metadata associated with it including the deletion date and the instance name are maintained for display in the :guilabel:`View Sent Form` list.
 
 1. Select :guilabel:`Delete Saved Form` on the app home screen.
 

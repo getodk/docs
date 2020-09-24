@@ -183,13 +183,33 @@ To access Form Management settings:
 
 .. rubric:: Form update
 
-:guilabel:`Periodic form updates check`
+:guilabel:`Blank form update mode`
+"""""""""""""""""""""""""""""""""""
+
+Specifies how blank forms should be updated:
+
+  :guilabel:`Manually`
+    The default mode in Collect. Enumerators manually manage blank forms on the device using :guilabel:`Get Blank Form` and :guilabel:`Delete Saved Form`.
+  :guilabel:`Previously downloaded forms only`
+    Enumerators will receive a notification when one or more forms on the device have an update available to their form definition or media files. Tapping on the notification will go to :guilabel:`Get Blank Form` where the user can choose to download some or all of the updated forms.
+  :guilabel:`Exactly match server`
+    Collect will automatically download and update forms based on what's on the server. In addition, forms not on the server will be deleted from Collect. This mode hides :guilabel:`Get Blank Form` and the :guilabel:`Blank Forms` tab in :guilabel:`Delete Saved Form` as they are not required. The enumerator can trigger an update from the server on the :guilabel:`Fill Blank Form` screen. Filled instances of blank forms deleted during server updates will still be editable.
+
+.. tip::
+
+  If your server is configured to provide the exact set of forms enumerators need and you'd like to ensure they always have the most up to date versions on device then we'd recommend using :guilabel:`Exactly match server`.
+
+  However, if your server is set up to provide forms that aren't relevant to every enumerator then we'd recommend using :guilabel:`Previously downloaded forms only` (ideally with :guilabel:`Automatic download`) so that enumerators are still notified when the forms they do use are updated.
+
+  :guilabel:`Manually` makes the most sense when forms only need to be downloaded once and will never change or if you are extremely bandwidth-limited.
+
+:guilabel:`Automatic update frequency`
 """"""""""""""""""""""""""""""""""""""""
-  Specifies the frequency at which the configured server should be polled for updates to the forms on the device. The user will receive a notification when one or more forms has an update available to its form definition or media files. Tapping on the notification will go to :guilabel:`Get Blank Form` where the user can choose to download some or all of the updated forms.
+  Specifies how frequently Collect should check for updates to the forms on the server when using :guilabel:`Previously downloaded forms only` or :guilabel:`Exactly match server`. This option is not available if :guilabel:`Manually` is selected.
 
 :guilabel:`Automatic download`
 """""""""""""""""""""""""""""""
-  Only available if :guilabel:`Periodic form updates check` is set. When :guilabel:`Automatic download` is enabled, the periodic form update check will trigger an automatic download of any forms on the device that have an update to their form definition or media files. The user will receive a notification when the automatic download completes with either a success or failure. Tapping on the notification will go to :guilabel:`Get Blank Form` where the user will see success or failure messages for each form for which an update was attempted.
+  Only available if :guilabel:`Previously downloaded forms only` is selected. When :guilabel:`Automatic download` is enabled, the form update check will trigger an automatic download of any forms on the device that have updated definitions or media files. The user will receive a notification when the automatic download completes with either a success or failure. Tapping on the notification will go to :guilabel:`Get Blank Form` where the user will see success or failure messages for each form for which an update was attempted.
 
 :guilabel:`Hide old form versions`
 """""""""""""""""""""""""""""""""""
