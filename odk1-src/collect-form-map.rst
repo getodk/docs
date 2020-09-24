@@ -15,7 +15,11 @@ If you are collecting data related to physical locations, you can see a map of a
 .. note:: 
   Blank forms must be downloaded with Collect v1.25 or later. Previously-downloaded forms will not have corresponding maps. If you update a form downloaded before Collect v1.25 and open its map, only filled forms created with the new form version will be displayed. Any previously-filled forms will not be included.
 
-In the :guilabel:`Fill Blank Form` list, form definitions with a geopoint question outside of any repeat have a map button. Tap on the map button to open a map showing the filled forms for that form definition. The first geopoint question in the form definition that is outside of any repeat is used to map filled forms. The first geopoint question can be one that either :ref:`requires user intervention <location-widgets>` or :ref:`gets the location in the background <metadata-start-geopoint>`. On the map, you will also see your current position and be able to fill a new instance of the current form definition.
+In the :guilabel:`Fill Blank Form` list, form definitions with a geopoint question outside of any repeat have a map button (:fa:`map`). Tap on the map button to open a map showing the filled forms for that form definition. The first geopoint question in the form definition that is outside of any repeat is used to map filled forms. This question can either be :ref:`a visible geopoint question <location-widgets>` or :ref:`a question that gets the location in the background <metadata-start-geopoint>`. On the map, you will also see your current position and be able to fill a new instance of the current form definition.
+
+   .. image:: /img/collect-forms/form-map-with-selection.*
+     :alt: The map for a form with title "Enquête SICAP Sacré Coeur." Several saved and finalized forms are shown as purple markers. One filled form is selected and its description is provided at the bottom of the screen. It says "Khadim Aïdara - Gestionnaire de projet" followed by the finalization time and a button to edit the saved form.
+
 
 .. form-instance-map-markers:
 
@@ -29,7 +33,9 @@ Filled forms are represented by colored map markers. The color of each map marke
 * Green: sent
 * Red: send attempt failed
 
-Tapping on a map marker will open the filled form for viewing or editing depending on the form status. By default, forms with :formstate:`Saved`, :formstate:`Finalized`, and :formstate:`Submission Failure` status are opened for edit and :formstate:`Sent` forms are opened for viewing. However, if the :guilabel:`Edit Saved Form` button is made unavailable from the :ref:`admin settings <user-access-control-settings>`, forms with :formstate:`Saved`, :formstate:`Finalized`, and :formstate:`Submission Failure` status are opened as view-only.
+Tapping on a map marker shows details about the filled form at the bottom of the screen. The filled form will be identified by its `instance name <http://xlsform.org/en/#specify-form-submission-name>`_. In the screenshot above, first name, last name, and job title are displayed. Strategically choosing data from the form to show in the instance name can make the form map into a useful dashboard.
+
+The detail view also shows a button for viewing or editing the selected filled form depending on its status. By default, forms with :formstate:`Saved`, :formstate:`Finalized`, and :formstate:`Submission Failure` status are opened for edit and :formstate:`Sent` forms are opened for viewing. However, if the :guilabel:`Edit Saved Form` button is made unavailable from the :ref:`admin settings <user-access-control-settings>`, forms with :formstate:`Saved`, :formstate:`Finalized`, and :formstate:`Submission Failure` status are opened as view-only.
 
 
 .. form-map-controls:
