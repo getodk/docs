@@ -249,14 +249,14 @@ epub_exclude_files = ['search.html']
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {
     # 'py': ('https://docs.python.org/', None),
-    'odk1': ('https://docs.odk-x.org/', None)
+    'odkx': ('https://docs.odk-x.org/', None)
 }
 
 # Add custom CSS
 
 def setup(app):
-    app.add_stylesheet('css/custom.css')
-    app.add_javascript('js/custom.js')
+    app.add_css_file('css/custom.css')
+    app.add_js_file('js/custom.js')
 
 # At top of every document
 
@@ -280,7 +280,7 @@ download_pdf = """
 Download this documentation as a PDF.
 
 """
-odk_pdf = """
+odkx_pdf = """
 
 _downloads/ODK-X-Documentation.pdf
 
@@ -360,7 +360,7 @@ rst_epilog = """
 """
 
 html_context = {'download_pdf' : download_pdf,
-                'odk_pdf' : odk_pdf,
+                'odkx_pdf' : odkx_pdf,
                 'prob_in_doc' : prob_in_doc ,
                 'contri_start' : contri_start ,
                 'join' : join ,
@@ -374,7 +374,7 @@ html_context = {'download_pdf' : download_pdf,
                 'contri_guide' : contri_guide ,
                 'forum_here' : forum_here ,
                 'display_github' : True,
-                'github_user' : "opendatakit", # Username
+                'github_user' : "odk-x", # Username
                 'github_repo' : "docs", # Repo name
                 'github_version' : "master", # Version
                 'conf_py_path' : "/odkx-src/" # Path in the checkout to the docs root

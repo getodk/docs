@@ -39,10 +39,10 @@ It can take a long time (>10 minutes) to clone the repo due to the large number 
 
 ### Building the Docker image
 
-Next, you need to build the Docker image with all the tools you will be using to work with ODK's docs.
+Next, you need to build the Docker image with all the tools you will be using to work with ODK-X's docs.
 
 ```
-docker build -t odk-docs .
+docker build -t odkx-docs .
 ```
 
 It can take a long time to build the Docker image, but you only need to do this once.
@@ -63,10 +63,10 @@ Changes you make in the source files will automatically be built and shown in yo
 
 Press `Ctrl-C` on your keyboard to stop the build server. It could take a while to effectively stop, and you can always close the terminal window.
 
-If you get a `The name "odk-docs" is already in use by container` error message, run the following command:
+If you get a `The name "odkx-docs" is already in use by container` error message, run the following command:
 
 ```
-docker kill odk-docs
+docker kill odkx-docs
 ```
 
 ### Other build tasks  
@@ -91,62 +91,61 @@ We highly recommend you use a virtual environment like [virtualenv](https://virt
 
       .. _virtual environment: https://docs.python.org/3/tutorial/venv.html
 
+	  #. Create a directory called 'odkx'
+		  Create a directory for the documents. For the purposes of these directions we will use the folder 'odkx' as the directory that will contain the ODK-X Docs environment.
+			
+
+			mkdir odkx
+				
+		
+		  Next, navigate the command line interface to inside the directory. 
+		  
+		  		  
+			cd odkx 
+
+
       #. Create the virtual environment.
 
-         .. tabs::
-   
-            .. group-tab:: Bash
 
-               .. code:: console
+		
+		Next create the virtual environment inside the 'odkx' directory.
+		
+			Bash
 
-                  /odk/ $ python3 -m venv odkenv
+				/odkx/ $ python3 -m venv odkxenv
 
-            .. group-tab:: PowerShell
+            PowerShell
 
-               .. code:: powershell
-
-                  /odk/ > python -m venv odkenv
+                /odkx/ > python -m venv odkxenv
 
       #. Activate the virtual environment.
 
-         .. tabs::
-
-            .. group-tab:: Bash
+			Bash
       
-               .. code:: console
+                /odkx/ $ source odkxenv/bin/activate
+                (odkxenv) /odkx/ $
 
-                  /odk/ $ source odkenv/bin/activate
-                  (odkenv) /odk/ $
+			PowerShell
+			
+                /odkx/ > source odkxenv/bin/activate
+                (odkxenv) /odkx/ >
 
-            .. group-tab:: PowerShell
-
-               .. code:: console
-
-                  /odk/ > source odkenv/bin/activate
-                  (odkenv) /odk/ >
-
-         The ``(odkenv)`` before the prompt shows that the virtual environment is active.
+         The ``(odkxenv)`` before the prompt shows that the virtual environment is active.
          You will need to have this active any time you are working on the docs.
       
-         If the file cannot be found, your activate file may be located under odkenv/scripts/activate.
+         If the file cannot be found, your activate file may be located under odkxenv/scripts/activate.
 
          Later, to deactivate the virtual environment:
 
-         .. tabs::
+		  Bash
 
-            .. group-tab:: Bash
-      
-               .. code:: console
+                  (odkxenv) /odkx/ $ deactivate
+                  /odkx/ $
 
-                  (odkenv) /odk/ $ deactivate
-                  /odk/ $
+		  PowerShell
 
-            .. group-tab:: PowerShell
-
-               .. code:: console
-
-                  (odkenv) /odk/ > deactivate
-                  /odk/ >
+                  (odkxenv) /odkx/ > deactivate
+                  /odkx/ >
 		  
 
 ### Cloning the repo
@@ -188,8 +187,7 @@ We are open for new issues and pull requests.
 
  - Please read the [Contributors Guide](https://docs.odk-x.org/contributing) before working on the documentation.
  - Find issues to work on.
-    - First time contributors are encouraged to complete a [line edit](https://github.com/getodk/docs/issues/96) as a way to get familiar with our contribution process.
-	- Issues labelled [easy](https://github.com/odk-x/docs/labels/easy) do not require much specific technical knowledge.
+  	- Issues labelled [easy](https://github.com/odk-x/docs/labels/easy) do not require much specific technical knowledge.
 	- Issues labelled [contributor friendly](https://github.com/odk-x/docs/labels/contributor%20friendly) are usually self-contained and don't require extensive knowledge of the ODK-X ecosystem as a whole.
 	
 You can also...

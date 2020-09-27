@@ -3,7 +3,7 @@ import shutil
 import sphinx.environment
 from docutils import nodes
 from docutils.parsers.rst import directives
-from sphinx.util.compat import Directive
+from docutils.parsers.rst import Directive
 
 def yes_no(name, arg):
 
@@ -31,18 +31,13 @@ def visit_video_html(self, node):
     vsrc = node["uri"]
     spth = srcPath % vsrc
 
-    if "tmp1-src" not in spth:
-        if os.path.exists("./odkx-build/_videos"):
-            pass
-        else:
-            os.makedirs("./odkx-build/_videos/")
-        dpth = "./odkx-build/_videos/%s" %vsrc[vsrc.rfind('/')+1:]
+
+    if os.path.exists("./odkx-build/_videos"):
+        pass
     else:
-        if os.path.exists("./odk1-build/_videos"):
-            pass
-        else:   
-            os.makedirs("./odk1-build/_videos/")
-        dpth = "./odk1-build/_videos/%s" %vsrc[vsrc.rfind('/')+1:]
+        os.makedirs("./odkx-build/_videos/")
+
+    dpth = "./odkx-build/_videos/%s" %vsrc[vsrc.rfind('/')+1:]
 
     shutil.copyfile(spth, dpth)
 
