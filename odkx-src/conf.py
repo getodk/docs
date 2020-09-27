@@ -153,7 +153,7 @@ latex_elements = {
     'pointsize': '12pt',
 
     # Additional stuff for the LaTeX preamble.
-    'preamble': '''
+    'preamble': r'''
     \usepackage{fontspec}
     \\newcommand{\changefont}{%
       \\fontsize{8}{10}\selectfont
