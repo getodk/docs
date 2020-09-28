@@ -155,28 +155,28 @@ latex_elements = {
     # Additional stuff for the LaTeX preamble.
     'preamble': r'''
     \usepackage{fontspec}
-    \\newcommand{\changefont}{%
-      \\fontsize{8}{10}\selectfont
+    \newcommand{\changefont}{%
+      \fontsize{8}{10}\selectfont
     }
     \makeatletter
-      \\fancypagestyle{normal}{
-        \\fancyhf{}
-        \\fancyfoot[LE,RO]{{\py@HeaderFamily\\thepage}}
-        \\fancyhead[LO]{{\py@HeaderFamily\\nouppercase{\\rightmark}}}
-        \\fancyhead[RE]{{\py@HeaderFamily\\nouppercase{\\leftmark}}}
-        \\fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.odk-x.org/odk-x}{https://docs.odk-x.org/odk-x}.}}}
-        \\renewcommand{\\headrulewidth}{0.4pt}
-        \\renewcommand{\\footrulewidth}{0.4pt}
+      \fancypagestyle{normal}{
+        \fancyhf{}
+        \fancyfoot[LE,RO]{{\py@HeaderFamily\thepage}}
+        \fancyhead[LO]{{\py@HeaderFamily\nouppercase{\rightmark}}}
+        \fancyhead[RE]{{\py@HeaderFamily\nouppercase{\leftmark}}}
+        \fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.odk-x.org/odk-x}{https://docs.odk-x.org/odk-x}.}}}
+        \renewcommand{\headrulewidth}{0.4pt}
+        \renewcommand{\footrulewidth}{0.4pt}
       }
-      \\fancypagestyle{plain}{
-        \\fancyhf{}
-        \\fancyfoot[LE,RO]{{\py@HeaderFamily\\thepage}}
-        \\fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.odk-x.org/odk-x}{https://docs.odk-x.org/odk-x}.}}}
-        \\renewcommand{\\headrulewidth}{0pt}
-        \\renewcommand{\\footrulewidth}{0.4pt}
+      \fancypagestyle{plain}{
+        \fancyhf{}
+        \fancyfoot[LE,RO]{{\py@HeaderFamily\thepage}}
+        \fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.odk-x.org/odk-x}{https://docs.odk-x.org/odk-x}.}}}
+        \renewcommand{\headrulewidth}{0pt}
+        \renewcommand{\footrulewidth}{0.4pt}
       }
     \makeatother
-    \\renewcommand{\\release}{}
+    \renewcommand{\release}{}
     ''',
 
     # disable font inclusion
