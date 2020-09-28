@@ -405,7 +405,7 @@ on any computer.
          #. Accept any default settings.
          #. Open Powershell and add LFS to git:
 
-            .. code:: powershell
+            .. code:: ps1con
 
                > git lfs install
 
@@ -528,7 +528,7 @@ on any computer.
          #. Accept all default settings.
          #. Open Powershell and make sure the installation completed.
 
-            .. code:: powershell
+            .. code:: ps1con
 
                > python --version
                Python 3.7.0
@@ -567,7 +567,7 @@ on any computer.
 
       .. group-tab:: PowerShell
 
-         .. code:: powershell
+         .. code:: ps1con
 
             > mkdir odk
             > cd odk
@@ -597,7 +597,7 @@ on any computer.
 
          .. group-tab:: PowerShell
 
-            .. code:: powershell
+            .. code:: ps1con
 
                /odk/ > python -m venv odkenv
 
@@ -672,7 +672,7 @@ on any computer.
 
    #. Use your terminal to clone the repository.
 
-      You should already be in the :file:`odk` directory,
+      You should already be in the :file:`odkx` directory,
       with the virtual environment active.
 
       .. tabs::
@@ -690,7 +690,7 @@ on any computer.
 
          .. group-tab:: Powershell
 
-            .. code:: powershell
+            .. code:: ps1con
 
                (odkenv) /odk/ > git clone https://github.com/your-github-username/docs.git
                .
@@ -768,7 +768,7 @@ on any computer.
 
       .. group-tab:: PowerShell
 
-         .. code:: powershell
+         .. code:: ps1con
 
             (odkenv) /odk/docs/ > git remote add upstream https://github.com/odk-x/docs.git
             (odkenv) /odk/docs/ > git remote -v
@@ -801,7 +801,7 @@ on any computer.
 
       .. group-tab:: PowerShell
 
-         .. code:: powershell
+         .. code:: ps1con
 
             (odkenv) /odk/docs/ > pip install --upgrade pip
             (odkenv) /odk/docs/ > pip install -r requirements.txt
@@ -938,7 +938,7 @@ Working on the docs
 
          .. group-tab:: PowerShell
 
-            .. code:: powershell
+            .. code:: ps1con
 
                (odkenv) /odk/docs/ > git branch
                   branch-name
@@ -961,7 +961,7 @@ Working on the docs
 
          .. group-tab:: PowerShell
 
-            .. code:: powershell
+            .. code:: ps1con
 
                (odkenv) /odk/docs/ >  git checkout master
                Switched to branch 'master'
@@ -994,7 +994,7 @@ Working on the docs
 
       .. group-tab:: PowerShell
 
-         .. code:: powershell
+         .. code:: ps1con
 
             (odkenv) /odk/docs/ > git pull upstream master
             (odkenv) /odk/docs/ > git status
@@ -1025,7 +1025,7 @@ Working on the docs
 
       .. group-tab:: PowerShell
 
-         .. code:: powershell
+         .. code:: ps1con
 
             (odkenv) /odk/docs/ > git checkout -b branch-name
             Switched to a new branch 'branch-name'
@@ -1089,7 +1089,7 @@ Working on the docs
 
        .. group-tab:: PowerShell
 
-          .. code:: powershell
+          .. code:: ps1con
 
              (odkenv) /odk/docs/ > rm -r -fo tmpx-src
              (odkenv) /odk/docs/ > rm -r -fo odkx-build
@@ -1145,7 +1145,7 @@ Working on the docs
 
       .. group-tab:: PowerShell
 
-         .. code:: powershell
+         .. code:: ps1con
 
             (odkenv) /odk/docs/ > rm -r -fo tmpx-src
             (odkenv) /odk/docs/ > rm -r -fo odkx-build
@@ -1224,7 +1224,7 @@ Working on the docs
 
       .. group-tab:: PowerShell
 
-         .. code:: powershell
+         .. code:: ps1con
 
             (odkenv) /odk/docs/ > python -m http.server -d odkx-build 8000
             Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
@@ -1270,7 +1270,7 @@ Working on the docs
 
          .. group-tab:: PowerShell
 
-            .. code:: powershell
+            .. code:: ps1con
 
                (odkenv) /odk/docs/ > git add -A
 
@@ -1286,7 +1286,7 @@ Working on the docs
 
          .. group-tab:: PowerShell
 
-            .. code:: powershell
+            .. code:: ps1con
 
                (odkenv) /odk/docs/ > git commit -m "Write a commit message here."
 
@@ -1307,7 +1307,7 @@ Working on the docs
 
       .. group-tab:: PowerShell
 
-         .. code:: powershell
+         .. code:: ps1con
 
             (odkenv) /odk/docs/ > git push origin branch-name
 

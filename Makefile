@@ -41,6 +41,8 @@ odkx-deploy: odkx-copy
 
 build-all: odkx
 
+odkx-build: odkx
+
 odkx-latex: odkx
 	@$(SPHINXBUILD) -b latex "$(COMPILE_X_SRCDIR)" "$(ODKX_BUILDDIR)"/latex $(SPHINXOPTS)
 	$(PYTHON) util/resize.py "$(ODKX_BUILDDIR)"
