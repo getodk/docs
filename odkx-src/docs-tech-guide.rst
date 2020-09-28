@@ -405,7 +405,7 @@ on any computer.
          #. Accept any default settings.
          #. Open Powershell and add LFS to git:
 
-            .. code:: powershell
+            .. code:: ps1con
 
                > git lfs install
 
@@ -528,7 +528,7 @@ on any computer.
          #. Accept all default settings.
          #. Open Powershell and make sure the installation completed.
 
-            .. code:: powershell
+            .. code:: ps1con
 
                > python --version
                Python 3.7.0
@@ -567,7 +567,7 @@ on any computer.
 
       .. group-tab:: PowerShell
 
-         .. code:: powershell
+         .. code:: ps1con
 
             > mkdir odk
             > cd odk
@@ -597,7 +597,7 @@ on any computer.
 
          .. group-tab:: PowerShell
 
-            .. code:: powershell
+            .. code:: ps1con
 
                /odk/ > python -m venv odkenv
 
@@ -672,7 +672,7 @@ on any computer.
 
    #. Use your terminal to clone the repository.
 
-      You should already be in the :file:`odk` directory,
+      You should already be in the :file:`odkx` directory,
       with the virtual environment active.
 
       .. tabs::
@@ -690,7 +690,7 @@ on any computer.
 
          .. group-tab:: Powershell
 
-            .. code:: powershell
+            .. code:: ps1con
 
                (odkenv) /odk/ > git clone https://github.com/your-github-username/docs.git
                .
@@ -768,7 +768,7 @@ on any computer.
 
       .. group-tab:: PowerShell
 
-         .. code:: powershell
+         .. code:: ps1con
 
             (odkenv) /odk/docs/ > git remote add upstream https://github.com/odk-x/docs.git
             (odkenv) /odk/docs/ > git remote -v
@@ -801,7 +801,7 @@ on any computer.
 
       .. group-tab:: PowerShell
 
-         .. code:: powershell
+         .. code:: ps1con
 
             (odkenv) /odk/docs/ > pip install --upgrade pip
             (odkenv) /odk/docs/ > pip install -r requirements.txt
@@ -938,7 +938,7 @@ Working on the docs
 
          .. group-tab:: PowerShell
 
-            .. code:: powershell
+            .. code:: ps1con
 
                (odkenv) /odk/docs/ > git branch
                   branch-name
@@ -961,7 +961,7 @@ Working on the docs
 
          .. group-tab:: PowerShell
 
-            .. code:: powershell
+            .. code:: ps1con
 
                (odkenv) /odk/docs/ >  git checkout master
                Switched to branch 'master'
@@ -994,7 +994,7 @@ Working on the docs
 
       .. group-tab:: PowerShell
 
-         .. code:: powershell
+         .. code:: ps1con
 
             (odkenv) /odk/docs/ > git pull upstream master
             (odkenv) /odk/docs/ > git status
@@ -1025,7 +1025,7 @@ Working on the docs
 
       .. group-tab:: PowerShell
 
-         .. code:: powershell
+         .. code:: ps1con
 
             (odkenv) /odk/docs/ > git checkout -b branch-name
             Switched to a new branch 'branch-name'
@@ -1053,15 +1053,10 @@ Working on the docs
    Finally, you can open an :ref:`editor of your choice <choose-editor>`
    and work on the documentation.
 
-   The source files for documentation text are in these directories:
+   The source files for documentation text are in this directory:
 
-   :file:`odk1-src`
-      Files for the pages at https://docs.odk-x.org
    :file:`odkx-src`
-      Files for the pages at https://docs.odk-x.org/odk-x
-   :file:`shared-src`
-      Files for pages shared by both ODK1 and ODK-X docs.
-      (This page and the other contributor guide pages.)
+      Files for the pages at https://docs.odk-x.org/
 
    If you're going to write or edit documentation text, please read:
 
@@ -1084,46 +1079,22 @@ Working on the docs
    you should run the tests locally first
    and correct any problems.
 
-    If you've been working on files in :file:`odk1-src` or :file:`shared-src`:
-
     .. tabs::
 
        .. group-tab:: Bash
 
           .. code:: console
 
-             (odkenv) /odk/docs/ $ make odk1-check
+             (odkenv) /odk/docs/ $ make odkx-check
 
        .. group-tab:: PowerShell
 
-          .. code:: powershell
-
-             (odkenv) /odk/docs/ > rm -r -fo tmp1-src
-             (odkenv) /odk/docs/ > rm -r -fo odk1-build
-             (odkenv) /odk/docs/ > Copy-Item odk1-src -Destination tmp1-src -Recurse
-             (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmp1-src -Recurse
-             (odkenv) /odk/docs/ > sphinx-build -b spelling tmp1-src odk1-build/spelling
-             (odkenv) /odk/docs/ > python util/check-spelling-output.py odk1-build
-
-    If you've been working on files in :file:`odkx-src`:
-
-    .. tabs::
-
-       .. group-tab:: Bash
-
-          .. code:: console
-
-             (odkenv) /odk/docs/ $ make odkx-spell-check
-
-       .. group-tab:: PowerShell
-
-          .. code:: powershell
+          .. code:: ps1con
 
              (odkenv) /odk/docs/ > rm -r -fo tmpx-src
              (odkenv) /odk/docs/ > rm -r -fo odkx-build
              (odkenv) /odk/docs/ > Copy-Item odkx-src -Destination tmpx-src -Recurse
-             (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmpx-src -Recurse
-             (odkenv) /odk/docs/ > sphinx-build -b spelling tmp1-src odkx-build/spelling
+             (odkenv) /odk/docs/ > sphinx-build -b spelling tmpx-src odkx-build/spelling
              (odkenv) /odk/docs/ > python util/check-spelling-output.py odkx-build
 
 
@@ -1164,28 +1135,6 @@ Working on the docs
 
    .. _Sphinx: http://www.sphinx-doc.org
 
-   If you've been working on files in :file:`odk1-src` or :file:`shared-src`:
-
-   .. tabs::
-
-      .. group-tab:: Bash
-
-         .. code:: console
-
-            (odkenv) /odk/docs/ $ make odk1
-
-      .. group-tab:: PowerShell
-
-         .. code:: powershell
-
-            (odkenv) /odk/docs/ > rm -r -fo tmp1-src
-            (odkenv) /odk/docs/ > rm -r -fo odk1-build
-            (odkenv) /odk/docs/ > Copy-Item odk1-src -Destination tmp1-src -Recurse
-            (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmp1-src -Recurse
-            (odkenv) /odk/docs/ > sphinx-build -b dirhtml tmp1-src odk1-build
-
-   If you've been working on files in :file:`odkx-src`:
-
    .. tabs::
 
       .. group-tab:: Bash
@@ -1196,12 +1145,11 @@ Working on the docs
 
       .. group-tab:: PowerShell
 
-         .. code:: powershell
+         .. code:: ps1con
 
             (odkenv) /odk/docs/ > rm -r -fo tmpx-src
             (odkenv) /odk/docs/ > rm -r -fo odkx-build
             (odkenv) /odk/docs/ > Copy-Item odkx-src -Destination tmpx-src -Recurse
-            (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmpx-src -Recurse
             (odkenv) /odk/docs/ > sphinx-build -b dirhtml tmpx-src odkx-build
 
    This generates a lot of output.
@@ -1248,7 +1196,7 @@ Working on the docs
       The warning messages will refer to the file name
       using the temporary directory path :file:`tmp1-src` or :file:`tmpx-src`.
       You need to correct the problems in the real source directory
-      (:file:`odk1-src`, :file:`odkx-src`, or :file:`shared-src`).
+      (:file:`odkx-src`).
 
    .. admonition:: When you just can't fix the error...
 
@@ -1265,26 +1213,6 @@ Working on the docs
 
    .. _serve-the-docs-locally:
 
-   If you've been working on files in :file:`odk1-src` or :file:`shared-src`:
-
-   .. tabs::
-
-      .. group-tab:: Bash
-
-         .. code:: console
-
-            (odkenv) /odk/docs/ $ python -m http.server -d odk-build 8000
-            Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
-
-      .. group-tab:: PowerShell
-
-         .. code:: powershell
-
-            (odkenv) /odk/docs/ > python -m http.server -d odk1-build 8000
-            Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
-
-   If you've been working on files in :file:`odkx-src`:
-
    .. tabs::
 
       .. group-tab:: Bash
@@ -1296,7 +1224,7 @@ Working on the docs
 
       .. group-tab:: PowerShell
 
-         .. code:: powershell
+         .. code:: ps1con
 
             (odkenv) /odk/docs/ > python -m http.server -d odkx-build 8000
             Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
@@ -1342,7 +1270,7 @@ Working on the docs
 
          .. group-tab:: PowerShell
 
-            .. code:: powershell
+            .. code:: ps1con
 
                (odkenv) /odk/docs/ > git add -A
 
@@ -1358,7 +1286,7 @@ Working on the docs
 
          .. group-tab:: PowerShell
 
-            .. code:: powershell
+            .. code:: ps1con
 
                (odkenv) /odk/docs/ > git commit -m "Write a commit message here."
 
@@ -1379,7 +1307,7 @@ Working on the docs
 
       .. group-tab:: PowerShell
 
-         .. code:: powershell
+         .. code:: ps1con
 
             (odkenv) /odk/docs/ > git push origin branch-name
 

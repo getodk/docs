@@ -1,4 +1,3 @@
-// This JS file is in shared-src.
 // Implement Details-like hide/show on class "details"
 
 $(function(){
