@@ -1053,7 +1053,7 @@ Working on the docs
    Finally, you can open an :ref:`editor of your choice <choose-editor>`
    and work on the documentation.
 
-   The source files for documentation text are in these directory:
+   The source files for documentation text are in this directory:
 
    :file:`odkx-src`
       Files for the pages at https://docs.odk-x.org/
