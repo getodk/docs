@@ -20,7 +20,7 @@ To access the sample application and its six sample forms:
 
   2. Select :guilabel:`Server Settings` (more info on setting up your server can be found here: :ref:`services-managing-server-config`)
 
-    - Set your :guilabel:`Server URL` to :file:`https://demo2.odk-x.com`.
+    - Set your :guilabel:`Server URL` to :file:`https://survey-demo.odk-x.org`.
 
       .. note::
 
