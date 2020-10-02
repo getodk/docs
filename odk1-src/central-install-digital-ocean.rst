@@ -152,6 +152,9 @@ Once you do see it working, you'll want to set up your first Administrator accou
 
 Once you have one account, you do not have to go through this process again for future accounts: you can log into the website with your new account, and directly create new users that way.
 
+.. tip::
+  If you find that users are not receiving emails, read about :ref:`troubleshooting emails <troubleshooting-emails>`.
+
 .. _central-install-digital-ocean-monitoring:
 
 Setting Up Monitoring

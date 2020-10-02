@@ -12,7 +12,7 @@ Our goal with Central is to create a server that is straightforward to install, 
 ODK Central Features
 --------------------
 
-We have a lot of exciting ideas for the future of Central, and we look forward to hearing yours as well. Here are the features we already support today:
+Here are some of the major features we support today:
 
  - User accounts and management
  - Role-based user permissioning
@@ -37,8 +37,9 @@ We have a lot of exciting ideas for the future of Central, and we look forward t
 Here are some (but not all) key features we **do not yet** support:
 
  - Customizable user roles
+ - Submission edits
 
-See `What is coming in Central <https://forum.getodk.org/t/whats-coming-in-central-over-the-next-few-years/19677>`_ for more on future features.
+Central is in active development. We have a lot of exciting ideas for its future and we look forward to hearing yours as well. See `What is coming in Central <https://forum.getodk.org/t/whats-coming-in-central-over-the-next-few-years/19677>`_ for more on future direction.
 
 .. _central-intro-who:
 
