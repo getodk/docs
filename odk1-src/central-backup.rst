@@ -3,7 +3,7 @@
 Backing Up Central
 ==================
 
-Having a data backup strategy is a critical part of running a web service like ODK Central. Backups should go to a system in a different physical location from where Central is installed in order to prevent data loss across a broad range of scenarios. Many cloud providers offer backup strategies that run automatically. If you are an experienced system administrator, you may want to set up your own backups of the PostgreSQL database. If you don't already have a server-wide backup system in place and don't want to set up your own database backup, Central provides a managed backup system to Google Drive.
+Having a data backup strategy is a critical part of running a web service like ODK Central. Backups should go to a system in a different physical location from where Central is installed in order to prevent data loss across a broad range of scenarios. Many cloud providers offer backup strategies that run automatically. If you are an experienced system administrator, you may want to set up your own backups of the PostgreSQL database that contains all of Central's data. If you don't already have a server-wide backup system in place and don't want to set up your own database backup, Central provides a managed backup system to Google Drive.
 
 .. _central-managed-backups:
 
@@ -57,7 +57,7 @@ Setting up backups
 Restoring a backup
 ------------------
 
-Restoring a backup to an ODK Central instance will entirely replace all of its data with the backup. Please be very sure you are restoring to the right place with the right backup snapshot before proceeding. 
+Restoring a backup to a Central instance will entirely replace all of its data with the backup. Please be very sure you are restoring to the right place with the right backup snapshot before proceeding. 
 
 .. note::
 
