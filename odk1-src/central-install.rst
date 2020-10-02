@@ -31,7 +31,7 @@ Installing elsewhere
 If you got excited when you saw mention of Docker above, and you already have your own destination and process for managing Docker deployments, you're all set to go. ODK Central is entirely defined via **Docker Compose**, which means the ``docker-compose`` command will be all you need to manage the entire system.
 
 .. note::
-  We verify each version of Central on Digital Ocean and confirm that upgrades are possible. However, we do not verify them on other cloud providers and generally can't provide community support for installations that deviate from our basic instructions. You may find other community members able to help `on the forum <https://forum.getodk.org/tag/odk-central>`_.
+  We verify each version of Central on DigitalOcean and confirm that upgrades are possible. However, we do not verify them on other cloud providers and generally can't provide free support for installations that deviate from the DigitalOcean instructions. You may find other community members able to help `on the forum <https://forum.getodk.org/>`_.
 
 No matter where you plan to install Central, we recommend reviewing the :doc:`instructions we've provided <central-install-digital-ocean>` for DigitalOcean starting from :ref:`this section <central-install-digital-ocean-build>`. In particular, you'll need to update your submodules after you clone the repository, and configure your :file:`.env` file for your installation.
 
@@ -39,9 +39,6 @@ Installing on Amazon EC2
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Amazon Web Services (AWS) is one of the many other options for installing Central. It's a good idea to read through the :doc:`instructions we've provided <central-install-digital-ocean>` for DigitalOcean, as many of the steps remain the same or similar.
-
-.. note::
-  We verify each version of Central on Digital Ocean and confirm that upgrades are possible. However, we do not verify them on other cloud providers and generally can't provide community support for installations that deviate from our basic instructions. You may find other community members able to help `on the forum <https://forum.getodk.org/tag/odk-central>`_.
 
 To obtain a server you will need to first `create an AWS account <https://aws.amazon.com/>`_. When launching your instance, select the Ubuntu Server 16.04 LTS Amazon Machine Image (AMI) in step 1. The ``t2.micro`` instance type has the 1GB of memory recommended for if you don't expect many forms to be submitted at once and you don't expect many large media attachments. When adjusting the security settings open up the ports for SSH, HTTP, and HTTPS. Once you have launched your instance, go to the Elastic IPs menu option under Network & Security, then allocate a new address and associate it with your server in order to keep the IP address for your server consistent. 
 
