@@ -105,7 +105,7 @@ The quickest way to do this is to run ``ufw disable`` while logged into your ser
 Obtaining and Setting Up ODK Central
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now you'll need to download the software. In the server window, type ``git clone https://github.com/getodk/central`` and press **Enter**. It should think for some time and download many things. Then type `cd central` to start working with the software.
+Now you'll need to download the software. In the server window, type ``git clone https://github.com/getodk/central`` and press **Enter**. It should think for some time and download many things. Then type ``cd central`` to start working with the software.
 
    .. image:: /img/central-install/cloned.png
 
