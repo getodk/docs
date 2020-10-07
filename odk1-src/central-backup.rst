@@ -3,7 +3,14 @@
 Backing Up Central
 ==================
 
-ODK Central features an off-site backup system to keep your data safe. For each backup, we extract all your data (including user accounts, forms, and submissions), we encrypt it so that only you can access it, and we send the encrypted result to your Google Drive account for safekeeping.
+Having a data backup strategy is a critical part of running a web service like ODK Central. Backups should go to a system in a different physical location from where Central is installed in order to prevent data loss across a broad range of scenarios. Many cloud providers offer backup strategies that run automatically. If you are an experienced system administrator, you may want to set up your own backups of the PostgreSQL database that contains all of Central's data. One strategy for doing this is to :ref:`configure a separate database server <central-install-digital-ocean-custom-db>`. If you don't already have a server-wide backup system in place and don't want to set up your own database backup, Central provides a managed backup system to Google Drive.
+
+.. _central-managed-backups:
+
+Managed backups
+---------------
+
+ODK Central features an off-site backup system to keep your data safe. For each backup, we extract all your data (including user accounts, forms, and submissions), we encrypt it so that only you can access it, and we send the encrypted result to your Google Drive account for safekeeping. We send data to Google Drive because it is a service that many people already use, it is easy to set up, and it is relatively inexpensive. Because backups are encrypted, Google can't see their contents. However, you should verify that policies and laws that govern your project allow this usage.
 
 .. admonition:: About Google Drive account access
 
@@ -14,7 +21,7 @@ ODK Central features an off-site backup system to keep your data safe. For each 
 
   This means that ODK Central *cannot* read or modify any other files or folders in your Drive, no matter what.
 
-To see your current backups status, navigate to :menuselection:`--> System` at the top of the Central management website. You should see a status page for backups that looks something like this:
+To see your current managed backups status, navigate to :menuselection:`--> System` at the top of the Central management website. You should see a status page for backups that looks something like this:
 
    .. image:: /img/central-backup/panel-initial.png
 
@@ -45,12 +52,20 @@ Setting up backups
 
 #. Backups are scheduled to run once a day, at 02:00 server local time. If more than 24 hours pass without a backup completing successfully, you'll want to double check that everything has been correctly set up.
 
+.. tip::
+
+  You can verify your Google Drive usage `on the Drive storage page <https://drive.google.com/settings/storage>`_. You may want to periodically remove older backups to free up space.
+
 .. _central-backup-restore:
 
 Restoring a backup
 ------------------
 
-Restoring a backup to an ODK Central instance will entirely replace all of its data with the backup. Please be very sure you are restoring to the right place with the right backup snapshot before proceeding.
+Restoring a backup to a Central instance will entirely replace all of its data with the backup. Please be very sure you are restoring to the right place with the right backup snapshot before proceeding. 
+
+.. note::
+
+  You cannot restore a backup to an older version of Central. For example, if you create a backup from Central v1.0, you cannot restore it to Central v0.9.
 
 1. The first thing you'll have to do is download your backup from Google Drive, which you can do from the `Google Drive website <https://drive.google.com/>`_. You will find the backups in a folder called ``ODK Backups``. Each file is a single backup snapshot, and each snapshot should be titled ``backup-{date}T{time}Z.zip``.
 
@@ -82,5 +97,5 @@ Restoring a backup to an ODK Central instance will entirely replace all of its d
 
      docker-compose exec service node /usr/odk/lib/bin/restore.js /data/transfer/backup-2018-01-01T00:00:00Z.zip
 
-#. The server will think for a while, and then print some more instructions. You will have to refresh any browser windows you have open to ODK Central to proceed. If you run into error messages at this step, please read them carefully and then seek help on the ODK Forum if you are not sure what to do.
+#. The server will think for a while, and then print some more instructions. You will have to refresh any browser windows you have open to ODK Central to proceed. If you run into error messages at this step, please read them carefully and then seek help on the `ODK Forum <https://forum.getodk.org/>`_ if you are not sure what to do.
 
