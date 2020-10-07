@@ -5,8 +5,8 @@ Troubleshooting Central
 
 .. _troubleshooting-emails:
 
-Users aren't receiving Central emails
---------------------------------------
+Users aren't receiving emails
+-----------------------------
 
 Central uses email as a way to verify user identity when setting or changing passwords. This helps ensure that only the intended user has access to their Central account.
 
