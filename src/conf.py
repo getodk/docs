@@ -275,9 +275,6 @@ rst_prolog="""
 .. role:: arg
     :class: arg
 """
-# if you add lines to rst_prolog,
-# please update the note about warnings offsets
-# in shared-src/docs-tech-guide.rst
 
 # At bottom of every document
 download_pdf = """
@@ -385,6 +382,6 @@ html_context = {'download_pdf' : download_pdf,
                 'github_user' : "getodk", # Username
                 'github_repo' : "docs", # Repo name
                 'github_version' : "master", # Version
-                'conf_py_path' : "/odk1-src/" # Path in the checkout to the docs root
+                'conf_py_path' : "/src/" # Path in the checkout to the docs root
             }
 
