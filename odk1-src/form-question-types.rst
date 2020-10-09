@@ -803,43 +803,6 @@ See :ref:`image-options` to learn more about including images in surveys.
   abcd_icon,d,D,d.jpg
 
 
-.. _likert-widget:
-
-Likert widget
-""""""""""""""""""""""""""""""""""
-.. versionadded:: 1.25
-
-  `ODK Collect v1.25.0 <https://github.com/getodk/collect/releases/tag/v1.25.0>`_
-
-type
- :tc:`select_one {list_name}`
-appearance
- :tc:`likert`
-
-A single-select question can be styled as a `Likert scale <https://en.wikipedia.org/wiki/Likert_scale>`_. Options can include text, images or both. If both are provided, images appear above text.
-
-If adding images, note that the images are referenced in the choices sheet, and the image files need to be included in the media folder. See :ref:`image-options` to learn more about including images in choices.
-
-.. image:: /img/form-widgets/likert_widget.*
- :alt: The Single Select form likert widget with images, as displayed in the ODK Collect app on an Android phone. The question text is, "Likert Image Widget." The hint text is, "Likert type widget with images (happy case)" Below that is a set of radio buttons labeled Strongly Disagree, Disagree, Neutral, Agree, and Strongly Agree. Below each radio button is a small icon of a face: Strongly Disagree - angry, Disagree - sad, Neutral - neutral, Agree - happy, Strongly Agree - very happy. Above the question text is the form group name "All widgets likert."
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
- :header: type, name, label, appearance, hint
- 
- select_one likert,likert_widget,Likert Widget,likert,"select_one type with Likert appearance, 5 image choices (strongly_disagree.jpg, disagree.jpg, neutral.jpg, agree.jpg, strongly_agree.jpg)"
-
-.. csv-table:: choices
- :header: list_name, name, label, media::image
-
- likert_widget,strongly_disagree,Strongly Disagree,strongly_disagree.jpg
- likert_widget,disagree,Disagree,disagree.jpg
- likert_widget,neutral,Neutral,neutral.jpg
- likert_widget,agree,Agree,agree.jpg
- likert_widget,strongly_agree,Strongly Agree,strongly_agree.jpg
-
-
 .. _compact-image-select:
 
 Select widget with compact image options
@@ -975,6 +938,43 @@ to display two images on each row, set the :th:`appearance` attribute to :tc:`qu
   abcd_icon,b,B,b.jpg
   abcd_icon,c,C,c.jpg
   abcd_icon,d,D,d.jpg
+
+
+.. _likert-widget:
+
+Likert widget
+""""""""""""""""""""""""""""""""""
+.. versionadded:: 1.25
+
+  `ODK Collect v1.25.0 <https://github.com/getodk/collect/releases/tag/v1.25.0>`_
+
+type
+ :tc:`select_one {list_name}`
+appearance
+ :tc:`likert`
+
+A single-select question can be styled as a `Likert scale <https://en.wikipedia.org/wiki/Likert_scale>`_. Options can include text, images or both. If both are provided, images appear above text.
+
+If adding images, note that the images are referenced in the choices sheet, and the image files need to be included in the media folder. See :ref:`image-options` to learn more about including images in choices.
+
+.. image:: /img/form-widgets/likert_widget.*
+ :alt: The Single Select form likert widget with images, as displayed in the ODK Collect app on an Android phone. The question text is, "Likert Image Widget." The hint text is, "Likert type widget with images (happy case)" Below that is a set of radio buttons labeled Strongly Disagree, Disagree, Neutral, Agree, and Strongly Agree. Below each radio button is a small icon of a face: Strongly Disagree - angry, Disagree - sad, Neutral - neutral, Agree - happy, Strongly Agree - very happy. Above the question text is the form group name "All widgets likert."
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+ :header: type, name, label, appearance, hint
+
+ select_one likert,likert_widget,Likert Widget,likert,"select_one type with Likert appearance, 5 image choices (strongly_disagree.jpg, disagree.jpg, neutral.jpg, agree.jpg, strongly_agree.jpg)"
+
+.. csv-table:: choices
+ :header: list_name, name, label, media::image
+
+ likert_widget,strongly_disagree,Strongly Disagree,strongly_disagree.jpg
+ likert_widget,disagree,Disagree,disagree.jpg
+ likert_widget,neutral,Neutral,neutral.jpg
+ likert_widget,agree,Agree,agree.jpg
+ likert_widget,strongly_agree,Strongly Agree,strongly_agree.jpg
 
 
 .. _multi-select-widget:
