@@ -776,7 +776,7 @@ type
 appearance
   *columns-pack*
 
-When the :tc:`columns-pack` appearance is added, the app tries to accommodate as many choices in a single line as possible.
+When the :tc:`columns-pack` appearance is added, the app tries to accommodate as many choices in a single line as possible. If the choice labels have different lengths, they will not be in even columns.
 
 .. image:: /img/form-widgets/select-columns-pack.*
 
@@ -873,7 +873,7 @@ type
 appearance
   :tc:`no-buttons`
 
-When the :tc:`no-buttons` appearance is added, the app does not display buttons but images or labels if images are missing.
+When the :tc:`no-buttons` appearance is added, the app displays choices without the selection radio button. If images are specified for choices, only the images are displayed. This is particularly useful for building a grid of images.
 
 .. image:: /img/form-widgets/select-no-buttons.*
 
