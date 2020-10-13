@@ -77,8 +77,6 @@ For most users, Google App Engine will be the easiest and most cost-effective op
 
 Two examples illustrate the cost-effectiveness of Google App Engine:
 
-- The fee to run the `ODK Aggregate Demo Server <http://opendatakit.appspot.com>`_ is near the minimum weekly charge, costing a few dollars a week.
-
 - A 6000 hour study in Mumbai that ran from 01 September 2011 through 29 February 2012 also incurred the minimum charge of $2.10/week for mid-November onward (Google did not begin billing until mid November 2011).
 
 You can enable billing on an as-needed weekly basis. You will incur no charges at all if you disable billing (for example, between data gathering campaigns, while you are developing the forms for the next campaign). When disabled, access is restricted to the free daily usage limit.
