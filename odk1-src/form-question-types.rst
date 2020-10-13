@@ -624,7 +624,7 @@ The **choices** sheet has at least three columns:
 :th:`label`
   The user-facing text displayed for the choice.
 
-Select widgets can :ref:`include images as choices <select-image-widget>`.
+Select widgets can :ref:`include images as choices <select-columns-widget>`.
 
 .. contents::
   :local:
@@ -670,7 +670,7 @@ Adding the :tc:`minimal` appearance attribute
 places the choices into a modal overlay menu.
 
 .. image:: /img/form-widgets/select-one-minimal-start.*
-  :alt: The Single Select form widget, with minimal appearance, as displayed in the ODK Collect app on an Android phone. The question text is "Spinner widget." The hint text is "select_one type with minimal appearance, 4 text choices." Below that is a drop-down style select menu with the prompt "Select One Answer." Above the question text is the form group name "Select one widgets."
+  :alt: The Single Select form widget, with minimal appearance, as displayed in the ODK Collect app on an Android phone. The question text is "Select widget." The hint text is "select_one type with minimal appearance, 4 text choices." Below that is a drop-down style select menu with the prompt "Select One Answer." Above the question text is the form group name "Select one widgets."
 
 .. image:: /img/form-widgets/select-one-minimal-expanded.*
   :alt: The Single Select form widget, with minimal appearance, as displayed in the previously image. The select menu has expanded to show choices: A, B, C, D, and Remove Response.
@@ -680,7 +680,7 @@ places the choices into a modal overlay menu.
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
 
-  select_one opt_abcd,spinner_widget,Spinner widget,minimal,"select_one type with minimal appearance, 4 text choices"
+  select_one opt_abcd,select_widget,Select widget,minimal,"select_one type with minimal appearance, 4 text choices"
 
 .. csv-table:: choices
   :header: list_name, name, label
@@ -705,9 +705,9 @@ Select widget with autoadvance
 type
   :tc:`select_one {list_name}`
 appearance
-  :tc:`autoadvance`
+  :tc:`quick`
 
-When the :tc:`autoadvance` appearance is added,
+When the :tc:`quick` appearance is added,
 the form advances immediately to the next question
 once a selection is made.
 
@@ -745,7 +745,7 @@ to the search and filter feature.
 This is especially helpful for questions with a large number of choices.
 
 .. image:: /img/form-widgets/select-autocomplete.*
-  :alt: The Select One form widget with autocomplete, as displayed in the ODK Collect app on an Android phone. The question text is "Select one search widget." The hint text is, "select one type with autocomplete appearance, 4 text choices." Below that is a text input followed by four radio buttons labeled A, B, C, and D. Above the question text is the form group name "Select one widgets." The device keyboard is active.
+  :alt: The Select One form widget with autocomplete, as displayed in the ODK Collect app on an Android phone. The question text is "Select one widget." The hint text is, "select one type with autocomplete appearance, 4 text choices." Below that is a text input followed by four radio buttons labeled A, B, C, and D. Above the question text is the form group name "Select one widgets." The device keyboard is active.
 
 .. image:: /img/form-widgets/select-autocomplete-filtered.*
   :alt: The Select One form widget as displayed previously. The text input contains a lowercase 'b'. There is a single radio button: B. The other three radio buttons are no longer displayed.
@@ -755,7 +755,7 @@ This is especially helpful for questions with a large number of choices.
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
 
-  select_one opt_abcd,select_one_autocomplete_widget,Select one search widget,autocomplete,"select_one type with autocomplete appearance, 4 text choices"
+  select_one opt_abcd,select_one_autocomplete_widget,Select one widget,autocomplete,"select_one type with autocomplete appearance, 4 text choices"
 
 .. csv-table:: choices
   :header: list_name, name, label
@@ -766,16 +766,47 @@ This is especially helpful for questions with a large number of choices.
   opt_abcd,d,D
 
 
+.. _select-columns-pack-widget:
 
-.. _select-image-widget:
-
-Select widget with image choices
-""""""""""""""""""""""""""""""""""
+Select widget with columns-pack appearance
+""""""""""""""""""""""""""""""""""""""""""""""
 
 type
   :tc:`select_one {list_name}`
 appearance
-  *none*
+  *columns-pack*
+
+When the :tc:`columns-pack` appearance is added, the app tries to accommodate as many choices in a single line as possible. If the choice labels have different lengths, they will not be in even columns.
+
+.. image:: /img/form-widgets/select-columns-pack.*
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  select_one opt_abcd,select_widget,Select one widget,columns-pack,"select_one type with columns-pack appearance, 4 text choices"
+
+.. csv-table:: choices
+  :header: list_name, name, label
+
+  opt_abcd,a,A
+  opt_abcd,b,B
+  opt_abcd,c,C
+  opt_abcd,d,D
+
+
+.. _select-columns-widget:
+
+Select widget with columns appearance
+"""""""""""""""""""""""""""""""""""""""""
+
+type
+  :tc:`select_one {list_name}`
+appearance
+  :tc:`columns`
+
+When the :tc:`columns` appearance is added, the app puts choices in 2, 3, 4 or 5 columns depending on the screen size.
 
 Select widgets support image choices.
 The images are referenced in the **choices** sheet,
@@ -784,15 +815,74 @@ need to be included in the :file:`media` folder.
 
 See :ref:`image-options` to learn more about including images in surveys.
 
-.. image:: /img/form-widgets/default-single-image-select.*
-  :alt: The Single Select form widget with images, as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is, "select_one type with no appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that is a set of radio buttons labeled A, B, C, and D. Below each radio button is a small icon of an animal: A - whale, B - frog, C - alligator, D - eagle. Above the question text is the form group name "Select one widgets."
+.. image:: /img/form-widgets/select-columns.*
 
 .. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
 
-  select_one abcd_icon,grid_widget,Grid select one widget,,"select_one type with no appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)"
+  select_one abcd_icon,select_widget,Select one widget,columns,"select_one type with columns appearance, 4 text + image choices"
+
+.. csv-table:: choices
+  :header: list_name, name, label, media::image
+
+  abcd_icon,a,A,a.jpg
+  abcd_icon,b,B,b.jpg
+  abcd_icon,c,C,c.jpg
+  abcd_icon,d,D,d.jpg
+
+
+.. _select-columns-n-widget:
+
+Select widget with columns-n appearance
+"""""""""""""""""""""""""""""""""""""""""""
+
+type
+  :tc:`select_one {list_name}`
+appearance
+  :tc:`columns-n`
+
+When the :tc:`columns-n` appearance is added, the app puts choices in n columns.
+
+.. image:: /img/form-widgets/select-columns-n.*
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  select_one abcd_icon,select_widget,Select one widget,columns-2,"select_one type with columns-2 appearance, 4 text + image choices"
+
+.. csv-table:: choices
+  :header: list_name, name, label, media::image
+
+  abcd_icon,a,A,a.jpg
+  abcd_icon,b,B,b.jpg
+  abcd_icon,c,C,c.jpg
+  abcd_icon,d,D,d.jpg
+
+
+.. _select-no-buttons-widget:
+
+Select widget with no-buttons appearance
+""""""""""""""""""""""""""""""""""""""""""""
+
+type
+  :tc:`select_one {list_name}`
+appearance
+  :tc:`no-buttons`
+
+When the :tc:`no-buttons` appearance is added, the app displays choices without the selection radio button. If images are specified for choices, only the images are displayed. This is particularly useful for building a grid of images.
+
+.. image:: /img/form-widgets/select-no-buttons.*
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  select_one abcd_icon,select_widget,Select one widget,columns-pack no-buttons,"select_one type with columns-pack no-buttons appearance, 4 image choices"
 
 .. csv-table:: choices
   :header: list_name, name, label, media::image
@@ -827,7 +917,7 @@ If adding images, note that the images are referenced in the choices sheet, and 
 
 .. csv-table:: survey
  :header: type, name, label, appearance, hint
- 
+
  select_one likert,likert_widget,Likert Widget,likert,"select_one type with Likert appearance, 5 image choices (strongly_disagree.jpg, disagree.jpg, neutral.jpg, agree.jpg, strongly_agree.jpg)"
 
 .. csv-table:: choices
@@ -838,143 +928,6 @@ If adding images, note that the images are referenced in the choices sheet, and 
  likert_widget,neutral,Neutral,neutral.jpg
  likert_widget,agree,Agree,agree.jpg
  likert_widget,strongly_agree,Strongly Agree,strongly_agree.jpg
-
-
-.. _compact-image-select:
-
-Select widget with compact image options
-"""""""""""""""""""""""""""""""""""""""""
-
-type
-  :tc:`select_one {list_name}`
-appearance
-  :tc:`compact`
-
-When the :tc:`compact` appearance is added,
-the answer choices display in a single line.
-
-.. image:: /img/form-widgets/single-select-compact.*
-  :alt: The compact Single Select form widget with images, as displayed in the ODK Collect app on an Android phone. The question text is "Grid select one widget." The hint text is, "select_one with compact appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four small animal icons arranged on a single line. Above the question text is the form group name "Select one widgets."
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  select_one abcd_icon,grid_widget_compact,Grid select one widget,compact,"select_one type with compact appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)"
-
-.. csv-table:: choices
-  :header: list_name, name, label, media::image
-
-  abcd_icon,a,A,a.jpg
-  abcd_icon,b,B,b.jpg
-  abcd_icon,c,C,c.jpg
-  abcd_icon,d,D,d.jpg
-
-
-.. _compact-2:
-
-Select widget with width-specified images
-""""""""""""""""""""""""""""""""""""""""""""
-
-type
-  :tc:`select_one {list_name}`
-appearance
-  :tc:`compact-{x}`
-
-With the :tc:`compact-{x}` appearance,
-you can specify the number of images to display on each row.
-
-For example, to display two images on each row,
-specify an :th:`appearance` of :tc:`compact-2`.
-
-.. image:: /img/form-widgets/single-image-select-compact-2.*
-  :alt: The single select form widget with images and appearance of 'compact-2,' as displayed in the ODK Collect app on an Android phone. The question text is, "Grid select one widget." The hint text is "select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)." Below that are four animal icons arranged in a two-by-two grid. Above the question text is the form group name "Select one widgets."
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  select_one abcd_icon,grid_widget_compact2,Grid select one widget,compact-2,"select_one type with compact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)"
-
-.. csv-table:: choices
-  :header: list_name, name, label, media::image
-
-  abcd_icon,a,A,a.jpg
-  abcd_icon,b,B,b.jpg
-  abcd_icon,c,C,c.jpg
-  abcd_icon,d,D,d.jpg
-
-.. _quickcompact-widget:
-
-Compact select widget with autoadvance
-""""""""""""""""""""""""""""""""""""""""
-
-type
-  :tc:`select_one {list_name}`
-appearance
-  :tc:`quickcompact`
-
-The :tc:`quickcompact` appearance
-adds :ref:`autoadvance <autoadvance>` functionality
-to the design of the :ref:`compact-image-select`.
-
-.. video:: /vid/form-widgets/quickcompact.mp4
-
-  Video showing Compact single select widget and auto-advance after the question is answered.
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  select_one abcd_icon,grid_widget_quickcompact,Grid select one widget,quickcompact,"select_one type with quickcompact appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)"
-
-.. csv-table:: choices
-  :header: list_name, name, label, media::image
-
-  abcd_icon,a,A,a.jpg
-  abcd_icon,b,B,b.jpg
-  abcd_icon,c,C,c.jpg
-  abcd_icon,d,D,d.jpg
-
-
-.. _quickcompact-2-widget:
-
-Compact select widget with specified width and autoadvance
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-type
-  :tc:`select_one {list_name}`
-appearance
-  :tc:`quickcompact-{x}`
-
-
-As with :ref:`compact <compact-2>`,
-you can specify a width when using :tc:`quickcompact`.
-
-For example,
-to display two images on each row, set the :th:`appearance` attribute to :tc:`quickcompact-2`.
-
-.. video:: /vid/form-widgets/quickcompact2.mp4
-
-  Video showing Compact-2 widget and auto-advance after the question is answered.
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  select_one abcd_icon,grid_widget_quickcompact2,Grid select one widget,quickcompact-2,"select_one type with quickcompact-2 appearance, 4 image choices (a.jpg, b.jpg, c.jpg, d.jpg)"
-
-.. csv-table:: choices
-  :header: list_name, name, label, media::image
-
-  abcd_icon,a,A,a.jpg
-  abcd_icon,b,B,b.jpg
-  abcd_icon,c,C,c.jpg
-  abcd_icon,d,D,d.jpg
 
 
 .. _multi-select-widget:
@@ -992,12 +945,8 @@ Multi select questions support multiple answers.
 .. note::
 
   The multi select widget supports
-  many of the same :th:`appearance` attributes
-  as the :ref:`single-select-widget`:
-
-  - :ref:`minimal appearance <select-minimal>`
-  - :ref:`compact appearance with images <compact-image-select>`
-  - :ref:`width-specified compact appearance with images <compact-2>`
+  all of the same :th:`appearance` attributes
+  as the :ref:`single-select-widget` excluding the :ref:`quick <autoadvance>` appearance:
 
 .. image:: /img/form-widgets/default-multiselect.*
   :alt: The default multi select widget as displayed in the ODK Collect app on an Android phone. The question text is, "Multi select widget." The hint text is, "select_multiple widget with no appearance, 4 text choices." Below that are four checkbox options labeled A, B, C, and D. Above the question text is the form group label, "This section contains 'Select Multi Widgets'"
