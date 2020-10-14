@@ -49,7 +49,7 @@ def parse_code():
             and 'python' in node.attributes['classes']
             and 'extra-checks' in node.attributes['classes'])
 
-    style_guide = open(dir_path + "/shared-src/docs-style-guide.rst", "r")
+    style_guide = open(dir_path + "/src/docs-style-guide.rst", "r")
     
     # publish doctree, report only severe errors 
     doctree = publish_doctree(style_guide.read(),

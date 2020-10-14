@@ -1077,11 +1077,8 @@ Working on the docs
 
    The source files for documentation text are in these directories:
 
-   :file:`odk1-src`
+   :file:`src`
       Files for the pages at https://docs.getodk.org
-   :file:`shared-src`
-      Files for pages shared by both ODK1 and ODK-X docs.
-      (This page and the other contributor guide pages.)
 
    If you're going to write or edit documentation text, please read:
 
@@ -1108,7 +1105,7 @@ Working on the docs
 
       .. _spell-check:
 
-      If you've been working on files in :file:`odk1-src` or :file:`shared-src`:
+      If you've been working on files in :file:`src`:
 
       .. tabs::
 
@@ -1116,18 +1113,17 @@ Working on the docs
 
             .. code:: console
 
-               (odkenv) /odk/docs/ $ make odk1-spell-check
+               (odkenv) /odk/docs/ $ make spell-check
 
          .. group-tab:: PowerShell
 
             .. code:: powershell
 
-               (odkenv) /odk/docs/ > rm -r -fo tmp1-src
-               (odkenv) /odk/docs/ > rm -r -fo odk1-build
-               (odkenv) /odk/docs/ > Copy-Item odk1-src -Destination tmp1-src -Recurse
-               (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmp1-src -Recurse
-               (odkenv) /odk/docs/ > sphinx-build -b spelling tmp1-src odk1-build/spelling
-               (odkenv) /odk/docs/ > python util/check-spelling-output.py odk1-build
+               (odkenv) /odk/docs/ > rm -r -fo tmp
+               (odkenv) /odk/docs/ > rm -r -fo build
+               (odkenv) /odk/docs/ > Copy-Item src -Destination tmp -Recurse
+               (odkenv) /odk/docs/ > sphinx-build -b spelling tmp build/spelling
+               (odkenv) /odk/docs/ > python util/check-spelling-output.py build
 
       This will send some output to the terminal,
       which will include mentions of any words not in the dictionary.
@@ -1168,7 +1164,7 @@ Working on the docs
 
    .. _Sphinx: http://www.sphinx-doc.org
 
-   If you've been working on files in :file:`odk1-src` or :file:`shared-src`:
+   If you've been working on files in :file:`src`:
 
    .. tabs::
 
@@ -1176,17 +1172,16 @@ Working on the docs
 
          .. code:: console
 
-            (odkenv) /odk/docs/ $ make odk1
+            (odkenv) /odk/docs/ $ make build
 
       .. group-tab:: PowerShell
 
          .. code:: powershell
 
-            (odkenv) /odk/docs/ > rm -r -fo tmp1-src
-            (odkenv) /odk/docs/ > rm -r -fo odk1-build
-            (odkenv) /odk/docs/ > Copy-Item odk1-src -Destination tmp1-src -Recurse
-            (odkenv) /odk/docs/ > Copy-Item shared-src -Destination tmp1-src -Recurse
-            (odkenv) /odk/docs/ > sphinx-build -b dirhtml tmp1-src odk1-build
+            (odkenv) /odk/docs/ > rm -r -fo tmp
+            (odkenv) /odk/docs/ > rm -r -fo build
+            (odkenv) /odk/docs/ > Copy-Item src -Destination tmp -Recurse
+            (odkenv) /odk/docs/ > sphinx-build -b dirhtml tmp build
 
    This generates a lot of output.
    Near the end of the output you may see a statement like:
@@ -1230,9 +1225,9 @@ Working on the docs
    .. note::
 
       The warning messages will refer to the file name
-      using the temporary directory path :file:`tmp1-src` or :file:`tmpx-src`.
+      using the temporary directory path :file:`tmp`.
       You need to correct the problems in the real source directory
-      (:file:`odk1-src`, or :file:`shared-src`).
+      (:file:`src`).
 
    .. admonition:: When you just can't fix the error...
 
@@ -1249,7 +1244,7 @@ Working on the docs
 
    .. _serve-the-docs-locally:
 
-   If you've been working on files in :file:`odk1-src` or :file:`shared-src`:
+   If you've been working on files in :file:`src`:
 
    .. tabs::
 
@@ -1264,7 +1259,7 @@ Working on the docs
 
          .. code:: powershell
 
-            (odkenv) /odk/docs/ > python -m http.server -d odk1-build 8000
+            (odkenv) /odk/docs/ > python -m http.server -d build 8000
             Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
 
    #. Open your browser and go to http://localhost:8000.

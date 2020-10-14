@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build-odk1:
+  build:
     working_directory: ~/work
     docker:
       - image: circleci/python:latest
@@ -22,34 +22,33 @@ jobs:
             sudo apt-get install python-enchant
             sudo pip install -r requirements.txt
       - run:
-          name: Style Guide Check
+          name: Style guide check
           command: |
             paths=$(git diff origin/master... --name-only)
             echo $paths
-            sudo python style-test.py $paths -r odk1-src
-            sudo python style-test.py $paths -r shared-src
+            sudo python style-test.py $paths -r src
       - run:
-          name: Build ODK1 Documentation
-          command: make odk1-deploy
+          name: Build
+          command: make deploy
       - run:
-          name: Check spelling of ODK1 Documentation
-          command: make odk1-spell-check
+          name: Check spelling
+          command: make spell-check
       - run:
-          name: Build LaTex of ODK1 Documentation
-          command: make odk1-latex
+          name: Build LaTex
+          command: make latex
       - run:
           name: Compress images
-          command: pngquant odk1-build/_images/*.png --force --ext .png --verbose
+          command: pngquant build/_images/*.png --force --ext .png --verbose
       - store_artifacts:
-          path: odk1-build
-          destination: odk1-build
+          path: build
+          destination: build
       - persist_to_workspace:
           root: ~/work
           paths:
-            - odk1-build/*
+            - build/*
             - s3_website.yml
 
-  build-pdf-odk1:
+  build-pdf:
     working_directory: ~/work
     docker:
       - image: schickling/latex
@@ -59,19 +58,19 @@ jobs:
       - run:
           name: Build PDF
           command: |
-              cd odk1-build/latex
+              cd build/latex
               xelatex ODK.tex
               xelatex ODK.tex
               mkdir -p ../_downloads
               mv ODK.pdf ../_downloads/ODK-Documentation.pdf
       - store_artifacts:
-          path: odk1-build/_downloads/ODK-Documentation.pdf
+          path: build/_downloads/ODK-Documentation.pdf
           destination: ODK-Documentation.pdf
       - persist_to_workspace:
           root: ~/work
           paths:
-            - odk1-build/*
-  deploy-odk1:
+            - build/*
+  deploy:
     working_directory: ~/work
     docker:
       - image: circleci/ruby:latest
@@ -100,15 +99,15 @@ workflows:
   version: 2
   build_deploy:
     jobs:
-      - build-odk1
-      - build-pdf-odk1:
+      - build
+      - build-pdf:
           requires:
-            - build-odk1
-      - deploy-odk1:
+            - build
+      - deploy:
           context: AWS
           requires:
-            - build-odk1
-            - build-pdf-odk1
+            - build
+            - build-pdf
           filters:
             branches:
               only: master

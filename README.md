@@ -164,8 +164,8 @@ It can take a long time (>10 minutes) to clone the repo due to the large number 
 Once your environment is set up, build and serve the docs locally with:
 
 ```bash
-$ make odk1
-$ cd odk1-build
+$ make build
+$ cd build
 $ python -m http.server 8000
 ```
 
@@ -178,7 +178,7 @@ You can also use `make` to build just a portion of the build process. See availa
 
 |          | Build & Serve | Build |    Copy     |     LaTeX     |     Style Check     |    Spell Check     |    Check All   |
 | -------- | :-----------: | :---: | :---------: | :-----------: | :-----------------: | :----------------: | :----------------: |
-| **Options** | odk1-autobuild | odk1-build | odk1-copy |  odk1-latex |  odk1-style-check | odk1-spell-check |    odk1-check     |
+| **Options** | autobuild | build | copy |  latex |  style-check | spell-check |    check     |
 
 
 ## How to contribute?

@@ -1,7 +1,7 @@
 s3_bucket: docs.getodk.org
 s3_endpoint: us-west-2
 
-site: ./odk1-build
+site: ./build
 
 error_document: index.html
 

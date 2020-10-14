@@ -31,18 +31,11 @@ def visit_video_html(self, node):
     vsrc = node["uri"]
     spth = srcPath % vsrc
 
-    if "tmp1-src" not in spth:
-        if os.path.exists("./odkx-build/_videos"):
-            pass
-        else:
-            os.makedirs("./odkx-build/_videos/")
-        dpth = "./odkx-build/_videos/%s" %vsrc[vsrc.rfind('/')+1:]
-    else:
-        if os.path.exists("./odk1-build/_videos"):
-            pass
-        else:   
-            os.makedirs("./odk1-build/_videos/")
-        dpth = "./odk1-build/_videos/%s" %vsrc[vsrc.rfind('/')+1:]
+    if os.path.exists("./build/_videos"):
+        pass
+    else:   
+        os.makedirs("./build/_videos/")
+    dpth = "./build/_videos/%s" %vsrc[vsrc.rfind('/')+1:]
 
     shutil.copyfile(spth, dpth)
 
