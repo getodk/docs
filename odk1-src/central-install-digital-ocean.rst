@@ -14,8 +14,8 @@ In general, this installation process will involve five phases:
 
 1. Obtaining a server and loading it with the appropriate base system.
 2. Obtaining a web address (domain name) and pointing it at your new server.
-3. Obtaining the ODK Central software and installing it on your server.
-4. Preparing ODK Central for startup and running it for the first time.
+3. Obtaining the Central software and installing it on your server.
+4. Preparing Central for startup and running it for the first time.
 5. Creating your first Central Administrator account and logging into it.
 
 There are also some optional other steps you can take, which you can find at the bottom of this page.
@@ -57,7 +57,7 @@ Obtaining a Web Address (Domain Name)
 
 Now is the time to set up a domain name. We will do so, and then configure it so that it sends users to the server you created in the previous step.
 
-You'll need to do this for two reasons: a memorable name (like ``google.com``) will be easier to remember and access than a pile of numbers, and you cannot obtain a security certificate without one. It is not currently possible to host ODK Central within a subdirectory on another domain (so, ``my-website.com/my-odk-server`` is not possible, but ``my-odk-server.com`` is allowed, as is ``my-odk-server.my-website.com``).
+You'll need to do this for two reasons: a memorable name (like ``google.com``) will be easier to remember and access than a pile of numbers, and you cannot obtain a security certificate without one. It is not currently possible to host Central within a subdirectory on another domain (so, ``my-website.com/my-odk-server`` is not possible, but ``my-odk-server.com`` is allowed, as is ``my-odk-server.my-website.com``).
 
 If you already know how to do these sorts of things, feel free to ignore the following instructions and proceed on your own. You can rejoin us at the next section.
 
@@ -72,10 +72,10 @@ New domain names take a little bit to get working. Meanwhile, we can get working
 
 .. _central-install-digital-ocean-build:
 
-Installing ODK Central
-----------------------
+Installing Central
+------------------
 
-In this phase of installation, we will log into your new server, obtain the ODK Central software, load some settings into it, and install it.
+In this phase of installation, we will log into your new server, obtain the Central software, load some settings into it, and install it.
 
 First, you'll need to be able to log into the server itself. If you are an advanced user who filled in an SSH key above, you're good to go. Otherwise, click your email for a message from DigitalOcean with your server password.
 
@@ -100,10 +100,10 @@ The quickest way to do this is to run ``ufw disable`` while logged into your ser
 
   If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be really difficult to do correctly, so we don't recommend most people try. Another option is to use an upstream network firewall.
 
-  The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. In particular, if you can successfully ``curl`` your ODK Central website over HTTPS on its public domain name, all Enketo features should work correctly.
+  The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. In particular, if you can successfully ``curl`` your Central website over HTTPS on its public domain name, all Enketo features should work correctly.
 
-Obtaining and Setting Up ODK Central
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Obtaining and Setting Up Central
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now you'll need to download the software. In the server window, type ``git clone https://github.com/getodk/central`` and press **Enter**. It should think for some time and download many things. Then type ``cd central`` to start working with the software.
 
@@ -122,26 +122,26 @@ Next, you need to update some settings. Type ``nano .env`` and press **Enter**. 
 
 Now, we will bundle everything together into a server. Type ``docker-compose build`` and press **Enter** to do this. This will take a long time and generate quite a lot of text output. Don't worry if it seems to pause without saying anything for a while. When it finishes, you should see some "Successfully built" type text and get your input prompt back. When that happens, type ``docker-compose up --no-start`` and press **Enter**.
 
-Once that is complete, congratulations! You have installed your copy of ODK Central. Next, we need to teach the server how to start it up, and do so.
+Once that is complete, congratulations! You have installed your copy of Central. Next, we need to teach the server how to start it up, and do so.
 
 .. _central-install-digital-ocean-startup:
 
-Starting up ODK Central
------------------------
+Starting up Central
+-------------------
 
 Now, run ``docker-compose up -d`` to start the server software. The first time you start it, it will take a while to set itself up. Once you give it a few minutes and you have input control again, you'll want to see whether everything is running correctly:
 
  - To see if ODK has finished loading, run ``docker-compose ps``. Under the ``State`` column, you will want to see text that reads ``Up (healthy)``. If you see ``Up (health: starting)``, give it a few minutes. If you see some other text, something has gone wrong.
- - If your domain name has started working, you can visit it in a web browser to check that you get the ODK Central management website.
+ - If your domain name has started working, you can visit it in a web browser to check that you get the Central management website.
 
 You're almost done! All you have to do is create an Administrator account so that you can log into Central.
 
 .. _central-install-digital-ocean-account:
 
-Logging into ODK Central
-------------------------
+Logging into Central
+--------------------
 
-If visiting your server domain name address in your browser does not load the ODK Central management website, you may have to wait a few minutes or hours (possibly even a day) for the domain name itself to get working. These instructions are explained in further depth on the page detailing the :doc:`central-command-line`.
+If visiting your server domain name address in your browser does not load the Central management website, you may have to wait a few minutes or hours (possibly even a day) for the domain name itself to get working. These instructions are explained in further depth on the page detailing the :doc:`central-command-line`.
 
 Once you do see it working, you'll want to set up your first Administrator account. To do this:
 
@@ -168,7 +168,7 @@ We strongly recommend creating an alert for Disk Utilization. A threshold of 90%
 
 If you are familiar with server operations, you may wish to set up some other alerts: CPU usage and Memory Utilization are the most interesting remaining metrics. However, these are not as important or easily understandable as the Disk Utilization alert, so you may skip this if you're not sure what to do here.
 
-You're done! Congratulations. In the future, you may wish to consult the :doc:`central-upgrade` guide, but for now you may begin using ODK Central. The :doc:`central-using` sections can help you with your next steps if you aren't sure how to proceed.
+You're done! Congratulations. In the future, you may wish to consult the :doc:`central-upgrade` guide, but for now you may begin using Central. The :doc:`central-using` sections can help you with your next steps if you aren't sure how to proceed.
 
 .. _central-install-digital-ocean-advanced:
 
@@ -234,7 +234,7 @@ Log into your server so you have a console prompt, and run these commands, adapt
 Using a Custom SSL Certificate
 ------------------------------
 
-By default, ODK Central uses Let's Encrypt to obtain an SSL security certificate. For most users, this should work perfectly, but larger managed internal networks may have their own certificate trust infrastructure. To use your own custom SSL certificate rather than the automatic Let's Encrypt system:
+By default, Central uses Let's Encrypt to obtain an SSL security certificate. For most users, this should work perfectly, but larger managed internal networks may have their own certificate trust infrastructure. To use your own custom SSL certificate rather than the automatic Let's Encrypt system:
 
 1. Generate a ``fullchain.pem`` (``-out``) file which contains your certificate followed by any necessary intermediate certificate(s).
 2. Generate a ``privkey.pem`` (``-keyout``) file which contains the private key used to sign your certificate.
@@ -247,7 +247,7 @@ By default, ODK Central uses Let's Encrypt to obtain an SSL security certificate
 Using a Custom Mail Server
 --------------------------
 
-ODK Central ships with a basic EXIM server bundled to forward mail out to the internet. To use your own custom mail server:
+Central ships with a basic EXIM server bundled to forward mail out to the internet. To use your own custom mail server:
 
 1. Ensure you have an SMTP relay server visible to your Central server network host.
 2. Edit the file ``files/service/config.json.template`` to reflect your network hostname, the TCP port, and authentication details. The ``secure`` flag is for TLS and should be set to ``true`` if the port is 465 and ``false`` for other ports. If no authentication is required, remove the ``auth`` section.
@@ -278,7 +278,7 @@ Using a Custom Database Server
 .. warning::
   Using a custom database server, especially one that is not local to your local network, may result in poor performance. We strongly recommend using the Postgres v9.6 server that is bundled with Central.
 
-ODK Central ships with a PostgreSQL database server. To use your own custom database server:
+Central ships with a PostgreSQL database server. To use your own custom database server:
 
 1. Ensure you have a PostgresSQL database server visible to your Central server network host.
 2. Ensure your database has ``UTF8`` encoding by running the following command on the database.
@@ -312,7 +312,7 @@ ODK Central ships with a PostgreSQL database server. To use your own custom data
 Disabling or Customizing Sentry
 -------------------------------
 
-By default, we enable `Sentry error logging <https://sentry.io>`_ on the backend server, which provides the ODK Central development team with an anonymized log of unexpected programming errors that occur while your server is running. This information is only visible to the development team and should never contain any of your user or form data, but if you feel uncomfortable with this anyway, you can take the following steps to disable Sentry:
+By default, we enable `Sentry error logging <https://sentry.io>`_ on the backend server, which provides the Central development team with an anonymized log of unexpected programming errors that occur while your server is running. This information is only visible to the development team and should never contain any of your user or form data, but if you feel uncomfortable with this anyway, you can take the following steps to disable Sentry:
 
 1. Edit the file ``files/service/config.json.template`` and remove the ``sentry`` lines, starting with ``"sentry": {`` through the next three lines until you remove the matching ``}``.
 2. Build and run: ``docker-compose build service``, ``docker-compose stop service``, ``docker-compose up -d service``.

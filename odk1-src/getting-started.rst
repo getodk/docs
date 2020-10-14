@@ -8,29 +8,24 @@ You will:
 .. contents::
  :local:
 
-.. _getting-started-install-collect:
-
-Install Collect
----------------------
-
-The easiest way to install the Collect app is `to get it from the Google Play store <https://play.google.com/store/apps/details?id=org.odk.collect.android&hl=en>`_.
-
-.. seealso:: :doc:`collect-install`
-
 .. _getting-started-install-central:
 
-Install Central
-----------------
+Get a Central server
+--------------------
 
-The easiest way to set up your own Central server is to :doc:`install it on DigitalOcean <central-install-digital-ocean>`, a cloud provider.
+The easiest way to get a Central server is by using `ODK Cloud <https://getodk.org/#odk-cloud>`_. ODK Cloud provides Central servers that are fully managed and supported by ODK. No technical knowledge is required.
 
-If you want to try Central out, you can :ref:`request access to the sandbox <central-install-sandbox>`.
+If you are technical and are interested in self-installing, we recommend you :doc:`install Central on DigitalOcean <central-install-digital-ocean>`.
 
-.. warning::
+.. _getting-started-install-collect:
 
-  The Central sandbox server is for evaluation purposes only. All forms and data on this server are public and may be deleted without notice.
-  
-.. seealso:: :doc:`central-install`
+Get the Collect app
+-------------------
+
+The easiest way to get the Collect app is to download it from the `Google Play Store <https://play.google.com/store/apps/details?id=org.odk.collect.android>`_.
+
+You can also :ref:`install manually <install-collect-manually>` from an APK.
+
 
 .. _getting-started-create-form:
 

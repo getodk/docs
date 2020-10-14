@@ -3,16 +3,18 @@ Installing Collect
 
 .. _install-collect-from-google-play:
 
-Installing from Google Play Store (**Recommended**)
+Installing from Google Play Store (recommended)
 ----------------------------------------------------
 
-`The ODK Collect App is available in the Google Play store <https://play.google.com/store/apps/details?id=org.odk.collect.android&hl=en>`_.
+ODK Collect is available in the `Google Play Store <https://play.google.com/store/apps/details?id=org.odk.collect.android>`_.
 
 
-Installing Manually
+.. _install-collect-manually:
+
+Installing manually
 -------------------
 
-The Google Play store always has the latest stable release.
+The Google Play Store always has the latest stable release. 
 
 If you need a different version of Collect, you can download from the web and install manually.
 

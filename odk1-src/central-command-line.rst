@@ -1,9 +1,9 @@
 .. _central-command-line:
 
-ODK Central Command Line Tools
-==============================
+Central Command Line Tools
+==========================
 
-ODK Central allows some administrative actions to be performed by anybody with direct console access to the server itself. Usually, this means only the person who set up the server and installed Central onto it. These tools can be used to:
+Central allows some administrative actions to be performed by anybody with direct console access to the server itself. Usually, this means only the person who set up the server and installed Central onto it. These tools can be used to:
 
  - create new user accounts,
  - reset passwords,
@@ -60,7 +60,7 @@ You will be prompted for a new password. Type it in and press Enter, and if you 
 Promoting a Web User to administrator by command line
 -----------------------------------------------------
 
-In the current release of ODK Central, all users created by the website interface are automatically administrators. If you create a user using the ``user-create`` tool shown above, however, you'll have to perform that step manually. If you do not, the user will be unable to do much of anything at all once they log in.
+In the current release of Central, all users created by the website interface are automatically administrators. If you create a user using the ``user-create`` tool shown above, however, you'll have to perform that step manually. If you do not, the user will be unable to do much of anything at all once they log in.
 
 Please start by performing the steps above in the :ref:`central-command-line-basics` section. Once you do, here is what you would type, assuming the email address of the account you wish to make an administrator is ``example@getodk.org``:
 
