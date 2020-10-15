@@ -2231,6 +2231,10 @@ The :tc:`field-list` appearance attribute, applied to a group of widgets, displa
 
   Relevance, constraint and calculation evaluation within the same screen is supported in Collect v1.22 and later.
 
+.. warning::
+
+  Displaying :ref:`repeats` on the same screen (inside a :tc:`field-list` group) is not supported.
+
 .. seealso::
 
   :ref:`groups` and :ref:`repeats`.
