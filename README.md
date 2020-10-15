@@ -1,6 +1,6 @@
 # ODK Docs
 
-![Platform](https://img.shields.io/badge/platform-Sphinx-blue.svg) [![License](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/) [![Build status](https://circleci.com/gh/getodk/docs.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/getodk/docs/) [![Slack status](http://slack.getodk.org/badge.svg)](http://slack.getodk.org/)
+![Platform](https://img.shields.io/badge/platform-Sphinx-blue.svg) [![License](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/) [![Build status](https://circleci.com/gh/getodk/docs.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/getodk/docs/) [![Slack](https://img.shields.io/badge/chat-on%20slack-brightgreen)](https://slack.getodk.org)
 
 This repo is the source for ODK documentation.
 
