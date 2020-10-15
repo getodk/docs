@@ -583,6 +583,10 @@ You can ask the same question or questions multiple times by wrapping them in :t
   text, fave_color, What is your favorite color?
   end_repeat, , 
 
+.. warning::
+
+  Displaying repeating questions :ref:`on the same screen <field-list>` (inside a :tc:`field-list` group) is not supported.
+
 .. seealso::
     :doc:`form-repeats` describes strategies to address common repetition scenarios.
 
