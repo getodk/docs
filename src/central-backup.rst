@@ -10,7 +10,7 @@ Having a data backup strategy is a critical part of running a web service like O
 Managed backups
 ---------------
 
-ODK Central features an off-site backup system to keep your data safe. For each backup, we extract all your data (including user accounts, forms, and submissions), we encrypt it so that only you can access it, and we send the encrypted result to your Google Drive account for safekeeping. We send data to Google Drive because it is a service that many people already use, it is easy to set up, and it is relatively inexpensive. Because backups are encrypted, Google can't see their contents. However, you should verify that policies and laws that govern your project allow this usage.
+ODK Central features an optional off-site backup system to keep your data safe. For each backup, we extract all your data (including user accounts, forms, and submissions), we encrypt it so that only you can access it, and we send the encrypted result to your Google Drive account for safekeeping. We send data to Google Drive because it is a service that many people already use, it is easy to set up, and it is relatively inexpensive. Because backups are encrypted, Google can't see their contents. However, you should verify that policies and laws that govern your project allow this usage.
 
 .. admonition:: About Google Drive account access
 
