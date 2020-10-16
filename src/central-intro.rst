@@ -28,7 +28,7 @@ Here are some of the major features we support today:
 
  - Form filling directly in the web browser using `Enketo <https://enketo.org>`_
  - Integrated checklist-based help system
- - Automatic, encrypted off-site data backups to Google Drive
+ - Optional encrypted off-site data backups to Google Drive
  - Clean and modern REST API for integration and extensibility
  - High performance on low-cost hardware or cloud providers
  - ODK Briefcase-compatible data output
