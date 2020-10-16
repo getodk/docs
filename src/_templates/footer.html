@@ -11,11 +11,10 @@
   {% endif %}
 
   <hr/>
-  <p class="footerText"> <a href="{{ pathto(odk_pdf, 1) }}" download> {{ download_pdf }} </a></p>
-  <p class="footerText"> {{ faq_help }} <a href="{{ forum_here }}"> {{ forum }} </a> </p>
-  <p class="footerText"> {{ prob_in_doc }} <a href="{{ file_issue_here }}"> {{ file_issue }} </a> </p>
-  <p class="footerText"> {{ contri_start }} <a href="{{ repo_here }}"> {{ fork_repo }} </a> {{ join }} <a href="{{ pathto('contributing') }}"> {{ contri }} </a></p>
-  
+<p class="footerText"><a href="_downloads/ODK-Documentation.pdf" download>Download this documentation as a PDF.</a></p>
+<p class="footerText">If you still need help, you can ask support questions in the <a href="https://forum.getodk.org/">ODK Forum </a> </p>
+<p class="footerText">If you find a problem with this documentation, please <a href="https://github.com/getodk/docs/issues">file an issue </a> </p>
+<p class="footerText">You are also encouraged to <a href="https://github.com/getodk/docs/">fork our Github repo</a> and <a href="contributing/">become a contributor</a></p>
   <div role="contentinfo">
     <p>
     {%- if show_copyright %}
