@@ -58,7 +58,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'ODK'
-copyright = '2020, ODK. This document is licensed under a Creative Commons Attribution 4.0 International License'
+copyright = '2020 Get ODK Inc. Licensed under CC BY 4.0'
 author = 'ODK'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -276,78 +276,6 @@ rst_prolog="""
     :class: arg
 """
 
-# At bottom of every document
-download_pdf = """
-
-Download this documentation as a PDF.
-
-"""
-odk_pdf = """
-
-_downloads/ODK-Documentation.pdf
-
-"""
-prob_in_doc = """
-
-If you find a problem with this documentation, please
-
-"""
-file_issue = """
-
-file an issue
-
-"""
-file_issue_here = """
-
-https://github.com/getodk/docs/issues
-
-"""
-contri_start = """
-
-You are also encouraged to
-
-"""
-fork_repo = """
-
-fork our Github repo
-
-"""
-repo_here = """
-
-https://github.com/getodk/docs/
-
-"""
-join = """
-
-and
-
-"""
-contri = """
-
-become a contributor
-
-"""
-contri_guide = """
-
-/contributing/
-
-"""
-faq_help = """
-
-If you still need help, you can ask support questions in the
-
-"""
-forum = """
-
-ODK Forum
-
-"""
-forum_here = """
-
-https://forum.getodk.org/
-
-"""
-
 rst_epilog = """
 
 .. |odk-slack| replace:: ODK Slack
@@ -364,20 +292,7 @@ rst_epilog = """
 
 """
 
-html_context = {'download_pdf' : download_pdf,
-                'odk_pdf' : odk_pdf,
-                'prob_in_doc' : prob_in_doc ,
-                'contri_start' : contri_start ,
-                'join' : join ,
-                'faq_help' : faq_help ,
-                'file_issue' : file_issue ,
-                'fork_repo' : fork_repo ,
-                'contri' : contri ,
-                'forum' : forum ,
-                'file_issue_here' : file_issue_here ,
-                'repo_here' : repo_here ,
-                'contri_guide' : contri_guide ,
-                'forum_here' : forum_here ,
+html_context = {
                 'display_github' : True,
                 'github_user' : "getodk", # Username
                 'github_repo' : "docs", # Repo name
