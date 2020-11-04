@@ -11,4 +11,4 @@ Using ODK Central
   central-encryption
   central-server-audits
   central-api
-
+  central-briefcase
