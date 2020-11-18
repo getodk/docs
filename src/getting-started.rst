@@ -13,9 +13,11 @@ You will:
 Get a Central server
 --------------------
 
-The easiest way to get a Central server is by using `ODK Cloud <https://getodk.org/#odk-cloud>`_. ODK Cloud provides Central servers that are fully managed and supported by ODK. No technical knowledge is required.
+The easiest way to get a Central server is by using `ODK Cloud <https://getodk.org/#odk-cloud>`_.
 
-If you are technical and are interested in self-installing, we recommend you :doc:`install Central on DigitalOcean <central-install-digital-ocean>`.
+ODK Cloud provides fast Central servers with regular feature updates, automatic security patches, daily backups, uptime management, enterprise security, and guaranteed support on any issues.
+
+If you are technical and prefer to self-host, we recommend you :doc:`install Central on DigitalOcean <central-install-digital-ocean>`.
 
 .. _getting-started-install-collect:
 

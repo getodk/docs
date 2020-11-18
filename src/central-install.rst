@@ -8,14 +8,16 @@ Central is distributed and installed using `Docker <https://en.wikipedia.org/wik
 Using ODK Cloud (recommended)
 -----------------------------
 
-The easiest way to get a Central server is by using `ODK Cloud <https://getodk.org/#odk-cloud>`_. ODK Cloud provides Central servers that are fully managed and supported by ODK. No technical knowledge is required.
+The easiest way to get a Central server is by using `ODK Cloud <https://getodk.org/#odk-cloud>`_.
+
+ODK Cloud provides fast Central servers with regular feature updates, automatic security patches, daily backups, uptime management, enterprise security, and guaranteed support on any issues.
+
+By choosing ODK Cloud, you are also directly supporting future development on ODK and helping make it better for everyone.
 
 Installing on DigitalOcean
 --------------------------
 
-If you want to install Central on own server but you're not sure what cloud provider to choose, we recommend DigitalOcean, which provides an excellent starting point for Docker installations like ours. The $5/month tier will be enough for most projects (see :ref:`performance notes <central-performance>`).
-
-To learn more about installing on DigitalOcean, please see :doc:`here <central-install-digital-ocean>`.
+If you want to install Central on own server but you're not sure what cloud provider to choose, we recommend DigitalOcean. Start :ref:`here <central-install-digital-ocean>`.
 
 .. _central-install-custom:
 
