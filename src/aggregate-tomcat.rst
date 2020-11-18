@@ -9,7 +9,7 @@ Installing on Tomcat
 ====================
 
 .. warning::
-  Aggregate is no longer actively developed. Please use :doc:`ODK Central <central-intro>` instead.
+  Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
 
 `Apache Tomcat <http://tomcat.apache.org/>`_ is an open source Java web server that can be used to serve ODK Aggregate.
 
