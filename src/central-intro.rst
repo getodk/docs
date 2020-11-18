@@ -46,7 +46,7 @@ Central is in active development. We have a lot of exciting ideas for its future
 Who should use ODK Central?
 ---------------------------
 
-We recommend that all new data collection projects use ODK Central because it is in active development by the core ODK team. ODK Central is a relatively new server. It replaces :doc:`aggregate-intro` which is no longer actively developed. Central isn't as widely deployed as Aggregate, but its developers have put it through stress testing and it is used in production by many projects including several large ones.
+We recommend that all new data collection projects use ODK Central because it is in active development by the core ODK team. ODK Central is a relatively new server. It replaces :doc:`aggregate-intro` which is no longer being updated. Central isn't as widely deployed as Aggregate, but its developers have put it through stress testing and it is used in production by many projects including several large ones.
 
 Central solves some of the biggest problems with Aggregate. Some of our favorite features are:
 

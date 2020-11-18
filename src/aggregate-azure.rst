@@ -7,7 +7,7 @@ Installing on Microsoft Azure
 =============================
 
 .. warning::
-  Aggregate is no longer actively developed. Please use :doc:`ODK Central <central-intro>` instead.
+  Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
 
 .. warning::
 
