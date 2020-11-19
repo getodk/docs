@@ -1703,6 +1703,15 @@ The quality of audio recordings can be customized using the ``quality`` paramete
      - 8kHz
      - ~5MB/hour
 
+.. rubric:: XLSForm
+
+In the parameters column, write ``quality=`` followed by the desired value.
+
+.. csv-table:: survey
+ :header: type, name, label, parameters
+
+ audio,voice_only_audio,Voice audio,quality=voice-only
+
 Recording with an external app
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
