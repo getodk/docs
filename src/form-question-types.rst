@@ -1703,7 +1703,15 @@ The quality of audio recordings can be customized using the ``quality`` paramete
      - 8kHz
      - ~5MB/hour
 
+.. tip::
+
+  We'd recommend only using ``voice-only`` for one-on-one interviews in a quiet place as otherwise there might be too much detail loss. If in doubt, it's a good idea to test the different qualities out to see which one fits your use case best.
+
+  If it's a possibility that an individual question could need different qualities depending on context you can use :ref:`relevance <relevants>` to switch between them.
+
 If no ``quality`` is specified, ``normal`` is used.
+
+
 
 .. rubric:: XLSForm
 
