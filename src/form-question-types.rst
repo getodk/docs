@@ -1675,6 +1675,48 @@ Records audio using the device's microphone.
 
   audio, sound_like, What does it sound like?
 
+
+Customizing audio quality
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The quality of audio recordings can be customized using the ``quality`` parameter. The available quality values are:
+
+.. list-table::
+   :header-rows: 1
+
+   * - Value
+     - Extension
+     - Encoding
+     - Bit rate
+     - Sample rate
+     - File size
+   * - normal
+     - .m4a
+     - AAC
+     - 64kbps
+     - 32kHz
+     - ~30MB/hour
+   * - voice-only
+     - .amr
+     - AMR
+     - 12.2kbps
+     - 8kHz
+     - ~5MB/hour
+
+Recording with an external app
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Setting ``quality`` to ``external`` will use an external app to record audio rather than use Collect's built in recording features. Some Android devices provide a default application for audio recording. Others do not, and the user will need to install an audio recording app.
+
+There are many apps available for this, including:
+
+- `Axet Audio Recorder (open source) <https://play.google.com/store/apps/details?id=com.github.axet.audiorecorder>`_
+- `RecForge II <https://play.google.com/store/apps/details?id=dje073.android.modernrecforge>`_
+
+Any app that responds to
+``android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION``
+will be compatible.
+
 .. _video:
 
 Video widgets
