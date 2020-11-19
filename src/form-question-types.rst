@@ -1658,33 +1658,22 @@ In the parameters column, write ``max-pixels=`` followed by the desired maximum 
 Audio widget
 ----------------
 
-Records audio from an external app.
+type
+  :tc:`audio`
+appearance
+  :tc:`none`
 
-.. note::
-
-  Some Android devices provide a default application for audio recording.
-  Others do not,
-  and the user will need to install an audio recording app.
-
-  There are many apps available for this, including:
-
-  - `Axet Audio Recorder (open source) <https://play.google.com/store/apps/details?id=com.github.axet.audiorecorder>`_
-  - `RecForge II <https://play.google.com/store/apps/details?id=dje073.android.modernrecforge>`_
-
-  Any app that responds to
-  `android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION`
-  will be compatible.
-
+Records audio using the device's microphone.
 
 .. image:: /img/form-widgets/audio-start.*
-  :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "Please record your name." There are three buttons: Record Sound, Choose Sound and Play Sound. The "Play Sound" button is disabled.
+  :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "What does it sound like?" There are two buttons: Record Sound and Choose Sound.
 
 .. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label
 
-  audio, name_pronounce, Please record your name.
+  audio, sound_like, What does it sound like?
 
 .. _video:
 
