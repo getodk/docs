@@ -1712,7 +1712,6 @@ The quality of audio recordings can be customized using the ``quality`` paramete
 If no ``quality`` is specified, ``normal`` is used.
 
 
-
 .. rubric:: XLSForm
 
 In the parameters column, write ``quality=`` followed by the desired value.
@@ -1724,6 +1723,10 @@ In the parameters column, write ``quality=`` followed by the desired value.
 
 Recording with an external app
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. warning::
+
+  Before Collect 1.29 audio questions would always use an external app. 
 
 Setting ``quality`` to ``external`` will use an external app to record audio rather than use Collect's built in recording features. Some Android devices provide a default application for audio recording. Others do not, and the user will need to install an audio recording app.
 
