@@ -3,6 +3,7 @@ adb
 Addr
 Admin
 admin
+amr
 analytics
 anonymized
 anonymousUser
@@ -142,6 +143,7 @@ js
 json
 judgement
 kB
+kbps
 keypair
 keystore
 kml
