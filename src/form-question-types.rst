@@ -1703,6 +1703,8 @@ The quality of audio recordings can be customized using the ``quality`` paramete
      - 8kHz
      - ~5MB/hour
 
+If no ``quality`` is specified, ``normal`` is used.
+
 .. rubric:: XLSForm
 
 In the parameters column, write ``quality=`` followed by the desired value.
