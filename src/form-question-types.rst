@@ -1679,6 +1679,10 @@ Records audio using the device's microphone.
 Customizing audio quality
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. versionadded:: 1.29
+
+  `ODK Collect v1.29.0 <https://github.com/getodk/collect/releases/tag/v1.25.0>`_
+
 The quality of audio recordings can be customized using the ``quality`` parameter. The available quality values are:
 
 .. list-table::
@@ -1723,10 +1727,6 @@ In the parameters column, write ``quality=`` followed by the desired value.
 
 Recording with an external app
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. warning::
-
-  Before Collect 1.29 audio questions would always use an external app. 
 
 Setting ``quality`` to ``external`` will use an external app to record audio rather than use Collect's built in recording features. Some Android devices provide a default application for audio recording. Others do not, and the user will need to install an audio recording app.
 
