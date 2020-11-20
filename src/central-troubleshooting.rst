@@ -8,6 +8,34 @@
 Troubleshooting Central 
 =========================
 
+.. _troubleshooting-data:
+
+Database disappeared after running Docker commands
+--------------------------------------------------
+
+It is possible to accidentally reset the database by running `docker-compose down`. We are working on a way to prevent this error in the future. For now, if you have run this command and your data has disappeared, you can follow these steps to relocate the data and attach it back to your server:
+
+1. Run the following command: ``docker inspect --type container central_postgres_1 -f '{{(index .Mounts 0).Source}}'``. It should print out a long name starting with /var/lib/docker/volumes/ and ending in a long string of letters and numbers. Copy those letters and numbers and set them aside. They correspond to the location of your current (reset) database.
+2. Run ``docker volume ls``. This will tell you all the locations that docker has stored information. We need to find the location that contains your old data.
+3. For each long string of letters and numbers you just printed out, run ``file /var/lib/docker/volumes/{letters and numbers}/_data/pg_hba.conf``. So for example, ``file /var/lib/docker/volumes/cd597c21c7f0920fd46001dfd36d454178d61a01b94936f388b082d698c7b9bb/_data/pg_hba.conf``.
+4. If it tells you ``No such file or directory``, move onto the next row and try again with the ``file`` command.
+5. If it says ``ASCII text``, you have found database data. But if the string of letters and numbers you just pasted is the same as what you found in step 1, it's not the data you're looking for. Move onto the next set of letters and numbers and try again with step 3.
+6. Hopefully you found the data before you got to the end of the list. We found two sets of important letters and numbers following these steps: one in step 1 and one is step 5. Call these FIRST and SECOND, respectively.
+7. Now to restore the data, you'll want to run the following commands:
+
+  .. code-block:: console
+
+    cd
+    cd central
+    docker-compose stop
+    pushd /var/lib/docker/volumes
+    mv FIRST postgres.data.bak
+    mv SECOND FIRST
+    popd
+    docker-compose up -d
+
+Go to your site in a browser and try to log in with an account that previously existed. If that doesn't immediately work, try doing another ``docker-compose stop`` followed by ``docker-compose up``.
+
 .. _troubleshooting-emails:
 
 Users aren't receiving emails
@@ -24,7 +52,6 @@ Email sounds like a simple technology but in practice there are many things that
 To address delivery issues, consider using a dedicated email service such as `Mailgun <https://www.mailgun.com/smtp/>`_. Because Central doesn't send very many emails, using such a service will generally be a cost-effective way of ensuring email delivery. Once you have an account set up, you will need to :ref:`configure Central to use it <central-install-digital-ocean-custom-mail>`.
 
 If you want to directly send emails from your Central installation, the `mail-tester <https://www.mail-tester.com/>`_ service can help you identify what barriers to email delivery you might have. Create a Central account with the email address that it provides, retrieve your results, and then delete the user. Typically, the first thing you will need to do is :ref:`configure DKIM <central-install-digital-ocean-dkim>` which will provide email recipients confidence that emails were actually sent by your Central server rather than by a spammer pretending to be your server.
-
 
 .. _troubleshooting-form-preview-:
 
