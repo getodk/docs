@@ -131,7 +131,7 @@ Starting up Central
 
 Now, run ``docker-compose up -d`` to start the server software. The first time you start it, it will take a while to set itself up. Once you give it a few minutes and you have input control again, you'll want to see whether everything is running correctly:
 
- - To see if ODK has finished loading, run ``docker-compose ps``. Under the ``State`` column, you will want to see text that reads ``Up (healthy)``. If you see ``Up (health: starting)``, give it a few minutes. If you see some other text, something has gone wrong.
+ - To see if ODK has finished loading, run ``docker-compose ps``. Under the ``State`` column, for the ``nginx`` row, you will want to see text that reads ``Up`` or ``Up (healthy)``. If you see ``Up (health: starting)``, give it a few minutes. If you see some other text, something has gone wrong. It is normal to see ``Exit 0`` for the ``secrets`` container.
  - If your domain name has started working, you can visit it in a web browser to check that you get the Central management website.
 
 You're almost done! All you have to do is create an Administrator account so that you can log into Central.
