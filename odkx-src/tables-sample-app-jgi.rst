@@ -36,7 +36,7 @@ When you have filled in these data fields, press :guilabel:`Begin`. This will sh
     :alt: Tables Sample JGI Follow Screen
     :class: device-screen-vertical
 
-This screen is hard not intuitive for a new user to understand. It is highly customized to the specifications of the *Jane Goodall Institute's* workflow. They originally used large paper notebooks with grids. They would check boxes on the grid based on observed chimpanzee behavior according to their own data collection protocols. This screen renders that same grid digitally and gives a worker access to dozens of fields simultaneously. Survey, Collect, or other form based data entry models would be too scripted and confining for this type of dynamic interaction record. Furthermore, this screen will advance to a new data point every 15 minutes. This is another workflow necessity that is only possible because of customized JavaScript.
+This screen is hard for a new user to understand. It is highly customized to the specifications of the *Jane Goodall Institute's* workflow. They originally used large paper notebooks with grids. They would check boxes on the grid based on observed chimpanzee behavior according to their own data collection protocols. This screen renders that same grid digitally and gives a worker access to dozens of fields simultaneously. Survey, Collect, or other form based data entry models would be too scripted and confining for this type of dynamic interaction record. Furthermore, this screen will advance to a new data point every 15 minutes. This is another workflow necessity that is only possible because of customized JavaScript.
 
 Finally launch the *Hope* Demo.
 
@@ -46,5 +46,3 @@ Learn More
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 For more information about customized forms of data entry, view the :ref:`tables-using-edit-custom` guide.
-
-
