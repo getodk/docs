@@ -229,6 +229,22 @@ Log into your server so you have a console prompt, and run these commands, adapt
  mkswap /swap
  swapon /swap
 
+
+.. _central-install-digital-ocean-external-storage:
+
+Adding External Storage
+-----------------------
+
+Forms with many large media attachments can fill up your droplet's storage space. To move your database to external storage, follow these steps:
+
+1. `Add a new volume <https://www.digitalocean.com/docs/volumes/quickstart/>`_ to your droplet.
+
+2. `Move the Docker data directory <https://www.guguweb.com/2019/02/07/how-to-move-docker-data-directory-to-another-location-on-ubuntu/>`_ to the new volume.
+
+     1. To find the location of your new volume, run ``df -h``. The mount location will look like ``/mnt/volume_nyc1_01``. 
+     2. Then create a ``docker`` folder at that location with ``sudo mkdir /mnt/volume_nyc1_01/docker``. 
+     3. ``/mnt/volume_nyc1_01/docker`` will be the ``/path/to/your/docker`` you use.
+
 .. _central-install-digital-ocean-custom-ssl:
 
 Using a Custom SSL Certificate
