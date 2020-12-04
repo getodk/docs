@@ -592,7 +592,7 @@ Creating a Detail View
 
 A *Detail View* will display the details of a record. It is commonly used alongside *List View* to provide options to browse through a data set and learn more about a particular record.
 
-Open or create :file:`app/tables/census/html/census_detail.js` Ensure the file looks like this:
+Open or create :file:`app/tables/census/html/census_detail.html` Ensure the file looks like this:
 
 .. code-block:: html
 
@@ -799,14 +799,12 @@ Troubleshooting
 There are several issues that may occur while trying to push your survey onto your device. Below are some common issues and tip and tricks to help:
 
 - Try checking :command:`adb -version`. If the version does not show, make sure that `Android SDK <https://docs.odk-x.org/app-designer-prereqs/?highlight=android%20debug#android-sdk>`_ is appropriately installed on your computer because this is what installs the :program:`Android Debug Bridge (adb)` software.
-- Check that your computer sees your device. In your command window type the command adb devices. It should show a device detected.
+- Check that your computer sees your device. Enter :command:`adb devices` in command line. Should show a *device detected*.
 - Check device to see if it has a message about authorizing the computer. If so, authorize the device.
 - Check device settings to ensure USB debugging is enabled and device is linked as a media device (not camera or other settings)
 - Make sure your app-designer only has the necessary working files. Any random files or older versions of your survey saved within app-designer will cause the push to fail.
 - Do not have any :program:`Excel` forms open on your computer. If you do, this will cause errors with $filename or ~$filename in the file path when pushing.
 - Check that your computer sees your device. In your command window type the command adb devices. It should show a device detected.
-- Check device to see if it has a message about authorizing the computer. If so, authorize the device.
-- Enter :command:`adb devices` in command line. Should show a *device detected*.
 
 .. _build-app-deploying:
 
