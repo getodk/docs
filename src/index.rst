@@ -90,7 +90,6 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   briefcase-intro
   briefcase-install
   briefcase-using
-  briefcase-and-aggregate
 
 .. toctree::
   :hidden:

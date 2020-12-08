@@ -1,5 +1,5 @@
-Central and Briefcase
-=========================
+Using Briefcase with Central
+============================
 
 :doc:`briefcase-intro` is a desktop application which provides access to the Central API from graphical and command-line interfaces. It can make it easier for non-developers to automate some aspects of data management. In particular, it is useful for migrating data from another ODK-compatible server to Central.
 
@@ -9,7 +9,7 @@ Briefcase was created to provide features that the older ODK server, Aggregate, 
 
   Pulling and pushing media files is memory intensive. If you get a “Success with errors” status from Briefcase, we recommend increasing your Central server memory. If increasing memory is not an option, you can also :ref:`add swap <central-install-digital-ocean-swap>`.
 
-  The submission metadata that Central generates (e.g., submission date and submitter) are not included in the data Briefcase pulls from Central.
+  Submission date and submitter are not included in exports from Central.
 
 Migrating from another ODK-compatible server to Central
 --------------------------------------------------------
