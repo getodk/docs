@@ -33,7 +33,8 @@ redirects:
   aggregate-guide/index.html: aggregate-intro
   briefcase-forms/index.html: briefcase-using
   briefcase-guide/index.html: briefcase-intro
-  briefcase-vs-aggregate/index.html: briefcase-and-aggregate
+  briefcase-vs-aggregate/index.html: briefcase-intro
+  briefcase-and-aggregate/index.html: briefcase-intro
   collect-guide/index.html: collect-intro
   collect-integrations/index.html: launch-apps-from-collect
   form-interaction/index.html: form-logic
