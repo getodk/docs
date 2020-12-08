@@ -36,6 +36,10 @@ Briefcase will ask for the following information when choosing a Central server 
 
   The :guilabel:`Start pull from last submission pulled` setting will have no effect while pulling forms from a Central server.
 
+.. tip::
+
+  See :doc:`Using Central with Briefcase <central-briefcase>` for more on the limitations of using Briefcase with Central.
+
 .. _pull-from-aggregate:
 
 Aggregate server
@@ -81,6 +85,10 @@ Form definition
 
 Briefcase will ask for the location of the blank form definition in your computer.
 
+.. warning::
+
+  Ensure that all attached media is available relative to the form definition file location.
+
 .. tip::
 
   This enables a workflow to upload blank form definitions with many media attachments to Aggregate:
@@ -88,9 +96,6 @@ Briefcase will ask for the location of the blank form definition in your compute
   #. Pull the form using the :guilabel:`Pull from` option.
   #. :ref:`Push the form to your Aggregate server <push-to-aggregate>`.
 
-.. warning::
-
-  Ensure that all attached media is available relative to the form definition file location.
 
 .. _push-forms:
 
