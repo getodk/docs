@@ -9,6 +9,8 @@ Briefcase was created to provide features that the older ODK server, Aggregate, 
 
   Pulling and pushing media files is memory intensive. If you get a “Success with errors” status from Briefcase, we recommend increasing your Central server memory. If increasing memory is not an option, you can also :ref:`add swap <central-install-digital-ocean-swap>`.
 
+  The submission metadata that Central generates (e.g., submission date and submitter) are not included in the data Briefcase pulls from Central.
+
 Migrating from another ODK-compatible server to Central
 --------------------------------------------------------
 
