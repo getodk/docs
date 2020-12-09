@@ -319,9 +319,27 @@ In the example below, if a username is set either in the :ref:`server configurat
   username, username
   text, confirmed_username, What is your username?, ${username}
 
-If enumerators will need to enter the same value for multiple consecutive records, dynamic defaults can be combined with :ref:`last saved <last-saved>`.
+.. tip::
+  If enumerators will need to enter the same value for multiple consecutive records, dynamic defaults can be combined with :ref:`last saved <last-saved>`.
+
+.. _dynamic-defaults-repeats:
+
+Dynamic defaults in repeats
+---------------------------
 
 Dynamic defaults in repeats are evaluated when a new repeat instance is added.
+
+One powerful technique is to use a value from a previous repeat instance as a default for the current repeat instance. For example, you could use the tree species specified for the last visited tree as the default species for the next tree.
+
+.. rubric:: XLSForm to set a default value based on the last repeat instance
+
+.. csv-table:: survey
+  :header: type, name, label, default
+
+  begin_repeat, tree, Tree
+  text, species, Species, ${tree}[position() = position(current()/..) - 1]/species
+
+In the default expression above, ``${tree}`` is a reference to the repeat. The expression ``[position() = position(current()/..) - 1]`` in brackets says to filter the list of possible ``tree`` repeat instances to only include the one with a position that is one less than the current repeat's position. Finally, ``/species`` specifies that the ``species`` question from the repeat should be used. This is a mix of XLSForm's ``${}`` shortcut syntax for specifying question names and raw `XPath syntax <https://getodk.github.io/xforms-spec/#xpath-paths>`_.
 
 .. tip:: 
   :name: defaults-from-form-data
