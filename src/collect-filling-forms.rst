@@ -128,6 +128,9 @@ If you have a repeating group, you can remove existing instances of that repeat 
 Navigating the form 
 ------------------------
 
+.. note::
+  Since Collect v1.29, both swiping and button navigation are enabled by default on new installations. Prior to Collect v1.29 or for existing installations, only swiping was enabled by default.
+
 Swipe
 ~~~~~~~~~~
 
@@ -137,14 +140,10 @@ To move between questions, :gesture:`Swipe Left or Right`.
   :alt: A question screen in the Collect App. Overlaid on the screen is an icon of a hand with extended finger and arrows pointing left and right, representing a swiping gesture.
   :class: block
 
-.. video:: /vid/collect-completing-forms/swipe-example.mp4
-
-  Video showing swiping between three questions.
-
-Left and Right Buttons  
+Next and Back Buttons  
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you prefer Forward and Back buttons for navigation, you can switch to that in :menuselection:`⋮ -> General Settings -> User Interface`.
+If you prefer Next and Back buttons for navigation, you can change your navigation mode in :menuselection:`⋮ -> General Settings -> User Interface`.
 
 1. Open the *Action Menu* (:menuselection:`⋮`)
 
