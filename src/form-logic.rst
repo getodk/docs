@@ -591,7 +591,7 @@ You can ask the same question or questions multiple times by wrapping them in :t
     :doc:`form-repeats` describes strategies to address common repetition scenarios.
 
 .. tip::
-  Using repetition in a form is very powerful but can also make training and data analysis more time-consuming. Repeats exported from Central or Briefcase be in their own files and will need to be joined with their parent records for analysis.
+  Using repetition in a form is very powerful but can also make training and data analysis more time-consuming. Repeats exported from Central or Briefcase will be in their own files and will need to be joined with their parent records for analysis.
 
   Before adding repeats to your form, consider other options:
 
@@ -617,16 +617,14 @@ Before each repetition, the user is asked if they want to add another.
 
 .. note::
 
-  The :th:`label` in the :tc:`begin_repeat` row
-  is shown in the **Add New Group?** message.
+  The :th:`label` in the :tc:`begin_repeat` row is shown in quotes in the **Add ...?** message.
   
-  A meaningful label will help enumerators and participants 
-  navigate the form as intended.
+  A meaningful label will help enumerators and participants navigate the form as intended. We generally recommend using a singular noun or noun phrase such as "observation" or "household member".
 
   This interaction may be confusing to users the first time they see it. If enumerators know the number of repetitions ahead of time, consider using a :ref:`dynamically defined repeat count <dynamically-defined-repeats>`.
 
 .. figure:: /img/form-logic/repeat-iteration-modal.* 
-  :alt: The Collect app. A modal dialog labeled "Add new group?" with the question: "Add a new 'repeat group label' group?" and options "Do not add" and "Add Group".
+  :alt: The Collect app. A modal dialog with the question: "Add "Person"?" and options "Do not add" and "Add".
   
   The user is given the option to add each repetition.
 
@@ -677,7 +675,7 @@ The :th:`repeat_count` column can reference :ref:`previous responses <variables>
 Repeating as long as a condition is met
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If the enumerator won't know how many repetitions are needed ahead of time, you can still avoid the "Add new group?" dialog by using the answer to a question to decide whether another repeat instance should be added. In the example below, repeated questions about plants will be asked as long as the user answers "yes" to the last question.
+If the enumerator won't know how many repetitions are needed ahead of time, you can still avoid the "Add ...?" dialog by using the answer to a question to decide whether another repeat instance should be added. In the example below, repeated questions about plants will be asked as long as the user answers "yes" to the last question.
 
 .. csv-table:: survey
   :header: type, name, label, calculation, repeat_count
@@ -777,3 +775,22 @@ __ https://docs.google.com/spreadsheets/d/1CCjRRHCyJXaSEBHPjMWrGotnORR4BI49PoON6
   job_titles, copywriter, Copywriter, marketing
 
 
+.. _generating-select-ones-from-repeats:
+
+Generating select ones from repeats
+========================================
+
+If you use a repeat, you can generate a follow-up ``select_one`` question using values from the repeat. For example, if you collect information about several household members in a repeat, you can then show a select one with all household members' names. To do this, add a question of type ``select_one`` followed by the name of the question in the repeat that you want to use for the select options.
+
+.. csv-table:: survey
+  :header: type, name, label, required, choice_filter
+  
+  begin_repeat, person, Person
+  text, person_name, Person's name?, true()
+  integer, person_age, ${person_name}'s age?, true()
+  end_repeat, person
+  
+  select_one ${person_name}, tallest, Select the tallest person
+  select_one ${person_name}, tallest_child, Select the tallest person under 18., ${person_age} < 18
+
+As shown in the example above, you can combine this with other select features such as :ref:`filtering <cascading-selects>`. Note that in the example above, the question used as select option text is ``required``. If a question used to generate a ``select_one`` is not required and it is left blank for some repeat instances, those repeat instances will not be included in the select.
