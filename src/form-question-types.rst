@@ -5,6 +5,7 @@
   br
   BREATHCOUNT
   Codabar
+  Comcond
   concat
   Datetime
   dateTime
@@ -13,8 +14,10 @@
   na
   nocalendar
   nolabel
+  partum
   phonenumber
   placementmap
+  preg
   rect
   substr
   uw
@@ -2239,44 +2242,39 @@ The :tc:`field-list` appearance attribute, applied to a group of widgets, displa
 
   :ref:`groups` and :ref:`repeats`.
 
-Select widgets included in a :tc:`field-list` group can have one of several :th:`appearance` attributes:
+.. _select-grid:
+
+Grid of selects on the same screen
+------------------------------------
+
+If you have multiple select questions with the same choices, it can be helpful to group them on one screen.
+
+.. image:: /img/form-widgets/select-grid.*
+  :alt: A field-list group of questions, as displayed in the ODK Collect app on an Android phone. A grid of questions representing underlying conditions are displayed. For eacn condition, there are radio buttons to indicate 'Yes' or 'No'.
+
+
+To do this, put your select questions in a :tc:`field-list` group and use the following :th:`appearance` attributes:
 
 :tc:`label`
-  Only the option labels are displayed, without checkboxes.
-:tc:`list`
-  The labels are displayed along with
-  checkboxes for multi-select questions
-  and
-  radio buttons for single-select questions.
+  Only the option labels are displayed, without checkboxes. This is used for the top row with the 'Yes' and 'No' options in the example above.
 :tc:`list-nolabel`
-  Only checkboxes or radio buttons are displayed,
-  without their labels.
-  This is often used for sets of questions with repeated answer choices.
-
-.. image:: /img/form-widgets/field-list-1.*
-  :alt: A field-list group of questions, as displayed in the ODK Collect app on an Android phone. Six questions are displayed. Below each, the answer choices are arranged in a row.
-
-.. image:: /img/form-widgets/field-list-2.*
-  :alt: The continuation of the previous image.
+  Only checkboxes or radio buttons are displayed, without their labels. This is used for the question rows in the example above.
+:tc:`list`
+  The labels are displayed along with checkboxes for multi-select questions and radio buttons for single-select questions. You could use this instead of having a :tc:`label` row to keep the option labels closer to the checkboxes or radio buttons.
 
 .. rubric:: XLSForm
 
 .. csv-table:: survey
-  :header: type, name, label, appearance, hint
+  :header: type, name, label, appearance
 
-  begin_group,table_list_test,List group,field-list,
-  select_one yes_no,table_list_test_label,Label widget,label,"Show only the labels of these options and not the inputs (type=select_one yes_no, appearance=label)"
-  select_multiple yes_no,table_list_test_label_2,Label multi widget,label,"Show only the labels of these options and not the inputs (type=select_multiple yes_no, appearance=label)"
-  select_one yes_no,table_list_1,List widget,list-nolabel,"Show only the inputs of these options and not the labels (type=select_one yes_no, appearance=list-nolabel)"
-  select_multiple yes_no,table_list_2,List multi widget,list-nolabel,"Show only the inputs of these options and not the labels (type=select_multiple yes_no, appearance=list-nolabel)"
-  select_one yes_no,list_widget,List widget,list,"This is a normal list widget with (type = select_one, appearance = list)"
-  select_multiple yes_no,list_multi_widget,List multi widget,list,"This is a normal list widget with (type = select_multiple, appearance = list)"
-  end_group
+  begin_group, underlying_conditions, Underlying conditions, field-list
+  select_one, yes_no, condition_labels, Conditions, label
+  select_one, yes_no, Comcond_preg, Pregnancy, list-nolabel
+  select_one, yes_no, Comcond_partum, Post-partum (< 6 weeks), list-nolabel
+  end_group, underlying_conditions
 
 .. csv-table:: choices
   :header: list_name, name, label
 
-  yes_no,yes,Yes
-  yes_no,no,No
-  yes_no,dk,Don't Know
-  yes_no,na,Not Applicable
+  yes_no, yes, Yes
+  yes_no, no, No
