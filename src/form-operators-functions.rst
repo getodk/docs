@@ -493,11 +493,11 @@ Searching and matching strings
 
 .. function:: string-length(string)
 
-  Returns the number of characters in :arg:`string`.
+  Returns the number of characters in :arg:`string`. If no value is passed in, returns the number of characters in the value of the question that this function call is tied to which can be useful in a :th:`constraint` expression.
 
 .. function:: normalize-space(string)
 
-  Returns a string with normalized whitespace by stripping leading and trailing whitespace of :arg:`string` and replacing sequences of whitespace characters with a single space.
+  Returns a string with normalized whitespace by stripping leading and trailing whitespace of :arg:`string` and replacing sequences of whitespace characters with a single space. If no value is passed in, normalizes whitespace of the value of the question that this function call is tied to.
   
 .. _string-combination-functions:
   
