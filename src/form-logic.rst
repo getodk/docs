@@ -7,7 +7,12 @@
   dir
   fave
   gndr
+  kwame
+  Kwame
   mngr
+  onwuachi
+  Onwuachi
+  sophia
   timestamp
 
 ***********
@@ -300,7 +305,7 @@ Dynamic defaults
   
   Support for :ref:`dynamic defaults <dynamic-defaults>` was added in Collect v1.24.0. Form conversion requires XLSForm Online ≥ v2.0.0 or pyxform ≥ v1.0.0. Using older versions will have unpredictable results.
 
-If you put an expression in the :th:`default` column for a question, that expression will be evaluated once when a record is first created from a form definition. This allows you to use values from outside the form like the current date or the :ref:`server username <metadata>`. Dynamic defaults can't be used to set the default value of one field to the value of another field in the form. Learn about alternatives in :ref:`the tip below <defaults-from-form-data>`.
+If you put an expression in the :th:`default` column for a question, that expression will be evaluated once when a record is first created from a form definition. This allows you to use values from outside the form like the current date or the :ref:`server username <metadata>`. Simple dynamic defaults as described in this section are evaluated once on record creation. See below for using :ref:`dynamic defaults in repeats <dynamic-defaults-repeats>` or setting the :ref:`default value of one field to the value of another field in the form <defaults-from-form-data>`.
 
 .. rubric:: XLSForm to set the current date as default
 
@@ -341,48 +346,64 @@ One powerful technique is to use a value from a previous repeat instance as a de
 
 In the default expression above, ``${tree}`` is a reference to the repeat. The expression ``[position() = position(current()/..) - 1]`` in brackets says to filter the list of possible ``tree`` repeat instances to only include the one with a position that is one less than the current repeat's position. Finally, ``/species`` specifies that the ``species`` question from the repeat should be used. This is a mix of XLSForm's ``${}`` shortcut syntax for specifying question names and raw `XPath syntax <https://getodk.github.io/xforms-spec/#xpath-paths>`_.
 
-.. tip:: 
-  :name: defaults-from-form-data
+.. _defaults-from-form-data:
 
-  You may want to use a value filled out by the enumerator as a default for another question that the enumerator will later fill in. Dynamic defaults can't be used for this because they are evaluated once when a record is first created which is before an enumerator fills in any data.
+Dynamic defaults from form data
+-------------------------------
+
+.. warning::
   
-  One option is to use the :th:`calculation` column and wrap your default value expression in a :func:`once` function.
+  Support for :ref:`dynamic defaults <dynamic-defaults>` from form data was added in Collect v1.24.0. Form conversion requires XLSForm Online ≥ v2.2.0 or pyxform ≥ v1.2.0. Using older versions will have unpredictable results.
+
+It can be helpful to use a value filled out by the enumerator as a default for another question that the enumerator will later fill in. Dynamic defaults as described above can't be used for this because they are evaluated on form or repeat creation, before any data is filled in. You also **can't use the calculation column on its own for this** because the expression in the :th:`calculation` would be evaluated on form save and replace any changes the enumerator has made. Instead, use a combination of :th:`calculation` and :th:`trigger`. The question reference in the :th:`trigger` column will ensure that your :th:`calculation` is only evaluated when that reference changes.
+
+.. rubric:: XLSForm that uses a child's current age as the default for diagnosis age
+
+.. csv-table:: survey
+  :header: type, name, label, calculation, trigger
   
-  .. rubric:: XLSForm that uses a child's current age as the default for diagnosis age
+  text, name, Child's name,
+  integer, current_age, Child's age,
+  select_one gndr, gender, Gender,
+  integer, malaria_age, Age at malaria diagnosis, ${current_age}, ${current_age}
+
+In the example above, ``${current_age}`` in the :th:`trigger` column means that when the value of the ``current_age`` question is changed by the enumerator, the :th:`calculation` for the ``malaria_age`` question will be evaluated. In this case, this means the new value for ``current_age`` will replace the current value for ``malaria_age``. If the enumerator then changes the value for ``malaria_age``, this value will be retained unless the value for ``current_age`` is changed again.
+
+Another option for the scenario above is to clear out the value for ``malaria_age`` when ``current_age`` changes. Making ``malaria_age`` a required question will force the enumerator to update ``malaria_age`` if ``current_age`` is corrected.
+
+.. rubric:: XLSForm that clears diagnosis age if current age is updated
+
+.. csv-table:: survey
+  :header: type, name, label, required, calculation, trigger
   
-  .. csv-table:: survey
-    :header: type, name, label, calculation
-    
-    text, name, Child's name,
-    integer, current_age, Child's age,
-    select_one gndr, gender, Gender,
-    integer, malaria_age, Age at malaria diagnosis, once(${current_age}) 
-    
-  This solution has some limitations:
+  text, name, Child's name,
+  integer, current_age, Child's age,
+  select_one gndr, gender, Gender,
+  integer, malaria_age, Age at malaria diagnosis, true(), '', ${current_age}
+
+In the example above, ``malaria_age`` is cleared any time the value of the ``current_age`` question is changed.
+
+This kind of default is particularly useful if a form is being filled in about entities that there is already some knowledge about. For example, if you have a list of people to interview and you know their phone numbers, you may want to use the known phone number as a default and allow the enumerator to update it as needed.
+
+.. rubric:: XLSForm that looks up values based on a selection
+
+.. csv-table:: survey
+  :header: type, name, label, calculation, trigger, choice_filter
+
+  select_one participants, participant, Participant, , ,true()
+  text, phone_number, Phone number, instance('participants')/root/item[name=${participant}]/phone_number, ${participant}
+
+.. csv-table:: choices
+  :header: list_name, name, label, phone_number
   
-  - The value of the calculated default
-    will get set to the first value that the earlier question receives,
-    even if it is changed before viewing the later question.
-    
-    Example: In the above form,
-    if you enter ``8`` on :tc:`current_age`,
-    then advance to gender,
-    then back up and change :tc:`current_age` to ``10``,
-    when you get to :tc:`malaria_age`, 
-    the default value will be ``8``.
-    
-  - If the first earlier question has a value,
-    the dependent question will also have a value ---
-    :func:`once` will evaluate anytime the question's value is blank.
-    
-    Example: In the above form,
-    if you enter ``8`` on :tc:`current_age`
-    and then delete the value ``8`` when you get to :tc:`malaria_age`
-    (intending to leave it blank)
-    the ``8`` value will come back as the answer when you advance.
-    (In this case,
-    using a blank value to indicate "child does not have malaria"
-    would fail.)
+  participants, kwame_onwuachi, Kwame Onwuachi, +1-850-555-0168
+  participants, sophia_roe, Sophia Roe, +36 55 562 079
+
+In the example above, when a participant is selected, his or her phone number is populated as a default and can be updated as needed. If the selected participant changes, the phone number is replaced.
+
+.. note::
+
+  The ``true()`` in the :th:`choice_filter` column for the ``select_one`` in the example above is necessary to be able to look up participants' phone numbers. This is currently needed to overcome a ``pyxform`` bug.
   
 .. _constraints:
 
