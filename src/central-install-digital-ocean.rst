@@ -321,6 +321,12 @@ Central ships with a PostgreSQL database server. To use your own custom database
       "database": "my-db-table"
     },
 
+4. Edit the file ``docker-compose.yml`` to update the command for the ``service`` container.
+
+  .. code-block:: console
+
+    command: [ "./wait-for-it.sh", "my-db-host:my-db-port", "--", "./start-odk.sh" ]
+
 5. Build and run: ``docker-compose build service``, ``docker-compose stop service``, ``docker-compose up -d service``.
 
 .. _central-install-digital-ocean-sentry:
