@@ -305,7 +305,7 @@ Dynamic defaults
   
   Support for :ref:`dynamic defaults <dynamic-defaults>` was added in Collect v1.24.0. Form conversion requires XLSForm Online ≥ v2.0.0 or pyxform ≥ v1.0.0. Using older versions will have unpredictable results.
 
-If you put an expression in the :th:`default` column for a question, that expression will be evaluated once when a record is first created from a form definition. This allows you to use values from outside the form like the current date or the :ref:`server username <metadata>`. Simple dynamic defaults as described in this section are evaluated once on record creation. See below for using :ref:`dynamic defaults in repeats <dynamic-defaults-repeats>` or setting the :ref:`default value of one field to the value of another field in the form <defaults-from-form-data>`.
+If you put an expression in the :th:`default` column for a question, that expression will be evaluated once when a record is first created from a form definition. This allows you to use values from outside the form like the current date or the :ref:`server username <metadata>`. Dynamic defaults as described in this section are evaluated once on record creation. See below for using :ref:`dynamic defaults in repeats <dynamic-defaults-repeats>` or setting the :ref:`default value of one field to the value of another field in the form <defaults-from-form-data>`.
 
 .. rubric:: XLSForm to set the current date as default
 
@@ -316,7 +316,7 @@ If you put an expression in the :th:`default` column for a question, that expres
 
 In the example below, if a username is set either in the :ref:`server configuration <server-settings>` or the :ref:`metadata settings <form-metadata-settings>`, that username will be used as the default for the question asked to the enumerator.
 
-.. rubric:: XLSForm to set the default username as the server username
+.. rubric:: XLSForm to confirm metadata like username
 
 .. csv-table:: survey
   :header: type, name, label, default
@@ -325,7 +325,7 @@ In the example below, if a username is set either in the :ref:`server configurat
   text, confirmed_username, What is your username?, ${username}
 
 .. tip::
-  If enumerators will need to enter the same value for multiple consecutive records, dynamic defaults can be combined with :ref:`last saved <last-saved>`.
+  If enumerators will need to enter the same value for multiple consecutive records, dynamic defaults can be combined with :ref:`last saved <last-saved>`. For example, if enumerators are collecting data about trees and trees of the same kind grow together, you can use the last saved tree species as the default for new records.
 
 .. _dynamic-defaults-repeats:
 
@@ -335,6 +335,10 @@ Dynamic defaults in repeats
 Dynamic defaults in repeats are evaluated when a new repeat instance is added.
 
 One powerful technique is to use a value from a previous repeat instance as a default for the current repeat instance. For example, you could use the tree species specified for the last visited tree as the default species for the next tree.
+
+.. note::
+  
+  If you are collecting data about multiple entities such as trees, you can choose to use repeats or to use one form record per entity. See :ref:`the repeats section <repeats>` for more information on making that decision. If you use one form record per entity, you can use :ref:`last saved <last-saved>` to get the same behavior as described in this section.
 
 .. rubric:: XLSForm to set a default value based on the last repeat instance
 
@@ -355,9 +359,11 @@ Dynamic defaults from form data
   
   Support for :ref:`dynamic defaults <dynamic-defaults>` from form data was added in Collect v1.24.0. Form conversion requires XLSForm Online ≥ v2.2.0 or pyxform ≥ v1.2.0. Using older versions will have unpredictable results.
 
-It can be helpful to use a value filled out by the enumerator as a default for another question that the enumerator will later fill in. Dynamic defaults as described above can't be used for this because they are evaluated on form or repeat creation, before any data is filled in. You also **can't use the calculation column on its own for this** because the expression in the :th:`calculation` would be evaluated on form save and replace any changes the enumerator has made. Instead, use a combination of :th:`calculation` and :th:`trigger`. The question reference in the :th:`trigger` column will ensure that your :th:`calculation` is only evaluated when that reference changes.
+It can be helpful to use a value filled out by the enumerator as a default for another question that the enumerator will later fill in. Dynamic defaults as described above can't be used for this because they are evaluated on form or repeat creation, before any data is filled in.
 
-.. rubric:: XLSForm that uses a child's current age as the default for diagnosis age
+You also **can't use the calculation column on its own for this** because the expression in the :th:`calculation` would be evaluated on form save and replace any changes the enumerator has made. Instead, use a combination of :th:`calculation` and :th:`trigger`. The question reference in the :th:`trigger` column will ensure that your :th:`calculation` is only evaluated when that reference changes.
+
+.. rubric:: XLSForm that uses current age as the default for diagnosis age
 
 .. csv-table:: survey
   :header: type, name, label, calculation, trigger
@@ -365,11 +371,11 @@ It can be helpful to use a value filled out by the enumerator as a default for a
   text, name, Child's name,
   integer, current_age, Child's age,
   select_one gndr, gender, Gender,
-  integer, malaria_age, Age at malaria diagnosis, ${current_age}, ${current_age}
+  integer, diagnosis_age, Age at malaria diagnosis, ${current_age}, ${current_age}
 
-In the example above, ``${current_age}`` in the :th:`trigger` column means that when the value of the ``current_age`` question is changed by the enumerator, the :th:`calculation` for the ``malaria_age`` question will be evaluated. In this case, this means the new value for ``current_age`` will replace the current value for ``malaria_age``. If the enumerator then changes the value for ``malaria_age``, this value will be retained unless the value for ``current_age`` is changed again.
+In the example above, ``${current_age}`` in the :th:`trigger` column means that when the value of the ``current_age`` question is changed by the enumerator, the :th:`calculation` for the ``diagnosis_age`` question will be evaluated. In this case, this means the new value for ``current_age`` will replace the current value for ``diagnosis_age``. If the enumerator then changes the value for ``diagnosis_age``, this value will be retained unless the value for ``current_age`` is changed again.
 
-Another option for the scenario above is to clear out the value for ``malaria_age`` when ``current_age`` changes. Making ``malaria_age`` a required question will force the enumerator to update ``malaria_age`` if ``current_age`` is corrected.
+Another option for the scenario above is to clear out the value for ``diagnosis_age`` when ``current_age`` changes. Making ``diagnosis_age`` a required question will force the enumerator to update ``diagnosis_age`` if ``current_age`` is corrected.
 
 .. rubric:: XLSForm that clears diagnosis age if current age is updated
 
@@ -379,13 +385,13 @@ Another option for the scenario above is to clear out the value for ``malaria_ag
   text, name, Child's name,
   integer, current_age, Child's age,
   select_one gndr, gender, Gender,
-  integer, malaria_age, Age at malaria diagnosis, true(), '', ${current_age}
+  integer, diagnosis_age, Age at malaria diagnosis, true(), '', ${current_age}
 
-In the example above, ``malaria_age`` is cleared any time the value of the ``current_age`` question is changed.
+In the example above, ``diagnosis_age`` is cleared any time the value of the ``current_age`` question is changed.
 
 This kind of default is particularly useful if a form is being filled in about entities that there is already some knowledge about. For example, if you have a list of people to interview and you know their phone numbers, you may want to use the known phone number as a default and allow the enumerator to update it as needed.
 
-.. rubric:: XLSForm that looks up values based on a selection
+.. rubric:: XLSForm that looks up default values based on a selection
 
 .. csv-table:: survey
   :header: type, name, label, calculation, trigger, choice_filter
