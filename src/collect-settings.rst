@@ -3,6 +3,8 @@
   Basemap
   basemaps
   Basemaps
+  bitrate
+  codec
   Mapbox
   Transifex
   Unfinalized
@@ -280,6 +282,10 @@ Specifies how blank forms should be updated:
 :guilabel:`Show guidance for questions`
 """"""""""""""""""""""""""""""""""""""""
   Guidance hints on questions can be used to display additional information that is not always needed. For example, they can be used to show extra instructions to be used during training or valuable only on a printout. If set to `Yes - always shown`, guidance hints will always be displayed below regular hints. If set to `Yes - collapsed`, the user will need to tap to view guidance hints.
+
+:guilabel:`Use external app for audio recording`
+""""""""""""""""""""""""""""""""""""""""""""""""
+  By default, an external application is used for audio recording. Uncheck this setting to use the built-in audio recorder instead. When unchecked, recordings will be created as mono ``.m4a`` files using the ``AAC`` codec with a sample rate of 32kHz and a bitrate of 64kbps. This corresponds to a file size of about 30MB/hour. We typically recommend configuring audio quality :ref:`in the form definition <customizing-audio-quality>` instead of using this setting but it can be useful for older forms that can't be modified.
 
 .. rubric:: Form import
 

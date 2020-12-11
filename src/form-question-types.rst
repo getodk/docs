@@ -1675,6 +1675,7 @@ Records audio using the device's microphone.
 
   audio, sound_like, What does it sound like?
 
+.. _customizing-audio-quality:
 
 Customizing audio quality
 ~~~~~~~~~~~~~~~~~~~~~~~~~

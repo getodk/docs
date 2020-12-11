@@ -100,6 +100,7 @@ Here are the keys for all settings and the set of values they can take:
       "high_resolution": Boolean,
       "image_size": Boolean,
       "guidance_hint": Boolean,
+      "external_app_recording": Boolean,
 
       "instance_form_sync": Boolean,
       "change_form_metadata": Boolean,
@@ -153,6 +154,7 @@ Here are the keys for all settings and the set of values they can take:
       "constraint_behavior": {"on_swipe", "on_finalize"},
       "high_resolution": Boolean,
       "image_size": {"original", "small", "very_small", "medium", "large"},
+      "external_app_recording": Boolean,
       "guidance_hint": {"no", "yes", "yes_collapsed"},
       "instance_sync": Boolean,
 
