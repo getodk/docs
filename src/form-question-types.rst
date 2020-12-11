@@ -1687,6 +1687,31 @@ Android devices can make many sounds during use and these will be included in re
 Using the built-in audio recorder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. versionadded:: 1.29
+
+  `ODK Collect v1.29.0 <https://github.com/getodk/collect/releases/tag/v1.29.0>`_
+
+The built-in audio recorder makes it possible to capture audio without having to install an external app. It also enables recording while filling out other questions and is designed to continue recording even if the user switches to another app or if the phone screen is locked. To use the built-in audio recorder, :ref:`specify the desired audio quality <customizing-audio-quality>` for each audio question in your form. You can also :ref:`configure Collect to always use the built-in recorder <use-external-app-for-audio-recording>`.
+
+.. image:: /img/form-widgets/built-in-recorder.*
+  :alt: The built-in recorder as displayed in the ODK Collect App on an Android phone. The user interface is described below.
+
+When built-in audio recording is enabled and recording is initiated, a recording control bar appears at at the top of the screen. At the top left of this bar is an icon to represent whether recording is currently ongoing or paused (1). To the right of this icon is the current length of the recording (2).
+
+.. warning::
+
+  Pause is only available on Android 7.0 and above. On lower Android versions, the pause button is hidden. 
+
+At the right of the control bar are a pause button (3) and a stop button (4). When the pause button is tapped, recording is temporarily suspended and the button icon changes to a microphone. When the microphone is tapped, recording is resumed. Recording can be paused and resumed as many times as desired. When the stop button is tapped, the recording is ended and can no longer be modified.
+
+Recording status is also displayed below the audio question text. There is a time representing the current length of the recording (5) and a diagram (6) representing the volume of the recording over time. The diagram provides confirmation that the microphone is working and can help a user ensure an even, sufficient volume.
+
+During recording, the user is prevented from leaving the current question screen. However, it is safe to use other applications or to lock the device screen.
+
+Once recording is stopped, the control bar disappears. The recording is made available for playback below the question text.
+
+To replace the audio captured, first delete the current file and then record again.
+
 .. _customizing-audio-quality:
 
 Customizing audio quality
@@ -1696,7 +1721,7 @@ Customizing audio quality
 
   `ODK Collect v1.29.0 <https://github.com/getodk/collect/releases/tag/v1.29.0>`_
 
-The quality of audio recordings can be customized using the ``quality`` parameter. If no ``quality`` is specified, ``normal`` is used. The available quality values are:
+The quality of audio recordings can be customized using the ``quality`` parameter. If a ``quality`` is specified, the built-in recorder is always used, regardless of Collect settings. If no ``quality`` is specified and Collect is :ref:`configured to use the built-in recorder <use-external-app-for-audio-recording>`, ``normal`` is used. The available quality values are:
 
 .. list-table::
    :header-rows: 1
