@@ -1706,6 +1706,8 @@ At the right of the control bar are a pause button (3) and a stop button (4). Wh
 
 Recording status is also displayed below the audio question text. There is a time representing the current length of the recording (5) and a diagram (6) representing the volume of the recording over time. The diagram provides confirmation that the microphone is working and can help a user ensure an even, sufficient volume.
 
+Other questions can be included on the same screen as a built-in recording question. As shown in the screenshot above, this makes it possible to capture quantitative content while recording. To achieve this, put the questions in a :ref:`field list <field-list>`.
+
 During recording, the user is prevented from leaving the current question screen. However, it is safe to use other applications or to lock the device screen.
 
 Once recording is stopped, the control bar disappears. The recording is made available for playback below the question text.
