@@ -1714,6 +1714,8 @@ Once recording is stopped, the control bar disappears. The recording is made ava
 
 To replace the audio captured, first delete the current file and then record again.
 
+In some rare cases such as the device running out of space, the recording may complete successfully but not be attached to the form. If this happens, a dialog will be displayed explaining that the file is available but needs to be accessed manually. You can find these files in the ``recordings`` folder of the :ref:`Collect directory <collect-directory>`. This folder is never cleared so consider emptying it yourself once you have retrieved its files.
+
 .. _customizing-audio-quality:
 
 Customizing audio quality
@@ -1721,7 +1723,7 @@ Customizing audio quality
 
 .. versionadded:: 1.29
 
-  `ODK Collect v1.29.0 <https://github.com/getodk/collect/releases/tag/v1.29.0>`_
+  `ODK Collect v1.29.0 <https://github.com/getodk/collect/releases/tag/v1.29.0>`_, `pyxform` v1.3.0, `XLSForm Online` v2.3.0
 
 The quality of audio recordings can be customized using the ``quality`` parameter. If a ``quality`` is specified, the built-in recorder is always used, regardless of Collect settings. If no ``quality`` is specified and Collect is :ref:`configured to use the built-in recorder <use-external-app-for-audio-recording>`, ``normal`` is used. The available quality values are:
 
