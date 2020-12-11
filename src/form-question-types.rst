@@ -17,6 +17,7 @@
   partum
   phonenumber
   placementmap
+  podcast
   preg
   rect
   substr
@@ -1663,7 +1664,7 @@ type
 appearance
   :tc:`none`
 
-Records audio using the device's microphone.
+Records audio using the device's microphone or a connected external microphone. By default, an :ref:`external application <external-audio-app>` is used. Starting with Collect v1.29, you can also use :ref:`built-in recording <built-in-audio-recording>`.
 
 .. image:: /img/form-widgets/audio-start.*
   :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "What does it sound like?" There are two buttons: Record Sound and Choose Sound.
@@ -1675,6 +1676,11 @@ Records audio using the device's microphone.
 
   audio, sound_like, What does it sound like?
 
+.. _built-in-audio-recording:
+
+Using the built-in audio recorder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. _customizing-audio-quality:
 
 Customizing audio quality
@@ -1682,9 +1688,9 @@ Customizing audio quality
 
 .. versionadded:: 1.29
 
-  `ODK Collect v1.29.0 <https://github.com/getodk/collect/releases/tag/v1.25.0>`_
+  `ODK Collect v1.29.0 <https://github.com/getodk/collect/releases/tag/v1.29.0>`_
 
-The quality of audio recordings can be customized using the ``quality`` parameter. The available quality values are:
+The quality of audio recordings can be customized using the ``quality`` parameter. If no ``quality`` is specified, ``normal`` is used. The available quality values are:
 
 .. list-table::
    :header-rows: 1
@@ -1701,6 +1707,12 @@ The quality of audio recordings can be customized using the ``quality`` paramete
      - 64kbps
      - 32kHz
      - ~30MB/hour
+   * - low
+     - .m4a
+     - AAC
+     - 24kbps
+     - 32kHz
+     - ~11MB/hour
    * - voice-only
      - .amr
      - AMR
@@ -1710,12 +1722,7 @@ The quality of audio recordings can be customized using the ``quality`` paramete
 
 .. tip::
 
-  We'd recommend only using ``voice-only`` for one-on-one interviews in a quiet place as otherwise there might be too much detail loss. If in doubt, it's a good idea to test the different qualities out to see which one fits your use case best.
-
-  If it's a possibility that an individual question could need different qualities depending on context you can use :ref:`relevance <relevants>` to switch between them.
-
-If no ``quality`` is specified, ``normal`` is used.
-
+  We'd recommend only using ``voice-only`` for one-on-one interviews in a quiet place as otherwise there might be too much detail loss. ``low`` will sound compressed but speech is generally intelligible, even if multiple people are talking at once. ``normal`` is similar to typical podcast settings and will sound good on most devices. If in doubt, it's a good idea to test the different qualities out to see which one fits your use case best.
 
 .. rubric:: XLSForm
 
@@ -1725,6 +1732,28 @@ In the parameters column, write ``quality=`` followed by the desired value.
  :header: type, name, label, parameters
 
  audio,voice_only_audio,Voice audio,quality=voice-only
+
+If it's a possibility that an individual question could need different qualities depending on context you can use :ref:`relevance <relevants>` to switch between them:
+
+  .. container:: details
+
+    .. rubric:: XLSForm
+
+    .. csv-table:: survey
+      :header: type, name, label, parameters, relevance
+
+      select_one, yes_no, is_quiet, Are you currently in a quiet location with only one person speaking at a time?
+
+      audio recording_voice_only, Please record, quality='voice-only',, ${is_quiet} = 'yes'
+      audio recording_normal, Please record, quality='normal',, ${is_quiet} = 'no'
+
+    .. csv-table:: choices
+      :header: list_name, name, label
+
+      yes_no, yes, Yes
+      yes_no, no, No
+
+.. _external-audio-app:
 
 Recording with an external app
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
