@@ -1700,7 +1700,7 @@ When built-in audio recording is enabled and recording is initiated, a recording
 
 .. warning::
 
-  Pause is only available on Android 7.0 and above. On lower Android versions, the pause button is hidden. 
+  Pause is only available on Android 7.0 and above. On lower Android versions, the pause button is hidden.
 
 At the right of the control bar are a pause button (3) and a stop button (4). When the pause button is tapped, recording is temporarily suspended and the button icon changes to a microphone. When the microphone is tapped, recording is resumed. Recording can be paused and resumed as many times as desired. When the stop button is tapped, the recording is ended and can no longer be modified.
 
@@ -1768,25 +1768,26 @@ In the parameters column, write ``quality=`` followed by the desired value.
 
  audio,voice_only_audio,Voice audio,quality=voice-only
 
+Changing audio quality during form entry
+"""""""""""""""""""""""""""""""""""""""""
+
 If it's a possibility that an individual question could need different qualities depending on context you can use :ref:`relevance <relevants>` to switch between them:
 
-  .. container:: details
+.. rubric:: XLSForm
 
-    .. rubric:: XLSForm
+.. csv-table:: survey
+  :header: type, name, label, parameters, relevance
 
-    .. csv-table:: survey
-      :header: type, name, label, parameters, relevance
+  select_one, yes_no, is_quiet, Are you currently in a quiet location with only one person speaking at a time?
 
-      select_one, yes_no, is_quiet, Are you currently in a quiet location with only one person speaking at a time?
+  audio recording_voice_only, Please record, quality='voice-only',, ${is_quiet} = 'yes'
+  audio recording_normal, Please record, quality='normal',, ${is_quiet} = 'no'
 
-      audio recording_voice_only, Please record, quality='voice-only',, ${is_quiet} = 'yes'
-      audio recording_normal, Please record, quality='normal',, ${is_quiet} = 'no'
+.. csv-table:: choices
+  :header: list_name, name, label
 
-    .. csv-table:: choices
-      :header: list_name, name, label
-
-      yes_no, yes, Yes
-      yes_no, no, No
+  yes_no, yes, Yes
+  yes_no, no, No
 
 .. _external-audio-app:
 
