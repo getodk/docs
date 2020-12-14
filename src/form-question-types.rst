@@ -1666,14 +1666,8 @@ appearance
 
 Records audio using the device's microphone or a connected external microphone. By default, an :ref:`external application <external-audio-app>` is used. Starting with Collect v1.29, you can also use :ref:`built-in recording <built-in-audio-recording>`.
 
-Audio files can quickly become very big so if you record audio in your form, make sure that you carefully consider your audio quality settings. Also test making submissions to your server with the Internet conditions you expect when gathering data to make sure that you can send files of the size you expect.
-
-Android devices can make many sounds during use and these will be included in recordings. We recommend turning off sounds from button presses, camera shutters and notifications before recording.
-
-  .. container:: details
-
-    .. image:: /img/form-widgets/audio-start.*
-      :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "What does it sound like?" There are two buttons: Record Sound and Choose Sound.
+.. image:: /img/form-widgets/audio-start.*
+  :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "What does it sound like?" There are two buttons: Record Sound and Choose Sound.
 
 .. rubric:: XLSForm
 
@@ -1681,6 +1675,12 @@ Android devices can make many sounds during use and these will be included in re
   :header: type, name, label
 
   audio, bird_recording, What does it sound like?
+
+.. tip::
+
+  Audio files can quickly become very big so if you record audio in your form, make sure that you carefully consider your audio quality settings. Also test making submissions to your server with the Internet conditions you expect when gathering data to make sure that you can send files of the size you expect.
+
+  Android devices can make many sounds during use and these will be included in recordings. We recommend turning off sounds from button presses, camera shutters and notifications before recording.
 
 .. _built-in-audio-recording:
 
