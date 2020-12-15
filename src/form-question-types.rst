@@ -1757,7 +1757,9 @@ The quality of audio recordings can be customized using the ``quality`` paramete
 
 .. tip::
 
-  We'd recommend only using ``voice-only`` for one-on-one interviews in a quiet place as otherwise there might be too much detail loss. ``low`` will sound compressed but speech is generally intelligible, even if multiple people are talking at once. ``normal`` is similar to typical podcast settings and will sound good on most devices. If in doubt, it's a good idea to test the different qualities out to see which one fits your use case best.
+  We'd recommend only using ``voice-only`` for one-on-one interviews in a quiet place as otherwise there might be too much detail loss. ``low`` will sound compressed but speech is generally intelligible, even if multiple people are talking at once. ``normal`` is similar to typical podcast settings and will sound good on most devices.
+
+  It's a good idea to test the different qualities out with the device (and any other equipment) you'll be using in the field to see which one fits your use case and setup best.
 
 .. rubric:: XLSForm
 
