@@ -316,10 +316,12 @@ The following prompt types are available in ODK-X Survey.
     - | Used to capture an audio recording.
   * - barcode
     - | Used to capture a barcode.
-  * - date_no_time
-    - | Uses a date picker widget to capture a date.
+  * - date
+    - | Uses a date picker widget to capture a date. Accounts for the local time zone.
   * - datetime
     - | Uses a date time picker widget to capture a date and time.
+  * - date_no_time
+    - | Uses a date picker widget to capture a date. Ignores the local time zone and just stores the selected date. 
   * - birth_date
     - | Uses a date picker widget to capture a birth date. Currently behaves the same as `date_no_time`. 
   * - decimal
