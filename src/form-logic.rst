@@ -436,7 +436,7 @@ For example:
 :tc:`. >= 18`
   True if response is greater than or equal to 18.
 
-:tc:`. < 20 and . > 200`
+:tc:`. > 20 and . < 200`
   True if the response is between 20 and 200.
   
 :tc:`regex(.,'\p{L}+')`
