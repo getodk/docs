@@ -17,6 +17,7 @@
   partum
   phonenumber
   placementmap
+  podcast
   preg
   rect
   substr
@@ -1658,33 +1659,153 @@ In the parameters column, write ``max-pixels=`` followed by the desired maximum 
 Audio widget
 ----------------
 
-Records audio from an external app.
+type
+  :tc:`audio`
+appearance
+  :tc:`none`
 
-.. note::
-
-  Some Android devices provide a default application for audio recording.
-  Others do not,
-  and the user will need to install an audio recording app.
-
-  There are many apps available for this, including:
-
-  - `Axet Audio Recorder (open source) <https://play.google.com/store/apps/details?id=com.github.axet.audiorecorder>`_
-  - `RecForge II <https://play.google.com/store/apps/details?id=dje073.android.modernrecforge>`_
-
-  Any app that responds to
-  `android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION`
-  will be compatible.
-
+Records audio using the device's microphone or a connected external microphone. By default, an :ref:`external application <external-audio-app>` is used. Starting with Collect v1.29, you can also use :ref:`built-in recording <built-in-audio-recording>`.
 
 .. image:: /img/form-widgets/audio-start.*
-  :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "Please record your name." There are three buttons: Record Sound, Choose Sound and Play Sound. The "Play Sound" button is disabled.
+  :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "What does it sound like?" There are two buttons: Record Sound and Choose Sound.
 
 .. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label
 
-  audio, name_pronounce, Please record your name.
+  audio, bird_recording, What does it sound like?
+
+.. tip::
+
+  Audio files can quickly become very big so if you record audio in your form, make sure that you carefully consider your audio quality settings. Also test making submissions to your server with the Internet conditions you expect when gathering data to make sure that you can send files of the size you expect.
+
+  Android devices can make many sounds during use and these will be included in recordings. We recommend turning off sounds from button presses, camera shutters and notifications before recording.
+
+.. _built-in-audio-recording:
+
+Using the built-in audio recorder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 1.29
+
+  `ODK Collect v1.29.0 <https://github.com/getodk/collect/releases/tag/v1.29.0>`_
+
+The built-in audio recorder makes it possible to capture audio without having to install an external app. It also enables recording while filling out other questions and is designed to continue recording even if the user switches to another app or if the phone screen is locked. To use the built-in audio recorder, :ref:`specify the desired audio quality <customizing-audio-quality>` for each audio question in your form. You can also :ref:`configure Collect to always use the built-in recorder <use-external-app-for-audio-recording>`.
+
+.. image:: /img/form-widgets/built-in-recorder.*
+  :alt: The built-in recorder as displayed in the ODK Collect App on an Android phone. The user interface is described below.
+
+When built-in audio recording is enabled and recording is initiated, a recording control bar appears at at the top of the screen. At the top left of this bar is an icon to represent whether recording is currently ongoing or paused (1). To the right of this icon is the current length of the recording (2).
+
+.. warning::
+
+  Pause is only available on Android 7.0 and above. On lower Android versions, the pause button is hidden.
+
+At the right of the control bar are a pause button (3) and a stop button (4). When the pause button is tapped, recording is temporarily suspended and the button icon changes to a microphone. When the microphone is tapped, recording is resumed. Recording can be paused and resumed as many times as desired. When the stop button is tapped, the recording is ended and can no longer be modified.
+
+Recording status is also displayed below the audio question text. There is a time representing the current length of the recording (5) and a diagram (6) representing the volume of the recording over time. The diagram provides confirmation that the microphone is working and can help a user ensure an even, sufficient volume.
+
+Other questions can be included on the same screen as a built-in recording question. As shown in the screenshot above, this makes it possible to capture quantitative content while recording. To achieve this, put the questions in a :ref:`field list <field-list>`.
+
+During recording, the user is prevented from leaving the current question screen. However, it is safe to use other applications or to lock the device screen.
+
+Once recording is stopped, the control bar disappears. The recording is made available for playback below the question text.
+
+To replace the audio captured, first delete the current file and then record again.
+
+In some rare cases such as the device running out of space, the recording may complete successfully but not be attached to the form. If this happens, a dialog will be displayed explaining that the file is available but needs to be accessed manually. You can find these files in the ``recordings`` folder of the :ref:`Collect directory <collect-directory>`. This folder is never cleared so consider emptying it yourself once you have retrieved its files.
+
+.. _customizing-audio-quality:
+
+Customizing audio quality
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 1.29
+
+  `ODK Collect v1.29.0 <https://github.com/getodk/collect/releases/tag/v1.29.0>`_, `pyxform` v1.3.0, `XLSForm Online` v2.3.0
+
+The quality of audio recordings can be customized using the ``quality`` parameter. If a ``quality`` is specified, the built-in recorder is always used, regardless of Collect settings. If no ``quality`` is specified and Collect is :ref:`configured to use the built-in recorder <use-external-app-for-audio-recording>`, ``normal`` is used. The available quality values are:
+
+.. list-table::
+   :header-rows: 1
+
+   * - Value
+     - Extension
+     - Encoding
+     - Bit rate
+     - Sample rate
+     - File size
+   * - normal
+     - .m4a
+     - AAC
+     - 64kbps
+     - 32kHz
+     - ~30MB/hour
+   * - low
+     - .m4a
+     - AAC
+     - 24kbps
+     - 32kHz
+     - ~11MB/hour
+   * - voice-only
+     - .amr
+     - AMR
+     - 12.2kbps
+     - 8kHz
+     - ~5MB/hour
+
+.. tip::
+
+  We'd recommend only using ``voice-only`` for one-on-one interviews in a quiet place as otherwise there might be too much detail loss. ``low`` will sound compressed but speech is generally intelligible, even if multiple people are talking at once. ``normal`` is similar to typical podcast settings and will sound good on most devices.
+
+  It's a good idea to test the different qualities out with the device (and any other equipment) you'll be using in the field to see which one fits your use case and setup best.
+
+.. rubric:: XLSForm
+
+In the parameters column, write ``quality=`` followed by the desired value.
+
+.. csv-table:: survey
+ :header: type, name, label, parameters
+
+ audio,voice_only_audio,Voice audio,quality=voice-only
+
+Changing audio quality during form entry
+"""""""""""""""""""""""""""""""""""""""""
+
+If it's a possibility that an individual question could need different qualities depending on context you can use :ref:`relevance <relevants>` to switch between them:
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, parameters, relevance
+
+  select_one, yes_no, is_quiet, Are you currently in a quiet location with only one person speaking at a time?
+
+  audio recording_voice_only, Please record, quality='voice-only',, ${is_quiet} = 'yes'
+  audio recording_normal, Please record, quality='normal',, ${is_quiet} = 'no'
+
+.. csv-table:: choices
+  :header: list_name, name, label
+
+  yes_no, yes, Yes
+  yes_no, no, No
+
+.. _external-audio-app:
+
+Recording with an external app
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Setting ``quality`` to ``external`` will use an external app to record audio rather than use Collect's built in recording features. Some Android devices provide a default application for audio recording. Others do not, and the user will need to install an audio recording app.
+
+There are many apps available for this, including:
+
+- `Axet Audio Recorder (open source) <https://play.google.com/store/apps/details?id=com.github.axet.audiorecorder>`_
+- `RecForge II <https://play.google.com/store/apps/details?id=dje073.android.modernrecforge>`_
+
+Any app that responds to
+``android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION``
+will be compatible.
 
 .. _video:
 
