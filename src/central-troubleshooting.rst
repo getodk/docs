@@ -19,3 +19,29 @@ Email sounds like a simple technology but in practice there are many things that
 To address delivery issues, consider using a dedicated email service such as `Mailgun <https://www.mailgun.com/smtp/>`_. Because Central doesn't send very many emails, using such a service will generally be a cost-effective way of ensuring email delivery. Once you have an account set up, you will need to :ref:`configure Central to use it <central-install-digital-ocean-custom-mail>`.
 
 If you want to directly send emails from your Central installation, the `mail-tester <https://www.mail-tester.com/>`_ service can help you identify what barriers to email delivery you might have. Create a Central account with the email address that it provides, retrieve your results, and then delete the user. Typically, the first thing you will need to do is :ref:`configure DKIM <central-install-digital-ocean-dkim>` which will provide email recipients confidence that emails were actually sent by your Central server rather than by a spammer pretending to be your server.
+
+
+.. _troubleshooting-form-preview-:
+
+Preview could not connect with server
+-------------------------------------
+
+You may run into a "Could not connect with Server" error message when previewing forms. This error message is typically because your host machine has not made its DNS servers available to Central.
+
+To resolve this problem, first identify your upstream DNS servers. Run ``cat /run/systemd/resolve/resolv.conf`` to see your current list of nameservers with their IP addresses. They will look like this:
+
+  .. code-block:: console
+
+	nameserver 1.2.3.4
+	nameserver 9.8.7.6
+
+
+Now, run ``nano /etc/docker/daemon.json`` to make those nameservers and, optionally, the Google DNS (8.8.8.8) as a fallback available to Docker. Put the following in the ``daemon.json`` file.
+
+  .. code-block:: console
+
+	{
+	    "dns": ["<ip1 from above>", "<ip2 from above>", "8.8.8.8"]
+	}
+
+Finally, stop the containers, restart Docker, and bring the containers back up with ``docker-compose stop``, ``systemctl restart docker`` and ``docker-compose up -d``.
