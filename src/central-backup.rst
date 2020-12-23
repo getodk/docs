@@ -56,6 +56,17 @@ Setting up backups
 
   You can verify your Google Drive usage `on the Drive storage page <https://drive.google.com/settings/storage>`_. You may want to periodically remove older backups to free up space.
 
+.. _central-backup-immediate:
+
+Performing an immediate backup
+------------------------------
+
+It is possible to immediately download a backup of your database to your own computer. As of Central v1.1, you will still need to have managed backups configured in order to access this functionality in the web management interface. Once you do, you will see a button :guilabel:`Download Backup Now` next to the :guilabel:`Terminate` button near the top.
+
+Clicking this button will perform an immediate backup and download the result to your computer. This process can take some time, and it is normal for data to download quite slowly for many minutes before it gets faster. Take care in using this feature particularly if you have a lot of data and traffic, as performing a backup while a lot of data is being saved to the database can cause a lot of slowdown.
+
+You can also use `the API <https://odkcentral.docs.apiary.io/#reference/system-endpoints/direct-backup/using-an-ad-hoc-passphrase>`_ to download a backup without configuring managed backups.
+
 .. _central-backup-restore:
 
 Restoring a backup

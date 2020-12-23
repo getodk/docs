@@ -131,7 +131,7 @@ Starting up Central
 
 Now, run ``docker-compose up -d`` to start the server software. The first time you start it, it will take a while to set itself up. Once you give it a few minutes and you have input control again, you'll want to see whether everything is running correctly:
 
- - To see if ODK has finished loading, run ``docker-compose ps``. Under the ``State`` column, you will want to see text that reads ``Up (healthy)``. If you see ``Up (health: starting)``, give it a few minutes. If you see some other text, something has gone wrong.
+ - To see if ODK has finished loading, run ``docker-compose ps``. Under the ``State`` column, for the ``nginx`` row, you will want to see text that reads ``Up`` or ``Up (healthy)``. If you see ``Up (health: starting)``, give it a few minutes. If you see some other text, something has gone wrong. It is normal to see ``Exit 0`` for the ``secrets`` container.
  - If your domain name has started working, you can visit it in a web browser to check that you get the Central management website.
 
 You're almost done! All you have to do is create an Administrator account so that you can log into Central.
@@ -185,7 +185,13 @@ Configuring DKIM
 DKIM is a security trust protocol which is used to help verify mail server identities. Without it, your sent mail is likely to be flagged as spam. If you intend to use a custom mail server (see the following section), these instructions will not be relevant to you. Otherwise:
 
 1. Ensure that your server's name in DigitalOcean `matches your full domain name <https://www.digitalocean.com/community/questions/how-do-i-setup-a-ptr-record?comment=30810>`_, and that the `hostname does as well <https://askubuntu.com/questions/938786/how-to-permanently-change-host-name/938791#938791>`_. If you had to make changes for this step, restart the server to ensure they take effect.
-2. Now, you'll need to generate a cryptographic keypair and enable the DKIM configuration. Run these commands:
+2. There can be in some cases a placeholder folder that you may have to delete first. If you run this command and no file was deleted, proceed to step 3.
+
+   .. code-block:: console
+
+     rmdir ~/central/files/dkim/rsa.private
+
+3. Now, you'll need to generate a cryptographic keypair and enable the DKIM configuration. Run these commands:
 
    .. code-block:: console
 
@@ -194,12 +200,12 @@ DKIM is a security trust protocol which is used to help verify mail server ident
      openssl rsa -in rsa.private -out rsa.public -pubout -outform PEM
      cp config.disabled config
 
-3. With the contents of the public key (``cat rsa.public``), you'll want to create two new TXT DNS records:
+4. With the contents of the public key (``cat rsa.public``), you'll want to create two new TXT DNS records:
 
    1. At the location ``dkim._domainkey.YOUR-DOMAIN-NAME-HERE``, create a new ``TXT`` record with the contents ``k=rsa; p=PUBLIC-KEY-HERE``. You only want the messy text *between* the dashed boundaries, and you'll want to be sure to remove any line breaks in the public key text, so that it's all only letters, numbers, ``+``, and ``/``.
    2. At your domain name location, create a new ``TXT`` record with the contents ``v=spf1 a mx ip4:SERVER-IP-ADDRESS-HERE -all`` where you can obtain the server IP address from the DigitalOcean control panel.
 
-4. Finally, build and run to configure EXIM to use the cryptographic keys you generated:
+5. Finally, build and run to configure EXIM to use the cryptographic keys you generated:
 
    .. code-block:: console
 
