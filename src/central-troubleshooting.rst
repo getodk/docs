@@ -8,7 +8,7 @@
 Troubleshooting Central 
 =========================
 
-.. _troubleshooting-data:
+.. _troubleshooting-docker-compose-down:
 
 Database disappeared after running Docker commands
 --------------------------------------------------

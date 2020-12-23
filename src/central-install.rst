@@ -5,6 +5,9 @@ Installing Central
 
 Central is distributed and installed using `Docker <https://en.wikipedia.org/wiki/Docker_(software)>`_. Docker makes it possible to describe exactly how Central's different components should be configured no matter where it is installed. Don't worry if you don't know about Docker yet! We have put together step-by-step instructions for our recommended solutions below.
 
+.. warning::
+  Central is intended to be configured and administrated entirely with ``docker-compose stop`` and that is what we show in all our instructions. If you inadvertently do a ``docker-compose down``, it will look like you have lost your data. See :ref:`the troubleshooting section <troubleshooting-docker-compose-down>` to learn how to recover.
+
 Using ODK Cloud (recommended)
 -----------------------------
 
