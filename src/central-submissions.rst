@@ -80,7 +80,7 @@ To find the Form submissions page, first find the form in the Form listings page
 
 The table preview you see here will at first show you the first ten fields of your survey and their results, with the latest submissions shown closest to the top. Any downloadable files will appear with a green download link you can use to directly download that media attachment. The submission's instance ID will always be shown at the right side of this preview table.
 
-If your form has more than ten fields, you can show more columns by accessing the :guilabel:`Columns shown` dropdown and checking the columns you wish to see. While the Columns shown pane is open, you can use your browser's search feature (usually Ctrl+F or Cmd+F) to search for particular column name if you have many.
+If your form has more than ten fields, you can show more columns by accessing the :guilabel:`Columns shown` dropdown and checking the columns you wish to see. While the Columns shown pane is open, you can use the search box or your browser's search feature (usually Ctrl+F or Cmd+F) to search for particular column name if you have many.
 
 You can limit the rows that appear by the submission author and the date. These filter controls are available just above the submission table.
 

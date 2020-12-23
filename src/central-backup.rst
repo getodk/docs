@@ -65,7 +65,7 @@ It is possible to immediately download a backup of your database to your own com
 
 Clicking this button will perform an immediate backup and download the result to your computer. This process can take some time, and it is normal for data to download quite slowly for many minutes before it gets faster. Take care in using this feature particularly if you have a lot of data and traffic, as performing a backup while a lot of data is being saved to the database can cause a lot of slowdown.
 
-You can also use `the API <https://docs.getodk.org/central-backup/#performing-an-immediate-backup>`_ to download a backup without configuring managed backups.
+You can also use `the API <https://odkcentral.docs.apiary.io/#reference/system-endpoints/direct-backup/using-an-ad-hoc-passphrase>`_ to download a backup without configuring managed backups.
 
 .. _central-backup-restore:
 
