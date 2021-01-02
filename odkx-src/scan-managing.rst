@@ -12,9 +12,9 @@ Prerequisites
 
 To create an Data Management Application that uses ODK-X Scan, you will need the ODK-X tools:
 
-  - :doc:`services-intro`
-  - :doc:`survey-intro`
-  - :doc:`tables-intro`
+  - :doc:`services-using`
+  - :doc:`survey-using`
+  - :doc:`tables-using`
   - :doc:`app-designer-intro`
   - :doc:`cloud-endpoints-intro`
 
@@ -40,4 +40,3 @@ After creating a form with Form Designer, you'll have generated the machine read
 .. image:: /img/scan-managing/scan-template-list.*
   :alt: Example list of Scan templates
   :class: device-screen-vertical
-

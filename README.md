@@ -1,19 +1,18 @@
-# ODK Docs
+# ODK-X Docs
 
-![Platform](https://img.shields.io/badge/platform-Sphinx-blue.svg) [![License](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/) [![Build status](https://circleci.com/gh/opendatakit/docs.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/opendatakit/docs/) [![Slack status](http://slack.opendatakit.org/badge.svg)](http://slack.opendatakit.org/)
+![Platform](https://img.shields.io/badge/platform-Sphinx-blue.svg) [![License](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/) [![Build status](https://circleci.com/gh/odk-x/docs.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/odk-x/docs/)  [![Netlify Status](https://api.netlify.com/api/v1/badges/d3788b3e-1abc-431d-a9a3-e5c71b20e053/deploy-status)](https://app.netlify.com/sites/blissful-bohr-7f32fb/deploys)
 
-This repo is the source for ODK documentation.
+This repo is the source for ODK-X documentation.
 
 The published documentation is at:
 
- - https://docs.opendatakit.org
- - https://docs.opendatakit.org/odk-x/
+ - https://docs.odk-x.org/
 
-Please [file an issue](https://github.com/opendatakit/docs/issues) if you can't find what you are looking for.
+Please [file an issue](https://github.com/odk-x/docs/issues) if you can't find what you are looking for.
 
 ## Building and viewing documentation locally
 
-There are two options for building and viewing ODK docs locally: [using Docker](#docker) or [setting up a local Python/Sphinx environment](#python-environment). We generally recommend starting with the Docker image unless you already have a Sphinx environment set up. The [Contributor Guide](https://docs.opendatakit.org/contributing) describes the philosophy behind the docs, style considerations, how to write restructured text and more.
+There are two options for building and viewing ODK-X docs locally: [using Docker](#docker) or [setting up a local Python/Sphinx environment](#python-environment). We generally recommend starting with the Docker image unless you already have a Sphinx environment set up. The [Contributor Guide](https://docs.odk-x.org/contributing) describes the philosophy behind the docs, style considerations, how to write restructured text and more.
 
 ## <a name="docker"></a>Using Docker
 
@@ -33,17 +32,17 @@ There are two options for building and viewing ODK docs locally: [using Docker](
 Clone the docs repo. For example, at the command line:
 
 ```
-git clone https://github.com/opendatakit/docs.git
+git clone https://github.com/odk-x/docs.git
 ```
 
 It can take a long time (>10 minutes) to clone the repo due to the large number of images in the docs. If you get an error such as `Smudge error` or `GitHub's rate limit reached`, run `git checkout -f HEAD` until you get the message `Checking out files: 100% done`.
 
 ### Building the Docker image
 
-Next, you need to build the Docker image with all the tools you will be using to work with ODK's docs.
+Next, you need to build the Docker image with all the tools you will be using to work with ODK-X's docs.
 
 ```
-docker build -t odk-docs .
+docker build -t odkx-docs .
 ```
 
 It can take a long time to build the Docker image, but you only need to do this once.
@@ -55,8 +54,8 @@ It can take a long time to build the Docker image, but you only need to do this 
 ### Building and serving the docs locally 
 
 Build and serve the docs locally with:
- * Windows: `.\run-task.bat odk1-autobuild`
- * Linux/macOS: `./run-task.sh odk1-autobuild`
+ * Windows: `.\run-task.bat odkx-autobuild`
+ * Linux/macOS: `./run-task.sh odkx-autobuild`
  
 Once your terminal shows a "Serving on http://0.0.0.0:8080" message, you can then view the docs in your browser at http://localhost:8080.
 
@@ -64,15 +63,15 @@ Changes you make in the source files will automatically be built and shown in yo
 
 Press `Ctrl-C` on your keyboard to stop the build server. It could take a while to effectively stop, and you can always close the terminal window.
 
-If you get a `The name "odk-docs" is already in use by container` error message, run the following command:
+If you get a `The name "odkx-docs" is already in use by container` error message, run the following command:
 
 ```
-docker kill odk-docs
+docker kill odkx-docs
 ```
 
 ### Other build tasks  
 
-You can also use the `run-task` script described above to build both ODK and ODK-X docs, or to run just a portion of the build process. See available [build tasks](#tasks) below.
+You can also use the `run-task` script described above to run just a portion of the build process. See available [build tasks](#tasks) below.
 
 ## <a name="python-environment"></a>Python environment
 
@@ -92,62 +91,61 @@ We highly recommend you use a virtual environment like [virtualenv](https://virt
 
       .. _virtual environment: https://docs.python.org/3/tutorial/venv.html
 
+	  #. Create a directory called 'odkx'
+		  Create a directory for the documents. For the purposes of these directions we will use the folder 'odkx' as the directory that will contain the ODK-X Docs environment.
+			
+
+			mkdir odkx
+				
+		
+		  Next, navigate the command line interface to inside the directory. 
+		  
+		  		  
+			cd odkx 
+
+
       #. Create the virtual environment.
 
-         .. tabs::
-   
-            .. group-tab:: Bash
 
-               .. code:: console
+		
+		Next create the virtual environment inside the 'odkx' directory.
+		
+			Bash
 
-                  /odk/ $ python3 -m venv odkenv
+				/odkx/ $ python3 -m venv odkxenv
 
-            .. group-tab:: PowerShell
+            PowerShell
 
-               .. code:: powershell
-
-                  /odk/ > python -m venv odkenv
+                /odkx/ > python -m venv odkxenv
 
       #. Activate the virtual environment.
 
-         .. tabs::
-
-            .. group-tab:: Bash
+			Bash
       
-               .. code:: console
+                /odkx/ $ source odkxenv/bin/activate
+                (odkxenv) /odkx/ $
 
-                  /odk/ $ source odkenv/bin/activate
-                  (odkenv) /odk/ $
+			PowerShell
+			
+                /odkx/ > source odkxenv/bin/activate
+                (odkxenv) /odkx/ >
 
-            .. group-tab:: PowerShell
-
-               .. code:: console
-
-                  /odk/ > source odkenv/bin/activate
-                  (odkenv) /odk/ >
-
-         The ``(odkenv)`` before the prompt shows that the virtual environment is active.
+         The ``(odkxenv)`` before the prompt shows that the virtual environment is active.
          You will need to have this active any time you are working on the docs.
       
-         If the file cannot be found, your activate file may be located under odkenv/scripts/activate.
+         If the file cannot be found, your activate file may be located under odkxenv/scripts/activate.
 
          Later, to deactivate the virtual environment:
 
-         .. tabs::
+		  Bash
 
-            .. group-tab:: Bash
-      
-               .. code:: console
+                  (odkxenv) /odkx/ $ deactivate
+                  /odkx/ $
 
-                  (odkenv) /odk/ $ deactivate
-                  /odk/ $
+		  PowerShell
 
-            .. group-tab:: PowerShell
-
-               .. code:: console
-
-                  (odkenv) /odk/ > deactivate
-                  /odk/ >
+                  (odkxenv) /odkx/ > deactivate
+                  /odkx/ >
 		  
 
 ### Cloning the repo
@@ -155,7 +153,7 @@ We highly recommend you use a virtual environment like [virtualenv](https://virt
 Clone the docs repo and make sure all the requirements are installed:
 
 ```bash
-$ git clone https://github.com/opendatakit/docs.git
+$ git clone https://github.com/odk-x/docs.git
 $ cd docs/
 $ pip install -r requirements.txt
 ```
@@ -163,55 +161,40 @@ $ pip install -r requirements.txt
 It can take a long time (>10 minutes) to clone the repo due to the large number of images in the docs. If you get an error such as `Smudge error` or `GitHub's rate limit reached`, run `git checkout -f HEAD` until you get the message `Checking out files: 100% done`.
 
 ### Building the docs 
-### Building the docs
 
 Once your environment is set up, build and serve the docs locally with:
 
 ```bash
-$ make odk1
-$ cd odk1-build
+$ make odkx
+$ cd odkx-build
 $ python -m http.server 8000
 ```
 
 You can then view the docs in your browser at http://localhost:8000.
 
-(Use `odkx` instead of `odk1` to build and serve the ODK-X docs.)
-
-You can also use `make` to build both ODK and ODK-X docs, or to run just a portion of the build process. See available [build tasks](#tasks) below.
+You can also use `make` to run just a portion of the build process. See available [build tasks](#tasks) below.
 
 ## <a name="tasks"></a>Build tasks
 
-For both ODK and ODK-X:
-
-|          |    Build     |     Clean     |     Check Style & Spell     |    Test    |
-| -------- | :---------:  | :-----------: | :-------------------------: | :--------: |
-| **Options** | build-all |  clean |  check-all | test |
-
-For a specific ODK version:
-
-|          | Build & Serve | Build |    Copy     |     LaTeX     |     Style Check     |    Spell Check     |    Check All   |
-| -------- | :-----------: | :---: | :---------: | :-----------: | :-----------------: | :----------------: | :----------------: |
-| **Options** | odk1-autobuild | odk1-build | odk1-copy |  odk1-latex |  odk1-style-check | odk1-spell-check |    odk1-check     |
-
-To build ODK-X docs, just replace `odk1` with `odkx`. 
+|             | Build & Serve  |   Build    |   Copy    |   LaTeX    |   Style Check    |   Spell Check    | Check All  |
+| ----------- | :------------: | :--------: | :-------: | :--------: | :--------------: | :--------------: | :--------: |
+| **Options** | odkx-autobuild | odkx-build | odkx-copy | odkx-latex | odkx-style-check | odkx-spell-check | odkx-check |
 
 
 ## How to contribute?
 
 We are open for new issues and pull requests.
 
- - Please read the [Contributors Guide](https://docs.opendatakit.org/contributing) before working on the documentation.
+ - Please read the [Contributors Guide](https://docs.odk-x.org/contributing) before working on the documentation.
  - Find issues to work on.
-    - First time contributors are encouraged to complete a [line edit](https://github.com/opendatakit/docs/issues/96) as a way to get familiar with our contribution process.
-	- Issues labelled [easy](https://github.com/opendatakit/docs/labels/easy) do not require much specific technical knowledge.
-	- Issues labelled [contributor friendly](https://github.com/opendatakit/docs/labels/contributor%20friendly) are usually self-contained and don't require extensive knowledge of the ODK ecosystem as a whole.
+  	- Issues labelled [easy](https://github.com/odk-x/docs/labels/easy) do not require much specific technical knowledge.
+	- Issues labelled [contributor friendly](https://github.com/odk-x/docs/labels/contributor%20friendly) are usually self-contained and don't require extensive knowledge of the ODK-X ecosystem as a whole.
 	
 You can also...
 
- - [Discuss the documentation from a user perspective in our forum](https://forum.opendatakit.org/c/development/documentation).
- - [Discuss the documentation from a contributor perspective in our developer Slack](slack.opendatakit.org). (Use the #docs-code channel.)
- - [File an issue](https://github.com/opendatakit/docs/issues) for any needed improvements.
- - [Watch](https://github.com/opendatakit/docs/subscription) and star this repo, to keep up with what we're doing.
+ - [Discuss the documentation from a user perspective in our forum](https://forum.odk-x.org/c/development/documentation).
+ - [File an issue](https://github.com/odk-x/docs/issues) for any needed improvements.
+ - [Watch](https://github.com/odk-x/docs/subscription) and star this repo, to keep up with what we're doing.
 
 ## Troubleshooting
 - If you get an `extension error` or a `configuration error`:

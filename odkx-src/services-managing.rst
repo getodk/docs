@@ -17,23 +17,19 @@ ODK-X Services is a prerequisite to all Data Management Application. You will al
 
 You will also need at least one of the following ODK-X tools:
 
-  - :doc:`survey-intro`
-  - :doc:`tables-intro`
+  - :doc:`survey-using`
+  - :doc:`tables-using`
 
 Survey and Tables can work independently and do not require you to use both.
 
-Finally, you will need the third party apps:
-
-- `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_
-
-If you have not installed Services already, follow our guide for :doc:`services-install`
+If you have not installed Services already, follow our guide for :doc:`basics-install`
 
 .. _services-managing-servers:
 
 Compatible Servers
 ~~~~~~~~~~~~~~~~~~~~~~
 
-It is important to match your version of ODK-X Services with an appropriate version of a :doc:`cloud-endpoints-intro`. To do this, find the release from the `Services Releases page <https://github.com/opendatakit/services/releases>`_ and match it to a release from the `Sync Endpoint Releases page <https://github.com/opendatakit/sync-endpoint/releases>`_. Or, if you want to use ODK Aggregate, check the release notes for the appropriate version.
+It is important to match your version of ODK-X Services with an appropriate version of a :doc:`cloud-endpoints-intro`. To do this, find the release from the `Services Releases page <https://github.com/odk-x/services/releases>`_ and match it to a release from the `Sync Endpoint Releases page <https://github.com/odk-x/sync-endpoint/releases>`_. 
 
 
 .. _services-managing-server-config:
@@ -298,4 +294,3 @@ After pressing this option, you will be prompted to confirm this is what you wan
     :class: device-screen-vertical
 
 Press :guilabel:`OK` to clear the config. Back out of the :guilabel:`Settings` menu. The next time you run Tables or Survey they will rerun their initialization logic, which may take a few moments.
-

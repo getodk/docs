@@ -1,0 +1,29 @@
+s3_bucket: docs.odk-x.org
+s3_endpoint: us-west-2
+
+site: ./odkx-build
+
+error_document: index.html
+
+max_age: 300
+gzip: true
+
+exclude_from_upload:
+  - .buildinfo
+  - .doctrees
+  - .DS_Store
+  - spelling
+  - latex
+  - s3_website.yml
+
+cloudfront_distribution_id: EZKLUGDLNKXCZ
+
+cloudfront_distribution_config:
+  default_cache_behavior:
+    min_ttl: <%= 60 * 60 * 24 %>
+  aliases:
+    quantity: 1
+    items:
+      - docs.odk-x.org
+
+cloudfront_wildcard_invalidation: true

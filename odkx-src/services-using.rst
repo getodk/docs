@@ -1,6 +1,25 @@
 Using ODK-X Services
 =======================
 
+.. _services-intro:
+
+:dfn:`ODK-X Services` is a program that handles database access, file access, and data synchronization services between all the ODK-X applications. Mostly this happens behind the scenes, but you will need to install ODK-X Services as a prerequisite to using the other ODK-X tools.
+
+It also allows you to sync data collected by the ODK-X tools with an ODK-X Cloud Endpoint. The Services application can be used to reset the Cloud Endpoint with the data that is on a tablet or to sync the data on the tablet with what is currently on the Cloud Endpoint.
+
+.. _services-intro-learn-more:
+
+Learn more about ODK-X Services
+----------------------------------
+
+- :doc:`services-managing`
+- :doc:`services-internals`
+
+Prerequisites
+---------------------
+
+If you have not installed Services already, follow our guide for :doc:`basics-install`
+
 .. _services-using:
 
 .. _services-using-initial-config:
@@ -112,19 +131,74 @@ Services will contact the Cloud Endpoint and synchronize your data. A progress d
 
   Should you begin modifying data rows while syncing, the changes to those rows will not be synced until you save them as incomplete or finalize the row, and the act of editing will generally mark the sync as having ended with conflicts. This means that you must complete your edits and re-issue the sync to ensure that your changes are propagated up to the server.
 
+.. _services-using-resolve-checkpoint:
 
-.. _services-using-resolve:
+Resolving Checkpoint Issues
+---------------------------------------
+
+The checkpoint resolution screen can be triggered a variety of ways. For example, in ODK-X Survey, add a row using the :guilabel:`+` icon then back out of ODK-X Survey:
+
+.. image:: /img/services-using/checkpoint-resolution.*
+  :alt: Checkpoint Resolution
+  :class: device-screen-vertical
+
+When presented with this screen, there are three choices:
+
+  - Cancel and continue editing the form.
+  - Ignore changes and discard the entire partially filled-out form.
+  - Save it even though it is incomplete. In this case, since there is no entered data for this record, we can ignore changes.
+
+In rare cases, a second form of checkpoint resolution screen can be triggered. This most often happens if ODK-X Survey experiences a failure and closes. In this case, you may have several data records with unsaved checkpoint changes (changes that the user has not explicitly saved as incomplete or finalized). This will lead to a screen like:
+
+.. image:: /img/services-using/checkpoint-list.*
+  :alt: Checkpoint List
+  :class: device-screen-vertical
+
+Clicking a row will display details about that individual checkpoint:
+
+.. image:: /img/services-using/checkpoint-detail.*
+  :alt: Checkpoint Detail
+  :class: device-screen-vertical
+
+In all of these screens, you can choose whether to save the changes as incomplete or to discard them.
+
+
+.. _services-using-resolve-conflict:
 
 Resolving Sync Conflicts
 ---------------------------------------
 
-When you return from ODK-X Services and next access data, the ODK-X tools will scan all tables looking for conflicts arising from the synchronization process. If any conflicts are found, you are required to resolve the conflict before proceeding to your activity. The options for resolving conflicts are as follows.
+When you return from ODK-X Services and next access data, the ODK-X tools will scan all tables looking for conflicts arising from the synchronization process. The conflict resolution screen is triggered when another device has edited one or more rows and synchronized its changes to the server before your edits to those same rows have been synchronized. If a conflict is  found, you are required to resolve it before proceeding to your activity.
+
+In this case, your synchronization attempt will end with an error, and a :guilabel:`Conflicts Detected` error will appear:
+
+.. image:: /img/services-using/conflict-resolution.*
+  :alt: Conflicts Resolution
+  :class: device-screen-vertical
+
+Once you click :guilabel:`OK`, the conflict resolution screen will be presented. If there are multiple rows in conflict, this screen will display the rows that are in conflict:
+
+.. image:: /img/services-using/conflict-list.*
+  :alt: Conflict List
+  :class: device-screen-vertical
+
+Clicking a row will display details about the conflict:
+
+.. image:: /img/services-using/conflict-detail.*
+  :alt: Conflict Detail
+  :class: device-screen-vertical
+
+And if only a single row is in conflict, the list-of-rows screen will be bypassed. The options for resolving conflicts are as follows.
 
   - :guilabel:`Take Local Version` - Use the version on the device, deleting the server version.
   - :guilabel:`Take Server Version` - Use the server version, deleting the version that is on the device.
   - :guilabel:`Merge Changes` - Will be enabled once all conflicts in the row's data fields have been decided.
 
 Choose the desired option. Once the changes are reconciled, you can then proceed to the activity you were accessing and, when you next sync, the resolved conflicts and any new changes will be pushed up to the server. Then, other users will receive those changes when they sync to the server.
+
+.. warning::
+
+  When you resolve a conflict, your decision does not only affect you. The value you choose becomes the new true value and the next time you sync it will be written to the server.
 
 .. _services-user-device-settings:
 

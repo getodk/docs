@@ -16,6 +16,21 @@ Building an Application
 
 This will walk you through the steps of building a Data Management Application from scratch. The goal is to start with an empty folder and show you the necessary steps to create a working application that runs on your Android device.
 
+.. _build-app-data-mgt-apps:
+
+ODK-X Data Management Applications
+---------------------------------------
+
+The ODK-X Android tools (ODK-X Survey, ODK-X Tables, ODK-X Services, ODK-X Scan, ODK-X Sensors Framework, and various ODK-X Sensor implementations) are Android Application Packages (APKs) that are designed to work together to create a coherent tailored application experience for an end-user.
+
+.. note::
+
+  Together the ODK-X tools create a platform, on top of which you can build your own data management applications.
+
+ODK-X tools access configuration files and store data under sub-directories of the :file:`opendatakit` directory in the :file:`sdcard` root directory (whether your device has a physical SD card or not): :file:`/sdcard/opendatakit`. User applications constructed using the ODK-X tools are identified by the name of the sub-directory holding those configuration and data files. Thus, :file:`/sdcard/opendatakit/mytestapp` would contain all the files and data for the *mytestapp* application, where *mytestapp,* is the **AppName** of that application. The default **AppName** for the ODK-X tools is *default.* However, when configured appropriately, the ODK-X tools can run under another **AppName**, accessing configuration and saving data in a different subdirectory under opendatakit.
+
+This is handled in such a way that each user application is isolated from all other user applications, with separate configurations, data tables, and server settings. This allows one device to run multiple user applications built on top of the ODK-X tools without any coordination among the teams developing those applications.
+
 .. _build-app-prereqs:
 
 Prerequisites
@@ -24,11 +39,11 @@ Prerequisites
 You will need to install:
 
   - :doc:`app-designer-intro`
-  - :doc:`services-intro`
-  - :doc:`survey-intro`
-  - :doc:`tables-intro`
+  - :doc:`services-using`
+  - :doc:`survey-using`
+  - :doc:`tables-using`
 
-Before getting started, be sure you have familiarized yourself with the ODK-X platform. The :doc:`getting-started-2-user` and :doc:`getting-started-2-architect` guides are a good place to start. The :doc:`survey-sample-app` and :doc:`tables-sample-app` are also good reference points.
+Before getting started, be sure you have familiarized yourself with the ODK-X platform. The :doc:`survey-using`, :doc:`tables-using` and :doc:`getting-started-2-architect` guides are a good place to start. The :doc:`survey-sample-app` and :doc:`tables-sample-app` are also good reference points.
 
 .. _build-app-clean-app-designer:
 
@@ -115,7 +130,7 @@ With the proper directory structure in place, you can now create your form. The 
     - :th:`type`: the prompt type.
     - :th:`values_list`: the name of the list of choices for a multiple choice question.
     - :th:`name`: the variable name.
-    - :th:`display.promp.text`: the question the user will see in Survey
+    - :th:`display.prompt.text`: the question the user will see in Survey
 
   5. Create the following rows:
 
@@ -366,7 +381,7 @@ If the form is not being rendered correctly but your survey generates a :file:`f
 
 If that does not resolve the issue, try stopping the :program:`grunt` command (on Windows, :kbd:`Control-C` should produce a prompt asking to confirm whether to stop or not. On Mac, :kbd:`Control-C` kill the process with no prompt.), and re-running it. :program:`Grunt` can sometimes get overwhelmed with changes and stop working. After restarting, test your form.
 
-If there are other problems, the contents of the JavaScript Console will be helpful to the ODK-X core team for debugging. Open the JavaScript Console by clicking the icon with the three bars in the top right, select :guilabel:`More Tools`, select :guilabel:`Developer Tools`, and then select the :guilabel:`Console` tab. Select all of the debugging output, then copy it, save it to a file, and post it to the |forum|_ or create a ticket on the `Github Issue Tracker <https://github.com/opendatakit/opendatakit/issues>`_.
+If there are other problems, the contents of the JavaScript Console will be helpful to the ODK-X core team for debugging. Open the JavaScript Console by clicking the icon with the three bars in the top right, select :guilabel:`More Tools`, select :guilabel:`Developer Tools`, and then select the :guilabel:`Console` tab. Select all of the debugging output, then copy it, save it to a file, and post it to the |forum|_ or create a ticket on the `Github Issue Tracker <https://github.com/odk-x/odk-x/issues>`_.
 
 .. _build-app-move-to-device:
 
@@ -577,7 +592,7 @@ Creating a Detail View
 
 A *Detail View* will display the details of a record. It is commonly used alongside *List View* to provide options to browse through a data set and learn more about a particular record.
 
-Open or create :file:`app/tables/census/html/census_detail.js` Ensure the file looks like this:
+Open or create :file:`app/tables/census/html/census_detail.html` Ensure the file looks like this:
 
 .. code-block:: html
 
@@ -762,20 +777,34 @@ If you pull the CSV files, they will be under the :file:`output/csv/` directory.
 .. tip::
   There are a number of additional grunt tasks available. Assuming you have installed grunt and node, you can view the available tasks by running :command:`grunt --help` anywhere in the repo.
 
+Useful Grunt Commands
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+:guilabel:`grunt addtable:tableid` : Will create the required directory structure for an individual table, including the forms directory.
+
+:guilabel:`grunt xlsx-convert-all` : Takes all `.xlsx` files and converts them into a `formDef.json file`. Can be used instead of `XLSX` converter on the app designer.
+
+:guilabel:`grunt wipe-data` : Deletes the default tables/data included with app designer.
+
+:guilabel:`grunt setup` : Launches the login and sync screen on the connected device.
+
+:guilabel:`grunt kill all` : Force stops survey, tables and services on the connected device.
+
+:guilabel:`grunt uninstall` : Uninstall ODK-X tools from the connected device.
+
+
 Troubleshooting
 ~~~~~~~~~~~~~~~~~~~~
 
 There are several issues that may occur while trying to push your survey onto your device. Below are some common issues and tip and tricks to help:
 
-- Try checking :command:`adb -version`. If the version does not show, make sure that `Android SDK <https://docs.opendatakit.org/odk2/app-designer-prereqs/?highlight=android%20debug#android-sdk>`_ is appropriately installed on your computer because this is what installs the :program:`Android Debug Bridge (adb)` software.
-- Check that your computer sees your device. In your command window type the command adb devices. It should show a device detected.
+- Try checking :command:`adb -version`. If the version does not show, make sure that `Android SDK <https://docs.odk-x.org/app-designer-prereqs/?highlight=android%20debug#android-sdk>`_ is appropriately installed on your computer because this is what installs the :program:`Android Debug Bridge (adb)` software.
+- Check that your computer sees your device. Enter :command:`adb devices` in command line. Should show a *device detected*.
 - Check device to see if it has a message about authorizing the computer. If so, authorize the device.
 - Check device settings to ensure USB debugging is enabled and device is linked as a media device (not camera or other settings)
 - Make sure your app-designer only has the necessary working files. Any random files or older versions of your survey saved within app-designer will cause the push to fail.
 - Do not have any :program:`Excel` forms open on your computer. If you do, this will cause errors with $filename or ~$filename in the file path when pushing.
 - Check that your computer sees your device. In your command window type the command adb devices. It should show a device detected.
-- Check device to see if it has a message about authorizing the computer. If so, authorize the device.
-- Enter :command:`adb devices` in command line. Should show a *device detected*.
 
 .. _build-app-deploying:
 

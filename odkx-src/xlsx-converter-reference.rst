@@ -16,6 +16,7 @@
   inputAttributes
   hideInContents
   detailViewFileName
+  len
 
 
 ODK-X XLSX Converter Reference
@@ -578,7 +579,7 @@ The **calculates** worksheet is an optional worksheet.
   * - calculation_name
     - | The name used to reference the calculation in other worksheets.
   * - calculation
-    - | The JavaScriptf forumla to be evaluated.
+    - | The JavaScript formula to be evaluated.
 
 
 Each row of the **calculates** page represents a function that can be used elsewhere in the workbook by referencing the individual :th:`calculation_name`. The :th:`calculation` column can store any valid JavaScript expression. In general,
@@ -589,7 +590,7 @@ Each row of the **calculates** page represents a function that can be used elsew
 
 .. tip::
 
-  There are  built in functions for ODK-X Survey that can be used anywhere in the workbook. See the :ref:`Forumla Functions <xlsx-ref-formula>` section for more details.
+  There are  built in functions for ODK-X Survey that can be used anywhere in the workbook. See the :ref:`Formula Functions <xlsx-ref-formula>` section for more details.
 
 If a complex calculation is required, you can access the full power of Javascript and the :program:`jquery.js` (that is: :code:`$.some_func(...)` ) and :program:`underscore.js` (that is: :code:`_.some_func(...)` ) libraries. Internally, the calculate column is wrapped and evaluated as a Javascript function:
 
@@ -699,6 +700,9 @@ The **choices** sheet allows you to specify the set of choices for multiple choi
   * - display.title.image
     - | An image that the user will see associated with a particular choice.
 
+
+The :th:`choices` worksheet in the XLSX file whose :th:`form_id` matches the :th:`table_id` should have all the choice lists. These choice lists are the ones that get written to the :file:`properties.csv`
+
 .. _xlsx-ref-model:
 
 Model
@@ -719,7 +723,7 @@ The **model** sheet is an optional sheet that allows you to specify the data mod
     - | Whether or not this field is a session variable
       | (not persisted -- defaults to false).
 
-Many more columns can be specified, including a :th:`default` column or, as shown in the exampleForm, a :th:`default[0]` column to initialize the first element (index zero) of a select multiple field. Default values cannot be calculates and must be simple literal values (integers, numbers and strings).
+Many more columns can be specified, including a :th:`default` column or, as shown in the exampleForm, a :th:`default[0]` column to initialize the first element (index zero) of a select multiple field. Default values cannot be calculates and must be simple literal values (integers, numbers and strings). The :th:`elementType` column can be used to modify how the database is created. For example, as shown in the datatypes XLSX, string variables' length can be adjusted from a default of 255 to other lengths with string(len).
 
 .. _xlsx-ref-queries:
 

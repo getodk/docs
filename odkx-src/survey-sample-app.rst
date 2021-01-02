@@ -1,5 +1,5 @@
-Sample ODK-X Survey Application
-====================================
+Trying Out an ODK-X Survey Application
+========================================
 
 .. _survey-sample-app:
 
@@ -12,10 +12,8 @@ In this guide we will be demonstrating how to use ODK-X Survey via a guided tour
 .. toctree::
   :maxdepth: 2
 
-  survey-sample-app-prereqs
   survey-sample-app-overview
   survey-sample-app-install
   survey-sample-app-open-form
   survey-sample-app-navigate-form
   survey-sample-app-end
-

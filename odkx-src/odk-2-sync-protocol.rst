@@ -122,7 +122,7 @@ Before discussing the API, it is useful to identify the data on the system. The 
 Directory Hierarchy and Naming Convention
 ------------------------------------------
 
-A directory hierarchy and naming convention partitions files into each of the above 6 groupings. This is described `here <https://github.com/opendatakit/opendatakit/wiki/Tool-Suite-Javascript-framework-and-formDef.json-(Survey)-format#configuration-file-structure>`_.
+A directory hierarchy and naming convention partitions files into each of the above 6 groupings. This is described `here <https://github.com/odk-x/odk-x/wiki/Tool-Suite-Javascript-framework-and-formDef.json-(Survey)-format#configuration-file-structure>`_.
 
 The mapping of these directories to the 3 data groupings that are synchronized with the server through the Synchronization REST API are as follows:
 

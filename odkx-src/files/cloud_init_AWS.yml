@@ -13,29 +13,23 @@ packages:
   - curl
   - gnupg-agent
   - software-properties-common
+  - certbot
 
 write_files:
   - path: /home/ubuntu/script_to_run.sh
     permissions: '0755'
     content: |
       #!/bin/sh
-      git clone https://github.com/opendatakit/sync-endpoint
-      cd sync-endpoint
-      mvn clean install -DskipTests
-      cd -
-      git clone https://github.com/opendatakit/sync-endpoint-default-setup.git
       docker swarm init
-      docker build --pull -t odk/sync-web-ui https://github.com/opendatakit/sync-endpoint-web-ui.git
-      docker build --pull -t odk/db-bootstrap sync-endpoint-default-setup/db-bootstrap
-      docker build --pull -t odk/openldap sync-endpoint-default-setup/openldap
-      docker build --pull -t odk/phpldapadmin sync-endpoint-default-setup/phpldapadmin
-      docker stack deploy -c sync-endpoint-default-setup/docker-compose.yml syncldap
+      git clone https://github.com/odk-x/sync-endpoint-default-setup.git
+      cd sync-endpoint-default-setup
+      python3 init-odkx-sync-endpoint.py
 
 runcmd:
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
   - add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   - apt-get update -y
-  - apt-get install -y docker-ce docker-ce-cli containerd.io
+  - apt-get install -y -m docker-ce docker-ce-cli containerd.io
   - systemctl start docker
   - systemctl enable docker
 

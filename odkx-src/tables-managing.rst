@@ -6,43 +6,6 @@
 Managing ODK-X Tables
 =======================
 
-.. _tables-managing:
-
-.. contents:: :local:
-
-.. _tables-managing-prereqs:
-
-Prerequisites
----------------------
-
-.. _tables-managing-prereqs-required:
-
-Required
-~~~~~~~~~~~~~
-
-To create an Data Management Application that uses ODK-X Tables, you will need the ODK-X tools:
-
-  - :doc:`services-intro`
-  - :doc:`app-designer-intro`
-  - :doc:`cloud-endpoints-intro`
-
-As well as the third party apps:
-
-- `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_
-
-If you have not installed Tables already, follow our guide for :doc:`tables-install`
-
-.. _tables-managing-prereqs-recommended:
-
-Recommended
-~~~~~~~~~~~~~~~~~
-
-We also recommend:
-
-  - :doc:`survey-intro`
-
-ODK-X Survey is not required, but Tables and Survey are built to seamlessly integrate and support more robust Data Management Applications.
-
 .. _tables-managing-table-manager:
 
 Table Manager
@@ -396,7 +359,7 @@ The above APIs generally take a query as a parameter, run it in the background, 
 
 Third party libraries, such as *Math.js* or *Snap.js*, can also be included.
 
-Example code to explore these APIs and how they can be used (including the :doc:`tables-sample-app`) are available in the `App Designer Github Repository <https://github.com/opendatakit/app-designer>`_.
+Example code to explore these APIs and how they can be used (including the :doc:`tables-sample-app`) are available in the `App Designer Github Repository <https://github.com/odk-x/app-designer>`_.
 
 .. _tables-managing-custom-home:
 

@@ -2,7 +2,7 @@
 
   geotagging
 
-Open Data Kit Tool Suite X (ODK-X) documentation
+ODK-X documentation
 ================================================
 
 .. _odk-2-introduction:
@@ -10,6 +10,8 @@ Open Data Kit Tool Suite X (ODK-X) documentation
 The ODK-X Tool Suite is free and open-source software for collecting, managing, and using data in resource-constrained environments.
 
 In ODK-X, developers and data managers can create data management applications that consist of survey forms as well as Javascript-based apps. These allow you to render a fully customizable user interface to gather, manage, and visualize data on an Android device.
+
+A major goal of these ODK-X tools was to eliminate the need for any software engineering skills (for example: Java programming, Android software development environment, source code version control systems) when designing data management applications. The skills required to build a data management application range from scripting a form definition in XLSX (similar to constructing ODK Collect forms using XLSX files processed by the XLSForm tool), to simple web programming -- modifying boilerplate HTML and JavaScript for custom presentations of the collected data. Advanced web programmers can also easily implement entirely custom web pages.
 
 .. _odk-2-intro-key-features:
 
@@ -52,9 +54,9 @@ List of Tools
 --------------
 The ODK-X Tool Suite consists of:
 
-  - :doc:`survey-intro` - a customizable data **collection** application.
-  - :doc:`tables-intro` - a data **curation and visualization** application that can also run custom-built data collection workflows.
-  - :doc:`services-intro` - an application for **user authentication and data synchronization** between the ODK-X applications.
+  - :doc:`survey-using` - a customizable data **collection** application.
+  - :doc:`tables-using` - a data **curation and visualization** application that can also run custom-built data collection workflows.
+  - :doc:`services-using` - an application for **user authentication and data synchronization** between the ODK-X applications.
   - :doc:`cloud-endpoints-intro` - a **cloud server** to host data and application files, and to support bi-directional data synchronization across mobile devices.
   - :doc:`suitcase-intro` - a **desktop tool** for synchronizing data with a cloud endpoint.
   - :doc:`app-designer-intro` - a design environment for **creating, customizing, and previewing** your forms, data curation, and visualization applications. This is where you build your ODK-X applications.
@@ -91,36 +93,39 @@ See :doc:`reference-apps` for examples of ODK-X tools in use.
 Trying It Out
 -------------
 
-The :doc:`getting-started-2-user` walks you through the process of using a basic geotagging application and submitting data to the server.
+The :doc:`survey-sample-app` walks you through the process of using a basic survey-focused application and submitting data to the server.
+The :doc:`tables-sample-app` walks you through the process of using a basic tables-focused application and submitting data to the server.
 
 
 .. toctree::
   :maxdepth: 1
   :hidden:
 
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Getting Started
+
   select-tool-suite
-  getting-started-2-user
+  basics-install
+  survey-sample-app
+  tables-sample-app
   getting-started-2-architect
+  reference-apps
+
 
 .. toctree::
   :maxdepth: 2
   :hidden:
   :caption: Survey
 
-  survey-intro
-  survey-install
-  survey-sample-app
   survey-using
-  survey-managing
 
 .. toctree::
   :maxdepth: 2
   :hidden:
   :caption: Tables
-  
-  tables-intro
-  tables-install
-  tables-sample-app
+
   tables-using
   tables-managing
   tables-internals
@@ -129,9 +134,7 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
   :maxdepth: 2
   :hidden:
   :caption: Services
-  
-  services-intro
-  services-install
+
   services-using
   services-managing
   services-internals
@@ -139,22 +142,16 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
 .. toctree::
   :maxdepth: 2
   :hidden:
-  :caption: Scan
-  
-  scan-intro
-  scan-install
-  scan-using
-  scan-managing
-  scan-data
-  
-.. toctree::
-  :maxdepth: 2
-  :hidden:
-  :caption: Application Designer
+  :caption: Application Building
 
   app-designer-intro
   app-designer-setup
   app-designer-using
+  build-app
+  xlsx-converter-intro
+  tables-web-pages
+  injected-interfaces
+  scan-form-designer-intro
 
 .. toctree::
   :maxdepth: 2
@@ -163,7 +160,8 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
 
   cloud-endpoints-intro
   sync-endpoint
-  sync-endpoint-setup
+  sync-endpoint-cloud-setup
+  sync-endpoint-manual-setup
   aggregate-tables-extension
 
 .. toctree::
@@ -172,21 +170,25 @@ The :doc:`getting-started-2-user` walks you through the process of using a basic
   :caption: Suitcase
 
   suitcase-intro
-  suitcase-install
-  suitcase-using
 
 .. toctree::
   :maxdepth: 2
   :hidden:
-  :caption: Application Building
+  :caption: Scan
 
-  build-app
-  xlsx-converter-intro
-  tables-web-pages
-  injected-interfaces
-  injected-interfaces-methods
-  scan-form-designer-intro
-  reference-apps
+  scan-intro
+  scan-install
+  scan-using
+  scan-managing
+  scan-data
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Notify
+
+  notify-install
+  notify-using
 
 .. toctree::
   :maxdepth: 2

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Open Data Kit documentation build configuration file, created by
+# ODK-X documentation build configuration file, created by
 # sphinx-quickstart on Wed May 24 09:46:59 2017.
 #
 # This file is execfile()d with the current directory set to its
@@ -55,9 +55,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Open Data Kit X'
-copyright = '2017, Open Data Kit. This document is licensed under a Creative Commons Attribution 4.0 International License'
-author = 'Open Data Kit'
+project = 'ODK-X'
+copyright = '2020, ODK-X. This document is licensed under a Creative Commons Attribution 4.0 International License'
+author = 'ODK-X'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -113,14 +113,14 @@ DirectoryHTMLBuilder.supported_image_types = [
 html_theme = "sphinx_rtd_theme"
 
 # Add logo stuff
-html_logo = '_static/img/odk-logo-wide.png'
+html_logo = '_static/img/logo-wide.png'
 html_theme_options = {
     'logo_only': True,
     'display_version': False,
 }
-html_title = "Open Data Kit X Docs"
+html_title = "ODK-X Docs"
 
-html_favicon = "_static/img/odk-favicon.ico"
+html_favicon = "_static/img/favicon.ico"
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -140,7 +140,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'OpenDataKitXdoc'
+htmlhelp_basename = 'ODKXdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -153,30 +153,30 @@ latex_elements = {
     'pointsize': '12pt',
 
     # Additional stuff for the LaTeX preamble.
-    'preamble': '''
+    'preamble': r'''
     \usepackage{fontspec}
-    \\newcommand{\changefont}{%
-      \\fontsize{8}{10}\selectfont
+    \newcommand{\changefont}{%
+      \fontsize{8}{10}\selectfont
     }
     \makeatletter
-      \\fancypagestyle{normal}{
-        \\fancyhf{}
-        \\fancyfoot[LE,RO]{{\py@HeaderFamily\\thepage}}
-        \\fancyhead[LO]{{\py@HeaderFamily\\nouppercase{\\rightmark}}}
-        \\fancyhead[RE]{{\py@HeaderFamily\\nouppercase{\\leftmark}}}
-        \\fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.opendatakit.org/odk-x}{https://docs.opendatakit.org/odk-x}.}}}
-        \\renewcommand{\\headrulewidth}{0.4pt}
-        \\renewcommand{\\footrulewidth}{0.4pt}
+      \fancypagestyle{normal}{
+        \fancyhf{}
+        \fancyfoot[LE,RO]{{\py@HeaderFamily\thepage}}
+        \fancyhead[LO]{{\py@HeaderFamily\nouppercase{\rightmark}}}
+        \fancyhead[RE]{{\py@HeaderFamily\nouppercase{\leftmark}}}
+        \fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.odk-x.org/odk-x}{https://docs.odk-x.org/odk-x}.}}}
+        \renewcommand{\headrulewidth}{0.4pt}
+        \renewcommand{\footrulewidth}{0.4pt}
       }
-      \\fancypagestyle{plain}{
-        \\fancyhf{}
-        \\fancyfoot[LE,RO]{{\py@HeaderFamily\\thepage}}
-        \\fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.opendatakit.org/odk-x}{https://docs.opendatakit.org/odk-x}.}}}
-        \\renewcommand{\\headrulewidth}{0pt}
-        \\renewcommand{\\footrulewidth}{0.4pt}
+      \fancypagestyle{plain}{
+        \fancyhf{}
+        \fancyfoot[LE,RO]{{\py@HeaderFamily\thepage}}
+        \fancyfoot[CE,CO]{{\changefont{Our documentation is updated frequently. Get the latest version at \href{https://docs.odk-x.org/odk-x}{https://docs.odk-x.org/odk-x}.}}}
+        \renewcommand{\headrulewidth}{0pt}
+        \renewcommand{\footrulewidth}{0.4pt}
       }
     \makeatother
-    \\renewcommand{\\release}{}
+    \renewcommand{\release}{}
     ''',
 
     # disable font inclusion
@@ -196,8 +196,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'OpenDataKitX.tex', 'Open Data Kit X Documentation',
-     'Open Data Kit X', 'manual'),
+    (master_doc, 'ODK-X.tex', 'ODK-X Documentation',
+     'ODK-X', 'manual'),
 ]
 
 
@@ -206,7 +206,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'opendatakitx', 'Open Data Kit X Documentation',
+    (master_doc, 'odkx', 'ODK-X Documentation',
      [author], 1)
 ]
 
@@ -217,8 +217,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'OpenDataKitX', 'Open Data Kit X Documentation',
-     author, 'OpenDataKitX', 'One line description of project.',
+    (master_doc, 'ODK-X', 'ODK-X Documentation',
+     author, 'ODK-X', 'One line description of project.',
      'Miscellaneous'),
 ]
 
@@ -249,14 +249,14 @@ epub_exclude_files = ['search.html']
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {
     # 'py': ('https://docs.python.org/', None),
-    'odk1': ('https://docs.opendatakit.org/', None)
+    'odkx': ('https://docs.odk-x.org/', None)
 }
 
 # Add custom CSS
 
 def setup(app):
-    app.add_stylesheet('css/custom.css')
-    app.add_javascript('js/custom.js')
+    app.add_css_file('css/custom.css')
+    app.add_js_file('js/custom.js')
 
 # At top of every document
 
@@ -280,7 +280,7 @@ download_pdf = """
 Download this documentation as a PDF.
 
 """
-odk_pdf = """
+odkx_pdf = """
 
 _downloads/ODK-X-Documentation.pdf
 
@@ -297,7 +297,7 @@ file an issue
 """
 file_issue_here = """
 
-https://github.com/opendatakit/docs/issues
+https://github.com/odk-x/docs/issues
 
 """
 contri_start = """
@@ -312,7 +312,7 @@ fork our Github repo
 """
 repo_here = """
 
-https://github.com/opendatakit/docs/
+https://github.com/odk-x/docs/
 
 """
 join = """
@@ -342,28 +342,25 @@ ODK Forum
 """
 forum_here = """
 
-https://forum.opendatakit.org/
+https://forum.odk-x.org/
 
 """
 
 rst_epilog = """
 
-.. |odk-slack| replace:: ODK Slack
-.. _odk-slack: https://opendatakit.slack.com
-
 .. |docs-issue| replace:: issue
-.. _docs-issue: https://github.com/opendatakit/docs/issues
+.. _docs-issue: https://github.com/odk-x/docs/issues
 
-.. |forum| replace:: ODK Forum
-.. _forum: https://forum.opendatakit.org
+.. |forum| replace:: ODK-X Forum
+.. _forum: https://forum.odk-x.org
 
 .. |contrib-guide| replace:: contributors guide
-.. _contrib-guide: https://docs.opendatakit.org/contributing/
+.. _contrib-guide: https://docs.odk-x.org/contributing/
 
 """
 
 html_context = {'download_pdf' : download_pdf,
-                'odk_pdf' : odk_pdf,
+                'odkx_pdf' : odkx_pdf,
                 'prob_in_doc' : prob_in_doc ,
                 'contri_start' : contri_start ,
                 'join' : join ,
@@ -377,7 +374,7 @@ html_context = {'download_pdf' : download_pdf,
                 'contri_guide' : contri_guide ,
                 'forum_here' : forum_here ,
                 'display_github' : True,
-                'github_user' : "opendatakit", # Username
+                'github_user' : "odk-x", # Username
                 'github_repo' : "docs", # Repo name
                 'github_version' : "master", # Version
                 'conf_py_path' : "/odkx-src/" # Path in the checkout to the docs root
