@@ -73,7 +73,7 @@ jobs:
   deploy:
     working_directory: ~/work
     docker:
-      - image: circleci/ruby:latest
+      - image: circleci/ruby:2.7
     steps:
       - attach_workspace:
           at: ~/work
