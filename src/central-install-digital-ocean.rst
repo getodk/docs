@@ -225,16 +225,27 @@ If you have installed Central on a 1GB droplet, you may encounter problems expor
 
 In this case, the first thing you can try is to add a swap file. We **do not** recommend adding swap unless you are struggling with attachment exports, and if you can afford it, upgrading to a 2GB machine will yield much better results than adding swap. But if you just need your export to work for now, this can be an effective workaround.
 
-Log into your server so you have a console prompt, and run these commands, adapted from `this article <https://linuxize.com/post/create-a-linux-swap-file/>`_:
+Log into your server so you have a console prompt, and run these commands, adapted from `this article <https://help.ubuntu.com/community/SwapFaq#How_do_I_add_a_swap_file.3F>`_:
 
 .. code-block:: console
 
  fallocate -l 1G /swap
- dd if=/dev/zero of=/swap bs=1024 count=1048576
+ dd if=/dev/zero of=/swap bs=1k count=1024k
  chmod 600 /swap
  mkswap /swap
  swapon /swap
 
+Run ``nano /etc/sysctl.conf`` and add the following to the end of the file to ensure that swap is only used when the droplet is almost out of memory.
+
+.. code-block:: console
+
+ vm.swappiness=10
+
+Finally, run ``nano /etc/fstab`` and add the following to the end of the file to ensure that the swap file is permanently available.
+
+.. code-block:: console
+
+ /swap swap swap defaults 0 0
 
 .. _central-install-digital-ocean-external-storage:
 
