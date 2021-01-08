@@ -3,7 +3,7 @@ jobs:
   build-odkx:
     working_directory: ~/work
     docker:
-      - image: circleci/python:2.7.2
+      - image: circleci/python:latest
     steps:
       - checkout
       - run:
