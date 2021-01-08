@@ -3,7 +3,7 @@ jobs:
   build-odkx:
     working_directory: ~/work
     docker:
-      - image: circleci/python:latest
+      - image: circleci/python:2.7.2
     steps:
       - checkout
       - run:
@@ -74,7 +74,7 @@ jobs:
   deploy-odkx:
     working_directory: ~/work
     docker:
-      - image: circleci/ruby:latest
+      - image: circleci/ruby:2.7.2
     steps:
       - attach_workspace:
           at: ~/work
