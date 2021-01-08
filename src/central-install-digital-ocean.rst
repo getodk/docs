@@ -44,7 +44,7 @@ As you continue down this page, there are a few options that may be important to
  - If you are technically savvy and understand what an SSH key is, there is a field here that you will want to fill in. If not, don't worry about it.
 
 .. tip::
-  If you choose a 1GB machine and you have problems with exporting attachments, you may wish to :ref:`add a swapfile <central-install-digital-ocean-swap>`.
+  If you choose a 1GB machine and you have problems with exporting attachments, read :ref:`this troubleshooting tip <export-fails-and-produces-corrupt-zip>`.
 
 Once you click on **Create**, you'll be taken back to the Droplet management page. It may think for a moment, and then your new server should appear. Next to it will be an IP address, which should look something like ``183.47.101.24``. This is where your server is publicly located on the Internet. Don't worry, nobody can do anything with it until you let them.
 
@@ -221,11 +221,11 @@ DKIM is a security trust protocol which is used to help verify mail server ident
 Adding Swap
 -----------
 
-If you have installed Central on a 1GB droplet, you may encounter problems exporting submission .zip files when there are many attachments. Usually, the .zip file will end up being empty, or much smaller than expected and possibly corrupt.
+To avoid Central crashing if your server runs out of memory, you may want to add swap. If you are having issues with Central running out of memory, we recommend adding more physical memory. However, adding swap can be an effective temporary workaround or a preventative measure against spikes if, for example, multiple people initiate data exports at the same time.
 
-In this case, the first thing you can try is to add a swap file. We **do not** recommend adding swap unless you are struggling with attachment exports, and if you can afford it, upgrading to a 2GB machine will yield much better results than adding swap. But if you just need your export to work for now, this can be an effective workaround.
+Whether or not you choose to add swap, we recommend :ref:`monitoring memory usage <central-install-digital-ocean-monitoring>` and `adding memory <https://www.digitalocean.com/docs/droplets/how-to/resize/>`_ if your server is routinely running close to the physical memory limit.
 
-Log into your server so you have a console prompt, and run these commands, adapted from `this article <https://help.ubuntu.com/community/SwapFaq#How_do_I_add_a_swap_file.3F>`_:
+To add swap, log into your server so you have a console prompt, and run these commands, adapted from `this article <https://help.ubuntu.com/community/SwapFaq#How_do_I_add_a_swap_file.3F>`_:
 
 .. code-block:: console
 

@@ -1637,6 +1637,8 @@ Provides the user a drawing pad and collects the drawn image.
 
   image,draw_image_widget,Draw widget ,draw,image type with draw appearance
 
+.. _scaling-down-images:
+
 Scaling down images
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
