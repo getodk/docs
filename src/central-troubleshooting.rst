@@ -61,6 +61,24 @@ The preferred approach to addressing this is to increase the amount of memory th
 
 If you can't increase the memory available, you can alternately :ref:`add swap <central-install-digital-ocean-swap>`. This will be slower than adding real memory but can be acceptable if it is only needed for occasional exports.
 
+.. _file-upload-fails-with-413:
+
+File upload fails with 413
+---------------------------
+
+If you get an error `413` when trying to upload a submission from a client such as ODK Collect or when trying to upload a form attachment, the file you are trying to upload is too large. By default, files up to 100MB are accepted. We typically recommend reducing the size of the files to upload if possible. For example, :ref:`images can be scaled down in form design <scaling-down-images>`.
+
+If you absolutely must upload files over 100MB, you can change the `client_max_body_size` `nginx` directive:
+
+  .. code-block:: console
+
+    cd
+    cd central
+    docker-compose stop
+    nano files/nginx/odk.conf.template
+    <modify the nginx conf value for client_max_body_size>
+    docker-compose up -d
+
 .. _troubleshooting-docker-compose-down:
 
 Database disappeared after running Docker commands
