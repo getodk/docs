@@ -108,7 +108,7 @@ There are three types of multiple choice questions supported by ODK-X Survey:
 
 Multiple choice questions use the :th:`values_list` column in the **survey** worksheet. The :th:`values_list` column is what links a multiple choice question to its answer set contained on the **choices** worksheet.
 
-The pizza survey example used earlier can be improved upon with multiple choice options.The resulting **survey** worksheet would look like this:
+The pizza survey example used earlier can be improved upon with multiple choice options. The resulting **survey** worksheet would look like this:
 
 .. csv-table:: Adding Multiple Choice Questions Example Survey Worksheet
   :header: "clause", "Condition ", "type", "values_list ", "name", "display.prompt.text"
@@ -190,7 +190,7 @@ In general, calculations are referenced in the :th:`condition` column of **surve
 and one of the **survey** worksheets may look like this:
 
 .. csv-table:: Calculation Survey Worksheet Example
-  :header: "clause, "condition", "type", "name", "display.prompt.text"
+  :header: "clause", "condition", "type", "name", "display.prompt.text"
 
   "if", "calculates.isBirthdayToday()",
   ,,"note", "happyBirthday", "Happy Birthday!"
@@ -501,14 +501,14 @@ There are 3 ways to customize prompts:
 
 Our HTML page rendering uses a custom database object coupled with :program:`Backbone` views to define the event handling, validation, data model interactions, and construction of the rendering context object that is passed to :program:`Handlebars`. The :program:`Handlebars` templates make use of :program:`Bootstrap` framework for UI components.
 
-A custom prompt type available in the Application Designer repository is :th:`async_assign`. With :th:`async_assign`, a user is able to assign a value to a prompt using data collected from a different Survey form with a different underlying database table. As the name implies, the value is assigned to the prompt asynchronously. 
+A custom prompt type available in the Application Designer repository is :th:`async_assign`. With :th:`async_assign`, a user is able to assign a value to a prompt using data collected from a different Survey form with a different underlying database table. As the name implies, the value is assigned to the prompt asynchronously.
 
-.. tip::  
+.. tip::
   :th:`async_assign` must be used on a screen previous to where the prompt value will be needed.
 
-Thus, a user should not use :th:`async_assign` to assign a value to a prompt and then attempt to use the prompt within that same screen as the value may not have been assigned yet. Once the value is assigned to the prompt, it can be used in subsequent screens.  
+Thus, a user should not use :th:`async_assign` to assign a value to a prompt and then attempt to use the prompt within that same screen as the value may not have been assigned yet. Once the value is assigned to the prompt, it can be used in subsequent screens.
 
-The reason for not being able to use the value of a prompt from an :th:`aync_assign` within the same screen has to do with the design of Survey. Every instance of a Survey form that a user fills out creates a row in a database table. Although the database interactions in Survey are asynchronous, you are able to see your data changes on the screen immediately because the data for the row is cached in a model data structure. When :th:`async_assign` is used, the :file:`formDef.json` file for the other form is read to create a model. 
+The reason for not being able to use the value of a prompt from an :th:`async_assign` within the same screen has to do with the design of Survey. Every instance of a Survey form that a user fills out creates a row in a database table. Although the database interactions in Survey are asynchronous, you are able to see your data changes on the screen immediately because the data for the row is cached in a model data structure. When :th:`async_assign` is used, the :file:`formDef.json` file for the other form is read to create a model.
 After that, the database table used to store the instances for the other form is queried to return the value(s) that are relevant for the assignment. These value(s) can then be manipulated for the assignment.
 
 .. list-table:: async_assign Types Table
@@ -535,19 +535,19 @@ After that, the database table used to store the instances for the other form is
       | that meet a query criteria.
   * - async_assign_total
     - number
-    - | Returns the total of all form instances 
+    - | Returns the total of all form instances
       | that meet a query criteria.
   * - async_assign_count
     - number
-    - | Returns the number of values from all form instances 
+    - | Returns the number of values from all form instances
       | that meet a query criteria.
   * - async_assign_single_string
     - string
-    - | Returns the first string from a form instance 
+    - | Returns the first string from a form instance
       | that meets the query criteria.
 
-There are 2 forms that use :th:`async_assign` in the Application Designer repository – the `agriculture.xlsx <https://github.com/odk-x/app-designer/blob/master/app/config/tables/agriculture/forms/agriculture/agriculture.xlsx>`_ and the `visit.xlsx <https://github.com/odk-x/app-designer/blob/master/app/config/tables/visit/forms/visit/visit.xlsx>`_ forms. In this particular example, we will look at the usage of the :th:`async_assign_single_string` in the `visit.xlsx <https://github.com/odk-x/app-designer/blob/master/app/config/tables/visit/forms/visit/visit.xlsx>`_  form. Only the relevant portions for the example are shown.  
-  
+There are 2 forms that use :th:`async_assign` in the Application Designer repository – the `agriculture.xlsx <https://github.com/odk-x/app-designer/blob/master/app/config/tables/agriculture/forms/agriculture/agriculture.xlsx>`_ and the `visit.xlsx <https://github.com/odk-x/app-designer/blob/master/app/config/tables/visit/forms/visit/visit.xlsx>`_ forms. In this particular example, we will look at the usage of the :th:`async_assign_single_string` in the `visit.xlsx <https://github.com/odk-x/app-designer/blob/master/app/config/tables/visit/forms/visit/visit.xlsx>`_  form. Only the relevant portions for the example are shown.
+
 .. csv-table:: async_assign_single_string visit survey Worksheet Excerpt
   :header: "clause", "condition", "type", "name", "values_list", "calculation", "display.prompt.text"
 
@@ -555,14 +555,14 @@ There are 2 forms that use :th:`async_assign` in the Application Designer reposi
   ,, "async_assign_single_string", "plant_type_query_text", "plant_type_query",,
   "end screen"
   ,, "assign", "plant_type", "data('plant_type_query_text')",,
-  
-From the example, we can see that :tc:`plant_type_query_text` is assigned the value provided by :tc:`plant_type_query`. The value of :tc:`plant_type_query_text` is then used on the next screen to assign a value to :tc:`plant_type`. The **model** worksheet for the `visit.xlsx <https://github.com/odk-x/app-designer/blob/master/app/config/tables/visit/forms/visit/visit.xlsx>`_ form shows that :tc:`plant_type_query_text` is of type :tc:`string`. The relevant portion of the **model** worksheet is provided.  
+
+From the example, we can see that :tc:`plant_type_query_text` is assigned the value provided by :tc:`plant_type_query`. The value of :tc:`plant_type_query_text` is then used on the next screen to assign a value to :tc:`plant_type`. The **model** worksheet for the `visit.xlsx <https://github.com/odk-x/app-designer/blob/master/app/config/tables/visit/forms/visit/visit.xlsx>`_ form shows that :tc:`plant_type_query_text` is of type :tc:`string`. The relevant portion of the **model** worksheet is provided.
 
 .. csv-table:: visit model Worksheet Excerpt
   :header: "name", "type", "isSessionVariable"
 
   "plant_type_query_text","string", "TRUE"
-  
+
 The **queries** worksheet shows that the :tc:`plant_type_query` will assign the value of the :th:`fieldName` :tc:`planting` from the *plot* instance with the same :tc:`plot_id` as this *visit* instance to the :tc:`plant_type_query_text` prompt. See the relevant portion of the **queries** worksheet below.
 
 .. csv-table:: visit queries Worksheet Excerpt
@@ -570,13 +570,13 @@ The **queries** worksheet shows that the :tc:`plant_type_query` will assign the 
 
   "plant_type_query", "linked_table", "plot", "plot", "_id = ?", "[data('plot_id')]", planting, "'{ plot_id : data('plot_id') }", "{}"
 
-  
+
 How to use :th:`async_assign`:
   1. Within *your_form* directory, include the `customPromptTypes.js <https://github.com/odk-x/app-designer/blob/master/app/config/tables/visit/forms/visit/customPromptTypes.js>`_ file. If *your_form* was named :file:`test`, your directory would be :file:`app/config/test/forms/test`.
   2. Create a folder named :file:`templates` in your :file:`app/config/your_form/forms/your_form` directory. Copy the `async_assign.handlebars <https://github.com/odk-x/app-designer/blob/master/app/config/tables/visit/forms/visit/templates/async_assign.handlebars>`_ file into this directory. In keeping with the example, this file would be :file:`app/config/test/forms/test/templates/async_assign.handlebars`.
   3. In your XLSX file, create a worksheet called **prompt_types**. Copy and paste the following into this worksheet:
-  
-  
+
+
   .. csv-table:: promptTypes Survey Worksheet
     :header: "prompt_type_name", "type"
 
@@ -587,12 +587,12 @@ How to use :th:`async_assign`:
     "async_assign_total","number"
     "async_assign_count","number"
     "async_assign_single_string","string"
-  
 
-  4. Now you can use the :th:`async_assign` prompt types in your form. 
+
+  4. Now you can use the :th:`async_assign` prompt types in your form.
 
 The :th:`async_assign` prompt types can be customized further if you are familiar with :program:`JavaScript`.
-  
+
 .. _xlsx-using-other-features:
 
 Other Features
@@ -667,4 +667,3 @@ Different surveys and forms can also be entered using the :th:`external_link` ty
     -
     -
     -
-
