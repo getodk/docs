@@ -50,23 +50,23 @@ Now, run ``nano /etc/docker/daemon.json`` to make those nameservers and, optiona
 
 Finally, stop the containers, restart Docker, and bring the containers back up with ``docker-compose stop``, ``systemctl restart docker`` and ``docker-compose up -d``.
 
-.. _export-fails-and-produces-corrupt-zip:
+.. _export-produces-corrupt-zip:
 
-Export fails and produces corrupt zip
--------------------------------------
+Export produces corrupt zip
+-----------------------------
 
-If you have installed Central on a 1GB droplet or your forms collect many large media attachments, you may encounter problems exporting submission .zip files. Usually, the .zip file will end up being empty, or much smaller than expected and possibly corrupt. If you are expecting to collect media files, we recommend having at least 2GB of memory. When collecting images, we recommend :ref:`specifying a maximum size in form design <scaling-down-images>`.
+If you have installed Central on a 1GB server or your forms collect many large media files, you may encounter problems exporting submission .zip files. Usually, the .zip file will end up being empty, or much smaller than expected and possibly corrupt. If you are expecting to collect media files, we recommend having at least 2GB of memory. When collecting images, we recommend :ref:`specifying a maximum size in form design <scaling-down-images>`.
 
-The preferred approach to addressing this is to increase the amount of memory that your server has. Instructions for doing this on Digital Ocean can be found `in this support article <https://www.digitalocean.com/docs/droplets/how-to/resize/>`_.
+The preferred approach to addressing this is to increase the amount of memory that your server has. Instructions for doing this on DigitalOcean can be found `in this support article <https://www.digitalocean.com/docs/droplets/how-to/resize/>`_.
 
-If you can't increase the memory available, you can alternately :ref:`add swap <central-install-digital-ocean-swap>`. This will be slower than adding real memory but can be acceptable if it is only needed for occasional exports.
+If you can't increase the memory available, you can alternately :ref:`add swap <central-install-digital-ocean-swap>`. This will result in slower performance than adding physical memory but can be acceptable if it is only needed for occasional exports.
 
 .. _file-upload-fails-with-413:
 
 File upload fails with 413
 ---------------------------
 
-If you get an error `413` when trying to upload a submission from a client such as ODK Collect or when trying to upload a form attachment, the file you are trying to upload is too large. By default, files up to 100MB are accepted. We typically recommend reducing the size of the files to upload if possible. For example, :ref:`images can be scaled down in form design <scaling-down-images>`.
+If you get an error `413` when trying to upload a submission or when trying to upload a form attachment, the file you are trying to upload is too large. By default, files up to 100MB are accepted. We typically recommend reducing the size of the files to upload if possible. For example, :ref:`images can be scaled down in form design <scaling-down-images>`.
 
 If you absolutely must upload files over 100MB, you can change the `client_max_body_size` `nginx` directive:
 
