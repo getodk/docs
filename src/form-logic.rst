@@ -14,6 +14,8 @@
   Onwuachi
   sophia
   timestamp
+  timestamping
+  dateTime
 
 ***********
 Form Logic
@@ -410,7 +412,51 @@ In the example above, when a participant is selected, his or her phone number is
 .. note::
 
   The ``true()`` in the :th:`choice_filter` column for the ``select_one`` in the example above is necessary to be able to look up participants' phone numbers. This is currently needed to overcome a ``pyxform`` bug.
+
+.. _triggering_calculations_on_value_change:
+
+Triggering calculations on value change
+===========================================
+
+.. warning::
   
+  Support for triggering calculations on value change was added in Collect v1.24.0. Form conversion requires XLSForm Online ≥ v2.2.0 or pyxform ≥ v1.2.0. Using older versions will have unpredictable results.
+
+:ref:`Calculations <calculations>` are recomputed any time one of the values in its expression changes. For example, if your form includes the calculation `${q1} + ${q2}`, it will be recomputed any time either of the values for `${q1}` or `${q2}` changes.
+
+Calculations can also be triggered when a value not involved in the calculation changes. This uses the same ``trigger`` column as  :ref:`defaults from form data <defaults-from-form-data>`. It is particularly useful for triggering calculations that involve values not in the form like random numbers or time.
+
+.. _lightweight_timestamping:
+
+Lightweight timestamping
+-------------------------------
+
+Knowing how long an enumerator spent answering a question can help with quality control and training. ODK Collect provides an :doc:`audit log <form-audit-log>` that contains rich information about how a form was answered. However, it can be unnecessarily complex for answering questions about a small number of questions. In that case, you may prefer to collect a timestamp when a particular question's value changes. This is similar to the ``start`` and ``end`` timestamp :ref:`metadata types <metadata>`.
+
+.. rubric:: Capturing last update timestamps
+
+.. csv-table:: survey
+  :header: type, name, label, calculation, trigger
+
+  string, name, Name,,
+  dateTime, name_last_update_time,, now(), ${name}
+  string, life_story, Life story,,
+  dateTime, life_story_last_update_time,, now(), ${life_story}
+
+In the example above, the ``name_last_update_time`` field will be populated with the current time whenever the enumerator changes the value of the ``name`` question. 
+
+You can also capture the first time a question's value is changed using an ``if`` in the `calculation`:
+
+.. rubric:: Capturing first update timestamps
+
+.. csv-table:: survey
+  :header: type, name, label, calculation, trigger
+
+  string, name, Name,,
+  dateTime, name_first_update_time,, "if(${name_first_update_time}='', now(), ${name_first_update_time})", ${name}
+  string, life_story, Life story,,
+  dateTime, life_story_first_update_time,, "if(${life_story_first_update_time}='', now(), ${life_story_first_update_time})", ${life_story}
+
 .. _constraints:
 
 Validating and restricting responses
