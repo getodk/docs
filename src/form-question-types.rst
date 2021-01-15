@@ -1481,6 +1481,9 @@ For more details, see the `OpenMapKit`_ documentation.
 Image widgets
 ---------------
 
+.. tip::
+  Image files can be very large. We recommend always including :ref:`a maximum image size in form design <scaling-down-images>`. Also, consider making test submissions to your server with the Internet conditions you expect when gathering data to make sure that you can send files of the size you expect.
+
 .. contents::
  :local:
 
@@ -1637,6 +1640,8 @@ Provides the user a drawing pad and collects the drawn image.
 
   image,draw_image_widget,Draw widget ,draw,image type with draw appearance
 
+.. _scaling-down-images:
+
 Scaling down images
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1678,7 +1683,7 @@ Records audio using the device's microphone or a connected external microphone. 
 
 .. tip::
 
-  Audio files can quickly become very big so if you record audio in your form, make sure that you carefully consider your audio quality settings. Also test making submissions to your server with the Internet conditions you expect when gathering data to make sure that you can send files of the size you expect.
+  Audio files can be very large so if you record audio in your form, make sure that you consider your audio quality settings. Also, consider making test submissions to your server with the Internet conditions you expect when gathering data to make sure that you can send files of the size you expect.
 
   Android devices can make many sounds during use and these will be included in recordings. We recommend turning off sounds from button presses, camera shutters and notifications before recording.
 
@@ -1811,6 +1816,9 @@ will be compatible.
 
 Video widgets
 ----------------
+
+.. tip::
+  Video files can be very large. We recommend configuring video options for every device you intend to use for data collection. Also make submissions to your server with the Internet conditions you expect when gathering data to make sure that you can send files of the size you expect. Note that Central :ref:`has a 100MB file upload size limit by default <file-upload-fails-with-413>`.
 
 .. contents::
  :local:
