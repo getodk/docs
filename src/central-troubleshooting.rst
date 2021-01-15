@@ -36,17 +36,17 @@ To resolve this problem, first identify your upstream DNS servers. Run ``cat /ru
 
   .. code-block:: console
 
-	nameserver 1.2.3.4
-	nameserver 9.8.7.6
+       nameserver 1.2.3.4
+       nameserver 9.8.7.6
 
 
 Now, run ``nano /etc/docker/daemon.json`` to make those nameservers and, optionally, the Google DNS (8.8.8.8) as a fallback available to Docker. Put the following in the ``daemon.json`` file.
 
   .. code-block:: console
 
-	{
-	    "dns": ["<ip1 from above>", "<ip2 from above>", "8.8.8.8"]
-	}
+       {
+           "dns": ["<ip1 from above>", "<ip2 from above>", "8.8.8.8"]
+       }
 
 Finally, stop the containers, restart Docker, and bring the containers back up with ``docker-compose stop``, ``systemctl restart docker`` and ``docker-compose up -d``.
 
@@ -59,7 +59,7 @@ It is possible to accidentally reset the database by running `docker-compose dow
 
 1. Run the following command: ``docker inspect --type container central_postgres_1 -f '{{(index .Mounts 0).Source}}'``. It should print out a long name starting with /var/lib/docker/volumes/ and ending in a long string of letters and numbers. Copy those letters and numbers and set them aside. They correspond to the location of your current (reset) database.
 2. Run ``docker volume ls``. This will tell you all the locations that docker has stored information. We need to find the location that contains your old data.
-3. For each long string of letters and numbers you just printed out, run ``file /var/lib/docker/volumes/{letters and numbers}/_data/pg_hba.conf``. So for example, ``file /var/lib/docker/volumes/cd597c21c7f0920fd46001dfd36d454178d61a01b94936f388b082d698c7b9bb/_data/pg_hba.conf``.
+3. For each long string of letters and numbers you just printed out, run ``file /var/lib/docker/volumes/{letters and numbers}/_data/pg_hba.conf``. So for example, ``file /var/lib/docker/volumes/cd597c21c7f0920fd46001dfd36d454/_data/pg_hba.conf``.
 4. If it tells you ``No such file or directory``, move onto the next row and try again with the ``file`` command.
 5. If it says ``ASCII text``, you have found database data. But if the string of letters and numbers you just pasted is the same as what you found in step 1, it's not the data you're looking for. Move onto the next set of letters and numbers and try again with step 3.
 6. Hopefully you found the data before you got to the end of the list. We found two sets of important letters and numbers following these steps: one in step 1 and one is step 5. Call these FIRST and SECOND, respectively.
