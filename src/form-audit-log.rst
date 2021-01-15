@@ -15,13 +15,15 @@ Collect can log the behavior of enumerators as they navigate through a form. Thi
 
 - if enumerators were at the correct location when filling out a form
 
-This information can inform form design and training.
+- when, why and who changed answers
 
-.. admonition:: If using Aggregate, Aggregate 1.5.0+ required
+This information can inform form design and training or feed into data validation processes.
+
+.. warning:: If using Aggregate, Aggregate 1.5.0+ required
 
   If a version of Aggregate lower than 1.5.0 is used, **audit files will not be saved on the server**.
 
-.. contents:: :depth: 1
+.. contents:: :depth: 2
   :local:
 
 .. _enabling-audit-logging:
@@ -90,7 +92,7 @@ You can enable change tracking so that old answers and new answers will be added
 
   audit, audit, track-changes=true
 
-Tracking reason for edit
+Reason for changes
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. versionadded:: 1.25
@@ -107,7 +109,7 @@ You can add to :tc:`track-changes-reasons=on-form-edit` to prompt enumerators to
 This will prevent filled out forms being edited without a reason being given. If a reason is given the form will be saved normally and the audit log will include a :tc:`change reason` event with the reason recorded in the :tc:`change-reason` column.
 
 Enumerator identification
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. versionadded:: 1.25
 
