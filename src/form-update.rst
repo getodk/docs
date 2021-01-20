@@ -31,9 +31,8 @@
 Updating forms in Aggregate
 ============================
 
-.. note::
-
-  This page is only about ODK Aggregate. ODK Central allows any kind of form update that doesn't change the type of a field. See :ref:`central-forms-updates`.
+.. warning::
+  Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
 
 .. _change-existing:
 

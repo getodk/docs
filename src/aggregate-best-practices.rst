@@ -7,4 +7,6 @@ Tips and Best Practices
 .. toctree::
   :maxdepth: 2
 
+  form-update
+  aggregate-field-length
   aggregate-limitations
