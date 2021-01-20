@@ -122,11 +122,24 @@ Once you click on it, you should see this popup appear:
 
    .. image:: /img/central-submissions/odata.png
 
-Because OData is a industry standard, only one link is necessary to make most tools work. However, because it is a relatively new technology, some tools need a little bit of customization to work correctly. If you are using such a tool, like Power BI, click on its tab to get the special link we provide for it. Otherwise, copy the link as-is and paste it into your tool.
+To connect with Excel or Power BI, follow these steps.
 
-For information on how to create an OData connection in Microsoft Excel, `click here <https://support.office.com/en-us/article/connect-to-an-odata-feed-power-query-4441a94d-9392-488a-a6a9-739b6d2ad500>`_. For instructions in Microsoft Power BI, `see this page <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`_.
+1. Start the Get OData feed action.
 
-If you want to use the free and popular `R statistics and analysis tool <https://www.r-project.org/>`_, we recommend you use `ruODK <https://docs.ropensci.org/ruODK/>`_. A guide for getting started with it can be found `here <https://docs.ropensci.org/ruODK/articles/odata-api.html>`_. Just like ODK itself, ruODK is developed and supported by community members. If you wish to help improve it, you can find information `on GitHub <https://docs.ropensci.org/ruODK/CONTRIBUTING.html>`_.
+  * In Excel, select :guilabel:`Data` menu item, then :guilabel:`Get Data`, :guilabel:`From Other Sources`, then :guilabel:`From OData Feed`.
 
-When asked for login information, provide the email address and password you use to log into ODK Central. Make sure you trust the tool you are using before you do this.
+  * In Power BI, select the :guilabel:`Home` menu item, then :guilabel:`Get Data`, then :guilabel:`OData feed`.
+
+2. Copy and paste in the link from Central and then select :guilabel:`OK`.
+
+3. Switch to :guilabel:`Basic` authentication, enter your Central credentials, and then :guilabel:`Connect`.
+
+   .. image:: /img/central-submissions/excel-login.png
+
+4. The :guilabel:`Navigator` window now appear. Select :guilabel:`Submissions`, then :guilabel:`Load`.
+
+.. tip::
+  See `Import external data into Excel <https://support.office.com/en-us/article/connect-to-an-odata-feed-power-query-4441a94d-9392-488a-a6a9-739b6d2ad500>`_ and `OData feeds in Power BI <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`_ for more information.
+
+If you want to use the free and popular `R statistics and analysis tool <https://www.r-project.org/>`_, we recommend you use `ruODK <https://docs.ropensci.org/ruODK/>`_. A guide for getting started with it can be found `here <https://docs.ropensci.org/ruODK/articles/odata-api.html>`_. ruODK is developed and supported by community members. If you wish to help improve it, you can find information `on GitHub <https://docs.ropensci.org/ruODK/CONTRIBUTING.html>`_.
 
