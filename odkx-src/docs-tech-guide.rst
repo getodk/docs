@@ -887,7 +887,7 @@ Working on the docs
       Often, other contributors can provide additional context
       about why a particular solution may or may not work.
 
-   .. _issue tracker: https://github.com/odk-x/docs/issues
+   .. _issue tracker: https://github.com/odk-x/tool-suite-X/issues
 
    .. admonition:: Your first issue
 
@@ -1472,7 +1472,7 @@ Here are a few things to keep in mind when you start your next contribution.
 #. Find a `new issue to work on`_.
 #. `Start a new branch for your work <git-branch-the-docs>`_ with :command:`git checkout -b branch-name`.
 
-.. _new issue to work on: https://github.com/odk-x/docs/issues/
+.. _new issue to work on: https://github.com/odk-x/tool-suite-X/issues/
 
 .. _keep-improving:
 

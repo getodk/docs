@@ -8,7 +8,7 @@ The published documentation is at:
 
  - https://docs.odk-x.org/
 
-Please [file an issue](https://github.com/odk-x/docs/issues) if you can't find what you are looking for.
+Please [file an issue](https://github.com/odk-x/tool-suite-X/issues) if you can't find what you are looking for.
 
 ## Building and viewing documentation locally
 
@@ -16,13 +16,13 @@ There are two options for building and viewing ODK-X docs locally: [using Docker
 
 ## <a name="docker"></a>Using Docker
 
-[Docker](https://www.docker.com/) is a platform that makes it easier to package applications so that they can work on any computer. This is particularly valuable when setting up development environments which can work very differently based on versions of the tools involved. 
+[Docker](https://www.docker.com/) is a platform that makes it easier to package applications so that they can work on any computer. This is particularly valuable when setting up development environments which can work very differently based on versions of the tools involved.
 
 ### Prerequisites
  * Install Docker
    * Windows and Mac users should follow the instructions in [the get started guide](https://www.docker.com/get-started)
    * Linux users should follow the instructions for their specific distribution: [CentOS](https://docs.docker.com/install/linux/docker-ce/centos/), [Debian](https://docs.docker.com/install/linux/docker-ce/debian/), [Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/), [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/), [Binaries](https://docs.docker.com/install/linux/docker-ce/binaries/)
-   
+
    More info at the [Docker CE docs page](https://docs.docker.com/install/)
  * Install [git](https://git-scm.com/downloads)
  * Install [Git-LFS](https://git-lfs.github.com/)
@@ -51,12 +51,12 @@ It can take a long time to build the Docker image, but you only need to do this 
  * All commands should be run in an elevated PowerShell window. Right click on PowerShell and select the "Run as administrator" option.
  * Ensure Docker is running by checking your system tray. If Docker is not running, launch "Docker for Windows" app and wait until a notification confirms that Docker is running.
 
-### Building and serving the docs locally 
+### Building and serving the docs locally
 
 Build and serve the docs locally with:
  * Windows: `.\run-task.bat odkx-autobuild`
  * Linux/macOS: `./run-task.sh odkx-autobuild`
- 
+
 Once your terminal shows a "Serving on http://0.0.0.0:8080" message, you can then view the docs in your browser at http://localhost:8080.
 
 Changes you make in the source files will automatically be built and shown in your browser.
@@ -69,7 +69,7 @@ If you get a `The name "odkx-docs" is already in use by container` error message
 docker kill odkx-docs
 ```
 
-### Other build tasks  
+### Other build tasks
 
 You can also use the `run-task` script described above to run just a portion of the build process. See available [build tasks](#tasks) below.
 
@@ -80,7 +80,7 @@ You can also use the `run-task` script described above to run just a portion of 
  * Install [Python 3](https://www.python.org/downloads/)
  * Install [git](https://git-scm.com/downloads)
  * Install [Git-LFS](https://git-lfs.github.com/)
- 
+
 We highly recommend you use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/) or a Python version management like [pyenv](https://github.com/pyenv/pyenv). (Type `python --version` to see your current version.)
 
 - Instructions for setting up virtual environment:
@@ -93,23 +93,23 @@ We highly recommend you use a virtual environment like [virtualenv](https://virt
 
 	  #. Create a directory called 'odkx'
 		  Create a directory for the documents. For the purposes of these directions we will use the folder 'odkx' as the directory that will contain the ODK-X Docs environment.
-			
+
 
 			mkdir odkx
-				
-		
-		  Next, navigate the command line interface to inside the directory. 
-		  
-		  		  
-			cd odkx 
+
+
+		  Next, navigate the command line interface to inside the directory.
+
+
+			cd odkx
 
 
       #. Create the virtual environment.
 
 
-		
+
 		Next create the virtual environment inside the 'odkx' directory.
-		
+
 			Bash
 
 				/odkx/ $ python3 -m venv odkxenv
@@ -121,18 +121,18 @@ We highly recommend you use a virtual environment like [virtualenv](https://virt
       #. Activate the virtual environment.
 
 			Bash
-      
+
                 /odkx/ $ source odkxenv/bin/activate
                 (odkxenv) /odkx/ $
 
 			PowerShell
-			
+
                 /odkx/ > source odkxenv/bin/activate
                 (odkxenv) /odkx/ >
 
          The ``(odkxenv)`` before the prompt shows that the virtual environment is active.
          You will need to have this active any time you are working on the docs.
-      
+
          If the file cannot be found, your activate file may be located under odkxenv/scripts/activate.
 
          Later, to deactivate the virtual environment:
@@ -146,7 +146,7 @@ We highly recommend you use a virtual environment like [virtualenv](https://virt
 
                   (odkxenv) /odkx/ > deactivate
                   /odkx/ >
-		  
+
 
 ### Cloning the repo
 
@@ -160,7 +160,7 @@ $ pip install -r requirements.txt
 
 It can take a long time (>10 minutes) to clone the repo due to the large number of images in the docs. If you get an error such as `Smudge error` or `GitHub's rate limit reached`, run `git checkout -f HEAD` until you get the message `Checking out files: 100% done`.
 
-### Building the docs 
+### Building the docs
 
 Once your environment is set up, build and serve the docs locally with:
 
@@ -187,13 +187,13 @@ We are open for new issues and pull requests.
 
  - Please read the [Contributors Guide](https://docs.odk-x.org/contributing) before working on the documentation.
  - Find issues to work on.
-  	- Issues labelled [easy](https://github.com/odk-x/docs/labels/easy) do not require much specific technical knowledge.
-	- Issues labelled [contributor friendly](https://github.com/odk-x/docs/labels/contributor%20friendly) are usually self-contained and don't require extensive knowledge of the ODK-X ecosystem as a whole.
-	
+   - Issues labelled [easy win](https://github.com/odk-x/tool-suite-X/labels/easy%20win) do not require much specific technical knowledge.
+   - Issues labelled [contributor friendly](https://github.com/odk-x/tool-suite-X/labels/contributor%20friendly) are usually self-contained and don't require extensive knowledge of the ODK-X ecosystem as a whole.
+
 You can also...
 
  - [Discuss the documentation from a user perspective in our forum](https://forum.odk-x.org/c/development/documentation).
- - [File an issue](https://github.com/odk-x/docs/issues) for any needed improvements.
+ - [File an issue](https://github.com/odk-x/tool-suite-X/issues) for any needed improvements.
  - [Watch](https://github.com/odk-x/docs/subscription) and star this repo, to keep up with what we're doing.
 
 ## Troubleshooting

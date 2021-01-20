@@ -1,7 +1,7 @@
-<!-- ALL PRs MUST BE RELATED TO AN OPEN ISSUE -->
-closes #
+<!-- If this PR is related to an open issue -->
+closes odk-x/tool-suite-X#
 <!-- OR -->
-addresses #
+addresses odk-x/tool-suite-X#
 
 
 #### What is included in this PR?
