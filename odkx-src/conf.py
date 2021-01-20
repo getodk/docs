@@ -297,7 +297,7 @@ file an issue
 """
 file_issue_here = """
 
-https://github.com/odk-x/docs/issues
+https://github.com/odk-x/tool-suite-X/issues
 
 """
 contri_start = """
@@ -349,7 +349,7 @@ https://forum.odk-x.org/
 rst_epilog = """
 
 .. |docs-issue| replace:: issue
-.. _docs-issue: https://github.com/odk-x/docs/issues
+.. _docs-issue: https://github.com/odk-x/tool-suite-X/issues
 
 .. |forum| replace:: ODK-X Forum
 .. _forum: https://forum.odk-x.org
