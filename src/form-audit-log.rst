@@ -19,6 +19,8 @@ Collect can log the behavior of enumerators as they navigate through a form. Thi
 
 This information can inform form design and training or feed into data validation processes.
 
+.. seealso:: :ref:`lightweight_timestamping`
+
 .. warning:: If using Aggregate, Aggregate 1.5.0+ required
 
   If a version of Aggregate lower than 1.5.0 is used, **audit files will not be saved on the server**.

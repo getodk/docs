@@ -431,7 +431,7 @@ Calculations can also be triggered when a value not involved in the calculation 
 Lightweight timestamping
 -------------------------------
 
-Knowing how long an enumerator spent answering a question can help with quality control and training. ODK Collect provides an :doc:`audit log <form-audit-log>` that contains rich information about how a form was answered. However, it can be unnecessarily complex for answering questions about a small number of questions. In that case, you may prefer to collect a timestamp when a particular question's value changes. This is similar to the ``start`` and ``end`` timestamp :ref:`metadata types <metadata>`.
+Knowing how long an enumerator spent answering a question can help with quality control and training. ODK Collect provides an :doc:`audit log <form-audit-log>` that contains rich information about how an enumerator navigated a form. This log is captured as a separate file and can be complex to analyze. A simpler alternative is to capture timestamps when specific questions' values change. This is similar to the ``start`` and ``end`` timestamp :ref:`metadata types <metadata>`.
 
 .. rubric:: Capturing last update timestamps
 
