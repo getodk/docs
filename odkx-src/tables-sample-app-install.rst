@@ -20,13 +20,13 @@ We will use the ODK-X synchronization mechanism to install this app. It is about
 
   2. Follow the :ref:`services-managing-server-config` instructions to set up your server.
 
-    - Set your :guilabel:`Server URL` to :file:`https://opendatakit-tablesdemo.appspot.com`.
+    - Set your :guilabel:`Server URL` to :file:`https://tables-demo.odk-x.org/`.
 
       .. note::
 
         The server URL starts with :file:`https://` not :file:`http://`. Don't forget to include the *s*.
 
-    - Leave your authentication as :guilabel:`None (anonymous access)`.
+    - Click on Server Sign-on Credential and change your authentication from  :guilabel:`None (anonymous access)` to :guilabel:`Username`. Then, click Username, and enter :menuselection:`demo_user1` in the space. Also change your server password to :menuselection:`password`.
 
   3. Back out until you return to Tables.
   4. Follow the :ref:`services-using-sync` instructions (see :ref:`launching from Tables <services-using-sync-launch-other>`).
