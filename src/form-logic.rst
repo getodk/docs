@@ -190,25 +190,9 @@ Every expression is constantly re-evaluated as an enumerator progresses through 
 - a repeat group is added or deleted
 - a form is saved or finalized
 
-This is particularly important to remember when using functions that access state outside of the form such as :func:`random` or :func:`now`. The value they represent will change over and over again as an enumerator fills out a form.
+This is particularly important to remember when using functions that access state outside of the form such as :func:`random` or :func:`now`. The value they represent may change as the conditions listed above take place.
 
-The :func:`once` function prevents multiple evaluation by only evaluating the expression passed into it if the node has no value. That means the expression will be evaluated once either on form open or when any values the expression depends on are set.
-
-Every call on :func:`now` in the form will have the same value unless the :func:`once` function is used. For example, the following calculate will keep track of the first time the form was opened:
-
-.. csv-table:: survey
-  :header: type, name, label, calculation
-
-  calculate, datetime_first_opened, , once(now())
-
-The following calculate will keep track of the first time the enumerator set a value for the :th:`age` question:
-
-.. csv-table:: survey
-  :header: type, name, label, calculation
-
-  integer, age, What is your age?,
-  calculate, age_timestamp, , "if(${age} = '', '', once(now()))"
-
+To control when an expression is evaluated, use :ref:`dynamic defaults <dynamic-defaults>` or :ref:`trigger calculations on value change <triggering_calculations_on_value_change>`. Dynamic defaults are evaluated exactly once on form load or repeat creation.
 
 .. _empty-values:
   
