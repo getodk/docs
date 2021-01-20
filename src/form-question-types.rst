@@ -609,7 +609,7 @@ Select widgets
 Select widgets offer the :term:`participant` options to pick from.
 You can offer the participant
 a :ref:`single choice <single-select-widget>`,
-or the ability to :ref:`choose multiple answers <multi-select-widget>`. The order of the choices can be :ref:`randomized <randomize-choice-order>` for any of the select types described below.
+or the ability to :ref:`choose multiple answers <multi-select-widget>`. The order of the choices can be :ref:`randomized <randomize-choice-order>` for any of the select types described below. The list of choices available can also be :ref:`cascading-selects <filtered>` based on answers to previous quesitons.
 
 The options for a select question are listed
 on a sheet named **choices**, in your XLSForm file.

@@ -815,22 +815,13 @@ Sometimes it only makes sense to collect information represented by the question
 Filtering options in select questions
 ===============================================
 
-To limit the options in a select question
-based on the answer to a previous question,
-use a :th:`choice_filter` row in the **survey** sheet,
-and filter key columns in the **choices** sheet.
+To limit the options in a select question based on the answer to a previous question, specify an expression in the :th:`choice_filter` column of the **survey** sheet. This expression will refer to one or more column in the **choices** sheet that the dataset should be filtered by.
 
-For example,
-you might ask the user to select a state first,
-and then only display cities within that state.
-This is called a `cascading select`_,
-and can be extended to any depth.
-`This example form`__ shows a three-tiered cascade:
-state, county, city.
+For example, you might ask your enumerators to select a state first, and then only display cities within that state. This is referred to as a "cascading select" and can be extended to any depth. The example below has two levels: job category and job title.
 
-.. _cascading select: http://xlsform.org/#cascading-selects
+The :th:`choice_filter` expression for the second select in the example is ``cat=${job_category}``. ``cat`` is the name of a column in the **choices** sheet and ``${job_category}`` refers to the first select question in the form. The filter expression says to only include rows whose ``cat`` column value exactly matches the value selected by the enumerator as ``${job_category}``.
 
-__ https://docs.google.com/spreadsheets/d/1CCjRRHCyJXaSEBHPjMWrGotnORR4BI49PoON6qK01BE/edit#gid=0
+Any expression that evaluates to ``True`` or ``False`` can be used as a :th:`choice_filter`. For example, you could add a ``location`` column to the **choices** sheet and also ask the user to enter a location they want to consider jobs in. If the new location question on the **survey** sheet is named ``${job_location}``, the choice filter would be ``cat=${job_category} and location=${job_location}``. Another example of a complex choice filter is one that uses :ref:`text comparison functions <string-comparison-functions>` to match labels that start with a certain value. Consider, for example, ``starts-with(label, ${search_value})`` where ``search_value`` is the name of a text question defined on the **survey** sheet.
 
 .. video:: /vid/form-logic/cascade-select.mp4
 
@@ -840,29 +831,24 @@ __ https://docs.google.com/spreadsheets/d/1CCjRRHCyJXaSEBHPjMWrGotnORR4BI49PoON6
   :header: type, name, label, choice_filter
   
   select_one job_categories, job_category, Job category
-  select_one job_titles, job_title, Job title, job_category=${job_category} 
+  select_one job_titles, job_title, Job title, cat=${job_category} 
 
 .. csv-table:: choices
-  :header: list_name, name, label, job_category
+  :header: list_name, name, label, cat
   
   job_categories, finance, Finance,
   job_categories, hr, Human Resources,
   job_categories, admin, Administration/Office,
   job_categories, marketing, Marketing,
   job_titles, ar, Accounts Receivable, finance
-  job_titles, ap, Account Payable, finance
-  job_titles, bk, Bookkeeping, finance
   job_titles, pay, Payroll, finance
   job_titles, recruiting, Recruiting, hr
   job_titles, training, Training, hr
   job_titles, retention, Retention, hr
   job_titles, asst, Office Assistant, admin
   job_titles, mngr, Office Manager, admin
-  job_titles, scheduler, Scheduler, admin
   job_titles, reception, Receptionist, admin
   job_titles, creative_dir, Creative Director, marketing
-  job_titles, print_design, Print Designer, marketing
-  job_titles, ad_buyer, Ad Buyer, marketing
   job_titles, copywriter, Copywriter, marketing
 
 
