@@ -107,6 +107,7 @@ JSON Server
 
 JSON preserves grouping and repeat structures. The user can choose to let multimedia files be represented as web links or embedded as base64 encoded strings. All metadata is preserved.
 
+See `details of the JSON publisher <https://github.com/getodk/getodk/wiki/Aggregate-Publishers-Implementation-Details#details-of-the-simple-json-publisher>`_ for more.
 
 Publish Data Summary
 ~~~~~~~~~~~~~~~~~~~~
