@@ -74,9 +74,10 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   xlsform
   form-question-types
   form-logic
+  form-operators-functions
+  form-datasets
   form-styling
   form-language
-  form-operators-functions
   form-audit-log
   launch-apps-from-collect
   form-tools

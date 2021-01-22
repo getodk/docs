@@ -39,7 +39,6 @@ in your `XLSForm`_ definition.
 Form logic building blocks
 ============================
 
-
  .. _variables:
 
 Variables
