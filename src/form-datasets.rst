@@ -21,7 +21,7 @@
   umuogor
 
 ************************
-Using datasets in forms
+Form Datasets
 ************************
 
 ODK forms can use datasets in a variety of ways. These datasets can be either internal or external to the form.
@@ -76,7 +76,7 @@ These files may also have any number of additional columns used in :ref:`choice 
 Building selects from XML files
 ---------------------------------
 
-XML files can be used as datasets that populate select questions using ``select_one_from_file`` or ``select_multiple_from_file``. This is typically less convenient than :ref:`using CSV files <selects-from-csv>`. However, CSV files are conceptually treated as XML so knowing about the XML representation is helpful for understanding how to reference values in external files.
+XML files can be used as datasets that populate select questions using ``select_one_from_file`` or ``select_multiple_from_file``. This is typically less convenient than :ref:`using CSV files <selects-from-csv>`. However, knowing about the XML representation is helpful for understanding how to reference values in both CSV and XML files.
 
 XML files used for selects must have the following structure and can have any number of ``item`` blocks:
 
@@ -102,4 +102,4 @@ Referencing values in datasets
 
 For internal datasets, the instance name is the ``list_name`` specified on the **choices** sheet. For example, to look up a state population given the form :ref:`above <selects-from-csv>`, the instance name to use is ``states``. The expression would be ``instance("states")/root/item[name=${state}]/population``. To understand this expression better, read the section on :ref:`Xpath paths <xpath-paths>`.
 
-For external datasets, the instance name is the filename specified in the ``select_one_from_file`` or ``select_multiple_from_file`` declaration without the type. For example, to look up a ward's label given the form :ref:`above <selects-from-csv>`, the instance name to use is ``wards``. The expression would be ``instance("wards")/root/item[name=${ward}]/label``.
+For external datasets, the instance name is the filename specified in the ``select_one_from_file`` or ``select_multiple_from_file`` declaration without the file extension. For example, to look up a ward's label given the form :ref:`above <selects-from-csv>`, the instance name to use is ``wards`` because the filename referenced is ``wards.csv``. The expression would be ``instance("wards")/root/item[name=${ward}]/label``.

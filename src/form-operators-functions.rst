@@ -120,7 +120,7 @@ Path operators
   :header: , Explanation, Example, Notes
   
   ., current question's value, . >= 18, Used in :ref:`constraints <constraints>`.
-  \.\., current question's parent group, position(..), Used with :func:`position` to get the iteration index.
+  \.\., current question's parent group, position(..), Used with :func:`position` to get a parent repeat instance's index.
 
 .. note:: 
 

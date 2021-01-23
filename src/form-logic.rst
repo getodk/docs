@@ -75,23 +75,25 @@ You can also refer to the current question or to the current question's parent g
   :header: , Explanation, Example, Notes
   
   ., current question's value, . >= 18, Used in :ref:`constraints <constraints>`.
-  \.\., current question's parent group, position(..), Used with :func:`position` to get the iteration index.
+  \.\., current question's parent group, position(..), Used with :func:`position` to get a parent repeat instance's index.
 
 .. _xpath-paths:
 
 Advanced: XPath paths
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The ``${}`` notation in XLSForm is a convenient shortcut to refer to a specific field. When an XLSForm is converted, ``${}`` references are expanded to XPath paths which specifically describe where the field is located in the form.
+The ``${}`` notation in XLSForm is a convenient shortcut to refer to a specific field. When an XLSForm is converted, ``${}`` references are expanded to XPath paths which describe where the field is located in the form.
 
-Some tools like ODK Build do not support ``${}`` notation so raw XPath notation must be used. Even in XLSForm, it can be advantageous to use raw XPath notation, especially in the context of repeats or to query datasets. The ``${}`` and XPath notations can be mixed freely.
+Some tools like ODK Build do not support ``${}`` notation so XPath notation must be used. Even in XLSForm, it can be advantageous to use XPath notation, especially in the context of repeats or to query datasets. The ``${}`` and XPath notations can be mixed freely.
 
-One way to think about XPath is that it sees a form or dataset like a series of folders and files on your computer. :ref:`Groups <groups>` and :ref:`repeats <repeats>` are like folders because they can contain other elements. Fields are like files and can't contain any other elements. Imagine a form with a group with name ``my_group`` which contains another group with name ``inner_group`` which contains a question with name ``q1``. The absolute path to ``q1`` is ``/data/my_group/inner_group/q1``.
+One way to think about XPath is that it sees a form or dataset like a series of folders and files on your computer. Questions are like files while :ref:`groups <groups>` and :ref:`repeats <repeats>` are like folders because they can contain other elements. Path elements are separated by `/`. Imagine a form with a group with name ``outer`` which contains another group with name ``inner`` which contains a question with name ``q1``. The absolute path to ``q1`` is ``/data/outer/inner/q1``.
 
-The ``/data/`` in the example above indicates that this is an absolute path for an element of the form itself (as opposed to a dataset, for example). This root is named ``data`` by default but can be modified by adding a :th:`name` column in the XLSForm **settings** sheet and specifying a value below it. This is rarely needed.
+The ``data`` in the example above is the name of the form root. This root is named ``data`` by default but can be modified by adding a :th:`name` column in the XLSForm **settings** sheet and specifying a value below it. This is rarely needed. The ``/`` at the start of the path indicates that the path is absolute.
 
-XPath paths can also be relative. For example, let's say there's a ``relevance`` expression for ``q1`` in the example above and that this expression refers to a question with name ``eligible`` in the ``my_group`` group. We could refer to it using an absolute expression: ``/data/my_group/eligible``. We could also write a relative expression: ``../../eligible``. The ``..`` references the parent of the current node. Since our expression is on the node ``/data/my_group/inner_group/q1``, the first ``..`` references the group ``/data/my_group/inner_group``. We want to access a node in the ``my_group`` group so we need to go up one more level with another ``..``. The XPath path ``../../`` when used in an expression for the ``/data/my_group/inner_group/q1`` node references ``/data/my_group``. We can now go into ``my_group`` and reference the question with name ``eligible``: ``../../eligible``. Relative expressions are particularly useful in the context of repeats.
+XPath paths can also be relative. For example, let's say there's a ``relevance`` expression for ``q1`` in the example above and that this expression refers to a question with name ``age`` in the ``outer`` group. We could refer to it using an absolute expression: ``/data/outer/age``. We could also write a relative expression: ``../../age``.
 
+The ``../..`` part of the relative expression says to go up two levels from the current position of ``/data/outer/inner/q1``. The first ``..`` goes up one level to ``/data/outer/inner`` and then the second ``..`` goes up another level to ``/data/outer/``. We want to access a question in the ``outer`` group so we add that question's name to get ``../../age``.
+ 
 ODK tools support a subset of XPath described `in the ODK XForms specification <https://getodk.github.io/xforms-spec/#xpath-paths>`_.
 
 .. _xpath-paths-for-repeats:
@@ -101,11 +103,11 @@ XPath paths for repeats
 
 When a form definition includes a :ref:`repeat <repeats>`, corresponding filled forms will have 0 or more instances of that repeat. Using the file and folder analogy described above, each repeat instance is like a folder and all of these folders have the name of the :ref:`repeat <repeats>`. Repeat instances are differentiated by their index (first, second, ...).
 
-When writing expressions within a repeat, it can be helpful to use the position of the repeat instance an enumerator is currently filling out. This can be done by using the  :func:`position` function. One context in which this is useful is if you want to first collect a roster of people or things and then ask additional questions about each of those. As shown in the example in the :func:`position`, you can use a first repeat for the roster and then a second repeat that references items in the first repeat based on their position.
+When writing expressions within a repeat, it can be helpful to use the position of the repeat instance an enumerator is currently filling out. This can be done by using the :func:`position` function. One context in which this is useful is if you want to first collect a roster of people or things and then ask additional questions about each of those. As shown in the example in the :func:`position`, you can use a first repeat for the roster and then a second repeat that references items in the first repeat based on their position.
 
-Another application of expressions that use the ``position`` function is to access a preceding repeat instance. See an example of this in :ref:`dynamic defaults in repeats <dynamic-defaults-repeats>`.
+Another use of the ``position`` function is to access a preceding repeat instance. See an example of this in :ref:`dynamic defaults in repeats <dynamic-defaults-repeats>`.
 
-It can be useful to reference all or some repeat instances from outside the repeat. XPath notation is particularly helpful for filtering repeat instances, for example to provide a summary from data collected in repeats:
+XPath paths can be useful to reference some or all repeat instances from outside the repeat. XPath notation is particularly helpful for filtering repeat instances, for example to provide a summary from data collected in repeats:
 
 .. rubric:: XLSForm
 
@@ -120,7 +122,7 @@ It can be useful to reference all or some repeat instances from outside the repe
   int, total_pets, , sum(${people}[age < 18]/pet_count)
   note, total_note, Total pets owned by children: ${total_pets}
 
-In the path expression ``${people}[age < 18]/pet_count``, ``${people}`` uses ``${}`` notation to refer to all of the instances of the repeat. There is then a filter applied in ``[ ]`` brackets that only includes repeat instances for which the specified age was below 18. The ``/pet_count`` final part of the path specifies that for every included repeat instance, the specified value for ``pet_count`` should be used. This results in a set of ``pet_count`` values that can be used by the :func:`sum` function or other :ref:`functions that take nodeset arguments <repeat-functions>`. This same expression could be used in many different contexts. For example, it could define the :ref:`relevance <relevants>` of a group if there's a section of questions that only need to be filled out if there are more than one child-owned pets in the community.
+In the path expression ``${people}[age < 18]/pet_count``, ``${people}`` uses ``${}`` notation to refer to all of the instances of the repeat. You could also expand this to the XPath path of `/data/people`. There is then a filter applied in ``[ ]`` brackets that only includes repeat instances for which the specified age was below 18. The ``/pet_count`` final part of the path specifies that for every included repeat instance, the specified value for ``pet_count`` should be used. This results in a set of ``pet_count`` values that can be used by the :func:`sum` function or other :ref:`functions that take nodeset arguments <repeat-functions>`. This same expression could be used in many different contexts. For example, it could define the :ref:`relevance <relevants>` of a group if there's a section of questions that only need to be filled out if there are more than one child-owned pets in the community.
 
 Sometimes forms may use :ref:`groups <groups>` to organize question sections within repeats. Those groups must be accounted for in expressions. Consider a slight variation on the form above:
 
@@ -870,9 +872,9 @@ To limit the options in a select question based on the answer to a previous ques
 
 For example, you might ask your enumerators to select a state first, and then only display cities within that state. This is referred to as a "cascading select" and can be extended to any depth. The example below has two levels: job category and job title.
 
-The :th:`choice_filter` expression for the second select in the example is ``cat=${job_category}``. ``cat`` is the name of a column in the **choices** sheet and ``${job_category}`` refers to the first select question in the form. The filter expression says to only include rows whose ``cat`` column value exactly matches the value selected by the enumerator as ``${job_category}``.
+The :th:`choice_filter` expression for the second select in the example is ``category=${job_category}``. ``category`` is the name of a column in the **choices** sheet and ``${job_category}`` refers to the first select question in the form. The filter expression says to only include rows whose ``category`` column value exactly matches the value selected by the enumerator as ``${job_category}``.
 
-Any expression that evaluates to ``True`` or ``False`` can be used as a :th:`choice_filter`. For example, you could add a ``location`` column to the **choices** sheet and also ask the user to enter a location they want to consider jobs in. If the new location question on the **survey** sheet is named ``${job_location}``, the choice filter would be ``cat=${job_category} and location=${job_location}``. Another example of a complex choice filter is one that uses :ref:`text comparison functions <string-comparison-functions>` to match labels that start with a certain value. Consider, for example, ``starts-with(label, ${search_value})`` where ``search_value`` is the name of a text question defined on the **survey** sheet.
+Any expression that evaluates to ``True`` or ``False`` can be used as a :th:`choice_filter`. For example, you could add a ``location`` column to the **choices** sheet and also ask the user to enter a location they want to consider jobs in. If the new location question on the **survey** sheet is named ``${job_location}``, the choice filter would be ``category=${job_category} and location=${job_location}``. Another example of a complex choice filter is one that uses :ref:`text comparison functions <string-comparison-functions>` to match labels that start with a certain value. Consider, for example, ``starts-with(label, ${search_value})`` where ``search_value`` is the name of a text question defined on the **survey** sheet.
 
 .. video:: /vid/form-logic/cascade-select.mp4
 
@@ -882,10 +884,10 @@ Any expression that evaluates to ``True`` or ``False`` can be used as a :th:`cho
   :header: type, name, label, choice_filter
   
   select_one job_categories, job_category, Job category
-  select_one job_titles, job_title, Job title, cat=${job_category}
+  select_one job_titles, job_title, Job title, category=${job_category}
 
 .. csv-table:: choices
-  :header: list_name, name, label, cat
+  :header: list_name, name, label, category
   
   job_categories, finance, Finance,
   job_categories, hr, Human Resources,
