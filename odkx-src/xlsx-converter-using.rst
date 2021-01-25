@@ -496,7 +496,7 @@ Customizing Prompts
 There are 3 ways to customize prompts:
 
   - Add additional columns to your XLSX Converter form definitions like :th:`inputAttributes` to tweak existing prompts.
-  - If that's too limiting, you can make a custom HTML template by setting the :th:`templatePath` column. Templates can include :code:`<script>` and:code:`<style>` tags. ODK-X Survey uses :program:`handlebars` templates. :program:`Handlebars` has a few built-in helpers for creating conditional templates and templates with repeated components: see `their documentation <http://blog.teamtreehouse.com/handlebars-js-part-2-partials-and-helpers>`_.
+  - If that's too limiting, you can make a custom HTML template by setting the :th:`templatePath` column. Templates can include :code:`<script>` and :code:`<style>` tags. ODK-X Survey uses :program:`handlebars` templates. :program:`Handlebars` has a few built-in helpers for creating conditional templates and templates with repeated components: see `their documentation <http://blog.teamtreehouse.com/handlebars-js-part-2-partials-and-helpers>`_.
   - Finally, if you need to parse data from a special type of input or retain some kind of state while your widget is active, you will need to delve into the ODK-X Survey JavaScript. By providing a :file:`customPromptTypes.js` file in your form directory, you can define :program:`Backbone` views that extend the base prompts.
 
 Our HTML page rendering uses a custom database object coupled with :program:`Backbone` views to define the event handling, validation, data model interactions, and construction of the rendering context object that is passed to :program:`Handlebars`. The :program:`Handlebars` templates make use of :program:`Bootstrap` framework for UI components.
@@ -574,7 +574,8 @@ The **queries** worksheet shows that the :tc:`plant_type_query` will assign the 
 How to use :th:`async_assign`:
   1. Within *your_form* directory, include the `customPromptTypes.js <https://github.com/odk-x/app-designer/blob/master/app/config/tables/visit/forms/visit/customPromptTypes.js>`_ file. If *your_form* was named :file:`test`, your directory would be :file:`app/config/test/forms/test`.
   2. Create a folder named :file:`templates` in your :file:`app/config/your_form/forms/your_form` directory. Copy the `async_assign.handlebars <https://github.com/odk-x/app-designer/blob/master/app/config/tables/visit/forms/visit/templates/async_assign.handlebars>`_ file into this directory. In keeping with the example, this file would be :file:`app/config/test/forms/test/templates/async_assign.handlebars`.
-  3. In your XLSX file, create a worksheet called **prompt_types**. Copy and paste the following into this worksheet:
+  3. Update :file:`customPromptTypes.js` to include the path to your :file:`async_assign.handlebars` template. In keeping with the example, line 13 of :file:`customPromptTypes.js` should read :code:`templatePath: '../config/test/forms/test/templates/async_assign.handlebars',`.
+  4. In your XLSX file, create a worksheet called **prompt_types**. Copy and paste the following into this worksheet:
 
 
   .. csv-table:: promptTypes Survey Worksheet
@@ -589,7 +590,7 @@ How to use :th:`async_assign`:
     "async_assign_single_string","string"
 
 
-  4. Now you can use the :th:`async_assign` prompt types in your form.
+  5. Now you can use the :th:`async_assign` prompt types in your form.
 
 The :th:`async_assign` prompt types can be customized further if you are familiar with :program:`JavaScript`.
 
