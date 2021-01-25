@@ -258,7 +258,7 @@ Every expression is constantly re-evaluated as an enumerator progresses through 
 - a repeat group is added or deleted
 - a form is saved or finalized
 
-This is particularly important to remember when using functions that access state outside of the form such as :func:`random` or :func:`now`. The value they represent may change as the conditions listed above take place.
+This is particularly important to remember when using functions that are not connected to fields in the form such as :func:`random` or :func:`now`. The value they represent may change as the conditions listed above take place.
 
 To control when an expression is evaluated, use :ref:`dynamic defaults <dynamic-defaults>` or :ref:`trigger calculations on value change <triggering_calculations_on_value_change>`. Dynamic defaults are evaluated exactly once on form load or repeat creation.
 
