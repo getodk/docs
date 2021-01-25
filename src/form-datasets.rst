@@ -34,6 +34,10 @@ External datasets can be useful when:
   * data is reused between forms. It may be easier to attach the same data file to multiple forms instead of copying the data into all the form definitions.
   * the same forms are used in different contexts. For example, the exact same form definition could be used in multiple countries with different data files listing regions, local products, etc.
 
+.. warning::
+
+  Large datasets can affect the performance of forms, especially when complex filtering is used. We find that mobile devices released in 2019 and later can generally handle lists of tens of thousands or more without noticeable slowdowns. If you experience slow performance when using a dataset in your form, please share the size of the dataset, the device you are using, and any expressions that reference the dataset including choice filters on `the community forum <https://forum.getodk.org/c/support/6>`_.
+
 .. _selects-from-csv:
 
 Building selects from CSV files
