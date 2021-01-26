@@ -609,7 +609,7 @@ Select widgets
 Select widgets offer the :term:`participant` options to pick from.
 You can offer the participant
 a :ref:`single choice <single-select-widget>`,
-or the ability to :ref:`choose multiple answers <multi-select-widget>`. The order of the choices can be :ref:`randomized <randomize-choice-order>` for any of the select types described below.
+or the ability to :ref:`choose multiple answers <multi-select-widget>`. The order of the choices can be :ref:`randomized <randomize-choice-order>` for any of the select types described below. The list of choices available can also be :ref:`filtered <cascading-selects>` based on answers to previous questions.
 
 The options for a select question are listed
 on a sheet named **choices**, in your XLSForm file.
@@ -662,7 +662,7 @@ type
 
 .. _select-minimal:
 
-Select widget with modal menu
+Minimal select widget
 """""""""""""""""""""""""""""""
 
 type
@@ -670,14 +670,13 @@ type
 appearance
   :tc:`minimal`
 
-Adding the :tc:`minimal` appearance attribute
-places the choices into a modal overlay menu.
+Adding the :tc:`minimal` appearance shows the choices in a compact way. This is particularly helpful when the list of choices is long and the select question is displayed on :ref:`the same screen as other questions <field-list>`. It is often combined with :ref:`the autocomplete appearance <select-autocomplete>`.
 
 .. image:: /img/form-widgets/select-one-minimal-start.*
   :alt: The Single Select form widget, with minimal appearance, as displayed in the ODK Collect app on an Android phone. The question text is "Select widget." The hint text is "select_one type with minimal appearance, 4 text choices." Below that is a drop-down style select menu with the prompt "Select One Answer." Above the question text is the form group name "Select one widgets."
 
 .. image:: /img/form-widgets/select-one-minimal-expanded.*
-  :alt: The Single Select form widget, with minimal appearance, as displayed in the previously image. The select menu has expanded to show choices: A, B, C, D, and Remove Response.
+  :alt: The Single Select form widget, with minimal appearance, as displayed in the previously image. The select menu has expanded to show choices: A, B, C, D.
 
 .. rubric:: XLSForm
 
@@ -693,13 +692,6 @@ places the choices into a modal overlay menu.
   opt_abcd,b,B
   opt_abcd,c,C
   opt_abcd,d,D
-
-.. note::
-
-  In web rendered form views
-  (such as Enketo form viewer)
-  a select widget with :tc:`minimal` appearance
-  will appear in a drop-down (select) menu.
 
 .. _autoadvance:
 
@@ -744,9 +736,7 @@ type
 appearance
   :tc:`autocomplete`
 
-The :tc:`autocomplete` appearance adds autocomplete
-to the search and filter feature.
-This is especially helpful for questions with a large number of choices.
+The :tc:`autocomplete` appearance allows the enumerator to filter the list of available choices. This is especially helpful for questions with a large number of choices.
 
 .. image:: /img/form-widgets/select-autocomplete.*
   :alt: The Select One form widget with autocomplete, as displayed in the ODK Collect app on an Android phone. The question text is "Select one widget." The hint text is, "select one type with autocomplete appearance, 4 text choices." Below that is a text input followed by four radio buttons labeled A, B, C, and D. Above the question text is the form group name "Select one widgets." The device keyboard is active.

@@ -10,6 +10,8 @@
   kwame
   Kwame
   mngr
+  nodeset
+  Nodesets
   onwuachi
   Onwuachi
   sophia
@@ -39,14 +41,13 @@ in your `XLSForm`_ definition.
 Form logic building blocks
 ============================
 
-
  .. _variables:
 
 Variables
 -----------
 
 Variables reference the value of previously answered questions.
-To use a variable,
+To use a variable in XLSForm,
 put the question's :th:`name` in curly brackets preceded by a dollar sign:
 
 :tc:`${question-name}`
@@ -70,14 +71,83 @@ as well as any column that accepts an :ref:`expression <expressions>`.
   text, your_name, What is your name?
   note, hello_name, "Hello, ${your_name}."
 
+You can also refer to the current question or to the current question's parent group or repeat:
+
+.. csv-table::
+  :header: , Explanation, Example, Notes
+  
+  ., current question's value, . >= 18, Used in :ref:`constraints <constraints>`.
+  \.\., current question's parent group, position(..), Used with :func:`position` to get a parent repeat instance's index.
+
+.. _xpath-paths:
+
+Advanced: XPath paths
+~~~~~~~~~~~~~~~~~~~~~~
+
+The ``${}`` notation in XLSForm is a convenient shortcut to refer to a specific field. When an XLSForm is converted, ``${}`` references are expanded to XPath paths which describe where the field is located in the form.
+
+Some tools like ODK Build do not support ``${}`` notation so XPath notation must be used. Even in XLSForm, it can be advantageous to use XPath notation, especially in the context of :ref:`repeats <repeats>` or :doc:`datasets <form-datasets>`. The ``${}`` and XPath notations can be mixed freely.
+
+One way to think about XPath is that it sees a form or dataset like a series of folders and files on your computer. Questions are like files while :ref:`groups <groups>` and :ref:`repeats <repeats>` are like folders because they can contain other elements. Path elements are separated by `/`. Imagine a form with a group with name ``outer`` which contains another group with name ``inner`` which contains a question with name ``q1``. The absolute path to ``q1`` is ``/data/outer/inner/q1``.
+
+The ``data`` in the example above is the name of the form root. This root is named ``data`` by default but can be modified by adding a :th:`name` column in the XLSForm **settings** sheet and specifying a value below it. This is rarely needed. The ``/`` at the start of the path indicates that the path is absolute.
+
+XPath paths can also be relative. For example, let's say there's a ``relevance`` expression for ``q1`` in the example above and that this expression refers to a question with name ``age`` in the ``outer`` group. We could refer to it using an absolute expression: ``/data/outer/age``. We could also write a relative expression: ``../../age``.
+
+The ``../..`` part of the relative expression says to go up two levels from the current position of ``/data/outer/inner/q1``. The first ``..`` goes up one level to ``/data/outer/inner`` and then the second ``..`` goes up another level to ``/data/outer/``. We want to access a question in the ``outer`` group so we add that question's name to get ``../../age``.
+ 
+ODK tools support a subset of XPath described `in the ODK XForms specification <https://getodk.github.io/xforms-spec/#xpath-paths>`_.
+
+.. _xpath-predicates-for-filtering:
+
+XPath predicates for filtering
+"""""""""""""""""""""""""""""""
+
+In :ref:`repeats <repeats>` and :doc:`datasets <form-datasets>`, an XPath path can refer to multiple nodes. This is called a nodeset. XPath predicates are True/False (boolean) expressions in square brackets that filter the nodeset they come after. When you define a :ref:`choice filter <cascading-selects>` for a select, that expression is used as an XPath predicate to filter the choice items.
+
+You can also write your own expressions with predicates. For example, consider a form with a repeat with name ``people`` and a question inside with name ``age`` (see :ref:`XPath paths for repeats <xpath-paths-for-repeats>` for the form definition). The expression ``/data/people[age < 18]`` evaluates to a nodeset that includes all instances of the ``repeat`` instance for which the value of the ``age`` question is less than 18. ``age`` in the predicate is a relative expression evaluated in the context of each node in the nodeset. In this case, the relative expression ``age`` is evaluated in the context of ``/data/people``, giving the path expression ``/data/people/age``. This means that ``/data/people/age`` is compared to 18 for every ``people`` repeat instance.
+
+You can add more path steps after a predicate. For example, ``/data/people[age < 18]/pet_count`` evaluates to a nodeset that includes all the pet counts for instances of the ``people`` repeat that have ``age`` values under 18. Nodesets can be passed in to functions like :func:`sum` or other :ref:`functions that take nodeset arguments <repeat-functions>`.
+
+Sometimes forms may use :ref:`groups <groups>` to organize question sections within repeats. Those groups must be accounted for in predicates. If the ``age`` question were nested in a group called ``inner``, the predicate expression would need to be ``inner/age < 18``. Additionally, if the ``pet_count`` question were nested in a group called ``details``, the full expression would be ``/data/people[inner/age < 18]/details/pet_count``.
+
+XPath predicates are also the way to reference specific values in a :doc:`dataset <form-datasets>`. Learn more in the section on :ref:`referencing values in datasets <referencing-values-in-datasets>`.
+
+
+.. _xpath-paths-for-repeats:
+
+XPath paths for repeats
+""""""""""""""""""""""""
+
+When a form definition includes a :ref:`repeat <repeats>`, corresponding filled forms will have 0 or more instances of that repeat. Using the file and folder analogy described above, each repeat instance is like a folder and all of these folders have the name of the :ref:`repeat <repeats>`. Repeat instances are differentiated by their index (first, second, ...).
+
+When writing expressions within a repeat, it can be helpful to use the position of the repeat instance an enumerator is currently filling out. This can be done by using the :func:`position` function. One context in which this is useful is if you want to first collect a roster of people or things and then ask additional questions about each of those. As shown in the example in the :func:`position`, you can use a first repeat for the roster and then a second repeat that references items in the first repeat based on their position.
+
+Another use of the ``position`` function is to access a preceding repeat instance. See an example of this in the section on :ref:`dynamic defaults in repeats <dynamic-defaults-repeats>`.
+
+XPath paths can be useful to reference some or all repeat instances from outside the repeat. XPath notation is particularly helpful for filtering repeat instances, for example to provide a summary from data collected in repeats:
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, calculation
+
+  begin repeat, people, Person,
+  int, age, Age,
+  int, pet_count, How many pets does this person have?
+  end repeat, people, ,
+
+  int, total_pets, , sum(${people}[age < 18]/pet_count)
+  note, total_note, Total pets owned by children: ${total_pets}
+
+In the path expression ``${people}[age < 18]/pet_count``, ``${people}`` uses ``${}`` notation to refer to all of the instances of the repeat. You could also expand this to the XPath path of `/data/people`. See the section on :ref:`XPath predicate <xpath-predicates-for-filtering>` for more details. In this example, the ``total_pets`` value is  displayed to the user. It could be used in many different contexts such as to define the :ref:`relevance <relevants>` of a group if there's a section of questions that only need to be filled out if there are more than one child-owned pets in the community.
 
 .. _expressions:
   
 Expressions
 -------------
 
-An :dfn:`expression`, sometimes called a `formula`_,
-is evaluated dynamically as a form is filled out.
+An :dfn:`expression` is evaluated dynamically as a form is filled out.
 It can include `XPath functions`_, `operators`_,
 :ref:`values from previous responses <variables>`,
 and (in some cases) :ref:`the value of the current response <constraints>`. 
@@ -85,8 +155,6 @@ and (in some cases) :ref:`the value of the current response <constraints>`.
 .. _XPath functions: https://getodk.github.io/xforms-spec/#xpath-functions
 
 .. _operators: https://getodk.github.io/xforms-spec/#xpath-operators
-
-.. _formula: http://xlsform.org/#formulas
 
 .. rubric:: Example expressions
 
@@ -190,25 +258,9 @@ Every expression is constantly re-evaluated as an enumerator progresses through 
 - a repeat group is added or deleted
 - a form is saved or finalized
 
-This is particularly important to remember when using functions that access state outside of the form such as :func:`random` or :func:`now`. The value they represent will change over and over again as an enumerator fills out a form.
+This is particularly important to remember when using functions that are not connected to fields in the form such as :func:`random` or :func:`now`. The value they represent may change as the conditions listed above take place.
 
-The :func:`once` function prevents multiple evaluation by only evaluating the expression passed into it if the node has no value. That means the expression will be evaluated once either on form open or when any values the expression depends on are set.
-
-Every call on :func:`now` in the form will have the same value unless the :func:`once` function is used. For example, the following calculate will keep track of the first time the form was opened:
-
-.. csv-table:: survey
-  :header: type, name, label, calculation
-
-  calculate, datetime_first_opened, , once(now())
-
-The following calculate will keep track of the first time the enumerator set a value for the :th:`age` question:
-
-.. csv-table:: survey
-  :header: type, name, label, calculation
-
-  integer, age, What is your age?,
-  calculate, age_timestamp, , "if(${age} = '', '', once(now()))"
-
+To control when an expression is evaluated, use :ref:`dynamic defaults <dynamic-defaults>` or :ref:`trigger calculations on value change <triggering_calculations_on_value_change>`. Dynamic defaults are evaluated exactly once on form load or repeat creation.
 
 .. _empty-values:
   
@@ -815,22 +867,13 @@ Sometimes it only makes sense to collect information represented by the question
 Filtering options in select questions
 ===============================================
 
-To limit the options in a select question
-based on the answer to a previous question,
-use a :th:`choice_filter` row in the **survey** sheet,
-and filter key columns in the **choices** sheet.
+To limit the options in a select question based on the answer to a previous question, specify an expression in the :th:`choice_filter` column of the **survey** sheet. This expression will refer to one or more column in the **choices** sheet that the dataset should be filtered by.
 
-For example,
-you might ask the user to select a state first,
-and then only display cities within that state.
-This is called a `cascading select`_,
-and can be extended to any depth.
-`This example form`__ shows a three-tiered cascade:
-state, county, city.
+For example, you might ask your enumerators to select a state first, and then only display cities within that state. This is referred to as a "cascading select" and can be extended to any depth. The example below has two levels: job category and job title.
 
-.. _cascading select: http://xlsform.org/#cascading-selects
+The :th:`choice_filter` expression for the second select in the example is ``category=${job_category}``. ``category`` is the name of a column in the **choices** sheet and ``${job_category}`` refers to the first select question in the form. The filter expression says to only include rows whose ``category`` column value exactly matches the value selected by the enumerator as ``${job_category}``.
 
-__ https://docs.google.com/spreadsheets/d/1CCjRRHCyJXaSEBHPjMWrGotnORR4BI49PoON6qK01BE/edit#gid=0
+Any expression that evaluates to ``True`` or ``False`` can be used as a :th:`choice_filter`. For example, you could add a ``location`` column to the **choices** sheet and also ask the user to enter a location they want to consider jobs in. If the new location question on the **survey** sheet is named ``${job_location}``, the choice filter would be ``category=${job_category} and location=${job_location}``. Another example of a complex choice filter is one that uses :ref:`text comparison functions <string-comparison-functions>` to match labels that start with a certain value. Consider, for example, ``starts-with(label, ${search_value})`` where ``search_value`` is the name of a text question defined on the **survey** sheet.
 
 .. video:: /vid/form-logic/cascade-select.mp4
 
@@ -840,29 +883,24 @@ __ https://docs.google.com/spreadsheets/d/1CCjRRHCyJXaSEBHPjMWrGotnORR4BI49PoON6
   :header: type, name, label, choice_filter
   
   select_one job_categories, job_category, Job category
-  select_one job_titles, job_title, Job title, job_category=${job_category} 
+  select_one job_titles, job_title, Job title, category=${job_category}
 
 .. csv-table:: choices
-  :header: list_name, name, label, job_category
+  :header: list_name, name, label, category
   
   job_categories, finance, Finance,
   job_categories, hr, Human Resources,
   job_categories, admin, Administration/Office,
   job_categories, marketing, Marketing,
   job_titles, ar, Accounts Receivable, finance
-  job_titles, ap, Account Payable, finance
-  job_titles, bk, Bookkeeping, finance
   job_titles, pay, Payroll, finance
   job_titles, recruiting, Recruiting, hr
   job_titles, training, Training, hr
   job_titles, retention, Retention, hr
   job_titles, asst, Office Assistant, admin
   job_titles, mngr, Office Manager, admin
-  job_titles, scheduler, Scheduler, admin
   job_titles, reception, Receptionist, admin
   job_titles, creative_dir, Creative Director, marketing
-  job_titles, print_design, Print Designer, marketing
-  job_titles, ad_buyer, Ad Buyer, marketing
   job_titles, copywriter, Copywriter, marketing
 
 
