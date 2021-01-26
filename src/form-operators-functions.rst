@@ -126,10 +126,7 @@ Path operators
 
   Formally, these are not operators but rather XPath references 
   to the current node (``.``) and the parent node (``..``).
-  `XPath paths`_ can be used to reference nodes of a form.
-  
-  .. _XPath paths: https://getodk.github.io/xforms-spec/#xpath-paths
-    
+  :ref:`XPath paths <xpath-paths>` can be used to reference nodes of a form.
   
 .. _form-functions:
   
