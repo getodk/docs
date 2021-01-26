@@ -26,17 +26,19 @@ Form Datasets
 
 ODK forms can use datasets in a variety of ways. These datasets can be either internal or external to the form.
 
-Internal datasets are defined in the **choices** sheet of an XLSForm and are typically used to define the choices for :ref:`selects <select-widgets>`. These can also be used to look up values.
+Internal datasets are defined in the **choices** sheet of an XLSForm and are typically used as choices for :ref:`selects <select-widgets>`. You can also define a dataset in the **choices** sheet to :ref:`look up values <referencing-values-in-datasets>` based on user input. Learn how to define internal datasets in the section on :ref:`selects <select-widgets>`.
 
-External datasets can be useful when:
+External datasets are useful when:
+
   * data comes from another system. Using data files attached to the form generally requires fewer steps than adding the data to a form definition.
   * data changes frequently. One or more data file attached to the form can be updated without modifying the form definition.
   * data is reused between forms. It may be easier to attach the same data file to multiple forms instead of copying the data into all the form definitions.
   * the same forms are used in different contexts. For example, the exact same form definition could be used in multiple countries with different data files listing regions, local products, etc.
 
-.. warning::
+.. note::
 
-  Large datasets can affect the performance of forms, especially when complex filtering is used. We find that mobile devices released in 2019 and later can generally handle lists of tens of thousands or more without noticeable slowdowns. If you experience slow performance when using a dataset in your form, please share the size of the dataset, the device you are using, and any expressions that reference the dataset including choice filters on `the community forum <https://forum.getodk.org/c/support/6>`_.
+  Most mobile devices released in 2019 or later can handle lists of 50,000 or more without slowdowns. If you experience slowdowns, please share the size of the dataset, the device you are using, and any expressions that reference the dataset on `the community forum <https://forum.getodk.org/c/support/6>`_ or to support@getodk.org.
+
 
 .. _selects-from-csv:
 
@@ -102,7 +104,7 @@ The ``item`` blocks are analogous to rows in the CSV representation. Each ``item
 Referencing values in datasets
 ---------------------------------
 
-:ref:`XPath paths <xpath-paths>` can be used to reference values in internal or external datasets. These paths will start with a call on the ``instance(<instance name>)`` function to identify which dataset is being accessed. The next part of the path is generally `/root/item` because of the `XML structure used to represent datasets for selects <selects-from-xml>`. The only exception is when using custom XML files which may have arbitrary schemas if not used for selects.
+:ref:`XPath paths <xpath-paths>` can be used to reference values in internal or external datasets. These paths will start with the ``instance(<instance name>)`` function to identify which dataset is being accessed. The next part of the path is generally ``/root/item`` because of the :ref:`XML structure used to represent datasets for selects <selects-from-xml>`. The only exception is when using custom XML files which may have arbitrary schemas if not used for selects.
 
 For internal datasets, the instance name is the ``list_name`` specified on the **choices** sheet. For example, to reference the population of the selected state given the form :ref:`above <selects-from-csv>`, the instance name to use is ``states``. The expression would be ``instance("states")/root/item[name = ${state}]/population``. To understand this expression better, read the section on :ref:`XPath paths <xpath-paths>` and especially the subsection about :ref:`XPath paths for filtering <xpath-predicates-for-filtering>`. You could also do things like count the number of states with a population above a certain threshold using an expression like ``count(instance("states")/root/item[population > ${pop_threshold}])``.
 
