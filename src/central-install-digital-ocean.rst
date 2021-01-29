@@ -12,9 +12,9 @@ If you'd like to set up an ODK server that's accessible from anywhere via the In
 
 In general, this installation process will involve five phases:
 
-1. Obtaining a server and loading it with the appropriate base system.
-2. Obtaining a web address (domain name) and pointing it at your new server.
-3. Obtaining the Central software and installing it on your server.
+1. Getting a server and loading it with the appropriate base system.
+2. Getting a web address (domain name) and pointing it at your new server.
+3. Getting the Central software and installing it on your server.
 4. Preparing Central for startup and running it for the first time.
 5. Creating your first Central Administrator account and logging into it.
 
@@ -22,7 +22,7 @@ There are also some optional other steps you can take, which you can find at the
 
 .. _central-install-digital-ocean-server:
 
-Obtaining a Server
+Getting a Server
 ------------------
 
 In this phase, you will create a new server on DigitalOcean, choose a pricing tier, configure it with the correct base operating system, and start it up.
@@ -52,21 +52,21 @@ Congratulations! With those steps, you have now created a new server which you c
 
 .. _central-install-digital-ocean-domain:
 
-Obtaining a Web Address (Domain Name)
+Getting a Web Address (Domain Name)
 -------------------------------------
 
 Now is the time to set up a domain name. We will do so, and then configure it so that it sends users to the server you created in the previous step.
 
-You'll need to do this for two reasons: a memorable name (like ``google.com``) will be easier to remember and access than a pile of numbers, and you cannot obtain a security certificate without one. It is not currently possible to host Central within a subdirectory on another domain (so, ``my-website.com/my-odk-server`` is not possible, but ``my-odk-server.com`` is allowed, as is ``my-odk-server.my-website.com``).
+You'll need to do this for two reasons: a memorable name (like ``google.com``) will be easier to remember and access than a pile of numbers, and you cannot get a security certificate without one. It is not currently possible to host Central within a subdirectory on another domain (so, ``my-website.com/my-odk-server`` is not possible, but ``my-odk-server.com`` is allowed, as is ``my-odk-server.my-website.com``).
 
 If you already know how to do these sorts of things, feel free to ignore the following instructions and proceed on your own. You can rejoin us at the next section.
 
 For the rest of us, there are some options here:
 
  - You can pay one of the many popular commercial domain registrars for a full domain name, like ``MyOdkCollectionServer.com``. Search for "domain registrar" to find one of these. These often cost as little as $3/year.
- - You can use a free DNS service: we recommend `FreeDNS <https://freedns.afraid.org/>`_, which has run for a long time and has a good reputation. With it, you can obtain a free name, albeit with a fixed second half (like ``MyOdkCollectionServer.dynet.com``). If you choose this route, we recommend using one of the *less popular* names, as the heavily occupied names can run into trouble later on (in particular, obtaining a security certificate from Let's Encrypt).
+ - You can use a free DNS service: we recommend `FreeDNS <https://freedns.afraid.org/>`_, which has run for a long time and has a good reputation. With it, you can get a free name, albeit with a fixed second half (like ``MyOdkCollectionServer.dynet.com``). If you choose this route, we recommend using one of the *less popular* names, as the heavily occupied names can run into trouble later on (in particular, getting a security certificate from Let's Encrypt).
 
-Whichever option you choose, once you obtain a domain name you'll want to look at `DigitalOcean's guide <https://www.digitalocean.com/docs/networking/dns>`_ on setting up domain names for your Droplet. In general, you'll point your domain name in DigitalOcean's direction at your registrar, then in DigitalOcean itself you'll want to create an A record that points to the IP address we found above.
+Whichever option you choose, once you getting a domain name you'll want to look at `DigitalOcean's guide <https://www.digitalocean.com/docs/networking/dns>`_ on setting up domain names for your Droplet. In general, you'll point your domain name in DigitalOcean's direction at your registrar, then in DigitalOcean itself you'll want to create an A record that points to the IP address we found above.
 
 New domain names take a little bit to get working. Meanwhile, we can get working on installing the server software.
 
@@ -75,7 +75,7 @@ New domain names take a little bit to get working. Meanwhile, we can get working
 Installing Central
 ------------------
 
-In this phase of installation, we will log into your new server, obtain the Central software, load some settings into it, and install it.
+In this phase of installation, we will log into your new server, get the Central software, load some settings into it, and install it.
 
 First, you'll need to be able to log into the server itself. If you are an advanced user who filled in an SSH key above, you're good to go. Otherwise, click your email for a message from DigitalOcean with your server password.
 
@@ -102,7 +102,7 @@ The quickest way to do this is to run ``ufw disable`` while logged into your ser
 
   The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. In particular, if you can successfully ``curl`` your Central website over HTTPS on its public domain name, all Enketo features should work correctly.
 
-Obtaining and Setting Up Central
+Getting and Setting Up Central
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now you'll need to download the software. In the server window, type ``git clone https://github.com/getodk/central`` and press **Enter**. It should think for some time and download many things. Then type ``cd central`` to start working with the software.
