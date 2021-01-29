@@ -40,7 +40,6 @@ As you continue down this page, there are a few options that may be important to
  - There is a section for standard droplets and another for more expensive optimized droplets. In general, you should not need optimized droplets.
  - The **size** option affects a few things, but the most important is the amount of memory available to your server. Memory does not affect storage space, it sets the amount of "thinking room" the server gets while it's working on things. If you don't expect many forms to be submitted at once and you don't expect many large media attachments, you can start with 1GB. Higher-load servers and servers which handle many image or video attachments may need 2GB or more. It is pretty easy to upgrade to a larger size later.
  - The datacenter region selects where physically your server will be located. If you have security concerns, this is your chance to decide which country hosts your data. Otherwise, generally selecting the option with closest geographic proximity to your users is a good idea.
- - If you plan on setting up DKIM (see below), you will want to set the name of the server to the full domain name you intend to host your server.
  - If you are technically savvy and understand what an SSH key is, there is a field here that you will want to fill in. If not, don't worry about it.
 
 .. tip::
@@ -177,45 +176,6 @@ Advanced Configuration Options
 
 The following sections each detail a particular customization you can make to your server setup. Most installations should not need to perform these tasks, and some of them assume some advanced working knowledge on administering Linux web servers. If you aren't sure what something means, the best option is probably to skip the section completely.
 
-.. _central-install-digital-ocean-dkim:
-
-Configuring DKIM
-----------------
-
-DKIM is a security trust protocol which is used to help verify mail server identities. Without it, your sent mail is likely to be flagged as spam. If you intend to use a custom mail server (see the following section), these instructions will not be relevant to you. Otherwise:
-
-1. Ensure that your server's name in DigitalOcean `matches your full domain name <https://www.digitalocean.com/community/questions/how-do-i-setup-a-ptr-record?comment=30810>`_, and that the `hostname does as well <https://askubuntu.com/questions/938786/how-to-permanently-change-host-name/938791#938791>`_. If you had to make changes for this step, restart the server to ensure they take effect.
-2. There can be in some cases a placeholder folder that you may have to delete first. If you run this command and no file was deleted, proceed to step 3.
-
-   .. code-block:: console
-
-     rmdir ~/central/files/dkim/rsa.private
-
-3. Now, you'll need to generate a cryptographic keypair and enable the DKIM configuration. Run these commands:
-
-   .. code-block:: console
-
-     cd ~/central/files/dkim
-     openssl genrsa -out rsa.private 1024
-     openssl rsa -in rsa.private -out rsa.public -pubout -outform PEM
-     cp config.disabled config
-
-4. With the contents of the public key (``cat rsa.public``), you'll want to create two new TXT DNS records:
-
-   1. At the location ``dkim._domainkey.YOUR-DOMAIN-NAME-HERE``, create a new ``TXT`` record with the contents ``k=rsa; p=PUBLIC-KEY-HERE``. You only want the messy text *between* the dashed boundaries, and you'll want to be sure to remove any line breaks in the public key text, so that it's all only letters, numbers, ``+``, and ``/``.
-   2. At your domain name location, create a new ``TXT`` record with the contents ``v=spf1 a mx ip4:SERVER-IP-ADDRESS-HERE -all`` where you can obtain the server IP address from the DigitalOcean control panel.
-
-5. Finally, build and run to configure EXIM to use the cryptographic keys you generated:
-
-   .. code-block:: console
-
-     cd ~/central
-     docker-compose build mail
-     docker-compose stop mail
-     docker-compose up -d mail
-
-   If you see an error that says ``Can't open "rsa.private" for writing, Is a directory.``, you will need to ``rmdir ~/central/files/dkim/rsa.private``, then attempt ``docker-compose build mail`` again. If you see some other error, you may need to first remove your old mail container (``docker-compose rm mail``).
-
 .. _central-install-digital-ocean-swap:
 
 Adding Swap
@@ -345,6 +305,48 @@ Central ships with a PostgreSQL database server. To use your own custom database
     command: [ "./wait-for-it.sh", "my-db-host:my-db-port", "--", "./start-odk.sh" ]
 
 5. Build and run: ``docker-compose build service``, ``docker-compose stop service``, ``docker-compose up -d service``.
+
+.. _central-install-digital-ocean-dkim:
+
+Configuring DKIM
+----------------
+
+.. tip::
+  Users are not receiving emails? Read :ref:`troubleshooting emails <troubleshooting-emails>` before configuring DKIM.
+
+DKIM is a security trust protocol which is used to help verify mail server identities. Without it, your sent mail is likely to be flagged as spam. If you intend to use a custom mail server (see the following section), these instructions will not be relevant to you. Otherwise:
+
+1. Ensure that your server's name in DigitalOcean `matches your full domain name <https://www.digitalocean.com/community/questions/how-do-i-setup-a-ptr-record?comment=30810>`_, and that the `hostname does as well <https://askubuntu.com/questions/938786/how-to-permanently-change-host-name/938791#938791>`_. If you had to make changes for this step, restart the server to ensure they take effect.
+2. There can be in some cases a placeholder folder that you may have to delete first. If you run this command and no file was deleted, proceed to step 3.
+
+   .. code-block:: console
+
+     rmdir ~/central/files/dkim/rsa.private
+
+3. Now, you'll need to generate a cryptographic keypair and enable the DKIM configuration. Run these commands:
+
+   .. code-block:: console
+
+     cd ~/central/files/dkim
+     openssl genrsa -out rsa.private 1024
+     openssl rsa -in rsa.private -out rsa.public -pubout -outform PEM
+     cp config.disabled config
+
+4. With the contents of the public key (``cat rsa.public``), you'll want to create two new TXT DNS records:
+
+   1. At the location ``dkim._domainkey.YOUR-DOMAIN-NAME-HERE``, create a new ``TXT`` record with the contents ``k=rsa; p=PUBLIC-KEY-HERE``. You only want the messy text *between* the dashed boundaries, and you'll want to be sure to remove any line breaks in the public key text, so that it's all only letters, numbers, ``+``, and ``/``.
+   2. At your domain name location, create a new ``TXT`` record with the contents ``v=spf1 a mx ip4:SERVER-IP-ADDRESS-HERE -all`` where you can obtain the server IP address from the DigitalOcean control panel.
+
+5. Finally, build and run to configure EXIM to use the cryptographic keys you generated:
+
+   .. code-block:: console
+
+     cd ~/central
+     docker-compose build mail
+     docker-compose stop mail
+     docker-compose up -d mail
+
+   If you see an error that says ``Can't open "rsa.private" for writing, Is a directory.``, you will need to ``rmdir ~/central/files/dkim/rsa.private``, then attempt ``docker-compose build mail`` again. If you see some other error, you may need to first remove your old mail container (``docker-compose rm mail``).
 
 .. _central-install-digital-ocean-sentry:
 
