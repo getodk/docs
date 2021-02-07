@@ -270,8 +270,9 @@ A list of the optional columns that can be incorporated into a **survey** worksh
       | under the :th:`display.title` string token (under the
       | th:`display.text` column heading).
   * - hideInContents
-    - | Legal value is true. If true, then the prompt on the same row
+    - | Takes a JavaScript expression. If true, then the prompt on the same row
       | will not be displayed on the contents screen.
+      | If left blank, its default value is false.
   * - inputAttributes.<attr>
     - | This column can be used in conjunction with the following
       | prompt types: :tc:`string`, :tc:`text`, :tc:`integer`, :tc:`decimal`. The :code:`<attr>` can
@@ -1051,5 +1052,3 @@ The built-in formula functions can be combined in advanced ways using any valid 
 .. Tip::
 
   Make sure that statements using :code:`&&` and :code:`||` operators for variables that were :th:`select_one` type are logical and that they work as intended. For example, if the variable :code:`pizza_type` had been a :th:`select_one`, the statement :code:`(selected(data('pizza_type'), 'mushroom') && selected(data('pizza_type'), 'onions')` could never be valid, because the respondent could only have selected one or the other or neither, not both. Therefore, the example instead uses a :code:`||` statement.
-
-
