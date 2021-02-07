@@ -294,6 +294,12 @@ A list of the optional columns that can be incorporated into a **survey** worksh
     - | Must be used with the **choices** worksheet. The :th:`value_list`
       | column of the **survey** worksheet connects to the
       | :th:`choice_list_name` column on the **choices** worksheet.
+  * - validation_tags
+    - | Space-separated list of validation tags.
+      | If validation tags are present on any prompt, this column does not
+      | have a default value.
+      | If this column is absent, left blank, or otherwise empty, its default value
+      | is :tc:`finalize`.
 
 .. _xlsx-ref-survey-prompt-types:
 
@@ -1051,5 +1057,3 @@ The built-in formula functions can be combined in advanced ways using any valid 
 .. Tip::
 
   Make sure that statements using :code:`&&` and :code:`||` operators for variables that were :th:`select_one` type are logical and that they work as intended. For example, if the variable :code:`pizza_type` had been a :th:`select_one`, the statement :code:`(selected(data('pizza_type'), 'mushroom') && selected(data('pizza_type'), 'onions')` could never be valid, because the respondent could only have selected one or the other or neither, not both. Therefore, the example instead uses a :code:`||` statement.
-
-

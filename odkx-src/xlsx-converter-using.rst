@@ -467,8 +467,8 @@ The **section1** worksheet would look like this:
 .. csv-table:: Validate Section1 Worksheet Example
   :header: "type", "name", "display.prompt.text", "required", "validation_tags"
 
-  "text", "user_name", "What is your name?", "TRUE", "user_info, finalize"
-  "integer", "user_age", "What is your age?", "TRUE", "user_info, finalize"
+  "text", "user_name", "What is your name?", "TRUE", "user_info finalize"
+  "integer", "user_age", "What is your age?", "TRUE", "user_info finalize"
   "note",, "Thank you for answering",
 
 The **section2** worksheet would look like this:
@@ -476,7 +476,7 @@ The **section2** worksheet would look like this:
 .. csv-table:: Validate Section2 Worksheet Example
   :header: "type", "name", "display.prompt.text", "required", "validation_tags"
 
-  "text", "occupation", "What is your current occupation?", "TRUE", "user_info, finalize"
+  "text", "occupation", "What is your current occupation?", "TRUE", "user_info finalize"
   "integer", "user_age", "How long have you worked at your current job (in years)?", "TRUE", "finalize"
   "note",, "Thank you for answering",
 
