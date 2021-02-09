@@ -2247,6 +2247,70 @@ Collects a signature from the user.
 
   image,signature_widget,Signature widget,signature,image type with signature appearance
 
+
+.. _field-list:
+
+Grouping multiple widgets on the same screen
+------------------------------------------------
+
+type
+  :tc:`begin_group`
+appearance
+  :tc:`field-list`
+
+The :tc:`field-list` appearance attribute, applied to a group of widgets, displays them all on a single screen.
+
+.. warning::
+
+  Relevance, constraint and calculation evaluation within the same screen is supported in Collect v1.22 and later.
+
+.. warning::
+
+  Displaying :ref:`repeats` on the same screen (inside a :tc:`field-list` group) is not supported.
+
+.. seealso::
+
+  :ref:`groups` and :ref:`repeats`.
+
+.. _select-grid:
+
+Grid of selects on the same screen
+------------------------------------
+
+If you have multiple select questions with the same choices, it can be helpful to group them on one screen.
+
+.. image:: /img/form-widgets/select-grid.*
+  :alt: A field-list group of questions, as displayed in the ODK Collect app on an Android phone. A grid of questions representing underlying conditions are displayed. For eacn condition, there are radio buttons to indicate 'Yes' or 'No'.
+
+
+To do this, put your select questions in a :tc:`field-list` group and use the following :th:`appearance` attributes:
+
+:tc:`label`
+  Only the option labels are displayed, without checkboxes. This is used for the top row with the 'Yes' and 'No' options in the example above.
+:tc:`list-nolabel`
+  Only checkboxes or radio buttons are displayed, without their labels. This is used for the question rows in the example above.
+:tc:`list`
+  The labels are displayed along with checkboxes for multi-select questions and radio buttons for single-select questions. You could use this instead of having a :tc:`label` row to keep the option labels closer to the checkboxes or radio buttons.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance
+
+  begin_group, underlying_conditions, Underlying conditions, field-list
+  select_one, yes_no, condition_labels, Conditions, label
+  select_one, yes_no, Comcond_preg, Pregnancy, list-nolabel
+  select_one, yes_no, Comcond_partum, Post-partum (< 6 weeks), list-nolabel
+  end_group, underlying_conditions
+
+.. csv-table:: choices
+  :header: list_name, name, label
+
+  yes_no, yes, Yes
+  yes_no, no, No
+
+  --------
+
 .. _hidden-questions:
 
 Hidden questions
@@ -2336,64 +2400,3 @@ storing the values for later use.
 For more details, see :ref:`calculations`.
 
 --------
-
-.. _field-list:
-
-Grouping multiple widgets on the same screen
-------------------------------------------------
-
-type
-  :tc:`begin_group`
-appearance
-  :tc:`field-list`
-
-The :tc:`field-list` appearance attribute, applied to a group of widgets, displays them all on a single screen.
-
-.. warning::
-
-  Relevance, constraint and calculation evaluation within the same screen is supported in Collect v1.22 and later.
-
-.. warning::
-
-  Displaying :ref:`repeats` on the same screen (inside a :tc:`field-list` group) is not supported.
-
-.. seealso::
-
-  :ref:`groups` and :ref:`repeats`.
-
-.. _select-grid:
-
-Grid of selects on the same screen
-------------------------------------
-
-If you have multiple select questions with the same choices, it can be helpful to group them on one screen.
-
-.. image:: /img/form-widgets/select-grid.*
-  :alt: A field-list group of questions, as displayed in the ODK Collect app on an Android phone. A grid of questions representing underlying conditions are displayed. For eacn condition, there are radio buttons to indicate 'Yes' or 'No'.
-
-
-To do this, put your select questions in a :tc:`field-list` group and use the following :th:`appearance` attributes:
-
-:tc:`label`
-  Only the option labels are displayed, without checkboxes. This is used for the top row with the 'Yes' and 'No' options in the example above.
-:tc:`list-nolabel`
-  Only checkboxes or radio buttons are displayed, without their labels. This is used for the question rows in the example above.
-:tc:`list`
-  The labels are displayed along with checkboxes for multi-select questions and radio buttons for single-select questions. You could use this instead of having a :tc:`label` row to keep the option labels closer to the checkboxes or radio buttons.
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, appearance
-
-  begin_group, underlying_conditions, Underlying conditions, field-list
-  select_one, yes_no, condition_labels, Conditions, label
-  select_one, yes_no, Comcond_preg, Pregnancy, list-nolabel
-  select_one, yes_no, Comcond_partum, Post-partum (< 6 weeks), list-nolabel
-  end_group, underlying_conditions
-
-.. csv-table:: choices
-  :header: list_name, name, label
-
-  yes_no, yes, Yes
-  yes_no, no, No
