@@ -325,6 +325,31 @@ The :tc:`style` attribute accepts CSS-like key-value pairs for setting ``color``
     yn, yes, <span style="color:green">Yes</span>
     yn, no, <span style="color:red">No</span>
 
+.. _centering:
+
+
+Text Alignment
+----------------
+
+To add alignment to hint, label, and choice labels, use `the style attribute`_ on a :tc:`p` or :tc:`div` tag.
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+
+  select_one options, select_question, <p style="text-align:center">Centered label</p>, <p style="text-align:center">Centered hint</p>
+
+.. csv-table:: choices
+  :header: list_name, name, label
+
+  options, a, <p style="text-align:center">a</p>
+  options, a, <p style="text-align:center">b</p>
+  options, c, <p style="text-align:center">c</p>
+
+.. note::
+
+   The style will be applied to the list of selected choices and that this might have unexpected results especially if used with a select_multiple question.
+
+
 .. _emoji:
 
 Emoji
