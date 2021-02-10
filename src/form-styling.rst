@@ -321,13 +321,15 @@ The :tc:`style` attribute accepts CSS-like key-value pairs for setting ``color``
     yn, yes, <span style="color:green">Yes</span>
     yn, no, <span style="color:red">No</span>
 
-.. _centering:
 
+.. _alignment:
 
-Text Alignment
+Text alignment
 ----------------
 
 To add alignment to hint, label, and choice labels, use `the style attribute`_ on a :tc:`p` or :tc:`div` tag.
+
+.. image:: /img/form-styling/text-alignment.*
 
 .. csv-table:: survey
   :header: type, name, label, hint
