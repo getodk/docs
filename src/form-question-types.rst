@@ -1677,6 +1677,12 @@ In the parameters column, write ``max-pixels=`` followed by the desired maximum 
 Audio widget
 ----------------
 
+.. contents::
+ :local:
+
+Default audio widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 type
   :tc:`audio`
 appearance
@@ -1701,6 +1707,28 @@ Records audio using the device's microphone or a connected external microphone. 
   Android devices can make many sounds during use and these will be included in recordings. We recommend turning off sounds from button presses, camera shutters and notifications before recording.
 
 .. _built-in-audio-recording:
+
+External app audio widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. versionadded:: 1.30
+
+Launches an external app and receives an audio file back from the external app. If the specified external app is not available, it is not possible to use the widget.
+
+The external app audio widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
+
+.. seealso:: :doc:`launch-apps-from-collect`
+
+.. image:: /img/form-widgets/ex-audio-widget.*
+
+.. image:: /img/form-widgets/ex-audio-widget-with-answer.*
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  audio, ex_audio_widget, External audio widget, ex:com.example.collectanswersprovider(questionAudio=''), audio type with ex:com.example.collectanswersprovider(questionAudio='') appearance (can use other external apps)
+
 
 Using the built-in audio recorder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
