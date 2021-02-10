@@ -1861,6 +1861,29 @@ Records video, using the front-facing ("selfie") camera. The :guilabel:`Choose V
 
   video, selfie-video, Self portrait (*selfie*) video widget, new-front, video type with new-front appearance
 
+.. _external-app-video-widget:
+
+External app video widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. versionadded:: 1.30
+
+Launches an external app and receives a video file back from the external app. If the specified external app is not available, it is not possible to use the widget.
+
+The external app video widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
+
+.. seealso:: :doc:`launch-apps-from-collect`
+
+.. image:: /img/form-widgets/ex-video-widget.*
+
+.. image:: /img/form-widgets/ex-video-widget-with-answer.*
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  video, ex_video_widget, External video widget, ex:com.example.collectanswersprovider(questionVideo=''), video type with ex:com.example.collectanswersprovider(questionVideo='') appearance (can use other external apps)
+
 .. _file-upload:
 
 File upload widget
