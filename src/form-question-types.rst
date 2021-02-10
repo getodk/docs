@@ -1597,6 +1597,29 @@ Takes a picture using the front-facing ("selfie") camera. The :guilabel:`Choose 
   image, self-portrait, Self portrait (*selfie*) widget, image type with new-front appearance, new-front
 
 
+.. _external-app-image-widget:
+
+External app image widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. versionadded:: 1.30
+
+Launches an external app and receives an image back from the external app. If the specified external app is not available, it is not possible to use the widget.
+
+The external app image widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
+
+.. seealso:: :doc:`launch-apps-from-collect`
+
+.. image:: /img/form-widgets/ex-image-widget.*
+
+.. image:: /img/form-widgets/ex-image-widget-with-answer.*
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  image, ex_image_widget, External image widget, ex:com.example.collectanswersprovider(questionImage=''), image type with ex:com.example.collectanswersprovider(questionImage='') appearance (can use other external apps)
+
 
 .. _draw-widget:
 
