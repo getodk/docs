@@ -1889,6 +1889,14 @@ The external app video widget is displayed when the :th:`appearance` attribute b
 File upload widget
 --------------------
 
+.. contents::
+  :local:
+
+.. _default_file-upload:
+
+Default file upload widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
 .. versionadded:: 1.15
 
   `ODK Collect v1.15.0 <https://github.com/getodk/collect/releases/tag/v1.15.0>`_
@@ -1929,6 +1937,29 @@ Uploads any file from the device to the form.
   :header: type, name, label
 
   file, some-file, Select a file to upload.
+
+.. _external-app-file-widget:
+
+External app file widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. versionadded:: 1.30
+
+Launches an external app and receives an arbitrary file back from the external app. If the specified external app is not available, it is not possible to use the widget.
+
+The external app file widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
+
+.. seealso:: :doc:`launch-apps-from-collect`
+
+.. image:: /img/form-widgets/ex-file-widget.*
+
+.. image:: /img/form-widgets/ex-file-widget-with-answer.*
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  file, ex_file_widget, External file widget, ex:com.example.collectanswersprovider(questionFile=''), file type with ex:com.example.collectanswersprovider(questionFile='') appearance (can use other external apps)
 
 
 .. _barcode:
