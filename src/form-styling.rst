@@ -289,10 +289,6 @@ The :tc:`style` attribute accepts CSS-like key-value pairs for setting ``color``
 .. _hex color: http://www.color-hex.com/
 .. _generic font categories: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#%3Cgeneric-name%3E
 
-.. note::
-
-   These two attributes, ``color`` and ``font-family``, are the only style attributes supported in Collect.
-
 .. image:: /img/form-styling/going-red.*
   :alt: A note widget in Collect. The label text is "Going red", and the word "red" is colored red. The hint text is the source markup for the label: Going <span style="color:red">red</span>
 
