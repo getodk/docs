@@ -69,8 +69,13 @@ XLSForm
   :header: type, name, label, appearance, body::intent
 
   begin_group, mygroup, Fields to populate, field-list, "org.mycompany.myapp(my_text='Some text', uuid=/myform/meta/instanceID)"
-  text, sometext, Some text
-  integer, someinteger, Some integer
+  text, some_text, Some text
+  integer, some_integer, Some integer
+  decimal, some_decimal, Some decimal
+  image, some_image, Some image
+  video, some_video, Some video
+  audio, some_audio, Some audio
+  file, some_file, Some file
   end_group                                        
 
 .. code-block:: xml
@@ -79,17 +84,32 @@ XLSForm
           intent="org.mycompany.myapp(my_text='Some text', 
                                       uuid=/myform/meta/instanceID)">
     <label>Fields to populate</label>
-    <input ref="/myform/mygroup/sometext">
+    <input ref="/myform/mygroup/some_text">
       <label>Some text</label>
     </input>
-    <input ref="/myform/mygroup/someinteger">
+    <input ref="/myform/mygroup/some_integer">
       <label>Some integer</label>
+    </input>
+    <input ref="/myform/mygroup/some_decimal">
+      <label>Some decimal</label>
+    </input>
+    <input ref="/myform/mygroup/some_image">
+      <label>Some image</label>
+    </input>
+    <input ref="/myform/mygroup/some_video">
+      <label>Some video</label>
+    </input>
+    <input ref="/myform/mygroup/some_audio">
+      <label>Some audio</label>
+    </input>
+    <input ref="/myform/mygroup/some_file">
+      <label>Some file</label>
     </input>
   </group>
 
 The ``intent`` attribute is only used when the group has an ``appearance`` of ``field-list``. The format and the functionality of the ``intent`` value is the same as above. If the bundle of values returned by the external application contains values with keys that match the type and the name of the sub-fields, then the values from the bundle overwrite the current values of those sub-fields.
 
-The external app is launched with the parameters that are defined in the intent string plus the values of all the sub-fields that are either text, decimal, or integer. Any other sub-field is invisible to the external app.
+The external app is launched with the parameters that are defined in the intent string plus the values of all the sub-fields that are either text, decimal, integer or binary. Any other sub-field is invisible to the external app.
 
 .. _launch-apps-uri-data:
 
