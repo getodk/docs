@@ -8,7 +8,7 @@ ODK-X Sync Endpoint
 
 .. _sync-endpoint-intro:
 
-:dfn:`ODK-X Sync Endpoint` is an implementation of :doc:`cloud-endpoints-intro`. It runs a server inside a :program:`Docker` container that implements the `ODK-X REST Protocol <https://github.com/odk-x/odk-x/wiki/ODK-2.0-Synchronization-API-(RESTful)>`_.
+:dfn:`ODK-X Sync Endpoint` is an implementation of :doc:`cloud-endpoints-intro`. It runs a server inside a :program:`Docker` container that implements the `ODK-X REST Protocol <https://docs.odk-x.org/odk-2-sync-protocol/>`_.
 
 It communicates with your ODK-X Android applications to synchronize
 your data and application files.
