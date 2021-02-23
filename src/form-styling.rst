@@ -289,10 +289,6 @@ The :tc:`style` attribute accepts CSS-like key-value pairs for setting ``color``
 .. _hex color: http://www.color-hex.com/
 .. _generic font categories: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#%3Cgeneric-name%3E
 
-.. note::
-
-   These two attributes, ``color`` and ``font-family``, are the only style attributes supported in Collect.
-
 .. image:: /img/form-styling/going-red.*
   :alt: A note widget in Collect. The label text is "Going red", and the word "red" is colored red. The hint text is the source markup for the label: Going <span style="color:red">red</span>
 
@@ -324,6 +320,33 @@ The :tc:`style` attribute accepts CSS-like key-value pairs for setting ``color``
 
     yn, yes, <span style="color:green">Yes</span>
     yn, no, <span style="color:red">No</span>
+
+
+.. _alignment:
+
+Text alignment
+----------------
+
+To add alignment to hint, label, and choice labels, use `the style attribute`_ on a :tc:`p` or :tc:`div` tag.
+
+.. image:: /img/form-styling/text-alignment.*
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+
+  select_one options, select_question, <p style="text-align:center">Centered label</p>, <p style="text-align:center">Centered hint</p>
+
+.. csv-table:: choices
+  :header: list_name, name, label
+
+  options, a, <p style="text-align:center">a</p>
+  options, a, <p style="text-align:center">b</p>
+  options, c, <p style="text-align:center">c</p>
+
+.. note::
+
+   The style will be applied to the list of selected choices and that this might have unexpected results especially if used with a select_multiple question.
+
 
 .. _emoji:
 
