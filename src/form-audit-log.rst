@@ -75,6 +75,10 @@ When Collect receives the location updates, it stores the locations in a timesta
 
 For the most accurate locations, set :tc:`location-priority` to `high-accuracy`. For the most recent locations, use low numbers for :tc:`location-min-interval` and :tc:`location-max-age`.
 
+.. note::
+
+  since v1.30, when a mock location provider is detected, the accuracy is set to 0. Achieving such perfect accuracy is not possible using GPS so that indicates it comes from a mock provider.
+
 .. warning::
   Location tracking can be an invasion of privacy. Users of ODK Collect will be informed that their location is being tracked when they open a form with this feature enabled.
 

@@ -1184,6 +1184,10 @@ Multiple points that form lines or shapes are separated by semicolons.
 
   The accuracy radius is an estimate of what Android calls the `radius of 68% confidence <https://developer.android.com/reference/android/location/Location.html#getAccuracy()>`_: there is a 68% chance that the true location falls within this radius. This is an estimate reported by the Android system based on the available sensors (GPS, network, etc). The accuracy radius itself may be more or less reliable depending on the sensor(s) used and current conditions. Learn more about getting more accurate locations :doc:`here <collect-location>`.
 
+.. note::
+
+  since v1.30, when a mock location provider is detected, the accuracy is set to 0. Achieving such perfect accuracy is not possible using GPS so that indicates it comes from a mock provider.
+
 .. contents::
   :local:
 
