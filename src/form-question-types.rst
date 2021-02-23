@@ -2400,10 +2400,10 @@ storing the values for later use.
 
 For more details, see :ref:`calculations`.
 
-.. _background-audio:
+.. _background-audio-recording:
 
-Background audio
-~~~~~~~~~~~~~~~~~
+Background audio recording
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
   :tc:`background-audio`
@@ -2424,20 +2424,38 @@ type
 
 When a form includes a question of type :tc:`backgroud-audio`, audio is recorded while the form is open and attached to the form submission as a single audio file. These recordings can be used for quality assurance, training, transcription, and more. Use background recording instead of an :ref:`audio question <customizing-audio-quality>` when you want to make sure to record everything that happens during form filling.
 
-Before adding background audio recording to your form, make sure that you have a plan for following local laws around audio recording. We generally recommend including a note at the beginning of the form to remind data collectors and participants that they are being recorded and to describe the purpose of the recording. Depending on the context, you may be required to ask for the consent of every person in speaking range of the microphone. <Examples>
+By default, audio files will be saved in the `amr` format with a bitrate of 12.2kbps and a sample rate of 8kHz, resulting in a file size of about 5MB per hour. These settings correspond to the ``voice-only`` quality :ref:`for audio questions <customizing-audio-quality>` and minimize file size while maintaining reasonable quality for a conversation between two people. You can override that default quality by specifying a value in the :th:`parameters` column as described :ref:`for audio questions <customizing-audio-quality>`.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, parameters
+
+  background-audio, my_recording, quality=low
+
+Planning for background audio recording
+"""""""""""""""""""""""""""""""""""""""""
+
+Before adding background audio recording to your form, make sure that you have a plan for following local laws around audio recording. We generally recommend including a note at the beginning of the form to remind data collectors and participants that they are being recorded and to describe the purpose of the recording. Depending on the context, you may be required to ask for the consent of every person in speaking range of the microphone.
 
 Additionally, you should make a plan for using the resulting audio files. Do you have someone who can listen to and make sense of many audio files? Could you get access to speech-to-text capabilities? Also consider whether your data collectors will be able to send audio files. Will they have access to a fast enough Internet connection? Will their Internet plan or number of credits allow them to send all the audio files you expect?
 
-The default audio settings minimize file size while maintaining reasonable quality for a conversation between two people. Audio files will be saved in the `amr` format with a bitrate of 12.2kbps and a sample rate of 8kHz, resulting in a file size of about 5MB per hour. This corresponds to the ``voice-only`` quality :ref:`for audio questions <customizing-audio-quality>`. You can override that default quality by specifying a value in the :th:`parameters` column in the same way as :ref:`for audio questions <customizing-audio-quality>`.
+It can be helpful to combine background audio recording with :doc:`audit logging <form-audit-log>` to have more context while listening to the recording. Recording starts at the ``form start`` and ``form resume`` events and stops at the ``form exit`` event. You can use the difference between the ``form start`` time and the start time of an event to identify how far into the background recording a certain event happened.
 
-While recording is ongoing, an audio status bar is shown at the top of the screen. This bar helps remind data collectors that they are being recorded and provides visual feedback about audio volume. If a data collector exits a form and then re-opens it for editing, audio recording is resumed. Audio recording continues as long as the form is open, even if another application is in the foreground or the screen is locked. Note that settings can't be accessed directly from a form that has background recording. The audio file sent to the server will include audio from every time that the form was opened for editing.
+Background audio recording user interface
+""""""""""""""""""""""""""""""""""""""""""
+
+While recording is ongoing, an audio status bar is shown at the top of the screen. This bar helps remind data collectors that they are being recorded and provides visual feedback about audio volume. 
+
+If a data collector exits a form and then re-opens it for editing, audio recording is resumed. Audio recording continues as long as the form is open, even if another application is in the foreground or the screen is locked. Note that Collect settings can't be accessed directly from a form that has background recording. The audio file sent to the server will include audio from every time that the form was opened for editing.
 
 .. tip::
 
   Android devices can make many sounds during use and these will be included in recordings. We recommend turning off sounds from button presses, camera shutters and notifications before recording.
 
-It can be helpful to combine background audio recording with :doc:`audit logging <form-audit-log>` to have more context while listening to the recording. Recording starts at the ``form start`` and ``form resume`` events and stops at the ``form exit`` event. You can use the difference between the ``form start`` time and the start time of an event to identify how far into the background recording a certain event happened.
+There is an override available to data collectors when recording might compromise safety or when consent to record can't be obtained but it's still important to capture some data. When the audio recording option is unchecked, audio recording ends immediately and any previously-recorded audio is deleted. Recording can't be resumed during the current form-filling session. Toggling the audio recording option back on indicates that the next form filling session should be recorded. If :doc:`audit logging <form-audit-log>` is enabled, a ``background audio disabled`` event will be logged if a data collector toggles off recording and a ``background audio enabled`` event will be logged if a data collector toggles it back on.
 
-There is an override available to data collectors when recording might compromise safety or when consent to record can't be obtained but it's still important to capture some data. When the audio recording option is unchecked, audio recording ends immediately and any previously-recorded audio is deleted. Recording can't be resumed during the current form-filling session. The setting persists across form filling sessions. If :doc:`audit logging <form-audit-log>` is enabled, a ``background audio disabled`` event will be logged if a data collector toggles off recording and a ``background audio enabled`` event will be logged if a data collector toggles it back on.
+Background audio recording troubleshooting
+""""""""""""""""""""""""""""""""""""""""""""
 
 In some rare cases such as the device running out of space, the recording may complete successfully but not be attached to the form. If this happens, the recording may be available in the ``recordings`` folder of the :ref:`Collect directory <collect-directory>`. This folder is never cleared so consider emptying it yourself once you have retrieved its files.
