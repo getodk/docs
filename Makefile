@@ -16,7 +16,7 @@ help:
 .PHONY: help Makefile
 
 odkx-autobuild:
-	sphinx-autobuild --poll -p 8080 -H 0.0.0.0 odkx-src odkx-build
+	sphinx-autobuild --port 8080 --host 0.0.0.0 odkx-src odkx-build
 
 odkx-clean:
 	rm -rf $(COMPILE_X_SRCDIR)
