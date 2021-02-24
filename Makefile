@@ -5,7 +5,6 @@
 PYTHON = python3
 SPHINXOPTS    = 
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = ODKX
 ODKX_SRCDIR   = odkx-src
 COMPILE_X_SRCDIR = tmpx-src
 ODKX_BUILDDIR = odkx-build
