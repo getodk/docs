@@ -127,7 +127,7 @@ We highly recommend you use a virtual environment like [virtualenv](https://virt
 
 			PowerShell
 
-                /odkx/ > source odkxenv/bin/activate
+                /odkx/ > .\odkxenv\Scripts\activate
                 (odkxenv) /odkx/ >
 
          The ``(odkxenv)`` before the prompt shows that the virtual environment is active.
@@ -164,6 +164,7 @@ It can take a long time (>10 minutes) to clone the repo due to the large number 
 
 Once your environment is set up, build and serve the docs locally with:
 
+FOR LINUX
 ```bash
 $ make odkx
 $ cd odkx-build
