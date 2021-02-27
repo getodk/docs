@@ -52,6 +52,24 @@ XLSForm
 
 In the examples above, the extras specified have names ``form_id``, ``form_name``, ``question_id``, and ``question_name``.
 
+.. _launch-apps-uri-data:
+
+Specifying a URI as intent data
+---------------------------------
+
+Since Collect v1.16.0, the value for the reserved parameter name ``uri_data`` is converted to a URI and used as the data for the intent. The intent data determines which application to launch when using implicit intents such as `SENDTO <https://developer.android.com/reference/android/content/Intent#ACTION_SENDTO>`_. For example:
+
+``ex:android.intent.action.SENDTO(uri_data='smsto:5555555', sms_body=${message})``
+  Launches a new message in an SMS app with the destination number set to ``5555555`` and the message body set to the contents of the ``message`` field.
+
+``ex:android.intent.action.SENDTO(uri_data='mailto:example@example.com?subject=${subject}&body=${message})``
+  Launches a new message in an email app with destination address set to ``example@example.com``, the subject set to the contents of the ``subject`` field and the body set to the contents of the ``message`` field.
+
+``ex:android.intent.action.DIAL(uri_data='tel:5555555')``
+  Launches a phone dialer with the number ``5555555`` as the number to dial.
+
+Notice that the URI must include a `scheme <https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml>`_, such as ``mailto:`` or ``https://``.
+
 .. _external-app-design:
 
 Designing an app to return a single value to Collect
@@ -113,21 +131,3 @@ The external app is launched with the parameters that are defined in the intent 
 Since Collect v1.30.0, it is possible to populate binary fields (:ref:`image <external-app-image-widget>`, :ref:`video <external-app-video-widget>`, :ref:`audio <external-app-audio-widget>` or :ref:`file <external-app-file-widget>`) in field lists. An app that returns one or more binary files to Collect as part of a field list must provide a `content URI <https://developer.android.com/guide/topics/providers/content-provider-basics#ContentURIs>`_ as the value for each of the ``extra``s that correspond to binary questions to populate. Additionally, the external application must specify `ClipData items <https://developer.android.com/reference/android/content/ClipData.Item>`_ for each URI it returns. Your app can then grant Collect temporary permissions to the files using the `Intent.FLAG_GRANT_READ_URI_PERMISSION <https://developer.android.com/reference/android/content/Intent#FLAG_GRANT_READ_URI_PERMISSION>`_ intent flag. See :ref:`a similar code example above <external-app-design>`.
 
 Typically, an external app creator decides on the names of input and output extras and documents those. Form designers use the names of the expected input extras in the ``appearance`` of the ``field-list`` used to launch the external app (e.g. ``my_text`` in `org.mycompany.myapp(my_text='Some text')` above). Form designers use the names of the expected outputs from the external app to name the questions in the field list.
-
-.. _launch-apps-uri-data:
-
-Specifying a URI as intent data
----------------------------------
-
-Since Collect v1.16.0, the value for the reserved parameter name ``uri_data`` is converted to a URI and used as the data for the intent. The intent data determines which application to launch when using implicit intents such as `SENDTO <https://developer.android.com/reference/android/content/Intent#ACTION_SENDTO>`_. For example:
-
-``ex:android.intent.action.SENDTO(uri_data='smsto:5555555', sms_body=${message})``
-  Launches a new message in an SMS app with the destination number set to ``5555555`` and the message body set to the contents of the ``message`` field.
-
-``ex:android.intent.action.SENDTO(uri_data='mailto:example@example.com?subject=${subject}&body=${message})``
-  Launches a new message in an email app with destination address set to ``example@example.com``, the subject set to the contents of the ``subject`` field and the body set to the contents of the ``message`` field.
-
-``ex:android.intent.action.DIAL(uri_data='tel:5555555')``
-  Launches a phone dialer with the number ``5555555`` as the number to dial.
-
-Notice that the URI must include a `scheme <https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml>`_, such as ``mailto:`` or ``https://``.
