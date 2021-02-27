@@ -1609,8 +1609,6 @@ The external app image widget is displayed when the :th:`appearance` attribute b
 
 .. seealso:: :doc:`launch-apps-from-collect`
 
-.. image:: /img/form-widgets/ex-image-widget.*
-
 .. image:: /img/form-widgets/ex-image-widget-with-answer.*
 
 .. rubric:: XLSForm
@@ -1707,28 +1705,6 @@ Records audio using the device's microphone or a connected external microphone. 
   Android devices can make many sounds during use and these will be included in recordings. We recommend turning off sounds from button presses, camera shutters and notifications before recording.
 
 .. _built-in-audio-recording:
-
-External app audio widget
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. versionadded:: 1.30
-
-Launches an external app and receives an audio file back from the external app. If the specified external app is not available, it is not possible to use the widget.
-
-The external app audio widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
-
-.. seealso:: :doc:`launch-apps-from-collect`
-
-.. image:: /img/form-widgets/ex-audio-widget.*
-
-.. image:: /img/form-widgets/ex-audio-widget-with-answer.*
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  audio, ex_audio_widget, External audio widget, ex:com.example.collectanswersprovider(questionAudio=''), audio type with ex:com.example.collectanswersprovider(questionAudio='') appearance (can use other external apps)
-
 
 Using the built-in audio recorder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1853,6 +1829,27 @@ Any app that responds to
 ``android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION``
 will be compatible.
 
+.. _external-audio-widget
+
+Getting audio from a custom external app
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. versionadded:: 1.30
+
+Launches an external app and receives an audio file back from the external app. If the specified external app is not available, it is not possible to use the widget.
+
+The external app audio widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
+
+.. seealso:: :doc:`launch-apps-from-collect`
+
+.. image:: /img/form-widgets/ex-audio-widget.*
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  audio, ex_audio_widget, External audio widget, ex:com.example.collectanswersprovider(questionAudio=''), audio type with ex:com.example.collectanswersprovider(questionAudio='') appearance (can use other external apps)
+
 .. _video:
 
 Video widgets
@@ -1923,8 +1920,6 @@ Launches an external app and receives a video file back from the external app. I
 The external app video widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
 
 .. seealso:: :doc:`launch-apps-from-collect`
-
-.. image:: /img/form-widgets/ex-video-widget.*
 
 .. image:: /img/form-widgets/ex-video-widget-with-answer.*
 
@@ -2000,8 +1995,6 @@ Launches an external app and receives an arbitrary file back from the external a
 The external app file widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
 
 .. seealso:: :doc:`launch-apps-from-collect`
-
-.. image:: /img/form-widgets/ex-file-widget.*
 
 .. image:: /img/form-widgets/ex-file-widget-with-answer.*
 
