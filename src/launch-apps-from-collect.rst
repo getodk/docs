@@ -106,8 +106,13 @@ XLSForm
   :header: type, name, label, appearance, body::intent
 
   begin_group, mygroup, Fields to populate, field-list, "org.mycompany.myapp(my_text='Some text', uuid=/myform/meta/instanceID)"
-  text, sometext, Some text
-  integer, someinteger, Some integer
+  text, some_text, Some text
+  integer, some_integer, Some integer
+  decimal, some_decimal, Some decimal
+  image, some_image, Some image
+  video, some_video, Some video
+  audio, some_audio, Some audio
+  file, some_file, Some file
   end_group                                        
 
 .. code-block:: xml
@@ -116,11 +121,26 @@ XLSForm
           intent="org.mycompany.myapp(my_text='Some text', 
                                       uuid=/myform/meta/instanceID)">
     <label>Fields to populate</label>
-    <input ref="/myform/mygroup/sometext">
+    <input ref="/myform/mygroup/some_text">
       <label>Some text</label>
     </input>
-    <input ref="/myform/mygroup/someinteger">
+    <input ref="/myform/mygroup/some_integer">
       <label>Some integer</label>
+    </input>
+    <input ref="/myform/mygroup/some_decimal">
+      <label>Some decimal</label>
+    </input>
+    <input ref="/myform/mygroup/some_image">
+      <label>Some image</label>
+    </input>
+    <input ref="/myform/mygroup/some_video">
+      <label>Some video</label>
+    </input>
+    <input ref="/myform/mygroup/some_audio">
+      <label>Some audio</label>
+    </input>
+    <input ref="/myform/mygroup/some_file">
+      <label>Some file</label>
     </input>
   </group>
 
