@@ -136,7 +136,7 @@ This is useful for phone numbers, ID numbers, IP addresses, and similar data. It
 
 .. _external-app-widget:
 
-External app widget
+External app string widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
@@ -300,6 +300,8 @@ from the external app as input.
 If the specified external app is not available,
 a manual input is prompted.
 
+.. seealso:: :doc:`launch-apps-from-collect`
+
 .. image:: /img/form-widgets/external-integer-widget-start.*
   :alt: The External Integer form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Ex integer widget." The hint text is, "integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form name "Numerical widgets."
 
@@ -312,8 +314,6 @@ a manual input is prompted.
   :header: type, name, label, appearance, hint
 
   integer,ex_integer_widget,Ex integer widget,ex:change.uw.android.BREATHCOUNT,integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
-
-.. seealso:: :doc:`launch-apps-from-collect`
 
 
 .. _date-and-time-widgets:
@@ -1602,6 +1602,27 @@ Takes a picture using the front-facing ("selfie") camera. The :guilabel:`Choose 
   image, self-portrait, Self portrait (*selfie*) widget, image type with new-front appearance, new-front
 
 
+.. _external-app-image-widget:
+
+External app image widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. versionadded:: 1.30
+
+Launches an external app and receives an image back from the external app. If the specified external app is not available, it is not possible to use the widget.
+
+The external app image widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
+
+.. seealso:: :doc:`launch-apps-from-collect`
+
+.. image:: /img/form-widgets/ex-image-widget-with-answer.*
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  image, ex_image_widget, External image widget, ex:com.example.collectanswersprovider(questionImage=''), image type with ex:com.example.collectanswersprovider(questionImage='') appearance (can use other external apps)
+
 
 .. _draw-widget:
 
@@ -1658,6 +1679,12 @@ In the parameters column, write ``max-pixels=`` followed by the desired maximum 
 
 Audio widget
 ----------------
+
+.. contents::
+ :local:
+
+Default audio widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
   :tc:`audio`
@@ -1807,6 +1834,29 @@ Any app that responds to
 ``android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION``
 will be compatible.
 
+
+.. _external-app-audio-widget:
+
+Getting audio from a custom external app
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 1.30
+
+Launches an external app and receives an audio file back from the external app. If the specified external app is not available, it is not possible to use the widget.
+
+The external app audio widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
+
+.. seealso:: :doc:`launch-apps-from-collect`
+
+.. image:: /img/form-widgets/ex-audio-widget.*
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  audio, ex_audio_widget, External audio widget, ex:com.example.collectanswersprovider(questionAudio=''), audio type with ex:com.example.collectanswersprovider(questionAudio='') appearance (can use other external apps)
+
 .. _video:
 
 Video widgets
@@ -1866,11 +1916,40 @@ Records video, using the front-facing ("selfie") camera. The :guilabel:`Choose V
 
   video, selfie-video, Self portrait (*selfie*) video widget, new-front, video type with new-front appearance
 
+.. _external-app-video-widget:
+
+External app video widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. versionadded:: 1.30
+
+Launches an external app and receives a video file back from the external app. If the specified external app is not available, it is not possible to use the widget.
+
+The external app video widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
+
+.. seealso:: :doc:`launch-apps-from-collect`
+
+.. image:: /img/form-widgets/ex-video-widget-with-answer.*
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  video, ex_video_widget, External video widget, ex:com.example.collectanswersprovider(questionVideo=''), video type with ex:com.example.collectanswersprovider(questionVideo='') appearance (can use other external apps)
+
 .. _file-upload:
 
 File upload widget
 --------------------
 
+.. contents::
+  :local:
+
+.. _default_file-upload:
+
+Default file upload widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
 .. versionadded:: 1.15
 
   `ODK Collect v1.15.0 <https://github.com/getodk/collect/releases/tag/v1.15.0>`_
@@ -1911,6 +1990,30 @@ Uploads any file from the device to the form.
   :header: type, name, label
 
   file, some-file, Select a file to upload.
+
+.. _external-app-file-widget:
+
+External app file widget
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. versionadded:: 1.30
+
+Launches an external app and receives an arbitrary file back from the external app. If the specified external app is not available, it is not possible to use the widget.
+
+The external app file widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
+
+.. seealso:: :doc:`launch-apps-from-collect`
+
+.. warning::
+  This widget accepts files of any type. Learn more about the risk :ref:`above <default_file-upload>`. You should only specify an external application that you trust.
+
+.. image:: /img/form-widgets/ex-file-widget-with-answer.*
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  file, ex_file_widget, External file widget, ex:com.example.collectanswersprovider(questionFile=''), file type with ex:com.example.collectanswersprovider(questionFile='') appearance (can use other external apps)
 
 
 .. _barcode:

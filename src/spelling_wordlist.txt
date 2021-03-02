@@ -350,3 +350,8 @@ xml
 xmlns
 XPath
 zeroes
+questionImage
+questionAudio
+questionVideo
+questionFile
+collectanswersprovider
