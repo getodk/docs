@@ -323,9 +323,13 @@ The following prompt types are available in ODK-X Survey.
   * - barcode
     - | Used to capture a barcode.
   * - date
-    - | Uses a date picker widget to capture a date.
+    - | Uses a date picker widget to capture a date. Automatically adjusts for timezone.
   * - datetime
-    - | Uses a date time picker widget to capture a date and time.
+    - | Uses a date time picker widget to capture a date and time. Automatically adjusts for timezone.
+  * - date_no_time
+    - | Uses a date picker widget to capture a date. Does not adjust for timezone.
+  * - birth_date
+    - | Uses a date picker widget to capture a birth date. Currently behaves the same as `date_no_time`. 
   * - decimal
     - | Used to display a message to the user and have them enter a decimal.
   * - geopoint
