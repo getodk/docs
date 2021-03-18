@@ -901,7 +901,7 @@ Working on the docs
       This will help you get used to working with the documentation tools,
       and helps us get rid of the inevitable errors that creep in to our writing.
 
-      .. _Issue 207 --- Line Edits: https://github.com/odk-x/docs/issues/207
+      .. _Issue 207 --- Line Edits: https://github.com/odk-x/tool-suite-X/issues/207
 
 #. Make sure you are on the master branch
 
