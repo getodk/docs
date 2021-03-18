@@ -892,7 +892,7 @@ Working on the docs
    .. admonition:: Your first issue
 
       The very first issue you should work on as a new ODK-X Docs contributor is
-      `Issue 19 --- Line Edits`_.
+      `Issue 207 --- Line Edits`_.
       The issue is very simple:
 
       1. Find a typo.
@@ -901,14 +901,14 @@ Working on the docs
       This will help you get used to working with the documentation tools,
       and helps us get rid of the inevitable errors that creep in to our writing.
 
-      .. _Issue 19 --- Line Edits: https://github.com/odk-x/docs/issues/19
+      .. _Issue 207 --- Line Edits: https://github.com/odk-x/docs/issues/207
 
 #. Make sure you are on the master branch
 
    .. _check-at-master:
 
    A branch is a named sequence of changes representing work on the repo.
-   For example, if you were going to work on `Issue 19 --- Line Edits`_,
+   For example, if you were going to work on `Issue 207 --- Line Edits`_,
    you would create a new branch called ``line-edits`` to hold that work.
    When you were done,
    you would merge those changes back to the main branch,
