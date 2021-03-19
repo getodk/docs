@@ -20,6 +20,13 @@
   <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+
+  // The google translate script changes the height of the html object
+  // when the height changes, the page scrolls to the top
+  // Modifying the href scrolls the page back to the anchor
+  if (document.location.hash) {
+    document.location.href += '';
+  }
 }
 </script>
 
