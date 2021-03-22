@@ -337,7 +337,7 @@ If you still need help, you can ask support questions in the
 """
 forum = """
 
-ODK Forum
+ODK-X Forum
 
 """
 forum_here = """
