@@ -121,7 +121,7 @@ Command Line Interface (CLI)
 ODK-X Suitcase also provides a command line interface (CLI) that can be easily called by scripts and other programs.
 The CLI has all the features of the graphical user interface and some more. CSV files produced by the two interfaces are also be identical.
 The CLI can be used for downloads, updates, uploads, and resetting the server.
-For a list of all available options, open command prompt/powershell or terminal.
+For a list of all available options, open command prompt/Powershell or terminal.
 Type the following, updating the *path* to where you downloaded the latest :file:`ODK-X Suitcase.jar` file
 and replacing *jar.jar*  with the filename of the downloaded :file:`ODK-X Suitcase.jar`.
 
