@@ -107,7 +107,7 @@ Uploading to the server
 
   .. note::
 
-      Suitcase GUI supports only Uploading of files and not Updating or Modifying, check out :ref:`Suitcase CLI  <suitcase-using-cli>`
+      Suitcase GUI supports only Uploading of files and not Updating or Modifying, check out :ref:`Suitcase CLI  <suitcase-cli-update>`
 
   .. _suitcase-gui-reset:
   
@@ -118,35 +118,131 @@ Resetting the server
 
 Command Line Interface (CLI)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Alternatively you can use command line operation. For help on the command line interface type:
-
-    .. code-block:: console
-
-      $ java -jar path/to/jar.jar --help
-
-ODK-X Suitcase also provides a command line interface (CLI) that can be easily called by scripts and other programs. The CLI has the same features as the graphical user interface. CSV files produced by the two interfaces should also be identical.
-
-The CLI can be used for downloads, updates, uploads, and resetting the server. For a list of all available options, open command prompt/power shell or terminal. Type the following, updating the path to where you downloaded download the latest :file:`ODK-X Suitcase.jar` file and replacing jar.jar with the filename of the downloaded :file:`ODK-X Suitcase.jar` .
+ODK-X Suitcase also provides a command line interface (CLI) that can be easily called by scripts and other programs.
+The CLI has all the features of the graphical user interface and some more. CSV files produced by the two interfaces are also be identical.
+The CLI can be used for downloads, updates, uploads, and resetting the server.
+For a list of all available options, open command prompt/powershell or terminal.
+Type the following, updating the *path* to where you downloaded the latest :file:`ODK-X Suitcase.jar` file
+and replacing *jar.jar*  with the filename of the downloaded :file:`ODK-X Suitcase.jar`.
 
 .. code-block:: console
 
   $ java -jar path/to/jar.jar --help
 
+.. _suitcase-cli-commands:
+
+CLI commands
+  .. code-block:: console
+
+    usage: suitcase
+    -a,--attachment             download attachments
+    -appId <arg>                app id
+    -cloudEndpointUrl <arg>     url to Cloud Endpoint server
+    -dataVersion <arg>          version of data, usually 1 or 2
+    -download                   Download csv
+    -e,--extra                  add extra metadata columns
+    -f,--force                  do not prompt, overwrite existing files
+    -h,--help                   print this message
+    -password <arg>             password
+    -path <arg>                 Specify a custom path to output csv or to
+                                upload from. Default csv directory is
+                                ./Download/ Default upload directory is
+                                ./Upload/
+    -permission                 Upload user permissions using csv specified
+                                by path
+    -relativeServerPath <arg>   Specify the relative server path to push file
+                                to
+    -reset                      Reset server
+    -s,--scan                   apply Scan formatting
+    -tableId <arg>              table id
+    -tableOp <arg>              Create, delete, or clear tableId using csv
+                                specified by path
+    -update                     Update tableId using csv specified by path
+    -updateLogPath <arg>        Specify a custom path to create update log
+                                file. Default directory is ./Update
+    -upload                     Upload one file or all files in directory
+    -uploadOp <arg>             Specify the uploadop to either FILE or
+                                RESET_APP.This option must be used with
+                                upload option.RESET_APP is the default option
+                                and will push all files to serverFILE is used
+                                to push one file to relativeServerPath
+    -username <arg>             username
+    -v,--version                prints version information
+
+
 Combine the individual commands described in the help to perform the actions needed. Examples are as follows.
 
-  - To download CSV of table *table_id* from app *default* with attachments as an anonymous user to the :file:`default` directory.
+.. _suitcase-cli-download:
+
+Downloading from the server
+  - To download CSV of table *table_id* from app *default* as an anonymous user to the :file:`default` directory.
 
     .. code-block:: console
 
-      $ java -jar suitcase.jar -download -a -cloudEndpointUrl "https://your-endpoint-server.com" -appId "default" -tableId "table_id"
+      $ java -jar 'path/to/jar.jar' -download -cloudEndpointUrl 'https://your-endpoint-server.com' -appId 'default' -tableId 'table_id' -dataVersion 2
 
-  - To download CSV of table *table_id* from app *default* with attachments with username *user* and password *pass* to:file:` ~/Desktop`:
+  - To download CSV of table *table_id* from app *default* with attachments with username *user* and password *pass* to :file:`~/Desktop`
 
     .. code-block:: console
 
-      $ java -jar suitcase.jar -download -a -cloudEndpointUrl "https://your-endpoint-server.com" -appId "default" -tableId "table_id" -username "user" -password "pass" -path "~/Desktop"
+      $ java -jar 'path/to/jar.jar' -download -a -cloudEndpointUrl 'https://your-endpoint-server.com' -appId 'default' -tableId 'table_id' -username 'user' -password 'pass' -path '~/Desktop' -dataVersion 2
 
-To script the CLI, write the commands you would like to execute in a scripting language (for example, Bash, Batch, Python, Ruby) and use a scheduler (such as Cron or Windows Task Scheduler) to schedule the tasks. To skip over ODK-X Suitcase's prompts to overwrite, pass :code:`-f` as an argument to ODK-X Suitcase.
+.. _suitcase-cli-upload:
+
+Uploading to the server
+  - Set up the Upload directory as mentioned in :ref:`Suitcase GUI upload <suitcase-gui-upload>`.
+  - To upload files to table *table_id* of app *default* with username *user* and password *pass* from :file:`~/Desktop/Upload` directory.
+
+    .. code-block:: console
+
+      $ java -jar 'path/to/jar.jar' -upload -cloudEndpointUrl 'https://your-endpoint-server.com' -appId 'default' -tableId 'table_id' -username 'user' -password 'pass' -path '~/Desktop/Upload' -dataVersion 2
+
+.. _suitcase-cli-update:
+
+Updating the server
+  - To update the data on the server you need a correctly formatted CSV – follow
+    the instructions for :ref:`Preparing your CSV for upload <suitcase-csv>` and use the following command to upload it to the server to
+    table *table_id* of app *default* with username *user* and password *pass* from :file:`~/Desktop/correctly_formatted.csv` and
+    save the log to :file:`~/Desktop/log.txt`
+
+    .. code-block:: console
+
+      $ java -jar 'path/to/jar.jar' -update -cloudEndpointUrl 'https://your-endpoint-server.com' -appId 'default' -tableId 'table_id' -username 'user' -password 'pass' -path '~/Desktop/correctly_formatted.csv' -updateLogPath '~/Desktop/log.txt' -dataVersion 2
+
+.. _suitcase-cli-table:
+
+Performing Table operations on the server
+  - To :th:`clear` the table *table_id* of app *default* with username *user* and password *pass*.
+
+    .. code-block:: console
+
+      $ java -jar 'path/to/jar.jar' -tableOp 'clear' -tableId 'table_id' -cloudEndpointUrl 'https://your-endpoint-server.com' -appId 'default' -username 'user' -password 'pass' -dataVersion 2
+  
+  - To :th:`delete` the table *table_id* of app *default* with username *user* and password *pass*.
+
+    .. code-block:: console
+
+      $ java -jar 'path/to/jar.jar' -tableOp 'delete' -tableId 'table_id' -cloudEndpointUrl 'https://your-endpoint-server.com' -appId 'default' -username 'user' -password 'pass' -dataVersion 2
+
+  - To :th:`create` table *table_id* of app *default* with username *user* and password *pass* from :file:`~/Desktop/table_definition.csv`.
+    The CSV file used should contain the definition of the table you are trying to create.
+
+    .. code-block:: console
+
+        $ java -jar 'path/to/jar.jar' -tableOp 'create' -tableId 'table_id' -cloudEndpointUrl 'https://your-endpoint-server.com' -appId 'default' -username 'user' -password 'pass' -path '~/Desktop/table_definition.csv' -dataVersion 2
+
+.. _suitcase-cli-reset:
+
+Resetting the server
+  - To reset with username *user* and password *pass*.
+  
+    .. code-block:: console
+
+        $ java -jar 'path/to/jar.jar' -reset -cloudEndpointUrl 'https://your-endpoint-server.com' -appId 'default' -username 'user' -password 'pass' -dataVersion 2
+
+To script the CLI, write the commands you would like to execute in a scripting language (for example, Bash, Batch, Python, Ruby) and
+use a scheduler (such as Cron or Windows Task Scheduler) to schedule the tasks.
+To skip over ODK-X Suitcase's prompts to overwrite, pass :code:`-f` as an argument to ODK-X Suitcase.
 
 .. tip::
 
