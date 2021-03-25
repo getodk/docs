@@ -3,9 +3,10 @@ ODK-X Suitcase
 
 .. _suitcase-intro:
 
-:dfn:`ODK-X Suitcase` is a cross-platform tool that allows updates and downloads of data on an ODK-X Cloud Endpoint from a personal computer.
+:dfn:`ODK-X Suitcase` is a cross-platform tool that allows the user to upload, download, and update data on an ODK-X Cloud Endpoint from a personal computer.
 
-Data downloaded from :doc:`cloud-endpoints-intro` are stored as spreadsheets in CSV format. This format is compatible with most spreadsheet software, for example :program:`Excel` or :program:`Numbers`. Once downloaded, the spreadsheets will be available for offline viewing.
+Data downloaded from :doc:`cloud-endpoints-intro` are stored as spreadsheets in CSV format. This format is compatible with most spreadsheet software,
+for example :program:`Excel` or :program:`Numbers`. Once downloaded, the spreadsheets will be available for offline viewing.
 
 Similarly, in order to add, delete, or update data, the data to be uploaded to an ODK-X Cloud Endpoint must be stored in a properly formatted CSV file.
 
@@ -30,18 +31,8 @@ Installing ODK-X Suitcase
 ------------------------------
 
   1. Navigate to https://github.com/odk-x/suitcase/releases/latest and download the latest :file:`ODK-X Suitcase.jar` file.
-  2. Double click the file to start. If that fails, try running the following, updating the path to where you downloaded download the latest :file:`ODK-X Suitcase.jar` file and replacing jar.jar with the filename of the downloaded :file:`ODK-X Suitcase.jar`.
 
-    .. code-block:: console
-
-      $ java -jar path/to/jar.jar
-
-  3. Alternatively you can use command line operation. For help on the command line interface type:
-
-    .. code-block:: console
-
-      $ java -jar path/to/jar.jar --help
-
+  2. ODX-X Suitcase requires no installation and is ready to use.
 
 Using ODK-X Suitcase
 ------------------------------
@@ -50,42 +41,88 @@ Using ODK-X Suitcase
 
 .. _suitcase-using-gui:
 
-Graphical Interface
-~~~~~~~~~~~~~~~~~~~~~~~~
+Graphical User Interface (GUI)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The first screen when you open ODK-X Suitcase will ask for your ODK-X :guilabel:`Cloud Endpoint Address`, the :guilabel:`App ID`, and your :guilabel:`username` and :guilabel:`password`. If your ODK-X Cloud Endpoint allows for anonymous access then you can leave the :guilabel:`username` and :guilabel:`password` fields blank. Otherwise, please specify an ODK-X Cloud Endpoint username and password with sufficient permissions.
+To use Suitcase GUI double-click the downloaded file to start it. If that fails, try running the following,
+updating the *path* to where you downloaded the latest :file:`ODK-X Suitcase.jar` file and
+replacing *jar.jar* with the filename of the downloaded :file:`ODK-X Suitcase.jar`.
 
-There are two options at the top of the graphical interface:
+    .. code-block:: console
+
+      $ java -jar path/to/jar.jar
+
+The first screen when you open ODK-X Suitcase will ask for your
+ODK-X :guilabel:`Cloud Endpoint Address`, the :guilabel:`App ID`, and your :guilabel:`username` and :guilabel:`password`.
+If your ODK-X Cloud Endpoint allows for anonymous access then you can leave the :guilabel:`username` and :guilabel:`password` fields blank.
+Otherwise, please specify an ODK-X Cloud Endpoint username and password with sufficient permissions.
+
+There are two tabs at the top of the graphical interface:
   - :guilabel:`Download`, to download existing data from the server
-  - :guilabel:`Upload` to delete, upload new, or update data. :guilabel:`Upload` also includes an option to :guilabel:`Reset`  the server. Note that there is no warning or confirmation - if you press the :guilabel:`Reset` button it will reset the server.
+  - :guilabel:`Upload`, to upload new data to the server. The :guilabel:`Upload` tab also includes an option to :guilabel:`Reset` the server.
 
-When uploading, you need a correctly formatted CSV -- follow the instructions for :ref:`suitcase-csv` then modify the :guilabel:`Upload` field to that file path or click on the :guilabel:`...` button.
+  .. Warning::
+    
+      Note that there is no warning or confirmation, if you press the :guilabel:`Reset` button it will reset the server.
 
-When downloading, you will need to specify the *table_id*. By default ODK-X Suitcase creates a :file:`Download` directory where the ODK-X Suitcase jar file is located and saves data in that directory in a *table_id* sub-folder with a corresponding *link_unformatted.csv* that has all of the data for that table downloaded from the server. To specify a different directory for ODK-X Suitcase to store downloaded data in, modify the :guilabel:`Save to` field or click on the :guilabel:`...` button.
+  .. _suitcase-gui-download:
 
-ODK-X Suitcase provides three options to customize the CSV file download.
+Downloading from the server
+  When downloading, you will need to specify the *table_id*.
+  By default ODK-X Suitcase creates a :file:`Download` directory where the ODK-X Suitcase jar file is located
+  and saves the data to a CSV file under :file:`Download/app_id/table_id/link_unformatted.csv`
+  that has all of the data for that table downloaded from the server.
+  To specify a different directory for ODK-X Suitcase to store downloaded data in,
+  modify the :guilabel:`Save to` field or click on the :guilabel:`...` button.
 
-  - Download attachments:
+  ODK-X Suitcase provides three options to customize the CSV file download.
 
-    - If this option is selected, ODK-X Suitcase will download all attachments from the given table and the CSV generated will contain hyperlinks to the local files.
-    - If this option is not selected, the CSV generated will contain hyperlink to the given ODK-X Cloud Endpoint.
+    - Download attachments:
 
-  - Apply Scan formatting:
+      - If this option is selected, ODK-X Suitcase will download all attachments from the given table and the CSV generated will contain hyperlinks to the local files.
+      - If this option is not selected, the CSV generated will contain hyperlink to the given ODK-X Cloud Endpoint.
 
-    - When this option is selected, ODK-X Suitcase will optimize the CSV by replacing certain columns added by ODK-X Scan.
+    - Apply Scan formatting:
 
-  - Extra metadata columns
+      - When this option is selected, ODK-X Suitcase will optimize the CSV by replacing certain columns added by ODK-X Scan.
 
-      - When this option is selected, two more columns will be included in the CSV, :th:`create_user` and :th:`last_update_user`.
+    - Extra metadata columns
 
-.. tip::
+        - When this option is selected, two more columns will be included in the CSV, :th:`create_user` and :th:`last_update_user`.
 
-    If your data are collected in a language that uses UTF-8 coding (for example, Arabic) you will need to add *-Dfile.encoding=UTF8* to the command line to open ODK-X Suitcase
+  .. _suitcase-gui-upload:
+
+Uploading to the server
+  When uploading, you will need to specify the *Version* which by default is *2*. By default ODK-X Suitcase assumes the upload field to be
+  a :file:`Upload` directory where the ODK-X Suitcase jar file is located to change it click on the :guilabel:`...` button.
+  
+  To Upload files to ODK-X Cloud Endpoint, you need to lay out the files and folders in the correct file structure 
+  which is described in details in the :doc:`config-file-structure`.
+  
+  Your upload directory should look similar to the *config* directory and contain
+  subdirectories *assets* and/or *tables* as shown in the :doc:`config-file-structure`.
+  An example for the same can be found `here <https://github.com/odk-x/app-designer/tree/master/app/config>`_. 
+  
+  Then modify the :guilabel:`Upload` field to that file path by clicking on the :guilabel:`...` button, and then press :guilabel:`Upload`.
+
+  .. note::
+
+      Suitcase GUI supports only Uploading of files and not Updating or Modifying, check out :ref:`Suitcase CLI  <suitcase-using-cli>`
+
+  .. _suitcase-gui-reset:
+  
+Resetting the server
+  The :guilabel:`Reset` button can be found under the :guilabel:`Upload` tab. Clicking it will reset the the server without any warning or confirmation.
 
 .. _suitcase-using-cli:
 
 Command Line Interface (CLI)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Alternatively you can use command line operation. For help on the command line interface type:
+
+    .. code-block:: console
+
+      $ java -jar path/to/jar.jar --help
 
 ODK-X Suitcase also provides a command line interface (CLI) that can be easily called by scripts and other programs. The CLI has the same features as the graphical user interface. CSV files produced by the two interfaces should also be identical.
 
@@ -110,6 +147,10 @@ Combine the individual commands described in the help to perform the actions nee
       $ java -jar suitcase.jar -download -a -cloudEndpointUrl "https://your-endpoint-server.com" -appId "default" -tableId "table_id" -username "user" -password "pass" -path "~/Desktop"
 
 To script the CLI, write the commands you would like to execute in a scripting language (for example, Bash, Batch, Python, Ruby) and use a scheduler (such as Cron or Windows Task Scheduler) to schedule the tasks. To skip over ODK-X Suitcase's prompts to overwrite, pass :code:`-f` as an argument to ODK-X Suitcase.
+
+.. tip::
+
+  If your data are collected in a language that uses UTF-8 coding (for example, Arabic) you will need to add *-Dfile.encoding=UTF8* to the command line to open ODK-X Suitcase
 
 .. _suitcase-csv:
 
