@@ -43,6 +43,7 @@ camelCase
 cd
 checkbox
 checkboxes
+Chocolatey
 clickable
 config
 configurer
@@ -178,6 +179,7 @@ NaN
 natively
 navigations
 nginx
+npm
 oauth
 Oauth
 OAuth
