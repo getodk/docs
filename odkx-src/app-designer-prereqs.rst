@@ -43,20 +43,20 @@ You must install the following software on your computer in order to use Applica
 
 Java
 --------
-Make sure Java 7 or higher is installed on the computer you plan to use. If it is not, `download and install it <https://java.com/en/download/>`_. If you are using MacOSX, it may require special care and attention. See `MacOSX Java install <https://docs.oracle.com/javase/7/docs/webnotes/install/mac/mac-jdk.html>`_ and `MacOSX Java FAQ <https://docs.oracle.com/javase/7/docs/webnotes/install/mac/mac-install-faq.html>`_.
+Make sure Java 8 or higher is installed on the computer you plan to use. If it is not, `download and install it <https://java.com/en/download/>`_. If you are using MacOSX, it may require special care and attention. See `MacOSX Java install <https://docs.oracle.com/javase/7/docs/webnotes/install/mac/mac-jdk.html>`_ and `MacOSX Java FAQ <https://docs.oracle.com/javase/7/docs/webnotes/install/mac/mac-install-faq.html>`_.
 
 .. _app-designer-prereqs-nodejs:
 
 NodeJS
 ---------
-You must use Version 6.2.2 or higher. To avoid directory path problems on Windows, we require :program:`npm` version 3, and that is only available on this node release (or higher). Follow the `instructions to install NodeJS <https://nodejs.org/en/>`_.
+You must use Version 12 or higher. To avoid directory path problems on Windows, we require :program:`npm` version 6.9 or higher (generally npm will be bundled with NodeJS installer). Follow the `instructions to install NodeJS <https://nodejs.org/en/>`_.
 
 .. _app-designer-prereqs-nodejs-windows:
 
 For Windows
 ~~~~~~~~~~~~~~~
 
-After installing NodeJS, ensure the location of the :file:`npm` folder is added to the *PATH* variable of your system. If it is not, subsequent calls to access grunt will fail. For example: :file:`C:\\Users\\[username]\\AppData\\Roaming\\npm`.
+When installing on Windows you can use an automated :program:`NodeJS` installer the uses :program:`Chocolatey`. If you chose not to let the installer use :program:`Chocolatey` to install a bunch of packages after installing :program:`NodeJS`, you will need to ensure the location of the :file:`npm` folder is added to the *PATH* variable of your system. If it is not, subsequent calls to access grunt will fail. For example: :file:`C:\\Users\\[username]\\AppData\\Roaming\\npm`.
 For instructions on modifying *PATH*, see the section at the bottom of this page called Add adb to your *PATH* For Windows. Instead of navigating to the location of Android SDK, navigate to the location of the :file:`npm` folder.
 
 .. _app-designer-prereqs-nodejs-unix:
