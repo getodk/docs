@@ -9,9 +9,6 @@ ODKX_SRCDIR   = odkx-src
 COMPILE_X_SRCDIR = tmpx-src
 ODKX_BUILDDIR = odkx-build
 
-# Put it first so that "make" without argument is like "make help".
-help:
-	@$(SPHINXBUILD) -M help
 
 .PHONY: help Makefile
 
