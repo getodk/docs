@@ -90,7 +90,7 @@ Setup instructions:
 
     $ docker build --pull -t odk/phpldapadmin phpldapadmin
 
-  10. Enter your hostname in the :code:`security.server.hostname` field in the :file:`security.properties` file (under the directory :file:`config/sync-endpoint`).
+  10. Enter your hostname in the :code:`security.server.hostname` field in the :file:`security.properties` file (under the directory :file:`config/sync-endpoint`). You can also choose to enable :ref:`Anonymous access<sync-anonymous>` on your ODK-X Sync Endpoint by configuring the same :file:`security.properties` file.
 
   11. If you're not using the standard ports (80 for *HTTP* and 443 for *HTTPS*) enter the ports you're using in the :code:`security.server.port` and :code:`security.server.securePort` fields in the :file:`security.properties`. Then edit the **ports** section under the **sync** section in :file:`docker-compose.yml` to be :code:`YOUR_PORT:8080`.
 
@@ -197,3 +197,23 @@ Stopping ODK-X Sync Endpoint
 
       $ docker volume rm (docker volume ls -f "label=com.docker.stack.namespace=syncldap" -q)
 
+.. _sync-anonymous:
+
+Anonymous Access for ODK-X Sync Endpoint
+-----------------------------------------
+
+Navigate to :file:`sync-endpoint-default-setup/config/sync-endpoint/security.properties` 
+
+  - To Enable Anonymous access set the following fields to *true*
+
+    .. code-block::
+
+      sync.preference.anonymousTablesSync=true
+      sync.preference.anonymousAttachmentAccess=true
+
+  - To Disable Anonymous access set the following fields to *false*
+
+    .. code-block::
+
+      sync.preference.anonymousTablesSync=false
+      sync.preference.anonymousAttachmentAccess=false
