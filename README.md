@@ -14,7 +14,15 @@ Please [file an issue](https://github.com/odk-x/tool-suite-X/issues) if you can'
 
 There are two options for building and viewing ODK-X docs locally: [using Docker](#docker) or [setting up a local Python/Sphinx environment](#python-environment). We generally recommend starting with the Docker image unless you already have a Sphinx environment set up. The [Contributor Guide](https://docs.odk-x.org/contributing) describes the philosophy behind the docs, style considerations, how to write restructured text and more.
 
-## <a name="docker"></a>Using Docker
+There are two options to build ODK-X documents 
+
+* [Docker Hosted Build Enviornment](#docker)
+* [Python Build Enviornment](#python-environment)
+
+The Docker recommended enviornment is recommended because of fewer setup steps required and less enviornmental variable paths that need to be set.
+
+------------------------------------------
+## <a name="docker"></a>Using Docker Hosted Build  Enviornment
 
 [Docker](https://www.docker.com/) is a platform that makes it easier to package applications so that they can work on any computer. This is particularly valuable when setting up development environments which can work very differently based on versions of the tools involved.
 
@@ -29,7 +37,14 @@ There are two options for building and viewing ODK-X docs locally: [using Docker
 
 ### Cloning the repo
 
-Clone the docs repo. For example, at the command line:
+Clone the docs repo into a directory you want the ODK-X docs files to be located. For example, at the command line:
+
+First navigate to the the directory you want the files to be located using the "cd" (Change Directory) command.
+```
+cd <DIRECTORY>
+```
+
+Then use git to get a copy of the ODK-X documentation files.
 
 ```
 git clone https://github.com/odk-x/docs.git
@@ -48,7 +63,7 @@ docker build -t odkx-docs .
 It can take a long time to build the Docker image, but you only need to do this once.
 
 **Windows users**
- * All commands should be run in an elevated PowerShell window. Right click on PowerShell and select the "Run as administrator" option.
+ * All commands should be run in an elevated PowerShell window. Right click on PowerShell and select the "Run as administrator" option. NOTE: when running as an administrator PowerShell will default to the Windows directory. You will need to use the "cd" (Change Directory) command to navigate to a directory that you want the ODK-X documentation files to be located.
  * Ensure Docker is running by checking your system tray. If Docker is not running, launch "Docker for Windows" app and wait until a notification confirms that Docker is running.
 
 ### Building and serving the docs locally
@@ -73,6 +88,8 @@ docker kill odkx-docs
 
 You can also use the `run-task` script described above to run just a portion of the build process. See available [build tasks](#tasks) below.
 
+-----------------------------
+
 ## <a name="python-environment"></a>Python environment
 
 ### Prerequisites
@@ -81,7 +98,23 @@ You can also use the `run-task` script described above to run just a portion of 
  * Install [git](https://git-scm.com/downloads)
  * Install [Git-LFS](https://git-lfs.github.com/)
 
-We highly recommend you use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/) or a Python version management like [pyenv](https://github.com/pyenv/pyenv). (Type `python --version` to see your current version.)
+After installing, you should verify that Python was succesfully installed and is available on your PATH. To verify Python is installed properly and has been added to your PATH, query the Python version using the following command.
+ 
+	Bash (Linux/Mac)
+
+	$ python3 --version
+
+    PowerShell (Windows)
+
+    > python --version
+ 
+The system should return something like "Python 3.X.X" where X are the other version numbers of your install.
+
+[Here is a website](https://datatofish.com/add-python-to-windows-path/) that explains how to setup Python to be on the Window's PATH. 
+ 
+### (Optional) Setup Python Virtual Enviornment 
+We recommend you use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/) or a Python version management like [pyenv](https://github.com/pyenv/pyenv) to avoid conflicts with packages. This section can be skipped if you do not have multiple Python projects using pip (package installer for Python). 
+
 
 - Instructions for setting up virtual environment:
 
@@ -164,14 +197,13 @@ It can take a long time (>10 minutes) to clone the repo due to the large number 
 
 Once your environment is set up, build and serve the docs locally with:
 
-FOR LINUX
 ```bash
 $ make odkx
 $ cd odkx-build
 $ python -m http.server 8000
 ```
 
-You can then view the docs in your browser at http://localhost:8000.
+You can then view the docs in your browser at [http://localhost:8000/odkx-build/](http://localhost:8000/odkx-build/).
 
 You can also use `make` to run just a portion of the build process. See available [build tasks](#tasks) below.
 
