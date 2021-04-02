@@ -19,7 +19,7 @@ There are two options to build ODK-X documents
 * [Docker Hosted Build Enviornment](#docker)
 * [Python Build Enviornment](#python-environment)
 
-The Docker recommended enviornment is recommended because of fewer setup steps required and less enviornmental variable paths that need to be set.
+The Docker enviornment is recommended because of fewer setup steps required and less enviornmental variable paths that need to be set.
 
 ------------------------------------------
 ## <a name="docker"></a>Using Docker Hosted Build  Enviornment
@@ -37,9 +37,7 @@ The Docker recommended enviornment is recommended because of fewer setup steps r
 
 ### Cloning the repo
 
-Clone the docs repo into a directory you want the ODK-X docs files to be located. For example, at the command line:
-
-First navigate to the the directory you want the files to be located using the "cd" (Change Directory) command.
+Clone the docs repo into a directory you want the ODK-X docs files to be located. For example, navigate to the the directory you want the files to be located using the "cd" (Change Directory) command on the command line:.
 ```
 cd <DIRECTORY>
 ```
@@ -51,6 +49,8 @@ git clone https://github.com/odk-x/docs.git
 ```
 
 It can take a long time (>10 minutes) to clone the repo due to the large number of images in the docs. If you get an error such as `Smudge error` or `GitHub's rate limit reached`, run `git checkout -f HEAD` until you get the message `Checking out files: 100% done`.
+
+After the git clone finishes, use the cd command to change directory to where the cloned files are located. Likely `cd docs`
 
 ### Building the Docker image
 
