@@ -1,36 +1,34 @@
 @ECHO OFF
 
-pushd %~dp0
-
 REM Command file for Sphinx documentation
 
 if "%SPHINXBUILD%" == "" (
 	set SPHINXBUILD=python -msphinx
 )
-set SOURCEDIR=_src
-set BUILDDIR=_build
-set SPHINXPROJ=ODKX
 
-if "%1" == "" goto help
+set ODKX_SRCDIR=odkx-src
+set COMPILE_X_SRCDIR=tmpx-src
+set ODKX_BUILDDIR=odkx-build
 
-%SPHINXBUILD% >NUL 2>NUL
-if errorlevel 9009 (
-	echo.
-	echo.The Sphinx module was not found. Make sure you have Sphinx installed,
-	echo.then set the SPHINXBUILD environment variable to point to the full
-	echo.path of the 'sphinx-build' executable. Alternatively you may add the
-	echo.Sphinx directory to PATH.
-	echo.
-	echo.If you don't have Sphinx installed, grab it from
-	echo.http://sphinx-doc.org/
-	exit /b 1
-)
-
-%SPHINXBUILD% -M %1 %SOURCEDIR% %BUILDDIR% %SPHINXOPTS%
+if "%1" == "clean" goto cleancmd
+if "%1" == "copy" goto copy
+if "%1" == "odkx" goto odkx
+if "%1" == "odkx-latex" goto odkx-latex
+ECHO Supported commands are: clean, copy, odkx, odkx-latex
 goto end
 
-:help
-%SPHINXBUILD% -M help %SOURCEDIR% %BUILDDIR% %SPHINXOPTS%
+:cleancmd
+:copy
+:odkx
+:odkx-latex
+del /F /Q /S %COMPILE_X_SRCDIR%
+del /F /Q /S %ODKX_BUILDDIR%
+if "%1" == "clean" goto end
+mkdir %COMPILE_X_SRCDIR%
+xcopy %ODKX_SRCDIR% %COMPILE_X_SRCDIR% /E /H
+if "%1" == "copy" goto end
+%SPHINXBUILD% -b dirhtml %COMPILE_X_SRCDIR% %ODKX_BUILDDIR%
+if "%1" == "odkx" goto end
+%SPHINXBUILD% -b latex %COMPILE_X_SRCDIR% %ODKX_BUILDDIR%\latex
 
 :end
-popd
