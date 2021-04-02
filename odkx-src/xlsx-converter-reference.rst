@@ -310,6 +310,7 @@ The following prompt types are available in ODK-X Survey.
 
 .. list-table:: Survey Prompt Types
   :header-rows: 1
+  :name: survey-prompt-types
 
   * - Prompt Type
     - | Description
@@ -374,6 +375,9 @@ The following prompt types are available in ODK-X Survey.
       | to the user, and allows the user to click one item. One of the
       | choices provided is an other option which if clicked provides a text
       | box for the user to enter a value.
+  * - signature
+    - | Used to capture the user signature and allows them to enter a signature
+      | by tracing with the finger.
   * - string
     - | Used to ask the user a question and allows them to enter a string.
   * - text
