@@ -10,6 +10,8 @@ Prerequisites
 
 You must have an Android tablet with an operating system version 4.4 or higher.
 
+If you are working on a Windows/Mac/Linux machine, you can use `Android Studio <https://developer.android.com/studio>` to launch an Android emulator.
+
 Before installing any of the ODK-X tools, you will need the following third party app:
 
   - `OI File Manager <https://github.com/openintents/filemanager/releases>`_
@@ -17,7 +19,8 @@ Before installing any of the ODK-X tools, you will need the following third part
 Required
 ~~~~~~~~~~~~~~~
 
-There are no other ODK-X Android tools that are prerequisites to installing ODK-X Services. However, this tool is a prerequisite for all the other ODK-X Android tools.
+There are no other ODK-X Android tools that are prerequisites to installing ODK-X Services. However, this ODK-X Services is a prerequisite for all the other ODK-X Android tools.
+Note that ODK-X Services version 2.1.7 doesn't work on Android 11.
 
 Recommended
 ~~~~~~~~~~~~~~~
