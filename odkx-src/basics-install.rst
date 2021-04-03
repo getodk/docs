@@ -34,9 +34,9 @@ Installing Services
 
     - Go to :guilabel:`Special app access` in :guilabel:`Advanced` and choose :guilabel:`Install unknown apps`
     - From the list of applications, select a browser of your choice and check :guilabel:`Allow from this source`.
-    - (On older versions of Android, above two steps are not required, just make sure installation from *Unknown Sources* is checked.)
+    - (On older versions of Android, above two steps are not required, make sure installation from *Unknown Sources* is checked.)
 
-  2. Open the same (*any* incase of older android versions) web browser on your phone.
+  2. Open the same (*any* in case of older android versions) web browser on your phone.
   3. Navigate to https://github.com/odk-x/services/releases/latest and download the latest ODK-X Services APK.
   4. In the download window, you will see ODK_Services_vN.N.N.apk. - Select it to download the file.
 
@@ -60,9 +60,9 @@ Installing the ODK-X Survey App
 
     - Go to :guilabel:`Special app access` in :guilabel:`Advanced` and choose :guilabel:`Install unknown apps`
     - From the list of applications, select a browser of your choice and check :guilabel:`Allow from this source`.
-    - (On older versions of Android, above two steps are not required, just make sure installation from *Unknown Sources* is checked.)
+    - (On older versions of Android, above two steps are not required, make sure installation from *Unknown Sources* is checked.)
     
-  2. Open the same (*any* incase of older android versions) web browser on your phone.
+  2. Open the same (*any* in case of older android versions) web browser on your phone.
   3. Navigate to https://github.com/odk-x/survey/releases/latest and download the latest ODK-X Survey APK.
   4. In the download window, you will see ODK_Survey.N.N.apk. - Select it to download the file.
 
@@ -88,9 +88,9 @@ Installing the ODK-X Tables App
 
     - Go to :guilabel:`Special app access` in :guilabel:`Advanced` and choose :guilabel:`Install unknown apps`
     - From the list of applications, select a browser of your choice and check :guilabel:`Allow from this source`.
-    - (On older versions of Android, above two steps are not required, just make sure installation from *Unknown Sources* is checked.)
+    - (On older versions of Android, above two steps are not required, make sure installation from *Unknown Sources* is checked.)
     
-  2. Open the same (*any* incase of older android versions) web browser on your phone.
+  2. Open the same (*any* in case of older android versions) web browser on your phone.
   3. Navigate to https://github.com/odk-x/tables/releases/latest and download the latest ODK-X Tables APK.
   4. In the download window, you will see ODK_Tables.N.N.apk. - Select it to download the file.
 
