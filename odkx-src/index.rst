@@ -34,7 +34,7 @@ Allows users to collect data without an internet connection. Form data can be sy
 
 Linked and embedded surveys
 """""""""""""""""""""""""""
-ODX-X tools enable you to open and edit other surveys with links back to the originating survey. Create a sub-form (nested) relationship among surveys (for example: household and household-member) or relational links across your data (for example: tea-houses and tea-types).
+ODK-X tools enable you to open and edit other surveys with links back to the originating survey. Create a sub-form (nested) relationship among surveys (for example: household and household-member) or relational links across your data (for example: tea-houses and tea-types).
 
 View data on device
 """""""""""""""""""
