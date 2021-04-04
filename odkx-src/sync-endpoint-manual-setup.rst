@@ -103,6 +103,8 @@ Setup instructions:
     - :ref:`Custom database instructions <sync-endpoint-setup-database>`
     - :ref:`Custom LDAP instructions <sync-endpoint-setup-ldap>`
 
+  .. _sync-endpoint-deploy:
+
   13. In the "sync-endpoint-default-setup" cloned repository run:
 
     - For HTTP:
@@ -202,18 +204,37 @@ Stopping ODK-X Sync Endpoint
 Anonymous Access for ODK-X Sync Endpoint
 -----------------------------------------
 
-Navigate to :file:`sync-endpoint-default-setup/config/sync-endpoint/security.properties` 
+Checking for Anonymous User Access
+  If you have already created the Docker Config and deployed the Docker Stack.
+  You can navigate to http://[IP_ADDRESS]/web-ui/admin/users
+  or http://[IP_ADDRESS]/odktables/[APP_NAME]/usersInfo and look for *user_id: anonymous*,
+  you will see it if your server has Anonymous User Access. If not then you can easily add Anonymous User Access
+  by following :ref:`Enabling or Disabling Anonymous User Access <sync-modify-anonymous>`.
 
-  - To Enable Anonymous access set the following fields to *true*
+.. _sync-modify-anonymous:
 
-    .. code-block::
+Enabling or Disabling Anonymous User Access
+  1. If you have deployed the Docker Stack then may want to :ref:`Stop the ODK-X Sync Endpoint Server <sync-endpoint-stopping>` before proceeding.
+  
+  2. Navigate to :file:`sync-endpoint-default-setup/config/sync-endpoint/security.properties` 
 
-      sync.preference.anonymousTablesSync=true
-      sync.preference.anonymousAttachmentAccess=true
+    - To Enable Anonymous access set the following fields to *true*
 
-  - To Disable Anonymous access set the following fields to *false*
+      .. code-block::
 
-    .. code-block::
+        sync.preference.anonymousTablesSync=true
+        sync.preference.anonymousAttachmentAccess=true
 
-      sync.preference.anonymousTablesSync=false
-      sync.preference.anonymousAttachmentAccess=false
+    - To Disable Anonymous access set the following fields to *false*
+
+      .. code-block::
+
+        sync.preference.anonymousTablesSync=false
+        sync.preference.anonymousAttachmentAccess=false
+        
+  3. Update the Docker Config by either recreating it or redeploying the Docker Stack.
+  You can redeploy the stack using the following command.
+
+    .. code-block:: console
+
+      $ docker stack deploy -c /root/sync-endpoint-default-setup/docker-compose.yml syncldap
