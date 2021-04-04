@@ -376,8 +376,7 @@ The following prompt types are available in ODK-X Survey.
       | choices provided is an other option which if clicked provides a text
       | box for the user to enter a value.
   * - signature
-    - | Used to capture the user signature and allows them to enter a signature
-      | by tracing with the finger.
+    - | Used to capture a signature by tracing on the device screen.
   * - string
     - | Used to ask the user a question and allows them to enter a string.
   * - text
