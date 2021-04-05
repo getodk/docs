@@ -299,7 +299,7 @@ The :file:`framework.xlsx` file is central to the structure of the Application D
         -
         -
       * -
-        - | '?' + odkSurvey.getHashString('census')
+        - | ''?' + odkSurvey.getHashString('census')
         -
         -
         - external_link
