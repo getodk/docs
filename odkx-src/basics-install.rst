@@ -10,7 +10,7 @@ Prerequisites
 
 You must have an Android tablet with an operating system version 4.4 or higher.
 
-If you are working on a Windows/Mac/Linux machine, you can use `Android Studio <https://developer.android.com/studio>` to launch an Android emulator for testing purposes.
+If you are working on a Windows/Mac/Linux machine, you can use `Android Studio <https://developer.android.com/studio>`_ to launch an Android emulator for testing purposes.
 
 Please note that ODK-X Services version 2.1.7 doesn't work on Android 11. You will need Android 10 with API level less than 30 for version 2.1.7.
 
@@ -103,7 +103,7 @@ Installing the ODK-X Tables App
 
 .. note::
 
-  You can also `download the ODK-X Tables APK <https://opendatakit-dev.cs.washington.edu/2_0_tools/download/>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
+  You can also `download the ODK-X Tables APK <https://github.com/odk-x/tables/releases/latest>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
 
 .. tip::
 
