@@ -2529,7 +2529,7 @@ type
 
   background-audio, my_recording
 
-When a form includes a question of type :tc:`backgroud-audio`, audio is recorded while the form is open and attached to the form submission as a single audio file. These recordings can be used for quality assurance, training, transcription, and more. Use background recording instead of an :ref:`audio question <customizing-audio-quality>` when you want to make sure to record everything that happens during form filling.
+When a form includes a question of type :tc:`background-audio`, audio is recorded while the form is open and attached to the form submission as a single audio file. These recordings can be used for quality assurance, training, transcription, and more. Use background recording instead of an :ref:`audio question <customizing-audio-quality>` when you want to make sure to record everything that happens during form filling.
 
 By default, audio files will be saved in the `amr` format with a bitrate of 12.2kbps and a sample rate of 8kHz, resulting in a file size of about 5MB per hour. These settings correspond to the ``voice-only`` quality :ref:`for audio questions <customizing-audio-quality>` and minimize file size while maintaining reasonable quality for a conversation between two people. You can override that default quality by specifying a value in the :th:`parameters` column as described :ref:`for audio questions <customizing-audio-quality>`.
 
