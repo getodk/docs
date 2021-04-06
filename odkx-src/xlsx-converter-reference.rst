@@ -33,6 +33,7 @@ A workbook is composed of one or more worksheets. XLSX Converter expects the wor
 
 .. list-table:: Worksheet Reference Table
   :header-rows: 1
+  :name: worksheet-reference-table
 
   * - Worksheet
     - Required?
@@ -130,6 +131,7 @@ A list of the required columns for a **survey** worksheet follows.
 
 .. list-table:: Survey Worksheet Required Columns
   :header-rows: 1
+  :name: survey-worksheet-required-columns
 
   * - Column
     - | Description
@@ -155,6 +157,7 @@ A list of the optional columns that can be incorporated into a **survey** worksh
 
 .. list-table:: Survey Worksheet Optional Columns
   :header-rows: 1
+  :name: survey-worksheet-optional-columns
 
   * - Column
     - | Description
@@ -396,6 +399,7 @@ Settings
 
 .. list-table:: Settings Worksheet Columns
   :header-rows: 1
+  :name: settings-worksheet-columns
 
   * - Column
     - | Description
@@ -420,6 +424,7 @@ Available :th:`setting_name` values that can be used:
 
 .. list-table:: :th:`setting_name` values
   :header-rows: 1
+  :name: setting-name-value
 
   * - | Value
     - | Required?
@@ -467,6 +472,7 @@ A sample **settings** worksheet might look like this:
 
 .. list-table:: Settings Worksheet Example
   :header-rows: 1
+  :name: setting-worksheet-example
 
   * - setting_name
     - value
@@ -517,6 +523,7 @@ The columns in this sheet are:
 
 .. list-table:: Properties Worksheet Columns
   :header-rows: 1
+  :name: properties-worksheet-columns
 
   * - Column
     - | Description
@@ -534,7 +541,8 @@ The columns in this sheet are:
 For example, the following configuration specifies that the default view for the table is the list view (HTML). It also defines the detail view, list view, and map view HTML files. And, for the map view, it defines the color rule to apply to the pins in the map view and the latitude and longitude columns to use in displaying those pins.
 
 .. list-table:: Properties Worksheet Example Table
-  : header-rows: 1
+  :header-rows: 1
+  :name: properties-worksheet-example-table
 
   * - partition
     - aspect
@@ -586,6 +594,7 @@ The **calculates** worksheet is an optional worksheet.
 
 .. list-table:: Calculates Worksheet Columns
   :header-rows: 1
+  :name: calculates-worksheet-columns
 
   * - Column
     - | Description
@@ -629,6 +638,7 @@ This defines a function and then invokes it. The available functions within a ca
 
 .. list-table:: Available Calculates Functions
   :header-rows: 1
+  :name: available-calculates-functions
 
   * - Function
     - | Description
@@ -665,6 +675,7 @@ Additionally, the following functions are also available, but are generally not 
 
 .. list-table:: Template Helper Functions
   :header-rows: 1
+  :name: template-helper-functions
 
   * - Function
     - | Description
@@ -694,6 +705,7 @@ The **choices** sheet allows you to specify the set of choices for multiple choi
 
 .. list-table:: Choices Worksheet Columns
   :header-rows: 1
+  :name: choices-worksheet-columns
 
   * - Column
     - | Description
@@ -725,6 +737,7 @@ The **model** sheet is an optional sheet that allows you to specify the data mod
 
 .. list-table:: Model Worksheet Columns
   :header-rows: 1
+  :name: model-worksheet-columns
 
   * - Column
     - | Description
@@ -753,6 +766,7 @@ The **queries** worksheet is an optional sheet that allows you to request data f
 
 .. list-table:: Queries Worksheet Columns
   :header-rows: 1
+  :name: queries-worksheet-columns
 
   * - Column
     - | Description
@@ -838,6 +852,7 @@ Custom prompts can be created within the survey. The **prompt_types** worksheet 
 
 .. list-table:: prompt_types Worksheet Columns
   :header-rows: 1
+  :name: prompt-types-worksheet-columns
 
   * - Column
     - | Description
@@ -854,8 +869,9 @@ column_types
 
 Custom columns can be used within a workbook that are used to store functions, formulas, and path names. The **column_types** worksheet can be used to specify these custom columns.
 
-.. list-table:: prompt_types Worksheet Columns
+.. list-table:: column_types Worksheet Columns
   :header-rows: 1
+  :name: column-types-worksheet-columns
 
   * - Column
     - | Description
@@ -874,26 +890,27 @@ The **framework_translations** sheet is only present in the :file:`framework.xls
 
 .. list-table:: framework_translations Worksheet Columns
   :header-rows: 1
+  :name: framework-translations-worksheet-columns
 
   * - Column
     - | Description
   * - string_token
     - | The name that will be used string to be translated.
   * - text.<locale>
-    - | The value of the translated text string.  There can be as many of these
+    - | The value of the translated text string. There can be as many of these
       | columns as you want translated languages (such as :th:`text.default`, :th:`text.gr`,
       | :th:`text.es`).
   * - image.<locale>
     - | The value of the image url fragment relative to the appName directory
-      | for this locale.  There can be as many of these columns as you want
+      | for this locale. There can be as many of these columns as you want
       | translated languages (such as :th:`image.default`, :th:`image.gr`, :th:`image.es`).
   * - audio.<locale>
     - | The value of the audio url fragment relative to the appName directory
-      | for this locale.  There can be as many of these columns as you want
+      | for this locale. There can be as many of these columns as you want
       | translated languages (such as :th:`audio.default`, :th:`audio.gr`, :th:`audio.es`).
   * - video.<locale>
     - | The value of the videourl fragment relative to the appName directory
-      | for this locale.  There can be as many of these columns as you want
+      | for this locale. There can be as many of these columns as you want
       | translated languages (such as :th:`video.default`, :th:`video.gr`, :th:`video.es`).
 
 The locale code should generally be the 2-letter language code, or, if necessary, the *language_COUNTRY* naming used by Android can be used to identify a specific language variant. For example: *en_US*, *en_UK* for US English and UK English, respectively.
@@ -915,20 +932,20 @@ The format for this sheet is the same as that for the **framework_translations**
   * - string_token
     - | The name that will be used string to be translated.
   * - text.<locale>
-    - | The value of the translated text string.  There can be as many of these
+    - | The value of the translated text string. There can be as many of these
       | columns as you want translated languages (such as :th:`text.default`, :th:`text.gr`,
       | :th:`text.es`).
   * - image.<locale>
     - | The value of the image url fragment relative to the appName directory
-      | for this locale.  There can be as many of these columns as you want
+      | for this locale. There can be as many of these columns as you want
       | translated languages (such as :th:`image.default`, :th:`image.gr`, :th:`image.es`).
   * - audio.<locale>
     - | The value of the audio url fragment relative to the appName directory
-      | for this locale.  There can be as many of these columns as you want
+      | for this locale. There can be as many of these columns as you want
       | translated languages (such as :th:`audio.default`, :th:`audio.gr`, :th:`audio.es`).
   * - video.<locale>
     - | The value of the videourl fragment relative to the appName directory
-      | for this locale.  There can be as many of these columns as you want
+      | for this locale. There can be as many of these columns as you want
       | translated languages (such as :th:`video.default`, :th:`video.gr`, :th:`video.es`).
 
 The locale code should generally be the 2-letter language code, or, if necessary, the *language_COUNTRY* naming used by Android can be used to identify a specific language variant. For example: *en_US*, *en_UK* for US English and UK English, respectively.
@@ -948,20 +965,20 @@ The **table_specific_translations** sheet is optional. It should only be present
   * - string_token
     - | The name that will be used string to be translated.
   * - text.<locale>
-    - | The value of the translated text string.  There can be as many of these
+    - | The value of the translated text string. There can be as many of these
       | columns as you want translated languages (such as :th:`text.default`, :th:`text.gr`,
       | :th:`text.es`).
   * - image.<locale>
     - | The value of the image url fragment relative to the appName directory
-      | for this locale.  There can be as many of these columns as you want
+      | for this locale. There can be as many of these columns as you want
       | translated languages (such as :th:`image.default`, :th:`image.gr`, :th:`image.es`).
   * - audio.<locale>
     - | The value of the audio url fragment relative to the appName directory
-      | for this locale.  There can be as many of these columns as you want
+      | for this locale. There can be as many of these columns as you want
       | translated languages (such as :th:`audio.default`, :th:`audio.gr`, :th:`audio.es`).
   * - video.<locale>
     - | The value of the videourl fragment relative to the appName directory
-      | for this locale.  There can be as many of these columns as you want
+      | for this locale. There can be as many of these columns as you want
       | translated languages (such as :th:`video.default`, :th:`video.gr`, :th:`video.es`).
 
 The locale code should generally be the 2-letter language code, or, if necessary, the *language_COUNTRY* naming used by Android can be used to identify a specific language variant. For example: *en_US*, *en_UK* for US English and UK English, respectively.
@@ -984,6 +1001,7 @@ The following formula functions can be used to simplify calculations or expressi
 
 .. list-table:: Built in formula functions
   :header-rows: 1
+  :name: built-in-formula-functions
 
   * - Name
     - | Description
@@ -1036,8 +1054,9 @@ JavaScript Operators
 
 The built-in formula functions can be combined in advanced ways using any valid JavaScript expression. This is particularly useful for creating complex condition statements to implement skip patterns or conditional statements for required variables. JavaScript operators will allow the expressions to involve more than one variable or more than one response from a single variable. Parentheses can be used in creating particularly complex conditions. A few basic JavaScript operators:
 
-.. list-table:: JavaScript operators
+.. list-table:: Basic JavaScript operators
   :header-rows: 1
+  :name: basic-javascript-operators
 
   * - Name
     - Description
