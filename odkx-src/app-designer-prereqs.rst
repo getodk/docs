@@ -143,32 +143,41 @@ To install the Android SDK:
 
   .. note::
 
-    You can alternatively install the full Android Studio if you so wish, in which case you should follow Google's instructions and then skip to step 6 of this guide.
+    You can alternatively install the full Android Studio if you so wish, in which case you should follow Google's instructions and .
 
 
-  3. Within that section, download the appropriate file(s) based on your operating system.
-  4. Accept the license agreement
-  5. Wait for the install of the SDK Tools to complete. Windows will need to manually run the :file:`.exe` file previously downloaded to start installation.
-  6. Run the SDK Manager
+  3. Within that section, download the appropriate zipped file(s) based on your operating system.
+  4. Accept the Command Line Tools terms and conditions.
+  5. After the download completes, create a folder called :file:`Android` and extract the contents of the zipped folder to the :file:`\\Android` folder you created.
+  6. Navigate to the :file:`cmdline-tools` folder. It should contain a :file:`\\bin` folder and a :file:`\\lib` folder and two other files :file:`NOTICE.txt` and :file:`sources.properties`.
+  7. In the :file:`cmdline-tools` folder, create a new folder called :file:`latest` and move the contents of :file:`cmdline-tools` into the :file:`latest` folder. At this point, the :file:`cmdline-tools` has just one folder :file:`latest` which should contain the :file:`\\bin` and :file:`\\lib` folder and two other files :file:`NOTICE.txt` and :file:`sources.properties`.
+  8. Run :program:`sdkmanager.bat --list`, this shows a list of all packages with the versions that are available be installed.
+    
+    - On Windows open a :program:`cmd` window (open the Start menu, type :program:`cmd` in the search box, select and open it). Get to the :file:`\\bin` directory
 
-    - On Windows, it is available in the :guilabel:`Start Menu` under Android SDK Tools
+    - On Mac/Unix, open a :program:`terminal` window.
+  
+    .. code-block:: console
 
-      .. warning::
+      $ /Android/cmdline-tools/latest/bin>
+      $ /Android/cmdline-tools/latest/bin>sdkmanager.bat --list
 
-        If the packages fail to install, you may need to run the Android SDK as an Administrator.
+  9. Select the latest versions of the following packages by typing :guilabel:`sdkmanager` followed by the package path wrapped in quotes and separarted by a space:
 
-    - On Mac/Unix, open the SDK folder you downloaded above. In the :file:`bin/` or :file:`tools/` directories (on some versions it is in both places--it doesn't matter which you use), double click the file called :file:`android`.
-
-  7. Select the latest versions of the following packages (by checking their checkboxes):
-
-    - Android SDK Tools
     - Android Platform-tools
-    - Android Build-tools
+    - Android Build-tools   
+    
+    .. code-block:: console
 
-  8. If extra packages are selected, you may unselect them before installation.
-  9. Click :guilabel:`Install 3 packages` in the lower right corner of the screen.
-  10. A licensing pop-up dialog will appear. Accept the license agreement(s) by selecting the :guilabel:`Accept License` option. If there are multiple licenses, you may need to select each license in the :guilabel:`Packages` window on this dialog and check this :guilabel:`Accept License` option for each of them before the :guilabel:`Install` button will become enabled.
-  11. Click the :guilabel:`Install` button on that dialog to begin the installation process.
+      $ /Android/cmdline-tools/latest/bin>sdkmanager "platform-tools" "build-tools;30.0.3"
+
+    If there are extra packages you wish to install, you may add them by passing the package path wrapped in quotes, separarted with a space. 
+  
+    .. code-block:: console
+
+      $ /Android/cmdline-tools/latest/bin>sdkmanager "platform-tools" "build-tools;30.0.3" "extra-package-path"
+  
+  10. Accept the license agreement(s) by entering :guilabel:`y` to the :guilabel:`Accept? (y/N):` prompt.
 
 Among many other things, this will install the Android Debug Bridge software on your computer. This tool enables the scripted pushing of files and APKs down to your Android device. See `adb (Android Debug Bridge) <https://developer.android.com/studio/command-line/adb.html>`_ for a listing of its capabilities.
 
@@ -198,19 +207,17 @@ Add :program:`adb` to your *PATH*
 For Windows
 """"""""""""""
 
-  #. Open a Windows File Explorer and navigate to the location of your Android SDK. This will typically be at one of: :file:`C:\\Users\\your_username\\android-sdks` or :file:`C:\\Program Files\\Android\\android-sdk` or :file:`C:\\Program Files (x86)\\Android\\android-sdk`.
+  #. Open a Windows File Explorer and navigate to the location of your :file:`Android` folder. This will typically be at one of: :file:`C:\\Users\\your_username\\Android` or :file:`C:\\Program Files\\Android` or :file:`C:\\Program Files (x86)\\Android`.
   #. Navigate into the :file:`platform-tools` folder.
   #. Click in the file path at the top of the File Explorer window. The path will become a selected text string. Copy it into your copy-and-paste buffer.
-  #. Open the Start menu.
-  #. Right-click on :guilabel:`Computer`.
-  #. Choose :guilabel:`Properties`. The System Control Panel screen opens.
-  #. Select :guilabel:`Advanced system setting` on the left sidebar. The System Properties dialog opens.
+  #. In the File Explorer, right-click on :guilabel:`This PC`.
+  #. Choose :guilabel:`Properties`. The About screen in Settings opens.
+  #. Scroll down and click on :guilabel:`Advanced system setting` under :guilabel:`Related settings`. The System Properties dialog opens.
   #. Click on the :guilabel:`Environment Variables...` button at the bottom of the screen. The Environment Variables dialog opens.
   #. Select the :guilabel:`Path` variable in the bottom System variables scroll window.
-  #. Click :guilabel:`Edit...`
-  #. Click into the :guilabel:`Variable value` text box.
-  #. Press your :guilabel:`End` key to move to the very end of this extremely long string.
-  #. Enter ';' and paste the :file:`platform-tools` directory path after that semicolon.
+  #. Click :guilabel:`Edit...`. The Edit environment variable dialog opens.
+  #. Click :guilabel:`New`. A text box appears.
+  #. Paste the :file:`platform-tools` directory path into the text box.
   #. Click on :guilabel:`OK` and exit all of the windows.
   #. Verify that you have made the change by closing all :program:`cmd` windows and open a new one (so it picks up the change), and type
 
@@ -225,7 +232,7 @@ You should now see the version of the :program:`adb` tool. For example: ``Androi
 For Mac/Unix
 """""""""""""""""""""
 
-The *PATH* variable is nothing more than a default list of places the system looks for commands. Open a :program:`terminal`.  Type:
+The *PATH* variable is nothing more than a default list of places the system looks for commands. Open a :program:`terminal`. Type:
 
 .. code-block:: console
 
@@ -246,13 +253,13 @@ This means that when you type:
 
 the system will look for the command called :program:`adb` in the directories :file:`/usr/local/bin/`, :file:`/usr/local/sbin/`, :file:`/usr/bin/`, and :file:`/bin/`.
 
-Note the location where you downloaded the Android SDK. It should contain a folder called :file:`platform-tools`, which itself contains the program :program:`adb`. If this was in the folder :file:`/Users/someuser/Desktop/android-sdk/` you should be able to run:
+Note the location where you saved the Android folder. It should contain a folder called :file:`platform-tools`, which itself contains the program :program:`adb`. If this was in the folder :file:`/Users/someuser/Desktop/Android/` you should be able to run:
 
 .. code-block:: console
 
-  $ /Users/someuser/Desktop/android-sdk/platform-tools/adb --version
+  $ /Users/someuser/Desktop/Android/platform-tools/adb --version
 
-This works because we're telling the computer exactly where the program :program:`adb` exists. By putting the :file:`platform-tools` directory on the system's *PATH* variable, we will be able to just type :program:`adb` and have the system find it in the :file:`/Users/someuser/Desktop/android-sdk/platform-tools/` directory.
+This works because we're telling the computer exactly where the program :program:`adb` exists. By putting the :file:`platform-tools` directory on the system's *PATH* variable, we will be able to just type :program:`adb` and have the system find it in the :file:`/Users/someuser/Desktop/Android/platform-tools/` directory.
 
 This process is more involved on Mac/Unix than on Windows. Use a text editor (not :program:`Word`, but something like :program:`TextEdit`), select the option to open a file, and browse to your home directory. You can find your home directory by typing:
 
@@ -266,7 +273,7 @@ We want to add the location of the :program:`adb` tool to your *PATH* while pres
 
 .. code-block:: console
 
-  $ export PATH=${PATH}:/Users/someuser/Desktop/android-sdk/platform-tools
+  $ export PATH=${PATH}:/Users/someuser/Desktop/Android/platform-tools
 
 Save the file, close the :program:`terminal` window, open a new :program:`terminal` window, and type:
 
