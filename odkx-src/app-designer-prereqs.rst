@@ -143,7 +143,7 @@ To install the Android SDK:
 
   .. note::
 
-    You can alternatively install the full Android Studio if you so wish, in which case you should follow Google's instructions and .
+    You can alternatively install the full Android Studio if you so wish, in which case you should follow `Google's <https://developer.android.com/studio/intro/update#sdk-manager>`_ instructions. Open the :program:`SDK Manager` from Android Studio, click :program:`Tools > SDK Manager` or click :program:`SDK Manager` in the toolbar. 
 
 
   3. Within that section, download the appropriate zipped file(s) based on your operating system.
