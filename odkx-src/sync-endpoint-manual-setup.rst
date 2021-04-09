@@ -206,9 +206,21 @@ Anonymous Access for ODK-X Sync Endpoint
 
 Checking for Anonymous User Access
   If you have already created the Docker Config and deployed the Docker Stack.
-  You can navigate to http://[IP_ADDRESS]/web-ui/admin/users
-  or http://[IP_ADDRESS]/odktables/[APP_NAME]/usersInfo and look for *user_id: anonymous*,
-  you will see it if your server has Anonymous User Access. If not then you can easily add Anonymous User Access
+  Navigate to http://[IP_ADDRESS]/web-ui/admin/users
+  or http://[IP_ADDRESS]/odktables/[APP_NAME]/usersInfo 
+  
+  .. list-table:: Users and Permissions
+   :widths: 20 25 55
+   :header-rows: 1
+
+   * - User ID
+     - Full Name
+     - Membership Roles
+   * - anonymous
+     - Anonymous Access
+     - ROLE_USER, ROLE_SYNCHRONIZE_TABLES
+
+  If you find a user with attributes as shown above then your server has Anonymous User Access. If not then you can easily add Anonymous User Access
   by following :ref:`Enabling or Disabling Anonymous User Access <sync-modify-anonymous>`.
 
 .. _sync-modify-anonymous:
@@ -216,7 +228,7 @@ Checking for Anonymous User Access
 Enabling or Disabling Anonymous User Access
   1. If you have deployed the Docker Stack then may want to :ref:`Stop the ODK-X Sync Endpoint Server <sync-endpoint-stopping>` before proceeding.
   
-  2. Navigate to :file:`sync-endpoint-default-setup/config/sync-endpoint/security.properties` 
+  2. Navigate to `security.properties <https://github.com/odk-x/sync-endpoint-default-setup/blob/master/config/sync-endpoint/security.properties>`_ file which can be found under :file:`sync-endpoint-default-setup/config/sync-endpoint/` directory.
 
     - To Enable Anonymous access set the following fields to *true*
 
