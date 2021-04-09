@@ -153,7 +153,7 @@ To install the Android SDK:
   7. In the :file:`cmdline-tools` folder, create a new folder called :file:`latest` and move the contents of :file:`cmdline-tools` into the :file:`latest` folder. At this point, the :file:`cmdline-tools` has just one folder :file:`latest` which should contain the :file:`\\bin` and :file:`\\lib` folder and two other files :file:`NOTICE.txt` and :file:`sources.properties`.
   8. Run :program:`sdkmanager.bat --list`, this shows a list of all packages with the versions that are available be installed.
     
-    - On Windows open a :program:`PowerShell` or :program:`cmd` window (open the Start menu, type :program:`cmd` or :program:`PowerShell` (depending on whichever one you decide to use) in the search box, select and open it). Get to the :file:`\\bin` directory
+    - On Windows open a :program:`PowerShell` or :program:`cmd` window, whichever one you decide to go with (open the Start menu, type :program:`cmd` or :program:`PowerShell` in the search box, select and open it). Get to the :file:`\\bin` directory
 
     - On Mac/Unix, open a :program:`terminal` window.
   
@@ -181,7 +181,7 @@ To install the Android SDK:
 
 Among many other things, this will install the Android Debug Bridge software on your computer. This tool enables the scripted pushing of files and APKs down to your Android device. See `adb (Android Debug Bridge) <https://developer.android.com/studio/command-line/adb.html>`_ for a listing of its capabilities.
 
-Next, on Windows open a :program:`PowerShell` or :program:`cmd` window (open the Start menu, type :program:`PowerShell` or :program:`cmd` in the search box, select and open it), and on Mac/Unix open a :program:`terminal` window. Type:
+Next, on Windows open a :program:`PowerShell` or :program:`cmd` window and on Mac/Unix open a :program:`terminal` window. Type:
 
 .. code-block:: console
 
@@ -191,7 +191,7 @@ If this displays a version string, then your installation is complete; you are d
 
 .. warning::
 
-  If there is an error complaining about Java not being installed, you will need to close this :program:`cmd` or :program:`terminal` window and download and install Java. After installing Java, open a new :program:`cmd` or :program:`terminal` window and type this command again.
+  If there is an error complaining about Java not being installed, you will need to close this :program:`cmd/PowerShell` or :program:`terminal` window and download and install Java. After installing Java, open a new :program:`cmd/PowerShell` or :program:`terminal` window and type this command again.
 
 .. warning::
 
