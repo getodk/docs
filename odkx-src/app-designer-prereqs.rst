@@ -162,7 +162,7 @@ To install the Android SDK:
       $ /Android/cmdline-tools/latest/bin>
       $ /Android/cmdline-tools/latest/bin>sdkmanager.bat --list
 
-  9. Select the latest versions of the following packages by typing :guilabel:`sdkmanager` followed by the package path wrapped in quotes and separarted by a space:
+  9. Select the latest versions of the following packages by typing :guilabel:`sdkmanager` followed by the package path wrapped in quotes and separated by a space:
 
     - Android Platform-tools
     - Android Build-tools   
@@ -171,7 +171,7 @@ To install the Android SDK:
 
       $ /Android/cmdline-tools/latest/bin>sdkmanager "platform-tools" "build-tools;30.0.3"
 
-    If there are extra packages you wish to install, you may add them by passing the package path wrapped in quotes, separarted with a space. 
+    If there are extra packages you wish to install, you may add them by passing the package path wrapped in quotes, separated with a space. 
   
     .. code-block:: console
 
