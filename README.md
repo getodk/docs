@@ -16,10 +16,10 @@ There are two options for building and viewing ODK-X docs locally: [using Docker
 
 There are two options to build ODK-X documents 
 
-* [Docker Hosted Build Enviornment](#docker)
-* [Python Build Enviornment](#python-environment)
+* [Docker Hosted Build Environment](#docker)
+* [Python Build Environment](#python-environment)
 
-The Docker enviornment is recommended because of fewer setup steps required and less enviornmental variable paths that need to be set.
+The Docker environment is recommended because of fewer setup steps required and less environmental variable paths that need to be set.
 
 ------------------------------------------
 ## <a name="docker"></a>Using Docker Hosted Build  Enviornment
@@ -37,7 +37,7 @@ The Docker enviornment is recommended because of fewer setup steps required and 
 
 ### Cloning the repo
 
-Clone the docs repo into a directory you want the ODK-X docs files to be located. For example, navigate to the the directory you want the files to be located using the "cd" (Change Directory) command on the command line:.
+Clone the docs repo into a directory you want the ODK-X docs files to be located. For example, navigate to the directory you want the files to be located using the "cd" (Change Directory) command on the command line:.
 ```
 cd <DIRECTORY>
 ```
@@ -63,7 +63,7 @@ docker build -t odkx-docs .
 It can take a long time to build the Docker image, but you only need to do this once.
 
 **Windows users**
- * All commands should be run in an elevated PowerShell window. Right click on PowerShell and select the "Run as administrator" option. NOTE: when running as an administrator PowerShell will default to the Windows directory. You will need to use the "cd" (Change Directory) command to navigate to a directory that you want the ODK-X documentation files to be located.
+ * All commands should be run in an elevated PowerShell window. Right-click on PowerShell and select the "Run as administrator" option. NOTE: when running as an administrator PowerShell will default to the Windows directory. You will need to use the "cd" (Change Directory) command to navigate to a directory that you want the ODK-X documentation files to be located.
  * Ensure Docker is running by checking your system tray. If Docker is not running, launch "Docker for Windows" app and wait until a notification confirms that Docker is running.
 
 ### Building and serving the docs locally
@@ -98,7 +98,7 @@ You can also use the `run-task` script described above to run just a portion of 
  * Install [git](https://git-scm.com/downloads)
  * Install [Git-LFS](https://git-lfs.github.com/)
 
-After installing, you should verify that Python was succesfully installed and is available on your PATH. To verify Python is installed properly and has been added to your PATH, query the Python version using the following command.
+After installing, you should verify that Python was successfully installed and is available on your PATH. To verify Python is installed properly and has been added to your PATH, query the Python version using the following command.
  
 	Bash (Linux/Mac)
 
@@ -108,11 +108,11 @@ After installing, you should verify that Python was succesfully installed and is
 
     > python --version
  
-The system should return something like "Python 3.X.X" where X are the other version numbers of your install.
+The system should return something like "Python 3.X.X" where X is the other version numbers of your install.
 
 [Here is a website](https://datatofish.com/add-python-to-windows-path/) that explains how to setup Python to be on the Window's PATH. 
  
-### (Optional) Setup Python Virtual Enviornment 
+### (Optional) Setup Python Virtual Environment 
 We recommend you use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/) or a Python version management like [pyenv](https://github.com/pyenv/pyenv) to avoid conflicts with packages. This section can be skipped if you do not have multiple Python projects using pip (package installer for Python). 
 
 
@@ -220,8 +220,8 @@ We are open for new issues and pull requests.
 
  - Please read the [Contributors Guide](https://docs.odk-x.org/contributing) before working on the documentation.
  - Find issues to work on.
-   - Issues labelled [easy win](https://github.com/odk-x/tool-suite-X/labels/easy%20win) do not require much specific technical knowledge.
-   - Issues labelled [good first issue](https://github.com/odk-x/tool-suite-X/labels/good%20first%20issue) are usually self-contained and don't require extensive knowledge of the ODK-X ecosystem as a whole.
+   - Issues labeled [easy win](https://github.com/odk-x/tool-suite-X/labels/easy%20win) do not require much specific technical knowledge.
+   - Issues labeled [good first issue](https://github.com/odk-x/tool-suite-X/labels/good%20first%20issue) are usually self-contained and don't require extensive knowledge of the ODK-X ecosystem as a whole.
 
 You can also...
 
