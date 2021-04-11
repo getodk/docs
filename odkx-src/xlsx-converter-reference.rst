@@ -393,7 +393,7 @@ The following prompt types are available in ODK-X Survey.
     
 .. note::
   
-  To increase the length for a string, you could add a model sheet to your xlsx workbook and set the elementType to be string(<string_length>).For example, if you had a string
+  To increase the length for a string, you could add a model sheet to your xls workbook and set the element-type to be string(<string_length>).For example, if you had a string
   prompt named long_data that you wanted to be 500 characters, you would add the following to your model worksheet.
 .. list-table::
 
