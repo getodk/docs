@@ -80,6 +80,7 @@ downloadable
 downloadSubmission
 dropdown
 dropdowns
+elementType
 enketo
 Enketo
 esthete
@@ -346,6 +347,7 @@ xforms
 XForms
 Xforms
 xls
+xlsx
 xlsform
 Xlsform
 XLSForm
