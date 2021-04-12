@@ -620,3 +620,9 @@ Creating a Sample User
   .. code-block:: console
 
     $ docker stack deploy -c /root/sync-endpoint-default-setup/docker-compose.yml syncldap
+
+.. _sync-anonymous-cloud:
+
+Anonymous Access for ODK-X Sync Endpoint Cloud
+----------------------------------------------
+To Enable or Disable Anonymous User Access for your ODK-X Sync Endpoint follow :ref:`these instructions <sync-anonymous>`.

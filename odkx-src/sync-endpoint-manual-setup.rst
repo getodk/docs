@@ -90,7 +90,7 @@ Setup instructions:
 
     $ docker build --pull -t odk/phpldapadmin phpldapadmin
 
-  10. Enter your hostname in the :code:`security.server.hostname` field in the :file:`security.properties` file (under the directory :file:`config/sync-endpoint`).
+  10. Enter your hostname in the :code:`security.server.hostname` field in the :file:`security.properties` file (under the directory :file:`config/sync-endpoint`). You can also choose to enable :ref:`Anonymous access<sync-anonymous>` on your ODK-X Sync Endpoint by configuring the same :file:`security.properties` file.
 
   11. If you're not using the standard ports (80 for *HTTP* and 443 for *HTTPS*) enter the ports you're using in the :code:`security.server.port` and :code:`security.server.securePort` fields in the :file:`security.properties`. Then edit the **ports** section under the **sync** section in :file:`docker-compose.yml` to be :code:`YOUR_PORT:8080`.
 
@@ -102,6 +102,8 @@ Setup instructions:
 
     - :ref:`Custom database instructions <sync-endpoint-setup-database>`
     - :ref:`Custom LDAP instructions <sync-endpoint-setup-ldap>`
+
+  .. _sync-endpoint-deploy:
 
   13. In the "sync-endpoint-default-setup" cloned repository run:
 
@@ -197,3 +199,54 @@ Stopping ODK-X Sync Endpoint
 
       $ docker volume rm (docker volume ls -f "label=com.docker.stack.namespace=syncldap" -q)
 
+.. _sync-anonymous:
+
+Anonymous Access for ODK-X Sync Endpoint
+-----------------------------------------
+
+Checking for Anonymous User Access
+  If you have already created the Docker Config and deployed the Docker Stack.
+  Navigate to http://[IP_ADDRESS]/web-ui/admin/users
+  or http://[IP_ADDRESS]/odktables/[APP_NAME]/usersInfo 
+  
+  .. list-table:: Users and Permissions
+   :widths: 20 25 55
+   :header-rows: 1
+
+   * - User ID
+     - Full Name
+     - Membership Roles
+   * - anonymous
+     - Anonymous Access
+     - ROLE_USER, ROLE_SYNCHRONIZE_TABLES
+
+  If you find a user with attributes as shown above then your server has Anonymous User Access. If not then you can easily add Anonymous User Access
+  by following :ref:`Enabling or Disabling Anonymous User Access <sync-modify-anonymous>`.
+
+.. _sync-modify-anonymous:
+
+Enabling or Disabling Anonymous User Access
+  1. If you have deployed the Docker Stack then may want to :ref:`Stop the ODK-X Sync Endpoint Server <sync-endpoint-stopping>` before proceeding.
+  
+  2. Navigate to `security.properties <https://github.com/odk-x/sync-endpoint-default-setup/blob/master/config/sync-endpoint/security.properties>`_ file which can be found under :file:`sync-endpoint-default-setup/config/sync-endpoint/` directory.
+
+    - To Enable Anonymous access set the following fields to *true*
+
+      .. code-block::
+
+        sync.preference.anonymousTablesSync=true
+        sync.preference.anonymousAttachmentAccess=true
+
+    - To Disable Anonymous access set the following fields to *false*
+
+      .. code-block::
+
+        sync.preference.anonymousTablesSync=false
+        sync.preference.anonymousAttachmentAccess=false
+        
+  3. Update the Docker Config by either recreating it or redeploying the Docker Stack.
+  You can redeploy the stack using the following command.
+
+    .. code-block:: console
+
+      $ docker stack deploy -c /root/sync-endpoint-default-setup/docker-compose.yml syncldap
