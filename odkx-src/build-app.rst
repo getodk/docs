@@ -831,3 +831,19 @@ To update any app level or table level files, or to modify the database schema (
     .. warning::
 
       Resetting the app server will start a new data set. If you want to keep the old data, you should download it to a separate database.
+
+:th:`To update versions`: 
+
+You need to download the new `app designer <https://github.com/odk-x/app-designer/releases/tag/2.1.7>`_  , and delete the unneeded default files using
+
+.. code-block:: console
+
+  $ grunt empty
+
+Then copy over your tables folders within :file:`config/tables`, and then copy over anything customized :th:`framework, csv` into the :file:`config/assets` (sub-) folders. Then re-convert everything using 
+
+.. code-block:: console
+
+  $ grunt xlsx-convert-all 
+
+and your app designer should be set. You will also need to update software on tabs and server to the same version as well.
