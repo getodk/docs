@@ -393,7 +393,7 @@ The following prompt types are available in ODK-X Survey.
     
 .. note::
    if users anticipates for writing anything longer than 255 characters then the user needs to change the model sheet and change the elementType column. It is shown in the datatypes XLSX, string variables' length can be adjusted from a default of 255 to other lengths with string(len). For example, if you had a string prompt named long_data that you wanted to be 500 characters, you would add the following to your model worksheet. To know more refer to https://docs.odk-x.org/xlsx-converter-reference/#model
-.. list-table::
+.. list-table:: 
 
   * - | name      
     - | type   
