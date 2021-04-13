@@ -192,13 +192,13 @@ Custom LDAP directory
       The default configuration does not use ldaps or StartTLS because the LDAP directory communicates with the ODK-X Sync Endpoint over a secure overlay network. 
       You should use ldaps or StartTLS to communicate with your LDAP directory.
 
-  5. In the cloned repository:
+  8. In the cloned repository:
 
   .. code-block:: console
 
     $ docker stack deploy -c docker-compose.yml syncldap
 
-  6. The server takes about 30s to start, then it will be running at http://127.0.0.1.
+  9. The server takes about 30s to start, then it will be running at http://127.0.0.1.
 
 .. _sync-endpoint-stopping:
 
