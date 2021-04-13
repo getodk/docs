@@ -273,8 +273,9 @@ A list of the optional columns that can be incorporated into a **survey** worksh
       | under the :th:`display.title` string token (under the
       | th:`display.text` column heading).
   * - hideInContents
-    - | Legal value is true. If true, then the prompt on the same row
+    - | Takes a JavaScript expression. If true, then the prompt on the same row
       | will not be displayed on the contents screen.
+      | If left blank, its default value is false.
   * - inputAttributes.<attr>
     - | This column can be used in conjunction with the following
       | prompt types: :tc:`string`, :tc:`text`, :tc:`integer`, :tc:`decimal`. The :code:`<attr>` can
