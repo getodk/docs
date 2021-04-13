@@ -1,6 +1,8 @@
 .. spelling::
   phpLDAPadmin
   readonly
+  ldapUrl
+  ldap
 
 .. _sync-endpoint-manual-setup:
 
@@ -154,13 +156,41 @@ Custom LDAP directory
       $ docker config create org.opendatakit.sync.ldapcert PATH_TO_CERT
 
     b. Uncomment the relevant lines in the *configs* section in :file:`docker-compose.yml` and the *configs* section under the *sync* section in :file:`docker-compose.yml`.
+       
+  3. Create a new directory in the sync-endpoint-default-setup directory and create a Docker file inside it.
+  4. Copy the :file:`bootstrap.ldif` file from the OpenLDAP directory to the new directory. In the Docker file Add the image of the LDAP Directory to be used 
+     and add the "COPY" command to copy the :file:`bootstrap.ldif` file to the right path in the container.
+  5. Run the following command to build the Docker image :
+    
+    .. code-block:: console
 
-  3. Remove the *ldap-service* and *phpldapadmin* sections in :file:`docker-compose.yml`.
-  4. Modify the relevant sections in :file:`security.properties` to match your LDAP directory. Further instructions are in the file.
+      $ docker build -t odk/[LDAP_DIRECTORY_NAME] [ Folder conatining the Docker file ]
 
-  .. note::
+  6. Replace the ldap-service image from :file:`docker-compose.yml` with odk/[LDAP_DIRECTORY_NAME].
+  7. In the sync-endpoint-default-setup directory navigate to config/sync-endpoint. Modify the :file:`security.properties` file to fill in the Settings for LDAP 
+     server. Set security.server.ldapUrl in security.properties to the new server url. The name of the service in Swarm would be same ( ldap-service ). So just 
+     change the port number. After this following settings need to be configured in the same file for the LDAP server:
 
-    The default configuration does not use ldaps or StartTLS because the LDAP directory communicates with the ODK-X Sync Endpoint over a secure overlay network. You should use ldaps or StartTLS to communicate with your LDAP directory.
+       - :guilabel:`security.server.ldapBaseDn`
+       - :guilabel:`security.server.ldapPooled`
+       - :guilabel:`security.server.userSearchBase`
+       - :guilabel:`security.server.groupSearchBase`
+       - :guilabel:`security.server.groupRoleAttribute`
+       - :guilabel:`security.server.userFullnameAttribute`
+       - :guilabel:`security.server.usernameAttribute`
+       - :guilabel:`security.server.userDnPattern`
+       - :guilabel:`security.server.memberOfGroupSearchFilter`
+       - :guilabel:`security.server.serverGroupSearchFilter`
+
+    .. note::
+
+      The LDAP Directory here is configured to run inside the Docker Swarm. If you are running the LDAP Directory outside the Docker Swarm and it is accessible 
+      for the containers inside the Docker Swarm, you can directly follow step 7 to configure it.
+
+    .. note::
+
+      The default configuration does not use ldaps or StartTLS because the LDAP directory communicates with the ODK-X Sync Endpoint over a secure overlay network. 
+      You should use ldaps or StartTLS to communicate with your LDAP directory.
 
   5. In the cloned repository:
 
