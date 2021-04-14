@@ -831,3 +831,19 @@ To update any app level or table level files, or to modify the database schema (
     .. warning::
 
       Resetting the app server will start a new data set. If you want to keep the old data, you should download it to a separate database.
+
+:th:`To update versions`: 
+
+You need to download the new `app designer <https://github.com/odk-x/app-designer/releases/latest>`_  , and delete the unneeded default files using
+
+.. code-block:: console
+
+  $ grunt empty
+
+Then copy over your entire :file:`config/assets` from your previous version to the new one. If you have customized anything in :th:`framework` you'll need to copy that too into the :file:`config/assets` of the new version, but in case ODK-X has also updated it, you'll need to manually merge both the copies. Finally, re-convert everything using 
+
+.. code-block:: console
+
+  $ grunt xlsx-convert-all 
+
+and your app designer should be set. You will also need to update software on Android devices and server to the same version as well.
