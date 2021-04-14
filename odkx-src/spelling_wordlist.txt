@@ -284,6 +284,7 @@ SVG
 svg
 synchronizer
 templating
+textarea
 timezones
 toolbar
 toolchain
