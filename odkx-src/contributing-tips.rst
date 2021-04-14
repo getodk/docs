@@ -74,11 +74,9 @@ If you have a question, ask. Don't guess.
 Claim issues
 --------------
 
-If you decide to work on an issue, let the community know you are working on it by *claiming* the issue.
+If you decide to work on an issue, let the community know you are working on it by asking to be *assigned* the issue.
 
-  @opendatakit-bot claim
-
-Once you've claimed an issue, other people won't work on it. So make sure you're actually going to work on it before claiming it.
+Once you've been assigned an issue, other people won't work on it. So make sure you're actually going to work on it before asking to be assigned to it.
 
 Don't claim more than one or two open issues at a time.
 
