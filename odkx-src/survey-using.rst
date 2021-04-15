@@ -112,7 +112,7 @@ Ordering Forms list
     :alt: Order by TableID
     :class: device-screen-vertical
 
- - Order by **Name**: The forms list will get ordered accordingto the Name
+ - Order by **Name**: The forms list will get ordered according to the Name
 
    .. image:: /img/survey-using/Name.*
     :alt: Order by Name
