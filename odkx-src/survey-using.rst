@@ -99,14 +99,14 @@ Completing the *Household Member Survey* subform returns us to the same screen w
 
 .. _survey-ordering-form:
 
-Ordering Forms list 
+Ordering Forms List 
 ---------------------
 
- All the forms listed on the homescreen can be ordered in two ways either by **TableID** or **Name**. Press the Action button (:guilabel:`⋮`) and select the :menuselection:`Sort by`.
+ All the forms listed on the home screen can be ordered in two ways either by **Table ID** or **Name**. Press the action button (:guilabel:`⋮`) and select the :menuselection:`Sort by`.
 
- The screen will show two options as :menuselection:`TableID` and :menuselection:`Name` as described below:
+ The screen will show two options as :menuselection:`Table ID` and :menuselection:`Name` as described below:
 
- - Order by **TableID**: The forms list will get ordered according to the TableID
+ - Order by **Table ID**: The forms list will get ordered according to the Table ID
 
    .. image:: /img/survey-using/TableID.*
     :alt: Order by TableID
