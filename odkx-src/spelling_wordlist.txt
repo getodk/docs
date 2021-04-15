@@ -123,6 +123,7 @@ hotspots
 html
 http
 https
+homescreen
 hyperlink
 Hyperlinks
 hyperlinks
