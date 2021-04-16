@@ -12,7 +12,7 @@ Using ODK-X Survey
 
 .. note::
 
-  ODK-X Survey only works on Android 4.2 and newer devices.
+  ODK-X Survey only works on Android 4.4 and newer devices.
 
 .. note::
 
