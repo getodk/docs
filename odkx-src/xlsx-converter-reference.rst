@@ -482,6 +482,16 @@ Available :th:`setting_name` values that can be used:
     - | Optional
     - | Used with :th:`display.prompt.text.<language>`, or
       | other fiels to set other language options in the form.
+  * - showHeader
+    - | Optional
+    - | Used to display the header at the top of every page of the form.
+      | Shows the form title in a navigation bar with Back and Next buttons.
+      | The form header is visible by default.
+  * - showFooter
+    - | Optional
+    - | Used to display a navigation bar at the bottom of 
+      | every page of the form. Similar to the header with Back
+      | and Next buttons. The form footer is hidden by default.
 
 A sample **settings** worksheet might look like this:
 
@@ -519,6 +529,11 @@ A sample **settings** worksheet might look like this:
     -
     - Hindi
     - Hindi (as Hindi name)
+  * - showFooter
+    - TRUE
+    -
+    - 
+    - 
 
 .. tip::
 
