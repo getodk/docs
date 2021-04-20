@@ -17,6 +17,8 @@
   hideInContents
   detailViewFileName
   len
+  showHeader
+  showFooter
 
 
 ODK-X XLSX Converter Reference
@@ -396,7 +398,7 @@ The following prompt types are available in ODK-X Survey.
     - | Used to enter the information in a big text area or paragraphs.
     
 .. note::
-   if users anticipates for writing anything longer than 255 characters then the user needs to change the model sheet and change the elementType column. It is shown in the datatypes XLSX, string variables' length can be adjusted from a default of 255 to other lengths with string(len). For example, if you had a string prompt named long_data that you wanted to be 500 characters, you would add the following to your model worksheet.To know more about :ref:`model <xlsx-ref-model>`
+   if users anticipates for writing anything longer than 255 characters then the user needs to change the model sheet and change the elementType column. It is shown in the datatypes XLSX, string variables' length can be adjusted from a default of 255 to other lengths with string(len). For example, if you had a string prompt named long_data that you wanted to be 500 characters, you would add the following to your model worksheet. To know more about :ref:`model <xlsx-ref-model>`
 
 .. list-table:: 
 
@@ -481,7 +483,17 @@ Available :th:`setting_name` values that can be used:
   * - <language>
     - | Optional
     - | Used with :th:`display.prompt.text.<language>`, or
-      | other fiels to set other language options in the form.
+      | other fields to set other language options in the form.
+  * - showHeader
+    - | Optional
+    - | Used to display the header at the top of every page of 
+      | the form. Shows the menu with the form title in a navigation bar 
+      | with :guilabel:`Back` and :guilabel:`Next` buttons. The form header is visible by default.
+  * - showFooter
+    - | Optional
+    - | Used to display a navigation bar at the bottom of 
+      | every page of the form. Similar to the header with :guilabel:`Back` 
+      | and :guilabel:`Next` buttons. The form footer is hidden by default.
 
 A sample **settings** worksheet might look like this:
 
@@ -519,6 +531,11 @@ A sample **settings** worksheet might look like this:
     -
     - Hindi
     - Hindi (as Hindi name)
+  * - showFooter
+    - TRUE
+    -
+    - 
+    - 
 
 .. tip::
 
