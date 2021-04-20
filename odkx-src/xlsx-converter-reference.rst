@@ -17,6 +17,8 @@
   hideInContents
   detailViewFileName
   len
+  showHeader
+  showFooter
 
 
 ODK-X XLSX Converter Reference
