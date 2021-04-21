@@ -63,9 +63,9 @@ Before you are able to synchronize data or application files to a device, you wi
 
     .. _services-login-with-qr:
 
-    Additionally the app also provides an easy and quick option to login with QR code
+   ODK-X Services also provides a quick and easy option to login with a QR code.
 
-      1. Click on the QR icon at the top right corner.
+      1. Click on the QR icon in the top right corner.
 
         .. image:: /img/services-managing/services-login-qr.* 
           :alt: Services login with QR code
@@ -76,7 +76,7 @@ Before you are able to synchronize data or application files to a device, you wi
 
       .. note::
 
-        Use web tab in the Application Designer to generate QR codes.
+        Use the web tab in the ODK-X Application Designer to generate QR codes.
 
   4. Authenticate user credentials
 
