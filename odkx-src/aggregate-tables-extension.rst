@@ -1,5 +1,7 @@
 ODK Aggregate Tables Extension
 =================================
+.. warning::
+    Aggregate is deprecated and no longer supported.
 
 .. _aggregate-tables-extension-intro:
 
