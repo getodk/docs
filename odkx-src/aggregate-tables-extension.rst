@@ -2,6 +2,7 @@ ODK Aggregate Tables Extension
 =================================
 .. warning::
     Aggregate is deprecated and no longer supported.
+
 .. _aggregate-tables-extension-intro:
 
 :dfn:`ODK Aggregate Tables Extensions` enable the ODK-X tools to share data via bi-directional synchronization with a central ODK Aggregate server. However, this approach is no longer supported, please migrate to :doc:`sync-endpoint`.
