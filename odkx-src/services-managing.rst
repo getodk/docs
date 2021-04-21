@@ -70,6 +70,7 @@ Before you are able to synchronize data or application files to a device, you wi
         .. image:: /img/services-managing/services-login-qr.* 
           :alt: Services login with QR code
           :class: device-screen-vertical
+          
       2. The app will ask for camera permissions. Click :guilabel:`Allow`.
       3. QR code scanner screen will appear. Scan a valid QR code.
 
