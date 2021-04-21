@@ -28,10 +28,14 @@ To access the sample application and its six sample forms:
 
     - Click on Server Sign-on Credential and change your authentication from  :guilabel:`None (anonymous access)` to :guilabel:`Username`. Then, click Username, and enter :menuselection:`demo_user1` in the space. Also change your server password to :menuselection:`password`. When you are done, your screen should look like this:
 
-  .. image:: /img/survey-sample-app/survey-demo-server-credential.*
-    :alt: Server Sign-on Credential
-    :class: device-screen-vertical
+      .. image:: /img/survey-sample-app/survey-demo-server-credential.*
+        :alt: Server Sign-on Credential
+        :class: device-screen-vertical
 
+      .. tip::
+
+        You can also :ref:`login by scanning a QR code.<services-login-with-qr>`
+          
   3. Back out and click :guilabel:`Authenticate New User` in the popup window. On the resulting page, press :guilabel:`Verify User Permissions` and click :guilabel:`OK` on the message stating that the verification was successful. Back out until you return to Survey.
 
   4. Press the Sync button as shown below.

@@ -28,6 +28,10 @@ We will use the ODK-X synchronization mechanism to install this app. It is about
 
     - Click on Server Sign-on Credential and change your authentication from  :guilabel:`None (anonymous access)` to :guilabel:`Username`. Then, click Username, and enter :menuselection:`demo_user1` in the space. Also change your server password to :menuselection:`password`.
 
+      .. tip::
+
+        You can also :ref:`login by scanning a QR code.<services-login-with-qr>`
+
   3. Back out until you return to Tables.
   4. Follow the :ref:`services-using-sync` instructions (see :ref:`launching from Tables <services-using-sync-launch-other>`).
 

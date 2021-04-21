@@ -61,6 +61,22 @@ Before you are able to synchronize data or application files to a device, you wi
 
       If you are using SSL, be sure to specify :code:`https://...`
 
+    .. _services-login-with-qr:
+
+    Additionally the app also provides an easy and quick option to login with QR code
+
+      1. Click on the QR icon at the top right corner.
+
+        .. image:: /img/services-managing/services-login-qr.* 
+          :alt: Services login with QR code
+          :class: device-screen-vertical
+      2. The app will ask for camera permissions. Click :guilabel:`Allow`.
+      3. QR code scanner screen will appear. Scan a valid QR code.
+
+      .. note::
+
+        Use web tab in the Application Designer to generate QR codes.
+
   4. Authenticate user credentials
 
     .. note::
