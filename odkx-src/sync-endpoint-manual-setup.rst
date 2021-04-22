@@ -98,8 +98,9 @@ Setup instructions:
 
     .. note::
 
-      It is important that the right side of the colon stays as 8080. This is the internal port that the web server is looking for.
+      It is important that the right side of the colon stays as 8080 or whatever port you are using (8080 is the default). This is the internal port that the web server is looking for.
       Any other services running on port:80 need to be stopped as it will prevent the server from running, for example: Apache2
+      Reminder that only one process can own a port at a time so if another process on the computer is using port 8080 there will be a conflict and sync-endpoint may not function correctly.
 
   12. If you're using your own *LDAP* directory or database, continue with the instructions:
 
