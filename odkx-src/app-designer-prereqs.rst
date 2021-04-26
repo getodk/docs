@@ -148,7 +148,7 @@ To install the Android SDK:
 
   .. note::
 
-    There no longer exists graphical tool for package management when using only the command line tools, although there is the sdkmanager CLI. You should install the full Android Studio, in which case you should follow `Google's <https://developer.android.com/studio/intro/update#sdk-manager>`_ instructions. Open the :program:`SDK Manager` from Android Studio, click :program:`Tools > SDK Manager` or click :program:`SDK Manager` in the toolbar. 
+    There no longer exists graphical tool for package management when using only the command line tools, although there is the sdk manager CLI. You should install the full Android Studio, in which case you should follow `Google's <https://developer.android.com/studio/intro/update#sdk-manager>`_ instructions. Open the :program:`SDK Manager` from Android Studio, click :program:`Tools > SDK Manager` or click :program:`SDK Manager` in the toolbar. 
 
 
   3. Within that section, download the appropriate zipped file(s) based on your operating system.
