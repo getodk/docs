@@ -43,7 +43,7 @@ You must install the following software on your computer in order to use Applica
 
 Java
 --------
-Make sure Java 8 or higher is installed on the computer you plan to use. If it is not, `download and install it <https://java.com/en/download/>`_. If you are using MacOSX, it may require special care and attention. See `MacOSX Java install <https://docs.oracle.com/javase/7/docs/webnotes/install/mac/mac-jdk.html>`_ and `MacOSX Java FAQ <https://docs.oracle.com/javase/7/docs/webnotes/install/mac/mac-install-faq.html>`_.
+Make sure Java 8 or higher is installed on the computer you plan to use. If it is not, `download and install it <https://java.com/en/download/>`_. If you are using MacOSX, it may require special care and attention. See `MacOSX Java install <https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jdk.html>`_ and `MacOSX Java FAQ <https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_install_faq.html>`_.
 
 .. _app-designer-prereqs-nodejs:
 
@@ -56,8 +56,13 @@ You must use Version 12 or higher. To avoid directory path problems on Windows, 
 For Windows
 ~~~~~~~~~~~~~~~
 
-When installing on Windows you can use an automated :program:`NodeJS` installer the uses :program:`Chocolatey`. If you chose not to let the installer use :program:`Chocolatey` to install a bunch of packages after installing :program:`NodeJS`, you will need to ensure the location of the :file:`npm` folder is added to the *PATH* variable of your system. If it is not, subsequent calls to access grunt will fail. For example: :file:`C:\\Users\\[username]\\AppData\\Roaming\\npm`.
-For instructions on modifying *PATH*, see the section at the bottom of this page called Add adb to your *PATH* For Windows. Instead of navigating to the location of Android SDK, navigate to the location of the :file:`npm` folder.
+When installing on Windows you can use an automated :program:`NodeJS` installer that uses :program:`Chocolatey`. If you chose not to let the installer use :program:`Chocolatey` to install a bunch of packages after installing :program:`NodeJS`, you will need to ensure the location of the :file:`npm` folder is added to the *PATH* variable of your system. If it is not, subsequent calls to access grunt will fail. For example: :file:`C:\\Users\\[username]\\AppData\\Roaming\\npm`.
+For instructions on modifying *PATH*, see the section at the bottom of this page called Add adb to your *PATH* For Windows. Instead of navigating to the location of Android SDK, navigate to the location of the :file:`npm` folder. You can check if npm has been installed properly by executing the following command in cmd or Powershell. 
+
+.. code-block:: console
+
+  $ npm --version
+  
 
 .. _app-designer-prereqs-nodejs-unix:
 
@@ -143,7 +148,7 @@ To install the Android SDK:
 
   .. note::
 
-    You can alternatively install the full Android Studio if you so wish, in which case you should follow `Google's <https://developer.android.com/studio/intro/update#sdk-manager>`_ instructions. Open the :program:`SDK Manager` from Android Studio, click :program:`Tools > SDK Manager` or click :program:`SDK Manager` in the toolbar. 
+    There no longer exists graphical tool for package management when using only the command line tools, although there is the sdkmanager CLI. You should install the full Android Studio, in which case you should follow `Google's <https://developer.android.com/studio/intro/update#sdk-manager>`_ instructions. Open the :program:`SDK Manager` from Android Studio, click :program:`Tools > SDK Manager` or click :program:`SDK Manager` in the toolbar. 
 
 
   3. Within that section, download the appropriate zipped file(s) based on your operating system.
