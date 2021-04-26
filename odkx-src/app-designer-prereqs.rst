@@ -57,7 +57,7 @@ For Windows
 ~~~~~~~~~~~~~~~
 
 When installing on Windows you can use an automated :program:`NodeJS` installer that uses :program:`Chocolatey`. If you chose not to let the installer use :program:`Chocolatey` to install a bunch of packages after installing :program:`NodeJS`, you will need to ensure the location of the :file:`npm` folder is added to the *PATH* variable of your system. If it is not, subsequent calls to access grunt will fail. For example: :file:`C:\\Users\\[username]\\AppData\\Roaming\\npm`.
-For instructions on modifying *PATH*, see the section at the bottom of this page called Add adb to your *PATH* For Windows. Instead of navigating to the location of Android SDK, navigate to the location of the :file:`npm` folder. You can check if npm has been installed properly by executing the following command in *cmd* or *Powershell*. 
+For instructions on modifying *PATH*, see the section at the bottom of this page called Add adb to your *PATH* For Windows. Instead of navigating to the location of Android SDK, navigate to the location of the :file:`npm` folder. You can check if npm has been installed properly by executing the following command in :program:`cmd` or :program:`PowerShell`. 
 
 .. code-block:: console
 
