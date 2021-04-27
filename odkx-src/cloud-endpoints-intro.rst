@@ -3,7 +3,7 @@ ODK-X Cloud Endpoints
 
 .. _cloud-endpoints-intro:
 
-:dfn:`ODK-X Cloud Endpoints` are servers that communicate with the ODK-X Android applications. They implement the `ODK-X REST Protocol <https://github.com/odk-x/odk-x/wiki/ODK-2.0-Synchronization-API-(RESTful)>`_.
+:dfn:`ODK-X Cloud Endpoints` are servers that communicate with the ODK-X Android applications. They implement the `ODK-X REST Protocol <https://docs.odk-x.org/odk-2-sync-protocol/>`_.
 
 There are currently two options for Cloud Endpoints to communicate with ODK-X tools.
 
