@@ -1,5 +1,10 @@
 .. spelling::
   ldap
+  phpLDAPadmin
+  readonly
+  dns
+  letsencrypt
+  subdomain
 
 
 
@@ -100,4 +105,9 @@ Creating a Sample User
     :width: 600
 
   .. image:: /img/setup-create-user/setup-user7.png
+    :width: 600
+    
+7. Navigate to http://[IP_ADDRESS]/web-ui/login in order to access the login screen.
+
+  .. image:: /img/setup-create-user/setup-user8.png
     :width: 600
