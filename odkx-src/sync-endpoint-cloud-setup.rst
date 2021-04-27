@@ -561,9 +561,6 @@ Launching the ODK-X Server
   .. image:: /img/setup-azure/azure11.png
    :width: 600
 
-  Once a user has been created in the admin interface, this is the login screen that the user will use to log in and access their data.
-
-
   .. note::
     If you are unable to log in, you may need to take the docker stack down and bring it back up again. That can be done with the following commands below:
 
