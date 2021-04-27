@@ -561,14 +561,14 @@ Launching the ODK-X Server
   .. image:: /img/setup-azure/azure11.png
    :width: 600
 
-  .. note::
+.. note::
     If you are unable to log in, you may need to take the docker stack down and bring it back up again. That can be done with the following commands below:
 
-  .. code-block:: console
+.. code-block:: console
 
     $ docker stack rm syncldap
 
-  .. code-block:: console
+.. code-block:: console
 
     $ docker stack deploy -c /root/sync-endpoint-default-setup/docker-compose.yml syncldap
 
