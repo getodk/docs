@@ -12,19 +12,19 @@ Please [file an issue](https://github.com/odk-x/tool-suite-X/issues) if you can'
 
 ## Building and viewing documentation locally
 
-There are two options for building and viewing ODK-X docs locally: [using Docker](#docker) or [setting up a local Python/Sphinx environment](#python-environment). We generally recommend starting with the Docker image unless you already have a Sphinx environment set up. The [Contributor Guide](https://docs.odk-x.org/contributing) describes the philosophy behind the docs, style considerations, how to write restructured text and more.
+There are two options for building and viewing ODK-X docs locally: [using Docker](#docker) or [setting up a local Python/Sphinx environment](#python-environment). We generally recommend starting with the Docker image unless you already have a Sphinx environment set up. The [Contributor Guide](https://docs.odk-x.org/contributing) describes the philosophy behind the docs, style considerations, how to write restructured text, and more.
 
 There are two options to build ODK-X documents 
 
 * [Docker Hosted Build Environment](#docker)
 * [Python Build Environment](#python-environment)
 
-The Docker environment is recommended because of fewer setup steps required and less environmental variable paths that need to be set.
+The Docker environment is recommended because of the fewer setup steps required and less environmental variable paths that need to be set.
 
 ------------------------------------------
-## <a name="docker"></a>Using Docker Hosted Build  Enviornment
+## <a name="docker"></a>Using Docker Hosted Build  Environment
 
-[Docker](https://www.docker.com/) is a platform that makes it easier to package applications so that they can work on any computer. This is particularly valuable when setting up development environments which can work very differently based on versions of the tools involved.
+[Docker](https://www.docker.com/) is a platform that makes it easier to package applications so that they can work on any computer. This is particularly valuable when setting up development environments that can work very differently based on versions of the tools involved.
 
 ### Prerequisites
  * Install Docker
@@ -90,7 +90,7 @@ You can also use the `run-task` script described above to run just a portion of 
 
 -----------------------------
 
-## <a name="python-environment"></a>Python environment
+## <a name="python-environment"></a>Python Environment
 
 ### Prerequisites
 
@@ -110,7 +110,7 @@ After installing, you should verify that Python was successfully installed and i
  
 The system should return something like "Python 3.X.X" where X is the other version numbers of your install.
 
-[Here is a website](https://datatofish.com/add-python-to-windows-path/) that explains how to setup Python to be on the Window's PATH. 
+[Here is a website](https://datatofish.com/add-python-to-windows-path/) that explains how to set up Python to be on the Window's PATH. 
  
 ### (Optional) Setup Python Virtual Environment 
 We recommend you use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/) or a Python version management like [pyenv](https://github.com/pyenv/pyenv) to avoid conflicts with packages. This section can be skipped if you do not have multiple Python projects using pip (package installer for Python). 
@@ -125,13 +125,13 @@ We recommend you use a virtual environment like [virtualenv](https://virtualenv.
       .. _virtual environment: https://docs.python.org/3/tutorial/venv.html
 
 	  #. Create a directory called 'odkx'
-		  Create a directory for the documents. For the purposes of these directions we will use the folder 'odkx' as the directory that will contain the ODK-X Docs environment.
+		  Create a directory for the documents. We will use the folder 'odkx' as the directory that will contain the ODK-X Docs environment.
 
 
 			mkdir odkx
 
 
-		  Next, navigate the command line interface to inside the directory.
+		  Next, change the current working directory to 'odkx'
 
 
 			cd odkx
@@ -141,7 +141,7 @@ We recommend you use a virtual environment like [virtualenv](https://virtualenv.
 
 
 
-		Next create the virtual environment inside the 'odkx' directory.
+		Next, create the virtual environment.
 
 			Bash
 
@@ -216,7 +216,7 @@ You can also use `make` to run just a portion of the build process. See availabl
 
 ## How to contribute?
 
-We are open for new issues and pull requests.
+We are open to new issues and pull requests.
 
  - Please read the [Contributors Guide](https://docs.odk-x.org/contributing) before working on the documentation.
  - Find issues to work on.

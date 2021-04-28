@@ -32,7 +32,7 @@ Installing ODK-X Suitcase
 
   1. Navigate to https://github.com/odk-x/suitcase/releases/latest and download the latest :file:`ODK-X Suitcase.jar` file.
 
-  2. ODX-X Suitcase requires no installation and is ready to use.
+  2. ODK-X Suitcase requires no installation and is ready to use.
 
 Using ODK-X Suitcase
 ------------------------------

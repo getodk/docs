@@ -53,7 +53,7 @@ Installing Services
 
 .. tip::
 
-  You can also `install ODK-X Services on an Android emulator <https://github.com/odk-x/odk-x/wiki/DevEnv-Setup>`_. However, this can be slow and is only recommended for developers actively working on Services.
+  You can also `install ODK-X Services on an Android emulator <https://github.com/odk-x/tool-suite-X/wiki/Developer-Environment-Setup>`_. However, this can be slow and is only recommended for developers actively working on Services.
 
 .. _survey-install:
 
@@ -79,7 +79,7 @@ Installing the ODK-X Survey App
 
 .. tip::
 
-  You can also `install ODK-X Survey on an Android emulator <https://github.com/odk-x/odk-x/wiki/DevEnv-Setup>`_. However, this can be slow and is only recommended for developers actively working on Survey.
+  You can also `install ODK-X Survey on an Android emulator <https://github.com/odk-x/tool-suite-X/wiki/Developer-Environment-Setup>`_. However, this can be slow and is only recommended for developers actively working on Survey.
 
 
 .. _tables-install:
@@ -107,4 +107,4 @@ Installing the ODK-X Tables App
 
 .. tip::
 
-  You can also `install ODK-X Tables on an Android emulator <https://github.com/odk-x/odk-x/wiki/DevEnv-Setup>`_. However, this can be slow and is only recommended for developers actively working on Tables.
+  You can also `install ODK-X Tables on an Android emulator <https://github.com/odk-x/tool-suite-X/wiki/Developer-Environment-Setup>`_. However, this can be slow and is only recommended for developers actively working on Tables.

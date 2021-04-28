@@ -80,6 +80,7 @@ downloadable
 downloadSubmission
 dropdown
 dropdowns
+elementType
 enketo
 Enketo
 esthete
@@ -283,6 +284,7 @@ SVG
 svg
 synchronizer
 templating
+textarea
 timezones
 toolbar
 toolchain
@@ -346,6 +348,7 @@ xforms
 XForms
 Xforms
 xls
+xlsx
 xlsform
 Xlsform
 XLSForm
