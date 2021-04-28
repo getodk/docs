@@ -792,6 +792,12 @@ Useful Grunt Commands
 
 :guilabel:`grunt uninstall` : Uninstall ODK-X tools from the connected device.
 
+:guilabel:`grunt adbpull` : Perform all the adbpull tasks.
+
+:guilabel:`grunt adbpush` : Perform all the adbpush tasks.
+
+:guilabel:`grunt adbpull-logs` : Pull any logs stored in the device for debugging purposes.
+
 
 Troubleshooting
 ~~~~~~~~~~~~~~~~~~~~
