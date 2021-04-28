@@ -550,7 +550,6 @@ Connecting to your virtual machine
 
 9. After going through the instructions for *Creating a Sample User,* we no longer need access to this admin interface anymore. This admin interface is running on port 40000, and in order to ensure that this admin interface is not publicly accessible to anyone, we want to remove the rule that accepts incoming traffic to that port. We do this the same way we added the rules above.
 
-
 .. _sync-endpoint-setup-aws-launch:
 
 Launching the ODK-X Server
