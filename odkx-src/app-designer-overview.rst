@@ -89,9 +89,9 @@ See :doc:`scan-form-designer-intro` documentation for more information about thi
 
 ODK-X QR Code Generator
 --------------------------
-The :guilabel:`QR Code Generator` tab contains the QR Code Generator, a tool that generates a QR Code to log into the synced Server . The Server URL, username and password details are entered into their specified input fields, then a QR Code is generated. 
+The :guilabel:`QR Code Generator` tab contains the QR Code Generator, a tool that generates a QR Code to log into the synced server. The server URL, username and password details are entered into their specified input fields, then a QR Code is generated. 
 
-When the QR Code is scanned, it automatically populates the server URL, username and password in ODK-X Services. It provides a quick and easy option to log in to the Server.
+When the QR Code is scanned, it automatically populates the server URL, username and password in ODK-X Services. It provides a quick and easy option to log in to the server.
 
 .. image:: /img/app-designer-overview/qr-code-generator.*
   :alt: The QR Code Generator tab in the ODK-X Application Designer
