@@ -2,7 +2,7 @@ Administering Aggregate
 ===========================
 
 .. warning::
-  Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
+  ODK Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
 
 Click the :guilabel:`Log In` link in the upper right corner of the screen to be presented with the Log onto Aggregate screen. Choose the :guilabel:`Sign in with Aggregate password` button and enter the super-user username you specified within the installer. The initial password for this account is `aggregate`. When you log in, :guilabel:`Site Admin` will be visible to you.
 

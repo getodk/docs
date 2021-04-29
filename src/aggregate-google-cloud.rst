@@ -7,7 +7,7 @@ Installing on Google Cloud
 ==========================
 
 .. warning::
-  Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
+  ODK Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
 
 .. warning::
 

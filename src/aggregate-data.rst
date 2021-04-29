@@ -2,7 +2,7 @@ Working with Submitted Data in Aggregate
 =========================================
 
 .. warning::
-  Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
+  ODK Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
 
 You can view the data submitted from ODK Collect here. You can filter the submissions, visualize them using pie chart, bar graph or map, export the submissions into useful formats and publish the submitted data into another service. You can also view all the exported submissions. ODK Aggregate provides all these options under the :guilabel:`Submissions` tab.
 

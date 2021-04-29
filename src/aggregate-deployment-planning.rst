@@ -3,7 +3,7 @@ Planning Your Aggregate Deployment
 ***********************************
 
 .. warning::
-  Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
+  ODK Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
 
 ODK Aggregate can be deployed to :doc:`any local or cloud server that runs Tomcat, Java8, and PostgreSQL <aggregate-tomcat>` (MySQL is supported too).
 

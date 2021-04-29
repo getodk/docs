@@ -6,7 +6,7 @@ Google App Engine Support (Legacy)
 ==================================
 
 .. warning::
-  Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
+  ODK Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
 
 .. warning::
 
