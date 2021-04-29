@@ -550,7 +550,6 @@ Connecting to your virtual machine
 
 9. After going through the instructions for *Creating a Sample User,* we no longer need access to this admin interface anymore. This admin interface is running on port 40000, and in order to ensure that this admin interface is not publicly accessible to anyone, we want to remove the rule that accepts incoming traffic to that port. We do this the same way we added the rules above.
 
-
 .. _sync-endpoint-setup-aws-launch:
 
 Launching the ODK-X Server
@@ -561,63 +560,14 @@ Launching the ODK-X Server
   .. image:: /img/setup-azure/azure11.png
    :width: 600
 
-  Once a user has been created in the admin interface, this is the login screen that the user will use to log in and access their data.
-
-.. _sync-endpoint-setup-create-user:
-
-Creating a Sample User
-----------------------
-
-| 1. Start by logging into the ldap-service. Copy the login below.
-|   - login DN: :guilabel:`cn=admin,dc=example,dc=org`
-|   - password: :guilabel:`admin`
-
-    .. image:: /img/setup-create-user/setup-user1.png
-      :width: 600
-
-2. Click the :guilabel:`+` sign next to **dc=example, dc=org** to expand it. Within the unfolded menu, in the **ou=people** section, click on :guilabel:`Create a child entry` (new person).
-
-  .. image:: /img/setup-create-user/setup-user2.png
-    :width: 600
-
-3. Then, select the :guilabel:`Generic: User Account` template.
-
-  .. image:: /img/setup-create-user/setup-user3.png
-    :width: 600
-
-4. Fill out information for the new user and “create object.” Assign it to the *default_prefix_synchronize_tables* group. Will need to commit (confirm) that you want to create this entry on the next screen.
-
-  .. image:: /img/setup-create-user/setup-user4.png
-    :width: 600
-
-  We have now created the user! We just need to add the user to the respective group from the group settings.
-
-5. Click the :guilabel:`+` sign next **ou=groups** to expand it. Within the unfolded menu, in the **ou=default_prefix** section, click on :guilabel:`gidNumber=503`, which is the group ID that corresponds to *default_prefix_synchronize_tables*. Groups correspond to the access permissions available to a certain user.
-
-  .. image:: /img/setup-create-user/setup-user5.png
-    :width: 600
-
-6. Click on :guilabel:`Add new attribute` which should show a pull-down menu and then select :guilabel:`memberUid`. Enter the `memberUid` of the user you just created, and then update the object.
-
-  .. image:: /img/setup-create-user/setup-user6.png
-    :width: 600
-
-  .. image:: /img/setup-create-user/setup-user7.png
-    :width: 600
-
-7. Navigate to http://[IP_ADDRESS]/web-ui/login in order to access the login screen.
-
-  .. image:: /img/setup-create-user/setup-user8.png
-    :width: 600
-
-  .. note::
+.. note::
     If you are unable to log in, you may need to take the docker stack down and bring it back up again. That can be done with the following commands below:
 
-  .. code-block:: console
+.. code-block:: console
 
     $ docker stack rm syncldap
 
-  .. code-block:: console
+.. code-block:: console
 
     $ docker stack deploy -c /root/sync-endpoint-default-setup/docker-compose.yml syncldap
 
