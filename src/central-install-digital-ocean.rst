@@ -65,7 +65,7 @@ For the rest of us, there are some options here:
  - You can pay one of the many popular commercial domain registrars for a full domain name, like ``MyOdkCollectionServer.com``. Search for "domain registrar" to find one of these. These often cost as little as $3/year.
  - You can use a free DNS service: we recommend `FreeDNS <https://freedns.afraid.org/>`_, which has run for a long time and has a good reputation. With it, you can get a free name, albeit with a fixed second half (like ``MyOdkCollectionServer.dynet.com``). If you choose this route, we recommend using one of the *less popular* names, as the heavily occupied names can run into trouble later on (in particular, getting a security certificate from Let's Encrypt).
 
-Whichever option you choose, once you getting a domain name you'll want to look at `DigitalOcean's guide <https://www.digitalocean.com/docs/networking/dns>`_ on setting up domain names for your Droplet. In general, you'll point your domain name in DigitalOcean's direction at your registrar, then in DigitalOcean itself you'll want to create an A record that points to the IP address we found above.
+Whichever option you choose, once you get a domain name you'll want to look at `DigitalOcean's guide <https://www.digitalocean.com/docs/networking/dns>`_ on setting up domain names for your Droplet. In general, you'll point your domain name in DigitalOcean's direction at your registrar, then in DigitalOcean itself you'll want to create an A record that points to the IP address we found above.
 
 New domain names take a little bit to get working. Meanwhile, we can get working on installing the server software.
 
@@ -110,11 +110,13 @@ Now you'll need to download the software. In the server window, type ``git clone
 
 You now have the framework of the server software, but some components are missing. Type ``git submodule update -i`` and press **Enter** to download them.
 
-Next, you need to update some settings. Type ``nano .env`` and press **Enter**. This will launch a text editing application.
+Next, you need to update some settings. First, copy the settings template file so you can edit it: type ``mv .env.template .env`` and press **Enter**.
 
- - Change the ``SSL_TYPE`` line to read: ``SSL_TYPE=letsencrypt``. This instructs the server to attempt to obtain a security certificate from the free Let's Encrypt provider.
+Then, edit the file by typing ``nano .env`` and pressing **Enter**. This will launch a text editing application. 
+
  - Change the ``DOMAIN`` line so that after the ``=`` is the domain name you registered above. As an example: ``DOMAIN=MyOdkCollectionServer.com``. Do not include anything like ``http://``.
  - Change the ``SYSADMIN_EMAIL`` line so that after the ``=`` is your own email address. The Let's Encrypt service will use this address only to notify you if something is wrong with your security certificate.
+ - Leave the rest of the settings alone. If you have a custom security or network environment you are trying to integrate Central into, see the advanced configuration sections for more information on these options.
  - Hold ``Ctrl`` and press ``x`` to quit the text editor. Press ``y`` to indicate that you want to save the file, and then press **Enter** to confirm the file name. Do not change the file name.
 
    .. image:: /img/central-install/nano.png
