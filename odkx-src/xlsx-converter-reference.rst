@@ -409,6 +409,26 @@ The following prompt types are available in ODK-X Survey.
     - | string 
     - | string(500) 
 
+.. _xlsx-ref-text-formatting-options:
+
+Text formatting options in Survey
+"""""""""""""""""""""""""""""
+
+To format text in Survey you need to make changes to the :guilabel:`display.promt.text` column in the :file:`.xlsx` file. Some commonly used options are:
+
+Bold: You can bold text by using the container tag <b>. For example: :guilabel:`<b>Bold</b>`
+
+Italics: You can italicize text by using the container tag <i>. For example: :guilabel:`<i>Italic</i>`
+
+HEADING: You can format text as a heading using the heading container tag. For example: :guilabel:`<h3>HEADING</h3>` Please note that this is similar to HTML so the size of the heading as specified here as 3 can be edited as per your convenience.
+
+Underline: You can underline text using the container tag <u>. For example: :guilabel:`<u>Underline</u>`
+
+Color: You can add colors to your text by using the container tag span. For example: :guilabel:`<span style="color:red;">Color</span>`
+
+You can also create a line break using the empty tag :guilabel:`<br>`
+
+
 .. _xlsx-ref-settings:
 
 Settings
