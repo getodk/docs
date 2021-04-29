@@ -264,22 +264,6 @@ Basic instructions for designing Survey forms are provided in the :ref:`build-ap
 
 Survey forms are created in :program:`Excel` and saved as :file:`.xlsx` files. These are converted into form definitions using the :doc:`xlsx-converter-intro`. The linked guide should help you create and modify the files to create your own forms.
 
-**Some text formatting options in Survey:**
-
-To format text in Survey you need to make changes to the :guilabel:`display.promt.text` column in the :file:`.xlsx` file. Some commonly used options are:
-
-Bold: You can bold a text by using the container tag <b>. For example: :guilabel:`<b>Bold</b>`
-
-Italic: You can italicize a text by using the container tag <i>. For example: :guilabel:`<i>Italic</i>`
-
-HEADING: You can make a text as heading using the heading container tag. For example: :guilabel:`<h3>HEADING</h3>` Please note that this is similar to HTML so the size of the heading as specified here as 3 can be edited as per your convenience.
-
-Underline: You can underline a text using the container tag <u>. For example: :guilabel:`<u>Underline</u>`
-
-Color: You can add colors to you text by using the container tag span. For example: :guilabel:`<span style="color:red;">Color</span>`
-
-You can also create a line break using the empty tag :guilabel:`<br>`
-
 .. _survey-xlsx-reference:
 
 Full XLSX Reference
