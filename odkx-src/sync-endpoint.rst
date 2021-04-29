@@ -96,55 +96,6 @@ The following guides assume that you're using :program:`phpLDAPadmin`. In order 
 
 Recommended :ref:`Creating a Sample User <sync-endpoint-setup-create-user>` tutorial with images.
 
-.. _sync-endpoint-ldap-users:
-
-Creating users
-"""""""""""""""""""""""""
-
-  1. Click: :guilabel:`login` on the left and login as *admin*.
-  2. Expand the tree view on the left until you see :guilabel:`ou=people`.
-  3. Click on :guilabel:`ou=people` and choose :guilabel:`Create a child entry`.
-  4. Choose the :guilabel:`Generic: User Account` template.
-  5. Fill out the form and click :guilabel:`Create Object`.
-  6. Assign users to groups with :ref:`these instructions <sync-endpoint-ldap-assign>`.
-
-.. _sync-endpoint-ldap-groups:
-
-Creating groups
-"""""""""""""""""""""""""
-
-  1. Click: :guilabel:`login` on the left and login as *admin*.
-  2. Expand the tree view on the left until you see :guilabel:`ou=groups`.
-  3. Click on :guilabel:`ou=default_prefix` and choose :guilabel:`Create a child entry`.
-  4. Choose the :guilabel:`Generic: Posix Group` template.
-  5. Fill out the form and click :guilabel:`Create Object`.
-
-  .. note::
-
-    The group name must start with the group prefix, in this case the group prefix is *default_prefix* so for example: *default_prefix my-new-group*
-
-  6. Assign users to groups with :ref:`these instructions <sync-endpoint-ldap-assign>`.
-
-.. _sync-endpoint-ldap-assign:
-
-Assigning users to groups
-"""""""""""""""""""""""""
-
-  1. Click: :guilabel:`login` on the right and login as *admin*.
-  2. Expand the tree view on the right until you see :guilabel:`ou=default_prefix`, then expand :guilabel:`ou=default_prefix`.
-  3. This list is all the groups under *ou=default_prefix*.
-  4. Click on the group that you want to assign users to.
-  5. A few groups are created when the LDAP server is brought up, refer to :doc:`data-permission-filters` for descriptions of these groups.
-  6. If the :guilabel:`memberUid` section is not present:
-
-      a. Choose :guilabel:`Add new attribute`.
-      b. Choose :guilabel:`memberUid` from the dropdown, then enter :guilabel:`uid` of the user you want to assign.
-      c. Click :guilabel:`Update Object` at the bottom to update.
-
-  7. If the :guilabel:`memberUid` section is present,
-
-    a. Navigate to the :guilabel:`memberUid` section.
-    b. Click modify group members to manage members.
 
 .. _sync-endpoint-advanced:
 
