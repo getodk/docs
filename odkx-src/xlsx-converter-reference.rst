@@ -412,7 +412,7 @@ The following prompt types are available in ODK-X Survey.
 .. _xlsx-ref-text-formatting-options:
 
 Text formatting options in Survey
-"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
 
 To format text in Survey you need to make changes to the :guilabel:`display.promt.text` column in the :file:`.xlsx` file. Some commonly used options are:
 
