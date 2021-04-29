@@ -272,7 +272,7 @@ Bold: You can bold a text by using the container tag <b>. For example: :guilabel
 
 Italic: You can italicize a text by using the container tag <i>. For example: :guilabel:`<i>Italic</i>`
 
-HEADING: You can make a text as heading using the heading container tag. For exaxmple: :guilabel:`<h3>HEADING</h3>` Please note that this is similar to HTML so the size of the heading as specified here as 3 can be edited as per your convenience.
+HEADING: You can make a text as heading using the heading container tag. For example: :guilabel:`<h3>HEADING</h3>` Please note that this is similar to HTML so the size of the heading as specified here as 3 can be edited as per your convenience.
 
 Underline: You can underline a text using the container tag <u>. For example: :guilabel:`<u>Underline</u>`
 
