@@ -2,7 +2,7 @@ Aggregate Limitations
 ========================
 
 .. warning::
-  Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
+  ODK Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
 
 This is a listing of known limitations and potential "gotchas" users of Aggregate may encounter.
 

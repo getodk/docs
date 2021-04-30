@@ -136,8 +136,6 @@ We require secure HTTPS connections to XLSForm Online. We gather aggregate user 
 
 XLSForm Online stores both your submitted XLS and the generated XML form for a period of time on its disk drive before being deleted. This is necessary for the operation of the tool.
 
-XLSForm Offline operates locally without any network communications and provides a secure alternative to the convenience of XLSForm Online.
-
 
 Cross-tool Concerns
 -------------------

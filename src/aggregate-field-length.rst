@@ -6,7 +6,7 @@ Increasing Aggregate Field Length
 ====================================
 
 .. warning::
-  Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
+  ODK Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
 
 By default, Aggregate's datastore layer limits text values to 255 characters or less. If a submission includes a value longer than 255 characters, those additional characters **are not saved in the database** and no warning is shown. That means there is a risk of data loss when using question types that save long text values such as :ref:`geotrace <geotrace-widget>`, :ref:`geoshape <geoshape-widget>` or :ref:`select multiple <multi-select-widget>`. This limitation exists for performance reasons, particularly for older versions of MySQL.
 

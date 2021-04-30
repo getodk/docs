@@ -6,7 +6,7 @@ Getting Data Out of Aggregate
 ================================
 
 .. warning::
-  Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
+  ODK Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
 
 ODK Aggregate supports three primary mechanisms for data transfer:
 

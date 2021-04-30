@@ -2,7 +2,7 @@ Getting Help in Aggregate
 =============================
 
 .. warning::
-  Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
+  ODK Aggregate is no longer being updated. Please use :doc:`ODK Central <central-intro>` instead.
 
 Aggregate provides three kinds of help accessible by pressing one of three buttons in the upper righthand corner.
 

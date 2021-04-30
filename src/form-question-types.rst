@@ -1073,7 +1073,7 @@ Randomizing choice order
 
 .. note::
 
-  Randomizing choice order support was added in Collect v1.18.2 and Aggregate v1.7.1. Form conversion requires XLSForm Online ≥ v1.2.2, XLSForm Offline ≥ v1.7.1, or pyxform ≥ v0.11.6.
+  Randomizing choice order support was added in Collect v1.18.2 and Aggregate v1.7.1. Form conversion requires XLSForm Online ≥ v1.2.2 or pyxform ≥ v0.11.6.
 
 To reduce bias, choice order can be randomized for any of the select question types described above. To display the choices in a different order each time the question is displayed, set **randomize** to **true** in the :th:`parameters` column of the XLSForm **survey** sheet:
 
@@ -2480,7 +2480,7 @@ Geolocation at survey start
   :ref:`Audit log geolocation tracking <audit-geolocation-tracking>`
 
 .. note::
-  Geolocation at survey start was added in Collect v1.23 and Aggregate v2.0.4/v1.7.4. Form conversion requires XLSForm Online ≥ v1.6.1, XLSForm Offline ≥ v1.11.1 or pyxform ≥ v0.15.1.
+  Geolocation at survey start was added in Collect v1.23 and Aggregate v2.0.4/v1.7.4. Form conversion requires XLSForm Online ≥ v1.6.1 or pyxform ≥ v0.15.1.
 
 The :tc:`start-geopoint` question type is used to capture a single geolocation in :ref:`geopoint format <location-widgets>` when the survey is first started. Questions of type :tc:`start-geopoint` may be given any allowable name. Although it is possible to have more than one :tc:`start-geopoint` question in a form, all will have the same value.
 
