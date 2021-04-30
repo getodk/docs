@@ -17,27 +17,29 @@ Here are some of the major features we support today:
  - User accounts and management
  - Role-based user permissioning
  - Projects to organize users, permissions, and forms
- - Form and submission upload and management
+ - Form upload and management
 
    - With support for form version updates
    - With drafts and testing on initial creation, and on version updates
-   - With form and submission multimedia or data attachments
-   - With a table preview of submission data
+   - With form multimedia or data attachments
    - Encrypted forms (self-supplied or project managed keys)
-   - OData live data feed for analysis with tools like Excel and Power BI
 
- - Form filling directly in the web browser using `Enketo <https://enketo.org>`_
+ - Submission upload and management
+
+   - From any compliant data collection client,
+   - Or directly from a web browser using `Enketo <https://enketo.org>`_ technology
+   - From permissions-managed known users or anonymous public links
+   - With submission multimedia or data attachments
+   - With an interactive table preview of submission data
+   - OData live data feed for analysis with tools like Excel and Power BI
+   - Support for reviewing, commenting on, and editing submissions after upload
+
  - Integrated checklist-based help system
  - Optional encrypted off-site data backups to Google Drive
  - Clean and modern REST API for integration and extensibility
  - High performance on low-cost hardware or cloud providers
  - ODK Briefcase-compatible data output
  - ODK Briefcase push/pull support
-
-Here are some (but not all) key features we **do not yet** support:
-
- - Customizable user roles
- - Submission edits
 
 Central is in active development. We have a lot of exciting ideas for its future and we look forward to hearing yours as well. See `What is coming in Central <https://forum.getodk.org/t/whats-coming-in-central-over-the-next-few-years/19677>`_ for more on future direction.
 

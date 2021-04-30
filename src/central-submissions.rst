@@ -80,16 +80,18 @@ To find the Form submissions page, first find the form in the Form listings page
 
 The table preview you see here will at first show you the first ten fields of your survey and their results, with the latest submissions shown closest to the top. Any downloadable files will appear with a green download link you can use to directly download that media attachment. The submission's instance ID will always be shown at the right side of this preview table.
 
-If your form has more than ten fields, you can show more columns by accessing the :guilabel:`Columns shown` dropdown and checking the columns you wish to see. While the Columns shown pane is open, you can use the search box or your browser's search feature (usually Ctrl+F or Cmd+F) to search for particular column name if you have many.
+If your form has more than ten fields, you can show more columns by accessing the :guilabel:`Columns shown` dropdown and checking the columns you wish to see. While the Columns shown pane is open, you can use the search box along its top to search for a particular column name if you have many.
 
-You can limit the rows that appear by the submission author and the date. These filter controls are available just above the submission table.
+In the :guilabel:`State and actions` column, you will see the current review state of each submission and the number of edits that have been made, if any. If a submission is missing expected media uploads, you will see a warning here. When you hover over a row (or **tab** to it with your keyboard) you will see controls in this column to edit the submission, or see more details about it. You can read more about :ref:`review states <central-submissions-review-states>` and the :ref:`submission detail page <central-submissions-details>` below.
 
-It is not yet possible to screen or delete submissions for quality or edit submission data. These features are planned for future releases. For now, you will need to pull your data out of Central before you can work with it. Right now, you can do this in one of two ways:
+You can limit the rows that appear by the submission author, the date, and the review status. These filter controls are available just above the submission table.
+
+Any filter you apply to the submission table also applies to the download button. To work with your data, you can download it from Central. Right now, you can do this in one of two ways:
 
 1. The **CSV Download** option will get you a :file:`.zip` file containing one or more :file:`.csv` tables, along with any multimedia submitted to the form. This is a good option if you already have custom tools you wish to use, or you want to import it into an offline analysis tool like SPSS or Stata.
 2. The **OData connector** allows you connect a live representation of the data to OData-capable tools like Microsoft Excel, Microsoft Power BI, Tableau, SAP, and others. This option has some advantages: the data is transferred more richly to maintain more data format information, and the feed is always live, meaning any analysis or reports you perform in your tool over an OData connection can be easily refreshed as more submissions come in.
 
-When the table has been filtered by submission author or date, that filter also applies to the downloads. This makes it possible to download partial sections of your data at once.
+When the rows of the table have been filtered in any way, that filter also applies to the downloads. This makes it possible to download partial sections of your data at once.
 
 Learn more about these options below:
 
@@ -102,7 +104,9 @@ To download all submission data as a :file:`.zip` of :file:`.csv` tables, click 
 
    .. image:: /img/central-submissions/download-button.png
 
-Once it completes downloading, you will find one or more files when you extract it:
+If you have any row filters applied to the submission table, those filters will be applied to your download as well. You can use this to, for example, download only submissions from a particular month, or only approved submissions.
+
+Once the archive completes downloading, you will find one or more files when you extract it:
 
  - A root table :file:`.csv` named after your Form title.
  - Join table :file:`.csv` files representing any repeats you may have in your form, with join columns on the left of each table relating each row to its counterpart in the parent table. Each join table is named to reflect its relationship with the others. If there is only one :file:`.csv` file, then your form has no repeats.
@@ -142,4 +146,53 @@ To connect with Excel or Power BI, follow these steps.
   See `Import external data into Excel <https://support.office.com/en-us/article/connect-to-an-odata-feed-power-query-4441a94d-9392-488a-a6a9-739b6d2ad500>`_ and `OData feeds in Power BI <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`_ for more information.
 
 If you want to use the free and popular `R statistics and analysis tool <https://www.r-project.org/>`_, we recommend you use `ruODK <https://docs.ropensci.org/ruODK/>`_. A guide for getting started with it can be found `here <https://docs.ropensci.org/ruODK/articles/odata-api.html>`_. ruODK is developed and supported by community members. If you wish to help improve it, you can find information `on GitHub <https://docs.ropensci.org/ruODK/CONTRIBUTING.html>`_.
+
+.. tip::
+  If you are having trouble getting Power BI to connect to Central, and especially if you see error messages about permissions or authentication, try `resetting the Power BI cached credentials <https://community.powerbi.com/t5/Power-Query/Power-BI-Web-cached-credentials-For-OData/m-p/126826/highlight/true#M8228>`_.
+
+You can also access the OData feed yourself. The OData feed is an easily consumable JSON data format and offers a metadata schema, some filtering and paging options, and more. To learn more about the OData feed, click the :guilabel:`API Access` button or see the `developer documentation <https://odkcentral.docs.apiary.io/#reference/odata-endpoints>`_ directly.
+
+.. _central-submissions-review-states:
+
+Submission Review States
+------------------------
+
+As of version 1.2, Central allows Project Managers and Administrators to review submissions and assign them certain states. This optional feature lets you perform verification and data correction within Central itself. The available states are:
+
++------------+-------------+-----------------------------------------------------------------------------------+
+| State      | Assigned by | Description                                                                       |
++============+=============+===================================================================================+
+| Received   | System      | The default state for all incoming submissions, assigned automatically by Central |
++------------+-------------+-----------------------------------------------------------------------------------+
+| Edited     | System      | Automatically assigned by Central whenever a submission is edited by any user     |
++------------+-------------+-----------------------------------------------------------------------------------+
+| Has Issues | User        | Can be assigned by project staff if a submission has problems                     |
++------------+-------------+-----------------------------------------------------------------------------------+
+| Approved   | User        | Can be assigned by project staff to approve a submission                          |
++------------+-------------+-----------------------------------------------------------------------------------+
+| Rejected   | User        | Can be assigned by project staff to reject a submission                           |
++------------+-------------+-----------------------------------------------------------------------------------+
+
+The ``Received`` and ``Edited`` states are automatically set by Central any time a submission is uploaded or edited. The other states are assigned by project staff. Review states have suggested meanings, but *they do not do anything by themselves*. You are free to use these states however you'd like.
+
+Once submissions have been reviewed, the submission table download and the OData connection both allow submissions to be filtered by review state. This lets you, for example, download only all the approved submissions.
+
+.. _central-submissions-details:
+
+Submission Details
+------------------
+
+As of version 1.2, each submission has its own detail page which provides basic information about the submission, an activity history of action and discussion on that submission, and tools for updating the submission review state and data itself.
+
+   .. image:: /img/central-submissions/details.png
+
+The title at the top is pulled from the ``instanceName`` metadata tag if there is one, otherwise it will be the ``instanceID``. You can set up your form to compute an ``instanceName`` based on the data in each submission. You may want to do this if you plan on using this page a lot, because it makes navigation much easier to have friendly names at the top of the page and in the web browser title and tab.
+
+Basic detail can be found along the left. If there are expected media attachments for this submission, that status information will be provided.
+
+The main activity feed on the right shows you the discussion and action history of the submission. Any review state changes, comments, and edits will appear here. At the top of the activity feed, you can :guilabel:`Review` a submission to assign a new review state, :guilabel:`Edit` the submission directly using Enketo in your web browser, or type in the box to begin leaving a comment.
+
+You can leave a note when you update the review state, to indicate why the decision is being made, or any other information you'd like saved.
+
+Any time a user makes a submission edit, they will see a loud note when they are returned to this detail page suggesting that they leave a comment describing the edits they have made. This is optional but highly encouraged. In a future version of Central, greater detail will be automatically provided about the data values that were changed.
 
