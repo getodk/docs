@@ -14,10 +14,9 @@ ODK Central Features
 
 Here are some of the major features we support today:
 
- - User accounts and management
- - Role-based user permissioning
  - Projects to organize users, permissions, and forms
  - Form upload and management
+ - User accounts with role-based permissioning
 
    - With support for form version updates
    - With drafts and testing on initial creation, and on version updates
@@ -26,13 +25,12 @@ Here are some of the major features we support today:
 
  - Submission upload and management
 
-   - From any compliant data collection client,
-   - Or directly from a web browser using `Enketo <https://enketo.org>`_ technology
+   - From filling from our mobile app or a web browser
    - From permissions-managed known users or anonymous public links
    - With submission multimedia or data attachments
    - With an interactive table preview of submission data
-   - OData live data feed for analysis with tools like Excel and Power BI
    - Support for reviewing, commenting on, and editing submissions after upload
+   - Connectable to data analysis and dashboard applications like Excel, Power BI, or R over OData
 
  - Integrated checklist-based help system
  - Optional encrypted off-site data backups to Google Drive

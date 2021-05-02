@@ -14,7 +14,7 @@ As of `version 0.6 <https://github.com/getodk/central/releases/tag/v0.6.0-beta.0
  - **Form Actions**
 
    - Create
-   - Update Details (state, drafts, publishes, settings)
+   - Update Details (state, draft upload, publish action, settings)
    - Update Attachments
    - Delete
 

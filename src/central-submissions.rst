@@ -84,7 +84,7 @@ If your form has more than ten fields, you can show more columns by accessing th
 
 In the :guilabel:`State and actions` column, you will see the current review state of each submission and the number of edits that have been made, if any. If a submission is missing expected media uploads, you will see a warning here. When you hover over a row (or **tab** to it with your keyboard) you will see controls in this column to edit the submission, or see more details about it. You can read more about :ref:`review states <central-submissions-review-states>` and the :ref:`submission detail page <central-submissions-details>` below.
 
-You can limit the rows that appear by the submission author, the date, and the review status. These filter controls are available just above the submission table.
+You can limit the rows that appear by the submitter, the date, and the review status. These filter controls are available just above the submission table.
 
 Any filter you apply to the submission table also applies to the download button. To work with your data, you can download it from Central. Right now, you can do this in one of two ways:
 
@@ -106,7 +106,7 @@ To download all submission data as a :file:`.zip` of :file:`.csv` tables, click 
 
 If you have any row filters applied to the submission table, those filters will be applied to your download as well. You can use this to, for example, download only submissions from a particular month, or only approved submissions.
 
-Once the archive completes downloading, you will find one or more files when you extract it:
+Once the :file:`.zip` completes downloading, you will find one or more files when you extract it:
 
  - A root table :file:`.csv` named after your Form title.
  - Join table :file:`.csv` files representing any repeats you may have in your form, with join columns on the left of each table relating each row to its counterpart in the parent table. Each join table is named to reflect its relationship with the others. If there is only one :file:`.csv` file, then your form has no repeats.
@@ -157,7 +157,7 @@ You can also access the OData feed yourself. The OData feed is an easily consuma
 Submission Review States
 ------------------------
 
-As of version 1.2, Central allows Project Managers and Administrators to review submissions and assign them certain states. This optional feature lets you perform verification and data correction within Central itself. The available states are:
+As of version 1.2, Central allows Project Managers and Administrators to review submissions and assign them certain states. This feature lets you perform verification and follow-up data editing within Central itself, if you need this kind of a workflow. The available states are:
 
 +------------+-------------+-----------------------------------------------------------------------------------+
 | State      | Assigned by | Description                                                                       |
@@ -173,7 +173,7 @@ As of version 1.2, Central allows Project Managers and Administrators to review 
 | Rejected   | User        | Can be assigned by project staff to reject a submission                           |
 +------------+-------------+-----------------------------------------------------------------------------------+
 
-The ``Received`` and ``Edited`` states are automatically set by Central any time a submission is uploaded or edited. The other states are assigned by project staff. Review states have suggested meanings, but *they do not do anything by themselves*. You are free to use these states however you'd like.
+The ``Received`` and ``Edited`` states are automatically set by Central any time a submission is uploaded or edited. The other states are assigned by project staff. We suggest some meanings for these states above, but they don't cause anything to happen automatically. For example, rejected submissions will still be included in your data exports unless you filter them out yourself. So, you are free to use these states however you'd like.
 
 Once submissions have been reviewed, the submission table download and the OData connection both allow submissions to be filtered by review state. This lets you, for example, download only all the approved submissions.
 
@@ -190,9 +190,18 @@ The title at the top is pulled from the ``instanceName`` metadata tag if there i
 
 Basic detail can be found along the left. If there are expected media attachments for this submission, that status information will be provided.
 
-The main activity feed on the right shows you the discussion and action history of the submission. Any review state changes, comments, and edits will appear here. At the top of the activity feed, you can :guilabel:`Review` a submission to assign a new review state, :guilabel:`Edit` the submission directly using Enketo in your web browser, or type in the box to begin leaving a comment.
+The main activity feed on the right shows you the discussion and action history of the submission. Any review state changes, comments, and edits will appear here. At the top of the activity feed, you can :guilabel:`Review` a submission to assign a new review state, :guilabel:`Edit` the submission directly in your web browser, or type in the box to begin leaving a comment.
 
 You can leave a note when you update the review state, to indicate why the decision is being made, or any other information you'd like saved.
 
-Any time a user makes a submission edit, they will see a loud note when they are returned to this detail page suggesting that they leave a comment describing the edits they have made. This is optional but highly encouraged. In a future version of Central, greater detail will be automatically provided about the data values that were changed.
+.. _central-submissions-editing:
+
+Submission Editing
+------------------
+
+From the :ref:`submission detail page <central-submissions-details>` you can press the :guilabel:`Edit` button to edit the submission in your web browser. When an edited submission is resubmitted, a new version of it is created, just like a form version. You will be able to see previous submission versions in a future version of Central.
+
+Any time a user edits a submission, they will see a note when they are returned to the detail page suggesting that they leave a comment describing the edits they have made. This is optional but highly encouraged. In a future version of Central, greater detail will be automatically provided about the data values that were changed.
+
+Finally, when edits are submitted, the submission :ref:`review state <central-submissions-review-states>` will automatically be set to :guilabel:`Edited`.
 
