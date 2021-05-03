@@ -22,7 +22,7 @@ Pillow>=4.3.0
 pluggy==0.7.1
 port-for==0.3.1
 proselint==0.10.2
-py==1.6.0
+py==1.10.0
 pyenchant==2.0.0
 Pygments==2.2.0
 pytest==3.7.2
