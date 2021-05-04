@@ -2,6 +2,7 @@
 
   Ctrl
   Cmd
+  concat
 
 
 .. _central-submissions-overview:
@@ -151,6 +152,29 @@ If you want to use the free and popular `R statistics and analysis tool <https:/
   If you are having trouble getting Power BI to connect to Central, and especially if you see error messages about permissions or authentication, try `resetting the Power BI cached credentials <https://community.powerbi.com/t5/Power-Query/Power-BI-Web-cached-credentials-For-OData/m-p/126826/highlight/true#M8228>`_.
 
 You can also access the OData feed yourself. The OData feed is an easily consumable JSON data format and offers a metadata schema, some filtering and paging options, and more. To learn more about the OData feed, click the :guilabel:`API Access` button or see the `developer documentation <https://odkcentral.docs.apiary.io/#reference/odata-endpoints>`_ directly.
+
+.. _central-submissions-media-downloads:
+
+Setting up Media Downloads
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For a lot of reasons, it can be tricky to access submission media files while doing data analysis. Getting an analysis tool to fetch data from Central does not mean it can or knows how to get images, video, and other media.
+
+In OData data responses, you will see media files given by their filename. If you want, you can construct a link within your analysis tool that will download any media file with your web browser. You can do this by gluing together pieces of text into a URL. Often this gluing operation is called ``concat`` or ``concatenate``. You'll need to make it look like this:
+
+  .. code-block:: console
+
+    https://DOMAIN/dl/projects/PROJECTID/forms/FORMID/submissions/INSTANCEID/attachments/FILENAME
+
+Where the uppercase words need to be replaced with the appropriate values. The easiest way to get the ``DOMAIN``, ``PROJECTID``, and ``FORMID`` is to open the Form in your web browser in the Central administration website and just copy the values you see there. The two web addresses are quite similar. Then you have to add the ``INSTANCEID`` and the ``FILENAME``, both of which you can find in the OData data itself.
+
+Here is an example of a completed address:
+
+  .. code-block:: console
+
+    https://my.odk.server/dl/projects/1/forms/forest_survey/submissions/uuid:20bcee82-4a22-4381-a6aa-f926fc85fb22/attachments/my.file.mp3
+
+This location is a web page that causes a web browser to download a file. It cannot be used directly to embed images or video on any website or application.
 
 .. _central-submissions-review-states:
 
