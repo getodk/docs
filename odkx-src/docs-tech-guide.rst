@@ -616,7 +616,7 @@ on any computer.
 
             .. code:: console
 
-               /odk/ > source odkenv/bin/activate
+               /odk/ > .\odkxenv\Scripts\activate
                (odkenv) /odk/ >
 
       The ``(odkenv)`` before the prompt shows that the virtual environment is active.
