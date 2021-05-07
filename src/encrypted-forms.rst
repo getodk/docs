@@ -2,9 +2,7 @@
 Encrypted Forms
 *****************************
 
-.. seealso::
-
-ODK Central can :ref:`manage encryption for your projects <central-encryption-modes>`.
+.. seealso:: ODK Central can :ref:`manage encryption for your projects <central-encryption-modes>`.
 
 .. _encrypted-forms:
 
