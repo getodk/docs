@@ -32,7 +32,7 @@ All columns representing user-facing text or media can be multi-lingual:
  - :th:`required_message`
 
 Each language column adds two colons and the language name,
-followed by the `two letter language code` in parenthesis.
+followed by the `two letter language code` in parentheses.
 
 For example:
 
@@ -47,7 +47,6 @@ For example:
   If you would like Collect's user interface to support your language,
   contribute translations at https://www.transifex.com/getodk.
 
-.. _XLSForm: http://xlsform.org
 .. _two letter language code: http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
 
 .. rubric:: XLSForm --- Single language
@@ -125,8 +124,16 @@ For example:
 Switching languages
 ---------------------
 
-Typically, if multiple languages are available on a form,
-the form will display in the language set on the device.
+If your form defines multiple languages and you know most of your data collectors will need to use the same one, you should set an explicit default language. You can do this in your XLSForm's **settings** sheet:
+
+.. rubric:: XLSForm --- setting a default language
+
+.. csv-table:: settings
+  :header: form_id, version, default_language
+
+  my_form, 2024050301, Español (es)
+
+Otherwise, Collect will default to the first language defined.
 
 To switch between available languages on a form,
 go to :menuselection:`⋮ --> Change Language`.

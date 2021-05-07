@@ -47,6 +47,8 @@ You should also include a **settings** sheet to uniquely identify your form defi
 - :th:`version`: The unique version code that identifies the current state of the form. A common convention is to use a format like yyyymmddrr. For example, 2017021501 is the 1st revision from Feb 15th, 2017.
 - :th:`instance_name`: An :ref:`expression <expressions>` that will be used to represent a specific filled form created from this form definition. For example, ``concat(${first_name}, ${age})``. :ref:`Learn more <instance-name>`.
 
+The **settings** sheet is also useful when using :ref:`multi-language forms <switching-languages>` or when defining a form with :ref:`encryption <defining-encrypted-form>`.
+
 .. _instance-name:
 
 Naming filled forms
