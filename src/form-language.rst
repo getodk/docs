@@ -18,9 +18,7 @@
 Form Language
 ===================
 
-:doc:`collect-intro` and `XLSForm`_ support `multi-language forms`_.
-
-.. _multi-language forms: http://xlsform.org/#language
+:doc:`collect-intro` and :doc:`XLSForm <xlsform>` support multi-language forms.
 
 To add additional languages to your XLSForm,
 add columns of user-facing content with language-specific columns.
