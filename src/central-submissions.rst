@@ -164,7 +164,7 @@ In OData data responses, you will see media files given by their filename. If yo
 
   .. code-block:: console
 
-    https://DOMAIN/dl/projects/PROJECTID/forms/FORMID/submissions/INSTANCEID/attachments/FILENAME
+    https://DOMAIN/#/dl/projects/PROJECTID/forms/FORMID/submissions/INSTANCEID/attachments/FILENAME
 
 Where the uppercase words need to be replaced with the appropriate values. The easiest way to get the ``DOMAIN``, ``PROJECTID``, and ``FORMID`` is to open the Form in your web browser in the Central administration website and just copy the values you see there. The two web addresses are quite similar. Then you have to add the ``INSTANCEID`` and the ``FILENAME``, both of which you can find in the OData data itself.
 
@@ -172,7 +172,7 @@ Here is an example of a completed address:
 
   .. code-block:: console
 
-    https://my.odk.server/dl/projects/1/forms/forest_survey/submissions/uuid:20bcee82-4a22-4381-a6aa-f926fc85fb22/attachments/my.file.mp3
+    https://my.odk.server/#/dl/projects/1/forms/forest_survey/submissions/uuid:20bcee82-4a22-4381-a6aa-f926fc85fb22/attachments/my.file.mp3
 
 This location is a web page that causes a web browser to download a file. It cannot be used directly to embed images or video on any website or application.
 
