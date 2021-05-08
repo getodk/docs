@@ -41,9 +41,9 @@ Set up collaboration accounts
 
 ODK-X is a collaborative community.
 Before diving in as a contributor,
-set up accounts on our three main collaboration platforms,
-:ref:`GitHub <get-gh-account>`,
-and the :ref:`ODK-X Forum <join-forum>`
+set up accounts on our two main collaboration platforms,
+:ref:`GitHub <get-gh-account>`
+and the :ref:`ODK-X Forum <join-forum>`.
 
 .. tip::
 
@@ -100,7 +100,7 @@ and the :ref:`ODK-X Forum <join-forum>`
 
 .. _forum-or-slack-or-gh:
 
-.. admonition:: Should I ask in the Forum, or a GitHub issue?
+.. admonition:: Should I ask in the Forum or a GitHub issue?
 
    The ODK-X community talks a lot, in a lot of places.
    Sometimes it's hard to know where to ask a question.
@@ -139,7 +139,7 @@ and the :ref:`ODK-X Forum <join-forum>`
 
    It is better to ask a question in the "wrong" venue
    than to not ask the question at all.
-   Many of the same people are present in all three places,
+   Many of the same people are present in both places,
    and we will help you wherever you happen to show up.
 
 .. _docs-local-setup:
