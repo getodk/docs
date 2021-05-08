@@ -250,6 +250,7 @@ Screenshots
 screenshots
 scriptable
 sdcard
+sdkmanager
 selectable
 selectionArgs
 selfie
