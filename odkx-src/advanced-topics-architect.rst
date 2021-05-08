@@ -10,4 +10,4 @@ Advanced Application Building Topics
   internationalization
   config-file-structure
   survey-controller-actions
-
+  logging-capabilities-of-apps
