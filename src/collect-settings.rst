@@ -109,7 +109,11 @@ To access User Interface settings:
 
 :guilabel:`Language`
 """""""""""""""""""""
-  Forces the Collect interface to use a specific language. By default, Collect matches the device language. Note that this only sets the language for the Collect interface and not for form contents. For multi-language forms, the form language is set :ref:`while filling out that form <change-form-language>`. The Collect translations are provided by the ODK community through the `Transifex service <https://www.transifex.com/getodk/collect/>`_. You can join Transifex to add or correct translations in your language.
+  Forces the Collect interface to use a specific language. By default, Collect matches the device language. Note that this only sets the language for the Collect user interface and not for the form. For :doc:`forms with multiple languages <form-language>`, the form language is set :ref:`while filling out the form <change-form-language>`. 
+
+  .. note::
+
+    Collect's translations are provided by the ODK community through the `Transifex service <https://www.transifex.com/getodk/collect/>`_. You can join Transifex to add or correct translations in your language.
 
 :guilabel:`Text font size`
 """"""""""""""""""""""""""""
@@ -223,6 +227,8 @@ Specifies how blank forms should be updated:
 """"""""""""""""""""""
   When enabled, forms are sent immediately when they are finalized, if the device can connect to the internet. If an internet connection is not available at the time of finalization, your finalized forms will be queued to send as soon as connectivity is established.
   You can specify whether to send over WiFi, cellular data, or both.
+
+.. _delete-after-send:
 
 :guilabel:`Delete after send`
 """"""""""""""""""""""""""""""

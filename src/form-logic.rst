@@ -695,8 +695,10 @@ To group questions, use the :tc:`begin_group...end_group` syntax.
   text, question_2, These questions will both be grouped together
   end_group, ,
 
+You can use the :tc:`field-list` appearance on a group to :ref:`display multiple questions on the same screen <field-list>`.
+
 If given a :th:`label`, groups will be visible in the form path to help orient the user
-(e.g. :guilabel:`My text widgets > Text widget 1`). Labeled groups will also be visible as clickable items in the jump menu:
+(e.g. :guilabel:`My text widgets > Text widget 1`). Labeled groups will also be visible as clickable items in the :ref:`jump menu <jumping>`:
 
 .. image:: /img/form-logic/jump-menu-groups.*
   :alt: The jump menu with a few grouped questions.

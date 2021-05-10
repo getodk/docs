@@ -2424,10 +2424,7 @@ To do this, put your select questions in a :tc:`field-list` group and use the fo
 Hidden questions
 ------------------
 
-Not all question types render as visible widgets in Collect.
-These questions do collect and store values,
-which are accessible as :ref:`variables <variables>`
-and available in Aggregate and other data analysis tools.
+Not all question types render as visible widgets in Collect. Hidden fields collect and store values which are accessible as :ref:`variables <variables>` and available in :doc:`Central <central-intro>` and other data analysis tools.
 
 .. contents::
   :local:

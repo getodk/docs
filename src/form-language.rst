@@ -18,14 +18,10 @@
 Form Language
 ===================
 
-:doc:`collect-intro` and `XLSForm`_ support `multi-language forms`_.
-
-.. _multi-language forms: http://xlsform.org/#language
+:doc:`collect-intro` and :doc:`XLSForm <xlsform>` support multi-language forms.
 
 To add additional languages to your XLSForm,
-add columns of user-facing content with language-specific columns.
-
-All columns representing user-facing text or media can be multi-lingual:
+add columns of user-facing content with language-specific columns. All columns representing user-facing text or media can be multi-lingual:
 
  - :th:`label`
  - :th:`hint`
@@ -34,9 +30,7 @@ All columns representing user-facing text or media can be multi-lingual:
  - :th:`required_message`
 
 Each language column adds two colons and the language name,
-followed by the `two letter language code` in parenthesis.
-
-For example:
+followed by the `two letter language code <http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry>`_ in parentheses. For example:
 
 - :th:`label::English (en)`
 - :th:`hint::French (fr)`
@@ -45,12 +39,7 @@ For example:
 .. note::
 
   The text shown in Collect's user interface (e.g., buttons, menus, dialogs)
-  is controlled by device language, not the form language.
-  If you would like Collect's user interface to support your language,
-  contribute translations at https://www.transifex.com/getodk.
-
-.. _XLSForm: http://xlsform.org
-.. _two letter language code: http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+  is controlled by application, not the form. See :ref:`user interface settings <interface-settings>` for how to change the interface language.
 
 .. rubric:: XLSForm --- Single language
 
@@ -127,8 +116,16 @@ For example:
 Switching languages
 ---------------------
 
-Typically, if multiple languages are available on a form,
-the form will display in the language set on the device.
+If your form defines multiple languages and you know most of your data collectors will need to use the same one, you should set an explicit default language. You can do this in your XLSForm's **settings** sheet:
+
+.. rubric:: XLSForm --- setting a default language
+
+.. csv-table:: settings
+  :header: form_id, version, default_language
+
+  my_form, 2024050301, Español (es)
+
+Otherwise, Collect will default to the first language defined.
 
 To switch between available languages on a form,
 go to :menuselection:`⋮ --> Change Language`.
