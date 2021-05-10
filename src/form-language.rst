@@ -21,9 +21,7 @@ Form Language
 :doc:`collect-intro` and :doc:`XLSForm <xlsform>` support multi-language forms.
 
 To add additional languages to your XLSForm,
-add columns of user-facing content with language-specific columns.
-
-All columns representing user-facing text or media can be multi-lingual:
+add columns of user-facing content with language-specific columns. All columns representing user-facing text or media can be multi-lingual:
 
  - :th:`label`
  - :th:`hint`
@@ -32,9 +30,7 @@ All columns representing user-facing text or media can be multi-lingual:
  - :th:`required_message`
 
 Each language column adds two colons and the language name,
-followed by the `two letter language code` in parentheses.
-
-For example:
+followed by the `two letter language code <http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry>`_ in parentheses. For example:
 
 - :th:`label::English (en)`
 - :th:`hint::French (fr)`
@@ -43,11 +39,7 @@ For example:
 .. note::
 
   The text shown in Collect's user interface (e.g., buttons, menus, dialogs)
-  is controlled by device language, not the form language.
-  If you would like Collect's user interface to support your language,
-  contribute translations at https://www.transifex.com/getodk.
-
-.. _two letter language code: http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+  is controlled by application, not the form. See :ref:`user interface settings <interface-settings>` for how to change the interface language.
 
 .. rubric:: XLSForm --- Single language
 

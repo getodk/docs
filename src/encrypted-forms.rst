@@ -8,9 +8,9 @@ Encrypted Forms
 
 Overview
 ====================
-Encrypted forms provide a mechanism to keep your data private even when using **http:** for communications (for example, when you do not have an **SSL certificate** or **https:** is not available). Encrypted forms may also enable Google App Engine deployments (and deployments using other web database services, such as, AWS) to comply with data privacy laws, eliminating the necessity for setting up your own servers to meet those requirements.
+Encrypted forms provide a mechanism to keep your data private even when using **http:** for communications (for example, when you do not have an **SSL certificate** or **https:** is not available). Encrypted forms may also enable deployments using cloud providers to comply with data privacy laws, eliminating the necessity for setting up your own servers to meet those requirements.
 
-Encrypted forms apply asymmetric public key encryption at the time the form is finalized within ODK Collect. This encrypted form can then be submitted to a server. ODK Central provides `a managed encryption option <central-encryption>` which means a decrypted data file can securely be downloaded without using any other tool. Central self-managed encryption and other servers require using ODK Briefcase to download and decrypt the data. Briefcase, when supplied with the asymmetric private key (which Briefcase never stores), can then decrypt and export the form data as a CSV file for your use.
+Encrypted forms apply asymmetric public key encryption at the time the form is finalized within ODK Collect. This encrypted form can then be submitted to a server. ODK Central provides :ref:`a managed encryption option <central-encryption>` which means a decrypted data file can securely be downloaded without using any other tool. Central self-managed encryption and other servers require using ODK Briefcase to download and decrypt the data. Briefcase, when supplied with the asymmetric private key (which Briefcase never stores), can then decrypt and export the form data as a CSV file for your use.
 
 The finalized form's data (and media attachments) are encrypted before being submitted to a server and remain encrypted while stored on the server. When using Briefcase, the data remains encrypted as it is pulled, where it is again stored in encrypted form.
 
@@ -19,13 +19,13 @@ The finalized form's data (and media attachments) are encrypted before being sub
   - A server cannot present or share the data with another service since the encryption obscures the entire contents of the form and the server never possesses the asymmetric key required to decrypt the form.
   - When using encrypted forms, the server serves only as a data aggregation point.
 
-The non-encrypted data is available on the ODK Collect device during data collection and whenever a form is saved without marking it as complete. Once you mark a form as complete (finalize it), Collect will generate a random 256-bit symmetric key, encrypt the form contents and all attachments with this key, then construct a submission manifest which describes the encrypted submission and an asymmetric-key encryption of the symmetric key used for the encryption. This manifest is the "form" that is uploaded to a server, with the encrypted form contents and its encrypted attachments appearing as attachments to this submission manifest "form."
+The non-encrypted data is available on the Collect device during data collection and whenever a form is saved without marking it as complete. Once you mark a form as complete (finalize it), Collect will generate a random 256-bit symmetric key, encrypt the form contents and all attachments with this key, then construct a submission manifest which describes the encrypted submission and an asymmetric-key encryption of the symmetric key used for the encryption. This manifest is the "form" that is uploaded to a server, with the encrypted form contents and its encrypted attachments appearing as attachments to this submission manifest "form."
 
 .. _security-concerns:
 
 Security Concerns
 ====================
-While ODK Collect attempts to remove all unencrypted copies of a finalized form and its attachments from the device, because ODK Collect uses third-party applications for image capture, etc., and because of the potential for Forced Close events during the clean-up process, we cannot guarantee that all copies will have been destroyed. Furthermore, because of the way an SD card writes and deletes information, there is a possibility of this data being recoverable from the free space on the SD card. Your organization should investigate the extra steps needed to ensure all data is deleted from the SD cards on your ODK Collect devices and should establish procedures to periodically wipe and reinstall those devices.
+While Collect attempts to remove all unencrypted copies of a finalized form and its attachments from the device, because Collect uses third-party applications for image capture, etc., and because of the potential for Forced Close events during the clean-up process, we cannot guarantee that all copies will have been destroyed. Furthermore, because of the way an SD card writes and deletes information, there is a possibility of this data being recoverable from the free space on the SD card. Your organization should investigate the extra steps needed to ensure all data is deleted from the SD cards on your Collect devices and should establish procedures to periodically wipe and reinstall those devices.
 
 .. note::
 
@@ -125,7 +125,7 @@ This may also complain about a missing configuration file. You can ignore this w
 Storing and using the keys
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Move the :file:`MyPrivateKey.pem` file to a secure location. It does not have a password encoding it, so anyone can decrypt your data if they have access to this file. This is the private key file that you will give to ODK Briefcase when decrypting the data.
+Move the :file:`MyPrivateKey.pem` file to a secure location. It does not have a password encoding it, so anyone can decrypt your data if they have access to this file. This is the private key file that you will give to Briefcase when decrypting the data.
 
 .. _update-keys:
 
@@ -153,8 +153,8 @@ Open the :file:`MyPublicKey.pem` file and copy the resulting very-long string in
 Operations
 ===========================
 
-Operationally, you would add the form definition to the server identified in the ``<submission>`` tag's action attribute, and deploy everything using Collect, figure out how you want to implement a periodic SD Card wiping protocol for your devices, and you're done. Submissions will be encrypted when marked as complete. Once the data is on your server, use :doc:`Briefcase <briefcase-intro>` to download the encrypted submissions to your desktop computer, and then specify the private key PEM file when decrypting and generating the CSV files.
+Operationally, you would add the form definition to the server identified in the ``<submission>`` tag's action attribute, and deploy everything using Collect, figure out how you want to implement a periodic SD card wiping protocol for your devices, and you're done. Submissions will be encrypted when marked as complete. Once the data is on your server, use :doc:`Briefcase <briefcase-intro>` to download the encrypted submissions to your desktop computer, and then specify the private key PEM file when decrypting and generating the CSV files.
 
 .. note::
-  - ODK Central or ODK Aggregate will only hold the encrypted submission with no access to the private key
-  - ODK Briefcase will emit the CSV with an extra final column that indicates whether the signature of the encrypted file was good or bad.  It would be bad if any of the attachments are missing or if there was tampering (other than the wholesale replacement of a submission, which can't be detected).
+  - Central or Aggregate will only hold the encrypted submission with no access to the private key
+  - Briefcase will emit the CSV with an extra final column that indicates whether the signature of the encrypted file was good or bad.  It would be bad if any of the attachments are missing or if there was tampering (other than the wholesale replacement of a submission, which can't be detected).
