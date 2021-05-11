@@ -3,12 +3,22 @@
 Backing Up Central
 ==================
 
-Having a data backup strategy is a critical part of running a web service like ODK Central. Backups should go to a system in a different physical location from where Central is installed in order to prevent data loss across a broad range of scenarios. Many cloud providers offer backup strategies that run automatically. If you are an experienced system administrator, you may want to set up your own backups of the PostgreSQL database that contains all of Central's data. One strategy for doing this is to :ref:`configure a separate database server <central-install-digital-ocean-custom-db>`. If you don't already have a server-wide backup system in place and don't want to set up your own database backup, Central provides a managed backup system to Google Drive.
+Having a data backup strategy is a critical part of running a web service like ODK Central. Backups should go to a system in a different physical location from where Central is installed in order to prevent data loss across a broad range of scenarios. Many cloud providers offer backup strategies that run automatically.
+
+If you are an experienced system administrator, you may want to set up your own backups of the PostgreSQL database that contains all of Central's data. One strategy for doing this is to :ref:`configure a separate database server <central-install-digital-ocean-custom-db>`. You will additionally need to have a backup of Enketo data to be able to restore existing Web Form links. The strict minimum required to do this are Enketo's Redis store and the keys generated in the Enketo configuration. In general, we recommend making a full system backup.
+
+If you don't already have a server-wide backup system in place and don't want to set up your own database backup, Central provides a managed backup system to Google Drive for Central data (but not Web Form configuration).
 
 .. _central-managed-backups:
 
 Managed backups
 ---------------
+
+.. warning::
+
+  Managed backups include all of your collected data but do **NOT** include sufficient information to re-establish the same Web Form links. If you use :ref:`Public Links <central-submissions-public-link>` for broad surveying or share :ref:`links to Web Forms <central-submissions-direct>` through another system, we strongly recommend also making a full system backup.
+
+  If you only use web forms for previews or for making submissions directly from Central, managed backups are sufficient. You can regenerate previews by uploading the same form with a new :ref:`form version <central-forms-updates>`. 
 
 ODK Central features an optional off-site backup system to keep your data safe. For each backup, we extract all your data (including user accounts, forms, and submissions), we encrypt it so that only you can access it, and we send the encrypted result to your Google Drive account for safekeeping. We send data to Google Drive because it is a service that many people already use, it is easy to set up, and it is relatively inexpensive. Because backups are encrypted, Google can't see their contents. However, you should verify that policies and laws that govern your project allow this usage.
 
