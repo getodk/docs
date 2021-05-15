@@ -22,6 +22,8 @@ Follow these links for detailed instructions on installing :program:`Docker` and
   - `Docker <https://docs.docker.com/install/>`_
   - `Swarm Mode <https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/>`_
 
+If you test single-node swarm, simply run ``docker swarm init``. Use ``docker info`` to ensure swarm is activated
+
 If you wish to enable HTTPS, you also need to install `certbot <https://certbot.eff.org/>`_
 
 
@@ -96,9 +98,9 @@ Setup instructions:
 
     $ docker build --pull -t odk/phpldapadmin phpldapadmin
 
-  11. Enter your hostname in the :code:`security.server.hostname` field in the :file:`security.properties` file (under the directory :file:`config/sync-endpoint`). You can also choose to enable :ref:`Anonymous access<sync-anonymous>` on your ODK-X Sync Endpoint by configuring the same :file:`security.properties` file.
+  11. Enter your hostname in the :code:`security.server.hostname` field (if such field doesn't exists, create one at the bottom of file) in the :file:`security.properties` file (under the directory :file:`config/sync-endpoint`). You can also choose to enable :ref:`Anonymous access<sync-anonymous>` on your ODK-X Sync Endpoint by configuring the same :file:`security.properties` file.
 
-  12. If you're not using the standard ports (80 for *HTTP* and 443 for *HTTPS*) enter the ports you're using in the :code:`security.server.port` and :code:`security.server.securePort` fields in the :file:`security.properties`. Then edit the **ports** section under the **sync** section in :file:`docker-compose.yml` to be :code:`YOUR_PORT:8080`.
+  12. If you're not using the standard ports (80 for *HTTP* and 443 for *HTTPS*) enter the ports you're using in the :code:`security.server.port` and :code:`security.server.securePort` fields in the :file:`security.properties` (if such a field doesn't exists, create it at the bottom of file). Then add or edit the **ports** section under the **sync** section in :file:`docker-compose.yml` to be :code:`YOUR_PORT:8080`. 
 
     .. note::
 
@@ -127,9 +129,42 @@ Setup instructions:
     .. code-block:: console
 
        $ docker stack deploy -c docker-compose.yml -c docker-compose-https.yml syncldap
+    
+    If there is a failure during the docker stack deploy process, try :ref:`take the docker stack down <sync-endpoint-stopping>` first and bring it back up again with the previous same :code:`docker stack deploy` command.
+
 
   15. The server takes about 30s to start, then it will be running at http://127.0.0.1.
   16. See the :ref:`LDAP section <sync-endpoint-ldap>` for instructions on configuring users and groups.
+  17. See the :ref:`Stop the ODK-X Sync Endpoint section <sync-endpoint-stopping>` to stop the service.
+  
+.. _sync-endpoint-stopping:
+
+Stopping ODK-X Sync Endpoint
+----------------------------
+
+  1. Run:
+
+  .. code-block:: console
+
+    $ docker stack rm syncldap
+
+  2. OPTIONAL: If you want to remove the volumes as well,
+
+    .. Warning:: Removing volumes will remove any provisioned TLS keys
+                 if https is enabled. These keys can only be
+                 provisioned at a rate of 50 valid keys/domain/week.
+
+    - Linux/macOS:
+
+    .. code-block:: console
+
+      $ docker volume rm $(docker volume ls -f "label=com.docker.stack.namespace=syncldap" -q)
+
+    - Windows:
+
+    .. code-block:: console
+
+      $ docker volume rm (docker volume ls -f "label=com.docker.stack.namespace=syncldap" -q)
 
 .. _sync-endpoint-setup-database:
 
@@ -138,7 +173,7 @@ Custom database
 
   1. If you haven't followed the :ref:`common instructions <sync-endpoint-manual-setup-common>`, start with those.
   2. Remove the *db* and *db-bootstrap* sections in :file:`docker-compose.yml`.
-  3. Modify :file:`jdbc.properties` to match your database. Supported database systems are :program:`PostgreSQL`, :program:`MySQL` and :program:`Microsoft SQL Server`. Sample config for each type of database can be found `on Github <https://github.com/odk-x/sync-endpoint-default-setup>`_.
+  3. Modify :file:`jdbc.properties`(under the directory :file:`config/sync-endpoint`) to match your database. Supported database systems are :program:`PostgreSQL`, :program:`MySQL` and :program:`Microsoft SQL Server`. Sample config for each type of database can be found `on Github <https://github.com/odk-x/sync-endpoint-default-setup>`_.
   4. Modify :file:`sync.env` to match your database
   5. In the cloned repository,
 
@@ -206,35 +241,6 @@ Custom LDAP directory
     $ docker stack deploy -c docker-compose.yml syncldap
 
   9. The server takes about 30s to start, then it will be running at http://127.0.0.1.
-
-.. _sync-endpoint-stopping:
-
-Stopping ODK-X Sync Endpoint
-----------------------------
-
-  1. Run:
-
-  .. code-block:: console
-
-    $ docker stack rm syncldap
-
-  2. OPTIONAL: If you want to remove the volumes as well,
-
-    .. Warning:: Removing volumes will remove any provisioned TLS keys
-                 if https is enabled. These keys can only be
-                 provisioned at a rate of 50 valid keys/domain/week.
-
-    - Linux/macOS:
-
-    .. code-block:: console
-
-      $ docker volume rm $(docker volume ls -f "label=com.docker.stack.namespace=syncldap" -q)
-
-    - Windows:
-
-    .. code-block:: console
-
-      $ docker volume rm (docker volume ls -f "label=com.docker.stack.namespace=syncldap" -q)
 
 .. _sync-anonymous:
 
