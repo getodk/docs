@@ -53,9 +53,11 @@ replacing *jar.jar* with the filename of the downloaded :file:`ODK-X Suitcase.ja
       $ java -jar path/to/jar.jar
 
 The first screen when you open ODK-X Suitcase will ask for your
-ODK-X :guilabel:`Cloud Endpoint Address`, the :guilabel:`App ID`, and your :guilabel:`username` and :guilabel:`password`.
-If your ODK-X Cloud Endpoint allows for anonymous access then you can leave the :guilabel:`username` and :guilabel:`password` fields blank.
+ODK-X :guilabel:`Cloud Endpoint Address`, the :guilabel:`App ID`, and your :guilabel:`username` and :guilabel:`password`. If your ODK-X Cloud Endpoint allows for anonymous access then you can leave the :guilabel:`username` and :guilabel:`password` fields blank.
 Otherwise, please specify an ODK-X Cloud Endpoint username and password with sufficient permissions.
+
+  .. note:: 
+    By default :guilabel:`App ID = default`, check the second paragraph of :ref:`ODK-X Data Management Applications <build-app-data-mgt-apps>` to see more details.
 
 There are two tabs at the top of the graphical interface:
   - :guilabel:`Download`, to download existing data from the server
