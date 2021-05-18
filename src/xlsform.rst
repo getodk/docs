@@ -81,6 +81,14 @@ A sent form's :th:`instance_name` is maintained after it is deleted. This makes 
 
 The :th:`instance_name` is also used to identify filled forms in Collect's :doc:`filled form map <collect-form-map>`.
 
+.. _instance-name-central:
+
+Filled form names in Central
+""""""""""""""""""""""""""""""
+
+Each submission in Central has its own :ref:`detail page <central-submissions-details>` which provides basic information about the submission, an activity history of action and discussion on that submission.
+
+The title at the top is pulled from the :th:`instance_name` and it makes navigation much easier to have friendly names at the top of the page and in the web browser title and tab.
 
 .. _choices-sheet:
 

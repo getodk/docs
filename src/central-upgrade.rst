@@ -61,9 +61,9 @@ Don't worry, nothing bad happens if you see this. To get around this error, run 
 
 .. code-block:: console
 
- mv .env swap
+ mv .env env-tmp
  git pull
- mv swap .env
+ mv env-tmp .env
 
 Afterwards, ``git status`` should not say anything about the ``.env`` file at all. If it does, copy and paste your entire console session into a `forum thread <https://forum.getodk.org/c/support/6>`_ and someone will help you out.
 
