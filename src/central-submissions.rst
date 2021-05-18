@@ -149,7 +149,9 @@ To connect with Excel or Power BI, follow these steps.
 If you want to use the free and popular `R statistics and analysis tool <https://www.r-project.org/>`_, we recommend you use `ruODK <https://docs.ropensci.org/ruODK/>`_. A guide for getting started with it can be found `here <https://docs.ropensci.org/ruODK/articles/odata-api.html>`_. ruODK is developed and supported by community members. If you wish to help improve it, you can find information `on GitHub <https://docs.ropensci.org/ruODK/CONTRIBUTING.html>`_.
 
 .. tip::
-  If you are having trouble getting Power BI to connect to Central, and especially if you see error messages about permissions or authentication, try `resetting the Power BI cached credentials <https://community.powerbi.com/t5/Power-Query/Power-BI-Web-cached-credentials-For-OData/m-p/126826/highlight/true#M8228>`_.
+
+  If you are having trouble getting Power BI or Excel to connect, and especially if you see error messages about permissions or authentication, `clear your cached permissions <https://docs.microsoft.com/en-us/power-query/connectorauthentication#change-the-authentication-method>`_ and try again.
+
 
 You can also access the OData feed yourself. The OData feed is an easily consumable JSON data format and offers a metadata schema, some filtering and paging options, and more. To learn more about the OData feed, click the :guilabel:`API Access` button or see the `developer documentation <https://odkcentral.docs.apiary.io/#reference/odata-endpoints>`_ directly.
 
@@ -210,7 +212,8 @@ As of version 1.2, each submission has its own detail page which provides basic 
 
    .. image:: /img/central-submissions/details.png
 
-The title at the top is pulled from the ``instanceName`` metadata tag if there is one, otherwise it will be the ``instanceID``. You can set up your form to compute an ``instanceName`` based on the data in each submission. You may want to do this if you plan on using this page a lot, because it makes navigation much easier to have friendly names at the top of the page and in the web browser title and tab.
+The title at the top is pulled from the :th:`instance_name` if there is one, otherwise it will be the automatically assigned ``instanceID``. We recommend you :ref:`define an instance_name <instance-name>` based on the data in each submission. This is especially important if you plan on using this page a lot, because it makes navigation much easier to have friendly names at the top of the page and in the web browser title and tab.
+
 
 Basic detail can be found along the left. If there are expected media attachments for this submission, that status information will be provided.
 
