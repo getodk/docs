@@ -823,10 +823,11 @@ Repeating as long as a condition is met
 If the enumerator won't know how many repetitions are needed ahead of time, you can still avoid the "Add ...?" dialog by using the answer to a question to decide whether another repeat instance should be added. In the example below, repeated questions about plants will be asked as long as the user answers "yes" to the last question.
 
 .. csv-table:: survey
+  :escape: |
   :header: type, name, label, calculation, repeat_count
   
   calculate, count, , count(${plant})
-  begin_repeat, plant, Plant, , if(${count} = 0 or ${plant}[position()=${count}]/more_plants = 'yes', ${count} + 1, ${count})
+  begin_repeat, plant, Plant, , if(${count} = 0 or ${plant}[position()=${count}]/more_plants = 'yes'|, ${count} + 1|, ${count})
   text, species, Species,
   integer, estimated_size, Estimated size,
   select_one yes_no, more_plants, Are there more plants in this area?,
