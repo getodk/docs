@@ -40,5 +40,30 @@ The quickest way to do this is to run ``ufw disable`` while logged into your ser
 
   If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be really difficult to do correctly, so we don't recommend most people try. Another option is to use an upstream network firewall.
 
-  The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. In particular, if you can successfully ``curl`` your Central website over HTTPS on its public domain name, all Enketo features should work correctly.
+  The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. In particular, if you can successfully ``curl`` your Central website over HTTPS on its public domain name from within the Enketo container, all Enketo features should work correctly.
+
+.. _central-upgrade-1.2:
+
+Upgrading to Central 1.2
+------------------------
+
+In version 1.2, we added some advanced features to Central's server configuration. These features will not be meaningful to most users. However, because we would like to make this change and further improvements in the future, we have modified the template ``.env`` configuration file you set up during installation.
+
+Since you have made your own changes to the ``.env`` file to set Central up for your environment, you will see an error message when you run the ``git pull`` command:
+
+.. code-block:: console
+
+ error: Your local changes to the following files would be overwritten by merge:
+         .env
+ Please commit your changes or stash them before you merge.
+
+Don't worry, nothing bad happens if you see this. To get around this error, run this set of commands instead of ``git pull``:
+
+.. code-block:: console
+
+ mv .env swap
+ git pull
+ mv swap .env
+
+Afterwards, ``git status`` should not say anything about the ``.env`` file at all. If it does, copy and paste your entire console session into a `forum thread <https://forum.getodk.org/c/support/6>`_ and someone will help you out.
 

@@ -5,6 +5,26 @@ Server Audit Logs in Central
 
 As of `version 0.6 <https://github.com/getodk/central/releases/tag/v0.6.0-beta.0>`_, ODK Central tracks and logs audit actions for most administrative actions performed on the server. The following actions are logged:
 
+ - **Project Actions**
+
+   - Create
+   - Update Details (name, settings, archival)
+   - Delete
+
+ - **Form Actions**
+
+   - Create
+   - Update Details (state, draft upload, publish action, settings)
+   - Update Attachments
+   - Delete
+
+ - **Submission Actions**
+
+   - Create
+   - Update Metadata (review state)
+   - Update Submission Data
+   - Update Attachments
+
  - **Web User Actions**
 
    - Create
@@ -13,16 +33,20 @@ As of `version 0.6 <https://github.com/getodk/central/releases/tag/v0.6.0-beta.0
    - Revoke Role
    - Retire
 
- - **Project Actions**
+ - **App User Actions**
 
    - Create
-   - Update Details (name, settings, archival)
+   - Assign Role
+   - Revoke Role
+   - Revoke Access
+   - Delete
 
- - **Form Actions**
+ - **Public Link Actions**
 
    - Create
-   - Update Details (state, settings)
-   - Update Attachments
+   - Assign Role
+   - Revoke Role
+   - Revoke Access
    - Delete
 
 To access the audit logs, navigate to :guilabel:`System`, then select :guilabel:`Server Audit Logs` from the navigation menu that appears:
