@@ -13,7 +13,11 @@ To perform an upgrade, you'll first need to get to the software. You'll need to 
 
 Once you are logged into your server, navigate back to the project folder (``cd central``). Then, get the latest version of the infrastructure: ``git pull``.
 
-(If you have made local changes to the files, you may have to start with ``git stash``, then run ``git stash pop`` after you perform the ``pull``. If you aren't sure, just run ``git pull`` anyway and it will tell you.)
+.. admonition:: Note
+
+  If you have made local changes to the files, you may have to start with ``git stash``, then run ``git stash pop`` after you perform the ``pull``. If you aren't sure, just run ``git pull`` anyway and it will tell you.
+
+  If you are upgrading to Central v1.2, see :ref:`Upgrading to Central v1.2 <central-upgrade-1.2>` to learn how to resolve any error messages using ``git pull``.
 
 Now, get the latest client and server: ``git submodule update -i``. Then, build your server from the latest code you just fetched: ``docker-compose build``.
 
@@ -25,29 +29,12 @@ Next, you need to do a little bit of maintenance. Run ``docker prune``. If it th
 
 Finally, restart the running server to pick up the changes: ``docker-compose stop`` and ``docker-compose up -d``.
 
-.. _central-upgrade-0.9:
-
-Upgrading to Central 0.9
-------------------------
-
-Particularly if you are installed on DigitalOcean, you will need to modify the system firewall for Enketo features in Central to work correctly.
-
-The quickest way to do this is to run ``ufw disable`` while logged into your server's command line prompt. You should see the message ``Firewall stopped and disabled on system startup``. If so, you have configured the firewall correctly.
-
-.. admonition:: For advanced administrators
-
-  While it sounds dangerous, disabling your system firewall does not put your server at greater risk. In fact, most Linux operating systems come with the system firewall disabled.
-
-  If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be really difficult to do correctly, so we don't recommend most people try. Another option is to use an upstream network firewall.
-
-  The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. In particular, if you can successfully ``curl`` your Central website over HTTPS on its public domain name from within the Enketo container, all Enketo features should work correctly.
-
 .. _central-upgrade-1.2:
 
-Upgrading to Central 1.2
-------------------------
+Upgrading to Central v1.2
+-------------------------
 
-In version 1.2, we added some advanced features to Central's server configuration. These features will not be meaningful to most users. However, because we would like to make this change and further improvements in the future, we have modified the template ``.env`` configuration file you set up during installation.
+In v1.2, we added some advanced features to Central's server configuration. These features will not be meaningful to most users. However, because we would like to make this change and further improvements in the future, we have modified the template ``.env`` configuration file you set up during installation.
 
 Since you have made your own changes to the ``.env`` file to set Central up for your environment, you will see an error message when you run the ``git pull`` command:
 
@@ -65,5 +52,23 @@ Don't worry, nothing bad happens if you see this. To get around this error, run 
  git pull
  mv env-tmp .env
 
-Afterwards, ``git status`` should not say anything about the ``.env`` file at all. If it does, copy and paste your entire console session into a `forum thread <https://forum.getodk.org/c/support/6>`_ and someone will help you out.
+Afterwards, ``git status`` should not say anything about the ``.env`` file at all and you can continue with the upgrade instructions above. 
 
+If ``git status`` still shows errors, copy and paste your entire console session into a `forum thread <https://forum.getodk.org/c/support/6>`_ and someone will help you out.
+
+.. _central-upgrade-0.9:
+
+Upgrading to Central v0.9
+-------------------------
+
+Particularly if you are installed on DigitalOcean, you will need to modify the system firewall for Enketo features in Central to work correctly.
+
+The quickest way to do this is to run ``ufw disable`` while logged into your server's command line prompt. You should see the message ``Firewall stopped and disabled on system startup``. If so, you have configured the firewall correctly.
+
+.. admonition:: For advanced administrators
+
+  While it sounds dangerous, disabling your system firewall does not put your server at greater risk. In fact, most Linux operating systems come with the system firewall disabled.
+
+  If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be really difficult to do correctly, so we don't recommend most people try. Another option is to use an upstream network firewall.
+
+  The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. In particular, if you can successfully ``curl`` your Central website over HTTPS on its public domain name from within the Enketo container, all Enketo features should work correctly.
