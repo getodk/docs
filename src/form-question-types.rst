@@ -1809,8 +1809,8 @@ If it's a possibility that an individual question could need different qualities
 
   select_one, yes_no, is_quiet, Are you currently in a quiet location with only one person speaking at a time?
 
-  audio recording_voice_only, Please record, quality='voice-only',, ${is_quiet} = 'yes'
-  audio recording_normal, Please record, quality='normal',, ${is_quiet} = 'no'
+  audio, recording_voice_only, Please record, quality='voice-only', ${is_quiet} = 'yes'
+  audio, recording_normal, Please record, quality='normal', ${is_quiet} = 'no'
 
 .. csv-table:: choices
   :header: list_name, name, label
