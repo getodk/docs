@@ -173,7 +173,25 @@ Custom database
 
   1. If you haven't followed the :ref:`common instructions <sync-endpoint-manual-setup-common>`, start with those.
   2. Remove the *db* and *db-bootstrap* sections in :file:`docker-compose.yml`.
-  3. Modify :file:`jdbc.properties`(under the directory :file:`config/sync-endpoint`) to match your database. Supported database systems are :program:`PostgreSQL`, :program:`MySQL` and :program:`Microsoft SQL Server`. Sample config for each type of database can be found `on Github <https://github.com/odk-x/sync-endpoint-default-setup>`_.
+  3. Modify :file:`jdbc.properties`(under the directory :file:`config/sync-endpoint`) to match your database. Supported database systems are :program:`PostgreSQL`, :program:`MySQL` and :program:`Microsoft SQL Server`. Sample config for PostgreSQL can be found `on Github <https://github.com/odk-x/sync-endpoint-default-setup>`_, and below are some more detailed config for each type of database.
+  
+	- :code:`jdbc.driverClassName=`
+	
+	  - :code:`org.postgresql.Driver (PostgreSQL)`
+	  - :code:`com.mysql.jdbc.Driver (MySQL)`
+	  - :code:`com.microsoft.sqlserver.jdbc.SQLServerDriver (Microsoft SQL Server)`
+	  
+	- :code:`jdbc.resourceName=jdbc/YOUR_DATASOURCE`
+	- :code:`jdbc.url=`
+	
+	  - :code:`jdbc:postgresql://YOUR_SERVER/YOUR_DATABASE?param1=value1&param2=value2&... (PostgreSQL)`
+	  - :code:`jdbc:mysql://YOUR_SERVER/YOUR_DATABASE?param1=value1&param2=value2&... (MySQL)`
+	  - :code:`jdbc:sqlserver://YOUR_SERVER;database=YOUR_DATABASE;param1=value1;param2=value2;... (Microsoft SQL Server)`
+	
+	- :code:`jdbc.username=YOUR_USERNAME` 
+	- :code:`jdbc.password=YOUR_PASSWORD`
+	- :code:`jdbc.schema=YOUR_SCHEMA`
+	
   4. Modify :file:`sync.env` to match your database
   5. In the cloned repository,
 
