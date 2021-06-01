@@ -13,12 +13,12 @@ If you don't already have a full system backup in place and don't want to set up
 
 .. _central-managed-backups:
 
-Managed backups
+Managed backups / Direct backups via API
 ---------------
 
 .. warning::
 
-  Managed backups include all of your collected data but do **NOT** include sufficient information to re-establish the same Web Form links. If you use :ref:`Public Links <central-submissions-public-link>` for broad surveying or share :ref:`links to Web Forms <central-submissions-direct>` through another system, we strongly recommend also making a full system backup.
+  Managed backups and `Direct backups via API <https://odkcentral.docs.apiary.io/#reference/system-endpoints/direct-backup/data-document>`_ include all of your collected data but do **NOT** include sufficient information to re-establish the same Web Form links. If you use :ref:`Public Links <central-submissions-public-link>` for broad surveying or share :ref:`links to Web Forms <central-submissions-direct>` through another system, we strongly recommend also making a full system backup.
 
   If you only use web forms for previews or for making submissions directly from Central, managed backups are sufficient. You can regenerate previews by uploading the same form with a new :ref:`form version <central-forms-updates>`. 
 
