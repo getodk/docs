@@ -14,7 +14,7 @@ If you don't already have a full system backup in place and don't want to set up
 .. _central-managed-backups:
 
 Managed backups / Direct backups via API
----------------
+----------------------------------------
 
 .. warning::
 
