@@ -24,6 +24,8 @@ ODK-X Sync Endpoint
 It communicates with your ODK-X Android applications to synchronize
 your data and application files.
 
+There is an important library called :dfn:`Sync Client` which implements the sync protocol by interacting with Sync Endpoint and other tools. The source of this library can be found here: `https://github.com/odk-x/sync-client <https://github.com/odk-x/sync-client/>`_. This is a library that can be used to execute the ODK-X sync protocol in Java applications.
+
 Depending on your needs, ODK-X Sync Endpoint can either be installed
 in a cloud-based virtual machine, or on your own infrastructure.
 
