@@ -300,6 +300,21 @@ file_issue_here = """
 https://github.com/odk-x/tool-suite-X/issues
 
 """
+check_out_youtube = """
+
+For video tutorials, you can check out our
+
+"""
+youtube_channel = """
+
+YouTube Channel
+
+"""
+youtube_channel_here = """
+
+https://www.youtube.com/channel/UCxOZGaf3xUiD85q8qJaw2bQ
+
+"""
 contri_start = """
 
 You are also encouraged to
@@ -351,6 +366,9 @@ rst_epilog = """
 .. |docs-issue| replace:: issue
 .. _docs-issue: https://github.com/odk-x/tool-suite-X/issues
 
+.. |youtube| replace:: YouTube Channel
+.. _youtube: https://www.youtube.com/channel/UCxOZGaf3xUiD85q8qJaw2bQ
+
 .. |forum| replace:: ODK-X Forum
 .. _forum: https://forum.odk-x.org
 
@@ -362,15 +380,18 @@ rst_epilog = """
 html_context = {'download_pdf' : download_pdf,
                 'odkx_pdf' : odkx_pdf,
                 'prob_in_doc' : prob_in_doc ,
+                'check_out_youtube' : check_out_youtube ,
                 'contri_start' : contri_start ,
                 'join' : join ,
                 'faq_help' : faq_help ,
                 'file_issue' : file_issue ,
+                'youtube_channel' : youtube_channel ,
                 'fork_repo' : fork_repo ,
                 'contri' : contri ,
                 'forum' : forum ,
                 'file_issue_here' : file_issue_here ,
                 'repo_here' : repo_here ,
+                'youtube_channel_here' : youtube_channel_here ,
                 'contri_guide' : contri_guide ,
                 'forum_here' : forum_here ,
                 'display_github' : True,
