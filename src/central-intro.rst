@@ -25,7 +25,7 @@ Here are some of the major features we support today:
 
  - Submission upload and management
 
-   - From filling from our mobile app or a web browser
+   - Form filling from our mobile app or a web browser
    - From permissions-managed known users or anonymous public links
    - With submission multimedia or data attachments
    - With an interactive table preview of submission data
