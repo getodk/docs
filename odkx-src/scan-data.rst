@@ -1,11 +1,11 @@
 Managing ODK-X Scan's Data
 ============================
 
-.. _scan-data:
+.. _odk-x-scan-data:
 
 ODK-X Scan shares a database with the rest of the ODK-X tools, and the data can be accessed using the normal means through the :doc:`cloud-endpoints-intro` and :doc:`suitcase-intro`. However, Scan adds extra columns to store snippets of each data field's original image, the image file type, and the data value predicted by Scan.
 
-.. _scan-using-suitcase:
+.. _odk-x-scan-using-suitcase:
 
 Suitcase Formatting
 ------------------------------------------

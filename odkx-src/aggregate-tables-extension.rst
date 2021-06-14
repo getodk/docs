@@ -3,13 +3,13 @@ ODK Aggregate Tables Extension
 .. warning::
     Aggregate is deprecated and no longer supported.
 
-.. _aggregate-tables-extension-intro:
+.. _aggregate-tables-extension-introduction:
 
 :dfn:`ODK Aggregate Tables Extensions` enable the ODK-X tools to share data via bi-directional synchronization with a central ODK Aggregate server. However, this approach is no longer supported, please migrate to :doc:`sync-endpoint`.
 
 The `ODK-X REST Protocol <https://docs.odk-x.org/odk-2-sync-protocol/>`_ is compatible with ODK Aggregate v1.4.15. The sync protocol has been augmented to cache the user's permissions on the device and, for super-users or administrators, to cache the full set of users and all of their permissions (so that the super-user and/or administrator can assign rows to particular individuals).
 
-.. _aggregate-tables-extension-server-setup:
+.. _aggregate-tables-extension-intro-server-setup:
 
 Server Setup
 -------------------
@@ -27,7 +27,7 @@ First you’ll have to install ODK Aggregate v1.4.15 to a server.
   #. Select at least one user to be the administrator and grant them :guilabel:`Administer Tables` permissions. This user will have the ability to :guilabel:`Reset App Server` from the Android device and add or remove tables and configuration files on the server. This is the equivalent of the Form Manager permissions in ODK deployments.
   #. Click :guilabel:`Save Changes`. These changes will not take effect until you do!
 
-.. _aggregate-tables-extension-changing-appname:
+.. _aggregate-tables-extension-changing-application-name:
 
 Changing the AppName
 -----------------------

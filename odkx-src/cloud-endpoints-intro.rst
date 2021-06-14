@@ -16,4 +16,3 @@ Learn more about ODK-X Cloud Endpoints
 -------------------------------------------
 
 - :doc:`sync-endpoint`
-- :doc:`aggregate-tables-extension`

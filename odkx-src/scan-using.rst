@@ -4,16 +4,16 @@
 Using ODK-X Scan
 ====================
 
-.. _scan-using:
+.. _odk-x-scan-using:
 
 .. contents:: :local:
 
-.. _scan-using-scanning-form:
+.. _odk-x-scan-using-scanning-form:
 
 Scanning a Form
 ------------------------------------------
 
-.. _scan-using-scanning-form-prior:
+.. _odk-x-scan-using-scanning-form-prior:
 
 Prior to scanning
 ~~~~~~~~~~~~~~~~~~~
@@ -26,7 +26,7 @@ Open the Scan app, and be sure that the template you want to use this session is
   :alt: Example of Scan template selection
   :class: device-screen-vertical
 
-.. _scan-using-scanning-form-scanning:
+.. _odk-x-scan-using-scanning-form-scanning:
 
 Scanning the form
 ~~~~~~~~~~~~~~~~~~~
@@ -62,12 +62,12 @@ Scanning the form
   .. image:: /img/scan-using/scan-stand.*
     :alt: Custom build stand for improved Scan accuracy
 
-.. _scan-using-survey:
+.. _odk-x-scan-using-survey:
 
 Survey: View, Verify, & Edit Data
 ------------------------------------------
 
-.. _scan-using-survey-review:
+.. _odk-x-scan-using-survey-review:
 
 Reviewing Your Data
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -78,7 +78,7 @@ You'll be taken to Survey after pressing :guilabel:`Transcribe` on a scan. There
   :alt: View of a scanned form in ODK-X Survey
   :class: device-screen-vertical
 
-.. _scan-using-survey-verify:
+.. _odk-x-scan-using-survey-verify:
 
 To verify and edit any of the data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -109,7 +109,7 @@ Navigate to the next section to validate and edit either by:
     :alt: View of a scanned text field in ODK-X Survey
     :class: device-screen-vertical
 
-.. _scan-using-survey-finalize:
+.. _odk-x-scan-using-survey-finalize:
 
 Saving and Finalizing Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -124,7 +124,7 @@ Once you've verified all the fields, select :menuselection:`Form Name --> Finali
   :alt: Finalizing changes in ODK-X Survey
   :class: device-screen-vertical
 
-.. _scan-using-tables:
+.. _odk-x-scan-using-tables:
 
 Your Data in Tables
 ------------------------------------------

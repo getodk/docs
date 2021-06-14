@@ -151,7 +151,6 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
   xlsx-converter-intro
   tables-web-pages
   injected-interfaces
-  scan-form-designer-intro
 
 .. toctree::
   :maxdepth: 2
@@ -163,7 +162,6 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
   sync-endpoint-cloud-setup
   sync-endpoint-manual-setup
   sync-endpoint-user-instructions.rst
-  aggregate-tables-extension
 
 .. toctree::
   :maxdepth: 2
@@ -171,17 +169,6 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
   :caption: Suitcase
 
   suitcase-intro
-
-.. toctree::
-  :maxdepth: 2
-  :hidden:
-  :caption: Scan
-
-  scan-intro
-  scan-install
-  scan-using
-  scan-managing
-  scan-data
 
 .. toctree::
   :maxdepth: 2
@@ -205,6 +192,21 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
   :caption: Contributing
 
   contributing
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Currently Not Supported
+
+  scan-intro
+  scan-form-designer-intro
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Deprecated
+
+  aggregate-tables-extension
 
 .. toctree::
   :maxdepth: 2
