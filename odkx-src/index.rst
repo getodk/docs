@@ -112,7 +112,7 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
   tables-sample-app
   getting-started-2-architect
   reference-apps
-
+  trouble-shooting
 
 .. toctree::
   :maxdepth: 2
