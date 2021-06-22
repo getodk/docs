@@ -52,3 +52,10 @@ Before installing Central on your server, you need to install Docker and Docker 
 After installing Docker and Docker Compose you can follow our DigitalOcean instructions from running ``git clone https://github.com/getodk/central``. Continue with the DigitalOcean instructions for logging into Central.
 
 Finally, :ref:`configure an e-mail service <central-install-digital-ocean-custom-mail>` such as `Amazon SES <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-smtp.html>`_ because Amazon restricts emails sent from EC2.
+
+Installing on Windows
+~~~~~~~~~~~~~~~~~~~~~~
+We strongly recommend using Linux, preferably the latest Ubuntu Server LTS, as the host operating system (natively or in a virtual machine) for your Central install. 
+
+If you wish use Windows as the host, you'll need to install Node.js, Docker, Docker Compose, and git. You'll then need to clone the Central repository with the correct line endings.
+``git clone -c core.autocrlf=false https://github.com/getodk/central``
