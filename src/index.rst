@@ -26,7 +26,6 @@ While this is the recommended workflow, it is not the only way to do things. ODK
 
 Additional ODK tools are:
 
-- :doc:`aggregate-intro`, a proven server. We now generally recommend Central but those with existing Aggregate servers may choose to continue using them.
 - :doc:`build-intro`, a drag-and-drop form designer. We generally recommend XLSForm for its flexibility but users only building very simple forms may prefer Build.
 - :doc:`briefcase-intro`, a desktop tool that pulls and exports data from Aggregate and Collect.
 
