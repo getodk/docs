@@ -129,7 +129,7 @@ Here are the keys for all settings and the set of values they can take:
 
       // User interface
       "appTheme": {"light_theme", "dark_theme"},
-      "app_language": BCP 47 language codes. The ones supported by Collect are: {"af", "am", "ar", "bn", "ca", "cs", "de", "en", "es", "et", "fa", "fi", "fr", "hi", "in", "it", "ja", "ka", "km", "ln", "lo_LA", "lt", "mg", "ml", "mr", "ms", "my", "ne_NP", "nl", "no", "pl", "ps", "pt", "ro", "ru", "si", "sl", "so", "sq", "sr", "sv_SE", "sw", "sw_KE", "te", "th_TH", "ti", "tl", "tr", "uk", "ur", "ur_PK", "vi", "zh", "zu"},
+      "app_language": BCP 47 language codes. The ones supported by Collect are: {"af", "am", "ar", "bg", "bn", "ca", "cs", "da", "de", "en", "es", "et", "fa", "fi", "fr", "hi", "in", "it", "ja", "ka", "km", "ln", "lo_LA", "lt", "mg", "ml", "mr", "ms", "my", "ne_NP", "nl", "no", "pl", "ps", "pt", "ro", "ru", "rw", "si", "sl", "so", "sq", "sr", "sv_SE", "sw", "sw_KE", "te", "th_TH", "ti", "tl", "tr", "uk", "ur", "ur_PK", "vi", "zh", "zu"},
       "font_size": {13, 17, 21, 25, 29},
       "navigation": {"swipe" ,"buttons" ,"swipe_buttons"},
       "showSplash": Boolean,
