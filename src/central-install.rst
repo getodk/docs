@@ -57,5 +57,6 @@ Installing on Windows
 ~~~~~~~~~~~~~~~~~~~~~~
 We strongly recommend using Linux, preferably the latest Ubuntu Server LTS, as the host operating system (natively or in a virtual machine) for your Central install. 
 
-If you wish use Windows as the host, you'll need to install Node.js, Docker, Docker Compose, and git. You'll then need to clone the Central repository with the correct line endings.
-``git clone -c core.autocrlf=false https://github.com/getodk/central``
+If you wish to use Windows as the host, it's a good idea to read through the :doc:`instructions we've provided <central-install-digital-ocean>` for DigitalOcean, as many of the steps remain the same or similar.
+
+The major differences are that you'll first need to install Git, Node.js, Docker, and Docker Compose. You'll also need to clone the Central repository with the correct line endings: ``git clone -c core.autocrlf=false https://github.com/getodk/central``.
