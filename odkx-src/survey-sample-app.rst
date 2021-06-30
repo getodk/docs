@@ -1,4 +1,4 @@
-Trying Out an ODK-X Survey Application
+Trying Out ODK-X Survey
 ========================================
 
 .. _survey-sample-app:

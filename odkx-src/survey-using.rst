@@ -3,7 +3,7 @@
   myapp
 
 
-Using ODK-X Survey
+ODK-X Survey
 ======================
 
 .. _survey-intro:

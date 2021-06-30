@@ -97,4 +97,10 @@ Setting up ODK-X Notify
 
   You can also `download the ODK-X Notify-Bat APK <https://github.com/odk-x/skunkworks-bat/releases/>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
 
+Using ODK-X Notify
+-------------------------
 
+.. toctree::
+  :maxdepth: 2
+
+  notify-using

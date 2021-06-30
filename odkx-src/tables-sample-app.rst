@@ -1,4 +1,4 @@
-Trying Out an ODK-X Tables Application
+Trying Out ODK-X Tables
 ===============================================
 
 In this guide we will be demonstrating how to use ODK-X Tables via a guided tour of a sample application.

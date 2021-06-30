@@ -117,37 +117,12 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
 .. toctree::
   :maxdepth: 2
   :hidden:
-  :caption: Survey
+  :caption: Building your own Application
 
-  survey-using
-
-.. toctree::
-  :maxdepth: 2
-  :hidden:
-  :caption: Tables
-
-  tables-using
-  tables-managing
-  tables-internals
-
-.. toctree::
-  :maxdepth: 2
-  :hidden:
-  :caption: Services
-
-  services-using
-  services-managing
-  services-internals
-
-.. toctree::
-  :maxdepth: 2
-  :hidden:
-  :caption: Application Building
-
+  build-app
   app-designer-intro
   app-designer-setup
   app-designer-using
-  build-app
   xlsx-converter-intro
   tables-web-pages
   injected-interfaces
@@ -155,7 +130,17 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
 .. toctree::
   :maxdepth: 2
   :hidden:
-  :caption: Cloud Endpoints
+  :caption: Mobile Apps
+
+  survey-using
+  tables
+  services
+  notify-install
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Cloud Apps
 
   cloud-endpoints-intro
   sync-endpoint
@@ -166,17 +151,17 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
 .. toctree::
   :maxdepth: 2
   :hidden:
-  :caption: Suitcase
+  :caption: Desktop Apps
 
   suitcase-intro
 
-.. toctree::
-  :maxdepth: 2
-  :hidden:
-  :caption: Notify
+.. .. toctree::
+..   :maxdepth: 2
+..   :hidden:
+..   :caption: Notify
 
-  notify-install
-  notify-using
+..   notify-install
+..   notify-using
 
 .. toctree::
   :maxdepth: 2
@@ -200,12 +185,6 @@ The :doc:`tables-sample-app` walks you through the process of using a basic tabl
 
   scan-intro
   scan-form-designer-intro
-
-.. toctree::
-  :maxdepth: 2
-  :hidden:
-  :caption: Deprecated
-
   aggregate-tables-extension
 
 .. toctree::
