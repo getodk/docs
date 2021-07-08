@@ -117,9 +117,7 @@ It is okay to abandon an issue
 
 Sometimes you simply cannot complete work you have said you were going to complete. This could happen because you don't have all the required skills or knowledge to complete the work, or because the issue cannot actually be completed as scoped, or because you don't have the time.
 
-Please let the community know in the issue discussion.
-
-  @opendatakit-bot unclaim
+Please let the community know in the issue discussion. You can do that by leaving a comment asking to be unassigned from the issue.
 
 This way, everyone knows that someone else can take up the project (or that we need to rethink it).
 
@@ -160,7 +158,7 @@ Actually install and use ODK-X or other tools
 
 You cannot write effectively about tools you have not used. If you're going to write or edit documentation about any of the apps in the ODK ecosystem, you need to spend some time actually using it.
 
-Before diving into writing documentation, try out the core tools `here https://odk-x.org/software` and become familiar with them.
+Before diving into writing documentation, try out the core tools `here <https://odk-x.org/software>`_ and become familiar with them.
 
 This is also true of writing about Sphinx or any of our documentation build tools. Reading existing documentation is not enough to write about something.
 
