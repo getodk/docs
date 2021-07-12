@@ -1,0 +1,34 @@
+{%- extends "layout.html" %}
+{% set title = _('Search') %}
+{% set display_vcs_links = False %}
+{%- block scripts %}
+    {{ super() }}
+{%- endblock %}
+{% block footer %}
+  <script>
+    jQuery(function() { Search.loadIndex("{{ pathto('searchindex.js', 1) }}"); });
+  </script>
+  {# this is used when loading the search index using $.ajax fails,
+     such as on Chrome for documents on localhost #}
+  <script id="searchindexloader"></script>
+  {{ super() }}
+{% endblock %}
+{% block body %}
+  <noscript>
+  <div id="fallback" class="admonition warning">
+    <p class="last">
+      {% trans trimmed %}Please activate JavaScript to enable the search
+      functionality.{% endtrans %}
+    </p>
+  </div>
+  </noscript>
+
+  {% if search_performed %}
+    {# Translators: Search is a noun, not a verb #}
+    <h2>{{ _('Search Results') }}</h2>
+    {% if not search_results %}
+      <p>{{ _('Your search did not match any documents. Please make sure that all words are spelled correctly and that you\'ve selected enough categories.') }}</p>
+    {% endif %}
+  {% endif %}
+  <div class="gcse-searchresults-only"></div>I
+{% endblock %}
