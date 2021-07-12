@@ -5,6 +5,8 @@ Cold Chain Guided Tour
 
 This document guides you through the :doc:`cold-chain-intro`, named Cold Chain. This application is stateful and does not have a single workflow to follow. Therefore it is organized by area of interest, with each classification broken down into different workflows and modules contained within it. Each individual module contains both a brief description of the purpose and function of the module, as well as an overview of how that functionality is implemented.
 
+You can view a visual walk through of the Cold Chain workflows `here <https://youtu.be/qX6VJnI6JnM>`_ on our YouTube channel.
+
 .. note::
 
   All file paths in this document are inside of the Application Designer directory. Additionally, all user defined files in a Data Management Application are inside the :file:`app/config/` directory. For convenience this document omits these portions of the file paths.

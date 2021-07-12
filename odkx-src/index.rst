@@ -55,8 +55,8 @@ List of Tools
 The ODK-X Tool Suite consists of:
 
   - :doc:`survey-using` - a customizable data **collection** application.
-  - :doc:`tables-using` - a data **curation and visualization** application that can also run custom-built data collection workflows.
-  - :doc:`services-using` - an application for **user authentication and data synchronization** between the ODK-X applications.
+  - :doc:`tables` - a data **curation and visualization** application that can also run custom-built data collection workflows.
+  - :doc:`services` - an application for **user authentication and data synchronization** between the ODK-X applications.
   - :doc:`cloud-endpoints-intro` - a **cloud server** to host data and application files, and to support bi-directional data synchronization across mobile devices.
   - :doc:`suitcase-intro` - a **desktop tool** for synchronizing data with a cloud endpoint.
   - :doc:`app-designer-intro` - a design environment for **creating, customizing, and previewing** your forms, data curation, and visualization applications. This is where you build your ODK-X applications.

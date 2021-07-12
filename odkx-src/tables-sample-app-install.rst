@@ -4,7 +4,7 @@ Install the Sample Application
 Prerequisites
 ---------------
 
-Install ODK-X Tables and its prerequisites from the guide :doc:`basics-install`.
+:ref:`Install ODK-X Tables <tables-install>` and its prerequisites from the guide :doc:`basics-install`.
 
 .. _tables-sample-app-install:
 

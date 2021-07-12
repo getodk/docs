@@ -1,7 +1,7 @@
 Selecting the Appropriate Tool Suite
 ======================================
 
-Generally, we suggest starting with the ODK tool suite. If it does not fulfill your requirements then move on to the more flexible, but also more complex, ODK-X tool suite.
+Generally, we suggest starting with the `ODK Tool Suite <https://docs.getodk.org/getting-started/#getting-started-with-odk>`_. If it does not fulfill your requirements then move on to the more flexible, but also more complex, ODK-X tool suite.
 
 The feature comparison table below illustrates the differences between the ODK and ODK-X tools.
 

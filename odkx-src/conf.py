@@ -56,7 +56,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'ODK-X'
-copyright = '2020, ODK-X. This document is licensed under a Creative Commons Attribution 4.0 International License'
+copyright = '2021, ODK-X. This document is licensed under a Creative Commons Attribution 4.0 International License.'
 author = 'ODK-X'
 
 # The version info for the project you're documenting, acts as replacement for

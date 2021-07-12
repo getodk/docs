@@ -42,7 +42,7 @@ The screen shows a *Graph View* of the crop height data collected for the *Ungon
 
 .. tip::
 
-  The graph was rendered using the :program:`D3` JavaScript library. That library can render scatter plots, line graphs, graphs with error bars, and many other visualizations.
+  The graph was rendered using the `D3 <https://d3js.org/>`_ JavaScript library. That library can render scatter plots, line graphs, graphs with error bars, and many other visualizations.
 
 .. _tables-sample-app-graph-update:
 

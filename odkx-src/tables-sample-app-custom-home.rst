@@ -3,13 +3,13 @@ Custom Home Screen
 
 .. _tables-sample-app-custom-home-screen:
 
-Open Tables. If you have successfully installed the sample application, you should be presented with a custom home screen showing the five demo apps.
+Open the Tables app. If you have successfully installed the sample application, you should be presented with a custom home screen showing the five demo apps.
 
   .. image:: /img/tables-sample-app/tables-sample-home.*
     :alt: Tables Sample Application Home
     :class: device-screen-vertical
 
-Tables allows your organization to customize the home screen of your Data Management Application. By default Tables will only show a list of the data tables defined on the device (called the *Table Manager*). But with a custom home screen your organization can implement their own complex workflow and look-and-feel with HTML, CSS, and JavaScript. An example of this is what is displayed after downloading the sample application.
+ODK-X Tables allows your organization to customize the home screen of your Data Management Application. By default Tables will only show a list of the data tables defined on the device (called the *Table Manager*). But with a custom home screen your organization can implement their own complex workflow and look-and-feel with HTML, CSS, and JavaScript. An example of this is what is displayed after downloading the sample application.
 
 .. note::
 
