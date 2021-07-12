@@ -25,7 +25,12 @@ Preview
 -----------
 The :guilabel:`Preview` tab (shown above) has several controls:
 
-  - :guilabel:`Purge Database` -- during development, if you are adding new fields or changing their data types, you will need to purge the database so that the database structure can be re-generated with the proper fields and data types.
+  - :guilabel:`Purge Database` -- during development, if you are adding new fields or changing their data types, you will need to purge the database so that the database structure can be re-generated with the proper fields and data types. 
+  
+    .. note::
+    
+      If the database exists when :guilabel:`Purge Database` is clicked, the alert box at the top of the screen will say **"Database Tables Purged"**. However, if no database exists you will see that error message that says **"[Object SQLError]"** because there is no database left.
+    
   - :guilabel:`Device Dimensions` -- what dimensions to make the window below.
 
 The Launch Page opens the ODK-X Survey Framework Page. This is the :file:`formDef.json` in the Android device's application frameworks folder (:file:`/sdcard/opendatakit/default/config/assets/framework/forms/framework`). The contents of this form are defined by the :file:`framework.xlsx` file in that same directory.
