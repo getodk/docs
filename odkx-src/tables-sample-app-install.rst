@@ -46,7 +46,7 @@ When complete, click :guilabel:`OK` on the :guilabel:`Sync Outcome` dialog and b
 
 .. note::
 
-  If there are merge conflicts, click :guilabel:`Take Server Version - Discard Local Changes` to resolve it.
+  If there are sync conflicts, see :ref:`services-using-resolve-conflict` for information on resolving sync conflicts.
 
 If the sync was successful, ODK-X Tables will scan through the downloaded configuration, updating its list of available forms.
 
