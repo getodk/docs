@@ -44,6 +44,10 @@ Once the configuration and data on the device is an exact match to that of the s
 
 When complete, click :guilabel:`OK` on the :guilabel:`Sync Outcome` dialog and back out of the Services, returning to Tables.
 
+.. note::
+
+  If there are sync conflicts, see :ref:`services-using-resolve-conflict` for information on resolving sync conflicts.
+
 If the sync was successful, ODK-X Tables will scan through the downloaded configuration, updating its list of available forms.
 
   .. image:: /img/tables-sample-app/tables-sample-scan.*
