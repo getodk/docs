@@ -3,6 +3,9 @@
   Ctrl
   Cmd
   concat
+  ã
+  ß
+  箸
 
 
 .. _central-submissions-overview:
@@ -113,6 +116,12 @@ Once the :file:`.zip` completes downloading, you will find one or more files whe
  - Join table :file:`.csv` files representing any repeats you may have in your form, with join columns on the left of each table relating each row to its counterpart in the parent table. Each join table is named to reflect its relationship with the others. If there is only one :file:`.csv` file, then your form has no repeats.
  - A folder named :file:`files` which contains subfolders, each named after an ``instanceId`` of a submission. Each subfolder then contains a set of file attachments relating to that submission. If no :file:`files` folder exists, then no multimedia attachments have been submitted to this form.
  - If you have enabled :doc:`Client Audit Logging <form-audit-log>` on your form, and log events have been submitted to the server, then you will find a file that ends with :file:`- audit.csv`. This file combines all the logging data from all submissions to the form into a single table.
+
+.. tip::
+
+  Excel will not import CSVs with Unicode characters like ã, ß, and 箸 correctly if you double-click the file or open it from the File menu. You must use the `Text Import Wizard <https://support.microsoft.com/en-us/office/text-import-wizard-c5b02af6-fda1-4440-899f-f78bafe41857>`_ and specify a file origin of Unicode (UTF-8, 65001) and the comma delimiter.
+
+  Rather than downloading CSVs manually, you can also :ref:`connect Excel directly to Central via OData <central-submissions-odata>` and get a live-updating spreadsheet.
 
 .. _central-submissions-odata:
 
