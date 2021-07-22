@@ -1,3 +1,7 @@
+.. spelling::
+
+  geocoding
+
 .. _central-install-digital-ocean:
 
 Installing Central on DigitalOcean
@@ -275,7 +279,7 @@ Using a Custom Database Server
 
 Central ships with a PostgreSQL database server. To use your own custom database server:
 
-1. Ensure you have a PostgresSQL database server visible to your Central server network host.
+1. Ensure you have a PostgreSQL database server visible to your Central server network host.
 2. Ensure your database has ``UTF8`` encoding by running the following command on the database.
 
   .. code-block:: console
@@ -349,6 +353,21 @@ DKIM is a security trust protocol which is used to help verify mail server ident
      docker-compose up -d mail
 
    If you see an error that says ``Can't open "rsa.private" for writing, Is a directory.``, you will need to ``rmdir ~/central/files/dkim/rsa.private``, then attempt ``docker-compose build mail`` again. If you see some other error, you may need to first remove your old mail container (``docker-compose rm mail``).
+
+.. _central-install-digital-ocean-enketo:
+
+Customizing Enketo
+------------------
+
+.. warning::
+  Changing Enketo's configuration may break Central in subtle and unexpected ways. Do not make changes if you do not understand the implications of those changes.
+
+Enketo is the software that Central uses to render forms in a web browser. It is used for form previews, web browser submission, and submission editing. Common customizations include enabling geocoding, adding analytics, and setting a default theme.
+
+1. Read the Enketo `configuration tutorial <https://enketo.github.io/enketo-express/tutorial-10-configure.html>`_ and `default-config.json <https://github.com/enketo/enketo-express/blob/master/config/default-config.json>`_ to understand what is possible.
+2. Edit the file ``files/enketo/config.json.template`` to reflect your desired changes.
+3. Build and run: ``docker-compose build``, ``docker-compose stop``, ``docker-compose up -d``.
+
 
 .. _central-install-digital-ocean-sentry:
 
