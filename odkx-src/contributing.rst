@@ -9,4 +9,3 @@ Contributing to ODK-X Docs
   docs-style-guide
   docs-developer-guide
   contributing-tips
-  cygwin
