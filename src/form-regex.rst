@@ -63,7 +63,7 @@ Tips on using regular expressions
 
  .. code-block:: xml
 
-   <bind constraint="Regex(.,'^[a-zA-Z]{0,6}$')" jr:constraintMsg="Input can have a maximum of 6 alphabetic characters." nodeset="/regex_ex/ex" type="string"/>
+   <bind constraint="regex(.,'^[a-zA-Z]{0,6}$')" jr:constraintMsg="Input can have a maximum of 6 alphabetic characters." nodeset="/regex_ex/ex" type="string"/>
 
    <input ref="/regex_ex/ex">
       <label>Enter example</label>
@@ -92,7 +92,7 @@ Tips on using regular expressions
 
  .. code-block:: xml
      
-   <bind constraint="Regex(.,'^(([0-9]{1})*[- .(]*([0-9]{3})[- .)]*[0-9]{3}[- .]*[0-9]{4})+$')" jr:constraintMsg="Telephone numbers should have 10 digits with optional separators." nodeset="/regex_ex/tel_no" type="string"/> 
+   <bind constraint="regex(.,'^(([0-9]{1})*[- .(]*([0-9]{3})[- .)]*[0-9]{3}[- .]*[0-9]{4})+$')" jr:constraintMsg="Telephone numbers should have 10 digits with optional separators." nodeset="/regex_ex/tel_no" type="string"/> 
    
    <input appearance="numbers" ref="/regex_ex/tel_no">
       <label>Enter your Telephone number"</label>
