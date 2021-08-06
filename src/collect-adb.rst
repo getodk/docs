@@ -3,8 +3,8 @@
   logcat
   bugreport
   screencap
-  
-	
+
+
 Using Android Debug Bridge with Collect
 ===========================================
 
@@ -29,7 +29,7 @@ Installing and setting up ADB
 Android Studio
 ~~~~~~~~~~~~~~~~~
 
-The easiest and most well-supported way to install ADB is to 
+The easiest and most well-supported way to install ADB is to
 install `Android Studio`_,
 which includes ADB.
 After installing, you'll need to
@@ -67,7 +67,7 @@ Loading blank forms
 
 .. note::
 
-  The target path on the phone 
+  The target path on the phone
   (the last part of the command)
   must include the file name.
 
@@ -91,25 +91,25 @@ To download all filled records from a device:
 
   $ adb pull <collect-directory>/instances/*
 
-  
+
 .. _adb-dev-tasks:
-  
+
 Developer tasks and troubleshooting with ADB
 -----------------------------------------------
-  
+
 .. _downloading-database-with-adb:
 
 Downloading Collect databases
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Collect stores form definition and form record state information
-in a few SQLite databases, 
+in a few SQLite databases,
 which you can pull onto your local computer.
 
 .. code-block:: console
-  
+
   $  adb pull <collect-directory>/metadata/*.db
-  
+
 .. _saving-screenshot-with-adb:
 
 Taking screenshots
@@ -128,7 +128,7 @@ To pull the saved image locally:
 .. note::
 
   ODK Docs contributors can use the :ref:`screenshot utility script <screenshots>`, which wraps the :command:`adb` commands and assists with saving the images to the correct location and inserting appropriate markup in the documentation source.
-  
+
 .. _recording-video-with-adb:
 
 Recording video
@@ -149,7 +149,7 @@ To pull the video locally:
   $ adb pull /sdcard/video-name.png
 
 .. _adb-debug-logs:
-  
+
 Capturing logs for debugging
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -167,14 +167,14 @@ use :command:`adb logcat` to capture log events during the crash.
    .. code-block:: console
 
      adb logcat > logfile.txt
-  
+
    This will write all logged errors to your local file :file:`logfile.txt` as they occur.
 
 #. Reproduce the bug or crash event.
 
 #. Type :kbd:`CTRL-C` to stop logging.
 
-You can then upload the :file:`logfile.txt` file to 
+You can then upload the :file:`logfile.txt` file to
 a `a support forum post <https://forum.getodk.org/c/support>`_
 or post in the |forum|.
 
@@ -183,13 +183,13 @@ or post in the |forum|.
 Pull a bug report
 """"""""""""""""""
 
-If more in-depth information is needed, 
+If more in-depth information is needed,
 you can pull a complete bug report from the device.
 
 .. code-block:: console
 
   adb bugreport
-  
+
 This copies a ZIP file locally containing all system messages,
 error logs, and diagnostic output,
 along with information about the device's
@@ -206,7 +206,6 @@ The ODK Collect directory on your device is:
 
 * :file:`/sdcard/odk` if you are running an ODK Collect version less than v1.26.0 or have a file migration banner on the main screen
 * :file:`/sdcard/Android/data/org.odk.collect.android/files` if you have ODK Collect version v1.26.0+ and don't have a file migration banner on the main screen
+* If you have Collect 2021.2 or later then each Project will have its own directory which can be found in :file:`/sdcard/Android/data/org.odk.collect.android/files/projects`. Each :doc:`Project <projects>` directory will contain a blank file with the same name as the project so you can identify it.
 
-Prior to ODK Collect v1.26.0, all Collect files were stored in the :file:`/sdcard/odk` directory. This directory was available to other applications to integrate with which can be very useful but can pose privacy risks.
-
-Starting August 2020, Google will no longer allow Android applications to read or write files directly to this folder. Instead, each application will only be able to write files to a special directory that only it has access to. You can read more about this change `on the forum <https://forum.getodk.org/t/odk-collect-v1-26-storage-migration/25268>`_.
+Prior to ODK Collect v1.26.0, all Collect files were stored in the :file:`/sdcard/odk` directory. This directory was available to other applications to integrate with which can be very useful but can pose privacy risks. Starting August 2020, Google will no longer allow Android applications to read or write files directly to this folder. Instead, each application will only be able to write files to a special directory that only it has access to. You can read more about this change `on the forum <https://forum.getodk.org/t/odk-collect-v1-26-storage-migration/25268>`_.
