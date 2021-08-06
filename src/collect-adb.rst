@@ -206,6 +206,6 @@ The ODK Collect directory on your device is:
 
 * :file:`/sdcard/odk` if you are running an ODK Collect version less than v1.26.0 or have a file migration banner on the main screen
 * :file:`/sdcard/Android/data/org.odk.collect.android/files` if you have ODK Collect version v1.26.0+ and don't have a file migration banner on the main screen
-* If you have Collect 2021.2 or later then each ref:`Project <collect-projects>` will have its own directory which can be found in :file:`/sdcard/Android/data/org.odk.collect.android/files/projects`. The Project directories will contain a blank file with the same name as the Project itself so you can identify it.
+* If you have Collect 2021.2 or later then each :ref:`Project <collect-projects>` will have its own directory which can be found in :file:`/sdcard/Android/data/org.odk.collect.android/files/projects`. The Project directories will contain a blank file with the same name as the Project itself so you can identify it.
 
 Prior to ODK Collect v1.26.0, all Collect files were stored in the :file:`/sdcard/odk` directory. This directory was available to other applications to integrate with which can be very useful but can pose privacy risks. Starting August 2020, Google will no longer allow Android applications to read or write files directly to this folder. Instead, each application will only be able to write files to a special directory that only it has access to. You can read more about this change `on the forum <https://forum.getodk.org/t/odk-collect-v1-26-storage-migration/25268>`_.
