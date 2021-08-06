@@ -5,22 +5,18 @@ ODK Collect is used to fill forms with participants. Filled forms then need to b
 
 We recommend using :ref:`ODK Central <central-intro>` as your server and configuring Collect by QR code. :doc:`Central <central-intro>` provides user and project management features as well as tools for viewing and exporting data. For complex data collection projects, it is usually the right choice. Organizations can choose to use their own infrastructure and have total control over their server configuration. However, setting up and maintaining a server requires technical skills.
 
-Simple projects can choose to send data directly to :doc:`Google Sheets <collect-connect-google>`.
+If you'd just like to try out ODK Collect without setting up a server, you can use the demo server which provides some sample forms. You can set this up by tapping :guilabel:`Try a demo` at the bottom of the screen when you first launch Collect.
 
 .. _collect-connect-qr-code:
 
 Configure server from QR code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. From the Action Button (:guilabel:`⋮`), select :menuselection:`Configure via QR code`
-
-    .. image:: /img/collect-configure/quick-qr-code.*
-      :alt: Configure via QR code
-      :class: device-screen-vertical
+#. When you first launch Collect, tap on :guilabel:`Configure with QR code`
 
 #. Position the QR code in the center of the camera field, under the red line. When the camera focuses on the code, it will beep and scan the code.
 
-#. Collect will apply the settings from the code and go back to the landing screen.
+#. Collect will apply the settings from the code and move you to the :ref:`Main Menu <main-menu>`.
 
 .. seealso::
 
