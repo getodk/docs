@@ -20,6 +20,7 @@ To use ODK Collect:
 .. toctree::
   :maxdepth: 2
 
+  collect-projects
   collect-forms
   collect-filling-forms
   collect-settings

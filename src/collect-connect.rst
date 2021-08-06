@@ -7,6 +7,8 @@ We recommend using :ref:`ODK Central <central-intro>` as your server and configu
 
 If you'd just like to try out ODK Collect without setting up a server, you can use the demo server which provides some sample forms. You can set this up by tapping :guilabel:`Try a demo` at the bottom of the screen when you first launch Collect.
 
+If you'd like to connect Collect to more than one server (or to the same server using different users) you can :ref:`add a new Project <collect-add-project>` for each server (or user).
+
 .. _collect-connect-qr-code:
 
 Configure server from QR code
