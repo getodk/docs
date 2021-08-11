@@ -17,7 +17,7 @@ In order to fill out forms with survey participants, you must first load blank f
 
 .. _in-app-get-blank-forms:
 
-Loading Forms from a server
+Loading forms from a server
 -----------------------------
 
 If you have connected ODK Collect to a :doc:`server <collect-connect>` or :doc:`Google Drive Account <collect-connect-google>`:
