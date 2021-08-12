@@ -120,6 +120,18 @@ Uploading to the server
 Resetting the server
   The :guilabel:`Reset` button can be found under the :guilabel:`Clear` tab. Clicking it will reset the the server after a warning and a confirmation.
 
+  .. _suitcase-gui-update:
+  
+Updating data in the server
+  The :guilabel:`Update` button can be found under the :guilabel:`Update` tab. Select the Table ID to update from the dropdown. Open the file chooser by clicking on the'...' button and select the csv to be used for update.
+  To update the data on the server you need a correctly formatted CSV – follow the instructions for :ref:`Preparing your CSV for upload <suitcase-csv>`.
+
+  .. _suitcase-gui-delete:
+  
+Deleting from the server
+  The :guilabel:`Delete` button can be found under the :guilabel:`Clear` tab. Select the Table ID to delete from the dropdown and click on delete. Selected Table ID will be deleted from the server after a warning and a confirmation.
+
+
 .. _suitcase-using-cli:
 
 Command Line Interface (CLI)
