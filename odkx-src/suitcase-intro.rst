@@ -34,6 +34,8 @@ Installing ODK-X Suitcase
 
   2. ODK-X Suitcase requires no installation and is ready to use.
 
+.. _suitcase-use-app:
+
 Using ODK-X Suitcase
 ------------------------------
 
@@ -59,7 +61,7 @@ Otherwise, please specify an ODK-X Cloud Endpoint username and password with suf
   .. note:: 
     By default :guilabel:`App ID = default`,to use your own App ID uncheck the option to use default App ID, check the second paragraph of :ref:`ODK-X Data Management Applications <build-app-data-mgt-apps>` to see more details.
 
-Suitcase remembers the last username and server url entered. You can check the “save password” option to keep yourself logged in when you open the application again. To log out of the application you can use the logout button in a menu on the top left of the Application.
+Suitcase remembers the last username and server url entered. You can check the :guilabel:`save password` option to keep yourself logged in when you open the application again. To log out of the application you can use the logout button in a menu on the top left of the Application.
 
 There are four tabs at the top of the graphical interface:
   - :guilabel:`Download`, to download existing data from the server
@@ -70,11 +72,11 @@ There are four tabs at the top of the graphical interface:
   .. _suitcase-gui-download:
 
 Downloading from the server
-  When downloading, you will need to select the table_id from the dropdown. The dropdown will contain all the table_ids present in the cloud endpoint server.
-  If you don’t see a table_id in the dropdown which is  present in the cloud endpoint server click the “Refresh Tables List Metadata” button.
-  After selecting a table_id in the dropdown you can click on the “Add” button to add the table_id in the list of selected table ids for download.
-  This way you can add multiple table ids for download at once. You can use the “Add all” button to add all the tables at once.
-  If you want to remove a table id from the selected list, you can click on the “Remove” button on the right side of the table_id you want to remove.
+  When downloading, you will need to select the Table ID to download from the dropdown. The dropdown will contain all the Table IDs present in the cloud endpoint server.
+  If you don’t see a Table ID in the dropdown which is  present in the cloud endpoint server click the :guilabel:`Refresh Tables List Metadata` button.
+  After selecting a table_id in the dropdown you can click on the :guilabel:`Add` button to add the Table ID in the list of selected Table IDs for download.
+  This way you can add multiple table ids for download at once. You can use the :guilabel:`Add All` button to add all the Tables at once.
+  If you want to remove a Table ID from the selected list, you can click on the :guilabel:`Remove` button on the right side of the Table ID you want to remove.
   By default ODK-X Suitcase creates a :file:`Download` directory where the ODK-X Suitcase jar file is located
   and saves the data to a CSV file under :file:`Download/app_id/table_id/link_unformatted.csv`
   that has all of the data for that table downloaded from the server.
