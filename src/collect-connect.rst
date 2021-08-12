@@ -3,7 +3,7 @@ Connecting to a Server
 
 ODK Collect is used to fill forms with participants. Filled forms then need to be sent to a central location for review and analysis. Generally, organizations do this by configuring Collect to send forms to a server. For those working in environments without any internet connectivity, there are :ref:`other options <other-collect-server-options>`.
 
-We recommend using :ref:`ODK Central <central-intro>` as your server and configuring Collect by QR code. :doc:`Central <central-intro>` provides user and project management features as well as tools for viewing and exporting data. For complex data collection projects, it is usually the right choice. Organizations can choose to use their own infrastructure and have total control over their server configuration. However, setting up and maintaining a server requires technical skills.
+We recommend using :ref:`ODK Central <central-intro>` as your server and configuring Collect by QR code. :doc:`Central <central-intro>` provides user and project management features as well as tools for viewing and exporting data. The easiest way to get a Central server is by using ODK Cloud <https://getodk.org/#odk-cloud>_. If you have technical skills, you can also :doc:self-host <central-install> on your own infrastructure.
 
 If you'd just like to try out ODK Collect without setting up a server, you can use the demo server which provides some sample forms. You can set this up by tapping :guilabel:`Try a demo` at the bottom of the screen when you first launch Collect.
 
