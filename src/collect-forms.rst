@@ -67,7 +67,7 @@ If you have connected ODK Collect to a :doc:`server <collect-connect>` or :doc:`
 
 .. _loading-forms-directly:
 
-Loading forms directly
+Loading Forms directly
 ------------------------
 
 .. _loading-forms-with-adb:
@@ -104,7 +104,7 @@ You can also download forms to your device via a web browser, and move them to t
 
 .. _loading-form-media:
 
-Loading form media
+Loading Form media
 ----------------------
 
 If a form :ref:`includes images or other media <media>`, those files have to be loaded to the device along with the form.
