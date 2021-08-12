@@ -14,7 +14,7 @@ If you'd like to connect Collect to more than one server (or to the same server 
 Configure server from QR code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. When you first launch Collect, tap on :guilabel:`Configure with QR code`
+#. When you first launch Collect, tap on :guilabel:`Configure with QR code`.
 
 #. Position the QR code in the center of the camera field, under the red line. When the camera focuses on the code, it will beep and scan the code.
 
@@ -29,14 +29,14 @@ Configure server from QR code
 
 .. _other-collect-server-options:
 
-Configure server with URL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configure server manually
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you're not using a server that uses QR codes you can still connect using a URL (and username/password if required):
 
-#. When you first launch Collect, tap on :guilabel:`Manually enter project details`
-#. Enter the URL (and username/password if required) for you server
-#. Click :guilabel:`Add`
+#. When you first launch Collect, tap on :guilabel:`Manually enter project details`.
+#. Enter the URL (and username/password if required) for you server.
+#. Click :guilabel:`Add`.
 
 Other options
 ~~~~~~~~~~~~~~~

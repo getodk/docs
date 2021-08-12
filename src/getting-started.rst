@@ -33,7 +33,7 @@ You can also :ref:`install manually <install-collect-manually>` from an APK.
 
 Create a form with XLSForm and upload it to Central
 ------------------------------------------------------
-#. Create a document in your favorite spreadsheet tool (Excel, Google Sheets, etc)
+#. Create a document in your favorite spreadsheet tool (Excel, Google Sheets, etc).
 #. Design your form using :doc:`XLSForm <xlsform>` or try `a sample XLSForm <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ/edit#gid=0>`_.
 #. :ref:`Upload the form to Central <central-forms-upload>`.
 
@@ -42,8 +42,8 @@ Create a form with XLSForm and upload it to Central
 Load a form into Collect from Central
 ----------------------------------------------------------
 
-#. :ref:`Create an App User <central-users-app-overview>` in Central
-#. Open Collect on your Android device, tap :guilabel:`Configure with QR code` and scan the Client Configuration Code created for your App User
+#. :ref:`Create an App User <central-users-app-overview>` in Central.
+#. Open Collect on your Android device, tap :guilabel:`Configure with QR code` and scan the Client Configuration Code created for your App User.
 
 .. _getting-started-fill-form:
 
