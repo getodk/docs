@@ -63,6 +63,11 @@ Otherwise, please specify an ODK-X Cloud Endpoint username and password with suf
 
 Suitcase remembers the last username and server url entered. You can check the :guilabel:`save password` option to keep yourself logged in when you open the application again. To log out of the application you can use the logout button in a menu on the top left of the Application.
 
+Screenshot of the Login Page:
+
+.. image:: /img/suitcase-intro/download_tab.png
+   :width: 600
+
 There are four tabs at the top of the graphical interface:
   - :guilabel:`Download`, to download existing data from the server
   - :guilabel:`Upload`, to upload new data to the server.
@@ -83,6 +88,11 @@ Downloading from the server
   To specify a different directory for ODK-X Suitcase to store downloaded data in,
   modify the :guilabel:`Save to` field or click on the :guilabel:`...` button.
 
+  Screenshot of the Download tab:
+
+  .. image:: /img/suitcase-intro/download_tab.png
+   :width: 600
+
   ODK-X Suitcase provides three options to customize the CSV file download.
 
     - Download attachments:
@@ -96,7 +106,7 @@ Downloading from the server
 
     - Extra metadata columns
 
-        - When this option is selected, two more columns will be included in the CSV, :th:`create_user` and :th:`last_update_user`.
+        - When this option is selected, two more columns will be included in the CSV, :th:`create_user` and :th:`last_update_user`.      
 
   .. _suitcase-gui-upload:
 
@@ -113,6 +123,11 @@ Uploading to the server
   
   Then modify the :guilabel:`Upload` field to that file path by clicking on the :guilabel:`...` button, and then press :guilabel:`Upload`.
 
+  Screenshot of upload tab:
+
+  .. image:: /img/suitcase-intro/upload_tab.png
+   :width: 600
+
   .. note::
 
       Suitcase GUI supports only Uploading of files and not Updating or Modifying, check out :ref:`Suitcase CLI  <suitcase-cli-update>`
@@ -125,14 +140,23 @@ Resetting the server
   .. _suitcase-gui-update:
   
 Updating data in the server
-  The :guilabel:`Update` button can be found under the :guilabel:`Update` tab. Select the Table ID to update from the dropdown. Open the file chooser by clicking on the'...' button and select the csv to be used for update.
+  The :guilabel:`Update` button can be found under the :guilabel:`Update` tab. Select the Table ID to update from the dropdown. Open the file chooser by clicking on the '...' button and select the csv to be used for update.
   To update the data on the server you need a correctly formatted CSV – follow the instructions for :ref:`Preparing your CSV for upload <suitcase-csv>`.
+
+  Screenshot of update tab:
+
+  .. image:: /img/suitcase-intro/update_tab.png
+   :width: 600
 
   .. _suitcase-gui-delete:
   
 Deleting from the server
   The :guilabel:`Delete` button can be found under the :guilabel:`Clear` tab. Select the Table ID to delete from the dropdown and click on delete. Selected Table ID will be deleted from the server after a warning and a confirmation.
 
+  Screenshot of Clear Tab:
+
+  .. image:: /img/suitcase-intro/upload_tab.png
+   :width: 600
 
 .. _suitcase-using-cli:
 
