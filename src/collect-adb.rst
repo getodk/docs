@@ -202,7 +202,7 @@ hardware, firmware, and operating system.
 Identifying the Collect directory on your device
 -------------------------------------------------
 
-The ODK Collect directory location on your device depends on the which version of Collect you have:
+The ODK Collect directory location on your device depends on which version of Collect you have:
 
 - <= v1.26.0: :file:`/sdcard/odk`. Was available to other applications to integrate, but as of August 2020, Google no longer allows globally accessible storage.
 - >= v1.26.0: :file:`/sdcard/Android/data/org.odk.collect.android/files`. Only accessible by Collect.
