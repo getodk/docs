@@ -88,7 +88,7 @@ Downloading from the server
   To specify a different directory for ODK-X Suitcase to store downloaded data in,
   modify the :guilabel:`Save to` field or click on the :guilabel:`...` button.
 
-  Screenshot of the Download tab:
+  Screenshot of the :guilabel:`Download` tab:
 
   .. image:: /img/suitcase-intro/download_tab.png
    :width: 600
@@ -123,7 +123,7 @@ Uploading to the server
 
   Then modify the :guilabel:`Upload` field to that file path by clicking on the :guilabel:`...` button, and then press :guilabel:`Upload`.
 
-  Screenshot of upload tab:
+  Screenshot of :guilabel:`Upload` tab:
 
   .. image:: /img/suitcase-intro/upload_tab.png
    :width: 600
@@ -133,7 +133,7 @@ Uploading to the server
 Resetting the server
   The :guilabel:`Reset` button can be found under the :guilabel:`Clear` tab. Clicking :guilabel:`Reset` will reset the the server after a warning and a confirmation.
 
-  Screenshot of Clear Tab:
+  Screenshot of :guilabel:`Clear` tab:
 
   .. image:: /img/suitcase-intro/clear_tab.png
    :width: 600
@@ -144,7 +144,7 @@ Updating data in the server
   The :guilabel:`Update` button can be found under the :guilabel:`Update` tab. Select the table_id to update from the dropdown. Open the file chooser by clicking on the '...' button and select the csv to be used for update.
   To update the data on the server you need a correctly formatted CSV – follow the instructions for :ref:`Preparing your CSV for upload <suitcase-csv>`.
 
-  Screenshot of update tab:
+  Screenshot of :guilabel:`Update` tab:
 
   .. image:: /img/suitcase-intro/update_tab.png
    :width: 600
@@ -154,7 +154,7 @@ Updating data in the server
 Deleting from the server
   The :guilabel:`Delete` button can be found under the :guilabel:`Clear` tab. Select the table_id to delete from the dropdown and click on delete. Selected Table ID will be deleted from the server after a warning and a confirmation.
 
-  Screenshot of Clear Tab:
+  Screenshot of :guilabel:`Clear` tab:
 
   .. image:: /img/suitcase-intro/clear_tab.png
    :width: 600
