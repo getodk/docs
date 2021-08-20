@@ -34,6 +34,9 @@ Adding a new Project
 #. Tap :guilabel:`Add project`
 #. Scan a QR code or tap :guilabel:`Manually add project details` to set the server for the new project
 
+.. warning::
+  If a Project is added with the same URL as an existing one, Collect will warn the user before creation is finalized. This is to prevent users from accidently adding the same Project more than once.
+
 .. _collect-switch-project:
 
 Switching between Projects
@@ -41,6 +44,8 @@ Switching between Projects
 
 #. Tap the :ref:`Project <collect-projects>` icon on the upper right of the :ref:`Main Menu <main-menu>` screen
 #. Select the Project you want to switch to
+
+.. _collect-delete-project:
 
 Deleting a project
 ~~~~~~~~~~~~~~~~~~
