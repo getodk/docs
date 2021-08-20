@@ -1,4 +1,5 @@
 .. spelling::
+  microservice
   phpLDAPadmin
   readonly
   letsencrypt
@@ -31,6 +32,46 @@ in a cloud-based virtual machine, or on your own infrastructure.
 
 - :ref:`Cloud-based Setup<sync-endpoint-cloud-setup>`
 - :ref:`Manual Setup (on local infrastructure)<sync-endpoint-manual-setup>`
+
+.. _sync-endpoint-overview:
+
+Overview
+--------------
+
+.. _sync-endpoint-server-tech:
+
+ODK-X Sync Endpoint Server Technologies
+""""""""""""""""""""""""""""""""""""""""
+
+:dfn:`ODK-X Sync Endpoint` server is a combination of micro-services that run inside a Docker swarm. The image below shows the six main micro-services that compose the functionality included in Sync-Endpoint. 
+
+To direct the incoming web request, the Sync-Endpoint uses nginx to route the web request to the proper microservice able to properly respond to the request. The central microservice of the Sync-Endpoint is a Java web application that provides the ODK-X REST synchronization protocol. 
+
+.. figure:: /img/sync-endpoint/endpoint-docker-swarm.*
+   :alt: An architecture diagram of the six main microservices running in a Docker swarm
+  
+   An architecture diagram of the six main microservices running in a Docker swarm. The six main microservices are: nginx, Sync-Endpoint REST Interface, Sync-Endpoint Web UI, PostgreSQL, phpLDAPadmin, and OpenLDAP.
+
+The REST protocol microservice runs an Apache Tomcat webserver. By default, the Sync-Endpoint uses a PostgreSQL server running as a microservice; however, the endpoint is designed to integrate with other databases (e.g., MySQL).
+The Sync-Endpoint Web UI is the microservice that provides the user interface for the sync-endpoint server. Sync-Endpoint is also a Java web application running inside an Apache Tomcat webserver.
+
+The Sync Endpoint REST server does not store user information in its own database; instead, it integrates with an LDAP directory (it can also integrate with other user management protocols such as Active Directory). 
+The OpenLDAP microservice is used to authenticate users and obtain user roles. To give the system administrator a graphical interface to add/change/remove users and groups, the endpoint leverages the phpLDAPadmin web interface running as a microservice that presents a web user interface of the data in OpenLDAP. 
+
+.. _sync-endpoint-sync-protocol:
+
+ODK-X Synchronization Protocol
+"""""""""""""""""""""""""""""""""
+
+ODK-X’s synchronization protocol is based on a REST architecture that keeps the data on multiple devices synchronized to a master copy stored on the ODK-X Sync-Endpoint. Clients do not have to worry about losing data, as API requests can be safely repeated in environments where network timeouts occur.
+
+To minimize data updates that conflict, data updates are processed as row-based changes to keep changes small. For example, when performing a cold chain inventory, if updates were at a coarse granularity, such as table-based or file-based, a conflict might be detected for two workers updating refrigerators while working at different sites. 
+By keeping conflict detection at the row-level, multiple users can make updates to shared data tables, and the system will detect that there is not a conflict as long as the same row is not updated by different users between their synchronizations. 
+
+A conflict is defined as two users with different updates to the same row. ODK-X uses table locks on the server to ensure only a single change to a data row can occur at any time. When the :dfn:`runner-up` client finally obtains the lock and attempts to alter the same row, the update will be rejected as a conflict. Once a conflict is detected, the user manually determines which version of data is correct between their pending changes on the local client and the updated data row on the server. 
+The rationale for having the user who caused the conflict also resolve the conflict is that the user was recently working with data and is likely to have the necessary information and context on how best to resolve the conflict.
+
+You can learn more here: :doc:`odk-2-sync-protocol`
 
 .. _sync-endpoint-auth:
 
