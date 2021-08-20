@@ -19,6 +19,12 @@ Each Project is identified by a name, icon and color. These are then shown in at
   :alt: Collect's Main Menu with an example Project
   :class: device-screen-vertical
 
+Tapping the Project icon allows you to change or import Project settings, switch between Projects, add a new Project and more:
+
+.. image:: /img/collect-projects/project-settings-dialog.png
+  :alt: Collect's Project settings dialog
+  :class: device-screen-vertical
+
 .. _collect-add-project:
 
 Adding a new Project
@@ -27,3 +33,19 @@ Adding a new Project
 #. Tap the :ref:`Project <collect-projects>` icon on the upper right of the :ref:`Main Menu <main-menu>` screen
 #. Tap :guilabel:`Add project`
 #. Scan a QR code or tap :guilabel:`Manually add project details` to set the server for the new project
+
+.. _collect-switch-project:
+
+Switching between Projects
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. Tap the :ref:`Project <collect-projects>` icon on the upper right of the :ref:`Main Menu <main-menu>` screen
+#. Select the Project you want to switch to
+
+Deleting a project
+~~~~~~~~~~~~~~~~~~
+
+#. Tap the :ref:`Project <collect-projects>` icon on the upper right of the :ref:`Main Menu <main-menu>` screen
+#. Select the Project you want to delete if it is not already the current Project
+#. Tap :guilabel:`Settings` and then :guilabel:`Project Management`
+#. Tap :guilabel:`Delete` and confirm that you are sure you want to delete the Project
