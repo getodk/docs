@@ -19,6 +19,14 @@
   len
   showHeader
   showFooter
+  Umm al-Qura
+  Thai
+  Taiwan
+  Persian
+  Non-Gregorian
+  Nanakshahi
+  Mayan
+  Nepali
 
 
 ODK-X XLSX Converter Reference
@@ -329,12 +337,42 @@ The following prompt types are available in ODK-X Survey.
     - | Used to capture an audio recording.
   * - barcode
     - | Used to capture a barcode.
+  * - coptic_calendar_picker
+    - | Uses a date picker widget to capture Coptic dates (Non-Gregorian Calendar).
+  * - ethiopian_calendar_picker
+    - | Uses a date picker widget to capture Ethiopian dates (Non-Gregorian Calendar)
+  * - hebrew_calendar_picker  
+    - | Uses a date picker widget to capture Hebrew dates (Non-Gregorian Calendar)
+  * - islamic_calendar_picker 
+    - | Uses a date picker widget to capture Islamic dates (Non-Gregorian Calendar)
+  * - mayan_calendar_picker 
+    - | Uses a date picker widget to capture Mayan dates (Non-Gregorian Calendar)
+  * - nanakshahi_calendar_picker
+    - | Uses a date picker widget to capture Nanakshahi dates (Non-Gregorian Calendar)
+  * - nepali_calendar_picker  
+    - | Uses a date picker widget to capture Nepali dates (Non-Gregorian Calendar)
+  * - persian_calendar_picker 
+    - | Uses a date picker widget to capture Persian dates (Non-Gregorian Calendar)
+  * - taiwan_calendar_picker 
+    - | Uses a date picker widget to capture Taiwan dates (Non-Gregorian Calendar)
+  * - thai_calendar_picker
+    - | Uses a date picker widget to capture Thai dates (Non-Gregorian Calendar)
+  * - ummalqura_calendar_picker
+    - | Uses a date picker widget to capture Umm al-Qura dates (Non-Gregorian Calendar)
   * - date
+    - | Uses a date picker widget to capture a date. Automatically adjusts for timezone.
+  * - date (non-gregorian)
     - | Uses a date picker widget to capture a date. Automatically adjusts for timezone.
   * - datetime
     - | Uses a date time picker widget to capture a date and time. Automatically adjusts for timezone.
+  * - date_month_only
+    - | Uses a date picker widget to capture the month only. Does not adjust for timezone.
+  * - date_month_and_year_only
+    - | Uses a date picker widget to capture both the month and year only. Does not adjust for timezone.
   * - date_no_time
     - | Uses a date picker widget to capture a date. Does not adjust for timezone.
+  * - date_year_only
+    - | Uses a date picker widget to capture the year only. Does not adjust for timezone.
   * - birth_date
     - | Uses a date picker widget to capture a birth date. Currently behaves the same as `date_no_time`. 
   * - decimal
@@ -395,8 +433,11 @@ The following prompt types are available in ODK-X Survey.
   * - video
     - | Used to capture a video.
   * - textarea
-    - | Used to enter the information in a big text area or paragraphs.
-    
+    - | Used to enter the information in a big text area or paragraphs. 
+
+.. note::
+  The Non-Gregorian dates are saved to the database in a converted Gregorian date time but is displayed to the user as a Gregorian date.
+
 .. note::
    if users anticipates for writing anything longer than 255 characters then the user needs to change the model sheet and change the elementType column. It is shown in the datatypes XLSX, string variables' length can be adjusted from a default of 255 to other lengths with string(len). For example, if you had a string prompt named long_data that you wanted to be 500 characters, you would add the following to your model worksheet. To know more about :ref:`model <xlsx-ref-model>`
 
