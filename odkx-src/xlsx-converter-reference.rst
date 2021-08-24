@@ -361,8 +361,6 @@ The following prompt types are available in ODK-X Survey.
     - | Uses a date picker widget to capture Umm al-Qura dates (Non-Gregorian Calendar)
   * - date
     - | Uses a date picker widget to capture a date. Automatically adjusts for timezone.
-  * - date (non-gregorian)
-    - | Uses a date picker widget to capture a date. Automatically adjusts for timezone.
   * - datetime
     - | Uses a date time picker widget to capture a date and time. Automatically adjusts for timezone.
   * - date_month_only
@@ -436,7 +434,7 @@ The following prompt types are available in ODK-X Survey.
     - | Used to enter the information in a big text area or paragraphs. 
 
 .. note::
-  The Non-Gregorian dates are saved to the database in a converted Gregorian date time but is displayed to the user as a Gregorian date.
+  The Non-Gregorian dates are saved to the database in a converted Gregorian date time but is displayed to the user as a Non-Gregorian date.
 
 .. note::
    if users anticipates for writing anything longer than 255 characters then the user needs to change the model sheet and change the elementType column. It is shown in the datatypes XLSX, string variables' length can be adjusted from a default of 255 to other lengths with string(len). For example, if you had a string prompt named long_data that you wanted to be 500 characters, you would add the following to your model worksheet. To know more about :ref:`model <xlsx-ref-model>`
