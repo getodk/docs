@@ -40,7 +40,7 @@ build-all: build
 
 latex: build
 	@$(SPHINXBUILD) -b latex "$(TMPDIR)" "$(BUILDDIR)"/latex $(SPHINXOPTS)
-	python util/resize.py "$(BUILDDIR)"
+	python3 util/resize.py "$(BUILDDIR)"
 
 pdf: latex
 	cd "$(BUILDDIR)"/latex && \
@@ -50,11 +50,11 @@ pdf: latex
 	mv ODK.pdf ../_downloads/ODK-Documentation.pdf
 
 style-check: build
-	python style-test.py -r $(TMPDIR)
+	python3 style-test.py -r $(TMPDIR)
 
 spell-check: build
 	sphinx-build -b spelling $(TMPDIR) $(BUILDDIR)/spelling
-	python util/check-spelling-output.py $(BUILDDIR)
+	python3 util/check-spelling-output.py $(BUILDDIR)
 
 check: style-check spell-check
 
