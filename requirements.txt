@@ -18,12 +18,12 @@ MarkupSafe==1.1.1
 more-itertools==4.3.0
 olefile==0.46
 pathtools==0.1.2
-Pillow>=4.3.0
+Pillow==8.3.1
 pluggy==0.7.1
 port-for==0.3.1
 proselint==0.10.2
 py==1.10.0
-pyenchant==2.0.0
+pyenchant==3.2.1
 Pygments==2.7.4
 pytest==3.7.2
 pytz==2017.2
