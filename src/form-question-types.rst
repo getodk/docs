@@ -2406,9 +2406,9 @@ To do this, put your select questions in a :tc:`field-list` group and use the fo
   :header: type, name, label, appearance
 
   begin_group, underlying_conditions, Underlying conditions, field-list
-  select_one, yes_no, condition_labels, Conditions, label
-  select_one, yes_no, Comcond_preg, Pregnancy, list-nolabel
-  select_one, yes_no, Comcond_partum, Post-partum (< 6 weeks), list-nolabel
+  select_one yes_no, condition_labels, Conditions, label
+  select_one yes_no, Comcond_preg, Pregnancy, list-nolabel
+  select_one yes_no, Comcond_partum, Post-partum (< 6 weeks), list-nolabel
   end_group, underlying_conditions
 
 .. csv-table:: choices
