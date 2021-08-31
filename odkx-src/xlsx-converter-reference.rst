@@ -19,14 +19,19 @@
   len
   showHeader
   showFooter
+  hebrew
+  ummalqura
+  coptic
   Umm al-Qura
-  Thai
-  Taiwan
-  Persian
+  thai
+  taiwan
+  persian
   Non-Gregorian
+  nanakshahi
   Nanakshahi
-  Mayan
-  Nepali
+  mayan
+  nepali
+  islamic
 
 
 ODK-X XLSX Converter Reference
