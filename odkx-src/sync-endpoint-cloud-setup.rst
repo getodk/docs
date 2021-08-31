@@ -13,9 +13,7 @@ Setup ODK-X Sync Endpoint with Cloud Services
 This tutorial will help you launch ODK-X Sync Endpoint on a virtual machine hosted on a cloud service provider.  ODK-X Sync Endpoint communicates with your ODK-X Android applications in order to synchronize your data and application files.
 
 | There are 3 main options that we have documented to set up ODK-X Sync Endpoint
-| :program:`Easiest (recommended, especially for Windows machines)`
-|   :ref:`1.  Using our Python script to automatically set up Virtual Machine on DigitalOcean <sync-endpoint-setup-digital-ocean>`
-| :program:`More customization, setting up Virtual Machine using:`
+|   :ref:`1.  DigitalOcean console <sync-endpoint-setup-digital-ocean>`
 |   :ref:`2.	Azure console <sync-endpoint-setup-azure>`
 |   :ref:`3.	Amazon Web Services console <sync-endpoint-setup-aws>`
 
@@ -28,11 +26,12 @@ Running the ODK-X Sync Endpoint in the cloud will require access to a publicly r
 
 If you already own a domain, you may add a subdomain record for use with Sync Endpoint without purchasing a whole new domain. Before you go on, make sure you have a domain and know how to log into your domain management console to add a DNS record!
 
-.. Note:: Specific instructions for connecting ODK-X Sync Endpoint to your domain will vary based on your registrar and DNS provider.
+.. note:: 
+  Specific instructions for connecting ODK-X Sync Endpoint to your domain will vary based on your registrar and DNS provider.
 
 .. _sync-endpoint-setup-digital-ocean:
 
-Option 1: Using Python script to automatically set up a virtual machine on DigitalOcean
+Option 1: DigitalOcean console
 -----------------------------------------------------------------------------------------
 
 | If you'd like to set up an ODK-X server that's accessible from anywhere via the Internet, DigitalOcean provides a one-click configuration that's nicely geared with nearly all the tools you'll need to set up your new server. The only thing it doesn't do is register a domain name, which you will have to do in order to obtain a security certificate for your server. These instructions walk you through:
@@ -55,49 +54,47 @@ Setting up a DigitalOcean account
 Setting up a Droplet
 """""""""""""""""""""""""""""
 
-1. Use the `following link <https://www.python.org/downloads/>`_ in order to install the latest version of Python 3.0. Ensure that you are specifically installing an iteration of Python 3.0, as Python 2.0 will soon be deprecated. The installer should take about a minute to run.
+1. First, click on the :guilabel:`Create` dropdown button at the top right of the screen. Then, click on :guilabel:`Droplet` to create a droplet cloud server.
 
-  .. note::
-    If using Windows, make sure to download the Windows version of Python instead.
-
-2. Open a terminal or command line. Install module to manage DigitalOcean droplets, using command:
-
-  .. code-block:: console
-
-      $ pip3 install -U python-digitalocean
-
-  .. note::
-    Windows users also have the option of either using PuTTY_, a free SSH client, in order to install the DigitalOcean module with pip. In the case that pip is not installed, Windows users can instead refer to the installation instructions from the following_ link and run the :file:`setup.py` file to install the module instead.
-
-  .. _PuTTY: https://www.chiark.greenend.org.uk/~sgtatham/putty/
-
-  .. _following: https://github.com/koalalorenzo/python-digitalocean#how-to-install
-
-
-3. Generate API token by logging into DigitalOcean console and clicking on :guilabel:`API` under the **MANAGE** section. Now, click on :guilabel:`Generate New Token` and enter a name.
-
-  .. image:: /img/setup-digital-ocean/do1.png
+  .. image:: /img/setup-digital-ocean/create-droplet.png
    :width: 600
 
-4. Download the following :download:`pyscript_DO.py</files/pyscript_DO.py>` and :download:`cloud_init_DO.yml</files/cloud_init_DO.yml>` files we have provided and ensure that they are located in the same directory. Switch to that directory and run the following command in order to set up your droplet:
+2. In the Distributions tab, on the :guilabel:`Create Droplet` screen; select *18.04 (LTS) x64* under the Ubuntu dropdown. Next, choose a plan and data center region based on your needs.
+   
+  .. note::
+    Sync Endpoint requires more than *2GB* of space to run, this means that plans below *4GB* will not work.
+  
+  .. image:: /img/setup-digital-ocean/do-distribution.png
+    :width: 600
 
-  .. code-block:: console
+  .. image:: /img/setup-digital-ocean/do-plan.png
+    :width: 600
 
-    $ python3 pyscript_DO.py [TOKEN] [NAME] [LOCATION]
+3. Scroll down to the :guilabel:`Select additional options`, click on the User data checkbox, copy and paste the contents of the :download:`cloud_init_DO.yml</files/cloud_init_DO.yml>` file in the text area provided.
 
-  | **[TOKEN]** represents the token we obtained from step 3.
-  | **[NAME]** represents the name that we want to give to our droplet.
-  | **[LOCATION]** represents the desired data center location, and those codes can be found `here <https://www.digitalocean.com/docs/platform/availability-matrix/>`_.
+  .. image:: /img/setup-digital-ocean/do-userdata.png
+    :width: 600
 
+  .. image:: /img/setup-digital-ocean/do-userdata2.png
+    :width: 600
+
+4. The next step is :guilabel:`Authentication`. There are two authentication types to select from; **SSH Keys** and **Password**. We highly recommend that you use an SSH key for authentication. Copy and paste your SSH key username, and the key itself. 
+
+ Use the `following resource <https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/create-with-openssh/>`_ to learn more about creating an SSH key.
+
+  .. image:: /img/setup-digital-ocean/do-authentication.png
+   :width: 600
+
+5. After the authentication is set up, you can choose to name the droplet; then scroll down and click the :guilabel:`Create Droplet` button. This might take a few minutes to set up.
 
 .. _sync-endpoint-setup-digital-ocean-dns:
 
 Setting up a DNS Record
 """"""""""""""""""""""""
 
-1. From the DigitalOcean console, click on :guilabel:`Droplets` under the **MANAGE** section.
+1. On the resources tab of the main DigitalOcean page, click on the :guilabel:`Droplet` you created.
 
-  .. image:: /img/setup-digital-ocean/do2.png
+  .. image:: /img/setup-digital-ocean/do-droplets.png
    :width: 600
 
 2. Obtain the IP address of the droplet you created.
@@ -111,22 +108,19 @@ Setting up a DNS Record
 Connecting to your Droplet
 """""""""""""""""""""""""""""
 
-1. From the DigitalOcean console, click on :guilabel:`Droplets` under the **MANAGE** section.
+1. On the resources tab of the main DigitalOcean page, click on the :guilabel:`Droplet` you created.
 
-  .. image:: /img/setup-digital-ocean/do2.png
+  .. image:: /img/setup-digital-ocean/do-droplets.png
    :width: 600
 
-2. Now, select your droplet and click on the :guilabel:`Console` link in the upper-right.
+2. Now, click on the :guilabel:`Console` link in the upper-right corner of the page
 
-  .. image:: /img/setup-digital-ocean/do3.png
+  .. image:: /img/setup-digital-ocean/do-console.png
    :width: 600
 
-3. A console window will now open up. Enter your username and then you will be asked for a password. These credentials will be sent to the email associated with your DigitalOcean account. You will also be required to change the root password once you log in.
+3. A console window will now open up. If you chose the **password** authentication, you will be asked to enter your username and then asked for a password. 
 
-  .. note::
-    Occasionally, Control + V may not work to paste the password, so you may have to right click and select paste.
-
-  .. image:: /img/setup-digital-ocean/do4.png
+  .. image:: /img/setup-digital-ocean/do-console-terminal.png
    :width: 600
 
 4. Before running our launch scripts, we need to check our logs to ensure that all the packages have been successfully installed, which should take about 2-3 minutes. The droplet may also reboot in this time.
@@ -196,9 +190,9 @@ Connecting to your Droplet
 Enabling a firewall to prevent unintended traffic
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
-1. On the DigitalOcean console, navigate to the *Networking* section under **MANAGE** Go to the *Firewalls* section and click :guilabel:`Create Firewall`.
+1. On the DigitalOcean console, click on the arrow beside the **MANAGE** dropdown and navigate to the *Networking* section. Go to the *Firewalls* section and click :guilabel:`Create Firewall`.
 
-  .. image:: /img/setup-digital-ocean/do9.png
+  .. image:: /img/setup-digital-ocean/do-networking.png
    :width: 600
 
 2. Set a name for your firewall and modify the inbound rules to match the inbound rules specified in the picture below (SSH, HTTP, HTTPS and port for admin interface). Attach the firewall to the desired droplet. Leave the outbound rules as-is.
