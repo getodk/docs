@@ -1182,7 +1182,9 @@ Multiple points that form lines or shapes are separated by semicolons.
 
 .. note::
 
-  The accuracy radius is an estimate of what Android calls the `radius of 68% confidence <https://developer.android.com/reference/android/location/Location.html#getAccuracy()>`_: there is a 68% chance that the true location falls within this radius. This is an estimate reported by the Android system based on the available sensors (GPS, network, etc). The accuracy radius itself may be more or less reliable depending on the sensor(s) used and current conditions. Learn more about getting more accurate locations :doc:`here <collect-location>`.
+  The accuracy radius is an estimate of what Android calls the `radius of 68% confidence <https://developer.android.com/reference/android/location/Location.html#getAccuracy()>`_: there is a 68% chance that the true location falls within this radius. This is an estimate reported by the Android system based on the available sensors (GPS, network, etc). The accuracy radius itself may be more or less reliable depending on the sensor(s) used and current conditions. 
+
+  To get an accurate location quickly, ensure devices have a clear view of the sky. For even faster points, consider "warming" the GPS with a :ref:`start-geopoint <metadata-start-geopoint>` question. See :doc:`improving location performance <collect-location>` for more.
 
 .. note::
 
@@ -1208,24 +1210,12 @@ see :ref:`placement-map-widget`
 
 .. tip::
 
-  .. versionadded:: 1.15
+  You can use :func:`selected-at()` to require geopoints meet a particular threshold. For example, if you need points with an accuracy better than 10 meters, use this constraint:
 
-  While determining the current coordinates,
-  you will see a dialog box displaying:
+  `selected-at(${geopoint_widget}, 3) < 10`.
 
-  - Number of satellites found
-  - Elapsed time
+  The :arg:`3` in the above constraint references accuracy, the third value in the `geopoint data type <http://getodk.github.io/xforms-spec/#data-types>`_. Use :arg:`1` to reference latitude, :arg:`2` for longitude, and :arg:`4` for altitude.
 
-  To get an accurate fix on your location,
-  the device must find at least four (4) satellites.
-  If the device can not find at least four satellites,
-  make sure there is nothing obstructing the device's view of the sky.
-
-  If you have problems with the geopoint widget,
-  be sure to note the elapsed time
-  and accuracy (if applicable),
-  so that you can share it with your support staff
-  or with the |forum|_.
 
 .. image:: /img/form-widgets/default-geopoint.*
   :alt: The default Geopoint form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Geopoint widget." The hint text is "geopoint type with no appearance." Below that is a button labeled "Start Geopoint." Below the button are completed fields for Latitude, Longitude, Altitude, and Accuracy.
