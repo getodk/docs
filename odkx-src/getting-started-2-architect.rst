@@ -56,7 +56,7 @@ Now, open a file browser and navigate to the directory where you downloaded the 
 
 Navigate within that directory to :file:`app/config/tables/exampleForm/forms/exampleForm`. Open the :file:`exampleForm.xlsx` file in :program:`Excel` (or :program:`OpenOffice`). This is the form definition used by ODK-X Survey.
 
-We will be adding a question to ask the user to enter their favorite color.. For this example, we will be collecting a text response. A more useful modification might restrict the user to a set of choices (red, orange, yellow, green, and so on).
+We will be adding a question to ask the user to enter their favorite color. For this example, we will be collecting a text response. A more useful modification might restrict the user to a set of choices (red, orange, yellow, green, and so on).
 
 On the survey worksheet, insert a row below the first row. Edit the values of the created row in each of the columns shown below, and leave the cells under all other columns in this row empty.
 
