@@ -1667,7 +1667,7 @@ In the parameters column, write ``max-pixels=`` followed by the desired maximum 
 
 .. _audio:
 
-Audio widget
+Audio widgets
 ----------------
 
 .. contents::
@@ -1681,7 +1681,11 @@ type
 appearance
   :tc:`none`
 
-Records audio using the device's microphone or a connected external microphone. By default, an :ref:`external application <external-audio-app>` is used. Starting with Collect v1.29, you can also use :ref:`built-in recording <built-in-audio-recording>`.
+Records audio using the device's microphone or a connected external microphone. By default, an :ref:`external application <external-audio-app>` is used. 
+
+.. tip::
+
+  Instead of the default audio widget, we recommend you use the :ref:`built-in audio recorder <built-in-audio-recording>` because you can customize audio quality and record while filling out other questions. Built-in recording is available in Collect v1.29 or later.
 
 .. image:: /img/form-widgets/audio-start.*
   :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "What does it sound like?" There are two buttons: Record Sound and Choose Sound.
@@ -1704,11 +1708,22 @@ Records audio using the device's microphone or a connected external microphone. 
 Using the built-in audio recorder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+type
+  :tc:`audio`
+appearance
+  :tc:`none`
+parameters
+  :tc:`quality=normal`
+
 .. versionadded:: 1.29
 
   `ODK Collect v1.29.0 <https://github.com/getodk/collect/releases/tag/v1.29.0>`_
 
-The built-in audio recorder makes it possible to capture audio without having to install an external app. It also enables recording while filling out other questions and is designed to continue recording even if the user switches to another app or if the phone screen is locked. To use the built-in audio recorder, :ref:`specify the desired audio quality <customizing-audio-quality>` for each audio question in your form. You can also :ref:`configure Collect to always use the built-in recorder <use-external-app-for-audio-recording>`.
+The built-in audio recorder makes it possible to capture audio without having to install an external app. 
+
+It also enables recording while filling out other questions and is designed to continue recording even if the user switches to another app or if the phone screen is locked. To use the built-in audio recorder, :ref:`specify the desired audio quality <customizing-audio-quality>` for each audio question in your form. 
+
+You can also configure Collect to always use the built-in recorder by :ref:`disabling external app recording <use-external-app-for-audio-recording>`.
 
 .. image:: /img/form-widgets/built-in-recorder.*
   :alt: The built-in recorder as displayed in the ODK Collect App on an Android phone. The user interface is described below.
@@ -1736,13 +1751,13 @@ In some rare cases such as the device running out of space, the recording may co
 .. _customizing-audio-quality:
 
 Customizing audio quality
-~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""""
 
 .. versionadded:: 1.29
 
   `ODK Collect v1.29.0 <https://github.com/getodk/collect/releases/tag/v1.29.0>`_, `pyxform` v1.3.0, `XLSForm Online` v2.3.0
 
-The quality of audio recordings can be customized using the ``quality`` parameter. If a ``quality`` is specified, the built-in recorder is always used, regardless of Collect settings. If no ``quality`` is specified and Collect is :ref:`configured to use the built-in recorder <use-external-app-for-audio-recording>`, ``normal`` is used. The available quality values are:
+The quality of audio recordings can be customized using the ``quality`` parameter. If a ``quality`` is specified, the built-in recorder is always used, regardless of Collect settings. If no ``quality`` is specified and :ref:`external app recording has been disabled <use-external-app-for-audio-recording>`, ``normal`` is used. The available quality values are:
 
 .. list-table::
    :header-rows: 1
@@ -1786,6 +1801,7 @@ In the parameters column, write ``quality=`` followed by the desired value.
  :header: type, name, label, parameters
 
  audio,voice_only_audio,Voice audio,quality=voice-only
+ audio,normal_audio,Normal audio,quality=normal
 
 Changing audio quality during form entry
 """""""""""""""""""""""""""""""""""""""""
@@ -1813,16 +1829,20 @@ If it's a possibility that an individual question could need different qualities
 Recording with an external app
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Setting ``quality`` to ``external`` will use an external app to record audio rather than use Collect's built in recording features. Some Android devices provide a default application for audio recording. Others do not, and the user will need to install an audio recording app.
+type
+  :tc:`audio`
+appearance
+  :tc:`none`
+parameters
+  :tc:`quality=external`
 
-There are many apps available for this, including:
+Setting ``quality`` to ``external`` will cause Collect to use an external app to record audio rather than the built-in recorder. You can also :ref:`configure Collect to always use an external app for recording <use-external-app-for-audio-recording>` (this is the default behavior) and set no ``quality`` parameter.
 
-- `Axet Audio Recorder (open source) <https://play.google.com/store/apps/details?id=com.github.axet.audiorecorder>`_
-- `RecForge II <https://play.google.com/store/apps/details?id=dje073.android.modernrecforge>`_
+Some Android devices provide a default application for audio recording. Others do not, and the user will need to install an audio recording app.
 
 Any app that responds to
 ``android.provider.MediaStore.Audio.Media.RECORD_SOUND_ACTION``
-will be compatible.
+should be compatible. We recommend `Axet Audio Recorder <https://play.google.com/store/apps/details?id=com.github.axet.audiorecorder>`_.
 
 
 .. _external-app-audio-widget:
