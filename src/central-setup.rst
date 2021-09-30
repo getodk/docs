@@ -9,5 +9,5 @@ Setting Up ODK Central
   central-command-line
   central-upgrade
   central-backup
-  central-analytics
+  central-usage-reporting
   central-troubleshooting
