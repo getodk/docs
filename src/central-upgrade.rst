@@ -17,7 +17,12 @@ Once you are logged into your server, navigate back to the project folder (``cd 
 
   If you have made local changes to the files, you may have to start with ``git stash``, then run ``git stash pop`` after you perform the ``pull``. If you aren't sure, just run ``git pull`` anyway and it will tell you.
 
+.. warning::
+
+  If you are upgrading to Central v1.3, see :ref:`Upgrading to Central v1.3 <central-upgrade-1.3>` to ensure you have the correct version of docker-compose.
+
   If you are upgrading to Central v1.2, see :ref:`Upgrading to Central v1.2 <central-upgrade-1.2>` to learn how to resolve any error messages using ``git pull``.
+
 
 Now, get the latest client and server: ``git submodule update -i``. Then, build your server from the latest code you just fetched: ``docker-compose build``.
 
