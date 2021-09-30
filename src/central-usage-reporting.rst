@@ -5,13 +5,13 @@ Usage Reporting in Central
 ==========================
 
 .. tip::
-  By default, Central does not send any usage information to the Central team. Choosing to share anonymized usage analytics with the Central team is voting for your needs!
+  By default, Central does not send any usage information to the Central team. Choosing to share anonymized usage analytics with the Central team helps us make Central better for you!
 
 We are always trying to improve Central.
 
 To do this, we need your feedback, so that we can understand how you are using Central and how it could be better for you. Without the usage information we need to understand how ODK is actually used by our global community, we cannot make the best decisions to address your most important issues.
 
-Choosing to share anonymized usage analytics with the Central team is voting for your needs!
+Choosing to share anonymized usage analytics with the Central team helps us make Central better for you!
 
    .. image:: /img/central-usage-reporting/options.png
 

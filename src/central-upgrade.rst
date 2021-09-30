@@ -29,6 +29,19 @@ Next, you need to do a little bit of maintenance. Run ``docker prune``. If it th
 
 Finally, restart the running server to pick up the changes: ``docker-compose stop`` and ``docker-compose up -d``.
 
+.. _central-upgrade-1.3:
+
+Upgrading to Central v1.3
+-------------------------
+
+Before upgrading, run ``docker-compose --version`` to confirm you have docker-compose v1.28.3 or later. If you don't, upgrade with these commands from the `Docker's documentation <https://docs.docker.com/compose/install/#install-compose-on-linux-systems>`_.
+
+.. code-block:: console
+
+ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+ sudo chmod +x /usr/local/bin/docker-compose
+ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
 .. _central-upgrade-1.2:
 
 Upgrading to Central v1.2
