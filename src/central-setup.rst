@@ -6,8 +6,8 @@ Setting Up ODK Central
 
   central-install
   central-install-digital-ocean
-  central-command-line
   central-upgrade
-  central-backup
   central-usage-reporting
+  central-backup
+  central-command-line
   central-troubleshooting
