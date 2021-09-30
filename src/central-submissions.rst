@@ -239,5 +239,7 @@ From the :ref:`submission detail page <central-submissions-details>` you can pre
 
 Any time a user edits a submission, they will see a note when they are returned to the detail page suggesting that they leave a comment describing the edits they have made. This is optional but highly encouraged. In a future version of Central, greater detail will be automatically provided about the data values that were changed.
 
-Finally, when edits are submitted, the submission :ref:`review state <central-submissions-review-states>` will automatically be set to :guilabel:`Edited`.
+Finally, when edits are submitted, the submission :ref:`review state <central-submissions-review-states>` will automatically be set to :guilabel:`Edited`, and (as of version 1.3) you will see the changes between versions in the Submission Detail activity feed. Please note that Central will show you the differences between versions, but it doesn't know the exact actions you took to cause those changes. Sometimes the differences shown are not the same as the actions taken, but the resulting data will appear exactly as edited.
+
+   .. image:: /img/central-submissions/diff.png
 
