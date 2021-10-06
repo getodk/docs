@@ -2,6 +2,7 @@
 
   src
   Homebrew
+  odk-xenv
 
 Docs Contributor Technical Guide
 =================================
@@ -249,14 +250,14 @@ on any computer.
 
          You will also need to be familiar with
          the relevant package manager for your system.
-
-   .. admonition: Understanding terminal commands
+		 
+.. admonition:: Understanding terminal commands
       :name: understanding-terminal
 
       When you open the Terminal or PowerShell,
       you will see a bunch of symbols that include
       your username and computer name.
-      This is called the :term:`prompt`.
+      This is called the ``prompt``.
       You type commands after the prompt,
       and hit :kbd:`RETURN` or :kbd:`ENTER` to run that command.
 
@@ -293,7 +294,7 @@ on any computer.
 
       To make things more clear,
       the docs will additionally prefix the prompt with a
-      :term:`path` (showing what directory you are in)
+      ``path`` (showing what directory you are in)
       whenever that is important.
 
       .. tabs::
@@ -302,15 +303,16 @@ on any computer.
 
             .. code-block::
 
-               /odk-docs/ $ command is here - type this
+               /odk-x/docs/ $ command is here - type this
                Output is here. Don't type this.
 
          .. group-tab:: PowerShell
 
             .. code-block::
 
-               /odk-docs/ > command is here - type this
-               Output is here. Don't type this.
+               /odk-x/docs/ > command is here - type this
+               Output is here. Don't type this.		 
+		 
 
 #. Install git.
 
@@ -552,7 +554,7 @@ on any computer.
    In whatever directory (folder) on your computer where you organize projects,
    create a new directory for ODK-X,
    and then navigate to that directory.
-   (We recommend calling this directory :file:`odk`,
+   (We recommend calling this directory :file:`odk-x`,
    and the rest of the guide will assume that's what you called it.)
 
    .. tabs::
@@ -561,20 +563,20 @@ on any computer.
 
          .. code:: console
 
-            $ mkdir odk
-            $ cd odk
-            /odk/ $
+            $ mkdir odk-x
+            $ cd odk-x
+            /odk-x/ $
 
       .. group-tab:: PowerShell
 
          .. code:: ps1con
 
-            > mkdir odk
-            > cd odk
-            /odk/ >
+            > mkdir odk-x
+            > cd odk-x
+            /odk-x/ >
 
    For the rest of this guide,
-   we assume you are in the :file:`/odk/` directory,
+   we assume you are in the :file:`/odk-x/` directory,
    or a subdirectory of it.
 
 #. Set up a virtual environment
@@ -593,13 +595,13 @@ on any computer.
 
             .. code:: console
 
-               /odk/ $ python3 -m venv odkenv
+               /odk-x/ $ python3 -m venv odk-xenv
 
          .. group-tab:: PowerShell
 
             .. code:: ps1con
 
-               /odk/ > python -m venv odkenv
+               /odk-x/ > python -m venv odk-xenv
 
    #. Activate the virtual environment.
 
@@ -609,20 +611,20 @@ on any computer.
 
             .. code:: console
 
-               /odk/ $ source odkenv/bin/activate
-               (odkenv) /odk/ $
+               /odk-x/ $ source odk-xenv/bin/activate
+               (odk-xenv) /odk-x/ $
 
          .. group-tab:: PowerShell
 
             .. code:: console
 
-               /odk/ > .\odkenv\Scripts\activate
-               (odkenv) /odk/ >
+               /odk-x/ > .\odk-xenv\Scripts\activate
+               (odk-xenv) /odk-x/ >
 
-      The ``(odkenv)`` before the prompt shows that the virtual environment is active.
+      The ``(odk-xenv)`` before the prompt shows that the virtual environment is active.
       You will need to have this active any time you are working on the docs.
 
-      If the file cannot be found, your activate file may be located under odkenv/scripts/activate.
+      If the file cannot be found, your activate file may be located under odk-xenv/scripts/activate.
 
       Later, to deactivate the virtual environment:
 
@@ -632,15 +634,15 @@ on any computer.
 
             .. code:: console
 
-               (odkenv) /odk/ $ deactivate
-               /odk/ $
+               (odk-xenv) /odk-x/ $ deactivate
+               /odk-x/ $
 
          .. group-tab:: PowerShell
 
             .. code:: console
 
-               (odkenv) /odk/ > deactivate
-               /odk/ >
+               (odk-xenv) /odk-x/ > deactivate
+               /odk-x/ >
 
 
 #. Fork the ODK-X Docs repository to your own GitHub account.
@@ -672,7 +674,7 @@ on any computer.
 
    #. Use your terminal to clone the repository.
 
-      You should already be in the :file:`odkx` directory,
+      You should already be in the :file:`odk-x` directory,
       with the virtual environment active.
 
       .. tabs::
@@ -681,23 +683,23 @@ on any computer.
 
             .. code:: console
 
-               (odkenv) /odk/ $ git clone https://github.com/your-github-username/docs.git
+               (odk-xenv) /odk-x/ $ git clone https://github.com/your-github-username/docs.git
                .
                .
                .
-               (odkenv) /odk/ $ cd docs
-               (odkenv) /odk/docs/ $
+               (odk-xenv) /odk-x/ $ cd docs
+               (odk-xenv) /odk-x/docs/ $
 
          .. group-tab:: Powershell
 
             .. code:: ps1con
 
-               (odkenv) /odk/ > git clone https://github.com/your-github-username/docs.git
+               (odk-xenv) /odk-x/ > git clone https://github.com/your-github-username/docs.git
                .
                .
                .
-               (odkenv) /odk/ > cd docs
-               (odkenv) /odk/docs/ >
+               (odk-xenv) /odk-x/ > cd docs
+               (odk-xenv) /odk-x/docs/ >
 
             .. warning::
 
@@ -716,12 +718,12 @@ on any computer.
          If you followed the instructions,
          you should now have the following directory structure:
 
-         -  :file:`odk`
+         -  :file:`odk-x`
 
             - :file:`docs`
-            - :file:`odkenv`
+            - :file:`odk-xenv`
 
-         The :file:`odkenv` directory stores your virtual environment,
+         The :file:`odk-xenv` directory stores your virtual environment,
          and you should not need to open it or directly view its content.
          Just ignore it.
 
@@ -732,10 +734,10 @@ on any computer.
          which are not actually a part of the ODK-X Docs repository,
          keep them out of the :file:`docs` directory.
 
-         You can use the main :file:`odk` directory
+         You can use the main :file:`odk-x` directory
          for any other files you need to work on.
          (For example,
-         you may want to create a directory called :file:`odk/forms`
+         you may want to create a directory called :file:`odk-x/forms`
          to hold XLSForm and XForm files.)
 
 #. Set the upstream remote
@@ -758,8 +760,8 @@ on any computer.
 
          .. code:: console
 
-            (odkenv) /odk/docs/ $ git remote add upstream https://github.com/odk-x/docs.git
-            (odkenv) /odk/docs/ $ git remote -v
+            (odk-xenv) /odk-x/docs/ $ git remote add upstream https://github.com/odk-x/docs.git
+            (odk-xenv) /odk-x/docs/ $ git remote -v
             origin https://github.com/your-github-username/docs.git (fetch)
             origin https://github.com/your-github-username/docs.git (push)
             upstream https://github.com/odk-x/docs.git (fetch)
@@ -770,8 +772,8 @@ on any computer.
 
          .. code:: ps1con
 
-            (odkenv) /odk/docs/ > git remote add upstream https://github.com/odk-x/docs.git
-            (odkenv) /odk/docs/ > git remote -v
+            (odk-xenv) /odk-x/docs/ > git remote add upstream https://github.com/odk-x/docs.git
+            (odk-xenv) /odk-x/docs/ > git remote -v
             origin https://github.com/your-github-username/docs.git (fetch)
             origin https://github.com/your-github-username/docs.git (push)
             upstream https://github.com/odk-x/docs.git (fetch)
@@ -796,15 +798,15 @@ on any computer.
 
          .. code:: console
 
-            (odkenv) /odk/docs/ $ pip install --upgrade pip
-            (odkenv) /odk/docs/ $ pip install -r requirements.txt
+            (odk-xenv) /odk-x/docs/ $ pip install --upgrade pip
+            (odk-xenv) /odk-x/docs/ $ pip install -r requirements.txt
 
       .. group-tab:: PowerShell
 
          .. code:: ps1con
 
-            (odkenv) /odk/docs/ > pip install --upgrade pip
-            (odkenv) /odk/docs/ > pip install -r requirements.txt
+            (odk-xenv) /odk-x/docs/ > pip install --upgrade pip
+            (odk-xenv) /odk-x/docs/ > pip install -r requirements.txt
 
    The first command `upgrades pip`_ itself to the latest version.
    Then second checks :file:`requirements.txt` and installs everything listed in it.
@@ -929,7 +931,7 @@ Working on the docs
 
             .. code:: console
 
-               (odkenv) /odk/docs/ $ git branch
+               (odk-xenv) /odk-x/docs/ $ git branch
                   branch-name
                   branch-name
                   branch-name
@@ -940,7 +942,7 @@ Working on the docs
 
             .. code:: ps1con
 
-               (odkenv) /odk/docs/ > git branch
+               (odk-xenv) /odk-x/docs/ > git branch
                   branch-name
                   branch-name
                   branch-name
@@ -955,7 +957,7 @@ Working on the docs
 
             .. code:: console
 
-               (odkenv) /odk/docs/ $  git checkout master
+               (odk-xenv) /odk-x/docs/ $  git checkout master
                Switched to branch 'master'
                Your branch is up to date with 'origin/master'.
 
@@ -963,7 +965,7 @@ Working on the docs
 
             .. code:: ps1con
 
-               (odkenv) /odk/docs/ >  git checkout master
+               (odk-xenv) /odk-x/docs/ >  git checkout master
                Switched to branch 'master'
                Your branch is up to date with 'origin/master'.
 
@@ -985,8 +987,8 @@ Working on the docs
 
          .. code:: console
 
-            (odkenv) /odk/docs/ $ git pull upstream master
-            (odkenv) /odk/docs/ $ git status
+            (odk-xenv) /odk-x/docs/ $ git pull upstream master
+            (odk-xenv) /odk-x/docs/ $ git status
             On branch master
             Your branch is up to date with 'origin/master'.
 
@@ -996,8 +998,8 @@ Working on the docs
 
          .. code:: ps1con
 
-            (odkenv) /odk/docs/ > git pull upstream master
-            (odkenv) /odk/docs/ > git status
+            (odk-xenv) /odk-x/docs/ > git pull upstream master
+            (odk-xenv) /odk-x/docs/ > git status
             On branch master
             Your branch is up to date with 'origin/master'.
 
@@ -1020,14 +1022,14 @@ Working on the docs
 
          .. code:: console
 
-            (odkenv) /odk/docs/ $ git checkout -b branch-name
+            (odk-xenv) /odk-x/docs/ $ git checkout -b branch-name
             Switched to a new branch 'branch-name'
 
       .. group-tab:: PowerShell
 
          .. code:: ps1con
 
-            (odkenv) /odk/docs/ > git checkout -b branch-name
+            (odk-xenv) /odk-x/docs/ > git checkout -b branch-name
             Switched to a new branch 'branch-name'
 
    Branch names should be short, lowercase, and use hyphens as separators.
@@ -1085,17 +1087,17 @@ Working on the docs
 
           .. code:: console
 
-             (odkenv) /odk/docs/ $ make odkx-check
+             (odk-xenv) /odk-x/docs/ $ make odkx-check
 
        .. group-tab:: PowerShell
 
           .. code:: ps1con
 
-             (odkenv) /odk/docs/ > rm -r -fo tmpx-src
-             (odkenv) /odk/docs/ > rm -r -fo odkx-build
-             (odkenv) /odk/docs/ > Copy-Item odkx-src -Destination tmpx-src -Recurse
-             (odkenv) /odk/docs/ > sphinx-build -b spelling tmpx-src odkx-build/spelling
-             (odkenv) /odk/docs/ > python util/check-spelling-output.py odkx-build
+             (odk-xenv) /odk-x/docs/ > rm -r -fo tmpx-src
+             (odk-xenv) /odk-x/docs/ > rm -r -fo odkx-build
+             (odk-xenv) /odk-x/docs/ > Copy-Item odkx-src -Destination tmpx-src -Recurse
+             (odk-xenv) /odk-x/docs/ > sphinx-build -b spelling tmpx-src odkx-build/spelling
+             (odk-xenv) /odk-x/docs/ > python util/check-spelling-output.py odkx-build
 
 
     This will send some output to the terminal,
@@ -1147,10 +1149,10 @@ Working on the docs
 
          .. code:: ps1con
 
-            (odkenv) /odk/docs/ > rm -r -fo tmpx-src
-            (odkenv) /odk/docs/ > rm -r -fo odkx-build
-            (odkenv) /odk/docs/ > Copy-Item odkx-src -Destination tmpx-src -Recurse
-            (odkenv) /odk/docs/ > sphinx-build -b dirhtml tmpx-src odkx-build
+            (odk-xenv) /odk-x/docs/ > rm -r -fo tmpx-src
+            (odk-xenv) /odk-x/docs/ > rm -r -fo odkx-build
+            (odk-xenv) /odk-x/docs/ > Copy-Item odkx-src -Destination tmpx-src -Recurse
+            (odk-xenv) /odk-x/docs/ > sphinx-build -b dirhtml tmpx-src odkx-build
 
    This generates a lot of output.
    Near the end of the output you may see a statement like:
@@ -1219,14 +1221,14 @@ Working on the docs
 
          .. code:: console
 
-            (odkenv) /odk/docs/ $ python -m http.server -d odkx-build 8000
+            (odk-xenv) /odk-x/docs/ $ python -m http.server -d odkx-build 8000
             Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
 
       .. group-tab:: PowerShell
 
          .. code:: ps1con
 
-            (odkenv) /odk/docs/ > python -m http.server -d odkx-build 8000
+            (odk-xenv) /odk-x/docs/ > python -m http.server -d odkx-build 8000
             Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
 
    #. Open your browser and go to http://localhost:8000.
@@ -1266,13 +1268,13 @@ Working on the docs
 
             .. code:: console
 
-               (odkenv) /odk/docs/ $ git add -A
+               (odk-xenv) /odk-x/docs/ $ git add -A
 
          .. group-tab:: PowerShell
 
             .. code:: ps1con
 
-               (odkenv) /odk/docs/ > git add -A
+               (odk-xenv) /odk-x/docs/ > git add -A
 
    #. Commit the staged files with :command:`git commit`.
 
@@ -1282,13 +1284,13 @@ Working on the docs
 
             .. code:: console
 
-               (odkenv) /odk/docs/ $ git commit -m "Write a commit message here."
+               (odk-xenv) /odk-x/docs/ $ git commit -m "Write a commit message here."
 
          .. group-tab:: PowerShell
 
             .. code:: ps1con
 
-               (odkenv) /odk/docs/ > git commit -m "Write a commit message here."
+               (odk-xenv) /odk-x/docs/ > git commit -m "Write a commit message here."
 
       Your commit message needs to be wrapped in quote marks.
       It should, in a sentence or less, explain your work.
@@ -1303,13 +1305,13 @@ Working on the docs
 
          .. code:: console
 
-            (odkenv) /odk/docs/ $ git push origin branch-name
+            (odk-xenv) /odk-x/docs/ $ git push origin branch-name
 
       .. group-tab:: PowerShell
 
          .. code:: ps1con
 
-            (odkenv) /odk/docs/ > git push origin branch-name
+            (odk-xenv) /odk-x/docs/ > git push origin branch-name
 
          .. warning::
 
@@ -1426,13 +1428,13 @@ Here are a few things to keep in mind when you start your next contribution.
 
          .. code:: console
 
-            (odkenv) /odk/docs/ $ git checkout master
+            (odk-xenv) /odk-x/docs/ $ git checkout master
 
       .. group-tab:: PowerShell
 
          .. code:: console
 
-            (odkenv) /odk/docs/ > git checkout master
+            (odk-xenv) /odk-x/docs/ > git checkout master
 
 #. Pull in changes with :command:`git pull upstream master`.
 
@@ -1445,13 +1447,13 @@ Here are a few things to keep in mind when you start your next contribution.
 
          .. code:: console
 
-            (odkenv) /odk/docs/ $ git pull upstream master
+            (odk-xenv) /odk-x/docs/ $ git pull upstream master
 
       .. group-tab:: PowerShell
 
          .. code:: console
 
-            (odkenv) /odk/docs/ > git pull upstream master
+            (odk-xenv) /odk-x/docs/ > git pull upstream master
 
 #. Update the master branch of your online GitHub repository.
 
@@ -1461,13 +1463,13 @@ Here are a few things to keep in mind when you start your next contribution.
 
          .. code:: console
 
-            (odkenv) /odk/docs/ $ git push origin master
+            (odk-xenv) /odk-x/docs/ $ git push origin master
 
       .. group-tab:: PowerShell
 
          .. code:: console
 
-            (odkenv) /odk/docs/ > git push origin master
+            (odk-xenv) /odk-x/docs/ > git push origin master
 
 #. Find a `new issue to work on`_.
 #. `Start a new branch for your work <git-branch-the-docs>`_ with :command:`git checkout -b branch-name`.

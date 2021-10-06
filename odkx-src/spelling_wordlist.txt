@@ -191,6 +191,7 @@ odk
 ODK
 odkdocs
 odkenv
+odk-xenv
 offline
 Ohmage
 online
@@ -343,6 +344,7 @@ workflow
 Workflow
 workflows
 xelatex
+xenv
 XForm
 Xform
 xforms
