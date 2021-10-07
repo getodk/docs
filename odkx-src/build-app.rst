@@ -9,6 +9,7 @@
   detailViewFileName
   listViewFileName
   WebView
+  SkipLogic
 
 Building an Application
 ====================================================
@@ -199,7 +200,7 @@ The :file:`framework.xlsx` file is central to the structure of the Application D
 
   5. The *settings* worksheet should have the :th:`setting_name`, :th:`value`, :th:`display.title.text` headers.
 
-  6. The rows shoud look like the example below:
+  6. The rows should look like the example below:
 
     .. list-table:: *settings* worksheet
       :header-rows: 1
