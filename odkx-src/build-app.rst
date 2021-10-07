@@ -51,9 +51,9 @@ Before getting started, be sure you have familiarized yourself with the ODK-X pl
 Cleaning App Designer
 -----------------------------------
 
-Your freshly installed copy of Application Designer comes with lots of example forms, tables, and configuration. This is useful for learning the tools and as references when building our application, but the files should be cleaned before building your own application.
+Your freshly installed copy of Application Designer comes with lots of example forms, tables, and configuration. This is useful for learning the tools and as references when building our application, the files can be found in :file:`app/config/tables` directory. 
 
-Enter your Application Designer directory, navigate to :file:`app/config/` and delete everything inside the directory.
+After building your own application, you may choose to delete all the examples forms and configurations before pushing your files to your device; as the files can be very large and take up a lot of space on the device.
 
 .. _build-app-designing-a-form:
 
@@ -67,19 +67,21 @@ When creating a new form, the appropriate directory structure must be created. O
 Creating the Directory Structure
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-New forms must be placed under the :file:`app/config/tables/` directory as described in the :ref:`app-designer-dirs-app-config-tables` section. Given a form with the name *formId*, it will have a *tableId* of the same name unless you explicitly specify otherwise. The directory structure that should be created is :file:`app/config/tables/tableId/forms/formId` (where, under many circumstances, the value for *tableId* will be the same as the value for *formId*). To get started, for Windows open a :program:`cmd` window within your :file:`Application Designer` folder (click the :program:`cmd` shortcut you created earlier), and for Mac/Unix open a :program:`terminal` window within your :file:`Application Designer` folder. Type:
+New forms must be placed under the :file:`app/config/tables/` directory as described in the :ref:`app-designer-dirs-app-config-tables` section. Given a form with the name *formId*, it will have a *tableId* of the same name unless you explicitly specify otherwise. The directory structure that should be created is :file:`app/config/tables/tableId/forms/formId` (where, under many circumstances, the value for *tableId* will be the same as the value for *formId*). 
 
-.. code-block:: console
+To get started: 
 
-  $ grunt addtable:tableId
+  1. Navigate to :file:`app/config/tables/` and create a folder with the tableId, where tableId is the name of your new form and table. For example, to create a census form; the folder would be named census.
 
-Where tableId is the name of your new form and table. For example, to create a census form, type:
+  2. In the census folder, create the following new folders:
+   
+    - :th:`forms`
+    - :th:`html`
+    - :th:`js`
+    - :th:`instances`
+    - :th:`collect-forms`
 
-.. code-block:: console
-
-  $ grunt addtable:census
-
-This will create the required directory structure for an individual table, including the forms directory. It also created basic HTML and JavaScript files, which will be covered later.
+This creates the required directory structure for an individual table, including the forms directory.
 
 Navigate into the forms directory (:file:`app/config/tables/census/forms/` in our example), and create a directory with the form ID as its name. For our example, create a :file:`app/config/tables/census/forms/census` directory. Within that directory, `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ expects to find the :file:`formDef.json` that defines the form.
 
@@ -181,11 +183,13 @@ Creating :file:`framework.xlsx`
 
 The :file:`framework.xlsx` file is central to the structure of the Application Designer. It defines which forms exist. It has no persisted data. In this case, it only presents a list of forms and allows you to open them.
 
-  1. Create the following directories: :file:`config/assets/framework/forms/framework/`.
+  1. Navigate to the following existing directories: :file:`config/assets/framework/forms/`. Inside that folder, there is a :file:`framework` and :file:`framework.clean` folder, as well as other folders that are not as important for this process.
 
-  2. Inside that folder, create :file:`framework.xlsx`
+  2. Delete the existing :file:`framework` folder. The :file:`framework.clean` folder contains a :file:`framework.xlsx` file, the file contains the boilerplate worksheet structure that you'll use to create a working :file:`framework.xlsx` file for your application.
+ 
+  3. Rename the :file:`framework.clean` folder to :file:`framework`
 
-  3. Create an *initial* worksheet. Add header: :th:`clause` and value :tc:`do section survey`.
+  4. The *initial* worksheet of :file:`framework.xlsx` should have a header: :th:`clause` and value :tc:`do section survey`.
 
     .. list-table:: *initial* worksheet
       :header-rows: 1
@@ -193,9 +197,9 @@ The :file:`framework.xlsx` file is central to the structure of the Application D
       * - clause
       * - do section survey
 
-  4. Create a *settings* worksheet. Add the same headers: :th:`setting_name`, :th:`value`, :th:`display.title.text`.
+  5. The *settings* worksheet should have the :th:`setting_name`, :th:`value`, :th:`display.title.text` headers.
 
-  5. Fill in the following rows:
+  6. The rows shoud look like the example below:
 
     .. list-table:: *settings* worksheet
       :header-rows: 1
@@ -207,7 +211,7 @@ The :file:`framework.xlsx` file is central to the structure of the Application D
         - framework
         -
       * - form_version
-        - 20180101
+        - 20210707
         -
       * - form_id
         - framework
@@ -216,11 +220,11 @@ The :file:`framework.xlsx` file is central to the structure of the Application D
         -
         - Common JavaScript Framework
 
-  6. Create a *framework_translations* sheet. This sheet allows you to translate or customize the text displayed in buttons, messages, and other system text. Translations for your form would be specified in its own *translations* sheet in its :file:`.xlsx` file. For now, copy the :th:`string_token` and :th:`text.default` columns from one of the example :file:`framework.xlsx` files provided with the default Application Designer.
+  7. Next, there is a *framework_translations* sheet. This sheet allows you to translate or customize the text displayed in buttons, messages, and other system text. Translations for your form would be specified in its own *translations* sheet in its :file:`.xlsx` file. This worksheet is already populated, you do not need to edit this worksheet.
 
-  7. Create a *choices* sheet. Add the same headers: :th:`choice_list_name`, :th:`data_value`, :th:`display.title.text`.
+  8. The *choices* sheet contains the following headers: :th:`choice_list_name`, :th:`data_value`, :th:`display.title.text`.
 
-  8. Add the following row:
+  9. Substitute the :th:`form_id_here` under the :th:`data_value` with the *form_id* and :th:`form_title_here` under the :th:`display.title.text` with the *form title*. The row should look like the table below:
 
     .. list-table:: *choices* worksheet
       :header-rows: 1
@@ -232,9 +236,9 @@ The :file:`framework.xlsx` file is central to the structure of the Application D
         - census
         - Census Form
 
-  9. Create a *survey* sheet. Add the headers: :th:`branch_label`, :th:`url`, :th:`clause`, :th:`condition`, :th:`type`, :th:`values_list`, :th:`display.prompt.text`.
+  10. In the *survey* worksheet. Check that these headers: :th:`branch_label`, :th:`url`, :th:`clause`, :th:`condition`, :th:`type`, :th:`values_list`, :th:`display.prompt.text` are present.
 
-  10. Add the following rows. They tell the software what to do if you're previewing in :program:`Chrome`.
+  11. Update the following rows as shown below. This worksheet tells the software what to do if you're previewing in :program:`Chrome`.
 
   .. note::
 
@@ -435,17 +439,25 @@ Understanding the Web File
 
 There are several pieces of boilerplate you have to include in your own code in order to debug the files in :program:`Chrome`.
 
-In the default Application Designer, open :file:`app/config/tables/Tea_houses/html/Tea_houses_list.html`. Alternatively, if you are doing the running example, open :file:`app/config/tables/census/html/census_list.html`, which should have been automatically created for you. Notice the following four lines in :code:`<head>`:
+In the default Application Designer, navigate to  :file:`app/config/tables/SkipLogic/html` and open :file:`SkipLogic_list.html`. Notice the following lines in :file:`<head>`
+
+.. Alternatively, if you are doing the running example, open :file:`app/config/tables/census/html/census_list.html`, which should have been automatically created for you. Notice the following four lines in :code:`<head>`:
 
 .. code-block:: html
 
-    <script type="text/javascript" src="../../../assets/libs/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="../../../../system/js/odkCommon.js"></script>
-    <script type="text/javascript" src="../../../../system/js/odkData.js"></script>
-    <script type="text/javascript" src="../../../../system/tables/js/odkTables.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="../../../assets/css/bootstrap-5.1.0/bootstrap.min.css" type="text/css" rel="stylesheet">
 
+    <!-- Load internationalization definitions -->
+    <script defer src="../../../assets/commonDefinitions.js"></script>
+    <script defer src="../tableSpecificDefinitions.js"></script>
 
-In the first line you are making the :program:`jQuery` object available to your code. :program:`jQuery` is a powerful, commonly used set of functions for accessing and performing actions within a webpage. In the next three lines you are adding the *odkCommon*, *odkTables*, and *odkData* objects if they are not already provided by the browser environment. When running on the device, the ODK-X Tables APK will provide these, and the contents of these files will be ignored. When running in Application Designer on your computer, these files provide the approximate functionality of the APK, allowing you to create and debug your scripts. However, at the moment, these implementations make use of RequireJS, which the ODK-X Tables HTML files do not use (RequireJS is extensively used by `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_). This causes these to break in Application Designer **Previews**.
+    <!-- Load ODK-X libs -->
+    <script defer src="../../../../system/js/odkCommon.js"></script>
+    <script defer src="../../../../system/js/odkData.js"></script>
+    <script defer src="../../../../system/tables/js/odkTables.js"></script>
+
+In the first line you are making the :program:`Bootstrap` styles available to your code. :program:`Bootstrap` is a free and open-source CSS framework directed at responsive web development. In the next three lines you are adding the *odkCommon*, *odkTables*, and *odkData* objects if they are not already provided by the browser environment. When running on the device, the ODK-X Tables APK will provide these, and the contents of these files will be ignored. When running in Application Designer on your computer, these files provide the approximate functionality of the APK, allowing you to create and debug your scripts. However, at the moment, these implementations make use of RequireJS, which the ODK-X Tables HTML files do not use (RequireJS is extensively used by ODK-X Survey). This causes these to break in Application Designer **Previews**.
 
 More detail is provided in :doc:`tables-web-pages`.
 
@@ -454,15 +466,9 @@ More detail is provided in :doc:`tables-web-pages`.
 Creating Web Files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To write your own file, first decide on the *tableId* for your table and instantiate a directory using the :program:`grunt` command:
+To write your own file, first decide on the *tableId* for your table and create the directory structure as shown in :ref:`build-app-creating-directory`. If you completed the example in :ref:`build-app-designing-a-form` you have already done this for the *census* survey form.
 
-.. code-block:: console
-
-  $ grunt addtable:tableId
-
-If you completed the example in :ref:`build-app-designing-a-form` you have already done this for the *census* table.
-
-This :program:`grunt` task creates the needed directory structures and also constructs the HTML and JavaScript files with the necessary features for working within the :program:`Chrome` development environment.
+For this section we would be looking at the example List and Detail view of the `Skip Logic <https://github.com/odk-x/app-designer/tree/basic-tables-example/app/config/tables/SkipLogic>`_ survey form.
 
 .. note::
 
@@ -473,118 +479,115 @@ This :program:`grunt` task creates the needed directory structures and also cons
 Creating a List View
 """"""""""""""""""""""""""
 
-Continuing the ongoing example, open or create the file :file:`app/tables/census/html/census_list.html`. This will display a list of records collected with the form.
+Open or create the file :file:`app/config/tables/SkipLogic/html/SkipLogic_list.html`. This will display a list of data collected with the Skip Logic form.
 
-Ensure the file looks like this:
+The file looks like this:
 
 .. code-block:: html
 
-  <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-  <html>
-  <!--List View-->
-      <head>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <link href="../../../assets/css/list.css" type="text/css" rel="stylesheet" />
-          <script type="text/javascript" src="../../../assets/commonDefinitions.js"></script>
-          <script type="text/javascript" src="../tableSpecificDefinitions.js"></script>
-          <script type="text/javascript" src="../../../assets/libs/jquery-3.2.1.js"></script>
-          <script type="text/javascript" src="../../../../system/js/odkCommon.js"></script>
-          <script type="text/javascript" src="../../../../system/js/odkData.js"></script>
-          <script type="text/javascript" src="../../../../system/tables/js/odkTables.js"></script>
-      </head>
-      <body>
-          <script type="text/javascript" src="../js/census_list.js"></script>
-          <div id="wrapper">
-              <div id="list"></div>
-          </div>
-          <script>
-              $(function() { resumeFn(0); });
-          </script>
-      </body>
-  </html>
+      <!doctype html>
+        <html lang="en">
+          <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
 
-This HTML file should be minimal. It links all the source files and provides :code:`<div>` to put the list in. Most of the work happens in the JavaScript file. Open or create :file:`app/tables/census/js/census_list.js`. Ensure its contents look like this:
+              <!-- Bootstrap CSS -->
+              <link href="../../../assets/css/bootstrap-5.1.0/bootstrap.min.css" type="text/css" rel="stylesheet">
+
+              <!-- Load internationalization definitions -->
+              <script defer src="../../../assets/commonDefinitions.js"></script>
+              <script defer src="../tableSpecificDefinitions.js"></script>
+
+              <!-- Load ODK-X libs -->
+              <script defer src="../../../../system/js/odkCommon.js"></script>
+              <script defer src="../../../../system/js/odkData.js"></script>
+              <script defer src="../../../../system/tables/js/odkTables.js"></script>
+
+              <!-- Load SkipLogic list view lib -->
+              <script defer src="../js/SkipLogic_list.js"></script>
+          </head>
+          <body>
+          <main id="wrapper" class="d-none my-3">
+              <div class="container-fluid">
+                  <h1 class="text-center display-3">Skip Logic List View</h1>
+
+                  <div id="skipLogicList" class="vstack gap-2"></div>
+              </div>
+          </main>
+
+          <template id="skipLogicListTemplate">
+              <div class="card">
+                  <div class="card-body">
+                      <p class="skip-logic-list-name"></p>
+                      <p class="skip-logic-list-order"></p>
+
+                      <a href="#" class="btn btn-primary stretched-link skip-logic-detail-view-link">Detail View</a>
+                  </div>
+              </div>
+          </template>
+
+          <!-- Bootstrap JS -->
+          <script src="../../../assets/js/bootstrap-5.1.0/bootstrap.bundle.min.js"></script>
+          </body>
+        </html>
+
+This HTML file should be minimal. It links all the source files and provides :code:`<div>` to put the list in. Most of the work happens in the JavaScript file. Open the :file:`app/config/tables/SkipLogic/js/SkipLogic_list.js` file. Its contents should look like this:
 
 .. code-block:: javascript
 
-  /* global $, odkTables, odkData, odkCommon */
+  /* global odkTables, odkData */
+
   'use strict';
 
-  // The first function called on load
-  var resumeFn = function() {
+  (function () {
+    var openDetailViewOnClick = function (rowId) {
+      return function () {
+        odkTables.openDetailView(null, 'SkipLogic', rowId);
+      };
+    };
 
-      // Retrieves the query data from the database
-      // Sets displayGroup as the success callback
-      // and cbFailure as the fail callback
-	    odkData.getViewData(displayGroup, cbFailure);
-  }
+    var listViewCallbackSuccess = function (result) {
+      var resultCount = result.getCount();
 
-  // Display the list of census results
-  var displayGroup = function(censusResultSet) {
+      var template = document.getElementById('skipLogicListTemplate');
+      var listContainer = document.getElementById('skipLogicList');
 
-      // Set the function to call when a list item is clicked
-      $('#list').click(function(e) {
+      for (var i = 0; i < resultCount; i++) {
+        var listItem = document.importNode(template.content, true);
 
-          // Retrieve the row ID from the item_space attribute
-		      var jqueryObject = $(e.target);
-		      var containingDiv = jqueryObject.closest('.item_space');
-		      var rowId = containingDiv.attr('rowId');
+        listItem
+          .querySelector('.skip-logic-list-name')
+          .textContent = result.getData(i, 'name');
 
-          // Retrieve the tableID from the query results
-		      var tableId = censusResultSet.getTableId();
+        listItem
+          .querySelector('.skip-logic-list-order')
+          .textContent = result.getData(i, 'menu');
 
-		      if (rowId !== null && rowId !== undefined) {
+        listItem
+          .querySelector('.skip-logic-detail-view-link')
+          .addEventListener('click', openDetailViewOnClick(result.getRowId(i)));
 
-              // Opens the detail view from the file specified in
-              // the properties worksheet
-				      odkTables.openDetailView(null, tableId, rowId, null);
-			    }
-		  });
+        listContainer.appendChild(listItem);
+      }
+    };
 
-      // Iterate through the query results, rendering list items
-      for (var i = 0; i < censusResultSet.getCount(); i++) {
+    var listViewCallbackFailure = function (error) {
+      console.error(error);
+    };
 
-          // Creates the item space and stores the row ID in it
-          var item = $('<li>');
-          item.attr('id', censusResultSet.getRowId(i));
-          item.attr('rowId', censusResultSet.getRowId(i));
-          item.attr('class', 'item_space');
+    document.addEventListener('DOMContentLoaded', function () {
+      odkData.getViewData(listViewCallbackSuccess, listViewCallbackFailure);
 
-          // Display the census name
-          var name = censusResultSet.getData(i, 'name');
-          if (name === null || name === undefined) {
-              name = 'unknown name';
-          }
-          item.text(name);
-
-          // Creates arrow icon
-          var chevron = $('<img>');
-          chevron.attr('src', odkCommon.getFileAsUrl('config/assets/img/little_arrow.png'));
-          chevron.attr('class', 'chevron');
-          item.append(chevron);
-
-          // Add the item to the list
-          $('#list').append(item);
-
-          // Don't append the last one to avoid the fencepost problem
-          var borderDiv = $('<div>');
-          borderDiv.addClass('divider');
-          $('#list').append(borderDiv);
-        }
-        if (i < censusResultSet.getCount()) {
-            setTimeout(resumeFn, 0, i);
-        }
-  };
-
-  var cbFailure = function(error) {
-      console.log('census getViewData CB error : ' + error);
-  };
+      document.getElementById('wrapper').classList.remove('d-none');
+    });
+  })();
 
 The HTML and JavaScript files also depend on a few more files. For convenience, the example reuses CSS and image files from the :doc:`tables-sample-app`. Open up a default Application Designer and copy the following files to this application's directory (using the same directory paths):
 
   - :file:`config/assets/css/list.css`
   - :file:`config/assets/img/little_arrow.png`
-  - :file:`config/assets/libs/jquery-3.2.1.js`
+  - :file:`config/assets/css/bootstrap-5.1.0/bootstrap.min.css`
+  - :file:`config/assets/js/bootstrap-5.1.0/bootstrap.bundle.min.js`
 
 .. _build-app-creating-web-file-detail-view:
 
@@ -593,95 +596,97 @@ Creating a Detail View
 
 A *Detail View* will display the details of a record. It is commonly used alongside *List View* to provide options to browse through a data set and learn more about a particular record.
 
-Open or create :file:`app/tables/census/html/census_detail.html` Ensure the file looks like this:
+Open or create :file:`app/config/tables/SkipLogic/html/SkipLogic_detail.html`. Ensure the file looks like this:
 
 .. code-block:: html
 
-  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-  <html>
-      <head>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <link href="../../../assets/css/detail.css" type="text/css" rel="stylesheet" />
-          <script type="text/javascript" src="../../../assets/commonDefinitions.js"></script>
-          <script type="text/javascript" src="../tableSpecificDefinitions.js"></script>
-          <script type="text/javascript" src="../../../assets/libs/jquery-3.2.1.js"></script>
-          <script type="text/javascript" src="../../../../system/js/odkCommon.js"></script>
-          <script type="text/javascript" src="../../../../system/js/odkData.js"></script>
-          <script type="text/javascript" src="../../../../system/tables/js/odkTables.js"></script>
-      </head>
-      <body>
-          <script type="text/javascript" src="../js/census_detail.js"></script>
+  <!doctype html>
+  <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-          <h1><span id="TITLE" class="main-text"></span></h1>
+        <!-- Bootstrap CSS -->
+        <link href="../../../assets/css/bootstrap-5.1.0/bootstrap.min.css" type="text/css" rel="stylesheet">
 
-          <fieldset>
-            Is over 18: <input id="FIELD_1" type="checkbox" name="isAdult" />
-          </fieldset>
+        <!-- Load internationalization definitions -->
+        <script defer src="../../../assets/commonDefinitions.js"></script>
+        <script defer src="../tableSpecificDefinitions.js"></script>
 
-          <script>
-              $(display);  // calls the detail display function when ready
-          </script>
-      </body>
+        <!-- Load ODK-X libs -->
+        <script defer src="../../../../system/js/odkCommon.js"></script>
+        <script defer src="../../../../system/js/odkData.js"></script>
+        <script defer src="../../../../system/tables/js/odkTables.js"></script>
+
+        <!-- Load SkipLogic detail view lib -->
+        <script defer src="../js/SkipLogic_detail.js"></script>
+    </head>
+    <body>
+      <main id="wrapper" class="d-none my-3">
+          <div class="container-fluid">
+              <h1 class="text-center display-3">Skip Logic Detail View</h1>
+              <h2 class="text-center display-6 text-secondary">Order Detail</h2>
+
+              <div id="skipLogicDetailContainer" class="vstack gap-2 mx-4 mt-4"></div>
+          </div>
+      </main>
+
+    <template id="skipLogicDetailTemplate">
+        <div class="hstack gap-2 justify-content-between">
+            <span class="pe-4 fw-bold skip-logic-detail-label"></span>
+            <span class="d-inline-block text-end text-truncate fw-light skip-logic-detail-value"></span>
+        </div>
+    </template>
+
+  <!-- Bootstrap JS -->
+  <script src="../../../assets/js/bootstrap-5.1.0/bootstrap.bundle.min.js"></script>
+  </body>
   </html>
 
-This HTML file should define the user interface elements that will be populated by database calls in the JavaScript. Open or create :file:`app/tables/census/js/census_detail.js`. Ensure its contents look like this:
+This HTML file should define the user interface elements that will be populated by database calls in the JavaScript. Open or create :file:`app/config/tables/SkipLogic/js/SkipLogic_detail.js`. Ensure its contents look like this:
 
 .. code-block:: javascript
 
-  /* global $, odkTables, odkData */
   'use strict';
 
-  var censusResultSet = {};
-  var typeData = {};
+  (function () {
+    var detailViewFields = {
+      name: 'Name',
+      state: 'State',
+      menu: 'Order',
+      size: 'Size',
+      flavor: 'Flavor',
+      box: 'Quantity',
+    };
 
-  // Called when the page loads
-  var display = function() {
+    var detailViewCallbackSuccess = function (result) {
+      var template = document.getElementById('skipLogicDetailTemplate');
+      var fieldsContainer = document.getElementById('skipLogicDetailContainer');
 
-    // Runs the query that launched this view
-    odkData.getViewData(cbSuccess, cbFailure);
-  };
+      Object.entries(detailViewFields).forEach(function (entry) {
+        var fieldValue = result.get(entry[0]);
 
-  // Called when the query returns successfully
-  function cbSuccess(result) {
+        if (fieldValue !== undefined && fieldValue !== null) {
+          var detailField = document.importNode(template.content, true);
 
-    censusResultSet = result;
-    // and update the document with the values for this record
-    updateContent();
-  }
+          detailField.querySelector('.skip-logic-detail-label').textContent = entry[1];
+          detailField.querySelector('.skip-logic-detail-value').textContent = fieldValue;
 
-  function cbFailure(error) {
+          fieldsContainer.appendChild(detailField);
+        }
+      });
+    };
 
-    // a real application would perhaps clear the document fiels if there were an error
-    console.log('census_detail getViewData CB error : ' + error);
-  }
+    var detailViewCallbackFailure = function (error) {
+      console.error(error);
+    };
 
-  /**
-   * Assumes censusResultSet has valid content.
-   *
-   * Updates the document content with the information from the censusResultSet
-   */
-  function updateContent() {
+    document.addEventListener('DOMContentLoaded', function () {
+      odkData.getViewData(detailViewCallbackSuccess, detailViewCallbackFailure);
 
-    nullCaseHelper('name', '#TITLE');
-
-    if(censusResultSet.get('isAdult') === 'y') {
-      $('#FIELD_1').attr('checked', true);
-    }
-    $('#FIELD_1').attr('disabled', true);
-
-  }
-
-  /**
-   * Assumes censusResultSet has valid content
-   *
-   * Updates document field with the value for the elementKey
-   */
-  function nullCaseHelper(elementKey, documentSelector) {
-    var temp = censusResultSet.get(elementKey);
-    if (temp !== null && temp !== undefined) {
-      $(documentSelector).text(temp);
-    }
-  }
+      document.getElementById('wrapper').classList.remove('d-none');
+    });
+  })();
 
 As with the *List View*, this view requires a separate CSS file. Copy the following file from a default Application Designer, maintaining the directory path in this application's directory:
 
@@ -693,7 +698,7 @@ As with the *List View*, this view requires a separate CSS file. Copy the follow
 Defining Default View Files
 """"""""""""""""""""""""""""
 
-The :file:`.xlsx` form should be updated to indicate the default view type, and where to find the HTML files for *Detail View* and *List View*. Open :file:`app/config/tables/census/forms/census/census.xlsx` and add a new worksheet titled *properties*. Add the following headers: :th:`partition`, :th:`aspect`, :th:`key`, :th:`type`, and :th:`value`.
+The :file:`.xlsx` form should be updated to indicate the default view type, and where to find the HTML files for *Detail View* and *List View*. Open :file:`app/config/tables/SkipLogic/forms/SkipLogic/SkipLogic.xlsx` and add a new worksheet titled *properties*. The worksheet has the following headers: :th:`partition`, :th:`aspect`, :th:`key`, :th:`type`, and :th:`value`.
 
 Add the following rows to set your *List View* and *Detail View* default files:
 
@@ -714,18 +719,18 @@ Add the following rows to set your *List View* and *Detail View* default files:
     - default
     - detailViewFileName
     - string
-    - config/tables/census/html/census_detail.html
+    - config/tables/SkipLogic/html/SkipLogic_detail.html
   * - Table
     - default
     - listViewFileName
     - string
-    - config/tables/census/html/census_list.html
+    - config/tables/SkipLogic/html/SkipLogic_list.html
 
-See :ref:`xlsx-ref-properties` for more details about specifying custom HTML files.
+Follow the example above to create your tables *properties* worksheet. See :ref:`xlsx-ref-properties` for more details about specifying custom HTML files.
 
-Run :file:`census.xlsx` through the XLSX Converter again (:ref:`build-app-generate-formdef`) to update the configuration.
+The :file:`.xlsx` should be run through the XLSX Converter again (:ref:`build-app-generate-formdef`) to update the configuration.
 
-After that, you can deploy your app to your device. Open Survey and fill in a few census records. Then, open Tables and select the *Census* table. This should automatically launch the *List View* defined above. Tapping an item in the *List View* should launch the detail view.
+After that, you can deploy your app to your device. Open Survey and fill in a few Skip Logic records. Then, open Tables and select the *Skip Logic* table. This should automatically launch the *List View* defined above. Tapping an item in the *List View* should launch the detail view.
 
 .. _build-app-debugging-tables:
 
