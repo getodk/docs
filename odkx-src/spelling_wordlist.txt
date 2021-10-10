@@ -39,6 +39,8 @@ bikram
 bluetooth
 Bluetooth
 boolean
+bulleted
+Bulleted
 camelCase
 cd
 checkbox
