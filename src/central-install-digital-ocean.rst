@@ -91,7 +91,15 @@ Once you are in your server, you'll want to change your password so that people 
 Changing Server Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-First, we will want to ensure that Docker starts up whenever the server starts. Docker will in turn ensure that Central has started up. To do this, run ``systemctl enable docker``.
+First, you'll need to upgrade to docker-compose v1.28.3 or later. Follow these commands from `Docker's documentation <https://docs.docker.com/compose/install/#install-compose-on-linux-systems>`_.
+
+.. code-block:: console
+
+ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+ sudo chmod +x /usr/local/bin/docker-compose
+ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+Next, we will want to ensure that Docker starts up whenever the server starts. Docker will in turn ensure that Central has started up. To do this, run ``systemctl enable docker``.
 
 You will need to change one more thing on this server before we proceed: you will need to modify the system firewall for Enketo features in Central to work correctly.
 
