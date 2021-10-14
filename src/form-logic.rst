@@ -222,7 +222,9 @@ Values from the last saved record
 
 .. warning::
 
-  Support for last-saved was added in Collect v1.21.0. Form conversion requires XLSForm Online ≥ v2.0.0 or pyxform ≥ v1.0.0. Using older versions will have unpredictable results.
+  Support for last-saved was added in Collect v1.21.0 and Central v1.3.0. Using older versions or encrypted forms will have unpredictable results.
+
+  The last-saved feature does not work with encrypted forms.
 
 You can refer to values from the last saved record of this form definition:
 
