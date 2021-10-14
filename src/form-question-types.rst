@@ -1073,7 +1073,7 @@ Randomizing choice order
 
 .. note::
 
-  Randomizing choice order support was added in Collect v1.18.2 and Aggregate v1.7.1. Form conversion requires XLSForm Online ≥ v1.2.2 or pyxform ≥ v0.11.6.
+  Randomizing choice order support was added in Collect v1.18.2 and Central v1.0.0.
 
 To reduce bias, choice order can be randomized for any of the select question types described above. To display the choices in a different order each time the question is displayed, set **randomize** to **true** in the :th:`parameters` column of the XLSForm **survey** sheet:
 
@@ -1755,7 +1755,7 @@ Customizing audio quality
 
 .. versionadded:: 1.29
 
-  `ODK Collect v1.29.0 <https://github.com/getodk/collect/releases/tag/v1.29.0>`_, `pyxform` v1.3.0, `XLSForm Online` v2.3.0
+  `ODK Collect v1.29.0 <https://github.com/getodk/collect/releases/tag/v1.29.0>`_, Central v1.1.0.
 
 The quality of audio recordings can be customized using the ``quality`` parameter. If a ``quality`` is specified, the built-in recorder is always used, regardless of Collect settings. If no ``quality`` is specified and :ref:`external app recording has been disabled <use-external-app-for-audio-recording>`, ``normal`` is used. The available quality values are:
 
@@ -2487,7 +2487,7 @@ Geolocation at survey start
   :ref:`Audit log geolocation tracking <audit-geolocation-tracking>`
 
 .. note::
-  Geolocation at survey start was added in Collect v1.23 and Aggregate v2.0.4/v1.7.4. Form conversion requires XLSForm Online ≥ v1.6.1 or pyxform ≥ v0.15.1.
+  Geolocation at survey start was added in Collect v1.23 and Central v1.0.0.
 
 The :tc:`start-geopoint` question type is used to capture a single geolocation in :ref:`geopoint format <location-widgets>` when the survey is first started. Questions of type :tc:`start-geopoint` may be given any allowable name. Although it is possible to have more than one :tc:`start-geopoint` question in a form, all will have the same value.
 
@@ -2524,7 +2524,7 @@ type
 
 .. versionadded:: 1.30
 
-  `ODK Collect v1.30.0 <https://github.com/getodk/collect/releases/tag/v1.30.0>`_, `pyxform` v1.4.0, `XLSForm Online` v2.4.0
+  `ODK Collect v1.30.0 <https://github.com/getodk/collect/releases/tag/v1.30.0>`_, Central v1.2.0
 
 .. seealso::
   :doc:`Logging enumerator behavior <form-audit-log>`, :ref:`audio questions <audio>`
