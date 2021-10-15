@@ -359,7 +359,7 @@ Dynamic defaults
 
 .. warning::
   
-  Support for :ref:`dynamic defaults <dynamic-defaults>` was added in Collect v1.24.0. Form conversion requires XLSForm Online ≥ v2.0.0 or pyxform ≥ v1.0.0. Using older versions will have unpredictable results.
+  Support for :ref:`dynamic defaults <dynamic-defaults>` was added in Collect v1.24.0 and Central v1.0.0. Using older versions will have unpredictable results.
 
 If you put an expression in the :th:`default` column for a question, that expression will be evaluated once when a record is first created from a form definition. This allows you to use values from outside the form like the current date or the :ref:`server username <metadata>`. Dynamic defaults as described in this section are evaluated once on record creation. See below for using :ref:`dynamic defaults in repeats <dynamic-defaults-repeats>` or setting the :ref:`default value of one field to the value of another field in the form <defaults-from-form-data>`.
 
@@ -413,7 +413,7 @@ Dynamic defaults from form data
 
 .. warning::
   
-  Support for :ref:`dynamic defaults <dynamic-defaults>` from form data was added in Collect v1.24.0. Form conversion requires XLSForm Online ≥ v2.2.0 or pyxform ≥ v1.2.0. Using older versions will have unpredictable results.
+  Support for :ref:`dynamic defaults <dynamic-defaults>` from form data was added in Collect v1.24.0 and Central v1.1.0. Using older versions will have unpredictable results.
 
 It can be helpful to use a value filled out by the enumerator as a default for another question that the enumerator will later fill in. Dynamic defaults as described above can't be used for this because they are evaluated on form or repeat creation, before any data is filled in.
 
@@ -474,7 +474,7 @@ Triggering calculations on value change
 
 .. warning::
   
-  Support for triggering calculations on value change was added in Collect v1.24.0. Form conversion requires XLSForm Online ≥ v2.2.0 or pyxform ≥ v1.2.0. Using older versions will have unpredictable results.
+  Support for triggering calculations on value change was added in Collect v1.24.0 and Central v1.1.0. Using older versions will have unpredictable results.
 
 :ref:`Calculations <calculations>` are recomputed any time one of the values in its expression changes. For example, if your form includes the calculation `${q1} + ${q2}`, it will be recomputed any time either of the values for `${q1}` or `${q2}` changes.
 
