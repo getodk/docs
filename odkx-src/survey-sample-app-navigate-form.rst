@@ -44,7 +44,7 @@ Prompt Selection
     :alt: Survey Example Form Prompt Selection
     :class: device-screen-vertical
 
-This prompt allows you to choose which sections of the form to complete. Survey form navigation can be completely customized, even at runtime, to include or exclude sections, repeat portions, jump directly to different prompts based on entered values, and more. For this example we will complete the :menuselection:`label features`, :menuselection:`computed assignment of initial values`, and :menuselection:`custom template` sections. However, feel free to enter any combination you like and explore.
+This prompt allows you to choose which sections of the form to complete. Survey form navigation can be completely customized, even at runtime, to include or exclude sections, repeat portions, jump directly to different prompts based on entered values, and more. For this example, we will complete the :menuselection:`label features`, :menuselection:`computed assignment of initial values`, and :menuselection:`custom template` sections. However, feel free to enter any combination you like and explore.
 
 Press the :guilabel:`Next` button in the top right to progress to the next question. Note that we skip the :menuselection:`intent launching` section and progress directly to :menuselection:`label features`.
 
@@ -98,7 +98,7 @@ This prompt is requesting a value that will be used to render the next question.
     :alt: Survey Example Form Coffee Autofill
     :class: device-screen-vertical
 
-This prompt will prepopulate the entered data with the value from the previous prompt. In general, you can prepopulate a prompt with any previously collected value. In another example you might record a subject's address and then prepopulate that address on their household members address prompts.
+This prompt will prepopulate the entered data with the value from the previous prompt. In general, you can prepopulate a prompt with any previously collected value. In another example, you might record a subject's address and then prepopulate that address on their household members address prompts.
 
 Press :guilabel:`Next` to advance to the next section.
 

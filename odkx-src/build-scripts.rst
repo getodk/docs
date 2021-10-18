@@ -226,7 +226,7 @@ The dependency versions are also managed here.
 
 The file contains the specific build configuration for this project. The ODK-X projects do not differ greatly from established norms in this configuration. However, many of the constants and version numbers are stored in :ref:`build-scripts-external-variables` and variables are used here. This allows the tools to be upgraded and maintained in unison, and they can be forced to stay in sync.
 
-This file also establishes the product flavors, signing configs, build types, and other standard options found in many Android projects. The unique aspect comes in the :code:`dependencies` block. The different flavors have different dependencies (they will download different prebuilt binaries for their library projects). The demo and snapshot flavors build against the latest from their repositories, while the master flavor is hard coded to a specific version.
+This file also establishes the product flavors, signing configs, build types, and other standard options found in many Android projects. The unique aspect comes in the :code:`dependencies` block. The different flavors have different dependencies (they will download different prebuilt binaries for their library projects). The demo and snapshot flavors build against the latest from their repositories, while the master flavor is hard-coded to a specific version.
 
 .. _build-scripts-external:
 

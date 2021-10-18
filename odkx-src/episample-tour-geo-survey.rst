@@ -28,7 +28,7 @@ The above screen on the left depicts a GPS signal that is not accurate enough, a
 
 A running total of records is indicated in between the collection portion of the screen and the record list. It is separated into the *Valid*, *Invalid*, and *Excluded* categories. The difference between *Invalid* and *Excluded* is that an *Excluded* record is manually excluded via the :guilabel:`Exclude` checkbox.
 
-In *Invalid* record can only be made valid by recapturing the GPS coordinates when the accuracy is sufficient. The image below shows the record editing screen.
+In *Invalid*, a record can only be made valid by recapturing the GPS coordinates when the accuracy is sufficient. The image below shows the record editing screen.
 
   .. image:: /img/episample-tour/episample-collect-update.*
     :alt: Collection Update Screen
@@ -43,12 +43,12 @@ After all of the household data has been recorded, the user should synchronize t
 Implementation
 ----------------------
 
-The basic structure of the user interface is defined in :file:`assets/eps_collect.html`, including all the input fields and the container for the list. Dynamic adjustments to this user interface, as well as calls to the database and device hardware, are made in :file:`assets/js/eps_collect.js`. This file's makes heavy use of the third party :program:`Backbone` JavaScript library. Also notice that the third party library :program:`Underscore` is included, along with template HTML, for dynamically adding list items.
+The basic structure of the user interface is defined in :file:`assets/eps_collect.html`, including all the input fields and the container for the list. Dynamic adjustments to this user interface, as well as calls to the database and device hardware, are made in :file:`assets/js/eps_collect.js`. This file makes heavy use of the third-party :program:`Backbone` JavaScript library. Also notice that the third-party library :program:`Underscore` is included, along with template HTML, for dynamically adding list items.
 
 The file :file:`eps_collect.js` handles:
 
   1. Keeping track of the GPS coordinates and accuracy in real time. It also updates the user interface as necessary when these change. The thresholds for GPS accuracy are read from the settings with the :file:`epsConfigLib.js` file.
-  2. Reading, Creating, and Updating records in the *Census* table. This data is also validated before being recorded. The records are read through a number of calls to :code:`odkData.query(...)` and :code:`odkData.ArbitraryQuery(...)`. They are recorded with calls to :code:`odkData.addRow(...)` and the are updated with calls to :code:`odkData.updateRow(...)`.
+  2. Reading, Creating, and Updating records in the *Census* table. This data is also validated before being recorded. The records are read through a number of calls to :code:`odkData.query(...)` and :code:`odkData.ArbitraryQuery(...)`. They are recorded with calls to :code:`odkData.addRow(...)` and they are updated with calls to :code:`odkData.updateRow(...)`.
   3. Dynamically creating the visualization of the list of records from the *Census* and updating it as that list changes. This list is also paginated. The running totals of *Valid*, *Invalid*, and *Excluded* records are populated with :code:`odkData.arbitraryQuery` calls.
 
 The file :file:`assets/js/util.js` is included to generate UUIDs (unique ids and primary keys in the database) for each new record as it is created.

@@ -14,9 +14,9 @@ If you are working on a Windows/Mac/Linux machine, you can use `Android Studio <
 
 .. note::
 
-  Please note that ODK-X Services version 2.1.7 doesn't work on Android 11. You will need Android 10 with API level less than 30 for version 2.1.7.
+  Please note that ODK-X Services version 2.1.7 doesn't work on Android 11. You will need Android 10 with an API level of less than 30 for version 2.1.7.
 
-Before installing any of the ODK-X tools, you will need the following third party app:
+Before installing any of the ODK-X tools, you will need the following third-party app:
 
   - `OI File Manager <https://github.com/openintents/filemanager/releases>`_
 
@@ -28,7 +28,7 @@ There are no other ODK-X Android tools that are prerequisites to installing :doc
 Recommended
 ~~~~~~~~~~~~~~~
 
-We also recommend installing both :ref:`ODK-X Survey<survey-using>` and :ref:`ODK-X Tables<tables-using>`. Having both is not required, but Tables and Survey are most versatile when used together. Tables offers a way to visualize, process, and modify data collected by Survey, all on the device. Survey offers a simple, form based data collected workflow similar to ODK Collect that can be seamlessly integrated with Tables to create and modify records.
+We also recommend installing both :ref:`ODK-X Survey<survey-using>` and :ref:`ODK-X Tables<tables-using>`. Having both is not required, but Tables and Survey are most versatile when used together. Tables offers a way to visualize, process, and modify data collected by Survey, all on the device. Survey offers a simple, form-based data collected workflow similar to ODK Collect that can be seamlessly integrated with Tables to create and modify records.
 
 .. _services-install:
 
@@ -36,11 +36,11 @@ We also recommend installing both :ref:`ODK-X Survey<survey-using>` and :ref:`OD
 Installing Services
 --------------------------------
 
-  1. From your device's :guilabel:`Settings`, choose :menuselection:`Apps & notifications`. (On older versions of Android, this setting maybe in :menuselection:`Applications` or :menuselection:`Security` depending upon your android version.)
+  1. From your device's :guilabel:`Settings`, choose :menuselection:`Apps & notifications`. (On older versions of Android, this setting may be in :menuselection:`Applications` or :menuselection:`Security` depending upon your android version.)
 
     - Go to :guilabel:`Special app access` in :guilabel:`Advanced` and choose :guilabel:`Install unknown apps`
     - From the list of applications, select a browser of your choice and check :guilabel:`Allow from this source`.
-    - (On older versions of Android, above two steps are not required, make sure installation from *Unknown Sources* is checked.)
+    - (On older versions of Android, the above two steps are not required, make sure installation from *Unknown Sources* is checked.)
 
   2. Open the same web browser that you authorized to install unknown apps on your Android device. (For older versions of Android any web browser can be used since you do not need to specifically authorize the web browser's ability to install.)
   3. Navigate to https://github.com/odk-x/services/releases/latest and download the latest ODK-X Services APK.
@@ -62,11 +62,11 @@ Installing Services
 Installing the ODK-X Survey App
 -----------------------------------
 
-  1.  From your device's :guilabel:`Settings`, choose :menuselection:`Apps & notifications`. (On older versions of Android, this setting maybe in :menuselection:`Applications` or :menuselection:`Security` depending upon your android version.)
+  1.  From your device's :guilabel:`Settings`, choose :menuselection:`Apps & notifications`. (On older versions of Android, this setting may be in :menuselection:`Applications` or :menuselection:`Security` depending upon your android version.)
 
     - Go to :guilabel:`Special app access` in :guilabel:`Advanced` and choose :guilabel:`Install unknown apps`
     - From the list of applications, select a browser of your choice and check :guilabel:`Allow from this source`.
-    - (On older versions of Android, above two steps are not required, make sure installation from *Unknown Sources* is checked.)
+    - (On older versions of Android, the above two steps are not required, ensure installation from *Unknown Sources* is checked.)
     
   2. Open the same web browser that you authorized to install unknown apps on your Android device. (For older versions of Android any web browser can be used since you do not need to specifically authorize the web browser's ability to install.)
   3. Navigate to https://github.com/odk-x/survey/releases/latest and download the latest ODK-X Survey APK.
@@ -90,11 +90,11 @@ Installing the ODK-X Tables App
 -----------------------------------
 
 
-  1.  From your device's :guilabel:`Settings`, choose :menuselection:`Apps & notifications`. (On older versions of Android, this setting maybe in :menuselection:`Applications` or :menuselection:`Security` depending upon your android version.)
+  1.  From your device's :guilabel:`Settings`, choose :menuselection:`Apps & notifications`. (On older versions of Android, this setting may be in :menuselection:`Applications` or :menuselection:`Security` depending upon your android version.)
 
     - Go to :guilabel:`Special app access` in :guilabel:`Advanced` and choose :guilabel:`Install unknown apps`
     - From the list of applications, select a browser of your choice and check :guilabel:`Allow from this source`.
-    - (On older versions of Android, above two steps are not required, make sure installation from *Unknown Sources* is checked.)
+    - (On older versions of Android, the above two steps are not required, make sure installation from *Unknown Sources* is checked.)
     
   2. Open the same web browser that you authorized to install unknown apps on your Android device. (For older versions of Android any web browser can be used since you do not need to specifically authorize the web browser's ability to install.)
   3. Navigate to https://github.com/odk-x/tables/releases/latest and download the latest ODK-X Tables APK.

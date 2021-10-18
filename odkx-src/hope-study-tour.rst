@@ -16,7 +16,7 @@ You can view a visual walk through of the Hope Study modules `here <https://yout
 
 .. note::
 
-  All file paths in this document are inside of the Application Designer directory. Additionally, all user defined files in a Data Management Application are inside the :file:`app/config/` directory. For convenience this document omits these portions of the file paths.
+  All file paths in this document are inside of the Application Designer directory. Additionally, all user-defined files in a Data Management Application are inside the :file:`app/config/` directory. For convenience, this document omits these portions of the file paths.
 
   For example, let us assume I have stored the Application Designer directory on my computer in :file:`/home/bobsmith/workspace/app-designer`. If this guide were to reference a file as :`assets/index.html` that indicates the file located on my computer at :file:`/home/bobsmith/workspace/app-designer/app/config/assets/index.html`.
 

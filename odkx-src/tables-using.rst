@@ -83,7 +83,7 @@ The *Table Manager* allows you to modify table settings, delete tables, and impo
 Viewing Data
 --------------------
 
-Tables supports viewing collected data in a variety of formats. Survey allows you to review individual form instances, but Tables lets you view full data tables as well as create your own customized visualizations. This is a significant departure from the form based model of data collection, and allows you to manage data directly on the device.
+Tables supports viewing collected data in a variety of formats. Survey allows you to review individual form instances, but Tables lets you view full data tables as well as create your own customized visualizations. This is a significant departure from the form-based model of data collection, and allows you to manage data directly on the device.
 
 .. _tables-using-view-types:
 

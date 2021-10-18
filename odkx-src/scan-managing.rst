@@ -18,7 +18,7 @@ To create an Data Management Application that uses ODK-X Scan, you will need the
   - :doc:`app-designer-intro`
   - :doc:`cloud-endpoints-intro`
 
-As well as the third party apps:
+As well as the third-party apps:
 
 - `OI File Manager <https://play.google.com/store/apps/details?id=org.openintents.filemanager>`_
 

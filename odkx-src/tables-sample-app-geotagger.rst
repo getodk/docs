@@ -7,7 +7,7 @@ Geotagger Demo
 
 .. _tables-sample-app-geotagger:
 
-For this portion of the tutorial we will explore the *Geotagger* demo. Select the tab labeled :guilabel:`Geo` and press :guilabel:`Launch Demo`.
+For this portion of the tutorial, we will explore the *Geotagger* demo. Select the tab labeled :guilabel:`Geo` and press :guilabel:`Launch Demo`.
 
   .. image:: /img/tables-sample-app/tables-sample-launch-geo.*
     :alt: Launch Geotagger
@@ -32,7 +32,7 @@ You will see the same map on the bottom portion of the screen, but the top will 
     :alt: Tables Sample Navigate View
     :class: device-screen-vertical
 
-As you turn the compass should update. If you select a point, the compass will add an arrow pointing towards the selected point from your current orientation. The :guilabel:`Distance` and :guilabel:`Heading` values should fill in as well, and update as you move around.
+As you turn, the compass should update. If you select a point, the compass will add an arrow pointing towards the selected point from your current orientation. The :guilabel:`Distance` and :guilabel:`Heading` values should fill in as well and update as you move around.
 
   .. image:: /img/tables-sample-app/tables-sample-navigate-point.*
     :alt: Tables Sample Navigate View
@@ -44,7 +44,7 @@ The *Navigate View* can be useful if you have loaded geopoints into your databas
 
   The *Geotagger* demo also has a more complex *Map View* example. If you select *Map View* and tap on a map marker, that location will be highlighted in the *List View* on the top of the screen and it will expand to give you more information about it. This more sophisticated behavior is all performed in the JavaScript and HTML files.
 
-Next launch the *Plot* Demo.
+Next, launch the *Plot* Demo.
 
 .. _tables-sample-app-navigate-view-learn-more:
 

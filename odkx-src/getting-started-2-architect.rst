@@ -135,7 +135,7 @@ Return to the :program:`cmd` window on your computer. :kbd:`Control-C` to stop t
 
 Connect your device to your computer via USB. Wait for the storage connection to be established (on Windows, this will generally pop up a file browser or an options box that enables you to select a file browser). Be sure you trust your computer on your Android device, or it will cause unexpected errors.
 
-At the command prompt, navigated to the Application Designer folder, type
+At the command prompt, navigate to the Application Designer folder and type:
 
 .. code-block:: console
 
@@ -183,6 +183,6 @@ We also provide guides for setting up your own ODK-X application for each of the
   - :doc:`services-managing`
   - :doc:`scan-managing`
 
-However the user guides for these tools are also useful for everyone.
+However, the user guides for these tools are also useful for everyone.
 
 Finally, to expand your knowledge of the more advanced features of the platform, such as data permission filters, read the :doc:`advanced-topics-architect`.
