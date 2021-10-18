@@ -21,7 +21,7 @@ The EpiSample application provides a good example of the following ODK-X platfor
   - **Custom Web Views**: Location data is displayed and updated in real time. Custom data visualizations are used on data entry screens to help guide collection.
   - **Complex Workflows**: Custom logic is implemented in JavaScript to generate tasks using collected data and to dynamically launch Survey forms.
   - **Mapping and Navigation**: A map of homes is generated using collected geo-data. *Navigate View* is integrated into the workflow to guide data collectors to homes and launch follow up surveys.
-  - **Adaptability**: The application is designed to be flexible to differing usage scenarios. Different Survey forms can be loaded into the same workflow to adapt to different data collection needs. Data quantity and location accuracy requirements can be configured in the app and updated as needed.
+  - **Adaptability**: The application is designed to be flexible to different usage scenarios. Different Survey forms can be loaded into the same workflow to adapt to different data collection needs. Data quantity and location accuracy requirements can be configured in the app and updated as needed.
 
   .. _episample-installing:
 

@@ -3,7 +3,7 @@ JGI Demo
 
 .. _tables-sample-app-jgi:
 
-For this portion of the tutorial we will explore the *JGI* demo. Select the tab labeled :guilabel:`JGI` and press :guilabel:`Launch Demo`.
+For this portion of the tutorial, we will explore the *JGI* demo. Select the tab labeled :guilabel:`JGI` and press :guilabel:`Launch Demo`.
 
   .. image:: /img/tables-sample-app/tables-sample-launch-jgi.*
     :alt: Launch JGI Demo
@@ -36,9 +36,9 @@ When you have filled in these data fields, press :guilabel:`Begin`. This will sh
     :alt: Tables Sample JGI Follow Screen
     :class: device-screen-vertical
 
-This screen is hard for a new user to understand. It is highly customized to the specifications of the *Jane Goodall Institute's* workflow. They originally used large paper notebooks with grids. They would check boxes on the grid based on observed chimpanzee behavior according to their own data collection protocols. This screen renders that same grid digitally and gives a worker access to dozens of fields simultaneously. Survey, Collect, or other form based data entry models would be too scripted and confining for this type of dynamic interaction record. Furthermore, this screen will advance to a new data point every 15 minutes. This is another workflow necessity that is only possible because of customized JavaScript.
+This screen is hard for a new user to understand. It is highly customized to the specifications of the *Jane Goodall Institute's* workflow. They originally used large paper notebooks with grids. They would check boxes on the grid based on observed chimpanzee behavior according to their own data collection protocols. This screen renders that same grid digitally and gives a worker access to dozens of fields simultaneously. Survey, Collect, or other form-based data entry models would be too scripted and confining for this type of dynamic interaction record. Furthermore, this screen will advance to a new data point every 15 minutes. This is another workflow necessity that is only possible because of customized JavaScript.
 
-Finally launch the *Hope* Demo.
+Finally, launch the *Hope* Demo.
 
 .. _tables-sample-app-non-form-data-learn-more:
 

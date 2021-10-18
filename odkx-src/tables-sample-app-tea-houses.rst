@@ -7,7 +7,7 @@ Tea Houses Demo
 
 .. _tables-sample-app-tea-houses:
 
-For this portion of the tutorial we will explore the *Tea Houses* demo. Select the tab labeled :guilabel:`Tea` and press :guilabel:`Launch Demo`.
+For this portion of the tutorial, we will explore the *Tea Houses* demo. Select the tab labeled :guilabel:`Tea` and press :guilabel:`Launch Demo`.
 
   .. image:: /img/tables-sample-app/tables-sample-launch-tea.*
     :alt: Launch Tea Houses
@@ -95,7 +95,7 @@ Detail View
 
 This screen shows all the details of the *Stonehouse* tea entry in the *Tea Inventory* table. The *Tea Inventory* table's *Detail View* displays information about the tea, including whether it is available hot, iced, in bags, or loose leaf. Note that the tea type is being pulled from the *Tea Types* table, but the JavaScript is getting the information from that table to construct our view. Like the other views, we programmed this using rudimentary HTML and JavaScript, but it could be customized to look fancier or display additional information.
 
-Next we will see a combination of the detail and list view options. Back out until you hit the custom view with the three buttons. .. _tables-sample-app-detail-view-learn-more:
+Next, we will see a combination of the detail and list view options. Back out until you hit the custom view with the three buttons. .. _tables-sample-app-detail-view-learn-more:
 
 .. _tables-sample-app-detail-view-learn-more:
 
