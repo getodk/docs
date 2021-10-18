@@ -70,7 +70,7 @@ Installing the ODK-X Survey App
     
   2. Open the same web browser that you authorized to install unknown apps on your Android device. (For older versions of Android any web browser can be used since you do not need to specifically authorize the web browser's ability to install.)
   3. Navigate to https://github.com/odk-x/survey/releases/latest and download the latest ODK-X Survey APK.
-  4. In the download window, you will see ODK_Survey.N.N.apk. - Select it to download the file.
+  4. In the download window, you will see ODK-X_Survey.N.N.apk. - Select it to download the file.
 
    - On older devices, the APK will automatically install after you approve the security settings.
    - On newer devices, you must go to the download list, rename the file to restore the .apk extension (the extension will have been renamed to .man during the download process), then click on it to install it.
