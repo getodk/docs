@@ -12,10 +12,6 @@ Before installing ODK-X Scan, you will need the following ODK-X Tools:
   - :doc:`survey-using`
   - :doc:`tables-using`
 
-As well as the following third-party apps:
-
-  - `OI File Manager <https://github.com/openintents/filemanager/releases>`_
-
 .. _odk-x-scan-install:
 
 Installing Scan

@@ -16,10 +16,6 @@ If you are working on a Windows/Mac/Linux machine, you can use `Android Studio <
 
   Please note that ODK-X Services version 2.1.7 doesn't work on Android 11. You will need Android 10 with an API level of less than 30 for version 2.1.7.
 
-Before installing any of the ODK-X tools, you will need the following third-party app:
-
-  - `OI File Manager <https://github.com/openintents/filemanager/releases>`_
-
 Required
 ~~~~~~~~~~~~~~~
 
