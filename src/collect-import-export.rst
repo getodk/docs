@@ -3,13 +3,13 @@ Settings QR codes
 
 Collect's settings can be imported and exported using QR codes.
 
-.. note::
-  QR codes contain settings with non-default values. When a code is scanned in, settings not explicitly included in the code are reset to their default values.
-
 Scanning a QR code
 ------------------
 
 Settings QR codes can be scanned when adding a new Project or can be scanned to reconfigure the current Project by navigating to :guilabel:`Reconfigure with QR code` in :guilabel:`Project Management` settings.
+
+.. note::
+  QR codes contain settings with non-default values. When a code is scanned in, settings not explicitly included in the code are reset to their default values.
 
 Importing settings from an image saved on your device
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
