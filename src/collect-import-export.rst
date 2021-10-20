@@ -1,7 +1,7 @@
 Settings QR codes
 =================
 
-Collect's settings can be imported and exported using QR codes.
+Collect's settings can be imported and exported using QR codes. These can be provided by servers (like ODK Central) or can be used to share settings from one device to another.
 
 Scanning a QR code
 ------------------
