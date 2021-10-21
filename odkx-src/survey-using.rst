@@ -12,7 +12,7 @@ ODK-X Survey
 
 .. note::
 
-  ODK-X Survey only works on Android 4.4 and newer devices.
+  ODK-X Survey only works on Android 5.0 and newer devices.
 
 .. note::
 
@@ -298,6 +298,10 @@ To launch and use that application:
 
 Android 4.x Devices
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+
+  Please note that ODK-X Survey version 2.1.9 does not support Android 4.x. It's minimum Android version is 5.0
 
   #. Choose to view the installed applications.
   #. Select the :guilabel:`Widgets` tab at the top of that screen.
