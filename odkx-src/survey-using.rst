@@ -301,7 +301,7 @@ Android 4.x Devices
 
 .. note::
 
-  Please note that ODK-X Survey version 2.1.9 does not support Android 4.x. It's minimum Android version is 5.0
+  Please note that ODK-X Survey version 2.1.9 does not support Android 4.x. Its minimum Android version is 5.0
 
   #. Choose to view the installed applications.
   #. Select the :guilabel:`Widgets` tab at the top of that screen.

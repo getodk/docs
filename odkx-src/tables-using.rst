@@ -13,7 +13,7 @@ Tables also enables web developers to build powerful *data management applicatio
 
 .. note::
 
-  Please note that ODK-X version 2.1.9 does not support Android 4.x. It's minimum Android version is 5.0.
+  Please note that ODK-X version 2.1.9 does not support Android 4.x. Its minimum Android version is 5.0.
 
 
 We have included a sample application built on top of Tables along with a handful of data tables that showcase some of its features in :doc:`tables-sample-app`.
