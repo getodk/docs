@@ -8,7 +8,7 @@ These instructions describe the steps to install the ODK-X basic tools on a tabl
 Prerequisites
 -------------------
 
-You must have an Android tablet with an operating system version 4.4 or higher.
+You must have an Android tablet with an operating system version 5.0 or higher.
 
 If you are working on a Windows/Mac/Linux machine, you can use `Android Studio <https://developer.android.com/studio>`_ to launch an Android emulator for testing purposes.
 
