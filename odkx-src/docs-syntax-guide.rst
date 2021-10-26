@@ -167,7 +167,7 @@ How ODK Docs uses main and secondary tables of content
 
 .. tip::
 
-  If it not obvious where a new document should appear in the navigation, the best practice is to simply ask about it in the GitHub issue driving the new page.
+  If it's not obvious where a new document should appear in the navigation, the best practice is to simply ask about it in the GitHub issue driving the new page.
 
 .. note::
 
