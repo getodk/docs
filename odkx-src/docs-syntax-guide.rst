@@ -17,7 +17,7 @@ The ODK documentation is built using `Sphinx <http://sphinx-doc.org>`_, a static
 
 .. note::
 
-  Sphinx and reStructuredText can be very flexible. For the sake of consistency and maintainability, this guide is *highly opinionated* about how documentation source files are organized and marked up.
+  Sphinx and `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ can be very flexible. For the sake of consistency and maintainability, this guide is *highly opinionated* about how documentation source files are organized and marked up.
 
 
 .. _indentation:
@@ -25,7 +25,7 @@ The ODK documentation is built using `Sphinx <http://sphinx-doc.org>`_, a static
 Indentation
 --------------
 
-Indentation is meaningful in Sphinx and reStructuredText text. Usually, indenting a section means that is "belongs to" the line it is indented under. For example:
+Indentation is meaningful in Sphinx and `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ text. Usually, indenting a section means that is "belongs to" the line it is indented under. For example:
 
 .. code-block:: rst
 
@@ -247,7 +247,7 @@ In either case, the underline of characters needs to be *longer than* the line o
 
 .. note::
 
-  The exact order of underline characters is flexible in reStructuredText. However, this specific ordering should be used throughout the ODK documentation.
+  The exact order of underline characters is flexible in `reStructuredText <http://docutils.sourceforge.net/rst.html>`_. However, this specific ordering should be used throughout the ODK documentation.
 
 .. _section-labels:
 
@@ -1293,7 +1293,7 @@ You can define the value once like this:
 
 .. code-block:: rst
 
-  .. |RST| replace:: reStructuredText
+  .. |RST| replace:: `reStructuredText <http://docutils.sourceforge.net/rst.html>`_
 
 and then reuse it like this:
 
@@ -1301,7 +1301,7 @@ and then reuse it like this:
 
   We use |RST| to write documentation source files.
 
-Here, ``|RST|`` will be replaced by reStructuredText
+Here, ``|RST|`` will be replaced by `reStructuredText <http://docutils.sourceforge.net/rst.html>`_
 
 You can also create a reference with styled text:
 
