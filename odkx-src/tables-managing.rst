@@ -55,6 +55,10 @@ The upload process is as follows:
       :alt: Table Manager Import CSV
       :class: device-screen-vertical
 
+    .. warning::
+
+      You must have installed Files by Google from the Play Store.
+
   5. Find your file, select it, and press :guilabel:`Pick file`.
   6. Press :guilabel:`Append to an Existing Table`.
 

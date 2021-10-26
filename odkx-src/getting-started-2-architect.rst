@@ -106,7 +106,7 @@ Preparing the Device
 
 If you followed along with the :doc:`survey-sample-app`, you should already have all the necessary tools installed on your device. If not, follow the :doc:`basics-install` instructions to install ODK-X Services, ODK-X Survey, and ODK-X Tables.
 
-First, open a file manager on the device. Delete the whole :guilabel:`opendatakit` folder by clicking the folder and holding it until it becomes highlighted in blue. Then press the delete icon, and click :guilabel:`OK` in the resulting window.
+First, open the :guilabel:`Files by Google` app on the device. Delete the whole :guilabel:`opendatakit` folder by clicking the folder and holding it until it becomes highlighted in blue. Then press the delete icon, and click :guilabel:`OK` in the resulting window.
 
 .. image:: /img/getting-started-2/file-manager-delete-folder.*
   :alt: Delete opendatakit folder in OI File Manager

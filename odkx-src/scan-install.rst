@@ -12,6 +12,8 @@ Before installing ODK-X Scan, you will need the following ODK-X Tools:
   - :doc:`survey-using`
   - :doc:`tables-using`
 
+As well as the `Files by Google <https://play.google.com/store/apps/details?id=com.google.android.apps.nbu.files&hl=en&gl=US>`_ app.
+
 .. _odk-x-scan-install:
 
 Installing Scan

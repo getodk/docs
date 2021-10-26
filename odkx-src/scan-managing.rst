@@ -18,6 +18,8 @@ To create an Data Management Application that uses ODK-X Scan, you will need the
   - :doc:`app-designer-intro`
   - :doc:`cloud-endpoints-intro`
 
+As well as the `Files by Google <https://play.google.com/store/apps/details?id=com.google.android.apps.nbu.files&hl=en&gl=US>`_ app.
+
 If you have not installed Scan already, follow our guide for :doc:`scan-install`
 
 .. _odk-x-scan-transferring-template:
