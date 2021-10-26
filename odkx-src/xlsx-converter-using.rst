@@ -74,6 +74,7 @@ Typing the following in the **survey** worksheet of a workbook with an appropria
 
 .. csv-table:: Creating a Simple Survey Example Form
   :header: "clause", "Condition", "type", "name", "display.prompt.text"
+  :name: creating-a-simple-survey-example-form
 
   ,,"integer", "person_age", "How old are you?"
   "if ", "data('person_age') >= 18",
@@ -113,6 +114,7 @@ The pizza survey example used earlier can be improved upon with multiple choice 
 
 .. csv-table:: Adding Multiple Choice Questions Example Survey Worksheet
   :header: "clause", "Condition ", "type", "values_list ", "name", "display.prompt.text"
+  :name: adding-multiple-choice-questions-example-survey-worksheet
 
   ,,"select_one", "yes_no", "person_age", "Are you 18 or older?"
   "if", "selected(data('person_age'), 'yes')",
@@ -128,6 +130,7 @@ and the corresponding **choices** worksheet would look like this:
 
 .. csv-table:: Adding Multiple Choice Questions Example Choices Worksheet
   :header: "choice_list_name", "data_value", "display.title.text"
+  :name: adding-multiple-choice-questions-example-choices-worksheet
 
   "yes_no", "yes", "Yes"
   "yes_no", "no", "No"
@@ -158,6 +161,7 @@ Below is the survey worksheet of an example survey that implements skip logic. O
 
 .. csv-table:: Using Skip logic Example Survey Worksheet
   :header: "clause", "condition", "type", "values_list ", "name", "display.prompt.text"
+  :name: using-skip-logic-example-survey-worksheet
 
   ,,"select_one", "order_list", "menu", "What would you like to get?"
   "if", "selected(data('menu'), 'doughnut') || selected(data('menu'), 'bread roll') || selected(data('menu'), 'cinnamon roll')",
@@ -197,6 +201,7 @@ Custom section worksheets can be added to a workbook to make the control flow of
 
 .. csv-table:: Custom Section Worksheets Example
   :header: "clause", "condition ", "type", "values_list ", "name", "display.prompt.text"
+  :name: custom-section-worksheets-example
 
   "do", "section Pizza",
 
@@ -227,6 +232,7 @@ In general, calculations are referenced in the :th:`condition` column of **surve
 
 .. csv-table:: Calculates Worksheet Example
   :header: "calculation_name", "calculation"
+  :name: calculates-worksheet-example
 
   "daysOld", "(now().getTime()-new Date(data('birthday')).getTime())/1000/60/60/24"
   "isBirthdayToday", "calculates.daysOld()%365 == (now().getTime()/1000/60/60/24)%365"
@@ -235,6 +241,7 @@ and one of the **survey** worksheets may look like this:
 
 .. csv-table:: Calculation Survey Worksheet Example
   :header: "clause", "condition", "type", "name", "display.prompt.text"
+  :name: calculation-survey-worksheet-example
 
   "if", "calculates.isBirthdayToday()",
   ,,"note", "happyBirthday", "Happy Birthday!"
@@ -278,6 +285,7 @@ Each row of the queries page represents a choice set that can be used by :tc:`se
 
 .. list-table:: Queries Worksheet Example
   :header-rows: 1
+  :name: queries-worksheet-example
 
   * - query_name
     - query_type
@@ -301,6 +309,7 @@ The data for the queries is coming from the :file:`regions.csv` file that is loc
 
 .. csv-table:: regions.csv
   :header: "region", "country"
+  :name: regions-csv
 
   "Africa", "Algeria"
   "Africa", "Angola"
@@ -310,6 +319,7 @@ Knowing the structure of the :file:`regions.csv` helps in understanding the call
 
 .. csv-table:: Queries Survey Worksheet Example
   :header: "clause", "condition ", "type", "values_list ", "name", "display.prompt.text ", "choice_filter"
+  :name: queries-survey-worksheet-example
 
   "begin screen",
   ,,"select_one_dropdown", "regions_csv", "region", "Please select your region:",
@@ -329,6 +339,7 @@ Linked Tables
 
 .. csv-table:: Linked Table Survey Worksheet Example
   :header: "clause", "condition", "type", "values_list", "name", "display.prompt.text ", "choice_filter"
+  :name: linked-table-survey-worksheet-example
 
   ,,"text",, "house_id", "Input the unique household id:",
   ,,"integer",, "num_members", "How many people live in this house?",
@@ -339,6 +350,7 @@ The **queries** worksheet would look like this:
 
 .. list-table:: Linked Table Query Worksheet Example
   :header-rows: 1
+  :name: linked-table-query-worksheet-example
 
   * - query_name
     - query_type
@@ -376,6 +388,7 @@ Survey offers the ability to display text in different languages. This requires 
 
 .. csv-table:: Internationalization framework_translations Worksheet Example
   :header: "type", "name", "display.prompt.text", "display.prompt.text.es"
+  :name: internationalization-framework-translations-worksheet-example
 
   "text", "user_name", "What is your name?", "¿Cuál es su nombre?"
   "integer", "user_age", "How old are you?", "¿Cuántos años tienes?"
@@ -393,6 +406,7 @@ A choice set needs to be added to the **choices** worksheet with the applicable 
 
 .. csv-table:: Branching Choices Worksheet Example
   :header: "choice_list_name", "data_value", "display.title.text"
+  :name: branching-choices-worksheet-example
 
   "which_form", "pizza_form", "Order pizza?"
   "which_form", "birthday_form", "Is it your birthday?"
@@ -401,6 +415,7 @@ And the **survey**  page would look like this:
 
 .. csv-table:: Branching Survey Worksheet Example
   :header: "branch_label", "clause", "condition ", "type", "values_list ", "display.prompt.text"
+  :name: branching-survey-worksheet-example
 
   ,,,"user_branch", "which_form", "Choose a survey to fill out"
   "pizza_form",
@@ -419,6 +434,7 @@ When ODK-X Survey opens, it displays a list of the different forms available on 
 
 .. list-table:: Custom Initial Worksheet Example
   :header-rows: 1
+  :name: custom-initial-worksheet-example
 
   * - clause
     - Condition
@@ -476,6 +492,7 @@ The **survey** page would look like this:
 
 .. csv-table:: Validate Survey Worksheet Example
   :header: "branch_label", "Clause", "type", "values_list ", "display.prompt.text"
+  :name: validate-survey-worksheet-example
 
   "welcome_screen",
   ,,"user_branch", "which_branch", "Choose the section to enter"
@@ -501,6 +518,7 @@ The **choices** worksheet would look like this:
 
 .. csv-table:: Validate Choices Worksheet Example
   :header: "choice_list_name", "data_value", "display.title.text"
+  :name: validate-choices-worksheet-example
 
   "which_branch", "branch1", "Do Section 1"
   "which_branch", "branch2", "Do Section 2"
@@ -510,6 +528,7 @@ The **section1** worksheet would look like this:
 
 .. csv-table:: Validate Section1 Worksheet Example
   :header: "type", "name", "display.prompt.text", "required", "validation_tags"
+  :name: validate-section1-worksheet-example
 
   "text", "user_name", "What is your name?", "TRUE", "user_info finalize"
   "integer", "user_age", "What is your age?", "TRUE", "user_info finalize"
@@ -519,6 +538,7 @@ The **section2** worksheet would look like this:
 
 .. csv-table:: Validate Section2 Worksheet Example
   :header: "type", "name", "display.prompt.text", "required", "validation_tags"
+  :name: validate-section2-worksheet-example
 
   "text", "occupation", "What is your current occupation?", "TRUE", "user_info finalize"
   "integer", "user_age", "How long have you worked at your current job (in years)?", "TRUE", "finalize"
@@ -557,6 +577,7 @@ After that, the database table used to store the instances for the other form is
 
 .. list-table:: async_assign Types Table
   :header-rows: 1
+  :name: async-assign-types-table
 
   * - Name
     - Return Type
@@ -594,6 +615,7 @@ There are 2 forms that use :th:`async_assign` in the Application Designer reposi
 
 .. csv-table:: async_assign_single_string visit survey Worksheet Excerpt
   :header: "clause", "condition", "type", "name", "values_list", "calculation", "display.prompt.text"
+  :name: async-assign-single-string-visit-survey-worksheet-excerpt
 
   "begin screen"
   ,, "async_assign_single_string", "plant_type_query_text", "plant_type_query",,
@@ -604,6 +626,7 @@ From the example, we can see that :tc:`plant_type_query_text` is assigned the va
 
 .. csv-table:: visit model Worksheet Excerpt
   :header: "name", "type", "isSessionVariable"
+  :name: visit-model-worksheet-excerpt
 
   "plant_type_query_text","string", "TRUE"
 
@@ -611,6 +634,7 @@ The **queries** worksheet shows that the :tc:`plant_type_query` will assign the 
 
 .. csv-table:: visit queries Worksheet Excerpt
   :header: "query_name", "query_type", "linked_form_id", "linked_table_id", "selection", "selectionArgs", "fieldName", "newRowInitialElementKeyToValueMap", "openRowInitialElementKeyToValueMap"
+  :name: visit-queries-worksheet-excerpt
 
   "plant_type_query", "linked_table", "plot", "plot", "_id = ?", "[data('plot_id')]", planting, "'{ plot_id : data('plot_id') }", "{}"
 
@@ -624,6 +648,7 @@ How to use :th:`async_assign`:
 
   .. csv-table:: promptTypes Survey Worksheet
     :header: "prompt_type_name", "type"
+    :name: prompt-types-survey-worksheet
 
     "async_assign_max","number"
     "async_assign_min","number"
@@ -647,6 +672,7 @@ Different surveys and forms can also be entered using the :th:`external_link` ty
 
 .. list-table:: External Link Survey Worksheet Example
   :header-rows: 1
+  :name: external-link-survey-worksheet-example
 
   * - branch_label
     - clause
