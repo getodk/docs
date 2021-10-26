@@ -28,6 +28,7 @@ Using ODK-X XLSX Converter
 ODK-X Survey offers a rich set of features that can be seamlessly integrated into a custom form. A lot of the functionality can be implemented solely within an Excel workbook. This guide is designed to help you take advantage of this via a guided tour of example tasks.
 
 .. contents:: :local:
+   :backlinks: none
 
 .. tip::
 
@@ -171,7 +172,7 @@ Below is the survey worksheet of an example survey that implements skip logic. O
   "begin screen",
   ,,"select_one", "size_list", "size", "What size of cake would you like?"
   ,,"select_one", "flavor_list", "flavor", "What cake flavor would you like?"
-   "end screen",
+  "end screen",
   "end if",
   "if", "selected(data('menu'), 'cupcake')",
   "begin screen",
@@ -240,7 +241,7 @@ and one of the **survey** worksheets may look like this:
 
 .. csv-table:: Calculation Survey Worksheet Example
   :header: "clause", "condition", "type", "name", "display.prompt.text"
-  :name: calculations-survey-worksheet-example
+  :name: calculation-survey-worksheet-example
 
   "if", "calculates.isBirthdayToday()",
   ,,"note", "happyBirthday", "Happy Birthday!"
