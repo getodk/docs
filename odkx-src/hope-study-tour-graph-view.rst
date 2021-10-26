@@ -19,7 +19,7 @@ This view is currently displaying static data and does not reflect the true valu
 Implementation
 -----------------------
 
-The implementation of this module is less interesting considering it does not show real data. However, it is still a useful display of how complex data visualizations can be rendered on the device, without outside processing or internet access. The file :file:`tables/femaleClients/html/graph_view.html` makes use of the third party :program:`D3` JavaScript library to draw the pie charts.
+The implementation of this module is less interesting considering it does not show real data. However, it is still a useful display of how complex data visualizations can be rendered on the device, without outside processing or internet access. The file :file:`tables/femaleClients/html/graph_view.html` makes use of the third-party :program:`D3` JavaScript library to draw the pie charts.
 
 To ratios are fed into the graph rendering in the :code:`display(...)` function. If these were replaces with variables, and those variables were populated by summing up results of calls to the database with :code:`odkData.query(...)` and :code:`odkData.arbitraryQuery(...)`, the graphs would be update according to the real data. This can be performed by the diligent reader as an exercise.
 

@@ -28,6 +28,7 @@ Using ODK-X XLSX Converter
 ODK-X Survey offers a rich set of features that can be seamlessly integrated into a custom form. A lot of the functionality can be implemented solely within an Excel workbook. This guide is designed to help you take advantage of this via a guided tour of example tasks.
 
 .. contents:: :local:
+   :backlinks: none
 
 .. tip::
 
@@ -149,7 +150,7 @@ Now, instead of typing their age, the user simply selects whether they are older
 Using Skip Logic
 -------------------------------------
 
-Skip logic (*Conditional Branching*) is an amazing feature in :doc:`survey-using` that changes the next prompt or screen the user sees based on their current response. This enables the form creator to give users a unique and personalized experience depending on their answers throughout the entire survey. 
+Skip logic (*Conditional Branching*) is an amazing feature in :doc:`survey-using` that changes the next prompt or screen the user sees based on their current response. This enables the form creator to give users a unique and personalized experience depending on their answers throughout the entire survey.
 
 Skip logic is implemented using if, else, else if and end if tags. It uses the **clause** and **condition** columns in the survey worksheet, the if, else and end if tags are placed in the clause column and the conditional expressions are housed in the condition column.
 
@@ -183,8 +184,8 @@ In the example worksheet above, the respondent can pick through a number of past
   An important thing to remember when using the clause column is the opening **if** tag and the closing **end if** tags. The general rule is that all **if** tags must have a corresponding closing **end if** tag.
 
 .. note::
-  Do know that if you are using required along with skip logic, it is important that both the required and if conditionals align. 
-  
+  Do know that if you are using required along with skip logic, it is important that both the required and if conditionals align.
+
   The **required** column takes a conditional expression. If the condition resolves to true, the user will not be able to navigate to the next survey screen until the prompt is answered. If the prompt is left blank, its default value is false.
 
 .. _xlsx-using-custom-section:

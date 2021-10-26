@@ -11,6 +11,10 @@ Tables also enables web developers to build powerful *data management applicatio
 
   ODK-X Tables only works on Android 4.2 and newer devices.
 
+.. note::
+
+  Please note that ODK-X version 2.1.9 does not support Android 4.x. Its minimum Android version is 5.0.
+
 
 We have included a sample application built on top of Tables along with a handful of data tables that showcase some of its features in :doc:`tables-sample-app`.
 
@@ -83,7 +87,7 @@ The *Table Manager* allows you to modify table settings, delete tables, and impo
 Viewing Data
 --------------------
 
-Tables supports viewing collected data in a variety of formats. Survey allows you to review individual form instances, but Tables lets you view full data tables as well as create your own customized visualizations. This is a significant departure from the form based model of data collection, and allows you to manage data directly on the device.
+Tables supports viewing collected data in a variety of formats. Survey allows you to review individual form instances, but Tables lets you view full data tables as well as create your own customized visualizations. This is a significant departure from the form-based model of data collection, and allows you to manage data directly on the device.
 
 .. _tables-using-view-types:
 

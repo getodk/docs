@@ -3,7 +3,7 @@ Hope Demo
 
 .. _tables-sample-app-hope:
 
-For this portion of the tutorial we will explore the *Hope* demo. Select the tab labeled :guilabel:`Hope` and press :guilabel:`Launch Demo`.
+For this portion of the tutorial, we will explore the *Hope* demo. Select the tab labeled :guilabel:`Hope` and press :guilabel:`Launch Demo`.
 
   .. image:: /img/tables-sample-app/tables-sample-launch-hope.*
     :alt: Launch Hope Demo
@@ -50,7 +50,7 @@ Tap :guilabel:`Client Forms` and choose :guilabel:`Six Week Follow-Up`. This wil
     :alt: Tables Sample Hope Six Week Follow Up Survey
     :class: device-screen-vertical
 
-This demo imitates a single visit. Next you can try to emulate the full length of the study for a single patient from the initial screening through all the follow up visits. Notice that the *Graph Views* will update with this new information as well.
+This demo imitates a single visit. Next, you can try to emulate the full length of the study for a single patient from the initial screening through all the follow-up visits. Notice that the *Graph Views* will update with this new information as well.
 
 .. _tables-sample-app-hope-edit-survey-learn-more:
 

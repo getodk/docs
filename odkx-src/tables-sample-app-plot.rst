@@ -7,7 +7,7 @@ Plot Demo
 
 .. _tables-sample-app-plot:
 
-For this portion of the tutorial we will explore the *Plot* demo. Select the tab labeled :guilabel:`Plot` and press :guilabel:`Launch Demo`.
+For this portion of the tutorial, we will explore the *Plot* demo. Select the tab labeled :guilabel:`Plot` and press :guilabel:`Launch Demo`.
 
   .. image:: /img/tables-sample-app/tables-sample-launch-plot.*
     :alt: Launch Plot Demo
@@ -49,7 +49,7 @@ The screen shows a *Graph View* of the crop height data collected for the *Ungon
 Updated Graph View
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The graph was rendered on the device based on collected data. If new data is collected this graph will be updated. To demonstrate that, let's perform a new visit. Scroll down the page and press the :guilabel:`New Visit` button.
+The graph was rendered on the device based on collected data. If new data is collected, this graph will be updated. To demonstrate that, let's perform a new visit. Scroll down the page and press the :guilabel:`New Visit` button.
 
   .. image:: /img/tables-sample-app/tables-sample-plot-graph-new-visit.*
     :alt: Tables Sample Plot New Visit
@@ -71,7 +71,7 @@ Advance through the rest of the form, entering any data you like. Finalize the c
 
 Tour the rest of the *Plot* demo to see a variety of other *Graph Views*. These are all rendered in custom JavaScript, and could be customized to your organization's unique needs.
 
-Next launch the *JGI* Demo to see a demo of data collection directly through Tables.
+Next, launch the *JGI* Demo to see a demo of data collection directly through Tables.
 
 .. _tables-sample-app-graph-view-learn-more:
 
