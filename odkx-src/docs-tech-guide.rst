@@ -1353,7 +1353,7 @@ Working on the docs
       These details should fill-in automatically,
       but be sure to double-check them:
 
-      - :guilabel:`Base fork` should be the main repo (``opendatakit/docs``).
+      - :guilabel:`Base fork` should be the main repo (``odk-x/docs``).
       - :guilabel:`base` should be ``master``.
       - Your repo and working branch name should be listed beside them.
 
