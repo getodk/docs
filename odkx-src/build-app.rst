@@ -180,7 +180,7 @@ Creating :file:`framework.xlsx`
 
 The :file:`framework.xlsx` file is central to the structure of the Application Designer. It defines which forms exist. It has no persisted data. In this case, it only presents a list of forms and allows you to open them.
 
-  1. Create the following directories: :file:`config/assets/framework/forms/`.
+  1. Create the following directories: :file:`config/assets/framework/forms/framework/`.
 
   2. Inside that folder, create :file:`framework.xlsx`
 
@@ -350,7 +350,7 @@ Generating :file:`formDef.json`
 
 Once you have a saved your :file:`.xlsx` file, you can use the XLSX Converter to create a :file:`formDef.json`. Make sure your Application Designer is running (see :doc:`app-designer-launching`) and navigate to the :guilabel:`XLSX Converter` tab. Drag the :file:`.xlsx` form or select it with the :guilabel:`Choose File` button and use the :guilabel:`Save to File System` button to save the form definition file back to the file system.
 
-For the ongoing example, convert the :file:`app/config/assets/framework.xlsx` using the instructions above. Then repeat this process with :file:`app/config/tables/census/forms/census/census.xlsx`
+For the ongoing example, convert the :file:`app/config/assets/framework/forms/framework/framework.xlsx` using the instructions above. Then repeat this process with :file:`app/config/tables/census/forms/census/census.xlsx`
 
 .. warning::
 
