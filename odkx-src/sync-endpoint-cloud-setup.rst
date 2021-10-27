@@ -18,7 +18,7 @@ This tutorial will help you launch ODK-X Sync Endpoint on a virtual machine host
 |   :ref:`3.	Amazon Web Services console <sync-endpoint-setup-aws>`
 
 .. note::
-  The apps require at least *2GB* of space to run, therefore, a space of more than *4GB* is recommended for server (for example - droplets on DigitalOcean).
+  The apps require at least *2GB* of space to run, therefore, at least *4GB* of space is recommended for the server (for example - a droplet on DigitalOcean).
 
 .. _sync-endpoint-setup-domain:
 
