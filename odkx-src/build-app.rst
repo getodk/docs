@@ -182,7 +182,7 @@ Creating :file:`framework.xlsx`
 
 The :file:`framework.xlsx` file is central to the structure of the Application Designer. It defines which forms exist. It has no persisted data. In this case, it only presents a list of forms and allows you to open them.
 
-  1. Navigate to the following existing directories: :file:`config/assets/framework/forms/`. Inside that folder, there is a :file:`framework` and :file:`framework.clean` folder, as well as other folders that are not as important for this process.
+  1. Navigate to the following existing directories: :file:`config/assets/framework/forms/framework/`. Inside that folder, there is a :file:`framework` and :file:`framework.clean` folder, as well as other folders that are not as important for this process.
 
   2. Delete the existing :file:`framework` folder. The :file:`framework.clean` folder contains a :file:`framework.xlsx` file, the file contains the boilerplate worksheet structure that you'll use to create a working :file:`framework.xlsx` file for your application.
  
