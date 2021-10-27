@@ -336,7 +336,7 @@ in the file :file:`style-test.py`.
 Excluding built-in proselint checks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To exclude an built-in proselint check,
+To exclude a built-in proselint check,
 specify the check name in the check list
 in the function :py:func:`exclude_checks`
 in the file :file:`style-test.py`.
