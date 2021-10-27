@@ -1413,7 +1413,7 @@ The next time you work
 We hope that contributing to ODK-X Docs is a rewarding experience
 and that you'll want to keep going.
 Each time you start work on a new issue
-the process is the same as outline above.
+the process is the same as outlined above.
 
 Here are a few things to keep in mind when you start your next contribution.
 
