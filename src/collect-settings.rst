@@ -95,7 +95,7 @@ To access User Interface settings:
 
   .. versionadded:: 1.15
 
-  Selects the color scheme the app will use. The default `System` option (added in ODK Collect v2021.3) uses the device's color theme (based on the the :guilabel:`Dark theme` system setting in Android 10 and above).
+  Selects the color scheme the app will use. The default :guilabel:`Use device theme` option (added in ODK Collect v2021.3) uses the device's color theme (based on the the :guilabel:`Dark theme` system setting in Android 10 and above).
 
   .. container:: details
 
