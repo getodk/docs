@@ -17,6 +17,9 @@ This tutorial will help you launch ODK-X Sync Endpoint on a virtual machine host
 |   :ref:`2.	Azure console <sync-endpoint-setup-azure>`
 |   :ref:`3.	Amazon Web Services console <sync-endpoint-setup-aws>`
 
+.. note::
+  The apps require at least *2GB* of space to run, therefore, a space of more than *4GB* is recommended for server (for example - droplets on DigitalOcean).
+
 .. _sync-endpoint-setup-domain:
 
 Step 0: Acquire a domain name or subdomain
@@ -26,7 +29,7 @@ Running the ODK-X Sync Endpoint in the cloud will require access to a publicly r
 
 If you already own a domain, you may add a subdomain record for use with Sync Endpoint without purchasing a whole new domain. Before you go on, make sure you have a domain and know how to log into your domain management console to add a DNS record!
 
-.. note:: 
+.. note::
   Specific instructions for connecting ODK-X Sync Endpoint to your domain will vary based on your registrar and DNS provider.
 
 .. _sync-endpoint-setup-digital-ocean:
@@ -60,10 +63,10 @@ Setting up a Droplet
    :width: 600
 
 2. In the Distributions tab, on the :guilabel:`Create Droplet` screen; select *18.04 (LTS) x64* under the Ubuntu dropdown. Next, choose a plan and data center region based on your needs.
-   
+
   .. note::
     Sync Endpoint requires more than *2GB* of space to run, this means that plans below *4GB* will not work.
-  
+
   .. image:: /img/setup-digital-ocean/do-distribution.png
     :width: 600
 
@@ -78,7 +81,7 @@ Setting up a Droplet
   .. image:: /img/setup-digital-ocean/do-userdata2.png
     :width: 600
 
-4. The next step is :guilabel:`Authentication`. There are two authentication types to select from; **SSH Keys** and **Password**. We highly recommend that you use an SSH key for authentication. Copy and paste your SSH key username, and the key itself. 
+4. The next step is :guilabel:`Authentication`. There are two authentication types to select from; **SSH Keys** and **Password**. We highly recommend that you use an SSH key for authentication. Copy and paste your SSH key username, and the key itself.
 
  Use the `following resource <https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/create-with-openssh/>`_ to learn more about creating an SSH key.
 
@@ -118,7 +121,7 @@ Connecting to your Droplet
   .. image:: /img/setup-digital-ocean/do-console.png
    :width: 600
 
-3. A console window will now open up. If you chose the **password** authentication, you will be asked to enter your username and then asked for a password. 
+3. A console window will now open up. If you chose the **password** authentication, you will be asked to enter your username and then asked for a password.
 
   .. image:: /img/setup-digital-ocean/do-console-terminal.png
    :width: 600
