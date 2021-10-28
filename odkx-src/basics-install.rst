@@ -60,7 +60,7 @@ Installing Services
 .. _survey-install:
 
 Installing the `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ App
------------------------------------
+----------------------------------------------------------------------------
 
   1.  From your device's :guilabel:`Settings`, choose :menuselection:`Apps & notifications`. (On older versions of Android, this setting may be in :menuselection:`Applications` or :menuselection:`Security` depending upon your android version.)
 
