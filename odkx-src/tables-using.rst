@@ -3,7 +3,7 @@ Using ODK-X Tables
 
 .. _tables-intro:
 
-:dfn:`ODK-X Tables` is a program that allows you to visualize and update existing data. Using Tables as your entry-point to data collection, you will be able to gather data using ODK-X Survey, sync it to a server using ODK-X Services, and have other users download and edit this same data on their own devices.
+:dfn:`ODK-X Tables` is a program that allows you to visualize and update existing data. Using Tables as your entry-point to data collection, you will be able to gather data using `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_, sync it to a server using ODK-X Services, and have other users download and edit this same data on their own devices.
 
 Tables also enables web developers to build powerful *data management applications* to handle their complex workflows. While Survey follows a traditional data collection workflow, similar to that of Collect, Tables gives you the flexibility to implement your own arbitrary complex workflow. For example you might collect data via a customized mapping interface: Tables allows you to build an application using web technologies to achieve that.
 

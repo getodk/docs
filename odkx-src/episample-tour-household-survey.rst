@@ -14,7 +14,7 @@ Household Data Collection
 Function
 --------------
 
-The Household Data Collection module is an ODK-X Survey form that is configured in the :doc:`episample-tour-config` module. An organization is intended to provide this for its particular use case, which makes this application flexible to different scenarios. For example, this could be used for follow-up after a Malaria outbreak or it could be adapted to handle another disease by swapping this form.
+The Household Data Collection module is an `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ form that is configured in the :doc:`episample-tour-config` module. An organization is intended to provide this for its particular use case, which makes this application flexible to different scenarios. For example, this could be used for follow-up after a Malaria outbreak or it could be adapted to handle another disease by swapping this form.
 
 The data collected in this form is available in the same database as the rest of the application and can be used by it.
 

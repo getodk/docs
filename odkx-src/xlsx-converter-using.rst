@@ -25,7 +25,7 @@ Using ODK-X XLSX Converter
 
 .. _xlsx-using:
 
-ODK-X Survey offers a rich set of features that can be seamlessly integrated into a custom form. A lot of the functionality can be implemented solely within an Excel workbook. This guide is designed to help you take advantage of this via a guided tour of example tasks.
+`ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ offers a rich set of features that can be seamlessly integrated into a custom form. A lot of the functionality can be implemented solely within an Excel workbook. This guide is designed to help you take advantage of this via a guided tour of example tasks.
 
 .. contents:: :local:
    :backlinks: none
@@ -36,7 +36,7 @@ ODK-X Survey offers a rich set of features that can be seamlessly integrated int
 
 .. _xlsx-using-create-load-survey:
 
-Creating and Loading a Form into ODK-X Survey
+Creating and Loading a Form into `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_
 -------------------------------------------------
 
 Below are the steps to create a new form from the *exampleForm*:
@@ -50,7 +50,7 @@ Below are the steps to create a new form from the *exampleForm*:
 
     - :file:`app/config/tables/your_table_id/definition.csv` -- defines the user-defined columns in your table
     - :file:`app/config/tables/your_table_id/properties.csv` -- defines the appearance and available detail and list view HTML files for the table
-    - :file:`app/config/tables/your_table_id/forms/your_table_id/formDef.json` -- defines the ODK-X Survey form defined by the XLSX file
+    - :file:`app/config/tables/your_table_id/forms/your_table_id/formDef.json` -- defines the `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ form defined by the XLSX file
 
   7. The first two files are written only if the form id matches the table id. That form and the XLSX file define the data table.
   8. Repeat the edit, conversion, and save steps to update the columns in your table and your survey form.
@@ -63,7 +63,7 @@ Below are the steps to create a new form from the *exampleForm*:
 
   to push the contents of the :file:`app/config` directory to your device.
 
-  11. Start ODK-X Survey. The form should now be available in ODK-X Survey.
+  11. Start `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_. The form should now be available in `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_.
 
 .. _xlsx-using-create-simple-survey:
 
@@ -102,7 +102,7 @@ In the next row, there is an :tc:`else` tag. Until :tc:`end if` is reached, anyo
 Adding Multiple Choice Questions
 -------------------------------------
 
-There are three types of multiple choice questions supported by ODK-X Survey:
+There are three types of multiple choice questions supported by `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_:
 
   - :tc:`select_one`
   - :tc:`select_one_with_other`
@@ -226,7 +226,7 @@ The **calculates** worksheet is an optional worksheet. It consists of two column
 
 .. tip::
 
-  There are also some built in functions for ODK-X Survey that can be used anywhere in the workbook. See the :ref:`Forumla Functions <xlsx-ref-formula>` for more details.
+  There are also some built in functions for `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ that can be used anywhere in the workbook. See the :ref:`Forumla Functions <xlsx-ref-formula>` for more details.
 
 In general, calculations are referenced in the :th:`condition` column of **survey** worksheets. For example, suppose that on the **survey** page under the variable name *birthday* the user entered their birthday for a question of type :tc:`date`. The **calculates** worksheet might look like this:
 
@@ -393,14 +393,14 @@ Survey offers the ability to display text in different languages. This requires 
   "text", "user_name", "What is your name?", "¿Cuál es su nombre?"
   "integer", "user_age", "How old are you?", "¿Cuántos años tienes?"
 
-The labels used in the buttons and prompts supplied by ODK-X Survey are defined in the **framework_translations** sheet of the :file:`framework.xlsx` file under :file:`config/assets/framework/forms/framework.xlsx` Simply add your language code and translations to this sheet of this XLSX file and run :guilabel:`XLSXConverter` on it to enable support of your language across all of the built-in buttons and prompts within ODK-X Survey.
+The labels used in the buttons and prompts supplied by `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ are defined in the **framework_translations** sheet of the :file:`framework.xlsx` file under :file:`config/assets/framework/forms/framework.xlsx` Simply add your language code and translations to this sheet of this XLSX file and run :guilabel:`XLSXConverter` on it to enable support of your language across all of the built-in buttons and prompts within `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_.
 
 .. _xlsx-using-advanced-branching:
 
 More Advanced Branching
 ----------------------------
 
-ODK-X Survey supports situations where the user needs to be in control of which survey or section of a survey they are working on. To do this, the :th:`branch_label` column is used, as well as the **choices** worksheet. It also utilizes a new question type: :tc:`user_branch`. The following example combines aforementioned surveys and allows the user to decide whether they want to fill out the survey about pizza, or the survey about birthdays.
+`ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ supports situations where the user needs to be in control of which survey or section of a survey they are working on. To do this, the :th:`branch_label` column is used, as well as the **choices** worksheet. It also utilizes a new question type: :tc:`user_branch`. The following example combines aforementioned surveys and allows the user to decide whether they want to fill out the survey about pizza, or the survey about birthdays.
 
 A choice set needs to be added to the **choices** worksheet with the applicable branching options. The resulting **choices** worksheet would look like this:
 
@@ -430,7 +430,7 @@ The XLSX file would then have corresponding **section** worksheets called *pizza
 Creating a Custom Initial Worksheet
 --------------------------------------
 
-When ODK-X Survey opens, it displays a list of the different forms available on the device. After the user has selected which type of form to work on, Survey launches the initial worksheet for that particular survey. So far the initial worksheet has not been discussed and if one is not explicitly included in the XLSX file, survey uses this default initial worksheet:
+When `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ opens, it displays a list of the different forms available on the device. After the user has selected which type of form to work on, Survey launches the initial worksheet for that particular survey. So far the initial worksheet has not been discussed and if one is not explicitly included in the XLSX file, survey uses this default initial worksheet:
 
 .. list-table:: Custom Initial Worksheet Example
   :header-rows: 1
@@ -560,8 +560,8 @@ Customizing Prompts
 There are 3 ways to customize prompts:
 
   - Add additional columns to your XLSX Converter form definitions like :th:`inputAttributes` to tweak existing prompts.
-  - If that's too limiting, you can make a custom HTML template by setting the :th:`templatePath` column. Templates can include :code:`<script>` and :code:`<style>` tags. ODK-X Survey uses :program:`handlebars` templates. :program:`Handlebars` has a few built-in helpers for creating conditional templates and templates with repeated components: see `their documentation <http://blog.teamtreehouse.com/handlebars-js-part-2-partials-and-helpers>`_.
-  - Finally, if you need to parse data from a special type of input or retain some kind of state while your widget is active, you will need to delve into the ODK-X Survey JavaScript. By providing a :file:`customPromptTypes.js` file in your form directory, you can define :program:`Backbone` views that extend the base prompts.
+  - If that's too limiting, you can make a custom HTML template by setting the :th:`templatePath` column. Templates can include :code:`<script>` and :code:`<style>` tags. `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ uses :program:`handlebars` templates. :program:`Handlebars` has a few built-in helpers for creating conditional templates and templates with repeated components: see `their documentation <http://blog.teamtreehouse.com/handlebars-js-part-2-partials-and-helpers>`_.
+  - Finally, if you need to parse data from a special type of input or retain some kind of state while your widget is active, you will need to delve into the `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ JavaScript. By providing a :file:`customPromptTypes.js` file in your form directory, you can define :program:`Backbone` views that extend the base prompts.
 
 Our HTML page rendering uses a custom database object coupled with :program:`Backbone` views to define the event handling, validation, data model interactions, and construction of the rendering context object that is passed to :program:`Handlebars`. The :program:`Handlebars` templates make use of :program:`Bootstrap` framework for UI components.
 

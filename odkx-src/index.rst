@@ -75,7 +75,7 @@ Field data collection
 """""""""""""""""""""
 
  - ODK-X Application Designer: data collection form creation
- - ODK-X Survey: data collection
+ - `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_: data collection
  - ODK-X Services: data sync and database access
  - ODK-X Cloud Endpoints: data and application files cloud server
 

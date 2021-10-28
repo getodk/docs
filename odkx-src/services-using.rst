@@ -98,7 +98,7 @@ There are two ways to launch the Sync screen.
 
 .. _services-using-sync-launch-other:
 
-  - **Launching From Another Tool**: From within Survey or Tables click the :guilabel:`Sync` icon (same as above). This will launch Services to the Sync screen. Below this is shown in ODK-X Survey.
+  - **Launching From Another Tool**: From within Survey or Tables click the :guilabel:`Sync` icon (same as above). This will launch Services to the Sync screen. Below this is shown in `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_.
 
 
     .. image:: /img/services-using/survey-homescreen-sync.*
@@ -153,7 +153,7 @@ Services will contact the Cloud Endpoint and synchronize your data. A progress d
 Resolving Checkpoint Issues
 ---------------------------------------
 
-The checkpoint resolution screen can be triggered a variety of ways. For example, in ODK-X Survey, add a row using the :guilabel:`+` icon then back out of ODK-X Survey:
+The checkpoint resolution screen can be triggered a variety of ways. For example, in `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_, add a row using the :guilabel:`+` icon then back out of `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_:
 
 .. image:: /img/services-using/checkpoint-resolution.*
   :alt: Checkpoint Resolution
@@ -165,7 +165,7 @@ When presented with this screen, there are three choices:
   - Ignore changes and discard the entire partially filled-out form.
   - Save it even though it is incomplete. In this case, since there is no entered data for this record, we can ignore changes.
 
-In rare cases, a second form of checkpoint resolution screen can be triggered. This most often happens if ODK-X Survey experiences a failure and closes. In this case, you may have several data records with unsaved checkpoint changes (changes that the user has not explicitly saved as incomplete or finalized). This will lead to a screen like:
+In rare cases, a second form of checkpoint resolution screen can be triggered. This most often happens if `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ experiences a failure and closes. In this case, you may have several data records with unsaved checkpoint changes (changes that the user has not explicitly saved as incomplete or finalized). This will lead to a screen like:
 
 .. image:: /img/services-using/checkpoint-list.*
   :alt: Checkpoint List
@@ -275,6 +275,6 @@ The tables specific settings modify the behavior of the ODK-X Tables tool. These
 Troubleshooting
 -------------------------
 
-  - If you are not seeing your forms in ODK-X Survey or your data tables in ODK-X Tables, try :ref:`services-managing-reset-config`
+  - If you are not seeing your forms in `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ or your data tables in ODK-X Tables, try :ref:`services-managing-reset-config`
   - If you are seeing a list of data tables instead of your Data Management Application home screen when you launch ODK-X Tables, enable the :guilabel:`Use custom home screen` option in :ref:`services-user-tables-settings`.
   - If you are having trouble syncing, check your :ref:`services-managing-server-config`.

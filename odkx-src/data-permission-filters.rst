@@ -104,7 +104,7 @@ Individual users can belong to any number of groups, enabling arbitrarily comple
 Obtaining a User's Groups and Roles
 ----------------------------------------
 
-Inside ODK-X Survey and ODK-X Tables web pages, the groups and roles of the current verified user are available in JavaScript via the API:
+Inside `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ and ODK-X Tables web pages, the groups and roles of the current verified user are available in JavaScript via the API:
 
 .. code-block:: javascript
 
@@ -121,7 +121,7 @@ Inside ODK-X Survey and ODK-X Tables web pages, the groups and roles of the curr
 Obtaining a User's Default Group
 ---------------------------------------
 
-Inside ODK-X Survey and ODK-X Tables web pages, the default group of the current verified user is available in JavaScript via the API:
+Inside `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ and ODK-X Tables web pages, the default group of the current verified user is available in JavaScript via the API:
 
 .. code-block:: javascript
 
@@ -159,7 +159,7 @@ The *Full Name* field on the server (on the :menuselection:`Site Admin -->  Perm
 
 If the user has been assigned to a default group it will be provided.  Default groups are not directly used within the ODK-X framework. These are provided for use by an application designer when crafting their application.
 
-Inside ODK-X Survey and ODK-X Tables web pages, the list of all configured users is available in JavaScript via the API:
+Inside `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ and ODK-X Tables web pages, the list of all configured users is available in JavaScript via the API:
 
 .. code-block:: javascript
 
@@ -420,7 +420,7 @@ To install the demo on the device:
 
       $ grunt adbpush-tables-rowlevelaccessdemo
 
-  #. Start ODK-X Survey and exit it.
+  #. Start `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ and exit it.
   #. Start ODK-X Tables.
 
 You will be presented with a demo launch screen.

@@ -12,9 +12,9 @@ The ODK-X Application Designer is accessed through a :program:`Chrome` browser. 
 
 This screen has 6 tabs:
 
-  - :ref:`Preview <app-designer-overview-preview>` (shown above) - used to preview ODK-X Survey forms and ODK-X Tables list-, detail- and graph- views (future). Displays these within a user-selected device geometry.
+  - :ref:`Preview <app-designer-overview-preview>` (shown above) - used to preview `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ forms and ODK-X Tables list-, detail- and graph- views (future). Displays these within a user-selected device geometry.
   - :ref:`Customize <app-designer-overview-customize>` - a visual style and visual theme editor. This editor immediately shows the effects of changes to specific settings in your CSS file. This functionality is undergoing changes and not recommended.
-  - :ref:`XLSX Converter <app-designer-overview-xlsx>` - converts the XLSX description of a form into a :file:`formDef.json` representation used by ODK-X Survey.
+  - :ref:`XLSX Converter <app-designer-overview-xlsx>` - converts the XLSX description of a form into a :file:`formDef.json` representation used by `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_.
   - :ref:`File Browser <app-designer-overview-file>` - enables browsing of the directory structure that will exist on your Android device so that you can access or view other files (currently necessary for accessing the ODK-X Tables list- and detail- views).
   - :ref:`Scan Form Designer <app-designer-overview-scan>` - drag-and-drop mark-sense form designer tool.
   - :ref:`QR Code Generator <app-designer-overview-qr>` - a tool that generates a QR Code that enables log in to the Sync Endpoint server in the ODK-X Services application.  
@@ -33,7 +33,7 @@ The :guilabel:`Preview` tab (shown above) has several controls:
     
   - :guilabel:`Device Dimensions` -- what dimensions to make the window below.
 
-The Launch Page opens the ODK-X Survey Framework Page. This is the :file:`formDef.json` in the Android device's application frameworks folder (:file:`/sdcard/opendatakit/default/config/assets/framework/forms/framework`). The contents of this form are defined by the :file:`framework.xlsx` file in that same directory.
+The Launch Page opens the `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ Framework Page. This is the :file:`formDef.json` in the Android device's application frameworks folder (:file:`/sdcard/opendatakit/default/config/assets/framework/forms/framework`). The contents of this form are defined by the :file:`framework.xlsx` file in that same directory.
 
 For example, if you click on the household test form, and click the :guilabel:`Follow Link` button on the next screen, the *Household Survey* form is launched, yielding this screen:
 
@@ -63,7 +63,7 @@ This functionality is under active development and not currently recommended.
 
 XLSX Converter
 -----------------
-The :guilabel:`XLSX Converter` tab contains the conversion tool that transforms XLSX files produced by Excel or OpenOffice into the :file:`formDef.json` file used by ODK-X Survey:
+The :guilabel:`XLSX Converter` tab contains the conversion tool that transforms XLSX files produced by Excel or OpenOffice into the :file:`formDef.json` file used by `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_:
 
 .. image:: /img/app-designer-overview/xlsx-converter.*
   :alt: The XLSX Converter tab in the ODK-X Application Designer

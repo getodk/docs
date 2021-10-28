@@ -111,7 +111,7 @@ Data Groupings
 Before discussing the API, it is useful to identify the data on the system. The ODK-X tools assume all data fall into one of six groupings:
 
   1. (**Data Grouping #1**) HTML, JavaScript and tool configuration files that are not specific to any data table. These include custom home screens, CSS, logo icons, and settings for the tools (e.g., default font size, what settings options to show or hide).
-  2. (**Data Grouping #2**) Data table definition, properties, HTML and JavaScript associated with a specific data table. These include all ODK-X Survey forms used to create or edit this data table, ODK-X Tables HTML and CSS files for list views, map displays and graphical displays of the data, and ODK-X Scan mark-sense form definitions.
+  2. (**Data Grouping #2**) Data table definition, properties, HTML and JavaScript associated with a specific data table. These include all `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ forms used to create or edit this data table, ODK-X Tables HTML and CSS files for list views, map displays and graphical displays of the data, and ODK-X Scan mark-sense form definitions.
   3. (**Data Grouping #3**) Data rows and the file attachments (e.g., images, audio, video or other files) associated with specific revision(s) of each data row.
   4. Other files and data that are not synchronized with the server and are for internal use only; e.g., the tools' internal configuration files and device-specific configuration.
   5. Other files that are not synchronized with the server but are generated for external use such as exported csv files and detailed log files for troubleshooting.
@@ -1578,7 +1578,7 @@ The `RowOutcomeList` contains the dataETag of the resulting change set on the se
     /**
      * OdkTables metadata column.
      *
-     * The ODK-X Survey form that
+     * The `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ form that
      * was used when revising this
      * row.
      *
@@ -1620,7 +1620,7 @@ The `RowOutcomeList` contains the dataETag of the resulting change set on the se
      * For Mezuri, the timestamp
      * of this data value.
      *
-     * For ODK-X Survey, the last
+     * For `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_, the last
      * save time of the survey.
      *
      * For sensor data,
@@ -1633,7 +1633,7 @@ The `RowOutcomeList` contains the dataETag of the resulting change set on the se
     /**
      * OdkTables metadata column.
      *
-     * For ODK-X Survey, the user
+     * For `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_, the user
      * that filled out the survey.
      *
      * Unclear what this would be
@@ -1911,15 +1911,15 @@ The `dataETagAtModification` field tracks the change entry that can be used with
 
 The `createUser` and `lastUpdateUser` fields may be set and returned by the server.  These are intended for data-dump and data-restore functionality and are not normally provided by a client.
 
-The `formId` field identifies the ODK-X Survey form that last modified this record.  This is useful for implementing multi-stage client workflows.
+The `formId` field identifies the `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ form that last modified this record.  This is useful for implementing multi-stage client workflows.
 
-The `locale` field tracks the last ODK-X Survey locale in which the form was opened and perhaps modified.
+The `locale` field tracks the last `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ locale in which the form was opened and perhaps modified.
 
-The `savepointType` is one of `INCOMPLETE` or `COMPLETE`; it indicates whether the data is considered to be in a possibly-incomplete state or if it is complete (i.e., in ODK-X Survey, if it has been validated and marked as finalized). Together with the `formId`, this can indicate whether the client processing can advance from one workflow stage (`formId`) to another (i.e., when the record is 'COMPLETE' in the current stage) or whether to stall within the current workflow stage (`formId`). For autonomous data publishing (e.g., ODK-X Sensors Framework), this should be set to `COMPLETE`.
+The `savepointType` is one of `INCOMPLETE` or `COMPLETE`; it indicates whether the data is considered to be in a possibly-incomplete state or if it is complete (i.e., in `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_, if it has been validated and marked as finalized). Together with the `formId`, this can indicate whether the client processing can advance from one workflow stage (`formId`) to another (i.e., when the record is 'COMPLETE' in the current stage) or whether to stall within the current workflow stage (`formId`). For autonomous data publishing (e.g., ODK-X Sensors Framework), this should be set to `COMPLETE`.
 
 The `savepointTimestamp` is the timestamp of the last save of this data record, as reported on the client (whose time clock may be inaccurate).
 
-The `savepointCreator` is the entity modifying/writing this data row. For ODK-X Survey, this is the user as identified by the Android device.
+The `savepointCreator` is the entity modifying/writing this data row. For `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_, this is the user as identified by the Android device.
 
 The `filterScope` should default to `{type: 'Default', value: null}`. It is used to control access to the data record. Future updates to this protocol will likely make this unmodifiable on the server unless the requesting user has appropriate permissions. The contents, interpretation and use of this field is evolving at this time.
 

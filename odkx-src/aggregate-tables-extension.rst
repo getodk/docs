@@ -40,7 +40,7 @@ ODK Aggregate is configured by default to use the **default** application name. 
 
 By default, all the ODK-X tools run under the default application name. Application names correspond to the name of the directory under :file:`/sdcard/opendatakit` where the data files for that application are stored.
 
-When you run ODK-X Services from within ODK-X Survey, the ODK-X Survey tool informs ODK-X Services to run in the context of the application name under which the ODK-X Survey tool is running. When ODK-X Services then interacts with ODK Aggregate, it reports that application name to the server. The server must be configured with exactly the same application name or it will reject the requests from ODK-X Services. This also applies when launching ODK-X Services from within ODK-X Tables.
+When you run ODK-X Services from within `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_, the `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ tool informs ODK-X Services to run in the context of the application name under which the `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ tool is running. When ODK-X Services then interacts with ODK Aggregate, it reports that application name to the server. The server must be configured with exactly the same application name or it will reject the requests from ODK-X Services. This also applies when launching ODK-X Services from within ODK-X Tables.
 
 .. _aggregate-tables-extension-syncing:
 

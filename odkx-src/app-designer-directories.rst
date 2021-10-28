@@ -63,12 +63,12 @@ This folder contains:
 The :file:`app/config/assets/` Folder
 """"""""""""""""""""""""""""""""""""""""""
 
-  - :file:`css/` - contains the common CSS files for ODK-X Tables detail, list and home screens, and for app forms in ODK-X Survey (:file:`odk_survey.css`).
-  - :file:`csv/` - contains the data files to be initially read and loaded into the ODK-X Survey and Tables databases.
+  - :file:`css/` - contains the common CSS files for ODK-X Tables detail, list and home screens, and for app forms in `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ (:file:`odk_survey.css`).
+  - :file:`csv/` - contains the data files to be initially read and loaded into the `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ and Tables databases.
   - :file:`fonts/` - contains the fonts used throughout the application.
   - :file:`framework/` - contains the :file:`framework.xlsx` and other relevant framework files.
   - :file:`img/` - contains the images used throughout the application.
-  - :file:`js/` - contains JavaScript used by the ODK-X Tables custom home screen and/or the ODK-X Survey custom forms list
+  - :file:`js/` - contains JavaScript used by the ODK-X Tables custom home screen and/or the `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ custom forms list
   - :file:`libs/` - contains the various libraries used throughout the application like jQuery and D3.
   - :file:`tables.init` - contains the initialization directives for which data (CSV) files should be loaded at initial start-up of the ODK-X tools.
   - :file:`index.html` - the HTML for the ODK-X Tables custom home screen, if it is enabled in the ODK-X Tables configuration settings.
@@ -80,15 +80,15 @@ The :file:`app/config/tables/` Folder
 
 This folder has a predefined directory structure, but the content is entirely dependent upon the needs of your application.
 
-The zip file for the ODK-X Application Designer populates this with all the subfolders used by each of the ODK-X Tables and the ODK-X Survey demonstration zip files. Ultimately, when you have completed your application design, this folder will contain none of these original folders but would instead contain only the folders which you have created.
+The zip file for the ODK-X Application Designer populates this with all the subfolders used by each of the ODK-X Tables and the `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ demonstration zip files. Ultimately, when you have completed your application design, this folder will contain none of these original folders but would instead contain only the folders which you have created.
 
 .. note::
 
-  Unlike ODK Collect, which stores each submission in a separate file, ODK-X Survey and ODK-X Tables store their combined collected submission data in data tables (one row per submission).
+  Unlike ODK Collect, which stores each submission in a separate file, `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ and ODK-X Tables store their combined collected submission data in data tables (one row per submission).
 
 ODK-X Tables can display the contents of a table through one or more custom list views; it can display individual submissions through one or more custom detail views. Graphical views are simply list views in which the data is presented graphically using a library such as D3. All of these custom views are defined here.
 
-ODK-X Survey, unlike ODK Collect, has the additional flexibility of supporting multiple forms to create, access and update data within a single common data table. This enables creating multi-stage workflows such as initial screenings and follow-ups, or registrations and status-updates (submission data can be editable, or not, based upon the form used at that workflow stage).
+`ODK-X Survey <https://docs.odk-x.org/survey-using/>`_, unlike ODK Collect, has the additional flexibility of supporting multiple forms to create, access and update data within a single common data table. This enables creating multi-stage workflows such as initial screenings and follow-ups, or registrations and status-updates (submission data can be editable, or not, based upon the form used at that workflow stage).
 
 To accommodate these various capabilities, the :file:`tables` directory is structured such that individual data tables each have their own directory within the :file:`tables` directory. The table's *table_id* is the name of this sub-directory. When defining a new data table, begin with a form whose form id is the table id.
 
@@ -101,7 +101,7 @@ A canonical :file:`table_id` sub-folder contains:
 
   - :file:`definition.csv` - defines the data columns in this table. Generated when the *form_id* XLSX file underneath this :file:`table_id` is processed by the XLSX Converter.
   - :file:`properties.csv` - defines the appearance properties for this table. Example properties are the detail view HTML file name, the list view HTML file name, the default view type of the table, etc. Generated when the *form_id* XLSX file underneath this :file:`table_id` is processed by the XLSX Converter.
-  - :file:`forms/` - contains directories for each ODK-X Survey form that manipulates this table. The names of these sub-directories are the *form_id* values of those forms. Within each sub-directory, there is a :file:`form_id.xlsx` file defining the ODK-X Survey form and the :file:`formDef.json` generated by the XLSX Converter when it processed that form definition file. If the form has form-specific images or media files, custom CSS, layouts, or prompt types, those files should reside within the form's sub-directory (nested sub-folders are permitted).
+  - :file:`forms/` - contains directories for each `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ form that manipulates this table. The names of these sub-directories are the *form_id* values of those forms. Within each sub-directory, there is a :file:`form_id.xlsx` file defining the `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ form and the :file:`formDef.json` generated by the XLSX Converter when it processed that form definition file. If the form has form-specific images or media files, custom CSS, layouts, or prompt types, those files should reside within the form's sub-directory (nested sub-folders are permitted).
   - :file:`html/` the custom HTML files for the ODK-X Tables list and details views of the table's contents.
   - :file:`css/` - contains CSS files specific to this table.
   - :file:`js/` the JavaScript files needed for the custom ODK-X Tables HTML list and detail views (found in the :file:`html/` directory).
@@ -135,11 +135,11 @@ This folder contains the files that the ODK-X tools depend upon and which are ex
 
 The general structure is:
 
-  - :file:`js/` - contains JavaScript for the Java to JavaScript interfaces common to both ODK-X Tables and ODK-X Survey.
-  - :file:`libs/` - contains 3rd party JavaScript libraries used by ODK-X Tables and ODK-X Survey.
-  - :file:`survey/` - contains JavaScript used by ODK-X Survey to render forms.
+  - :file:`js/` - contains JavaScript for the Java to JavaScript interfaces common to both ODK-X Tables and `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_.
+  - :file:`libs/` - contains 3rd party JavaScript libraries used by ODK-X Tables and `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_.
+  - :file:`survey/` - contains JavaScript used by `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ to render forms.
   - :file:`tables/` - contains JavaScript used by ODK-X Tables to render the custom home screen, list, detail, and graphical views created by the Application Designer.
   - :file:`tables.deleting` - information related to data deletion
   - :file:`tables.pending` - information related to pending data changes
-  - :file:`index.html` - the generic HTML for all ODK-X Survey forms.
+  - :file:`index.html` - the generic HTML for all `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ forms.
 

@@ -7,7 +7,7 @@
 Troubleshooting
 =====================
 
-In this guide, we cover the likely problems you *might* encounter installing and configuring the ODK-X basic tools. The ODK-X basic tools are ODK-X Services, ODK-X Tables and ODK-X Survey. 
+In this guide, we cover the likely problems you *might* encounter installing and configuring the ODK-X basic tools. The ODK-X basic tools are ODK-X Services, ODK-X Tables and `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_. 
 
 Do ensure that you have followed all the instructions for installation stated in the :doc:`basics-install` page.
 
