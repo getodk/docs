@@ -8,6 +8,7 @@
   defaultViewType
   detailViewFileName
   listViewFileName
+  WebView
 
 Building an Application
 ====================================================
@@ -736,13 +737,13 @@ You can use the :program:`Chrome` browser on your computer to inspect for device
   
   #. Open up the odk-x tables app on your phone. 
   #. Select the table (census table created above for example) you want to debug.
-  #. Open `chrome://inspect <chrome://inspect>`_ page on your computer’s chrome browser. Since ODK-X Tables application uses WebViews to display your custom web pages, the inspect tab should list debug-enabled WebViews on your device. From the list, you should see the ODK-X Tables app webview as shown in the figure below. 
-  #. Click inspect below the table webview you want to debug. 
+  #. Open `chrome://inspect <chrome://inspect>`_ page on your computer’s chrome browser. Since ODK-X Tables application uses WebViews to display your custom web pages, the inspect tab should list debug-enabled WebViews on your device. From the list, you should see the ODK-X Tables app WebView as shown in the figure below. 
+  #. Click inspect below the table WebView you want to debug. 
 
   .. figure:: /img/app-designer-overview/odk-x-debugging.png
-    :alt: Alt text. Chrome inspect tab showing ODK-X Table webview.
+    :alt: Alt text. Chrome inspect tab showing ODK-X Table WebView.
 
-    Sample inspect tool preview showing ODK-X Table webview.
+    Sample inspect tool preview showing ODK-X Table WebView.
 
  Some useful guides include:
 
