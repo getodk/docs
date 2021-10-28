@@ -8,7 +8,7 @@
 
 .. _survey-intro:
 
-:dfn:`ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ is an Android application for performing data collection in the ODK-X framework. It operates similarly to ODK Collect, but is based on HTML, CSS, and Javascript rather than native Android, and is more flexible in its presentation and execution.
+:dfn:`ODK-X Survey` is an Android application for performing data collection in the ODK-X framework. It operates similarly to ODK Collect, but is based on HTML, CSS, and Javascript rather than native Android, and is more flexible in its presentation and execution.
 
 .. note::
 
