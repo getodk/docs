@@ -18,7 +18,7 @@
   mutexes
 
 `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ Form Processing
-==============================
+========================================================================
 
 .. _form-processing:
 
