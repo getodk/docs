@@ -29,7 +29,7 @@ If you have not installed Survey already, follow our guide for :doc:`basics-inst
 
 
 Using `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_
----------------------------------
+--------------------------------------------------------------
 
 We have included a sample application built on top of Survey along with a handful of forms that showcase some of its features in :doc:`survey-sample-app`.
 

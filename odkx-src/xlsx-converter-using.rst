@@ -37,7 +37,7 @@ Using ODK-X XLSX Converter
 .. _xlsx-using-create-load-survey:
 
 Creating and Loading a Form into `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_
--------------------------------------------------
+---------------------------------------------------------------------------------------
 
 Below are the steps to create a new form from the *exampleForm*:
 

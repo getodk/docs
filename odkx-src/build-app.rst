@@ -57,7 +57,7 @@ Enter your Application Designer directory, navigate to :file:`app/config/` and d
 .. _build-app-designing-a-form:
 
 `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_: Designing a Form
--------------------------------
+---------------------------------------------------------------------------
 
 When creating a new form, the appropriate directory structure must be created. Once this directory structure is in place, an :file:`.xlsx` form can be created. From this :file:`.xlsx` form, a :file:`formDef.json` file will be generated using the XLSX Converter. This :file:`formDef.json`, in the appropriate directory, is what the system will use to create the Survey form.
 
