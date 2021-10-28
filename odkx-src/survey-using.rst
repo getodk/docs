@@ -8,7 +8,7 @@
 
 .. _survey-intro:
 
-:dfn:``ODK-X Survey <https://docs.odk-x.org/survey-using/>`_` is an Android application for performing data collection in the ODK-X framework. It operates similarly to ODK Collect, but is based on HTML, CSS, and Javascript rather than native Android, and is more flexible in its presentation and execution.
+:dfn:`ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ is an Android application for performing data collection in the ODK-X framework. It operates similarly to ODK Collect, but is based on HTML, CSS, and Javascript rather than native Android, and is more flexible in its presentation and execution.
 
 .. note::
 
@@ -305,7 +305,7 @@ Android 4.x Devices
 
   #. Choose to view the installed applications.
   #. Select the :guilabel:`Widgets` tab at the top of that screen.
-  #. Navigate through the available widgets, and select and hold the :guilabel:``ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ Form` widget. Drag and drop it onto one of your Android launcher (home) screens.
+  #. Navigate through the available widgets, and select and hold the :guilabel:`ODK-X Survey Form` widget. Drag and drop it onto one of your Android launcher (home) screens.
   #. A list of available applications and forms will appear, in the form of application name for applications, and :menuselection:`application name --> form name` for each form within an application. Pick the :menuselection:`myapp` application that you created via :program:`OI File Manager`.
 
 .. _survey-launching-appname-android-5:
@@ -315,7 +315,7 @@ Android 5.x and Higher Devices:
 
   #. Long press an open area of the device home screen
   #. Select the :guilabel:`Widgets` tab at the bottom of resulting screen.
-  #. Navigate through the available widgets, and select and hold the :guilabel:``ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ Form` widget. Drag and drop it onto one of your Android launcher (home) screens.
+  #. Navigate through the available widgets, and select and hold the :guilabel:`ODK-X Survey Form` widget. Drag and drop it onto one of your Android launcher (home) screens.
   #. A list of available applications and forms will appear, in the form of application name for applications, and :menuselection:`application name --> form name` for each form within an application. Pick the :menuselection:`myapp` application that you created via :program:`OI File Manager`.
 
 .. _survey-launching-appname-try-new:
