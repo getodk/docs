@@ -173,7 +173,7 @@ Custom database
 
   1. If you haven't followed the :ref:`common instructions <sync-endpoint-manual-setup-common>`, start with those.
   2. Remove the *db* and *db-bootstrap* sections in :file:`docker-compose.yml`.
-  3. Modify :file:`jdbc.properties`(under the directory :file:`config/sync-endpoint`) to match your database. Supported database systems are :program:`PostgreSQL`, :program:`MySQL` and :program:`Microsoft SQL Server`. Sample config for PostgreSQL can be found `on Github <https://github.com/odk-x/sync-endpoint-default-setup>`_, and below are some more detailed config for each type of database.
+  3. Modify :file:`jdbc.properties`(under the directory :file:`config/sync-endpoint`) to match your database. Supported database systems are :program:`PostgreSQL`, :program:`MySQL` and :program:`Microsoft SQL Server`. You can find the minimum tested versions of MySQL, PostgreSQL, and MSSQL that are compatible with Sync-Endpoint `here <https://github.com/odk-x/sync-endpoint/blob/master/docs/maven-full.md>`_. Sample config for PostgreSQL can be found `on Github <https://github.com/odk-x/sync-endpoint-default-setup>`_, and below are some more detailed config for each type of database.
   
 	- :code:`jdbc.driverClassName=`
 	
