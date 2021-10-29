@@ -312,7 +312,7 @@ A list of the optional columns that can be incorporated into a **survey** worksh
 Prompt Types
 """""""""""""""""""""""""""""
 
-The following prompt types are available in ODK-X Survey.
+The following prompt types are available in `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_.
 
 .. list-table:: Survey Prompt Types
   :header-rows: 1
@@ -478,7 +478,7 @@ Available :th:`setting_name` values that can be used:
   * - form_id
     - | Optional
     - | A unique identifier for the form. Default value is
-      | the unique id that ODK-X Survey uses to identify the
+      | the unique id that `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ uses to identify the
       | form.
   * - form_version
     - | Optional
@@ -664,7 +664,7 @@ Each row of the **calculates** page represents a function that can be used elsew
 
 .. tip::
 
-  There are  built in functions for ODK-X Survey that can be used anywhere in the workbook. See the :ref:`Formula Functions <xlsx-ref-formula>` section for more details.
+  There are  built in functions for `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ that can be used anywhere in the workbook. See the :ref:`Formula Functions <xlsx-ref-formula>` section for more details.
 
 If a complex calculation is required, you can access the full power of Javascript and the :program:`jquery.js` (that is: :code:`$.some_func(...)` ) and :program:`underscore.js` (that is: :code:`_.some_func(...)` ) libraries. Internally, the calculate column is wrapped and evaluated as a Javascript function:
 
@@ -1042,7 +1042,7 @@ Built-in Functionality
 
 The :program:`jquery` and :program:`underscore` libraries are available when defining calculates expressions or writing statements for the :th:`condition` column or the :th:`required` column.
 
-ODK-X Survey exposes built-in functionality through formula functions to decrease form development time.
+`ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ exposes built-in functionality through formula functions to decrease form development time.
 
 .. _xlsx-ref-formula:
 

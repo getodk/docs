@@ -59,8 +59,8 @@ Installing Services
 
 .. _survey-install:
 
-Installing the ODK-X Survey App
------------------------------------
+Installing the `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ App
+----------------------------------------------------------------------------
 
   1.  From your device's :guilabel:`Settings`, choose :menuselection:`Apps & notifications`. (On older versions of Android, this setting may be in :menuselection:`Applications` or :menuselection:`Security` depending upon your android version.)
 
@@ -69,7 +69,7 @@ Installing the ODK-X Survey App
     - (On older versions of Android, the above two steps are not required, ensure installation from *Unknown Sources* is checked.)
     
   2. Open the same web browser that you authorized to install unknown apps on your Android device. (For older versions of Android any web browser can be used since you do not need to specifically authorize the web browser's ability to install.)
-  3. Navigate to https://github.com/odk-x/survey/releases/latest and download the latest ODK-X Survey APK.
+  3. Navigate to https://github.com/odk-x/survey/releases/latest and download the latest `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ APK.
   4. In the download window, you will see ODK-X_Survey.N.N.apk. - Select it to download the file.
 
    - On older devices, the APK will automatically install after you approve the security settings.
@@ -77,11 +77,11 @@ Installing the ODK-X Survey App
 
 .. note::
 
-  You can also `download the ODK-X Survey APK <https://github.com/odk-x/survey/releases/latest>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
+  You can also `download the `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ APK <https://github.com/odk-x/survey/releases/latest>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
 
 .. tip::
 
-  You can also `install ODK-X Survey on an Android emulator <https://github.com/odk-x/tool-suite-X/wiki/Developer-Environment-Setup>`_. However, this can be slow and is only recommended for developers actively working on Survey.
+  You can also `install `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ on an Android emulator <https://github.com/odk-x/tool-suite-X/wiki/Developer-Environment-Setup>`_. However, this can be slow and is only recommended for developers actively working on Survey.
 
 
 .. _tables-install:

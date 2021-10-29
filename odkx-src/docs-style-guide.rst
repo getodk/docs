@@ -928,11 +928,11 @@ ODK-X includes a number of components, including:
 
 These should always be capitalized.
 
-The **ODK-X** prefix (as in, *ODK-X Survey*) should be used the first time a document mentions the app or project, or any other time it would be unclear.
+The **ODK-X** prefix (as in, *`ODK-X Survey <https://docs.odk-x.org/survey-using/>`_*) should be used the first time a document mentions the app or project, or any other time it would be unclear.
 
 A few projects should *always* use the **ODK-X** prefix:
 
-- ODK-X Survey
+- `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_
 - ODK-X Sync
 - ODK-X Docs
 

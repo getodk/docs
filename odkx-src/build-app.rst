@@ -56,8 +56,8 @@ Enter your Application Designer directory, navigate to :file:`app/config/` and d
 
 .. _build-app-designing-a-form:
 
-ODK-X Survey: Designing a Form
--------------------------------
+`ODK-X Survey <https://docs.odk-x.org/survey-using/>`_: Designing a Form
+---------------------------------------------------------------------------
 
 When creating a new form, the appropriate directory structure must be created. Once this directory structure is in place, an :file:`.xlsx` form can be created. From this :file:`.xlsx` form, a :file:`formDef.json` file will be generated using the XLSX Converter. This :file:`formDef.json`, in the appropriate directory, is what the system will use to create the Survey form.
 
@@ -80,7 +80,7 @@ Where tableId is the name of your new form and table. For example, to create a c
 
 This will create the required directory structure for an individual table, including the forms directory. It also created basic HTML and JavaScript files, which will be covered later.
 
-Navigate into the forms directory (:file:`app/config/tables/census/forms/` in our example), and create a directory with the form ID as its name. For our example, create a :file:`app/config/tables/census/forms/census` directory. Within that directory, ODK-X Survey expects to find the :file:`formDef.json` that defines the form.
+Navigate into the forms directory (:file:`app/config/tables/census/forms/` in our example), and create a directory with the form ID as its name. For our example, create a :file:`app/config/tables/census/forms/census` directory. Within that directory, `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ expects to find the :file:`formDef.json` that defines the form.
 
 .. tip::
   We recommend placing the :file:`.xlsx` file used to generate that :file:`formDef.json` in this folder as well. Survey will not use this file, but it is a useful reference and provides an easy to remember storage location in case the form needs to be updated in the future.
@@ -391,7 +391,7 @@ Moving Files To The Device
 .. note::
   You must have USB debugging enabled on your device in order to perform this step. See `these instructions <https://www.phonearena.com/news/How-to-enable-USB-debugging-on-Android_id53909>`_ for help.
 
-In order to see these changes on an Android device, you must first have ODK-X Survey installed on your device. Then:
+In order to see these changes on an Android device, you must first have `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ installed on your device. Then:
 
   #. Connect the device to your computer via a USB cable
   #. Open a :program:`cmd` or :program:`terminal` window within the :guilabel:`Application Designer` directory (the one containing :file:`Gruntfile.js`), as described in the :doc:`app-designer-directories` documentation.
@@ -409,7 +409,7 @@ In order to see these changes on an Android device, you must first have ODK-X Su
 
     If you do not see the form, you may need to :ref:`reset the configuration <services-managing-reset-config>`.
 
-This will copy all of the files under config onto your device. You should then be able to launch ODK-X Survey, and it will display your form in its list of forms. Click the form to open it.
+This will copy all of the files under config onto your device. You should then be able to launch `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_, and it will display your form in its list of forms. Click the form to open it.
 
 More :program:`grunt` commands can be found in :ref:`build-app-pushing`.
 
@@ -444,7 +444,7 @@ In the default Application Designer, open :file:`app/config/tables/Tea_houses/ht
     <script type="text/javascript" src="../../../../system/tables/js/odkTables.js"></script>
 
 
-In the first line you are making the :program:`jQuery` object available to your code. :program:`jQuery` is a powerful, commonly used set of functions for accessing and performing actions within a webpage. In the next three lines you are adding the *odkCommon*, *odkTables*, and *odkData* objects if they are not already provided by the browser environment. When running on the device, the ODK-X Tables APK will provide these, and the contents of these files will be ignored. When running in Application Designer on your computer, these files provide the approximate functionality of the APK, allowing you to create and debug your scripts. However, at the moment, these implementations make use of RequireJS, which the ODK-X Tables HTML files do not use (RequireJS is extensively used by ODK-X Survey). This causes these to break in Application Designer **Previews**.
+In the first line you are making the :program:`jQuery` object available to your code. :program:`jQuery` is a powerful, commonly used set of functions for accessing and performing actions within a webpage. In the next three lines you are adding the *odkCommon*, *odkTables*, and *odkData* objects if they are not already provided by the browser environment. When running on the device, the ODK-X Tables APK will provide these, and the contents of these files will be ignored. When running in Application Designer on your computer, these files provide the approximate functionality of the APK, allowing you to create and debug your scripts. However, at the moment, these implementations make use of RequireJS, which the ODK-X Tables HTML files do not use (RequireJS is extensively used by `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_). This causes these to break in Application Designer **Previews**.
 
 More detail is provided in :doc:`tables-web-pages`.
 
@@ -739,7 +739,7 @@ You can use the :program:`Chrome` browser on your computer to inspect for device
 .. warning::
   The edit-debug cycle is awkward because you must make the HTML or JavaScript change on your computer then push the change to your device, and reload the page (for example, by rotating the screen). When you do rotate the screen, however, it is rendered in a new web page, necessitating connecting to that new page to resume debugging (the prior page sits idle and will eventually be destroyed. If you don't see any activity, it is likely because you are pointing at the wrong web page. Return to inspect devices, and select the newest page).
 
-As with ODK-X Survey, you can use the JavaScript Console to look for and fix errors in your HTML/JavaScript. If you are having trouble please check on the |forum|_. Keep in mind that the debug objects only emit a subset of the data in your ODK-X Tables database.
+As with `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_, you can use the JavaScript Console to look for and fix errors in your HTML/JavaScript. If you are having trouble please check on the |forum|_. Keep in mind that the debug objects only emit a subset of the data in your ODK-X Tables database.
 
 .. _build-app-pushing:
 

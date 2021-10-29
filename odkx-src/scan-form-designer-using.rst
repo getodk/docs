@@ -153,7 +153,7 @@ This will be a blank field where users will write in information. In the scannin
 
 .. note::
 
-  To digitize a text box, a user will manually transcribe the image of the text box into a text prompt in ODK-X Survey.
+  To digitize a text box, a user will manually transcribe the image of the text box into a text prompt in `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_.
 
 .. _scan-form-using-adding-fields-text:
 

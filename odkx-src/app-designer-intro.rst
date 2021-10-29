@@ -7,13 +7,13 @@ ODK-X Application Designer
 
 In the context of the ODK-X tools, application design consists of:
 
-  - designing the forms used in data collection (by ODK-X Survey)
+  - designing the forms used in data collection (by `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_)
   - designing the HTML landing pages and screens used for navigating, curating, and visualizing that data on your Android device (within ODK-X Tables).
   - customizing the look-and-feel of both of these via customized images, logos, and CSS rules.
   - designing mark-sense forms for paper-based data entry (by ODK-X Scan)
 
 .. tip::
-  The tools operate independently -- you are not required to use all the tools, or even install them on your device. If you are only interested in data collection, you may only want ODK-X Survey. Or if you are only interested in data dissemination and visualization, you might only want ODK-X Tables.
+  The tools operate independently -- you are not required to use all the tools, or even install them on your device. If you are only interested in data collection, you may only want `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_. Or if you are only interested in data dissemination and visualization, you might only want ODK-X Tables.
 
   Simply select the combination or individual tool that fits your needs. However, all of these tools require ODK-X Services to access the database, sync to a server, and vend HTML files.
 

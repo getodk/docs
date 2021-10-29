@@ -160,7 +160,7 @@ This `class <https://github.com/odk-x/app-designer/blob/development/app/system/j
   #. conversion functions for retrieving and storing timestamps and intervals.
   #. storing and retrieving session variables (transient values that persist for the lifetime of this WebKit).
   #. converting relative paths of configuration files and of row-level attachments into URLs suitable for use in HTML documents (e.g., image src attributes).
-  #. constructing form references used to launch ODK-X Survey.
+  #. constructing form references used to launch `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_.
   #. invoking arbitrary intents (external programs) on Android devices.
   #. obtaining the results from an intent that was previously invoked.
   #. exiting the current WebKit and specifying a return intent status value and extras bundle.

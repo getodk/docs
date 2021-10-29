@@ -4,7 +4,7 @@ Installing the Sample Application
 Prerequisites
 ---------------
 
-Install ODK-X Survey and its prerequisites from the guide :doc:`basics-install`.
+Install `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ and its prerequisites from the guide :doc:`basics-install`.
 
 .. _survey-sample-app-install:
 
@@ -12,7 +12,7 @@ Unlike ODK Collect, the ODK-X tools are application-focused. An application is i
 
 To access the sample application and its six sample forms, authentication and syncing are required.
 
-  1. Launch ODK-X Survey. Tap the :guilabel:`Settings` button represented by a gear. This launches the ODK-X Services tool to the settings page.
+  1. Launch `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_. Tap the :guilabel:`Settings` button represented by a gear. This launches the ODK-X Services tool to the settings page.
 
     .. image:: /img/survey-sample-app/survey-settings-button.*
       :alt: Survey Setting Button
@@ -68,7 +68,7 @@ To access the sample application and its six sample forms, authentication and sy
       :alt: Successful authentication
       :class: device-screen-vertical
 
-    Tap :guilabel:`OK` on the window and go back to the ODK-X Survey application.
+    Tap :guilabel:`OK` on the window and go back to the `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ application.
 
   4. Tap the Sync button at the top of the screen.
 
@@ -96,7 +96,7 @@ When complete, click :guilabel:`OK` on the :guilabel:`Sync Outcome` dialog and b
    :alt: Sync success
    :class: device-screen-vertical
 
-If the sync was successful, ODK-X Survey will scan through the downloaded configuration, updating its list of available forms.
+If the sync was successful, `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ will scan through the downloaded configuration, updating its list of available forms.
 
   .. image:: /img/survey-sample-app/survey-scanning.*
     :alt: Survey Scanning Form Definitions

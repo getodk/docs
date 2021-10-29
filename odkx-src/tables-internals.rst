@@ -18,11 +18,11 @@ Within the application folder (:file:`/sdcard/opendatakit/default`), the followi
   - :file:`config` -- contains read-only configuration files that define the user's application (for example, the 5demos example application you just synced from https://opendatakit-tablesdemo.appspot.com). Within this folder are:
 
       - :file:`assets` -- contains files that initialize your data tables (in the csv sub-folder) and define the custom home screen and provides CSS files for overall appearance of your app, and JavaScript libraries and files for common behaviors in your app.
-      - :file:`tables` -- contains directories that are named with table ids. Within these sub-directories, the ODK-X Survey forms and table-specific HTML, JavaScript, and CSS files are found. For example, the HTML file describing the list view for the tea houses table is found in :file:`config/tables/Tea_houses/html/Tea_houses_list.html`.
+      - :file:`tables` -- contains directories that are named with table ids. Within these sub-directories, the `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ forms and table-specific HTML, JavaScript, and CSS files are found. For example, the HTML file describing the list view for the tea houses table is found in :file:`config/tables/Tea_houses/html/Tea_houses_list.html`.
 
   - :file:`data` -- contains the database and row-level attachments (files).
   - :file:`output` -- contains files that are generated (such as detailed logging files) or exported (such as CSV files) by the ODK-X tools on the device.
-  - :file:`system` -- an area maintained by the tools themselves (ODK-X Survey, ODK-X Tables, ODK-X Scan, and so on). These files are extracted and placed here by the APKs. You should not modify files in this folder; when first started, the ODK-X tools sweep this directory to verify that these files match their internal copy. Any deviant file is replaced with a fresh internal copy.
+  - :file:`system` -- an area maintained by the tools themselves (`ODK-X Survey <https://docs.odk-x.org/survey-using/>`_, ODK-X Tables, ODK-X Scan, and so on). These files are extracted and placed here by the APKs. You should not modify files in this folder; when first started, the ODK-X tools sweep this directory to verify that these files match their internal copy. Any deviant file is replaced with a fresh internal copy.
 
 The automatic configuring and loading of data into ODK-X Tables is governed by the :file:`config/assets/tables.init` file. It provides a list of table ids and the CSV files (located in the :file:`config/assets/csv` folder) that should be imported to populate them. This is discussed in more detail in the :ref:`Tables User Guide <tables-managing-config-at-startup>`.
 

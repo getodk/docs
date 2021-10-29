@@ -3,8 +3,8 @@
   myapp
 
 
-ODK-X Survey
-======================
+`ODK-X Survey <https://docs.odk-x.org/survey-using/>`_
+=======================================================
 
 .. _survey-intro:
 
@@ -12,11 +12,11 @@ ODK-X Survey
 
 .. note::
 
-  ODK-X Survey only works on Android 5.0 and newer devices.
+  `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ only works on Android 5.0 and newer devices.
 
 .. note::
 
-  ODK-X Survey cannot read or display the forms created for ODK Collect (that is, those created via ODK Build, XLSForm, or other form design tools). ODK-X Survey operates with ODK-X Data Management Applications*.
+  `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ cannot read or display the forms created for ODK Collect (that is, those created via ODK Build, XLSForm, or other form design tools). `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ operates with ODK-X Data Management Applications*.
 
 .. contents:: :local:
 
@@ -28,8 +28,8 @@ Prerequisites
 If you have not installed Survey already, follow our guide for :doc:`basics-install`
 
 
-Using ODK-X Survey
----------------------------------
+Using `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_
+--------------------------------------------------------------
 
 We have included a sample application built on top of Survey along with a handful of forms that showcase some of its features in :doc:`survey-sample-app`.
 
@@ -149,7 +149,7 @@ There are three ways to save a form:
       :alt: Survey Save Menu
       :class: device-screen-vertical
 
-  3. Press the Android back button. This is not the :guilabel:`Back` button provided by ODK-X Survey in the upper right. This is the button to back out of apps. This will launch a menu with the option to :menuselection:`Save Changes` which will save the form as **Incomplete**.
+  3. Press the Android back button. This is not the :guilabel:`Back` button provided by `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ in the upper right. This is the button to back out of apps. This will launch a menu with the option to :menuselection:`Save Changes` which will save the form as **Incomplete**.
 
     .. image:: /img/survey-using/survey-save-back.*
       :alt: Survey Save Back Button
@@ -280,7 +280,7 @@ Launching With a Different AppName
 
 The ODK-X tools are designed to support multiple independent Data Management Applications running on the Android device. Each of our tools has the ability to run in the context of either a default application name, or a specified application name.
 
-By default, ODK-X Survey runs under the *default* application name (as does ODK-X Tables and the other ODK-X tools). Application names correspond to the name of the directory under :file:`/sdcard/opendatakit` where the configuration and data files for that application are stored.
+By default, `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ runs under the *default* application name (as does ODK-X Tables and the other ODK-X tools). Application names correspond to the name of the directory under :file:`/sdcard/opendatakit` where the configuration and data files for that application are stored.
 
 .. warning::
 
@@ -301,7 +301,7 @@ Android 4.x Devices
 
 .. note::
 
-  Please note that ODK-X Survey version 2.1.9 does not support Android 4.x. Its minimum Android version is 5.0
+  Please note that `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ version 2.1.9 does not support Android 4.x. Its minimum Android version is 5.0
 
   #. Choose to view the installed applications.
   #. Select the :guilabel:`Widgets` tab at the top of that screen.
@@ -323,7 +323,7 @@ Android 5.x and Higher Devices:
 Trying the New Launcher
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now, play around with launching ODK-X Survey using this application shortcut and :guilabel:`Finalizing` a new filled-in form. Exit ODK-X Survey, and launch it from the applications list (so that it launches as the default application). Verify that you do not see that newly filled-in form. You can also create a new filled-in form in this default application and confirm that it is not visible in the myapp application.
+Now, play around with launching `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ using this application shortcut and :guilabel:`Finalizing` a new filled-in form. Exit `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_, and launch it from the applications list (so that it launches as the default application). Verify that you do not see that newly filled-in form. You can also create a new filled-in form in this default application and confirm that it is not visible in the myapp application.
 
 This highlights the isolation of Data Management Applications in the ODK-X tools. This is even more powerful with applications that use ODK-X Tables because you can create entirely isolated applications, such as a forestry app and a health clinic app, and have the forms and data entirely independent of each other.
 

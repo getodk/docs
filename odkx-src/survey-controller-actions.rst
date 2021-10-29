@@ -5,8 +5,8 @@
   validateInProgress
 
 
-ODK-X Survey Controller Actions
-====================================
+`ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ Controller Actions
+==========================================================================
 
 .. _survey-controller-actions:
 

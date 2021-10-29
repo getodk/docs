@@ -9,7 +9,7 @@ Now that we have seen how a device can join an already-configured application, a
 
 Prerequisites
 ------------------
-This guide continues the tour where :doc:`survey-sample-app` left off. If you haven't yet completed that tour, do it first. When you have concluded the tour of the *ODK-X Survey* example application's screens, return to this guide and we will turn to setting up our own application.
+This guide continues the tour where :doc:`survey-sample-app` left off. If you haven't yet completed that tour, do it first. When you have concluded the tour of the *`ODK-X Survey <https://docs.odk-x.org/survey-using/>`_* example application's screens, return to this guide and we will turn to setting up our own application.
 
 .. _architect-odk-2-config-setup-app-designer:
 
@@ -54,7 +54,7 @@ Now, open a file browser and navigate to the directory where you downloaded the 
 .. image:: /img/getting-started-2/example-form-folder.*
   :alt: Example Form Folder
 
-Navigate within that directory to :file:`app/config/tables/exampleForm/forms/exampleForm`. Open the :file:`exampleForm.xlsx` file in :program:`Excel` (or :program:`OpenOffice`). This is the form definition used by ODK-X Survey.
+Navigate within that directory to :file:`app/config/tables/exampleForm/forms/exampleForm`. Open the :file:`exampleForm.xlsx` file in :program:`Excel` (or :program:`OpenOffice`). This is the form definition used by `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_.
 
 We will be adding a question to ask the user to enter their favorite color. For this example, we will be collecting a text response. A more useful modification might restrict the user to a set of choices (red, orange, yellow, green, and so on).
 
@@ -77,7 +77,7 @@ You should now see some JSON in the output window. Hit the :guilabel:`Save to Fi
 1. Updating the :file:`definition.csv` file.
 2. Updating the :file:`properties.csv` file.
 3. Updating the :file:`tableSpecificDefinitions.js` file.
-4. Writing the updated ODK-X Survey form definition into the :file:`formDef.json` file in the same location as the :file:`exampleForm.xlsx` file.
+4. Writing the updated `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ form definition into the :file:`formDef.json` file in the same location as the :file:`exampleForm.xlsx` file.
 
 .. note::
 
@@ -104,7 +104,7 @@ Now that we have the design environment installed and have successfully modified
 Preparing the Device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you followed along with the :doc:`survey-sample-app`, you should already have all the necessary tools installed on your device. If not, follow the :doc:`basics-install` instructions to install ODK-X Services, ODK-X Survey, and ODK-X Tables.
+If you followed along with the :doc:`survey-sample-app`, you should already have all the necessary tools installed on your device. If not, follow the :doc:`basics-install` instructions to install ODK-X Services, `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_, and ODK-X Tables.
 
 First, open the :guilabel:`OI File Manager` on the device. Delete the whole :guilabel:`opendatakit` folder by clicking the folder and holding it until it becomes highlighted in blue. Then press the delete icon, and click :guilabel:`OK` in the resulting window.
 
@@ -150,9 +150,9 @@ This pushes the configured ODK-X application within this ODK-X Application Desig
 .. image:: /img/getting-started-2/geotagger-cmd-gruntpush.*
   :alt: Geotagger Grunt Push
 
-Now, on your device, launch ODK-X Survey.
+Now, on your device, launch `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_.
 
-This will initiate the configuration of ODK-X Survey and conclude with a :guilabel:`Configuration Summary` pop-up reporting that everything was imported successfully. Click :guilabel:`OK`.
+This will initiate the configuration of `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ and conclude with a :guilabel:`Configuration Summary` pop-up reporting that everything was imported successfully. Click :guilabel:`OK`.
 
 Scroll to and select the *Example Form*. Create a new instance of the survey, and click :guilabel:`Go to next prompt`. You should now be looking at the question you added to the form.
 
