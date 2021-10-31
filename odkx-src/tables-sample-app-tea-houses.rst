@@ -89,7 +89,7 @@ For more information about *Spreadsheet View*, view the :ref:`tables-using-view-
 Detail View
 ---------------------
 
-  .. image:: /img/tables-sample-app/tables-sample-tea-detail.*
+  .. image:: /img/tables-sample-app/tables-sample-tea-detail1.*
     :alt: Tea Houses List View
     :class: device-screen-vertical
 
