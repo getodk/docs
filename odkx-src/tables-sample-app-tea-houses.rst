@@ -9,7 +9,7 @@ Tea Houses Demo
 
 For this portion of the tutorial, we will explore the *Tea Houses* demo. Select the tab labeled :guilabel:`Tea` and press :guilabel:`Launch Demo`.
 
-  .. image:: /img/tables-sample-app/tables-sample-launch-tea.*
+  .. image:: /img/tables-sample-app/tables-sample-launch-tea1.*
     :alt: Launch Tea Houses
     :class: device-screen-vertical
 
