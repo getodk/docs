@@ -135,7 +135,7 @@ The bottom half of the screen renders the subordinate *List View*, which shows t
 
 Next we will see the *Map View*. Back out of the *Detail With Sublist View* to see the list of tea houses. Press the lined paper icon and choose :menuselection:`Map` from the menu.
 
-  .. image:: /img/tables-sample-app/tables-sample-map-launch.*
+  .. image:: /img/tables-sample-app/tables-sample-map-launch1.*
     :alt: Tea Houses Launch Map View
     :class: device-screen-vertical
 
