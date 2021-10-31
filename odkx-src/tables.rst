@@ -7,3 +7,4 @@ ODK-X Tables
   tables-using
   tables-managing
   tables-internals
+  tables-intents
