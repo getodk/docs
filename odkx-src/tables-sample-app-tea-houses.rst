@@ -118,7 +118,7 @@ From the custom view with the three buttons, select :guilabel:`View Tea Houses`.
 
 The *Tea Houses* table has been configured to use a *Detail With Sublist View* rather than a *Detail View*. Tap the :guilabel:`Tea for All` tea house to see this.
 
-  .. image:: /img/tables-sample-app/tables-sample-tea-detail-sublist1.*
+  .. image:: /img/tables-sample-app/tables-sample-tea-detail-sublist.*
     :alt: Tea Houses Detail With Sublist View
     :class: device-screen-vertical
 
