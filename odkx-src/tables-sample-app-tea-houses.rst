@@ -112,7 +112,7 @@ Detail With Sublist View
 
 From the custom view with the three buttons, select :guilabel:`View Tea Houses`. This will launch another *List View*, this time showing the list of tea houses.
 
-  .. image:: /img/tables-sample-app/tables-sample-tea-houses-list1.*
+  .. image:: /img/tables-sample-app/tables-sample-tea-houses-list.*
     :alt: Tea Houses List View
     :class: device-screen-vertical
 
