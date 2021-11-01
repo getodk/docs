@@ -22,7 +22,7 @@ Custom View
 
 The first screen you will see after launching the *Tea Houses* demo is a custom view.
 
-  .. image:: /img/tables-sample-app/tables-sample-tea-custom1.*
+  .. image:: /img/tables-sample-app/tables-sample-tea-custom.*
     :alt: Tea Houses Custom Navigation
     :class: device-screen-vertical
 
