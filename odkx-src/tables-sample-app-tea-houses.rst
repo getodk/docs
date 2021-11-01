@@ -69,7 +69,7 @@ For more information about *List Views*, view the :ref:`tables-using-view-data-l
 Spreadsheet View
 ------------------------
 
-  .. image:: /img/tables-sample-app/tables-sample-spreadsheet1.*
+  .. image:: /img/tables-sample-app/tables-sample-spreadsheet.*
     :alt: Tea Houses Spreadsheet View
     :class: device-screen-vertical
 
