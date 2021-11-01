@@ -45,7 +45,7 @@ For more information about custom views, view the :ref:`tables-using-view-data-c
 List View
 ----------------------
 
-  .. image:: /img/tables-sample-app/tables-sample-tea-list1.*
+  .. image:: /img/tables-sample-app/tables-sample-tea-list.*
     :alt: Tea Houses List View
     :class: device-screen-vertical
 
