@@ -53,7 +53,7 @@ This screen shows a list of all teas available in the *Tea Inventory* data table
 
 To see the raw data, we will switch to *Spreadsheet View*. Tap on the lined paper icon at the top of the screen. Here you’ll see all the possible view types. Select :menuselection:`Spreadsheet`.
 
-  .. image:: /img/tables-sample-app/tables-sample-launch-spreadsheet1.*
+  .. image:: /img/tables-sample-app/tables-sample-launch-spreadsheet.*
     :alt: Tea Houses Launch Spreadsheet View
     :class: device-screen-vertical
 
