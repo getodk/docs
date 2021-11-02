@@ -13,10 +13,10 @@ This guide is for creating and launching intents supported by ODK-X Tables using
 Barcode Scanner
 ~~~~~~~~~~~~~~~~~~~
 
-This section describes the process of creating a simple Tables app capable of scanning a barcode and displaying the results in a custom webpage.
+This section describes the process of creating a simple ODK-X Tables app capable of scanning a barcode and displaying the results in a custom webpage.
 In this example, we will make use of the `Census Form` created earlier in the :ref:`build-app` section. 
 
-On :guilabel:`Application Designer`, open :file:`app/config/tables/census/html/census_list.html` and add a button to scan a barcode.
+In :guilabel:`Application Designer`, open :file:`app/config/tables/census/html/census_list.html` and add a button to scan a barcode.
 
 Ensure the file looks like this:
 
@@ -64,17 +64,17 @@ Ensure the file looks like this:
     </html>
 
 
-Set up an on-click listener to the button to call `odkCommon.doAction`. 3 parameters will be passed to this function. 
+Set up an on-click listener to the button to call `odkCommon.doAction`. Three parameters will be passed to this function. 
 
 #. dispatchStruct: holds reconstructive state for JS. This is always sent back to the page. 
 #. action: `SCAN` in our case :code:`com.google.zxing.client.android.SCAN`.
 #. intent object: Intent extras - use :code:`null`.
 
 The next step is to register a listener. A listener listens for updates in a queue and triggers a callback function to process these updates. 
-In this case, the scan will be launched in a different app and to use the data returned in our Tables application, a callback function needs to be defined.
+In this case, the scan will be launched in a different app and to use the data returned in our ODK-X Tables application, a callback function needs to be defined.
 The registered listener will then trigger this callback function whenever there is an update to be processed. 
 Whatever has to be done with the result of the scan can be configured in the callback function.
-In this case we just log the output to the console and print the results to the web page.
+In this case we just log the output to the console and print the results to the screen.
 
 The listener should be called once after registration to process any updates in the queue prior to registration.
 
@@ -213,7 +213,7 @@ The :file:`census_list.js` looks like this after the modifications:
         console.log('barcode getViewData CB error : ' + error);
     };
 
-Deploy changes to the device. The Survey form will not be a requirement for this test since we earlier hooked up the button in the list view. Select the census form and click on the button to launch a barcode. This launches the barcode reader enabling you to capture the information on the barcode. Immediately this is done, control switches back to the activity responsible for launching the intent, presenting you with the results from the scan. The results are now available for further processing as desired.
+Deploy changes to the device. The Survey form will not be a requirement for this test since we earlier hooked up the button in the list view. Select the census form and click on the button to launch a barcode. This launches the barcode reader enabling you to capture the information on the barcode. Immediately after this is done, control switches back to the activity responsible for launching the intent, presenting you with the results from the scan. The results are now available for further processing as desired.
 
 Example :program:`Chrome` inspect console output is shown below:
 
@@ -231,7 +231,7 @@ Example :program:`Chrome` inspect console output is shown below:
         }
     }
 
-Sample Screenshots are shown below:
+Sample screenshots are shown below:
 
 .. image:: /img/tables-sample-app/tables-barcode-button.png
   :alt: ODK-X Tables barcode scan before
@@ -240,4 +240,4 @@ Sample Screenshots are shown below:
   :alt: ODK-X Tables barcode scan results
 
 .. note::
-    If clicking on the button does not launch any activity to scan a barcode, it is possible that no barcode reader application exists one the device or the barcode with the zing package. Install a `zxing scanner` for example, :program:`QR & Barcode Reader` from TeaCapps.
+    If clicking on the button does not launch any activity to scan a barcode, it is possible that no barcode reader application exists one the device or the barcode with the zxing package. Install a `zxing scanner` for example, :program:`QR & Barcode Reader` from TeaCapps.
