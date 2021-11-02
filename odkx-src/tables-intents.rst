@@ -1,6 +1,7 @@
 .. spelling::
   extras
   dispatchStruct
+  zxing
 
 Sample Intents in ODK-X Tables
 ===============================
