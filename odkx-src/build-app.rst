@@ -56,6 +56,12 @@ Your freshly installed copy of Application Designer comes with lots of example f
 
 After building your own application, you may choose to delete all the examples forms and configurations before pushing your files to your device. The files can be very large and take up a lot of space on the device.
 
+Open the terminal and type *grunt empty*, this removes all the files and creates an empty app-designer folder to work with.  
+
+.. code-block:: console
+
+  $ grunt empty
+
 .. _build-app-designing-a-form:
 
 `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_: Designing a Form
@@ -70,9 +76,13 @@ Creating the Directory Structure
 
 New forms must be placed under the :file:`app/config/tables/` directory as described in the :ref:`app-designer-dirs-app-config-tables` section. Given a form with the name *formId*, it will have a *tableId* of the same name unless you explicitly specify otherwise. The directory structure that should be created is :file:`app/config/tables/tableId/forms/formId` (where, under many circumstances, the value for *tableId* will be the same as the value for *formId*). 
 
+.. note::
+
+  If you haved not used ODK-X Application Designer before, see :doc:`getting-started-2-architect` before continuing.
+
 To get started: 
 
-  1. Navigate to :file:`app/config/tables/` and create a folder with the tableId, where tableId is the name of your new form and table. For example, to create a census form; the folder would be named census.
+  1. Navigate to :file:`app/config/tables/` and create a folder with the tableId, where tableId is the name of your new form and table. For example, to create a census form, the folder would be named census.
 
   2. In the census folder, create the following new folders:
    
@@ -235,7 +245,7 @@ The :file:`framework.xlsx` file is central to the structure of the Application D
         - census
         - Census Form
 
-  10. In the *survey* worksheet. Check that these headers: :th:`branch_label`, :th:`url`, :th:`clause`, :th:`condition`, :th:`type`, :th:`values_list`, :th:`display.prompt.text` are present.
+  10. In the *survey* work sheet, check that these headers: :th:`branch_label`, :th:`url`, :th:`clause`, :th:`condition`, :th:`type`, :th:`values_list`, :th:`display.prompt.text` are present.
 
   11. Update the following rows as shown below. This worksheet tells the software what to do if you're previewing in :program:`Chrome`.
 
@@ -802,24 +812,27 @@ If you pull the CSV files, they will be under the :file:`output/csv/` directory.
 Useful Grunt Commands
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-:guilabel:`grunt addtable:tableid` : Will create the required directory structure for an individual table, including the forms directory.
-
-:guilabel:`grunt xlsx-convert-all` : Takes all `.xlsx` files and converts them into a `formDef.json file`. Can be used instead of `XLSX` converter on the app designer.
-
-:guilabel:`grunt wipe-data` : Deletes the default tables/data included with app designer.
-
-:guilabel:`grunt setup` : Launches the login and sync screen on the connected device.
-
-:guilabel:`grunt kill all` : Force stops survey, tables and services on the connected device.
-
-:guilabel:`grunt uninstall` : Uninstall ODK-X tools from the connected device.
-
 :guilabel:`grunt adbpull` : Perform all the Android Debug Bridge pull tasks.
-
-:guilabel:`grunt adbpush` : Perform all the Android Debug Bridge push tasks.
 
 :guilabel:`grunt adbpull-logs` : Pull any logs stored in the device for debugging purposes.
 
+:guilabel:`grunt adbpull-csv` : Pull any exported csv files from the device.
+
+:guilabel:`grunt adbpush` : Perform all the Android Debug Bridge push tasks.
+
+:guilabel:`grunt addtable:tableid` : Will create the required directory structure for an individual table, including the forms directory.
+
+:guilabel:`grunt clean` : Wipes the device of all ODK-X data
+
+:guilabel:`grunt empty` : Remove unnecessary files to make an empty app-designer directory to work with.
+
+:guilabel:`grunt killall` : Force stops survey, tables and services on the connected device.
+
+:guilabel:`grunt setup` : Launches the login and sync screen on the connected device.
+
+:guilabel:`grunt uninstall` : Uninstall ODK-X tools from the connected device.
+
+:guilabel:`grunt xlsx-convert-all` : Takes all `.xlsx` files and converts them into a `formDef.json file`. Can be used instead of `XLSX` converter on the app designer.
 
 Troubleshooting
 ~~~~~~~~~~~~~~~~~~~~
