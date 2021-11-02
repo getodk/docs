@@ -1190,7 +1190,7 @@ Multiple points that form lines or shapes are separated by semicolons.
 
   Since v1.30, when a mock location provider is detected, the accuracy is set to 0. Achieving such perfect accuracy is not possible using GPS so that indicates it comes from a mock provider.
 
-  In version v2021.3 and later, you can opt out of this behaviour by setting **allow-mock-accuracy** to **true** in the **parameters** column of your question in your XLSForm **survey** sheet. This is useful for external GPS devices that require Android's mock provider feature.
+  In version v2021.3 and later, you can opt out of this behavior by setting **allow-mock-accuracy** to **true** in the **parameters** column of your question in your XLSForm **survey** sheet. This is useful for external GPS devices that require Android's mock provider feature.
 
 .. contents::
   :local:
