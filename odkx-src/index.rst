@@ -7,7 +7,7 @@ ODK-X documentation
 
 .. _odk-2-introduction:
 
-The ODK-X Tool Suite is free and open-source software for collecting, managing and using data in resource-constrained environments.
+The ODK-X Tool Suite is free and open-source software for collecting, managing, and using data in resource-constrained environments.
 
 In ODK-X, developers and data managers can create data management applications that consist of survey forms as well as Javascript-based apps. These allow you to render a fully customizable user interface to gather, manage, and visualize data on an Android device.
 
@@ -38,7 +38,7 @@ ODK-X tools enable you to open and edit other surveys with links back to the ori
 
 View data on device
 """""""""""""""""""
-Investigate and visualize entire datasets directly on the device through graphical, map, tabular displays and filtered views.
+Investigate and visualize entire datasets directly on the device through graphical, map, tabular displays, and filtered views.
 
 User access control
 """"""""""""""""""""
