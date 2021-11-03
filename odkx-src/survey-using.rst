@@ -169,7 +169,7 @@ A list of previously saved form instances is viewable on the home screen of each
 
   .. warning::
 
-    This list of saved form instances is not limited to those collected on your device. After synchronization this will include all form instances from all devices that have synced with the server. Take care not to edit form instances that you should not be editing.
+    This list of saved form instances is not limited to those collected on your device. After synchronization, this will include all form instances from all devices that have synced with the server. Take care not to edit form instances that you should not be editing.
 
     To protect against unauthorized edits, see :doc:`data-permission-filters`.
 
@@ -177,7 +177,7 @@ A list of previously saved form instances is viewable on the home screen of each
     :alt: Survey Edit Instance
     :class: device-screen-vertical
 
-This list of instances is ordered reverse chronologically by the last save date, with the most recently edited form instance on top and the oldest form instance at the bottom. These instances are marked as either **Finalized** or **Incomplete** (see :ref:`survey-saving-instance` for definitions).
+This list of instances is ordered reverse chronologically by the last saved date, with the most recently edited form instance on top and the oldest form instance at the bottom. These instances are marked as either **Finalized** or **Incomplete** (see :ref:`survey-saving-instance` for definitions).
 
 .. _survey-edit-saved:
 
@@ -216,7 +216,7 @@ Forms in Survey are defined in HTML, CSS, and JavaScript. A default look-and-fee
         :alt: Survey Next Button
         :class: device-screen-vertical
 
-  - To go backward to the previous prompt, press the :guilabel:`Back` button in the upper right.
+  - To go back to the previous prompt, press the :guilabel:`Back` button in the upper right.
 
       .. image:: /img/survey-using/survey-navigate-back.*
         :alt: Survey Back Button
@@ -278,7 +278,7 @@ Use the :doc:`xlsx-converter-reference` to find all the features you can use in 
 Launching With a Different AppName
 ---------------------------------------------
 
-The ODK-X tools are designed to support multiple independent Data Management Applications running on the Android device. Each of our tools has the ability to run in the context of either a default application name, or a specified application name.
+The ODK-X tools are designed to support multiple independent Data Management Applications running on the Android device. Each of our tools has the ability to run in the context of either a default application name or a specified application name.
 
 By default, `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ runs under the *default* application name (as does ODK-X Tables and the other ODK-X tools). Application names correspond to the name of the directory under :file:`/sdcard/opendatakit` where the configuration and data files for that application are stored.
 
