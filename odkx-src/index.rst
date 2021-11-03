@@ -38,7 +38,7 @@ ODK-X tools enable you to open and edit other surveys with links back to the ori
 
 View data on device
 """""""""""""""""""
-Investigate and visualize entire datasets directly on the device through graphical, map, and tabular displays and through filtered views.
+Investigate and visualize entire datasets directly on the device through graphical, map, tabular displays, and filtered views.
 
 User access control
 """"""""""""""""""""
