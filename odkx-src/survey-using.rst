@@ -327,7 +327,7 @@ Now, play around with launching `ODK-X Survey <https://docs.odk-x.org/survey-usi
 
 This highlights the isolation of Data Management Applications in the ODK-X tools. This is even more powerful with applications that use ODK-X Tables because you can create entirely isolated applications, such as a forestry app and a health clinic app, and have the forms and data entirely independent of each other.
 
-This eliminates the need for different groups to fork the ODK-X codebase.
+This eliminates the need for different groups to fork the ODK-X code base.
 
 .. _survey-launching-appname-make-new:
 
