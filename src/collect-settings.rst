@@ -92,9 +92,10 @@ To access User Interface settings:
 
 :guilabel:`Theme`
 """"""""""""""""""
-  Toggles Light and Dark themes.
 
   .. versionadded:: 1.15
+
+  Selects the color scheme the app will use. The default :guilabel:`Use device theme` option (added in ODK Collect v2021.3) uses the device's color theme (based on the the :guilabel:`Dark theme` system setting in Android 10 and above).
 
   .. container:: details
 
@@ -109,7 +110,7 @@ To access User Interface settings:
 
 :guilabel:`Language`
 """""""""""""""""""""
-  Forces the Collect interface to use a specific language. By default, Collect matches the device language. Note that this only sets the language for the Collect user interface and not for the form. For :doc:`forms with multiple languages <form-language>`, the form language is set :ref:`while filling out the form <change-form-language>`. 
+  Forces the Collect interface to use a specific language. By default, Collect matches the device language. Note that this only sets the language for the Collect user interface and not for the form. For :doc:`forms with multiple languages <form-language>`, the form language is set :ref:`while filling out the form <change-form-language>`.
 
   .. note::
 

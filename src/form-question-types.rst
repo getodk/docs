@@ -1182,13 +1182,15 @@ Multiple points that form lines or shapes are separated by semicolons.
 
 .. note::
 
-  The accuracy radius is an estimate of what Android calls the `radius of 68% confidence <https://developer.android.com/reference/android/location/Location.html#getAccuracy()>`_: there is a 68% chance that the true location falls within this radius. This is an estimate reported by the Android system based on the available sensors (GPS, network, etc). The accuracy radius itself may be more or less reliable depending on the sensor(s) used and current conditions. 
+  The accuracy radius is an estimate of what Android calls the `radius of 68% confidence <https://developer.android.com/reference/android/location/Location.html#getAccuracy()>`_: there is a 68% chance that the true location falls within this radius. This is an estimate reported by the Android system based on the available sensors (GPS, network, etc). The accuracy radius itself may be more or less reliable depending on the sensor(s) used and current conditions.
 
   To get an accurate location quickly, ensure devices have a clear view of the sky. For even faster points, consider "warming" the GPS with a :ref:`start-geopoint <metadata-start-geopoint>` question. See :doc:`improving location performance <collect-location>` for more.
 
 .. note::
 
-  since v1.30, when a mock location provider is detected, the accuracy is set to 0. Achieving such perfect accuracy is not possible using GPS so that indicates it comes from a mock provider.
+  Since v1.30, when a mock location provider is detected, the accuracy is set to 0. Achieving such perfect accuracy is not possible using GPS so that indicates it comes from a mock provider.
+
+  In version v2021.3 and later, you can opt out of this behavior by setting **allow-mock-accuracy** to **true** in the **parameters** column of your question in your XLSForm **survey** sheet. This is useful for external GPS devices that require Android's mock provider feature.
 
 .. contents::
   :local:
@@ -1681,7 +1683,7 @@ type
 appearance
   :tc:`none`
 
-Records audio using the device's microphone or a connected external microphone. By default, an :ref:`external application <external-audio-app>` is used. 
+Records audio using the device's microphone or a connected external microphone. By default, an :ref:`external application <external-audio-app>` is used.
 
 .. tip::
 
@@ -1719,9 +1721,9 @@ parameters
 
   `ODK Collect v1.29.0 <https://github.com/getodk/collect/releases/tag/v1.29.0>`_
 
-The built-in audio recorder makes it possible to capture audio without having to install an external app. 
+The built-in audio recorder makes it possible to capture audio without having to install an external app.
 
-It also enables recording while filling out other questions and is designed to continue recording even if the user switches to another app or if the phone screen is locked. To use the built-in audio recorder, :ref:`specify the desired audio quality <customizing-audio-quality>` for each audio question in your form. 
+It also enables recording while filling out other questions and is designed to continue recording even if the user switches to another app or if the phone screen is locked. To use the built-in audio recorder, :ref:`specify the desired audio quality <customizing-audio-quality>` for each audio question in your form.
 
 You can also configure Collect to always use the built-in recorder by :ref:`disabling external app recording <use-external-app-for-audio-recording>`.
 
@@ -1959,7 +1961,7 @@ File upload widget
 
 Default file upload widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 
+
 .. versionadded:: 1.15
 
   `ODK Collect v1.15.0 <https://github.com/getodk/collect/releases/tag/v1.15.0>`_
@@ -2559,7 +2561,7 @@ It can be helpful to combine background audio recording with :doc:`audit logging
 Background audio recording user interface
 """"""""""""""""""""""""""""""""""""""""""
 
-While recording is ongoing, an audio status bar is shown at the top of the screen. This bar helps remind data collectors that they are being recorded and provides visual feedback about audio volume. 
+While recording is ongoing, an audio status bar is shown at the top of the screen. This bar helps remind data collectors that they are being recorded and provides visual feedback about audio volume.
 
 If a data collector exits a form and then re-opens it for editing, audio recording is resumed. Audio recording continues as long as the form is open, even if another application is in the foreground or the screen is locked. Note that Collect settings can't be accessed directly from a form that has background recording. The audio file sent to the server will include audio from every time that the form was opened for editing.
 
