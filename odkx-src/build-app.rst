@@ -8,6 +8,7 @@
   defaultViewType
   detailViewFileName
   listViewFileName
+  WebView
 
 Building an Application
 ====================================================
@@ -731,13 +732,30 @@ After that, you can deploy your app to your device. Open Survey and fill in a fe
 Debugging Tables Web Files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can use the :program:`Chrome` browser on your computer to inspect for devices and connect to this custom screen on your Android device, and debug from there. Some useful guides include:
+You can use the :program:`Chrome` browser on your computer to inspect for devices and connect to this custom screen on your Android device, and debug from there. For this, you will need to set up remote debugging with instructions found here 
+`Remote debug Android devices <https://developers.google.com/web/tools/chrome-devtools/remote-debugging/>`_ and perform the following steps.
+  
+  #. Open up the ODK-X Tables app on your phone. 
+  #. Select the table (census table created above for example) you want to debug.
+  #. Open `chrome://inspect <chrome://inspect>`_ page on your computer’s :program:`Chrome` browser. Since the ODK-X Tables application uses WebViews to display your custom web pages, the inspect tab should list debug-enabled WebViews on your device. From the list, you should see the ODK-X Tables app WebView as shown in the figure below. 
+  #. Click inspect below the table WebView you want to debug. 
+
+  .. figure:: /img/app-designer-overview/odk-x-debugging.png
+    :alt: Alt text. Chrome inspect tab showing ODK-X Table WebView.
+
+    Sample inspect tool preview showing ODK-X Table WebView.
+
+ Some useful guides include:
 
   - `Get Started with Debugging JavaScript in Chrome DevTools <https://developers.google.com/web/tools/chrome-devtools/javascript/>`_
   - `Get Started with Remote Debugging Android Devices <https://developers.google.com/web/tools/chrome-devtools/remote-debugging/>`_
+  - `Open a WebView in DevTools <https://developer.chrome.com/docs/devtools/remote-debugging/webviews/>`_
 
 .. warning::
   The edit-debug cycle is awkward because you must make the HTML or JavaScript change on your computer then push the change to your device, and reload the page (for example, by rotating the screen). When you do rotate the screen, however, it is rendered in a new web page, necessitating connecting to that new page to resume debugging (the prior page sits idle and will eventually be destroyed. If you don't see any activity, it is likely because you are pointing at the wrong web page. Return to inspect devices, and select the newest page).
+.. note::
+  If your default view is a spreadsheet view, ODK-X Table WebView will not show up in the :program:`Chrome` inspect tool.
+  You will need to change the default view type to **LIST** using instructions found here :ref:`tables-using-view-data-change-views`.
 
 As with `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_, you can use the JavaScript Console to look for and fix errors in your HTML/JavaScript. If you are having trouble please check on the |forum|_. Keep in mind that the debug objects only emit a subset of the data in your ODK-X Tables database.
 
