@@ -56,7 +56,7 @@ Your freshly installed copy of Application Designer comes with lots of example f
 
 After building your own application, you may choose to delete all the examples forms and configurations before pushing your files to your device. The files can be very large and take up a lot of space on the device.
 
-Open the terminal and type *grunt empty*, this removes all the files and creates an empty app-designer folder to work with.  
+To delete all the example forms and configurations, open the terminal and type *grunt empty*, this removes all the files and creates an empty app-designer folder to work with.  
 
 .. code-block:: console
 
@@ -78,7 +78,7 @@ New forms must be placed under the :file:`app/config/tables/` directory as descr
 
 .. note::
 
-  If you haved not used ODK-X Application Designer before, see :doc:`getting-started-2-architect` before continuing.
+  If you have not used ODK-X Application Designer before, see :doc:`getting-started-2-architect` before continuing.
 
 To get started: 
 
@@ -822,7 +822,7 @@ Useful Grunt Commands
 
 :guilabel:`grunt addtable:tableid` : Will create the required directory structure for an individual table, including the forms directory.
 
-:guilabel:`grunt clean` : Wipes the device of all ODK-X data
+:guilabel:`grunt clean` : Wipes the device of all ODK-X data.
 
 :guilabel:`grunt empty` : Remove unnecessary files to make an empty app-designer directory to work with.
 
