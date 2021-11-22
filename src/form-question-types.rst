@@ -1121,6 +1121,10 @@ This seed can also be used to recreate the order choices were displayed in. See 
 Including "other" as a choice
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. warning::
+
+  We do not recommend using :tc:`or_other` because it does not support multiple languages or :th:`choice_filter`. Instead, add your own "other" question and use form logic to have it appear as needed.
+
 On the **survey** sheet, in the :th:`type` column,
 after the type and the list_name,
 you can add :tc:`or_other`.
