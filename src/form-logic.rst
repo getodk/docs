@@ -222,9 +222,11 @@ Values from the last saved record
 
 .. warning::
 
-  Support for last-saved was added in Collect v1.21.0 and Central v1.3.0. Using older versions or encrypted forms will have unpredictable results.
+  We only recommend using last saved values as defaults. References to the last saved record could be used as part of any expression wherever expressions are allowed but this may lead to unexpected results on submission edit when the last saved record is likely to have changed.
 
   The last-saved feature does not work with encrypted forms.
+
+  Support for last-saved was added in Collect v1.21.0 and Central v1.3.0. Using older versions or encrypted forms will have unpredictable results.
 
 You can refer to values from the last saved record of this form definition:
 
@@ -241,7 +243,7 @@ This can be very useful when an enumerator has to enter the same value for multi
 
 The value is pulled from the last saved record. This is often the most recently created record but it could also be a previously-existing record that was edited and saved. For the first record ever saved for a form definition, the last saved value for any field will be blank.
 
-Questions of any type can have their defaults set based on the last saved record. References to the last saved record can be used as part of any expression wherever expressions are allowed.
+Questions of any type can have their defaults set based on the last saved record.
 
 .. _form-logic-gotchas:
 
