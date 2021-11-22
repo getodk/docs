@@ -54,9 +54,9 @@ As of `version 0.6 <https://github.com/getodk/central/releases/tag/v0.6.0-beta.0
    - Revoke
    - Delete
 
- - **System Actions**
+ - **Server Configuration Actions**
 
-   - Set Configuration
+   - Set
 
 To access the audit logs, navigate to :guilabel:`System`, then select :guilabel:`Server Audit Logs` from the navigation menu that appears:
 
