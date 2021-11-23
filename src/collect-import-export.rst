@@ -35,7 +35,7 @@ You can tap on the :fa:`share-alt` icon to share the QR code as an image. When y
 Making your own QR code
 ---------------------------
 
-The contents of a settings QR code is a JSON object with objects for unprotected ("general") and protected ("admin"), as well as the project details themselves. The JSON structure is the following:
+The contents of a settings QR code is a JSON object with objects for unprotected ("general") and protected ("admin") settings, as well as the project details themselves. The JSON structure is the following:
 
 .. code-block:: JSON
 
