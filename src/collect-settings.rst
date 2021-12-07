@@ -9,54 +9,23 @@
   Transifex
   Unfinalized
 
-Collect Menus, Settings, and Security
+Using Collect Settings
 =====================================
 
+Collect has many settings to support a number of different data collection workflows. Settings are specific to each :doc:`project <collect-projects>` and are separated into :ref:`general <general-settings>` and :ref:`protected <admin-settings>` settings. Protected settings make it possible to remove access to certain parts of Collect and can be :ref:`password-protected <admin-password>`.
 
-.. _main-menu:
+Settings for the current project are accessed from the project list dialog:
+  :menuselection:`Project Icon --> Settings`
 
-Main Menu
--------------
+  .. container:: details
 
-.. image:: /img/collect-settings/main-menu.*
-  :alt: Main menu of ODK Collect
-  :class: device-screen-vertical
-
-:menuselection:`Fill Blank Form`
-  Lists available blank forms and
-  lets you select a form to begin filling out.
-
-:menuselection:`Edit Saved Form`
-  Lists completed and saved forms and
-  lets you select a form to edit.
-
-:menuselection:`Send Finalized Form`
-  Lists finalized but unsent forms and
-  lets you select forms to send to the server.
-
-:menuselection:`View Sent Form`
-  Lists forms that have been sent, even if they were deleted.
-
-:menuselection:`Get Blank form`
-  Lists blank forms available on the server and
-  lets you download them.
-
-:menuselection:`Delete Saved Form`
-  Lists all the Saved and Blank Forms and
-  lets you delete them.
+    .. image:: /img/collect-settings/settings.*
+      :alt: Access settings by tapping the project icon and then the Settings button
 
 .. _general-settings:
 
 General Settings
 --------------------
-
-To access General Settings:
-  :menuselection:`⋮ --> General Settings`
-
-  .. container:: details
-
-    .. image:: /img/collect-settings/general-settings.*
-      :alt: General settings
 
 .. _server-settings:
 
@@ -66,7 +35,7 @@ Server Settings
 Server settings :doc:`configure the connection to an <collect-connect>` :doc:`openrosa` server (:doc:`Central <central-intro>`, etc) or a :doc:`Google Drive account <collect-connect-google>`.
 
 To access Server Settings:
-  :menuselection:`⋮ --> General Settings --> Server`
+  :menuselection:`Project Icon --> Settings --> Server`
 
   .. container:: details
 
@@ -74,6 +43,22 @@ To access Server Settings:
       :alt: Server settings
 
 .. seealso:: :doc:`collect-connect`
+
+
+Project Display Settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Project display settings control the name of the current project as well as the appearance of its icon in the upper right of the main screen.
+
+To access Project Display Settings:
+:menuselection:`Project Icon --> Settings --> Project Display`
+
+  .. container:: details
+    
+    .. image:: /img/collect-settings/project-display.*
+      :alt: Project display settings
+
+.. seealso:: :doc:`collect-projects`
 
 .. _interface-settings:
 
@@ -83,7 +68,7 @@ User Interface Settings
 User Interface settings control Collect's appearance and behavior.
 
 To access User Interface settings:
-  :menuselection:`⋮ --> General Settings --> User Interface`
+  :menuselection:`Project Icon --> Settings --> User interface`
 
   .. container:: details
 
@@ -92,9 +77,6 @@ To access User Interface settings:
 
 :guilabel:`Theme`
 """"""""""""""""""
-
-  .. versionadded:: 1.15
-
   Selects the color scheme the app will use. The default :guilabel:`Use device theme` option (added in ODK Collect v2021.3) uses the device's color theme (based on the the :guilabel:`Dark theme` system setting in Android 10 and above).
 
   .. container:: details
@@ -142,7 +124,7 @@ Maps Settings
 Maps settings configure the maps shown by the :ref:`location question types <location-widgets>`.
 
 To access Maps settings:
-  :menuselection:`⋮ --> General Settings --> Maps`
+  :menuselection:`Project Icon --> Settings --> Maps`
 
 .. note::
 
@@ -178,7 +160,7 @@ Form Management Settings
 Form Management settings control default behavior when editing, finalizing, and importing forms.
 
 To access Form Management settings:
-  :menuselection:`⋮ --> General Settings --> Form Management`
+  :menuselection:`Project Icon --> Settings --> Form management`
 
   .. container:: details
 
@@ -195,7 +177,7 @@ To access Form Management settings:
 
 Specifies how blank forms should be updated:
 
-  :guilabel:`Manually`
+  :guilabel:`Manual`
     The default mode in Collect. Enumerators manually manage blank forms on the device using :guilabel:`Get Blank Form` and :guilabel:`Delete Saved Form`.
   :guilabel:`Previously downloaded forms only`
     Enumerators will receive a notification when one or more forms on the device have an update available to their form definition or media files. Tapping on the notification will go to :guilabel:`Get Blank Form` where the user can choose to download some or all of the updated forms.
@@ -312,7 +294,7 @@ personally identifiable information and device ID
 are used.
 
 To access User and device identity settings:
-  :menuselection:`⋮ --> General Settings --> User and device identity`
+  :menuselection:`Project Icon --> Settings --> User and device identity`
 
   .. container:: details
 
@@ -328,7 +310,7 @@ Form metadata settings control identifying information
 :ref:`added to forms <metadata>` filled on the device.
 
 To access form metadata settings:
-  :menuselection:`⋮ --> General Settings --> User and Device Identity --> Form Metadata`
+  :menuselection:`Project Icon --> Settings --> User and Device Identity --> Form Metadata`
 
   .. container:: details
 
@@ -350,7 +332,7 @@ You can edit the following:
     the username from :ref:`Server settings <server-settings>`
     is used instead.
   - You can restrict editing of the username in
-    :ref:`admin settings <admin-settings>`.
+    :ref:`protected settings <admin-settings>`.
 
 .. rubric:: Device-defined
 
@@ -373,72 +355,50 @@ which helps us improve the application.
 
 .. _admin-settings:
 
-Admin Settings
------------------
+Protected Settings
+--------------------
 
-Admin settings manage other settings and features,
-letting you :doc:`import or export settings <collect-import-export>`,
-:ref:`reset settings and delete cached data <reset-application>`,
-and :ref:`restrict which features are available to users of the app <user-access-control-settings>`.
+Protected settings manage other settings and features, letting you :doc:`import or export settings <collect-import-export>`, :ref:`reset settings and delete cached data <reset-application>`, and :ref:`restrict which features are available to users of the app <user-access-control-settings>`.
 
-Admin settings are useful when
-you are managing devices that will be used by many enumerators,
-and you would like to limit the options available to those enumerators.
+Protected settings are useful when you would like to limit the options available to enumerators so that they must follow a specific workflow.
 
-You can `password protect`__ the Admin setting screen,
-so enumerators cannot adjust settings or access restricted features.
-
-__ _admin-password
-
-To access Admin settings:
-  :menuselection:`⋮ --> Admin Settings`
-
-
-.. image:: /img/collect-settings/admin-settings.*
-  :alt: Admin settings menu
-  :class: device-screen-vertical
-
-
-:guilabel:`General Settings`
-  Provides access to :ref:`general-settings`,
-  with all items unrestricted.
+You can :ref:`password protect <admin-password>` the protected settings, so enumerators cannot adjust settings or access restricted features.
 
 .. _admin-password:
 
-:guilabel:`Admin Password`
-  Lets you password protect this screen.
+:guilabel:`Set admin password`
+  If a password is set, when settings are opened, the :guilabel:`Protected` section will only contain :guilabel:`Unlock protected settings`. Tapping on that will display a dialog to provide the admin password. Before the correct admin password is provided, access controls will be in place and some settings may be hidden. Saving a blank password disables password protection.
+
+.. _project-management-settings:
+
+.. rubric:: Project management settings
+
+:guilabel:`Reconfigure with QR code`
+  Replace all settings from those in a QR code. See :doc:`configuring Collect via QR code <collect-import-export>`.
 
 .. _reset-application:
 
-:guilabel:`Reset application`
-  Lets you reset to default settings,
-  delete forms, and empty caches.
+:guilabel:`Reset`
+  Reset to default settings, delete forms, and empty caches. There is a prompt to select which aspects of the project to reset.
 
-:guilabel:`Import/Export settings`
-  See:
+.. _delete-project:
 
-  .. toctree::
-    :maxdepth: 1
-
-    collect-import-export
+:guilabel:`Delete`
+  Delete the current project.
 
 .. _user-access-control-settings:
 
-.. rubric:: User Access Control Settings
+.. rubric:: Access control settings
 
 :guilabel:`Main Menu Settings`
-  Displays a list of :ref:`main-menu` features.
-  To hide features, uncheck them.
+  Displays a list of buttons shown on the main screen. To prevent access to certain features, uncheck them and their button will be hidden.
 
 :guilabel:`User Settings`
-  Displays a list of user settings and other features
-  accessible in the :ref:`general-settings` screen.
-  To hide features, uncheck them.
+  Displays a list of user settings and other features accessible in the :ref:`settings <general-settings>` screen. To hide features, uncheck them.
 
 :guilabel:`Form Entry Settings`
-  Displays a list of features related to viewing and filling out forms.
-  To disable features, uncheck them.
-
+  Displays a list of features related to viewing and filling out forms. To disable features, uncheck them.
+  
   :guilabel:`Moving backwards`
     If you disable moving backwards,
     the enumerator cannot use the back button or :gesture:`swipe right`
