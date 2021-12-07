@@ -1,3 +1,6 @@
+.. spelling::
+  nd
+
 Installing Collect
 ====================
 
@@ -32,20 +35,20 @@ If you need a different version of Collect, you can download from the web and in
 
 .. note::
   
-  You can also `download the ODK Collect APK <https://github.com/getodk/collect/releases/latest>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_ or another tool like `AirDroid <https://www.howtogeek.com/105813/control-your-android-from-a-browser-with-airdroid/>`_.
+  You can also `download the ODK Collect APK <https://github.com/getodk/collect/releases/latest>`_ to your computer and load it on your device via `adb <https://developer.android.com/studio/command-line/adb.html>`_.
 
 .. tip::
 
   You can install ODK Collect on the `Android emulator <https://developer.android.com/studio/run/emulator>`_. This is especially helpful if you need to :doc:`project Collect onto a screen <projecting-collect>`.
 
-.. _collect-versions:
+.. _collect-updates:
 
-Collect versions
+Updating Collect
 -----------------
 
-We generally recommend letting the Android Play Store automatically manage Collect updates. We strongly encourage anyone managing a data collection project to sign up for `the beta program <https://forum.getodk.org/c/releases/betas/19>`_ to read about upcoming changes and try their forms with any new version before it rolls out to all users. 
+We generally recommend letting the Android Play Store automatically update Collect. We strongly encourage anyone managing a data collection project to sign up for `the beta program <https://forum.getodk.org/c/releases/betas/19>`_ to read about upcoming changes and try their forms with any new version before it is released to all users. 
 
-The Collect version is displayed at the bottom of the Collect first launch screen and main menu. If you are doing an in-person training, we encourage you to walk the room and verify that everyone is using the same version. You can also ask data collectors to check this version themselves when an update rolls out.
+The Collect version is displayed at the bottom of the Collect first launch screen and main menu. If you are doing an in-person training, we encourage you to walk the room and verify that everyone is using the same version. You can also ask enumerators to check this version themselves when an update rolls out.
 
 Collect uses date-based versioning. For example, `v2021.2.3` came out in 2021, was the 2nd release, and the 3rd patch on that 2nd release. Releases add new features and patches only fix bugs. There are 3 to 6 releases of Collect per year.
 

@@ -332,7 +332,7 @@ You can edit the following:
     the username from :ref:`Server settings <server-settings>`
     is used instead.
   - You can restrict editing of the username in
-    :ref:`protected settings <admin-settings>`.
+    :ref:`Protected settings <admin-settings>`.
 
 .. rubric:: Device-defined
 

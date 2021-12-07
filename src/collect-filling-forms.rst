@@ -143,14 +143,14 @@ To move between questions, :gesture:`Swipe Left or Right`.
 Next and Back Buttons  
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you prefer Next and Back buttons for navigation, you can change your navigation mode in :menuselection:`⋮ -> General Settings -> User Interface`.
+If you prefer Next and Back buttons for navigation, you can change your navigation mode in :menuselection:`⋮ -> Project settings -> User Interface`.
 
 1. Open the *Action Menu* (:menuselection:`⋮`)
 
    .. image:: /img/collect-completing-forms/question-screen-highlight-kebab.* 
      :alt: A question screen in the Collect app. The Action Menu ("kebab") in the top-right corner is circled in red.
   
-2. Select :menuselection:`General Settings`.
+2. Select :menuselection:`Project settings`.
 
    .. image:: /img/collect-completing-forms/question-screen-highlight-general-settings.* 
      :alt: A question screen in the Collect app. The Action Menu is expanded and the option *General Settings* is circled in red.
