@@ -7,7 +7,7 @@ Using ODK Collect
 
 ODK Collect is used by :term:`enumerators <enumerator>` to collect survey data by filling out :doc:`forms <form-design-intro>` with :term:`participants <participant>`.
 
-To use ODK Collect:
+Collect is used to:
 
 1. :ref:`Get blank forms <loading-forms-into-collect>` from :ref:`a server or Google Drive <in-app-get-blank-forms>`
 2. :doc:`Fill out surveys  <collect-filling-forms>` with participants
@@ -24,6 +24,7 @@ To use ODK Collect:
   collect-forms
   collect-filling-forms
   collect-settings
+  collect-import-export
   collect-form-map
   collect-offline-maps
 ..  collect-sms-submissions

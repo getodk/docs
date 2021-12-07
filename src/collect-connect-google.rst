@@ -14,6 +14,6 @@ Setting a Fallback Submission URL
 
 You can set a URL for a Sheet that submissions should be sent to if their form does not specify a submission URL:
 
-#. Tap the :ref:`Project <collect-projects>` icon on the :ref:`Main Menu <main-menu>`
+#. Tap the :ref:`Project <collect-projects>` icon on the Main Menu
 #. Tap :guilabel:`Settings` and then :guilabel:`Server`
 #. Tap :guilabel:`Fallback submission URL`, type or paste the URL for the Sheet in and then tap :guilabel:`OK` to save
