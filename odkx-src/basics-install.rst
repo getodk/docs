@@ -18,7 +18,7 @@ If you are working on a Windows/Mac/Linux machine, you can use `Android Studio <
 
 Before installing any of the ODK-X tools, you will need the following third-party app:
 
-  - `OI File Manager <https://github.com/openintents/filemanager/releases>`_
+  - `Files by Google <https://play.google.com/store/apps/details?id=com.google.android.apps.nbu.files&hl=en&gl=US>`_
 
 Required
 ~~~~~~~~~~~~~~~

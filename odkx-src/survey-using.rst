@@ -290,7 +290,7 @@ By default, `ODK-X Survey <https://docs.odk-x.org/survey-using/>`_ runs under th
 
 Here we describe how to launch the ODK-X tools into an application name of your choice with the use of widget shortcuts.
 
-First, you must create an alternative application. As a contrived example, we will make an exact copy of the *default* application on the device with a new name. To do so, first load an application to the device (such as the :ref:`sample application <survey-sample-app-install>`). Then open :program:`OI File Manager`, navigate to the :file:`/sdcard/opendatakit` directory, and copy the *default* directory, renaming it *myapp*. You have now created the *myapp* application! It is isolated from and operates independently of the default application.
+First, you must create an alternative application. As a contrived example, we will make an exact copy of the *default* application on the device with a new name. To do so, first load an application to the device (such as the :ref:`sample application <survey-sample-app-install>`). Then open :program:`Files by Google`, navigate to the :file:`/sdcard/opendatakit` directory, and copy the *default* directory, renaming it *myapp*. You have now created the *myapp* application! It is isolated from and operates independently of the default application.
 
 To launch and use that application:
 
@@ -306,7 +306,7 @@ Android 4.x Devices
   #. Choose to view the installed applications.
   #. Select the :guilabel:`Widgets` tab at the top of that screen.
   #. Navigate through the available widgets, and select and hold the :guilabel:`ODK-X Survey Form` widget. Drag and drop it onto one of your Android launcher (home) screens.
-  #. A list of available applications and forms will appear, in the form of application name for applications, and :menuselection:`application name --> form name` for each form within an application. Pick the :menuselection:`myapp` application that you created via :program:`OI File Manager`.
+  #. A list of available applications and forms will appear, in the form of application name for applications, and :menuselection:`application name --> form name` for each form within an application. Pick the :menuselection:`myapp` application that you created via :program:`Files by Google`.
 
 .. _survey-launching-appname-android-5:
 
@@ -316,7 +316,7 @@ Android 5.x and Higher Devices:
   #. Long press an open area of the device home screen
   #. Select the :guilabel:`Widgets` tab at the bottom of resulting screen.
   #. Navigate through the available widgets, and select and hold the :guilabel:`ODK-X Survey Form` widget. Drag and drop it onto one of your Android launcher (home) screens.
-  #. A list of available applications and forms will appear, in the form of application name for applications, and :menuselection:`application name --> form name` for each form within an application. Pick the :menuselection:`myapp` application that you created via :program:`OI File Manager`.
+  #. A list of available applications and forms will appear, in the form of application name for applications, and :menuselection:`application name --> form name` for each form within an application. Pick the :menuselection:`myapp` application that you created via :program:`Files by Google`.
 
 .. _survey-launching-appname-try-new:
 

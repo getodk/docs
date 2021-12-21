@@ -57,7 +57,7 @@ The upload process is as follows:
 
     .. warning::
 
-      You must have installed OI File Manager from the Play Store.
+      You must have installed Files by Google from the Play Store.
 
   5. Find your file, select it, and press :guilabel:`Pick file`.
   6. Press :guilabel:`Append to an Existing Table`.
