@@ -247,7 +247,7 @@ Setting up an Azure account
 Setting up a virtual machine
 """"""""""""""""""""""""""""
 
-1. First, click on the :guilabel:`Virtual Machines` button underneath the **Azure Services** section on the portal. Then, click on :guilabel:`Add` to create a new virtual machine.
+1. First, click on the :guilabel:`Virtual Machines` button underneath the **Azure Services** section on the portal. Then, click on :guilabel:`Create` to create a new virtual machine.
 
   .. image:: /img/setup-azure/azure1.png
    :width: 600
@@ -255,26 +255,29 @@ Setting up a virtual machine
   .. image:: /img/setup-azure/azure2.png
    :width: 600
 
-2. Create a new resource group to attach to this virtual machine by clicking on :guilabel:`Create new`. Additionally, enter a name for the virtual machine and make sure that *Ubuntu Server 18.04 LTS* is selected for the image name.
-
   .. image:: /img/setup-azure/azure3.png
-    :width: 600
+   :width: 600
 
-3. Scroll down and select your authentication type. We highly recommend that use an SSH key for authentication. Copy and paste your SSH key username, and the key itself.
-
-  Use the `following resource <https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/create-with-openssh/>`_ to learn more about creating an SSH key.
+2. Create a new resource group to attach to this virtual machine by clicking on :guilabel:`Create new`. Additionally, enter a name for the virtual machine and make sure that *Ubuntu Server 18.04 LTS* is selected for the image name as Ubuntu Server 20.04 LTS has not been tested yet.
 
   .. image:: /img/setup-azure/azure4.png
     :width: 600
 
-4. Click the **Advanced** tab at the top and copy and paste the contents from the :download:`cloud_init_AZURE.yml </files/cloud_init_AZURE.yml>` file into the *Cloud init* box. Finally, click :guilabel:`Review + create` to actually create the machine.
+3. Scroll down and select your authentication type. We highly recommend that use an SSH key for authentication. Copy and paste your SSH key username, and the key itself. Azure now provides an option to automatically generate an SSH key pair which can be stored for future use to connect to the virtual machine.
+
+  Use the `following resource <https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/create-with-openssh/>`_ to learn more about creating an SSH key.
 
   .. image:: /img/setup-azure/azure5.png
     :width: 600
 
-5. In order to modify the firewall settings and change the type of incoming traffic we want to allow, we need to modify the **Networking** settings of our VM. Navigate to this section and then add an inbound security rule that matches the rule below. Leave the outbound rules as-is.
+4. Click the **Advanced** tab at the top and copy and paste the contents from the :download:`cloud_init_AZURE.yml </files/cloud_init_AZURE.yml>` file into the *Custom data* box. Finally, click :guilabel:`Review + create` to actually create the machine.
 
   .. image:: /img/setup-azure/azure6.png
+    :width: 600
+
+5. In order to modify the firewall settings and change the type of incoming traffic we want to allow, we need to modify the **Networking** settings of our VM. Navigate to this section and then add an inbound security rule that matches the rule below. Leave the outbound rules as-is.
+
+  .. image:: /img/setup-azure/azure7.png
     :width: 600
 
 .. _sync-endpoint-setup-azure-dns:
@@ -285,7 +288,7 @@ Setting up a DNS Record
 1. Within the Virtual Machine overview section, locate the IP address
    of your machine.
 
-  .. image:: /img/setup-azure/azure7.png
+  .. image:: /img/setup-azure/azure8.png
     :width: 600
 
 2. Log into your account for your domain name registrar and DNS
@@ -304,7 +307,7 @@ Connecting to your virtual machine
 
 1. Within the Virtual Machine overview section, locate the IP address of your machine.
 
-  .. image:: /img/setup-azure/azure7.png
+  .. image:: /img/setup-azure/azure8.png
     :width: 600
 
 2. Open up a terminal window and enter the command
@@ -348,7 +351,7 @@ Connecting to your virtual machine
 
   After gathering this data the script will begin the install and you should see a bunch of statements executing in your console. Wait approximately 5-10 minutes for the installation to complete.
 
-  .. image:: /img/setup-azure/azure8.png
+  .. image:: /img/setup-azure/azure9.png
     :width: 600
 
   Once all the services have been created, we need to check if all the services are running properly with the command:
@@ -362,12 +365,12 @@ Connecting to your virtual machine
 
 5. After obtaining the IP address of the virtual machine you created, navigate to https://[IP_ADDRESS]:40000 within your browser in order to access the services screen. It will warn you about your connection not being private but should give you the option to proceed at the bottom.
 
-  .. image:: /img/setup-azure/azure9.png
+  .. image:: /img/setup-azure/azure10.png
    :width: 600
 
 6. If you see the following screen after proceeding, you are good to go!
 
-  .. image:: /img/setup-azure/azure10.png
+  .. image:: /img/setup-azure/azure11.png
    :width: 600
 
 7. Read our section on *Creating a Sample User* to learn how to create a user from within the admin interface. This section can be found :ref:`here <sync-endpoint-setup-create-user>`.
@@ -383,7 +386,7 @@ Launching the ODK-X Server
 
 1. Navigate to http://[IP_ADDRESS]/web-ui/login in order to access the login screen.
 
-  .. image:: /img/setup-azure/azure11.png
+  .. image:: /img/setup-azure/azure12.png
    :width: 600
 
   Once a user has been created in the admin interface, this is the login screen that the user will use to log in and access their data.
