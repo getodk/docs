@@ -207,6 +207,7 @@ passphrase
 pathname
 pdf
 PDF
+pem
 permissioning
 plaintext
 plugins
