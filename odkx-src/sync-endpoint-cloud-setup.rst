@@ -273,6 +273,7 @@ Setting up a virtual machine
     :width: 600
 
 4. Click the **Advanced** tab at the top and copy and paste the contents from the :download:`cloud_init_AZURE.yml </files/cloud_init_AZURE.yml>` file into the *Custom data* box. Finally, click :guilabel:`Review + create` to actually create the machine.
+If you had generated the SSH key pair through azure automatic generate key pair option, then it now gives you a prompt to download the key (.pem) file. It is important to download it and remember the path to this file in your computer for connecting to virtual machine later.
 
   .. image:: /img/setup-azure/azure6.png
     :width: 600
@@ -318,7 +319,7 @@ Connecting to your virtual machine
 
     $ ssh -i PATH_TO_PRIVATE_KEY USERNAME@IP_ADDRESS
 
-  The first parameter represents the *path to your private key* you used for SSH authentication, the second parameter *the username* you used for SSH authentication, and the final parameter *the IP address* of the virtual machine.
+  The first parameter represents the *path to your private key* you used for SSH authentication (in case of automatic generation through azure, it is the path of the key pair .pem file downloaded earlier in your computer), the second parameter *the username* you used for SSH authentication, and the final parameter *the IP address* of the virtual machine.
 
 3. Before running our launch scripts, we need to check our logs to ensure that all the packages have been successfully installed, which should take about 2-3 minutes. The virtual machine may also reboot in this time.
 
@@ -349,7 +350,10 @@ Connecting to your virtual machine
 
     $ sudo ./script_to_run.sh
 
-  The script will ask you for the server's domain and an administration email address to configure https on the server.
+  The script will ask you for the server's domain and some questions (as shown in the picture below) along with an administration email address to configure https on the server.
+
+  .. image:: /img/setup-azure/azure-connecting-to-virtual-machine1.png
+    :width: 600
 
   After gathering this data the script will begin the install and you should see a bunch of statements executing in your console. Wait approximately 5-10 minutes for the installation to complete.
 
@@ -360,10 +364,26 @@ Connecting to your virtual machine
 
   .. code-block:: console
 
-    $ docker stack ls
+    $ sudo docker stack ls
 
-  If there are 8 (or 7 without https) services running under the name
-  `syncldap`, everything is running properly.
+  To see all of the Docker processes/containers that are actively running, use the following command:
+
+  .. code-block:: console
+
+    $ sudo docker ps
+
+  .. image:: /img/setup-azure/azure-connecting-to-virtual-machine2.png
+    :width: 600
+
+  If there are 9 (or 8 without https) services running under the name
+  `syncldap`, everything is running properly. The following command shows all (both stopped and running) containers/processes:
+
+  .. code-block:: console
+
+    $ sudo docker ps -a
+
+  .. image:: /img/setup-azure/azure-connecting-to-virtual-machine3.png
+    :width: 600
 
 5. After obtaining the IP address of the virtual machine you created, navigate to https://[IP_ADDRESS]:40000 within your browser in order to access the services screen. It will warn you about your connection not being private but should give you the option to proceed at the bottom.
 
