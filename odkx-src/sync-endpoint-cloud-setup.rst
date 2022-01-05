@@ -263,9 +263,11 @@ Setting up a virtual machine
   .. image:: /img/setup-azure/azure4.png
     :width: 600
 
-3. Scroll down and select your authentication type. We highly recommend that use an SSH key for authentication. Copy and paste your SSH key username, and the key itself. Azure now provides an option to automatically generate an SSH key pair which can be stored for future use to connect to the virtual machine.
+3. Scroll down and select your authentication type. We highly recommend that use an SSH key for authentication. Copy and paste your SSH key username, and the key itself.
 
   Use the `following resource <https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/create-with-openssh/>`_ to learn more about creating an SSH key.
+
+  Alternatively, Azure now provides an option to automatically generate an SSH key pair (As highlighted in the figure below). This key .pem file can then be directly downloaded to the user's computer for future use to connect to the virtual machine.
 
   .. image:: /img/setup-azure/azure5.png
     :width: 600
