@@ -273,7 +273,7 @@ Setting up a virtual machine
     :width: 600
 
 4. Click the **Advanced** tab at the top and copy and paste the contents from the :download:`cloud_init_AZURE.yml </files/cloud_init_AZURE.yml>` file into the *Custom data* box. Finally, click :guilabel:`Review + create` to actually create the machine.
-If you had generated the SSH key pair through AZURE automatic generate key pair option, then it now gives you a prompt to download the key (.pem) file. It is important to download it and remember the path to this file in your computer for connecting to virtual machine later.
+If you had generated the SSH key pair through Azure automatic generate key pair option, then it now gives you a prompt to download the key (.pem) file. It is important to download it and remember the path to this file in your computer for connecting to virtual machine later.
 
   .. image:: /img/setup-azure/azure6.png
     :width: 600
@@ -319,7 +319,7 @@ Connecting to your virtual machine
 
     $ ssh -i PATH_TO_PRIVATE_KEY USERNAME@IP_ADDRESS
 
-  The first parameter represents the *path to your private key* you used for SSH authentication (in case of automatic generation through AZURE, it is the path of the key pair .pem file downloaded earlier in your computer), the second parameter *the username* you used for SSH authentication, and the final parameter *the IP address* of the virtual machine.
+  The first parameter represents the *path to your private key* you used for SSH authentication (in case of automatic generation through Azure, it is the path of the key pair .pem file downloaded earlier in your computer), the second parameter *the username* you used for SSH authentication, and the final parameter *the IP address* of the virtual machine.
 
 3. Before running our launch scripts, we need to check our logs to ensure that all the packages have been successfully installed, which should take about 2-3 minutes. The virtual machine may also reboot in this time.
 
