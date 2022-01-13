@@ -375,17 +375,10 @@ Connecting to your virtual machine
   .. image:: /img/setup-azure/azure-connecting-to-virtual-machine2.png
     :width: 600
 
-  If there are 9 (or 8 without https) services running under the name
-  `syncldap`, everything is running properly. The following command shows all (both stopped and running) containers/processes:
+  If there are 9 (or 7 without https) services running under the name
+  `syncldap`, everything is running properly.
 
-  .. code-block:: console
-
-    $ sudo docker ps -a
-
-  .. image:: /img/setup-azure/azure-connecting-to-virtual-machine3.png
-    :width: 600
-
-  docker ps command shows the 7 actively running services, while docker ps -a shows all the stopped and running services. Hence, 7 active, 1 stopped and https (total 9) services run on the server as shown by docker stack ls command.
+  There should be 9 services (or 7 without https) as shown by docker stack ls while 7 services (or 6 without https) actively running as shown by the command docker ps.
 
 5. After obtaining the IP address of the virtual machine you created, navigate to https://[IP_ADDRESS]:40000 within your browser in order to access the services screen. It will warn you about your connection not being private but should give you the option to proceed at the bottom.
 
