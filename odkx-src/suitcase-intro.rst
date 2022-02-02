@@ -23,7 +23,7 @@ Prerequisites
 
       Ensure you are using a compatible Cloud Endpoint from the same revision.
 
-  2. Make sure :program:`Java` 7 or higher is installed on the computer you plan to use. If it is not, `download and install it <https://java.com/en/download/>`_.
+  2. Make sure :program:`Java` 8 or higher is installed on the computer you plan to use. If it is not, `download and install it <https://java.com/en/download/>`_.
 
 .. _suitcase-intstall-app:
 
