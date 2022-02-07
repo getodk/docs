@@ -94,17 +94,6 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
 .. toctree::
   :hidden:
   :maxdepth: 2
-  :caption: Aggregate
-
-  aggregate-intro
-  aggregate-setup
-  aggregate-use
-  aggregate-best-practices
-  aggregate-app-engine-legacy
-
-.. toctree::
-  :hidden:
-  :maxdepth: 2
   :caption: Contributing
 
   contributing
