@@ -1,5 +1,3 @@
-:orphan:
-
 Administering Aggregate
 ===========================
 

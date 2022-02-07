@@ -1,5 +1,3 @@
-:orphan:
-
 .. spelling::
 
   databaseserver

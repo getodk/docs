@@ -1,5 +1,3 @@
-:orphan:
-
 Aggregate Limitations
 ========================
 
