@@ -1,3 +1,5 @@
+:orphan:
+
 Setting Up ODK Aggregate
 ===============================
 
