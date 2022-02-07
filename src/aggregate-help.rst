@@ -1,3 +1,5 @@
+:orphan:
+
 Getting Help in Aggregate
 =============================
 
