@@ -1,5 +1,3 @@
-:orphan:
-
 Managing Forms in Aggregate
 ================================
 
