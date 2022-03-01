@@ -116,8 +116,6 @@ Once the download dialog opens, you'll be given some additional export options.
 
 Some of the options may be disabled if they do not apply to your data, or if they are not available due to features that you have enabled (such as managed encryption).
 
-The first two options help make Central's data output match Briefcase's more closely. If you are migrating from Briefcase, consider using them:
-
  - The option to split :guilabel:`select multiple` choices will create a new column in the export :file:`csv` for each unique known value in each select multiple field. These columns then indicate whether each submission checked each option.
  - The remove group names option takes out the prefix usually added to groups in the header: so for example, :code:`meta-instanceID` would become just :code:`instanceID`.
  - Finally, the option to include previously deleted fields will include every known previously deleted field in any version of the Form in the export, along with any data found for those fields.
