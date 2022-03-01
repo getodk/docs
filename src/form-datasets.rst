@@ -52,7 +52,7 @@ These files may also have any number of additional columns used in :ref:`choice 
 .. csv-table:: survey
   :header: type, name, label, choice_filter
 
-  select_one states, state, State, true()
+  select_one states, state, State,
   select_one_from_file lgas.csv, local_gov_area, Local Government Area, state=${state}
   select_multiple_from_file wards.csv, wards, Wards, lga=${local_gov_area}
 
@@ -107,5 +107,9 @@ Referencing values in datasets
 :ref:`XPath paths <xpath-paths>` can be used to reference values in internal or external datasets. These paths will start with the ``instance(<instance name>)`` function to identify which dataset is being accessed. The next part of the path is generally ``/root/item`` because of the :ref:`XML structure used to represent datasets for selects <selects-from-xml>`. The only exception is when using custom XML files which may have arbitrary schemas if not used for selects.
 
 For internal datasets, the instance name is the ``list_name`` specified on the **choices** sheet. For example, to reference the population of the selected state given the form :ref:`above <selects-from-csv>`, the instance name to use is ``states``. The expression would be ``instance("states")/root/item[name = ${state}]/population``. To understand this expression better, read the section on :ref:`XPath paths <xpath-paths>` and especially the subsection about :ref:`XPath paths for filtering <xpath-predicates-for-filtering>`. You could also do things like count the number of states with a population above a certain threshold using an expression like ``count(instance("states")/root/item[population > ${pop_threshold}])``.
+
+.. note::
+
+  Due to a pyxform bug, it is necessary for there to be some value in the `choice_filter` column (for at least one question) when referencing internal datasets. If none of the questions in your form need filtering, simply put `true()` as the `choice_filter` value.
 
 For external datasets, the instance name is the filename specified in the ``select_one_from_file`` or ``select_multiple_from_file`` declaration without the file extension. For example, to look up a ward's label given the form :ref:`above <selects-from-csv>`, the instance name to use is ``wards`` because the filename referenced is ``wards.csv``. The expression would be ``instance("wards")/root/item[name = ${ward}]/label``. 
