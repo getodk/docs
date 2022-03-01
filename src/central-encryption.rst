@@ -86,7 +86,7 @@ The passphrase hint will be displayed whenever the passphrase is needed to decry
 
 Once you have provided a passphrase and ensured that it is correct, press :guilabel:`Next` to proceed. At this time, managed encryption will be turned on for the Project. All Forms within the Project will be updated to include encryption information, and mobile devices will have to fetch these new versions in order to submit successfully to Central.
 
-Once encrypted data has been submitted, the Download button on the Form Submissions page will no longer directly download the data. Instead, you will be asked for your encryption passphrase:
+Once encrypted data has been submitted, you will be asked for your encryption passphrase when you try to download your data:
 
    .. image:: /img/central-encryption/decrypt.png
 

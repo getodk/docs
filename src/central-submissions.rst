@@ -104,13 +104,27 @@ Learn more about these options below:
 Downloading submissions as CSVs
 -------------------------------
 
-To download all submission data as a :file:`.zip` of :file:`.csv` tables, click on the :guilabel:`Download all # records` button on the right side of the listing page:
+To download all submission data as :file:`.csv` tables, click on the :guilabel:`Download all # records` button on the right side of the listing page:
 
    .. image:: /img/central-submissions/download-button.png
 
 If you have any row filters applied to the submission table, those filters will be applied to your download as well. You can use this to, for example, download only submissions from a particular month, or only approved submissions.
 
-Once the :file:`.zip` completes downloading, you will find one or more files when you extract it:
+Once the download dialog opens, you'll be given some additional export options.
+
+   .. image:: /img/central-submissions/download-modal.png
+
+Some of the options may be disabled if they do not apply to your data, or if they are not available due to features that you have enabled (such as managed encryption).
+
+The first two options help make Central's data output match Briefcase's more closely. If you are migrating from Briefcase, consider using them:
+
+ - The option to split :guilabel:`select multiple` choices will create a new column in the export :file:`csv` for each unique known value in each select multiple field. These columns then indicate whether each submission checked each option.
+ - The remove group names option takes out the prefix usually added to groups in the header: so for example, :code:`meta-instanceID` would become just :code:`instanceID`.
+ - Finally, the option to include previously deleted fields will include every known previously deleted field in any version of the Form in the export, along with any data found for those fields.
+
+Click on one of the format options on the right to start the download.
+
+Once the :file:`.csv` or :file:`.zip` completes downloading, you will find one or more files when you extract it:
 
  - A root table :file:`.csv` named after your Form title.
  - Join table :file:`.csv` files representing any repeats you may have in your form, with join columns on the left of each table relating each row to its counterpart in the parent table. Each join table is named to reflect its relationship with the others. If there is only one :file:`.csv` file, then your form has no repeats.

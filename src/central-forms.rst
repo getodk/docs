@@ -1,3 +1,9 @@
+.. spelling::
+
+  Undeleting
+  undelete
+
+
 .. _central-forms-overview:
 
 Managing Forms in Central
@@ -212,7 +218,14 @@ Each published version of the Form will be listed, along with actions to downloa
 Deleting a Form
 ---------------
 
-Do not delete a form until you are completely sure you never need a form or its submissions again. If you only want to turn the form off so that it doesn't appear to users of mobile data collection apps, we suggest using the :ref:`form lifecycle controls <central-forms-lifecycle>` explained above.
+.. tip::
+   If you only want to turn the form off so that it doesn't appear to users of mobile data collection apps, we suggest using the :ref:`form lifecycle controls <central-forms-lifecycle>` explained above.
 
-If you are certain you wish to delete a form, you can find the option on the Form Settings page: click on the :menuselection:`--> Settings` tab under the name of the form at the top of the page. On the right side of this page, you will find the :guilabel:`Delete this form` button.
+If you are certain you wish to delete a Form, you can find the option on the Form Settings page: click on the :menuselection:`--> Settings` tab under the name of the form at the top of the page. On the right side of this page, you will find the :guilabel:`Delete this form` button.
+
+   .. image:: /img/central-forms/trash.png
+
+Once a Form has been deleted, it will remain in the Trash for 30 days before being permanently deleted. You can find the Trash on the Project page, under the Forms list. Here, you can undelete a Form using the button on the right. Undeleting a Form will restore it exactly as it was when deleted.
+
+After 30 days, when a Form is permanently deleted, the data will be removed from the system completely.
 
