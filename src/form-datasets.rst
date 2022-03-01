@@ -52,7 +52,7 @@ These files may also have any number of additional columns used in :ref:`choice 
 .. csv-table:: survey
   :header: type, name, label, choice_filter
 
-  select_one states, state, State,
+  select_one states, state, State, true()
   select_one_from_file lgas.csv, local_gov_area, Local Government Area, state=${state}
   select_multiple_from_file wards.csv, wards, Wards, lga=${local_gov_area}
 
