@@ -7,12 +7,16 @@
   subdomain
 
 
+Users and Groups
+=================
+
+A user needs to be assigned to an ODK-X group to gain permissions to access the system. More information about groups and the roles is available in :ref:`Data Permission Filters<data-permission-filters>` section.
 
 
 .. _sync-endpoint-ldap-users:
 
 Creating users
-"""""""""""""""""""""""""
+--------------------
 
   1. Click: :guilabel:`login` on the left and login as *admin*.
       | Start by logging into the ldap-service. Copy the login below.
@@ -40,7 +44,7 @@ Creating users
 
     We have now created the user! We just need to add the user to the respective group from the group settings.
 
-  5. Click the :guilabel:`+` sign next **ou=groups** to expand it. Within the unfolded menu, in the **ou=default_prefix** section, click on :guilabel:`gidNumber=503`, which is the group ID that corresponds to *default_prefix_synchronize_tables*. Groups correspond to the access permissions available to a certain user.
+  5. Assigning the user a group : Click the :guilabel:`+` sign next **ou=groups** to expand it. Within the unfolded menu, in the **ou=default_prefix** section, click on :guilabel:`gidNumber=503`, which is the group ID that corresponds to *default_prefix_synchronize_tables*. Groups correspond to the access permissions available to a certain user.
 
     .. image:: /img/setup-create-user/setup-user5.png
       :width: 600
@@ -63,7 +67,7 @@ Creating users
 .. _sync-endpoint-ldap-groups:
 
 Creating groups
-"""""""""""""""""""""""""
+-------------------
 
   1. Click: :guilabel:`login` on the left and login as *admin*.
   2. Expand the tree view on the left until you see :guilabel:`ou=groups`.
@@ -82,7 +86,7 @@ Creating groups
 .. _sync-endpoint-ldap-assign:
 
 Assigning users to groups
-"""""""""""""""""""""""""
+-------------------------
 
   1. Click: :guilabel:`login` on the right and login as *admin*.
   2. Expand the tree view on the right until you see :guilabel:`ou=default_prefix`, then expand :guilabel:`ou=default_prefix`.
