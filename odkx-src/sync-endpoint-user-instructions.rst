@@ -10,10 +10,10 @@
 Users and Groups
 =================
 
-A user needs to be assigned to an ODK-X group to gain permissions to access the system. More information about groups and the roles is available in :ref:`Data Permission Filters<data-permission-filters>` section.
+A user needs to be assigned to a group within ODK-X sync-endpoint to set their permissions and roles for ODK-X apps. More information about groups and the roles is available in :ref:`Data Permission Filters<data-permission-filters>` section.
 
 
-.. _sync-endpoint-ldap-users:
+.. _sync-endpoint-ldap-users: .. _sync-endpoint-setup-create-user:
 
 Creating users
 --------------------
@@ -44,25 +44,6 @@ Creating users
 
     We have now created the user! We just need to add the user to the respective group from the group settings.
 
-  5. Assigning the user a group : Click the :guilabel:`+` sign next **ou=groups** to expand it. Within the unfolded menu, in the **ou=default_prefix** section, click on :guilabel:`gidNumber=503`, which is the group ID that corresponds to *default_prefix_synchronize_tables*. Groups correspond to the access permissions available to a certain user.
-
-    .. image:: /img/setup-create-user/setup-user5.png
-      :width: 600
-
-  6. Assign users to groups with :ref:`these instructions <sync-endpoint-ldap-assign>`.
-     Click on :guilabel:`Add new attribute` which should show a pull-down menu and then select :guilabel:`memberUid`. Enter the `memberUid` of the user you just created, and then update the object.
-
-    .. image:: /img/setup-create-user/setup-user6.png
-      :width: 600
-
-    .. image:: /img/setup-create-user/setup-user7.png
-      :width: 600
-
-  7. Navigate to http://[IP_ADDRESS]/web-ui/login in order to access the login screen.
-
-    .. image:: /img/setup-create-user/setup-user8.png
-      :width: 600
-
 
 .. _sync-endpoint-ldap-groups:
 
@@ -91,15 +72,31 @@ Assigning users to groups
   1. Click: :guilabel:`login` on the right and login as *admin*.
   2. Expand the tree view on the right until you see :guilabel:`ou=default_prefix`, then expand :guilabel:`ou=default_prefix`.
   3. This list is all the groups under *ou=default_prefix*.
-  4. Click on the group that you want to assign users to.
+  4. Click on the group that you want to assign users to. In this section, click on :guilabel:`gidNumber=503`, which is the group ID that corresponds to *default_prefix_synchronize_tables*. Groups correspond to the access permissions available to a certain user.
+
+    .. image:: /img/setup-create-user/setup-user5.png
+      :width: 600
+
   5. A few groups are created when the LDAP server is brought up, refer to :doc:`data-permission-filters` for descriptions of these groups.
-  6. If the :guilabel:`memberUid` section is not present:
+  6. Assign users to groups with :ref:`these instructions <sync-endpoint-ldap-assign>`.
+  7. If the :guilabel:`memberUid` section is not present:
 
       a. Choose :guilabel:`Add new attribute`.
       b. Choose :guilabel:`memberUid` from the dropdown, then enter :guilabel:`uid` of the user you want to assign.
       c. Click :guilabel:`Update Object` at the bottom to update.
 
-  7. If the :guilabel:`memberUid` section is present,
+  8. If the :guilabel:`memberUid` section is present,
 
     a. Navigate to the :guilabel:`memberUid` section.
     b. Click modify group members to manage members.
+
+    .. image:: /img/setup-create-user/setup-user6.png
+      :width: 600
+
+    .. image:: /img/setup-create-user/setup-user7.png
+      :width: 600
+
+  9. Navigate to http://[IP_ADDRESS]/web-ui/login in order to access the login screen.
+
+    .. image:: /img/setup-create-user/setup-user8.png
+      :width: 600
