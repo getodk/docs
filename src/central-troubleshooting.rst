@@ -50,16 +50,25 @@ Now, run ``nano /etc/docker/daemon.json`` to make those nameservers and, optiona
 
 Finally, stop the containers, restart Docker, and bring the containers back up with ``docker-compose stop``, ``systemctl restart docker`` and ``docker-compose up -d``.
 
+.. _migration-fails-due-to-out-of-memory-error:
+
+Migration fails due to out-of-memory error
+------------------------------------------
+
+During upgrades, some versions of Central may perform complex database migrations that need more memory than the 2GB typically allocated to Central.
+
+If you get an error suggesting that the JavaScript heap is out of memory, try :ref:`increasing allocated memory <central-install-custom-memory>`.
+
 .. _export-produces-corrupt-zip:
 
 Export produces corrupt zip
------------------------------
+---------------------------
 
-If you have installed Central on a 1GB server or your forms collect many large media files, you may encounter problems exporting submission .zip files. Usually, the .zip file will end up being empty, or much smaller than expected and possibly corrupt. If you are expecting to collect media files, we recommend having at least 2GB of memory. When collecting images, we recommend :ref:`specifying a maximum size in form design <scaling-down-images>`.
+If you have installed Central on a 1GB server or your forms collect many large media files, you may encounter problems exporting submission .zip files. Usually, the .zip file will end up being empty, or much smaller than expected and possibly corrupt.
 
-The preferred approach to addressing this is to increase the amount of memory that your server has. Instructions for doing this on DigitalOcean can be found `in this support article <https://www.digitalocean.com/docs/droplets/how-to/resize/>`_.
+If you are expecting to collect media files, we recommend having at least 2GB of memory. When collecting images, we recommend :ref:`specifying a maximum size in form design <scaling-down-images>`.
 
-If you can't increase the memory available, you can alternately :ref:`add swap <central-install-digital-ocean-swap>`. This will result in slower performance than adding physical memory but can be acceptable if it is only needed for occasional exports.
+If you still run into problems, try :ref:`increasing allocated memory <central-install-custom-memory>`.
 
 .. _file-upload-fails-with-413:
 

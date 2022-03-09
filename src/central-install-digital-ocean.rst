@@ -236,6 +236,36 @@ Forms with many large media attachments can fill up your droplet's storage space
      2. Then create a ``docker`` folder at that location with ``sudo mkdir /mnt/volume_nyc1_01/docker``. 
      3. ``/mnt/volume_nyc1_01/docker`` will be the ``/path/to/your/docker`` you use.
 
+.. _central-install-custom-memory:
+
+Increasing Memory Allocation
+-----------------------------
+
+During upgrades or exports, some versions of Central may use more memory than the 2GB typically available to Central. If you run into this problem, increase the memory allocated to the Central service.
+
+First, ensure you have more than 2GB of physical memory in your server. If you have less, instructions for increasing your physical memory on DigitalOcean can be found `in this support article <https://www.digitalocean.com/docs/droplets/how-to/resize/>`_.
+
+If you can't increase physical memory, you can alternatively :ref:`add swap <central-install-digital-ocean-swap>`. This will result in slower performance than adding physical memory but can be acceptable if it is only needed for occasional exports or upgrades.
+
+Then, in your ``docker-compose.yml`` file, add a ``NODE_OPTIONS`` variable with a ``--max_old_space_size`` flag set to the new value (e.g., 3.5GB or 3584 MB). Be sure to choose a value that leaves enough memory for your server's operating system and any other applications that may be running.
+
+.. code-block:: console
+
+  service:
+    ...
+    volumes:
+      - secrets:/etc/secrets
+      - /data/transfer:/data/transfer
+    environment:
+      - NODE_OPTIONS=--max_old_space_size=3584
+      - DOMAIN=${DOMAIN}
+      - SYSADMIN_EMAIL=${SYSADMIN_EMAIL}
+    command: [ "./wait-for-it.sh", "postgres:5432", "--", "./start-odk.sh" ]
+
+Now rebuild the service container with ``docker-compose build service``, ``docker-compose stop service``, ``docker-compose up -d service``.
+
+If the cause of the memory error was a migration, you may remove these changes after the upgrade is complete and rebuild the container again.
+
 .. _central-install-digital-ocean-custom-ssl:
 
 Using a Custom SSL Certificate
