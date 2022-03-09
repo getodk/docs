@@ -152,9 +152,9 @@ To connect with Excel or Power BI, follow these steps.
 
 1. Start the Get OData feed action.
 
-  * In Excel, select :guilabel:`Data` menu item, then :guilabel:`Get Data`, :guilabel:`From Other Sources`, then :guilabel:`From OData Feed`.
+  * In Excel, select the :guilabel:`Data` menu, then :guilabel:`Get Data`, :guilabel:`From Other Sources`, then :guilabel:`From OData Feed`.
 
-  * In Power BI, select the :guilabel:`Home` menu item, then :guilabel:`Get Data`, then :guilabel:`OData feed`.
+  * In Power BI, select the :guilabel:`Home` menu, then :guilabel:`Get Data`, then :guilabel:`OData feed`.
 
 2. Copy and paste in the link from Central and then select :guilabel:`OK`.
 
@@ -165,14 +165,13 @@ To connect with Excel or Power BI, follow these steps.
 4. The :guilabel:`Navigator` window now appear. Select :guilabel:`Submissions`, then :guilabel:`Load`.
 
 .. tip::
-  See `Import external data into Excel <https://support.office.com/en-us/article/connect-to-an-odata-feed-power-query-4441a94d-9392-488a-a6a9-739b6d2ad500>`_ and `OData feeds in Power BI <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`_ for more information.
-
-If you want to use the free and popular `R statistics and analysis tool <https://www.r-project.org/>`_, we recommend you use `ruODK <https://docs.ropensci.org/ruODK/>`_. A guide for getting started with it can be found `here <https://docs.ropensci.org/ruODK/articles/odata-api.html>`_. ruODK is developed and supported by community members. If you wish to help improve it, you can find information `on GitHub <https://docs.ropensci.org/ruODK/CONTRIBUTING.html>`_.
-
-.. tip::
+  See `Import external data into Excel <https://support.office.com/en-us/article/connect-to-an-odata-feed-power-query-4441a94d-9392-488a-a6a9-739b6d2ad500>`_ and `OData feeds in Power BI <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`_ for more information about using Excel and Power BI for OData feeds.
 
   If you are having trouble getting Power BI or Excel to connect, and especially if you see error messages about permissions or authentication, `clear your cached permissions <https://docs.microsoft.com/en-us/power-query/connectorauthentication#change-the-authentication-method>`_ and try again.
 
+  If you are using Excel 2016, install `Microsoft Power Query for Excel 6 <https://www.microsoft.com/en-us/download/details.aspx?id=39379>`_ and go to the :guilabel:`Data` menu, then :guilabel:`New Query`, and then :guilabel:`From Other Sources` to find the :guilabel:`From OData Feed` item.
+
+If you want to use the free and popular `R statistics and analysis tool <https://www.r-project.org/>`_, we recommend you use `ruODK <https://docs.ropensci.org/ruODK/>`_. A guide for getting started with it can be found `here <https://docs.ropensci.org/ruODK/articles/odata-api.html>`_. ruODK is developed and supported by community members. If you wish to help improve it, you can find information `on GitHub <https://docs.ropensci.org/ruODK/CONTRIBUTING.html>`_.
 
 You can also access the OData feed yourself. The OData feed is an easily consumable JSON data format and offers a metadata schema, some filtering and paging options, and more. To learn more about the OData feed, click the :guilabel:`API Access` button or see the `developer documentation <https://odkcentral.docs.apiary.io/#reference/odata-endpoints>`_ directly.
 
