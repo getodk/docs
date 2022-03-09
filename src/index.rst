@@ -63,6 +63,7 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   central-intro
   central-setup
   central-using
+  central-troubleshooting
 
 .. toctree::
   :hidden:
