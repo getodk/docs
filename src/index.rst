@@ -94,6 +94,13 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
 .. toctree::
   :hidden:
   :maxdepth: 2
+  :caption: Training
+
+  training
+
+.. toctree::
+  :hidden:
+  :maxdepth: 2
   :caption: Contributing
 
   contributing
