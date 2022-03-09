@@ -10,4 +10,3 @@ Setting Up ODK Central
   central-usage-reporting
   central-backup
   central-command-line
-  central-troubleshooting
