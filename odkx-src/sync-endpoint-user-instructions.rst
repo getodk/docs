@@ -78,6 +78,12 @@ Assigning users to groups
       :width: 600
 
   5. A few groups are created when the LDAP server is brought up, refer to :doc:`data-permission-filters` for descriptions of these groups.
+
+   .. note::
+
+     A user needs to be assigned one of the roles in addition to any other group of your choosing. These roles are available as groups 500 (Row owner), 501 (Group read only), 502 (Group modify), 503 (Group privileged).
+
+
   6. Assign users to groups with :ref:`these instructions <sync-endpoint-ldap-assign>`.
   7. If the :guilabel:`memberUid` section is not present:
 
