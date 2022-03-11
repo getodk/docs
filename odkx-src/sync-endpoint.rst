@@ -43,20 +43,20 @@ Overview
 ODK-X Sync Endpoint Server Technologies
 """"""""""""""""""""""""""""""""""""""""
 
-:dfn:`ODK-X Sync Endpoint` server is a combination of micro-services that run inside a Docker swarm. The image below shows the six main micro-services that compose the functionality included in Sync-Endpoint. 
+:dfn:`ODK-X Sync Endpoint` server is a combination of micro-services that run inside a Docker swarm. The image below shows the six main micro-services that compose the functionality included in Sync-Endpoint.
 
-To direct the incoming web request, the Sync-Endpoint uses nginx to route the web request to the proper microservice able to properly respond to the request. The central microservice of the Sync-Endpoint is a Java web application that provides the ODK-X REST synchronization protocol. 
+To direct the incoming web request, the Sync-Endpoint uses nginx to route the web request to the proper microservice able to properly respond to the request. The central microservice of the Sync-Endpoint is a Java web application that provides the ODK-X REST synchronization protocol.
 
 .. figure:: /img/sync-endpoint/endpoint-docker-swarm.*
    :alt: An architecture diagram of the six main microservices running in a Docker swarm
-  
+
    An architecture diagram of the six main microservices running in a Docker swarm. The six main microservices are: nginx, Sync-Endpoint REST Interface, Sync-Endpoint Web UI, PostgreSQL, phpLDAPadmin, and OpenLDAP.
 
 The REST protocol microservice runs an Apache Tomcat webserver. By default, the Sync-Endpoint uses a PostgreSQL server running as a microservice; however, the endpoint is designed to integrate with other databases (e.g., MySQL).
 The Sync-Endpoint Web UI is the microservice that provides the user interface for the sync-endpoint server. Sync-Endpoint is also a Java web application running inside an Apache Tomcat webserver.
 
-The Sync Endpoint REST server does not store user information in its own database; instead, it integrates with an LDAP directory (it can also integrate with other user management protocols such as Active Directory). 
-The OpenLDAP microservice is used to authenticate users and obtain user roles. To give the system administrator a graphical interface to add/change/remove users and groups, the endpoint leverages the phpLDAPadmin web interface running as a microservice that presents a web user interface of the data in OpenLDAP. 
+The Sync Endpoint REST server does not store user information in its own database; instead, it integrates with an LDAP directory (it can also integrate with other user management protocols such as Active Directory).
+The OpenLDAP microservice is used to authenticate users and obtain user roles. To give the system administrator a graphical interface to add/change/remove users and groups, the endpoint leverages the phpLDAPadmin web interface running as a microservice that presents a web user interface of the data in OpenLDAP.
 
 .. _sync-endpoint-sync-protocol:
 
@@ -65,10 +65,10 @@ ODK-X Synchronization Protocol
 
 ODK-X’s synchronization protocol is based on a REST architecture that keeps the data on multiple devices synchronized to a master copy stored on the ODK-X Sync-Endpoint. Clients do not have to worry about losing data, as API requests can be safely repeated in environments where network timeouts occur.
 
-To minimize data updates that conflict, data updates are processed as row-based changes to keep changes small. For example, when performing a cold chain inventory, if updates were at a coarse granularity, such as table-based or file-based, a conflict might be detected for two workers updating refrigerators while working at different sites. 
-By keeping conflict detection at the row-level, multiple users can make updates to shared data tables, and the system will detect that there is not a conflict as long as the same row is not updated by different users between their synchronizations. 
+To minimize data updates that conflict, data updates are processed as row-based changes to keep changes small. For example, when performing a cold chain inventory, if updates were at a coarse granularity, such as table-based or file-based, a conflict might be detected for two workers updating refrigerators while working at different sites.
+By keeping conflict detection at the row-level, multiple users can make updates to shared data tables, and the system will detect that there is not a conflict as long as the same row is not updated by different users between their synchronizations.
 
-A conflict is defined as two users with different updates to the same row. ODK-X uses table locks on the server to ensure only a single change to a data row can occur at any time. When the :dfn:`runner-up` client finally obtains the lock and attempts to alter the same row, the update will be rejected as a conflict. Once a conflict is detected, the user manually determines which version of data is correct between their pending changes on the local client and the updated data row on the server. 
+A conflict is defined as two users with different updates to the same row. ODK-X uses table locks on the server to ensure only a single change to a data row can occur at any time. When the :dfn:`runner-up` client finally obtains the lock and attempts to alter the same row, the update will be rejected as a conflict. Once a conflict is detected, the user manually determines which version of data is correct between their pending changes on the local client and the updated data row on the server.
 The rationale for having the user who caused the conflict also resolve the conflict is that the user was recently working with data and is likely to have the necessary information and context on how best to resolve the conflict.
 
 You can learn more here: :doc:`odk-2-sync-protocol`
@@ -89,12 +89,13 @@ ODK-X Sync Endpoint does not store user information in its own database, instead
 
 HTTPS
 -----
+  HTTPS stands for Hyper Text Transfer Protocol Secure. It is a protocol for securing the communication between two systems e.g. the browser and the web server. To know more about HTTPS and its working have a look at this video `Working of HTTPS <https://www.youtube.com/watch?v=T4Df5_cojAs>`_.
 
   The Sync Endpoint stack integrates support for automatic certificate
   provisioning via domain validation and letsencrypt. For most use
   cases this should be sufficient. Certificate provisioning parameters
   can be edited interactively during initialization or directly in
-  :file:`config/https.env`.
+  :file:`config/https.env`. To learn about cert bot and letsencrypt visit this site `Cert bot <https://docs.min.io/docs/generate-let-s-encypt-certificate-using-concert-for-minio.html>`_.
 
   .. Tip:: For advanced users, if you would like to use an externally
            provisioned certificate one can be added by modifying the
@@ -103,6 +104,8 @@ HTTPS
            docker's built in secrets and config infrastructure can be
            used directly to expose the certificate and key only to the
            NGINX container.
+
+  In HTTPS, the communication protocol is encrypted using Transport Layer Security (TLS) or, formerly, Secure Sockets Layer (SSL). The protocol is hence also referred to as HTTP over TLS, or HTTP over SSL. HTTPS signals the browser to use an added encryption layer of SSL/TLS to protect the traffic. SSL/TLS is especially suited for HTTP, as it can provide some protection even if only one side of the communication is authenticated. More information on TLS/SSL certificates is available here `TLS/SSL Encryption <https://www.digicert.com/resources/beginners-guide-to-tls-ssl-certificates-whitepaper-en-2019.pdf>`_.
 
 .. _sync-endpoint-ldap:
 
@@ -151,7 +154,7 @@ Editing the defaults of LDAP Directory
 """""""""""""""""""""""""""""""""""""""""""""
     Modify the :file:`ldap.env` file to configure the environment variables. The :file:`ldap.env` file is located in the sync-endpoint-default-setup directory.
 
-    The default settings are as follows 
+    The default settings are as follows
 
      .. code-block:: console
 
@@ -163,7 +166,7 @@ Editing the defaults of LDAP Directory
       LDAP_ADMIN_PASSWORD=admin                  // default password for admin account
 
       # phpldapadmin
-      PHPLDAPADMIN_LDAP_HOSTS=ldap-service   // This is for the phpLDAPadmin. In Docker Swarm this is the hostname of the service running LDAP. This can be 
+      PHPLDAPADMIN_LDAP_HOSTS=ldap-service   // This is for the phpLDAPadmin. In Docker Swarm this is the hostname of the service running LDAP. This can be
                                                 eddited in the docker-compose.yml file
 
 
@@ -177,8 +180,8 @@ Editing the defaults of LDAP Directory
 Using a Different LDAP UI
 """"""""""""""""""""""""""""""""""""""""""""""
 
-    If you want to use a UI outside the Docker Swarm in your local machine Modify the docker-compose.yml file in sync-endpoint-default-setup directory. Add ports 
-    mapping to the ldap service to expose the port 389 of ldap service to a port in your local host. If you wish to access 
+    If you want to use a UI outside the Docker Swarm in your local machine Modify the docker-compose.yml file in sync-endpoint-default-setup directory. Add ports
+    mapping to the ldap service to expose the port 389 of ldap service to a port in your local host. If you wish to access
     the ldap protocol over TLS/SSL expose the port 636. Connect the UI application to this port on localhost.
 
     The ldap service of the the Docker compose should be like this after adding port mapping.
@@ -192,18 +195,18 @@ Using a Different LDAP UI
        networks:
         - ldap-network
        ports:
-        - "YOUR_LOCAL_HOST_PORT:389"    // 389 is the default port of openLDAP 
+        - "YOUR_LOCAL_HOST_PORT:389"    // 389 is the default port of openLDAP
        volumes:
         - ldap-vol:/var/lib/ldap
         - ldap-slapd.d-vol:/etc/ldap/slapd.d
        env_file:
-        - ldap.env 
+        - ldap.env
 
-    .. Warning:: The LDAP service running at any port will not only be accessible from the localhost but will also be exposed over the Docker ingress overlay 
+    .. Warning:: The LDAP service running at any port will not only be accessible from the localhost but will also be exposed over the Docker ingress overlay
                  network (which is exposed to the Internet in most cases).
 
     For running the UI application in the Docker Swarm create a folder in the sync-endpoint-default-setup directory and create a Docker file inside it.
-    Copy the templates folder from the phpLDAPadmin directory to the new directory. In the Docker file ,add the image of the UI application to be used and the 
+    Copy the templates folder from the phpLDAPadmin directory to the new directory. In the Docker file ,add the image of the UI application to be used and the
     "COPY" command to copy the templates folder to the right path inside the container.
 
     To build the Docker image run the command in the sync-endpoint-default-setup-directory with tag odk/[YOUR_UI_APPLICATION_NAME]:
@@ -212,13 +215,13 @@ Using a Different LDAP UI
 
        $ docker build -t odk/[YOUR_UI_APPLICATION_NAME] [ Folder conatining the Docker file ]
 
-    Edit the docker-compose.yml file. Replace the image of phpLDAPadmin service with odk/[YOUR_UI_APPLICATION_NAME]. 
+    Edit the docker-compose.yml file. Replace the image of phpLDAPadmin service with odk/[YOUR_UI_APPLICATION_NAME].
 
-.. _sync-endpoint-dhis2:    
+.. _sync-endpoint-dhis2:
 
 Managing Identity through DHIS2
 """""""""""""""""""""""""""""""""
-   In the sync-endpoint-default-setup directory navigate to config/sync-endpoint. Modify the :file:`security.properties` file to fill in the Settings for DHIS2 
+   In the sync-endpoint-default-setup directory navigate to config/sync-endpoint. Modify the :file:`security.properties` file to fill in the Settings for DHIS2
    Authentication section. Set security.server.authenticationMethod in security.properties to dhis2. After this the following settings need to be configured for
    dhis2.
 
@@ -243,10 +246,10 @@ Managing Identity through DHIS2
 
 Warnings
 --------
- - The database and the LDAP Directory set up here are meant only for testing and evaluation. When running in production you should configure a production ready 
-   database and a production ready LDAP Directory. Using the pre-configured database and directory in production can result in poor performance and degraded 
+ - The database and the LDAP Directory set up here are meant only for testing and evaluation. When running in production you should configure a production ready
+   database and a production ready LDAP Directory. Using the pre-configured database and directory in production can result in poor performance and degraded
    availability.
  - You should refer to Docker Swarm documentation on running a production ready Swarm.
- - We recommend that you host Sync Endpoint on a commercial cloud provider (e.g. Google Cloud Platform, Amazon AWS, Microsoft Azure, etc.) If you want to host 
+ - We recommend that you host Sync Endpoint on a commercial cloud provider (e.g. Google Cloud Platform, Amazon AWS, Microsoft Azure, etc.) If you want to host
    Sync Endpoint on premise, you should consult your System Administrator for appropriate hardware.
  - Always make regular backups and test your backups to prevent potential data loss.
