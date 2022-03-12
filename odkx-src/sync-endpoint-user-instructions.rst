@@ -10,7 +10,7 @@
 Users and Groups
 =================
 
-A user needs to be assigned to a group within ODK-X sync-endpoint to set their permissions and roles for ODK-X apps. More information about groups and the roles is available in :ref:`Data Permission Filters<data-permission-filters>` section.
+A user needs to be assigned to a group within ODK-X Sync Endpoint to set their permissions and roles for ODK-X apps. More information about groups and roles is available in :ref:`Data Permission Filters<data-permission-filters>` section.
 
 
 .. _sync-endpoint-ldap-users: .. _sync-endpoint-setup-create-user:
@@ -37,7 +37,7 @@ Creating users
     .. image:: /img/setup-create-user/setup-user3.png
       :width: 600
 
-  4. Fill out information for the new user and “create object.” Assign it to the *default_prefix_synchronize_tables* group. Will need to commit (confirm) that you want to create this entry on the next screen.
+  4. Fill out information for the new user and “create object.” Assign it to the *default_prefix_synchronize_tables* group. You will need to commit (confirm) that you want to create this entry on the next screen.
 
     .. image:: /img/setup-create-user/setup-user4.png
       :width: 600
@@ -81,7 +81,7 @@ Assigning users to groups
 
    .. note::
 
-     A user needs to be assigned one of the roles in addition to any other group of your choosing. These roles are available as groups 500 (Row owner), 501 (Group read only), 502 (Group modify), 503 (Group privileged).
+     A user needs to be assigned one of the roles in addition to any other group of your choosing. These roles are available as groups 500 (SITE_ADMIN), 501 (ADMINISTER_TABLES), 502 (SUPER_USER_TABLES), 503 (SYNCHRONIZE_TABLES).
 
 
   6. Assign users to groups with :ref:`these instructions <sync-endpoint-ldap-assign>`.
