@@ -3,6 +3,7 @@
   phpLDAPadmin
   readonly
   letsencrypt
+  Certbot
   OpenLDAP
   ldif
   utils
@@ -89,13 +90,13 @@ ODK-X Sync Endpoint does not store user information in its own database, instead
 
 HTTPS
 -----
-  HTTPS stands for Hyper Text Transfer Protocol Secure. It is a protocol for securing the communication between two systems e.g. the browser and the web server. To know more about HTTPS and its working have a look at this video `Working of HTTPS <https://www.youtube.com/watch?v=T4Df5_cojAs>`_.
+  HTTPS stands for Hyper Text Transfer Protocol Secure. It is a protocol for securing the communication between two systems e.g. the browser and the web server. To learn more about HTTPS and how it works see this video `Working of HTTPS <https://www.youtube.com/watch?v=T4Df5_cojAs>`_.
 
   The Sync Endpoint stack integrates support for automatic certificate
   provisioning via domain validation and letsencrypt. For most use
   cases this should be sufficient. Certificate provisioning parameters
   can be edited interactively during initialization or directly in
-  :file:`config/https.env`. To learn about cert bot and letsencrypt visit this site `Cert bot <https://docs.min.io/docs/generate-let-s-encypt-certificate-using-concert-for-minio.html>`_.
+  :file:`config/https.env`. To learn about Certbot and letsencrypt visit this site `Certbot <https://docs.min.io/docs/generate-let-s-encypt-certificate-using-concert-for-minio.html>`_.
 
   .. Tip:: For advanced users, if you would like to use an externally
            provisioned certificate one can be added by modifying the
@@ -105,7 +106,7 @@ HTTPS
            used directly to expose the certificate and key only to the
            NGINX container.
 
-  In HTTPS, the communication protocol is encrypted using Transport Layer Security (TLS) or, formerly, Secure Sockets Layer (SSL). The protocol is hence also referred to as HTTP over TLS, or HTTP over SSL. HTTPS signals the browser to use an added encryption layer of SSL/TLS to protect the traffic. SSL/TLS is especially suited for HTTP, as it can provide some protection even if only one side of the communication is authenticated. More information on TLS/SSL certificates is available here `TLS/SSL Encryption <https://www.digicert.com/resources/beginners-guide-to-tls-ssl-certificates-whitepaper-en-2019.pdf>`_.
+  In HTTPS, the communication protocol is encrypted using Transport Layer Security (TLS) or, formerly, Secure Sockets Layer (SSL). The protocol is hence also referred to as HTTP over TLS or HTTP over SSL. HTTPS signals the browser to use an added encryption layer of SSL/TLS to protect the traffic. SSL/TLS is especially suited for HTTP, as it can provide some protection even if only one side of the communication is authenticated. More information on TLS/SSL certificates is available here `TLS/SSL Encryption <https://www.digicert.com/resources/beginners-guide-to-tls-ssl-certificates-whitepaper-en-2019.pdf>`_.
 
 .. _sync-endpoint-ldap:
 
