@@ -1687,11 +1687,11 @@ type
 appearance
   :tc:`none`
 
-Records audio using the device's microphone or a connected external microphone. By default, an :ref:`external application <external-audio-app>` is used.
+Records audio using the device's microphone or a connected external microphone. By default, an :ref:`internal recorder <built-in-audio-recording>` is used.
 
 .. tip::
 
-  Instead of the default audio widget, we recommend you use the :ref:`built-in audio recorder <built-in-audio-recording>` because you can customize audio quality and record while filling out other questions. Built-in recording is available in Collect v1.29 or later.
+  We recommend you use the :ref:`built-in audio recorder <built-in-audio-recording>` because you can customize audio quality and record while filling out other questions. Built-in recording is available in Collect v1.29 or later.
 
 .. image:: /img/form-widgets/audio-start.*
   :alt: The Audio form widget as displayed in the ODK Collect App on an Android phone. The question text is "What does it sound like?" There are two buttons: Record Sound and Choose Sound.
@@ -1718,8 +1718,6 @@ type
   :tc:`audio`
 appearance
   :tc:`none`
-parameters
-  :tc:`quality=normal`
 
 .. versionadded:: 1.29
 
@@ -1727,9 +1725,7 @@ parameters
 
 The built-in audio recorder makes it possible to capture audio without having to install an external app.
 
-It also enables recording while filling out other questions and is designed to continue recording even if the user switches to another app or if the phone screen is locked. To use the built-in audio recorder, :ref:`specify the desired audio quality <customizing-audio-quality>` for each audio question in your form.
-
-You can also configure Collect to always use the built-in recorder by :ref:`disabling external app recording <use-external-app-for-audio-recording>`.
+It also enables recording while filling out other questions and is designed to continue recording even if the user switches to another app or if the phone screen is locked.
 
 .. image:: /img/form-widgets/built-in-recorder.*
   :alt: The built-in recorder as displayed in the ODK Collect App on an Android phone. The user interface is described below.
@@ -1842,7 +1838,7 @@ appearance
 parameters
   :tc:`quality=external`
 
-Setting ``quality`` to ``external`` will cause Collect to use an external app to record audio rather than the built-in recorder. You can also :ref:`configure Collect to always use an external app for recording <use-external-app-for-audio-recording>` (this is the default behavior) and set no ``quality`` parameter.
+Setting ``quality`` to ``external`` will cause Collect to use an external app to record audio rather than the built-in recorder. You can also :ref:`configure Collect to always use an external app for recording <use-external-app-for-audio-recording>` and set no ``quality`` parameter.
 
 Some Android devices provide a default application for audio recording. Others do not, and the user will need to install an audio recording app.
 
