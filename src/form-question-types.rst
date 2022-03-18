@@ -1659,6 +1659,16 @@ Scaling down images
 
 Images created with any of the image widgets described above can be automatically scaled down on save by using the ``max-pixels`` parameter. If the long edge of the image is larger than the maximum size specified, the image is resized proportionally so that the long edge matches the provided pixel value. This is useful to reduce the upload size when bandwidth is limited.
 
+.. warning::
+
+  All scaled down jpg images are saved with 80% quality. That means in some rare cases when:
+
+  - a jpg image is attached not captured
+  - and the attached file has quality lower than 80%
+  - and the difference between its original size and the value specified using ``max-pixels`` is not big enough 
+
+  the size of the output image might be even bigger that the original one.
+
 Available in Collect since v1.10.0 and in XLSForm since 7/2018.
 
 .. rubric:: XLSForm
