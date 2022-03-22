@@ -245,6 +245,10 @@ The value is pulled from the last saved record. This is often the most recently 
 
 Questions of any type can have their defaults set based on the last saved record.
 
+.. warning::
+
+  Last-saved copies over literal answer values and not binary attachments so it won't really work well with binary questions. The filename will be copied over but the actual file won't be available to Collect.
+
 .. _form-logic-gotchas:
 
 Form logic gotchas
