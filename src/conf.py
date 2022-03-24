@@ -23,6 +23,7 @@ sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath('../'))
 import video
 import sphinx_fontawesome
+import platform
 
 # -- General configuration ------------------------------------------------
 
@@ -43,6 +44,10 @@ extensions = ['sphinx.ext.autodoc',
     'sphinxcontrib.spelling',
     'video',
     'sphinx_fontawesome']
+
+# enchant requires an Intel chip
+if "arm" in platform.processor():
+    extensions.remove('sphinxcontrib.spelling')
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
