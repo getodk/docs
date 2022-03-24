@@ -42,13 +42,6 @@ latex: build
 	@$(SPHINXBUILD) -b latex "$(TMPDIR)" "$(BUILDDIR)"/latex $(SPHINXOPTS)
 	python3 util/resize.py "$(BUILDDIR)"
 
-pdf: latex
-	cd "$(BUILDDIR)"/latex && \
-	xelatex ODK.tex && \
-	xelatex ODK.tex && \
-	mkdir -p ../_downloads && \
-	mv ODK.pdf ../_downloads/ODK-Documentation.pdf
-
 style-check: build
 	python3 style-test.py -r $(TMPDIR)
 
