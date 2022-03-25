@@ -47,29 +47,6 @@ jobs:
           paths:
             - build/*
             - s3_website.yml
-
-  build-pdf:
-    working_directory: ~/work
-    docker:
-      - image: schickling/latex
-    steps:
-      - attach_workspace:
-          at: ~/work
-      - run:
-          name: Build PDF
-          command: |
-              cd build/latex
-              xelatex ODK.tex
-              xelatex ODK.tex
-              mkdir -p ../_downloads
-              mv ODK.pdf ../_downloads/ODK-Documentation.pdf
-      - store_artifacts:
-          path: build/_downloads/ODK-Documentation.pdf
-          destination: ODK-Documentation.pdf
-      - persist_to_workspace:
-          root: ~/work
-          paths:
-            - build/*
   deploy:
     working_directory: ~/work
     docker:
@@ -100,14 +77,10 @@ workflows:
   build_deploy:
     jobs:
       - build
-      - build-pdf:
-          requires:
-            - build
       - deploy:
           context: AWS
           requires:
             - build
-            - build-pdf
           filters:
             branches:
               only: master
