@@ -7,13 +7,15 @@
   subdomain
 
 
+.. _sync-endpoint-setup-create-user:
+
 Users and Groups
 =================
 
+.. _sync-endpoint-ldap-users:  
+
 A user needs to be assigned to a group within ODK-X Sync Endpoint to set their permissions and roles for ODK-X apps. More information about groups and roles is available in :ref:`Data Permission Filters<data-permission-filters>` section.
 
-
-.. _sync-endpoint-ldap-users: .. _sync-endpoint-setup-create-user:
 
 Creating users
 --------------------
@@ -106,3 +108,9 @@ Assigning users to groups
 
     .. image:: /img/setup-create-user/setup-user8.png
       :width: 600
+
+
+
+
+  
+  
