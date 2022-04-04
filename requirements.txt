@@ -18,7 +18,7 @@ livereload==2.6.3
 MarkupSafe==1.1.1
 packaging==20.9
 pathtools==0.1.2
-Pillow==8.3.2
+Pillow==9.0.1
 pip-review==1.1.0
 port-for==0.4
 proselint==0.10.2
