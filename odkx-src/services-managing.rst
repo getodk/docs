@@ -141,7 +141,7 @@ You will then see the Sync screen.
 
 Before resetting, you should verify all options are set correctly.
 
-  1. The username can be be changed by pressing the :guilabel:`Change User` button. If you do not see the :guilabel:`Reset App Server` button then you need to change users to an administrator. Instructions are provided in the :ref:`services-using-change-user` section.
+  1. The username can be changed by pressing the :guilabel:`Change User` button. If you do not see the :guilabel:`Reset App Server` button then you need to change users to an administrator. Instructions are provided in the :ref:`services-using-change-user` section.
 
     .. warning::
 
@@ -210,7 +210,7 @@ Setting an Administrator Password
       :alt: Services Admin Password Prompt
       :class: device-screen-vertical
 
-  4. After creating an admin password, the screen show show that it is enabled.
+  4. After creating an admin password, the screen shows that it is enabled.
 
     .. image:: /img/services-managing/services-admin-pass-enabled.*
       :alt: Services Admin Password Enabled
@@ -256,7 +256,7 @@ Managing Server Settings
   - :menuselection:`Server URL` - if checked the Server URL will be locked.
   - :menuselection:`Server Sign-on Credential` - if checked the means of authenticating will be locked.
   - :menuselection:`Username and/or Password` - if checked the username and password fields will be locked.
-  - :menuselection:`Allow unsafe/unsecure Authentication` - if checked Services will allow synchronization with servers not using SSL encryption.
+  - :menuselection:`Allow unsafe/unsecured Authentication` - if checked Services will allow synchronization with servers not using SSL encryption.
 
     .. warning::
 
