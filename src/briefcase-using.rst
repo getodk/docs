@@ -1,5 +1,10 @@
+:orphan:
+
 Using ODK Briefcase
 ======================
+
+.. warning::
+  ODK Briefcase is no longer being updated. If you're using Briefcase for CSV exports, data decryption, or automation, use :doc:`ODK Central <central-intro>` instead.
 
 .. _pull-forms:
 

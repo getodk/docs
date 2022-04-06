@@ -27,7 +27,6 @@ While this is the recommended workflow, it is not the only way to do things. ODK
 Additional ODK tools are:
 
 - :doc:`build-intro`, a drag-and-drop form designer. We generally recommend XLSForm for its flexibility but users only building very simple forms may prefer Build.
-- :doc:`briefcase-intro`, a desktop tool that pulls and exports data from Aggregate and Collect.
 
 The specifications and libraries that power the tools are:
 
@@ -86,15 +85,6 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
 .. toctree::
   :hidden:
   :maxdepth: 2
-  :caption: Briefcase
-
-  briefcase-intro
-  briefcase-install
-  briefcase-using
-
-.. toctree::
-  :hidden:
-  :maxdepth: 2
   :caption: Training
 
   training
@@ -114,7 +104,6 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   openrosa
   javarosa
   launch-collect-from-app
-  briefcase-api
 
 .. toctree::
   :hidden:
