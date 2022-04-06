@@ -152,7 +152,7 @@ How ODK Docs uses main and secondary tables of content
 
   Major topics include things like:
 
-  - Each major product (Collect, Aggregate, Briefcase)
+  - Each major product (Collect, Central)
   - Large, general categories like Contributing
 
   Major topic tables of content include both sub-collection intro pages and also individual pages that don't fit into a sub-collection.
@@ -280,12 +280,12 @@ Section titles must be unique throughout the entire documentation set. Therefore
 
 .. code-block:: rst
 
-  ODK Aggregate
+  ODK Central
   ===============
 
-  ODK Aggregate is a server application...
+  ODK Central is a server application...
 
-  .. _aggregate-getting-started:
+  .. _central-getting-started:
 
   Getting Started
   -----------------

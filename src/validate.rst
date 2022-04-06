@@ -78,5 +78,5 @@ The optional `--fail-fast` flag tells Validate to exit on the first error rather
   This tool validates XML files against the XForms specification.
   It does not check every detail needed 
   to ensure smooth operation in the ODK ecosystem.
-  For example, Aggregate requires that forms have a unique form ID,
+  For example, ODK Central requires that forms have a unique form ID,
   which this tool does not check.

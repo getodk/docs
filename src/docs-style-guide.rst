@@ -619,10 +619,10 @@ If section title is a directive to do something (for example, as a step in a pro
 
 .. code-block:: rst
 
-  Installing ODK Aggregate
+  Installing ODK Central
   ------------------------
   
-  Download ODK Aggregate
+  Download ODK Central
   ~~~~~~~~~~~~~~~~~~~~~~
 
   Section content here.
@@ -929,8 +929,7 @@ ODK app and project names
 ODK includes a number of components, including:
 
 - Collect
-- Aggregate
-- Briefcase
+- Central
 
 These should always be capitalized.
 
@@ -952,8 +951,8 @@ A few projects should *always* use the **ODK** prefix:
       msg = "ODK spell check. '{}' is the preferred usage."
 
       preferences = [
-          ["Aggregate",             ["{0} aggregate"]],
-          ["Briefcase",             ["{0} briefcase"]]
+          ["Central",             ["{0} central"]],
+          ["Collect",             ["{0} collect"]]
       ]
 
       return preferred_forms_check(text, preferences, err, msg, ignore_case=False)

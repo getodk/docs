@@ -23,11 +23,17 @@ Glossary
 
     An Android mobile app that replaces paper-based forms.
 
-  Aggregate
+  Central
 
     Part of ODK.
 
     A server-side data storage and analysis tool.
+
+  Aggregate (deprecated)
+
+    Part of ODK.
+
+    A server-side data storage and analysis tool. It is no longer being updated.
 
   Build
 
@@ -50,11 +56,11 @@ Glossary
 
     A tool for validating forms against the :term:`ODK XForms specification <ODK XForm>`.
 
-  Briefcase
+  Briefcase (deprecated)
 
     Part of ODK.
 
-    A tool for packaging and transferring forms and data between instances of Collect and Aggregate.
+    A tool for packaging and transferring forms and data between instances of Collect and Aggregate/Central. It is no longer being updated.
 
   ODK XForm
 

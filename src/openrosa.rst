@@ -1,9 +1,9 @@
 OpenRosa
 ==========
 
-OpenRosa is a set of communication standards for moving blank forms and completed form instances between server applications (like ODK Aggregate) and clients (like :doc:`ODK Collect  <collect-intro>`).
+OpenRosa is a set of communication standards for moving blank forms and completed form instances between server applications (like ODK Central) and clients (like :doc:`ODK Collect  <collect-intro>`).
 
-They were originally worked on by the OpenRosa WorkGroup, and they were an outgrowth of the JavaRosa project. The working group is no longer active. However, many apps within the ODK ecosystem (including Collect and Aggregate) continue to implement the API.
+They were originally worked on by the OpenRosa WorkGroup, and they were an outgrowth of the JavaRosa project. The working group is no longer active. However, many apps within the ODK ecosystem (including Collect and Central) continue to implement the API.
 
 This set of docs is intended to provide information about the OpenRosa standards, for use by developers working on applications that communicate with other applications within the ODK ecosystem.
 
