@@ -1072,7 +1072,7 @@ Working on the docs
     	.. tip::
 		
 		You can make minor edits to files directly on github. To do this:
-			#. Browse the folder in which the file to be edited is located 
+			#. Browse to the folder in which the file to be edited is located 
 			#. Open the file you want to edit
 			#. Click the pencil icon at the top right corner in order to edit the file
 			#. Make your changes
