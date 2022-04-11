@@ -1067,8 +1067,16 @@ Working on the docs
 
    If you're working on code or deployment, please read:
 
-   - :doc:`docs-developer-guide`
-
+   - :doc:`docs-developer-guide`.
+   	
+    	.. tip::
+		
+		You can make minor edits to files directly on github. To do that:
+			#. Browse and open the file you want to edit
+			#. Click the pencil icon at the top right corner in order to edit the file
+			#. Make your changes
+			#. Scroll to the bottom of the page to commit your changes 
+			#. Then create a pull request.
 #. Local checks
 
    .. _test-the-docs:
