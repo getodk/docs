@@ -1071,12 +1071,14 @@ Working on the docs
    	
     	.. tip::
 		
-		You can make minor edits to files directly on github. To do that:
-			#. Browse and open the file you want to edit
+		You can make minor edits to files directly on github. To do this:
+			#. Browse the folder in which the file to be edited is located 
+			#. Open the file you want to edit
 			#. Click the pencil icon at the top right corner in order to edit the file
 			#. Make your changes
 			#. Scroll to the bottom of the page to commit your changes 
 			#. Then create a pull request.
+		For more info, visit: https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files
 #. Local checks
 
    .. _test-the-docs:
