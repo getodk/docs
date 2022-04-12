@@ -8,6 +8,23 @@
 Troubleshooting Central 
 =========================
 
+.. _reading-container-logs:
+
+Reading container logs
+----------------------
+
+If Central is behaving in an expected way, it is often helpful to read the Docker container logs with the `docker logs <https://docs.docker.com/engine/reference/commandline/logs/>`_ command for hints as to what has gone wrong.
+
+The containers that are most likely to be helpful for troubleshooting are the `service` container and the `nginx` container. Use the `--tail` and `--since` options to help filter the logs. For example:
+
+* ``docker logs --tail 100 central_service_1`` to see the last 100 lines of the service logs.
+* ``docker logs --since 5m central_nginx_1`` to see the last 5 minutes of the nginx logs.
+
+Other commands that are helpful are:
+
+* ``docker ps`` to see the status of all containers.
+* ``docker stats`` to see the CPU and RAM usage of all containers.
+
 .. _troubleshooting-emails:
 
 Users aren't receiving emails
@@ -93,7 +110,7 @@ If you absolutely must upload files over 100MB, you can change the `client_max_b
 Database disappeared after running Docker commands
 --------------------------------------------------
 
-It is possible to accidentally reset the database by running `docker-compose down`. We are working on a way to prevent this error in the future. For now, if you have run this command and your data has disappeared, you can follow these steps to relocate the data and attach it back to your server:
+It is possible to accidentally reset the database by running the down command with docker-compose. We are working on a way to prevent this error in the future. For now, if you have run this command and your data has disappeared, you can follow these steps to relocate the data and attach it back to your server:
 
 1. Run the following command: ``docker inspect --type container central_postgres_1 -f '{{(index .Mounts 0).Source}}'``. It should print out a long name starting with /var/lib/docker/volumes/ and ending in a long string of letters and numbers. Copy those letters and numbers and set them aside. They correspond to the location of your current (reset) database.
 2. Run ``docker volume ls``. This will tell you all the locations that docker has stored information. We need to find the location that contains your old data.
