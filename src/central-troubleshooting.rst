@@ -13,7 +13,7 @@ Troubleshooting Central
 Reading container logs
 ----------------------
 
-If Central is behaving in an expected way, it is often helpful to read the Docker container logs with the `docker logs <https://docs.docker.com/engine/reference/commandline/logs/>`_ command for hints as to what has gone wrong.
+If Central is behaving in an unexpected way, it is often helpful to read the Docker container logs with the `docker logs <https://docs.docker.com/engine/reference/commandline/logs/>`_ command for hints as to what has gone wrong.
 
 The containers that are most likely to be helpful for troubleshooting are the `service` container and the `nginx` container. Use the `--tail` and `--since` options to help filter the logs. For example:
 
