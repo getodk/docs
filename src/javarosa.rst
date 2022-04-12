@@ -26,15 +26,6 @@ Integration Points
 
 This section describes how the different parts of ODK use JavaRosa.
 
-Aggregate
-=========
-
-Briefcase
-=========
-
-Collect
-=======
-
 Validate
 ========
 
