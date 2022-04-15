@@ -607,9 +607,9 @@ For date only, see :ref:`default-date-widget`. For time only, see :ref:`time-wid
 Select widgets
 -----------------
 
-Select widgets offer options to pick from. Single selects allow selecting a :ref:`single choice <single-select-widget>`, and multi selects allow :ref:`choosing multiple answers <multi-select-widget>`.
+Select widgets display choices to pick from. Single selects allow selecting a :ref:`single choice <single-select-widget>`, and multi selects allow :ref:`selecting multiple choices <multi-select-widget>`.
 
-The options for a select question can be included in an XLSForm on a sheet named **choices** or attached as an :ref:`external dataset <selects-from-external-dataset>`.
+The choices for a select question can be included on a sheet named **choices** directly in an XLSForm or attached as an :ref:`external dataset <selects-from-external-dataset>`.
 
 The order of the choices can be :ref:`randomized <randomize-choice-order>` for any of the select types described below. The list of choices available can also be :ref:`filtered <cascading-selects>` based on answers to previous questions. Selects from internal datasets can :ref:`include images as choices <select-columns-widget>`.
 
@@ -629,7 +629,6 @@ The **choices** sheet for defining internal datasets has at least three columns:
 
 :th:`label`
   The user-facing text displayed for the choice.
-
 
 .. contents::
   :local:
@@ -701,7 +700,7 @@ Multi select questions allow selecting multiple answers. The response for the qu
 Select from external dataset
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Files can be attached to form definitions. These :doc:`external datasets<form-datasets>` can be used as data sources for selects. The question type for single selection is :tc:`select_one_from_file` and for multiple selection, it is `select_multiple_from_file`. The full filename of the dataset including the extension goes after the type.
+Files can be attached to form definitions. These :doc:`external datasets <form-datasets>` can be used as data sources for selects. The question type for single selection is :tc:`select_one_from_file` and for multiple selection, it is `select_multiple_from_file`. The full filename of the dataset including the extension goes after the type.
 
 type
   :tc:`select_one_from_file {file.extension}`
@@ -709,7 +708,7 @@ type
 .. rubric:: XLSForm
 
 .. csv-table:: survey
-  :header: type, name, label, hint
+  :header: type, name, label
 
   select_one_from_file hospitals.csv,hospital,Select hospital
 
@@ -721,10 +720,44 @@ type
   hospital_c,Hospital C
   hospital_d,Hospital D
 
+.. _customizing-label-and-value:
+
+Customizing the label and value columns
+""""""""""""""""""""""""""""""""""""""""
+
+When using an :doc:`external dataset <form-datasets>` as a data source for a select, the underlying value for each choice comes from:
+
+- CSV file: the :th:`name` column
+- GeoJSON file: the :th:`id` top-level element if it exists or the :th:`id` property as a fallback
+- XML file: the :th:`name` child element
+
+The label for each choice comes from:
+
+- CSV file: the :th:`label` column
+- GeoJSON file: the :th:`title` property (follows `the GeoJSON simplestyle specification <https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0>`_)
+- XML file: the :th:`label` child element
+
+In some cases, it may not be convenient to rename your columns to match these defaults. If you have a dataset from another source and different column names, you can use the :th:`parameters` column in your XLSForm to specify which columns to use.
+
+For example, to use :th:`feature_id` for the underlying value and :th:`human_name` for the label:
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, parameters
+
+  select_one_from_file hospitals.csv,hospital,Select hospital,"value=feature_id,label=human_name"
+
+.. csv-table:: hospitals.csv
+  :header: feature_id, human_name
+
+  hospital_a,Hospital A
+  hospital_b,Hospital B
+
 Select appearances
 ~~~~~~~~~~~~~~~~~~~~
 
-Selects can be styled in various ways using the :tc:`appearance` column in an XLSForm. Unless otherwise indicated, the appearances described below can combine with single or multiple selects with either internal or external data sources.
+Selects can be styled in various ways using the :th:`appearance` column in an XLSForm. Unless otherwise indicated, the appearances described below can combine with single or multiple selects with either internal or external data sources.
 
 .. _select-minimal:
 
@@ -989,10 +1022,47 @@ If adding images, note that the images are referenced in the choices sheet, and 
  likert_widget,agree,Agree,agree.jpg
  likert_widget,strongly_agree,Strongly Agree,strongly_agree.jpg
 
+.. _select-from-map:
+
+Select one from map widget
+"""""""""""""""""""""""""""
+
+.. versionadded:: 2022.2.0
+
+  `ODK Collect v2022.2.0 <https://github.com/getodk/collect/releases/tag/v2022.2.0>`_
+
+.. warning::
+  The `map` appearance on selects currently only supports single selection of points and is not yet available in web forms (Enketo).
+
+  The different :ref:`basemap sources <mapping-settings>` currently have different performance. If Collect feels slow when creating the map or when selecting a choice, please describe what you are experiencing `on the forum <https://forum.getodk.org/c/support/6>`_. If you have many choices to include on a map, try a provider other than Google or Mapbox. You can also use a :ref:`choice filter <cascading-selects>` to reduce the number of choices that get mapped.
+
+.. note::
+    The only appearance that can combine with selection from map is `quick`.
+
+type
+ :tc:`select_one {list_name}`
+appearance
+ :tc:`map`
+
+If the choices that you want users to select from have a location, you can display them on a map. Each choice must have a ``geometry`` property that specifies the choice's geometry. You can use a GeoJSON attachment as a source of choices to map and each feature will become a choice with geometry. Alternately, you can add a ``geometry`` column to the **choices** tab or to an :ref:`external CSV file <building-selects-from-csv-files>`. When using a ``geometry`` column instead of a GeoJSON file, the geometry must be specified in :ref:`the ODK format <location-widgets>`. For example, you could attach data collected using another ODK form.
+
+.. image:: /img/form-widgets/select-from-map.*
+ :alt: Single select from map as displayed in the ODK Collect app on an Android phone. The question text is "Select a point" and it is displayed in a small top bar. Below that is a map with several markers. One of the markers is larger. At the bottom of the screen, there is information about the selected marker. Its label is "Restaurant Délicia". Several other properties are shown including `timestamp`, `version` and `amenity`. Below the properties, there is a rounded button with a save icon and the text "Select."
+
+Point choices are represented by map markers (:fa:`map-marker`). Tapping on a marker increases its size and displays all of the choice's properties at the bottom of the screen. Those properties are from:
+
+- additional columns when choices are specified the **choices** tab or an :ref:`external CSV file <building-selects-from-csv-files>`
+- the ``properties`` object when choices are specified in a GeoJSON file
+
+All of a choice's properties including ``geometry`` can be used in the rest of the form (see :ref:`referencing values in datasets <referencing-values-in-datasets>`) including in :ref:`choice filter <cascading-selects>` expressions. Even if the choices are specified from a GeoJSON file, the ``geometry`` property is made available to the form in :ref:`the ODK format <location-widgets>`, NOT as GeoJSON.
+
+If your geospatial data comes from an external source, you can :ref:`customize the label and underlying value <customizing-label-and-value>`.
+
+
 .. _image-map-select:
 
-Image map select widget
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Select from image widget
+""""""""""""""""""""""""""
 
 type
   :tc:`select_one {list_name}`, :tc:`select_multiple {list-name}`
