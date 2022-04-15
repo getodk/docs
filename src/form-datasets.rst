@@ -13,6 +13,8 @@
   ezeke
   Eziama
   eziama
+  geojson
+  Giger
   lga
   lgas
   Poperi
@@ -121,8 +123,7 @@ GeoJSON files referenced in forms can have any number of ``features`` and any nu
                   "title": "HR Giger Museum",
                   "annual_visits": 40000
               }
-          },
-          ...
+          }
       ]
     }
 

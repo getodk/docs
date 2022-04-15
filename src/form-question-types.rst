@@ -12,6 +12,8 @@
   dateTime
   deviceid
   dk
+  geospatial
+  Mapbox
   na
   nocalendar
   nolabel
@@ -754,6 +756,8 @@ For example, to use :th:`feature_id` for the underlying value and :th:`human_nam
   hospital_a,Hospital A
   hospital_b,Hospital B
 
+.. _select-appearances:
+
 Select appearances
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -1044,7 +1048,7 @@ type
 appearance
  :tc:`map`
 
-If the choices that you want users to select from have locations, you can display them on a map. Each choice must have a ``geometry`` property that specifies the choice's geometry. You can use a :ref:`GeoJSON attachment <selects-from-geojson>` as a source of choices to map. Alternately, you can add a :th:`geometry` column to the **choices** tab or to an :ref:`external CSV file <building-selects-from-csv-files>`. When using a ``geometry`` column instead of a GeoJSON file, the geometry must be specified in :ref:`the ODK format <location-widgets>`. For example, you could attach data collected using another ODK form and make sure that the column containing ``geopoint`` values has name :th:`geometry`.
+If the choices that you want users to select from have locations, you can display them on a map. Each choice must have a ``geometry`` property that specifies the choice's geometry. You can use a :ref:`GeoJSON attachment <selects-from-geojson>` as a source of choices to map. Alternately, you can add a :th:`geometry` column to the **choices** tab or to an :ref:`external CSV file <selects-from-csv>`. When using a ``geometry`` column instead of a GeoJSON file, the geometry must be specified in :ref:`the ODK format <location-widgets>`. For example, you could attach data collected using another ODK form and make sure that the column containing ``geopoint`` values has name :th:`geometry`.
 
 .. image:: /img/form-widgets/select-from-map.*
  :alt: Single select from map as displayed in the ODK Collect app on an Android phone. The question text is "Select a point" and it is displayed in a small top bar. Below that is a map with several markers. One of the markers is larger. At the bottom of the screen, there is information about the selected marker. Its label is "Restaurant Délicia". Several other properties are shown including `timestamp`, `version` and `amenity`. Below the properties, there is a rounded button with a save icon and the text "Select."
@@ -1053,7 +1057,7 @@ When the map is first opened, it centers on the device's current location. There
 
 Point choices are represented by map markers (:fa:`map-marker`). Tapping on a marker increases its size and displays all of the choice's properties at the bottom of the screen. Those properties are from:
 
-- additional columns when choices are specified the **choices** tab or an :ref:`external CSV file <building-selects-from-csv-files>`
+- additional columns when choices are specified the **choices** tab or an :ref:`external CSV file <selects-from-csv>`
 - the ``properties`` object when choices are specified in a GeoJSON file
 
 Under the properties, there is a button to save the currently-selected feature to the form.
@@ -1275,6 +1279,8 @@ For example, if a Collect user captured a point while at the coordinates 12°22'
 `12.371400 -1.519700 305 17.4`
 
 Multiple points that form lines or shapes are separated by semicolons.
+
+.. seealso:: :ref:`Selects from a map <select-from-map>` for displaying existing geo features on a map for users to select from.
 
 .. note::
 
