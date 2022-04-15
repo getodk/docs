@@ -607,14 +607,15 @@ For date only, see :ref:`default-date-widget`. For time only, see :ref:`time-wid
 Select widgets
 -----------------
 
-Select widgets offer the :term:`participant` options to pick from.
-You can offer the participant
-a :ref:`single choice <single-select-widget>`,
-or the ability to :ref:`choose multiple answers <multi-select-widget>`. The order of the choices can be :ref:`randomized <randomize-choice-order>` for any of the select types described below. The list of choices available can also be :ref:`filtered <cascading-selects>` based on answers to previous questions.
+Select widgets offer options to pick from. Single selects allow selecting a :ref:`single choice <single-select-widget>`, and multi selects allow :ref:`choosing multiple answers <multi-select-widget>`.
 
-The options for a select question are listed
-on a sheet named **choices**, in your XLSForm file.
-The **choices** sheet has at least three columns:
+The options for a select question can be included in an XLSForm on a sheet named **choices** or attached as an :ref:`external dataset <selects-from-external-dataset>`.
+
+The order of the choices can be :ref:`randomized <randomize-choice-order>` for any of the select types described below. The list of choices available can also be :ref:`filtered <cascading-selects>` based on answers to previous questions. Selects from internal datasets can :ref:`include images as choices <select-columns-widget>`.
+
+Selects can be displayed in different ways using :ref:`appearances <select-appearances>`.
+
+The **choices** sheet for defining internal datasets has at least three columns:
 
 :th:`list_name`
   A set of choices for a single question share a common :th:`list_name`.
@@ -622,14 +623,13 @@ The **choices** sheet has at least three columns:
   on the **survey** sheet.
 
 :th:`name`
-  The canonical identifier for a specific choice. This value is what is stored on the completed form. If you :ref:`refer to a select response using a variable <variables>`, the :th:`name` string is returned.
+  The identifier for a specific choice. This value is what is stored on the completed form. If you :ref:`refer to a select response using a variable <variables>`, the :th:`name` string is returned.
 
-  As with the **survey** sheet, :th:`name` must not include spaces.
+  As in the **survey** sheet, the :th:`name` for a choice must not include spaces.
 
 :th:`label`
   The user-facing text displayed for the choice.
 
-Select widgets can :ref:`include images as choices <select-columns-widget>`.
 
 .. contents::
   :local:
@@ -660,6 +660,71 @@ type
   opt_abcd,c,C
   opt_abcd,d,D
 
+.. _multi-select-widget:
+
+Multi select widget
+~~~~~~~~~~~~~~~~~~~~~
+
+type
+  :tc:`select_multiple {list_name}`
+appearance
+  *none*
+
+Multi select questions allow selecting multiple answers. The response for the question will be the space-separated choices made by the user, in the order that they were selected.
+
+.. note::
+
+  The multi select widget supports
+  all of the same :th:`appearance` attributes
+  as the :ref:`single-select-widget` excluding the :ref:`quick <autoadvance>` appearance.
+
+.. image:: /img/form-widgets/default-multiselect.*
+  :alt: The default multi select widget as displayed in the ODK Collect app on an Android phone. The question text is, "Multi select widget." The hint text is, "select_multiple widget with no appearance, 4 text choices." Below that are four checkbox options labeled A, B, C, and D. Above the question text is the form group label, "This section contains 'Select Multi Widgets'"
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+
+  select_multiple opt_abcd,select_multi_widget,Multi select widget,"select_multiple type with no appearance, 4 text choices"
+
+.. csv-table:: choices
+  :header: list_name, name, label, media::image
+
+  opt_abcd,a,A
+  opt_abcd,b,B
+  opt_abcd,c,C
+  opt_abcd,d,D
+
+.. selects-from-external-dataset:
+
+Select from external dataset
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Files can be attached to form definitions. These :doc:`external datasets<form-datasets>` can be used as data sources for selects. The question type for single selection is :tc:`select_one_from_file` and for multiple selection, it is `select_multiple_from_file`. The full filename of the dataset including the extension goes after the type.
+
+type
+  :tc:`select_one_from_file {file.extension}`
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, hint
+
+  select_one_from_file hospitals.csv,hospital,Select hospital
+
+.. csv-table:: hospitals.csv
+  :header: name, label
+
+  hospital_a,Hospital A
+  hospital_b,Hospital B
+  hospital_c,Hospital C
+  hospital_d,Hospital D
+
+Select appearances
+~~~~~~~~~~~~~~~~~~~~
+
+Selects can be styled in various ways using the :tc:`appearance` column in an XLSForm. Unless otherwise indicated, the appearances described below can combine with single or multiple selects with either internal or external data sources.
 
 .. _select-minimal:
 
@@ -707,6 +772,9 @@ appearance
 When the :tc:`quick` appearance is added,
 the form advances immediately to the next question
 once a selection is made.
+
+.. note::
+    The `quick` appearance can only be used with single selection.
 
 .. video:: /vid/form-widgets/auto-advance.mp4
 
@@ -892,9 +960,6 @@ When the :tc:`no-buttons` appearance is added, the app displays choices without 
 
 Likert widget
 """"""""""""""""""""""""""""""""""
-.. versionadded:: 1.25
-
-  `ODK Collect v1.25.0 <https://github.com/getodk/collect/releases/tag/v1.25.0>`_
 
 type
  :tc:`select_one {list_name}`
@@ -924,54 +989,10 @@ If adding images, note that the images are referenced in the choices sheet, and 
  likert_widget,agree,Agree,agree.jpg
  likert_widget,strongly_agree,Strongly Agree,strongly_agree.jpg
 
-
-.. _multi-select-widget:
-
-Multi select widget
-~~~~~~~~~~~~~~~~~~~~~
-
-type
-  :tc:`select_multiple {list_name}`
-appearance
-  *none*
-
-Multi select questions support multiple answers.
-
-.. note::
-
-  The multi select widget supports
-  all of the same :th:`appearance` attributes
-  as the :ref:`single-select-widget` excluding the :ref:`quick <autoadvance>` appearance:
-
-.. image:: /img/form-widgets/default-multiselect.*
-  :alt: The default multi select widget as displayed in the ODK Collect app on an Android phone. The question text is, "Multi select widget." The hint text is, "select_multiple widget with no appearance, 4 text choices." Below that are four checkbox options labeled A, B, C, and D. Above the question text is the form group label, "This section contains 'Select Multi Widgets'"
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, hint
-
-  select_multiple opt_abcd,select_multi_widget,Multi select widget,"select_multiple type with no appearance, 4 text choices"
-
-.. csv-table:: choices
-  :header: list_name, name, label, media::image
-
-  opt_abcd,a,A
-  opt_abcd,b,B
-  opt_abcd,c,C
-  opt_abcd,d,D
-
-.. warning::
-
-  If you are using Aggregate and expect users to select many options, you may need to :doc:`increase the database field length to over 255 characters <aggregate-field-length>`.
-
-
 .. _image-map-select:
 
 Image map select widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. versionadded:: 1.13
 
 type
   :tc:`select_one {list_name}`, :tc:`select_multiple {list-name}`
@@ -1062,7 +1083,7 @@ As with questions themselves, choices can include :ref:`media <media>` (image, v
 
 .. note::
 
-  ``select_one`` and ``select_multiple`` questions using the ``compact`` appearances will not
+  ``select_one`` and ``select_multiple`` questions using the ``no-buttons`` appearances will not
   display media buttons next to choices. However, if a choice has audio, it will be played when
   the choice is selected.
 
@@ -1070,10 +1091,6 @@ As with questions themselves, choices can include :ref:`media <media>` (image, v
 
 Randomizing choice order
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. note::
-
-  Randomizing choice order support was added in Collect v1.18.2 and Central v1.0.0.
 
 To reduce bias, choice order can be randomized for any of the select question types described above. To display the choices in a different order each time the question is displayed, set **randomize** to **true** in the :th:`parameters` column of the XLSForm **survey** sheet:
 
