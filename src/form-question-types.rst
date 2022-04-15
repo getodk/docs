@@ -722,8 +722,8 @@ type
 
 .. _customizing-label-and-value:
 
-Customizing the label and value columns
-""""""""""""""""""""""""""""""""""""""""
+Customizing the label and value
+"""""""""""""""""""""""""""""""""
 
 When using an :doc:`external dataset <form-datasets>` as a data source for a select, the underlying value for each choice comes from:
 
@@ -1044,20 +1044,25 @@ type
 appearance
  :tc:`map`
 
-If the choices that you want users to select from have a location, you can display them on a map. Each choice must have a ``geometry`` property that specifies the choice's geometry. You can use a GeoJSON attachment as a source of choices to map and each feature will become a choice with geometry. Alternately, you can add a ``geometry`` column to the **choices** tab or to an :ref:`external CSV file <building-selects-from-csv-files>`. When using a ``geometry`` column instead of a GeoJSON file, the geometry must be specified in :ref:`the ODK format <location-widgets>`. For example, you could attach data collected using another ODK form.
+If the choices that you want users to select from have locations, you can display them on a map. Each choice must have a ``geometry`` property that specifies the choice's geometry. You can use a :ref:`GeoJSON attachment <selects-from-geojson>` as a source of choices to map. Alternately, you can add a :th:`geometry` column to the **choices** tab or to an :ref:`external CSV file <building-selects-from-csv-files>`. When using a ``geometry`` column instead of a GeoJSON file, the geometry must be specified in :ref:`the ODK format <location-widgets>`. For example, you could attach data collected using another ODK form and make sure that the column containing ``geopoint`` values has name :th:`geometry`.
 
 .. image:: /img/form-widgets/select-from-map.*
  :alt: Single select from map as displayed in the ODK Collect app on an Android phone. The question text is "Select a point" and it is displayed in a small top bar. Below that is a map with several markers. One of the markers is larger. At the bottom of the screen, there is information about the selected marker. Its label is "Restaurant Délicia". Several other properties are shown including `timestamp`, `version` and `amenity`. Below the properties, there is a rounded button with a save icon and the text "Select."
+
+When the map is first opened, it centers on the device's current location. There are buttons on the right to recenter on the current location and to show all available points.
 
 Point choices are represented by map markers (:fa:`map-marker`). Tapping on a marker increases its size and displays all of the choice's properties at the bottom of the screen. Those properties are from:
 
 - additional columns when choices are specified the **choices** tab or an :ref:`external CSV file <building-selects-from-csv-files>`
 - the ``properties`` object when choices are specified in a GeoJSON file
 
+Under the properties, there is a button to save the currently-selected feature to the form.
+
 All of a choice's properties including ``geometry`` can be used in the rest of the form (see :ref:`referencing values in datasets <referencing-values-in-datasets>`) including in :ref:`choice filter <cascading-selects>` expressions. Even if the choices are specified from a GeoJSON file, the ``geometry`` property is made available to the form in :ref:`the ODK format <location-widgets>`, NOT as GeoJSON.
 
 If your geospatial data comes from an external source, you can :ref:`customize the label and underlying value <customizing-label-and-value>`.
 
+If there is an :doc:`offline layer <collect-offline-maps>` specified, it will be displayed under the mapped choices. 
 
 .. _image-map-select:
 
