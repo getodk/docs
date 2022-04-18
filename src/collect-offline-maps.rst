@@ -14,8 +14,7 @@
 Using Offline Maps
 ====================
 
-Collect's :ref:`geopoint <geopoint-maps>`, :ref:`geotrace <geotrace-widget>`, and :ref:`geoshape <geoshape-widget>` questions can be configured to display different map data. The :ref:`mapping-settings` let you select a basemap to show, as well as a reference
-layer to show on top of the basemap.
+Collect's :ref:`location question types <location-widgets>`, :ref:`select from map question <select-from-map>`, and :doc:`filled form map <collect-form-map>` can be configured to display different map data. The :ref:`mapping-settings` let you select a basemap to show, as well as a reference layer to show on top of the basemap. Those settings are shared between all mapping components in a single :doc:`project <collect-projects>`.
 
 The data for all the available basemaps comes from services on the Internet, so the basemap will only be visible to users who are online. To choose a basemap, select a :guilabel:`Source` and then a :guilabel:`Style` if multiple styles are available.
 
