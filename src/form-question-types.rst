@@ -611,7 +611,7 @@ Select widgets
 
 Select widgets display choices to pick from. Single selects allow selecting a :ref:`single choice <single-select-widget>`, and multi selects allow :ref:`selecting multiple choices <multi-select-widget>`.
 
-The choices for a select question can be included on a sheet named **choices** directly in an XLSForm or attached as an :ref:`external dataset <selects-from-external-dataset>`.
+The choices for a select question can be included on a sheet named **choices** directly in an XLSForm or attached as an :ref:`external dataset <select-from-external-dataset>`.
 
 The order of the choices can be :ref:`randomized <randomize-choice-order>` for any of the select types described below. The list of choices available can also be :ref:`filtered <cascading-selects>` based on answers to previous questions. Selects from internal datasets can :ref:`include images as choices <select-columns-widget>`.
 
@@ -697,12 +697,12 @@ Multi select questions allow selecting multiple answers. The response for the qu
   opt_abcd,c,C
   opt_abcd,d,D
 
-.. selects-from-external-dataset:
+.. _select-from-external-dataset:
 
 Select from external dataset
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Files can be attached to form definitions. These :doc:`external datasets <form-datasets>` can be used as data sources for selects. The question type for single selection is :tc:`select_one_from_file` and for multiple selection, it is `select_multiple_from_file`. The full filename of the dataset including the extension goes after the type.
+Files can be attached to form definitions. These :doc:`external datasets <form-datasets>` can be used as data sources for selects. The question type for single selection is :tc:`select_one_from_file` and for multiple selection, it is :tc:`select_multiple_from_file`. The full filename of the dataset including the extension goes after the type.
 
 type
   :tc:`select_one_from_file {file.extension}`
@@ -1048,7 +1048,11 @@ type
 appearance
  :tc:`map`
 
-If the choices that you want users to select from have locations, you can display them on a map. Each choice must have a ``geometry`` property that specifies the choice's geometry. You can use a :ref:`GeoJSON attachment <selects-from-geojson>` as a source of choices to map. Alternately, you can add a :th:`geometry` column to the **choices** tab or to an :ref:`external CSV file <selects-from-csv>`. When using a ``geometry`` column instead of a GeoJSON file, the geometry must be specified in :ref:`the ODK format <location-widgets>`. For example, you could attach data collected using another ODK form and make sure that the column containing ``geopoint`` values has name :th:`geometry`.
+If the choices that you want users to select from have locations, you can display them on a map. Each choice must have a ``geometry`` property that specifies the choice's geometry. 
+
+You can use a :ref:`GeoJSON attachment <selects-from-geojson>` as a source of choices to map. Alternately, you can add a :th:`geometry` column to the **choices** tab or to an :ref:`external CSV file <selects-from-csv>`. 
+
+When using a ``geometry`` column instead of a GeoJSON file, the geometry must be specified in :ref:`the ODK format <location-widgets>`. For example, you could attach data collected using another ODK form and make sure that the column containing ``geopoint`` values has name :th:`geometry`.
 
 .. image:: /img/form-widgets/select-from-map.*
  :alt: Single select from map as displayed in the ODK Collect app on an Android phone. The question text is "Select a point" and it is displayed in a small top bar. Below that is a map with several markers. One of the markers is larger. At the bottom of the screen, there is information about the selected marker. Its label is "Restaurant Délicia". Several other properties are shown including `timestamp`, `version` and `amenity`. Below the properties, there is a rounded button with a save icon and the text "Select."

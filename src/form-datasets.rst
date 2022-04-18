@@ -92,10 +92,10 @@ Building selects from GeoJSON files
 
 GeoJSON files that follow `the GeoJSON spec <https://datatracker.ietf.org/doc/html/rfc7946>`_ can be used as datasets that populate select questions using ``select_one_from_file``. Selects from GeoJSON may be styled as maps using the :ref:`map appearance <select-from-map>` but can also use any other :ref:`select appearance <select-appearances>`. In order to be used by a form, a GeoJSON file:
 
-- *MUST* have a ``.geojson`` extension (NOT ``.json``)
-- *MUST* define a single top-level `FeatureCollection <https://datatracker.ietf.org/doc/html/rfc7946#section-3.3>`_
-- *MUST* include a unique identifier for each feature (by default, a top-level :th:`id`, falling back to an :th:`id` property, or can be :ref:`configured <customizing-label-and-value>`)
-- *MUST* only include features with `Point geometry <https://datatracker.ietf.org/doc/html/rfc7946#appendix-A.1>`_
+- must have a ``.geojson`` extension (NOT ``.json``)
+- must define a single top-level `FeatureCollection <https://datatracker.ietf.org/doc/html/rfc7946#section-3.3>`_
+- must include a unique identifier for each feature (by default, a top-level :th:`id`, falling back to an :th:`id` property, or can be :ref:`configured <customizing-label-and-value>`)
+- must only include features with `Point geometry <https://datatracker.ietf.org/doc/html/rfc7946#appendix-A.1>`_
 
 .. csv-table:: survey
   :header: type, name, label
@@ -127,9 +127,11 @@ GeoJSON files referenced in forms can have any number of ``features`` and any nu
       ]
     }
 
-Custom properties such as ``annual_visits`` above are displayed by :ref:`selects from map <select-from-map>`. All properties can be :ref:`referenced by any part of the form <referencing-values-in-datasets>`.
+All properties are displayed by :ref:`select from map <select-from-map>` questions and can be :ref:`referenced by any part of the form <referencing-values-in-datasets>`.
 
-A feature's :th:`geometry` can be accessed as ``geometry`` and is provided in :ref:`the ODK format <location-widgets>`. Given the GeoJSON file and the form definition above, if the user selected "HR Giger Museum", the value of ``${museum}`` would be ``"fs87b"``. The expression ``instance('museums')/root/item[id=${museum}]/geometry`` would evaluate to ``46.5841618 7.0801379 0 0`` which is a point in :ref:`the ODK format <location-widgets>`.
+A feature's :th:`geometry` can be accessed as ``geometry`` and is provided in :ref:`the ODK format <location-widgets>`. Given the GeoJSON file and the form definition above, if the user selected "HR Giger Museum", the value of ``${museum}`` would be ``"fs87b"``. 
+
+The expression ``instance('museums')/root/item[id=${museum}]/geometry`` would evaluate to ``46.5841618 7.0801379 0 0`` which is a point in the ODK format.
 
 
 .. _selects-from-xml:
