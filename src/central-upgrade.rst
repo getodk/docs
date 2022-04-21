@@ -19,6 +19,8 @@ Once you are logged into your server, navigate back to the project folder (``cd 
 
 .. warning::
 
+  If you are upgrading to Central v1.4, see :ref:`Upgrading to Central v1.4 <central-upgrade-1.4>` if you have tens of thousands of submissions.
+
   If you are upgrading to Central v1.3, see :ref:`Upgrading to Central v1.3 <central-upgrade-1.3>` to ensure you have the correct version of docker-compose.
 
   If you are upgrading to Central v1.2, see :ref:`Upgrading to Central v1.2 <central-upgrade-1.2>` to learn how to resolve any error messages using ``git pull``.
@@ -34,7 +36,14 @@ Next, you need to do a little bit of maintenance. Run ``docker prune``. If it th
 
 Finally, restart the running server to pick up the changes: ``docker-compose stop`` and ``docker-compose up -d``.
 
-.. _central-upgrade-1.3:
+.. _central-upgrade-1.4:
+
+Upgrading to Central v1.4
+-------------------------
+
+There are several time-consuming migrations in v1.4. If you have tens of thousands of submissions, consider temporarily increasing server performance and :ref:`memory allocation <central-install-custom-memory>` before upgrading.
+
+ .. _central-upgrade-1.3:
 
 Upgrading to Central v1.3
 -------------------------
