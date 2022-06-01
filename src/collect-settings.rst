@@ -102,6 +102,8 @@ To access User Interface settings:
 """"""""""""""""""""""""""""
   Sets the size of fonts used in the form-filling interface.
 
+.. _navigation:
+
 :guilabel:`Navigation`
 """""""""""""""""""""""
   Sets form navigation style for moving between questions.
@@ -171,6 +173,8 @@ To access Form Management settings:
       :alt: Form Management settings
 
 .. rubric:: Form update
+
+.. _blank-form-update-mode:
 
 :guilabel:`Blank form update mode`
 """""""""""""""""""""""""""""""""""
@@ -395,6 +399,8 @@ You can :ref:`password protect <admin-password>` the protected settings, so enum
 
 :guilabel:`User Settings`
   Displays a list of user settings and other features accessible in the :ref:`settings <general-settings>` screen. To hide features, uncheck them.
+
+.. _form-entry-settings:
 
 :guilabel:`Form Entry Settings`
   Displays a list of features related to viewing and filling out forms. To disable features, uncheck them.

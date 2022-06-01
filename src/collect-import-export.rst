@@ -16,6 +16,8 @@ Importing settings from an image saved on your device
 
 You can import settings from a QR code saved on your device by clicking on the :fa:`ellipsis-v` icon when scanning a QR code. Then select the :guilabel:`Import QRCode` option.
 
+.. _sharing-settings-with-another-device:
+
 Sharing settings with another device
 -----------------------------------------
 

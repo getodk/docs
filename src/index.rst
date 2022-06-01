@@ -71,6 +71,7 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
 
   form-design-intro
   xlsform
+  form-workflows
   form-question-types
   form-logic
   form-operators-functions

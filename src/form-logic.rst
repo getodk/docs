@@ -738,7 +738,7 @@ You can ask the same question or questions multiple times by wrapping them in :t
 
 .. warning::
 
-  Displaying repeating questions :ref:`on the same screen <field-list>` (inside a :tc:`field-list` group) is not supported.
+  You can apply the ``field-list`` appearance to a repeat to make all of the repeated questions go on a single screen. However, you can't have a ``repeat`` inside of another group with the ``field-list`` appearance.
 
 .. seealso::
     :doc:`form-repeats` describes strategies to address common repetition scenarios.
