@@ -46,3 +46,5 @@ redirects:
   style-guide/index.html: docs-style-guide
   visualize/index.html: aggregate-visualize
   collect-connect-aggregate/index.html: collect-connect
+  validate/index.html: https://github.com/getodk/validate
+  form-tools/index.html: form-design-intro
