@@ -2,8 +2,8 @@
 
   timestamp
 
-Logging enumerator behavior
-=============================
+Form Audit Log
+==============
 
 Collect can log the behavior of enumerators as they navigate through a form. This log has many uses including discovering:
 
