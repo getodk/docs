@@ -113,7 +113,7 @@ Many workflows can’t be captured by a single form submission because:
 
 Workflows can be split across multiple submissions of the same or different forms. The submissions are linked during analysis by a common entity identifier. The identifier can also optionally be used to :ref:`look up data about the selected entity <using-data-from-previous-encounters>`.
 
-The sections below describe some common tools and patterns for capturing multiple encounters across different submissions. As long as multiple submissions each have one field representing the same value, they can be linked no matter what their structure is so many variations are possible. 
+The sections below describe some common tools and patterns for capturing multiple encounters across different submissions. As long as multiple submissions each have one field representing the same identifier, they can be linked no matter what their structure is so many variations are possible. 
 
 .. _using-barcodes-to-link-encounters:
 
@@ -217,7 +217,7 @@ If you know your users have small devices, train them to swipe between questions
 
 After form entry
 ~~~~~~~~~~~~~~~~~~
-By default, form data, even after it has been submitted, stays on users’ devices and can be viewed from :guilabel:`View Sent Form` as well as the :doc:`submission map <collect-form-map>`. This can act as a reference for users or help with troubleshooting issues. If you are collecting sensitive data or wish to reduce device space used, you may want to enable the :ref:`Delete after send <delete-after-send>` setting.
+By default, form data, even after it has been submitted, stays on users’ devices and can be viewed from :guilabel:`View Sent Form` as well as the :doc:`submission map <collect-form-map>`. This can act as a reference for users or help with troubleshooting issues. If you are collecting sensitive data or wish to save device storage space, you may want to enable the :ref:`Delete after send <delete-after-send>` setting.
 
 You also have different options when users reach the end of your form. By default, forms are marked as finalized which means that they are ready for submission (manual or automatic) as soon as Collect can connect to the server. Users are also shown a checkbox to save without finalizing. You can change the default and/or hide this option. This can be useful for workflows that include a supervisor check before sending data, for example.
 
