@@ -8,7 +8,7 @@ Designing Workflows
 
 ODK is often described as a data collection tool but more broadly, ODK tools and forms help encode workflows or sequences of steps to achieve goals. One of the outputs of these workflows is generally data. Data collection can either be the primary action (for example in agricultural field mapping) or a way to confirm that the primary action was completed and to assess its quality (for example in vaccination campaigns).
 
-ODK provides rich functionality that can be mixed and matched without a prescribed structure. This approach allows for great flexibility but also places responsibility on the project designer to define a structure to support their work. The most important step of any project is to carefully consider its goals and the human workflows to achieve them. Then, the ODK features can be selected to support that workflow.
+ODK provides rich functionality that can be mixed and matched without a prescribed structure. This approach allows for great flexibility but also places responsibility on the project designer to define a structure to support their work. The most important step of any project is to carefully consider its goals and the human workflows to achieve them. Then, ODK features can be selected to support that workflow.
 
 This section presents common workflow patterns and the ODK functionality that can be used to support them. The techniques and ideas described can be mixed and matched to support your project's goals.
 
@@ -18,7 +18,7 @@ This section presents common workflow patterns and the ODK functionality that ca
 .. _single-encounters:
 
 Single encounters (cross-sectional)
----------------------
+-------------------------------------
 
 The simplest workflows involve collecting data at one point in time. Data is then submitted for reporting and analysis. These types of workflows would traditionally have been carried out with a paper form. For example:
 
@@ -52,8 +52,8 @@ Assigning entities to data collectors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 When there are many entities involved in a project, each may be assigned to a specific data collector. You can do this kind of assignment by adding a column to your entity list and filtering the list according to the data collector identity.
 
-* :fa:`external-link` `Example entity list <https://docs.google.com/spreadsheets/d/14noubnnBqnngg7lh5uwFJ-7KzDOxVMiwySUqCfD0kZA>`_
-* :fa:`external-link` `Example encounter form <https://docs.google.com/spreadsheets/d/1800wwKdeqUJfa_-_sdGLL_Iyg1-xHQMOsIart6MgWpw>`_
+* :fa:`external-link` `Example entity list with assignment <https://docs.google.com/spreadsheets/d/14noubnnBqnngg7lh5uwFJ-7KzDOxVMiwySUqCfD0kZA>`_
+* :fa:`external-link` `Example encounter form with assignment <https://docs.google.com/spreadsheets/d/1800wwKdeqUJfa_-_sdGLL_Iyg1-xHQMOsIart6MgWpw>`_
 
 .. _multiple-encounters-with-the-same-entity:
 
@@ -130,7 +130,7 @@ Once submissions are received, they can be linked through the unique identifier.
 
 Using the sample forms above, part of the workflow happens outside of the forms: users are responsible for knowing when to use the registration form and when to use the follow-up form. 
 
-When designing a workflow, you have to make a choice between multiple smaller, simpler forms or fewer bigger forms with more logic. It’s usually simpler to author and verify small forms but may require more training to ensure users pick the right one. Long forms with rich logic can be very useful for guiding users through a linear workflow but can be hard to verify and become hard to navigate if jumping around is necessary.
+When designing a workflow, you have to make a choice between multiple smaller, simpler forms or fewer bigger forms with more logic. It’s usually simpler to author and verify small forms but may require more training to ensure users pick the right one. Long forms with rich logic can be very useful for guiding users through a linear workflow but can be hard to verify and become hard to navigate if :ref:`jumping around <jumping>` is necessary.
 
 * :fa:`external-link` `Example of a single form that will be filled at each encounter <https://docs.google.com/spreadsheets/d/1aOY_Vp1zVqCe9I-nNvnEz_-oBfPWQb8ATGBMSqLxPSg>`_
 
