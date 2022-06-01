@@ -8,6 +8,9 @@ You will:
 .. contents::
  :local:
 
+.. note::
+  Once you can do these steps, deepen your skills by :doc:`learning how to use ODK for different data collection workflows <form-workflows>`.
+
 .. _getting-started-install-central:
 
 Get a Central server
