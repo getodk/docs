@@ -80,6 +80,7 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   form-audit-log
   launch-apps-from-collect
   form-tools
+  form-workflows
   form-best-practices
 
 .. toctree::
