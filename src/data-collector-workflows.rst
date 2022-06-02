@@ -3,8 +3,8 @@
   centric
   geospatial
 
-Designing Workflows
-=======================
+Data Collector Workflows
+========================
 
 ODK is often described as a data collection tool but more broadly, ODK tools and forms help encode workflows or sequences of steps to achieve goals. One of the outputs of these workflows is generally data. Data collection can either be the primary action (for example in agricultural field mapping) or a way to confirm that the primary action was completed and to assess its quality (for example in vaccination campaigns).
 

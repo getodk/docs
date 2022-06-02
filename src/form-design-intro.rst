@@ -13,7 +13,7 @@ ODK forms can be used to do things like:
 
 Forms are made of fields of  :doc:`different types <form-question-types>` which can each collect or display one piece of information. Visible fields generally represent questions and are displayed differently based on their type.
 
-Questions can be :ref:`grouped together <groups>` including :ref:`on one screen <field-list>`. They can also be :ref:`repeated <repeats>`. :doc:`Form logic <form-logic>`, :doc:`datasets <form-datasets>`, :ref:`hidden fields <hidden-questions>`, and :doc:`external apps <launch-apps-from-collect>` make it possible to create easy-to-use, but powerful forms that represent :doc:`complex workflows <form-workflows>`.
+Questions can be :ref:`grouped together <groups>` including :ref:`on one screen <field-list>`. They can also be :ref:`repeated <repeats>`. :doc:`Form logic <form-logic>`, :doc:`datasets <form-datasets>`, :ref:`hidden fields <hidden-questions>`, and :doc:`external apps <launch-apps-from-collect>` make it possible to create easy-to-use, but powerful forms that represent :doc:`complex data collector workflows <data-collector-workflows>`.
 
 .. _excel-based-form-creation:
 

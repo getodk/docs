@@ -79,7 +79,7 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   form-language
   form-audit-log
   launch-apps-from-collect
-  form-workflows
+  data-collector-workflows
   form-best-practices
   build-intro
 
