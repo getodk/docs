@@ -58,9 +58,28 @@ The contents of a settings QR code is a JSON object with objects for unprotected
 
 The JSON object is compressed using `zlib <http://www.zlib.net/manual.html>`_ before building the QR code. To build your own code:
 
-1) Write a JSON object containing the changed settings with a structure as shown above.
-2) Compress it using zlib.
-3) Build a QR code from the resulting data.
+1) Write a JSON object containing the changed settings with a structure as shown above. The JSON must contain keys for ``general`` and ``admin``, even if the associated values are empty objects.
+2) Compress it using zlib
+3) Encode the result to Base64
+4) Build a QR code from the resulting data
+
+Python script for building settings QR codes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: Python
+
+  from base64 import b64encode
+  import codecs
+  import json
+  import segno
+  import zlib
+
+  settings = { ... }
+
+  qr_data = b64encode(zlib.compress(json.dumps(settings).encode("utf-8")))
+
+  code = segno.make(qr_data, micro=False)
+  code.save('settings.png', scale=5)
 
 List of keys for all settings
 ------------------------------
