@@ -48,3 +48,4 @@ redirects:
   collect-connect-aggregate/index.html: collect-connect
   validate/index.html: https://github.com/getodk/validate
   form-tools/index.html: form-design-intro
+  form-workflows/index.html: data-collector-workflows

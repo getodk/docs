@@ -9,7 +9,7 @@ You will:
  :local:
 
 .. note::
-  Once you can do these steps, deepen your skills by :doc:`learning how to use ODK for different data collection workflows <form-workflows>`.
+  Once you can do these steps, deepen your skills by :doc:`learning how to use ODK for different data collector workflows <data-collector-workflows>`.
 
 .. _getting-started-install-central:
 
