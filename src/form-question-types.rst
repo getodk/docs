@@ -702,7 +702,9 @@ Multi select questions allow selecting multiple answers. The response for the qu
 Select from external dataset
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Files can be attached to form definitions. These :doc:`external datasets <form-datasets>` can be used as data sources for selects. The question type for single selection is :tc:`select_one_from_file` and for multiple selection, it is :tc:`select_multiple_from_file`. The full filename of the dataset including the extension goes after the type.
+Data files in CSV, geoJSON or XML format can be attached to form definitions. These :doc:`external datasets <form-datasets>` can be used as data sources for selects. The question type for single selection is :tc:`select_one_from_file` and for multiple selection, it is :tc:`select_multiple_from_file`. The full filename of the dataset including the extension goes after the type.
+
+Selects from external datasets can be used in all the same ways as internal selects. For example, they can be displayed differently using :ref:`appearances <select-appearances>` or filtered using :ref:`choice filters <cascading-selects>`.
 
 type
   :tc:`select_one_from_file {file.extension}`
