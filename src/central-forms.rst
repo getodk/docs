@@ -130,9 +130,7 @@ Here, you can get a brief summary of the status of your form, and recommended ne
 
    .. image:: /img/central-forms/checklist.png
 
-The documentation on this page is a more detailed introductory explanation of form management in ODK Central, but the checklist you find on the Overview page is tailored to the current status of your form and your project and is a great place to look when you aren't sure what to do next.
-
-In the future, look forward to seeing even more useful information at-a-glance on this page.
+The currently published version information is on the left. If you have a Draft in progress, you'll see its information on the right.
 
 .. _central-forms-submissions:
 

@@ -3,65 +3,22 @@
 Managing Projects in Central
 ============================
 
-New as of `version 0.4 <https://github.com/getodk/central/releases/tag/v0.4.0-beta.1>`_, almost everything in ODK Central is organized by Project. Forms, Managers, and App Users are all partitioned by project. Both on the administration website as well as on a mobile device (within ODK Collect, for example), access to each project and its forms can be managed person-by-person. Only the Central administrative staff can create and grant initial access to projects.
+Almost everything in ODK Central is organized by Project: Forms, Managers, and App Users are all partitioned by project. Both on the administration website as well as on a mobile device (within ODK Collect, for example), access to each project and its forms can be managed person-by-person. Only the Central administrative staff can create and grant initial access to projects.
 
 .. _central-projects-overview:
 
-Projects Overview and Roadmap
------------------------------
+Projects Overview
+-----------------
 
-Projects are a work in progress that we will add to and improve over the next few releases. If you are working on ODK Central **version 0.4**, projects work like this:
+With Projects, you can organize your Forms and Users into separate efforts. Many things in Central, like Forms, cannot be created except inside a particular Project.
 
- - All **forms** must belong to a project. It is not possible to create a form that is not part of a project. It is not possible to assign one form to multiple projects (though the same form may be uploaded to as many projects as desired).
- - All **App Users** (who may access Project Forms through mobile device applications like Collect) must also belong to a particular project.
+   .. image:: /img/central-projects/structure.svg
 
-   - When a user connects to a project through Collect, they will only be able to see and submit new data to forms within that project.
+In general, Projects consist of Forms and their submissions, and the people assigned to facilitate the process.
 
-If you have upgraded to **version 0.5**, the following changes have been made:
+Administrators may manage any Project. Web Users that have been created on the Central server can be assigned a specific role for each Project: they can be a Project Manager able to see and change anything about the Project, a Data Collector who uses the Central website in a web browser to collect data, or another of our supported :ref:`Project Roles <central-users-web-role>`.
 
- - Only **Web Users** (who are allowed to administer ODK Central through the management website) marked **Administrator** have administrative access to the main site settings and all projects.
-
-   - However, all Web Users created before version 0.5 were already marked Administrator. You will have to go change their :ref:`Site-wide Role <central-users-web-role>` to None if you wish to remove these privileges.
-
- - Normal Web Users who are not Administrators can be made Managers on select projects. These users have the ability to manage anything about the project. They can:
-
-   - Appoint other project managers.
-   - Create, manage, and archive forms on the project.
-   - Access all submitted data within the project.
-   - Create, manage, and retire App Users for the project.
-   - Manage and archive the project itself.
-
-Since the major changes that occurred in version 0.5, we have additionally made the following improvements:
-
- - Better, centralized form state and access management.
- - More granular project access, in the form of a Project Viewer role which allows read-only access only to Forms and Submission data.
-
-In future releases, we have a `loose roadmap <https://github.com/getodk/central/issues/35>`_ with at least the following goals:
-
- - Change the relationship between Collect and Central so that with one button you can synchronize the mobile device to some centrally managed desired state.
-
-   - So for instance, you can decide which forms should be available on Collect within Central once, and within Collect just press "synchronize" to update to that state.
-   - Eventually, Collect app settings may be synchronized this way as well.
-   - And eventually, different App Users of different roles may be assigned different device states.
-
- - Download an entire project’s data at once.
-
-If you have ideas on how projects might be made more useful for you, please do not hesitate to leave us feedback on the `ODK Forum <https://forum.getodk.org/c/features>`_.
-
-.. _central-projects-migrate:
-
-Migrating to Projects
----------------------
-
-If you have an ODK Central server installed which is version 0.3 or earlier, your existing data will be migrated into a project when you update.
-
-All of your existing forms and App Users will be placed into a project entitled "Forms you created before projects existed". There are no longer site-wide App Users, so that panel will no longer be present.
-
-.. admonition:: Important: Upgrading to version 0.5
-
-  Mobile clients like Collect which were configured to access version 0.3 will continue to work without intervention for version 0.4, but they must be reconfigured with a new QR Code access token from Central before migration to 0.5, because for version 0.5 this backwards compatibility will be removed.
-
-  If you do not refresh the access tokens before upgrading to 0.5, you will have to reconfigure the device with a new QR Code from 0.5 in order to restore the connection.
+App Users are created specifically inside and for each Project, and can use a mobile device to collect Submission data. You can assign individual App User accounts access to specific Forms.
 
 .. _central-projects-create:
 
@@ -83,11 +40,13 @@ You can find all the projects you have access to in the Projects section of the 
 
    .. image:: /img/central-projects/list.png
 
-When you click on its name, you will be taken to its management page.
+You can also see in this list the Forms in each Project. You can click on a Form to navigate directly to it, or click on any of the numbers to see only Submissions in that state. Otherwise, click on a Project name to see its details.
 
    .. image:: /img/central-projects/overview.png
 
-Here, you will find some basic details about the project, and a listing of all the forms in the project. You can click on any form name to :ref:`manage that form <central-forms-overview>` and view its submission data.
+Here, you will find some basic details about the project, and a listing of all the forms in the project. The text at the top of the Projects page is customizable per Project by Administrators and Project Managers, and can include tables, formatted text, links, images, and anything else supported by Markdown.
+
+You can click on any form name to :ref:`manage that form <central-forms-overview>` and view its submission data.
 
 .. _central-project-settings:
 
@@ -98,7 +57,9 @@ To edit Project Settings, first navigate to the Project, then click on the :guil
 
    .. image:: /img/central-projects/settings.png
 
-From here, you will be able to edit the Project Name. You will also see a section for Archiving a Project, which is described in more detail :ref:`below <central-project-archive>`.
+From here, you will be able to edit the Project name and description. Markdown is supported in the description field, so you can insert formatted text, headings, tables, images, and links. All members of a Project see the same description on the overview page, so it's a great place to put instructions, notices, and links to useful resources related to the Project.
+
+You will also see a section for Archiving a Project, which is described in more detail :ref:`below <central-project-archive>`. You can also enable :ref:`Project Managed Encryption <central-encryption-managed>`.
 
 .. _central-project-roles:
 
