@@ -25,7 +25,7 @@ GPS works by receiving signals from specific satellites so to help your device g
 
 It can take a while to get satellite lock when first attempting to get a geolocation. You can use a :ref:`background location question <metadata-start-geopoint>` at the beginning of your form definition to "warm" the GPS before data collectors to answer a :ref:`location question <location-widgets>`. You can also use an external app such as `GPS Status & Toolbox <https://play.google.com/store/apps/details?id=com.eclipsim.gpsstatus2>`_ for this purpose or to get more information about your device's sensors. See `its documentation <https://mobiwia.com/gpsstatus/>`_ for more details.
 
-Verify the device
-----------------------
+Check the device sensor
+-----------------------
 
 Different devices can have different quality sensors. If you are having trouble getting a geolocation reading from a specific device, it is likely either because the device model does not have high-quality sensors or because the specific device has a faulty sensor. If you can, try going to the same geolocation with a different device to compare performance. Sensor quality has improved over the years so in general, newer devices will get higher-accuracy readings more quickly.
