@@ -1318,18 +1318,18 @@ Captures the current geolocation from the device. The location is displayed in d
 
 This question type shows a dialog with the current accuracy and lets the data collector decide when to capture the point. For capturing location without data collector intervention, see :ref:`start-geopoint <metadata-start-geopoint>`. For a geopoint with a user-selected location, see :ref:`placement-map <placement-map-widget>`.
 
-.. rubric:: XLSForm with optional custom parameters
+.. rubric:: XLSForm with optional parameters
 
 .. csv-table:: survey
   :header: type, name, label, hint, parameters
 
   geopoint,geopoint_widget,Geopoint widget,geopoint type,capture-accuracy=10 warning-accuracy=10 allow-mock-accuracy=true 
 
-There are three parameters that can be used to customize a `geopoint` question's behavior:
+There are three parameters that can be used to customize a ``geopoint`` question's behavior:
 
-``capture-accuracy``: when the device accuracy reaches this value or better, the point will be automatically captured and the dialog will close. If you always want data collectors to make an explicit decision about accepting a point, set this value to 0. Defaults to 5, a target that can usually be reached by modern devices given enough time. We generally do not recommend setting this value to below 3m unless you are using an external GPS device. You can also :ref:`set an accuracy constraint <accuracy-constraint>`.
+``capture-accuracy``: when the device accuracy reaches this value or better, the point will be automatically captured and the dialog will close. If you always want data collectors to make an explicit decision about accepting a point, set this value to 0. Defaults to 5 (meters), a target that can usually be reached by modern devices given enough time. We generally do not recommend setting this value to below 3 (meters) unless you are using an external GPS device. You can also :ref:`set an accuracy constraint <accuracy-constraint>`.
 
-``warning-accuracy``: when the device accuracy is this value or worse, the dialog is red and displays a message stating that the accuracy is unacceptable. There is no enforcement of the threshold so if a data collector needs to capture a point with an unacceptable accuracy (e.g. because they can't wait any longer), they can do so. Set this value to the same value as ``capture-accuracy`` if you generally always want your data collectors to wait until the point is automatically captured. Defaults to 100m, about the length of a city block. In extreme conditions such as under dense forest canopy, any reported accuracy may be considered acceptable. In that case, you can set this value to a very large number.
+``warning-accuracy``: when the device accuracy is this value or worse, the dialog is red and displays a message stating that the accuracy is unacceptable. There is no enforcement of the threshold so if a data collector needs to capture a point with an unacceptable accuracy (e.g. because they can't wait any longer), they can do so. Set this value to the same value as ``capture-accuracy`` if you generally always want your data collectors to wait until the point is automatically captured. Defaults to 100 (meters), about the length of a city block. In extreme conditions such as under dense forest canopy, any reported accuracy may be considered acceptable. In that case, you can set this value to a very large number.
 
 ``allow-mock-accuracy``: set to ``true`` to use an external GPS device that uses the mock GPS provider. Otherwise, any location captured from a mock provider will have an accuracy of 0.
 
@@ -1339,7 +1339,9 @@ A dialog is used to give data collectors feedback on the location they are captu
 
 The dialog is designed to guide the data collector to capture a point with the best reported accuracy possible. The current accuracy is shown at the top of the dialog (1). A message below it (2) gives a qualitative assessment of the accuracy (e.g. unacceptable, poor) and suggested action (e.g. wait). The progress bar (3) gives a visual representation of progress towards an acceptable accuracy.
 
-The bottom half of the dialog displays troubleshooting information. The first line (4) shows the accuracy at which the point will be automatically captured. This is configured by the ``capture-accuracy`` parameter. You can ask data collectors to keep an eye on time elapsed (5) and let you know if it is systematically taking them a long time to get high-accuracy points. This may indicate an issue with their device. You can also train data collectors to use time elapsed to take some action. For example, you can let them know to capture any point available after waiting for 2 minutes. Number of satellites (6) can be useful when capturing points outdoors. A low number of satellites (under 4) may indicate that something is wrong with the device or its position. See :doc:`collect-location`.
+The bottom half of the dialog displays troubleshooting information. The first line (4) shows the accuracy at which the point will be automatically captured. This is configured by the ``capture-accuracy`` parameter. You can ask data collectors to watch time elapsed (5) and let you know if it is systematically taking them a long time to get high-accuracy points. This may indicate an issue with their device.
+
+You can also train data collectors to use time elapsed to take some action. For example, you can let them know to capture any point available after waiting for 2 minutes. Number of satellites (6) can be useful when capturing points outdoors. A low number of satellites (under 4) may indicate that something is wrong with the device or its position. See :doc:`collect-location`.
 
 .. _accuracy-constraint:
 
