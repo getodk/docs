@@ -335,6 +335,9 @@ Setting default responses
 
 To provide a default response to a question, put a value in the :th:`default` column. Defaults are set when a record is first created from a form definition. Defaults can either be fixed values (:ref:`static defaults <static-defaults>`) or the result of some expression (:ref:`dynamic defaults <dynamic-defaults>`).
 
+.. warning::
+  Defaults are not supported for media question types. The only exception is that images can have static defaults. This can be useful for :ref:`annotations <annotate-widget>`.
+
 .. _static-defaults:
 
 Static defaults

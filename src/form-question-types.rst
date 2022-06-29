@@ -1634,6 +1634,13 @@ appearance
 
 Adding the :tc:`annotate` appearance allows the user to draw on the image before submitting it.
 
+.. tip::
+  If you have a standard image to annotate, you can add that image's filename in the :th:`default` column. For example, put ``template.png`` in the :th:`default` column and Central will prompt you to attach a png to the form. Anyone who fills out the form will see the same image.
+
+  To enforce that this default image gets annotated, you can use a constraint such as `not(. = 'jr://images/template.png'))`. This works because Collect renames images after annotation.
+
+  Also see :ref:`select from image <image-map-select>`.
+
 .. image:: /img/form-widgets/annotate-start.*
   :alt: The Annotate form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Annotate widget." The hint text is, "image type with annotate appearance." There are three buttons: "Take Picture," "Choose Image," and "Markup Image." The Markup Image button is disabled. Above the question text is the form group name "Image widgets."
 
