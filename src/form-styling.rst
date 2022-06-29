@@ -225,8 +225,6 @@ which will open in the device's default browser.
 Escaping Markdown
 ~~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 1.15
-
 If you want to include literal asterisks or underscores,
 escape them with a back-slash (``\``).
 If you want to include a literal back-slash,
@@ -237,7 +235,7 @@ you'll need to escape that too.
 .. csv-table::
   :header: type, name, label, hint
 
-  note, escape_md, \# This headline is normal sized, \*Asterisks\* and \_underscores\_ and one slash: \\
+  note, escape_md, \\# This headline is normal sized, An asterisk: \\* and an underscore: \\_ and one slash: \\\\\\
 
 .. _inline-html:
 
