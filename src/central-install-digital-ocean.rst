@@ -47,7 +47,7 @@ As you continue down this page, there are a few options that may be important to
  - If you are technically savvy and understand what an SSH key is, there is a field here that you will want to fill in. If not, don't worry about it.
 
 .. tip::
-  If you choose a 1GB server and you have problems with exporting attachments, read :ref:`this troubleshooting tip <export-produces-corrupt-zip>`.
+  If you choose a 1GB server we strongly recommend you :ref:`add swap <central-install-digital-ocean-swap>`.
 
 Once you click on **Create**, you'll be taken back to the Droplet management page. It may think for a moment, and then your new server should appear. Next to it will be an IP address, which should look something like ``183.47.101.24``. This is where your server is publicly located on the Internet. Don't worry, nobody can do anything with it until you let them.
 
