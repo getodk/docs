@@ -16,7 +16,11 @@ XLSForms can be created and edited by any application that works with ``.xlsx`` 
 
 Many users choose to use Google Sheets or Excel for the web so that they can collaborate on or publicly share their forms.
 
-One way to get started is by downloading or making a copy of `this form definition template <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_. You can hover over columns to see guidance about how to use them. The `All Widgets form definition <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ>`_ shows examples of all of the different user-visible question types.
+One way to get started is by downloading or making a copy of the form definition template below.
+
+* :fa:`external-link` `Form definition template <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_
+
+You can hover over columns to see guidance about how to use them. The `All Widgets form definition <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ>`_ shows examples of all of the different user-visible question types.
 
 The ODK documentation shows all form design examples as XLSForms and describes how XLSForms are used by ODK tools. There is also a general tutorial for building XLSForms on the `XLSForm website <http://xlsform.org/>`_.
 

@@ -191,7 +191,9 @@ Many workflows have a geospatial component to them. For example, a forestry work
 
 The form :doc:`submission map <collect-form-map>` for a form can be used as the landing screen for location-centric workflows. It can help plan travel and display completed work.
 
-Other tools for location-centric workflows include :ref:`select one from map <select-from-map>` and :doc:`offline layers <collect-offline-maps>`. External apps can also be used for things like wayfinding and navigation [link].
+Other tools for location-centric workflows include :ref:`select one from map <select-from-map>` and :doc:`offline layers <collect-offline-maps>`. External apps can also be used for things like wayfinding and navigation.
+
+* :fa:`external-link` `Example form that launches Organic Maps for navigation <https://docs.google.com/spreadsheets/d/1g4k3JD0qsoSULMnu4wA4menq8JCNhrtEc3WDk-lM67I/edit#gid=0>`_
 
 Using Collect settings for workflow support 
 --------------------------------------------
