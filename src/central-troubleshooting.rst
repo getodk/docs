@@ -57,12 +57,12 @@ To resolve this problem, first identify your upstream DNS servers. Run ``cat /ru
        nameserver 9.8.7.6
 
 
-Now, run ``nano /etc/docker/daemon.json`` to make those nameservers and, optionally, the Google DNS (8.8.8.8) as a fallback available to Docker. Put the following in the ``daemon.json`` file.
+Now, run ``nano /etc/docker/daemon.json`` to make those nameservers and, optionally, the Google DNS (8.8.8.8) as a fallback available to Docker. Your ``daemon.json`` file will look like the snippet below, but you will need to replace ``1.2.3.4`` and ``9.8.7.6`` with your nameserver IP addresses.
 
   .. code-block:: console
 
        {
-           "dns": ["<ip1 from above>", "<ip2 from above>", "8.8.8.8"]
+           "dns": ["1.2.3.4", "9.8.7.6", "8.8.8.8"]
        }
 
 Finally, stop the containers, restart Docker, and bring the containers back up with ``docker-compose stop``, ``systemctl restart docker`` and ``docker-compose up -d``.
