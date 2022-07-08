@@ -156,11 +156,13 @@ To connect with Excel or Power BI, follow these steps.
 
   * In Power BI, select the :guilabel:`Home` menu, then :guilabel:`Get Data`, then :guilabel:`OData feed`.
 
-2. Copy and paste in the link from Central and then select :guilabel:`OK`.
+2. Leave the feed type as :guilabel:`Basic` (not Advanced), then copy and paste in the link from Central and then select :guilabel:`OK`.
 
-3. Switch to :guilabel:`Basic` authentication, enter your Central credentials, and then :guilabel:`Connect`.
+   .. image:: /img/central-submissions/powerbi-url.png
 
-   .. image:: /img/central-submissions/excel-login.png
+3. Change the authentication type to :guilabel:`Basic` (not Anonymous), enter your Central email address and password, and then :guilabel:`Connect`.
+
+   .. image:: /img/central-submissions/powerbi-auth.png
 
 4. The :guilabel:`Navigator` window now appear. Select :guilabel:`Submissions`, then :guilabel:`Load`.
 
