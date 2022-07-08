@@ -1,6 +1,6 @@
 alabaster==0.7.10
 argh==0.26.2
-atomicwrites==1.2.1
+atomicwrites==1.4.1
 attrs==18.2.0
 Babel==2.9.1
 blessings==1.7
