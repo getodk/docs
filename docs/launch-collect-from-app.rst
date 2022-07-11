@@ -104,3 +104,6 @@ If the URI of a form or instance is known, it can be viewed or edited. For examp
   startActivity(intent);
  
 The same thing can be done with a specific instance.
+
+.. warning::
+  Launching Collect activities using their names is not supported because those names can change at any time.
