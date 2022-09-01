@@ -1,9 +1,3 @@
-.. spelling::
-  sub-domains
-  vCPU
-  GiB
-  IPv
-
 Installing on Amazon Web Services
 =================================
 

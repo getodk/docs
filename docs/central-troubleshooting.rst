@@ -1,8 +1,3 @@
-.. spelling::
-
-  nameservers
-  spammer
-
 .. _central-troubleshooting:
 
 Troubleshooting Central 

@@ -1,8 +1,3 @@
-.. spelling::
-
-  py
-  ss
-
 Docs Markup and Syntax Guide
 ================================
 

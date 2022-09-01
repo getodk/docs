@@ -1,10 +1,3 @@
-.. spelling::
-
-  databaseserver
-  Glassfish
-  useHttpOnly
-  sudo
-
 Installing on Tomcat
 ====================
 

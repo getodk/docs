@@ -1,7 +1,3 @@
-.. spelling::
-
-  defn
-
 ODK JavaRosa
 ############
 

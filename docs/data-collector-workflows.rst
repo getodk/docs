@@ -1,8 +1,3 @@
-.. spelling::
-
-  centric
-  geospatial
-
 Data Collector Workflows
 ========================
 

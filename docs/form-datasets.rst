@@ -1,27 +1,3 @@
-.. spelling::
-
-  Aba
-  aba
-  Abia
-  abia
-  afikpo
-  Afikpo
-  amasiri
-  Ebonyi
-  ebonyi
-  Ezeke
-  ezeke
-  Eziama
-  eziama
-  geojson
-  Giger
-  lga
-  lgas
-  Poperi
-  poperi
-  Umuogor
-  umuogor
-
 ************************
 Form Datasets
 ************************

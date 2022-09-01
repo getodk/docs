@@ -1,7 +1,3 @@
-.. spelling::
-
-  geocoding
-
 .. _central-install-digital-ocean:
 
 Installing Central on DigitalOcean

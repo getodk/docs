@@ -1,7 +1,3 @@
-.. spelling::
-
-  timestamp
-
 Form Audit Log
 ==============
 

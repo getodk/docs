@@ -1,7 +1,3 @@
-.. spelling::
-
-  macOS
-
 Backing Up Aggregate
 ====================
 

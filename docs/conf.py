@@ -14,6 +14,7 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 import platform
+import os
 
 # -- Project information -----------------------------------------------------
 
@@ -34,9 +35,9 @@ extensions = [ 'sphinxcontrib.spelling',
     'sphinx_design'
 ]
 
-# enchant requires an Intel chip
+# If using Apple Silicon, set env variable (assumes brew install of enchant)
 if 'arm' in platform.processor():
-    extensions.remove('sphinxcontrib.spelling')
+    os.environ['PYENCHANT_LIBRARY_PATH'] = '/opt/homebrew/lib/libenchant-2.dylib' 
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -79,3 +80,10 @@ html_show_sphinx = True
 
 html_favicon = '_static/img/odk-favicon.ico'
 html_logo = '_static/img/odk-logo.svg'
+
+
+spelling_word_list_filename='spelling_wordlist.txt'
+
+# Smart (q)uotes, (D)ashes, and (e)llipses
+smartquotes = True
+smartquotes_action = 'De'

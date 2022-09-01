@@ -1,7 +1,3 @@
-.. spelling::
-
-  un
-  
 Form List API
 ==============
 

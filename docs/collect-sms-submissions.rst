@@ -1,11 +1,5 @@
 :orphan:
 
-.. spelling::
-
-  Twilio
-  fn
-  ln
-
 Submitting filled forms via SMS (Disabled)
 ==========================================
 

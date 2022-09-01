@@ -1,7 +1,3 @@
-.. spelling::
-
-  abc
-
 Increasing Aggregate Field Length
 ====================================
 

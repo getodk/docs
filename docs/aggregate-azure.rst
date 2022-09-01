@@ -1,8 +1,3 @@
-.. spelling::
-  sub-domains
-  vcpu
-  GB
-
 Installing on Microsoft Azure
 =============================
 

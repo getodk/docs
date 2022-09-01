@@ -1,9 +1,5 @@
 :orphan:
 
-.. spelling::
-
-  Mumbai
-
 Google App Engine Support (Legacy)
 ==================================
 

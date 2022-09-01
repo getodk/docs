@@ -1,10 +1,3 @@
-.. spelling::
-
-  xform
-  xlsx
-  yyyymmddrr
-  th
-
 XLSForm
 =======
 

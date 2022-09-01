@@ -1,11 +1,3 @@
-.. spelling::
-
-  bday
-  bool
-  chkn
-  fsh
-    
-	
 Repeat Recipes and Tips
 ========================
 

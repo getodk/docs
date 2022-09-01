@@ -1,8 +1,3 @@
-.. spelling::
-
-  img
-  testAVD
-
 ********************************************
 Projecting ODK Collect onto another screen
 ********************************************

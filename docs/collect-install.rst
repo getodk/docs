@@ -1,6 +1,3 @@
-.. spelling::
-  nd
-
 Installing Collect
 ====================
 

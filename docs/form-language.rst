@@ -1,20 +1,3 @@
-.. spelling::
-
-  Anaranjado
-  Azul
-  Español
-  Púrpura
-  Qué
-  Quieres
-  Rojo
-  Seleccione
-  colores
-  gustan
-  prefs
-  te
-  tres
-  café
-
 Form Language
 ===================
 

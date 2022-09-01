@@ -1,10 +1,3 @@
-.. spelling::
-
-  logcat
-  bugreport
-  screencap
-
-
 Using Android Debug Bridge with Collect
 ===========================================
 

@@ -1,8 +1,3 @@
-.. spelling::
-
-  unfinalized
-  basemap
-
 Viewing filled forms on a map
 ================================
 

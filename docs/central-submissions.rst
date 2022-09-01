@@ -1,13 +1,3 @@
-.. spelling::
-
-  Ctrl
-  Cmd
-  concat
-  ã
-  ß
-  箸
-
-
 .. _central-submissions-overview:
 
 Managing Form Submissions in Central

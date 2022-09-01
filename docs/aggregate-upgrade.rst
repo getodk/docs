@@ -1,22 +1,3 @@
-.. spelling::
-
-  clickjacking
-  dateTime
-  datetime
-  init
-  itemset
-  JBoss
-  jr
-  memcache
-  Memcache
-  myformid
-  NaN
-  Nan
-  pgAdmin
-  Resteasy
-  ui
-  yyyymmddnn
-
 Upgrading Aggregate
 =====================
 

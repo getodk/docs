@@ -1,7 +1,3 @@
-.. spelling::
-
-  Redis
-
 .. _central-backup:
 
 Backing Up Central

@@ -1,34 +1,3 @@
-.. spelling::
-
-  abcd
-  ack
-  bitrate
-  br
-  BREATHCOUNT
-  Codabar
-  Comcond
-  concat
-  Datetime
-  dateTime
-  deviceid
-  dk
-  geospatial
-  GeoJSON
-  Mapbox
-  na
-  nocalendar
-  nolabel
-  partum
-  phonenumber
-  placementmap
-  podcast
-  preg
-  rect
-  substr
-  uw
-  ZXing
-
-
 Question Types
 =================
 

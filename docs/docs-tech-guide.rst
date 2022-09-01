@@ -1,8 +1,3 @@
-.. spelling::
-
-  src
-  Homebrew
-
 Docs Contributor Technical Guide
 =================================
 
@@ -1140,7 +1135,7 @@ Working on the docs
 
          .. code:: rst
 
-            .. spelling::
+            .. spelling:word-list::
 
                abc
                def

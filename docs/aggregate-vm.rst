@@ -1,8 +1,3 @@
-.. spelling::
-
-  readme
-  VirtualBox
-
 Installing the Virtual Machine
 ==============================
 

@@ -1,8 +1,3 @@
-.. spelling::
-
-  Arg
-  paul
-
 HTTP Requests and Responses
 ================================
 

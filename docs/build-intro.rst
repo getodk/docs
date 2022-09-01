@@ -1,7 +1,3 @@
-.. spelling::
-
-  sid
-
 ODK Build
 ===========
 

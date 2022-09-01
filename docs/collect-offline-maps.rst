@@ -1,16 +1,3 @@
-.. spelling:: 
-  basemap
-  Basemap
-  basemaps
-  Basemaps
-  geospatial
-  heatmaps
-  mapbox
-  Mapbox
-  pbf
-  tileset
-  tilesets
-
 Using Offline Maps
 ====================
 

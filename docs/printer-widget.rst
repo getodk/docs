@@ -1,13 +1,5 @@
 :orphan:
 
-.. spelling::
-
-  br
-  concat
-  
-
- 
-	
 Printing Labels with the Printer Widget
 ==========================================
 

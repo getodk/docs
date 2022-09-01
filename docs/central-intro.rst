@@ -1,7 +1,3 @@
-.. spelling::
-
-  Connectable
-
 .. _central-intro:
 
 ODK Central

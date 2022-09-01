@@ -1,14 +1,3 @@
-.. spelling::
-  basemap
-  Basemap
-  basemaps
-  Basemaps
-  bitrate
-  codec
-  Mapbox
-  Transifex
-  Unfinalized
-
 Using Collect Settings
 =====================================
 

@@ -1,8 +1,3 @@
-.. spelling::
-  sub-domains
-  vCPU
-  GB
-
 Installing on Google Cloud
 ==========================
 

@@ -1,13 +1,3 @@
-.. spelling::
-
-  Crashlytics
-  Firebase
-  Gejibo
-  Hussien
-  imei
-  org
-  Ph
-
 *********************
 Security and Privacy
 *********************

@@ -1,6 +1,3 @@
-.. spelling::
-  sub-domains
-
 Installing on DigitalOcean (recommended)
 ========================================
 

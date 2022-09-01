@@ -1,33 +1,3 @@
-.. spelling::
-
-  Anaranjado
-  Azul
-  Colores
-  Español
-  Nodesets
-  Púrpura
-  Qué
-  Rojo
-  Seleccione
-  arctan
-  arg
-  bday
-  bp
-  br
-  chkn
-  colores
-  fsh
-  gustan
-  jr
-  nodeset
-  prefs
-  seleccionados
-  te
-  tres
-  π
-  
-  
-	
 ******************************
 Form Operators and Functions
 ******************************

@@ -1,7 +1,3 @@
-.. spelling::
-
-  nav
-
 Tips for Making Good Contributions
 ====================================
 

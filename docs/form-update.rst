@@ -1,33 +1,3 @@
-.. spelling::
-
-  calificaciones
-  cnt
-  cursos
-  de
-  del
-  departamento
-  edad
-  elegido
-  Español
-  estudiante
-  identificación
-  Ingresa
-  Ingrese
-  Introduzca
-  los
-  nombre
-  Nombre
-  número
-  obtenidas
-  que
-  sid
-  su
-  todos
-  totales
-  el
-  las
-  th
-
 Updating forms in Aggregate
 ============================
 

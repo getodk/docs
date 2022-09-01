@@ -1,11 +1,3 @@
-.. spelling::
-
-  abbbc
-  abbc
-  colour
-  grey
-  zA
-
 Using regular expressions
 ============================
 

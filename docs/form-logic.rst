@@ -1,24 +1,3 @@
-.. spelling::
- 
-  ap
-  ar
-  bp
-  datetime
-  dir
-  fave
-  gndr
-  kwame
-  Kwame
-  mngr
-  nodeset
-  Nodesets
-  onwuachi
-  Onwuachi
-  sophia
-  timestamp
-  timestamping
-  dateTime
-
 ***********
 Form Logic
 ***********

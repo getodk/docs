@@ -1,7 +1,3 @@
-.. spelling::
-
-  pushpins
-
 Getting Data Out of Aggregate
 ================================
 

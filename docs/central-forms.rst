@@ -1,9 +1,3 @@
-.. spelling::
-
-  Undeleting
-  undelete
-
-
 .. _central-forms-overview:
 
 Managing Forms in Central
