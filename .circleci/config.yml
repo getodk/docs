@@ -22,20 +22,11 @@ jobs:
             sudo apt-get install python3-enchant
             pip3 install --user -r requirements.txt 
       - run:
-          name: Style guide check
-          command: |
-            paths=$(git diff origin/master... --name-only)
-            echo $paths
-            python3 style-test.py $paths -r src
-      - run:
           name: Build
           command: make deploy
       - run:
           name: Check spelling
           command: make spell-check
-      - run:
-          name: Build LaTex
-          command: make latex
       - run:
           name: Compress images
           command: pngquant build/_images/*.png --force --ext .png --verbose

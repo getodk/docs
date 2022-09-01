@@ -3,31 +3,10 @@ __pycache__/
 .pyc
 
 # build
-build/
-*-build/
-tmp*
-
-# emacs backups
-\#*\#
-.\#*
+_build/
 
 # macOS
 .DS_Store
 
-# pyenv
-.python-version
-
-# venv recommended environment
-odkenv/
-
-# literate programming
-style-checks.py
-extra.py
-
-# testing
-.hypothesis/
-.pytest_cache/
-
 # IDE files
-.idea/
 .vscode/
