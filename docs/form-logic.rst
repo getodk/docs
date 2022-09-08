@@ -14,13 +14,10 @@ in your `XLSForm`_ definition.
 
   Relevance, constraint and calculation evaluation :ref:`within the same screen <field-list>` is supported in Collect v1.22 and later. In earlier versions of Collect, questions tied by logic must be displayed on different screens.
 
-.. contents:: :depth: 2
- :local:
-
 Form logic building blocks
 ============================
 
- .. _variables:
+.. _variables:
 
 Variables
 -----------

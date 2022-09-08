@@ -6,9 +6,6 @@ Security and Privacy
 
 This document details known security and privacy considerations of the ODK software.
 
-.. contents::
-  :local:
-
 .. _license:
 
 License 

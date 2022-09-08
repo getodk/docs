@@ -43,7 +43,7 @@ Upgrading to Central v1.4
 
 There are several time-consuming migrations in v1.4. If you have tens of thousands of submissions, consider temporarily increasing server performance and :ref:`memory allocation <central-install-custom-memory>` before upgrading.
 
- .. _central-upgrade-1.3:
+.. _central-upgrade-1.3:
 
 Upgrading to Central v1.3
 -------------------------

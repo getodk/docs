@@ -3,11 +3,6 @@ Getting Started With ODK
 
 This document walks you through the recommended workflow to get started with ODK.
 
-You will:
-
-.. contents::
- :local:
-
 .. note::
   Once you can do these steps, deepen your skills by :doc:`learning how to use ODK for different data collector workflows <data-collector-workflows>`.
 

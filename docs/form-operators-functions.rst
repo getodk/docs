@@ -4,10 +4,6 @@ Form Operators and Functions
 
 :ref:`expressions` in :ref:`calculations <calculations>`, :ref:`constraints <constraints>`, and :ref:`relevants <relevants>`
 can contain operators and functions.
-
-.. contents::
-  :local:   
-  :depth: 2
     
 .. _form-operators:
 
@@ -103,8 +99,6 @@ Path operators
 Functions
 ===========
 
-.. contents::
-  :local:
     
 .. seealso:: `Functions in the ODK XForm Specification <https://getodk.github.io/xforms-spec/#xpath-functions>`_
 

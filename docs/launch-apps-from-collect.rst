@@ -1,9 +1,6 @@
 Launching External Apps
 ========================
 
-.. contents:: :local:
-  :depth: 1
-
 .. seealso::
 
   :doc:`launch-collect-from-app`

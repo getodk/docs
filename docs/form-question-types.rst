@@ -8,9 +8,6 @@ are specified in your `XLSForm`_ definition using the
 
 .. _XLSForm: http://xlsform.org
 
-.. contents:: :depth: 1
-  :local:
-
 .. tip::
 
   You can find an XLSForm with all available question types `here <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ/edit#gid=0>`_.
@@ -45,9 +42,6 @@ and the inputs from them are saved as literal strings.
 .. warning::
 
   If you are using Aggregate and expect answers to be more than 255 characters, you should :doc:`increase the database field length to over 255 characters <aggregate-field-length>`.
-
-.. contents::
- :local:
 
 .. _text-default:
 
@@ -146,9 +140,6 @@ either :ref:`integers <default-integer-widget>` or
 :ref:`floating-point decimals <default-decimal-widget>`.
 
 Number values can also be captured by the :ref:`range-widgets`.
-
-.. contents::
-  :local:
 
 .. _default-integer-widget:
 
@@ -293,9 +284,6 @@ a manual input is prompted.
 Date and time widgets
 ----------------------
 
-.. contents::
-  :local:
-
 .. _default-date-widget:
 
 Default date widget
@@ -398,9 +386,6 @@ Date widgets with non-Gregorian calendars
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Collect supports several non-Gregorian calendars.
-
-.. contents::
-  :local:
 
 .. note::
 
@@ -601,9 +586,6 @@ The **choices** sheet for defining internal datasets has at least three columns:
 
 :th:`label`
   The user-facing text displayed for the choice.
-
-.. contents::
-  :local:
 
 .. _single-select-widget:
 
@@ -1270,9 +1252,6 @@ Multiple points that form lines or shapes are separated by semicolons.
 
   In v2021.3 and later, you can opt out of this behavior by setting **allow-mock-accuracy** to **true** in the **parameters** column of your question in your XLSForm **survey** sheet. This is useful for external GPS devices that require Android's mock provider feature.
 
-.. contents::
-  :local:
-
 .. _geopoint-widget:
 
 Geopoint widget
@@ -1564,9 +1543,6 @@ Image widgets
 .. tip::
   Image files can be very large. We recommend always including :ref:`a maximum image size in form design <scaling-down-images>`. Also, consider making test submissions to your server with the Internet conditions you expect when gathering data to make sure that you can send files of the size you expect.
 
-.. contents::
- :local:
-
 .. _default-image-widget:
 
 Default image widget
@@ -1782,9 +1758,6 @@ In the parameters column, write ``max-pixels=`` followed by the desired maximum 
 Audio widgets
 ----------------
 
-.. contents::
- :local:
-
 Default audio widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1983,9 +1956,6 @@ Video widgets
 .. tip::
   Video files can be very large. We recommend configuring video options for every device you intend to use for data collection. Also make submissions to your server with the Internet conditions you expect when gathering data to make sure that you can send files of the size you expect. Note that Central :ref:`has a 100MB file upload size limit by default <file-upload-fails-with-413>`.
 
-.. contents::
- :local:
-
 .. _default-video-widget:
 
 Default video widget
@@ -2059,9 +2029,6 @@ The external app video widget is displayed when the :th:`appearance` attribute b
 
 File upload widget
 --------------------
-
-.. contents::
-  :local:
 
 .. _default_file-upload:
 
@@ -2167,9 +2134,6 @@ The following barcode formats are supported:
 
 .. _Barcode Scanner app: https://play.google.com/store/apps/details?id=com.google.zxing.client.android
 
-.. contents::
- :local:
-
 .. _default-barcode-widget:
 
 Default barcode widget
@@ -2214,9 +2178,6 @@ Range widgets
 ----------------
 
 Range widgets allow the user to select numbers from within a range that is visually represented as a number line. The parameters of the range widget are defined by :tc:`start`, :tc:`end`, and :tc:`step` values defined in the :th:`parameters` column of your XLSForm. The parameter values can be integers or decimals.
-
-.. contents::
-  :local:
 
 .. _range-widget-integers:
 
@@ -2543,9 +2504,6 @@ Hidden questions
 ------------------
 
 Not all question types render as visible widgets in Collect. Hidden fields collect and store values which are accessible as :ref:`variables <variables>` and available in :doc:`Central <central-intro>` and other data analysis tools.
-
-.. contents::
-  :local:
 
 .. _metadata:
 

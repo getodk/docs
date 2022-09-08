@@ -4,9 +4,6 @@ Repeat Recipes and Tips
 .. seealso::
     :ref:`repeats` describes repeat basics.
 
-.. contents:: :depth: 2
- :local:
-
 .. _referencing-answers-in-repeats:
 
 Referencing repeated questions from inside the repeat

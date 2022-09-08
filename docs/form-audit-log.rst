@@ -21,9 +21,6 @@ This information can inform form design and training or feed into data validatio
 
   If a version of Aggregate lower than 1.5.0 is used, **audit files will not be saved on the server**.
 
-.. contents:: :depth: 2
-  :local:
-
 .. _enabling-audit-logging:
 
 Enabling audit logging

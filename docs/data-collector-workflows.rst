@@ -7,8 +7,6 @@ ODK provides rich functionality that can be mixed and matched without a prescrib
 
 This section presents common workflow patterns and the ODK functionality that can be used to support them. The techniques and ideas described can be mixed and matched to support your project's goals.
 
-.. contents:: :depth: 1
-  :local:
 
 .. _single-encounters:
 
