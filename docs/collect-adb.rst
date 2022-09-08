@@ -159,7 +159,7 @@ use :command:`adb logcat` to capture log events during the crash.
 
    .. code-block:: console
 
-     adb logcat > logfile.txt
+    $ adb logcat > logfile.txt
 
    This will write all logged errors to your local file :file:`logfile.txt` as they occur.
 
@@ -181,7 +181,7 @@ you can pull a complete bug report from the device.
 
 .. code-block:: console
 
-  adb bugreport
+  $ adb bugreport
 
 This copies a ZIP file locally containing all system messages,
 error logs, and diagnostic output,
