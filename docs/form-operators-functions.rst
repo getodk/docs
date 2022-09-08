@@ -110,17 +110,17 @@ Control flow
 
 .. function:: if(expression, then, else)
 
-  Returns :arg:`then` if :arg:`expression` evaluates to ``True``. 
-  Otherwise, returns :arg:`else`.
+  Returns ``then`` if ``expression`` evaluates to ``True``. 
+  Otherwise, returns ``else``.
 
   
   
 .. function:: position(xpath)
 
   Returns an integer equal to the 1-indexed position of the current node
-  within the node defined by :arg:`xpath`.
+  within the node defined by ``xpath``.
   
-  Most often this is used in the form :tc:`position(..)`
+  Most often this is used in the form ``position(..)``
   to identify the current iteration index
   within a repeat group.  
   
@@ -130,7 +130,7 @@ Control flow
 
 .. function:: once(expression)
 
-  Returns the value :arg:`expression` if the question's value is empty.
+  Returns the value ``expression`` if the question's value is empty.
   Otherwise, returns the current value of the question.
 
   This can be used to ensure that a random number is only generated once,
@@ -161,8 +161,8 @@ Select questions
 
 .. function:: selected(space_delimited_array, string)
 
-  Returns ``True`` if :arg:`string` 
-  is a member of :arg:`space_delimited_array`,
+  Returns ``True`` if ``string`` 
+  is a member of ``space_delimited_array``,
   otherwise returns ``False``.
   
   Commonly used to determined if a specific choice was selected
@@ -177,12 +177,12 @@ Select questions
   
 .. function:: selected-at(space_delimited_array, n)
 
-  Returns the string at the :arg:`n`\ :sup:`th` position 
-  of the :arg:`space_delimited_array`.
+  Returns the string at the ``n``\ :sup:`th` position 
+  of the ``space_delimited_array``.
   (The array is zero-indexed.)
   Returns an empty string if the index does not exist.  
   
-  This can be used to get the :th:`name` of a selected choice 
+  This can be used to get the ``name`` of a selected choice 
   from a :ref:`multi-select question <multi-select-widget>`.
   (This is possible because 
   a :ref:`reference to <variables>` a select question
@@ -191,7 +191,7 @@ Select questions
   .. note::
   
     If used to get a choice name from a select question,
-    this function returns the :th:`name`, not the :th:`label`,
+    this function returns the ``name``, not the ``label``,
     of the selected choice.
     To get the label in the current language,
     use :func:`jr:choice-name`.
@@ -253,11 +253,11 @@ Select questions
 
 .. function:: jr:choice-name(choice_name, 'select_question')
 
-  Returns the label value, in the active language, associated with the :arg:`choice_name` in the list of choices for the :arg:`select_question`.
+  Returns the label value, in the active language, associated with the ``choice_name`` in the list of choices for the ``select_question``.
   
   .. note::
   
-    You have to wrap the :arg:`select_question` reference in quotes.
+    You have to wrap the ``select_question`` reference in quotes.
     
     .. code-block:: none
     
@@ -317,17 +317,17 @@ Repeat groups
       :ref:`referring to a question by name <variables>`
       will return a nodeset containing all the responses to that question.
       
-      Nodesets can also be created by joining two or more nodes with pipes: :tc:`/data/age | /data/name`.
+      Nodesets can also be created by joining two or more nodes with pipes: ``/data/age | /data/name``.
 
         
 .. function:: indexed-repeat(name, group, i [, sub_grp, sub_i [, sub_sub_grp, sub_sub_i ]])
 
-  Returns the response value of question :arg:`name`
-  from the repeat-group :arg:`group`,
-  in iteration :arg:`i`.
+  Returns the response value of question ``name``
+  from the repeat-group ``group``,
+  in iteration ``i``.
   
   Nested repeat groups can be accessed 
-  using the :arg:`sub` and :arg:`sub_sub` parameters.
+  using the ``sub`` and ``sub_sub`` parameters.
 
   .. seealso:: :ref:`referencing-answers-in-repeats`
 
@@ -337,7 +337,7 @@ Repeat groups
 
 .. function:: count(nodeset)
 
-  Returns the number of items in :arg:`nodeset`. This can be used to count the number of repetitions in a :ref:`repeat group <repeats>`.
+  Returns the number of items in ``nodeset``. This can be used to count the number of repetitions in a :ref:`repeat group <repeats>`.
 
   .. container:: details
   
@@ -345,11 +345,11 @@ Repeat groups
   
 .. function:: count-non-empty(nodeset)
 
-  Returns the number of non-empty members of :arg:`nodeset`.
+  Returns the number of non-empty members of ``nodeset``.
 
 .. function:: sum(nodeset)
 
-  Returns the sum of the members of :arg:`nodeset`.
+  Returns the sum of the members of ``nodeset``.
   
   Can be used to :ref:`tally responses to a repeated select question <counting-answers>`.
   
@@ -359,7 +359,7 @@ Repeat groups
 
 .. function:: max(nodeset)
 
-  Returns the largest member of :arg:`nodeset`.
+  Returns the largest member of ``nodeset``.
   
   .. container:: details
   
@@ -376,7 +376,7 @@ Repeat groups
 
 .. function:: min(nodeset)
 
-  Returns the smallest member of :arg:`nodeset`.
+  Returns the smallest member of ``nodeset``.
 
   .. container:: details 
    
@@ -414,7 +414,7 @@ Searching and matching strings
 
 .. function:: regex(string, expression)
 
-    Returns ``True`` if :arg:`string` is an *exact and complete* match for :arg:`expression`.
+    Returns ``True`` if ``string`` is an *exact and complete* match for ``expression``.
 
   .. seealso:: :doc:`form-regex`
 
@@ -425,40 +425,40 @@ Searching and matching strings
 
 .. function:: contains(string, substring)
 
-  Returns ``True`` if the :arg:`string` contains the :arg:`substring`.
+  Returns ``True`` if the ``string`` contains the ``substring``.
 
 .. function:: starts-with(string, substring)
 
-  Returns ``True`` if :arg:`string` begins with :arg:`substring`.
+  Returns ``True`` if ``string`` begins with ``substring``.
 
 .. function:: ends-with(string, substring)
 
-  Returns ``True`` if the :arg:`string` ends with :arg:`substring`.
+  Returns ``True`` if the ``string`` ends with ``substring``.
 
 
 .. function:: substr(string, start[, end]) 	
 
-  Returns the substring of :arg:`string` beginning at the index :arg:`start` and extending to (but not including) index :arg:`end` (or to the termination of :arg:`string`, if :arg:`end` is not provided). Members of :arg:`string` are zero-indexed.
+  Returns the substring of ``string`` beginning at the index ``start`` and extending to (but not including) index ``end`` (or to the termination of ``string``, if ``end`` is not provided). Members of ``string`` are zero-indexed.
   
 .. function:: substring-before(string, target)
 
-  Returns the substring of :arg:`string` *before* the first occurrence of the :arg:`target` substring. If the :arg:`target` is not found, or :arg:`string` begins with the :arg:`target` substring, then this will return an empty string.
+  Returns the substring of ``string`` *before* the first occurrence of the ``target`` substring. If the ``target`` is not found, or ``string`` begins with the ``target`` substring, then this will return an empty string.
 
 .. function:: substring-after(string, target)
 
-  Returns the substring of :arg:`string` *after* the first occurrence of the :arg:`target` substring. If the :arg:`target` is not found this will return an empty string.
+  Returns the substring of ``string`` *after* the first occurrence of the ``target`` substring. If the ``target`` is not found this will return an empty string.
 
 .. function:: translate(string, fromchars, tochars)
 
-  Returns a copy of :arg:`string`, where every occurrence of a character in :arg:`fromchars` is replaced by the corresponding character in :arg:`tochars`. If :arg:`fromchars` is longer than :arg:`tochars` then every occurrence of a character in :arg:`fromchars` that does not have a corresponding character in :arg:`tochars` will be removed.
+  Returns a copy of ``string``, where every occurrence of a character in ``fromchars`` is replaced by the corresponding character in ``tochars``. If ``fromchars`` is longer than ``tochars`` then every occurrence of a character in ``fromchars`` that does not have a corresponding character in ``tochars`` will be removed.
 
 .. function:: string-length(string)
 
-  Returns the number of characters in :arg:`string`. If no value is passed in, returns the number of characters in the value of the question that this function call is tied to which can be useful in a :th:`constraint` expression.
+  Returns the number of characters in ``string``. If no value is passed in, returns the number of characters in the value of the question that this function call is tied to which can be useful in a ``constraint`` expression.
 
 .. function:: normalize-space(string)
 
-  Returns a string with normalized whitespace by stripping leading and trailing whitespace of :arg:`string` and replacing sequences of whitespace characters with a single space. If no value is passed in, normalizes whitespace of the value of the question that this function call is tied to.
+  Returns a string with normalized whitespace by stripping leading and trailing whitespace of ``string`` and replacing sequences of whitespace characters with a single space. If no value is passed in, normalizes whitespace of the value of the question that this function call is tied to.
   
 .. _string-combination-functions:
   
@@ -467,12 +467,12 @@ Combining strings
 
 .. function:: concat(arg [, arg [, arg [, arg [...]]]])
 
-  Concatenates one or more arguments into a single string. If any :arg:`arg` is a :term:`nodeset`, the values within the set are concatenated into a string.
+  Concatenates one or more arguments into a single string. If any ``arg`` is a :term:`nodeset`, the values within the set are concatenated into a string.
 
   
 .. function:: join(separator, nodeset)
 
-  Joins the members of :arg:`nodeset`, using the string :arg:`separator`.
+  Joins the members of ``nodeset``, using the string ``separator``.
 
 .. _string-conversion-functions:
   
@@ -481,12 +481,12 @@ Converting to and from strings
 
 .. function:: boolean-from-string(string)
 
-  Returns ``True`` if :arg:`string` is "true" or "1".
+  Returns ``True`` if ``string`` is "true" or "1".
   Otherwise, ``False``.
 
 .. function:: string(arg)
 
-   Converts :arg:`arg` to a string.
+   Converts ``arg`` to a string.
 
 .. _math-functions:
   
@@ -512,29 +512,29 @@ Number handling
 
 .. function:: round(number, places)
 
-  Rounds a decimal :arg:`number` to some number of decimal :arg:`places`.
+  Rounds a decimal ``number`` to some number of decimal ``places``.
 
 .. function:: int(number) 	
 
-  Truncates the fractional portion of a decimal :arg:`number` to return an integer.
+  Truncates the fractional portion of a decimal ``number`` to return an integer.
 
 .. function:: number(arg)
 
-  Converts :arg:`arg` to number value.
+  Converts ``arg`` to number value.
   
-  If :arg:`arg` is a string of digits, returns the number value.
+  If ``arg`` is a string of digits, returns the number value.
   
-  If :arg:`arg` is ``True``, returns 1. If :arg:`arg` is ``False``, returns 0.
+  If ``arg`` is ``True``, returns 1. If ``arg`` is ``False``, returns 0.
   
-  If :arg:`arg` cannot be converted, returns ``NaN`` (not a number).
+  If ``arg`` cannot be converted, returns ``NaN`` (not a number).
 
 .. function:: digest(data, algorithm, encoding method (optional))   
 
-  Computes and returns the hash value of the data :arg:`string` using the indicated hash algorithm :arg:`string`, and encoding this hash value using the optional encoding :arg:`string`.
+  Computes and returns the hash value of the data ``string`` using the indicated hash algorithm ``string``, and encoding this hash value using the optional encoding ``string``.
   
-  Options for the algorithm are :arg:`MD5`, :arg:`SHA-1`, :arg:`SHA-256`, :arg:`SHA-384`, :arg:`SHA-512`. 
+  Options for the algorithm are ``MD5``, ``SHA-1``, ``SHA-256``, ``SHA-384``, ``SHA-512``. 
   
-  If the third parameter is not specified, the encoding is :arg:`base64`. Valid options for the encoding are :arg:`base64` and :arg:`hex`.
+  If the third parameter is not specified, the encoding is ``base64``. Valid options for the encoding are ``base64`` and ``hex``.
 
   This function can be useful if, for example, someone wants to build a unique identifier from sensitive data like a national ID number without compromising that data.
   
@@ -547,51 +547,51 @@ Calculation
 
 .. function:: pow(number, power)
 
-  Raises a :arg:`number` to a :arg:`power`.
+  Raises a ``number`` to a ``power``.
 
 .. function:: log(number)
 
-  Returns the natural log of :arg:`number`.
+  Returns the natural log of ``number``.
 
 .. function:: log10(number)
 
-  Returns the base-10 log of :arg:`number`.
+  Returns the base-10 log of ``number``.
 
 .. function:: abs(number)
 
-  Returns the absolute value of :arg:`number`.
+  Returns the absolute value of ``number``.
 
 .. function:: sin(number)
 
-  Returns the sine of :arg:`number`.
+  Returns the sine of ``number``.
 
 .. function:: cos(number)
 
-  Returns the cosine of :arg:`number`.
+  Returns the cosine of ``number``.
   
 .. function:: tan(number)
 
-  Returns the tangent of :arg:`number`.
+  Returns the tangent of ``number``.
 
 .. function:: asin(number)
 
-  Returns the arc sine of :arg:`number`.
+  Returns the arc sine of ``number``.
   
 .. function:: acos(number)
 
-  Returns the arc cosine of :arg:`number`.
+  Returns the arc cosine of ``number``.
 
 .. function:: atan(number)
 
-  Returns the arctan of :arg:`number`.
+  Returns the arctan of ``number``.
 
 .. function:: atan2(y,x)
 
-  Returns the multi-valued inverse tangent of :arg:`y`, :arg:`x`.
+  Returns the multi-valued inverse tangent of ``y``, ``x``.
 
 .. function:: sqrt(number) 
 
-  Returns the square root of :arg:`number`.
+  Returns the square root of ``number``.
 
 .. function:: exp(x) 
 
@@ -632,13 +632,13 @@ Converting dates and time
   
 .. function:: decimal-date-time(dateTime)
 
-  Converts :arg:`dateTime` value to the number of days since January 1, 1970 (the `Unix Epoch`_).
+  Converts ``dateTime`` value to the number of days since January 1, 1970 (the `Unix Epoch`_).
   
   This is the inverse of :func:`date`.
 
 .. function:: date(days)
 
-  Converts an integer representing a number of :arg:`days` from January 1, 1970 (the `Unix Epoch`_) to a standard date value.
+  Converts an integer representing a number of ``days`` from January 1, 1970 (the `Unix Epoch`_) to a standard date value.
 
   .. _Unix Epoch: https://en.wikipedia.org/wiki/Unix_time
     
@@ -647,7 +647,7 @@ Converting dates and time
     
 .. function:: decimal-time(time)
 
-  Converts :arg:`time` to a number representing a fractional day.
+  Converts ``time`` to a number representing a fractional day.
   For example, noon is 0.5 and 6:00 PM is 0.75.
 
 
@@ -659,11 +659,11 @@ Formatting dates and times for display
   
 .. function:: format-date(date, format)
 
-  Returns :arg:`date` as a string formatted as defined by :arg:`format`.
+  Returns ``date`` as a string formatted as defined by ``format``.
   
   .. container:: details
   
-    The following identifiers are used in the :arg:`format` string:
+    The following identifiers are used in the ``format`` string:
 
     .. csv-table::
 
@@ -682,7 +682,7 @@ Formatting dates and times for display
   
 .. function:: format-date-time(dateTime, format)
 
-  Returns :arg:`dateTime` as a string formatted as defined by :arg:`format`.
+  Returns ``dateTime`` as a string formatted as defined by ``format``.
 
   .. container:: details
   
@@ -705,7 +705,7 @@ Geography
 .. function:: area(nodeset | geoshape) 	
 
   Returns the area, in square meters, 
-  of either a :arg:`nodeset` of geopoints or a :arg:`geoshape` value.
+  of either a ``nodeset`` of geopoints or a ``geoshape`` value.
   
   It takes into account the circumference of the Earth around the Equator but does not take altitude into account.
 
@@ -713,9 +713,9 @@ Geography
 
   Returns the distance, in meters, of either:
   
-  - a :arg:`nodeset` of geopoints
-  - the perimeter of a :arg:`geoshape`
-  - the length of a :arg:`geotrace` value
+  - a ``nodeset`` of geopoints
+  - the perimeter of a ``geoshape``
+  - the length of a ``geotrace`` value
   
   It takes into account the circumference of the Earth around the Equator and does not take altitude into account.
 
@@ -735,13 +735,13 @@ Utility
 
 .. function:: randomize(nodeset[, seed]) 	
 
-  Returns a shuffled :arg:`nodeset`.
+  Returns a shuffled ``nodeset``.
   
-  A shuffle with a numeric :arg:`seed` is deterministic and reproducible.
+  A shuffle with a numeric ``seed`` is deterministic and reproducible.
   
   The primary use for this function is to randomize the order of choices for a select question. The :ref:`documentation on select widgets <randomize-choice-order>` describes how this is done in XLSForm.
 
-  :func:`randomize` can only be used in a context where a :arg:`nodeset` is accepted. Note that questions of type **calculate** cannot reference a :arg:`nodeset`.
+  :func:`randomize` can only be used in a context where a ``nodeset`` is accepted. Note that questions of type **calculate** cannot reference a ``nodeset``.
     
 .. function:: uuid([length]) 	
 
@@ -749,19 +749,19 @@ Utility
   
   __ https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random)
   
-  With an argument it returns a random GUID of specified :arg:`length`.  
+  With an argument it returns a random GUID of specified ``length``.  
 
     
 .. function:: boolean(arg) 
 
-  Returns ``True`` if :arg:`arg` is:
+  Returns ``True`` if ``arg`` is:
   
   - a number other than zero
   - a non-empty string
   - a non-empty collection
   - a comparison or expressions that evaluates to ``True``.
    
-  Returns ``False`` if :arg:`arg` is:
+  Returns ``False`` if ``arg`` is:
   
   - the number 0
   - an empty string
@@ -776,24 +776,24 @@ Utility
   
 .. function:: coalesce(arg, arg) 	
 
-  Returns first non-empty value of the two :arg:`arg`\ s.
+  Returns first non-empty value of the two ``arg``\ s.
   Returns an empty string if both are empty or non-existent.
 
   
 .. function:: checklist(min, max, response[, response[, response [, ... ]]])
 
-  Returns ``True`` if the number of :arg:`response`\ s that are exactly the string "yes" is between :arg:`min` and :arg:`max`, inclusive.  
+  Returns ``True`` if the number of ``response``\ s that are exactly the string "yes" is between ``min`` and ``max``, inclusive.  
   
-  Set :arg:`min` or :arg:`max` to ``-1`` to make the argument not applicable.
+  Set ``min`` or ``max`` to ``-1`` to make the argument not applicable.
 
 .. function:: weighted-checklist(min, max, reponse, weight[, response, weight[, response, weight[, response, weight[, ... ]]])
 
   Returns ``True`` if 
-  the sum of the :arg:`weight`\ s 
-  of each :arg:`response` that is exactly the string "yes"
-  is between :arg:`min` and :arg:`max`, inclusive.
+  the sum of the ``weight``\ s 
+  of each ``response`` that is exactly the string "yes"
+  is between ``min`` and ``max``, inclusive.
   
-  Set :arg:`min` or :arg:`max` to ``-1`` to make the argument not 
+  Set ``min`` or ``max`` to ``-1`` to make the argument not 
 
   
 .. function:: true()

@@ -224,7 +224,7 @@ As of version 1.2, each submission has its own detail page which provides basic 
 
    .. image:: /img/central-submissions/details.png
 
-The title at the top is pulled from the :th:`instance_name` if there is one, otherwise it will be the automatically assigned ``instanceID``. We recommend you :ref:`define an instance_name <instance-name>` based on the data in each submission. This is especially important if you plan on using this page a lot, because it makes navigation much easier to have friendly names at the top of the page and in the web browser title and tab.
+The title at the top is pulled from the ``instance_name`` if there is one, otherwise it will be the automatically assigned ``instanceID``. We recommend you :ref:`define an instance_name <instance-name>` based on the data in each submission. This is especially important if you plan on using this page a lot, because it makes navigation much easier to have friendly names at the top of the page and in the web browser title and tab.
 
 
 Basic detail can be found along the left. If there are expected media attachments for this submission, that status information will be provided.

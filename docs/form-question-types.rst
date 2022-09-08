@@ -4,7 +4,7 @@ Question Types
 :doc:`collect-intro` supports forms with a wide variety of question types.
 The exact functionality and display style of each question
 are specified in your `XLSForm`_ definition using the
-:th:`type` and :th:`appearance` columns.
+``type`` and ``appearance`` columns.
 
 .. _XLSForm: http://xlsform.org
 
@@ -27,7 +27,7 @@ are specified in your `XLSForm`_ definition using the
     widget
 
       A rendered question screen in Collect.
-      The :th:`type` and :th:`appearance` of a question
+      The ``type`` and ``appearance`` of a question
       determine the widget that is displayed.
 
 
@@ -36,7 +36,7 @@ are specified in your `XLSForm`_ definition using the
 Text widgets
 --------------
 
-All of the text widgets share the :tc:`text` type,
+All of the text widgets share the ``text`` type,
 and the inputs from them are saved as literal strings.
 
 .. warning::
@@ -49,7 +49,7 @@ Default text widget
 ~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`text`
+  ``text``
 appearance
   *none*
 
@@ -74,9 +74,9 @@ Number text widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`text`
+  ``text``
 appearance
-  :tc:`numbers`
+  ``numbers``
 
 
 A numerical input that treats the input as a string, rather than a number.
@@ -106,13 +106,13 @@ External app string widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`text`
+  ``text``
 appearance
-  :tc:`ex.*`
+  ``ex.*``
 
 Launches an external app and receives a string input back from the external app. If the specified external app is not available, a manual input is prompted.
 
-The external app widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
+The external app widget is displayed when the ``appearance`` attribute begins with ``ex:``. The rest of the ``appearance`` string specifies the application to launch.
 
 .. seealso:: :doc:`launch-apps-from-collect`
 
@@ -147,7 +147,7 @@ Integer widget
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`integer`
+  ``integer``
 appearance
   *none*
 
@@ -181,7 +181,7 @@ Decimal widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`decimal`
+  ``decimal``
 appearance
   *none*
 
@@ -219,12 +219,12 @@ Thousands separator
 """"""""""""""""""""
 
 type
-  :tc:`integer`, :tc:`decimal`, (:tc:`text`)
+  ``integer``, ``decimal``, (``text``)
 appearance
-  :tc:`thousands-sep`, (:tc:`numbers`)
+  ``thousands-sep``, (``numbers``)
 
 
-If :tc:`thousands-sep` is added to :th:`appearance`,
+If ``thousands-sep`` is added to ``appearance``,
 :ref:`integer <default-integer-widget>`,
 :ref:`decimal <default-decimal-widget>`,
 and :ref:`number text <number-text-widget>` widgets
@@ -252,11 +252,11 @@ Number from an external app
 """"""""""""""""""""""""""""
 
 type
-  :tc:`integer`, :tc:`decimal`
+  ``integer``, ``decimal``
 appearance
-  :tc:`ex:*`
+  ``ex:*``
 
-By specifying an external app in the :th:`appearance`,
+By specifying an external app in the ``appearance``,
 your form can launches an external app and receive a number
 (integer or decimal)
 from the external app as input.
@@ -290,7 +290,7 @@ Default date widget
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`date`
+  ``date``
 appearance
   *none*
 
@@ -316,11 +316,11 @@ Date widget with spinner input
 """""""""""""""""""""""""""""""""
 
 type
-  :tc:`date`
+  ``date``
 appearance
-  :tc:`no-calendar`
+  ``no-calendar``
 
-The :tc:`no-calendar` appearance displays a spinner-style date selection. This is especially appropriate for selecting dates more than one year in the past or future.
+The ``no-calendar`` appearance displays a spinner-style date selection. This is especially appropriate for selecting dates more than one year in the past or future.
 
 .. image:: /img/form-widgets/date-no-calendar-start.*
   :alt: The no-calendar Date form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Date Widget." The hint text is "date type with no-calendar appearance." Below that is a button labeled "Select date." Below the button is the text, "No date selected." Above the question text is the form group name "Date and time widgets."
@@ -341,9 +341,9 @@ Month and year only
 """"""""""""""""""""""
 
 type
-  :tc:`date`
+  ``date``
 appearance
-  :tc:`month-year`
+  ``month-year``
 
 Collects only a month and year.
 
@@ -364,9 +364,9 @@ Year only
 """"""""""""
 
 type
-  :tc:`date`
+  ``date``
 appearance
-  :tc:`year`
+  ``year``
 
 Collects only a year.
 
@@ -398,9 +398,9 @@ Coptic calendar
 """""""""""""""""
 
 type
-  :tc:`date`
+  ``date``
 appearance
-  :tc:`coptic`
+  ``coptic``
 
 .. image:: /img/form-widgets/coptic-calendar-widget.*
   :alt:
@@ -411,9 +411,9 @@ Ethiopian calendar
 """"""""""""""""""""
 
 type
-  :tc:`date`
+  ``date``
 appearance
-  :tc:`ethiopian`
+  ``ethiopian``
 
 .. image:: /img/form-widgets/ethiopian-calendar-widget.*
   :alt:
@@ -424,9 +424,9 @@ Islamic calendar
 """"""""""""""""""
 
 type
-  :tc:`date`
+  ``date``
 appearance
-  :tc:`islamic`
+  ``islamic``
 
 .. image:: /img/form-widgets/islamic-calendar-widget.*
   :alt:
@@ -437,9 +437,9 @@ Bikram Sambat calendar
 """"""""""""""""""""""""
 
 type
-  :tc:`date`
+  ``date``
 appearance
-  :tc:`bikram-sambat`
+  ``bikram-sambat``
 
 .. image:: /img/form-widgets/bikram-sambat-calendar-widget.*
   :alt:
@@ -448,9 +448,9 @@ Myanmar calendar
 """"""""""""""""""
 
 type
-  :tc:`date`
+  ``date``
 appearance
-  :tc:`myanmar`
+  ``myanmar``
 
 .. image:: /img/form-widgets/myanmar-calendar-widget.*
   :alt:
@@ -459,9 +459,9 @@ Persian calendar
 """"""""""""""""""
 
 type
-  :tc:`date`
+  ``date``
 appearance
-  :tc:`persian`
+  ``persian``
 
 .. image:: /img/form-widgets/persian-calendar-widget.*
   :alt:
@@ -472,13 +472,13 @@ Time widget
 ~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`time`
+  ``time``
 appearance
   *none*
 
 A time selector. Captures only a specific time-of-day, not a date and time. For date and time, see the :ref:`datetime-widget`.
 
-The time widget does not accept any :th:`appearance` attributes.
+The time widget does not accept any ``appearance`` attributes.
 
 .. note::
   :name: time-zone-note
@@ -574,17 +574,17 @@ Selects can be displayed in different ways using :ref:`appearances <select-appea
 
 The **choices** sheet for defining internal datasets has at least three columns:
 
-:th:`list_name`
-  A set of choices for a single question share a common :th:`list_name`.
-  The value of :th:`list_name` is included in the :th:`type` column
+``list_name``
+  A set of choices for a single question share a common ``list_name``.
+  The value of ``list_name`` is included in the ``type`` column
   on the **survey** sheet.
 
-:th:`name`
-  The identifier for a specific choice. This value is what is stored on the completed form. If you :ref:`refer to a select response using a variable <variables>`, the :th:`name` string is returned.
+``name``
+  The identifier for a specific choice. This value is what is stored on the completed form. If you :ref:`refer to a select response using a variable <variables>`, the ``name`` string is returned.
 
-  As in the **survey** sheet, the :th:`name` for a choice must not include spaces.
+  As in the **survey** sheet, the ``name`` for a choice must not include spaces.
 
-:th:`label`
+``label``
   The user-facing text displayed for the choice.
 
 .. _single-select-widget:
@@ -593,7 +593,7 @@ Single select widget
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`select_one {list_name}`
+  ``select_one {list_name}``
 
 .. image:: /img/form-widgets/default-single-select.*
   :alt: The default Single Select form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Select one widget." The hint text is "select_one type with no appearance, 4 text choices." Below that is a set of radio button selectors labeled A, B, C, and D. Above the question text is form group name "Select one widgets."
@@ -619,7 +619,7 @@ Multi select widget
 ~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`select_multiple {list_name}`
+  ``select_multiple {list_name}``
 appearance
   *none*
 
@@ -628,7 +628,7 @@ Multi select questions allow selecting multiple answers. The response for the qu
 .. note::
 
   The multi select widget supports
-  all of the same :th:`appearance` attributes
+  all of the same ``appearance`` attributes
   as the :ref:`single-select-widget` excluding the :ref:`quick <autoadvance>` appearance.
 
 .. image:: /img/form-widgets/default-multiselect.*
@@ -654,12 +654,12 @@ Multi select questions allow selecting multiple answers. The response for the qu
 Select from external dataset
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Data files in CSV, GeoJSON or XML format can be attached to form definitions. These :doc:`external datasets <form-datasets>` can be used as data sources for selects. The question type for single selection is :tc:`select_one_from_file` and for multiple selection, it is :tc:`select_multiple_from_file`. The full filename of the dataset including the extension goes after the type.
+Data files in CSV, GeoJSON or XML format can be attached to form definitions. These :doc:`external datasets <form-datasets>` can be used as data sources for selects. The question type for single selection is ``select_one_from_file`` and for multiple selection, it is ``select_multiple_from_file``. The full filename of the dataset including the extension goes after the type.
 
 Selects from external datasets can be used in all the same ways as internal selects. For example, they can be displayed differently using :ref:`appearances <select-appearances>` or filtered using :ref:`choice filters <cascading-selects>`.
 
 type
-  :tc:`select_one_from_file {file.extension}`
+  ``select_one_from_file {file.extension}``
 
 .. rubric:: XLSForm
 
@@ -683,19 +683,19 @@ Customizing the label and value
 
 When using an :doc:`external dataset <form-datasets>` as a data source for a select, the underlying value for each choice comes from:
 
-- CSV file: the :th:`name` column
-- GeoJSON file: the :th:`id` top-level element if it exists or the :th:`id` property as a fallback
-- XML file: the :th:`name` child element
+- CSV file: the ``name`` column
+- GeoJSON file: the ``id`` top-level element if it exists or the ``id`` property as a fallback
+- XML file: the ``name`` child element
 
 The label for each choice comes from:
 
-- CSV file: the :th:`label` column
-- GeoJSON file: the :th:`title` property (follows `the GeoJSON simplestyle specification <https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0>`_)
-- XML file: the :th:`label` child element
+- CSV file: the ``label`` column
+- GeoJSON file: the ``title`` property (follows `the GeoJSON simplestyle specification <https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0>`_)
+- XML file: the ``label`` child element
 
-In some cases, it may not be convenient to rename your columns to match these defaults. If you have a dataset from another source and different column names, you can use the :th:`parameters` column in your XLSForm to specify which columns to use.
+In some cases, it may not be convenient to rename your columns to match these defaults. If you have a dataset from another source and different column names, you can use the ``parameters`` column in your XLSForm to specify which columns to use.
 
-For example, to use :th:`feature_id` for the underlying value and :th:`human_name` for the label:
+For example, to use ``feature_id`` for the underlying value and ``human_name`` for the label:
 
 .. rubric:: XLSForm
 
@@ -715,7 +715,7 @@ For example, to use :th:`feature_id` for the underlying value and :th:`human_nam
 Select appearances
 ~~~~~~~~~~~~~~~~~~~~
 
-Selects can be styled in various ways using the :th:`appearance` column in an XLSForm. Unless otherwise indicated, the appearances described below can combine with single or multiple selects with either internal or external data sources.
+Selects can be styled in various ways using the ``appearance`` column in an XLSForm. Unless otherwise indicated, the appearances described below can combine with single or multiple selects with either internal or external data sources.
 
 .. _select-minimal:
 
@@ -723,11 +723,11 @@ Minimal select widget
 """""""""""""""""""""""""""""""
 
 type
-  :tc:`select_one {list_name}`
+  ``select_one {list_name}``
 appearance
-  :tc:`minimal`
+  ``minimal``
 
-Adding the :tc:`minimal` appearance shows the choices in a compact way. This is particularly helpful when the list of choices is long and the select question is displayed on :ref:`the same screen as other questions <field-list>`. It is often combined with :ref:`the autocomplete appearance <select-autocomplete>`.
+Adding the ``minimal`` appearance shows the choices in a compact way. This is particularly helpful when the list of choices is long and the select question is displayed on :ref:`the same screen as other questions <field-list>`. It is often combined with :ref:`the autocomplete appearance <select-autocomplete>`.
 
 .. image:: /img/form-widgets/select-one-minimal-start.*
   :alt: The Single Select form widget, with minimal appearance, as displayed in the ODK Collect app on an Android phone. The question text is "Select widget." The hint text is "select_one type with minimal appearance, 4 text choices." Below that is a drop-down style select menu with the prompt "Select One Answer." Above the question text is the form group name "Select one widgets."
@@ -756,11 +756,11 @@ Select widget with autoadvance
 """"""""""""""""""""""""""""""""""
 
 type
-  :tc:`select_one {list_name}`
+  ``select_one {list_name}``
 appearance
-  :tc:`quick`
+  ``quick``
 
-When the :tc:`quick` appearance is added,
+When the ``quick`` appearance is added,
 the form advances immediately to the next question
 once a selection is made.
 
@@ -792,11 +792,11 @@ Select widget with autocomplete
 """"""""""""""""""""""""""""""""
 
 type
-  :tc:`select_one {list_name}`
+  ``select_one {list_name}``
 appearance
-  :tc:`autocomplete`
+  ``autocomplete``
 
-The :tc:`autocomplete` appearance allows the enumerator to filter the list of available choices. This is especially helpful for questions with a large number of choices.
+The ``autocomplete`` appearance allows the enumerator to filter the list of available choices. This is especially helpful for questions with a large number of choices.
 
 .. image:: /img/form-widgets/select-autocomplete.*
   :alt: The Select One form widget with autocomplete, as displayed in the ODK Collect app on an Android phone. The question text is "Select one widget." The hint text is, "select one type with autocomplete appearance, 4 text choices." Below that is a text input followed by four radio buttons labeled A, B, C, and D. Above the question text is the form group name "Select one widgets." The device keyboard is active.
@@ -826,11 +826,11 @@ Select widget with columns-pack appearance
 """"""""""""""""""""""""""""""""""""""""""""""
 
 type
-  :tc:`select_one {list_name}`
+  ``select_one {list_name}``
 appearance
   *columns-pack*
 
-When the :tc:`columns-pack` appearance is added, the app tries to accommodate as many choices in a single line as possible. If the choice labels have different lengths, they will not be in even columns.
+When the ``columns-pack`` appearance is added, the app tries to accommodate as many choices in a single line as possible. If the choice labels have different lengths, they will not be in even columns.
 
 .. image:: /img/form-widgets/select-columns-pack.*
 
@@ -856,11 +856,11 @@ Select widget with columns appearance
 """""""""""""""""""""""""""""""""""""""""
 
 type
-  :tc:`select_one {list_name}`
+  ``select_one {list_name}``
 appearance
-  :tc:`columns`
+  ``columns``
 
-When the :tc:`columns` appearance is added, the app puts choices in 2, 3, 4 or 5 columns depending on the screen size.
+When the ``columns`` appearance is added, the app puts choices in 2, 3, 4 or 5 columns depending on the screen size.
 
 Select widgets support image choices.
 The images are referenced in the **choices** sheet,
@@ -893,11 +893,11 @@ Select widget with columns-n appearance
 """""""""""""""""""""""""""""""""""""""""""
 
 type
-  :tc:`select_one {list_name}`
+  ``select_one {list_name}``
 appearance
-  :tc:`columns-n`
+  ``columns-n``
 
-When the :tc:`columns-n` appearance is added, the app puts choices in n columns.
+When the ``columns-n`` appearance is added, the app puts choices in n columns.
 
 .. image:: /img/form-widgets/select-columns-n.*
 
@@ -923,11 +923,11 @@ Select widget with no-buttons appearance
 """"""""""""""""""""""""""""""""""""""""""""
 
 type
-  :tc:`select_one {list_name}`
+  ``select_one {list_name}``
 appearance
-  :tc:`no-buttons`
+  ``no-buttons``
 
-When the :tc:`no-buttons` appearance is added, the app displays choices without the selection radio button. If images are specified for choices, only the images are displayed. This is particularly useful for building a grid of images.
+When the ``no-buttons`` appearance is added, the app displays choices without the selection radio button. If images are specified for choices, only the images are displayed. This is particularly useful for building a grid of images.
 
 .. image:: /img/form-widgets/select-no-buttons.*
 
@@ -953,9 +953,9 @@ Likert widget
 """"""""""""""""""""""""""""""""""
 
 type
- :tc:`select_one {list_name}`
+ ``select_one {list_name}``
 appearance
- :tc:`likert`
+ ``likert``
 
 A single-select question can be styled as a `Likert scale <https://en.wikipedia.org/wiki/Likert_scale>`_. Options can include text, images or both. If both are provided, images appear above text.
 
@@ -998,15 +998,15 @@ Select one from map widget
     The only appearance that can combine with selection from map is `quick`.
 
 type
- :tc:`select_one {list_name}`
+ ``select_one {list_name}``
 appearance
- :tc:`map`
+ ``map``
 
 If the choices that you want users to select from have locations, you can display them on a map. Each choice must have a ``geometry`` property that specifies the choice's geometry. 
 
-You can use a :ref:`GeoJSON attachment <selects-from-geojson>` as a source of choices to map. Alternately, you can add a :th:`geometry` column to the **choices** tab or to an :ref:`external CSV file <selects-from-csv>`. 
+You can use a :ref:`GeoJSON attachment <selects-from-geojson>` as a source of choices to map. Alternately, you can add a ``geometry`` column to the **choices** tab or to an :ref:`external CSV file <selects-from-csv>`. 
 
-When using a ``geometry`` column instead of a GeoJSON file, the geometry must be specified in :ref:`the ODK format <location-widgets>`. For example, you could attach data collected using another ODK form and make sure that the column containing ``geopoint`` values has name :th:`geometry`.
+When using a ``geometry`` column instead of a GeoJSON file, the geometry must be specified in :ref:`the ODK format <location-widgets>`. For example, you could attach data collected using another ODK form and make sure that the column containing ``geopoint`` values has name ``geometry``.
 
 .. image:: /img/form-widgets/select-from-map.*
  :alt: Single select from map as displayed in the ODK Collect app on an Android phone. The question text is "Select a point" and it is displayed in a small top bar. Below that is a map with several markers. One of the markers is larger. At the bottom of the screen, there is information about the selected marker. Its label is "Restaurant Délicia". Several other properties are shown including `timestamp`, `version` and `amenity`. Below the properties, there is a rounded button with a save icon and the text "Select."
@@ -1032,9 +1032,9 @@ Select from image widget
 """"""""""""""""""""""""""
 
 type
-  :tc:`select_one {list_name}`, :tc:`select_multiple {list-name}`
+  ``select_one {list_name}``, ``select_multiple {list-name}``
 appearance
-  :tc:`image-map`
+  ``image-map``
 
 The image map widget displays an `SVG`_ image with selectable regions.
 
@@ -1043,8 +1043,8 @@ The image map widget displays an `SVG`_ image with selectable regions.
 To make an image with selectable regions:
 
 #. Create or edit an :file:`.svg` source file. Include ``id`` attributes on any elements you want to be selectable.
-#. In the **choices** tab of your XLSForm, put the value of the ``id`` attributes in the :th:`name` column. Add an appropriate human-friendly :th:`label` to each choice.
-#. In the **survey** tab of your XLSForm, put the :file:`.svg` file name in the :th:`image` column.
+#. In the **choices** tab of your XLSForm, put the value of the ``id`` attributes in the ``name`` column. Add an appropriate human-friendly ``label`` to each choice.
+#. In the **survey** tab of your XLSForm, put the :file:`.svg` file name in the ``image`` column.
 #. Include the :file:`.svg` file :ref:`in your form's media folder <loading-form-media>`.
 
 .. seealso::
@@ -1129,7 +1129,7 @@ As with questions themselves, choices can include :ref:`media <media>` (image, v
 Randomizing choice order
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To reduce bias, choice order can be randomized for any of the select question types described above. To display the choices in a different order each time the question is displayed, set **randomize** to **true** in the :th:`parameters` column of the XLSForm **survey** sheet:
+To reduce bias, choice order can be randomized for any of the select question types described above. To display the choices in a different order each time the question is displayed, set **randomize** to **true** in the ``parameters`` column of the XLSForm **survey** sheet:
 
 .. rubric:: XLSForm
 
@@ -1177,13 +1177,13 @@ Including "other" as a choice
 
 .. warning::
 
-  We do not recommend using :tc:`or_other` because it does not support multiple languages or :th:`choice_filter`. Instead, add your own "other" question and use form logic to have it appear as needed.
+  We do not recommend using ``or_other`` because it does not support multiple languages or ``choice_filter``. Instead, add your own "other" question and use form logic to have it appear as needed.
 
-On the **survey** sheet, in the :th:`type` column,
+On the **survey** sheet, in the ``type`` column,
 after the type and the list_name,
-you can add :tc:`or_other`.
+you can add ``or_other``.
 This will add "Other" as an additional option to your choice list.
-The :th:`name` value of the choice when selected will be :tc:`other`.
+The ``name`` value of the choice when selected will be ``other``.
 
 
 .. _rank-widget:
@@ -1198,7 +1198,7 @@ Like with :ref:`select-widgets`, the options are listed on a sheet named **choic
 To change the order of the options in the list, tap the :guilabel:`Rank items` button. In the resulting dialog, long press on an item and once it gets a border around it, drag it up or down to change the order. If no :ref:`default <default-responses>` is provided, the value for the question is blank until the user taps :guilabel:`OK` in the ranking dialog.
 
 type
-  :tc:`rank {list_name}`
+  ``rank {list_name}``
 
 .. image:: /img/form-widgets/rank-blank.*
   :alt: The rank widget, as displayed in the ODK Collect app on an Android phone. The question text is "Rank widget." The hint text is "rank type with no appearance, 4 text choices. Long press on a choice and drag it to change its position." Below that is a button with label "Rank items."
@@ -1258,7 +1258,7 @@ Geopoint widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`geopoint`
+  ``geopoint``
 appearance
   *none*
 
@@ -1299,7 +1299,7 @@ You can also train data collectors to use time elapsed to take some action. For 
 
   `selected-at(${geopoint_widget}, 3) < 10`.
 
-  The :arg:`3` in the above constraint references accuracy, the third value in the `geopoint data type <http://getodk.github.io/xforms-spec/#data-types>`_. Use :arg:`1` to reference latitude, :arg:`2` for longitude, and :arg:`4` for altitude.
+  The ``3`` in the above constraint references accuracy, the third value in the `geopoint data type <http://getodk.github.io/xforms-spec/#data-types>`_. Use ``1`` to reference latitude, ``2`` for longitude, and ``4`` for altitude.
 
 
 .. _geopoint-maps:
@@ -1308,11 +1308,11 @@ Geopoint with map display
 """""""""""""""""""""""""""""
 
 type
-  :tc:`geopoint`
+  ``geopoint``
 appearance
-  :tc:`maps`
+  ``maps``
 
-The default :ref:`geopoint-widget` does not display a map to the user. When the appearance attribute is :tc:`maps`, the widget displays a map to help the user get oriented and confirm that the selected point is correct and sufficiently accurate.
+The default :ref:`geopoint-widget` does not display a map to the user. When the appearance attribute is ``maps``, the widget displays a map to help the user get oriented and confirm that the selected point is correct and sufficiently accurate.
 
 When the device's geolocation is available, it is displayed on the map by a blue cross. A blue shaded circle around the cross represents the accuracy radius of the geolocation. The "add marker" button at the top right of the screen can be tapped to add a point at the location indicated by the middle of the blue cross. The selected point is represented by a small circle with a red outline.
 
@@ -1333,13 +1333,13 @@ Geopoint with user-selected location
 """"""""""""""""""""""""""""""""""""""
 
 type
-  :tc:`geopoint`
+  ``geopoint``
 appearance
-  :tc:`placement-map`
+  ``placement-map``
 
 The default :ref:`geopoint-widget` does not allow the user to place the point anywhere other than the device's current geolocation.
 
-A geopoint with the appearance attribute :tc:`placement-map` allows the user to select any point from a map. The user can either long press to place the point anywhere, or, if the device knows its geolocation, tap on the "add point" button at the top right of the screen. The selected point is represented by a small circle with a red outline (see arrow in screenshot).
+A geopoint with the appearance attribute ``placement-map`` allows the user to select any point from a map. The user can either long press to place the point anywhere, or, if the device knows its geolocation, tap on the "add point" button at the top right of the screen. The selected point is represented by a small circle with a red outline (see arrow in screenshot).
 
 The save button saves the selected point and returns to the question screen. If the point was selected by long pressing, the accuracy radius and altitude will both be 0. If the device's geolocation was selected, the accuracy radius will be greater than 0.
 
@@ -1361,7 +1361,7 @@ Geotrace widget
 ~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`geotrace`
+  ``geotrace``
 appearance
   *none*
 
@@ -1410,7 +1410,7 @@ Geoshape
 ~~~~~~~~~
 
 type
-  :tc:`geoshape`
+  ``geoshape``
 appearance
   *none*
 
@@ -1460,11 +1460,11 @@ Calculating the area of a geoshape
 """""""""""""""""""""""""""""""""""
 
 type
-  :tc:`calculate`
+  ``calculate``
 calculation
-  :tc:`area(${geoshape})`
+  ``area(${geoshape})``
 
-The :tc:`area()` function calculates the land area,
+The ``area()`` function calculates the land area,
 in square meters,
 of a polygon defined in a :ref:`geoshape-widget`.
 The value will be included in your completed survey data,
@@ -1499,9 +1499,9 @@ Bearing widget
 ~~~~~~~~~~~~~~~~
 
 type
-  :tc:`decimal`
+  ``decimal``
 appearance
-  :tc:`bearing`
+  ``bearing``
 
 Captures a compass reading, which is stored as a decimal.
 
@@ -1549,7 +1549,7 @@ Default image widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`image`
+  ``image``
 appearance
   *none*
 
@@ -1573,14 +1573,14 @@ Image widget with annotation
 """""""""""""""""""""""""""""
 
 type
-  :tc:`image`
+  ``image``
 appearance
-  :tc:`annotate`
+  ``annotate``
 
-Adding the :tc:`annotate` appearance allows the user to draw on the image before submitting it.
+Adding the ``annotate`` appearance allows the user to draw on the image before submitting it.
 
 .. tip::
-  If you have a standard image to annotate, you can add that image's filename in the :th:`default` column. For example, put ``template.png`` in the :th:`default` column and Central will prompt you to attach a png to the form. Anyone who fills out the form will see the same image.
+  If you have a standard image to annotate, you can add that image's filename in the ``default`` column. For example, put ``template.png`` in the ``default`` column and Central will prompt you to attach a png to the form. Anyone who fills out the form will see the same image.
 
   To enforce that this default image gets annotated, you can use a constraint such as `not(. = 'jr://images/template.png'))`. This works because Collect renames images after annotation.
 
@@ -1617,9 +1617,9 @@ Image widget with required new image
 """"""""""""""""""""""""""""""""""""""""
 
 type
-  :tc:`image`
+  ``image``
 appearance
-  :tc:`new`
+  ``new``
 
 An image widget that does not include a :guilabel:`Choose Image` button. This requires the user to take a new picture.
 
@@ -1640,16 +1640,16 @@ Self portrait (*selfie*) image widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`image`
+  ``image``
 appearance
-  :tc:`new-front`
+  ``new-front``
 
 Takes a picture using the front-facing ("selfie") camera. The :guilabel:`Choose image` button is not displayed.
 
 .. versionchanged:: 1.15
 
-  Prior to v1.15, the appearance attribute for this was :tc:`selfie`.
-  The old appearance attribute will continue to work on existing forms, but new forms should use the :tc:`new-front` appearance.
+  Prior to v1.15, the appearance attribute for this was ``selfie``.
+  The old appearance attribute will continue to work on existing forms, but new forms should use the ``new-front`` appearance.
 
 
 .. image:: /img/form-question-types/self-portrait-0.*
@@ -1678,7 +1678,7 @@ External app image widget
 
 Launches an external app and receives an image back from the external app. If the specified external app is not available, it is not possible to use the widget.
 
-The external app image widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
+The external app image widget is displayed when the ``appearance`` attribute begins with ``ex:``. The rest of the ``appearance`` string specifies the application to launch.
 
 .. seealso:: :doc:`launch-apps-from-collect`
 
@@ -1698,9 +1698,9 @@ Draw widget
 ~~~~~~~~~~~~~
 
 type
-  :tc:`image`
+  ``image``
 appearance
-  :tc:`draw`
+  ``draw``
 
 
 Provides the user a drawing pad and collects the drawn image.
@@ -1762,9 +1762,9 @@ Default audio widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`audio`
+  ``audio``
 appearance
-  :tc:`none`
+  ``none``
 
 Records audio using the device's microphone or a connected external microphone. By default, an :ref:`internal recorder <built-in-audio-recording>` is used.
 
@@ -1794,9 +1794,9 @@ Using the built-in audio recorder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`audio`
+  ``audio``
 appearance
-  :tc:`none`
+  ``none``
 
 .. versionadded:: 1.29
 
@@ -1911,11 +1911,11 @@ Recording with an external app
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`audio`
+  ``audio``
 appearance
-  :tc:`none`
+  ``none``
 parameters
-  :tc:`quality=external`
+  ``quality=external``
 
 Setting ``quality`` to ``external`` will cause Collect to use an external app to record audio rather than the built-in recorder. You can also :ref:`configure Collect to always use an external app for recording <use-external-app-for-audio-recording>` and set no ``quality`` parameter.
 
@@ -1935,7 +1935,7 @@ Getting audio from a custom external app
 
 Launches an external app and receives an audio file back from the external app. If the specified external app is not available, it is not possible to use the widget.
 
-The external app audio widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
+The external app audio widget is displayed when the ``appearance`` attribute begins with ``ex:``. The rest of the ``appearance`` string specifies the application to launch.
 
 .. seealso:: :doc:`launch-apps-from-collect`
 
@@ -2012,7 +2012,7 @@ External app video widget
 
 Launches an external app and receives a video file back from the external app. If the specified external app is not available, it is not possible to use the widget.
 
-The external app video widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
+The external app video widget is displayed when the ``appearance`` attribute begins with ``ex:``. The rest of the ``appearance`` string specifies the application to launch.
 
 .. seealso:: :doc:`launch-apps-from-collect`
 
@@ -2084,7 +2084,7 @@ External app file widget
 
 Launches an external app and receives an arbitrary file back from the external app. If the specified external app is not available, it is not possible to use the widget.
 
-The external app file widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`. The rest of the :th:`appearance` string specifies the application to launch.
+The external app file widget is displayed when the ``appearance`` attribute begins with ``ex:``. The rest of the ``appearance`` string specifies the application to launch.
 
 .. seealso:: :doc:`launch-apps-from-collect`
 
@@ -2177,7 +2177,7 @@ In some cases a front camera may work better. The flash can't be used in this ca
 Range widgets
 ----------------
 
-Range widgets allow the user to select numbers from within a range that is visually represented as a number line. The parameters of the range widget are defined by :tc:`start`, :tc:`end`, and :tc:`step` values defined in the :th:`parameters` column of your XLSForm. The parameter values can be integers or decimals.
+Range widgets allow the user to select numbers from within a range that is visually represented as a number line. The parameters of the range widget are defined by ``start``, ``end``, and ``step`` values defined in the ``parameters`` column of your XLSForm. The parameter values can be integers or decimals.
 
 .. _range-widget-integers:
 
@@ -2185,7 +2185,7 @@ Default range widget with integers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`range`
+  ``range``
 appearance
   *none*
 
@@ -2208,7 +2208,7 @@ Default range widget with decimals
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`range`
+  ``range``
 appearance
   *none*
 
@@ -2231,12 +2231,12 @@ Vertical range widget
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`range`
+  ``range``
 appearance
-  :tc:`vertical`
+  ``vertical``
 
 To display the range widget's number line vertically,
-use the :tc:`vertical` appearance.
+use the ``vertical`` appearance.
 Both integers and decimals are supported.
 
 .. image:: /img/form-widgets/range-integer-vertical-widget.*
@@ -2255,11 +2255,11 @@ Range widget with picker
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`range`
+  ``range``
 appearance
-  :tc:`picker`
+  ``picker``
 
-When the :tc:`picker` appearance is added, the range widget is displayed with a spinner-style select menu in a dialog. The value between horizontal lines is the selected value. Users can scroll the spinner up and down or can tap on the value above to go up by one and on the value below to go down by one.
+When the ``picker`` appearance is added, the range widget is displayed with a spinner-style select menu in a dialog. The value between horizontal lines is the selected value. Users can scroll the spinner up and down or can tap on the value above to go up by one and on the value below to go down by one.
 
 .. image:: /img/form-widgets/range-widget-picker-0.*
   :alt: The range picker widget, as displayed in the ODK Collect app. The question label is "Range picker integer widget". There is a button labeled "Select Value".
@@ -2280,11 +2280,11 @@ Range widget with rating
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`range`
+  ``range``
 appearance
-  :tc:`rating`
+  ``rating``
 
-When the :tc:`rating` appearance is added, the range widget is displayed with stars having equal spacing. Number of stars is calculated using the `end` parameter. When the user taps on an empty star, the stars up to and including that star will be filled. If the stars don't fit in the device width, they will wrap onto additional lines.
+When the ``rating`` appearance is added, the range widget is displayed with stars having equal spacing. Number of stars is calculated using the `end` parameter. When the user taps on an empty star, the stars up to and including that star will be filled. If the stars don't fit in the device width, they will wrap onto additional lines.
 
 .. image:: /img/form-widgets/range-widget-rating.*
   :alt: The range rating widget, as displayed in the ODK Collect app. The question label is "Range rating integer widget".
@@ -2303,7 +2303,7 @@ Note widget
 -------------
 
 type
-  :tc:`note`
+  ``note``
 appearance
   *none*
 
@@ -2327,14 +2327,14 @@ URL widget
 --------------
 
 type
-  :tc:`text`
+  ``text``
 appearance
-  :tc:`url`
+  ``url``
 
 Provides a link which the user can open from the survey.
 Takes no input.
 
-The URL to open is specified with :th:`default`.
+The URL to open is specified with ``default``.
 
 .. image:: /img/form-widgets/url-widget.*
   :alt: The URL form widget, as displayed in the ODK Collect app on an Android phone. The question text is "URL Widget." The hint text is "text type with url appearance and default value of http://getodk.org/" Below that is a button labeled, "Open URL." Below the button is the URL, "http://getodk.org/" Above the question text is the form group name "Text widgets."
@@ -2353,9 +2353,9 @@ Printer widget
 ------------------
 
 type
-  :tc:`text`
+  ``text``
 appearance
-  :tc:`printer:org.opendatakit.sensors.ZebraPrinter`
+  ``printer:org.opendatakit.sensors.ZebraPrinter``
 
 Connects to an external label printer, and prints labels that can contain a barcode, a QR code, or text.
 
@@ -2377,7 +2377,7 @@ Trigger/acknowledge widget
 -----------------------------
 
 type
-  :tc:`trigger`, :tc:`acknowledge`
+  ``trigger``, ``acknowledge``
 appearance
   *none*
 
@@ -2387,7 +2387,7 @@ presents a single checkbox.
 
 A completed trigger response is stored as the string ``OK``.
 
-The example shown here includes the :th:`required` attribute.
+The example shown here includes the ``required`` attribute.
 
 .. image:: /img/form-widgets/trigger.*
   :alt: The Trigger (or "Acknowledge") form widget as displayed in the ODK Collect App on an Android phone. The question text is, "Trigger widget." The hint text is, "Prompts for confirmation. Useful to combine with required or relevant. (type=trigger)" Below that is a single checkbox labeled, "OK. Please continue." The checkbox is unchecked.
@@ -2412,9 +2412,9 @@ Signature widget
 ------------------
 
 type
-  :tc:`image`
+  ``image``
 appearance
-  :tc:`signature`
+  ``signature``
 
 Collects a signature from the user.
 
@@ -2441,11 +2441,11 @@ Grouping multiple widgets on the same screen
 ------------------------------------------------
 
 type
-  :tc:`begin_group`
+  ``begin_group``
 appearance
-  :tc:`field-list`
+  ``field-list``
 
-The :tc:`field-list` appearance attribute, applied to a group of widgets, displays them all on a single screen.
+The ``field-list`` appearance attribute, applied to a group of widgets, displays them all on a single screen.
 
 .. warning::
 
@@ -2453,7 +2453,7 @@ The :tc:`field-list` appearance attribute, applied to a group of widgets, displa
 
 .. warning::
 
-  Displaying :ref:`repeats` on the same screen (inside a :tc:`field-list` group) is not supported.
+  Displaying :ref:`repeats` on the same screen (inside a ``field-list`` group) is not supported.
 
 .. seealso::
 
@@ -2470,14 +2470,14 @@ If you have multiple select questions with the same choices, it can be helpful t
   :alt: A field-list group of questions, as displayed in the ODK Collect app on an Android phone. A grid of questions representing underlying conditions are displayed. For eacn condition, there are radio buttons to indicate 'Yes' or 'No'.
 
 
-To do this, put your select questions in a :tc:`field-list` group and use the following :th:`appearance` attributes:
+To do this, put your select questions in a ``field-list`` group and use the following ``appearance`` attributes:
 
-:tc:`label`
+``label``
   Only the option labels are displayed, without checkboxes. This is used for the top row with the 'Yes' and 'No' options in the example above.
-:tc:`list-nolabel`
+``list-nolabel``
   Only checkboxes or radio buttons are displayed, without their labels. This is used for the question rows in the example above.
-:tc:`list`
-  The labels are displayed along with checkboxes for multi-select questions and radio buttons for single-select questions. You could use this instead of having a :tc:`label` row to keep the option labels closer to the checkboxes or radio buttons.
+``list``
+  The labels are displayed along with checkboxes for multi-select questions and radio buttons for single-select questions. You could use this instead of having a ``label`` row to keep the option labels closer to the checkboxes or radio buttons.
 
 .. rubric:: XLSForm
 
@@ -2516,20 +2516,20 @@ A more complete record of user behavior within a form can be generated by enabli
 
 These items are dependent on the survey collection event:
 
-- :tc:`start` --- The datetime the survey was started in ISO 8601 format (e.g., 2019-09-27T09:45:10.854-07:00).
-- :tc:`end` --- The last datetime the survey was saved in ISO 8601 format.
-- :tc:`today` --- The date the survey was started in ISO 8601 format (e.g, 2019-09-27).
-- :tc:`start-geopoint` --- The geolocation when the survey was started. :ref:`Read more <metadata-start-geopoint>`.
+- ``start`` --- The datetime the survey was started in ISO 8601 format (e.g., 2019-09-27T09:45:10.854-07:00).
+- ``end`` --- The last datetime the survey was saved in ISO 8601 format.
+- ``today`` --- The date the survey was started in ISO 8601 format (e.g, 2019-09-27).
+- ``start-geopoint`` --- The geolocation when the survey was started. :ref:`Read more <metadata-start-geopoint>`.
 
 This item is defined at installation time and cannot be changed:
 
-- :tc:`deviceid`
+- ``deviceid``
 
 These items are defined in Collect,
 and :ref:`can be edited in Settings <form-metadata-settings>`:
 
-- :tc:`username`
-- :tc:`phonenumber`
+- ``username``
+- ``phonenumber``
 
 .. rubric:: XLSForm
 
@@ -2555,7 +2555,7 @@ Geolocation at survey start
 .. note::
   Geolocation at survey start was added in Collect v1.23 and Central v1.0.0.
 
-The :tc:`start-geopoint` question type is used to capture a single geolocation in :ref:`geopoint format <location-widgets>` when the survey is first started. Questions of type :tc:`start-geopoint` may be given any allowable name. Although it is possible to have more than one :tc:`start-geopoint` question in a form, all will have the same value.
+The ``start-geopoint`` question type is used to capture a single geolocation in :ref:`geopoint format <location-widgets>` when the survey is first started. Questions of type ``start-geopoint`` may be given any allowable name. Although it is possible to have more than one ``start-geopoint`` question in a form, all will have the same value.
 
 Any time a survey with a `start-geopoint` question is opened in Collect, the enumerator will see a warning that the form tracks device location. If the device battery is low, or if location tracking needs to be turned off for any reason, you can tap :menuselection:`⋮ --> Track location` or turn off location providers in Android.
 
@@ -2573,7 +2573,7 @@ Calculate
 ~~~~~~~~~~~
 
 type
-  :tc:`calculate`
+  ``calculate``
 
 Calculate questions let you evaluate complex :ref:`expressions <expressions>`,
 storing the values for later use.
@@ -2586,7 +2586,7 @@ Background audio recording
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 type
-  :tc:`background-audio`
+  ``background-audio``
 
 .. versionadded:: 1.30
 
@@ -2602,9 +2602,9 @@ type
 
   background-audio, my_recording
 
-When a form includes a question of type :tc:`background-audio`, audio is recorded while the form is open and attached to the form submission as a single audio file. These recordings can be used for quality assurance, training, transcription, and more. Use background recording instead of an :ref:`audio question <customizing-audio-quality>` when you want to make sure to record everything that happens during form filling.
+When a form includes a question of type ``background-audio``, audio is recorded while the form is open and attached to the form submission as a single audio file. These recordings can be used for quality assurance, training, transcription, and more. Use background recording instead of an :ref:`audio question <customizing-audio-quality>` when you want to make sure to record everything that happens during form filling.
 
-By default, audio files will be saved in the `amr` format with a bitrate of 12.2kbps and a sample rate of 8kHz, resulting in a file size of about 5MB per hour. These settings correspond to the ``voice-only`` quality :ref:`for audio questions <customizing-audio-quality>` and minimize file size while maintaining reasonable quality for a conversation between two people. You can override that default quality by specifying a value in the :th:`parameters` column as described :ref:`for audio questions <customizing-audio-quality>`.
+By default, audio files will be saved in the `amr` format with a bitrate of 12.2kbps and a sample rate of 8kHz, resulting in a file size of about 5MB per hour. These settings correspond to the ``voice-only`` quality :ref:`for audio questions <customizing-audio-quality>` and minimize file size while maintaining reasonable quality for a conversation between two people. You can override that default quality by specifying a value in the ``parameters`` column as described :ref:`for audio questions <customizing-audio-quality>`.
 
 .. rubric:: XLSForm
 

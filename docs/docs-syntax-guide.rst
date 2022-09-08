@@ -914,7 +914,7 @@ We have added several custom text roles for writing about forms and the XForms a
 
     External App String Widget
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    The external app widget is displayed when the :th:`appearance` attribute begins with :tc:`ex:`.
+    The external app widget is displayed when the ``appearance`` attribute begins with ``ex:``.
 
 .. rst:role:: formstate
 

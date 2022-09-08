@@ -26,14 +26,14 @@ This information can inform form design and training or feed into data validatio
 Enabling audit logging
 -----------------------
 
-To enable logging for a form, add a row of :th:`type` :tc:`audit` and :th:`name` :tc:`audit` in an XLSForm:
+To enable logging for a form, add a row of ``type`` ``audit`` and ``name`` ``audit`` in an XLSForm:
 
 .. csv-table:: survey
   :header: type, name
 
   audit, audit
 
-A form may contain at most one row of :th:`type` :tc:`audit`.
+A form may contain at most one row of ``type`` ``audit``.
 
 .. _audit-geolocation-tracking:
 
@@ -42,31 +42,31 @@ Location tracking
 
 You may add the location of events to the log. To do this, add the following parameters to the XLSForm. All three parameters are required.
 
-:tc:`location-priority`
+``location-priority``
   `high-accuracy`: The most accurate location provided by the device, regardless of power use.
 
-  `balanced`: Block level accuracy (~100 meters). Uses less power than :tc:`high-accuracy`.
+  `balanced`: Block level accuracy (~100 meters). Uses less power than ``high-accuracy``.
 
-  `low-power`: City level accuracy (~10 kilometers). Uses less power than :tc:`balanced`.
+  `low-power`: City level accuracy (~10 kilometers). Uses less power than ``balanced``.
 
   `no-power`: No locations will be returned unless another application on the device has requested location updates. Uses no additional power.
 
-:tc:`location-min-interval`
+``location-min-interval``
   The desired minimum time, in seconds, at which location updates will be fetched by the device.
 
-:tc:`location-max-age`
-  The maximum time, in seconds, locations will be considered valid by the device. Must be greater than or equal to :tc:`location-min-interval`.
+``location-max-age``
+  The maximum time, in seconds, locations will be considered valid by the device. Must be greater than or equal to ``location-min-interval``.
 
 .. csv-table:: survey
   :header: type, name, parameters
 
   audit, audit, location-priority=balanced location-min-interval=60 location-max-age=120
 
-When location tracking is enabled, ODK Collect requests location updates from Android periodically, with an interval determined by :tc:`location-min-interval`. The requests are sent with :tc:`location-priority` to ensure Android does not use more power than is desired.
+When location tracking is enabled, ODK Collect requests location updates from Android periodically, with an interval determined by ``location-min-interval``. The requests are sent with ``location-priority`` to ensure Android does not use more power than is desired.
 
-When Collect receives the location updates, it stores the locations in a timestamped cache. At the time of an event, Collect checks the cache for locations stored over the last :tc:`location-max-age` and returns the most accurate location in the cache.
+When Collect receives the location updates, it stores the locations in a timestamped cache. At the time of an event, Collect checks the cache for locations stored over the last ``location-max-age`` and returns the most accurate location in the cache.
 
-For the most accurate locations, set :tc:`location-priority` to `high-accuracy`. For the most recent locations, use low numbers for :tc:`location-min-interval` and :tc:`location-max-age`.
+For the most accurate locations, set ``location-priority`` to `high-accuracy`. For the most recent locations, use low numbers for ``location-min-interval`` and ``location-max-age``.
 
 .. note::
 
@@ -84,7 +84,7 @@ For the most accurate locations, set :tc:`location-priority` to `high-accuracy`.
 Change tracking
 ~~~~~~~~~~~~~~~
 
-You can enable change tracking so that old answers and new answers will be added to the question events. To do this, add the following parameter to the XLSForm: :tc:`track-changes=true`.
+You can enable change tracking so that old answers and new answers will be added to the question events. To do this, add the following parameter to the XLSForm: ``track-changes=true``.
 
 .. csv-table:: survey
   :header: type, name, parameters
@@ -98,14 +98,14 @@ Reason for changes
 
   `ODK Collect v1.25.0 <https://github.com/getodk/collect/releases/tag/v1.25.0>`_
 
-You can add to :tc:`track-changes-reasons=on-form-edit` to prompt enumerators to enter a reason before they save changes to a form:
+You can add to ``track-changes-reasons=on-form-edit`` to prompt enumerators to enter a reason before they save changes to a form:
 
 .. csv-table:: survey
   :header: type, name, parameters
 
   audit, audit, track-changes-reasons=on-form-edit
 
-This will prevent filled out forms being edited without a reason being given. If a reason is given the form will be saved normally and the audit log will include a :tc:`change reason` event with the reason recorded in the :tc:`change-reason` column.
+This will prevent filled out forms being edited without a reason being given. If a reason is given the form will be saved normally and the audit log will include a ``change reason`` event with the reason recorded in the ``change-reason`` column.
 
 Enumerator identification
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -114,17 +114,17 @@ Enumerator identification
 
   `ODK Collect v1.25.0 <https://github.com/getodk/collect/releases/tag/v1.25.0>`_
 
-If your form needs a record of the identity of the enumerator you can use :tc:`identify-user=true`.
+If your form needs a record of the identity of the enumerator you can use ``identify-user=true``.
 
 .. csv-table:: survey
   :header: type, name, parameters
 
   audit, audit, identify-user=true
 
-This will cause Collect to prompt the enumerator for their identity before filling out or editing a form instance. In the audit log, a :tc:`user` column will be included that will be populated for each event. The enumerator will not be able to fill in or edit the form without entering a non-blank identity.
+This will cause Collect to prompt the enumerator for their identity before filling out or editing a form instance. In the audit log, a ``user`` column will be included that will be populated for each event. The enumerator will not be able to fill in or edit the form without entering a non-blank identity.
 
 .. tip::
-  :tc:`identify-user` is useful for data collection workflows where devices might be passed between multiple enumerators for data verification or completion.
+  ``identify-user`` is useful for data collection workflows where devices might be passed between multiple enumerators for data verification or completion.
 
   In cases where a device will only ever used by a single enumerator, it might make more sense to use :ref:`username metadata <metadata>`. This will write the username to each submission instead of to the audit log.
 
@@ -135,7 +135,7 @@ Central will export a CSV with audits from all submissions if an export is reque
 
 If using Aggregate, audit logs can be reviewed and downloaded for further analysis using Briefcase.
 
-In Aggregate 1.5.0+, audit logs can be viewed by clicking on the media icon in the :th:`meta audit` column on the Submissions page:
+In Aggregate 1.5.0+, audit logs can be viewed by clicking on the media icon in the ``meta audit`` column on the Submissions page:
 
 .. image:: /img/form-audit-log/audit-media-icon.png
   :alt: The Aggregate submissions page with a form that has an audit log. The media icon in the meta audit column is circled.
@@ -160,11 +160,11 @@ If a form includes an audit, Collect will create an ``audit.csv`` file as the fo
 
   question, /data/name, 1523403169208, 1523403170733
 
-Values in the :th:`event` column represent a particular user action such as opening a form, saving a form, or displaying a question. Possible event types are described in the :ref:`audit-event-types` section.
+Values in the ``event`` column represent a particular user action such as opening a form, saving a form, or displaying a question. Possible event types are described in the :ref:`audit-event-types` section.
 
-Values in the :th:`node` column represent the node in the form that the event refers to, if applicable.
+Values in the ``node`` column represent the node in the form that the event refers to, if applicable.
 
-Values in the :th:`start` and :th:`end` columns are timestamps represented as the number of milliseconds since midnight, January 1, 1970 UTC. This is known as epoch time and provides a standard way of representing date/time even across timezones. The :ref:`audit-timestamps` section contains more information about timestamps.
+Values in the ``start`` and ``end`` columns are timestamps represented as the number of milliseconds since midnight, January 1, 1970 UTC. This is known as epoch time and provides a standard way of representing date/time even across timezones. The :ref:`audit-timestamps` section contains more information about timestamps.
 
 If both location tracking and change tracking are enabled in the log, the CSV will look like this:
 
@@ -186,10 +186,10 @@ If both location tracking and change tracking are enabled in the log, the CSV wi
   form exit,,1550615109199,,37.4229983,-122.084,14.086999893188477,,
   form finalize,,1550615109199,,37.4229983,-122.084,14.086999893188477,,
 
-Values in the :th:`latitude` and :th:`longitude` columns represent the latitude and longitude in decimal degrees. Values in the :th:`accuracy` column represents accuracy in seconds.
+Values in the ``latitude`` and ``longitude`` columns represent the latitude and longitude in decimal degrees. Values in the ``accuracy`` column represents accuracy in seconds.
 
 .. note::
-  Locations will often be repeated in the log. This is because locations are not captured at the time of the event, but rather retrieved from a cache of the most accurate points captured over the last :tc:`location-max-age`.
+  Locations will often be repeated in the log. This is because locations are not captured at the time of the event, but rather retrieved from a cache of the most accurate points captured over the last ``location-max-age``.
 
 .. note::
   Answers will be recorded only if they differ (if the new answer is different than the old one), otherwise, cells should be empty. Answers which contain commas will be surrounded by double quotes.
@@ -204,13 +204,13 @@ The event column of the audit log can have the following values:
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
 |      Event                               |                           Description                            | Node? |  Timestamps?     | Coordinates?             | Answers?         |
 +==========================================+==================================================================+=======+==================+==========================+==================+
-| form start                               | Start filling in the form                                        | No    | :th:`start` only | If enabled and available | No               |
+| form start                               | Start filling in the form                                        | No    | ``start`` only | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
 | question                                 | View a question                                                  | Yes   | Yes              | If enabled and available | If enabled       |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
 | group questions                          | View multiple questions on one screen (``field-list``)           | Yes   | Yes              | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
-| jump                                     | View the jump screen                                             | No    | :th:`start` only | If enabled and available | No               |
+| jump                                     | View the jump screen                                             | No    | ``start`` only | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
 | add repeat                               | Add a repeat                                                     | Yes   | Yes              | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
@@ -218,19 +218,19 @@ The event column of the audit log can have the following values:
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
 | end screen                               | View the end screen                                              | No    | Yes              | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
-| form save                                | Save the form                                                    | No    | :th:`start` only | If enabled and available | No               |
+| form save                                | Save the form                                                    | No    | ``start`` only | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
-| form exit                                | Exit the form                                                    | No    | :th:`start` only | If enabled and available | No               |
+| form exit                                | Exit the form                                                    | No    | ``start`` only | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
-| form resume                              | Resume the form                                                  | No    | :th:`start` only | If enabled and available | No               |
+| form resume                              | Resume the form                                                  | No    | ``start`` only | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
-| form finalize                            | Finalize the form                                                | No    | :th:`start` only | If enabled and available | No               |
+| form finalize                            | Finalize the form                                                | No    | ``start`` only | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
-| save error                               | Error trying to save                                             | No    | :th:`start` only | If enabled and available | No               |
+| save error                               | Error trying to save                                             | No    | ``start`` only | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
-| finalize error                           | Error trying to finalize the form (probably encryption related)  | No    | :th:`start` only | If enabled and available | No               |
+| finalize error                           | Error trying to finalize the form (probably encryption related)  | No    | ``start`` only | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
-| constraint error                         | Constraint or required error on finalize                         | No    | :th:`start` only | If enabled and available | No               |
+| constraint error                         | Constraint or required error on finalize                         | No    | ``start`` only | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+-------+----------+--------------------------+------------------+
 | location tracking enabled/disabled       | Toggle location tracking in Collect                              | No    | Yes              | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
@@ -262,7 +262,7 @@ To convert from epoch time to time in UTC in most common spreadsheet programs, d
 
   (1488761807868 / 86400000) + 25569 = 42800.03944
 
-When the cell is set to type :th:`date time` in common spreadsheet programs, it will show ``3/6/2017 0:56:48 UTC``. A common workflow if device time is needed in a human-readable format will be to add a column for the calculation above and change that column's type to :th:`date time`.
+When the cell is set to type ``date time`` in common spreadsheet programs, it will show ``3/6/2017 0:56:48 UTC``. A common workflow if device time is needed in a human-readable format will be to add a column for the calculation above and change that column's type to ``date time``.
 
 
 .. _known-audit-limitations:

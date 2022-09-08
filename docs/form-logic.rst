@@ -24,12 +24,12 @@ Variables
 
 Variables reference the value of previously answered questions.
 To use a variable in XLSForm,
-put the question's :th:`name` in curly brackets preceded by a dollar sign:
+put the question's ``name`` in curly brackets preceded by a dollar sign:
 
-:tc:`${question-name}`
+``${question-name}``
 
 Variables can be used in 
-:th:`label`, :th:`hint`, and :th:`repeat_count` columns, 
+``label``, ``hint``, and ``repeat_count`` columns, 
 as well as any column that accepts an :ref:`expression <expressions>`.
 
 .. image:: /img/form-logic/variables-0.* 
@@ -66,7 +66,7 @@ Some tools like ODK Build do not support ``${}`` notation so XPath notation must
 
 One way to think about XPath is that it sees a form or dataset like a series of folders and files on your computer. Questions are like files while :ref:`groups <groups>` and :ref:`repeats <repeats>` are like folders because they can contain other elements. Path elements are separated by `/`. Imagine a form with a group with name ``outer`` which contains another group with name ``inner`` which contains a question with name ``q1``. The absolute path to ``q1`` is ``/data/outer/inner/q1``.
 
-The ``data`` in the example above is the name of the form root. This root is named ``data`` by default but can be modified by adding a :th:`name` column in the XLSForm **settings** sheet and specifying a value below it. This is rarely needed. The ``/`` at the start of the path indicates that the path is absolute.
+The ``data`` in the example above is the name of the form root. This root is named ``data`` by default but can be modified by adding a ``name`` column in the XLSForm **settings** sheet and specifying a value below it. This is rarely needed. The ``/`` at the start of the path indicates that the path is absolute.
 
 XPath paths can also be relative. For example, let's say there's a ``relevance`` expression for ``q1`` in the example above and that this expression refers to a question with name ``age`` in the ``outer`` group. We could refer to it using an absolute expression: ``/data/outer/age``. We could also write a relative expression: ``../../age``.
 
@@ -134,19 +134,19 @@ and (in some cases) :ref:`the value of the current response <constraints>`.
 
 .. rubric:: Example expressions
 
-:tc:`${bill_amount} * 0.18`
-  Multiplies the previous value :tc:`bill_amount` by 18%,
+``${bill_amount} * 0.18``
+  Multiplies the previous value ``bill_amount`` by 18%,
   to calculate a suitable tip.
   
-:tc:`concat(${first_name}, ' ', ${last_name})`
+``concat(${first_name}, ' ', ${last_name})``
   Concatenates two previous responses with a space between them 
   into a single string.
   
-:tc:`${age} >= 18`
+``${age} >= 18``
   Evaluates to ``True`` or ``False``, 
-  depending on the value of :tc:`age`.
+  depending on the value of ``age``.
 
-:tc:`round(${bill_amount} * ${tip_percent} * 0.01, 2)`
+``round(${bill_amount} * ${tip_percent} * 0.01, 2)``
   Calculates a tip amount based on two previously entered values,
   and then rounds the result to two decimal places.
 
@@ -164,14 +164,14 @@ Calculations
 -------------
 
 To evaluate complex expressions, 
-use a :tc:`calculate` row.
-Put the expression to be evaluated in the :th:`calculation` column.
+use a ``calculate`` row.
+Put the expression to be evaluated in the ``calculation`` column.
 Then, you can :ref:`refer to the calculated value <variables>`
-using the calculate row's :th:`name`.
+using the calculate row's ``name``.
 
-Expressions cannot be used in :th:`label` and :th:`hint` columns,
+Expressions cannot be used in ``label`` and ``hint`` columns,
 so if you want to display calculated values to the user,
-you must first use a :tc:`calculate` row and then a variable.
+you must first use a ``calculate`` row and then a variable.
 
 .. image:: /img/form-logic/calculation-0.* 
   :alt: The decimal widget in Collect. The question label is "Bill amount". The entered value is "55.88".
@@ -206,7 +206,7 @@ Values from the last saved record
 
 You can refer to values from the last saved record of this form definition:
 
-:tc:`${last-saved#question-name}`
+``${last-saved#question-name}``
 
 This can be very useful when an enumerator has to enter the same value for multiple consecutive records. An example of this would be entering in the same district for a series of households.
 
@@ -282,11 +282,11 @@ Requiring responses
 By default,
 users are able to skip questions in a form.
 To make a question required,
-put :tc:`yes` in the :th:`required` column.
+put ``yes`` in the ``required`` column.
 
 Required questions are marked with a small asterisk
 to the left of the question label.
-You can optionally include a :th:`required_message`
+You can optionally include a ``required_message``
 which will be displayed to the user who tries to advance the form
 without answering the question.
 
@@ -309,7 +309,7 @@ without answering the question.
 Setting default responses
 ===========================
 
-To provide a default response to a question, put a value in the :th:`default` column. Defaults are set when a record is first created from a form definition. Defaults can either be fixed values (:ref:`static defaults <static-defaults>`) or the result of some expression (:ref:`dynamic defaults <dynamic-defaults>`).
+To provide a default response to a question, put a value in the ``default`` column. Defaults are set when a record is first created from a form definition. Defaults can either be fixed values (:ref:`static defaults <static-defaults>`) or the result of some expression (:ref:`dynamic defaults <dynamic-defaults>`).
 
 .. warning::
   Defaults are not supported for media question types. The only exception is that images can have static defaults. This can be useful for :ref:`annotations <annotate-widget>`.
@@ -319,7 +319,7 @@ To provide a default response to a question, put a value in the :th:`default` co
 Static defaults
 ----------------
 
-The text in the :th:`default` column for a question is taken literally as the default value. Quotes should **not** be used to wrap values, unless you actually want those quote marks to appear in the default response value.
+The text in the ``default`` column for a question is taken literally as the default value. Quotes should **not** be used to wrap values, unless you actually want those quote marks to appear in the default response value.
 
 In the example below, the "Phone call" option with underlying value ``phone_call`` will be selected when the question is first displayed. The enumerator can either keep that selection or change it.
 
@@ -346,7 +346,7 @@ Dynamic defaults
   
   Support for :ref:`dynamic defaults <dynamic-defaults>` was added in Collect v1.24.0 and Central v1.0.0. Using older versions will have unpredictable results.
 
-If you put an expression in the :th:`default` column for a question, that expression will be evaluated once when a record is first created from a form definition. This allows you to use values from outside the form like the current date or the :ref:`server username <metadata>`. Dynamic defaults as described in this section are evaluated once on record creation. See below for using :ref:`dynamic defaults in repeats <dynamic-defaults-repeats>` or setting the :ref:`default value of one field to the value of another field in the form <defaults-from-form-data>`.
+If you put an expression in the ``default`` column for a question, that expression will be evaluated once when a record is first created from a form definition. This allows you to use values from outside the form like the current date or the :ref:`server username <metadata>`. Dynamic defaults as described in this section are evaluated once on record creation. See below for using :ref:`dynamic defaults in repeats <dynamic-defaults-repeats>` or setting the :ref:`default value of one field to the value of another field in the form <defaults-from-form-data>`.
 
 .. rubric:: XLSForm to set the current date as default
 
@@ -402,7 +402,7 @@ Dynamic defaults from form data
 
 It can be helpful to use a value filled out by the enumerator as a default for another question that the enumerator will later fill in. Dynamic defaults as described above can't be used for this because they are evaluated on form or repeat creation, before any data is filled in.
 
-You also **can't use the calculation column on its own for this** because the expression in the :th:`calculation` would be evaluated on form save and replace any changes the enumerator has made. Instead, use a combination of :th:`calculation` and :th:`trigger`. The question reference in the :th:`trigger` column will ensure that your :th:`calculation` is only evaluated when that reference changes.
+You also **can't use the calculation column on its own for this** because the expression in the ``calculation`` would be evaluated on form save and replace any changes the enumerator has made. Instead, use a combination of ``calculation`` and ``trigger``. The question reference in the ``trigger`` column will ensure that your ``calculation`` is only evaluated when that reference changes.
 
 .. rubric:: XLSForm that uses current age as the default for diagnosis age
 
@@ -414,7 +414,7 @@ You also **can't use the calculation column on its own for this** because the ex
   select_one gndr, gender, Gender,
   integer, diagnosis_age, Age at malaria diagnosis, ${current_age}, ${current_age}
 
-In the example above, ``${current_age}`` in the :th:`trigger` column means that when the value of the ``current_age`` question is changed by the enumerator, the :th:`calculation` for the ``diagnosis_age`` question will be evaluated. In this case, this means the new value for ``current_age`` will replace the current value for ``diagnosis_age``. If the enumerator then changes the value for ``diagnosis_age``, this value will be retained unless the value for ``current_age`` is changed again.
+In the example above, ``${current_age}`` in the ``trigger`` column means that when the value of the ``current_age`` question is changed by the enumerator, the ``calculation`` for the ``diagnosis_age`` question will be evaluated. In this case, this means the new value for ``current_age`` will replace the current value for ``diagnosis_age``. If the enumerator then changes the value for ``diagnosis_age``, this value will be retained unless the value for ``current_age`` is changed again.
 
 Another option for the scenario above is to clear out the value for ``diagnosis_age`` when ``current_age`` changes. Making ``diagnosis_age`` a required question will force the enumerator to update ``diagnosis_age`` if ``current_age`` is corrected.
 
@@ -450,7 +450,7 @@ In the example above, when a participant is selected, his or her phone number is
 
 .. note::
 
-  The ``true()`` in the :th:`choice_filter` column for the ``select_one`` in the example above is necessary to be able to look up participants' phone numbers. This is currently needed to overcome a ``pyxform`` bug.
+  The ``true()`` in the ``choice_filter`` column for the ``select_one`` in the example above is necessary to be able to look up participants' phone numbers. This is currently needed to overcome a ``pyxform`` bug.
 
 .. _triggering_calculations_on_value_change:
 
@@ -502,14 +502,14 @@ Validating and restricting responses
 =========================================
 
 To validate or restrict response values,
-use the :th:`constraint` column.
-The :th:`constraint` expression will be evaluated
+use the ``constraint`` column.
+The ``constraint`` expression will be evaluated
 when the user advances to the next screen.
 If the expression evaluates to ``True``,
 the form advances as usual.
 If ``False``, 
 the form does not advance
-and the :th:`constraint_message` is displayed.
+and the ``constraint_message`` is displayed.
 
 The entered value of the response is represented in the expression
 with a single dot (``.``).
@@ -518,16 +518,16 @@ Constraint expressions often use comparison `operators`_
 and :doc:`regular expressions <form-regex>`. 
 For example:
 
-:tc:`. >= 18`
+``. >= 18``
   True if response is greater than or equal to 18.
 
-:tc:`. > 20 and . < 200`
+``. > 20 and . < 200``
   True if the response is between 20 and 200.
   
-:tc:`regex(.,'\p{L}+')`
+``regex(.,'\p{L}+')``
   True if the response only contains letters, without spaces, separators, or numbers.
   
-:tc:`not(contains(., 'prohibited'))`
+``not(contains(., 'prohibited'))``
   True if the substring ``prohibited`` does not appear in the response.
 
 .. note::
@@ -546,7 +546,7 @@ Read-only questions
 ---------------------  
     
 To completely restrict user-entry, 
-use the :th:`read_only` column with a value of :tc:`yes`.
+use the ``read_only`` column with a value of ``yes``.
 This is usually combined with a :ref:`default response <default-responses>`,
 which is often :ref:`calculated <calculations>` 
 based on :ref:`previous responses <variables>`.
@@ -569,12 +569,12 @@ based on :ref:`previous responses <variables>`.
 Conditionally showing questions
 =================================
 
-The :th:`relevant` column can be used to
+The ``relevant`` column can be used to
 show or hide
 questions and groups of questions
 based on previous responses.
 
-If the expression in the :th:`relevant` column
+If the expression in the ``relevant`` column
 evaluates to ``True``, 
 the question or group is shown.
 If ``False``, 
@@ -582,26 +582,26 @@ the question is skipped.
 
 Often, comparison `operators`_ are used in relevance expressions. For example:
 
-:tc:`${age} <= 5`
-  True if :tc:`age` is five or less.
+``${age} <= 5``
+  True if ``age`` is five or less.
   
-:tc:`${has_children} = 'yes'`
-  True if the answer to :tc:`has_children` was ``yes``.
+``${has_children} = 'yes'``
+  True if the answer to ``has_children`` was ``yes``.
   
 Relevance expressions can also use :ref:`functions <form-functions>`.
 For example:
 
-:tc:`selected(${allergies}, 'peanut')`
+``selected(${allergies}, 'peanut')``
   True if ``peanut`` was selected
-  in the :ref:`multi-select-widget` named :tc:`allergies`.
+  in the :ref:`multi-select-widget` named ``allergies``.
   
-:tc:`contains(${haystack}, 'needle')`
+``contains(${haystack}, 'needle')``
   True if the exact string ``needle`` 
-  is contained anywhere inside the response to :tc:`haystack`.
+  is contained anywhere inside the response to ``haystack``.
   
-:tc:`count-selected(${toppings}) > 5`
+``count-selected(${toppings}) > 5``
   True if more than five options were selected
-  in the :ref:`multi-select-widget` named :tc:`toppings`.
+  in the :ref:`multi-select-widget` named ``toppings``.
 
 .. _simple-conditional-example:
 
@@ -637,9 +637,9 @@ Complex example
   Calculations are evaluated regardless of their relevance.
   
   For example, 
-  if you have a :tc:`calculate` widget
+  if you have a ``calculate`` widget
   that adds together two previous responses,
-  you cannot use :th:`relevant` to skip in the case of missing values.
+  you cannot use ``relevant`` to skip in the case of missing values.
   (Missing values will cause an error.)
   
   Instead,
@@ -670,7 +670,7 @@ Complex example
 Groups of questions
 ====================
 
-To group questions, use the :tc:`begin_group...end_group` syntax.
+To group questions, use the ``begin_group...end_group`` syntax.
 
 .. rubric:: XLSForm --- Question group
 
@@ -682,9 +682,9 @@ To group questions, use the :tc:`begin_group...end_group` syntax.
   text, question_2, These questions will both be grouped together
   end_group, ,
 
-You can use the :tc:`field-list` appearance on a group to :ref:`display multiple questions on the same screen <field-list>`.
+You can use the ``field-list`` appearance on a group to :ref:`display multiple questions on the same screen <field-list>`.
 
-If given a :th:`label`, groups will be visible in the form path to help orient the user
+If given a ``label``, groups will be visible in the form path to help orient the user
 (e.g. :guilabel:`My text widgets > Text widget 1`). Labeled groups will also be visible as clickable items in the :ref:`jump menu <jumping>`:
 
 .. image:: /img/form-logic/jump-menu-groups.*
@@ -701,7 +701,7 @@ Groups without labels can be helpful for organizing questions in a way that's in
 
 Repeating questions
 =====================
-You can ask the same question or questions multiple times by wrapping them in :tc:`begin_repeat...end_repeat`. By default, enumerators are asked before each repetition whether they would like to add another repeat. It is also possible to :ref:`determine the number of repetitions ahead of time <statically-defined-repeats>` which can make the user interaction more intuitive. You can also :ref:`add repeats as long as a condition is met <repeat_based_on_condition>`.
+You can ask the same question or questions multiple times by wrapping them in ``begin_repeat...end_repeat``. By default, enumerators are asked before each repetition whether they would like to add another repeat. It is also possible to :ref:`determine the number of repetitions ahead of time <statically-defined-repeats>` which can make the user interaction more intuitive. You can also :ref:`add repeats as long as a condition is met <repeat_based_on_condition>`.
 
 .. rubric:: XLSForm --- Repeating one or more questions
 
@@ -749,7 +749,7 @@ Before each repetition, the user is asked if they want to add another.
 
 .. note::
 
-  The :th:`label` in the :tc:`begin_repeat` row is shown in quotes in the **Add ...?** message.
+  The ``label`` in the ``begin_repeat`` row is shown in quotes in the **Add ...?** message.
   
   A meaningful label will help enumerators and participants navigate the form as intended. We generally recommend using a singular noun or noun phrase such as "observation" or "household member".
 
@@ -769,7 +769,7 @@ Before each repetition, the user is asked if they want to add another.
 Fixed repeat count
 ~~~~~~~~~~~~~~~~~~~~
 
-Use the :th:`repeat_count` column to define the number of times that questions will repeat.
+Use the ``repeat_count`` column to define the number of times that questions will repeat.
 
 
 .. rubric:: XLSForm
@@ -789,7 +789,7 @@ Use the :th:`repeat_count` column to define the number of times that questions w
 Dynamically defined repeat count
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The :th:`repeat_count` column can reference :ref:`previous responses <variables>` and :ref:`calculations <calculations>`.
+The ``repeat_count`` column can reference :ref:`previous responses <variables>` and :ref:`calculations <calculations>`.
 
 .. rubric:: XLSForm
 
@@ -826,7 +826,7 @@ If the enumerator won't know how many repetitions are needed ahead of time, you 
   yes_no, yes, Yes
   yes_no, no, No
 
-This works by maintaining a :func:`count` of the existing repetitions and either making :th:`repeat_count` one more than that if the continuing condition is met or keeping the :th:`repeat_count` the same if the ending condition is met. 
+This works by maintaining a :func:`count` of the existing repetitions and either making ``repeat_count`` one more than that if the continuing condition is met or keeping the ``repeat_count`` the same if the ending condition is met. 
 
 In the `repeat_count` expression, `${count} = 0` ensures that there is always at least one repeat instance created. The continuing condition is `${plant}[position()=${count}]/more_plants = 'yes'` which means "the answer to `more_plants` was `yes` the last time it was asked." The expression `position()=${count}` uses the :func:`position` function to select the last plant that was added. Adding `/more_plants` to the end of that selects the `more_plants` question.
 
@@ -857,13 +857,13 @@ Sometimes it only makes sense to collect information represented by the question
 Filtering options in select questions
 ===============================================
 
-To limit the options in a select question based on the answer to a previous question, specify an expression in the :th:`choice_filter` column of the **survey** sheet. This expression will refer to one or more column in the **choices** sheet that the dataset should be filtered by.
+To limit the options in a select question based on the answer to a previous question, specify an expression in the ``choice_filter`` column of the **survey** sheet. This expression will refer to one or more column in the **choices** sheet that the dataset should be filtered by.
 
 For example, you might ask your enumerators to select a state first, and then only display cities within that state. This is referred to as a "cascading select" and can be extended to any depth. The example below has two levels: job category and job title.
 
-The :th:`choice_filter` expression for the second select in the example is ``category=${job_category}``. ``category`` is the name of a column in the **choices** sheet and ``${job_category}`` refers to the first select question in the form. The filter expression says to only include rows whose ``category`` column value exactly matches the value selected by the enumerator as ``${job_category}``.
+The ``choice_filter`` expression for the second select in the example is ``category=${job_category}``. ``category`` is the name of a column in the **choices** sheet and ``${job_category}`` refers to the first select question in the form. The filter expression says to only include rows whose ``category`` column value exactly matches the value selected by the enumerator as ``${job_category}``.
 
-Any expression that evaluates to ``True`` or ``False`` can be used as a :th:`choice_filter`. For example, you could add a ``location`` column to the **choices** sheet and also ask the user to enter a location they want to consider jobs in. If the new location question on the **survey** sheet is named ``${job_location}``, the choice filter would be ``category=${job_category} and location=${job_location}``. Another example of a complex choice filter is one that uses :ref:`text comparison functions <string-comparison-functions>` to match labels that start with a certain value. Consider, for example, ``starts-with(label, ${search_value})`` where ``search_value`` is the name of a text question defined on the **survey** sheet.
+Any expression that evaluates to ``True`` or ``False`` can be used as a ``choice_filter``. For example, you could add a ``location`` column to the **choices** sheet and also ask the user to enter a location they want to consider jobs in. If the new location question on the **survey** sheet is named ``${job_location}``, the choice filter would be ``category=${job_category} and location=${job_location}``. Another example of a complex choice filter is one that uses :ref:`text comparison functions <string-comparison-functions>` to match labels that start with a certain value. Consider, for example, ``starts-with(label, ${search_value})`` where ``search_value`` is the name of a text question defined on the **survey** sheet.
 
 .. video:: /vid/form-logic/cascade-select.mp4
 

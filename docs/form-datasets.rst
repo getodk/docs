@@ -23,7 +23,7 @@ External datasets are useful when:
 Building selects from CSV files
 ---------------------------------
 
-CSV files can be used as datasets for select questions using ``select_one_from_file`` or ``select_multiple_from_file``. CSV files used this way must have :th:`name` and :th:`label` columns unless you use the :th:`parameters` column to :ref:`customize the columns used <customizing-label-and-value>`. For each row in the dataset, the text in the value column (defaults to :th:`name`) will be used as the value saved when that choice is selected and the text in the label column (defaults to :th:`label`) will be used to display the choice. For select multiples, :th:`name` must not contain spaces.
+CSV files can be used as datasets for select questions using ``select_one_from_file`` or ``select_multiple_from_file``. CSV files used this way must have ``name`` and ``label`` columns unless you use the ``parameters`` column to :ref:`customize the columns used <customizing-label-and-value>`. For each row in the dataset, the text in the value column (defaults to ``name``) will be used as the value saved when that choice is selected and the text in the label column (defaults to ``label``) will be used to display the choice. For select multiples, ``name`` must not contain spaces.
 
 These files may also have any number of additional columns used in :ref:`choice filters <cascading-selects>` or other expressions. The example below uses one select from internal choices followed by selects from two different external CSV files.
 
@@ -70,7 +70,7 @@ GeoJSON files that follow `the GeoJSON spec <https://datatracker.ietf.org/doc/ht
 
 - must have a ``.geojson`` extension (NOT ``.json``)
 - must define a single top-level `FeatureCollection <https://datatracker.ietf.org/doc/html/rfc7946#section-3.3>`_
-- must include a unique identifier for each feature (by default, a top-level :th:`id`, falling back to an :th:`id` property, or can be :ref:`configured <customizing-label-and-value>`)
+- must include a unique identifier for each feature (by default, a top-level ``id``, falling back to an ``id`` property, or can be :ref:`configured <customizing-label-and-value>`)
 - must only include features with `Point geometry <https://datatracker.ietf.org/doc/html/rfc7946#appendix-A.1>`_
 
 .. csv-table:: survey
@@ -105,7 +105,7 @@ GeoJSON files referenced in forms can have any number of ``features`` and any nu
 
 All properties are displayed by :ref:`select from map <select-from-map>` questions and can be :ref:`referenced by any part of the form <referencing-values-in-datasets>`.
 
-A feature's :th:`geometry` can be accessed as ``geometry`` and is provided in :ref:`the ODK format <location-widgets>`. Given the GeoJSON file and the form definition above, if the user selected "HR Giger Museum", the value of ``${museum}`` would be ``"fs87b"``. 
+A feature's ``geometry`` can be accessed as ``geometry`` and is provided in :ref:`the ODK format <location-widgets>`. Given the GeoJSON file and the form definition above, if the user selected "HR Giger Museum", the value of ``${museum}`` would be ``"fs87b"``. 
 
 The expression ``instance('museums')/root/item[id=${museum}]/geometry`` would evaluate to ``46.5841618 7.0801379 0 0`` which is a point in the ODK format.
 
@@ -130,7 +130,7 @@ XML files used for selects must have the following structure and can have any nu
       ...
     </root>
 
-The ``item`` blocks are analogous to rows in the CSV representation. Each ``item`` must have at least :th:`name` and :th:`label` nested nodes and can have any number of additional nodes. These nodes correspond to columns in the CSV representation.
+The ``item`` blocks are analogous to rows in the CSV representation. Each ``item`` must have at least ``name`` and ``label`` nested nodes and can have any number of additional nodes. These nodes correspond to columns in the CSV representation.
 
 .. _referencing-values-in-datasets:
 

@@ -29,7 +29,7 @@ To reference a question from a different repeat instance, or from outside the re
 Referencing repeated questions from outside the repeat
 -------------------------------------------------------
 
-A question in a repeat can be referenced from outside the repeat with :tc:`indexed-repeat(${question-name}, ${repeat-name}, index)`.
+A question in a repeat can be referenced from outside the repeat with ``indexed-repeat(${question-name}, ${repeat-name}, index)``.
 
 .. _counting-repeats-and-answers:
 
@@ -53,7 +53,7 @@ a specific response is given,
 add a calculate field inside the repeat
 which evaluates to ``1`` or ``0`` depending on the answer.
 Then, outside the repeat,
-calculate the :tc:`sum()` of the calculate field.
+calculate the ``sum()`` of the calculate field.
 
 .. include::  incl/form-examples/sum-to-count-responses.rst
 
@@ -129,13 +129,13 @@ Using relevants to limit repetitions
 
 If asking the user ahead of time doesn't make sense,
 another strategy is to manually repeat the question in the form
-and use the :th:`relevant` column to 
+and use the ``relevant`` column to 
 :ref:`skip repetitions if <relevants>` the previous question is left blank.
 This sets a maximum number of responses:
 the number of times you included the question in the form.
 
 To check if the previous question has a response,
-:ref:`reference the question <variables>` in the :th:`relevant` column.
+:ref:`reference the question <variables>` in the ``relevant`` column.
 
 .. rubric:: XLSForm
 

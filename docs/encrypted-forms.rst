@@ -36,7 +36,7 @@ While Collect attempts to remove all unencrypted copies of a finalized form and 
 Defining an Encrypted Form
 ===========================
 
-In :doc:`XLSForm <xlsform>`, form encryption is enabled from the :ref:`settings sheet <settings-sheet>`. Encrypted forms must specify a :th:`public_key` on this worksheet. See below to learn how to generate a public-private key pair. It is also recommended to set an explicit :th:`submission_url` to make sure the submission goes to the intended destination. Central, this is the server URL configured in Collect for the App User followed by `/submission`. For Aggregate, this is the url with Aggregate.html replaced by `submission`.
+In :doc:`XLSForm <xlsform>`, form encryption is enabled from the :ref:`settings sheet <settings-sheet>`. Encrypted forms must specify a ``public_key`` on this worksheet. See below to learn how to generate a public-private key pair. It is also recommended to set an explicit ``submission_url`` to make sure the submission goes to the intended destination. Central, this is the server URL configured in Collect for the App User followed by `/submission`. For Aggregate, this is the url with Aggregate.html replaced by `submission`.
 
 .. rubric:: XLSForm --- configuring encryption
 

@@ -26,7 +26,7 @@ Labels contain one or more of the following:
 
 These three components always appear in this order.
 Their content is specified 
-in the :th:`calculation` column of the XLSForm,
+in the ``calculation`` column of the XLSForm,
 using the :func:`concat` function.
 The three components are included as strings, 
 separated by ``'<br>'``, 
@@ -71,10 +71,10 @@ of the survey :term:`participant`:
   
 .. note::
 
-  The printer widget is used whenever a :tc:`text` field 
-  has an :th:`appearance` attribute that begins with :tc:`printer`. 
-  The full form for the appearance attribute is :tc:`printer:{intentname}`,
-  where :tc:`{intentname}` identifies the printer driver.
+  The printer widget is used whenever a ``text`` field 
+  has an ``appearance`` attribute that begins with ``printer``. 
+  The full form for the appearance attribute is ``printer:{intentname}``,
+  where ``{intentname}`` identifies the printer driver.
  
   By copying and modifying the `ODK Zebra Printer Driver source code`_, 
   and then specifying the intent name for that new driver,

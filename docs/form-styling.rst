@@ -12,7 +12,7 @@ Media
 ------
 
 You can include questions in your form that display images or that play video or
-audio files by including a :th:`media` column in your `XLSForm <http://xlsform.org/#media>`_.
+audio files by including a ``media`` column in your `XLSForm <http://xlsform.org/#media>`_.
 Files referenced should be included :ref:`in your form's media folder <loading-form-media>`.
 
 Images
@@ -71,7 +71,7 @@ Autoplaying Media
 ~~~~~~~~~~~~~~~~~~~
 
 Audio and video on questions can also be played automatically when a question is viewed by adding
-an :th:`autoplay` column specifying either :th:`audio` or :th:`video`.
+an ``autoplay`` column specifying either ``audio`` or ``video``.
 
 .. rubric:: XLSForm
 
@@ -250,8 +250,8 @@ Fonts and colors
 ---------------------
 
 To add custom styling to hint, label, and choice labels,
-use `the style attribute`_ on a :tc:`span` tag.
-The :tc:`style` attribute accepts CSS-like key-value pairs for setting ``color`` and ``font-family``.
+use `the style attribute`_ on a ``span`` tag.
+The ``style`` attribute accepts CSS-like key-value pairs for setting ``color`` and ``font-family``.
 
 .. _the style attribute: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style
 
@@ -311,7 +311,7 @@ The :tc:`style` attribute accepts CSS-like key-value pairs for setting ``color``
 Text alignment
 ----------------
 
-To add alignment to hint, label, and choice labels, use `the style attribute`_ on a :tc:`p` or :tc:`div` tag.
+To add alignment to hint, label, and choice labels, use `the style attribute`_ on a ``p`` or ``div`` tag.
 
 .. image:: /img/form-styling/text-alignment.*
 
