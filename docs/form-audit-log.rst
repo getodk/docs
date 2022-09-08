@@ -204,13 +204,13 @@ The event column of the audit log can have the following values:
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
 |      Event                               |                           Description                            | Node? |  Timestamps?     | Coordinates?             | Answers?         |
 +==========================================+==================================================================+=======+==================+==========================+==================+
-| form start                               | Start filling in the form                                        | No    | ``start`` only | If enabled and available | No               |
+| form start                               | Start filling in the form                                        | No    | ``start`` only   | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
 | question                                 | View a question                                                  | Yes   | Yes              | If enabled and available | If enabled       |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
 | group questions                          | View multiple questions on one screen (``field-list``)           | Yes   | Yes              | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
-| jump                                     | View the jump screen                                             | No    | ``start`` only | If enabled and available | No               |
+| jump                                     | View the jump screen                                             | No    | ``start`` only   | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
 | add repeat                               | Add a repeat                                                     | Yes   | Yes              | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
@@ -218,19 +218,19 @@ The event column of the audit log can have the following values:
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
 | end screen                               | View the end screen                                              | No    | Yes              | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
-| form save                                | Save the form                                                    | No    | ``start`` only | If enabled and available | No               |
+| form save                                | Save the form                                                    | No    | ``start`` only   | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
-| form exit                                | Exit the form                                                    | No    | ``start`` only | If enabled and available | No               |
+| form exit                                | Exit the form                                                    | No    | ``start`` only   | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
-| form resume                              | Resume the form                                                  | No    | ``start`` only | If enabled and available | No               |
+| form resume                              | Resume the form                                                  | No    | ``start`` only   | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
-| form finalize                            | Finalize the form                                                | No    | ``start`` only | If enabled and available | No               |
+| form finalize                            | Finalize the form                                                | No    | ``start`` only   | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
-| save error                               | Error trying to save                                             | No    | ``start`` only | If enabled and available | No               |
+| save error                               | Error trying to save                                             | No    | ``start`` only   | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
-| finalize error                           | Error trying to finalize the form (probably encryption related)  | No    | ``start`` only | If enabled and available | No               |
+| finalize error                           | Error trying to finalize the form (probably encryption related)  | No    | ``start`` only   | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
-| constraint error                         | Constraint or required error on finalize                         | No    | ``start`` only | If enabled and available | No               |
+| constraint error                         | Constraint or required error on finalize                         | No    | ``start`` only   | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+-------+----------+--------------------------+------------------+
 | location tracking enabled/disabled       | Toggle location tracking in Collect                              | No    | Yes              | If enabled and available | No               |
 +------------------------------------------+------------------------------------------------------------------+-------+------------------+--------------------------+------------------+
