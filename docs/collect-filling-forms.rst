@@ -81,7 +81,7 @@ In all cases, buttons below the question text will guide you through providing t
 Removing answers
 -------------------
 
-To remove a response, :gesture:`Long Press` on the :term:`question label`. 
+To remove a response, long press on the :term:`question label`. 
 
 .. image:: /img/collect-completing-forms/long-press-to-remove.*
   :alt: To remove an answer to a question, long press the question label and follow the on-screen prompts.
@@ -115,7 +115,7 @@ Removing instances of repeats
 
 If you have a repeating group, you can remove existing instances of that repeat in the following ways:
 
-1. By :gesture:`long pressing` on the :term:`question label` in the same way as for :ref:`removing answers <removing_answers>`
+1. By long pressing on the :term:`question label` in the same way as for :ref:`removing answers <removing_answers>`
 
 2. By clicking the "remove" button in the :ref:`jump menu <jumping>`:
 
@@ -134,7 +134,7 @@ Navigating the form
 Swipe
 ~~~~~~~~~~
 
-To move between questions, :gesture:`Swipe Left or Right`. 
+To move between questions, Swipe Left or Right. 
 
 .. image:: /img/collect-completing-forms/swiping.* 
   :alt: A question screen in the Collect App. Overlaid on the screen is an icon of a hand with extended finger and arrows pointing left and right, representing a swiping gesture.
@@ -298,5 +298,5 @@ Mark the form as *Finalized*
 .. image:: /img/collect-completing-forms/mark-form-as-finalized.* 
   :alt:
 
-Only :formstate:`Finalized` forms can be :ref:`uploaded to a server <uploading-forms>`. 
+Only `Finalized` forms can be :ref:`uploaded to a server <uploading-forms>`. 
 

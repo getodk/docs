@@ -24,7 +24,7 @@ Sharing settings with another device
 Navigate to :guilabel:`Reconfigure with QR code` in :guilabel:`Project Management` settings and tap :guilabel:`QR Code` to display the current Project's settings QR code. This can then be scanned by another device to either add a new Project or reconfigure the current one.
 
 .. warning::
-  Settings QR codes contain the admin and server passwords *in plain text*. To remove them from the code, :gesture:`tap` the warning on the QR code screen.
+  Settings QR codes contain the admin and server passwords *in plain text*. To remove them from the code, tap the warning on the QR code screen.
 
 Sharing a QR code as an image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

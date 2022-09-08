@@ -29,7 +29,7 @@ For devices running Android version 4 or later:
       :alt: Image showing Settings app.
       :class: device-screen-vertical
 
-2. :gesture:`Tap` :guilabel:`Lock screen` in the :guilabel:`Device` section. Then :gesture:`tap` on :guilabel:`Screen lock` and create a pin or password.
+2. Tap :guilabel:`Lock screen` in the :guilabel:`Device` section. Then tap on :guilabel:`Screen lock` and create a pin or password.
 
    .. image:: /img/collect-best-practices/lock-screen.png
       :alt: Image showing Lock screen option in the Device section.
@@ -52,7 +52,7 @@ For devices running Android version 4 or later:
      Setting a strong passcode is imperative to protect your Android phone. The longer the passcode (or alphanumeric password), the tougher it will be for an attacker to gain access to your device. 
      Even a lock screen won't necessarily prevent a thief or hacker from getting access to your data. You can use apps that destroy all the data after few failed attempts to unlock the device. For more details, see `this <https://www.techrepublic.com/blog/five-apps/five-apps-to-wipe-data-from-your-android-phone/>`__.
 
-3. :gesture:`Tap` :guilabel:`Security` in the :guilabel:`System` section.
+3. Tap :guilabel:`Security` in the :guilabel:`System` section.
 
    .. image:: /img/collect-best-practices/security.png
       :alt: Image showing Security option in the System section.
@@ -90,7 +90,7 @@ Adjust Google Play to require a password for every purchase
 
 You can set up Google Play to require a password for every purchase, which makes sure that anything you buy is done so with your consent. This can prevent enumerators from installing apps which can bypass certain specified requirements.
 
-1. Open the Play store app, :gesture:`tap` on the left-hand slide-out menu, and then choose :guilabel:`Settings`.
+1. Open the Play store app, tap on the left-hand slide-out menu, and then choose :guilabel:`Settings`.
 
    .. image:: /img/collect-best-practices/play-store.png
       :alt: Image showing Play store app.
@@ -104,7 +104,7 @@ You can set up Google Play to require a password for every purchase, which makes
       :alt: Image showing Settings option in menu.
       :class: device-screen-vertical
 
-2. Look for :guilabel:`Require password for purchases` and :gesture:`tap` on it. You'll be asked to input your password.
+2. Look for :guilabel:`Require password for purchases` and tap on it. You'll be asked to input your password.
 
    .. image:: /img/collect-best-practices/require-authentication.png
       :alt: Image showing Require password for purchases option.
@@ -140,7 +140,7 @@ To disable backup:
       :alt: Image showing Settings app.
       :class: device-screen-vertical
 
-2. Then :gesture:`tap` :guilabel:`Backup & Reset` in :guilabel:`Personalisation` section.
+2. Then tap :guilabel:`Backup & Reset` in :guilabel:`Personalisation` section.
 
    .. image:: /img/collect-best-practices/backup-reset.png
       :alt: Image showing Backup and reset option in the Personalisation section.
@@ -163,7 +163,7 @@ Limit who can use Google Now
 
 Google Now is your own intelligence assistant by bringing information to you when you need it but that gives Google a lot of access to your data to know what to dig up. The best way to use it is by turning it off from the lock screen, so only you with your passcode can use the feature and get access to your personal data. The steps to do this are as follows:
 
-1. Open the Google app, :gesture:`tap` on the left-hand slide-out menu, and then choose :guilabel:`Settings`.
+1. Open the Google app, tap on the left-hand slide-out menu, and then choose :guilabel:`Settings`.
 
    .. image:: /img/collect-best-practices/google-app.png
       :alt: Image showing Google app.
@@ -177,7 +177,7 @@ Google Now is your own intelligence assistant by bringing information to you whe
       :alt: Image showing Settings option in the slide-out menu.
       :class: device-screen-vertical   
 
-2. :gesture:`Tap` on :guilabel:`Voice` in the :guilabel:`Search` section and then choose :guilabel:`'OK Google' detection`.
+2. Tap on :guilabel:`Voice` in the :guilabel:`Search` section and then choose :guilabel:`'OK Google' detection`.
 
    .. image:: /img/collect-best-practices/google-voice.png
       :alt: Image showing Voice option in the Search section.
@@ -206,13 +206,13 @@ Lowering your phone's sleep timeout can prevent opportunistic people from gettin
       :alt: Image showing Settings app.
       :class: device-screen-vertical
 
-2. :gesture:`Tap` on :guilabel:`Display and wallpaper` under the :guilabel:`Device` section.
+2. Tap on :guilabel:`Display and wallpaper` under the :guilabel:`Device` section.
 
    .. image:: /img/collect-best-practices/display.png
       :alt: Image showing Display and wallpaper option in the Device section.
       :class: device-screen-vertical
 
-3. :gesture:`Tap` on :guilabel:`Screen timeout` and lower the screen timeout by choosing an appropriate timeout from the list.
+3. Tap on :guilabel:`Screen timeout` and lower the screen timeout by choosing an appropriate timeout from the list.
 
    .. image:: /img/collect-best-practices/screen-timeout.png
       :alt: Image showing Screen timeout option.
@@ -222,7 +222,7 @@ Lowering your phone's sleep timeout can prevent opportunistic people from gettin
       :alt: Image showing list of timeout to choose from.
       :class: device-screen-vertical
 
-4. Once you've lowered your phone's sleep timeout setting, you need to make sure that your Android device locks and presents the lock screen when it wakes up. :gesture:`Tap` on :guilabel:`Lock screen` in the :guilabel:`Device` section and then :gesture:`tap` on :guilabel:`Lock automatically` option and choose an appropriate timeout again. 
+4. Once you've lowered your phone's sleep timeout setting, you need to make sure that your Android device locks and presents the lock screen when it wakes up. Tap on :guilabel:`Lock screen` in the :guilabel:`Device` section and then tap on :guilabel:`Lock automatically` option and choose an appropriate timeout again. 
 
    .. image:: /img/collect-best-practices/lock-screen.png
       :alt: Image showing Lock screen option in the Device section.
@@ -243,7 +243,7 @@ Limit your lock screen notifications
 
 Your lock screen can show a lot about your life. Your Android phone or tablet can limit what's shown on the lock screen in order to prevent others from seeing your personal content as it comes in.
 
-1. Go to Settings app then :gesture:`Tap` on :guilabel:`Sounds & notifications` under the :guilabel:`Device` section.
+1. Go to Settings app then Tap on :guilabel:`Sounds & notifications` under the :guilabel:`Device` section.
 
    .. image:: /img/collect-best-practices/settings.png
       :alt: Image showing Settings app.
@@ -253,7 +253,7 @@ Your lock screen can show a lot about your life. Your Android phone or tablet ca
       :alt: Image showing Sounds and notifications option in the Device section.
       :class: device-screen-vertical   
 
-2. Scroll down and :gesture:`tap` on :guilabel:`Notifications on lock screen` under the :guilabel:`Notification` section. You can change how notifications are shown when device is locked setting. The most privacy conscious setting is to Hide sensitive notification content so that you know which app is alerting you, without showing its contents.
+2. Scroll down and tap on :guilabel:`Notifications on lock screen` under the :guilabel:`Notification` section. You can change how notifications are shown when device is locked setting. The most privacy conscious setting is to Hide sensitive notification content so that you know which app is alerting you, without showing its contents.
 
    .. image:: /img/collect-best-practices/notify-lock-screen.png
       :alt: Image showing Notifications on lock screen option in the Notification section.
@@ -272,7 +272,7 @@ Android devices can run third-party content outside of the Google Play app store
 
 The easiest way to ensure that only verified and malware-checked apps can be installed on your phone or tablet is:
 
-1. Go to the Settings app and then :gesture:`tap` on :guilabel:`Security` in the :guilabel:`System` section.
+1. Go to the Settings app and then tap on :guilabel:`Security` in the :guilabel:`System` section.
 
    .. image:: /img/collect-best-practices/settings.png
       :alt: Image showing Settings app.
@@ -301,7 +301,7 @@ Many Android phone makers will now offer monthly security patches to ensure that
       :alt: Image showing Settings app.
       :class: device-screen-vertical
 
-2. Then :gesture:`tap` on :guilabel:`About device` under the :guilabel:`System` section.
+2. Then tap on :guilabel:`About device` under the :guilabel:`System` section.
    
    .. image:: /img/collect-best-practices/about-device.png
       :alt: Image showing About device option in the System section.

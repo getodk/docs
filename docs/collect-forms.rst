@@ -121,7 +121,7 @@ Media files must be placed in a folder labeled :file:`{form-name}-media`.
 Editing Saved Forms
 ===================================
 
-:formstate:`Completed` (filled-in) :term:`form instances <instance>` can be edited after they have been saved.
+`Completed` (filled-in) :term:`form instances <instance>` can be edited after they have been saved.
 
 1. Select :guilabel:`Edit Saved Form`
 
@@ -137,11 +137,11 @@ This will reopen the form instance, which you are then free to edit. Form instan
 
 .. note::
 
-  - :formstate:`Sent` forms will not appear in the :guilabel:`Edit Saved Forms` list.
+  - `Sent` forms will not appear in the :guilabel:`Edit Saved Forms` list.
 
-  - :formstate:`Sent` forms, will be available for viewing in :guilabel:`View Sent Forms` list, along with the details which cannot be edited.
+  - `Sent` forms, will be available for viewing in :guilabel:`View Sent Forms` list, along with the details which cannot be edited.
 
-  - You may freely edit :formstate:`Saved` and :formstate:`Finalized` forms.
+  - You may freely edit `Saved` and `Finalized` forms.
 
 .. _uploading-forms:
 
@@ -157,9 +157,9 @@ In some cases, you may want to :ref:`pull filled forms directly from a device <p
 Sending Finalized Forms to a Server
 -----------------------------------
 
-If you are connected to :doc:`a server <collect-connect>` or :doc:`Google Drive Account <collect-connect-google>`, use :guilabel:`Send Finalized Forms` to upload :formstate:`Finalized` form instances.
+If you are connected to :doc:`a server <collect-connect>` or :doc:`Google Drive Account <collect-connect-google>`, use :guilabel:`Send Finalized Forms` to upload `Finalized` form instances.
 
-Uploading a filled form from within the Collect app marks that form as :formstate:`sent`. :formstate:`Sent` forms are no longer editable, but they remain viewable until they are deleted.
+Uploading a filled form from within the Collect app marks that form as `sent`. `Sent` forms are no longer editable, but they remain viewable until they are deleted.
 
 .. image:: /img/collect-forms/main-menu-send-finalized.*
   :alt: The Main Menu of the Collect app. The *Send Finalized Form* option is circled in red.
@@ -196,7 +196,7 @@ To show sent and unsent forms:
 Pulling Forms into Briefcase
 -----------------------------
 
-:doc:`ODK Briefcase  <briefcase-using>` is a desktop application that can be used to pull filled forms to your local computer. You will first need to :ref:`transfer the filled forms to your computer <pull-from-collect>`. This will not update the state of the form to :formstate:`Sent`.
+:doc:`ODK Briefcase  <briefcase-using>` is a desktop application that can be used to pull filled forms to your local computer. You will first need to :ref:`transfer the filled forms to your computer <pull-from-collect>`. This will not update the state of the form to `Sent`.
 
 .. _deleting-forms:
 
@@ -210,7 +210,7 @@ Deleting Forms
 
     
 
-You can delete :formstate:`Blank` forms as well as filled forms in any state (:formstate:`Saved`, :formstate:`Finalized`, or :formstate:`Sent`). Deleting a :formstate:`Sent` form deletes the form contents but metadata associated with it including the deletion date and the instance name are maintained for display in the :guilabel:`View Sent Form` list.
+You can delete `Blank` forms as well as filled forms in any state (`Saved`, `Finalized`, or `Sent`). Deleting a `Sent` form deletes the form contents but metadata associated with it including the deletion date and the instance name are maintained for display in the :guilabel:`View Sent Form` list.
 
 1. Select :guilabel:`Delete Saved Form` on the app home screen.
 
@@ -222,12 +222,12 @@ You can delete :formstate:`Blank` forms as well as filled forms in any state (:f
    .. figure:: /img/collect-forms/delete-saved-forms.*
      :alt: The Delete Saved Forms screen in the Collect app. There are two available tabs: *Saved Forms* and *Blank Forms*. The *Saved Forms* tab is active. Below that is a list of saved form instances, with checkboxes. There are buttons labeled: *Select All* and *Delete Selected*.
 
-     The :guilabel:`Saved Forms` tab lists form instances that are :formstate:`saved`, :formstate:`finalized`, or :formstate:`sent`.
+     The :guilabel:`Saved Forms` tab lists form instances that are `saved`, `finalized`, or `sent`.
 
    .. figure:: /img/collect-forms/delete-saved-forms-blank-forms.*
      :alt: The Delete Saved Forms screen in the Collect app. There are two available tabs: *Saved Forms* and *Blank Forms*. The *Blank Forms* tab is active. Below that is a list of blank forms, with checkboxes. There are buttons labeled: *Select All* and *Delete Selected*.
 
-     The :guilabel:`Blank Forms` tab lists :formstate:`blank` forms.
+     The :guilabel:`Blank Forms` tab lists `blank` forms.
 
 .. note::
 

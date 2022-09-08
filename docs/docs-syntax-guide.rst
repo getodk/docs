@@ -886,50 +886,6 @@ Several roles are used when describing user interactions.
 
     The :option:`-b html` option specifies the HTML builder.
 
-.. rst:role:: gesture
-
-  Describes a touch screen gesture.
-
-  .. code-block:: rst
-
-    :gesture:`Swipe Left`
-
-
-.. _writing-about-forms:
-
-Writing about forms
-~~~~~~~~~~~~~~~~~~~~~~~
-
-We have added several custom text roles for writing about forms and the XForms and XLSForm formats.
-
-.. rst:role:: th
-
-  Used to refer to a table header cell.
-
-.. rst:role:: tc
-
-  Used to refer to a table cell.
-
-  .. code-block:: rst
-
-    External App String Widget
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    The external app widget is displayed when the ``appearance`` attribute begins with ``ex:``.
-
-.. rst:role:: formstate
-
-  Specifies the state of the form in :doc:`collect-intro`, which could be one of the following:
-
-  - Blank
-  - Finalized
-  - Saved
-  - Sent
-  - Deleted
-
-  .. code-block:: rst
-
-    :formstate:`Sent`
-
 
 .. _misc-markup:
 

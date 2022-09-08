@@ -275,7 +275,7 @@ Specifies how blank forms should be updated:
 
 :guilabel:`Finalize forms on import`
 """""""""""""""""""""""""""""""""""""
-  When enabled, forms added directly to the :file:`instances/` directory are automatically set to :formstate:`Finalized`. This is particularly relevant when putting records for an encrypted form directly to the device because encryption happens on finalization.
+  When enabled, forms added directly to the :file:`instances/` directory are automatically set to `Finalized`. This is particularly relevant when putting records for an encrypted form directly to the device because encryption happens on finalization.
 
 .. _id-settings:
 
@@ -396,7 +396,7 @@ You can :ref:`password protect <admin-password>` the protected settings, so enum
   
   :guilabel:`Moving backwards`
     If you disable moving backwards,
-    the enumerator cannot use the back button or :gesture:`swipe right`
+    the enumerator cannot use the back button or swipe right
     to move backwards through a form.
 
     However, disabling this feature

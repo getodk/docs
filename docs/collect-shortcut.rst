@@ -14,13 +14,13 @@ You can create an app-like shortcut to a specific form in Collect.
       :alt: Image showing Apps button.
       :class: device-screen-vertical
 
-2. :gesture:`Touch and hold` on an empty space on the Home screen and then click on :guilabel:`Widgets` button at the bottom of the screen.
+2. Touch and hold on an empty space on the Home screen and then click on :guilabel:`Widgets` button at the bottom of the screen.
 
    .. image:: /img/collect-best-practices/widgets.png
       :alt: Image showing Widgets button.
       :class: device-screen-vertical
 
-3. Find the :guilabel:`ODK Form` widget and then :gesture:`touch and hold` it.
+3. Find the :guilabel:`ODK Form` widget and then touch and hold it.
 
    .. image:: /img/collect-best-practices/odk-form.png
       :alt: Image showing ODK Form widget.
@@ -32,7 +32,7 @@ You can create an app-like shortcut to a specific form in Collect.
       :alt: Image showing form list.
       :class: device-screen-vertical
 
-5. Shortcut for the selected form will appear on your home screen. You can move the shortcut to the desired position by :gesture:`drag and drop`.
+5. Shortcut for the selected form will appear on your home screen. You can move the shortcut to the desired position by drag and drop.
 
    .. image:: /img/collect-best-practices/form-shortcut.png
       :alt: Image showing form shortcut.
@@ -40,7 +40,7 @@ You can create an app-like shortcut to a specific form in Collect.
 
 .. note::
 
-  To delete the shortcut, hold and press it. A :guilabel:`Remove` button will appear on the top right corner. :gesture:`Drag and drop` the shortcut to the :guilabel:`Remove` button. The shortcut will be removed.
+  To delete the shortcut, hold and press it. A :guilabel:`Remove` button will appear on the top right corner. Drag and drop the shortcut to the :guilabel:`Remove` button. The shortcut will be removed.
 
   .. image:: /img/collect-best-practices/remove.png
      :alt: Image showing Remove button.
