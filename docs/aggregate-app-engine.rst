@@ -106,9 +106,9 @@ Installing Aggregate on Google App Engine
 
 #. Launch the ODK Aggregate installer on your computer. (:ref:`See download info here. <download-aggregate-installer>`)
 
-    .. tabs::
+    .. tab-set::
 
-     .. group-tab:: Linux
+     .. tab-item:: Linux
 
 	Before launching, change the installer's permissions to enable running it as a program:
 
@@ -124,12 +124,12 @@ Installing Aggregate on Google App Engine
 
 	(Use actual name of the file, which will be different.)
 
-     .. group-tab:: macOS
+     .. tab-item:: macOS
 
 	1. Unzip the downloaded file before running the installer within it.
 	2. When you attempt to run the installer, macOS will prevent it. Go to :menuselection:` --> System Preferences --> Security & Privacy` to enable running the installer.
 
-     .. group-tab:: Windows
+     .. tab-item:: Windows
 
 	On launch, you may need to approve running an unsigned installer.
 
@@ -207,23 +207,23 @@ Installing Aggregate on Google App Engine
 
      If the popup dialog does not appear, relaunch the upload tool:
 
-     .. tabs::
+     .. tab-set::
 
-       .. group-tab:: Linux
+       .. tab-item:: Linux
 
 	 1. Close the upload tool.
 	 2. Open a terminal.
 	 3. :command:`cd` to the directory you specified earlier.
 	 4. run :file:`uploadAggregateToAppEngine.sh`
 
-       .. group-tab:: macOS
+       .. tab-item:: macOS
 
 	 1. Close the upload tool.
 	 2. Open a Finder window.
 	 3. Navigate to the directory you specified earlier.
 	 4. Run :program:`uploadAggregateToAppEngine.app`
 
-       .. group-tab:: Windows
+       .. tab-item:: Windows
 
 	 1. Close the upload tool.
 	 2. Open a file explorer window.

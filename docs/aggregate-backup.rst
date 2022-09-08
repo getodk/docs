@@ -23,15 +23,15 @@ Backup
 
 2. Produce a database backup file:
 
-  .. tabs::
+  .. tab-set::
 
-    .. group-tab:: Windows
+    .. tab-item:: Windows
 
       .. code-block:: console
 
         pg_dump.exe [ dbname ] > [ backup file location ]
 
-    .. group-tab:: macOS and Linux:
+    .. tab-item:: macOS and Linux:
 
       .. code-block:: console
 
@@ -47,15 +47,15 @@ Restore
 
 2. Load the backup file:
 
-  .. tabs::
+  .. tab-set::
 
-    .. group-tab:: Windows
+    .. tab-item:: Windows
 
       .. code-block:: console
 
         psql.exec -f [ backup file location ] [ dbname ]
 
-    .. group-tab:: macOS and Linux:
+    .. tab-item:: macOS and Linux:
 
       .. code-block:: console
 
@@ -75,15 +75,15 @@ Backup
 
 2. Produce a database backup file:
 
-  .. tabs::
+  .. tab-set::
 
-    .. group-tab:: Windows
+    .. tab-item:: Windows
 
       .. code-block:: console
 
         mysqldump.exe [ dbname ] > [ backup file location ]
 
-    .. group-tab:: macOS and Linux:
+    .. tab-item:: macOS and Linux:
 
       .. code-block:: console
 
@@ -99,15 +99,15 @@ Restore
 
 2. Load the backup file:
 
-  .. tabs::
+  .. tab-set::
 
-    .. group-tab:: Windows
+    .. tab-item:: Windows
 
       .. code-block:: console
 
         mysql.exec [ dbname ] < [ backup file location ]
 
-    .. group-tab:: macOS and Linux
+    .. tab-item:: macOS and Linux
 
       .. code-block:: console
 

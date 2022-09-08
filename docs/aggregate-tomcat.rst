@@ -46,17 +46,17 @@ Installation procedure
 
 1. Install Java 8.0.221 or higher. We recommend using OpenJDK 11 LTS from AdoptOpenJDK:
 
-  .. tabs::
+  .. tab-set::
 
-    .. group-tab:: Windows
+    .. tab-item:: Windows
 
       Download `OpenJDK 11 LTS <https://adoptopenjdk.net/>`_ and run it as administrator.
 
-    .. group-tab:: macOS
+    .. tab-item:: macOS
 
       Download `OpenJDK 11 LTS <https://adoptopenjdk.net/>`_ and install it.
 
-    .. group-tab:: Ubuntu
+    .. tab-item:: Ubuntu
 
       .. code-block:: console
 
@@ -66,13 +66,13 @@ Installation procedure
 
 3. Install Apache Tomcat 8.5:
 
-  .. tabs::
+  .. tab-set::
 
-    .. group-tab:: Windows
+    .. tab-item:: Windows
 
       Download `the Windows Service installer <https://tomcat.apache.org/download-80.cgi>`_, and run it as administrator.
 
-    .. group-tab:: macOS
+    .. tab-item:: macOS
 
       If you have `Homebrew <https://brew.sh>`_, run:
 
@@ -80,7 +80,7 @@ Installation procedure
 
         brew install tomcat@8.5
 
-    .. group-tab:: Ubuntu
+    .. tab-item:: Ubuntu
 
       .. code-block:: console
 
@@ -98,17 +98,17 @@ Installation procedure
 
 6. Install PostgreSQL:
 
-  .. tabs::
+  .. tab-set::
 
-    .. group-tab:: Windows
+    .. tab-item:: Windows
 
       Download `the PostgreSQL 10.6 Windows installer <https://www.enterprisedb.com/downloads/postgres-postgresql-downloads>`_, and run it as administrator.
 
-    .. group-tab:: macOS
+    .. tab-item:: macOS
 
       Download `the PostgreSQL 10.5 Postgres.app DMG installer <https://postgresapp.com/downloads.html>`_, and open it.
 
-    .. group-tab:: Ubuntu
+    .. tab-item:: Ubuntu
 
       .. code-block:: console
 

@@ -188,9 +188,9 @@ on any computer.
 
 #. Find and open a terminal or command line.
 
-   .. tabs::
+   .. tab-set::
 
-      .. group-tab:: Windows
+      .. tab-item:: Windows
 
          .. rubric:: Windows versions prior to Windows 10
 
@@ -232,7 +232,7 @@ on any computer.
 		 operating systems, such as Windows 10 Enterprise or Pro, can be used
 		 to edit the docs.
 
-      .. group-tab:: Mac
+      .. tab-item:: Mac
 
          Use the :program:`Terminal` app,
          or another Bash-like shell.
@@ -258,7 +258,7 @@ on any computer.
             .. _Homebrew: https://brew.sh/
             .. _installation instructions: Homebrew
 
-      .. group-tab:: Linux
+      .. tab-item:: Linux
 
          Use a Bash-like shell of your choosing,
          and follow the **Bash** or **Linux** instructions
@@ -286,16 +286,16 @@ on any computer.
 
       Below the command, there is sometimes output from the command.
 
-      .. tabs::
+      .. tab-set::
 
-         .. group-tab:: bash
+         .. tab-item:: bash
 
             .. code-block::
 
                $ command is here - type this
                Output is here. Don't type this.
 
-         .. group-tab:: PowerShell
+         .. tab-item:: PowerShell
 
             .. code-block::
 
@@ -313,16 +313,16 @@ on any computer.
       :term:`path` (showing what directory you are in)
       whenever that is important.
 
-      .. tabs::
+      .. tab-set::
 
-         .. group-tab:: bash
+         .. tab-item:: bash
 
             .. code-block::
 
                /odk-docs/ $ command is here - type this
                Output is here. Don't type this.
 
-         .. group-tab:: PowerShell
+         .. tab-item:: PowerShell
 
             .. code-block::
 
@@ -335,16 +335,16 @@ on any computer.
    It helps us keep track of changes to the documentation.
    (Similar to the undo history in a document editing program.)
 
-   .. tabs::
+   .. tab-set::
 
-      .. group-tab:: Linux
+      .. tab-item:: Linux
 
          Use your distribution's package management system
          to `install git on Linux`_.
 
          .. _install git on Linux: https://git-scm.com/download/linux
 
-      .. group-tab:: Mac
+      .. tab-item:: Mac
 
          .. rubric:: Option 1: Download an installer
 
@@ -361,7 +361,7 @@ on any computer.
 
             $ brew install git
 
-      .. group-tab:: Windows
+      .. tab-item:: Windows
 
          #. Download the `git installer for Windows`_.
          #. Open the installer package.
@@ -375,9 +375,9 @@ on any computer.
    Git Large File Storage (Git LFS) is a tool that helps us
    manage images, videos, and other files which are neither text nor code.
 
-   .. tabs::
+   .. tab-set::
 
-      .. group-tab:: Linux
+      .. tab-item:: Linux
 
          Use your distribution's package management system
          to `install Git LFS on Linux`_.
@@ -391,7 +391,7 @@ on any computer.
 
             $ git lfs install
 
-      .. group-tab:: Mac
+      .. tab-item:: Mac
 
          .. Option 1: Download an Installer
 
@@ -414,7 +414,7 @@ on any computer.
             $ brew install git-lfs
             $ git lfs install
 
-      .. group-tab:: Windows
+      .. tab-item:: Windows
 
          #. `Download Git LFS from the Git LFS website`_.
          #. Open the downloaded installer.
@@ -440,9 +440,9 @@ on any computer.
 
    We require Python 3, version 3.6 or later.
 
-   .. tabs::
+   .. tab-set::
 
-      .. group-tab:: Linux
+      .. tab-item:: Linux
 
          Use your distribution's package management system
          to `install Python 3.6+ on Linux`_.
@@ -453,7 +453,7 @@ on any computer.
          .. _install Python 3.6+ on Linux: https://docs.python-guide.org/starting/install3/linux/
          .. _Installing Python on Linux: https://realpython.com/installing-python/#linux
 
-      .. group-tab:: Mac
+      .. tab-item:: Mac
 
          .. tip::
 
@@ -520,7 +520,7 @@ on any computer.
          If the problem persists, and you can't debug it yourself,
          asks us about it on |odk-slack|_.
 
-      .. group-tab:: Windows
+      .. tab-item:: Windows
 
          #. Go to the `Python Releases for Windows`_ page.
          #. Under the latest numbered release for Python 3, find and download the
@@ -572,9 +572,9 @@ on any computer.
    (We recommend calling this directory :file:`odk`,
    and the rest of the guide will assume that's what you called it.)
 
-   .. tabs::
+   .. tab-set::
 
-      .. group-tab:: Bash
+      .. tab-item:: Bash
 
          .. code:: console
 
@@ -582,7 +582,7 @@ on any computer.
             $ cd odk
             /odk/ $
 
-      .. group-tab:: PowerShell
+      .. tab-item:: PowerShell
 
          .. code:: powershell
 
@@ -604,15 +604,15 @@ on any computer.
 
    #. Create the virtual environment.
 
-      .. tabs::
+      .. tab-set::
 
-         .. group-tab:: Bash
+         .. tab-item:: Bash
 
             .. code:: console
 
                /odk/ $ python3 -m venv odkenv
 
-         .. group-tab:: PowerShell
+         .. tab-item:: PowerShell
 
             .. code:: powershell
 
@@ -620,16 +620,16 @@ on any computer.
 
    #. Activate the virtual environment.
 
-      .. tabs::
+      .. tab-set::
 
-         .. group-tab:: Bash
+         .. tab-item:: Bash
 
             .. code:: console
 
                /odk/ $ source odkenv/bin/activate
                (odkenv) /odk/ $
 
-         .. group-tab:: PowerShell
+         .. tab-item:: PowerShell
 
             .. code:: console
 
@@ -643,16 +643,16 @@ on any computer.
 
       Later, to deactivate the virtual environment:
 
-      .. tabs::
+      .. tab-set::
 
-         .. group-tab:: Bash
+         .. tab-item:: Bash
 
             .. code:: console
 
                (odkenv) /odk/ $ deactivate
                /odk/ $
 
-         .. group-tab:: PowerShell
+         .. tab-item:: PowerShell
 
             .. code:: console
 
@@ -692,9 +692,15 @@ on any computer.
       You should already be in the :file:`odk` directory,
       with the virtual environment active.
 
-      .. tabs::
+      .. note::
 
-         .. group-tab:: Bash
+            This will cause your computer to download the entire ODK Docs repository,
+            including a large number of images.
+            It will take several minutes to complete.
+
+      .. tab-set::
+
+         .. tab-item:: Bash
 
             .. code:: console
 
@@ -705,7 +711,7 @@ on any computer.
                (odkenv) /odk/ $ cd docs
                (odkenv) /odk/docs/ $
 
-         .. group-tab:: Powershell
+         .. tab-item:: Powershell
 
             .. code:: powershell
 
@@ -721,12 +727,6 @@ on any computer.
                Some of the git commands produce meaningless errors in PowerShell.
                If you get an error when using git, but everything seems to work otherwise,
                ignore the error.
-
-         .. note::
-
-            This will cause your computer to download the entire ODK Docs repository,
-            including a large number of images.
-            It will take several minutes to complete.
 
       .. admonition:: Your local directory
 
@@ -769,9 +769,9 @@ on any computer.
    You also need to give the primary ODK Docs repo a name,
    and our convention is to name it ``upstream``.
 
-   .. tabs::
+   .. tab-set::
 
-      .. group-tab:: Bash
+      .. tab-item:: Bash
 
          .. code:: console
 
@@ -783,7 +783,7 @@ on any computer.
             upstream https://github.com/getodk/docs.git (push)
 
 
-      .. group-tab:: PowerShell
+      .. tab-item:: PowerShell
 
          .. code:: powershell
 
@@ -807,16 +807,16 @@ on any computer.
 
    .. _Pip: https://pip.pypa.io/en/stable/user_guide/
 
-   .. tabs::
+   .. tab-set::
 
-      .. group-tab:: Bash
+      .. tab-item:: Bash
 
          .. code:: console
 
             (odkenv) /odk/docs/ $ pip install --upgrade pip
             (odkenv) /odk/docs/ $ pip install -r requirements.txt
 
-      .. group-tab:: PowerShell
+      .. tab-item:: PowerShell
 
          .. code:: powershell
 
@@ -940,9 +940,9 @@ Working on the docs
    #. Check the current branch with :command:`git branch`.
       This will output a list of branches, with a star next to the current one.
 
-      .. tabs::
+      .. tab-set::
 
-         .. group-tab:: Bash
+         .. tab-item:: Bash
 
             .. code:: console
 
@@ -953,7 +953,7 @@ Working on the docs
                 * master
                   branch-name
 
-         .. group-tab:: PowerShell
+         .. tab-item:: PowerShell
 
             .. code:: powershell
 
@@ -966,9 +966,9 @@ Working on the docs
 
    #. If you are not on master, switch to master with :command:`git checkout`.
 
-      .. tabs::
+      .. tab-set::
 
-         .. group-tab:: Bash
+         .. tab-item:: Bash
 
             .. code:: console
 
@@ -976,7 +976,7 @@ Working on the docs
                Switched to branch 'master'
                Your branch is up to date with 'origin/master'.
 
-         .. group-tab:: PowerShell
+         .. tab-item:: PowerShell
 
             .. code:: powershell
 
@@ -996,9 +996,9 @@ Working on the docs
    Then, just to be sure, you can use :command:`git status`
    to make sure everything is up to date.
 
-   .. tabs::
+   .. tab-set::
 
-      .. group-tab:: Bash
+      .. tab-item:: Bash
 
          .. code:: console
 
@@ -1009,7 +1009,7 @@ Working on the docs
 
             nothing to commit, working tree clean
 
-      .. group-tab:: PowerShell
+      .. tab-item:: PowerShell
 
          .. code:: powershell
 
@@ -1031,16 +1031,16 @@ Working on the docs
 
    .. _git-branch-the-docs:
 
-   .. tabs::
+   .. tab-set::
 
-      .. group-tab:: Bash
+      .. tab-item:: Bash
 
          .. code:: console
 
             (odkenv) /odk/docs/ $ git checkout -b branch-name
             Switched to a new branch 'branch-name'
 
-      .. group-tab:: PowerShell
+      .. tab-item:: PowerShell
 
          .. code:: powershell
 
@@ -1102,15 +1102,15 @@ Working on the docs
 
       If you've been working on files in :file:`src`:
 
-      .. tabs::
+      .. tab-set::
 
-         .. group-tab:: Bash
+         .. tab-item:: Bash
 
             .. code:: console
 
                (odkenv) /odk/docs/ $ make spell-check
 
-         .. group-tab:: PowerShell
+         .. tab-item:: PowerShell
 
             .. code:: powershell
 
@@ -1161,15 +1161,15 @@ Working on the docs
 
    If you've been working on files in :file:`src`:
 
-   .. tabs::
+   .. tab-set::
 
-      .. group-tab:: Bash
+      .. tab-item:: Bash
 
          .. code:: console
 
             (odkenv) /odk/docs/ $ make build
 
-      .. group-tab:: PowerShell
+      .. tab-item:: PowerShell
 
          .. code:: powershell
 
@@ -1241,16 +1241,16 @@ Working on the docs
 
    If you've been working on files in :file:`src`:
 
-   .. tabs::
+   .. tab-set::
 
-      .. group-tab:: Bash
+      .. tab-item:: Bash
 
          .. code:: console
 
             (odkenv) /odk/docs/ $ python -m http.server -d odk-build 8000
             Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
 
-      .. group-tab:: PowerShell
+      .. tab-item:: PowerShell
 
          .. code:: powershell
 
@@ -1288,15 +1288,15 @@ Working on the docs
 
       To stage all changes for commit:
 
-      .. tabs::
+      .. tab-set::
 
-         .. group-tab:: Bash
+         .. tab-item:: Bash
 
             .. code:: console
 
                (odkenv) /odk/docs/ $ git add -A
 
-         .. group-tab:: PowerShell
+         .. tab-item:: PowerShell
 
             .. code:: powershell
 
@@ -1304,15 +1304,15 @@ Working on the docs
 
    #. Commit the staged files with :command:`git commit`.
 
-      .. tabs::
+      .. tab-set::
 
-         .. group-tab:: Bash
+         .. tab-item:: Bash
 
             .. code:: console
 
                (odkenv) /odk/docs/ $ git commit -m "Write a commit message here."
 
-         .. group-tab:: PowerShell
+         .. tab-item:: PowerShell
 
             .. code:: powershell
 
@@ -1325,15 +1325,28 @@ Working on the docs
 
    .. _push-the-docs:
 
-   .. tabs::
+   .. tip::
 
-      .. group-tab:: Bash
+      You may be prompted to enter your GitHub username and password.
+      When entering your password, the cursor won't move ---
+      it will look like you aren't entering anything,
+      even though you are.
+
+      To avoid having to retype these every time,
+      you can `store your GitHub credentials locally`_.
+
+      .. _store your GitHub credentials locally:
+         https://help.github.com/articles/caching-your-github-password-in-git/
+
+   .. tab-set::
+
+      .. tab-item:: Bash
 
          .. code:: console
 
             (odkenv) /odk/docs/ $ git push origin branch-name
 
-      .. group-tab:: PowerShell
+      .. tab-item:: PowerShell
 
          .. code:: powershell
 
@@ -1345,19 +1358,6 @@ Working on the docs
             If you get an error when using :command:`git push`,
             but everything seems to work otherwise,
             ignore the error.
-
-      .. tip::
-
-         You may be prompted to enter your GitHub username and password.
-         When entering your password, the cursor won't move ---
-         it will look like you aren't entering anything,
-         even though you are.
-
-         To avoid having to retype these every time,
-         you can `store your GitHub credentials locally`_.
-
-         .. _store your GitHub credentials locally:
-            https://help.github.com/articles/caching-your-github-password-in-git/
 
 #. Issue a pull request from your GitHub repo to the main ODK Docs repo.
 
@@ -1448,15 +1448,15 @@ Here are a few things to keep in mind when you start your next contribution.
    New work is done on new branches which are started from master.
    So, before you start a new branch, return to the master branch.
 
-   .. tabs::
+   .. tab-set::
 
-      .. group-tab:: Bash
+      .. tab-item:: Bash
 
          .. code:: console
 
             (odkenv) /odk/docs/ $ git checkout master
 
-      .. group-tab:: PowerShell
+      .. tab-item:: PowerShell
 
          .. code:: console
 
@@ -1467,15 +1467,15 @@ Here are a few things to keep in mind when you start your next contribution.
    You need to start your new work from
    the latest version of everyone else's work.
 
-   .. tabs::
+   .. tab-set::
 
-      .. group-tab:: Bash
+      .. tab-item:: Bash
 
          .. code:: console
 
             (odkenv) /odk/docs/ $ git pull upstream master
 
-      .. group-tab:: PowerShell
+      .. tab-item:: PowerShell
 
          .. code:: console
 
@@ -1483,15 +1483,15 @@ Here are a few things to keep in mind when you start your next contribution.
 
 #. Update the master branch of your online GitHub repository.
 
-   .. tabs::
+   .. tab-set::
 
-      .. group-tab:: Bash
+      .. tab-item:: Bash
 
          .. code:: console
 
             (odkenv) /odk/docs/ $ git push origin master
 
-      .. group-tab:: PowerShell
+      .. tab-item:: PowerShell
 
          .. code:: console
 
