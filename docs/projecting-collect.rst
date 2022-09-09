@@ -299,7 +299,7 @@ You can also run the emulator using command line. Follow the steps given below t
       $ sdkmanager --verbose "system-images;android-19;google_apis;x86"
 	  
 	  
-    - The :option:`--verbose` option or :option:`-v` option shows errors, warnings and all messages.
+    - The ``--verbose`` option or ``-v`` option shows errors, warnings and all messages.
     - ``system-images;android-19;google_apis`` specifies the system image package for the Android virtual device.
     - ``android-19`` specifies the API level. You can choose different API level if you want.
    
@@ -312,10 +312,10 @@ You can also run the emulator using command line. Follow the steps given below t
       $ avdmanager -v create avd --name testAVD -k "system-images;android-19;google_apis;x86" -g "google_apis"
 	  
 	 
-    - The :option:`create avd` option creates a new Android virtual device.
-    - :option:`--name` option is a **required** option which is used to specify name of the AVD. Here, the name of the AVD is testAVD.
-    - The :option:`-g` specifies the system image tag to use for the AVD.
-    - :option:`-k` specifies package path of the system image for the AVD.
+    - The ``create avd`` option creates a new Android virtual device.
+    - ``--name`` option is a **required** option which is used to specify name of the AVD. Here, the name of the AVD is testAVD.
+    - The ``-g`` specifies the system image tag to use for the AVD.
+    - ``-k`` specifies package path of the system image for the AVD.
    
 .. seealso::
 
