@@ -168,8 +168,7 @@ use :command:`adb logcat` to capture log events during the crash.
 #. Type :kbd:`CTRL-C` to stop logging.
 
 You can then upload the :file:`logfile.txt` file to
-a `a support forum post <https://forum.getodk.org/c/support>`_
-or post in the |forum|.
+a `a support forum post <https://forum.getodk.org/c/support>`_.
 
 .. _bugreport:
 

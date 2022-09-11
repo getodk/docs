@@ -1302,44 +1302,6 @@ You can ask about your problem in |slack|_.
 
 The ``rst_epilog`` in :file:`conf.py` contains a list of global substitutions that can be used from any file. The list is given below:
 
-- If you want to create a hyperlink reference for ODK Slack, you can use ``|odk-slack|_``.
-
-  .. code-block:: rst
-
-    You can use |odk-slack|_ to ask your questions.
-
-  You can use |odk-slack|_ to ask your questions.
-
-|
-
-- To create a hyperlink reference for docs related issues, use ``|docs-issue|_``.
-
-  .. code-block:: rst
-
-    If you find a problem, file an |docs-issue|_.
-
-  If you find a problem, file an |docs-issue|_.
-
-|
-
-- To create a hyperlink reference for ODK Forum, use ``|forum|_``.
-
-  .. code-block:: rst
-
-    You can ask support questions in |forum|_.
-
-  You can ask support questions in |forum|_.
-
-|
-
-- To create a hyperlink reference for contributors guide, use ``|contrib-guide|_``.
-
-  .. code-block:: rst
-
-	Be sure to read the |contrib-guide|_.
-
-  Be sure to read the |contrib-guide|_.
-
 You can add inline images in the document using substitutions. The following block of code substitutes arrow in the text with the image specified.
 
 .. code-block:: rst

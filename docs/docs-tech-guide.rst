@@ -496,8 +496,6 @@ on any computer.
 
             If you get an error here, something went wrong.
             Try running the installer again.
-            If the problem persists, and you can't debug it yourself,
-            asks us about it on |odk-slack|_.
 
          .. _Python installer for Mac: https://www.python.org/downloads/mac-osx/
 
@@ -517,8 +515,6 @@ on any computer.
 
          If you get an error here, something went wrong.
          Try running :command:`brew install python` again.
-         If the problem persists, and you can't debug it yourself,
-         asks us about it on |odk-slack|_.
 
       .. tab-item:: Windows
 
@@ -559,8 +555,6 @@ on any computer.
             You can do this by going to
             :menuselection:`Advanced System Settings -> Environmental Variables -> Edit System Variables`,
             then adding the path to the directory containing Python.
-            If the problem persists, and you can't debug it yourself,
-            asks us about it on |odk-slack|_.
 
          .. _Python Releases for Windows: https://www.python.org/downloads/windows/
 
@@ -1202,8 +1196,6 @@ Working on the docs
    the approximate line number,
    and the nature of the problem.
    Usually that is enough to fix it.
-   If you can not figure out the meaning of a particular warning,
-   you can always ask about it on the |odk-slack|_.
 
    .. note::
 
@@ -1226,8 +1218,7 @@ Working on the docs
 
    .. admonition:: When you just can't fix the error...
 
-      If you've done your best and asked on the |odk-slack|_,
-      and you still cannot correct the warning,
+      If you've done your best and you still cannot correct the warning,
       stop worrying about it and skip to the next step.
       When you submit your changes on GitHub,
       include a note about the warning.
@@ -1513,8 +1504,6 @@ You may also want to dig deeper into the
 :doc:`docs-style-guide` and the :doc:`docs-syntax-guide`.
 (And if you are writing code,
 check out the :doc:`docs-developer-guide`.)
-
-And don't forget to join us on the |odk-slack|_.
 
 ODK is a community,
 and we depend on each other's work.
