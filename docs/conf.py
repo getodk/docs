@@ -15,6 +15,9 @@
 # sys.path.insert(0, os.path.abspath('.'))
 import platform
 import os
+import sys
+sys.path.insert(0, os.path.abspath('../util/'))
+import sphinx_video
 
 # -- Project information -----------------------------------------------------
 
@@ -33,7 +36,8 @@ author = 'ODK'
 # ones.
 extensions = [ 'sphinxcontrib.spelling',
     'sphinx_design',
-    'sphinx_copybutton'
+    'sphinx_copybutton',
+    'sphinx_video',
 ]
 
 # If using Apple Silicon, set env variable (assumes brew install of enchant)
@@ -82,7 +86,6 @@ html_show_sphinx = True
 
 html_favicon = '_static/img/odk-favicon.ico'
 html_logo = '_static/img/odk-logo.svg'
-
 
 spelling_word_list_filename='spelling_wordlist.txt'
 
