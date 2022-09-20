@@ -82,10 +82,6 @@ Glossary
 
     A defined set of questions and answer choices displayed by an application that can render forms written in the XForm standard.
 
-  widget
-
-    A single question, answer set, and attendant GUI elements, as rendered in a XForm compliant app such as :term:`Collect`.
-
   hint
 
     Additional help text on a single question, displayed after the label.

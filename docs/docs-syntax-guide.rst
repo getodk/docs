@@ -908,10 +908,6 @@ Other Semantic Markup
 
     :dfn:`ODK` is a suite of open source applications that help organizations engaged in enumerator-mediated data collection.
 
-.. rst:role:: file
-
-  Marks the name of a file or directory. Within the contents, you can use curly braces to indicate a "variable" part.
-
   .. code-block:: rst
 
     is installed in :file:`/usr/lib/python2.{x}/site-packages`
