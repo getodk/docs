@@ -3,3 +3,4 @@ sphinx-autobuild
 sphinxcontrib-spelling
 furo
 sphinx_design
+sphinx-copybutton

@@ -32,7 +32,8 @@ author = 'ODK'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [ 'sphinxcontrib.spelling',
-    'sphinx_design'
+    'sphinx_design',
+    'sphinx_copybutton'
 ]
 
 # If using Apple Silicon, set env variable (assumes brew install of enchant)
@@ -66,7 +67,8 @@ html_css_files = [
 ]
 
 html_js_files = [
-    ('https://thirtyfive-england.getodk.org/script.js', {'defer': 'defer', 'data-site': 'PBSTMJFG'})
+    ('https://thirtyfive-england.getodk.org/script.js', {'defer': 'defer', 'data-site': 'PBSTMJFG'}),
+    'js/custom.js',
 ]
 
 html_theme_options = {
