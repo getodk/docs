@@ -60,6 +60,8 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 #
 html_theme = 'furo'
 
+html_title = 'ODK Docs'
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named 'default.css' will overwrite the builtin 'default.css'.
@@ -79,7 +81,16 @@ html_theme_options = {
     'light_css_variables': {
         'color-brand-primary': '#009ECC',
         'color-brand-content': '#009ECC',
+        'color-announcement-background': '#1a1c1e',
+        'color-announcement-text': '#ffffffcc',
     },
+    'dark_css_variables': {
+        'color-brand-primary': '#009ECC',
+        'color-brand-content': '#009ECC',
+        'color-announcement-background': '#f8f9fb',
+        'color-announcement-text': 'black',
+    },
+    'announcement': '<b>Need more support?</b> <a href="https://getodk.org/#pricing" onclick="fathom.trackGoal("SMIXEGNN", 0);">ODK Cloud</a>, the official hosting service from the creators of ODK, comes with priority support. <a href="https://getodk.org/#pricing" onclick="fathom.trackGoal("SMIXEGNN", 0);">Get started today</a>.',
     'sidebar_hide_name': True,
 }
 html_show_sphinx = True
