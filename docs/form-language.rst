@@ -32,7 +32,6 @@ followed by the `two letter language code <http://www.iana.org/assignments/langu
   select_multiple colors, color_prefs, What colors do you like?, Select three.
 
 .. csv-table:: choices
-
   :header: list_name, name, label
 
   colors, red, Red
