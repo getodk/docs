@@ -18,34 +18,25 @@ jobs:
           name: Install build requirements
           command: |
             sudo apt-get install pngquant
-            sudo apt-get install python3-pip
             sudo apt-get install python3-enchant
             pip3 install --user -r requirements.txt 
       - run:
-          name: Style guide check
+          name: Build html
+          command: make dirhtml
+      - run:
+          name: Spell check
           command: |
-            paths=$(git diff origin/master... --name-only)
-            echo $paths
-            python3 style-test.py $paths -r src
-      - run:
-          name: Build
-          command: make deploy
-      - run:
-          name: Check spelling
-          command: make spell-check
-      - run:
-          name: Build LaTex
-          command: make latex
+            make spelling
+            python3 util/check-spelling-output.py docs/_build/spelling
       - run:
           name: Compress images
-          command: pngquant build/_images/*.png --force --ext .png --verbose
+          command: pngquant docs/_build/dirhtml/_images/*.png --force --ext .png --verbose
       - store_artifacts:
-          path: build
-          destination: build
+          path: docs/_build/dirhtml/
       - persist_to_workspace:
           root: ~/work
           paths:
-            - build/*
+            - docs/_build/dirhtml/*
             - s3_website.yml
   deploy:
     working_directory: ~/work

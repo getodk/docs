@@ -1,0 +1,28 @@
+
+/* match logo size on main site */
+.sidebar-logo {
+    margin-top: 16px;
+    height: 45px;
+}
+
+/* move announcement to bottom and allow wrapping */
+.announcement {
+    position: fixed;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+    z-index: 100;
+    text-align: center;
+}
+.announcement-content {
+    white-space: normal;
+    line-height: 1.5;
+}
+
+/* keep announcement on footer from covering content */
+.main {
+    padding-bottom: 60px;
+}
+.sidebar-drawer{
+    padding-bottom: 62px;
+}

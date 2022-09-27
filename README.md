@@ -90,15 +90,15 @@ We highly recommend you use a virtual environment like [virtualenv](https://virt
 
       #. Create the virtual environment.
 
-         .. tabs::
+         .. tab-set::
 
-            .. group-tab:: Bash
+            .. tab-item:: Bash
 
                .. code:: console
 
                   /odk/ $ python3 -m venv odkenv
 
-            .. group-tab:: PowerShell
+            .. tab-item:: PowerShell
 
                .. code:: powershell
 
@@ -106,16 +106,16 @@ We highly recommend you use a virtual environment like [virtualenv](https://virt
 
       #. Activate the virtual environment.
 
-         .. tabs::
+         .. tab-set::
 
-            .. group-tab:: Bash
+            .. tab-item:: Bash
 
                .. code:: console
 
                   /odk/ $ source odkenv/bin/activate
                   (odkenv) /odk/ $
 
-            .. group-tab:: PowerShell
+            .. tab-item:: PowerShell
 
                .. code:: console
 
@@ -129,16 +129,16 @@ We highly recommend you use a virtual environment like [virtualenv](https://virt
 
          Later, to deactivate the virtual environment:
 
-         .. tabs::
+         .. tab-set::
 
-            .. group-tab:: Bash
+            .. tab-item:: Bash
 
                .. code:: console
 
                   (odkenv) /odk/ $ deactivate
                   /odk/ $
 
-            .. group-tab:: PowerShell
+            .. tab-item:: PowerShell
 
                .. code:: console
 

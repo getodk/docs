@@ -1,2 +1,0 @@
-        "style-guide.style-checks"      : true,
-        "style-guide.proselint-extra"   : true
