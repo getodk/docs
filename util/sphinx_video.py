@@ -4,7 +4,7 @@ import sphinx.environment
 from docutils import nodes
 from docutils.parsers.rst import Directive, directives
 
-videos_dir = './docs/_build/html/_videos'
+videos_dir = './docs/_build/dirhtml/_videos'
 
 def yes_no(name, arg):
 

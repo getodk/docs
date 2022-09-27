@@ -1,19 +1,12 @@
 s3_bucket: docs.getodk.org
 s3_endpoint: us-west-2
 
-site: ./build
+site: docs/_build/dirhtml
 
 error_document: index.html
 
 max_age: 300
 gzip: true
-
-exclude_from_upload:
-  - .buildinfo
-  - .doctrees
-  - .DS_Store
-  - spelling
-  - latex
 
 cloudfront_distribution_id: E39A2ZMIIK7FK3
 

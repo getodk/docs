@@ -95,6 +95,8 @@ html_theme_options = {
 }
 html_show_sphinx = True
 
+html_copy_source = False
+
 html_favicon = '_static/img/odk-favicon.ico'
 html_logo = '_static/img/odk-logo.svg'
 

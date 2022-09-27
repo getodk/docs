@@ -22,7 +22,7 @@ jobs:
             pip3 install --user -r requirements.txt 
       - run:
           name: Build html
-          command: make html
+          command: make dirhtml
       - run:
           name: Spell check
           command: |
@@ -30,13 +30,13 @@ jobs:
             python3 util/check-spelling-output.py docs/_build/spelling
       - run:
           name: Compress images
-          command: pngquant docs/_build/html/_images/*.png --force --ext .png --verbose
+          command: pngquant docs/_build/dirhtml/_images/*.png --force --ext .png --verbose
       - store_artifacts:
-          path: docs/_build/html/
+          path: docs/_build/dirhtml/
       - persist_to_workspace:
           root: ~/work
           paths:
-            - docs/_build/html/*
+            - docs/_build/dirhtml/*
             - s3_website.yml
   deploy:
     working_directory: ~/work
