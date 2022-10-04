@@ -105,6 +105,11 @@ If you absolutely must upload files over 100MB, you can change the `client_max_b
 Database disappeared after running Docker commands
 --------------------------------------------------
 
+.. warning::
+  If you are experiencing data loss, the most important thing to do first is to stop and think through your next steps (ideally with a colleague, who can review those steps). Rushing to act without a plan will most certainly make the situation worse.
+
+  If you do not have a backup, do not reboot or restart the machine. Instead, take a live, full disk backup of the machine so you have a fallback. If you are using DigitalOcean, see `how to create snapshots <https://docs.digitalocean.com/products/images/snapshots/how-to/snapshot-droplets/>`_.
+
 It is possible to accidentally reset the database by running the down command with docker-compose. We are working on a way to prevent this error in the future. For now, if you have run this command and your data has disappeared, you can follow these steps to relocate the data and attach it back to your server:
 
 1. Run the following command: ``docker inspect --type container central_postgres_1 -f '{{(index .Mounts 0).Source}}'``. It should print out a long name starting with /var/lib/docker/volumes/ and ending in a long string of letters and numbers. Copy those letters and numbers and set them aside. They correspond to the location of your current (reset) database.
