@@ -164,6 +164,17 @@ Once you have one account, you do not have to go through this process again for 
 .. tip::
   If you find that users are not receiving emails, read about :ref:`troubleshooting emails <troubleshooting-emails>`.
 
+.. _central-install-digital-ocean-backups:
+
+Setting Up Backups
+------------------
+
+The next step is setting up automated system backups. We strongly recommend you have backups because they provide a safety net if something goes wrong.
+
+You can find instructions for setting up backups in `DigitalOcean's backups guide <https://docs.digitalocean.com/products/images/backups/quickstart/>`_.
+
+Note that Central has its own :ref:`backups <central-backup>` system that you can configure in addition to full system backups. Central's built-in backups are particularly helpful if you wish to backup your data via API.
+
 .. _central-install-digital-ocean-monitoring:
 
 Setting Up Monitoring
@@ -171,7 +182,7 @@ Setting Up Monitoring
 
 The last thing you will want to do is to set up server monitoring. Alerts and monitoring are important because they can inform you of problems with your server before they affect your data collection project.
 
-You can find instructions for setting up alerts in the `DigitalOcean Documentation  <https://www.digitalocean.com/docs/monitoring/how-to/set-up-alerts/>`_.
+You can find instructions for setting up alerts in the `DigitalOcean's monitoring guide <https://docs.digitalocean.com/products/monitoring/quickstart/>`_.
 
 We strongly recommend creating an alert for Disk Utilization. A threshold of 90% is usually reasonable. By far the most common operations issue we see is servers running out of disk space as large media attachments pile up. If your server runs entirely out of disk space, it can crash and become unresponsive. It is best to upgrade your storage plan before this happens.
 
