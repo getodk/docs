@@ -23,6 +23,10 @@
 .main {
     padding-bottom: 60px;
 }
-.sidebar-drawer{
+.sidebar-drawer {
     padding-bottom: 62px;
+}
+
+.device-screen-vertical {
+    width: 400px;
 }
