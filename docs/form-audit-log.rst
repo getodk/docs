@@ -133,21 +133,6 @@ Viewing audit logs
 
 Central will export a CSV with audits from all submissions if an export is requested for a form with an audit.
 
-If using Aggregate, audit logs can be reviewed and downloaded for further analysis using Briefcase.
-
-In Aggregate 1.5.0+, audit logs can be viewed by clicking on the media icon in the ``meta audit`` column on the Submissions page:
-
-.. image:: /img/form-audit-log/audit-media-icon.png
-  :alt: The Aggregate submissions page with a form that has an audit log. The media icon in the meta audit column is circled.
-
-This displays a popup with the audit contents:
-
-.. image:: /img/form-audit-log/audit-example.png
-  :alt: An example audit log in Aggregate.
-
-.. tip::
-  Aggregate currently only displays event, node, start, and end in the audit popup. To view locations, changed answers, or to perform more sophisticated analysis, logs can be downloaded along with their submissions using :ref:`Briefcase <pull-from-aggregate>`.
-
 .. _audit-log-structure:
 
 Log structure
