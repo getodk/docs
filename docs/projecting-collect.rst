@@ -107,7 +107,7 @@ Follow the instructions given below to use Vysor:
 
 8. After clicking :guilabel:`Select`, Vysor would be automatically downloaded to your phone, and you will be able to see your phone screen.
 
-.. image:: /img/project-collect/phone-screen .*
+.. image:: /img/project-collect/phone-screen.*
   :alt: phone screen on vysor
 
 9. Click on the Collect app and there you go, you have successfully projected your phone screen.
