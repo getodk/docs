@@ -10,6 +10,7 @@ Settings for the current project are accessed from the project list dialog:
 
     .. image:: /img/collect-settings/settings.*
       :alt: Access settings by tapping the project icon and then the Settings button
+      :class: device-screen-vertical
 
 .. _general-settings:
 
@@ -30,6 +31,7 @@ To access Server Settings:
 
     .. image:: /img/collect-settings/server-settings.*
       :alt: Server settings
+      :class: device-screen-vertical
 
 .. seealso:: :doc:`collect-connect`
 
@@ -46,6 +48,7 @@ To access Project Display Settings:
     
     .. image:: /img/collect-settings/project-display.*
       :alt: Project display settings
+      :class: device-screen-vertical
 
 .. seealso:: :doc:`collect-projects`
 
@@ -63,6 +66,7 @@ To access User Interface settings:
 
     .. image:: /img/collect-settings/ui-settings.*
       :alt: User Interface settings
+      :class: device-screen-vertical
 
 :guilabel:`Theme`
 """"""""""""""""""
@@ -72,12 +76,12 @@ To access User Interface settings:
 
     .. image:: /img/collect-settings/light-theme-main-menu.*
       :alt: The main menu, with the light theme enabled.
-      :class: side-by-side
+      :class: device-screen-vertical side-by-side
 
 
     .. image:: /img/collect-settings/dark-theme-main-menu.*
       :alt: The main menu, with the dark theme enabled.
-      :class: side-by-side
+      :class: device-screen-vertical side-by-side
 
 :guilabel:`Language`
 """""""""""""""""""""
@@ -157,9 +161,11 @@ To access Form Management settings:
 
     .. image:: /img/collect-settings/form-management.png
       :alt: Form Management settings
+      :class: device-screen-vertical
 
     .. image:: /img/collect-settings/form-management2.png
       :alt: Form Management settings
+      :class: device-screen-vertical
 
 .. rubric:: Form update
 
@@ -293,6 +299,7 @@ To access User and device identity settings:
 
     .. image:: /img/collect-settings/und-settings.*
       :alt: User and Device Identity Settings
+      :class: device-screen-vertical
 
 .. _form-metadata-settings:
 

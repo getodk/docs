@@ -22,6 +22,7 @@ Adding an image to a question displays the image as part of the question.
 
 .. image:: /img/form-styling/media-image.*
   :alt: A single select widget in Collect. The label text is "Do you want coffee?" The label text is accompanied by a picture of a mug of coffee. The options are "yes", "no", and "I don't know".
+  :class: device-screen-vertical
 
 .. rubric:: XLSForm
 
@@ -44,6 +45,7 @@ Adding audio to a question adds a play/stop button that controls the audio clip.
 
 .. image:: /img/form-styling/audio-image.*
   :alt: A single text widget in Collect. The label text is "How does this song make you feel?" The label text is accompanied by a button to play audio.
+  :class: device-screen-vertical
 
 .. rubric:: XLSForm
 
@@ -59,6 +61,7 @@ Adding video to a question adds a button that will play the video clip full scre
 
 .. image:: /img/form-styling/video-image.*
   :alt: A single integer widget in Collect. The label text is "How many people do you see in the video?" The label text is accompanied by a button to play video.
+  :class: device-screen-vertical
 
 .. rubric:: XLSForm
 
@@ -119,9 +122,11 @@ Labels and hints can be styled with one of six header levels.
 
 .. image:: /img/form-styling/h1-label.*
   :alt: A note widget in Collect. The label is a large headline reading "Largest Headline - H1". The hint text is "This note has a label with a Markdown-style header."
+  :class: device-screen-vertical
 
 .. figure:: /img/form-styling/all-headers-label.*
   :alt: A note widget in Collect. The label is six headlines of decreasing size, with text describing the size as: H1, H2, H3, H4, H5, H6.
+  :class: device-screen-vertical
 
   A comparison of headline sizes. This exact effect :ref:`cannot be produced using Markdown <one-headline-only>`.
 
@@ -135,6 +140,7 @@ Labels and hints can be styled with one of six header levels.
 
   .. image:: /img/form-styling/broken-header.*
     :alt: A note widget in Collect. The label text is "## Attempted h2 Label Header (line break) A line below the headline". The hint text is "### Attempted H3 hint headline (line break) Here is some text below the headline."
+    :class: device-screen-vertical
 
   .. rubric:: XLSForm
 
@@ -176,6 +182,7 @@ Collect's Markdown support also includes
 
 .. image:: /img/form-styling/emphasis.*
   :alt: A note widget in Collect. The label text is "This label has bold and italic text." The hint text is "This hint has bold and italic text." The words "bold" and "italic" are styled to appear bold and italic.
+  :class: device-screen-vertical
 
 .. rubric:: XLSForm
 
@@ -198,6 +205,7 @@ which will open in the device's default browser.
 
 .. image:: /img/form-styling/hyperlinks.*
   :alt: A note widget in Collect. The label text is "This label contains a link." The hint text is "This hint contains a link." In both cases, the words "contains a link" are hyperlinks.
+  :class: device-screen-vertical
 
 .. rubric:: XLSForm
 
@@ -275,18 +283,23 @@ The ``style`` attribute accepts CSS-like key-value pairs for setting ``color`` a
 
 .. image:: /img/form-styling/going-red.*
   :alt: A note widget in Collect. The label text is "Going red", and the word "red" is colored red. The hint text is the source markup for the label: Going <span style="color:red">red</span>
+  :class: device-screen-vertical
 
 .. image:: /img/form-styling/going-green.*
   :alt: A note widget in Collect. The label text is "Going green", and the word "green" is colored green. This hint text is the source markup for the label: Going <span style="color:#008000">green</span>
+  :class: device-screen-vertical
 
 .. image:: /img/form-styling/cursive-text.*
   :alt: A note widget in Collect. The label text is "Cursive text", style in a cursive font. The hint text is the source markup for the label: <span style="font-family:cursive">Cursive text</span>
+  :class: device-screen-vertical
 
 .. image:: /img/form-styling/styled-answers.*
   :alt: A single select widget in Collect. The label text is "Formatting works on labels for choices also." The choices are "Yes" (which is colored green) and "No" (which is colored red).
+  :class: device-screen-vertical
 
 .. image:: /img/form-styling/combo-example.*
   :alt: A note widget in Collect. The label text is "Color and font styling can be combined." The label is large, purple, and in cursive.
+  :class: device-screen-vertical
 
 .. rubric:: XLSForm
 
@@ -314,6 +327,7 @@ Text alignment
 To add alignment to hint, label, and choice labels, use `the style attribute`_ on a ``p`` or ``div`` tag.
 
 .. image:: /img/form-styling/text-alignment.*
+  :class: device-screen-vertical
 
 .. csv-table:: survey
   :header: type, name, label, hint
@@ -350,6 +364,7 @@ Emoji can be used in form labels, hints, and answer choices.
 
 .. image:: /img/form-styling/emoji.*
   :alt: A single select widget in Collect. The label text is "What is your current pain level?" The options are seven increasingly-unhappy emoji faces.
+  :class: device-screen-vertical
 
 .. rubric:: XLSForm
 

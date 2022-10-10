@@ -61,9 +61,11 @@ followed by the `two letter language code <http://www.iana.org/assignments/langu
 
 .. image:: /img/form-language/colors-english.*
   :alt: A multi-select widget in Collect. The label is "What colors do you like?" The hint text is "Select three." The choices are: Red, Blue, Yellow, Green, Orange, and Purple.
+  :class: device-screen-vertical
 
 .. image:: /img/form-language/colors-spanish.*
   :alt: A multi-select widget in Collect. The label is "¿Qué colores te gustan?" The hint text is "Seleccione tres." The choices are Rojo, Azul, Amarillo, Verde, Anaranjado, and Púrpura.
+  :class: device-screen-vertical
 
 
 

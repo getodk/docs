@@ -34,9 +34,11 @@ as well as any column that accepts an :ref:`expression <expressions>`.
 
 .. image:: /img/form-logic/variables-0.* 
   :alt: A text widget in Collect. The question is "What is your name?" The entry field has the value "Adam".
+  :class: device-screen-vertical
   
 .. image:: /img/form-logic/variables-1.* 
   :alt: A note widget in Collect. The text is "Hello, Adam."
+  :class: device-screen-vertical
   
 
 .. rubric:: XLSForm
@@ -175,9 +177,11 @@ you must first use a ``calculate`` row and then a variable.
 
 .. image:: /img/form-logic/calculation-0.* 
   :alt: The decimal widget in Collect. The question label is "Bill amount". The entered value is "55.88".
+  :class: device-screen-vertical
   
 .. image:: /img/form-logic/calculation-1.* 
   :alt: A note widget in Collect the text is: "Bill: 55.88; Tip: 10.06; Total: 65.95"
+  :class: device-screen-vertical
 
 .. rubric:: XLSForm
 
@@ -292,9 +296,11 @@ without answering the question.
 
 .. image:: /img/form-logic/required-0.* 
   :alt:
+  :class: device-screen-vertical
 
 .. image:: /img/form-logic/required-1.* 
-  :alt: 
+  :alt:
+  :class: device-screen-vertical
 
 .. rubric:: XLSForm
 
@@ -689,6 +695,7 @@ If given a ``label``, groups will be visible in the form path to help orient the
 
 .. image:: /img/form-logic/jump-menu-groups.*
   :alt: The jump menu with a few grouped questions.
+  :class: device-screen-vertical
 
 .. warning::
 
