@@ -234,7 +234,7 @@ Required Questions
 
 `Required questions <http://xlsform.org/#required>`_ will not allow you to advance unless answered.
 
-.. image:: /img/form-widgets/trigger-sorry.*
+.. image:: /img/form-question-types/trigger-sorry.*
   :alt: A question screen in the Collect app. An error text reads, "Sorry, this response is required."
   :class: device-screen-vertical
 
