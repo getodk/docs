@@ -2150,8 +2150,8 @@ Uploads any file from the device to the form.
 
 .. image:: /img/form-question-types/file-upload-open-from.*
   :alt: A  file selection screen on an Android device.
-	A sidebar overlay is labeled "Open from".
-	This sidebar has several file locations such as "Recent", "Google Drive", "Images", "Downloads".
+  A sidebar overlay is labeled "Open from".
+  This sidebar has several file locations such as "Recent", "Google Drive", "Images", "Downloads".
   :class: device-screen-vertical
 
 .. rubric:: XLSForm
@@ -2405,7 +2405,7 @@ appearance
 
 A note to the user, accepting no input. This example includes :term:`hint` text.
 
-.. figure:: /img/form-widgets/note.*
+.. image:: /img/form-widgets/note.*
   :alt: The Note form widget as displayed in the ODK Collect App on an Android phone. The headline text is, "This is an example note." The hint text is, "The text displays, but there is no input."
   :class: device-screen-vertical
 

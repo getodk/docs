@@ -156,11 +156,6 @@ Instance name specifies names you want to give to submitted data. You can see mo
       </data>
     </instance>   
 
-  .. figure:: /img/odk-build/instance-name.png
-    :alt: Image showing instance name according to submitted data.   
-
-    Instance name as **sid-s_name: 12345-Ankita**  
-
 .. _manage-translation:
 
 Add, remove and display new languages

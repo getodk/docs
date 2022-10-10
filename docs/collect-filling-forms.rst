@@ -40,23 +40,21 @@ Select response
 
 Questions with response choices can be answered by touching the selected items. These include radio buttons (single-select), dropdowns (single-select), check boxes (multi-select), and image choices (single and multi-select).
 
-.. figure:: /img/collect-completing-forms/single-select.* 
+Radio buttons accept one selection. Check boxes accept multiple answers.
+
+.. image:: /img/collect-completing-forms/single-select.*
   :alt: A question screen with radio buttons (single-select).
-  :class: device-screen-vertical
-
-  Radio buttons accept one selection.
-  
-.. figure:: /img/collect-completing-forms/multi-select.*
+  :class: device-screen-vertical side-by-side
+.. image:: /img/collect-completing-forms/multi-select.*
   :alt: A question screen with check boxes (multi-select).
-  :class: device-screen-vertical
+  :class: device-screen-vertical side-by-side
 
-  Check boxes accept multiple answers.
-  
-.. figure:: /img/collect-completing-forms/select-image.* 
+Select images choices by touching them.
+
+.. image:: /img/collect-completing-forms/select-image.*
   :alt: A question screen with image choices.
   :class: device-screen-vertical
 
-  Select images by touching them.
 
 Capture answer from device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -321,4 +319,3 @@ Mark the form as *Finalized*
   :class: device-screen-vertical
 
 Only `Finalized` forms can be :ref:`uploaded to a server <uploading-forms>`. 
-
