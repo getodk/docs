@@ -764,6 +764,7 @@ Before each repetition, the user is asked if they want to add another.
 
 .. figure:: /img/form-logic/repeat-iteration-modal.* 
   :alt: The Collect app. A modal dialog with the question: "Add "Person"?" and options "Do not add" and "Add".
+  :class: device-screen-vertical
   
   The user is given the option to add each repetition.
 
