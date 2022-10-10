@@ -1,5 +1,6 @@
 .. image:: /img/form-logic/constraint-message.* 
   :alt: A text widget in Collect. The question text is "What is your middle initial?" The entered value is "Michael". Over the widget is an alert message: "Just the first letter."
+  :class: device-screen-vertical
   
 .. rubric:: XLSForm
 

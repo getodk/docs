@@ -26,6 +26,7 @@ If you have connected ODK Collect to a :doc:`server <collect-connect>` or :doc:`
 
    .. image:: /img/collect-forms/main-menu-highlight-get-blank-form.*
      :alt: The Main Menu of the Collect app. The option *Get Blank Form* is circled in red.
+     :class: device-screen-vertical
 
 2. Find and download forms.
 
@@ -34,7 +35,7 @@ If you have connected ODK Collect to a :doc:`server <collect-connect>` or :doc:`
 
      .. image:: /img/collect-forms/get-blank-form.*
        :alt: The Get Blank Form screen in the Collect app. Several form names are listed, with checkboxes. One form's checkbox is checked. At the bottom are buttons labeled: *Select All*, *Refresh*, and *Get Selected*.
-
+       :class: device-screen-vertical
 
     .. note::
 
@@ -44,6 +45,7 @@ If you have connected ODK Collect to a :doc:`server <collect-connect>` or :doc:`
 
      .. image:: /img/collect-forms/get-forms-google.*
        :alt:
+       :class: device-screen-vertical
 
 
      .. warning::
@@ -52,16 +54,19 @@ If you have connected ODK Collect to a :doc:`server <collect-connect>` or :doc:`
 
        .. image:: /img/collect-forms/get-blank-form-not-a-form.*
          :alt:
+         :class: device-screen-vertical
 
        And you can actually download any XML document, **even if it isn't a real XForm**.
 
        .. image:: /img/collect-forms/downloading-not-a-form.*
          :alt:
+         :class: device-screen-vertical
 
        But you can't Fill Out a non-form.
 
        .. image:: /img/collect-forms/not-form-exception.*
          :alt:
+         :class: device-screen-vertical
 
 .. link to Google forms guide, once there is one
 
@@ -92,6 +97,7 @@ You can also download forms to your device via a web browser, and move them to t
 
    .. figure:: /img/collect-forms/device-settings-storage.*
      :alt: The Settings menu on an Android Device. The option *Storage and USB* is circled in red.
+     :class: device-screen-vertical
 
      The settings menu may look different on your device.
 
@@ -99,6 +105,7 @@ You can also download forms to your device via a web browser, and move them to t
 
    .. figure:: /img/collect-forms/device-settings-storage-explore.*
      :alt: The Internal Storage settings menu on an Android device. The option *Explore* is circled in red.
+     :class: device-screen-vertical
 
      The :guilabel:`Explore` option opens a file manager that you can use to move forms into Collect.
 
@@ -127,11 +134,13 @@ Editing Saved Forms
 
    .. image:: /img/collect-forms/main-menu-edit-saved.*
      :alt: The Main Menu of the Collect app. The option *Edit Saved Menu* is circled in red.
+     :class: device-screen-vertical
 
 2. Select a form by name
 
    .. image:: /img/collect-forms/edit-saved-form.*
      :alt: The Edit Saved Form screen. Several completed forms are listed by name.
+     :class: device-screen-vertical
 
 This will reopen the form instance, which you are then free to edit. Form instances are listed by name, which is one reason it can be helpful to :ref:`name the form instance after filling it out <name-form-instance>`.
 
@@ -163,6 +172,7 @@ Uploading a filled form from within the Collect app marks that form as `sent`. `
 
 .. image:: /img/collect-forms/main-menu-send-finalized.*
   :alt: The Main Menu of the Collect app. The *Send Finalized Form* option is circled in red.
+  :class: device-screen-vertical
 
 .. note::
 
@@ -189,7 +199,7 @@ To show sent and unsent forms:
 
 .. image:: /img/collect-forms/send-finalized-change-view.*
   :alt: The Send Finalized Forms screen of the Collect app. The *Change View* option is circled in red.
-
+  :class: device-screen-vertical
 
 .. _pulling-forms-with-briefcase:
 
@@ -216,16 +226,19 @@ You can delete `Blank` forms as well as filled forms in any state (`Saved`, `Fin
 
    .. image:: /img/collect-forms/main-menu-delete-form.*
      :alt: The Main Menu of the Collect app. The option *Delete Saved Forms* is circled in red.
+     :class: device-screen-vertical
 
 2. Select the :guilabel:`Saved Forms` or :guilabel:`Blank Forms` tab.
 
    .. figure:: /img/collect-forms/delete-saved-forms.*
      :alt: The Delete Saved Forms screen in the Collect app. There are two available tabs: *Saved Forms* and *Blank Forms*. The *Saved Forms* tab is active. Below that is a list of saved form instances, with checkboxes. There are buttons labeled: *Select All* and *Delete Selected*.
+     :class: device-screen-vertical
 
      The :guilabel:`Saved Forms` tab lists form instances that are `saved`, `finalized`, or `sent`.
 
    .. figure:: /img/collect-forms/delete-saved-forms-blank-forms.*
      :alt: The Delete Saved Forms screen in the Collect app. There are two available tabs: *Saved Forms* and *Blank Forms*. The *Blank Forms* tab is active. Below that is a list of blank forms, with checkboxes. There are buttons labeled: *Select All* and *Delete Selected*.
+     :class: device-screen-vertical
 
      The :guilabel:`Blank Forms` tab lists `blank` forms.
 
@@ -235,6 +248,7 @@ You can delete `Blank` forms as well as filled forms in any state (`Saved`, `Fin
 
   .. image:: /img/collect-forms/deleted-form-in-view-sent-form.*
     :alt: The View Sent Forms page in Collect app. Two sent forms are listed, but the second one, *Hypertension Screening* has been deleted. Next to the form name is an icon of an eye, crossed out. Below the form name is the note *Deleted*, along with a date and time.
+    :class: device-screen-vertical
 
 .. _delete-forms-adb:
 
