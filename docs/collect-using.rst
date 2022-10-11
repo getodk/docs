@@ -35,4 +35,4 @@ Collect is used to:
   - :doc:`collect-adb`
   - :doc:`collect-shortcut`
   - :doc:`collect-location`
-  - :doc:`projecting-collect`
+  - :doc:`collect-mirror`

@@ -33,6 +33,7 @@ redirects:
   briefcase-and-aggregate/index.html: briefcase-intro
   collect-guide/index.html: collect-intro
   collect-integrations/index.html: launch-apps-from-collect
+  projecting-collect/index.html: collect-mirror
   form-interaction/index.html: form-logic
   form-uploader/index.html: briefcase-using#pulling-form-definitions
   form-widgets/index.html: form-question-types
