@@ -9,10 +9,10 @@ ODK Collect renders forms into a sequence of input prompts that apply form logic
 
 Collect supports location, audio, images, video, barcodes, signatures, multiple-choice, free text, and numeric answers. It can even accept answers from other apps on your device. :doc:`See a complete list of supported question types here.  <form-question-types>`
 
-.. image:: /img/form-widgets/string-input.*
+.. image:: /img/form-question-types/string-input.*
   :alt: String input form widget, displayed in ODK Collect on an Android phone. The label is "What is your name?"
   :class: device-screen-vertical side-by-side
-.. image:: /img/form-widgets/single-select.*
+.. image:: /img/form-question-types/single-select.*
   :alt: Single-select (radio button) form widget, displayed in ODK Collect on an Android phone. The question label is "What is your favorite fruit?" After the question is a list of fruits.
   :class: device-screen-vertical side-by-side
 

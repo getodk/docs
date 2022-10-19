@@ -128,13 +128,13 @@ These changes can be made as:
 
 These are the :file:`.xml` files for the above forms:
 
-  1. :download:`example_form_v1.0 </downloads/form-update/example_form_v1.0.xml>`
-  2. :download:`example_form_v1.1 </downloads/form-update/example_form_v1.1.xml>`
+  1. :download:`example_form_v1.0 </downloads/aggregate-form-update/example_form_v1.0.xml>`
+  2. :download:`example_form_v1.1 </downloads/aggregate-form-update/example_form_v1.1.xml>`
 
 These are the :file:`.xlsx` files for the above forms:
 
-  1. :download:`example_form_v1.0 </downloads/form-update/example_form_v1.0.xlsx>`
-  2. :download:`example_form_v1.1 </downloads/form-update/example_form_v1.1.xlsx>`
+  1. :download:`example_form_v1.0 </downloads/aggregate-form-update/example_form_v1.0.xlsx>`
+  2. :download:`example_form_v1.1 </downloads/aggregate-form-update/example_form_v1.1.xlsx>`
 
 .. note::
 
@@ -145,7 +145,7 @@ These are the :file:`.xlsx` files for the above forms:
 
   When a user tries to get new blank forms, a form with updated version will be selected by default in the list and will contain an additional message to indicate it's an update.
 
-  .. image:: /img/form-update/get-new-version.png
+  .. image:: /img/aggregate-form-update/get-new-version.png
    :alt: Image showing new version 2017120708 selected in the list of forms to be downloaded.
    :class: device-screen-vertical
 
@@ -164,6 +164,6 @@ Once you will modify your form, the data you will collect will be stored under t
 
   If you make changes like changing a question type or name with the same form id and title and update the version, you won't be able to re-upload the form. Aggregate will reject the form upload with an error message.  
 
-  .. image:: /img/form-update/update-error.png
+  .. image:: /img/aggregate-form-update/update-error.png
     :alt: Image showing error message when trying to re-upload a form with changed question type or name.
 

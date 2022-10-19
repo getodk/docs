@@ -10,13 +10,13 @@ ODK Collect is used by :term:`enumerators <enumerator>` to complete survey :doc:
   
 1. Select :guilabel:`Fill Blank Form` from the Main Menu
 
-   .. image:: /img/collect-completing-forms/main-menu-fill-blank-form.* 
+   .. image:: /img/collect-filling-forms/main-menu-fill-blank-form.* 
      :alt: The Main Menu of the Collect app. The first menu option, *Fill Blank Form*, is circled in red.
      :class: device-screen-vertical
 
 2. Select a form to fill out from the form list
 
-   .. image:: /img/collect-completing-forms/fill-blank-forms.* 
+   .. image:: /img/collect-filling-forms/fill-blank-forms.* 
      :alt: The Fill Blank Form menu in the Collect app. Several form titles are listed: *All widgets*, *Demo Survey*, *Form Design Tips by Nafundi*, *Hypertension Screening*, *Sample XLSForm*.
      :class: device-screen-vertical
 
@@ -31,7 +31,7 @@ Free response
 
 Free-entry text and number answers are entered using the device keyboard. The appropriate keyboard (letters or numbers) opens when the question appears.
 
-.. video:: /vid/collect-completing-forms/keyboard-popup.mp4
+.. video:: /vid/collect-filling-forms/keyboard-popup.mp4
 
   Video showing text keyboard popup when a string input is required and number keyboard popup when a number input is required.
 
@@ -40,19 +40,19 @@ Select response
 
 Questions with response choices can be answered by touching the selected items. These include radio buttons (single-select), dropdowns (single-select), check boxes (multi-select), and image choices (single and multi-select).
 
-.. figure:: /img/collect-completing-forms/single-select.* 
+.. figure:: /img/collect-filling-forms/single-select.* 
   :alt: A question screen with radio buttons (single-select).
   :class: device-screen-vertical
 
   Radio buttons accept one selection.
   
-.. figure:: /img/collect-completing-forms/multi-select.*
+.. figure:: /img/collect-filling-forms/multi-select.*
   :alt: A question screen with check boxes (multi-select).
   :class: device-screen-vertical
 
   Check boxes accept multiple answers.
   
-.. figure:: /img/collect-completing-forms/select-image.* 
+.. figure:: /img/collect-filling-forms/select-image.* 
   :alt: A question screen with image choices.
   :class: device-screen-vertical
 
@@ -65,19 +65,19 @@ Many question formats launch additional features, form widgets, or apps to colle
 
 In all cases, buttons below the question text will guide you through providing the response.
 
-.. image:: /img/collect-completing-forms/image-widget.* 
+.. image:: /img/collect-filling-forms/image-widget.* 
   :alt:
   :class: device-screen-vertical
 
-.. image:: /img/collect-completing-forms/signature-widget.* 
+.. image:: /img/collect-filling-forms/signature-widget.* 
   :alt:
   :class: device-screen-vertical
 
-.. image:: /img/collect-completing-forms/video-widget.* 
+.. image:: /img/collect-filling-forms/video-widget.* 
   :alt:
   :class: device-screen-vertical
 
-.. image:: /img/collect-completing-forms/geopoint-widget.* 
+.. image:: /img/collect-filling-forms/geopoint-widget.* 
   :alt:
   :class: device-screen-vertical
   
@@ -92,7 +92,7 @@ Removing answers
 
 To remove a response, long press on the :term:`question label`. 
 
-.. image:: /img/collect-completing-forms/long-press-to-remove.*
+.. image:: /img/collect-filling-forms/long-press-to-remove.*
   :alt: To remove an answer to a question, long press the question label and follow the on-screen prompts.
   :class: device-screen-vertical
 
@@ -145,7 +145,7 @@ Swipe
 
 To move between questions, Swipe Left or Right. 
 
-.. image:: /img/collect-completing-forms/swiping.* 
+.. image:: /img/collect-filling-forms/swiping.* 
   :alt: A question screen in the Collect App. Overlaid on the screen is an icon of a hand with extended finger and arrows pointing left and right, representing a swiping gesture.
   :class: device-screen-vertical
 
@@ -156,35 +156,35 @@ If you prefer Next and Back buttons for navigation, you can change your navigati
 
 1. Open the *Action Menu* (:menuselection:`⋮`)
 
-   .. image:: /img/collect-completing-forms/question-screen-highlight-kebab.* 
+   .. image:: /img/collect-filling-forms/question-screen-highlight-kebab.* 
      :alt: A question screen in the Collect app. The Action Menu ("kebab") in the top-right corner is circled in red.
      :class: device-screen-vertical
 
 2. Select :menuselection:`Project settings`.
 
-   .. image:: /img/collect-completing-forms/question-screen-highlight-general-settings.* 
+   .. image:: /img/collect-filling-forms/question-screen-highlight-general-settings.* 
      :alt: A question screen in the Collect app. The Action Menu is expanded and the option *General Settings* is circled in red.
      :class: device-screen-vertical
 
 3. Select :menuselection:`User Interface`
 
-   .. image:: /img/collect-completing-forms/general-settings-highlight-user-interface.* 
+   .. image:: /img/collect-filling-forms/general-settings-highlight-user-interface.* 
      :alt: The General Settings menu of the Collect app. The *User Interface* item is circled in red.
      :class: device-screen-vertical
   
 4. Select :menuselection:`Navigation`
 
-   .. image:: /img/collect-completing-forms/user-interface-highlight-navigation.* 
+   .. image:: /img/collect-filling-forms/user-interface-highlight-navigation.* 
      :alt: The User Interface menu of the Collect app. The *Navigation* item is circled in red.
      :class: device-screen-vertical
 
 5. Update your form navigation preference  
 
-   .. image:: /img/collect-completing-forms/ui-navigation-buttons.* 
+   .. image:: /img/collect-filling-forms/ui-navigation-buttons.* 
      :alt: The User Interface menu of the Collect app, as displayed in the previous image. There is now a modal titled *Navigation*, with radio buttons (single select) for: *Use horizontal swipes*, *Use forward/back buttons*, and *Use swipes and buttons*. The option for *Use forward/back buttons* is selected and circled in red.
      :class: device-screen-vertical
   
-.. image:: /img/collect-completing-forms/question-screen-with-buttons.* 
+.. image:: /img/collect-filling-forms/question-screen-with-buttons.* 
   :alt: A question screen in the Collect App. There are now two buttons below the question text, with left (backwards) and right (forwards) buttons.
   :class: device-screen-vertical
 
@@ -234,7 +234,7 @@ Required Questions
 
 `Required questions <http://xlsform.org/#required>`_ will not allow you to advance unless answered.
 
-.. image:: /img/form-widgets/trigger-sorry.*
+.. image:: /img/form-question-types/trigger-sorry.*
   :alt: A question screen in the Collect app. An error text reads, "Sorry, this response is required."
   :class: device-screen-vertical
 
@@ -247,13 +247,13 @@ If a form is available in multiple languages, you can choose a language in which
 
 1. Open the *Action Menu* (:menuselection:`⋮`)
 
-   .. image:: /img/collect-completing-forms/question-screen-highlight-kebab.* 
+   .. image:: /img/collect-filling-forms/question-screen-highlight-kebab.* 
      :alt: A question screen in the Collect app. The Action Menu ("kebab") in the top-right corner is circled in red.
      :class: device-screen-vertical
 
 2. Select :menuselection:`Change Language`.
 
-   .. image:: /img/collect-completing-forms/question-screen-highlight-change-language.* 
+   .. image:: /img/collect-filling-forms/question-screen-highlight-change-language.* 
      :alt: A question screen in the Collect app. The Action Menu is expanded and the option *Change Language* is circled in red.
      :class: device-screen-vertical
 
@@ -263,7 +263,7 @@ If a form is available in multiple languages, you can choose a language in which
   
 3. Select the language you want the form questions to appear in.
 
-   .. image:: /img/collect-completing-forms/choose-language.* 
+   .. image:: /img/collect-filling-forms/choose-language.* 
      :alt: A modal titled *Change Language*, with radio buttons (single select) for languages: *English* and *French* and a CANCEL button. The option for *English* is selected.
      :class: device-screen-vertical
 
@@ -274,11 +274,11 @@ Saving a partially filled form
 
 If you wish to save a partially filled form, you can click on the save icon (|save|) beside the form name.
 
-.. |save| image:: /img/collect-completing-forms/saveicon.*
+.. |save| image:: /img/collect-filling-forms/saveicon.*
              :alt: Saves a form. 
 
  
-.. image:: /img/collect-completing-forms/save-partial-filled-form.*
+.. image:: /img/collect-filling-forms/save-partial-filled-form.*
     :alt: Screen with the save icon displayed in ODK Collect on an Android phone. 
     :class: device-screen-vertical
   
@@ -292,7 +292,7 @@ Completing a Form
 Once you have reached the end of a form, you will have the opportunity to *Save* and *Exit* the form. 
 
 
-.. image:: /img/collect-completing-forms/save-and-exit.* 
+.. image:: /img/collect-filling-forms/save-and-exit.* 
   :alt: The end of a survey in the Collect app. The headline is *You are at the end of Demo Survey.* Below that is a text field labeled *Name this form*, with the value 'Demo Survey'. Then an unchecked checkbox labeled *Mark form as finalized*. Below all that is a button labeled *Save Form and Exit*.
   :class: device-screen-vertical
 
@@ -305,7 +305,7 @@ Name the form
 
 The last form screen provides a default name for the form (defined by the form designer). You can rename it. This name only applies to that particular instance of a completed form (not to the blank form).
 
-.. image:: /img/collect-completing-forms/rename-form.*
+.. image:: /img/collect-filling-forms/rename-form.*
   :alt: To rename the form instance, touch the form name in the last screen of the survey.
   :class: device-screen-vertical
 
@@ -316,7 +316,7 @@ The Form Name identifies the form in lists throughout the app. For this reason, 
 Mark the form as *Finalized*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: /img/collect-completing-forms/mark-form-as-finalized.* 
+.. image:: /img/collect-filling-forms/mark-form-as-finalized.* 
   :alt:
   :class: device-screen-vertical
 

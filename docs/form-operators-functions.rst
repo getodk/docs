@@ -198,11 +198,11 @@ Select questions
   
   .. container:: details
   
-    .. image:: /img/form-functions/selected-at-0.* 
+    .. image:: /img/form-operators-functions/selected-at-0.* 
       :alt: A multi-select widget in Collect. The label is "What colors do you like?" Several color names are presented as options. Red, Green, and Purple are selected.
       :class: device-screen-vertical
 
-    .. image:: /img/form-functions/selected-at-1.* 
+    .. image:: /img/form-operators-functions/selected-at-1.* 
       :alt: A note widget in Collect. The label is "Selected Colors". The hint text is "red, green, purple".
       :class: device-screen-vertical
 
@@ -233,7 +233,7 @@ Select questions
   
   .. container:: details
   
-    .. image:: /img/form-functions/count-selected-constraint.* 
+    .. image:: /img/form-operators-functions/count-selected-constraint.* 
       :alt: A multi-select widget in Collect. The label is "What colors do you like?" The hint text is "Select three." Four colors are selected. A message modal overlays the widget with the text "Select exactly three."
       :class: device-screen-vertical
 
@@ -268,19 +268,19 @@ Select questions
       
   .. container:: details  
   
-    .. image:: /img/form-functions/choice-name-multi-lang-english-0.* 
+    .. image:: /img/form-operators-functions/choice-name-multi-lang-english-0.* 
       :alt: A multi-select widget in Collect. The label is "What colors do you like?" Several color names are presented as options. Red, Green, and Purple are selected.
       :class: device-screen-vertical
 
-    .. image:: /img/form-functions/choice-name-multi-lang-english-1.* 
+    .. image:: /img/form-operators-functions/choice-name-multi-lang-english-1.* 
       :alt: A note widget in Collect. The label is "Selected colors". The hint text is "Red, Green, Purple."
       :class: device-screen-vertical
 
-    .. image:: /img/form-functions/choice-name-multi-lang-spanish-0.* 
+    .. image:: /img/form-operators-functions/choice-name-multi-lang-spanish-0.* 
       :alt: A multi-select widget in Collect. The label is "¿Qué colores te gustan?" Several color names, in Spanish, are presented as options. Rojo, Verde, and Púrpura are selected.
       :class: device-screen-vertical
 
-    .. image:: /img/form-functions/choice-name-multi-lang-spanish-1.* 
+    .. image:: /img/form-operators-functions/choice-name-multi-lang-spanish-1.* 
       :alt: A note widget in Collect. The label is "Colores seleccionados." The hint text is "Rojo, Verde, Púrpura".
       :class: device-screen-vertical
 
