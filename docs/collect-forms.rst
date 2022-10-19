@@ -91,21 +91,18 @@ Loading forms from device storage
 
 You can also download forms to your device via a web browser, and move them to the :file:`forms/` directory, using the device's file manager (:menuselection:`Settings -> Storage & USB -> Explore`).
 
-1. Go to the Settings menu (:guilabel:`⚙`) on your device and find :menuselection:`Storage & USB`
+1. Go to the Settings menu (:guilabel:`⚙`) on your device and find :menuselection:`Storage & USB`. The settings menu may look different on your device.
 
-   .. figure:: /img/collect-forms/device-settings-storage.*
+   .. image:: /img/collect-forms/device-settings-storage.*
      :alt: The Settings menu on an Android Device. The option *Storage and USB* is circled in red.
      :class: device-screen-vertical
 
-     The settings menu may look different on your device.
+2. From the internal storage screen, select :menuselection:`Explore` to open the file manager. The :guilabel:`Explore` option opens a file manager that you can use to move forms into Collect.
 
-2. From the internal storage screen, select :menuselection:`Explore` to open the file manager.
-
-   .. figure:: /img/collect-forms/device-settings-storage-explore.*
+   .. image:: /img/collect-forms/device-settings-storage-explore.*
      :alt: The Internal Storage settings menu on an Android device. The option *Explore* is circled in red.
      :class: device-screen-vertical
 
-     The :guilabel:`Explore` option opens a file manager that you can use to move forms into Collect.
 
 .. _loading-form-media:
 
@@ -226,19 +223,18 @@ You can delete `Blank` forms as well as filled forms in any state (`Saved`, `Fin
      :alt: The Main Menu of the Collect app. The option *Delete Saved Forms* is circled in red.
      :class: device-screen-vertical
 
-2. Select the :guilabel:`Saved Forms` or :guilabel:`Blank Forms` tab.
+2. Select the :guilabel:`Saved Forms` or :guilabel:`Blank Forms` tab. The :guilabel:`Saved Forms` tab lists form instances that are `saved`, `finalized`, or `sent`.
 
-   .. figure:: /img/collect-forms/delete-saved-forms.*
+   .. image:: /img/collect-forms/delete-saved-forms.*
      :alt: The Delete Saved Forms screen in the Collect app. There are two available tabs: *Saved Forms* and *Blank Forms*. The *Saved Forms* tab is active. Below that is a list of saved form instances, with checkboxes. There are buttons labeled: *Select All* and *Delete Selected*.
      :class: device-screen-vertical
 
-     The :guilabel:`Saved Forms` tab lists form instances that are `saved`, `finalized`, or `sent`.
+3.  The :guilabel:`Blank Forms` tab lists `blank` forms.
 
-   .. figure:: /img/collect-forms/delete-saved-forms-blank-forms.*
+   .. image:: /img/collect-forms/delete-saved-forms-blank-forms.*
      :alt: The Delete Saved Forms screen in the Collect app. There are two available tabs: *Saved Forms* and *Blank Forms*. The *Blank Forms* tab is active. Below that is a list of blank forms, with checkboxes. There are buttons labeled: *Select All* and *Delete Selected*.
      :class: device-screen-vertical
 
-     The :guilabel:`Blank Forms` tab lists `blank` forms.
 
 .. note::
 

@@ -669,7 +669,7 @@ Complex example
     integer, a, a =, 
     integer, b, b =,
     calculate, a_plus_b, ,"if(${a} != '' and ${b} != '', ${a} + ${b}, '')"
-    note, display_sum, a + b = ${a_plus_b}, 	
+    note, display_sum, a + b = ${a_plus_b},
 
 .. _groups:
 
@@ -752,7 +752,11 @@ User-controlled repeats
 
 By default, the enumerator controls how many times the questions are repeated.
 
-Before each repetition, the user is asked if they want to add another.
+Before each repetition, the user is asked if they want to add another. The user is given the option to add each repetition.
+
+.. image:: /img/form-logic/repeat-iteration-modal.*
+  :alt: The Collect app. A modal dialog with the question: "Add "Person"?" and options "Do not add" and "Add".
+  :class: device-screen-vertical
 
 .. note::
 
@@ -761,12 +765,6 @@ Before each repetition, the user is asked if they want to add another.
   A meaningful label will help enumerators and participants navigate the form as intended. We generally recommend using a singular noun or noun phrase such as "observation" or "household member".
 
   This interaction may be confusing to users the first time they see it. If enumerators know the number of repetitions ahead of time, consider using a :ref:`dynamically defined repeat count <dynamically-defined-repeats>`.
-
-.. figure:: /img/form-logic/repeat-iteration-modal.* 
-  :alt: The Collect app. A modal dialog with the question: "Add "Person"?" and options "Do not add" and "Add".
-  :class: device-screen-vertical
-  
-  The user is given the option to add each repetition.
 
 .. tip::
 

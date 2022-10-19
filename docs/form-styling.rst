@@ -120,16 +120,11 @@ Labels and hints can be styled with one of six header levels.
   ###### Header H6
 
 
-.. image:: /img/form-styling/h1-label.*
-  :alt: A note widget in Collect. The label is a large headline reading "Largest Headline - H1". The hint text is "This note has a label with a Markdown-style header."
-  :class: device-screen-vertical
+A comparison of headline sizes. This exact effect :ref:`cannot be produced using Markdown <one-headline-only>`.
 
-.. figure:: /img/form-styling/all-headers-label.*
+.. image:: /img/form-styling/all-headers-label.*
   :alt: A note widget in Collect. The label is six headlines of decreasing size, with text describing the size as: H1, H2, H3, H4, H5, H6.
   :class: device-screen-vertical
-
-  A comparison of headline sizes. This exact effect :ref:`cannot be produced using Markdown <one-headline-only>`.
-
 
 .. warning::
   :name: one-headline-only

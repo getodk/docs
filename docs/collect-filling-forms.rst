@@ -48,7 +48,7 @@ Questions with response choices can be answered by touching the selected items. 
   
 .. figure:: /img/collect-filling-forms/multi-select.*
   :alt: A question screen with check boxes (multi-select).
-  :class: device-screen-vertical
+  :class: device-screen-vertical side-by-side
 
   Check boxes accept multiple answers.
   
@@ -56,7 +56,6 @@ Questions with response choices can be answered by touching the selected items. 
   :alt: A question screen with image choices.
   :class: device-screen-vertical
 
-  Select images by touching them.
 
 Capture answer from device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -321,4 +320,3 @@ Mark the form as *Finalized*
   :class: device-screen-vertical
 
 Only `Finalized` forms can be :ref:`uploaded to a server <uploading-forms>`. 
-
