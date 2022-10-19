@@ -8,7 +8,7 @@ Tips and Best Practices
   collect-shortcut
   collect-location
   collect-security
-  projecting-collect
+  collect-mirror
 
 Related Topics
 ----------------

@@ -68,8 +68,6 @@ If you have connected ODK Collect to a :doc:`server <collect-connect>` or :doc:`
          :alt:
          :class: device-screen-vertical
 
-.. link to Google forms guide, once there is one
-
 .. _loading-forms-directly:
 
 Loading Forms directly
