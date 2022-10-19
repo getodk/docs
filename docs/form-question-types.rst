@@ -2150,8 +2150,8 @@ Uploads any file from the device to the form.
 
 .. image:: /img/form-question-types/file-upload-open-from.*
   :alt: A  file selection screen on an Android device.
-  A sidebar overlay is labeled "Open from".
-  This sidebar has several file locations such as "Recent", "Google Drive", "Images", "Downloads".
+       A sidebar overlay is labeled "Open from".
+       This sidebar has several file locations such as "Recent", "Google Drive", "Images", "Downloads".
   :class: device-screen-vertical
 
 .. rubric:: XLSForm
