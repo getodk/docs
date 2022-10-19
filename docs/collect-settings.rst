@@ -107,10 +107,6 @@ To access User Interface settings:
   - Forward and back buttons
   - Both
 
-:guilabel:`Splash Screen`
-"""""""""""""""""""""""""""
-  Sets an image to display while Collect loads.
-
 .. _mapping-settings:
 
 Maps Settings
