@@ -168,15 +168,29 @@ You can find more information about the Form Access page :ref:`here <central-pro
 Updating Forms to a New Version
 -------------------------------
 
-As of Central 0.8, it is possible to update a published Form with a new definition, or new Media Files, and to test these changes before they are applied to the Form in use.
+Sometimes requirements change during data collection or a form design error is discovered that needs to be fixed. In those cases, Central lets you update a published Form with a new definition, or new Media Files, and to test these changes before they are applied to the Form in use.
 
-There is one primary restriction Central enforces on updated definitions: once defined in a published Form version, each field Data Name (in technical terms, the Instance XPath) cannot change its Data Type. Unused fields may be removed, and new fields may be added, but if any field reuses a previously existing Data Name, it must have the same Type as it did before. If you run into an error with this restriction, the easiest solution is usually to rename the changed field to a new name.
+.. warning
+  Changing a form definition while it is in use will likely complicate analysis and may significantly impact results. Make sure that it's acceptable for your context and make a plan for how you will take those changes into account before you publish them.
+
+Once a field is defined in a published Form version, the field's Data Type cannot be changed. It's always okay to add or remove fields but if any field reuses a previously existing name, it must have the same Data Type as it did before. There is one exception to this rule: you can change any field's type to `text` because all other types can be easily converted to it.
+
+.. note
+  If a field is removed, it will not be included in exports by default. You can ask for all fields that were ever referenced in previous Form versions when you export data. Renaming a field is the same as removing a field and then adding a new one.
+
+  You can also put a relevance of `false()` on the field so that it's still included by default in data exports but no longer shown to data collectors.
+
+You can generally make improvements to the form without removing fields or changing their type. For example:
+
+  - if a question would be better displayed to the user as a different type (e.g., from decimal to integer), you can introduce a new field with that new type and change the old field to a calculate with a calculation that pulls the new field's value in. That way, your analysis can continue on the old field. This is only appropriate if the old and new questions have the same meaning.
+  - if a question is found to be easier to understand when framed as its negation, its field can be changed to a calculate that negates the response to a new question. This can impact results so carefully consider whether it is appropriate.
+  - if a field has an implied value after a certain point in time, it can be changed to a calculate with a default value.
 
 To begin the process of updating a published Form, click on the :guilabel:`Create a new Draft` button in the Draft navigation on the Form:
 
    .. image:: /img/central-forms/update-form.png
 
-Initially, the new Draft will have the same definition as the published Form. If you only want to update attachment Media Files, this means you don't have to bother uploading a definition at all: you can go straight to the :guilabel:`Media Files` tab and :ref:`upload the changed files <central-forms-attachments>`.
+Initially, the new Draft will have the same definition as the published Form. If you only want to update attachment Media Files, this means you don't have to upload a definition: you can go straight to the :guilabel:`Media Files` tab and :ref:`upload the changed files <central-forms-attachments>`.
 
 You can replace the Draft definition, Media Files, and make test submissions as with the :ref:`initial Form Draft <central-forms-draft>` before the Form was first published. Test submissions will not interfere with published Form submissions.
 
@@ -190,7 +204,7 @@ Once the Draft has been published, it becomes the version in use and there will 
 
 .. admonition:: What happens to my submissions?
 
-  When a new Form version is published in place of an old one, all the previous submissions continue to exist, and will export along with all your data over Zip download or OData. However, only the current Form definition will be used in that export: if, for example, you have deleted a field that used to exist, that field will not appear in the export.
+  When a new Form version is published in place of an old one, all the previous submissions remain unchanged, and will export along with all your data. However, by default, only the current Form definition will be used in exports: if, for example, you have deleted a field that used to exist, that field will not appear in the export. You can configure this when exporting data.
 
   Draft testing submissions will never export with your final data, and only exist as long as the Draft does. If you delete, publish, or replace your current Draft, all test submissions will be cleared away.
 
