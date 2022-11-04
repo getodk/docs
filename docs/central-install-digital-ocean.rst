@@ -447,3 +447,5 @@ If on the other hand you wish to use your own Sentry instance, take these steps:
    }
 
 The error logs sent to Sentry (if enabled) are also being written to ``/var/log/odk/stderr.log`` in the running backend container.
+
+4. In ``files/nginx/odk.conf.template``, replace ``https://o130137.ingest.sentry.io/api/1298632/security/?sentry_key=3cf75f54983e473da6bd07daddf0d2ee`` with your own Sentry ingest URL, which you can find at https://docs.sentry.io/product/security-policy-reporting/#content-security-policy.
