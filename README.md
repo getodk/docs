@@ -10,67 +10,7 @@ The published documentation is at:
 
 Please [file an issue](https://github.com/getodk/docs/issues) if you can't find what you are looking for.
 
-## Building and viewing documentation locally
-
-There are two options for building and viewing ODK docs locally: [using Docker](#docker) or [setting up a local Python/Sphinx environment](#python-environment). We generally recommend starting with the Docker image unless you already have a Sphinx environment set up. The [Contributor Guide](https://docs.getodk.org/contributing) describes the philosophy behind the docs, style considerations, how to write restructured text and more.
-
-## <a name="docker"></a>Using Docker
-
-[Docker](https://www.docker.com/) is a platform that makes it easier to package applications so that they can work on any computer. This is particularly valuable when setting up development environments which can work very differently based on versions of the tools involved.
-
-### Prerequisites
- * Install Docker
-   * Windows and Mac users should follow the instructions in [the get started guide](https://www.docker.com/get-started)
-   * Linux users should follow the instructions for their specific distribution: [CentOS](https://docs.docker.com/install/linux/docker-ce/centos/), [Debian](https://docs.docker.com/install/linux/docker-ce/debian/), [Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/), [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/), [Binaries](https://docs.docker.com/install/linux/docker-ce/binaries/)
-
-   More info at the [Docker CE docs page](https://docs.docker.com/install/)
- * Install [git](https://git-scm.com/downloads)
- * Install [Git-LFS](https://git-lfs.github.com/)
-
-### Cloning the repo
-
-Clone the docs repo. For example, at the command line:
-
-```
-git clone https://github.com/getodk/docs.git
-```
-
-It can take a long time (>10 minutes) to clone the repo due to the large number of images in the docs. If you get an error such as `Smudge error` or `GitHub's rate limit reached`, run `git checkout -f HEAD` until you get the message `Checking out files: 100% done`.
-
-### Building and serving the docs locally
-
-Build and serve the docs locally with:
- * Windows: `.\run.bat`
- * Linux/macOS: `./run.sh`
-
-This will build the Docker image with all the tools you will be using to work with ODK's docs which might take some time the first time you run the command.
-
-Once your terminal shows a "Serving on http://0.0.0.0:8080" message, you can then view the docs in your browser at http://localhost:8080.
-
-Changes you make in the source files will automatically be built and shown in your browser.
-
-Press `Ctrl-C` on your keyboard to stop the build server. It could take a while to effectively stop, and you can always close the terminal window.
-
-If you get a `The name "odk-docs" is already in use by container` error message, run the following command:
-
-```
-docker kill odk-docs
-```
-
-**Windows users**
- * All commands should be run in an elevated PowerShell window. Right click on PowerShell and select the "Run as administrator" option.
- * Ensure Docker is running by checking your system tray. If Docker is not running, launch "Docker for Windows" app and wait until a notification confirms that Docker is running.
-
-### Other build tasks  
-
-You can also use the `run-task` script to run just a portion of the build process:
-
-* Windows: `.\run-task.bat <build-task>`
-* Linux/macOS: `./run-task.sh <build-task>`
-
-See available [build tasks](#tasks) below.
-
-## <a name="python-environment"></a>Python environment
+## Building and viewing documentation
 
 ### Prerequisites
 
@@ -78,73 +18,7 @@ See available [build tasks](#tasks) below.
  * Install [git](https://git-scm.com/downloads)
  * Install [Git-LFS](https://git-lfs.github.com/)
 
-We highly recommend you use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/) or a Python version management like [pyenv](https://github.com/pyenv/pyenv). (Type `python --version` to see your current version.)
-
-- Instructions for setting up virtual environment:
-
-      A `virtual environment`_ is a Python construct
-      that lets you download and install tools for a specific project
-      without installing them for your entire computer.
-
-      .. _virtual environment: https://docs.python.org/3/tutorial/venv.html
-
-      #. Create the virtual environment.
-
-         .. tab-set::
-
-            .. tab-item:: Bash
-
-               .. code:: console
-
-                  /odk/ $ python3 -m venv odkenv
-
-            .. tab-item:: PowerShell
-
-               .. code:: powershell
-
-                  /odk/ > python -m venv odkenv
-
-      #. Activate the virtual environment.
-
-         .. tab-set::
-
-            .. tab-item:: Bash
-
-               .. code:: console
-
-                  /odk/ $ source odkenv/bin/activate
-                  (odkenv) /odk/ $
-
-            .. tab-item:: PowerShell
-
-               .. code:: console
-
-                  /odk/ > source odkenv/bin/activate
-                  (odkenv) /odk/ >
-
-         The ``(odkenv)`` before the prompt shows that the virtual environment is active.
-         You will need to have this active any time you are working on the docs.
-
-         If the file cannot be found, your activate file may be located under odkenv/scripts/activate.
-
-         Later, to deactivate the virtual environment:
-
-         .. tab-set::
-
-            .. tab-item:: Bash
-
-               .. code:: console
-
-                  (odkenv) /odk/ $ deactivate
-                  /odk/ $
-
-            .. tab-item:: PowerShell
-
-               .. code:: console
-
-                  (odkenv) /odk/ > deactivate
-                  /odk/ >
-
+We highly recommend you use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/).
 
 ### Cloning the repo
 
@@ -159,27 +33,16 @@ $ pip install -r requirements.txt
 It can take a long time (>10 minutes) to clone the repo due to the large number of images in the docs. If you get an error such as `Smudge error` or `GitHub's rate limit reached`, run `git checkout -f HEAD` until you get the message `Checking out files: 100% done`.
 
 ### Building the docs
-### Building the docs
 
 Once your environment is set up, build and serve the docs locally with:
 
 ```bash
-$ make build
-$ cd build
-$ python -m http.server 8000
+$ make autobuild
 ```
 
-You can then view the docs in your browser at http://localhost:8000.
+You can then view the docs in your browser at [http://localhost:8000](http://localhost:8000). The docs will auto-build and refresh as you make changes to the source files.
 
-You can also use `make` to build just a portion of the build process. See available [build tasks](#tasks) below.
-
-## <a name="tasks"></a>Build tasks
-
-
-|          | Build & Serve | Build |    Copy     |     LaTeX     |     Style Check     |    Spell Check     |    Check All   |
-| -------- | :-----------: | :---: | :---------: | :-----------: | :-----------------: | :----------------: | :----------------: |
-| **Options** | autobuild | build | copy |  latex |  style-check | spell-check |    check     |
-
+You can use `make dirhtml` to for a one-time build of the HTML files and `make clean` to clean the build.
 
 ## How to contribute?
 
