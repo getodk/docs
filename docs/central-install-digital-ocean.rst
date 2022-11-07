@@ -423,6 +423,16 @@ By default, we enable `Sentry error logging <https://sentry.io>`_ on the backend
 
 1. Edit the file ``files/service/config.json.template`` and remove the ``sentry`` lines, starting with ``"sentry": {`` through the next three lines until you remove the matching ``}``.
 2. Build and run: ``docker-compose build service``, ``docker-compose stop service``, ``docker-compose up -d service``.
+3. Edit the file ``files/nginx/odk.conf.template`` and replace the ``csp-report`` lines, starting with ``location /csp-report {`` through the next two lines until you remove the matching ``}`` with:
+
+  .. code-block:: console
+
+    location /csp-report {
+      return 200 'CSP report discarded.';
+      add_header Content-Type text/plain;
+    }
+
+4. Build and run: ``docker-compose build nginx``, ``docker-compose stop nginx``, ``docker-compose up -d nginx``.
 
 If on the other hand you wish to use your own Sentry instance, take these steps:
 
