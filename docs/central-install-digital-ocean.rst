@@ -437,7 +437,7 @@ By default, we enable `Sentry error logging <https://sentry.io>`_ in Central's s
 If on the other hand you wish to use your own Sentry instance, take these steps:
 
 1. Create a free account on `Sentry <https://sentry.io>`_, and create a new ``nodejs`` project.
-2. The new project will generate a ``DSN`` of the format ``https://SENTRY_KEY@sentry.io/SENTRY_PROJECT``.
+2. The new project will generate a ``DSN`` of the format ``https://SENTRY_KEY@SENTRY_SUBDOMAIN.ingest.sentry.io/SENTRY_PROJECT``.
 3. In ``files/service/config.json.template``, replace ``SENTRY_KEY`` and ``SENTRY_PROJECT`` with the values from step 2. 
 
   .. code-block:: console
@@ -449,6 +449,7 @@ If on the other hand you wish to use your own Sentry instance, take these steps:
        "env": {...},
        "external": {
          "sentry": {
+           "orgSubdomain": "SENTRY_SUBDOMAIN",
            "key": "SENTRY_KEY",
            "project": "SENTRY_PROJECT"
          }
