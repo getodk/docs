@@ -2246,6 +2246,8 @@ The flash can be used as a light source when scanning barcodes in a poorly lit e
 
   barcode, barcode_example, Scan any barcode.
 
+.. warning::
+  It is recommended not to make barcode questions required because even when using high quality and waterproof codes things can go wrong and some of them might be unreadable for the camera. To handle such cases, it might be a good idea to add a :ref:`text-default` as a fallback option to let enumerators enter the code manually.
 
 .. _self-portrait-barcode-widget:
 
