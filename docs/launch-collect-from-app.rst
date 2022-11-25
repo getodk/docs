@@ -101,7 +101,10 @@ If the URI of a form or instance is known, it can be viewed or edited. For examp
  
   Intent intent = new Intent(Intent.ACTION_EDIT);
   intent.setData("content://org.odk.collect.android.provider.odk.forms/forms/2");
-  startActivity(intent);
+  startActivityForResult(intent);
+
+.. note::
+  The ``Form EDIT`` action returns an instance URI, so after saving such a form it should be returned in intent data (example: ``content://org.odk.collect.android.provider.odk.instances/instances/1``).  
  
 The same thing can be done with a specific instance.
 
