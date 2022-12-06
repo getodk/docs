@@ -46,7 +46,7 @@ First, let's prepare the forms for use with Central.
 
 1. Create a new Project, if you can. It can be easier to see what's going on without other Forms in the way.
 2. Upload the Tree registration form linked above. Notice how it has seen from the form definition that the Form creates a Dataset, and populates three fields within that Dataset.
-3. Publish the Form. As the dialog says, this action creates the ``trees`` dataset within the Project you created.
+3. Publish the Form. As the dialog says, this action creates the ``trees`` Dataset within the Project you created.
 4. Now, upload the Tree follow-up form.
 5. Switch over to the Form Attachments tab before you publish this form, and notice how the form wants a data file called ``trees.csv``, but that Central has already linked the Dataset ``trees`` (created when you published the registration form in step 3) and you don't need to upload any data here.
 6. Go back to the Draft Status page and publish this form. Because this form only *consumes* Datasets, it does not make any changes to any Dataset fields.
@@ -115,7 +115,7 @@ In the following section, we describe how to author forms that create new Entiti
 Build a form that creates new Entities
 --------------------------------------
 
-You’ll start by building a Form that creates new Entities in a Dataset called trees. When you publish this Form, a trees Dataset will be created for you. When a Submission to this form is approved, an entity will be created in the `trees` dataset from data in the Submission. These types of Forms are often referred to as registration, enrollment, intake or discovery forms.
+You’ll start by building a Form that creates new Entities in a Dataset called ``trees``. When you publish this Form, a ``trees`` Dataset will be created for you. When a Submission to this form is approved, an entity will be created in the ``trees`` Dataset from data in the Submission. These types of Forms are often referred to as registration, enrollment, intake or discovery forms.
 
 In this current release, you will start building your form in XLSForm and make some modifications to it in XML before upload. In the future, you will be able to define your Entities-related forms entirely in XLSForm.
 
