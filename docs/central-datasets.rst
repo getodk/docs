@@ -108,9 +108,7 @@ Writing forms to use Central Datasets and Entities
 
 Central does a lot of work to help you manage Entity data, but at least for now the only way to ask it to do so is to create a form that describes how.
 
-In the following section, we describe how to author forms that create new Entities, also known as registration forms.
-
-After that, we discuss forms that use Entities, also known as follow-up forms.
+In the following section, we describe how to author forms that create new Entities, also known as registration forms. After that, we discuss forms that use Entities, also known as follow-up forms.
 
 .. _central-datasets-registration-forms:
 
@@ -119,7 +117,7 @@ Build a form that creates new Entities
 
 You’ll start by building a Form that creates new Entities in a Dataset called trees. When you publish this Form, a trees Dataset will be created for you. When a Submission to this form is approved, an entity will be created in the `trees` dataset from data in the Submission. These types of Forms are often referred to as registration, enrollment, intake or discovery forms.
 
-In this preview release, you will start building your form in XLSForm and make some modifications to it in XML before upload. In the future, you will be able to define your Entities-related forms entirely in XLSForm.
+In this current release, you will start building your form in XLSForm and make some modifications to it in XML before upload. In the future, you will be able to define your Entities-related forms entirely in XLSForm.
 
 .. _central-datasets-registration-forms-structure:
 
@@ -181,7 +179,7 @@ You define Entity Properties by adding a ``save_to`` column to your XLSForm. You
 
 If you'd like to check your work, you can compare with `this example form <https://docs.google.com/spreadsheets/d/1xboXBJhIUlhs0wlblCxcQ3DB5Ubpx2AxLDuaXh_JYyw/edit#gid=2050654322>`_, with the ``entities`` sheet and ``save_to`` information.
 
-When you publish this form on ODK Central, the ``trees`` Dataset will be created for you.
+When you publish this form on Central, the ``trees`` Dataset will be created for you.
 
 .. _central-datasets-follow-up-forms:
 
