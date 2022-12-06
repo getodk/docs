@@ -149,7 +149,7 @@ Add a new `entities` sheet to your XLSForm. This is where you will specify your 
 
 Each Entity will be automatically assigned a unique name based on one or more fields from the Entity data, just like the ``instanceName`` on submissions. The ``label`` field here is where you provide the expression to use as a label for each entity in the Dataset.
 
-The Dataset name will be used by Central to uniquely identify that Dataset. If a Dataset with the name you specify already exists in Central, this form will create entities in that existing Dataset. If Central doesn’t yet have a Dataset with the specified name, it will be created.
+The Dataset name will be used by Central to uniquely identify that Dataset. If a Dataset with the name you specify already exists in Central, this form will create entities in that existing Dataset. If Central doesn't yet have a Dataset with the specified name, it will be created.
 
 The label expression can use any field in the form.
 
