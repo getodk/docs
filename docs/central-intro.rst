@@ -15,14 +15,14 @@ ODK Central Features
 Here are some of the major features we support today:
 
  - Projects to organize users, permissions, and forms
- - Form upload and management
  - User accounts with role-based permissioning
+ - Form upload and management
 
    - With support for form version updates
    - With drafts and testing on initial creation, and on version updates
    - With form multimedia or data attachments
    - Encrypted forms (self-supplied or project managed keys)
-
+   - True deletion of forms
  - Submission upload and management
 
    - Form filling from our mobile app or a web browser
@@ -30,8 +30,8 @@ Here are some of the major features we support today:
    - With submission multimedia or data attachments
    - With an interactive table preview of submission data
    - Support for reviewing, commenting on, and editing submissions after upload
-   - Connectable to data analysis and dashboard applications like Excel, Power BI, or R over OData
-
+   - Connectable to analysis and dashboard applications like Excel, Power BI, or R over OData
+   - Server-managed datasets for registration/follow-up workflows
  - Integrated checklist-based help system
  - Optional encrypted off-site data backups to Google Drive
  - Clean and modern REST API for integration and extensibility
