@@ -126,7 +126,7 @@ In this preview release, you will start building your form in XLSForm and make s
 Define the structure of the entity-creating form
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Start by defining the structure of your form in XLSForm using the standard form building blocks (https://docs.getodk.org/xlsform/). For example, `this form <https://docs.google.com/spreadsheets/d/1ogupGLD_O42MRAW380IP4LDQY6tUdrGyLaSFZux-vuI/edit#gid=0>`_ is used to register trees:
+Start by defining the structure of your form in `XLSForm <https://docs.getodk.org/xlsform/>`_ using the standard form building blocks. For example, `this form <https://docs.google.com/spreadsheets/d/1ogupGLD_O42MRAW380IP4LDQY6tUdrGyLaSFZux-vuI/edit#gid=0>`_ is used to register trees:
 
 .. rubric:: XLSForm
 
@@ -201,5 +201,5 @@ Your ``trees`` Dataset can now be attached to any Form using ``select_one_from_f
 
 You can see the above example as a working spreadsheet `here <https://docs.google.com/spreadsheets/d/12oJZDpJ8RxtmNopfqNKp3RWMsf4O3MWACYOTub_yZaQ/edit#gid=0>`_.
 
-The same Dataset can be used in many different Forms. The concepts and patterns described in the data collector workflows documentation (https://docs.getodk.org/data-collector-workflows) and the datasets documentation (https://docs.getodk.org/form-datasets/) apply to server-managed Datasets as well.
+The same Dataset can be used in many different Forms. The concepts and patterns described in the :doc:`data collector workflows <data-collector-workflows>` and the :doc:`form datasets <form-datasets>` apply to server-managed Datasets as well.
 
