@@ -1,7 +1,7 @@
 .. _central-submissions-overview:
 
-Managing Form Submissions in Central
-====================================
+Managing Submissions in Central
+===============================
 
 The most common way to use ODK Central is in conjunction with a data collection client, typically on a mobile device, such as ODK Collect. To do this, you will need to :ref:`connect to it from your mobile device <central-users-app-configure>`, after which you will be able to 
 :ref:`uploaded submissions <uploading-forms>` back to Central.
