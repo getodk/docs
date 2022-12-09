@@ -37,8 +37,8 @@ If you are interested in seeing how Datasets can fit into your workflow right aw
 
 .. _central-datasets-quick-start:
 
-Quick Start: the Trees dataset
-------------------------------
+Quick Start
+-----------
 
 In this Quick Start, you will upload two Forms we have already authored for you: the `Tree registration form <https://docs.google.com/spreadsheets/d/1xboXBJhIUlhs0wlblCxcQ3DB5Ubpx2AxLDuaXh_JYyw/edit#gid=2050654322>`_ and the `Tree follow-up form <https://docs.google.com/spreadsheets/d/12oJZDpJ8RxtmNopfqNKp3RWMsf4O3MWACYOTub_yZaQ/edit#gid=0>`_. You will step through the registration of a new tree and the process of following up on that tree in a later form.
 
@@ -46,7 +46,7 @@ First, let's prepare the forms for use with Central.
 
 1. Create a new Project, if you can. It can be easier to see what's going on without other Forms in the way.
 2. Upload the Tree registration form linked above. Notice how it has seen from the form definition that the Form creates a Dataset, and populates three fields within that Dataset.
-3. Publish the Form. As the dialog says, this action creates the ``trees`` dataset within the Project you created.
+3. Publish the Form. As the dialog says, this action creates the ``trees`` Dataset within the Project you created.
 4. Now, upload the Tree follow-up form.
 5. Switch over to the Form Attachments tab before you publish this form, and notice how the form wants a data file called ``trees.csv``, but that Central has already linked the Dataset ``trees`` (created when you published the registration form in step 3) and you don't need to upload any data here.
 6. Go back to the Draft Status page and publish this form. Because this form only *consumes* Datasets, it does not make any changes to any Dataset fields.
@@ -71,8 +71,8 @@ That's it! The follow-up form just creates a normal submission, so you can acces
 
 .. _central-datasets-overview:
 
-How to use Datasets in v2022.3
-------------------------------
+Datasets and Entities in v2022.3
+--------------------------------
 
 If you skipped the Quick Start above, we suggest you go back and give it a try. You will learn hands on with Central a lot of what will be described below.
 
@@ -88,8 +88,8 @@ To use data from a Dataset in another form, you can refer to it by ``NAME.csv`` 
 
 .. _central-datasets-testing:
 
-Testing Forms with Datasets in v2022.3
---------------------------------------
+Testing forms with Datasets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Checking that your forms are working together the way you expect is challenging with Datasets. Usually you can create a Draft of a form and use it as a safe space to try out form definitions and data submissions. But Datasets reach *across* forms. They live alongside forms within the Project. How do these drafts connect together?
 
@@ -103,30 +103,28 @@ In the meantime, we recommend that you manually upload your Entities into your f
 
 .. _central-datasets-authoring:
 
-Writing forms to use Central Datasets and Entities
-==================================================
+Creating forms to use Datasets and Entities
+-------------------------------------------
 
 Central does a lot of work to help you manage Entity data, but at least for now the only way to ask it to do so is to create a form that describes how.
 
-In the following section, we describe how to author forms that create new Entities, also known as registration forms.
-
-After that, we discuss forms that use Entities, also known as follow-up forms.
+In the following section, we describe how to author forms that create new Entities, also known as registration forms. After that, we discuss forms that use Entities, also known as follow-up forms.
 
 .. _central-datasets-registration-forms:
 
-Build a form that creates new Entities
---------------------------------------
+Build a form that creates Entities
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You’ll start by building a Form that creates new Entities in a Dataset called trees. When you publish this Form, a trees Dataset will be created for you. When a Submission to this form is approved, an entity will be created in the `trees` dataset from data in the Submission. These types of Forms are often referred to as registration, enrollment, intake or discovery forms.
+You’ll start by building a Form that creates new Entities in a Dataset called ``trees``. When you publish this Form, a ``trees`` Dataset will be created for you. When a Submission to this form is approved, an entity will be created in the ``trees`` Dataset from data in the Submission. These types of Forms are often referred to as registration, enrollment, intake or discovery forms.
 
-In this preview release, you will start building your form in XLSForm and make some modifications to it in XML before upload. In the future, you will be able to define your Entities-related forms entirely in XLSForm.
+In this current release, you will start building your form in XLSForm and make some modifications to it in XML before upload. In the future, you will be able to define your Entities-related forms entirely in XLSForm.
 
 .. _central-datasets-registration-forms-structure:
 
 Define the structure of the entity-creating form
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""""""""""""""""""""""""""""""
 
-Start by defining the structure of your form in XLSForm using the standard form building blocks (https://docs.getodk.org/xlsform/). For example, `this form <https://docs.google.com/spreadsheets/d/1ogupGLD_O42MRAW380IP4LDQY6tUdrGyLaSFZux-vuI/edit#gid=0>`_ is used to register trees:
+Start by defining the structure of your form in `XLSForm <https://docs.getodk.org/xlsform/>`_ using the standard form building blocks. For example, `this form <https://docs.google.com/spreadsheets/d/1ogupGLD_O42MRAW380IP4LDQY6tUdrGyLaSFZux-vuI/edit#gid=0>`_ is used to register trees:
 
 .. rubric:: XLSForm
 
@@ -142,8 +140,8 @@ Test your form to make sure it works and collects the data that you need.
 
 .. _central-datasets-registration-forms-destination:
 
-Specify the Dataset that the form should save entities to
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Specify the Dataset the form should save Entities to
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Add a new `entities` sheet to your XLSForm. This is where you will specify your Dataset’s name, under ``dataset``.
 
@@ -162,8 +160,8 @@ The label expression can use any field in the form.
 
 .. _central-datasets-registration-forms-fields:
 
-Specify the form fields that are saved to entities
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Specify the form fields that are saved to Entities
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 If you think of your Dataset as a spreadsheet, each row represents an individual Entity and each column specifies an Entity Property.
 
@@ -181,12 +179,12 @@ You define Entity Properties by adding a ``save_to`` column to your XLSForm. You
 
 If you'd like to check your work, you can compare with `this example form <https://docs.google.com/spreadsheets/d/1xboXBJhIUlhs0wlblCxcQ3DB5Ubpx2AxLDuaXh_JYyw/edit#gid=2050654322>`_, with the ``entities`` sheet and ``save_to`` information.
 
-When you publish this form on ODK Central, the ``trees`` Dataset will be created for you.
+When you publish this form on Central, the ``trees`` Dataset will be created for you.
 
 .. _central-datasets-follow-up-forms:
 
 Build a form that uses Entities
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Your ``trees`` Dataset can now be attached to any Form using ``select_one_from_file`` or ``csv-external``.
 
@@ -201,5 +199,5 @@ Your ``trees`` Dataset can now be attached to any Form using ``select_one_from_f
 
 You can see the above example as a working spreadsheet `here <https://docs.google.com/spreadsheets/d/12oJZDpJ8RxtmNopfqNKp3RWMsf4O3MWACYOTub_yZaQ/edit#gid=0>`_.
 
-The same Dataset can be used in many different Forms. The concepts and patterns described in the data collector workflows documentation (https://docs.getodk.org/data-collector-workflows) and the datasets documentation (https://docs.getodk.org/form-datasets/) apply to server-managed Datasets as well.
+The same Dataset can be used in many different Forms. The concepts and patterns described in the :doc:`data collector workflows <data-collector-workflows>` and the :doc:`form datasets <form-datasets>` apply to server-managed Datasets as well.
 
