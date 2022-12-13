@@ -178,11 +178,12 @@ If you use `R <https://www.r-project.org/>`_, we recommend `ruODK <https://docs.
 You can also access the OData feed yourself. The OData feed is an easily consumable JSON data format and offers a metadata schema, some filtering and paging options, and more. To learn more about the OData feed, click the :guilabel:`API Access` button or see the `API documentation <https://odkcentral.docs.apiary.io/#reference/odata-endpoints>`_ directly.
 
 .. _central-submissions-media-downloads:
+.. _setting-up-media-downloads:
 
-Setting up Media Downloads
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Accessing submission media from external tools
+----------------------------------------------
 
-For a lot of reasons, it can be tricky to access submission media files while doing data analysis. Getting an analysis tool to fetch data from Central does not mean it can or knows how to get images, video, and other media.
+It can be tricky to access submission media files while using external tools like Power BI or Python for data analysis or visualization. Using an external tool to fetch submissions from Central does not mean it can or knows how to get associated images, video, and other media.
 
 In OData data responses, you will see media files given by their filename. If you want, you can construct a link within your analysis tool that will download any media file with your web browser. You can do this by gluing together pieces of text into a URL. Often this gluing operation is called ``concat`` or ``concatenate``. You'll need to make it look like this:
 
