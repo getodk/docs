@@ -3,8 +3,7 @@
 Managing Submissions in Central
 ===============================
 
-The most common way to use ODK Central is in conjunction with a data collection client, typically on a mobile device, such as ODK Collect. To do this, you will need to :ref:`connect to it from your mobile device <central-users-app-configure>`, after which you will be able to 
-:ref:`uploaded submissions <uploading-forms>` back to Central.
+The most common way to use ODK Central is in conjunction with a data collection client, typically on a mobile device, such as ODK Collect. To do this, you will need to :ref:`connect to it from your mobile device <central-users-app-configure>`, after which you will be able to :ref:`upload submissions <uploading-forms>` back to Central.
 
 ODK Central also bundles `Enketo <https://enketo.org>`_, which enables preview and submission of forms directly from a web browser. Please note that as with all ODK clients, Enketo does not always behave quite the same as Collect, or support the same features. Any authorized Web User may fill out a Form directly from the browser, as will be described in more detail below.
 
@@ -126,11 +125,17 @@ Once the :file:`.csv` or :file:`.zip` completes downloading, you will find one o
   Rather than downloading CSVs manually, you can also :ref:`connect Excel directly to Central via OData <central-submissions-odata>` and get a live-updating spreadsheet with auto-detected data types and Unicode support.
 
 .. _central-submissions-odata:
+.. _connecting-to-submission-data-over-odata:
 
-Connecting to submission data over OData
-----------------------------------------
+Downloading submissions with Power BI or Excel
+----------------------------------------------
 
-To connect a third-party tool to Central over OData, you will need a link to paste into the tool. You can find this link by clicking on the :guilabel:`Analyze via OData` button on the right side of the listing page:
+Central provides an OData feed that Power BI or Excel can use to pull data into ODK at (pretty much) the click of a button.
+
+..  youtube:: CDycTI-8TOc
+   :width: 100%
+
+As shown in the tutorial video above from `Humanitarian Data Solutions <https://www.humanitariandatasolutions.com>`_, you will first need a link to paste into the tool. You can find this link by clicking on the :guilabel:`Analyze via OData` button on the right side of the listing page:
 
    .. image:: /img/central-submissions/odata-button.png
 
@@ -157,24 +162,29 @@ To connect with Excel or Power BI, follow these steps.
 4. The :guilabel:`Navigator` window now appear. Select :guilabel:`Submissions`, then :guilabel:`Load`.
 
 .. tip::
-  See `Import external data into Excel <https://support.office.com/en-us/article/connect-to-an-odata-feed-power-query-4441a94d-9392-488a-a6a9-739b6d2ad500>`_ and `OData feeds in Power BI <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`_ for more information about using Excel and Power BI for OData feeds.
+  See `Import external data into Excel <https://support.office.com/en-us/article/connect-to-an-odata-feed-power-query-4441a94d-9392-488a-a6a9-739b6d2ad500>`_ and `OData feeds in Power BI <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`_ for more information about using Power BI or Excel for OData feeds.
 
   If you are having trouble getting Power BI or Excel to connect, and especially if you see error messages about permissions or authentication, `clear your cached permissions <https://docs.microsoft.com/en-us/power-query/connectorauthentication#change-the-authentication-method>`_ and try again.
 
   If you are using Excel 2016, install `Microsoft Power Query for Excel 6 <https://www.microsoft.com/en-us/download/details.aspx?id=39379>`_ and go to the :guilabel:`Data` menu, then :guilabel:`New Query`, and then :guilabel:`From Other Sources` to find the :guilabel:`From OData Feed` item.
 
-If you want to use the free and popular `R statistics and analysis tool <https://www.r-project.org/>`_, we recommend you use `ruODK <https://docs.ropensci.org/ruODK/>`_. A guide for getting started with it can be found `here <https://docs.ropensci.org/ruODK/articles/odata-api.html>`_. ruODK is developed and supported by community members. If you wish to help improve it, you can find information `on GitHub <https://docs.ropensci.org/ruODK/CONTRIBUTING.html>`_.
+Downloading submissions with Python, R, and more
+------------------------------------------------
+If you use `Python <https://www.python.org/>`_, we recommend `pyODK <https://github.com/getodk/pyodk>`_ for downloading submissions via an OData feed into Python. pyODK is the official Python client for Central and it makes common data analysis and workflow automation tasks simple. Get started `here <https://github.com/getodk/pyodk>`_.
 
-You can also access the OData feed yourself. The OData feed is an easily consumable JSON data format and offers a metadata schema, some filtering and paging options, and more. To learn more about the OData feed, click the :guilabel:`API Access` button or see the `developer documentation <https://odkcentral.docs.apiary.io/#reference/odata-endpoints>`_ directly.
+If you use `R <https://www.r-project.org/>`_, we recommend `ruODK <https://docs.ropensci.org/ruODK/>`_ for downloading submissions via an OData feed into R. ruODK is open-source software developed and supported by community members. Get started `here <https://docs.ropensci.org/ruODK/articles/odata-api.html>`_.
+
+You can also access the OData feed yourself. The OData feed is an easily consumable JSON data format and offers a metadata schema, some filtering and paging options, and more. To learn more about the OData feed, click the :guilabel:`API Access` button or see the `API documentation <https://odkcentral.docs.apiary.io/#reference/odata-endpoints>`_ directly.
 
 .. _central-submissions-media-downloads:
+.. _setting-up-media-downloads:
 
-Setting up Media Downloads
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Accessing submission media from external tools
+----------------------------------------------
 
-For a lot of reasons, it can be tricky to access submission media files while doing data analysis. Getting an analysis tool to fetch data from Central does not mean it can or knows how to get images, video, and other media.
+It can be tricky to access submission media files while using external tools like Power BI or Python for data analysis or visualization. Using an external tool to fetch submissions from Central does not mean it can or knows how to get associated images, video, and other media.
 
-In OData data responses, you will see media files given by their filename. If you want, you can construct a link within your analysis tool that will download any media file with your web browser. You can do this by gluing together pieces of text into a URL. Often this gluing operation is called ``concat`` or ``concatenate``. You'll need to make it look like this:
+In the OData feed, you will see media files given by their filename. If you want, you can construct a link within your analysis tool that will download any media file with your web browser. You can do this by gluing together pieces of text into a URL. Often this gluing operation is called ``concat`` or ``concatenate``. You'll need to make it look like this:
 
   .. code-block:: console
 
