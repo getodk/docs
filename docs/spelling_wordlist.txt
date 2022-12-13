@@ -322,15 +322,16 @@ popup
 postgres
 Powershell
 pre
-prepopulate
 prefs
 preg
+prepopulate
 proactively
 Proselint
 proselint
 pushpins
 py
 Pygments
+pyODK
 pytz
 pyxform
 Púrpura
