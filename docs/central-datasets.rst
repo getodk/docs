@@ -2,7 +2,7 @@ Datasets and Entities in Central
 ================================
 
 .. warning::
-   This is an *experimental* feature! Please do not use it unless you are comfortable with things going wrong, or features changing in future releases. It is very unlikely you will ever lose data using Datasets and Entities, but either due to unknown bugs or early confusion it is always possible you may end up with *unexpected* data.
+   This is an *experimental* preview! Please do not use it unless you are comfortable with things going wrong, or features changing in future releases. It is very unlikely you will ever lose data using Datasets and Entities, but either due to unknown bugs or early confusion it is always possible you may end up with *unexpected* data.
   
    You should also be aware that since there are not yet Dataset filtering features in this early version, all devices will download all registered Entities always. You may not want or be able to accept this due to privacy concerns.
 
@@ -39,6 +39,11 @@ If you are interested in seeing how Datasets can fit into your workflow right aw
 
 Quick Start
 -----------
+
+We recommend watching the video below once or twice to get an overview of how Entities and Datasets work in Central. Once you have that context, proceed with the steps below to try it yourself!
+
+..  youtube:: hbff-oaI8yg
+   :width: 100%
 
 In this Quick Start, you will upload two Forms we have already authored for you: the `Tree registration form <https://docs.google.com/spreadsheets/d/1xboXBJhIUlhs0wlblCxcQ3DB5Ubpx2AxLDuaXh_JYyw/edit#gid=2050654322>`_ and the `Tree follow-up form <https://docs.google.com/spreadsheets/d/12oJZDpJ8RxtmNopfqNKp3RWMsf4O3MWACYOTub_yZaQ/edit#gid=0>`_. You will step through the registration of a new tree and the process of following up on that tree in a later form.
 
