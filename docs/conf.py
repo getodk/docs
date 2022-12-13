@@ -37,7 +37,8 @@ author = 'ODK'
 extensions = [ 'sphinxcontrib.spelling',
     'sphinx_design',
     'sphinx_copybutton',
-    'sphinx_video'
+    'sphinx_video',
+    'sphinxcontrib.youtube'
 ]
 
 # If using Apple Silicon, set env variable (assumes brew install of enchant)

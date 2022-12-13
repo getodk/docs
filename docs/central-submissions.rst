@@ -130,7 +130,12 @@ Once the :file:`.csv` or :file:`.zip` completes downloading, you will find one o
 Connecting to submission data over OData
 ----------------------------------------
 
-To connect a third-party tool to Central over OData, you will need a link to paste into the tool. You can find this link by clicking on the :guilabel:`Analyze via OData` button on the right side of the listing page:
+Are you wondering how you can easily download the data you've collected into Power BI and Excel for analysis and visualization? Central provides an OData feed that Power BI and Excel can use to pull data into ODK at (pretty much) the click of a button.
+
+..  youtube:: CDycTI-8TOc
+   :width: 100%
+
+As shown in the tutorial video above from `Humanitarian Data Solutions <https://www.humanitariandatasolutions.com>`_, you will first need a link to paste into the tool. You can find this link by clicking on the :guilabel:`Analyze via OData` button on the right side of the listing page:
 
    .. image:: /img/central-submissions/odata-button.png
 
