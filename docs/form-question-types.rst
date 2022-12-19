@@ -1044,6 +1044,9 @@ You can use a :ref:`GeoJSON attachment <selects-from-geojson>` as a source of ch
 
 When using a ``geometry`` column instead of a GeoJSON file, the geometry must be specified in :ref:`the ODK format <location-widgets>`. For example, you could attach data collected using another ODK form and make sure that the column containing ``geopoint`` values has name ``geometry``.
 
+.. note::
+    Choices with invalid geometries are silently ignored. There will be no message displayed to a user when it happens.
+
 .. image:: /img/form-question-types/select-from-map.*
  :alt: Single select from map as displayed in the ODK Collect app on an Android phone. The question text is "Select a point" and it is displayed in a small top bar. Below that is a map with several markers. One of the markers is larger. At the bottom of the screen, there is information about the selected marker. Its label is "Restaurant Délicia". Several other properties are shown including `timestamp`, `version` and `amenity`. Below the properties, there is a rounded button with a save icon and the text "Select."
  :class: device-screen-vertical
