@@ -74,7 +74,7 @@ html_css_files = [
 ]
 
 html_js_files = [
-    ('https://thirtyfive-england.getodk.org/script.js', {'defer': 'defer', 'data-site': 'PBSTMJFG'}),
+    ('https://helper.getodk.org/script.js', {'defer': 'defer', 'data-site': 'PBSTMJFG'}),
     'js/custom.js',
 ]
 
