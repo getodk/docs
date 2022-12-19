@@ -4,7 +4,13 @@ Form Styling
 Questions can include :ref:`media` such as images, sound or video.
 Additionally, labels, hints, and choices in an :doc:`xlsform`
 can all be styled using
-:ref:`markdown-in-forms`, :ref:`fonts and colors <custom-fonts-colors>`, and :ref:`emoji`.
+:ref:`markdown-in-forms`, :ref:`HTML fonts and colors <custom-fonts-colors>`, and :ref:`emoji <emoji>`.
+
+.. warning::
+
+  Collect's mobile forms support both HTML and Markdown styling.
+
+  Central's Enketo-powered web forms only support Markdown styling. Styling is not yet supported in web form choice labels.
 
 .. _media:
 
@@ -240,7 +246,7 @@ Support of HTML is further limited because:
   will affect what HTML can be rendered, and how it is rendered.
 - HTML is not supported
   by other form rendering tools in the XForms ecosystem.
-  For example, HTML elements that work in Collect may not work in Enketo.
+  For example, HTML elements that work in Collect's mobile forms will not work in Central's Enketo-powered web forms.
 
 For these reasons, we do not recommend using HTML in forms (except the ``<span>`` element :ref:`noted below <custom-fonts-colors>`).
 
