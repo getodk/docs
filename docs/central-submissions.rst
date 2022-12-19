@@ -170,9 +170,9 @@ To connect with Excel or Power BI, follow these steps.
 
 Downloading submissions with Python, R, and more
 ------------------------------------------------
-If you use `Python <https://www.python.org/>`_, we recommend `pyODK <https://github.com/getodk/pyodk>`_ for downloading submissions via an OData feed into Python. pyODK is the official Python client for Central and it makes common data analysis and workflow automation tasks simple. Get started `here <https://github.com/getodk/pyodk>`_.
+If you use `Python <https://www.python.org/>`_, we recommend `pyODK <https://github.com/getodk/pyodk>`_ for downloading submissions via an OData feed into Python. pyODK is the official Python client for Central and it makes common data analysis and workflow automation tasks simple. Get started with `pyODK's docs <https://github.com/getodk/pyodk>`_.
 
-If you use `R <https://www.r-project.org/>`_, we recommend `ruODK <https://docs.ropensci.org/ruODK/>`_ for downloading submissions via an OData feed into R. ruODK is open-source software developed and supported by community members. Get started `here <https://docs.ropensci.org/ruODK/articles/odata-api.html>`_.
+If you use `R <https://www.r-project.org/>`_, we recommend `ruODK <https://docs.ropensci.org/ruODK/>`_ for downloading submissions via an OData feed into R. ruODK is open-source software developed by ODK community members. Get started with `ruODK's docs <https://docs.ropensci.org/ruODK/articles/odata-api.html>`_.
 
 You can also access the OData feed yourself. The OData feed is an easily consumable JSON data format and offers a metadata schema, some filtering and paging options, and more. To learn more about the OData feed, click the :guilabel:`API Access` button or see the `API documentation <https://odkcentral.docs.apiary.io/#reference/odata-endpoints>`_ directly.
 
