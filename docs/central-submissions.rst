@@ -99,6 +99,11 @@ To download all submission data as :file:`.csv` tables, click on the :guilabel:`
 
 If you have any row filters applied to the submission table, those filters will be applied to your download as well. You can use this to, for example, download only submissions from a particular month, or only approved submissions.
 
+.. _central-submissions-export-options:
+
+Export options
+~~~~~~~~~~~~~~~~
+
 Once the download dialog opens, you'll be given some additional export options.
 
    .. image:: /img/central-submissions/download-modal.png
@@ -107,7 +112,7 @@ Some of the options may be disabled if they do not apply to your data, or if the
 
  - The option to split :guilabel:`select multiple` choices will create a new column in the export :file:`csv` for each unique known value in each select multiple field. These columns then indicate whether each submission checked each option.
  - The remove group names option takes out the prefix usually added to groups in the header: so for example, :code:`meta-instanceID` would become just :code:`instanceID`.
- - Finally, the option to include previously deleted fields will include every known previously deleted field in any version of the Form in the export, along with any data found for those fields.
+ - Finally, the option to include previously deleted fields will include every known previously deleted field in any version of the Form in the export, along with any data found for those fields. See :ref:`Updating Forms to a New Version <central-forms-updates>` for tips on updating a form without changing its fields.
 
 Click on one of the format options on the right to start the download.
 

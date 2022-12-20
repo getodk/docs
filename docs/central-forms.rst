@@ -176,7 +176,7 @@ Sometimes requirements change during data collection or a form design error is d
 Once a field is defined in a published Form version, the field's Data Type cannot be changed. It's always okay to add or remove fields but if any field reuses a previously existing name, it must have the same Data Type as it did before. There is one exception to this rule: you can change any field's type to `text` because all other types can be easily converted to it.
 
 .. note::
-  If a field is removed, it will not be included in exports by default. You can ask for all fields that were ever referenced in previous Form versions when you export data. Renaming a field is the same as removing a field and then adding a new one.
+  If a field is removed, it will not be included in exports by default. You can ask for all fields that were ever referenced in previous Form versions :ref:`when you export data <central-submissions-export-options>`. Renaming a field is the same as removing a field and then adding a new one.
 
   You can also put a relevance of `false()` on the field so that it's still included by default in data exports but no longer shown to data collectors.
 
