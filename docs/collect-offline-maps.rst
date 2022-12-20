@@ -45,6 +45,10 @@ MBTiles files must be manually transferred to Android devices to be available to
 
 To transfer files, you can upload them to an online service such as Google Drive, connect your device to a computer and transfer them via USB, or use :doc:`adb <collect-adb>`.
 
+.. note::
+
+  It is possible to add MBTiles files to a specific project (then the location should be :file:`/sdcard/Android/data/org.odk.collect.android/files/projects/<projectName>/layers`) or share between projects by placing them in :file:`/sdcard/Android/data/org.odk.collect.android/files/layers`.
+
 .. _selecting-offline-tilesets:
 
 Selecting offline tilesets
