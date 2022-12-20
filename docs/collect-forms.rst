@@ -141,9 +141,9 @@ This will reopen the form instance, which you are then free to edit. Form instan
 
 .. note::
 
-  - `Sent` forms will not appear in the :guilabel:`Edit Saved Forms` list.
+  - `Sent` forms (including forms that failed to send) will not appear in the :guilabel:`Edit Saved Forms` list.
 
-  - `Sent` forms, will be available for viewing in :guilabel:`View Sent Forms` list, along with the details which cannot be edited.
+  - `Sent` forms (including forms that failed to send) will be available for viewing in :guilabel:`View Sent Forms` list, along with the details which cannot be edited.
 
   - You may freely edit `Saved` and `Finalized` forms.
 
