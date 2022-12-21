@@ -235,3 +235,4 @@ Once a Form has been deleted, it will remain in the Trash for 30 days before bei
 
 After 30 days, when a Form is permanently deleted, the data will be removed from the system completely.
 
+You can create a Form with the same ``form_id`` as a Form in the Trash. If you do this, you won't be able to directly undelete the Form in the Trash with a matching ``form_id``. However, you can delete all Forms with the same ``form_id`` and then choose one to undelete. There can only be one active form with any given ``form_id`` but there can be many deleted ones.
