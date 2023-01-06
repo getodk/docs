@@ -93,8 +93,7 @@ If you absolutely must upload files over 100MB, you can change the `client_max_b
 
   .. code-block:: console
 
-    cd
-    cd central
+    cd ~/central
     docker-compose stop
     nano files/nginx/odk.conf.template
     <modify the nginx conf value for client_max_body_size>
@@ -102,33 +101,66 @@ If you absolutely must upload files over 100MB, you can change the `client_max_b
 
 .. _troubleshooting-docker-compose-down:
 
-Database disappeared after running Docker commands
---------------------------------------------------
+Database reset after running Docker command
+-------------------------------------------
 
 .. warning::
   If you are experiencing data loss, the most important thing to do first is to stop and think through your next steps (ideally with a colleague, who can review those steps). Rushing to act without a plan will most certainly make the situation worse.
 
   If you do not have a backup, do not reboot or restart the machine. Instead, take a live, full disk backup of the machine so you have a fallback. If you are using DigitalOcean, see `how to create snapshots <https://docs.digitalocean.com/products/images/snapshots/how-to/snapshot-droplets/>`_.
 
-It is possible to accidentally reset the database by running the down command with docker-compose. We are working on a way to prevent this error in the future. For now, if you have run this command and your data has disappeared, you can follow these steps to relocate the data and attach it back to your server:
 
-1. Run the following command: ``docker inspect --type container central_postgres_1 -f '{{(index .Mounts 0).Source}}'``. It should print out a long name starting with /var/lib/docker/volumes/ and ending in a long string of letters and numbers. Copy those letters and numbers and set them aside. They correspond to the location of your current (reset) database.
-2. Run ``docker volume ls``. This will tell you all the locations that docker has stored information. We need to find the location that contains your old data.
-3. For each long string of letters and numbers you just printed out, run ``file /var/lib/docker/volumes/{letters and numbers}/_data/pg_hba.conf``. So for example, ``file /var/lib/docker/volumes/cd597c21c7f0920fd46001dfd36d454/_data/pg_hba.conf``.
-4. If it tells you ``No such file or directory``, move onto the next row and try again with the ``file`` command.
-5. If it says ``ASCII text``, you have found database data. But if the string of letters and numbers you just pasted is the same as what you found in step 1, it's not the data you're looking for. Move onto the next set of letters and numbers and try again with step 3.
-6. Hopefully you found the data before you got to the end of the list. We found two sets of important letters and numbers following these steps: one in step 1 and one is step 5. Call these FIRST and SECOND, respectively.
-7. Now to restore the data, you'll want to run the following commands:
+It is possible to accidentally reset the database by running the down command with docker-compose. We are working on a way to prevent this error in the future. For now, if you have run this command and your database has reset, follow these steps to restore your data.
+
+The instructions below assume you installed Central on an Ubuntu LTS server. If you did not, or do not feel confident following the steps below, email support@getodk.org for assistance.
+
+1. Capture the location of the new (and empty) database.
 
   .. code-block:: console
 
-    cd
-    cd central
+    CENTRAL_NEW_DB=$(docker inspect --type container central_postgres_1 \
+      -f '{{(index .Mounts 0).Source}}' | cut -d / -f 6)
+
+
+2. Next, find any additional databases you have. You should get the number one (`1`) back. If you get anything else, stop and email support@getodk.org for assistance.
+
+  .. code-block:: console
+
+    find /var/lib/docker/volumes/ -name pg_hba.conf \
+      | grep -v "$CENTRAL_NEW_DB" | wc -l
+
+3. Now that you've confirmed you have only one additional database, capture the location of the old database you wish to restore.
+
+  .. code-block:: console
+
+    CENTRAL_OLD_DB=$(find /var/lib/docker/volumes/ -name pg_hba.conf \
+      | grep -v "$CENTRAL_NEW_DB" | cut -d / -f 6)
+
+4. Stop the Docker containers to prepare for restoration.
+
+  .. code-block:: console
+
+    cd ~/central
     docker-compose stop
-    pushd /var/lib/docker/volumes
-    mv FIRST postgres.data.bak
-    mv SECOND FIRST
-    popd
+
+5. Backup the new database and restore the old database.
+
+  .. code-block:: console
+
+    cd /var/lib/docker/volumes/
+    mv "$CENTRAL_NEW_DB" "$CENTRAL_NEW_DB"-backup
+    mv "$CENTRAL_OLD_DB" "$CENTRAL_NEW_DB"
+
+6. Now rebuild and restart the containers.
+
+  .. code-block:: console
+
+    cd ~/central
+    docker-compose build
     docker-compose up -d
 
-Go to your site in a browser and try to log in with an account that previously existed. If that doesn't immediately work, try doing another ``docker-compose stop`` followed by ``docker-compose up``.
+7. Go to your site in a browser and try to log in with an account that previously existed. If everything works as expected, consider deleting the backup of the new database. You can find it with the following command.
+
+  .. code-block:: console
+
+    find /var/lib/docker/volumes/ -name *-backup
