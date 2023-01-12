@@ -536,12 +536,21 @@ For example:
 ``not(contains(., 'prohibited'))``
   True if the substring ``prohibited`` does not appear in the response.
 
+``not(selected(., 'none') and count-selected(.) > 1)``
+  False if the response includes ``none`` and any other choice.
+
 .. note::
 
   Constraints are not evaluated if the response is left blank.
   To restrict empty responses, 
   :ref:`make the question required <requiring-responses>`.
-  
+
+.. tip::
+
+  For "soft" constraints or warnings, use a :ref:`note question <note-widget>` that is :ref:`relevant <relevant>` when the "soft" constraint is violated. For example, you can show a note that participant's age of 110 is allowed, but unlikely.
+
+  Notes can also be used for "hard" constraints that should be permanently displayed until they are resolved by using the technique above and setting :ref:`required <required>` to ``true()``. For example, you can show a note if a percentage total is not 100 and ask the enumerator to correct the input values.
+
 .. seealso:: :doc:`form-regex`  
   
 .. include:: incl/form-examples/regex-middle-initial.rst
