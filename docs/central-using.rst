@@ -8,7 +8,7 @@ Using ODK Central
   central-projects
   central-forms
   central-submissions
-  central-datasets
+  central-entities
   central-encryption
   central-server-audits
   central-api

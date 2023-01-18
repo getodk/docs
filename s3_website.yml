@@ -31,6 +31,7 @@ redirects:
   briefcase-guide/index.html: briefcase-intro
   briefcase-vs-aggregate/index.html: briefcase-intro
   briefcase-and-aggregate/index.html: briefcase-intro
+  central-datasets/index.html: central-entities
   collect-guide/index.html: collect-intro
   collect-integrations/index.html: launch-apps-from-collect
   projecting-collect/index.html: collect-mirror

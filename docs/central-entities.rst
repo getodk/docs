@@ -24,7 +24,7 @@ If you have this kind of workflow, you can use the registered data items in a fo
 
 Now there is a way to automate this process from within Central itself.
 
-.. _central-datasets-introduction:
+.. _central-entities-introduction:
 
 Introducing Entities
 ---------------------
@@ -33,7 +33,7 @@ First, some definitions: each item that gets managed by an ODK workflow is calle
 
 Next, a new feature. You can now teach Central that some of your incoming Submission data should create Entities in a Dataset created and managed for you by Central under whatever name you assign it——``patients``, for example. This Dataset can then be attached by that name (*(1)* below) to your follow-up Forms, exactly like you would manually attach a :doc:`CSV Dataset <form-datasets>`.
 
-  .. image:: /img/central-datasets/intro-diagram.svg
+  .. image:: /img/central-entities/intro-diagram.svg
 
 Using this functionality, you don't have to create or upload ``patients.csv`` yourself, nor update it when new patients are added. When Submissions arrive and are approved *(2)*, Central will create *(3)* new Entities that will appear in patient follow-up Forms as soon as those Form updates are received.
 
@@ -42,7 +42,7 @@ Using this functionality, you don't have to create or upload ``patients.csv`` yo
 
 If you are interested in seeing how Entities can fit into your workflow right away, we recommend following the Quick Start guide in this next section, where you will upload a tree registration Form and a tree follow-up Form we have created already and see how trees are created by one Form and appear in another.
 
-.. _central-datasets-quick-start:
+.. _central-entities-quick-start:
 
 Quick Start
 -----------
@@ -81,7 +81,7 @@ Next, let's see these Forms working together.
 
 That's it! The follow-up Form only creates normal Submissions, so you can access the data it collects like any Form.
 
-.. _central-datasets-overview:
+.. _central-entities-overview:
 
 Entities in v2022.3
 ---------------------
@@ -90,7 +90,7 @@ If you skipped the Quick Start above, we suggest you go back and give it a try. 
 
 In these early versions of Entities, you cannot create a Dataset directly through the Central website. To begin using Entities, you will need to author a Form which defines them. By uploading a Form that specifies the fields in a Submission that should be used to create a new Entity, and the name of the Dataset these new Entities should go to, you will prompt Central to create the Dataset. You'll be able to see the Dataset information Central recognized in your Form once you upload it.
 
-When you publish this Form, the new Dataset and/or new Entity Properties will be created for you automatically within the Project. You can learn more about authoring these kinds of Forms :ref:`in the sections below <central-datasets-authoring>`.
+When you publish this Form, the new Dataset and/or new Entity Properties will be created for you automatically within the Project. You can learn more about authoring these kinds of Forms :ref:`in the sections below <central-entities-authoring>`.
 
 .. note::
   In this version of Entities, a Submission must be approved before an Entity will be created from it. In future versions, you will be able to choose to create the Entity immediately when the server receives the Submission.
@@ -99,7 +99,7 @@ To see this new Dataset and download data from it, visit the :guilabel:`Datasets
 
 To use data from a Dataset in another Form, you can refer to it by ``NAME.csv`` where ``NAME`` is the name of your Dataset. When you upload that Form, you should see on the Form Attachments tab that the file has been automatically linked to the Dataset. You can always override this connection by uploading your own data file to use instead. This does not affect the Dataset itself, your file is used *instead* of the Dataset for that Form only.
 
-.. _central-datasets-testing:
+.. _central-entities-testing:
 
 Testing Forms with Entities
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -114,7 +114,7 @@ To try the end-to-end workflow across multiple Forms, we recommend creating a te
 
 You can also try a follow-up Form Draft by manually creating a CSV of sample Entities and then attaching it to your Draft, as described in :ref:`central-forms-attachments`. When you have verified the logic of the follow-up Form and are ready to publish it, you can change the link from the CSV to the desired Dataset.
 
-.. _central-datasets-authoring:
+.. _central-entities-authoring:
 
 Creating Forms to use Entities
 -------------------------------------------
@@ -123,14 +123,14 @@ Central does a lot of work to help you manage Entities, but at least for now the
 
 In the following section, we describe how to author Forms that create new Entities, also known as registration Forms. After that, we discuss Forms that use Entities, also known as follow-up Forms.
 
-.. _central-datasets-registration-forms:
+.. _central-entities-registration-forms:
 
 Build a Form that creates Entities
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You’ll start by building a Form that creates new Entities in a Dataset called ``trees``. When you publish this Form, a ``trees`` Dataset will be created for you. When a Submission to this Form is approved, an Entity will be created in the ``trees`` Dataset from data in the Submission. These types of Forms are often referred to as registration, enrollment, intake or discovery Forms.
 
-.. _central-datasets-registration-forms-structure:
+.. _central-entities-registration-forms-structure:
 
 Define the structure of the Entity-creating Form
 """"""""""""""""""""""""""""""""""""""""""""""""
@@ -149,7 +149,7 @@ Start by defining the structure of your Form in `XLSForm <https://docs.getodk.or
 
 Test your Form to make sure it works and collects the data that you need. 
 
-.. _central-datasets-registration-forms-destination:
+.. _central-entities-registration-forms-destination:
 
 Specify the Dataset the Form should save Entities to
 """"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -169,7 +169,7 @@ The label expression can use any field in the Form.
 
   trees,"concat(${circumference}, ""cm "", ${species})"
 
-.. _central-datasets-registration-forms-fields:
+.. _central-entities-registration-forms-fields:
 
 Specify the Form fields that are saved to Entities
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -192,7 +192,7 @@ If you'd like to check your work, you can compare with `this example form <https
 
 When you publish this Form on Central, the ``trees`` Dataset will be created for you.
 
-.. _central-datasets-follow-up-forms:
+.. _central-entities-follow-up-forms:
 
 Build a Form that uses Entities
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
