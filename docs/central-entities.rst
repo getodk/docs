@@ -10,7 +10,7 @@ Managing Entities in Central
    - Performance is poor when managing more than a few thousand Entities
    - The Form specification and API may change
 
-   You should also be aware that all devices will always download all registered Entities. You may not want or be able to accept this due to privacy concerns.
+   You should also be aware that currently, all devices will always download all Entities. This may not be acceptable to you due to privacy concerns.
 
    All of that said, if you have thoughts and feedback on Entities, please post on the `discussion forum <https://forum.getodk.org/>`_.
 
