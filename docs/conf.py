@@ -91,7 +91,7 @@ html_theme_options = {
         'color-announcement-background': '#f8f9fb',
         'color-announcement-text': 'black',
     },
-    'announcement': '<b>Looking to save time?</b> Try <a href="https://getodk.org/#pricing" onclick="fathom.trackGoal("SMIXEGNN", 0);">ODK Cloud</a>, the official hosting service from the creators of ODK. <a href="https://getodk.org/#pricing" onclick="fathom.trackGoal("SMIXEGNN", 0);">Get started today</a>.',
+    'announcement': '<b>Looking to save time?</b> Try <a href="https://getodk.org/#pricing" onclick="fathom.trackGoal("SMIXEGNN", 0);">ODK Cloud</a>, the official managed hosting service from the creators of ODK. <a href="https://getodk.org/#pricing" onclick="fathom.trackGoal("SMIXEGNN", 0);">Get started today</a>.',
     'sidebar_hide_name': True,
 }
 html_show_sphinx = True
