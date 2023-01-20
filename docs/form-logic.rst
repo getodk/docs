@@ -647,39 +647,6 @@ Complex example
 
 .. include:: incl/form-examples/constraint-on-selected.rst
 
-.. warning::
-
-  Calculations are evaluated regardless of their relevance.
-  
-  For example, 
-  if you have a ``calculate`` widget
-  that adds together two previous responses,
-  you cannot use ``relevant`` to skip in the case of missing values.
-  (Missing values will cause an error.)
-  
-  Instead,
-  use the `if() function`_ to check for the existence of a value,
-  and put your calculation inside the ``then`` argument.
-  
-  .. _if() function: https://getodk.github.io/xforms-spec/#fn:if
-  
-  For example,
-  when adding together fields ``a`` and ``b``:
-  
-  .. code-block:: none
-  
-    if(${a} != '' and ${b} != '', ${a} + ${b}, '')
-    
-  In context:
-  
-  .. csv-table::
-    :header: type, name, label, calculation
-    
-    integer, a, a =, 
-    integer, b, b =,
-    calculate, a_plus_b, ,"if(${a} != '' and ${b} != '', ${a} + ${b}, '')"
-    note, display_sum, a + b = ${a_plus_b},
-
 .. _groups:
 
 Groups of questions
