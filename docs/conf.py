@@ -22,7 +22,7 @@ import sphinx_video
 # -- Project information -----------------------------------------------------
 
 project = 'ODK'
-copyright = '2022 Get ODK Inc. Licensed under CC BY 4.0.'
+copyright = '2023 Get ODK Inc. Licensed under CC BY 4.0.'
 author = 'ODK'
 
 # The full version, including alpha/beta/rc tags
