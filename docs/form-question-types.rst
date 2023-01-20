@@ -669,7 +669,7 @@ Multi select questions allow selecting multiple answers. The response for the qu
   select_multiple opt_abcd,select_multi_widget,Multi select widget,"select_multiple type with no appearance, 4 text choices"
 
 .. csv-table:: choices
-  :header: list_name, name, label, media::image
+  :header: list_name, name, label, image
 
   opt_abcd,a,A
   opt_abcd,b,B
@@ -912,7 +912,7 @@ See :ref:`image-options` to learn more about including images in surveys.
   select_one abcd_icon,select_widget,Select one widget,columns,"select_one type with columns appearance, 4 text + image choices"
 
 .. csv-table:: choices
-  :header: list_name, name, label, media::image
+  :header: list_name, name, label, image
 
   abcd_icon,a,A,a.jpg
   abcd_icon,b,B,b.jpg
@@ -943,7 +943,7 @@ When the ``columns-n`` appearance is added, the app puts choices in n columns.
   select_one abcd_icon,select_widget,Select one widget,columns-2,"select_one type with columns-2 appearance, 4 text + image choices"
 
 .. csv-table:: choices
-  :header: list_name, name, label, media::image
+  :header: list_name, name, label, image
 
   abcd_icon,a,A,a.jpg
   abcd_icon,b,B,b.jpg
@@ -974,7 +974,7 @@ When the ``no-buttons`` appearance is added, the app displays choices without th
   select_one abcd_icon,select_widget,Select one widget,columns-pack no-buttons,"select_one type with columns-pack no-buttons appearance, 4 image choices"
 
 .. csv-table:: choices
-  :header: list_name, name, label, media::image
+  :header: list_name, name, label, image
 
   abcd_icon,a,A,a.jpg
   abcd_icon,b,B,b.jpg
@@ -1008,7 +1008,7 @@ If adding images, note that the images are referenced in the choices sheet, and 
  select_one likert,likert_widget,Likert Widget,likert,"select_one type with Likert appearance, 5 image choices (strongly_disagree.jpg, disagree.jpg, neutral.jpg, agree.jpg, strongly_agree.jpg)"
 
 .. csv-table:: choices
- :header: list_name, name, label, media::image
+ :header: list_name, name, label, image
 
  likert_widget,strongly_disagree,Strongly Disagree,strongly_disagree.jpg
  likert_widget,disagree,Disagree,disagree.jpg
@@ -1156,7 +1156,7 @@ Including media files in choices
 As with questions themselves, choices can include :ref:`media <media>` (image, video, or audio files):
 
 .. csv-table:: choices
-  :header: list_name, name, label, media::image, media::video, media::audio
+  :header: list_name, name, label, image, video, audio
 
   opt_media,a,A,a.jpg
   opt_media,b,B,,b.mp4

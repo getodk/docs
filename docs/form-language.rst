@@ -8,7 +8,9 @@ add columns of user-facing content with language-specific columns. All columns r
 
  - ``label``
  - ``hint``
- - ``media::*``
+ - ``image``
+ - ``audio``
+ - ``video``
  - ``constraint_message``
  - ``required_message``
 
@@ -17,7 +19,7 @@ followed by the `two letter language code <http://www.iana.org/assignments/langu
 
 - ``label::English (en)``
 - ``hint::French (fr)``
-- ``media::image::Español (es)``
+- ``image::Español (es)``
 
 .. note::
 
@@ -80,7 +82,7 @@ followed by the `two letter language code <http://www.iana.org/assignments/langu
 
   To avoid this, all columns that can be made multi-lingual need to be created
   as such for a multi-language form. For example, even if using the same image
-  for a question prompt you will need a ``media::image::*`` column for each
+  for a question prompt you will need a ``image::*`` column for each
   language. However, you may provide the same media filename for each.
 
   Blank cells in a language-specific column
@@ -90,7 +92,7 @@ followed by the `two letter language code <http://www.iana.org/assignments/langu
 .. rubric:: XLSForm --- Multiple languages with media example
 
 .. csv-table:: survey
-  :header: type, name, label::English (en), label::Español (es), media::image::Español (es), media::image::English (en)
+  :header: type, name, label::English (en), label::Español (es), image::Español (es), image::English (en)
 
   text, coffee, Do you want coffee?, ¿Quieres café?, mug_es.jpg, mug_en.jpg
 

@@ -17,8 +17,7 @@ can all be styled using
 Media
 ------
 
-You can include questions in your form that display images or that play video or
-audio files by including a ``media`` column in your `XLSForm <http://xlsform.org/#media>`_.
+Question labels may include an image, an audio file and/or a video using the ``image``, ``audio`` and/or ``video`` columns.
 Files referenced should be included :ref:`in your form's media folder <loading-form-media>`.
 
 Images
@@ -33,7 +32,7 @@ Adding an image to a question displays the image as part of the question.
 .. rubric:: XLSForm
 
 .. csv-table:: survey
-  :header: type, name, label, media::image
+  :header: type, name, label, image
 
   select_one yesnodk, coffee, Do you want coffee?, mug.jpg
 
@@ -56,7 +55,7 @@ Adding audio to a question adds a play/stop button that controls the audio clip.
 .. rubric:: XLSForm
 
 .. csv-table:: survey
-  :header: type, name, label, media::audio
+  :header: type, name, label, audio
 
   text, feel, How does this song make you feel?, amazing.mp3
 
@@ -72,7 +71,7 @@ Adding video to a question adds a button that will play the video clip full scre
 .. rubric:: XLSForm
 
 .. csv-table:: survey
-  :header: type, name, label, media::video
+  :header: type, name, label, video
 
   integer, people, How many people do you see in the video?, people.mp4
 
@@ -85,7 +84,7 @@ an ``autoplay`` column specifying either ``audio`` or ``video``.
 .. rubric:: XLSForm
 
 .. csv-table:: survey
-  :header: type, name, label, media::audio, autoplay
+  :header: type, name, label, audio, autoplay
 
   text, feel, How does this song make you feel?, amazing.mp3, audio
 
