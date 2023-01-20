@@ -1,11 +1,13 @@
 Getting Started With ODK
 =========================
 
-ODK lets you build powerful offline forms to collect the data you need wherever it is.
+ODK lets you build powerful offline forms to collect the data you need wherever it is. You can:
 
-The most common use-case is a data collector fills out a form using the ODK Collect app on a phone or tablet. When that device finds an Internet connection it automatically sends the form data.
+1. Build powerful forms that include photos, GPS locations, skip logic, calculations, external datasets, multiple languages, and more.
 
-The data gets sent to a ODK Central server where it can be acted on by a project manager. The data can be exported as a CSV or go into live-updating dashboards built with Power BI, Python, or R.
+2. Collect data offline with either the mobile app or the web app. Forms and submissions are synced when an Internet connection is found.
+
+3. Analyze with ease by downloading your data as a CSV or linking ODK to Excel, Power BI, Python, or R to create live-updating dashboards.
 
 From research scientists to M&E professionals, millions of people like you use ODK to collect their important data. Here's how to get started.
 
@@ -16,9 +18,7 @@ Get a Central server
 
 The fastest and easiest way to get a Central server is by using `ODK Cloud <https://getodk.org/#odk-cloud>`_. Cloud is official managed hosting of Central on ODK's fast, reliable, and secure infrastructure. Pricing starts at $169 USD/month.
 
-Another easy option is ODK On-Prem. On-Prem brings the benefits of managed hosting of Central to infrastructure your organization provides. Email `support\@getodk.org <mailto:support\@getodk.org?subject=ODK\ On-Prem\ pricing>`_ for pricing.
-
-If you are technical, you can also install ODK on your own infrastructure for free and rely on volunteers on our forum for support. Get started with our :ref:`self-hosting Central <self-hosting>` guide.
+If you are technical, you can also install ODK on your own infrastructure for free. Get started with our :ref:`self-hosting Central <self-hosting>` guide.
 
 You can find details on the many ways to install Central and the various tradeoffs in :doc:`Installing Central <central-install>`.
 
