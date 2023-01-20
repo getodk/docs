@@ -1,7 +1,13 @@
 Getting Started With ODK
 =========================
 
-This document walks you through the recommended workflow to get started with ODK.
+ODK lets you build powerful offline forms to collect the data you need wherever it is.
+
+The most common use-case is a data collector fills out a form using the ODK Collect app on a phone or tablet. When that device finds an Internet connection it automatically sends the form data.
+
+The data gets sent to a ODK Central server where it can be acted on by a project manager. The data can be exported as a CSV or go into live-updating dashboards built with Power BI, Python, or R.
+
+From research scientists to M&E professionals, millions of people like you use ODK to collect their important data. Here's how to get started.
 
 .. _getting-started-get-central:
 
