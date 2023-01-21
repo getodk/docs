@@ -20,7 +20,7 @@ The fastest and easiest way to get a Central server is by using `ODK Cloud <http
 
 If you are technical, you can also install ODK on your own infrastructure for free. Get started with our :ref:`self-hosting Central <self-hosting>` guide.
 
-You can find details on the many ways to install Central and the various tradeoffs in :doc:`Installing Central <central-install>`.
+You can find details on the many ways to install Central and the various trade-offs in :doc:`Installing Central <central-install>`.
 
 .. _getting-started-get-collect:
 

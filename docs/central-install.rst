@@ -5,7 +5,7 @@ Installing Central
 
 There are two ways to get access to a Central install. You can pay for official managed hosting on ODK Cloud, or if you are technical, you can self-host Central for free on your own infrastructure.
 
-The software is the same either way you choose, but there are important tradeoffs to consider.
+The software is the same either way you choose, but there are important trade-offs to consider.
 
 .. _odk-cloud:
 
