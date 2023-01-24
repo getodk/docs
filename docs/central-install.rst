@@ -3,39 +3,50 @@
 Installing Central
 ==================
 
-Central is distributed and installed using `Docker <https://en.wikipedia.org/wiki/Docker_(software)>`_. Docker makes it possible to describe exactly how Central's different components should be configured no matter where it is installed. Don't worry if you don't know about Docker yet! We have put together step-by-step instructions for our recommended solutions below.
+There are two ways to get access to a Central install. You can pay for official managed hosting on ODK Cloud, or if you are technical, you can self-host Central for free on your own infrastructure.
 
-.. warning::
-  Central is intended to be configured and administrated entirely with ``docker-compose stop`` and that is what we show in all our instructions. If you inadvertently do a ``docker-compose down``, it will look like you have lost your data. See :ref:`the troubleshooting section <troubleshooting-docker-compose-down>` to learn how to recover.
+The software is the same either way you choose, but there are important trade-offs to consider.
 
-Using ODK Cloud (recommended)
------------------------------
+.. _odk-cloud:
 
-The easiest way to get a Central server is by using `ODK Cloud <https://getodk.org/#odk-cloud>`_.
+ODK Cloud (recommended)
+-----------------------
 
-ODK Cloud provides fast Central servers with regular feature updates, automatic security patches, daily backups, uptime management, enterprise security, and guaranteed support on any issues.
+If you are looking for the fastest and easiest way to run Central, use `ODK Cloud <https://getodk.org/#pricing>`_. ODK Cloud is official managed hosting of Central on ODK's fast, reliable, and secure infrastructure.
 
-By choosing ODK Cloud, you are also directly supporting future development on ODK and helping make it better for everyone.
+* ODK Cloud is fully-managed and fully-supported, so no technical skills are required.
+* ODK Cloud has guaranteed and hassle-free levels of speed, reliability, and security.
+* ODK Cloud directly funds continued work on ODK's software, community, and ecosystem.
+
+.. _self-hosting:
+
+Self-hosting
+------------
+
+If you are technical, you can self-host Central for free. And while Central is available at no cost, please account for your infrastructure expenses and the time needed for ongoing maintenance.
+
+.. tip::
+  We offer ODK Support packages for organizations who need to self-host, but don't want their staff to take on the added cost and responsibility of keeping a Central install fast, reliable, and secure. Email `support\@getodk.org <mailto:support\@getodk.org?subject=ODK\ Self-Host\ Support\ pricing>`_ for pricing.
 
 Installing on DigitalOcean
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you want to install Central on own server but you're not sure what cloud provider to choose, we recommend DigitalOcean. Start :ref:`here <central-install-digital-ocean>`.
+If you want to self-host but you're not sure what cloud provider to choose, we recommend DigitalOcean. Start :ref:`here <central-install-digital-ocean>`.
 
 .. _central-install-custom:
 
 Installing elsewhere
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
-If you got excited when you saw mention of Docker above, and you already have your own destination and process for managing Docker deployments, you're all set to go. Central is entirely defined via **Docker Compose**, which means the ``docker-compose`` command will be all you need to manage the entire system.
+Central is entirely defined via **Docker Compose**, which means the ``docker-compose`` command will be all you need to manage the entire system.
 
 .. warning::
   We verify each version of Central on DigitalOcean and confirm that upgrades are possible. However, we do not verify them on other cloud providers and generally can't provide free support for installations that deviate from the DigitalOcean instructions. You may find other community members able to help `on the forum <https://forum.getodk.org/>`_.
 
 No matter where you plan to install Central, we recommend reviewing the :doc:`instructions we've provided <central-install-digital-ocean>` for DigitalOcean starting from :ref:`this section <central-install-digital-ocean-build>`. In particular, you'll need to update your submodules after you clone the repository, and configure your :file:`.env` file for your installation.
 
-Installing on Amazon EC2
-~~~~~~~~~~~~~~~~~~~~~~~~
+Installing on AWS
+"""""""""""""""""
 
 Amazon Web Services (AWS) is one of the many other options for installing Central. It's a good idea to read through the :doc:`instructions we've provided <central-install-digital-ocean>` for DigitalOcean, as many of the steps remain the same or similar.
 
@@ -54,7 +65,7 @@ After installing Docker and Docker Compose you can follow our DigitalOcean instr
 Finally, :ref:`configure an e-mail service <central-install-digital-ocean-custom-mail>` such as `Amazon SES <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-smtp.html>`_ because Amazon restricts emails sent from EC2.
 
 Installing on Windows
-~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""
 We strongly recommend using Linux, preferably the latest Ubuntu Server LTS, as the host operating system (natively or in a virtual machine) for your Central install. 
 
 If you wish to use Windows as the host, it's a good idea to read through the :doc:`instructions we've provided <central-install-digital-ocean>` for DigitalOcean, as many of the steps remain the same or similar.

@@ -409,6 +409,7 @@ todos
 toolbar
 totales
 trackpad
+trade-offs
 transactional
 Transifex
 tres
@@ -436,6 +437,7 @@ uptime
 uri
 url
 USB
+USD
 username
 Username
 usernames
