@@ -9,16 +9,16 @@ ODK lets you build powerful offline forms to collect the data you need wherever 
 
 3. Analyze with ease by downloading your data as a CSV or linking ODK to Excel, Power BI, Python, or R to create live-updating dashboards.
 
-From research scientists to M&E professionals, millions of people like you use ODK to collect their important data. Here's how to get started.
+From research scientists to field teams to M&E professionals, millions of people just like you use ODK to collect their important data. Here's how to get started.
 
 .. _getting-started-get-central:
 
 Get a Central server
 --------------------
 
-The fastest and easiest way to get a Central server is by using `ODK Cloud <https://getodk.org/#odk-cloud>`_. Cloud is official managed hosting of Central on ODK's fast, reliable, and secure infrastructure. Pricing starts at $169 USD/month.
+The fastest and easiest way to get a Central server is by using `ODK Cloud <https://getodk.org/#odk-cloud>`_. ODK Cloud is official managed hosting service of Central on ODK's fast, reliable, and secure infrastructure.
 
-If you are technical, you can also install ODK on your own infrastructure for free. Get started with our :ref:`self-hosting Central <self-hosting>` guide.
+If you are technical, you can also install Central on your own infrastructure for free. Get started with our :ref:`self-hosting Central <self-hosting>` guide.
 
 You can find details on the many ways to install Central and the various trade-offs in :doc:`Installing Central <central-install>`.
 
