@@ -34,6 +34,8 @@ Installing ODK-X Suitcase
 
   2. ODK-X Suitcase requires no installation and is ready to use.
 
+.. _suitcase-use-app:
+
 Using ODK-X Suitcase
 ------------------------------
 
@@ -57,25 +59,39 @@ ODK-X :guilabel:`Cloud Endpoint Address`, the :guilabel:`App ID`, and your :guil
 Otherwise, please specify an ODK-X Cloud Endpoint username and password with sufficient permissions.
 
   .. note:: 
-    By default :guilabel:`App ID = default`, check the second paragraph of :ref:`ODK-X Data Management Applications <build-app-data-mgt-apps>` to see more details.
+    By default :guilabel:`App ID = default`,to use your own App ID uncheck the option to use default App ID, check the second paragraph of :ref:`ODK-X Data Management Applications <build-app-data-mgt-apps>` to see more details.
 
-There are two tabs at the top of the graphical interface:
+Suitcase remembers the last username and server url entered. You can check the :guilabel:`save password` option to keep yourself logged in when you open the application again. To log out of the application you can use the logout button in a menu on the top left of the application.
+
+Screenshot of the login page:
+
+.. image:: /img/suitcase-intro/login_screen.png
+   :width: 600
+
+There are four tabs at the top of the graphical interface:
   - :guilabel:`Download`, to download existing data from the server
-  - :guilabel:`Upload`, to upload new data to the server. The :guilabel:`Upload` tab also includes an option to :guilabel:`Reset` the server.
-
-  .. Warning::
-    
-      Note that there is no warning or confirmation, if you press the :guilabel:`Reset` button it will reset the server.
+  - :guilabel:`Upload`, to upload new data to the server.
+  - :guilabel:`Update`, to update existing data on the server.
+  - :guilabel:`Clear`, to delete tables from the server. This tab also has the option to reset the entire server.
 
   .. _suitcase-gui-download:
 
 Downloading from the server
-  When downloading, you will need to specify the *table_id*.
+  When downloading, you will need to select the table_id to download from the dropdown. The dropdown will contain all the table_ids present in the cloud endpoint server.
+  If you don’t see a table_id in the dropdown which is  present in the cloud endpoint server click the :guilabel:`Refresh Tables List Metadata` button.
+  After selecting a table_id in the dropdown you can click on the :guilabel:`Add` button to add the table_id in the list of selected table_ids for download.
+  This way you can add multiple table ids for download at once. You can use the :guilabel:`Add All` button to add all the table_ids at once.
+  If you want to remove a table_id from the selected list, you can click on the :guilabel:`Remove` button on the right side of the table_id you want to remove.
   By default ODK-X Suitcase creates a :file:`Download` directory where the ODK-X Suitcase jar file is located
   and saves the data to a CSV file under :file:`Download/app_id/table_id/link_unformatted.csv`
   that has all of the data for that table downloaded from the server.
   To specify a different directory for ODK-X Suitcase to store downloaded data in,
   modify the :guilabel:`Save to` field or click on the :guilabel:`...` button.
+
+  Screenshot of the :guilabel:`Download` tab:
+
+  .. image:: /img/suitcase-intro/download_tab.png
+   :width: 600
 
   ODK-X Suitcase provides three options to customize the CSV file download.
 
@@ -90,31 +106,58 @@ Downloading from the server
 
     - Extra metadata columns
 
-        - When this option is selected, two more columns will be included in the CSV, :th:`create_user` and :th:`last_update_user`.
+        - When this option is selected, two more columns will be included in the CSV, :th:`create_user` and :th:`last_update_user`.      
 
   .. _suitcase-gui-upload:
 
 Uploading to the server
   When uploading, you will need to specify the *Version* which by default is *2*. By default ODK-X Suitcase assumes the upload field to be
   a :file:`Upload` directory where the ODK-X Suitcase jar file is located to change it click on the :guilabel:`...` button.
-  
+
   To Upload files to ODK-X Cloud Endpoint, you need to lay out the files and folders in the correct file structure 
   which is described in details in the :doc:`config-file-structure`.
-  
+
   Your upload directory should look similar to the *config* directory and contain
   subdirectories *assets* and/or *tables* as shown in the :doc:`config-file-structure`.
   An example for the same can be found `here <https://github.com/odk-x/app-designer/tree/master/app/config>`_. 
-  
+
   Then modify the :guilabel:`Upload` field to that file path by clicking on the :guilabel:`...` button, and then press :guilabel:`Upload`.
 
-  .. note::
+  Screenshot of :guilabel:`Upload` tab:
 
-      Suitcase GUI supports only Uploading of files and not Updating or Modifying, check out :ref:`Suitcase CLI  <suitcase-cli-update>`
+  .. image:: /img/suitcase-intro/upload_tab.png
+   :width: 600
 
   .. _suitcase-gui-reset:
-  
+
 Resetting the server
-  The :guilabel:`Reset` button can be found under the :guilabel:`Upload` tab. Clicking it will reset the the server without any warning or confirmation.
+  The :guilabel:`Reset` button can be found under the :guilabel:`Clear` tab. Clicking :guilabel:`Reset` will reset the the server after a warning and a confirmation.
+
+  Screenshot of :guilabel:`Clear` tab:
+
+  .. image:: /img/suitcase-intro/clear_tab.png
+   :width: 600
+
+  .. _suitcase-gui-update:
+
+Updating data in the server
+  The :guilabel:`Update` button can be found under the :guilabel:`Update` tab. Select the table_id to update from the dropdown. Open the file chooser by clicking on the '...' button and select the csv to be used for update.
+  To update the data on the server you need a correctly formatted CSV – follow the instructions for :ref:`Preparing your CSV for upload <suitcase-csv>`.
+
+  Screenshot of :guilabel:`Update` tab:
+
+  .. image:: /img/suitcase-intro/update_tab.png
+   :width: 600
+
+  .. _suitcase-gui-delete:
+
+Deleting from the server
+  The :guilabel:`Delete` button can be found under the :guilabel:`Clear` tab. Select the table_id to delete from the dropdown and click on delete. Selected Table ID will be deleted from the server after a warning and a confirmation.
+
+  Screenshot of :guilabel:`Clear` tab:
+
+  .. image:: /img/suitcase-intro/clear_tab.png
+   :width: 600
 
 .. _suitcase-using-cli:
 
@@ -163,6 +206,7 @@ CLI commands
     -updateLogPath <arg>        Specify a custom path to create update log
                                 file. Default directory is ./Update
     -upload                     Upload one file or all files in directory
+    -delete <arg>               Delete the specified table in server
     -uploadOp <arg>             Specify the uploadop to either FILE or
                                 RESET_APP.This option must be used with
                                 upload option.RESET_APP is the default option
@@ -210,6 +254,15 @@ Updating the server
     .. code-block:: console
 
       $ java -jar 'path/to/jar.jar' -update -cloudEndpointUrl 'https://your-endpoint-server.com' -appId 'default' -tableId 'table_id' -username 'user' -password 'pass' -path '~/Desktop/correctly_formatted.csv' -updateLogPath '~/Desktop/log.txt' -dataVersion 2
+
+.. _suitcase-cli-delete:
+
+Delete a table from the server
+  - To delete table *table_id* from app *default* as a user with username *user* and password *pass*.
+
+    .. code-block:: console
+
+      $ java -jar 'path/to/jar.jar' -delete -cloudEndpointUrl 'https://your-endpoint-server.com' -appId 'default' -tableId 'table_id' -username 'user' -password 'pass' -dataVersion 2
 
 .. _suitcase-cli-table:
 
