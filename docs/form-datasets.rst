@@ -105,6 +105,12 @@ GeoJSON files referenced in forms can have any number of ``features`` and any nu
 
 All properties are displayed by :ref:`select from map <select-from-map>` questions and can be :ref:`referenced by any part of the form <referencing-values-in-datasets>`.
 
+.. note::
+  There are two properties with a special meaning that can be used for styling markers (specifying its color and the displayed symbol):
+
+  - **marker-color** - it should hold a valid hex color in the long or the short version (e.g. ``#aaccee`` or ``#ace``).
+  - **marker-symbol** - it should hold a single character (e.g. ``A`` or ``7``).
+
 A feature's ``geometry`` can be accessed as ``geometry`` and is provided in :ref:`the ODK format <location-widgets>`. Given the GeoJSON file and the form definition above, if the user selected "HR Giger Museum", the value of ``${museum}`` would be ``"fs87b"``. 
 
 The expression ``instance('museums')/root/item[id=${museum}]/geometry`` would evaluate to ``46.5841618 7.0801379 0 0`` which is a point in the ODK format.
