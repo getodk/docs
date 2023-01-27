@@ -173,6 +173,8 @@ To connect with Excel or Power BI, follow these steps.
 
   If you are using Excel 2016, install `Microsoft Power Query for Excel 6 <https://www.microsoft.com/en-us/download/details.aspx?id=39379>`_ and go to the :guilabel:`Data` menu, then :guilabel:`New Query`, and then :guilabel:`From Other Sources` to find the :guilabel:`From OData Feed` item.
 
+  Using macOS? Become a `365 Insider <https://insider.office.com/en-us/join/mac>`_ and enable the Beta channel to get OData support in Excel.
+
 Downloading submissions with Python, R, and more
 ------------------------------------------------
 If you use `Python <https://www.python.org/>`_, we recommend `pyODK <https://github.com/getodk/pyodk>`_ for downloading submissions via an OData feed into Python. pyODK is the official Python client for Central and it makes common data analysis and workflow automation tasks simple. Get started with `pyODK's docs <https://github.com/getodk/pyodk>`_.
