@@ -167,7 +167,7 @@ To connect with Excel or Power BI, follow these steps.
 4. The :guilabel:`Navigator` window now appear. Select :guilabel:`Submissions`, then :guilabel:`Load`.
 
 .. tip::
-  See `Import external data into Excel <https://support.office.com/en-us/article/connect-to-an-odata-feed-power-query-4441a94d-9392-488a-a6a9-739b6d2ad500>`_ and `OData feeds in Power BI <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`_ for more information about using Power BI or Excel for OData feeds.
+  See `Create an Excel dashboard using OData <https://learn.microsoft.com/en-us/sharepoint/administration/create-an-excel-services-dashboard-using-an-odata-data-feed>`_ and `OData feeds in Power BI <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`_ for more information about using Power BI or Excel for OData feeds.
 
   If you are having trouble getting Power BI or Excel to connect, and especially if you see error messages about permissions or authentication, `clear your cached permissions <https://docs.microsoft.com/en-us/power-query/connectorauthentication#change-the-authentication-method>`_ and try again.
 
