@@ -1162,6 +1162,10 @@ As with questions themselves, choices can include :ref:`media <media>` (image, v
   opt_media,b,B,,b.mp4
   opt_media,c,C,,,c.mp3
 
+.. seealso:: 
+
+  For images, you can :ref:`specify a big image <big-image>` using the ``big-image`` column. This is not compatible with ``no-buttons``.
+
 .. note::
 
   ``select_one`` and ``select_multiple`` questions using the ``no-buttons`` appearances will not

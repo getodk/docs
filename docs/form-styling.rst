@@ -17,13 +17,15 @@ can all be styled using
 Media
 ------
 
-Question labels may include an image, an audio file and/or a video using the ``image``, ``audio`` and/or ``video`` columns.
+A question label may include an image, an audio file and/or a video using the ``image``, ``audio`` and/or ``video`` columns.
 Files referenced should be included :ref:`in your form's media folder <loading-form-media>`.
+
+.. seealso:: Media can be :doc:`translated <form-language>` or :ref:`used with select choices <image-options>`.
 
 Images
 ~~~~~~~~
 
-Adding an image to a question displays the image as part of the question.
+Use the ``image`` column to specify an image in addition to or instead of a text ``label``.
 
 .. image:: /img/form-styling/media-image.*
   :alt: A single select widget in Collect. The label text is "Do you want coffee?" The label text is accompanied by a picture of a mug of coffee. The options are "yes", "no", and "I don't know".
@@ -42,6 +44,20 @@ Adding an image to a question displays the image as part of the question.
   yesnodk, y, yes
   yesnodk, n, no
   yesnodk, dk, I don't know
+
+.. _big-image:
+
+Linking to big images for zooming and panning
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+If your image is large or you would like to provide an alternative image with more detail, you can specify a filename in the ``big-image`` column. The image from the ``image`` column will be displayed inline with the question and tapping on it will show the image from the ``big-image`` column in a full-screen view.
+
+.. rubric:: XLSForm example using ``big-image``
+
+.. csv-table:: survey
+  :header: type, name, label, image, big-image
+
+  note, instructions, Go to the spot marked by an X, map-small.jpg, map-big.jpg
 
 Audio
 ~~~~~~~~
