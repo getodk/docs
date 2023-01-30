@@ -16,3 +16,5 @@ Below are resources for learning more about ODK. Email support@getodk.org if you
 #. `ODK overview and the data collector's experience <https://www.youtube.com/watch?v=rVb8voaN4Fg&t=453s>`_ (video). Shows the power and flexibility of ODK forms and the mobile app user experience. Updated Dec 2020.
 
 #. `ODK's real-time data feed <https://www.youtube.com/watch?v=DI0106lbW10>`_ (video). Shows how to use ODK's data feed to build live-updating dashboards in Power BI. Updated Oct 2020.
+
+#. `Humanitarian Data Solutions youtube channel <https://www.youtube.com/@HumanitarianDataSolutions>`_. A YouTube channel that contains a lot of videos about using ODK tools and building forms.
