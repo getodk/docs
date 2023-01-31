@@ -3,52 +3,90 @@
 Upgrading Central
 =================
 
-We release new versions of Central regularly. You do not have to upgrade to the latest version immediately, but we generally recommend that you do so to get access to the newest features, bug fixes, and security updates.
+We release new versions of Central regularly. We generally recommend that you upgrade as soon as you can to get access to the newest features, bug fixes, and security updates. It is not generally possible to downgrade and we do not guarantee that versions prior to the latest release can still be installed.
 
-.. admonition:: Note
+Start by reviewing upgrade notes for all versions between your current version and the one you are upgrading to.
 
-  To see your version number, click on the question mark icon in the upper right section of your Central menu bar, then click :guilabel:`Version`. If you don't see the question mark, you can also see the version number by adding ``version.txt`` to the root URL (e.g., `demo.getodk.cloud/version.txt <https://demo.getodk.cloud/version.txt>`_).
+* Central v1.5: no special instructions.
+* :ref:`Central v1.4 <central-upgrade-1.4>`: see notes if you have tens of thousands of submissions.
+* :ref:`Central v1.3 <central-upgrade-1.3>`: see notes to ensure you have the correct version of ``docker-compose``.
+* :ref:`Central v1.2 <central-upgrade-1.2>`: see notes to fix errors with ``git pull``.
+* :ref:`Central v0.9 <central-upgrade-0.9>`: see notes to configure firewall.
 
-To perform an upgrade, you'll first need to get to the software. You'll need to log into your server's command line prompt again, like you did when you first set up the server. If you used our :doc:`DigitalOcean installation steps <central-install-digital-ocean>` but can't quite remember how to do this, we suggest reviewing the section :ref:`central-install-digital-ocean-build` as a reminder, or if you can't remember your password to start at the top of that section to reset your password.
+.. note::
+  To see your version, click on the question mark icon in the upper right section of your Central menu bar, then click :guilabel:`Version`. If you don't see the question mark, you can see the version by adding ``version.txt`` to the root URL (e.g., `demo.getodk.cloud/version.txt <https://demo.getodk.cloud/version.txt>`_).
 
-Once you are logged into your server, navigate back to the project folder (``cd central``). Then, get the latest version of the infrastructure: ``git pull``.
+.. _central-upgrade-steps:
 
-.. admonition:: Note
-
-  If you have made local changes to the files, you may have to start with ``git stash``, then run ``git stash pop`` after you perform the ``pull``. If you aren't sure, just run ``git pull`` anyway and it will tell you.
+Upgrade Steps
+--------------
 
 .. warning::
+  Before starting:
 
-  If you are upgrading to Central v1.4, see :ref:`Upgrading to Central v1.4 <central-upgrade-1.4>` if you have tens of thousands of submissions.
+  #. Back up your server
+  #. Make sure you have some time available in case something goes wrong (we recommend at least 2 hours). You may want to announce a maintenance window.
+  #. Review upgrade notes for all versions between your current version and the version you are upgrading to.
 
-  If you are upgrading to Central v1.3, see :ref:`Upgrading to Central v1.3 <central-upgrade-1.3>` to ensure you have the correct version of docker-compose.
+#. Log into your server. If you used our :doc:`DigitalOcean installation steps <central-install-digital-ocean>`, we suggest reviewing the section :ref:`central-install-digital-ocean-build` as a reminder, or if you can't remember your password to start at the top of that section to reset your password.
 
-  If you are upgrading to Central v1.2, see :ref:`Upgrading to Central v1.2 <central-upgrade-1.2>` to learn how to resolve any error messages using ``git pull``.
+#. Get the latest infrastructure version.
 
+.. code-block:: console
 
-Now, get the latest client and server: ``git submodule update -i``. Then, build your server from the latest code you just fetched: ``docker-compose build``.
+  cd central
+  git pull
 
-.. admonition:: Note
+.. note::
 
-  If you run into problems with this step, try stopping the Central software (``docker-compose stop``) and retry ``docker-compose build`` after it has shut down the Central website.
+  If you have made local changes to the files, you may have to start with ``git stash``, then run ``git stash pop`` after you perform the ``pull``. If you aren't sure, run ``git pull`` and it will tell you.
 
-Next, you need to do a little bit of maintenance. Run ``docker prune``. If it thinks ``prune`` is not a docker command, run ``docker image prune`` instead. You'll be asked to confirm the removal of all dangling images. Agree by typing the letter ``y`` and pressing ``Enter``.
+3. Get the latest client and server.
 
-Finally, restart the running server to pick up the changes: ``docker-compose stop`` and ``docker-compose up -d``.
+  .. code-block:: console
+
+    git submodule update -i
+
+4. Build from the latest code you just fetched.
+
+  .. code-block:: console
+
+    docker-compose build
+
+.. note::
+
+  If you run into problems with this step, try stopping Central (``docker-compose stop``) and then retry ``docker-compose build``.
+
+5. Perform maintenance
+
+  .. code-block:: console
+
+    docker prune
+
+You'll be asked to confirm the removal of all dangling images. Agree by typing the letter ``y`` and pressing ``Enter``.
+
+.. note::
+  If it thinks ``prune`` is not a docker command, run ``docker image prune`` instead.
+
+6. Restart the server
+
+  .. code-block:: console
+
+    docker-compose up -d
 
 .. _central-upgrade-1.4:
 
 Upgrading to Central v1.4
--------------------------
+--------------------------
 
 There are several time-consuming migrations in v1.4. If you have tens of thousands of submissions, consider temporarily increasing server performance and :ref:`memory allocation <central-install-custom-memory>` before upgrading.
 
 .. _central-upgrade-1.3:
 
 Upgrading to Central v1.3
--------------------------
+--------------------------
 
-Before upgrading, run ``docker-compose --version`` to confirm you have docker-compose v1.28.3 or later. If you don't, upgrade with these commands from the `Docker's documentation <https://docs.docker.com/compose/install/#install-compose-on-linux-systems>`_.
+Before upgrading, run ``docker-compose --version`` to confirm you have docker-compose v1.28.3 or later. If you don't, upgrade with these commands from `Docker's documentation <https://docs.docker.com/compose/install/#install-compose-on-linux-systems>`_.
 
 .. code-block:: console
 
@@ -59,7 +97,7 @@ Before upgrading, run ``docker-compose --version`` to confirm you have docker-co
 .. _central-upgrade-1.2:
 
 Upgrading to Central v1.2
--------------------------
+--------------------------
 
 In v1.2, we added some advanced features to Central's server configuration. These features will not be meaningful to most users. However, because we would like to make this change and further improvements in the future, we have modified the template ``.env`` configuration file you set up during installation.
 
@@ -86,7 +124,7 @@ If ``git status`` still shows errors, copy and paste your entire console session
 .. _central-upgrade-0.9:
 
 Upgrading to Central v0.9
--------------------------
+--------------------------
 
 Particularly if you are installed on DigitalOcean, you will need to modify the system firewall for Enketo features in Central to work correctly.
 
@@ -99,3 +137,5 @@ The quickest way to do this is to run ``ufw disable`` while logged into your ser
   If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be really difficult to do correctly, so we don't recommend most people try. Another option is to use an upstream network firewall.
 
   The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. In particular, if you can successfully ``curl`` your Central website over HTTPS on its public domain name from within the Enketo container, all Enketo features should work correctly.
+
+
