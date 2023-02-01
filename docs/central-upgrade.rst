@@ -7,12 +7,12 @@ We release new versions of Central regularly. We generally recommend that you up
 
 Start by reviewing upgrade notes for all versions between your current version and the one you are upgrading to.
 
-* Central v1.5, v2022.3: no special instructions.
-* :ref:`Central v1.4 <central-upgrade-1.4>`: see notes if you have tens of thousands of submissions.
-* :ref:`Central v1.3 <central-upgrade-1.3>`: see notes to ensure you have the correct version of ``docker-compose``.
-* :ref:`Central v1.2 <central-upgrade-1.2>`: see notes to fix errors with ``git pull``.
-* Central v1.0, v1.1: no special instructions.
-* :ref:`Central v0.9 <central-upgrade-0.9>`: see notes to configure firewall.
+* Central v1.5, v2022.3: no upgrade notes
+* :ref:`Central v1.4 <central-upgrade-1.4>`: optionally add memory if you have tens of thousands of submissions
+* :ref:`Central v1.3 <central-upgrade-1.3>`: ensure you have the correct version of ``docker-compose``
+* :ref:`Central v1.2 <central-upgrade-1.2>`: fix errors with ``git pull``
+* Central v1.0, v1.1: no upgrade notes
+* :ref:`Central v0.9 <central-upgrade-0.9>`: configure firewall
 .. note::
   To see your version, click on the question mark icon in the upper right section of your Central menu bar, then click :guilabel:`Version`. If you don't see the question mark, you can see the version by adding ``version.txt`` to the root URL (e.g., `demo.getodk.cloud/version.txt <https://demo.getodk.cloud/version.txt>`_).
 
