@@ -7,7 +7,9 @@ We release new versions of Central regularly. We recommend that you upgrade as s
 
 Start by reviewing upgrade notes for all versions between your current version and the one you are upgrading to. You can skip upgrades and directly install the latest version as long as you make sure to follow all relevant upgrade instructions.
 
-* Central v1.5, v2022.3: no upgrade notes
+* :ref:`Central v2022.3 <central-upgrade-2022.3>`: update your NGINX configuration if you have disabled or customized Sentry
+* :ref:`Central v1.5.3 <central-upgrade-1.5.3>`: fix errors with ``git pull`` if you have disabled or customized Sentry
+* Central v1.5.0: no upgrade notes
 * :ref:`Central v1.4 <central-upgrade-1.4>`: optionally add memory if you have tens of thousands of submissions
 * :ref:`Central v1.3 <central-upgrade-1.3>`: ensure you have the correct version of ``docker-compose``
 * :ref:`Central v1.2 <central-upgrade-1.2>`: fix errors with ``git pull``
@@ -73,6 +75,46 @@ You'll be asked to confirm the removal of all dangling images. Agree by typing t
   .. code-block:: console
 
     docker-compose up -d
+
+.. _central-upgrade-2022.3:
+
+Upgrading to Central v2022.3
+-----------------------------
+
+In v2022.3, we added Content Security Policy reporting. If you have disabled or customized Sentry, then you will need to modify ``files/nginx/odk.conf.template``. See our documentation about :ref:`configuring Sentry <central-install-digital-ocean-sentry>` to learn more about the specific changes that you need to make.
+
+.. _central-upgrade-1.5.3:
+
+Upgrading to Central v1.5.3
+----------------------------
+
+In v1.5.3, we updated Central's Sentry configuration to match a change to the Sentry API. If you have not changed your :ref:`Sentry configuration <central-install-digital-ocean-sentry>`, then you do not need to do anything special.
+
+If you have changed your Sentry configuration, that means that you have modifed ``files/service/config.json.template``. If you run the ``git pull`` command, then you will see an error message like the following:
+
+.. code-block:: console
+
+ error: Your local changes to the following files would be overwritten by merge:
+         files/service/config.json.template
+ Please commit your changes or stash them before you merge.
+
+Don't worry, nothing bad happens if you see this. To get around this error, run this set of commands instead of ``git pull``:
+
+.. code-block:: console
+
+ mv files/service/config.json.template config-tmp
+ git pull
+ mv config-tmp files/service/config.json.template
+
+If you see an error message when you run this set of commands, copy and paste your entire console session into a `forum thread <https://forum.getodk.org/c/support/6>`_ and someone will help you out.
+
+If you are using your own Sentry instance, then you must complete one additional step. You will need to modify ``files/service/config.json.template``. Below the line that contains ``"sentry": {``, insert a new line that looks like this:
+
+.. code-block:: console
+
+ "orgSubdomain": "SENTRY_ORGANIZATION_SUBDOMAIN",
+
+Replace ``SENTRY_ORGANIZATION_SUBDOMAIN`` with your `Sentry organization subdomain <https://forum.sentry.io/t/organization-subdomains-in-dsns/9360>`_.
 
 .. _central-upgrade-1.4:
 
