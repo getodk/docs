@@ -3,9 +3,9 @@
 Upgrading Central
 =================
 
-We release new versions of Central regularly. We generally recommend that you upgrade as soon as you can to get access to the newest features, bug fixes, and security updates. It is not generally possible to downgrade and we do not guarantee that versions prior to the latest release can still be installed.
+We release new versions of Central regularly. We recommend that you upgrade as soon as you can to get access to the newest features, bug fixes, and security updates. It is not possible to downgrade and we do not guarantee that versions prior to the latest release can still be installed.
 
-Start by reviewing upgrade notes for all versions between your current version and the one you are upgrading to.
+Start by reviewing upgrade notes for all versions between your current version and the one you are upgrading to. You can skip upgrades and directly install the latest version as long as you make sure to follow all relevant upgrade instructions.
 
 * Central v1.5, v2022.3: no upgrade notes
 * :ref:`Central v1.4 <central-upgrade-1.4>`: optionally add memory if you have tens of thousands of submissions
