@@ -15,6 +15,7 @@ Start by reviewing upgrade notes for all versions between your current version a
 * :ref:`Central v1.2 <central-upgrade-1.2>`: fix errors with ``git pull``
 * Central v1.0, v1.1: no upgrade notes
 * :ref:`Central v0.9 <central-upgrade-0.9>`: configure firewall
+
 .. note::
   To see your version, click on the question mark icon in the upper right section of your Central menu bar, then click :guilabel:`Version`. If you don't see the question mark, you can see the version by adding ``version.txt`` to the root URL (e.g., `demo.getodk.cloud/version.txt <https://demo.getodk.cloud/version.txt>`_).
 
@@ -90,7 +91,7 @@ Upgrading to Central v1.5.3
 
 In v1.5.3, we updated Central's Sentry configuration to match a change to the Sentry API. If you have not changed your :ref:`Sentry configuration <central-install-digital-ocean-sentry>`, then you do not need to do anything special.
 
-If you have changed your Sentry configuration, that means that you have modifed ``files/service/config.json.template``. If you run the ``git pull`` command, then you will see an error message like the following:
+If you have changed your Sentry configuration, that means that you have modified ``files/service/config.json.template``. If you run the ``git pull`` command, then you will see an error message like the following:
 
 .. code-block:: console
 
