@@ -33,7 +33,6 @@ Here are some of the major features we support today:
    - Connectable to analysis and dashboard applications like Excel, Power BI, or R over OData
    - Server-managed datasets for registration/follow-up workflows
  - Integrated checklist-based help system
- - Optional encrypted off-site data backups to Google Drive
  - Clean and modern REST API for integration and extensibility
  - High performance on low-cost hardware or cloud providers
  - ODK Briefcase-compatible data output
