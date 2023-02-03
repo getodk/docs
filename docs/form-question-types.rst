@@ -1164,7 +1164,7 @@ As with questions themselves, choices can include :ref:`media <media>` (image, v
 
 .. seealso:: 
 
-  For images, you can :ref:`specify a big image <big-image>` using the ``big-image`` column. This is not compatible with ``no-buttons``.
+  For images, you can :ref:`specify a bigger image for panning and zooming <big-image>` using the ``big-image`` column. This is not compatible with the ``no-buttons`` appearance.
 
 .. note::
 

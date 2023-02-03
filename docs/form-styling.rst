@@ -47,17 +47,17 @@ Use the ``image`` column to specify an image in addition to or instead of a text
 
 .. _big-image:
 
-Linking to big images for zooming and panning
-"""""""""""""""""""""""""""""""""""""""""""""""
+Bigger images for panning and zooming
+"""""""""""""""""""""""""""""""""""""""
 
-If your image is large or you would like to provide an alternative image with more detail, you can specify a filename in the ``big-image`` column. The image from the ``image`` column will be displayed inline with the question and tapping on it will show the image from the ``big-image`` column in a full-screen view.
+If your image is large or you would like to provide an alternative image with more detail, you can specify a filename in the ``big-image`` column. The image from the ``image`` column will be displayed inline with the question and tapping on it will show the image from the ``big-image`` column in a full-screen view that allows panning and zooming.
 
 .. rubric:: XLSForm example using ``big-image``
 
 .. csv-table:: survey
   :header: type, name, label, image, big-image
 
-  note, instructions, Go to the spot marked by an X, map-small.jpg, map-big.jpg
+  note, instructions, Go to the spot marked by an X. Tap the map to make it bigger., map-small.jpg, map-big.jpg
 
 Audio
 ~~~~~~~~
