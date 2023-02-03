@@ -8,8 +8,7 @@ We release new versions of Central regularly. We recommend that you upgrade as s
 Start by reviewing upgrade notes for all versions between your current version and the one you are upgrading to. You can skip upgrades and directly install the latest version as long as you make sure to follow all relevant upgrade instructions.
 
 * :ref:`Central v2022.3 <central-upgrade-2022.3>`: update your NGINX configuration if you have disabled or customized Sentry
-* :ref:`Central v1.5.3 <central-upgrade-1.5.3>`: fix errors with ``git pull`` if you have disabled or customized Sentry
-* Central v1.5.0: no upgrade notes
+* :ref:`Central v1.5 <central-upgrade-1.5>`: fix errors with ``git pull`` if you have disabled or customized Sentry
 * :ref:`Central v1.4 <central-upgrade-1.4>`: optionally add memory if you have tens of thousands of submissions
 * :ref:`Central v1.3 <central-upgrade-1.3>`: ensure you have the correct version of ``docker-compose``
 * :ref:`Central v1.2 <central-upgrade-1.2>`: fix errors with ``git pull``
@@ -27,7 +26,7 @@ Upgrade Steps
 .. warning::
   Before starting:
 
-  #. Back up your server
+  #. :doc:`Back up your server <central-backup>`
   #. Make sure you have some time available in case something goes wrong (we recommend at least 2 hours). You may want to announce a maintenance window.
   #. Review upgrade notes for all versions between your current version and the version you are upgrading to.
 
@@ -84,9 +83,9 @@ Upgrading to Central v2022.3
 
 In v2022.3, we added Content Security Policy reporting. If you have disabled or customized Sentry, then you will need to modify ``files/nginx/odk.conf.template``. See our documentation about :ref:`configuring Sentry <central-install-digital-ocean-sentry>` to learn more about the specific changes that you need to make.
 
-.. _central-upgrade-1.5.3:
+.. _central-upgrade-1.5:
 
-Upgrading to Central v1.5.3
+Upgrading to Central v1.5
 ----------------------------
 
 In v1.5.3, we updated Central's Sentry configuration to match a change to the Sentry API. If you have not changed your :ref:`Sentry configuration <central-install-digital-ocean-sentry>`, then you do not need to do anything special.
