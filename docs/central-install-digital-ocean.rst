@@ -438,7 +438,7 @@ If on the other hand you wish to use your own Sentry instance, take these steps:
 
 1. Create a free account on `Sentry <https://sentry.io>`_, and create a new ``nodejs`` project.
 2. The new project will generate a ``DSN`` of the format ``https://SENTRY_KEY@SENTRY_SUBDOMAIN.ingest.sentry.io/SENTRY_PROJECT``.
-3. In ``files/service/config.json.template``, replace ``SENTRY_KEY`` and ``SENTRY_PROJECT`` with the values from step 2. 
+3. In ``files/service/config.json.template``, replace ``SENTRY_SUBDOMAIN``, ``SENTRY_KEY`` and ``SENTRY_PROJECT`` with the values from step 2.
 
   .. code-block:: console
 
