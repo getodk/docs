@@ -20,7 +20,7 @@ For a quick start, read :doc:`getting-started`. In most cases, users of ODK:
 This requires:
 
 - :doc:`Installing Collect on an Android device <collect-install>`
-- :doc:`Installing Central on a server <central-setup>`
+- :doc:`Installing Central on a server <central-install>`
 
 While this is the recommended workflow, it is not the only way to do things. ODK is a very flexible set of tools, and organizations will find their own best practices for adopting it.
 
@@ -60,7 +60,8 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   :caption: Central
 
   central-intro
-  central-setup
+  central-install
+  central-manage
   central-using
   central-troubleshooting
 

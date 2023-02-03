@@ -22,7 +22,7 @@ Configure server from QR code
 
 .. seealso::
 
-  - :doc:`central-setup`
+  - :doc:`central-install`
   - :ref:`Central App Users <central-users-app-overview>`
   - :doc:`collect-import-export`
 

@@ -1,11 +1,18 @@
 .. _central-install:
 
-Installing Central
-==================
+Installing ODK Central
+=======================
 
 There are two ways to get access to a Central install. You can pay for official managed hosting on ODK Cloud, or if you are technical, you can self-host Central for free on your own infrastructure.
 
 The software is the same either way you choose, but there are important trade-offs to consider.
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+
+  Getting ODK Cloud <https://getodk.org#pricing>
+  central-install-digital-ocean
 
 .. _odk-cloud:
 

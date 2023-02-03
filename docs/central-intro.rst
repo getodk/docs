@@ -79,6 +79,7 @@ We have done some work to benchmark Central to verify these claims, and produce 
 Learn more about ODK Central
 ----------------------------
 
- - :doc:`central-setup`
+ - :doc:`central-install`
+ - :doc:`central-manage`
  - :doc:`central-using`
 
