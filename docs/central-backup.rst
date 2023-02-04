@@ -7,7 +7,7 @@ Having a data backup strategy is a critical part of running a web service like O
 
 If you are an experienced system administrator, you may want to set up your own backups of the PostgreSQL database that contains all of Central's data. One strategy for doing this is to :ref:`configure a separate database server <central-install-digital-ocean-custom-db>` and back up that database server.
 
-You will additionally need to have a backup of Enketo data to be able to restore existing Web Form links. The strict minimums required to do this are Enketo's Redis store and the keys generated in the Enketo configuration. **In general, we recommend making a full system backup.**
+You will additionally need to have a backup of Enketo data to be able to restore existing Web Form links. At a minimum, you must back up Enketo's Redis store and the keys generated in the Enketo configuration. **In general, we recommend making a full system backup.**
 
 If you don't already have a full system backup in place and don't want to set up your own database backup, Central provides an API endpoint to download a backup of the database.
 
@@ -22,9 +22,9 @@ Direct Backups via API
 
   If you only use Web Forms for previews or for making Submissions directly from Central, Direct Backups are sufficient. You can regenerate previews by uploading the same Form with a new :ref:`Form version <central-forms-updates>`.
 
-The Central API offers an HTTP endpoint to perform an immediate backup of the database and download the result to your computer. We call this type of backup a Direct Backup and recommend it only for specific use cases. For each Direct Backup, we extract all your data (including user accounts, Forms, and Submissions), then encrypt it with an optional passphrase. The encrypted backup will be returned in the HTTP response. As detailed above, the backup will not include Web Form configurations.
+The Central API offers an HTTP endpoint to perform an immediate backup of the database and download the result to your computer. We call this type of backup a Direct Backup. For each Direct Backup, we extract all your data (including user accounts, Forms, and Submissions), then encrypt it with an optional passphrase. The encrypted backup will be returned in the HTTP response. As detailed above, the backup will not include Web Form configurations.
 
-Performing a Direct Backup can take some time, and it is normal for data to download quite slowly for many minutes before it gets faster. Take care in using this feature particularly if you have a lot of data and traffic, as performing a backup while a lot of data is being saved to the database can cause a lot of slowdown.
+Performing a Direct Backup can take some time, and it is normal for data to download quite slowly for many minutes before it gets faster. Take care in using this feature particularly if you have a lot of data and traffic, as performing a backup while a lot of data is being saved to the database can slow the process down significantly.
 
 For more information, please see the `API documentation <https://odkcentral.docs.apiary.io/#reference/system-endpoints/direct-backup>`_.
 
