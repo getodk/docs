@@ -10,6 +10,7 @@ Start by reviewing upgrade notes for all versions between your current version a
 Upgrade notes
 -------------
 
+* :ref:`Central v2023.2 <central-upgrade-2023.2>`: plan ahead for even longer than usual downtime during upgrade
 * :ref:`Central v2023.1 <central-upgrade-2023.1>`: plan ahead for longer than usual downtime during upgrade
 * :ref:`Central v2022.3 <central-upgrade-2022.3>`: update your NGINX configuration if you have disabled or customized Sentry
 * :ref:`Central v1.5 <central-upgrade-1.5>`: fix errors with ``git pull`` if you have disabled or customized Sentry
@@ -24,8 +25,15 @@ Upgrade notes
 
 .. _central-upgrade-steps:
 
-Upgrade steps
--------------
+Upgrading to Central v2023.2
+-----------------------------
+
+.. warning::
+
+  This upgrade is more complicated than normal.  Please :ref:`see the guide below for full instructions <central-upgrade-2023.2>`.
+
+Upgrade steps (older versions)
+------------------------------
 
 .. warning::
   Before starting:
@@ -80,7 +88,82 @@ You'll be asked to confirm the removal of all dangling images. Agree by typing t
 
     docker-compose up -d
 
+.. _central-upgrade-2023.2:
+
+Upgrading to Central v2023.2
+-----------------------------
+
+.. warning::
+  This upgrade may take more time and disk space than previous updates, as it includes upgrading the PostgreSQL database version.
+
+.. warning::
+  Before starting:
+
+  #. :doc:`Back up your server <central-backup>`
+  #. Make sure you have some time available in case something goes wrong (we recommend at least 2 hours). You may want to announce a maintenance window.
+  #. Review upgrade notes for all versions between your current version and the version you are upgrading to.
+
+#. Log into your server. If you used our :doc:`DigitalOcean installation steps <central-install-digital-ocean>`, we suggest reviewing the section :ref:`central-install-digital-ocean-build` as a reminder, or if you can't remember your password to start at the top of that section to reset your password.
+
+#. Get the latest infrastructure version.
+
+.. code-block:: console
+
+  cd central
+  git pull
+
+.. note::
+
+  If you have made local changes to the files, you may have to start with ``git stash``, then run ``git stash pop`` after you perform the ``pull``. If you aren't sure, run ``git pull`` and it will tell you.
+
+3. Get the latest client and server.
+
+  .. code-block:: console
+
+    git submodule update -i
+
 .. _central-upgrade-2023.1:
+
+4. Check that you have enough disk space available.
+
+  .. code-block:: console
+
+    sudo ./files/check-available-space
+
+5. Create a disclaimer file to prove that you're reading these instructions.
+
+  .. code-block:: console
+
+    touch allow-postgres14-upgrade
+
+6. Stop ODK Central services.
+
+  .. code-block:: console
+
+    docker-compose stop
+
+7. Build from the latest code you just fetched.
+
+  .. code-block:: console
+
+    docker-compose build
+
+8. Start the database upgrade.
+
+  .. code-block:: console
+
+    docker-compose up postgres
+
+9. Check the output of the previous command to see if there were any errors.
+
+10. Check the upgrade success marker file has been created at ``./postgres14-upgrade/upgrade-completed-ok``.
+
+11. Restart the server
+
+  .. code-block:: console
+
+    docker-compose up -d
+
 
 Upgrading to Central v2023.1
 -----------------------------
