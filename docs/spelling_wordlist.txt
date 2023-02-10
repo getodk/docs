@@ -271,6 +271,7 @@ NaN
 natively
 nav
 navigations
+nbsp
 nc
 nd
 nginx
