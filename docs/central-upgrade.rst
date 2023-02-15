@@ -26,14 +26,27 @@ Upgrade notes
 .. _central-upgrade-steps:
 
 Upgrading to Central v2023.2
------------------------------
+----------------------------
+
+.. admonition:: Using a custom database server?
+
+  Please upgrade your PostgreSQL to v14 as appropriate, and follow the :ref:`standard upgrade instructions <central-upgrade-steps-standard>`.
 
 .. warning::
 
-  This upgrade is more complicated than normal.  Please :ref:`see the guide below for full instructions <central-upgrade-2023.2>`.
+  This upgrade is more complicated than normal, as it upgrades PostgreSQL from v9.6 to v14.
 
-Upgrade steps (older versions)
-------------------------------
+
+  Please :ref:`see the guide below for full instructions <central-upgrade-2023.2>`.
+
+.. _central-upgrade-steps-standard:
+
+Upgrade steps (standard)
+------------------------
+
+.. admonition:: Upgrading to ``v2023.2``?
+
+  Please check :ref:`Upgrading to Central v2023.2 <central-upgrade-steps>`.
 
 .. warning::
   Before starting:
