@@ -156,7 +156,11 @@ Upgrading to Central v2023.2
 
 9. Check the output of the previous command to see if there were any errors.
 
-10. Check the upgrade success marker file has been created at ``./postgres14-upgrade/upgrade-completed-ok``.
+10. Check the upgrade success marker file has been created
+
+  .. code-block:: console
+
+    ls ./postgres14-upgrade/upgrade-completed-ok
 
 11. Restart the server
 
