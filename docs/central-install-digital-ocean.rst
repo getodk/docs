@@ -320,7 +320,7 @@ Using a Custom Database Server
 ------------------------------
 
 .. warning::
-  Using a custom database server, especially one that is not local to your local network, may result in poor performance. We strongly recommend using the Postgres v9.6 server that is bundled with Central.
+  Using a custom database server, especially one that is not local to your local network, may result in poor performance. We strongly recommend using the Postgres v14 server that is bundled with Central.
 
 Central ships with a PostgreSQL database server. To use your own custom database server:
 
