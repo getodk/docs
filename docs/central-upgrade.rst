@@ -128,7 +128,7 @@ Upgrading to Central v2023.2
 
   .. code-block:: console
 
-    sudo ./files/check-available-space
+    sudo ./files/postgres/check-available-space
 
 5. Create a disclaimer file to prove that you're reading these instructions.
 
