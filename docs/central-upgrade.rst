@@ -59,7 +59,7 @@ Upgrade steps (standard)
 
 #. Get the latest infrastructure version.
 
-.. code-block:: console
+.. code-block:: bash
 
   cd central
   git pull
@@ -70,15 +70,15 @@ Upgrade steps (standard)
 
 3. Get the latest client and server.
 
-  .. code-block:: console
+.. code-block:: bash
 
-    git submodule update -i
+  git submodule update -i
 
 4. Build from the latest code you just fetched.
 
-  .. code-block:: console
+.. code-block:: bash
 
-    docker-compose build
+  docker-compose build
 
 .. note::
 
@@ -86,9 +86,9 @@ Upgrade steps (standard)
 
 5. Perform maintenance
 
-  .. code-block:: console
+.. code-block:: bash
 
-    docker prune
+  docker prune
 
 You'll be asked to confirm the removal of all dangling images. Agree by typing the letter ``y`` and pressing ``Enter``.
 
@@ -97,9 +97,9 @@ You'll be asked to confirm the removal of all dangling images. Agree by typing t
 
 6. Restart the server
 
-  .. code-block:: console
+.. code-block:: bash
 
-    docker-compose up -d
+  docker-compose up -d
 
 .. _central-upgrade-2023.2:
 
@@ -120,7 +120,7 @@ Upgrading to Central v2023.2
 
 #. Get the latest infrastructure version.
 
-.. code-block:: console
+.. code-block:: bash
 
   cd central
   git pull
@@ -131,55 +131,55 @@ Upgrading to Central v2023.2
 
 3. Get the latest client and server.
 
-  .. code-block:: console
+.. code-block:: bash
 
-    git submodule update -i
+  git submodule update -i
 
 .. _central-upgrade-2023.1:
 
 4. Check that you have enough disk space available.
 
-  .. code-block:: console
+.. code-block:: bash
 
-    sudo ./files/postgres/check-available-space
+  sudo ./files/postgres/check-available-space
 
 5. Create a disclaimer file to prove that you're reading these instructions.
 
-  .. code-block:: console
+.. code-block:: bash
 
-    touch allow-postgres14-upgrade
+  touch allow-postgres14-upgrade
 
 6. Stop ODK Central services.
 
-  .. code-block:: console
+.. code-block:: bash
 
-    docker-compose stop
+  docker-compose stop
 
 7. Build from the latest code you just fetched.
 
-  .. code-block:: console
+.. code-block:: bash
 
-    docker-compose build
+  docker-compose build
 
 8. Start the database upgrade.
 
-  .. code-block:: console
+.. code-block:: bash
 
-    docker-compose up postgres
+  docker-compose up postgres
 
 9. Check the output of the previous command to see if there were any errors.
 
 10. Check the upgrade success marker file has been created
 
-  .. code-block:: console
+.. code-block:: bash
 
-    ls ./postgres14-upgrade/upgrade-completed-ok
+  ls ./postgres14-upgrade/upgrade-completed-ok
 
 11. Restart the server
 
-  .. code-block:: console
+.. code-block:: bash
 
-    docker-compose up -d
+  docker-compose up -d
 
 
 Upgrading to Central v2023.1
