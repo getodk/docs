@@ -137,7 +137,7 @@ If you see ``"host": "postgres"``, then you are using the default database. If t
 
        .. code-block:: bash
 
-          sudo ./files/postgres/check-available-space
+          sudo ./files/postgres14/upgrade/check-available-space
 
        If you don't have enough space, stop here and resume when you have increased the disk space available. You may achieve this by clearing out data you don't need (e.g. logs) or by increasing the total disk space available (e.g. by :ref:`adding external storage <central-install-digital-ocean-external-storage>`).
 
@@ -145,7 +145,7 @@ If you see ``"host": "postgres"``, then you are using the default database. If t
 
        .. code-block:: bash
 
-          touch allow-postgres14-upgrade
+          touch ./files/allow-postgres14-upgrade
 
     #. Stop ODK Central services.
 
