@@ -838,17 +838,23 @@ Sometimes it only makes sense to collect information represented by the question
 Naming repeats to help with navigation
 --------------------------------------
 
-The form location summary at the top of a form question shows the labels of all groups and repeats that the question is in and the index of any repeats. For example, in a repeat collecting data about different people, the location summary for the second Person is ``Person > 2``. This is also shown in the :ref:`jump menu <jumping>`.
+The form location summary at the top of a form question shows the labels of all groups and repeats that the question is in and the index of any repeats.
+
+For example, in a repeat collecting data about different people, the location summary for the second Person is ``Person > 2``.
 
 .. image:: /img/form-logic/repeat-summary.*
   :alt: The Collect app. It shows a question with text "Last name." The form is titled "Household." At the top of the question, there is a location summary of "Person > 2"
   :class: device-screen-vertical
   
+The location summary is also shown in the :ref:`jump menu <jumping>`.
+
 .. image:: /img/form-logic/repeat-jump.*
   :alt: The Collect app. It shows the hierarchy view for a household form. There are two repeats shown: "Person > 1" and "Person > 2"
   :class: device-screen-vertical
 
-In many cases, the repeat index (2 above) is enough information to give context to data collectors. However, in workflows where data collectors will need to jump between repeat instances, it can help to name those repeat instances based on the entity that they represent. For example, using each person's name in the example above will be more helpful than just the index. To do this, add a group directly in the repeat and use one or more identifying questions in the label.
+In many cases, the repeat index (2 in the above example) is enough information to give context to data collectors. However, in workflows where data collectors will need to jump between repeat instances, it can help to name those repeat instances based on the entity that they represent. 
+
+For example, using each person's name in the example above will be more helpful than just the index. To do this, add a group directly in the repeat and use one or more identifying questions in the label.
 
 .. csv-table:: survey
   :header: type, name, label 
@@ -860,12 +866,14 @@ In many cases, the repeat index (2 above) is enough information to give context 
   end_group, ,
   end_repeat, ,
 
-The repeat labels will be shown along with the index in the location summary and the jump menu:
+The repeat labels will be shown along with the index in the location summary.
 
 .. image:: /img/form-logic/named-repeat-summary.*
   :alt: The Collect app. It shows a question with text "Last name." The form is titled "Household." At the top of the question, there is a location summary of "Person > 1 > Kwame Cho."
   :class: device-screen-vertical
   
+The labels are also shown in the jump menu.
+
 .. image:: /img/form-logic/named-repeat-jump.*
   :alt: The Collect app. It shows the hierarchy view for a household form. There are two repeats shown: "1. Kwame Cho" and "2. Ursula Stephanopoulos."
   :class: device-screen-vertical
