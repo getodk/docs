@@ -204,27 +204,29 @@ If you see ``"host": "postgres"``, then you are using the default database. If t
 
     #. Upgrade your database server. We recommend using the latest point release of PostgreSQL 14 that is available.
 
-    #. See what changes you have made to your ``docker-compose.yml`` file:
+    #. If you are comfortable resolving merge conflicts, follow the :ref:`standard upgrade instructions <central-upgrade-steps>` and make sure to keep the same ``command`` for the ``service`` that was previously customized (see :ref:`configuring a custom database server <central-install-digital-ocean-custom-db>`). If you don't know what merge conflicts or are not comfortable resolving them, we recommend the following process:
 
-       .. code-block:: bash
+       #. See what changes you have made to your ``docker-compose.yml`` file:
 
-            git diff docker-compose.yml
+          .. code-block:: bash
 
-       We recommend taking notes on the sections that have changed. You may want to refer to the sections on :ref:`advanced configuration options <central-install-digital-ocean-advanced>` and note which instructions you followed. Type ``q`` to exit when you are done.
+              git diff docker-compose.yml
 
-    #. Make a backup of your ``docker-compose.yml`` file:
+          We recommend taking notes on the sections that have changed. You may want to refer to the sections on :ref:`advanced configuration options <central-install-digital-ocean-advanced>` and note which instructions you followed. Type ``q`` to exit when you are done.
 
-       .. code-block:: bash
+       #. Make a backup of your ``docker-compose.yml`` file:
 
-            mv docker-compose.yml docker-compose.yml.bak
+          .. code-block:: bash
 
-    #. Follow the :ref:`standard upgrade instructions <central-upgrade-steps>`. Before bringing the server back up, re-apply the changes you had made to ``docker-compose.yml``. You may find it helpful to reference the backup file you made. At minimum, you will need to follow the instructions for :ref:`configuring a custom database server <central-install-digital-ocean-custom-db>` that apply to ``docker-compose.yml``.
+              mv docker-compose.yml docker-compose.yml.bak
 
-    #. After you verify that everything works as intended, remove your backup file:
+       #. Follow the :ref:`standard upgrade instructions <central-upgrade-steps>`. Before bringing the server back up, re-apply the changes you had made to ``docker-compose.yml``. You may find it helpful to reference the backup file you made. At minimum, you will need to follow the instructions for :ref:`configuring a custom database server <central-install-digital-ocean-custom-db>` that apply to ``docker-compose.yml``.
 
-       .. code-block:: bash
+       #. After you verify that everything works as intended, remove your backup file:
 
-            rm docker-compose.yml.bak
+          .. code-block:: bash
+
+              rm docker-compose.yml.bak
 
 .. _central-upgrade-2023.1:
 
