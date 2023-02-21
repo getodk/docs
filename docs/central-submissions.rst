@@ -82,7 +82,7 @@ You can limit the rows that appear by the submitter, the date, and the review st
 Any filter you apply to the submission table also applies to the download button. To work with your data, you can download it from Central. Right now, you can do this in one of two ways:
 
 1. The **CSV Download** option will get you a :file:`.zip` file containing one or more :file:`.csv` tables, along with any multimedia submitted to the form. This is a good option if you already have custom tools you wish to use, or you want to import it into an offline analysis tool like SPSS or Stata.
-2. The **OData connector** allows you connect a live representation of the data to OData-capable tools like Microsoft Excel, Microsoft Power BI, Tableau, SAP, and others. This option has some advantages: the data is transferred more richly to maintain more data format information, and the feed is always live, meaning any analysis or reports you perform in your tool over an OData connection can be easily refreshed as more submissions come in.
+2. The **OData connector** allows you connect a live representation of the data to OData-capable tools like Microsoft Power BI, Microsoft Excel, Tableau, and others. This option has some advantages: the data is transferred more richly to maintain more data format information, and the feed is always live, meaning any analysis or reports you perform in your tool over an OData connection can be easily refreshed as more submissions come in.
 
 When the rows of the table have been filtered in any way, that filter also applies to the downloads. This makes it possible to download partial sections of your data at once.
 
@@ -148,13 +148,13 @@ Once you click on it, you should see this popup appear:
 
    .. image:: /img/central-submissions/odata.png
 
-To connect with Excel or Power BI, follow these steps.
+To connect with Power BI or Excel, follow these steps.
 
 1. Start the Get OData feed action.
 
-  * In Excel, select the :guilabel:`Data` menu, then :guilabel:`Get Data`, :guilabel:`From Other Sources`, then :guilabel:`From OData Feed`.
-
   * In Power BI, select the :guilabel:`Home` menu, then :guilabel:`Get Data`, then :guilabel:`OData feed`.
+
+  * In Excel, select the :guilabel:`Data` menu, then :guilabel:`Get Data`, :guilabel:`From Other Sources`, then :guilabel:`From OData Feed`.
 
 2. Leave the feed type as :guilabel:`Basic` (not Advanced), then copy and paste in the link from Central and then select :guilabel:`OK`.
 
@@ -167,7 +167,7 @@ To connect with Excel or Power BI, follow these steps.
 4. The :guilabel:`Navigator` window now appear. Select :guilabel:`Submissions`, then :guilabel:`Load`.
 
 .. tip::
-  See `Create an Excel dashboard using OData <https://learn.microsoft.com/en-us/sharepoint/administration/create-an-excel-services-dashboard-using-an-odata-data-feed>`_ and `OData feeds in Power BI <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`_ for more information about using Power BI or Excel for OData feeds.
+  `OData feeds in Power BI <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`_ and `Power Query in Excel <https://support.microsoft.com/en-us/office/about-power-query-in-excel-7104fbee-9e62-4cb9-a02e-5bfb1a6c536a>`_ for more information about using Power BI or Excel for OData feeds.
 
   If you are having trouble getting Power BI or Excel to connect, and especially if you see error messages about permissions or authentication, `clear your cached permissions <https://docs.microsoft.com/en-us/power-query/connectorauthentication#change-the-authentication-method>`_ and try again.
 
@@ -177,9 +177,9 @@ To connect with Excel or Power BI, follow these steps.
 
 Downloading submissions with Python, R, and more
 ------------------------------------------------
-If you use `Python <https://www.python.org/>`_, we recommend `pyODK <https://github.com/getodk/pyodk>`_ for downloading submissions via an OData feed into Python. pyODK is the official Python client for Central and it makes common data analysis and workflow automation tasks simple. Get started with `pyODK's docs <https://github.com/getodk/pyodk>`_.
+If you use `Python <https://www.python.org/>`_, we recommend `pyODK <https://github.com/getodk/pyodk>`_ for downloading submissions via an OData feed into Python. pyODK is the official Python client for Central and it makes common data analysis and workflow automation tasks simple.
 
-If you use `R <https://www.r-project.org/>`_, we recommend `ruODK <https://docs.ropensci.org/ruODK/>`_ for downloading submissions via an OData feed into R. ruODK is open-source software developed by ODK community members. Get started with `ruODK's docs <https://docs.ropensci.org/ruODK/articles/odata-api.html>`_.
+If you use `R <https://www.r-project.org/>`_, we recommend `ruODK <https://docs.ropensci.org/ruODK/>`_ for downloading submissions via an OData feed into R. ruODK is developed and supported by ODK community members.
 
 You can also access the OData feed yourself. The OData feed is an easily consumable JSON data format and offers a metadata schema, some filtering and paging options, and more. To learn more about the OData feed, click the :guilabel:`API Access` button or see the `API documentation <https://odkcentral.docs.apiary.io/#reference/odata-endpoints>`_ directly.
 
