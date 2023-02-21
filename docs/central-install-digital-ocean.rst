@@ -208,7 +208,7 @@ Whether or not you choose to add swap, we recommend :ref:`monitoring memory usag
 
 To add swap, log into your server so you have a console prompt, and run these commands, adapted from `this article <https://help.ubuntu.com/community/SwapFaq#How_do_I_add_a_swap_file.3F>`_:
 
-.. code-block:: console
+.. code-block:: bash
 
  fallocate -l 1G /swap
  dd if=/dev/zero of=/swap bs=1k count=1024k
@@ -218,13 +218,13 @@ To add swap, log into your server so you have a console prompt, and run these co
 
 Run ``nano /etc/sysctl.conf`` and add the following to the end of the file to ensure that swap is only used when the droplet is almost out of memory.
 
-.. code-block:: console
+.. code-block:: bash
 
  vm.swappiness=10
 
 Finally, run ``nano /etc/fstab`` and add the following to the end of the file to ensure that the swap file is permanently available.
 
-.. code-block:: console
+.. code-block:: bash
 
  /swap swap swap defaults 0 0
 
@@ -239,9 +239,9 @@ Forms with many large media attachments can fill up your droplet's storage space
 
 2. `Move the Docker data directory <https://www.guguweb.com/2019/02/07/how-to-move-docker-data-directory-to-another-location-on-ubuntu/>`_ to the new volume.
 
-     1. To find the location of your new volume, run ``df -h``. The mount location will look like ``/mnt/volume_nyc1_01``. 
-     2. Then create a ``docker`` folder at that location with ``sudo mkdir /mnt/volume_nyc1_01/docker``. 
-     3. ``/mnt/volume_nyc1_01/docker`` will be the ``/path/to/your/docker`` you use.
+   1. To find the location of your new volume, run ``df -h``. The mount location will look like ``/mnt/volume_nyc1_01``. 
+   2. Then create a ``docker`` folder at that location with ``sudo mkdir /mnt/volume_nyc1_01/docker``. 
+   3. ``/mnt/volume_nyc1_01/docker`` will be the ``/path/to/your/docker`` you use.
 
 .. _central-install-custom-memory:
 
@@ -256,7 +256,7 @@ If you can't increase physical memory, you can alternatively :ref:`add swap <cen
 
 Then, in your ``docker-compose.yml`` file, add a ``NODE_OPTIONS`` variable with a ``--max_old_space_size`` flag set to the new value (e.g., 3.5GB or 3584 MB). Be sure to choose a value that leaves enough memory for your server's operating system and any other applications that may be running.
 
-.. code-block:: console
+.. code-block:: bash
 
   service:
     ...
@@ -296,21 +296,21 @@ Central ships with a basic EXIM server bundled to forward mail out to the intern
 1. Ensure you have an SMTP relay server visible to your Central server network host.
 2. Edit the file ``files/service/config.json.template`` to reflect your network hostname, the TCP port, and authentication details. The ``secure`` flag is for TLS and should be set to ``true`` if the port is 465 and ``false`` for other ports. If no authentication is required, remove the ``auth`` section.
 
-  .. code-block:: console
+   .. code-block:: json
 
-   "email": {
-     "serviceAccount": "my-replyto-email",
-     "transport": "smtp",
-     "transportOpts": {
-       "host": "smtp.example.com",
-       "port": 587,
-       "secure": false,
-       "auth": {
-         "user": "my-smtp-user",
-         "pass": "my-smtp-password"
+     "email": {
+       "serviceAccount": "my-replyto-email",
+       "transport": "smtp",
+       "transportOpts": {
+         "host": "smtp.example.com",
+         "port": 587,
+         "secure": false,
+         "auth": {
+           "user": "my-smtp-user",
+           "pass": "my-smtp-password"
+         }
        }
      }
-   }
 
 3. Build and run: ``docker-compose build service``, ``docker-compose stop service``, ``docker-compose up -d service``.
 
@@ -327,33 +327,33 @@ Central ships with a PostgreSQL database server. To use your own custom database
 1. Ensure you have a PostgreSQL database server visible to your Central server network host.
 2. Ensure your database has ``UTF8`` encoding by running the following command on the database.
 
-  .. code-block:: console
+   .. code-block:: postgres
 
-    SHOW SERVER_ENCODING;
+      SHOW SERVER_ENCODING;
 
 3. Ensure ``CITEXT`` and ``pg_trgm`` extensions exist by running the following commands on the database.
 
-  .. code-block:: console
+   .. code-block:: postgres
 
-    CREATE EXTENSION IF NOT EXISTS CITEXT;
-    CREATE EXTENSION IF NOT EXISTS pg_trgm;
+      CREATE EXTENSION IF NOT EXISTS CITEXT;
+      CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
 4. Edit the file ``files/service/config.json.template`` to reflect your database host, table, and authentication details.
 
-  .. code-block:: console
+   .. code-block:: json
 
-    "database": {
-      "host": "my-db-host",
-      "user": "my-db-user",
-      "password": "my-db-password",
-      "database": "my-db-table"
-    },
+      "database": {
+        "host": "my-db-host",
+        "user": "my-db-user",
+        "password": "my-db-password",
+        "database": "my-db-table"
+      },
 
 4. Edit the file ``docker-compose.yml`` to update the command for the ``service`` container.
 
-  .. code-block:: console
+   .. code-block:: bash
 
-    command: [ "./wait-for-it.sh", "my-db-host:my-db-port", "--", "./start-odk.sh" ]
+      command: [ "./wait-for-it.sh", "my-db-host:my-db-port", "--", "./start-odk.sh" ]
 
 5. Build and run: ``docker-compose build service``, ``docker-compose stop service``, ``docker-compose up -d service``.
 
@@ -370,13 +370,13 @@ DKIM is a security trust protocol which is used to help verify mail server ident
 1. Ensure that your server's name in DigitalOcean `matches your full domain name <https://www.digitalocean.com/community/questions/how-do-i-setup-a-ptr-record?comment=30810>`_, and that the `hostname does as well <https://askubuntu.com/questions/938786/how-to-permanently-change-host-name/938791#938791>`_. If you had to make changes for this step, restart the server to ensure they take effect.
 2. There can be in some cases a placeholder folder that you may have to delete first. If you run this command and no file was deleted, proceed to step 3.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      rmdir ~/central/files/dkim/rsa.private
 
 3. Now, you'll need to generate a cryptographic keypair and enable the DKIM configuration. Run these commands:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      cd ~/central/files/dkim
      openssl genrsa -out rsa.private 1024
@@ -390,7 +390,7 @@ DKIM is a security trust protocol which is used to help verify mail server ident
 
 5. Finally, build and run to configure EXIM to use the cryptographic keys you generated:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      cd ~/central
      docker-compose build mail
@@ -425,12 +425,12 @@ By default, we enable `Sentry error logging <https://sentry.io>`_ in Central's s
 2. Build and run: ``docker-compose build service``, ``docker-compose stop service``, ``docker-compose up -d service``.
 3. Edit the file ``files/nginx/odk.conf.template`` and replace the ``csp-report`` lines, starting with ``location /csp-report {`` through the next two lines until you remove the matching ``}`` with:
 
-  .. code-block:: console
+   .. code-block:: bash
 
-    location /csp-report {
-      return 200 'CSP report discarded.';
-      add_header Content-Type text/plain;
-    }
+      location /csp-report {
+        return 200 'CSP report discarded.';
+        add_header Content-Type text/plain;
+      }
 
 4. Build and run: ``docker-compose build nginx``, ``docker-compose stop nginx``, ``docker-compose up -d nginx``.
 
@@ -440,22 +440,22 @@ If on the other hand you wish to use your own Sentry instance, take these steps:
 2. The new project will generate a ``DSN`` of the format ``https://SENTRY_KEY@SENTRY_SUBDOMAIN.ingest.sentry.io/SENTRY_PROJECT``.
 3. In ``files/service/config.json.template``, replace ``SENTRY_SUBDOMAIN``, ``SENTRY_KEY`` and ``SENTRY_PROJECT`` with the values from step 2.
 
-  .. code-block:: console
+   .. code-block:: json
 
-   {
-     "default": {
-       "database": {...},
-       "email": {...},
-       "env": {...},
-       "external": {
-         "sentry": {
-           "orgSubdomain": "SENTRY_SUBDOMAIN",
-           "key": "SENTRY_KEY",
-           "project": "SENTRY_PROJECT"
+       {
+         "default": {
+           "database": {...},
+           "email": {...},
+           "env": {...},
+           "external": {
+             "sentry": {
+               "orgSubdomain": "SENTRY_SUBDOMAIN",
+               "key": "SENTRY_KEY",
+               "project": "SENTRY_PROJECT"
+             }
+           }
          }
        }
-     }
-   }
 
 The error logs sent to Sentry (if enabled) are also being written to ``/var/log/odk/stderr.log`` in the running service container.
 
