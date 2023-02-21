@@ -10,7 +10,7 @@ Start by reviewing upgrade notes for all versions between your current version a
 Upgrade notes
 -------------
 
-* :ref:`Central v2023.2 <central-upgrade-2023.2>`: upgrade the database to Postgres 14
+* :ref:`Central v2023.2 <central-upgrade-2023.2>`: upgrade the database to PostgreSQL 14
 * :ref:`Central v2023.1 <central-upgrade-2023.1>`: plan ahead for longer than usual downtime during upgrade
 * :ref:`Central v2022.3 <central-upgrade-2022.3>`: update your NGINX configuration if you have disabled or customized Sentry
 * :ref:`Central v1.5 <central-upgrade-1.5>`: fix errors with ``git pull`` if you have disabled or customized Sentry
@@ -25,33 +25,13 @@ Upgrade notes
 
 .. _central-upgrade-steps:
 
-Upgrading to Central v2023.2
-----------------------------
-
-.. admonition:: Using a custom database server?
-
-  Please upgrade your PostgreSQL to v14 as appropriate, and follow the :ref:`standard upgrade instructions <central-upgrade-steps-standard>`.
-
-.. warning::
-
-  This upgrade is more complicated than normal, as it upgrades PostgreSQL from v9.6 to v14.
-
-
-  Please :ref:`see the guide below for full instructions <central-upgrade-2023.2>`.
-
-.. _central-upgrade-steps-standard:
-
-Upgrade steps (standard)
-------------------------
-
-.. admonition:: Upgrading to ``v2023.2``?
-
-  Please check :ref:`Upgrading to Central v2023.2 <central-upgrade-steps>`.
+Upgrade steps
+----------------
 
 .. warning::
   Before starting:
 
-  #. :doc:`Back up your server <central-backup>`
+  #. :doc:`Back up your server <central-backup>`.
   #. Make sure you have some time available in case something goes wrong (we recommend at least 2 hours). You may want to announce a maintenance window.
   #. Review upgrade instructions for **all versions** between your current version and the version you are upgrading to.
 
@@ -101,89 +81,150 @@ You'll be asked to confirm the removal of all dangling images. Agree by typing t
 
   docker-compose up -d
 
-.. _central-upgrade-2023.2:
-
-Upgrading to Central v2023.2
------------------------------
-
-.. warning::
-  This upgrade may take more time and disk space than previous updates, as it includes upgrading the PostgreSQL database version.
-
-.. warning::
-  Before starting:
-
-  #. :doc:`Back up your server <central-backup>`
-  #. Make sure you have some time available in case something goes wrong (we recommend at least 2 hours). You may want to announce a maintenance window.
-  #. Review upgrade notes for all versions between your current version and the version you are upgrading to.
-
-#. Log into your server. If you used our :doc:`DigitalOcean installation steps <central-install-digital-ocean>`, we suggest reviewing the section :ref:`central-install-digital-ocean-build` as a reminder, or if you can't remember your password to start at the top of that section to reset your password.
-
-#. Get the latest infrastructure version.
-
-.. code-block:: bash
-
-  cd central
-  git pull
-
-.. note::
-
-  If you have made local changes to the files, you may have to start with ``git stash``, then run ``git stash pop`` after you perform the ``pull``. If you aren't sure, run ``git pull`` and it will tell you.
-
-3. Get the latest client and server.
-
-.. code-block:: bash
-
-  git submodule update -i
-
-4. Check that you have enough disk space available.
-
-.. code-block:: bash
-
-  sudo ./files/postgres/check-available-space
-
-5. Create a disclaimer file to prove that you're reading these instructions.
-
-.. code-block:: bash
-
-  touch allow-postgres14-upgrade
-
-6. Stop ODK Central services.
-
-.. code-block:: bash
-
-  docker-compose stop
-
-7. Build from the latest code you just fetched.
-
-.. code-block:: bash
-
-  docker-compose build
-
-8. Start the database upgrade.
-
-.. code-block:: bash
-
-  docker-compose up postgres
-
-9. Check the output of the previous command to see if there were any errors.
-
-10. Check the upgrade success marker file has been created
-
-.. code-block:: bash
-
-  ls ./postgres14-upgrade/upgrade-completed-ok
-
-11. Restart the server
-
-.. code-block:: bash
-
-  docker-compose up -d
-
-
 .. _version-specific-instructions:
 
 Version-specific upgrade instructions
 --------------------------------------
+
+.. _central-upgrade-2023.2:
+
+Upgrading to Central v2023.2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. warning::
+  This upgrade may take more time and disk space than previous updates, as it includes upgrading the PostgreSQL database version.
+
+You will first need to determine whether the server you are upgrading uses the default database setup or a custom database server:
+
+.. code-block:: bash
+
+  head files/service/config.json.template
+
+If you see ``"host": "postgres"``, then you are using the default database. If the ``host`` is set to anything other than ``postgres``, then you are using a custom database server.
+
+.. tabs::
+
+  .. tab:: Default database
+
+    .. warning::
+      Before starting:
+
+      #. :doc:`Back up your server <central-backup>`.
+      #. Make sure you have some time available in case something goes wrong (we recommend at least 2 hours). You may want to announce a maintenance window.
+      #. Review upgrade notes for all versions between your current version and the version you are upgrading to.
+      #. Read the instructions at the top of this section carefully and **make sure you are actually using the default database configuration**. Following these instructions with a custom database setup could result in perceived data loss.
+
+    #. Log into your server. If you used our :doc:`DigitalOcean installation steps <central-install-digital-ocean>`, we suggest reviewing the section :ref:`central-install-digital-ocean-build` as a reminder, or if you can't remember your password to start at the top of that section to reset your password.
+
+    #. Get the latest infrastructure version.
+
+       .. code-block:: bash
+
+          cd central
+          git pull
+
+       .. note::
+
+          If you have made local changes to the files, you may have to start with ``git stash``, then run ``git stash pop`` after you perform the ``pull``. If you aren't sure, run ``git pull`` and it will tell you.
+
+    #. Get the latest client and server.
+
+       .. code-block:: bash
+
+          git submodule update -i
+
+    #. Check that you have enough disk space available. The ``sudo`` command runs the script as the system superuser. If you are prompted for a password, enter the system superuser password (not a Central password).
+
+       .. code-block:: bash
+
+          sudo ./files/postgres/check-available-space
+
+       If you don't have enough space, stop here and resume when you have increased the disk space available. You may achieve this by clearing out data you don't need (e.g. logs) or by increasing the total disk space available (e.g. by :ref:`adding external storage <central-install-digital-ocean-external-storage>`).
+
+    #. Create a disclaimer file to prove that you're reading these instructions. This is required to continue.
+
+       .. code-block:: bash
+
+          touch allow-postgres14-upgrade
+
+    #. Stop ODK Central services.
+
+       .. code-block:: bash
+
+          docker-compose stop
+
+    #. Build from the latest code you just fetched.
+
+       .. code-block:: bash
+
+          docker-compose build
+
+    #. Start the database upgrade.
+
+       .. code-block:: bash
+
+          docker-compose up postgres
+
+    #. Check the output of the previous command to see if there were any errors. If there were any errors that you can't resolve, `write a support post on the forum <https://forum.getodk.org/c/support/6>`_.
+
+    #. Check the upgrade success marker file has been created
+
+       .. code-block:: bash
+
+          ls ./postgres14-upgrade/upgrade-completed-ok
+
+       If you see "No such file or directory," try doing ``docker-compose up postgres`` again. If you're still not getting the file, `write a support post on the forum <https://forum.getodk.org/c/support/6>`_.
+
+    #. Restart the server and verify that everything works as expected. After running the command below, we recommend logging in to the web interface and doing some quick spot checks. For example, verify that submission counts and latest submission dates look right and try a data export.
+
+       .. code-block:: bash
+
+            docker-compose up -d
+
+    #. Delete old data. The upgrade process performs a copy and leaves the old database intact. Once you have verified that your server works as expected, you can delete that data. The following command will show you how much space this old database takes and how to remove it.
+
+       .. code-block:: bash
+
+            docker-compose up postgres
+
+  .. tab:: Custom database server
+
+    #. Find instructions for upgrading your database server to PostgreSQL 14. Here are instructions for some popular options:
+
+       * `DigitalOcean's managed PostgreSQL <https://docs.digitalocean.com/products/databases/postgresql/how-to/upgrade-version/>`_
+       * `Amazon's RDS <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.PostgreSQL.html#USER_UpgradeDBInstance.PostgreSQL.MajorVersion.Process>`_
+       * `Azure Database for PostgreSQL <https://learn.microsoft.com/en-us/azure/postgresql/single-server/how-to-upgrade-using-dump-and-restore>`_
+
+    #. Determine whether upgrading requires down time. If it does, stop Central before continuing. To stop Central, log into your server and then:
+
+       .. code-block:: bash
+
+            cd central
+            docker-compose stop
+
+    #. Upgrade your database server. We recommend using the latest point release of PostgreSQL 14 that is available.
+
+    #. See what changes you have made to your ``docker-compose.yml`` file:
+
+       .. code-block:: bash
+
+            git diff docker-compose.yml
+
+       We recommend taking notes on the sections that have changed. You may want to refer to the sections on :ref:`advanced configuration options <central-install-digital-ocean-advanced>` and note which instructions you followed. Type ``q`` to exit when you are done.
+
+    #. Make a backup of your ``docker-compose.yml`` file:
+
+       .. code-block:: bash
+
+            mv docker-compose.yml docker-compose.yml.bak
+
+    #. Follow the :ref:`standard upgrade instructions <central-upgrade-steps>`. Before bringing the server back up, re-apply the changes you had made to ``docker-compose.yml``. You may find it helpful to reference the backup file you made. At minimum, you will need to follow the instructions for :ref:`configuring a custom database server <central-install-digital-ocean-custom-db>` that apply to ``docker-compose.yml``.
+
+    #. After you verify that everything works as intended, remove your backup file:
+
+       .. code-block:: bash
+
+            rm docker-compose.yml.bak
 
 .. _central-upgrade-2023.1:
 

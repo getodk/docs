@@ -38,7 +38,8 @@ extensions = [ 'sphinxcontrib.spelling',
     'sphinx_design',
     'sphinx_copybutton',
     'sphinx_video',
-    'sphinxcontrib.youtube'
+    'sphinxcontrib.youtube',
+    'sphinx_tabs.tabs'
 ]
 
 # If using Apple Silicon, set env variable (assumes brew install of enchant)
