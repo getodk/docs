@@ -45,5 +45,5 @@ Other options
   :maxdepth: 1
 
   collect-connect-google
-  Transfering blank and completed forms directly with adb <collect-adb>
+  Transferring blank and completed forms directly with adb <collect-adb>
   Using ODK Briefcase  <briefcase-using>
