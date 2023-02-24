@@ -17,25 +17,29 @@ For the reference layer, however, you can select a file on the device, and it wi
 
 Offline maps quick start
 -------------------------
-#. :ref:`Get or create your MBTiles file <getting-map-tiles>` with `TileMill <https://tilemill-project.github.io/tilemill/>`_ or other software.
+#. :ref:`Get your MBTiles <getting-map-tiles>` files.
 #. :ref:`Transfer tiles to devices <transferring-offline-tiles>`. The MBTiles file must be placed on your device in the :file:`layers` subdirectory of :ref:`your Collect directory <collect-directory>`, and the filename must end in `.mbtiles`.
 #. Select your offline layer in the :ref:`reference layer settings <reference-layer-settings>`.
 #. Open a :ref:`geopoint <geopoint-maps>`, :ref:`geotrace <geotrace-widget>`, or :ref:`geoshape <geoshape-widget>` question.
 #. While viewing the map, you can also select the offline layer using the button that looks like a stack of layers.
 
-MBTiles files typically contain `metadata <https://github.com/mapbox/mbtiles-spec/blob/master/1.3/spec.md#metadata>`_ that specifies the range of zoom levels in which they are visible.  If you are viewing at an appropriate zoom level, your offline layer should be displayed. If you don't see it, you might need to zoom in or out until the zoom level is in the range specified by the MBTiles file.
+MBTiles files typically contain `metadata <https://github.com/mapbox/mbtiles-spec/blob/master/1.3/spec.md#metadata>`_ that specifies the range of zoom levels in which they are visible. If you are viewing at an appropriate zoom level, your offline layer should be displayed. If you don't see it, you might need to zoom in or out until the zoom level is in the range specified by the MBTiles file.
 
 If the tileset has transparency (PNG or PBF tiles only), the selected basemap will show through. If it does not have transparency or you are offline, only your offline layer will be displayed.
+
+.. tip::
+
+  Watch a step-by-step video showing `how to add offline tiles from QGIS into Collect <https://www.youtube.com/watch?v=C0ON-Tbfgd8>`_.
 
 .. _getting-map-tiles:
 
 Getting map tilesets
--------------------------
-For non-commercial community mapping activities, `Mapbox <https://www.mapbox.com/maps/>`_ can arrange for offline MBTiles, including processed streets, satellite, and custom data. Contact community[at]mapbox.com for offline Terms of Service exemptions and to receive technical guidance.
+--------------------
+To create MBTiles files, use `QGIS <https://docs.qgis.org/3.22/en/docs/user_manual/processing_algs/qgis/rastertools.html#generate-xyz-tiles-mbtiles>`_ or `MapTiler <https://www.maptiler.com/>`_. In general, you should build raster (jpg or png) MBTiles files. Vector (pbf) MBTiles files are only supported with Mapbox basemaps and are currently displayed without styling.
 
-To create MBTiles files, use one of the `compatible applications <https://github.com/mapbox/mbtiles-spec/wiki/Implementations#applications>`_ . Commonly used free software packages are `TileMill <https://tilemill-project.github.io/tilemill/>`_ and `QGIS <https://qgis.org/en/site/>`_ with the `QTiles plugin <https://github.com/nextgis/QTiles#qtiles>`_. In general, you should build raster (jpg or png) MBTiles files. Vector (pbf) MBTiles files are only supported with Mapbox basemaps and are currently displayed without styling.
+.. tip::
 
-If you have existing geospatial data that is not in an MBTiles file, you may be able to convert it for use in Collect. For example, `Tippecanoe <https://github.com/mapbox/tippecanoe>`_ is a tool to build vector MBTiles files from GeoJSON features (see warning above: vector MBTiles files are only supported with Mapbox basemaps and are displayed without styling).
+  For non-commercial community mapping activities, `Mapbox <https://www.mapbox.com/maps/>`_ may be able to provide offline MBTiles files, including processed streets, satellite, and custom data. Contact community@mapbox.com.
 
 .. _transferring-offline-tiles:
 
