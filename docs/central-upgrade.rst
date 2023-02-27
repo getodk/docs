@@ -94,13 +94,13 @@ Upgrading to Central v2023.2
 .. warning::
   This upgrade may take more time and disk space than previous updates, as it includes upgrading the PostgreSQL database version.
 
-You will first need to determine whether the server you are upgrading uses the default database setup or a custom database server:
+Run this command to determine whether the server you are upgrading uses the default database or a custom database server:
 
 .. code-block:: bash
 
   head files/service/config.json.template
 
-If you see ``"host": "postgres"``, then you are using the default database. If the ``host`` is set to anything other than ``postgres``, then you are using a custom database server.
+If you see ``"host": "postgres"``, you are using the default database. If ``host`` is set to anything else, you are using a custom database server.
 
 .. tabs::
 
@@ -133,21 +133,21 @@ If you see ``"host": "postgres"``, then you are using the default database. If t
 
           git submodule update -i
 
-    #. Check that you have enough disk space available. The ``sudo`` command runs the script as the system superuser. If you are prompted for a password, enter the system superuser password (not a Central password).
+    #. Check that you have enough disk space available. If you are prompted for a password, enter the system superuser password (not a Central password).
 
        .. code-block:: bash
 
           sudo ./files/postgres14/upgrade/check-available-space
 
-       If you don't have enough space, stop here and resume when you have increased the disk space available. You may achieve this by clearing out data you don't need (e.g. logs) or by increasing the total disk space available (e.g. by :ref:`adding external storage <central-install-digital-ocean-external-storage>`).
+       If you don't have enough space, stop here and resume when you have increased the disk space available. You may achieve this by clearing out data you don't need (e.g., logs) or by increasing the total disk space available (e.g., by :ref:`adding external storage <central-install-digital-ocean-external-storage>`).
 
-    #. Create a disclaimer file to prove that you're reading these instructions. This is required to continue.
+    #. Create a file to prove that you're carefully reading these instructions. This is required to continue.
 
        .. code-block:: bash
 
           touch ./files/allow-postgres14-upgrade
 
-    #. Stop ODK Central services.
+    #. Stop Central.
 
        .. code-block:: bash
 
@@ -159,7 +159,7 @@ If you see ``"host": "postgres"``, then you are using the default database. If t
 
           docker-compose build
 
-    #. Start the database upgrade.
+    #. Start the database upgrade and wait for the process to exit.
 
        .. code-block:: bash
 
@@ -167,35 +167,44 @@ If you see ``"host": "postgres"``, then you are using the default database. If t
 
     #. Check the output of the previous command to see if there were any errors. If there were any errors that you can't resolve, `write a support post on the forum <https://forum.getodk.org/c/support/6>`_.
 
-    #. Check the upgrade success marker file has been created
+    #. Check the upgrade success file has been created.
 
        .. code-block:: bash
 
-          ls ./postgres14-upgrade/upgrade-completed-ok
+          ls ./files/postgres14/upgrade/upgrade-successful
 
-       If you see "No such file or directory," try doing ``docker-compose up postgres`` again. If you're still not getting the file, `write a support post on the forum <https://forum.getodk.org/c/support/6>`_.
+       If you see "No such file or directory," try doing ``docker-compose up postgres`` again. If the file has still not been created, `write a support post on the forum <https://forum.getodk.org/c/support/6>`_.
 
-    #. Restart the server and verify that everything works as expected. After running the command below, we recommend logging in to the web interface and doing some quick spot checks. For example, verify that submission counts and latest submission dates look right and try a data export.
+    #. Restart the server and verify that everything works as expected.
 
        .. code-block:: bash
 
             docker-compose up -d
 
-    #. Delete old data. The upgrade process performs a copy and leaves the old database intact. Once you have verified that your server works as expected, you can delete that data. The following command will show you how much space this old database takes and how to remove it.
+    #. Log into the web interface and do some quick spot checks. For example, verify that submission counts and latest submission dates look right and try a data export.
+
+    #. The upgrade process performs a copy and leaves the old database intact. The following command will show you how much space this old database takes.
 
        .. code-block:: bash
 
             docker-compose up postgres
 
+    #. Once you have verified that your server works as expected, you may delete the old data.
+
+          .. code-block:: bash
+
+            touch ./files/postgres14/upgrade/delete-old-data \
+               && docker-compose up --abort-on-container-exit postgres
+
   .. tab:: Custom database server
 
-    #. Find instructions for upgrading your database server to PostgreSQL 14. Here are instructions for some popular options:
+    #. Find instructions for upgrading your database server to PostgreSQL 14. Here are instructions for some popular fully-managed options:
 
-       * `DigitalOcean's managed PostgreSQL <https://docs.digitalocean.com/products/databases/postgresql/how-to/upgrade-version/>`_
-       * `Amazon's RDS <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.PostgreSQL.html#USER_UpgradeDBInstance.PostgreSQL.MajorVersion.Process>`_
-       * `Azure Database for PostgreSQL <https://learn.microsoft.com/en-us/azure/postgresql/single-server/how-to-upgrade-using-dump-and-restore>`_
+       * `DigitalOcean <https://docs.digitalocean.com/products/databases/postgresql/how-to/upgrade-version/>`_
+       * `Amazon <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.PostgreSQL.html#USER_UpgradeDBInstance.PostgreSQL.MajorVersion.Process>`_
+       * `Azure <https://learn.microsoft.com/en-us/azure/postgresql/single-server/how-to-upgrade-using-dump-and-restore>`_
 
-    #. Determine whether upgrading requires down time. If it does, stop Central before continuing. To stop Central, log into your server and then:
+    #. Determine whether upgrading requires downtime. If it does, stop Central before continuing. To stop Central, log into your server and then:
 
        .. code-block:: bash
 
