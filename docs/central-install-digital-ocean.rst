@@ -118,7 +118,7 @@ Now you'll need to download the software. In the server window, type ``git clone
 
 You now have the framework of the server software, but some components are missing. Type ``git submodule update -i`` and press **Enter** to download them.
 
-Next, you need to update some settings. First, copy the settings template file so you can edit it: type ``mv .env.template .env`` and press **Enter**.
+Next, you need to update some settings. First, copy the settings template file so you can edit it: type ``cp .env.template .env`` and press **Enter**.
 
 Then, edit the file by typing ``nano .env`` and pressing **Enter**. This will launch a text editing application. 
 
