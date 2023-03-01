@@ -91,6 +91,10 @@ Version-specific upgrade instructions
 Upgrading to Central v2023.2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+This is *critical infrastructure upgrade* that updates the version of the included PostgreSQL database from 9.6 (no longer supported) to 14 (stable and supported through 2026). The process will require stopping Central in order to make a copy of the database. The process is mostly automatic, but please read the following instructions carefully.
+
+If you are using a custom database (e.g. externally hosted on Azure, AWS, etc.), please follow the upgrade steps for your scenario. It will not involve changing your database but it will involve changing the configuration of how Central connects to that database.
+
 .. warning::
   This upgrade may take more time and disk space than previous updates, as it includes upgrading the PostgreSQL database version.
 
@@ -111,12 +115,13 @@ If you see ``"host": "postgres"``, you are using the default database. If ``host
 
       #. :doc:`Back up your server <central-backup>`.
       #. Make sure you have some time available in case something goes wrong (we recommend at least 2 hours). You may want to announce a maintenance window.
+      #. Log into the web interface and make a quick note of some of the data you see, such as submission counts and latest submission dates. You may want to use this information to do a quick spot check after the upgrade is finished.
       #. Review upgrade notes for all versions between your current version and the version you are upgrading to.
       #. Read the instructions at the top of this section carefully and **make sure you are actually using the default database configuration**. Following these instructions with a custom database setup could result in perceived data loss.
 
-    #. Log into your server. If you used our :doc:`DigitalOcean installation steps <central-install-digital-ocean>`, we suggest reviewing the section :ref:`central-install-digital-ocean-build` as a reminder, or if you can't remember your password to start at the top of that section to reset your password.
+    #. **Log into your server.** If you used our :doc:`DigitalOcean installation steps <central-install-digital-ocean>`, we suggest reviewing the section :ref:`central-install-digital-ocean-build` as a reminder, or if you can't remember your password to start at the top of that section to reset your password.
 
-    #. Get the latest infrastructure version.
+    #. **Get the latest infrastructure version.** This is a typical upgrade step.
 
        .. code-block:: bash
 
@@ -127,47 +132,47 @@ If you see ``"host": "postgres"``, you are using the default database. If ``host
 
           If you have made local changes to the files, you may have to start with ``git stash``, then run ``git stash pop`` after you perform the ``pull``. If you aren't sure, run ``git pull`` and it will tell you.
 
-    #. Get the latest client and server.
+    #. **Get the latest client and server.** This is also a typical upgrade step and ensures that Frontend and Backend are up to date.
 
        .. code-block:: bash
 
           git submodule update -i
 
-    #. Check that you have enough disk space available. If you are prompted for a password, enter the system superuser password (not a Central password).
+    #. **Check that you have enough disk space available.** If you are prompted for a password, enter the system superuser password (not a Central password). You will see a message about how much space is required and if you have enough free space to proceed.
 
        .. code-block:: bash
 
           sudo ./files/postgres14/upgrade/check-available-space
 
-       If you don't have enough space, stop here and resume when you have increased the disk space available. You may achieve this by clearing out data you don't need (e.g., logs) or by increasing the total disk space available (e.g., by :ref:`adding external storage <central-install-digital-ocean-external-storage>`).
+       *If you don't have enough space,* **stop here** and resume when you have increased the disk space available. You may achieve this by clearing out data you don't need (e.g., logs) or by increasing the total disk space available (e.g., by :ref:`adding external storage <central-install-digital-ocean-external-storage>`).
 
-    #. Create a file to prove that you're carefully reading these instructions. This is required to continue.
+    #. **Create a file to prove that you're carefully reading these instructions.** This is required to continue.
 
        .. code-block:: bash
 
           touch ./files/allow-postgres14-upgrade
 
-    #. Stop Central.
+    #. **Stop Central.** Central needs to be stopped in order to make a clean copy of the database.
 
        .. code-block:: bash
 
           docker-compose stop
 
-    #. Build from the latest code you just fetched.
+    #. **Build from the latest code you just fetched.**
 
        .. code-block:: bash
 
           docker-compose build
 
-    #. Start the database upgrade and wait for the process to exit.
+    #. **Start the database upgrade and wait for the process to exit.** This is where the new PostgreSQL 14 database is made and data copied into it. The timing of this process is related to how large your database is.
 
        .. code-block:: bash
 
           docker-compose up postgres
 
-    #. Check the output of the previous command to see if there were any errors. If there were any errors that you can't resolve, `write a support post on the forum <https://forum.getodk.org/c/support/6>`_.
+    #. **Check the output of the previous command to see if there were any errors.** If there were any errors that you can't resolve, `write a support post on the forum <https://forum.getodk.org/c/support/6>`_.
 
-    #. Check the upgrade success file has been created.
+    #. **Check the upgrade success file has been created.**
 
        .. code-block:: bash
 
@@ -175,15 +180,19 @@ If you see ``"host": "postgres"``, you are using the default database. If ``host
 
        If you see "No such file or directory," try doing ``docker-compose up postgres`` again. If the file has still not been created, `write a support post on the forum <https://forum.getodk.org/c/support/6>`_.
 
-    #. Restart the server and verify that everything works as expected.
+    #. **Restart the server and verify that everything works as expected.**
 
        .. code-block:: bash
 
             docker-compose up -d
 
-    #. Log into the web interface and do some quick spot checks. For example, verify that submission counts and latest submission dates look right and try a data export.
+    #. **Log into the web interface and do some quick spot checks.** For example, verify that submission counts and latest submission dates look right and try a data export.
 
-    #. The upgrade process performs a copy and leaves the old database intact. The following command will show you how much space this old database takes.
+    **Clean up**
+
+    The upgrade process performs a copy and leaves the old database intact.
+
+    #. The following command will show you how much space this old database takes.
 
        .. code-block:: bash
 
