@@ -2542,7 +2542,7 @@ Collects a signature from the user.
 
 .. rubric:: XLSForm
 
-.. csv-table:: table
+.. csv-table:: survey
   :header: type, name, label, appearance, hint
 
   image,signature_widget,Signature widget,signature,image type with signature appearance
