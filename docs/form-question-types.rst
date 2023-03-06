@@ -2066,33 +2066,6 @@ Records video, using the device camera.
 
   video, blinking, Please record a video of yourself blinking., Three times is probably sufficient.
 
-
-.. _self-portrait-video-widget:
-
-Self portrait (*selfie*) video widget
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Records video, using the front-facing ("selfie") camera. The :guilabel:`Choose Video` button is not displayed.
-
-.. image:: /img/form-question-types/selfie-video-widget.*
-  :alt: The Self portrait (*selfie*) video widget form widget as displayed in the ODK Collect App on an Android phone. The question text is "Self portrait (*selfie*) video widget". The hint text is "video type with new-front appearance". Below that are two buttons: Record Video and Play Video. The Play Video button is disabled.
-  :class: device-screen-vertical
-
-.. image:: /img/form-question-types/selfie-video-widget-recording.*
-  :alt: The camera view with a person's face.
-  :class: device-screen-vertical
-
-.. image:: /img/form-question-types/selfie-video-widget-recorded.*
-  :alt: The Self portrait (*selfie*) video widget form widget as displayed previously. The question text is "Self portrait (*selfie*) video widget". The hint text is "video type with new-front appearance". Below that are two buttons: Record Video and Play Video. Both buttons are enabled.
-  :class: device-screen-vertical
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint
-
-  video, selfie-video, Self portrait (*selfie*) video widget, new-front, video type with new-front appearance
-
 .. _external-app-video-widget:
 
 External app video widget
