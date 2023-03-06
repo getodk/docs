@@ -3,6 +3,10 @@ Settings QR codes
 
 Collect's settings can be imported and exported using QR codes. These can be provided by servers (like ODK Central) or can be used to share settings from one device to another.
 
+.. tip ::
+
+  In ODK Central, you can right-click the App User QR code, save it as an image, print it, and place it in a training room. You can also send the QR code saved as an image via email or WhatsApp and ask data collectors to import it.
+
 Scanning a QR code
 ------------------
 
@@ -11,10 +15,10 @@ Settings QR codes can be scanned when adding a new Project or can be scanned to 
 .. note::
   QR codes contain settings with non-default values. When a code is scanned in, settings not explicitly included in the code are reset to their default values.
 
-Importing settings from an image saved on your device
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Importing a QR code saved on your device
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can import settings from a QR code saved on your device by clicking on the :fa:`ellipsis-v` icon when scanning a QR code. Then select the :guilabel:`Import QRCode` option.
+You can import settings from a QR code saved as a image on your device by clicking on the :fa:`ellipsis-v` icon when scanning a QR code. Then select the :guilabel:`Import QR code` option.
 
 .. _sharing-settings-with-another-device:
 
