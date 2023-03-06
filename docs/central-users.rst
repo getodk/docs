@@ -207,7 +207,7 @@ There are two ways to access the QR Code for an App User. The first is in the se
 
 If instead of a :guilabel:`See code` link you see text that says :guilabel:`Access revoked`, that App User no longer has access to the server. Create a new App User if you need a new QR Code.
 
-Once you have found the QR Code, you will be able to use it to configure ODK Collect. Please see the section on :doc:`importing settings into Collect <collect-import-export>` to learn how to do this.
+Once you have found the QR Code, distribute it to data collectors so they can configure ODK Collect. See :doc:`settings QR codes <collect-import-export>` to learn more.
 
 .. _central-users-app-revoke:
 
