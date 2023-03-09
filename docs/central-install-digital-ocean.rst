@@ -237,8 +237,6 @@ Once you do see it working, you'll want to set up your first Administrator accou
 
     $ docker compose exec service odk-cmd --email YOUREMAIL@ADDRESSHERE.com user-set-password
 
-
-
 .. tip::
   If you find that users are not receiving emails, read about :ref:`troubleshooting emails <troubleshooting-emails>`.
 
@@ -345,9 +343,13 @@ Then, in your ``docker-compose.yml`` file, add a ``NODE_OPTIONS`` variable with 
       - NODE_OPTIONS=--max_old_space_size=3584
       - DOMAIN=${DOMAIN}
       - SYSADMIN_EMAIL=${SYSADMIN_EMAIL}
-    command: [ "./wait-for-it.sh", "postgres:5432", "--", "./start-odk.sh" ]
 
-Now rebuild the service container with ``docker compose build service``, ``docker compose stop service``, ``docker compose up -d service``.
+Now rebuild the service container:
+
+.. code-block:: console
+
+  $ docker compose build service
+  $ docker compose up -d service
 
 If the cause of the memory error was a migration, you may remove these changes after the upgrade is complete and rebuild the container again.
 
@@ -362,7 +364,14 @@ By default, Central uses Let's Encrypt to obtain an SSL security certificate. Fo
 2. Generate a ``privkey.pem`` (``-keyout``) file which contains the private key used to sign your certificate.
 3. Copy those files into ``files/local/customssl/`` within the repository root.
 4. In ``.env``, set ``SSL_TYPE`` to ``customssl`` and set ``DOMAIN`` to the domain name you registered. As an example: ``DOMAIN=MyOdkCollectionServer.com``. Do not include anything like ``http://``.
-5. Build and run: ``docker compose build nginx``, ``docker compose stop nginx``, ``docker compose up -d nginx``. If that doesn't work, you may need to first remove your old nginx container (``docker compose rm nginx``).
+5. Build and run:
+
+   .. code-block:: console
+
+     $ docker compose build nginx
+     $ docker compose up -d nginx
+
+   If that doesn't work, you may need to first remove your old nginx container (``docker compose rm nginx``).
 
 .. _central-install-digital-ocean-custom-mail:
 
@@ -371,26 +380,32 @@ Using a Custom Mail Server
 
 Central ships with a basic EXIM server bundled to forward mail out to the internet. To use your own custom mail server:
 
-1. Ensure you have an SMTP relay server visible to your Central server network host.
-2. Edit the file ``files/service/config.json.template`` to reflect your network hostname, the TCP port, and authentication details. The ``secure`` flag is for TLS and should be set to ``true`` if the port is 465 and ``false`` for other ports. If no authentication is required, remove the ``auth`` section.
+#. Ensure you have an SMTP relay server visible to your Central server network host.
+#. Edit ``.env`` to reflect your network hostname, the TCP port, and authentication details. If no authentication is required, remove the ``EMAIL_USER`` and ``EMAIL_PASSWORD`` options.
 
-   .. code-block:: json
+   .. code-block:: console
 
-     "email": {
-       "serviceAccount": "my-replyto-email",
-       "transport": "smtp",
-       "transportOpts": {
-         "host": "smtp.example.com",
-         "port": 587,
-         "secure": false,
-         "auth": {
-           "user": "my-smtp-user",
-           "pass": "my-smtp-password"
-         }
-       }
-     }
+     $ nano .env
 
-3. Build and run: ``docker compose build service``, ``docker compose stop service``, ``docker compose up -d service``.
+   .. code-block:: bash
+
+     EMAIL_HOST=my-email-host
+     EMAIL_PORT=my-email-port
+     EMAIL_IGNORE_TLS=true-or-false
+     EMAIL_SECURE=true-or-false
+     EMAIL_USER=my-email-user
+     EMAIL_PASSWORD=my-email-password
+
+   .. note::
+
+     ``EMAIL_IGNORE_TLS`` should generally be set to ``false``. ``EMAIL_SECURE`` should generally be set to ``true`` if you use port 465 and to ``false`` for other ports.
+
+#. Build and run:
+
+   .. code-block:: console
+
+     $ docker compose build service
+     $ docker compose up -d service
 
 .. _central-install-digital-ocean-custom-db:
 
@@ -398,42 +413,43 @@ Using a Custom Database Server
 ------------------------------
 
 .. warning::
-  Using a custom database server, especially one that is not local to your local network, may result in poor performance. We strongly recommend using the Postgres v14 server that is bundled with Central.
+  Using a custom database server that is not local to your local network, may result in poor performance.
 
-Central ships with a PostgreSQL database server. To use your own custom database server:
+Central ships with a PostgreSQL database server. To instead use your own custom database server:
 
-1. Ensure you have a PostgreSQL database server visible to your Central server network host.
-2. Ensure your database has ``UTF8`` encoding by running the following command on the database.
+#. Ensure you have a PostgreSQL database server visible to your Central server network host.
+#. Ensure your database has ``UTF8`` encoding by running the following command on the database.
 
    .. code-block:: postgres
 
       SHOW SERVER_ENCODING;
 
-3. Ensure ``CITEXT`` and ``pg_trgm`` extensions exist by running the following commands on the database.
+#. Ensure ``CITEXT`` and ``pg_trgm`` extensions exist by running the following commands on the database.
 
    .. code-block:: postgres
 
       CREATE EXTENSION IF NOT EXISTS CITEXT;
       CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
-4. Edit the file ``files/service/config.json.template`` to reflect your database host, table, and authentication details.
+#. Edit ``.env`` to reflect your database host, name, and authentication details.
 
-   .. code-block:: json
+   .. code-block:: console
 
-      "database": {
-        "host": "my-db-host",
-        "user": "my-db-user",
-        "password": "my-db-password",
-        "database": "my-db-table"
-      },
-
-4. Edit the file ``docker-compose.yml`` to update the command for the ``service`` container.
+     $ nano .env
 
    .. code-block:: bash
 
-      command: [ "./wait-for-it.sh", "my-db-host:my-db-port", "--", "./start-odk.sh" ]
+     DB_HOST=my-db-host
+     DB_USER=my-db-user
+     DB_PASSWORD=my-db-password
+     DB_NAME=my-db-name
 
-5. Build and run: ``docker compose build service``, ``docker compose stop service``, ``docker compose up -d service``.
+#. Build and run:
+
+   .. code-block:: console
+
+     $ docker compose build service
+     $ docker compose up -d service
 
 .. _central-install-digital-ocean-dkim:
 
@@ -448,18 +464,18 @@ DKIM is a security trust protocol which is used to help verify mail server ident
 1. Ensure that your server's name in DigitalOcean `matches your full domain name <https://www.digitalocean.com/community/questions/how-do-i-setup-a-ptr-record?comment=30810>`_, and that the `hostname does as well <https://askubuntu.com/questions/938786/how-to-permanently-change-host-name/938791#938791>`_. If you had to make changes for this step, restart the server to ensure they take effect.
 2. There can be in some cases a placeholder folder that you may have to delete first. If you run this command and no file was deleted, proceed to step 3.
 
-   .. code-block:: bash
+   .. code-block:: console
 
-     rmdir ~/central/files/dkim/rsa.private
+     $ rmdir ~/central/files/dkim/rsa.private
 
 3. Now, you'll need to generate a cryptographic keypair and enable the DKIM configuration. Run these commands:
 
-   .. code-block:: bash
+   .. code-block:: console
 
-     cd ~/central/files/dkim
-     openssl genrsa -out rsa.private 1024
-     openssl rsa -in rsa.private -out rsa.public -pubout -outform PEM
-     cp config.disabled config
+     $ cd ~/central/files/dkim
+     $ openssl genrsa -out rsa.private 1024
+     $ openssl rsa -in rsa.private -out rsa.public -pubout -outform PEM
+     $ cp config.disabled config
 
 4. With the contents of the public key (``cat rsa.public``), you'll want to create two new TXT DNS records:
 
@@ -468,12 +484,11 @@ DKIM is a security trust protocol which is used to help verify mail server ident
 
 5. Finally, build and run to configure EXIM to use the cryptographic keys you generated:
 
-   .. code-block:: bash
+   .. code-block:: console
 
-     cd ~/central
-     docker compose build mail
-     docker compose stop mail
-     docker compose up -d mail
+     $ cd ~/central
+     $ docker compose build mail
+     $ docker compose up -d mail
 
    If you see an error that says ``Can't open "rsa.private" for writing, Is a directory.``, you will need to ``rmdir ~/central/files/dkim/rsa.private``, then attempt ``docker compose build mail`` again. If you see some other error, you may need to first remove your old mail container (``docker compose rm mail``).
 
@@ -489,7 +504,7 @@ Enketo is the software that Central uses to render forms in a web browser. It is
 
 1. Read the Enketo `configuration tutorial <https://enketo.github.io/enketo-express/tutorial-10-configure.html>`_ and `default-config.json <https://github.com/enketo/enketo-express/blob/master/config/default-config.json>`_ to understand what is possible.
 2. Edit the file ``files/enketo/config.json.template`` to reflect your desired changes.
-3. Build and run: ``docker compose build``, ``docker compose stop``, ``docker compose up -d``.
+3. Build and run: ``docker compose build``,  ``docker compose up -d``.
 
 
 .. _central-install-digital-ocean-sentry:
@@ -500,7 +515,7 @@ Disabling or Customizing Sentry
 By default, we enable `Sentry error logging <https://sentry.io>`_ in Central's service container, which provides the Central development team with an anonymized log of unexpected programming errors that occur while your server is running. This information is only visible to the development team and should never contain any of your user or form data, but if you feel uncomfortable with this anyway, you can take the following steps to disable Sentry:
 
 1. Edit the file ``files/service/config.json.template`` and remove the ``sentry`` lines, starting with ``"sentry": {`` through the next three lines until you remove the matching ``}``.
-2. Build and run: ``docker compose build service``, ``docker compose stop service``, ``docker compose up -d service``.
+2. Build and run: ``docker compose build service``, ``docker compose up -d service``.
 3. Edit the file ``files/nginx/odk.conf.template`` and replace the ``csp-report`` lines, starting with ``location /csp-report {`` through the next two lines until you remove the matching ``}`` with:
 
    .. code-block:: bash
@@ -510,31 +525,31 @@ By default, we enable `Sentry error logging <https://sentry.io>`_ in Central's s
         add_header Content-Type text/plain;
       }
 
-4. Build and run: ``docker compose build nginx``, ``docker compose stop nginx``, ``docker compose up -d nginx``.
+4. Build and run: ``docker compose build nginx``, ``docker compose up -d nginx``.
 
 If on the other hand you wish to use your own Sentry instance, take these steps:
 
 1. Create a free account on `Sentry <https://sentry.io>`_, and create a new ``nodejs`` project.
 2. The new project will generate a ``DSN`` of the format ``https://SENTRY_KEY@SENTRY_SUBDOMAIN.ingest.sentry.io/SENTRY_PROJECT``.
-3. In ``files/service/config.json.template``, replace ``SENTRY_SUBDOMAIN``, ``SENTRY_KEY`` and ``SENTRY_PROJECT`` with the values from step 2.
+3. In ``.env``, set ``SENTRY_SUBDOMAIN``, ``SENTRY_KEY`` and ``SENTRY_PROJECT`` to the values from step 2.
 
-   .. code-block:: json
+   .. code-block:: console
 
-       {
-         "default": {
-           "database": {...},
-           "email": {...},
-           "env": {...},
-           "external": {
-             "sentry": {
-               "orgSubdomain": "SENTRY_SUBDOMAIN",
-               "key": "SENTRY_KEY",
-               "project": "SENTRY_PROJECT"
-             }
-           }
-         }
-       }
+     $ nano .env
 
-The error logs sent to Sentry (if enabled) are also being written to ``/var/log/odk/stderr.log`` in the running service container.
+   .. code-block:: bash
 
-4. In ``files/nginx/odk.conf.template``, replace ``https://o130137.ingest.sentry.io/api/1298632/security/?sentry_key=3cf75f54983e473da6bd07daddf0d2ee`` with your own Sentry ingest URL, which you can find in `Sentry's Content-Security-Policy documentation <https://docs.sentry.io/product/security-policy-reporting/#content-security-policy>`_.
+     SENTRY_ORG_SUBDOMAIN=
+     SENTRY_KEY=
+     SENTRY_PROJECT=
+
+4. Build and run:
+
+   .. code-block:: console
+
+     $ docker compose build
+     $ docker compose up -d
+
+.. note::
+
+  The error logs sent to Sentry (if enabled) are also being written to ``/var/log/odk/stderr.log`` in the running service container.
