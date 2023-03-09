@@ -170,6 +170,10 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
           If your password has special characters in it, you will need to put single quotes ( ``'`` and ``'``) around the password. Values without special characters do not need quotes around them.
 
+        .. note::
+
+          If your database uses an SSL connection, add ``DB_SSL=true`` to ``.env``. If you don't need an SSL connection, omit that variable. If you enable SSL, the ``rejectUnauthorized`` option is also set to ``false`` which allows self-signed certificates. Make sure you have appropriately restricted access to your external database.
+
      #. If you use a custom email server, you will see changes in the email section. Copy those values to the ``.env`` file in the following format:
 
         .. code-block:: bash
