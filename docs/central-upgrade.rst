@@ -88,7 +88,7 @@ Version-specific upgrade instructions
 Upgrading to Central v2023.2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This is *critical infrastructure upgrade*. It updates many aspects of the infrastructure including upgrading the included PostgreSQL database from 9.6 (no longer supported) to 14 (stable and supported through 2026). It also changes the way that configuration customizations are made to reduce conflicts with future updates to Central. Please read the following instructions carefully.
+This is *critical infrastructure upgrade*. In particular, it upgrades the included PostgreSQL database from 9.6 (no longer supported) to 14 (stable and supported through 2026). Docker and Docker Compose are also upgraded. This release also changes the way that configurations are made to reduce conflicts with future updates to Central. Please read the following instructions carefully.
 
 .. warning::
   This upgrade may take more time and disk space than previous updates.
