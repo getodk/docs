@@ -192,7 +192,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
         .. note::
 
-          ``EMAIL_NO_REPLY`` is equivalent to ``email.serviceAccount`` in the json config. If you leave it unconfigured, the default is ``no-reply@${YOUR_DOMAIN}``. You can specify a name that will be showed by email clients by using single quotes (``'``):
+          ``EMAIL_NO_REPLY`` is equivalent to ``email.serviceAccount`` in the json config. If you omit it, the default is ``no-reply@${YOUR_DOMAIN}``. You can specify a name that will be shown by email clients by using single quotes (``'``):
 
           .. code-block:: bash
 
