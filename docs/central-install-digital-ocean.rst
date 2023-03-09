@@ -96,7 +96,7 @@ Changing Server Settings
 
   $ docker --version && docker compose version
 
-If you are using old versions, follow the instructions in `Docker's documentation <https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository>`_ to upgrade. 
+If you are using old versions, follow the instructions to install `Docker Engine <https://docs.docker.com/engine/install/ubuntu>`_ (not Desktop) for Ubuntu, the operating system we recommend and support. The instructions will help you setup the Docker ``apt`` repository and install the latest version of Docker Engine and Docker Compose.
 
 #. Ensure that Docker starts up whenever the server starts. Docker will in turn ensure that Central has started up.
 

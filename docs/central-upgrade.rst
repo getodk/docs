@@ -116,7 +116,7 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
 
      $ docker --version && docker compose version
 
-   If you are using old versions, follow the instructions at https://docs.docker.com/engine/install/ubuntu/ to upgrade.
+   If you are using old versions, follow the instructions to install `Docker Engine <https://docs.docker.com/engine/install/ubuntu>`_ (not Desktop) for Ubuntu, the operating system we recommend and support. The instructions will help you setup the Docker ``apt`` repository and install the latest version of Docker Engine and Docker Compose.
 
 #. **Remove docker-compose.** You will be using ``docker compose`` from now on (the dash has been replaced with a space).
 
@@ -196,7 +196,9 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
 
         You will see additions in green with ``+`` prefixes.
 
-        You can ignore any changes related to a custom database because those have been addressed by migrating ``files/service/config.json.template``. Copy any other changes to a scratch file on your local computer. You will use this to copy your custom values into the new format.
+        You can ignore any changes related to a custom database because those have been addressed by migrating ``files/service/config.json.template``.
+
+        Copy any other changes to a scratch file on your local computer. You will use this to copy your custom values into the new format.
 
      #. If you specify a value for ``NODE_OPTIONS``, open the ``.env`` file for editing:
 
