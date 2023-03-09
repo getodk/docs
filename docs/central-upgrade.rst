@@ -180,7 +180,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
           EMAIL_SECURE=true-or-false
           EMAIL_USER=my-email-user
           EMAIL_PASSWORD=my-email-password
-          EMAIL_NO_REPLY=my-no-reply-email-address
+          EMAIL_FROM=my-no-reply-email-address
 
         .. note::
 
@@ -192,11 +192,11 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
         .. note::
 
-          ``EMAIL_NO_REPLY`` is equivalent to ``email.serviceAccount`` in the json config. If you omit it, the default is ``no-reply@${YOUR_DOMAIN}``. You can specify a name that will be shown by email clients by using single quotes (``'``):
+          ``EMAIL_FROM`` is equivalent to ``email.serviceAccount`` in the json config. If you omit it, the default is ``no-reply@${YOUR_DOMAIN}``. You can specify a name that will be shown by email clients by using the following structure:
 
           .. code-block:: bash
 
-            EMAIL_NO_REPLY='My Cool Server <no-reply@my-server.server>'
+            EMAIL_FROM=My Cool Server <no-reply@my-server.server>
 
      #. Discard all ``files/service/config.json.template`` customizations. Make sure you have correctly copied all of them into ``.env``. You may want to keep the copy on your local computer until you have verified that everything works.
 
