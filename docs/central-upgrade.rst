@@ -104,12 +104,17 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
 
 #. **Log into your server.** If you used our :doc:`DigitalOcean installation steps <central-install-digital-ocean>`, we suggest reviewing the section :ref:`central-install-digital-ocean-build` as a reminder, or if you can't remember your password to start at the top of that section to reset your password.
 
+#. **Go to the central folder.**
+
+   .. code-block:: console
+
+     $ cd central
+
 #. **Upgrade Docker if needed.** Check to see if you have Docker Engine v23.x and Docker Compose v2.16.x or greater:
 
    .. code-block:: console
 
-     $ docker --version
-     $ docker compose version
+     $ docker --version && docker compose version
 
    If you are using old versions, follow the instructions at https://docs.docker.com/engine/install/ubuntu/ to upgrade.
 
@@ -127,7 +132,7 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
 
    If you do not see any files listed with a `modified:` prefix, you can go on to the next step.
 
-   If you do see files listed with a `modified:` prefix, follow instructions for each of them:
+   If you see files listed with a `modified:` prefix, follow instructions for each of them:
 
    .. dropdown:: ``files/service/config.json.template``
      :icon: file-code
@@ -136,7 +141,7 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
 
         .. code-block:: console
 
-          $ git diff
+          $ git diff files/service/config.json.template
 
         You will see additions in green with ``+`` prefixes. Copy those to a scratch file on your local computer. You will use this to copy your custom values into the new format.
 
@@ -157,7 +162,7 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
 
         .. note::
 
-          If your password has special characters in it, you will need to put single quotes ( ``'`` and ``'``) around it. Values without special characters do not need quotes around them.
+          If your password has special characters in it, you will need to put single quotes ( ``'`` and ``'``) around the password. Values without special characters do not need quotes around them.
 
      #. If you use a custom email server, you will see changes in the email section. Copy those values to the ``.env`` file in the following format:
 
@@ -174,7 +179,7 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
 
           ``EMAIL_IGNORE_TLS`` should generally be set to ``false``. ``EMAIL_SECURE`` should generally be set to ``true`` if you use port 465 and to ``false`` for other ports.
 
-     #. Discard edits to the file:
+     #. Discard all ``files/service/config.json.template`` customizations. Make sure you have correctly copied all of them into ``.env``. You may want to keep the copy on your local computer until you have verified that everything works.
 
         .. code-block:: console
 
@@ -187,7 +192,7 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
 
         .. code-block:: console
 
-          $ git diff
+          $ git diff docker-compose.yml
 
         You will see additions in green with ``+`` prefixes. You can ignore any changes related to a custom database because those will be addressed by migrating ``files/service/config.json.template``. Copy any other changes to a scratch file on your local computer. You will use this to copy your custom values into the new format.
 
@@ -205,7 +210,7 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
 
      #. If you specify any other customizations in your ``docker-compose.yml`` file, this is considered advanced and you will need to apply them manually after the upgrade. If you're not sure how to do this, `write a support post on the forum <https://forum.getodk.org/c/support/6>`_.
 
-     #. Discard edits to the file:
+     #. Discard all ``docker-compose.yml`` customizations. Make sure you have correctly copied all of them into ``.env``. You may want to keep the copy on your local computer until you have verified that everything works.
 
         .. code-block:: console
 
