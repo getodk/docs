@@ -10,7 +10,7 @@ Start by reviewing upgrade notes for all versions between your current version a
 Upgrade notes
 -------------
 
-* :ref:`Central v2023.2 <central-upgrade-2023.2>`: upgrade Docker, nginx, PostgreSQL, and move configuration to ``.env``.
+* :ref:`Central v2023.2 <central-upgrade-2023.2>`: upgrade Docker, PostgreSQL, and move configuration to ``.env``
 * :ref:`Central v2023.1 <central-upgrade-2023.1>`: plan ahead for longer than usual downtime during upgrade
 * :ref:`Central v2022.3 <central-upgrade-2022.3>`: update your NGINX configuration if you have disabled or customized Sentry
 * :ref:`Central v1.5 <central-upgrade-1.5>`: fix errors with ``git pull`` if you have disabled or customized Sentry
@@ -109,21 +109,120 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
 
 #. **Upgrade Docker if needed.** Check to see if you have Docker Engine v23.x and Docker Compose v2.16.x or greater:
 
-   .. code-block:: bash
+   .. code-block:: console
 
      $ docker --version
-     Docker version 23.0.1, build a5ee5b1
-     
      $ docker compose version
-     Docker Compose version v2.16.0
 
    If you are using old versions, follow the instructions at https://docs.docker.com/engine/install/ubuntu/ to upgrade.
 
 #. **Remove docker-compose.** You will be using ``docker compose`` from now on.
 
-   .. code-block:: bash
+   .. code-block:: console
 
-     rm -f `which docker-compose`
+     $ rm -f `which docker-compose`
+
+#. **Migrate configuration customizations.** This will simplify future Central upgrades. First, check what files have been customized:
+
+   .. code-block:: console
+
+     $ git status
+
+   If you do not see any files listed with a `modified:` prefix, you can go on to the next step.
+
+   If you do see files listed with a `modified:` prefix, follow instructions for each of them:
+
+   .. dropdown:: ``files/service/config.json.template``
+     :icon: file-code
+
+     #. See what changes have been made:
+
+        .. code-block:: console
+
+          $ git diff
+
+        You will see additions in green with ``+`` prefixes. Copy those to a scratch file on your local computer. You will use this to copy your custom values into the new format.
+
+     #. Open the ``.env`` file for editing:
+
+        .. code-block:: console
+
+          $ nano .env
+
+     #. If you use a custom database server, you will see changes in the database section. Copy the values from that section to the ``.env`` file in the following format:
+
+        .. code-block:: bash
+
+          DB_HOST=my-db-host
+          DB_USER=my-db-user
+          DB_PASSWORD=my-db-password
+          DB_NAME=my-db-name
+
+        .. note::
+
+          If your password has special characters in it, you will need to put single quotes ( ``'`` and ``'``) around it. Values without special characters do not need quotes around them.
+
+     #. If you use a custom email server, you will see changes in the email section. Copy those values to the ``.env`` file in the following format:
+
+        .. code-block:: bash
+
+          EMAIL_HOST=my-email-host
+          EMAIL_PORT=my-email-port
+          EMAIL_IGNORE_TLS=true-or-false
+          EMAIL_SECURE=true-or-false
+          EMAIL_USER=my-email-user
+          EMAIL_PASSWORD=my-email-password
+
+        .. note::
+
+          ``EMAIL_IGNORE_TLS`` should generally be set to ``false``. ``EMAIL_SECURE`` should generally be set to ``true`` if you use port 465 and to ``false`` for other ports.
+
+     #. Discard edits to the file:
+
+        .. code-block:: console
+
+          $ git checkout -- files/service/config.json.template
+
+   .. dropdown:: ``docker-compose.yml``
+     :icon: file-code
+
+     #. See what changes have been made:
+
+        .. code-block:: console
+
+          $ git diff
+
+        You will see additions in green with ``+`` prefixes. You can ignore any changes related to a custom database because those will be addressed by migrating ``files/service/config.json.template``. Copy any other changes to a scratch file on your local computer. You will use this to copy your custom values into the new format.
+
+     #. If you have any non-database customizations, open the ``.env`` file for editing:
+
+        .. code-block:: console
+
+          $ nano .env
+
+     #. If you specify a value for ``NODE_OPTIONS``, copy that to the ``.env`` file in the following format:
+
+        .. code-block:: bash
+
+          NODE_OPTIONS=my-node-options
+
+     #. If you specify any other customizations in your ``docker-compose.yml`` file, this is considered advanced and you will need to apply them manually after the upgrade. If you're not sure how to do this, `write a support post on the forum <https://forum.getodk.org/c/support/6>`_.
+
+     #. Discard edits to the file:
+
+        .. code-block:: console
+
+          $ git checkout -- docker-compose.yml
+
+   .. dropdown:: ``files/enketo/config.json.template`` or any others
+     :icon: file-code
+
+     #. Stash changes so they can be applied after the upgrade. These are considered advanced customizations and you may need to resolve merge conflicts when you re-apply them.
+
+        .. code-block:: console
+
+          $ git stash
+
 
 #. **Determine whether the server you are upgrading is using a custom database** (e.g. externally hosted on Azure, AWS, etc.) or the default one:
 
@@ -141,154 +240,130 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
        .. warning::
          Before starting:
    
-         * Read the instructions at the top of this section carefully and **make sure you are actually using the default database configuration**. Following these instructions with a custom database    setup could result in perceived data loss.
-   
-       
+         * Read the instructions at the top of this section carefully and **make sure you are actually using the default database configuration**. Following these instructions with a custom database setup could result in perceived data loss.
+         * There is a lot to download to perform this upgrade. If you are on a slow connection, be prepared for the initial build to take a long time.
    
        #. **Get the latest infrastructure version.** This is a typical upgrade step.
    
-          .. code-block:: bash
+          .. code-block:: console
    
-             cd central
-             git pull
-   
-          .. note::
-   
-             If you have customized any of the configuration files, you will need to move these customizations to ``.env``.
-
-             If you have made local changes to other files, you may have to start with ``git stash``, then run ``git stash pop`` after you perform the ``pull``.
+             $ cd central
+             $ git pull
    
        #. **Get the latest client and server.** This is also a typical upgrade step.
    
-          .. code-block:: bash
+          .. code-block:: console
    
-             git submodule update -i
+             $ git submodule update -i
    
-       #. **Check that you have enough disk space available.** If you are prompted for a password, enter the system superuser password (not a Central password). You will see a message about how much    space is required and if you have enough free space to proceed.
+       #. **Check that you have enough disk space available.** If you are prompted for a password, enter the system superuser password (not a Central password). You will see a message about how much space is required and if you have enough free space to proceed.
    
-          .. code-block:: bash
+          .. code-block:: console
    
-             sudo ./files/postgres14/upgrade/check-available-space
+             $ sudo ./files/postgres14/upgrade/check-available-space
    
           *If you don't have enough space,* **stop here** and resume when you have increased the disk space available. You may achieve this by clearing out data you don't need (e.g., logs) or by    increasing the total disk space available (e.g., by :ref:`adding external storage <central-install-digital-ocean-external-storage>`).
    
        #. **Create a file to prove that you're carefully reading these instructions.** This is required to continue.
    
-          .. code-block:: bash
+          .. code-block:: console
    
-             touch ./files/allow-postgres14-upgrade
+             $ touch ./files/allow-postgres14-upgrade
    
-       #. **Stop Central.** Central needs to be stopped to upgrade ``nginx``.
-   
-          .. code-block:: bash
-   
-             docker compose stop
+       #. **Reapply any advanced customizations**. If you had made notes on advanced configurations and/or stashed some edited files, reapply those advanced customizations now:
 
-       #. **Remove the old nginx container.**
+          .. code-block:: console
 
-          .. code-block:: bash
+             $ git stash pop
 
-             docker compose rm -f nginx
+          Use ``nano .env`` for any changes that you need to apply manually.
+
+       #. **Build from the latest code you just fetched.** This is a typical upgrade step.
    
-       #. **Build from the latest code you just fetched.**
+          .. code-block:: console
    
-          .. code-block:: bash
+             $ docker compose build
    
-             docker compose build
+       #. **Start the database upgrade and wait for the process to exit.** This is where the new PostgreSQL 14 database is made and data copied into it. This will take a long time if you have a lot of data and/or a slow server.
    
-       #. **Start the database upgrade and wait for the process to exit.** This is where the new PostgreSQL 14 database is made and data copied into it. The timing of this process is related to how    large your database is.
+          .. code-block:: console
    
-          .. code-block:: bash
+             $ docker compose up postgres
    
-             docker compose up postgres
-   
-       #. **Check the output of the previous command to see if there were any errors.** If there were any errors that you can't resolve, `write a support post on the forum <https://forum.getodk.org/c/   support/6>`_.
+       #. **Check the output of the previous command to see if there were any errors.** If there were any errors that you can't resolve, `write a support post on the forum <https://forum.getodk.org/c/support/6>`_.
    
        #. **Check the upgrade success file has been created.**
    
-          .. code-block:: bash
+          .. code-block:: console
    
-             ls ./files/postgres14/upgrade/upgrade-successful
+             $ ls ./files/postgres14/upgrade/upgrade-successful
    
-          If you see "No such file or directory," try doing ``docker compose up postgres`` again. If the file has still not been created, `write a support post on the forum <https://forum.getodk.org/c/   support/6>`_.
+          If you see "No such file or directory," try doing ``docker compose up postgres`` again. If the file has still not been created, `write a support post on the forum <https://forum.getodk.org/c/support/6>`_.
    
-       #. **Restart the server and verify that everything works as expected.**
+       #. **Restart the server.**
    
-          .. code-block:: bash
+          .. code-block:: console
    
-               docker compose up -d
+               $ docker compose up -d
    
        #. **Log into the web interface and do some quick spot checks.** For example, verify that submission counts and latest submission dates look right and try a data export.
    
-       **Clean up**
+       #. **Clean up**
    
-       The upgrade process performs a copy and leaves the old database intact.
+          #. **Remove unused Docker images**.
+
+             .. code-block:: console
+
+                 $ docker image prune
+
+             You'll be asked to confirm the removal of all dangling images. Agree by typing ``y`` and pressing Enter.
+
+          #. **See how much space the old database takes**. The upgrade process performs a copy and leaves the old database intact.
+
+             .. code-block:: console
+
+                  $ docker compose up postgres
+
+          #. **Delete the old data**. Make sure you have verified that the server works as expected first.
+
+             .. code-block:: console
    
-       #. The following command will show you how much space this old database takes.
-   
-          .. code-block:: bash
-   
-               docker compose up postgres
-   
-       #. Once you have verified that your server works as expected, you may delete the old data.
-   
-             .. code-block:: bash
-   
-               touch ./files/postgres14/upgrade/delete-old-data \
+               $ touch ./files/postgres14/upgrade/delete-old-data \
                   && docker compose up --abort-on-container-exit postgres
    
      .. tab:: Custom database
    
-       #. Find instructions for upgrading your database server to PostgreSQL 14. Here are instructions for some popular fully-managed options:
+       #. **Find instructions for upgrading your database server to PostgreSQL 14**. Here are instructions for some popular fully-managed options:
    
           * `DigitalOcean <https://docs.digitalocean.com/products/databases/postgresql/how-to/upgrade-version/>`_
           * `Amazon <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.PostgreSQL.html#USER_UpgradeDBInstance.PostgreSQL.MajorVersion.Process>`_
           * `Azure <https://learn.microsoft.com/en-us/azure/postgresql/single-server/how-to-upgrade-using-dump-and-restore>`_
    
-       #. Determine whether upgrading requires downtime. If it does, stop Central before continuing. To stop Central, log into your server and then:
+       #. **Determine whether upgrading your database requires downtime**. If it does, stop Central before continuing:
    
-          .. code-block:: bash
+          .. code-block:: console
    
-               cd central
-               docker compose stop
+            $ docker compose stop
    
-       #. Upgrade your database server. We recommend using the latest point release of PostgreSQL 14 that is available.
-   
-       #. If you are comfortable resolving merge conflicts, follow the :ref:`standard upgrade instructions <central-upgrade-steps>` and make sure to keep the same ``command`` for the ``service`` that    was previously customized (see :ref:`configuring a custom database server <central-install-digital-ocean-custom-db>`). If you don't know what merge conflicts or are not comfortable resolving    them, we recommend the following process:
-   
-          #. See what changes you have made to your ``docker-compose.yml`` file:
-   
-             .. code-block:: bash
-   
-                 git diff docker-compose.yml
-   
-             We recommend taking notes on the sections that have changed. You may want to refer to the sections on :ref:`advanced configuration options <central-install-digital-ocean-advanced>` and note    which instructions you followed. Type ``q`` to exit when you are done.
-   
-          #. Make a backup of your ``docker-compose.yml`` file:
-   
-             .. code-block:: bash
-   
-                 mv docker-compose.yml docker-compose.yml.bak
-   
-          #. Follow the :ref:`standard upgrade instructions <central-upgrade-steps>`. Before bringing the server back up, re-apply the changes you had made to ``docker-compose.yml``. You may find it    helpful to reference the backup file you made. At minimum, you will need to follow the instructions for :ref:`configuring a custom database server <central-install-digital-ocean-custom-db>`    that apply to ``docker-compose.yml``.
-   
-          #. After you verify that everything works as intended, remove your backup file:
-   
-             .. code-block:: bash
-   
-                 rm docker-compose.yml.bak
+       #. **Upgrade your database server**. We recommend using the latest point release of PostgreSQL 14 that is available.
 
-       #. **Stop Central.** Central needs to be stopped to upgrade ``nginx``.
+       #. **Create a file to prove that you're carefully reading these instructions.** This is required to continue.
    
-          .. code-block:: bash
+          .. code-block:: console
    
-             docker compose stop
+            $ touch ./files/allow-postgres14-upgrade
+   
+       #. Follow the :ref:`standard upgrade instructions <central-upgrade-steps>`.
 
-       #. **Remove the old nginx container.**
+          .. note::
 
-          .. code-block:: bash
+            If you had made notes on advanced configurations and/or stashed some edited files, you will need to reapply those advanced customizations after doing ``git pull``:
 
-             docker compose rm -f nginx
+            .. code-block:: console
+
+              $ git stash pop
+
+            Use ``nano .env`` for any changes that you need to apply manually.
 
 .. _central-upgrade-2023.1:
 
