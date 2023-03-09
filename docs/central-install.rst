@@ -45,7 +45,7 @@ If you want to self-host but you're not sure what cloud provider to choose, we r
 Installing elsewhere
 ~~~~~~~~~~~~~~~~~~~~
 
-Central is entirely defined via **Docker Compose**, which means the ``docker-compose`` command will be all you need to manage the entire system.
+Central is entirely defined via **Docker Compose**, which means the ``docker compose`` command will be all you need to manage the entire system.
 
 .. warning::
   We verify each version of Central on DigitalOcean and confirm that upgrades are possible. However, we do not verify them on other cloud providers and generally can't provide free support for installations that deviate from the DigitalOcean instructions. You may find other community members able to help `on the forum <https://forum.getodk.org/>`_.
