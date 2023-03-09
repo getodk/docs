@@ -118,7 +118,7 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
 
    If you are using old versions, follow the instructions at https://docs.docker.com/engine/install/ubuntu/ to upgrade.
 
-#. **Remove docker-compose.** You will be using ``docker compose`` from now on.
+#. **Remove docker-compose.** You will be using ``docker compose`` from now on (the dash has been replaced with a space).
 
    .. code-block:: console
 
@@ -194,15 +194,17 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
 
           $ git diff docker-compose.yml
 
-        You will see additions in green with ``+`` prefixes. You can ignore any changes related to a custom database because those will be addressed by migrating ``files/service/config.json.template``. Copy any other changes to a scratch file on your local computer. You will use this to copy your custom values into the new format.
+        You will see additions in green with ``+`` prefixes.
 
-     #. If you have any non-database customizations, open the ``.env`` file for editing:
+        You can ignore any changes related to a custom database because those have been addressed by migrating ``files/service/config.json.template``. Copy any other changes to a scratch file on your local computer. You will use this to copy your custom values into the new format.
+
+     #. If you specify a value for ``NODE_OPTIONS``, open the ``.env`` file for editing:
 
         .. code-block:: console
 
           $ nano .env
 
-     #. If you specify a value for ``NODE_OPTIONS``, copy that to the ``.env`` file in the following format:
+        Copy that to the ``.env`` file in the following format:
 
         .. code-block:: bash
 
@@ -230,9 +232,9 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
 
    .. code-block:: bash
 
-     head files/service/config.json.template
+     grep DB_HOST .env
 
-   If you see ``"host": "postgres"``, you are using the default database. If ``host`` is set to anything else, you are using a custom database server.
+   If you get nothing back, you are using the default database. If ``DB_HOST`` is set to anything else, you are using a custom database server.
 
 #. **Upgrade your database** according to your database type.
 
