@@ -12,8 +12,8 @@ If Central is behaving in an unexpected way, it is often helpful to read the Doc
 
 The containers that are most likely to be helpful for troubleshooting are the `service` container and the `nginx` container. Use the `--tail` and `--since` options to help filter the logs. For example:
 
-* ``docker logs --tail 100 central_service_1`` to see the last 100 lines of the service logs.
-* ``docker logs --since 5m central_nginx_1`` to see the last 5 minutes of the nginx logs.
+* ``docker logs --tail 100 central-service-1`` to see the last 100 lines of the service logs.
+* ``docker logs --since 5m central-nginx-1`` to see the last 5 minutes of the nginx logs.
 
 Other commands that are helpful are:
 
