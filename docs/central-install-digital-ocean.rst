@@ -37,17 +37,20 @@ At the very top, under **Choose an image**, switch to the **Marketplace** tab an
 
 As you continue down this page, there are a few options that may be important to you:
 
- - There is a section for standard droplets and another for more expensive optimized droplets. In general, you should not need optimized droplets.
- - The **size** option affects a few things, but the most important is the amount of memory available to your server. Memory does not affect storage space, it sets the amount of "thinking room" the server gets while it's working on things. If you don't expect many forms to be submitted at once and you don't expect many large media attachments, you can start with 1GB. Higher-load servers and servers which handle many image or video attachments may need 2GB or more. It is pretty easy to upgrade to a larger size later.
- - The datacenter region selects where physically your server will be located. If you have security concerns, this is your chance to decide which country hosts your data. Otherwise, generally selecting the option with closest geographic proximity to your users is a good idea.
- - If you are technically savvy and understand what an SSH key is, there is a field here that you will want to fill in. If not, don't worry about it.
+- There is a section for standard droplets and another for more expensive optimized droplets. In general, you should not need optimized droplets.
+- The **size** option affects a few things, but the most important is the amount of memory available to your server. Memory does not affect storage space, it sets the amount of "thinking room" the   server gets while it's working on things. If you don't expect many forms to be submitted at once and you don't expect many large media attachments, you can start with 1GB. Higher-load servers and   servers which handle many image or video attachments may need 2GB or more. It is pretty easy to upgrade to a larger size later.
 
-.. tip::
-  If you choose a 1GB server we strongly recommend you :ref:`add swap <central-install-digital-ocean-swap>`.
+  .. tip::
+
+    If you choose a 1GB server we strongly recommend you :ref:`add swap <central-install-digital-ocean-swap>`.
+
+- The datacenter region selects where physically your server will be located. If you have security concerns, this is your chance to decide which country hosts your data. Otherwise, generally   selecting the option with closest geographic proximity to your users is a good idea.
+- If you are technically savvy and understand what an SSH key is, there is a field here that you will want to fill in. If not, don't worry about it.
+
 
 Once you click on **Create**, you'll be taken back to the Droplet management page. It may think for a moment, and then your new server should appear. Next to it will be an IP address, which should look something like ``183.47.101.24``. This is where your server is publicly located on the Internet. Don't worry, nobody can do anything with it until you let them.
 
-Congratulations! With those steps, you have now created a new server which you can access over the Internet, and started it up. Next, we will get a web domain name address (like ``getodk.org``) to point at it.
+**Congratulations**! With those steps, you have now created a new server which you can access over the Internet, and started it up. Next, we will get a web domain name address (like ``getodk.org``) to point at it.
 
 .. _central-install-digital-ocean-domain:
 
@@ -62,8 +65,8 @@ If you already know how to do these sorts of things, feel free to ignore the fol
 
 For the rest of us, there are some options here:
 
- - You can pay one of the many popular commercial domain registrars for a full domain name, like ``MyOdkCollectionServer.com``. Search for "domain registrar" to find one of these. These often cost as little as $3/year.
- - You can use a free DNS service: we recommend `FreeDNS <https://freedns.afraid.org/>`_, which has run for a long time and has a good reputation. With it, you can get a free name, albeit with a fixed second half (like ``MyOdkCollectionServer.dynet.com``). If you choose this route, we recommend using one of the *less popular* names, as the heavily occupied names can run into trouble later on (in particular, getting a security certificate from Let's Encrypt).
+- You can pay one of the many popular commercial domain registrars for a full domain name, like ``MyOdkCollectionServer.com``. Search for "domain registrar" to find one of these. These often cost as little as $3/year.
+- You can use a free DNS service: we recommend `FreeDNS <https://freedns.afraid.org/>`_, which has run for a long time and has a good reputation. With it, you can get a free name, albeit with a fixed second half (like ``MyOdkCollectionServer.dynet.com``). If you choose this route, we recommend using one of the *less popular* names, as the heavily occupied names can run into trouble later on (in particular, getting a security certificate from Let's Encrypt).
 
 Whichever option you choose, once you get a domain name you'll want to look at `DigitalOcean's guide <https://www.digitalocean.com/docs/networking/dns>`_ on setting up domain names for your Droplet. In general, you'll point your domain name in DigitalOcean's direction at your registrar, then in DigitalOcean itself you'll want to create an A record that points to the IP address we found above.
 
