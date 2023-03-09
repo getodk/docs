@@ -35,51 +35,48 @@ Upgrade steps
   #. Make sure you have some time available in case something goes wrong (we recommend at least 2 hours). You may want to announce a maintenance window.
   #. Review upgrade instructions for **all versions** between your current version and the version you are upgrading to.
 
-#. Log into your server. If you used our :doc:`DigitalOcean installation steps <central-install-digital-ocean>`, we suggest reviewing the section :ref:`central-install-digital-ocean-build` as a reminder, or if you can't remember your password to start at the top of that section to reset your password.
+#. **Log into your server**. If you used our :doc:`DigitalOcean installation steps <central-install-digital-ocean>`, we suggest reviewing the section :ref:`central-install-digital-ocean-build` as a reminder, or if you can't remember your password to start at the top of that section to reset your password.
 
-#. Get the latest infrastructure version.
+#. **Get the latest infrastructure version**.
 
-.. code-block:: bash
+.. code-block:: console
 
-  cd central
-  git pull
+  $ cd central
+  $ git pull
 
 .. note::
 
   If you have made local changes to the files, you may have to start with ``git stash``, then run ``git stash pop`` after you perform the ``pull``. If you aren't sure, run ``git pull`` and it will tell you.
 
-3. Get the latest client and server.
+3. **Get the latest client and server**.
 
-.. code-block:: bash
+.. code-block:: console
 
-  git submodule update -i
+  $ git submodule update -i
 
-4. Build from the latest code you just fetched.
+4. **Build** from the latest code you just fetched.
 
-.. code-block:: bash
+.. code-block:: console
 
-  docker compose build
+  $ docker compose build
 
 .. note::
 
   If you run into problems with this step, try stopping Central (``docker compose stop``) and then retry ``docker compose build``.
 
-5. Perform maintenance
+5. **Clean up unused Docker images**
 
-.. code-block:: bash
+.. code-block:: console
 
-  docker prune
+  $ docker image prune
 
 You'll be asked to confirm the removal of all dangling images. Agree by typing the letter ``y`` and pressing ``Enter``.
 
-.. note::
-  If it thinks ``prune`` is not a docker command, run ``docker image prune`` instead.
-
 6. Restart the server
 
-.. code-block:: bash
+.. code-block:: console
 
-  docker compose up -d
+  $ docker compose up -d
 
 .. _version-specific-instructions:
 
