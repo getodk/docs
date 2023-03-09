@@ -137,13 +137,19 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
    .. dropdown:: ``files/service/config.json.template``
      :icon: file-code
 
-     #. See what changes have been made:
+     #. Make a backup copy of the file. You will manually copy differences to your local computer later so this is for additional protection:
+
+        .. code-block:: console
+
+          $ cp files/service/config.json.template files/service/config.json.template.bak
+
+     #. Copy changes to your local computer:
 
         .. code-block:: console
 
           $ git diff files/service/config.json.template
 
-        You will see additions in green with ``+`` prefixes. Copy those to a scratch file on your local computer. You will use this to copy your custom values into the new format.
+        You will see additions in green with ``+`` prefixes. Copy those to a scratch file on your local computer (e.g. using CTRL+C and CTRL+V). You will use this to copy your custom values into the new format.
 
      #. Open the ``.env`` file for editing:
 
@@ -174,10 +180,23 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
           EMAIL_SECURE=true-or-false
           EMAIL_USER=my-email-user
           EMAIL_PASSWORD=my-email-password
+          EMAIL_NO_REPLY=my-no-reply-email-address
 
         .. note::
 
           ``EMAIL_IGNORE_TLS`` should generally be set to ``false``. ``EMAIL_SECURE`` should generally be set to ``true`` if you use port 465 and to ``false`` for other ports.
+
+        .. note::
+
+          If your password has special characters in it, you will need to put single quotes ( ``'`` and ``'``) around the password. Values without special characters do not need quotes around them.
+
+        .. note::
+
+          ``EMAIL_NO_REPLY`` is equivalent to ``email.serviceAccount`` in the json config. If you leave it unconfigured, the default is ``no-reply@${YOUR_DOMAIN}``. You can specify a name that will be showed by email clients by using single quotes (``'``):
+
+          .. code-block:: bash
+
+            EMAIL_NO_REPLY='My Cool Server <no-reply@my-server.server>'
 
      #. Discard all ``files/service/config.json.template`` customizations. Make sure you have correctly copied all of them into ``.env``. You may want to keep the copy on your local computer until you have verified that everything works.
 
@@ -188,7 +207,13 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
    .. dropdown:: ``docker-compose.yml``
      :icon: file-code
 
-     #. See what changes have been made:
+     #. Make a backup copy of the file. You will manually copy differences to your local computer later so this is for additional protection:
+
+        .. code-block:: console
+
+          $ cp docker-compose.yml docker-compose.yml.bak
+
+     #. Copy changes to your local computer:
 
         .. code-block:: console
 
@@ -198,7 +223,7 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
 
         You can ignore any changes related to a custom database because those have been addressed by migrating ``files/service/config.json.template``.
 
-        Copy any other changes to a scratch file on your local computer. You will use this to copy your custom values into the new format.
+        Copy any other changes to a scratch file on your local computer (e.g. using CTRL+C and CTRL+V). You will use this to copy your custom values into the new format.
 
      #. If you specify a value for ``NODE_OPTIONS``, open the ``.env`` file for editing:
 
