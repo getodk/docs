@@ -46,21 +46,21 @@ You may run into a "Could not connect with Server" error message when previewing
 
 To resolve this problem, first identify your upstream DNS servers. Run ``cat /run/systemd/resolve/resolv.conf`` to see your current list of nameservers with their IP addresses. They will look like this:
 
-  .. code-block:: console
+.. code-block:: console
 
-       nameserver 1.2.3.4
-       nameserver 9.8.7.6
+  nameserver 1.2.3.4
+  nameserver 9.8.7.6
 
 
 Now, run ``nano /etc/docker/daemon.json`` to make those nameservers and, optionally, the Google DNS (8.8.8.8) as a fallback available to Docker. Your ``daemon.json`` file will look like the snippet below, but you will need to replace ``1.2.3.4`` and ``9.8.7.6`` with your nameservers' IP addresses.
 
-  .. code-block:: console
+.. code-block:: bash
 
-       {
-           "dns": ["1.2.3.4", "9.8.7.6", "8.8.8.8"]
-       }
+  {
+      "dns": ["1.2.3.4", "9.8.7.6", "8.8.8.8"]
+  }
 
-Finally, stop the containers, restart Docker, and bring the containers back up with ``docker-compose stop``, ``systemctl restart docker`` and ``docker-compose up -d``.
+Finally, stop the containers, restart Docker, and bring the containers back up with ``docker compose stop``, ``systemctl restart docker`` and ``docker compose up -d``.
 
 .. _migration-fails-due-to-out-of-memory-error:
 
@@ -91,13 +91,13 @@ If you get an error `413` when trying to upload a submission or when trying to u
 
 If you absolutely must upload files over 100MB, you can change the `client_max_body_size` `nginx` directive:
 
-  .. code-block:: console
+.. code-block:: console
 
-    cd ~/central
-    docker-compose stop
-    nano files/nginx/odk.conf.template
-    <modify the nginx conf value for client_max_body_size>
-    docker-compose up -d
+  $ cd ~/central
+  $ docker compose stop
+  $ nano files/nginx/odk.conf.template
+  <modify the nginx conf value for client_max_body_size>
+  $ docker compose up -d
 
 .. _troubleshooting-docker-compose-down:
 
@@ -110,57 +110,57 @@ Database reset after running Docker command
   If you do not have a backup, do not reboot or restart the machine. Instead, take a live, full disk backup of the machine so you have a fallback. If you are using DigitalOcean, see `how to create snapshots <https://docs.digitalocean.com/products/images/snapshots/how-to/snapshot-droplets/>`_.
 
 
-It is possible to accidentally reset the database by running the down command with docker-compose. We are working on a way to prevent this error in the future. For now, if you have run this command and your database has reset, follow these steps to restore your data.
+Prior to Central v2023.2, it is possible to accidentally reset the database by running the ``down`` command with ``docker-compose``. This no longer happens in Central v2023.2+ because the default database is stored on a named volume. If you are running an older Central version, you have run this command and your database has reset, follow these steps to restore your data.
 
 The instructions below assume you installed Central on an Ubuntu LTS server. If you did not, or do not feel confident following the steps below, email support@getodk.org for assistance.
 
 1. Capture the location of the new (and empty) database.
 
-  .. code-block:: console
+   .. code-block:: console
+ 
+     $ CENTRAL_NEW_DB=$(docker inspect --type container central_postgres_1 \
+       -f '{{(index .Mounts 0).Source}}' | cut -d / -f 6)
 
-    CENTRAL_NEW_DB=$(docker inspect --type container central_postgres_1 \
-      -f '{{(index .Mounts 0).Source}}' | cut -d / -f 6)
 
+2. Next, find any additional databases you have. You should get the number one (``1``) back. If you get anything else, stop and email support@getodk.org for assistance.
 
-2. Next, find any additional databases you have. You should get the number one (`1`) back. If you get anything else, stop and email support@getodk.org for assistance.
+   .. code-block:: console
 
-  .. code-block:: console
-
-    find /var/lib/docker/volumes/ -name pg_hba.conf \
-      | grep -v "$CENTRAL_NEW_DB" | wc -l
+     $ find /var/lib/docker/volumes/ -name pg_hba.conf \
+       | grep -v "$CENTRAL_NEW_DB" | wc -l
 
 3. Now that you've confirmed you have only one additional database, capture the location of the old database you wish to restore.
 
-  .. code-block:: console
+   .. code-block:: console
 
-    CENTRAL_OLD_DB=$(find /var/lib/docker/volumes/ -name pg_hba.conf \
-      | grep -v "$CENTRAL_NEW_DB" | cut -d / -f 6)
+     $ CENTRAL_OLD_DB=$(find /var/lib/docker/volumes/ -name pg_hba.conf \
+       | grep -v "$CENTRAL_NEW_DB" | cut -d / -f 6)
 
 4. Stop the Docker containers to prepare for restoration.
 
-  .. code-block:: console
+   .. code-block:: console
 
-    cd ~/central
-    docker-compose stop
+     $ cd ~/central
+     $ docker-compose stop
 
 5. Backup the new database and restore the old database.
 
-  .. code-block:: console
+   .. code-block:: console
 
-    cd /var/lib/docker/volumes/
-    mv "$CENTRAL_NEW_DB" "$CENTRAL_NEW_DB"-backup
-    mv "$CENTRAL_OLD_DB" "$CENTRAL_NEW_DB"
+     $ cd /var/lib/docker/volumes/
+     $ mv "$CENTRAL_NEW_DB" "$CENTRAL_NEW_DB"-backup
+     $ mv "$CENTRAL_OLD_DB" "$CENTRAL_NEW_DB"
 
 6. Now rebuild and restart the containers.
 
-  .. code-block:: console
+   .. code-block:: console
 
-    cd ~/central
-    docker-compose build
-    docker-compose up -d
+     $ cd ~/central
+     $ docker-compose build
+     $ docker-compose up -d
 
 7. Go to your site in a browser and try to log in with an account that previously existed. If everything works as expected, consider deleting the backup of the new database. You can find it with the following command.
 
-  .. code-block:: console
+   .. code-block:: console
 
-    find /var/lib/docker/volumes/ -name *-backup
+     $ find /var/lib/docker/volumes/ -name *-backup

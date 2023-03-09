@@ -23,7 +23,7 @@ Once you have a command line in front of you (it should say something like ``roo
 .. code-block:: console
 
   cd central
-  docker-compose exec service odk-cmd
+  docker compose exec service odk-cmd
 
 If you see instructions appear with the section headings *Usage*, *Options*, and *Commands*, you'll know you're in the right place. If you are familiar with command line tools in general, those instructions are probably all you need to get going. Otherwise, please see the sections below for a short guide and example on how to use each one.
 
@@ -36,7 +36,7 @@ If you followed our :doc:`DigitalOcean installation steps <central-install-digit
 
 .. code-block:: console
 
-  docker-compose exec service odk-cmd --email example@getodk.org user-create
+  docker compose exec service odk-cmd --email example@getodk.org user-create
 
 You will be asked for a password for the account, and if everything worked correctly you should see some data printed out that among other things lists the email you entered a moment ago. The next thing you'll need to do is to :ref:`make the new account an administrator <central-command-line-user-promote>`, which is normally automatically done by the web interface. If you don't, the new user will not be able to do anything.
 
@@ -51,7 +51,7 @@ Please start by performing the steps above in the :ref:`central-command-line-bas
 
 .. code-block:: console
 
-  docker-compose exec service odk-cmd --email example@getodk.org user-set-password
+  docker compose exec service odk-cmd --email example@getodk.org user-set-password
 
 You will be prompted for a new password. Type it in and press Enter, and if you see text that says ``true``, the action succeeded. You can then use the website to log into that user account.
 
@@ -66,7 +66,7 @@ Please start by performing the steps above in the :ref:`central-command-line-bas
 
 .. code-block:: console
 
-  docker-compose exec service odk-cmd --email example@getodk.org user-promote
+  docker compose exec service odk-cmd --email example@getodk.org user-promote
 
 If the action succeeded, you will see text that reads ``{"success":"true"}``.
 
