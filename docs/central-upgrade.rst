@@ -234,7 +234,7 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
 
      grep DB_HOST .env
 
-   If you get nothing back, you are using the default database. If ``DB_HOST`` is set to anything else, you are using a custom database server.
+   If you get nothing back or there's nothing after the ``=``, you are using the default database. If ``DB_HOST`` is set to any value, you are using a custom database server.
 
 #. **Upgrade your database** according to your database type.
 
@@ -247,14 +247,13 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
          * Read the instructions at the top of this section carefully and **make sure you are actually using the default database configuration**. Following these instructions with a custom database setup could result in perceived data loss.
          * There is a lot to download to perform this upgrade. If you are on a slow connection, be prepared for the initial build to take a long time.
    
-       #. **Get the latest infrastructure version.** This is a typical upgrade step.
+       #. **Get the latest infrastructure version.**
    
           .. code-block:: console
    
-             $ cd central
              $ git pull
    
-       #. **Get the latest client and server.** This is also a typical upgrade step.
+       #. **Get the latest client and server.**
    
           .. code-block:: console
    
@@ -280,9 +279,7 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
 
              $ git stash pop
 
-          Use ``nano .env`` for any changes that you need to apply manually.
-
-       #. **Build from the latest code you just fetched.** This is a typical upgrade step.
+       #. **Build from the latest code you just fetched.**
    
           .. code-block:: console
    
@@ -358,16 +355,6 @@ This is *critical infrastructure upgrade*. It updates many aspects of the infras
             $ touch ./files/allow-postgres14-upgrade
    
        #. Follow the :ref:`standard upgrade instructions <central-upgrade-steps>`.
-
-          .. note::
-
-            If you had made notes on advanced configurations and/or stashed some edited files, you will need to reapply those advanced customizations after doing ``git pull``:
-
-            .. code-block:: console
-
-              $ git stash pop
-
-            Use ``nano .env`` for any changes that you need to apply manually.
 
 .. _central-upgrade-2023.1:
 
