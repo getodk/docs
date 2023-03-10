@@ -72,6 +72,11 @@ Upgrade steps
 
 You'll be asked to confirm the removal of all dangling images. Agree by typing the letter ``y`` and pressing ``Enter``.
 
+.. note::
+
+  For a more thorough, but potentially dangerous clean up, consider using `docker system prune <https://docs.docker.com/engine/reference/commandline/system_prune/>`_.
+
+
 6. Restart the server
 
 .. code-block:: console

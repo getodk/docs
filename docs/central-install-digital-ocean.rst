@@ -98,11 +98,6 @@ Changing Server Settings
 
 If you are using old versions, follow the instructions to install `Docker Engine <https://docs.docker.com/engine/install/ubuntu>`_ (not Desktop) for Ubuntu, the operating system we recommend and support. The instructions will help you setup the Docker ``apt`` repository and install the latest version of Docker Engine and Docker Compose.
 
-#. Ensure that Docker starts up whenever the server starts. Docker will in turn ensure that Central has started up.
-
-.. code-block:: console
-
-  $ systemctl enable docker
 
 #. Modify the system firewall for web form features in Central to work correctly (using Enketo).
 
@@ -169,12 +164,6 @@ Getting and Setting Up Central
      $ docker compose build
 
    When it finishes, you should see some "Successfully built" type text and get your input prompt back.
-
-#. Create the services.
-
-   .. code-block:: console
-
-     $ docker compose up --no-start
 
 **Congratulations**! You have installed your copy of Central. Next, we need to teach the server how to start it up, and do so.
 
