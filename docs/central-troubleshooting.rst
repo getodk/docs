@@ -110,7 +110,7 @@ Database reset after running Docker command
   If you do not have a backup, do not reboot or restart the machine. Instead, take a live, full disk backup of the machine so you have a fallback. If you are using DigitalOcean, see `how to create snapshots <https://docs.digitalocean.com/products/images/snapshots/how-to/snapshot-droplets/>`_.
 
 
-Prior to Central v2023.2, it is possible to accidentally reset the database by running the ``down`` command with ``docker-compose``. This no longer happens in Central v2023.2+ because the default database is stored on a named volume. If you are running an older Central version, you have run this command and your database has reset, follow these steps to restore your data.
+In Central v2023.1 or earlier, it is possible to accidentally reset the database by running the ``down`` command with ``docker-compose``. This no longer happens in Central v2023.2 or later because the default database is stored on a named volume. If you are running an older Central version, you have run this command and your database has reset, follow these steps to restore your data.
 
 The instructions below assume you installed Central on an Ubuntu LTS server. If you did not, or do not feel confident following the steps below, email support@getodk.org for assistance.
 
