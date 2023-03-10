@@ -172,7 +172,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
         .. note::
 
-          If your database uses an SSL connection, add ``DB_SSL=true`` to ``.env``. If you don't need an SSL connection, omit that variable. If you enable SSL, the ``rejectUnauthorized`` option is also set to ``false`` which allows self-signed certificates. Make sure you have appropriately restricted access to your external database.
+          If your database requires an SSL connection, add ``DB_SSL=true`` to ``.env``. If you don't need an SSL connection, omit that variable. Note that ``DB_SSL=true`` allows self-signed certificates.
 
      #. If you use a custom email server, you will see changes in the email section. Copy those values to the ``.env`` file in the following format:
 
