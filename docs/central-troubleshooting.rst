@@ -93,7 +93,7 @@ If you absolutely must upload files over 100MB, you can change the `client_max_b
 
 .. code-block:: console
 
-  $ cd ~/central
+  $ cd central
   $ docker compose stop
   $ nano files/nginx/odk.conf.template
   <modify the nginx conf value for client_max_body_size>
@@ -140,7 +140,7 @@ The instructions below assume you installed Central on an Ubuntu LTS server. If 
 
    .. code-block:: console
 
-     $ cd ~/central
+     $ cd central
      $ docker-compose stop
 
 5. Backup the new database and restore the old database.
@@ -155,7 +155,7 @@ The instructions below assume you installed Central on an Ubuntu LTS server. If 
 
    .. code-block:: console
 
-     $ cd ~/central
+     $ cd central
      $ docker-compose build
      $ docker-compose up -d
 
