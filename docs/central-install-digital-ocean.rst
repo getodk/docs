@@ -37,17 +37,20 @@ At the very top, under **Choose an image**, switch to the **Marketplace** tab an
 
 As you continue down this page, there are a few options that may be important to you:
 
- - There is a section for standard droplets and another for more expensive optimized droplets. In general, you should not need optimized droplets.
- - The **size** option affects a few things, but the most important is the amount of memory available to your server. Memory does not affect storage space, it sets the amount of "thinking room" the server gets while it's working on things. If you don't expect many forms to be submitted at once and you don't expect many large media attachments, you can start with 1GB. Higher-load servers and servers which handle many image or video attachments may need 2GB or more. It is pretty easy to upgrade to a larger size later.
- - The datacenter region selects where physically your server will be located. If you have security concerns, this is your chance to decide which country hosts your data. Otherwise, generally selecting the option with closest geographic proximity to your users is a good idea.
- - If you are technically savvy and understand what an SSH key is, there is a field here that you will want to fill in. If not, don't worry about it.
+- There is a section for standard droplets and another for more expensive optimized droplets. In general, you should not need optimized droplets.
+- The **size** option affects a few things, but the most important is the amount of memory available to your server. Memory does not affect storage space, it sets the amount of "thinking room" the   server gets while it's working on things. If you don't expect many forms to be submitted at once and you don't expect many large media attachments, you can start with 1GB. Higher-load servers and   servers which handle many image or video attachments may need 2GB or more. It is pretty easy to upgrade to a larger size later.
 
-.. tip::
-  If you choose a 1GB server we strongly recommend you :ref:`add swap <central-install-digital-ocean-swap>`.
+  .. tip::
+
+    If you choose a 1GB server we strongly recommend you :ref:`add swap <central-install-digital-ocean-swap>`.
+
+- The datacenter region selects where physically your server will be located. If you have security concerns, this is your chance to decide which country hosts your data. Otherwise, generally   selecting the option with closest geographic proximity to your users is a good idea.
+- If you are technically savvy and understand what an SSH key is, there is a field here that you will want to fill in. If not, don't worry about it.
+
 
 Once you click on **Create**, you'll be taken back to the Droplet management page. It may think for a moment, and then your new server should appear. Next to it will be an IP address, which should look something like ``183.47.101.24``. This is where your server is publicly located on the Internet. Don't worry, nobody can do anything with it until you let them.
 
-Congratulations! With those steps, you have now created a new server which you can access over the Internet, and started it up. Next, we will get a web domain name address (like ``getodk.org``) to point at it.
+**Congratulations**! With those steps, you have now created a new server which you can access over the Internet, and started it up. Next, we will get a web domain name address (like ``getodk.org``) to point at it.
 
 .. _central-install-digital-ocean-domain:
 
@@ -62,8 +65,8 @@ If you already know how to do these sorts of things, feel free to ignore the fol
 
 For the rest of us, there are some options here:
 
- - You can pay one of the many popular commercial domain registrars for a full domain name, like ``MyOdkCollectionServer.com``. Search for "domain registrar" to find one of these. These often cost as little as $3/year.
- - You can use a free DNS service: we recommend `FreeDNS <https://freedns.afraid.org/>`_, which has run for a long time and has a good reputation. With it, you can get a free name, albeit with a fixed second half (like ``MyOdkCollectionServer.dynet.com``). If you choose this route, we recommend using one of the *less popular* names, as the heavily occupied names can run into trouble later on (in particular, getting a security certificate from Let's Encrypt).
+- You can pay one of the many popular commercial domain registrars for a full domain name, like ``MyOdkCollectionServer.com``. Search for "domain registrar" to find one of these. These often cost as little as $3/year.
+- You can use a free DNS service: we recommend `FreeDNS <https://freedns.afraid.org/>`_, which has run for a long time and has a good reputation. With it, you can get a free name, albeit with a fixed second half (like ``MyOdkCollectionServer.dynet.com``). If you choose this route, we recommend using one of the *less popular* names, as the heavily occupied names can run into trouble later on (in particular, getting a security certificate from Let's Encrypt).
 
 Whichever option you choose, once you get a domain name you'll want to look at `DigitalOcean's guide <https://www.digitalocean.com/docs/networking/dns>`_ on setting up domain names for your Droplet. In general, you'll point your domain name in DigitalOcean's direction at your registrar, then in DigitalOcean itself you'll want to create an A record that points to the IP address we found above.
 
@@ -87,79 +90,155 @@ Once you are in your server, you'll want to change your password so that people 
 Changing Server Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-First, you'll need to upgrade to docker-compose v1.28.3 or later. Follow these commands from `Docker's documentation <https://docs.docker.com/compose/install/#install-compose-on-linux-systems>`_.
+#. Make sure you are running Docker Engine v23.x and Docker Compose v2.16.x or greater.
 
 .. code-block:: console
 
- sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
- sudo chmod +x /usr/local/bin/docker-compose
- sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+  $ docker --version && docker compose version
 
-Next, we will want to ensure that Docker starts up whenever the server starts. Docker will in turn ensure that Central has started up. To do this, run ``systemctl enable docker``.
+If you are using old versions, follow the instructions to install `Docker Engine <https://docs.docker.com/engine/install/ubuntu>`_ (not Desktop) for Ubuntu, the operating system we recommend and support. The instructions will help you setup the Docker ``apt`` repository and install the latest version of Docker Engine and Docker Compose.
 
-You will need to change one more thing on this server before we proceed: you will need to modify the system firewall for Enketo features in Central to work correctly.
+#. Ensure that Docker starts up whenever the server starts. Docker will in turn ensure that Central has started up.
 
-The quickest way to do this is to run ``ufw disable`` while logged into your server's command line prompt. You should see the message ``Firewall stopped and disabled on system startup``. If so, you have configured the firewall correctly.
+.. code-block:: console
+
+  $ systemctl enable docker
+
+#. Modify the system firewall for web form features in Central to work correctly (using Enketo).
+
+.. code-block:: console
+
+  $ ufw disable
+
+You should see the message ``Firewall stopped and disabled on system startup``. If so, you have configured the firewall correctly.
 
 .. admonition:: For advanced administrators
 
   While it sounds dangerous, disabling your system firewall does not put your server at greater risk. In fact, most Linux operating systems come with the system firewall disabled.
 
-  If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be really difficult to do correctly, so we don't recommend most people try. Another option is to use an upstream network firewall.
+  If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be difficult to do correctly, so we don't recommend most people try. Another option is to use an upstream network firewall.
 
   The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. In particular, if you can successfully ``curl`` your Central website over HTTPS on its public domain name, all Enketo features should work correctly.
 
 Getting and Setting Up Central
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now you'll need to download the software. In the server window, type ``git clone https://github.com/getodk/central`` and press **Enter**. It should think for some time and download many things. Then type ``cd central`` to start working with the software.
+#. Download the software. In the server window, type:
 
-   .. image:: /img/central-install/cloned.png
+   .. code-block:: console
 
-You now have the framework of the server software, but some components are missing. Type ``git submodule update -i`` and press **Enter** to download them.
+     $ git clone https://github.com/getodk/central
 
-Next, you need to update some settings. First, copy the settings template file so you can edit it: type ``cp .env.template .env`` and press **Enter**.
+   and press **Enter**. It should think for some time and download many things.
 
-Then, edit the file by typing ``nano .env`` and pressing **Enter**. This will launch a text editing application. 
+#. Go into the new central folder:
 
- - Change the ``DOMAIN`` line so that after the ``=`` is the domain name you registered above. As an example: ``DOMAIN=MyOdkCollectionServer.com``. Do not include anything like ``http://``.
- - Change the ``SYSADMIN_EMAIL`` line so that after the ``=`` is your own email address. The Let's Encrypt service will use this address only to notify you if something is wrong with your security certificate.
- - Leave the rest of the settings alone. If you have a custom security or network environment you are trying to integrate Central into, see the :ref:`advanced configuration <central-install-digital-ocean-advanced>` sections for more information on these options.
- - Hold ``Ctrl`` and press ``x`` to quit the text editor. Press ``y`` to indicate that you want to save the file, and then press **Enter** to confirm the file name. Do not change the file name.
+   .. code-block:: console
 
-   .. image:: /img/central-install/nano.png
+     $ cd central
 
-Now, we will bundle everything together into a server. Type ``docker-compose build`` and press **Enter** to do this. This will take a long time and generate quite a lot of text output. Don't worry if it seems to pause without saying anything for a while. When it finishes, you should see some "Successfully built" type text and get your input prompt back. When that happens, type ``docker-compose up --no-start`` and press **Enter**.
+#. Get the latest client and server:
 
-Once that is complete, congratulations! You have installed your copy of Central. Next, we need to teach the server how to start it up, and do so.
+   .. code-block:: console
+
+     $ git submodule update -i
+
+#. Update settings. First, copy the settings template file so you can edit it:
+
+   .. code-block:: console
+
+     $ mv .env.template .env
+
+#. Launch the ``nano`` text editing application and specify required settings:
+
+   .. code-block:: console
+
+     $ nano .env
+
+   - Change the ``DOMAIN`` line so that after the ``=`` is the domain name you registered above. As an example: ``DOMAIN=MyOdkCollectionServer.com``. Do not include anything like ``http://``.
+   - Change the ``SYSADMIN_EMAIL`` line so that after the ``=`` is your own email address. The Let's Encrypt service will use this address only to notify you if something is wrong with your security    certificate.
+   - Leave the rest of the settings alone. If you have a custom security or network environment you are trying to integrate Central into, see the :ref:`advanced configuration <central-install-digital-ocean-advanced>` sections for more information on these options.
+   - Hold ``Ctrl`` and press ``x`` to quit the text editor. Press ``y`` to indicate that you want to save the file, and then press **Enter** to confirm the file name. Do not change the file name.
+
+     .. image:: /img/central-install/nano.png
+
+#. Bundle everything together into a server. This will take a long time and generate quite a lot of text output. Don't worry if it seems to pause without saying anything for a while.
+
+   .. code-block:: console
+
+     $ docker compose build
+
+   When it finishes, you should see some "Successfully built" type text and get your input prompt back.
+
+#. Create the services.
+
+   .. code-block:: console
+
+     $ docker compose up --no-start
+
+**Congratulations**! You have installed your copy of Central. Next, we need to teach the server how to start it up, and do so.
 
 .. _central-install-digital-ocean-startup:
 
 Starting up Central
 -------------------
 
-Now, run ``docker-compose up -d`` to start the server software. The first time you start it, it will take a while to set itself up. Once you give it a few minutes and you have input control again, you'll want to see whether everything is running correctly:
+#. Start the server software. The first time you start it, it will take a while to set itself up.
 
- - To see if ODK has finished loading, run ``docker-compose ps``. Under the ``State`` column, for the ``nginx`` row, you will want to see text that reads ``Up`` or ``Up (healthy)``. If you see ``Up (health: starting)``, give it a few minutes. If you see some other text, something has gone wrong. It is normal to see ``Exit 0`` for the ``secrets`` container.
- - If your domain name has started working, you can visit it in a web browser to check that you get the Central management website.
+   .. code-block:: console
 
-You're almost done! All you have to do is create an Administrator account so that you can log into Central.
+     $ docker compose up -d
+
+#. See whether ODK has finished loading.
+
+   .. code-block:: console
+
+     $ docker compose ps
+
+   Under the ``State`` column, for the ``nginx`` row, you will want to see text that reads ``Up`` or ``Up (healthy)``. If you see ``Up (health: starting)``, give it a few minutes. If you see some other text, something has gone wrong. It is normal to see ``Exit 0`` for the ``secrets`` container.
+
+#. Visit your domain name in a web browser. If it's not accessible yet, you should continue waiting. Once it is accessible, check that you get the Central website.
+
+**You're almost done**! All you have to do is create an Administrator account so that you can log into Central.
 
 .. _central-install-digital-ocean-account:
 
 Logging into Central
 --------------------
 
-If visiting your server domain name address in your browser does not load the Central management website, you may have to wait a few minutes or hours (possibly even a day) for the domain name itself to get working. These instructions are explained in further depth on the page detailing the :doc:`central-command-line`.
+If visiting your server domain name address in your browser does not load the Central website, you may have to wait a few minutes or hours (possibly even a day) for the domain name itself to get working. These instructions are explained in further depth on the page detailing the :doc:`central-command-line`.
 
 Once you do see it working, you'll want to set up your first Administrator account. To do this:
 
- - Ensure that you are in the ``central`` folder on your server. If you have not closed your console session from earlier, you should be fine. If you have just logged back into it, you'll want to run ``cd central`` to navigate to that folder.
- - Then, type ``docker-compose exec service odk-cmd --email YOUREMAIL@ADDRESSHERE.com user-create``, substituting your email address as appropriate. Press **Enter**, and you will be asked for a password for this new account.
- - The previous step created an account but did not make it an administrator. To do this, type ``docker-compose exec service odk-cmd --email YOUREMAIL@ADDRESSHERE.com user-promote`` **Enter**.
- - You are done for now, but if you ever lose track of your password, you can always reset it by typing ``docker-compose exec service odk-cmd --email YOUREMAIL@ADDRESSHERE.com user-set-password``. As with account creation, you will be prompted for a new password after you press **Enter**.
+#. Ensure that you are in the ``central`` folder on your server. If you have not closed your console session from earlier, you should be fine. If you have just logged back into it:
 
-Once you have one account, you do not have to go through this process again for future accounts: you can log into the website with your new account, and directly create new users that way.
+   .. code-block:: console
+
+     $ cd central
+
+#. Create a new account. Make sure to substitute the email address that you want to use for this account.
+
+   .. code-block:: console
+
+     $ docker compose exec service odk-cmd --email YOUREMAIL@ADDRESSHERE.com user-create
+
+   Press **Enter**, and you will be asked for a password for this new account.
+
+#. Make the new account an administrator.
+
+   .. code-block:: console
+
+     $ docker compose exec service odk-cmd --email YOUREMAIL@ADDRESSHERE.com user-promote
+
+#. Log into the Central website. Go to your domain name and enter in your new credentials. Once you have one administrator account, you do not have to go through this process again for future accounts: you can log into the website with your new account, and directly create new users that way.
+
+.. note::
+
+  If you ever lose track of your password, you can reset it with
+
+  .. code-block:: console
+
+    $ docker compose exec service odk-cmd --email YOUREMAIL@ADDRESSHERE.com user-set-password
 
 .. tip::
   If you find that users are not receiving emails, read about :ref:`troubleshooting emails <troubleshooting-emails>`.
@@ -208,7 +287,7 @@ Whether or not you choose to add swap, we recommend :ref:`monitoring memory usag
 
 To add swap, log into your server so you have a console prompt, and run these commands, adapted from `this article <https://help.ubuntu.com/community/SwapFaq#How_do_I_add_a_swap_file.3F>`_:
 
-.. code-block:: console
+.. code-block:: bash
 
  fallocate -l 1G /swap
  dd if=/dev/zero of=/swap bs=1k count=1024k
@@ -218,13 +297,13 @@ To add swap, log into your server so you have a console prompt, and run these co
 
 Run ``nano /etc/sysctl.conf`` and add the following to the end of the file to ensure that swap is only used when the droplet is almost out of memory.
 
-.. code-block:: console
+.. code-block:: bash
 
  vm.swappiness=10
 
 Finally, run ``nano /etc/fstab`` and add the following to the end of the file to ensure that the swap file is permanently available.
 
-.. code-block:: console
+.. code-block:: bash
 
  /swap swap swap defaults 0 0
 
@@ -239,9 +318,9 @@ Forms with many large media attachments can fill up your droplet's storage space
 
 2. `Move the Docker data directory <https://www.guguweb.com/2019/02/07/how-to-move-docker-data-directory-to-another-location-on-ubuntu/>`_ to the new volume.
 
-     1. To find the location of your new volume, run ``df -h``. The mount location will look like ``/mnt/volume_nyc1_01``. 
-     2. Then create a ``docker`` folder at that location with ``sudo mkdir /mnt/volume_nyc1_01/docker``. 
-     3. ``/mnt/volume_nyc1_01/docker`` will be the ``/path/to/your/docker`` you use.
+   1. To find the location of your new volume, run ``df -h``. The mount location will look like ``/mnt/volume_nyc1_01``. 
+   2. Then create a ``docker`` folder at that location with ``sudo mkdir /mnt/volume_nyc1_01/docker``. 
+   3. ``/mnt/volume_nyc1_01/docker`` will be the ``/path/to/your/docker`` you use.
 
 .. _central-install-custom-memory:
 
@@ -256,7 +335,7 @@ If you can't increase physical memory, you can alternatively :ref:`add swap <cen
 
 Then, in your ``docker-compose.yml`` file, add a ``NODE_OPTIONS`` variable with a ``--max_old_space_size`` flag set to the new value (e.g., 3.5GB or 3584 MB). Be sure to choose a value that leaves enough memory for your server's operating system and any other applications that may be running.
 
-.. code-block:: console
+.. code-block:: bash
 
   service:
     ...
@@ -267,9 +346,13 @@ Then, in your ``docker-compose.yml`` file, add a ``NODE_OPTIONS`` variable with 
       - NODE_OPTIONS=--max_old_space_size=3584
       - DOMAIN=${DOMAIN}
       - SYSADMIN_EMAIL=${SYSADMIN_EMAIL}
-    command: [ "./wait-for-it.sh", "postgres:5432", "--", "./start-odk.sh" ]
 
-Now rebuild the service container with ``docker-compose build service``, ``docker-compose stop service``, ``docker-compose up -d service``.
+Now rebuild the service container:
+
+.. code-block:: console
+
+  $ docker compose build service
+  $ docker compose up -d service
 
 If the cause of the memory error was a migration, you may remove these changes after the upgrade is complete and rebuild the container again.
 
@@ -284,7 +367,14 @@ By default, Central uses Let's Encrypt to obtain an SSL security certificate. Fo
 2. Generate a ``privkey.pem`` (``-keyout``) file which contains the private key used to sign your certificate.
 3. Copy those files into ``files/local/customssl/`` within the repository root.
 4. In ``.env``, set ``SSL_TYPE`` to ``customssl`` and set ``DOMAIN`` to the domain name you registered. As an example: ``DOMAIN=MyOdkCollectionServer.com``. Do not include anything like ``http://``.
-5. Build and run: ``docker-compose build nginx``, ``docker-compose stop nginx``, ``docker-compose up -d nginx``. If that doesn't work, you may need to first remove your old nginx container (``docker-compose rm nginx``).
+5. Build and run:
+
+   .. code-block:: console
+
+     $ docker compose build nginx
+     $ docker compose up -d nginx
+
+   If that doesn't work, you may need to first remove your old nginx container (``docker compose rm nginx``).
 
 .. _central-install-digital-ocean-custom-mail:
 
@@ -293,26 +383,32 @@ Using a Custom Mail Server
 
 Central ships with a basic EXIM server bundled to forward mail out to the internet. To use your own custom mail server:
 
-1. Ensure you have an SMTP relay server visible to your Central server network host.
-2. Edit the file ``files/service/config.json.template`` to reflect your network hostname, the TCP port, and authentication details. The ``secure`` flag is for TLS and should be set to ``true`` if the port is 465 and ``false`` for other ports. If no authentication is required, remove the ``auth`` section.
+#. Ensure you have an SMTP relay server visible to your Central server network host.
+#. Edit ``.env`` to reflect your network hostname, the TCP port, and authentication details. If no authentication is required, remove the ``EMAIL_USER`` and ``EMAIL_PASSWORD`` options.
 
-  .. code-block:: console
+   .. code-block:: console
 
-   "email": {
-     "serviceAccount": "my-replyto-email",
-     "transport": "smtp",
-     "transportOpts": {
-       "host": "smtp.example.com",
-       "port": 587,
-       "secure": false,
-       "auth": {
-         "user": "my-smtp-user",
-         "pass": "my-smtp-password"
-       }
-     }
-   }
+     $ nano .env
 
-3. Build and run: ``docker-compose build service``, ``docker-compose stop service``, ``docker-compose up -d service``.
+   .. code-block:: bash
+
+     EMAIL_HOST=my-email-host
+     EMAIL_PORT=my-email-port
+     EMAIL_IGNORE_TLS=true-or-false
+     EMAIL_SECURE=true-or-false
+     EMAIL_USER=my-email-user
+     EMAIL_PASSWORD=my-email-password
+
+   .. note::
+
+     ``EMAIL_IGNORE_TLS`` should generally be set to ``false``. ``EMAIL_SECURE`` should generally be set to ``true`` if you use port 465 and to ``false`` for other ports.
+
+#. Build and run:
+
+   .. code-block:: console
+
+     $ docker compose build service
+     $ docker compose up -d service
 
 .. _central-install-digital-ocean-custom-db:
 
@@ -320,42 +416,43 @@ Using a Custom Database Server
 ------------------------------
 
 .. warning::
-  Using a custom database server, especially one that is not local to your local network, may result in poor performance. We strongly recommend using the Postgres v9.6 server that is bundled with Central.
+  Using a custom database server that is not local to your local network, may result in poor performance.
 
-Central ships with a PostgreSQL database server. To use your own custom database server:
+Central ships with a PostgreSQL database server. To instead use your own custom database server:
 
-1. Ensure you have a PostgreSQL database server visible to your Central server network host.
-2. Ensure your database has ``UTF8`` encoding by running the following command on the database.
+#. Ensure you have a PostgreSQL database server visible to your Central server network host.
+#. Ensure your database has ``UTF8`` encoding by running the following command on the database.
 
-  .. code-block:: console
+   .. code-block:: postgres
 
-    SHOW SERVER_ENCODING;
+      SHOW SERVER_ENCODING;
 
-3. Ensure ``CITEXT`` and ``pg_trgm`` extensions exist by running the following commands on the database.
+#. Ensure ``CITEXT`` and ``pg_trgm`` extensions exist by running the following commands on the database.
 
-  .. code-block:: console
+   .. code-block:: postgres
 
-    CREATE EXTENSION IF NOT EXISTS CITEXT;
-    CREATE EXTENSION IF NOT EXISTS pg_trgm;
+      CREATE EXTENSION IF NOT EXISTS CITEXT;
+      CREATE EXTENSION IF NOT EXISTS pg_trgm;
 
-4. Edit the file ``files/service/config.json.template`` to reflect your database host, table, and authentication details.
+#. Edit ``.env`` to reflect your database host, name, and authentication details.
 
-  .. code-block:: console
+   .. code-block:: console
 
-    "database": {
-      "host": "my-db-host",
-      "user": "my-db-user",
-      "password": "my-db-password",
-      "database": "my-db-table"
-    },
+     $ nano .env
 
-4. Edit the file ``docker-compose.yml`` to update the command for the ``service`` container.
+   .. code-block:: bash
 
-  .. code-block:: console
+     DB_HOST=my-db-host
+     DB_USER=my-db-user
+     DB_PASSWORD=my-db-password
+     DB_NAME=my-db-name
 
-    command: [ "./wait-for-it.sh", "my-db-host:my-db-port", "--", "./start-odk.sh" ]
+#. Build and run:
 
-5. Build and run: ``docker-compose build service``, ``docker-compose stop service``, ``docker-compose up -d service``.
+   .. code-block:: console
+
+     $ docker compose build service
+     $ docker compose up -d service
 
 .. _central-install-digital-ocean-dkim:
 
@@ -372,16 +469,16 @@ DKIM is a security trust protocol which is used to help verify mail server ident
 
    .. code-block:: console
 
-     rmdir ~/central/files/dkim/rsa.private
+     $ rmdir ~/central/files/dkim/rsa.private
 
 3. Now, you'll need to generate a cryptographic keypair and enable the DKIM configuration. Run these commands:
 
    .. code-block:: console
 
-     cd ~/central/files/dkim
-     openssl genrsa -out rsa.private 1024
-     openssl rsa -in rsa.private -out rsa.public -pubout -outform PEM
-     cp config.disabled config
+     $ cd ~/central/files/dkim
+     $ openssl genrsa -out rsa.private 1024
+     $ openssl rsa -in rsa.private -out rsa.public -pubout -outform PEM
+     $ cp config.disabled config
 
 4. With the contents of the public key (``cat rsa.public``), you'll want to create two new TXT DNS records:
 
@@ -392,12 +489,11 @@ DKIM is a security trust protocol which is used to help verify mail server ident
 
    .. code-block:: console
 
-     cd ~/central
-     docker-compose build mail
-     docker-compose stop mail
-     docker-compose up -d mail
+     $ cd ~/central
+     $ docker compose build mail
+     $ docker compose up -d mail
 
-   If you see an error that says ``Can't open "rsa.private" for writing, Is a directory.``, you will need to ``rmdir ~/central/files/dkim/rsa.private``, then attempt ``docker-compose build mail`` again. If you see some other error, you may need to first remove your old mail container (``docker-compose rm mail``).
+   If you see an error that says ``Can't open "rsa.private" for writing, Is a directory.``, you will need to ``rmdir ~/central/files/dkim/rsa.private``, then attempt ``docker compose build mail`` again. If you see some other error, you may need to first remove your old mail container (``docker compose rm mail``).
 
 .. _central-install-digital-ocean-enketo:
 
@@ -411,7 +507,7 @@ Enketo is the software that Central uses to render forms in a web browser. It is
 
 1. Read the Enketo `configuration tutorial <https://enketo.github.io/enketo-express/tutorial-10-configure.html>`_ and `default-config.json <https://github.com/enketo/enketo-express/blob/master/config/default-config.json>`_ to understand what is possible.
 2. Edit the file ``files/enketo/config.json.template`` to reflect your desired changes.
-3. Build and run: ``docker-compose build``, ``docker-compose stop``, ``docker-compose up -d``.
+3. Build and run: ``docker compose build``,  ``docker compose up -d``.
 
 
 .. _central-install-digital-ocean-sentry:
@@ -422,41 +518,41 @@ Disabling or Customizing Sentry
 By default, we enable `Sentry error logging <https://sentry.io>`_ in Central's service container, which provides the Central development team with an anonymized log of unexpected programming errors that occur while your server is running. This information is only visible to the development team and should never contain any of your user or form data, but if you feel uncomfortable with this anyway, you can take the following steps to disable Sentry:
 
 1. Edit the file ``files/service/config.json.template`` and remove the ``sentry`` lines, starting with ``"sentry": {`` through the next three lines until you remove the matching ``}``.
-2. Build and run: ``docker-compose build service``, ``docker-compose stop service``, ``docker-compose up -d service``.
+2. Build and run: ``docker compose build service``, ``docker compose up -d service``.
 3. Edit the file ``files/nginx/odk.conf.template`` and replace the ``csp-report`` lines, starting with ``location /csp-report {`` through the next two lines until you remove the matching ``}`` with:
 
-  .. code-block:: console
+   .. code-block:: bash
 
-    location /csp-report {
-      return 200 'CSP report discarded.';
-      add_header Content-Type text/plain;
-    }
+      location /csp-report {
+        return 200 'CSP report discarded.';
+        add_header Content-Type text/plain;
+      }
 
-4. Build and run: ``docker-compose build nginx``, ``docker-compose stop nginx``, ``docker-compose up -d nginx``.
+4. Build and run: ``docker compose build nginx``, ``docker compose up -d nginx``.
 
 If on the other hand you wish to use your own Sentry instance, take these steps:
 
 1. Create a free account on `Sentry <https://sentry.io>`_, and create a new ``nodejs`` project.
 2. The new project will generate a ``DSN`` of the format ``https://SENTRY_KEY@SENTRY_SUBDOMAIN.ingest.sentry.io/SENTRY_PROJECT``.
-3. In ``files/service/config.json.template``, replace ``SENTRY_SUBDOMAIN``, ``SENTRY_KEY`` and ``SENTRY_PROJECT`` with the values from step 2.
+3. In ``.env``, set ``SENTRY_SUBDOMAIN``, ``SENTRY_KEY`` and ``SENTRY_PROJECT`` to the values from step 2.
 
-  .. code-block:: console
+   .. code-block:: console
 
-   {
-     "default": {
-       "database": {...},
-       "email": {...},
-       "env": {...},
-       "external": {
-         "sentry": {
-           "orgSubdomain": "SENTRY_SUBDOMAIN",
-           "key": "SENTRY_KEY",
-           "project": "SENTRY_PROJECT"
-         }
-       }
-     }
-   }
+     $ nano .env
 
-The error logs sent to Sentry (if enabled) are also being written to ``/var/log/odk/stderr.log`` in the running service container.
+   .. code-block:: bash
 
-4. In ``files/nginx/odk.conf.template``, replace ``https://o130137.ingest.sentry.io/api/1298632/security/?sentry_key=3cf75f54983e473da6bd07daddf0d2ee`` with your own Sentry ingest URL, which you can find in `Sentry's Content-Security-Policy documentation <https://docs.sentry.io/product/security-policy-reporting/#content-security-policy>`_.
+     SENTRY_ORG_SUBDOMAIN=
+     SENTRY_KEY=
+     SENTRY_PROJECT=
+
+4. Build and run:
+
+   .. code-block:: console
+
+     $ docker compose build
+     $ docker compose up -d
+
+.. note::
+
+  The error logs sent to Sentry (if enabled) are also being written to ``/var/log/odk/stderr.log`` in the running service container.

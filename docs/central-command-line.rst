@@ -5,9 +5,9 @@ Central Command Line Tools
 
 Central allows some administrative actions to be performed by anybody with direct console access to the server itself. Usually, this means only the person who set up the server and installed Central onto it. These tools can be used to:
 
- - create new user accounts,
- - reset passwords,
- - and manage user permissions.
+- create new user accounts,
+- reset passwords,
+- and manage user permissions.
 
 All of these actions can be done through the website, and if everything is working normally we strongly recommend that you use the web interface to perform these actions. But things happen, and if something gets broken (like everybody forgets their password, or someone deletes all the users), you can use the command line tools to get things working again.
 
@@ -22,8 +22,8 @@ Once you have a command line in front of you (it should say something like ``roo
 
 .. code-block:: console
 
-  cd central
-  docker-compose exec service odk-cmd
+  $ cd central
+  $ docker compose exec service odk-cmd
 
 If you see instructions appear with the section headings *Usage*, *Options*, and *Commands*, you'll know you're in the right place. If you are familiar with command line tools in general, those instructions are probably all you need to get going. Otherwise, please see the sections below for a short guide and example on how to use each one.
 
@@ -36,7 +36,7 @@ If you followed our :doc:`DigitalOcean installation steps <central-install-digit
 
 .. code-block:: console
 
-  docker-compose exec service odk-cmd --email example@getodk.org user-create
+  $ docker compose exec service odk-cmd --email example@getodk.org user-create
 
 You will be asked for a password for the account, and if everything worked correctly you should see some data printed out that among other things lists the email you entered a moment ago. The next thing you'll need to do is to :ref:`make the new account an administrator <central-command-line-user-promote>`, which is normally automatically done by the web interface. If you don't, the new user will not be able to do anything.
 
@@ -51,7 +51,7 @@ Please start by performing the steps above in the :ref:`central-command-line-bas
 
 .. code-block:: console
 
-  docker-compose exec service odk-cmd --email example@getodk.org user-set-password
+  $ docker compose exec service odk-cmd --email example@getodk.org user-set-password
 
 You will be prompted for a new password. Type it in and press Enter, and if you see text that says ``true``, the action succeeded. You can then use the website to log into that user account.
 
@@ -66,7 +66,7 @@ Please start by performing the steps above in the :ref:`central-command-line-bas
 
 .. code-block:: console
 
-  docker-compose exec service odk-cmd --email example@getodk.org user-promote
+  $ docker compose exec service odk-cmd --email example@getodk.org user-promote
 
 If the action succeeded, you will see text that reads ``{"success":"true"}``.
 
