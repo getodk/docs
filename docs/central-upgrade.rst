@@ -276,7 +276,6 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
          Before starting:
    
          * Read the instructions at the top of this section carefully and **make sure you are actually using the default database configuration**. Following these instructions with a custom database setup could result in perceived data loss.
-         * There is a lot to download to perform this upgrade. If you are on a slow connection, be prepared for the initial build to take a long time.
    
        #. **Get the latest infrastructure version.**
    
@@ -364,7 +363,9 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
                   && docker compose up --abort-on-container-exit postgres
    
      .. tab:: Custom database
-   
+       .. note::
+        Using PostgreSQL 14 isn't strictly necessary, but we only test with and support PostgreSQL 14. PostgreSQL 11 or later will likely work.
+
        #. **Find instructions for upgrading your database server to PostgreSQL 14**. Here are instructions for some popular fully-managed options:
    
           * `DigitalOcean <https://docs.digitalocean.com/products/databases/postgresql/how-to/upgrade-version/>`_
