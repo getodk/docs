@@ -147,7 +147,7 @@ Getting and Setting Up Central
 
    .. code-block:: console
 
-     $ mv .env.template .env
+     $ cp .env.template .env
 
 #. Launch the ``nano`` text editing application and specify required settings:
 
