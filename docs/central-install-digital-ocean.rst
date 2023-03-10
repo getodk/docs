@@ -162,6 +162,14 @@ Getting and Setting Up Central
 
      .. image:: /img/central-install/nano.png
 
+#. Let the system know that you want the latest version of the database:
+
+   .. code-block:: console
+
+     $ touch ./files/allow-postgres14-upgrade
+
+   This is mostly useful for *upgrades* but is also currently necessary for fresh installs.
+
 #. Bundle everything together into a server. This will take a long time and generate quite a lot of text output. Don't worry if it seems to pause without saying anything for a while.
 
    .. code-block:: console
