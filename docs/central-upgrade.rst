@@ -368,8 +368,8 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
                   && docker compose up --abort-on-container-exit postgres
    
      .. tab:: Custom database
-       .. note::
-        Using PostgreSQL 14 isn't strictly necessary, but we only test with and support PostgreSQL 14. PostgreSQL 11 or later will likely work.
+       .. warning::
+        Using PostgreSQL 14 isn't strictly required, but we only test with and support PostgreSQL 14.
 
        #. **Find instructions for upgrading your database server to PostgreSQL 14**. Here are instructions for some popular fully-managed options:
    
@@ -384,6 +384,12 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
             $ docker compose stop
    
        #. **Upgrade your database server**. We recommend using the latest point release of PostgreSQL 14 that is available.
+
+       #. **Regenerate optimizer statistics**. You need to regenerate all database statistics to avoid performance issues.
+   
+          .. code-block:: sql
+   
+            ANALYZE VERBOSE;
 
        #. **Create a file to prove that you're carefully reading these instructions.** This is required to continue.
    
