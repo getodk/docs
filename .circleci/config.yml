@@ -41,7 +41,7 @@ jobs:
   deploy:
     working_directory: ~/work
     docker:
-      - image: cimg/ruby:2.7
+      - image: cimg/ruby:3.2
     steps:
       - attach_workspace:
           at: ~/work
@@ -49,12 +49,9 @@ jobs:
           name: Install deploy requirements
           command: |
               if [[ "$CIRCLE_PROJECT_USERNAME" == "getodk" ]]; then \
-                sudo apt-get install -y software-properties-common
-                wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
-                sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
                 sudo apt-get update
-                sudo apt-get install -y adoptopenjdk-8-hotspot
-                gem install s3_website && s3_website install
+                sudo apt-get install -y pngquant openjdk-11-jre-headless
+                gem install s3_website_revived && s3_website install
               fi
       - run:
           name: Push to S3
