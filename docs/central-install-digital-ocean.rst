@@ -12,11 +12,11 @@ If you'd like to set up an ODK server that's accessible from anywhere via the In
 
 In general, this installation process will involve five phases:
 
-1. Getting a server and loading it with the appropriate base system.
-2. Getting a web address (domain name) and pointing it at your new server.
-3. Getting the Central software and installing it on your server.
-4. Preparing Central for startup and running it for the first time.
-5. Creating your first Central Administrator account and logging into it.
+#. Getting a server and loading it with the appropriate base system.
+#. Getting a web address (domain name) and pointing it at your new server.
+#. Getting the Central software and installing it on your server.
+#. Preparing Central for startup and running it for the first time.
+#. Creating your first Central Administrator account and logging into it.
 
 There are also some optional other steps you can take, which you can find at the bottom of this page.
 
