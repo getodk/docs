@@ -72,6 +72,11 @@ Upgrade steps
 
 You'll be asked to confirm the removal of all dangling images. Agree by typing the letter ``y`` and pressing ``Enter``.
 
+.. note::
+
+  For a more thorough, but potentially dangerous clean up, consider using `docker system prune <https://docs.docker.com/engine/reference/commandline/system_prune/>`_.
+
+
 6. Restart the server
 
 .. code-block:: console
@@ -276,7 +281,6 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
          Before starting:
    
          * Read the instructions at the top of this section carefully and **make sure you are actually using the default database configuration**. Following these instructions with a custom database setup could result in perceived data loss.
-         * There is a lot to download to perform this upgrade. If you are on a slow connection, be prepared for the initial build to take a long time.
    
        #. **Get the latest infrastructure version.**
    
@@ -364,7 +368,9 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
                   && docker compose up --abort-on-container-exit postgres
    
      .. tab:: Custom database
-   
+       .. warning::
+        Using PostgreSQL 14 isn't strictly required, but we only test with and support PostgreSQL 14.
+
        #. **Find instructions for upgrading your database server to PostgreSQL 14**. Here are instructions for some popular fully-managed options:
    
           * `DigitalOcean <https://docs.digitalocean.com/products/databases/postgresql/how-to/upgrade-version/>`_
@@ -378,6 +384,12 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
             $ docker compose stop
    
        #. **Upgrade your database server**. We recommend using the latest point release of PostgreSQL 14 that is available.
+
+       #. **Regenerate optimizer statistics**. You need to regenerate all database statistics to avoid performance issues. Run the following SQL command inside your database.
+   
+          .. code-block:: postgresql
+   
+            ANALYZE VERBOSE;
 
        #. **Create a file to prove that you're carefully reading these instructions.** This is required to continue.
    
