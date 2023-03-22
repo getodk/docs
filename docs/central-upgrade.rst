@@ -385,9 +385,9 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
    
        #. **Upgrade your database server**. We recommend using the latest point release of PostgreSQL 14 that is available.
 
-       #. **Regenerate optimizer statistics**. You need to regenerate all database statistics to avoid performance issues.
+       #. **Regenerate optimizer statistics**. You need to regenerate all database statistics to avoid performance issues. Run the following SQL command inside your database.
    
-          .. code-block:: sql
+          .. code-block:: postgresql
    
             ANALYZE VERBOSE;
 

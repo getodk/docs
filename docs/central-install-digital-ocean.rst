@@ -90,7 +90,7 @@ Once you are in your server, you'll want to change your password so that people 
 Changing Server Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Make sure you are running Docker Engine v23.x and Docker Compose v2.16.x or greater.
+#. Make sure you are running Docker Engine v23.x and Docker Compose v2.16.x or greater.
 
 .. code-block:: console
 
@@ -98,7 +98,7 @@ Changing Server Settings
 
 If you are using old versions, follow the instructions to install `Docker Engine <https://docs.docker.com/engine/install/ubuntu>`_ (not Desktop) for Ubuntu, the operating system we recommend and support. The instructions will help you setup the Docker ``apt`` repository and install the latest version of Docker Engine and Docker Compose.
 
-2. Modify the system firewall for web form features in Central to work correctly (using Enketo).
+#. Modify the system firewall for web form features in Central to work correctly (using Enketo).
 
 .. code-block:: console
 
@@ -563,7 +563,7 @@ Customizing Enketo
 ------------------
 
 .. warning::
-  Customizing Enketo's may break Central in subtle and unexpected ways. Do not make changes if you do not understand the implications of those changes.
+  Customizing Enketo may break Central in subtle and unexpected ways. Do not make changes if you do not understand the implications of those changes.
 
 Enketo is the software that Central uses to render forms in a web browser. It is used for form previews, web browser submission, and submission editing. Common customizations include enabling geocoding, adding analytics, and setting a default theme.
 
