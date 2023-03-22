@@ -936,6 +936,6 @@ If you use a repeat, you can generate a follow-up ``select_one`` question using 
   end_repeat, person
   
   select_one ${person_name}, tallest, Select the tallest person
-  select_one ${person_name}, tallest_child, Select the tallest person under 18., ${person_age} < 18
+  select_one ${person_name}, tallest_child, Select the tallest person under 18., ,${person_age} < 18
 
 As shown in the example above, you can combine this with other select features such as :ref:`filtering <cascading-selects>`. Note that in the example above, the question used as select option text is ``required``. If a question used to generate a ``select_one`` is not required and it is left blank for some repeat instances, those repeat instances will not be included in the select.
