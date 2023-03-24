@@ -234,7 +234,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
         Copy any other changes to a scratch file on your local computer (e.g. using CTRL+C and CTRL+V). You will use this to copy your custom values into the new format.
 
-     #. If you specify a value for ``NODE_OPTIONS``, open the ``.env`` file for editing:
+     #. If you specify a value for ``SERVICE_NODE_OPTIONS``, open the ``.env`` file for editing:
 
         .. code-block:: console
 
@@ -244,7 +244,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
         .. code-block:: bash
 
-          NODE_OPTIONS=my-node-options
+          SERVICE_NODE_OPTIONS=my-node-options
 
      #. If you specify any other customizations in your ``docker-compose.yml`` file, this is considered advanced and you will need to apply them manually after the upgrade. If you're not sure how to do this, `write a support post on the forum <https://forum.getodk.org/c/support/6>`_.
 
