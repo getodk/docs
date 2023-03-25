@@ -183,13 +183,13 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
         .. code-block:: bash
 
+          EMAIL_FROM=my-no-reply-email-address
           EMAIL_HOST=my-email-host
           EMAIL_PORT=my-email-port
           EMAIL_IGNORE_TLS=true-or-false
           EMAIL_SECURE=true-or-false
           EMAIL_USER=my-email-user
           EMAIL_PASSWORD=my-email-password
-          EMAIL_FROM=my-no-reply-email-address
 
         .. note::
 
