@@ -335,11 +335,8 @@ You can edit the following:
 You cannot edit these:
 
 - Device ID
-- Subscriber ID
-- SIM serial number
-- Install ID
 
-:guilabel:`Device ID` is currently set to the device IMEI. Starting in August 2020, Google will no longer allow Android applications to read the IMEI. At that time, the Collect-generated :guilabel:`Install ID` will be used as the :guilabel:`Device ID`. Both are currently displayed to allow organizations to transition over. :guilabel:`Install ID` can be copied by long-pressing on its text.
+:guilabel:`Device ID` is currently set to the Collect-generated :guilabel:`Install ID`.
 
 .. _usage-data-setting:
 
