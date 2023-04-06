@@ -27,23 +27,24 @@ redirects:
   # use url/index.html syntax to enable url, url/, url/index.html and hash passthrough
   aggregate-do/index.html: aggregate-digital-ocean
   aggregate-guide/index.html: aggregate-intro
+  briefcase-and-aggregate/index.html: briefcase-intro
   briefcase-forms/index.html: briefcase-using
   briefcase-guide/index.html: briefcase-intro
   briefcase-vs-aggregate/index.html: briefcase-intro
-  briefcase-and-aggregate/index.html: briefcase-intro
   central-datasets/index.html: central-entities
+  collect-connect-aggregate/index.html: collect-connect
   collect-guide/index.html: collect-intro
   collect-integrations/index.html: launch-apps-from-collect
-  projecting-collect/index.html: collect-mirror
   form-interaction/index.html: form-logic
+  form-tools/index.html: form-design-intro
   form-uploader/index.html: briefcase-using#pulling-form-definitions
   form-widgets/index.html: form-question-types
+  form-workflows/index.html: data-collector-workflows
   odk-build/index.html: build-intro
   odk2/index.html: https://docs.odk-x.org/odk-x
+  projecting-collect/index.html: collect-mirror
+  pyodk/index.html: https://getodk.github.io/pyodk
   pyxform/index.html: xlsform
   style-guide/index.html: docs-style-guide
-  visualize/index.html: aggregate-visualize
-  collect-connect-aggregate/index.html: collect-connect
   validate/index.html: https://github.com/getodk/validate
-  form-tools/index.html: form-design-intro
-  form-workflows/index.html: data-collector-workflows
+  visualize/index.html: aggregate-visualize
