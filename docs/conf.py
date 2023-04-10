@@ -39,7 +39,10 @@ extensions = [ 'sphinxcontrib.spelling',
     'sphinx_copybutton',
     'sphinx_video',
     'sphinxcontrib.youtube',
-    'sphinx_tabs.tabs'
+    'sphinx_tabs.tabs',
+    'sphinxcontrib.openapi',
+    'sphinx_toolbox.collapse',
+    'linuxdoc.rstFlatTable'
 ]
 
 # If using Apple Silicon, set env variable (assumes brew install of enchant)
@@ -76,7 +79,7 @@ html_css_files = [
 
 html_js_files = [
     ('https://helper.getodk.org/script.js', {'defer': 'defer', 'data-site': 'PBSTMJFG'}),
-    'js/custom.js',
+    'js/custom.js'
 ]
 
 html_theme_options = {
@@ -106,4 +109,4 @@ spelling_word_list_filename='spelling_wordlist.txt'
 
 # Smart (q)uotes, (D)ashes, and (e)llipses
 smartquotes = True
-smartquotes_action = 'De'
+smartquotes_action = 'De'  

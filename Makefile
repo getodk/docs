@@ -18,7 +18,7 @@ clean:
 	rm -rf "$(BUILDDIR)/"*
 
 autobuild:
-	sphinx-autobuild -b dirhtml "$(SOURCEDIR)" "$(BUILDDIR)/html"
+	sphinx-autobuild -b dirhtml "$(SOURCEDIR)" "$(BUILDDIR)/html" --pre-build "python3 util/openapi"  --re-ignore "central-api|_build"
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
