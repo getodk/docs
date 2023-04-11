@@ -154,8 +154,6 @@ Transferring Finalized Forms
 
 To perform analysis on data collected with the Collect app, you will need to get the filled forms off of the devices. Generally, this is done by uploading them to an ODK server or Google Sheets. To do this, you will first need to :doc:`configure a server <collect-connect>`.
 
-In some cases, you may want to :ref:`pull filled forms directly from a device <pulling-forms-with-briefcase>`. This can be simpler than setting up a server if you are only using a small number of devices or when there is no Internet access. It can also be helpful to recover from submission failures.
-
 .. _uploading-to-aggregate-or-google-drive:
 
 Sending Finalized Forms to a Server
@@ -195,13 +193,6 @@ To show sent and unsent forms:
 .. image:: /img/collect-forms/send-finalized-change-view.*
   :alt: The Send Finalized Forms screen of the Collect app. The *Change View* option is circled in red.
   :class: device-screen-vertical
-
-.. _pulling-forms-with-briefcase:
-
-Pulling Forms into Briefcase
------------------------------
-
-:doc:`ODK Briefcase  <briefcase-using>` is a desktop application that can be used to pull filled forms to your local computer. You will first need to :ref:`transfer the filled forms to your computer <pull-from-collect>`. This will not update the state of the form to `Sent`.
 
 .. _deleting-forms:
 
