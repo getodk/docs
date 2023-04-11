@@ -204,8 +204,6 @@ Deleting Forms
 
     In Collect v1.28 and later, filled instances of forms will still be editable after their blank form is deleted. This means that the form definition and media files will remain on the device until all the filled instances have been deleted.
 
-    
-
 You can delete `Blank` forms as well as filled forms in any state (`Saved`, `Finalized`, or `Sent`). Deleting a `Sent` form deletes the form contents but metadata associated with it including the deletion date and the instance name are maintained for display in the :guilabel:`View Sent Form` list.
 
 1. Select :guilabel:`Delete Saved Form` on the app home screen.
@@ -225,7 +223,6 @@ You can delete `Blank` forms as well as filled forms in any state (`Saved`, `Fin
    .. image:: /img/collect-forms/delete-saved-forms-blank-forms.*
      :alt: The Delete Saved Forms screen in the Collect app. There are two available tabs: *Saved Forms* and *Blank Forms*. The *Blank Forms* tab is active. Below that is a list of blank forms, with checkboxes. There are buttons labeled: *Select All* and *Delete Selected*.
      :class: device-screen-vertical
-
 
 .. note::
 
