@@ -9,9 +9,9 @@ ODK Collect is used by :term:`enumerators <enumerator>` to collect survey data b
 
 Collect is used to:
 
-1. :ref:`Get blank forms <loading-forms-into-collect>` from :ref:`a server or Google Drive <in-app-get-blank-forms>`
+1. :ref:`Get blank forms <loading-forms-into-collect>` from :ref:`a server <in-app-get-blank-forms>`
 2. :doc:`Fill out surveys  <collect-filling-forms>` with participants
-3. :ref:`Upload completed surveys <uploading-forms>` to a server or Google Drive
+3. :ref:`Upload completed surveys <uploading-forms>` to a server
 
 -----
 

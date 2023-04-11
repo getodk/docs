@@ -69,8 +69,6 @@ The only permission that is required for using Collect is the storage permission
 +------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | Camera     | required by :ref:`image <image-widgets>` and :ref:`video <video>` questions to capture new media                                  |
 +------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Contacts   | required to configure a Google account for Google Drive, Google Sheets submissions                                                |
-+------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | Location   | required for :ref:`location <location-widgets>` questions                                                                         |
 +------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | Microphone | required by :ref:`audio <audio>` and :ref:`video <video>` questions to capture new media                                          |

@@ -144,14 +144,12 @@ Here are the keys for all settings and the set of values they can take:
     "general" : {
 
       // Server
-      "protocol": {"odk_default", "google_sheets"},
+      "protocol": {"odk_default"},
       "server_url": String,
       "username": String,
       "password": String,
       "formlist_url": String,
       "submission_url": String,
-      "selected_google_account": String,
-      "google_sheets_url": String,
 
       // User interface
       "appTheme": {"light_theme", "dark_theme"},
