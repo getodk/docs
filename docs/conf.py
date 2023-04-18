@@ -105,6 +105,9 @@ html_logo = '_static/img/odk-logo.svg'
 
 spelling_word_list_filename='spelling_wordlist.txt'
 
+# something intelligent needs to be done for spelling check of API spec
+spelling_exclude_patterns=['central-api*']
+
 # Smart (q)uotes, (D)ashes, and (e)llipses
 smartquotes = True
 smartquotes_action = 'De'
