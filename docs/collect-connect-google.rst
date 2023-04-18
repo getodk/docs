@@ -1,8 +1,13 @@
+:orphan: orphan
+
 Connecting to a Google Drive Account
 ====================================
 
 .. warning::
-   Google Sheets have a `cell limit <https://support.google.com/drive/answer/37603>`_ (currently 5 million) above which errors will be reported.
+  Collect will stop connecting to Google Drive/Sheets in Fall 2023. See these `recommended actions <https://forum.getodk.org/t/collect-will-stop-connecting-to-google-drive-sheets-in-fall-2023/40097>`_.
+
+.. warning::
+  Google Sheets have a `cell limit <https://support.google.com/drive/answer/37603>`_ (currently 10 million) above which errors will be reported.
 
 #. `Add the Google account <https://support.google.com/android/answer/7664951>`_ you want to use to manage forms and submissions for Collect to your device if you haven't already
 #. When you first launch Collect, tap on :guilabel:`Manually enter project details`
