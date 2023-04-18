@@ -40,8 +40,7 @@ extensions = [ 'sphinxcontrib.spelling',
     'sphinx_video',
     'sphinxcontrib.youtube',
     'sphinx_tabs.tabs',
-    'sphinx_toolbox.collapse',
-    'linuxdoc.rstFlatTable'
+    'sphinx_toolbox.collapse'
 ]
 
 # If using Apple Silicon, set env variable (assumes brew install of enchant)
