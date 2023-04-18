@@ -40,7 +40,6 @@ extensions = [ 'sphinxcontrib.spelling',
     'sphinx_video',
     'sphinxcontrib.youtube',
     'sphinx_tabs.tabs',
-    'sphinxcontrib.openapi',
     'sphinx_toolbox.collapse',
     'linuxdoc.rstFlatTable'
 ]
@@ -109,4 +108,4 @@ spelling_word_list_filename='spelling_wordlist.txt'
 
 # Smart (q)uotes, (D)ashes, and (e)llipses
 smartquotes = True
-smartquotes_action = 'De'  
+smartquotes_action = 'De'
