@@ -65,8 +65,7 @@ Building selects from GeoJSON files
 .. warning::
   GeoJSON attachments are not yet available in web forms (Enketo).
 
-  Support for polygons and lines was introduced in Collect v2023.1.0.
-
+  Polygons and lines are only supported in Collect v2023.1.0 or later.
 
 GeoJSON files that follow `the GeoJSON spec <https://datatracker.ietf.org/doc/html/rfc7946>`_ can be used as datasets that populate select questions using ``select_one_from_file``. Selects from GeoJSON may be styled as maps using the :ref:`map appearance <select-from-map>` but can also use any other :ref:`select appearance <select-appearances>`. In order to be used by a form, a GeoJSON file:
 
