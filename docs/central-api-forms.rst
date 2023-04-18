@@ -814,6 +814,7 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                       
                     .. collapse:: expand
+                      :class: nested-schema
 
                       .. list-table::
                           :widths: 25 75
@@ -859,6 +860,7 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                       
                     .. collapse:: expand
+                      :class: nested-schema
 
                       .. list-table::
                           :widths: 25 75

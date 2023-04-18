@@ -78,6 +78,7 @@ If the Usage Reporting configuration is not set, this endpoint will return a ``4
 
                       
                     .. collapse:: expand
+                      :class: nested-schema
 
                       .. list-table::
                           :widths: 25 75
@@ -338,6 +339,7 @@ If the Usage Reporting configuration is already set, the current configuration w
 
                       
                     .. collapse:: expand
+                      :class: nested-schema
 
                       .. list-table::
                           :widths: 25 75

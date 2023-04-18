@@ -23,6 +23,7 @@
         {{# items }}
         {{# items.0}}
         .. collapse:: expand
+          :class: nested-schema
         {{/ items.0}}
         
           {{> table }}
@@ -31,6 +32,7 @@
 
         {{^ isArray }}  
         .. collapse:: expand
+          :class: nested-schema
 
           {{> table }}
         {{/ isArray }} 

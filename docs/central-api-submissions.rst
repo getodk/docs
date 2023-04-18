@@ -303,6 +303,7 @@ If the XML is unparseable or there is some other input problem with your data, y
 
                       
                     .. collapse:: expand
+                      :class: nested-schema
 
                       .. list-table::
                           :widths: 25 75
@@ -675,6 +676,7 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                       
                     .. collapse:: expand
+                      :class: nested-schema
 
                       .. list-table::
                           :widths: 25 75
@@ -741,6 +743,7 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                       
                     .. collapse:: expand
+                      :class: nested-schema
 
                       .. list-table::
                           :widths: 25 75
@@ -1026,6 +1029,7 @@ When you create a new submission version, any uploaded media files attached to t
 
                       
                     .. collapse:: expand
+                      :class: nested-schema
 
                       .. list-table::
                           :widths: 25 75
@@ -1386,6 +1390,7 @@ Starting with Version 2022.3, changing the ``reviewState``\  of a Submission to 
 
                       
                     .. collapse:: expand
+                      :class: nested-schema
 
                       .. list-table::
                           :widths: 25 75
@@ -3868,6 +3873,7 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                       
                     .. collapse:: expand
+                      :class: nested-schema
 
                       .. list-table::
                           :widths: 25 75
@@ -4758,6 +4764,7 @@ Identical to `the non-Draft version </reference/submissions/submissions/creating
 
                       
                     .. collapse:: expand
+                      :class: nested-schema
 
                       .. list-table::
                           :widths: 25 75
@@ -5514,6 +5521,7 @@ Identical to `the non-Draft version </reference/submissions/submissions/getting-
 
                       
                     .. collapse:: expand
+                      :class: nested-schema
 
                       .. list-table::
                           :widths: 25 75
@@ -5580,6 +5588,7 @@ Identical to `the non-Draft version </reference/submissions/submissions/getting-
 
                       
                     .. collapse:: expand
+                      :class: nested-schema
 
                       .. list-table::
                           :widths: 25 75

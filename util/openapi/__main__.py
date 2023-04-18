@@ -3,18 +3,11 @@ import pathlib
 import re
 import json
 from datetime import date, datetime
-# we should use chevron for it recommended by Mustache but
+# we should use chevron for it is recommended by Mustache but
 # Nested partials bug: chevron/issues/100
 import pystache
 
-from pystache.tests.examples.readme import SayHello
-hello = SayHello()
-
-def main2():
-    renderer = pystache.Renderer(search_dirs=currentDir)
-    print(renderer.render('Hi {{person}}! {{>say_hello}}', {'person': 'Mom', 'to': 'sadiq'}))
-
-docDir = "./docs" #pathlib.Path().resolve()
+docDir = "./docs" 
 currentDir = str(pathlib.Path(__file__).parent.resolve())
 schemas = {}
 renderer = pystache.Renderer(search_dirs=currentDir)
@@ -28,7 +21,6 @@ def main():
     tags = spec.get('tags')
     files = dict()    
     for tag in tags:
-        # if tag.get('name') == 'Submissions':
         files[tag.get('name')] = {
             "filename": f"{tag.get('name').lower().replace(' ', '-')}.rst",
             "data": {
@@ -42,7 +34,6 @@ def main():
     for endpoint, path in paths.items():
         for method, operation in path.items():
             tag = operation.get("tags")[0]
-            # if tag == 'Submissions' and operation.get('summary') == 'Getting Submission metadata':
             print(operation["tags"][0] + ':' + method + ':' + endpoint)
             files.get(tag).get('data').get('operations').append({
                 'method': method.upper(),
@@ -133,7 +124,7 @@ def getRequest(operation):
 
     return result
 
-# see can be done with the resolve schema
+# see if this can be done with the resolve schema
 def getExampleValue(schema):
     if 'example' in schema and schema['example'] != None:
         return schema['example']
@@ -181,7 +172,7 @@ def resolveSchema(schema):
 
     if 'allOf' in schema:
         result = {
-          'name': 'TODO',
+          'name': '', # TODO is it used anywhere?
           'type': 'object',
           'description': md2rs(schema.get('description')),
           'example': schema.get('example'),
@@ -259,7 +250,7 @@ def getResponses(operation):
     for code, details in operation.get('responses').items():
       contents = list(details.get('content'))
       if len(contents) == 0: continue
-      # TODO we support just one content type
+      # we support just one content type for one status code
       contentType = list(details.get('content'))[0]
       if contentType == 'text/csv' or contentType == 'text/html' or contentType == 'application/xml' or contentType == 'text/xml':
           if 'example' in details.get('content').get(contentType):
