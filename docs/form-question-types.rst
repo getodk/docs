@@ -1025,42 +1025,71 @@ Select one from map widget
 
   `ODK Collect v2022.2.0 <https://github.com/getodk/collect/releases/tag/v2022.2.0>`_
 
+type
+ ``select_one {list_name}``
+appearance
+ ``map``
+
 .. warning::
-  The `map` appearance on selects currently only supports single selection of points and is not yet available in web forms (Enketo).
+  The `map` appearance on selects is not yet available in web forms (Enketo).
+
+  Support for polygons and lines was introduced in Collect v2023.1.0.
 
   The different :ref:`basemap sources <mapping-settings>` currently have different performance. If Collect feels slow when creating the map or when selecting a choice, please describe what you are experiencing `on the forum <https://forum.getodk.org/c/support/6>`_. If you have many choices to include on a map, try a provider other than Google or Mapbox. You can also use a :ref:`choice filter <cascading-selects>` to reduce the number of choices that get mapped.
 
 .. note::
     The only appearance that can combine with selection from map is `quick`.
 
-type
- ``select_one {list_name}``
-appearance
- ``map``
+If the choices that you want users to select from are locations, you can display them on a map. Each choice must have a ``geometry`` property that specifies the choice's geometry. You can include points, lines, polygons, or a mix.
 
-If the choices that you want users to select from have locations, you can display them on a map. Each choice must have a ``geometry`` property that specifies the choice's geometry. 
+.. image:: /img/form-question-types/select-from-map-point.*
+  :alt: Single select from map as displayed in the ODK Collect app on an Android phone. The question text is "Select a point" and it is displayed in a small top bar. Below that is a map with several markers. One of the markers is larger. At the bottom of the screen, there is information about the selected marker. Its label is "Restaurant Délicia". Several other properties are shown including `timestamp`, `version` and `amenity`. Below the properties, there is a rounded button with a save icon and the text "Select."
+  :class: device-screen-vertical
 
-You can use a :ref:`GeoJSON attachment <selects-from-geojson>` as a source of choices to map. Alternately, you can add a ``geometry`` column to the **choices** tab or to an :ref:`external CSV file <selects-from-csv>`. 
+.. image:: /img/form-question-types/select-from-map-polygon.*
+  :alt: Single select from map as displayed in the ODK Collect app on an Android phone. The question text is "Select a building to inspect" and it is displayed in a small top bar. Below that is a map with several buildings outlined in red with red shading. At the bottom of the screen, there is information about the selected building. Its label is "Elephant Care Center". Below the properties, there is a rounded button with a save icon and the text "Select."
+  :class: device-screen-vertical
 
-When using a ``geometry`` column instead of a GeoJSON file, the geometry must be specified in :ref:`the ODK format <location-widgets>`. For example, you could attach data collected using another ODK form and make sure that the column containing ``geopoint`` values has name ``geometry``.
+Specifying geometry for choices
+'''''''''''''''''''''''''''''''''''
+You can specify geometry for all choice sources:
+
+#. If you specify choices in the form using the **choices** tab, add a ``geometry`` column
+#. If you use an :ref:`external CSV file <selects-from-csv>` and use ``select_one_from_file``, add a ``geometry`` column
+#. Use a :ref:`GeoJSON attachment <selects-from-geojson>` and ``select_one_from_file``
+
+For the first two options, geometry values must be specified in :ref:`the ODK format <location-widgets>`. This makes it straightforward to use data previously collected by ODK as choices displayed on a map. You must make sure that the column containing the geometry to use for each choice has the name ``geometry``.
+
+Learn more about using GeoJSON attachments and see a worked example :ref:`here <selects-from-geojson>`.
 
 .. note::
     Choices with invalid geometries are silently ignored. There will be no message displayed to a user when it happens.
 
-.. image:: /img/form-question-types/select-from-map.*
- :alt: Single select from map as displayed in the ODK Collect app on an Android phone. The question text is "Select a point" and it is displayed in a small top bar. Below that is a map with several markers. One of the markers is larger. At the bottom of the screen, there is information about the selected marker. Its label is "Restaurant Délicia". Several other properties are shown including `timestamp`, `version` and `amenity`. Below the properties, there is a rounded button with a save icon and the text "Select."
- :class: device-screen-vertical
+Select one from map behavior
+'''''''''''''''''''''''''''''
 
 When the map is first opened, it centers on the device's current location. There are buttons on the right to recenter on the current location and to show all available points.
 
-Point choices are represented by map markers (:fa:`map-marker`). Tapping on a marker increases its size and displays all of the choice's properties at the bottom of the screen. Those properties are from:
+Point choices are represented by map markers (:fa:`map-marker`). Tapping on a marker increases its size.
+
+Line and polygon choices are represented by red lines connecting small white circles at each vertex. The inside of polygons is shaded red and can be tapped to select the polygon.
+
+When a choice is selected, its properties are displayed at the bottom of the screen. Those properties are from:
 
 - additional columns when choices are specified the **choices** tab or an :ref:`external CSV file <selects-from-csv>`
 - the ``properties`` object when choices are specified in a GeoJSON file
 
-Under the properties, there is a button to save the currently-selected feature to the form.
+Under the choice label, there is a button to save the currently-selected feature to the form.
+
+Choice properties
+''''''''''''''''''
 
 All of a choice's properties including ``geometry`` can be used in the rest of the form (see :ref:`referencing values in datasets <referencing-values-in-datasets>`) including in :ref:`choice filter <cascading-selects>` expressions. Even if the choices are specified from a GeoJSON file, the ``geometry`` property is made available to the form in :ref:`the ODK format <location-widgets>`, NOT as GeoJSON.
+
+There are two special properties that can be used to style the marker for a ``Point`` choice:
+
+- **marker-color**: a valid long or short hex color code used to represent that marker's color (e.g. ``#aaccee`` or ``#ace``) 
+- **marker-symbol**: a single character used as that choice's marker (e.g. ``A`` or ``7`` or ``🏥`` or ``🟢``) 
 
 If your geospatial data comes from an external source, you can :ref:`customize the label and underlying value <customizing-label-and-value>`.
 
