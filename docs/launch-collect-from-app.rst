@@ -42,7 +42,7 @@ Launching the form list or instance list activity
  
 This displays a list of forms and allows the user to select one and fill it.
  
-Similarly for an instance of the form: 
+Similarly, for an instance of the form: 
  
 .. code-block:: java
  
@@ -59,14 +59,14 @@ Getting the list of forms and instances:
 
 Using `Content providers <https://developer.android.com/guide/topics/providers/content-providers>`_ ODK Collect shares the list of forms and instances with other apps.
 
-To fetch the list of forms call:
+To fetch the list of forms, call:
 
 .. code-block:: java
  
   Uri uri = "content://org.odk.collect.android.provider.odk.forms/forms"
   getContentResolver().query(uri, null, null, null, null);
 
-Similarly for the list of instances:
+Similarly, for the list of instances:
 
 .. code-block:: java
  
@@ -162,4 +162,4 @@ The same thing can be done with a specific instance.
 
 .. note::
   
-  There might be other ways of interacting with ODK Collect using an external app not described in this doc. If you want to explore them check out the `ODK Collect Intents Tester <https://github.com/grzesiek2010/collectTester>`_ app.  
+  There might be other ways of interacting with ODK Collect using an external app not described in this doc. If you want to explore them, check out the `ODK Collect Intents Tester <https://github.com/grzesiek2010/collectTester>`_ app.  
