@@ -1,26 +1,30 @@
-Launching ODK Collect from External Apps
+Using ODK Collect from External Apps
 ==========================================
 
 .. seealso::
   
   :doc:`launch-apps-from-collect`
 
-:doc:`collect-intro` supports several intents which allow it to be launched by external applications. You can open a specific form or lists of empty forms, saved forms, finalized forms or sent forms. 
+:doc:`collect-intro` supports several intents which allow it to be launched by external applications. You can open a specific form or lists of empty forms, saved forms, finalized forms or sent forms. The app also shares its data (a list of forms and instances) with external apps.
 
-This section describes how to launch ODK Collect and open its activities from an external app. The code samples go in your custom Android application.
+This section describes how to launch ODK Collect and open its activities from an external app and how to get the shared data. The code samples go in your custom Android application.
 
 .. _about-intents:
 
-Understanding Intents
-~~~~~~~~~~~~~~~~~~~~~~~
+Understanding Intents and Content providers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 An Intent is a messaging object you can use to request an action from another app component. 
 
 For more details on intents, you can refer to `these Android docs <https://developer.android.com/guide/components/intents-filters.html>`_.
 
+A content provider component supplies data from one application to others on request.
+
+For more details on content providers, you can refer to `these Android docs <https://developer.android.com/guide/topics/providers/content-providers>`_.
+
 .. _launch-activity:
 
-Launching Collect activities from external application
+Launching Collect activities and getting its shared data from external application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To start one of ODK Collect's activities:
