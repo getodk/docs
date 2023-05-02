@@ -73,6 +73,13 @@ Similarly for the list of instances:
   Uri uri = "content://org.odk.collect.android.provider.odk.instances/instances"
   getContentResolver().query(uri, null, null, null, null);
 
+You can also get an individual (or filtered list) form/instance by adding selection criteria. For example, if you want to get a list of instances with a given ``jrFormId`` you can use:
+
+.. code-block:: java
+ 
+  Uri uri = "content://org.odk.collect.android.provider.odk.instances/instances"
+  getContentResolver().query(uri, null, "jrFormId=?", new String[]{"all-widgets}, null);
+
 This will return a `Cursor <https://developer.android.com/reference/android/database/Cursor>`_ with the list of forms/instances. You can iterate such a cursor and read the data stored in it: 
 
 .. code-block:: java
