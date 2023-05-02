@@ -159,3 +159,7 @@ The same thing can be done with a specific instance.
 
 .. warning::
   Launching Collect activities using their names is not supported because those names can change at any time.
+
+.. note::
+  
+  There might be other ways of interacting with ODK Collect using an external app not described in this doc. If you want to explore them check out the `ODK Collect Intents Tester <https://github.com/grzesiek2010/collectTester>`_ app.  
