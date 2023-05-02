@@ -52,6 +52,46 @@ Similarly for an instance of the form:
 
 This displays a list of saved forms and allows the user to select one and edit it.
 
+.. _get-forms: 	
+ 
+Getting the list of forms and instances:
+"""""""""""""""""""""""""""""""""""""""""""
+
+Using `Content providers <https://developer.android.com/guide/topics/providers/content-providers>`_ ODK Collect shares the list of forms and instances with other apps.
+
+To fetch the list of forms call:
+
+.. code-block:: java
+ 
+  Uri uri = "content://org.odk.collect.android.provider.odk.forms/forms"
+  getContentResolver().query(uri, null, null, null, null);
+
+Similarly for the list of instances:
+
+.. code-block:: java
+ 
+  Uri uri = "content://org.odk.collect.android.provider.odk.instances/instances"
+  getContentResolver().query(uri, null, null, null, null);
+
+This will return a `Cursor <https://developer.android.com/reference/android/database/Cursor>`_ with the list of forms/instances. You can iterate such a cursor and read the data stored in it: 
+
+.. code-block:: java
+ 
+        if (cursor != null) {
+            try {
+                while (cursor.moveToNext()) {
+                    int id = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID));
+                    String formName = cursor.getString(cursor.getColumnIndex(DISPLAY_NAME));
+
+                    // Collect data from other columns and store it in a list for example
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+
+The data stored in a cursor is different for forms and instances. The list of columns used to share forms is defined in `DatabaseFormColumns <https://github.com/getodk/collect/blob/master/collect_app/src/main/java/org/odk/collect/android/database/forms/DatabaseFormColumns.kt>`_. For instances it is: `DatabaseInstanceColumns <https://github.com/getodk/collect/blob/master/collect_app/src/main/java/org/odk/collect/android/database/instances/DatabaseInstanceColumns.kt>`_. 
+
 .. _get-uri: 	
  
 Getting the URI of a form or instance chosen by the user
