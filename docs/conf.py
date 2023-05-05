@@ -74,11 +74,6 @@ html_css_files = [
     'css/custom.css',
 ]
 
-html_js_files = [
-    ('https://static.cloudflareinsights.com/beacon.min.js', {'defer': 'defer', 'data-cf-beacon': '{"token": "e999238506eb4d7ea6d0d32f866c5f9f"}'}),
-    'js/custom.js',
-]
-
 html_theme_options = {
     'light_css_variables': {
         'color-brand-primary': '#009ECC',
