@@ -42,10 +42,8 @@ Roadmap and limitations
 
    You should also be aware that currently, all devices will always download all Entities. This may not be acceptable to you due to privacy concerns.
 
-Here's what's available now and what's coming next. If you have feedback on this roadmap, please post on the `discussion forum <https://forum.getodk.org/>`_.
+Below is what's available now.
 
-Available now
-~~~~~~~~~~~~~
 - Create an Entity with a registration form (requires project manager approval via UI or API)
 - Create an Entity with different registration forms (e.g., child vs adult registration)
 - Use Entities in a follow-up form
@@ -53,30 +51,7 @@ Available now
 - Use different Datasets in different registration and follow-up forms
 - Download Datasets into Power BI, Excel, Python, and R
 
-In three months
-~~~~~~~~~~~~~~~
-
-- Create, update, and delete Entities via Central's API (from external source and follow-up data)
-- Update and delete Entities in Central's UI
-
-In six months
-~~~~~~~~~~~~~
-
-- Automatically create Entities with registration forms (configurable for each Dataset)
-
-In one year
-~~~~~~~~~~~
-
-- Automatically update Entities from follow-up forms
-- Create Entities from uploaded spreadsheets
-
-After one year
-~~~~~~~~~~~~~~
-
-- Create and update Entities offline
-- Archive Entities (e.g., for closing cases)
-- Segment Entities by user or other criteria (e.g., for tasking)
-- Link Entities to each other (e.g., for nested entities)
+The roadmap at `getodk.org/roadmap <https://getodk.org/roadmap>`_ has what we're working on now and what's coming next. 
 
 .. _central-entities-quick-start:
 
