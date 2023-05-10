@@ -74,11 +74,6 @@ html_css_files = [
     'css/custom.css',
 ]
 
-html_js_files = [
-    ('https://helper.getodk.org/script.js', {'defer': 'defer', 'data-site': 'PBSTMJFG'}),
-    'js/custom.js',
-]
-
 html_theme_options = {
     'light_css_variables': {
         'color-brand-primary': '#009ECC',
@@ -92,7 +87,7 @@ html_theme_options = {
         'color-announcement-background': '#f8f9fb',
         'color-announcement-text': 'black',
     },
-    'announcement': '<b>Looking to save time?</b> Try <a href="https://getodk.org/#pricing" onclick="fathom.trackGoal("SMIXEGNN", 0);">ODK Cloud</a>, the official managed hosting service from the creators of ODK.',
+    'announcement': '<b>Looking to save time?</b> Try <a href="https://getodk.org/#pricing">ODK Cloud</a>, the official managed hosting service from the creators of ODK.',
     'sidebar_hide_name': True,
 }
 html_show_sphinx = True
