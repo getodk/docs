@@ -353,6 +353,8 @@ repo
 reStructuredText
 retransmission
 righthand
+roadmap
+Roadmap
 Rojo
 RSS
 rst

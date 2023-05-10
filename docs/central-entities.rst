@@ -1,19 +1,6 @@
 Managing Entities in Central
 ================================
 
-.. warning::
-   This is an *experimental preview*! Please do not use it for real projects unless you are comfortable with things going wrong, or features changing in future releases. It is very unlikely you will ever lose data using Entities, but you may end up with *unexpected* data.
-
-   This a preview because:
-
-   - You can't yet edit or delete Entities
-   - Performance is poor when managing more than a few thousand Entities
-   - The Form specification and API may change
-
-   You should also be aware that currently, all devices will always download all Entities. This may not be acceptable to you due to privacy concerns.
-
-   All of that said, if you have thoughts and feedback on Entities, please post on the `discussion forum <https://forum.getodk.org/>`_.
-
 New in Central as of version 2022.3, **Entities** are a powerful new way to automatically bring the information you are collecting right back to your devices and Forms in the field.
 
 In ODK today, you can attach existing data during the Form creation process, often through ``choices`` sheets or ``.csv`` files. Once this data is loaded into the Form, you can use it as the source for selection choices, to prepopulate data fields in the Form, or validate new input. A list of districts, for example, can be used as choices for selection, and information about each district can then be shown to the user or checked against. If you are new to these techniques, you can learn more about them on the :doc:`Form Datasets <form-datasets>` page.
@@ -29,18 +16,67 @@ Now there is a way to automate this process from within Central itself.
 Introducing Entities
 ---------------------
 
-First, some definitions: each item that gets managed by an ODK workflow is called an **Entity**. A collection of Entities is called a **Dataset**. A ``districts`` choices list, or a file ``patients.csv``, these are Datasets. So each district would be an Entity in the ``districts`` Dataset, and each patient would be an Entity in the ``patients`` Dataset.
+First, some definitions: each item that gets managed by an ODK workflow is called an **Entity**. Entities can be physical (e.g., a tree) or abstract (e.g., a site visit). A collection of Entities is called a **Dataset**.
 
-Next, a new feature. You can now teach Central that some of your incoming Submission data should create Entities in a Dataset created and managed for you by Central under whatever name you assign it——``patients``, for example. This Dataset can then be attached by that name (*(1)* below) to your follow-up Forms, exactly like you would manually attach a :doc:`CSV Dataset <form-datasets>`.
+Next, a new feature. You can now tell Central that some of your incoming Submission data should create Entities in a Dataset created and managed for you by Central. This Dataset can then be attached by that name to your follow-up Forms, exactly like you would manually attach a :doc:`CSV Dataset <form-datasets>`. You can attach a Dataset to any number of Forms, even to a registration Form.
 
-  .. image:: /img/central-entities/intro-diagram.svg
+.. image:: /img/central-entities/intro-diagram.png
 
-Using this functionality, you don't have to create or upload ``patients.csv`` yourself, nor update it when new patients are added. When Submissions arrive and are approved *(2)*, Central will create *(3)* new Entities that will appear in patient follow-up Forms as soon as those Form updates are received.
+Using this functionality, you don't have to create and upload Datasets yourself. When Submissions arrive and are approved, Central will create new Entities that will appear in follow-up Forms as soon as those Form updates are received.
 
-.. note::
-   For now, you can only add a new **Entity** to the Dataset for each Submission, but in the future you will be able to update existing Entities, or create multiple Entities at once. Also, there is not yet a way to directly upload data you may already have into a Central-managed Dataset *(4)*.
+If you are interested in seeing how Entities can fit into your workflow right away, we recommend following the Quick Start guide below, where you will upload a tree registration Form and a tree follow-up Form we have created already and see how trees are created by one Form and appear in another.
 
-If you are interested in seeing how Entities can fit into your workflow right away, we recommend following the Quick Start guide in this next section, where you will upload a tree registration Form and a tree follow-up Form we have created already and see how trees are created by one Form and appear in another.
+.. _central-entities-roadmap:
+
+Roadmap and limitations
+-----------------------
+
+.. warning::
+   Entities are currently in *experimental preview*! Please do not use it for real projects unless you are comfortable with things going wrong, or features changing in future releases. It is very unlikely you will ever lose data using Entities, but you may end up with *unexpected* data.
+
+   The current limitations are:
+
+   - Entity update and delete are not yet available
+   - Performance is poor when managing more than a few thousand Entities
+   - The Form specification and API may change
+
+   You should also be aware that currently, all devices will always download all Entities. This may not be acceptable to you due to privacy concerns.
+
+Here's what's available now and what's coming next. If you have feedback on this roadmap, please post on the `discussion forum <https://forum.getodk.org/>`_.
+
+Available now
+~~~~~~~~~~~~~
+- Create an Entity with a registration form (requires project manager approval via UI or API)
+- Create an Entity with different registration forms (e.g., child vs adult registration)
+- Use Entities in a follow-up form
+- Use Entities in different follow-up forms (e.g., weekly vs monthly follow-up)
+- Use different Datasets in different registration and follow-up forms
+- Download Datasets into Power BI, Excel, Python, and R
+
+In three months
+~~~~~~~~~~~~~~~
+
+- Create, update, and delete Entities via Central's API (from external source and follow-up data)
+- Update and delete Entities in Central's UI
+
+In six months
+~~~~~~~~~~~~~
+
+- Automatically create Entities with registration forms (configurable for each Dataset)
+
+In one year
+~~~~~~~~~~~
+
+- Automatically update Entities from follow-up forms
+- Create Entities from uploaded spreadsheets
+
+After one year
+~~~~~~~~~~~~~~
+
+- Create and update Entities offline
+- Archive Entities (e.g., for closing cases)
+- Segment Entities by user or other criteria (e.g., for tasking)
+- Link Entities to each other (e.g., for nested entities)
 
 .. _central-entities-quick-start:
 
