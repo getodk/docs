@@ -1033,7 +1033,7 @@ appearance
 .. warning::
   The `map` appearance on selects is not yet available in web forms (Enketo).
 
-  Support for polygons and lines was introduced in Collect v2023.1.0.
+  Polygons and lines are only supported in Collect v2023.1.0 or later.
 
   The different :ref:`basemap sources <mapping-settings>` currently have different performance. If Collect feels slow when creating the map or when selecting a choice, please describe what you are experiencing `on the forum <https://forum.getodk.org/c/support/6>`_. If you have many choices to include on a map, try a provider other than Google or Mapbox. You can also use a :ref:`choice filter <cascading-selects>` to reduce the number of choices that get mapped.
 
