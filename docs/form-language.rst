@@ -18,13 +18,14 @@ Each language column adds two colons and the language name,
 followed by the `two letter language code <http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry>`_ in parentheses. For example:
 
 - ``label::English (en)``
-- ``hint::French (fr)``
+- ``hint::Arabic (ar)``
 - ``image::Español (es)``
 
 .. note::
 
-  The text shown in Collect's user interface (e.g., buttons, menus, dialogs)
-  is controlled by application, not the form. See :ref:`user interface settings <interface-settings>` for how to change the interface language.
+  The text shown in Collect's user interface (e.g., buttons, menus, dialogs) is controlled by application, not the form. See :ref:`user interface settings <interface-settings>` for how to change the interface language.
+
+  If you are using a RTL language (e.g., Arabic), set both Collect's user interface language and the form language to ensure proper RTL layout.
 
 .. rubric:: XLSForm --- Single language
 
