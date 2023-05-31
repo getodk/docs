@@ -27,6 +27,20 @@ Clone the docs repo and make sure all the requirements are installed:
 ```bash
 $ git clone https://github.com/getodk/docs.git
 $ cd docs/
+```
+
+If you wish to use virtualenv, now is a good time to set it up:
+
+```bash
+$ python -m venv venv
+$ source venv/bin/activate
+```
+
+You will see `(venv)` next to your prompt to indicate you are working within the docs project. To exit this mode, use the command `deactivate`.
+
+Whether you are using virtualenv or not, you next need to install the dependencies:
+
+```bash
 $ pip install -r requirements.txt
 ```
 
