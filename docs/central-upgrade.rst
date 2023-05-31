@@ -54,15 +54,16 @@ Upgrade steps
 
   $ git submodule update -i
 
-4. **Build** from the latest code you just fetched.
+4. **Build** from the latest code you just fetched. The ``pull`` options pull updates to all Docker images.
 
 .. code-block:: console
 
-  $ docker compose build
+  $ docker compose pull
+  $ docker compose build --pull
 
 .. note::
 
-  If you run into problems with this step, try stopping Central (``docker compose stop``) and then retry ``docker compose build``.
+  If you run into problems with this step, try stopping Central (``docker compose stop``) and then retry ``docker compose build --pull``.
 
 5. **Clean up unused Docker images**
 
@@ -318,7 +319,8 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
    
           .. code-block:: console
    
-             $ docker compose build
+             $ docker compose pull
+             $ docker compose build --pull
    
        #. **Start the database upgrade and wait for the process to exit.** This is where the new PostgreSQL 14 database is made and data copied into it. This will take a long time if you have a lot of data and/or a slow server.
    
