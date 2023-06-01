@@ -10,6 +10,7 @@ Start by reviewing upgrade notes for all versions between your current version a
 Upgrade notes
 -------------
 
+* :ref:`Central v2023.3 <central-upgrade-2023.3>`: clean up old database if needed
 * :ref:`Central v2023.2 <central-upgrade-2023.2>`: upgrade Docker, PostgreSQL, and move configuration to ``.env``
 * :ref:`Central v2023.1 <central-upgrade-2023.1>`: plan ahead for longer than usual downtime during upgrade
 * :ref:`Central v2022.3 <central-upgrade-2022.3>`: update your NGINX configuration if you have disabled or customized Sentry
@@ -88,6 +89,39 @@ You'll be asked to confirm the removal of all dangling images. Agree by typing t
 
 Version-specific upgrade instructions
 --------------------------------------
+
+.. _central-upgrade-2023.3:
+
+Upgrading to Central v2023.3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. **Determine which version of Central you are running.** To see your version, click on the question mark icon in the upper right section of your Central menu bar, then click :guilabel:`Version`. If you don't see the question mark, you can see the version by adding ``version.txt`` to the root URL (e.g., `demo.getodk.cloud/version.txt <https://demo.getodk.cloud/version.txt>`_).
+
+.. tabs::
+
+  .. tab:: Upgrading from v2023.2
+
+    #. **Determine whether the server you are upgrading is using a custom database** (e.g. externally hosted on Azure, AWS, etc.) or the default one:
+
+       .. code-block:: bash
+
+         $ grep DB_HOST .env
+
+       If you get nothing back or there's nothing after the ``=``, you are using the default database. If ``DB_HOST`` is set to any value, you are using a custom database server.
+
+    #. **If you use the default database, clean up old data.** We have found that this step often failed in the v2023.2 upgrade and have made it more reliable. This is safe to run again even if you already successfully deleted the old database. If you are using a custom database, you don't need to do anything.
+
+       .. code-block:: console
+
+        $ touch ./files/postgres14/upgrade/delete-old-data \
+          && docker compose up --abort-on-container-exit postgres
+
+    #. **Follow** the :ref:`standard upgrade instructions <central-upgrade-steps>`.
+
+  .. tab:: Upgrading from older versions
+
+    Follow the :ref:`Central v2023.2 <central-upgrade-2023.2>` instructions. After following those instructions, you will be running v2023.3. No further action will be needed.
+
 
 .. _central-upgrade-2023.2:
 
