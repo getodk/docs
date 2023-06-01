@@ -223,3 +223,73 @@ You can see the full XLSForm `here <https://docs.google.com/spreadsheets/d/12oJZ
 
 The same Dataset can be used in many different Forms. The concepts and patterns described in the :doc:`data collector workflows <data-collector-workflows>` and the :doc:`Form Datasets <form-datasets>` sections apply to server-managed Datasets as well.
 
+.. _central-entities-managing
+
+Managing Datasets and Entities
+------------------------------
+
+To browse all Datasets in a Project, go to the :guilabel:`Datasets` tab within the Project. You will see a list of all Datasets that have been created by Forms in this Project. Click on any Dataset to see basic details about it.
+
+   .. image:: /img/central-entities/entity-landing.png
+
+On this page, you can see how this Dataset relates to other incoming data in your Project: which Forms contribute to the Dataset, which ones read data from it, and which fields are being read or written. To see the actual data in your Dataset, click on the :guilabel:`Data` tab at the top.
+
+.. _central-entities-data
+
+Managing Entity Data
+--------------------
+
+You can preview or download Entity data from Central from the :guilabel:`Data` tab on the Dataset's page.
+
+   .. image:: /img/central-entities/entity-table.png
+
+Similar to the Submissions data page for a Form, you will see overall metadata like the create and update time on the left side of the table, and the actual data values on the right. You can press :guilabel:`Refresh` to fetch the latest data, or use any of the options at the top right of the table to export the data to a file or an analysis tool.
+
+To see, edit, and manage additional details about a particular Entity, hover over its row in the table and click on :guilabel:`More` to go to the Entity Detail page. Alternatively, you can click on the pencil icon to edit the Entity data immediately.
+
+.. _central-entities-detail
+
+Seeing Entity Detail
+~~~~~~~~~~~~~~~~~~~~
+
+The Entity Detail page provides a complete look at the data and history of a particular Entity, and gives tools and options to manage it. You might arrive here by clicking on the Entity name somewhere else, like in an update feed, but you can always find the Entity you want in the Entity Data table and click on the :guilabel:`More` button.
+
+   .. image:: /img/central-entities/entity-detail.png
+
+Similar to the Submission data detail page, the Entity detail page has some basic information about your Entity on the left, and an Activity Feed showing you the history of the Entity on the right.
+
+You can see the actual data stored in the Entity in the bottom left under the :guilabel:`Entity Data` section, and you can edit that information by clicking on :guilabel:`Edit` right there.
+
+.. _central-entities-edit
+
+Editing Entity Data
+~~~~~~~~~~~~~~~~~~~
+
+To edit the data stored for an Entity, you can locate the Entity in the :doc:`Entity data table <central-entities-data>` and click on the pencil icon that shows up on top of its row, or you can click on the :guilabel:`Edit` button if you are already looking at the detail page for the Entity.
+
+   .. image:: /img/central-entities/entity-edit.png
+
+A dialog will appear with all the Entity data listed. You will see the name of the field in the first column, the currently saved value for each field in the second column, and an edit field you can use to update the data in the third column.
+
+The very first row labeled :guilabel:`Entity Label *` is not part of the Form data collected. Rather, it is the title of the Entity, which is computed from the Entity data when the Entity is first created using rules set by the Form author. You can change it to any value here.
+
+As you type, Central will highlight any fields you have changed in yellow so you can see what you've done.
+
+To complete the process press the :guilabel:`Update` button to save your changes to the Entity. You will see a confirmation that the save succeeded. If you don't like your changes, you can click on the :guilabel:`x` or the :guilabel:`Never mind` link to close the dialog.
+
+.. _central-entities-settings
+
+Changing Dataset Settings
+-------------------------
+
+Right now, only one setting is available for Datasets in Central. To reach it, click on the :guilabel:`Settings` tab on the Dataset page.
+
+   .. image:: /img/central-entities/entity-settings.png
+
+Here, you can choose whether Entities are created immediately when they are first received by Central, or if Central should wait until the Submission is approved before creating any Entities from it.
+
+Note that only one of these two behaviors can be chosen at a time. If you change the setting from "on approval" to "when received" but you still have unapproved Submissions, Central will not ever be told to make Entities out of these Submissions. If this is the case for you and you try to make this setting change, you will see a special message and you will have the option to convert all pending (not approved or rejected) Submissions into Entities right away.
+
+Select either option and you should see a confirmation the setting has changed.
+
+
