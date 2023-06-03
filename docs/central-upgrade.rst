@@ -55,7 +55,7 @@ Upgrade steps
 
   $ git submodule update -i
 
-4. **Build** from the latest code you just fetched. The ``pull`` options pull updates to all Docker images.
+4. **Build** from the latest code you just fetched. The ``pull`` option ensures all Docker images are up-to-date.
 
 .. code-block:: console
 
