@@ -715,14 +715,50 @@ Geography
   of either a ``nodeset`` of geopoints or a ``geoshape`` value.
   
   It takes into account the circumference of the Earth around the Equator but does not take altitude into account.
-
+  
 .. function:: distance(nodeset | geoshape | geotrace)
 
   Returns the distance, in meters, of either:
   
   - a ``nodeset`` of geopoints
+
+  .. csv-table:: survey
+    :header: type, name, label, calculation
+
+    begin_repeat, points,
+    geopoint, point, Record a Geopoint
+    end_repeat, ,
+    calculate, calculated_distance, , distance(${point})
+    note, display_distance, Calculated distance: ${calculated_distance}
+
   - the perimeter of a ``geoshape``
+
+  .. csv-table:: survey
+    :header: type, name, label, calculation
+
+    geoshape, shape, Record a Geoshape
+    calculate, calculated_distance, , distance(${shape})
+    note, display_distance, Calculated distance: ${calculated_distance}
+    
   - the length of a ``geotrace`` value
+
+  .. csv-table:: survey
+    :header: type, name, label, calculation
+
+    geotrace, trace, Record a Geotrace
+    calculate, calculated_distance, , distance(${trace})
+    note, display_distance, Calculated distance: ${calculated_distance}
+
+  - concatenated geopoints
+
+  .. csv-table:: survey
+    :header: type, name, label, calculation
+
+    geopoint, point1, Record a Geopoint
+    geopoint, point2, Record a Geopoint
+    calculate, concatenated_points, , "concat(${point1},' ; ', ${point2})"
+    calculate, calculated_distance, , distance(${concatenated_points})
+    note, display_distance, Calculated distance: ${calculated_distance}
   
   It takes into account the circumference of the Earth around the Equator and does not take altitude into account.
 
