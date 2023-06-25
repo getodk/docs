@@ -95,7 +95,7 @@ The choices sheet
 If you have :ref:`multiple choice questions <select-widgets>`, you will also need a **choices** sheet to specify choices for those questions. It must have these three columns:
 
 - ``list_name``: The unique ID that identifies a group of choices. It may not contain spaces and must start with a letter or underscore. Use a short and descriptive name. For example: ``yes_no_maybe``.
-- ``name``: the name of the field represented by each row. This name will be used in your data results. It may not contain spaces and must start with a letter or underscore. For example you might use ``1`` or ``y`` for Yes and ``-1`` or ``n`` for No.
+- ``name``: the name of the field represented by each row. It may not contain spaces and must start with a letter or underscore. This name will be used in your data results so it's best to use a short and descriptive name (e.g., ``y`` for Yes and ``n`` for No).
 - ``label``: the user-visible text for the choice represented by each row. For example: ``Yes``, ``No``, and ``Maybe``. This text can :ref:`reference other fields <variables>` or :doc:`have translations <form-language>`.
 
 Choices with the same list name are considered part of a related set of choices and will appear together for a question. This also allows a set of choices to be reused for multiple questions (for example, yes/no questions).
