@@ -8,43 +8,43 @@ Changelog
 Here major and breaking changes to the API are listed by version.
 
 ODK Central v2023.2
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Added**\ :
 
-- New `OData Dataset Service <#reference/odata-endpoints/odata-dataset-service>`__ for each ``Dataset``\  that provides a list of ``Entities``\ .
+- New `OData Dataset Service </central-api-odata-endpoints#odata-dataset-service>`__ for each ``Dataset``\  that provides a list of ``Entities``\ .
 
 **Changed**\ :
 
-- The response of ``GET``\ , ``POST``\ , ``PUT``\  and ``PATCH``\  methods of `Submissions <#reference/submissions/listing-all-submissions-on-a-form>`__ endpoint has been updated to include metadata of the ``currentVersion``\  of the Submission.
+- The response of ``GET``\ , ``POST``\ , ``PUT``\  and ``PATCH``\  methods of `Submissions </central-api-submission-management#listing-all-submissions-on-a-form>`__ endpoint has been updated to include metadata of the ``currentVersion``\  of the Submission.
 
 ODK Central v2023.1
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Added**\ :
 
-- New endpoint `GET /projects/:id/datasets/:name <#reference/datasets/datasets/dataset-metadata>`__ to get the metadata of a Dataset
+- New endpoint `GET /projects/:id/datasets/:name </central-api-dataset-management#datasets/dataset-metadata>`__ to get the metadata of a Dataset
 
 **Changed**\ :
 
-- `GET /projects/:id/datasets <#reference/datasets/datasets/datasets>`__ now supports ``X-Extended-Metadata``\  header to retrieve number of Entities in the Dataset and timestamp of the last Entity
+- `GET /projects/:id/datasets </central-api-dataset-management#datasets>`__ now supports ``X-Extended-Metadata``\  header to retrieve number of Entities in the Dataset and timestamp of the last Entity
 
 - ``$select``\  in OData now supports selecting complex type(groups)
 
-- `Creating a form <#reference/forms/forms/creating-a-new-form>`__ can now return workflow warnings
+- `Creating a form </central-api-form-management#creating-a-new-form>`__ can now return workflow warnings
 
 **Removed**\ :
 
 - Scheduled backups to Google Drive are no longer supported. As a result, backups are no longer configurable. It is no longer possible to get or terminate a backups configuration or to use a backups configuration to GET a Direct Backup. For more information about these changes, please see `this topic <https://forum.getodk.org/t/backups-to-google-drive-from-central-will-stop-working-after-jan-31st/38895>`__ in the ODK Forum.
 
 ODK Central v2022.3
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Added**\ :
 
-* Introducing `Datasets <#reference/datasets>`__ as the first step of Entity-Based Data Collection! Future versions of Central will build on these new concepts. We consider this functionality experimental and subject to change in the next release.
+* Introducing `Datasets </central-api-dataset-management>`__ as the first step of Entity-Based Data Collection! Future versions of Central will build on these new concepts. We consider this functionality experimental and subject to change in the next release.
 
-  * Forms can now create Datasets in the project, see `Creating a New Form <#reference/forms/forms/creating-a-new-form>`__ and the `ODK XForms specification <https://getodk.github.io/xforms-spec>`__ for details.
+  * Forms can now create Datasets in the project, see `Creating a New Form </central-api-form-management/#creating-a-new-form>`__ and the `ODK XForms specification <https://getodk.github.io/xforms-spec>`__ for details.
   * New endpoint `GET /projects/:id/datasets <#reference/datasets/datasets/datasets>`__ for listing Datasets of a project.
   * New endpoint `GET /projects/:id/datasets/:name/entities.csv <#reference/datasets/download-dataset/download-dataset>`__ to download the Dataset as a CSV file.
   * New endpoints for `Related Datasets <#reference/forms/related-datasets/>`__ to see the Datasets affected by published and unpublished Forms.
@@ -64,14 +64,14 @@ ODK Central v2022.3
   * In the `OpenRosa Form Manifest <#reference/openrosa-endpoints/openrosa-form-manifest-api/openrosa-form-manifest-api>`__, if a Form Attachment is linked to a Dataset then the value of ``hash``\  is the MD5 of the last updated timestamp or the MD5 of ``1970-01-01 00:00:00``\  if the Dataset is empty.
 
 ODK Central v1.5.3
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Removed**\ :
 
 * It is no longer possible to initiate a new backups configuration (``POST /v1/config/backups/initiate``\ ) or to verify one (``POST /v1/config/backups/verify``\ ). However, for now, if there is an existing configuration, it is still possible to get it or terminate it. If the existing configuration is terminated, it will not be possible to set up a new configuration. Note that it is still possible to download a `Direct Backup </reference/system-endpoints/direct-backup>`__. For more information about this change, please see `this topic <https://forum.getodk.org/t/backups-to-google-drive-from-central-will-stop-working-after-jan-31st/38895>`__ in the ODK Forum.
 
 ODK Central v1.5
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ODK Central v1.5 adds editable Project descriptions as well as more detailed information about Forms and Submissions when listing Projects.
 
@@ -86,7 +86,7 @@ ODK Central v1.5 adds editable Project descriptions as well as more detailed inf
 * New ``?forms=true``\  option on `Project Listing </reference/project-management/projects/listing-projects-with-nested-forms>`__ that includes a ``formList``\  field containing a list of extended Forms (and the review state counts described above) associated with that Project.
 
 ODK Central v1.4
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ODK Central v1.4 enables additional CSV export options and creates an API-manageable 30 day permanent purge system for deleted Forms. Previously, deleted Forms were made inaccessible but the data was not purged from the database.
 
@@ -108,7 +108,7 @@ ODK Central v1.4 enables additional CSV export options and creates an API-manage
   * These are collected automatically upon submission through transmitted client metadata information, similar to the existing ``deviceId``\  field returned with each Submission.
 
 ODK Central v1.3
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ODK Central v1.3 adds granular Submission edit history, as well as opt-in usage reporting to the Central team.
 
@@ -134,7 +134,7 @@ ODK Central v1.3 adds granular Submission edit history, as well as opt-in usage 
 * The ``Content-Disposition``\  header now specifies the ``filename*``\  parameter, allowing filenames to contain Unicode.
 
 ODK Central v1.2
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ODK Central v1.2 adds submission editing, review states, and commenting.
 
@@ -175,7 +175,7 @@ ODK Central v1.2 adds submission editing, review states, and commenting.
 * Broke Forms and Submissions section apart into two below. This may break some links.
 
 ODK Central v1.1
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ODK Central v1.1 adds minor new features to the API.
 
@@ -198,7 +198,7 @@ ODK Central v1.1 adds minor new features to the API.
 * Documented the ``deviceId``\  property of submission, which was added in version 0.4.
 
 ODK Central v1.0
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ODK Central v1.0 adds Public Links to the API, and makes one minor breaking change.
 
@@ -213,7 +213,7 @@ ODK Central v1.0 adds Public Links to the API, and makes one minor breaking chan
 * We no longer reject the request if multiple authentication schemes are presented, and instead document the priority order of the different schemes `here </reference/authentication>`__.
 
 ODK Central v0.9
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ODK Central v0.9 does not change the API except for one minor breaking change.
 
@@ -222,7 +222,7 @@ ODK Central v0.9 does not change the API except for one minor breaking change.
 * The `OpenRosa Form Listing API </reference/openrosa-endpoints/openrosa-form-listing-api>`__ has been modified to always require authentication. If a valid Actor is authenticated at all, a form list will always be returned, filtered by what that Actor is allowed to access.
 
 ODK Central v0.8
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ODK Central v0.8 introduces Draft Forms, publishing, and archived Form versions, which has a significant breaking impact on the existing API. The changes should be straightforward to adapt to, however. If you are currently creating Forms with ``POST /projects/…/forms``\ , you may wish to add ``?publish=true``\  to skip the Draft state and mimic the old behaviour. If you are using the API to push Form Attachments onto Forms, you'll only be able to do so now in draft state, at ``/projects/…/forms/…/draft/attachments``\ .
 
@@ -251,7 +251,7 @@ ODK Central v0.8 introduces Draft Forms, publishing, and archived Form versions,
 * Documented ``GET /projects/…/forms/….xls(x)``\ , which was added in 0.7.
 
 ODK Central v0.7
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Added**\ :
 
@@ -275,7 +275,7 @@ ODK Central v0.7
 * Correctly documented ``keyId``\  property on Projects.
 
 ODK Central v0.6
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Added**\ :
 
@@ -307,7 +307,7 @@ ODK Central v0.6
 * The Extended responses for Forms and Submissions no longer include an ``xml``\  property. To retrieve Form or Submission XML, use the dedicated endpoints for `Form XML </reference/forms/individual-form/retrieving-form-xml>`__ and `Submission XML </reference/submissions/submissions/retrieving-submission-xml>`__.
 
 ODK Central v0.5
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Added**\ :
 
@@ -344,7 +344,7 @@ ODK Central v0.5
 * Added Submission POST REST documentation.
 
 ODK Central v0.4
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Added**\ :
 

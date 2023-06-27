@@ -1,4 +1,4 @@
-.. auto generated file - DO NOT MODIFY
+.. auto generated file - DO NOT MODIFY 
 
 Accounts and Users
 =======================================================================================================================
@@ -13,8 +13,14 @@ Data Collectors can see all Forms in a Project and submit to them, but cannot se
 
 The Roles API alone does not, however, tell you which Actors have been assigned with Roles upon which system objects. For that, you will need to consult the various Assignments resources. There are two, one under the API root (``/v1/assignments``\ ), which manages assignments to the entire system, and another nested under each Project (``/v1/projects/…/assignments``\ ) which manage assignments to that Project.
 
-Listing all Users
+
+Users
 -----------------------------------------------------------------------------------------------------------------------
+
+Presently, it is possible to create and list ``User``\ s in the system, as well as to perform password reset operations. In future versions of this API it will be possible to manage existing user information and delete accounts as well.
+
+Listing all Users
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/users**
 
@@ -79,7 +85,104 @@ Actors who cannot ``user.list``\  will always receive ``[]``\  with a ``200 OK``
         * - array
 
 
-    
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - createdAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18 23:19:14.802000+00:00``
+                * - displayName
+
+
+                  - string
+                  
+                    All ``Actor``\ s, regardless of type, have a display name
+
+                    Example: ``My Display Name``
+                * - id
+
+
+                  - number
+                  
+                    
+
+                    Example: ``115.0``
+                * - type
+
+
+                  - enum
+                  
+                    The type of actor
+
+
+                      
+                    .. collapse:: expand
+                      :class: nested-schema
+
+                      .. list-table::
+                          :widths: 25 75
+                          :class: schema-table
+                          
+                          
+                          * - user
+
+
+                            - string
+                            
+                              
+
+                          * - field_key
+
+
+                            - string
+                            
+                              
+
+                          * - public_link
+
+
+                            - string
+                            
+                              
+
+                          * - singleUse
+
+
+                            - string
+                            
+                              
+
+                     
+                * - updatedAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18 23:42:11.406000+00:00``
+                * - deletedAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18 23:42:11.406000+00:00``
+                * - email
+
+
+                  - string
+                  
+                    The email address of the user
+
 
               
       
@@ -120,20 +223,19 @@ Actors who cannot ``user.list``\  will always receive ``[]``\  with a ``200 OK``
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Creating a new User
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **POST /v1/users**
 
@@ -249,15 +351,54 @@ Users are not able to do anything upon creation besides log in and change their 
 
                   - number
                   
-                    None
+                    
 
                 * - type
 
 
-                  - string
+                  - enum
                   
                     the Type of this Actor; typically this will be ``user``\ .
 
+
+                      
+                    .. collapse:: expand
+                      :class: nested-schema
+
+                      .. list-table::
+                          :widths: 25 75
+                          :class: schema-table
+                          
+                          
+                          * - user
+
+
+                            - string
+                            
+                              
+
+                          * - field_key
+
+
+                            - string
+                            
+                              
+
+                          * - public_link
+
+
+                            - string
+                            
+                              
+
+                          * - singleUse
+
+
+                            - string
+                            
+                              
+
+                     
                 * - updatedAt
 
 
@@ -318,7 +459,7 @@ Users are not able to do anything upon creation besides log in and change their 
 
                   - string
                   
-                    None
+                    
 
                 * - details
 
@@ -332,7 +473,7 @@ Users are not able to do anything upon creation besides log in and change their 
 
                   - string
                   
-                    None
+                    
 
               
       
@@ -373,20 +514,19 @@ Users are not able to do anything upon creation besides log in and change their 
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Getting User details
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/users/{actorId}**
 
@@ -470,15 +610,54 @@ It is also possible to supply the text ``current``\  instead of an integer ID; p
 
                   - number
                   
-                    None
+                    
 
                 * - type
 
 
-                  - string
+                  - enum
                   
                     the Type of this Actor; typically this will be ``user``\ .
 
+
+                      
+                    .. collapse:: expand
+                      :class: nested-schema
+
+                      .. list-table::
+                          :widths: 25 75
+                          :class: schema-table
+                          
+                          
+                          * - user
+
+
+                            - string
+                            
+                              
+
+                          * - field_key
+
+
+                            - string
+                            
+                              
+
+                          * - public_link
+
+
+                            - string
+                            
+                              
+
+                          * - singleUse
+
+
+                            - string
+                            
+                              
+
+                     
                 * - updatedAt
 
 
@@ -539,20 +718,19 @@ It is also possible to supply the text ``current``\  instead of an integer ID; p
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Deleting a User
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **DELETE /v1/users/{actorId}**
 
@@ -622,8 +800,9 @@ The User record will remain on file within the database, so that when for exampl
 
                   - boolean
                   
-                    None
+                    
 
+                    Example: ``none``
               
       
 
@@ -663,20 +842,19 @@ The User record will remain on file within the database, so that when for exampl
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Modifying a User
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **PATCH /v1/users/{actorId}**
 
@@ -809,15 +987,54 @@ When user details are updated, the ``updatedAt``\  field will be automatically u
 
                   - number
                   
-                    None
+                    
 
                 * - type
 
 
-                  - string
+                  - enum
                   
                     the Type of this Actor; typically this will be ``user``\ .
 
+
+                      
+                    .. collapse:: expand
+                      :class: nested-schema
+
+                      .. list-table::
+                          :widths: 25 75
+                          :class: schema-table
+                          
+                          
+                          * - user
+
+
+                            - string
+                            
+                              
+
+                          * - field_key
+
+
+                            - string
+                            
+                              
+
+                          * - public_link
+
+
+                            - string
+                            
+                              
+
+                          * - singleUse
+
+
+                            - string
+                            
+                              
+
+                     
                 * - updatedAt
 
 
@@ -878,7 +1095,7 @@ When user details are updated, the ``updatedAt``\  field will be automatically u
 
                   - string
                   
-                    None
+                    
 
                 * - details
 
@@ -892,7 +1109,7 @@ When user details are updated, the ``updatedAt``\  field will be automatically u
 
                   - string
                   
-                    None
+                    
 
               
       
@@ -933,20 +1150,19 @@ When user details are updated, the ``updatedAt``\  field will be automatically u
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Getting authenticated User details
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/users/current**
 
@@ -1021,15 +1237,54 @@ If you *do*\  use ``current``\ , you may request extended metadata. Supply an ``
 
                   - number
                   
-                    None
+                    
 
                 * - type
 
 
-                  - string
+                  - enum
                   
                     the Type of this Actor; typically this will be ``user``\ .
 
+
+                      
+                    .. collapse:: expand
+                      :class: nested-schema
+
+                      .. list-table::
+                          :widths: 25 75
+                          :class: schema-table
+                          
+                          
+                          * - user
+
+
+                            - string
+                            
+                              
+
+                          * - field_key
+
+
+                            - string
+                            
+                              
+
+                          * - public_link
+
+
+                            - string
+                            
+                              
+
+                          * - singleUse
+
+
+                            - string
+                            
+                              
+
+                     
                 * - updatedAt
 
 
@@ -1058,6 +1313,7 @@ If you *do*\  use ``current``\ , you may request extended metadata. Supply an ``
                   
                     The verbs the authenticated Actor is allowed to perform server-wide.
 
+                    Example: ``null``
                     
     
 
@@ -1101,20 +1357,19 @@ If you *do*\  use ``current``\ , you may request extended metadata. Supply an ``
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Directly updating a user password
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **PUT /v1/users/{actorId}/password**
 
@@ -1221,8 +1476,9 @@ To directly update a user password, you will need to reprove the user's intentio
 
                   - boolean
                   
-                    None
+                    
 
+                    Example: ``none``
               
       
 
@@ -1262,20 +1518,19 @@ To directly update a user password, you will need to reprove the user's intentio
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Initating a password reset
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **POST /v1/users/reset/initiate**
 
@@ -1379,8 +1634,9 @@ If the email address provided does not match any user in the system, that addres
 
                   - boolean
                   
-                    None
+                    
 
+                    Example: ``none``
               
       
 
@@ -1420,20 +1676,27 @@ If the email address provided does not match any user in the system, that addres
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
-Listing all App Users
+
+App Users
 -----------------------------------------------------------------------------------------------------------------------
+
+App Users may only be created, fetched, and manipulated within the nested Projects subresource, as App Users themselves are limited to the Project in which they are created. Through the ``App User``\ s API, you can create, list, and delete the App Users of any given Project. Because they have extremely limited permissions, App Users cannot manage themselves; only ``User``\ s may access this API.
+
+For more information about the ``/projects``\  containing resource, please see the following section.
+
+Listing all App Users
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/app-users**
 
@@ -1503,7 +1766,342 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
         * - array
 
 
-    
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - createdAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18 23:19:14.802000+00:00``
+                * - displayName
+
+
+                  - string
+                  
+                    All ``Actor``\ s, regardless of type, have a display name
+
+                    Example: ``My Display Name``
+                * - id
+
+
+                  - number
+                  
+                    
+
+                    Example: ``115.0``
+                * - type
+
+
+                  - enum
+                  
+                    The type of actor
+
+
+                      
+                    .. collapse:: expand
+                      :class: nested-schema
+
+                      .. list-table::
+                          :widths: 25 75
+                          :class: schema-table
+                          
+                          
+                          * - user
+
+
+                            - string
+                            
+                              
+
+                          * - field_key
+
+
+                            - string
+                            
+                              
+
+                          * - public_link
+
+
+                            - string
+                            
+                              
+
+                          * - singleUse
+
+
+                            - string
+                            
+                              
+
+                     
+                * - updatedAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18 23:42:11.406000+00:00``
+                * - deletedAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18 23:42:11.406000+00:00``
+                * - token
+
+
+                  - string
+                  
+                    If present, this is the Token that can be used to authenticate a request as this ``App User``\ . If not present, this ``App User``\ 's access has been revoked.
+
+                    Example: ``d1!E2GVHgpr4h9bpxxtqUJ7EVJ1Q$Dusm2RBXg8XyVJMCBCbvyE8cGacxUx3bcUT``
+                * - projectId
+
+
+                  - number
+                  
+                    The ID of the ``Project``\  that this ``App User``\  is bound to.
+
+                    Example: ``1``
+
+              
+      **Extended App Users**
+
+      .. list-table::
+        :class: schema-table-wrap
+
+        * - array
+
+
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - createdAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18 23:19:14.802000+00:00``
+                * - displayName
+
+
+                  - string
+                  
+                    All ``Actor``\ s, regardless of type, have a display name
+
+                    Example: ``My Display Name``
+                * - id
+
+
+                  - number
+                  
+                    
+
+                    Example: ``115.0``
+                * - type
+
+
+                  - enum
+                  
+                    The type of actor
+
+
+                      
+                    .. collapse:: expand
+                      :class: nested-schema
+
+                      .. list-table::
+                          :widths: 25 75
+                          :class: schema-table
+                          
+                          
+                          * - user
+
+
+                            - string
+                            
+                              
+
+                          * - field_key
+
+
+                            - string
+                            
+                              
+
+                          * - public_link
+
+
+                            - string
+                            
+                              
+
+                          * - singleUse
+
+
+                            - string
+                            
+                              
+
+                     
+                * - updatedAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18 23:42:11.406000+00:00``
+                * - deletedAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18 23:42:11.406000+00:00``
+                * - token
+
+
+                  - string
+                  
+                    If present, this is the Token that can be used to authenticate a request as this ``App User``\ . If not present, this ``App User``\ 's access has been revoked.
+
+                    Example: ``d1!E2GVHgpr4h9bpxxtqUJ7EVJ1Q$Dusm2RBXg8XyVJMCBCbvyE8cGacxUx3bcUT``
+                * - projectId
+
+
+                  - number
+                  
+                    The ID of the ``Project``\  that this ``App User``\  is bound to.
+
+                    Example: ``1``
+                * - createdBy
+
+
+                  - object
+                  
+                    The ``Actor``\  that created this ``App User``\ 
+
+
+                      
+                    .. collapse:: expand
+                      :class: nested-schema
+
+                      .. list-table::
+                          :widths: 25 75
+                          :class: schema-table
+                          
+                          
+                          * - createdAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:19:14.802000+00:00``
+                          * - displayName
+
+
+                            - string
+                            
+                              All ``Actor``\ s, regardless of type, have a display name
+
+                              Example: ``My Display Name``
+                          * - id
+
+
+                            - number
+                            
+                              
+
+                              Example: ``115.0``
+                          * - type
+
+
+                            - enum
+                            
+                              The type of actor
+
+
+                                
+                              .. collapse:: expand
+                                :class: nested-schema
+
+                                .. list-table::
+                                    :widths: 25 75
+                                    :class: schema-table
+                                    
+                                    
+                                    * - user
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - field_key
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - public_link
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - singleUse
+
+
+                                      - string
+                                      
+                                        
+
+                               
+                          * - updatedAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:42:11.406000+00:00``
+                          * - deletedAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:42:11.406000+00:00``
+                     
+                * - lastUsed
+
+
+                  - string
+                  
+                    ISO date format. The last time this ``App User``\  was used to authenticate a request.
+
+                    Example: ``2018-04-14 08:34:21.633000+00:00``
 
               
       
@@ -1544,20 +2142,19 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Creating a new App User
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **POST /v1/projects/{projectId}/app-users**
 
@@ -1679,15 +2276,54 @@ When an App User is created, they are assigned no rights. They will be able to a
 
                   - number
                   
-                    None
+                    
 
                 * - type
 
 
-                  - string
+                  - enum
                   
                     the Type of this Actor; typically this will be ``user``\ .
 
+
+                      
+                    .. collapse:: expand
+                      :class: nested-schema
+
+                      .. list-table::
+                          :widths: 25 75
+                          :class: schema-table
+                          
+                          
+                          * - user
+
+
+                            - string
+                            
+                              
+
+                          * - field_key
+
+
+                            - string
+                            
+                              
+
+                          * - public_link
+
+
+                            - string
+                            
+                              
+
+                          * - singleUse
+
+
+                            - string
+                            
+                              
+
+                     
                 * - updatedAt
 
 
@@ -1755,7 +2391,7 @@ When an App User is created, they are assigned no rights. They will be able to a
 
                   - string
                   
-                    None
+                    
 
                 * - details
 
@@ -1769,7 +2405,7 @@ When an App User is created, they are assigned no rights. They will be able to a
 
                   - string
                   
-                    None
+                    
 
               
       
@@ -1810,20 +2446,19 @@ When an App User is created, they are assigned no rights. They will be able to a
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Deleting a App User
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **DELETE /v1/projects/{projectId}/app-users/{id}**
 
@@ -1895,8 +2530,9 @@ That said, if you do wish to delete the App User altogether, you can do so by is
 
                   - boolean
                   
-                    None
+                    
 
+                    Example: ``none``
               
       
 
@@ -1936,20 +2572,29 @@ That said, if you do wish to delete the App User altogether, you can do so by is
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
-Listing all Roles
+
+Roles
 -----------------------------------------------------------------------------------------------------------------------
+
+*(introduced: version 0.5)*\ 
+
+The Roles API lists and describes each known Role within the system. Right now, Roles may not be created or customized via the API, but this will likely change in the future.
+
+Each Role contains information about the verbs it allows its assignees to perform. Some Roles have a system name associated with them; the Roles may always be referenced by this system name in request URLs, and system Roles are always read-only.
+
+Listing all Roles
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/roles**
 
@@ -1994,13 +2639,68 @@ Currently, there are no paging or filtering options, so listing ``Role``\ s will
         * - array
 
 
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - id
+
+
+                  - number
+                  
+                    The numerical ID of the Role.
+
+                    Example: ``4``
+                * - name
+
+
+                  - string
+                  
+                    The human-readable name for the Role.
+
+                    Example: ``Project Manager``
+                * - system
+
+
+                  - string
+                  
+                    The system name of the Role. Roles that have system names may not be modified.
+
+                    Example: ``manager``
+                * - verbs
+
+
+                  - array
+                  
+                    The array of string verbs this Role confers.
+
+                    Example: ``["project.update", "project.delete"]``
+                    
     
+
+                     
+                * - createdAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18 23:42:11.406000+00:00``
+                * - updatedAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-09-18 23:42:11.406000+00:00``
 
               
       
-  
 Getting Role Details
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/roles/{id}**
 
@@ -2076,6 +2776,7 @@ As with Role listing, there are no authorization restrictions upon this endpoint
                   
                     The numerical ID of the Role.
 
+                    Example: ``4``
                 * - name
 
 
@@ -2083,6 +2784,7 @@ As with Role listing, there are no authorization restrictions upon this endpoint
                   
                     The human-readable name for the Role.
 
+                    Example: ``Project Manager``
                 * - system
 
 
@@ -2090,6 +2792,7 @@ As with Role listing, there are no authorization restrictions upon this endpoint
                   
                     The system name of the Role. Roles that have system names may not be modified.
 
+                    Example: ``manager``
                 * - verbs
 
 
@@ -2097,6 +2800,7 @@ As with Role listing, there are no authorization restrictions upon this endpoint
                   
                     The array of string verbs this Role confers.
 
+                    Example: ``["project.update", "project.delete"]``
                     
     
 
@@ -2108,6 +2812,7 @@ As with Role listing, there are no authorization restrictions upon this endpoint
                   
                     ISO date format
 
+                    Example: ``2018-04-18 23:42:11.406000+00:00``
                 * - updatedAt
 
 
@@ -2115,11 +2820,23 @@ As with Role listing, there are no authorization restrictions upon this endpoint
                   
                     ISO date format
 
+                    Example: ``2018-09-18 23:42:11.406000+00:00``
               
       
-  
-Listing all Assignments
+
+Assignments
 -----------------------------------------------------------------------------------------------------------------------
+
+*(introduced: version 0.5)*\ 
+
+There are multiple Assignments resources. This one, upon the API root (``/v1/assignments``\ ), manages Role assignment to the entire system (e.g. if you are assigned a Role that gives you ``form.create``\ , you may create a form anywhere on the entire server).
+
+The `Project Assignments resource </reference/project-management/project-assignments>`__, nested under Projects, manages Role assignment to that Project in particular, and all objects within it. And the `Form Assignments resource </reference/forms/form-assignments>`__ allows even more granular assignments, to specific Forms within a Project. All of these resources have the same structure and take and return the same data types.
+
+Assignments may be created (``POST``\ ) and deleted (``DELETE``\ ) like any other resource in the system. Here, creating an Assignment grants the referenced Actor the verbs associated with the referenced Role upon all system objects. The pathing for creation and deletion is not quite REST-standard: we represent the relationship between Role and Actor directly in the URL rather than as body data: ``assignments/{role}/{actor}``\  represents the assignment of the given Role to the given Actor.
+
+Listing all Assignments
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/assignments**
 
@@ -2135,7 +2852,7 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
   **HTTP Status: 200**
 
-  Content Type: application/json; extended
+  Content Type: application/json
 
   .. tab-set::
 
@@ -2166,14 +2883,161 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
         * - array
 
 
-    
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - actorId
+
+
+                  - number
+                  
+                    The numeric Actor ID being assigned.
+
+                    Example: ``42``
+                * - roleId
+
+
+                  - number
+                  
+                    The numeric Role ID being assigned.
+
+                    Example: ``4``
+
+              
+      **Extended Assignment**
+
+      .. list-table::
+        :class: schema-table-wrap
+
+        * - array
+
+
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - actor
+
+
+                  - object
+                  
+                    The full Actor data for this assignment.
+
+
+                      
+                    .. collapse:: expand
+                      :class: nested-schema
+
+                      .. list-table::
+                          :widths: 25 75
+                          :class: schema-table
+                          
+                          
+                          * - createdAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:19:14.802000+00:00``
+                          * - displayName
+
+
+                            - string
+                            
+                              All ``Actor``\ s, regardless of type, have a display name
+
+                              Example: ``My Display Name``
+                          * - id
+
+
+                            - number
+                            
+                              
+
+                              Example: ``115.0``
+                          * - type
+
+
+                            - enum
+                            
+                              The type of actor
+
+
+                                
+                              .. collapse:: expand
+                                :class: nested-schema
+
+                                .. list-table::
+                                    :widths: 25 75
+                                    :class: schema-table
+                                    
+                                    
+                                    * - user
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - field_key
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - public_link
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - singleUse
+
+
+                                      - string
+                                      
+                                        
+
+                               
+                          * - updatedAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:42:11.406000+00:00``
+                          * - deletedAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:42:11.406000+00:00``
+                     
+                * - roleId
+
+
+                  - number
+                  
+                    The numeric Role ID being assigned.
+
+                    Example: ``4``
 
               
       
 
   **HTTP Status: 403**
 
-  Content Type: application/json; extended
+  Content Type: application/json
 
   .. tab-set::
 
@@ -2182,8 +3046,8 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
       .. code-block::
 
           {
-            "code": "pencil",
-            "message": "pencil"
+            "code": "403.1",
+            "message": "The authenticated actor does not have rights to perform that action."
           }
 
     .. tab-item:: Schema
@@ -2207,20 +3071,21 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``403.1``
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``The authenticated actor does not have rights to perform that action.``
               
       
-  
 Listing all Actors assigned some Role
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/assignments/{roleId}**
 
@@ -2277,7 +3142,97 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
         * - array
 
 
-    
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - createdAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18 23:19:14.802000+00:00``
+                * - displayName
+
+
+                  - string
+                  
+                    All ``Actor``\ s, regardless of type, have a display name
+
+                    Example: ``My Display Name``
+                * - id
+
+
+                  - number
+                  
+                    
+
+                    Example: ``115.0``
+                * - type
+
+
+                  - enum
+                  
+                    The type of actor
+
+
+                      
+                    .. collapse:: expand
+                      :class: nested-schema
+
+                      .. list-table::
+                          :widths: 25 75
+                          :class: schema-table
+                          
+                          
+                          * - user
+
+
+                            - string
+                            
+                              
+
+                          * - field_key
+
+
+                            - string
+                            
+                              
+
+                          * - public_link
+
+
+                            - string
+                            
+                              
+
+                          * - singleUse
+
+
+                            - string
+                            
+                              
+
+                     
+                * - updatedAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18 23:42:11.406000+00:00``
+                * - deletedAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18 23:42:11.406000+00:00``
 
               
       
@@ -2318,20 +3273,19 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Assigning an Actor to a server-wide Role
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **POST /v1/assignments/{roleId}/{actorId}**
 
@@ -2403,8 +3357,9 @@ No ``POST``\  body data is required, and if provided it will be ignored.
 
                   - boolean
                   
-                    None
+                    
 
+                    Example: ``none``
               
       
 
@@ -2444,20 +3399,19 @@ No ``POST``\  body data is required, and if provided it will be ignored.
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Stripping an Role Assignment from an Actor
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **DELETE /v1/assignments/{roleId}/{actorId}**
 
@@ -2527,8 +3481,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                   - boolean
                   
-                    None
+                    
 
+                    Example: ``none``
               
       
 
@@ -2568,15 +3523,15 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
+

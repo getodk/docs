@@ -1,4 +1,4 @@
-.. auto generated file - DO NOT MODIFY
+.. auto generated file - DO NOT MODIFY 
 
 Authentication
 =======================================================================================================================
@@ -15,8 +15,19 @@ In a future version of the API, programmatic consumers will be more directly sup
 
 Next, you will find documentation on each of the three authentication methods described above. It is best not to present multiple credentials. If you do, the first *presented*\  scheme out of ``/key``\  token, Bearer, Basic, then Cookie will be used for the request. If the multiple schemes are sent at once, and the first matching scheme fails, the request will be immediately rejected.
 
-Logging in
+
+Session Authentication
 -----------------------------------------------------------------------------------------------------------------------
+
+This is the authentication method used by the ODK Central Frontend packaged with Central Backend. Only ``User``\ s can authenticate this way. It consists mostly of two steps:
+
+1. **Logging in**\ : presenting an Email Address and a Password for verification, after which a new ``Session``\  is created. Associated with the Session is an expiration and a bearer token. Sessions expire 24 hours after they are created.
+2. **Using the session**\ : each request to the API needs a header attached to it: ``Authorization: Bearer {token}``\ . This authenticates that particular request as belonging to the Session we created by logging in.
+
+You might notice that Step 2 greatly resembles how OAuth 2.0 works. This was an intentional first step towards OAuth support, and should make the forward migration of your code easier down the road.
+
+Logging in
+^^^^^^^^^^^^^^^^^^^^
 
 **POST /v1/sessions**
 
@@ -39,8 +50,8 @@ Successful responses will come with an HTTP-Only, Secure-Only cookie. This cooki
       .. code-block::
 
           {
-            "email": "pencil",
-            "password": "pencil"
+            "email": "my.email.address@getodk.org",
+            "password": "my.super.secure.password"
           }
 
     .. tab-item:: Schema
@@ -66,6 +77,7 @@ Successful responses will come with an HTTP-Only, Secure-Only cookie. This cooki
                   
                     The ``User``\ 's full email address.
 
+                    Example: ``my.email.address@getodk.org``
                 * - password
 
 
@@ -73,6 +85,7 @@ Successful responses will come with an HTTP-Only, Secure-Only cookie. This cooki
                   
                     The ``User``\ 's password.
 
+                    Example: ``my.super.secure.password``
               
   
   
@@ -170,32 +183,27 @@ Successful responses will come with an HTTP-Only, Secure-Only cookie. This cooki
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``401.2``
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``Could not authenticate with the provided credentials.``
               
       
-  
-Using Basic Authentication
------------------------------------------------------------------------------------------------------------------------
+Using the session
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**GET /v1/example**
+**GET /v1/example1**
 
-To use HTTPS Basic Authentication, attach an ``Authorization``\  header formatted so:
+Once you have logged in, to use your session token to authenticate with any action, supply it in a request header ``Authorization``\  with a value of ``Bearer {token}``\ , as seen here.
 
-``Authorization: Basic bXkuZW1haWwuYWRkcmVzc0BvcGVuZGF0YWtpdC5vcmc6bXkucGFzc3dvcmQ=``\ 
-
-As given by `the standard <https://en.wikipedia.org/wiki/Basic*access*\ authentication>`__, the text following the ``Basic``\  marker here is a base64 encoding of the credentials, provided in the form ``email:password``\  (in this example ``my.email.address@getodk.org:my.password``\ ).
-
-Unlike the standard, we do not require the client to first send an unauthenticated request and retry the request only after receiving a ``WWW-Authenticate``\  response, and in fact we will never send the ``WWW-Authenticate``\  header. This is mostly because, as noted above, we generally discourage the use of this authentication method, and would rather not advertise its use openly. As a result, if you wish to use Basic Authentication, directly supply the header on any request that needs it.
-
-*(There is not really anything at ``/v1/example``\ ; this section only demonstrates how generally to use Basic Authentication.)*\ 
+*(There is not really anything at ``/v1/example1``\ ; this section only demonstrates how generally to use Session Bearer Token Authentication.)*\ 
 
 .. dropdown:: Request
 
@@ -212,9 +220,9 @@ Unlike the standard, we do not require the client to first send an unauthenticat
 
         - string
         
-          Base64 encoding of the credentials
+          Bearer encoding of the credentials
 
-          Example: ``Basic bXkuZW1haWwuYWRkcmVzc0BvcGVuZGF0YWtpdC5vcmc6bXkucGFzc3dvcmQ=``
+          Example: ``Bearer lSpAIeksRu1CNZs7!qjAot2T17dPzkrw9B4iTtpj7OoIJBmXvnHM8z8Ka4QPEjR7``
 
   
 .. dropdown:: Response
@@ -230,7 +238,7 @@ Unlike the standard, we do not require the client to first send an unauthenticat
       .. code-block::
 
           {
-            "success": true
+            "message": "Success"
           }
 
     .. tab-item:: Schema
@@ -249,20 +257,24 @@ Unlike the standard, we do not require the client to first send an unauthenticat
                 :class: schema-table
                 
                 
-                * - success
+                * - message
 
 
-                  - boolean
+                  - string
                   
-                    None
+                    
 
+                    Example: ``Success``
               
       
-  
-Revoking an App User
------------------------------------------------------------------------------------------------------------------------
+Logging out / Revoking an App User
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **DELETE /v1/sessions/{token}**
+
+Logging out is not strictly necessary for Web Users; all sessions expire 24 hours after they are created. But it can be a good idea, in case someone else manages to steal your token. It is also the way Public Link and App User access are revoked. To do so, issue a ``DELETE``\  request to that token resource.
+
+**Revoking an App User**\ 
 
 The token associated with a App User is actually just its Session Token. As a result, although a App User Token can uniquely be used as a URL prefix as described here, the session associated with it can be revoked in exactly the same way a session is logged out, by issuing a ``DELETE``\  request to its Session resource.
 
@@ -300,7 +312,7 @@ Note, however, that a App User cannot revoke itself; a ``User``\  must perform t
       .. code-block::
 
           {
-            "success": true
+            "message": "Success"
           }
 
     .. tab-item:: Schema
@@ -319,13 +331,14 @@ Note, however, that a App User cannot revoke itself; a ``User``\  must perform t
                 :class: schema-table
                 
                 
-                * - success
+                * - message
 
 
-                  - boolean
+                  - string
                   
-                    None
+                    
 
+                    Example: ``Success``
               
       
 
@@ -365,28 +378,122 @@ Note, however, that a App User cannot revoke itself; a ``User``\  must perform t
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``403.1``
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``The authenticated actor does not have rights to perform that action.``
               
       
-  
-Using App User Authentication
+
+HTTPS Basic Authentication
 -----------------------------------------------------------------------------------------------------------------------
 
-**GET /v1/key/{appUser}/example**
+Standard HTTP Basic Authentication is allowed, but **strongly discouraged**\ . This is because the server must verify your password with every single request, which is very slow to compute: typically, this will add hundreds of milliseconds to each request. For some one-off tasks and in cases where there is no other choice, it is reasonable to choose Basic authentication, but wherever possible we strongly encourage the use of any other authentication method.
+
+In addition, because credentials are sent in plaintext as part of the request, **the server will only accept Basic auth over HTTPS**\ . If your ODK Central server is set up over plain HTTP, it will not accept Basic auth.
+
+Using Basic Authentication
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**GET /v1/example2**
+
+To use HTTPS Basic Authentication, attach an ``Authorization``\  header formatted so:
+
+``Authorization: Basic bXkuZW1haWwuYWRkcmVzc0BvcGVuZGF0YWtpdC5vcmc6bXkucGFzc3dvcmQ=``\ 
+
+As given by `the standard <https://en.wikipedia.org/wiki/Basic*access*\ authentication>`__, the text following the ``Basic``\  marker here is a base64 encoding of the credentials, provided in the form ``email:password``\  (in this example ``my.email.address@getodk.org:my.password``\ ).
+
+Unlike the standard, we do not require the client to first send an unauthenticated request and retry the request only after receiving a ``WWW-Authenticate``\  response, and in fact we will never send the ``WWW-Authenticate``\  header. This is mostly because, as noted above, we generally discourage the use of this authentication method, and would rather not advertise its use openly. As a result, if you wish to use Basic Authentication, directly supply the header on any request that needs it.
+
+*(There is not really anything at ``/v1/example2``\ ; this section only demonstrates how generally to use Basic Authentication.)*\ 
+
+.. dropdown:: Request
+
+  **Parameters**
+
+  .. list-table::
+      :widths: 25 75
+      :class: schema-table
+      
+      
+      * - Authorization
+
+          *(header)*
+
+        - string
+        
+          Base64 encoding of the credentials
+
+          Example: ``Basic bXkuZW1haWwuYWRkcmVzc0BvcGVuZGF0YWtpdC5vcmc6bXkucGFzc3dvcmQ=``
+
+  
+.. dropdown:: Response
+
+  **HTTP Status: 200**
+
+  Content Type: application/json
+
+  .. tab-set::
+
+    .. tab-item:: Example
+
+      .. code-block::
+
+          {
+            "message": "Success"
+          }
+
+    .. tab-item:: Schema
+
+
+      .. list-table::
+        :class: schema-table-wrap
+
+        * - object
+
+
+              
+
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - message
+
+
+                  - string
+                  
+                    
+
+                    Example: ``Success``
+              
+      
+
+App User Authentication
+-----------------------------------------------------------------------------------------------------------------------
+
+App Users are only allowed to list and download forms, and upload new submissions to those forms. Primarily, this is to allow clients like ODK Collect to use the OpenRosa API (``/formList``\  and ``/submission``\ ), but any action in this API reference falling into those categories will be allowed.
+
+Rvoking an App User is same as deleting session token. You can do this by calling `DELETE /sessions/{appUser} </central-api-authentication/#logging-out-revoking-an-app-user>`__.
+
+Using App User Authentication
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**GET /v1/key/{appUser}/example3**
 
 To use App User Authentication, first obtain a App User, typically by using the configuration panel in the user interface, or else by using the `App User API Resource </reference/accounts-and-users/app-users>`__. Once you have the token, you can apply it to any eligible action by prefixing the URL with ``/key/{appUser}``\  as follows:
 
 ``/v1/key/!Ms7V3$Zdnd63j5HFacIPFEvFAuwNqTUZW$AsVOmaQFf$vIC!F8dJjdgiDnJXXOt/example/request/path``\ 
 
-*(There is not really anything at ``/v1/example``\ ; this section only demonstrates how generally to use App User Authentication.)*\ 
+*(There is not really anything at ``/v1/example3``\ ; this section only demonstrates how generally to use App User Authentication.)*\ 
 
 .. dropdown:: Request
 
@@ -420,7 +527,7 @@ To use App User Authentication, first obtain a App User, typically by using the 
       .. code-block::
 
           {
-            "success": true
+            "message": "Success"
           }
 
     .. tab-item:: Schema
@@ -439,13 +546,14 @@ To use App User Authentication, first obtain a App User, typically by using the 
                 :class: schema-table
                 
                 
-                * - success
+                * - message
 
 
-                  - boolean
+                  - string
                   
-                    None
+                    
 
+                    Example: ``Success``
               
       
-  
+

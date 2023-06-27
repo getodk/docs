@@ -1,12 +1,20 @@
-.. auto generated file - DO NOT MODIFY
+.. auto generated file - DO NOT MODIFY 
 
 Project Management
 =======================================================================================================================
 
 Apart from staff users ("Web Users" in the Central management interface) and some site-wide configuration details like Usage Reporting, all of ODK Central's objects (Forms, Submissions, App Users) are partitioned by Project, and available only as subresources below the main Projects resource.
 
-Listing Projects
+
+Projects
 -----------------------------------------------------------------------------------------------------------------------
+
+*(introduced: version 0.4)*\ 
+
+You must create a containing Project before you can create any of its subobjects.
+
+Listing Projects
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects**
 
@@ -18,13 +26,29 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
 .. dropdown:: Request
 
-  This endpoint doesn't take any request parameter or data
+  **Parameters**
+
+  .. list-table::
+      :widths: 25 75
+      :class: schema-table
+      
+      
+      * - forms
+
+          *(query)*
+
+        - boolean
+        
+          _(introduced: Version 1.5)_ If set to true then endpoint also returns the Forms that the authenticated Actor is allowed to see, with those Forms nested within their corresponding Project under a new parameter `formList`. The returned Forms will match structure of Forms requested with extended metadata (including additional `lastSubmission` timestamp and `submissions` and `reviewStates` counts)
+
+          Example: ``true``
+
   
 .. dropdown:: Response
 
   **HTTP Status: 200**
 
-  Content Type: application/json; extended
+  Content Type: application/json
 
   .. tab-set::
 
@@ -48,6 +72,7 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
     .. tab-item:: Schema
 
+      **Standard Response**
 
       .. list-table::
         :class: schema-table-wrap
@@ -55,13 +80,143 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
         * - array
 
 
-    
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - id
+
+
+                  - number
+                  
+                    The numerical ID of the Project.
+
+                    Example: ``1``
+                * - name
+
+
+                  - string
+                  
+                    The name of the Project.
+
+                    Example: ``Default Project``
+                * - description
+
+
+                  - string
+                  
+                    The description of the Project, which is rendered as Markdown on Frontend.
+
+                    Example: ``Description of this Project to show on Central.``
+                * - keyId
+
+
+                  - number
+                  
+                    If managed encryption is enabled on the project, the numeric ID of the encryption key as tracked by Central is given here.
+
+                    Example: ``3``
+                * - archived
+
+
+                  - boolean
+                  
+                    Whether the Project is archived or not. ``null``\  is equivalent to ``false``\ . All this does is sort the Project to the bottom of the list and disable management features in the web management application.
+
+                    Example: ``none``
+
+              
+      **Extended Response**
+
+      .. list-table::
+        :class: schema-table-wrap
+
+        * - array
+
+
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - id
+
+
+                  - number
+                  
+                    The numerical ID of the Project.
+
+                    Example: ``1``
+                * - name
+
+
+                  - string
+                  
+                    The name of the Project.
+
+                    Example: ``Default Project``
+                * - description
+
+
+                  - string
+                  
+                    The description of the Project, which is rendered as Markdown on Frontend.
+
+                    Example: ``Description of this Project to show on Central.``
+                * - keyId
+
+
+                  - number
+                  
+                    If managed encryption is enabled on the project, the numeric ID of the encryption key as tracked by Central is given here.
+
+                    Example: ``3``
+                * - archived
+
+
+                  - boolean
+                  
+                    Whether the Project is archived or not. ``null``\  is equivalent to ``false``\ . All this does is sort the Project to the bottom of the list and disable management features in the web management application.
+
+                    Example: ``none``
+                * - appUsers
+
+
+                  - number
+                  
+                    The number of App Users created within this Project.
+
+                    Example: ``4``
+                * - forms
+
+
+                  - number
+                  
+                    The number of forms within this Project.
+
+                    Example: ``7``
+                * - lastSubmission
+
+
+                  - string
+                  
+                    ISO date format. The timestamp of the most recent submission to any form in this project, if any.
+
+                    Example: ``2018-04-18T03:04:51.695Z``
+                * - datasets
+
+
+                  - number
+                  
+                    The number of Datasets within this Project.
+
+                    Example: ``2``
 
               
       
-  
 Creating a Project
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **POST /v1/projects**
 
@@ -180,6 +335,7 @@ To create a Project, the only information you must supply (via POST body) is the
                   
                     Whether the Project is archived or not. ``null``\  is equivalent to ``false``\ . All this does is sort the Project to the bottom of the list and disable management features in the web management application.
 
+                    Example: ``none``
               
       
 
@@ -219,100 +375,19 @@ To create a Project, the only information you must supply (via POST body) is the
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
-Listing Projects with nested Forms
------------------------------------------------------------------------------------------------------------------------
-
-**GET /v1/projects?forms=true**
-
-*(introduced: Version 1.5)*\ 
-
-This endpoint works similarly to the Project listing endpoint above, except it also returns the Forms that the authenticated Actor is allowed to see, with those Forms nested within their corresponding Project under a new parameter ``formList``\ . The returned Forms will match structure of Forms requested with extended metadata (including additional ``lastSubmission``\  timestamp and ``submissions``\  and ``reviewStates``\  counts).
-
-.. dropdown:: Request
-
-  This endpoint doesn't take any request parameter or data
-  
-.. dropdown:: Response
-
-  **HTTP Status: 200**
-
-  Content Type: application/json
-
-  .. tab-set::
-
-    .. tab-item:: Example
-
-      .. code-block::
-
-          [
-            {
-              "id": 1,
-              "name": "Default Project",
-              "description": "Description of this Project to show on Central.",
-              "keyId": 3,
-              "archived": false,
-              "formList": [
-                {
-                  "projectId": 1,
-                  "xmlFormId": "simple",
-                  "name": "Simple",
-                  "version": "2.1",
-                  "enketoId": "abcdef",
-                  "hash": "51a93eab3a1974dbffc4c7913fa5a16a",
-                  "keyId": 3,
-                  "state": "open",
-                  "publishedAt": "2018-01-21T00:04:11.153Z",
-                  "createdAt": "2018-01-19T23:58:03.395Z",
-                  "updatedAt": "2018-03-21T12:45:02.312Z",
-                  "submissions": 10,
-                  "reviewStates": {
-                    "received": 3,
-                    "hasIssues": 2,
-                    "edited": 1
-                  },
-                  "lastSubmission": "2018-04-18T03:04:51.695Z",
-                  "createdBy": {
-                    "createdAt": "2018-04-18T23:19:14.802Z",
-                    "displayName": "My Display Name",
-                    "id": 115,
-                    "type": "user",
-                    "updatedAt": "2018-04-18T23:42:11.406Z",
-                    "deletedAt": "2018-04-18T23:42:11.406Z"
-                  },
-                  "entityRelated": false
-                }
-              ]
-            }
-          ]
-
-    .. tab-item:: Schema
-
-
-      .. list-table::
-        :class: schema-table-wrap
-
-        * - array
-
-
-    
-
-              
-      
-  
 Getting Project Details
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{id}**
 
@@ -420,6 +495,7 @@ In addition, the extended metadata version of this endpoint (but not the overall
                   
                     Whether the Project is archived or not. ``null``\  is equivalent to ``false``\ . All this does is sort the Project to the bottom of the list and disable management features in the web management application.
 
+                    Example: ``none``
                 * - appUsers
 
 
@@ -455,6 +531,7 @@ In addition, the extended metadata version of this endpoint (but not the overall
                   
                     The array of string verbs the authenticated Actor may perform on and within this Project.
 
+                    Example: ``null``
                     
     
 
@@ -498,20 +575,19 @@ In addition, the extended metadata version of this endpoint (but not the overall
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Deep Updating Project and Form Details
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **PUT /v1/projects/{id}**
 
@@ -616,6 +692,7 @@ You can inspect the Request format for this endpoint to see the exact nested dat
                   
                     Archives the Project.
 
+                    Example: ``none``
                 * - forms
 
 
@@ -623,6 +700,11 @@ You can inspect the Request format for this endpoint to see the exact nested dat
                   
                     If given, the Form metadata to update.
 
+                    Example: ``null``
+                    
+    
+
+                     
               
   
   
@@ -697,6 +779,7 @@ You can inspect the Request format for this endpoint to see the exact nested dat
                   
                     Whether the Project is archived or not. ``null``\  is equivalent to ``false``\ . All this does is sort the Project to the bottom of the list and disable management features in the web management application.
 
+                    Example: ``none``
               
       
 
@@ -736,14 +819,14 @@ You can inspect the Request format for this endpoint to see the exact nested dat
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
@@ -784,20 +867,19 @@ You can inspect the Request format for this endpoint to see the exact nested dat
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Deleting a Project
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **DELETE /v1/projects/{id}**
 
@@ -859,8 +941,9 @@ Deleting a Project will remove it from the management interface and make it perm
 
                   - boolean
                   
-                    None
+                    
 
+                    Example: ``none``
               
       
 
@@ -900,20 +983,19 @@ Deleting a Project will remove it from the management interface and make it perm
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Updating Project Details
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **PATCH /v1/projects/{id}**
 
@@ -990,6 +1072,7 @@ By default, ``archived``\  is not set, which is equivalent to ``false``\ . If ``
                   
                     Archives the Project.
 
+                    Example: ``none``
               
   
   
@@ -1064,6 +1147,7 @@ By default, ``archived``\  is not set, which is equivalent to ``false``\ . If ``
                   
                     Whether the Project is archived or not. ``null``\  is equivalent to ``false``\ . All this does is sort the Project to the bottom of the list and disable management features in the web management application.
 
+                    Example: ``none``
               
       
 
@@ -1103,20 +1187,19 @@ By default, ``archived``\  is not set, which is equivalent to ``false``\ . If ``
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Enabling Project Managed Encryption
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **POST /v1/projects/{id}/key**
 
@@ -1261,6 +1344,7 @@ Enabling managed encryption will modify all unencrypted forms in the project, an
                   
                     Whether the Project is archived or not. ``null``\  is equivalent to ``false``\ . All this does is sort the Project to the bottom of the list and disable management features in the web management application.
 
+                    Example: ``none``
               
       
 
@@ -1300,7 +1384,7 @@ Enabling managed encryption will modify all unencrypted forms in the project, an
 
                   - string
                   
-                    None
+                    
 
                 * - details
 
@@ -1314,7 +1398,7 @@ Enabling managed encryption will modify all unencrypted forms in the project, an
 
                   - string
                   
-                    None
+                    
 
               
       
@@ -1355,14 +1439,14 @@ Enabling managed encryption will modify all unencrypted forms in the project, an
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
@@ -1403,20 +1487,31 @@ Enabling managed encryption will modify all unencrypted forms in the project, an
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
-Listing all Project Assignments
+
+Project Assignments
 -----------------------------------------------------------------------------------------------------------------------
+
+*(introduced: version 0.5)*\ 
+
+There are multiple Assignments resources. This one, specific to the Project it is nested within, only governs Role assignments to that Project. Assigning an Actor a Role that grants, for example, a verb ``submission.create``\ , allows that Actor to create a submission anywhere within this Project. It is also possible to assign rights only to specific forms for actions related only to that form and its submissions: see the `Form Assignments resource </reference/forms/form-assignments>`__ for information about this.
+
+The `sitewide Assignments resource </reference/accounts-and-users/assignments>`__, at the API root, manages Role assignments for all objects across the server. Apart from this difference in scope, the introduction to that section contains information useful for understanding the following endpoints.
+
+There are only one set of Roles, applicable to either scenario. There are not a separate set of Roles used only upon Projects or Forms.
+
+Listing all Project Assignments
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/assignments**
 
@@ -1447,7 +1542,7 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
   **HTTP Status: 200**
 
-  Content Type: application/json; extended
+  Content Type: application/json
 
   .. tab-set::
 
@@ -1478,14 +1573,160 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
         * - array
 
 
-    
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - actorId
+
+
+                  - number
+                  
+                    The numeric Actor ID being assigned.
+
+                    Example: ``42``
+                * - roleId
+
+
+                  - number
+                  
+                    The numeric Role ID being assigned.
+
+                    Example: ``4``
+
+              
+
+      .. list-table::
+        :class: schema-table-wrap
+
+        * - array
+
+
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - actor
+
+
+                  - object
+                  
+                    The full Actor data for this assignment.
+
+
+                      
+                    .. collapse:: expand
+                      :class: nested-schema
+
+                      .. list-table::
+                          :widths: 25 75
+                          :class: schema-table
+                          
+                          
+                          * - createdAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:19:14.802000+00:00``
+                          * - displayName
+
+
+                            - string
+                            
+                              All ``Actor``\ s, regardless of type, have a display name
+
+                              Example: ``My Display Name``
+                          * - id
+
+
+                            - number
+                            
+                              
+
+                              Example: ``115.0``
+                          * - type
+
+
+                            - enum
+                            
+                              The type of actor
+
+
+                                
+                              .. collapse:: expand
+                                :class: nested-schema
+
+                                .. list-table::
+                                    :widths: 25 75
+                                    :class: schema-table
+                                    
+                                    
+                                    * - user
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - field_key
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - public_link
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - singleUse
+
+
+                                      - string
+                                      
+                                        
+
+                               
+                          * - updatedAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:42:11.406000+00:00``
+                          * - deletedAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:42:11.406000+00:00``
+                     
+                * - roleId
+
+
+                  - number
+                  
+                    The numeric Role ID being assigned.
+
+                    Example: ``4``
 
               
       
 
   **HTTP Status: 403**
 
-  Content Type: application/json; extended
+  Content Type: application/json
 
   .. tab-set::
 
@@ -1494,8 +1735,8 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
       .. code-block::
 
           {
-            "code": "pencil",
-            "message": "pencil"
+            "code": "403.1",
+            "message": "The authenticated actor does not have rights to perform that action."
           }
 
     .. tab-item:: Schema
@@ -1519,20 +1760,21 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``403.1``
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``The authenticated actor does not have rights to perform that action.``
               
       
-  
 Listing all Actors assigned some Project Role
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/assignments/{roleId}**
 
@@ -1597,7 +1839,97 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
         * - array
 
 
-    
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - createdAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18 23:19:14.802000+00:00``
+                * - displayName
+
+
+                  - string
+                  
+                    All ``Actor``\ s, regardless of type, have a display name
+
+                    Example: ``My Display Name``
+                * - id
+
+
+                  - number
+                  
+                    
+
+                    Example: ``115.0``
+                * - type
+
+
+                  - enum
+                  
+                    The type of actor
+
+
+                      
+                    .. collapse:: expand
+                      :class: nested-schema
+
+                      .. list-table::
+                          :widths: 25 75
+                          :class: schema-table
+                          
+                          
+                          * - user
+
+
+                            - string
+                            
+                              
+
+                          * - field_key
+
+
+                            - string
+                            
+                              
+
+                          * - public_link
+
+
+                            - string
+                            
+                              
+
+                          * - singleUse
+
+
+                            - string
+                            
+                              
+
+                     
+                * - updatedAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18 23:42:11.406000+00:00``
+                * - deletedAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18 23:42:11.406000+00:00``
 
               
       
@@ -1638,20 +1970,21 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``403.1``
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``The authenticated actor does not have rights to perform that action.``
               
       
-  
 Assigning an Actor to a Project Role
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **POST /v1/projects/{projectId}/assignments/{roleId}/{actorId}**
 
@@ -1731,8 +2064,9 @@ No ``POST``\  body data is required, and if provided it will be ignored.
 
                   - boolean
                   
-                    None
+                    
 
+                    Example: ``none``
               
       
 
@@ -1772,20 +2106,19 @@ No ``POST``\  body data is required, and if provided it will be ignored.
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Revoking a Project Role Assignment from an Actor
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **DELETE /v1/projects/{projectId}/assignments/{roleId}/{actorId}**
 
@@ -1863,8 +2196,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                   - boolean
                   
-                    None
+                    
 
+                    Example: ``none``
               
       
 
@@ -1904,20 +2238,19 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Seeing all Form Assignments within a Project
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/assignments/forms**
 
@@ -1948,7 +2281,7 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
   **HTTP Status: 200**
 
-  Content Type: application/json; extended
+  Content Type: application/json
 
   .. tab-set::
 
@@ -1980,7 +2313,169 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
         * - array
 
 
-    
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - actorId
+
+
+                  - number
+                  
+                    The numeric Actor ID being assigned.
+
+                    Example: ``42``
+                * - xmlFormId
+
+
+                  - string
+                  
+                    The ``id``\  of the assigned form as given in its XForms XML definition
+
+                    Example: ``simple``
+                * - roleId
+
+
+                  - number
+                  
+                    The numeric Role ID being assigned.
+
+                    Example: ``4``
+
+              
+
+      .. list-table::
+        :class: schema-table-wrap
+
+        * - array
+
+
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - actor
+
+
+                  - object
+                  
+                    
+
+
+                      
+                    .. collapse:: expand
+                      :class: nested-schema
+
+                      .. list-table::
+                          :widths: 25 75
+                          :class: schema-table
+                          
+                          
+                          * - createdAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:19:14.802000+00:00``
+                          * - displayName
+
+
+                            - string
+                            
+                              All ``Actor``\ s, regardless of type, have a display name
+
+                              Example: ``My Display Name``
+                          * - id
+
+
+                            - number
+                            
+                              
+
+                              Example: ``115.0``
+                          * - type
+
+
+                            - enum
+                            
+                              The type of actor
+
+
+                                
+                              .. collapse:: expand
+                                :class: nested-schema
+
+                                .. list-table::
+                                    :widths: 25 75
+                                    :class: schema-table
+                                    
+                                    
+                                    * - user
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - field_key
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - public_link
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - singleUse
+
+
+                                      - string
+                                      
+                                        
+
+                               
+                          * - updatedAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:42:11.406000+00:00``
+                          * - deletedAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:42:11.406000+00:00``
+                     
+                * - xmlFormId
+
+
+                  - string
+                  
+                    The ``id``\  of the assigned form as given in its XForms XML definition
+
+                    Example: ``simple``
+                * - roleId
+
+
+                  - number
+                  
+                    The numeric Role ID being assigned.
+
+                    Example: ``4``
 
               
       
@@ -1996,8 +2491,8 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
       .. code-block::
 
           {
-            "code": "pencil",
-            "message": "pencil"
+            "code": "403.1",
+            "message": "The authenticated actor does not have rights to perform that action."
           }
 
     .. tab-item:: Schema
@@ -2021,20 +2516,21 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``403.1``
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``The authenticated actor does not have rights to perform that action.``
               
       
-  
 Seeing Role-specific Form Assignments within a Project
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/assignments/forms/{roleId}**
 
@@ -2073,7 +2569,7 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
   **HTTP Status: 200**
 
-  Content Type: application/json; extended
+  Content Type: application/json
 
   .. tab-set::
 
@@ -2105,7 +2601,169 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
         * - array
 
 
-    
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - actorId
+
+
+                  - number
+                  
+                    The numeric Actor ID being assigned.
+
+                    Example: ``42``
+                * - xmlFormId
+
+
+                  - string
+                  
+                    The ``id``\  of the assigned form as given in its XForms XML definition
+
+                    Example: ``simple``
+                * - roleId
+
+
+                  - number
+                  
+                    The numeric Role ID being assigned.
+
+                    Example: ``4``
+
+              
+
+      .. list-table::
+        :class: schema-table-wrap
+
+        * - array
+
+
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - actor
+
+
+                  - object
+                  
+                    
+
+
+                      
+                    .. collapse:: expand
+                      :class: nested-schema
+
+                      .. list-table::
+                          :widths: 25 75
+                          :class: schema-table
+                          
+                          
+                          * - createdAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:19:14.802000+00:00``
+                          * - displayName
+
+
+                            - string
+                            
+                              All ``Actor``\ s, regardless of type, have a display name
+
+                              Example: ``My Display Name``
+                          * - id
+
+
+                            - number
+                            
+                              
+
+                              Example: ``115.0``
+                          * - type
+
+
+                            - enum
+                            
+                              The type of actor
+
+
+                                
+                              .. collapse:: expand
+                                :class: nested-schema
+
+                                .. list-table::
+                                    :widths: 25 75
+                                    :class: schema-table
+                                    
+                                    
+                                    * - user
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - field_key
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - public_link
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - singleUse
+
+
+                                      - string
+                                      
+                                        
+
+                               
+                          * - updatedAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:42:11.406000+00:00``
+                          * - deletedAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:42:11.406000+00:00``
+                     
+                * - xmlFormId
+
+
+                  - string
+                  
+                    The ``id``\  of the assigned form as given in its XForms XML definition
+
+                    Example: ``simple``
+                * - roleId
+
+
+                  - number
+                  
+                    The numeric Role ID being assigned.
+
+                    Example: ``4``
 
               
       
@@ -2121,8 +2779,8 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
       .. code-block::
 
           {
-            "code": "pencil",
-            "message": "pencil"
+            "code": "403.1",
+            "message": "The authenticated actor does not have rights to perform that action."
           }
 
     .. tab-item:: Schema
@@ -2146,15 +2804,17 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``403.1``
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``The authenticated actor does not have rights to perform that action.``
               
       
-  
+

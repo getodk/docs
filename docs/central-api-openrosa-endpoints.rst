@@ -1,4 +1,4 @@
-.. auto generated file - DO NOT MODIFY
+.. auto generated file - DO NOT MODIFY 
 
 OpenRosa Endpoints
 =======================================================================================================================
@@ -34,7 +34,7 @@ Where the **HTTP Request API**\  OpenRosa standards specification requires two h
 * But Central does not require a ``Date``\  header field. You may set it if you wish, but it will have no effect on Central.
 
 OpenRosa Form Listing API
------------------------------------------------------------------------------------------------------------------------
+-----------------------------------
 
 **GET /v1/projects/{projectId}/formList**
 
@@ -136,9 +136,8 @@ If you haven't already, please take a look at the **HTTP Request API**\  notes a
     
               
       
-  
 OpenRosa Form Submission API
------------------------------------------------------------------------------------------------------------------------
+--------------------------------------
 
 **POST /v1/projects/{projectId}/submission**
 
@@ -317,9 +316,8 @@ You can use this endpoint to submit *updates*\  to an existing submission. To do
     
               
       
-  
 OpenRosa Form Manifest API
------------------------------------------------------------------------------------------------------------------------
+------------------------------------
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/manifest**
 
@@ -442,9 +440,24 @@ A Manifest document is available at this resource path for any form in the syste
     
               
       
-  
-OpenRosa Form Listing API
+
+Draft Testing Endpoints
 -----------------------------------------------------------------------------------------------------------------------
+
+*(introduced: version 0.8)*\ 
+
+To facilitate testing, there is an alternative collection of OpenRosa endpoints that will give access to the draft version of a form and allow submitting test submissions to it. If you are using User or App User authentication, you can use the following resources without the ``/test/{token}``\  prefix with your existing authentication.
+
+Otherwise, and in particular if you plan to test your form in Collect or another OpenRosa-compliant client, you will likely want to use the ``/test``\  Draft Token prefix. It functions similarly to the standard OpenRosa support, with App User authentication, but instead of a ``/key``\  route prefix they feature a ``/test``\  route prefix, and they point directly at each form (example: ``/test/lSpA…EjR7/projects/1/forms/myform/draft``\ ).
+
+You can get the appropriate Draft Token for any given draft by `requesting the Draft Form </reference/forms/draft-form/getting-draft-form-details>`__.
+
+The ``/test``\  tokens are not actual App Users, and Central does not keep track of user identity when they are used.
+
+With the ``/test``\  prefix, the following resources are available:
+
+OpenRosa Form Listing API
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/formList**
 
@@ -533,9 +546,8 @@ Identical to the `non-Draft version </reference/openrosa-endpoints/openrosa-form
     
               
       
-  
 OpenRosa Form Submission API
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **POST /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/submission**
 
@@ -706,9 +718,8 @@ Identical to the `non-Draft version </reference/openrosa-endpoints/openrosa-form
     
               
       
-  
 OpenRosa Form Manifest API
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/manifest**
 
@@ -824,9 +835,8 @@ Identical to the `non-Draft version </reference/openrosa-endpoints/openrosa-form
     
               
       
-  
 Downloading a Form Attachment
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/attachments/{filename}**
 
@@ -941,15 +951,15 @@ Identical to the `non-Draft version </reference/forms/individual-form/downloadin
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
+

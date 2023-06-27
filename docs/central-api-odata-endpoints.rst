@@ -1,4 +1,4 @@
-.. auto generated file - DO NOT MODIFY
+.. auto generated file - DO NOT MODIFY 
 
 OData Endpoints
 =======================================================================================================================
@@ -19,8 +19,14 @@ In general, the OData standard protocol consists of three API endpoints:
 
 As our focus is on the bulk-export of data from ODK Central so that more advanced analysis tools can handle the data themselves, we do not support most of the features at the Intermediate and above conformance levels, like ``$sort``\  or ``$filter``\ .
 
-Service Document
+
+OData Form Service
 -----------------------------------------------------------------------------------------------------------------------
+
+ODK Central presents one OData service for every ``Form``\  it knows about. To access the OData service, simply add ``.svc``\  to the resource URL for the given Form.
+
+Service Document
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}.svc**
 
@@ -106,15 +112,16 @@ This document is available only in JSON format.
 
                   - string
                   
-                    None
+                    
 
                 * - value
 
 
                   - array
                   
-                    None
+                    
 
+                    Example: ``null``
                     
                       .. list-table::
                           :widths: 25 75
@@ -126,21 +133,21 @@ This document is available only in JSON format.
 
                             - string
                             
-                              None
+                              
 
                           * - name
 
 
                             - string
                             
-                              None
+                              
 
                           * - url
 
 
                             - string
                             
-                              None
+                              
 
 
                      
@@ -183,14 +190,14 @@ This document is available only in JSON format.
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
@@ -231,20 +238,19 @@ This document is available only in JSON format.
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Metadata Document
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}.svc/$metadata**
 
@@ -425,9 +431,8 @@ While the latest 4.01 OData specification adds a new JSON EDMX CSDL format, most
     
               
       
-  
 Data Document
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}.svc/{table}**
 
@@ -615,15 +620,16 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                   - string
                   
-                    None
+                    
 
                 * - value
 
 
                   - array
                   
-                    None
+                    
 
+                    Example: ``null``
                     
                       .. list-table::
                           :widths: 25 75
@@ -635,24 +641,38 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                             - string
                             
-                              None
+                              
 
                           * - age
 
 
                             - number
                             
-                              None
+                              
 
                           * - meta
 
 
                             - object
                             
-                              None
-
                               
-    
+
+
+                                
+                              .. collapse:: expand
+                                :class: nested-schema
+
+                                .. list-table::
+                                    :widths: 25 75
+                                    :class: schema-table
+                                    
+                                    
+                                    * - instanceID
+
+
+                                      - string
+                                      
+                                        
 
                                
                           * - name
@@ -660,7 +680,7 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                             - string
                             
-                              None
+                              
 
 
                      
@@ -703,14 +723,14 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
@@ -751,14 +771,14 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
@@ -799,20 +819,19 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Data Download Path
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /#/dl/projects{projectId}/forms/{xmlFormId}/submissions/{instanceId}/attachments/{filename}**
 
@@ -898,9 +917,14 @@ Because this ``/#/dl``\  path returns a web page that causes a file download rat
     
               
       
-  
-Service Document
+
+OData Dataset Service
 -----------------------------------------------------------------------------------------------------------------------
+
+ODK Central presents one OData service for every ``Dataset``\  as a way to get an OData feed of ``Entities``\ . To access the OData service, simply add ``.svc``\  to the resource URL for the given Dataset.
+
+Service Document
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/datasets/{name}.svc**
 
@@ -973,14 +997,14 @@ This document is available only in JSON format.
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
@@ -1021,20 +1045,19 @@ This document is available only in JSON format.
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Metadata Document
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/datasets/{name}.svc/$metadata**
 
@@ -1218,9 +1241,8 @@ The Metadata Document describes, in `EDMX CSDL <http://docs.oasis-open.org/odata
     
               
       
-  
 Data Document
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/datasets/{name}.svc/Entities**
 
@@ -1358,14 +1380,14 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
@@ -1406,14 +1428,14 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
@@ -1454,20 +1476,29 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
-Service Document
+
+Draft Testing
 -----------------------------------------------------------------------------------------------------------------------
+
+*(introduced: version 0.8)*\ 
+
+To facilitate testing, there is an alternative collection of OData endpoints that will give access to the submissions uploaded to a Draft Form. This can be useful for ensuring that changes to your form do not break downstream dashboards or applications.
+
+They are all identical to the non-Draft OData endpoints, but they will only return the Draft Form schema and Submissions.
+
+Service Document
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft.svc**
 
@@ -1549,15 +1580,16 @@ Identical to `the non-Draft version </reference/odata-endpoints/odata-form-servi
 
                   - string
                   
-                    None
+                    
 
                 * - value
 
 
                   - array
                   
-                    None
+                    
 
+                    Example: ``null``
                     
                       .. list-table::
                           :widths: 25 75
@@ -1569,21 +1601,21 @@ Identical to `the non-Draft version </reference/odata-endpoints/odata-form-servi
 
                             - string
                             
-                              None
+                              
 
                           * - name
 
 
                             - string
                             
-                              None
+                              
 
                           * - url
 
 
                             - string
                             
-                              None
+                              
 
 
                      
@@ -1626,14 +1658,14 @@ Identical to `the non-Draft version </reference/odata-endpoints/odata-form-servi
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
@@ -1674,20 +1706,19 @@ Identical to `the non-Draft version </reference/odata-endpoints/odata-form-servi
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Metadata Document
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft.svc/$metadata**
 
@@ -1856,9 +1887,8 @@ Identical to `the non-Draft version </reference/odata-endpoints/odata-form-servi
     
               
       
-  
 Data Document
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft.svc/{table}**
 
@@ -2017,15 +2047,16 @@ Identical to `the non-Draft version </reference/odata-endpoints/odata-form-servi
 
                   - string
                   
-                    None
+                    
 
                 * - value
 
 
                   - array
                   
-                    None
+                    
 
+                    Example: ``null``
                     
                       .. list-table::
                           :widths: 25 75
@@ -2037,24 +2068,38 @@ Identical to `the non-Draft version </reference/odata-endpoints/odata-form-servi
 
                             - string
                             
-                              None
+                              
 
                           * - age
 
 
                             - number
                             
-                              None
+                              
 
                           * - meta
 
 
                             - object
                             
-                              None
-
                               
-    
+
+
+                                
+                              .. collapse:: expand
+                                :class: nested-schema
+
+                                .. list-table::
+                                    :widths: 25 75
+                                    :class: schema-table
+                                    
+                                    
+                                    * - instanceID
+
+
+                                      - string
+                                      
+                                        
 
                                
                           * - name
@@ -2062,7 +2107,7 @@ Identical to `the non-Draft version </reference/odata-endpoints/odata-form-servi
 
                             - string
                             
-                              None
+                              
 
 
                      
@@ -2105,14 +2150,14 @@ Identical to `the non-Draft version </reference/odata-endpoints/odata-form-servi
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
@@ -2153,14 +2198,14 @@ Identical to `the non-Draft version </reference/odata-endpoints/odata-form-servi
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
@@ -2201,15 +2246,15 @@ Identical to `the non-Draft version </reference/odata-endpoints/odata-form-servi
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
+

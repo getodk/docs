@@ -1,12 +1,18 @@
-.. auto generated file - DO NOT MODIFY
+.. auto generated file - DO NOT MODIFY 
 
 System Endpoints
 =======================================================================================================================
 
 There are some resources available for getting or setting system information and configuration. You can set the `Usage Reporting configuration </reference/system-endpoints/usage-reporting-configuration>`__ for the server, retrieve the `Server Audit Logs </reference/system-endpoints/server-audit-logs>`__, or perform a `Direct Backup </reference/system-endpoints/direct-backup>`__.
 
-Getting the current configuration
+
+Usage Reporting Configuration
 -----------------------------------------------------------------------------------------------------------------------
+
+*(introduced: version 1.3)*\ 
+
+Getting the current configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/config/analytics**
 
@@ -92,6 +98,7 @@ If the Usage Reporting configuration is not set, this endpoint will return a ``4
                             
                               ``true``\  if the server will share usage data with the Central team and ``false``\  if not.
 
+                              Example: ``none``
                           * - email
 
 
@@ -146,14 +153,14 @@ If the Usage Reporting configuration is not set, this endpoint will return a ``4
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
@@ -194,20 +201,19 @@ If the Usage Reporting configuration is not set, this endpoint will return a ``4
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Setting a new configuration
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **POST /v1/config/analytics**
 
@@ -260,6 +266,7 @@ If the Usage Reporting configuration is already set, the current configuration w
                   
                     See above.
 
+                    Example: ``none``
                 * - email
 
 
@@ -353,6 +360,7 @@ If the Usage Reporting configuration is already set, the current configuration w
                             
                               ``true``\  if the server will share usage data with the Central team and ``false``\  if not.
 
+                              Example: ``none``
                           * - email
 
 
@@ -407,20 +415,19 @@ If the Usage Reporting configuration is already set, the current configuration w
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Unsetting the current configuration
------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **DELETE /v1/config/analytics**
 
@@ -467,8 +474,9 @@ If the Usage Reporting configuration is unset, Administrators will once again se
 
                   - boolean
                   
-                    None
+                    
 
+                    Example: ``none``
               
       
 
@@ -508,20 +516,27 @@ If the Usage Reporting configuration is unset, Administrators will once again se
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
-Getting the Usage Report preview
+
+Usage Report Preview
 -----------------------------------------------------------------------------------------------------------------------
+
+*(introduced: version 1.3)*\ 
+
+An Administrator of Central may opt in to sending periodic reports summarizing usage. Configuration of this reporting is described `here </reference/system-endpoints/usage-reporting-configuration>`__. For added transparency, the API provides a preview of the reported metrics.
+
+Getting the Usage Report preview
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/analytics/preview**
 
@@ -569,20 +584,73 @@ An Administrator can use this endpoint to preview the metrics being sent. The pr
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
-Getting Audit Log Entries
+
+Server Audit Logs
 -----------------------------------------------------------------------------------------------------------------------
+
+*(introduced: version 0.6)*\ 
+
+Many actions on ODK Central will automatically log an event to the Server Audit Log. Creating a new Form, for instance, will log a ``form.create``\  event, with information about the Actor who performed the action, and sometimes some additional details specific to the event.
+
+Any time an audit action is logged, the request headers are checked. If ``X-Action-Notes``\  are provided anywhere, those notes will be logged into the audit entries as well. Note that some requests generate multiple audit entries; in these cases, the ``note``\  will be attached to every entry logged.
+
+Server Audit Logs entries are created for the following ``action``\ s:
+
+* ``user.create``\  when a new User is created.
+* ``user.update``\  when User information is updated, like email or password.
+* ``user.assignment.create``\  when a User is assigned to a Server Role.
+* ``user.assignment.delete``\  when a User is unassigned from a Server Role.
+* ``user.session.create``\  when a User logs in.
+* ``user.delete``\  when a User is deleted.
+* ``project.create``\  when a new Project is created.
+* ``project.update``\  when top-level Project information is updated, like its name.
+* ``project.delete``\  when a Project is deleted.
+* ``form.create``\  when a new Form is created.
+* ``form.update``\  when top-level Form information is updated, like its name or state.
+* ``form.update.draft.set``\  when a Draft Form definition is set.
+* ``form.update.draft.delete``\  when a Draft Form definition is deleted.
+* ``form.update.publish``\  when a Draft Form is published to the Form.
+* ``form.attachment.update``\  when a Form Attachment binary is set or cleared.
+* ``form.submissions.export``\  when a Form's Submissions are exported to CSV.
+* ``form.delete``\  when a Form is deleted.
+* ``form.restore``\  when a Form that was deleted is restored.
+* ``form.purge``\  when a Form is permanently purged.
+* ``field*key.create``\  when a new App User is created.
+* ``field*\ key.assignment.create``\  when an App User is assigned to a Server Role.
+* ``field*key.assignment.delete``\  when an App User is unassigned from a Server Role.
+* ``field*\ key.session.end``\  when an App User's access is revoked.
+* ``field*key.delete``\  when an App User is deleted.
+* ``public*\ link.create``\  when a new Public Link is created.
+* ``public*link.assignment.create``\  when a Public Link is assigned to a Server Role.
+* ``public*\ link.assignment.delete``\  when a Public Link is unassigned from a Server Role.
+* ``public*link.session.end``\  when a Public Link's access is revoked.
+* ``public*\ link.delete``\  when a Public Link is deleted.
+* ``submission.create``\  when a new Submission is created.
+* ``submission.update``\  when a Submission's metadata is updated.
+* ``submission.update.version``\  when a Submission XML data is updated.
+* ``submission.attachment.update``\  when a Submission Attachment binary is set or cleared, but *only via the REST API*\ . Attachments created alongside the submission over the OpenRosa ``/submission``\  API (including submissions from Collect) do not generate audit log entries.
+* ``dataset.create``\  when a Dataset is created.
+* ``dataset.update``\  when a Dataset is updated.
+* ``dataset.update.publish``\  when a Dataset is published.
+* ``entity.create``\  when an Entity is created.
+* ``entity.create.error``\  when there is an error during entity creation process.
+* ``config.set``\  when a system configuration is set.
+* ``analytics``\  when a Usage Report is attempted.
+* Deprecated: ``backup``\  when a backup operation is attempted for Google Drive backups.
+
+Getting Audit Log Entries
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/audits**
 
@@ -656,7 +724,7 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
   **HTTP Status: 200**
 
-  Content Type: application/json; extended
+  Content Type: application/json
 
   .. tab-set::
 
@@ -690,14 +758,221 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
         * - array
 
 
-    
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - actorId
+
+
+                  - number
+                  
+                    The ID of the actor, if any, that initiated the action.
+
+                    Example: ``42``
+                * - action
+
+
+                  - string
+                  
+                    The action that was taken.
+
+                    Example: ``form.create``
+                * - acteeId
+
+
+                  - string
+                  
+                    The ID of the permissioning object against which the action was taken.
+
+                    Example: ``85cb9aff-005e-4edd-9739-dc9c1a829c44``
+                * - details
+
+
+                  - object
+                  
+                    Additional details about the action that vary according to the type of action.
+
+                * - loggedAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18T23:19:14.802Z``
+
+              
+
+      .. list-table::
+        :class: schema-table-wrap
+
+        * - array
+
+
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - actorId
+
+
+                  - number
+                  
+                    The ID of the actor, if any, that initiated the action.
+
+                    Example: ``42``
+                * - action
+
+
+                  - string
+                  
+                    The action that was taken.
+
+                    Example: ``form.create``
+                * - acteeId
+
+
+                  - string
+                  
+                    The ID of the permissioning object against which the action was taken.
+
+                    Example: ``85cb9aff-005e-4edd-9739-dc9c1a829c44``
+                * - details
+
+
+                  - object
+                  
+                    Additional details about the action that vary according to the type of action.
+
+                * - loggedAt
+
+
+                  - string
+                  
+                    ISO date format
+
+                    Example: ``2018-04-18T23:19:14.802Z``
+                * - actor
+
+
+                  - object
+                  
+                    
+
+
+                      
+                    .. collapse:: expand
+                      :class: nested-schema
+
+                      .. list-table::
+                          :widths: 25 75
+                          :class: schema-table
+                          
+                          
+                          * - createdAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:19:14.802000+00:00``
+                          * - displayName
+
+
+                            - string
+                            
+                              All ``Actor``\ s, regardless of type, have a display name
+
+                              Example: ``My Display Name``
+                          * - id
+
+
+                            - number
+                            
+                              
+
+                              Example: ``115.0``
+                          * - type
+
+
+                            - enum
+                            
+                              The type of actor
+
+
+                                
+                              .. collapse:: expand
+                                :class: nested-schema
+
+                                .. list-table::
+                                    :widths: 25 75
+                                    :class: schema-table
+                                    
+                                    
+                                    * - user
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - field_key
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - public_link
+
+
+                                      - string
+                                      
+                                        
+
+                                    * - singleUse
+
+
+                                      - string
+                                      
+                                        
+
+                               
+                          * - updatedAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:42:11.406000+00:00``
+                          * - deletedAt
+
+
+                            - string
+                            
+                              ISO date format
+
+                              Example: ``2018-04-18 23:42:11.406000+00:00``
+                     
+                * - actee
+
+
+                  - object
+                  
+                    The details of the actee given by ``acteeId``\ . Depending on the action type, this could be a number of object types, including an ``Actor``\ , a ``Project``\ , or a ``Form``\ .
+
 
               
       
 
   **HTTP Status: 400**
 
-  Content Type: application/json; extended
+  Content Type: application/json
 
   .. tab-set::
 
@@ -706,9 +981,8 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
       .. code-block::
 
           {
-            "code": "pencil",
-            "details": {},
-            "message": "pencil"
+            "code": "400",
+            "message": "Could not parse the given data (2 chars) as json."
           }
 
     .. tab-item:: Schema
@@ -732,8 +1006,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``400``
                 * - details
 
 
@@ -746,14 +1021,15 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``Could not parse the given data (2 chars) as json.``
               
       
 
   **HTTP Status: 403**
 
-  Content Type: application/json; extended
+  Content Type: application/json
 
   .. tab-set::
 
@@ -762,8 +1038,8 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
       .. code-block::
 
           {
-            "code": "pencil",
-            "message": "pencil"
+            "code": "403.1",
+            "message": "The authenticated actor does not have rights to perform that action."
           }
 
     .. tab-item:: Schema
@@ -787,20 +1063,31 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``403.1``
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
+                    Example: ``The authenticated actor does not have rights to perform that action.``
               
       
-  
-Using an Encryption Passphrase
+
+Direct Backup
 -----------------------------------------------------------------------------------------------------------------------
+
+*(introduced: version 1.1)*\ 
+
+ODK Central offers an HTTP endpoint that will immediately perform a backup on the system database and send that encrypted backup as the response. To use it, ``POST``\  with an encryption passphrase.
+
+Note that performing the backup takes a great deal of time, during which the request will be held open. As a result, the endpoint will trickle junk data every five seconds while that processing is occurring to prevent the request from timing out. Depending on how much data you have, it can take many minutes for the data stream to speed up to a full transfer rate.
+
+Using an Encryption Passphrase
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **POST /v1/backup**
 
@@ -888,15 +1175,15 @@ Please see the section notes above about the long-running nature of this endpoin
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
+

@@ -38,25 +38,25 @@ info:
 
     **Added**:
 
-    - New [OData Dataset Service](#reference/odata-endpoints/odata-dataset-service) for each `Dataset` that provides a list of `Entities`.
+    - New [OData Dataset Service](/central-api-odata-endpoints#odata-dataset-service) for each `Dataset` that provides a list of `Entities`.
 
     **Changed**:
 
-    - The response of `GET`, `POST`, `PUT` and `PATCH` methods of [Submissions](#reference/submissions/listing-all-submissions-on-a-form) endpoint has been updated to include metadata of the `currentVersion` of the Submission.
+    - The response of `GET`, `POST`, `PUT` and `PATCH` methods of [Submissions](/central-api-submission-management#listing-all-submissions-on-a-form) endpoint has been updated to include metadata of the `currentVersion` of the Submission.
 
     ## ODK Central v2023.1
 
     **Added**:
 
-    - New endpoint [GET /projects/:id/datasets/:name](#reference/datasets/datasets/dataset-metadata) to get the metadata of a Dataset
+    - New endpoint [GET /projects/:id/datasets/:name](/central-api-dataset-management#datasets/dataset-metadata) to get the metadata of a Dataset
 
     **Changed**:
 
-    - [GET /projects/:id/datasets](#reference/datasets/datasets/datasets) now supports `X-Extended-Metadata` header to retrieve number of Entities in the Dataset and timestamp of the last Entity
+    - [GET /projects/:id/datasets](/central-api-dataset-management#datasets) now supports `X-Extended-Metadata` header to retrieve number of Entities in the Dataset and timestamp of the last Entity
 
     - `$select` in OData now supports selecting complex type(groups)
 
-    - [Creating a form](#reference/forms/forms/creating-a-new-form) can now return workflow warnings
+    - [Creating a form](/central-api-form-management#creating-a-new-form) can now return workflow warnings
 
     **Removed**:
 
@@ -66,9 +66,9 @@ info:
 
     **Added**:
 
-    * Introducing [Datasets](#reference/datasets) as the first step of Entity-Based Data Collection! Future versions of Central will build on these new concepts. We consider this functionality experimental and subject to change in the next release.
+    * Introducing [Datasets](/central-api-dataset-management) as the first step of Entity-Based Data Collection! Future versions of Central will build on these new concepts. We consider this functionality experimental and subject to change in the next release.
 
-      * Forms can now create Datasets in the project, see [Creating a New Form](#reference/forms/forms/creating-a-new-form) and the [ODK XForms specification](https://getodk.github.io/xforms-spec) for details.
+      * Forms can now create Datasets in the project, see [Creating a New Form](/central-api-form-management/#creating-a-new-form) and the [ODK XForms specification](https://getodk.github.io/xforms-spec) for details.
       * New endpoint [GET /projects/:id/datasets](#reference/datasets/datasets/datasets) for listing Datasets of a project.
       * New endpoint [GET /projects/:id/datasets/:name/entities.csv](#reference/datasets/download-dataset/download-dataset) to download the Dataset as a CSV file.
       * New endpoints for [Related Datasets](#reference/forms/related-datasets/) to see the Datasets affected by published and unpublished Forms.
@@ -409,12 +409,12 @@ tags:
     and some site-wide configuration details like Usage Reporting, all of ODK Central's
     objects (Forms, Submissions, App Users) are partitioned by Project, and available
     only as subresources below the main Projects resource.
-- name: Forms
+- name: Form Management
   description: |-
     `Form`s are the heart of ODK. They are created out of XML documents in the [ODK XForms](https://getodk.github.io/xforms-spec/) specification format. The [Intro to Forms](https://docs.getodk.org/form-design-intro/) on the ODK Documentation website is a good resource if you are unsure what this means. Once created, Forms can be retrieved in a variety of ways, their state can be managed, and they can be deleted.
 
     These subsections cover only the modern RESTful API resources involving Forms. For documentation on the OpenRosa `formList` endpoint (which can be used to list Forms), see that section below.
-- name: Submissions
+- name: Submission Management
   description: |-
     `Submission`s are filled-out forms (also called `Instance`s in some other ODK documentation). Each is associated with a particular Form (and in many cases with a particular _version_ of a Form), and is also created out of a standard XML format based on the Form itself. Submissions can be sent with many accompanying multimedia attachments, such as photos taken in the course of the survey. Once created, the Submissions themselves as well as their attachments can be retrieved through this API.
 
@@ -423,7 +423,7 @@ tags:
     > Like Forms, Submissions can have versions. Each Form has an overall `xmlFormId` that represents the Form as a whole, and each version has a `version` that identifies that particular version. Often, when fetching data by the `xmlFormId` alone, information from the latest Form version is included in the response.
 
     > Similarly with Submissions, the `instanceId` each Submission is first submitted with will always represent that Submission as a whole. Each version of the Submission, though, has its own `instanceId`. Sometimes, but not very often, when getting information about the Submission by only its overall `instanceId`, information from the latest Submission version is included in the response.
-- name: Datasets
+- name: Dataset Management
   description: |-
     _(introduced: version 2022.3)_
 
@@ -435,16 +435,13 @@ tags:
 
     Once a Dataset exists, it can be linked to another Form as an Attachment and served as an automatically-updating CSV.
 
-    ### Related APIs:
+    **Related APIs:**
 
     - [Implicit creation of Datasets via Forms](#reference/forms/forms/creating-a-new-form)
 
     - [Link a Dataset to a Form Attachment](#reference/forms/draft-form/linking-a-dataset-to-a-draft-form-attachment)
 
     - [Get a Form's Related Datasets](#reference/forms/related-datasets)
-- name: Entities
-  description: An Entity is a data row of the dataset. Following API endpoints will
-    let you performance CRUD (create, read, update and delete) operations on the entities.
 - name: OpenRosa Endpoints
   description: |-
     [OpenRosa](https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaAPI) is an API standard which accompanies the ODK XForms XML standard, allowing compliant servers and clients to use a common protocol to communicate `Form`s and `Submission`s to each other. When survey clients like ODK Collect and Enketo submit Submission data to a Form, this is the API they use.
@@ -519,11 +516,290 @@ tags:
     To perform decryption, you can [GET or POST /projects/…/forms/…/submissions.csv.zip](/reference/submissions/submissions/exporting-form-submissions-to-csv) with extra parameters to provide the necessary passphrases. If you are building a browser-based application, it is recommended that you `POST` rather than `GET`: please see the notes in the linked sections for additional details.
 
     Note that the OData JSON API does not (presently) decrypt data. Any encrypted submissions will be returned only with basic metadata, like submission date and user.
+- name: Session Authentication
+  x-parent-tag: Authentication
+  description: |-
+    This is the authentication method used by the ODK Central Frontend packaged with Central Backend. Only `User`s can authenticate this way. It consists mostly of two steps:
+
+    1. **Logging in**: presenting an Email Address and a Password for verification, after which a new `Session` is created. Associated with the Session is an expiration and a bearer token. Sessions expire 24 hours after they are created.
+    2. **Using the session**: each request to the API needs a header attached to it: `Authorization: Bearer {token}`. This authenticates that particular request as belonging to the Session we created by logging in.
+
+    You might notice that Step 2 greatly resembles how OAuth 2.0 works. This was an intentional first step towards OAuth support, and should make the forward migration of your code easier down the road.
+- name: HTTPS Basic Authentication
+  x-parent-tag: Authentication
+  description: |-
+    Standard HTTP Basic Authentication is allowed, but **strongly discouraged**. This is because the server must verify your password with every single request, which is very slow to compute: typically, this will add hundreds of milliseconds to each request. For some one-off tasks and in cases where there is no other choice, it is reasonable to choose Basic authentication, but wherever possible we strongly encourage the use of any other authentication method.
+
+    In addition, because credentials are sent in plaintext as part of the request, **the server will only accept Basic auth over HTTPS**. If your ODK Central server is set up over plain HTTP, it will not accept Basic auth.
+- name: App User Authentication
+  x-parent-tag: Authentication
+  description: |-
+    App Users are only allowed to list and download forms, and upload new submissions to those forms. Primarily, this is to allow clients like ODK Collect to use the OpenRosa API (`/formList` and `/submission`), but any action in this API reference falling into those categories will be allowed.
+
+    Rvoking an App User is same as deleting session token. You can do this by calling [DELETE /sessions/{appUser}](/central-api-authentication/#logging-out-revoking-an-app-user).
+- name: Users
+  x-parent-tag: Accounts and Users
+  description: |-
+    Presently, it is possible to create and list `User`s in the system, as well as to perform password reset operations. In future versions of this API it will be possible to manage existing user information and delete accounts as well.
+- name: App Users
+  x-parent-tag: Accounts and Users
+  description: |-
+    App Users may only be created, fetched, and manipulated within the nested Projects subresource, as App Users themselves are limited to the Project in which they are created. Through the `App User`s API, you can create, list, and delete the App Users of any given Project. Because they have extremely limited permissions, App Users cannot manage themselves; only `User`s may access this API.
+
+    For more information about the `/projects` containing resource, please see the following section.
+
+- name: Roles
+  x-parent-tag: Accounts and Users
+  description: |-
+    _(introduced: version 0.5)_
+
+    The Roles API lists and describes each known Role within the system. Right now, Roles may not be created or customized via the API, but this will likely change in the future.
+
+    Each Role contains information about the verbs it allows its assignees to perform. Some Roles have a system name associated with them; the Roles may always be referenced by this system name in request URLs, and system Roles are always read-only.
+
+- name: Assignments
+  x-parent-tag: Accounts and Users
+  description: |-
+    _(introduced: version 0.5)_
+  
+    There are multiple Assignments resources. This one, upon the API root (`/v1/assignments`), manages Role assignment to the entire system (e.g. if you are assigned a Role that gives you `form.create`, you may create a form anywhere on the entire server).
+  
+    The [Project Assignments resource](/reference/project-management/project-assignments), nested under Projects, manages Role assignment to that Project in particular, and all objects within it. And the [Form Assignments resource](/reference/forms/form-assignments) allows even more granular assignments, to specific Forms within a Project. All of these resources have the same structure and take and return the same data types.
+  
+    Assignments may be created (`POST`) and deleted (`DELETE`) like any other resource in the system. Here, creating an Assignment grants the referenced Actor the verbs associated with the referenced Role upon all system objects. The pathing for creation and deletion is not quite REST-standard: we represent the relationship between Role and Actor directly in the URL rather than as body data: `assignments/{role}/{actor}` represents the assignment of the given Role to the given Actor.
+
+- name: Projects
+  x-parent-tag: Project Management
+  description: |-
+    _(introduced: version 0.4)_
+
+    You must create a containing Project before you can create any of its subobjects.
+
+- name: Project Assignments
+  x-parent-tag: Project Management
+  description: |-
+    _(introduced: version 0.5)_
+
+    There are multiple Assignments resources. This one, specific to the Project it is nested within, only governs Role assignments to that Project. Assigning an Actor a Role that grants, for example, a verb `submission.create`, allows that Actor to create a submission anywhere within this Project. It is also possible to assign rights only to specific forms for actions related only to that form and its submissions: see the [Form Assignments resource](/reference/forms/form-assignments) for information about this.
+
+    The [sitewide Assignments resource](/reference/accounts-and-users/assignments), at the API root, manages Role assignments for all objects across the server. Apart from this difference in scope, the introduction to that section contains information useful for understanding the following endpoints.
+
+    There are only one set of Roles, applicable to either scenario. There are not a separate set of Roles used only upon Projects or Forms.
+
+- name: Forms
+  x-parent-tag: Form Management
+  description: |-
+    In this API, `Form`s are distinguished by their [`formId`](https://getodk.github.io/xforms-spec/#primary-instance)s, which are a part of the XForms XML that defines each Form. In fact, as you will see below, many of the properties of a Form are extracted automatically from the XML: `hash`, `name`, `version`, as well as the `formId` itself (which to reduce confusion internally is known as `xmlFormId` in ODK Central).
+
+    The only other property Forms currently have is `state`, which can be used to control whether Forms show up in mobile clients like ODK Collect for download, as well as whether they accept new `Submission`s or not.
+
+    It is not yet possible to modify a Form's XML definition once it is created.
+
+- name: Individual Form
+  x-parent-tag: Form Management
+- name: Draft Form
+  x-parent-tag: Form Management
+  description: |-
+    _(introduced: version 0.8)_
+
+    Draft Forms allow you to test and fix issues with Forms before they are finalized and presented to data collectors. They make this process easier, as Draft Forms can be created and discarded without consequence: your Drafts will not count against the overall Form schema, nor against the set of unique `version` strings for the Form.
+
+    You can create or replace the current Draft Form at any time by `POST`ing to the `/draft` subresource on the Form, and you can publish the current Draft by `POST`ing to `/draft/publish`.
+
+    When a Draft Form is created, a Draft Token is also created for it, which can be found in Draft Form responses at `draftToken`. This token allows you to [submit test Submissions to the Draft Form](/reference/submissions/draft-submissions/creating-a-submission) through clients like Collect. If the Draft is published or deleted, the token will be deactivated. But if you replace the Draft without first deleting it, the existing Draft Token will be carried forward, so that you do not have to reconfigure your device.
+
+- name: Published Form Versions
+  x-parent-tag: Form Management
+  description: |-
+    All published versions of a Form are available read-only at the `/versions` subresource for reference, including the currently published version. You may read that version and its details, retrieve the Form definition, and any attachments associated with each version.
+
+- name: Form Assignments
+  x-parent-tag: Form Management
+  description: |-
+    _(introduced: version 0.7)_
+
+    There are multiple Assignments resources. This one, specific to the Form it is nested within, only governs Role assignments to that Form. Assigning an Actor a Role that grants, for example, a verb `submission.create`, allows that Actor to create a submission to this Form alone. It is also possible to assign umbrella rights to a whole Project and therefore all Forms within it: see the [Project Assignments resource](/reference/project-management/project-assignments) for information about this.
+
+    The [sitewide Assignments resource](/reference/accounts-and-users/assignments), at the API root, manages Role assignments for all objects across the server. Apart from this difference in scope, the introduction to that section contains information useful for understanding the following endpoints.
+
+    There are only one set of Roles, applicable to either scenario. There are not a separate set of Roles used only upon Projects or Forms.
+
+- name: Public Access Links
+  x-parent-tag: Form Management
+  description: |-
+    _(introduced: version 1.0)_
+
+    Anybody in possession of a Public Access Link for a Form can use that link to submit data to that Form. Public Links are useful for collecting direct responses from a broad set of respondents, and can be revoked using the administration website or the API at any time.
+
+    The API for Public Links is particularly useful, as it can be used to, for example, programmatically create and send individually customized and controlled links for direct distribution. The user-facing link for a Public Link has the following structure: `/-/{enketoId}?st={token}` where `-` is the Enketo root, `enketoId` is the survey ID of this published Form on Enketo and `token` is a session token to identify this Public Link.
+
+    To revoke the access of any Link, terminate its session `token` by issuing [`DELETE /sessions/:token`](/reference/authentication/session-authentication/logging-out).
+
+- name: Related Datasets
+  x-parent-tag: Form Management
+  description: |-
+    _(introduced: version 2022.3)_
+
+    Datasets are created and updated through Forms. Dataset-related Forms follow [the entities sub-spec](https://getodk.github.io/xforms-spec/entities) of the ODK XForms specification that allow them to define a Dataset and a mapping of Form Fields to Dataset Properties. Submissions from such a Form can create Entities within the Dataset defined in the Form.
+
+    Currently, Datasets and Dataset Properties are purely additive. Multiple Forms can add Properties to the same Dataset and multiple Forms can create Entities in the same Dataset. Not all Properties of a Dataset have to be included in a Form for that Dataset. For example, one Form publishing to a Dataset called `trees` could add `location` and `species`, while another could add `species` and `circumference`. The Properties of the Dataset would be the union of Properties from all Forms for that Dataset (`location`, `species`, `circumference`). Note that it is not necessary that a Form will save to all Properties of a Dataset, so the endpoint also returns a `inForm` flag for each property which is true only if the Form affects that Property.
+
+    The following endpoints return the Dataset(s) that Submissions of that Form will populate. They also return all of the Entity Properties for each Dataset and indicate which ones are mapped to Fields in the specified Form.
+
+- name: Submissions
+  x-parent-tag: Submission Management
+  description: |-
+    `Submission`s are available as a subresource under `Form`s. So, for instance, `/v1/projects/1/forms/myForm/submissions` refers only to the Submissions that have been submitted to the Form `myForm`.
+
+    Once created (which, like with Forms, is done by way of their XML data rather than a JSON description), it is possible to retrieve and export Submissions in a number of ways, as well as to access the multimedia `Attachment`s associated with each Submission.
+
+- name: Comments
+  x-parent-tag: Submission Management
+  description: |-
+    _(introduced: version 1.2)_
+
+    This API is likely to change in the future. In version 1.2 we have added comments to submissions, so changes and problems with the data can be discussed. It's very likely we will want comments in more places in the future, and at that time a more complete comments API will be introduced, and this current one may be changed or deprecated entirely.
+
+    Currently, it is not possible to get a specific comment's details, or to edit or delete a comment once it has been made.
+
+- name: Attachments
+  x-parent-tag: Submission Management
+  description: |-
+    When a `Submission` is created, either over the OpenRosa or the REST interface, its XML data is analyzed to determine which file attachments it references: these may be photos or video taken as part of the survey, or an audit/timing log, among other things. Each reference is an expected attachment, and these expectations are recorded permanently alongside the Submission.
+
+    With this subresource, you can list the expected attachments, see whether the server actually has a copy or not, and download, upload, re-upload, or clear binary data for any particular attachment.
+
+- name: Submission Versions
+  x-parent-tag: Submission Management
+  description: |-
+    _(introduced: version 1.2)_
+
+    The `instanceId` that is submitted with the initial version of the submission is used permanently to reference that submission logically, which is to say the initial submission and all its subsequent versions. Each subsequent version will also provide its own `instanceId`. This `instanceId` becomes that particular version's identifier.
+
+    So if you submit a submission with `<orx:instanceID>one</orx:instanceID>` and then update it, deprecating `one` for version `two`, then the full route for version `one` is `/v1/projects/…/forms/…/submissions/one/versions/one`, and for `two` it is `/v1/projects/…/forms/…/submissions/one/versions/two`.
+
+    As of version 1.4, a `deviceId` and `userAgent` will also be returned with each submission. For each submission of a version, the submitting client device may transmit these extra metadata. If it does, those fields will be recognized and returned here for reference.
+
+- name: Draft Submissions
+  x-parent-tag: Submission Management
+  description: |-
+    All [Draft Forms](/reference/forms/draft-form) feature a `/submissions` subresource (`/draft/submissions`), which is identical to the same subresource on the form itself. These submissions exist only as long as the Draft Form does: they are removed if the Draft Form is published, and they are abandoned if the Draft Form is deleted or overwritten.
+
+    Here we list all those resources again just for completeness.
+
+- name: Draft Testing Endpoints
+  x-parent-tag: OpenRosa Endpoints
+  description: |-
+    _(introduced: version 0.8)_
+
+    To facilitate testing, there is an alternative collection of OpenRosa endpoints that will give access to the draft version of a form and allow submitting test submissions to it. If you are using User or App User authentication, you can use the following resources without the `/test/{token}` prefix with your existing authentication.
+
+    Otherwise, and in particular if you plan to test your form in Collect or another OpenRosa-compliant client, you will likely want to use the `/test` Draft Token prefix. It functions similarly to the standard OpenRosa support, with App User authentication, but instead of a `/key` route prefix they feature a `/test` route prefix, and they point directly at each form (example: `/test/lSpA…EjR7/projects/1/forms/myform/draft`).
+
+    You can get the appropriate Draft Token for any given draft by [requesting the Draft Form](/reference/forms/draft-form/getting-draft-form-details).
+
+    The `/test` tokens are not actual App Users, and Central does not keep track of user identity when they are used.
+
+    With the `/test` prefix, the following resources are available:
+
+- name: OData Form Service
+  x-parent-tag: OData Endpoints
+  description: |-
+    ODK Central presents one OData service for every `Form` it knows about. To access the OData service, simply add `.svc` to the resource URL for the given Form.
+
+- name: OData Dataset Service
+  x-parent-tag: OData Endpoints
+  description: |-
+    ODK Central presents one OData service for every `Dataset` as a way to get an OData feed of `Entities`. To access the OData service, simply add `.svc` to the resource URL for the given Dataset.
+
+- name: Draft Testing
+  x-parent-tag: OData Endpoints
+  description: |-
+    _(introduced: version 0.8)_
+
+    To facilitate testing, there is an alternative collection of OData endpoints that will give access to the submissions uploaded to a Draft Form. This can be useful for ensuring that changes to your form do not break downstream dashboards or applications.
+
+    They are all identical to the non-Draft OData endpoints, but they will only return the Draft Form schema and Submissions.
+
+- name: Usage Reporting Configuration
+  x-parent-tag: System Endpoints
+  description: |-
+    _(introduced: version 1.3)_
+
+- name: Usage Report Preview
+  x-parent-tag: System Endpoints
+  description: |-
+    _(introduced: version 1.3)_
+
+    An Administrator of Central may opt in to sending periodic reports summarizing usage. Configuration of this reporting is described [here](/reference/system-endpoints/usage-reporting-configuration). For added transparency, the API provides a preview of the reported metrics.
+
+- name: Server Audit Logs
+  x-parent-tag: System Endpoints
+  description: |-
+    _(introduced: version 0.6)_
+
+    Many actions on ODK Central will automatically log an event to the Server Audit Log. Creating a new Form, for instance, will log a `form.create` event, with information about the Actor who performed the action, and sometimes some additional details specific to the event.
+
+    Any time an audit action is logged, the request headers are checked. If `X-Action-Notes` are provided anywhere, those notes will be logged into the audit entries as well. Note that some requests generate multiple audit entries; in these cases, the `note` will be attached to every entry logged.
+
+    Server Audit Logs entries are created for the following `action`s:
+
+    * `user.create` when a new User is created.
+    * `user.update` when User information is updated, like email or password.
+    * `user.assignment.create` when a User is assigned to a Server Role.
+    * `user.assignment.delete` when a User is unassigned from a Server Role.
+    * `user.session.create` when a User logs in.
+    * `user.delete` when a User is deleted.
+    * `project.create` when a new Project is created.
+    * `project.update` when top-level Project information is updated, like its name.
+    * `project.delete` when a Project is deleted.
+    * `form.create` when a new Form is created.
+    * `form.update` when top-level Form information is updated, like its name or state.
+    * `form.update.draft.set` when a Draft Form definition is set.
+    * `form.update.draft.delete` when a Draft Form definition is deleted.
+    * `form.update.publish` when a Draft Form is published to the Form.
+    * `form.attachment.update` when a Form Attachment binary is set or cleared.
+    * `form.submissions.export` when a Form's Submissions are exported to CSV.
+    * `form.delete` when a Form is deleted.
+    * `form.restore` when a Form that was deleted is restored.
+    * `form.purge` when a Form is permanently purged.
+    * `field_key.create` when a new App User is created.
+    * `field_key.assignment.create` when an App User is assigned to a Server Role.
+    * `field_key.assignment.delete` when an App User is unassigned from a Server Role.
+    * `field_key.session.end` when an App User's access is revoked.
+    * `field_key.delete` when an App User is deleted.
+    * `public_link.create` when a new Public Link is created.
+    * `public_link.assignment.create` when a Public Link is assigned to a Server Role.
+    * `public_link.assignment.delete` when a Public Link is unassigned from a Server Role.
+    * `public_link.session.end` when a Public Link's access is revoked.
+    * `public_link.delete` when a Public Link is deleted.
+    * `submission.create` when a new Submission is created.
+    * `submission.update` when a Submission's metadata is updated.
+    * `submission.update.version` when a Submission XML data is updated.
+    * `submission.attachment.update` when a Submission Attachment binary is set or cleared, but _only via the REST API_. Attachments created alongside the submission over the OpenRosa `/submission` API (including submissions from Collect) do not generate audit log entries.
+    * `dataset.create` when a Dataset is created.
+    * `dataset.update` when a Dataset is updated.
+    * `dataset.update.publish` when a Dataset is published.
+    * `entity.create` when an Entity is created.
+    * `entity.create.error` when there is an error during entity creation process.
+    * `config.set` when a system configuration is set.
+    * `analytics` when a Usage Report is attempted.
+    * Deprecated: `backup` when a backup operation is attempted for Google Drive backups.
+
+- name: Direct Backup
+  x-parent-tag: System Endpoints
+  description: |-
+    _(introduced: version 1.1)_
+
+    ODK Central offers an HTTP endpoint that will immediately perform a backup on the system database and send that encrypted backup as the response. To use it, `POST` with an encryption passphrase.
+
+    Note that performing the backup takes a great deal of time, during which the request will be held open. As a result, the endpoint will trickle junk data every five seconds while that processing is occurring to prevent the request from timing out. Depending on how much data you have, it can take many minutes for the data stream to speed up to a full transfer rate.
+
 paths:
   /v1/sessions:
     post:
       tags:
-      - Authentication
+      - Session Authentication
       summary: Logging in
       description: |-
         In order to log a `User` in to a new `Session`, you must provide their credentials, in JSON format.
@@ -534,7 +810,7 @@ paths:
       operationId: Logging in
       requestBody:
         content:
-          '*/*':
+          'application/json':
             schema:
               required:
               - email
@@ -544,9 +820,11 @@ paths:
                 email:
                   type: string
                   description: The `User`'s full email address.
+                  example: my.email.address@getodk.org
                 password:
                   type: string
                   description: The `User`'s password.
+                  example: my.super.secure.password
         required: false
       responses:
         200:
@@ -580,22 +858,36 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-              example:
-                code: "401.2"
-                message: Could not authenticate with the provided credentials.
-      x-codegen-request-body-name: body
-  /v1/example:
+                $ref: '#/components/schemas/Error401'
+  /v1/example1:
     get:
       tags:
-      - Authentication
+      - Session Authentication
+      summary: Using the session
+      description: |-
+        Once you have logged in, to use your session token to authenticate with any action, supply it in a request header `Authorization` with a value of `Bearer {token}`, as seen here.
+
+        _(There is not really anything at `/v1/example1`; this section only demonstrates how generally to use Session Bearer Token Authentication.)_
+      operationId: Session Authentication
+      parameters:
+      - name: Authorization
+        in: header
+        description: Bearer encoding of the credentials
+        required: true
+        schema:
+          type: string
+        example: Bearer lSpAIeksRu1CNZs7!qjAot2T17dPzkrw9B4iTtpj7OoIJBmXvnHM8z8Ka4QPEjR7
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+  /v1/example2:
+    get:
+      tags:
+      - HTTPS Basic Authentication
       summary: Using Basic Authentication
       description: |-
         To use HTTPS Basic Authentication, attach an `Authorization` header formatted so:
@@ -606,7 +898,7 @@ paths:
 
         Unlike the standard, we do not require the client to first send an unauthenticated request and retry the request only after receiving a `WWW-Authenticate` response, and in fact we will never send the `WWW-Authenticate` header. This is mostly because, as noted above, we generally discourage the use of this authentication method, and would rather not advertise its use openly. As a result, if you wish to use Basic Authentication, directly supply the header on any request that needs it.
 
-        _(There is not really anything at `/v1/example`; this section only demonstrates how generally to use Basic Authentication.)_
+        _(There is not really anything at `/v1/example2`; this section only demonstrates how generally to use Basic Authentication.)_
       operationId: Using Basic Authentication
       parameters:
       - name: Authorization
@@ -622,20 +914,45 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
+  /v1/key/{appUser}/example3:
+    get:
+      tags:
+      - App User Authentication
+      summary: Using App User Authentication
+      description: |-
+        To use App User Authentication, first obtain a App User, typically by using the configuration panel in the user interface, or else by using the [App User API Resource](/reference/accounts-and-users/app-users). Once you have the token, you can apply it to any eligible action by prefixing the URL with `/key/{appUser}` as follows:
+
+        `/v1/key/!Ms7V3$Zdnd63j5HFacIPFEvFAuwNqTUZW$AsVOmaQFf$vIC!F8dJjdgiDnJXXOt/example/request/path`
+
+        _(There is not really anything at `/v1/example3`; this section only demonstrates how generally to use App User Authentication.)_
+      operationId: Using App User Authentication
+      parameters:
+      - name: appUser
+        in: path
+        description: The App User token. As with Session Bearer tokens, these tokens
+          only contain URL-safe characters, so no escaping is required.
+        required: true
+        schema:
+          type: string
+        example: '!Ms7V3$Zdnd63j5HFacIPFEvFAuwNqTUZW$AsVOmaQFf$vIC!F8dJjdgiDnJXXOt'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
   /v1/sessions/{token}:
     delete:
       tags:
-      - Authentication
-      summary: Revoking an App User
+      - Session Authentication
+      summary: Logging out / Revoking an App User
       description: |-
+        Logging out is not strictly necessary for Web Users; all sessions expire 24 hours after they are created. But it can be a good idea, in case someone else manages to steal your token. It is also the way Public Link and App User access are revoked. To do so, issue a `DELETE` request to that token resource.
+        
+        **Revoking an App User**
+
         The token associated with a App User is actually just its Session Token. As a result, although a App User Token can uniquely be used as a URL prefix as described here, the session associated with it can be revoked in exactly the same way a session is logged out, by issuing a `DELETE` request to its Session resource.
 
         Note, however, that a App User cannot revoke itself; a `User` must perform this action.
@@ -654,70 +971,20 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
-                message: The authenticated actor does not have rights to perform that
-                  action.
-  /v1/key/{appUser}/example:
-    get:
-      tags:
-      - Authentication
-      summary: Using App User Authentication
-      description: |-
-        To use App User Authentication, first obtain a App User, typically by using the configuration panel in the user interface, or else by using the [App User API Resource](/reference/accounts-and-users/app-users). Once you have the token, you can apply it to any eligible action by prefixing the URL with `/key/{appUser}` as follows:
-
-        `/v1/key/!Ms7V3$Zdnd63j5HFacIPFEvFAuwNqTUZW$AsVOmaQFf$vIC!F8dJjdgiDnJXXOt/example/request/path`
-
-        _(There is not really anything at `/v1/example`; this section only demonstrates how generally to use App User Authentication.)_
-      operationId: Using App User Authentication
-      parameters:
-      - name: appUser
-        in: path
-        description: The App User token. As with Session Bearer tokens, these tokens
-          only contain URL-safe characters, so no escaping is required.
-        required: true
-        schema:
-          type: string
-        example: '!Ms7V3$Zdnd63j5HFacIPFEvFAuwNqTUZW$AsVOmaQFf$vIC!F8dJjdgiDnJXXOt'
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                message: The authenticated actor does not have rights to perform that action.
   /v1/users:
     get:
       tags:
-      - Accounts and Users
+      - Users
       summary: Listing all Users
       description: |-
         Currently, there are no paging or filtering options, so listing `User`s will get you every User in the system, every time.
@@ -743,7 +1010,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  $ref: '#/components/schemas/User' 
               example:
               - createdAt: 2018-04-18T23:19:14.802Z
                 displayName: My Display Name
@@ -771,7 +1038,7 @@ paths:
                   action.
     post:
       tags:
-      - Accounts and Users
+      - Users
       summary: Creating a new User
       description: |-
         All that is required to create a new user is an email address. That email address will receive a message instructing the new user on how to claim their new account and set a password.
@@ -890,7 +1157,7 @@ paths:
   /v1/users/{actorId}:
     get:
       tags:
-      - Accounts and Users
+      - Users
       summary: Getting User details
       description: |-
         Typically, you supply the integer ID to get information about the user associated with that id.
@@ -975,7 +1242,7 @@ paths:
                   action.
     delete:
       tags:
-      - Accounts and Users
+      - Users
       summary: Deleting a User
       description: |-
         Upon User deletion:
@@ -1031,7 +1298,7 @@ paths:
                   action.
     patch:
       tags:
-      - Accounts and Users
+      - Users
       summary: Modifying a User
       description: |-
         You can `PATCH` JSON data to update User details. Not all user information is modifiable; right now, the following fields may be updated:
@@ -1159,7 +1426,7 @@ paths:
   /v1/users/current:
     get:
       tags:
-      - Accounts and Users
+      - Users
       summary: Getting authenticated User details
       description: |-
         Typically, you would get User details by the User's numeric Actor ID.
@@ -1302,7 +1569,7 @@ paths:
   /v1/users/{actorId}/password:
     put:
       tags:
-      - Accounts and Users
+      - Users
       summary: Directly updating a user password
       description: To directly update a user password, you will need to reprove the
         user's intention by supplying the `old` password alongside the `new`. If you
@@ -1371,7 +1638,7 @@ paths:
   /v1/users/reset/initiate:
     post:
       tags:
-      - Accounts and Users
+      - Users
       summary: Initating a password reset
       description: |-
         Anybody can initate a reset of any user's password. An email will be sent with instructions on how to complete the password reset; it contains a token that is required to complete the process.
@@ -1438,7 +1705,7 @@ paths:
   /v1/projects/{projectId}/app-users:
     get:
       tags:
-      - Accounts and Users
+      - App Users
       summary: Listing all App Users
       description: |-
         Currently, there are no paging or filtering options, so listing `App User`s will get you every App User in the system, every time.
@@ -1460,9 +1727,14 @@ paths:
           content:
             application/json; extended:
               schema:
-                type: array
-                items:
-                  type: object
+                oneOf:
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/AppUser'
+                  - type: array
+                    description: Extended App Users
+                    items:
+                      $ref: '#/components/schemas/ExtendedAppUser'
               example:
               - createdAt: 2018-04-18T23:19:14.802Z
                 displayName: My Display Name
@@ -1514,7 +1786,7 @@ paths:
                   action.
     post:
       tags:
-      - Accounts and Users
+      - App Users
       summary: Creating a new App User
       description: |-
         The only information required to create a new `App User` is its `displayName` (this is called "Nickname" in the administrative panel).
@@ -1640,7 +1912,7 @@ paths:
   /v1/projects/{projectId}/app-users/{id}:
     delete:
       tags:
-      - Accounts and Users
+      - App Users
       summary: Deleting a App User
       description: |-
         You don't have to delete a `App User` in order to cut off its access. Using a `User`'s credentials you can simply [log the App User's session out](/reference/authentication/app-user-authentication/revoking-an-app-user) using its token. This will end its session without actually deleting the App User, which allows you to still see it in the configuration panel and inspect its history. This is what the administrative panel does when you choose to "Revoke" the App User.
@@ -1696,7 +1968,7 @@ paths:
   /v1/roles:
     get:
       tags:
-      - Accounts and Users
+      - Roles
       summary: Listing all Roles
       description: 'Currently, there are no paging or filtering options, so listing
         `Role`s will get you every Role in the system, every time. There are no authorization
@@ -1711,7 +1983,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  $ref: '#/components/schemas/Role'
               example:
               - id: 4
                 name: Project Manager
@@ -1724,7 +1996,7 @@ paths:
   /v1/roles/{id}:
     get:
       tags:
-      - Accounts and Users
+      - Roles
       summary: Getting Role Details
       description: |-
         Getting an individual Role does not reveal any additional information over listing all Roles. It is, however, useful for direct lookup of a specific role:
@@ -1748,34 +2020,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - createdAt
-                - id
-                - name
-                - verbs
-                type: object
-                properties:
-                  id:
-                    type: number
-                    description: The numerical ID of the Role.
-                  name:
-                    type: string
-                    description: The human-readable name for the Role.
-                  system:
-                    type: string
-                    description: The system name of the Role. Roles that have system
-                      names may not be modified.
-                  verbs:
-                    type: array
-                    description: The array of string verbs this Role confers.
-                    items:
-                      type: object
-                  createdAt:
-                    type: string
-                    description: ISO date format
-                  updatedAt:
-                    type: string
-                    description: ISO date format
+                $ref: '#/components/schemas/Role' 
               example:
                 id: 4
                 name: Project Manager
@@ -1788,7 +2033,7 @@ paths:
   /v1/assignments:
     get:
       tags:
-      - Accounts and Users
+      - Assignments
       summary: Listing all Assignments
       description: |-
         This will list every server-wide assignment, in the form of `actorId`/`roleId` pairs. It will _not_ list Project-specific Assignments. To find those, you will need the [Assignments subresource](/reference/project-management/project-assignments) within Projects.
@@ -1800,11 +2045,16 @@ paths:
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
-            application/json; extended:
+            application/json:
               schema:
-                type: array
-                items:
-                  type: object
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/Assignment'
+                - type: array
+                  description: Extended Assignment
+                  items:
+                    $ref: '#/components/schemas/ExtendedAssignment'
               example:
               - actor:
                   createdAt: 2018-04-18T23:19:14.802Z
@@ -1814,34 +2064,12 @@ paths:
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
                 roleId: 4
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
         403:
           description: Forbidden
           content:
-            application/json; extended:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -1849,7 +2077,7 @@ paths:
   /v1/assignments/{roleId}:
     get:
       tags:
-      - Accounts and Users
+      - Assignments
       summary: Listing all Actors assigned some Role
       description: Given a `roleId`, which may be a numeric ID or a string role `system`
         name, this endpoint lists all `Actors` that have been assigned that Role on
@@ -1872,7 +2100,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  $ref: '#/components/schemas/Actor'
               example:
               - createdAt: 2018-04-18T23:19:14.802Z
                 displayName: My Display Name
@@ -1900,7 +2128,7 @@ paths:
   /v1/assignments/{roleId}/{actorId}:
     post:
       tags:
-      - Accounts and Users
+      - Assignments
       summary: Assigning an Actor to a server-wide Role
       description: |-
         Given a `roleId`, which may be a numeric ID or a string role `system` name, and a numeric `actorId`, assigns that Role to that Actor across the entire server.
@@ -1956,7 +2184,7 @@ paths:
                   action.
     delete:
       tags:
-      - Accounts and Users
+      - Assignments
       summary: Stripping an Role Assignment from an Actor
       description: Given a `roleId`, which may be a numeric ID or a string role `system`
         name, and a numeric `actorId`, unassigns that Role from that Actor across
@@ -2012,7 +2240,7 @@ paths:
   /v1/projects:
     get:
       tags:
-      - Project Management
+      - Projects
       summary: Listing Projects
       description: |-
         The Projects listing endpoint is somewhat unique in that it is freely accessible to anybody, even unauthenticated clients. Rather than reject the user with a `403` or similar error, the Projects listing will only return Projects that the authenticated Actor is allowed to see. In most cases, this means that unauthenticated requests will receive `[]` in reply.
@@ -2021,16 +2249,29 @@ paths:
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally retrieve the `appUsers` count of App Users and `forms` count of Forms within the Project, as well as the `lastSubmission` timestamp of the latest submission to any for in the project, if any.
       operationId: Listing Projects
+      parameters: 
+        - name: forms
+          in: query
+          description: |-
+            _(introduced: Version 1.5)_ If set to true then endpoint also returns the Forms that the authenticated Actor is allowed to see, with those Forms nested within their corresponding Project under a new parameter `formList`. The returned Forms will match structure of Forms requested with extended metadata (including additional `lastSubmission` timestamp and `submissions` and `reviewStates` counts)
+          schema:
+            type: boolean
+          example: "true"
       responses:
         200:
-          description: 'This is the Extended Metadata response, if requested via the
-            appropriate header:'
+          description: OK
           content:
-            application/json; extended:
+            application/json:
               schema:
-                type: array
-                items:
-                  type: object
+                oneOf:
+                - type: array
+                  description: Standard Response
+                  items:
+                    $ref: '#/components/schemas/Project'
+                - type: array
+                  description: Extended Response
+                  items:
+                    $ref: '#/components/schemas/ExtendedProject'
               example:
               - id: 1
                 name: Default Project
@@ -2043,7 +2284,7 @@ paths:
                 datasets: 2
     post:
       tags:
-      - Project Management
+      - Projects
       summary: Creating a Project
       description: To create a Project, the only information you must supply (via
         POST body) is the desired name of the Project.
@@ -2116,62 +2357,11 @@ paths:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
                   action.
-      x-codegen-request-body-name: body
-  /v1/projects?forms=true:
-    get:
-      tags:
-      - Project Management
-      summary: Listing Projects with nested Forms
-      description: |-
-        _(introduced: Version 1.5)_
-
-        This endpoint works similarly to the Project listing endpoint above, except it also returns the Forms that the authenticated Actor is allowed to see, with those Forms nested within their corresponding Project under a new parameter `formList`. The returned Forms will match structure of Forms requested with extended metadata (including additional `lastSubmission` timestamp and `submissions` and `reviewStates` counts).
-      operationId: Listing Projects with nested Forms
-      responses:
-        200:
-          description: 'This is the standard response:'
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-              example:
-              - id: 1
-                name: Default Project
-                description: Description of this Project to show on Central.
-                keyId: 3
-                archived: false
-                formList:
-                - projectId: 1
-                  xmlFormId: simple
-                  name: Simple
-                  version: "2.1"
-                  enketoId: abcdef
-                  hash: 51a93eab3a1974dbffc4c7913fa5a16a
-                  keyId: 3
-                  state: open
-                  publishedAt: 2018-01-21T00:04:11.153Z
-                  createdAt: 2018-01-19T23:58:03.395Z
-                  updatedAt: 2018-03-21T12:45:02.312Z
-                  submissions: 10
-                  reviewStates:
-                    received: 3
-                    hasIssues: 2
-                    edited: 1
-                  lastSubmission: 2018-04-18T03:04:51.695Z
-                  createdBy:
-                    createdAt: 2018-04-18T23:19:14.802Z
-                    displayName: My Display Name
-                    id: 115
-                    type: user
-                    updatedAt: 2018-04-18T23:42:11.406Z
-                    deletedAt: 2018-04-18T23:42:11.406Z
-                  entityRelated: false
+      x-codegen-request-body-name: body  
   /v1/projects/{id}:
     get:
       tags:
-      - Project Management
+      - Projects
       summary: Getting Project Details
       description: |-
         To get just the details of a single Project, `GET` its single resource route by its numeric ID.
@@ -2335,7 +2525,7 @@ paths:
                   action.
     put:
       tags:
-      - Project Management
+      - Projects
       summary: Deep Updating Project and Form Details
       description: |-
         _(introduced: version 0.7)_
@@ -2378,6 +2568,9 @@ paths:
                 forms:
                   type: array
                   description: If given, the Form metadata to update.
+                  items: {
+                    type: object
+                  }
               example:
                 name: New Project Name
                 description: New Project Description
@@ -2467,7 +2660,7 @@ paths:
       x-codegen-request-body-name: body
     delete:
       tags:
-      - Project Management
+      - Projects
       summary: Deleting a Project
       description: Deleting a Project will remove it from the management interface
         and make it permanently inaccessible. Do not do this unless you are certain
@@ -2515,7 +2708,7 @@ paths:
                   action.
     patch:
       tags:
-      - Project Management
+      - Projects
       summary: Updating Project Details
       description: |-
         The Project name may be updated, as well as the Project description and the `archived` flag.
@@ -2610,7 +2803,7 @@ paths:
   /v1/projects/{id}/key:
     post:
       tags:
-      - Project Management
+      - Projects
       summary: Enabling Project Managed Encryption
       description: |-
         _(introduced: version 0.6)_
@@ -2743,7 +2936,7 @@ paths:
   /v1/projects/{projectId}/assignments:
     get:
       tags:
-      - Project Management
+      - Project Assignments
       summary: Listing all Project Assignments
       description: |-
         This will list every assignment upon this Project, in the form of `actorId`/`roleId` pairs.
@@ -2763,11 +2956,15 @@ paths:
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
-            application/json; extended:
+            application/json:
               schema:
-                type: array
-                items:
-                  type: object
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/Assignment'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/ExtendedAssignment'
               example:
               - actor:
                   createdAt: 2018-04-18T23:19:14.802Z
@@ -2777,34 +2974,12 @@ paths:
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
                 roleId: 4
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
         403:
           description: Forbidden
           content:
-            application/json; extended:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -2812,7 +2987,7 @@ paths:
   /v1/projects/{projectId}/assignments/{roleId}:
     get:
       tags:
-      - Project Management
+      - Project Assignments
       summary: Listing all Actors assigned some Project Role
       description: Given a `roleId`, which may be a numeric ID or a string role `system`
         name, this endpoint lists all `Actors` that have been assigned that Role upon
@@ -2842,7 +3017,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  $ref: '#/components/schemas/Actor'
               example:
               - createdAt: 2018-04-18T23:19:14.802Z
                 displayName: My Display Name
@@ -2855,14 +3030,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -2870,7 +3038,7 @@ paths:
   /v1/projects/{projectId}/assignments/{roleId}/{actorId}:
     post:
       tags:
-      - Project Management
+      - Project Assignments
       summary: Assigning an Actor to a Project Role
       description: |-
         Given a `roleId`, which may be a numeric ID or a string role `system` name, and a numeric `actorId`, assigns that Role to that Actor for this particular Project.
@@ -2933,7 +3101,7 @@ paths:
                   action.
     delete:
       tags:
-      - Project Management
+      - Project Assignments
       summary: Revoking a Project Role Assignment from an Actor
       description: Given a `roleId`, which may be a numeric ID or a string role `system`
         name, and a numeric `actorId`, unassigns that Role from that Actor for this
@@ -2996,7 +3164,7 @@ paths:
   /v1/projects/{projectId}/assignments/forms:
     get:
       tags:
-      - Project Management
+      - Project Assignments
       summary: Seeing all Form Assignments within a Project
       description: |-
         Returns a summary of all _Form-specific_ Assignments within this Project. This endpoint is meant to simplify the task of summarizing all Form permissions within a Project at a glance and in one transactional request. Because it is necessary to specify which Form each Assignment is attached to, returned results form this endpoint include an `xmlFormId` field.
@@ -3013,14 +3181,17 @@ paths:
         example: "16"
       responses:
         200:
-          description: 'This is the Extended Metadata response, if requested via the
-            appropriate header:'
+          description: OK
           content:
-            application/json; extended:
+            application/json:
               schema:
-                type: array
-                items:
-                  type: object
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/FormSummaryAssignment'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/ExtendedFormSummaryAssignment'
               example:
               - actor:
                   createdAt: 2018-04-18T23:19:14.802Z
@@ -3031,34 +3202,12 @@ paths:
                   deletedAt: 2018-04-18T23:42:11.406Z
                 xmlFormId: simple
                 roleId: 4
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
         403:
           description: Forbidden
           content:
             application/json; extended:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -3066,7 +3215,7 @@ paths:
   /v1/projects/{projectId}/assignments/forms/{roleId}:
     get:
       tags:
-      - Project Management
+      - Project Assignments
       summary: Seeing Role-specific Form Assignments within a Project
       description: |-
         Like the [Form Assignments summary API](/reference/forms/form-assignments/listing-all-form-assignments), but filtered by some `roleId`.
@@ -3090,13 +3239,17 @@ paths:
         example: "16"
       responses:
         200:
-          description: 'This is the Extended Metadata response, if requested via the appropriate header:'
+          description: OK
           content:
-            application/json; extended:
+            application/json:
               schema:
-                type: array
-                items:
-                  type: object
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/FormSummaryAssignment'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/ExtendedFormSummaryAssignment'
               example:
               - actor:
                   createdAt: 2018-04-18T23:19:14.802Z
@@ -3107,34 +3260,12 @@ paths:
                   deletedAt: 2018-04-18T23:42:11.406Z
                 xmlFormId: simple
                 roleId: 4
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
         403:
           description: Forbidden
           content:
             application/json; extended:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that action.
@@ -3160,14 +3291,17 @@ paths:
         example: "16"
       responses:
         200:
-          description: 'This is the Extended Metadata response, if requested via the
-            appropriate header:'
+          description: OK
           content:
-            application/json; extended:
+            application/json:
               schema:
-                type: array
-                items:
-                  type: object
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/Form'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/ExtendedForm'
               example:
               - projectId: 1
                 xmlFormId: simple
@@ -3194,34 +3328,12 @@ paths:
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
                 entityRelated: false
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
         403:
           description: Forbidden
           content:
-            application/json; extended:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -3247,7 +3359,7 @@ paths:
 
         - Deleted Form: Returned when there is a form with the same ID in the Trash. [Learn more](https://docs.getodk.org/central-forms/#deleting-a-form)
 
-        ### Creating Datasets with Forms
+        **Creating Datasets with Forms**
 
         Starting from Version 2022.3, a Form can also create a Dataset by defining a Dataset schema in the Form definition (XForms XML or XLSForm). When a Form with a Dataset schema is uploaded, a Dataset and its Properties are created and a `dataset.create` event is logged in the Audit logs. The state of the Dataset is dependent on the state of the Form; you will need to publish the Form to publish the Dataset. Datasets in the Draft state are not returned in [Dataset APIs](#reference/datasets), however the [Related Datasets](#reference/forms/related-datasets/draft-form-dataset-diff) API for the Form can be called to get the Dataset and its Properties.
 
@@ -3412,100 +3524,10 @@ paths:
               example:
                 code: "409.1"
                 message: A resource already exists with id value(s) of 1.
-  /v1/projects/{projectId}/forms?deleted=true:
-    get:
-      tags:
-      - Forms
-      summary: List all deleted Forms
-      description: |-
-        _(introduced: Version 1.4)_
-
-        This endpoint returns a list of the current soft-deleted Forms that appear in the Trash section. In addition to the normal `Form` values, each Form will also include when it was deleted (`deletedAt`) and its numeric ID (`id`) that can be used to restore the Form.
-
-        Like the standard Form List endpoint, this endpoint also supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally retrieve the `submissions` count of the number of `Submission`s that each Form has and the `lastSubmission` most recent submission timestamp, as well as the Actor the Form was `createdBy`.
-      operationId: List all deleted Forms
-      parameters:
-      - name: projectId
-        in: path
-        description: The numeric ID of the Project
-        required: true
-        schema:
-          type: number
-        example: "16"
-      responses:
-        200:
-          description: 'This is the Extended Metadata response, if requested via the
-            appropriate header:'
-          content:
-            application/json; extended:
-              schema:
-                type: array
-                items:
-                  type: object
-              example:
-              - projectId: 1
-                xmlFormId: simple
-                name: Simple
-                version: "2.1"
-                enketoId: abcdef
-                hash: 51a93eab3a1974dbffc4c7913fa5a16a
-                keyId: 3
-                state: open
-                publishedAt: 2018-01-21T00:04:11.153Z
-                createdAt: 2018-01-19T23:58:03.395Z
-                updatedAt: 2018-03-21T12:45:02.312Z
-                submissions: 10
-                reviewStates:
-                  received: 3
-                  hasIssues: 2
-                  edited: 1
-                lastSubmission: 2018-04-18T03:04:51.695Z
-                createdBy:
-                  createdAt: 2018-04-18T23:19:14.802Z
-                  displayName: My Display Name
-                  id: 115
-                  type: user
-                  updatedAt: 2018-04-18T23:42:11.406Z
-                  deletedAt: 2018-04-18T23:42:11.406Z
-                entityRelated: false
-                deletedAt: 2018-03-21T12:45:02.312Z
-                id: 42
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-        403:
-          description: Forbidden
-          content:
-            application/json; extended:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-              example:
-                code: "403.1"
-                message: The authenticated actor does not have rights to perform that
-                  action.
   /v1/projects/{projectId}/forms/{xmlFormId}:
     get:
       tags:
-      - Forms
+      - Individual Form
       summary: Getting Form Details
       description: 'This endpoint supports retrieving extended metadata; provide a
         header `X-Extended-Metadata: true` to additionally retrieve the `submissions`
@@ -3857,7 +3879,7 @@ paths:
                   action.
     delete:
       tags:
-      - Forms
+      - Individual Form
       summary: Deleting a Form
       description: When a Form is deleted, it goes into the Trash section, but it
         can now be restored from the Trash. After 30 days in the Trash, the Form and
@@ -3915,7 +3937,7 @@ paths:
                   action.
     patch:
       tags:
-      - Forms
+      - Individual Form
       summary: Modifying a Form
       description: |-
         It is currently possible to modify only one thing about a `Form`: its `state`, which governs whether it is available for download onto survey clients and whether it accepts new `Submission`s. See the `state` Attribute in the Request documentation to the right to see the possible values and their meanings.
@@ -4073,7 +4095,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}.xml:
     get:
       tags:
-      - Forms
+      - Individual Form
       summary: Retrieving Form XML
       description: To get the XML of the `Form`, add `.xml` to the end of the request
         URL.
@@ -4158,7 +4180,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}.xlsx:
     get:
       tags:
-      - Forms
+      - Individual Form
       summary: Retrieving Form XLS(X)
       description: If a Form was created with an Excel file (`.xls` or `.xlsx`), you
         can get that file back by adding `.xls` or `.xlsx` as appropriate to the Form
@@ -4216,7 +4238,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/attachments:
     get:
       tags:
-      - Forms
+      - Individual Form
       summary: Listing Form Attachments
       description: This endpoint allows you to fetch the list of expected attachment
         files, and will tell you whether the server is in possession of each file
@@ -4245,7 +4267,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  $ref: '#/components/schemas/FormAttachment'
               example:
               - name: myfile.mp3
                 type: image
@@ -4258,14 +4280,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -4273,7 +4288,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/attachments/{filename}:
     get:
       tags:
-      - Forms
+      - Individual Form
       summary: Downloading a Form Attachment
       description: To download a single file, use this endpoint. The appropriate `Content-Disposition`
         (attachment with a filename) and `Content-Type` (based on the type supplied
@@ -4342,7 +4357,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/fields:
     get:
       tags:
-      - Forms
+      - Individual Form
       summary: Getting Form Schema Fields
       description: |-
         _(introduced: version 0.8)_
@@ -4452,7 +4467,7 @@ paths:
   /v1/projects/{projectId}/forms/{id}/restore:
     post:
       tags:
-      - Forms
+      - Individual Form
       summary: Restoring a Form
       description: |-
         _(introduced: version 1.4)_
@@ -4508,7 +4523,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft:
     get:
       tags:
-      - Forms
+      - Draft Form
       summary: Getting Draft Form Details
       description: The response here will include standard overall Form metadata,
         like `xmlFormId`, in addition to the Draft-specific information.
@@ -4554,7 +4569,7 @@ paths:
                   action.
     post:
       tags:
-      - Forms
+      - Draft Form
       summary: Creating a Draft Form
       description: |-
         `POST`ing here will create a new Draft Form on the given Form. For the most part, it takes the same parameters as the [Create Form request](/reference/forms/forms/creating-a-new-form): you can submit XML or Excel files, you can provide `ignoreWarnings` if you'd like.
@@ -4655,7 +4670,7 @@ paths:
                   action.
     delete:
       tags:
-      - Forms
+      - Draft Form
       summary: Deleting a Draft Form
       description: |-
         Once a Draft Form is deleted, its definition and any Form Attachments associated with it will be removed.
@@ -4711,7 +4726,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft.xml:
     get:
       tags:
-      - Forms
+      - Draft Form
       summary: Retrieving Draft Form XML
       description: To get the XML of the Draft Form, add `.xml` to the end of the
         request URL.
@@ -4796,7 +4811,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft.xlsx:
     get:
       tags:
-      - Forms
+      - Draft Form
       summary: Retrieving Draft Form XLS(X)
       description: If a Draft Form was created with an Excel file (`.xls` or `.xlsx`),
         you can get that file back by adding `.xls` or `.xlsx` as appropriate to the
@@ -4854,7 +4869,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/attachments:
     get:
       tags:
-      - Forms
+      - Draft Form
       summary: Listing expected Draft Form Attachments
       description: Form Attachments for each form are automatically determined when
         the form is first created, by scanning the XForms definition for references
@@ -4886,7 +4901,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  $ref: '#/components/schemas/FormAttachment'
               example:
               - name: myfile.mp3
                 type: image
@@ -4899,14 +4914,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -4914,7 +4922,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/attachments/{filename}:
     get:
       tags:
-      - Forms
+      - Draft Form
       summary: Downloading a Draft Form Attachment
       description: To download a single file, use this endpoint. The appropriate `Content-Disposition`
         (attachment with a filename or Dataset name) and `Content-Type` (based on
@@ -4983,7 +4991,7 @@ paths:
                   action.
     post:
       tags:
-      - Forms
+      - Draft Form
       summary: Uploading a Draft Form Attachment
       description: |-
         To upload a binary to an expected file slot, `POST` the binary to its endpoint. Supply a `Content-Type` MIME-type header if you have one.
@@ -5045,7 +5053,7 @@ paths:
                   action.
     delete:
       tags:
-      - Forms
+      - Draft Form
       summary: Clearing a Draft Form Attachment
       description: Because Form Attachments are completely determined by the XForms
         definition of the form itself, there is no direct way to entirely remove a
@@ -5108,7 +5116,7 @@ paths:
                   action.
     patch:
       tags:
-      - Forms
+      - Draft Form
       summary: Linking a Dataset to a Draft Form Attachment
       description: |-
         _(introduced: version 2022.3)_
@@ -5196,7 +5204,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/fields:
     get:
       tags:
-      - Forms
+      - Draft Form
       summary: Getting Draft Form Schema Fields
       description: Identical to the [same request](/reference/forms/individual-form/getting-form-schema-fields)
         for the published Form, but will return the fields related to the current
@@ -5299,7 +5307,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/publish:
     post:
       tags:
-      - Forms
+      - Draft Form
       summary: Publishing a Draft Form
       description: |-
         This will publish your current Draft Form and make it the active Form definition (and attachments).
@@ -5383,7 +5391,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/versions:
     get:
       tags:
-      - Forms
+      - Published Form Versions
       summary: Listing Published Form Versions
       description: |-
         Each entry of the version listing will contain some of the same duplicate keys with basic information about the Form: `xmlFormId` and `createdAt`, for example. This is done to match the data you'd receive if you'd requested each version separately.
@@ -5410,11 +5418,15 @@ paths:
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
-            application/json; extended:
+            application/json:
               schema:
-                type: array
-                items:
-                  type: object
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/Form'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/ExtendedFormVersion'
               example:
               - projectId: 1
                 xmlFormId: simple
@@ -5434,34 +5446,12 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
         403:
           description: Forbidden
           content:
             application/json; extended:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -5469,7 +5459,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}:
     get:
       tags:
-      - Forms
+      - Published Form Versions
       summary: Getting Form Version Details
       description: Since the XForms specification allows blank strings as `version`s
         (and Central treats the lack of a `version` as a blank string), you may run
@@ -5527,7 +5517,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}.xml:
     get:
       tags:
-      - Forms
+      - Published Form Versions
       summary: Retrieving Form Version XML
       description: To get the XML of the Form Version, add `.xml` to the end of the
         request URL.
@@ -5620,7 +5610,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}.xlsx:
     get:
       tags:
-      - Forms
+      - Published Form Versions
       summary: Retrieving Form Version XLS(X)
       description: If a Form Version was created with an Excel file (`.xls` or `.xlsx`),
         you can get that file back by adding `.xls` or `.xlsx` as appropriate to the
@@ -5686,7 +5676,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}/attachments:
     get:
       tags:
-      - Forms
+      - Published Form Versions
       summary: Listing Form Version Attachments
       description: Attachments are specific to each version of a Form. You can retrieve
         the attachments associated with a given version here.
@@ -5722,7 +5712,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  $ref: '#/components/schemas/FormAttachment'
               example:
               - name: myfile.mp3
                 type: image
@@ -5750,7 +5740,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}/attachments/{filename}:
     get:
       tags:
-      - Forms
+      - Published Form Versions
       summary: Downloading a Form Version Attachment
       description: To download a single file, use this endpoint. The appropriate `Content-Disposition`
         (attachment with a filename) and `Content-Type` (based on the type supplied
@@ -5827,7 +5817,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}/fields:
     get:
       tags:
-      - Forms
+      - Published Form Versions
       summary: Getting Form Version Schema Fields
       description: Identical to the [same request](/reference/forms/individual-form/getting-form-schema-fields)
         for the published Form, but will return the fields related to the specified
@@ -5938,7 +5928,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/assignments:
     get:
       tags:
-      - Forms
+      - Form Assignments
       summary: Listing all Form Assignments
       description: |-
         This will list every assignment upon this Form, in the form of `actorId`/`roleId` pairs.
@@ -5967,9 +5957,13 @@ paths:
           content:
             application/json; extended:
               schema:
-                type: array
-                items:
-                  type: object
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/Assignment'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/ExtendedAssignment'
               example:
               - actor:
                   createdAt: 2018-04-18T23:19:14.802Z
@@ -5979,34 +5973,12 @@ paths:
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
                 roleId: 4
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
         403:
           description: Forbidden
           content:
             application/json; extended:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -6014,7 +5986,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/assignments/{roleId}:
     get:
       tags:
-      - Forms
+      - Form Assignments
       summary: Listing all Actors assigned some Form Role
       description: Given a `roleId`, which may be a numeric ID or a string role `system`
         name, this endpoint lists all `Actors` that have been assigned that Role upon
@@ -6051,7 +6023,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  $ref: '#/components/schemas/Actor'
               example:
               - createdAt: 2018-04-18T23:19:14.802Z
                 displayName: My Display Name
@@ -6064,14 +6036,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -6079,7 +6044,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/assignments/{roleId}/{actorId}:
     post:
       tags:
-      - Forms
+      - Form Assignments
       summary: Assigning an Actor to a Form Role
       description: |-
         Given a `roleId`, which may be a numeric ID or a string role `system` name, and a numeric `actorId`, assigns that Role to that Actor for this particular Form.
@@ -6135,7 +6100,7 @@ paths:
           content: {}
     delete:
       tags:
-      - Forms
+      - Form Assignments
       summary: Revoking a Form Role Assignment from an Actor
       description: Given a `roleId`, which may be a numeric ID or a string role `system`
         name, and a numeric `actorId`, unassigns that Role from that Actor for this
@@ -6205,7 +6170,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/public-links:
     get:
       tags:
-      - Forms
+      - Public Access Links
       summary: Listing all Links
       description: |-
         This will list every Public Access Link upon this Form.
@@ -6232,11 +6197,15 @@ paths:
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
-            application/json; extended:
+            application/json:
               schema:
-                type: array
-                items:
-                  type: object
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/PublicLink'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/ExtendedPublicLink'
               example:
               - createdAt: 2018-04-18T23:19:14.802Z
                 displayName: My Display Name
@@ -6255,7 +6224,7 @@ paths:
                   deletedAt: 2018-04-18T23:42:11.406Z
     post:
       tags:
-      - Forms
+      - Public Access Links
       summary: Creating a Link
       description: 'To create a new Public Access Link to this Form, you must send
         at least a `displayName` for the resulting Actor. You may also provide `once:
@@ -6378,7 +6347,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/public-links/{linkId}:
     delete:
       tags:
-      - Forms
+      - Public Access Links
       summary: Deleting a Link
       description: You can fully delete a link by issuing `DELETE` to its resource.
         This will remove the Link from the system entirely. If instead you wish to
@@ -6441,7 +6410,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/dataset-diff:
     get:
       tags:
-      - Forms
+      - Related Datasets
       summary: Published Form Related Datasets
       description: This endpoint lists the name and Properties of a Dataset that are
         affected by a Form. The list of Properties includes all published Properties
@@ -6471,7 +6440,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  $ref: '#/components/schemas/DatasetDiff'
               example:
               - name: people
                 properties:
@@ -6480,7 +6449,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/dataset-diff:
     get:
       tags:
-      - Forms
+      - Related Datasets
       summary: Draft Form Dataset Diff
       description: This endpoint reflects the change to a Dataset that will go into
         effect once the form is Published. Like the endpoint above, it lists the Dataset
@@ -6511,7 +6480,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  $ref: '#/components/schemas/DraftDatasetDiff'
               example:
               - name: people
                 isNew: true
@@ -6546,14 +6515,17 @@ paths:
         example: simple
       responses:
         200:
-          description: 'This is the Extended Metadata response, if requested via the
-            appropriate header:'
+          description: OK
           content:
-            application/json; extended:
+            application/json:
               schema:
-                type: array
-                items:
-                  type: object
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/Submission'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/ExtendedSubmission'
               example:
               - instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                 submitterId: 23
@@ -6577,34 +6549,12 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
         403:
           description: Forbidden
           content:
             application/json; extended:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -8133,11 +8083,15 @@ paths:
         200:
           description: OK
           content:
-            application/json; extended:
+            application/json:
               schema:
-                type: array
-                items:
-                  type: object
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/Audit'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/ExtendedAudit'
               example:
               - actorId: 42
                 action: form.create
@@ -8150,34 +8104,12 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
         403:
           description: Forbidden
           content:
             application/json; extended:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -8216,20 +8148,13 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  $ref: '#/components/schemas/Key'
         403:
           description: Forbidden
           content:
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -8266,20 +8191,13 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  $ref: '#/components/schemas/Actor'
         403:
           description: Forbidden
           content:
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -8287,7 +8205,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/comments:
     get:
       tags:
-      - Submissions
+      - Comments
       summary: Listing Comments
       description: |-
         Comments have only a `body` comment text and an `actor` that made the comment.
@@ -8318,14 +8236,17 @@ paths:
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
         200:
-          description: 'This is the Extended Metadata response, if requested via the
-            appropriate header:'
+          description: OK
           content:
-            application/json; extended:
+            application/json:
               schema:
-                type: array
-                items:
-                  type: object
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/Comment'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/ExtendedComment'
               example:
               - body: this is my comment
                 actorId: 42
@@ -8336,41 +8257,19 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
         403:
           description: Forbidden
           content:
-            application/json; extended:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
                   action.
     post:
       tags:
-      - Submissions
+      - Comments
       summary: Posting Comments
       description: Currently, the only accepted data is `body`, which contains the
         body of the comment to be made.
@@ -8452,7 +8351,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/attachments:
     get:
       tags:
-      - Submissions
+      - Attachments
       summary: Listing expected Submission Attachments
       description: You can retrieve the list of expected Submission attachments at
         this route, along with a boolean flag indicating whether the server actually
@@ -8490,7 +8389,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  $ref: '#/components/schemas/SubmissionAttachment'
               example:
               - name: file1.jpg
                 exists: true
@@ -8503,14 +8402,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -8518,7 +8410,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/attachments/{filename}:
     get:
       tags:
-      - Submissions
+      - Attachments
       summary: Downloading an Attachment
       description: The `Content-Type` and `Content-Disposition` will be set appropriately
         based on the file itself when requesting an attachment file download.
@@ -8592,7 +8484,7 @@ paths:
                   action.
     post:
       tags:
-      - Submissions
+      - Attachments
       summary: Uploading an Attachment
       description: |-
         _(introduced: version 0.4)_
@@ -8661,7 +8553,7 @@ paths:
                   action.
     delete:
       tags:
-      - Submissions
+      - Attachments
       summary: Clearing a Submission Attachment
       description: |-
         _(introduced: version 0.4)_
@@ -8731,7 +8623,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/versions:
     get:
       tags:
-      - Submissions
+      - Submission Versions
       summary: Listing Versions
       description: |-
         This will return all submission metadata for every version of this submission, in descending creation order.
@@ -8763,14 +8655,17 @@ paths:
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
         200:
-          description: 'This is the Extended Metadata response, if requested via the
-            appropriate header:'
+          description: OK
           content:
-            application/json; extended:
+            application/json:
               schema:
-                type: array
-                items:
-                  type: object
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/SubmissionVersion'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/ExtendedSubmissionVersion'
               example:
               - instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                 instanceName: village third house
@@ -8787,34 +8682,12 @@ paths:
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
                 formVersion: "1.0"
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
         403:
           description: Forbidden
           content:
             application/json; extended:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -8822,7 +8695,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/versions/{versionId}:
     get:
       tags:
-      - Submissions
+      - Submission Versions
       summary: Getting Version Details
       description: |-
         Returns metadata about a particular version of the submission. As with the normal submission endpoint, you'll only get metadata in JSON out of this route. If you want to retrieve the XML, [add `.xml`](/reference/submissions/submission-versions/getting-version-xml).
@@ -9062,7 +8935,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/versions/{versionId}.xml:
     get:
       tags:
-      - Submissions
+      - Submission Versions
       summary: Getting Version XML
       description: Returns the XML of a particular version of the submission.
       operationId: Getting Version XML
@@ -9137,7 +9010,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/versions/{versionId}/attachments:
     get:
       tags:
-      - Submissions
+      - Submission Versions
       summary: Listing Version expected Attachments
       description: You can retrieve the list of expected Submission attachments for
         the given version at this route, along with a boolean flag indicating whether
@@ -9183,7 +9056,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  $ref: '#/components/schemas/SubmissionAttachment'
               example:
               - name: file1.jpg
                 exists: true
@@ -9211,7 +9084,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/versions/{versionId}/attachments/{filename}:
     get:
       tags:
-      - Submissions
+      - Submission Versions
       summary: Downloading a Version's Attachment
       description: It is important to note that this endpoint returns whatever is
         _currently_ uploaded against the _particular version_ of the _Submission_.
@@ -9295,7 +9168,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/diffs:
     get:
       tags:
-      - Submissions
+      - Submission Versions
       summary: Getting changes between Versions
       description: This returns the changes, or edits, between different versions
         of a Submission. These changes are returned in an object that is indexed by
@@ -9335,20 +9208,15 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/SubmissionDiffValue'
         403:
           description: Forbidden
           content:
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -9356,7 +9224,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions:
     get:
       tags:
-      - Submissions
+      - Draft Submissions
       summary: Listing all Submissions on a Draft Form
       description: Identical to [the non-Draft version](/reference/submissions/submissions/listing-all-submissions-on-a-form)
         of this endpoint.
@@ -9381,11 +9249,15 @@ paths:
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
-            application/json; extended:
+            application/json:
               schema:
-                type: array
-                items:
-                  type: object
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/Submission'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/ExtendedSubmission'
               example:
               - instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                 submitterId: 23
@@ -9409,41 +9281,19 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
         403:
           description: Forbidden
           content:
-            application/json; extended:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
                   action.
     post:
       tags:
-      - Submissions
+      - Draft Submissions
       summary: Creating a Submission
       description: Identical to [the non-Draft version](/reference/submissions/submissions/creating-a-submission)
         of this endpoint.
@@ -9621,7 +9471,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions.csv.zip:
     get:
       tags:
-      - Submissions
+      - Draft Submissions
       summary: Exporting Form Submissions to CSV
       description: Identical to [the non-Draft version](/reference/submissions/submissions/exporting-form-submissions-to-csv)
         of this endpoint.
@@ -9689,7 +9539,7 @@ paths:
                   action.
     post:
       tags:
-      - Submissions
+      - Draft Submissions
       summary: Exporting Form Submissions to CSV via POST
       description: Identical to [the non-Draft version](/reference/submissions/submissions/exporting-form-submissions-to-csv-via-post)
         of this endpoint.
@@ -9758,7 +9608,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions/keys:
     get:
       tags:
-      - Submissions
+      - Draft Submissions
       summary: Listing Encryption Keys
       description: Identical to [the non-Draft version](/reference/submissions/submissions/listing-encryption-keys)
         of this endpoint.
@@ -9786,20 +9636,13 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  $ref: '#/components/schemas/Key'
         403:
           description: Forbidden
           content:
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -9807,7 +9650,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions/{instanceId}:
     get:
       tags:
-      - Submissions
+      - Draft Submissions
       summary: Getting Submission details
       description: Identical to [the non-Draft version](/reference/submissions/submissions/getting-submission-metadata)
         of this endpoint.
@@ -10124,7 +9967,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions/{instanceId}.xml:
     get:
       tags:
-      - Submissions
+      - Draft Submissions
       summary: Retrieving Submission XML
       description: Identical to [the non-Draft version](/reference/submissions/submissions/retrieving-submission-xml)
         of this endpoint.
@@ -10165,7 +10008,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions/{instanceId}/attachments:
     get:
       tags:
-      - Submissions
+      - Draft Submissions
       summary: Listing expected Submission Attachments
       description: Identical to [the non-Draft version](/reference/submissions/attachments/listing-expected-submission-attachments)
         of this endpoint.
@@ -10200,7 +10043,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
+                  $ref: "#/components/schemas/SubmissionAttachment"
               example:
               - name: file1.jpg
                 exists: true
@@ -10213,14 +10056,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: "#/components/schemas/Error403"
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -10228,7 +10064,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions/{instanceId}/attachments/{filename}:
     get:
       tags:
-      - Submissions
+      - Draft Submissions
       summary: Downloading an Attachment
       description: Identical to [the non-Draft version](/reference/submissions/attachments/downloading-an-attachment)
         of this endpoint.
@@ -10302,7 +10138,7 @@ paths:
                   action.
     post:
       tags:
-      - Submissions
+      - Draft Submissions
       summary: Uploading an Attachment
       description: Identical to [the non-Draft version](/reference/submissions/attachments/uploading-an-attachment)
         of this endpoint.
@@ -10369,7 +10205,7 @@ paths:
                   action.
     delete:
       tags:
-      - Submissions
+      - Draft Submissions
       summary: Clearing a Submission Attachment
       description: Identical to [the non-Draft version](/reference/submissions/attachments/clearing-a-submission-attachment)
         of this endpoint.
@@ -10437,7 +10273,7 @@ paths:
   /projects/{projectId}/datasets:
     get:
       tags:
-      - Datasets
+      - Dataset Management
       summary: Datasets
       description: The Dataset listing endpoint returns all published Datasets in
         a Project. If a Draft Form defines a new Dataset, that Dataset will not be
@@ -10494,7 +10330,7 @@ paths:
   /projects/{projectId}/datasets/{name}:
     get:
       tags:
-      - Datasets
+      - Dataset Management
       summary: Dataset Metadata
       description: Returns the metadata of a Dataset including properties and forms
         that create and consume the Dataset.
@@ -10579,7 +10415,7 @@ paths:
   /projects/{projectId}/datasets/{name}/entities.csv:
     get:
       tags:
-      - Datasets
+      - Dataset Management
       summary: Download Dataset
       description: |-
         Datasets (collections of Entities) can be used as Attachments in other Forms, but they can also be downloaded directly as a CSV file. The CSV format matches what is expected for a [select question](https://docs.getodk.org/form-datasets/#building-selects-from-csv-files) with columns for `name`, `label,` and properties. In the case of Datasets, the `name` column is the Entity's UUID, the `label` column is the human-readable Entity label populated in the Submission, and the properties are the full set of Dataset Properties for that Dataset. If any Property for an given Entity is blank (e.g. it was not captured by that Form or was left blank), that field of the CSV is blank.
@@ -10887,7 +10723,7 @@ paths:
   /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/formList:
     get:
       tags:
-      - OpenRosa Endpoints
+      - Draft Testing Endpoints
       summary: OpenRosa Form Listing API
       description: Identical to the [non-Draft version](/reference/openrosa-endpoints/openrosa-form-listing-api/openrosa-form-listing-api),
         but will only list the Draft Form to be tested.
@@ -10944,7 +10780,7 @@ paths:
   /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/submission:
     post:
       tags:
-      - OpenRosa Endpoints
+      - Draft Testing Endpoints
       summary: OpenRosa Form Submission API
       description: Identical to the [non-Draft version](/reference/openrosa-endpoints/openrosa-form-submission-api/openrosa-form-submission-api),
         but will only submit to (and allow submissions to) the Draft Form to be tested.
@@ -11030,7 +10866,7 @@ paths:
   /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/manifest:
     get:
       tags:
-      - OpenRosa Endpoints
+      - Draft Testing Endpoints
       summary: OpenRosa Form Manifest API
       description: Identical to the [non-Draft version](/reference/openrosa-endpoints/openrosa-form-manifest-api/openrosa-form-manifest-api).
       operationId: OpenRosa Form Manifest API (Draft Form)
@@ -11095,7 +10931,7 @@ paths:
   /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/attachments/{filename}:
     get:
       tags:
-      - OpenRosa Endpoints
+      - Draft Testing Endpoints
       summary: Downloading a Form Attachment
       description: Identical to the [non-Draft version](/reference/forms/individual-form/downloading-a-form-attachment).
       operationId: Downloading a Form Attachment (Draft Form)
@@ -11169,7 +11005,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}.svc:
     get:
       tags:
-      - OData Endpoints
+      - OData Form Service
       summary: Service Document
       description: |-
         The Service Document is essentially the index of all available documents. From this document, you will find links to all other available information in this OData service. In particular, you will find the Metadata Document, as well as a data document for each table defined by the `Form`.
@@ -11324,7 +11160,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}.svc/$metadata:
     get:
       tags:
-      - OData Endpoints
+      - OData Form Service
       summary: Metadata Document
       description: |-
         The Metadata Document describes, in [EDMX CSDL](http://docs.oasis-open.org/odata/odata-csdl-xml/v4.01/odata-csdl-xml-v4.01.html), the schema of all the data you can retrieve from the OData Form Service in question (essentially, this is the XForms form schema translated into the OData format). EDMX/CSDL is very similar in concept to UML: there are objects, they have properties, and some of those properties are relationships to other objects.
@@ -11474,7 +11310,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}.svc/{table}:
     get:
       tags:
-      - OData Endpoints
+      - OData Form Service
       summary: Data Document
       description: |-
         The data documents are the straightforward JSON representation of each table of `Submission` data. They follow the [corresponding specification](http://docs.oasis-open.org/odata/odata-json-format/v4.01/odata-json-format-v4.01.html), but apart from the representation of geospatial data as GeoJSON rather than the ODK proprietary format, the output here should not be at all surprising. If you are looking for JSON output of Submission data, this is the best place to look.
@@ -11694,7 +11530,7 @@ paths:
   /#/dl/projects{projectId}/forms/{xmlFormId}/submissions/{instanceId}/attachments/{filename}:
     get:
       tags:
-      - OData Endpoints
+      - OData Form Service
       summary: Data Download Path
       description: |-
         _(introduced: version 1.2)_
@@ -11747,7 +11583,7 @@ paths:
   /v1/projects/{projectId}/datasets/{name}.svc:
     get:
       tags:
-      - OData Endpoints
+      - OData Dataset Service
       summary: Service Document
       description: |-
         The Service Document provides a link to the main source of information in this OData service: the list of `Entities` in this `Dataset`, as well as the Metadata Document describing the schema of this information.
@@ -11810,7 +11646,7 @@ paths:
   /v1/projects/{projectId}/datasets/{name}.svc/$metadata:
     get:
       tags:
-      - OData Endpoints
+      - OData Dataset Service
       summary: Metadata Document
       description: The Metadata Document describes, in [EDMX CSDL](http://docs.oasis-open.org/odata/odata-csdl-xml/v4.01/odata-csdl-xml-v4.01.html),
         the schema of all the data you can retrieve from the OData Dataset Service
@@ -11964,7 +11800,7 @@ paths:
   /v1/projects/{projectId}/datasets/{name}.svc/Entities:
     get:
       tags:
-      - OData Endpoints
+      - OData Dataset Service
       summary: Data Document
       description: |-
         A data document is the straightforward JSON representation of all the `Entities` in a `Dataset`.
@@ -12101,7 +11937,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft.svc:
     get:
       tags:
-      - OData Endpoints
+      - Draft Testing
       summary: Service Document
       description: Identical to [the non-Draft version](/reference/odata-endpoints/odata-form-service/service-document)
         of this endpoint.
@@ -12252,7 +12088,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft.svc/$metadata:
     get:
       tags:
-      - OData Endpoints
+      - Draft Testing
       summary: Metadata Document
       description: Identical to [the non-Draft version](/reference/odata-endpoints/odata-form-service/metadata-document)
         of this endpoint.
@@ -12390,7 +12226,7 @@ paths:
   /v1/projects/{projectId}/forms/{xmlFormId}/draft.svc/{table}:
     get:
       tags:
-      - OData Endpoints
+      - Draft Testing
       summary: Data Document
       description: Identical to [the non-Draft version](/reference/odata-endpoints/odata-form-service/data-document)
         of this endpoint.
@@ -12581,7 +12417,7 @@ paths:
   /v1/config/analytics:
     get:
       tags:
-      - System Endpoints
+      - Usage Reporting Configuration
       summary: Getting the current configuration
       description: If the Usage Reporting configuration is not set, this endpoint
         will return a `404`. Once the configuration is set, this endpoint will indicate
@@ -12668,7 +12504,7 @@ paths:
                 message: Could not find the resource you were looking for.
     post:
       tags:
-      - System Endpoints
+      - Usage Reporting Configuration
       summary: Setting a new configuration
       description: |-
         An Administrator can use this endpoint to choose whether the server will share anonymous usage data with the Central team. This configuration affects the entire server. Until the Usage Reporting configuration is set, Administrators will see a message on the Central administration website that provides further information.
@@ -12765,7 +12601,7 @@ paths:
       x-codegen-request-body-name: body
     delete:
       tags:
-      - System Endpoints
+      - Usage Reporting Configuration
       summary: Unsetting the current configuration
       description: If the Usage Reporting configuration is unset, Administrators will
         once again see a message on the the Central administration website.
@@ -12804,7 +12640,7 @@ paths:
   /v1/analytics/preview:
     get:
       tags:
-      - System Endpoints
+      - Usage Report Preview
       summary: Getting the Usage Report preview
       description: An Administrator can use this endpoint to preview the metrics being
         sent. The preview is computed on the fly and represents what the report would
@@ -12835,7 +12671,7 @@ paths:
   /v1/audits:
     get:
       tags:
-      - System Endpoints
+      - Server Audit Logs
       summary: Getting Audit Log Entries
       description: |-
         This resource allows access to those log entries, with some paging and filtering options. These are provided by querystring parameters: `action` allows filtering by the action types listed above, `start` and `end` allow filtering by log timestamp (see below), and `limit` and `offset` control paging. If no paging parameters are given, the server will attempt to return every audit log entry that it has.
@@ -12883,11 +12719,15 @@ paths:
         200:
           description: OK
           content:
-            application/json; extended:
+            application/json:
               schema:
-                type: array
-                items:
-                  type: object
+                oneOf:
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/Audit'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/ExtendedAudit'
               example:
               - actorId: 42
                 action: form.create
@@ -12900,70 +12740,21 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
         400:
           description: Bad Request
           content:
-            application/json; extended:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  details:
-                    type: object
-                    properties: {}
-                    description: a subobject that contains programmatically readable
-                      details about this error
-                  message:
-                    type: string
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  details:
-                    type: object
-                    properties: {}
-                    description: a subobject that contains programmatically readable
-                      details about this error
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error400'
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
         403:
           description: Forbidden
           content:
-            application/json; extended:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
+                $ref: '#/components/schemas/Error403'
               example:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
@@ -12971,7 +12762,7 @@ paths:
   /v1/backup:
     post:
       tags:
-      - System Endpoints
+      - Direct Backup
       summary: Using an Encryption Passphrase
       description: |-
         Use the `POST` verb to start a direct download ad-hoc backup. You will want to supply a `passphrase` with your chosen encryption passphrase. It is possible to omit this, in which case the backup will still be encrypted, but it will decrypt given an empty passphrase.
@@ -13038,7 +12829,7 @@ components:
           type: number
           example: 115.0
         type:
-          $ref: '#/components/schemas/ActorType'
+          $ref: '#/components/schemas/ActorType' 
         updatedAt:
           type: string
           description: ISO date format
@@ -13049,11 +12840,186 @@ components:
           example: 2018-04-18T23:42:11.406Z
     ActorType:
       type: string
+      description: The type of actor
       enum:
       - user
       - field_key
       - public_link
       - singleUse
+    User: 
+      allOf: 
+        - $ref: '#/components/schemas/Actor'
+        - type: object
+          properties:
+            email:
+              type: string
+              description: The email address of the user
+              example:
+    AppUser:
+      allOf: 
+        - $ref: '#/components/schemas/Actor'
+        - type: object
+          properties:
+            token:
+              type: string
+              description: If present, this is the Token that can be used to authenticate a request as this `App User`. If not present, this `App User`'s access has been revoked.
+              example: d1!E2GVHgpr4h9bpxxtqUJ7EVJ1Q$Dusm2RBXg8XyVJMCBCbvyE8cGacxUx3bcUT
+            projectId: 
+              type: number
+              description: The ID of the `Project` that this `App User` is bound to.
+              example: 1
+    ExtendedAppUser:
+      allOf: 
+        - $ref: '#/components/schemas/AppUser'
+        - type: object
+          properties:
+            createdBy:
+              allOf:
+                - $ref: '#/components/schemas/Actor'
+              description: The `Actor` that created this `App User`
+            lastUsed:
+              type: string
+              description: ISO date format. The last time this `App User` was used to authenticate a request.
+              example: 2018-04-14T08:34:21.633Z
+    Role:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 4
+          description: The numerical ID of the Role.
+        name:
+          type: string
+          example: Project Manager
+          description: The human-readable name for the Role.
+        system:
+          type: string
+          example: manager
+          description: The system name of the Role. Roles that have system names may not be modified.
+        verbs:
+          type: array
+          items:
+            type: string
+          example:
+          - project.update
+          - project.delete
+          description: The array of string verbs this Role confers.
+        createdAt:
+          type: string
+          description: ISO date format
+          example: 2018-04-18T23:42:11.406Z
+        updatedAt:
+          type: string
+          description: ISO date format
+          example: 2018-09-18T23:42:11.406Z
+    Assignment:
+      type: object
+      properties:
+        actorId: 
+          type: number
+          example: 42
+          description: The numeric Actor ID being assigned.
+        roleId:
+          type: number
+          example: 4
+          description: The numeric Role ID being assigned.
+    ExtendedAssignment:
+      type: object
+      properties:
+        actor:
+          allOf:
+            - $ref: '#/components/schemas/Actor' 
+          description: The full Actor data for this assignment.
+        roleId:
+          type: number
+          example: 4
+          description: The numeric Role ID being assigned.
+    FormSummaryAssignment:
+      type: object
+      required:
+        - actorId
+        - xmlFormId
+        - roleId
+      properties:
+        actorId:
+          type: number
+          example: 42
+          description: The numeric Actor ID being assigned.
+        xmlFormId:
+          type: string
+          example: simple
+          description: The `id` of the assigned form as given in its XForms XML definition
+        roleId:
+          type: number
+          example: 4
+          description: The numeric Role ID being assigned.
+    ExtendedFormSummaryAssignment:
+      type: object
+      required:
+        - actor
+        - xmlFormId
+        - roleId
+      properties:
+        actor:
+          $ref: '#/components/schemas/Actor'
+          description: The full Actor data for this assignment.
+        xmlFormId:
+          type: string
+          example: simple
+          description: The `id` of the assigned form as given in its XForms XML definition
+        roleId:
+          type: number
+          example: 4
+          description: The numeric Role ID being assigned.
+    Project:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: number
+          example: 1
+          description: The numerical ID of the Project.
+        name:
+          type: string
+          example: Default Project
+          description: The name of the Project.
+        description:
+          type: string
+          example: Description of this Project to show on Central.
+          description: The description of the Project, which is rendered as Markdown on Frontend.
+        keyId:
+          type: number
+          example: 3
+          description: If managed encryption is enabled on the project, the numeric ID of the encryption key as tracked by Central is given here.
+        archived:
+          type: boolean
+          description: Whether the Project is archived or not. `null` is equivalent to `false`. All this does is sort the Project to the bottom of the list and disable management features in the web management application.
+    ExtendedProject:
+      allOf:
+        - $ref: '#/components/schemas/Project'
+        - type: object
+          required:
+            - appUsers
+            - forms
+            - datasets
+          properties:
+            appUsers:
+              type: number
+              example: 4
+              description: The number of App Users created within this Project.
+            forms:
+              type: number
+              example: 7
+              description: The number of forms within this Project.
+            lastSubmission:
+              type: string
+              example: '2018-04-18T03:04:51.695Z'
+              description: ISO date format. The timestamp of the most recent submission to any form in this project, if any.
+            datasets:
+              type: number
+              example: 2
+              description: The number of Datasets within this Project.
     Form:
       required:
       - createdAt
@@ -13115,6 +13081,85 @@ components:
           type: string
           description: ISO date format
           example: 2018-03-21T12:45:02.312Z
+    ExtendedForm:
+      allOf:
+        - $ref: '#/components/schemas/Form'
+        - type: object
+          required:
+            - submissions
+            - reviewStates
+            - entityRelated
+          properties:
+            submissions:
+              type: number
+              example: 10
+              description: The number of `Submission`s that have been submitted to this `Form`.
+            reviewStates:
+              $ref: '#/components/schemas/ReviewStateCounts'
+              description: Additional counts of the number of submissions in various states of review.
+            lastSubmission:
+              type: string
+              example: '2018-04-18T03:04:51.695Z'
+              description: ISO date format. The timestamp of the most recent submission, if any.
+            createdBy:
+              $ref: '#/components/schemas/Actor'
+              description: The full information of the Actor who created this Form.
+            excelContentType:
+              type: string
+              description: If the Form was created by uploading an Excel file, this field contains the MIME type of that file.
+            entityRelated:
+              type: boolean
+              description: True only if this Form is related to a Dataset. In v2022.3, this means the Form's Submissions create Entities in a Dataset. In a future version, Submissions will also be able to update existing Entities.
+    ExtendedFormVersion:
+      allOf:
+        - $ref: '#/components/schemas/Form'
+        - type: object
+          properties:
+            publishedBy:
+              $ref: '#/components/schemas/Actor'
+              description: The full information of the Actor who published this version of the Form.
+            excelContentType:
+              type: string
+              description: If the Form was created by uploading an Excel file, this field contains the MIME type of that file.
+    FormAttachment:
+      type: object
+      required:
+        - name
+        - type
+        - exists
+        - blobExists
+        - datasetExists
+      properties:
+        name:
+          type: string
+          example: myfile.mp3
+          description: The name of the file as specified in the XForm.
+        type:
+          $ref: '#/components/schemas/FormAttachmentType'
+          description: The expected type of file as specified in the XForm.
+        exists:
+          type: boolean
+          example: true
+          description: True if the server has the file or the Attachment is linked to a Dataset, otherwise false.
+        blobExists:
+          type: boolean
+          example: true
+          description: Whether the server has the file or not.
+        datasetExists:
+          type: boolean
+          example: true
+          description: Whether attachment is linked to a Dataset.
+        updatedAt:
+          type: string
+          example: '2018-03-21T12:45:02.312Z'
+          description: ISO date format. The last time this file's binary content was set (POST) or cleared (DELETE).
+    FormAttachmentType:
+      type: string
+      enum:
+        - image
+        - audio
+        - video
+        - file  
     FormState:
       type: string
       enum:
@@ -13185,3 +13230,431 @@ components:
           type: boolean
           description: true for linking Dataset and false for unlinking Dataset.
           example: true
+    PublicLink:
+      allOf:
+        - $ref: '#/components/schemas/Actor'
+        - type: object
+          properties:
+            token:
+              type: string
+              example: d1!E2GVHgpr4h9bpxxtqUJ7EVJ1Q$Dusm2RBXg8XyVJMCBCbvyE8cGacxUx3bcUT
+              description: If present, this is the Token to include as the `st` query parameter for this `Public Link`. If not present, this `Public Link` has been revoked.
+            once:
+              type: boolean
+              description: If set to `true`, an Enketo [single submission survey](https://blog.enketo.org/single-submission-surveys/) will be created instead of a standard one, limiting respondents to a single submission each.
+    ExtendedPublicLink:
+      allOf:
+        - $ref: '#/components/schemas/PublicLink'
+        - type: object
+          required:
+            - createdBy
+          properties:
+            createdBy:
+              $ref: '#/components/schemas/Actor'
+              description: The full details about the `Actor` that created this `Public Link`.
+    Key:
+      type: object
+      required:
+        - id
+        - public
+      properties:
+        id:
+          type: number
+          example: 1
+          description: The numerical ID of the Key.
+        public:
+          type: string
+          example: bcFeKDF3Sg8W91Uf5uxaIlM2uK0cUN9tBSGoASbC4LeIPqx65+6zmjbgUnIyiLzIjrx4CAaf9Y9LG7TAu6wKPqfbH6ZAkJTFSfjLNovbKhpOQcmO5VZGGay6yvXrX1TFW6C6RLITy74erxfUAStdtpP4nraCYqQYqn5zD4/1OmgweJt5vzGXW2ch7lrROEQhXB9lK+bjEeWx8TFW/+6ha/oRLnl6a2RBRL6mhwy3PoByNTKndB2MP4TygCJ/Ini4ivk74iSqVnoeuNJR/xUcU+kaIpZEIjxpAS2VECJU9fZvS5Gt84e5wl/t7bUKu+dlh/cUgHfk6+6bwzqGQYOe5A==
+          description: The base64-encoded public key, with PEM envelope removed.
+        managed:
+          type: boolean
+          example: true
+          description: If true, this is a key generated by Project managed encryption. If not, this key is self-supplied.
+        hint:
+          type: string
+          example: it was a secret
+          description: The hint, if given, related to a managed encryption key.
+    DatasetDiff:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: people
+          description: The name of the Dataset.
+        properties:
+          type: array
+          items: {}
+          description: All properties of the Dataset.
+    DraftDatasetDiff:
+      type: object
+      required:
+        - name
+        - isNew
+      properties:
+        name:
+          type: string
+          example: people
+          description: The name of the Dataset.
+        isNew:
+          type: boolean
+          example: true
+          description: Whether or not this Dataset is new (will be created by publishing the Draft Form).
+        properties:
+          type: array
+          items: {}
+          description: All properties of the Dataset.
+    Property:
+      type: object
+      required:
+        - name
+        - inForm
+      properties:
+        name:
+          type: string
+          example: first_name
+          description: The name of the Property.
+        inForm:
+          type: boolean
+          example: true
+          description: Whether or not this Property is affected by the Form.
+    DraftProperty:
+      type: object
+      required:
+        - name
+        - inForm
+        - isNew
+      properties:
+        name:
+          type: string
+          example: first_name
+          description: The name of the Property.
+        inForm:
+          type: boolean
+          example: true
+          description: Whether or not this Property is affected by the form.
+        isNew:
+          type: boolean
+          example: true
+          description: Whether or not this Property is new (will be created by publishing the Draft Form).
+    PropertyDetailed:
+      type: object
+      required:
+        - name
+        - publishedAt
+      properties:
+        name:
+          type: string
+          example: first_name
+          description: The name of the Property.
+        publishedAt:
+          type: string
+          example: '2018-01-21T00:04:11.153Z'
+          description: Publishing timestamp of the form that defined this property for the first time.
+        forms:
+          type: array
+          items: {}
+          description: List of forms that create the property
+    Submission:
+      type: object
+      required:
+        - instanceId
+        - submitterId
+        - createdAt
+      properties:
+        instanceId:
+          type: string
+          example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
+          description: The `instanceId` of the `Submission`, given by the Submission XML.
+        submitterId:
+          type: number
+          example: 23
+          description: The ID of the `Actor` (`App User`, `User`, or `Public Link`) that originally submitted this `Submission`.
+        deviceId:
+          type: string
+          example: imei:123456
+          description: The self-identified `deviceId` of the device that collected the data, sent by it upon submission to the server. The initial submission `deviceId` will be returned here.
+        userAgent:
+          type: string
+          example: Enketo/3.0.4
+          description: The self-identified `userAgent` of the device that collected the data, sent by it upon submission to the server. The initial submission `userAgent` will be returned here.
+        reviewState:
+          allOf:
+            - $ref: '#/components/schemas/SubmissionReviewState'
+            - type: object
+              properties: {}
+          description: The current review state of the submission.
+        createdAt:
+          type: string
+          example: '2018-01-19T23:58:03.395Z'
+          description: ISO date format. The time that the server received the Submission.
+        updatedAt:
+          type: string
+          example: '2018-03-21T12:45:02.312Z'
+          description: ISO date format. `null` when the Submission is first created, then updated when the Submission's XML data or metadata is updated.
+        currentVersion:
+          $ref: '#/components/schemas/SubmissionVersion'
+          description: The current version of the `Submission`.
+    SubmissionVersion:
+      type: object
+      required:
+        - instanceId
+        - submitterId
+        - createdAt
+        - current
+      properties:
+        instanceId:
+          type: string
+          example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
+          description: The `instanceId` of the `Submission` version, given by the Submission XML.
+        instanceName:
+          type: string
+          example: village third house
+          description: The `instanceName`, if any, given by the Submission XML in the metadata section.
+        submitterId:
+          type: number
+          example: 23
+          description: The ID of the `Actor` (`App User`, `User`, or `Public Link`) that submitted this `Submission` version.
+        deviceId:
+          type: string
+          example: imei:123456
+          description: The self-identified `deviceId` of the device that submitted the `Submission` version.
+        userAgent:
+          type: string
+          example: Enketo/3.0.4
+          description: The self-identified `userAgent` of the device that submitted the `Submission` version.
+        createdAt:
+          type: string
+          example: '2018-01-19T23:58:03.395Z'
+          description: ISO date format. The time that the server received the `Submission` version.
+        current:
+          type: boolean
+          example: true
+          description: Whether the version is current or not.
+    ExtendedSubmission:
+      allOf:
+        - $ref: '#/components/schemas/Submission'
+        - type: object
+          required:
+            - submitter
+          properties:
+            submitter:
+              $ref: '#/components/schemas/Actor'
+              description: The full details of the `Actor` that submitted this `Submission`.
+    ExtendedSubmissionVersion:
+      allOf:
+        - $ref: '#/components/schemas/SubmissionVersion'
+        - type: object
+          required:
+            - submitter
+          properties:
+            submitter:
+              $ref: '#/components/schemas/Actor'
+              description: The full details of the `Actor` that submitted this version of the `Submission`.
+            formVersion:
+              type: string
+              example: '1.0'
+              description: The version of the form the submission version was created against. Only returned with specific Submission Version requests.
+    ReviewStateCounts:
+      type: object
+      required:
+        - received
+        - hasIssues
+        - edited
+      properties:
+        received:
+          type: number
+          example: 3
+          description: The number of submissions receieved with no other review state.
+        hasIssues:
+          type: number
+          example: 2
+          description: The number of submissions marked as having issues.
+        edited:
+          type: number
+          example: 1
+          description: The number of edited submissions.
+    SubmissionAttachment:
+      type: object
+      required:
+        - name
+        - exists
+      properties:
+        name:
+          type: string
+          example: myfile.mp3
+          description: The name of the file as specified in the Submission XML.
+        exists:
+          type: boolean
+          example: true
+          description: Whether the server has the file or not.
+    SubmissionReviewState:
+      type: string
+      enum:
+        - 'null'
+        - edited
+        - hasIssues
+        - rejected
+        - approved
+    SubmissionDiffValue:
+      type: object
+      properties:
+        new:
+          type: string
+          description: The new value of this node, which can either be a simple string, or JSON string representing a larger structural change to the Submission XML. It can also be null if this field no longer exists in the Submission.
+        old:
+          type: string
+          description: The old value of this node, with similar properties to `new`. It can be null if this field did not exist previously.
+        path:
+          type: array
+          items: {}
+          description: An array representing the path (XPath) in the Submission tree for this node. It does not include the outermost path `data`. For elements that are part of repeat groups, the path element is the node name and the index (starting at 0), e.g. ['child', 2] is the third child.
+    Audit:
+      type: object
+      required:
+        - action
+        - loggedAt
+      properties:
+        actorId:
+          type: number
+          example: 42
+          description: The ID of the actor, if any, that initiated the action.
+        action:
+          type: string
+          example: form.create
+          description: The action that was taken.
+        acteeId:
+          type: string
+          example: 85cb9aff-005e-4edd-9739-dc9c1a829c44
+          description: The ID of the permissioning object against which the action was taken.
+        details:
+          type: object
+          properties: {}
+          description: Additional details about the action that vary according to the type of action.
+        loggedAt:
+          type: string
+          example: '2018-04-18T23:19:14.802Z'
+          description: ISO date format
+    ExtendedAudit:
+      allOf:
+        - $ref: '#/components/schemas/Audit'
+        - type: object
+          properties:
+            actor:
+              $ref: '#/components/schemas/Actor'
+              description: The details of the actor given by `actorId`.
+            actee:
+              type: object
+              properties: {}
+              description: The details of the actee given by `acteeId`. Depending on the action type, this could be a number of object types, including an `Actor`, a `Project`, or a `Form`.
+    Comment:
+      type: object
+      required:
+        - body
+        - actorId
+      properties:
+        body:
+          type: string
+          example: this is my comment
+          description: The text of the comment.
+        actorId:
+          type: number
+          example: 42
+          description: The ID of the Actor that made the comment.
+    ExtendedComment:
+      allOf:
+        - $ref: '#/components/schemas/Comment'
+        - type: object
+          properties:
+            actor:
+              $ref: '#/components/schemas/Actor'
+              description: The details of the actor given by `actorId`.
+    Success:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Success
+    Error400:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          example: '400'
+        details:
+          type: object
+          properties: {}
+          description: a subobject that contains programmatically readable details about this error
+        message:
+          type: string
+          example: Could not parse the given data (2 chars) as json.
+    Error401:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          example: '401.2'
+        message:
+          type: string
+          example: Could not authenticate with the provided credentials.
+    Error403:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          example: '403.1'
+        message:
+          type: string
+          example: The authenticated actor does not have rights to perform that action.
+    Error404:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          example: '404.1'
+        message:
+          type: string
+          example: Could not find the resource you were looking for.
+    Error406:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          example: '406.1'
+        message:
+          type: string
+          example: 'Requested format not acceptable; this resource allows: (application/json, json).'
+    Error409:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          example: '409.1'
+        message:
+          type: string
+          example: A resource already exists with id value(s) of 1.
+    Error501:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          example: '501.1'
+        message:
+          type: string
+          example: The requested feature $unsupported is not supported by this server.
+  

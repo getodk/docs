@@ -1,4 +1,4 @@
-.. auto generated file - DO NOT MODIFY
+.. auto generated file - DO NOT MODIFY 
 
 Encryption
 =======================================================================================================================
@@ -22,4 +22,5 @@ To list all the encryption keys associated with the submissions on a given form,
 To perform decryption, you can `GET or POST /projects/…/forms/…/submissions.csv.zip </reference/submissions/submissions/exporting-form-submissions-to-csv>`__ with extra parameters to provide the necessary passphrases. If you are building a browser-based application, it is recommended that you ``POST``\  rather than ``GET``\ : please see the notes in the linked sections for additional details.
 
 Note that the OData JSON API does not (presently) decrypt data. Any encrypted submissions will be returned only with basic metadata, like submission date and user.
+
 

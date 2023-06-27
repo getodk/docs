@@ -1,6 +1,6 @@
-.. auto generated file - DO NOT MODIFY
+.. auto generated file - DO NOT MODIFY 
 
-Datasets
+Dataset Management
 =======================================================================================================================
 
 *(introduced: version 2022.3)*\ 
@@ -13,8 +13,7 @@ See the `ODK XForms specification <https://getodk.github.io/xforms-spec>`__ for 
 
 Once a Dataset exists, it can be linked to another Form as an Attachment and served as an automatically-updating CSV.
 
-Related APIs:
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Related APIs:**\ 
 
 - `Implicit creation of Datasets via Forms <#reference/forms/forms/creating-a-new-form>`__
 
@@ -23,7 +22,7 @@ Related APIs:
 - `Get a Form's Related Datasets <#reference/forms/related-datasets>`__
 
 Datasets
------------------------------------------------------------------------------------------------------------------------
+------------------
 
 **GET /projects/{projectId}/datasets**
 
@@ -60,13 +59,7 @@ The Dataset listing endpoint returns all published Datasets in a Project. If a D
 
       .. code-block::
 
-          [
-            {
-              "name": "people",
-              "createdAt": "2018-01-19T23:58:03.395Z",
-              "projectId": 1.0
-            }
-          ]
+          "null"
 
     .. tab-item:: Schema
 
@@ -200,20 +193,19 @@ The Dataset listing endpoint returns all published Datasets in a Project. If a D
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Dataset Metadata
------------------------------------------------------------------------------------------------------------------------
+--------------------------
 
 **GET /projects/{projectId}/datasets/{name}**
 
@@ -326,6 +318,7 @@ Returns the metadata of a Dataset including properties and forms that create and
                   
                     Forms that consume data from the Dataset
 
+                    Example: ``null``
                     
     
 
@@ -337,6 +330,7 @@ Returns the metadata of a Dataset including properties and forms that create and
                   
                     All properties of the Dataset
 
+                    Example: ``null``
                     
     
 
@@ -380,20 +374,19 @@ Returns the metadata of a Dataset including properties and forms that create and
 
                   - string
                   
-                    None
+                    
 
                 * - message
 
 
                   - string
                   
-                    None
+                    
 
               
       
-  
 Download Dataset
------------------------------------------------------------------------------------------------------------------------
+--------------------------
 
 **GET /projects/{projectId}/datasets/{name}/entities.csv**
 
@@ -487,4 +480,4 @@ Note that as of Version 2022.3 we do not guarantee the order of the Dataset Prop
     
               
       
-  
+

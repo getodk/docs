@@ -8,7 +8,7 @@ ODK Central API
 You can read on for a brief overview of the main concepts and how they fit together, or jump to one of the sections for a more in-depth description.
 
 API Overview
-------------------------------------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To use the API to manage your data collection campaigns, you will need to **authenticate**\  with it, so it knows who you are and what you are allowed to do. We provide multiple methods to authenticate with the API, as well as different models for managing the identities and permissions in your system. Human staff users that manage data collection campaigns are ``User``\ s, and mobile devices are granted access via ``App User``\ s, and each of these account types have their own way of authenticating. But, these concepts both boil down to ``Actor``\ s, which are how the API actually thinks about authentication and permissioning.
 
@@ -41,10 +41,9 @@ Finally, **system information and configuration**\  is available via a set of sp
   central-api-authentication
   central-api-accounts-and-users
   central-api-project-management
-  central-api-forms
-  central-api-submissions
-  central-api-datasets
-  central-api-entities
+  central-api-form-management
+  central-api-submission-management
+  central-api-dataset-management
   central-api-openrosa-endpoints
   central-api-odata-endpoints
   central-api-system-endpoints
