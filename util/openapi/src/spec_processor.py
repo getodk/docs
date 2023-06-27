@@ -65,7 +65,6 @@ class SpecProcessor:
 
       return files
 
-
     def getRequest(self, operation):
         result = {}
 
@@ -99,7 +98,6 @@ class SpecProcessor:
             }
 
         return result
-
 
     def getResponses(self, operation):
         result = []
@@ -143,83 +141,6 @@ class SpecProcessor:
         result[-1]['last'] = True
         return result
         
-
-    # in case of 'oneOf' it is returning a list otherwise dict
-    def resolveSchema2(self, schema):
-      if schema == None:
-          return {
-            'hasItems': False
-          }
-      
-      if 'oneOf' in schema:
-          result = []
-          for s in schema['oneOf']:
-            result.append(self.resolveSchema(s))
-          return result
-
-      if 'allOf' in schema:
-          result = {
-            'name': '',
-            'type': 'object',
-            'description': rst_helper.md2rs(schema.get('description')),
-            'example': schema.get('example'),
-            'hasItems': False,
-            'items': []
-          }
-          for s in schema['allOf']:
-            result['items'] += self.resolveSchema(s)['items']
-
-          if len(result['items'])  > 0:
-              result['hasItems'] = True
-          return result
-
-      schema_type = schema.get('type', 'object')
-
-      if schema_type == 'array':
-          if 'items' in schema:
-            items=self.resolveSchema(schema['items'])
-          else:
-            items=[]
-
-          return {
-              'type': 'array',
-              'isArray': True,
-              'name': schema.get('name'),
-              'description': rst_helper.md2rs(schema.get('description')),
-              'example': schema.get('example'),
-              'hasItems': len(items) > 0,
-              'items': items
-          }
-
-      if schema_type == 'object':
-          if '$ref' in schema:
-              return self.resolveSchema(self.lookupSchema(schema.get('$ref').replace('#/components/schemas/','')))
-
-          results = []
-          for name, prop in schema.get('properties', {}).items():
-              prop['name'] = name
-              result = self.resolveSchema(prop)
-              results.append(result)
-              
-          return {
-            'name': schema.get('name'),
-            'type': schema.get('type'),
-            'description': rst_helper.md2rs(schema.get('description')),
-            'example': schema.get('example'),
-            'hasItems': len(results) > 0,
-            'items': results
-          }
-      
-      # Primitives
-      return {
-          'name': schema.get('name'),
-          'type': schema.get('type'),
-          'description': rst_helper.md2rs(schema.get('description')),
-          'example': schema.get('example'),
-          'hasItems': False,
-          'items': []
-      }
-
     def resolveSchema(self, schema):
         if schema is None:
             return {'hasItems': False}
