@@ -7,4 +7,4 @@
 .. csv-table:: survey
   :header: type, name, label, constraint, constraint_message
   
-  text, middle_initial, What is your middle initial?, "regex(., '\p{L}')", Just the first letter.
+  text, middle_initial, What is your middle initial?, "regex(., '\\p{L}')", Just the first letter.
