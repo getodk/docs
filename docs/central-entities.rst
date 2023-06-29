@@ -31,17 +31,6 @@ If you are interested in seeing how Entities can fit into your workflow right aw
 Roadmap and limitations
 -----------------------
 
-.. warning::
-   Entities are currently in *experimental preview*! Please do not use it for real projects unless you are comfortable with things going wrong, or features changing in future releases. It is very unlikely you will ever lose data using Entities, but you may end up with *unexpected* data.
-
-   The current limitations are:
-
-   - Entity update and delete are not yet available
-   - Performance is poor when managing more than a few thousand Entities
-   - The Form specification and API may change
-
-   You should also be aware that currently, all devices will always download all Entities. This may not be acceptable to you due to privacy concerns.
-
 Below is what's available now.
 
 - Create an Entity with a registration form (requires project manager approval via UI or API)
@@ -50,6 +39,13 @@ Below is what's available now.
 - Use Entities in different follow-up forms (e.g., weekly vs monthly follow-up)
 - Use different Datasets in different registration and follow-up forms
 - Download Datasets into Power BI, Excel, Python, and R
+
+The current limitations are:
+
+- Entity delete is only available via API
+- Performance is poor when managing more than a few thousand Entities
+- All devices will always download all Entities which may be a privacy concern
+- The Form specification and API may change
 
 The roadmap at `getodk.org/roadmap <https://getodk.org/roadmap>`_ has what we're working on now and what's coming next. 
 
