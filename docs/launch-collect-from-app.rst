@@ -70,6 +70,13 @@ To fetch the list of forms, call:
   Uri uri = "content://org.odk.collect.android.provider.odk.forms/forms"
   getContentResolver().query(uri, null, null, null, null);
 
+If you want to fetch the list of forms but with only the newest version for each ``form_id``, call:
+
+.. code-block:: java
+ 
+  Uri uri = "content://org.odk.collect.android.provider.odk.forms/newestFormsByFormId"
+  getContentResolver().query(uri, null, null, null, null);  
+
 Similarly, for the list of instances:
 
 .. code-block:: java
