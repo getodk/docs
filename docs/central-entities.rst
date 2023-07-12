@@ -42,8 +42,8 @@ Below is what's available now.
 
 The current limitations are:
 
-- Entity delete is only available via API
-- Performance is poor when managing more than a few thousand Entities
+- Entity delete is currently only available via API
+- Performance suffers when managing more than 10,000 Entities
 - All devices will always download all Entities which may be a privacy concern
 - The Form specification and API may change
 
