@@ -42,12 +42,13 @@ Below is what's available now.
 
 The current limitations are:
 
-- Entity delete is currently only available via API
+- Entity create and update requires Internet access
+- Entity delete is only available via API
 - Performance suffers when managing more than 10,000 Entities
 - All devices will always download all Entities which may be a privacy concern
 - The Form specification and API may change
 
-The roadmap at `getodk.org/roadmap <https://getodk.org/roadmap>`_ has what we're working on now and what's coming next. 
+We expect all of these limitations to be addressed over time. The roadmap at `getodk.org/roadmap <https://getodk.org/roadmap>`_ has what we're working on now and what's coming next.
 
 .. _central-entities-quick-start:
 
