@@ -33,7 +33,7 @@ Roadmap and limitations
 
 Below is what's available now.
 
-- Create an Entity with a registration form (requires project manager approval via UI or API)
+- Create an Entity with a registration form (automatically or after project manager approval)
 - Create an Entity with different registration forms (e.g., child vs adult registration)
 - Use Entities in a follow-up form
 - Use Entities in different follow-up forms (e.g., weekly vs monthly follow-up)
