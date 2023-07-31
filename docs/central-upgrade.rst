@@ -97,9 +97,15 @@ Upgrading to Central v2023.3
 
 #. **Determine which version of Central you are running.** To see your version, click on the question mark icon in the upper right section of your Central menu bar, then click :guilabel:`Version`. If you don't see the question mark, you can see the version by adding ``version.txt`` to the root URL (e.g., `demo.getodk.cloud/version.txt <https://demo.getodk.cloud/version.txt>`_).
 
+#. **Select the tab below** that matches the version of Central you are running.
+
 .. tabs::
 
-  .. tab:: Upgrading from v2023.2
+  .. tab:: Versions older than v2023.2
+
+    If you are running a version older than v2023.2, follow the :ref:`Central v2023.2 <central-upgrade-2023.2>` instructions. After following those instructions, you will be running v2023.3. No further action will be needed.
+
+  .. tab:: Version v2023.2
 
     #. **Determine whether the server you are upgrading is using a custom database** (e.g. externally hosted on Azure, AWS, etc.) or the default one:
 
@@ -117,10 +123,6 @@ Upgrading to Central v2023.3
           && docker compose up --abort-on-container-exit postgres
 
     #. **Follow** the :ref:`standard upgrade instructions <central-upgrade-steps>`.
-
-  .. tab:: Upgrading from older versions
-
-    Follow the :ref:`Central v2023.2 <central-upgrade-2023.2>` instructions. After following those instructions, you will be running v2023.3. No further action will be needed.
 
 
 .. _central-upgrade-2023.2:
