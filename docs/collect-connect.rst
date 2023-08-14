@@ -44,6 +44,5 @@ Other options
 .. toctree::
   :maxdepth: 1
 
-  collect-connect-google
   Transferring blank and completed forms directly with adb <collect-adb>
   Using ODK Briefcase  <briefcase-using>

@@ -1,19 +1,6 @@
 Managing Entities in Central
 ================================
 
-.. warning::
-   This is an *experimental preview*! Please do not use it for real projects unless you are comfortable with things going wrong, or features changing in future releases. It is very unlikely you will ever lose data using Entities, but you may end up with *unexpected* data.
-
-   This a preview because:
-
-   - You can't yet edit or delete Entities
-   - Performance is poor when managing more than a few thousand Entities
-   - The Form specification and API may change
-
-   You should also be aware that currently, all devices will always download all Entities. This may not be acceptable to you due to privacy concerns.
-
-   All of that said, if you have thoughts and feedback on Entities, please post on the `discussion forum <https://forum.getodk.org/>`_.
-
 New in Central as of version 2022.3, **Entities** are a powerful new way to automatically bring the information you are collecting right back to your devices and Forms in the field.
 
 In ODK today, you can attach existing data during the Form creation process, often through ``choices`` sheets or ``.csv`` files. Once this data is loaded into the Form, you can use it as the source for selection choices, to prepopulate data fields in the Form, or validate new input. A list of districts, for example, can be used as choices for selection, and information about each district can then be shown to the user or checked against. If you are new to these techniques, you can learn more about them on the :doc:`Form Datasets <form-datasets>` page.
@@ -29,18 +16,39 @@ Now there is a way to automate this process from within Central itself.
 Introducing Entities
 ---------------------
 
-First, some definitions: each item that gets managed by an ODK workflow is called an **Entity**. A collection of Entities is called a **Dataset**. A ``districts`` choices list, or a file ``patients.csv``, these are Datasets. So each district would be an Entity in the ``districts`` Dataset, and each patient would be an Entity in the ``patients`` Dataset.
+First, some definitions: each item that gets managed by an ODK workflow is called an **Entity**. Entities can be physical (e.g., a tree) or abstract (e.g., a site visit). A collection of Entities is called a **Dataset**.
 
-Next, a new feature. You can now teach Central that some of your incoming Submission data should create Entities in a Dataset created and managed for you by Central under whatever name you assign it——``patients``, for example. This Dataset can then be attached by that name (*(1)* below) to your follow-up Forms, exactly like you would manually attach a :doc:`CSV Dataset <form-datasets>`.
+Next, a new feature. You can now tell Central that some of your incoming Submission data should create Entities in a Dataset created and managed for you by Central. This Dataset can then be attached by that name to your follow-up Forms, exactly like you would manually attach a :doc:`CSV Dataset <form-datasets>`. You can attach a Dataset to any number of Forms, even to a registration Form.
 
-  .. image:: /img/central-entities/intro-diagram.svg
+.. image:: /img/central-entities/intro-diagram.png
 
-Using this functionality, you don't have to create or upload ``patients.csv`` yourself, nor update it when new patients are added. When Submissions arrive and are approved *(2)*, Central will create *(3)* new Entities that will appear in patient follow-up Forms as soon as those Form updates are received.
+Using this functionality, you don't have to create and upload Datasets yourself. When Submissions arrive and are approved, Central will create new Entities that will appear in follow-up Forms as soon as those Form updates are received.
 
-.. note::
-   For now, you can only add a new **Entity** to the Dataset for each Submission, but in the future you will be able to update existing Entities, or create multiple Entities at once. Also, there is not yet a way to directly upload data you may already have into a Central-managed Dataset *(4)*.
+If you are interested in seeing how Entities can fit into your workflow right away, we recommend following the Quick Start guide below, where you will upload a tree registration Form and a tree follow-up Form we have created already and see how trees are created by one Form and appear in another.
 
-If you are interested in seeing how Entities can fit into your workflow right away, we recommend following the Quick Start guide in this next section, where you will upload a tree registration Form and a tree follow-up Form we have created already and see how trees are created by one Form and appear in another.
+.. _central-entities-roadmap:
+
+Roadmap and limitations
+-----------------------
+
+Below is what's available now.
+
+- Create an Entity with a registration form (automatically or after project manager approval)
+- Create an Entity with different registration forms (e.g., child vs adult registration)
+- Use Entities in a follow-up form
+- Use Entities in different follow-up forms (e.g., weekly vs monthly follow-up)
+- Use different Datasets in different registration and follow-up forms
+- Download Datasets into Power BI, Excel, Python, and R
+
+The current limitations are:
+
+- Entity create and update requires Internet access
+- Entity delete is only available via API
+- Performance suffers when managing more than 10,000 Entities
+- All devices will always download all Entities which may be a privacy concern
+- The Form specification and API may change
+
+We expect all of these limitations to be addressed over time. The roadmap at `getodk.org/roadmap <https://getodk.org/roadmap>`_ has what we're working on now and what's coming next.
 
 .. _central-entities-quick-start:
 
@@ -211,4 +219,74 @@ Your ``trees`` Dataset can now be attached to any Form using ``select_one_from_f
 You can see the full XLSForm `here <https://docs.google.com/spreadsheets/d/12oJZDpJ8RxtmNopfqNKp3RWMsf4O3MWACYOTub_yZaQ/edit#gid=0>`_.
 
 The same Dataset can be used in many different Forms. The concepts and patterns described in the :doc:`data collector workflows <data-collector-workflows>` and the :doc:`Form Datasets <form-datasets>` sections apply to server-managed Datasets as well.
+
+.. _central-entities-managing
+
+Managing Datasets and Entities
+------------------------------
+
+To browse all Datasets in a Project, go to the :guilabel:`Datasets` tab within the Project. You will see a list of all Datasets that have been created by Forms in this Project. Click on any Dataset to see basic details about it.
+
+   .. image:: /img/central-entities/entity-landing.png
+
+On this page, you can see how this Dataset relates to other incoming data in your Project: which Forms contribute to the Dataset, which ones read data from it, and which fields are being read or written. To see the actual data in your Dataset, click on the :guilabel:`Data` tab at the top.
+
+.. _central-entities-data
+
+Managing Entity Data
+--------------------
+
+You can preview or download Entity data from Central from the :guilabel:`Data` tab on the Dataset's page.
+
+   .. image:: /img/central-entities/entity-table.png
+
+Similar to the Submissions data page for a Form, you will see overall metadata like the create and update time on the left side of the table, and the actual data values on the right. You can press :guilabel:`Refresh` to fetch the latest data, or use any of the options at the top right of the table to export the data to a file or an analysis tool.
+
+To see, edit, and manage additional details about a particular Entity, hover over its row in the table and click on :guilabel:`More` to go to the Entity Detail page. Alternatively, you can click on the pencil icon to edit the Entity data immediately.
+
+.. _central-entities-detail
+
+Seeing Entity Detail
+~~~~~~~~~~~~~~~~~~~~
+
+The Entity Detail page provides a complete look at the data and history of a particular Entity, and gives tools and options to manage it. You might arrive here by clicking on the Entity name somewhere else, like in an update feed, but you can always find the Entity you want in the Entity Data table and click on the :guilabel:`More` button.
+
+   .. image:: /img/central-entities/entity-detail.png
+
+Similar to the Submission data detail page, the Entity detail page has some basic information about your Entity on the left, and an Activity Feed showing you the history of the Entity on the right.
+
+You can see the actual data stored in the Entity in the bottom left under the :guilabel:`Entity Data` section, and you can edit that information by clicking on :guilabel:`Edit` right there.
+
+.. _central-entities-edit
+
+Editing Entity Data
+~~~~~~~~~~~~~~~~~~~
+
+To edit the data stored for an Entity, you can locate the Entity in the :doc:`Entity data table <central-entities-data>` and click on the pencil icon that shows up on top of its row, or you can click on the :guilabel:`Edit` button if you are already looking at the detail page for the Entity.
+
+   .. image:: /img/central-entities/entity-edit.png
+
+A dialog will appear with all the Entity data listed. You will see the name of the field in the first column, the currently saved value for each field in the second column, and an edit field you can use to update the data in the third column.
+
+The very first row labeled :guilabel:`Entity Label *` is not part of the Form data collected. Rather, it is the title of the Entity, which is computed from the Entity data when the Entity is first created using rules set by the Form author. You can change it to any value here.
+
+As you type, Central will highlight any fields you have changed in yellow so you can see what you've done.
+
+To complete the process press the :guilabel:`Update` button to save your changes to the Entity. You will see a confirmation that the save succeeded. If you don't like your changes, you can click on the :guilabel:`x` or the :guilabel:`Never mind` link to close the dialog.
+
+.. _central-entities-settings
+
+Changing Dataset Settings
+-------------------------
+
+Right now, only one setting is available for Datasets in Central. To reach it, click on the :guilabel:`Settings` tab on the Dataset page.
+
+   .. image:: /img/central-entities/entity-settings.png
+
+Here, you can choose whether Entities are created immediately when they are first received by Central, or if Central should wait until the Submission is approved before creating any Entities from it.
+
+Note that only one of these two behaviors can be chosen at a time. If you change the setting from "on approval" to "when received" but you still have unapproved Submissions, Central will not ever be told to make Entities out of these Submissions. If this is the case for you and you try to make this setting change, you will see a special message and you will have the option to convert all pending (not approved or rejected) Submissions into Entities right away.
+
+Select either option and you should see a confirmation the setting has changed.
+
 

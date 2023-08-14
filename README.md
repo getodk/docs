@@ -1,6 +1,6 @@
 # ODK Docs
 
-![Platform](https://img.shields.io/badge/platform-Sphinx-blue.svg) [![License](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/) [![Build status](https://circleci.com/gh/getodk/docs.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/getodk/docs/) [![Slack](https://img.shields.io/badge/chat-on%20slack-brightgreen)](https://slack.getodk.org)
+![Platform](https://img.shields.io/badge/platform-Sphinx-blue.svg) [![License](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/) [![Build status](https://circleci.com/gh/getodk/docs.svg?style=shield)](https://circleci.com/gh/getodk/docs/)
 
 This repo is the source for ODK documentation.
 
@@ -27,6 +27,20 @@ Clone the docs repo and make sure all the requirements are installed:
 ```bash
 $ git clone https://github.com/getodk/docs.git
 $ cd docs/
+```
+
+If you wish to use virtualenv, now is a good time to set it up:
+
+```bash
+$ python -m venv venv
+$ source venv/bin/activate
+```
+
+You will see `(venv)` next to your prompt to indicate you are working within the docs project. To exit this mode, use the command `deactivate`.
+
+Whether you are using virtualenv or not, you next need to install the dependencies:
+
+```bash
 $ pip install -r requirements.txt
 ```
 

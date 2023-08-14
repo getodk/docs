@@ -1,26 +1,30 @@
-Launching ODK Collect from External Apps
+Using ODK Collect from External Apps
 ==========================================
 
 .. seealso::
   
   :doc:`launch-apps-from-collect`
 
-:doc:`collect-intro` supports several intents which allow it to be launched by external applications. You can open a specific form or lists of empty forms, saved forms, finalized forms or sent forms. 
+:doc:`collect-intro` supports several intents which allow it to be launched by external applications. You can open a specific form or lists of empty forms, saved forms, finalized forms or sent forms. The app also shares its data (a list of forms and instances) with external apps.
 
-This section describes how to launch ODK Collect and open its activities from an external app. The code samples go in your custom Android application.
+This section describes how to launch ODK Collect and open its activities from an external app and how to get the shared data. The code samples go in your custom Android application.
 
 .. _about-intents:
 
-Understanding Intents
-~~~~~~~~~~~~~~~~~~~~~~~
+Understanding Intents and Content providers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 An Intent is a messaging object you can use to request an action from another app component. 
 
 For more details on intents, you can refer to `these Android docs <https://developer.android.com/guide/components/intents-filters.html>`_.
 
+A content provider component supplies data from one application to others on request.
+
+For more details on content providers, you can refer to `these Android docs <https://developer.android.com/guide/topics/providers/content-providers>`_.
+
 .. _launch-activity:
 
-Launching Collect activities from external application
+Launching Collect activities and getting its shared data from external application
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To start one of ODK Collect's activities:
@@ -42,7 +46,7 @@ Launching the form list or instance list activity
  
 This displays a list of forms and allows the user to select one and fill it.
  
-Similarly for an instance of the form: 
+Similarly, for an instance of the form: 
  
 .. code-block:: java
  
@@ -51,6 +55,60 @@ Similarly for an instance of the form:
   startActivity(intent);
 
 This displays a list of saved forms and allows the user to select one and edit it.
+
+.. _get-forms: 	
+ 
+Getting the list of forms and instances:
+"""""""""""""""""""""""""""""""""""""""""""
+
+Using `Content providers <https://developer.android.com/guide/topics/providers/content-providers>`_ ODK Collect shares the list of forms and instances with other apps.
+
+To fetch the list of forms, call:
+
+.. code-block:: java
+ 
+  Uri uri = "content://org.odk.collect.android.provider.odk.forms/forms"
+  getContentResolver().query(uri, null, null, null, null);
+
+If you want to fetch the list of forms but with only the newest version for each ``form_id``, call:
+
+.. code-block:: java
+ 
+  Uri uri = "content://org.odk.collect.android.provider.odk.forms/newestFormsByFormId"
+  getContentResolver().query(uri, null, null, null, null);  
+
+Similarly, for the list of instances:
+
+.. code-block:: java
+ 
+  Uri uri = "content://org.odk.collect.android.provider.odk.instances/instances"
+  getContentResolver().query(uri, null, null, null, null);
+
+You can also get an individual (or filtered list) form/instance by adding selection criteria. For example, if you want to get a list of instances with a given ``jrFormId`` you can use:
+
+.. code-block:: java
+ 
+  Uri uri = "content://org.odk.collect.android.provider.odk.instances/instances"
+  getContentResolver().query(uri, null, "jrFormId=?", new String[]{"all-widgets"}, null);
+
+This will return a `Cursor <https://developer.android.com/reference/android/database/Cursor>`_ with the list of forms/instances. You can iterate such a cursor and read the data stored in it: 
+
+.. code-block:: java
+ 
+        if (cursor != null) {
+            try {
+                while (cursor.moveToNext()) {
+                    int id = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID));
+                    String formName = cursor.getString(cursor.getColumnIndex(DISPLAY_NAME));
+
+                    // Collect data from other columns and store it in a list for example
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+
+The data stored in a cursor is different for forms and instances. The list of columns used to share forms is defined in `DatabaseFormColumns <https://github.com/getodk/collect/blob/master/collect_app/src/main/java/org/odk/collect/android/database/forms/DatabaseFormColumns.kt>`_. For instances it is: `DatabaseInstanceColumns <https://github.com/getodk/collect/blob/master/collect_app/src/main/java/org/odk/collect/android/database/instances/DatabaseInstanceColumns.kt>`_. 
 
 .. _get-uri: 	
  
@@ -96,6 +154,8 @@ Using a URI to edit a form or instance
 """"""""""""""""""""""""""""""""""""""""
  
 If the URI of a form or instance is known, it can be viewed or edited. For example, a URI received in ``onActivityResult()`` as described above can be used.
+
+If the URI of a form or instance is not known, it can be generated by appending the id (received in a cursor after fetching the list of forms/instances as described above) to ``content://org.odk.collect.android.provider.odk.forms/forms/`` in the case of forms and ``content://org.odk.collect.android.provider.odk.instances/instances/`` in the case of instances.
  
 .. code-block:: java
  
@@ -110,3 +170,7 @@ The same thing can be done with a specific instance.
 
 .. warning::
   Launching Collect activities using their names is not supported because those names can change at any time.
+
+.. note::
+  
+  There might be other ways of interacting with ODK Collect using an external app not described in this doc. If you want to explore them, check out the `ODK Collect Intents Tester <https://github.com/grzesiek2010/collectTester>`_ app.  
