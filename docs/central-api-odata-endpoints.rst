@@ -451,6 +451,8 @@ The fields you can query against are as follows:
 | Submission Update Timestamp | ``updatedAt``\    | ``*\ *system/updatedAt``\       |
 | Review State                | ``reviewState``\  | ``*\ *system/reviewState``\     |
 
+You can use ``$root``\  expression to filter subtables (repeats) by Submission Metadata, you'll have to prefix above fields by ``$root/Submissions/``\  in the filter criteria. For example, to filter a repeat table by Submission Timestamp you can pass ``$filter=$root/Submissions/*\ *system/submissionDate gt 2020-01-31T23:59:59.999Z``\  in the query parameter.
+
 Note that the ``submissionDate``\  has a time component. This means that any comparisons you make need to account for the full time of the submission. It might seem like ``$filter=*\ *system/submissionDate le 2020-01-31``\  would return all results on or before 31 Jan 2020, but in fact only submissions made before midnight of that day would be accepted. To include all of the month of January, you need to filter by either ``$filter=*\ *system/submissionDate le 2020-01-31T23:59:59.999Z``\  or ``$filter=*\ *system/submissionDate lt 2020-02-01``\ . Remember also that you can `query by a specific timezone <https://en.wikipedia.org/wiki/ISO*\ 8601#Time*offsets*\ from*UTC>`__.
 
 Please see the `OData documentation <http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#*\ Toc31358948>`__ on ``$filter``\  `operations <http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec*BuiltinFilterOperations>`__ and `functions <http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec*\ BuiltinQueryFunctions>`__ for more information.
@@ -497,7 +499,7 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - string
         
-          The name of the table to be returned. These names can be found in the output of the [Service Document](/reference/odata-endpoints/odata-form-service/service-document).
+          The name of the table to be returned. These names can be found in the output of the [Service Document](/central-api-odata-endpoints/#service-document).
 
           Example: ``Submissions``
       * - %24skip
@@ -542,7 +544,7 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - string
         
-          If provided, will filter responses to those matching the query. Only [certain fields](/reference/odata-endpoints/odata-form-service/data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
+          If provided, will filter responses to those matching the query. Only [certain fields](/central-api-odata-endpoints/#data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
 
           Example: ``year(__system/submissionDate) lt year(now())``
       * - %24expand
@@ -1110,6 +1112,8 @@ The Metadata Document describes, in `EDMX CSDL <http://docs.oasis-open.org/odata
                           <Property Name="createdAt" Type="Edm.DateTimeOffset"/>
                           <Property Name="creatorId" Type="Edm.String"/>
                           <Property Name="creatorName" Type="Edm.String"/>
+                          <Property Name="updates" Type="Edm.Int64"/>
+                          <Property Name="updatedAt" Type="Edm.DateTimeOffset"/>
                       </ComplexType>
                   </Schema>
                   <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="org.opendatakit.user.trees">
@@ -1119,7 +1123,6 @@ The Metadata Document describes, in `EDMX CSDL <http://docs.oasis-open.org/odata
                           </Key>
                           <Property Name="__id" Type="Edm.String"/>
                           <Property Name="__system" Type="org.opendatakit.entity.metadata"/>
-                          <Property Name="name" Type="Edm.String"/>
                           <Property Name="label" Type="Edm.String"/>
                           <Property Name="geometry" Type="Edm.String"/>
                           <Property Name="species" Type="Edm.String"/>
@@ -1261,12 +1264,13 @@ The fields you can query against are as follows:
 | Entity Label            | ``label``\               |
 | Entity Creator Actor ID | ``*\ *system/creatorId``\  |
 | Entity Timestamp        | ``*\ *system/createdAt``\  |
+| Entity Update Timestamp | ``*\ *system/updatedAt``\  |
 
-Note that ``createdAt``\  is a time component. This means that any comparisons you make need to account for the full time of the entity. It might seem like ``$filter=*\ *system/createdAt le 2020-01-31``\  would return all results on or before 31 Jan 2020, but in fact only entities made before midnight of that day would be accepted. To include all of the month of January, you need to filter by either ``$filter=*\ *system/createdAt le 2020-01-31T23:59:59.999Z``\  or ``$filter=*\ *system/createdAt lt 2020-02-01``\ . Remember also that you can `query by a specific timezone <https://en.wikipedia.org/wiki/ISO*\ 8601#Time*offsets*\ from*UTC>`__.
+Note that ``createdAt``\  and ``updatedAt``\  are time components. This means that any comparisons you make need to account for the full time of the entity. It might seem like ``$filter=*\ *system/createdAt le 2020-01-31``\  would return all results on or before 31 Jan 2020, but in fact only entities made before midnight of that day would be accepted. To include all of the month of January, you need to filter by either ``$filter=*\ *system/createdAt le 2020-01-31T23:59:59.999Z``\  or ``$filter=*\ *system/createdAt lt 2020-02-01``\ . Remember also that you can `query by a specific timezone <https://en.wikipedia.org/wiki/ISO*\ 8601#Time*offsets*\ from*UTC>`__.
 
 Please see the `OData documentation <http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#*\ Toc31358948>`__ on ``$filter``\  `operations <http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec*BuiltinFilterOperations>`__ and `functions <http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec*\ BuiltinQueryFunctions>`__ for more information.
 
-The ```$select``\  query parameter <http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#*Toc31358942>`__ will return just the fields you specify and is supported on ``*\ *id``\ , ``*\ *system``\ , ``*\ *system/creatorId``\  and ``*\ _system/createdAt``\ , as well as on user defined properties.
+The ```$select``\  query parameter <http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#*Toc31358942>`__ will return just the fields you specify and is supported on ``*\ *id``\ , ``*\ *system``\ , ``*\ *system/creatorId``\ , ``*\ *system/createdAt``\  and ``*\ _system/updatedAt``\ , as well as on user defined properties.
 
 As the vast majority of clients only support the JSON OData format, that is the only format ODK Central offers.
 
@@ -1328,7 +1332,7 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - string
         
-          If provided, will filter responses to those matching the query. Only [certain fields](/reference/odata-endpoints/odata-form-service/data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
+          If provided, will filter responses to those matching the query. Only [certain fields](/central-api-odata-endpoints/#data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
 
           Example: ``year(__system/createdAt) lt year(now())``
       * - %24select
@@ -1502,7 +1506,7 @@ Service Document
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft.svc**
 
-Identical to `the non-Draft version </reference/odata-endpoints/odata-form-service/service-document>`__ of this endpoint.
+Identical to `the non-Draft version </central-api-odata-endpoints/#service-document>`__ of this endpoint.
 
 .. dropdown:: Request
 
@@ -1722,7 +1726,7 @@ Metadata Document
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft.svc/$metadata**
 
-Identical to `the non-Draft version </reference/odata-endpoints/odata-form-service/metadata-document>`__ of this endpoint.
+Identical to `the non-Draft version </central-api-odata-endpoints/#metadata-document>`__ of this endpoint.
 
 .. dropdown:: Request
 
@@ -1892,7 +1896,7 @@ Data Document
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft.svc/{table}**
 
-Identical to `the non-Draft version </reference/odata-endpoints/odata-form-service/data-document>`__ of this endpoint.
+Identical to `the non-Draft version </central-api-odata-endpoints/#data-document>`__ of this endpoint.
 
 .. dropdown:: Request
 
@@ -1924,7 +1928,7 @@ Identical to `the non-Draft version </reference/odata-endpoints/odata-form-servi
 
         - string
         
-          The name of the table to be returned. These names can be found in the output of the [Service Document](/reference/odata-endpoints/odata-form-service/service-document).
+          The name of the table to be returned. These names can be found in the output of the [Service Document](/central-api-odata-endpoints/#service-document).
 
           Example: ``Submissions``
       * - %24skip
@@ -1969,7 +1973,7 @@ Identical to `the non-Draft version </reference/odata-endpoints/odata-form-servi
 
         - string
         
-          If provided, will filter responses to those matching the query. Only [certain fields](/reference/odata-endpoints/odata-form-service/data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
+          If provided, will filter responses to those matching the query. Only [certain fields](/central-api-odata-endpoints/#data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
 
           Example: ``year(__system/submissionDate) lt year(now())``
       * - %24expand

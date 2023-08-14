@@ -636,7 +636,7 @@ Creating a Submission
 
 **POST /v1/projects/{projectId}/forms/{xmlFormId}/submissions**
 
-To create a Submission by REST rather than over the `OpenRosa interface </reference/openrosa-endpoints/openrosa-form-submission-api>`__, you may ``POST``\  the Submission XML to this endpoint. The request must have an XML ``Content-Type``\  (``text/xml``\  or ``application/xml``\ ).
+To create a Submission by REST rather than over the `OpenRosa interface </central-api-openrosa-endpoints/#openrosa-form-submission-api>`__, you may ``POST``\  the Submission XML to this endpoint. The request must have an XML ``Content-Type``\  (``text/xml``\  or ``application/xml``\ ).
 
 Unlike the OpenRosa Form Submission API, this interface does *not*\  accept Submission attachments upon Submission creation. Instead, the server will determine which attachments are expected based on the Submission XML, and you may use the endpoints found in the following section to add the appropriate attachments and check the attachment status and content.
 
@@ -1055,7 +1055,7 @@ Getting Submission metadata
 
 Like how ``Form``\ s are addressed by their XML ``formId``\ , individual ``Submission``\ s are addressed in the URL by their ``instanceId``\ .
 
-As of version 1.4, a ``deviceId``\  and ``userAgent``\  will also be returned with each submission. The client device may transmit these extra metadata when the data is submitted. If it does, those fields will be recognized and returned here for reference. Here, only the initial ``deviceId``\  and ``userAgent``\  will be reported. If you wish to see these metadata for any submission edits, including the most recent edit, you will need to `list the versions </reference/submissions/submission-versions/listing-versions>`__.
+As of version 1.4, a ``deviceId``\  and ``userAgent``\  will also be returned with each submission. The client device may transmit these extra metadata when the data is submitted. If it does, those fields will be recognized and returned here for reference. Here, only the initial ``deviceId``\  and ``userAgent``\  will be reported. If you wish to see these metadata for any submission edits, including the most recent edit, you will need to `list the versions </central-api-submission-management/#listing-versions>`__.
 
 As of version 2023.2, this API returns ``currentVersion``\  that contains metadata of the most recent version of the Submission.
 
@@ -1508,11 +1508,11 @@ You can use this endpoint to submit *updates*\  to an existing submission.
 
 The ``instanceId``\  that is submitted with the initial version of the submission is used permanently to reference that submission logically, which is to say the initial submission and all its subsequent versions. Each subsequent version will also provide its own ``instanceId``\ . This ``instanceId``\  becomes that particular version's identifier.
 
-To perform an update, you need to provide in the submission XML an additional ```deprecatedID``\  metadata node <https://getodk.github.io/xforms-spec/#metadata>`__ with the ``instanceID``\  of the particular and current submission version you are replacing. If the ``deprecatedID``\  you give is anything other than the identifier of the current version of the submission at the time the server receives it, you will get a ``409 Conflict``\  back. You can get the current version ``instanceID``\  by getting the `current XML of the submission </reference/submissions/submissions/retrieving-submission-xml>`__.
+To perform an update, you need to provide in the submission XML an additional ```deprecatedID``\  metadata node <https://getodk.github.io/xforms-spec/#metadata>`__ with the ``instanceID``\  of the particular and current submission version you are replacing. If the ``deprecatedID``\  you give is anything other than the identifier of the current version of the submission at the time the server receives it, you will get a ``409 Conflict``\  back. You can get the current version ``instanceID``\  by getting the `current XML of the submission </central-api-submission-management/#retrieving-submission-xml>`__.
 
 The XML data you send will *replace*\  the existing data entirely. All of the data must be present in the updated XML.
 
-When you create a new submission version, any uploaded media files attached to the current version that match expected attachment names in the new version will automatically be copied over to the new version. So if you don't make any changes to media files, there is no need to resubmit them. You can get information about all the submission versions `from the ``/versions``\  subresource <reference/submissions/submission-versions>`__.
+When you create a new submission version, any uploaded media files attached to the current version that match expected attachment names in the new version will automatically be copied over to the new version. So if you don't make any changes to media files, there is no need to resubmit them. You can get information about all the submission versions `from the ``/versions``\  subresource <central-api-submission-management/#submission-versions>`__.
 
 .. dropdown:: Request
 
@@ -1924,7 +1924,7 @@ Updating Submission metadata
 
 **PATCH /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}**
 
-Currently, the only updatable *metadata*\  on a Submission is its ``reviewState``\ . To update the submission *data*\  itself, please see `Updating Submission data </reference/submissions/submissions/updating-submission-data>`__.
+Currently, the only updatable *metadata*\  on a Submission is its ``reviewState``\ . To update the submission *data*\  itself, please see `Updating Submission data </central-api-submission-management/#updating-submission-data>`__.
 
 Starting with Version 2022.3, changing the ``reviewState``\  of a Submission to ``approved``\  can create an Entity in a Dataset if the corresponding Form maps Dataset Properties to Form Fields. If an Entity is created successfully then an ``entity.create``\  event is logged in Audit logs, else ``entity.create.error``\  is logged.
 
@@ -2411,13 +2411,13 @@ To export all the ``Submission``\  data associated with a ``Form``\ , just add `
 
 You can exclude the media attachments from the ZIP file by specifying ``?attachments=false``\ .
 
-If `Project Managed Encryption </reference/encryption>`__ is being used, additional querystring parameters may be provided in the format ``{keyId}={passphrase}``\  for any number of keys (eg ``1=secret&4=password``\ ). This will decrypt any records encrypted under those managed keys. Submissions encrypted under self-supplied keys will not be decrypted. **Note**\ : if you are building a browser-based application, please consider the alternative ``POST``\  endpoint, described in the following section.
+If `Project Managed Encryption </central-api-encryption>`__ is being used, additional querystring parameters may be provided in the format ``{keyId}={passphrase}``\  for any number of keys (eg ``1=secret&4=password``\ ). This will decrypt any records encrypted under those managed keys. Submissions encrypted under self-supplied keys will not be decrypted. **Note**\ : if you are building a browser-based application, please consider the alternative ``POST``\  endpoint, described in the following section.
 
 If a passphrase is supplied but is incorrect, the entire request will fail. If a passphrase is not supplied but encrypted records exist, only the metadata for those records will be returned, and they will have a ``status``\  of ``not decrypted``\ .
 
 If you are running an unsecured (``HTTP``\  rather than ``HTTPS``\ ) Central server, it is not a good idea to export data this way as your passphrase and the decrypted data will be sent plaintext over the network.
 
-You can use an `OData-style ``$filter``\  query </reference/odata-endpoints/odata-form-service/data-document>`__ to filter the submissions that will appear in the ZIP file. This is a bit awkward, since this endpoint has nothing to do with OData, but since we already must recognize the OData syntax, it is less strange overall for now not to invent a whole other one here. Only a subset of the ``$filter``\  features are available; please see the linked section for more information.
+You can use an `OData-style ``$filter``\  query </central-api-odata-endpoints/#data-document>`__ to filter the submissions that will appear in the ZIP file. This is a bit awkward, since this endpoint has nothing to do with OData, but since we already must recognize the OData syntax, it is less strange overall for now not to invent a whole other one here. Only a subset of the ``$filter``\  features are available; please see the linked section for more information.
 
 .. dropdown:: Request
 
@@ -2459,7 +2459,7 @@ You can use an `OData-style ``$filter``\  query </reference/odata-endpoints/odat
 
         - string
         
-          If provided, will filter responses to those matching the given OData query. Only [certain fields](/reference/odata-endpoints/odata-form-service/data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
+          If provided, will filter responses to those matching the given OData query. Only [certain fields](/central-api-odata-endpoints/#data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
 
           Example: ``year(__system/submissionDate) lt year(now())``
       * - groupPaths
@@ -2600,7 +2600,7 @@ Exporting Form Submissions to CSV via POST
 
 **POST /v1/projects/{projectId}/forms/{xmlFormId}/submissions.csv.zip**
 
-This non-REST-compliant endpoint is provided for use with `Project Managed Encryption </reference/encryption>`__. In every respect, it behaves identically to the ``GET``\  endpoint described in the previous section, except that it works over ``POST``\ . This is necessary because for browser-based applications, it is a dangerous idea to simply link the user to ``/submissions.csv.zip?2=supersecretpassphrase``\  because the browser will remember this route in its history and thus the passphrase will become exposed. This is especially dangerous as there are techniques for quickly learning browser-visited URLs of any arbitrary domain.
+This non-REST-compliant endpoint is provided for use with `Project Managed Encryption </central-api-encryption>`__. In every respect, it behaves identically to the ``GET``\  endpoint described in the previous section, except that it works over ``POST``\ . This is necessary because for browser-based applications, it is a dangerous idea to simply link the user to ``/submissions.csv.zip?2=supersecretpassphrase``\  because the browser will remember this route in its history and thus the passphrase will become exposed. This is especially dangerous as there are techniques for quickly learning browser-visited URLs of any arbitrary domain.
 
 You can exclude the media attachments from the ZIP file by specifying ``?attachments=false``\ .
 
@@ -2646,7 +2646,7 @@ And so, for this ``POST``\  version of the Submission CSV export endpoint, the p
 
         - string
         
-          If provided, will filter responses to those matching the given OData query. Only [certain fields](/reference/odata-endpoints/odata-form-service/data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
+          If provided, will filter responses to those matching the given OData query. Only [certain fields](/central-api-odata-endpoints/#data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
 
           Example: ``year(__system/submissionDate) lt year(now())``
       * - groupPaths
@@ -2793,7 +2793,7 @@ The above submission endpoints will give you a ZIP file with the submission data
 
 To export *just*\  the root table (no repeat data nor media files), you can call this endpoint instead, which will directly give you CSV data.
 
-Please see the `above endpoint </reference/submissions/submissions/exporting-form-submissions-to-csv>`__ for notes on dealing with Managed Encryption.
+Please see the `above endpoint </central-api-submission-management/#exporting-form-submissions-to-csv>`__ for notes on dealing with Managed Encryption.
 
 .. dropdown:: Request
 
@@ -2826,7 +2826,7 @@ Please see the `above endpoint </reference/submissions/submissions/exporting-for
 
         - string
         
-          If provided, will filter responses to those matching the given OData query. Only [certain fields](/reference/odata-endpoints/odata-form-service/data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
+          If provided, will filter responses to those matching the given OData query. Only [certain fields](/central-api-odata-endpoints/#data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
 
           Example: ``year(__system/submissionDate) lt year(now())``
 
@@ -2946,7 +2946,7 @@ This endpoint is useful only for Forms under Project Managed Encryption.
 
 As with ``GET``\  to ``.csv``\  just above, this endpoint will only return CSV text data, rather than a ZIP file containing ore or more files. Please see that endpoint for further explanation.
 
-As with ```POST``\  to ``.csv.zip``\  </reference/submissions/submissions/exporting-form-submissions-to-csv-via-post>`__ it allows secure submission of decryption passkeys. Please see that endpoint for more information on how to do this.
+As with ```POST``\  to ``.csv.zip``\  </central-api-submission-management/#exporting-form-submissions-to-csv-via-post>`__ it allows secure submission of decryption passkeys. Please see that endpoint for more information on how to do this.
 
 .. dropdown:: Request
 
@@ -2979,7 +2979,7 @@ As with ```POST``\  to ``.csv.zip``\  </reference/submissions/submissions/export
 
         - string
         
-          If provided, will filter responses to those matching the given OData query. Only [certain fields](/reference/odata-endpoints/odata-form-service/data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
+          If provided, will filter responses to those matching the given OData query. Only [certain fields](/central-api-odata-endpoints/#data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
 
           Example: ``year(__system/submissionDate) lt year(now())``
 
@@ -3095,7 +3095,7 @@ Retrieving Audit Logs
 
 *(introduced: version 1.2)*\ 
 
-You can retrieve all `Server Audit Logs </reference/system-endpoints/server-audit-logs>`__ relating to a submission. They will be returned most recent first.
+You can retrieve all `Server Audit Logs </central-api-system-endpoints/#server-audit-logs>`__ relating to a submission. They will be returned most recent first.
 
 This endpoint supports retrieving extended metadata; provide a header ``X-Extended-Metadata: true``\  to additionally expand the ``actorId``\  into full ``actor``\  details, and ``acteeId``\  into full ``actee``\  details. The ``actor``\  will always be an Actor, and the ``actee``\  will be the Form this Submission is a part of.
 
@@ -5225,7 +5225,7 @@ Getting Version Details
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/versions/{versionId}**
 
-Returns metadata about a particular version of the submission. As with the normal submission endpoint, you'll only get metadata in JSON out of this route. If you want to retrieve the XML, `add ``.xml``\  </reference/submissions/submission-versions/getting-version-xml>`__.
+Returns metadata about a particular version of the submission. As with the normal submission endpoint, you'll only get metadata in JSON out of this route. If you want to retrieve the XML, `add ``.xml``\  </central-api-submission-management/#getting-version-xml>`__.
 
 This endpoint supports retrieving extended metadata; provide a header ``X-Extended-Metadata: true``\  to return a ``submitter``\  data object alongside the ``submitterId``\  Actor ID reference.
 
@@ -6099,7 +6099,7 @@ This returns the changes, or edits, between different versions of a Submission. 
 Draft Submissions
 -----------------------------------------------------------------------------------------------------------------------
 
-All `Draft Forms </reference/forms/draft-form>`__ feature a ``/submissions``\  subresource (``/draft/submissions``\ ), which is identical to the same subresource on the form itself. These submissions exist only as long as the Draft Form does: they are removed if the Draft Form is published, and they are abandoned if the Draft Form is deleted or overwritten.
+All `Draft Forms </central-api-form-management/#draft-form>`__ feature a ``/submissions``\  subresource (``/draft/submissions``\ ), which is identical to the same subresource on the form itself. These submissions exist only as long as the Draft Form does: they are removed if the Draft Form is published, and they are abandoned if the Draft Form is deleted or overwritten.
 
 Here we list all those resources again just for completeness.
 
@@ -6108,7 +6108,7 @@ Listing all Submissions on a Draft Form
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions**
 
-Identical to `the non-Draft version </reference/submissions/submissions/listing-all-submissions-on-a-form>`__ of this endpoint.
+Identical to `the non-Draft version </central-api-submission-management/#listing-all-submissions-on-a-form>`__ of this endpoint.
 
 .. dropdown:: Request
 
@@ -6718,7 +6718,7 @@ Creating a Submission
 
 **POST /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions**
 
-Identical to `the non-Draft version </reference/submissions/submissions/creating-a-submission>`__ of this endpoint.
+Identical to `the non-Draft version </central-api-submission-management/#creating-a-submission>`__ of this endpoint.
 
 .. dropdown:: Request
 
@@ -7122,7 +7122,7 @@ Exporting Form Submissions to CSV
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions.csv.zip**
 
-Identical to `the non-Draft version </reference/submissions/submissions/exporting-form-submissions-to-csv>`__ of this endpoint.
+Identical to `the non-Draft version </central-api-submission-management/#exporting-form-submissions-to-csv>`__ of this endpoint.
 
 .. dropdown:: Request
 
@@ -7260,7 +7260,7 @@ Exporting Form Submissions to CSV via POST
 
 **POST /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions.csv.zip**
 
-Identical to `the non-Draft version </reference/submissions/submissions/exporting-form-submissions-to-csv-via-post>`__ of this endpoint.
+Identical to `the non-Draft version </central-api-submission-management/#exporting-form-submissions-to-csv-via-post>`__ of this endpoint.
 
 .. dropdown:: Request
 
@@ -7398,7 +7398,7 @@ Listing Encryption Keys
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions/keys**
 
-Identical to `the non-Draft version </reference/submissions/submissions/listing-encryption-keys>`__ of this endpoint.
+Identical to `the non-Draft version </central-api-submission-management/#listing-encryption-keys>`__ of this endpoint.
 
 .. dropdown:: Request
 
@@ -7545,7 +7545,7 @@ Getting Submission details
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions/{instanceId}**
 
-Identical to `the non-Draft version </reference/submissions/submissions/getting-submission-metadata>`__ of this endpoint.
+Identical to `the non-Draft version </central-api-submission-management/#getting-submission-metadata>`__ of this endpoint.
 
 .. dropdown:: Request
 
@@ -7961,7 +7961,7 @@ Retrieving Submission XML
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions/{instanceId}.xml**
 
-Identical to `the non-Draft version </reference/submissions/submissions/retrieving-submission-xml>`__ of this endpoint.
+Identical to `the non-Draft version </central-api-submission-management/#retrieving-submission-xml>`__ of this endpoint.
 
 .. dropdown:: Request
 
@@ -8036,7 +8036,7 @@ Listing expected Submission Attachments
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions/{instanceId}/attachments**
 
-Identical to `the non-Draft version </reference/submissions/attachments/listing-expected-submission-attachments>`__ of this endpoint.
+Identical to `the non-Draft version </central-api-submission-management/#listing-expected-submission-attachments>`__ of this endpoint.
 
 .. dropdown:: Request
 
@@ -8188,7 +8188,7 @@ Downloading an Attachment
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions/{instanceId}/attachments/{filename}**
 
-Identical to `the non-Draft version </reference/submissions/attachments/downloading-an-attachment>`__ of this endpoint.
+Identical to `the non-Draft version </central-api-submission-management/#downloading-an-attachment>`__ of this endpoint.
 
 .. dropdown:: Request
 
@@ -8249,7 +8249,7 @@ Identical to `the non-Draft version </reference/submissions/attachments/download
 
     .. tab-item:: Schema
 
-      **Identical to `the non-Draft version &lt;/reference/submissions/attachments/downloading-an-attachment&gt;`__ of this endpoint.**
+      **Identical to `the non-Draft version &lt;/central-api-submission-management/#downloading-an-attachment&gt;`__ of this endpoint.**
 
       .. list-table::
         :class: schema-table-wrap
@@ -8315,7 +8315,7 @@ Uploading an Attachment
 
 **POST /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions/{instanceId}/attachments/{filename}**
 
-Identical to `the non-Draft version </reference/submissions/attachments/uploading-an-attachment>`__ of this endpoint.
+Identical to `the non-Draft version </central-api-submission-management/#uploading-an-attachment>`__ of this endpoint.
 
 .. dropdown:: Request
 
@@ -8455,7 +8455,7 @@ Clearing a Submission Attachment
 
 **DELETE /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions/{instanceId}/attachments/{filename}**
 
-Identical to `the non-Draft version </reference/submissions/attachments/clearing-a-submission-attachment>`__ of this endpoint.
+Identical to `the non-Draft version </central-api-submission-management/#clearing-a-submission-attachment>`__ of this endpoint.
 
 .. dropdown:: Request
 

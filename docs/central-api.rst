@@ -12,11 +12,9 @@ API Overview
 
 To use the API to manage your data collection campaigns, you will need to **authenticate**\  with it, so it knows who you are and what you are allowed to do. We provide multiple methods to authenticate with the API, as well as different models for managing the identities and permissions in your system. Human staff users that manage data collection campaigns are ``User``\ s, and mobile devices are granted access via ``App User``\ s, and each of these account types have their own way of authenticating. But, these concepts both boil down to ``Actor``\ s, which are how the API actually thinks about authentication and permissioning.
 
-In future versions of this server, the primary way an API consumer would authenticate with this server will be as a simple Actor through a standard OAuth 2.0 mechanism. That Actor can be granted a constrained set of rights to safely perform only all the actions it needs to. In these early releases, however, password-based authentication as a User is the only way to gain full access to the system.
-
 The ``/users``\  resource can be used to create, manage, and delete **Users**\ . These are the staff members who have administrative rights on your server, some projects, or both. Additional tasks like resetting a user's password are also available. You could use this API to, for example, synchronize accounts with another system or mass-provision Users.
 
-Actors (and thus Users) may be granted rights via Assignments. In short, a Roles API is available which describes the defined Roles within the system, each of which allows some set of verbs. The Assignments APIs, in turn, assign Roles to certain Actors upon certain system objects. More information on these may be found below, under `Accounts and Users </reference/accounts-and-users>`__.
+Actors (and thus Users) may be granted rights via Assignments. In short, a Roles API is available which describes the defined Roles within the system, each of which allows some set of verbs. The Assignments APIs, in turn, assign Roles to certain Actors upon certain system objects. More information on these may be found below, under `Accounts and Users </central-api-accounts-and-users>`__.
 
 The rest of system is made up mostly of standard REST resources and subresources, nested under and partitioned by the ``/projects``\  Projects resource. Forms, submissions to those forms, attachments on forms or submissions, and App Users ("App Users" in the management interface), are all subresources within ``/projects``\ . This way, each project is essentially its own sandbox which can be managed and manipulated at will.
 
@@ -44,6 +42,7 @@ Finally, **system information and configuration**\  is available via a set of sp
   central-api-form-management
   central-api-submission-management
   central-api-dataset-management
+  central-api-entity-management
   central-api-openrosa-endpoints
   central-api-odata-endpoints
   central-api-system-endpoints

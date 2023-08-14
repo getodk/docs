@@ -1205,7 +1205,7 @@ Enabling Project Managed Encryption
 
 *(introduced: version 0.6)*\ 
 
-`Project Managed Encryption </reference/encryption>`__ can be enabled via the API. To do this, ``POST``\  with the ``passphrase``\  and optionally a reminder ``hint``\  about the passphrase. If managed encryption is already enabled, a ``409``\  error response will be returned.
+`Project Managed Encryption </central-api-encryption>`__ can be enabled via the API. To do this, ``POST``\  with the ``passphrase``\  and optionally a reminder ``hint``\  about the passphrase. If managed encryption is already enabled, a ``409``\  error response will be returned.
 
 Enabling managed encryption will modify all unencrypted forms in the project, and as a result the ``version``\  of all forms within the project will also be modified. It is therefore best to enable managed encryption before devices are in the field. Any forms in the project that already have self-supplied encryption keys will be left alone.
 
@@ -1504,9 +1504,9 @@ Project Assignments
 
 *(introduced: version 0.5)*\ 
 
-There are multiple Assignments resources. This one, specific to the Project it is nested within, only governs Role assignments to that Project. Assigning an Actor a Role that grants, for example, a verb ``submission.create``\ , allows that Actor to create a submission anywhere within this Project. It is also possible to assign rights only to specific forms for actions related only to that form and its submissions: see the `Form Assignments resource </reference/forms/form-assignments>`__ for information about this.
+There are multiple Assignments resources. This one, specific to the Project it is nested within, only governs Role assignments to that Project. Assigning an Actor a Role that grants, for example, a verb ``submission.create``\ , allows that Actor to create a submission anywhere within this Project. It is also possible to assign rights only to specific forms for actions related only to that form and its submissions: see the `Form Assignments resource </central-api-form-management/#form-assignments>`__ for information about this.
 
-The `sitewide Assignments resource </reference/accounts-and-users/assignments>`__, at the API root, manages Role assignments for all objects across the server. Apart from this difference in scope, the introduction to that section contains information useful for understanding the following endpoints.
+The `sitewide Assignments resource </central-api-accounts-and-users/#assignments>`__, at the API root, manages Role assignments for all objects across the server. Apart from this difference in scope, the introduction to that section contains information useful for understanding the following endpoints.
 
 There are only one set of Roles, applicable to either scenario. There are not a separate set of Roles used only upon Projects or Forms.
 
@@ -2534,7 +2534,7 @@ Seeing Role-specific Form Assignments within a Project
 
 **GET /v1/projects/{projectId}/assignments/forms/{roleId}**
 
-Like the `Form Assignments summary API </reference/forms/form-assignments/listing-all-form-assignments>`__, but filtered by some ``roleId``\ .
+Like the `Form Assignments summary API </central-api-form-management/#listing-all-form-assignments>`__, but filtered by some ``roleId``\ .
 
 This endpoint supports retrieving extended metadata; provide a header ``X-Extended-Metadata: true``\  to expand the ``actorId``\  into a full ``actor``\  objects. The Role reference remains a numeric ID and the Form reference remains a string ID.
 

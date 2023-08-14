@@ -11,8 +11,6 @@ In practice, there are two types of Actors available in the system today:
 
 * ``App User``\ s are only allowed to access the OpenRosa parts of the API: in essence, they are allowed to list forms, download form definitions, and create new submissions against those forms. They can only authenticate using **App User URL**\ s.
 
-In a future version of the API, programmatic consumers will be more directly supported as their own Actor type, which can be granted limited permissions and can authenticate over **OAuth 2.0**\ .
-
 Next, you will find documentation on each of the three authentication methods described above. It is best not to present multiple credentials. If you do, the first *presented*\  scheme out of ``/key``\  token, Bearer, Basic, then Cookie will be used for the request. If the multiple schemes are sent at once, and the first matching scheme fails, the request will be immediately rejected.
 
 
@@ -391,6 +389,111 @@ Note, however, that a App User cannot revoke itself; a ``User``\  must perform t
                     Example: ``The authenticated actor does not have rights to perform that action.``
               
       
+Logging out current session
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**DELETE /v1/sessions/current**
+
+This endpoint causes the current session to log itself out. Logging out is not strictly necessary for Web Users; all sessions expire 24 hours after they are created. But it can be a good idea, in case someone else manages to steal your token.
+
+Only the session that was used to authenticate the request is logged out. If the Actor associated with the session has other sessions as well, those are not logged out.
+
+.. dropdown:: Request
+
+  This endpoint doesn't take any request parameter or data
+  
+.. dropdown:: Response
+
+  **HTTP Status: 200**
+
+  Content Type: application/json
+
+  .. tab-set::
+
+    .. tab-item:: Example
+
+      .. code-block::
+
+          {
+            "message": "Success"
+          }
+
+    .. tab-item:: Schema
+
+
+      .. list-table::
+        :class: schema-table-wrap
+
+        * - object
+
+
+              
+
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - message
+
+
+                  - string
+                  
+                    
+
+                    Example: ``Success``
+              
+      
+
+  **HTTP Status: 403**
+
+  Content Type: application/json
+
+  .. tab-set::
+
+    .. tab-item:: Example
+
+      .. code-block::
+
+          {
+            "code": "403.1",
+            "message": "The authenticated actor does not have rights to perform that action."
+          }
+
+    .. tab-item:: Schema
+
+
+      .. list-table::
+        :class: schema-table-wrap
+
+        * - object
+
+
+              
+
+            .. list-table::
+                :widths: 25 75
+                :class: schema-table
+                
+                
+                * - code
+
+
+                  - string
+                  
+                    
+
+                    Example: ``403.1``
+                * - message
+
+
+                  - string
+                  
+                    
+
+                    Example: ``The authenticated actor does not have rights to perform that action.``
+              
+      
 
 HTTPS Basic Authentication
 -----------------------------------------------------------------------------------------------------------------------
@@ -489,7 +592,7 @@ Using App User Authentication
 
 **GET /v1/key/{appUser}/example3**
 
-To use App User Authentication, first obtain a App User, typically by using the configuration panel in the user interface, or else by using the `App User API Resource </reference/accounts-and-users/app-users>`__. Once you have the token, you can apply it to any eligible action by prefixing the URL with ``/key/{appUser}``\  as follows:
+To use App User Authentication, first obtain a App User, typically by using the configuration panel in the user interface, or else by using the `App User API Resource </central-api-accounts-and-users/#app-users>`__. Once you have the token, you can apply it to any eligible action by prefixing the URL with ``/key/{appUser}``\  as follows:
 
 ``/v1/key/!Ms7V3$Zdnd63j5HFacIPFEvFAuwNqTUZW$AsVOmaQFf$vIC!F8dJjdgiDnJXXOt/example/request/path``\ 
 

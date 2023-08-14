@@ -3,7 +3,7 @@
 System Endpoints
 =======================================================================================================================
 
-There are some resources available for getting or setting system information and configuration. You can set the `Usage Reporting configuration </reference/system-endpoints/usage-reporting-configuration>`__ for the server, retrieve the `Server Audit Logs </reference/system-endpoints/server-audit-logs>`__, or perform a `Direct Backup </reference/system-endpoints/direct-backup>`__.
+There are some resources available for getting or setting system information and configuration. You can set the `Usage Reporting configuration </central-api-system-endpoints/#usage-reporting-configuration>`__ for the server, retrieve the `Server Audit Logs </central-api-system-endpoints/#server-audit-logs>`__, or perform a `Direct Backup </central-api-system-endpoints/#direct-backup>`__.
 
 
 Usage Reporting Configuration
@@ -533,7 +533,7 @@ Usage Report Preview
 
 *(introduced: version 1.3)*\ 
 
-An Administrator of Central may opt in to sending periodic reports summarizing usage. Configuration of this reporting is described `here </reference/system-endpoints/usage-reporting-configuration>`__. For added transparency, the API provides a preview of the reported metrics.
+An Administrator of Central may opt in to sending periodic reports summarizing usage. Configuration of this reporting is described `here </central-api-system-endpoints/#usage-reporting-configuration>`__. For added transparency, the API provides a preview of the reported metrics.
 
 Getting the Usage Report preview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

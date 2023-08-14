@@ -3,7 +3,7 @@
 Accounts and Users
 =======================================================================================================================
 
-Today, there are two types of accounts: ``Users``\ , which are the administrative accounts held by staff members managing the data collection process, and ``App Users``\ , which are restricted access keys granted per Form within a Project to data collection clients in the field. Although both of these entities are backed by ``Actor``\ s as we explain in the `Authentication section </reference/authentication>`__ above, there is not yet any way to directly create or manipulate an Actor. Today, you can only create, manage, and delete Users and App Users.
+Today, there are two types of accounts: ``Users``\ , which are the administrative accounts held by staff members managing the data collection process, and ``App Users``\ , which are restricted access keys granted per Form within a Project to data collection clients in the field. Although both of these entities are backed by ``Actor``\ s as we explain in the `Authentication section </central-api-authentication>`__ above, there is not yet any way to directly create or manipulate an Actor. Today, you can only create, manage, and delete Users and App Users.
 
 Actors (and thus Users) may be granted rights via Roles. The ``/roles``\  Roles API is open for all to access, which describes all defined roles on the server. Getting information for an individual role from that same API will reveal which verbs are associated with each role: some role might allow only ``submission.create``\  and ``submission.update``\ , for example.
 
@@ -243,7 +243,7 @@ All that is required to create a new user is an email address. That email addres
 
 Optionally, a password may also be supplied as a part of this request. If it is, the account is immediately usable with the given credentials. However, an email will still be dispatched with claim instructions as above.
 
-Users are not able to do anything upon creation besides log in and change their own profile information. To allow Users to perform useful actions, you will need to `assign them one or more Roles </reference/accounts-and-users/assignments>`__.
+Users are not able to do anything upon creation besides log in and change their own profile information. To allow Users to perform useful actions, you will need to `assign them one or more Roles </central-api-accounts-and-users/#assignments>`__.
 
 .. dropdown:: Request
 
@@ -2160,7 +2160,7 @@ Creating a new App User
 
 The only information required to create a new ``App User``\  is its ``displayName``\  (this is called "Nickname" in the administrative panel).
 
-When an App User is created, they are assigned no rights. They will be able to authenticate and list forms on a mobile client, but the form list will be empty, as the list only includes Forms that the App User has read access to. Once an App User is created, you'll likely wish to use the `Form Assignments resource </reference/forms/form-assignments>`__ to actually assign the ``app-user``\  role to them for the Forms you wish.
+When an App User is created, they are assigned no rights. They will be able to authenticate and list forms on a mobile client, but the form list will be empty, as the list only includes Forms that the App User has read access to. Once an App User is created, you'll likely wish to use the `Form Assignments resource </central-api-form-management/#form-assignments>`__ to actually assign the ``app-user``\  role to them for the Forms you wish.
 
 .. dropdown:: Request
 
@@ -2462,7 +2462,7 @@ Deleting a App User
 
 **DELETE /v1/projects/{projectId}/app-users/{id}**
 
-You don't have to delete a ``App User``\  in order to cut off its access. Using a ``User``\ 's credentials you can simply `log the App User's session out </reference/authentication/app-user-authentication/revoking-an-app-user>`__ using its token. This will end its session without actually deleting the App User, which allows you to still see it in the configuration panel and inspect its history. This is what the administrative panel does when you choose to "Revoke" the App User.
+You don't have to delete a ``App User``\  in order to cut off its access. Using a ``User``\ 's credentials you can simply `log the App User's session out </central-api-authentication/#revoking-an-app-user>`__ using its token. This will end its session without actually deleting the App User, which allows you to still see it in the configuration panel and inspect its history. This is what the administrative panel does when you choose to "Revoke" the App User.
 
 That said, if you do wish to delete the App User altogether, you can do so by issuing a ``DELETE``\  request to its resource path. App Users cannot delete themselves.
 
@@ -2831,7 +2831,7 @@ Assignments
 
 There are multiple Assignments resources. This one, upon the API root (``/v1/assignments``\ ), manages Role assignment to the entire system (e.g. if you are assigned a Role that gives you ``form.create``\ , you may create a form anywhere on the entire server).
 
-The `Project Assignments resource </reference/project-management/project-assignments>`__, nested under Projects, manages Role assignment to that Project in particular, and all objects within it. And the `Form Assignments resource </reference/forms/form-assignments>`__ allows even more granular assignments, to specific Forms within a Project. All of these resources have the same structure and take and return the same data types.
+The `Project Assignments resource </central-api-project-management/#project-assignments>`__, nested under Projects, manages Role assignment to that Project in particular, and all objects within it. And the `Form Assignments resource </central-api-form-management/#form-assignments>`__ allows even more granular assignments, to specific Forms within a Project. All of these resources have the same structure and take and return the same data types.
 
 Assignments may be created (``POST``\ ) and deleted (``DELETE``\ ) like any other resource in the system. Here, creating an Assignment grants the referenced Actor the verbs associated with the referenced Role upon all system objects. The pathing for creation and deletion is not quite REST-standard: we represent the relationship between Role and Actor directly in the URL rather than as body data: ``assignments/{role}/{actor}``\  represents the assignment of the given Role to the given Actor.
 
@@ -2840,7 +2840,7 @@ Listing all Assignments
 
 **GET /v1/assignments**
 
-This will list every server-wide assignment, in the form of ``actorId``\ /``roleId``\  pairs. It will *not*\  list Project-specific Assignments. To find those, you will need the `Assignments subresource </reference/project-management/project-assignments>`__ within Projects.
+This will list every server-wide assignment, in the form of ``actorId``\ /``roleId``\  pairs. It will *not*\  list Project-specific Assignments. To find those, you will need the `Assignments subresource </central-api-project-management/#project-assignments>`__ within Projects.
 
 This endpoint supports retrieving extended metadata; provide a header ``X-Extended-Metadata: true``\  to expand the ``actorId``\  into a full ``actor``\  objects. The Role reference remains a numeric ID.
 

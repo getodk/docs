@@ -13,17 +13,17 @@ ODK Central is *not*\  a fully compliant OpenRosa server. OpenRosa requires comp
 
 3. `**Form Submission API**\  <https://bitbucket.org/javarosa/javarosa/wiki/FormSubmissionAPI>`__, which defines how Submissions are submitted to the server. ODK Central is fully compliant with this component.
 
-4. `**Authentication API**\  <https://bitbucket.org/javarosa/javarosa/wiki/AuthenticationAPI>`__, which defines how users authenticate with the server. ODK Central provides `three authentication methods </reference/authentication>`__. One of these is HTTPS Basic Authentication, which is recommended by the OpenRosa specification. However, because `we do not follow the try/retry pattern </reference/authentication/https-basic-authentication/using-basic-authentication>`__ required by the OpenRosa and the RFC specification, ODK Central is *not compliant*\  with this component. Our recommendation generally is to use `App User Authentication </reference/authentication/app-user-authentication>`__ when submitting data from survey clients.
+4. `**Authentication API**\  <https://bitbucket.org/javarosa/javarosa/wiki/AuthenticationAPI>`__, which defines how users authenticate with the server. ODK Central provides `three authentication methods </central-api-authentication>`__. One of these is HTTPS Basic Authentication, which is recommended by the OpenRosa specification. However, because `we do not follow the try/retry pattern </central-api-authentication/#using-basic-authentication>`__ required by the OpenRosa and the RFC specification, ODK Central is *not compliant*\  with this component. Our recommendation generally is to use `App User Authentication </central-api-authentication/#app-user-authentication>`__ when submitting data from survey clients.
 
 5. `**Form Discovery (Listing) API**\  <https://bitbucket.org/javarosa/javarosa/wiki/FormListAPI>`__, which returns a listing of Forms available for survey clients to download and submit to. At this time, ODK Central is *partially compliant*\  with this component: the server will return a correctly formatted ``formList``\  response, but it does not currently handle the optional filter parameters.
 
 In practical usage, ODK survey clients like Collect will interact with Central in three places:
 
-* The OpenRosa Form Listing API, `documented below </reference/openrosa-endpoints/openrosa-form-listing-api>`__, lists the Forms the client can retrieve.
+* The OpenRosa Form Listing API, `documented below </central-api-openrosa-endpoints/#openrosa-form-listing-api>`__, lists the Forms the client can retrieve.
 
-* The `Form XML download </reference/forms/individual-form/retrieving-form-xml>`__ endpoint, a part of the standard REST API for Forms, is linked in the Form Listing response and allows clients to then download the ODK XForms XML for each form.
+* The `Form XML download </central-api-form-management/#retrieving-form-xml>`__ endpoint, a part of the standard REST API for Forms, is linked in the Form Listing response and allows clients to then download the ODK XForms XML for each form.
 
-* The OpenRosa Submission API, `documented below </reference/openrosa-endpoints/openrosa-form-submission-api>`__, allows survey clients to submit new Submissions to any Form.
+* The OpenRosa Submission API, `documented below </central-api-openrosa-endpoints/#openrosa-form-submission-api>`__, allows survey clients to submit new Submissions to any Form.
 
 The Form Listing and Submission APIs are partitioned by Project, and their URLs are nested under the Project in question as a result. When you List or Submit, you will only be able to get forms from and submit submissions to that particular Project at a time.
 
@@ -327,7 +327,7 @@ This is the fully standards-compliant implementation of the `OpenRosa Form Manif
 
 A Manifest document is available at this resource path for any form in the system. However:
 
-* A link to this document will not be given in the `Form Listing API </reference/openrosa-endpoints/openrosa-form-listing-api>`__ unless we expect the form to have media or data file attachments based on the XForms definition of the form.
+* A link to this document will not be given in the `Form Listing API </central-api-openrosa-endpoints/#openrosa-form-listing-api>`__ unless we expect the form to have media or data file attachments based on the XForms definition of the form.
 
 * The Manifest will only output information for files the server actually has in its possession. Any missing expected files will be omitted, as we cannot provide a ``hash``\  or ``downloadUrl``\  for them.
 
@@ -450,7 +450,7 @@ To facilitate testing, there is an alternative collection of OpenRosa endpoints 
 
 Otherwise, and in particular if you plan to test your form in Collect or another OpenRosa-compliant client, you will likely want to use the ``/test``\  Draft Token prefix. It functions similarly to the standard OpenRosa support, with App User authentication, but instead of a ``/key``\  route prefix they feature a ``/test``\  route prefix, and they point directly at each form (example: ``/test/lSpA…EjR7/projects/1/forms/myform/draft``\ ).
 
-You can get the appropriate Draft Token for any given draft by `requesting the Draft Form </reference/forms/draft-form/getting-draft-form-details>`__.
+You can get the appropriate Draft Token for any given draft by `requesting the Draft Form </central-api-form-management/#getting-draft-form-details>`__.
 
 The ``/test``\  tokens are not actual App Users, and Central does not keep track of user identity when they are used.
 
@@ -461,7 +461,7 @@ OpenRosa Form Listing API
 
 **GET /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/formList**
 
-Identical to the `non-Draft version </reference/openrosa-endpoints/openrosa-form-listing-api/openrosa-form-listing-api>`__, but will only list the Draft Form to be tested.
+Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-form-listing-api>`__, but will only list the Draft Form to be tested.
 
 .. dropdown:: Request
 
@@ -551,7 +551,7 @@ OpenRosa Form Submission API
 
 **POST /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/submission**
 
-Identical to the `non-Draft version </reference/openrosa-endpoints/openrosa-form-submission-api/openrosa-form-submission-api>`__, but will only submit to (and allow submissions to) the Draft Form to be tested.
+Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-form-submission-api>`__, but will only submit to (and allow submissions to) the Draft Form to be tested.
 
 .. dropdown:: Request
 
@@ -723,7 +723,7 @@ OpenRosa Form Manifest API
 
 **GET /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/manifest**
 
-Identical to the `non-Draft version </reference/openrosa-endpoints/openrosa-form-manifest-api/openrosa-form-manifest-api>`__.
+Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-form-manifest-api>`__.
 
 .. dropdown:: Request
 
@@ -840,7 +840,7 @@ Downloading a Form Attachment
 
 **GET /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/attachments/{filename}**
 
-Identical to the `non-Draft version </reference/forms/individual-form/downloading-a-form-attachment>`__.
+Identical to the `non-Draft version </central-api-form-management/#downloading-a-form-attachment>`__.
 
 .. dropdown:: Request
 
@@ -901,7 +901,7 @@ Identical to the `non-Draft version </reference/forms/individual-form/downloadin
 
     .. tab-item:: Schema
 
-      **Identical to the `non-Draft version &lt;/reference/forms/individual-form/downloading-a-form-attachment&gt;`__.**
+      **Identical to the `non-Draft version &lt;/central-api-form-management/#downloading-a-form-attachment&gt;`__.**
 
       .. list-table::
         :class: schema-table-wrap

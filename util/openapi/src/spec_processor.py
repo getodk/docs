@@ -103,6 +103,7 @@ class SpecProcessor:
         result = []
 
         for code, details in operation.get('responses').items():
+          if details.get('content') is None: continue
           contents = list(details.get('content'))
           if len(contents) == 0: continue
           # we support just one content type for one status code

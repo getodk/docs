@@ -594,7 +594,7 @@ Creating a new Form
 
 When creating a ``Form``\ , the only required data is the actual XForms XML or XLSForm itself. Use it as the ``POST``\  body with a ``Content-Type``\  header of ``application/xml``\  (``text/xml``\  works too), and the Form will be created.
 
-As of Version 0.8, Forms will by default be created in Draft state, accessible under ``/projects/…/forms/…/draft``\ . The Form itself will not have a public XML definition, and will not appear for download onto mobile devices. You will need to `publish the form </reference/forms/draft-form/publishing-a-draft-form>`__ to finalize it for data collection. To disable this behaviour, and force the new Form to be immediately ready, you can pass the querystring option ``?publish=true``\ .
+As of Version 0.8, Forms will by default be created in Draft state, accessible under ``/projects/…/forms/…/draft``\ . The Form itself will not have a public XML definition, and will not appear for download onto mobile devices. You will need to `publish the form </central-api-form-management/#publishing-a-draft-form>`__ to finalize it for data collection. To disable this behaviour, and force the new Form to be immediately ready, you can pass the querystring option ``?publish=true``\ .
 
 For XLSForm upload, either ``.xls``\  or ``.xlsx``\  are accepted. You must provide the ``Content-Type``\  request header corresponding to the file type: ``application/vnd.openxmlformats-officedocument.spreadsheetml.sheet``\  for ``.xlsx``\  files, and ``application/vnd.ms-excel``\  for ``.xls``\  files. You must also provide an ``X-XlsForm-FormId-Fallback``\  request header with the ``formId``\  you want the resulting form to have, if the spreadsheet does not already specify. This header field accepts percent-encoded values to support Unicode characters and other non-ASCII values.
 
@@ -610,9 +610,9 @@ You will get following workflow warnings while creating a new form or uploading 
 
 **Creating Datasets with Forms**\ 
 
-Starting from Version 2022.3, a Form can also create a Dataset by defining a Dataset schema in the Form definition (XForms XML or XLSForm). When a Form with a Dataset schema is uploaded, a Dataset and its Properties are created and a ``dataset.create``\  event is logged in the Audit logs. The state of the Dataset is dependent on the state of the Form; you will need to publish the Form to publish the Dataset. Datasets in the Draft state are not returned in `Dataset APIs <#reference/datasets>`__, however the `Related Datasets <#reference/forms/related-datasets/draft-form-dataset-diff>`__ API for the Form can be called to get the Dataset and its Properties.
+Starting from Version 2022.3, a Form can also create a Dataset by defining a Dataset schema in the Form definition (XForms XML or XLSForm). When a Form with a Dataset schema is uploaded, a Dataset and its Properties are created. The state of the Dataset is dependent on the state of the Form; you will need to publish the Form to publish the Dataset. Datasets in the Draft state are not returned in `Dataset APIs </central-api-dataset-management>`__, however the `Related Datasets </central-api-form-management/#draft-form-dataset-diff>`__ API for the Form can be called to get the Dataset and its Properties.
 
-It is possible to define the schema of a Dataset in multiple Forms. Such Forms can be created and published in any order. The creation of the first Form will generate a ``dataset.create``\  event in Audit logs and subsequent Form creation will generate ``dataset.update``\  events. Publishing any of the Forms will also publish the Dataset and will generate a ``dataset.update.publish``\  event. The state of a Property of a Dataset is also dependent on the state of the Form that FIRST defines that Property, which means if a Form is in the Draft state then the Properties defined by that Form will not appear in the `.csv file <#reference/datasets/download-dataset/download-dataset>`__ of the Dataset.
+It is possible to define the schema of a Dataset in multiple Forms. Such Forms can be created and published in any order. Publishing any of the Forms will also publish the Dataset and will generate a ``dataset.create``\  event; ``dataset.update``\  events are generated in Audit logs when a Form adds a new property in the Dataset. The state of a Property of a Dataset is also dependent on the state of the Form that FIRST defines that Property, which means if a Form is in the Draft state then the Properties defined by that Form will not appear in the `.csv file </central-api-dataset-management/#download-dataset>`__ of the Dataset.
 
 .. dropdown:: Request
 
@@ -1393,7 +1393,7 @@ Deleting a Form
 
 **DELETE /v1/projects/{projectId}/forms/{xmlFormId}**
 
-When a Form is deleted, it goes into the Trash section, but it can now be restored from the Trash. After 30 days in the Trash, the Form and all of its resources and submissions will be automatically purged. If your goal is to prevent it from showing up on survey clients like ODK Collect, consider setting its ``state``\  to ``closing``\  or ``closed``\  instead (see `Modifying a Form </reference/forms/individual-form/modifying-a-form>`__ just above for more details).
+When a Form is deleted, it goes into the Trash section, but it can now be restored from the Trash. After 30 days in the Trash, the Form and all of its resources and submissions will be automatically purged. If your goal is to prevent it from showing up on survey clients like ODK Collect, consider setting its ``state``\  to ``closing``\  or ``closed``\  instead (see `Modifying a Form </central-api-form-management/#modifying-a-form>`__ just above for more details).
 
 .. dropdown:: Request
 
@@ -2319,6 +2319,8 @@ Downloading a Form Attachment
 
 To download a single file, use this endpoint. The appropriate ``Content-Disposition``\  (attachment with a filename) and ``Content-Type``\  (based on the type supplied at upload time) will be given.
 
+This endpoint supports ``ETag``\ , which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, it returns a value in ``ETag``\  header, you can pass this value in the header ``If-None-Match``\  of subsequent requests. If the file has not been changed since the previous request, you will receive ``304 Not Modified``\  response otherwise you'll get the latest file.
+
 .. dropdown:: Request
 
   **Parameters**
@@ -2366,16 +2368,15 @@ To download a single file, use this endpoint. The appropriate ``Content-Disposit
 
       .. code-block::
 
-          "(binary data)\n"
+          "(binary data)"
 
     .. tab-item:: Schema
 
-      **To download a single file, use this endpoint. The appropriate ``Content-Disposition``\  (attachment with a filename) and ``Content-Type``\  (based on the type supplied at upload time) will be given.**
 
       .. list-table::
         :class: schema-table-wrap
 
-        * - 
+        * - object
 
 
               
@@ -2386,7 +2387,7 @@ To download a single file, use this endpoint. The appropriate ``Content-Disposit
 
   **HTTP Status: 403**
 
-  Content Type: {the MIME type of the attachment file itself}
+  Content Type: application/json
 
   .. tab-set::
 
@@ -2395,8 +2396,8 @@ To download a single file, use this endpoint. The appropriate ``Content-Disposit
       .. code-block::
 
           {
-            "code": "pencil",
-            "message": "pencil"
+            "code": "403.1",
+            "message": "The authenticated actor does not have rights to perform that action."
           }
 
     .. tab-item:: Schema
@@ -2753,7 +2754,7 @@ Draft Forms allow you to test and fix issues with Forms before they are finalize
 
 You can create or replace the current Draft Form at any time by ``POST``\ ing to the ``/draft``\  subresource on the Form, and you can publish the current Draft by ``POST``\ ing to ``/draft/publish``\ .
 
-When a Draft Form is created, a Draft Token is also created for it, which can be found in Draft Form responses at ``draftToken``\ . This token allows you to `submit test Submissions to the Draft Form </reference/submissions/draft-submissions/creating-a-submission>`__ through clients like Collect. If the Draft is published or deleted, the token will be deactivated. But if you replace the Draft without first deleting it, the existing Draft Token will be carried forward, so that you do not have to reconfigure your device.
+When a Draft Form is created, a Draft Token is also created for it, which can be found in Draft Form responses at ``draftToken``\ . This token allows you to `submit test Submissions to the Draft Form </central-api-submission-management/#creating-a-submission>`__ through clients like Collect. If the Draft is published or deleted, the token will be deactivated. But if you replace the Draft without first deleting it, the existing Draft Token will be carried forward, so that you do not have to reconfigure your device.
 
 Getting Draft Form Details
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2956,7 +2957,7 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
                   - string
                   
-                    The test token to use to submit to this draft form. See `Draft Testing Endpoints </reference/submissions/draft-submissions>`__.
+                    The test token to use to submit to this draft form. See `Draft Testing Endpoints </central-api-submission-management/#draft-submissions>`__.
 
                     Example: ``lSpAIeksRu1CNZs7!qjAot2T17dPzkrw9B4iTtpj7OoIJBmXvnHM8z8Ka4QPEjR7``
                 * - enketoId
@@ -3022,7 +3023,7 @@ Creating a Draft Form
 
 **POST /v1/projects/{projectId}/forms/{xmlFormId}/draft**
 
-``POST``\ ing here will create a new Draft Form on the given Form. For the most part, it takes the same parameters as the `Create Form request </reference/forms/forms/creating-a-new-form>`__: you can submit XML or Excel files, you can provide ``ignoreWarnings``\  if you'd like.
+``POST``\ ing here will create a new Draft Form on the given Form. For the most part, it takes the same parameters as the `Create Form request </central-api-form-management/#creating-a-new-form>`__: you can submit XML or Excel files, you can provide ``ignoreWarnings``\  if you'd like.
 
 Additionally, however, you may ``POST``\  with no ``Content-Type``\  and an empty body to create a Draft Form with a copy of the definition (XML, XLS, etc) that is already published, if there is one. This can be useful if you don't wish to update the Form definition itself, but rather one or more Form Attachments.
 
@@ -3032,11 +3033,11 @@ When a Draft is created, the expected Form Attachments are computed and slots ar
 
 Even if a Draft exists, you can always replace it by ``POST``\ ing here again. In that case, the attachments that exist on the Draft will similarly be copied over to the new Draft. If you wish to copy from the published version instead, you can do so by first ``DELETE``\ ing the extant Draft.
 
-Draft ``version``\  conflicts are allowed with prior versions of a Form while in Draft state. If you attempt to `publish the Form </reference/forms/draft-form/publishing-a-draft-form>`__ without correcting the conflict, the publish operation will fail. You can request that Central update the version string on your behalf as part of the publish operation to avoid this: see that endpoint for more information.
+Draft ``version``\  conflicts are allowed with prior versions of a Form while in Draft state. If you attempt to `publish the Form </central-api-form-management/#draft-form/publishing-a-draft-form>`__ without correcting the conflict, the publish operation will fail. You can request that Central update the version string on your behalf as part of the publish operation to avoid this: see that endpoint for more information.
 
 The ``xmlFormId``\ , however, must exactly match that of the Form overall, or the request will be rejected.
 
-Starting from Version 2022.3, a Draft Form can also create or update a Dataset by defining a Dataset schema in the Form definition. The state of the Dataset and its Properties is dependent on the state of the Form, see `Creating a new form <#reference/forms/forms/creating-a-new-form>`__ for more details.
+Starting from Version 2022.3, a Draft Form can also create or update a Dataset by defining a Dataset schema in the Form definition. The state of the Dataset and its Properties is dependent on the state of the Form, see `Creating a new form </central-api-form-management/#creating-a-new-form>`__ for more details.
 
 .. dropdown:: Request
 
@@ -3900,6 +3901,8 @@ To upload a binary to an expected file slot, ``POST``\  the binary to its endpoi
 
 As of version 2022.3, if there is already a Dataset linked to this attachment, it will be unlinked and replaced with the uploaded file.
 
+This endpoint supports ``ETag``\  header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in ``ETag``\  header. If you pass that value in the ``If-None-Match``\  header of a subsequent request, then if the file has not been changed since the previous request, you will receive ``304 Not Modified``\  response; otherwise you'll get the latest file.
+
 .. dropdown:: Request
 
   **Parameters**
@@ -4384,7 +4387,7 @@ Getting Draft Form Schema Fields
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft/fields**
 
-Identical to the `same request </reference/forms/individual-form/getting-form-schema-fields>`__ for the published Form, but will return the fields related to the current Draft version.
+Identical to the `same request </central-api-form-management/#getting-form-schema-fields>`__ for the published Form, but will return the fields related to the current Draft version.
 
 .. dropdown:: Request
 
@@ -4570,7 +4573,7 @@ If you wish for the ``version``\  to be set on your behalf as part of the publis
 
 Once the Draft is published, there will no longer be a Draft version of the form.
 
-Starting with Version 2022.3, publishing a Draft Form that defines a Dataset schema will also publish the Dataset. It will generate ``dataset.update.publish``\  event in Audit logs and make the Dataset available in `Datasets APIs <#reference/datasets>`__
+Starting with Version 2022.3, publishing a Draft Form that defines a Dataset schema will also publish the Dataset. It will generate ``dataset.create``\  event in Audit logs and make the Dataset available in `Datasets APIs </central-api-dataset-management>`__. If the Dataset is already published and the Form adds new properties then ``dataset.update``\  event will be generated.
 
 .. dropdown:: Request
 
@@ -5954,6 +5957,8 @@ Downloading a Form Version Attachment
 
 To download a single file, use this endpoint. The appropriate ``Content-Disposition``\  (attachment with a filename) and ``Content-Type``\  (based on the type supplied at upload time) will be given.
 
+This endpoint supports ``ETag``\  header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in ``ETag``\  header. If you pass that value in the ``If-None-Match``\  header of a subsequent request, then if the file has not been changed since the previous request, you will receive ``304 Not Modified``\  response; otherwise you'll get the latest file.
+
 .. dropdown:: Request
 
   **Parameters**
@@ -6009,16 +6014,15 @@ To download a single file, use this endpoint. The appropriate ``Content-Disposit
 
       .. code-block::
 
-          "(binary data)\n"
+          "(binary data)"
 
     .. tab-item:: Schema
 
-      **To download a single file, use this endpoint. The appropriate ``Content-Disposition``\  (attachment with a filename) and ``Content-Type``\  (based on the type supplied at upload time) will be given.**
 
       .. list-table::
         :class: schema-table-wrap
 
-        * - 
+        * - object
 
 
               
@@ -6029,7 +6033,7 @@ To download a single file, use this endpoint. The appropriate ``Content-Disposit
 
   **HTTP Status: 403**
 
-  Content Type: {the MIME type of the attachment file itself}
+  Content Type: application/json
 
   .. tab-set::
 
@@ -6038,8 +6042,8 @@ To download a single file, use this endpoint. The appropriate ``Content-Disposit
       .. code-block::
 
           {
-            "code": "pencil",
-            "message": "pencil"
+            "code": "403.1",
+            "message": "The authenticated actor does not have rights to perform that action."
           }
 
     .. tab-item:: Schema
@@ -6079,7 +6083,7 @@ Getting Form Version Schema Fields
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}/fields**
 
-Identical to the `same request </reference/forms/individual-form/getting-form-schema-fields>`__ for the published Form, but will return the fields related to the specified version.
+Identical to the `same request </central-api-form-management/#getting-form-schema-fields>`__ for the published Form, but will return the fields related to the specified version.
 
 .. dropdown:: Request
 
@@ -6266,9 +6270,9 @@ Form Assignments
 
 *(introduced: version 0.7)*\ 
 
-There are multiple Assignments resources. This one, specific to the Form it is nested within, only governs Role assignments to that Form. Assigning an Actor a Role that grants, for example, a verb ``submission.create``\ , allows that Actor to create a submission to this Form alone. It is also possible to assign umbrella rights to a whole Project and therefore all Forms within it: see the `Project Assignments resource </reference/project-management/project-assignments>`__ for information about this.
+There are multiple Assignments resources. This one, specific to the Form it is nested within, only governs Role assignments to that Form. Assigning an Actor a Role that grants, for example, a verb ``submission.create``\ , allows that Actor to create a submission to this Form alone. It is also possible to assign umbrella rights to a whole Project and therefore all Forms within it: see the `Project Assignments resource </central-api-project-management/#project-assignments>`__ for information about this.
 
-The `sitewide Assignments resource </reference/accounts-and-users/assignments>`__, at the API root, manages Role assignments for all objects across the server. Apart from this difference in scope, the introduction to that section contains information useful for understanding the following endpoints.
+The `sitewide Assignments resource </central-api-accounts-and-users/#assignments>`__, at the API root, manages Role assignments for all objects across the server. Apart from this difference in scope, the introduction to that section contains information useful for understanding the following endpoints.
 
 There are only one set of Roles, applicable to either scenario. There are not a separate set of Roles used only upon Projects or Forms.
 
@@ -7005,7 +7009,7 @@ Anybody in possession of a Public Access Link for a Form can use that link to su
 
 The API for Public Links is particularly useful, as it can be used to, for example, programmatically create and send individually customized and controlled links for direct distribution. The user-facing link for a Public Link has the following structure: ``/-/{enketoId}?st={token}``\  where ``-``\  is the Enketo root, ``enketoId``\  is the survey ID of this published Form on Enketo and ``token``\  is a session token to identify this Public Link.
 
-To revoke the access of any Link, terminate its session ``token``\  by issuing ```DELETE /sessions/:token``\  </reference/authentication/session-authentication/logging-out>`__.
+To revoke the access of any Link, terminate its session ``token``\  by issuing ```DELETE /sessions/:token``\  </central-api-authentication/#logging-out>`__.
 
 Listing all Links
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -7685,7 +7689,7 @@ Deleting a Link
 
 **DELETE /v1/projects/{projectId}/forms/{xmlFormId}/public-links/{linkId}**
 
-You can fully delete a link by issuing ``DELETE``\  to its resource. This will remove the Link from the system entirely. If instead you wish to revoke the Link's access to prevent future submission without removing its record entirely, you can issue ```DELETE /sessions/:token``\  </reference/authentication/session-authentication/logging-out>`__.
+You can fully delete a link by issuing ``DELETE``\  to its resource. This will remove the Link from the system entirely. If instead you wish to revoke the Link's access to prevent future submission without removing its record entirely, you can issue ```DELETE /sessions/:token``\  </central-api-authentication/#session-authentication/logging-out>`__.
 
 .. dropdown:: Request
 

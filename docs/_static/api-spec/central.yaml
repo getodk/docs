@@ -10,11 +10,9 @@ info:
 
     To use the API to manage your data collection campaigns, you will need to **authenticate** with it, so it knows who you are and what you are allowed to do. We provide multiple methods to authenticate with the API, as well as different models for managing the identities and permissions in your system. Human staff users that manage data collection campaigns are `User`s, and mobile devices are granted access via `App User`s, and each of these account types have their own way of authenticating. But, these concepts both boil down to `Actor`s, which are how the API actually thinks about authentication and permissioning.
 
-    In future versions of this server, the primary way an API consumer would authenticate with this server will be as a simple Actor through a standard OAuth 2.0 mechanism. That Actor can be granted a constrained set of rights to safely perform only all the actions it needs to. In these early releases, however, password-based authentication as a User is the only way to gain full access to the system.
-
     The `/users` resource can be used to create, manage, and delete **Users**. These are the staff members who have administrative rights on your server, some projects, or both. Additional tasks like resetting a user's password are also available. You could use this API to, for example, synchronize accounts with another system or mass-provision Users.
 
-    Actors (and thus Users) may be granted rights via Assignments. In short, a Roles API is available which describes the defined Roles within the system, each of which allows some set of verbs. The Assignments APIs, in turn, assign Roles to certain Actors upon certain system objects. More information on these may be found below, under [Accounts and Users](/reference/accounts-and-users).
+    Actors (and thus Users) may be granted rights via Assignments. In short, a Roles API is available which describes the defined Roles within the system, each of which allows some set of verbs. The Assignments APIs, in turn, assign Roles to certain Actors upon certain system objects. More information on these may be found below, under [Accounts and Users](/central-api-accounts-and-users).
 
     The rest of system is made up mostly of standard REST resources and subresources, nested under and partitioned by the `/projects` Projects resource. Forms, submissions to those forms, attachments on forms or submissions, and App Users ("App Users" in the management interface), are all subresources within `/projects`. This way, each project is essentially its own sandbox which can be managed and manipulated at will.
 
@@ -34,29 +32,59 @@ info:
 
     Here major and breaking changes to the API are listed by version.
 
+    ### ODK Central v2023.4
+
+    **Added**:
+
+    - [DELETE /sessions/current](/central-api-authentication/#logging-out-current-session) logs out the current session.
+
+    ## ODK Central v2023.3
+
+    **Added**:
+
+    - New endpoint [PATCH /projects/:id/datasets/:name](/central-api-dataset-management/#update-dataset-metadata) to change whether approval of Submission is required to create an Entity.
+    - New [Entities](/central-api-entity-management) endpoints for richer Entity-Based Data Collection workflows. These endpoints provide ways of accessing Entities, as well as the ability to _create_, _update_ and _soft-delete_ Entities via the API!
+      
+      * New endpoint [GET /projects/:id/datasets/:name/entities](/central-api-entities/#entities-metadata) for listing Entities within a Dataset.
+      * New endpoint [GET /projects/:id/datasets/:name/entities/:uuid](/central-api-entities/#getting-entity-details) for getting the metadata, or details, about a specific Entity.
+      * New endpoint [GET /projects/:id/datasets/:name/entities/:uuid/versions](/central-api-entities/#listing-versions) for listing the versions of an Entity.
+      * New endpoint [GET /projects/:id/datasets/:name/entities/:uuid/diffs](/central-api-entities/#getting-changes-between-versions) for getting the changes between versions of an Entity.
+      * New endpoint [GET /projects/:id/datasets/:name/entities/:uuid/audits](/central-api-entities/#entity-audit-log) for getting the server audit logs about a specific Entity.
+      * New endpoint [POST /projects/:id/datasets/:name/entities](/central-api-entities/#creating-an-entity) for creating an Entity from JSON.
+      * New endpoint [PATCH /projects/:id/datasets/:name/entities/:uuid](/central-api-entities/#updating-an-entity) for updating the data or label of an Entity.
+      * New endpoint [DELETE /projects/:id/datasets/:name/entities/:uuid](/central-api-entities/#deleting-an-entity) for soft-deleting an Entity.
+
+    **Changed**:
+
+    - ETag support has been added for [Download Dataset](/central-api-dataset-management/#download-dataset) and [Download Form Attachment](/central-api-form-management/#downloading-a-form-attachment).
+    - The format of [Download Dataset](/central-api-dataset-management/#download-dataset) was changed to more closely match the OData Dataset format.
+    - In the [OData Dataset Service](/central-api-odata-endpoints/#odata-dataset-service), `name` was removed because it is a duplication of an `__id` representing an Entity's UUID.
+    - The `properties` returned by the [Dataset Metadata endpoint](/central-api-dataset-management/#dataset-metadata) each now include a field `odataName`, which represents the way the property name will be sanitized and outputted for OData.
+
+
     ## ODK Central v2023.2
 
     **Added**:
 
-    - New [OData Dataset Service](/central-api-odata-endpoints#odata-dataset-service) for each `Dataset` that provides a list of `Entities`.
+    - New [OData Dataset Service](/central-api-odata-endpoints/#odata-dataset-service) for each `Dataset` that provides a list of `Entities`.
 
     **Changed**:
 
-    - The response of `GET`, `POST`, `PUT` and `PATCH` methods of [Submissions](/central-api-submission-management#listing-all-submissions-on-a-form) endpoint has been updated to include metadata of the `currentVersion` of the Submission.
+    - The response of `GET`, `POST`, `PUT` and `PATCH` methods of [Submissions](/central-api-submission-management/#listing-all-submissions-on-a-form) endpoint has been updated to include metadata of the `currentVersion` of the Submission.
 
     ## ODK Central v2023.1
 
     **Added**:
 
-    - New endpoint [GET /projects/:id/datasets/:name](/central-api-dataset-management#datasets/dataset-metadata) to get the metadata of a Dataset
+    - New endpoint [GET /projects/:id/datasets/:name](/central-api-dataset-management/#dataset-metadata) to get the metadata of a Dataset
 
     **Changed**:
 
-    - [GET /projects/:id/datasets](/central-api-dataset-management#datasets) now supports `X-Extended-Metadata` header to retrieve number of Entities in the Dataset and timestamp of the last Entity
+    - [GET /projects/:id/datasets](/central-api-dataset-management/#datasets) now supports `X-Extended-Metadata` header to retrieve number of Entities in the Dataset and timestamp of the last Entity
 
     - `$select` in OData now supports selecting complex type(groups)
 
-    - [Creating a form](/central-api-form-management#creating-a-new-form) can now return workflow warnings
+    - [Creating a form](/central-api-form-management/#creating-a-new-form) can now return workflow warnings
 
     **Removed**:
 
@@ -69,10 +97,10 @@ info:
     * Introducing [Datasets](/central-api-dataset-management) as the first step of Entity-Based Data Collection! Future versions of Central will build on these new concepts. We consider this functionality experimental and subject to change in the next release.
 
       * Forms can now create Datasets in the project, see [Creating a New Form](/central-api-form-management/#creating-a-new-form) and the [ODK XForms specification](https://getodk.github.io/xforms-spec) for details.
-      * New endpoint [GET /projects/:id/datasets](#reference/datasets/datasets/datasets) for listing Datasets of a project.
-      * New endpoint [GET /projects/:id/datasets/:name/entities.csv](#reference/datasets/download-dataset/download-dataset) to download the Dataset as a CSV file.
-      * New endpoints for [Related Datasets](#reference/forms/related-datasets/) to see the Datasets affected by published and unpublished Forms.
-      * New endpoint [PATCH .../attachments/:name](#reference/forms/draft-form/linking-a-dataset-to-a-draft-form-attachment) to link/unlink a Dataset to a Form Attachment.
+      * New endpoint [GET /projects/:id/datasets](/central-api-dataset-management/#datasets) for listing Datasets of a project.
+      * New endpoint [GET /projects/:id/datasets/:name/entities.csv](/central-api-dataset-management/#download-dataset) to download the Dataset as a CSV file.
+      * New endpoints for [Related Datasets](/central-api-form-management/#related-datasets) to see the Datasets affected by published and unpublished Forms.
+      * New endpoint [PATCH .../attachments/:name](/central-api-form-management/#linking-a-dataset-to-a-draft-form-attachment) to link/unlink a Dataset to a Form Attachment.
 
     * OData Data Document requests now allow limited use of `$select`.
 
@@ -80,18 +108,18 @@ info:
 
     * The following endpoints have changed with the addition of Datasets:
 
-      * The [Extended Project](#reference/project-management/projects/listing-projects) endpoint now returns the `datasets` count for the Project.
-      * The [Extended Form](#reference/forms/forms/list-all-forms) endpoint now returns the `entityRelated` flag if the form defines a Dataset schema.
-      * [DELETE .../draft/attachments/:name](#reference/forms/draft-form/clearing-a-draft-form-attachment) will unlink the Dataset if there's a Dataset link to the attachment.
-      * [GET .../draft/attachments/:filename](#reference/forms/individual-form/downloading-a-form-attachment) will return the Dataset as a CSV file if the attachment is linked to a Dataset.
-      * [GET .../draft/attachments](#reference/forms/draft-form/listing-expected-draft-form-attachments) returns two additional flags `blobExists` and `datasetExists`.
-      * In the [OpenRosa Form Manifest](#reference/openrosa-endpoints/openrosa-form-manifest-api/openrosa-form-manifest-api), if a Form Attachment is linked to a Dataset then the value of `hash` is the MD5 of the last updated timestamp or the MD5 of `1970-01-01 00:00:00` if the Dataset is empty.
+      * The [Extended Project](/central-api-project-management/#listing-projects) endpoint now returns the `datasets` count for the Project.
+      * The [Extended Form](/central-api-form-management/#list-all-forms) endpoint now returns the `entityRelated` flag if the form defines a Dataset schema.
+      * [DELETE .../draft/attachments/:name](/central-api-form-management/#clearing-a-draft-form-attachment) will unlink the Dataset if there's a Dataset link to the attachment.
+      * [GET .../draft/attachments/:filename](central-api-form-management/#downloading-a-form-attachment) will return the Dataset as a CSV file if the attachment is linked to a Dataset.
+      * [GET .../draft/attachments](/central-api-form-management/#listing-expected-draft-form-attachments) returns two additional flags `blobExists` and `datasetExists`.
+      * In the [OpenRosa Form Manifest](central-api-form-management/#openrosa-form-manifest-api), if a Form Attachment is linked to a Dataset then the value of `hash` is the MD5 of the last updated timestamp or the MD5 of `1970-01-01 00:00:00` if the Dataset is empty.
 
     ## ODK Central v1.5.3
 
     **Removed**:
 
-    * It is no longer possible to initiate a new backups configuration (`POST /v1/config/backups/initiate`) or to verify one (`POST /v1/config/backups/verify`). However, for now, if there is an existing configuration, it is still possible to get it or terminate it. If the existing configuration is terminated, it will not be possible to set up a new configuration. Note that it is still possible to download a [Direct Backup](/reference/system-endpoints/direct-backup). For more information about this change, please see [this topic](https://forum.getodk.org/t/backups-to-google-drive-from-central-will-stop-working-after-jan-31st/38895) in the ODK Forum.
+    * It is no longer possible to initiate a new backups configuration (`POST /v1/config/backups/initiate`) or to verify one (`POST /v1/config/backups/verify`). However, for now, if there is an existing configuration, it is still possible to get it or terminate it. If the existing configuration is terminated, it will not be possible to set up a new configuration. Note that it is still possible to download a [Direct Backup](/central-api-system-endpoints/#direct-backup). For more information about this change, please see [this topic](https://forum.getodk.org/t/backups-to-google-drive-from-central-will-stop-working-after-jan-31st/38895) in the ODK Forum.
 
     ## ODK Central v1.5
 
@@ -99,13 +127,13 @@ info:
 
     **Added**:
 
-    * New `description` field returned for each [Project](/reference/project-management/projects) that can be set or updated through `POST`/`PATCH`/`PUT` on `/projects/…`
-        * Note that for the `PUT` request, the Project's description must be included in the request. [Read more](/reference/project-management/projects/deep-updating-project-and-form-details).
+    * New `description` field returned for each [Project](/central-api-project-management/#projects) that can be set or updated through `POST`/`PATCH`/`PUT` on `/projects/…`
+        * Note that for the `PUT` request, the Project's description must be included in the request. [Read more](/central-api-project-management/#deep-updating-project-and-form-details).
 
-    * [Form extended metadata](/reference/forms/individual-form/getting-form-details) now includes a `reviewStates` object of counts of Submissions with specific review states.
+    * [Form extended metadata](/central-api-form-management/#getting-form-details) now includes a `reviewStates` object of counts of Submissions with specific review states.
         * e.g. `{"received":12, "hasIssues":2, "edited":3}`
 
-    * New `?forms=true` option on [Project Listing](/reference/project-management/projects/listing-projects-with-nested-forms) that includes a `formList` field containing a list of extended Forms (and the review state counts described above) associated with that Project.
+    * New `?forms=true` option on [Project Listing](/central-api-project-management/#listing-projects-with-nested-forms) that includes a `formList` field containing a list of extended Forms (and the review state counts described above) associated with that Project.
 
     ## ODK Central v1.4
 
@@ -113,18 +141,18 @@ info:
 
     **Added**:
 
-    * New `?groupPaths` and `?splitSelectMultiples` options on [CSV export paths](/reference/submissions/submissions/exporting-form-submissions-to-csv) which aim to replicate ODK Briefcase export behavior. One simplifies nested path names and the other breaks select multiple options out into multiple columns.
+    * New `?groupPaths` and `?splitSelectMultiples` options on [CSV export paths](/central-api-submission-management/#exporting-form-submissions-to-csv) which aim to replicate ODK Briefcase export behavior. One simplifies nested path names and the other breaks select multiple options out into multiple columns.
 
-    * New `?deletedFields` option on [CSV export](/reference/submissions/submissions/exporting-form-submissions-to-csv) which exports all previously known and deleted fields and data on the form.
+    * New `?deletedFields` option on [CSV export](/central-api-submission-management/#exporting-form-submissions-to-csv) which exports all previously known and deleted fields and data on the form.
 
     * Deleted Forms (either by API `DELETE` or through the web interface) are now placed in a 30 day hold, after which an automated process will permanently delete all data related to the Form.
 
-      * You can see Forms in the 30 day wait by [listing Forms with `?deleted=true`](/reference/forms/forms/list-all-forms). You can also see them in the Trash section on the web interface.
+      * You can see Forms in the 30 day wait by [listing Forms with `?deleted=true`](/central-api-form-management/#list-all-forms). You can also see them in the Trash section on the web interface.
       * `POST /projects/…/forms/…/restore` to restore a Form that hasn't yet been permanently purged.
 
-    * Additional metadata field 'formVersion' on [CSV export](/reference/submissions/submissions/exporting-form-submissions-to-csv), [OData feed](/reference/odata-endpoints/odata-form-service/data-document), and [extended Submission Version request](/reference/submissions/submission-versions/listing-versions) which reports the version of the Form the Submission was _originally_ created with.
+    * Additional metadata field 'formVersion' on [CSV export](/central-api-submission-management/#exporting-form-submissions-to-csv), [OData feed](/central-api-odata-endpoints/#data-document), and [extended Submission Version request](/central-api-submission-management/#listing-versions) which reports the version of the Form the Submission was _originally_ created with.
 
-    * Additional metadata fields `userAgent` and `deviceId` tracked and returned for each [Submission Version](/reference/submissions/submission-versions/listing-versions).
+    * Additional metadata fields `userAgent` and `deviceId` tracked and returned for each [Submission Version](/central-api-submission-management/#listing-versions).
 
       * These are collected automatically upon submission through transmitted client metadata information, similar to the existing `deviceId` field returned with each Submission.
 
@@ -134,17 +162,17 @@ info:
 
     **Added**:
 
-    * `GET /projects/…/forms/…/submissions/…/diffs` will return the [changes between each version](/reference/submissions/submission-versions/getting-changes-between-versions) of a Submission.
+    * `GET /projects/…/forms/…/submissions/…/diffs` will return the [changes between each version](/central-api-submission-management/#getting-changes-between-versions) of a Submission.
 
-    * You can set the [Usage Reporting configuration](/reference/system-endpoints/usage-reporting-configuration) to choose whether the server will share anonymous usage data with the Central team. By default, no usage information will be sent at all.
+    * You can set the [Usage Reporting configuration](/central-api-system-endpoints/#usage-reporting-configuration) to choose whether the server will share anonymous usage data with the Central team. By default, no usage information will be sent at all.
 
-    * You can also [preview the Usage Report](/reference/system-endpoints/usage-report-preview) to see exactly what information would be sent in a Usage Report.
+    * You can also [preview the Usage Report](/central-api-system-endpoints/#usage-report-preview) to see exactly what information would be sent in a Usage Report.
 
     **Changed**:
 
-    * Additional actions are now logged in the [Server Audit Log](/reference/system-endpoints/server-audit-logs):
+    * Additional actions are now logged in the [Server Audit Log](/central-api-system-endpoints/#server-audit-logs):
 
-      * A `user.session.create` action will be logged when a User [logs in using Session Authentication](/reference/authentication/session-authentication/logging-in).
+      * A `user.session.create` action will be logged when a User [logs in using Session Authentication](/central-api-authentication/#logging-in).
       * A `form.submissions.export` action will be logged when a User exports Form Submissions to CSV.
 
     * The Submission update timestamp is now included in OData (as `__system/updatedAt`). Resources that accept the `$filter` query parameter can be filered on `__system/updatedAt`.
@@ -179,7 +207,7 @@ info:
 
     * OData `$filter` queries may now reference the new `__system/reviewState` metadata field.
 
-    * There is now a [data download path](/reference/odata-endpoints/odata-form-service/data-download-path) you can direct users to which eases media file access.
+    * There is now a [data download path](/central-api-odata-endpoints/#data-download-path) you can direct users to which eases media file access.
 
     * Submissions now have an `instanceName` field which reflects the `<instanceName/>` tag on the submitted XML.
 
@@ -221,13 +249,13 @@ info:
 
     **Added**:
 
-    * The new [Public Link](/reference/forms/public-access-links) resource lets you create Public Access Links, granting anonymous browser-based access to submit to your Forms using Enketo.
+    * The new [Public Link](/central-api-form-management/#public-access-links) resource lets you create Public Access Links, granting anonymous browser-based access to submit to your Forms using Enketo.
 
     **Changed**:
 
     * The non-extended App User response no longer includes a `createdBy` numeric ID. To retrieve the creator of an App User, request the extended response.
 
-    * We no longer reject the request if multiple authentication schemes are presented, and instead document the priority order of the different schemes [here](/reference/authentication).
+    * We no longer reject the request if multiple authentication schemes are presented, and instead document the priority order of the different schemes [here](/central-api-authentication).
 
     ## ODK Central v0.9
 
@@ -235,7 +263,7 @@ info:
 
     **Changed**:
 
-    * The [OpenRosa Form Listing API](/reference/openrosa-endpoints/openrosa-form-listing-api) has been modified to always require authentication. If a valid Actor is authenticated at all, a form list will always be returned, filtered by what that Actor is allowed to access.
+    * The [OpenRosa Form Listing API](/central-api-openrosa-endpoints/#openrosa-form-listing-api) has been modified to always require authentication. If a valid Actor is authenticated at all, a form list will always be returned, filtered by what that Actor is allowed to access.
 
     ## ODK Central v0.8
 
@@ -245,9 +273,9 @@ info:
 
     * Draft Forms and publishing, and archived Form versions.
 
-      * This includes [a subresource](/reference/forms/draft-form) at `/projects/…/forms/…/draft`,
-      * and [another](/reference/forms/published-form-versions) at `/projects/…/forms/…/versions`,
-      * and a [new collection of OpenRosa endpoints](/reference/openrosa-endpoints/draft-testing-endpoints), under `/test/…/projects/…/forms/…/draft`, for submitting test submissions to the draft version of the form.
+      * This includes [a subresource](/central-api-form-management/#draft-form) at `/projects/…/forms/…/draft`,
+      * and [another](/central-api-form-management/#published-form-versions) at `/projects/…/forms/…/versions`,
+      * and a [new collection of OpenRosa endpoints](/central-api-openrosa-endpoints/#draft-testing-endpoints), under `/test/…/projects/…/forms/…/draft`, for submitting test submissions to the draft version of the form.
 
     * `GET /projects/…/forms/…/fields`, which replaces `GET /projects/…/forms/….schema.json`.
 
@@ -269,10 +297,10 @@ info:
 
     **Added**:
 
-    * Form-specific [Assignments resource](/reference/forms/form-assignments) at `projects/…/forms/…/assignments`, allowing granular role assignments on a per-Form basis.
+    * Form-specific [Assignments resource](/central-api-form-management/#form-assignments) at `projects/…/forms/…/assignments`, allowing granular role assignments on a per-Form basis.
 
-      * Relatedly, the [OpenRosa Form Listing API](/reference/openrosa-endpoints/openrosa-form-listing-api) no longer rejects requests outright based on authentication. Rather, it will only return Forms that the authenticated user is allowed to view.
-      * A [new summary API](/reference/project-management/project-assignments/seeing-all-form-assignments-within-a-project) `GET /projects/…/assignments/forms` which returns all assignments on all Forms within a Project, so you don't have to request this information separately for each Form.
+      * Relatedly, the [OpenRosa Form Listing API](/central-api-openrosa-endpoints/#openrosa-form-listing-api) no longer rejects requests outright based on authentication. Rather, it will only return Forms that the authenticated user is allowed to view.
+      * A [new summary API](/central-api-project-management/#seeing-all-form-assignments-within-a-project) `GET /projects/…/assignments/forms` which returns all assignments on all Forms within a Project, so you don't have to request this information separately for each Form.
 
     * `PUT /projects/:id`, which while complex allows you to update many Forms' states and assignments with a single transactional request.
 
@@ -282,7 +310,7 @@ info:
 
     **Changed**:
 
-    * Newly created App Users are no longer automatically granted download and submission access to all Forms within their Project. You will want to use the [Form Assignments resource](/reference/forms/form-assignments) to explicitly grant `app-user` role access to the Forms they should be allowed to see.
+    * Newly created App Users are no longer automatically granted download and submission access to all Forms within their Project. You will want to use the [Form Assignments resource](/central-api-form-management/#form-assignments) to explicitly grant `app-user` role access to the Forms they should be allowed to see.
 
     **Fixed**:
 
@@ -317,7 +345,7 @@ info:
 
     **Removed**:
 
-    * The Extended responses for Forms and Submissions no longer include an `xml` property. To retrieve Form or Submission XML, use the dedicated endpoints for [Form XML](/reference/forms/individual-form/retrieving-form-xml) and [Submission XML](/reference/submissions/submissions/retrieving-submission-xml).
+    * The Extended responses for Forms and Submissions no longer include an `xml` property. To retrieve Form or Submission XML, use the dedicated endpoints for [Form XML](/central-api-form-management/#retrieving-form-xml) and [Submission XML](/central-api-submission-management/#retrieving-submission-xml).
 
     ## ODK Central v0.5
 
@@ -390,12 +418,10 @@ tags:
 
     * `App User`s are only allowed to access the OpenRosa parts of the API: in essence, they are allowed to list forms, download form definitions, and create new submissions against those forms. They can only authenticate using **App User URL**s.
 
-    In a future version of the API, programmatic consumers will be more directly supported as their own Actor type, which can be granted limited permissions and can authenticate over **OAuth 2.0**.
-
     Next, you will find documentation on each of the three authentication methods described above. It is best not to present multiple credentials. If you do, the first _presented_ scheme out of `/key` token, Bearer, Basic, then Cookie will be used for the request. If the multiple schemes are sent at once, and the first matching scheme fails, the request will be immediately rejected.
 - name: Accounts and Users
   description: |-
-    Today, there are two types of accounts: `Users`, which are the administrative accounts held by staff members managing the data collection process, and `App Users`, which are restricted access keys granted per Form within a Project to data collection clients in the field. Although both of these entities are backed by `Actor`s as we explain in the [Authentication section](/reference/authentication) above, there is not yet any way to directly create or manipulate an Actor. Today, you can only create, manage, and delete Users and App Users.
+    Today, there are two types of accounts: `Users`, which are the administrative accounts held by staff members managing the data collection process, and `App Users`, which are restricted access keys granted per Form within a Project to data collection clients in the field. Although both of these entities are backed by `Actor`s as we explain in the [Authentication section](/central-api-authentication) above, there is not yet any way to directly create or manipulate an Actor. Today, you can only create, manage, and delete Users and App Users.
 
     Actors (and thus Users) may be granted rights via Roles. The `/roles` Roles API is open for all to access, which describes all defined roles on the server. Getting information for an individual role from that same API will reveal which verbs are associated with each role: some role might allow only `submission.create` and `submission.update`, for example.
 
@@ -437,11 +463,18 @@ tags:
 
     **Related APIs:**
 
-    - [Implicit creation of Datasets via Forms](#reference/forms/forms/creating-a-new-form)
+    - [Implicit creation of Datasets via Forms](/central-api-form-management/#forms/creating-a-new-form)
 
-    - [Link a Dataset to a Form Attachment](#reference/forms/draft-form/linking-a-dataset-to-a-draft-form-attachment)
+    - [Link a Dataset to a Form Attachment](/central-api-form-management/#linking-a-dataset-to-a-draft-form-attachment)
 
-    - [Get a Form's Related Datasets](#reference/forms/related-datasets)
+    - [Get a Form's Related Datasets](/central-api-form-management/#related-datasets)
+- name: Entity Management
+  description: |-
+    _(introduced: version 2023.3)_
+
+    Version 2023.3 brings further core enhancements to Datasets and Entities, including several new endpoints for accessing information about Entities, as well as the ability to _create_,  _update_, and _soft-delete_ Entities via the API.
+
+    An Entity is a specific person, place, or thing. Datasets represent collections of Entities. More information about how to set up and use Datasets can be found in the [Datasets](/central-api-dataset-management) section of this documentation.
 - name: OpenRosa Endpoints
   description: |-
     [OpenRosa](https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaAPI) is an API standard which accompanies the ODK XForms XML standard, allowing compliant servers and clients to use a common protocol to communicate `Form`s and `Submission`s to each other. When survey clients like ODK Collect and Enketo submit Submission data to a Form, this is the API they use.
@@ -454,17 +487,17 @@ tags:
 
     3. [**Form Submission API**](https://bitbucket.org/javarosa/javarosa/wiki/FormSubmissionAPI), which defines how Submissions are submitted to the server. ODK Central is fully compliant with this component.
 
-    4. [**Authentication API**](https://bitbucket.org/javarosa/javarosa/wiki/AuthenticationAPI), which defines how users authenticate with the server. ODK Central provides [three authentication methods](/reference/authentication). One of these is HTTPS Basic Authentication, which is recommended by the OpenRosa specification. However, because [we do not follow the try/retry pattern](/reference/authentication/https-basic-authentication/using-basic-authentication) required by the OpenRosa and the RFC specification, ODK Central is _not compliant_ with this component. Our recommendation generally is to use [App User Authentication](/reference/authentication/app-user-authentication) when submitting data from survey clients.
+    4. [**Authentication API**](https://bitbucket.org/javarosa/javarosa/wiki/AuthenticationAPI), which defines how users authenticate with the server. ODK Central provides [three authentication methods](/central-api-authentication). One of these is HTTPS Basic Authentication, which is recommended by the OpenRosa specification. However, because [we do not follow the try/retry pattern](/central-api-authentication/#using-basic-authentication) required by the OpenRosa and the RFC specification, ODK Central is _not compliant_ with this component. Our recommendation generally is to use [App User Authentication](/central-api-authentication/#app-user-authentication) when submitting data from survey clients.
 
     5. [**Form Discovery (Listing) API**](https://bitbucket.org/javarosa/javarosa/wiki/FormListAPI), which returns a listing of Forms available for survey clients to download and submit to. At this time, ODK Central is _partially compliant_ with this component: the server will return a correctly formatted `formList` response, but it does not currently handle the optional filter parameters.
 
     In practical usage, ODK survey clients like Collect will interact with Central in three places:
 
-    * The OpenRosa Form Listing API, [documented below](/reference/openrosa-endpoints/openrosa-form-listing-api), lists the Forms the client can retrieve.
+    * The OpenRosa Form Listing API, [documented below](/central-api-openrosa-endpoints/#openrosa-form-listing-api), lists the Forms the client can retrieve.
 
-    * The [Form XML download](/reference/forms/individual-form/retrieving-form-xml) endpoint, a part of the standard REST API for Forms, is linked in the Form Listing response and allows clients to then download the ODK XForms XML for each form.
+    * The [Form XML download](/central-api-form-management/#retrieving-form-xml) endpoint, a part of the standard REST API for Forms, is linked in the Form Listing response and allows clients to then download the ODK XForms XML for each form.
 
-    * The OpenRosa Submission API, [documented below](/reference/openrosa-endpoints/openrosa-form-submission-api), allows survey clients to submit new Submissions to any Form.
+    * The OpenRosa Submission API, [documented below](/central-api-openrosa-endpoints/#openrosa-form-submission-api), allows survey clients to submit new Submissions to any Form.
 
     The Form Listing and Submission APIs are partitioned by Project, and their URLs are nested under the Project in question as a result. When you List or Submit, you will only be able to get forms from and submit submissions to that particular Project at a time.
 
@@ -492,9 +525,9 @@ tags:
     As our focus is on the bulk-export of data from ODK Central so that more advanced analysis tools can handle the data themselves, we do not support most of the features at the Intermediate and above conformance levels, like `$sort` or `$filter`.
 - name: System Endpoints
   description: There are some resources available for getting or setting system information
-    and configuration. You can set the [Usage Reporting configuration](/reference/system-endpoints/usage-reporting-configuration)
-    for the server, retrieve the [Server Audit Logs](/reference/system-endpoints/server-audit-logs),
-    or perform a [Direct Backup](/reference/system-endpoints/direct-backup).
+    and configuration. You can set the [Usage Reporting configuration](/central-api-system-endpoints/#usage-reporting-configuration)
+    for the server, retrieve the [Server Audit Logs](/central-api-system-endpoints/#server-audit-logs),
+    or perform a [Direct Backup](/central-api-system-endpoints/#direct-backup).
 - name: Encryption
   description: |-
     ODK Central supports two types of encryption:
@@ -509,11 +542,11 @@ tags:
 
     The relevant API operations are documented inline above; here we guide you through what exists from a high level.
 
-    To invoke Project Manage Encryption, you may use the web management interface, or you may [POST /projects/…/key](/reference/project-management/projects/enabling-project-managed-encryption).
+    To invoke Project Manage Encryption, you may use the web management interface, or you may [POST /projects/…/key](/central-api-project-management/#enabling-project-managed-encryption).
 
-    To list all the encryption keys associated with the submissions on a given form, you can [GET /projects/…/forms/…/submissions/keys](/reference/submissions/submissions/listing-encryption-keys). This is particularly useful for obtaining the integer numeric ID associated with each key, which will be necessary to decrypt the records, as well as for obtaining reminder hints about each passphrase.
+    To list all the encryption keys associated with the submissions on a given form, you can [GET /projects/…/forms/…/submissions/keys](/central-api-submission-management/#listing-encryption-keys). This is particularly useful for obtaining the integer numeric ID associated with each key, which will be necessary to decrypt the records, as well as for obtaining reminder hints about each passphrase.
 
-    To perform decryption, you can [GET or POST /projects/…/forms/…/submissions.csv.zip](/reference/submissions/submissions/exporting-form-submissions-to-csv) with extra parameters to provide the necessary passphrases. If you are building a browser-based application, it is recommended that you `POST` rather than `GET`: please see the notes in the linked sections for additional details.
+    To perform decryption, you can [GET or POST /projects/…/forms/…/submissions.csv.zip](/central-api-submission-management/#exporting-form-submissions-to-csv) with extra parameters to provide the necessary passphrases. If you are building a browser-based application, it is recommended that you `POST` rather than `GET`: please see the notes in the linked sections for additional details.
 
     Note that the OData JSON API does not (presently) decrypt data. Any encrypted submissions will be returned only with basic metadata, like submission date and user.
 - name: Session Authentication
@@ -547,7 +580,6 @@ tags:
     App Users may only be created, fetched, and manipulated within the nested Projects subresource, as App Users themselves are limited to the Project in which they are created. Through the `App User`s API, you can create, list, and delete the App Users of any given Project. Because they have extremely limited permissions, App Users cannot manage themselves; only `User`s may access this API.
 
     For more information about the `/projects` containing resource, please see the following section.
-
 - name: Roles
   x-parent-tag: Accounts and Users
   description: |-
@@ -556,7 +588,6 @@ tags:
     The Roles API lists and describes each known Role within the system. Right now, Roles may not be created or customized via the API, but this will likely change in the future.
 
     Each Role contains information about the verbs it allows its assignees to perform. Some Roles have a system name associated with them; the Roles may always be referenced by this system name in request URLs, and system Roles are always read-only.
-
 - name: Assignments
   x-parent-tag: Accounts and Users
   description: |-
@@ -564,28 +595,25 @@ tags:
   
     There are multiple Assignments resources. This one, upon the API root (`/v1/assignments`), manages Role assignment to the entire system (e.g. if you are assigned a Role that gives you `form.create`, you may create a form anywhere on the entire server).
   
-    The [Project Assignments resource](/reference/project-management/project-assignments), nested under Projects, manages Role assignment to that Project in particular, and all objects within it. And the [Form Assignments resource](/reference/forms/form-assignments) allows even more granular assignments, to specific Forms within a Project. All of these resources have the same structure and take and return the same data types.
+    The [Project Assignments resource](/central-api-project-management/#project-assignments), nested under Projects, manages Role assignment to that Project in particular, and all objects within it. And the [Form Assignments resource](/central-api-form-management/#form-assignments) allows even more granular assignments, to specific Forms within a Project. All of these resources have the same structure and take and return the same data types.
   
     Assignments may be created (`POST`) and deleted (`DELETE`) like any other resource in the system. Here, creating an Assignment grants the referenced Actor the verbs associated with the referenced Role upon all system objects. The pathing for creation and deletion is not quite REST-standard: we represent the relationship between Role and Actor directly in the URL rather than as body data: `assignments/{role}/{actor}` represents the assignment of the given Role to the given Actor.
-
 - name: Projects
   x-parent-tag: Project Management
   description: |-
     _(introduced: version 0.4)_
 
     You must create a containing Project before you can create any of its subobjects.
-
 - name: Project Assignments
   x-parent-tag: Project Management
   description: |-
     _(introduced: version 0.5)_
 
-    There are multiple Assignments resources. This one, specific to the Project it is nested within, only governs Role assignments to that Project. Assigning an Actor a Role that grants, for example, a verb `submission.create`, allows that Actor to create a submission anywhere within this Project. It is also possible to assign rights only to specific forms for actions related only to that form and its submissions: see the [Form Assignments resource](/reference/forms/form-assignments) for information about this.
+    There are multiple Assignments resources. This one, specific to the Project it is nested within, only governs Role assignments to that Project. Assigning an Actor a Role that grants, for example, a verb `submission.create`, allows that Actor to create a submission anywhere within this Project. It is also possible to assign rights only to specific forms for actions related only to that form and its submissions: see the [Form Assignments resource](/central-api-form-management/#form-assignments) for information about this.
 
-    The [sitewide Assignments resource](/reference/accounts-and-users/assignments), at the API root, manages Role assignments for all objects across the server. Apart from this difference in scope, the introduction to that section contains information useful for understanding the following endpoints.
+    The [sitewide Assignments resource](/central-api-accounts-and-users/#assignments), at the API root, manages Role assignments for all objects across the server. Apart from this difference in scope, the introduction to that section contains information useful for understanding the following endpoints.
 
     There are only one set of Roles, applicable to either scenario. There are not a separate set of Roles used only upon Projects or Forms.
-
 - name: Forms
   x-parent-tag: Form Management
   description: |-
@@ -594,7 +622,6 @@ tags:
     The only other property Forms currently have is `state`, which can be used to control whether Forms show up in mobile clients like ODK Collect for download, as well as whether they accept new `Submission`s or not.
 
     It is not yet possible to modify a Form's XML definition once it is created.
-
 - name: Individual Form
   x-parent-tag: Form Management
 - name: Draft Form
@@ -606,24 +633,21 @@ tags:
 
     You can create or replace the current Draft Form at any time by `POST`ing to the `/draft` subresource on the Form, and you can publish the current Draft by `POST`ing to `/draft/publish`.
 
-    When a Draft Form is created, a Draft Token is also created for it, which can be found in Draft Form responses at `draftToken`. This token allows you to [submit test Submissions to the Draft Form](/reference/submissions/draft-submissions/creating-a-submission) through clients like Collect. If the Draft is published or deleted, the token will be deactivated. But if you replace the Draft without first deleting it, the existing Draft Token will be carried forward, so that you do not have to reconfigure your device.
-
+    When a Draft Form is created, a Draft Token is also created for it, which can be found in Draft Form responses at `draftToken`. This token allows you to [submit test Submissions to the Draft Form](/central-api-submission-management/#creating-a-submission) through clients like Collect. If the Draft is published or deleted, the token will be deactivated. But if you replace the Draft without first deleting it, the existing Draft Token will be carried forward, so that you do not have to reconfigure your device.
 - name: Published Form Versions
   x-parent-tag: Form Management
   description: |-
     All published versions of a Form are available read-only at the `/versions` subresource for reference, including the currently published version. You may read that version and its details, retrieve the Form definition, and any attachments associated with each version.
-
 - name: Form Assignments
   x-parent-tag: Form Management
   description: |-
     _(introduced: version 0.7)_
 
-    There are multiple Assignments resources. This one, specific to the Form it is nested within, only governs Role assignments to that Form. Assigning an Actor a Role that grants, for example, a verb `submission.create`, allows that Actor to create a submission to this Form alone. It is also possible to assign umbrella rights to a whole Project and therefore all Forms within it: see the [Project Assignments resource](/reference/project-management/project-assignments) for information about this.
+    There are multiple Assignments resources. This one, specific to the Form it is nested within, only governs Role assignments to that Form. Assigning an Actor a Role that grants, for example, a verb `submission.create`, allows that Actor to create a submission to this Form alone. It is also possible to assign umbrella rights to a whole Project and therefore all Forms within it: see the [Project Assignments resource](/central-api-project-management/#project-assignments) for information about this.
 
-    The [sitewide Assignments resource](/reference/accounts-and-users/assignments), at the API root, manages Role assignments for all objects across the server. Apart from this difference in scope, the introduction to that section contains information useful for understanding the following endpoints.
+    The [sitewide Assignments resource](/central-api-accounts-and-users/#assignments), at the API root, manages Role assignments for all objects across the server. Apart from this difference in scope, the introduction to that section contains information useful for understanding the following endpoints.
 
     There are only one set of Roles, applicable to either scenario. There are not a separate set of Roles used only upon Projects or Forms.
-
 - name: Public Access Links
   x-parent-tag: Form Management
   description: |-
@@ -633,8 +657,7 @@ tags:
 
     The API for Public Links is particularly useful, as it can be used to, for example, programmatically create and send individually customized and controlled links for direct distribution. The user-facing link for a Public Link has the following structure: `/-/{enketoId}?st={token}` where `-` is the Enketo root, `enketoId` is the survey ID of this published Form on Enketo and `token` is a session token to identify this Public Link.
 
-    To revoke the access of any Link, terminate its session `token` by issuing [`DELETE /sessions/:token`](/reference/authentication/session-authentication/logging-out).
-
+    To revoke the access of any Link, terminate its session `token` by issuing [`DELETE /sessions/:token`](/central-api-authentication/#logging-out).
 - name: Related Datasets
   x-parent-tag: Form Management
   description: |-
@@ -645,14 +668,12 @@ tags:
     Currently, Datasets and Dataset Properties are purely additive. Multiple Forms can add Properties to the same Dataset and multiple Forms can create Entities in the same Dataset. Not all Properties of a Dataset have to be included in a Form for that Dataset. For example, one Form publishing to a Dataset called `trees` could add `location` and `species`, while another could add `species` and `circumference`. The Properties of the Dataset would be the union of Properties from all Forms for that Dataset (`location`, `species`, `circumference`). Note that it is not necessary that a Form will save to all Properties of a Dataset, so the endpoint also returns a `inForm` flag for each property which is true only if the Form affects that Property.
 
     The following endpoints return the Dataset(s) that Submissions of that Form will populate. They also return all of the Entity Properties for each Dataset and indicate which ones are mapped to Fields in the specified Form.
-
 - name: Submissions
   x-parent-tag: Submission Management
   description: |-
     `Submission`s are available as a subresource under `Form`s. So, for instance, `/v1/projects/1/forms/myForm/submissions` refers only to the Submissions that have been submitted to the Form `myForm`.
 
     Once created (which, like with Forms, is done by way of their XML data rather than a JSON description), it is possible to retrieve and export Submissions in a number of ways, as well as to access the multimedia `Attachment`s associated with each Submission.
-
 - name: Comments
   x-parent-tag: Submission Management
   description: |-
@@ -661,14 +682,12 @@ tags:
     This API is likely to change in the future. In version 1.2 we have added comments to submissions, so changes and problems with the data can be discussed. It's very likely we will want comments in more places in the future, and at that time a more complete comments API will be introduced, and this current one may be changed or deprecated entirely.
 
     Currently, it is not possible to get a specific comment's details, or to edit or delete a comment once it has been made.
-
 - name: Attachments
   x-parent-tag: Submission Management
   description: |-
     When a `Submission` is created, either over the OpenRosa or the REST interface, its XML data is analyzed to determine which file attachments it references: these may be photos or video taken as part of the survey, or an audit/timing log, among other things. Each reference is an expected attachment, and these expectations are recorded permanently alongside the Submission.
 
     With this subresource, you can list the expected attachments, see whether the server actually has a copy or not, and download, upload, re-upload, or clear binary data for any particular attachment.
-
 - name: Submission Versions
   x-parent-tag: Submission Management
   description: |-
@@ -679,14 +698,12 @@ tags:
     So if you submit a submission with `<orx:instanceID>one</orx:instanceID>` and then update it, deprecating `one` for version `two`, then the full route for version `one` is `/v1/projects/…/forms/…/submissions/one/versions/one`, and for `two` it is `/v1/projects/…/forms/…/submissions/one/versions/two`.
 
     As of version 1.4, a `deviceId` and `userAgent` will also be returned with each submission. For each submission of a version, the submitting client device may transmit these extra metadata. If it does, those fields will be recognized and returned here for reference.
-
 - name: Draft Submissions
   x-parent-tag: Submission Management
   description: |-
-    All [Draft Forms](/reference/forms/draft-form) feature a `/submissions` subresource (`/draft/submissions`), which is identical to the same subresource on the form itself. These submissions exist only as long as the Draft Form does: they are removed if the Draft Form is published, and they are abandoned if the Draft Form is deleted or overwritten.
+    All [Draft Forms](/central-api-form-management/#draft-form) feature a `/submissions` subresource (`/draft/submissions`), which is identical to the same subresource on the form itself. These submissions exist only as long as the Draft Form does: they are removed if the Draft Form is published, and they are abandoned if the Draft Form is deleted or overwritten.
 
     Here we list all those resources again just for completeness.
-
 - name: Draft Testing Endpoints
   x-parent-tag: OpenRosa Endpoints
   description: |-
@@ -696,22 +713,19 @@ tags:
 
     Otherwise, and in particular if you plan to test your form in Collect or another OpenRosa-compliant client, you will likely want to use the `/test` Draft Token prefix. It functions similarly to the standard OpenRosa support, with App User authentication, but instead of a `/key` route prefix they feature a `/test` route prefix, and they point directly at each form (example: `/test/lSpA…EjR7/projects/1/forms/myform/draft`).
 
-    You can get the appropriate Draft Token for any given draft by [requesting the Draft Form](/reference/forms/draft-form/getting-draft-form-details).
+    You can get the appropriate Draft Token for any given draft by [requesting the Draft Form](/central-api-form-management/#getting-draft-form-details).
 
     The `/test` tokens are not actual App Users, and Central does not keep track of user identity when they are used.
 
     With the `/test` prefix, the following resources are available:
-
 - name: OData Form Service
   x-parent-tag: OData Endpoints
   description: |-
     ODK Central presents one OData service for every `Form` it knows about. To access the OData service, simply add `.svc` to the resource URL for the given Form.
-
 - name: OData Dataset Service
   x-parent-tag: OData Endpoints
   description: |-
     ODK Central presents one OData service for every `Dataset` as a way to get an OData feed of `Entities`. To access the OData service, simply add `.svc` to the resource URL for the given Dataset.
-
 - name: Draft Testing
   x-parent-tag: OData Endpoints
   description: |-
@@ -720,19 +734,16 @@ tags:
     To facilitate testing, there is an alternative collection of OData endpoints that will give access to the submissions uploaded to a Draft Form. This can be useful for ensuring that changes to your form do not break downstream dashboards or applications.
 
     They are all identical to the non-Draft OData endpoints, but they will only return the Draft Form schema and Submissions.
-
 - name: Usage Reporting Configuration
   x-parent-tag: System Endpoints
   description: |-
     _(introduced: version 1.3)_
-
 - name: Usage Report Preview
   x-parent-tag: System Endpoints
   description: |-
     _(introduced: version 1.3)_
 
-    An Administrator of Central may opt in to sending periodic reports summarizing usage. Configuration of this reporting is described [here](/reference/system-endpoints/usage-reporting-configuration). For added transparency, the API provides a preview of the reported metrics.
-
+    An Administrator of Central may opt in to sending periodic reports summarizing usage. Configuration of this reporting is described [here](/central-api-system-endpoints/#usage-reporting-configuration). For added transparency, the API provides a preview of the reported metrics.
 - name: Server Audit Logs
   x-parent-tag: System Endpoints
   description: |-
@@ -785,7 +796,6 @@ tags:
     * `config.set` when a system configuration is set.
     * `analytics` when a Usage Report is attempted.
     * Deprecated: `backup` when a backup operation is attempted for Google Drive backups.
-
 - name: Direct Backup
   x-parent-tag: System Endpoints
   description: |-
@@ -794,7 +804,6 @@ tags:
     ODK Central offers an HTTP endpoint that will immediately perform a backup on the system database and send that encrypted backup as the response. To use it, `POST` with an encryption passphrase.
 
     Note that performing the backup takes a great deal of time, during which the request will be held open. As a result, the endpoint will trickle junk data every five seconds while that processing is occurring to prevent the request from timing out. Depending on how much data you have, it can take many minutes for the data stream to speed up to a full transfer rate.
-
 paths:
   /v1/sessions:
     post:
@@ -921,7 +930,7 @@ paths:
       - App User Authentication
       summary: Using App User Authentication
       description: |-
-        To use App User Authentication, first obtain a App User, typically by using the configuration panel in the user interface, or else by using the [App User API Resource](/reference/accounts-and-users/app-users). Once you have the token, you can apply it to any eligible action by prefixing the URL with `/key/{appUser}` as follows:
+        To use App User Authentication, first obtain a App User, typically by using the configuration panel in the user interface, or else by using the [App User API Resource](/central-api-accounts-and-users/#app-users). Once you have the token, you can apply it to any eligible action by prefixing the URL with `/key/{appUser}` as follows:
 
         `/v1/key/!Ms7V3$Zdnd63j5HFacIPFEvFAuwNqTUZW$AsVOmaQFf$vIC!F8dJjdgiDnJXXOt/example/request/path`
 
@@ -965,6 +974,32 @@ paths:
         schema:
           type: string
         example: lSpAIeksRu1CNZs7!qjAot2T17dPzkrw9B4iTtpj7OoIJBmXvnHM8z8Ka4QPEjR7
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+              example:
+                code: "403.1"
+                message: The authenticated actor does not have rights to perform that action.
+  /v1/sessions/current:
+    delete:
+      tags:
+      - Session Authentication
+      summary: Logging out current session
+      description: |-
+        This endpoint causes the current session to log itself out. Logging out is not strictly necessary for Web Users; all sessions expire 24 hours after they are created. But it can be a good idea, in case someone else manages to steal your token.
+
+        Only the session that was used to authenticate the request is logged out. If the Actor associated with the session has other sessions as well, those are not logged out.
+      operationId: Logging out current session
       responses:
         200:
           description: OK
@@ -1045,7 +1080,7 @@ paths:
 
         Optionally, a password may also be supplied as a part of this request. If it is, the account is immediately usable with the given credentials. However, an email will still be dispatched with claim instructions as above.
 
-        Users are not able to do anything upon creation besides log in and change their own profile information. To allow Users to perform useful actions, you will need to [assign them one or more Roles](/reference/accounts-and-users/assignments).
+        Users are not able to do anything upon creation besides log in and change their own profile information. To allow Users to perform useful actions, you will need to [assign them one or more Roles](/central-api-accounts-and-users/#assignments).
       operationId: Creating a new User
       requestBody:
         content:
@@ -1791,7 +1826,7 @@ paths:
       description: |-
         The only information required to create a new `App User` is its `displayName` (this is called "Nickname" in the administrative panel).
 
-        When an App User is created, they are assigned no rights. They will be able to authenticate and list forms on a mobile client, but the form list will be empty, as the list only includes Forms that the App User has read access to. Once an App User is created, you'll likely wish to use the [Form Assignments resource](/reference/forms/form-assignments) to actually assign the `app-user` role to them for the Forms you wish.
+        When an App User is created, they are assigned no rights. They will be able to authenticate and list forms on a mobile client, but the form list will be empty, as the list only includes Forms that the App User has read access to. Once an App User is created, you'll likely wish to use the [Form Assignments resource](/central-api-form-management/#form-assignments) to actually assign the `app-user` role to them for the Forms you wish.
       operationId: Creating a new App User
       parameters:
       - name: projectId
@@ -1915,7 +1950,7 @@ paths:
       - App Users
       summary: Deleting a App User
       description: |-
-        You don't have to delete a `App User` in order to cut off its access. Using a `User`'s credentials you can simply [log the App User's session out](/reference/authentication/app-user-authentication/revoking-an-app-user) using its token. This will end its session without actually deleting the App User, which allows you to still see it in the configuration panel and inspect its history. This is what the administrative panel does when you choose to "Revoke" the App User.
+        You don't have to delete a `App User` in order to cut off its access. Using a `User`'s credentials you can simply [log the App User's session out](/central-api-authentication/#revoking-an-app-user) using its token. This will end its session without actually deleting the App User, which allows you to still see it in the configuration panel and inspect its history. This is what the administrative panel does when you choose to "Revoke" the App User.
 
         That said, if you do wish to delete the App User altogether, you can do so by issuing a `DELETE` request to its resource path. App Users cannot delete themselves.
       operationId: Deleting a App User
@@ -2036,7 +2071,7 @@ paths:
       - Assignments
       summary: Listing all Assignments
       description: |-
-        This will list every server-wide assignment, in the form of `actorId`/`roleId` pairs. It will _not_ list Project-specific Assignments. To find those, you will need the [Assignments subresource](/reference/project-management/project-assignments) within Projects.
+        This will list every server-wide assignment, in the form of `actorId`/`roleId` pairs. It will _not_ list Project-specific Assignments. To find those, you will need the [Assignments subresource](/central-api-project-management/#project-assignments) within Projects.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to expand the `actorId` into a full `actor` objects. The Role reference remains a numeric ID.
       operationId: Listing all Assignments
@@ -2808,7 +2843,7 @@ paths:
       description: |-
         _(introduced: version 0.6)_
 
-        [Project Managed Encryption](/reference/encryption) can be enabled via the API. To do this, `POST` with the `passphrase` and optionally a reminder `hint` about the passphrase. If managed encryption is already enabled, a `409` error response will be returned.
+        [Project Managed Encryption](/central-api-encryption) can be enabled via the API. To do this, `POST` with the `passphrase` and optionally a reminder `hint` about the passphrase. If managed encryption is already enabled, a `409` error response will be returned.
 
         Enabling managed encryption will modify all unencrypted forms in the project, and as a result the `version` of all forms within the project will also be modified. It is therefore best to enable managed encryption before devices are in the field. Any forms in the project that already have self-supplied encryption keys will be left alone.
       operationId: Enabling Project Managed Encryption
@@ -3218,7 +3253,7 @@ paths:
       - Project Assignments
       summary: Seeing Role-specific Form Assignments within a Project
       description: |-
-        Like the [Form Assignments summary API](/reference/forms/form-assignments/listing-all-form-assignments), but filtered by some `roleId`.
+        Like the [Form Assignments summary API](/central-api-form-management/#listing-all-form-assignments), but filtered by some `roleId`.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to expand the `actorId` into a full `actor` objects. The Role reference remains a numeric ID and the Form reference remains a string ID.
       operationId: Seeing Role-specific Form Assignments within a Project
@@ -3345,7 +3380,7 @@ paths:
       description: |-
         When creating a `Form`, the only required data is the actual XForms XML or XLSForm itself. Use it as the `POST` body with a `Content-Type` header of `application/xml` (`text/xml` works too), and the Form will be created.
 
-        As of Version 0.8, Forms will by default be created in Draft state, accessible under `/projects/…/forms/…/draft`. The Form itself will not have a public XML definition, and will not appear for download onto mobile devices. You will need to [publish the form](/reference/forms/draft-form/publishing-a-draft-form) to finalize it for data collection. To disable this behaviour, and force the new Form to be immediately ready, you can pass the querystring option `?publish=true`.
+        As of Version 0.8, Forms will by default be created in Draft state, accessible under `/projects/…/forms/…/draft`. The Form itself will not have a public XML definition, and will not appear for download onto mobile devices. You will need to [publish the form](/central-api-form-management/#publishing-a-draft-form) to finalize it for data collection. To disable this behaviour, and force the new Form to be immediately ready, you can pass the querystring option `?publish=true`.
 
         For XLSForm upload, either `.xls` or `.xlsx` are accepted. You must provide the `Content-Type` request header corresponding to the file type: `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` for `.xlsx` files, and `application/vnd.ms-excel` for `.xls` files. You must also provide an `X-XlsForm-FormId-Fallback` request header with the `formId` you want the resulting form to have, if the spreadsheet does not already specify. This header field accepts percent-encoded values to support Unicode characters and other non-ASCII values.
 
@@ -3361,9 +3396,9 @@ paths:
 
         **Creating Datasets with Forms**
 
-        Starting from Version 2022.3, a Form can also create a Dataset by defining a Dataset schema in the Form definition (XForms XML or XLSForm). When a Form with a Dataset schema is uploaded, a Dataset and its Properties are created and a `dataset.create` event is logged in the Audit logs. The state of the Dataset is dependent on the state of the Form; you will need to publish the Form to publish the Dataset. Datasets in the Draft state are not returned in [Dataset APIs](#reference/datasets), however the [Related Datasets](#reference/forms/related-datasets/draft-form-dataset-diff) API for the Form can be called to get the Dataset and its Properties.
+        Starting from Version 2022.3, a Form can also create a Dataset by defining a Dataset schema in the Form definition (XForms XML or XLSForm). When a Form with a Dataset schema is uploaded, a Dataset and its Properties are created. The state of the Dataset is dependent on the state of the Form; you will need to publish the Form to publish the Dataset. Datasets in the Draft state are not returned in [Dataset APIs](/central-api-dataset-management), however the [Related Datasets](/central-api-form-management/#draft-form-dataset-diff) API for the Form can be called to get the Dataset and its Properties.
 
-        It is possible to define the schema of a Dataset in multiple Forms. Such Forms can be created and published in any order. The creation of the first Form will generate a `dataset.create` event in Audit logs and subsequent Form creation will generate `dataset.update` events. Publishing any of the Forms will also publish the Dataset and will generate a `dataset.update.publish` event. The state of a Property of a Dataset is also dependent on the state of the Form that FIRST defines that Property, which means if a Form is in the Draft state then the Properties defined by that Form will not appear in the [.csv file](#reference/datasets/download-dataset/download-dataset) of the Dataset.
+        It is possible to define the schema of a Dataset in multiple Forms. Such Forms can be created and published in any order. Publishing any of the Forms will also publish the Dataset and will generate a `dataset.create` event; `dataset.update` events are generated in Audit logs when a Form adds a new property in the Dataset. The state of a Property of a Dataset is also dependent on the state of the Form that FIRST defines that Property, which means if a Form is in the Draft state then the Properties defined by that Form will not appear in the [.csv file](/central-api-dataset-management/#download-dataset) of the Dataset.
       operationId: Creating a new Form
       parameters:
       - name: projectId
@@ -3886,7 +3921,7 @@ paths:
         all of its resources and submissions will be automatically purged. If your
         goal is to prevent it from showing up on survey clients like ODK Collect,
         consider setting its `state` to `closing` or `closed` instead (see [Modifying
-        a Form](/reference/forms/individual-form/modifying-a-form) just above for
+        a Form](/central-api-form-management/#modifying-a-form) just above for
         more details).
       operationId: Deleting a Form
       parameters:
@@ -4290,9 +4325,10 @@ paths:
       tags:
       - Individual Form
       summary: Downloading a Form Attachment
-      description: To download a single file, use this endpoint. The appropriate `Content-Disposition`
-        (attachment with a filename) and `Content-Type` (based on the type supplied
-        at upload time) will be given.
+      description: |-
+        To download a single file, use this endpoint. The appropriate `Content-Disposition` (attachment with a filename) and `Content-Type` (based on the type supplied at upload time) will be given.
+
+        This endpoint supports `ETag`, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, it returns a value in `ETag` header, you can pass this value in the header `If-None-Match` of subsequent requests. If the file has not been changed since the previous request, you will receive `304 Not Modified` response otherwise you'll get the latest file.
       operationId: Downloading a Form Attachment
       parameters:
       - name: projectId
@@ -4323,23 +4359,20 @@ paths:
             Content-Disposition:
               schema:
                 type: string
+            ETag: 
+              schema:
+                type: string
+                description: content version identifier
           content:
-            '{the MIME type of the attachment file itself}':
-              example: |
-                (binary data)
+            "{the MIME type of the attachment file itself}":
+              schema:
+                type: object
+              example: (binary data)
+        304:
+          description:  Not Modified
         403:
           description: Forbidden
           content:
-            '{the MIME type of the attachment file itself}':
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
             application/json:
               schema:
                 required:
@@ -4572,7 +4605,7 @@ paths:
       - Draft Form
       summary: Creating a Draft Form
       description: |-
-        `POST`ing here will create a new Draft Form on the given Form. For the most part, it takes the same parameters as the [Create Form request](/reference/forms/forms/creating-a-new-form): you can submit XML or Excel files, you can provide `ignoreWarnings` if you'd like.
+        `POST`ing here will create a new Draft Form on the given Form. For the most part, it takes the same parameters as the [Create Form request](/central-api-form-management/#creating-a-new-form): you can submit XML or Excel files, you can provide `ignoreWarnings` if you'd like.
 
         Additionally, however, you may `POST` with no `Content-Type` and an empty body to create a Draft Form with a copy of the definition (XML, XLS, etc) that is already published, if there is one. This can be useful if you don't wish to update the Form definition itself, but rather one or more Form Attachments.
 
@@ -4582,11 +4615,11 @@ paths:
 
         Even if a Draft exists, you can always replace it by `POST`ing here again. In that case, the attachments that exist on the Draft will similarly be copied over to the new Draft. If you wish to copy from the published version instead, you can do so by first `DELETE`ing the extant Draft.
 
-        Draft `version` conflicts are allowed with prior versions of a Form while in Draft state. If you attempt to [publish the Form](/reference/forms/draft-form/publishing-a-draft-form) without correcting the conflict, the publish operation will fail. You can request that Central update the version string on your behalf as part of the publish operation to avoid this: see that endpoint for more information.
+        Draft `version` conflicts are allowed with prior versions of a Form while in Draft state. If you attempt to [publish the Form](/central-api-form-management/#draft-form/publishing-a-draft-form) without correcting the conflict, the publish operation will fail. You can request that Central update the version string on your behalf as part of the publish operation to avoid this: see that endpoint for more information.
 
         The `xmlFormId`, however, must exactly match that of the Form overall, or the request will be rejected.
 
-        Starting from Version 2022.3, a Draft Form can also create or update a Dataset by defining a Dataset schema in the Form definition. The state of the Dataset and its Properties is dependent on the state of the Form, see [Creating a new form](#reference/forms/forms/creating-a-new-form) for more details.
+        Starting from Version 2022.3, a Draft Form can also create or update a Dataset by defining a Dataset schema in the Form definition. The state of the Dataset and its Properties is dependent on the state of the Form, see [Creating a new form](/central-api-form-management/#creating-a-new-form) for more details.
       operationId: Creating a Draft Form
       parameters:
       - name: projectId
@@ -4997,6 +5030,8 @@ paths:
         To upload a binary to an expected file slot, `POST` the binary to its endpoint. Supply a `Content-Type` MIME-type header if you have one.
 
         As of version 2022.3, if there is already a Dataset linked to this attachment, it will be unlinked and replaced with the uploaded file.
+
+        This endpoint supports `ETag` header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in `ETag` header. If you pass that value in the `If-None-Match` header of a subsequent request, then if the file has not been changed since the previous request, you will receive `304 Not Modified` response; otherwise you'll get the latest file.
       operationId: Uploading a Draft Form Attachment
       parameters:
       - name: projectId
@@ -5206,7 +5241,7 @@ paths:
       tags:
       - Draft Form
       summary: Getting Draft Form Schema Fields
-      description: Identical to the [same request](/reference/forms/individual-form/getting-form-schema-fields)
+      description: Identical to the [same request](/central-api-form-management/#getting-form-schema-fields)
         for the published Form, but will return the fields related to the current
         Draft version.
       operationId: Getting Draft Form Schema Fields
@@ -5318,7 +5353,7 @@ paths:
 
         Once the Draft is published, there will no longer be a Draft version of the form.
 
-        Starting with Version 2022.3, publishing a Draft Form that defines a Dataset schema will also publish the Dataset. It will generate `dataset.update.publish` event in Audit logs and make the Dataset available in [Datasets APIs](#reference/datasets)
+        Starting with Version 2022.3, publishing a Draft Form that defines a Dataset schema will also publish the Dataset. It will generate `dataset.create` event in Audit logs and make the Dataset available in [Datasets APIs](/central-api-dataset-management). If the Dataset is already published and the Form adds new properties then `dataset.update` event will be generated.
       operationId: Publishing a Draft Form
       parameters:
       - name: projectId
@@ -5742,9 +5777,10 @@ paths:
       tags:
       - Published Form Versions
       summary: Downloading a Form Version Attachment
-      description: To download a single file, use this endpoint. The appropriate `Content-Disposition`
-        (attachment with a filename) and `Content-Type` (based on the type supplied
-        at upload time) will be given.
+      description: |-
+        To download a single file, use this endpoint. The appropriate `Content-Disposition` (attachment with a filename) and `Content-Type` (based on the type supplied at upload time) will be given.
+
+        This endpoint supports `ETag` header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in `ETag` header. If you pass that value in the `If-None-Match` header of a subsequent request, then if the file has not been changed since the previous request, you will receive `304 Not Modified` response; otherwise you'll get the latest file.
       operationId: Downloading a Form Version Attachment
       parameters:
       - name: projectId
@@ -5783,23 +5819,20 @@ paths:
             Content-Disposition:
               schema:
                 type: string
+            ETag: 
+              schema:
+                type: string
+                description: content version identifier
           content:
-            '{the MIME type of the attachment file itself}':
-              example: |
-                (binary data)
+            "{the MIME type of the attachment file itself}":
+              schema:
+                type: object
+              example: (binary data)
+        304:
+          description:  Not Modified
         403:
           description: Forbidden
           content:
-            '{the MIME type of the attachment file itself}':
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
             application/json:
               schema:
                 required:
@@ -5819,7 +5852,7 @@ paths:
       tags:
       - Published Form Versions
       summary: Getting Form Version Schema Fields
-      description: Identical to the [same request](/reference/forms/individual-form/getting-form-schema-fields)
+      description: Identical to the [same request](/central-api-form-management/#getting-form-schema-fields)
         for the published Form, but will return the fields related to the specified
         version.
       operationId: Getting Form Version Schema Fields
@@ -6352,7 +6385,7 @@ paths:
       description: You can fully delete a link by issuing `DELETE` to its resource.
         This will remove the Link from the system entirely. If instead you wish to
         revoke the Link's access to prevent future submission without removing its
-        record entirely, you can issue [`DELETE /sessions/:token`](/reference/authentication/session-authentication/logging-out).
+        record entirely, you can issue [`DELETE /sessions/:token`](/central-api-authentication/#session-authentication/logging-out).
       operationId: Deleting a Link
       parameters:
       - name: projectId
@@ -6564,7 +6597,7 @@ paths:
       - Submissions
       summary: Creating a Submission
       description: |-
-        To create a Submission by REST rather than over the [OpenRosa interface](/reference/openrosa-endpoints/openrosa-form-submission-api), you may `POST` the Submission XML to this endpoint. The request must have an XML `Content-Type` (`text/xml` or `application/xml`).
+        To create a Submission by REST rather than over the [OpenRosa interface](/central-api-openrosa-endpoints/#openrosa-form-submission-api), you may `POST` the Submission XML to this endpoint. The request must have an XML `Content-Type` (`text/xml` or `application/xml`).
 
         Unlike the OpenRosa Form Submission API, this interface does _not_ accept Submission attachments upon Submission creation. Instead, the server will determine which attachments are expected based on the Submission XML, and you may use the endpoints found in the following section to add the appropriate attachments and check the attachment status and content.
 
@@ -6756,7 +6789,7 @@ paths:
       description: |-
         Like how `Form`s are addressed by their XML `formId`, individual `Submission`s are addressed in the URL by their `instanceId`.
 
-        As of version 1.4, a `deviceId` and `userAgent` will also be returned with each submission. The client device may transmit these extra metadata when the data is submitted. If it does, those fields will be recognized and returned here for reference. Here, only the initial `deviceId` and `userAgent` will be reported. If you wish to see these metadata for any submission edits, including the most recent edit, you will need to [list the versions](/reference/submissions/submission-versions/listing-versions).
+        As of version 1.4, a `deviceId` and `userAgent` will also be returned with each submission. The client device may transmit these extra metadata when the data is submitted. If it does, those fields will be recognized and returned here for reference. Here, only the initial `deviceId` and `userAgent` will be reported. If you wish to see these metadata for any submission edits, including the most recent edit, you will need to [list the versions](/central-api-submission-management/#listing-versions).
 
         As of version 2023.2, this API returns `currentVersion` that contains metadata of the most recent version of the Submission.
 
@@ -7161,8 +7194,7 @@ paths:
                     description: The full details of the `Actor` that submitted this
                       `Submission`.
         301:
-          description: Returns 301 with URL of the specific Submission version if
-            `instanceId` of a Submission edit is provided
+          description: Returns 301 with URL of the specific Submission version if `instanceId` of a Submission edit is provided
           content:
             text/html:
               example: ""
@@ -7214,11 +7246,11 @@ paths:
 
         The `instanceId` that is submitted with the initial version of the submission is used permanently to reference that submission logically, which is to say the initial submission and all its subsequent versions. Each subsequent version will also provide its own `instanceId`. This `instanceId` becomes that particular version's identifier.
 
-        To perform an update, you need to provide in the submission XML an additional [`deprecatedID` metadata node](https://getodk.github.io/xforms-spec/#metadata) with the `instanceID` of the particular and current submission version you are replacing. If the `deprecatedID` you give is anything other than the identifier of the current version of the submission at the time the server receives it, you will get a `409 Conflict` back. You can get the current version `instanceID` by getting the [current XML of the submission](/reference/submissions/submissions/retrieving-submission-xml).
+        To perform an update, you need to provide in the submission XML an additional [`deprecatedID` metadata node](https://getodk.github.io/xforms-spec/#metadata) with the `instanceID` of the particular and current submission version you are replacing. If the `deprecatedID` you give is anything other than the identifier of the current version of the submission at the time the server receives it, you will get a `409 Conflict` back. You can get the current version `instanceID` by getting the [current XML of the submission](/central-api-submission-management/#retrieving-submission-xml).
 
         The XML data you send will _replace_ the existing data entirely. All of the data must be present in the updated XML.
 
-        When you create a new submission version, any uploaded media files attached to the current version that match expected attachment names in the new version will automatically be copied over to the new version. So if you don't make any changes to media files, there is no need to resubmit them. You can get information about all the submission versions [from the `/versions` subresource](reference/submissions/submission-versions).
+        When you create a new submission version, any uploaded media files attached to the current version that match expected attachment names in the new version will automatically be copied over to the new version. So if you don't make any changes to media files, there is no need to resubmit them. You can get information about all the submission versions [from the `/versions` subresource](central-api-submission-management/#submission-versions).
       operationId: Updating Submission Data
       parameters:
       - name: projectId
@@ -7402,7 +7434,7 @@ paths:
       - Submissions
       summary: Updating Submission metadata
       description: |-
-        Currently, the only updatable _metadata_ on a Submission is its `reviewState`. To update the submission _data_ itself, please see [Updating Submission data](/reference/submissions/submissions/updating-submission-data).
+        Currently, the only updatable _metadata_ on a Submission is its `reviewState`. To update the submission _data_ itself, please see [Updating Submission data](/central-api-submission-management/#updating-submission-data).
 
         Starting with Version 2022.3, changing the `reviewState` of a Submission to `approved` can create an Entity in a Dataset if the corresponding Form maps Dataset Properties to Form Fields. If an Entity is created successfully then an `entity.create` event is logged in Audit logs, else `entity.create.error` is logged.
       operationId: Updating Submission metadata
@@ -7659,13 +7691,13 @@ paths:
 
         You can exclude the media attachments from the ZIP file by specifying `?attachments=false`.
 
-        If [Project Managed Encryption](/reference/encryption) is being used, additional querystring parameters may be provided in the format `{keyId}={passphrase}` for any number of keys (eg `1=secret&4=password`). This will decrypt any records encrypted under those managed keys. Submissions encrypted under self-supplied keys will not be decrypted. **Note**: if you are building a browser-based application, please consider the alternative `POST` endpoint, described in the following section.
+        If [Project Managed Encryption](/central-api-encryption) is being used, additional querystring parameters may be provided in the format `{keyId}={passphrase}` for any number of keys (eg `1=secret&4=password`). This will decrypt any records encrypted under those managed keys. Submissions encrypted under self-supplied keys will not be decrypted. **Note**: if you are building a browser-based application, please consider the alternative `POST` endpoint, described in the following section.
 
         If a passphrase is supplied but is incorrect, the entire request will fail. If a passphrase is not supplied but encrypted records exist, only the metadata for those records will be returned, and they will have a `status` of `not decrypted`.
 
         If you are running an unsecured (`HTTP` rather than `HTTPS`) Central server, it is not a good idea to export data this way as your passphrase and the decrypted data will be sent plaintext over the network.
 
-        You can use an [OData-style `$filter` query](/reference/odata-endpoints/odata-form-service/data-document) to filter the submissions that will appear in the ZIP file. This is a bit awkward, since this endpoint has nothing to do with OData, but since we already must recognize the OData syntax, it is less strange overall for now not to invent a whole other one here. Only a subset of the `$filter` features are available; please see the linked section for more information.
+        You can use an [OData-style `$filter` query](/central-api-odata-endpoints/#data-document) to filter the submissions that will appear in the ZIP file. This is a bit awkward, since this endpoint has nothing to do with OData, but since we already must recognize the OData syntax, it is less strange overall for now not to invent a whole other one here. Only a subset of the `$filter` features are available; please see the linked section for more information.
       operationId: Exporting Form Submissions to CSV
       parameters:
       - name: projectId
@@ -7691,7 +7723,7 @@ paths:
       - name: '%24filter'
         in: query
         description: If provided, will filter responses to those matching the given
-          OData query. Only [certain fields](/reference/odata-endpoints/odata-form-service/data-document)
+          OData query. Only [certain fields](/central-api-odata-endpoints/#data-document)
           are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`,
           `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`,
           `year`, `month`, `day`, `hour`, `minute`, `second`.
@@ -7775,7 +7807,7 @@ paths:
       - Submissions
       summary: Exporting Form Submissions to CSV via POST
       description: |-
-        This non-REST-compliant endpoint is provided for use with [Project Managed Encryption](/reference/encryption). In every respect, it behaves identically to the `GET` endpoint described in the previous section, except that it works over `POST`. This is necessary because for browser-based applications, it is a dangerous idea to simply link the user to `/submissions.csv.zip?2=supersecretpassphrase` because the browser will remember this route in its history and thus the passphrase will become exposed. This is especially dangerous as there are techniques for quickly learning browser-visited URLs of any arbitrary domain.
+        This non-REST-compliant endpoint is provided for use with [Project Managed Encryption](/central-api-encryption). In every respect, it behaves identically to the `GET` endpoint described in the previous section, except that it works over `POST`. This is necessary because for browser-based applications, it is a dangerous idea to simply link the user to `/submissions.csv.zip?2=supersecretpassphrase` because the browser will remember this route in its history and thus the passphrase will become exposed. This is especially dangerous as there are techniques for quickly learning browser-visited URLs of any arbitrary domain.
 
         You can exclude the media attachments from the ZIP file by specifying `?attachments=false`.
 
@@ -7805,7 +7837,7 @@ paths:
       - name: '%24filter'
         in: query
         description: If provided, will filter responses to those matching the given
-          OData query. Only [certain fields](/reference/odata-endpoints/odata-form-service/data-document)
+          OData query. Only [certain fields](/central-api-odata-endpoints/#data-document)
           are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`,
           `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`,
           `year`, `month`, `day`, `hour`, `minute`, `second`.
@@ -7896,7 +7928,7 @@ paths:
 
         To export _just_ the root table (no repeat data nor media files), you can call this endpoint instead, which will directly give you CSV data.
 
-        Please see the [above endpoint](/reference/submissions/submissions/exporting-form-submissions-to-csv) for notes on dealing with Managed Encryption.
+        Please see the [above endpoint](/central-api-submission-management/#exporting-form-submissions-to-csv) for notes on dealing with Managed Encryption.
       operationId: Exporting Root Data to Plain CSV
       parameters:
       - name: projectId
@@ -7916,7 +7948,7 @@ paths:
       - name: '%24filter'
         in: query
         description: If provided, will filter responses to those matching the given
-          OData query. Only [certain fields](/reference/odata-endpoints/odata-form-service/data-document)
+          OData query. Only [certain fields](/central-api-odata-endpoints/#data-document)
           are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`,
           `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`,
           `year`, `month`, `day`, `hour`, `minute`, `second`.
@@ -7976,7 +8008,7 @@ paths:
 
         As with `GET` to `.csv` just above, this endpoint will only return CSV text data, rather than a ZIP file containing ore or more files. Please see that endpoint for further explanation.
 
-        As with [`POST` to `.csv.zip`](/reference/submissions/submissions/exporting-form-submissions-to-csv-via-post) it allows secure submission of decryption passkeys. Please see that endpoint for more information on how to do this.
+        As with [`POST` to `.csv.zip`](/central-api-submission-management/#exporting-form-submissions-to-csv-via-post) it allows secure submission of decryption passkeys. Please see that endpoint for more information on how to do this.
       operationId: Exporting Root Data to Plain CSV via POST
       parameters:
       - name: projectId
@@ -7996,7 +8028,7 @@ paths:
       - name: '%24filter'
         in: query
         description: If provided, will filter responses to those matching the given
-          OData query. Only [certain fields](/reference/odata-endpoints/odata-form-service/data-document)
+          OData query. Only [certain fields](/central-api-odata-endpoints/#data-document)
           are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`,
           `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`,
           `year`, `month`, `day`, `hour`, `minute`, `second`.
@@ -8053,7 +8085,7 @@ paths:
       description: |-
         _(introduced: version 1.2)_
 
-        You can retrieve all [Server Audit Logs](/reference/system-endpoints/server-audit-logs) relating to a submission. They will be returned most recent first.
+        You can retrieve all [Server Audit Logs](/central-api-system-endpoints/#server-audit-logs) relating to a submission. They will be returned most recent first.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally expand the `actorId` into full `actor` details, and `acteeId` into full `actee` details. The `actor` will always be an Actor, and the `actee` will be the Form this Submission is a part of.
       operationId: Retrieving Audit Logs
@@ -8698,7 +8730,7 @@ paths:
       - Submission Versions
       summary: Getting Version Details
       description: |-
-        Returns metadata about a particular version of the submission. As with the normal submission endpoint, you'll only get metadata in JSON out of this route. If you want to retrieve the XML, [add `.xml`](/reference/submissions/submission-versions/getting-version-xml).
+        Returns metadata about a particular version of the submission. As with the normal submission endpoint, you'll only get metadata in JSON out of this route. If you want to retrieve the XML, [add `.xml`](/central-api-submission-management/#getting-version-xml).
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to return a `submitter` data object alongside the `submitterId` Actor ID reference.
       operationId: Getting Version Details
@@ -9226,7 +9258,7 @@ paths:
       tags:
       - Draft Submissions
       summary: Listing all Submissions on a Draft Form
-      description: Identical to [the non-Draft version](/reference/submissions/submissions/listing-all-submissions-on-a-form)
+      description: Identical to [the non-Draft version](/central-api-submission-management/#listing-all-submissions-on-a-form)
         of this endpoint.
       operationId: Listing all Submissions on a Draft Form
       parameters:
@@ -9295,7 +9327,7 @@ paths:
       tags:
       - Draft Submissions
       summary: Creating a Submission
-      description: Identical to [the non-Draft version](/reference/submissions/submissions/creating-a-submission)
+      description: Identical to [the non-Draft version](/central-api-submission-management/#creating-a-submission)
         of this endpoint.
       operationId: Creating a Submission for a draft Form
       parameters:
@@ -9473,7 +9505,7 @@ paths:
       tags:
       - Draft Submissions
       summary: Exporting Form Submissions to CSV
-      description: Identical to [the non-Draft version](/reference/submissions/submissions/exporting-form-submissions-to-csv)
+      description: Identical to [the non-Draft version](/central-api-submission-management/#exporting-form-submissions-to-csv)
         of this endpoint.
       operationId: Exporting Form(Draft) Submissions to CSV
       parameters:
@@ -9541,7 +9573,7 @@ paths:
       tags:
       - Draft Submissions
       summary: Exporting Form Submissions to CSV via POST
-      description: Identical to [the non-Draft version](/reference/submissions/submissions/exporting-form-submissions-to-csv-via-post)
+      description: Identical to [the non-Draft version](/central-api-submission-management/#exporting-form-submissions-to-csv-via-post)
         of this endpoint.
       operationId: Exporting Form(Draft) Submissions to CSV via POST
       parameters:
@@ -9610,7 +9642,7 @@ paths:
       tags:
       - Draft Submissions
       summary: Listing Encryption Keys
-      description: Identical to [the non-Draft version](/reference/submissions/submissions/listing-encryption-keys)
+      description: Identical to [the non-Draft version](/central-api-submission-management/#listing-encryption-keys)
         of this endpoint.
       operationId: Listing Encryption Keys (Draft Form)
       parameters:
@@ -9652,7 +9684,7 @@ paths:
       tags:
       - Draft Submissions
       summary: Getting Submission details
-      description: Identical to [the non-Draft version](/reference/submissions/submissions/getting-submission-metadata)
+      description: Identical to [the non-Draft version](/central-api-submission-management/#getting-submission-metadata)
         of this endpoint.
       operationId: Getting Submission details
       parameters:
@@ -9969,7 +10001,7 @@ paths:
       tags:
       - Draft Submissions
       summary: Retrieving Submission XML
-      description: Identical to [the non-Draft version](/reference/submissions/submissions/retrieving-submission-xml)
+      description: Identical to [the non-Draft version](/central-api-submission-management/#retrieving-submission-xml)
         of this endpoint.
       operationId: Retrieving Submission XML (Draft Form)
       parameters:
@@ -10010,7 +10042,7 @@ paths:
       tags:
       - Draft Submissions
       summary: Listing expected Submission Attachments
-      description: Identical to [the non-Draft version](/reference/submissions/attachments/listing-expected-submission-attachments)
+      description: Identical to [the non-Draft version](/central-api-submission-management/#listing-expected-submission-attachments)
         of this endpoint.
       operationId: Listing expected Submission Attachments (Draft Form)
       parameters:
@@ -10066,7 +10098,7 @@ paths:
       tags:
       - Draft Submissions
       summary: Downloading an Attachment
-      description: Identical to [the non-Draft version](/reference/submissions/attachments/downloading-an-attachment)
+      description: Identical to [the non-Draft version](/central-api-submission-management/#downloading-an-attachment)
         of this endpoint.
       operationId: Downloading an Attachment (Draft Form)
       parameters:
@@ -10140,7 +10172,7 @@ paths:
       tags:
       - Draft Submissions
       summary: Uploading an Attachment
-      description: Identical to [the non-Draft version](/reference/submissions/attachments/uploading-an-attachment)
+      description: Identical to [the non-Draft version](/central-api-submission-management/#uploading-an-attachment)
         of this endpoint.
       operationId: Uploading an Attachment (Form Draft)
       parameters:
@@ -10207,7 +10239,7 @@ paths:
       tags:
       - Draft Submissions
       summary: Clearing a Submission Attachment
-      description: Identical to [the non-Draft version](/reference/submissions/attachments/clearing-a-submission-attachment)
+      description: Identical to [the non-Draft version](/central-api-submission-management/#clearing-a-submission-attachment)
         of this endpoint.
       operationId: Clearing a Submission Attachment (Form Draft)
       parameters:
@@ -10275,9 +10307,7 @@ paths:
       tags:
       - Dataset Management
       summary: Datasets
-      description: The Dataset listing endpoint returns all published Datasets in
-        a Project. If a Draft Form defines a new Dataset, that Dataset will not be
-        included in this list until the Form is published.
+      description: The Dataset listing endpoint returns all published Datasets in a Project. If a Draft Form defines a new Dataset, that Dataset will not be included in this list until the Form is published.
       operationId: Datasets
       parameters:
       - name: projectId
@@ -10356,45 +10386,73 @@ paths:
           content:
             application/json:
               schema:
+                oneOf:
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/DatasetMetadata'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
                 required:
-                - createdAt
-                - name
-                - projectId
+                - code
                 type: object
                 properties:
-                  name:
+                  code:
                     type: string
-                    description: The name of the Dataset
-                  createdAt:
+                  message:
                     type: string
-                    description: ISO date format.
-                  projectId:
-                    type: number
-                    description: The numerical ID of the Project that the Dataset
-                      belongs to.
-                  linkedForms:
-                    type: array
-                    description: Forms that consume data from the Dataset
-                    items:
-                      type: object
-                  properties:
-                    type: array
-                    description: All properties of the Dataset
-                    items:
-                      type: object
               example:
-                name: people
-                createdAt: 2018-01-19T23:58:03.395Z
-                projectId: 1
-                linkedForms:
-                - xmlFormId: simple
-                  name: Simple
-                properties:
-                - name: first_name
-                  publishedAt: 2018-01-21T00:04:11.153Z
-                  forms:
-                  - xmlFormId: simple
-                    name: Simple
+                code: "403.1"
+                message: The authenticated actor does not have rights to perform that
+                  action.
+    patch:
+      tags:
+      - Dataset Management
+      summary: Update Dataset Metadata
+      operationId: Update Dataset Metadata
+      description: |-
+        You can only update `approvalRequired` using this endpoint. `approvalRequired` flag controls the Entity creation flow; if it is `true` then the Submission must be approved before an Entity can be created from it and if it is `false` then an Entity is created as soon as the Submission is received by the ODK Central.
+
+        By default `approvalRequired` is `false` for the Datasets created after v2023.3. Datasets created prior to that will have `approvalRequired` set to `true`.
+      parameters:
+        - name: projectId
+          in: path
+          description: The numeric ID of the Project
+          required: true
+          schema:
+            type: number
+          example: "16"
+        - name: name
+          in: path
+          description: Name of the Dataset
+          required: true
+          schema:
+            type: string
+          example: people
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              type: object
+              properties:
+                approvalRequired:
+                  type: boolean
+                  description: Control whether a Submission should be approved before an Entity is created from it.
+                  example: true
+              example:
+                approvalRequired: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/DatasetMetadata'
         403:
           description: Forbidden
           content:
@@ -10418,9 +10476,11 @@ paths:
       - Dataset Management
       summary: Download Dataset
       description: |-
-        Datasets (collections of Entities) can be used as Attachments in other Forms, but they can also be downloaded directly as a CSV file. The CSV format matches what is expected for a [select question](https://docs.getodk.org/form-datasets/#building-selects-from-csv-files) with columns for `name`, `label,` and properties. In the case of Datasets, the `name` column is the Entity's UUID, the `label` column is the human-readable Entity label populated in the Submission, and the properties are the full set of Dataset Properties for that Dataset. If any Property for an given Entity is blank (e.g. it was not captured by that Form or was left blank), that field of the CSV is blank.
+        Datasets (collections of Entities) can be used as Attachments in other Forms, but they can also be downloaded directly as a CSV file.
 
-        Note that as of Version 2022.3 we do not guarantee the order of the Dataset Property columns.
+        The CSV format closely matches the [OData Dataset Service](/central-api-odata-endpoints/#odata-dataset-service) format, with columns for system properties such as `__id` (the Entity UUID), `__createdAt`, `__creatorName`, etc., the Entity Label `label`, and the Dataset/Entity Properties themselves. If any Property for an given Entity is blank (e.g. it was not captured by that Form or was left blank), that field of the CSV is blank.
+
+        This endpoint supports `ETag` header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in the ETag header. If you pass that value in the If-None-Match header of a subsequent request, then if the Dataset has not been changed since the previous request, you will receive `304 Not Modified` response; otherwise you'll get the new data.
       operationId: Download Dataset
       parameters:
       - name: projectId
@@ -10444,6 +10504,10 @@ paths:
             Content-Disposition:
               schema:
                 type: string
+            ETag:
+              schema:
+                type: string
+                description: content version identifier
           content:
             text/csv:
               example: |
@@ -10478,6 +10542,629 @@ paths:
                 code: "403.1"
                 message: The authenticated actor does not have rights to perform that
                   action.
+  /projects/{projectId}/datasets/{name}/entities:
+    get:
+      tags:
+      - Entity Management
+      summary: Entities Metadata
+      description: |-
+        This endpoint returns a list of the Entities of a Dataset. Please note that this endpoint only returns metadata of the entities not the data. If you want to get the data of all entities then please refer to [OData Dataset Service](/central-api-odata-endpoints/#odata-form-service)
+        You can provide `?deleted=true` to get only deleted entities.
+      
+      operationId: Entities Metadata
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      responses:        
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: array
+                    description: Standard Response
+                    items:
+                      $ref: '#/components/schemas/EntitySummary'
+                  - type: array
+                    description: Extended Response
+                    items:
+                      $ref: '#/components/schemas/ExtendedEntitySummary'
+              example:
+              - uuid: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
+                createdAt: '2018-01-19T23:58:03.395Z'
+                updatedAt: '2018-03-21T12:45:02.312Z'
+                deletedAt: '2018-03-21T12:45:02.312Z'
+                creatorId: 1
+                creator:
+                  createdAt: '2018-04-18T23:19:14.802Z'
+                  displayName: My Display Name
+                  id: 115
+                  type: user
+                  updatedAt: '2018-04-18T23:42:11.406Z'
+                  deletedAt: '2018-04-18T23:42:11.406Z'
+                currentVersion:
+                  label: John (88)
+                  current: true
+                  createdAt: '2018-03-21T12:45:02.312Z'
+                  creatorId: 1
+                  userAgent: Enketo/3.0.4
+                  creator:
+                    createdAt: '2018-04-18T23:19:14.802Z'
+                    displayName: My Display Name
+                    id: 115
+                    type: user
+                    updatedAt: '2018-04-18T23:42:11.406Z'
+                    deletedAt: '2018-04-18T23:42:11.406Z'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+    post:
+      tags:
+      - Entity Management
+      summary: Creating an Entity
+      description: |-
+        Creates an Entity in the Dataset. Request body takes the JSON representation of the Entity. It should have `uuid` and `label` property in addition to the user-defined properties of the Dataset in `data` property.
+        
+        Value type of all properties is `string`.
+
+        You can provide header `X-Action-Notes` to store the metadata about the request. The metadata can retrieved using [Entity Audit Log](/central-api-entities/#entity-audit-log)
+      operationId: Creating an Entity
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      requestBody:
+        content:
+          '*/*':
+            schema:              
+              type: object
+              properties:
+                uuid:
+                  type: string
+                  description: The `uuid` of the Entity that uniquely identifies the Entity.
+                label:
+                  type: string
+                  description: Label of the Entity
+                data:
+                  $ref: '#/components/schemas/DataExample'
+            example:
+              uuid: 54a405a0-53ce-4748-9788-d23a30cc3afa
+              label: John Doe (88)
+              data:
+                firstName: John
+                age: '88'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Entity'
+              example:
+                uuid: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
+                createdAt: '2018-01-19T23:58:03.395Z'
+                updatedAt: '2018-03-21T12:45:02.312Z'
+                deletedAt: '2018-03-21T12:45:02.312Z'
+                creatorId: 1
+                currentVersion:
+                  label: John (88)
+                  current: true
+                  createdAt: '2018-03-21T12:45:02.312Z'
+                  creatorId: 1
+                  userAgent: Enketo/3.0.4
+                  data:
+                    firstName: John
+                    age: '88'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+  /projects/{projectId}/datasets/{name}/entities/{uuid}:
+    get:
+      tags:
+      - Entity Management
+      summary: Getting Entity Details
+      description: This returns the metadata and current data of an Entity
+      operationId: Getting Entity Details
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      - name: uuid
+        in: path
+        description: UUID of the Entity
+        required: true
+        schema:
+          type: string
+        example: 54a405a0-53ce-4748-9788-d23a30cc3afa
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/Entity'
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/ExtendedEntity'
+        example:
+          uuid: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
+          createdAt: '2018-01-19T23:58:03.395Z'
+          updatedAt: '2018-03-21T12:45:02.312Z'
+          deletedAt: '2018-03-21T12:45:02.312Z'
+          creatorId: 1
+          creator:
+            createdAt: '2018-04-18T23:19:14.802Z'
+            displayName: My Display Name
+            id: 115
+            type: user
+            updatedAt: '2018-04-18T23:42:11.406Z'
+            deletedAt: '2018-04-18T23:42:11.406Z'
+          currentVersion:
+            label: John (88)
+            current: true
+            createdAt: '2018-03-21T12:45:02.312Z'
+            creatorId: 1
+            userAgent: Enketo/3.0.4
+            data:
+              firstName: John
+              age: '88'
+            creator:
+              createdAt: '2018-04-18T23:19:14.802Z'
+              displayName: My Display Name
+              id: 115
+              type: user
+              updatedAt: '2018-04-18T23:42:11.406Z'
+              deletedAt: '2018-04-18T23:42:11.406Z'
+        403:
+          description: Forbidden
+          content:
+            application/json; extended:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+              example:
+                code: "403.1"
+                message: The authenticated actor does not have rights to perform that
+                  action.
+    delete:
+      tags:
+      - Entity Management
+      summary: Deleting an Entity
+      description: Use this API to delete an Entity. With this API, Entity is soft-deleted,
+        which means it is still in the database and you can retreive it by passing
+        `?deleted=true` to [GET /projects/:id/datasets/:name/entities](/central-api-entities/#entities-metadata).
+        In the future, we will provide a way to restore deleted entities and purge
+        deleted entities.
+      operationId: Deleting an Entity
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      - name: uuid
+        in: path
+        description: UUID of the Entity
+        required: true
+        schema:
+          type: string
+        example: 54a405a0-53ce-4748-9788-d23a30cc3afa
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+              example:
+                code: "403.1"
+                message: The authenticated actor does not have rights to perform that
+                  action.
+    patch:
+      tags:
+      - Entity Management
+      summary: Updating an Entity
+      description: |-
+        Use this API to update one or all properties of an Entity. It will throw `400 - Bad Request` if any of the updating properties doesn't exist in the dataset.
+
+        To unset value of any property, you can set it to empty string (""). Setting it to `null` will throw an error.
+      operationId: Updating an Entity
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      - name: uuid
+        in: path
+        description: UUID of the Entity
+        required: true
+        schema:
+          type: string
+        example: 54a405a0-53ce-4748-9788-d23a30cc3afa
+      requestBody:
+        content:
+          '*/*':
+            schema:              
+              type: object
+              properties:
+                label:
+                  type: string
+                  description: Label of the Entity
+                data:
+                  $ref: '#/components/schemas/DataExample'
+            example:
+              label: John Doe (88)
+              data:
+                firstName: John
+                age: '88'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Entity'
+              example:
+                uuid: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
+                createdAt: '2018-01-19T23:58:03.395Z'
+                updatedAt: '2018-03-21T12:45:02.312Z'
+                deletedAt: '2018-03-21T12:45:02.312Z'
+                creatorId: 1
+                currentVersion:
+                  label: John (88)
+                  current: true
+                  createdAt: '2018-03-21T12:45:02.312Z'
+                  creatorId: 1
+                  userAgent: Enketo/3.0.4
+                  data:
+                    firstName: John
+                    age: '88'
+        403:
+          description: Forbidden
+          content:
+            application/json; extended:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+              example:
+                code: "403.1"
+                message: The authenticated actor does not have rights to perform that
+                  action.
+      x-codegen-request-body-name: body
+  /projects/{projectId}/datasets/{name}/entities/{uuid}/versions:
+    get:
+      tags:
+      - Entity Management
+      summary: Listing Versions
+      description: |-
+        This returns the Entity metadata and data for every version of this Entity, in ascending creation order.
+
+        This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to return a `creator` data object alongside the `creatorId` Actor ID reference.
+      operationId: Listing Entity Versions
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      - name: uuid
+        in: path
+        description: UUID of the Entity
+        required: true
+        schema:
+          type: string
+        example: 54a405a0-53ce-4748-9788-d23a30cc3afa
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: array
+                    description: Standard Response
+                    items:
+                      $ref: '#/components/schemas/EntityVersion'
+                  - type: array
+                    description: Extended Response
+                    items:
+                      $ref: '#/components/schemas/ExtendedEntityVersion'
+              example:
+                - label: John (88)
+                  current: true
+                  createdAt: '2018-03-21T12:45:02.312Z'
+                  creatorId: 1
+                  userAgent: Enketo/3.0.4
+                  data:
+                    firstName: John
+                    age: '88'
+                  creator:
+                    createdAt: '2018-04-18T23:19:14.802Z'
+                    displayName: My Display Name
+                    id: 115
+                    type: user
+                    updatedAt: '2018-04-18T23:42:11.406Z'
+                    deletedAt: '2018-04-18T23:42:11.406Z'
+        403:
+          description: Forbidden
+          content:
+            application/json; extended:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+              example:
+                code: "403.1"
+                message: The authenticated actor does not have rights to perform that
+                  action.
+  /projects/{projectId}/datasets/{name}/entities/{uuid}/diffs:
+    get:
+      tags:
+      - Entity Management
+      summary: Getting changes between Versions
+      description: This returns the changes, or edits, between different versions
+        of an Entity. These changes are returned as an array of arrays. Between two
+        Entities, there is an array of objects representing how each property changed.
+        This change object contains the old and new values, as well as the property
+        name.
+      operationId: Getting changes between Entity Versions
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      - name: uuid
+        in: path
+        description: UUID of the Entity
+        required: true
+        schema:
+          type: string
+        example: 54a405a0-53ce-4748-9788-d23a30cc3afa
+      responses:
+        200:
+          description: + Response 200
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                      $ref: '#/components/schemas/EntityDiffValue'
+              example:
+              - - new: John
+                  old: Dana
+                  propertyName: firstName
+                - new: Doe
+                  old: Roe
+                  propertyName: lastName
+                - new: John Doe
+                  old: Jane Roe
+                  propertyName: label
+              - - new: Robert
+                  old: Doe
+                  propertyName: firstName
+                - new: Robert Doe
+                  old: Doe Doe
+                  propertyName: label
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+              example:
+                code: "403.1"
+                message: The authenticated actor does not have rights to perform that
+                  action.
+  /projects/{projectId}/datasets/{name}/entities/{uuid}/audits:
+    get:
+      tags:
+      - Entity Management
+      summary: Entity Audit Log
+      description: Returns [Server Audit Logs](/central-api-system-endpoints/#server-audit-logs)
+        relating to an Entity. They will be returned most recent first.
+      operationId: Entity Audit Log
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      - name: uuid
+        in: path
+        description: UUID of the Entity
+        required: true
+        schema:
+          type: string
+        example: 54a405a0-53ce-4748-9788-d23a30cc3afa
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Audit'
+              example:
+              - actorId: 42
+                action: entity.create
+                acteeId: 85cb9aff-005e-4edd-9739-dc9c1a829c44
+                loggedAt: 2018-04-18T23:19:14.802Z
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+              example:
+                code: "403.1"
+                message: The authenticated actor does not have rights to perform that
+                  action.              
   /v1/projects/{projectId}/formList:
     get:
       tags:
@@ -10658,7 +11345,7 @@ paths:
 
         A Manifest document is available at this resource path for any form in the system. However:
 
-        * A link to this document will not be given in the [Form Listing API](/reference/openrosa-endpoints/openrosa-form-listing-api) unless we expect the form to have media or data file attachments based on the XForms definition of the form.
+        * A link to this document will not be given in the [Form Listing API](/central-api-openrosa-endpoints/#openrosa-form-listing-api) unless we expect the form to have media or data file attachments based on the XForms definition of the form.
 
         * The Manifest will only output information for files the server actually has in its possession. Any missing expected files will be omitted, as we cannot provide a `hash` or `downloadUrl` for them.
 
@@ -10725,7 +11412,7 @@ paths:
       tags:
       - Draft Testing Endpoints
       summary: OpenRosa Form Listing API
-      description: Identical to the [non-Draft version](/reference/openrosa-endpoints/openrosa-form-listing-api/openrosa-form-listing-api),
+      description: Identical to the [non-Draft version](/central-api-openrosa-endpoints/#openrosa-form-listing-api),
         but will only list the Draft Form to be tested.
       operationId: OpenRosa Form Listing API (Draft Form)
       parameters:
@@ -10782,7 +11469,7 @@ paths:
       tags:
       - Draft Testing Endpoints
       summary: OpenRosa Form Submission API
-      description: Identical to the [non-Draft version](/reference/openrosa-endpoints/openrosa-form-submission-api/openrosa-form-submission-api),
+      description: Identical to the [non-Draft version](/central-api-openrosa-endpoints/#openrosa-form-submission-api),
         but will only submit to (and allow submissions to) the Draft Form to be tested.
       operationId: OpenRosa Form Submission API (Draft Form)
       parameters:
@@ -10868,7 +11555,7 @@ paths:
       tags:
       - Draft Testing Endpoints
       summary: OpenRosa Form Manifest API
-      description: Identical to the [non-Draft version](/reference/openrosa-endpoints/openrosa-form-manifest-api/openrosa-form-manifest-api).
+      description: Identical to the [non-Draft version](/central-api-openrosa-endpoints/#openrosa-form-manifest-api).
       operationId: OpenRosa Form Manifest API (Draft Form)
       parameters:
       - name: token
@@ -10933,7 +11620,7 @@ paths:
       tags:
       - Draft Testing Endpoints
       summary: Downloading a Form Attachment
-      description: Identical to the [non-Draft version](/reference/forms/individual-form/downloading-a-form-attachment).
+      description: Identical to the [non-Draft version](/central-api-form-management/#downloading-a-form-attachment).
       operationId: Downloading a Form Attachment (Draft Form)
       parameters:
       - name: token
@@ -11328,6 +12015,8 @@ paths:
         | Submission Update Timestamp | `updatedAt`   | `__system/updatedAt`      |
         | Review State                | `reviewState` | `__system/reviewState`    |
 
+        You can use `$root` expression to filter subtables (repeats) by Submission Metadata, you'll have to prefix above fields by `$root/Submissions/` in the filter criteria. For example, to filter a repeat table by Submission Timestamp you can pass `$filter=$root/Submissions/__system/submissionDate gt 2020-01-31T23:59:59.999Z` in the query parameter.
+
         Note that the `submissionDate` has a time component. This means that any comparisons you make need to account for the full time of the submission. It might seem like `$filter=__system/submissionDate le 2020-01-31` would return all results on or before 31 Jan 2020, but in fact only submissions made before midnight of that day would be accepted. To include all of the month of January, you need to filter by either `$filter=__system/submissionDate le 2020-01-31T23:59:59.999Z` or `$filter=__system/submissionDate lt 2020-02-01`. Remember also that you can [query by a specific timezone](https://en.wikipedia.org/wiki/ISO_8601#Time_offsets_from_UTC).
 
         Please see the [OData documentation](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948) on `$filter` [operations](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinFilterOperations) and [functions](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinQueryFunctions) for more information.
@@ -11363,7 +12052,7 @@ paths:
       - name: table
         in: path
         description: The name of the table to be returned. These names can be found
-          in the output of the [Service Document](/reference/odata-endpoints/odata-form-service/service-document).
+          in the output of the [Service Document](/central-api-odata-endpoints/#service-document).
         required: true
         schema:
           type: string
@@ -11399,7 +12088,7 @@ paths:
       - name: '%24filter'
         in: query
         description: If provided, will filter responses to those matching the query.
-          Only [certain fields](/reference/odata-endpoints/odata-form-service/data-document)
+          Only [certain fields](/central-api-odata-endpoints/#data-document)
           are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`,
           `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`,
           `year`, `month`, `day`, `hour`, `minute`, `second`.
@@ -11682,6 +12371,8 @@ paths:
                                 <Property Name="createdAt" Type="Edm.DateTimeOffset"/>
                                 <Property Name="creatorId" Type="Edm.String"/>
                                 <Property Name="creatorName" Type="Edm.String"/>
+                                <Property Name="updates" Type="Edm.Int64"/>
+                                <Property Name="updatedAt" Type="Edm.DateTimeOffset"/>
                             </ComplexType>
                         </Schema>
                         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="org.opendatakit.user.trees">
@@ -11691,7 +12382,6 @@ paths:
                                 </Key>
                                 <Property Name="__id" Type="Edm.String"/>
                                 <Property Name="__system" Type="org.opendatakit.entity.metadata"/>
-                                <Property Name="name" Type="Edm.String"/>
                                 <Property Name="label" Type="Edm.String"/>
                                 <Property Name="geometry" Type="Edm.String"/>
                                 <Property Name="species" Type="Edm.String"/>
@@ -11818,12 +12508,13 @@ paths:
         | Entity Label            | `label`              |
         | Entity Creator Actor ID | `__system/creatorId` |
         | Entity Timestamp        | `__system/createdAt` |
+        | Entity Update Timestamp | `__system/updatedAt` |
 
-        Note that `createdAt` is a time component. This means that any comparisons you make need to account for the full time of the entity. It might seem like `$filter=__system/createdAt le 2020-01-31` would return all results on or before 31 Jan 2020, but in fact only entities made before midnight of that day would be accepted. To include all of the month of January, you need to filter by either `$filter=__system/createdAt le 2020-01-31T23:59:59.999Z` or `$filter=__system/createdAt lt 2020-02-01`. Remember also that you can [query by a specific timezone](https://en.wikipedia.org/wiki/ISO_8601#Time_offsets_from_UTC).
+        Note that `createdAt` and `updatedAt` are time components. This means that any comparisons you make need to account for the full time of the entity. It might seem like `$filter=__system/createdAt le 2020-01-31` would return all results on or before 31 Jan 2020, but in fact only entities made before midnight of that day would be accepted. To include all of the month of January, you need to filter by either `$filter=__system/createdAt le 2020-01-31T23:59:59.999Z` or `$filter=__system/createdAt lt 2020-02-01`. Remember also that you can [query by a specific timezone](https://en.wikipedia.org/wiki/ISO_8601#Time_offsets_from_UTC).
 
         Please see the [OData documentation](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948) on `$filter` [operations](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinFilterOperations) and [functions](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinQueryFunctions) for more information.
 
-        The [`$select` query parameter](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358942) will return just the fields you specify and is supported on `__id`, `__system`, `__system/creatorId` and `__system/createdAt`, as well as on user defined properties.
+        The [`$select` query parameter](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358942) will return just the fields you specify and is supported on `__id`, `__system`, `__system/creatorId`, `__system/createdAt` and `__system/updatedAt`, as well as on user defined properties.
 
         As the vast majority of clients only support the JSON OData format, that is the only format ODK Central offers.
       operationId: Data Document for Dataset
@@ -11866,7 +12557,7 @@ paths:
       - name: '%24filter'
         in: query
         description: If provided, will filter responses to those matching the query.
-          Only [certain fields](/reference/odata-endpoints/odata-form-service/data-document)
+          Only [certain fields](/central-api-odata-endpoints/#data-document)
           are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`,
           `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`,
           `year`, `month`, `day`, `hour`, `minute`, `second`.
@@ -11939,7 +12630,7 @@ paths:
       tags:
       - Draft Testing
       summary: Service Document
-      description: Identical to [the non-Draft version](/reference/odata-endpoints/odata-form-service/service-document)
+      description: Identical to [the non-Draft version](/central-api-odata-endpoints/#service-document)
         of this endpoint.
       operationId: Service Document for Dataset
       parameters:
@@ -12090,7 +12781,7 @@ paths:
       tags:
       - Draft Testing
       summary: Metadata Document
-      description: Identical to [the non-Draft version](/reference/odata-endpoints/odata-form-service/metadata-document)
+      description: Identical to [the non-Draft version](/central-api-odata-endpoints/#metadata-document)
         of this endpoint.
       operationId: Metadata Document (Draft Form)
       parameters:
@@ -12228,7 +12919,7 @@ paths:
       tags:
       - Draft Testing
       summary: Data Document
-      description: Identical to [the non-Draft version](/reference/odata-endpoints/odata-form-service/data-document)
+      description: Identical to [the non-Draft version](/central-api-odata-endpoints/#data-document)
         of this endpoint.
       operationId: Data Document (Draft Form)
       parameters:
@@ -12250,7 +12941,7 @@ paths:
       - name: table
         in: path
         description: The name of the table to be returned. These names can be found
-          in the output of the [Service Document](/reference/odata-endpoints/odata-form-service/service-document).
+          in the output of the [Service Document](/central-api-odata-endpoints/#service-document).
         required: true
         schema:
           type: string
@@ -12286,7 +12977,7 @@ paths:
       - name: '%24filter'
         in: query
         description: If provided, will filter responses to those matching the query.
-          Only [certain fields](/reference/odata-endpoints/odata-form-service/data-document)
+          Only [certain fields](/central-api-odata-endpoints/#data-document)
           are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`,
           `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`,
           `year`, `month`, `day`, `hour`, `minute`, `second`.
@@ -13020,6 +13711,129 @@ components:
               type: number
               example: 2
               description: The number of Datasets within this Project.
+    EntitySummaryFields:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: The `uuid` of the Entity that uniquely identifies the Entity.
+          example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44        
+        createdAt:
+          type: string
+          description: ISO date format. The time that the server received the Entity.
+          example: 2018-04-18T23:42:11.406Z
+        updatedAt:
+          type: string
+          description: Timestamp of the last update in ISO date format. `null` when there is only one version of the Entity.
+          example: 2018-04-18T23:42:11.406Z
+        deletedAt:
+          type: string
+          description: Timestamp of the deletion in ISO date format. `null` if the Entity is not deleted.
+          example: 2018-04-18T23:42:11.406Z
+        creatorId:
+          type: number
+          description: The ID of the Actor (App User, User, or Public Link) that originally created the Entity.
+          example: 1
+    EntityVersionFields:
+      type: object
+      properties:
+        label:
+          type: string
+          description: Label of the Entity
+          example: John (88)  
+        current:
+          type: boolean
+          description: if the version is the latest one
+          example: true
+        creatorId:
+          type: number
+          description: The ID of the Actor (App User, User, or Public Link) that originally created the Entity.
+          example: 1
+        userAgent:
+          type: string
+          description: The self-identified `userAgent` of the device that created the `Entity` version.
+          example: Enketo/3.0.4
+    EntitySummary:
+      allOf: 
+        - $ref: '#/components/schemas/EntitySummaryFields'
+        - type: object
+          properties:
+            currentVersion:
+              $ref: '#/components/schemas/EntityVersionFields'
+    ExtendedEntityVersionSummary:
+      allOf: 
+        - $ref: '#/components/schemas/EntityVersionFields'
+        - type: object
+          properties:
+            creator:
+              $ref: '#/components/schemas/Actor'
+    ExtendedEntitySummary:
+      allOf: 
+        - $ref: '#/components/schemas/EntitySummaryFields'
+        - type: object
+          properties:
+            currentVersion:
+              $ref: '#/components/schemas/EntityVersionFields'
+            creator:
+              $ref: '#/components/schemas/Actor'
+    Entity:
+      allOf: 
+        - $ref: '#/components/schemas/EntitySummaryFields'
+        - type: object
+          properties:
+            currentVersion:
+              $ref: '#/components/schemas/EntityVersion'
+    ExtendedEntity:
+      allOf: 
+        - $ref: '#/components/schemas/EntitySummaryFields'
+        - type: object
+          properties:
+            creator:
+              $ref: '#/components/schemas/Actor'
+            currentVersion:
+              $ref: '#/components/schemas/EntityVersion'
+    EntityVersion:
+      allOf: 
+        - $ref: '#/components/schemas/EntityVersionFields'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/DataExample'
+    ExtendedEntityVersion:
+      allOf: 
+        - $ref: '#/components/schemas/EntityVersion'
+        - type: object
+          properties:
+            reator:
+              $ref: '#/components/schemas/Actor'
+    EntityDiffValue:
+      type: array
+      items:
+        $ref: '#/components/schemas/EntityDiffValueItems'
+    EntityDiffValueItems:
+      type: object
+      properties:
+        new:
+          type: string
+          description: The new value of this property.
+          example: John
+        old:
+          type: string
+          description: The old value of this property.
+          example: Jane
+        propertyName:
+          type: string
+          description: The name of the property that is changed.
+          example: name
+    DataExample:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: John
+        age:
+          type: string
+          example: '88'    
     Form:
       required:
       - createdAt
@@ -13178,7 +13992,7 @@ components:
           draftToken:
             type: string
             description: The test token to use to submit to this draft form. See [Draft
-              Testing Endpoints](/reference/submissions/draft-submissions).
+              Testing Endpoints](/central-api-submission-management/#draft-submissions).
             example: lSpAIeksRu1CNZs7!qjAot2T17dPzkrw9B4iTtpj7OoIJBmXvnHM8z8Ka4QPEjR7
           enketoId:
             type: string
@@ -13186,6 +14000,16 @@ components:
               Enketo at `/-`. Authentication is not needed to access the draft form
               through Enketo.
             example: abcdef
+    FormKeyValue:
+      properties:
+        xmlFormId:
+          type: string
+          description: The `id` of this form as given in its XForms XML definition
+          example: simple
+        name:
+          type: string
+          description: The friendly name of this form. It is given by the `<title>` in the XForms XML definition. Returns `xmlFormId` if there is no title in the form definition.
+          example: Simple
     Dataset:
       required:
       - createdAt
@@ -13204,7 +14028,11 @@ components:
         projectId:
           type: number
           description: The numerical ID of the Project that the Dataset belongs to.
-          example: 1.0
+          example: 1
+        approvalRequired:
+          type: boolean
+          description: Control whether a Submission should be approved before an Entity is created from it.
+          example: true
     ExtendedDataset:
       allOf:
       - $ref: '#/components/schemas/Dataset'
@@ -13346,16 +14174,31 @@ components:
       properties:
         name:
           type: string
-          example: first_name
+          example: the.age
           description: The name of the Property.
+        odataName:
+          type: string
+          example: the_age
+          description: The name of the property as it will appear in OData. OData property names can only contain alphanumeric characters and underscores.
         publishedAt:
           type: string
           example: '2018-01-21T00:04:11.153Z'
           description: Publishing timestamp of the form that defined this property for the first time.
         forms:
           type: array
-          items: {}
           description: List of forms that create the property
+          items:
+            $ref: '#/components/schemas/FormKeyValue'
+    DatasetMetadata:
+      properties:
+        linkedForms:
+          $ref: '#/components/schemas/EntitySummaryFields'
+          description: Forms that consume data from the Dataset
+        properties:
+          type: array
+          description: All properties of the Dataset
+          items:
+            $ref: '#/components/schemas/PropertyDetailed'
     Submission:
       type: object
       required:
