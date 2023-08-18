@@ -3,30 +3,18 @@
 Dataset Management
 =======================================================================================================================
 
-*(introduced: version 2022.3)*\ 
-
-Version 2022.3 introduces server-managed Datasets as the first step on our `Entity-based data collection <https://forum.getodk.org/t/entity-based-data-collection/38115>`__ journey.
-
-An Entity is a specific person, place, or thing. A Dataset is a collection of Entities. A Dataset is defined within a Form, and then a Submission to that Form creates an Entity when that Submission is **approved**\ . The Dataset definition includes the Dataset name and which Form fields map to which Dataset/Entity Properties, e.g. how to construct an Entity from a Submission.
-
-See the `ODK XForms specification <https://getodk.github.io/xforms-spec>`__ for guidance on defining Datasets in Forms.
-
-Once a Dataset exists, it can be linked to another Form as an Attachment and served as an automatically-updating CSV.
-
-**Related APIs:**\ 
-
-- `Implicit creation of Datasets via Forms </central-api-form-management/#forms/creating-a-new-form>`__
-
-- `Link a Dataset to a Form Attachment </central-api-form-management/#linking-a-dataset-to-a-draft-form-attachment>`__
-
-- `Get a Form's Related Datasets </central-api-form-management/#related-datasets>`__
+.. raw:: html
+  
+  <p><em>(introduced: version 2022.3)</em></p><p>Version 2022.3 introduces server-managed Datasets as the first step on our <a href="https://forum.getodk.org/t/entity-based-data-collection/38115">Entity-based data collection</a> journey.</p><p>An Entity is a specific person, place, or thing. A Dataset is a collection of Entities. A Dataset is defined within a Form, and then a Submission to that Form creates an Entity when that Submission is <strong>approved</strong>. The Dataset definition includes the Dataset name and which Form fields map to which Dataset/Entity Properties, e.g. how to construct an Entity from a Submission.</p><p>See the <a href="https://getodk.github.io/xforms-spec">ODK XForms specification</a> for guidance on defining Datasets in Forms.</p><p>Once a Dataset exists, it can be linked to another Form as an Attachment and served as an automatically-updating CSV.</p><p><strong>Related APIs:</strong></p><ul><li><p><a href="/central-api-form-management/#forms/creating-a-new-form">Implicit creation of Datasets via Forms</a></p></li><li><p><a href="/central-api-form-management/#linking-a-dataset-to-a-draft-form-attachment">Link a Dataset to a Form Attachment</a></p></li><li><p><a href="/central-api-form-management/#related-datasets">Get a Form's Related Datasets</a></p></li></ul>
 
 Datasets
 ------------------
 
 **GET /projects/{projectId}/datasets**
 
-The Dataset listing endpoint returns all published Datasets in a Project. If a Draft Form defines a new Dataset, that Dataset will not be included in this list until the Form is published.
+.. raw:: html
+
+  <p>The Dataset listing endpoint returns all published Datasets in a Project. If a Draft Form defines a new Dataset, that Dataset will not be included in this list until the Form is published.</p>
 
 .. dropdown:: Request
 
@@ -42,7 +30,9 @@ The Dataset listing endpoint returns all published Datasets in a Project. If a D
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
 
@@ -59,10 +49,22 @@ The Dataset listing endpoint returns all published Datasets in a Project. If a D
 
       .. code-block::
 
-          "null"
+          [
+            {
+              "name": "people",
+              "createdAt": "2018-01-19T23:58:03.395Z",
+              "projectId": 1,
+              "approvalRequired": true,
+              "lastEntity": "2018-04-18T03:04:51.695Z",
+              "entities": 10
+            }
+          ]
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -80,7 +82,9 @@ The Dataset listing endpoint returns all published Datasets in a Project. If a D
 
                   - string
                   
-                    The name of the Dataset
+                    .. raw:: html
+
+                      <p>The name of the Dataset</p>
 
                     Example: ``people``
                 * - createdAt
@@ -88,7 +92,9 @@ The Dataset listing endpoint returns all published Datasets in a Project. If a D
 
                   - string
                   
-                    ISO date format.
+                    .. raw:: html
+
+                      <p>ISO date format.</p>
 
                     Example: ``2018-01-19 23:58:03.395000+00:00``
                 * - projectId
@@ -96,7 +102,9 @@ The Dataset listing endpoint returns all published Datasets in a Project. If a D
 
                   - number
                   
-                    The numerical ID of the Project that the Dataset belongs to.
+                    .. raw:: html
+
+                      <p>The numerical ID of the Project that the Dataset belongs to.</p>
 
                     Example: ``1``
                 * - approvalRequired
@@ -104,11 +112,16 @@ The Dataset listing endpoint returns all published Datasets in a Project. If a D
 
                   - boolean
                   
-                    Control whether a Submission should be approved before an Entity is created from it.
+                    .. raw:: html
+
+                      <p>Control whether a Submission should be approved before an Entity is created from it.</p>
 
                     Example: ``true``
 
               
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -126,7 +139,9 @@ The Dataset listing endpoint returns all published Datasets in a Project. If a D
 
                   - string
                   
-                    The name of the Dataset
+                    .. raw:: html
+
+                      <p>The name of the Dataset</p>
 
                     Example: ``people``
                 * - createdAt
@@ -134,7 +149,9 @@ The Dataset listing endpoint returns all published Datasets in a Project. If a D
 
                   - string
                   
-                    ISO date format.
+                    .. raw:: html
+
+                      <p>ISO date format.</p>
 
                     Example: ``2018-01-19 23:58:03.395000+00:00``
                 * - projectId
@@ -142,7 +159,9 @@ The Dataset listing endpoint returns all published Datasets in a Project. If a D
 
                   - number
                   
-                    The numerical ID of the Project that the Dataset belongs to.
+                    .. raw:: html
+
+                      <p>The numerical ID of the Project that the Dataset belongs to.</p>
 
                     Example: ``1``
                 * - approvalRequired
@@ -150,7 +169,9 @@ The Dataset listing endpoint returns all published Datasets in a Project. If a D
 
                   - boolean
                   
-                    Control whether a Submission should be approved before an Entity is created from it.
+                    .. raw:: html
+
+                      <p>Control whether a Submission should be approved before an Entity is created from it.</p>
 
                     Example: ``true``
                 * - lastEntity
@@ -158,7 +179,9 @@ The Dataset listing endpoint returns all published Datasets in a Project. If a D
 
                   - string
                   
-                    ISO date format. The timestamp of the most recent entity, if any.
+                    .. raw:: html
+
+                      <p>ISO date format. The timestamp of the most recent entity, if any.</p>
 
                     Example: ``2018-04-18 03:04:51.695000+00:00``
                 * - entities
@@ -166,7 +189,9 @@ The Dataset listing endpoint returns all published Datasets in a Project. If a D
 
                   - number
                   
-                    The number of Entities in the Dataset.
+                    .. raw:: html
+
+                      <p>The number of Entities in the Dataset.</p>
 
                     Example: ``10.0``
 
@@ -190,6 +215,9 @@ The Dataset listing endpoint returns all published Datasets in a Project. If a D
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -209,14 +237,18 @@ The Dataset listing endpoint returns all published Datasets in a Project. If a D
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -225,7 +257,9 @@ Dataset Metadata
 
 **GET /projects/{projectId}/datasets/{name}**
 
-Returns the metadata of a Dataset including properties and forms that create and consume the Dataset.
+.. raw:: html
+
+  <p>Returns the metadata of a Dataset including properties and forms that create and consume the Dataset.</p>
 
 .. dropdown:: Request
 
@@ -241,7 +275,9 @@ Returns the metadata of a Dataset including properties and forms that create and
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - name
@@ -249,7 +285,9 @@ Returns the metadata of a Dataset including properties and forms that create and
 
         - string
         
-          Name of the Dataset
+          .. raw:: html
+
+            Name of the Dataset
 
           Example: ``people``
 
@@ -266,10 +304,37 @@ Returns the metadata of a Dataset including properties and forms that create and
 
       .. code-block::
 
-          "null"
+          {
+            "name": "people",
+            "createdAt": "2018-01-19T23:58:03.395Z",
+            "projectId": 1,
+            "approvalRequired": true,
+            "linkedForms": [
+              {
+                "xmlFormId": "simple",
+                "name": "Simple"
+              }
+            ],
+            "properties": [
+              {
+                "name": "the.age",
+                "odataName": "the_age",
+                "publishedAt": "2018-01-21T00:04:11.153Z",
+                "forms": [
+                  {
+                    "xmlFormId": "simple",
+                    "name": "Simple"
+                  }
+                ]
+              }
+            ]
+          }
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -287,7 +352,9 @@ Returns the metadata of a Dataset including properties and forms that create and
 
                   - object
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
 
                       
@@ -304,7 +371,9 @@ Returns the metadata of a Dataset including properties and forms that create and
 
                             - string
                             
-                              The ``uuid``\  of the Entity that uniquely identifies the Entity.
+                              .. raw:: html
+
+                                <p>The <code>uuid</code> of the Entity that uniquely identifies the Entity.</p>
 
                               Example: ``uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44``
                           * - createdAt
@@ -312,7 +381,9 @@ Returns the metadata of a Dataset including properties and forms that create and
 
                             - string
                             
-                              ISO date format. The time that the server received the Entity.
+                              .. raw:: html
+
+                                <p>ISO date format. The time that the server received the Entity.</p>
 
                               Example: ``2018-04-18 23:42:11.406000+00:00``
                           * - updatedAt
@@ -320,7 +391,9 @@ Returns the metadata of a Dataset including properties and forms that create and
 
                             - string
                             
-                              Timestamp of the last update in ISO date format. ``null``\  when there is only one version of the Entity.
+                              .. raw:: html
+
+                                <p>Timestamp of the last update in ISO date format. <code>null</code> when there is only one version of the Entity.</p>
 
                               Example: ``2018-04-18 23:42:11.406000+00:00``
                           * - deletedAt
@@ -328,7 +401,9 @@ Returns the metadata of a Dataset including properties and forms that create and
 
                             - string
                             
-                              Timestamp of the deletion in ISO date format. ``null``\  if the Entity is not deleted.
+                              .. raw:: html
+
+                                <p>Timestamp of the deletion in ISO date format. <code>null</code> if the Entity is not deleted.</p>
 
                               Example: ``2018-04-18 23:42:11.406000+00:00``
                           * - creatorId
@@ -336,7 +411,9 @@ Returns the metadata of a Dataset including properties and forms that create and
 
                             - number
                             
-                              The ID of the Actor (App User, User, or Public Link) that originally created the Entity.
+                              .. raw:: html
+
+                                <p>The ID of the Actor (App User, User, or Public Link) that originally created the Entity.</p>
 
                               Example: ``1``
                      
@@ -345,7 +422,9 @@ Returns the metadata of a Dataset including properties and forms that create and
 
                   - array
                   
-                    All properties of the Dataset
+                    .. raw:: html
+
+                      <p>All properties of the Dataset</p>
 
                     Example: ``null``
                     
@@ -359,7 +438,9 @@ Returns the metadata of a Dataset including properties and forms that create and
 
                             - string
                             
-                              The name of the Property.
+                              .. raw:: html
+
+                                <p>The name of the Property.</p>
 
                               Example: ``the.age``
                           * - odataName
@@ -367,7 +448,9 @@ Returns the metadata of a Dataset including properties and forms that create and
 
                             - string
                             
-                              The name of the property as it will appear in OData. OData property names can only contain alphanumeric characters and underscores.
+                              .. raw:: html
+
+                                <p>The name of the property as it will appear in OData. OData property names can only contain alphanumeric characters and underscores.</p>
 
                               Example: ``the_age``
                           * - publishedAt
@@ -375,7 +458,9 @@ Returns the metadata of a Dataset including properties and forms that create and
 
                             - string
                             
-                              Publishing timestamp of the form that defined this property for the first time.
+                              .. raw:: html
+
+                                <p>Publishing timestamp of the form that defined this property for the first time.</p>
 
                               Example: ``2018-01-21T00:04:11.153Z``
                           * - forms
@@ -383,7 +468,9 @@ Returns the metadata of a Dataset including properties and forms that create and
 
                             - array
                             
-                              List of forms that create the property
+                              .. raw:: html
+
+                                <p>List of forms that create the property</p>
 
                               Example: ``null``
                               
@@ -397,7 +484,9 @@ Returns the metadata of a Dataset including properties and forms that create and
 
                                       - string
                                       
-                                        The ``id``\  of this form as given in its XForms XML definition
+                                        .. raw:: html
+
+                                          <p>The <code>id</code> of this form as given in its XForms XML definition</p>
 
                                         Example: ``simple``
                                     * - name
@@ -405,7 +494,9 @@ Returns the metadata of a Dataset including properties and forms that create and
 
                                       - string
                                       
-                                        The friendly name of this form. It is given by the ``<title>``\  in the XForms XML definition. Returns ``xmlFormId``\  if there is no title in the form definition.
+                                        .. raw:: html
+
+                                          <p>The friendly name of this form. It is given by the <code>&lt;title&gt;</code> in the XForms XML definition. Returns <code>xmlFormId</code> if there is no title in the form definition.</p>
 
                                         Example: ``Simple``
 
@@ -433,6 +524,9 @@ Returns the metadata of a Dataset including properties and forms that create and
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -452,14 +546,18 @@ Returns the metadata of a Dataset including properties and forms that create and
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -468,9 +566,9 @@ Update Dataset Metadata
 
 **PATCH /projects/{projectId}/datasets/{name}**
 
-You can only update ``approvalRequired``\  using this endpoint. ``approvalRequired``\  flag controls the Entity creation flow; if it is ``true``\  then the Submission must be approved before an Entity can be created from it and if it is ``false``\  then an Entity is created as soon as the Submission is received by the ODK Central.
+.. raw:: html
 
-By default ``approvalRequired``\  is ``false``\  for the Datasets created after v2023.3. Datasets created prior to that will have ``approvalRequired``\  set to ``true``\ .
+  <p>You can only update <code>approvalRequired</code> using this endpoint. <code>approvalRequired</code> flag controls the Entity creation flow; if it is <code>true</code> then the Submission must be approved before an Entity can be created from it and if it is <code>false</code> then an Entity is created as soon as the Submission is received by the ODK Central.</p><p>By default <code>approvalRequired</code> is <code>false</code> for the Datasets created after v2023.3. Datasets created prior to that will have <code>approvalRequired</code> set to <code>true</code>.</p>
 
 .. dropdown:: Request
 
@@ -486,7 +584,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - name
@@ -494,7 +594,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
         - string
         
-          Name of the Dataset
+          .. raw:: html
+
+            Name of the Dataset
 
           Example: ``people``
 
@@ -512,6 +614,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -531,7 +636,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
                   - boolean
                   
-                    Control whether a Submission should be approved before an Entity is created from it.
+                    .. raw:: html
+
+                      <p>Control whether a Submission should be approved before an Entity is created from it.</p>
 
                     Example: ``true``
               
@@ -549,10 +656,37 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
       .. code-block::
 
-          "null"
+          {
+            "name": "people",
+            "createdAt": "2018-01-19T23:58:03.395Z",
+            "projectId": 1,
+            "approvalRequired": true,
+            "linkedForms": [
+              {
+                "xmlFormId": "simple",
+                "name": "Simple"
+              }
+            ],
+            "properties": [
+              {
+                "name": "the.age",
+                "odataName": "the_age",
+                "publishedAt": "2018-01-21T00:04:11.153Z",
+                "forms": [
+                  {
+                    "xmlFormId": "simple",
+                    "name": "Simple"
+                  }
+                ]
+              }
+            ]
+          }
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -570,7 +704,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
                   - object
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
 
                       
@@ -587,7 +723,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
                             - string
                             
-                              The ``uuid``\  of the Entity that uniquely identifies the Entity.
+                              .. raw:: html
+
+                                <p>The <code>uuid</code> of the Entity that uniquely identifies the Entity.</p>
 
                               Example: ``uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44``
                           * - createdAt
@@ -595,7 +733,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
                             - string
                             
-                              ISO date format. The time that the server received the Entity.
+                              .. raw:: html
+
+                                <p>ISO date format. The time that the server received the Entity.</p>
 
                               Example: ``2018-04-18 23:42:11.406000+00:00``
                           * - updatedAt
@@ -603,7 +743,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
                             - string
                             
-                              Timestamp of the last update in ISO date format. ``null``\  when there is only one version of the Entity.
+                              .. raw:: html
+
+                                <p>Timestamp of the last update in ISO date format. <code>null</code> when there is only one version of the Entity.</p>
 
                               Example: ``2018-04-18 23:42:11.406000+00:00``
                           * - deletedAt
@@ -611,7 +753,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
                             - string
                             
-                              Timestamp of the deletion in ISO date format. ``null``\  if the Entity is not deleted.
+                              .. raw:: html
+
+                                <p>Timestamp of the deletion in ISO date format. <code>null</code> if the Entity is not deleted.</p>
 
                               Example: ``2018-04-18 23:42:11.406000+00:00``
                           * - creatorId
@@ -619,7 +763,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
                             - number
                             
-                              The ID of the Actor (App User, User, or Public Link) that originally created the Entity.
+                              .. raw:: html
+
+                                <p>The ID of the Actor (App User, User, or Public Link) that originally created the Entity.</p>
 
                               Example: ``1``
                      
@@ -628,7 +774,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
                   - array
                   
-                    All properties of the Dataset
+                    .. raw:: html
+
+                      <p>All properties of the Dataset</p>
 
                     Example: ``null``
                     
@@ -642,7 +790,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
                             - string
                             
-                              The name of the Property.
+                              .. raw:: html
+
+                                <p>The name of the Property.</p>
 
                               Example: ``the.age``
                           * - odataName
@@ -650,7 +800,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
                             - string
                             
-                              The name of the property as it will appear in OData. OData property names can only contain alphanumeric characters and underscores.
+                              .. raw:: html
+
+                                <p>The name of the property as it will appear in OData. OData property names can only contain alphanumeric characters and underscores.</p>
 
                               Example: ``the_age``
                           * - publishedAt
@@ -658,7 +810,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
                             - string
                             
-                              Publishing timestamp of the form that defined this property for the first time.
+                              .. raw:: html
+
+                                <p>Publishing timestamp of the form that defined this property for the first time.</p>
 
                               Example: ``2018-01-21T00:04:11.153Z``
                           * - forms
@@ -666,7 +820,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
                             - array
                             
-                              List of forms that create the property
+                              .. raw:: html
+
+                                <p>List of forms that create the property</p>
 
                               Example: ``null``
                               
@@ -680,7 +836,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
                                       - string
                                       
-                                        The ``id``\  of this form as given in its XForms XML definition
+                                        .. raw:: html
+
+                                          <p>The <code>id</code> of this form as given in its XForms XML definition</p>
 
                                         Example: ``simple``
                                     * - name
@@ -688,7 +846,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
                                       - string
                                       
-                                        The friendly name of this form. It is given by the ``<title>``\  in the XForms XML definition. Returns ``xmlFormId``\  if there is no title in the form definition.
+                                        .. raw:: html
+
+                                          <p>The friendly name of this form. It is given by the <code>&lt;title&gt;</code> in the XForms XML definition. Returns <code>xmlFormId</code> if there is no title in the form definition.</p>
 
                                         Example: ``Simple``
 
@@ -716,6 +876,9 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -735,14 +898,18 @@ By default ``approvalRequired``\  is ``false``\  for the Datasets created after 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -751,11 +918,9 @@ Download Dataset
 
 **GET /projects/{projectId}/datasets/{name}/entities.csv**
 
-Datasets (collections of Entities) can be used as Attachments in other Forms, but they can also be downloaded directly as a CSV file.
+.. raw:: html
 
-The CSV format closely matches the `OData Dataset Service </central-api-odata-endpoints/#odata-dataset-service>`__ format, with columns for system properties such as ``**\ id``\  (the Entity UUID), ``**\ \ createdAt``\ , ``**\ creatorName``\ , etc., the Entity Label ``label``\ , and the Dataset/Entity Properties themselves. If any Property for an given Entity is blank (e.g. it was not captured by that Form or was left blank), that field of the CSV is blank.
-
-This endpoint supports ``ETag``\  header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in the ETag header. If you pass that value in the If-None-Match header of a subsequent request, then if the Dataset has not been changed since the previous request, you will receive ``304 Not Modified``\  response; otherwise you'll get the new data.
+  <p>Datasets (collections of Entities) can be used as Attachments in other Forms, but they can also be downloaded directly as a CSV file.</p><p>The CSV format closely matches the <a href="/central-api-odata-endpoints/#odata-dataset-service">OData Dataset Service</a> format, with columns for system properties such as <code>__id</code> (the Entity UUID), <code>__createdAt</code>, <code>__creatorName</code>, etc., the Entity Label <code>label</code>, and the Dataset/Entity Properties themselves. If any Property for an given Entity is blank (e.g. it was not captured by that Form or was left blank), that field of the CSV is blank.</p><p>This endpoint supports <code>ETag</code> header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in the ETag header. If you pass that value in the If-None-Match header of a subsequent request, then if the Dataset has not been changed since the previous request, you will receive <code>304 Not Modified</code> response; otherwise you'll get the new data.</p>
 
 .. dropdown:: Request
 
@@ -771,7 +936,9 @@ This endpoint supports ``ETag``\  header, which can be used to avoid downloading
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - name
@@ -779,7 +946,9 @@ This endpoint supports ``ETag``\  header, which can be used to avoid downloading
 
         - string
         
-          Name of the Dataset
+          .. raw:: html
+
+            Name of the Dataset
 
           Example: ``people``
 

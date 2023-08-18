@@ -7,3 +7,4 @@ sphinx-copybutton
 sphinxcontrib-youtube
 sphinx-tabs
 sphinx-toolbox
+mistune

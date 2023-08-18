@@ -8181,6 +8181,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Key'
+              example:
+                - id: 1
+                  public: bcFeKDF3Sg8W91Uf5uxaIlsuhzmjbgUnIyiLzIjrx4CAaf9Y9LG7TAu6wKPqfbH6ZAkJTFSfjLNovbKhpOQcmO5VZGGay6yvXrX1TFW6C6RLITy74erxfUAStdtpP4nraCYqQYqn5zD4/1OmgweJt5vzGXW2ch7lrROEQhXB9lK+bjEeWx8TFW/+6ha/oRLnl6a2RBRL6mhwy3PoByNTKndB2MP4TygCJ/Ini4ivk74iSqVnoeuNJR/xUcU+kaIpZEIjxpAS2VECJU9fZvS5Gt84e5wl/t7bUKu+dlh/cUgHfk6+6bwzqGQYOe5A==
+                  managed: true
+                  hint: it was a secret
         403:
           description: Forbidden
           content:
@@ -8224,6 +8229,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Actor'
+              example:
+              - createdAt: 2018-04-18T23:19:14.802Z
+                displayName: My Display Name
+                id: 115
+                type: user
+                updatedAt: 2018-04-18T23:42:11.406Z
+                deletedAt: 2018-04-18T23:42:11.406Z
         403:
           description: Forbidden
           content:
@@ -9243,6 +9255,26 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/SubmissionDiffValue'
+              example:
+                two:
+                  - new: Donna
+                    old: Dana
+                    path:
+                    - name
+                  - new: '55'
+                    old: '44'
+                    path:
+                    - age
+                  - new: two
+                    old: one
+                    path:
+                    - meta
+                    - instanceID
+                  - new: one
+                    old:
+                    path:
+                    - meta
+                    - deprecatedID
         403:
           description: Forbidden
           content:
@@ -9669,6 +9701,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Key'
+              example:
+                - id: 1
+                  public: bcFeKDF3Sg8W91Uf5uxaIlsuhzmjbgUnIyiLzIjrx4CAaf9Y9LG7TAu6wKPqfbH6ZAkJTFSfjLNovbKhpOQcmO5VZGGay6yvXrX1TFW6C6RLITy74erxfUAStdtpP4nraCYqQYqn5zD4/1OmgweJt5vzGXW2ch7lrROEQhXB9lK+bjEeWx8TFW/+6ha/oRLnl6a2RBRL6mhwy3PoByNTKndB2MP4TygCJ/Ini4ivk74iSqVnoeuNJR/xUcU+kaIpZEIjxpAS2VECJU9fZvS5Gt84e5wl/t7bUKu+dlh/cUgHfk6+6bwzqGQYOe5A==
+                  managed: true
+                  hint: it was a secret
         403:
           description: Forbidden
           content:
@@ -10330,6 +10367,13 @@ paths:
                   - type: array
                     items:
                       $ref: '#/components/schemas/ExtendedDataset'
+              example:
+                - name: people
+                  createdAt: '2018-01-19T23:58:03.395Z'
+                  projectId: 1
+                  approvalRequired: true
+                  lastEntity: '2018-04-18T03:04:51.695Z'
+                  entities: 10
         403:
           description: Forbidden
           content:
@@ -10390,6 +10434,21 @@ paths:
                   - type: array
                     items:
                       $ref: '#/components/schemas/DatasetMetadata'
+              example:
+                name: people
+                createdAt: '2018-01-19T23:58:03.395Z'
+                projectId: 1
+                approvalRequired: true
+                linkedForms:
+                - xmlFormId: simple
+                  name: Simple
+                properties:
+                - name: the.age
+                  odataName: the_age
+                  publishedAt: '2018-01-21T00:04:11.153Z'
+                  forms:
+                  - xmlFormId: simple
+                    name: Simple
         403:
           description: Forbidden
           content:
@@ -10453,6 +10512,21 @@ paths:
                   - type: array
                     items:
                       $ref: '#/components/schemas/DatasetMetadata'
+              example:
+                name: people
+                createdAt: '2018-01-19T23:58:03.395Z'
+                projectId: 1
+                approvalRequired: true
+                linkedForms:
+                - xmlFormId: simple
+                  name: Simple
+                properties:
+                - name: the.age
+                  odataName: the_age
+                  publishedAt: '2018-01-21T00:04:11.153Z'
+                  forms:
+                  - xmlFormId: simple
+                    name: Simple
         403:
           description: Forbidden
           content:
@@ -10730,35 +10804,35 @@ paths:
                   - type: array
                     items:
                       $ref: '#/components/schemas/ExtendedEntity'
-        example:
-          uuid: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
-          createdAt: '2018-01-19T23:58:03.395Z'
-          updatedAt: '2018-03-21T12:45:02.312Z'
-          deletedAt: '2018-03-21T12:45:02.312Z'
-          creatorId: 1
-          creator:
-            createdAt: '2018-04-18T23:19:14.802Z'
-            displayName: My Display Name
-            id: 115
-            type: user
-            updatedAt: '2018-04-18T23:42:11.406Z'
-            deletedAt: '2018-04-18T23:42:11.406Z'
-          currentVersion:
-            label: John (88)
-            current: true
-            createdAt: '2018-03-21T12:45:02.312Z'
-            creatorId: 1
-            userAgent: Enketo/3.0.4
-            data:
-              firstName: John
-              age: '88'
-            creator:
-              createdAt: '2018-04-18T23:19:14.802Z'
-              displayName: My Display Name
-              id: 115
-              type: user
-              updatedAt: '2018-04-18T23:42:11.406Z'
-              deletedAt: '2018-04-18T23:42:11.406Z'
+              example:
+                uuid: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
+                createdAt: '2018-01-19T23:58:03.395Z'
+                updatedAt: '2018-03-21T12:45:02.312Z'
+                deletedAt: '2018-03-21T12:45:02.312Z'
+                creatorId: 1
+                creator:
+                  createdAt: '2018-04-18T23:19:14.802Z'
+                  displayName: My Display Name
+                  id: 115
+                  type: user
+                  updatedAt: '2018-04-18T23:42:11.406Z'
+                  deletedAt: '2018-04-18T23:42:11.406Z'
+                currentVersion:
+                  label: John (88)
+                  current: true
+                  createdAt: '2018-03-21T12:45:02.312Z'
+                  creatorId: 1
+                  userAgent: Enketo/3.0.4
+                  data:
+                    firstName: John
+                    age: '88'
+                  creator:
+                    createdAt: '2018-04-18T23:19:14.802Z'
+                    displayName: My Display Name
+                    id: 115
+                    type: user
+                    updatedAt: '2018-04-18T23:42:11.406Z'
+                    deletedAt: '2018-04-18T23:42:11.406Z'
         403:
           description: Forbidden
           content:

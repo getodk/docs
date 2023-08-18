@@ -3,64 +3,18 @@
 OpenRosa Endpoints
 =======================================================================================================================
 
-`OpenRosa <https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaAPI>`__ is an API standard which accompanies the ODK XForms XML standard, allowing compliant servers and clients to use a common protocol to communicate ``Form``\ s and ``Submission``\ s to each other. When survey clients like ODK Collect and Enketo submit Submission data to a Form, this is the API they use.
-
-ODK Central is *not*\  a fully compliant OpenRosa server. OpenRosa requires compliance with five major components:
-
-1. `**Metadata Schema**\  <https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaMetaDataSchema>`__, which defines a standard way to include metadata like the survey device ID and survey duration with a Submission. ODK Central will accept and return this data, but does nothing special with anything besides the ``instanceId``\  at this time.
-
-2. `**HTTP Request API**\  <https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaRequest>`__, which defines a set of requirements every OpenRosa request and response must follow. ODK Central is fully compliant with this component, except that we do *not*\  require the ``Date``\  header.
-
-3. `**Form Submission API**\  <https://bitbucket.org/javarosa/javarosa/wiki/FormSubmissionAPI>`__, which defines how Submissions are submitted to the server. ODK Central is fully compliant with this component.
-
-4. `**Authentication API**\  <https://bitbucket.org/javarosa/javarosa/wiki/AuthenticationAPI>`__, which defines how users authenticate with the server. ODK Central provides `three authentication methods </central-api-authentication>`__. One of these is HTTPS Basic Authentication, which is recommended by the OpenRosa specification. However, because `we do not follow the try/retry pattern </central-api-authentication/#using-basic-authentication>`__ required by the OpenRosa and the RFC specification, ODK Central is *not compliant*\  with this component. Our recommendation generally is to use `App User Authentication </central-api-authentication/#app-user-authentication>`__ when submitting data from survey clients.
-
-5. `**Form Discovery (Listing) API**\  <https://bitbucket.org/javarosa/javarosa/wiki/FormListAPI>`__, which returns a listing of Forms available for survey clients to download and submit to. At this time, ODK Central is *partially compliant*\  with this component: the server will return a correctly formatted ``formList``\  response, but it does not currently handle the optional filter parameters.
-
-In practical usage, ODK survey clients like Collect will interact with Central in three places:
-
-* The OpenRosa Form Listing API, `documented below </central-api-openrosa-endpoints/#openrosa-form-listing-api>`__, lists the Forms the client can retrieve.
-
-* The `Form XML download </central-api-form-management/#retrieving-form-xml>`__ endpoint, a part of the standard REST API for Forms, is linked in the Form Listing response and allows clients to then download the ODK XForms XML for each form.
-
-* The OpenRosa Submission API, `documented below </central-api-openrosa-endpoints/#openrosa-form-submission-api>`__, allows survey clients to submit new Submissions to any Form.
-
-The Form Listing and Submission APIs are partitioned by Project, and their URLs are nested under the Project in question as a result. When you List or Submit, you will only be able to get forms from and submit submissions to that particular Project at a time.
-
-Where the **HTTP Request API**\  OpenRosa standards specification requires two headers for any request, Central requires only one:
-
-* ``X-OpenRosa-Version``\  **must**\  be set to exactly ``1.0``\  or the request will be rejected.
-
-* But Central does not require a ``Date``\  header field. You may set it if you wish, but it will have no effect on Central.
+.. raw:: html
+  
+  <p><a href="https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaAPI">OpenRosa</a> is an API standard which accompanies the ODK XForms XML standard, allowing compliant servers and clients to use a common protocol to communicate <code>Form</code>s and <code>Submission</code>s to each other. When survey clients like ODK Collect and Enketo submit Submission data to a Form, this is the API they use.</p><p>ODK Central is <em>not</em> a fully compliant OpenRosa server. OpenRosa requires compliance with five major components:</p><ol><li><p><a href="https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaMetaDataSchema"><strong>Metadata Schema</strong></a>, which defines a standard way to include metadata like the survey device ID and survey duration with a Submission. ODK Central will accept and return this data, but does nothing special with anything besides the <code>instanceId</code> at this time.</p></li><li><p><a href="https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaRequest"><strong>HTTP Request API</strong></a>, which defines a set of requirements every OpenRosa request and response must follow. ODK Central is fully compliant with this component, except that we do <em>not</em> require the <code>Date</code> header.</p></li><li><p><a href="https://bitbucket.org/javarosa/javarosa/wiki/FormSubmissionAPI"><strong>Form Submission API</strong></a>, which defines how Submissions are submitted to the server. ODK Central is fully compliant with this component.</p></li><li><p><a href="https://bitbucket.org/javarosa/javarosa/wiki/AuthenticationAPI"><strong>Authentication API</strong></a>, which defines how users authenticate with the server. ODK Central provides <a href="/central-api-authentication">three authentication methods</a>. One of these is HTTPS Basic Authentication, which is recommended by the OpenRosa specification. However, because <a href="/central-api-authentication/#using-basic-authentication">we do not follow the try/retry pattern</a> required by the OpenRosa and the RFC specification, ODK Central is <em>not compliant</em> with this component. Our recommendation generally is to use <a href="/central-api-authentication/#app-user-authentication">App User Authentication</a> when submitting data from survey clients.</p></li><li><p><a href="https://bitbucket.org/javarosa/javarosa/wiki/FormListAPI"><strong>Form Discovery (Listing) API</strong></a>, which returns a listing of Forms available for survey clients to download and submit to. At this time, ODK Central is <em>partially compliant</em> with this component: the server will return a correctly formatted <code>formList</code> response, but it does not currently handle the optional filter parameters.</p></li></ol><p>In practical usage, ODK survey clients like Collect will interact with Central in three places:</p><ul><li><p>The OpenRosa Form Listing API, <a href="/central-api-openrosa-endpoints/#openrosa-form-listing-api">documented below</a>, lists the Forms the client can retrieve.</p></li><li><p>The <a href="/central-api-form-management/#retrieving-form-xml">Form XML download</a> endpoint, a part of the standard REST API for Forms, is linked in the Form Listing response and allows clients to then download the ODK XForms XML for each form.</p></li><li><p>The OpenRosa Submission API, <a href="/central-api-openrosa-endpoints/#openrosa-form-submission-api">documented below</a>, allows survey clients to submit new Submissions to any Form.</p></li></ul><p>The Form Listing and Submission APIs are partitioned by Project, and their URLs are nested under the Project in question as a result. When you List or Submit, you will only be able to get forms from and submit submissions to that particular Project at a time.</p><p>Where the <strong>HTTP Request API</strong> OpenRosa standards specification requires two headers for any request, Central requires only one:</p><ul><li><p><code>X-OpenRosa-Version</code> <strong>must</strong> be set to exactly <code>1.0</code> or the request will be rejected.</p></li><li><p>But Central does not require a <code>Date</code> header field. You may set it if you wish, but it will have no effect on Central.</p></li></ul>
 
 OpenRosa Form Listing API
 -----------------------------------
 
 **GET /v1/projects/{projectId}/formList**
 
-This is the mostly standards-compliant implementation of the `OpenRosa Form Discovery (Listing) API <https://bitbucket.org/javarosa/javarosa/wiki/FormListAPI>`__. We will not attempt to redocument the standard here.
+.. raw:: html
 
-The following aspects of the standard are *not*\  supported by ODK Central:
-
-* The ``deviceID``\  may be provided with the request, but it will be ignored.
-
-* The ``Accept-Language``\  header may be provided with the request, but it will be ignored.
-
-* The ``?formID=``\  querystring parameter is not supported and will be ignored.
-
-* The ``?verbose``\  querystring parameter is not supported and will be ignored.
-
-* The ``?listAllVersions``\  querystring is not supported and will be ignored. Central does not yet support multiple active versions of the same Form.
-
-* No ``<xforms-group/>``\  will ever be provided, as Central does not yet support this feature.
-
-By default, the given ``<name/>``\  in the Form Listing response is the friendly name associated with the ``Form``\  (``<title>``\  in the XML and ``name``\  on the API resource). If no such value can be found, then the ``xmlFormId``\  will be given as the ``<name>``\  instead.
-
-A ``<manifestUrl/>``\  property will be given per ``<xform>``\  if and only if that form is expected to have media or data file attachments associated with it, based on its XForms definition. It will appear even if no attachments have actually been uploaded to the server to fulfill those expectations.
-
-This resource always requires authentication. If a valid Actor is authenticated at all, a form list will always be returned, filtered by what that Actor is allowed to access.
-
-If you haven't already, please take a look at the **HTTP Request API**\  notes above on the required OpenRosa headers.
+  <p>This is the mostly standards-compliant implementation of the <a href="https://bitbucket.org/javarosa/javarosa/wiki/FormListAPI">OpenRosa Form Discovery (Listing) API</a>. We will not attempt to redocument the standard here.</p><p>The following aspects of the standard are <em>not</em> supported by ODK Central:</p><ul><li><p>The <code>deviceID</code> may be provided with the request, but it will be ignored.</p></li><li><p>The <code>Accept-Language</code> header may be provided with the request, but it will be ignored.</p></li><li><p>The <code>?formID=</code> querystring parameter is not supported and will be ignored.</p></li><li><p>The <code>?verbose</code> querystring parameter is not supported and will be ignored.</p></li><li><p>The <code>?listAllVersions</code> querystring is not supported and will be ignored. Central does not yet support multiple active versions of the same Form.</p></li><li><p>No <code>&lt;xforms-group/&gt;</code> will ever be provided, as Central does not yet support this feature.</p></li></ul><p>By default, the given <code>&lt;name/&gt;</code> in the Form Listing response is the friendly name associated with the <code>Form</code> (<code>&lt;title&gt;</code> in the XML and <code>name</code> on the API resource). If no such value can be found, then the <code>xmlFormId</code> will be given as the <code>&lt;name&gt;</code> instead.</p><p>A <code>&lt;manifestUrl/&gt;</code> property will be given per <code>&lt;xform&gt;</code> if and only if that form is expected to have media or data file attachments associated with it, based on its XForms definition. It will appear even if no attachments have actually been uploaded to the server to fulfill those expectations.</p><p>This resource always requires authentication. If a valid Actor is authenticated at all, a form list will always be returned, filtered by what that Actor is allowed to access.</p><p>If you haven't already, please take a look at the <strong>HTTP Request API</strong> notes above on the required OpenRosa headers.</p>
 
 .. dropdown:: Request
 
@@ -76,7 +30,9 @@ If you haven't already, please take a look at the **HTTP Request API**\  notes a
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``7``
       * - X-OpenRosa-Version
@@ -85,7 +41,9 @@ If you haven't already, please take a look at the **HTTP Request API**\  notes a
 
         - string
         
-          e.g. 1.0
+          .. raw:: html
+
+            e.g. 1.0
 
           Example: ``1.0``
 
@@ -141,31 +99,9 @@ OpenRosa Form Submission API
 
 **POST /v1/projects/{projectId}/submission**
 
-This is the fully standards-compliant implementation of the `OpenRosa Form Submission API <https://bitbucket.org/javarosa/javarosa/wiki/FormSubmissionAPI>`__. We will not attempt to redocument the submission part of the standard here, but please read further for information about *updating*\  submissions with new data.
+.. raw:: html
 
-Some things to understand when using this API for any reason:
-
-* ODK Central will always provide an ``X-OpenRosa-Accept-Content-Length``\  of 100 megabytes. In reality, this number depends on how the server has been deployed. The default Docker-based installation, for example, is limited to 100MB at the nginx layer.
-
-* The ``xml*submission*\ file``\  may have a Content Type of either ``text/xml``\  *or*\  ``application/xml``\ .
-
-* Central supports the ``HEAD``\  request preflighting recommended by the specification, but does not require it. Because our supported authentication methods do not follow the try/retry pattern, only preflight your request if you want to read the ``X-OpenRosa-Accept-Content-Length``\  header or are concerned about the other issues listed in the standards document, like proxies.
-
-* As stated in the standards document, it is possible to submit multimedia attachments with the ``Submission``\  across multiple ``POST``\  requests to this API. *However*\ , we impose the additional restriction that the Submission XML (``xml*submission*\ file``\ ) *may not change*\  between requests. If Central sees a Submission with an ``instanceId``\  it already knows about but the XML has changed in any way, it will respond with a ``409 Conflict``\  error and reject the submission.
-
-* Central will never return a ``202``\  in any response from this API.
-
-* If you haven't already, please take a look at the **HTTP Request API**\  notes above on the required OpenRosa headers.
-
-You can use this endpoint to submit *updates*\  to an existing submission. To do so, provide additionally a ```deprecatedID``\  metadata XML node <https://getodk.github.io/xforms-spec/#metadata>`__ with the ``instanceID``\  of the submission you are replacing. Some things to understand when submitting updates:
-
-* The new XML entirely replaces the old XML. No merging will be performed. So your new submission must contain exactly the current data.
-
-* If the ``deprecatedID``\  you provide has already been deprecated, your request will be rejected with a ``409 Conflict``\  and a useful error message.
-
-* If the submission you are deprecating had media files uploaded for it, any of those that are still relevant will be carried over to the new version by filename reference. Any files you provide will overwrite these carryovers.
-
-* Just as with initial submission, you can send multiple requests to this endpoint to submit additional media files if they do not comfortably fit in a single request. Also the same as initial submission, you'll need to provide exactly the same XML to make this happen. For updates, this will need to include the ``deprecatedID``\ .
+  <p>This is the fully standards-compliant implementation of the <a href="https://bitbucket.org/javarosa/javarosa/wiki/FormSubmissionAPI">OpenRosa Form Submission API</a>. We will not attempt to redocument the submission part of the standard here, but please read further for information about <em>updating</em> submissions with new data.</p><p>Some things to understand when using this API for any reason:</p><ul><li><p>ODK Central will always provide an <code>X-OpenRosa-Accept-Content-Length</code> of 100 megabytes. In reality, this number depends on how the server has been deployed. The default Docker-based installation, for example, is limited to 100MB at the nginx layer.</p></li><li><p>The <code>xml_submission_file</code> may have a Content Type of either <code>text/xml</code> <em>or</em> <code>application/xml</code>.</p></li><li><p>Central supports the <code>HEAD</code> request preflighting recommended by the specification, but does not require it. Because our supported authentication methods do not follow the try/retry pattern, only preflight your request if you want to read the <code>X-OpenRosa-Accept-Content-Length</code> header or are concerned about the other issues listed in the standards document, like proxies.</p></li><li><p>As stated in the standards document, it is possible to submit multimedia attachments with the <code>Submission</code> across multiple <code>POST</code> requests to this API. <em>However</em>, we impose the additional restriction that the Submission XML (<code>xml_submission_file</code>) <em>may not change</em> between requests. If Central sees a Submission with an <code>instanceId</code> it already knows about but the XML has changed in any way, it will respond with a <code>409 Conflict</code> error and reject the submission.</p></li><li><p>Central will never return a <code>202</code> in any response from this API.</p></li><li><p>If you haven't already, please take a look at the <strong>HTTP Request API</strong> notes above on the required OpenRosa headers.</p></li></ul><p>You can use this endpoint to submit <em>updates</em> to an existing submission. To do so, provide additionally a <a href="https://getodk.github.io/xforms-spec/#metadata"><code>deprecatedID</code> metadata XML node</a> with the <code>instanceID</code> of the submission you are replacing. Some things to understand when submitting updates:</p><ul><li><p>The new XML entirely replaces the old XML. No merging will be performed. So your new submission must contain exactly the current data.</p></li><li><p>If the <code>deprecatedID</code> you provide has already been deprecated, your request will be rejected with a <code>409 Conflict</code> and a useful error message.</p></li><li><p>If the submission you are deprecating had media files uploaded for it, any of those that are still relevant will be carried over to the new version by filename reference. Any files you provide will overwrite these carryovers.</p></li><li><p>Just as with initial submission, you can send multiple requests to this endpoint to submit additional media files if they do not comfortably fit in a single request. Also the same as initial submission, you'll need to provide exactly the same XML to make this happen. For updates, this will need to include the <code>deprecatedID</code>.</p></li></ul>
 
 .. dropdown:: Request
 
@@ -181,7 +117,9 @@ You can use this endpoint to submit *updates*\  to an existing submission. To do
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``7``
       * - X-OpenRosa-Version
@@ -190,7 +128,9 @@ You can use this endpoint to submit *updates*\  to an existing submission. To do
 
         - string
         
-          e.g. 1.0
+          .. raw:: html
+
+            e.g. 1.0
 
           Example: ``1.0``
 
@@ -321,17 +261,9 @@ OpenRosa Form Manifest API
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/manifest**
 
-*(introduced: version 0.2)*\ 
+.. raw:: html
 
-This is the fully standards-compliant implementation of the `OpenRosa Form Manifest API <https://bitbucket.org/javarosa/javarosa/wiki/FormListAPI#!the-manifest-document>`__. We will not attempt to redocument the standard here.
-
-A Manifest document is available at this resource path for any form in the system. However:
-
-* A link to this document will not be given in the `Form Listing API </central-api-openrosa-endpoints/#openrosa-form-listing-api>`__ unless we expect the form to have media or data file attachments based on the XForms definition of the form.
-
-* The Manifest will only output information for files the server actually has in its possession. Any missing expected files will be omitted, as we cannot provide a ``hash``\  or ``downloadUrl``\  for them.
-
-* For Attachments that are linked to a Dataset, the value of ``hash``\  is calculated using the MD5 of the last updated timestamp of the Dataset, instead of the content of the Dataset.
+  <p><em>(introduced: version 0.2)</em></p><p>This is the fully standards-compliant implementation of the <a href="https://bitbucket.org/javarosa/javarosa/wiki/FormListAPI#!the-manifest-document">OpenRosa Form Manifest API</a>. We will not attempt to redocument the standard here.</p><p>A Manifest document is available at this resource path for any form in the system. However:</p><ul><li><p>A link to this document will not be given in the <a href="/central-api-openrosa-endpoints/#openrosa-form-listing-api">Form Listing API</a> unless we expect the form to have media or data file attachments based on the XForms definition of the form.</p></li><li><p>The Manifest will only output information for files the server actually has in its possession. Any missing expected files will be omitted, as we cannot provide a <code>hash</code> or <code>downloadUrl</code> for them.</p></li><li><p>For Attachments that are linked to a Dataset, the value of <code>hash</code> is calculated using the MD5 of the last updated timestamp of the Dataset, instead of the content of the Dataset.</p></li></ul>
 
 .. dropdown:: Request
 
@@ -347,7 +279,9 @@ A Manifest document is available at this resource path for any form in the syste
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``7``
       * - xmlFormId
@@ -355,7 +289,9 @@ A Manifest document is available at this resource path for any form in the syste
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - X-OpenRosa-Version
@@ -364,7 +300,9 @@ A Manifest document is available at this resource path for any form in the syste
 
         - string
         
-          e.g. 1.0
+          .. raw:: html
+
+            e.g. 1.0
 
           Example: ``1.0``
 
@@ -444,24 +382,18 @@ A Manifest document is available at this resource path for any form in the syste
 Draft Testing Endpoints
 -----------------------------------------------------------------------------------------------------------------------
 
-*(introduced: version 0.8)*\ 
-
-To facilitate testing, there is an alternative collection of OpenRosa endpoints that will give access to the draft version of a form and allow submitting test submissions to it. If you are using User or App User authentication, you can use the following resources without the ``/test/{token}``\  prefix with your existing authentication.
-
-Otherwise, and in particular if you plan to test your form in Collect or another OpenRosa-compliant client, you will likely want to use the ``/test``\  Draft Token prefix. It functions similarly to the standard OpenRosa support, with App User authentication, but instead of a ``/key``\  route prefix they feature a ``/test``\  route prefix, and they point directly at each form (example: ``/test/lSpA…EjR7/projects/1/forms/myform/draft``\ ).
-
-You can get the appropriate Draft Token for any given draft by `requesting the Draft Form </central-api-form-management/#getting-draft-form-details>`__.
-
-The ``/test``\  tokens are not actual App Users, and Central does not keep track of user identity when they are used.
-
-With the ``/test``\  prefix, the following resources are available:
+.. raw:: html
+  
+  <p><em>(introduced: version 0.8)</em></p><p>To facilitate testing, there is an alternative collection of OpenRosa endpoints that will give access to the draft version of a form and allow submitting test submissions to it. If you are using User or App User authentication, you can use the following resources without the <code>/test/{token}</code> prefix with your existing authentication.</p><p>Otherwise, and in particular if you plan to test your form in Collect or another OpenRosa-compliant client, you will likely want to use the <code>/test</code> Draft Token prefix. It functions similarly to the standard OpenRosa support, with App User authentication, but instead of a <code>/key</code> route prefix they feature a <code>/test</code> route prefix, and they point directly at each form (example: <code>/test/lSpA…EjR7/projects/1/forms/myform/draft</code>).</p><p>You can get the appropriate Draft Token for any given draft by <a href="/central-api-form-management/#getting-draft-form-details">requesting the Draft Form</a>.</p><p>The <code>/test</code> tokens are not actual App Users, and Central does not keep track of user identity when they are used.</p><p>With the <code>/test</code> prefix, the following resources are available:</p>
 
 OpenRosa Form Listing API
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/formList**
 
-Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-form-listing-api>`__, but will only list the Draft Form to be tested.
+.. raw:: html
+
+  <p>Identical to the <a href="/central-api-openrosa-endpoints/#openrosa-form-listing-api">non-Draft version</a>, but will only list the Draft Form to be tested.</p>
 
 .. dropdown:: Request
 
@@ -477,7 +409,9 @@ Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-f
 
         - string
         
-          The authentication Draft Token associated with the Draft Form in question.
+          .. raw:: html
+
+            The authentication Draft Token associated with the Draft Form in question.
 
           Example: ``IeksRu1CNZs7!qjAot2T17dPzkrw9B4iTtpj7OoIJBmXvnHM8z8Ka4QP``
       * - projectId
@@ -485,7 +419,9 @@ Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-f
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``7``
       * - xmlFormId
@@ -493,7 +429,9 @@ Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-f
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - X-OpenRosa-Version
@@ -502,7 +440,9 @@ Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-f
 
         - string
         
-          e.g. 1.0
+          .. raw:: html
+
+            e.g. 1.0
 
           Example: ``1.0``
 
@@ -551,7 +491,9 @@ OpenRosa Form Submission API
 
 **POST /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/submission**
 
-Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-form-submission-api>`__, but will only submit to (and allow submissions to) the Draft Form to be tested.
+.. raw:: html
+
+  <p>Identical to the <a href="/central-api-openrosa-endpoints/#openrosa-form-submission-api">non-Draft version</a>, but will only submit to (and allow submissions to) the Draft Form to be tested.</p>
 
 .. dropdown:: Request
 
@@ -567,7 +509,9 @@ Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-f
 
         - string
         
-          The authentication Draft Token associated with the Draft Form in question.
+          .. raw:: html
+
+            The authentication Draft Token associated with the Draft Form in question.
 
           Example: ``IeksRu1CNZs7!qjAot2T17dPzkrw9B4iTtpj7OoIJBmXvnHM8z8Ka4QP``
       * - projectId
@@ -575,7 +519,9 @@ Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-f
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``7``
       * - xmlFormId
@@ -583,7 +529,9 @@ Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-f
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - X-OpenRosa-Version
@@ -592,7 +540,9 @@ Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-f
 
         - string
         
-          e.g. 1.0
+          .. raw:: html
+
+            e.g. 1.0
 
           Example: ``1.0``
 
@@ -723,7 +673,9 @@ OpenRosa Form Manifest API
 
 **GET /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/manifest**
 
-Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-form-manifest-api>`__.
+.. raw:: html
+
+  <p>Identical to the <a href="/central-api-openrosa-endpoints/#openrosa-form-manifest-api">non-Draft version</a>.</p>
 
 .. dropdown:: Request
 
@@ -739,7 +691,9 @@ Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-f
 
         - string
         
-          The authentication Draft Token associated with the Draft Form in question.
+          .. raw:: html
+
+            The authentication Draft Token associated with the Draft Form in question.
 
           Example: ``IeksRu1CNZs7!qjAot2T17dPzkrw9B4iTtpj7OoIJBmXvnHM8z8Ka4QP``
       * - projectId
@@ -747,7 +701,9 @@ Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-f
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``7``
       * - xmlFormId
@@ -755,7 +711,9 @@ Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-f
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - X-OpenRosa-Version
@@ -764,7 +722,9 @@ Identical to the `non-Draft version </central-api-openrosa-endpoints/#openrosa-f
 
         - string
         
-          e.g. 1.0
+          .. raw:: html
+
+            e.g. 1.0
 
           Example: ``1.0``
 
@@ -840,7 +800,9 @@ Downloading a Form Attachment
 
 **GET /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/attachments/{filename}**
 
-Identical to the `non-Draft version </central-api-form-management/#downloading-a-form-attachment>`__.
+.. raw:: html
+
+  <p>Identical to the <a href="/central-api-form-management/#downloading-a-form-attachment">non-Draft version</a>.</p>
 
 .. dropdown:: Request
 
@@ -856,7 +818,9 @@ Identical to the `non-Draft version </central-api-form-management/#downloading-a
 
         - string
         
-          The authentication Draft Token associated with the Draft Form in question.
+          .. raw:: html
+
+            The authentication Draft Token associated with the Draft Form in question.
 
           Example: ``IeksRu1CNZs7!qjAot2T17dPzkrw9B4iTtpj7OoIJBmXvnHM8z8Ka4QP``
       * - projectId
@@ -864,7 +828,9 @@ Identical to the `non-Draft version </central-api-form-management/#downloading-a
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``7``
       * - xmlFormId
@@ -872,7 +838,9 @@ Identical to the `non-Draft version </central-api-form-management/#downloading-a
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - filename
@@ -880,7 +848,9 @@ Identical to the `non-Draft version </central-api-form-management/#downloading-a
 
         - string
         
-          The name of the file as given by the Attachments listing resource.
+          .. raw:: html
+
+            The name of the file as given by the Attachments listing resource.
 
           Example: ``file1.jpg``
 
@@ -901,7 +871,9 @@ Identical to the `non-Draft version </central-api-form-management/#downloading-a
 
     .. tab-item:: Schema
 
-      **Identical to the `non-Draft version &lt;/central-api-form-management/#downloading-a-form-attachment&gt;`__.**
+      .. raw:: html
+
+        <p>Identical to the <a href="/central-api-form-management/#downloading-a-form-attachment">non-Draft version</a>.</p>
 
       .. list-table::
         :class: schema-table-wrap
@@ -932,6 +904,9 @@ Identical to the `non-Draft version </central-api-form-management/#downloading-a
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -951,14 +926,18 @@ Identical to the `non-Draft version </central-api-form-management/#downloading-a
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       

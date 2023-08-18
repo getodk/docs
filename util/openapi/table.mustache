@@ -13,7 +13,11 @@
 
       - {{ type }}
       
-        {{{ description }}}
+        {{# description }}
+        .. raw:: html
+
+          {{{.}}}
+        {{/ description }}
 
         {{# example }}
         Example: ``{{{.}}}``

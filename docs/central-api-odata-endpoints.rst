@@ -3,38 +3,26 @@
 OData Endpoints
 =======================================================================================================================
 
-`OData <http://www.odata.org/>`__ is an emerging standard for the formal description and transfer of data between web services. In its most ambitious form, it aims to be *the*\  standard way for any REST or REST-like API to enable interoperability with other services, not unlike the API Blueprint format this document is written in. However, in practical usage today it is primarily a way for data-centric web services to describe and transfer their data to various clients for deeper analysis or presentation.
-
-ODK Central implements the `4.0 Minimal Conformance level <http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#*Toc505771292>`__ of the specification. Our goal is to enable data analysis and reporting through powerful third-party tools, sending them the data over OData, rather than attempt to create our own analysis tools. Today, our implementation primarily targets `Microsoft Power BI <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`__ and `Tableau <https://onlinehelp.tableau.com/current/pro/desktop/en-us/examples*\ odata.html>`__, two tools with reasonably robust free offerings that provide versatile analysis and visualization of data.
-
-While OData itself supports data of any sort of structure, Power BI and Tableau both think in terms of relational tables. This presents an interesting challenge for representing ODK's ``group``\  and ``repeat``\  structures in OData. Our current solution is to treat every ``repeat``\  in the ``Form``\  definition as its own relational table, and we invent stable join IDs to relate the tables together.
-
-In general, the OData standard protocol consists of three API endpoints:
-
-* The **Service Document**\  describes the available resources in the service. We provide one of these for every ``Form``\  in the system. As of version 2023.2, we also provide one for every ``Dataset``\ .
-
-* The **Metadata Document**\  is a formal XML-based EDMX schema description of every data object we might return. It is linked in every OData response.
-
-* The actual data documents, linked from the Service Document, are a simple JSON representation of the submission data or entity, conforming to the schema we describe in our Metadata Document.
-
-As our focus is on the bulk-export of data from ODK Central so that more advanced analysis tools can handle the data themselves, we do not support most of the features at the Intermediate and above conformance levels, like ``$sort``\  or ``$filter``\ .
+.. raw:: html
+  
+  <p><a href="http://www.odata.org/">OData</a> is an emerging standard for the formal description and transfer of data between web services. In its most ambitious form, it aims to be <em>the</em> standard way for any REST or REST-like API to enable interoperability with other services, not unlike the API Blueprint format this document is written in. However, in practical usage today it is primarily a way for data-centric web services to describe and transfer their data to various clients for deeper analysis or presentation.</p><p>ODK Central implements the <a href="http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#_Toc505771292">4.0 Minimal Conformance level</a> of the specification. Our goal is to enable data analysis and reporting through powerful third-party tools, sending them the data over OData, rather than attempt to create our own analysis tools. Today, our implementation primarily targets <a href="https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata">Microsoft Power BI</a> and <a href="https://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_odata.html">Tableau</a>, two tools with reasonably robust free offerings that provide versatile analysis and visualization of data.</p><p>While OData itself supports data of any sort of structure, Power BI and Tableau both think in terms of relational tables. This presents an interesting challenge for representing ODK's <code>group</code> and <code>repeat</code> structures in OData. Our current solution is to treat every <code>repeat</code> in the <code>Form</code> definition as its own relational table, and we invent stable join IDs to relate the tables together.</p><p>In general, the OData standard protocol consists of three API endpoints:</p><ul><li><p>The <strong>Service Document</strong> describes the available resources in the service. We provide one of these for every <code>Form</code> in the system. As of version 2023.2, we also provide one for every <code>Dataset</code>.</p></li><li><p>The <strong>Metadata Document</strong> is a formal XML-based EDMX schema description of every data object we might return. It is linked in every OData response.</p></li><li><p>The actual data documents, linked from the Service Document, are a simple JSON representation of the submission data or entity, conforming to the schema we describe in our Metadata Document.</p></li></ul><p>As our focus is on the bulk-export of data from ODK Central so that more advanced analysis tools can handle the data themselves, we do not support most of the features at the Intermediate and above conformance levels, like <code>$sort</code> or <code>$filter</code>.</p>
 
 
 OData Form Service
 -----------------------------------------------------------------------------------------------------------------------
 
-ODK Central presents one OData service for every ``Form``\  it knows about. To access the OData service, simply add ``.svc``\  to the resource URL for the given Form.
+.. raw:: html
+  
+  <p>ODK Central presents one OData service for every <code>Form</code> it knows about. To access the OData service, simply add <code>.svc</code> to the resource URL for the given Form.</p>
 
 Service Document
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}.svc**
 
-The Service Document is essentially the index of all available documents. From this document, you will find links to all other available information in this OData service. In particular, you will find the Metadata Document, as well as a data document for each table defined by the ``Form``\ .
+.. raw:: html
 
-You will always find a link to the ``/Submissions``\  subpath, which is the data document that represents the "root" table, the data from each ``Submission``\  that is not nested within any ``repeat``\ s.
-
-This document is available only in JSON format.
+  <p>The Service Document is essentially the index of all available documents. From this document, you will find links to all other available information in this OData service. In particular, you will find the Metadata Document, as well as a data document for each table defined by the <code>Form</code>.</p><p>You will always find a link to the <code>/Submissions</code> subpath, which is the data document that represents the &quot;root&quot; table, the data from each <code>Submission</code> that is not nested within any <code>repeat</code>s.</p><p>This document is available only in JSON format.</p>
 
 .. dropdown:: Request
 
@@ -50,7 +38,9 @@ This document is available only in JSON format.
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``7``
       * - xmlFormId
@@ -58,7 +48,9 @@ This document is available only in JSON format.
 
         - string
         
-          The `xmlFormId` of the `Form` whose OData service you wish to access.
+          .. raw:: html
+
+            The `xmlFormId` of the `Form` whose OData service you wish to access.
 
           Example: ``simple``
 
@@ -93,6 +85,9 @@ This document is available only in JSON format.
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -112,14 +107,18 @@ This document is available only in JSON format.
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - value
 
 
                   - array
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``null``
                     
@@ -133,21 +132,27 @@ This document is available only in JSON format.
 
                             - string
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
                           * - name
 
 
                             - string
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
                           * - url
 
 
                             - string
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
 
                      
@@ -171,6 +176,9 @@ This document is available only in JSON format.
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -190,14 +198,18 @@ This document is available only in JSON format.
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -219,6 +231,9 @@ This document is available only in JSON format.
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -238,14 +253,18 @@ This document is available only in JSON format.
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -254,19 +273,9 @@ Metadata Document
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}.svc/$metadata**
 
-The Metadata Document describes, in `EDMX CSDL <http://docs.oasis-open.org/odata/odata-csdl-xml/v4.01/odata-csdl-xml-v4.01.html>`__, the schema of all the data you can retrieve from the OData Form Service in question (essentially, this is the XForms form schema translated into the OData format). EDMX/CSDL is very similar in concept to UML: there are objects, they have properties, and some of those properties are relationships to other objects.
+.. raw:: html
 
-If you are writing a tool to analyze your own data, whose schema you already know and understand, there is very little reason to touch this endpoint at all. You can likely skip ahead to the data documents themselves and work directly with the simple JSON output returned by those endpoints. This endpoint is more useful for authors of tools which seek to generically work with arbitrary data whose schemas they cannot know in advance.
-
-In general, the way we model the XForms schema in OData terms is to represent ``group``\ s as ``ComplexType``\ s, and ``repeat``\ s as ``EntityType``\ s. In the world of OData, the primary difference between these two types is that Entity Types require Primary Keys, while Complex Types do not. This fits well with the way XForms surveys tend to be structured.
-
-Most other types map to ``String``\ . The exceptions are numbers, which map either to ``Int64``\  or ``Decimal``\  as appropriate, datetime fields which are always ``DateTimeOffset``\ , date fields which become ``Date``\ , and geography points which will appear as ``GeographyPoint``\ , ``GeographyLineString``\ , or ``GeographyPolygon``\  given a ``geopoint``\ , ``geotrace``\ , or ``geoshape``\ .
-
-We also advertise the relationships between tables (the point at which a ``repeat``\  connects the parent data to the repeated subtable) using the ``NavigationProperty``\ . This should allow clients to present the data in an interconnected way, without the user having to specify how the tables connect to each other.
-
-This implementation of the OData standard includes a set of Annotations describing the supported features of the service in the form of the `Capabilities Vocabulary <https://github.com/oasis-tcs/odata-vocabularies/blob/master/vocabularies/Org.OData.Capabilities.V1.md>`__. In general, however, you can assume that the server supports the Minimal Conformance level and nothing beyond.
-
-While the latest 4.01 OData specification adds a new JSON EDMX CSDL format, most servers and clients do not yet support that format, and so for this release of ODK Central only the older XML EDMX CSDL format is available.
+  <p>The Metadata Document describes, in <a href="http://docs.oasis-open.org/odata/odata-csdl-xml/v4.01/odata-csdl-xml-v4.01.html">EDMX CSDL</a>, the schema of all the data you can retrieve from the OData Form Service in question (essentially, this is the XForms form schema translated into the OData format). EDMX/CSDL is very similar in concept to UML: there are objects, they have properties, and some of those properties are relationships to other objects.</p><p>If you are writing a tool to analyze your own data, whose schema you already know and understand, there is very little reason to touch this endpoint at all. You can likely skip ahead to the data documents themselves and work directly with the simple JSON output returned by those endpoints. This endpoint is more useful for authors of tools which seek to generically work with arbitrary data whose schemas they cannot know in advance.</p><p>In general, the way we model the XForms schema in OData terms is to represent <code>group</code>s as <code>ComplexType</code>s, and <code>repeat</code>s as <code>EntityType</code>s. In the world of OData, the primary difference between these two types is that Entity Types require Primary Keys, while Complex Types do not. This fits well with the way XForms surveys tend to be structured.</p><p>Most other types map to <code>String</code>. The exceptions are numbers, which map either to <code>Int64</code> or <code>Decimal</code> as appropriate, datetime fields which are always <code>DateTimeOffset</code>, date fields which become <code>Date</code>, and geography points which will appear as <code>GeographyPoint</code>, <code>GeographyLineString</code>, or <code>GeographyPolygon</code> given a <code>geopoint</code>, <code>geotrace</code>, or <code>geoshape</code>.</p><p>We also advertise the relationships between tables (the point at which a <code>repeat</code> connects the parent data to the repeated subtable) using the <code>NavigationProperty</code>. This should allow clients to present the data in an interconnected way, without the user having to specify how the tables connect to each other.</p><p>This implementation of the OData standard includes a set of Annotations describing the supported features of the service in the form of the <a href="https://github.com/oasis-tcs/odata-vocabularies/blob/master/vocabularies/Org.OData.Capabilities.V1.md">Capabilities Vocabulary</a>. In general, however, you can assume that the server supports the Minimal Conformance level and nothing beyond.</p><p>While the latest 4.01 OData specification adds a new JSON EDMX CSDL format, most servers and clients do not yet support that format, and so for this release of ODK Central only the older XML EDMX CSDL format is available.</p>
 
 .. dropdown:: Request
 
@@ -282,7 +291,9 @@ While the latest 4.01 OData specification adds a new JSON EDMX CSDL format, most
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``7``
       * - xmlFormId
@@ -290,7 +301,9 @@ While the latest 4.01 OData specification adds a new JSON EDMX CSDL format, most
 
         - string
         
-          The `xmlFormId` of the `Form` whose OData service you wish to access.
+          .. raw:: html
+
+            The `xmlFormId` of the `Form` whose OData service you wish to access.
 
           Example: ``simple``
 
@@ -436,38 +449,9 @@ Data Document
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}.svc/{table}**
 
-The data documents are the straightforward JSON representation of each table of ``Submission``\  data. They follow the `corresponding specification <http://docs.oasis-open.org/odata/odata-json-format/v4.01/odata-json-format-v4.01.html>`__, but apart from the representation of geospatial data as GeoJSON rather than the ODK proprietary format, the output here should not be at all surprising. If you are looking for JSON output of Submission data, this is the best place to look.
+.. raw:: html
 
-The ``$top``\  and ``$skip``\  querystring parameters, specified by OData, apply ``limit``\  and ``offset``\  operations to the data, respectively. The ``$count``\  parameter, also an OData standard, will annotate the response data with the total row count, regardless of the scoping requested by ``$top``\  and ``$skip``\ . While paging is possible through these parameters, it will not greatly improve the performance of exporting data. ODK Central prefers to bulk-export all of its data at once if possible.
-
-As of ODK Central v1.1, the ```$filter``\  querystring parameter <http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#*Toc31358948>`__ is partially supported. In OData, you can use ``$filter``\  to filter by any data field in the schema. The operators ``lt``\ , ``le``\ , ``eq``\ , ``ne``\ , ``ge``\ , ``gt``\ , ``not``\ , ``and``\ , and ``or``\  are supported. The built-in functions ``now``\ , ``year``\ , ``month``\ , ``day``\ , ``hour``\ , ``minute``\ , ``second``\  are supported. These supported elements may be combined in any way, but all other ``$filter``\  features will cause an error.
-
-The fields you can query against are as follows:
-
-| Submission Metadata         | REST API Name | OData Field Name          |
-| --------------------------- | ------------- | ------------------------- |
-| Submitter Actor ID          | ``submitterId``\  | ``*\ *system/submitterId``\     |
-| Submission Timestamp        | ``createdAt``\    | ``*\ *system/submissionDate``\  |
-| Submission Update Timestamp | ``updatedAt``\    | ``*\ *system/updatedAt``\       |
-| Review State                | ``reviewState``\  | ``*\ *system/reviewState``\     |
-
-You can use ``$root``\  expression to filter subtables (repeats) by Submission Metadata, you'll have to prefix above fields by ``$root/Submissions/``\  in the filter criteria. For example, to filter a repeat table by Submission Timestamp you can pass ``$filter=$root/Submissions/*\ *system/submissionDate gt 2020-01-31T23:59:59.999Z``\  in the query parameter.
-
-Note that the ``submissionDate``\  has a time component. This means that any comparisons you make need to account for the full time of the submission. It might seem like ``$filter=*\ *system/submissionDate le 2020-01-31``\  would return all results on or before 31 Jan 2020, but in fact only submissions made before midnight of that day would be accepted. To include all of the month of January, you need to filter by either ``$filter=*\ *system/submissionDate le 2020-01-31T23:59:59.999Z``\  or ``$filter=*\ *system/submissionDate lt 2020-02-01``\ . Remember also that you can `query by a specific timezone <https://en.wikipedia.org/wiki/ISO*\ 8601#Time*offsets*\ from*UTC>`__.
-
-Please see the `OData documentation <http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#*\ Toc31358948>`__ on ``$filter``\  `operations <http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec*BuiltinFilterOperations>`__ and `functions <http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec*\ BuiltinQueryFunctions>`__ for more information.
-
-As of ODK Central v1.2, you can use ``%24expand=*``\  to expand all repeat repetitions. This is helpful if you'd rather get one nested JSON data payload of all hierarchical data, rather than retrieve each of repeat as a separate flat table with references.
-
-The *nonstandard*\  ``$wkt``\  querystring parameter may be set to ``true``\  to request that geospatial data is returned as a `Well-Known Text (WKT) string <https://en.wikipedia.org/wiki/Well-known*text>`__ rather than a GeoJSON structure. This exists primarily to support Tableau, which cannot yet read GeoJSON, but you may find it useful as well depending on your mapping software. **Please note**\  that both GeoJSON and WKT follow a ``(lon, lat, alt)``\  coördinate ordering rather than the ODK-proprietary ``lat lon alt``\ . This is so that the values map neatly to ``(x, y, z)``\ . GPS accuracy information is not a part of either standards specification, and so is presently omitted from OData output entirely. GeoJSON support may come in a future version.
-
-As of ODK Central v2022.3, the ```$select``\  query parameter <http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#*\ Toc31358942>`__ is supported with some limitations:
-
-+ ``$select``\  and ``$expand``\  can't be used together.
-
-+ Child properties of repeats can't be requested using ``$select``\ 
-
-As the vast majority of clients only support the JSON OData format, that is the only format ODK Central offers.
+  <p>The data documents are the straightforward JSON representation of each table of <code>Submission</code> data. They follow the <a href="http://docs.oasis-open.org/odata/odata-json-format/v4.01/odata-json-format-v4.01.html">corresponding specification</a>, but apart from the representation of geospatial data as GeoJSON rather than the ODK proprietary format, the output here should not be at all surprising. If you are looking for JSON output of Submission data, this is the best place to look.</p><p>The <code>$top</code> and <code>$skip</code> querystring parameters, specified by OData, apply <code>limit</code> and <code>offset</code> operations to the data, respectively. The <code>$count</code> parameter, also an OData standard, will annotate the response data with the total row count, regardless of the scoping requested by <code>$top</code> and <code>$skip</code>. While paging is possible through these parameters, it will not greatly improve the performance of exporting data. ODK Central prefers to bulk-export all of its data at once if possible.</p><p>As of ODK Central v1.1, the <a href="http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948"><code>$filter</code> querystring parameter</a> is partially supported. In OData, you can use <code>$filter</code> to filter by any data field in the schema. The operators <code>lt</code>, <code>le</code>, <code>eq</code>, <code>ne</code>, <code>ge</code>, <code>gt</code>, <code>not</code>, <code>and</code>, and <code>or</code> are supported. The built-in functions <code>now</code>, <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, <code>minute</code>, <code>second</code> are supported. These supported elements may be combined in any way, but all other <code>$filter</code> features will cause an error.</p><p>The fields you can query against are as follows:</p><table><thead><tr>  <th>Submission Metadata</th>  <th>REST API Name</th>  <th>OData Field Name</th></tr></thead><tbody><tr>  <td>Submitter Actor ID</td>  <td><code>submitterId</code></td>  <td><code>__system/submitterId</code></td></tr><tr>  <td>Submission Timestamp</td>  <td><code>createdAt</code></td>  <td><code>__system/submissionDate</code></td></tr><tr>  <td>Submission Update Timestamp</td>  <td><code>updatedAt</code></td>  <td><code>__system/updatedAt</code></td></tr><tr>  <td>Review State</td>  <td><code>reviewState</code></td>  <td><code>__system/reviewState</code></td></tr></tbody></table><p>You can use <code>$root</code> expression to filter subtables (repeats) by Submission Metadata, you'll have to prefix above fields by <code>$root/Submissions/</code> in the filter criteria. For example, to filter a repeat table by Submission Timestamp you can pass <code>$filter=$root/Submissions/__system/submissionDate gt 2020-01-31T23:59:59.999Z</code> in the query parameter.</p><p>Note that the <code>submissionDate</code> has a time component. This means that any comparisons you make need to account for the full time of the submission. It might seem like <code>$filter=__system/submissionDate le 2020-01-31</code> would return all results on or before 31 Jan 2020, but in fact only submissions made before midnight of that day would be accepted. To include all of the month of January, you need to filter by either <code>$filter=__system/submissionDate le 2020-01-31T23:59:59.999Z</code> or <code>$filter=__system/submissionDate lt 2020-02-01</code>. Remember also that you can <a href="https://en.wikipedia.org/wiki/ISO_8601#Time_offsets_from_UTC">query by a specific timezone</a>.</p><p>Please see the <a href="http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948">OData documentation</a> on <code>$filter</code> <a href="http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinFilterOperations">operations</a> and <a href="http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinQueryFunctions">functions</a> for more information.</p><p>As of ODK Central v1.2, you can use <code>%24expand=*</code> to expand all repeat repetitions. This is helpful if you'd rather get one nested JSON data payload of all hierarchical data, rather than retrieve each of repeat as a separate flat table with references.</p><p>The <em>nonstandard</em> <code>$wkt</code> querystring parameter may be set to <code>true</code> to request that geospatial data is returned as a <a href="https://en.wikipedia.org/wiki/Well-known_text">Well-Known Text (WKT) string</a> rather than a GeoJSON structure. This exists primarily to support Tableau, which cannot yet read GeoJSON, but you may find it useful as well depending on your mapping software. <strong>Please note</strong> that both GeoJSON and WKT follow a <code>(lon, lat, alt)</code> coördinate ordering rather than the ODK-proprietary <code>lat lon alt</code>. This is so that the values map neatly to <code>(x, y, z)</code>. GPS accuracy information is not a part of either standards specification, and so is presently omitted from OData output entirely. GeoJSON support may come in a future version.</p><p>As of ODK Central v2022.3, the <a href="http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358942"><code>$select</code> query parameter</a> is supported with some limitations:</p><ul><li><p><code>$select</code> and <code>$expand</code> can't be used together.</p></li><li><p>Child properties of repeats can't be requested using <code>$select</code></p></li></ul><p>As the vast majority of clients only support the JSON OData format, that is the only format ODK Central offers.</p>
 
 .. dropdown:: Request
 
@@ -483,7 +467,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``7``
       * - xmlFormId
@@ -491,7 +477,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - string
         
-          The `xmlFormId` of the `Form` whose OData service you wish to access.
+          .. raw:: html
+
+            The `xmlFormId` of the `Form` whose OData service you wish to access.
 
           Example: ``simple``
       * - table
@@ -499,7 +487,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - string
         
-          The name of the table to be returned. These names can be found in the output of the [Service Document](/central-api-odata-endpoints/#service-document).
+          .. raw:: html
+
+            The name of the table to be returned. These names can be found in the output of the [Service Document](/central-api-odata-endpoints/#service-document).
 
           Example: ``Submissions``
       * - %24skip
@@ -508,7 +498,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - number
         
-          If supplied, the first `$skip` rows will be omitted from the results.
+          .. raw:: html
+
+            If supplied, the first `$skip` rows will be omitted from the results.
 
           Example: ``10``
       * - %24top
@@ -517,7 +509,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - number
         
-          If supplied, only up to `$top` rows will be returned in the results.
+          .. raw:: html
+
+            If supplied, only up to `$top` rows will be returned in the results.
 
           Example: ``5``
       * - %24count
@@ -526,7 +520,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - boolean
         
-          If set to `true`, an `@odata.count` property will be added to the result indicating the total number of rows, ignoring the above paging parameters.
+          .. raw:: html
+
+            If set to `true`, an `@odata.count` property will be added to the result indicating the total number of rows, ignoring the above paging parameters.
 
           Example: ``true``
       * - %24wkt
@@ -535,7 +531,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - boolean
         
-          If set to `true`, geospatial data will be returned as Well-Known Text (WKT) strings rather than GeoJSON structures.
+          .. raw:: html
+
+            If set to `true`, geospatial data will be returned as Well-Known Text (WKT) strings rather than GeoJSON structures.
 
           Example: ``true``
       * - %24filter
@@ -544,7 +542,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - string
         
-          If provided, will filter responses to those matching the query. Only [certain fields](/central-api-odata-endpoints/#data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
+          .. raw:: html
+
+            If provided, will filter responses to those matching the query. Only [certain fields](/central-api-odata-endpoints/#data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
 
           Example: ``year(__system/submissionDate) lt year(now())``
       * - %24expand
@@ -553,7 +553,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - string
         
-          Repetitions, which should get expanded. Currently, only `*` is implemented, which expands all repetitions.
+          .. raw:: html
+
+            Repetitions, which should get expanded. Currently, only `*` is implemented, which expands all repetitions.
 
           Example: ``*``
       * - %24select
@@ -562,7 +564,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - string
         
-          If provided, will return only the selected fields.
+          .. raw:: html
+
+            If provided, will return only the selected fields.
 
           Example: ``__id, age, name, meta/instanceID``
 
@@ -603,6 +607,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -622,14 +629,18 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - value
 
 
                   - array
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``null``
                     
@@ -643,21 +654,27 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                             - string
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
                           * - age
 
 
                             - number
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
                           * - meta
 
 
                             - object
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
 
                                 
@@ -674,7 +691,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                                       - string
                                       
-                                        
+                                        .. raw:: html
+
+                                          <span></span>
 
                                
                           * - name
@@ -682,7 +701,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                             - string
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
 
                      
@@ -706,6 +727,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -725,14 +749,18 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -754,6 +782,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -773,14 +804,18 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -802,6 +837,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -821,14 +859,18 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -837,15 +879,9 @@ Data Download Path
 
 **GET /#/dl/projects{projectId}/forms/{xmlFormId}/submissions/{instanceId}/attachments/{filename}**
 
-*(introduced: version 1.2)*\ 
+.. raw:: html
 
-This route is a web browser oriented endpoint intended for user-interactive usage only. It's not part of the Central API, but is documented here as it can be useful.
-
-If you are writing or configuring an OData client and have submission media files to deal with, you can run into authentication problems directly fetching or linking the media file URLs that are provided in the OData feed. This can be due to several reasons: if the user is not logged into the Central administration site (and thus has no valid cookie), if the request comes from a foreign origin (and thus cookies are not sent by the browser), and more.
-
-To help manage this, the frontend provides a ``/#/dl``\  path that allows file download. Just take a normal attachment download path and replace the ``/v1``\  near the beginning of the path with ``/#/dl``\ , and the user will be taken to a page managed by the Central administration website that will ensure the user is logged in, and offer the file as a download.
-
-Because this ``/#/dl``\  path returns a web page that causes a file download rather than directly returning the media file in question, it cannot be used to directly embed or retrieve these files, for example in a ``<img>``\  tag.
+  <p><em>(introduced: version 1.2)</em></p><p>This route is a web browser oriented endpoint intended for user-interactive usage only. It's not part of the Central API, but is documented here as it can be useful.</p><p>If you are writing or configuring an OData client and have submission media files to deal with, you can run into authentication problems directly fetching or linking the media file URLs that are provided in the OData feed. This can be due to several reasons: if the user is not logged into the Central administration site (and thus has no valid cookie), if the request comes from a foreign origin (and thus cookies are not sent by the browser), and more.</p><p>To help manage this, the frontend provides a <code>/#/dl</code> path that allows file download. Just take a normal attachment download path and replace the <code>/v1</code> near the beginning of the path with <code>/#/dl</code>, and the user will be taken to a page managed by the Central administration website that will ensure the user is logged in, and offer the file as a download.</p><p>Because this <code>/#/dl</code> path returns a web page that causes a file download rather than directly returning the media file in question, it cannot be used to directly embed or retrieve these files, for example in a <code>&lt;img&gt;</code> tag.</p>
 
 .. dropdown:: Request
 
@@ -861,7 +897,9 @@ Because this ``/#/dl``\  path returns a web page that causes a file download rat
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``7``
       * - xmlFormId
@@ -869,7 +907,9 @@ Because this ``/#/dl``\  path returns a web page that causes a file download rat
 
         - string
         
-          The `xmlFormId` of the `Form` whose OData service you wish to access.
+          .. raw:: html
+
+            The `xmlFormId` of the `Form` whose OData service you wish to access.
 
           Example: ``simple``
       * - instanceId
@@ -877,7 +917,9 @@ Because this ``/#/dl``\  path returns a web page that causes a file download rat
 
         - string
         
-          The `instanceId` of the Submission being referenced.
+          .. raw:: html
+
+            The `instanceId` of the Submission being referenced.
 
           Example: ``uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44``
       * - filename
@@ -885,7 +927,9 @@ Because this ``/#/dl``\  path returns a web page that causes a file download rat
 
         - string
         
-          The name of the file to be retrieved.
+          .. raw:: html
+
+            The name of the file to be retrieved.
 
           Example: ``file1.jpg``
 
@@ -923,16 +967,18 @@ Because this ``/#/dl``\  path returns a web page that causes a file download rat
 OData Dataset Service
 -----------------------------------------------------------------------------------------------------------------------
 
-ODK Central presents one OData service for every ``Dataset``\  as a way to get an OData feed of ``Entities``\ . To access the OData service, simply add ``.svc``\  to the resource URL for the given Dataset.
+.. raw:: html
+  
+  <p>ODK Central presents one OData service for every <code>Dataset</code> as a way to get an OData feed of <code>Entities</code>. To access the OData service, simply add <code>.svc</code> to the resource URL for the given Dataset.</p>
 
 Service Document
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/datasets/{name}.svc**
 
-The Service Document provides a link to the main source of information in this OData service: the list of ``Entities``\  in this ``Dataset``\ , as well as the Metadata Document describing the schema of this information.
+.. raw:: html
 
-This document is available only in JSON format.
+  <p>The Service Document provides a link to the main source of information in this OData service: the list of <code>Entities</code> in this <code>Dataset</code>, as well as the Metadata Document describing the schema of this information.</p><p>This document is available only in JSON format.</p>
 
 .. dropdown:: Request
 
@@ -948,7 +994,9 @@ This document is available only in JSON format.
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``7``
       * - name
@@ -956,7 +1004,9 @@ This document is available only in JSON format.
 
         - string
         
-          The `name` of the `Dataset` whose OData service you wish to access.
+          .. raw:: html
+
+            The `name` of the `Dataset` whose OData service you wish to access.
 
           Example: ``trees``
 
@@ -980,6 +1030,9 @@ This document is available only in JSON format.
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -999,14 +1052,18 @@ This document is available only in JSON format.
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -1028,6 +1085,9 @@ This document is available only in JSON format.
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -1047,14 +1107,18 @@ This document is available only in JSON format.
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -1063,7 +1127,9 @@ Metadata Document
 
 **GET /v1/projects/{projectId}/datasets/{name}.svc/$metadata**
 
-The Metadata Document describes, in `EDMX CSDL <http://docs.oasis-open.org/odata/odata-csdl-xml/v4.01/odata-csdl-xml-v4.01.html>`__, the schema of all the data you can retrieve from the OData Dataset Service in question. Essentially, these are the Dataset properties, or the schema of each ``Entity``\ , translated into the OData format.
+.. raw:: html
+
+  <p>The Metadata Document describes, in <a href="http://docs.oasis-open.org/odata/odata-csdl-xml/v4.01/odata-csdl-xml-v4.01.html">EDMX CSDL</a>, the schema of all the data you can retrieve from the OData Dataset Service in question. Essentially, these are the Dataset properties, or the schema of each <code>Entity</code>, translated into the OData format.</p>
 
 .. dropdown:: Request
 
@@ -1079,7 +1145,9 @@ The Metadata Document describes, in `EDMX CSDL <http://docs.oasis-open.org/odata
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - name
@@ -1087,7 +1155,9 @@ The Metadata Document describes, in `EDMX CSDL <http://docs.oasis-open.org/odata
 
         - string
         
-          Name of the Dataset
+          .. raw:: html
+
+            Name of the Dataset
 
           Example: ``people``
 
@@ -1249,30 +1319,9 @@ Data Document
 
 **GET /v1/projects/{projectId}/datasets/{name}.svc/Entities**
 
-A data document is the straightforward JSON representation of all the ``Entities``\  in a ``Dataset``\ .
+.. raw:: html
 
-The ``$top``\  and ``$skip``\  querystring parameters, specified by OData, apply ``limit``\  and ``offset``\  operations to the data, respectively. The ``$count``\  parameter, also an OData standard, will annotate the response data with the total row count, regardless of the scoping requested by ``$top``\  and ``$skip``\ . While paging is possible through these parameters, it will not greatly improve the performance of exporting data. ODK Central prefers to bulk-export all of its data at once if possible.
-
-The ```$filter``\  querystring parameter <http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#*Toc31358948>`__can be used to filter by any data field in the system-level schema, but not the Dataset properties. The operators ``lt``\ , ``le``\ , ``eq``\ , ``ne``\ , ``ge``\ , ``gt``\ , ``not``\ , ``and``\ , and ``or``\  are supported. The built-in functions ``now``\ , ``year``\ , ``month``\ , ``day``\ , ``hour``\ , ``minute``\ , ``second``\  are supported.
-
-The fields you can query against are as follows:
-
-| Entity Metadata         | OData Field Name     |
-| ------------------------| -------------------- |
-| Entity UUID             | ``*\ *id``\                |
-| Entity Name (same as UUID) | ``name``\             |
-| Entity Label            | ``label``\               |
-| Entity Creator Actor ID | ``*\ *system/creatorId``\  |
-| Entity Timestamp        | ``*\ *system/createdAt``\  |
-| Entity Update Timestamp | ``*\ *system/updatedAt``\  |
-
-Note that ``createdAt``\  and ``updatedAt``\  are time components. This means that any comparisons you make need to account for the full time of the entity. It might seem like ``$filter=*\ *system/createdAt le 2020-01-31``\  would return all results on or before 31 Jan 2020, but in fact only entities made before midnight of that day would be accepted. To include all of the month of January, you need to filter by either ``$filter=*\ *system/createdAt le 2020-01-31T23:59:59.999Z``\  or ``$filter=*\ *system/createdAt lt 2020-02-01``\ . Remember also that you can `query by a specific timezone <https://en.wikipedia.org/wiki/ISO*\ 8601#Time*offsets*\ from*UTC>`__.
-
-Please see the `OData documentation <http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#*\ Toc31358948>`__ on ``$filter``\  `operations <http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec*BuiltinFilterOperations>`__ and `functions <http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec*\ BuiltinQueryFunctions>`__ for more information.
-
-The ```$select``\  query parameter <http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#*Toc31358942>`__ will return just the fields you specify and is supported on ``*\ *id``\ , ``*\ *system``\ , ``*\ *system/creatorId``\ , ``*\ *system/createdAt``\  and ``*\ _system/updatedAt``\ , as well as on user defined properties.
-
-As the vast majority of clients only support the JSON OData format, that is the only format ODK Central offers.
+  <p>A data document is the straightforward JSON representation of all the <code>Entities</code> in a <code>Dataset</code>.</p><p>The <code>$top</code> and <code>$skip</code> querystring parameters, specified by OData, apply <code>limit</code> and <code>offset</code> operations to the data, respectively. The <code>$count</code> parameter, also an OData standard, will annotate the response data with the total row count, regardless of the scoping requested by <code>$top</code> and <code>$skip</code>. While paging is possible through these parameters, it will not greatly improve the performance of exporting data. ODK Central prefers to bulk-export all of its data at once if possible.</p><p>The <a href="http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948"><code>$filter</code> querystring parameter</a>can be used to filter by any data field in the system-level schema, but not the Dataset properties. The operators <code>lt</code>, <code>le</code>, <code>eq</code>, <code>ne</code>, <code>ge</code>, <code>gt</code>, <code>not</code>, <code>and</code>, and <code>or</code> are supported. The built-in functions <code>now</code>, <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, <code>minute</code>, <code>second</code> are supported.</p><p>The fields you can query against are as follows:</p><table><thead><tr>  <th>Entity Metadata</th>  <th>OData Field Name</th></tr></thead><tbody><tr>  <td>Entity UUID</td>  <td><code>__id</code></td></tr><tr>  <td>Entity Name (same as UUID)</td>  <td><code>name</code></td></tr><tr>  <td>Entity Label</td>  <td><code>label</code></td></tr><tr>  <td>Entity Creator Actor ID</td>  <td><code>__system/creatorId</code></td></tr><tr>  <td>Entity Timestamp</td>  <td><code>__system/createdAt</code></td></tr><tr>  <td>Entity Update Timestamp</td>  <td><code>__system/updatedAt</code></td></tr></tbody></table><p>Note that <code>createdAt</code> and <code>updatedAt</code> are time components. This means that any comparisons you make need to account for the full time of the entity. It might seem like <code>$filter=__system/createdAt le 2020-01-31</code> would return all results on or before 31 Jan 2020, but in fact only entities made before midnight of that day would be accepted. To include all of the month of January, you need to filter by either <code>$filter=__system/createdAt le 2020-01-31T23:59:59.999Z</code> or <code>$filter=__system/createdAt lt 2020-02-01</code>. Remember also that you can <a href="https://en.wikipedia.org/wiki/ISO_8601#Time_offsets_from_UTC">query by a specific timezone</a>.</p><p>Please see the <a href="http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948">OData documentation</a> on <code>$filter</code> <a href="http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinFilterOperations">operations</a> and <a href="http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinQueryFunctions">functions</a> for more information.</p><p>The <a href="http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358942"><code>$select</code> query parameter</a> will return just the fields you specify and is supported on <code>__id</code>, <code>__system</code>, <code>__system/creatorId</code>, <code>__system/createdAt</code> and <code>__system/updatedAt</code>, as well as on user defined properties.</p><p>As the vast majority of clients only support the JSON OData format, that is the only format ODK Central offers.</p>
 
 .. dropdown:: Request
 
@@ -1288,7 +1337,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - name
@@ -1296,7 +1347,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - string
         
-          Name of the Dataset
+          .. raw:: html
+
+            Name of the Dataset
 
           Example: ``people``
       * - %24skip
@@ -1305,7 +1358,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - number
         
-          If supplied, the first `$skip` rows will be omitted from the results.
+          .. raw:: html
+
+            If supplied, the first `$skip` rows will be omitted from the results.
 
           Example: ``10``
       * - %24top
@@ -1314,7 +1369,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - number
         
-          If supplied, only up to `$top` rows will be returned in the results.
+          .. raw:: html
+
+            If supplied, only up to `$top` rows will be returned in the results.
 
           Example: ``5``
       * - %24count
@@ -1323,7 +1380,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - boolean
         
-          If set to `true`, an `@odata.count` property will be added to the result indicating the total number of rows, ignoring the above paging parameters.
+          .. raw:: html
+
+            If set to `true`, an `@odata.count` property will be added to the result indicating the total number of rows, ignoring the above paging parameters.
 
           Example: ``true``
       * - %24filter
@@ -1332,7 +1391,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - string
         
-          If provided, will filter responses to those matching the query. Only [certain fields](/central-api-odata-endpoints/#data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
+          .. raw:: html
+
+            If provided, will filter responses to those matching the query. Only [certain fields](/central-api-odata-endpoints/#data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
 
           Example: ``year(__system/createdAt) lt year(now())``
       * - %24select
@@ -1341,7 +1402,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
         - string
         
-          If provided, will return only the selected fields.
+          .. raw:: html
+
+            If provided, will return only the selected fields.
 
           Example: ``__id, label, name``
 
@@ -1365,6 +1428,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -1384,14 +1450,18 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -1413,6 +1483,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -1432,14 +1505,18 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -1461,6 +1538,9 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -1480,14 +1560,18 @@ As the vast majority of clients only support the JSON OData format, that is the 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -1495,18 +1579,18 @@ As the vast majority of clients only support the JSON OData format, that is the 
 Draft Testing
 -----------------------------------------------------------------------------------------------------------------------
 
-*(introduced: version 0.8)*\ 
-
-To facilitate testing, there is an alternative collection of OData endpoints that will give access to the submissions uploaded to a Draft Form. This can be useful for ensuring that changes to your form do not break downstream dashboards or applications.
-
-They are all identical to the non-Draft OData endpoints, but they will only return the Draft Form schema and Submissions.
+.. raw:: html
+  
+  <p><em>(introduced: version 0.8)</em></p><p>To facilitate testing, there is an alternative collection of OData endpoints that will give access to the submissions uploaded to a Draft Form. This can be useful for ensuring that changes to your form do not break downstream dashboards or applications.</p><p>They are all identical to the non-Draft OData endpoints, but they will only return the Draft Form schema and Submissions.</p>
 
 Service Document
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft.svc**
 
-Identical to `the non-Draft version </central-api-odata-endpoints/#service-document>`__ of this endpoint.
+.. raw:: html
+
+  <p>Identical to <a href="/central-api-odata-endpoints/#service-document">the non-Draft version</a> of this endpoint.</p>
 
 .. dropdown:: Request
 
@@ -1522,7 +1606,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#service-docum
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``7``
       * - xmlFormId
@@ -1530,7 +1616,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#service-docum
 
         - string
         
-          The `xmlFormId` of the `Form` whose OData service you wish to access.
+          .. raw:: html
+
+            The `xmlFormId` of the `Form` whose OData service you wish to access.
 
           Example: ``simple``
 
@@ -1565,6 +1653,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#service-docum
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -1584,14 +1675,18 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#service-docum
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - value
 
 
                   - array
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``null``
                     
@@ -1605,21 +1700,27 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#service-docum
 
                             - string
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
                           * - name
 
 
                             - string
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
                           * - url
 
 
                             - string
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
 
                      
@@ -1643,6 +1744,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#service-docum
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -1662,14 +1766,18 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#service-docum
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -1691,6 +1799,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#service-docum
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -1710,14 +1821,18 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#service-docum
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -1726,7 +1841,9 @@ Metadata Document
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft.svc/$metadata**
 
-Identical to `the non-Draft version </central-api-odata-endpoints/#metadata-document>`__ of this endpoint.
+.. raw:: html
+
+  <p>Identical to <a href="/central-api-odata-endpoints/#metadata-document">the non-Draft version</a> of this endpoint.</p>
 
 .. dropdown:: Request
 
@@ -1742,7 +1859,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#metadata-docu
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -1750,7 +1869,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#metadata-docu
 
         - string
         
-          The `xmlFormId` of the `Form` whose OData service you wish to access.
+          .. raw:: html
+
+            The `xmlFormId` of the `Form` whose OData service you wish to access.
 
           Example: ``simple``
 
@@ -1896,7 +2017,9 @@ Data Document
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft.svc/{table}**
 
-Identical to `the non-Draft version </central-api-odata-endpoints/#data-document>`__ of this endpoint.
+.. raw:: html
+
+  <p>Identical to <a href="/central-api-odata-endpoints/#data-document">the non-Draft version</a> of this endpoint.</p>
 
 .. dropdown:: Request
 
@@ -1912,7 +2035,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -1920,7 +2045,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
         - string
         
-          The `xmlFormId` of the `Form` whose OData service you wish to access.
+          .. raw:: html
+
+            The `xmlFormId` of the `Form` whose OData service you wish to access.
 
           Example: ``simple``
       * - table
@@ -1928,7 +2055,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
         - string
         
-          The name of the table to be returned. These names can be found in the output of the [Service Document](/central-api-odata-endpoints/#service-document).
+          .. raw:: html
+
+            The name of the table to be returned. These names can be found in the output of the [Service Document](/central-api-odata-endpoints/#service-document).
 
           Example: ``Submissions``
       * - %24skip
@@ -1937,7 +2066,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
         - number
         
-          If supplied, the first `$skip` rows will be omitted from the results.
+          .. raw:: html
+
+            If supplied, the first `$skip` rows will be omitted from the results.
 
           Example: ``10``
       * - %24top
@@ -1946,7 +2077,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
         - number
         
-          If supplied, only up to `$top` rows will be returned in the results.
+          .. raw:: html
+
+            If supplied, only up to `$top` rows will be returned in the results.
 
           Example: ``5``
       * - %24count
@@ -1955,7 +2088,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
         - boolean
         
-          If set to `true`, an `@odata.count` property will be added to the result indicating the total number of rows, ignoring the above paging parameters.
+          .. raw:: html
+
+            If set to `true`, an `@odata.count` property will be added to the result indicating the total number of rows, ignoring the above paging parameters.
 
           Example: ``true``
       * - %24wkt
@@ -1964,7 +2099,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
         - boolean
         
-          If set to `true`, geospatial data will be returned as Well-Known Text (WKT) strings rather than GeoJSON structures.
+          .. raw:: html
+
+            If set to `true`, geospatial data will be returned as Well-Known Text (WKT) strings rather than GeoJSON structures.
 
           Example: ``true``
       * - %24filter
@@ -1973,7 +2110,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
         - string
         
-          If provided, will filter responses to those matching the query. Only [certain fields](/central-api-odata-endpoints/#data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
+          .. raw:: html
+
+            If provided, will filter responses to those matching the query. Only [certain fields](/central-api-odata-endpoints/#data-document) are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
 
           Example: ``year(__system/submissionDate) lt year(now())``
       * - %24expand
@@ -1982,7 +2121,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
         - string
         
-          Repetitions, which should get expanded. Currently, only `*` is implemented, which expands all repetitions.
+          .. raw:: html
+
+            Repetitions, which should get expanded. Currently, only `*` is implemented, which expands all repetitions.
 
           Example: ``*``
       * - %24select
@@ -1991,7 +2132,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
         - string
         
-          If provided, will return only the selected fields.
+          .. raw:: html
+
+            If provided, will return only the selected fields.
 
           Example: ``__id, age, name, meta/instanceID``
 
@@ -2032,6 +2175,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -2051,14 +2197,18 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - value
 
 
                   - array
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``null``
                     
@@ -2072,21 +2222,27 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
                             - string
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
                           * - age
 
 
                             - number
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
                           * - meta
 
 
                             - object
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
 
                                 
@@ -2103,7 +2259,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
                                       - string
                                       
-                                        
+                                        .. raw:: html
+
+                                          <span></span>
 
                                
                           * - name
@@ -2111,7 +2269,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
                             - string
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
 
                      
@@ -2135,6 +2295,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -2154,14 +2317,18 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -2183,6 +2350,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -2202,14 +2372,18 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -2231,6 +2405,9 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -2250,14 +2427,18 @@ Identical to `the non-Draft version </central-api-odata-endpoints/#data-document
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       

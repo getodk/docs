@@ -3,30 +3,26 @@
 Form Management
 =======================================================================================================================
 
-``Form``\ s are the heart of ODK. They are created out of XML documents in the `ODK XForms <https://getodk.github.io/xforms-spec/>`__ specification format. The `Intro to Forms <https://docs.getodk.org/form-design-intro/>`__ on the ODK Documentation website is a good resource if you are unsure what this means. Once created, Forms can be retrieved in a variety of ways, their state can be managed, and they can be deleted.
-
-These subsections cover only the modern RESTful API resources involving Forms. For documentation on the OpenRosa ``formList``\  endpoint (which can be used to list Forms), see that section below.
+.. raw:: html
+  
+  <p><code>Form</code>s are the heart of ODK. They are created out of XML documents in the <a href="https://getodk.github.io/xforms-spec/">ODK XForms</a> specification format. The <a href="https://docs.getodk.org/form-design-intro/">Intro to Forms</a> on the ODK Documentation website is a good resource if you are unsure what this means. Once created, Forms can be retrieved in a variety of ways, their state can be managed, and they can be deleted.</p><p>These subsections cover only the modern RESTful API resources involving Forms. For documentation on the OpenRosa <code>formList</code> endpoint (which can be used to list Forms), see that section below.</p>
 
 
 Forms
 -----------------------------------------------------------------------------------------------------------------------
 
-In this API, ``Form``\ s are distinguished by their ```formId``\  <https://getodk.github.io/xforms-spec/#primary-instance>`__s, which are a part of the XForms XML that defines each Form. In fact, as you will see below, many of the properties of a Form are extracted automatically from the XML: ``hash``\ , ``name``\ , ``version``\ , as well as the ``formId``\  itself (which to reduce confusion internally is known as ``xmlFormId``\  in ODK Central).
-
-The only other property Forms currently have is ``state``\ , which can be used to control whether Forms show up in mobile clients like ODK Collect for download, as well as whether they accept new ``Submission``\ s or not.
-
-It is not yet possible to modify a Form's XML definition once it is created.
+.. raw:: html
+  
+  <p>In this API, <code>Form</code>s are distinguished by their <a href="https://getodk.github.io/xforms-spec/#primary-instance"><code>formId</code></a>s, which are a part of the XForms XML that defines each Form. In fact, as you will see below, many of the properties of a Form are extracted automatically from the XML: <code>hash</code>, <code>name</code>, <code>version</code>, as well as the <code>formId</code> itself (which to reduce confusion internally is known as <code>xmlFormId</code> in ODK Central).</p><p>The only other property Forms currently have is <code>state</code>, which can be used to control whether Forms show up in mobile clients like ODK Collect for download, as well as whether they accept new <code>Submission</code>s or not.</p><p>It is not yet possible to modify a Form's XML definition once it is created.</p>
 
 List all Forms
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/forms**
 
-Currently, there are no paging or filtering options, so listing ``Form``\ s will get you every Form you are allowed to access, every time.
+.. raw:: html
 
-As of version 1.2, Forms that are unpublished (that only carry a draft and have never been published) will appear with full metadata detail. Previously, certain details like ``name``\  were omitted. You can determine that a Form is unpublished by checking the ``publishedAt``\  value: it will be ``null``\  for unpublished forms.
-
-This endpoint supports retrieving extended metadata; provide a header ``X-Extended-Metadata: true``\  to additionally retrieve the ``submissions``\  count of the number of Submissions that each Form has, the ``reviewStates``\  object of counts of Submissions with specific review states, the ``lastSubmission``\  most recent submission timestamp, as well as the Actor the Form was ``createdBy``\ .
+  <p>Currently, there are no paging or filtering options, so listing <code>Form</code>s will get you every Form you are allowed to access, every time.</p><p>As of version 1.2, Forms that are unpublished (that only carry a draft and have never been published) will appear with full metadata detail. Previously, certain details like <code>name</code> were omitted. You can determine that a Form is unpublished by checking the <code>publishedAt</code> value: it will be <code>null</code> for unpublished forms.</p><p>This endpoint supports retrieving extended metadata; provide a header <code>X-Extended-Metadata: true</code> to additionally retrieve the <code>submissions</code> count of the number of Submissions that each Form has, the <code>reviewStates</code> object of counts of Submissions with specific review states, the <code>lastSubmission</code> most recent submission timestamp, as well as the Actor the Form was <code>createdBy</code>.</p>
 
 .. dropdown:: Request
 
@@ -42,7 +38,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
 
@@ -93,6 +91,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -110,7 +111,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - number
                   
-                    The ``id``\  of the project this form belongs to.
+                    .. raw:: html
+
+                      <p>The <code>id</code> of the project this form belongs to.</p>
 
                     Example: ``1.0``
                 * - xmlFormId
@@ -118,7 +121,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    The ``id``\  of this form as given in its XForms XML definition
+                    .. raw:: html
+
+                      <p>The <code>id</code> of this form as given in its XForms XML definition</p>
 
                     Example: ``simple``
                 * - name
@@ -126,7 +131,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    The friendly name of this form. It is given by the ``<title>``\  in the XForms XML definition.
+                    .. raw:: html
+
+                      <p>The friendly name of this form. It is given by the <code>&lt;title&gt;</code> in the XForms XML definition.</p>
 
                     Example: ``Simple``
                 * - version
@@ -134,7 +141,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    The ``version``\  of this form as given in its XForms XML definition. If no ``version``\  was specified in the Form, a blank string will be given.
+                    .. raw:: html
+
+                      <p>The <code>version</code> of this form as given in its XForms XML definition. If no <code>version</code> was specified in the Form, a blank string will be given.</p>
 
                     Example: ``2.1``
                 * - enketoId
@@ -142,7 +151,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    If it exists, this is the survey ID of this Form on Enketo at ``/-``\ . This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.
+                    .. raw:: html
+
+                      <p>If it exists, this is the survey ID of this Form on Enketo at <code>/-</code>. This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.</p>
 
                     Example: ``abcdef``
                 * - hash
@@ -150,7 +161,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.
+                    .. raw:: html
+
+                      <p>An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.</p>
 
                     Example: ``51a93eab3a1974dbffc4c7913fa5a16a``
                 * - keyId
@@ -158,7 +171,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - number
                   
-                    If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.
+                    .. raw:: html
+
+                      <p>If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.</p>
 
                     Example: ``3.0``
                 * - state
@@ -166,7 +181,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - enum
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
 
                       
@@ -183,21 +200,18 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              
 
                           * - closing
 
 
                             - string
                             
-                              
 
                           * - closed
 
 
                             - string
                             
-                              
 
                      
                 * - publishedAt
@@ -205,7 +219,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    Indicates when a draft has most recently been published for this Form. If this value is ``null``\ , this Form has never been published yet, and contains only a draft.
+                    .. raw:: html
+
+                      <p>Indicates when a draft has most recently been published for this Form. If this value is <code>null</code>, this Form has never been published yet, and contains only a draft.</p>
 
                     Example: ``2018-01-21 00:04:11.153000+00:00``
                 * - createdAt
@@ -213,7 +229,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-01-19 23:58:03.395000+00:00``
                 * - updatedAt
@@ -221,11 +239,16 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-03-21 12:45:02.312000+00:00``
 
               
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -243,7 +266,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - number
                   
-                    The ``id``\  of the project this form belongs to.
+                    .. raw:: html
+
+                      <p>The <code>id</code> of the project this form belongs to.</p>
 
                     Example: ``1.0``
                 * - xmlFormId
@@ -251,7 +276,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    The ``id``\  of this form as given in its XForms XML definition
+                    .. raw:: html
+
+                      <p>The <code>id</code> of this form as given in its XForms XML definition</p>
 
                     Example: ``simple``
                 * - name
@@ -259,7 +286,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    The friendly name of this form. It is given by the ``<title>``\  in the XForms XML definition.
+                    .. raw:: html
+
+                      <p>The friendly name of this form. It is given by the <code>&lt;title&gt;</code> in the XForms XML definition.</p>
 
                     Example: ``Simple``
                 * - version
@@ -267,7 +296,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    The ``version``\  of this form as given in its XForms XML definition. If no ``version``\  was specified in the Form, a blank string will be given.
+                    .. raw:: html
+
+                      <p>The <code>version</code> of this form as given in its XForms XML definition. If no <code>version</code> was specified in the Form, a blank string will be given.</p>
 
                     Example: ``2.1``
                 * - enketoId
@@ -275,7 +306,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    If it exists, this is the survey ID of this Form on Enketo at ``/-``\ . This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.
+                    .. raw:: html
+
+                      <p>If it exists, this is the survey ID of this Form on Enketo at <code>/-</code>. This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.</p>
 
                     Example: ``abcdef``
                 * - hash
@@ -283,7 +316,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.
+                    .. raw:: html
+
+                      <p>An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.</p>
 
                     Example: ``51a93eab3a1974dbffc4c7913fa5a16a``
                 * - keyId
@@ -291,7 +326,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - number
                   
-                    If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.
+                    .. raw:: html
+
+                      <p>If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.</p>
 
                     Example: ``3.0``
                 * - state
@@ -299,7 +336,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - enum
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
 
                       
@@ -316,21 +355,18 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              
 
                           * - closing
 
 
                             - string
                             
-                              
 
                           * - closed
 
 
                             - string
                             
-                              
 
                      
                 * - publishedAt
@@ -338,7 +374,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    Indicates when a draft has most recently been published for this Form. If this value is ``null``\ , this Form has never been published yet, and contains only a draft.
+                    .. raw:: html
+
+                      <p>Indicates when a draft has most recently been published for this Form. If this value is <code>null</code>, this Form has never been published yet, and contains only a draft.</p>
 
                     Example: ``2018-01-21 00:04:11.153000+00:00``
                 * - createdAt
@@ -346,7 +384,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-01-19 23:58:03.395000+00:00``
                 * - updatedAt
@@ -354,7 +394,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-03-21 12:45:02.312000+00:00``
                 * - submissions
@@ -362,7 +404,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - number
                   
-                    The number of ``Submission``\ s that have been submitted to this ``Form``\ .
+                    .. raw:: html
+
+                      <p>The number of <code>Submission</code>s that have been submitted to this <code>Form</code>.</p>
 
                     Example: ``10``
                 * - reviewStates
@@ -370,7 +414,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - object
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
 
                       
@@ -387,7 +433,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - number
                             
-                              The number of submissions receieved with no other review state.
+                              .. raw:: html
+
+                                <p>The number of submissions receieved with no other review state.</p>
 
                               Example: ``3``
                           * - hasIssues
@@ -395,7 +443,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - number
                             
-                              The number of submissions marked as having issues.
+                              .. raw:: html
+
+                                <p>The number of submissions marked as having issues.</p>
 
                               Example: ``2``
                           * - edited
@@ -403,7 +453,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - number
                             
-                              The number of edited submissions.
+                              .. raw:: html
+
+                                <p>The number of edited submissions.</p>
 
                               Example: ``1``
                      
@@ -412,7 +464,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    ISO date format. The timestamp of the most recent submission, if any.
+                    .. raw:: html
+
+                      <p>ISO date format. The timestamp of the most recent submission, if any.</p>
 
                     Example: ``2018-04-18T03:04:51.695Z``
                 * - createdBy
@@ -420,7 +474,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - object
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
 
                       
@@ -437,7 +493,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              ISO date format
+                              .. raw:: html
+
+                                <p>ISO date format</p>
 
                               Example: ``2018-04-18 23:19:14.802000+00:00``
                           * - displayName
@@ -445,7 +503,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              All ``Actor``\ s, regardless of type, have a display name
+                              .. raw:: html
+
+                                <p>All <code>Actor</code>s, regardless of type, have a display name</p>
 
                               Example: ``My Display Name``
                           * - id
@@ -453,7 +513,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - number
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
                               Example: ``115.0``
                           * - type
@@ -461,7 +523,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - enum
                             
-                              The type of actor
+                              .. raw:: html
+
+                                <p>The type of actor</p>
 
 
                                 
@@ -478,28 +542,24 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                                       - string
                                       
-                                        
 
                                     * - field_key
 
 
                                       - string
                                       
-                                        
 
                                     * - public_link
 
 
                                       - string
                                       
-                                        
 
                                     * - singleUse
 
 
                                       - string
                                       
-                                        
 
                                
                           * - updatedAt
@@ -507,7 +567,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              ISO date format
+                              .. raw:: html
+
+                                <p>ISO date format</p>
 
                               Example: ``2018-04-18 23:42:11.406000+00:00``
                           * - deletedAt
@@ -515,7 +577,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              ISO date format
+                              .. raw:: html
+
+                                <p>ISO date format</p>
 
                               Example: ``2018-04-18 23:42:11.406000+00:00``
                      
@@ -524,14 +588,18 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    If the Form was created by uploading an Excel file, this field contains the MIME type of that file.
+                    .. raw:: html
+
+                      <p>If the Form was created by uploading an Excel file, this field contains the MIME type of that file.</p>
 
                 * - entityRelated
 
 
                   - boolean
                   
-                    True only if this Form is related to a Dataset. In v2022.3, this means the Form's Submissions create Entities in a Dataset. In a future version, Submissions will also be able to update existing Entities.
+                    .. raw:: html
+
+                      <p>True only if this Form is related to a Dataset. In v2022.3, this means the Form's Submissions create Entities in a Dataset. In a future version, Submissions will also be able to update existing Entities.</p>
 
                     Example: ``none``
 
@@ -555,6 +623,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -574,7 +645,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``403.1``
                 * - message
@@ -582,7 +655,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``The authenticated actor does not have rights to perform that action.``
               
@@ -592,27 +667,9 @@ Creating a new Form
 
 **POST /v1/projects/{projectId}/forms**
 
-When creating a ``Form``\ , the only required data is the actual XForms XML or XLSForm itself. Use it as the ``POST``\  body with a ``Content-Type``\  header of ``application/xml``\  (``text/xml``\  works too), and the Form will be created.
+.. raw:: html
 
-As of Version 0.8, Forms will by default be created in Draft state, accessible under ``/projects/…/forms/…/draft``\ . The Form itself will not have a public XML definition, and will not appear for download onto mobile devices. You will need to `publish the form </central-api-form-management/#publishing-a-draft-form>`__ to finalize it for data collection. To disable this behaviour, and force the new Form to be immediately ready, you can pass the querystring option ``?publish=true``\ .
-
-For XLSForm upload, either ``.xls``\  or ``.xlsx``\  are accepted. You must provide the ``Content-Type``\  request header corresponding to the file type: ``application/vnd.openxmlformats-officedocument.spreadsheetml.sheet``\  for ``.xlsx``\  files, and ``application/vnd.ms-excel``\  for ``.xls``\  files. You must also provide an ``X-XlsForm-FormId-Fallback``\  request header with the ``formId``\  you want the resulting form to have, if the spreadsheet does not already specify. This header field accepts percent-encoded values to support Unicode characters and other non-ASCII values.
-
-By default, any XLSForm conversion Warnings will fail this request and return the warnings rather than use the converted XML to create a form. To override this behaviour, provide a querystring flag ``?ignoreWarnings=true``\ . Conversion Errors will always fail this request.
-
-The API will currently check the XML's structure in order to extract the information we need about it, but ODK Central does *not*\  run comprehensive validation on the full contents of the XML to ensure compliance with the ODK specification. Future versions will likely do this, but in the meantime you will have to use a tool like `ODK Validate <https://getodk.org/use/validate/>`__ to be sure your Forms are correct.
-
-You will get following workflow warnings while creating a new form or uploading a new version of an existing form:
-
-- Structural Change: Returned when the uploaded definition of the form removes, renames or moves a field to a different group/repeat. `Learn more <https://docs.getodk.org/central-forms/#central-forms-updates>`__
-
-- Deleted Form: Returned when there is a form with the same ID in the Trash. `Learn more <https://docs.getodk.org/central-forms/#deleting-a-form>`__
-
-**Creating Datasets with Forms**\ 
-
-Starting from Version 2022.3, a Form can also create a Dataset by defining a Dataset schema in the Form definition (XForms XML or XLSForm). When a Form with a Dataset schema is uploaded, a Dataset and its Properties are created. The state of the Dataset is dependent on the state of the Form; you will need to publish the Form to publish the Dataset. Datasets in the Draft state are not returned in `Dataset APIs </central-api-dataset-management>`__, however the `Related Datasets </central-api-form-management/#draft-form-dataset-diff>`__ API for the Form can be called to get the Dataset and its Properties.
-
-It is possible to define the schema of a Dataset in multiple Forms. Such Forms can be created and published in any order. Publishing any of the Forms will also publish the Dataset and will generate a ``dataset.create``\  event; ``dataset.update``\  events are generated in Audit logs when a Form adds a new property in the Dataset. The state of a Property of a Dataset is also dependent on the state of the Form that FIRST defines that Property, which means if a Form is in the Draft state then the Properties defined by that Form will not appear in the `.csv file </central-api-dataset-management/#download-dataset>`__ of the Dataset.
+  <p>When creating a <code>Form</code>, the only required data is the actual XForms XML or XLSForm itself. Use it as the <code>POST</code> body with a <code>Content-Type</code> header of <code>application/xml</code> (<code>text/xml</code> works too), and the Form will be created.</p><p>As of Version 0.8, Forms will by default be created in Draft state, accessible under <code>/projects/…/forms/…/draft</code>. The Form itself will not have a public XML definition, and will not appear for download onto mobile devices. You will need to <a href="/central-api-form-management/#publishing-a-draft-form">publish the form</a> to finalize it for data collection. To disable this behaviour, and force the new Form to be immediately ready, you can pass the querystring option <code>?publish=true</code>.</p><p>For XLSForm upload, either <code>.xls</code> or <code>.xlsx</code> are accepted. You must provide the <code>Content-Type</code> request header corresponding to the file type: <code>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</code> for <code>.xlsx</code> files, and <code>application/vnd.ms-excel</code> for <code>.xls</code> files. You must also provide an <code>X-XlsForm-FormId-Fallback</code> request header with the <code>formId</code> you want the resulting form to have, if the spreadsheet does not already specify. This header field accepts percent-encoded values to support Unicode characters and other non-ASCII values.</p><p>By default, any XLSForm conversion Warnings will fail this request and return the warnings rather than use the converted XML to create a form. To override this behaviour, provide a querystring flag <code>?ignoreWarnings=true</code>. Conversion Errors will always fail this request.</p><p>The API will currently check the XML's structure in order to extract the information we need about it, but ODK Central does <em>not</em> run comprehensive validation on the full contents of the XML to ensure compliance with the ODK specification. Future versions will likely do this, but in the meantime you will have to use a tool like <a href="https://getodk.org/use/validate/">ODK Validate</a> to be sure your Forms are correct.</p><p>You will get following workflow warnings while creating a new form or uploading a new version of an existing form:</p><ul><li><p>Structural Change: Returned when the uploaded definition of the form removes, renames or moves a field to a different group/repeat. <a href="https://docs.getodk.org/central-forms/#central-forms-updates">Learn more</a></p></li><li><p>Deleted Form: Returned when there is a form with the same ID in the Trash. <a href="https://docs.getodk.org/central-forms/#deleting-a-form">Learn more</a></p></li></ul><p><strong>Creating Datasets with Forms</strong></p><p>Starting from Version 2022.3, a Form can also create a Dataset by defining a Dataset schema in the Form definition (XForms XML or XLSForm). When a Form with a Dataset schema is uploaded, a Dataset and its Properties are created. The state of the Dataset is dependent on the state of the Form; you will need to publish the Form to publish the Dataset. Datasets in the Draft state are not returned in <a href="/central-api-dataset-management">Dataset APIs</a>, however the <a href="/central-api-form-management/#draft-form-dataset-diff">Related Datasets</a> API for the Form can be called to get the Dataset and its Properties.</p><p>It is possible to define the schema of a Dataset in multiple Forms. Such Forms can be created and published in any order. Publishing any of the Forms will also publish the Dataset and will generate a <code>dataset.create</code> event; <code>dataset.update</code> events are generated in Audit logs when a Form adds a new property in the Dataset. The state of a Property of a Dataset is also dependent on the state of the Form that FIRST defines that Property, which means if a Form is in the Draft state then the Properties defined by that Form will not appear in the <a href="/central-api-dataset-management/#download-dataset">.csv file</a> of the Dataset.</p>
 
 .. dropdown:: Request
 
@@ -628,7 +685,9 @@ It is possible to define the schema of a Dataset in multiple Forms. Such Forms c
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - ignoreWarnings
@@ -637,7 +696,9 @@ It is possible to define the schema of a Dataset in multiple Forms. Such Forms c
 
         - boolean
         
-          Defaults to `false`. Set to `true` if you want the Form to be created even if the XLSForm conversion results in warnings.
+          .. raw:: html
+
+            Defaults to `false`. Set to `true` if you want the Form to be created even if the XLSForm conversion results in warnings.
 
           Example: ``false``
       * - publish
@@ -646,7 +707,9 @@ It is possible to define the schema of a Dataset in multiple Forms. Such Forms c
 
         - boolean
         
-          Defaults to `false`. Set to `true` if you want the Form to skip the Draft state to Published.
+          .. raw:: html
+
+            Defaults to `false`. Set to `true` if you want the Form to skip the Draft state to Published.
 
           Example: ``false``
       * - X-XlsForm-FormId-Fallback
@@ -655,7 +718,9 @@ It is possible to define the schema of a Dataset in multiple Forms. Such Forms c
 
         - string
         
-          e.g. filename.xlsx
+          .. raw:: html
+
+            e.g. filename.xlsx
 
           Example: ``filename.xlsx``
 
@@ -688,6 +753,9 @@ It is possible to define the schema of a Dataset in multiple Forms. Such Forms c
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -707,56 +775,72 @@ It is possible to define the schema of a Dataset in multiple Forms. Such Forms c
 
                   - number
                   
-                    The ``id``\  of the project this form belongs to.
+                    .. raw:: html
+
+                      <p>The <code>id</code> of the project this form belongs to.</p>
 
                 * - xmlFormId
 
 
                   - string
                   
-                    The ``id``\  of this form as given in its XForms XML definition
+                    .. raw:: html
+
+                      <p>The <code>id</code> of this form as given in its XForms XML definition</p>
 
                 * - name
 
 
                   - string
                   
-                    The friendly name of this form. It is given by the ``<title>``\  in the XForms XML definition.
+                    .. raw:: html
+
+                      <p>The friendly name of this form. It is given by the <code>&lt;title&gt;</code> in the XForms XML definition.</p>
 
                 * - version
 
 
                   - string
                   
-                    The ``version``\  of this form as given in its XForms XML definition. If no ``version``\  was specified in the Form, a blank string will be given.
+                    .. raw:: html
+
+                      <p>The <code>version</code> of this form as given in its XForms XML definition. If no <code>version</code> was specified in the Form, a blank string will be given.</p>
 
                 * - enketoId
 
 
                   - string
                   
-                    If it exists, this is the survey ID of this Form on Enketo at ``/-``\ . This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.
+                    .. raw:: html
+
+                      <p>If it exists, this is the survey ID of this Form on Enketo at <code>/-</code>. This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.</p>
 
                 * - hash
 
 
                   - string
                   
-                    An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.
+                    .. raw:: html
+
+                      <p>An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.</p>
 
                 * - keyId
 
 
                   - number
                   
-                    If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.
+                    .. raw:: html
+
+                      <p>If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.</p>
 
                 * - state
 
 
                   - enum
                   
-                    The present lifecycle status of this form. Controls whether it is available for download on survey clients or accepts new submissions.
+                    .. raw:: html
+
+                      <p>The present lifecycle status of this form. Controls whether it is available for download on survey clients or accepts new submissions.</p>
 
 
                       
@@ -773,21 +857,18 @@ It is possible to define the schema of a Dataset in multiple Forms. Such Forms c
 
                             - string
                             
-                              
 
                           * - closing
 
 
                             - string
                             
-                              
 
                           * - closed
 
 
                             - string
                             
-                              
 
                      
                 * - publishedAt
@@ -795,21 +876,27 @@ It is possible to define the schema of a Dataset in multiple Forms. Such Forms c
 
                   - string
                   
-                    Indicates when a draft has most recently been published for this Form. If this value is ``null``\ , this Form has never been published yet, and contains only a draft.
+                    .. raw:: html
+
+                      <p>Indicates when a draft has most recently been published for this Form. If this value is <code>null</code>, this Form has never been published yet, and contains only a draft.</p>
 
                 * - createdAt
 
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                 * - updatedAt
 
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
               
       
@@ -831,6 +918,9 @@ It is possible to define the schema of a Dataset in multiple Forms. Such Forms c
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -850,21 +940,27 @@ It is possible to define the schema of a Dataset in multiple Forms. Such Forms c
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - details
 
 
                   - object
                   
-                    a subobject that contains programmatically readable details about this error
+                    .. raw:: html
+
+                      <p>a subobject that contains programmatically readable details about this error</p>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -886,6 +982,9 @@ It is possible to define the schema of a Dataset in multiple Forms. Such Forms c
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -905,14 +1004,18 @@ It is possible to define the schema of a Dataset in multiple Forms. Such Forms c
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -934,6 +1037,9 @@ It is possible to define the schema of a Dataset in multiple Forms. Such Forms c
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -953,14 +1059,18 @@ It is possible to define the schema of a Dataset in multiple Forms. Such Forms c
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -968,14 +1078,18 @@ It is possible to define the schema of a Dataset in multiple Forms. Such Forms c
 Individual Form
 -----------------------------------------------------------------------------------------------------------------------
 
-
+.. raw:: html
+  
+  <span></span>
 
 Getting Form Details
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}**
 
-This endpoint supports retrieving extended metadata; provide a header ``X-Extended-Metadata: true``\  to additionally retrieve the ``submissions``\  count of the number of ``Submission``\ s that this Form has, as well as the ``lastSubmission``\  most recent submission timestamp.
+.. raw:: html
+
+  <p>This endpoint supports retrieving extended metadata; provide a header <code>X-Extended-Metadata: true</code> to additionally retrieve the <code>submissions</code> count of the number of <code>Submission</code>s that this Form has, as well as the <code>lastSubmission</code> most recent submission timestamp.</p>
 
 .. dropdown:: Request
 
@@ -991,7 +1105,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - projectId
@@ -999,7 +1115,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
 
@@ -1048,6 +1166,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -1067,56 +1188,72 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - number
                   
-                    The ``id``\  of the project this form belongs to.
+                    .. raw:: html
+
+                      <p>The <code>id</code> of the project this form belongs to.</p>
 
                 * - xmlFormId
 
 
                   - string
                   
-                    The ``id``\  of this form as given in its XForms XML definition
+                    .. raw:: html
+
+                      <p>The <code>id</code> of this form as given in its XForms XML definition</p>
 
                 * - name
 
 
                   - string
                   
-                    The friendly name of this form. It is given by the ``<title>``\  in the XForms XML definition.
+                    .. raw:: html
+
+                      <p>The friendly name of this form. It is given by the <code>&lt;title&gt;</code> in the XForms XML definition.</p>
 
                 * - version
 
 
                   - string
                   
-                    The ``version``\  of this form as given in its XForms XML definition. If no ``version``\  was specified in the Form, a blank string will be given.
+                    .. raw:: html
+
+                      <p>The <code>version</code> of this form as given in its XForms XML definition. If no <code>version</code> was specified in the Form, a blank string will be given.</p>
 
                 * - enketoId
 
 
                   - string
                   
-                    If it exists, this is the survey ID of this Form on Enketo at ``/-``\ . This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.
+                    .. raw:: html
+
+                      <p>If it exists, this is the survey ID of this Form on Enketo at <code>/-</code>. This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.</p>
 
                 * - hash
 
 
                   - string
                   
-                    An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.
+                    .. raw:: html
+
+                      <p>An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.</p>
 
                 * - keyId
 
 
                   - number
                   
-                    If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.
+                    .. raw:: html
+
+                      <p>If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.</p>
 
                 * - state
 
 
                   - enum
                   
-                    The present lifecycle status of this form. Controls whether it is available for download on survey clients or accepts new submissions.
+                    .. raw:: html
+
+                      <p>The present lifecycle status of this form. Controls whether it is available for download on survey clients or accepts new submissions.</p>
 
 
                       
@@ -1133,21 +1270,18 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              
 
                           * - closing
 
 
                             - string
                             
-                              
 
                           * - closed
 
 
                             - string
                             
-                              
 
                      
                 * - publishedAt
@@ -1155,35 +1289,45 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    Indicates when a draft has most recently been published for this Form. If this value is ``null``\ , this Form has never been published yet, and contains only a draft.
+                    .. raw:: html
+
+                      <p>Indicates when a draft has most recently been published for this Form. If this value is <code>null</code>, this Form has never been published yet, and contains only a draft.</p>
 
                 * - createdAt
 
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                 * - updatedAt
 
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                 * - submissions
 
 
                   - number
                   
-                    The number of ``Submission``\ s that have been submitted to this ``Form``\ .
+                    .. raw:: html
+
+                      <p>The number of <code>Submission</code>s that have been submitted to this <code>Form</code>.</p>
 
                 * - reviewStates
 
 
                   - object
                   
-                    Additional counts of the number of submissions in various states of review.
+                    .. raw:: html
+
+                      <p>Additional counts of the number of submissions in various states of review.</p>
 
 
                       
@@ -1200,21 +1344,27 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - number
                             
-                              The number of submissions receieved with no other review state.
+                              .. raw:: html
+
+                                <p>The number of submissions receieved with no other review state.</p>
 
                           * - hasIssues
 
 
                             - number
                             
-                              The number of submissions marked as having issues.
+                              .. raw:: html
+
+                                <p>The number of submissions marked as having issues.</p>
 
                           * - edited
 
 
                             - number
                             
-                              The number of edited submissions.
+                              .. raw:: html
+
+                                <p>The number of edited submissions.</p>
 
                      
                 * - lastSubmission
@@ -1222,14 +1372,18 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    ISO date format. The timestamp of the most recent submission, if any.
+                    .. raw:: html
+
+                      <p>ISO date format. The timestamp of the most recent submission, if any.</p>
 
                 * - createdBy
 
 
                   - object
                   
-                    The full information of the Actor who created this Form.
+                    .. raw:: html
+
+                      <p>The full information of the Actor who created this Form.</p>
 
 
                       
@@ -1246,28 +1400,36 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              ISO date format
+                              .. raw:: html
+
+                                <p>ISO date format</p>
 
                           * - displayName
 
 
                             - string
                             
-                              All ``Actor``\ s, regardless of type, have a display name
+                              .. raw:: html
+
+                                <p>All <code>Actor</code>s, regardless of type, have a display name</p>
 
                           * - id
 
 
                             - number
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
                           * - type
 
 
                             - enum
                             
-                              the Type of this Actor; typically this will be ``user``\ .
+                              .. raw:: html
+
+                                <p>the Type of this Actor; typically this will be <code>user</code>.</p>
 
 
                                 
@@ -1284,28 +1446,24 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                                       - string
                                       
-                                        
 
                                     * - field_key
 
 
                                       - string
                                       
-                                        
 
                                     * - public_link
 
 
                                       - string
                                       
-                                        
 
                                     * - singleUse
 
 
                                       - string
                                       
-                                        
 
                                
                           * - updatedAt
@@ -1313,14 +1471,18 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              ISO date format
+                              .. raw:: html
+
+                                <p>ISO date format</p>
 
                           * - deletedAt
 
 
                             - string
                             
-                              ISO date format
+                              .. raw:: html
+
+                                <p>ISO date format</p>
 
                      
                 * - excelContentType
@@ -1328,14 +1490,18 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    If the Form was created by uploading an Excel file, this field contains the MIME type of that file.
+                    .. raw:: html
+
+                      <p>If the Form was created by uploading an Excel file, this field contains the MIME type of that file.</p>
 
                 * - entityRelated
 
 
                   - boolean
                   
-                    True only if this Form is related to a Dataset. In v2022.3, this means the Form's Submissions create Entities in a Dataset. In a future version, Submissions will also be able to update existing Entities.
+                    .. raw:: html
+
+                      <p>True only if this Form is related to a Dataset. In v2022.3, this means the Form's Submissions create Entities in a Dataset. In a future version, Submissions will also be able to update existing Entities.</p>
 
                     Example: ``none``
               
@@ -1358,6 +1524,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -1377,14 +1546,18 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -1393,7 +1566,9 @@ Deleting a Form
 
 **DELETE /v1/projects/{projectId}/forms/{xmlFormId}**
 
-When a Form is deleted, it goes into the Trash section, but it can now be restored from the Trash. After 30 days in the Trash, the Form and all of its resources and submissions will be automatically purged. If your goal is to prevent it from showing up on survey clients like ODK Collect, consider setting its ``state``\  to ``closing``\  or ``closed``\  instead (see `Modifying a Form </central-api-form-management/#modifying-a-form>`__ just above for more details).
+.. raw:: html
+
+  <p>When a Form is deleted, it goes into the Trash section, but it can now be restored from the Trash. After 30 days in the Trash, the Form and all of its resources and submissions will be automatically purged. If your goal is to prevent it from showing up on survey clients like ODK Collect, consider setting its <code>state</code> to <code>closing</code> or <code>closed</code> instead (see <a href="/central-api-form-management/#modifying-a-form">Modifying a Form</a> just above for more details).</p>
 
 .. dropdown:: Request
 
@@ -1409,7 +1584,9 @@ When a Form is deleted, it goes into the Trash section, but it can now be restor
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - projectId
@@ -1417,7 +1594,9 @@ When a Form is deleted, it goes into the Trash section, but it can now be restor
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
 
@@ -1440,6 +1619,9 @@ When a Form is deleted, it goes into the Trash section, but it can now be restor
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -1459,7 +1641,9 @@ When a Form is deleted, it goes into the Trash section, but it can now be restor
 
                   - boolean
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``none``
               
@@ -1482,6 +1666,9 @@ When a Form is deleted, it goes into the Trash section, but it can now be restor
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -1501,14 +1688,18 @@ When a Form is deleted, it goes into the Trash section, but it can now be restor
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -1517,9 +1708,9 @@ Modifying a Form
 
 **PATCH /v1/projects/{projectId}/forms/{xmlFormId}**
 
-It is currently possible to modify only one thing about a ``Form``\ : its ``state``\ , which governs whether it is available for download onto survey clients and whether it accepts new ``Submission``\ s. See the ``state``\  Attribute in the Request documentation to the right to see the possible values and their meanings.
+.. raw:: html
 
-We use ``PATCH``\  rather than ``PUT``\  to represent the update operation, so that you only have to supply the properties you wish to change. Anything you do not supply will remain untouched.
+  <p>It is currently possible to modify only one thing about a <code>Form</code>: its <code>state</code>, which governs whether it is available for download onto survey clients and whether it accepts new <code>Submission</code>s. See the <code>state</code> Attribute in the Request documentation to the right to see the possible values and their meanings.</p><p>We use <code>PATCH</code> rather than <code>PUT</code> to represent the update operation, so that you only have to supply the properties you wish to change. Anything you do not supply will remain untouched.</p>
 
 .. dropdown:: Request
 
@@ -1535,7 +1726,9 @@ We use ``PATCH``\  rather than ``PUT``\  to represent the update operation, so t
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -1543,7 +1736,9 @@ We use ``PATCH``\  rather than ``PUT``\  to represent the update operation, so t
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
 
@@ -1561,6 +1756,9 @@ We use ``PATCH``\  rather than ``PUT``\  to represent the update operation, so t
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -1580,7 +1778,9 @@ We use ``PATCH``\  rather than ``PUT``\  to represent the update operation, so t
 
                   - enum
                   
-                    If supplied, the Form lifecycle state will move to this value.
+                    .. raw:: html
+
+                      <p>If supplied, the Form lifecycle state will move to this value.</p>
 
 
                       
@@ -1597,21 +1797,18 @@ We use ``PATCH``\  rather than ``PUT``\  to represent the update operation, so t
 
                             - string
                             
-                              
 
                           * - closing
 
 
                             - string
                             
-                              
 
                           * - closed
 
 
                             - string
                             
-                              
 
                      
               
@@ -1645,6 +1842,9 @@ We use ``PATCH``\  rather than ``PUT``\  to represent the update operation, so t
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -1664,56 +1864,72 @@ We use ``PATCH``\  rather than ``PUT``\  to represent the update operation, so t
 
                   - number
                   
-                    The ``id``\  of the project this form belongs to.
+                    .. raw:: html
+
+                      <p>The <code>id</code> of the project this form belongs to.</p>
 
                 * - xmlFormId
 
 
                   - string
                   
-                    The ``id``\  of this form as given in its XForms XML definition
+                    .. raw:: html
+
+                      <p>The <code>id</code> of this form as given in its XForms XML definition</p>
 
                 * - name
 
 
                   - string
                   
-                    The friendly name of this form. It is given by the ``<title>``\  in the XForms XML definition.
+                    .. raw:: html
+
+                      <p>The friendly name of this form. It is given by the <code>&lt;title&gt;</code> in the XForms XML definition.</p>
 
                 * - version
 
 
                   - string
                   
-                    The ``version``\  of this form as given in its XForms XML definition. If no ``version``\  was specified in the Form, a blank string will be given.
+                    .. raw:: html
+
+                      <p>The <code>version</code> of this form as given in its XForms XML definition. If no <code>version</code> was specified in the Form, a blank string will be given.</p>
 
                 * - enketoId
 
 
                   - string
                   
-                    If it exists, this is the survey ID of this Form on Enketo at ``/-``\ . This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.
+                    .. raw:: html
+
+                      <p>If it exists, this is the survey ID of this Form on Enketo at <code>/-</code>. This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.</p>
 
                 * - hash
 
 
                   - string
                   
-                    An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.
+                    .. raw:: html
+
+                      <p>An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.</p>
 
                 * - keyId
 
 
                   - number
                   
-                    If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.
+                    .. raw:: html
+
+                      <p>If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.</p>
 
                 * - state
 
 
                   - enum
                   
-                    The present lifecycle status of this form. Controls whether it is available for download on survey clients or accepts new submissions.
+                    .. raw:: html
+
+                      <p>The present lifecycle status of this form. Controls whether it is available for download on survey clients or accepts new submissions.</p>
 
 
                       
@@ -1730,21 +1946,18 @@ We use ``PATCH``\  rather than ``PUT``\  to represent the update operation, so t
 
                             - string
                             
-                              
 
                           * - closing
 
 
                             - string
                             
-                              
 
                           * - closed
 
 
                             - string
                             
-                              
 
                      
                 * - publishedAt
@@ -1752,21 +1965,27 @@ We use ``PATCH``\  rather than ``PUT``\  to represent the update operation, so t
 
                   - string
                   
-                    Indicates when a draft has most recently been published for this Form. If this value is ``null``\ , this Form has never been published yet, and contains only a draft.
+                    .. raw:: html
+
+                      <p>Indicates when a draft has most recently been published for this Form. If this value is <code>null</code>, this Form has never been published yet, and contains only a draft.</p>
 
                 * - createdAt
 
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                 * - updatedAt
 
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
               
       
@@ -1788,6 +2007,9 @@ We use ``PATCH``\  rather than ``PUT``\  to represent the update operation, so t
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -1807,21 +2029,27 @@ We use ``PATCH``\  rather than ``PUT``\  to represent the update operation, so t
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - details
 
 
                   - object
                   
-                    a subobject that contains programmatically readable details about this error
+                    .. raw:: html
+
+                      <p>a subobject that contains programmatically readable details about this error</p>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -1843,6 +2071,9 @@ We use ``PATCH``\  rather than ``PUT``\  to represent the update operation, so t
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -1862,14 +2093,18 @@ We use ``PATCH``\  rather than ``PUT``\  to represent the update operation, so t
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -1878,7 +2113,9 @@ Retrieving Form XML
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}.xml**
 
-To get the XML of the ``Form``\ , add ``.xml``\  to the end of the request URL.
+.. raw:: html
+
+  <p>To get the XML of the <code>Form</code>, add <code>.xml</code> to the end of the request URL.</p>
 
 .. dropdown:: Request
 
@@ -1894,7 +2131,9 @@ To get the XML of the ``Form``\ , add ``.xml``\  to the end of the request URL.
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -1902,7 +2141,9 @@ To get the XML of the ``Form``\ , add ``.xml``\  to the end of the request URL.
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
 
@@ -1996,7 +2237,9 @@ Retrieving Form XLS(X)
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}.xlsx**
 
-If a Form was created with an Excel file (``.xls``\  or ``.xlsx``\ ), you can get that file back by adding ``.xls``\  or ``.xlsx``\  as appropriate to the Form resource path.
+.. raw:: html
+
+  <p>If a Form was created with an Excel file (<code>.xls</code> or <code>.xlsx</code>), you can get that file back by adding <code>.xls</code> or <code>.xlsx</code> as appropriate to the Form resource path.</p>
 
 .. dropdown:: Request
 
@@ -2012,7 +2255,9 @@ If a Form was created with an Excel file (``.xls``\  or ``.xlsx``\ ), you can ge
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -2020,7 +2265,9 @@ If a Form was created with an Excel file (``.xls``\  or ``.xlsx``\ ), you can ge
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
 
@@ -2041,7 +2288,9 @@ If a Form was created with an Excel file (``.xls``\  or ``.xlsx``\ ), you can ge
 
     .. tab-item:: Schema
 
-      **If a Form was created with an Excel file (``.xls``\  or ``.xlsx``\ ), you can get that file back by adding ``.xls``\  or ``.xlsx``\  as appropriate to the Form resource path.**
+      .. raw:: html
+
+        <p>If a Form was created with an Excel file (<code>.xls</code> or <code>.xlsx</code>), you can get that file back by adding <code>.xls</code> or <code>.xlsx</code> as appropriate to the Form resource path.</p>
 
       .. list-table::
         :class: schema-table-wrap
@@ -2072,6 +2321,9 @@ If a Form was created with an Excel file (``.xls``\  or ``.xlsx``\ ), you can ge
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -2091,14 +2343,18 @@ If a Form was created with an Excel file (``.xls``\  or ``.xlsx``\ ), you can ge
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -2107,7 +2363,9 @@ Listing Form Attachments
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/attachments**
 
-This endpoint allows you to fetch the list of expected attachment files, and will tell you whether the server is in possession of each file or not. To modify an attachment, you'll need to create a Draft.
+.. raw:: html
+
+  <p>This endpoint allows you to fetch the list of expected attachment files, and will tell you whether the server is in possession of each file or not. To modify an attachment, you'll need to create a Draft.</p>
 
 .. dropdown:: Request
 
@@ -2123,7 +2381,9 @@ This endpoint allows you to fetch the list of expected attachment files, and wil
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -2131,7 +2391,9 @@ This endpoint allows you to fetch the list of expected attachment files, and wil
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
 
@@ -2161,6 +2423,9 @@ This endpoint allows you to fetch the list of expected attachment files, and wil
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -2178,7 +2443,9 @@ This endpoint allows you to fetch the list of expected attachment files, and wil
 
                   - string
                   
-                    The name of the file as specified in the XForm.
+                    .. raw:: html
+
+                      <p>The name of the file as specified in the XForm.</p>
 
                     Example: ``myfile.mp3``
                 * - type
@@ -2186,7 +2453,9 @@ This endpoint allows you to fetch the list of expected attachment files, and wil
 
                   - enum
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
 
                       
@@ -2203,28 +2472,24 @@ This endpoint allows you to fetch the list of expected attachment files, and wil
 
                             - string
                             
-                              
 
                           * - audio
 
 
                             - string
                             
-                              
 
                           * - video
 
 
                             - string
                             
-                              
 
                           * - file
 
 
                             - string
                             
-                              
 
                      
                 * - exists
@@ -2232,7 +2497,9 @@ This endpoint allows you to fetch the list of expected attachment files, and wil
 
                   - boolean
                   
-                    True if the server has the file or the Attachment is linked to a Dataset, otherwise false.
+                    .. raw:: html
+
+                      <p>True if the server has the file or the Attachment is linked to a Dataset, otherwise false.</p>
 
                     Example: ``true``
                 * - blobExists
@@ -2240,7 +2507,9 @@ This endpoint allows you to fetch the list of expected attachment files, and wil
 
                   - boolean
                   
-                    Whether the server has the file or not.
+                    .. raw:: html
+
+                      <p>Whether the server has the file or not.</p>
 
                     Example: ``true``
                 * - datasetExists
@@ -2248,7 +2517,9 @@ This endpoint allows you to fetch the list of expected attachment files, and wil
 
                   - boolean
                   
-                    Whether attachment is linked to a Dataset.
+                    .. raw:: html
+
+                      <p>Whether attachment is linked to a Dataset.</p>
 
                     Example: ``true``
                 * - updatedAt
@@ -2256,7 +2527,9 @@ This endpoint allows you to fetch the list of expected attachment files, and wil
 
                   - string
                   
-                    ISO date format. The last time this file's binary content was set (POST) or cleared (DELETE).
+                    .. raw:: html
+
+                      <p>ISO date format. The last time this file's binary content was set (POST) or cleared (DELETE).</p>
 
                     Example: ``2018-03-21T12:45:02.312Z``
 
@@ -2280,6 +2553,9 @@ This endpoint allows you to fetch the list of expected attachment files, and wil
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -2299,7 +2575,9 @@ This endpoint allows you to fetch the list of expected attachment files, and wil
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``403.1``
                 * - message
@@ -2307,7 +2585,9 @@ This endpoint allows you to fetch the list of expected attachment files, and wil
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``The authenticated actor does not have rights to perform that action.``
               
@@ -2317,9 +2597,9 @@ Downloading a Form Attachment
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/attachments/{filename}**
 
-To download a single file, use this endpoint. The appropriate ``Content-Disposition``\  (attachment with a filename) and ``Content-Type``\  (based on the type supplied at upload time) will be given.
+.. raw:: html
 
-This endpoint supports ``ETag``\ , which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, it returns a value in ``ETag``\  header, you can pass this value in the header ``If-None-Match``\  of subsequent requests. If the file has not been changed since the previous request, you will receive ``304 Not Modified``\  response otherwise you'll get the latest file.
+  <p>To download a single file, use this endpoint. The appropriate <code>Content-Disposition</code> (attachment with a filename) and <code>Content-Type</code> (based on the type supplied at upload time) will be given.</p><p>This endpoint supports <code>ETag</code>, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, it returns a value in <code>ETag</code> header, you can pass this value in the header <code>If-None-Match</code> of subsequent requests. If the file has not been changed since the previous request, you will receive <code>304 Not Modified</code> response otherwise you'll get the latest file.</p>
 
 .. dropdown:: Request
 
@@ -2335,7 +2615,9 @@ This endpoint supports ``ETag``\ , which can be used to avoid downloading the sa
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -2343,7 +2625,9 @@ This endpoint supports ``ETag``\ , which can be used to avoid downloading the sa
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - filename
@@ -2351,7 +2635,9 @@ This endpoint supports ``ETag``\ , which can be used to avoid downloading the sa
 
         - string
         
-          The name of the file to download.
+          .. raw:: html
+
+            The name of the file to download.
 
           Example: ``simple``
 
@@ -2372,6 +2658,9 @@ This endpoint supports ``ETag``\ , which can be used to avoid downloading the sa
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -2402,6 +2691,9 @@ This endpoint supports ``ETag``\ , which can be used to avoid downloading the sa
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -2421,14 +2713,18 @@ This endpoint supports ``ETag``\ , which can be used to avoid downloading the sa
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -2437,15 +2733,9 @@ Getting Form Schema Fields
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/fields**
 
-*(introduced: version 0.8)*\ 
+.. raw:: html
 
-For applications that do not rely on JavaRosa, it can be challenging to parse XForms XML into a simple schema structure. Because Central Backend already implements and performs such an operation for its own internal purposes, we also expose this utility for any downstream consumers which wish to make use of it.
-
-While this may eventually overlap with the new OData JSON CSDL specification, we are likely to maintain this API as it more closely mirrors the original XForms data types and structure.
-
-Central internally processes the XForms schema tree into a flat list of fields, and this is how the data is returned over this endpoint as well. It will always return fields in a *depth-first traversal order*\  of the original ``<instance>``\  XML block in the XForm.
-
-You may optionally add the querystring parameter ``?odata=true``\  to sanitize the field names and paths to match the way they will be outputted for OData. While the original field names as given in the XForms definition may be used as-is for CSV output, OData has some restrictions related to the domain-qualified identifier syntax it uses.
+  <p><em>(introduced: version 0.8)</em></p><p>For applications that do not rely on JavaRosa, it can be challenging to parse XForms XML into a simple schema structure. Because Central Backend already implements and performs such an operation for its own internal purposes, we also expose this utility for any downstream consumers which wish to make use of it.</p><p>While this may eventually overlap with the new OData JSON CSDL specification, we are likely to maintain this API as it more closely mirrors the original XForms data types and structure.</p><p>Central internally processes the XForms schema tree into a flat list of fields, and this is how the data is returned over this endpoint as well. It will always return fields in a <em>depth-first traversal order</em> of the original <code>&lt;instance&gt;</code> XML block in the XForm.</p><p>You may optionally add the querystring parameter <code>?odata=true</code> to sanitize the field names and paths to match the way they will be outputted for OData. While the original field names as given in the XForms definition may be used as-is for CSV output, OData has some restrictions related to the domain-qualified identifier syntax it uses.</p>
 
 .. dropdown:: Request
 
@@ -2461,7 +2751,9 @@ You may optionally add the querystring parameter ``?odata=true``\  to sanitize t
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -2469,7 +2761,9 @@ You may optionally add the querystring parameter ``?odata=true``\  to sanitize t
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - odata
@@ -2478,7 +2772,9 @@ You may optionally add the querystring parameter ``?odata=true``\  to sanitize t
 
         - boolean
         
-          If set to `true`, will sanitize field names.
+          .. raw:: html
+
+            If set to `true`, will sanitize field names.
 
           Example: ``false``
 
@@ -2526,6 +2822,9 @@ You may optionally add the querystring parameter ``?odata=true``\  to sanitize t
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -2543,28 +2842,36 @@ You may optionally add the querystring parameter ``?odata=true``\  to sanitize t
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - path
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - type
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - binary
 
 
                   - boolean
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``none``
 
@@ -2588,6 +2895,9 @@ You may optionally add the querystring parameter ``?odata=true``\  to sanitize t
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -2607,14 +2917,18 @@ You may optionally add the querystring parameter ``?odata=true``\  to sanitize t
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -2623,9 +2937,9 @@ Restoring a Form
 
 **POST /v1/projects/{projectId}/forms/{id}/restore**
 
-*(introduced: version 1.4)*\ 
+.. raw:: html
 
-Deleted forms can now be restored (as long as they have been in the Trash less than 30 days and have not been purged). However, a deleted Form with the same ``xmlFormId``\  as an active Form cannot be restored while that other Form is active. This ``/restore``\  URL uses the numeric ID of the Form (now returned by the ``/forms``\  endpoint) rather than the ``xmlFormId``\  to unambigously restore.
+  <p><em>(introduced: version 1.4)</em></p><p>Deleted forms can now be restored (as long as they have been in the Trash less than 30 days and have not been purged). However, a deleted Form with the same <code>xmlFormId</code> as an active Form cannot be restored while that other Form is active. This <code>/restore</code> URL uses the numeric ID of the Form (now returned by the <code>/forms</code> endpoint) rather than the <code>xmlFormId</code> to unambigously restore.</p>
 
 .. dropdown:: Request
 
@@ -2641,7 +2955,9 @@ Deleted forms can now be restored (as long as they have been in the Trash less t
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - id
@@ -2649,7 +2965,9 @@ Deleted forms can now be restored (as long as they have been in the Trash less t
 
         - string
         
-          The ID (not xmlFormId) of the Form
+          .. raw:: html
+
+            The ID (not xmlFormId) of the Form
 
           Example: ``simple``
 
@@ -2672,6 +2990,9 @@ Deleted forms can now be restored (as long as they have been in the Trash less t
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -2691,7 +3012,9 @@ Deleted forms can now be restored (as long as they have been in the Trash less t
 
                   - boolean
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``none``
               
@@ -2714,6 +3037,9 @@ Deleted forms can now be restored (as long as they have been in the Trash less t
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -2733,14 +3059,18 @@ Deleted forms can now be restored (as long as they have been in the Trash less t
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -2748,20 +3078,18 @@ Deleted forms can now be restored (as long as they have been in the Trash less t
 Draft Form
 -----------------------------------------------------------------------------------------------------------------------
 
-*(introduced: version 0.8)*\ 
-
-Draft Forms allow you to test and fix issues with Forms before they are finalized and presented to data collectors. They make this process easier, as Draft Forms can be created and discarded without consequence: your Drafts will not count against the overall Form schema, nor against the set of unique ``version``\  strings for the Form.
-
-You can create or replace the current Draft Form at any time by ``POST``\ ing to the ``/draft``\  subresource on the Form, and you can publish the current Draft by ``POST``\ ing to ``/draft/publish``\ .
-
-When a Draft Form is created, a Draft Token is also created for it, which can be found in Draft Form responses at ``draftToken``\ . This token allows you to `submit test Submissions to the Draft Form </central-api-submission-management/#creating-a-submission>`__ through clients like Collect. If the Draft is published or deleted, the token will be deactivated. But if you replace the Draft without first deleting it, the existing Draft Token will be carried forward, so that you do not have to reconfigure your device.
+.. raw:: html
+  
+  <p><em>(introduced: version 0.8)</em></p><p>Draft Forms allow you to test and fix issues with Forms before they are finalized and presented to data collectors. They make this process easier, as Draft Forms can be created and discarded without consequence: your Drafts will not count against the overall Form schema, nor against the set of unique <code>version</code> strings for the Form.</p><p>You can create or replace the current Draft Form at any time by <code>POST</code>ing to the <code>/draft</code> subresource on the Form, and you can publish the current Draft by <code>POST</code>ing to <code>/draft/publish</code>.</p><p>When a Draft Form is created, a Draft Token is also created for it, which can be found in Draft Form responses at <code>draftToken</code>. This token allows you to <a href="/central-api-submission-management/#creating-a-submission">submit test Submissions to the Draft Form</a> through clients like Collect. If the Draft is published or deleted, the token will be deactivated. But if you replace the Draft without first deleting it, the existing Draft Token will be carried forward, so that you do not have to reconfigure your device.</p>
 
 Getting Draft Form Details
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft**
 
-The response here will include standard overall Form metadata, like ``xmlFormId``\ , in addition to the Draft-specific information.
+.. raw:: html
+
+  <p>The response here will include standard overall Form metadata, like <code>xmlFormId</code>, in addition to the Draft-specific information.</p>
 
 .. dropdown:: Request
 
@@ -2777,7 +3105,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -2785,7 +3115,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
 
@@ -2819,6 +3151,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -2838,7 +3173,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
                   - number
                   
-                    The ``id``\  of the project this form belongs to.
+                    .. raw:: html
+
+                      <p>The <code>id</code> of the project this form belongs to.</p>
 
                     Example: ``1.0``
                 * - xmlFormId
@@ -2846,7 +3183,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
                   - string
                   
-                    The ``id``\  of this form as given in its XForms XML definition
+                    .. raw:: html
+
+                      <p>The <code>id</code> of this form as given in its XForms XML definition</p>
 
                     Example: ``simple``
                 * - name
@@ -2854,7 +3193,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
                   - string
                   
-                    The friendly name of this form. It is given by the ``<title>``\  in the XForms XML definition.
+                    .. raw:: html
+
+                      <p>The friendly name of this form. It is given by the <code>&lt;title&gt;</code> in the XForms XML definition.</p>
 
                     Example: ``Simple``
                 * - version
@@ -2862,7 +3203,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
                   - string
                   
-                    The ``version``\  of this form as given in its XForms XML definition. If no ``version``\  was specified in the Form, a blank string will be given.
+                    .. raw:: html
+
+                      <p>The <code>version</code> of this form as given in its XForms XML definition. If no <code>version</code> was specified in the Form, a blank string will be given.</p>
 
                     Example: ``2.1``
                 * - enketoId
@@ -2870,7 +3213,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
                   - string
                   
-                    If it exists, this is the survey ID of this Form on Enketo at ``/-``\ . This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.
+                    .. raw:: html
+
+                      <p>If it exists, this is the survey ID of this Form on Enketo at <code>/-</code>. This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.</p>
 
                     Example: ``abcdef``
                 * - hash
@@ -2878,7 +3223,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
                   - string
                   
-                    An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.
+                    .. raw:: html
+
+                      <p>An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.</p>
 
                     Example: ``51a93eab3a1974dbffc4c7913fa5a16a``
                 * - keyId
@@ -2886,7 +3233,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
                   - number
                   
-                    If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.
+                    .. raw:: html
+
+                      <p>If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.</p>
 
                     Example: ``3.0``
                 * - state
@@ -2894,7 +3243,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
                   - enum
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
 
                       
@@ -2911,21 +3262,18 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
                             - string
                             
-                              
 
                           * - closing
 
 
                             - string
                             
-                              
 
                           * - closed
 
 
                             - string
                             
-                              
 
                      
                 * - publishedAt
@@ -2933,7 +3281,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
                   - string
                   
-                    Indicates when a draft has most recently been published for this Form. If this value is ``null``\ , this Form has never been published yet, and contains only a draft.
+                    .. raw:: html
+
+                      <p>Indicates when a draft has most recently been published for this Form. If this value is <code>null</code>, this Form has never been published yet, and contains only a draft.</p>
 
                     Example: ``2018-01-21 00:04:11.153000+00:00``
                 * - createdAt
@@ -2941,7 +3291,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-01-19 23:58:03.395000+00:00``
                 * - updatedAt
@@ -2949,7 +3301,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-03-21 12:45:02.312000+00:00``
                 * - draftToken
@@ -2957,7 +3311,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
                   - string
                   
-                    The test token to use to submit to this draft form. See `Draft Testing Endpoints </central-api-submission-management/#draft-submissions>`__.
+                    .. raw:: html
+
+                      <p>The test token to use to submit to this draft form. See <a href="/central-api-submission-management/#draft-submissions">Draft Testing Endpoints</a>.</p>
 
                     Example: ``lSpAIeksRu1CNZs7!qjAot2T17dPzkrw9B4iTtpj7OoIJBmXvnHM8z8Ka4QPEjR7``
                 * - enketoId
@@ -2965,7 +3321,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
                   - string
                   
-                    If it exists, this is the survey ID of this draft Form on Enketo at ``/-``\ . Authentication is not needed to access the draft form through Enketo.
+                    .. raw:: html
+
+                      <p>If it exists, this is the survey ID of this draft Form on Enketo at <code>/-</code>. Authentication is not needed to access the draft form through Enketo.</p>
 
                     Example: ``abcdef``
               
@@ -2988,6 +3346,9 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -3007,14 +3368,18 @@ The response here will include standard overall Form metadata, like ``xmlFormId`
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -3023,21 +3388,9 @@ Creating a Draft Form
 
 **POST /v1/projects/{projectId}/forms/{xmlFormId}/draft**
 
-``POST``\ ing here will create a new Draft Form on the given Form. For the most part, it takes the same parameters as the `Create Form request </central-api-form-management/#creating-a-new-form>`__: you can submit XML or Excel files, you can provide ``ignoreWarnings``\  if you'd like.
+.. raw:: html
 
-Additionally, however, you may ``POST``\  with no ``Content-Type``\  and an empty body to create a Draft Form with a copy of the definition (XML, XLS, etc) that is already published, if there is one. This can be useful if you don't wish to update the Form definition itself, but rather one or more Form Attachments.
-
-If your Draft form schema contains any field path which overlaps with a field path of a previous version of the Form, but with a different data type, your request will be rejected. You can rename the conflicting field, or correct it to have the same data type as it did previously.
-
-When a Draft is created, the expected Form Attachments are computed and slots are created, as with a new Form. Any attachments that match existing ones on the published Form, if it exists, will be copied over to the new Draft.
-
-Even if a Draft exists, you can always replace it by ``POST``\ ing here again. In that case, the attachments that exist on the Draft will similarly be copied over to the new Draft. If you wish to copy from the published version instead, you can do so by first ``DELETE``\ ing the extant Draft.
-
-Draft ``version``\  conflicts are allowed with prior versions of a Form while in Draft state. If you attempt to `publish the Form </central-api-form-management/#draft-form/publishing-a-draft-form>`__ without correcting the conflict, the publish operation will fail. You can request that Central update the version string on your behalf as part of the publish operation to avoid this: see that endpoint for more information.
-
-The ``xmlFormId``\ , however, must exactly match that of the Form overall, or the request will be rejected.
-
-Starting from Version 2022.3, a Draft Form can also create or update a Dataset by defining a Dataset schema in the Form definition. The state of the Dataset and its Properties is dependent on the state of the Form, see `Creating a new form </central-api-form-management/#creating-a-new-form>`__ for more details.
+  <p><code>POST</code>ing here will create a new Draft Form on the given Form. For the most part, it takes the same parameters as the <a href="/central-api-form-management/#creating-a-new-form">Create Form request</a>: you can submit XML or Excel files, you can provide <code>ignoreWarnings</code> if you'd like.</p><p>Additionally, however, you may <code>POST</code> with no <code>Content-Type</code> and an empty body to create a Draft Form with a copy of the definition (XML, XLS, etc) that is already published, if there is one. This can be useful if you don't wish to update the Form definition itself, but rather one or more Form Attachments.</p><p>If your Draft form schema contains any field path which overlaps with a field path of a previous version of the Form, but with a different data type, your request will be rejected. You can rename the conflicting field, or correct it to have the same data type as it did previously.</p><p>When a Draft is created, the expected Form Attachments are computed and slots are created, as with a new Form. Any attachments that match existing ones on the published Form, if it exists, will be copied over to the new Draft.</p><p>Even if a Draft exists, you can always replace it by <code>POST</code>ing here again. In that case, the attachments that exist on the Draft will similarly be copied over to the new Draft. If you wish to copy from the published version instead, you can do so by first <code>DELETE</code>ing the extant Draft.</p><p>Draft <code>version</code> conflicts are allowed with prior versions of a Form while in Draft state. If you attempt to <a href="/central-api-form-management/#draft-form/publishing-a-draft-form">publish the Form</a> without correcting the conflict, the publish operation will fail. You can request that Central update the version string on your behalf as part of the publish operation to avoid this: see that endpoint for more information.</p><p>The <code>xmlFormId</code>, however, must exactly match that of the Form overall, or the request will be rejected.</p><p>Starting from Version 2022.3, a Draft Form can also create or update a Dataset by defining a Dataset schema in the Form definition. The state of the Dataset and its Properties is dependent on the state of the Form, see <a href="/central-api-form-management/#creating-a-new-form">Creating a new form</a> for more details.</p>
 
 .. dropdown:: Request
 
@@ -3053,7 +3406,9 @@ Starting from Version 2022.3, a Draft Form can also create or update a Dataset b
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -3061,7 +3416,9 @@ Starting from Version 2022.3, a Draft Form can also create or update a Dataset b
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - ignoreWarnings
@@ -3070,7 +3427,9 @@ Starting from Version 2022.3, a Draft Form can also create or update a Dataset b
 
         - boolean
         
-          Defaults to `false`. Set to `true` if you want the form to be created even if the XLSForm conversion results in warnings.
+          .. raw:: html
+
+            Defaults to `false`. Set to `true` if you want the form to be created even if the XLSForm conversion results in warnings.
 
           Example: ``false``
       * - X-XlsForm-FormId-Fallback
@@ -3079,7 +3438,9 @@ Starting from Version 2022.3, a Draft Form can also create or update a Dataset b
 
         - string
         
-          e.g. filename.xlsx
+          .. raw:: html
+
+            e.g. filename.xlsx
 
           Example: ``filename.xlsx``
 
@@ -3102,6 +3463,9 @@ Starting from Version 2022.3, a Draft Form can also create or update a Dataset b
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -3121,7 +3485,9 @@ Starting from Version 2022.3, a Draft Form can also create or update a Dataset b
 
                   - boolean
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``none``
               
@@ -3144,6 +3510,9 @@ Starting from Version 2022.3, a Draft Form can also create or update a Dataset b
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -3163,21 +3532,27 @@ Starting from Version 2022.3, a Draft Form can also create or update a Dataset b
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - details
 
 
                   - object
                   
-                    a subobject that contains programmatically readable details about this error
+                    .. raw:: html
+
+                      <p>a subobject that contains programmatically readable details about this error</p>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -3199,6 +3574,9 @@ Starting from Version 2022.3, a Draft Form can also create or update a Dataset b
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -3218,14 +3596,18 @@ Starting from Version 2022.3, a Draft Form can also create or update a Dataset b
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -3234,9 +3616,9 @@ Deleting a Draft Form
 
 **DELETE /v1/projects/{projectId}/forms/{xmlFormId}/draft**
 
-Once a Draft Form is deleted, its definition and any Form Attachments associated with it will be removed.
+.. raw:: html
 
-You will not be able to delete the draft if there is no published version of the form.
+  <p>Once a Draft Form is deleted, its definition and any Form Attachments associated with it will be removed.</p><p>You will not be able to delete the draft if there is no published version of the form.</p>
 
 .. dropdown:: Request
 
@@ -3252,7 +3634,9 @@ You will not be able to delete the draft if there is no published version of the
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -3260,7 +3644,9 @@ You will not be able to delete the draft if there is no published version of the
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
 
@@ -3283,6 +3669,9 @@ You will not be able to delete the draft if there is no published version of the
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -3302,7 +3691,9 @@ You will not be able to delete the draft if there is no published version of the
 
                   - boolean
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``none``
               
@@ -3325,6 +3716,9 @@ You will not be able to delete the draft if there is no published version of the
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -3344,14 +3738,18 @@ You will not be able to delete the draft if there is no published version of the
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -3360,7 +3758,9 @@ Retrieving Draft Form XML
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft.xml**
 
-To get the XML of the Draft Form, add ``.xml``\  to the end of the request URL.
+.. raw:: html
+
+  <p>To get the XML of the Draft Form, add <code>.xml</code> to the end of the request URL.</p>
 
 .. dropdown:: Request
 
@@ -3376,7 +3776,9 @@ To get the XML of the Draft Form, add ``.xml``\  to the end of the request URL.
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -3384,7 +3786,9 @@ To get the XML of the Draft Form, add ``.xml``\  to the end of the request URL.
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
 
@@ -3478,7 +3882,9 @@ Retrieving Draft Form XLS(X)
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft.xlsx**
 
-If a Draft Form was created with an Excel file (``.xls``\  or ``.xlsx``\ ), you can get that file back by adding ``.xls``\  or ``.xlsx``\  as appropriate to the Draft Form resource path.
+.. raw:: html
+
+  <p>If a Draft Form was created with an Excel file (<code>.xls</code> or <code>.xlsx</code>), you can get that file back by adding <code>.xls</code> or <code>.xlsx</code> as appropriate to the Draft Form resource path.</p>
 
 .. dropdown:: Request
 
@@ -3494,7 +3900,9 @@ If a Draft Form was created with an Excel file (``.xls``\  or ``.xlsx``\ ), you 
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -3502,7 +3910,9 @@ If a Draft Form was created with an Excel file (``.xls``\  or ``.xlsx``\ ), you 
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
 
@@ -3568,7 +3978,9 @@ Listing expected Draft Form Attachments
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft/attachments**
 
-Form Attachments for each form are automatically determined when the form is first created, by scanning the XForms definition for references to media or data files. Because of this, it is not possible to directly modify the list of form attachments; that list is fully determined by the given XForm. Instead, the focus of this API subresource is around communicating that expected list of files, and uploading binaries into those file slots.
+.. raw:: html
+
+  <p>Form Attachments for each form are automatically determined when the form is first created, by scanning the XForms definition for references to media or data files. Because of this, it is not possible to directly modify the list of form attachments; that list is fully determined by the given XForm. Instead, the focus of this API subresource is around communicating that expected list of files, and uploading binaries into those file slots.</p>
 
 .. dropdown:: Request
 
@@ -3584,7 +3996,9 @@ Form Attachments for each form are automatically determined when the form is fir
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -3592,7 +4006,9 @@ Form Attachments for each form are automatically determined when the form is fir
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
 
@@ -3622,6 +4038,9 @@ Form Attachments for each form are automatically determined when the form is fir
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -3639,7 +4058,9 @@ Form Attachments for each form are automatically determined when the form is fir
 
                   - string
                   
-                    The name of the file as specified in the XForm.
+                    .. raw:: html
+
+                      <p>The name of the file as specified in the XForm.</p>
 
                     Example: ``myfile.mp3``
                 * - type
@@ -3647,7 +4068,9 @@ Form Attachments for each form are automatically determined when the form is fir
 
                   - enum
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
 
                       
@@ -3664,28 +4087,24 @@ Form Attachments for each form are automatically determined when the form is fir
 
                             - string
                             
-                              
 
                           * - audio
 
 
                             - string
                             
-                              
 
                           * - video
 
 
                             - string
                             
-                              
 
                           * - file
 
 
                             - string
                             
-                              
 
                      
                 * - exists
@@ -3693,7 +4112,9 @@ Form Attachments for each form are automatically determined when the form is fir
 
                   - boolean
                   
-                    True if the server has the file or the Attachment is linked to a Dataset, otherwise false.
+                    .. raw:: html
+
+                      <p>True if the server has the file or the Attachment is linked to a Dataset, otherwise false.</p>
 
                     Example: ``true``
                 * - blobExists
@@ -3701,7 +4122,9 @@ Form Attachments for each form are automatically determined when the form is fir
 
                   - boolean
                   
-                    Whether the server has the file or not.
+                    .. raw:: html
+
+                      <p>Whether the server has the file or not.</p>
 
                     Example: ``true``
                 * - datasetExists
@@ -3709,7 +4132,9 @@ Form Attachments for each form are automatically determined when the form is fir
 
                   - boolean
                   
-                    Whether attachment is linked to a Dataset.
+                    .. raw:: html
+
+                      <p>Whether attachment is linked to a Dataset.</p>
 
                     Example: ``true``
                 * - updatedAt
@@ -3717,7 +4142,9 @@ Form Attachments for each form are automatically determined when the form is fir
 
                   - string
                   
-                    ISO date format. The last time this file's binary content was set (POST) or cleared (DELETE).
+                    .. raw:: html
+
+                      <p>ISO date format. The last time this file's binary content was set (POST) or cleared (DELETE).</p>
 
                     Example: ``2018-03-21T12:45:02.312Z``
 
@@ -3741,6 +4168,9 @@ Form Attachments for each form are automatically determined when the form is fir
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -3760,7 +4190,9 @@ Form Attachments for each form are automatically determined when the form is fir
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``403.1``
                 * - message
@@ -3768,7 +4200,9 @@ Form Attachments for each form are automatically determined when the form is fir
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``The authenticated actor does not have rights to perform that action.``
               
@@ -3778,7 +4212,9 @@ Downloading a Draft Form Attachment
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft/attachments/{filename}**
 
-To download a single file, use this endpoint. The appropriate ``Content-Disposition``\  (attachment with a filename or Dataset name) and ``Content-Type``\  (based on the type supplied at upload time or ``text/csv``\  in the case of a linked Dataset) will be given.
+.. raw:: html
+
+  <p>To download a single file, use this endpoint. The appropriate <code>Content-Disposition</code> (attachment with a filename or Dataset name) and <code>Content-Type</code> (based on the type supplied at upload time or <code>text/csv</code> in the case of a linked Dataset) will be given.</p>
 
 .. dropdown:: Request
 
@@ -3794,7 +4230,9 @@ To download a single file, use this endpoint. The appropriate ``Content-Disposit
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -3802,7 +4240,9 @@ To download a single file, use this endpoint. The appropriate ``Content-Disposit
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - filename
@@ -3810,7 +4250,9 @@ To download a single file, use this endpoint. The appropriate ``Content-Disposit
 
         - string
         
-          The name of tha attachment.
+          .. raw:: html
+
+            The name of tha attachment.
 
           Example: ``people.csv``
 
@@ -3831,7 +4273,9 @@ To download a single file, use this endpoint. The appropriate ``Content-Disposit
 
     .. tab-item:: Schema
 
-      **To download a single file, use this endpoint. The appropriate ``Content-Disposition``\  (attachment with a filename or Dataset name) and ``Content-Type``\  (based on the type supplied at upload time or ``text/csv``\  in the case of a linked Dataset) will be given.**
+      .. raw:: html
+
+        <p>To download a single file, use this endpoint. The appropriate <code>Content-Disposition</code> (attachment with a filename or Dataset name) and <code>Content-Type</code> (based on the type supplied at upload time or <code>text/csv</code> in the case of a linked Dataset) will be given.</p>
 
       .. list-table::
         :class: schema-table-wrap
@@ -3862,6 +4306,9 @@ To download a single file, use this endpoint. The appropriate ``Content-Disposit
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -3881,14 +4328,18 @@ To download a single file, use this endpoint. The appropriate ``Content-Disposit
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -3897,11 +4348,9 @@ Uploading a Draft Form Attachment
 
 **POST /v1/projects/{projectId}/forms/{xmlFormId}/draft/attachments/{filename}**
 
-To upload a binary to an expected file slot, ``POST``\  the binary to its endpoint. Supply a ``Content-Type``\  MIME-type header if you have one.
+.. raw:: html
 
-As of version 2022.3, if there is already a Dataset linked to this attachment, it will be unlinked and replaced with the uploaded file.
-
-This endpoint supports ``ETag``\  header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in ``ETag``\  header. If you pass that value in the ``If-None-Match``\  header of a subsequent request, then if the file has not been changed since the previous request, you will receive ``304 Not Modified``\  response; otherwise you'll get the latest file.
+  <p>To upload a binary to an expected file slot, <code>POST</code> the binary to its endpoint. Supply a <code>Content-Type</code> MIME-type header if you have one.</p><p>As of version 2022.3, if there is already a Dataset linked to this attachment, it will be unlinked and replaced with the uploaded file.</p><p>This endpoint supports <code>ETag</code> header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in <code>ETag</code> header. If you pass that value in the <code>If-None-Match</code> header of a subsequent request, then if the file has not been changed since the previous request, you will receive <code>304 Not Modified</code> response; otherwise you'll get the latest file.</p>
 
 .. dropdown:: Request
 
@@ -3917,7 +4366,9 @@ This endpoint supports ``ETag``\  header, which can be used to avoid downloading
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -3925,7 +4376,9 @@ This endpoint supports ``ETag``\  header, which can be used to avoid downloading
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - filename
@@ -3933,7 +4386,9 @@ This endpoint supports ``ETag``\  header, which can be used to avoid downloading
 
         - string
         
-          The name of that attachment.
+          .. raw:: html
+
+            The name of that attachment.
 
           Example: ``people.csv``
 
@@ -3956,6 +4411,9 @@ This endpoint supports ``ETag``\  header, which can be used to avoid downloading
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -3975,7 +4433,9 @@ This endpoint supports ``ETag``\  header, which can be used to avoid downloading
 
                   - boolean
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``none``
               
@@ -3998,6 +4458,9 @@ This endpoint supports ``ETag``\  header, which can be used to avoid downloading
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -4017,14 +4480,18 @@ This endpoint supports ``ETag``\  header, which can be used to avoid downloading
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -4033,7 +4500,9 @@ Clearing a Draft Form Attachment
 
 **DELETE /v1/projects/{projectId}/forms/{xmlFormId}/draft/attachments/{filename}**
 
-Because Form Attachments are completely determined by the XForms definition of the form itself, there is no direct way to entirely remove a Form Attachment entry from the list, only to clear its uploaded content or to unlink the Dataset. Thus, when you issue a ``DELETE``\  to the attachment's endpoint, that is what happens.
+.. raw:: html
+
+  <p>Because Form Attachments are completely determined by the XForms definition of the form itself, there is no direct way to entirely remove a Form Attachment entry from the list, only to clear its uploaded content or to unlink the Dataset. Thus, when you issue a <code>DELETE</code> to the attachment's endpoint, that is what happens.</p>
 
 .. dropdown:: Request
 
@@ -4049,7 +4518,9 @@ Because Form Attachments are completely determined by the XForms definition of t
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -4057,7 +4528,9 @@ Because Form Attachments are completely determined by the XForms definition of t
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - filename
@@ -4065,7 +4538,9 @@ Because Form Attachments are completely determined by the XForms definition of t
 
         - string
         
-          The name of tha attachment.
+          .. raw:: html
+
+            The name of tha attachment.
 
           Example: ``people.csv``
 
@@ -4088,6 +4563,9 @@ Because Form Attachments are completely determined by the XForms definition of t
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -4107,7 +4585,9 @@ Because Form Attachments are completely determined by the XForms definition of t
 
                   - boolean
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``none``
               
@@ -4130,6 +4610,9 @@ Because Form Attachments are completely determined by the XForms definition of t
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -4149,14 +4632,18 @@ Because Form Attachments are completely determined by the XForms definition of t
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -4165,11 +4652,9 @@ Linking a Dataset to a Draft Form Attachment
 
 **PATCH /v1/projects/{projectId}/forms/{xmlFormId}/draft/attachments/{filename}**
 
-*(introduced: version 2022.3)*\ 
+.. raw:: html
 
-This endpoint can update a Form Attachment's link to a Dataset. You can use this to link or unlink a Dataset to a Form Attachment. Linking of a Dataset to the Attachment only happens if the Attachment type is ``file``\  and there is a Dataset with the exact name of the Attachment (excluding extension ``.csv``\ ) in the Project. For example, if the Form definition includes an Attachment named ``people.csv``\ , then it can be linked to a Dataset named ``people``\ . Pay special attention to letter case and spaces.
-
-When linking a Dataset, if there is any existing file attached then it will be removed.
+  <p><em>(introduced: version 2022.3)</em></p><p>This endpoint can update a Form Attachment's link to a Dataset. You can use this to link or unlink a Dataset to a Form Attachment. Linking of a Dataset to the Attachment only happens if the Attachment type is <code>file</code> and there is a Dataset with the exact name of the Attachment (excluding extension <code>.csv</code>) in the Project. For example, if the Form definition includes an Attachment named <code>people.csv</code>, then it can be linked to a Dataset named <code>people</code>. Pay special attention to letter case and spaces.</p><p>When linking a Dataset, if there is any existing file attached then it will be removed.</p>
 
 .. dropdown:: Request
 
@@ -4185,7 +4670,9 @@ When linking a Dataset, if there is any existing file attached then it will be r
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -4193,7 +4680,9 @@ When linking a Dataset, if there is any existing file attached then it will be r
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - filename
@@ -4201,7 +4690,9 @@ When linking a Dataset, if there is any existing file attached then it will be r
 
         - string
         
-          The name of the attachment.
+          .. raw:: html
+
+            The name of the attachment.
 
           Example: ``people.csv``
 
@@ -4219,6 +4710,9 @@ When linking a Dataset, if there is any existing file attached then it will be r
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -4238,7 +4732,9 @@ When linking a Dataset, if there is any existing file attached then it will be r
 
                   - boolean
                   
-                    true for linking Dataset and false for unlinking Dataset.
+                    .. raw:: html
+
+                      <p>true for linking Dataset and false for unlinking Dataset.</p>
 
                     Example: ``true``
               
@@ -4262,6 +4758,9 @@ When linking a Dataset, if there is any existing file attached then it will be r
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -4281,7 +4780,9 @@ When linking a Dataset, if there is any existing file attached then it will be r
 
                   - boolean
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``none``
               
@@ -4304,6 +4805,9 @@ When linking a Dataset, if there is any existing file attached then it will be r
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -4323,14 +4827,18 @@ When linking a Dataset, if there is any existing file attached then it will be r
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -4352,6 +4860,9 @@ When linking a Dataset, if there is any existing file attached then it will be r
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -4371,14 +4882,18 @@ When linking a Dataset, if there is any existing file attached then it will be r
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -4387,7 +4902,9 @@ Getting Draft Form Schema Fields
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft/fields**
 
-Identical to the `same request </central-api-form-management/#getting-form-schema-fields>`__ for the published Form, but will return the fields related to the current Draft version.
+.. raw:: html
+
+  <p>Identical to the <a href="/central-api-form-management/#getting-form-schema-fields">same request</a> for the published Form, but will return the fields related to the current Draft version.</p>
 
 .. dropdown:: Request
 
@@ -4403,7 +4920,9 @@ Identical to the `same request </central-api-form-management/#getting-form-schem
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -4411,7 +4930,9 @@ Identical to the `same request </central-api-form-management/#getting-form-schem
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - odata
@@ -4420,7 +4941,9 @@ Identical to the `same request </central-api-form-management/#getting-form-schem
 
         - boolean
         
-          If set to `true`, will sanitize field names.
+          .. raw:: html
+
+            If set to `true`, will sanitize field names.
 
           Example: ``false``
 
@@ -4468,6 +4991,9 @@ Identical to the `same request </central-api-form-management/#getting-form-schem
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -4485,28 +5011,36 @@ Identical to the `same request </central-api-form-management/#getting-form-schem
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - path
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - type
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - binary
 
 
                   - boolean
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``none``
 
@@ -4530,6 +5064,9 @@ Identical to the `same request </central-api-form-management/#getting-form-schem
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -4549,14 +5086,18 @@ Identical to the `same request </central-api-form-management/#getting-form-schem
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -4565,15 +5106,9 @@ Publishing a Draft Form
 
 **POST /v1/projects/{projectId}/forms/{xmlFormId}/draft/publish**
 
-This will publish your current Draft Form and make it the active Form definition (and attachments).
+.. raw:: html
 
-If your Draft ``version``\  conflicts with an older version of the Form, you will get an error.
-
-If you wish for the ``version``\  to be set on your behalf as part of the publish operation, you can provide the new version string as a querystring parameter ``?version``\ .
-
-Once the Draft is published, there will no longer be a Draft version of the form.
-
-Starting with Version 2022.3, publishing a Draft Form that defines a Dataset schema will also publish the Dataset. It will generate ``dataset.create``\  event in Audit logs and make the Dataset available in `Datasets APIs </central-api-dataset-management>`__. If the Dataset is already published and the Form adds new properties then ``dataset.update``\  event will be generated.
+  <p>This will publish your current Draft Form and make it the active Form definition (and attachments).</p><p>If your Draft <code>version</code> conflicts with an older version of the Form, you will get an error.</p><p>If you wish for the <code>version</code> to be set on your behalf as part of the publish operation, you can provide the new version string as a querystring parameter <code>?version</code>.</p><p>Once the Draft is published, there will no longer be a Draft version of the form.</p><p>Starting with Version 2022.3, publishing a Draft Form that defines a Dataset schema will also publish the Dataset. It will generate <code>dataset.create</code> event in Audit logs and make the Dataset available in <a href="/central-api-dataset-management">Datasets APIs</a>. If the Dataset is already published and the Form adds new properties then <code>dataset.update</code> event will be generated.</p>
 
 .. dropdown:: Request
 
@@ -4589,7 +5124,9 @@ Starting with Version 2022.3, publishing a Draft Form that defines a Dataset sch
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -4597,7 +5134,9 @@ Starting with Version 2022.3, publishing a Draft Form that defines a Dataset sch
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - version
@@ -4606,7 +5145,9 @@ Starting with Version 2022.3, publishing a Draft Form that defines a Dataset sch
 
         - string
         
-          The `version` to be associated with the Draft once it's published.
+          .. raw:: html
+
+            The `version` to be associated with the Draft once it's published.
 
           Example: ``newVersion``
 
@@ -4629,6 +5170,9 @@ Starting with Version 2022.3, publishing a Draft Form that defines a Dataset sch
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -4648,7 +5192,9 @@ Starting with Version 2022.3, publishing a Draft Form that defines a Dataset sch
 
                   - boolean
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``none``
               
@@ -4671,6 +5217,9 @@ Starting with Version 2022.3, publishing a Draft Form that defines a Dataset sch
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -4690,14 +5239,18 @@ Starting with Version 2022.3, publishing a Draft Form that defines a Dataset sch
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -4719,6 +5272,9 @@ Starting with Version 2022.3, publishing a Draft Form that defines a Dataset sch
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -4738,14 +5294,18 @@ Starting with Version 2022.3, publishing a Draft Form that defines a Dataset sch
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -4753,16 +5313,18 @@ Starting with Version 2022.3, publishing a Draft Form that defines a Dataset sch
 Published Form Versions
 -----------------------------------------------------------------------------------------------------------------------
 
-All published versions of a Form are available read-only at the ``/versions``\  subresource for reference, including the currently published version. You may read that version and its details, retrieve the Form definition, and any attachments associated with each version.
+.. raw:: html
+  
+  <p>All published versions of a Form are available read-only at the <code>/versions</code> subresource for reference, including the currently published version. You may read that version and its details, retrieve the Form definition, and any attachments associated with each version.</p>
 
 Listing Published Form Versions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/versions**
 
-Each entry of the version listing will contain some of the same duplicate keys with basic information about the Form: ``xmlFormId``\  and ``createdAt``\ , for example. This is done to match the data you'd receive if you'd requested each version separately.
+.. raw:: html
 
-This endpoint supports retrieving extended metadata; provide a header ``X-Extended-Metadata: true``\  to additionally retrieve the ``Actor``\  that each version was ``publishedBy``\ .
+  <p>Each entry of the version listing will contain some of the same duplicate keys with basic information about the Form: <code>xmlFormId</code> and <code>createdAt</code>, for example. This is done to match the data you'd receive if you'd requested each version separately.</p><p>This endpoint supports retrieving extended metadata; provide a header <code>X-Extended-Metadata: true</code> to additionally retrieve the <code>Actor</code> that each version was <code>publishedBy</code>.</p>
 
 .. dropdown:: Request
 
@@ -4778,7 +5340,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -4786,7 +5350,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
 
@@ -4829,6 +5395,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -4846,7 +5415,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - number
                   
-                    The ``id``\  of the project this form belongs to.
+                    .. raw:: html
+
+                      <p>The <code>id</code> of the project this form belongs to.</p>
 
                     Example: ``1.0``
                 * - xmlFormId
@@ -4854,7 +5425,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    The ``id``\  of this form as given in its XForms XML definition
+                    .. raw:: html
+
+                      <p>The <code>id</code> of this form as given in its XForms XML definition</p>
 
                     Example: ``simple``
                 * - name
@@ -4862,7 +5435,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    The friendly name of this form. It is given by the ``<title>``\  in the XForms XML definition.
+                    .. raw:: html
+
+                      <p>The friendly name of this form. It is given by the <code>&lt;title&gt;</code> in the XForms XML definition.</p>
 
                     Example: ``Simple``
                 * - version
@@ -4870,7 +5445,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    The ``version``\  of this form as given in its XForms XML definition. If no ``version``\  was specified in the Form, a blank string will be given.
+                    .. raw:: html
+
+                      <p>The <code>version</code> of this form as given in its XForms XML definition. If no <code>version</code> was specified in the Form, a blank string will be given.</p>
 
                     Example: ``2.1``
                 * - enketoId
@@ -4878,7 +5455,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    If it exists, this is the survey ID of this Form on Enketo at ``/-``\ . This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.
+                    .. raw:: html
+
+                      <p>If it exists, this is the survey ID of this Form on Enketo at <code>/-</code>. This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.</p>
 
                     Example: ``abcdef``
                 * - hash
@@ -4886,7 +5465,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.
+                    .. raw:: html
+
+                      <p>An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.</p>
 
                     Example: ``51a93eab3a1974dbffc4c7913fa5a16a``
                 * - keyId
@@ -4894,7 +5475,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - number
                   
-                    If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.
+                    .. raw:: html
+
+                      <p>If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.</p>
 
                     Example: ``3.0``
                 * - state
@@ -4902,7 +5485,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - enum
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
 
                       
@@ -4919,21 +5504,18 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              
 
                           * - closing
 
 
                             - string
                             
-                              
 
                           * - closed
 
 
                             - string
                             
-                              
 
                      
                 * - publishedAt
@@ -4941,7 +5523,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    Indicates when a draft has most recently been published for this Form. If this value is ``null``\ , this Form has never been published yet, and contains only a draft.
+                    .. raw:: html
+
+                      <p>Indicates when a draft has most recently been published for this Form. If this value is <code>null</code>, this Form has never been published yet, and contains only a draft.</p>
 
                     Example: ``2018-01-21 00:04:11.153000+00:00``
                 * - createdAt
@@ -4949,7 +5533,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-01-19 23:58:03.395000+00:00``
                 * - updatedAt
@@ -4957,11 +5543,16 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-03-21 12:45:02.312000+00:00``
 
               
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -4979,7 +5570,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - number
                   
-                    The ``id``\  of the project this form belongs to.
+                    .. raw:: html
+
+                      <p>The <code>id</code> of the project this form belongs to.</p>
 
                     Example: ``1.0``
                 * - xmlFormId
@@ -4987,7 +5580,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    The ``id``\  of this form as given in its XForms XML definition
+                    .. raw:: html
+
+                      <p>The <code>id</code> of this form as given in its XForms XML definition</p>
 
                     Example: ``simple``
                 * - name
@@ -4995,7 +5590,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    The friendly name of this form. It is given by the ``<title>``\  in the XForms XML definition.
+                    .. raw:: html
+
+                      <p>The friendly name of this form. It is given by the <code>&lt;title&gt;</code> in the XForms XML definition.</p>
 
                     Example: ``Simple``
                 * - version
@@ -5003,7 +5600,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    The ``version``\  of this form as given in its XForms XML definition. If no ``version``\  was specified in the Form, a blank string will be given.
+                    .. raw:: html
+
+                      <p>The <code>version</code> of this form as given in its XForms XML definition. If no <code>version</code> was specified in the Form, a blank string will be given.</p>
 
                     Example: ``2.1``
                 * - enketoId
@@ -5011,7 +5610,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    If it exists, this is the survey ID of this Form on Enketo at ``/-``\ . This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.
+                    .. raw:: html
+
+                      <p>If it exists, this is the survey ID of this Form on Enketo at <code>/-</code>. This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.</p>
 
                     Example: ``abcdef``
                 * - hash
@@ -5019,7 +5620,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.
+                    .. raw:: html
+
+                      <p>An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.</p>
 
                     Example: ``51a93eab3a1974dbffc4c7913fa5a16a``
                 * - keyId
@@ -5027,7 +5630,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - number
                   
-                    If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.
+                    .. raw:: html
+
+                      <p>If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.</p>
 
                     Example: ``3.0``
                 * - state
@@ -5035,7 +5640,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - enum
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
 
                       
@@ -5052,21 +5659,18 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              
 
                           * - closing
 
 
                             - string
                             
-                              
 
                           * - closed
 
 
                             - string
                             
-                              
 
                      
                 * - publishedAt
@@ -5074,7 +5678,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    Indicates when a draft has most recently been published for this Form. If this value is ``null``\ , this Form has never been published yet, and contains only a draft.
+                    .. raw:: html
+
+                      <p>Indicates when a draft has most recently been published for this Form. If this value is <code>null</code>, this Form has never been published yet, and contains only a draft.</p>
 
                     Example: ``2018-01-21 00:04:11.153000+00:00``
                 * - createdAt
@@ -5082,7 +5688,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-01-19 23:58:03.395000+00:00``
                 * - updatedAt
@@ -5090,7 +5698,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-03-21 12:45:02.312000+00:00``
                 * - publishedBy
@@ -5098,7 +5708,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - object
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
 
                       
@@ -5115,7 +5727,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              ISO date format
+                              .. raw:: html
+
+                                <p>ISO date format</p>
 
                               Example: ``2018-04-18 23:19:14.802000+00:00``
                           * - displayName
@@ -5123,7 +5737,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              All ``Actor``\ s, regardless of type, have a display name
+                              .. raw:: html
+
+                                <p>All <code>Actor</code>s, regardless of type, have a display name</p>
 
                               Example: ``My Display Name``
                           * - id
@@ -5131,7 +5747,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - number
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
                               Example: ``115.0``
                           * - type
@@ -5139,7 +5757,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - enum
                             
-                              The type of actor
+                              .. raw:: html
+
+                                <p>The type of actor</p>
 
 
                                 
@@ -5156,28 +5776,24 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                                       - string
                                       
-                                        
 
                                     * - field_key
 
 
                                       - string
                                       
-                                        
 
                                     * - public_link
 
 
                                       - string
                                       
-                                        
 
                                     * - singleUse
 
 
                                       - string
                                       
-                                        
 
                                
                           * - updatedAt
@@ -5185,7 +5801,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              ISO date format
+                              .. raw:: html
+
+                                <p>ISO date format</p>
 
                               Example: ``2018-04-18 23:42:11.406000+00:00``
                           * - deletedAt
@@ -5193,7 +5811,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              ISO date format
+                              .. raw:: html
+
+                                <p>ISO date format</p>
 
                               Example: ``2018-04-18 23:42:11.406000+00:00``
                      
@@ -5202,7 +5822,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    If the Form was created by uploading an Excel file, this field contains the MIME type of that file.
+                    .. raw:: html
+
+                      <p>If the Form was created by uploading an Excel file, this field contains the MIME type of that file.</p>
 
 
               
@@ -5225,6 +5847,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -5244,7 +5869,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``403.1``
                 * - message
@@ -5252,7 +5879,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``The authenticated actor does not have rights to perform that action.``
               
@@ -5262,7 +5891,9 @@ Getting Form Version Details
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}**
 
-Since the XForms specification allows blank strings as ``version``\ s (and Central treats the lack of a ``version``\  as a blank string), you may run into trouble using this resource if you have such a Form. In this case, pass the special value ``**\ _``\  (three underscores) as the ``version``\  to retrieve the blank ``version``\  version.
+.. raw:: html
+
+  <p>Since the XForms specification allows blank strings as <code>version</code>s (and Central treats the lack of a <code>version</code> as a blank string), you may run into trouble using this resource if you have such a Form. In this case, pass the special value <code>___</code> (three underscores) as the <code>version</code> to retrieve the blank <code>version</code> version.</p>
 
 .. dropdown:: Request
 
@@ -5278,7 +5909,9 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -5286,7 +5919,9 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - version
@@ -5294,7 +5929,9 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
         - string
         
-          The `version` of the Form version being referenced. Pass `___` to indicate a blank `version`.
+          .. raw:: html
+
+            The `version` of the Form version being referenced. Pass `___` to indicate a blank `version`.
 
           Example: ``one``
 
@@ -5327,6 +5964,9 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -5346,7 +5986,9 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
                   - number
                   
-                    The ``id``\  of the project this form belongs to.
+                    .. raw:: html
+
+                      <p>The <code>id</code> of the project this form belongs to.</p>
 
                     Example: ``1.0``
                 * - xmlFormId
@@ -5354,7 +5996,9 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
                   - string
                   
-                    The ``id``\  of this form as given in its XForms XML definition
+                    .. raw:: html
+
+                      <p>The <code>id</code> of this form as given in its XForms XML definition</p>
 
                     Example: ``simple``
                 * - name
@@ -5362,7 +6006,9 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
                   - string
                   
-                    The friendly name of this form. It is given by the ``<title>``\  in the XForms XML definition.
+                    .. raw:: html
+
+                      <p>The friendly name of this form. It is given by the <code>&lt;title&gt;</code> in the XForms XML definition.</p>
 
                     Example: ``Simple``
                 * - version
@@ -5370,7 +6016,9 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
                   - string
                   
-                    The ``version``\  of this form as given in its XForms XML definition. If no ``version``\  was specified in the Form, a blank string will be given.
+                    .. raw:: html
+
+                      <p>The <code>version</code> of this form as given in its XForms XML definition. If no <code>version</code> was specified in the Form, a blank string will be given.</p>
 
                     Example: ``2.1``
                 * - enketoId
@@ -5378,7 +6026,9 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
                   - string
                   
-                    If it exists, this is the survey ID of this Form on Enketo at ``/-``\ . This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.
+                    .. raw:: html
+
+                      <p>If it exists, this is the survey ID of this Form on Enketo at <code>/-</code>. This will be the ID of the published version if it exists, otherwise it will be the draft ID. Only a cookie-authenticated user may access the preview through Enketo.</p>
 
                     Example: ``abcdef``
                 * - hash
@@ -5386,7 +6036,9 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
                   - string
                   
-                    An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.
+                    .. raw:: html
+
+                      <p>An MD5 sum automatically computed based on the XForms XML definition. This is required for OpenRosa compliance.</p>
 
                     Example: ``51a93eab3a1974dbffc4c7913fa5a16a``
                 * - keyId
@@ -5394,7 +6046,9 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
                   - number
                   
-                    If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.
+                    .. raw:: html
+
+                      <p>If a public encryption key is present on the form, its numeric ID as tracked by Central is given here.</p>
 
                     Example: ``3.0``
                 * - state
@@ -5402,7 +6056,9 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
                   - enum
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
 
                       
@@ -5419,21 +6075,18 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
                             - string
                             
-                              
 
                           * - closing
 
 
                             - string
                             
-                              
 
                           * - closed
 
 
                             - string
                             
-                              
 
                      
                 * - publishedAt
@@ -5441,7 +6094,9 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
                   - string
                   
-                    Indicates when a draft has most recently been published for this Form. If this value is ``null``\ , this Form has never been published yet, and contains only a draft.
+                    .. raw:: html
+
+                      <p>Indicates when a draft has most recently been published for this Form. If this value is <code>null</code>, this Form has never been published yet, and contains only a draft.</p>
 
                     Example: ``2018-01-21 00:04:11.153000+00:00``
                 * - createdAt
@@ -5449,7 +6104,9 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-01-19 23:58:03.395000+00:00``
                 * - updatedAt
@@ -5457,7 +6114,9 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-03-21 12:45:02.312000+00:00``
               
@@ -5480,6 +6139,9 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -5499,14 +6161,18 @@ Since the XForms specification allows blank strings as ``version``\ s (and Centr
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -5515,7 +6181,9 @@ Retrieving Form Version XML
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}.xml**
 
-To get the XML of the Form Version, add ``.xml``\  to the end of the request URL.
+.. raw:: html
+
+  <p>To get the XML of the Form Version, add <code>.xml</code> to the end of the request URL.</p>
 
 .. dropdown:: Request
 
@@ -5531,7 +6199,9 @@ To get the XML of the Form Version, add ``.xml``\  to the end of the request URL
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -5539,7 +6209,9 @@ To get the XML of the Form Version, add ``.xml``\  to the end of the request URL
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - version
@@ -5547,7 +6219,9 @@ To get the XML of the Form Version, add ``.xml``\  to the end of the request URL
 
         - string
         
-          The `version` of the Form version being referenced. Pass `___` to indicate a blank `version`.
+          .. raw:: html
+
+            The `version` of the Form version being referenced. Pass `___` to indicate a blank `version`.
 
           Example: ``one``
 
@@ -5641,7 +6315,9 @@ Retrieving Form Version XLS(X)
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}.xlsx**
 
-If a Form Version was created with an Excel file (``.xls``\  or ``.xlsx``\ ), you can get that file back by adding ``.xls``\  or ``.xlsx``\  as appropriate to the Form Version resource path.
+.. raw:: html
+
+  <p>If a Form Version was created with an Excel file (<code>.xls</code> or <code>.xlsx</code>), you can get that file back by adding <code>.xls</code> or <code>.xlsx</code> as appropriate to the Form Version resource path.</p>
 
 .. dropdown:: Request
 
@@ -5657,7 +6333,9 @@ If a Form Version was created with an Excel file (``.xls``\  or ``.xlsx``\ ), yo
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -5665,7 +6343,9 @@ If a Form Version was created with an Excel file (``.xls``\  or ``.xlsx``\ ), yo
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - version
@@ -5673,7 +6353,9 @@ If a Form Version was created with an Excel file (``.xls``\  or ``.xlsx``\ ), yo
 
         - string
         
-          The `version` of the Form version being referenced. Pass `___` to indicate a blank `version`.
+          .. raw:: html
+
+            The `version` of the Form version being referenced. Pass `___` to indicate a blank `version`.
 
           Example: ``one``
 
@@ -5739,7 +6421,9 @@ Listing Form Version Attachments
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}/attachments**
 
-Attachments are specific to each version of a Form. You can retrieve the attachments associated with a given version here.
+.. raw:: html
+
+  <p>Attachments are specific to each version of a Form. You can retrieve the attachments associated with a given version here.</p>
 
 .. dropdown:: Request
 
@@ -5755,7 +6439,9 @@ Attachments are specific to each version of a Form. You can retrieve the attachm
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -5763,7 +6449,9 @@ Attachments are specific to each version of a Form. You can retrieve the attachm
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - version
@@ -5771,7 +6459,9 @@ Attachments are specific to each version of a Form. You can retrieve the attachm
 
         - string
         
-          The `version` of the Form version being referenced. Pass `___` to indicate a blank `version`.
+          .. raw:: html
+
+            The `version` of the Form version being referenced. Pass `___` to indicate a blank `version`.
 
           Example: ``one``
 
@@ -5801,6 +6491,9 @@ Attachments are specific to each version of a Form. You can retrieve the attachm
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -5818,7 +6511,9 @@ Attachments are specific to each version of a Form. You can retrieve the attachm
 
                   - string
                   
-                    The name of the file as specified in the XForm.
+                    .. raw:: html
+
+                      <p>The name of the file as specified in the XForm.</p>
 
                     Example: ``myfile.mp3``
                 * - type
@@ -5826,7 +6521,9 @@ Attachments are specific to each version of a Form. You can retrieve the attachm
 
                   - enum
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
 
                       
@@ -5843,28 +6540,24 @@ Attachments are specific to each version of a Form. You can retrieve the attachm
 
                             - string
                             
-                              
 
                           * - audio
 
 
                             - string
                             
-                              
 
                           * - video
 
 
                             - string
                             
-                              
 
                           * - file
 
 
                             - string
                             
-                              
 
                      
                 * - exists
@@ -5872,7 +6565,9 @@ Attachments are specific to each version of a Form. You can retrieve the attachm
 
                   - boolean
                   
-                    True if the server has the file or the Attachment is linked to a Dataset, otherwise false.
+                    .. raw:: html
+
+                      <p>True if the server has the file or the Attachment is linked to a Dataset, otherwise false.</p>
 
                     Example: ``true``
                 * - blobExists
@@ -5880,7 +6575,9 @@ Attachments are specific to each version of a Form. You can retrieve the attachm
 
                   - boolean
                   
-                    Whether the server has the file or not.
+                    .. raw:: html
+
+                      <p>Whether the server has the file or not.</p>
 
                     Example: ``true``
                 * - datasetExists
@@ -5888,7 +6585,9 @@ Attachments are specific to each version of a Form. You can retrieve the attachm
 
                   - boolean
                   
-                    Whether attachment is linked to a Dataset.
+                    .. raw:: html
+
+                      <p>Whether attachment is linked to a Dataset.</p>
 
                     Example: ``true``
                 * - updatedAt
@@ -5896,7 +6595,9 @@ Attachments are specific to each version of a Form. You can retrieve the attachm
 
                   - string
                   
-                    ISO date format. The last time this file's binary content was set (POST) or cleared (DELETE).
+                    .. raw:: html
+
+                      <p>ISO date format. The last time this file's binary content was set (POST) or cleared (DELETE).</p>
 
                     Example: ``2018-03-21T12:45:02.312Z``
 
@@ -5920,6 +6621,9 @@ Attachments are specific to each version of a Form. You can retrieve the attachm
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -5939,14 +6643,18 @@ Attachments are specific to each version of a Form. You can retrieve the attachm
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -5955,9 +6663,9 @@ Downloading a Form Version Attachment
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}/attachments/{filename}**
 
-To download a single file, use this endpoint. The appropriate ``Content-Disposition``\  (attachment with a filename) and ``Content-Type``\  (based on the type supplied at upload time) will be given.
+.. raw:: html
 
-This endpoint supports ``ETag``\  header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in ``ETag``\  header. If you pass that value in the ``If-None-Match``\  header of a subsequent request, then if the file has not been changed since the previous request, you will receive ``304 Not Modified``\  response; otherwise you'll get the latest file.
+  <p>To download a single file, use this endpoint. The appropriate <code>Content-Disposition</code> (attachment with a filename) and <code>Content-Type</code> (based on the type supplied at upload time) will be given.</p><p>This endpoint supports <code>ETag</code> header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in <code>ETag</code> header. If you pass that value in the <code>If-None-Match</code> header of a subsequent request, then if the file has not been changed since the previous request, you will receive <code>304 Not Modified</code> response; otherwise you'll get the latest file.</p>
 
 .. dropdown:: Request
 
@@ -5973,7 +6681,9 @@ This endpoint supports ``ETag``\  header, which can be used to avoid downloading
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -5981,7 +6691,9 @@ This endpoint supports ``ETag``\  header, which can be used to avoid downloading
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - version
@@ -5989,7 +6701,9 @@ This endpoint supports ``ETag``\  header, which can be used to avoid downloading
 
         - string
         
-          The `version` of the Form version being referenced. Pass `___` to indicate a blank `version`.
+          .. raw:: html
+
+            The `version` of the Form version being referenced. Pass `___` to indicate a blank `version`.
 
           Example: ``one``
       * - filename
@@ -5997,7 +6711,9 @@ This endpoint supports ``ETag``\  header, which can be used to avoid downloading
 
         - string
         
-          The name of tha attachment.
+          .. raw:: html
+
+            The name of tha attachment.
 
           Example: ``people.csv``
 
@@ -6018,6 +6734,9 @@ This endpoint supports ``ETag``\  header, which can be used to avoid downloading
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -6048,6 +6767,9 @@ This endpoint supports ``ETag``\  header, which can be used to avoid downloading
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -6067,14 +6789,18 @@ This endpoint supports ``ETag``\  header, which can be used to avoid downloading
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -6083,7 +6809,9 @@ Getting Form Version Schema Fields
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}/fields**
 
-Identical to the `same request </central-api-form-management/#getting-form-schema-fields>`__ for the published Form, but will return the fields related to the specified version.
+.. raw:: html
+
+  <p>Identical to the <a href="/central-api-form-management/#getting-form-schema-fields">same request</a> for the published Form, but will return the fields related to the specified version.</p>
 
 .. dropdown:: Request
 
@@ -6099,7 +6827,9 @@ Identical to the `same request </central-api-form-management/#getting-form-schem
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -6107,7 +6837,9 @@ Identical to the `same request </central-api-form-management/#getting-form-schem
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - version
@@ -6115,7 +6847,9 @@ Identical to the `same request </central-api-form-management/#getting-form-schem
 
         - string
         
-          The `version` of the Form version being referenced. Pass `___` to indicate a blank `version`.
+          .. raw:: html
+
+            The `version` of the Form version being referenced. Pass `___` to indicate a blank `version`.
 
           Example: ``one``
       * - odata
@@ -6124,7 +6858,9 @@ Identical to the `same request </central-api-form-management/#getting-form-schem
 
         - boolean
         
-          If set to `true`, will sanitize field names.
+          .. raw:: html
+
+            If set to `true`, will sanitize field names.
 
           Example: ``false``
 
@@ -6172,6 +6908,9 @@ Identical to the `same request </central-api-form-management/#getting-form-schem
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -6189,28 +6928,36 @@ Identical to the `same request </central-api-form-management/#getting-form-schem
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - path
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - type
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - binary
 
 
                   - boolean
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``none``
 
@@ -6234,6 +6981,9 @@ Identical to the `same request </central-api-form-management/#getting-form-schem
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -6253,14 +7003,18 @@ Identical to the `same request </central-api-form-management/#getting-form-schem
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -6268,22 +7022,18 @@ Identical to the `same request </central-api-form-management/#getting-form-schem
 Form Assignments
 -----------------------------------------------------------------------------------------------------------------------
 
-*(introduced: version 0.7)*\ 
-
-There are multiple Assignments resources. This one, specific to the Form it is nested within, only governs Role assignments to that Form. Assigning an Actor a Role that grants, for example, a verb ``submission.create``\ , allows that Actor to create a submission to this Form alone. It is also possible to assign umbrella rights to a whole Project and therefore all Forms within it: see the `Project Assignments resource </central-api-project-management/#project-assignments>`__ for information about this.
-
-The `sitewide Assignments resource </central-api-accounts-and-users/#assignments>`__, at the API root, manages Role assignments for all objects across the server. Apart from this difference in scope, the introduction to that section contains information useful for understanding the following endpoints.
-
-There are only one set of Roles, applicable to either scenario. There are not a separate set of Roles used only upon Projects or Forms.
+.. raw:: html
+  
+  <p><em>(introduced: version 0.7)</em></p><p>There are multiple Assignments resources. This one, specific to the Form it is nested within, only governs Role assignments to that Form. Assigning an Actor a Role that grants, for example, a verb <code>submission.create</code>, allows that Actor to create a submission to this Form alone. It is also possible to assign umbrella rights to a whole Project and therefore all Forms within it: see the <a href="/central-api-project-management/#project-assignments">Project Assignments resource</a> for information about this.</p><p>The <a href="/central-api-accounts-and-users/#assignments">sitewide Assignments resource</a>, at the API root, manages Role assignments for all objects across the server. Apart from this difference in scope, the introduction to that section contains information useful for understanding the following endpoints.</p><p>There are only one set of Roles, applicable to either scenario. There are not a separate set of Roles used only upon Projects or Forms.</p>
 
 Listing all Form Assignments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/assignments**
 
-This will list every assignment upon this Form, in the form of ``actorId``\ /``roleId``\  pairs.
+.. raw:: html
 
-This endpoint supports retrieving extended metadata; provide a header ``X-Extended-Metadata: true``\  to expand the ``actorId``\  into a full ``actor``\  objects. The Role reference remains a numeric ID.
+  <p>This will list every assignment upon this Form, in the form of <code>actorId</code>/<code>roleId</code> pairs.</p><p>This endpoint supports retrieving extended metadata; provide a header <code>X-Extended-Metadata: true</code> to expand the <code>actorId</code> into a full <code>actor</code> objects. The Role reference remains a numeric ID.</p>
 
 .. dropdown:: Request
 
@@ -6299,7 +7049,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``2``
       * - xmlFormId
@@ -6307,7 +7059,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
 
@@ -6340,6 +7094,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -6357,7 +7114,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - number
                   
-                    The numeric Actor ID being assigned.
+                    .. raw:: html
+
+                      <p>The numeric Actor ID being assigned.</p>
 
                     Example: ``42``
                 * - roleId
@@ -6365,11 +7124,16 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - number
                   
-                    The numeric Role ID being assigned.
+                    .. raw:: html
+
+                      <p>The numeric Role ID being assigned.</p>
 
                     Example: ``4``
 
               
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -6387,7 +7151,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - object
                   
-                    The full Actor data for this assignment.
+                    .. raw:: html
+
+                      <p>The full Actor data for this assignment.</p>
 
 
                       
@@ -6404,7 +7170,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              ISO date format
+                              .. raw:: html
+
+                                <p>ISO date format</p>
 
                               Example: ``2018-04-18 23:19:14.802000+00:00``
                           * - displayName
@@ -6412,7 +7180,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              All ``Actor``\ s, regardless of type, have a display name
+                              .. raw:: html
+
+                                <p>All <code>Actor</code>s, regardless of type, have a display name</p>
 
                               Example: ``My Display Name``
                           * - id
@@ -6420,7 +7190,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - number
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
                               Example: ``115.0``
                           * - type
@@ -6428,7 +7200,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - enum
                             
-                              The type of actor
+                              .. raw:: html
+
+                                <p>The type of actor</p>
 
 
                                 
@@ -6445,28 +7219,24 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                                       - string
                                       
-                                        
 
                                     * - field_key
 
 
                                       - string
                                       
-                                        
 
                                     * - public_link
 
 
                                       - string
                                       
-                                        
 
                                     * - singleUse
 
 
                                       - string
                                       
-                                        
 
                                
                           * - updatedAt
@@ -6474,7 +7244,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              ISO date format
+                              .. raw:: html
+
+                                <p>ISO date format</p>
 
                               Example: ``2018-04-18 23:42:11.406000+00:00``
                           * - deletedAt
@@ -6482,7 +7254,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              ISO date format
+                              .. raw:: html
+
+                                <p>ISO date format</p>
 
                               Example: ``2018-04-18 23:42:11.406000+00:00``
                      
@@ -6491,7 +7265,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - number
                   
-                    The numeric Role ID being assigned.
+                    .. raw:: html
+
+                      <p>The numeric Role ID being assigned.</p>
 
                     Example: ``4``
 
@@ -6515,6 +7291,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -6534,7 +7313,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``403.1``
                 * - message
@@ -6542,7 +7323,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``The authenticated actor does not have rights to perform that action.``
               
@@ -6552,7 +7335,9 @@ Listing all Actors assigned some Form Role
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/assignments/{roleId}**
 
-Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  name, this endpoint lists all ``Actors``\  that have been assigned that Role upon this particular Form.
+.. raw:: html
+
+  <p>Given a <code>roleId</code>, which may be a numeric ID or a string role <code>system</code> name, this endpoint lists all <code>Actors</code> that have been assigned that Role upon this particular Form.</p>
 
 .. dropdown:: Request
 
@@ -6568,7 +7353,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -6576,7 +7363,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - roleId
@@ -6584,7 +7373,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
         - string
         
-          Typically the integer ID of the `Role`. You may also supply the Role `system` name if it has one.
+          .. raw:: html
+
+            Typically the integer ID of the `Role`. You may also supply the Role `system` name if it has one.
 
           Example: ``manager``
 
@@ -6614,6 +7405,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -6631,7 +7425,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-04-18 23:19:14.802000+00:00``
                 * - displayName
@@ -6639,7 +7435,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                   - string
                   
-                    All ``Actor``\ s, regardless of type, have a display name
+                    .. raw:: html
+
+                      <p>All <code>Actor</code>s, regardless of type, have a display name</p>
 
                     Example: ``My Display Name``
                 * - id
@@ -6647,7 +7445,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                   - number
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``115.0``
                 * - type
@@ -6655,7 +7455,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                   - enum
                   
-                    The type of actor
+                    .. raw:: html
+
+                      <p>The type of actor</p>
 
 
                       
@@ -6672,28 +7474,24 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                             - string
                             
-                              
 
                           * - field_key
 
 
                             - string
                             
-                              
 
                           * - public_link
 
 
                             - string
                             
-                              
 
                           * - singleUse
 
 
                             - string
                             
-                              
 
                      
                 * - updatedAt
@@ -6701,7 +7499,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-04-18 23:42:11.406000+00:00``
                 * - deletedAt
@@ -6709,7 +7509,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-04-18 23:42:11.406000+00:00``
 
@@ -6733,6 +7535,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -6752,7 +7557,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``403.1``
                 * - message
@@ -6760,7 +7567,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``The authenticated actor does not have rights to perform that action.``
               
@@ -6770,9 +7579,9 @@ Assigning an Actor to a Form Role
 
 **POST /v1/projects/{projectId}/forms/{xmlFormId}/assignments/{roleId}/{actorId}**
 
-Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  name, and a numeric ``actorId``\ , assigns that Role to that Actor for this particular Form.
+.. raw:: html
 
-No ``POST``\  body data is required, and if provided it will be ignored.
+  <p>Given a <code>roleId</code>, which may be a numeric ID or a string role <code>system</code> name, and a numeric <code>actorId</code>, assigns that Role to that Actor for this particular Form.</p><p>No <code>POST</code> body data is required, and if provided it will be ignored.</p>
 
 .. dropdown:: Request
 
@@ -6788,7 +7597,9 @@ No ``POST``\  body data is required, and if provided it will be ignored.
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -6796,7 +7607,9 @@ No ``POST``\  body data is required, and if provided it will be ignored.
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - roleId
@@ -6804,7 +7617,9 @@ No ``POST``\  body data is required, and if provided it will be ignored.
 
         - string
         
-          Typically the integer ID of the `Role`. You may also supply the Role `system` name if it has one.
+          .. raw:: html
+
+            Typically the integer ID of the `Role`. You may also supply the Role `system` name if it has one.
 
           Example: ``manager``
       * - actorId
@@ -6812,7 +7627,9 @@ No ``POST``\  body data is required, and if provided it will be ignored.
 
         - number
         
-          The integer ID of the `Actor`.
+          .. raw:: html
+
+            The integer ID of the `Actor`.
 
           Example: ``14``
 
@@ -6835,6 +7652,9 @@ No ``POST``\  body data is required, and if provided it will be ignored.
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -6854,7 +7674,9 @@ No ``POST``\  body data is required, and if provided it will be ignored.
 
                   - boolean
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``none``
               
@@ -6864,7 +7686,9 @@ Revoking a Form Role Assignment from an Actor
 
 **DELETE /v1/projects/{projectId}/forms/{xmlFormId}/assignments/{roleId}/{actorId}**
 
-Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  name, and a numeric ``actorId``\ , unassigns that Role from that Actor for this particular Form.
+.. raw:: html
+
+  <p>Given a <code>roleId</code>, which may be a numeric ID or a string role <code>system</code> name, and a numeric <code>actorId</code>, unassigns that Role from that Actor for this particular Form.</p>
 
 .. dropdown:: Request
 
@@ -6880,7 +7704,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -6888,7 +7714,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - roleId
@@ -6896,7 +7724,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
         - string
         
-          Typically the integer ID of the `Role`. You may also supply the Role `system` name if it has one.
+          .. raw:: html
+
+            Typically the integer ID of the `Role`. You may also supply the Role `system` name if it has one.
 
           Example: ``manager``
       * - actorId
@@ -6904,7 +7734,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
         - number
         
-          The integer ID of the `Actor`.
+          .. raw:: html
+
+            The integer ID of the `Actor`.
 
           Example: ``14``
 
@@ -6927,6 +7759,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -6946,7 +7781,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                   - boolean
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``none``
               
@@ -6969,6 +7806,9 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -6988,14 +7828,18 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -7003,22 +7847,18 @@ Given a ``roleId``\ , which may be a numeric ID or a string role ``system``\  na
 Public Access Links
 -----------------------------------------------------------------------------------------------------------------------
 
-*(introduced: version 1.0)*\ 
-
-Anybody in possession of a Public Access Link for a Form can use that link to submit data to that Form. Public Links are useful for collecting direct responses from a broad set of respondents, and can be revoked using the administration website or the API at any time.
-
-The API for Public Links is particularly useful, as it can be used to, for example, programmatically create and send individually customized and controlled links for direct distribution. The user-facing link for a Public Link has the following structure: ``/-/{enketoId}?st={token}``\  where ``-``\  is the Enketo root, ``enketoId``\  is the survey ID of this published Form on Enketo and ``token``\  is a session token to identify this Public Link.
-
-To revoke the access of any Link, terminate its session ``token``\  by issuing ```DELETE /sessions/:token``\  </central-api-authentication/#logging-out>`__.
+.. raw:: html
+  
+  <p><em>(introduced: version 1.0)</em></p><p>Anybody in possession of a Public Access Link for a Form can use that link to submit data to that Form. Public Links are useful for collecting direct responses from a broad set of respondents, and can be revoked using the administration website or the API at any time.</p><p>The API for Public Links is particularly useful, as it can be used to, for example, programmatically create and send individually customized and controlled links for direct distribution. The user-facing link for a Public Link has the following structure: <code>/-/{enketoId}?st={token}</code> where <code>-</code> is the Enketo root, <code>enketoId</code> is the survey ID of this published Form on Enketo and <code>token</code> is a session token to identify this Public Link.</p><p>To revoke the access of any Link, terminate its session <code>token</code> by issuing <a href="/central-api-authentication/#logging-out"><code>DELETE /sessions/:token</code></a>.</p>
 
 Listing all Links
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/public-links**
 
-This will list every Public Access Link upon this Form.
+.. raw:: html
 
-This endpoint supports retrieving extended metadata; provide a header ``X-Extended-Metadata: true``\  to retrieve the Actor the Link was ``createdBy``\ .
+  <p>This will list every Public Access Link upon this Form.</p><p>This endpoint supports retrieving extended metadata; provide a header <code>X-Extended-Metadata: true</code> to retrieve the Actor the Link was <code>createdBy</code>.</p>
 
 .. dropdown:: Request
 
@@ -7034,7 +7874,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``2``
       * - xmlFormId
@@ -7042,7 +7884,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
 
@@ -7082,6 +7926,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -7099,7 +7946,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-04-18 23:19:14.802000+00:00``
                 * - displayName
@@ -7107,7 +7956,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    All ``Actor``\ s, regardless of type, have a display name
+                    .. raw:: html
+
+                      <p>All <code>Actor</code>s, regardless of type, have a display name</p>
 
                     Example: ``My Display Name``
                 * - id
@@ -7115,7 +7966,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - number
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``115.0``
                 * - type
@@ -7123,7 +7976,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - enum
                   
-                    The type of actor
+                    .. raw:: html
+
+                      <p>The type of actor</p>
 
 
                       
@@ -7140,28 +7995,24 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              
 
                           * - field_key
 
 
                             - string
                             
-                              
 
                           * - public_link
 
 
                             - string
                             
-                              
 
                           * - singleUse
 
 
                             - string
                             
-                              
 
                      
                 * - updatedAt
@@ -7169,7 +8020,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-04-18 23:42:11.406000+00:00``
                 * - deletedAt
@@ -7177,7 +8030,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-04-18 23:42:11.406000+00:00``
                 * - token
@@ -7185,7 +8040,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    If present, this is the Token to include as the ``st``\  query parameter for this ``Public Link``\ . If not present, this ``Public Link``\  has been revoked.
+                    .. raw:: html
+
+                      <p>If present, this is the Token to include as the <code>st</code> query parameter for this <code>Public Link</code>. If not present, this <code>Public Link</code> has been revoked.</p>
 
                     Example: ``d1!E2GVHgpr4h9bpxxtqUJ7EVJ1Q$Dusm2RBXg8XyVJMCBCbvyE8cGacxUx3bcUT``
                 * - once
@@ -7193,11 +8050,16 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - boolean
                   
-                    If set to ``true``\ , an Enketo `single submission survey <https://blog.enketo.org/single-submission-surveys/>`__ will be created instead of a standard one, limiting respondents to a single submission each.
+                    .. raw:: html
+
+                      <p>If set to <code>true</code>, an Enketo <a href="https://blog.enketo.org/single-submission-surveys/">single submission survey</a> will be created instead of a standard one, limiting respondents to a single submission each.</p>
 
                     Example: ``none``
 
               
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -7215,7 +8077,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-04-18 23:19:14.802000+00:00``
                 * - displayName
@@ -7223,7 +8087,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    All ``Actor``\ s, regardless of type, have a display name
+                    .. raw:: html
+
+                      <p>All <code>Actor</code>s, regardless of type, have a display name</p>
 
                     Example: ``My Display Name``
                 * - id
@@ -7231,7 +8097,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - number
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``115.0``
                 * - type
@@ -7239,7 +8107,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - enum
                   
-                    The type of actor
+                    .. raw:: html
+
+                      <p>The type of actor</p>
 
 
                       
@@ -7256,28 +8126,24 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              
 
                           * - field_key
 
 
                             - string
                             
-                              
 
                           * - public_link
 
 
                             - string
                             
-                              
 
                           * - singleUse
 
 
                             - string
                             
-                              
 
                      
                 * - updatedAt
@@ -7285,7 +8151,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-04-18 23:42:11.406000+00:00``
                 * - deletedAt
@@ -7293,7 +8161,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                     Example: ``2018-04-18 23:42:11.406000+00:00``
                 * - token
@@ -7301,7 +8171,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - string
                   
-                    If present, this is the Token to include as the ``st``\  query parameter for this ``Public Link``\ . If not present, this ``Public Link``\  has been revoked.
+                    .. raw:: html
+
+                      <p>If present, this is the Token to include as the <code>st</code> query parameter for this <code>Public Link</code>. If not present, this <code>Public Link</code> has been revoked.</p>
 
                     Example: ``d1!E2GVHgpr4h9bpxxtqUJ7EVJ1Q$Dusm2RBXg8XyVJMCBCbvyE8cGacxUx3bcUT``
                 * - once
@@ -7309,7 +8181,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - boolean
                   
-                    If set to ``true``\ , an Enketo `single submission survey <https://blog.enketo.org/single-submission-surveys/>`__ will be created instead of a standard one, limiting respondents to a single submission each.
+                    .. raw:: html
+
+                      <p>If set to <code>true</code>, an Enketo <a href="https://blog.enketo.org/single-submission-surveys/">single submission survey</a> will be created instead of a standard one, limiting respondents to a single submission each.</p>
 
                     Example: ``none``
                 * - createdBy
@@ -7317,7 +8191,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                   - object
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
 
                       
@@ -7334,7 +8210,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              ISO date format
+                              .. raw:: html
+
+                                <p>ISO date format</p>
 
                               Example: ``2018-04-18 23:19:14.802000+00:00``
                           * - displayName
@@ -7342,7 +8220,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              All ``Actor``\ s, regardless of type, have a display name
+                              .. raw:: html
+
+                                <p>All <code>Actor</code>s, regardless of type, have a display name</p>
 
                               Example: ``My Display Name``
                           * - id
@@ -7350,7 +8230,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - number
                             
-                              
+                              .. raw:: html
+
+                                <span></span>
 
                               Example: ``115.0``
                           * - type
@@ -7358,7 +8240,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - enum
                             
-                              The type of actor
+                              .. raw:: html
+
+                                <p>The type of actor</p>
 
 
                                 
@@ -7375,28 +8259,24 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                                       - string
                                       
-                                        
 
                                     * - field_key
 
 
                                       - string
                                       
-                                        
 
                                     * - public_link
 
 
                                       - string
                                       
-                                        
 
                                     * - singleUse
 
 
                                       - string
                                       
-                                        
 
                                
                           * - updatedAt
@@ -7404,7 +8284,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              ISO date format
+                              .. raw:: html
+
+                                <p>ISO date format</p>
 
                               Example: ``2018-04-18 23:42:11.406000+00:00``
                           * - deletedAt
@@ -7412,7 +8294,9 @@ This endpoint supports retrieving extended metadata; provide a header ``X-Extend
 
                             - string
                             
-                              ISO date format
+                              .. raw:: html
+
+                                <p>ISO date format</p>
 
                               Example: ``2018-04-18 23:42:11.406000+00:00``
                      
@@ -7424,7 +8308,9 @@ Creating a Link
 
 **POST /v1/projects/{projectId}/forms/{xmlFormId}/public-links**
 
-To create a new Public Access Link to this Form, you must send at least a ``displayName``\  for the resulting Actor. You may also provide ``once: true``\  if you want to create a link that `can only be filled by each respondent once <https://blog.enketo.org/single-submission-surveys/>`__. This setting is enforced by Enketo using local device tracking; the link is still distributable to multiple recipients, and the enforcement can be defeated by using multiple browsers or devices.
+.. raw:: html
+
+  <p>To create a new Public Access Link to this Form, you must send at least a <code>displayName</code> for the resulting Actor. You may also provide <code>once: true</code> if you want to create a link that <a href="https://blog.enketo.org/single-submission-surveys/">can only be filled by each respondent once</a>. This setting is enforced by Enketo using local device tracking; the link is still distributable to multiple recipients, and the enforcement can be defeated by using multiple browsers or devices.</p>
 
 .. dropdown:: Request
 
@@ -7440,7 +8326,9 @@ To create a new Public Access Link to this Form, you must send at least a ``disp
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``2``
       * - xmlFormId
@@ -7448,7 +8336,9 @@ To create a new Public Access Link to this Form, you must send at least a ``disp
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
 
@@ -7467,6 +8357,9 @@ To create a new Public Access Link to this Form, you must send at least a ``disp
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -7486,14 +8379,18 @@ To create a new Public Access Link to this Form, you must send at least a ``disp
 
                   - string
                   
-                    The name of the Link, for keeping track of. This name is displayed on the Central administration website but not to survey respondents.
+                    .. raw:: html
+
+                      <p>The name of the Link, for keeping track of. This name is displayed on the Central administration website but not to survey respondents.</p>
 
                 * - once
 
 
                   - boolean
                   
-                    If set to ``true``\ , an Enketo `single submission survey <https://blog.enketo.org/single-submission-surveys/>`__ will be created instead of a standard one, limiting respondents to a single submission each.
+                    .. raw:: html
+
+                      <p>If set to <code>true</code>, an Enketo <a href="https://blog.enketo.org/single-submission-surveys/">single submission survey</a> will be created instead of a standard one, limiting respondents to a single submission each.</p>
 
                     Example: ``none``
               
@@ -7524,6 +8421,9 @@ To create a new Public Access Link to this Form, you must send at least a ``disp
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -7543,28 +8443,36 @@ To create a new Public Access Link to this Form, you must send at least a ``disp
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                 * - displayName
 
 
                   - string
                   
-                    All ``Actor``\ s, regardless of type, have a display name
+                    .. raw:: html
+
+                      <p>All <code>Actor</code>s, regardless of type, have a display name</p>
 
                 * - id
 
 
                   - number
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - type
 
 
                   - enum
                   
-                    the Type of this Actor; typically this will be ``user``\ .
+                    .. raw:: html
+
+                      <p>the Type of this Actor; typically this will be <code>user</code>.</p>
 
 
                       
@@ -7581,28 +8489,24 @@ To create a new Public Access Link to this Form, you must send at least a ``disp
 
                             - string
                             
-                              
 
                           * - field_key
 
 
                             - string
                             
-                              
 
                           * - public_link
 
 
                             - string
                             
-                              
 
                           * - singleUse
 
 
                             - string
                             
-                              
 
                      
                 * - updatedAt
@@ -7610,28 +8514,36 @@ To create a new Public Access Link to this Form, you must send at least a ``disp
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                 * - deletedAt
 
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                 * - token
 
 
                   - string
                   
-                    If present, this is the Token to include as the ``st``\  query parameter for this ``Public Link``\ . If not present, this ``Public Link``\  has been revoked.
+                    .. raw:: html
+
+                      <p>If present, this is the Token to include as the <code>st</code> query parameter for this <code>Public Link</code>. If not present, this <code>Public Link</code> has been revoked.</p>
 
                 * - once
 
 
                   - boolean
                   
-                    If set to ``true``\ , an Enketo `single submission survey <https://blog.enketo.org/single-submission-surveys/>`__ will be created instead of a standard one, limiting respondents to a single submission each.
+                    .. raw:: html
+
+                      <p>If set to <code>true</code>, an Enketo <a href="https://blog.enketo.org/single-submission-surveys/">single submission survey</a> will be created instead of a standard one, limiting respondents to a single submission each.</p>
 
                     Example: ``none``
               
@@ -7654,6 +8566,9 @@ To create a new Public Access Link to this Form, you must send at least a ``disp
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -7673,14 +8588,18 @@ To create a new Public Access Link to this Form, you must send at least a ``disp
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -7689,7 +8608,9 @@ Deleting a Link
 
 **DELETE /v1/projects/{projectId}/forms/{xmlFormId}/public-links/{linkId}**
 
-You can fully delete a link by issuing ``DELETE``\  to its resource. This will remove the Link from the system entirely. If instead you wish to revoke the Link's access to prevent future submission without removing its record entirely, you can issue ```DELETE /sessions/:token``\  </central-api-authentication/#session-authentication/logging-out>`__.
+.. raw:: html
+
+  <p>You can fully delete a link by issuing <code>DELETE</code> to its resource. This will remove the Link from the system entirely. If instead you wish to revoke the Link's access to prevent future submission without removing its record entirely, you can issue <a href="/central-api-authentication/#session-authentication/logging-out"><code>DELETE /sessions/:token</code></a>.</p>
 
 .. dropdown:: Request
 
@@ -7705,7 +8626,9 @@ You can fully delete a link by issuing ``DELETE``\  to its resource. This will r
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -7713,7 +8636,9 @@ You can fully delete a link by issuing ``DELETE``\  to its resource. This will r
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
       * - linkId
@@ -7721,7 +8646,9 @@ You can fully delete a link by issuing ``DELETE``\  to its resource. This will r
 
         - integer
         
-          The numeric ID of the Link
+          .. raw:: html
+
+            The numeric ID of the Link
 
           Example: ``42``
 
@@ -7744,6 +8671,9 @@ You can fully delete a link by issuing ``DELETE``\  to its resource. This will r
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -7763,7 +8693,9 @@ You can fully delete a link by issuing ``DELETE``\  to its resource. This will r
 
                   - boolean
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``none``
               
@@ -7786,6 +8718,9 @@ You can fully delete a link by issuing ``DELETE``\  to its resource. This will r
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -7805,14 +8740,18 @@ You can fully delete a link by issuing ``DELETE``\  to its resource. This will r
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                 * - message
 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
               
       
@@ -7820,20 +8759,18 @@ You can fully delete a link by issuing ``DELETE``\  to its resource. This will r
 Related Datasets
 -----------------------------------------------------------------------------------------------------------------------
 
-*(introduced: version 2022.3)*\ 
-
-Datasets are created and updated through Forms. Dataset-related Forms follow `the entities sub-spec <https://getodk.github.io/xforms-spec/entities>`__ of the ODK XForms specification that allow them to define a Dataset and a mapping of Form Fields to Dataset Properties. Submissions from such a Form can create Entities within the Dataset defined in the Form.
-
-Currently, Datasets and Dataset Properties are purely additive. Multiple Forms can add Properties to the same Dataset and multiple Forms can create Entities in the same Dataset. Not all Properties of a Dataset have to be included in a Form for that Dataset. For example, one Form publishing to a Dataset called ``trees``\  could add ``location``\  and ``species``\ , while another could add ``species``\  and ``circumference``\ . The Properties of the Dataset would be the union of Properties from all Forms for that Dataset (``location``\ , ``species``\ , ``circumference``\ ). Note that it is not necessary that a Form will save to all Properties of a Dataset, so the endpoint also returns a ``inForm``\  flag for each property which is true only if the Form affects that Property.
-
-The following endpoints return the Dataset(s) that Submissions of that Form will populate. They also return all of the Entity Properties for each Dataset and indicate which ones are mapped to Fields in the specified Form.
+.. raw:: html
+  
+  <p><em>(introduced: version 2022.3)</em></p><p>Datasets are created and updated through Forms. Dataset-related Forms follow <a href="https://getodk.github.io/xforms-spec/entities">the entities sub-spec</a> of the ODK XForms specification that allow them to define a Dataset and a mapping of Form Fields to Dataset Properties. Submissions from such a Form can create Entities within the Dataset defined in the Form.</p><p>Currently, Datasets and Dataset Properties are purely additive. Multiple Forms can add Properties to the same Dataset and multiple Forms can create Entities in the same Dataset. Not all Properties of a Dataset have to be included in a Form for that Dataset. For example, one Form publishing to a Dataset called <code>trees</code> could add <code>location</code> and <code>species</code>, while another could add <code>species</code> and <code>circumference</code>. The Properties of the Dataset would be the union of Properties from all Forms for that Dataset (<code>location</code>, <code>species</code>, <code>circumference</code>). Note that it is not necessary that a Form will save to all Properties of a Dataset, so the endpoint also returns a <code>inForm</code> flag for each property which is true only if the Form affects that Property.</p><p>The following endpoints return the Dataset(s) that Submissions of that Form will populate. They also return all of the Entity Properties for each Dataset and indicate which ones are mapped to Fields in the specified Form.</p>
 
 Published Form Related Datasets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/dataset-diff**
 
-This endpoint lists the name and Properties of a Dataset that are affected by a Form. The list of Properties includes all published Properties on that Dataset, but each property has the ``inForm``\  flag to note whether or not it will be filled in by that form.
+.. raw:: html
+
+  <p>This endpoint lists the name and Properties of a Dataset that are affected by a Form. The list of Properties includes all published Properties on that Dataset, but each property has the <code>inForm</code> flag to note whether or not it will be filled in by that form.</p>
 
 .. dropdown:: Request
 
@@ -7849,7 +8786,9 @@ This endpoint lists the name and Properties of a Dataset that are affected by a 
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -7857,7 +8796,9 @@ This endpoint lists the name and Properties of a Dataset that are affected by a 
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
 
@@ -7888,6 +8829,9 @@ This endpoint lists the name and Properties of a Dataset that are affected by a 
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -7905,7 +8849,9 @@ This endpoint lists the name and Properties of a Dataset that are affected by a 
 
                   - string
                   
-                    The name of the Dataset.
+                    .. raw:: html
+
+                      <p>The name of the Dataset.</p>
 
                     Example: ``people``
                 * - properties
@@ -7913,7 +8859,9 @@ This endpoint lists the name and Properties of a Dataset that are affected by a 
 
                   - array
                   
-                    All properties of the Dataset.
+                    .. raw:: html
+
+                      <p>All properties of the Dataset.</p>
 
                     Example: ``null``
                     
@@ -7928,7 +8876,9 @@ Draft Form Dataset Diff
 
 **GET /v1/projects/{projectId}/forms/{xmlFormId}/draft/dataset-diff**
 
-This endpoint reflects the change to a Dataset that will go into effect once the form is Published. Like the endpoint above, it lists the Dataset name and Properties, but it also includes the ``isNew``\  flag on both the Dataset, and on each individual property. This flag is true only if the Dataset/Property is new and is going to be created by publishing the Draft Form.
+.. raw:: html
+
+  <p>This endpoint reflects the change to a Dataset that will go into effect once the form is Published. Like the endpoint above, it lists the Dataset name and Properties, but it also includes the <code>isNew</code> flag on both the Dataset, and on each individual property. This flag is true only if the Dataset/Property is new and is going to be created by publishing the Draft Form.</p>
 
 .. dropdown:: Request
 
@@ -7944,7 +8894,9 @@ This endpoint reflects the change to a Dataset that will go into effect once the
 
         - number
         
-          The numeric ID of the Project
+          .. raw:: html
+
+            The numeric ID of the Project
 
           Example: ``16``
       * - xmlFormId
@@ -7952,7 +8904,9 @@ This endpoint reflects the change to a Dataset that will go into effect once the
 
         - string
         
-          The `xmlFormId` of the Form being referenced.
+          .. raw:: html
+
+            The `xmlFormId` of the Form being referenced.
 
           Example: ``simple``
 
@@ -7985,6 +8939,9 @@ This endpoint reflects the change to a Dataset that will go into effect once the
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -8002,7 +8959,9 @@ This endpoint reflects the change to a Dataset that will go into effect once the
 
                   - string
                   
-                    The name of the Dataset.
+                    .. raw:: html
+
+                      <p>The name of the Dataset.</p>
 
                     Example: ``people``
                 * - isNew
@@ -8010,7 +8969,9 @@ This endpoint reflects the change to a Dataset that will go into effect once the
 
                   - boolean
                   
-                    Whether or not this Dataset is new (will be created by publishing the Draft Form).
+                    .. raw:: html
+
+                      <p>Whether or not this Dataset is new (will be created by publishing the Draft Form).</p>
 
                     Example: ``true``
                 * - properties
@@ -8018,7 +8979,9 @@ This endpoint reflects the change to a Dataset that will go into effect once the
 
                   - array
                   
-                    All properties of the Dataset.
+                    .. raw:: html
+
+                      <p>All properties of the Dataset.</p>
 
                     Example: ``null``
                     

@@ -3,37 +3,26 @@
 Authentication
 =======================================================================================================================
 
-In ODK Central, the server thinks about identity and permissioning in terms of one core concept: the ``Actor``\ . No matter how you authenticate with the API, you are doing so as an Actor of some kind or another, and when permissions are assigned and checked, they are done against the authenticated Actor.
-
-In practice, there are two types of Actors available in the system today:
-
-* ``User``\ s are accounts used by the staff members who manage the server and the data collection campaigns. They each have a set of rights assigned to them via Roles and Assignments. They are the only account types that have passwords associated with them. They also always have an email address. Users can authenticate using **Session Bearer Tokens**\  or using **HTTPS Basic**\  authentication.
-
-* ``App User``\ s are only allowed to access the OpenRosa parts of the API: in essence, they are allowed to list forms, download form definitions, and create new submissions against those forms. They can only authenticate using **App User URL**\ s.
-
-Next, you will find documentation on each of the three authentication methods described above. It is best not to present multiple credentials. If you do, the first *presented*\  scheme out of ``/key``\  token, Bearer, Basic, then Cookie will be used for the request. If the multiple schemes are sent at once, and the first matching scheme fails, the request will be immediately rejected.
+.. raw:: html
+  
+  <p>In ODK Central, the server thinks about identity and permissioning in terms of one core concept: the <code>Actor</code>. No matter how you authenticate with the API, you are doing so as an Actor of some kind or another, and when permissions are assigned and checked, they are done against the authenticated Actor.</p><p>In practice, there are two types of Actors available in the system today:</p><ul><li><p><code>User</code>s are accounts used by the staff members who manage the server and the data collection campaigns. They each have a set of rights assigned to them via Roles and Assignments. They are the only account types that have passwords associated with them. They also always have an email address. Users can authenticate using <strong>Session Bearer Tokens</strong> or using <strong>HTTPS Basic</strong> authentication.</p></li><li><p><code>App User</code>s are only allowed to access the OpenRosa parts of the API: in essence, they are allowed to list forms, download form definitions, and create new submissions against those forms. They can only authenticate using <strong>App User URL</strong>s.</p></li></ul><p>Next, you will find documentation on each of the three authentication methods described above. It is best not to present multiple credentials. If you do, the first <em>presented</em> scheme out of <code>/key</code> token, Bearer, Basic, then Cookie will be used for the request. If the multiple schemes are sent at once, and the first matching scheme fails, the request will be immediately rejected.</p>
 
 
 Session Authentication
 -----------------------------------------------------------------------------------------------------------------------
 
-This is the authentication method used by the ODK Central Frontend packaged with Central Backend. Only ``User``\ s can authenticate this way. It consists mostly of two steps:
-
-1. **Logging in**\ : presenting an Email Address and a Password for verification, after which a new ``Session``\  is created. Associated with the Session is an expiration and a bearer token. Sessions expire 24 hours after they are created.
-2. **Using the session**\ : each request to the API needs a header attached to it: ``Authorization: Bearer {token}``\ . This authenticates that particular request as belonging to the Session we created by logging in.
-
-You might notice that Step 2 greatly resembles how OAuth 2.0 works. This was an intentional first step towards OAuth support, and should make the forward migration of your code easier down the road.
+.. raw:: html
+  
+  <p>This is the authentication method used by the ODK Central Frontend packaged with Central Backend. Only <code>User</code>s can authenticate this way. It consists mostly of two steps:</p><ol><li><strong>Logging in</strong>: presenting an Email Address and a Password for verification, after which a new <code>Session</code> is created. Associated with the Session is an expiration and a bearer token. Sessions expire 24 hours after they are created.</li><li><strong>Using the session</strong>: each request to the API needs a header attached to it: <code>Authorization: Bearer {token}</code>. This authenticates that particular request as belonging to the Session we created by logging in.</li></ol><p>You might notice that Step 2 greatly resembles how OAuth 2.0 works. This was an intentional first step towards OAuth support, and should make the forward migration of your code easier down the road.</p>
 
 Logging in
 ^^^^^^^^^^^^^^^^^^^^
 
 **POST /v1/sessions**
 
-In order to log a ``User``\  in to a new ``Session``\ , you must provide their credentials, in JSON format.
+.. raw:: html
 
-For security reasons, the only possible results are success or failure. No detail is provided upon failure.
-
-Successful responses will come with an HTTP-Only, Secure-Only cookie. This cookie is primarily meant for use by the Central frontend, and we do not recommend relying upon it. It will only work on ``GET``\  requests, and it will only work over HTTPS.
+  <p>In order to log a <code>User</code> in to a new <code>Session</code>, you must provide their credentials, in JSON format.</p><p>For security reasons, the only possible results are success or failure. No detail is provided upon failure.</p><p>Successful responses will come with an HTTP-Only, Secure-Only cookie. This cookie is primarily meant for use by the Central frontend, and we do not recommend relying upon it. It will only work on <code>GET</code> requests, and it will only work over HTTPS.</p>
 
 .. dropdown:: Request
 
@@ -54,6 +43,9 @@ Successful responses will come with an HTTP-Only, Secure-Only cookie. This cooki
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -73,7 +65,9 @@ Successful responses will come with an HTTP-Only, Secure-Only cookie. This cooki
 
                   - string
                   
-                    The ``User``\ 's full email address.
+                    .. raw:: html
+
+                      <p>The <code>User</code>'s full email address.</p>
 
                     Example: ``my.email.address@getodk.org``
                 * - password
@@ -81,7 +75,9 @@ Successful responses will come with an HTTP-Only, Secure-Only cookie. This cooki
 
                   - string
                   
-                    The ``User``\ 's password.
+                    .. raw:: html
+
+                      <p>The <code>User</code>'s password.</p>
 
                     Example: ``my.super.secure.password``
               
@@ -107,6 +103,9 @@ Successful responses will come with an HTTP-Only, Secure-Only cookie. This cooki
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -126,21 +125,27 @@ Successful responses will come with an HTTP-Only, Secure-Only cookie. This cooki
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                 * - expiresAt
 
 
                   - string
                   
-                    ISO date format
+                    .. raw:: html
+
+                      <p>ISO date format</p>
 
                 * - token
 
 
                   - string
                   
-                    The bearer token associated with the session. It consists only of URL-safe characters, so it should never need any escaping.
+                    .. raw:: html
+
+                      <p>The bearer token associated with the session. It consists only of URL-safe characters, so it should never need any escaping.</p>
 
               
       
@@ -162,6 +167,9 @@ Successful responses will come with an HTTP-Only, Secure-Only cookie. This cooki
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -181,7 +189,9 @@ Successful responses will come with an HTTP-Only, Secure-Only cookie. This cooki
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``401.2``
                 * - message
@@ -189,7 +199,9 @@ Successful responses will come with an HTTP-Only, Secure-Only cookie. This cooki
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``Could not authenticate with the provided credentials.``
               
@@ -199,9 +211,9 @@ Using the session
 
 **GET /v1/example1**
 
-Once you have logged in, to use your session token to authenticate with any action, supply it in a request header ``Authorization``\  with a value of ``Bearer {token}``\ , as seen here.
+.. raw:: html
 
-*(There is not really anything at ``/v1/example1``\ ; this section only demonstrates how generally to use Session Bearer Token Authentication.)*\ 
+  <p>Once you have logged in, to use your session token to authenticate with any action, supply it in a request header <code>Authorization</code> with a value of <code>Bearer {token}</code>, as seen here.</p><p><em>(There is not really anything at <code>/v1/example1</code>; this section only demonstrates how generally to use Session Bearer Token Authentication.)</em></p>
 
 .. dropdown:: Request
 
@@ -218,7 +230,9 @@ Once you have logged in, to use your session token to authenticate with any acti
 
         - string
         
-          Bearer encoding of the credentials
+          .. raw:: html
+
+            Bearer encoding of the credentials
 
           Example: ``Bearer lSpAIeksRu1CNZs7!qjAot2T17dPzkrw9B4iTtpj7OoIJBmXvnHM8z8Ka4QPEjR7``
 
@@ -241,6 +255,9 @@ Once you have logged in, to use your session token to authenticate with any acti
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -260,7 +277,9 @@ Once you have logged in, to use your session token to authenticate with any acti
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``Success``
               
@@ -270,13 +289,9 @@ Logging out / Revoking an App User
 
 **DELETE /v1/sessions/{token}**
 
-Logging out is not strictly necessary for Web Users; all sessions expire 24 hours after they are created. But it can be a good idea, in case someone else manages to steal your token. It is also the way Public Link and App User access are revoked. To do so, issue a ``DELETE``\  request to that token resource.
+.. raw:: html
 
-**Revoking an App User**\ 
-
-The token associated with a App User is actually just its Session Token. As a result, although a App User Token can uniquely be used as a URL prefix as described here, the session associated with it can be revoked in exactly the same way a session is logged out, by issuing a ``DELETE``\  request to its Session resource.
-
-Note, however, that a App User cannot revoke itself; a ``User``\  must perform this action.
+  <p>Logging out is not strictly necessary for Web Users; all sessions expire 24 hours after they are created. But it can be a good idea, in case someone else manages to steal your token. It is also the way Public Link and App User access are revoked. To do so, issue a <code>DELETE</code> request to that token resource.</p><p><strong>Revoking an App User</strong></p><p>The token associated with a App User is actually just its Session Token. As a result, although a App User Token can uniquely be used as a URL prefix as described here, the session associated with it can be revoked in exactly the same way a session is logged out, by issuing a <code>DELETE</code> request to its Session resource.</p><p>Note, however, that a App User cannot revoke itself; a <code>User</code> must perform this action.</p>
 
 .. dropdown:: Request
 
@@ -292,7 +307,9 @@ Note, however, that a App User cannot revoke itself; a ``User``\  must perform t
 
         - string
         
-          The session bearer token, obtained at login time.
+          .. raw:: html
+
+            The session bearer token, obtained at login time.
 
           Example: ``lSpAIeksRu1CNZs7!qjAot2T17dPzkrw9B4iTtpj7OoIJBmXvnHM8z8Ka4QPEjR7``
 
@@ -315,6 +332,9 @@ Note, however, that a App User cannot revoke itself; a ``User``\  must perform t
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -334,7 +354,9 @@ Note, however, that a App User cannot revoke itself; a ``User``\  must perform t
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``Success``
               
@@ -357,6 +379,9 @@ Note, however, that a App User cannot revoke itself; a ``User``\  must perform t
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -376,7 +401,9 @@ Note, however, that a App User cannot revoke itself; a ``User``\  must perform t
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``403.1``
                 * - message
@@ -384,7 +411,9 @@ Note, however, that a App User cannot revoke itself; a ``User``\  must perform t
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``The authenticated actor does not have rights to perform that action.``
               
@@ -394,9 +423,9 @@ Logging out current session
 
 **DELETE /v1/sessions/current**
 
-This endpoint causes the current session to log itself out. Logging out is not strictly necessary for Web Users; all sessions expire 24 hours after they are created. But it can be a good idea, in case someone else manages to steal your token.
+.. raw:: html
 
-Only the session that was used to authenticate the request is logged out. If the Actor associated with the session has other sessions as well, those are not logged out.
+  <p>This endpoint causes the current session to log itself out. Logging out is not strictly necessary for Web Users; all sessions expire 24 hours after they are created. But it can be a good idea, in case someone else manages to steal your token.</p><p>Only the session that was used to authenticate the request is logged out. If the Actor associated with the session has other sessions as well, those are not logged out.</p>
 
 .. dropdown:: Request
 
@@ -420,6 +449,9 @@ Only the session that was used to authenticate the request is logged out. If the
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -439,7 +471,9 @@ Only the session that was used to authenticate the request is logged out. If the
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``Success``
               
@@ -462,6 +496,9 @@ Only the session that was used to authenticate the request is logged out. If the
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -481,7 +518,9 @@ Only the session that was used to authenticate the request is logged out. If the
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``403.1``
                 * - message
@@ -489,7 +528,9 @@ Only the session that was used to authenticate the request is logged out. If the
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``The authenticated actor does not have rights to perform that action.``
               
@@ -498,24 +539,18 @@ Only the session that was used to authenticate the request is logged out. If the
 HTTPS Basic Authentication
 -----------------------------------------------------------------------------------------------------------------------
 
-Standard HTTP Basic Authentication is allowed, but **strongly discouraged**\ . This is because the server must verify your password with every single request, which is very slow to compute: typically, this will add hundreds of milliseconds to each request. For some one-off tasks and in cases where there is no other choice, it is reasonable to choose Basic authentication, but wherever possible we strongly encourage the use of any other authentication method.
-
-In addition, because credentials are sent in plaintext as part of the request, **the server will only accept Basic auth over HTTPS**\ . If your ODK Central server is set up over plain HTTP, it will not accept Basic auth.
+.. raw:: html
+  
+  <p>Standard HTTP Basic Authentication is allowed, but <strong>strongly discouraged</strong>. This is because the server must verify your password with every single request, which is very slow to compute: typically, this will add hundreds of milliseconds to each request. For some one-off tasks and in cases where there is no other choice, it is reasonable to choose Basic authentication, but wherever possible we strongly encourage the use of any other authentication method.</p><p>In addition, because credentials are sent in plaintext as part of the request, <strong>the server will only accept Basic auth over HTTPS</strong>. If your ODK Central server is set up over plain HTTP, it will not accept Basic auth.</p>
 
 Using Basic Authentication
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/example2**
 
-To use HTTPS Basic Authentication, attach an ``Authorization``\  header formatted so:
+.. raw:: html
 
-``Authorization: Basic bXkuZW1haWwuYWRkcmVzc0BvcGVuZGF0YWtpdC5vcmc6bXkucGFzc3dvcmQ=``\ 
-
-As given by `the standard <https://en.wikipedia.org/wiki/Basic*access*\ authentication>`__, the text following the ``Basic``\  marker here is a base64 encoding of the credentials, provided in the form ``email:password``\  (in this example ``my.email.address@getodk.org:my.password``\ ).
-
-Unlike the standard, we do not require the client to first send an unauthenticated request and retry the request only after receiving a ``WWW-Authenticate``\  response, and in fact we will never send the ``WWW-Authenticate``\  header. This is mostly because, as noted above, we generally discourage the use of this authentication method, and would rather not advertise its use openly. As a result, if you wish to use Basic Authentication, directly supply the header on any request that needs it.
-
-*(There is not really anything at ``/v1/example2``\ ; this section only demonstrates how generally to use Basic Authentication.)*\ 
+  <p>To use HTTPS Basic Authentication, attach an <code>Authorization</code> header formatted so:</p><p><code>Authorization: Basic bXkuZW1haWwuYWRkcmVzc0BvcGVuZGF0YWtpdC5vcmc6bXkucGFzc3dvcmQ=</code></p><p>As given by <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">the standard</a>, the text following the <code>Basic</code> marker here is a base64 encoding of the credentials, provided in the form <code>email:password</code> (in this example <code>my.email.address@getodk.org:my.password</code>).</p><p>Unlike the standard, we do not require the client to first send an unauthenticated request and retry the request only after receiving a <code>WWW-Authenticate</code> response, and in fact we will never send the <code>WWW-Authenticate</code> header. This is mostly because, as noted above, we generally discourage the use of this authentication method, and would rather not advertise its use openly. As a result, if you wish to use Basic Authentication, directly supply the header on any request that needs it.</p><p><em>(There is not really anything at <code>/v1/example2</code>; this section only demonstrates how generally to use Basic Authentication.)</em></p>
 
 .. dropdown:: Request
 
@@ -532,7 +567,9 @@ Unlike the standard, we do not require the client to first send an unauthenticat
 
         - string
         
-          Base64 encoding of the credentials
+          .. raw:: html
+
+            Base64 encoding of the credentials
 
           Example: ``Basic bXkuZW1haWwuYWRkcmVzc0BvcGVuZGF0YWtpdC5vcmc6bXkucGFzc3dvcmQ=``
 
@@ -555,6 +592,9 @@ Unlike the standard, we do not require the client to first send an unauthenticat
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -574,7 +614,9 @@ Unlike the standard, we do not require the client to first send an unauthenticat
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``Success``
               
@@ -583,20 +625,18 @@ Unlike the standard, we do not require the client to first send an unauthenticat
 App User Authentication
 -----------------------------------------------------------------------------------------------------------------------
 
-App Users are only allowed to list and download forms, and upload new submissions to those forms. Primarily, this is to allow clients like ODK Collect to use the OpenRosa API (``/formList``\  and ``/submission``\ ), but any action in this API reference falling into those categories will be allowed.
-
-Rvoking an App User is same as deleting session token. You can do this by calling `DELETE /sessions/{appUser} </central-api-authentication/#logging-out-revoking-an-app-user>`__.
+.. raw:: html
+  
+  <p>App Users are only allowed to list and download forms, and upload new submissions to those forms. Primarily, this is to allow clients like ODK Collect to use the OpenRosa API (<code>/formList</code> and <code>/submission</code>), but any action in this API reference falling into those categories will be allowed.</p><p>Rvoking an App User is same as deleting session token. You can do this by calling <a href="/central-api-authentication/#logging-out-revoking-an-app-user">DELETE /sessions/{appUser}</a>.</p>
 
 Using App User Authentication
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **GET /v1/key/{appUser}/example3**
 
-To use App User Authentication, first obtain a App User, typically by using the configuration panel in the user interface, or else by using the `App User API Resource </central-api-accounts-and-users/#app-users>`__. Once you have the token, you can apply it to any eligible action by prefixing the URL with ``/key/{appUser}``\  as follows:
+.. raw:: html
 
-``/v1/key/!Ms7V3$Zdnd63j5HFacIPFEvFAuwNqTUZW$AsVOmaQFf$vIC!F8dJjdgiDnJXXOt/example/request/path``\ 
-
-*(There is not really anything at ``/v1/example3``\ ; this section only demonstrates how generally to use App User Authentication.)*\ 
+  <p>To use App User Authentication, first obtain a App User, typically by using the configuration panel in the user interface, or else by using the <a href="/central-api-accounts-and-users/#app-users">App User API Resource</a>. Once you have the token, you can apply it to any eligible action by prefixing the URL with <code>/key/{appUser}</code> as follows:</p><p><code>/v1/key/!Ms7V3$Zdnd63j5HFacIPFEvFAuwNqTUZW$AsVOmaQFf$vIC!F8dJjdgiDnJXXOt/example/request/path</code></p><p><em>(There is not really anything at <code>/v1/example3</code>; this section only demonstrates how generally to use App User Authentication.)</em></p>
 
 .. dropdown:: Request
 
@@ -612,7 +652,9 @@ To use App User Authentication, first obtain a App User, typically by using the 
 
         - string
         
-          The App User token. As with Session Bearer tokens, these tokens only contain URL-safe characters, so no escaping is required.
+          .. raw:: html
+
+            The App User token. As with Session Bearer tokens, these tokens only contain URL-safe characters, so no escaping is required.
 
           Example: ``!Ms7V3$Zdnd63j5HFacIPFEvFAuwNqTUZW$AsVOmaQFf$vIC!F8dJjdgiDnJXXOt``
 
@@ -635,6 +677,9 @@ To use App User Authentication, first obtain a App User, typically by using the 
 
     .. tab-item:: Schema
 
+      .. raw:: html
+
+        <span></span>
 
       .. list-table::
         :class: schema-table-wrap
@@ -654,7 +699,9 @@ To use App User Authentication, first obtain a App User, typically by using the 
 
                   - string
                   
-                    
+                    .. raw:: html
+
+                      <span></span>
 
                     Example: ``Success``
               
