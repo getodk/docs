@@ -15,9 +15,9 @@ You will need both types of users in order to run a successful data collection p
 Web User Roles
 --------------
 
-Central features Role-based User permissioning. In the current release of Central, we provide four roles: Administrator, Project Manager, Project Viewer, and Data Collector. In a future release, you will be able to define your own roles as you see fit.
+Central features Role-based User permissioning. Central currently defines four roles: Administrator, Project Manager, Project Viewer, and Data Collector.
 
-By default, Central roles are configured to allow the following:
+Central roles allow the following:
 
 +----------------------------------+---------------+-----------------+----------------+----------------+
 | Action                           | Administrator | Project Manager | Project Viewer | Data Collector |
