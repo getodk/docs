@@ -5,17 +5,23 @@ Managing Users in Central
 
 There are two types of user accounts in ODK Central: **Web Users** and **App Users**.
 
- - **Web Users** have accounts on the Central management website. These accounts are global across all projects on the server. They can log into the web interface and perform administrative actions like user management, form upload and management, and submission data viewing and download. They can also fill and submit Forms directly in their web browser.
- - **App Users** can use mobile data collection apps like ODK Collect to :ref:`connect to Central <central-users-app-configure>`. App Users are limited to a single project at a time. Once connected through the app, they will be able to see the list of forms, download the ones they need, and upload completed submissions to those forms.
+  - **Web Users** have accounts on the Central management website. These accounts are global across all projects on the server. They can log into the web interface and perform administrative actions like user management, form upload and management, and submission data viewing and download. Which of these actions they can take depends on their :ref:`Role <central-users-web-roles>`.
+  - **App Users** can use mobile data collection apps like ODK Collect to :ref:`connect to Central <central-users-app-configure>`. App Users exist at the Project level and can be further limited to only see certain Forms in the Project. Once connected through the app, they will be able to fill Forms and upload completed Submissions to those Forms.
 
-You will need both types of users in order to run a successful data collection project: a Web User must upload a valid form definition, an App User must upload submissions to it from their mobile device, and the Web User will then be able to see those submissions in the web interface and download them for analysis.
+Many data collection projects will involve both kinds of users: Web Users to upload Form definitions, App Users to fill out Forms from their mobile device, and Web Users to process and analyze the collected data. Projects that rely exclusively on Web Forms for data collection use Web Users only.
+
+.. seealso::
+
+   :ref:`Public Access Links <central-submissions-public-link>` are an alternative way to provide access to Forms for data collection.
 
 .. _central-users-web-roles:
 
 Web User Roles
 --------------
 
-Central features Role-based User permissioning. Central currently defines four roles: Administrator, Project Manager, Project Viewer, and Data Collector.
+Central features Role-based User permissioning for Web Users. Web Users can either be system-level administrators in which case they can perform all actions on all resources across the system, or they can be given specific Roles in one or more Projects.
+
+Central currently defines four Project-level Roles: Administrator, Project Manager, Project Viewer, and Data Collector.
 
 Central roles allow the following:
 
