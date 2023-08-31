@@ -27,6 +27,10 @@ Central currently defines three Project-level Roles:
 - **Project Viewers** only see created Forms and Submissions within the Project they are assigned to, and cannot edit anything
 - **Data Collectors** may see the list of all Forms in the Project, and retrieve basic information about them, but may only create new Submissions. They cannot see any Submissions. This Role is similar to :ref:`App Users <central-users-app-overview>` except that Data Collectors always see every Form in a Project and only use Web Forms.
 
+.. note::
+
+   When :doc:`Entities <central-entities>` are attached to or defined by a Form, their access is mediated by the Form. For example, Data Collectors and App Users can never view Entities directly, but they can view them in the context of filling out a Form they have access to.
+
 Central Roles allow the following:
 
 +----------------------------------+---------------+-----------------+----------------+----------------+
