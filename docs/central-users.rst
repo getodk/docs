@@ -19,11 +19,15 @@ Many data collection projects will involve both kinds of users: Web Users to upl
 Web User Roles
 --------------
 
-Central features Role-based User permissioning for Web Users. Web Users can either be system-level administrators in which case they can perform all actions on all resources across the system, or they can be given specific Roles in one or more Projects.
+Central features Role-based User permissioning for Web Users. Web Users can either be system-level administrators which can perform all actions on all resources across the system, or they can be given specific Roles in one or more Projects.
 
-Central currently defines four Project-level Roles: Administrator, Project Manager, Project Viewer, and Data Collector.
+Central currently defines three Project-level Roles:
 
-Central roles allow the following:
+- **Project Managers** can perform any action on their assigned Project
+- **Project Viewers** only see created Forms and Submissions within the Project they are assigned to, and cannot edit anything
+- **Data Collectors** may see the list of all Forms in the Project, and retrieve basic information about them, but may only create new Submissions. They cannot see any Submissions. This Role is similar to :ref:`App Users <central-users-app-overview>` except that Data Collectors always see every Form in a Project and only use Web Forms.
+
+Central Roles allow the following:
 
 +----------------------------------+---------------+-----------------+----------------+----------------+
 | Action                           | Administrator | Project Manager | Project Viewer | Data Collector |
@@ -116,13 +120,13 @@ Central roles allow the following:
 .. _central-users-web-overview:
 
 Managing Web Users
-~~~~~~~~~~~~~~~~~~
+-------------------
 
-You can make Users into Administrators from the :ref:`site-wide Users panel <central-users-web-role>`, and you can assign them as Project Managers or Viewers on the :ref:`Project Roles tab <central-project-roles>` within the Project.
+To manage Web Users, navigate to :menuselection:`--> Users --> Web Users` at the top of the Central management website. You should see a listing of users that looks like this:
 
-To manage web users, navigate to :menuselection:`--> Users --> Web Users` at the top of the Central management website. You should see a listing of users that looks like this:
+.. image:: /img/central-users/web-users-listing.png
 
-   .. image:: /img/central-users/web-users-listing.png
+You can :ref:`make Users into Administrators <central-users-web-role>` from the site-wide Users panel shown above, or you can assign them a Project-level Role on the :ref:`Project Roles tab <central-project-roles>` within the Project.
 
 .. _central-users-web-create:
 
@@ -143,16 +147,16 @@ Newly created Web Users are only able to log in and edit their profile informati
 
 .. _central-users-web-role:
 
-Assigning a site-wide Web User Role
+Assigning Web User Roles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As mentioned under :ref:`central-users-web-roles` above, there are four Roles you may assign to Web Users in the current release of ODK Central: Administrator, Project Manager, Project Viewer, and Data Collector. Administrators may perform any action on the system, while Project Managers may perform any action on their assigned Project(s). Project Viewers may only see created forms and submissions within the Project they are assigned to, and cannot edit anything. Data Collectors may see the list of all Forms in the Project, and retrieve basic information about them, but may only create new Submissions. They cannot see any Submissions.
+As mentioned under :ref:`central-users-web-roles` above, there are four Roles you may assign to Web Users in the current release of ODK Central: Administrator, Project Manager, Project Viewer, and Data Collector. 
 
-To learn how to assign a Project Manager or Viewer role, please see the :ref:`central-project-roles` section in the Projects guide.
+To learn how to assign Project-level roles, please see the :ref:`central-project-roles` section in the Projects guide.
 
 To assign an Administrator role, navigate to the Web Users administration panel. There, you should see a table like this one:
 
-   .. image:: /img/central-users/web-users-role.png
+.. image:: /img/central-users/web-users-role.png
 
 Under the :guilabel:`Sitewide Role` column in the table, you will see dropdown inputs with the options :guilabel:`Administrator` and :guilabel:`None`. To make a Web User an Administrator, change the dropdown next to their name to :guilabel:`Administrator`. You will see the page think for a moment, and then it will inform you that the action is done. To take away Administrator rights from a Web User, change the dropdown to :guilabel:`None`.
 
