@@ -266,6 +266,27 @@ If a form is available in multiple languages, you can choose a language in which
      :alt: A modal titled *Change Language*, with radio buttons (single select) for languages: *English* and *French* and a CANCEL button. The option for *English* is selected.
      :class: device-screen-vertical
 
+.. _validate_form:  
+
+Check for errors during form entry
+---------------------------------------
+
+As of Collect v2023.2.0, you can check a form for errors (validate it) during the form entry process at any stage.
+
+1. Open the *Action Menu* (:menuselection:`⋮`)
+
+   .. image:: /img/collect-filling-forms/question-screen-highlight-kebab.* 
+     :alt: A question screen in the Collect app. The Action Menu ("kebab") in the top-right corner is circled in red.
+     :class: device-screen-vertical
+
+2. Select :menuselection:`Check for errors`.
+
+   .. image:: /img/collect-filling-forms/question-screen-highlight-check-for-errors.* 
+     :alt: A question screen in the Collect app. The Action Menu is expanded and the option *Check for errors* is circled in red.
+     :class: device-screen-vertical
+
+In case of any errors, you will be automatically redirected to the first question that contains an error. Otherwise, a snackbar displaying a success message will be shown.
+
 .. _save-partial-filled-form:
 
 Saving a partially filled form
