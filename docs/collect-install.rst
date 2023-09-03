@@ -73,8 +73,6 @@ The only permission that is required for using Collect is the storage permission
 +------------+-----------------------------------------------------------------------------------------------------------------------------------+
 | Microphone | required by :ref:`audio <audio>` and :ref:`video <video>` questions to capture new media                                          |
 +------------+-----------------------------------------------------------------------------------------------------------------------------------+
-| Phone      | optional on form send to include deviceID in the submission and required for forms that capture :ref:`device metadata <metadata>` |
-+------------+-----------------------------------------------------------------------------------------------------------------------------------+
 
 .. | SMS        | required to send :doc:`SMS submissions <collect-sms-submissions>`                                                                 |
 .. +------------+-----------------------------------------------------------------------------------------------------------------------------------+
