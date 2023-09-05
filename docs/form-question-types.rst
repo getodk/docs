@@ -2639,7 +2639,7 @@ These items are dependent on the survey collection event:
 
 This item is defined at installation time and cannot be changed:
 
-- ``deviceid``
+- ``deviceid`` --- A unique, randomly generated 16-character alphanumeric identifier (prefixed with ``collect::``) that is tied to a specific installation of the app. It remains constant across all projects and forms within ODK Collect. This identifier is an internal feature of ODK Collect, inaccessible to other applications or external sources on the device. The only way to change it is by reinstalling the app.
 
 These items are defined in Collect,
 and :ref:`can be edited in Settings <form-metadata-settings>`:
