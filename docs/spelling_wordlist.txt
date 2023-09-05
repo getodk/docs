@@ -378,6 +378,7 @@ sid
 sizeable
 slugified
 smartphone
+snackbar
 snowballstemmer
 sophia
 spam
