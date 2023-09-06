@@ -449,7 +449,7 @@ Central comes with an mail server to send password reset emails. To use your own
 
      ``EMAIL_IGNORE_TLS`` should generally be set to ``false``. ``EMAIL_SECURE`` should generally be set to ``true`` if you use port 465 and set to ``false`` for other ports.
 
-     If no authentication is required, remove the ``EMAIL_USER`` and ``EMAIL_PASSWORD`` lines.
+     ``EMAIL_USER`` and ``EMAIL_PASSWORD`` are both required.
 
 #. Build and restart the service container.
 
