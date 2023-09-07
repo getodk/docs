@@ -17,7 +17,6 @@ schemas = {}
 renderer = pystache.Renderer(search_dirs=currentDir)
 
 def main():
-    print('GENERATING RST PAGES')
     spec = getYaml()
     writeTopPages(spec)
     processor = SpecProcessor(spec)
