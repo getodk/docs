@@ -87,6 +87,16 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
 .. toctree::
   :hidden:
   :maxdepth: 2
+  :caption: Developing with ODK
+
+  central-api
+  openrosa
+  javarosa
+  launch-collect-from-app
+
+.. toctree::
+  :hidden:
+  :maxdepth: 2
   :caption: Training
 
   training
@@ -97,15 +107,6 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   :caption: Contributing
 
   contributing
-
-.. toctree::
-  :hidden:
-  :maxdepth: 2
-  :caption: Developing with ODK
-
-  openrosa
-  javarosa
-  launch-collect-from-app
 
 .. toctree::
   :hidden:
