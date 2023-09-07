@@ -139,7 +139,7 @@ Creating a Web User
 
 To create a new Web User, click on the :guilabel:`Create web user` button on the right side of the Web Users listing page. You will see a popup that looks like this:
 
-   .. image:: /img/central-users/web-users-create.png
+.. image:: /img/central-users/web-users-create.png
 
 To create a new Web User, input the email address of the person who should receive access. Press :guilabel:`Create` once you are satisfied with the email address.
 
@@ -173,7 +173,7 @@ Resetting a Web User password
 
 Any user may request a reset of their own password by using the link at the bottom of the login screen:
 
-   .. image:: /img/central-users/web-users-self-reset.png
+.. image:: /img/central-users/web-users-self-reset.png
 
 After submitting the reset form, the user should receive an email with the subject line "ODK Central account password reset". If they cannot find it, they should check their spam folder. When resetting a password this way, the user's current password continues to function until they actually use the link in the email to set a new one.
 
@@ -215,7 +215,7 @@ A newly created App User does not have access to any Forms. To give them access 
 
 To manage App Users, navigate to the project whose App Users you wish to manage, and then click on the :guilabel:`App Users` tab just below the project name. You should see a listing of users that looks like this:
 
-   .. image:: /img/central-users/app-users-listing.png
+.. image:: /img/central-users/app-users-listing.png
 
 .. _central-users-app-create:
 
@@ -224,11 +224,11 @@ Creating an App User
 
 To create a new App User, click on the :guilabel:`Create app user` button on the right side of the App Users listing page. You will see a popup that looks like this:
 
-   .. image:: /img/central-users/app-users-create.png
+.. image:: /img/central-users/app-users-create.png
 
 Once you provide a nickname for the user (usually the name of the data enumerator who will carry the mobile device works well), click :guilabel:`Create`. The user will be created, and you will see a screen that looks like this:
 
-   .. image:: /img/central-users/app-users-created.png
+.. image:: /img/central-users/app-users-created.png
 
 That App User has now been created and granted access to use their mobile device to list, download, and submit to all :ref:`available forms <central-forms-lifecycle>` within their project. To do so, however, their mobile device will have to get set up with this new account. That is what the QR Code you see on this screen is for. Read on to the next section to find out how to use it.
 
@@ -243,7 +243,7 @@ The QR Code contains information about how to find your ODK Central server, and 
 
 There are two ways to access the QR Code for an App User. The first is in the second step of the :ref:`App User creation wizard <central-users-app-create>`. Please find the second screenshot in the previous section to see what this looks like. If you close out of this wizard, you can still access the QR Code by clicking on the :guilabel:`See code` link in the listings table:
 
-   .. image:: /img/central-users/app-users-code.png
+.. image:: /img/central-users/app-users-code.png
 
 If instead of a :guilabel:`See code` link you see text that says :guilabel:`Access revoked`, that App User no longer has access to the server. Create a new App User if you need a new QR Code.
 
@@ -256,7 +256,7 @@ Revoking an App User
 
 You may wish to revoke an App User's access, for instance if their QR Code has been stolen or if they have left the organization. To do so, navigate to the App Users listing page, and use the Actions menu at the right side of the table:
 
-   .. image:: /img/central-users/app-users-revoke.png
+.. image:: /img/central-users/app-users-revoke.png
 
 App Users whose access has been revoked will still appear in the App Users listing table, and will still be visible as the submitter of any submissions they uploaded. However, they no longer have a valid QR Code with which they can configure an ODK Collect installation, and any mobile devices already configured with their code will no longer have access to the project.
 
