@@ -5,6 +5,9 @@ __pycache__/
 # build
 _build/
 
+# generated from OpenAPI
+docs/central-api*
+
 # macOS
 .DS_Store
 
