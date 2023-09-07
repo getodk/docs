@@ -8,3 +8,5 @@ sphinxcontrib-youtube
 sphinx-tabs
 sphinx-toolbox
 mistune
+pystache
+pyyaml
