@@ -50,7 +50,7 @@ def writeTopPages(spec):
         "filename": "central-api.rst",
         "data": {
             'title': title,
-            'description': rst_helper.md2rs(parts[0]),
+            'description': rst_helper.md2html(parts[0]),
             'hasToc': True,
             'toc': ['central-api-changelog'] + apiPages
         }
@@ -59,7 +59,7 @@ def writeTopPages(spec):
         "filename": "central-api-changelog.rst",
         "data": {
             'title': "Changelog",
-            'description': rst_helper.md2rs(parts[1]),
+            'description': rst_helper.md2html(parts[1]),
             'hasToc': False
         }
     })

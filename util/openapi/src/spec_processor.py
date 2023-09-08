@@ -18,7 +18,7 @@ class SpecProcessor:
                 "filename": f"{tag.get('name').lower().replace(' ', '-')}.rst",
                 'data': {
                     "pageHeading": tag.get('name'),
-                    'tagDescription': rst_helper.md2rs(tag.get('description')),
+                    'tagDescription': rst_helper.md2html(tag.get('description')),
                     'operations': [],
                     "resources": {}
                 }
@@ -27,7 +27,7 @@ class SpecProcessor:
             parent = tag.get('x-parent-tag')
             files.get(parent).get('data').get('resources')[tag.get('name')] = {
                 'heading': tag.get('name'),
-                'resourceDescription': rst_helper.md2rs(tag.get('description')),
+                'resourceDescription': rst_helper.md2html(tag.get('description')),
                 'operations': []
             }
 
@@ -54,7 +54,7 @@ class SpecProcessor:
                   'endpoint': endpoint,
                   'summary': operation.get('summary'),
                   'headingUnderline': (len(operation.get('summary')) + 10) * '^' if tag in resources else (len(operation.get('summary')) + 10) * '-',
-                  'description': rst_helper.md2rs(operation.get('description')),
+                  'description': rst_helper.md2html(operation.get('description')),
                   'request': self.getRequest(operation),
                   'responses': self.getResponses(operation)
                   })
@@ -180,7 +180,7 @@ class SpecProcessor:
             'name': schema.get('name'),
             'type': 'object',
             'isArray': False,
-            'description': rst_helper.md2rs(schema.get('description')),
+            'description': rst_helper.md2html(schema.get('description')),
             'example': schema.get('example'),
             'hasItems': False,
             'items': []
@@ -202,7 +202,7 @@ class SpecProcessor:
             'type': 'array',
             'isArray': True,
             'name': schema.get('name'),
-            'description': rst_helper.md2rs(schema.get('description')),
+            'description': rst_helper.md2html(schema.get('description')),
             'example': json.dumps(schema.get('example')),
             'hasItems': len(items) > 0,
             'items': items
@@ -220,7 +220,7 @@ class SpecProcessor:
         return {
             'name': schema.get('name'),
             'type': schema.get('type'),
-            'description': rst_helper.md2rs(schema.get('description')),
+            'description': rst_helper.md2html(schema.get('description')),
             'isArray': False,
             'example': schema.get('example'),
             'hasItems': len(results) > 0,
@@ -233,7 +233,7 @@ class SpecProcessor:
         return {
             'name': schema.get('name'),
             'type': schema.get('type'),
-            'description': rst_helper.md2rs(schema.get('description')),
+            'description': rst_helper.md2html(schema.get('description')),
             'isArray': False,
             'example': schema.get('example') if schema.get('type') != 'boolean' else str(schema.get('example')).lower(),
             'hasItems': False,
@@ -244,7 +244,7 @@ class SpecProcessor:
         return {
             'name': schema.get('name'),
             'type': 'enum',
-            'description': rst_helper.md2rs(schema.get('description')),
+            'description': rst_helper.md2html(schema.get('description')),
             'example': '',
             'hasItems': True,
             'isArray': False,
