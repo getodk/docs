@@ -72,7 +72,7 @@ Central Roles allow the following:
 +----------------------------------+---------------+-----------------+----------------+----------------+
 | **Project Entity Lists**                                                                             |
 |                                                                                                      |
-| *Note: Data Collectors get read-only access to Entity Lists attached to Forms*                       |
+| *Note: Data Collectors can view Entity Lists attached to Forms*                       |
 +----------------------------------+---------------+-----------------+----------------+----------------+
 | Create                           | x             | x               |                |                |
 +----------------------------------+---------------+-----------------+----------------+----------------+
