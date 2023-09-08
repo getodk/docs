@@ -2,8 +2,8 @@ import unittest
 import yaml
 import textwrap
 
-from ..src.spec_processor import SpecProcessor
-from ..src.json_helper import getJson
+from src.spec_processor import SpecProcessor
+from src.json_helper import getJson
 
 
 class TestSpecProcessor_getExampleValue(unittest.TestCase):

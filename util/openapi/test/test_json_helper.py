@@ -2,7 +2,7 @@ import unittest
 import textwrap
 from datetime import datetime, date, timezone
 
-from ..src.json_helper import getJson
+from src.json_helper import getJson
 
 class TestGetJson(unittest.TestCase):
     def test_serialize_datetime(self):
