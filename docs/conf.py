@@ -39,7 +39,8 @@ extensions = [ 'sphinxcontrib.spelling',
     'sphinx_copybutton',
     'sphinx_video',
     'sphinxcontrib.youtube',
-    'sphinx_tabs.tabs'
+    'sphinx_tabs.tabs',
+    'sphinx_toolbox.collapse'
 ]
 
 # If using Apple Silicon, set env variable (assumes brew install of enchant)
@@ -98,6 +99,9 @@ html_favicon = '_static/img/odk-favicon.ico'
 html_logo = '_static/img/odk-logo.svg'
 
 spelling_word_list_filename='spelling_wordlist.txt'
+
+# something intelligent needs to be done for spelling check of API spec
+spelling_exclude_patterns=['central-api*']
 
 # Smart (q)uotes, (D)ashes, and (e)llipses
 smartquotes = True

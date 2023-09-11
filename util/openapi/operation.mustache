@@ -1,0 +1,79 @@
+{{ summary }}
+{{ headingUnderline }}
+
+**{{ method }} {{ endpoint }}**
+
+.. raw:: html
+
+  {{{ description }}}
+
+.. dropdown:: Request
+
+  {{^ request }}
+  This endpoint doesn't take any request parameter or data
+  {{/ request }}
+  {{# request }}
+  {{# parameters.hasItems }}
+  **Parameters**
+  {{/ parameters.hasItems }}
+
+  {{# parameters }}
+  {{> table }}
+  {{/ parameters }}
+
+  {{# body }}
+  **Request body**
+
+  .. tab-set::
+
+    {{# example }}
+    .. tab-item:: Example
+
+      .. code-block::
+
+          {{# lines }}
+          {{{.}}}
+          {{/ lines }}
+          {{^ lines }}
+          TODO
+          {{/ lines }}
+    {{/ example }}
+
+    .. tab-item:: Schema
+
+      {{# schema }}
+      {{> schema }}
+      {{/ schema }}
+  
+  {{/ body }}
+  {{/ request }}
+  
+.. dropdown:: Response
+{{# responses }}
+
+  **HTTP Status: {{ code }}**
+
+  Content Type: {{ contentType }}
+
+  .. tab-set::
+
+    {{# example }}
+    .. tab-item:: Example
+
+      .. code-block::
+
+          {{# lines }}
+          {{{.}}}
+          {{/ lines }}
+          {{^ lines }}
+          TODO
+          {{/ lines }}
+    {{/ example }}
+
+    .. tab-item:: Schema
+
+      {{# schemas }}
+      {{> schema }}
+      {{/ schemas }}
+      
+{{/ responses }}

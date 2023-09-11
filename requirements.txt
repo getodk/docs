@@ -6,3 +6,7 @@ sphinx_design
 sphinx-copybutton
 sphinxcontrib-youtube
 sphinx-tabs
+sphinx-toolbox
+mistune
+pystache
+pyyaml

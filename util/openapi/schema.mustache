@@ -1,0 +1,22 @@
+{{# description }}
+.. raw:: html
+
+  {{{.}}}
+{{/ description }}
+
+.. list-table::
+  :class: schema-table-wrap
+
+  * - {{ type }}
+
+      {{# isArray }}
+      {{# items }}
+
+      {{> table }}
+      {{/ items}}
+      {{/ isArray }}
+
+      {{^ isArray }}  
+
+      {{> table }}
+      {{/ isArray }}  

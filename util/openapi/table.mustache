@@ -1,0 +1,44 @@
+{{# hasItems }}
+.. list-table::
+    :widths: 25 75
+    :class: schema-table
+    
+{{/ hasItems }}    
+    {{# items }}
+    * - {{ name }}
+
+        {{# in }}
+        *({{.}})*
+        {{/ in }}
+
+      - {{ type }}
+      
+        {{# description }}
+        .. raw:: html
+
+          {{{.}}}
+        {{/ description }}
+
+        {{# example }}
+        Example: ``{{{.}}}``
+        {{/ example }}
+        {{# hasItems }}
+        {{# isArray }}
+        {{# items }}
+        {{# items.0}}
+        .. collapse:: expand
+          :class: nested-schema
+        {{/ items.0}}
+        
+          {{> table }}
+        {{/ items}}
+        {{/ isArray }}
+
+        {{^ isArray }}  
+        .. collapse:: expand
+          :class: nested-schema
+
+          {{> table }}
+        {{/ isArray }} 
+        {{/ hasItems }}
+    {{/ items}}

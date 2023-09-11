@@ -14,7 +14,7 @@ Please [file an issue](https://github.com/getodk/docs/issues) if you can't find 
 
 ### Prerequisites
 
- * Install [Python 3](https://www.python.org/downloads/)
+ * Install [Python 3.10+](https://www.python.org/downloads/)
  * Install [git](https://git-scm.com/downloads)
  * Install [Git-LFS](https://git-lfs.github.com/)
 

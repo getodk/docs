@@ -30,3 +30,22 @@
 .device-screen-vertical {
     width: 400px;
 }
+
+table.schema-table-wrap {
+    width: 100%;    
+}
+table.schema-tabl-wrap td:last-child, table.schema-table-wrap td:first-child {
+    border: none
+}
+table.schema-table {
+    width: 100%;    
+}
+table.schema-table td:last-child, table.schema-table td:first-child {
+    border: 1px solid #303335;
+}
+details.sd-dropdown details.nested-schema > summary:first-of-type{
+    list-style: inside disclosure-closed;
+}
+details.sd-dropdown details.nested-schema[open] > summary:first-of-type{
+    list-style: inside disclosure-open;
+}
