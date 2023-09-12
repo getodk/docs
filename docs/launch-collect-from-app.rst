@@ -16,16 +16,16 @@ Understanding Intents and Content providers
 
 An Intent is a messaging object you can use to request an action from another app component. 
 
-For more details on intents, you can refer to `these Android docs <https://developer.android.com/guide/components/intents-filters.html>`_.
+For more details on intents, you can refer to `these Android docs <https://developer.android.com/guide/components/intents-filters.html>`__.
 
 A content provider component supplies data from one application to others on request.
 
-For more details on content providers, you can refer to `these Android docs <https://developer.android.com/guide/topics/providers/content-providers>`_.
+For more details on content providers, you can refer to `these Android docs <https://developer.android.com/guide/topics/providers/content-providers>`__.
 
 .. _launch-activity:
 
-Launching Collect activities and getting its shared data from external application
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Launching Collect activities and getting its shared data from an external application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To start one of ODK Collect's activities:
 
