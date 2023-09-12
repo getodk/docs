@@ -817,7 +817,7 @@ Utility
   Returns the opposite of :func:`boolean(arg) <boolean>`.
 
   
-.. function:: coalesce(arg, arg) 	
+.. function:: coalesce(arg1, arg2)
 
   Returns first non-empty value of the two ``arg``\ s.
   Returns an empty string if both are empty or non-existent.
