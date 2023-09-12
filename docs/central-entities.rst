@@ -220,7 +220,7 @@ You can see the full XLSForm `here <https://docs.google.com/spreadsheets/d/12oJZ
 
 The same Dataset can be used in many different Forms. The concepts and patterns described in the :doc:`data collector workflows <data-collector-workflows>` and the :doc:`Form Datasets <form-datasets>` sections apply to server-managed Datasets as well.
 
-.. _central-entities-managing
+.. _central-entities-managing:
 
 Managing Datasets and Entities
 ------------------------------
@@ -231,7 +231,7 @@ To browse all Datasets in a Project, go to the :guilabel:`Datasets` tab within t
 
 On this page, you can see how this Dataset relates to other incoming data in your Project: which Forms contribute to the Dataset, which ones read data from it, and which fields are being read or written. To see the actual data in your Dataset, click on the :guilabel:`Data` tab at the top.
 
-.. _central-entities-data
+.. _central-entities-data:
 
 Managing Entity Data
 --------------------
@@ -244,7 +244,7 @@ Similar to the Submissions data page for a Form, you will see overall metadata l
 
 To see, edit, and manage additional details about a particular Entity, hover over its row in the table and click on :guilabel:`More` to go to the Entity Detail page. Alternatively, you can click on the pencil icon to edit the Entity data immediately.
 
-.. _central-entities-detail
+.. _central-entities-detail:
 
 Seeing Entity Detail
 ~~~~~~~~~~~~~~~~~~~~
@@ -257,12 +257,12 @@ Similar to the Submission data detail page, the Entity detail page has some basi
 
 You can see the actual data stored in the Entity in the bottom left under the :guilabel:`Entity Data` section, and you can edit that information by clicking on :guilabel:`Edit` right there.
 
-.. _central-entities-edit
+.. _central-entities-edit:
 
 Editing Entity Data
 ~~~~~~~~~~~~~~~~~~~
 
-To edit the data stored for an Entity, you can locate the Entity in the :doc:`Entity data table <central-entities-data>` and click on the pencil icon that shows up on top of its row, or you can click on the :guilabel:`Edit` button if you are already looking at the detail page for the Entity.
+To edit the data stored for an Entity, you can locate the Entity in the :ref:`Entity data table <central-entities-data>` and click on the pencil icon that shows up on top of its row, or you can click on the :guilabel:`Edit` button if you are already looking at the detail page for the Entity.
 
    .. image:: /img/central-entities/entity-edit.png
 
@@ -274,7 +274,7 @@ As you type, Central will highlight any fields you have changed in yellow so you
 
 To complete the process press the :guilabel:`Update` button to save your changes to the Entity. You will see a confirmation that the save succeeded. If you don't like your changes, you can click on the :guilabel:`x` or the :guilabel:`Never mind` link to close the dialog.
 
-.. _central-entities-settings
+.. _central-entities-settings:
 
 Changing Dataset Settings
 -------------------------
