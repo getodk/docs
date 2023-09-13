@@ -8,13 +8,20 @@ from datetime import date, datetime
 # Nested partials bug: chevron/issues/100
 import pystache
 
-from src.spec_processor import SpecProcessor 
-from src import rst_helper
+from sphinx.util import logging
+
+from openapi.spec_processor import SpecProcessor 
+import openapi.rst_helper
+
+logger = logging.getLogger(__name__)
 
 docDir = "./docs" 
 currentDir = str(pathlib.Path(__file__).parent.resolve())
 schemas = {}
 renderer = pystache.Renderer(search_dirs=currentDir)
+
+def builder_inited(app):
+   main()
 
 def main():
     spec = getYaml()
@@ -71,5 +78,6 @@ def writeTopPages(spec):
         with open(f'{docDir}/{file.get("filename")}', 'w') as f:
           f.write(result)
 
-if __name__ == '__main__':
-    main()
+def setup(app):
+    logger.info("Converting Central OpenAPI to RST...")
+    app.connect('builder-inited', builder_inited)

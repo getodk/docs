@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/work
     docker:
-      - image: cimg/python:3.9
+      - image: cimg/python:3.11
     steps:
       - checkout
       - run:
@@ -27,7 +27,7 @@ jobs:
           name: Spell check
           command: |
             make spelling
-            python3 util/check-spelling-output.py docs/_build/spelling
+            python3 utils/check-spelling-output.py docs/_build/spelling
       - run:
           name: Compress images
           command: pngquant docs/_build/dirhtml/_images/*.png --force --ext .png --verbose
