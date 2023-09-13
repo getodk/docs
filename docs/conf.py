@@ -16,7 +16,7 @@
 import platform
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../util/'))
+sys.path.insert(0, os.path.abspath('../extensions/'))
 import sphinx_video
 import openapi
 
