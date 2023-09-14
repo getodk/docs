@@ -28,7 +28,7 @@ Next, a new feature. You can now tell Central that some of your incoming Submiss
 
 .. image:: /img/central-entities/intro-diagram.png
 
-Using this functionality, you don't have to create and upload Entity Lists yourself. When Submissions arrive and are approved, Central will create new Entities that will appear in follow-up Forms as soon as those Form updates are received.
+Using this functionality, you don't have to create and upload Entity Lists yourself. When Central receives submissions (or they are approved, see :ref:`the settings section <central-entities-settings>`), new Entities are automatically created. As soon as users of the Follow-up Form(s) get Form updates, they can interact with the new Entities.
 
 If you are interested in seeing how Entities can fit into your workflow right away, we recommend following the Quick Start guide below, where you will upload a tree registration Form and a tree follow-up Form we have created already and see how trees are created by one Form and appear in another.
 
@@ -82,20 +82,16 @@ First, let's prepare the Forms for use with Central.
 
 Next, let's see these Forms working together.
 
-1. First, fill out and submit the Tree registration Form. Be sure to choose a species and specify a Tree circumference. Use 100 if you are not sure what to fill in.
-2. Go back to Central. You can download the ``trees`` Entity List under the Entities tab in your Project.
-3. But your tree isn't there. It does take a moment sometimes to create an Entity from a Submission, but in this case it's because we're not done yet. An Entity will not be created until you *approve* the submission.
-4. Go to the Trees registration Form Submissions page, and approve your tree.
-5. Open the Submission details page for that Submission by putting your mouse on its row and clicking More.
-6. You should now see a record of your approval, as well as of the creation of a new Entity based on the Submission. If you don't see the Entity yet, wait a second and refresh.
-7. You can try downloading the ``trees`` Entity List again if you want to see your tree there.
-8. Now go back to Collect and update your Forms to fetch the new data.
-9. Next, fill out the Tree follow-up Form.
-10. Your tree is here! Choose it.
-11. Report a new circumference that is smaller than the old one. This is probably not a good idea for a tree. See how the Form warns you about this problem, based on the data you'd put into the registration Form.
-12. Correct the circumference to a larger number, and submit the Form.
+#. First, fill out and submit the Tree registration Form. Be sure to choose a species and specify a Tree circumference. Use 100 if you are not sure what to fill in.
+#. Go back to Central and click on ``trees`` in the :guilabel:`Entities` tab in your Project.
+#. Click on the :guilabel:`Data` tab and you should see your new tree! If you don't, you can wait a second or two and refresh.
+#. Now go back to Collect and update your Forms to fetch the new data.
+#. Next, fill out the Tree follow-up Form.
+#. Your tree is here! Choose it.
+#. Report a new circumference that is smaller than the old one. This is probably not a good idea for a tree. See how the Form warns you about this problem, based on the data you'd put into the registration Form.
+#. Correct the circumference to a larger number, and submit the Form.
 
-That's it! The follow-up Form only creates normal Submissions, so you can access the data it collects like any Form.
+That's it! The follow-up Form creates normal Submissions, so you can access the data it collects like any Form.
 
 .. _central-entities-overview:
 
@@ -110,7 +106,7 @@ In these early versions of Entities, you cannot create an Entity List directly t
 When you publish this Form, the new Entity List and new Entity Properties will be created for you automatically within the Project. You can learn more about authoring these kinds of Forms :ref:`in the sections below <central-entities-authoring>`.
 
 .. note::
-  In this version of Entities, a Submission must be approved before an Entity will be created from it. In future versions, you will be able to choose to create the Entity immediately when the server receives the Submission.
+  By default, Entities are created immediately when the server receives the Submission. If you want to require a review step before Entities are available for follow-up, you can configure this in each Entity List's :ref:`settings <central-entities-settings>`.
 
 To see this new Entity List and download data from it, visit the :guilabel:`Entities` tab on the Project page.
 
@@ -145,7 +141,7 @@ In the following section, we describe how to author Forms that create new Entiti
 Build a Form that creates Entities
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You’ll start by building a Form that creates new Entities in an Entity List called ``trees``. When you publish this Form, a ``trees`` Entity List will be created for you. When a Submission to this Form is approved, an Entity will be created in the ``trees`` Entity List from data in the Submission. These types of Forms are often referred to as registration, enrollment, intake or discovery Forms.
+You’ll start by building a Form that creates new Entities in an Entity List called ``trees``. When you publish this Form, a ``trees`` Entity List will be created for you. When a Submission to this Form is received, an Entity will be created in the ``trees`` Entity List from data in the Submission. These types of Forms are often referred to as registration, enrollment, intake or discovery Forms.
 
 .. _central-entities-registration-forms-structure:
 
