@@ -37,6 +37,8 @@ If you are interested in seeing how Entities can fit into your workflow right aw
 Roadmap and limitations
 -----------------------
 
+Entities are a big new concept that open up a lot of new possibilities. While we think many workflows can benefit from Entities today, they have some limitations that you should be aware of.
+
 What's available now:
 
 - Create an Entity with a registration form (automatically or after project manager approval)
@@ -44,7 +46,7 @@ What's available now:
 - Use Entities in one or more follow-up form
 - Download Entities into Power BI, Excel, Python, and R
 
-The current limitations are:
+Important limitations:
 
 - Entity create and update requires Internet access
 - Entity delete is only available via API
