@@ -2,6 +2,7 @@ sphinx
 sphinx-autobuild
 sphinxcontrib-spelling
 furo
+openapi
 sphinx_design
 sphinx-copybutton
 sphinxcontrib-youtube

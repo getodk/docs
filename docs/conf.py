@@ -16,9 +16,9 @@
 import platform
 import os
 import sys
+import openapi
 sys.path.insert(0, os.path.abspath('../extensions/'))
 import sphinx_video
-import openapi
 
 # -- Project information -----------------------------------------------------
 
