@@ -10,6 +10,7 @@ Start by reviewing upgrade notes for all versions between your current version a
 Upgrade notes
 -------------
 
+* :ref:`Central v2023.4 <central-upgrade-2023.4>`: improve email delivery
 * :ref:`Central v2023.3 <central-upgrade-2023.3>`: clean up old database if needed
 * :ref:`Central v2023.2 <central-upgrade-2023.2>`: upgrade Docker, PostgreSQL, and move configuration to ``.env``
 * :ref:`Central v2023.1 <central-upgrade-2023.1>`: plan ahead for longer than usual downtime during upgrade
@@ -89,6 +90,64 @@ You'll be asked to confirm the removal of all dangling images. Agree by typing t
 
 Version-specific upgrade instructions
 --------------------------------------
+
+.. _central-upgrade-2023.4:
+
+Upgrading to Central v2023.4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. **Determine whether the install you are upgrading is using a custom mail server** or the default one:
+
+   .. code-block:: bash
+
+     $ grep EMAIL_HOST .env
+
+   If you get nothing back or there's nothing after the ``=``, you are using the default mail server. If ``DB_HOST`` is set to any value, you are using a custom mail server.
+
+#. **Upgrade your install** according to your mail server type.
+
+.. tabs::
+   
+  .. tab:: Default email server
+     .. warning::
+       Before starting, read the instructions at the top of this section carefully and **make sure you are actually using the default email server**.
+     .. tip:: While enabling DKIM on the default email server will improve email delivery, we strongly recommend you use a :ref:`custom mail server <central-install-digital-ocean-custom-mail>` instead.
+
+ 
+     #. **Copy any existing DKIM files to a new location**.
+
+        .. code-block:: console
+
+         $ cd central
+         $ mkdir files/mail
+         $ test -f files/dkim/rsa.private && cp files/dkim/rsa.private files/mail/rsa.private 
+         $ test -f files/dkim/rsa.public && cp files/dkim/rsa.public files/mail/rsa.public
+
+     #. **Delete the old DKIM folder** and its contents.
+
+        .. code-block:: console
+
+         $ rm -r files/dkim
+
+     #. **Follow** the :ref:`standard upgrade instructions <central-upgrade-steps>`.
+
+
+  .. tab:: Custom email server
+     .. warning::
+       Before starting, read the instructions at the top of this section carefully and **make sure you are actually using a custom email server**. If you are not, you will delete the private keys used to secure the emails Central sends.
+
+     #. **Delete the old DKIM folder** and its contents.
+
+        .. code-block:: console
+
+         $ cd central
+
+        .. code-block:: console
+
+         $ rm -r files/dkim
+
+     #. **Follow** the :ref:`standard upgrade instructions <central-upgrade-steps>`.
+
 
 .. _central-upgrade-2023.3:
 

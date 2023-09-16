@@ -526,44 +526,62 @@ Configuring DKIM
 .. tip::
   Users are not receiving emails? Read :ref:`troubleshooting emails <troubleshooting-emails>` before configuring DKIM.
 
-DKIM is a security trust protocol which is used to help verify mail server identities. Without it, your sent mail is likely to be flagged as spam. If you intend to use a :ref:`custom mail server <central-install-digital-ocean-custom-mail>`, these instructions will not be relevant to you. Otherwise:
+DKIM is a protocol which is used to help verify mail server identities. Without it, your sent mail is likely to be flagged as spam. If you intend to use a :ref:`custom mail server <central-install-digital-ocean-custom-mail>`, these instructions will not be relevant to you.
 
 #. Ensure that your server's name in DigitalOcean `matches your full domain name <https://www.digitalocean.com/community/questions/how-do-i-setup-a-ptr-record?comment=30810>`_, and that the `hostname does as well <https://askubuntu.com/questions/938786/how-to-permanently-change-host-name/938791#938791>`_. If you had to make changes for this step, restart the server to ensure they take effect.
 
-#. Ensure there are no directories where you'll be placing the DKIM files.
+#. Generate a public and private key.
 
    .. code-block:: console
 
      $ cd central
 
+     $ openssl genrsa -out files/mail/rsa.private 1024
+     $ openssl rsa -in files/mail/rsa.private -out files/mail/rsa.public -pubout -outform PEM
+
+#. Ensure any changes to DKIM private key are kept private
+
    .. code-block:: console
 
-     $ rm -rf files/dkim/rsa.private
+     $ git update-index --skip-worktree files/mail/rsa.private
 
-#. Generate a public and private key and enable the DKIM configuration
+#. Copy the contents of the public key with the boundary dashes removed.
 
    .. code-block:: console
 
-     $ cd files/dkim
-     $ openssl genrsa -out rsa.private 1024
-     $ openssl rsa -in rsa.private -out rsa.public -pubout -outform PEM
-     $ cp config.disabled config
+     $ cat files/mail/rsa.public | grep -v "^-"
 
-#. With the contents of the public key (``cat rsa.public``), you'll want to create two new TXT DNS records:
+#. Create four new DNS records in these locations:
 
-   1. At the location ``dkim._domainkey.DOMAIN-NAME-HERE``, create a new ``TXT`` record with the contents ``k=rsa; p=PUBLIC-KEY-HERE``. You only want the text *between* the dashed boundaries, and you'll want to be sure to remove any line breaks, so that it's all only letters, numbers, ``+``, and ``/``.
+   1. ``dkim._domainkey.DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content. Be sure to remove any newlines or line breaks.
 
-   2. At your domain name location, create a new ``TXT`` record with the contents. Get the server IP address from the DigitalOcean control panel. 
+      .. code-block:: console
+
+        k=rsa; p=PUBLIC-KEY-HERE
+
+   2. ``_dmarc.DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content.
+
+      .. code-block:: console
+
+        v=DMARC1; p=none
+   
+   3. ``DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content. Get the server IP address from the DigitalOcean control panel. 
 
       .. code-block:: console
 
         v=spf1 a mx ip4:SERVER-IP-ADDRESS-HERE -all
 
-#. Build and restart the mail container.
+   4. ``DOMAIN-NAME-HERE``: create a ``MX`` record with the following content.
+
+      .. code-block:: console
+
+        10 DOMAIN-NAME-HERE
+
+#. Build, stop, and start the mail container.
 
    .. code-block:: console
 
-     $ docker compose build mail && docker compose up -d mail
+     $ docker compose build mail && docker compose stop mail && docker compose up -d mail
 
 .. _central-install-digital-ocean-enketo:
 
