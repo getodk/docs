@@ -96,10 +96,9 @@ If you absolutely must upload files over 100MB, you can change the `client_max_b
 .. code-block:: console
 
   $ cd central
-  $ docker compose stop
   $ nano files/nginx/odk.conf.template
   <modify the nginx conf value for client_max_body_size>
-  $ docker compose up -d
+  $ docker compose build && docker compose stop && docker compose up -d
 
 .. _troubleshooting-docker-compose-down:
 
