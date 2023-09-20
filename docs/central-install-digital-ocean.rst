@@ -236,8 +236,7 @@ Once you do see it working, you'll want to set up your first Administrator accou
 
 .. tip::
 
-  We strongly recommend using a :ref:`custom mail server <central-install-digital-ocean-custom-mail>` to ensure password reset emails are delivered reliabily. Learn more at :ref:`troubleshooting emails <troubleshooting-emails>`.
-
+  We strongly recommend using a :ref:`custom mail server <central-install-digital-ocean-custom-mail>` to ensure password reset emails are delivered reliably. Learn more at :ref:`troubleshooting emails <troubleshooting-emails>`.
 
 .. _central-install-digital-ocean-backups:
 
@@ -535,7 +534,8 @@ DKIM is a protocol which is used to help verify mail server identities. Without 
 
 #. Ensure that your server's name in DigitalOcean `matches your full domain name <https://www.digitalocean.com/community/questions/how-do-i-setup-a-ptr-record?comment=30810>`_, and that the `hostname does as well <https://askubuntu.com/questions/938786/how-to-permanently-change-host-name/938791#938791>`_. If you had to make changes for this step, restart the server to ensure they take effect.
 
-#. Generate a public and private key.
+
+#. Generate a public and private key (if one doesn't already exist).
 
    .. code-block:: console
 
@@ -543,10 +543,10 @@ DKIM is a protocol which is used to help verify mail server identities. Without 
 
    .. code-block:: console
 
-     $ openssl genrsa -out files/mail/rsa.private 1024
+     $ ! test -s files/mail/rsa.private && openssl genrsa -out files/mail/rsa.private 1024
      $ openssl rsa -in files/mail/rsa.private -out files/mail/rsa.public -pubout -outform PEM
 
-#. Ensure any changes to DKIM private key are kept private.
+#. Ensure any changes to the DKIM private key are kept private.
 
    .. code-block:: console
 
