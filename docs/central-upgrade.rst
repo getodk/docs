@@ -116,6 +116,9 @@ Upgrading to Central v2023.4
         .. code-block:: console
 
          $ cd central
+
+        .. code-block:: console
+
          $ mkdir files/mail
          $ test -f files/dkim/rsa.private && cp files/dkim/rsa.private files/mail/rsa.private 
 
@@ -125,14 +128,15 @@ Upgrading to Central v2023.4
 
          $ rm -r files/dkim
 
-     #. **Follow** the :ref:`standard upgrade instructions <central-upgrade-steps>`.
+     #. **Follow** the :ref:`standard upgrade instructions <central-upgrade-steps>`. Be sure to return here after the upgrade.
 
+     #. **Follow** the :ref:`configure DKIM <central-install-digital-ocean-dkim>` instructions to further improve email delivery. Redo these instructions even if you have previously configured DKIM. 
 
   .. tab:: Custom mail server
-     .. warning::
-       Before starting, read the instructions at the top of this section carefully and **make sure you are actually using a custom mail server**. If you are not, you may have to reconfigure DKIM support.
 
-     #. **Delete the old DKIM folder** and its contents.
+     #. **Follow** the :ref:`standard upgrade instructions <central-upgrade-steps>`.
+
+     .. note:: After the upgrade, consider deleting the now unused DKIM folder and its contents.
 
         .. code-block:: console
 
@@ -141,9 +145,6 @@ Upgrading to Central v2023.4
         .. code-block:: console
 
          $ rm -r files/dkim
-
-     #. **Follow** the :ref:`standard upgrade instructions <central-upgrade-steps>`.
-
 
 .. _central-upgrade-2023.3:
 
