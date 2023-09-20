@@ -108,10 +108,10 @@ Upgrading to Central v2023.4
 
 .. tabs::
    
-  .. tab:: Default email server
+  .. tab:: Default mail server
      .. warning::
-       Before starting, read the instructions at the top of this section carefully and **make sure you are actually using the default email server**.
-     .. tip:: While enabling DKIM on the default email server will improve email delivery, we strongly recommend you use a :ref:`custom mail server <central-install-digital-ocean-custom-mail>` instead.
+       Before starting, read the instructions at the top of this section carefully and **make sure you are actually using the default mail server**.
+     .. tip:: While enabling DKIM on the default mail server will improve email delivery, we strongly recommend you use a :ref:`custom mail server <central-install-digital-ocean-custom-mail>` instead.
 
  
      #. **Copy any existing DKIM files to a new location**.
@@ -121,7 +121,6 @@ Upgrading to Central v2023.4
          $ cd central
          $ mkdir files/mail
          $ test -f files/dkim/rsa.private && cp files/dkim/rsa.private files/mail/rsa.private 
-         $ test -f files/dkim/rsa.public && cp files/dkim/rsa.public files/mail/rsa.public
 
      #. **Delete the old DKIM folder** and its contents.
 
@@ -132,9 +131,9 @@ Upgrading to Central v2023.4
      #. **Follow** the :ref:`standard upgrade instructions <central-upgrade-steps>`.
 
 
-  .. tab:: Custom email server
+  .. tab:: Custom mail server
      .. warning::
-       Before starting, read the instructions at the top of this section carefully and **make sure you are actually using a custom email server**. If you are not, you will delete the private keys used to secure the emails Central sends.
+       Before starting, read the instructions at the top of this section carefully and **make sure you are actually using a custom mail server**. If you are not, you will delete the private keys used to secure the emails Central sends.
 
      #. **Delete the old DKIM folder** and its contents.
 
@@ -374,9 +373,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
    
      .. tab:: Default database
        .. warning::
-         Before starting:
-   
-         * Read the instructions at the top of this section carefully and **make sure you are actually using the default database configuration**. Following these instructions with a custom database setup could result in perceived data loss.
+         Before starting, read the instructions at the top of this section carefully and **make sure you are actually using the default database configuration**. Following these instructions with a custom database setup could result in perceived data loss.
    
        #. **Get the latest infrastructure version.**
    

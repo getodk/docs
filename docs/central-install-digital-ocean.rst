@@ -226,16 +226,18 @@ Once you do see it working, you'll want to set up your first Administrator accou
 
      $ docker compose exec service odk-cmd --email YOUREMAIL@ADDRESSHERE.com user-promote
 
-#. Log into the Central website. Go to your domain name and enter in your new credentials. Once you have one administrator account, you do not have to go through this process again for future accounts: you can log into the website with your new account, and directly create new users that way.
+   If you ever lose track of your password, you can reset it with
+
+   .. code-block:: console
+
+     $ docker compose exec service odk-cmd --email YOUREMAIL@ADDRESSHERE.com user-set-password
+
+#. Log into the Central website. Go to your domain name and enter in your new credentials. Once you have one administrator account, you do not have to go through this process again for future accounts: you can log into the website with your new account, and directly create new users.
 
 .. tip::
-  If you find that users are not receiving emails, read about :ref:`troubleshooting emails <troubleshooting-emails>`.
 
-  If you ever lose track of your password, you can reset it with
+  We strongly recommend using a :ref:`custom mail server <central-install-digital-ocean-custom-mail>` to ensure password reset emails are delivered reliabily. Learn more at :ref:`troubleshooting emails <troubleshooting-emails>`.
 
-  .. code-block:: console
-
-    $ docker compose exec service odk-cmd --email YOUREMAIL@ADDRESSHERE.com user-set-password
 
 .. _central-install-digital-ocean-backups:
 
@@ -383,7 +385,7 @@ If an upgrade was the cause of the memory error, you may revert these changes af
 Using a Custom SSL Certificate
 ------------------------------
 
-Central uses Let's Encrypt SSL certificates to secure all communication. To use your own certs:
+Central uses Let's Encrypt SSL certificates to secure all communication. To use custom certificates:
 
 #. Generate a ``fullchain.pem`` (``-out``) file which contains your certificate followed by any necessary intermediate certificate(s).
 #. Generate a ``privkey.pem`` (``-keyout``) file which contains the private key used to sign your certificate.
@@ -424,7 +426,10 @@ Central uses Let's Encrypt SSL certificates to secure all communication. To use 
 Using a Custom Mail Server
 --------------------------
 
-Central comes with an mail server to send password reset emails. To use your own mail server:
+.. tip::
+  We recommend using a dedicated email service such as `Mailjet <https://www.mailjet.com>`_ for your custom mail server. Follow the dedicated service's instructions for enabling DKIM and SPF to ensure your messages are delivered.
+
+Central comes with a mail server to send password reset emails. To use a custom mail server:
 
 #. Edit ``.env`` with your mail server host, port, and authentication details.
 
@@ -467,7 +472,7 @@ Using a Custom Database Server
 
   Using a custom database server that is not on your local network, may result in poor performance.
 
-Central comes with a PostgreSQL v14.x database server to store your data. To use your own PostgreSQL database server:
+Central comes with a PostgreSQL v14.x database server to store your data. To use a custom PostgreSQL database server:
 
 #. Connect to your database server.
 
@@ -523,10 +528,10 @@ Central comes with a PostgreSQL v14.x database server to store your data. To use
 Configuring DKIM
 ----------------
 
-.. tip::
-  Users are not receiving emails? Read :ref:`troubleshooting emails <troubleshooting-emails>` before configuring DKIM.
+.. warning::
+  Do not follow these instructions if you are using a :ref:`custom mail server <central-install-digital-ocean-custom-mail>`.
 
-DKIM is a protocol which is used to help verify mail server identities. Without it, your sent mail is likely to be flagged as spam. If you intend to use a :ref:`custom mail server <central-install-digital-ocean-custom-mail>`, these instructions will not be relevant to you.
+DKIM is a protocol which is used to help verify mail server identities. Without it, your sent mail is likely to be flagged as spam.
 
 #. Ensure that your server's name in DigitalOcean `matches your full domain name <https://www.digitalocean.com/community/questions/how-do-i-setup-a-ptr-record?comment=30810>`_, and that the `hostname does as well <https://askubuntu.com/questions/938786/how-to-permanently-change-host-name/938791#938791>`_. If you had to make changes for this step, restart the server to ensure they take effect.
 
