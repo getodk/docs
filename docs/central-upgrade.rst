@@ -60,8 +60,7 @@ Upgrade steps
 
 .. code-block:: console
 
-  $ docker compose pull
-  $ docker compose build --pull
+  $ docker compose pull && docker compose build --pull
 
 .. note::
 
@@ -84,7 +83,7 @@ You'll be asked to confirm the removal of all dangling images. Agree by typing t
 
 .. code-block:: console
 
-  $ docker compose up -d
+  $ docker compose stop && docker compose up -d
 
 .. _version-specific-instructions:
 
@@ -109,8 +108,6 @@ Upgrading to Central v2023.4
 .. tabs::
    
   .. tab:: Default mail server
-     .. warning::
-       Before starting, read the instructions at the top of this section carefully and **make sure you are actually using the default mail server**.
      .. tip:: While enabling DKIM on the default mail server will improve email delivery, we strongly recommend you use a :ref:`custom mail server <central-install-digital-ocean-custom-mail>` instead.
 
  
@@ -133,7 +130,7 @@ Upgrading to Central v2023.4
 
   .. tab:: Custom mail server
      .. warning::
-       Before starting, read the instructions at the top of this section carefully and **make sure you are actually using a custom mail server**. If you are not, you will delete the private keys used to secure the emails Central sends.
+       Before starting, read the instructions at the top of this section carefully and **make sure you are actually using a custom mail server**. If you are not, you may have to reconfigure DKIM support.
 
      #. **Delete the old DKIM folder** and its contents.
 

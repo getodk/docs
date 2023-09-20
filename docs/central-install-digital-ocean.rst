@@ -376,7 +376,7 @@ During upgrades or exports, some versions of Central may use more memory than th
 
    .. code-block:: console
 
-     $ docker compose build service && docker compose up -d service
+     $ docker compose build service && docker compose stop service && docker compose up -d service
 
 If an upgrade was the cause of the memory error, you may revert these changes after the upgrade and build and restart the service container.
 
@@ -419,7 +419,7 @@ Central uses Let's Encrypt SSL certificates to secure all communication. To use 
 
    .. code-block:: console
 
-     $ docker compose build nginx && docker compose up -d nginx
+     $ docker compose build nginx && docker compose stop nginx && docker compose up -d nginx
 
 .. _central-install-digital-ocean-custom-mail:
 
@@ -460,7 +460,7 @@ Central comes with a mail server to send password reset emails. To use a custom 
 
    .. code-block:: console
 
-     $ docker compose build service && docker compose up -d service
+     $ docker compose build service && docker compose stop service && docker compose up -d service
 
 .. _central-install-digital-ocean-custom-db:
 
@@ -521,7 +521,7 @@ Central comes with a PostgreSQL v14.x database server to store your data. To use
 
    .. code-block:: console
 
-     $ docker compose build service && docker compose up -d service
+     $ docker compose build service && docker compose stop service && docker compose up -d service
 
 .. _central-install-digital-ocean-dkim:
 
@@ -541,10 +541,12 @@ DKIM is a protocol which is used to help verify mail server identities. Without 
 
      $ cd central
 
+   .. code-block:: console
+
      $ openssl genrsa -out files/mail/rsa.private 1024
      $ openssl rsa -in files/mail/rsa.private -out files/mail/rsa.public -pubout -outform PEM
 
-#. Ensure any changes to DKIM private key are kept private
+#. Ensure any changes to DKIM private key are kept private.
 
    .. code-block:: console
 
@@ -582,7 +584,7 @@ DKIM is a protocol which is used to help verify mail server identities. Without 
 
         10 DOMAIN-NAME-HERE
 
-#. Build, stop, and start the mail container.
+#. Build and restart the mail container.
 
    .. code-block:: console
 
@@ -614,7 +616,7 @@ Enketo is the software that Central uses to render forms in a web browser. It is
 
    .. code-block:: console
 
-     $ docker compose build && docker compose up -d
+     $ docker compose build && docker compose stop && docker compose up -d
 
 .. _central-install-digital-ocean-sentry:
 
@@ -661,7 +663,7 @@ This information is only visible to the development team and should never contai
 
    .. code-block:: console
 
-     $ docker compose build && docker compose up -d
+     $ docker compose build && docker compose stop && docker compose up -d
 
 If you wish to use your own Sentry instance to receive your own errors, take these steps:
 
@@ -687,4 +689,4 @@ If you wish to use your own Sentry instance to receive your own errors, take the
 
    .. code-block:: console
 
-     $ docker compose build && docker compose up -d
+     $ docker compose build && docker compose stop && docker compose up -d
