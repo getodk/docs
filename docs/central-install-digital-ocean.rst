@@ -565,6 +565,104 @@ DKIM is a security trust protocol which is used to help verify mail server ident
 
      $ docker compose build mail && docker compose up -d mail
 
+.. _central-install-digital-ocean-sso:
+
+Enabling Single Sign-on
+-----------------------
+
+By default, users log into Central using an email address and password. However, if Single Sign-on (SSO) is enabled, then Central will no longer manage users' passwords and will instead forward users to a separate login server. If all the users of your Central installation already have an account on another site, it may be possible to configure Central so that users can use that account to log into Central. Examples of this include Google Workspace and Azure Active Directory. Under this setup, the login server is called the "identity provider." If SSO is enabled, the identity provider will manage users' passwords, not Central.
+
+An identity provider may enforce different requirements for login than Central does on its own. For example, Central requires that new passwords are at least 10 characters, but it does not require other password characteristics, such as the presence of certain symbols. However, if SSO is enabled in Central, and if the identity provider is configured to require specific password characteristics, then users will need to fulfill those requirements in order to log into Central. As another example, on its own, Central does not support two-factor authentication. However, if SSO is enabled, and if the identity provider is configured to require two-factor authentication, then users will need to complete two-factor authentication before logging into Central.
+
+Central is not compatible with every kind of identity provider. Central uses the OpenID Connect (OIDC) protocol. When SSO is enabled in Central, Central does not manage passwords, but it still identifies users using their email address. Central assumes that the identity provider verifies email addresses, requiring users to prove ownership of the email address they specify. If that is not the case, then do not enable SSO in Central.
+
+If SSO is enabled, some features in Central will stop working. OData feeds will not be accessible in tools like Power BI or Excel. The API will not be available, which means that pyODK and ruODK will not be able to fetch data from Central. In the future, we hope to provide a way to access the API when SSO is enabled.
+
+To enable SSO in Central, you will need to provide information from your identity provider, specifically the issuer URL, client ID, and client secret. If you use Google Workspace or Azure Active Directory, you can follow the instructions below to find this information.
+
+#. In ``.env``, set ``OIDC_ENABLED`` to ``true``. Set ``OIDC_ISSUER_URL`` to the issuer URL that you obtained from your identity provider, ``OIDC_CLIENT_ID`` to the client ID, and ``OIDC_CLIENT_SECRET`` to the client secret.
+
+   .. code-block:: console
+
+     $ cd central
+
+   .. code-block:: console
+
+     $ nano .env
+
+   .. code-block:: bash
+
+     OIDC_ENABLED=true
+     OIDC_ISSUER_URL=my-issuer-url
+     OIDC_CLIENT_ID=my-client-id
+     OIDC_CLIENT_SECRET=my-client-secret
+
+#. Build and restart all containers.
+
+   .. code-block:: console
+
+     $ docker compose build && docker compose stop && docker compose up -d
+
+Two Accounts: Central and the Identity Provider
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When you enable SSO, users will use their account on the identity provider to log into Central. However, users will still have a Central account that is separate from the identity provider. A Central account is not automatically created for each account on the identity provider. Instead, a Central administrator will need to create a Central account for each user of the identity provider who should be allowed to log into Central.
+
+Central users will be able to change their display name shown in Central and to choose a different name from what is shown in the identity provider. However, because Central identifies users by their email address, most users will not be allowed to change their email address. Only a Central Administrator will be able to change the email address associated with a Central account. That will be needed if a user's email address changes within the identity provider. In that case, an Administrator will need to manually change the user's email address within Central to match their new address in the identity provider.
+
+If a Central Administrator changes their own email address to one that does not match the identity provider, they may lose access to Central. If they are the only Administrator, they will need to disable SSO, set a password :ref:`by command line <central-command-line-user-set-password>`, log in, change their email address, then re-enable SSO.
+
+Logout is not centralized, which means that when a user logs out of Central, that will not log them out of the identity provider. Conversely, when a user logs out of the identity provider, that will not log them out of Central. If a user logs out of Central, then goes to log back in, they may find that login is nearly instantaneous if they are still logged into the identity provider. That is, they may find that they are not required to log into the identity provider again in order to log into Central.
+
+Enabling SSO in an Existing Installation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is possible to enable SSO for an existing Central installation, even if the installation has existing users. Follow the instructions above to enable SSO. Because Central identifies users by their email address, the email address associated with a Central account must match the address in the identity provider. If the email address does not match, the user will not be able to log in.
+
+Enabling SSO will not log out users who are already logged in. Users who are already logged in will be required to log in through the identity provider only after being logged out.
+
+Disabling SSO
+~~~~~~~~~~~~~
+
+It is possible to disable SSO by following the steps below. If there were users before SSO was enabled (if SSO was disabled, then enabled, then disabled again), users will be able to log into Central using their same password from before SSO was enabled. You can :ref:`reset users' passwords <central-users-web-reset-password>` after disabling SSO.
+
+To disable SSO:
+
+#. In ``.env``, set ``OIDC_ENABLED`` to ``false``. Clear ``OIDC_ISSUER_URL``, ``OIDC_CLIENT_ID``, and ``OIDC_CLIENT_SECRET``.
+
+   .. code-block:: console
+
+     $ cd central
+
+   .. code-block:: console
+
+     $ nano .env
+
+   .. code-block:: bash
+
+     OIDC_ENABLED=false
+     OIDC_ISSUER_URL=
+     OIDC_CLIENT_ID=
+     OIDC_CLIENT_SECRET=
+
+#. Build and restart all containers.
+
+   .. code-block:: console
+
+     $ docker compose build && docker compose stop && docker compose up -d
+
+Using Google as an Identity Provider
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TODO Setting up the identity provider
+
+TODO Google Chrome profiles
+
+Using Azure as an Identity Provider
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TODO
+
 .. _central-install-digital-ocean-enketo:
 
 Customizing Enketo
