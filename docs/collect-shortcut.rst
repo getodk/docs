@@ -73,3 +73,9 @@ You can create an app-like shortcut to a specific form in Collect.
       .. image:: /img/collect-best-practices/help-describe.png
 	 :alt: Image showing guidelines on adding a widget.
 	 :class: device-screen-vertical
+
+.. warning::
+
+  Form shortcuts are links that point to the latest version of a form at the time of their creation. 
+  If you happen to download a new version of a form, it's important to note that the existing shortcut will continue to reference the version it was originally created for. 
+  Therefore, to link to the most recent form iteration, you must create a new shortcut.
