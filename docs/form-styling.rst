@@ -196,6 +196,12 @@ Collect's Markdown support also includes
   Similarly, the hint text of a form widget is already in italics,
   so italicizing text within the hint has no effect.
 
+.. note::
+
+  Single underscores are only treated as markdown when separated by white space. Example:
+    - ✓ ``This text contains _italic_`` will be treated as markdown
+    - ✕ ``This text contains_italic_`` will not be treated as markdown
+
 .. image:: /img/form-styling/emphasis.*
   :alt: A note widget in Collect. The label text is "This label has bold and italic text." The hint text is "This hint has bold and italic text." The words "bold" and "italic" are styled to appear bold and italic.
   :class: device-screen-vertical
