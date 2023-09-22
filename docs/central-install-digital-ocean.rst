@@ -352,7 +352,7 @@ During upgrades or exports, some versions of Central may use more memory than th
    .. tip::
      If you can't add more physical memory, :ref:`add swap <central-install-digital-ocean-swap>`. This will result in slower performance than adding physical memory but can be acceptable if it is only needed for occasional exports or upgrades.
 
-#. Edit ``.env`` to add a ``SERVICE_NODE_OPTIONS`` variable with a ``--max_old_space_size`` flag set to your desired maximum memory in MB.
+#. Edit ``.env`` to add a ``SERVICE_NODE_OPTIONS`` variable with a ``--max-old-space-size`` flag set to your desired maximum memory in MB.
 
    .. code-block:: console
 
@@ -364,7 +364,7 @@ During upgrades or exports, some versions of Central may use more memory than th
 
    .. code-block:: bash
 
-     SERVICE_NODE_OPTIONS='--max_old_space_size=3072'
+     SERVICE_NODE_OPTIONS='--max-old-space-size=3072'
 
    .. note::
 
