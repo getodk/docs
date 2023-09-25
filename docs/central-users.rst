@@ -5,7 +5,7 @@ Managing Users in Central
 
 There are two types of user accounts in ODK Central: **Web Users** and **App Users**.
 
-  - **Web Users** have accounts on the Central management website. These accounts are global across all projects on the server. They can log into the web interface and perform administrative actions like user management, form upload and management, and submission data viewing and download. Which of these actions they can take depends on their :ref:`Role <central-users-web-roles>`.
+  - **Web Users** have accounts on the Central management website. These accounts are global across all Projects on the server. They can log into the web interface and perform administrative actions like user management, Form upload and management, and Submission data viewing and download. Which of these actions they can take depends on their :ref:`Role <central-users-web-roles>`.
   - **App Users** can use mobile data collection apps like ODK Collect to :ref:`connect to Central <central-users-app-configure>`. App Users exist at the Project level and can be further limited to only see certain Forms in the Project. Once connected through the app, they will be able to fill Forms and upload completed Submissions to those Forms.
 
 Many data collection projects will involve both kinds of users: Web Users to upload Form definitions, App Users to fill out Forms from their mobile device, and Web Users to process and analyze the collected data. Projects that rely exclusively on Web Forms for data collection use Web Users only.
@@ -24,7 +24,7 @@ Central features Role-based User permissioning for Web Users. Web Users can eith
 Central currently defines three Project-level Roles:
 
 - **Project Managers** can perform any action on their assigned Project
-- **Project Viewers** only see created Forms and Submissions within the Project they are assigned to, and cannot edit anything
+- **Project Viewers** only see created Forms, Submissions, and Entities within the Project they are assigned to, and cannot edit anything
 - **Data Collectors** may see the list of all Forms in the Project, and retrieve basic information about them, but may only create new Submissions. They cannot see any Submissions. This Role is similar to :ref:`App Users <central-users-app-overview>` except that Data Collectors always see every Form in a Project and only use Web Forms.
 
 .. note::
@@ -72,7 +72,7 @@ Central Roles allow the following:
 +----------------------------------+---------------+-----------------+----------------+----------------+
 | **Project Entity Lists**                                                                             |
 |                                                                                                      |
-| *Note: Data Collectors can view Entity Lists attached to Forms*                       |
+| *Note: Data Collectors can view Entity Lists attached to Forms*                                      |
 +----------------------------------+---------------+-----------------+----------------+----------------+
 | Create                           | x             | x               |                |                |
 +----------------------------------+---------------+-----------------+----------------+----------------+
@@ -95,6 +95,10 @@ Central Roles allow the following:
 | Update data                      | x             | x               |                |                |
 +----------------------------------+---------------+-----------------+----------------+----------------+
 | Delete                           | x             | x               |                |                |
++----------------------------------+---------------+-----------------+----------------+----------------+
+| View and download                | x             | x               | x              |                |
++----------------------------------+---------------+-----------------+----------------+----------------+
+| Access OData feed                | x             | x               | x              |                |
 +----------------------------------+---------------+-----------------+----------------+----------------+
 | **Project App Users**                                                                                |
 +----------------------------------+---------------+-----------------+----------------+----------------+
