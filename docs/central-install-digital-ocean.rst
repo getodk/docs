@@ -226,16 +226,17 @@ Once you do see it working, you'll want to set up your first Administrator accou
 
      $ docker compose exec service odk-cmd --email YOUREMAIL@ADDRESSHERE.com user-promote
 
-#. Log into the Central website. Go to your domain name and enter in your new credentials. Once you have one administrator account, you do not have to go through this process again for future accounts: you can log into the website with your new account, and directly create new users that way.
+   If you ever lose track of your password, you can reset it with
+
+   .. code-block:: console
+
+     $ docker compose exec service odk-cmd --email YOUREMAIL@ADDRESSHERE.com user-set-password
+
+#. Log into the Central website. Go to your domain name and enter in your new credentials. Once you have one administrator account, you do not have to go through this process again for future accounts: you can log into the website with your new account, and directly create new users.
 
 .. tip::
-  If you find that users are not receiving emails, read about :ref:`troubleshooting emails <troubleshooting-emails>`.
 
-  If you ever lose track of your password, you can reset it with
-
-  .. code-block:: console
-
-    $ docker compose exec service odk-cmd --email YOUREMAIL@ADDRESSHERE.com user-set-password
+  We strongly recommend using a :ref:`custom mail server <central-install-digital-ocean-custom-mail>` to ensure password reset emails are delivered reliably. Learn more at :ref:`troubleshooting emails <troubleshooting-emails>`.
 
 .. _central-install-digital-ocean-backups:
 
@@ -374,7 +375,7 @@ During upgrades or exports, some versions of Central may use more memory than th
 
    .. code-block:: console
 
-     $ docker compose build service && docker compose up -d service
+     $ docker compose build service && docker compose stop service && docker compose up -d service
 
 If an upgrade was the cause of the memory error, you may revert these changes after the upgrade and build and restart the service container.
 
@@ -383,7 +384,7 @@ If an upgrade was the cause of the memory error, you may revert these changes af
 Using a Custom SSL Certificate
 ------------------------------
 
-Central uses Let's Encrypt SSL certificates to secure all communication. To use your own certs:
+Central uses Let's Encrypt SSL certificates to secure all communication. To use custom certificates:
 
 #. Generate a ``fullchain.pem`` (``-out``) file which contains your certificate followed by any necessary intermediate certificate(s).
 #. Generate a ``privkey.pem`` (``-keyout``) file which contains the private key used to sign your certificate.
@@ -417,14 +418,17 @@ Central uses Let's Encrypt SSL certificates to secure all communication. To use 
 
    .. code-block:: console
 
-     $ docker compose build nginx && docker compose up -d nginx
+     $ docker compose build nginx && docker compose stop nginx && docker compose up -d nginx
 
 .. _central-install-digital-ocean-custom-mail:
 
 Using a Custom Mail Server
 --------------------------
 
-Central comes with an mail server to send password reset emails. To use your own mail server:
+.. tip::
+  We recommend using a dedicated email service such as `Mailjet <https://www.mailjet.com>`_ for your custom mail server. Follow the dedicated service's instructions for enabling DKIM and SPF to ensure your messages are delivered.
+
+Central comes with a mail server to send password reset emails. To use a custom mail server:
 
 #. Edit ``.env`` with your mail server host, port, and authentication details.
 
@@ -455,7 +459,7 @@ Central comes with an mail server to send password reset emails. To use your own
 
    .. code-block:: console
 
-     $ docker compose build service && docker compose up -d service
+     $ docker compose build service && docker compose stop service && docker compose up -d service
 
 .. _central-install-digital-ocean-custom-db:
 
@@ -467,7 +471,7 @@ Using a Custom Database Server
 
   Using a custom database server that is not on your local network, may result in poor performance.
 
-Central comes with a PostgreSQL v14.x database server to store your data. To use your own PostgreSQL database server:
+Central comes with a PostgreSQL v14.x database server to store your data. To use a custom PostgreSQL database server:
 
 #. Connect to your database server.
 
@@ -516,21 +520,22 @@ Central comes with a PostgreSQL v14.x database server to store your data. To use
 
    .. code-block:: console
 
-     $ docker compose build service && docker compose up -d service
+     $ docker compose build service && docker compose stop service && docker compose up -d service
 
 .. _central-install-digital-ocean-dkim:
 
 Configuring DKIM
 ----------------
 
-.. tip::
-  Users are not receiving emails? Read :ref:`troubleshooting emails <troubleshooting-emails>` before configuring DKIM.
+.. warning::
+  Do not follow these instructions if you are using a :ref:`custom mail server <central-install-digital-ocean-custom-mail>`.
 
-DKIM is a security trust protocol which is used to help verify mail server identities. Without it, your sent mail is likely to be flagged as spam. If you intend to use a :ref:`custom mail server <central-install-digital-ocean-custom-mail>`, these instructions will not be relevant to you. Otherwise:
+DKIM is a protocol which is used to help verify mail server identities. Without it, your sent mail is likely to be flagged as spam.
 
 #. Ensure that your server's name in DigitalOcean `matches your full domain name <https://www.digitalocean.com/community/questions/how-do-i-setup-a-ptr-record?comment=30810>`_, and that the `hostname does as well <https://askubuntu.com/questions/938786/how-to-permanently-change-host-name/938791#938791>`_. If you had to make changes for this step, restart the server to ensure they take effect.
 
-#. Ensure there are no directories where you'll be placing the DKIM files.
+
+#. Generate a public and private key (if one doesn't already exist).
 
    .. code-block:: console
 
@@ -538,32 +543,52 @@ DKIM is a security trust protocol which is used to help verify mail server ident
 
    .. code-block:: console
 
-     $ rm -rf files/dkim/rsa.private
+     $ ! test -s files/mail/rsa.private && openssl genrsa -out files/mail/rsa.private 1024
+     $ openssl rsa -in files/mail/rsa.private -out files/mail/rsa.public -pubout -outform PEM
 
-#. Generate a public and private key and enable the DKIM configuration
+#. Ensure any changes to the DKIM private key are kept private.
 
    .. code-block:: console
 
-     $ cd files/dkim
-     $ openssl genrsa -out rsa.private 1024
-     $ openssl rsa -in rsa.private -out rsa.public -pubout -outform PEM
-     $ cp config.disabled config
+     $ git update-index --skip-worktree files/mail/rsa.private
 
-#. With the contents of the public key (``cat rsa.public``), you'll want to create two new TXT DNS records:
+#. Copy the contents of the public key with the boundary dashes removed.
 
-   1. At the location ``dkim._domainkey.DOMAIN-NAME-HERE``, create a new ``TXT`` record with the contents ``k=rsa; p=PUBLIC-KEY-HERE``. You only want the text *between* the dashed boundaries, and you'll want to be sure to remove any line breaks, so that it's all only letters, numbers, ``+``, and ``/``.
+   .. code-block:: console
 
-   2. At your domain name location, create a new ``TXT`` record with the contents. Get the server IP address from the DigitalOcean control panel. 
+     $ cat files/mail/rsa.public | grep -v "^-"
+
+#. Create four new DNS records in these locations:
+
+   1. ``dkim._domainkey.DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content. Be sure to remove any newlines or line breaks.
+
+      .. code-block:: console
+
+        k=rsa; p=PUBLIC-KEY-HERE
+
+   2. ``_dmarc.DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content.
+
+      .. code-block:: console
+
+        v=DMARC1; p=none
+   
+   3. ``DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content. Get the server IP address from the DigitalOcean control panel. 
 
       .. code-block:: console
 
         v=spf1 a mx ip4:SERVER-IP-ADDRESS-HERE -all
 
+   4. ``DOMAIN-NAME-HERE``: create a ``MX`` record with the following content.
+
+      .. code-block:: console
+
+        10 DOMAIN-NAME-HERE
+
 #. Build and restart the mail container.
 
    .. code-block:: console
 
-     $ docker compose build mail && docker compose up -d mail
+     $ docker compose build mail && docker compose stop mail && docker compose up -d mail
 
 .. _central-install-digital-ocean-enketo:
 
@@ -591,7 +616,7 @@ Enketo is the software that Central uses to render forms in a web browser. It is
 
    .. code-block:: console
 
-     $ docker compose build && docker compose up -d
+     $ docker compose build && docker compose stop && docker compose up -d
 
 .. _central-install-digital-ocean-sentry:
 
@@ -638,7 +663,7 @@ This information is only visible to the development team and should never contai
 
    .. code-block:: console
 
-     $ docker compose build && docker compose up -d
+     $ docker compose build && docker compose stop && docker compose up -d
 
 If you wish to use your own Sentry instance to receive your own errors, take these steps:
 
@@ -664,4 +689,4 @@ If you wish to use your own Sentry instance to receive your own errors, take the
 
    .. code-block:: console
 
-     $ docker compose build && docker compose up -d
+     $ docker compose build && docker compose stop && docker compose up -d

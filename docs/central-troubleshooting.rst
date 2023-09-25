@@ -33,9 +33,11 @@ Email sounds like a simple technology but in practice there are many things that
 * You can be assigned an IP address that was previously used for sending spam and is therefore blocked by many mail recipients
 * Your domain may not be recognized by mail recipients and therefore messages from it may be discarded or marked as spam
 
-To address delivery issues, consider using a dedicated email service such as `Mailjet <https://www.mailjet.com>`_. Because Central doesn't send very many emails, using such a service will generally be a cost-effective way of ensuring email delivery. Once you have an account set up, you will need to :ref:`configure Central to use it <central-install-digital-ocean-custom-mail>`.
+To solve delivery issues, we strongly recommend using a dedicated email service such as `Mailjet <https://www.mailjet.com>`_. Central doesn't send many emails, so such a service will generally be a cost-effective way of ensuring email delivery. Once you have an account set up, you will need to :ref:`configure Central to use it <central-install-digital-ocean-custom-mail>`.
 
-If you want to directly send emails from your Central installation, the `mail-tester <https://www.mail-tester.com/>`_ service can help you identify what barriers to email delivery you might have. Create a Central account with the email address that it provides, retrieve your results, and then delete the user. Typically, the first thing you will need to do is :ref:`configure DKIM <central-install-digital-ocean-dkim>` which will provide email recipients confidence that emails were actually sent by your Central server rather than by a spammer pretending to be your server.
+If you do not want to use a dedicated email service, you can try directly sending emails from your Central installation. :ref:`Configure DKIM <central-install-digital-ocean-dkim>` to increase the likelihood of your emails being delivered.
+
+The `mail-tester <https://www.mail-tester.com/>`_ service can help you identify what barriers to email delivery you might have. Create a Central account with the email address that it provides, retrieve your results, and then retire the user. 
 
 .. _troubleshooting-form-preview-:
 
