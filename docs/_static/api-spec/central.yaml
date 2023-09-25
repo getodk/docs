@@ -18,7 +18,7 @@ info:
 
     The `/projects/:id/app-users` subresource can be used to create, manage, and delete **App Users**.
 
-    The `/projects/:id/forms` resource and its subresource `/projects/:id/forms/…/submissions` provide full access to create, manage, and delete **`Form`s and `Submission`s to those Forms**. Each Form is a single ODK XForms survey, and many Submissions (filled-out forms, also sometimes called `Instance`s) may be attached to each Form. These resources are somewhat unique in that they are created by sending XML in the ODK XForms format instead of JSON. One can also retrieve all the multimedia attachments associated with any submission through the `/projects/:id/forms/…/submissions/…/attachments` subresource.
+    The `/projects/:id/forms` resource and its subresource `/projects/:id/forms/…/submissions` provide full access to create, manage, and delete **`Form`s and `Submission`s to those Forms**. Each Form is a single [ODK XForms form](https://getodk.github.io/xforms-spec/), and many Submissions (filled-out forms, also sometimes called `Instance`s) may be attached to each Form. These resources are created by sending XML in the ODK XForms format instead of JSON. One can also retrieve all the multimedia attachments associated with any submission through the `/projects/:id/forms/…/submissions/…/attachments` subresource.
 
     Forms and their submissions are also accessible through two **open standards specifications** that we follow:
 
@@ -26,17 +26,27 @@ info:
 
     * The [OData](http://odata.org/) standard allows data to be shared between platforms for analysis and reporting. Tools like [Microsoft Power BI](https://powerbi.microsoft.com/en-us/) and [Tableau](https://public.tableau.com/en-us/s/) are examples of clients that consume the standard OData format and provide advanced features beyond what we offer. If you are looking for a straightforward JSON output of your data, or you are considering building a visualization or reporting tool, this is your best option.
 
+    Projects can also contain **[`Entities`](/central-api-entity-management/)**, data objects that can be created by `Submission`s and shared between `Form`s to support workflows with multiple steps. Entities are organized into named Datasets and are managed from the `/projects/:id/datasets` resource.
+
+    > ⚠️  In this API and in the related [ODK XForms specification](https://getodk.github.io/xforms-spec/entities), collections of `Entities` are referred to as `Datasets`. The term "Entity List" is used for this concept in the Central frontend UI, user documentation, and all other text intended for end users who are not developers.
+
     Finally, **system information and configuration** is available via a set of specialized resources. Currently, you may set the Usage Reporting configuration and retrieve Server Audit Logs.
 
     ## Changelog
 
     Here major and breaking changes to the API are listed by version.
 
-    ### ODK Central v2023.4
+    ## ODK Central v2023.4
 
     **Added**:
 
     - [DELETE /sessions/current](/central-api-authentication/#logging-out-current-session) logs out the current session.
+
+    **Changed**:
+
+    - If single sign-on (SSO) with Open ID Connect (OIDC) is enabled then HTTP Basic Authentication and login with `POST /v1/session` are disabled.
+    - [GET /v1/projects](/central-api-project-management/#listing-projects) returns list of Datasets if `?dataset=true` parameter is provided in the request.
+    - Version number of the Entity is added to the response of [GET /projects/{projectId}/datasets/{name}/entities.csv](/central-api-dataset-management/#download-dataset) and [Entity OData feed](/central-api-odata-endpoints/#id3)
 
     ## ODK Central v2023.3
 
@@ -181,7 +191,7 @@ info:
 
     * The `Content-Disposition` header now specifies the `filename*` parameter, allowing filenames to contain Unicode.
 
-    ## ODK Central v1.2
+    ### ODK Central v1.2
 
     ODK Central v1.2 adds submission editing, review states, and commenting.
 
@@ -419,6 +429,8 @@ tags:
     * `App User`s are only allowed to access the OpenRosa parts of the API: in essence, they are allowed to list forms, download form definitions, and create new submissions against those forms. They can only authenticate using **App User URL**s.
 
     Next, you will find documentation on each of the three authentication methods described above. It is best not to present multiple credentials. If you do, the first _presented_ scheme out of `/key` token, Bearer, Basic, then Cookie will be used for the request. If the multiple schemes are sent at once, and the first matching scheme fails, the request will be immediately rejected.
+
+    **Note:** If Single Sign-on with Open ID Connect is enabled on the ODK Central, you can neither use HTTP Basic Authentication nor login with `POST /v1/session` endpoint.
 - name: Accounts and Users
   description: |-
     Today, there are two types of accounts: `Users`, which are the administrative accounts held by staff members managing the data collection process, and `App Users`, which are restricted access keys granted per Form within a Project to data collection clients in the field. Although both of these entities are backed by `Actor`s as we explain in the [Authentication section](/central-api-authentication) above, there is not yet any way to directly create or manipulate an Actor. Today, you can only create, manage, and delete Users and App Users.
@@ -453,13 +465,11 @@ tags:
   description: |-
     _(introduced: version 2022.3)_
 
-    Version 2022.3 introduces server-managed Datasets as the first step on our [Entity-based data collection](https://forum.getodk.org/t/entity-based-data-collection/38115) journey.
+    > ⚠️  In this API and in the related [ODK XForms specification](https://getodk.github.io/xforms-spec/entities), collections of `Entities` are referred to as `Datasets`. The term "Entity List" is used for this concept in the Central frontend UI, user documentation, and all other text intended for end users who are not developers.
 
-    An Entity is a specific person, place, or thing. A Dataset is a collection of Entities. A Dataset is defined within a Form, and then a Submission to that Form creates an Entity when that Submission is **approved**. The Dataset definition includes the Dataset name and which Form fields map to which Dataset/Entity Properties, e.g. how to construct an Entity from a Submission.
+    A Dataset is a named collection of [Entities](/central-api-entity-management/) that have the same properties.
 
-    See the [ODK XForms specification](https://getodk.github.io/xforms-spec) for guidance on defining Datasets in Forms.
-
-    Once a Dataset exists, it can be linked to another Form as an Attachment and served as an automatically-updating CSV.
+    A Dataset can be linked to Forms as Attachments. This will make it available to clients as an automatically-updating CSV.
 
     **Related APIs:**
 
@@ -472,9 +482,9 @@ tags:
   description: |-
     _(introduced: version 2023.3)_
 
-    Version 2023.3 brings further core enhancements to Datasets and Entities, including several new endpoints for accessing information about Entities, as well as the ability to _create_,  _update_, and _soft-delete_ Entities via the API.
+    > ⚠️ In this API and in the related [ODK XForms specification](https://getodk.github.io/xforms-spec/entities), collections of `Entities` are referred to as `Datasets`. The term "Entity List" is used for this concept in the Central frontend UI, user facing documentation, and all other text intended for end users who are not developers.
 
-    An Entity is a specific person, place, or thing. Datasets represent collections of Entities. More information about how to set up and use Datasets can be found in the [Datasets](/central-api-dataset-management) section of this documentation.
+    Entities are data objects that can be shared between Forms to support workflows with multiple steps. They can be created either through form design or through this API. A collection of `Entities` is a [Dataset](/central-api-dataset-management/).
 - name: OpenRosa Endpoints
   description: |-
     [OpenRosa](https://bitbucket.org/javarosa/javarosa/wiki/OpenRosaAPI) is an API standard which accompanies the ODK XForms XML standard, allowing compliant servers and clients to use a common protocol to communicate `Form`s and `Submission`s to each other. When survey clients like ODK Collect and Enketo submit Submission data to a Form, this is the API they use.
@@ -2289,6 +2299,13 @@ paths:
           in: query
           description: |-
             _(introduced: Version 1.5)_ If set to true then endpoint also returns the Forms that the authenticated Actor is allowed to see, with those Forms nested within their corresponding Project under a new parameter `formList`. The returned Forms will match structure of Forms requested with extended metadata (including additional `lastSubmission` timestamp and `submissions` and `reviewStates` counts)
+          schema:
+            type: boolean
+          example: "true"
+        - name: datasets
+          in: query
+          description: |-
+            _(introduced: Version 2023.4)_ If set to true then endpoint also returns the Datasets that the authenticated Actor is allowed to see, with those Datasets nested within their corresponding Project under a new parameter `datasetList`. The returned Datasets will match structure of Datasets requested with extended metadata (including additional `lastEntity` timestamp and `entities`)
           schema:
             type: boolean
           example: "true"
@@ -10406,7 +10423,7 @@ paths:
       tags:
       - Dataset Management
       summary: Dataset Metadata
-      description: Returns the metadata of a Dataset including properties and forms
+      description: Returns the metadata of a published Dataset including properties and forms
         that create and consume the Dataset.
       operationId: Dataset Metadata
       parameters:
@@ -10439,6 +10456,9 @@ paths:
                 createdAt: '2018-01-19T23:58:03.395Z'
                 projectId: 1
                 approvalRequired: true
+                sourceForms:
+                - xmlFormId: treeRegistration
+                  name: Tree Registration
                 linkedForms:
                 - xmlFormId: simple
                   name: Simple
@@ -10517,6 +10537,9 @@ paths:
                 createdAt: '2018-01-19T23:58:03.395Z'
                 projectId: 1
                 approvalRequired: true
+                sourceForms:
+                - xmlFormId: treeRegistration
+                  name: Tree Registration
                 linkedForms:
                 - xmlFormId: simple
                   name: Simple
@@ -10585,10 +10608,9 @@ paths:
           content:
             text/csv:
               example: |
-                name,label,first_name,last_name,age,favorite_color
-                54a405a0-53ce-4748-9788-d23a30cc3afa,Amy Aardvark,Amy,Aardvark,45,
-                0ee79b8b-9711-4aa0-9b7b-ece0a109b1b2,Beth Baboon,Beth,Baboon,19,yellow
-                3fc9c54c-7d41-4258-b014-bfacedb95711,Cory Cat,Cory,Cat,,cyan
+                __id,label,geometry,species,circumference_cm,__createdAt,__creatorId,__creatorName,__updates,__updatedAt,__version
+                2c1ee90b-dde8-434b-9985-2eefd8465339,666cm purpleheart,-29.281608 -67.624883 0 0,purpleheart,667,2023-05-31T19:49:28.902Z,22,Alice,1,2023-05-31T19:52:34.467Z,1
+                84ac3a03-9980-4098-93a5-b81fdc6ea749,555cm wallaba,18.921876 77.309451 0 0,wallaba,555,2023-05-31T19:49:20.152Z,22,Alice,0,,1
         403:
           description: Forbidden
           content:
@@ -12076,7 +12098,7 @@ paths:
       description: |-
         The data documents are the straightforward JSON representation of each table of `Submission` data. They follow the [corresponding specification](http://docs.oasis-open.org/odata/odata-json-format/v4.01/odata-json-format-v4.01.html), but apart from the representation of geospatial data as GeoJSON rather than the ODK proprietary format, the output here should not be at all surprising. If you are looking for JSON output of Submission data, this is the best place to look.
 
-        The `$top` and `$skip` querystring parameters, specified by OData, apply `limit` and `offset` operations to the data, respectively. The `$count` parameter, also an OData standard, will annotate the response data with the total row count, regardless of the scoping requested by `$top` and `$skip`. While paging is possible through these parameters, it will not greatly improve the performance of exporting data. ODK Central prefers to bulk-export all of its data at once if possible.
+        The `$top` and `$skip` querystring parameters, specified by OData, apply `limit` and `offset` operations to the data, respectively. The `$count` parameter, also an OData standard, will annotate the response data with the total row count, regardless of the scoping requested by `$top` and `$skip`. If `$top` parameter is provided in the request then the response will include `@odata.nextLink` that you can use as is to fetch the next set of data. While paging is possible through these parameters, it will not greatly improve the performance of exporting data. ODK Central prefers to bulk-export all of its data at once if possible.
 
         As of ODK Central v1.1, the [`$filter` querystring parameter](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948) is partially supported. In OData, you can use `$filter` to filter by any data field in the schema. The operators `lt`, `le`, `eq`, `ne`, `ge`, `gt`, `not`, `and`, and `or` are supported. The built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second` are supported. These supported elements may be combined in any way, but all other `$filter` features will cause an error.
 
@@ -12569,7 +12591,7 @@ paths:
       description: |-
         A data document is the straightforward JSON representation of all the `Entities` in a `Dataset`.
 
-        The `$top` and `$skip` querystring parameters, specified by OData, apply `limit` and `offset` operations to the data, respectively. The `$count` parameter, also an OData standard, will annotate the response data with the total row count, regardless of the scoping requested by `$top` and `$skip`. While paging is possible through these parameters, it will not greatly improve the performance of exporting data. ODK Central prefers to bulk-export all of its data at once if possible.
+        The `$top` and `$skip` querystring parameters, specified by OData, apply `limit` and `offset` operations to the data, respectively. The `$count` parameter, also an OData standard, will annotate the response data with the total row count, regardless of the scoping requested by `$top` and `$skip`. If `$top` parameter is provided in the request then the response will include `@odata.nextLink` that you can use as is to fetch the next set of data.
 
         The [`$filter` querystring parameter](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948)can be used to filter by any data field in the system-level schema, but not the Dataset properties. The operators `lt`, `le`, `eq`, `ne`, `ge`, `gt`, `not`, `and`, and `or` are supported. The built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second` are supported.
 
@@ -12646,8 +12668,37 @@ paths:
         example: __id, label, name
       responses:
         200:
-          description: OK
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityOdata'
+              example:
+                '@odata.context': https://your.odk.server/v1/projects/7/datasets/trees.svc/$metadata#Entities
+                value:
+                - __id: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
+                  label: 25cm purpleheart                  
+                  geometry: 32.7413996 -117.1394617 53.80000305175781 13.933,
+                  species: purpleheart,
+                  circumference_cm: 2
+                  __system:
+                    createdAt: '2022-12-09T19:41:16.478Z'
+                    creatorId: 39
+                    creatorName: Tree surveyor
+                    updates: 1,
+                    updatedAt: '2023-04-31T19:41:16.478Z'
+                    version: 1
+                - __id: aeebd746-3b1e-4a24-ba9d-ed6547bd5ff1
+                  label: 345cm mora
+                  __system:
+                    createdAt: '2023-04-09T19:10:16.128Z'
+                    creatorId: 39
+                    creatorName: Tree surveyor
+                    updates: 1,
+                    updatedAt: '2023-04-31T19:41:16.478Z'
+                    version: 2
+                  geometry: 47.722581 18.562111 0 0,
+                  species: mora,
+                  circumference_cm: 345            
         403:
           description: Forbidden
           content:
@@ -13899,6 +13950,39 @@ components:
           type: string
           description: The name of the property that is changed.
           example: name
+    EntityOdata:
+      type: object
+      properties:
+        '@odata.context':
+          type: string
+        value:
+          type: array
+          items:
+            type: object
+            properties:
+              __id:
+                type: string
+              label:
+                type: string
+              __system:
+                type: object
+                properties:
+                  createdAt:
+                    type: string
+                  creatorId:
+                    type: string
+                  creatorName:
+                    type: string
+                  updates:
+                    type: string
+                  updatedAt:
+                    type: string
+              geometry:
+                type: string
+              species:
+                type: string
+              circumference_cm:
+                type: string
     DataExample:
       type: object
       properties:
@@ -14266,8 +14350,15 @@ components:
     DatasetMetadata:
       properties:
         linkedForms:
-          $ref: '#/components/schemas/EntitySummaryFields'
+          type: array
+          items:
+            $ref: '#/components/schemas/FormKeyValue'
           description: Forms that consume data from the Dataset
+        sourceForms:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormKeyValue'
+          description: Forms that create Entities in the Dataset
         properties:
           type: array
           description: All properties of the Dataset
