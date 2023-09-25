@@ -31,7 +31,7 @@ Here are some of the major features we support today:
    - With an interactive table preview of submission data
    - Support for reviewing, commenting on, and editing submissions after upload
    - Connectable to analysis and dashboard applications like Excel, Power BI, or R over OData
-   - Server-managed datasets for registration/follow-up workflows
+   - Entities for registration/follow-up workflows
  - Integrated checklist-based help system
  - Clean and modern REST API for integration and extensibility
  - High performance on low-cost hardware or cloud providers
