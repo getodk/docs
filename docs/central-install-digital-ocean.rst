@@ -580,7 +580,9 @@ Central is compatible with any identity provider that uses the OpenID Connect (O
 
   If you configure an identity provider that does not require email proof of ownership, it will be possible for users to impersonate each other. This could lead to users gaining access to Central resources that they are not intended to access.
 
-If SSO is enabled, some features in Central will stop working. Currently, OData feeds will not be accessible in tools like Power BI or Excel and more broadly, the API will not be available. This means that pyODK and ruODK will not be able to fetch data from Central.
+.. warning::
+
+  Enabling SSO currently disables API access. This means you won't be able to use PowerBI, Excel, ruODK, pyODK or other such tools to directly access data on your server. You'll need to export CSVs instead.
 
 To enable SSO in Central, you will first need to configure your identity provider. You will then need to configure Central to provide information from your identity provider, specifically the issuer URL, client ID, and client secret.
 
