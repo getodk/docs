@@ -570,15 +570,25 @@ DKIM is a security trust protocol which is used to help verify mail server ident
 Enabling Single Sign-on
 -----------------------
 
-By default, users log into Central using an email address and password. However, if Single Sign-on (SSO) is enabled, then Central will no longer manage users' passwords and will instead forward users to a separate login server. If all the users of your Central installation already have an account on another site, it may be possible to configure Central so that users can use that account to log into Central. Examples of this include Google Workspace and Azure Active Directory. Under this setup, the login server is called the "identity provider." If SSO is enabled, the identity provider will manage users' passwords, not Central.
+By default, users log into Central using an email address and password. However, if Single Sign-on (SSO) is enabled, then Central will no longer manage users' passwords and will instead forward users to a separate login server. This can be a convenient option if all of your users already have accounts on a service like Google Workspace or Azure Active Directory. Under this setup, the login server is called the "identity provider." If SSO is enabled, the identity provider will manage users' passwords, not Central.
 
-The identity provider may enforce different requirements for login than Central does on its own. For example, Central requires that new passwords are at least 10 characters, but it does not require other password characteristics, such as the presence of certain symbols. However, if SSO is enabled in Central, and if the identity provider is configured to require specific password characteristics, then users will need to fulfill those requirements in order to log into Central. As another example, on its own, Central does not support two-factor authentication. However, if SSO is enabled, and if the identity provider is configured to require two-factor authentication, then users will need to complete two-factor authentication before logging into Central.
+Using a separate identity provider can allow you to enforce stricter security requirements than Central does. For example, Central requires that new passwords are at least 10 characters, but it does not require other password characteristics, such as the presence of certain symbols. However, if SSO is enabled in Central, and if the identity provider is configured to require specific password characteristics, then users will need to fulfill those requirements in order to log into Central. As another example, on its own, Central does not support two-factor authentication. However, if SSO is enabled, and if the identity provider is configured to require two-factor authentication, then users will need to complete two-factor authentication before logging into Central.
 
-Central is not compatible with every identity provider. Central uses the OpenID Connect (OIDC) protocol. When SSO is enabled in Central, Central does not manage passwords, but it still identifies users using their email address. Central assumes that the identity provider verifies email addresses, requiring users to prove ownership of the email address they specify. If that is not the case, then do not enable SSO in Central.
+Central is compatible with any identity provider that uses the OpenID Connect (OIDC) protocol and is configured to require user email addresses. When SSO is enabled in Central, Central does not manage passwords, but it still identifies users using their email address. Central assumes that the identity provider verifies email addresses, requiring users to prove ownership of the email address they specify. If that is not the case, then do not enable SSO in Central.
 
-If SSO is enabled, some features in Central will stop working. OData feeds will not be accessible in tools like Power BI or Excel. The API will not be available, which means that pyODK and ruODK will not be able to fetch data from Central. In the future, we hope to provide a way to access OData and the API when SSO is enabled.
+.. warning::
 
-To enable SSO in Central, you will need to provide information from your identity provider, specifically the issuer URL, client ID, and client secret. If you use Google Workspace or Azure Active Directory, you can follow the instructions below to find this information.
+  If you configure an identity provider that does not require email proof of ownership, it will be possible for users to impersonate each other. This could lead to users gaining access to Central resources that they are not intended to access.
+
+If SSO is enabled, some features in Central will stop working. Currently, OData feeds will not be accessible in tools like Power BI or Excel and more broadly, the API will not be available. This means that pyODK and ruODK will not be able to fetch data from Central.
+
+To enable SSO in Central, you will first need to configure your identity provider. You will then need to configure Central to provide information from your identity provider, specifically the issuer URL, client ID, and client secret.
+
+#. Follow your identity provider's documentation on configuring a new OIDC application (for example: `Google <https://developers.google.com/identity/openid-connect/openid-connect>`_, `Azure <https://learn.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app>`_, `onelogin <https://onelogin.service-now.com/support?id=kb_article&sys_id=2fd988e697b72150c90c3b0e6253af7f&kb_category=93e869b0db185340d5505eea4b961934>`_, `Auth0 <https://auth0.com/docs/get-started/applications/application-settings>`_). When prompted to specify a redirect or callback URL, provide the following (replace ``my-domain`` with your actual domain):
+
+   .. code-block:: console
+
+    https://my-domain/v1/oidc/callback
 
 #. In ``.env``, set ``OIDC_ENABLED`` to ``true``. Set ``OIDC_ISSUER_URL`` to the issuer URL that you obtained from your identity provider, ``OIDC_CLIENT_ID`` to the client ID, and ``OIDC_CLIENT_SECRET`` to the client secret.
 
@@ -610,7 +620,7 @@ When you enable SSO, users will use their account on the identity provider to lo
 
 Central users will be able to change their display name shown in Central and to choose a different name from what is shown in the identity provider. However, because Central identifies users by their email address, most users will not be allowed to change their email address. Only a Central Administrator will be able to change the email address associated with a Central account. That will be necessary if a user's email address changes in the identity provider. In that case, an Administrator will need to manually change the user's email address in Central to match their new address in the identity provider.
 
-If a Central Administrator changes their own email address to one that does not match the identity provider, they may lose access to Central. If they are the only Administrator, they will need to disable SSO, set a password :ref:`by command line <central-command-line-user-set-password>`, log in, fix their email address, then re-enable SSO.
+If a Central Administrator changes their own email address to one that does not match the identity provider, they may lose access to Central. If they are the only Administrator, they will need to use :ref:`the command line <central-command-line-user-set-password>` to create a new Central Administrator that they do have access to.
 
 Logout is not centralized, which means that when a user logs out of Central, that will not log them out of the identity provider. Conversely, when a user logs out of the identity provider, that will not log them out of Central. If a user logs out of Central, then goes to log back in, they may find that login is nearly instantaneous if they are still logged into the identity provider. That is, they may find that they are not required to log into the identity provider again in order to log into Central.
 
@@ -650,18 +660,6 @@ To disable SSO:
    .. code-block:: console
 
      $ docker compose build && docker compose stop && docker compose up -d
-
-Using Google as an Identity Provider
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-TODO Setting up the identity provider
-
-TODO Google Chrome profiles
-
-Using Azure as an Identity Provider
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-TODO
 
 .. _central-install-digital-ocean-enketo:
 
