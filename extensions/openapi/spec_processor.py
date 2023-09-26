@@ -76,7 +76,7 @@ class SpecProcessor:
               'in': p.get('in') if p.get('in') != 'path' else '', 
               'type': p.get('schema').get('type'),
               'example': p.get('example'),
-              'description': p.get('description'),
+              'description': rst_helper.md2html(p.get('description')) ,
               'hasItems': False
             }, operation.get('parameters'))
           }
