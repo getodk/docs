@@ -203,7 +203,7 @@ class SpecProcessor:
             'isArray': True,
             'name': schema.get('name'),
             'description': rst_helper.md2html(schema.get('description')),
-            'example': json.dumps(schema.get('example')),
+            'example': json.dumps(schema.get('example')) if schema.get('example') != None else "",
             'hasItems': len(items) > 0,
             'items': items
         }
@@ -235,7 +235,7 @@ class SpecProcessor:
             'type': schema.get('type'),
             'description': rst_helper.md2html(schema.get('description')),
             'isArray': False,
-            'example': schema.get('example') if schema.get('type') != 'boolean' else str(schema.get('example')).lower(),
+            'example': schema.get('example') if schema.get('type') != 'boolean' else (str(schema.get('example')).lower() if schema.get('example') != None else ""),
             'hasItems': False,
             'items': []
         }
