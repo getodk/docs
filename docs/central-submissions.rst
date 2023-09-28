@@ -181,7 +181,7 @@ If you use `Python <https://www.python.org/>`_, we recommend `pyODK <https://git
 
 If you use `R <https://www.r-project.org/>`_, we recommend `ruODK <https://docs.ropensci.org/ruODK/>`_ for downloading submissions via an OData feed into R. ruODK is developed and supported by ODK community members.
 
-You can also access the OData feed yourself. The OData feed is an easily consumable JSON data format and offers a metadata schema, some filtering and paging options, and more. To learn more about the OData feed, click the :guilabel:`API Access` button or see the `API documentation <https://odkcentral.docs.apiary.io/#reference/odata-endpoints>`_ directly.
+You can also access the OData feed yourself. The OData feed is an easily consumable JSON data format and offers a metadata schema, some filtering and paging options, and more. To learn more about the OData feed, click the :guilabel:`API Access` button or see the `API documentation </central-api-odata-endpoints>`_ directly.
 
 .. _central-submissions-media-downloads:
 .. _setting-up-media-downloads:
