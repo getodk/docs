@@ -76,7 +76,7 @@ class SpecProcessor:
               'in': p.get('in') if p.get('in') != 'path' else '', 
               'type': p.get('schema').get('type'),
               'example': p.get('example'),
-              'description': p.get('description'),
+              'description': rst_helper.md2html(p.get('description')) ,
               'hasItems': False
             }, operation.get('parameters'))
           }
@@ -106,36 +106,36 @@ class SpecProcessor:
           if details.get('content') is None: continue
           contents = list(details.get('content'))
           if len(contents) == 0: continue
-          # we support just one content type for one status code
-          contentType = list(details.get('content'))[0]
-          if contentType == 'text/csv' or contentType == 'text/html' or contentType == 'application/xml' or contentType == 'text/xml':
-              if 'example' in details.get('content').get(contentType):
-                example = {'lines': details.get('content').get(contentType).get('example').split('\n')}
-              else:
-                  example = {'lines': ['No Example'] }
-              schema = {
-                  'type': 'string',
-                  'description': '',
-                  'hasItems': False,
-                  'items': []
-              }
-          else:
-              schema = self.resolveSchema(details.get('content').get(contentType).get('schema'))
-              example = ''
-              if 'example' in details.get('content').get(contentType):
-                  example = details.get('content').get(contentType).get('example')
-              else:
-                  example = self.getExampleValue(schema[0]) if type(schema) == list else self.getExampleValue(schema)
 
-              example = json_helper.getJson(example)
-              example = {'lines': example.split('\n')}
+          for contentType, content in details.get('content').items():
+            if contentType == 'text/csv' or contentType == 'text/html' or contentType == 'application/xml' or contentType == 'text/xml':
+                if 'example' in content:
+                    example = {'lines': content.get('example').split('\n')}
+                else:
+                    example = {'lines': ['No Example'] }
+                schema = {
+                    'type': 'string',
+                    'description': '',
+                    'hasItems': False,
+                    'items': []
+                }
+            else:
+                schema = self.resolveSchema(content.get('schema'))
+                example = ''
+                if 'example' in content:
+                    example = content.get('example')
+                else:
+                    example = self.getExampleValue(schema[0]) if type(schema) == list else self.getExampleValue(schema)
 
-          result.append({
-            'code': code,
-            'contentType': contentType,
-            'example': example,
-            'schemas': schema
-          })
+                example = json_helper.getJson(example)
+                example = {'lines': example.split('\n')}
+
+            result.append({
+                'code': code,
+                'contentType': contentType,
+                'example': example,
+                'schemas': schema
+            })
         
 
 
@@ -203,7 +203,7 @@ class SpecProcessor:
             'isArray': True,
             'name': schema.get('name'),
             'description': rst_helper.md2html(schema.get('description')),
-            'example': json.dumps(schema.get('example')),
+            'example': json.dumps(schema.get('example')) if schema.get('example') != None else "",
             'hasItems': len(items) > 0,
             'items': items
         }
@@ -235,7 +235,7 @@ class SpecProcessor:
             'type': schema.get('type'),
             'description': rst_helper.md2html(schema.get('description')),
             'isArray': False,
-            'example': schema.get('example') if schema.get('type') != 'boolean' else str(schema.get('example')).lower(),
+            'example': schema.get('example') if schema.get('type') != 'boolean' else (str(schema.get('example')).lower() if schema.get('example') != None else ""),
             'hasItems': False,
             'items': []
         }

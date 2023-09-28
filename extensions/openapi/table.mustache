@@ -11,7 +11,7 @@
         *({{.}})*
         {{/ in }}
 
-      - {{ type }}
+      - ``{{ type }}``
       
         {{# description }}
         .. raw:: html
@@ -25,12 +25,12 @@
         {{# hasItems }}
         {{# isArray }}
         {{# items }}
-        {{# items.0}}
+        {{# hasItems }}
         .. collapse:: expand
           :class: nested-schema
-        {{/ items.0}}
         
           {{> table }}
+        {{/ hasItems }}
         {{/ items}}
         {{/ isArray }}
 
