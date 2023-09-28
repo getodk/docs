@@ -20,7 +20,7 @@ First, you'll need to get to the tools. You'll need to log into your server's co
 
 Once you have a command line in front of you (it should say something like ``root@server-name:~#``), you'll want to enter the following commands:
 
-.. code-block:: console
+.. code-block:: bash
 
   $ cd central
   $ docker compose exec service odk-cmd
@@ -34,7 +34,7 @@ Creating a Web User by command line
 
 If you followed our :doc:`DigitalOcean installation steps <central-install-digital-ocean>`, then you've already done this once down in :ref:`this section <central-install-digital-ocean-account>`. You shouldn't have to do this again unless you deleted all your users. But if you do, please start by performing the steps above in the :ref:`central-command-line-basics` section. Then, this is what you would type, assuming your email address is ``example@getodk.org``:
 
-.. code-block:: console
+.. code-block:: bash
 
   $ docker compose exec service odk-cmd --email example@getodk.org user-create
 
@@ -49,7 +49,7 @@ You can always reset any user's password from the website login page, which will
 
 Please start by performing the steps above in the :ref:`central-command-line-basics` section. Once you do, here is what you would type, assuming the email address of the account you wish to set a password for is ``example@getodk.org``:
 
-.. code-block:: console
+.. code-block:: bash
 
   $ docker compose exec service odk-cmd --email example@getodk.org user-set-password
 
@@ -64,7 +64,7 @@ In the current release of Central, all users created by the website interface ar
 
 Please start by performing the steps above in the :ref:`central-command-line-basics` section. Once you do, here is what you would type, assuming the email address of the account you wish to make an administrator is ``example@getodk.org``:
 
-.. code-block:: console
+.. code-block:: bash
 
   $ docker compose exec service odk-cmd --email example@getodk.org user-promote
 

@@ -41,7 +41,7 @@ Upgrade steps
 
 #. **Get the latest infrastructure version**.
 
-.. code-block:: console
+.. code-block:: bash
 
   $ cd central
   $ git pull
@@ -52,13 +52,13 @@ Upgrade steps
 
 3. **Get the latest client and server**.
 
-.. code-block:: console
+.. code-block:: bash
 
   $ git submodule update -i
 
 4. **Build** from the latest code you just fetched. The ``pull`` option ensures all Docker images are up-to-date.
 
-.. code-block:: console
+.. code-block:: bash
 
   $ docker compose pull && docker compose build --pull
 
@@ -68,7 +68,7 @@ Upgrade steps
 
 5. **Clean up unused Docker images**
 
-.. code-block:: console
+.. code-block:: bash
 
   $ docker image prune
 
@@ -81,7 +81,7 @@ You'll be asked to confirm the removal of all dangling images. Agree by typing t
 
 6. Restart the server
 
-.. code-block:: console
+.. code-block:: bash
 
   $ docker compose stop && docker compose up -d
 
@@ -113,18 +113,18 @@ Upgrading to Central v2023.4
  
      #. **Copy any existing DKIM files to a new location**.
 
-        .. code-block:: console
+        .. code-block:: bash
 
          $ cd central
 
-        .. code-block:: console
+        .. code-block:: bash
 
          $ mkdir files/mail
          $ test -f files/dkim/rsa.private && cp files/dkim/rsa.private files/mail/rsa.private 
 
      #. **Delete the old DKIM folder** and its contents.
 
-        .. code-block:: console
+        .. code-block:: bash
 
          $ rm -r files/dkim
 
@@ -138,11 +138,11 @@ Upgrading to Central v2023.4
 
      .. note:: After the upgrade, consider deleting the now unused DKIM folder and its contents.
 
-        .. code-block:: console
+        .. code-block:: bash
 
          $ cd central
 
-        .. code-block:: console
+        .. code-block:: bash
 
          $ rm -r files/dkim
 
@@ -173,7 +173,7 @@ Upgrading to Central v2023.3
 
     #. **If you use the default database, clean up old data.** We have found that this step often failed in the v2023.2 upgrade and have made it more reliable. This is safe to run again even if you already successfully deleted the old database. If you are using a custom database, you don't need to do anything.
 
-       .. code-block:: console
+       .. code-block:: bash
 
         $ touch ./files/postgres14/upgrade/delete-old-data \
           && docker compose up --abort-on-container-exit postgres
@@ -204,13 +204,13 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
 #. **Go to the central folder.**
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cd central
 
 #. **Upgrade Docker if needed.** Check to see if you have Docker Engine v23.x and Docker Compose v2.16.x or greater:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker --version && docker compose version
 
@@ -218,13 +218,13 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
 #. **Remove docker-compose.** You will be using ``docker compose`` from now on (the dash has been replaced with a space).
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ rm -f `which docker-compose`
 
 #. **Migrate configuration customizations.** This will simplify future Central upgrades. First, check what files have been customized:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ git status
 
@@ -237,13 +237,13 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
      #. Make a backup copy of the file. You will manually copy differences to your local computer later so this is for additional protection:
 
-        .. code-block:: console
+        .. code-block:: bash
 
           $ cp files/service/config.json.template files/service/config.json.template.bak
 
      #. Copy changes to your local computer:
 
-        .. code-block:: console
+        .. code-block:: bash
 
           $ git diff files/service/config.json.template
 
@@ -251,7 +251,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
      #. Open the ``.env`` file for editing:
 
-        .. code-block:: console
+        .. code-block:: bash
 
           $ nano .env
 
@@ -302,7 +302,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
      #. Discard all ``files/service/config.json.template`` customizations. Make sure you have correctly copied all of them into ``.env``. You may want to keep the copy on your local computer until you have verified that everything works.
 
-        .. code-block:: console
+        .. code-block:: bash
 
           $ git checkout -- files/service/config.json.template
 
@@ -311,13 +311,13 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
      #. Make a backup copy of the file. You will manually copy differences to your local computer later so this is for additional protection:
 
-        .. code-block:: console
+        .. code-block:: bash
 
           $ cp docker-compose.yml docker-compose.yml.bak
 
      #. Copy changes to your local computer:
 
-        .. code-block:: console
+        .. code-block:: bash
 
           $ git diff docker-compose.yml
 
@@ -329,7 +329,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
      #. If you specify a value for ``SERVICE_NODE_OPTIONS``, open the ``.env`` file for editing:
 
-        .. code-block:: console
+        .. code-block:: bash
 
           $ nano .env
 
@@ -343,7 +343,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
      #. Discard all ``docker-compose.yml`` customizations. Make sure you have correctly copied all of them into ``.env``. You may want to keep the copy on your local computer until you have verified that everything works.
 
-        .. code-block:: console
+        .. code-block:: bash
 
           $ git checkout -- docker-compose.yml
 
@@ -352,7 +352,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
      #. Stash changes so they can be applied after the upgrade. These are considered advanced customizations and you may need to resolve merge conflicts when you re-apply them.
 
-        .. code-block:: console
+        .. code-block:: bash
 
           $ git stash
 
@@ -375,19 +375,19 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
    
        #. **Get the latest infrastructure version.**
    
-          .. code-block:: console
+          .. code-block:: bash
    
              $ git pull
    
        #. **Get the latest client and server.**
    
-          .. code-block:: console
+          .. code-block:: bash
    
              $ git submodule update -i
    
        #. **Check that you have enough disk space available.** If you are prompted for a password, enter the system superuser password (not a Central password). You will see a message about how much space is required and if you have enough free space to proceed.
    
-          .. code-block:: console
+          .. code-block:: bash
    
              $ sudo ./files/postgres14/upgrade/check-available-space
    
@@ -395,26 +395,26 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
    
        #. **Create a file to prove that you're carefully reading these instructions.** This is required to continue.
    
-          .. code-block:: console
+          .. code-block:: bash
    
              $ touch ./files/allow-postgres14-upgrade
    
        #. **Reapply any advanced customizations**. If you had made notes on advanced configurations and/or stashed some edited files, reapply those advanced customizations now:
 
-          .. code-block:: console
+          .. code-block:: bash
 
              $ git stash pop
 
        #. **Build from the latest code you just fetched.**
    
-          .. code-block:: console
+          .. code-block:: bash
    
              $ docker compose pull
              $ docker compose build --pull
    
        #. **Start the database upgrade and wait for the process to exit.** This is where the new PostgreSQL 14 database is made and data copied into it. This will take a long time if you have a lot of data and/or a slow server.
    
-          .. code-block:: console
+          .. code-block:: bash
    
              $ docker compose up postgres
    
@@ -422,7 +422,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
    
        #. **Check the upgrade success file has been created.**
    
-          .. code-block:: console
+          .. code-block:: bash
    
              $ ls ./files/postgres14/upgrade/upgrade-successful
    
@@ -430,7 +430,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
    
        #. **Restart the server.**
    
-          .. code-block:: console
+          .. code-block:: bash
    
                $ docker compose up -d
    
@@ -440,7 +440,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
    
           #. **Remove unused Docker images**.
 
-             .. code-block:: console
+             .. code-block:: bash
 
                  $ docker image prune
 
@@ -448,13 +448,13 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
           #. **See how much space the old database takes**. The upgrade process performs a copy and leaves the old database intact.
 
-             .. code-block:: console
+             .. code-block:: bash
 
                   $ docker compose up postgres
 
           #. **Delete the old data**. Make sure you have verified that the server works as expected first.
 
-             .. code-block:: console
+             .. code-block:: bash
    
                $ touch ./files/postgres14/upgrade/delete-old-data \
                   && docker compose up --abort-on-container-exit postgres
@@ -471,7 +471,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
    
        #. **Determine whether upgrading your database requires downtime**. If it does, stop Central before continuing:
    
-          .. code-block:: console
+          .. code-block:: bash
    
             $ docker compose stop
    
@@ -485,7 +485,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
        #. **Create a file to prove that you're carefully reading these instructions.** This is required to continue.
    
-          .. code-block:: console
+          .. code-block:: bash
    
             $ touch ./files/allow-postgres14-upgrade
    
@@ -518,7 +518,7 @@ In v1.5.3, we updated Central's Sentry configuration to match a change to the Se
 
 If you have changed your Sentry configuration, that means that you have modified ``files/service/config.json.template``. If you run the ``git pull`` command, then you will see an error message like the following:
 
-.. code-block:: console
+.. code-block:: bash
 
  error: Your local changes to the following files would be overwritten by merge:
          files/service/config.json.template
@@ -526,7 +526,7 @@ If you have changed your Sentry configuration, that means that you have modified
 
 Don't worry, nothing bad happens if you see this. To get around this error, run this set of commands instead of ``git pull``:
 
-.. code-block:: console
+.. code-block:: bash
 
  mv files/service/config.json.template config-tmp
  git pull
@@ -536,7 +536,7 @@ If you see an error message when you run this set of commands, copy and paste yo
 
 If you are using your own Sentry instance, then you must complete one additional step. You will need to modify ``files/service/config.json.template``. Below the line that contains ``"sentry": {``, insert a new line that looks like this:
 
-.. code-block:: console
+.. code-block:: bash
 
  "orgSubdomain": "SENTRY_ORGANIZATION_SUBDOMAIN",
 
@@ -556,7 +556,7 @@ Upgrading to Central v1.3
 
 Before upgrading, run ``docker-compose --version`` to confirm you have docker-compose v1.28.3 or later. If you don't, upgrade with these commands from `Docker's documentation <https://docs.docker.com/compose/install/#install-compose-on-linux-systems>`_.
 
-.. code-block:: console
+.. code-block:: bash
 
  sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
  sudo chmod +x /usr/local/bin/docker-compose
@@ -571,7 +571,7 @@ In v1.2, we added some advanced features to Central's server configuration. Thes
 
 Since you have made your own changes to the ``.env`` file to set Central up for your environment, you will see an error message when you run the ``git pull`` command:
 
-.. code-block:: console
+.. code-block:: bash
 
  error: Your local changes to the following files would be overwritten by merge:
          .env
@@ -579,7 +579,7 @@ Since you have made your own changes to the ``.env`` file to set Central up for 
 
 Don't worry, nothing bad happens if you see this. To get around this error, run this set of commands instead of ``git pull``:
 
-.. code-block:: console
+.. code-block:: bash
 
  mv .env env-tmp
  git pull

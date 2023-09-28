@@ -1070,7 +1070,7 @@ If you have set up :doc:`Android Debug Bridge <collect-adb>`, you can connect yo
 
 Now, at the command line, from the root directory of the :file:`odk-docs` repo:
 
-.. code-block:: console
+.. code-block:: bash
 
   python ss.py {document-name}/{image-name}
 
@@ -1175,7 +1175,7 @@ Capturing video from Android
 
 `Android Debug Bridge (ADB) <https://developer.android.com/studio/command-line/adb.html>`_ can be used to capture a screen recording from an Android app.
 
-.. code-block:: console
+.. code-block:: bash
 
   $ adb shell screenrecord /sdcard/example.mp4
 
@@ -1185,7 +1185,7 @@ The video file is saved in your Android device to a file at :file:`/sdcard/examp
 
 To pull the video locally:
 
-.. code-block:: console
+.. code-block:: bash
 
   $ adb pull /sdcard/example.mp4 local/path/to/save/to
 
@@ -1221,7 +1221,7 @@ Use the :rst:dir:`code-block` directive to insert code samples. Specify the lang
 
     print("Hello ODK!")
 
-  .. code-block:: console
+  .. code-block:: bash
 
     $ python --version
 

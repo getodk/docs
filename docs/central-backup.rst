@@ -53,13 +53,13 @@ Restoring a Direct Backup file to a Central instance will entirely replace all o
 
 #. Now you'll want to put it in a special place where it can be used by the restore tool: :file:`/data/transfer`. If, for example, you uploaded the file to :file:`/root/backup-2018-01-01T00:00:00Z.zip`, you'll want to run this command in order to move it:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      mv /root/backup-2018-01-01T00:00:00Z.zip /data/transfer/
 
 #. Now you need to run the restore script. **Please note again** that **all data** on this server is about to be replaced by the backup snapshot data! Anybody currently using the server will be kicked off and all changes made since the last backup will be lost. When you are sure you wish to proceed, run the following commands:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      cd
      cd central
@@ -67,7 +67,7 @@ Restoring a Direct Backup file to a Central instance will entirely replace all o
 
    You'll have to replace the filename following :file:`/data/transfer` with your own snapshot filename, and the text ``SECRET_PASSPHRASE`` with the passphrase you typed when backups were first set up. If you did not set up a passphrase, immediately press Enter after you have finished putting the :file:`.zip` filename in:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      docker compose exec service node /usr/odk/lib/bin/restore.js /data/transfer/backup-2018-01-01T00:00:00Z.zip
 

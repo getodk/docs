@@ -72,7 +72,7 @@ If you are on Windows, open a PowerShell or command prompt window. Change direct
 
 If you are on a Mac, open the terminal. Change directories to your Desktop.
 
-.. code-block:: console
+.. code-block:: bash
 
   $ cd ~/Desktop
 
@@ -95,13 +95,13 @@ If you are on Windows, run:
 
     Check **$env:path** to be sure :file:`path\\OpenSSL-Win64\\bin` is in there.If it is not, run the following command in Powershell:
 
-  .. code-block:: console
+  .. code-block:: bash
 
     > $env:path = $env:path + ";path to OpenSSL-Win64\bin"
 
 If you are on a Mac, run:
 
-.. code-block:: console
+.. code-block:: bash
 
   $ openssl genrsa -out MyPrivateKey.pem 2048
 
@@ -114,7 +114,7 @@ Next, you need to extract the public key for this private key.
 
 Run the following command:
 
-.. code-block:: console
+.. code-block:: bash
 
   openssl rsa -in MyPrivateKey.pem -inform PEM -out MyPublicKey.pem -outform PEM -pubout
 

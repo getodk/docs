@@ -79,7 +79,7 @@ Briefcase will ask for the directory on your computer where you have placed Coll
 
   If you have Android developer tools installed, another option is to use :doc:`the Android Debug Bridge <collect-adb>` to pull filled forms:
 
-  .. code-block:: console
+  .. code-block:: bash
 
       $ adb pull <collect-directory>/instances
 
@@ -252,7 +252,7 @@ Getting CLI help
 
 To get help about the command line operation:
 
-.. code-block:: console
+.. code-block:: bash
 
   $ java -jar {path/to/briefcase-jar-file} --help
 
@@ -264,7 +264,7 @@ Pulling forms from Aggregate
 - CLI flag: `-plla` or `--pull_aggregate`
 - Usage:
 
-  .. code-block:: console
+  .. code-block:: bash
 
       $ java -jar {path/to/briefcase-jar-file} --pull_aggregate --storage_directory {path/to/briefcase-storage-location} --aggregate_url {aggregate-url} --odk_username {username} --odk_password {password}
 
@@ -298,7 +298,7 @@ This command assumes you have already copied and unzipped the :file:`odk` file :
 - CLI flag: `-pc` or `--pull_collect`
 - Usage:
 
-  .. code-block:: console
+  .. code-block:: bash
 
       $ java -jar {path/to/briefcase-jar-file} --pull_collect --storage_directory {path/to/briefcase-storage-location} --odk_directory {path/to/unzipped-odk-file}
 
@@ -324,7 +324,7 @@ Pushing forms to Aggregate
 - CLI flag: `-psha` or `--push_aggregate`
 - Usage:
 
-  .. code-block:: console
+  .. code-block:: bash
 
       $ java -jar {path/to/briefcase-jar-file} --push_aggregate --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --aggregate_url {aggregate-url} --odk_username {username} --odk_password {password}
 
@@ -354,7 +354,7 @@ Exporting forms to CSV
 - CLI flag: `-e` or `--export`
 - Usage:
 
-  .. code-block:: console
+  .. code-block:: bash
 
     $ java -jar {path/to/briefcase-jar-file} --export --form_id {form-id} --storage_directory {path/to/briefcase-storage-location} --export_directory {path/to/output-directory} --export_filename {output-file-name.csv}
 
@@ -386,7 +386,7 @@ Clear saved preferences
 - CLI flag: `-c` or `--clear_prefs`
 - Usage:
 
-  .. code-block:: console
+  .. code-block:: bash
 
     $ java -jar {path/to/briefcase-jar-file} --clear_prefs
 
@@ -455,7 +455,7 @@ You can set all sorts of new log configurations to adapt Briefcase to your needs
 
 Once you have your configuration file ready, you can use it by adding a `-Dlogging.config` argument when launching Briefcase:
 
-.. code-block:: console
+.. code-block:: bash
 
   $ java -Dlogging.config="{path/to/logback.xml}" -jar {path/to/briefcase-jar-file}
 

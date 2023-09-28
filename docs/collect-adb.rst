@@ -54,7 +54,7 @@ Form definitions are stored on the device in the :file:`forms` subdirectory of :
 Loading blank forms
 ~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: console
+.. code-block:: bash
 
   $ adb push local/path/to/form.xml <collect-directory>/forms/form.xml
 
@@ -69,7 +69,7 @@ Loading blank forms
 Deleting forms
 ~~~~~~~~~~~~~~~
 
-.. code-block:: console
+.. code-block:: bash
 
   $ adb shell rm -d <collect-directory>/forms/form.xml
 
@@ -80,7 +80,7 @@ Downloading forms to your computer
 
 To download all filled records from a device:
 
-.. code-block:: console
+.. code-block:: bash
 
   $ adb pull <collect-directory>/instances/*
 
@@ -99,7 +99,7 @@ Collect stores form definition and form record state information
 in a few SQLite databases,
 which you can pull onto your local computer.
 
-.. code-block:: console
+.. code-block:: bash
 
   $  adb pull <collect-directory>/metadata/*.db
 
@@ -108,13 +108,13 @@ which you can pull onto your local computer.
 Taking screenshots
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: console
+.. code-block:: bash
 
   $ adb exec-out screencap /sdcard/image-name.png
 
 To pull the saved image locally:
 
-.. code-block:: console
+.. code-block:: bash
 
   $ adb pull /sdcard/image-name.png
 
@@ -127,7 +127,7 @@ To pull the saved image locally:
 Recording video
 ~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: console
+.. code-block:: bash
 
   $ adb shell screenrecord /sdcard/video-name.mp4
 
@@ -137,7 +137,7 @@ To stop the recording, press :kbd:`CTRL-C`. If you don't interrupt the recording
 
 To pull the video locally:
 
-.. code-block:: console
+.. code-block:: bash
 
   $ adb pull /sdcard/video-name.png
 
@@ -157,7 +157,7 @@ use :command:`adb logcat` to capture log events during the crash.
 
 #. Before reproducing the bug, begin piping logs to a file:
 
-   .. code-block:: console
+   .. code-block:: bash
 
     $ adb logcat > logfile.txt
 
@@ -178,7 +178,7 @@ Pull a bug report
 If more in-depth information is needed,
 you can pull a complete bug report from the device.
 
-.. code-block:: console
+.. code-block:: bash
 
   $ adb bugreport
 

@@ -78,7 +78,7 @@ To set the FQDN, do the following:
 3. After the reset/reboot, the VM will behave like any other machine on your network and get an IP address from your router. The IP address will be shown to you after the **Welcome to ODK Aggregate VM** message.
 4. Log into the command line interface of the VM and run the :command:`aggregate-config` script to set a fully qualified domain name (FQDN) using the IP address that was shown to you (e.g., ``192.168.5.2``).
 
-  .. code-block:: console
+  .. code-block:: bash
 
     aggregate-config --fqdn 192.168.5.2 --http-port 8080 --https-port 8443 --net-mode bridge
 

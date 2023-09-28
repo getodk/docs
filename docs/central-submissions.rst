@@ -193,7 +193,7 @@ It can be tricky to access submission media files while using external tools lik
 
 In the OData feed, you will see media files given by their filename. If you want, you can construct a link within your analysis tool that will download any media file with your web browser. You can do this by gluing together pieces of text into a URL. Often this gluing operation is called ``concat`` or ``concatenate``. You'll need to make it look like this:
 
-  .. code-block:: console
+  .. code-block:: bash
 
     https://DOMAIN/#/dl/projects/PROJECTID/forms/FORMID/submissions/INSTANCEID/attachments/FILENAME
 
@@ -201,7 +201,7 @@ Where the uppercase words need to be replaced with the appropriate values. The e
 
 Here is an example of a completed address:
 
-  .. code-block:: console
+  .. code-block:: bash
 
     https://my.odk.server/#/dl/projects/1/forms/forest_survey/submissions/uuid:20bcee82-4a22-4381-a6aa-f926fc85fb22/attachments/my.file.mp3
 

@@ -58,7 +58,7 @@ Installation procedure
 
     .. tab-item:: Ubuntu
 
-      .. code-block:: console
+      .. code-block:: bash
 
         sudo apt-get install openjdk-11-jre
 
@@ -76,13 +76,13 @@ Installation procedure
 
       If you have `Homebrew <https://brew.sh>`_, run:
 
-      .. code-block:: console
+      .. code-block:: bash
 
         brew install tomcat@8.5
 
     .. tab-item:: Ubuntu
 
-      .. code-block:: console
+      .. code-block:: bash
 
         sudo apt-get install tomcat8 tomcat8-common tomcat8-user tomcat8-admin
 
@@ -110,7 +110,7 @@ Installation procedure
 
     .. tab-item:: Ubuntu
 
-      .. code-block:: console
+      .. code-block:: bash
 
         sudo apt-get install postgresql-10
 

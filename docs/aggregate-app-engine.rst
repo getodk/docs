@@ -118,7 +118,7 @@ Installing Aggregate on Google App Engine
 
 	Or, from a terminal, go to the directory where you downloaded the installer and change permissions:
 
-	.. code-block:: console
+	.. code-block:: bash
 
 	  $ chmod 554 "ODK Aggregate vN.N.N linux-installer.run"
 
