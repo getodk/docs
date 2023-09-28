@@ -10,7 +10,7 @@ Welcome to ODK's Docs!
 
 For a quick start, read :doc:`getting-started`. In most cases, users of ODK:
 
-- Create survey forms using the `XLSForm <http://xlsform.org/>`_ standard in Excel or `Google Sheets <https://www.google.com/sheets/>`_.
+- Create survey forms using the :doc:`XLSForm <xlsform>` standard in Excel or `Google Sheets <https://www.google.com/sheets/>`_.
 - :ref:`Upload forms <central-forms-upload>` to an :doc:`ODK Central server <central-intro>`.
 - :ref:`Download forms <in-app-get-blank-forms>` into :doc:`collect-intro` on an Android device.
 - :doc:`Use Collect to fill out forms <collect-filling-forms>` with :term:`participants <participant>`.
@@ -31,7 +31,7 @@ Additional ODK tools are:
 The specifications and libraries that power the tools are:
 
 - :doc:`openrosa`, APIs for how ODK clients communicate with ODK servers.
-- `ODK XForms spec <https://getodk.github.io/xforms-spec/>`_, a subset of the W3C XForms specification, for use in the ODK ecosystem.
+- `ODK XForms Spec <https://getodk.github.io/xforms-spec/>`_, a subset of the W3C XForms specification, for use in the ODK ecosystem.
 - `ODK JavaRosa <https://github.com/getodk/javarosa>`_, a Java library that renders forms complying with ODK XForms.
 - `XLSForm spec <https://getodk.github.io/xforms-spec/>`_, a high-level Excel-based form specification.
 - `pyxform <https://github.com/xlsform/pyxform>`_, a Python library that converts XLSForms into ODK XForms.
@@ -63,7 +63,6 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   central-install
   central-manage
   central-using
-  central-troubleshooting
 
 .. toctree::
   :hidden:
@@ -71,18 +70,8 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   :caption: Form Building
 
   form-design-intro
-  xlsform
-  form-question-types
-  form-logic
-  form-operators-functions
-  form-datasets
-  form-styling
-  form-language
-  form-audit-log
-  launch-apps-from-collect
-  data-collector-workflows
+  form-reference
   form-best-practices
-  build-intro
 
 .. toctree::
   :hidden:
@@ -90,16 +79,9 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   :caption: Developing with ODK
 
   central-api
+  ODK XForms spec <https://getodk.github.io/xforms-spec/>
   openrosa
-  javarosa
   launch-collect-from-app
-
-.. toctree::
-  :hidden:
-  :maxdepth: 2
-  :caption: Training
-
-  training
 
 .. toctree::
   :hidden:
@@ -111,14 +93,8 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
 .. toctree::
   :hidden:
   :maxdepth: 2
-  :caption: Integration
-
-  encrypted-forms
-
-.. toctree::
-  :hidden:
-  :maxdepth: 2
   :caption: Reference
 
   security-privacy
   glossary
+  training
