@@ -18,7 +18,7 @@ Direct Backups via API
 
 .. warning::
 
-  `Direct Backups via API <https://odkcentral.docs.apiary.io/#reference/system-endpoints/direct-backup>`_ include all of your collected data but do **NOT** include sufficient information to re-establish the same Web Form links. If you use :ref:`Public Links <central-submissions-public-link>` for broad surveying or share :ref:`links to Web Forms <central-submissions-direct>` through another system, we strongly recommend also making a full system backup.
+  `Direct Backups via API <https://docs.getodk.org/central-api-system-endpoints/#direct-backup>`_ include all of your collected data but do **NOT** include sufficient information to re-establish the same Web Form links. If you use :ref:`Public Links <central-submissions-public-link>` for broad surveying or share :ref:`links to Web Forms <central-submissions-direct>` through another system, we strongly recommend also making a full system backup.
 
   If you only use Web Forms for previews or for making Submissions directly from Central, Direct Backups are sufficient. You can regenerate previews by uploading the same Form with a new :ref:`Form version <central-forms-updates>`.
 
@@ -26,7 +26,7 @@ The Central API offers an HTTP endpoint to perform an immediate backup of the da
 
 Performing a Direct Backup can take some time, and it is normal for data to download quite slowly for many minutes before it gets faster. Take care in using this feature particularly if you have a lot of data and traffic, as performing a backup while a lot of data is being saved to the database can slow the process down significantly.
 
-For more information, please see the `API documentation <https://odkcentral.docs.apiary.io/#reference/system-endpoints/direct-backup>`_.
+For more information, please see the `API documentation <https://docs.getodk.org/central-api-system-endpoints/#direct-backup>`_.
 
 .. _central-backup-restore:
 
