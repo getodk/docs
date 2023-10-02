@@ -21,4 +21,4 @@ Related Topics
 - Integrating with other Android Apps
 
   - :doc:`collect-api`
-  - :doc:`launch-apps-from-collect`
+  - :doc:`collect-external-apps`

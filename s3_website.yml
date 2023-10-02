@@ -34,19 +34,20 @@ redirects:
   central-datasets/index.html: central-entities
   collect-connect-aggregate/index.html: collect-connect
   collect-guide/index.html: collect-intro
-  collect-integrations/index.html: launch-apps-from-collect
+  collect-integrations/index.html: collect-external-apps
   form-interaction/index.html: form-logic
   form-tools/index.html: form-design-intro
   form-uploader/index.html: briefcase-using#pulling-form-definitions
   form-widgets/index.html: form-question-types
   form-workflows/index.html: data-collector-workflows
+  launch-apps-from-collect/index.html: collect-external-apps
+  launch-collect-from-app/index.html: collect-api
   odk-build/index.html: build-intro
   odk2/index.html: https://docs.odk-x.org/odk-x
   projecting-collect/index.html: collect-mirror
   pyodk/index.html: https://getodk.github.io/pyodk
   pyxform/index.html: xlsform
   style-guide/index.html: docs-style-guide
+  training/index.html: additional-resources
   validate/index.html: https://github.com/getodk/validate
   visualize/index.html: aggregate-visualize
-  launch-collect-from-app/index.html: collect-api
-  

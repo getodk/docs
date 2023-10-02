@@ -1,5 +1,5 @@
-Launching External Apps
-========================
+External Apps
+===============
 
 .. seealso::
 

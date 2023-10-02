@@ -67,7 +67,7 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
 .. toctree::
   :hidden:
   :maxdepth: 2
-  :caption: Form Building
+  :caption: Form Design
 
   form-design-intro
   form-reference
@@ -76,19 +76,12 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
 .. toctree::
   :hidden:
   :maxdepth: 2
-  :caption: Developing with ODK
+  :caption: Developers
 
   central-api
-  ODK XForms spec <https://getodk.github.io/xforms-spec/>
+  ODK XForms Spec <https://getodk.github.io/xforms-spec/>
   openrosa
   collect-api
-
-.. toctree::
-  :hidden:
-  :maxdepth: 2
-  :caption: Contributing
-
-  contributing
 
 .. toctree::
   :hidden:
@@ -96,5 +89,4 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   :caption: Reference
 
   security-privacy
-  glossary
-  training
+  additional-resources

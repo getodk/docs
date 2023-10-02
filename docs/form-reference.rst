@@ -11,5 +11,5 @@ Form Design Reference
   form-styling
   form-language
   form-audit-log
-  launch-apps-from-collect
+  collect-external-apps
   encrypted-forms
