@@ -3,7 +3,7 @@ Launching External Apps
 
 .. seealso::
 
-  :doc:`launch-collect-from-app`
+  :doc:`collect-api`
 	
 .. _launch-apps-single-field:
 

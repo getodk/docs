@@ -48,3 +48,5 @@ redirects:
   style-guide/index.html: docs-style-guide
   validate/index.html: https://github.com/getodk/validate
   visualize/index.html: aggregate-visualize
+  launch-collect-from-app/index.html: collect-api
+  

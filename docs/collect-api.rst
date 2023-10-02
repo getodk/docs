@@ -1,5 +1,5 @@
-Integrating With Collect
-========================
+Collect API
+============
 
 .. seealso::
   

@@ -81,7 +81,7 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   central-api
   ODK XForms spec <https://getodk.github.io/xforms-spec/>
   openrosa
-  launch-collect-from-app
+  collect-api
 
 .. toctree::
   :hidden:
