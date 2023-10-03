@@ -1,7 +1,7 @@
-Training Resources
-==================
+Additional Resources
+====================
 
-Below are resources for learning more about ODK. Email support@getodk.org if you'd like to add a link to this list.
+Below are additional resources for learning about ODK. Email support@getodk.org if you'd like to add a link to this list.
 
 .. warning::
 

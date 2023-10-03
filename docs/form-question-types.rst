@@ -115,7 +115,7 @@ Launches an external app and receives a string input back from the external app.
 
 The external app widget is displayed when the ``appearance`` attribute begins with ``ex:``. The rest of the ``appearance`` string specifies the application to launch.
 
-.. seealso:: :doc:`launch-apps-from-collect`
+.. seealso:: :doc:`collect-external-apps`
 
 .. image:: /img/form-question-types/external-app-widget-start.*
   :alt: The External App form widget, as displayed in the ODK Collect App on an Android phone. The question text is "Ex string widget." The hint text is, "text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form group name "Text widgets."
@@ -265,7 +265,7 @@ from the external app as input.
 If the specified external app is not available,
 a manual input is prompted.
 
-.. seealso:: :doc:`launch-apps-from-collect`
+.. seealso:: :doc:`collect-external-apps`
 
 .. image:: /img/form-question-types/external-integer-widget-start.*
   :alt: The External Integer form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Ex integer widget." The hint text is, "integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)." Below that is a button labeled "Launch." Above the question text is the form name "Numerical widgets."
@@ -1784,7 +1784,7 @@ Launches an external app and receives an image back from the external app. If th
 
 The external app image widget is displayed when the ``appearance`` attribute begins with ``ex:``. The rest of the ``appearance`` string specifies the application to launch.
 
-.. seealso:: :doc:`launch-apps-from-collect`
+.. seealso:: :doc:`collect-external-apps`
 
 .. image:: /img/form-question-types/ex-image-widget-with-answer.*
   :class: device-screen-vertical
@@ -2048,7 +2048,7 @@ Launches an external app and receives an audio file back from the external app. 
 
 The external app audio widget is displayed when the ``appearance`` attribute begins with ``ex:``. The rest of the ``appearance`` string specifies the application to launch.
 
-.. seealso:: :doc:`launch-apps-from-collect`
+.. seealso:: :doc:`collect-external-apps`
 
 .. image:: /img/form-question-types/ex-audio-widget.*
   :class: device-screen-vertical
@@ -2105,7 +2105,7 @@ Launches an external app and receives a video file back from the external app. I
 
 The external app video widget is displayed when the ``appearance`` attribute begins with ``ex:``. The rest of the ``appearance`` string specifies the application to launch.
 
-.. seealso:: :doc:`launch-apps-from-collect`
+.. seealso:: :doc:`collect-external-apps`
 
 .. image:: /img/form-question-types/ex-video-widget-with-answer.*
   :class: device-screen-vertical
@@ -2180,7 +2180,7 @@ Launches an external app and receives an arbitrary file back from the external a
 
 The external app file widget is displayed when the ``appearance`` attribute begins with ``ex:``. The rest of the ``appearance`` string specifies the application to launch.
 
-.. seealso:: :doc:`launch-apps-from-collect`
+.. seealso:: :doc:`collect-external-apps`
 
 .. warning::
   This widget accepts files of any type. Learn more about the risk :ref:`above <default_file-upload>`. You should only specify an external application that you trust.

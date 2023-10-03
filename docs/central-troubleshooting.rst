@@ -48,7 +48,7 @@ You may run into a "Could not connect with Server" error message when previewing
 
 To resolve this problem, first identify your upstream DNS servers. Run ``cat /run/systemd/resolve/resolv.conf`` to see your current list of nameservers with their IP addresses. They will look like this:
 
-.. code-block:: console
+.. code-block:: bash
 
   nameserver 1.2.3.4
   nameserver 9.8.7.6
@@ -93,7 +93,7 @@ If you get an error `413` when trying to upload a submission or when trying to u
 
 If you absolutely must upload files over 100MB, you can change the `client_max_body_size` `nginx` directive:
 
-.. code-block:: console
+.. code-block:: bash
 
   $ cd central
   $ docker compose stop
@@ -118,7 +118,7 @@ The instructions below assume you installed Central on an Ubuntu LTS server. If 
 
 1. Capture the location of the new (and empty) database.
 
-   .. code-block:: console
+   .. code-block:: bash
  
      $ CENTRAL_NEW_DB=$(docker inspect --type container central_postgres_1 \
        -f '{{(index .Mounts 0).Source}}' | cut -d / -f 6)
@@ -126,28 +126,28 @@ The instructions below assume you installed Central on an Ubuntu LTS server. If 
 
 2. Next, find any additional databases you have. You should get the number one (``1``) back. If you get anything else, stop and email support@getodk.org for assistance.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ find /var/lib/docker/volumes/ -name pg_hba.conf \
        | grep -v "$CENTRAL_NEW_DB" | wc -l
 
 3. Now that you've confirmed you have only one additional database, capture the location of the old database you wish to restore.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ CENTRAL_OLD_DB=$(find /var/lib/docker/volumes/ -name pg_hba.conf \
        | grep -v "$CENTRAL_NEW_DB" | cut -d / -f 6)
 
 4. Stop the Docker containers to prepare for restoration.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cd central
      $ docker-compose stop
 
 5. Backup the new database and restore the old database.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cd /var/lib/docker/volumes/
      $ mv "$CENTRAL_NEW_DB" "$CENTRAL_NEW_DB"-backup
@@ -155,7 +155,7 @@ The instructions below assume you installed Central on an Ubuntu LTS server. If 
 
 6. Now rebuild and restart the containers.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cd central
      $ docker-compose build
@@ -163,6 +163,6 @@ The instructions below assume you installed Central on an Ubuntu LTS server. If 
 
 7. Go to your site in a browser and try to log in with an account that previously existed. If everything works as expected, consider deleting the backup of the new database. You can find it with the following command.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ find /var/lib/docker/volumes/ -name *-backup

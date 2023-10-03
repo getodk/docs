@@ -181,7 +181,7 @@ If you use `Python <https://www.python.org/>`_, we recommend `pyODK <https://git
 
 If you use `R <https://www.r-project.org/>`_, we recommend `ruODK <https://docs.ropensci.org/ruODK/>`_ for downloading submissions via an OData feed into R. ruODK is developed and supported by ODK community members.
 
-You can also access the OData feed yourself. The OData feed is an easily consumable JSON data format and offers a metadata schema, some filtering and paging options, and more. To learn more about the OData feed, click the :guilabel:`API Access` button or see the `API documentation <https://odkcentral.docs.apiary.io/#reference/odata-endpoints>`_ directly.
+You can also access the OData feed yourself. The OData feed is an easily consumable JSON data format and offers a metadata schema, some filtering and paging options, and more. To learn more about the OData feed, click the :guilabel:`API Access` button or see the `API documentation </central-api-odata-endpoints>`_ directly.
 
 .. _central-submissions-media-downloads:
 .. _setting-up-media-downloads:
@@ -193,7 +193,7 @@ It can be tricky to access submission media files while using external tools lik
 
 In the OData feed, you will see media files given by their filename. If you want, you can construct a link within your analysis tool that will download any media file with your web browser. You can do this by gluing together pieces of text into a URL. Often this gluing operation is called ``concat`` or ``concatenate``. You'll need to make it look like this:
 
-  .. code-block:: console
+  .. code-block:: bash
 
     https://DOMAIN/#/dl/projects/PROJECTID/forms/FORMID/submissions/INSTANCEID/attachments/FILENAME
 
@@ -201,7 +201,7 @@ Where the uppercase words need to be replaced with the appropriate values. The e
 
 Here is an example of a completed address:
 
-  .. code-block:: console
+  .. code-block:: bash
 
     https://my.odk.server/#/dl/projects/1/forms/forest_survey/submissions/uuid:20bcee82-4a22-4381-a6aa-f926fc85fb22/attachments/my.file.mp3
 

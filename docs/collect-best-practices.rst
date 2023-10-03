@@ -20,5 +20,5 @@ Related Topics
 - :doc:`encrypted-forms`
 - Integrating with other Android Apps
 
-  - :doc:`launch-collect-from-app`
-  - :doc:`launch-apps-from-collect`
+  - :doc:`collect-api`
+  - :doc:`collect-external-apps`

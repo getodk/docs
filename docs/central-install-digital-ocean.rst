@@ -92,7 +92,7 @@ Changing Server Settings
 
 #. Make sure you are running Docker Engine v23.x and Docker Compose v2.16.x or greater.
 
-.. code-block:: console
+.. code-block:: bash
 
   $ docker --version && docker compose version
 
@@ -100,7 +100,7 @@ If you are using old versions, follow the instructions to install `Docker Engine
 
 #. Modify the system firewall for web form features in Central to work correctly (using Enketo).
 
-.. code-block:: console
+.. code-block:: bash
 
   $ ufw disable
 
@@ -119,7 +119,7 @@ Getting and Setting Up Central
 
 #. Download the software. In the server window, type:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ git clone https://github.com/getodk/central
 
@@ -127,25 +127,25 @@ Getting and Setting Up Central
 
 #. Go into the new central folder:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cd central
 
 #. Get the latest client and server:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ git submodule update -i
 
 #. Update settings. First, copy the settings template file so you can edit it:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cp .env.template .env
 
 #. Launch the ``nano`` text editing application and specify required settings:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ nano .env
 
@@ -158,7 +158,7 @@ Getting and Setting Up Central
 
 #. Let the system know that you want the latest version of the database:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ touch ./files/allow-postgres14-upgrade
 
@@ -166,7 +166,7 @@ Getting and Setting Up Central
 
 #. Bundle everything together into a server. This will take a long time and generate quite a lot of text output. Don't worry if it seems to pause without saying anything for a while.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker compose build
 
@@ -181,13 +181,13 @@ Starting up Central
 
 #. Start the server software. The first time you start it, it will take a while to set itself up.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker compose up -d
 
 #. See whether ODK has finished loading.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker compose ps
 
@@ -208,13 +208,13 @@ Once you do see it working, you'll want to set up your first Administrator accou
 
 #. Ensure that you are in the ``central`` folder on your server. If you have not closed your console session from earlier, you should be fine. If you have just logged back into it:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cd central
 
 #. Create a new account. Make sure to substitute the email address that you want to use for this account.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker compose exec service odk-cmd --email YOUREMAIL@ADDRESSHERE.com user-create
 
@@ -222,13 +222,13 @@ Once you do see it working, you'll want to set up your first Administrator accou
 
 #. Make the new account an administrator.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker compose exec service odk-cmd --email YOUREMAIL@ADDRESSHERE.com user-promote
 
    If you ever lose track of your password, you can reset it with
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker compose exec service odk-cmd --email YOUREMAIL@ADDRESSHERE.com user-set-password
 
@@ -283,7 +283,7 @@ If you are having issues with Central running out of memory, we strongly recomme
 
 #. To add 2GB swap, log into your server's console and run these commands.
 
-   .. code-block:: console
+   .. code-block:: bash
    
      $ fallocate -l 2G /swap
      $ dd if=/dev/zero of=/swap bs=1k count=2048k
@@ -293,13 +293,13 @@ If you are having issues with Central running out of memory, we strongly recomme
 
 #. Make sure swap is only used when the server is almost out of memory.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ sysctl -w vm.swappiness=10
 
 #. Edit ``/etc/sysctl.conf`` and add the following to the end of the file to ensure that change is permanently available.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ nano /etc/sysctl.conf
 
@@ -309,7 +309,7 @@ If you are having issues with Central running out of memory, we strongly recomme
 
 #. Edit ``/etc/fstab`` and add the following to the end of the file to ensure that the swap file is permanently available.
 
-   .. code-block:: console
+   .. code-block:: bash
   
      $ nano /etc/fstab
   
@@ -328,14 +328,14 @@ Forms with many large media attachments can fill up your droplet's storage space
 
 #. Find the location of your new volume. It will look like ``/mnt/your-volume-name``. 
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ df -h | grep /mnt/
 
 
 #. Create a ``docker`` folder at that location.
 
-   .. code-block:: console
+   .. code-block:: bash
   
      $ sudo mkdir /mnt/your-volume-name/docker
 
@@ -355,11 +355,11 @@ During upgrades or exports, some versions of Central may use more memory than th
 
 #. Edit ``.env`` to add a ``SERVICE_NODE_OPTIONS`` variable with a ``--max-old-space-size`` flag set to your desired maximum memory in MB.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cd central
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ nano .env
 
@@ -373,7 +373,7 @@ During upgrades or exports, some versions of Central may use more memory than th
 
 #. Build and restart the service container.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker compose build service && docker compose stop service && docker compose up -d service
 
@@ -390,18 +390,18 @@ Central uses Let's Encrypt SSL certificates to secure all communication. To use 
 #. Generate a ``privkey.pem`` (``-keyout``) file which contains the private key used to sign your certificate.
 #. Copy those files into ``files/local/customssl/``.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cp fullchain.pem central/files/local/customssl/
      $ cp privkey.pem central/files/local/customssl/
 
 #. In ``.env``, set ``SSL_TYPE`` to ``customssl`` and set ``DOMAIN`` to the domain name you registered. 
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cd central
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ nano .env
 
@@ -416,7 +416,7 @@ Central uses Let's Encrypt SSL certificates to secure all communication. To use 
 
 #. Build and restart the nginx container.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker compose build nginx && docker compose stop nginx && docker compose up -d nginx
 
@@ -432,11 +432,11 @@ Central comes with a mail server to send password reset emails. To use a custom 
 
 #. Edit ``.env`` with your mail server host, port, and authentication details.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cd central
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ nano .env
 
@@ -457,7 +457,7 @@ Central comes with a mail server to send password reset emails. To use a custom 
 
 #. Build and restart the service container.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker compose build service && docker compose stop service && docker compose up -d service
 
@@ -475,7 +475,7 @@ Central comes with a PostgreSQL v14.x database server to store your data. To use
 
 #. Connect to your database server.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ psql -h mydbhost -p 5432 -U mydbadmin
 
@@ -501,11 +501,11 @@ Central comes with a PostgreSQL v14.x database server to store your data. To use
 
 #. Edit ``.env`` with your database server host, database name, and authentication details.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cd central
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ nano .env
 
@@ -518,7 +518,7 @@ Central comes with a PostgreSQL v14.x database server to store your data. To use
 
 #. Build and restart the service container.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker compose build service && docker compose stop service && docker compose up -d service
 
@@ -537,24 +537,24 @@ DKIM is a protocol which is used to help verify mail server identities. Without 
 
 #. Generate a public and private key (if one doesn't already exist).
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cd central
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ ! test -s files/mail/rsa.private && openssl genrsa -out files/mail/rsa.private 1024
      $ openssl rsa -in files/mail/rsa.private -out files/mail/rsa.public -pubout -outform PEM
 
 #. Ensure any changes to the DKIM private key are kept private.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ git update-index --skip-worktree files/mail/rsa.private
 
 #. Copy the contents of the public key with the boundary dashes removed.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cat files/mail/rsa.public | grep -v "^-"
 
@@ -562,31 +562,31 @@ DKIM is a protocol which is used to help verify mail server identities. Without 
 
    1. ``dkim._domainkey.DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content. Be sure to remove any newlines or line breaks.
 
-      .. code-block:: console
+      .. code-block:: bash
 
         k=rsa; p=PUBLIC-KEY-HERE
 
    2. ``_dmarc.DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content.
 
-      .. code-block:: console
+      .. code-block:: bash
 
         v=DMARC1; p=none
    
    3. ``DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content. Get the server IP address from the DigitalOcean control panel. 
 
-      .. code-block:: console
+      .. code-block:: bash
 
         v=spf1 a mx ip4:SERVER-IP-ADDRESS-HERE -all
 
    4. ``DOMAIN-NAME-HERE``: create a ``MX`` record with the following content.
 
-      .. code-block:: console
+      .. code-block:: bash
 
         10 DOMAIN-NAME-HERE
 
 #. Build and restart the mail container.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker compose build mail && docker compose stop mail && docker compose up -d mail
 
@@ -613,17 +613,17 @@ To enable SSO in Central, you will first need to configure your identity provide
 
 #. Follow your identity provider's documentation on configuring a new OIDC application (for example: `Google <https://developers.google.com/identity/openid-connect/openid-connect>`_, `Azure <https://learn.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app>`_, `onelogin <https://onelogin.service-now.com/support?id=kb_article&sys_id=2fd988e697b72150c90c3b0e6253af7f&kb_category=93e869b0db185340d5505eea4b961934>`_, `Auth0 <https://auth0.com/docs/get-started/applications/application-settings>`_). When prompted to specify a redirect or callback URL, provide the following (replace ``my-domain`` with your actual domain):
 
-   .. code-block:: console
+   .. code-block:: bash
 
     https://my-domain/v1/oidc/callback
 
 #. In ``.env``, set ``OIDC_ENABLED`` to ``true``. Set ``OIDC_ISSUER_URL`` to the issuer URL that you obtained from your identity provider, ``OIDC_CLIENT_ID`` to the client ID, and ``OIDC_CLIENT_SECRET`` to the client secret.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cd central
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ nano .env
 
@@ -636,7 +636,7 @@ To enable SSO in Central, you will first need to configure your identity provide
 
 #. Build and restart all containers.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker compose build && docker compose stop && docker compose up -d
 
@@ -667,11 +667,11 @@ To disable SSO:
 
 #. In ``.env``, set ``OIDC_ENABLED`` to ``false``. Clear ``OIDC_ISSUER_URL``, ``OIDC_CLIENT_ID``, and ``OIDC_CLIENT_SECRET``.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cd central
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ nano .env
 
@@ -684,7 +684,7 @@ To disable SSO:
 
 #. Build and restart all containers.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker compose build && docker compose stop && docker compose up -d
 
@@ -702,17 +702,17 @@ Enketo is the software that Central uses to render forms in a web browser. It is
 
 #. Edit the file ``files/enketo/config.json.template`` with your desired changes.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cd central
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ nano files/enketo/config.json.template
 
 #. Build and restart all containers.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker compose build && docker compose stop && docker compose up -d
 
@@ -727,11 +727,11 @@ This information is only visible to the development team and should never contai
 
 #. Edit the file ``files/service/config.json.template`` and remove the ``sentry`` lines, starting with ``"sentry": {`` through the next three lines until you remove the matching ``}``.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cd central
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ nano files/service/config.json.template
 
@@ -746,7 +746,7 @@ This information is only visible to the development team and should never contai
 
 #. Edit the file ``files/nginx/odk.conf.template`` and replace the ``csp-report`` lines, starting with ``location /csp-report {`` through the next two lines until you remove the matching ``}`` with:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ nano files/service/config.json.template
 
@@ -759,7 +759,7 @@ This information is only visible to the development team and should never contai
 
 #. Build and restart all containers.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker compose build && docker compose stop && docker compose up -d
 
@@ -769,11 +769,11 @@ If you wish to use your own Sentry instance to receive your own errors, take the
 #. The new project will generate a ``DSN`` in this format: ``https://SENTRY_KEY@SENTRY_ORG_SUBDOMAIN.ingest.sentry.io/SENTRY_PROJECT``.
 #. In ``.env``, set ``SENTRY_SUBDOMAIN``, ``SENTRY_KEY`` and ``SENTRY_PROJECT`` to the values from step 2.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ cd central
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ nano .env
 
@@ -785,6 +785,6 @@ If you wish to use your own Sentry instance to receive your own errors, take the
 
 #. Build and restart all containers.
 
-   .. code-block:: console
+   .. code-block:: bash
 
      $ docker compose build && docker compose stop && docker compose up -d

@@ -1,5 +1,5 @@
-Using ODK Collect from External Apps
-==========================================
+Collect API
+============
 
 .. seealso::
   

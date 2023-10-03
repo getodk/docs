@@ -1,5 +1,5 @@
-OpenRosa
-==========
+OpenRosa Protocol
+==================
 
 OpenRosa is a set of communication standards for moving blank forms and completed form instances between server applications (like ODK Central) and clients (like :doc:`ODK Collect  <collect-intro>`).
 

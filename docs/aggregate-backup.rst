@@ -27,13 +27,13 @@ Backup
 
     .. tab-item:: Windows
 
-      .. code-block:: console
+      .. code-block:: bash
 
         pg_dump.exe [ dbname ] > [ backup file location ]
 
     .. tab-item:: macOS and Linux:
 
-      .. code-block:: console
+      .. code-block:: bash
 
         pg_dump [ dbname ] > [ backup destination ]
 
@@ -51,13 +51,13 @@ Restore
 
     .. tab-item:: Windows
 
-      .. code-block:: console
+      .. code-block:: bash
 
         psql.exec -f [ backup file location ] [ dbname ]
 
     .. tab-item:: macOS and Linux:
 
-      .. code-block:: console
+      .. code-block:: bash
 
         psql -f [ backup file location ] [ dbname ]
 
@@ -79,13 +79,13 @@ Backup
 
     .. tab-item:: Windows
 
-      .. code-block:: console
+      .. code-block:: bash
 
         mysqldump.exe [ dbname ] > [ backup file location ]
 
     .. tab-item:: macOS and Linux:
 
-      .. code-block:: console
+      .. code-block:: bash
 
         mysqldump [ dbname ] > [ backup destination ]
 
@@ -103,13 +103,13 @@ Restore
 
     .. tab-item:: Windows
 
-      .. code-block:: console
+      .. code-block:: bash
 
         mysql.exec [ dbname ] < [ backup file location ]
 
     .. tab-item:: macOS and Linux
 
-      .. code-block:: console
+      .. code-block:: bash
 
         mysql [ dbname ] < [ backup file location ]
 

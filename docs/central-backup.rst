@@ -18,7 +18,7 @@ Direct Backups via API
 
 .. warning::
 
-  `Direct Backups via API <https://odkcentral.docs.apiary.io/#reference/system-endpoints/direct-backup>`_ include all of your collected data but do **NOT** include sufficient information to re-establish the same Web Form links. If you use :ref:`Public Links <central-submissions-public-link>` for broad surveying or share :ref:`links to Web Forms <central-submissions-direct>` through another system, we strongly recommend also making a full system backup.
+  `Direct Backups via API </central-api-system-endpoints/#direct-backup>`_ include all of your collected data but do **NOT** include sufficient information to re-establish the same Web Form links. If you use :ref:`Public Links <central-submissions-public-link>` for broad surveying or share :ref:`links to Web Forms <central-submissions-direct>` through another system, we strongly recommend also making a full system backup.
 
   If you only use Web Forms for previews or for making Submissions directly from Central, Direct Backups are sufficient. You can regenerate previews by uploading the same Form with a new :ref:`Form version <central-forms-updates>`.
 
@@ -26,7 +26,7 @@ The Central API offers an HTTP endpoint to perform an immediate backup of the da
 
 Performing a Direct Backup can take some time, and it is normal for data to download quite slowly for many minutes before it gets faster. Take care in using this feature particularly if you have a lot of data and traffic, as performing a backup while a lot of data is being saved to the database can slow the process down significantly.
 
-For more information, please see the `API documentation <https://odkcentral.docs.apiary.io/#reference/system-endpoints/direct-backup>`_.
+For more information, please see the `API documentation </central-api-system-endpoints/#direct-backup>`_.
 
 .. _central-backup-restore:
 
@@ -53,13 +53,13 @@ Restoring a Direct Backup file to a Central instance will entirely replace all o
 
 #. Now you'll want to put it in a special place where it can be used by the restore tool: :file:`/data/transfer`. If, for example, you uploaded the file to :file:`/root/backup-2018-01-01T00:00:00Z.zip`, you'll want to run this command in order to move it:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      mv /root/backup-2018-01-01T00:00:00Z.zip /data/transfer/
 
 #. Now you need to run the restore script. **Please note again** that **all data** on this server is about to be replaced by the backup snapshot data! Anybody currently using the server will be kicked off and all changes made since the last backup will be lost. When you are sure you wish to proceed, run the following commands:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      cd
      cd central
@@ -67,7 +67,7 @@ Restoring a Direct Backup file to a Central instance will entirely replace all o
 
    You'll have to replace the filename following :file:`/data/transfer` with your own snapshot filename, and the text ``SECRET_PASSPHRASE`` with the passphrase you typed when backups were first set up. If you did not set up a passphrase, immediately press Enter after you have finished putting the :file:`.zip` filename in:
 
-   .. code-block:: console
+   .. code-block:: bash
 
      docker compose exec service node /usr/odk/lib/bin/restore.js /data/transfer/backup-2018-01-01T00:00:00Z.zip
 

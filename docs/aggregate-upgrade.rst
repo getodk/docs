@@ -24,7 +24,7 @@ As we find performance issues and address them, the Aggregate gets faster and ch
 Enhanced capabilities
 ~~~~~~~~~~~~~~~~~~~~~~
 
-:doc:`javarosa`, the underlying form rendering library is updated about annually. Those updates add new functions, features, and occasionally data types. New features are slowly added to ODK Aggregate, too.
+JavaRosa, the underlying form rendering library is updated about annually. Those updates add new functions, features, and occasionally data types. New features are slowly added to ODK Aggregate, too.
 
 To use these newer features, keep your Aggregate installation up to date.
 

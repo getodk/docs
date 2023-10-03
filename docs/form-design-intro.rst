@@ -1,5 +1,5 @@
-Intro to Forms in ODK
-========================
+Forms in ODK
+==============
 
 Forms provide a structured way to collect and provide information. Typically forms are used by data collectors (also called enumerators) who ask questions of and share information with participants. :ref:`Web forms <central-submissions-public-link>` can also be used for self-report. 
 
@@ -33,3 +33,10 @@ For simple forms, :doc:`build-intro` is a drag-and-drop form designer that works
 .. note::
 
   The ODK ecosystems use XML form definitions following the `ODK XForms specification <https://getodk.github.io/xforms-spec/>`_, a subset of the `W3C XForms specification <https://www.w3.org/TR/xforms/>`_. The form creation tools described above convert user-friendly form definitions into XML.
+
+.. toctree::
+  :maxdepth: 3
+
+  xlsform
+  build-intro
+  
