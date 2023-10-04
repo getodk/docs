@@ -78,10 +78,10 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   :maxdepth: 2
   :caption: Developers
 
+  collect-api
   central-api
   ODK XForms Spec <https://getodk.github.io/xforms-spec/>
   openrosa
-  collect-api
 
 .. toctree::
   :hidden:
