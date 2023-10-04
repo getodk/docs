@@ -3,20 +3,23 @@ Managing Entities in Central
 
 .. versionadded:: v2022.3
 
-**Entities** are a powerful way to automatically bring the information you collect right back to your devices and Forms in the field.
+**Entities** in ODK let you share information between Forms so you can collect longitudinal data, manage cases over time, and support other complex workflows.
 
 Without Entities, you can attach existing data during the Form creation process, often through ``choices`` sheets or ``.csv`` files. Once this data is loaded into the Form, you can use it as the source for selection choices, to prepopulate data fields in the Form, or validate new input. A list of districts, for example, can be used as choices for selection, and information about each district can then be shown to the user or checked against. If you are new to these techniques, you can learn more about them on the :doc:`Form Datasets <form-datasets>` page.
 
 This is wonderful if the data you want to use is already known when you are publishing your Form, and if it doesn't change over the course of your project. In many cases, however, the data being collected today for the project *is* the data you need tomorrow for the same project. Think about seeing a patient for the first and then second time, or registering and then revisiting a survey site for a follow-up. These kinds of workflows are called :ref:`multiple encounter <multiple-encounters-with-the-same-entity>` or longitudinal workflows.
 
-If you have this kind of workflow, you can use the registered data items in a follow-up Form without using Entities, but it requires some work. You can download the Submission data from the registration Form, and then you can attach that data to a follow-up Form, as described above. However, the data available to devices in the field is only as current as your latest follow-up Form update. Some people write programs that automate this process over the API but this requires technical skills that many projects don't have.
-
-Now there is a way to automate this process from within Central itself.
+If you have this kind of workflow, you can use the registered data items in a follow-up Form without using Entities, but it requires some work. You can download the Submission data from the registration Form, and then you can attach that data to a follow-up Form, as described above. However, the data available to devices in the field is only as current as your latest follow-up Form update. Some people write programs that automate this process over the API but this requires technical skills that many projects don't have. Now there is a way to automate this process from within Central itself.
 
 .. _central-entities-introduction:
 
 Introducing Entities
 ---------------------
+
+To give you a quick sense of the end-to-end process, below is a video that shows a simple survey with baseline and follow-up data collection.
+
+..  youtube:: YHkKNWgYKaI
+   :width: 100%
 
 First, some definitions: each item that gets managed by an ODK workflow is called an **Entity**. Entities can be physical (e.g., a tree) or abstract (e.g., a site visit). Entities of the same type are organized in **Entity Lists**.
 
@@ -30,7 +33,9 @@ Next, a new feature. You can now tell Central that some of your incoming Submiss
 
 Using this functionality, you don't have to create and upload Entity Lists yourself. When Central receives submissions (or they are approved, see :ref:`the settings section <central-entities-settings>`), new Entities are automatically created. As soon as users of the Follow-up Form(s) get Form updates, they can interact with the new Entities.
 
-If you are interested in seeing how Entities can fit into your workflow right away, we recommend following the Quick Start guide below, where you will upload a tree registration Form and a tree follow-up Form we have created already and see how trees are created by one Form and appear in another.
+If you are interested in seeing how Entities can fit into your workflow right away, we recommend following the :ref:`Quick Start <central-entities-quick-start>` guide below, where you will upload a tree registration Form and a tree follow-up Form we have created already and see how trees are created by one Form and appear in another.
+
+If you would prefer a more personalized introduction, request a demo at https://getodk.org.
 
 .. _central-entities-roadmap:
 
