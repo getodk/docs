@@ -1,5 +1,5 @@
-Collect API
-============
+ODK Collect API
+===============
 
 .. seealso::
   
