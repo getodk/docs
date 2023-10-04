@@ -3,7 +3,7 @@ ODK Collect API
 
 .. seealso::
   
-  :doc:`launch-apps-from-collect`
+  :doc:`collect-external-apps`
 
 :doc:`collect-intro` supports several intents which allow it to be launched by external applications. You can open a specific form or lists of empty forms, saved forms, finalized forms or sent forms. The app also shares its data (a list of forms and instances) with external apps.
 
