@@ -451,7 +451,7 @@ Central comes with a mail server to send password reset emails. To use a custom 
 
    .. note::
 
-     ``EMAIL_IGNORE_TLS`` should generally be set to ``false``. ``EMAIL_SECURE`` should generally be set to ``true`` if you use port 465 and set to ``false`` for other ports.
+     ``EMAIL_IGNORE_TLS`` should generally be set to ``false``. ``EMAIL_SECURE`` should be set to ``true`` if you use port 465 and set to ``false`` for other ports.
 
      ``EMAIL_USER`` and ``EMAIL_PASSWORD`` are both required.
 

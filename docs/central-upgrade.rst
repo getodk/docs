@@ -286,7 +286,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
 
         .. note::
 
-          ``EMAIL_IGNORE_TLS`` should generally be set to ``false``. ``EMAIL_SECURE`` should generally be set to ``true`` if you use port 465 and to ``false`` for other ports.
+          ``EMAIL_IGNORE_TLS`` should generally be set to ``false``. ``EMAIL_SECURE`` should be set to ``true`` if you use port 465 and to ``false`` for other ports.
 
         .. note::
 
