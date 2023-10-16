@@ -28,7 +28,7 @@ Once your form has been designed, you can :ref:`upload the XLSForm directly to C
 .. _survey-sheet:
 
 The survey sheet
-------------------
+----------------
 
 At minimum, an XLSForm has a sheet named **survey** to describe the types and order of fields in a form. It must have these three columns:
 
@@ -38,24 +38,37 @@ At minimum, an XLSForm has a sheet named **survey** to describe the types and or
 
 The survey sheet can have many other columns to represent different :doc:`question types <form-question-types>` and :doc:`form logic <form-logic>`. You can see the most commonly-used columns in `this template <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_.
 
+.. _choices-sheet:
+
+The choices sheet
+-----------------
+
+If you have :ref:`multiple choice questions <select-widgets>`, you will also need a **choices** sheet to specify choices for those questions. It must have these three columns:
+
+- ``list_name``: The unique ID that identifies a group of choices. It may not contain spaces and must start with a letter or underscore. Use a short and descriptive name. For example: ``yes_no_maybe``.
+- ``name``: the name of the field represented by each row. It may not contain spaces and must start with a letter or underscore. This name will be used in your data results so it's best to use a short and descriptive name (e.g., ``y`` for Yes and ``n`` for No).
+- ``label``: the user-visible text for the choice represented by each row. For example: ``Yes``, ``No``, and ``Maybe``. This text can :ref:`reference other fields <variables>` or :doc:`have translations <form-language>`.
+
+Choices with the same list name are considered part of a related set of choices and will appear together for a question. This also allows a set of choices to be reused for multiple questions (for example, yes/no questions).
+
 .. _settings-sheet:
 
 The settings sheet
---------------------
+------------------
 
 You should also include a **settings** sheet to uniquely identify your form definition and its current version. We recommend specifying at least the following columns:
 
 - ``form_title``: The title that will be displayed by tools that list this form.
 - ``form_id``: The unique ID that identifies this form to tools that use it. It may not contain spaces and must start with a letter or underscore. Use a short and descriptive name. For example: ``bench_inventory_2021``.
 - ``version``: The unique version code that identifies the current state of the form. A common convention is to use a format like yyyymmddrr. For example, ``2017021501`` is the 1st revision from Feb 15th, 2017.
-- ``instance_name``: An :ref:`expression <expressions>` that will be used to represent a specific filled form created from this form definition. For example, ``concat(${first_name}, ${age})``. :ref:`Learn more <instance-name>`.
+- ``instance_name``: An :ref:`expression <expressions>` that will be used to represent a specific filled form created from this form definition. For example, ``concat(${first_name}, "-", ${age})``. :ref:`Learn more <instance-name>`.
 
 The **settings** sheet is also useful when using :ref:`multi-language forms <switching-languages>` or when defining a form with :ref:`encryption <defining-encrypted-form>`.
 
 .. _instance-name:
 
 Naming filled forms
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 In an XLSForm's **settings** sheet, you can add an ``instance_name`` column and specify an :ref:`expression <expressions>` to use a specific filled form's contents in its name. This name will be shown in several places to help guide data collection and analysis. You should pick a name that uniquely identifies the filled form and the data it had captured. For example:
 
@@ -66,7 +79,7 @@ In an XLSForm's **settings** sheet, you can add an ``instance_name`` column and 
 .. _instance-name-collect:
 
 Filled form names in Collect
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""
 
 Each filled form is identified by its ``instance_name`` value in :doc:`Collect <collect-intro>`'s :guilabel:`Edit Saved Form`, :guilabel:`Send Finalized Form` and :guilabel:`View Sent Form` lists. 
 
@@ -81,21 +94,18 @@ The ``instance_name`` is also used to identify filled forms in Collect's :doc:`f
 .. _instance-name-central:
 
 Filled form names in Central
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""
 
 Each submission in Central has its own :ref:`detail page <central-submissions-details>` which provides basic information about the submission, an activity history of action and discussion on that submission.
 
 The title at the top is pulled from the ``instance_name`` and it makes navigation much easier to have friendly names at the top of the page and in the web browser title and tab.
 
-.. _choices-sheet:
+.. _entities-sheet:
 
-The choices sheet
---------------------
+The entities sheet
+-------------------
 
-If you have :ref:`multiple choice questions <select-widgets>`, you will also need a **choices** sheet to specify choices for those questions. It must have these three columns:
+:doc:`Entities <central-entities>` let you share information between forms so you can collect longitudinal data, manage cases over time, and support other complex workflows.
 
-- ``list_name``: The unique ID that identifies a group of choices. It may not contain spaces and must start with a letter or underscore. Use a short and descriptive name. For example: ``yes_no_maybe``.
-- ``name``: the name of the field represented by each row. It may not contain spaces and must start with a letter or underscore. This name will be used in your data results so it's best to use a short and descriptive name (e.g., ``y`` for Yes and ``n`` for No).
-- ``label``: the user-visible text for the choice represented by each row. For example: ``Yes``, ``No``, and ``Maybe``. This text can :ref:`reference other fields <variables>` or :doc:`have translations <form-language>`.
-
-Choices with the same list name are considered part of a related set of choices and will appear together for a question. This also allows a set of choices to be reused for multiple questions (for example, yes/no questions).
+- ``list_name``: The name of the entity list that Entities will be created in.
+- ``label``: An :ref:`expression <expressions>` used to create a label for each new Entity. For example, ``concat(${first_name}, " ", ${last_name})``.
