@@ -21,6 +21,9 @@ To give you a quick sense of the end-to-end process, below is a video that shows
 ..  youtube:: YHkKNWgYKaI
    :width: 100%
 
+.. note::
+   The forms in the above video show a simple survey with baseline and follow-up forms. The follow-up form shows three possible ways to look up an existing participant. Download the XLSForms: `Add participant <https://docs.google.com/spreadsheets/d/13pdMv3wNbd14hjN-dqxXgmgLN0fzvfGxbQa6OXvJNpU/edit#gid=0>`_ and `Participant follow-up <https://docs.google.com/spreadsheets/d/1tfrpIrixbOHdAb_aLejWq7HTeJaSjZVqcQLdAP86WA0/edit#gid=0>`_.
+
 First, some definitions: each item that gets managed by an ODK workflow is called an **Entity**. Entities can be physical (e.g., a tree) or abstract (e.g., a site visit). Entities of the same type are organized in **Entity Lists**.
 
 .. note::
