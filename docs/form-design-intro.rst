@@ -20,7 +20,7 @@ Questions can be :ref:`grouped together <groups>` including :ref:`on one screen 
 Excel-based form creation
 -------------------------
 
-Most ODK users design their forms in Excel or Google Sheets using :doc:`XLSForm <xlsform>`. Examples in this documentation use XLSForm notation to show form features.
+Most ODK users design their forms in Excel or Google Sheets using XLSForm. Examples in this documentation use XLSForm notation to show form features. You can start with :doc:`a tutorial <xlsform-first-form>` or :doc:`read the reference <xlsform>`.
 
 .. _drag-and-drop-form-creation:
 
@@ -37,6 +37,7 @@ For simple forms, :doc:`build-intro` is a drag-and-drop form designer that works
 .. toctree::
   :maxdepth: 3
 
-  xlsform
+  xlsform-first-form
+  About XLSForm <xlsform>
   build-intro
   
