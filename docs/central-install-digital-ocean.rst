@@ -317,6 +317,8 @@ If you are having issues with Central running out of memory, we strongly recomme
   
     /swap swap swap defaults 0 0
 
+#. Finally, :ref:`increase memory allocation <central-install-custom-memory>` so Central can use the swap you've added.
+
 .. _central-install-digital-ocean-external-storage:
 
 Adding External Storage
@@ -442,6 +444,7 @@ Central comes with a mail server to send password reset emails. To use a custom 
 
    .. code-block:: bash
 
+     EMAIL_FROM=my-no-reply-email-address
      EMAIL_HOST=my-email-host
      EMAIL_PORT=my-email-port
      EMAIL_IGNORE_TLS=true-or-false
@@ -450,6 +453,8 @@ Central comes with a mail server to send password reset emails. To use a custom 
      EMAIL_PASSWORD=my-email-password
 
    .. note::
+
+     ``EMAIL_FROM`` is the address the email should come from. It's sometimes known as the sender address.
 
      ``EMAIL_IGNORE_TLS`` should generally be set to ``false``. ``EMAIL_SECURE`` should be set to ``true`` if you use port 465 and set to ``false`` for other ports.
 
