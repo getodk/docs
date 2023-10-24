@@ -69,7 +69,7 @@ Finally, stop the containers, restart Docker, and bring the containers back up w
 Migration fails due to out-of-memory error
 ------------------------------------------
 
-During upgrades, some versions of Central may perform complex database migrations that need more memory than the 2GB typically allocated to Central.
+During upgrades, some versions of Central may perform complex database migrations that need more memory than the 2 GB typically allocated to Central.
 
 If you get an error suggesting that the JavaScript heap is out of memory, try :ref:`increasing allocated memory <central-install-custom-memory>`.
 
@@ -78,9 +78,9 @@ If you get an error suggesting that the JavaScript heap is out of memory, try :r
 Export produces corrupt zip
 ---------------------------
 
-If you have installed Central on a 1GB server or your forms collect many large media files, you may encounter problems exporting submission .zip files. Usually, the .zip file will end up being empty, or much smaller than expected and possibly corrupt.
+If you have installed Central on a 1 GB server or your forms collect many large media files, you may encounter problems exporting submission .zip files. Usually, the .zip file will end up being empty, or much smaller than expected and possibly corrupt.
 
-If you are expecting to collect media files, we recommend having at least 2GB of memory. When collecting images, we recommend :ref:`specifying a maximum size in form design <scaling-down-images>`.
+If you are expecting to collect media files, we recommend having at least 2 GB of memory. When collecting images, we recommend :ref:`specifying a maximum size in form design <scaling-down-images>`.
 
 If you still run into problems, try :ref:`increasing allocated memory <central-install-custom-memory>`.
 
@@ -89,9 +89,9 @@ If you still run into problems, try :ref:`increasing allocated memory <central-i
 File upload fails with 413
 ---------------------------
 
-If you get an error `413` when trying to upload a submission or when trying to upload a form attachment, the file you are trying to upload is too large. By default, files up to 100MB are accepted. We typically recommend reducing the size of the files to upload if possible. For example, :ref:`images can be scaled down in form design <scaling-down-images>`.
+If you get an error `413` when trying to upload a submission or when trying to upload a form attachment, the file you are trying to upload is too large. By default, files up to 100 MB are accepted. We typically recommend reducing the size of the files to upload if possible. For example, :ref:`images can be scaled down in form design <scaling-down-images>`.
 
-If you absolutely must upload files over 100MB, you can change the `client_max_body_size` `nginx` directive:
+If you absolutely must upload files over 100 MB, you can change the `client_max_body_size` `nginx` directive:
 
 .. code-block:: bash
 

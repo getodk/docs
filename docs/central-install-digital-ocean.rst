@@ -38,11 +38,11 @@ At the very top, under **Choose an image**, switch to the **Marketplace** tab an
 As you continue down this page, there are a few options that may be important to you:
 
 - There is a section for standard droplets and another for more expensive optimized droplets. In general, you should not need optimized droplets.
-- The **size** option affects a few things, but the most important is the amount of memory available to your server. Memory does not affect storage space, it sets the amount of "thinking room" the server gets while it's working on things. If you don't expect many forms to be submitted at once and you don't expect many large media attachments, you can start with 1GB. Higher-load servers and servers which handle many image or video attachments may need 2GB or more. It is pretty easy to upgrade to a larger size later.
+- The **size** option affects a few things, but the most important is the amount of memory available to your server. Memory does not affect storage space, it sets the amount of "thinking room" the server gets while it's working on things. If you don't expect many forms to be submitted at once and you don't expect many large media attachments, you can start with 1 GB. Higher-load servers and servers which handle many image or video attachments may need 2 GB or more. It is pretty easy to upgrade to a larger size later.
 
   .. tip::
 
-    If you choose a 1GB server we strongly recommend you :ref:`add swap <central-install-digital-ocean-swap>`.
+    If you choose a 1 GB server we strongly recommend you :ref:`add swap <central-install-digital-ocean-swap>`.
 
 - The datacenter region selects where physically your server will be located. If you have security concerns, this is your chance to decide which country hosts your data. Otherwise, generally selecting the option with closest geographic proximity to your users is a good idea.
 - If you are technically savvy and understand what an SSH key is, there is a field here that you will want to fill in. If not, don't worry about it.
@@ -281,7 +281,7 @@ Adding Swap
 
 If you are having issues with Central running out of memory, we strongly recommend `adding physical memory <https://www.digitalocean.com/docs/droplets/how-to/resize/>`_. If you cannot add physical memory, adding swap can be an effective workaround against temporary memory spikes.
 
-#. To add 2GB swap, log into your server's console and run these commands.
+#. To add 2 GB swap, log into your server's console and run these commands.
 
    .. code-block:: bash
    
@@ -346,9 +346,9 @@ Forms with many large media attachments can fill up your droplet's storage space
 Increasing Memory Allocation
 -----------------------------
 
-During upgrades or exports, some versions of Central may use more memory than the 2GB typically available to the Central service. If you run into this problem, increase the memory allocated to the Central service.
+During upgrades or exports, some versions of Central may use more memory than the 2 GB typically available to the Central service. If you run into this problem, increase the memory allocated to the Central service.
 
-#. Ensure you have more than 2GB of physical memory in your server. If you have less, `add more physical memory <https://www.digitalocean.com/docs/droplets/how-to/resize/>`_.
+#. Ensure you have more than 2 GB of physical memory in your server. If you have less, `add more physical memory <https://www.digitalocean.com/docs/droplets/how-to/resize/>`_.
 
    .. tip::
      If you can't add more physical memory, :ref:`add swap <central-install-digital-ocean-swap>`. This will result in slower performance than adding physical memory but can be acceptable if it is only needed for occasional exports or upgrades.
@@ -369,7 +369,7 @@ During upgrades or exports, some versions of Central may use more memory than th
 
    .. note::
 
-     Choose a memory size that leaves enough memory for your server's operating system and any other applications. 3072MB is a good starting point for a machine with 4GB of RAM.
+     Choose a memory size that leaves enough memory for your server's operating system and any other applications. 3072 MB is a good starting point for a machine with 4 GB of RAM.
 
 #. Build and restart the service container.
 

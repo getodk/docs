@@ -105,7 +105,7 @@ To avoid sending the form's XML submission, you would need to inspect the submis
 
 On the server, having just the ``instanceID`` sent on subsequent ``POST`` requests might not be sufficient to process the request --- sending only this information would burden those server implementations with maintaining a mapping from the instanceID to the natural key for this data. Not sending the form's XML submission in subsequent POSTs biases against some server designs.
 
-Finally, since most XML submission documents are smaller than 2K bytes, and if you have a 10M byte threshold for splitting a submission across multiple requests (a reasonable lower limit), you're burning only 0.02% of your bandwidth with the retransmission.
+Finally, since most XML submission documents are smaller than 2K bytes, and if you have a 10 MB threshold for splitting a submission across multiple requests (a reasonable lower limit), you're burning only 0.02% of your bandwidth with the retransmission.
 
 .. _server-response-format:
 
