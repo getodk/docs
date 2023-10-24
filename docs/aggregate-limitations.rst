@@ -13,10 +13,10 @@ When a form submission is uploaded, and when blank forms are downloaded, all the
 
 It is not absolutely critical to serialize form downloads, but you should probably manage how many form download requests are being handled concurrently, in order to avoid memory problems.
 
-Uploading blank forms with media exceeding 10MB
+Uploading blank forms with media exceeding 10 MB
 -------------------------------------------------
 
-Adding blank forms through the ODK Aggregate website is limited to an overall form and media size of 10MB. Beyond that, you have to perform multiple uploads of the form definition file with different subsets of the media files in order to fully upload the blank form and its media attachments.
+Adding blank forms through the ODK Aggregate website is limited to an overall form and media size of 10 MB. Beyond that, you have to perform multiple uploads of the form definition file with different subsets of the media files in order to fully upload the blank form and its media attachments.
 
 An easier solution is to use :doc:`ODK Briefcase <briefcase-intro>`.
 

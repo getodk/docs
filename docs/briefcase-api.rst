@@ -125,7 +125,7 @@ formUpload
 
 This is ``FormUploadServlet`` in ODK Aggregate.
 
-It is a multipart POST. The POST always contains the form definition file, and has as many media files as would fit in under 10MB. This follows the behavior of the OpenRosa Form Submission/Overwrite API.
+It is a multipart POST. The POST always contains the form definition file, and has as many media files as would fit in under 10 MB. This follows the behavior of the OpenRosa Form Submission/Overwrite API.
 
 Because of the limitations of HTML file input tags, all media files must be in a single folder (no sub-directories). The server assumes this is the case.
 

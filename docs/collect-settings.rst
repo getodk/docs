@@ -250,15 +250,15 @@ Specifies how blank forms should be updated:
     Images are unchanged when added to a form.
     Recommended for use only when images must contain a lot of detail
     and when the internet connection used to send submissions is fast.
-  :guilabel:`Very small (640px)`
+  :guilabel:`Very small (640 px)`
     Recommended when images don't need to be detailed
     or the internet connection used to send submissions is slow.
-  :guilabel:`Small (1024px)`
+  :guilabel:`Small (1024 px)`
     Sufficiently detailed for most on-screen viewing
     but too small for printing.
-  :guilabel:`Medium (2048px)`
+  :guilabel:`Medium (2048 px)`
     Sufficiently detailed for most uses, including printing.
-  :guilabel:`Large (3072px)`
+  :guilabel:`Large (3072 px)`
     Recommended when a lot of detail is needed,
     but you want to reduce the size of image files
     as much as possible.
@@ -271,7 +271,7 @@ Specifies how blank forms should be updated:
 
 :guilabel:`Use external app for audio recording`
 """"""""""""""""""""""""""""""""""""""""""""""""
-  By default, an internal recorder is used for audio recording. Check this setting to use the external audio application instead. When unchecked, recordings will be created as mono ``.m4a`` files using the ``AAC`` codec with a sample rate of 32kHz and a bitrate of 64kbps. This corresponds to a file size of about 30MB/hour. We typically recommend configuring audio quality :ref:`in the form definition <customizing-audio-quality>` instead of using this setting but it can be useful for older forms that can't be modified.
+  By default, an internal recorder is used for audio recording. Check this setting to use the external audio application instead. When unchecked, recordings will be created as mono ``.m4a`` files using the ``AAC`` codec with a sample rate of 32 kHz and a bitrate of 64 kbps. This corresponds to a file size of about 30 MB/hour. We typically recommend configuring audio quality :ref:`in the form definition <customizing-audio-quality>` instead of using this setting but it can be useful for older forms that can't be modified.
 
 .. rubric:: Form import
 
