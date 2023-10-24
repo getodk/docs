@@ -69,6 +69,7 @@ br
 BREATHCOUNT
 bugreport
 café
+Calc
 calificaciones
 cd
 centric
