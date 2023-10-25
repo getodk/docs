@@ -80,6 +80,7 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
 
   collect-api
   central-api
+  pyODK <https://getodk.github.io/pyodk/>
   ODK XForms Spec <https://getodk.github.io/xforms-spec/>
   openrosa
 
