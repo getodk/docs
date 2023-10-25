@@ -220,14 +220,12 @@ Specifies how blank forms should be updated:
 
 :guilabel:`Constraint processing`
 """""""""""""""""""""""""""""""""""
-  Sets when form responses are validated against constraints_.
+  Sets when form responses are validated against :ref:`constraints <constraints>`.
 
   Options:
 
   - Upon forward swipe. (That is, right after the question is answered.)
   - At finalization.
-
-  .. _constraints: http://xlsform.org/#constraints
 
 :guilabel:`High res video`
 """""""""""""""""""""""""""""

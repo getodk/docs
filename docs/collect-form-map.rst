@@ -28,7 +28,7 @@ Filled forms are represented by colored map markers. The color of each map marke
 * Green: sent
 * Red: send attempt failed
 
-Tapping on a map marker shows details about the filled form at the bottom of the screen. The filled form will be identified by its `instance name <http://xlsform.org/en/#specify-form-submission-name>`_. In the screenshot above, first name, last name, and job title are displayed. Strategically choosing data from the form to show in the instance name can make the form map into a useful dashboard.
+Tapping on a map marker shows details about the filled form at the bottom of the screen. The filled form will be identified by its :ref:`instance name <instance-name>`. In the screenshot above, first name, last name, and job title are displayed. Strategically choosing data from the form to show in the instance name can make the form map into a useful dashboard.
 
 The detail view also shows a button for viewing or editing the selected filled form depending on its status. By default, forms with `Saved`, `Finalized`, and `Submission Failure` status are opened for edit and `Sent` forms are opened for viewing. However, if the :guilabel:`Edit Saved Form` button is made unavailable from the :ref:`admin settings <user-access-control-settings>`, forms with `Saved`, `Finalized`, and `Submission Failure` status are opened as view-only.
 
