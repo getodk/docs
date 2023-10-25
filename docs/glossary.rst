@@ -37,14 +37,11 @@ Glossary
 
     A server-side data storage and analysis tool. It is no longer being updated.
 
-  Build
+  Build (deprecated)
 
     Part of ODK.
 
     An application that lets you design forms with a drag-and-drop form interface.
-
-    - `Use ODK Build online <https://build.getodk.org/>`_.
-    - `Download a desktop version of ODK Build <https://github.com/getodk/build/releases/latest>`_.
 
   XLSForm
 

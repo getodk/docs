@@ -64,7 +64,7 @@ Advanced: XPath paths
 
 The ``${}`` notation in XLSForm is a convenient shortcut to refer to a specific field. When an XLSForm is converted, ``${}`` references are expanded to XPath paths which describe where the field is located in the form.
 
-Some tools like ODK Build do not support ``${}`` notation so XPath notation must be used. Even in XLSForm, it can be advantageous to use XPath notation, especially in the context of :ref:`repeats <repeats>` or :doc:`datasets <form-datasets>`. The ``${}`` and XPath notations can be mixed freely.
+In XLSForm, it can be advantageous to use XPath notation, especially in the context of :ref:`repeats <repeats>` or :doc:`datasets <form-datasets>`. The ``${}`` and XPath notations can be mixed freely.
 
 One way to think about XPath is that it sees a form or dataset like a series of folders and files on your computer. Questions are like files while :ref:`groups <groups>` and :ref:`repeats <repeats>` are like folders because they can contain other elements. Path elements are separated by `/`. Imagine a form with a group with name ``outer`` which contains another group with name ``inner`` which contains a question with name ``q1``. The absolute path to ``q1`` is ``/data/outer/inner/q1``.
 
@@ -672,11 +672,6 @@ If given a ``label``, groups will be visible in the form path to help orient the
 .. image:: /img/form-logic/jump-menu-groups.*
   :alt: The jump menu with a few grouped questions.
   :class: device-screen-vertical
-
-.. warning::
-
-  If you use ODK Build v0.3.4 or earlier, your groups will not be visible in the jump menu.
-  The items inside the groups will display as if they weren't grouped at all.
 
 Groups without labels can be helpful for organizing questions in a way that's invisible to the user. This technique can be helpful for internal organization of the form. These groups can also be a convenient way to :ref:`conditionally show certain questions <relevants>`.
 

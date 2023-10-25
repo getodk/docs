@@ -1,11 +1,12 @@
+:orphan:
+
 ODK Build
 ===========
 
+.. warning::
+  ODK Build is no longer being updated. Please use :doc:`XLSForm <xlsform>` instead.
+
 :dfn:`ODK Build` is a form designer with a drag-and-drop user interface. Build is an HTML5 web application and works best for designing simple forms.
-
-.. tip::
-
-  For a more powerful form designer from ODK, try :doc:`XLSForm <xlsform>`.
 
 .. _use-build:  
 

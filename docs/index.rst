@@ -24,10 +24,6 @@ This requires:
 
 While this is the recommended workflow, it is not the only way to do things. ODK is a very flexible set of tools, and organizations will find their own best practices for adopting it.
 
-Additional ODK tools are:
-
-- :doc:`build-intro`, a drag-and-drop form designer. We generally recommend XLSForm for its flexibility but users only building very simple forms may prefer Build.
-
 The specifications and libraries that power the tools are:
 
 - :doc:`openrosa`, APIs for how ODK clients communicate with ODK servers.

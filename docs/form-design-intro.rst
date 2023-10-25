@@ -22,14 +22,6 @@ Excel-based form creation
 
 Most ODK users design their forms in Excel or Google Sheets using :doc:`XLSForm <xlsform>`. Examples in this documentation use XLSForm notation to show form features.
 
-.. _drag-and-drop-form-creation:
-
-Drag-and-drop form creation
----------------------------
-  
-For simple forms, :doc:`build-intro` is a drag-and-drop form designer that works both online and offline.
-
-
 .. note::
 
   The ODK ecosystems use XML form definitions following the `ODK XForms specification <https://getodk.github.io/xforms-spec/>`_, a subset of the `W3C XForms specification <https://www.w3.org/TR/xforms/>`_. The form creation tools described above convert user-friendly form definitions into XML.
@@ -38,5 +30,4 @@ For simple forms, :doc:`build-intro` is a drag-and-drop form designer that works
   :maxdepth: 3
 
   xlsform
-  build-intro
   
