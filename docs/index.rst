@@ -70,6 +70,7 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   :caption: Form Design
 
   form-design-intro
+  XLSForm Tutorial <xlsform-first-form>
   form-reference
   form-best-practices
 
