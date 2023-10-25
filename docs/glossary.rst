@@ -99,8 +99,3 @@ Glossary
   
     `JavaScript Object Notation <https://www.json.org/>`_.
     A serialized key-value data format.
-    
-  KML
-  
-    `Keyhole Markup Language <https://developers.google.com/kml/>`_.
-    A file format for geographic data.
