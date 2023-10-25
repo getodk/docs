@@ -1031,7 +1031,7 @@ XLSForm
 
 *XLSForm* can refer to:
 
-- The `XLSForm format for describing form in an Excel spreadsheet <http://xlsform.org/>`_
+- The :doc:`XLSForm format <xlsform>` for describing form in an Excel spreadsheet.
 - A spreadsheet file that describes a form using the format.
 - A :doc:`tool <xlsform>` for converting :file:`*.xls(x)` files to XForm documents.
 

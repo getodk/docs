@@ -3,10 +3,8 @@ Question Types
 
 :doc:`collect-intro` supports forms with a wide variety of question types.
 The exact functionality and display style of each question
-are specified in your `XLSForm`_ definition using the
+are specified in your :doc:`XLSForm <xlsform>` definition using the
 ``type`` and ``appearance`` columns.
-
-.. _XLSForm: http://xlsform.org
 
 .. tip::
 

@@ -4,11 +4,7 @@ Form Logic
 
 :doc:`collect-intro` supports a wide range of dynamic form behavior. 
 This document covers how to specify this behavior
-in your `XLSForm`_ definition.
-
-.. seealso:: `XLSForm`_
-
-.. _XLSForm: http://xlsform.org/
+in your :doc:`XLSForm <xlsform>` definition.
 
 .. warning::
 
