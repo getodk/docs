@@ -1,9 +1,10 @@
-Form Design Reference
-=====================
+XLSForm Reference
+=================
 
 .. toctree::
   :maxdepth: 3
 
+  XLSForm introduction <xlsform>
   form-question-types
   form-logic
   form-operators-functions

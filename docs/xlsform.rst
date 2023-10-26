@@ -3,27 +3,21 @@ XLSForm
 
 .. _xlsform-introduction:
 
-:dfn:`XLSForm` is a standard for building forms in Excel. XLSForms are simple to get started with and can represent complex forms. 
+:dfn:`XLSForm` is a standard for designing forms in Excel. XLSForms are simple to get started with and can represent complex forms. 
 
-XLSForms can be created and edited by any application that works with ``.xlsx`` documents. This means that they are portable and can leverage many useful features commonly available in spreadsheet applications such as formulas, comments and document versioning. 
+XLSForms can be created and edited by any application that works with ``.xlsx`` documents. This means that they are portable and can leverage many useful features commonly available in spreadsheet applications such as formulas, comments, and document versioning. 
 
-Many users choose to use Google Sheets or Excel for the web so that they can collaborate on or publicly share their forms.
+Many users choose to use Google Sheets or Excel for the web so that they can collaborate on or publicly share their forms. The best way to get started with XLSForm is with the tutorial below.
 
-One way to get started is by downloading or making a copy of the form definition template below.
+* :doc:`XLSForm tutorial <xlsform-first-form>`
 
-* :fa:`external-link` `Form definition template <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_
+If you are more adventurous, you can skip the tutorial, make a copy of the form template below, and learn to design your form that way.
 
-You can hover over columns to see guidance about how to use them. The `All Widgets form definition <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ>`_ shows examples of all of the different user-visible question types.
+* `XLSForm template <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_
 
-The ODK documentation shows all form design examples as XLSForms and describes how XLSForms are used by ODK tools. There is also a general tutorial for building XLSForms on the `XLSForm website <http://xlsform.org/>`_.
+Once your form has been designed, you can :ref:`upload the XLSForm directly to your ODK Central server <central-forms-upload>`. If your ODK server does not have the latest XLSForm features or you need to temporarily preview a form in a browser, try `XLSForm Online <https://getodk.org/xlsform>`_.
 
-Once your form has been designed, you can :ref:`upload the XLSForm directly to Central <central-forms-upload>`.
-
-.. tip::
-
-  If your ODK server does not have the latest XLSForm features or you need to temporarily preview a form in a browser, try `XLSForm Online <https://getodk.org/xlsform>`_.
-
-  If you need to design XLSForms offline or your form has sensitive data that you'd rather not upload into XLSForm Online, use the `pyxform <https://github.com/XLSForm/pyxform>`_ command line tool.
+The ODK documentation shows all form design examples as XLSForms and describes how XLSForms are used by ODK tools. The `All Widgets form <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ>`_ has examples of all of the different user-visible question types.
 
 .. _survey-sheet:
 
