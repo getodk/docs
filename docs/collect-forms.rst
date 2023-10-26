@@ -11,7 +11,7 @@ Managing Forms in Collect
 Loading Blank Forms
 ====================
 
-A :dfn:`blank form` is a `.xml` file containing a form definition consistent with the `XForm specification <https://getodk.github.io/xforms-spec/>`_. Blank forms can be created using `ODK Build <https://build.getodk.org/>`_ or :doc:`XLSForm <xlsform>`.
+A :dfn:`blank form` is a `.xml` file containing a form definition consistent with the `XForm specification <https://getodk.github.io/xforms-spec/>`_. Blank forms can be created using :doc:`XLSForm <xlsform>`.
 
 In order to fill out forms with survey participants, you must first load blank forms into the Collect App.
 

@@ -37,14 +37,11 @@ Glossary
 
     A server-side data storage and analysis tool. It is no longer being updated.
 
-  Build
+  Build (deprecated)
 
     Part of ODK.
 
     An application that lets you design forms with a drag-and-drop form interface.
-
-    - `Use ODK Build online <https://build.getodk.org/>`_.
-    - `Download a desktop version of ODK Build <https://github.com/getodk/build/releases/latest>`_.
 
   XLSForm
 
@@ -102,8 +99,3 @@ Glossary
   
     `JavaScript Object Notation <https://www.json.org/>`_.
     A serialized key-value data format.
-    
-  KML
-  
-    `Keyhole Markup Language <https://developers.google.com/kml/>`_.
-    A file format for geographic data.

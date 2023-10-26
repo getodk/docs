@@ -100,13 +100,6 @@ ODK Briefcase
 
 We gather aggregate user behavior through Google Analytics and gather crash logs through Sentry. We use secure HTTPS communication to transfer this data to ODK's maintainers. Users may disable analytics in the settings of the application. Crash logging cannot be disabled.
 
-.. _security-privacy-odk-build:
-
-ODK Build
----------
-
-We require secure HTTPS connections to ODK Build. We gather aggregate user behavior through Google Analytics. We use secure HTTPS communication to transfer this data to ODK's maintainers.
-
 .. _security-privacy-odk-collect:
 
 ODK Collect
