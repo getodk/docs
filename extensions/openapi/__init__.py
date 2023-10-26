@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 docDir = "./docs" 
 currentDir = str(pathlib.Path(__file__).parent.resolve())
 schemas = {}
-renderer = pystache.Renderer(search_dirs=currentDir)
+renderer = pystache.Renderer(search_dirs=currentDir, escape=lambda s: s)
 
 def builder_inited(app):
    main()
