@@ -122,8 +122,6 @@ Transferring Finalized Forms
 
 To perform analysis on data collected with the Collect app, you will need to get the filled forms off of the devices. Generally, this is done by uploading them to an ODK server. To do this, you will first need to :doc:`configure a server <collect-connect>`.
 
-In some cases, you may want to :ref:`pull filled forms directly from a device <pulling-forms-with-briefcase>`. This can be simpler than setting up a server if you are only using a small number of devices or when there is no Internet access. It can also be helpful to recover from submission failures.
-
 .. _uploading-to-aggregate-or-google-drive:
 
 Sending Finalized Forms to a Server
@@ -151,13 +149,6 @@ To show sent and unsent forms:
   :alt: The Send Finalized Forms screen of the Collect app. The *Change View* option is circled in red.
   :class: device-screen-vertical
 
-.. _pulling-forms-with-briefcase:
-
-Pulling Forms into Briefcase
------------------------------
-
-:doc:`ODK Briefcase  <briefcase-using>` is a desktop application that can be used to pull filled forms to your local computer. You will first need to :ref:`transfer the filled forms to your computer <pull-from-collect>`. This will not update the state of the form to `Sent`.
-
 .. _deleting-forms:
 
 Deleting Forms
@@ -167,8 +158,6 @@ Deleting Forms
     In versions prior to v1.28, deleting a blank form makes it impossible to edit filled instances of that form.
 
     In Collect v1.28 and later, filled instances of forms will still be editable after their blank form is deleted. This means that the form definition and media files will remain on the device until all the filled instances have been deleted.
-
-    
 
 You can delete `Blank` forms as well as filled forms in any state (`Saved`, `Finalized`, or `Sent`). Deleting a `Sent` form deletes the form contents but metadata associated with it including the deletion date and the instance name are maintained for display in the :guilabel:`View Sent Form` list.
 
@@ -189,7 +178,6 @@ You can delete `Blank` forms as well as filled forms in any state (`Saved`, `Fin
    .. image:: /img/collect-forms/delete-saved-forms-blank-forms.*
      :alt: The Delete Saved Forms screen in the Collect app. There are two available tabs: *Saved Forms* and *Blank Forms*. The *Blank Forms* tab is active. Below that is a list of blank forms, with checkboxes. There are buttons labeled: *Select All* and *Delete Selected*.
      :class: device-screen-vertical
-
 
 .. note::
 
