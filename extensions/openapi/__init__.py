@@ -1,3 +1,4 @@
+import os
 import yaml
 import pathlib
 import re
@@ -19,6 +20,7 @@ docDir = "./docs"
 currentDir = str(pathlib.Path(__file__).parent.resolve())
 schemas = {}
 renderer = pystache.Renderer(search_dirs=currentDir, escape=lambda s: s)
+specPath = os.getenv('API_SPEC_PATH', docDir + '/_static/api-spec/central.yaml')
 
 def builder_inited(app):
    main()
@@ -37,7 +39,7 @@ def main():
           f.write(result)
 
 def getYaml():
-    with open(docDir + '/_static/api-spec/central.yaml', 'rt', encoding='UTF-8') as stream:
+    with open(specPath, 'rt', encoding='UTF-8') as stream:
         return yaml.safe_load(stream)
 
 
