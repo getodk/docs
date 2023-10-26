@@ -115,5 +115,4 @@ copybutton_exclude = '.linenos, .gp, .go'
 # Exclude all prompt characters code-block:: bash
 copybutton_prompt_text = "$ "
 
-
 ogp_site_url = "https://docs.getodk.org"

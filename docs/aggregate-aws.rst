@@ -95,7 +95,7 @@ Create an EC2 machine
 
 5. Select the instance type you want to use.
 
-    A minimum setup is a `t2.small` instance type (1 vCPU, 2GiB RAM), but you should review your requirements and choose a bigger instance type according to your needs.
+    A minimum setup is a `t2.small` instance type (1 vCPU, 2 GB RAM), but you should review your requirements and choose a bigger instance type according to your needs.
 
 6. Click on :guilabel:`Next: Configure Instance Details`.
 

@@ -3,10 +3,8 @@ Question Types
 
 :doc:`collect-intro` supports forms with a wide variety of question types.
 The exact functionality and display style of each question
-are specified in your `XLSForm`_ definition using the
+are specified in your :doc:`XLSForm <xlsform>` definition using the
 ``type`` and ``appearance`` columns.
-
-.. _XLSForm: http://xlsform.org
 
 .. tip::
 
@@ -1467,7 +1465,7 @@ Manual location recording
   The user chooses when to tap the "record a point" button at the top of the screen to capture the device geolocation at that moment.
 
 Automatic location recording
-  The user is prompted to select a recording interval and accuracy requirement. If the accuracy requirement is set to None, points are always collected at the recording interval. If the accuracy requirement is set to any other value, a point will only be captured if it meets the requirement. For example, given a recording interval of 20s and an accuracy requirement of 10m, the app places a point at the device location every 20s if the location is accurate to 10m or better.
+  The user is prompted to select a recording interval and accuracy requirement. If the accuracy requirement is set to None, points are always collected at the recording interval. If the accuracy requirement is set to any other value, a point will only be captured if it meets the requirement. For example, given a recording interval of 20 seconds and an accuracy requirement of 10 meters, the app places a point at the device location every 20 seconds if the location is accurate to 10 meters or better.
 
 .. warning::
 
@@ -1518,7 +1516,7 @@ Manual location recording
   The user chooses when to tap the "record a point" button at the top of the screen to capture the device geolocation at that moment.
 
 Automatic location recording
-  The user is prompted to select a recording interval and accuracy requirement. If the accuracy requirement is set to None, points are always collected at the recording interval. If the accuracy requirement is set to any other value, a point will only be captured if it meets the requirement. For example, given a recording interval of 20s and an accuracy requirement of 10m, the app places a point at the device location every 20s if the location is accurate to 10m or better.
+  The user is prompted to select a recording interval and accuracy requirement. If the accuracy requirement is set to None, points are always collected at the recording interval. If the accuracy requirement is set to any other value, a point will only be captured if it meets the requirement. For example, given a recording interval of 20 seconds and an accuracy requirement of 10 meters, the app places a point at the device location every 20 seconds if the location is accurate to 10 meters or better.
 
 .. warning::
 
@@ -1950,21 +1948,21 @@ The quality of audio recordings can be customized using the ``quality`` paramete
    * - normal
      - .m4a
      - AAC
-     - 64kbps
-     - 32kHz
-     - ~30MB/hour
+     - 64 kbps
+     - 32 kHz
+     - ~30 MB/hour
    * - low
      - .m4a
      - AAC
-     - 24kbps
-     - 32kHz
-     - ~11MB/hour
+     - 24 kbps
+     - 32 kHz
+     - ~11 MB/hour
    * - voice-only
      - .amr
      - AMR
-     - 12.2kbps
-     - 8kHz
-     - ~5MB/hour
+     - 12.2 kbps
+     - 8 kHz
+     - ~5 MB/hour
 
 .. tip::
 
@@ -2053,7 +2051,7 @@ Video widgets
 ----------------
 
 .. tip::
-  Video files can be very large. We recommend configuring video options for every device you intend to use for data collection. Also make submissions to your server with the Internet conditions you expect when gathering data to make sure that you can send files of the size you expect. Note that Central :ref:`has a 100MB file upload size limit by default <file-upload-fails-with-413>`.
+  Video files can be very large. We recommend configuring video options for every device you intend to use for data collection. Also make submissions to your server with the Internet conditions you expect when gathering data to make sure that you can send files of the size you expect. Note that Central :ref:`has a 100 MB file upload size limit by default <file-upload-fails-with-413>`.
 
 .. _default-video-widget:
 
@@ -2707,7 +2705,7 @@ type
 
 When a form includes a question of type ``background-audio``, audio is recorded while the form is open and attached to the form submission as a single audio file. These recordings can be used for quality assurance, training, transcription, and more. Use background recording instead of an :ref:`audio question <customizing-audio-quality>` when you want to make sure to record everything that happens during form filling.
 
-By default, audio files will be saved in the `amr` format with a bitrate of 12.2kbps and a sample rate of 8kHz, resulting in a file size of about 5MB per hour. These settings correspond to the ``voice-only`` quality :ref:`for audio questions <customizing-audio-quality>` and minimize file size while maintaining reasonable quality for a conversation between two people. You can override that default quality by specifying a value in the ``parameters`` column as described :ref:`for audio questions <customizing-audio-quality>`.
+By default, audio files will be saved in the `amr` format with a bitrate of 12.2 kbps and a sample rate of 8 kHz, resulting in a file size of about 5 MB per hour. These settings correspond to the ``voice-only`` quality :ref:`for audio questions <customizing-audio-quality>` and minimize file size while maintaining reasonable quality for a conversation between two people. You can override that default quality by specifying a value in the ``parameters`` column as described :ref:`for audio questions <customizing-audio-quality>`.
 
 .. rubric:: XLSForm
 
