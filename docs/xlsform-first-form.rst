@@ -1,4 +1,4 @@
-:og:image: https://docs.getodk.org/_images/xlsform-first-form.png
+:og:image: https://docs.getodk.org/_static/img/xlsform-first-form.png
 
 XLSForm Tutorial: Your first form
 =================================
