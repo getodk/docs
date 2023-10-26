@@ -42,7 +42,8 @@ extensions = [ 'sphinxcontrib.spelling',
     'sphinxcontrib.youtube',
     'sphinx_tabs.tabs',
     'sphinx_toolbox.collapse',
-    'openapi'
+    'openapi',
+    'sphinxext.opengraph'
 ]
 
 # If using Apple Silicon, set env variable (assumes brew install of enchant)
@@ -113,3 +114,5 @@ smartquotes_action = 'De'
 copybutton_exclude = '.linenos, .gp, .go'
 # Exclude all prompt characters code-block:: bash
 copybutton_prompt_text = "$ "
+
+ogp_site_url = "https://docs.getodk.org"

@@ -406,5 +406,4 @@ Emoji can be used in form labels, hints, and answer choices.
 
 .. seealso::
 
-  - `Styling prompts in XLSForm <http://xlsform.org/#styling>`_
   - :download:`Sample XLSForm with Style </downloads/form-styling/style-example.xlsx>`

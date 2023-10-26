@@ -6,33 +6,20 @@
 Welcome to ODK's Docs!
 ======================
 
-:dfn:`ODK` is a suite of open source tools that help organizations collect and manage data.
+:dfn:`ODK` is a data collection platform that helps researchers, field teams, and other professionals collect the data they need wherever it is. For a quick start, read :doc:`getting-started`.
 
-For a quick start, read :doc:`getting-started`. In most cases, users of ODK:
+In most cases, users of ODK:
 
-- Create survey forms using the :doc:`XLSForm <xlsform>` standard in Excel or `Google Sheets <https://www.google.com/sheets/>`_.
+- Create forms using the :doc:`XLSForm <xlsform>` standard in Excel or Google Sheets.
 - :ref:`Upload forms <central-forms-upload>` to an :doc:`ODK Central server <central-intro>`.
-- :ref:`Download forms <in-app-get-blank-forms>` into :doc:`collect-intro` on an Android device.
-- :doc:`Use Collect to fill out forms <collect-filling-forms>` with :term:`participants <participant>`.
+- :ref:`Download forms <in-app-get-blank-forms>` into :doc:`ODK Collect app <collect-intro>` on an Android device.
+- :doc:`Use Collect to fill out forms <collect-filling-forms>`.
 - :ref:`Upload survey data <uploading-forms>` from Collect to Central.
 - :doc:`Analyze or export data from Central <central-submissions>`.
 
-This requires:
+While this is the most popular workflow, it is not the only way to do things because ODK is a very flexible platform. For example, instead of using the Collect app, you can use a browser to fill out :ref:`web forms <central-submissions-public-link>`. With ODK, you have complete control over your data collection.
 
-- :doc:`Installing Collect on an Android device <collect-install>`
-- :doc:`Installing Central on a server <central-install>`
-
-While this is the recommended workflow, it is not the only way to do things. ODK is a very flexible set of tools, and organizations will find their own best practices for adopting it.
-
-The specifications and libraries that power the tools are:
-
-- :doc:`openrosa`, APIs for how ODK clients communicate with ODK servers.
-- `ODK XForms Spec <https://getodk.github.io/xforms-spec/>`_, a subset of the W3C XForms specification, for use in the ODK ecosystem.
-- `ODK JavaRosa <https://github.com/getodk/javarosa>`_, a Java library that renders forms complying with ODK XForms.
-- `XLSForm spec <https://getodk.github.io/xforms-spec/>`_, a high-level Excel-based form specification.
-- `pyxform <https://github.com/xlsform/pyxform>`_, a Python library that converts XLSForms into ODK XForms.
-
-For a complete list of our tools, check out `ODK on GitHub <https://github.com/getodk>`_.
+ODK is open-source software that's made by a welcoming community of people just like you. To get involved, join the `community forum <https://forum.getodk.org/>`_ and, if you are a developer, contribute to our code on `GitHub <https://github.com/getodk>`_.
 
 .. toctree::
   :maxdepth: 1
@@ -66,6 +53,7 @@ For a complete list of our tools, check out `ODK on GitHub <https://github.com/g
   :caption: Form Design
 
   form-design-intro
+  XLSForm Tutorial <xlsform-first-form>
   form-reference
   form-best-practices
 

@@ -231,7 +231,7 @@ Some questions will :ref:`automatically advance to the next question <autoadvanc
 Required Questions
 ~~~~~~~~~~~~~~~~~~~~~~
 
-`Required questions <http://xlsform.org/#required>`_ will not allow you to advance unless answered.
+:ref:`Required questions <requiring-responses>` will not allow you to advance unless answered.
 
 .. image:: /img/form-question-types/trigger-sorry.*
   :alt: A question screen in the Collect app. An error text reads, "Sorry, this response is required."

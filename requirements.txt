@@ -10,3 +10,4 @@ sphinx-toolbox
 mistune
 pystache
 pyyaml
+sphinxext-opengraph
