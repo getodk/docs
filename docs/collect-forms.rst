@@ -38,54 +38,6 @@ If you have connected ODK Collect to a :doc:`server <collect-connect>` and Colle
 
   Before downloading blank forms from your server to Collect, a form has to be uploaded. See :doc:`Form Management in ODK Central <central-forms>`.
 
-.. _loading-forms-directly:
-
-Loading Forms directly
-------------------------
-
-.. _loading-forms-with-adb:
-
-Loading forms with ``adb``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You can load forms directly from a computer to your device's :ref:`Collect directory <collect-directory>` via USB, using :doc:`Android Debug Bridge <collect-adb>`.
-
-.. code-block:: none
-
-  $ adb push path/to/form.xml <collect-directory>/forms/form.xml
-
-.. _loading-forms-from-device-storage:
-
-Loading forms from device storage
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You can also download forms to your device via a web browser, and move them to the :file:`forms/` directory, using the device's file manager (:menuselection:`Settings -> Storage & USB -> Explore`).
-
-1. Go to the Settings menu (:guilabel:`⚙`) on your device and find :menuselection:`Storage & USB`. The settings menu may look different on your device.
-
-   .. image:: /img/collect-forms/device-settings-storage.*
-     :alt: The Settings menu on an Android Device. The option *Storage and USB* is circled in red.
-     :class: device-screen-vertical
-
-2. From the internal storage screen, select :menuselection:`Explore` to open the file manager. The :guilabel:`Explore` option opens a file manager that you can use to move forms into Collect.
-
-   .. image:: /img/collect-forms/device-settings-storage-explore.*
-     :alt: The Internal Storage settings menu on an Android device. The option *Explore* is circled in red.
-     :class: device-screen-vertical
-
-.. _loading-form-media:
-
-Loading form media
-----------------------
-
-If a form :ref:`includes images or other media <media>`, those files have to be loaded to the device along with the form.
-
-Media files must be placed in a folder labeled :file:`{form-name}-media`.
-
-- When using ODK Central, first upload your form definition. Central will then prompt you to :ref:`add media files <central-forms-attachments>` if necessary. The files are downloaded automatically when :ref:`fetching blank forms <in-app-get-blank-forms>`.
-- If :ref:`loading forms directly to your device <loading-forms-directly>`, the :file:`-media` folder needs to be placed in the :file:`forms` subdirectory of :ref:`your Collect directory <collect-directory>`, alongside the form itself.
-
-
 .. _editing-saved-forms:
 
 Editing drafts
@@ -198,6 +150,60 @@ You can delete `Blank` forms as well as filled forms in any state (`Saved`, `Fin
   .. image:: /img/collect-forms/deleted-form-in-view-sent-form.*
     :alt: The View Sent Forms page in Collect app. Two sent forms are listed, but the second one, *Hypertension Screening* has been deleted. Next to the form name is an icon of an eye, crossed out. Below the form name is the note *Deleted*, along with a date and time.
     :class: device-screen-vertical
+
+.. _managing-forms-without-server:
+
+Managing forms without a server
+================================
+
+If you are working entirely offline with a small group of data collectors, you may find it convenient to manage forms by plugging devices into a computer rather than using a server. These approaches can also be helpful in case of problems that require troubleshooting.
+
+.. _loading-forms-directly:
+
+Loading Forms directly
+------------------------
+
+.. _loading-forms-with-adb:
+
+Loading forms with ``adb``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can load forms directly from a computer to your device's :ref:`Collect directory <collect-directory>` via USB, using :doc:`Android Debug Bridge <collect-adb>`.
+
+.. code-block:: none
+
+  $ adb push path/to/form.xml <collect-directory>/forms/form.xml
+
+.. _loading-forms-from-device-storage:
+
+Loading forms from device storage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can also download forms to your device via a web browser, and move them to the :file:`forms/` directory, using the device's file manager (:menuselection:`Settings -> Storage & USB -> Explore`).
+
+1. Go to the Settings menu (:guilabel:`⚙`) on your device and find :menuselection:`Storage & USB`. The settings menu may look different on your device.
+
+   .. image:: /img/collect-forms/device-settings-storage.*
+     :alt: The Settings menu on an Android Device. The option *Storage and USB* is circled in red.
+     :class: device-screen-vertical
+
+2. From the internal storage screen, select :menuselection:`Explore` to open the file manager. The :guilabel:`Explore` option opens a file manager that you can use to move forms into Collect.
+
+   .. image:: /img/collect-forms/device-settings-storage-explore.*
+     :alt: The Internal Storage settings menu on an Android device. The option *Explore* is circled in red.
+     :class: device-screen-vertical
+
+.. _loading-form-media:
+
+Loading form media
+----------------------
+
+If a form :ref:`includes images or other media <media>`, those files have to be loaded to the device along with the form.
+
+Media files must be placed in a folder labeled :file:`{form-name}-media`.
+
+- When using ODK Central, first upload your form definition. Central will then prompt you to :ref:`add media files <central-forms-attachments>` if necessary. The files are downloaded automatically when :ref:`fetching blank forms <in-app-get-blank-forms>`.
+- If :ref:`loading forms directly to your device <loading-forms-directly>`, the :file:`-media` folder needs to be placed in the :file:`forms` subdirectory of :ref:`your Collect directory <collect-directory>`, alongside the form itself.
 
 .. _delete-forms-adb:
 
