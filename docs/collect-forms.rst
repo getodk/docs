@@ -11,21 +11,21 @@ Managing Forms in Collect
 Loading Blank Forms
 ====================
 
-A :dfn:`blank form` is a `.xml` file containing a form definition consistent with the `XForm specification <https://getodk.github.io/xforms-spec/>`_. Blank forms can be created using :doc:`XLSForm <xlsform>`.
+A :dfn:`blank form` or :dfn:`form definition`` is what users of ODK Collect fill out. Blank forms are usually created using :doc:`XLSForm <xlsform>`.
 
-In order to fill out forms with survey participants, you must first load blank forms into the Collect App.
+In order to fill out forms, you must first load blank forms into the Collect App. The preferred way of doing this is by automatically matching the forms provided by the server and is the default when using Central App Users. You can also :doc:`configure Collect <collect-configure>` so that blank forms must be manually selected and downloaded.
 
 .. _in-app-get-blank-forms:
 
-Loading Forms from a server
------------------------------
+Downloading Forms from a server
+---------------------------------
 
-If you have connected ODK Collect to a :doc:`server <collect-connect>`:
+If you have connected ODK Collect to a :doc:`server <collect-connect>` and Collect is not configured to automatically download forms from it, you will need to download the forms that you need.
 
-1. Select :guilabel:`Get blank forms` on the app home screen to browse available forms and download them to your device.
+1. Select :guilabel:`Download form` on the app home screen to browse available forms and download them to your device.
 
    .. image:: /img/collect-forms/main-menu-highlight-get-blank-form.*
-     :alt: The Main Menu of the Collect app. The option *Get Blank Form* is circled in red.
+     :alt: The Main Menu of the Collect app. The option *Download form* has a red arrow pointing to it.
      :class: device-screen-vertical
 
 2. You will see a list of available forms. Select the ones you would like download, and tap :guilabel:`Get Selected`.
@@ -75,7 +75,7 @@ You can also download forms to your device via a web browser, and move them to t
 
 .. _loading-form-media:
 
-Loading Form media
+Loading form media
 ----------------------
 
 If a form :ref:`includes images or other media <media>`, those files have to be loaded to the device along with the form.
@@ -88,7 +88,7 @@ Media files must be placed in a folder labeled :file:`{form-name}-media`.
 
 .. _editing-saved-forms:
 
-Editing Saved Forms
+Editing drafts
 ===================================
 
 `Completed` (filled-in) :term:`form instances <instance>` can be edited after they have been saved.
