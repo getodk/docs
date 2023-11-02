@@ -38,7 +38,7 @@ Editing drafts
 
 When filling out a form, you can save it as a draft and edit it later.
 
-The :guilabel:`Drafts` list shows all drafts by the name that the :ref:`form definition specifies <settings-sheet>`. By default, they are sorted alphabetically by name. When the sort order is changed, the selected order is maintained the next time that the draft list is opened. You can use the magnifying glass icon to search drafts by name.
+The :guilabel:`Drafts` list shows all drafts by the name that the :ref:`form definition specifies <instance-name>`. By default, they are sorted alphabetically by name. When the sort order is changed, the selected order is maintained the next time that the draft list is opened. You can use the magnifying glass icon to search drafts by name.
 
 .. image:: /img/collect-forms/main-menu-drafts.*
   :alt: The Main Menu of the Collect app. The button *Drafts* has a red arrow pointing to it.

@@ -238,21 +238,19 @@ Changing language of a form
 
 If a form is available in multiple languages, you can choose a language in which you want the questions to appear. 
 
-1. Open the *Action Menu* (:menuselection:`⋮`)
+Open the *Action Menu* (:menuselection:`⋮`) and select :guilabel:`Change Language`.
 
-   .. image:: /img/collect-filling-forms/question-screen-highlight-kebab.* 
-     :alt: A question screen in the Collect app. The Action Menu ("kebab") in the top-right corner is circled in red.
-     :class: device-screen-vertical
+.. image:: /img/collect-filling-forms/question-screen-highlight-kebab.* 
+  :alt: A question screen in the Collect app. The Action Menu ("kebab") in the top-right corner is circled in red.
+  :class: device-screen-vertical
 
-2. Select :menuselection:`Change Language`.
+.. image:: /img/collect-filling-forms/question-screen-highlight-change-language.* 
+  :alt: A question screen in the Collect app. The Action Menu is expanded and the option *Change Language* is circled in red.
+  :class: device-screen-vertical
 
-   .. image:: /img/collect-filling-forms/question-screen-highlight-change-language.* 
-     :alt: A question screen in the Collect app. The Action Menu is expanded and the option *Change Language* is circled in red.
-     :class: device-screen-vertical
+.. note::
 
-   .. note::
-   
-     :menuselection:`Change Language` option is only visible if a form is available in more than one language.  
+  The :guilabel:`Change Language` option is only visible if a form is available in more than one language.  
   
 3. Select the language you want the form questions to appear in.
 
@@ -267,17 +265,15 @@ Check for errors during form entry
 
 As of Collect v2023.2.0, you can check a form for errors (validate it) during the form entry process at any stage.
 
-1. Open the *Action Menu* (:menuselection:`⋮`)
+Open the *Action Menu* (:menuselection:`⋮`) and select :guilabel:`Check for errors`.
 
-   .. image:: /img/collect-filling-forms/question-screen-highlight-kebab.* 
-     :alt: A question screen in the Collect app. The Action Menu ("kebab") in the top-right corner is circled in red.
-     :class: device-screen-vertical
+.. image:: /img/collect-filling-forms/question-screen-highlight-kebab.* 
+  :alt: A question screen in the Collect app. The Action Menu ("kebab") in the top-right corner is circled in red.
+  :class: device-screen-vertical
 
-2. Select :menuselection:`Check for errors`.
-
-   .. image:: /img/collect-filling-forms/question-screen-highlight-check-for-errors.* 
-     :alt: A question screen in the Collect app. The Action Menu is expanded and the option *Check for errors* is circled in red.
-     :class: device-screen-vertical
+.. image:: /img/collect-filling-forms/question-screen-highlight-check-for-errors.* 
+  :alt: A question screen in the Collect app. The Action Menu is expanded and the option *Check for errors* is circled in red.
+  :class: device-screen-vertical
 
 In case of any errors, you will be automatically redirected to the first question that contains an error. Otherwise, a snackbar displaying a success message will be shown.
 
@@ -300,38 +296,16 @@ To :ref:`edit the saved form <editing-saved-forms>`, select :menuselection:`Edit
 
 .. _completing-form:
 
-Completing a Form
+The form end screen
 -------------------
 
-Once you have reached the end of a form, you will have the opportunity to *Save* and *Exit* the form. 
+Forms end with a standard screen that displays the name of the filled form and options to save as draft or indicate that the form is ready to send. The filled form name displayed in the "You are at the end of" message is :ref:`set by the form definition <instance-name>` and uses values from the filled form.
 
 
 .. image:: /img/collect-filling-forms/save-and-exit.* 
-  :alt: The end of a survey in the Collect app. The headline is *You are at the end of Demo Survey.* Below that is a text field labeled *Name this form*, with the value 'Demo Survey'. Then an unchecked checkbox labeled *Mark form as finalized*. Below all that is a button labeled *Save Form and Exit*.
+  :alt: The end of a survey in the Collect app. The headline is *You are at the end of Section 55: 212 observations.* Below that is a text field labeled *Name this form*, with the value 'Demo Survey'. Then an unchecked checkbox labeled *Mark form as finalized*. Below all that is a button labeled *Save Form and Exit*.
   :class: device-screen-vertical
 
-At this point, you may also:
+If you tap the :guilabel:`Save as draft` button, the form will be saved and available for more editing from the :guilabel:`Drafts` screen.
 
-.. _name-form-instance:
-
-Name the form
-~~~~~~~~~~~~~~~
-
-The last form screen provides a default name for the form (defined by the form designer). You can rename it. This name only applies to that particular instance of a completed form (not to the blank form).
-
-.. image:: /img/collect-filling-forms/rename-form.*
-  :alt: To rename the form instance, touch the form name in the last screen of the survey.
-  :class: device-screen-vertical
-
-The Form Name identifies the form in lists throughout the app. For this reason, a meaningful name may be important to you. After you've saved the name, the form automatically moves to the :guilabel:`Send Finalized Form` section, from where you can send it.
-
-.. _finalize-form:
-
-Mark the form as *Finalized*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. image:: /img/collect-filling-forms/mark-form-as-finalized.* 
-  :alt:
-  :class: device-screen-vertical
-
-Only `Finalized` forms can be :ref:`uploaded to a server <uploading-forms>`. 
+The :guilabel:`Send` button will be displayed if autosend is on and the device is online. If autosend is off or the device is offline, the button label will be :guilabel:`Finalize` instead. Tapping on the :guilabel:`Send` button immediately attempts a submission. Tapping on the :guilabel:`Finalize` button marks the form as `Finalized` which makes it available from the :guilabel:`Ready to send` screen and prevents further editing. If autosend is on, it will be sent as soon as a connection becomes available.
