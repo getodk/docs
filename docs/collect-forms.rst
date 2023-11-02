@@ -159,7 +159,7 @@ If a form :ref:`includes images or other media <media>`, those files have to be 
 
 Media files must be placed in a folder labeled :file:`{form-name}-media`.
 
-- When using ODK Central, first upload your form definition. Central will then prompt you to :ref:`add media files <central-forms-attachments>` if necessary. The files are downloaded automatically when :ref:`fetching blank forms <in-app-get-blank-forms>`.
+- When using ODK Central, first upload your form definition. Central will then prompt you to :ref:`add media files <central-forms-attachments>` if necessary. The files are downloaded automatically when :ref:`fetching blank forms <loading-forms-into-collect>`.
 - If :ref:`loading forms directly to your device <loading-forms-directly>`, the :file:`-media` folder needs to be placed in the :file:`forms` subdirectory of :ref:`your Collect directory <collect-directory>`, alongside the form itself.
 
 .. _pulling-forms-with-briefcase:
