@@ -64,6 +64,7 @@ ODK is open-source software that's made by a welcoming community of people just 
 
   collect-api
   central-api
+  pyODK <https://getodk.github.io/pyodk/>
   ODK XForms Spec <https://getodk.github.io/xforms-spec/>
   openrosa
 
