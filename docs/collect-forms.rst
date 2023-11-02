@@ -8,31 +8,24 @@ Managing Forms in Collect
 
 .. _loading-forms-into-collect:
 
-Loading Blank Forms
-====================
+Downloading forms from a server
+===============================
 
-A :dfn:`blank form` or :dfn:`form definition`` is what users of ODK Collect fill out. Blank forms are usually created using :doc:`XLSForm <xlsform>`.
+A :dfn:`blank form` or :dfn:`form definition` is what users of ODK Collect fill out. Blank forms are usually created using :doc:`XLSForm <xlsform>`.
 
-In order to fill out forms, you must first load blank forms into the Collect App. The preferred way of doing this is by automatically matching the forms provided by the server and is the default when using Central App Users. You can also :doc:`configure Collect <collect-configure>` so that blank forms must be manually selected and downloaded.
+In order to fill out forms, you must first load blank forms into the Collect App. The preferred way of doing this is by automatically matching the forms provided by the server and this is the default when using Central App Users. You can also :doc:`configure Collect <collect-configure>` so that blank forms must be manually selected and downloaded.
 
-.. _in-app-get-blank-forms:
+If you have connected ODK Collect to a :doc:`server <collect-connect>` and Collect is not configured to automatically download forms from it, you will need to download the forms that you want to use.
 
-Downloading Forms from a server
----------------------------------
+Select :guilabel:`Download form` on the app home screen to browse available forms and download them to your device. Select the ones you would like download, and tap :guilabel:`Get Selected`.
 
-If you have connected ODK Collect to a :doc:`server <collect-connect>` and Collect is not configured to automatically download forms from it, you will need to download the forms that you need.
+.. image:: /img/collect-forms/main-menu-highlight-get-blank-form.*
+  :alt: The Main Menu of the Collect app. The option *Download form* has a red arrow pointing to it.
+  :class: device-screen-vertical
 
-1. Select :guilabel:`Download form` on the app home screen to browse available forms and download them to your device.
-
-   .. image:: /img/collect-forms/main-menu-highlight-get-blank-form.*
-     :alt: The Main Menu of the Collect app. The option *Download form* has a red arrow pointing to it.
-     :class: device-screen-vertical
-
-2. You will see a list of available forms. Select the ones you would like download, and tap :guilabel:`Get Selected`.
-
-   .. image:: /img/collect-forms/get-blank-form.*
-     :alt: The Get Blank Form screen in the Collect app. Several form names are listed, with checkboxes. One form's checkbox is checked. At the bottom are buttons labeled: *Select All*, *Refresh*, and *Get Selected*.
-     :class: device-screen-vertical
+.. image:: /img/collect-forms/get-blank-form.*
+  :alt: The Get Blank Form screen in the Collect app. Several form names are listed, with checkboxes. One form's checkbox is checked. At the bottom are buttons labeled: *Select All*, *Refresh*, and *Get Selected*.
+  :class: device-screen-vertical
 
 .. note::
 
@@ -41,114 +34,76 @@ If you have connected ODK Collect to a :doc:`server <collect-connect>` and Colle
 .. _editing-saved-forms:
 
 Editing drafts
-===================================
+================
 
-`Completed` (filled-in) :term:`form instances <instance>` can be edited after they have been saved.
+When filling out a form, you can save it as a draft and edit it later.
 
-1. Select :guilabel:`Edit Saved Form`
+The :guilabel:`Drafts` list shows all drafts by the name that the :ref:`form definition specifies <settings-sheet>`. By default, they are sorted alphabetically by name. When the sort order is changed, the selected order is maintained the next time that the draft list is opened. You can use the magnifying glass icon to search drafts by name.
 
-   .. image:: /img/collect-forms/main-menu-edit-saved.*
-     :alt: The Main Menu of the Collect app. The option *Edit Saved Menu* is circled in red.
-     :class: device-screen-vertical
+.. image:: /img/collect-forms/main-menu-drafts.*
+  :alt: The Main Menu of the Collect app. The button *Drafts* has a red arrow pointing to it.
+  :class: device-screen-vertical
 
-2. Select a form by name
-
-   .. image:: /img/collect-forms/edit-saved-form.*
-     :alt: The Edit Saved Form screen. Several completed forms are listed by name.
-     :class: device-screen-vertical
-
-This will reopen the form instance, which you are then free to edit. Form instances are listed by name, which is one reason it can be helpful to :ref:`name the form instance after filling it out <name-form-instance>`.
-
-.. note::
-
-  - `Sent` forms (including forms that failed to send) will not appear in the :guilabel:`Edit Saved Forms` list.
-
-  - `Sent` forms (including forms that failed to send) will be available for viewing in :guilabel:`View Sent Forms` list, along with the details which cannot be edited.
-
-  - You may freely edit `Saved` and `Finalized` forms.
+.. image:: /img/collect-forms/drafts.*
+  :alt: The Drafts screen. Several drafts are listed by name.
+  :class: device-screen-vertical
 
 .. _uploading-forms:
 
-Transferring Finalized Forms
-============================
+Sending finalized forms
+=========================
 
-To perform analysis on data collected with the Collect app, you will need to get the filled forms off of the devices. Generally, this is done by uploading them to an ODK server. To do this, you will first need to :doc:`configure a server <collect-connect>`.
+To use data collected with the Collect app, you will need to get the filled forms off of the devices. The preferred way of doing this is by automatically sending submissions to a server as soon as they are finalized and this is the default when using Central App Users. To send forms, you will first need to :doc:`configure a server <collect-connect>`.
 
-In some cases, you may want to :ref:`pull filled forms directly from a device <pulling-forms-with-briefcase>`. This can be simpler than setting up a server if you are only using a small number of devices or when there is no Internet access. It can also be helpful to recover from submission failures.
+If you are offline or have turned automatic submission off in settings, you will find finalized forms in the :guilabel:`Ready to send` list, displayed by the name that the :ref:`form definition specifies <settings-sheet>`. When there are forms that are ready to send, you will see a blue notification badge on the :guilabel:`Ready to send` button and its title will become bold.
 
-.. _uploading-to-aggregate-or-google-drive:
+Uploading a filled form from within the Collect app marks that form as `sent`. `Sent` forms remain viewable from the :guilabel:`Sent` list until they are deleted.
 
-Sending Finalized Forms to a Server
------------------------------------
-
-If you are connected to :doc:`a server <collect-connect>`, use :guilabel:`Send Finalized Forms` to upload `Finalized` form instances.
-
-Uploading a filled form from within the Collect app marks that form as `sent`. `Sent` forms are no longer editable, but they remain viewable until they are deleted.
-
-.. image:: /img/collect-forms/main-menu-send-finalized.*
-  :alt: The Main Menu of the Collect app. The *Send Finalized Form* option is circled in red.
+.. image:: /img/collect-forms/main-menu-ready-to-send.*
+  :alt: The Main Menu of the Collect app. The *Ready to send* button has a red arrow pointing to it.
   :class: device-screen-vertical
 
 .. _uploading-previously-sent-forms:
 
-Sending Previously-Sent Forms
+Sending previously-sent forms
 -----------------------------
 
-If you can't find a submission that you expect on your server or need to re-send a submission for other reasons, you can change the view of the :guilabel:`Send Finalized Forms` screen to show both sent and unsent forms.
+If you can't find a submission that you expect on your server or need to re-send a submission for other reasons, you can change the view of the :guilabel:`Ready to send` screen to show both sent and unsent forms.
 
 To show sent and unsent forms:
   :menuselection:`⋮ --> Change View --> Show Sent and Unsent Forms`
 
-.. image:: /img/collect-forms/send-finalized-change-view.*
-  :alt: The Send Finalized Forms screen of the Collect app. The *Change View* option is circled in red.
+.. image:: /img/collect-forms/ready-to-send-change-view.*
+  :alt: The "Ready to send" screen of the Collect app. The *Change View* option has a red arrow pointing to it.
   :class: device-screen-vertical
-
-.. _pulling-forms-with-briefcase:
-
-Pulling Forms into Briefcase
------------------------------
-
-:doc:`ODK Briefcase  <briefcase-using>` is a desktop application that can be used to pull filled forms to your local computer. You will first need to :ref:`transfer the filled forms to your computer <pull-from-collect>`. This will not update the state of the form to `Sent`.
 
 .. _deleting-forms:
 
 Deleting Forms
 ===============
 
-.. warning::
-    In versions prior to v1.28, deleting a blank form makes it impossible to edit filled instances of that form.
+You can delete filled forms in any state (`Draft`, `Finalized`, or `Sent`). Deleting a `Sent` form deletes the form contents but metadata associated with it including the deletion date and the instance name are maintained for display in the :guilabel:`Sent` list.
 
-    In Collect v1.28 and later, filled instances of forms will still be editable after their blank form is deleted. This means that the form definition and media files will remain on the device until all the filled instances have been deleted.
+If your device is not configured to exactly match the forms provided by the server, you can delete `Blank` forms. When Collect is configured to exactly match the forms provided by the server, any previously-downloaded forms that is closed or deleted from the server will automatically be deleted by Collect.
 
-    
+When a blank form is deleted, it is completely removed from the device if it has no filled forms associated with it. However, if there are filled forms that were created with that form definition, it will be hidden from :guilabel:`Start new form` but will still be available on the device so that the remaining filled forms can be opened. Once all the related filled forms are deleted, the form definition and its media files will be permanently deleted as well. 
 
-You can delete `Blank` forms as well as filled forms in any state (`Saved`, `Finalized`, or `Sent`). Deleting a `Sent` form deletes the form contents but metadata associated with it including the deletion date and the instance name are maintained for display in the :guilabel:`View Sent Form` list.
+Select :guilabel:`Delete` from the Collect Main Menu. You can use the :guilabel:`Saved Forms` and :guilabel:`Blank Forms` tabs to toggle between a list of all filled forms in any state and a list of all blank forms.
 
-1. Select :guilabel:`Delete Saved Form` on the app home screen.
+.. image:: /img/collect-forms/main-menu-delete-form.*
+  :alt: The Main Menu of the Collect app. The option *Delete forms* has an arrow pointing to it.
+  :class: device-screen-vertical
 
-   .. image:: /img/collect-forms/main-menu-delete-form.*
-     :alt: The Main Menu of the Collect app. The option *Delete Saved Forms* is circled in red.
-     :class: device-screen-vertical
-
-2. Select the :guilabel:`Saved Forms` or :guilabel:`Blank Forms` tab. The :guilabel:`Saved Forms` tab lists form instances that are `saved`, `finalized`, or `sent`.
-
-   .. image:: /img/collect-forms/delete-saved-forms.*
-     :alt: The Delete Saved Forms screen in the Collect app. There are two available tabs: *Saved Forms* and *Blank Forms*. The *Saved Forms* tab is active. Below that is a list of saved form instances, with checkboxes. There are buttons labeled: *Select All* and *Delete Selected*.
-     :class: device-screen-vertical
-
-3.  The :guilabel:`Blank Forms` tab lists `blank` forms.
-
-   .. image:: /img/collect-forms/delete-saved-forms-blank-forms.*
-     :alt: The Delete Saved Forms screen in the Collect app. There are two available tabs: *Saved Forms* and *Blank Forms*. The *Blank Forms* tab is active. Below that is a list of blank forms, with checkboxes. There are buttons labeled: *Select All* and *Delete Selected*.
-     :class: device-screen-vertical
-
+.. image:: /img/collect-forms/delete-saved-forms.*
+  :alt: The Delete Saved Forms screen in the Collect app. There are two available tabs: *Saved Forms* and *Blank Forms*. The *Saved Forms* tab is active. Below that is a list of saved form instances, with checkboxes. There are buttons labeled: *Select All* and *Delete Selected*.
+  :class: device-screen-vertical
 
 .. note::
 
-  Deleted Forms are listed in the :guilabel:`View Sent Forms` page, but cannot be viewed. They are indicated with the crossed-out eye icon.
+  When sent forms are deleted, they are listed in the :guilabel:`Sent` page, but are grayed out and can't be viewed. This lets you see confirmation of filled forms that have been sent without keeping all of the data on the device.
 
-  .. image:: /img/collect-forms/deleted-form-in-view-sent-form.*
-    :alt: The View Sent Forms page in Collect app. Two sent forms are listed, but the second one, *Hypertension Screening* has been deleted. Next to the form name is an icon of an eye, crossed out. Below the form name is the note *Deleted*, along with a date and time.
+  .. image:: /img/collect-forms/deleted-forms-in-sent.*
+    :alt: The Sent page in Collect app. Three sent forms are listed, and the second and third have been deleted. They are both grayed out and below the form names is the note *Deleted*, along with a date and time.
     :class: device-screen-vertical
 
 .. _managing-forms-without-server:
@@ -156,7 +111,9 @@ You can delete `Blank` forms as well as filled forms in any state (`Saved`, `Fin
 Managing forms without a server
 ================================
 
-If you are working entirely offline with a small group of data collectors, you may find it convenient to manage forms by plugging devices into a computer rather than using a server. These approaches can also be helpful in case of problems that require troubleshooting.
+If you are working entirely offline with a small group of data collectors, you may find it convenient to manage forms by plugging devices into a computer rather than using a server. 
+
+These approaches can also be helpful in case of problems that require troubleshooting.
 
 .. _loading-forms-directly:
 
@@ -204,6 +161,13 @@ Media files must be placed in a folder labeled :file:`{form-name}-media`.
 
 - When using ODK Central, first upload your form definition. Central will then prompt you to :ref:`add media files <central-forms-attachments>` if necessary. The files are downloaded automatically when :ref:`fetching blank forms <in-app-get-blank-forms>`.
 - If :ref:`loading forms directly to your device <loading-forms-directly>`, the :file:`-media` folder needs to be placed in the :file:`forms` subdirectory of :ref:`your Collect directory <collect-directory>`, alongside the form itself.
+
+.. _pulling-forms-with-briefcase:
+
+Pulling Forms into Briefcase
+-----------------------------
+
+:doc:`ODK Briefcase  <briefcase-using>` is a desktop application that can be used to pull filled forms to your local computer. You will first need to :ref:`transfer the filled forms to your computer <pull-from-collect>`. This will not update the state of the form to `Sent`.
 
 .. _delete-forms-adb:
 
