@@ -7,21 +7,15 @@ ODK Collect is used by :term:`enumerators <enumerator>` to complete survey :doc:
 
   Before you can fill out a form, you need to :ref:`load at least one form into Collect <loading-forms-into-collect>`.
   
-  
-1. Select :guilabel:`Fill Blank Form` from the Main Menu
+Select :guilabel:`Start new form` from the Main Menu. You will see a list of blank forms available on the device. Tap one to open it and start filling it out.
 
-   .. image:: /img/collect-filling-forms/main-menu-fill-blank-form.* 
-     :alt: The Main Menu of the Collect app. The first menu option, *Fill Blank Form*, is circled in red.
-     :class: device-screen-vertical
+.. image:: /img/collect-filling-forms/main-menu-start-new-form.*
+  :alt: The Main Menu of the Collect app. The first button, *Start new form*, has a red arrow pointing to it.
+  :class: device-screen-vertical
 
-2. Select a form to fill out from the form list
-
-   .. image:: /img/collect-filling-forms/fill-blank-forms.* 
-     :alt: The Fill Blank Form menu in the Collect app. Several form titles are listed: *All widgets*, *Demo Survey*, *Form Design Tips by Nafundi*, *Hypertension Screening*, *Sample XLSForm*.
-     :class: device-screen-vertical
-
-3. Once you have :ref:`completed the form <completing-form>`, prepare it for upload by :ref:`finalizing it <finalize-form>`.
-
+.. image:: /img/collect-filling-forms/start-new-form.*
+  :alt: The "Start new form" menu in the Collect app. Several form titles are listed.
+  :class: device-screen-vertical
   
 Answering questions
 -----------------------
