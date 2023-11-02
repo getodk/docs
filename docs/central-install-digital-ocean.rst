@@ -528,7 +528,7 @@ Central comes with a PostgreSQL v14.x database server to store your data. To use
      $ docker compose build service && docker compose stop service && docker compose up -d service
 
 
-.. _central-install-digital-ocean-upstream-ssl
+.. _central-install-digital-ocean-upstream-ssl:
 
 Configuring Upstream SSL
 ------------------------
@@ -538,30 +538,47 @@ Configuring Upstream SSL
 
 You may wish to run Central behind a reverse proxy or load balancer. In order to do that, you must disable Central's native SSL support in favor for the upstream SSL provider.
 
-1. Edit the ``.env`` file to change your SSL type and HTTP/S ports. ``HTTP_PORT`` and ``HTTPS_PORT`` are the ports exposed on your host and ``UPSTREAM_HTTPS_PORT`` is the user-facing HTTPS port upstream.
+#. Edit ``.env`` file to change your SSL type and HTTP/S ports. ``HTTP_PORT`` and ``HTTPS_PORT`` are the ports exposed on your host and ``UPSTREAM_HTTPS_PORT`` is the user-facing upstream HTTPS port.
 
-  .. code-block:: console
+   .. code-block:: bash
 
-    SSL_TYPE=upstream
+     $ cd central
 
-    HTTP_PORT=8080
-    HTTPS_PORT=8443
+   .. code-block:: bash
 
-    UPSTREAM_HTTPS_PORT=443
+     $ nano .env
 
-2. Edit the ``docker-compose.yml`` file to add ``UPSTREAM_HTTPS_PORT`` to the service and enketo configurations.
+   .. code-block:: bash
 
-  .. code-block:: console
+     SSL_TYPE=upstream
 
-    service:
-      environment:
-        - HTTPS_PORT=${UPSTREAM_HTTPS_PORT:-443}
+     HTTP_PORT=8080
+     HTTPS_PORT=8443
+     UPSTREAM_HTTPS_PORT=443
 
-    enketo:
-      environment:
-        - HTTPS_PORT=${UPSTREAM_HTTPS_PORT:-443}
+2. Edit ``docker-compose.yml`` to add ``UPSTREAM_HTTPS_PORT`` to the service and enketo configurations.
 
-3. Build and run: ``docker-compose build``, ``docker-compose stop``, ``docker-compose up -d``.
+   .. code-block:: bash
+
+     $ nano docker-compose.yml
+
+   .. code-block:: bash
+
+     service:
+       environment:
+         - HTTPS_PORT=${UPSTREAM_HTTPS_PORT:-443}
+
+     ...
+
+     enketo:
+       environment:
+         - HTTPS_PORT=${UPSTREAM_HTTPS_PORT:-443}
+
+#. Build and restart all containers.
+
+   .. code-block:: bash
+
+     $ docker compose build && docker compose stop && docker compose up -d
 
 .. _central-install-digital-ocean-dkim:
 
