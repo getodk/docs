@@ -12,9 +12,9 @@ If you are collecting data related to physical locations, you can see a map of a
 
 In the :guilabel:`Fill Blank Form` list, form definitions with a geopoint question outside of any repeat have a map button (:fa:`map`). Tap on the map button to open a map showing the filled forms for that form definition. The first geopoint question in the form definition that is outside of any repeat is used to map filled forms. This question can either be :ref:`a visible geopoint question <location-widgets>` or :ref:`a question that gets the location in the background <metadata-start-geopoint>`. On the map, you will also see your current position and be able to fill a new instance of the current form definition.
 
-   .. image:: /img/collect-forms/form-map-with-selection.*
-     :alt: The map for a form with title "Enquête SICAP Sacré Coeur." Several saved and finalized forms are shown as purple markers. One filled form is selected and its description is provided at the bottom of the screen. It says "Khadim Aïdara - Gestionnaire de projet" followed by the finalization time and a button to edit the saved form.
-
+.. image:: /img/collect-forms/form-map-with-selection.*
+  :alt: The map for a form with title "Enquête SICAP Sacré Coeur." Several saved and finalized forms are shown as purple markers. One filled form is selected and its description is provided at the bottom of the screen. It says "Khadim Aïdara - Gestionnaire de projet" followed by the finalization time and a button to edit the saved form.
+  :class: device-screen-vertical
 
 .. form-instance-map-markers:
 
