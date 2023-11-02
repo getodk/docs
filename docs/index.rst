@@ -12,7 +12,7 @@ In most cases, users of ODK:
 
 - Create forms using the :doc:`XLSForm <xlsform>` standard in Excel or Google Sheets.
 - :ref:`Upload forms <central-forms-upload>` to an :doc:`ODK Central server <central-intro>`.
-- :ref:`Download forms <in-app-get-blank-forms>` into :doc:`ODK Collect app <collect-intro>` on an Android device.
+- :ref:`Download forms <loading-forms-into-collect>` into :doc:`ODK Collect app <collect-intro>` on an Android device.
 - :doc:`Use Collect to fill out forms <collect-filling-forms>`.
 - :ref:`Upload survey data <uploading-forms>` from Collect to Central.
 - :doc:`Analyze or export data from Central <central-submissions>`.

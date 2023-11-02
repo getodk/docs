@@ -13,7 +13,7 @@ Some examples of scenarios where having more than one project might be useful:
 - Multiple enumerators using one device for the same data collection project but with different user accounts on the server
 - Form designers testing forms on different staging/development servers
 
-Each Project is identified by a name, icon and color. These are shown at the top of the Main Menu:
+Each Project is identified by a name, icon and color. The current Project's information is shown at the top of the Main Menu:
 
 .. image:: /img/collect-projects/main-menu-with-project.png
   :alt: Collect's Main Menu with an example Project
