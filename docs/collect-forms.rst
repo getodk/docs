@@ -38,9 +38,9 @@ Editing drafts
 
 When filling out a form, you can save it as a draft and edit it later.
 
-The :guilabel:`Drafts` list shows all drafts by their name which can include user-provided values from inside the draft. The expression for those names is specified in the :ref:`form definition <instance-name>`. By default, drafts are sorted alphabetically by name. When the sort order is changed, the selected order is maintained the next time that the draft list is opened. You can use the magnifying glass icon to search drafts by name.
+The :guilabel:`Drafts` list shows all drafts by their name which can include user-provided values from inside the draft. The expression for those names is specified in the :ref:`form definition <instance-name>`. By default, drafts are sorted alphabetically by name. When the sort order is changed, the selected order is maintained the next time that the draft list is opened. You can use the magnifying glass icon to for search drafts by name.
 
-Each draft has a colored pill indicating its validation status. Drafts that have missing required questions or values that violate constraints are marked with a red :guilabel:`Errors` pill. Drafts in which all required questions have been filled out and that have no constraint violations have a blue :guilabel:`No errors` pill.
+Each draft has a colored pill indicating its validation status. Drafts that have missing required questions or values that violate constraints are marked with a red :guilabel:`Errors` pill. Drafts in which all required questions have been filled out and that have no constraint violations are marked with a blue :guilabel:`No errors` pill.
 
 .. image:: /img/collect-forms/main-menu-drafts.*
   :alt: The Main Menu of the Collect app. The button *Drafts* has a red arrow pointing to it.
@@ -57,7 +57,7 @@ Finalizing drafts
 
 .. note::
 
-  In Collect versions prior to v2023.3, it was possible to edit finalized forms. If your workflow involves new information that can be discovered at any time, consider configuring Collect to hide the :guilabel:`Finalize` or :guilabel:`Send` button from the form end screen (see the form entry access control section of :ref:`protected settings <admin-settings>`) and using :ref:`bulk finalization <bulk-finalizing-drafts>`.
+  In Collect versions prior to v2023.3, it was possible to edit finalized forms. If your workflow involves adding or removing data up until form submission time, consider configuring Collect to hide the :guilabel:`Finalize` or :guilabel:`Send` button from the form end screen (see the form entry access control section of :ref:`protected settings <admin-settings>`) and using :ref:`bulk finalization <bulk-finalizing-drafts>` instead.
 
 If your device is online and Collect is configured to automatically send submissions, you can send send a filled form immediately from the form end screen by tapping the :guilabel:`Send` button. If your device is offline or Collect is not configured to automatically send submissions, you will need to mark a draft as finalized before it can be sent. Finalized forms are available from the :guilabel:`Ready to send` screen where they can be viewed or sent. You can finalize a form from the end screen by tapping the :guilabel:`Finalize` button.
 
@@ -68,9 +68,9 @@ Bulk finalizing drafts
 
 .. warning::
 
-  Bulk finalization does not work with submission encryption.
+  Bulk finalization does not work with :doc:`submission encryption <encrypted-forms>`.
 
-If you want to continue adding information to forms up until the moment when they are sent, you will need to save them as drafts. When you're ready to send them, you could then open each draft, navigate to the form end screen, and tap the :guilabel:`Finalize` or :guilabel:`Send` button. However, this would be inconvenient if you have many drafts that are ready to be sent. In that case, you can use the option to finalize all drafts.
+If you want to continue modifying data up until the moment when forms are ready to sent, you will need to save those forms as drafts. When you're ready to send them, you could then open each draft, navigate to the form end screen, and tap the :guilabel:`Finalize` or :guilabel:`Send` button. However, this would be inconvenient if you have many drafts that are ready to be sent. In that case, you can use the option to finalize all drafts.
 
 Open the *Action Menu* (:menuselection:`⋮`) and select :guilabel:`Finalize all drafts`:
 
@@ -84,9 +84,9 @@ Open the *Action Menu* (:menuselection:`⋮`) and select :guilabel:`Finalize all
 
 You will first see a confirmation dialog describing that bulk finalization cannot be undone. If you choose to bulk finalize, all drafts without errors will be finalized.
 
-After bulk finalization is complete, you will see a message at the bottom of the screen describing how many drafts were and weren't finalized. Drafts with constraint violations or missing required questions can't be finalized and will remain in the list. Drafts with data recovered after a crash or forced quit also can't be bulk finalized, even if they are marked with :guilabel:`No errors`. You will need to open those drafts, decide whether or not to keep the recovered data, and then finalize them.
+After bulk finalization is complete, you will see a message at the bottom of the screen describing how many drafts were and weren't finalized. Drafts with constraint violations or missing required questions can't be finalized and will remain on the drafts screen. Drafts with data recovered after a crash or forced quit also can't be bulk finalized, even if they are marked with :guilabel:`No errors`. You will need to open those drafts, decide whether or not to keep the recovered data, and then finalize them.
 
-Bulk finalization will update any `end` fields in the forms but will not result in any audit log entry.
+Bulk finalization will update any `end` fields in the forms (see :ref:`metadata fields <hidden-questions>`) but will not result in any entry in the :doc:`audit log <form-audit-log>`.
 
 .. _uploading-forms:
 
