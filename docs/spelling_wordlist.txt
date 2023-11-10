@@ -299,6 +299,7 @@ online
 onscreen
 onwuachi
 Onwuachi
+opencamera
 opendatakit
 openid
 OpenRosa
@@ -382,6 +383,7 @@ smartphone
 snackbar
 snowballstemmer
 sophia
+sourceforge
 spam
 spammer
 sphinxcontrib
