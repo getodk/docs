@@ -303,7 +303,7 @@ Forms end with a standard screen that displays the name of the filled form and o
 
 
 .. image:: /img/collect-filling-forms/save-and-exit.* 
-  :alt: The end of a survey in the Collect app. The headline is *You are at the end of Section 55: 212 observations.* Below that is a text field labeled *Name this form*, with the value 'Demo Survey'. Then an unchecked checkbox labeled *Mark form as finalized*. Below all that is a button labeled *Save Form and Exit*.
+  :alt: The end of a survey in the Collect app. The headline is *You are at the end of Section 55: 212 observations.* Below that is a message describing that forms can't be edited after submission. Then there is a "Save as draft" button and a "Send" button.
   :class: device-screen-vertical
 
 If you tap the :guilabel:`Save as draft` button, the form will be saved and available for more editing from the :guilabel:`Drafts` screen.

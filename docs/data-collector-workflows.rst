@@ -214,5 +214,4 @@ After form entry
 ~~~~~~~~~~~~~~~~~~
 By default, form data, even after it has been submitted, stays on users’ devices and can be viewed from :guilabel:`View Sent Form` as well as the :doc:`submission map <collect-form-map>`. This can act as a reference for users or help with troubleshooting issues. If you are collecting sensitive data or wish to save device storage space, you may want to enable the :ref:`Delete after send <delete-after-send>` setting.
 
-You also have different options when users reach the end of your form. By default, forms are marked as finalized which means that they are ready for submission (manual or automatic) as soon as Collect can connect to the server. Users are also shown a checkbox to save without finalizing. You can change the default and/or hide this option. This can be useful for workflows that include a supervisor check before sending data, for example.
-
+You also have different options when users reach the end of your form. By default, data collectors can choose between saving a form as draft or immediately finalizing it for submission. You can hide either those options from from the form entry access control section of :ref:`protected settings <admin-settings>`. Forcing data collectors to always save as draft can be useful for workflows that include a supervisor check before sending, for example.

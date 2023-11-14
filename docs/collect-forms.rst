@@ -59,7 +59,9 @@ Finalizing drafts
 
   In Collect versions prior to v2023.3, it was possible to edit finalized forms. If your workflow involves adding or removing data up until form submission time, consider configuring Collect to hide the :guilabel:`Finalize` or :guilabel:`Send` button from the form end screen (see the form entry access control section of :ref:`protected settings <admin-settings>`) and using :ref:`bulk finalization <bulk-finalizing-drafts>` instead.
 
-If your device is online and Collect is configured to automatically send submissions, you can send send a filled form immediately from the form end screen by tapping the :guilabel:`Send` button. If your device is offline or Collect is not configured to automatically send submissions, you will need to mark a draft as finalized before it can be sent. Finalized forms are available from the :guilabel:`Ready to send` screen where they can be viewed or sent. You can finalize a form from the end screen by tapping the :guilabel:`Finalize` button.
+If your device is online and Collect is configured to automatically send submissions, you can send send a filled form immediately from the form end screen by tapping the :guilabel:`Send` button.
+
+If your device is offline or Collect is not configured to automatically send submissions, you will need to finalize a draft before it can be sent. Finalized forms are available from the :guilabel:`Ready to send` screen where they can be viewed or sent. You can finalize a form from the end screen by tapping the :guilabel:`Finalize` button.
 
 .. _bulk-finalizing-drafts:
 
@@ -97,7 +99,7 @@ To use data collected with the Collect app, you will need to get the filled form
 
 If you are offline or have turned automatic submission off in settings, you will find finalized forms in the :guilabel:`Ready to send` list, displayed by the name that the :ref:`form definition specifies <settings-sheet>`. When there are forms that are ready to send, you will see a blue notification badge on the :guilabel:`Ready to send` button and its title will become bold.
 
-Uploading a filled form from within the Collect app marks that form as `sent`. `Sent` forms remain viewable from the :guilabel:`Sent` list until they are deleted.
+Uploading a filled form from within the Collect app changes that filled form's status from `finalized` to `sent`. `Sent` forms remain viewable from the :guilabel:`Sent` list until they are deleted.
 
 .. image:: /img/collect-forms/main-menu-ready-to-send.*
   :alt: The Main Menu of the Collect app. The *Ready to send* button has a red arrow pointing to it.
