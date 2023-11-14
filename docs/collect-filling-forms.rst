@@ -236,27 +236,23 @@ Required Questions
 Changing language of a form
 -----------------------------
 
-If a form is available in multiple languages, you can choose a language in which you want the questions to appear. 
+If a form is available in multiple languages, you can choose a language in which you want the questions to appear. This is separate from the Collect application language which is set by the device settings by default or can be manually selected from :doc:`Settings <collect-settings>`.
 
-Open the *Action Menu* (:menuselection:`⋮`) and select :guilabel:`Change Language`.
-
-.. image:: /img/collect-filling-forms/question-screen-highlight-kebab.* 
-  :alt: A question screen in the Collect app. The Action Menu ("kebab") in the top-right corner is circled in red.
-  :class: device-screen-vertical
+Open the *Action Menu* (:menuselection:`⋮`) and select :guilabel:`Change Language`. You will then see a dialog with all languages defined by the form.
 
 .. image:: /img/collect-filling-forms/question-screen-highlight-change-language.* 
-  :alt: A question screen in the Collect app. The Action Menu is expanded and the option *Change Language* is circled in red.
+  :alt: A question screen in the Collect app. The Action Menu ("kebab") in the top-right corner has been tapped. There's an option menu with an arrow pointing to "Change language".
+  :class: device-screen-vertical
+
+.. image:: /img/collect-filling-forms/choose-language.* 
+  :alt: A modal titled *Change Language*, with radio buttons (single select) for languages: *English* and *French* and a CANCEL button. The option for *English* is selected.
   :class: device-screen-vertical
 
 .. note::
 
-  The :guilabel:`Change Language` option is only visible if a form is available in more than one language.  
+  You can set the default language of the form in the form definition (:ref:`see XLSForm documentation <switching-languages>`).
   
-3. Select the language you want the form questions to appear in.
-
-   .. image:: /img/collect-filling-forms/choose-language.* 
-     :alt: A modal titled *Change Language*, with radio buttons (single select) for languages: *English* and *French* and a CANCEL button. The option for *English* is selected.
-     :class: device-screen-vertical
+  The :guilabel:`Change Language` option is only visible if a form definition contains text in more than one language.  
 
 .. _validate_form:  
 
