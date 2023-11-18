@@ -743,7 +743,6 @@ Fixed repeat count
 
 Use the ``repeat_count`` column to define the number of times that questions will repeat.
 
-
 .. rubric:: XLSForm
 
 .. csv-table:: survey
@@ -772,7 +771,28 @@ The ``repeat_count`` column can reference :ref:`previous responses <variables>` 
   begin_repeat, child_questions, Questions about child, ${number_of_children}
   text, child_name, Child's name,
   integer, child_age, Child's age,
-  end_repeat, , , 
+  end_repeat, , ,
+
+Hiding extra repeats when the repeat count is reduced
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+When using ``repeat_count``, no repeat instances are deleted if the count is set to a value and then later decreased. This avoids accidental data loss: a user who accidentally sets the count too low will not lose the repeat instances they had previously filled out.
+
+This behavior can be confusing to data collectors. It also makes analysis more difficult because you have to be careful to ignore repeat instances at indexes beyond the specified count. A recommended way to handle this case is using a nested group with a relevance expression to hide any extra repeat instances:
+
+.. csv-table:: survey
+  :header: type, name, label, constraint, repeat_count, relevant
+
+  integer, number_in_party, How many guests are in your party?, . <= 8
+  note, party_names_note, Please provide details for each guest., ,
+  begin_repeat, guest_details, Guest details,,${number_in_party}
+  begin_group, guest_details_gr,,,,position(..) <= ${number_in_party}
+  text, guest_name, Guest's name, ,
+  text, guest_dietary, Does this guest have any dietary restrictions?, ,
+  end_group,,,,,
+  end_repeat,,,,
+
+The nested ``guest_details_gr`` group has relevance expression ``position(..) <= ${number_in_party}``. ``position(..)`` gets the position of the current repeat instance which starts at 1. When that position is less than or equal to the repeat count value, the group and its contents will be displayed. For any repeat instances with a position greater than the desired count, the inner group will be hidden. This will look as though it had been deleted but because it is only hidden, the data will reappear if the repeat count is adjusted back up.
 
 .. _repeat_based_on_condition:
 
