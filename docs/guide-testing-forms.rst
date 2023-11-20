@@ -148,12 +148,14 @@ How to add a practice/real question
 #. Once the form is used in production, add the choice "real" to the choice list.
 
    .. image:: /img/guides/testing-select-one-choices.png
+      :width: 400
 
 #. If you would like to keep the practice option once real data collection begins, you may want to add a note to alert the data collector that they are entering practice data if that option is selected.
 
    .. image:: /img/guides/testing-select-one-note.png
 
    .. image:: /img/guides/testing-select-one-collect.png
+      :class: device-screen-vertical
 
 #. Once data has been collected, data managers can filter out all submissions in which the response to the practice/real question is "Practice" and keep only the real submissions for analysis.
 
