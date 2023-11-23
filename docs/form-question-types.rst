@@ -1732,6 +1732,10 @@ When attempting to capture a photo, the ODK Collect by default opens the built-i
 
   image,image_widget,Image widget,image type with custom camera app,app=net.sourceforge.opencamera
 
+.. note::
+  - The app with the provided package name must be installed on the device. If it's not available, there will be a toast shown, and it will not be possible to take a picture. 
+  - By default, it's possible to select a picture from the device. Use the new appearance to prevent this. 
+  - Collect will request a picture, but some camera apps may still allow users to take video. That will fail silently.
 
 .. _self-portrait-image-widget:
 
