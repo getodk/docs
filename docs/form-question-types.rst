@@ -60,9 +60,18 @@ The text entry field expands as the user types, and line breaks can be included.
 .. rubric:: XLSForm
 
 .. csv-table:: survey
-  :header: type, name, label, appearance
+  :header: type, name, label
 
-  text, name, What is your name?,
+  text, name, What is your name?
+
+To define the minimum number of rows that a text field should display, use the ``parameters`` column.  
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, parameters
+
+  text, name, What is your name?, rows=5
 
 .. _number-text-widget:
 
