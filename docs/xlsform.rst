@@ -101,5 +101,4 @@ The entities sheet
 
 :doc:`Entities <central-entities>` let you share information between forms so you can collect longitudinal data, manage cases over time, and support other complex workflows.
 
-- ``list_name``: The name of the entity list that Entities will be created in.
-- ``label``: An :ref:`expression <expressions>` used to create a label for each new Entity. For example, ``concat(${first_name}, " ", ${last_name})``.
+Review the :doc:`Entities page <central-entities>` to learn more about what Entities are and how to use them.
