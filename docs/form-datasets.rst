@@ -13,7 +13,7 @@ External datasets are useful when:
 * data is reused between forms. It may be easier to attach the same data file to multiple forms instead of copying the data into all the form definitions.
 * the same forms are used in different contexts. For example, the exact same form definition could be used in multiple countries with different data files listing regions, local products, etc.
 
-All of the techniques described below apply to :doc:`entity lists <central-entities>`. Entity lists can be thought of as CSVs that are managed by ODK Central so that data collected by one form submission can be automatically accessible in other forms in the same ODK Central project.
+All of the techniques described below apply to :doc:`Entity Lists <central-entities>`. Entity Lists can be thought of as CSVs that are managed by ODK Central so that data collected by one form submission can be automatically accessible in other forms in the same project.
 
 .. note::
 
@@ -116,7 +116,7 @@ The expression ``instance('museums')/root/item[id=${museum}]/geometry`` evaluate
 Building selects from XML files
 ---------------------------------
 
-XML files can be used as datasets that populate select questions using ``select_one_from_file`` or ``select_multiple_from_file``. This is typically less convenient than :ref:`using CSV files <selects-from-csv>`. However, knowing about the XML representation is helpful for understanding how to reference values in both CSV and XML files.
+XML files can be used as datasets that populate select questions using ``select_one_from_file`` or ``select_multiple_from_file``. This is typically less convenient than :ref:`using CSV files <selects-from-csv>`. However, knowing about the XML representation is helpful for understanding how to look up values in both CSV and XML files.
 
 XML files used for selects must have the following structure and can have any number of ``item`` blocks:
 
@@ -138,7 +138,7 @@ The ``item`` blocks are analogous to rows in the CSV representation. Each ``item
 Looking up values in datasets
 ---------------------------------
 
-:ref:`XPath paths <xpath-paths>` can be used to reference values in internal or external datasets. These paths will start with the ``instance(<instance name>)`` function to identify which dataset is being accessed. The next part of the path is generally ``/root/item`` because of the :ref:`XML structure used to represent datasets for selects <selects-from-xml>`. The only exception is when using custom XML files which may have arbitrary schemas if not used for selects.
+:ref:`XPath paths <xpath-paths>` can be used to look up values in internal or external datasets. These paths will start with the ``instance(<instance name>)`` function to identify which dataset is being accessed. The next part of the path is generally ``/root/item`` because of the :ref:`XML structure used to represent datasets for selects <selects-from-xml>`. The only exception is when using custom XML files which may have arbitrary schemas if not used for selects.
 
 For internal datasets, the instance name is the ``list_name`` specified on the **choices** sheet. For example, to reference the population of the selected state given the form :ref:`above <selects-from-csv>`, the instance name to use is ``states``. The expression would be ``instance("states")/root/item[name = ${state}]/population``. To understand this expression better, read the section on :ref:`XPath paths <xpath-paths>` and especially the subsection about :ref:`XPath paths for filtering <xpath-predicates-for-filtering>`. You could also do things like count the number of states with a population above a certain threshold using an expression like ``count(instance("states")/root/item[population > ${pop_threshold}])``.
 
@@ -150,7 +150,7 @@ For external datasets, the instance name is the filename specified in the ``sele
 
 .. _form-datasets-attaching-csv:
 
-Attaching CSVs for lookups without selection
+Attaching CSVs for lookups without a select
 ---------------------------------------------
 
 If you want to look up a value in a CSV directly without first going through a selection step, you can attach that CSV with ``csv-external``:
@@ -162,7 +162,7 @@ If you want to look up a value in a CSV directly without first going through a s
   barcode,person_id,Scan person's ID card
   calculate,person_fname,,instance("people")/root/item[code=${person_id}]/fname
 
-The example form above attaches a CSV with filename ``people.csv`` or an :doc:`entity list <central-entities>` named ``people``. It then prompts the user to scan a barcode from an ID card and uses the value from the id card to look up the corresponding person's first name. If attaching an actual CSV file, it must have columns named ``fname`` and ``code``. Similarly, if using an entity list, that entity list must have properties named ``fname`` and ``code``.
+The example form above attaches a CSV with filename ``people.csv`` or an :doc:`entity list <central-entities>` named ``people``. It then prompts the user to scan a barcode from an ID card and uses the value from the ID card to look up the corresponding person's first name. If attaching an actual CSV file, it must have columns named ``fname`` and ``code``. Similarly, if using an entity list, that entity list must have properties named ``fname`` and ``code``.
 
 .. note::
 
