@@ -6,7 +6,7 @@ Testing your forms
     :avatar-link: https://www.researchpro.global/blog/categories/odk
     :avatar-outline: muted
     :author: Xing Brew, ResearchPro
-    :date: Nov 16, 2023
+    :date: Nov 30, 2023
     :read-time: 14 min read
 
 :bdg-primary:`community guide`
@@ -224,3 +224,5 @@ This table outlines suitable scenarios for each of the testing methods described
 +--------------------------------------------------+--------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | Notes                                            |                                                              | Removing access for testing App Users once real data collection begins can prevent test data from being unintentionally submitted          | Data collectors must be very careful when selecting 'Real' vs. 'Practice', as all form submissions will be stored in one dataset | Ensure devices and ODK Collect are configured correctly and data collectors do not submit real data to test project   |
 +--------------------------------------------------+--------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+
+Each of the methods described plays an important and complementary role in form testing. Whether it's refining form design through ODK Drafts, simulating realistic training scenarios with a dedicated testing App User, adding a 'practice or real' question, or creating a distinct Test Project — each approach significantly bolsters the integrity of your data collection project. Effectively leveraging these methods not only enhances the reliability and accuracy of your forms but also cultivates a sense of confidence among form developers, data managers, and fieldworkers. By integrating these testing strategies, you can lay the foundation for success in your data collection projects, ensuring they are resilient and reliable.
