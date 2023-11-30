@@ -43,7 +43,7 @@ Each of these methods offers unique benefits and caters to different stages of f
 
 A fundamental tool for form developers, ODK Drafts are unpublished forms ideal for iterating on form design, especially during the initial stages of development, or testing minor changes made to forms used in production.
 
-While invaluable for form developers, ODK Drafts are not suited for data collector training and testing. One more appropriate method for fieldworker training is creating a dedicated App User for testing purposes. This method is especially beneficial for data collection using ODK Collect, as it enables data collectors to effectively get to know with the app's interface and practice form completion in a real-world context. 
+While invaluable for form developers, ODK Drafts are not suited for data collector training and testing. One more appropriate method for fieldworker training is creating a dedicated App User for testing purposes. This method is especially beneficial for data collection using ODK Collect, as it enables data collectors to effectively get to know the app's interface and practice filling forms in a real-world context. 
 
 Adding a question at the start of the form to label submissions as "practice" or "real" is another effective strategy for the final review stages of form development. This provides a practical submission experience while distinctly separating test data from actual data, making it an excellent tool for both testing and training purposes.
 
