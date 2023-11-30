@@ -149,6 +149,7 @@ fallback
 fave
 Firebase
 fn
+fname
 formid
 formID
 formId
@@ -236,6 +237,7 @@ Likert
 ln
 logback
 logcat
+lookups
 los
 lossy
 macOS
