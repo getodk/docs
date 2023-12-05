@@ -15,7 +15,7 @@ Testing your forms
 
 ODK serves as a powerful tool for data collection, but the fidelity of the data collected is directly tied to the quality of the form definitions used in the process and the ability for data collectors to use them to capture accurate data. ODK Central offers a variety of different ways forms can be tested before being used in production, allowing researchers to ensure that the forms and data collectors are ready for real data collection.
 
-In this guide, we will explore four different ways to test forms on Central and discuss the appropriate circumstances for using each approach.
+In this guide, we will explore four different ways to test forms in Central and discuss the appropriate circumstances for using each approach.
 
 Why test?
 ----------
