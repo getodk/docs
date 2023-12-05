@@ -49,3 +49,8 @@ details.sd-dropdown details.nested-schema > summary:first-of-type{
 details.sd-dropdown details.nested-schema[open] > summary:first-of-type{
     list-style: inside disclosure-open;
 }
+
+:root {
+    --sd-color-success: #E0F19D;
+    --sd-color-success-text: #212529;
+}

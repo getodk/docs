@@ -1,3 +1,5 @@
+:og:image: https://docs.getodk.org/_static/img/guide-testing-forms.png
+
 Testing your forms
 ===================
 
@@ -9,11 +11,11 @@ Testing your forms
     :date: Nov 30, 2023
     :read-time: 14 min read
 
-:bdg-primary:`community guide`
+:bdg-success:`community guide`
 
 ODK serves as a powerful tool for data collection, but the fidelity of the data collected is directly tied to the quality of the form definitions used in the process and the ability for data collectors to use them to capture accurate data. ODK Central offers a variety of different ways forms can be tested before being used in production, allowing researchers to ensure that the forms and data collectors are ready for real data collection.
 
-In this guide, we will explore four different ways to test forms on Central and discuss the appropriate circumstances for using each approach.
+In this guide, we will explore four different ways to test forms in Central and discuss the appropriate circumstances for using each approach.
 
 Why test?
 ----------
@@ -73,7 +75,7 @@ How to create and test a Draft
 
 #. Upload a new form definition on a Form's Status tab
   
-   .. image:: /img/guides/testing-upload-draft.png
+   .. image:: /img/guide-testing-forms/testing-upload-draft.png
 
 #. Navigate to the Testing tab (1 in screenshot below)
 #. To test the form online, click the New button (2) and the form will open in a new tab in your browser
@@ -81,13 +83,13 @@ How to create and test a Draft
 #. You will see the Draft icon at the top right of the screen (📝) and be able to fill out and submit a form as you normally would in Collect
 #. All Draft submissions will appear at the bottom of the screen on the Testing tab (4) 
 
-   .. image:: /img/guides/testing-draft-testing.png
+   .. image:: /img/guide-testing-forms/testing-draft-testing.png
 
 #. Once the Draft has been tested and is ready to be published, return to the Status tab and click 'Publish Draft'.
 
    .. note:: The Draft submission data will disappear once the form is published.
 
-   .. image:: /img/guides/testing-publish-draft.png
+   .. image:: /img/guide-testing-forms/testing-publish-draft.png
 
 .. _guide-testing-app-user:
 
@@ -98,7 +100,7 @@ What is an App User for testing?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 App Users are created at the Project level to submit data. Each App User can only download and access forms within a Project that they have been granted access to. A specific App User for testing is one which is created and given access to certain forms within a Project exclusively for the purpose of form testing.
 
-.. image:: /img/guides/testing-app-user.png
+.. image:: /img/guide-testing-forms/testing-app-user.png
 
 Why / When to use this method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -110,17 +112,17 @@ In Projects containing multiple forms, a dedicated testing App User enables the 
 
 If test submissions are inadvertently saved in a production Project, it is easy to identify which App User submitted the form and remove those submitted by the testing App User. One way to do so is to change the state of the forms submitted by the tester to Rejected (1), filter only the submissions that have the state 'Received' (2), then download the non-test submissions.
 
-.. image:: /img/guides/testing-filter-rejected.png
+.. image:: /img/guide-testing-forms/testing-filter-rejected.png
 
 How to create an App User for testing 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To create a dedicated testing App User, click on 'Create App User' in the 'App Users' tab of a Project. We recommend assigning a clear name, such as 'Tester' or a similarly descriptive label, to signify the App User's intended use for testing purposes.
 
-.. image:: /img/guides/testing-create-app-user.png
+.. image:: /img/guide-testing-forms/testing-create-app-user.png
 
 When first created, the App User won't have access to any forms. Access can be granted to the testing App User in the Form Access tab and, if needed, removed once real data collection begins.
 
-.. image:: /img/guides/testing-assign-app-user.png
+.. image:: /img/guide-testing-forms/testing-assign-app-user.png
 
 .. seealso:: 
 
@@ -143,18 +145,18 @@ How to add a practice/real question
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #. In your XLSForm, add a select_one type question at the beginning of the form with the single choice "Practice" while the form is still being tested or before real data collection begins.
 
-   .. image:: /img/guides/testing-select-one.png
+   .. image:: /img/guide-testing-forms/testing-select-one.png
 
 #. Once the form is used in production, add the choice "real" to the choice list.
 
-   .. image:: /img/guides/testing-select-one-choices.png
+   .. image:: /img/guide-testing-forms/testing-select-one-choices.png
       :width: 400
 
 #. If you would like to keep the practice option once real data collection begins, you may want to add a note to alert the data collector that they are entering practice data if that option is selected.
 
-   .. image:: /img/guides/testing-select-one-note.png
+   .. image:: /img/guide-testing-forms/testing-select-one-note.png
 
-   .. image:: /img/guides/testing-select-one-collect.png
+   .. image:: /img/guide-testing-forms/testing-select-one-collect.png
       :class: device-screen-vertical
 
 #. Once data has been collected, data managers can filter out all submissions in which the response to the practice/real question is "Practice" and keep only the real submissions for analysis.
@@ -184,7 +186,7 @@ To create a Project in Central, you can follow the steps in :ref:`this guide <ce
 
 You will want to make it very apparent that this is a test Project to avoid real data being accidentally submitted to this Project once data collection begins, such as by naming the Project with a prefix like 💥 or `***TESTING***`. 
 
-.. image:: /img/guides/testing-project.png
+.. image:: /img/guide-testing-forms/testing-project.png
 
 Once the test Project has been created, you can publish forms, create App Users, and grant them access to the forms, as you would do in a production Project. If testing the forms on Collect, click 'Add Project' and submit forms to the test Project.
 
