@@ -9,13 +9,14 @@ Using spreadsheet software to design forms is helpful because you can see a lot 
 
 Anyone who can use spreadsheet software can create a form! In less than 20 minutes, you'll build the school census survey shown below.
 
-.. image:: /img/xlsform-first-form/school-census-form.*
-  :alt: An XLSForm to collect information about schools.
+..  youtube:: 22l0xHxJ3vo
+   :width: 100%
 
 If you'd like a sneak peek at what the survey looks like for data collectors, try this `web preview <https://demo.getodk.cloud/-/single/uvOoPKYmRSpeUTab5bflNBBMT37L0u7?st=es1kN9UyLfov8T1SZEB8QCTw9gaGp6$s73b9muqj4czHlVown2UAcmyLt3uGNkcN>`_.
 
 Goals
 -----
+
 In this tutorial, you'll:
 
 * Design a short form using a variety of question types
