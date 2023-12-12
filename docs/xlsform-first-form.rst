@@ -29,7 +29,7 @@ Open the XLSForm template
 -------------------------
 You can use any spreadsheet software to create and update an XLSForm: Excel, Google Sheets, OpenOffice Calc, and more. Pick your favorite and open the XLSForm template:
 
-* `Google Sheet <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko/edit#gid=1068911091>`_ (use `File > Make a copy`)
+* `Google Sheet <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_ (use `File > Make a copy`)
 * `Microsoft Excel (XLSX) file <https://github.com/getodk/xlsform-template/raw/main/ODK%20XLSForm%20Template.xlsx>`_
 
 Add a required text question
