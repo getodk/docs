@@ -10258,6 +10258,13 @@ paths:
         schema:
           type: string
         example: 54a405a0-53ce-4748-9788-d23a30cc3afa
+      - name: force
+        in: query
+        description: Flag to forcefully update the Entity
+        required: false
+        schema:
+          type: boolean
+        example: true
       requestBody:
         content:
           '*/*':
