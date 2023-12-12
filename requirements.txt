@@ -11,3 +11,4 @@ mistune
 pystache
 pyyaml
 sphinxext-opengraph
+sphinx-notfound-page

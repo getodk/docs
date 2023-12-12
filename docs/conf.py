@@ -43,7 +43,8 @@ extensions = [ 'sphinxcontrib.spelling',
     'sphinx_tabs.tabs',
     'sphinx_toolbox.collapse',
     'openapi',
-    'sphinxext.opengraph'
+    'sphinxext.opengraph',
+    'notfound.extension'
 ]
 
 # If using Apple Silicon, set env variable (assumes brew install of enchant)
@@ -116,3 +117,6 @@ copybutton_exclude = '.linenos, .gp, .go'
 copybutton_prompt_text = "$ "
 
 ogp_site_url = "https://docs.getodk.org"
+
+notfound_template = 'base.html'
+notfound_urls_prefix = None
