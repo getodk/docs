@@ -13,7 +13,7 @@ Many users choose to use Google Sheets or Excel for the web so that they can col
 
 If you are more adventurous, you can skip the tutorial, make a copy of the form template below, and learn to design your form that way.
 
-* `Google Sheet <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko/edit#gid=1068911091>`_ (use `File > Make a copy`)
+* `Google Sheet <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_ (use `File > Make a copy`)
 * `Microsoft Excel (XLSX) file <https://github.com/getodk/xlsform-template/raw/main/ODK%20XLSForm%20Template.xlsx>`_
 
 Once your form has been designed, you can :ref:`upload the XLSForm directly to your ODK Central server <central-forms-upload>`. If your ODK server does not have the latest XLSForm features or you need to temporarily preview a form in a browser, try `XLSForm Online <https://getodk.org/xlsform>`_.
