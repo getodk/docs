@@ -3,7 +3,7 @@ s3_endpoint: us-west-2
 
 site: docs/_build/dirhtml
 
-error_document: index.html
+error_document: 404/index.html
 
 max_age: 300
 gzip: true
