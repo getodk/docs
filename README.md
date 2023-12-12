@@ -17,6 +17,7 @@ Please [file an issue](https://github.com/getodk/docs/issues) if you can't find 
  * Install [Python 3.10+](https://www.python.org/downloads/)
  * Install [git](https://git-scm.com/downloads)
  * Install [Git-LFS](https://git-lfs.github.com/)
+ * Install [Enchant](https://abiword.github.io/enchant/).
 
 We highly recommend you use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/).
 
