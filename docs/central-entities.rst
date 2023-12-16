@@ -290,12 +290,13 @@ Once you have this update information set up, you can add ``save_to`` rules to y
 .. csv-table:: survey
   :header: type, name, label, save_to
  
-  geopoint, current_location, Tree location, location
-  select_one species, species, Tree species
+  select_one_from_file trees.csv, tree, Select the tree
+  text, description, Your qualitative assessment of the tree
   integer, circumference, Tree circumference in cm, circumference_cm
+  date, today, Today's date, latest_visit
   text, notes, Notes
 
-Here, the ``current_location`` and ``circumference`` questions have been set up to update properties in the Entity, while the ``species`` and ``intake_notes`` questions don't update anything to the Entity.
+Here, the ``circumference`` and ``today`` questions have been set up to update the ``circumference_cm`` and ``latest_visit`` properties of the Entity, while the ``description`` and ``notes`` questions don't update any Entity properties. Given the ``entities`` sheet above, the ``tree`` question's value will be used to determine which tree will be updated.
 
 .. _central-entities_build-update-label:
 
