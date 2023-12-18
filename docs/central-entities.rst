@@ -233,6 +233,108 @@ You can see the full XLSForm `here <https://docs.google.com/spreadsheets/d/12oJZ
 
 The same Entity List can be used in many different Forms. The concepts and patterns described in the :doc:`data collector workflows <data-collector-workflows>` and the :doc:`Form Datasets <form-datasets>` sections apply to Entity Lists as well.
 
+.. _central-entities-update:
+
+Updating Entities from Forms
+----------------------------
+
+.. versionadded:: v2023.5
+
+You can use Forms to update Entity information. These Forms can be authored to, for example, update previous observations to new values or change the status of an Entity. Just like Entity creation through Forms, you can specify which properties on which Entity instances will be updated when the Form's Submissions are uploaded to Central. The data in Submissions uploaded by Entity-updating Forms are applied to the Entity data saved on the Central server. These updated Entity values are then distributed to data collection clients once they synchronize with Central.
+
+.. _central-entities-update-conflicts:
+
+Parallel Updates in Updating Forms
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once you begin allowing updates to Entities to come in through the field, you can run into incidents where two people attempt to update the same Entity at the same time. If you have a project setup where Entities would only be updated by one person at a time (for example, if that person is the only one assigned to a particular area), you can ignore this section.
+
+.. _central-entities-update-conflicts-what-is:
+
+What is a parallel update?
+""""""""""""""""""""""""""
+
+What does it mean that updating an Entity "at the same time" causes a conflict? Every time an Entity is updated, whether by direct edits on the Central management panel, through the API, or by a Submission upload, a new "version" of that Entity is created that has the latest data.
+
+Say Alice fetches all her Tree data on her device. This update includes a brand new Tree entity called "Zach's backyard tree". Alice updates Zach's tree with new measurements. This results in version 2 of that tree once the Submission is uploaded to Central. In a "clean," not-conflicting update Bob would get the latest Tree data, see version 2 of Zach's tree in his update Form, and upload his new changes to create version 3 of the tree on Central. Version 1 led to version 2, and version 2 was updated to create version 3.
+
+However, if Bob doesn't update his data before filling his Form, and so he's still working off version 1 of the tree, then a conflict results. Two updates have been created based on version 1, and Bob didn't know that Alice had already made the changes resulting in version 2. Alice and Bob are both looking at version 1 and trying to create version 2.
+
+.. note::
+   The same rules and behaviors apply when updating Entities through updates made directly to Entities in Central's management panel, or over the API. It's possible, for example, that Bob opened an Entity data edit window in Central before Alice's update is uploaded, but he didn't actually press Submit on his changes until much later. The same is true: Bob is looking at version 1 and thinking he's creating version 2.
+
+Central's behavior in these cases is basic: **it will always apply any changes it receives at the time and in the order it receives them**. This means that in this case, Bob's changes will always "win" over Alice's. Any time this happens, Central will generate a :guilabel:`conflict` warning in several places in the Central management panel so Project managers can see that a problem might have occurred.
+
+Of course, it's possible that Bob's changes and Alice's changes are totally compatible. For example, it's possible Alice only updated the circumference of the tree's trunk, while Bob only reported that moss is now growing. How often and severely conflicts create actual consistency problems with Entity data will depend on the design and complexity of your data collection process and your Forms. Central attempts to help Project managers determine the severity of conflicts by separating conflict warnings into two levels of severity.
+
+**All** conflicts surfaced by Central occur because two Entity updates were generated based off the same base version of an Entity. This circumstance is called a :guilabel:`Parallel Update` in Central. In the special case that a property included in an update has also been changed in the meantime, *and* the value currently stored in Central is different from the new updated value, a full :guilabel:`Conflict` error will be created instead, indicating that multiple possibly conflicting values were written into the same property at once. So if Alice and Bob have both updated the circumference of the tree at the same time to the same value, only a Parallel Update warning and not a Conflict will be flagged. Only if their inputs disagree will you see a full Conflict.
+
+.. _central-entities-build-update:
+
+Building a Form that updates an Entity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Updating Entities isn't too different from creating new Entities, but you'll have to specify the ``entity_id`` of the specific Entity instance you want to update in the ``entities`` sheet.
+
+.. rubric:: XLSForm
+
+.. csv-table:: entities
+  :header: list_name, entity_id
+ 
+  trees, ${tree}
+
+In this example, a tree in the ``trees`` Entity List will be updated when Submissions based on this Form are created. The particular tree to be updated must be given in the ``entity_id`` column, which here is a reference to the ``tree`` form field. That form field could be a ``select_one`` that lets the user choose a specific tree, a QR code scanning field, or any other field that will hold the value of a specific tree's ID.
+
+Once you have this update information set up, you can add ``save_to`` rules to your Form questions as with Entity creation:
+
+.. csv-table:: survey
+  :header: type, name, label, save_to
+ 
+  select_one_from_file trees.csv, tree, Select the tree
+  text, description, Your qualitative assessment of the tree
+  integer, circumference, Tree circumference in cm, circumference_cm
+  date, today, Today's date, latest_visit
+  text, notes, Notes
+
+Here, the ``circumference`` and ``today`` questions have been set up to update the ``circumference_cm`` and ``latest_visit`` properties of the Entity, while the ``description`` and ``notes`` questions don't update any Entity properties. Given the ``entities`` sheet above, the ``tree`` question's value will be used to determine which tree will be updated.
+
+.. _central-entities_build-update-label:
+
+Updating the Entity Label
+"""""""""""""""""""""""""
+
+To update the label of an Entity from a Form, fill in the optional ``label`` column in the ``entities`` sheet as you would when setting the label on Entity creation.
+
+.. rubric:: XLSForm
+
+.. csv-table:: entities
+  :header: list_name, entity_id, label
+ 
+  trees, ${tree},"concat(${circumference}, ""cm "", ${species})"
+
+.. _central-entities_build-update-conditional:
+
+Setting conditions under which an Entity is updated
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can limit a Form to only update an Entity under certain conditions, based on an expression using the Entity and Submission data.
+
+.. rubric:: XLSForm
+
+.. csv-table:: entities
+  :header: list_name, entity_id, update_if
+ 
+  trees, ${tree}, true()
+
+In this case, ``true()`` is given in the optional ``update_if`` column, which means the Entity will always be updated upon submission. If an expression is given instead, the Entity is only updated when the expression evaluates to ``true`` or ``1``.
+
+.. _central-entities_build-update-create:
+
+Creating AND Updating Entities with one Form
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can give both a ``create_if`` and an ``update_if`` rule for the same Form. If only one of these expression evaluates to ``true`` or ``1``, then only that operation will be carried out. If both rules evaluate to ``true`` or ``1``, the Entity will be created if it does not exist (as identified by the ``entity_id`` expression), and updated if it does. Of course, if neither rule evaluates to ``true`` or ``1``, no Entity changes will occur.
+
 .. _central-entities-managing:
 
 Managing Entities
@@ -257,6 +359,10 @@ Similar to the Submissions data page for a Form, you will see overall metadata l
 
 To see, edit, and manage additional details about a particular Entity, hover over its row in the table and click on :guilabel:`More` to go to the Entity Detail page. Alternatively, you can click on the pencil icon to edit the Entity data immediately.
 
+   .. image:: /img/central-entities/entity-table-review.png
+
+By default, you see all Entities in the Entity List. If an Entity has a :ref:`conflict warning <central-entities-update-conflicts>` attached to it, you will see an alert in that table row. You can filter down to only Entities that do or don't have conflict warnings using the filter above the table. On the row of any Entity with a conflict warning, you can click on the red :guilabel:`Review Parallel Updates` button to see more information about the warning, make any edits needed to correct problems, and dismiss the warning if desired. You can also click through to the Entity Detail page to do these things with a little more information.
+
 .. _central-entities-detail:
 
 Seeing Entity Detail
@@ -269,6 +375,12 @@ The Entity Detail page provides a complete look at the data and history of a par
 Similar to the Submission data detail page, the Entity detail page has some basic information about your Entity on the left, and an Activity Feed showing you the history of the Entity on the right.
 
 You can see the actual data stored in the Entity in the bottom left under the :guilabel:`Entity Data` section, and you can edit that information by clicking on :guilabel:`Edit` right there.
+
+   .. image:: /img/central-entities/entity-conflict.png
+
+When there is a conflict warning active on the Entity, you will see a notice above the Activity Feed. Here you can see a summary table of all the Entity updates that might be conflicting with each other. In the feed below, updates that are possibly in conflict will be highlighted. If you want a broad look at the updates in concern, the table is a great summary, but sometimes it can help to look at the changes described in each update in the Feed to really see what's going on.
+
+You can dismiss the conflict warning by pressing :guilabel:`Mark as Resolved` underneath the summary table. When you do this, the warning is dismissed. All values about this Entity currently in Central are now considered non-conflicting. Therefore, you may wish to :guilabel:`Edit` the values using the button on screen before marking the warning as resolved.
 
 .. _central-entities-edit:
 
@@ -286,6 +398,15 @@ The very first row labeled :guilabel:`Entity Label *` is not part of the Form da
 As you type, Central will highlight any fields you have changed in yellow so you can see what you've done.
 
 To complete the process press the :guilabel:`Update` button to save your changes to the Entity. You will see a confirmation that the save succeeded. If you don't like your changes, you can click on the :guilabel:`x` or the :guilabel:`Never mind` link to close the dialog.
+
+.. _central-entities-manage-conflicts:
+
+Managing Entity conflicts
+-------------------------
+
+When an Entity is in a possible conflict, Central will raise the issue in many places throughout the management panel: in the homepage Entity Lists tables, in Entities tables on Project pages, in the Entity Data table, and on Entity Detail pages.
+
+You can review and dismiss conflicts from the :ref:`Entity table <central-entities-data>`, or from the :ref:`Entity Detail page <central-entities-detail>`. When you dismiss a conflict warning, the warning goes away and whatever values are currently recorded in Central are considered correct.
 
 .. _central-entities-settings:
 
