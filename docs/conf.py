@@ -118,5 +118,4 @@ copybutton_prompt_text = "$ "
 
 ogp_site_url = "https://docs.getodk.org"
 
-notfound_template = 'base.html'
 notfound_urls_prefix = None
