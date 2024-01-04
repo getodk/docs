@@ -1,0 +1,6 @@
+:orphan:
+
+Sorry, we couldn't find that page 
+=================================
+
+Try going back to the `homepage <https://docs.getodk.org>`_.
