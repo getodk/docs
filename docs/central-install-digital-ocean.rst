@@ -8,7 +8,7 @@ If you'd like to set up an ODK server that's accessible from anywhere via the In
 .. tip::
   If you have not already created a DigitalOcean account, use `our referral link <https://m.do.co/c/39937689124c>`_.
 
-  DigitalOcean will give you $100 of credit to spend during the first 60 days so that you can try things out. Once you have spent $25 with them, we’ll get $25 to put towards our hosting costs.
+  DigitalOcean will give you $200 of credit to spend during the first 60 days so that you can try things out. Once you have spent $25 with them, we’ll get $25 to put towards our hosting costs.
 
 In general, this installation process will involve five phases:
 
@@ -47,7 +47,6 @@ As you continue down this page, there are a few options that may be important to
 - The datacenter region selects where physically your server will be located. If you have security concerns, this is your chance to decide which country hosts your data. Otherwise, generally selecting the option with closest geographic proximity to your users is a good idea.
 - If you are technically savvy and understand what an SSH key is, there is a field here that you will want to fill in. If not, don't worry about it.
 
-
 Once you click on **Create**, you'll be taken back to the Droplet management page. It may think for a moment, and then your new server should appear. Next to it will be an IP address, which should look something like ``183.47.101.24``. This is where your server is publicly located on the Internet. Don't worry, nobody can do anything with it until you let them.
 
 **Congratulations**! With those steps, you have now created a new server which you can access over the Internet, and started it up. Next, we will get a web domain name address (like ``getodk.org``) to point at it.
@@ -56,6 +55,9 @@ Once you click on **Create**, you'll be taken back to the Droplet management pag
 
 Getting a Web Address (Domain Name)
 -------------------------------------
+
+.. note::
+  To self-host Central, you must have a domain name (e.g., `central.example.com`) mapped to your server. For security reasons, Central will not work with just an IP address (e.g., `93.184.216.34`).
 
 Now is the time to set up a domain name. We will do so, and then configure it so that it sends users to the server you created in the previous step.
 
