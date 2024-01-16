@@ -30,8 +30,7 @@ However, here are some things that encryption will **not** do:
 
 And, here are some limitations that will appear when encryption is enabled on a project or form:
 
- - Encrypted submissions will appear only as metadata records over OData. Metadata like the submitter and the submission date will be available, but none of the actual data from the form will appear.
- - The same restriction applies to the submission preview table on the Central administration panel.
+ - None of the actual submission data will be shown or editable. Only metadata like the submitter and the submission date will be viewable. The same behavior will apply to the OData feed. 
  - As of version 0.6, enabling encryption will not encrypt already-submitted submissions.
  - As of version 0.6, it is not possible to disable *project managed* encryption (explained below) once enabled.
  - As of version 0.6, submissions using *self-supplied key* encryption (Aggregate-style encryption) can be retrieved and decrypted only through Briefcase or direct API access.
