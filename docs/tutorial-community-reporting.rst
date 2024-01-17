@@ -1,4 +1,4 @@
-:og:image: https://docs.getodk.org/_static/img/tutorial-workflow.png
+:og:image: https://docs.getodk.org/_static/img/tutorial-community-reporting.png
 
 Entities tutorial: Community reporting
 ========================================
@@ -29,7 +29,7 @@ Capture problem reports with a simple form
 .. seealso::
     If you're not yet confident with building XLSForms, start with :doc:`xlsform-first-form`.
 
-A problem report form can be very simple! All you must capture so that town employees can later find reported problems and address them are a title, a description and a location. You can build a form to capture that information yourself or `use our example <https://docs.google.com/spreadsheets/d/1zhnRnjD3ZH_OwARAE1hY4__8nFta1LauCPaZbWyI2ag/edit#gid=1068911091>`_.
+A problem report form can be very simple. All you must capture so that town employees can find and fix reported problems are a title, a description and a location. You can build a form to capture that information yourself or `use our example <https://docs.google.com/spreadsheets/d/1zhnRnjD3ZH_OwARAE1hY4__8nFta1LauCPaZbWyI2ag/edit#gid=1068911091>`_.
 
 .. image:: /img/tutorial-community-reporting/problem-report-simple.*
     :alt: A simple form for reporting a problem. It captures the problem's title, description and location.
@@ -43,15 +43,15 @@ Create Entities for each reported problem
 
 We'd like to have reported problems automatically become available in another form so that town employees can manage and address those problems. To do this in ODK, we can use Entities. An Entity represents a unique thing that can be shared between various forms (see :doc:`central-entities`).
 
-Let's start by taking :ref:`our existing "Report a problem" form <tutorial-entities-capture-problem>` and have it create Entities representing problems.
+Let's start by taking our existing :ref:`Report a problem <tutorial-entities-capture-problem>` form and have it create Entities representing problems.
 
-#. Open or create the ``entities`` sheet in the "Report a problem" form.
-#. In the ``list_name``` column, put the name of the Entity List that you want to create Entities in: ``problems``. This name will generally be a plural noun representing a collection of the things you want to share between forms. 
+#. Open or create the ``entities`` sheet in the ``Report a problem`` form.
+#. In the ``list_name`` column, put the name of the Entity List that you want to create Entities in: ``problems``. This name will generally be a plural noun representing a collection of the things you want to share between forms. 
 #. In the ``label`` column, put an expression to define the label for each problem: ``${problem_title}``. This label will be used in Central to identify each entity as well as in any selects you define in follow up forms.
 
 These additions will make submissions for this form create ``problems`` with a user-defined label and a system-generated unique identifier. In this case, you also want to make the problem details and location available to follow-up forms.
 
-#. Open the ``survey`` sheet in the "Report a problem" form.
+#. Open the ``survey`` sheet in the ``Report a problem`` form.
 #. Find or add the ``save_to`` column (it is not included in the :doc:`XLSForm template <xlsform>` by default).
 #. In the ``save_to`` column for the form field that captures the problem description, put the name of the Entity property to save the value to: ``details``
 #. In the ``save_to`` column for the form field that captures the problem location, put the name of the Entity property to save the value to: ``geometry``. Using the special property name ``geometry`` will allow you to show all ``problems`` on a map in a follow-up form (see :ref:`select one from map <select-from-map>`).
@@ -59,7 +59,7 @@ These additions will make submissions for this form create ``problems`` with a u
 .. image:: /img/tutorial-community-reporting/problem-report-entities.*
     :alt: A simple form for reporting a problem. It captures the problem's title, description and location and creates problem Entities.
 
-`See the working problem report form <https://docs.google.com/spreadsheets/d/10sVEXd3apzePPDY_SQGaEU3z3gj6H5W3RSHFWCm0HIU>`_.
+See the working `Report a problem <https://docs.google.com/spreadsheets/d/10sVEXd3apzePPDY_SQGaEU3z3gj6H5W3RSHFWCm0HIU>`_ form.
 
 Verify that Entity creation works
 ----------------------------------
@@ -69,7 +69,7 @@ Entities aren't currently created as part of form draft testing so you will need
 #. Navigate to or create a Central project that you will use just for tutorials and testing (see :ref:`the guide on testing forms <guide-testing-project>`).
    
    .. warning::
-     You can use an existing project that has real forms but note that entity lists can't yet be deleted so the ``problems`` list you create will exist until entity list deletion is implemented.
+     You can use an existing project that has real forms but note that entity lists can't yet be deleted so the ``problems`` list you create will exist until entity list deletion arrives in Central.
 
 #. Click on the :guilabel:`New` button and upload your new form. Depending on how you are authoring XLSForms, you may first need to download or export the form as XLSX.
 
@@ -80,7 +80,7 @@ Entities aren't currently created as part of form draft testing so you will need
 #. Refresh the submissions table to see the new submission(s) and then click on on :guilabel:`More` on one of the submissions to see the submission details page. You should see that this submission created an Entity in the ``problems`` list:
 
    .. image:: /img/tutorial-community-reporting/problem-report-submission.*
-     :alt: Submission details for a "Report a problem" submission that creates an Entity.
+     :alt: Submission details for a ``Report a problem`` submission that creates an Entity.
 
 View reported problems on a map
 ----------------------------------
@@ -91,39 +91,43 @@ Let's now create a second form which will be used by town employees to view repo
 #. Go to the ``settings`` sheet.
 #. In the ``form_title`` column, put a title that people who interact with this form should see: ``Address a problem``
 #. In the ``form_id`` column, put an ID that uniquely identifies this form: ``address_problem``
-#. Add a field list group to show multiple questions on a single screen.
+#. Add a field list group to show multiple questions on a single screen:
 
    #. Go to the ``survey`` sheet.
    #. In the ``type`` column, put ``begin_group``
    #. In the ``name`` column, put ``entity``
    #. In the ``appearance`` column, put ``field-list``
-#. Add a select question that shows all reported problems on a map.
+#. Add a select question that shows all reported problems on a map:
 
    #. In the ``type`` column, put ``select_one_from_file problems.csv`` which will automatically link to the ``problems`` Entity List because of the ``problems.csv`` filename.
       
       .. warning::
-         If the filename specified doesn't exactly match the Entity List name specified in the problem reporting form, the two forms will not share Entities. If you don't see expected Entities in your select, make sure that the two names exactly match, including case.
+         The filename specified is case-sensitive and it must exactly match the Entity List name specified in the problem reporting form or the two forms will not share Entities.
 
    #. In the ``name`` column, put ``problem``
    #. In the ``appearance`` column, put ``map``
-#. Add a note question to show the selected problem's details.
+#. Add a note question to show the selected problem's details:
   
    #. In the ``type`` column, put ``note``
    #. In the ``name`` column, put ``problem_details``
    #. In the ``label`` column, put ``Details: instance('problems')/root/item[name=${problem}]/details``
-#. Close the field list group.
+
+      .. note::
+         Don't worry about this complex XPath expression for now. You'll become an expert soon!
+
+#. Close the field list group:
 
    #. In the ``type`` column, put ``end_group``
-#. Upload the form to Central in the same project as the "Report a problem" form and try its draft. If you use the draft QR code in ODK Collect, you will see a map of all reported problems. If you use a web form for testing, you will see a list of reported problems by label (because select from map is not yet implemented).
+#. Upload the form to Central in the same project as the ``Report a problem`` form and try its draft. If you use the draft QR code in the Collect mobile app, you will see a map of all reported problems. If you use a web form for testing, you will see a list of reported problems by label (because select from map is not yet implemented).
 
-You can now view reported problems! When a new problem is reported, it will appear in the follow-up form the next time the form is updated.
+You can now view reported problems! When a new problem is reported, it will appear in the follow-up form the next time the form is updated. If you're online, updates typically happen automatically every 15 minutes.
 
 Capture information about the action taken
 -------------------------------------------
 
-You can now add to the "Address problem" form to capture information about any actions that the town employee takes.
+You can now add to the ``Address problem`` form to capture information about any actions that the town employee takes.
 
-#. Add a field list group to show multiple questions on a single screen.
+#. Add a field list group to show multiple questions on a single screen:
 
    #. Go to the ``survey`` sheet.
    #. In the ``type`` column, put ``begin_group``
@@ -155,15 +159,15 @@ You can now add to the "Address problem" form to capture information about any a
 Update a problem's status
 --------------------------
 
-You can now capture information about problems that are addressed or that still need action. However, this is not all that useful because problems that have been addressed are still visible from the "Address problem" form which could lead to confusion and duplication of effort.
+You can now capture information about problems that are addressed or that still need action. However, this is not that useful because problems that have been addressed are still visible from the ``Address problem`` form which could lead to confusion and duplication of effort.
 
-We'd like to filter out addressed problems from the select in "Address problem" so that it only shows problems that require action. 
+We need to filter out addressed problems from the select in ``Address problem`` so that it only shows problems that require action. 
 
-Let's update a problem Entity's status when the "Address problem" form is filled out about it. We'll then be able to filter out ``problems`` with a ``status`` of ``addressed``.
+Let's update a problem Entity's status when the ``Address problem`` form is filled out about it. We'll then be able to filter out ``problems`` with a ``status`` of ``addressed``.
 
 #. Declare that this form's submissions should update Entities in the ``problems`` Entity List:
 
-   #. Go to the ``entities`` sheet of the "Address problem" form.
+   #. Go to the ``entities`` sheet of the ``Address problem`` form.
    #. In the ``list_name`` column, put ``problems``
    #. Delete the ``label`` column if it exists because this form does not need to update the label of ``problem`` Entities.
    #. In the ``entity_id`` column (you may need to add it), put ``${problem}`` to indicate that the value of the ``problem`` form field represents the unique identifier of the ``problem`` Entity to update.
@@ -185,7 +189,7 @@ Let's update a problem Entity's status when the "Address problem" form is filled
 .. image:: /img/tutorial-community-reporting/address-problem.*
     :alt: A form for addressing problems.
 
-`See the working form to address problems <https://docs.google.com/spreadsheets/d/1C_WrfD4_9QuycO_pgzE8duw9kaOxAB3CfPOb0HNOQfU>`_.
+See the working `Address a problem <https://docs.google.com/spreadsheets/d/1C_WrfD4_9QuycO_pgzE8duw9kaOxAB3CfPOb0HNOQfU>`_ form.
 
 Try out the full workflow
 --------------------------
@@ -200,7 +204,7 @@ Let's report a few problems using the web form.
 #. Click the :guilabel:`New` button to initiate a new submission.
 #. Report a few problems in different locations.
 
-You could also address problems using the web form but to get the map view, let's use the Collect Android app.
+You could also address problems using the web form but to get the map view, let's use the Collect mobile app.
 
 #. Go to your project page in Central.
 #. Click on the :guilabel:`App Users` tab.
@@ -213,7 +217,7 @@ You could also address problems using the web form but to get the map view, let'
 You now have two forms that work together to support a problem reporting and resolution workflow that can be applied to many different environments.
 
 .. note::
-    Addressed problems are filtered out of the ``Address a problem`` select but they are still sent to all devices. This will become impractical after several 10s of thousands of problems or earlier depending on available bandwidth. In a future ODK version, it will be possible to archive Entities that are no longer needed.
+    Addressed problems are filtered out of the ``Address a problem`` select but they are still sent to all devices. This will become impractical after tens of thousands of problems. In a future ODK version, it will be possible to archive Entities that are no longer needed.
 
 Your turn
 ----------
