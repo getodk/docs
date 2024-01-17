@@ -54,7 +54,7 @@ ODK is open-source software that's made by a welcoming community of people just 
 
   form-design-intro
   XLSForm Tutorial <xlsform-first-form>
-  Entities Tutorial <tutorial-community-problems>
+  Entities Tutorial <tutorial-entities>
   form-reference
   form-best-practices
 
