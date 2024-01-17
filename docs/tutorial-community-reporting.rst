@@ -29,14 +29,14 @@ Capture problem reports with a simple form
 .. seealso::
     If you're not yet confident with building XLSForms, start with :doc:`xlsform-first-form`.
 
-A problem report form can be very simple! All you must capture so that town employees can later find reported problems and address them are a title, a description and a location. You can build a form to capture that information yourself or `view an example here <https://docs.google.com/spreadsheets/d/1zhnRnjD3ZH_OwARAE1hY4__8nFta1LauCPaZbWyI2ag/edit#gid=1068911091>`_.
+A problem report form can be very simple! All you must capture so that town employees can later find reported problems and address them are a title, a description and a location. You can build a form to capture that information yourself or `use our example <https://docs.google.com/spreadsheets/d/1zhnRnjD3ZH_OwARAE1hY4__8nFta1LauCPaZbWyI2ag/edit#gid=1068911091>`_.
 
-.. image:: /img/tutorial-entities/problem-report-simple.*
+.. image:: /img/tutorial-community-reporting/problem-report-simple.*
     :alt: A simple form for reporting a problem. It captures the problem's title, description and location.
 
 You could stop here and build a workflow around this simple form. For example, you could publish the form as a :ref:`Public Access Link <central-submissions-public-link>`, make a QR code from it (using a service such as `Adobe's <https://new.express.adobe.com/tools/generate-qr-code>`_), and post it in public locations for community members to use. Then you could have town employees :ref:`watch the form submissions in Excel <central-submissions-odata>` and use additional columns in a shared spreadsheet to manage the process of addressing new problems.
 
-This approach requires manual intervention and coordination through a spreadsheet, both of which can be time-consuming and error-prone. Let's instead use ODK to help manage addressing problems in real time.
+This approach requires manual intervention and coordination through a spreadsheet, both of which can be time-consuming and error-prone. Let's instead use ODK Entities to help manage addressing problems in real time.
 
 Create Entities for each reported problem
 -------------------------------------------
@@ -56,7 +56,7 @@ These additions will make submissions for this form create ``problems`` with a u
 #. In the ``save_to`` column for the form field that captures the problem description, put the name of the Entity property to save the value to: ``details``
 #. In the ``save_to`` column for the form field that captures the problem location, put the name of the Entity property to save the value to: ``geometry``. Using the special property name ``geometry`` will allow you to show all ``problems`` on a map in a follow-up form (see :ref:`select one from map <select-from-map>`).
 
-.. image:: /img/tutorial-entities/problem-report-entities.*
+.. image:: /img/tutorial-community-reporting/problem-report-entities.*
     :alt: A simple form for reporting a problem. It captures the problem's title, description and location and creates problem Entities.
 
 `See the working problem report form <https://docs.google.com/spreadsheets/d/10sVEXd3apzePPDY_SQGaEU3z3gj6H5W3RSHFWCm0HIU>`_.
@@ -79,7 +79,7 @@ Entities aren't currently created as part of form draft testing so you will need
 
 #. Refresh the submissions table to see the new submission(s) and then click on on :guilabel:`More` on one of the submissions to see the submission details page. You should see that this submission created an Entity in the ``problems`` list:
 
-   .. image:: /img/tutorial-entities/problem-report-submission.*
+   .. image:: /img/tutorial-community-reporting/problem-report-submission.*
      :alt: Submission details for a "Report a problem" submission that creates an Entity.
 
 View reported problems on a map
@@ -182,7 +182,7 @@ Let's update a problem Entity's status when the "Address problem" form is filled
 
 #. Fix any form conversion errors and then publish the form. Entity updates currently only work with a published form, just like Entity creation.
 
-.. image:: /img/tutorial-entities/address-problem.*
+.. image:: /img/tutorial-community-reporting/address-problem.*
     :alt: A form for addressing problems.
 
 `See the working form to address problems <https://docs.google.com/spreadsheets/d/1C_WrfD4_9QuycO_pgzE8duw9kaOxAB3CfPOb0HNOQfU>`_.
@@ -194,7 +194,7 @@ Let's report a few problems using the web form.
 
 #. In Central, go to your project or the server landing page and then click on the ``*`` icon to the right of the ``Report a problem`` form. That icon and the number next to it represent the total number of current submissions. Clicking it will jump directly to the :guilabel:`Submissions` tab.
 
-   .. image:: /img/tutorial-entities/problem-report-project.*
+   .. image:: /img/tutorial-community-reporting/problem-report-project.*
     :alt: The list of forms in the project with the cursor hovering over the total submission count.
 
 #. Click the :guilabel:`New` button to initiate a new submission.
