@@ -113,7 +113,7 @@ Let's now create a second form which will be used by town employees to view repo
    #. In the ``label`` column, put ``Details: instance('problems')/root/item[name=${problem}]/details``
 
       .. note::
-         Don't worry about this complex XPath expression for now. You'll become an expert soon!
+         Don't worry if this part looks unfamiliar. Copy it as is, and after you finish the tutorial, you can learn more in the ``List lookups`` sheet in the :doc:`XLSForm template <xlsform>`.
 
 #. Close the field list group:
 
