@@ -1,9 +1,9 @@
 :og:image: https://docs.getodk.org/_static/img/tutorial-workflow.png
 
-Entities tutorial
-===================
+Entities tutorial: Community reporting
+========================================
 
-Many kinds of organizations use forms to capture problem reports from their community members:
+Many kinds of organizations use forms to capture problem reports from their communities:
 
 * hospitals ask patients and nurses to report unclean conditions or missing supplies
 * student leaders ask other students to make suggestions to improve their schools
@@ -21,13 +21,15 @@ Goals
 * Access Entities in a follow-up form
 * Update Entities from form submissions
 
+.. _tutorial-entities-capture-problem:
+
 Capture problem reports with a simple form
 -------------------------------------------
 
 .. seealso::
     If you're not yet confident with building XLSForms, start with :doc:`xlsform-first-form`.
 
-A problem report form can be very simple! All you must capture for your town employees to be able to find reported problems and address them are a title, description and location. You can build a form to capture that information yourself or `view an example here <https://docs.google.com/spreadsheets/d/1zhnRnjD3ZH_OwARAE1hY4__8nFta1LauCPaZbWyI2ag/edit#gid=1068911091>`_.
+A problem report form can be very simple! All you must capture so that town employees can later find reported problems and address them are a title, a description and a location. You can build a form to capture that information yourself or `view an example here <https://docs.google.com/spreadsheets/d/1zhnRnjD3ZH_OwARAE1hY4__8nFta1LauCPaZbWyI2ag/edit#gid=1068911091>`_.
 
 .. image:: /img/tutorial-entities/problem-report-simple.*
     :alt: A simple form for reporting a problem. It captures the problem's title, description and location.
@@ -41,7 +43,7 @@ Create Entities for each reported problem
 
 We'd like to have reported problems automatically become available in another form so that town employees can manage and address those problems. To do this in ODK, we can use Entities. An Entity represents a unique thing that can be shared between various forms (see :doc:`central-entities`).
 
-Let's start by taking our existing "Report a problem" form and have it create Entities representing problems.
+Let's start by taking :ref:`our existing "Report a problem" form <tutorial-entities-capture-problem>` and have it create Entities representing problems.
 
 #. Open or create the ``entities`` sheet in the "Report a problem" form.
 #. In the ``list_name``` column, put the name of the Entity List that you want to create Entities in: ``problems``. This name will generally be a plural noun representing a collection of the things you want to share between forms. 
@@ -167,6 +169,7 @@ Let's update a problem Entity's status when the "Address problem" form is filled
    #. In the ``entity_id`` column (you may need to add it), put ``${problem}`` to indicate that the value of the ``problem`` form field represents the unique identifier of the ``problem`` Entity to update.
 
 #. Update the value of the ``status`` Entity property:
+
    #. Go to the ``survey`` sheet.
    #. In the ``save_to`` column (you may need to add it) for the ``status`` field, put ``status``
 
