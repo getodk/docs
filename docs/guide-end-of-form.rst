@@ -47,7 +47,7 @@ Sent
 
 Sent forms have been received by the server and can't be edited from Collect. The ``sent`` state exists to:
 
-* provide a record of work that has been completed.
+* let the user see data that they submitted.
 * enable troubleshooting and data recovery in case of issues with the server.
 
 Collect can also optionally be configured to :ref:`delete submissions after send <delete-after-send>` to reduce device storage needs or ensure greater data protection.
@@ -183,34 +183,34 @@ In many workflows, it's important to guarantee that data is not changed after th
 
 When data collectors reach the form end screen, they only have the option to :guilabel:`Finalize`. If they are interrupted during a form filling session, they need to exit and discard changes or rely on automatic data backups and recovery (the partially-filled form will open automatically when they open the same blank form again).
 
-Edits are encouraged until a certain point in time
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Edits may be needed to some drafts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In some workflows, new information may need to be added to a form after a first data collection event. For example:
 
 * a form may capture data from multiple days.
-* a data collection subject may be observable at different times, revealing new information.
+* a data collection subject may be observable at different times or from different angles, revealing new information.
 * review to fix small mistakes like typos may be encouraged.
 * tasks like transcribing an audio recording may be needed.
 
-To support this need, you can take the :guilabel:`Finalize` / :guilabel:`Send` button off of the form end screen and require that data collectors always use :ref:`bulk draft finalization <bulk-finalizing-drafts>`:
+To support this need, you can take the :guilabel:`Finalize` / :guilabel:`Send` button off the form end screen and require that data collectors always use :ref:`bulk finalization <bulk-finalizing-drafts>`:
 
 * Remove :guilabel:`Finalize` from the end of form screen.
 * (If data collectors may be tempted to change settings) Set an admin password.
-* (If it's important to be able to block finalization of specific filled forms) Add a required yes/no question asking whether further edits are needed with a constraint that the answer must be ``No``.
+* (If it's important to be able to block finalization of specific filled forms) Add a required yes or no question asking whether further edits are needed with a constraint that the answer must be ``No``.
 * Train data collectors on using :ref:`bulk finalization <bulk-finalizing-drafts>`.
 
-When data collectors reach the end of form screen, they only have the option of saving as draft. They can then make edits from the :guilabel:`Drafts` list as needed. When they are ready to submit, they go to :guilabel:`Drafts` and tap on the :guilabel:`Finalize all drafts` menu item. All forms marked with ``no errors`` are finalized and sent. If there are certain submissions that they know are not yet ready, they can edit them to cause a validation error. This is most convenient to do with a yes/no question asking whether further edits are needed.
+When data collectors reach the end of form screen, they only have the option of saving as draft. They can then make edits from the :guilabel:`Drafts` list as needed. When they are ready to submit, they go to :guilabel:`Drafts` and tap on the :guilabel:`Finalize all drafts` menu item. All forms marked with ``no errors`` are finalized and sent. If there are certain submissions that they know are not yet ready, they can edit them to cause a validation error. This is most convenient to do with a yes or no question asking whether further edits are needed.
 
 Supervisor review required before submission
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Having a trusted supervisor do an in-field review of filled in forms before submission can increase data collectors' attention to detail and help catch missing or incorrect data. You can decide when this review happens: it could be the data collector's responsibility to connect with their supervisor at some frequency or the supervisor could be the one who initiates review. This process can be written into the form or communicated separately such as during a training.
 
-You will generally want to encode the review process in the form design and require that the supervisor fill out some questions in the form. For example:
+You will generally want to design the form so it enforces the review process and require that the supervisor fill out some questions in the form. For example:
 
 * Add a checklist of actions the supervisor needs to take with an option to check each one off.
 * Ask the reviewer to type in their name.
 * Ask the reviewer to type in a special code which they don't show to data collectors (use the :guilabel:`Delete after send` setting so data collectors can't view the code in sent forms).
-* Ask the reviewer to sign with their finger.
+* Ask the reviewer to add their signature.
 
 .. image:: /img/guide-end-of-form/reviewer-checklist.* 
   :alt: The Collect app showing a list of questions for a reviewer.
@@ -222,7 +222,7 @@ You will generally want to encode the review process in the form design and requ
 
 * :fa:`external-link` `Example of a form requiring review <https://docs.google.com/spreadsheets/d/1o17pQIYtwVnc1vxxJ4EVE-874SaN6N0fQ_FU9wvo6-I>`_
 
-You can use :ref:`instance_name <instance-name>` to make it easy to see from the :guilabel:`Drafts` list which drafts are ready for review and which need further editing.
+You can use :ref:`name drafts <instance-name>` to make it easy to see from the :guilabel:`Drafts` list which drafts are ready for review and which need further editing.
 
 .. image:: /img/guide-end-of-form/reviewer-drafts.* 
   :alt: The Collect app showing the draft list with some drafts marked as "ready for review" and others as "edits needed".
