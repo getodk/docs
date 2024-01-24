@@ -45,7 +45,7 @@ The ``finalized`` state is only necessary because Collect allows users to save a
 Sent
 ~~~~~
 
-Sent forms have been received by the server can't be edited from Collect. The ``sent`` state exists to:
+Sent forms have been received by the server and can't be edited from Collect. The ``sent`` state exists to:
 
 * provide a record of work that has been completed.
 * enable troubleshooting and data recovery in case of issues with the server.
@@ -72,7 +72,7 @@ We generally recommend turning on :guilabel:`auto send` in :ref:`form management
 
 * reduced risk of data collectors forgetting to submit data in a timely way.
 * automatically retry failed submissions. On poor or intermittent data connections, this can be very helpful.
-* less for data collectors to think about (and you can also :ref:`hide the Ready to send button <guide-form-states-hide-buttons>`)
+* less for data collectors to think about (and you can also :ref:`hide the Ready to send button <guide-form-states-hide-buttons>`).
 * less chance that all data collectors submit at the same time (such as the end of their work day) which could lead to network congestion or high load on the server.
 
 One case where you may need to turn :guilabel:`auto send` off is if it's important for data collectors to submit while on a network connection that is higher bandwidth, more secure, or lower-cost. In some cases, changing the setting to ``WiFi only`` or ``Cellular only`` may address these needs.
@@ -101,7 +101,7 @@ You can customize the prompt for your context. For example:
 
 * "Is the patient leaving the clinic now?"
 * "Will you still be able to see the trail from your next destination?"
-* Suggest using the jump option (|arrow|) to review specific, sensitive sections
+* Suggest using the jump option (|arrow|) to review specific, important sections.
 
 .. |arrow| image:: /img/collect-forms/jumpicon.*
     :alt: Opens the jump menu.
@@ -176,10 +176,10 @@ In many workflows, it's important to guarantee that data is not changed after th
 
 * Remove :guilabel:`Save as draft` from the form end screen and :fa:`floppy-disk` from the form filling experience.
 * Hide the :guilabel:`Drafts` button from the Main Menu.
-* (Generally) Turn on :guilabel:`Auto send`
-* (If data is highly sensitive or devices are not trusted) Turn on :guilabel:`Delete after send`
-* (If data collection must be linear) :ref:`Disable moving backwards <moving-backwards-setting>`
-* (If data collectors may be tempted to change settings) Set an admin password and hide :guilabel:`User Settings` set above
+* (Generally) Turn on :guilabel:`Auto send`.
+* (If data is highly sensitive or devices are not trusted) Turn on :guilabel:`Delete after send`.
+* (If data collection must be linear) :ref:`Disable moving backwards <moving-backwards-setting>`.
+* (If data collectors may be tempted to change settings) Set an admin password and hide :guilabel:`User Settings` set above.
 
 When data collectors reach the form end screen, they only have the option to :guilabel:`Finalize`. If they are interrupted during a form filling session, they need to exit and discard changes or rely on automatic data backups and recovery (the partially-filled form will open automatically when they open the same blank form again).
 
@@ -187,17 +187,17 @@ Edits are encouraged until a certain point in time
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 In some workflows, new information may need to be added to a form after a first data collection event. For example:
 
-* a form may capture data from multiple days
-* a data collection subject may be observable at different times, revealing new information
-* review to fix small mistakes like typos may be encouraged
-* tasks like transcribing an audio recording may be needed
+* a form may capture data from multiple days.
+* a data collection subject may be observable at different times, revealing new information.
+* review to fix small mistakes like typos may be encouraged.
+* tasks like transcribing an audio recording may be needed.
 
 To support this need, you can take the :guilabel:`Finalize` / :guilabel:`Send` button off of the form end screen and require that data collectors always use :ref:`bulk draft finalization <bulk-finalizing-drafts>`:
 
-* Remove :guilabel:`Finalize` from the end of form screen
-* (If data collectors may be tempted to change settings) Set an admin password
-* (If it's important to be able to block finalization of specific filled forms) Add a required yes/no question asking whether further edits are needed with a constraint that the answer must be ``No``
-* Train data collectors on using :ref:`bulk finalization <bulk-finalizing-drafts>`
+* Remove :guilabel:`Finalize` from the end of form screen.
+* (If data collectors may be tempted to change settings) Set an admin password.
+* (If it's important to be able to block finalization of specific filled forms) Add a required yes/no question asking whether further edits are needed with a constraint that the answer must be ``No``.
+* Train data collectors on using :ref:`bulk finalization <bulk-finalizing-drafts>`.
 
 When data collectors reach the end of form screen, they only have the option of saving as draft. They can then make edits from the :guilabel:`Drafts` list as needed. When they are ready to submit, they go to :guilabel:`Drafts` and tap on the :guilabel:`Finalize all drafts` menu item. All forms marked with ``no errors`` are finalized and sent. If there are certain submissions that they know are not yet ready, they can edit them to cause a validation error. This is most convenient to do with a yes/no question asking whether further edits are needed.
 
@@ -207,10 +207,10 @@ Having a trusted supervisor do an in-field review of filled in forms before subm
 
 You will generally want to encode the review process in the form design and require that the supervisor fill out some questions in the form. For example:
 
-* Add a checklist of actions the supervisor needs to take with an option to check each one off
-* Ask the reviewer to type in their name
-* Ask the reviewer to type in a special code which they don't show to data collectors (use the :guilabel:`Delete after send` setting so data collectors can't view the code in sent forms)
-* Ask the reviewer to sign with their finger
+* Add a checklist of actions the supervisor needs to take with an option to check each one off.
+* Ask the reviewer to type in their name.
+* Ask the reviewer to type in a special code which they don't show to data collectors (use the :guilabel:`Delete after send` setting so data collectors can't view the code in sent forms).
+* Ask the reviewer to sign with their finger.
 
 .. image:: /img/guide-end-of-form/reviewer-checklist.* 
   :alt: The Collect app showing a list of questions for a reviewer.
@@ -234,22 +234,22 @@ Only trusted reviewers can submit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 If you want to guarantee that a trusted reviewer submits all forms, you can disable data collectors' access to finalize forms:
 
-* Remove :guilabel:`Finalize` from the end of form screen
-* Remove :guilabel:`Finalize all drafts` from the :guilabel:`Drafts` list
-* Set an admin password and communicate it to trusted reviewers
-* (Optional) Hide the :guilabel:`Ready to send` button from the main menu (forms will only be listed there if auto send is off or if the device is offline)
+* Remove :guilabel:`Finalize` from the end of form screen.
+* Remove :guilabel:`Finalize all drafts` from the :guilabel:`Drafts` list.
+* Set an admin password and communicate it to trusted reviewers.
+* (Optional) Hide the :guilabel:`Ready to send` button from the main menu (forms will only be listed there if auto send is off or if the device is offline).
 
 Train data collectors to go to a reviewer periodically. This could be at a set time every day, once a week, after a certain number of drafts are saved, etc. The reviewer can make any edits they want, possibly using special review-related questions as described above. When all draft submissions are ready to send, they:
 
-* Go to protected settings
-* Enter the admin password
-* Change the setting to show the :guilabel:`Finalize all drafts` option
-* Navigate to :guilabel:`Drafts`
-* :guilabel:`Finalize all drafts`
-* Make sure that auto send runs or go to :guilabel:`Ready to send` and send all forms
-* Go to protected settings
-* Enter the admin password
-* Hide the :guilabel:`Finalize all drafts` option
+* Go to protected settings.
+* Enter the admin password.
+* Change the setting to show the :guilabel:`Finalize all drafts` option.
+* Navigate to :guilabel:`Drafts`.
+* :guilabel:`Finalize all drafts`.
+* Make sure that auto send runs or go to :guilabel:`Ready to send` and send all forms.
+* Go to protected settings.
+* Enter the admin password.
+* Hide the :guilabel:`Finalize all drafts` option.
 
 Next steps
 ----------
@@ -260,4 +260,4 @@ Here are some things to consider doing next:
 
 - Think about the workflows that you use ODK to support. Could any of the approaches described in this guide reduce data collection errors or reduce the need for training?
 - If your workflow doesn't quite match any of the ones described above, consider sharing it `on the forum <https://forum.getodk.org/c/support/6>`_. We can discuss how to best support it and consider adding it to this guide.
-- Read the reference on :doc:`Collect settings <collect-settings>`
+- Read the reference on :doc:`Collect settings <collect-settings>`.
