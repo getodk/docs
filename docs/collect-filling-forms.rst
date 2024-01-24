@@ -280,7 +280,7 @@ Exiting form filling
 
 You can exit the form filling screen at any time by tapping your device's back button (:fa:`caret-left`). This will display a dialog with several options which can be configured in Collect's :ref:`protected access control settings <admin-settings>`:
 
-* :guilabel:`Discard form` discards this new filled form. This cannot be undone.
+* :guilabel:`Discard form` discards this filled form. This cannot be undone.
 * :guilabel:`Discard changes` discards all changes made since the form was last saved. This cannot be undone.
 * :guilabel:`Keep editing` returns to the form filling screen.
 * :guilabel:`Save as draft` saves all current values as draft and exits the form filling screen. Changes cannot be unsaved.
