@@ -203,14 +203,13 @@ Specifies how blank forms should be updated:
 
 :guilabel:`Auto send`
 """"""""""""""""""""""
-  When enabled, forms are sent immediately when they are finalized, if the device can connect to the internet. If an internet connection is not available at the time of finalization, your finalized forms will be queued to send as soon as connectivity is established.
-  You can specify whether to send over WiFi, cellular data, or both.
+  When enabled, forms are sent immediately when they are finalized, if the device can connect to the Internet. If an Internet connection is not available at the time of finalization, your finalized forms will be queued to send as soon as connectivity is established. You can specify whether to send over WiFi, cellular data, or both.
 
 .. _delete-after-send:
 
 :guilabel:`Delete after send`
 """"""""""""""""""""""""""""""
-  When enabled, form instances are deleted once they are sent.
+  When enabled, filled forms are deleted as soon as they are sent. This deletes the form data but leaves the forms :ref:`listed in the Sent form list <instance-name>`.
 
 .. rubric:: Form filling
 
@@ -358,11 +357,13 @@ You can :ref:`password protect <admin-password>` the protected settings, so enum
 .. _admin-password:
 
 :guilabel:`Set admin password`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   If a password is set, when settings are opened, the :guilabel:`Protected` section will only contain :guilabel:`Unlock protected settings`. Tapping on that will display a dialog to provide the admin password. Before the correct admin password is provided, access controls will be in place and some settings may be hidden. Saving a blank password disables password protection.
 
 .. _project-management-settings:
 
-.. rubric:: Project management settings
+:guilabel:`Project management`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :guilabel:`Reconfigure with QR code`
   Replace all settings from those in a QR code. See :doc:`configuring Collect via QR code <collect-import-export>`.
@@ -379,46 +380,43 @@ You can :ref:`password protect <admin-password>` the protected settings, so enum
 
 .. _user-access-control-settings:
 
-.. rubric:: Access control settings
+:guilabel:`Access control`
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :guilabel:`Main Menu Settings`
-  Displays a list of buttons shown on the main screen. To prevent access to certain features, uncheck them and their button will be hidden.
+"""""""""""""""""""""""""""""""
+Displays a list of buttons shown on the main screen. To prevent access to certain features, uncheck them and their button will be hidden.
 
 :guilabel:`User Settings`
-  Displays a list of user settings and other features accessible in the :ref:`settings <general-settings>` screen. To hide features, uncheck them.
+"""""""""""""""""""""""""""""""
+Displays a list of user settings and other features accessible in the :ref:`settings <general-settings>` screen. To hide features, uncheck them.
 
 .. _form-entry-settings:
 
 :guilabel:`Form Entry Settings`
-  Displays a list of features related to viewing and filling out forms. To disable features, uncheck them.
+"""""""""""""""""""""""""""""""
+
+Displays a list of features related to viewing and filling out forms. To disable features, uncheck them.
   
-  :guilabel:`Moving backwards`
-    If you disable moving backwards,
-    the enumerator cannot use the back button or swipe right
-    to move backwards through a form.
+.. _moving-backwards-setting:
 
-    However, disabling this feature
-    does not completely restrict a user's ability to access
-    already-answered questions.
-    So,
-    when you uncheck this box to restrict backward movement,
-    the app will suggest several additional restrictions
-    which will prevent a non-admin user
-    from revisiting already-asked questions:
+:guilabel:`Moving backwards`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+If you disable moving backwards, the enumerator cannot use the back button or swipe right to move backwards through a form.
 
-    - Disable :guilabel:`Edit Saved Form` option in the main menu
-    - Disable :guilabel:`Save Form` option in the Form entry menu
-    - Disable :guilabel:`Go To Prompt` option in the Form entry menu
-    - Set :guilabel:`Constraint processing` to validate upon forward swipe in the Form Management settings
+However, disabling this feature does not completely restrict a user's ability to access already-answered questions. So, when you uncheck this box to restrict backward movement, the app will suggest several additional restrictions which will prevent a non-admin user from revisiting already-asked questions:
 
-    .. image:: /img/collect-settings/moving-backwards-disabled.*
-      :alt: Image showing message displayed to configure other settings when Moving backwards option is unchecked.
-      :class: device-screen-vertical
+- Disable :guilabel:`Edit Saved Form` option in the main menu
+- Disable :guilabel:`Save Form` option in the Form entry menu
+- Disable :guilabel:`Go To Prompt` option in the Form entry menu
+- Set :guilabel:`Constraint processing` to validate upon forward swipe in the Form Management settings
 
-    Select :guilabel:`YES` to set these additional restrictions.
+.. image:: /img/collect-settings/moving-backwards-disabled.*
+  :alt: Image showing message displayed to configure other settings when Moving backwards option is unchecked.
+  :class: device-screen-vertical
 
-    .. note::
+Select :guilabel:`YES` to set these additional restrictions.
 
-      When you enable the moving backwards option,
-      you have to configure the other changed settings
-      since they are not automatically changed back.
+.. note::
+
+  When you enable the moving backwards option, you have to configure the other changed settings since they are not automatically changed back.

@@ -273,16 +273,28 @@ Open the *Action Menu* (:menuselection:`⋮`) and select :guilabel:`Check for er
 
 In case of any errors, you will be automatically redirected to the first question that contains an error. Otherwise, a snackbar displaying a success message will be shown.
 
+.. _exit-form-filling:
+
+Exiting form filling
+---------------------
+
+You can exit the form filling screen at any time by tapping your device's back button (:fa:`caret-left`). This will display a dialog with several options which can be configured in Collect's :ref:`protected access control settings <admin-settings>`:
+
+* :guilabel:`Discard form` discards this filled form. This cannot be undone.
+* :guilabel:`Discard changes` discards all changes made since the form was last saved. This cannot be undone.
+* :guilabel:`Keep editing` returns to the form filling screen.
+* :guilabel:`Save as draft` saves all current values as draft and exits the form filling screen. Changes cannot be unsaved.
+
+.. image:: /img/collect-filling-forms/question-screen-exit-popup.*
+  :alt: A question screen in the Collect app. A dialog is overlayed with title "Save form?" and options "Discard form", "Keep editing", and "Save as draft".
+  :class: device-screen-vertical
+
 .. _save-partial-filled-form:
 
 Saving a partially filled form
 --------------------------------
 
-If you wish to save a partially filled form, you can click on the save icon (|save|) beside the form name.
-
-.. |save| image:: /img/collect-filling-forms/saveicon.*
-             :alt: Saves a form. 
-
+If you wish to save a partially filled form, you can click on the save icon (:fa:`floppy-disk`) beside the form name.
  
 .. image:: /img/collect-filling-forms/save-partial-filled-form.*
     :alt: Screen with the save icon displayed in ODK Collect on an Android phone. 

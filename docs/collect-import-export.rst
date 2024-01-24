@@ -38,6 +38,8 @@ You can tap on the :fa:`share-alt` icon to share the QR code as an image. When y
 .. warning::
   Since the QR code encodes compressed plain text settings and may contain the admin and server passwords, you should be careful about how you share it. For example, if you print out the QR code and tape it on wall, someone could use a standard QR code scanner to get the admin password.
 
+.. _create-settings-qr-code:
+
 Making your own QR code
 ---------------------------
 
