@@ -118,22 +118,22 @@ If your users have many drafts and will only need to edit a few before sending t
 
   In general, ``note`` form fields and ``hint`` text are powerful opportunities to guide users through your intended workflow.
 
-Remove save draft (:fa:`floppy-disk`) from the form filling screen
+Remove save draft (:fa:`floppy-disk`) while filling a form
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Collect's :ref:`protected access control settings <admin-settings>` also contain a :guilabel:`Form Entry Settings` section for hiding actions available from the form filling screen. You can hide the Save (:fa:`floppy-disk`) button from the menu and from the :ref:`back button form exit menu <exit-form-filling>`. This will prevent data collectors from saving as draft during a form filling session.
+Collect's :ref:`protected access control settings <admin-settings>` also contain a :guilabel:`Form Entry Settings` section for hiding actions available from the form filling screen. You can hide the Save (:fa:`floppy-disk`) button from the menu and from the :ref:`form exit dialog <exit-form-filling>`. This will prevent data collectors from saving as draft during a form filling session.
 
 You may still want to allow them to save as draft from the form end screen if, for example, it's appropriate for them to make small edits after all of the initial data is captured.
 
 Remove :guilabel:`Save as draft` from the form end screen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can also use :ref:`protected access control settings <admin-settings>` to hide the :guilabel:`Save as draft` button from the form end screen. This can be useful when you want to guarantee that data collectors go all the way through a form and can't edit a completed form.
+You can use :ref:`protected access control settings <admin-settings>` to hide the :guilabel:`Save as draft` button from the form end screen. This can be useful when you want to guarantee that data collectors go all the way to the end of a form and can't edit a completed form. You may also want to hide the :ref:`jump menu <jumping>`.
 
-You can also hide the :guilabel:`Save as draft` functionality from the form end screen and leave it in the form filling screen if you want data collectors to be able to interrupt form filling sessions in certain cases but want them to finalize as soon as all required data has been captured.
+You can hide the :guilabel:`Save as draft` functionality from the form end screen and leave it in the form filling screen if you want data collectors to be able to interrupt form filling sessions in certain cases but want them to finalize as soon as all required data has been captured.
 
-Remove :guilabel:`Finalize` button from the form end screen
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Remove :guilabel:`Finalize` / :guilabel:`Send` button from the form end screen
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In some cases, you may want data collectors to always save as draft. This will allow them to continue to make edits to collected data until a certain point in time such as supervisor approval or departure from a data collection site. You can use the :ref:`protected access control settings <admin-settings>` to hide the :guilabel:`Finalize` / :guilabel:`Send` button from the form end screen.
 
@@ -142,7 +142,7 @@ To eventually send, someone can either show the button, or use the :guilabel:`Fi
 Remove :guilabel:`Finalize all drafts` from the :guilabel:`Drafts` list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you want to guarantee that each draft is finalized from the form end screen, you can remove :guilabel:`Finalize all drafts` from the :ref:`protected access control settings <admin-settings>`. For example, if you want data collectors to sanity check their work before submitting, you may not want them to bulk finalize.
+If you want to guarantee that each draft is finalized from the form end screen, you can remove :guilabel:`Finalize all drafts` from the :ref:`protected access control settings <admin-settings>`. For example, if you want data collectors to verify each submission before finalizing it, you may not want them to bulk finalize.
 
 .. _guide-form-states-admin-password:
 
