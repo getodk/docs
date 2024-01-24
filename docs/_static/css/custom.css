@@ -54,3 +54,11 @@ details.sd-dropdown details.nested-schema[open] > summary:first-of-type{
     --sd-color-success: #E0F19D;
     --sd-color-success-text: #212529;
 }
+
+.menuselection {
+    border: 1px solid var(--color-guilabel-border);
+    background: var(--color-guilabel-background);
+    font-weight: 500;
+    border-radius: 4px;
+    padding: 4px 6px;
+}

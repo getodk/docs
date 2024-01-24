@@ -4,6 +4,7 @@ Tips and Best Practices
 .. toctree::
   :maxdepth: 2
   
+  guide-end-of-form
   collect-adb
   collect-shortcut
   collect-location
