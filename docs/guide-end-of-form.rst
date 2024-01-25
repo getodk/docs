@@ -1,5 +1,7 @@
-Customizing what users can do when they finish filling a form in Collect
-=========================================================================
+:og:image: https://docs.getodk.org/_static/img/guide-end-of-form.png
+
+Helping data collectors take the right next step after filling a form
+=====================================================================
 
 The first step when planning to use ODK is to carefully design the workflow you would like the users of your forms to go through. This includes thinking through what they should do when they reach the end of a form or when they are interrupted and need to exit a form filling session. Should they send immediately? Should they go talk to someone? Should they save a draft?
 
