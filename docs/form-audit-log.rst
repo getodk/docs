@@ -79,7 +79,7 @@ For the most accurate locations, set ``location-priority`` to `high-accuracy`. F
 
   Disabling location tracking will not prevent users from filling out forms, but these changes are logged as events in the log.
 
-.. _viewing-audit-logs:
+.. _form-audit-log-change-tracking:
 
 Change tracking
 ~~~~~~~~~~~~~~~
@@ -90,6 +90,8 @@ You can enable change tracking so that old answers and new answers will be added
   :header: type, name, parameters
 
   audit, audit, track-changes=true
+
+.. _form-audit-log-reason-for-changes:
 
 Reason for changes
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -106,6 +108,8 @@ You can add to ``track-changes-reasons=on-form-edit`` to prompt enumerators to e
   audit, audit, track-changes-reasons=on-form-edit
 
 This will prevent filled out forms being edited without a reason being given. If a reason is given the form will be saved normally and the audit log will include a ``change reason`` event with the reason recorded in the ``change-reason`` column.
+
+.. _form-audit-log-id:
 
 Enumerator identification
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
