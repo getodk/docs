@@ -35,7 +35,7 @@ To enable logging for a form, add a row of ``type`` ``audit`` and ``name`` ``aud
 
 A form may contain at most one row of ``type`` ``audit``.
 
-.. _audit-geolocation-tracking:
+.. _form-audit-geolocation-tracking:
 
 Location tracking
 ~~~~~~~~~~~~~~~~~
