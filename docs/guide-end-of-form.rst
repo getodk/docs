@@ -115,7 +115,7 @@ You can also use :ref:`draft names <instance-name>` to include information about
 
 If you use a constraint as in the above example, the user will need to come back into the draft and change their answer to the question before they can send the data.
 
-If your users have many draft, will only need to edit a few before sending them, and don't know which ones will need to be edited, you can use a ``note`` without a constraint to guide users to save as draft.
+If your users have many drafts and don't know which ones will need to be edited before submission, you can use a ``note`` without a constraint to recommend that users save as draft.
 
 .. tip::
 
