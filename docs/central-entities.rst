@@ -181,7 +181,7 @@ Add a new ``entities`` sheet to your XLSForm. This is where you will specify you
 
 The Entity List name will be used by Central to uniquely identify that Entity List. If an Entity List with the name you specify already exists in Central, this Form will create Entities in that existing Entity List. If Central doesn't yet have a Entity List with the specified name, it will be created.
 
-Each Entity must have a label to identify it on Central and for use in follow-up Forms. The ``label`` field on the ``entities`` sheet is where you provide the expression to define the label for each Entity. This is very similar to the :ref:`instance name specified for a Submission <instance-name>`_. The label expression can use any field in the Form, including ones that aren't saved to Entity Properties.
+Each Entity must have a label to identify it on Central and for use in follow-up Forms. The ``label`` field on the ``entities`` sheet is where you provide the expression to define the label for each Entity. This is very similar to the :ref:`instance name specified for a Submission <instance-name>`. The label expression can use any field in the Form, including ones that aren't saved to Entity Properties.
 
 .. rubric:: XLSForm
 

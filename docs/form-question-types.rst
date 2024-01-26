@@ -2658,7 +2658,7 @@ Geolocation at survey start
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. seealso::
-  :ref:`Audit log geolocation tracking <audit-geolocation-tracking>`
+  :ref:`Audit log geolocation tracking <form-audit-geolocation-tracking>`
 
 .. note::
   Geolocation at survey start was added in Collect v1.23 and Central v1.0.0.
