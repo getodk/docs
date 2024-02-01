@@ -54,7 +54,7 @@ The settings sheet
 You should also include a **settings** sheet to uniquely identify your form definition and its current version. We recommend specifying at least the following columns:
 
 - ``form_title``: The title that will be displayed by tools that list this form.
-- ``form_id``: The unique ID that identifies this form to tools that use it. It may not contain spaces and must start with a letter or underscore. Use a descriptive name less than 64 characters. For example: ``bench_inventory_2021``.
+- ``form_id``: The unique ID that identifies this form to tools that use it. It may not contain spaces and must start with a letter or underscore. Use a descriptive name no more than 64 characters. For example: ``bench_inventory_2021``.
 - ``version``: The unique version code that identifies the current state of the form. A common convention is to use a format like yyyymmddrr. For example, ``2017021501`` is the 1st revision from Feb 15th, 2017.
 - ``instance_name``: An :ref:`expression <expressions>` that will be used to represent a specific filled form created from this form definition. For example, ``concat(${first_name}, "-", ${age})``. :ref:`Learn more <instance-name>`.
 
