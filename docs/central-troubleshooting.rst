@@ -78,11 +78,9 @@ If you get an error suggesting that the JavaScript heap is out of memory, try :r
 Export produces corrupt zip
 ---------------------------
 
-If you have installed Central on a 1 GB server or your forms collect many large media files, you may encounter problems exporting submission .zip files. Usually, the .zip file will end up being empty, or much smaller than expected and possibly corrupt.
+If you have installed Central on a 1 GB server, you may encounter problems exporting submission .zip files. Usually, the .zip file will end up being empty, or much smaller than expected and possibly corrupt.
 
-If you are expecting to collect media files, we recommend having at least 2 GB of memory. When collecting images, we recommend :ref:`specifying a maximum size in form design <scaling-down-images>`.
-
-If you still run into problems, try :ref:`increasing allocated memory <central-install-custom-memory>`.
+We recommend having at least 2 GB of memory. If you still run into problems, try :ref:`increasing allocated memory <central-install-custom-memory>`.
 
 .. _file-upload-fails-with-413:
 
