@@ -10,6 +10,7 @@ Start by reviewing upgrade notes for all versions between your current version a
 Upgrade notes
 -------------
 
+* :ref:`Central v2024.1 <central-upgrade-2024.1>`: TBC
 * Central v2023.5: no upgrade notes
 * :ref:`Central v2023.4 <central-upgrade-2023.4>`: improve email delivery
 * :ref:`Central v2023.3 <central-upgrade-2023.3>`: clean up old database if needed
@@ -90,6 +91,94 @@ You'll be asked to confirm the removal of all dangling images. Agree by typing t
 
 Version-specific upgrade instructions
 --------------------------------------
+
+.. _central-upgrade-2024.1:
+
+Upgrading to Central v2024.1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. **Determine if there is data in your data directory**:
+
+   .. code-block:: bash
+
+     $ ls /data/transfer
+
+   .. note::
+
+     This is typically located under `/data/transfer`.
+
+#. **Decide on your data migration strategy:**
+
+   .. dropdown:: ``Migrate data to your code directory (recommended)``
+     :icon: file-code
+
+     #. Shut down the Central services:
+
+        .. code-block:: bash
+
+          docker compose down
+
+     #. Move the data (ensure you are in the getodk/central repo directory):
+
+        .. code-block:: bash
+
+          $ mkdir data
+          $ sudo mv /data/transfer ./data/
+
+     #. Restart the Central services:
+
+        .. code-block:: bash
+
+          docker compose up -d
+
+   .. dropdown:: ``Keep the data under /data/transfer``
+     :icon: file-code
+
+     #. Open the ``.env`` file for editing:
+
+        .. code-block:: bash
+
+          $ nano .env
+
+     #. Update the ``DATA_DIR`` variable:
+
+        .. code-block:: bash
+
+          DATA_DIR=/data/transfer
+
+     #. Restart your Central services:
+
+        .. code-block:: bash
+
+          docker compose up -d
+
+   .. dropdown:: ``Migrate data elsewhere on your system``
+     :icon: file-code
+
+     #. Shut down the Central services:
+
+        .. code-block:: bash
+
+          docker compose down
+
+     #. Move the existing data directory:
+
+        .. code-block:: bash
+
+          mkdir -p /opt/other/dir
+          sudo mv /data/transfer /opt/other/dir/
+
+     #. Update the ``DATA_DIR`` variable:
+
+        .. code-block:: bash
+
+          DATA_DIR=/opt/other/dir/transfer
+
+     #. Restart the Central services:
+
+        .. code-block:: bash
+
+          docker compose up -d
 
 .. _central-upgrade-2023.4:
 
