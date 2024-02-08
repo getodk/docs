@@ -1,0 +1,13 @@
+{% extends "!page.html" %}
+
+{% block content %}
+{{ body }}
+
+<div class="reactions">
+    <p>Did this page help you?</p>
+    <p class="reactions-subtext">Selecting an option will open a 1-question survey</p>
+    <span class="reaction"><a href="https://data.getodk.cloud/-/single/Wwm9bRuxrPz0W9Sh7fUoXpr101dAzJs?st=UBXshGpbpre4xGXNT1iMO5WM2TO$XZuHzI2!a4RKQJB6z6h$Tksz9sskvVS9eA$j&d[/data/helped]=yes&d[/data/page]={{title}}" target="_blank">👍 Yes</a></span> <span class="reaction"><a href="https://data.getodk.cloud/-/single/Wwm9bRuxrPz0W9Sh7fUoXpr101dAzJs?st=UBXshGpbpre4xGXNT1iMO5WM2TO$XZuHzI2!a4RKQJB6z6h$Tksz9sskvVS9eA$j&d[/data/helped]=no&d[/data/page]={{title}}" target="_blank">👎 No</a></span>
+</div>
+{% endblock %}
+
+{{ title }}

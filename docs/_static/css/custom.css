@@ -62,3 +62,22 @@ details.sd-dropdown details.nested-schema[open] > summary:first-of-type{
     border-radius: 4px;
     padding: 4px 6px;
 }
+
+.reactions {
+    margin: 1em auto;
+    padding: 0.5em 1.5em;
+    display: table;
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    text-align: center;
+}
+
+.reactions-subtext {
+    font-size: smaller;
+    color: #878787;
+    margin-top: -1em;
+}
+
+.reaction {
+    margin: 0px 1em;
+}
