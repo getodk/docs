@@ -64,7 +64,7 @@ details.sd-dropdown details.nested-schema[open] > summary:first-of-type{
 }
 
 .reactions {
-    margin: 1em auto;
+    margin: 3em auto 1em auto;
     padding: 0.5em 1.5em;
     display: table;
     border: 1px solid #ccc;
