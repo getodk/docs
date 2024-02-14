@@ -1,18 +1,23 @@
-Form Language
+Form language
 ===================
 
-:doc:`collect-intro` and :doc:`XLSForm <xlsform>` support multi-language forms.
+.. seealso::
+
+  Guide: :doc:`guide-multilanguage-forms`
+
+:doc:`XLSForm <xlsform>` supports multi-language forms.
 
 To add additional languages to your XLSForm,
-add columns of user-facing content with language-specific columns. All columns representing user-facing text or media can be multi-lingual:
+add columns of user-facing content with language-specific columns. All columns from the ``survey`` and ``choices`` sheets representing user-facing text or media can be multi-lingual:
 
- - ``label``
- - ``hint``
- - ``image``
- - ``audio``
- - ``video``
- - ``constraint_message``
- - ``required_message``
+- ``label``
+- ``hint``
+- ``image``
+- ``audio``
+- ``video``
+- ``constraint_message``
+- ``required_message``
+- ``guidance_hint``
 
 Each language column adds two colons and the language name,
 followed by the `two letter language code <http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry>`_ in parentheses. For example:
