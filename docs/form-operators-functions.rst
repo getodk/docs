@@ -546,6 +546,10 @@ Number handling
   This function can be useful if, for example, someone wants to build a unique identifier from sensitive data like a national ID number without compromising that data.
   
 .. seealso:: :func:`count`, :func:`max`, :func:`min`, :func:`number`
+
+.. function:: base64-decode(string)
+
+  Decodes all bytes from the input using the Base64 encoding scheme, assuming that the encoded bytes represent UTF-8 characters. Returns a UTF-8 character string.
   
 .. _calculation-functions:
   
