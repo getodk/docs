@@ -2237,13 +2237,6 @@ The following barcode formats are supported:
 - PDF 417 (beta)
 - MaxiCode
 
-.. note::
-  Barcode scanning is built into Collect versions 1.7.0 and greater.
-
-  Versions of Collect prior to 1.7.0 require the `Barcode Scanner app`_ to be installed.
-
-.. _Barcode Scanner app: https://play.google.com/store/apps/details?id=com.google.zxing.client.android
-
 .. _default-barcode-widget:
 
 Default barcode widget
@@ -2286,6 +2279,29 @@ In some cases a front camera may work better. The flash can't be used in this ca
   :header: type, name, label, appearance
 
   barcode, barcode_example, Scan any barcode., front
+
+Hiding the scanned value
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default, the scanned value is shown below the widget button. In some cases, the raw scanned value is not helpful to display. For example, it may be base64-encoded, be very long, or may represent a list of values. In that case, you can use the ``hidden-answer`` appearance. We generally recommend putting this question in a :ref:`field-list <field-list>` to provide some useful feedback about the scanned value.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, calculation
+
+  begin_group,gr,,field-list
+  barcode,barcode,Please scan code,hidden-answer
+  calculate,first_name,,,"selected-at(base64-decode(${barcode}), 0)"
+  calculate,last_name	,,,"selected-at(base64-decode(${barcode}), 1)"
+  note,barcode_note,"First name: ${first_name}
+  Last name: ${last_name}"
+  end_group,gr
+
+You can try `the sample form above <https://docs.google.com/spreadsheets/d/1RLdVQe1On_ucfldIRJIPLxv2pZLLKnJa_iFcTB-kNhk>`_ with the following QR code:
+
+.. image:: /img/form-question-types/encoded-multi-item-barcode.*
+  :width: 200px
 
 .. _range-widgets:
 
