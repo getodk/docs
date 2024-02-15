@@ -1732,7 +1732,7 @@ Image widget with custom camera app
 """"""""""""""""""""""""""""""""""""""
 .. versionadded:: 2024.1.0
   
-When attempting to capture a photo, the ODK Collect by default opens the built-in camera app. However, if you wish to utilize a specific camera application, you can do so by including the ``app`` parameter and providing the package name of the desired camera app.
+When attempting to capture a photo, ODK Collect by default opens the built-in camera app. However, if you wish to utilize a specific camera application, you can do so by including the ``app`` parameter and providing the package name of the desired camera app.
 
 .. rubric:: XLSForm
 
@@ -1741,9 +1741,13 @@ When attempting to capture a photo, the ODK Collect by default opens the built-i
 
   image,image_widget,Image widget,image type with custom camera app,app=net.sourceforge.opencamera
 
+To find a camera application's package name, search for it on `the Play Store <https://play.google.com/store/apps>`_ in a web browser. When you access its listing, the package name will be provided in the URL after `id=`.
+
+.. image:: /img/form-question-types/play-store-open-camera.*
+
 .. note::
   - The app with the provided package name must be installed on the device. If it's not available, there will be a toast shown, and it will not be possible to take a picture. 
-  - By default, it's possible to select a picture from the device. Use the new appearance to prevent this. 
+  - By default, it's possible to select a picture from the device. Use the ``new`` appearance to prevent this. 
   - Collect will request a picture, but some camera apps may still allow users to take video. That will fail silently.
 
 .. _self-portrait-image-widget:
@@ -2471,17 +2475,22 @@ The URL to open is specified with ``default``.
 Printer widget
 ------------------
 
+.. note::
+  Collect previously supported printing to specific Zebra label printer modules with an external app. That external app is no longer available and starting in Collect v2024.1, this more general print functionality replaces it.
+
 type
   ``text``
 appearance
-  ``printer:org.opendatakit.sensors.ZebraPrinter``
+  ``printer``
 
-Connects to an external label printer, and prints labels that can contain a barcode, a QR code, or text.
+When a ``text`` field has the ``printer`` appearance, its text value is interpreted as HTML by ODK Collect. When the user taps the ``Print`` button, Collect shows a print preview of that rendered HTML. From the preview screen, users can save as PDF or send to a connected printer.
 
-See :doc:`printer-widget` for complete details.
+.. image:: /img/form-question-types/print.*
+  :alt: The printer widget, as displayed in the ODK Collect app on an Android phone. The question label text is "Tap the button to preview the card and then print it." Below that, there is a "Print" button.
+  :class: device-screen-vertical
 
-.. image:: /img/form-question-types/printer-widget.*
-  :alt: The external printer widget, as displayed in the ODK Collect app on an Android phone. The question text is "Ex printer widget." The hint text is "text type with printer:org.opendatakit.sensors.ZebraPrinter." Below that is a button labeled, "Initiate Printing." Above the question text is the form group name "Text widgets."
+.. image:: /img/form-question-types/print-preview.*
+  :alt: A print preview
   :class: device-screen-vertical
 
 .. rubric:: XLSForm
@@ -2489,7 +2498,42 @@ See :doc:`printer-widget` for complete details.
 .. csv-table:: survey
   :header: type, name, label, appearance, calculation
 
-   text,ex_printer_widget,Ex printer widget,printer:org.opendatakit.sensors.ZebraPrinter, "concat('123456789','<br>’,'QR CODE','<br>','Text')"
+   text,id_card,Tap the button to print the card,printer,"concat(${first_name}, ' ', ${last_name})"
+
+The most common way to set the value to print is by specifying a ``calculate`` expression, generally with the :func:`concat` function so that values from the form can be included.
+
+We recommend writing your HTML with fixed sample values first, trying it in a web browser, and then converting it to a concat function to insert form values. You don't need to include ``body`` tags and other aspects typically required in an web page, you can instead specify only the elements that you need.
+
+This question type understands a custom ``qrcode`` element. Any text values placed within opening and closing ``qrcode`` tags will be encoded as a QR code and shown as an image You can apply the same attributes and styling to this element as you would to an ``img`` element.
+
+The calculation used to generate the card in the screenshot above is::
+   
+  concat("
+    <qrcode width='150' height='150'>", ${first_name}, " ", ${last_name}, " ", ${age}, " ", ${email}, " ", ${phone_number}, "</qrcode></br>
+    <img width='150' src='", ${photo}, "'>
+    <table>
+      <tr>
+        <td>First name</td>
+        <td>", ${first_name}, "</td>
+      </tr>
+      <tr>
+        <td>Last name</td>
+        <td>", ${last_name}, "</td>
+      </tr>
+      <tr>
+        <td>Age</td>
+        <td>", ${age}, "</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>", ${email}, "</td>
+      </tr>
+      <tr>
+        <td>Phone number</td>
+        <td>", ${phone_number}, "</td>
+      </tr>
+    </table>
+  ")
 
 .. _trigger-widget:
 
