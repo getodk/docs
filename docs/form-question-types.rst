@@ -1726,6 +1726,25 @@ An image widget that does not include a :guilabel:`Choose Image` button. This re
 
   image, image_widget_no_choose, Image widget without Choose button, new, image type with new appearance (can also be added with annotate appearance and on audio and video types)
 
+.. _image-widget-with-custom-camera-app:
+
+Image widget with custom camera app
+""""""""""""""""""""""""""""""""""""""
+.. versionadded:: 2024.1.0
+  
+When attempting to capture a photo, the ODK Collect by default opens the built-in camera app. However, if you wish to utilize a specific camera application, you can do so by including the ``app`` parameter and providing the package name of the desired camera app.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, hint, parameters
+
+  image,image_widget,Image widget,image type with custom camera app,app=net.sourceforge.opencamera
+
+.. note::
+  - The app with the provided package name must be installed on the device. If it's not available, there will be a toast shown, and it will not be possible to take a picture. 
+  - By default, it's possible to select a picture from the device. Use the new appearance to prevent this. 
+  - Collect will request a picture, but some camera apps may still allow users to take video. That will fail silently.
 
 .. _self-portrait-image-widget:
 
