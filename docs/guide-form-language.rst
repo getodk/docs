@@ -23,16 +23,16 @@ ODK is used in data collection efforts worldwide, and its proficiency in handlin
 
 This guide will offer comprehensive, step-by-step guidance on developing a multilingual XLSForm template, equipping you with the essential skills needed to successfully incorporate this important feature into your ODK Forms. We will also suggest tools and best practices for designing multi-language forms, as well as describe different methods to identify the language used during data collection. In the final section, we delve into the difference between the questionnaire and ODK Collect app user interface language and how you can contribute to translating the latter to further enhance the app's accessibility and usability worldwide.
 
-#. :ref:`Steps for building a multilingual form <guide-multilanguage-building>`
-#. :ref:`Tools and best practices for translating your forms <guide-multilanguage-translating>`
-#. :ref:`Identifying the language used for data collection <guide-multilanguage-language-used>`
-#. :ref:`Changing the application UI language <guide-multilanguage-ui-language>`
+#. :ref:`Steps for building a multilingual form <guide-form-language-building>`
+#. :ref:`Tools and best practices for translating your forms <guide-form-language-translating>`
+#. :ref:`Identifying the language used for data collection <guide-form-language-language-used>`
+#. :ref:`Changing the application UI language <guide-form-language-ui-language>`
 
 .. seealso::
 
   Reference: :doc:`form-language`
 
-.. _guide-multilanguage-building:
+.. _guide-form-language-building:
 
 Building a multilingual XLSForm
 -------------------------------
@@ -49,7 +49,7 @@ Add columns for each of the languages you would like your form to support follow
 * ``label::English (en)``
 * ``label::Español (es)``
 
-.. image:: /img/guide-multilanguage/guide-multilanguage-columns.png
+.. image:: /img/guide-form-language/columns.png
 
 Keep in mind that it is important to be consistent with capitalization across language names throughout the form definition. For example, use English and Español with uppercase Es, as opposed to English and español, or    label::English and hint::english. 
 
@@ -63,11 +63,11 @@ Step 2: fill in translations
 
 Under each of these new columns, provide the translation for each field. Where you would normally have a ``label``, ``hint``, or other user-facing text, provide the equivalent in each language.
 
-.. image:: /img/guide-multilanguage/guide-multilanguage-translate.png
+.. image:: /img/guide-form-language/translate.png
 
 Keep in mind that blank cells in a language-specific column will be left blank in the form when that language is active, even if the "default" column has a value. In particular, if you are using media files, you will need to specify different files for each language even if using the same file for a question. For example, you will need an ``image::English (en)`` and ``image::Español (es)`` column even if you're using the same image for both.
 
-.. image:: /img/guide-multilanguage/guide-multilanguage-images.png
+.. image:: /img/guide-form-language/images.png
     :width: 300px
 
 Columns that are missing for languages will trigger warning messages when the XLSForm is being uploaded. As such, if certain translations or media files are not appearing as expected, reviewing the warning messages during the XLS upload process may help you identify the source of the problem. 
@@ -77,7 +77,7 @@ A common issue that can lead to confusion for form developers when incorporating
 .. note::
     When using custom form styling with Markdown or inline HTML/CSS, the formatting syntax should remain consistent and untranslated across different language versions.
 
-    .. image:: /img/guide-multilanguage/guide-multilanguage-styling.png
+    .. image:: /img/guide-form-language/styling.png
 
 The form's logic and calculations should also remain the same regardless of the language. The aspects that require translation are the user-facing elements, such as labels, hints, and other display texts.
 
@@ -86,7 +86,7 @@ Step 3: specify default language
 
 In the settings sheet of your XLSForm, you can create a column named ``default_language`` to set the default language for your form when it's first opened on a device. This can be helpful if you know most of your data collectors will need to use the same language.
 
-.. image:: /img/guide-multilanguage/guide-multilanguage-default.png
+.. image:: /img/guide-form-language/default.png
 
 .. note::
     The ``form_title`` is only in one language. At the moment, XLSForm does not support multilingual form titles. If you would like to have the title in multiple languages, you can add the form title with its translations within the single ``form_title`` field.
@@ -98,17 +98,17 @@ Once you have added all the translations, you should test your form thoroughly i
 
 In ODK Collect, once you open a questionnaire form, click the menu with the three dots at the top right corner of the screen (⋮). A dropdown menu will appear with the selection Change Language as one of the options. Once selected, you will see a popup window with the form language options to select from.
 
-.. image:: /img/guide-multilanguage/guide-multilanguage-overflow.png
+.. image:: /img/guide-form-language/overflow.png
     :class: device-screen-vertical
 
-.. image:: /img/guide-multilanguage/guide-multilanguage-select.png
+.. image:: /img/guide-form-language/select.png
     :class: device-screen-vertical
 
 You can toggle between languages in Enketo using the Choose Language dropdown above the form. 
 
-.. image:: /img/guide-multilanguage/guide-multilanguage-enketo.png
+.. image:: /img/guide-form-language/enketo.png
 
-.. _guide-multilanguage-translating:
+.. _guide-form-language-translating:
 
 Tips and best practices for designing a multilingual form
 -------------------------------------------------------------
@@ -135,7 +135,7 @@ Use the Google Translate function in Google Sheets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 If you are designing your form in Google Sheets, you can use built-in access to Google Translate to get an initial approximation of the translated text. The function ``GOOGLETRANSLATE(cell, "source language code", "target language code")`` seamlessly converts content from the original to the desired language.
 
-.. image:: /img/guide-multilanguage/guide-multilanguage-gtranslate.png
+.. image:: /img/guide-form-language/gtranslate.png
 
 After translating the required cells, copy and then paste the translated column as "Values only." This important step converts the translated text into an editable format, allowing for further modifications if needed.
 
@@ -154,11 +154,11 @@ Regardless of the mechanism you use to share text to translate, you should remin
 
    You can organize your Form with the dedicated multi-language columns so that translators can edit the necessary cells directly. To streamline and facilitate their task, consider highlighting the cells designated for translation to provide a clear, visual guide that accelerates the process and reduces the likelihood of errors. 
 
-   .. image:: /img/guide-multilanguage/guide-multilanguage-highlight.png
+   .. image:: /img/guide-form-language/highlight.png
 
    If you are are concerned that a translator might accidentally edit other cells in the sheet, you can protect all the sheets and/or cells that should not be translated. For  example, to do this in Google Sheets, go to Data > Protect Sheets and ranges and restricting the editing of all other cells so that only those that need translation can be modified.
 
-   .. image:: /img/guide-multilanguage/guide-multilanguage-protect.png
+   .. image:: /img/guide-form-language/protect.png
 
 #. Use a dedicated tab in the XLSForm
 
@@ -183,7 +183,7 @@ Oftentimes, a literal translation is not the best way to get the right data. Thu
 
 In addition to capturing accurate data, it is important to be mindful of cultural sensitivities and taboos in data collection efforts. Phrases and questions that are innocuous in one culture might be problematic in another. This is where the support of local, native speakers and field testing can be invaluable.
 
-.. _guide-multilanguage-language-used:
+.. _guide-form-language-language-used:
 
 Identifying the language used for data collection
 --------------------------------------------------
@@ -215,12 +215,12 @@ In the example above, the ``calculate`` expression for the ``yes_label`` field g
 
 This creates a column in the submission data that indicates the language set at the time the form was submitted.
 
-.. image:: /img/guide-multilanguage/guide-multilanguage-detect-results.png
+.. image:: /img/guide-form-language/detect-results.png
     :width: 350px
 
 If your form does not use any ``select_one`` question, you can define one specifically for language detection and set its ``relevant`` column to ``false()``. In that case, you can define a list with a single choice and the language name for each label value.
 
-.. _guide-multilanguage-ui-language:
+.. _guide-form-language-ui-language:
 
 Form language vs. application UI language
 ------------------------------------------------------------

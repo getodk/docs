@@ -3,7 +3,7 @@ Form language
 
 .. seealso::
 
-  Guide: :doc:`guide-multilanguage-forms`
+  Guide: :doc:`guide-form-language`
 
 :doc:`XLSForm <xlsform>` supports multi-language forms.
 
