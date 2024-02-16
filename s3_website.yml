@@ -44,6 +44,7 @@ redirects:
   launch-collect-from-app/index.html: collect-api
   odk-build/index.html: build-intro
   odk2/index.html: https://docs.odk-x.org/odk-x
+  printer-widget/index.html: form-question-types#printer-widget
   projecting-collect/index.html: collect-mirror
   pyodk/index.html: https://getodk.github.io/pyodk
   pyxform/index.html: xlsform
