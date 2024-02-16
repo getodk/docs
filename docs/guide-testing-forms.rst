@@ -5,9 +5,9 @@ Testing your forms
 
 .. article-info::
     :avatar: /img/authors/xing.jpg
-    :avatar-link: https://www.researchpro.global/blog/categories/odk
+    :avatar-link: https://www.databrew.cc/
     :avatar-outline: muted
-    :author: Xing Brew, ResearchPro
+    :author: Xing Brew, Databrew
     :date: Nov 30, 2023
     :read-time: 14 min read
 
