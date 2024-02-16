@@ -495,6 +495,27 @@ Converting to and from strings
 
    Converts ``arg`` to a string.
 
+Encoding and decoding strings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. function:: digest(data, algorithm, encoding method (optional))   
+
+  Computes and returns the hash value of the data ``string`` using the indicated hash algorithm ``string``, and encoding this hash value using the optional encoding ``string``.
+  
+  Options for the algorithm are ``MD5``, ``SHA-1``, ``SHA-256``, ``SHA-384``, ``SHA-512``. 
+  
+  If the third parameter is not specified, the encoding is ``base64``. Valid options for the encoding are ``base64`` and ``hex``.
+
+  This function can be useful if, for example, someone wants to build a unique identifier from sensitive data like a national ID number without compromising that data.
+  
+.. function:: base64-decode(string)
+
+  Decodes all bytes from the input using the Base64 encoding scheme, assuming that the encoded bytes represent UTF-8 characters. Returns a UTF-8 character string.
+
+.. function:: extract-signed(string, public-key)
+  
+  Given a base64-encoded, signed string and public key as inputs, verifies that the first 64 bytes are a valid `Ed25519 <https://en.wikipedia.org/wiki/EdDSA> signature`_. If the signature is valid, returns the message (non-signature) portion of the contents as a UTF-8 string. If the signature is not valid, returns an empty string.
+
 .. _math-functions:
   
 Math 
@@ -535,22 +556,6 @@ Number handling
   
   If ``arg`` cannot be converted, returns ``NaN`` (not a number).
 
-.. function:: digest(data, algorithm, encoding method (optional))   
-
-  Computes and returns the hash value of the data ``string`` using the indicated hash algorithm ``string``, and encoding this hash value using the optional encoding ``string``.
-  
-  Options for the algorithm are ``MD5``, ``SHA-1``, ``SHA-256``, ``SHA-384``, ``SHA-512``. 
-  
-  If the third parameter is not specified, the encoding is ``base64``. Valid options for the encoding are ``base64`` and ``hex``.
-
-  This function can be useful if, for example, someone wants to build a unique identifier from sensitive data like a national ID number without compromising that data.
-  
-.. seealso:: :func:`count`, :func:`max`, :func:`min`, :func:`number`
-
-.. function:: base64-decode(string)
-
-  Decodes all bytes from the input using the Base64 encoding scheme, assuming that the encoded bytes represent UTF-8 characters. Returns a UTF-8 character string.
-  
 .. _calculation-functions:
   
 Calculation
