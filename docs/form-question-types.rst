@@ -1745,6 +1745,11 @@ To find a camera application's package name, search for it on `the Play Store <h
 
 .. image:: /img/form-question-types/play-store-open-camera.*
 
+Some camera apps to consider:
+
+- `Timestamp Camera <https://play.google.com/store/apps/details?id=com.jeyluta.timestampcamerafree>`_ can overlay timestamps, locations, and more
+- `Open Camera <https://play.google.com/store/apps/details?id=net.sourceforge.opencamera>`_ provides many advanced settings
+
 .. note::
   - The app with the provided package name must be installed on the device. If it's not available, there will be a toast shown, and it will not be possible to take a picture. 
   - By default, it's possible to select a picture from the device. Use the ``new`` appearance to prevent this. 
@@ -2293,7 +2298,7 @@ By default, the scanned value is shown below the widget button. In some cases, t
   begin_group,gr,,field-list
   barcode,barcode,Please scan code,hidden-answer
   calculate,first_name,,,"selected-at(base64-decode(${barcode}), 0)"
-  calculate,last_name	,,,"selected-at(base64-decode(${barcode}), 1)"
+  calculate,last_name,,,"selected-at(base64-decode(${barcode}), 1)"
   note,barcode_note,"First name: ${first_name}
   Last name: ${last_name}"
   end_group,gr
