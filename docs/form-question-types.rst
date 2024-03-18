@@ -138,6 +138,37 @@ The external app widget is displayed when the ``appearance`` attribute begins wi
   text,ex_string_widget,Ex string widget,ex:change.uw.android.BREATHCOUNT,text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
 
 
+.. _masked-text-widget:
+
+Masking the entered value
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  ``text``
+appearance
+  ``masked``
+
+If ``masked`` is added to ``appearance``, the answers will be obscured with dots similar to password-protected fields. This can be used to hide input as it is being entered but it does not provide any security measures beyond that.
+
+.. image:: /img/form-question-types/masked-text-widget-form-view.*
+  :alt: The text widget with masked appearance, as displayed in the ODK Collect App (the form view) on an Android phone.
+  :class: device-screen-vertical
+
+.. image:: /img/form-question-types/masked-text-widget-summary-screen.*
+  :alt: The text widget with masked appearance, as displayed in the ODK Collect App (the summary screen) on an Android phone.
+  :class: device-screen-vertical
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, hint, appearance
+
+  text,string_masked,String masked,text type with masked appearance,masked
+
+.. warning::
+  Answers will remain masked within questions utilizing this appearance, as well as in the summary screen. However, if referenced in labels or calculations, they will be accessible and displayed like any other values, without any protective measures.
+
+
 .. _number-widgets:
 
 Number widgets
