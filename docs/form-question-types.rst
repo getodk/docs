@@ -138,6 +138,37 @@ The external app widget is displayed when the ``appearance`` attribute begins wi
   text,ex_string_widget,Ex string widget,ex:change.uw.android.BREATHCOUNT,text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
 
 
+.. _masked-text-widget:
+
+Masking the entered value
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  ``text``
+appearance
+  ``masked``
+
+If ``masked`` is added to ``appearance``, the answers will be obscured with dots similar to password-protected fields.
+
+.. image:: /img/form-question-types/masked-text-widget-form-view.*
+  :alt: The text widget with masked appearance, as displayed in the ODK Collect App (the form view) on an Android phone.
+  :class: device-screen-vertical
+
+.. image:: /img/form-question-types/masked-text-widget-hierarchy-view.*
+  :alt: The text widget with masked appearance, as displayed in the ODK Collect App (the hierarchy view) on an Android phone.
+  :class: device-screen-vertical
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, hint, appearance
+
+  text,string_masked,String masked,text type with masked appearance,masked
+
+.. warning::
+  Answers will remain masked within questions utilizing this appearance, as well as in the hierarchy view. However, if referenced in labels or calculations, they will be accessible and displayed like any other values, without any protective measures.
+
+
 .. _number-widgets:
 
 Number widgets
@@ -286,6 +317,18 @@ a manual input is prompted.
   :header: type, name, label, appearance, hint
 
   integer,ex_integer_widget,Ex integer widget,ex:change.uw.android.BREATHCOUNT,integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
+
+.. _masked-number-widget:
+
+Masking the entered value
+""""""""""""""""""""""""""""
+
+type
+  ``integer``, ``decimal``
+appearance
+  ``masked``
+
+Number widgets can use ``masked`` appearance in the same way as :ref:`text widgets <masked-text-widget>`.
 
 
 .. _date-and-time-widgets:
