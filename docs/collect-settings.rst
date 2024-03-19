@@ -211,12 +211,6 @@ Specifies how blank forms should be updated:
 """"""""""""""""""""""""""""""
   When enabled, filled forms are deleted as soon as they are sent. This deletes the form data but leaves the forms :ref:`listed in the Sent form list <instance-name>`.
 
-.. rubric:: Form filling
-
-:guilabel:`Default to finalized`
-"""""""""""""""""""""""""""""""""
-  When enabled, records are set to be finalized when saved at the end of a form-filling session. You can opt out of this at the end of filling any specific record. This is particularly important to consider when using :doc:`encrypted forms <encrypted-forms>` because encryption happens on finalization. Finalized records for encrypted forms can't be opened because they are encrypted. Records for encrypted forms that have not been finalized are not encrypted and can be edited.
-
 :guilabel:`Constraint processing`
 """""""""""""""""""""""""""""""""""
   Sets when form responses are validated against :ref:`constraints <constraints>`.
@@ -406,8 +400,8 @@ If you disable moving backwards, the enumerator cannot use the back button or sw
 
 However, disabling this feature does not completely restrict a user's ability to access already-answered questions. So, when you uncheck this box to restrict backward movement, the app will suggest several additional restrictions which will prevent a non-admin user from revisiting already-asked questions:
 
-- Disable :guilabel:`Edit Saved Form` option in the main menu
-- Disable :guilabel:`Save Form` option in the Form entry menu
+- Disable :guilabel:`Edit Draft` option in the main menu
+- Disable :guilabel:`Save as draft` option in the Form entry menu
 - Disable :guilabel:`Go To Prompt` option in the Form entry menu
 - Set :guilabel:`Constraint processing` to validate upon forward swipe in the Form Management settings
 
