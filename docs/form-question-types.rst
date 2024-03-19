@@ -86,9 +86,9 @@ appearance
 
 A numerical input that treats the input as a string, rather than a number.
 
-The number input accepts numerals (``0123456789``), hyphens (``-``), and decimal points (``.``). These are the only characters available on the number keypad displayed with this widget.
+The number input accepts numerals (``0123456789``), hyphens (``-``), and decimal separators (``.`` and ``,``). These are the only characters available on the number keypad displayed with this widget.
 
-This is useful for phone numbers, ID numbers, IP addresses, and similar data. It can also be used in place of the :ref:`default-integer-widget` or :ref:`default-decimal-widget` if large numbers are needed. (The integer widget has a limit of nine digits, and the decimal widget has a limit of 15 characters.)
+This is useful for phone numbers, ID numbers, IP addresses, and similar data. It can also be used in place of the :ref:`default-integer-widget` or :ref:`default-decimal-widget` if large numbers are needed (the integer widget has a limit of nine digits, and the decimal widget has a limit of 15 characters).
 
 .. image:: /img/form-question-types/string-number.*
   :alt: The text widget, with numerical entry, as displayed in the ODK Collect app on an Android phone. The question text is "String number widget." The hint text is, "text type with numbers appearance." Below that is a simple input. Above the question text is the form group name "Text Widget." The Android onscreen keyboard displays a number pad.
@@ -100,6 +100,9 @@ This is useful for phone numbers, ID numbers, IP addresses, and similar data. It
   :header: type, name, label, appearance, hint
 
   text,string_number_widget,String number widget,numbers,text type with numbers appearance
+
+.. warning::
+  It's not guaranteed that the result will be a well-formed number. For example, it might be ``.0,1-2 5``. If you know the expected format of the value, you can add constraints to ensure it meets your requirements. For instance, if you only want numbers greater than or equal to zero (without decimal separators), you can use a regular expression like ``regex(.,'^[0-9]*$')`` for validation.
 
 .. note::
 
