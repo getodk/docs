@@ -160,7 +160,7 @@ Here are the keys for all settings and the set of values they can take:
       "navigation": {"swipe" ,"buttons" ,"swipe_buttons"},
 
       // Maps
-      "basemap_source": {"google", "mapbox", "osm", "usgs", "stamen", "carto"},
+      "basemap_source": {"google", "mapbox", "osm", "usgs", "carto"},
       "google_map_style": {1, 2, 3, 4},
       "mapbox_map_style": {"mapbox://styles/mapbox/light-v10", "mapbox://styles/mapbox/dark-v10", "mapbox://styles/mapbox/satellite-v9", "mapbox://styles/mapbox/satellite-streets-v11", "mapbox://styles/mapbox/outdoors-v11"},
       "usgs_map_style": {"topographic", "hybrid", "satellite"},
