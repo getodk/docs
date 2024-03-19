@@ -134,7 +134,6 @@ Basemap settings configure the background of maps shown by the :ref:`location qu
   - :guilabel:`Mapbox` basemap styles are `used in many familiar products <https://www.mapbox.com/maps/streets/>`_.
   - :guilabel:`OpenStreetMap` provides one style which also powers `openstreetmap.org <https://www.openstreetmap.org>`_. OpenStreetMap data is used in basemaps provided by all other sources as well.
   - :guilabel:`USGS` is the United States Geological Survey. It provides `topograpic and satellite basemaps <https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer>`_ for the United States only.
-  - :guilabel:`Stamen` provides `a terrain basemap with large labels <http://maps.stamen.com/terrain>`_.
   - :guilabel:`Carto` basemap styles are `designed to be used with data layers <https://carto.com/blog/getting-to-know-positron-and-dark-matter/>`_.
 
   .. _reference-layer-settings:
