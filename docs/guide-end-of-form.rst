@@ -263,7 +263,7 @@ You will generally want to design the form so it enforces the review process and
 
 * :fa:`external-link` `Example of a form requiring review <https://docs.google.com/spreadsheets/d/1o17pQIYtwVnc1vxxJ4EVE-874SaN6N0fQ_FU9wvo6-I>`_
 
-You can use :ref:`name drafts <instance-name>` to make it easy to see from the :guilabel:`Drafts` list which drafts are ready for review and which need further editing.
+You can :ref:`name drafts <instance-name>` so it is easier to see from the :guilabel:`Drafts` list which drafts are ready for review and which need further editing.
 
 .. image:: /img/guide-end-of-form/reviewer-drafts.* 
   :alt: The Collect app showing the draft list with some drafts marked as "ready for review" and others as "edits needed".
