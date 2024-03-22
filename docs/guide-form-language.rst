@@ -1,4 +1,4 @@
-:og:image: https://docs.getodk.org/_static/img/guide-testing-forms.png
+:og:image: https://docs.getodk.org/_static/img/guide-form-language.png
 
 Multilingual forms
 ===================
