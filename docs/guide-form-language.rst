@@ -1,13 +1,7 @@
-.. spelling:word-list::
-    icecream
-    english
-    español
-    gusta
-    helado
-    Sí
+:og:image: https://docs.getodk.org/_static/img/guide-testing-forms.png
 
-Multi-language forms
-========================
+Multilingual forms
+===================
 
 .. article-info::
     :avatar: /img/authors/xing.jpg

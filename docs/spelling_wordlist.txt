@@ -136,8 +136,10 @@ el
 elegido
 Emoji
 emoji
+english
 enketo
 Enketo
+español
 Español
 estudiante
 ethiopian
@@ -183,8 +185,10 @@ gndr
 google
 Google
 grey
+gusta
 gustan
 heatmaps
+helado
 Homebrew
 hostname
 hotspots
@@ -195,6 +199,7 @@ Hussien
 hyperlink
 Hyperlinks
 hyperlinks
+icecream
 identificación
 ie
 imagesize
@@ -410,6 +415,7 @@ substring
 sudo
 SVG
 svg
+Sí
 te
 templating
 testAVD
@@ -484,6 +490,7 @@ xform
 Xforms
 XForms
 xforms
+Xing
 xls
 Xlsform
 xlsform
@@ -492,7 +499,6 @@ xlsx
 xml
 xmlns
 XPath
-Xing
 yesnodk
 yn
 yyyymmddrr
