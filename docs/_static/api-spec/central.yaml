@@ -10290,7 +10290,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Success'
+                required:
+                - success
+                type: object
+                properties:
+                  success:
+                    type: boolean
+              example:
+                success: true
         403:
           description: Forbidden
           content:
