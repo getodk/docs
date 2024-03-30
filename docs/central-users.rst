@@ -12,7 +12,7 @@ Many data collection projects will involve both kinds of users: Web Users to upl
 
 .. seealso::
 
-   :ref:`Public Access Links <central-submissions-public-link>` are an alternative way to provide access to Forms for data collection.
+   :ref:`Public Access Links <central-submissions-public-link>` are an alternative way to provide access to Web Forms for data collection.
 
 .. _central-users-web-roles:
 
@@ -210,12 +210,13 @@ From here, select :guilabel:`Retire User` and follow the on-screen instructions.
 Managing App Users
 ------------------
 
-App Users never gain any access to the management website: they do not have email addresses or passwords associated with their account, only a nickname so you can tell which is which. Once a Web User creates an App User within some project, a :doc:`configuration QR Code <collect-import-export>` will be generated which will grant a mobile device access to that project as that App User. Access can be revoked at any time, and Web Users can see which App Users uploaded which submissions.
+App Users never gain any access to the management website: they do not have email addresses or passwords associated with their account, only a Display Name so you can tell which is which.
+
+Once a Web User creates an App User within some project, a settings QR code will be generated to grant a mobile device access to that project as that App User. The QR code includes a secret identifier just for that App User and should be kept private. See :doc:`settings QR code <collect-import-export>` documentation for more details.
+
+Access can be revoked at any time, and Web Users can see which App Users uploaded which submissions.
 
 A newly created App User does not have access to any Forms. To give them access once they are created, use the :ref:`Form Access <central-projects-form-access>` tab on the Project. You will be able to allow access to particular Forms within the Project for each App User.
-
-.. tip::
-  In version 0.6 and earlier of ODK Central, all App Users were granted download and submission rights on all Forms within their Project. These users retain their access when you first upgrade to version 0.7. Once you have version 0.7 installed, you can adjust these Users' access per form.
 
 To manage App Users, navigate to the project whose App Users you wish to manage, and then click on the :guilabel:`App Users` tab just below the project name. You should see a listing of users that looks like this:
 
@@ -226,26 +227,32 @@ To manage App Users, navigate to the project whose App Users you wish to manage,
 Creating an App User
 ~~~~~~~~~~~~~~~~~~~~
 
-To create a new App User, click on the :guilabel:`Create app user` button on the right side of the App Users listing page. You will see a popup that looks like this:
+To create a new App User, click on the :guilabel:`Create app user` button on the right side of the App Users listing page.
 
-.. image:: /img/central-users/app-users-create.png
+First, you will need to provide a Display Name for the new user. This name will appear in data tables, exports, and system logs.
 
-Once you provide a nickname for the user (usually the name of the data enumerator who will carry the mobile device works well), click :guilabel:`Create`. The user will be created, and you will see a screen that looks like this:
+Ideally, every individual involved in data collection gets their own App User account. This makes it easiest to track who did what and to ensure that only authorized individuals are submitting data. In that case, the App User Display Names are the names of the individuals. However, this is not always practical, especially if you have a lot of data collectors. If you have a lot of data collectors and want to give them each their own App User account, consider using a script such as `this pyodk-based one <https://getodk.github.io/pyodk/examples/app_user_provisioner/app_user_provisioner/>`_ to create App Users and manage form assignments.
+
+Alternatively, App Users can represent devices (device1, device2) or roles (Hospital1 Nurse, Lab Tech). If using these options, make sure you know how you will track what individual users are doing and ensure that settings QR codes remain private.
+
+Once you provide a Display Name for the user, click :guilabel:`Create`. The user will be created, and you will see a screen that looks like this:
 
 .. image:: /img/central-users/app-users-created.png
+   :width: 400px
+   :align: center
 
-That App User has now been created and granted access to use their mobile device to list, download, and submit to all :ref:`available forms <central-forms-lifecycle>` within their project. To do so, however, their mobile device will have to get set up with this new account. That is what the QR Code you see on this screen is for. Read on to the next section to find out how to use it.
+You can either immediately scan in the App User QR code into a device as described below or first give the new user access to Forms and then distribute the QR code later.
 
 .. _central-users-app-configure:
 
 Configuring an App User mobile device
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A mobile device will need to be configured to access your ODK Central server as a particular App User in order to gain access to the forms and upload submissions within their project. This is done by way of the Collect Settings QR Code.
+To access forms from a mobile device, you need to configure that device using an App User's Collect Settings QR Code.
 
-The QR Code contains information about how to find your ODK Central server, and how to prove to the server that the mobile device belongs to a valid App User. In future versions of ODK Central, it will be possible to specify other settings to be imported to the device as well.
+The QR Code contains information about how to find your ODK Central server, and how to prove to the server that the mobile device belongs to a valid App User. It should be kept private.
 
-There are two ways to access the QR Code for an App User. The first is in the second step of the :ref:`App User creation wizard <central-users-app-create>`. Please find the second screenshot in the previous section to see what this looks like. If you close out of this wizard, you can still access the QR Code by clicking on the :guilabel:`See code` link in the listings table:
+You can scan in or save the App User QR code at user creation time as described above. You can also access the QR Code by clicking on the :guilabel:`See code` link in the App User table:
 
 .. image:: /img/central-users/app-users-code.png
 

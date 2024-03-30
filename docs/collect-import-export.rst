@@ -1,11 +1,25 @@
 Settings QR codes
-=================
+========================
 
-Collect's settings can be imported and exported using QR codes. These can be provided by servers (like ODK Central) or can be used to share settings from one device to another.
+Collect can read settings from or write settings to a QR code. Settings QR codes can be provided by servers (like ODK Central) or can be used to share settings from one device to another.
 
-.. tip ::
+.. _configuration-qr-code-management:
 
-  In ODK Central, you can right-click the App User QR code, save it as an image, print it, and place it in a training room. You can also send the QR code saved as an image via email or WhatsApp and ask data collectors to import it.
+Managing and distributing settings QR codes
+--------------------------------------------
+
+.. warning::
+
+  Settings QR codes generally include confidential information and should be kept private. Make sure to follow :doc:`Android security best practices <collect-security>`.
+
+When using :ref:`Central App Users <central-users-app-overview>`, settings QR codes are used as `passwordless authentication <https://www.cyberark.com/what-is/passwordless-authentication/>`_. When using other servers, settings QR codes may contain plaintext passwords. Settings QR codes should be treated with the same care as passwords would be. We recommend scanning them directly from the Central user interface if possible.
+
+In some contexts, especially on larger, remote or regionally-distributed projects, directly scanning QR codes from Central may not be possible. Here are some alternative distribution options:
+
+* Right-click an App User QR code in Central, save it, and send it via email, text message, WhatsApp, etc to data collectors who can then import them to Collect.
+* If a single QR code will represent a role and be shared between multiple users, you can put it on a slide or on a handout during a training. Make sure that all copies are destroyed at the end.
+* If a project is intended to be used by the general public, you can post QR codes publicly in places like a billboard or on Facebook.
+* If you need a large number of App Users representing individuals, use a script to bulk create App Users and generate a single document with all QR codes (`example using pyodk <https://getodk.github.io/pyodk/examples/app_user_provisioner/app_user_provisioner/>`_).
 
 Scanning a QR code
 ------------------
@@ -86,6 +100,8 @@ Python script for building settings QR codes
 
   code = segno.make(qr_data, micro=False)
   code.save('settings.png', scale=5)
+
+You can use this approach as part of automating a broader process. For example, see `this example from the pyodk documentation <https://getodk.github.io/pyodk/examples/app_user_provisioner/app_user_provisioner/>`_ which creates App Users in Central, assigns forms to them, builds QR codes, and produces a PDF of all the codes.
 
 List of keys for all settings
 ------------------------------
