@@ -33,9 +33,9 @@ Un formulaire de signalement peut être très simple. Pour que les employés mun
 .. image:: ../../img/translations/fr/tutoriel-signalement-problemes/signalement-de-probleme-simple.png
 	:alt: Un formulaire simple de signalement de problème. Il enregistre le titre du problème, sa desciption et son emplacement.
 
-Vous pouvez vous arréter ici et construire une chaine de traitements autour de ce simple formulaire. Par exemple, vous pourriez publier le formulaire avec un lien d'accès public :ref:`Lien d'Accès Public <central-submissions-public-link>`, créer un QR code contenant ce lien (en utilisant un service comme `Celui d'Adobe' <https://new.express.adobe.com/tools/generate-qr-code>`_), et l'afficher dans l'espace public afin que les habitants s'en servent. Alors les employés municipaux pourront :ref:`afficher les soumissions du formulaire dans Excel <central-submissions-odata>` et ajouter une colonne dans une feuille de calcul partagée pour gérer la résolution des nouveaux problèmes.
+Vous pouvez vous arréter ici et construire une chaine de traitements autour de ce simple formulaire. Par exemple, vous pourriez publier le formulaire avec un lien d'accès public :ref:`Lien d'Accès Public <central-submissions-public-link>`, créer un QR code contenant ce lien (en utilisant un service comme `celui d'Adobe' <https://new.express.adobe.com/tools/generate-qr-code>`_), et l'afficher dans l'espace public afin que les habitants s'en servent. Alors les employés municipaux pourront :ref:`afficher les soumissions du formulaire dans Excel <central-submissions-odata>` et ajouter une colonne dans une feuille de calcul partagée pour gérer la résolution des nouveaux problèmes.
 
-Cette approche nécessite des interventions manuelles et de la coordination avec une feuille de calcul, les deux aspects pouvant être source d'erreur et chronophages.
+Cette approche nécessite des interventions manuelles et de la coordination avec une feuille de calcul, pouvant être source d'erreur et chronophages.
 Utilisons plutôt les Entités d'ODK pour faciliter la gestion des problèmes en temps réel.
 
 Créer un entité pour chaque signalement
