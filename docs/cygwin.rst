@@ -86,7 +86,7 @@ Alternatively, if you forgot to add Python 3 to the PATH, add it manually using 
 Virtual Environment
 ~~~~~~~~~~~~~~~~~~~~
 
-`A virtual environment tool <https://virtualenv.pypa.io/en/stable/userguide/>`_ creates multiple Pythons environments, each has its packages and dependencies.
+`A virtual environment tool <https://virtualenv.pypa.io>`_ creates multiple Pythons environments, each has its packages and dependencies.
 
 For easy installation, ``pip`` command can be used, which comes with Python 3 (as shown in Python installation).
 

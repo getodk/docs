@@ -87,11 +87,11 @@ and the `ODK Forum`
    Conversations related to documentation are held in the ``#docs-code`` channel.
    You may also want to check in with ``#general`` and ``#random``.
 
-   #. Get an automated invitation from http://slack.getodk.org
+   #. Get an automated invitation from https://slack.getodk.org
    #. Check your email for the invitation.
    #. Follow the link in your email and set up your account.
 
-   .. _ODK Developer Slack: http://slack.getodk.org/
+   .. _ODK Developer Slack: https://slack.getodk.org/
 
 #. Join the `ODK Forum`_
 
@@ -113,7 +113,7 @@ and the `ODK Forum`
       If someone has asked a question about it,
       it should probably be in the documentation.
 
-   .. _ODK Forum: http://forum.getodk.org
+   .. _ODK Forum: https://forum.getodk.org
 
 .. _forum-or-slack-or-gh:
 
