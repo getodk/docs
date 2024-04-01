@@ -31,7 +31,7 @@ Saisir les signalements de problèmes à l'aide d'un formulaire simple
 
 Un formulaire de signalement peut être très simple. Pour que les employés municipaux puissent trouver et résoudre les problèmes signalés, il suffit de saisir un titre, une description du problème et le lieu ou il est rencontré. Pour cela, vous pouvez créer votre propre formulaire ou `utiliser notre exemple <https://docs.google.com/spreadsheets/d/1ROJHoqnYZ1i7vZ3-7MKxwcZLkEmhmUiwN06EG1GONOc/edit?usp=sharing>`_.
 
-.. image:: /img/tutorial-community-reporting/problem-report-simple.*
+.. image:: /img/translations/fr/ututorial-community-reporting/signalement_probleme_simple.*
 	:alt: Un formulaire simple de signalement de problème. Il enregistre le titre du problème, sa desciption et son emplacement.
 
 Vous pouvez vous arréter ici et construire une chaine de traitements autour de ce simple formulaire. Par exemple, vous pourriez publier le formulaire avec un lien d'accès public :ref:`Lien d'Accès Public <central-submissions-public-link>`, créer un QR code contenant ce lien (en utilisant un service comme `Celui d'Adobe' <https://new.express.adobe.com/tools/generate-qr-code>`_), et l'afficher dans l'espace public afin que les habitants s'en servent. Alors les employés municipaux pourront :ref:`afficher les soumissions du formulaire dans Excel <central-submissions-odata>` et ajouter une colonne dans une feuille de calcul partagée pour gérer la résolution des nouveaux problèmes.
