@@ -196,8 +196,8 @@ Faisons en sorte que le statut d'une Entité de la liste ``problemes`` soit mis 
 
 Voir le formulaire fonctionnel `Résoudre un problème <https://docs.google.com/spreadsheets/d/1Gvfo4GUqx0zeeu5X60SC0r2NysbCui51bYKaJsz8mTw/edit?usp=sharing>`_.
 
-Essayez le workflow dans son ensemble
--------------------------------------
+Essayez le workflow dans son intégralité
+----------------------------------------
 
 Signalons quelques problèmes avec le fromulaire web.
 
