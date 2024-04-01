@@ -6,8 +6,9 @@ Tutoriel sur les Entités : Signalements de problèmes
 De nombreuses organisations utilisent des formulaires pour recueillir des informations de la part de leurs communautés :
 
 Par exemple :
+
 * des municipalités demandant à leurs habitants de signaler les lampadaires cassés, les arbres tombés, les trous dans la chaussée, etc.
-* des services publiques demandent à leurs bénéficiaires les problèmes rencontrés et ce qui pourrait être amélioré.
+* des services publiques demandant à leurs bénéficiaires les problèmes rencontrés et ce qui pourrait être amélioré.
 
 Dans ce tutoriel, vous utiliserez les entités pour mettre en place un flux de travail dans lequel les habitants d'une ville signalent des problèmes, que les employés municipaux peuvent ainsi résoudre.
 
