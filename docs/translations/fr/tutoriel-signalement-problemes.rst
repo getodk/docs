@@ -13,10 +13,9 @@ Dans ce tutoriel, vous utiliserez les entités pour mettre en place un flux de t
 
 .. seealso::
    `Vidéo des coulisses <https://youtu.be/919SIU41UQA>`_ du développement de ce tutoriel.
-
+   
 Objectifs
 ---------
-
 * Créer des entités à partir de soumissions de formulaires
 * Accéder aux entités dans un formulaire de suivi
 * Mettre à jour des entités à partir de soumissions de formulaires
@@ -31,7 +30,7 @@ Saisir les signalements de problèmes à l'aide d'un formulaire simple
 
 Un formulaire de signalement peut être très simple. Pour que les employés municipaux puissent trouver et résoudre les problèmes signalés, il suffit de saisir un titre, une description du problème et le lieu ou il est rencontré. Pour cela, vous pouvez créer votre propre formulaire ou `utiliser notre exemple <https://docs.google.com/spreadsheets/d/1ROJHoqnYZ1i7vZ3-7MKxwcZLkEmhmUiwN06EG1GONOc/edit?usp=sharing>`_.
 
-.. image:: /img/translations/fr/tutoriel-signalement-problemes/signalement-de-probleme-simple.png
+.. image:: ../../img/translations/fr/tutoriel-signalement-problemes/signalement-de-probleme-simple.png
 	:alt: Un formulaire simple de signalement de problème. Il enregistre le titre du problème, sa desciption et son emplacement.
 
 Vous pouvez vous arréter ici et construire une chaine de traitements autour de ce simple formulaire. Par exemple, vous pourriez publier le formulaire avec un lien d'accès public :ref:`Lien d'Accès Public <central-submissions-public-link>`, créer un QR code contenant ce lien (en utilisant un service comme `Celui d'Adobe' <https://new.express.adobe.com/tools/generate-qr-code>`_), et l'afficher dans l'espace public afin que les habitants s'en servent. Alors les employés municipaux pourront :ref:`afficher les soumissions du formulaire dans Excel <central-submissions-odata>` et ajouter une colonne dans une feuille de calcul partagée pour gérer la résolution des nouveaux problèmes.
@@ -60,7 +59,7 @@ Dans notre exemple, vous voulez aussi rendre disponibles les détails et la loca
 #. Dans la colonne ``save_to`` du champ de formulaire qui capture la description du signalement, entrez le nom de la propriété de l'Entité où stocker cette valeur : ``details``
 #. Dans la colonne ``save_to`` du champ de formulaire qui capture la localisation du problème, entrez le nom de la propriété de l'Entité qui stockera cette valeur : ``geometry``. Utiliser le nom particulier ``geometry`` pour cette propriété vous permettra d'afficher les ``problemes`` sur une carte dans le formualire de suivi (voir :ref:`select one from map <select-from-map>`).
 
-.. image:: /img/translations/fr/tutoriel-signalement-problemes/signalement-de-probleme-avec-entite.png
+.. image:: ../../img/translations/fr/tutoriel-signalement-problemes/signalement-de-probleme-avec-entite.png
 	:alt: Un formulaire simple de signalement de problèmes. Il collecte le titre du problème, sa descrption, sa localisation et crée les Entités correspondantes.
 
 Voir le formulaire fonctionnel `Signaler un problème <https://docs.google.com/spreadsheets/d/1q3dqEUxHtgvOqZ_eusTQZ_Nvocwrk4zWXi9gTNqxVTA/edit?usp=sharing>`_ .
@@ -83,7 +82,7 @@ Actuellement les entités ne peuvent être créées en mode "Ébauche de formula
 
 #. Rafraîchissez la table des soumissions pour voir les nouvelles, puis cliquez sur le bouton :guilabel:`Plus` de l'une d'entre elles pour en afficher les détails. Vous devriez voir que cette soumission a créé une Entité dans la liste ``problemes`` :
 
-   .. image:: /img/translations/fr/tutoriel-signalement-problemes/detail-soumission-signaler-un-probleme.png
+   .. image:: ../../img/translations/fr/tutoriel-signalement-problemes/detail-soumission-signaler-un-probleme.png
 	 :alt: Détail d'une soumission du formulaire ``Signaler un problème`` qui a créé une Entité.
 
 Afficher les problèmes signalés sur une carte
@@ -191,7 +190,7 @@ Faisons en sorte que le statut d'une Entité de la liste ``problemes`` soit mis 
 
 #. Corrigez tous les problèmes identifiés lors de la conversion du formulaire puis publiez le. Les mises à jour d'entités ne fonctionnent actuellement qu'avec les formulaires publiés (pas les ébauches), comme les création d'Entités.
 
-.. image:: /img/translations/fr/tutoriel-signalement-problemes/resoudre-un-probleme.png
+.. image:: ../../img/translations/fr/tutoriel-signalement-problemes/resoudre-un-probleme.png
     :alt: Un formulaire pour résoudre les problèmes.
 
 Voir le formulaire fonctionnel `Résoudre un problème <https://docs.google.com/spreadsheets/d/1Gvfo4GUqx0zeeu5X60SC0r2NysbCui51bYKaJsz8mTw/edit?usp=sharing>`_.
@@ -203,7 +202,7 @@ Signalons quelques problèmes avec le fromulaire web.
 
 #. Dans Central, allez à la page de votre projet ou sur la page d'accueil et cliquez sur l'îcone ``*`` située à droite du formulaire ``Signaler un problème``. Cette îcone et le nombre inscrit à coté représente le nombre actuel de soumissions. Cliquer dessus vous enverra directement à l'onglet  :guilabel:`Soumissions`.
 
-   .. image:: /img/translations/fr/tutoriel-signalement-problemes/projet-signalements-de-problemes.png
+   .. image:: ../../img/translations/fr/tutoriel-signalement-problemes/projet-signalements-de-problemes.png
     :alt: la liste des formulaires du projet avec le curseur affichant au survol le nombre total de soumissions.
 
 #. Cliquez sur le bouton :guilabel:`Nouveau` pour démarrer une nouvelle soumission.
