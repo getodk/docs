@@ -44,7 +44,8 @@ extensions = [ 'sphinxcontrib.spelling',
     'sphinx_toolbox.collapse',
     'openapi',
     'sphinxext.opengraph',
-    'notfound.extension'
+    'notfound.extension',
+    'sphinx_sitemap'
 ]
 
 # If using Apple Silicon, set env variable (assumes brew install of enchant)
@@ -71,10 +72,15 @@ html_theme = 'furo'
 
 html_title = 'ODK Docs'
 
+# must have trailing slash
+html_baseurl = 'https://docs.getodk.org/'
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named 'default.css' will overwrite the builtin 'default.css'.
 html_static_path = ['_static']
+
+html_extra_path = ['robots.txt']
 
 html_css_files = [
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css',
@@ -121,3 +127,6 @@ copybutton_prompt_text = "$ "
 ogp_site_url = "https://docs.getodk.org"
 
 notfound_urls_prefix = None
+
+sitemap_url_scheme = '{link}'
+
