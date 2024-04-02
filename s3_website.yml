@@ -31,6 +31,7 @@ redirects:
   briefcase-forms/index.html: briefcase-using
   briefcase-guide/index.html: briefcase-intro
   briefcase-vs-aggregate/index.html: briefcase-intro
+  central-setup/index.html: central-install
   central-datasets/index.html: central-entities
   collect-connect-aggregate/index.html: collect-connect
   collect-guide/index.html: collect-intro

@@ -13,7 +13,7 @@ ODK Build
 Using ODK Build
 ----------------
 
-Go to http://build.getodk.org and sign in.
+Go to https://build.getodk.org and sign in.
 
 .. image:: /img/build-intro/sign-in.png
    :alt: Image showing sign in window.

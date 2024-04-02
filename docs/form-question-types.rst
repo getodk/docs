@@ -1388,7 +1388,7 @@ You can also train data collectors to use time elapsed to take some action. For 
 
   `selected-at(${geopoint_widget}, 3) < 10`.
 
-  The ``3`` in the above constraint references accuracy, the third value in the `geopoint data type <http://getodk.github.io/xforms-spec/#data-types>`_. Use ``1`` to reference latitude, ``2`` for longitude, and ``4`` for altitude.
+  The ``3`` in the above constraint references accuracy, the third value in the `geopoint data type <https://getodk.github.io/xforms-spec/#data-types>`_. Use ``1`` to reference latitude, ``2`` for longitude, and ``4`` for altitude.
 
 
 .. _geopoint-maps:
@@ -2483,7 +2483,7 @@ Takes no input.
 The URL to open is specified with ``default``.
 
 .. image:: /img/form-question-types/url-widget.*
-  :alt: The URL form widget, as displayed in the ODK Collect app on an Android phone. The question text is "URL Widget." The hint text is "text type with url appearance and default value of http://getodk.org/" Below that is a button labeled, "Open URL." Below the button is the URL, "http://getodk.org/" Above the question text is the form group name "Text widgets."
+  :alt: The URL form widget, as displayed in the ODK Collect app on an Android phone. The question text is "URL Widget." The hint text is "text type with url appearance and default value of https://getodk.org/" Below that is a button labeled, "Open URL." Below the button is the URL, "https://getodk.org/" Above the question text is the form group name "Text widgets."
   :class: device-screen-vertical
 
 .. rubric:: XLSForm
@@ -2491,7 +2491,7 @@ The URL to open is specified with ``default``.
 .. csv-table:: survey
   :header: type, name, label, appearance, hint, default
 
-  text,url_widget,URL widget,url,text type with url appearance and default value of http://getodk.org/,http://getodk.org/
+  text,url_widget,URL widget,url,text type with url appearance and default value of https://getodk.org/,https://getodk.org/
 
 
 .. _print-widget:
