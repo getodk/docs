@@ -249,13 +249,12 @@ on any computer.
 
          .. admonition:: Optional: Install Homebrew
 
-            `Homebrew`_ is a package manager for Mac OS.
+            `Homebrew <https://brew.sh/>`_ is a package manager for Mac OS.
             It makes it easier to install other apps and tools
             from the command line.
 
             Follow the `installation instructions`_.
 
-            .. _Homebrew: https://brew.sh/
             .. _installation instructions: Homebrew
 
       .. tab-item:: Linux
@@ -1489,7 +1488,7 @@ Here are a few things to keep in mind when you start your next contribution.
             (odkenv) /odk/docs/ > git push origin master
 
 #. Find a `new issue to work on`_.
-#. `Start a new branch for your work <git-branch-the-docs>`_ with :command:`git checkout -b branch-name`.
+#. Start a new branch for your work with :command:`git checkout -b branch-name`.
 
 .. _new issue to work on: https://github.com/getodk/docs/issues/
 
