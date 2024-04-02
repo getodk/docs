@@ -2,13 +2,12 @@
 
 ![Platform](https://img.shields.io/badge/platform-Sphinx-blue.svg) [![License](https://img.shields.io/badge/license-CC%20BY%204.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/) [![Build status](https://circleci.com/gh/getodk/docs.svg?style=shield)](https://circleci.com/gh/getodk/docs/)
 
-This repo is the source for ODK documentation.
-
-The published documentation is at:
-
- - https://docs.getodk.org
+The source for ODK documentation published at https://docs.getodk.org.
 
 Please [file an issue](https://github.com/getodk/docs/issues) if you can't find what you are looking for.
+
+> [!NOTE]
+> The source for the [Central API documentation](https://docs.getodk.org/central-api/) is managed [in the Central code repository](https://github.com/getodk/central-backend/blob/master/docs/api.yaml) and copied here as part of the Central release process.
 
 ## Building and viewing documentation
 
@@ -19,7 +18,7 @@ Please [file an issue](https://github.com/getodk/docs/issues) if you can't find 
  * Install [Git-LFS](https://git-lfs.github.com/)
  * Install [Enchant](https://abiword.github.io/enchant/).
 
-We highly recommend you use a virtual environment like [virtualenv](https://virtualenv.pypa.io/en/stable/).
+We highly recommend you use a virtual environment like [`virtualenv`](https://virtualenv.pypa.io/en/stable/). If you need to use different versions of Python, we recommend [`pyenv`](https://github.com/pyenv/pyenv).
 
 ### Cloning the repo
 
@@ -79,5 +78,5 @@ You can also...
 ## Troubleshooting
 - If you get an `extension error` or a `configuration error`:
   - Make sure your virtual environment is activated.
-  - Type `python --version` to check your current python version (it should be 3.x).
+  - Type `python --version` to check your current python version (it should be 3.10+).
   - Run `pip install -r requirements.txt`.
