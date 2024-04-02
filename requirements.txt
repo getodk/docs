@@ -12,3 +12,4 @@ pystache
 pyyaml
 sphinxext-opengraph
 sphinx-notfound-page
+sphinx-sitemap
