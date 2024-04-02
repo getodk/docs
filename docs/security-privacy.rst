@@ -15,9 +15,7 @@ The ODK software is released under the `Apache 2 License`_.
 
 .. _Apache 2 License: http://www.apache.org/licenses/LICENSE-2.0
 
-All other artifacts (for example, the ODK website and this documentation) are released under the `Creative Commons Attribution 4.0 International License <cc-by-4>`_.
-
-.. _cc-by-4: https://creativecommons.org/licenses/by/4.0/
+All other artifacts (for example, the ODK website and this documentation) are released under the `Creative Commons Attribution 4.0 International License <https://creativecommons.org/licenses/by/4.0/>`_.
 
 All our installers, programs, source code, and documentation are provided AS-IS with no warranty or conditions, and without any liability obligations. See the license text for details.
 

@@ -40,7 +40,7 @@ Tomcat deployments can operate without internet access. In such an environment, 
 Computer skills
 ---------------
 
-Custom `Tomcat deployments in local or cloud servers <aggregate-tomcat>`_, including the one described in the :doc:`Amazon Web Services <aggregate-aws>` guide, have a steep learning curve and require technical aptitude. At a minimum you will be:
+Custom :doc:`Tomcat deployments in local or cloud servers <aggregate-tomcat>`, including the one described in the :doc:`Amazon Web Services <aggregate-aws>` guide, have a steep learning curve and require technical aptitude. At a minimum you will be:
 
 - changing network configuration
 - selecting and using a website hosting service or specifying and configuring your own server and network router(s)
