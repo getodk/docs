@@ -1488,7 +1488,7 @@ Here are a few things to keep in mind when you start your next contribution.
             (odkenv) /odk/docs/ > git push origin master
 
 #. Find a `new issue to work on`_.
-#. `Start a new branch for your work <git-branch-the-docs>`_ with :command:`git checkout -b branch-name`.
+#. Start a new branch for your work with :command:`git checkout -b branch-name`.
 
 .. _new issue to work on: https://github.com/getodk/docs/issues/
 
