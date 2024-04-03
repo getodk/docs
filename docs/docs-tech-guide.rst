@@ -253,9 +253,7 @@ on any computer.
             It makes it easier to install other apps and tools
             from the command line.
 
-            Follow the `installation instructions`_.
-
-            .. _installation instructions: Homebrew
+            Follow the installation instructions.
 
       .. tab-item:: Linux
 
