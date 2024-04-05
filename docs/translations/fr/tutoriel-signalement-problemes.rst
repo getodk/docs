@@ -99,7 +99,7 @@ Créons maintenant un second formulaire qui sera utilisé par les employés muni
 
    #. Allez à la feuille ``survey``.
    #. Dans la colonne ``type``, entrez ``begin_group``
-   #. Dans la colonne ``name``, entrez ``entité``
+   #. Dans la colonne ``name``, entrez ``entite``
    #. Dans la colonne ``appearance``, entrez ``field-list``
 #. Ajoutez une question permettant de sélectionner les problèmes signalés sur une carte :
 
@@ -114,7 +114,7 @@ Créons maintenant un second formulaire qui sera utilisé par les employés muni
   
    #. Dans la colonne ``type``, entrez ``note``
    #. Dans la colonne ``name``, entrez ``details_du_probleme``
-   #. Dans la colonne ``label``, entrez ``Détails : instance('problemes')/root/item[name=${problem}]/details``
+   #. Dans la colonne ``label``, entrez ``Détails : instance('problemes')/root/item[name=${probleme}]/details``
 
 	  .. note::
 		 Ne vous inquiétez pas si cela ne vous est pas familier. Copier le code tel qu'il est, vous pourrez en apprendre plus dans la feuille ``List lookups`` du :doc:`modèle de XLSForm<xlsform>`.
