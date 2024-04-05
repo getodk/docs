@@ -174,7 +174,7 @@ Faisons en sorte que le statut d'une Entité de la liste ``problemes`` soit mis 
    #. Allez à la feuille ``entities`` du formulaire ``Résoudre un problème``.
    #. Dans la colonne ``list_name``, entrez ``problemes``
    #. Supprimez la colonne ``label`` si elle existe car ce formulaire n'a pas besoin de mettre à jour cette propriété des Entités ``problemes``.
-   #. Dans la colonne ``entity_id`` (vous pourriez devoir l'ajouter), mettez ``${probleme}`` pour indiquer que la valeur de la question ``probleme`` du formulaire est l'identifiant unique de l'Entité ``problem`` à mettre à jour.
+   #. Dans la colonne ``entity_id`` (vous pourriez devoir l'ajouter), mettez ``${probleme}`` pour indiquer que la valeur de la question ``probleme`` du formulaire est l'identifiant unique de l'Entité ``probleme`` à mettre à jour.
 
 #. Mettez à jour la valeur de la propriété ``statut`` de l'Entité :
 
@@ -183,7 +183,7 @@ Faisons en sorte que le statut d'une Entité de la liste ``problemes`` soit mis 
 
 #. "Exfiltrez" les problèmes ayant le statut ``resolu``
 
-   #. Dans la colonne ``choice_filter`` de la ligne de la question ``problem``, mettez ``statut != 'resolu'`` pour indiquer que seuls les problèmes avec un statut autre que ``'resolu'`` peuvent être proposés.
+   #. Dans la colonne ``choice_filter`` de la ligne de la question ``probleme``, mettez ``statut != 'resolu'`` pour indiquer que seuls les problèmes avec un statut autre que ``'resolu'`` peuvent être proposés.
 
    .. note::
    	   
