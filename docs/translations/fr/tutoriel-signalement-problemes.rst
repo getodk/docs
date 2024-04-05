@@ -34,7 +34,7 @@ Un formulaire de signalement peut être très simple. Pour que les employés mun
 .. image:: ../../img/translations/fr/tutoriel-signalement-problemes/signalement-de-probleme-simple.png
 	:alt: Un formulaire simple de signalement de problème. Il enregistre le titre du problème, sa desciption et son emplacement.
 
-Vous pouvez vous arréter ici et construire une chaine de traitements autour de ce simple formulaire. Par exemple, vous pourriez publier le formulaire avec un lien d'accès public :ref:`Lien d'Accès Public <central-submissions-public-link>`, créer un QR code contenant ce lien (en utilisant un service comme `celui d'Adobe' <https://new.express.adobe.com/tools/generate-qr-code>`_), et l'afficher dans l'espace public afin que les habitants s'en servent. Alors les employés municipaux pourront :ref:`afficher les soumissions du formulaire dans Excel <central-submissions-odata>` et ajouter une colonne dans une feuille de calcul partagée pour gérer la résolution des nouveaux problèmes.
+Vous pouvez vous arrêter ici et construire une chaine de traitements autour de ce simple formulaire. Par exemple, vous pourriez publier le formulaire avec un lien d'accès public :ref:`Lien d'Accès Public <central-submissions-public-link>`, créer un QR code contenant ce lien (en utilisant un service comme `celui d'Adobe' <https://new.express.adobe.com/tools/generate-qr-code>`_), et l'afficher dans l'espace public afin que les habitants s'en servent. Alors les employés municipaux pourront :ref:`afficher les soumissions du formulaire dans Excel <central-submissions-odata>` et ajouter une colonne dans une feuille de calcul partagée pour gérer la résolution des nouveaux problèmes.
 
 Cette approche nécessite des interventions manuelles et de la coordination avec une feuille de calcul, pouvant être source d'erreur et chronophages.
 Utilisons plutôt les Entités d'ODK pour faciliter la gestion des problèmes en temps réel.
@@ -146,7 +146,7 @@ Vous pouvez maintenant compléter le formulaire ``Résoudre un problème`` pour 
 
    #. Dans la colonne ``type``, entrez ``select_one statuts``
    #. Dans la colonne ``name``, entrez ``statut``
-   #. Dans la colonne ``label``, entrez ``Quel est le satut du problème aprés intervention ?``
+   #. Dans la colonne ``label``, entrez ``Quel est le statut du problème après intervention ?``
 #. Allez à la feuille ``choices``.
 #. Ajoutez une option pour les problèmes résolus :
 
@@ -157,13 +157,13 @@ Vous pouvez maintenant compléter le formulaire ``Résoudre un problème`` pour 
 
    #. Dans la colonne ``list_name``, entrez ``statuts``
    #. Dans la colonne ``name``, entrez ``necessite_suivi``
-   #. Dans la colonne ``label``, entrez ``Nécesiste un suivi``
+   #. Dans la colonne ``label``, entrez ``Nécessite un suivi``
 #. Mettez à jour votre ébauche de formulaire dans Central et essayez la pour vérifier que le formulaire fonctionne comme prévu.
 
 Mettre à jour le statut des problèmes
 -------------------------------------
 
-Vous pouvez désormais saisir des informations sur les problèmes qui ont été résolus ou qui nécessitent encore une action. Mais cela n'est pas très pratique de voir les problmes résolus dans le formulaire ``Résoudre un problème``, cela peut en effet induire les agents en erreur et entraîner une perte de temps passé sur des problèmes déjà résolus.
+Vous pouvez désormais saisir des informations sur les problèmes qui ont été résolus ou qui nécessitent encore une action. Mais cela n'est pas très pratique de voir les problèmes résolus dans le formulaire ``Résoudre un problème``, cela peut en effet induire les agents en erreur et entraîner une perte de temps passé sur des problèmes déjà résolus.
 
 Nous devons trier et exclure les problèmes résolus de la liste de choix proposée dans le formulaire ``Résoudre un problème``, afin de proposer les seuls problèmes nécessitant une action. 
 
