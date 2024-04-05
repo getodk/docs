@@ -181,7 +181,7 @@ Faisons en sorte que le statut d'une Entité de la liste ``problemes`` soit mis 
    #. Allez à la feuille ``survey``.
    #. Dans la colonne ``save_to`` (vous pourriez devoir l'ajouter) du champ ``statut``, mettez ``statut``
 
-#. "Exfiltrez" les problèmes ayant le statut ``resolu``
+#. Excluez de la liste les problèmes ayant le statut ``resolu``
 
    #. Dans la colonne ``choice_filter`` de la ligne de la question ``probleme``, mettez ``statut != 'resolu'`` pour indiquer que seuls les problèmes avec un statut autre que ``'resolu'`` peuvent être proposés.
 
