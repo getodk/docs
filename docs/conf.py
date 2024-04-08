@@ -23,7 +23,7 @@ import openapi
 # -- Project information -----------------------------------------------------
 
 project = 'ODK'
-copyright = '2024 Get ODK Inc. Licensed under CC BY 4.0.'
+copyright = '2017 Get ODK Inc. Licensed under CC BY 4.0.'
 author = 'ODK'
 
 # The full version, including alpha/beta/rc tags
