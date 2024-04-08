@@ -33,7 +33,7 @@ Navigate to :guilabel:`Reconfigure with QR code` in :guilabel:`Project Managemen
 Sharing a QR code as an image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can tap on the :fa:`share-alt` icon to share the QR code as an image. When you click on it, it displays a list of applications and services like *whatsapp*, *facebook*, *hangouts*, *bluetooth*, *MMS* which can be used to share the QR code. This is useful when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device.
+You can tap on the :fa:`share-alt` icon to share the QR code as an image. When you click on it, it displays a list of applications and services like *WhatsApp*, *Facebook*, *Bluetooth*, *SMS* which can be used to share the QR code. This is useful when there are several different data collection sites and all devices have to be configured in the same way, in which case the QR code can be shared from one reference device.
 
 .. warning::
   Since the QR code encodes compressed plain text settings and may contain the admin and server passwords, you should be careful about how you share it. For example, if you print out the QR code and tape it on wall, someone could use a standard QR code scanner to get the admin password.
