@@ -212,9 +212,7 @@ Managing App Users
 
 App Users never gain any access to the management website: they do not have email addresses or passwords associated with their account, only a Display Name so you can tell which is which.
 
-Once a Web User creates an App User within some project, a settings QR code will be generated to grant a mobile device access to that project as that App User. The QR code includes a secret identifier just for that App User and should be kept private. See :doc:`settings QR code <collect-import-export>` documentation for more details.
-
-Access can be revoked at any time, and Web Users can see which App Users uploaded which submissions.
+Once a Web User creates an App User within a project, a settings QR code will be generated to grant a mobile device access to that project as that App User. The QR code includes a secret identifier just for that App User and should be kept private. See :doc:`settings QR code <collect-import-export>` documentation for more details. Access can be revoked at any time.
 
 A newly created App User does not have access to any Forms. To give them access once they are created, use the :ref:`Form Access <central-projects-form-access>` tab on the Project. You will be able to allow access to particular Forms within the Project for each App User.
 
@@ -231,9 +229,11 @@ To create a new App User, click on the :guilabel:`Create app user` button on the
 
 First, you will need to provide a Display Name for the new user. This name will appear in data tables, exports, and system logs.
 
-Ideally, every individual involved in data collection gets their own App User account. This makes it easiest to track who did what and to ensure that only authorized individuals are submitting data. In that case, the App User Display Names are the names of the individuals. However, this is not always practical, especially if you have a lot of data collectors. If you have a lot of data collectors and want to give them each their own App User account, consider using a script such as `this pyodk-based one <https://getodk.github.io/pyodk/examples/app_user_provisioner/app_user_provisioner/>`_ to create App Users and manage form assignments.
+Ideally, every individual involved in data collection gets their own App User account. This makes it easiest to track who did what and to ensure that only authorized individuals are submitting data. In that case, the App User Display Names are the names of the individuals. However, this is not always practical, especially if you have a lot of data collectors. If you have a lot of data collectors and want to give them each their own App User account, consider automating this by using something like `this Python script <https://getodk.github.io/pyodk/examples/app_user_provisioner/app_user_provisioner/>`_ to create many App Users and manage their form assignments (requires the ability to run Python and install `pyodk <https://github.com/getodk/pyodk>`_).
 
-Alternatively, App Users can represent devices (device1, device2) or roles (Hospital1 Nurse, Lab Tech). If using these options, make sure you know how you will track what individual users are doing and ensure that settings QR codes remain private.
+Alternatively, App Users can represent devices (device1, device2) or roles (Hospital1 Nurse, Lab Tech). If using these options, make sure you know how you will track what individual users are doing. Some options for doing this include capturing :ref:`metadata like deviceID or enumerator name <metadata>` as a question. To reduce redundant data entry, consider using :ref:`the last saved value as a default <last-saved>`.
+
+You'll also need to design a way to distribute settings QR codes such that they remain private. See :doc:`settings QR code <collect-import-export>` documentation for ideas.
 
 Once you provide a Display Name for the user, click :guilabel:`Create`. The user will be created, and you will see a screen that looks like this:
 
@@ -242,6 +242,9 @@ Once you provide a Display Name for the user, click :guilabel:`Create`. The user
    :align: center
 
 You can either immediately scan in the App User QR code into a device as described below or first give the new user access to Forms and then distribute the QR code later.
+
+.. warning::
+   The App User QR Code contains the password needed to get blank forms and send finalized forms. Only share it with those who need to get blank forms and send finalized forms.
 
 .. _central-users-app-configure:
 

@@ -5,7 +5,7 @@ ODK Collect is used to fill forms with participants. Filled forms then need to b
 
 We recommend using :ref:`ODK Central <central-intro>` as your server and configuring Collect by :ref:`App User QR code <central-users-app-overview>`. The easiest way to get a Central server is by using `ODK Cloud <https://getodk.org/#odk-cloud>`_. If you have technical skills, you can also :doc:`self-host <central-install>` on your own infrastructure.
 
-If you'd just like to try out ODK Collect without setting up a server, you can use sample forms on the demo server. You can set this up by tapping :guilabel:`Try a demo` at the bottom of the screen when you first launch Collect. The demo project can later be :ref:`deleted <delete-project>`.
+If you'd just like to try out ODK Collect without setting up a server, you can use sample forms on the demo server. You can set this up by tapping :guilabel:`Try a demo` at the bottom of the screen when you first launch Collect. The demo project can be :ref:`deleted <delete-project>` later.
 
 If you'd like to connect Collect to more than one server (or to the same server using different users) you can :ref:`add a new Project <collect-add-project>` for each server (or user).
 
@@ -14,7 +14,7 @@ If you'd like to connect Collect to more than one server (or to the same server 
 Configure server from QR code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ODK uses QR codes for distributing settings and as a form of `passwordless authentication <https://www.cyberark.com/what-is/passwordless-authentication/>`_. Using QR codes to configure authentication between Collect and a server can provide security benefits over traditional passwords but only as long as the QR code is treated securely.
+ODK uses QR codes for distributing settings and as a form of `passwordless authentication <https://en.wikipedia.org/wiki/Passwordless_authentication>`_. Using QR codes to configure authentication between Collect and a server can provide security benefits over traditional passwords but only as long as the QR code is treated securely.
 
 #. When you first launch Collect, tap on :guilabel:`Configure with QR code`.
 

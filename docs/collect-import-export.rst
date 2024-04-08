@@ -14,12 +14,12 @@ Managing and distributing settings QR codes
 
 When using :ref:`Central App Users <central-users-app-overview>`, settings QR codes are used as `passwordless authentication <https://www.cyberark.com/what-is/passwordless-authentication/>`_. When using other servers, settings QR codes may contain plaintext passwords. Settings QR codes should be treated with the same care as passwords would be. We recommend scanning them directly from the Central user interface if possible.
 
-In some contexts, especially on larger, remote or regionally-distributed projects, directly scanning QR codes from Central may not be possible. Here are some alternative distribution options:
+In some contexts, especially on larger, remote, or regionally-distributed projects, directly scanning QR codes from Central may not be possible. Here are some alternative distribution options:
 
-* Right-click an App User QR code in Central, save it, and send it via email, text message, WhatsApp, etc to data collectors who can then import them to Collect.
-* If a single QR code will represent a role and be shared between multiple users, you can put it on a slide or on a handout during a training. Make sure that all copies are destroyed at the end.
+* Right-click an App User QR code in Central, save it, and send it via email, text message, WhatsApp, etc to data collectors who can then import the image into Collect.
+* If a single QR code will represent a role and be shared between multiple users, you can put it on a slide or on a handout during a training. Make sure that all copies are destroyed at the end. Alternately, you can scan the code into one device and use Collect to share it with the next person who can share it on, etc. 
 * If a project is intended to be used by the general public, you can post QR codes publicly in places like a billboard or on Facebook.
-* If you need a large number of App Users representing individuals, use a script to bulk create App Users and generate a single document with all QR codes (`example using pyodk <https://getodk.github.io/pyodk/examples/app_user_provisioner/app_user_provisioner/>`_).
+* If you need a large number of App Users representing individuals, use a script to bulk create App Users and generate a single document with all QR codes (`Python example <https://getodk.github.io/pyodk/examples/app_user_provisioner/app_user_provisioner/>`_).
 
 Scanning a QR code
 ------------------
