@@ -70,7 +70,11 @@ For the most accurate locations, set ``location-priority`` to `high-accuracy`. F
 
 .. note::
 
-  since v1.30, when a mock location provider is detected, the accuracy is set to 0. Achieving such perfect accuracy is not possible using GPS so that indicates it comes from a mock provider.
+  Locations in the audit are best effort. If the device does not have a clear view of the sky or your settings do not provide enough time to fetch location updates, there will be no locations in the log.
+
+.. note::
+
+  Since v1.30, when a mock location provider is detected, the accuracy is set to 0. Achieving such perfect accuracy is not possible using GPS so that indicates it comes from a mock provider.
 
 .. warning::
   Location tracking can be an invasion of privacy. Users of ODK Collect will be informed that their location is being tracked when they open a form with this feature enabled.
