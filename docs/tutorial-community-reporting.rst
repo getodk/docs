@@ -12,7 +12,9 @@ Many kinds of organizations use forms to capture problem reports from their comm
 In this tutorial, you'll use Entities to build out a workflow in which town residents report problems and town employees address them.
 
 .. seealso::
-   `Behind the scenes video <https://youtu.be/919SIU41UQA>`_ from the development of this tutorial.
+   * `Behind the scenes video <https://youtu.be/919SIU41UQA>`_ from the development of this tutorial.
+   * :doc:`Entities introduction <central-entities>`
+   * 🇫🇷 :doc:`French translation <translations/fr/tutoriel-signalement-problemes>`
 
 Goals
 -----
