@@ -1,5 +1,5 @@
 :orphan:
-:og:image: https://docs.getodk.org/_static/img/tutorial-community-reporting-fr.png
+:og:image: https://docs.getodk.org/_static/img/tutoriel-signalement-problemes.png
 
 Tutoriel sur les Entités : Signalements de problèmes
 ====================================================
