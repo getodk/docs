@@ -14,7 +14,7 @@ In this tutorial, you'll use Entities to build out a workflow in which town resi
 .. seealso::
    * `Behind the scenes video <https://youtu.be/919SIU41UQA>`_ from the development of this tutorial.
    * :doc:`Entities introduction <central-entities>`
-   * 🇫🇷 :doc:`French translation <translations/fr/tutoriel-signalement-problemes>`
+   * 🇫🇷 :doc:`French translation <language/fr/tutoriel-signalement-problemes>`
 
 Goals
 -----
