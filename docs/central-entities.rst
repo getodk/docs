@@ -58,7 +58,7 @@ Important limitations:
 
 - Entity create and update requires Internet access
 - Entity delete is only available via API
-- Client performance (ODK Collect or Enketo web forms) suffers when managing more than 10,000 Entities
+- Client performance (ODK Collect or Enketo web forms) suffers when managing more than 60,000 Entities
 - All devices will always download all Entities which may be a privacy concern
 - The Form specification and API may change
 
