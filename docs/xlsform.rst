@@ -58,7 +58,12 @@ You should also include a **settings** sheet to uniquely identify your form defi
 - ``version``: The unique version code that identifies the current state of the form. A common convention is to use a format like yyyymmddrr. For example, ``2017021501`` is the 1st revision from Feb 15th, 2017.
 - ``instance_name``: An :ref:`expression <expressions>` that will be used to represent a specific filled form created from this form definition. For example, ``concat(${first_name}, "-", ${age})``. :ref:`Learn more <instance-name>`.
 
-The **settings** sheet is also useful when using :ref:`multi-language forms <switching-languages>` or when defining a form with :ref:`encryption <defining-encrypted-form>`.
+Other available columns are:
+
+- ``default_language``: Specifies the default language name in a form that has multiple defined languages. For more information on using multiple languages, refer to :ref:`multi-language forms <switching-languages>`.
+- ``public_key``: This attribute is necessary for enabling :ref:`encryption <defining-encrypted-form>`. It represents a base64-encoded RSA public key. The corresponding private key will be required for decrypting submissions and should not be included in the form definition.
+- ``auto_send``: When set to true, any finalized forms will be automatically sent as soon as a connection becomes available. If present, it will override the app-level :ref:`Auto send <auto-send>` setting.
+- ``auto_delete``: When set to true, successfully submitted forms will be immediately deleted from the device. If present, it will override the app-level :ref:`Delete after send <delete-after-send>` setting.
 
 .. _instance-name:
 
