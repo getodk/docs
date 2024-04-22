@@ -200,6 +200,8 @@ Specifies how blank forms should be updated:
 
 .. rubric:: Form submission
 
+.. _auto-send:
+
 :guilabel:`Auto send`
 """"""""""""""""""""""
   When enabled, forms are sent immediately when they are finalized, if the device can connect to the Internet. If an Internet connection is not available at the time of finalization, your finalized forms will be queued to send as soon as connectivity is established. You can specify whether to send over WiFi, cellular data, or both.
