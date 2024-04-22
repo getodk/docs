@@ -1094,10 +1094,13 @@ Choice properties
 
 All of a choice's properties including ``geometry`` can be used in the rest of the form (see :ref:`referencing values in datasets <referencing-values-in-datasets>`) including in :ref:`choice filter <cascading-selects>` expressions. Even if the choices are specified from a GeoJSON file, the ``geometry`` property is made available to the form in :ref:`the ODK format <location-widgets>`, NOT as GeoJSON.
 
-There are two special properties that can be used to style the marker for a ``Point`` choice:
+There are special properties that can be used to style choices:
 
-- **marker-color**: a valid long or short hex color code used to represent that marker's color (e.g. ``#aaccee`` or ``#ace``) 
-- **marker-symbol**: a single character used as that choice's marker (e.g. ``A`` or ``7`` or ``🏥`` or ``🟢``) 
+- **marker-color**: a valid long or short hex color representing the color of a marker (e.g. ``#aaccee`` or ``#ace``)
+- **marker-symbol**: a single character displayed on a marker (e.g. ``A`` or ``7`` or ``🏥`` or ``🟢``) 
+- **stroke**: a valid long or short hex color representing the color of a line or polygon (e.g. ``#aaccee`` or ``#ace``) 
+- **stroke-width**: a floating-point number (greater than or equal to 0) representing the width of a line or polygon (e.g. ``5`` or ``6.5``) 
+- **fill**: a valid long or short hex color representing the interior color of a polygon (e.g. ``#aaccee`` or ``#ace``) 
 
 If your geospatial data comes from an external source, you can :ref:`customize the label and underlying value <customizing-label-and-value>`.
 
