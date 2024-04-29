@@ -1,3 +1,7 @@
+# Source at https://github.com/getodk/central-backend/blob/master/docs/api.yaml
+# Copied at release time to https://github.com/getodk/docs/blob/master/docs/_static/api-spec/central.yaml
+# for publishing at https://docs.getodk.org/central-api/
+
 openapi: 3.0.1
 info:
   title: ODK Central API
@@ -36,6 +40,22 @@ info:
 
     Here major and breaking changes to the API are listed by version.
 
+    ## ODK Central v2024.1
+
+    **Added**:
+
+    - Bulk Entity Creation!
+      * The existing [Entity Create](/central-api-entity-management/#creating-entities) endpoint now also accepts a list of Entities to append to a Dataset.
+      * The `uuid` property is no longer required and Central will generate a UUID for each new Entity if needed.
+    - [Datasets (Entity Lists)](/central-api-dataset-management/#creating-datasets) and [Properties](/central-api-dataset-management/#adding-properties) can now be added via the API instead of only through Forms.
+    - OData Data Document for requests of Submissions and Entities now allow use of `$orderby`.
+    - ETag headers on all Blobs.
+
+    **Changed**:
+
+    - The [Entity Create](/central-api-entity-management/#creating-entities) endpoint will now generate a UUID if the `uuid` parameter is not provided.
+
+
     ## ODK Central v2023.5
 
     **Added**:
@@ -49,7 +69,7 @@ info:
         * `hard`. The Entity has a version that was based on a version other than the version immediately prior to it. Further, that version updated the same property as another update.
         * If an Entity has a conflict, it can be marked as resolved. After that, the conflict field will be null until a new conflicting version is received.
       * Each Entity Version (`currentVersion` or list of versions) has new fields `baseVersion`, `dataReceived`, and `conflictingProperties`
-    - [Datasets](/central-api-dataset-management/#datasets) extended metadata now has a `conflicts` field, which counts number of Entities currently in conflict
+    - [Datasets](/central-api-dataset-management/#listing-datasets) extended metadata now has a `conflicts` field, which counts number of Entities currently in conflict
     - Entity conflicts can be resolved using the existing [PATCH](/central-api-entity-management/#updating-an-entity) endpoint, with or without new data
     - New `relevantToConflict` query parameter on [GET entities/:uuid/versions](/central-api-entity-management/#listing-versions)
 
@@ -84,7 +104,7 @@ info:
       * New endpoint [GET /projects/:id/datasets/:name/entities/:uuid/versions](/central-api-entity-management/#listing-versions) for listing the versions of an Entity.
       * New endpoint [GET /projects/:id/datasets/:name/entities/:uuid/diffs](/central-api-entity-management/#getting-changes-between-versions) for getting the changes between versions of an Entity.
       * New endpoint [GET /projects/:id/datasets/:name/entities/:uuid/audits](/central-api-entity-management/#entity-audit-log) for getting the server audit logs about a specific Entity.
-      * New endpoint [POST /projects/:id/datasets/:name/entities](/central-api-entity-management/#creating-an-entity) for creating an Entity from JSON.
+      * New endpoint [POST /projects/:id/datasets/:name/entities](/central-api-entity-management/#creating-entities) for creating an Entity from JSON.
       * New endpoint [PATCH /projects/:id/datasets/:name/entities/:uuid](/central-api-entity-management/#updating-an-entity) for updating the data or label of an Entity.
       * New endpoint [DELETE /projects/:id/datasets/:name/entities/:uuid](/central-api-entity-management/#deleting-an-entity) for soft-deleting an Entity.
 
@@ -114,7 +134,7 @@ info:
 
     **Changed**:
 
-    - [GET /projects/:id/datasets](/central-api-dataset-management/#datasets) now supports `X-Extended-Metadata` header to retrieve number of Entities in the Dataset and timestamp of the last Entity
+    - [GET /projects/:id/datasets](/central-api-dataset-management/#listing-datasets) now supports `X-Extended-Metadata` header to retrieve number of Entities in the Dataset and timestamp of the last Entity
 
     - `$select` in OData now supports selecting complex type(groups)
 
@@ -131,7 +151,7 @@ info:
     * Introducing [Datasets](/central-api-dataset-management) as the first step of Entity-Based Data Collection! Future versions of Central will build on these new concepts. We consider this functionality experimental and subject to change in the next release.
 
       * Forms can now create Datasets in the project, see [Creating a New Form](/central-api-form-management/#creating-a-new-form) and the [ODK XForms specification](https://getodk.github.io/xforms-spec) for details.
-      * New endpoint [GET /projects/:id/datasets](/central-api-dataset-management/#datasets) for listing Datasets of a project.
+      * New endpoint [GET /projects/:id/datasets](/central-api-dataset-management/#listing-datasets) for listing Datasets of a project.
       * New endpoint [GET /projects/:id/datasets/:name/entities.csv](/central-api-dataset-management/#download-dataset) to download the Dataset as a CSV file.
       * New endpoints for [Related Datasets](/central-api-form-management/#related-datasets) to see the Datasets affected by published and unpublished Forms.
       * New endpoint [PATCH .../attachments/:name](/central-api-form-management/#linking-a-dataset-to-a-draft-form-attachment) to link/unlink a Dataset to a Form Attachment.
@@ -145,9 +165,9 @@ info:
       * The [Extended Project](/central-api-project-management/#listing-projects) endpoint now returns the `datasets` count for the Project.
       * The [Extended Form](/central-api-form-management/#list-all-forms) endpoint now returns the `entityRelated` flag if the form defines a Dataset schema.
       * [DELETE .../draft/attachments/:name](/central-api-form-management/#clearing-a-draft-form-attachment) will unlink the Dataset if there's a Dataset link to the attachment.
-      * [GET .../draft/attachments/:filename](central-api-form-management/#downloading-a-form-attachment) will return the Dataset as a CSV file if the attachment is linked to a Dataset.
+      * [GET .../draft/attachments/:filename](/central-api-form-management/#downloading-a-form-attachment) will return the Dataset as a CSV file if the attachment is linked to a Dataset.
       * [GET .../draft/attachments](/central-api-form-management/#listing-expected-draft-form-attachments) returns two additional flags `blobExists` and `datasetExists`.
-      * In the [OpenRosa Form Manifest](central-api-form-management/#openrosa-form-manifest-api), if a Form Attachment is linked to a Dataset then the value of `hash` is the MD5 of the last updated timestamp or the MD5 of `1970-01-01 00:00:00` if the Dataset is empty.
+      * In the [OpenRosa Form Manifest](/central-api-form-management/#openrosa-form-manifest-api), if a Form Attachment is linked to a Dataset then the value of `hash` is the MD5 of the last updated timestamp or the MD5 of `1970-01-01 00:00:00` if the Dataset is empty.
 
     ## ODK Central v1.5.3
 
@@ -167,7 +187,7 @@ info:
     * [Form extended metadata](/central-api-form-management/#getting-form-details) now includes a `reviewStates` object of counts of Submissions with specific review states.
         * e.g. `{"received":12, "hasIssues":2, "edited":3}`
 
-    * New `?forms=true` option on [Project Listing](/central-api-project-management/#listing-projects-with-nested-forms) that includes a `formList` field containing a list of extended Forms (and the review state counts described above) associated with that Project.
+    * New `?forms=true` option on [Project Listing](/central-api-project-management/#listing-projects) that includes a `formList` field containing a list of extended Forms (and the review state counts described above) associated with that Project.
 
     ## ODK Central v1.4
 
@@ -497,7 +517,7 @@ tags:
 
     **Related APIs:**
 
-    - [Implicit creation of Datasets via Forms](/central-api-form-management/#forms/creating-a-new-form)
+    - [Implicit creation of Datasets via Forms](/central-api-form-management/#creating-a-new-form)
 
     - [Link a Dataset to a Form Attachment](/central-api-form-management/#linking-a-dataset-to-a-draft-form-attachment)
 
@@ -542,21 +562,20 @@ tags:
     * But Central does not require a `Date` header field. You may set it if you wish, but it will have no effect on Central.
 - name: OData Endpoints
   description: |-
-    [OData](http://www.odata.org/) is an emerging standard for the formal description and transfer of data between web services. In its most ambitious form, it aims to be _the_ standard way for any REST or REST-like API to enable interoperability with other services, not unlike the API Blueprint format this document is written in. However, in practical usage today it is primarily a way for data-centric web services to describe and transfer their data to various clients for deeper analysis or presentation.
+    [OData](http://www.odata.org/) is a standard for sharing data and its schema between web services. It allows for interoperability with tools like Excel, Power BI or Tableau. If you want to use your data in a service that does not support the OData standard but does support JSON data sources, you can use the [data document](/central-api-odata-endpoints/#data-document) directly.
 
-    ODK Central implements the [4.0 Minimal Conformance level](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#_Toc505771292) of the specification. Our goal is to enable data analysis and reporting through powerful third-party tools, sending them the data over OData, rather than attempt to create our own analysis tools. Today, our implementation primarily targets [Microsoft Power BI](https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata) and [Tableau](https://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_odata.html), two tools with reasonably robust free offerings that provide versatile analysis and visualization of data.
+    ODK Central implements the [4.0 Minimal Conformance level](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#_Toc505771292) of the specification. Our goal is to enable data analysis and reporting through powerful third-party tools, sending them the data over OData, rather than attempt to create our own analysis tools. Our implementation primarily targets [Microsoft Power BI](https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata) and [Tableau](https://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_odata.html), two tools with reasonably robust free offerings that provide versatile analysis and visualization of data.
 
-    While OData itself supports data of any sort of structure, Power BI and Tableau both think in terms of relational tables. This presents an interesting challenge for representing ODK's `group` and `repeat` structures in OData. Our current solution is to treat every `repeat` in the `Form` definition as its own relational table, and we invent stable join IDs to relate the tables together.
+    While OData itself supports data of any sort of structure, Power BI and Tableau both think in terms of relational tables. Our current solution for representing ODK's `repeat` structures in OData is to treat every `repeat` in the `Form` definition as its own relational table, and we compute stable join IDs to relate the tables together.
 
     In general, the OData standard protocol consists of three API endpoints:
 
     * The **Service Document** describes the available resources in the service. We provide one of these for every `Form` in the system. As of version 2023.2, we also provide one for every `Dataset`.
 
-    * The **Metadata Document** is a formal XML-based EDMX schema description of every data object we might return. It is linked in every OData response.
+    * The **Metadata Document** defines the data schema using [an XML-based standard](https://docs.oasis-open.org/odata/odata-csdl-xml/v4.01/odata-csdl-xml-v4.01.html#sec_Introduction). It is linked in every OData response.
 
-    * The actual data documents, linked from the Service Document, are a simple JSON representation of the submission data or entity, conforming to the schema we describe in our Metadata Document.
+    * The **data documents**, linked from the Service Document, are a simple JSON representation of the Submission or Entity data, conforming to the schema we describe in our Metadata Document.
 
-    As our focus is on the bulk-export of data from ODK Central so that more advanced analysis tools can handle the data themselves, we do not support most of the features at the Intermediate and above conformance levels, like `$sort` or `$filter`.
 - name: System Endpoints
   description: There are some resources available for getting or setting system information
     and configuration. You can set the [Usage Reporting configuration](/central-api-system-endpoints/#usage-reporting-configuration)
@@ -603,7 +622,7 @@ tags:
   description: |-
     App Users are only allowed to list and download forms, and upload new submissions to those forms. Primarily, this is to allow clients like ODK Collect to use the OpenRosa API (`/formList` and `/submission`), but any action in this API reference falling into those categories will be allowed.
 
-    Rvoking an App User is same as deleting session token. You can do this by calling [DELETE /sessions/{appUser}](/central-api-authentication/#logging-out-revoking-an-app-user).
+    Revoking an App User is same as deleting session token. You can do this by calling [DELETE /sessions/{appUser}](/central-api-authentication/#logging-out-current-session).
 - name: Users
   x-parent-tag: Accounts and Users
   description: |-
@@ -691,7 +710,7 @@ tags:
 
     The API for Public Links is particularly useful, as it can be used to, for example, programmatically create and send individually customized and controlled links for direct distribution. The user-facing link for a Public Link has the following structure: `/-/{enketoId}?st={token}` where `-` is the Enketo root, `enketoId` is the survey ID of this published Form on Enketo and `token` is a session token to identify this Public Link.
 
-    To revoke the access of any Link, terminate its session `token` by issuing [`DELETE /sessions/:token`](/central-api-authentication/#logging-out).
+    To revoke the access of any Link, terminate its session `token` by issuing [`DELETE /sessions/:token`](/central-api-authentication/#logging-out-current-session).
 - name: Related Datasets
   x-parent-tag: Form Management
   description: |-
@@ -755,11 +774,11 @@ tags:
 - name: OData Form Service
   x-parent-tag: OData Endpoints
   description: |-
-    ODK Central presents one OData service for every `Form` it knows about. To access the OData service, simply add `.svc` to the resource URL for the given Form.
+    ODK Central presents one OData service for every `Form` it knows about. To access the OData service, add `.svc` to the resource URL for the given Form.
 - name: OData Dataset Service
   x-parent-tag: OData Endpoints
   description: |-
-    ODK Central presents one OData service for every `Dataset` as a way to get an OData feed of `Entities`. To access the OData service, simply add `.svc` to the resource URL for the given Dataset.
+    ODK Central presents one OData service for every `Dataset` as a way to get an OData feed of `Entities`. To access the OData service, add `.svc` to the resource URL for the given Dataset.
 - name: Draft Testing
   x-parent-tag: OData Endpoints
   description: |-
@@ -1343,14 +1362,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -1666,14 +1678,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -1733,14 +1738,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -1968,7 +1966,7 @@ paths:
       - App Users
       summary: Deleting a App User
       description: |-
-        You don't have to delete a `App User` in order to cut off its access. Using a `User`'s credentials you can simply [log the App User's session out](/central-api-authentication/#revoking-an-app-user) using its token. This will end its session without actually deleting the App User, which allows you to still see it in the configuration panel and inspect its history. This is what the administrative panel does when you choose to "Revoke" the App User.
+        You don't have to delete a `App User` in order to cut off its access. Using a `User`'s credentials you can simply [log the App User's session out](/central-api-authentication/#logging-out-current-session) using its token. This will end its session without actually deleting the App User, which allows you to still see it in the configuration panel and inspect its history. This is what the administrative panel does when you choose to "Revoke" the App User.
 
         That said, if you do wish to delete the App User altogether, you can do so by issuing a `DELETE` request to its resource path. App Users cannot delete themselves.
       operationId: Deleting a App User
@@ -1993,14 +1991,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -2214,14 +2205,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -2269,14 +2253,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -2664,14 +2641,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -3061,14 +3031,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -3123,14 +3086,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -3658,14 +3614,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -4241,14 +4190,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -4328,7 +4270,7 @@ paths:
 
         Even if a Draft exists, you can always replace it by `POST`ing here again. In that case, the attachments that exist on the Draft will similarly be copied over to the new Draft. If you wish to copy from the published version instead, you can do so by first `DELETE`ing the extant Draft.
 
-        Draft `version` conflicts are allowed with prior versions of a Form while in Draft state. If you attempt to [publish the Form](/central-api-form-management/#draft-form/publishing-a-draft-form) without correcting the conflict, the publish operation will fail. You can request that Central update the version string on your behalf as part of the publish operation to avoid this: see that endpoint for more information.
+        Draft `version` conflicts are allowed with prior versions of a Form while in Draft state. If you attempt to [publish the Form](/central-api-form-management/#publishing-a-draft-form) without correcting the conflict, the publish operation will fail. You can request that Central update the version string on your behalf as part of the publish operation to avoid this: see that endpoint for more information.
 
         The `xmlFormId`, however, must exactly match that of the Form overall, or the request will be rejected.
 
@@ -4368,14 +4310,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         400:
           description: Bad Request
           content:
@@ -4444,14 +4379,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -4562,6 +4490,8 @@ paths:
       description: If a Draft Form was created with an Excel file (`.xls` or `.xlsx`),
         you can get that file back by adding `.xls` or `.xlsx` as appropriate to the
         Draft Form resource path.
+
+        This endpoint supports `ETag`, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, it returns a value in `ETag` header, you can pass this value in the header `If-None-Match` of subsequent requests. If the file has not been changed since the previous request, you will receive `304 Not Modified` response otherwise you'll get the latest file.
       operationId: Retrieving Draft Form XLS(X)
       parameters:
       - name: projectId
@@ -4581,6 +4511,11 @@ paths:
       responses:
         200:
           description: OK
+          headers:
+            ETag:
+              schema:
+                type: string
+                description: content version identifier
           content:
             application/xml:
               example: |
@@ -4674,6 +4609,8 @@ paths:
         (attachment with a filename or Dataset name) and `Content-Type` (based on
         the type supplied at upload time or `text/csv` in the case of a linked Dataset)
         will be given.
+
+        This endpoint supports `ETag`, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, it returns a value in `ETag` header, you can pass this value in the header `If-None-Match` of subsequent requests. If the file has not been changed since the previous request, you will receive `304 Not Modified` response otherwise you'll get the latest file.
       operationId: Downloading a Draft Form Attachment
       parameters:
       - name: projectId
@@ -4704,6 +4641,10 @@ paths:
             Content-Disposition:
               schema:
                 type: string
+            ETag:
+              schema:
+                type: string
+                description: content version identifier
           content:
             '{the MIME type of the attachment file itself or text/csv for a Dataset}':
               example: |
@@ -4743,8 +4684,6 @@ paths:
         To upload a binary to an expected file slot, `POST` the binary to its endpoint. Supply a `Content-Type` MIME-type header if you have one.
 
         As of version 2022.3, if there is already a Dataset linked to this attachment, it will be unlinked and replaced with the uploaded file.
-
-        This endpoint supports `ETag` header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in `ETag` header. If you pass that value in the `If-None-Match` header of a subsequent request, then if the file has not been changed since the previous request, you will receive `304 Not Modified` response; otherwise you'll get the latest file.
       operationId: Uploading a Draft Form Attachment
       parameters:
       - name: projectId
@@ -4774,14 +4713,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -4837,14 +4769,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -4907,14 +4832,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -5095,14 +5013,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -5375,6 +5286,8 @@ paths:
       description: If a Form Version was created with an Excel file (`.xls` or `.xlsx`),
         you can get that file back by adding `.xls` or `.xlsx` as appropriate to the
         Form Version resource path.
+
+        This endpoint supports `ETag` header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in `ETag` header. If you pass that value in the `If-None-Match` header of a subsequent request, then if the file has not been changed since the previous request, you will receive `304 Not Modified` response; otherwise you'll get the latest file.
       operationId: Retrieving Form Version XLS(X)
       parameters:
       - name: projectId
@@ -5402,6 +5315,11 @@ paths:
       responses:
         200:
           description: OK
+          headers:
+            ETag:
+              schema:
+                type: string
+                description: content version identifier
           content:
             application/xml:
               example: |
@@ -5849,14 +5767,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content: {}
@@ -5904,14 +5815,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -6124,7 +6028,7 @@ paths:
       description: You can fully delete a link by issuing `DELETE` to its resource.
         This will remove the Link from the system entirely. If instead you wish to
         revoke the Link's access to prevent future submission without removing its
-        record entirely, you can issue [`DELETE /sessions/:token`](/central-api-authentication/#session-authentication/logging-out).
+        record entirely, you can issue [`DELETE /sessions/:token`](/central-api-authentication/#logging-out-current-session).
       operationId: Deleting a Link
       parameters:
       - name: projectId
@@ -6154,14 +6058,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -6660,7 +6557,7 @@ paths:
 
         The XML data you send will _replace_ the existing data entirely. All of the data must be present in the updated XML.
 
-        When you create a new submission version, any uploaded media files attached to the current version that match expected attachment names in the new version will automatically be copied over to the new version. So if you don't make any changes to media files, there is no need to resubmit them. You can get information about all the submission versions [from the `/versions` subresource](central-api-submission-management/#submission-versions).
+        When you create a new submission version, any uploaded media files attached to the current version that match expected attachment names in the new version will automatically be copied over to the new version. So if you don't make any changes to media files, there is no need to resubmit them. You can get information about all the submission versions [from the `/versions` subresource](/central-api-submission-management/#submission-versions).
       operationId: Updating Submission Data
       parameters:
       - name: projectId
@@ -7878,6 +7775,8 @@ paths:
       summary: Downloading an Attachment
       description: The `Content-Type` and `Content-Disposition` will be set appropriately
         based on the file itself when requesting an attachment file download.
+
+        This endpoint supports `ETag`, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, it returns a value in `ETag` header, you can pass this value in the header `If-None-Match` of subsequent requests. If the file has not been changed since the previous request, you will receive `304 Not Modified` response otherwise you'll get the latest file.
       operationId: Downloading an Attachment
       parameters:
       - name: projectId
@@ -7915,6 +7814,10 @@ paths:
             Content-Disposition:
               schema:
                 type: string
+            ETag:
+              schema:
+                type: string
+                description: content version identifier
           content:
             '{the MIME type of the attachment file itself}':
               example: |
@@ -7990,14 +7893,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -8059,14 +7955,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -8426,6 +8315,8 @@ paths:
       description: It is important to note that this endpoint returns whatever is
         _currently_ uploaded against the _particular version_ of the _Submission_.
         It will not track overwritten attachments.
+
+        This endpoint supports `ETag`, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, it returns a value in `ETag` header, you can pass this value in the header `If-None-Match` of subsequent requests. If the file has not been changed since the previous request, you will receive `304 Not Modified` response otherwise you'll get the latest file.
       operationId: Downloading a Version's Attachment
       parameters:
       - name: projectId
@@ -8471,6 +8362,10 @@ paths:
             Content-Disposition:
               schema:
                 type: string
+            ETag:
+              schema:
+                type: string
+                description: content version identifier
           content:
             '{the MIME type of the attachment file itself}':
               example: |
@@ -9557,14 +9452,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -9624,14 +9512,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -9653,9 +9534,9 @@ paths:
     get:
       tags:
       - Dataset Management
-      summary: Datasets
+      summary: Listing Datasets
       description: The Dataset listing endpoint returns all published Datasets in a Project. If a Draft Form defines a new Dataset, that Dataset will not be included in this list until the Form is published.
-      operationId: Datasets
+      operationId: Listing Datasets
       parameters:
       - name: projectId
         in: path
@@ -9691,6 +9572,78 @@ paths:
                   lastEntity: '2018-04-18T03:04:51.695Z'
                   entities: 10
                   conflicts: 2
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+              example:
+                code: "403.1"
+                message: The authenticated actor does not have rights to perform that
+                  action.
+    post:
+      tags:
+      - Dataset Management
+      summary: Creating Datasets
+      description: |- 
+        You can create a Dataset with a specific `name` within a Project. This Dataset can then be populated via the API or via Forms and Submissions, and then used by other Forms. This endpoint allows a Dataset to be created programatically without an input form.
+
+        By default, the Dataset will have no properties, but each Entity will have a `label` and a unique ID (`uuid`). You can add additional properties with this [related endpoint](/central-api-dataset-management/#adding-properties).
+        
+        The Dataset name must follow the the same rules as XML identifiers and not start with `.` or `__`. See the [Entities XForms Specification](https://getodk.github.io/xforms-spec/entities.html#declaring-that-a-form-creates-entities) for more information.
+      operationId: Creating Datasets
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      requestBody:
+          content:
+            '*/*':
+              schema:
+                required:
+                - name
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: The desired name of the Dataset. Must be a valid 
+                  approvalRequired:
+                    type: boolean
+                    description: Control whether a Submission should be approved before an Entity is created from it.
+                    required: false
+                example:
+                  name: Trees
+                  approvalRequired: false
+          required: false
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DatasetMetadata'
+              example:
+                name: people
+                createdAt: '2018-01-19T23:58:03.395Z'
+                projectId: 1
+                approvalRequired: false
+                sourceForms: []
+                linkedForms: []
+                properties: []
         403:
           description: Forbidden
           content:
@@ -9838,6 +9791,69 @@ paths:
                   forms:
                   - xmlFormId: simple
                     name: Simple
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+              example:
+                code: "403.1"
+                message: The authenticated actor does not have rights to perform that
+                  action.
+  /projects/{projectId}/datasets/{name}/properties:
+    post:
+      tags:
+      - Dataset Management
+      summary: Adding Properties
+      description: |-
+        Creates a new Property with a specified name in the Dataset.
+
+        Property names follow the same rules as form field names (valid XML identifiers) and cannot use the reserved names of `name` or `label`, or begin with the reserved prefix `__`. 
+      operationId: Adding Properties
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      requestBody:
+          content:
+            '*/*':
+              schema:
+                required:
+                - name
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: The desired name of the Property.
+                example:
+                  name: circumference
+          required: false
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -10029,11 +10045,35 @@ paths:
     post:
       tags:
       - Entity Management
-      summary: Creating an Entity
+      summary: Creating Entities
       description: |-
-        Creates an Entity in the Dataset. Request body takes the JSON representation of the Entity. It should have `uuid` and `label` property in addition to the user-defined properties of the Dataset in `data` property.
+        Creates one or more Entities in the Dataset.
         
-        Value type of all properties is `string`.
+        For creating **a single Entity**, the request body takes a JSON representation of the Entity, which has the following properties:
+
+          1. A `data` object containing values for the user-defined Dataset properties. (Not all properties have to have values.)
+          2. A `label` property, which cannot be blank or an empty string. (This is used as a human-readable label in Forms that consume Entities.)
+          3. An optional `uuid` property. If the `uuid` is not specified, Central will generate a UUID for an Entity with the provided data and label.
+      
+        `
+          {
+            "label": "John Doe",
+            "data": {
+              "firstName": "John",
+              "age": "22"
+            }
+          }
+        `
+
+        The value type of all properties is `string`.
+
+        For creating **multiple Entities** in bulk, the request body takes an array `entities` containing a list of Entity objects as described above. The bulk entity version also takes a `source` property with a required `name` field and optional `size`, for example to capture the filename and size of a bulk upload source.
+
+        `
+          {
+            "entities": [...], "source": {"name": "file.csv", "size": 100}
+          }
+        `
 
         You can provide header `X-Action-Notes` to store the metadata about the request. The metadata can retrieved using [Entity Audit Log](/central-api-entity-management/#entity-audit-log)
       operationId: Creating an Entity
@@ -10055,23 +10095,27 @@ paths:
       requestBody:
         content:
           '*/*':
-            schema:              
-              type: object
-              properties:
-                uuid:
-                  type: string
-                  description: The `uuid` of the Entity that uniquely identifies the Entity.
-                label:
-                  type: string
-                  description: Label of the Entity
-                data:
-                  $ref: '#/components/schemas/DataExample'
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/EntityCreateSingle'
+                - $ref: '#/components/schemas/EntityCreateBulk'
             example:
-              uuid: 54a405a0-53ce-4748-9788-d23a30cc3afa
-              label: John Doe (88)
-              data:
-                firstName: John
-                age: '88'
+              entities:
+                -
+                  uuid: 54a405a0-53ce-4748-9788-d23a30cc3afa
+                  label: John Doe (22)
+                  data:
+                    firstName: John
+                    age: '22'
+                -
+                  uuid: 0c3a7922-b611-42ca-a961-944e09fa9aa2
+                  label: Amy Jane (38)
+                  data:
+                    firstName: Amy
+                    age: '38'
+              source:
+                name: my_dataset.csv
+                size: 100
       responses:
         200:
           description: OK
@@ -10317,7 +10361,7 @@ paths:
 
         **Specifying a base version**
 
-        You must either provide the query parameter `baseVersion` or use the `force=true` query paramater. You cannot cause a new Entity conflict via the API, which is why when specifying `baseVersion`, it must match the current version of the Entity on the server. This acts as a check to ensure you are not trying to update based on stale data. If you wish to update the Entity regardless of the current state, then you can use the `force` flag. 
+        You must either provide the query parameter `baseVersion` or use the `force=true` query parameter. The specified `baseVersion` must match the current version of the Entity on the server or the request will be rejected. This acts as a check to ensure you are not trying to update based on stale data. To update an Entity regardless of its current state, use the `force` flag with value `true`.
 
         **Resolving a conflict**
 
@@ -11152,7 +11196,7 @@ paths:
                 <OpenRosaResponse xmlns="http://openrosa.org/http/response" items="0">
                   <message nature="error">The authenticated actor does not have rights to perform that action.</message>
                 </OpenRosaResponse>
-  /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/attachments/{filename}:
+  /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/attachments/{filename}:
     get:
       tags:
       - Draft Testing Endpoints
@@ -11387,9 +11431,9 @@ paths:
       - OData Form Service
       summary: Metadata Document
       description: |-
-        The Metadata Document describes, in [EDMX CSDL](http://docs.oasis-open.org/odata/odata-csdl-xml/v4.01/odata-csdl-xml-v4.01.html), the schema of all the data you can retrieve from the OData Form Service in question (essentially, this is the XForms form schema translated into the OData format). EDMX/CSDL is very similar in concept to UML: there are objects, they have properties, and some of those properties are relationships to other objects.
+        The Metadata Document describes, in [EDMX CSDL](http://docs.oasis-open.org/odata/odata-csdl-xml/v4.01/odata-csdl-xml-v4.01.html), the schema of all the data you can retrieve from the OData Form Service in question. This is essentially the XForms form schema translated into the OData format. EDMX/CSDL defines schemas in terms of objects, their properties, and relationships to other objects.
 
-        If you are writing a tool to analyze your own data, whose schema you already know and understand, there is very little reason to touch this endpoint at all. You can likely skip ahead to the data documents themselves and work directly with the simple JSON output returned by those endpoints. This endpoint is more useful for authors of tools which seek to generically work with arbitrary data whose schemas they cannot know in advance.
+        If you are writing a tool to analyze your own data, whose schema you already know and understand, there is very little reason to touch this endpoint. You can likely skip ahead to the data documents themselves and work directly with the simple JSON output returned by those endpoints. This endpoint is more useful for authors of tools which seek to generically work with arbitrary data whose schemas they cannot know in advance.
 
         In general, the way we model the XForms schema in OData terms is to represent `group`s as `ComplexType`s, and `repeat`s as `EntityType`s. In the world of OData, the primary difference between these two types is that Entity Types require Primary Keys, while Complex Types do not. This fits well with the way XForms surveys tend to be structured.
 
@@ -11537,11 +11581,11 @@ paths:
       - OData Form Service
       summary: Data Document
       description: |-
-        The data documents are the straightforward JSON representation of each table of `Submission` data. They follow the [corresponding specification](http://docs.oasis-open.org/odata/odata-json-format/v4.01/odata-json-format-v4.01.html), but apart from the representation of geospatial data as GeoJSON rather than the ODK proprietary format, the output here should not be at all surprising. If you are looking for JSON output of Submission data, this is the best place to look.
+        The data documents are JSON representations of each table of `Submission` data. They follow the [corresponding specification](http://docs.oasis-open.org/odata/odata-json-format/v4.01/odata-json-format-v4.01.html), but apart from the representation of geospatial data as GeoJSON rather than the ODK proprietary format, the output here should not be surprising. If you are looking for JSON output of Submission data, this is the best place to look.
 
         The `$top` and `$skip` querystring parameters, specified by OData, apply `limit` and `offset` operations to the data, respectively. The `$count` parameter, also an OData standard, will annotate the response data with the total row count, regardless of the scoping requested by `$top` and `$skip`. If `$top` parameter is provided in the request then the response will include `@odata.nextLink` that you can use as is to fetch the next set of data. While paging is possible through these parameters, it will not greatly improve the performance of exporting data. ODK Central prefers to bulk-export all of its data at once if possible.
 
-        As of ODK Central v1.1, the [`$filter` querystring parameter](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948) is partially supported. In OData, you can use `$filter` to filter by any data field in the schema. The operators `lt`, `le`, `eq`, `ne`, `ge`, `gt`, `not`, `and`, and `or` are supported. The built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second` are supported. These supported elements may be combined in any way, but all other `$filter` features will cause an error.
+        As of ODK Central v1.1, the [`$filter` querystring parameter](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948) is partially supported. In OData, you can use `$filter` to filter by certain data fields in the schema. The operators `lt`, `le`, `eq`, `ne`, `ge`, `gt`, `not`, `and`, and `or` are supported. The built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second` are supported. These supported elements may be combined in any way, but all other `$filter` features will cause an error.
 
         The fields you can query against are as follows:
 
@@ -11567,6 +11611,8 @@ paths:
         + `$select` and `$expand` can't be used together.
 
         + Child properties of repeats can't be requested using `$select`
+
+        As of ODK Central v2024.1, the [`$orderby` query parameter](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358952) is now supported, and can sort on the same fields as `$filter`, noted above. The order can be specified as `ASC` (ascending) or `DESC` (descending), which are case-insensitive. Multiple sort expressions can be used together, separated by commas, e.g. `$orderby=__system/submitterId ASC, __system/reviewState DESC`.
 
         As the vast majority of clients only support the JSON OData format, that is the only format ODK Central offers.
       operationId: Data Document
@@ -11632,6 +11678,12 @@ paths:
         schema:
           type: string
         example: year(__system/submissionDate) lt year(now())
+      - name: '%24orderby'
+        in: query
+        description: If provided, will sort responses according to specified order expression. Only the same fields as `$filter` above can be used to sort. Multiple expressions can be used together.
+        schema:
+          type: string
+        example: __system/submitterId asc, __system/updatedAt desc
       - name: '%24expand'
         in: query
         description: Repetitions, which should get expanded. Currently, only `*` is
@@ -11834,7 +11886,76 @@ paths:
       responses:
         200:
           description: OK
-          content: {}
+          content:
+            application/json; charset=utf-8; odata.metadata=minimal:
+              schema:
+                type: object
+                properties:
+                  '@odata.context':
+                    type: string
+                  value:
+                    type: array
+                    items:
+                      required:
+                      - kind
+                      - name
+                      - url
+                      type: object
+                      properties:
+                        kind:
+                          type: string
+                        name:
+                          type: string
+                        url:
+                          type: string
+                example:
+                  '@odata.context': https://your.odk.server/v1/projects/7/datasets/sample.svc/$metadata
+                  value:
+                  - kind: EntitySet
+                    name: Entities
+                    url: Entities
+                  - kind: EntitySet
+                    name: Entities.children.child
+                    url: Entities.children.child
+              example:
+                '@odata.context': https://your.odk.server/v1/projects/7/datasets/sample.svc/$metadata
+                value:
+                - kind: EntitySet
+                  name: Entities
+                  url: Entities
+                - kind: EntitySet
+                  name: Entities.children.child
+                  url: Entities.children.child
+            application/json:
+              schema:
+                type: object
+                properties:
+                  '@odata.context':
+                    type: string
+                  value:
+                    type: array
+                    items:
+                      required:
+                      - kind
+                      - name
+                      - url
+                      type: object
+                      properties:
+                        kind:
+                          type: string
+                        name:
+                          type: string
+                        url:
+                          type: string
+                example:
+                  '@odata.context': https://your.odk.server/v1/projects/7/datasets/sample.svc/$metadata
+                  value:
+                  - kind: EntitySet
+                    name: Entities
+                    url: Entities
+                  - kind: EntitySet
+                    name: Entities.children.child
+                    url: Entities.children.child
         403:
           description: Forbidden
           content:
@@ -12036,15 +12157,12 @@ paths:
 
         The `$top` and `$skip` querystring parameters, specified by OData, apply `limit` and `offset` operations to the data, respectively. The `$count` parameter, also an OData standard, will annotate the response data with the total row count, regardless of the scoping requested by `$top` and `$skip`. If `$top` parameter is provided in the request then the response will include `@odata.nextLink` that you can use as is to fetch the next set of data.
 
-        The [`$filter` querystring parameter](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948) can be used to filter by any data field in the system-level schema, but not the Dataset properties. The operators `lt`, `le`, `eq`, `ne`, `ge`, `gt`, `not`, `and`, and `or` are supported. The built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second` are supported.
+        The [`$filter` querystring parameter](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948) can be used to filter certain data fields in the system-level schema, but not the Dataset properties. The operators `lt`, `le`, `eq`, `ne`, `ge`, `gt`, `not`, `and`, and `or` are supported. The built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second` are supported.
 
         The fields you can query against are as follows:
 
         | Entity Metadata         | OData Field Name     |
         | ------------------------| -------------------- |
-        | Entity UUID             | `__id`               |
-        | Entity Name (same as UUID) | `name`            |
-        | Entity Label            | `label`              |
         | Entity Creator Actor ID | `__system/creatorId` |
         | Entity Timestamp        | `__system/createdAt` |
         | Entity Update Timestamp | `__system/updatedAt` |
@@ -12055,6 +12173,8 @@ paths:
         Please see the [OData documentation](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948) on `$filter` [operations](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinFilterOperations) and [functions](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinQueryFunctions) for more information.
 
         The [`$select` query parameter](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358942) will return just the fields you specify and is supported on `__id`, `__system`, `__system/creatorId`, `__system/createdAt` and `__system/updatedAt`, as well as on user defined properties.
+
+        The [`$orderby` query parameter](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358952) will return Entities sorted by different fields, which come from the same list used by `$filter`, as noted above. The order can be specified as `ASC` (ascending) or `DESC` (descending), which are case-insensitive. Multiple sort expressions can be used together, separated by commas, e.g. `$orderby=__system/creatorId ASC, __system/conflict DESC`.
 
         As the vast majority of clients only support the JSON OData format, that is the only format ODK Central offers.
       operationId: Data Document for Dataset
@@ -12104,6 +12224,12 @@ paths:
         schema:
           type: string
         example: year(__system/createdAt) lt year(now())
+      - name: '%24orderby'
+        in: query
+        description: If provided, will sort responses according to specified order expression. Only the same fields as `$filter` above can be used to sort. Multiple expressions can be used together.
+        schema:
+          type: string
+        example: __system/creatorId asc, __system/updatedAt desc
       - name: '%24select'
         in: query
         description: If provided, will return only the selected fields.
@@ -12772,7 +12898,7 @@ paths:
       description: |-
         An Administrator can use this endpoint to choose whether the server will share anonymous usage data with the Central team. This configuration affects the entire server. Until the Usage Reporting configuration is set, Administrators will see a message on the Central administration website that provides further information.
 
-        If an Administrator specifies `true` for `enabled`, the server will share anonymous usage data monthly with the Central team. By specifying `true`, the Administrator accepts the [Terms of Service](https://getodk.org/legal/tos.html) and [Privacy Policy](https://getodk.org/legal/privacy.html). The Administrator can also share contact information to include with the report.
+        If an Administrator specifies `true` for `enabled`, the server will share anonymous usage data monthly with the Central team. By specifying `true`, the Administrator accepts the [Terms of Service](https://getodk.org/legal/tos) and [Privacy Policy](https://getodk.org/legal/privacy). The Administrator can also share contact information to include with the report.
 
         If an Administrator specifies `false` for `enabled`, the server will not share anonymous usage data with the Central team. Administrators will no longer see the message on the administration website.
 
@@ -12875,14 +13001,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - success
-                type: object
-                properties:
-                  success:
-                    type: boolean
-              example:
-                success: true
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -13436,7 +13555,7 @@ components:
             source:
               type: object
               description: The source of the Entity version, such as a Submission or an API request. This property is experimental and may change in the future.
-              example: {event: {}, submissionCreate: {}, submission: {}}
+              example: {event: {}, submission: {}}
             baseDiff:
               type: array
               description: List of properties that are different between this version and its base version. Includes the label if it differs between the two versions.
@@ -13489,6 +13608,18 @@ components:
           type: string
           description: The name of the property that is changed.
           example: name
+    EntityBulkSource:
+      type: object
+      properties:
+        name:
+          type: string
+          description: A name to identify the bulk source, filename or API run
+          example: myfile.csv
+        size:
+          type: number
+          description: Optional, meant to indicate filesize (in MB)
+          example: 100
+      description: An object describing the source of this bulk create action.
     EntityOdata:
       type: object
       properties:
@@ -13522,6 +13653,27 @@ components:
                 type: string
               circumference_cm:
                 type: string
+    EntityCreateSingle:
+      type: object
+      properties:
+        uuid:
+          type: string
+          description: (Optional) The `uuid` of the Entity that uniquely identifies the Entity.
+        label:
+          type: string
+          description: Label of the Entity
+        data:
+          $ref: '#/components/schemas/DataExample'
+    EntityCreateBulk:
+      type: object
+      properties:
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityCreateSingle'
+          description: A list of Entities
+        source:
+          $ref: '#/components/schemas/EntityBulkSource'
     DataExample:
       type: object
       properties:
@@ -14131,10 +14283,13 @@ components:
               description: The details of the actor given by `actorId`.
     Success:
       type: object
+      required:
+        - success
       properties:
-        message:
-          type: string
-          example: Success
+        success:
+          type: boolean
+      example: 
+          success: true
     Error400:
       type: object
       required:
