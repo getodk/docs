@@ -10,7 +10,7 @@ Start by reviewing upgrade notes for all versions between your current version a
 Upgrade notes
 -------------
 
-* Central v2023.5: no upgrade notes
+* Central v2023.5, v2024.1: no upgrade notes
 * :ref:`Central v2023.4 <central-upgrade-2023.4>`: improve email delivery
 * :ref:`Central v2023.3 <central-upgrade-2023.3>`: clean up old database if needed
 * :ref:`Central v2023.2 <central-upgrade-2023.2>`: upgrade Docker, PostgreSQL, and move configuration to ``.env``
