@@ -25,6 +25,21 @@ If you are looking for the fastest and easiest way to run Central, use `ODK Clou
 * ODK Cloud has guaranteed and hassle-free levels of speed, reliability, and security.
 * ODK Cloud directly funds continued work on ODK's software, community, and ecosystem.
 
+.. _central-sysreqs:
+
+System Requirements
+-------------------
+
+Central is designed to be speedy, but even more importantly it is robust. There is very very little chance it will mishandle or corrupt your data even if it is run on a weak machine and runs into extreme traffic. That said, if you will be installing it yourself you may wish to have an idea of its system requirements.
+
+We have done some work to benchmark Central to verify these claims, and produce some guideline numbers. Every circumstance is different, and a lot will depend on your form design, your geographic location, and other factors. But in general, on the second-cheapest DigitalOcean configuration at time of writing ($10/month, 2 GB memory in 2018), we found the following:
+
+ - A 250 question form without attachments could support 500 devices simultaneously uploading many submissions without issues, at a rate of roughly 41.2 submissions per second.
+ - A larger 5000 question form, without attachments, could also support 500 devices submitting data at once, but runs more slowly (~12 submissions/second) and fails about one submission in every 1000 (which can then be re-submitted without issues).
+ - Including attachments slows the process down, since there is more data to shuffle around. Realistically, the number of concurrent users supported in this scenario will decrease simply because Internet bandwidth in and out of Central will limit the number of submissions it can see at a time. But we have tried situations featuring 5 MB submissions with 50 devices at once without seeing issues (though for the mentioned reasons the response rate drops to between 1 and 2 submissions/second). Additionally, data exports with attachments take longer and are more memory-intensive.
+
+ When you are planning for your installation and selecting a destination to deploy Central to, keep these numbers in mind. If 500 people submitting data *all at the same time* is a distant scenario, you can probably get by with a lower-performance option. If your deployment is larger than these numbers, consider bumping up to a more powerful machine. If you aren't sure, ask around in the forums.
+
 .. _self-hosting:
 
 Self-hosting
