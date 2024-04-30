@@ -52,6 +52,7 @@ What's available now:
 - Create an Entity with a registration form (automatically or after project manager approval)
 - Use multiple different registration forms targeting the same Entity List (e.g., registration at school vs. registration at home)
 - Use Entities in one or more follow-up form
+- Bulk create many Entities by uploading a .csv data file into an existing Entity List
 - Download Entities into Power BI, Excel, Python, and R
 
 Important limitations:
@@ -103,7 +104,7 @@ Next, let's see these Forms working together.
 
 That's it! The follow-up Form creates normal Submissions, so you can access the data it collects like any Form.
 
-.. _central-entities-overview:
+.. _central-entities-creating:
 
 Creating Entity Lists
 ---------------------
@@ -111,7 +112,25 @@ Creating Entity Lists
 .. note::
   If you skipped the Quick Start above, we suggest you go back and give it a try. You will learn hands on with Central a lot of what will be described below.
 
-In these early versions of Entities, you cannot create an Entity List directly through the Central website. To begin using Entities, you will need to author a Form which defines them. By uploading a Form that specifies the fields in a Submission that should be used to create a new Entity, and the name of the Entity List these new Entities should go to, you will prompt Central to create the Entity List. You'll be able to see the Entity information that Central recognized in your Form once you upload it.
+There are two ways to create an Entity List: by Form definition, or by creating it directly in Central.
+
+If you have Forms already authored which reference your planned Entity Lists, just upload and publish those Forms and Central will offer to create everything automatically. If you are still planning your project, or if you have a bulk data file you want to upload into your new Entity List, it is often easier to just add them directly in Central.
+
+.. _central-entities-creating-direct:
+
+Creating an Entity List in the Central Interface
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To create an Entity List directly in the Central web interface, first navigate to the Project which should contain this Entity List. Open the :guilabel:`Entities` tab. At the top of this page, you will see a :guilabel:`New` button you can click to create a new Entity List. You will only be asked for its name. Because Entity List names are used as identifiers throughout ODK, there are some restrictions on what you can choose as the name. If Central keeps rejecting your name, it is best to stick with basic letters and numbers.
+
+Once your Entity List is created, you can optionally also define the properties it should have. You can do this on the Entity List Overview page by clicking on the :guilabel:`New` button in the Entity Properties section.
+
+.. _central_entities_creating-definition:
+
+Creating an Entity List by Uploading a Form
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By uploading a Form that specifies the properties in a Submission that should be used to create a new Entity, and the name of the Entity List these new Entities should go to, you will prompt Central to create the Entity List. You'll be able to see the Entity information that Central recognized in your Form once you upload it.
 
 When you publish this Form, the new Entity List and new Entity Properties will be created for you automatically within the Project. You can learn more about authoring these kinds of Forms :ref:`in the sections below <central-entities-authoring>`.
 
@@ -136,6 +155,44 @@ For now, *you can only create Entity Lists and Entities from published Forms and
 To try the end-to-end workflow across multiple Forms, we recommend creating a temporary Project just for testing. You can publish all the Forms, create Entities for testing, and make sure that all the Forms work well together.
 
 You can also try a follow-up Form Draft by manually creating a CSV of sample Entities and then attaching it to your Draft, as described in :ref:`central-forms-attachments`. When you have verified the logic of the follow-up Form and are ready to publish it, you can change the link from the CSV to the desired Entity List.
+
+.. _central-entities-upload:
+
+Loading External Data Files into Entity Lists
+---------------------------------------------
+
+.. versionadded:: v2024.1
+
+In a lot of cases you already have data sitting around that you would like to load into your Entity List. Starting with Central v2024.1, you can do this directly in Central.
+
+To get started, navigate to the Entity List you'd like to load your data into, and select the :guilabel:`Data` tab. At the top of that screen, click on the :guilabel:`Upload` button.
+
+.. image:: /img/central-entities/entity-upload.png
+
+You should see a screen that looks similar to the above. You can see data tables with column headings matching the properties in your Entity List. If you have any Entities in this Entity List already, you will see a preview of them in the table above.
+
+To add your new data to this Entity List, you will first need to convert it into a ``.csv`` file if it is not already. You can use common spreadsheet applications like Excel, Google Sheets, or OpenOffice Calc to do this.
+
+There are some additional requirements on this data file:
+
+1. The first row (and *only* the first row) is a header row labeling each of your columns.
+2. Your header row must exactly match your Entity List properties.
+3. In addition to your Entity List properties, you must also include a ``label`` column, where you can provide the name for each Entity that is used when displaying the Entity in Central and Collect.
+
+If you're not sure what this should look like, you can download a sample template ``.csv`` file by clicking the :guilabel:`Download a Data Template` button.
+
+.. note::
+  *What if my Entity List doesn't have any properties yet? Can't you just read them from my file?*
+
+  Not yet. Please `let us know <https://forum.getodk.org/c/ideas/9>`_ if this is something you would like to see! For now, you will need to add the properties manually. The quickest way to do this is :ref:`in the Entity Properties section <central-entities-creating-direct>` in Central.
+
+Once you have a ``.csv`` file that meets these requirements, you can select it for upload either by dragging it over the box, or by clicking on the ``choose one`` button. If your file doesn't meet the above requirements, or if Central can't understand how to read the file, you will see an error message appear. Otherwise, you will see a preview of the data that Central found in the file and how it will load into the Entity List.
+
+.. image:: /img/central-entities/entity-upload-preview.png
+
+Looking at this view, you can match up the columns and ensure your data is loading into the correct places. You can also verify that the number of records in your file matches the number of Entities Central found to import. It is also often a good idea to check at least the last few rows of your import data in the preview table in addition to the beginning. If there is anything Central is worried about, you will see warnings above your import data. Warnings at this point mean that Central is able to import your file, but it isn't completely sure it's interpreted your file correctly. If you don't see any problems looking over the preview, you can feel safe to ignore the warnings.
+
+Click on the :guilabel:`Append data` button to import your data into your Entity List. Be sure you are ready to proceed: there isn't currently an easy way to undo an import.
 
 .. _central-entities-authoring:
 

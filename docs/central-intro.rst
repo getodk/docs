@@ -3,9 +3,9 @@
 ODK Central
 ===========
 
-:dfn:`ODK Central` is the ODK server. It manages user accounts and permissions, stores form definitions, and allows data collection clients like :doc:`ODK Collect <collect-intro>` to connect to it for form download and submission upload.
+:dfn:`ODK Central` is the ODK server. It manages user accounts and permissions, forms and submissions, longitudinal data records, and allows data collection clients like :doc:`ODK Collect <collect-intro>` to connect to it for form download and submission upload.
 
-Our goal with Central is to create a server that is straightforward to install, easy to use and extensible with new features and functionality both directly in the software and with the use of our REST, OpenRosa, and OData programmatic APIs.
+Our goal with Central is to create a server that is straightforward to install, easy to use, and extensible with new features and functionality both directly in the software and with the use of our REST, OpenRosa, and OData programmatic APIs.
 
 .. _central-intro-features:
 
@@ -22,6 +22,7 @@ Here are some of the major features we support today:
    - With drafts and testing on initial creation, and on version updates
    - With form multimedia or data attachments
    - Encrypted forms (self-supplied or project managed keys)
+   - Upload XLSForms directly
    - True deletion of forms
  - Submission upload and management
 
@@ -32,7 +33,13 @@ Here are some of the major features we support today:
    - Support for reviewing, commenting on, and editing submissions after upload
    - Connectable to analysis and dashboard applications like Excel, Power BI, or R over OData
    - Entities for registration/follow-up workflows
- - Integrated checklist-based help system
+ - Entity system for longitudinal data management
+
+   - Persist and share data across Form instances
+   - Update long-lived records with new information
+   - Reference information from these records from Forms during data collection
+   - Conflict management system when parallel updates run into each other
+   - Bulk upload of existing data
  - Clean and modern REST API for integration and extensibility
  - High performance on low-cost hardware or cloud providers
  - ODK Briefcase-compatible data output
@@ -40,39 +47,32 @@ Here are some of the major features we support today:
 
 Central is in active development. We have a lot of exciting ideas for its future and we look forward to hearing yours as well. See `What is coming in Central <https://forum.getodk.org/t/whats-coming-in-central-over-the-next-few-years/19677>`_ for more on future direction.
 
-.. _central-intro-who:
+.. _central-intro-overview:
 
-Who should use ODK Central?
----------------------------
-
-We recommend that all new data collection projects use ODK Central because it is in active development by the core ODK team. ODK Central is a relatively new server. It replaces :doc:`aggregate-intro` which is no longer being updated. Central isn't as widely deployed as Aggregate, but its developers have put it through stress testing and it is used in production by many projects including several large ones.
-
-Central solves some of the biggest problems with Aggregate. Some of our favorite features are:
-
-- :doc:`projects <central-projects>` let you partition your server into different sandboxes to support multiple independent teams
-- :ref:`direct upload of XLSForm files <central-forms-upload>` makes form management easier
-- :ref:`the OData API <central-submissions-odata>` makes it easy to synchronize your live form data to desktop visualization and dashboard tools
-- :doc:`managed encryption <central-encryption>` makes the process of handling encrypted form data significantly easier and in many cases more secure
-
-
-Please give Central a try and provide your `feedback <https://forum.getodk.org/c/support>`_.
-
-.. _central-performance:
-
-Notes On Performance
+ODK Central Overview
 --------------------
 
-Central was designed from early on to be stable, predictable, and fast on limited hardware.
+Once you have :ref:`installed Central <central-install>`, you may be wondering where to start.
 
-Perhaps most importantly, even under extreme traffic Central is guaranteed to either wholly succeed or wholly fail each submission. If, for instance, one submission attachment fails to upload or persist, the entire submission upload will fail and Collect will attempt the submission again. If Central reports that a submission was successfully uploaded, then all submitted data was successfully saved.
+In Central, everything begins with the :ref:`Project <central-projects>`. Projects organize a Central server into individual little worlds, allowing many separate data collection projects and teams to live on the same server.
 
-We have done some work to benchmark Central to verify these claims, and produce some guideline numbers. Every circumstance is different, and a lot will depend on your form design, your geographic location, and other factors. But in general, on the second-cheapest DigitalOcean configuration at time of writing ($10/month, 2 GB memory), we found the following:
+Within a Project can live many :doc:`Forms <central-forms>`. Once you :doc:`author a Form <form-design-intro>` you can upload it to Central, where you can test and preview the Form before publishing it. When it comes time to make changes to a published Form, there is a :ref:`Form Draft <central-forms-updates>` process that helps you update and test the Form safely while important data is still being collected.
 
- - A 250 question form without attachments could support 500 devices simultaneously uploading many submissions without issues, at a rate of roughly 41.2 submissions per second.
- - A larger 5000 question form, without attachments, could also support 500 devices submitting data at once, but runs more slowly (~12 submissions/second) and fails about one submission in every 1000 (which can then be re-submitted without issues).
- - Including attachments slows the process down, since there is more data to shuffle around. Realistically, the number of concurrent users supported in this scenario will decrease simply because Internet bandwidth in and out of Central will limit the number of submissions it can see at a time. But we have tried situations featuring 5 MB submissions with 50 devices at once without seeing issues (though for the mentioned reasons the response rate drops to between 1 and 2 submissions/second). Additionally, data exports with attachments take longer and are more memory-intensive.
+When a Form is filled out either :ref:`directly on the web in Central <central-submissions-direct>` (using Enketo) or from a mobile client such as :doc:`Collect <collect-intro>`, the finalized data will become a :doc:`Submission <central-submissions>` in Central. Central has features to allow :ref:`review and approval/rejection <central-submissions-review-states>`, :ref:`comments <central-submissions-details>`, and :ref:`edits <central-submissions-editing>` on Submissions. You can also :ref:`bulk download <central-submissions-download>` your data as a file, :ref:`connect to a live feed <central-submissions-odata>` of your data through analysis apps like Power BI or Excel, or use the :ref:`OData API <central-submissions-other-api>` directly to access data.
 
- When you are planning for your installation and selecting a destination to deploy Central to, keep these numbers in mind. If 500 people submitting data *all at the same time* is a distant scenario, you can probably get by with a lower-performance option. If your deployment is larger than these numbers, consider bumping up to a more powerful machine. If you aren't sure, ask around in the forums.
+Additionally, Submissions can also create or update :doc:`Entities <central-entities>`. An Entity is a lasting data record: a patient, this tree, that school, and so on. Forms in Central can be configured to :ref:`create <central-entities-registration-forms>` or :ref:`update <central-entities-update>` an Entity record with new information when a Submission is uploaded. This updated Entity data is then sent back out to any data collection clients and can then be :ref:`referenced in future Forms <central-entities-follow-up-forms>`. This allows you to definitively relate repeated encounters with the same Entity together without any homework or guesswork, and it allows you to contextualize and customize the Form filling process using the latest information about a known Entity. In case multiple people try to update an Entity at the same time, there is a :ref:`conflict management system <central-entities-update-conflicts>`. Just like Forms and Submissions, Entities live inside of Projects.
+
+Of course, you will need to set up people in the system to do all this work. Right now in Central, :doc:`Users <central-users>` are divided into two main categories:
+
+- :ref:`Web Users <central-users-web-overview>` who log directly into the Central website, and can be granted permission to:
+
+  - Administrate the entire Central server
+  - Manage a particular Project
+  - Fill out Forms within a particular Project
+  - View collected data within a particular Project
+- :ref:`App Users <central-users-app-overview>` who connect to Central from a mobile device running Collect, and can submit data to a controlled set of available Forms.
+
+And before you get too far, you might want to think about :ref:`setting up backups <central-backup>` of your data. However, if you're on ODK Cloud you never have to worry about this!
 
 .. _central-intro-learn-more:
 
@@ -80,6 +80,6 @@ Learn more about ODK Central
 ----------------------------
 
  - :doc:`central-install`
- - :doc:`central-manage`
  - :doc:`central-using`
+ - :doc:`central-manage`
 
