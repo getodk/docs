@@ -190,7 +190,7 @@ Once you have a ``.csv`` file that meets these requirements, you can select it f
 
 .. image:: /img/central-entities/entity-upload-preview.png
 
-Looking at this view, you can match up the columns and ensure your data is loading into the correct places. You can also verify that the number of records in your file matches the number of Entities Central found to import. It is also often a good idea to check at least the last few rows of your import data in the preview table in addition to the beginning. If there is anything Central is worried about, you will see warnings above your import data. Warnings at this point mean that Central is able to import your file, but it isn't completely sure it's interpreted your file correctly. If you don't see any problems looking over the preview, you can feel safe to ignore the warnings.
+Looking at this view, you can match up the columns and ensure your data is loading into the correct places. You can also verify that the number of records in your file matches the number of Entities Central found to import. It is also often a good idea to check at least the last few rows of your import data in the preview table in addition to the beginning. If there is anything Central is worried about, you will see warnings above your import data. Warnings at this point mean that Central is able to import your file, but is not completely sure it has interpreted your file correctly. If you don't see any problems looking over the preview, you can feel safe to ignore the warnings.
 
 Click on the :guilabel:`Append data` button to import your data into your Entity List. Be sure you are ready to proceed: there isn't currently an easy way to undo an import.
 

@@ -30,7 +30,7 @@ If you are looking for the fastest and easiest way to run Central, use `ODK Clou
 System Requirements
 -------------------
 
-Central is designed to be performant, but even more importantly it is robust. There is very very little chance it will mishandle or corrupt your data even if it is run on an underpowered machine and runs into extreme traffic. That said, if you will be installing it yourself you may wish to have an idea of its system requirements.
+Central is designed to be speedy, but even more importantly it is robust. There is very very little chance it will mishandle or corrupt your data even if it is run on a weak machine and runs into extreme traffic. That said, if you will be installing it yourself you may wish to have an idea of its system requirements.
 
 We have done some work to benchmark Central to verify these claims, and produce some guideline numbers. Every circumstance is different, and a lot will depend on your form design, your geographic location, and other factors. But in general, on the second-cheapest DigitalOcean configuration at time of writing ($10/month, 2 GB memory in 2018), we found the following:
 
