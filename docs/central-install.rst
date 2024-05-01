@@ -75,7 +75,7 @@ Installing on AWS
 
 Amazon Web Services (AWS) is one of the many other options for installing Central. It's a good idea to read through the :doc:`instructions we've provided <central-install-digital-ocean>` for DigitalOcean, as many of the steps remain the same or similar.
 
-To obtain a server you will need to first `create an AWS account <https://aws.amazon.com/>`_. When launching your instance, select the Ubuntu Server 20.04 LTS AMI in step 1. The ``t2.micro`` instance type has the 1 GB of memory recommended for if you don't expect many forms to be submitted at once and you don't expect many large media attachments. Regardless of how much memory you select, we also recommend 1 GB of swap and a minimum of 15 GB of disk storage.
+To obtain a server you will need to first `create an AWS account <https://aws.amazon.com/>`_. When launching your instance, select the Ubuntu Server 20.04 LTS AMI in step 1. The ``t2.small`` instance type has the 2 GB of memory recommended. Regardless of how much memory you select, we also recommend 2 GB of swap and a minimum of 25 GB of disk storage.
 
 When adjusting the security settings open up the ports for SSH, HTTP, and HTTPS. Once you have launched your instance, go to the Elastic IPs menu option under Network & Security, then allocate a new address and associate it with your server in order to keep the IP address for your server consistent.
 
