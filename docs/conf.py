@@ -130,4 +130,22 @@ notfound_urls_prefix = None
 
 sitemap_url_scheme = '{link}'
 
-sitemap_excludes = ['404/','aggregate-app-engine-legacy/','aggregate-best-practices/','briefcase-api/','build-intro/','collect-connect-google/','collect-sms-submissions/','genindex/','search/','incl/briefcase-features/','incl/form-examples/constraint-on-selected/','incl/form-examples/parallel-repeats/','incl/form-examples/regex-middle-initial/','incl/form-examples/sum-to-count-responses/']
+sitemap_excludes = [
+    '404/',
+    'aggregate-app-engine-legacy/',
+    'aggregate-best-practices/',
+    'aggregate-boost-performance/',
+    'aggregate-form-update/',
+    'aggregate-limitations/',
+    'briefcase-api/',
+    'build-intro/',
+    'collect-connect-google/',
+    'collect-sms-submissions/',
+    'genindex/',
+    'incl/briefcase-features/',
+    'incl/form-examples/constraint-on-selected/',
+    'incl/form-examples/parallel-repeats/',
+    'incl/form-examples/regex-middle-initial/',
+    'incl/form-examples/sum-to-count-responses/',
+    'search/'
+]
