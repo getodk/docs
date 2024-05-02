@@ -19,7 +19,7 @@ jobs:
           command: |
             sudo apt-get install pngquant
             sudo apt-get install python3-enchant
-            pip3 install --user -r requirements.txt 
+            pip3 install --user -r requirements.txt --upgrade
       - run:
           name: Build html
           command: make dirhtml
