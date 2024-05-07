@@ -1,175 +1,185 @@
 :og:image: https://docs.getodk.org/_static/img/xlsform-first-form.png
 
-XLSForm Tutorial: Your first form
-=================================
+Tutoriel XLSForm : Votre premier formulaire
+===========================================
 
-ODK forms are created using spreadsheets by following the rules of a standard called XLSForm. 
+Les formulaires ODK sont créés en utilisant des feuilles de calcul qui suivent les règles du standard XLSForm.
 
-Using spreadsheet software to design forms is helpful because you can see a lot of information about your form on one screen, you can share your form definition with anyone, and you can use powerful spreadsheet features (formulas, drag to fill, copy and paste, automatic highlighting, and more).
+L'utilisation d'un tableur pour concevoir des formulaires est très avantageuse car un maximum d'informations relatives à votre formulaire est visible sur un seul écran, vous pouvez partager facilement votre définition de formulaire, et vous pouvez utiliser les fonctions très pratiques proposées par les tableurs (formules, copier/coller, mise en forme automatique, etc.) pour concevoir votre formulaire.
 
-Anyone who can use spreadsheet software can create a form! In less than 20 minutes, you'll build the school census survey shown below.
+Quiconque dispose d'un tableur peut créer un formulaire ! En moins de 20 minutes, vous allez construire le formualire de recensement d'établissements scolaires proposé ci-dessous.
 
 ..  youtube:: 22l0xHxJ3vo
    :width: 100%
 
-If you'd like a sneak peek at what the survey looks like for data collectors, try this `web preview <https://demo.getodk.cloud/-/single/uvOoPKYmRSpeUTab5bflNBBMT37L0u7?st=es1kN9UyLfov8T1SZEB8QCTw9gaGp6$s73b9muqj4czHlVown2UAcmyLt3uGNkcN>`_.
+Si vous voulez un aperçu de ce à quoi ressemblera le formulaire, vous pouvez essayer cet `aperçu web <https://demo.getodk.cloud/-/single/uvOoPKYmRSpeUTab5bflNBBMT37L0u7?st=es1kN9UyLfov8T1SZEB8QCTw9gaGp6$s73b9muqj4czHlVown2UAcmyLt3uGNkcN>`_.
 
-Goals
------
+Objectifs
+---------
 
-In this tutorial, you'll:
+Dans ce tutoriel, vous allez :
 
-* Design a short form using a variety of question types
-* Use the major XLSForm logic building blocks
-* Learn next steps to grow your skills
+* Concevoir un court formulaire utilisant différents types de question
+* Utiliser les principaux éléments de structures logiques de XLSForm
+* Apprendre les prochaines étapes pour développer vos compétences
 
-Ready to begin your XLSForm journey? Let's go!
+Prêt/prête à partir à la découverte d'XLSForm ? Alors en route !
 
-Open the XLSForm template
--------------------------
-You can use any spreadsheet software to create and update an XLSForm: Excel, Google Sheets, OpenOffice Calc, and more. Pick your favorite and open the XLSForm template:
+Ouvrez le modèle de XLSForm
+---------------------------
+Vous pouvez utiliser n'importe que logiciel de tableur pour créer et modifier un XLSForm : Excel, Google Sheets, LibreOffice Calc, et d'autres. Choisissez celui que vous préférez pour ouvrir le modèle de XLSForm proposé ci-dessous :
 
-* `Google Sheet <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_ (use `File > Make a copy`)
+* `Google Sheet <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_ (Utilisez  `Fichier > Créer une copie`)
 * `Microsoft Excel (XLSX) file <https://github.com/getodk/xlsform-template/raw/main/ODK%20XLSForm%20Template.xlsx>`_
 
-Add a required text question
-----------------------------
+Ajoutons une question obligatoire de type "text"
+-----------------------------------------------
 
-#. In the ``survey`` sheet, use the dropdown in the ``type`` column to select ``text``. This will create a text question that the user can answer.
-#. In the ``name`` column, put the name of the field that will be used in analysis. Let's use ``school_name``
-#. In the ``label`` column, put the label that you want the data collector to see: ``What is the school's name?``
-#. In the ``required`` column, put ``yes`` to indicate that the question must be answered.
+#. Dans le feuille ``survey``, utilisez la liste déroulante de la colonne ``type`` pour choisir ``text``. Ceci créera une question de type "text" à laquelle l'utilisateur pourra répondre.
+#. Dans la colonne ``name``, mettez le nom du champ qui stockera la donnée et qui sera utilisé dans les analyses. Utilisons ``nom_etablissement``.
+#. Dans la colonne ``label``, mettez le texte que verra le collecteur de données pour cette question : ``Quel est le nom de l'établissement ?``
+#. Dans la colonne ``required``, mettez ``yes`` pour indiquer qu'une réponse à cette question est obligatoire.
 
-Add a required image question
------------------------------
+Ajoutons une question obligatoire de type "image"
+-------------------------------------------------
 
-In the row below the school name question, let's add a required question to capture a picture of the school.
+Dans la ligne sous la question du nom de l'établissement, ajoutez une question obligatoire pour prendre une photo de l'établissement.
 
-#. In the ``type`` column, put ``image``
-#. In the ``name`` column, put ``school_front_picture``
-#. In the ``label`` column, put ``Take a picture of ${school_name}``
-#. Let's also add a hint to give data collectors more information about what we want to capture. In the ``hint`` column, put ``Include the front door``
-#. In the ``required`` column, put ``yes``
-#. In the ``parameters`` column, put ``max-pixels=1024`` to limit the length of captured image to 1024 pixels.
+#. Dans la colonne ``type``, mettez ``image``
+#. Dans la colonne ``name``, mettez ``photo_etablissement``
+#. Dans la colonne ``label``, mettez ``Prendre une photo de l'établissement ${nom_etablissement}``
+#. Ajoutons une astuce pour donner aux collecteurs plus d’informations sur ce que nous voulons photographier. Dans la colonne ``hint``, mettez ``Inclure la porte d'entrée``
+#. Dans la colonne ``required``, mettez ``yes``
+#. Dans la colonne ``parameters``, mettez ``max-pixels=1024`` pour limiter la taille des images à 1024 pixels.
 
-Add an optional location question
----------------------------------
+Ajoutons une question optionnelle de type "emplacement"
+-------------------------------------------------------
 
-#. In the ``type`` column, put ``geopoint``
-#. In the ``name`` column, put ``school_location``
-#. In the ``label`` column, put ``What is ${school_name}'s location?``
+#. Dans la colonne ``type``, mettez ``geopoint``
+#. Dans la colonne ``name``, mettez ``emplacement_etablissement``
+#. Dans la colonne ``label``, mettez ``Quel est l'emplacement de l'établissement "${nom_etablissement}" ?``
 
-Add an integer question that only allows positive values
---------------------------------------------------------
+Ajoutons une question de type "integer" n'autorisant que des valeurs positives
+------------------------------------------------------------------------------
 
-#. In the ``type`` column, put ``integer``
-#. In the ``name`` column, put ``student_count``
-#. In the ``label`` column, put ``How many students are enrolled?``
-#. In the ``required`` column, put ``yes``
-#. Let's make sure that only positive student counts are allowed. In the ``constraint`` column, put ``. > 0`` to say that the entered value (``.``) must be greater than 0.
-#. Let's give the data collector feedback if they enter a value that's not allowed. In the ``constraint_message`` column, put ``Must be a positive number``
+#. Dans la colonne ``type``, mettez ``integer``
+#. Dans la colonne ``name``, mettez ``nombre_eleves``
+#. Dans la colonne ``label``, mettez ``Combien d'élèves sont inscrits ?``
+#. Dans la colonne ``required``, mettez ``yes``
+#. Faisons en sorte que seul un nombre positif puisse être renseigné. Dans la colonne ``constraint``, mettez ``. > 0`` pour spécifier que la valeur renseignée (``.``) doit être supérieure à 0.
+#. Affichons un messages aux collecteurs de données s'ils renseignent une valeur non autorisée. Dans la colonne ``constraint_message``, mettez ``La valeure doit être un nombre positif``
 
-Add a question for selecting multiple options
----------------------------------------------
+Ajoutons une question permettant de choisir plusieurs réponses
+--------------------------------------------------------------
 
-Let's add a question that asks the data collector what grades are taught at the school. We'll show three grade choices (primary, middle, high), and let the data collector select one or more.
+Cette question portera sur les niveaux enseignés dans l'établissement. Nous proposerons quatre choix (maternelle, élémentaire, collège, lycée), et laisserons le collecteur de données en sélectionner un ou plusieurs.
 
-#. Go to the choices sheet. This sheet is used to specify lists of choices that will be used in select questions.
-#. Add a choice for primary grades: 
+#. Allez à la feuille "choices". Elle sert à définir les listes de choix utilisées dans les question de type "select".
+#. Ajoutez un choix pour le niveau "maternelle" : 
 
-   #. In the ``list_name`` column, put the name of the list that all of our choices will belong to: ``grades``
-   #. In the ``name`` column, put the value that will be stored in the data that we will analyze: ``primary``
-   #. In the ``label`` column, put the text that data collectors will see for the choice: ``Primary (1-5)``
-#. Add a choice for middle grades:
+   #. Dans la colonne ``list_name``, mettez le nom de la liste de choix qui contiendra les quatre options : ``niveaux``
+   #. Dans la colonne ``name``, mettez la valeur qui sera stockée dans les données qui seront analysées : ``maternelle``
+   #. Dans la colonne ``label``, mettez le texte qui sera montré au collecteur pour ce choix : ``maternelle (3-5 ans)``
+   
+#. Ajoutez un choix pour le niveau "élémentaire" : 
 
-   #. In the ``list_name`` column, put ``grades`` to put this choice in the same list as above.
-   #. In the ``name`` column, put ``middle``
-   #. In the ``label`` column, put ``Middle (6-8)``
-#. Add a choice for high grades:
+   #. Dans la colonne ``list_name``, mettez ``niveaux`` pour mettre ce choix dans la même liste que précédemment.
+   #. Dans la colonne ``name``, mettez : ``elementaire``
+   #. Dans la colonne ``label``, mettez : ``Elémentaire (6-11 ans)``
+   
+#. Ajoutez un choix pour le niveau "collège" : 
 
-   #. In the ``list_name`` column, put ``grades`` to put this choice in the same list as above.
-   #. In the ``name`` column, put ``high``
-   #. In the ``label`` column, put ``High (9-12)``
-#. Go back to the ``survey`` sheet.
-#. In the row after the ``student_count`` question, put ``select_multiple grades`` in the ``type`` column.
+   #. Dans la colonne ``list_name``, mettez ``niveaux`` pour mettre ce choix dans la même liste que précédemment.
+   #. Dans la colonne ``name``, mettez ``college``
+   #. Dans la colonne ``label``, mettez ``Collège (11-15 ans)``
+   
+#. Ajoutez un choix pour le niveau "lycée" : 
+
+   #. Dans la colonne ``list_name``, mettez ``niveaux`` pour mettre ce choix dans la même liste que précédemment.
+   #. Dans la colonne ``name``, mettez ``lycee``
+   #. Dans la colonne ``label``, mettez ``Lycée (15-18 ans)``
+   
+#. Retournez à la feuille ``survey``.
+#. Dans la ligne qui suit la question ``nombre_eleves``, mettez ``select_multiple niveaux`` dans la colonne ``type``
   
    .. note::
-     Your spreadsheet software will show a validation warning because it doesn't know about your list name (``grades``). That's expected for select questions and can be safely ignored.
+     Votre logiciel vous montrera un avertissement de validation car il ne connaît pas votre le nom de votre liste (``niveaux``). Ceci est attendu pour les questions de type "select" qui sont complétées par le nom de la liste et cet avertissement peut donc être ignoré.
 
-#. In the ``name`` column, put ``grades_taught``
-#. In the ``label`` column, put ``What grades are taught?``
-#. In the ``required`` column, put ``yes``
-#. Let's make the choices appear horizontally next to each other. In the ``appearance`` column, put ``columns``
+#. Dans la colonne ``name``, mettez ``niveaux_enseignes``
+#. Dans la colonne ``label``, mettez ``Quels niveaux sont enseignés ?``
+#. Dans la colonne ``required``, mettez ``yes``
+#. Faisons apparaître les choix horizontalement, les uns à coté des autres. Dans la colonne ``appearance``, mettez ``columns``.
 
-Add a question that is shown depending on a previous answer
------------------------------------------------------------
+Ajoutons une question qui sera montrée en fonction d'un réponse précédente
+--------------------------------------------------------------------------
+Elle portera sur les options enseignées au lycée.
 
-#. In the ``type`` column, put ``text``
-#. In the ``name`` column, put ``advanced_math``
-#. In the ``label`` column, put ``What is the most advanced math class available?``
-#. In the ``required`` column, put ``yes``
-#. Let's make this question appear only if the school teaches high school grades. In the ``relevant`` column, put ``selected(${grades_taught}, 'high')``
+#. Dans la colonne ``type``, mettez ``text``
+#. Dans la colonne ``name``, mettez ``options_lycee``
+#. Dans la colonne ``label``, mettez ``Quelles sont les options proposées au Lycée ?``
+#. Dans la colonne ``required``, mettez ``yes``
+#. Affichons cette question seulement si l'établissement est un lycée. Dans la colonne ``relevant``, mettez ``selected(${niveaux_enseignes}, 'lycee')``
 
-Specify the form's title and ID
--------------------------------
+Définissons un titre et un identifiant pour ce formulaire
+---------------------------------------------------------
 
-#. Go to the ``settings`` sheet.
-#. In the ``form_title`` column, put a title that people who interact with this form should see: ``Verdant school district census 2023``
-#. In the ``form_id`` column, put an ID that uniquely identifies this form: ``school_census_23``
-#. In the ``instance_name`` column, put a name that identifies each submission of this form: ``${school_name}``
+#. Allez à la feuille ``settings``.
+#. Dans la colonne ``form_title``, mettez le titre que verront les utilisateurs du formulaire : ``Recensement des établissements scolaires 2024``
+#. Dans la colonne ``form_id``, mettez an ID qui identifie de manière unique ce formulaire : ``recensement_etablissements_scolaires_24``
+#. Dans la colonne ``instance_name``, mettez un nom qui identifie chaque soumission de données de ce formulaire : ``${nom_etablissement}``
 
-Try your form in Central
-------------------------
+Testez votre formulaire dans Central
+------------------------------------
 
 .. note::
-   Don't yet have an ODK Central server? :ref:`getting-started-get-central` or use `XLSForm Online <https://getodk.org/xlsform>`_ to try your form in a web browser.
+   Vous n'avez pas encore de serveur ODK Central ? :ref:`getting-started-get-central` ou utilisez `XLSForm Online <https://getodk.org/xlsform>`_ pour tester votre formulaire dans un navigateur web.
 
-#. Save or download your form as an XLSX file.
-#. Log into your Central server.
-#. If you don't already have a Project, create one and give it a name.
-#. Click on the New button next to ``Forms``.
-#. Drag and drop your XLSX file onto the file uploader.
+#. Enreigistrez ou téléchargez votre formulaire dans un fichier XLSX.
+#. Connectez vous à votre serveur Central.
+#. Si vous n'avez pas encore de Projet, créez en un en nommez le.
+#. Cliquez sur le bouton "Nouveau" à coté de ``Formulaires``.
+#. Glissez et déposez votre fichier XLSX ou cliquez sur le bouton "Parcourir".
    
    .. image:: /img/xlsform-first-form/school-census-upload.*
      :scale: 30%
      :alt: ODK Central's form upload dialog.
 
-#. Click the :guilabel:`Preview` button to see your form in your web browser 🎉
+#. Cliquez sur le bouton :guilabel:`Aperçu` pour voir votre formulaire dans votre navigateur web 🎉
   
    .. image:: /img/xlsform-first-form/school-census-draft.*
-     :alt: ODK Central showing a draft of the school census form. There's a red box around the Preview button with an arrow pointing to it.
+     :alt: ODK Central affichant une ébauche du formulaire de recensement des établissements scolaires. Il y a un cadre rouge autour du bouton "Aperçu" avec une flèche pointant dessus.
 
    .. image:: /img/xlsform-first-form/school-census-preview.*
-     :alt: ODK Central showing a web preview of the school census form.
+     :alt: ODK Central affichant un aperçu web du formulaire de recensement des établissements scolaires.
      :align: center
 
-#. To see the form in the `ODK Collect mobile app <https://play.google.com/store/apps/details?id=org.odk.collect.android>`_, click on the :guilabel:`Testing` tab and scan the QR code with Collect.
+#. Pour voir le formulaire dans l'application mobile `ODK Collect <https://play.google.com/store/apps/details?id=org.odk.collect.android>`_, cliquez sur l'onglet guilabel:`Tester` et scannez le QR code avec Collect.
 
-Your turn
-----------
+A vous de jouer
+---------------
 
-#. Can you make the location question required?
-#. Can you make the grade level question show only if more than 100 students are enrolled?
-#. Can you show the grade level options vertically rather than horizontally? (Hint: The vertical layout is the default appearance for selects)
+#. Pouvez vous rendre la question de la localisation obligatoire ?
+#. Pouvez vous faire en sorte de n'afficher la question du niveau enseigné seulement si au moins 100 élèves sont inscrits ?
+#. Pouvez vous afficher les options du niveau d'enseignement verticalement plutôt qu'horizontalement ? (Astuce : la mise en forme verticale est l'apparence par défaut des questions de type "select")
 
-Next steps
-----------
-Congratulations! You've now designed a form that uses most of the XLSForm building blocks. Below are more resources to grow your skills.
+Prochaines étapes
+-----------------
+Félicitations ! Vous venez de concevoir un premier formulaire qui utilise la plupart des briques de XLSForm. Vous trouverez ci-dessous des ressources pour accroitre vos compétences.
 
-* Deepen your understanding
+* Approfondissez votre compréhension
 
-  * :doc:`XLSForm introduction <xlsform>`
-  * :doc:`Question types <form-question-types>`
-  * :ref:`Required questions <requiring-responses>`
-  * :ref:`Constraints on user input <constraints>`
-  * :ref:`Selects <select-widgets>`
-  * :ref:`Relevance <relevants>`
+  * :doc:`Introduction à XLSForm <xlsform>`
+  * :doc:`Types de question <form-question-types>`
+  * :ref:`Questions obligatoires<requiring-responses>`
+  * :ref:`Constraintes à la saisie <constraints>`
+  * :ref:`Questions de type "select" <select-widgets>`
+  * :ref:`Conditionner l'affichage des questions (Relevance) <relevants>`
 
-* Broaden your knowledge
+* Élargissez vos connaissances
 
   * :ref:`groups`
   * :doc:`form-styling`
   * :doc:`form-language`
   * :doc:`form-operators-functions`
 
-* :doc:`ODK Collect introduction <collect-intro>`
+* :doc:`Introduction à ODK Collect <collect-intro>`
