@@ -7,7 +7,7 @@ Les formulaires ODK sont créés en utilisant des feuilles de calcul qui suivent
 
 L'utilisation d'un tableur pour concevoir des formulaires est très avantageuse car un maximum d'informations relatives à votre formulaire est visible sur un seul écran, vous pouvez partager facilement votre définition de formulaire, et vous pouvez utiliser les fonctions très pratiques proposées par les tableurs (formules, copier/coller, mise en forme automatique, etc.) pour concevoir votre formulaire.
 
-Quiconque dispose d'un tableur peut créer un formulaire ! En moins de 20 minutes, vous allez construire le formualire de recensement d'établissements scolaires proposé ci-dessous.
+Quiconque dispose d'un tableur peut créer un formulaire ! En moins de 20 minutes, vous allez construire le formulaire de recensement d'établissements scolaires proposé ci-dessous.
 
 ..  youtube:: 22l0xHxJ3vo
    :width: 100%
@@ -19,7 +19,7 @@ Objectifs
 
 Dans ce tutoriel, vous allez :
 
-* Concevoir un court formulaire utilisant différents types de question
+* Concevoir un court formulaire utilisant différents types de questions
 * Utiliser les principaux éléments de structures logiques de XLSForm
 * Apprendre les prochaines étapes pour développer vos compétences
 
@@ -103,7 +103,7 @@ Cette question portera sur les niveaux enseignés dans l'établissement. Nous pr
 #. Dans la ligne qui suit la question ``nombre_eleves``, mettez ``select_multiple niveaux`` dans la colonne ``type``
   
    .. note::
-     Votre logiciel vous montrera un avertissement de validation car il ne connaît pas votre le nom de votre liste (``niveaux``). Ceci est attendu pour les questions de type "select" qui sont complétées par le nom de la liste et cet avertissement peut donc être ignoré.
+     Votre logiciel vous montrera un avertissement de validation car il ne connaît pas votre le nom de votre liste (``niveaux``). Ceci est normal pour les questions de type "select" qui sont complétées par le nom de la liste et cet avertissement peut donc être ignoré.
 
 #. Dans la colonne ``name``, mettez ``niveaux_enseignes``
 #. Dans la colonne ``label``, mettez ``Quels niveaux sont enseignés ?``
@@ -164,7 +164,7 @@ A vous de jouer
 
 Prochaines étapes
 -----------------
-Félicitations ! Vous venez de concevoir un premier formulaire qui utilise la plupart des briques de XLSForm. Vous trouverez ci-dessous des ressources pour accroitre vos compétences.
+Félicitations ! Vous venez de concevoir un premier formulaire qui utilise la plupart des briques de XLSForm. Vous trouverez ci-dessous des ressources pour développer vos compétences.
 
 * Approfondissez votre compréhension
 
