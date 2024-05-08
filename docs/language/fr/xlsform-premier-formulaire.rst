@@ -147,7 +147,7 @@ Testez votre formulaire dans Central
 #. Cliquez sur le bouton :guilabel:`Aperçu` pour voir votre formulaire dans votre navigateur web 🎉
   
    .. image:: ../../img/language/fr/xlsform-premier-formulaire/ebauche-formulaire-recensement-etablissments.*
-     :alt: ODK Central affichant une ébauche du formulaire de recensement des établissements scolaires. Il y a un cadre rouge autour du bouton "Aperçu" avec une flèche pointant dessus.
+     :alt: ODK Central affichant une ébauche du formulaire de recensement des établissements scolaires. Il y a un cadre rouge autour du bouton "Aperçu".
 
    .. image:: ../../img/language/fr/xlsform-premier-formulaire/apercu-formulaire-recensement-etablissments.*
      :alt: ODK Central affichant un aperçu web du formulaire de recensement des établissements scolaires.
