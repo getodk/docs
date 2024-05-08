@@ -33,7 +33,7 @@ Vous pouvez utiliser n'importe que logiciel de tableur pour créer et modifier u
 * `Microsoft Excel (XLSX) file <https://github.com/getodk/xlsform-template/raw/main/ODK%20XLSForm%20Template.xlsx>`_
 
 Ajoutons une question obligatoire de type "text"
------------------------------------------------
+------------------------------------------------
 
 #. Dans le feuille ``survey``, utilisez la liste déroulante de la colonne ``type`` pour choisir ``text``. Ceci créera une question de type "text" à laquelle l'utilisateur pourra répondre.
 #. Dans la colonne ``name``, mettez le nom du champ qui stockera la donnée et qui sera utilisé dans les analyses. Utilisons ``nom_etablissement``.
