@@ -1,6 +1,6 @@
 :og:image: https://docs.getodk.org/_static/img/xlsform-first-form.png
 
-Tutoriel XLSForm : Votre premier formulaire
+Tutoriel XLSForm : votre premier formulaire
 ===========================================
 
 Les formulaires ODK sont créés en utilisant des feuilles de calcul qui suivent les règles du standard XLSForm.
