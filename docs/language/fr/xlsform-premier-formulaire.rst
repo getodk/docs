@@ -67,7 +67,7 @@ Ajoutons une question de type "integer" n'autorisant que des valeurs positives
 #. Dans la colonne ``label``, mettez ``Combien d'élèves sont inscrits ?``
 #. Dans la colonne ``required``, mettez ``yes``
 #. Faisons en sorte que seul un nombre positif puisse être renseigné. Dans la colonne ``constraint``, mettez ``. > 0`` pour spécifier que la valeur renseignée (``.``) doit être supérieure à 0.
-#. Affichons un messages aux collecteurs de données s'ils renseignent une valeur non autorisée. Dans la colonne ``constraint_message``, mettez ``La valeure doit être un nombre positif``
+#. Affichons un messages aux collecteurs de données s'ils renseignent une valeur non autorisée. Dans la colonne ``constraint_message``, mettez ``La valeur doit être un nombre positif``
 
 Ajoutons une question permettant de choisir plusieurs réponses
 --------------------------------------------------------------
@@ -134,22 +134,22 @@ Testez votre formulaire dans Central
 .. note::
    Vous n'avez pas encore de serveur ODK Central ? :ref:`getting-started-get-central` ou utilisez `XLSForm Online <https://getodk.org/xlsform>`_ pour tester votre formulaire dans un navigateur web.
 
-#. Enreigistrez ou téléchargez votre formulaire dans un fichier XLSX.
+#. Enregistrez ou téléchargez votre formulaire dans un fichier XLSX.
 #. Connectez vous à votre serveur Central.
 #. Si vous n'avez pas encore de Projet, créez en un en nommez le.
 #. Cliquez sur le bouton "Nouveau" à coté de ``Formulaires``.
 #. Glissez et déposez votre fichier XLSX ou cliquez sur le bouton "Parcourir".
    
-   .. image:: /img/xlsform-first-form/school-census-upload.*
+   .. image:: ../../img/language/fr/xlsform-premier-formulaire/upload-formulaire-recensement-etablissments.*
      :scale: 30%
-     :alt: ODK Central's form upload dialog.
+     :alt: La boite de dialogue de chargement de formulaire d'ODK Central.
 
 #. Cliquez sur le bouton :guilabel:`Aperçu` pour voir votre formulaire dans votre navigateur web 🎉
   
-   .. image:: /img/xlsform-first-form/school-census-draft.*
+   .. image:: ../../img/language/fr/xlsform-premier-formulaire/ebauche-formulaire-recensement-etablissments.*
      :alt: ODK Central affichant une ébauche du formulaire de recensement des établissements scolaires. Il y a un cadre rouge autour du bouton "Aperçu" avec une flèche pointant dessus.
 
-   .. image:: /img/xlsform-first-form/school-census-preview.*
+   .. image:: ../../img/language/fr/xlsform-premier-formulaire/apercu-formulaire-recensement-etablissments.*
      :alt: ODK Central affichant un aperçu web du formulaire de recensement des établissements scolaires.
      :align: center
 
