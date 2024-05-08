@@ -110,7 +110,7 @@ Cette question portera sur les niveaux enseignés dans l'établissement. Nous pr
 #. Dans la colonne ``required``, mettez ``yes``
 #. Faisons apparaître les choix horizontalement, les uns à coté des autres. Dans la colonne ``appearance``, mettez ``columns``.
 
-Ajoutons une question qui sera montrée en fonction d'un réponse précédente
+Ajoutons une question qui sera montrée en fonction d'une réponse précédente
 --------------------------------------------------------------------------
 Elle portera sur les options enseignées au lycée.
 
