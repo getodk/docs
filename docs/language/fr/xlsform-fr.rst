@@ -11,7 +11,7 @@ De nombreux utilisateurs utilisent Google Sheets ou Excel pour le web afin de po
 
 * :doc:`Tutoriel XLSForm <xlsform-premier-formulaire>`
 
-Si vous êtes plus aventureux, vous pouvez ignorer ce tutoriel, faire une copie du modèle ci-dessous, et apprendre à concevoir votre formualire ainsi.
+Si vous êtes plus aventureux, vous pouvez ignorer ce tutoriel, faire une copie du modèle ci-dessous, et apprendre à concevoir votre formulaire ainsi.
 
 * `Google Sheet <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_ (utilisez `Fichier > Créer une copie`)
 * `Microsoft Excel (XLSX) file <https://github.com/getodk/xlsform-template/raw/main/ODK%20XLSForm%20Template.xlsx>`_
@@ -27,11 +27,11 @@ La feuille survey
 
 A minima, un XLSForm contient une feuille nommée **survey** pour décrire les types et l'ordre des questions du formulaire. Elle doit contenir ces trois colonnes :
 
-- ``type``: the type of the field represented by each row. Supported types and how they are displayed are described :doc:`here <form-question-types>`.
-- ``name``: the name of the field represented by each row. This name will be used in your data results. It may not contain spaces and must start with a letter or underscore. Use a short and descriptive name. For example: ``date_of_birth``.
-- ``label``: the user-visible question text for the field represented by each row. For example: ``When was ${first_name} born?`` This text can :ref:`reference other fields <variables>` or :doc:`have translations <form-language>`.
+- ``type``: le type du champ représenté par chaque ligne. Les types supportés ainsi que leurs apparences sont décrits :doc:`ici <form-question-types>`.
+- ``name``: le nom du champ représenté par chaque ligne. Ce nom sera utilisé dans vos données. Il ne peut pas contenir d'espace et doit débutr par une lettre ou un tiret bas. Utilisez un nom court et porteur de sens. Par exemple : ``date_de_naissance``.
+- ``label``: la question affichée à l'utilisateur pour le champ représenté par chaqiue ligne. Par exemple : ``Quand ${first_name} est-il/elle né(e) ?`` Ce texte peut :ref:`reférencer d'utres champs <variables>` ou :doc:`être traduit <form-language>`.
 
-The survey sheet can have many other columns to represent different :doc:`question types <form-question-types>` and :doc:`form logic <form-logic>`. You can see the most commonly-used columns in `this template <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_.
+La feuille "survey" peut avoir de nombreuses autres colonnes pour représenter différents :doc:`types de questions <form-question-types>` et :doc:`logiques de formulaires <form-logic>`. Vous pouvez voir les colonnes les plus couramment utilisées dans `ce modèle <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_.
 
 .. _choices-sheet:
 
