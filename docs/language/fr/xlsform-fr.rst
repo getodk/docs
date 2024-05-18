@@ -16,7 +16,7 @@ Si vous êtes plus aventureux, vous pouvez ignorer ce tutoriel, faire une copie 
 * `Google Sheet <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_ (utilisez `Fichier > Créer une copie`)
 * `Microsoft Excel (XLSX) file <https://github.com/getodk/xlsform-template/raw/main/ODK%20XLSForm%20Template.xlsx>`_
 
-Une fois conçu votre formulaire, vous pouvez :ref:`le télécharger directement sur votre serveur ODK Central <central-forms-upload>`. Si votre serveur ODK ne dispose pas des dernières fonctionnalités d'XLSForm ou si vous souhaitez avoir un aperçu de votre formulaire dans un navigateur web, essayez `XLSForm Online <https://getodk.org/xlsform>`_.
+Une fois votre formulaire conçu, vous pouvez :ref:`le télécharger directement sur votre serveur ODK Central <central-forms-upload>`. Si votre serveur ODK ne dispose pas des dernières fonctionnalités d'XLSForm ou si vous souhaitez avoir un aperçu de votre formulaire dans un navigateur web, essayez `XLSForm Online <https://getodk.org/xlsform>`_.
 
 La documentation d'ODK propose tous les exemples de conception dans des formulaires XLSForm et décrit comment les formulaires XLSForm sont utilisés par les outils d'ODK. Le `Formulaire "All Widgets" <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ>`_ contient des exemples pour chacun des différents types de questions.
 
