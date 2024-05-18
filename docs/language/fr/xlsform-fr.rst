@@ -3,22 +3,22 @@ XLSForm
 
 .. _xlsform-introduction:
 
-:dfn:`XLSForm` est un standard pour concevoir des formulaires dans Excel. Les formulaires XLSForm (XLSForms dans la suite de la page) sont simples à prendre en main et le standard permet de définir des formulaires complexes. 
+:dfn:`XLSForm` est un standard pour concevoir des formulaires dans Excel. Les formulaires XLSForm sont simples à prendre en main et le standard permet de définir des formulaires complexes. 
 
-Les formulaires XLSForm peuvent être créés et modifiés par toute application permettant de produire des documents ``.xlsx``. Cela signifie qu'ils sont "portables" et qu'ils peuvent tirer parti de nombreuses fonctions généralement disponibles dans les tableurs, telles que les formules, les commentaires et la gestion des versions. 
+Les formulaires XLSForm peuvent être créés et modifiés par toute application permettant de produire des documents ``.xlsx``. Cela signifie qu'ils sont "portables" et qu'ils peuvent tirer profit des nombreuses fonctions généralement disponibles dans les tableurs, telles que les formules, les commentaires et la gestion des versions. 
 
 De nombreux utilisateurs utilisent Google Sheets ou Excel pour le web afin de pouvoir collaborer ou partager publiquement leurs formulaires. Le meilleur moyen de débuter avec XLSForm est d'utiliser le tutoriel ci-dessous.
 
 * :doc:`Tutoriel XLSForm <xlsform-premier-formulaire>`
 
-Si vous êtes plus aventureux, vous pouvez ignorer ce tutoriel, faire une copie du modèle ci-dessous, et apprendre à concevoir votre formulaire ainsi.
+Si vous êtes plus aventureux, vous pouvez ignorer ce tutoriel, faire une copie du modèle ci-dessous, et apprendre par vous même à concevoir votre formulaire.
 
 * `Google Sheet <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_ (utilisez `Fichier > Créer une copie`)
 * `Microsoft Excel (XLSX) file <https://github.com/getodk/xlsform-template/raw/main/ODK%20XLSForm%20Template.xlsx>`_
 
-Une fois conçu votre formulaire, vous pouvez :ref:`télécharger votre XLSForm directement sur votre serveur ODK Central <central-forms-upload>`. Si votre serveur ODK ne dispose pas des dernières fonctionnalités d'XLSForm ou si vous souhaitez avoir un aperçu de votre formulaire dans un navigateur web, essayez `XLSForm Online <https://getodk.org/xlsform>`_.
+Une fois conçu votre formulaire, vous pouvez :ref:`le télécharger directement sur votre serveur ODK Central <central-forms-upload>`. Si votre serveur ODK ne dispose pas des dernières fonctionnalités d'XLSForm ou si vous souhaitez avoir un aperçu de votre formulaire dans un navigateur web, essayez `XLSForm Online <https://getodk.org/xlsform>`_.
 
-La documentation ODK montre tous les exemples de conception dans des formulaires XLSForm et décrit comment les formulaires XLSForm sont utilisés par les outils ODK. Le `Formulaire All Widgets <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ>`_ contient des exemples de chacun des différents types de qustions.
+La documentation d'ODK propose tous les exemples de conception dans des formulaires XLSForm et décrit comment les formulaires XLSForm sont utilisés par les outils d'ODK. Le `Formulaire "All Widgets" <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ>`_ contient des exemples pour chacun des différents types de questions.
 
 .. _survey-sheet:
 
@@ -28,8 +28,8 @@ La feuille survey
 A minima, un XLSForm contient une feuille nommée **survey** pour décrire les types et l'ordre des questions du formulaire. Elle doit contenir ces trois colonnes :
 
 - ``type``: le type du champ représenté par chaque ligne. Les types supportés ainsi que leurs apparences sont décrits :doc:`ici <form-question-types>`.
-- ``name``: le nom du champ représenté par chaque ligne. Ce nom sera utilisé dans vos données. Il ne peut pas contenir d'espace et doit débutr par une lettre ou un tiret bas. Utilisez un nom court et porteur de sens. Par exemple : ``date_de_naissance``.
-- ``label``: la question affichée à l'utilisateur pour le champ représenté par chaqiue ligne. Par exemple : ``Quand ${first_name} est-il/elle né(e) ?`` Ce texte peut :ref:`reférencer d'utres champs <variables>` ou :doc:`être traduit <form-language>`.
+- ``name``: le nom du champ représenté par chaque ligne. Ce nom sera utilisé dans vos données. Il ne peut pas contenir d'espace et doit débuter par une lettre ou un tiret bas. Utilisez un nom court et porteur de sens. Par exemple : ``date_de_naissance``.
+- ``label``: la question affichée à l'utilisateur pour le champ représenté par chaque ligne. Par exemple : ``Quand ${first_name} est-il/elle né(e) ?`` Ce texte peut :ref:`référencer d'autres champs <variables>` ou :doc:`être traduit <form-language>`.
 
 La feuille "survey" peut avoir de nombreuses autres colonnes pour représenter différents :doc:`types de questions <form-question-types>` et :doc:`logiques de formulaires <form-logic>`. Vous pouvez voir les colonnes les plus couramment utilisées dans `ce modèle <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_.
 
@@ -38,73 +38,75 @@ La feuille "survey" peut avoir de nombreuses autres colonnes pour représenter d
 La feuille choices
 ------------------
 
-If you have :ref:`multiple choice questions <select-widgets>`, you will also need a **choices** sheet to specify choices for those questions. It must have these three columns:
+Si vous avez des :ref:`questions à choix multiples <select-widgets>`, une feuille **choices** sera nécessaire pour spécifier les réponses possibles pour ces questions. Elle doit contenir ces trois colonnes :
 
-- ``list_name``: The unique ID that identifies a group of choices. It may not contain spaces and must start with a letter or underscore. Use a short and descriptive name. For example: ``yes_no_maybe``.
-- ``name``: the name of the field represented by each row. It may not contain spaces and must start with a letter or underscore. This name will be used in your data results so it's best to use a short and descriptive name (e.g., ``y`` for Yes and ``n`` for No).
-- ``label``: the user-visible text for the choice represented by each row. For example: ``Yes``, ``No``, and ``Maybe``. This text can :ref:`reference other fields <variables>` or :doc:`have translations <form-language>`.
+- ``list_name``: l'identifiant unique d'un ensemble de choix. Il ne peut pas contenir d'espaces et doit débuter par une lettre ou un "underscore". Utilisez un nom court et porteur de sens. Par exemple : ``oui_non_peut_etre``.
+- ``name``: le nom du champ représenté par la chaque ligne. Il ne peut contenir d'espace et doit débuter par une lettre ou un "underscore". Ce nom sera la valeur stockée dans vos données, il est donc préférable d'utiliser des valeurs courtes et descriptives (par exemple, ``o`` pour Oui et ``n`` pour Non).
+- ``label``: le texte affiché à l'utilisateur du formulaire pour chacun des choix représentés par chaque ligne. Par exemple : ``Oui``, ``Non``, et ``Peut-être``. Ce texte peut :ref:`faire référence à d'autres champs <variables>` ou :doc:`être traduit en différentes langues<form-language>`.
 
-Choices with the same list name are considered part of a related set of choices and will appear together for a question. This also allows a set of choices to be reused for multiple questions (for example, yes/no questions).
+Les choix portant le même nom de liste font partie d'un même ensemble et ils apparaîtront ensemble pour une question. Ces ensembles peuvent être réutilisés pour plusiers questions au sein du formulaire (par exemple, les questions pour lesquelles une réponse oui/non/peut-être est attendue).
 
 .. _settings-sheet:
 
 La feuille settings
 -------------------
 
-You should also include a **settings** sheet to uniquely identify your form definition and its current version. We recommend specifying at least the following columns:
+Vous pouvez aussi intégrer une feuille **settings** afin d'identifier de manière unique votre définition de formulaire et sa version courante. Nous recommandons de spécifier a minima les colonnes suivantes :
 
-- ``form_title``: The title that will be displayed by tools that list this form.
-- ``form_id``: The unique ID that identifies this form to tools that use it. It may not contain spaces and must start with a letter or underscore. Use a descriptive name no more than 64 characters. For example: ``bench_inventory_2021``.
-- ``version``: The unique version code that identifies the current state of the form. A common convention is to use a format like yyyymmddrr. For example, ``2017021501`` is the 1st revision from Feb 15th, 2017.
-- ``instance_name``: An :ref:`expression <expressions>` that will be used to represent a specific filled form created from this form definition. For example, ``concat(${first_name}, "-", ${age})``. :ref:`Learn more <instance-name>`.
+- ``form_title``: Le titre qui sera affiché par les outils pour lister le formulaire.
+- ``form_id``: L'identifiant unique de ce formulaire dans les outils qui l'utilisent. Il ne doit pas contenir d'espace et doit débuter par une lettre ou un "underscore". Utilisez un nom porteur de sens de moins de 64 caractères. Par exemple : ``inventaire_des_abres_2021``.
+- ``version``: Le code unique de la version courante du formulaire. Une convention est d'utiliser un format tel que yyyymmddrr. Par exemple, ``2017021501`` est la première révision du 15 février 2017.
+- ``instance_name``: Une :ref:`expression <expressions>` qui sera utilisée pour nommer une instance spécifique de ce formulaire. Par exemple, ``concat(${prenom}, "-", ${age})``. :ref:`En savoir plus <instance-name>`.
 
-Other available columns are:
+Les autres colonnes disponibles sont :
 
-- ``default_language``: Specifies the default language name in a form that has multiple defined languages. For more information on using multiple languages, refer to :ref:`multi-language forms <switching-languages>`.
-- ``public_key``: This attribute is necessary for enabling :ref:`encryption <defining-encrypted-form>`. It represents a base64-encoded RSA public key. The corresponding private key will be required for decrypting submissions and should not be included in the form definition.
-- ``auto_send``: When set to true, any finalized forms will be automatically sent as soon as a connection becomes available. If present, it will override the app-level :ref:`Auto send <auto-send>` setting.
-- ``auto_delete``: When set to true, successfully submitted forms will be immediately deleted from the device. If present, it will override the app-level :ref:`Delete after send <delete-after-send>` setting.
+- ``default_language``: Sépcifie la langue par défaut d'un formulaire disposant de plusieurs traducions. Pour de plus amples informations sur l'utilisation de plusieurs langues, référez vous à :ref:`multi-language forms <switching-languages>`.
+- ``public_key``: Cet attribut est nécessaire pour activer :ref:`le chiffrement <defining-encrypted-form>`. Il représente une clé RSA publique encodée en base64. La clé privée correspondante sera requise pour déchiffrer les soumissions et ne devra pas être incluse dans la définition du formulaire.
+- ``auto_send``: Quand elle est paramétrée à "true", chaque formulaire finalisé sera automatiquement envoyé dés qu'une connexion sera disponible. Si cette valeur est renseignée, elle écrasera le paramètre :ref:`Envoi automatique <auto-send>` défini au niveau de l'application.
+- ``auto_delete``: Quand elle est paramétrée à "true", les formulaires envoyés avec succès seront immédiatement supprimés du terminal. Si cette valeur est renseignée, elle écrasera le paramètre :ref:`Supprimer après envoi<delete-after-send>` défini au niveau de l'application.
 
 .. _instance-name:
 
-Naming filled forms
-~~~~~~~~~~~~~~~~~~~
+Nommer les formulaires remplis
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In an XLSForm's **settings** sheet, you can add an ``instance_name`` column and specify an :ref:`expression <expressions>` to use a specific filled form's contents in its name. This name will be shown in several places to help guide data collection and analysis. You should pick a name that uniquely identifies the filled form and the data it had captured. For example:
+Dans la feuille **settings** d'un formulaire XLSForm, vous pouvez ajouter une colonne ``instance_name`` et spécifier une :ref:`expression <expressions>` pour utiliser une valeur contenue dans le formulaire dans son nom. Ce nom sera affiché en plusieurs endroit pour faciliter la collecte de données et l'analyse. Vous devriez utiliser un nom qui identifie de manière unique le formulaire et les données qu'il contient. Par exemple :
 
-- If a single filled form represents data about a real-world thing like a person or park bench, your ``instance_name`` expression should include some information to uniquely identify the thing like the person's name or the park bench's location and current status.
-- If a single filled form represents data about an observation, consider including the date and time of the observation in the ``instance_name`` expression.
-- If your form definition includes a repeat, consider including the repeat count in the ``instance_name`` expression.
+- Si un formulaire rempli contient les données relatives à un objet du monde réel, tel qu'une personne ou un banc public, votre expression ``instance_name`` pourra inclure des informations pour identifier de manière unique l'objet décrit comme le nom de la personne ou l'emplacement du banc.
+- Si un formulaire rempli contient les données d'une observation, considérez d'inclure la date et l'heure de l'observation dans l'expression ``instance_name``.
+- Si votre définition de formulaire contient un "repeat", considérez l'utilisation du nombre de répétitions dans l'expression ``instance_name``.
 
 .. _instance-name-collect:
 
 Filled form names in Collect
 """"""""""""""""""""""""""""
 
-Each filled form is identified by its ``instance_name`` value in :doc:`Collect <collect-intro>`'s :guilabel:`Edit Saved Form`, :guilabel:`Send Finalized Form` and :guilabel:`View Sent Form` lists. 
+Chaque formulaire rempli est identifié par son nom d'instance ``instance_name`` dans les listes :guilabel:`Editer les Formulaires Sauvegardés`, :guilabel:`Envoyer les formulaires finalisés` et :guilabel:`Voir les Formulaires Envoyés` de :doc:`Collect <collect-intro>`. 
 
-In workflows where forms have to be be filled in multiple different steps, a useful ``instance_name`` expression will make it much easier to find which filled form to edit. If forms only have to be edited under certain conditions (e.g. not all household members were available), you can include this status in the ``instance_name``.
+Pour les "workflows" dans lesquels les formulaires doivent être saisis en plusieurs étapes, une valeur d'``instance_name`` explicite facilitera la recherche d'un formulaire à éditer. Si des formulaires doivent être édités sous certaines conditions (par exemple s'il manquait des habitants lors de l'enquête), vous pouvez inclure ce statut dans le nom de l'instance (``instance_name``).
 
-In the :guilabel:`View Sent Form` list, ``instance_name`` can be helpful to identify which data collection tasks have been completed. For example, if a data collector needs to interview 25 specific people and the ``instance_name`` for each filled form identifies the respondent, they can go to :guilabel:`View Sent Form` to verify which subset of interviews they have already completed. 
+Dans la liste :guilabel:`Voir les Formulaires Envoyés`, le nom d'instance (``instance_name``) peut aider à identifier les collectes de données achevées. Par exemple si les enquêteurs doivent interviewer 25 personnes spécifiques, et que l'``instance_name`` identifie chacun des répondants, ils peuvent vérifier dans :guilabel:`Voir les Formulaires Envoyés` quels ensembles d'entretiens sont finalisés.
 
-A sent form's ``instance_name`` is maintained after it is deleted. This makes it possible to confirm what work has been completed even if submissions are configured to :ref:`delete after send <delete-after-send>`. However, it does mean sensitive data should be avoided in ``instance_name``.
+L'``instance_name`` d'un formulaire envoyé est conservé après sa suppression. Cela permet de confirmer quel travail a été effectué, même si les soumissions sont paramétrées pour être :ref:`supprimées après envoi <delete-after-send>`. Par ailleurs, cela signifie que des données sensibles sont à prohiber dans la valeur d'``instance_name``.
 
-The ``instance_name`` is also used to identify filled forms in Collect's :doc:`filled form map <collect-form-map>`.
+Le nom d'instance est aussi utilisé pour identifier les formulaires dans :doc:`la carte des formulaires remplis <collect-form-map>` dans Collect.
 
 .. _instance-name-central:
 
-Filled form names in Central
-""""""""""""""""""""""""""""
+Noms des formulaires remplis dans Cnetral
+"""""""""""""""""""""""""""""""""""""""""
 
-Each submission in Central has its own :ref:`detail page <central-submissions-details>` which provides basic information about the submission, an activity history of action and discussion on that submission.
+Chaque soumission dans Central a sa propre :ref:`page de détail <central-submissions-details>` qui fournit des informations basiques sur la soumission, un historique de l'activité et de discussion relatives à cette soumission.
 
-The title at the top is pulled from the ``instance_name`` and it makes navigation much easier to have friendly names at the top of the page and in the web browser title and tab.
+Le titre du haut est extrait du nom d'instance (``instance_name``) et utiliser des noms explicites facilite la navigation en les affichant en haut de page et dans le titre du navigateur et de l'onglet.
 
 .. _entities-sheet:
 
-The entities sheet
+La feuille entities
 -------------------
 
-:doc:`Entities <central-entities>` let you share information between forms so you can collect longitudinal data, manage cases over time, and support other complex workflows.
+Les :doc:`Entitiés <central-entities>` vous permettent de partager de l'information entre vos formulaires afin que vous puissiez collecter des données longitudinales, faire des suivis dans le temps et mettre en œuvre des processus complexes.
 
-Review the :doc:`Entities page <central-entities>` to learn more about what Entities are and how to use them.
+Visitez :doc:`la page Entités <central-entities>` pour en apprendre plus à propos des entités et comment les utiliser.
+
+
