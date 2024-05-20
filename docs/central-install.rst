@@ -51,7 +51,7 @@ If you are comfortable with Linux server administration, you can self-host Centr
   To self-host Central, you must have a domain name (e.g., `central.example.com`) mapped to your server. For security reasons, Central will not work with just an IP address (e.g., `93.184.216.34`).
 
 .. tip::
-  We offer ODK Support packages for large organizations who have a compliance or legal need to self-host, but don't want their staff to take on the added cost and responsibility of keeping a Central install fast, reliable, and secure. Pricing starts at $19K/year. Email `support\@getodk.org <mailto:support\@getodk.org?subject=ODK\ Self-Host\ Support\ pricing>`_ for a quote.
+  We offer ODK Support packages for large organizations who have a compliance or legal need to self-host, but don't want their staff to take on the added cost and responsibility of keeping a Central install fast, reliable, and secure. Pricing starts at $25K/year. Email `support\@getodk.org <mailto:support\@getodk.org?subject=ODK\ Self-Host\ Support\ pricing>`_ for a quote.
 
 Installing on DigitalOcean
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
