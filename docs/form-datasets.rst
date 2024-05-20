@@ -138,15 +138,29 @@ The ``item`` blocks are analogous to rows in the CSV representation. Each ``item
 Looking up values in datasets
 ---------------------------------
 
-:ref:`XPath paths <xpath-paths>` can be used to look up values in internal or external datasets. These paths will start with the ``instance(<instance name>)`` function to identify which dataset is being accessed. The next part of the path is generally ``/root/item`` because of the :ref:`XML structure used to represent datasets for selects <selects-from-xml>`. The only exception is when using custom XML files which may have arbitrary schemas if not used for selects.
+You can look up values in internal or external datasets. You will generally do this in ``calculate`` fields but you can also look up values directly in ``label``s to show them to users or include looked up values in constraints or other expressions.
 
-For internal datasets, the instance name is the ``list_name`` specified on the **choices** sheet. For example, to reference the population of the selected state given the form :ref:`above <selects-from-csv>`, the instance name to use is ``states``. The expression would be ``instance("states")/root/item[name = ${state}]/population``. To understand this expression better, read the section on :ref:`XPath paths <xpath-paths>` and especially the subsection about :ref:`XPath paths for filtering <xpath-predicates-for-filtering>`. You could also do things like count the number of states with a population above a certain threshold using an expression like ``count(instance("states")/root/item[population > ${pop_threshold}])``.
+Expressions to look up values in datasets always start with ``instance("<instance name>")`` to identify which dataset is being accessed. If you have a choice list named ``places`` or an attached CSV with filename ``places.csv``, your lookup expressions will start with ``instance("places")``.
+
+The next part of the expression is ``/root/item``. This means to consider every single **item** in your choice list or attached file.
+
+You then generally need to have a filter in square brackets to specify which item(s) to actually use. For example, if you have a choice list or attached file named ``states`` and want to look up a value about a state that was entered by the user in a form field called ``my_state``, you would use ``name = ${my_state}`` as your filter expression. This is exactly the same kind of expression you would write as a ``choice_filter``.
+
+Your filter expression can result in one or more items being selected. Filtering to a result that includes multiple items is particularly useful for sums and counts. For example, to count the number of states with a population above a certain threshold:
+
+``count(instance("states")/root/item[population > ${pop_threshold}])``
+
+To use a single value from the item(s) selected, specify which column/property to use after the filter. For example, if you want to look up the population of the state which your user filled in as ``my_state``, your full expression would be:
+
+``instance("states")/root/item[name = ${my_state}]/population``
+
+To get the total population across states with a population above a certain threshold:
+
+``sum(instance("states")/root/item[population > ${pop_threshold}]/population)``
 
 .. note::
 
-  Due to a pyxform limitation, it is necessary for there to be some value in the `choice_filter` column (for at least one question) when referencing internal datasets. If none of the questions in your form need filtering, put `true()` as the `choice_filter` value.
-
-For external datasets, the instance name is the filename specified in the ``select_one_from_file`` or ``select_multiple_from_file`` declaration without the file extension. For example, to look up a ward's label given the form :ref:`above <selects-from-csv>`, the instance name to use is ``wards`` because the filename referenced is ``wards.csv``. The expression would be ``instance("wards")/root/item[name = ${ward}]/label``. 
+  You don't need to deeply understand the detail of these expressions to use them effectively. If you're interested in learning more, see the section on :ref:`XPath paths <xpath-paths>`. In particular, ``/root/item`` comes from the :ref:`XML structure used to represent datasets for selects <selects-from-xml>`. If you attach custom XML files to your form, you may have a different root node name.
 
 .. _form-datasets-attaching-csv:
 
