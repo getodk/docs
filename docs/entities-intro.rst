@@ -17,11 +17,18 @@ Concepts
 What are Entities?
 -------------------
 
-In the ODK context, "Entity" can be thought of as a fancy word for "thing". If your project involves things that need to be shared between forms and may change over time, you can represent them as Entities. You can use Entities to represent concrete things like trees, people or cities. You can also represent more conceptual Entities like tree visits, malaria cases or city ratings.
+In the ODK context, an "Entity" can be thought of a "thing". If your project involves things that need to be shared between forms and may change over time, you can represent them as Entities. You can use Entities to represent concrete things like trees, people or cities. You can also represent more conceptual Entities like tree visits, malaria cases or city ratings.
 
-Entities are organized in Entity Lists that group together Entities of the same type. You can think of Entity Lists as spreadsheets or databases that are shared across forms. Forms can create, access and update Entities. You can also think of forms as the verbs in your project and Entities as the nouns.
+Entities are organized in Entity Lists that group together Entities of the same type. You can think of Entity Lists as spreadsheets or databases that are shared across forms. Forms can create, access and update Entities. You can also think of Entities as the nouns (trees) and the forms as the verbs (Register a tree).
 
 ODK's model has historically been form-based: every workflow starts by opening a blank form and filling it out. As we build out more Entity features, we are working towards an Entity-based data collection model in which workflows start by selecting an Entity. Currently, you can get close to this by having your forms start with a question that lets the user select an Entity from a list.
+
+What is the relationship between Entities and forms?
+------------------------------------------------------
+
+Entities and forms exist at the same level in projects. Forms are used to define the actions that can be taken in your project and Entities store data that can be accessed as part of taking those actions. Forms can be defined such that their submissions create or update Entities. Currently, a form submission can create or update at most 1 Entity. Eventually, it will be possible to create multiple Entities of the same time from a form repeat or to save form field values to different Entities' properties.
+
+Once a form submission has been processed to result in Entity creation or update, the submission and the resulting Entity exist independently from each other. That means that if you edit the form submission, those changes are not automatically applied to the related Entity. You can choose to apply them manually if applicable.
 
 Should I use Entities?
 -----------------------
@@ -63,13 +70,6 @@ While case management is a process that is familiar in many fields, it's not uni
 
 Even in fields where case management is common, there is often a need to support other kinds of workflows within the same tool and it can be awkward to use the word "case" in those contexts, especially when referencing concrete entities such as participants or hospitals. Our goal is to let you define Entity Lists that make sense in your context and to allow you to use and connect them in ways that best support your workflow.
 
-What is the relationship between Entities and forms?
-------------------------------------------------------
-
-Entities and forms exist at the same level in projects. Forms are used to define the actions that can be taken in your project and Entities store data that can be accessed as part of taking those actions. Forms can be defined such that their submissions create or update Entities. Currently, a form submission can create or update at most 1 Entity. Eventually, it will be possible to create multiple Entities of the same time from a form repeat or to save form field values to different Entities' properties.
-
-Once a form submission has been processed to result in Entity creation or update, the submission and the resulting Entity exist independently from each other. That means that if you edit the form submission, those changes are not automatically applied to the related Entity. You can choose to apply them manually if applicable.
-
 Why can't I just flow data from one form to another form?
 -----------------------------------------------------------
 
@@ -86,12 +86,28 @@ In many contexts, the information that needs to be shared between forms is minim
 Limitations
 ============
 
-What are the implications of not having offline Entities support?
---------------------------------------------------------------------
+I filled out a registration form and don't immediately see my Entity in follow-up forms, why?
+------------------------------------------------------------------------------------------------
 
 Currently, in order for a submission to create or update an Entity, that submission has to be processed by your Central server. That means that if you create a new Entity or update an existing one with a form, you won't see that change reflected in follow-up forms until you download the latest update to your Entity List from your server.
 
 If you usually have Internet connectivity, this is unlikely to be very important. Similarly, if your registration and follow-up periods happen at very different times, this limitation is not a problem. But for workflows in which follow-up needs to happen immediately after registration or multiple follow-ups may be needed while operating offline, this limitation is significant. Another common use case for Offline Entities is to help a field worker track their completed work while offline. Offline Entity support is expected in late 2024, read more `on the forum <https://forum.getodk.org/t/collect-coming-soon-offline-entities/46505>`_.
+
+Can I have a million Entities?
+------------------------------
+
+
+
+
+My form captures data on multiple different things in a repeat. Can I create one Entity per repeat instance?
+-------------------------------------------------------------------------------------------------------------
+
+Not yet but this is something we eventually intend to support. What you can do for now is capture base information in one form and then use a separate form to create each Entity that you currently represent by repeat instances. You can link those submissions to their parent by including the parent id in the child Entity.
+
+My form captures data about multiple different things, not in a repeat. Can I create multiple related entities?
+----------------------------------------------------------------------------------------------------------------
+
+Not yet but this is something we eventually intend to support. Currently you need to define one form per Entity that needs to be created or updated. You can establish relationships between those Entities by sharing a common value between them.
 
 Alternatives
 =============
@@ -155,8 +171,8 @@ All of these are examples of tools that make it possible to define data tables a
 
 ODK remains closer to surveying platforms but Entities give it workflow automation functionality.
 
-Entity mechanics
-================
+Mechanics
+===========
 
 How do I access Entities from my forms?
 ---------------------------------------
@@ -223,13 +239,3 @@ Entities can be very useful for tracking work completion. Computing counts of En
 When the goal of a project is to deliver a service or to understand the final state of some Entities, it may be most practical to base analysis on Entities themselves.
 
 Many projects involve capturing in-depth survey data at multiple points in time. In those cases, it's not important and can even be undesirable for historical data to be sent back to devices. In those cases, Entities can be used to drive the workflow and analysis can be conducted on survey data, using Entity ids to link submissions to each other.
-
-My form captures data on multiple different things in a repeat. Can I create one Entity per repeat instance?
--------------------------------------------------------------------------------------------------------------
-
-Not yet but this is something we eventually intend to support. What you can do for now is capture base information in one form and then use a separate form to create each Entity that you currently represent by repeat instances. You can link those submissions to their parent by including the parent id in the child Entity.
-
-My form captures data about multiple different things, not in a repeat. Can I create multiple related entities?
-----------------------------------------------------------------------------------------------------------------
-
-Not yet but this is something we eventually intend to support. Currently you need to define one form per Entity that needs to be created or updated. You can establish relationships between those Entities by sharing a common value between them.
