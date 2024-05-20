@@ -11,17 +11,17 @@ If you've heard something about ODK Entities and want to better understand wheth
 
 If you're someone who prefers to learn by doing, you may prefer to jump straight into the tutorial on :doc:`building a community reporting tool with Entities <tutorial-community-reporting>`.
 
-Entity concepts
-================
+Concepts
+=========
 
 What are Entities?
 -------------------
 
 In the ODK context, "Entity" can be thought of as a fancy word for "thing". If your project involves things that need to be shared between forms and may change over time, you can represent them as Entities. You can use Entities to represent concrete things like trees, people or cities. You can also represent more conceptual Entities like tree visits, malaria cases or city ratings.
 
-Entities are organized in Entity Lists that group together Entities of the same type. You can think of Entity Lists as spreadsheets or databases that are shared across forms. Forms can create, access and update Entities.
+Entities are organized in Entity Lists that group together Entities of the same type. You can think of Entity Lists as spreadsheets or databases that are shared across forms. Forms can create, access and update Entities. You can also think of forms as the verbs in your project and Entities as the nouns.
 
-ODK's model has historically been form-based: 
+ODK's model has historically been form-based: every workflow starts by opening a blank form and filling it out. As we build out more Entity features, we are working towards an Entity-based data collection model in which workflows start by selecting an Entity. Currently, you can get close to this by having your forms start with a question that lets the user select an Entity from a list.
 
 Should I use Entities?
 -----------------------
@@ -59,9 +59,6 @@ You can use ODK Entities to support managing cases, issues, problems, incidents,
 .. seealso::
     The :doc:`Community reporting tutorial <tutorial-community-reporting>` implements a simple case management workflow in which anyone can open a case (called "problem" in the tutorial) and specific individuals can resolve them.
 
-Why doesn't ODK use the term "case management?"
------------------------------------------------
-
 While case management is a process that is familiar in many fields, it's not universal. ODK has always been a generic tool and by using more a more general approach, we believe we can better support the needs of users who work in diverse domains.
 
 Even in fields where case management is common, there is often a need to support other kinds of workflows within the same tool and it can be awkward to use the word "case" in those contexts, especially when referencing concrete entities such as participants or hospitals. Our goal is to let you define Entity Lists that make sense in your context and to allow you to use and connect them in ways that best support your workflow.
@@ -86,8 +83,18 @@ With an Entity concept, you can update the Entity's status with each related sub
 
 In many contexts, the information that needs to be shared between forms is minimal, sometimes only an id and label are needed. Sometimes the subjects of a workflow are known ahead of time, either from a prior ODK form or some other system. The Entity concept makes both of these cases straightforward and intuitive to represent.
 
-Entities alternatives
-======================
+Limitations
+============
+
+What are the implications of not having offline Entities support?
+--------------------------------------------------------------------
+
+Currently, in order for a submission to create or update an Entity, that submission has to be processed by your Central server. That means that if you create a new Entity or update an existing one with a form, you won't see that change reflected in follow-up forms until you download the latest update to your Entity List from your server.
+
+If you usually have Internet connectivity, this is unlikely to be very important. Similarly, if your registration and follow-up periods happen at very different times, this limitation is not a problem. But for workflows in which follow-up needs to happen immediately after registration or multiple follow-ups may be needed while operating offline, this limitation is significant. Another common use case for Offline Entities is to help a field worker track their completed work while offline. Offline Entity support is expected in late 2024, read more `on the forum <https://forum.getodk.org/t/collect-coming-soon-offline-entities/46505>`_.
+
+Alternatives
+=============
 
 What is the relationship between Entities and CSV form attachments?
 ---------------------------------------------------------------------
@@ -108,16 +115,26 @@ What is the relationship between Entities and choice lists?
 
 From a form design perspective, they are nearly identical! The only significant difference is that because Entity Lists are defined outside of a form, you need to explicitly attach them to your forms using :ref:`select_*_from_file <select-from-external-dataset>` or :ref:`csv-external <form-datasets-attaching-csv>`. Another difference is that there isn't currently support for media or translations to be defined for Entity Lists. Other than that, the way that you look up values in choice lists and Entity Lists using ``instance()`` is identical.
 
-There exists specialized software to support my workflow. Should I use that or ODK?
-------------------------------------------------------------------------------------
+Now that ODK has Entities, can it replace more specialized software that I use (DHIS2, Farmforce, etc)?
+-------------------------------------------------------------------------------------------------------
 
 ODK is a general-purpose data collection and workflow automation platform. Its strength is that it lets users quickly build tools that meet their exact needs. You can even think of ODK as an application-building platform: with data defined by your Entity Lists and behavior defined by your forms, you truly could implement nearly any app you can imagine in ODK.
 
 There exist many systems that are designed specifically for managing cases/incidents/issues in a specific field. Those systems typically have some built-in concepts around the types of teams that might be involved in the management process, the kinds of status changes that a case may go through, and how cases can be resolved.
 
-ODK Entities don't have any built-in concepts or structure to support managing a certain kind of data. This means you have complete freedom to represent only the things that matter to you and to define exactly what actions can be taken on them. This is extremely powerful but it also means that you have the responsibility to think through every design decision and test it.
+Here are some questions to consider when deciding between using ODK or specialized software:
+
+* Does the specialized software support needs like working in an offline environment?
+* Is the workflow encoded by the purpose-built software appropriate for my context? How close is it to my ideal workflow?
+* What concepts are important to my workflow and are these easy or hard to represent in ODK vs the specialized platform? (for example: caseworkers, referrals, payments,...)
+* How complex is my workflow? How many different states can my Entities be in? How many different actions can be taken on them?
+* Do I expect I'll want to iterate on my workflow over time as I learn more or conditions change?
+* Do I have the time and resources to fully test custom forms? (note that even using purpose-built tools is likely to involve some adaptation and testing time)
+* What are the implications of a form design error? (for example: a field worker will call me and I will fix it vs. someone could die because they fail to receive care)
 
 If you work in a field with well-defined workflows and specific software that already supports those workflows, we generally recommend using that over ODK. ODK's strength is in letting you define and refine your forms and Entity Lists to exactly match your workflow needs.
+
+ODK Entities don't have any built-in concepts or structure to support managing a certain kind of data. This means you have complete freedom to represent only the things that matter to you and to define exactly what actions can be taken on them. This is extremely powerful but it also means that you have the responsibility to think through every design decision and test it.
 
 You should also consider the complexity of your needs. Let's consider some case management examples. Cases can be short-lived with few, predictable interventions needed like in the case of a pothole reported to a city that may be closed within a week when the city repairs the pothole. Cases can also be very long-lived with many, unpredictable interventions needed like in the case of an refugee case that may last multiple years involving legal teams, humanitarians and politicians from multiple countries.
 
@@ -125,16 +142,7 @@ Workflows that are short-lived can very easily be represented in ODK and may not
 
 More complex workflows are more likely to benefit from a more structured and tested system, especially in contexts like healthcare where specific protocols have been developed and the implications of a workflow error are serious. On the other hand, complex workflows may benefit from the flexibility that ODK offers. For example, ODK makes it very easy to add new states that cases could be in as they are needed, new forms to support those states, or stop collecting or using data values that are found not to be useful.
 
-For many contexts, workflow needs are so specific and dynamic that a platform like ODK offers many benefits. Once you have defined your workflow in ODK, the forms you have built can become the standard, specialized way to support others in your field. Consider sharing your forms in contexts appropriate for your field such as `https://biodiversityforms.org <https://biodiversityforms.org/>`_.
-
-Some questions to consider when deciding between using ODK or purpose-built software:
-
-* Is the workflow encoded by the purpose-built software appropriate for my context? How close is is to my ideal workflow? Does it support needs like working in an offline environment?
-* What concepts are important to my workflow and are these easy or hard to represent in ODK? (for example: caseworkers, case states, case transfer...)
-* How complex is my workflow? How many different states can my Entities be in? How many different actions can be taken on them?
-* Do I expect I'll want to iterate on my workflow over time as I learn more or conditions change?
-* Do I have the time and resources to fully test custom forms? (note that even using purpose-built tools is likely to involve some adaptation and testing time)
-* What are the implications of a form design error? (for example: a field worker will call me and I will fix it vs. someone could die because they fail to receive care)
+For many contexts, workflow needs are so specific and dynamic that a platform like ODK offers many benefits. Once you have defined your workflow in ODK, the forms you have built can become the standard, specialized way to support others in your field.
 
 With Entities, is ODK now like Airtable/Notion/Monday.com/AppSheet?
 ---------------------------------------------------------------------
@@ -176,13 +184,6 @@ There are two parts to declaring that a form's submissions should create or upda
 .. seealso::
     * :doc:`Community reporting tutorial <tutorial-community-reporting>`
     * :ref:`Central Entities documentation <central-entities-follow-up-forms>`
-
-What does it mean that Entities can't currently be created or updated offline?
---------------------------------------------------------------------------------
-
-In order for a submission to create or update an Entity, that submission has to be processed by your Central server. That means that if you create a new Entity or update an existing one with a form, you won't see that change reflected in follow-up forms until you download the latest update to your Entity List from your server.
-
-If you usually have Internet connectivity, this is unlikely to be very important. Similarly, if your registration and follow-up periods happen at very different times, this limitation is not a problem. But for workflows in which follow-up needs to happen immediately after registration or multiple follow-ups may be needed while operating offline, this limitation is significant. Another common use case for Offline Entities is to help a field worker track their completed work while offline. Offline Entity support is expected in late 2024, read more `on the forum <https://forum.getodk.org/t/collect-coming-soon-offline-entities/46505>`_.
 
 What form fields should I save to my Entities as properties?
 ------------------------------------------------------------
