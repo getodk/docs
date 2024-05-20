@@ -5,14 +5,14 @@ Tutoriel XLSForm : votre premier formulaire
 
 Les formulaires ODK sont créés en utilisant des feuilles de calcul qui suivent les règles du standard XLSForm.
 
-L'utilisation d'un tableur pour concevoir des formulaires est très avantageuse car un maximum d'informations relatives à votre formulaire est visible sur un seul écran, vous pouvez partager facilement votre définition de formulaire, et vous pouvez utiliser les fonctions très pratiques proposées par les tableurs (formules, copier/coller, mise en forme automatique, etc.) pour concevoir votre formulaire.
+L'utilisation d'un tableur pour concevoir des formulaires est très avantageuse car vous pouvez visualiser un maximum d'informations relatives à votre formulaire sur un seul écran, partager facilement votre définition de formulaire, et utiliser les fonctions très pratiques proposées par les tableurs (formules, copier/coller, mise en forme automatique, etc.) pour concevoir votre formulaire.
 
 Quiconque dispose d'un tableur peut créer un formulaire ! En moins de 20 minutes, vous allez construire le formulaire de recensement d'établissements scolaires proposé ci-dessous.
 
 ..  youtube:: 22l0xHxJ3vo
    :width: 100%
 
-Si vous voulez un aperçu de ce à quoi ressemblera le formulaire, vous pouvez essayer cet `aperçu web <https://demo.getodk.cloud/-/single/uvOoPKYmRSpeUTab5bflNBBMT37L0u7?st=es1kN9UyLfov8T1SZEB8QCTw9gaGp6$s73b9muqj4czHlVown2UAcmyLt3uGNkcN>`_.
+Si vous souhaitez visualiser ce à quoi ressemblera le formulaire, vous pouvez essayer cet `aperçu web <https://demo.getodk.cloud/-/single/uvOoPKYmRSpeUTab5bflNBBMT37L0u7?st=es1kN9UyLfov8T1SZEB8QCTw9gaGp6$s73b9muqj4czHlVown2UAcmyLt3uGNkcN>`_.
 
 Objectifs
 ---------
@@ -21,7 +21,7 @@ Dans ce tutoriel, vous allez :
 
 * Concevoir un court formulaire utilisant différents types de questions
 * Utiliser les principaux éléments de structures logiques de XLSForm
-* Apprendre les prochaines étapes pour développer vos compétences
+* Apprendre quelles ressources utiliser pour développer vos compétences
 
 Prêt/prête à partir à la découverte d'XLSForm ? Alors en route !
 
@@ -103,7 +103,7 @@ Cette question portera sur les niveaux enseignés dans l'établissement. Nous pr
 #. Dans la ligne qui suit la question ``nombre_eleves``, mettez ``select_multiple niveaux`` dans la colonne ``type``
   
    .. note::
-     Votre logiciel vous montrera un avertissement de validation car il ne connaît pas votre le nom de votre liste (``niveaux``). Ceci est normal pour les questions de type "select" qui sont complétées par le nom de la liste et cet avertissement peut donc être ignoré.
+     Votre logiciel vous montrera un avertissement de validation car il ne connaît pas le nom de votre liste (``niveaux``). Ceci est normal pour les questions de type "select" qui sont complétées par le nom de la liste et cet avertissement peut donc être ignoré.
 
 #. Dans la colonne ``name``, mettez ``niveaux_enseignes``
 #. Dans la colonne ``label``, mettez ``Quels niveaux sont enseignés ?``
@@ -111,7 +111,7 @@ Cette question portera sur les niveaux enseignés dans l'établissement. Nous pr
 #. Faisons apparaître les choix horizontalement, les uns à coté des autres. Dans la colonne ``appearance``, mettez ``columns``.
 
 Ajoutons une question qui sera montrée en fonction d'une réponse précédente
---------------------------------------------------------------------------
+---------------------------------------------------------------------------
 Elle portera sur les options enseignées au lycée.
 
 #. Dans la colonne ``type``, mettez ``text``
