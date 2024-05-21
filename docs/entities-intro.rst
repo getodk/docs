@@ -12,7 +12,7 @@ Introduction to Entities
 
 If you've heard something about ODK Entities and want to better understand whether they're useful for you, you're in the right place! We've organized this page as a series of questions that are independent from each other so you can pick and choose the sections that interest you.
 
-If you're someone who learns best by doing, you may prefer to jump straight into the tutorial on :doc:`building a community reporting tool with Entities <tutorial-community-reporting>` and to come back here if you have any questions. If you have a question that we haven't answered, you can `email support@getodk.org <mailto:support@getodk.org>`_ or `post on the forum <https://forum.getodk.org/c/support/6>`_.
+If you're someone who learns best by doing, you may prefer to jump straight into the tutorial on :doc:`building a community reporting tool with Entities <tutorial-community-reporting>` and to come back here if you have any questions. If you have a question that we haven't answered, you can `post on the forum <https://forum.getodk.org/c/support/6>`_.
 
 .. note::
 
@@ -24,7 +24,7 @@ Concepts
 What are Entities?
 -------------------
 
-In the ODK context, an "Entity" can be thought of a "thing". If your project involves things that need to be shared between forms and may change over time, you can represent them as Entities. You can use Entities to represent concrete things like trees, people or cities. You can also represent more conceptual Entities like tree visits, malaria cases or city ratings.
+In the ODK context, an "Entity" can be thought of as a "thing". If your project involves things that need to be shared between forms and may change over time, you can represent them as Entities. You can use Entities to represent concrete things like trees, people, or cities. You can also represent more conceptual Entities like tree visits, malaria cases, or city ratings.
 
 Entities are organized in Entity Lists that group together Entities of the same type. You can think of Entity Lists as spreadsheets or databases that are shared across forms. Forms can create, access and update Entities. You can also think of Entities as the nouns (trees) and the forms as the verbs (Register a tree).
 
@@ -33,14 +33,14 @@ ODK's model has historically been form-based: every workflow starts by opening a
 What's the relationship between Entities and forms?
 ------------------------------------------------------
 
-Entities and forms exist at the same level in projects. Forms are used to define the actions that can be taken in your project and Entities store data that can be accessed as part of taking those actions. Forms can be defined such that their submissions create or update Entities. Currently, a form submission can create or update at most 1 Entity. Eventually, it will be possible to create multiple Entities of the same time from a form repeat or to save form field values to different Entities' properties.
+Entities and forms exist at the same level in projects. Forms are used to define the actions that can be taken in your project and Entities store data that can be accessed as part of taking those actions. Forms can be defined such that their submissions create or update Entities. Currently, a form submission can create or update at most 1 Entity. Eventually, it will be possible to create multiple Entities of the same type from a form repeat or to save form field values to different Entities' properties.
 
 Once a form submission has been processed to result in Entity creation or update, the submission and the resulting Entity exist independently from each other. That means that if you edit the form submission, those changes are not automatically applied to the related Entity. You can choose to apply them manually if applicable.
 
 Should I use Entities?
 -----------------------
 
-Entities are an entirely optional part of ODK. There are many expert users of ODK who may never need to use Entities because they use it in contexts where the work that ODK supports is done at one point in time.
+Entities are an entirely optional part of ODK. There are many expert users of ODK who will never need to use Entities because their ODK use supports work that is done at one point in time.
 
 That said, any workflow that involves multiple steps over time has the potential to benefit from Entities. If you find yourself wishing you could flow data from one form to another or communicate data back to forms, you likely want to use Entities. For example, site inspections, studies that involve linking baseline and follow-up visits, 
 
@@ -113,7 +113,7 @@ There are two current limitations that make this impractical: data transfer and 
 
 Currently, all Entities that have not been deleted are sent to every device on every update. Depending on your data connection, this may be a significant limiting factor for your project.
 
-Entities are currently represented in memory for access by forms. Modern devices can easily process multiple tens of thousands of entities in this way. However, your form may become slow or crash above about 60,000 Entities (this also depends on how many properties each Entity has). We are currently actively working on lifting these performance limits. In the mean time, one possible approach is to use `pulldata <https://xlsform.org/en/#how-to-pull-data-from-csv>`_ and `search() <https://xlsform.org/en/#dynamic-selects-from-pre-loaded-data>`_ instead of `instance` and `select_one_from_file`. They are less flexible but are specifically designed to target performance.
+Entities are currently represented in memory for access by forms. Modern devices can easily process multiple tens of thousands of entities in this way. However, your form may become slow or crash above about 50,000 Entities (this also depends on how many properties each Entity has). We are currently actively working on lifting these performance limits. In the mean time, one possible approach is to use `pulldata <https://xlsform.org/en/#how-to-pull-data-from-csv>`_ and `search() <https://xlsform.org/en/#dynamic-selects-from-pre-loaded-data>`_ instead of `instance` and `select_one_from_file`. They are less flexible but are specifically designed to target performance.
 
 My form captures data on multiple different things, can I create multiple Entities with a single submission?
 -------------------------------------------------------------------------------------------------------------
