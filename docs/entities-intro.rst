@@ -4,6 +4,7 @@
 
     Airtable
     AppSheet
+    Farmforce
 
 **************************
 Introduction to Entities
@@ -78,8 +79,9 @@ Even in fields where case management is common, there is often a need to support
 
 Why can't I just flow data from one form to another form?
 -----------------------------------------------------------
+TODO: focus on list of last state
 
-While flowing data between forms is intuitive and works really well for workflows with a baseline and one or more independent follow-ups, it can become difficult to use for more complex workflows that involve multiple steps. For example, imagine that you want to represent a workflow in which a tree illness is reported and then the tree is visited multiple times by different people for treatment or assessment until the illness is resolved. If you wanted a form to show the tree's current status, you would need to look up that value in the latest submission made about that tree that includes a status update. That involves writing an expression that considers submissions across multiple forms and means that those submissions need to all be accessible.
+While flowing data between forms is intuitive and works really well for workflows with a baseline and one or more independent follow-ups, it can become difficult to use for more complex workflows that involve multiple steps. For example, imagine that you want to represent a workflow in which a tree disease is reported and then the tree is visited multiple times by different people for treatment or assessment until the disease is resolved. If you wanted a form to show the tree's current status, you would need to look up that value in the latest submission made about that tree that includes a status update. That involves writing an expression that considers submissions across multiple forms and means that those submissions need to all be accessible.
 
 Let's say you want to add a new form to your workflow and that this form needs to consider the status of trees. In a world where data flows directly from one form to another, you have to be careful to connect every single form that may capture status information to this new form (alternately you could make sure all submissions about a tree has a status but that also has downsides). If you forget one, your form will appear to work but may use the wrong status value.
 
@@ -99,22 +101,28 @@ Currently, in order for a submission to create or update an Entity, that submiss
 
 If you usually have Internet connectivity, this is unlikely to be very important. Similarly, if your registration and follow-up periods happen at very different times, this limitation is not a problem. But for workflows in which follow-up needs to happen immediately after registration or multiple follow-ups may be needed while operating offline, this limitation is significant. Another common use case for Offline Entities is to help a field worker track their completed work while offline. Offline Entity support is expected in late 2024, read more `on the forum <https://forum.getodk.org/t/collect-coming-soon-offline-entities/46505>`_.
 
+I only need each of my App Users to see the Entities they are assigned to, how can I represent this?
+-----------------------------------------------------------------------------------------------------
+
+Currently, an entire Entity List is always sent to every device and there is no way to subset the list. This is something that we intend to eventually enable. For now, what you can do is limit the Entities that are available from a :ref:`select_one_from_file <select-from-external-dataset>` using a :ref:`choice_filter <cascading-selects>`. This won't limit the amount of data sent to each device but it can significantly reduce the amount of options shown to each user and can help speed up look up expressions.
+
 Can I have a million Entities?
 ------------------------------
 
-There are two current limitations that make this impractical: data transfer and form performance. 
+There are two current limitations that make this impractical: data transfer and form performance.
+
+Currently, all Entities that have not been deleted are sent to every device on every update. Depending on your data connection, this may be a significant limiting factor for your project.
+
+Entities are currently represented in memory for access by forms. Modern devices can easily process multiple tens of thousands of entities in this way. However, your form may become slow or crash above about 60,000 Entities (this also depends on how many properties each Entity has). We are currently actively working on lifting these performance limits. In the mean time, one possible approach is to use `pulldata <https://xlsform.org/en/#how-to-pull-data-from-csv>`_ and `search() <https://xlsform.org/en/#dynamic-selects-from-pre-loaded-data>`_ instead of `instance` and `select_one_from_file`. They are less flexible but are specifically designed to target performance.
 
 My form captures data on multiple different things, can I create multiple Entities with a single submission?
 -------------------------------------------------------------------------------------------------------------
 
 Not yet but this is something we eventually intend to support.
 
-If you'd like to create or update multiple Entities of the same type in a repeat, what you can do for now is capture base information in one form and then use a separate form to create each Entity that you currently represent by repeat instances. You can link those submissions to their parent by including the parent id in the child Entity.
+If you'd like to create or update multiple Entities of the same type in a repeat, what you can do for now is capture base information in one form and then use a separate form to create each Entity that you currently represent by repeat instances. You can link those submissions to their parent by including the parent id in the child Entity. If you are working in an environment with Internet connectivity, you can refresh the forms to see your created parent Entities in your child Entity creation forms. If you are working in a disconnected environment, you can have data collectors copy a value from the parent form to the child forms.
 
-My form captures data about multiple different things, not in a repeat. Can I create multiple related entities?
-----------------------------------------------------------------------------------------------------------------
-
-Not yet but this is something we eventually intend to support. Currently you need to define one form per Entity that needs to be created or updated. You can establish relationships between those Entities by sharing a common value between them.
+Similarly, if you'd like to establish relationships between multiple Entities of different types, you can have a registration form for each type and include a field to represent a link to another Entity.
 
 Alternatives
 =============
@@ -197,7 +205,7 @@ Once a specific Entity is selected, you can look up its properties using a :ref:
 Can I use data from another system or an existing form's submissions as Entities?
 ----------------------------------------------------------------------------------
 
-Yes, you can add Entities to an existing Entity List by :ref:`uploading a CSV <central-entities-upload>` or :ref:`using the API <creating-entities>`.
+Yes, you can add Entities to an existing Entity List by :ref:`uploading a CSV <central-entities-upload>` or :doc:`using the API <central-api-entity-management>`.
 
 How do I use forms to create or update Entities?
 ------------------------------------------------
@@ -218,11 +226,6 @@ For more complex workflows, it can be helpful to include a property that represe
 We generally recommend thinking carefully about the minimum amount of data that you need to drive your workflow. The less data you save and access, the simpler your form design will be and the less data will need to be transmitted to data collectors. However, there is no enforced limit on number of properties.
 
 Currently, once a property is added to an Entity List, it can't be removed. You can stop writing data to that column and ignore it in follow-up forms but you can't delete it.
-
-I only need each of my App Users to see the Entities they are assigned to, how can I represent this?
------------------------------------------------------------------------------------------------------
-
-Currently, an entire Entity List is always sent to every device and there is no way to subset the list. This is something that we intend to eventually enable. For now, what you can do is limit the Entities that are available from a :ref:`select_one_from_file <select-from-external-dataset>` using a :ref:`choice_filter <cascading-selects>`. This won't limit the amount of data sent to each device but it can significantly reduce the amount of options shown to each user and can help speed up look up expressions.
 
 What are Entity conflicts and what can I do to avoid them?
 ------------------------------------------------------------
