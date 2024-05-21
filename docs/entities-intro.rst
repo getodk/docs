@@ -1,3 +1,5 @@
+:orphan:
+
 .. spelling:word-list::
 
     Airtable
@@ -11,6 +13,10 @@ If you've heard something about ODK Entities and want to better understand wheth
 
 If you're someone who prefers to learn by doing, you may prefer to jump straight into the tutorial on :doc:`building a community reporting tool with Entities <tutorial-community-reporting>`.
 
+.. note::
+
+    Entities are not available in every ODK-compatible system.
+
 Concepts
 =========
 
@@ -23,7 +29,7 @@ Entities are organized in Entity Lists that group together Entities of the same 
 
 ODK's model has historically been form-based: every workflow starts by opening a blank form and filling it out. As we build out more Entity features, we are working towards an Entity-based data collection model in which workflows start by selecting an Entity. Currently, you can get close to this by having your forms start with a question that lets the user select an Entity from a list.
 
-What is the relationship between Entities and forms?
+What's the relationship between Entities and forms?
 ------------------------------------------------------
 
 Entities and forms exist at the same level in projects. Forms are used to define the actions that can be taken in your project and Entities store data that can be accessed as part of taking those actions. Forms can be defined such that their submissions create or update Entities. Currently, a form submission can create or update at most 1 Entity. Eventually, it will be possible to create multiple Entities of the same time from a form repeat or to save form field values to different Entities' properties.
@@ -96,13 +102,14 @@ If you usually have Internet connectivity, this is unlikely to be very important
 Can I have a million Entities?
 ------------------------------
 
+There are two current limitations that make this impractical: data transfer and form performance. 
 
-
-
-My form captures data on multiple different things in a repeat. Can I create one Entity per repeat instance?
+My form captures data on multiple different things, can I create multiple Entities with a single submission?
 -------------------------------------------------------------------------------------------------------------
 
-Not yet but this is something we eventually intend to support. What you can do for now is capture base information in one form and then use a separate form to create each Entity that you currently represent by repeat instances. You can link those submissions to their parent by including the parent id in the child Entity.
+Not yet but this is something we eventually intend to support.
+
+If you'd like to create or update multiple Entities of the same type in a repeat, what you can do for now is capture base information in one form and then use a separate form to create each Entity that you currently represent by repeat instances. You can link those submissions to their parent by including the parent id in the child Entity.
 
 My form captures data about multiple different things, not in a repeat. Can I create multiple related entities?
 ----------------------------------------------------------------------------------------------------------------
@@ -112,7 +119,7 @@ Not yet but this is something we eventually intend to support. Currently you nee
 Alternatives
 =============
 
-What is the relationship between Entities and CSV form attachments?
+What's the relationship between Entities and CSV form attachments?
 ---------------------------------------------------------------------
 
 From a form design perspective, they are identical! That means you can attach them to forms, look values up in them or build selects on them in the exact same way.
@@ -126,7 +133,7 @@ I currently use CSV form attachments to manage a workflow over time, should I us
 
 If this process is working well for you, you don't need to change anything. Entities can help you avoid mistakes or save time. If you aren't making mistakes and don't feel like supporting your workflow is too time-consuming, do not feel like you need to change anything. In particular, if your workflow involves distinct phases, it may be better to analyze and clean baseline data before feeding it into the next phase rather than automatically flowing data with Entities.
 
-What is the relationship between Entities and choice lists?
+What's the relationship between Entities and choice lists?
 ------------------------------------------------------------
 
 From a form design perspective, they are nearly identical! The only significant difference is that because Entity Lists are defined outside of a form, you need to explicitly attach them to your forms using :ref:`select_*_from_file <select-from-external-dataset>` or :ref:`csv-external <form-datasets-attaching-csv>`. Another difference is that there isn't currently support for media or translations to be defined for Entity Lists. Other than that, the way that you look up values in choice lists and Entity Lists using ``instance()`` is identical.
@@ -160,13 +167,13 @@ More complex workflows are more likely to benefit from a more structured and tes
 
 For many contexts, workflow needs are so specific and dynamic that a platform like ODK offers many benefits. Once you have defined your workflow in ODK, the forms you have built can become the standard, specialized way to support others in your field.
 
-With Entities, is ODK now like Airtable/Notion/Monday.com/AppSheet?
+With Entities, is ODK now like Airtable/Notion/AppSheet?
 ---------------------------------------------------------------------
 
 All of these are examples of tools that make it possible to define data tables and provide different kinds of views on top of those data tables. Some differences between these platforms and ODK:
 
 * ODK is designed with offline contexts in mind. Most of the other mentioned tools either need connectivity or have limited offline modes.
-* ODK is designed for contexts in which field workers are separate individuals or in a very different mode than when they are in the office. Forms encode workflows to help field workers complete their tasks. Forms use constraints, field types, relevance, etc to limit and guide what can happen in the field. In contrast, the data management tools described above use a data-first model and although they are getting more and more features to define forms on top of data models, these are typically less powerful and less separate from the corresponding data model as they are in ODK. The other tools tend to shine in high-trust teams with individuals who define their own data views and modify data tables directly.
+* ODK forms encode workflows to help field workers complete their tasks. Forms use constraints, field types, relevance, etc to limit and guide what form users can do. They also can use a broad range of dynamic question types and appearances. In contrast, the data management tools described above use a data-first model and although they are getting more and more features to define forms on top of data models, these are typically less powerful and more tightly linked to the corresponding data model than they are in ODK. The other tools tend to shine in high-trust teams with individuals who define their own data views and modify data tables directly.
 * ODK can be used to support large-scale, time-bound efforts like mass vaccination campaigns. This requires many field users active for a short amount of time. The other tools mentioned usually base their pricing model on the number of end users which is not well-suited to those kinds of efforts.
 
 ODK remains closer to surveying platforms but Entities give it workflow automation functionality.

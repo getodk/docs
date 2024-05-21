@@ -26,7 +26,6 @@ ODK is open-source software that's made by a welcoming community of people just 
   :hidden:
 
   getting-started
-  entities-intro
 
 .. toctree::
   :hidden:
