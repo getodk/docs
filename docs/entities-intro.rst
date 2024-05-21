@@ -10,9 +10,9 @@
 Introduction to Entities
 **************************
 
-If you've heard something about ODK Entities and want to better understand whether they're useful for you, you're in the right place! This page is organized by questions that are independent from each other so feel free to jump around.
+If you've heard something about ODK Entities and want to better understand whether they're useful for you, you're in the right place! We've organized this page as a series of questions that are independent from each other so you can pick and choose the sections that interest you.
 
-If you're someone who prefers to learn by doing, you may prefer to jump straight into the tutorial on :doc:`building a community reporting tool with Entities <tutorial-community-reporting>`.
+If you're someone who learns best by doing, you may prefer to jump straight into the tutorial on :doc:`building a community reporting tool with Entities <tutorial-community-reporting>` and to come back here if you have any questions. If you have a question that we haven't answered, you can `email support@getodk.org <mailto:support@getodk.org>`_ or `post on the forum <https://forum.getodk.org/c/support/6>`_.
 
 .. note::
 
