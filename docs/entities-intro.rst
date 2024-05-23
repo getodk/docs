@@ -92,35 +92,43 @@ With Entities, you can update the Entity's status with each related submission a
 In many contexts, the information that needs to be shared between forms is minimal, sometimes only an ID and label are needed. Sometimes the subjects of a workflow are known ahead of time, either from a prior ODK form or some other system. Entities makes both of these cases straightforward and intuitive to represent.
 
 Limitations
-============
+===========
 
 I filled out a registration form and don't immediately see my Entity in follow-up forms, why?
-------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
 
-Currently, in order for a submission to create or update an Entity, that submission has to be processed by your Central server. That means that if you create a new Entity or update an existing one with a form, you won't see that change reflected in follow-up forms until you download the latest update to your Entity List from your server.
+Currently, in order for a submission to create or update an Entity, that submission has to be processed by your server. That means that if you create a new Entity or update an existing one by filling out a form, you won't see that change reflected in follow-up forms until you download the latest update to your Entity List from your server.
 
-If you usually have Internet connectivity, this is unlikely to be very important. Similarly, if your registration and follow-up periods happen at very different times, this limitation is not a problem. But for workflows in which follow-up needs to happen immediately after registration or multiple follow-ups may be needed while operating offline, this limitation is significant. Another common use case for Offline Entities is to help a field worker track their completed work while offline. Offline Entity support is expected in late 2024, read more `on the forum <https://forum.getodk.org/t/collect-coming-soon-offline-entities/46505>`_.
+If you usually have Internet connectivity, this is unlikely to be very important. Similarly, if your registration and follow-up periods happen at very different times, this limitation is not a problem. But for workflows in which follow-up needs to happen immediately after registration or multiple follow-ups are needed while offline, this limitation is significant. 
 
-I only need each of my App Users to see the Entities they are assigned to, how can I represent this?
------------------------------------------------------------------------------------------------------
+Offline Entity support is expected in late 2024, read more `on the forum <https://forum.getodk.org/t/collect-coming-soon-offline-entities/46505>`_.
 
-Currently, an entire Entity List is always sent to every device and there is no way to subset the list. This is something that we intend to eventually enable. For now, what you can do is limit the Entities that are available from a :ref:`select_one_from_file <select-from-external-dataset>` using a :ref:`choice_filter <cascading-selects>`. This won't limit the amount of data sent to each device but it can significantly reduce the amount of options shown to each user and can help speed up look up expressions.
+I need to assign specific Entities to specific data collectors, how can I represent this?
+-----------------------------------------------------------------------------------------
 
-Can I have a million Entities?
-------------------------------
+Currently, an entire Entity List is always sent to every device and there is no way to subset the list. This is something that we intend to eventually enable. 
 
-There are two current limitations that make this impractical: data transfer and form performance.
+For now, you can limit the Entities that are available from a :ref:`select_one_from_file <select-from-external-dataset>` using a :ref:`choice_filter <cascading-selects>`. This won't limit the amount of data sent to each device but it can significantly reduce the amount of options shown to each user and can help speed up lookup expressions.
 
-Currently, all Entities that have not been deleted are sent to every device on every update. Depending on your data connection, this may be a significant limiting factor for your project.
+Can I have millions of Entities?
+--------------------------------
 
-Entities are currently represented in memory for access by forms. Modern devices can easily process multiple tens of thousands of entities in this way. However, your form may become slow or crash above about 50,000 Entities (this also depends on how many properties each Entity has). We are currently actively working on lifting these performance limits. In the mean time, one possible approach is to use `pulldata <https://xlsform.org/en/#how-to-pull-data-from-csv>`_ and `search() <https://xlsform.org/en/#dynamic-selects-from-pre-loaded-data>`_ instead of `instance` and `select_one_from_file`. They are less flexible but are specifically designed to target performance.
+There are two current limitations that make millions of Entities impractical: data transfer and form performance.
+
+Currently, all Entities that have not been deleted are sent to every device on every update. Depending on your data connection, this may be a limiting factor for your project. We will eventually add support for archiving Entities to address this limitation.
+
+Entities are currently represented in memory for access by forms. Modern devices can easily process multiple tens of thousands of entities in this way, but your form may become slow or crash if you have more than 50,000 Entities.
+
+We are actively working on addressing these performance limitations and expect significant improvements by late 2024. In the mean time, one possible workaround is to use `pulldata <https://xlsform.org/en/#how-to-pull-data-from-csv>`_ and `search() <https://xlsform.org/en/#dynamic-selects-from-pre-loaded-data>`_ instead of `instance` and `select_one_from_file`. These methods are less flexible but they will perform better.
 
 My form captures data on multiple different things, can I create multiple Entities with a single submission?
--------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 
-Not yet but this is something we eventually intend to support.
+Not yet, but this is something we will eventually support.
 
-If you'd like to create or update multiple Entities of the same type in a repeat, what you can do for now is capture base information in one form and then use a separate form to create each Entity that you currently represent by repeat instances. You can link those submissions to their parent by including the parent id in the child Entity. If you are working in an environment with Internet connectivity, you can refresh the forms to see your created parent Entities in your child Entity creation forms. If you are working in a disconnected environment, you can have data collectors copy a value from the parent form to the child forms.
+If you'd like to create or update multiple Entities of the same type in a repeat, you can capture base information in one form and then use a separate form to create each Entity that you currently represent by repeat instances. You can link those submissions to their parent by including the parent ID in the child Entity. 
+
+If you are working in an environment with Internet connectivity, you can refresh the forms to see your created parent Entities in your child Entity creation forms. If you are working in a disconnected environment, you can have data collectors copy the ID from the parent form to the child forms.
 
 Similarly, if you'd like to establish relationships between multiple Entities of different types, you can have a registration form for each type and include a field to represent a link to another Entity.
 
