@@ -181,30 +181,29 @@ For many contexts, workflow needs are so specific and dynamic that a platform li
 
 
 Mechanics
-===========
+=========
 
 How do I access Entities from my forms?
 ---------------------------------------
 
-The first thing you need to do in your form definition is to attach the Entity List you want to access Entities from. If you want the user to be able to select an Entity from a list, you can use a :ref:`select_one_from_file <select-from-external-dataset>` question with the name of your Entity List followed by `.csv`. For example, if your Entity List is named ``trees``, you would have a ``select_one_from_file trees.csv`` question. Everything you know about selects and selects from files apply to attached Entity Lists. For example, you can use an Entity property in a :ref:`choice_filter <cascading-selects>` expression to filter down an Entity List.
+First, attach the Entity List you want to access Entities from in your form definition.
+
+If you want the user to be able to select an Entity from a list, you can use a :ref:`select_one_from_file <select-from-external-dataset>` question with the name of your Entity List followed by `.csv`. For example, if your Entity List is named ``trees``, you would have a ``select_one_from_file trees.csv`` question. 
+
+Everything you know about selects and selects from files apply to attached Entity Lists. For example, you can use an Entity property in a :ref:`choice_filter <cascading-selects>` expression to filter down an Entity List.
 
 If you want to look up Entities using a user-provided value such as a unique ID scanned from a barcode or entered manually, you can attach your Entity List with :ref:`csv-external <form-datasets-attaching-csv>`.
 
-Once a specific Entity is selected, you can look up its properties using a :ref:`lookup expression <referencing-values-in-datasets>`. All of this works exactly the same way as it does with attached CSV files!
+Once a specific Entity is selected, you can look up its properties using a :ref:`lookup expression <referencing-values-in-datasets>`. All of this works exactly the same way as it does with CSV form attachments.
 
 .. seealso::
     * :doc:`Community reporting tutorial <tutorial-community-reporting>`
     * :ref:`Central Entities documentation <central-entities-follow-up-forms>`
 
-Can I use data from another system or an existing form's submissions as Entities?
-----------------------------------------------------------------------------------
-
-Yes, you can add Entities to an existing Entity List by :ref:`uploading a CSV <central-entities-upload>` or :doc:`using the API <central-api-entity-management>`.
-
 How do I use forms to create or update Entities?
 ------------------------------------------------
 
-There are two parts to declaring that a form's submissions should create or update an Entity. First, you need to add an ``entities`` sheet to your form and at minimum use it to define the Entity List that the form populates and an expression to give each Entity a label. Second, you can optionally declare that certain form fields should be saved to Entity properties by putting the desired property name in the ``save_to`` column for each form field.
+Add an ``entities`` sheet to your form and use it to define the Entity List that the form's submission will populate and an expression for each Entity's label. Next, specify which form fields should be saved to Entity properties by putting the desired property name in the ``save_to`` column for each form field.
 
 .. seealso::
     * :doc:`Community reporting tutorial <tutorial-community-reporting>`
@@ -215,31 +214,36 @@ What form fields should I save to my Entities as properties?
 
 This will vary a lot project by project. In many cases, a descriptive label clearly identifying individual Entities is enough to meet goals like making sure that no duplicate Entities are created and connecting submissions about the same Entity in analysis.
 
-For more complex workflows, it can be helpful to include a property that represents some sort of status which determines what forms can operate on any given Entity. In some contexts, it may be important to include multiple identifying properties to make sure that the correct Entity is selected. Sometimes it's important to show data collectors a summary of information that was previously captured and so it must all be saved on the Entity.
+For more complex workflows, it can be helpful to include a property that represents a status which determines what forms can operate on any given Entity. In some contexts, it may be important to include multiple identifying properties to make sure that the correct Entity is selected. Sometimes it's important to show data collectors a summary of information that was previously captured and so it must all be saved on the Entity.
 
-We generally recommend thinking carefully about the minimum amount of data that you need to drive your workflow. The less data you save and access, the simpler your form design will be and the less data will need to be transmitted to data collectors. However, there is no enforced limit on number of properties.
+We recommend thinking carefully about the minimum amount of data that you need to drive your workflow. The less data you save and access, the simpler your form design will be and the less data will need to be transmitted to data collectors. However, there is no enforced limit on number of properties.
 
-Currently, once a property is added to an Entity List, it can't be removed. You can stop writing data to that column and ignore it in follow-up forms but you can't delete it.
+Currently, once a property is added to an Entity List, it can't be removed. You can stop writing data to that column and ignore it in follow-up forms but you can't delete it. We will eventually add support for archiving Entities.
 
 What are Entity conflicts and what can I do to avoid them?
-------------------------------------------------------------
+----------------------------------------------------------
 
-When two form submissions that are received by Central specify updates to the same Entity with the same version, Central considers this a conflict. If the two submissions specify different, overlapping updates to one or more properties, Central considers this a hard conflict and will provide an interface for resolving it. Both hard and soft conflicts have to be explicitly dismissed.
+A conflict happens when two form submissions that are received by the server have updates to the same Entity with the same version. If the two submissions specify different, overlapping updates to one or more properties, the server will provide an interface for resolving it. All conflicts have to be explicitly dismissed.
 
-One of our goals with Entities is to let field staff make as much progress as possible without interruption so Central applies conflicting updates with the latest one taking precedence. The conflict is shown on the server and office staff can look at the submitted data and work with field staff to resolve the issue.
+One of our goals with Entities is to let field staff make as much progress as possible without interruption so the server applies conflicting updates with the latest one taking precedence. The conflict is shown on the server and office staff can look at the submitted data and work with field staff to resolve the issue.
 
-When possible, we recommend using Entity properties and a :ref:`choice_filter <cascading-selects>` to limit the number of Entities that a specific field worker sees. This will greatly reduce the opportunity for conflicts.
+When possible, we recommend using Entity properties and a :ref:`choice_filter <cascading-selects>` to limit the number of Entities that a specific field worker sees. This will greatly reduce the chance of conflicts.
 
 .. seealso::
     * :ref:`Entity updates from submissions <central-entities-update>`
 
-Should I process/analyze Entity data, form submission data or both?
----------------------------------------------------------------------
+Should I analyze Entity data, form submission data or both?
+-----------------------------------------------------------
 
-Any of those are possible and which is most appropriate will depend on the goals of your project.
+Which is most appropriate will depend on the goals of your project.
 
 Entities can be very useful for tracking work completion. Computing counts of Entities or of Entities of a particular status can be a simple way to understand project status. This can be useful independent of how final data analysis is conducted.
 
-When the goal of a project is to deliver a service or to understand the final state of some Entities, it may be most practical to base analysis on Entities themselves.
+When the goal of a project is to deliver a service or to understand the final state of some Entities, it may be most practical to analyze the data in the Entities themselves.
 
-Many projects involve capturing in-depth survey data at multiple points in time. In those cases, it's not important and can even be undesirable for historical data to be sent back to devices. In those cases, Entities can be used to drive the workflow and analysis can be conducted on survey data, using Entity ids to link submissions to each other.
+Many projects involve capturing in-depth survey data at multiple points in time. In those cases, it's not important and can even be undesirable for historical data to be sent back to devices as Entities. In those cases, Entities can be used to drive the workflow and analysis can be conducted on form submission data, using Entity IDs to link submissions to each other.
+
+Can I import data from another system as Entities?
+--------------------------------------------------
+
+Yes, you can import Entities to an existing Entity List by :ref:`uploading a CSV <central-entities-upload>` or :doc:`using the API <central-api-entity-management>`.
