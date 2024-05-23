@@ -1,11 +1,5 @@
 :orphan:
 
-.. spelling:word-list::
-
-    Airtable
-    AppSheet
-    Farmforce
-
 **************************
 Introduction to Entities
 **************************
@@ -133,29 +127,31 @@ If you are working in an environment with Internet connectivity, you can refresh
 Similarly, if you'd like to establish relationships between multiple Entities of different types, you can have a registration form for each type and include a field to represent a link to another Entity.
 
 Alternatives
-=============
+============
 
-What's the relationship between Entities and CSV form attachments?
----------------------------------------------------------------------
-
-From a form design perspective, they are identical! That means you can attach them to forms, look values up in them or build selects on them in the exact same way.
+What's the difference between Entities and CSV form attachments?
+----------------------------------------------------------------
 
 From a server perspective, a CSV form attachment can only be associated with a single form, unlike Entities which can be shared between forms. CSV form attachments are stored as files and if you need to update one row in a CSV attachment, you need to replace the whole file. In contrast, Entities can be updated individually.
 
-You can -- and many users do -- accomplish the same thing as Entities with CSV form attachments and your own automation using the Central API. The biggest advantage of Entities over that approach is that you don't need to run your own automation.
+From a form design perspective, they are identical. That means you can attach them to forms, look values up in them or build selects on them in the exact same way.
 
-I currently use CSV form attachments to manage a workflow over time, should I use Entities instead?
-----------------------------------------------------------------------------------------------------
+You can -- and many users do -- accomplish the same thing as Entities with CSV form attachments and your own automation using the :doc:`Central API <central-api>`. The biggest advantage of Entities over that approach is that you don't need to run your own automation.
 
-If this process is working well for you, you don't need to change anything. Entities can help you avoid mistakes or save time. If you aren't making mistakes and don't feel like supporting your workflow is too time-consuming, do not feel like you need to change anything. In particular, if your workflow involves distinct phases, it may be better to analyze and clean baseline data before feeding it into the next phase rather than automatically flowing data with Entities.
+I use CSV form attachments for longitudinal data collection, should I use Entities instead?
+-------------------------------------------------------------------------------------------
 
-What's the relationship between Entities and choice lists?
-------------------------------------------------------------
+If CSV form attachments are working well for you, you don't need to change anything. In particular, if your workflow involves distinct phases, it may be better to analyze and clean baseline data before feeding it into the next phase rather than automatically flowing data with Entities.
 
-From a form design perspective, they are nearly identical! The only significant difference is that because Entity Lists are defined outside of a form, you need to explicitly attach them to your forms using :ref:`select_*_from_file <select-from-external-dataset>` or :ref:`csv-external <form-datasets-attaching-csv>`. Another difference is that there isn't currently support for media or translations to be defined for Entity Lists. Other than that, the way that you look up values in choice lists and Entity Lists using ``instance()`` is identical.
+Entities can be nicer because you can have automated longitudinal data collection without being a programmer. It saves time and reduces the chance for the mistakes that can come from a manual process.
 
-Now that ODK has Entities, can it replace more specialized software that I use (DHIS2, Farmforce, etc)?
--------------------------------------------------------------------------------------------------------
+What's the difference between Entities and choice lists?
+--------------------------------------------------------
+
+From a form design perspective, they are nearly identical. The only significant difference is that because Entity Lists are defined outside of a form, you need to explicitly attach them to your forms using :ref:`select_*_from_file <select-from-external-dataset>` or :ref:`csv-external <form-datasets-attaching-csv>`. Another difference is that there currently isn't support for media or translations in Entity Lists. Other than that, the way that you look up values in choice lists and Entity Lists using ``instance()`` is identical.
+
+Now that ODK has Entities, can it replace more specialized software?
+--------------------------------------------------------------------
 
 ODK is a general-purpose data collection and workflow automation platform. Its strength is that it lets users quickly build tools that meet their exact needs. You can even think of ODK as an application-building platform: with data defined by your Entity Lists and behavior defined by your forms, you truly could implement nearly any app you can imagine in ODK.
 
@@ -183,16 +179,6 @@ More complex workflows are more likely to benefit from a more structured and tes
 
 For many contexts, workflow needs are so specific and dynamic that a platform like ODK offers many benefits. Once you have defined your workflow in ODK, the forms you have built can become the standard, specialized way to support others in your domain.
 
-With Entities, is ODK now like Airtable/Notion/AppSheet?
----------------------------------------------------------------------
-
-All of these are examples of tools that make it possible to define data tables and provide different kinds of views on top of those data tables. Some differences between these platforms and ODK:
-
-* ODK is designed with offline contexts in mind. Most of the other mentioned tools either need connectivity or have limited offline modes.
-* ODK forms encode workflows to help field workers complete their tasks. Forms use constraints, field types, relevance, etc to limit and guide what form users can do. They also can use a broad range of dynamic question types and appearances. In contrast, the data management tools described above use a data-first model and although they are getting more and more features to define forms on top of data models, these are typically less powerful and more tightly linked to the corresponding data model than they are in ODK. The other tools tend to shine in high-trust teams with individuals who define their own data views and modify data tables directly.
-* ODK can be used to support large-scale, time-bound efforts like mass vaccination campaigns. This requires many field users active for a short amount of time. The other tools mentioned usually base their pricing model on the number of end users which is not well-suited to those kinds of efforts.
-
-ODK remains closer to surveying platforms but Entities give it workflow automation functionality.
 
 Mechanics
 ===========
