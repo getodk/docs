@@ -38,7 +38,7 @@ Any workflow that involves multiple steps over time has the potential to benefit
 
 Entities can also be helpful for sharing data that rarely changes between multiple forms. For example, if all your forms need to use a country's districts, you can represent those once in an Entity List and share that list between the forms. This means if the districts do change, you can make the necessary updates in one place and know that all related forms will get the update.
 
-Entities are very powerful and it can be tempting to look for ways to use them in every project. This power comes at a cost of greater complexity and more potential for error, though! When you use Entities, you have to consider the possibility that some users may be offline for some time, possibly resulting in conflicts. You also have to consider that Entities themselves will change over time and affect form design logic in ways you may not expect.
+Entities are very powerful and it can be tempting to look for ways to use them in every project. This power comes at a cost of greater complexity and more potential for error, though. When you use Entities, you have to consider the possibility that some users may be offline for some time, possibly resulting in conflicts. You also have to consider that Entities themselves will change over time and affect form design logic in ways you may not expect.
 
 How are Entities and longitudinal data collection related?
 ----------------------------------------------------------
@@ -123,9 +123,9 @@ Alternatives
 What's the difference between Entities and CSV form attachments?
 ----------------------------------------------------------------
 
-From a server perspective, a CSV form attachment can only be associated with a single form, unlike Entities which can be shared between forms. CSV form attachments are stored as files and if you need to update one row in a CSV attachment, you need to replace the whole file. In contrast, Entities can be updated individually.
-
 From a form design perspective, they are identical. That means you can attach them to forms, look values up in them or build selects on them in the exact same way.
+
+From a server perspective, a CSV form attachment can only be associated with a single form, unlike Entities which can be shared between forms. CSV form attachments are stored as files and if you need to update one row in a CSV attachment, you need to replace the whole file. In contrast, Entities can be updated individually.
 
 You can -- and many users do -- accomplish the same thing as Entities with CSV form attachments and your own automation using the :doc:`Central API <central-api>`. The biggest advantage of Entities over that approach is that you don't need to run your own automation.
 
