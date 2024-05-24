@@ -10,7 +10,7 @@ If you're someone who learns best by doing, you may prefer to jump straight into
 
 .. note::
 
-    Entities are not available in every ODK-compatible system. Use :doc:`ODK Central <central-intro>` for the best Entities experience.
+    Entities are not available in every ODK-compatible system. This document assumes an :doc:`ODK Central <central-intro>` server.
 
 Concepts
 ========
@@ -22,25 +22,25 @@ In the ODK context, an "Entity" can be thought of as a "thing". If your project 
 
 Entities are organized in Entity Lists that group together Entities of the same type. You can think of Entity Lists as spreadsheets or databases that are shared across forms. Forms can create, read, and update Entities. You can also think of Entities as the nouns (trees) and the forms as the verbs (Register a tree).
 
-ODK has historically been form-based: every workflow starts by opening a blank form and filling it out. We are now working towards an Entity-based data collection where workflows start by selecting an Entity. If you need this behavior today, have your form start with a question that lets users select an Entity from a list.
+ODK has historically been form-based: every workflow starts by opening a blank form and filling it out. We are now working towards providing an Entity-based option in which workflows start by selecting an Entity. Currently, you can have each of your form start with a question that lets users select an Entity from a list. In the future, you'll have the option to first select an Entity and then see what forms, if any, apply to that Entity.
 
 What's the relationship between Entities and forms?
 ---------------------------------------------------
 
-Entities and forms exist at the same level in projects. Forms define actions that can be taken in your project and Entities store data that can be accessed as part of taking those actions. Currently, a form submission can create or update a single Entity. Eventually, it will be possible to create multiple Entities of the same type or to update different Entities from a single form.
+Entities and forms exist at the same level in projects. Forms define actions that can be taken in your project and Entities store data that can be accessed as part of taking those actions. A form definition can attach and access many different Entity Lists but currently, a form submission can only create or update a single Entity. Eventually, it will be possible to create or update multiple Entities from a single submission. 
 
 Once a submission has been processed and it creates or updates an Entity, the submission and the resulting Entity become independent. That means that if you edit the submission, those changes are not automatically applied to the related Entity. You can choose to apply them manually if applicable.
 
 Should I use Entities?
 ----------------------
 
-Entities are an optional add-on to ODK. There are many users of ODK don't need to use Entities because their data collection is done at a single moment in time and doesn't use any previously collected data.
+Entities are an optional add-on to ODK. There are many users of ODK who don't need to use Entities because their data collection is done at a single moment in time and doesn't use any previously collected data.
 
-That said, any workflow that involves multiple steps over time has the potential to benefit from Entities. If you find yourself wishing you could flow data from one form to another or send data back to devices, you likely want to use Entities. Common examples include site inspections, studies that involve linking baseline and follow-up visits, and case management.
+Any workflow that involves multiple steps over time has the potential to benefit from Entities. If you find yourself wishing you could flow data from one form to another or send data back to devices, you likely want to use Entities. Common examples include site inspections, studies that involve linking baseline and follow-up visits, and case management.
 
 Entities can also be helpful for sharing data that rarely changes between multiple forms. For example, if all your forms need to use a country's districts, you can represent those once in an Entity List and share that list between the forms. This means if the districts do change, you can make the necessary updates in one place and know that all related forms will get the update.
 
-Entities are very powerful and it can be tempting to look for ways to use them in every project. This power comes at a cost of greater complexity and more potential for error, though! When you use Entities, you have to consider the possibility that some users may be offline for some time, possibly resulting in conflicts. You also have to consider that Entities themselves will change over time and affect form design logic in ways you don't expect.
+Entities are very powerful and it can be tempting to look for ways to use them in every project. This power comes at a cost of greater complexity and more potential for error, though! When you use Entities, you have to consider the possibility that some users may be offline for some time, possibly resulting in conflicts. You also have to consider that Entities themselves will change over time and affect form design logic in ways you may not expect.
 
 What's the relationship between Entities and longitudinal data collection?
 --------------------------------------------------------------------------
@@ -73,17 +73,12 @@ Even in fields where case management is common, there is often a need to support
 
 Why can't I just flow data from one form to another form?
 ---------------------------------------------------------
-TODO: focus on list of last state
 
-While flowing data between forms is intuitive and works really well for workflows with a baseline and one or more independent follow-ups, it can become difficult to use for more complex workflows that involve multiple steps. For example, imagine that you want to represent a workflow in which a tree disease is reported and then the tree is visited multiple times by different people for treatment until the disease is resolved. If you wanted a form to show the tree's current status, you would need to look up that status in the latest submission made about that tree that includes a status update. That involves writing an expression that joins submissions across multiple forms and means that those submissions need to be available on all devices.
+We have added the Entity concept instead of letting data flow directly between forms because it adds more flexibility. In particular, it's common to have a workflow centered around a thing with a status that determines what needs to be done with that thing. Having an Entity representation with one or more properties that represent its status means it's straightforward to have multiple forms that can update that status and to show a list of Entities with the latest status information.
 
-Let's say you want to add a new form to the tree workflow and that this form needs to consider the status of trees. In a world where data flows directly from one form to another, you have to be careful to connect every single form that may capture status information to this new form (alternately you could make sure all submissions about a tree has a status but that also has downsides). If you forget one, your form will appear to work but may use the wrong status.
+In many contexts, the information that needs to be shared between forms is minimal and sometimes as little as an ID and label are enough. Sometimes the subjects of a workflow are known ahead of time, either from a prior ODK form or some other system. Entities makes both of these cases straightforward to represent.
 
-We believe that Entities is more intuitive for complex workflows and helps avoid these kinds of mistakes while encouraging small, single-action forms. Entities also makes it relatively straightforward to build ways to select survey subjects or show lists and summaries of all survey subjects. These are common needs that are harder to satisfy with a form-to-form model.
-
-With Entities, you can update the Entity's status with each related submission and access the status directly. Only the latest status of the Entity needs to be communicated to devices. If you prefer having the full history like you would with form submission data being flowed between forms, you can use a ``tree_visits`` Entity List that you add to rather than a ``trees`` Entity List in which you make updates. The additional Entity List provides more flexibility in how you support your workflow needs.
-
-In many contexts, the information that needs to be shared between forms is minimal, sometimes only an ID and label are needed. Sometimes the subjects of a workflow are known ahead of time, either from a prior ODK form or some other system. Entities makes both of these cases straightforward and intuitive to represent.
+If your workflow requires accessing all captured data about an Entity, directly flowing data between forms would likely have worked well. You can achieve something similar with Entities by creating an Entity List that represents encounters with the Entity. For example, let's say that you have trees that you want to evaluate over time. You could have a ``trees`` Entity List that includes fixed properties of the trees: their location, their species, etc. Then you could have a second Entity List called ``tree_measurements`` that includes a property that represents a link back to a ``tree`` Entity as well as any measurements made during a new encounter.
 
 Limitations
 ===========
@@ -113,16 +108,16 @@ Currently, all Entities that have not been deleted are sent to every device on e
 
 Entities are currently represented in memory for access by forms. Modern devices can easily process multiple tens of thousands of entities in this way, but your form may become slow or crash if you have more than 50,000 Entities.
 
-We are actively working on addressing these performance limitations and expect significant improvements by late 2024. In the mean time, one possible workaround is to use `pulldata <https://xlsform.org/en/#how-to-pull-data-from-csv>`_ and `search() <https://xlsform.org/en/#dynamic-selects-from-pre-loaded-data>`_ instead of `instance` and `select_one_from_file`. These methods are less flexible but they will perform better.
+We are actively working on addressing these performance limitations and expect significant improvements by late 2024. In the mean time, one possible workaround is to use `pulldata <https://xlsform.org/en/#how-to-pull-data-from-csv>`_ and `search() <https://xlsform.org/en/#dynamic-selects-from-pre-loaded-data>`_ instead of `instance` and `select_one_from_file`. These methods are less flexible but they will perform better in Collect.
 
 My form captures data on multiple different things, can I create multiple Entities with a single submission?
 ------------------------------------------------------------------------------------------------------------
 
 Not yet, but this is something we will eventually support.
 
-If you'd like to create or update multiple Entities of the same type in a repeat, you can capture base information in one form and then use a separate form to create each Entity that you currently represent by repeat instances. You can link those submissions to their parent by including the parent ID in the child Entity. 
+If you find yourself wanting to create or update multiple Entities of the same type in a repeat, your best option currently is to use multiple submissions of the same form instead of a repeat. You can capture base information in one form and then use a separate form to create each Entity that you currently represent by repeat instances.
 
-If you are working in an environment with Internet connectivity, you can refresh the forms to see your created parent Entities in your child Entity creation forms. If you are working in a disconnected environment, you can have data collectors copy the ID from the parent form to the child forms.
+If there is a parent-child relationship between the different Entities, you can save the parent's ID to each child. If you are working in an environment with Internet connectivity, you can refresh the forms to see your created parent Entities in your child Entity creation forms. If you are working in a disconnected environment, you can have data collectors copy the ID from the parent form to the child forms.
 
 Similarly, if you'd like to establish relationships between multiple Entities of different types, you can have a registration form for each type and include a field to represent a link to another Entity.
 
@@ -141,9 +136,9 @@ You can -- and many users do -- accomplish the same thing as Entities with CSV f
 I use CSV form attachments for longitudinal data collection, should I use Entities instead?
 -------------------------------------------------------------------------------------------
 
-If CSV form attachments are working well for you, you don't need to change anything. In particular, if your workflow involves distinct phases, it may be better to analyze and clean baseline data before feeding it into the next phase rather than automatically flowing data with Entities.
+If CSV form attachments are working well for you, you don't need to change anything. In particular, if your workflow involves distinct phases such as annual data collection events, it may be better to analyze and clean baseline data before feeding it into the next phase rather than automatically flowing data with Entities.
 
-Entities can be nicer because you can have automated longitudinal data collection without being a programmer. It saves time and reduces the chance for the mistakes that can come from a manual process.
+If there's a need to periodically update your CSV form attachment, you may want to consider using Entities to save time and reduce the opportunity for mistakes that can come from a manual process such as forgetting to update or attaching the wrong file.
 
 What's the difference between Entities and choice lists?
 --------------------------------------------------------
@@ -155,7 +150,9 @@ Now that ODK has Entities, can it replace more specialized software?
 
 ODK is a general-purpose data collection and workflow automation platform. Its strength is that it lets users quickly build tools that meet their exact needs. You can even think of ODK as an application-building platform: with data defined by your Entity Lists and behavior defined by your forms, you truly could implement nearly any app you can imagine in ODK.
 
-There exist many systems that are designed specifically for managing cases/incidents/issues in a specific field. Those systems typically have some built-in concepts around the types of teams that might be involved in the management process, the kinds of status changes that a case may go through, and how cases can be resolved.
+The domain that you work in likely has systems that are designed for managing workflows similar to the ones you need to support. This could be a system designed to support a community health worker program, to track tree health over time, to manage samples in a lab, etc. Those systems typically have some built-in concepts around the types of teams that might be involved in the management process, the kinds of status changes that a workflow subject may go through, and how a workflow ends.
+
+If you work in a field with well-defined workflows and specific software that already supports those workflows, we generally recommend using that over ODK. ODK's strength is in letting you define and refine your forms and Entity Lists to exactly match your workflow needs.
 
 Here are some questions to consider when deciding between using ODK or specialized software:
 
@@ -167,15 +164,13 @@ Here are some questions to consider when deciding between using ODK or specializ
 * Do I have the time and resources to fully test custom forms? (note that even using purpose-built tools is likely to involve some adaptation and testing time)
 * What are the implications of a form design error? (for example: a field worker will call me and I will fix it vs. someone could die because they fail to receive care)
 
-If you work in a field with well-defined workflows and specific software that already supports those workflows, we generally recommend using that over ODK. ODK's strength is in letting you define and refine your forms and Entity Lists to exactly match your workflow needs.
-
 ODK Entities don't have any built-in concepts or structure to support managing a certain kind of data. This means you have complete freedom to represent only the things that matter to you and to define exactly what actions can be taken on them. This is extremely powerful but it also means that you have the responsibility to think through every design decision and test it.
 
 You should also consider the complexity of your needs. Let's consider some case management examples. Cases can be short-lived with few, predictable interventions needed like in the case of a pothole reported to a city that may be closed within a week when the city repairs the pothole. Cases can also be very long-lived with many, unpredictable interventions needed like in the case of an refugee case that may last multiple years involving legal teams, humanitarians and politicians from multiple countries.
 
-Workflows that are short-lived can very easily be represented in ODK and may not benefit from a system made specifically for that purpose. On the other hand, purpose-built systems may be easier to find and customize for simple projects.
+Workflows that are short-lived can very easily be represented in ODK and may not benefit from a system made specifically for that purpose.
 
-More complex workflows are more likely to benefit from a more structured and tested system, especially in contexts like healthcare where specific protocols have been developed and the implications of a workflow error are serious. On the other hand, complex workflows may benefit from the flexibility that ODK offers. For example, ODK makes it very easy to add new states that cases could be in as they are needed, new forms to support those states, or stop collecting or using data values that are found not to be useful.
+More complex workflows are more likely to benefit from a more structured and tested system, especially in contexts like healthcare where specific protocols have been developed and the implications of a workflow error are serious.
 
 For many contexts, workflow needs are so specific and dynamic that a platform like ODK offers many benefits. Once you have defined your workflow in ODK, the forms you have built can become the standard, specialized way to support others in your domain.
 
@@ -186,7 +181,7 @@ Mechanics
 How do I access Entities from my forms?
 ---------------------------------------
 
-First, attach the Entity List you want to access Entities from in your form definition.
+First, attach the Entity List you want to access Entities from in your form definition either using `select_one_from_file` or `csv-external`.
 
 If you want the user to be able to select an Entity from a list, you can use a :ref:`select_one_from_file <select-from-external-dataset>` question with the name of your Entity List followed by `.csv`. For example, if your Entity List is named ``trees``, you would have a ``select_one_from_file trees.csv`` question. 
 
@@ -194,9 +189,10 @@ Everything you know about selects and selects from files apply to attached Entit
 
 If you want to look up Entities using a user-provided value such as a unique ID scanned from a barcode or entered manually, you can attach your Entity List with :ref:`csv-external <form-datasets-attaching-csv>`.
 
-Once a specific Entity is selected, you can look up its properties using a :ref:`lookup expression <referencing-values-in-datasets>`. All of this works exactly the same way as it does with CSV form attachments.
+Once a specific Entity is identified, you can look up its properties using a :ref:`lookup expression <referencing-values-in-datasets>`. All of this works exactly the same way as it does with CSV form attachments.
 
 .. seealso::
+    * :ref:`Looking up values in a list <referencing-values-in-datasets>`
     * :doc:`Community reporting tutorial <tutorial-community-reporting>`
     * :ref:`Central Entities documentation <central-entities-follow-up-forms>`
 
