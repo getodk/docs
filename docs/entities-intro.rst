@@ -24,8 +24,8 @@ Entities are organized in Entity Lists that group together Entities of the same 
 
 ODK has historically been form-based: every workflow starts by opening a blank form and filling it out. We are now working towards providing an Entity-based option in which workflows start by selecting an Entity. Currently, you can have each of your form start with a question that lets users select an Entity from a list. In the future, you'll have the option to first select an Entity and then see what forms, if any, apply to that Entity.
 
-What's the relationship between Entities and forms?
----------------------------------------------------
+How are Entities and forms related?
+-----------------------------------
 
 Entities and forms exist at the same level in projects. Forms define actions that can be taken in your project and Entities store data that can be accessed as part of taking those actions. A form definition can attach and access many different Entity Lists but currently, a form submission can only create or update a single Entity. Eventually, it will be possible to create or update multiple Entities from a single submission. 
 
@@ -42,45 +42,41 @@ Entities can also be helpful for sharing data that rarely changes between multip
 
 Entities are very powerful and it can be tempting to look for ways to use them in every project. This power comes at a cost of greater complexity and more potential for error, though! When you use Entities, you have to consider the possibility that some users may be offline for some time, possibly resulting in conflicts. You also have to consider that Entities themselves will change over time and affect form design logic in ways you may not expect.
 
-What's the relationship between Entities and longitudinal data collection?
---------------------------------------------------------------------------
+How are Entities and longitudinal data collection related?
+----------------------------------------------------------
 
 Longitudinal studies involve following one thing over time. Because Entities represent things that are shared between forms, they can be used to represent longitudinal study subjects. Those Entities can be used to make sure each subject is only registered once, to track and verify the number of data capture events related to one subject, and to link encounters of the same subject at analysis time.
 
 When designing a longitudinal study supported by Entities, you will likely have an Entity List with a name like ``participants`` or ``subjects``. The Entities model is flexible so you can choose exactly the structure that best supports your desired workflow and reflects the terminology that's used in your domain.
 
-What's the relationship between Entities and case management?
--------------------------------------------------------------
+How are Entities and case management related?
+---------------------------------------------
 
-A "case" is a term used in many fields to mean an instance of something. A case is opened when a specific condition is detected, may go through multiple steps across a broad range of caseworkers while the case condition is still true, and then is closed when the case condition is no longer true. For example:
+A "case" is a term used in many domains to mean an instance of something. A case is opened when a specific condition is detected, may go through multiple steps across a broad range of caseworkers while the case condition is still true, and then is closed when the case condition is no longer true. For example:
 
-* Medicine: healthcare workers may manage malaria cases or pregnancy cases
+* Medicine: healthcare workers may manage pregnancy cases
 
-* Humanitarian services: a humanitarian team may be involved in child protection cases or asylum cases.
+* Utilities: a electricity provider may get multiple case reports of households without electricity
 
-* Law: legal teams may manage human rights violation cases or property damage cases.
-
-Other related terms include "issues" or "problems". An "incident" generally references to a group of cases with the same root cause. For example, an electricity provider may get multiple case reports of households without electricity and declare an outage incident that needs to be managed.
-
-You can use ODK Entities to support managing cases, issues, problems, incidents, etc. To do so, you will likely have Entity Lists with names like ``malaria_cases``, ``outages``, ``issues``. 
+* Crisis response: a humanitarian team may be involved in child protection cases or asylum cases
 
 .. seealso::
     The :doc:`Community reporting tutorial <tutorial-community-reporting>` implements a simple case management workflow in which anyone can open a case (called "problem" in the tutorial) and specific individuals can resolve them.
 
-While case management is a process that is familiar in many fields, it's not universal. ODK has always been a generic tool and by using more a more general approach, we believe we can better support the needs of users who work in diverse domains.
+You can use Entities to support managing pregnancies, power outages, legal cases, and or other case management tasks. And, you can use Entity Lists with terminology that matches you your specific workflow like ``risky_pregnancies``, ``power_outages``, and ``vulnerable_children``. 
 
-Even in fields where case management is common, there is often a need to support other kinds of workflows within the same tool and it can be awkward to use the word "case" in those contexts, especially when referencing concrete entities such as participants or hospitals. Our goal is to let you define Entity Lists that make sense in your context and to allow you to use and connect them in ways that best support your workflow.
+We use the word "entities" because Entities are much more flexible. They don't impose any requirement that you to open or close a case. Also, even in domains where case management is common, there is often a need to support other kinds of workflows within the same tool and it can be awkward to use the word "case" in those contexts, especially when referencing real things like trees, people, or cities. Our goal is to let you define Entity Lists that make sense in your context and to allow you to use and connect them in ways that best support your workflow.
 
 Why can't I just flow data from one form to another form?
 ---------------------------------------------------------
 
-We have added the Entity concept instead of letting data flow directly between forms because it adds more flexibility. In particular, it's common to have a workflow centered around a thing with a status that determines what needs to be done with that thing. Having an Entity representation with one or more properties that represent its status means it's straightforward to have multiple forms that can update that status and to show a list of Entities with the latest status information. 
+We have added the Entity concept instead of letting data flow directly between forms because it adds more flexibility. In particular, it's common to have a workflow centered around a thing with a status that determines what needs to be done with that thing. Having an Entity representation with one or more properties that represent its status means it's significantly easier to have multiple forms that can update that status and to show a list of Entities with the latest status information.
 
 In many contexts, the information that needs to be shared between forms is minimal and sometimes as little as an ID and label are enough. Sometimes the subjects of a workflow are known ahead of time, either from a prior ODK form or some other system. Entities makes both of these cases straightforward to represent.
 
-In the contexts, where more information needs to be shared, using Entities also means a lot less data is transferred between devices and the server. Many of our users work at scale and in low-connectivity environments. The less data transferred, the faster and more reliable data collection will be.
+If your workflow requires accessing all captured data about an Entity, directly flowing data between forms would likely have worked well. You can achieve something similar with Entities by creating an Entity List that represents encounters with the Entity. 
 
-If your workflow requires accessing all captured data about an Entity, directly flowing data between forms would likely have worked well. You can achieve something similar with Entities by creating an Entity List that represents encounters with the Entity. For example, let's say that you have trees that you want to evaluate over time. You could have a ``trees`` Entity List that includes fixed properties of the trees: their location, their species, etc. Then you could have a second Entity List called ``tree_measurements`` that includes a property that represents a link back to a ``tree`` Entity as well as any measurements made during a new encounter.
+For example, let's say that you have trees that you want to evaluate over time. You could have a ``trees`` Entity List that includes fixed properties of the trees: their location, their species, etc. Then you could have a second Entity List called ``tree_measurements`` that includes a property that represents a link back to a ``tree`` Entity as well as any measurements made during a new encounter.
 
 Limitations
 ===========
