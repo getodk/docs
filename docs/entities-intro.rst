@@ -61,9 +61,9 @@ A "case" is a term used in many domains to mean an instance of something. A case
 .. seealso::
     The :doc:`Community reporting tutorial <tutorial-community-reporting>` implements a simple case management workflow in which anyone can open a case (called "problem" in the tutorial) and specific individuals can resolve them.
 
-You can use Entities to support managing pregnancies, power outages, legal cases, and or other case management tasks. And, you can use Entity Lists with terminology that matches you your specific workflow like ``risky_pregnancies``, ``power_outages``, and ``vulnerable_children``. 
+You can use Entities to support managing pregnancies, power outages, legal cases, and other case management tasks. And, you can use Entity Lists with terminology that matches your specific workflow like ``risky_pregnancies``, ``power_outages``, and ``vulnerable_children``. 
 
-We use the word "entities" because Entities are much more flexible. They don't impose any requirement that you to open or close a case. Also, even in domains where case management is common, there is often a need to support other kinds of workflows within the same tool and it can be awkward to use the word "case" in those contexts, especially when referencing real things like trees, people, or cities. Our goal is to let you define Entity Lists that make sense in your context and to allow you to use and connect them in ways that best support your workflow.
+We use the word "entities" because it's more neutral. Even in domains where case management is common, there is often a need to support other kinds of workflows within the same tool and it can be awkward to use the word "case" in those contexts, especially when referencing real things like trees, people, or cities.
 
 Why can't I just flow data from one form to another form?
 ---------------------------------------------------------
