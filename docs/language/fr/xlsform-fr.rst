@@ -1,4 +1,4 @@
-XLSForm
+ghjXLSForm
 =======
 
 .. _xlsform-introduction:
@@ -18,7 +18,7 @@ Si vous êtes plus aventureux, vous pouvez ignorer ce tutoriel, faire une copie 
 
 Une fois votre formulaire conçu, vous pouvez :ref:`le télécharger directement sur votre serveur ODK Central <central-forms-upload>`. Si votre serveur ODK ne dispose pas des dernières fonctionnalités d'XLSForm ou si vous souhaitez avoir un aperçu de votre formulaire dans un navigateur web, essayez `XLSForm Online <https://getodk.org/xlsform>`_.
 
-La documentation d'ODK propose des exemples de XLSForm pour pour chaque type de question et décrit comment les formulaires XLSForm sont utilisés par les outils d'ODK. Le `Formulaire "All Widgets" <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ>`_ contient des exemples pour chacun des différents types de questions.
+La documentation d'ODK propose des exemples de XLSForm pour chaque type de question et décrit comment les formulaires XLSForm sont utilisés par les outils d'ODK. Le `Formulaire "All Widgets" <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ>`_ contient des exemples pour chacun des différents types de questions.
 
 .. _survey-sheet:
 
@@ -31,7 +31,7 @@ A minima, un XLSForm contient une feuille nommée **survey** pour décrire les t
 - ``name``: le nom du champ représenté par chaque ligne. Ce nom sera utilisé dans vos données. Il ne peut pas contenir d'espace et doit débuter par une lettre ou un tiret bas. Utilisez un nom court et porteur de sens. Par exemple : ``date_de_naissance``.
 - ``label``: la question affichée à l'utilisateur pour le champ représenté par chaque ligne. Par exemple : ``Quand ${first_name} est-il/elle né(e) ?`` Ce texte peut :ref:`référencer d'autres champs <variables>` ou :doc:`être traduit <form-language>`.
 
-La feuille "survey" peut contenir de nombreuses autres colonnes pour représenter différents :doc:`types de questions <form-question-types>` et :doc:`logiques de formulaires <form-logic>`. Vous pouvez voir les colonnes les plus couramment utilisées dans `ce modèle <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_.
+La feuille "survey" peut contenir de nombreuses autres colonnes utiles pour les différents :doc:`types de questions <form-question-types>` et :doc:`logiques de formulaires <form-logic>`. Vous pouvez voir les colonnes les plus couramment utilisées dans `ce modèle <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_.
 
 .. _choices-sheet:
 
@@ -44,7 +44,7 @@ Si vous avez des :ref:`questions à choix multiples <select-widgets>`, une feuil
 - ``name``: le nom du champ représenté par la chaque ligne. Il ne peut contenir d'espace et doit débuter par une lettre ou un "underscore". Ce nom sera la valeur stockée dans vos données, il est donc préférable d'utiliser des valeurs courtes et descriptives (par exemple, ``o`` pour Oui et ``n`` pour Non).
 - ``label``: le texte affiché à l'utilisateur du formulaire pour chacun des choix représentés par chaque ligne. Par exemple : ``Oui``, ``Non``, et ``Peut-être``. Ce texte peut :ref:`faire référence à d'autres champs <variables>` ou :doc:`être traduit en différentes langues<form-language>`.
 
-Les choix portant le même nom de liste font partie d'un même ensemble et ils apparaîtront ensemble pour une question. Ces ensembles peuvent être réutilisés pour plusiers questions au sein du formulaire (par exemple, les questions pour lesquelles une réponse oui/non/peut-être est attendue).
+Les choix portant le même nom de liste font partie d'un même ensemble et ils apparaîtront ensemble pour une question. Ces ensembles peuvent être réutilisés pour plusieurs questions au sein du formulaire (par exemple, les questions pour lesquelles une réponse oui/non/peut-être est attendue).
 
 .. _settings-sheet:
 
@@ -70,7 +70,7 @@ Les autres colonnes disponibles sont :
 Nommer les formulaires remplis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Dans la feuille **settings** d'un formulaire XLSForm, vous pouvez ajouter une colonne ``instance_name`` et spécifier une :ref:`expression <expressions>` pour utiliser une valeur contenue dans le formulaire dans son nom. Ce nom sera affiché en plusieurs endroit pour faciliter la collecte de données et l'analyse. Vous devriez utiliser un nom qui identifie de manière unique le formulaire et les données qu'il contient. Par exemple :
+Dans la feuille **settings** d'un formulaire XLSForm, vous pouvez ajouter une colonne ``instance_name`` et spécifier une :ref:`expression <expressions>` pour utiliser une valeur contenue dans le formulaire dans le nom de l'instance. Ce nom sera affiché en plusieurs endroits pour faciliter la collecte de données et leur analyse. Vous devriez utiliser un nom qui identifie de manière unique le formulaire et les données qu'il contient. Par exemple :
 
 - Si un formulaire contient les données relatives à un objet du monde réel, tel qu'une personne ou un banc public, votre expression ``instance_name`` pourra inclure des informations pour identifier de manière unique l'objet décrit comme le nom de la personne ou l'emplacement du banc.
 - Si un formulaire contient les données d'une observation, considérez d'inclure la date et l'heure de l'observation dans l'expression ``instance_name``.
@@ -89,7 +89,7 @@ Dans la liste :guilabel:`Voir les Formulaires Envoyés`, le nom d'instance (``in
 
 L'``instance_name`` d'un formulaire envoyé est conservé après sa suppression. Cela permet de confirmer quel travail a été effectué, même si les soumissions sont paramétrées pour être :ref:`supprimées après envoi <delete-after-send>`. Par ailleurs, cela signifie que des données sensibles sont à prohiber dans la valeur d'``instance_name``.
 
-Le nom d'instance est aussi utilisé pour identifier les formulaires dans :doc:`la carte des formulaires remplis <collect-form-map>` dans Collect.
+Le nom d'instance est aussi utilisé dans Collect pour identifier les formulaires dans :doc:`la carte des formulaires remplis <collect-form-map>`.
 
 .. _instance-name-central:
 
