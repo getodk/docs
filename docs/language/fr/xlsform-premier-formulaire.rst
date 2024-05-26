@@ -12,7 +12,7 @@ Quiconque dispose d'un tableur peut créer un formulaire ! En moins de 20 minute
 ..  youtube:: 22l0xHxJ3vo
    :width: 100%
 
-Si vous souhaitez visualiser ce à quoi ressemblera le formulaire, vous pouvez essayer cet `aperçu web <https://demo.getodk.cloud/-/single/uvOoPKYmRSpeUTab5bflNBBMT37L0u7?st=es1kN9UyLfov8T1SZEB8QCTw9gaGp6$s73b9muqj4czHlVown2UAcmyLt3uGNkcN>`_.
+Si vous souhaitez visualiser ce à quoi il ressemblera, vous pouvez essayer cet `aperçu web <https://demo.getodk.cloud/-/single/uvOoPKYmRSpeUTab5bflNBBMT37L0u7?st=es1kN9UyLfov8T1SZEB8QCTw9gaGp6$s73b9muqj4czHlVown2UAcmyLt3uGNkcN>`_.
 
 Objectifs
 ---------
