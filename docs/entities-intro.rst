@@ -22,6 +22,11 @@ Entities are organized in Entity Lists that group together Entities of the same 
 
 ODK has historically been form-based: every workflow starts by opening a blank form and filling it out. We are now working towards providing an Entity-based option in which workflows start by selecting an Entity. Currently, you can have each of your form start with a question that lets users select an Entity from a list. In the future, you'll have the option to first select an Entity and then see what forms, if any, apply to that Entity.
 
+To give you a quick sense of the end-to-end process, below is a video that shows a survey with baseline and follow-up data collection that uses Entities.
+
+..  youtube:: YHkKNWgYKaI
+   :width: 100%
+
 How are Entities and forms related?
 -----------------------------------
 
