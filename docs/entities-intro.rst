@@ -98,7 +98,7 @@ I need to assign specific Entities to specific data collectors, how can I repres
 
 Currently, an entire Entity List is always sent to every device and there is no way to subset the list. This is something that we intend to eventually enable. 
 
-For now, you can limit the Entities that are available from a :ref:`select_one_from_file <select-from-external-dataset>` using a :ref:`choice_filter <cascading-selects>`. This won't limit the amount of data sent to each device but it can significantly reduce the amount of options shown to each user and can help speed up lookup expressions.
+For now, you can limit the Entities that are available from a :ref:`select_one_from_file <select-from-external-dataset>` using a :ref:`choice_filter <cascading-selects>`. This won't limit the amount of data sent to each device but it can significantly reduce the amount of options shown to each user and can help speed up :ref:`lookup expressions <referencing-values-in-datasets>`.
 
 Can I have millions of Entities?
 --------------------------------

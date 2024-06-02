@@ -138,7 +138,7 @@ The ``item`` blocks are analogous to rows in the CSV representation. Each ``item
 Looking up values in datasets
 ---------------------------------
 
-You can look up values in internal or external datasets. You will generally do this in ``calculate`` fields but you can also look up values directly in ``label``s to show them to users or include looked up values in constraints or other expressions.
+You can look up values in internal or external datasets. You will generally do this in ``calculate`` fields but you can also look up values directly in ``label``\s to show them to users or include looked up values in constraints or other expressions.
 
 Expressions to look up values in datasets always start with ``instance("<instance name>")`` to identify which dataset is being accessed. If you have a choice list named ``places`` or an attached CSV with filename ``places.csv``, your lookup expressions will start with ``instance("places")``.
 
