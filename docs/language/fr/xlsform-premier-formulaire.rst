@@ -1,7 +1,17 @@
+:orphan:
 :og:image: https://docs.getodk.org/_static/img/premier_formulaire_xlsform.png
 
 Tutoriel XLSForm : votre premier formulaire
 ===========================================
+
+.. article-info::
+    :avatar: /img/authors/mathieu.jpg
+    :avatar-link: https://www.cen-occitanie.org/
+    :avatar-outline: muted
+    :author: Mathieu Bossaert, CEN Occitanie
+    :date: 2 juin 2024
+
+:bdg-success:`traduction contribuée`
 
 Les formulaires ODK sont créés en utilisant des feuilles de calcul qui suivent les règles du standard XLSForm.
 
@@ -168,8 +178,8 @@ Félicitations ! Vous venez de concevoir un premier formulaire qui utilise la pl
 
 * Approfondissez votre compréhension
 
-  * :doc:`Introduction à XLSForm <xlsform>`
-  * :doc:`Types de question <form-question-types>`
+  * :doc:`Introduction à XLSForm <xlsform-fr>`
+  * :doc:`Types de question <../../form-question-types>`
   * :ref:`Questions obligatoires<requiring-responses>`
   * :ref:`Constraintes à la saisie <constraints>`
   * :ref:`Questions de type "select" <select-widgets>`
@@ -178,8 +188,8 @@ Félicitations ! Vous venez de concevoir un premier formulaire qui utilise la pl
 * Élargissez vos connaissances
 
   * :ref:`groups`
-  * :doc:`form-styling`
-  * :doc:`form-language`
-  * :doc:`form-operators-functions`
+  * :doc:`../../form-styling`
+  * :doc:`../../form-language`
+  * :doc:`../../form-operators-functions`
 
-* :doc:`Introduction à ODK Collect <collect-intro>`
+* :doc:`Introduction à ODK Collect <../../collect-intro>`

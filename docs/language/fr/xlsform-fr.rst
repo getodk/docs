@@ -1,7 +1,16 @@
-ghjXLSForm
+:orphan:
+
+XLSForm
 =======
 
-.. _xlsform-introduction:
+.. article-info::
+    :avatar: /img/authors/mathieu.jpg
+    :avatar-link: https://www.cen-occitanie.org/
+    :avatar-outline: muted
+    :author: Mathieu Bossaert, CEN Occitanie
+    :date: 2 juin 2024
+
+:bdg-success:`traduction contribuée`
 
 :dfn:`XLSForm` est un standard pour concevoir des formulaires dans Excel. Les formulaires XLSForm sont simples à prendre en main et le standard permet de définir des formulaires complexes. 
 
@@ -11,29 +20,25 @@ De nombreux utilisateurs utilisent Google Sheets ou Excel pour le web afin de po
 
 * :doc:`Tutoriel XLSForm <xlsform-premier-formulaire>`
 
-Si vous êtes plus aventureux, vous pouvez ignorer ce tutoriel, faire une copie du modèle ci-dessous, et apprendre par vous même à concevoir votre formulaire.
+Si vous êtes plus aventureux, vous pouvez plutôt faire une copie du modèle ci-dessous et apprendre par vous même à concevoir votre formulaire.
 
 * `Google Sheet <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_ (utilisez `Fichier > Créer une copie`)
-* `Microsoft Excel (XLSX) file <https://github.com/getodk/xlsform-template/raw/main/ODK%20XLSForm%20Template.xlsx>`_
+* `Microsoft Excel (XLSX) <https://github.com/getodk/xlsform-template/raw/main/ODK%20XLSForm%20Template.xlsx>`_
 
 Une fois votre formulaire conçu, vous pouvez :ref:`le télécharger directement sur votre serveur ODK Central <central-forms-upload>`. Si votre serveur ODK ne dispose pas des dernières fonctionnalités d'XLSForm ou si vous souhaitez avoir un aperçu de votre formulaire dans un navigateur web, essayez `XLSForm Online <https://getodk.org/xlsform>`_.
 
 La documentation d'ODK propose des exemples de XLSForm pour chaque type de question et décrit comment les formulaires XLSForm sont utilisés par les outils d'ODK. Le `Formulaire "All Widgets" <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ>`_ contient des exemples pour chacun des différents types de questions.
-
-.. _survey-sheet:
 
 La feuille survey
 -----------------
 
 A minima, un XLSForm contient une feuille nommée **survey** pour décrire les types et l'ordre des questions du formulaire. Elle doit contenir ces trois colonnes :
 
-- ``type``: le type du champ représenté par chaque ligne. Les types supportés ainsi que leurs apparences sont décrits :doc:`ici <form-question-types>`.
+- ``type``: le type du champ représenté par chaque ligne. Les types supportés ainsi que leurs apparences sont décrits :doc:`ici <../../form-question-types>`.
 - ``name``: le nom du champ représenté par chaque ligne. Ce nom sera utilisé dans vos données. Il ne peut pas contenir d'espace et doit débuter par une lettre ou un tiret bas. Utilisez un nom court et porteur de sens. Par exemple : ``date_de_naissance``.
-- ``label``: la question affichée à l'utilisateur pour le champ représenté par chaque ligne. Par exemple : ``Quand ${first_name} est-il/elle né(e) ?`` Ce texte peut :ref:`référencer d'autres champs <variables>` ou :doc:`être traduit <form-language>`.
+- ``label``: la question affichée à l'utilisateur pour le champ représenté par chaque ligne. Par exemple : ``Quand ${first_name} est-il/elle né(e) ?`` Ce texte peut :ref:`référencer d'autres champs <variables>` ou :doc:`être traduit <../../form-language>`.
 
-La feuille "survey" peut contenir de nombreuses autres colonnes utiles pour les différents :doc:`types de questions <form-question-types>` et :doc:`logiques de formulaires <form-logic>`. Vous pouvez voir les colonnes les plus couramment utilisées dans `ce modèle <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_.
-
-.. _choices-sheet:
+La feuille "survey" peut contenir de nombreuses autres colonnes utiles pour les différents :doc:`types de questions <../../form-question-types>` et :doc:`logiques de formulaires <../../form-logic>`. Vous pouvez voir les colonnes les plus couramment utilisées dans `ce modèle <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_.
 
 La feuille choices
 ------------------
@@ -42,11 +47,9 @@ Si vous avez des :ref:`questions à choix multiples <select-widgets>`, une feuil
 
 - ``list_name``: l'identifiant unique d'un ensemble de choix. Il ne peut pas contenir d'espaces et doit débuter par une lettre ou un "underscore". Utilisez un nom court et porteur de sens. Par exemple : ``oui_non_peut_etre``.
 - ``name``: le nom du champ représenté par la chaque ligne. Il ne peut contenir d'espace et doit débuter par une lettre ou un "underscore". Ce nom sera la valeur stockée dans vos données, il est donc préférable d'utiliser des valeurs courtes et descriptives (par exemple, ``o`` pour Oui et ``n`` pour Non).
-- ``label``: le texte affiché à l'utilisateur du formulaire pour chacun des choix représentés par chaque ligne. Par exemple : ``Oui``, ``Non``, et ``Peut-être``. Ce texte peut :ref:`faire référence à d'autres champs <variables>` ou :doc:`être traduit en différentes langues<form-language>`.
+- ``label``: le texte affiché à l'utilisateur du formulaire pour chacun des choix représentés par chaque ligne. Par exemple : ``Oui``, ``Non``, et ``Peut-être``. Ce texte peut :ref:`faire référence à d'autres champs <variables>` ou :doc:`être traduit en différentes langues <../../form-language>`.
 
 Les choix portant le même nom de liste font partie d'un même ensemble et ils apparaîtront ensemble pour une question. Ces ensembles peuvent être réutilisés pour plusieurs questions au sein du formulaire (par exemple, les questions pour lesquelles une réponse oui/non/peut-être est attendue).
-
-.. _settings-sheet:
 
 La feuille settings
 -------------------
@@ -65,8 +68,6 @@ Les autres colonnes disponibles sont :
 - ``auto_send``: Quand elle est paramétrée à "true", chaque formulaire finalisé sera automatiquement envoyé dés qu'une connexion sera disponible. Si cette valeur est renseignée, elle écrasera le paramètre :ref:`Envoi automatique <auto-send>` défini au niveau de l'application.
 - ``auto_delete``: Quand elle est paramétrée à "true", les formulaires envoyés avec succès seront immédiatement supprimés du terminal. Si cette valeur est renseignée, elle écrasera le paramètre :ref:`Supprimer après envoi <delete-after-send>` défini au niveau de l'application.
 
-.. _instance-name:
-
 Nommer les formulaires remplis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -76,12 +77,10 @@ Dans la feuille **settings** d'un formulaire XLSForm, vous pouvez ajouter une co
 - Si un formulaire contient les données d'une observation, considérez d'inclure la date et l'heure de l'observation dans l'expression ``instance_name``.
 - Si votre définition de formulaire contient un "repeat", considérez l'utilisation du nombre de répétitions dans l'expression ``instance_name``.
 
-.. _instance-name-collect:
-
 Nom des formulaires renseignés dans Collect
 """""""""""""""""""""""""""""""""""""""""""
 
-Chaque formulaire rempli est identifié par son nom d'instance ``instance_name`` dans les listes :guilabel:`Editer les Formulaires Sauvegardés`, :guilabel:`Envoyer les formulaires finalisés` et :guilabel:`Voir les Formulaires Envoyés` de :doc:`Collect <collect-intro>`. 
+Chaque formulaire rempli est identifié par son nom d'instance ``instance_name`` dans les listes :guilabel:`Editer les Formulaires Sauvegardés`, :guilabel:`Envoyer les formulaires finalisés` et :guilabel:`Voir les Formulaires Envoyés` de :doc:`Collect <../../collect-intro>`. 
 
 Pour les "workflows" dans lesquels les formulaires doivent être saisis en plusieurs étapes, une valeur d'``instance_name`` explicite facilitera la recherche d'un formulaire à éditer. Si des formulaires doivent être édités sous certaines conditions (par exemple s'il manquait des habitants lors de l'enquête), vous pouvez inclure ce statut dans le nom de l'instance (``instance_name``).
 
@@ -89,9 +88,7 @@ Dans la liste :guilabel:`Voir les Formulaires Envoyés`, le nom d'instance (``in
 
 L'``instance_name`` d'un formulaire envoyé est conservé après sa suppression. Cela permet de confirmer quel travail a été effectué, même si les soumissions sont paramétrées pour être :ref:`supprimées après envoi <delete-after-send>`. Par ailleurs, cela signifie que des données sensibles sont à prohiber dans la valeur d'``instance_name``.
 
-Le nom d'instance est aussi utilisé dans Collect pour identifier les formulaires dans :doc:`la carte des formulaires remplis <collect-form-map>`.
-
-.. _instance-name-central:
+Le nom d'instance est aussi utilisé dans Collect pour identifier les formulaires dans :doc:`la carte des formulaires remplis <../../collect-form-map>`.
 
 Noms des formulaires remplis dans Central
 """""""""""""""""""""""""""""""""""""""""
@@ -100,11 +97,9 @@ Chaque soumission dans Central a sa propre :ref:`page de détail <central-submis
 
 Le titre du haut est extrait du nom d'instance (``instance_name``) et utiliser des noms explicites facilite la navigation en les affichant en haut de page et dans le titre du navigateur et de l'onglet.
 
-.. _entities-sheet:
-
 La feuille entities
 -------------------
 
-Les :doc:`Entitiés <central-entities>` vous permettent de partager de l'information entre vos formulaires afin que vous puissiez collecter des données longitudinales, faire des suivis dans le temps et mettre en œuvre des processus complexes.
+Les :doc:`Entitiés <../../central-entities>` vous permettent de partager de l'information entre vos formulaires afin que vous puissiez collecter des données longitudinales, faire des suivis dans le temps et mettre en œuvre des processus complexes.
 
-Visitez :doc:`la page Entités <central-entities>` pour en apprendre plus à propos des entités et comment les utiliser.
+Visitez :doc:`la page Entités <../../central-entities>` pour en apprendre plus à propos des entités et comment les utiliser.
