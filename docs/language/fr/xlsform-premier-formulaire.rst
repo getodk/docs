@@ -17,12 +17,12 @@ Les formulaires ODK sont créés en utilisant des feuilles de calcul qui suivent
 
 L'utilisation d'un tableur pour concevoir des formulaires est très avantageuse car vous pouvez visualiser un maximum d'informations relatives à votre formulaire sur un seul écran, partager facilement votre définition de formulaire, et utiliser les fonctions très pratiques proposées par les tableurs (formules, copier/coller, mise en forme automatique, etc.) pour concevoir votre formulaire.
 
-Quiconque dispose d'un tableur peut créer un formulaire ! En moins de 20 minutes, vous allez construire le formulaire de recensement d'établissements scolaires proposé ci-dessous.
+Quiconque dispose d'un tableur peut créer un formulaire ! En moins de 20 minutes, vous allez construire un formulaire de recensement d'établissements scolaires.
 
 ..  youtube:: 22l0xHxJ3vo
    :width: 100%
 
-Si vous souhaitez visualiser ce à quoi il ressemblera, vous pouvez essayer cet `aperçu web <https://demo.getodk.cloud/-/single/uvOoPKYmRSpeUTab5bflNBBMT37L0u7?st=es1kN9UyLfov8T1SZEB8QCTw9gaGp6$s73b9muqj4czHlVown2UAcmyLt3uGNkcN>`_.
+Si vous souhaitez visualiser ce à quoi il ressemblera, vous pouvez essayer cet `aperçu web <https://demo.getodk.cloud/-/single/a068nEoJWuldAB2zcOagc0fsp8f5qcZ?st=1oTVijJAGUAfTvy0qq179wYXJgBPZV5SNS2WnNuoTk0Votz$VA7qL!JTmhOtd5GP>`_.
 
 Objectifs
 ---------

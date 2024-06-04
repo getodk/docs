@@ -77,21 +77,21 @@ Dans la feuille **settings** d'un formulaire XLSForm, vous pouvez ajouter une co
 - Si un formulaire contient les données d'une observation, considérez d'inclure la date et l'heure de l'observation dans l'expression ``instance_name``.
 - Si votre définition de formulaire contient un "repeat", considérez l'utilisation du nombre de répétitions dans l'expression ``instance_name``.
 
-Nom des formulaires renseignés dans Collect
+Noms des formulaires remplis dans Collect
 """""""""""""""""""""""""""""""""""""""""""
 
-Chaque formulaire rempli est identifié par son nom d'instance ``instance_name`` dans les listes :guilabel:`Editer les Formulaires Sauvegardés`, :guilabel:`Envoyer les formulaires finalisés` et :guilabel:`Voir les Formulaires Envoyés` de :doc:`Collect <../../collect-intro>`. 
+Chaque formulaire rempli est identifié par son nom d'instance ``instance_name`` dans les listes :guilabel:`Ébauches`, :guilabel:`Prêt à envoyer` et :guilabel:`Envoyé` de :doc:`Collect <../../collect-intro>`. 
 
 Pour les "workflows" dans lesquels les formulaires doivent être saisis en plusieurs étapes, une valeur d'``instance_name`` explicite facilitera la recherche d'un formulaire à éditer. Si des formulaires doivent être édités sous certaines conditions (par exemple s'il manquait des habitants lors de l'enquête), vous pouvez inclure ce statut dans le nom de l'instance (``instance_name``).
 
-Dans la liste :guilabel:`Voir les Formulaires Envoyés`, le nom d'instance (``instance_name``) peut aider à identifier les collectes de données achevées. Par exemple si les enquêteurs doivent interviewer 25 personnes spécifiques, et que l'``instance_name`` identifie chacun des répondants, ils peuvent vérifier dans :guilabel:`Voir les Formulaires Envoyés` quels ensembles d'entretiens sont finalisés.
+Dans la liste :guilabel:`Envoyé`, le nom d'instance (``instance_name``) peut aider à identifier les collectes de données achevées. Par exemple si les enquêteurs doivent interviewer 25 personnes spécifiques, et que l'``instance_name`` identifie chacun des répondants, ils peuvent vérifier dans :guilabel:`Envoyé` quels ensembles d'entretiens sont finalisés.
 
 L'``instance_name`` d'un formulaire envoyé est conservé après sa suppression. Cela permet de confirmer quel travail a été effectué, même si les soumissions sont paramétrées pour être :ref:`supprimées après envoi <delete-after-send>`. Par ailleurs, cela signifie que des données sensibles sont à prohiber dans la valeur d'``instance_name``.
 
 Le nom d'instance est aussi utilisé dans Collect pour identifier les formulaires dans :doc:`la carte des formulaires remplis <../../collect-form-map>`.
 
-Noms des formulaires remplis dans Central
-"""""""""""""""""""""""""""""""""""""""""
+Noms des soumissions dans Central
+""""""""""""""""""""""""""""""""""
 
 Chaque soumission dans Central a sa propre :ref:`page de détail <central-submissions-details>` qui fournit des informations basiques sur la soumission, un historique de l'activité et des discussions relatives à cette soumission.
 

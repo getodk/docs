@@ -1,6 +1,9 @@
 XLSForm
 =======
 
+.. seealso::
+   * 🇫🇷 :doc:`French translation <language/fr/xlsform-fr>`
+
 .. _xlsform-introduction:
 
 :dfn:`XLSForm` is a standard for designing forms in Excel. XLSForms are simple to get started with and can represent complex forms. 
@@ -81,11 +84,11 @@ In an XLSForm's **settings** sheet, you can add an ``instance_name`` column and 
 Filled form names in Collect
 """"""""""""""""""""""""""""
 
-Each filled form is identified by its ``instance_name`` value in :doc:`Collect <collect-intro>`'s :guilabel:`Edit Saved Form`, :guilabel:`Send Finalized Form` and :guilabel:`View Sent Form` lists. 
+Each filled form is identified by its ``instance_name`` value in :doc:`Collect <collect-intro>`'s :guilabel:`Drafts`, :guilabel:`Ready to send` and :guilabel:`Sent` lists. 
 
 In workflows where forms have to be be filled in multiple different steps, a useful ``instance_name`` expression will make it much easier to find which filled form to edit. If forms only have to be edited under certain conditions (e.g. not all household members were available), you can include this status in the ``instance_name``.
 
-In the :guilabel:`View Sent Form` list, ``instance_name`` can be helpful to identify which data collection tasks have been completed. For example, if a data collector needs to interview 25 specific people and the ``instance_name`` for each filled form identifies the respondent, they can go to :guilabel:`View Sent Form` to verify which subset of interviews they have already completed. 
+In the :guilabel:`Sent` list, ``instance_name`` can be helpful to identify which data collection tasks have been completed. For example, if a data collector needs to interview 25 specific people and the ``instance_name`` for each filled form identifies the respondent, they can go to :guilabel:`Sent` to verify which subset of interviews they have already completed.
 
 A sent form's ``instance_name`` is maintained after it is deleted. This makes it possible to confirm what work has been completed even if submissions are configured to :ref:`delete after send <delete-after-send>`. However, it does mean sensitive data should be avoided in ``instance_name``.
 
