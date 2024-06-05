@@ -1,3 +1,5 @@
+:og:image: https://docs.getodk.org/_static/img/entities-intro.png
+
 **************************
 Introduction to Entities
 **************************
