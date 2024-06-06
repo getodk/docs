@@ -4,7 +4,7 @@
 Introduction to Entities
 **************************
 
-If you've heard something about ODK Entities and want to better understand whether they're useful for you, you're in the right place! We've organized this page as a series of questions that are independent from each other so you can pick and choose the sections that interest you.
+If you've heard something about ODK Entities and want to better understand whether they're useful for your longitudinal data collection, you're in the right place! We've organized this page as a series of questions that are independent from each other so you can pick and choose the sections that interest you.
 
 If you're someone who learns best by doing, you may prefer to jump straight into the tutorial on :doc:`building a community reporting tool with Entities <tutorial-community-reporting>` and to come back here if you have any questions. If you have a question that we haven't answered, you can `post on the forum <https://forum.getodk.org/c/support/6>`_.
 
@@ -24,7 +24,12 @@ Entities are organized in Entity Lists that group together Entities of the same 
 
 ODK has historically been form-based: every workflow starts by opening a blank form and filling it out. We are now working towards providing an Entity-based option in which workflows start by selecting an Entity. Currently, you can have each of your form start with a question that lets users select an Entity from a list. In the future, you'll have the option to first select an Entity and then see what forms, if any, apply to that Entity.
 
-To give you a quick sense of the end-to-end process, below is a video that shows a survey with baseline and follow-up data collection that uses Entities.
+.. image:: _static/img/entities-intro.png
+
+Can you show me how it works?
+-----------------------------
+
+Sure! Here's a video that shows a survey with baseline and follow-up that uses Entities.
 
 ..  youtube:: YHkKNWgYKaI
    :width: 100%
