@@ -1388,7 +1388,7 @@ You can also train data collectors to use time elapsed to take some action. For 
 
   `selected-at(${geopoint_widget}, 3) < 10`.
 
-  The ``3`` in the above constraint references accuracy, the third value in the `geopoint data type <https://getodk.github.io/xforms-spec/#data-types>`_. Use ``1`` to reference latitude, ``2`` for longitude, and ``4`` for altitude.
+  The ``3`` in the above constraint references accuracy, the fourth space-separated value in the `geopoint data type <https://getodk.github.io/xforms-spec/#data-types>`_. The `selected-at` function uses 0-based indexing so you can use ``0`` to reference latitude, ``1`` for longitude, and ``2`` for altitude.
 
 
 .. _geopoint-maps:
