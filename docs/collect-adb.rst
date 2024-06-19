@@ -30,6 +30,9 @@ After installing, you'll need to
 
 __ https://developer.android.com/tools/adb#Enabling
 
+.. warning::
+  Remember to disable USB Debugging after you're done.
+
 .. _install-adb-standalone:
 
 Standalone ADB
