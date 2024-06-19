@@ -178,7 +178,7 @@ Mechanics
 How do I access Entities from my forms?
 ---------------------------------------
 
-First, attach the Entity List(s) that you want to access Entities from in your form definition using ``select_one_from_file`` or ``csv-external``:
+First, attach the Entity List(s) that you want to access Entities from in your form definition using ``select_one_from_file`` or ``csv-external``, as described below. Note that you can attach multiple Entity Lists to a single form via these methods, and they do not need to be listed on the ``entities`` tab in the XLSForm (only the Entity List that is updated via ``save_to`` needs to be included on this tab).
 
 * If you want the user to be able to select an Entity from a list, you can use a :ref:`select_one_from_file <select-from-external-dataset>` question with the name of your Entity List followed by ``.csv``. For example, if your Entity List is named ``trees``, you would create a ``select_one_from_file trees.csv`` question.
 
