@@ -188,11 +188,6 @@ First, attach the Entity List(s) that you want to access Entities from in your f
 
 You can access a specific Entity's properties using a :ref:`lookup expression <referencing-values-in-datasets>`. If you've used CSV form attachments or looked values up in a choice list before, looking values up in an Entity List works exactly the same way.
 
-You can attach as many Entity Lists to the same form as you need to support your workflow.
-
-.. image:: /img/entities-intro/multiple-entity-list-attachments.*
-  :alt: Diagram showing multiple Entity Lists attached to a single follow-up form.
-
 .. seealso::
     * :ref:`Looking up values in a list <referencing-values-in-datasets>`
     * :doc:`Community reporting tutorial <tutorial-community-reporting>`
