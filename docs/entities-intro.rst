@@ -186,7 +186,7 @@ First, attach the Entity List(s) that you want to access Entities from in your f
 
 * If you want to look up Entities using a user-provided value such as a unique ID scanned from a barcode, entered manually, or looked up from another Entity's property, you can attach your Entity List with :ref:`csv-external <form-datasets-attaching-csv>`. For example, if your Entity List is named ``trees``, you would create a form field of type ``csv-external`` with name ``trees``.
 
-You can access a specific Entity's properties using a :ref:`lookup expression <referencing-values-in-datasets>`. If you've used CSV form attachments or looked values up in a choice list before, looking values up in an Entity List works exactly the same way.
+You can access a specific Entity's properties using a :ref:`lookup expression <referencing-values-in-datasets>`. If you've used CSV form attachments or looked up values in a choice list before, looking up values in an Entity List works exactly the same way.
 
 .. seealso::
     * :ref:`Looking up values in a list <referencing-values-in-datasets>`
