@@ -6,7 +6,7 @@ It is important that you secure devices running ODK Collect. We strongly recomme
 - Using the latest version of Android
 - Setting a strong passcode
 - Keeping automatic updates turned on
-- Making sure you're using an encrypted device (on  most devices this will be shown somewhere in ``Settings`` -> ``Security``)
+- Making sure you're using an encrypted device (on most devices this will be shown somewhere in ``Settings`` -> ``Security``)
 
 
 We recommend these additional resources to learn how best to secure your Android device:
