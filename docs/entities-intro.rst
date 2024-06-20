@@ -178,15 +178,15 @@ Mechanics
 How do I access Entities from my forms?
 ---------------------------------------
 
-First, attach the Entity List you want to access Entities from in your form definition either using `select_one_from_file` or `csv-external`.
+First, attach the Entity List(s) that you want to access Entities from in your form definition using ``select_one_from_file`` or ``csv-external``, as described below. Note that you can attach multiple Entity Lists to a single form via these methods, and they do not need to be listed in the ``entities`` sheet in the XLSForm: only the Entity List in which Entities are created or updated needs to be included in this sheet.
 
-If you want the user to be able to select an Entity from a list, you can use a :ref:`select_one_from_file <select-from-external-dataset>` question with the name of your Entity List followed by `.csv`. For example, if your Entity List is named ``trees``, you would have a ``select_one_from_file trees.csv`` question. 
+* If you want the user to be able to select an Entity from a list, you can use a :ref:`select_one_from_file <select-from-external-dataset>` question with the name of your Entity List followed by ``.csv``. For example, if your Entity List is named ``trees``, you would create a ``select_one_from_file trees.csv`` question.
 
-Everything you know about selects and selects from files apply to attached Entity Lists. For example, you can use an Entity property in a :ref:`choice_filter <cascading-selects>` expression to filter down an Entity List.
+  Everything you know about selects and selects from files applies to attached Entity Lists. For example, you can use an Entity property in a :ref:`choice_filter <cascading-selects>` expression to filter down an Entity List.
 
-If you want to look up Entities using a user-provided value such as a unique ID scanned from a barcode or entered manually, you can attach your Entity List with :ref:`csv-external <form-datasets-attaching-csv>`.
+* If you want to look up Entities using a user-provided value such as a unique ID scanned from a barcode, entered manually, or looked up from another Entity's property, you can attach your Entity List with :ref:`csv-external <form-datasets-attaching-csv>`. For example, if your Entity List is named ``trees``, you would create a form field of type ``csv-external`` with name ``trees``.
 
-Once a specific Entity is identified, you can look up its properties using a :ref:`lookup expression <referencing-values-in-datasets>`. All of this works exactly the same way as it does with CSV form attachments.
+You can access a specific Entity's properties using a :ref:`lookup expression <referencing-values-in-datasets>`. If you've used CSV form attachments or looked up values in a choice list before, looking up values in an Entity List works exactly the same way.
 
 .. seealso::
     * :ref:`Looking up values in a list <referencing-values-in-datasets>`
@@ -196,7 +196,9 @@ Once a specific Entity is identified, you can look up its properties using a :re
 How do I use forms to create or update Entities?
 ------------------------------------------------
 
-Add an ``entities`` sheet to your form and use it to define the Entity List that the form's submission will populate and an expression for each Entity's label. Next, specify which form fields should be saved to Entity properties by putting the desired property name in the ``save_to`` column for each form field.
+Add an ``entities`` sheet to your form and use it to define the Entity List that the form's submission will populate and an expression for each Entity's label.
+
+Next, specify which form fields should be saved to Entity properties. This is done on the ``survey`` sheet by putting the desired property name in the ``save_to`` column for each form field that you want to save.
 
 .. seealso::
     * :doc:`Community reporting tutorial <tutorial-community-reporting>`
@@ -211,7 +213,7 @@ For more complex workflows, it can be helpful to include a property that represe
 
 We recommend thinking carefully about the minimum amount of data that you need to drive your workflow. The less data you save and access, the simpler your form design will be and the less data will need to be transmitted to data collectors. However, there is no enforced limit on number of properties.
 
-Currently, once a property is added to an Entity List, it can't be removed. You can stop writing data to that column and ignore it in follow-up forms but you can't delete it. We will eventually add support for archiving Entities.
+Currently, once a property is added to an Entity List, it can't be removed. You can stop writing data to that column and ignore it in follow-up forms but you can't delete it.
 
 What are Entity conflicts and what can I do to avoid them?
 ----------------------------------------------------------
