@@ -28,7 +28,10 @@ which includes ADB.
 After installing, you'll need to
 `enable USB Debugging`__.
 
-__ https://www.howtogeek.com/125769/how-to-install-and-use-abd-the-android-debug-bridge-utility_
+__ https://developer.android.com/tools/adb#Enabling
+
+.. warning::
+  Remember to disable USB Debugging after you're done.
 
 .. _install-adb-standalone:
 
