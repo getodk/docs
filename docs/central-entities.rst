@@ -62,6 +62,7 @@ Important limitations:
 - Client performance (ODK Collect or Enketo web forms) suffers when managing more than 50,000 Entities
 - All devices will always download all Entities which may be a privacy concern
 - The Form specification and API may change
+- Currently, Entity properties may only be strings. Submission values saved to an Entity are converted to strings.
 
 We expect all of these limitations to be addressed over time. The roadmap at `getodk.org/roadmap <https://getodk.org/roadmap>`_ has what we're working on now and what's coming next.
 
