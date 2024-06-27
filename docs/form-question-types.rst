@@ -1068,7 +1068,7 @@ You can specify geometry for all choice sources:
 
 For the first two options, geometry values must be specified in :ref:`the ODK format <location-widgets>`. This makes it straightforward to use data previously collected by ODK as choices displayed on a map. You must make sure that the column containing the geometry to use for each choice has the name ``geometry``.
 
-Learn more about using GeoJSON attachments and see a worked example :ref:`here <selects-from-geojson>`.
+Learn more about using GeoJSON attachments and see an example :ref:`here <selects-from-geojson>`.
 
 .. note::
     Choices with invalid geometries are silently ignored. There will be no message displayed to a user when it happens.
