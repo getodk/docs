@@ -47,6 +47,7 @@ ODK is open-source software that's made by a welcoming community of people just 
   central-install
   central-using
   central-manage
+  central-best-practices
 
 .. toctree::
   :hidden:
