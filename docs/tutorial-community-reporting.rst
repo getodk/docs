@@ -29,7 +29,7 @@ Capture problem reports with a simple form
 -------------------------------------------
 
 .. seealso::
-    If you're not yet confident with building XLSForms, start with :doc:`xlsform-first-form`.
+    If you're not yet confident with building XLSForms, start with :doc:`tutorial-first-form`.
 
 A problem report form can be very simple. All you must capture so that town employees can find and fix reported problems are a title, a description and a location. You can build a form to capture that information yourself or `use our example <https://docs.google.com/spreadsheets/d/1zhnRnjD3ZH_OwARAE1hY4__8nFta1LauCPaZbWyI2ag/edit#gid=1068911091>`_.
 

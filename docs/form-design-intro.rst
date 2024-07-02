@@ -15,4 +15,4 @@ Forms are made of fields of :doc:`different types <form-question-types>` which c
 
 Questions can be :ref:`grouped together <groups>` including :ref:`on one screen <field-list>`. They can also be :ref:`repeated <repeats>`. :doc:`Form logic <form-logic>`, :doc:`datasets <form-datasets>`, :ref:`hidden fields <hidden-questions>`, and :doc:`external apps <collect-external-apps>` make it possible to create easy-to-use, but powerful forms that represent :doc:`complex data collector workflows <data-collector-workflows>`.
 
-Most ODK users design their forms in XLSForm with Google Sheets or Excel and examples in this documentation use XLSForm. Get started with the :doc:`XLSForm tutorial <xlsform-first-form>` or the :doc:`XLSForm reference <xlsform>`.
+Most ODK users design their forms in XLSForm with Google Sheets or Excel and examples in this documentation use XLSForm. Get started with the :doc:`XLSForm tutorial <tutorial-first-form>` or the :doc:`XLSForm reference <xlsform>`.

@@ -1,6 +1,6 @@
-:og:image: https://docs.getodk.org/_static/img/xlsform-first-form.png
+:og:image: https://docs.getodk.org/_static/img/tutorial-first-form.png
 
-XLSForm Tutorial: Your first form
+XLSForm tutorial: Your first form
 =================================
 
 ODK forms are created using spreadsheets by following the rules of a standard called XLSForm. 
@@ -133,16 +133,16 @@ Try your form in Central
 #. Click on the New button next to ``Forms``.
 #. Drag and drop your XLSX file onto the file uploader.
    
-   .. image:: /img/xlsform-first-form/school-census-upload.*
+   .. image:: /img/tutorial-first-form/school-census-upload.*
      :scale: 30%
      :alt: ODK Central's form upload dialog.
 
 #. Click the :guilabel:`Preview` button to see your form in your web browser 🎉
   
-   .. image:: /img/xlsform-first-form/school-census-draft.*
+   .. image:: /img/tutorial-first-form/school-census-draft.*
      :alt: ODK Central showing a draft of the school census form. There's a red box around the Preview button with an arrow pointing to it.
 
-   .. image:: /img/xlsform-first-form/school-census-preview.*
+   .. image:: /img/tutorial-first-form/school-census-preview.*
      :alt: ODK Central showing a web preview of the school census form.
      :align: center
 
