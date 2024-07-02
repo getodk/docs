@@ -22,7 +22,7 @@ In the ODK context, an "Entity" can be thought of as a "thing". If your project 
 
 Entities are organized in Entity Lists that group together Entities of the same type. You can think of Entity Lists as spreadsheets or databases that are shared across forms. Forms can create, read, and update Entities. You can also think of Entities as the nouns (trees) and the forms as the verbs (Register a tree).
 
-ODK has historically been form-based: every workflow starts by opening a blank form and filling it out. We are now working towards providing an Entity-based option in which workflows start by selecting an Entity. Currently, you can have each of your form start with a question that lets users select an Entity from a list. In the future, you'll have the option to first select an Entity and then see what forms, if any, apply to that Entity.
+ODK has historically been form-based: every workflow starts by opening a blank form and filling it out. We are now working towards providing an Entity-based option in which workflows start by selecting an Entity. Currently, you can have each of your forms start with a question that lets users select an Entity from a list. In the future, you'll have the option to first select an Entity and then see what forms, if any, apply to that Entity.
 
 .. image:: _static/img/entities-intro.png
 
