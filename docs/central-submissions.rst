@@ -135,7 +135,7 @@ Once the :file:`.csv` or :file:`.zip` completes downloading, you will find one o
 Downloading submissions with Power BI or Excel
 ----------------------------------------------
 
-Central provides an OData feed that Power BI or Excel can use to pull data into ODK at (pretty much) the click of a button.
+Central provides an OData feed that Power BI or Excel can use to pull data from ODK at (pretty much) the click of a button.
 
 ..  youtube:: CDycTI-8TOc
    :width: 100%
@@ -164,7 +164,7 @@ To connect with Power BI or Excel, follow these steps.
 
    .. image:: /img/central-submissions/powerbi-auth.png
 
-4. The :guilabel:`Navigator` window now appear. Select :guilabel:`Submissions`, then :guilabel:`Load`.
+4. The :guilabel:`Navigator` window will now appear. Select :guilabel:`Submissions`, then :guilabel:`Load`.
 
 .. tip::
   Read `OData feeds in Power BI <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`_ and `Power Query in Excel <https://support.microsoft.com/en-us/office/about-power-query-in-excel-7104fbee-9e62-4cb9-a02e-5bfb1a6c536a>`_ for more information about using Power BI or Excel for OData feeds.
