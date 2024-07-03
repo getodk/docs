@@ -31,8 +31,8 @@ redirects:
   briefcase-forms/index.html: briefcase-using
   briefcase-guide/index.html: briefcase-intro
   briefcase-vs-aggregate/index.html: briefcase-intro
-  central-setup/index.html: central-install
   central-datasets/index.html: central-entities
+  central-setup/index.html: central-install
   collect-connect-aggregate/index.html: collect-connect
   collect-guide/index.html: collect-intro
   collect-integrations/index.html: collect-external-apps
@@ -53,3 +53,4 @@ redirects:
   training/index.html: additional-resources
   validate/index.html: https://github.com/getodk/validate
   visualize/index.html: aggregate-visualize
+  xlsform-first-form/index.html: tutorial-first-form

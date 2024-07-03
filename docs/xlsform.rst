@@ -12,7 +12,7 @@ XLSForms can be created and edited by any application that works with ``.xlsx`` 
 
 Many users choose to use Google Sheets or Excel for the web so that they can collaborate on or publicly share their forms. The best way to get started with XLSForm is with the tutorial below.
 
-* :doc:`XLSForm tutorial <xlsform-first-form>`
+* :doc:`XLSForm tutorial <tutorial-first-form>`
 
 If you are more adventurous, you can skip the tutorial, make a copy of the form template below, and learn to design your form that way.
 

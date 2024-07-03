@@ -42,7 +42,7 @@ Saisir les signalements de problèmes à l'aide d'un formulaire simple
 --------------------------------------------------------------------
   
 .. seealso::
-  Si vous n'avez pas encore l'habitude de construire des formulaires XLSForms, commencez par :doc:`le tutoriel XLSForm <../../xlsform-first-form>`.
+  Si vous n'avez pas encore l'habitude de construire des formulaires XLSForms, commencez par :doc:`le tutoriel XLSForm <../../tutorial-first-form>`.
 
 Un formulaire de signalement peut être très simple. Pour que les employés municipaux puissent trouver et résoudre les problèmes signalés, il suffit de saisir un titre, une description du problème et le lieu ou il est rencontré. Pour cela, vous pouvez créer votre propre formulaire ou `utiliser notre exemple <https://docs.google.com/spreadsheets/d/15pb3gyQ38T11IMlP4CJxW6r-3g_3Q54-Zj_6m5EZgpA>`_.
 
