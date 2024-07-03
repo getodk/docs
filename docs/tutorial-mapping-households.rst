@@ -25,7 +25,7 @@ Collect data with locations
 
 .. warning::
    
-   If you've never created an XLSForm before, complete the :doc:`XLSForm Tutorial <xlsform-first-form>` first.
+   If you've never created an XLSForm before, complete the :doc:`XLSForm Tutorial <tutorial-first-form>` first.
 
 #. Download this `Household Survey <https://docs.google.com/spreadsheets/d/1I3dpRRgdMWG83IjBsymwrN8nYouKyrEmww1KTI-TGiI/edit?usp=sharing>`_ as an .xlsx.
 #. Upload the form into Central, publish it, connect your app user, and send in some sample data.
