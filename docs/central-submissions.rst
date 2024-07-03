@@ -135,45 +135,41 @@ Once the :file:`.csv` or :file:`.zip` completes downloading, you will find one o
 Downloading submissions with Power BI or Excel
 ----------------------------------------------
 
-Central provides an OData feed that Power BI or Excel can use to pull data from ODK at (pretty much) the click of a button.
+.. tip::
+
+  * See our :doc:`mapping households tutorial <tutorial-mapping-households>` for step-by-step guidance on using Power BI with ODK.
+
+  * See `connecting Excel to ODK <https://forum.getodk.org/t/step-by-step-instructions-for-odata-use-with-excel-professional-2016/45118>`_ for instructions on using Excel with ODK.
+
+  Power BI and Excel uses the same underlying technology (Power Query) to connect to Central's OData feed. Try both of the above resources to maximize your learning.
+
+.. seealso::
+
+Central provides an OData feed that Power BI or Excel can use to easily download submissions into a dashboard for visualization or into a spreadsheet for analysis.
+
+.. tip::
 
 ..  youtube:: CDycTI-8TOc
    :width: 100%
 
-As shown in the tutorial video above from `Humanitarian Data Solutions <https://www.humanitariandatasolutions.com>`_, you will first need a link to paste into the tool. You can find this link by clicking on the :guilabel:`Analyze via OData` button on the right side of the listing page:
+To download submissions with Power BI or Excel, follow these steps:
 
-   .. image:: /img/central-submissions/odata-button.png
+1. Find a link to the OData feed by clicking on the :guilabel:`Analyze via OData` button on the right side of the :ref:`Submissions page <central-submissions-accessing>` of your form. 
 
-Once you click on it, you should see this popup appear:
-
-   .. image:: /img/central-submissions/odata.png
-
-To connect with Power BI or Excel, follow these steps.
-
-1. Start the Get OData feed action.
+2. Start the Get OData feed action.
 
   * In Power BI, select the :guilabel:`Home` menu, then :guilabel:`Get Data`, then :guilabel:`OData feed`.
-
   * In Excel, select the :guilabel:`Data` menu, then :guilabel:`Get Data`, :guilabel:`From Other Sources`, then :guilabel:`From OData Feed`.
 
-2. Leave the feed type as :guilabel:`Basic` (not Advanced), then copy and paste in the link from Central and then select :guilabel:`OK`.
+3. Leave the feed type as :guilabel:`Basic` (not Advanced), then copy and paste in the link from Central and then select :guilabel:`OK`.
 
-   .. image:: /img/central-submissions/powerbi-url.png
+4. Change the authentication type to :guilabel:`Basic` (not Anonymous), enter your Central email address and password, and then :guilabel:`Connect`.
 
-3. Change the authentication type to :guilabel:`Basic` (not Anonymous), enter your Central email address and password, and then :guilabel:`Connect`.
-
-   .. image:: /img/central-submissions/powerbi-auth.png
-
-4. The :guilabel:`Navigator` window will now appear. Select :guilabel:`Submissions`, then :guilabel:`Load`.
+5. The :guilabel:`Navigator` window will now appear. Select :guilabel:`Submissions`, then :guilabel:`Load`.
 
 .. tip::
-  Read `OData feeds in Power BI <https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata>`_ and `Power Query in Excel <https://support.microsoft.com/en-us/office/about-power-query-in-excel-7104fbee-9e62-4cb9-a02e-5bfb1a6c536a>`_ for more information about using Power BI or Excel for OData feeds.
 
   If you are having trouble getting Power BI or Excel to connect, and especially if you see error messages about permissions or authentication, `clear your cached permissions <https://docs.microsoft.com/en-us/power-query/connectorauthentication#change-the-authentication-method>`_ and try again.
-
-  If you are using Excel 2016, install `Microsoft Power Query for Excel 6 <https://www.microsoft.com/en-us/download/details.aspx?id=39379>`_ and go to the :guilabel:`Data` menu, then :guilabel:`New Query`, and then :guilabel:`From Other Sources` to find the :guilabel:`From OData Feed` item.
-
-  Using macOS? Become a `365 Insider <https://insider.office.com/en-us/join/mac>`_ and enable the Beta channel to get OData support in Excel.
 
 .. _central-submissions-other-api:
 

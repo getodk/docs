@@ -3,12 +3,15 @@
 Power BI tutorial: Mapping households
 =====================================
 
-When surveying households, you may want to map each submission to visualize progress. In this tutorial, you'll learn to connect `Power BI Desktop <https://www.microsoft.com/en-us/power-platform/products/power-bi/desktop>`_ to ODK Central to build a map of households that can be refreshed as new submissions arrive so you can stay up-to-date.
+When surveying households, you may want to map each submission to visualize progress. In this tutorial, you'll learn to connect `Power BI <https://www.microsoft.com/en-us/power-platform/products/power-bi/desktop>`_ to ODK Central to build a map of households that can be refreshed as new submissions arrive.
 
-.. note::
-   
-   Excel uses the same technology that Power BI uses to connect to Central. If you don't have Power BI or would prefer a more tabular view of your data, so you can often use the same techniques. See this `tutorial for OData use with Excel <https://forum.getodk.org/t/step-by-step-instructions-for-odata-use-with-excel-professional-2016/45118>`_ for more.
+.. tip::
 
+  * See `easily connect ODK to Power BI <https://www.youtube.com/watch?v=CDycTI-8TOc>`_ for a video using Power BI with ODK.
+
+  * See `connecting Excel to ODK <https://forum.getodk.org/t/step-by-step-instructions-for-odata-use-with-excel-professional-2016/45118>`_ for instructions on using Excel with ODK.
+
+  Power BI and Excel uses the same underlying technology (Power Query) to connect to Central's OData feed. Try both of the above resources to maximize your learning.
 
 Goals
 -----
@@ -64,6 +67,7 @@ Connect ODK to Power BI
 #. The :guilabel:`Navigator` window will now appear. Select :guilabel:`Submissions`, then :guilabel:`Transform Data`.
 
 .. tip::
+
   If you are having trouble getting Power BI to connect, and especially if you see error messages about permissions or authentication, `clear your cached permissions <https://docs.microsoft.com/en-us/power-query/connectorauthentication#change-the-authentication-method>`_ and try again.
 
 
