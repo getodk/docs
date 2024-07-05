@@ -26,6 +26,7 @@ Free response
 Free-entry text and number answers are entered using the device keyboard. The appropriate keyboard (letters or numbers) opens when the question appears.
 
 .. video:: /vid/collect-filling-forms/keyboard-popup.mp4
+  :class: device-screen-vertical
 
   Video showing text keyboard popup when a string input is required and number keyboard popup when a number input is required.
 
@@ -130,13 +131,12 @@ If you have a repeating group, you can remove existing instances of that repeat 
 Navigating the form 
 ------------------------
 
-.. note::
-  Since Collect v1.29, both swiping and button navigation are enabled by default on new installations. Prior to Collect v1.29 or for existing installations, only swiping was enabled by default.
+By default, you can go between form screens either by swiping left or right on the screen or by using the Next and Back buttons above the keyboard. You can allow only one of the navigation modes by changing :doc:`collect-settings`. You can also change navigation mode settings while filling out a form by using :menuselection:`⋮ -> Project settings -> User Interface`.
 
-Swipe
+Swiping
 ~~~~~~~~~~
 
-To move between questions, Swipe Left or Right. 
+Swiping left or right anywhere on the screen can be a quick way to move between questions. For a swipe to be recognized as a page change request, it has to be fast and close to straight across. This may require some explicit training and practice.
 
 .. image:: /img/collect-filling-forms/swiping.* 
   :alt: A question screen in the Collect App. Overlaid on the screen is an icon of a hand with extended finger and arrows pointing left and right, representing a swiping gesture.
@@ -145,48 +145,14 @@ To move between questions, Swipe Left or Right.
 Next and Back Buttons  
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you prefer Next and Back buttons for navigation, you can change your navigation mode in :menuselection:`⋮ -> Project settings -> User Interface`.
-
-1. Open the *Action Menu* (:menuselection:`⋮`)
-
-   .. image:: /img/collect-filling-forms/question-screen-highlight-kebab.* 
-     :alt: A question screen in the Collect app. The Action Menu ("kebab") in the top-right corner is circled in red.
-     :class: device-screen-vertical
-
-2. Select :menuselection:`Project settings`.
-
-   .. image:: /img/collect-filling-forms/question-screen-highlight-general-settings.* 
-     :alt: A question screen in the Collect app. The Action Menu is expanded and the option *General Settings* is circled in red.
-     :class: device-screen-vertical
-
-3. Select :menuselection:`User Interface`
-
-   .. image:: /img/collect-filling-forms/general-settings-highlight-user-interface.* 
-     :alt: The General Settings menu of the Collect app. The *User Interface* item is circled in red.
-     :class: device-screen-vertical
-  
-4. Select :menuselection:`Navigation`
-
-   .. image:: /img/collect-filling-forms/user-interface-highlight-navigation.* 
-     :alt: The User Interface menu of the Collect app. The *Navigation* item is circled in red.
-     :class: device-screen-vertical
-
-5. Update your form navigation preference  
-
-   .. image:: /img/collect-filling-forms/ui-navigation-buttons.* 
-     :alt: The User Interface menu of the Collect app, as displayed in the previous image. There is now a modal titled *Navigation*, with radio buttons (single select) for: *Use horizontal swipes*, *Use forward/back buttons*, and *Use swipes and buttons*. The option for *Use forward/back buttons* is selected and circled in red.
-     :class: device-screen-vertical
-  
-.. image:: /img/collect-filling-forms/question-screen-with-buttons.* 
-  :alt: A question screen in the Collect App. There are now two buttons below the question text, with left (backwards) and right (forwards) buttons.
-  :class: device-screen-vertical
+Next and Back buttons are included above the keyboard by default. These are generally more intuitive to use than swipes but they may take up more vertical space than desired on short devices.
 
 .. _jumping:
 
 Jumping to questions
 ~~~~~~~~~~~~~~~~~~~~~~
   
-The arrow icon (|arrow|) in the top right corner opens the jump menu. From the jump menu, you can go to any question or go to the beginning/ending of the form.
+The arrow icon (|arrow|) in the top right corner opens the summary. From the summary view, you can go to any question or go to the beginning or ending of the form.
 
 .. |arrow| image:: /img/collect-forms/jumpicon.*
     :alt: Opens the jump menu.
