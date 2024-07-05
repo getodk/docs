@@ -7,6 +7,9 @@ The data for all the available basemaps comes from services on the Internet, so 
 
 The offline layer setting lets you select a file from your device that will be displayed offline. Offline layers are useful to present custom geospatial data layered over standard basemaps or as basemaps for low-connectivity environments. Use them to display high-resolution imagery, annotated maps, heatmaps, and more. ODK Collect can display any map layer saved as a set of tiles in the `MBTiles format <https://github.com/mapbox/mbtiles-spec>`_.
 
+.. note::
+  If you want to select geo features and include their metadata as part of a form submission, see :ref:`the select from map question type <select-from-map>`
+
 .. _offline-maps-quick-start:
 
 Quick start
@@ -16,14 +19,14 @@ Typically, a project manager prepares offline layers for a project and then eith
 
 #. :ref:`Prepare your MBTiles <getting-map-tiles>` files.
 #. Send the MBTiles files to the devices you want to use them on. You could use a file sharing service like Google Drive, send device-to-device with `Quick Share <https://support.google.com/android/answer/9286773?hl=en>`_, or send with a service like WhatsApp or email.
-#. Download the MBTiles file to the device (for Google Drive, you could skip this step and import directly in the next step).
+#. Download the MBTiles file to the device (for Google Drive, skip this step and import directly in the next step).
 #. Go to Collect's :ref:`offline layer settings <reference-layer-settings>` and add your files from the device storage or from Google Drive.
 #. Select the offline layer to use.
 #. See the offline layer in a :ref:`geopoint <geopoint-maps>`, :ref:`geotrace <geotrace-widget>`, or :ref:`geoshape <geoshape-widget>` question.
 
    .. note::
 
-      If you don't see your expected offline layer, try zooming in and out. If you need to see your offline layer at different zoom levels, try using the Mapbox basemap source because it allows zooming beyond the specified range (with loss of quality).
+      If you don't see your expected offline layer, try zooming in and out. If you need to see your offline layer at different zoom levels, try using the Mapbox basemap source because it will allow you to zoom beyond the zoom level that the offline layer defines (with loss of quality).
 
 While viewing the map, you can change the selected offline layer or import more layers using the button that looks like a stack of layers (:fa:`layer-group`).
 
@@ -32,17 +35,17 @@ While viewing the map, you can change the selected offline layer or import more 
 Creating MBTiles files
 ----------------------
 
-To create MBTiles files, we recommend using `QGIS <https://docs.qgis.org/3.34/en/docs/user_manual/processing_algs/qgis/rastertools.html#generate-xyz-tiles-mbtiles>`_ or `MapTiler <https://www.maptiler.com/>`_. In general, you should build raster (jpg or png) MBTiles files.
+To create MBTiles files, we recommend using `QGIS <https://docs.qgis.org/3.34/en/docs/user_manual/processing_algs/qgis/rastertools.html#generate-xyz-tiles-mbtiles>`_ or `MapTiler <https://www.maptiler.com/>`_. In general, you should build raster (.jpg or .png) MBTiles files.
 
 .. warning::
 
-  Vector MBTiles files (with pbf tiles) are only supported if :guilabel:`Mapbox` is selected as the :ref:`basemap source <basemap-settings>` and are currently displayed without configurable styling. Each layer's lines are displayed in a different color picked by ODK Collect. These colors will be the same across all devices using the same MBTiles file but they will not be meaningful. For example, all roads may be pink. Shapes are not filled in.
+  Vector MBTiles files (with .pbf tiles) are only supported if :guilabel:`Mapbox` is selected as the :ref:`basemap source <basemap-settings>` and are currently displayed without configurable styling. Each layer's lines are displayed in a different color picked by ODK Collect. These colors will be the same across all devices using the same MBTiles file but they will not be meaningful. For example, all roads may be pink. Shapes are not filled in.
 
 In Collect, MBTiles files will be identified by the ``name`` specified in the MBTiles metadata. Make sure to use a descriptive name, especially if you will be using several different MBTiles files.
 
-Offline layers are displayed on top of the configured online basemap. If you are working offline, you will generally want to include a basemap in your offline layer files. If your field team will have Internet connectivity, you can use offline layers with transparency and only include the custom data you need to display. You can do this with PNG raster tiles or PBF vector tiles, but keep in mind that when using vector tiles, you must use the Mapbox engine and each layer will be shown in a device-selected color.
+Offline layers are displayed on top of the configured online basemap. If you are working offline, you will generally want to include a basemap in your offline layer files. If your field team will have Internet connectivity, you can use offline layers with transparency and only include the custom data you need to display. You can do this with .png raster tiles or .pbf vector tiles, but keep in mind that when using vector tiles, you must use the Mapbox engine and each layer will be shown in a device-selected color.
 
-MBTiles files typically contain `metadata <https://github.com/mapbox/mbtiles-spec/blob/master/1.3/spec.md#metadata>`_ that specifies the range of zoom levels in which they are visible. Pick this range based on the kind of work your field team will be doing. For example, if the offline layer is used to navigate to specific points of interest, you will want to optimize for a more zoomed out view than if it is used to support capturing the location of building entrances at high accuracy. The larger of a zoom range you specify, the bigger your files will be. If you need a broad range of zoom levels and can tolerate some loss of quality, select :guilabel:`Mapbox` is as the basemap source because it allows over-zooming.
+MBTiles files typically contain `metadata <https://github.com/mapbox/mbtiles-spec/blob/master/1.3/spec.md#metadata>`_ that specifies the range of zoom levels in which they are visible. Pick this range based on the kind of work your field team will be doing. For example, if the offline layer is used to navigate to specific points of interest, you will want to optimize for a more zoomed out view than if it is used to support capturing the location of building entrances at high accuracy. The larger of a zoom range you specify, the bigger your files will be. If you need a broad range of zoom levels and can tolerate some loss of quality, select :guilabel:`Mapbox` is as the basemap source because it allows zooming beyond the zoom level that the offline layer defines.
 
 .. tip::
 
@@ -65,7 +68,7 @@ If all of the devices using Collect will be in the same location, consider shari
 
 If your Collect users are remote and don't have access to file sharing services, you can send them a direct link to a file or the file itself via WhatsApp, email, etc. They will then save the file to their Downloads and import it from Collect.
 
-If you are setting up multiple devices from a computer, you may want to :ref:`manually place layer files in the layers directory in Collect <transferring-offline-tiles-manually>`.
+If you are setting up multiple devices from a computer, you may want to :ref:`manually place MBTiles in the layers directory in Collect <transferring-offline-tiles-manually>`.
 
 .. _adding-offline-layers:
 
@@ -74,14 +77,14 @@ Adding offline layers to Collect
 
 .. note::
   
-  You can also :ref:`manually place layer files in the layers directory in Collect <transferring-offline-tiles-manually>`.
+  You can also :ref:`manually place MBTiles in the layers directory in Collect <transferring-offline-tiles-manually>`.
 
 You can add offline layers to Collect from the :ref:`mapping-settings` or by tapping on the layers button (:fa:`layer-group`) directly from a map. Both options give you access to the same menu which lets you configure the offline layer for all maps in the current Collect project.
 
 .. image:: /img/collect-offline-maps/select-offline-layer.png
   :class: device-screen-vertical
 
-When you tap the :guilabel:`Add layers` button, you will see a file picker. To import a single file, tap on it and you will go back to Collect to finish the import process. If you need to import multiple offline layers, you can select multiple files. This process will vary a bit by Android version and device type but it is usually done by tapping on their file type icon. After selecting multiple files, a select button will appear at the top or bottom right. Tap that button to confirm your selection and return to Collect.
+When you tap the :guilabel:`Add layers` button, you will see a file picker. To import a single file, tap on it and you will go back to Collect to finish the import process. If you need to import multiple offline layers, you can select multiple files. This process will vary by Android version and device type but it is usually done by tapping on their file type icon. After selecting multiple files, a select button will appear at the top or bottom right. Tap that button to confirm your selection and return to Collect.
 
 Once you have selected the layer(s) that you want to import, you will see a confirmation screen showing the layer names and options for sharing the layer(s) between projects or not. This setting is only relevant if you use multiple Collect projects. If you use multiple projects and they use different offline layers, it can be helpful to import a different set in each individual project. Additionally, when layers are imported at the project level, they will be deleted when the project is deleted.
 
