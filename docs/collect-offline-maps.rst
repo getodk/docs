@@ -8,14 +8,14 @@ The data for all the available basemaps comes from services on the Internet, so 
 The offline layer setting lets you select a file from your device that will be displayed offline. Offline layers are useful to present custom geospatial data layered over standard basemaps or as basemaps for low-connectivity environments. Use them to display high-resolution imagery, annotated maps, heatmaps, and more. ODK Collect can display any map layer saved as a set of tiles in the `MBTiles format <https://github.com/mapbox/mbtiles-spec>`_.
 
 .. note::
-  If you want to select geo features and include their metadata as part of a form submission, see :ref:`the select from map question type <select-from-map>`
+  If you want to select geospatial features and include their metadata as part of a form submission, see :ref:`the select from map question type <select-from-map>`.
 
 .. _offline-maps-quick-start:
 
 Quick start
 ------------
 
-Typically, a project manager prepares offline layers for a project and then either sends them out to all Collect users to import or does the import for all devices. This section includes the minimal steps needed for this typical usage. For more details, see the sections below.
+Typically, a project manager prepares offline layers for a project and then either imports them into all devices or sends them out to the project's Collect users. This section includes the minimal steps needed for this typical usage. For more details, see the sections below.
 
 #. :ref:`Prepare your MBTiles <getting-map-tiles>` files.
 #. Send the MBTiles files to the devices you want to use them on. You could use a file sharing service like Google Drive, send device-to-device with `Quick Share <https://support.google.com/android/answer/9286773?hl=en>`_, or send with a service like WhatsApp or email.
@@ -39,7 +39,7 @@ To create MBTiles files, we recommend using `QGIS <https://docs.qgis.org/3.34/en
 
 .. warning::
 
-  Vector MBTiles files (with .pbf tiles) are only supported if :guilabel:`Mapbox` is selected as the :ref:`basemap source <basemap-settings>` and are currently displayed without configurable styling. Each layer's lines are displayed in a different color picked by ODK Collect. These colors will be the same across all devices using the same MBTiles file but they will not be meaningful. For example, all roads may be pink. Shapes are not filled in.
+  Vector MBTiles files (with .pbf tiles) are only supported if :guilabel:`Mapbox` is selected as the :ref:`basemap source <basemap-settings>` and are currently displayed without configurable styling. Each layer's lines are displayed in a different color picked by ODK Collect. These colors will be the same across all devices using the same MBTiles file but they will not be meaningful. For example, roads may be pink, orange, etc. Shapes are not filled in.
 
 In Collect, MBTiles files will be identified by the ``name`` specified in the MBTiles metadata. Make sure to use a descriptive name, especially if you will be using several different MBTiles files.
 
@@ -100,12 +100,12 @@ When Collect imports MBTiles files from device storage, the files are copied, no
 
 .. _transferring-offline-tiles-manually:
 
-Manually transferring offline layers
+Manually transferring MBTiles files
 -------------------------------------
 
 Prior to ODK Collect v2024.2, MBTiles files had to be manually transferred to Collect's layers directory. This can still be done and may be a useful strategy when preparing multiple devices at once.
 
-Place the MBTiles files in the :file:`layers` subdirectory of :ref:`the Collect directory <collect-directory>`, and ensure their filenames end in `.mbtiles`. You can do this by first downloading the files to the device and then moving them using the Files application. Alternatively, you can connect the device to a computer and transfer the file(s) `via USB <https://support.google.com/android/answer/9064445?hl=en>`_ or using :doc:`adb <collect-adb>`.
+Place the MBTiles files in the :file:`layers` subdirectory of :ref:`the Collect directory <collect-directory>`, and ensure their filenames end in `.mbtiles`. You can do this by first downloading the files to the device and then moving them using the Files application (see `the Play Store <https://play.google.com/store/apps/details?id=com.marc.files>_`. Alternatively, you can connect the device to a computer and transfer the file(s) `via USB <https://support.google.com/android/answer/9064445?hl=en>`_ or using :doc:`adb <collect-adb>`.
 
 .. note::
 
