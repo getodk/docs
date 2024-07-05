@@ -100,12 +100,12 @@ When Collect imports MBTiles files from device storage, the files are copied, no
 
 .. _transferring-offline-tiles-manually:
 
-Manually transferring MBTiles files
+Manually importing MBTiles files
 -------------------------------------
 
 Prior to ODK Collect v2024.2, MBTiles files had to be manually transferred to Collect's layers directory. This can still be done and may be a useful strategy when preparing multiple devices at once.
 
-Place the MBTiles files in the :file:`layers` subdirectory of :ref:`the Collect directory <collect-directory>`, and ensure their filenames end in `.mbtiles`. You can do this by first downloading the files to the device and then moving them using the Files application (see `the Play Store <https://play.google.com/store/apps/details?id=com.marc.files>_`. Alternatively, you can connect the device to a computer and transfer the file(s) `via USB <https://support.google.com/android/answer/9064445?hl=en>`_ or using :doc:`adb <collect-adb>`.
+Place the MBTiles files in the :file:`layers` subdirectory of :ref:`the Collect directory <collect-directory>`, and ensure their filenames end in `.mbtiles`. You can do this by first downloading the files to the device and then moving them using the Files application (see `the Play Store <https://play.google.com/store/apps/details?id=com.marc.files>`_. Alternatively, you can connect the device to a computer and transfer the file(s) `via USB <https://support.google.com/android/answer/9064445?hl=en>`_ or using :doc:`adb <collect-adb>`.
 
 .. note::
 
@@ -122,4 +122,4 @@ There are two ways to set the offline layer:
 - from :ref:`mapping-settings`
 - by tapping on the button that looks in a stack of layers (:fa:`layer-group`) in a :ref:`geopoint <geopoint-maps>`, :ref:`geotrace <geotrace-widget>`, or :ref:`geoshape <geoshape-widget>` question
 
-Both options set the reference layer for all :ref:`geopoint <geopoint-maps>`, :ref:`geotrace <geotrace-widget>`, and :ref:`geoshape <geoshape-widget>` questions in the current project. The choices in the Collect layer selection menu show the name of the tileset specified in the MBTiles file.
+Both options set the reference layer for all :ref:`geopoint <geopoint-maps>`, :ref:`geotrace <geotrace-widget>`, and :ref:`geoshape <geoshape-widget>` questions in the current project. The choices in the Collect layer selection menu show the name specified in the MBTiles file.
