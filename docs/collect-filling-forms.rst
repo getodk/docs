@@ -197,10 +197,31 @@ Required Questions
   :alt: A question screen in the Collect app. An error text reads, "Sorry, this response is required."
   :class: device-screen-vertical
 
+Recovering data after Collect quits
+-------------------------------------
+
+As you fill out a form, Collect automatically saves your data each time you change question screens. It will also attempt to save when you switch to another app or it detects a force close. For example, this can happen if Android closes Collect to free up device memory.
+
+If Collect quits unexpectedly, you will be prompted to recover saved data the next time that you open the blank form or filled form that was open at the time of the force close.
+
+For example, if you start a new blank copy of "Form1", fill out some data, and then Collect closes, you will be prompted to recover that data the next time that you select "Form1" from the :guilabel:`Start new form` menu.
+
+If you start a new blank copy of "Form1", fill out some data, explicitly save it to create the "Smith Household" draft and then Collect closes, you will be prompted to recover the saved data the next time that you open "Smith Household" from the :guilabel:`Drafts` menu.
+
+.. image:: /img/collect-filling-forms/recover-from-savepoint.*
+  :alt: A dialog with title "Recover your work?" and options to Discard or Recover.
+  :class: device-screen-vertical
+
+If you choose to discard, the recovery data is permanently deleted and cannot be recovered.
+
+If you choose to recover your work, Collect will open the saved data for editing. If you find that you don't want that data after all, you can use your back button to exit the form filling screen and choose to discard changes. Once you have discarded the recovery data in this way, it is permanently deleted and cannot be recovered.
+
+If you've updated your form since Collect closed unexpectedly, Collect will prompt you to recover saved data. If you choose to recover your work, it will open that saved data with the form version that was used to create the saved data, not the updated version.
+
 .. _change-form-language:  
 
-Changing language of a form
------------------------------
+Changing the language of a form
+--------------------------------
 
 If a form is available in multiple languages, you can choose a language in which you want the questions to appear. This is separate from the Collect application language which is set by the device settings by default or can be manually selected from :doc:`Settings <collect-settings>`.
 
@@ -222,7 +243,7 @@ Open the *Action Menu* (:menuselection:`⋮`) and select :guilabel:`Change Langu
 
 .. _validate_form:  
 
-Check for errors during form entry
+Checking for errors during form entry
 ---------------------------------------
 
 As of Collect v2023.2.0, you can check a form for errors (validate it) during the form entry process at any stage.
