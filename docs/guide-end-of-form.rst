@@ -62,7 +62,7 @@ Customization options
 
 This section describes ways to customize how data collectors interact with the form states described above. These customizations let you limit what data collectors can do when they need to stop filling out a form because they've completed it or for other reasons.
 
-The settings described can be set on a device and then :ref:`shared by QR code to other devices <sharing-settings-with-another-device>`. Alternately, and especially if different devices need to use different App Users, you can :ref:`create your own QR codes <create-settings-qr-code>`.
+The settings described can be set on a device and then :ref:`shared by QR code to other devices <sharing-settings-with-another-device>`. Alternatively, and especially if different devices need to use different App Users, you can :ref:`create your own QR codes <create-settings-qr-code>`.
 
 To see how these options can be combined to achieve specific goals, see :ref:`the customizations for common workflows section <guide-end-form-common-workflows>`.
 
