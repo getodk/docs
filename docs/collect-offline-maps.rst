@@ -15,7 +15,7 @@ Offline maps quick start
 Typically, a project manager prepares offline layers for a project and then either sends them out to all Collect users to import or does the import for all devices. This section includes the minimal steps needed for this typical usage. For more details, see the sections below.
 
 #. :ref:`Prepare your MBTiles <getting-map-tiles>` files.
-#. Send the MBTiles file(s) to the device(s) you want to use them on. You could use a file sharing service like Google Drive or Dropbox, send with `Quick Share <https://support.google.com/android/answer/9286773?hl=en>`_, or send with a service like WhatsApp or email.
+#. Send the MBTiles file(s) to the device(s) you want to use them on. You could use a file sharing service like Google Drive or Dropbox, send device-to-device with `Quick Share <https://support.google.com/android/answer/9286773?hl=en>`_, or send with a service like WhatsApp or email.
 #. Download the MBTiles file to the device (for Google Drive, you could skip this step and import directly in the next step).
 #. Go to Collect's :ref:`offline layer settings <reference-layer-settings>` and add your file(s) from the device storage or from Google Drive.
 #. Select the offline layer to use.
@@ -61,7 +61,7 @@ Once you have the MBTiles files that you want to use, you need to get them onto 
 
 If all devices have access to Google Drive, you can share the MBTiles files from Google Drive. When devices are online, they will be able to select Google Drive from the file picker when they import layers to Collect. This will download and import the files directly. Depending on the devices that you use, you may be able to use a similar process for OneDrive, Dropbox, and other file sharing services.
 
-If all of the devices using Collect will be in the same location, consider sharing the file(s) with `Quick Share <https://support.google.com/android/answer/9286773?hl=en>`_, especially if they are large. For example, during a training, you can share the file with one trainee and then ask them to share the file(s) on to the next person and so on. 
+If all of the devices using Collect will be in the same location, consider sharing the file(s) device-to-device with `Quick Share <https://support.google.com/android/answer/9286773?hl=en>`_, especially if they are large. For example, during a training, you can share the file with one trainee and then ask them to share the file(s) on to the next person and so on.
 
 If your Collect users are remote and don't have access to file sharing services, you can send them a direct link to a file or the file itself via WhatsApp, email, etc. They will then save the file to their Downloads and import it from Collect.
 
