@@ -4,13 +4,22 @@
 Introduction to Entities
 **************************
 
-If you've heard something about ODK Entities and want to better understand whether they're useful for your longitudinal data collection, you're in the right place! We've organized this page as a series of questions that are independent from each other so you can pick and choose the sections that interest you.
+If you've heard something about ODK Entities and want to better understand whether they're useful for your longitudinal data collection, you're in the right place! We've organized this page as a series of questions that are independent from each other so you focus on the topics that interest you.
 
 If you're someone who learns best by doing, you may prefer to jump straight into the tutorial on :doc:`building a community reporting tool with Entities <tutorial-community-reporting>` and to come back here if you have any questions. If you have a question that we haven't answered, you can `post on the forum <https://forum.getodk.org/c/support/6>`_.
+
+Overview:
+
+* :ref:`Concepts <entities-intro-concepts>`: how Entities fit with existing ODK concepts like forms and more general concepts like longitudinal data collection
+* :ref:`Limitations <entities-intro-limitations>`: what Entities can and can't do currently and some of what is planned for the future
+* :ref:`Alternatives <entities-intro-alternatives>`: other concepts in ODK you can use instead of Entities, other software you may want to consider
+* :ref:`How to <entities-intro-how-to>`: mechanics of how to use Entities
 
 .. note::
 
     This document assumes you are using `ODK Cloud <https://getodk.org/#pricing>`_ or an up-to-date :doc:`ODK Central <central-intro>` server. Entities are not yet available in other ODK-compatible systems.
+
+.. _entities-intro-concepts:
 
 Concepts
 ========
@@ -82,11 +91,13 @@ Why can't I just flow data from one form to another form?
 
 We have added the Entity concept instead of letting data flow directly between forms because it adds more flexibility. In particular, it's common to have a workflow centered around a thing with a status that determines what needs to be done with that thing. Having an Entity representation with one or more properties that represent its status means it's significantly easier to have multiple forms that can update that status and to show a list of Entities with the latest status information.
 
-In many contexts, the information that needs to be shared between forms is minimal and sometimes as little as an ID and label are enough. Sometimes the subjects of a workflow are known ahead of time, either from a prior ODK form or some other system. Entities makes both of these cases straightforward to represent.
+In many contexts, the information that needs to be shared between forms is minimal and sometimes as little as an ID and label are enough. Sometimes the subjects of a workflow are known ahead of time, either from a prior ODK form or some other system. Entities make both of these scenarios straightforward to represent.
 
 If your workflow requires accessing all captured data about an Entity, directly flowing data between forms would likely have worked well. You can achieve something similar with Entities by creating an Entity List that represents encounters with the Entity. 
 
 For example, let's say that you have trees that you want to evaluate over time. You could have a ``trees`` Entity List that includes fixed properties of the trees: their location, their species, etc. Then you could have a second Entity List called ``tree_measurements`` that includes a property that represents a link back to a ``tree`` Entity as well as any measurements made during a new encounter.
+
+.. _entities-intro-limitations:
 
 Limitations
 ===========
@@ -129,6 +140,8 @@ If there is a parent-child relationship between the different Entities, you can 
 
 Similarly, if you'd like to establish relationships between multiple Entities of different types, you can have a registration form for each type and include a field to represent a link to another Entity.
 
+.. _entities-intro-alternatives:
+
 Alternatives
 ============
 
@@ -160,7 +173,7 @@ ODK is a flexible data collection platform. Its strength is that it lets you qui
 
 The domain that you work in likely has systems for managing workflows similar to the ones you need to support. This could be a system designed to support a community health worker program, to monitor tree health over time, to track samples in a lab, etc. Those systems typically have some built-in concepts around the data that needs to be collected, the people that might be involved, the status changes that a workflow subject can go through, and so on.
 
-If you have specialized software that supports your domain's workflows, we recommend giving that software a try. If instead you prefer the flexibility to define your forms and Entity Lists to exactly match your workflow needs, ODK will be better a fit.
+If you have specialized software that supports your domain's workflows, we recommend giving that software a try. If you find that you need the flexibility to define your forms and Entity Lists to exactly match your workflow needs, ODK may be a better fit.
 
 Here are some questions to consider when deciding between using ODK and specialized software:
 
@@ -172,7 +185,9 @@ In general, workflows that are focused or short-lived can very easily be represe
 
 That said, in many contexts, workflow needs are so specific that a flexible platform like ODK offers great benefits. Once you have defined your workflow in ODK, the forms you have built can become the standard, specialized way to support others in your domain.
 
-Mechanics
+.. _entities-intro-how-to:
+
+How-to
 =========
 
 How do I access Entities from my forms?
