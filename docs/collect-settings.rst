@@ -99,13 +99,13 @@ To access User Interface settings:
 
 :guilabel:`Navigation`
 """""""""""""""""""""""
-  Sets form navigation style for moving between questions.
+  Sets navigation style for moving between questions in a form.
 
   Options:
 
   - Horizontal swiping
   - Forward and back buttons
-  - Both
+  - Both (default)
 
 .. _mapping-settings:
 
