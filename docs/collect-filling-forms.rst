@@ -131,7 +131,7 @@ If you have a repeating group, you can remove existing instances of that repeat 
 Navigating the form 
 ------------------------
 
-By default, you can go between form screens either by swiping left or right on the screen or by using the Next and Back buttons above the keyboard. You can allow only one of the navigation modes by changing :doc:`collect-settings`. You can also change navigation mode settings while filling out a form by using :menuselection:`⋮ -> Project settings -> User Interface`.
+By default, you can go between form screens either by swiping left or right on the screen or by using the Next and Back buttons at the bottom of the screen. You can allow only one of the navigation modes by changing :doc:`collect-settings`. You can also change navigation mode settings while filling out a form by using :menuselection:`⋮ -> Project settings -> User Interface`.
 
 Swiping
 ~~~~~~~~~~
@@ -145,7 +145,7 @@ Swiping left or right anywhere on the screen can be a quick way to move between 
 Next and Back Buttons  
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Next and Back buttons are included above the keyboard by default. These are generally more intuitive to use than swipes but they may take up more vertical space than desired on short devices.
+Next and Back buttons are included at the bottom of the screen by default. These are generally more intuitive to use than swipes but they may take up more vertical space than desired on short devices.
 
 .. _jumping:
 
