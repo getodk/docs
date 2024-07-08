@@ -1132,19 +1132,19 @@ There are special properties that can be used to style different choices:
 
 - Points
 
-  - **marker-color**: a valid long or short hex color representing the color of a marker (e.g. ``#aaccee`` or ``#ace``)
-  - **marker-symbol**: a single character displayed on a marker (e.g. ``A`` or ``7`` or ``🏥`` or ``🟢``) 
+  - **marker-color**: a valid long or short hex color representing the color of a marker (e.g. ``#aaccee`` or ``#ace``).
+  - **marker-symbol**: a single character displayed on a marker (e.g. ``A`` or ``7`` or ``🏥`` or ``🟢``).
 
 - Lines
 
-  - **stroke**: a valid long or short hex color representing the color of a line (e.g. ``#aaccee`` or ``#ace``) 
-  - **stroke-width**: a floating-point number (greater than or equal to 0) representing the width of a line (e.g. ``5`` or ``6.5``) 
+  - **stroke**: a valid long or short hex color representing the color of a line (e.g. ``#aaccee`` or ``#ace``).
+  - **stroke-width**: a floating-point number (greater than or equal to 0) representing the width of a line (e.g. ``5`` or ``6.5``).
 
 - Polygons
 
-  - **stroke**: a valid long or short hex color representing the color of a polygon (e.g. ``#aaccee`` or ``#ace``) 
-  - **stroke-width**: a floating-point number (greater than or equal to 0) representing the width of a polygon (e.g. ``5`` or ``6.5``) 
-  - **fill**: a valid long or short hex color representing the interior color of a polygon (e.g. ``#aaccee`` or ``#ace``) 
+  - **stroke**: a valid long or short hex color representing the color of a polygon (e.g. ``#aaccee`` or ``#ace``).
+  - **stroke-width**: a floating-point number (greater than or equal to 0) representing the width of a polygon (e.g. ``5`` or ``6.5``).
+  - **fill**: a valid long or short hex color representing the interior color of a polygon (e.g. ``#aaccee`` or ``#ace``). It is displayed with transparency that can't be configured. 
 
 If your geospatial data comes from an external source, you can :ref:`customize the label and underlying value <customizing-label-and-value>`.
 
