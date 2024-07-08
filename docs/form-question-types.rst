@@ -168,6 +168,9 @@ If ``masked`` is added to ``appearance``, the answers will be obscured with dots
 .. warning::
   Answers will remain masked within questions utilizing this appearance, as well as in the summary screen. However, if referenced in labels or calculations, they will be accessible and displayed like any other values, without any protective measures.
 
+.. warning::
+  It's only possible to mask answers in :ref:`text-default`. It will not work with :ref:`number-text-widget` or :ref:`number-widgets`.
+
 
 .. _number-widgets:
 
