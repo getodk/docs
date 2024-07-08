@@ -140,6 +140,11 @@ If there is a parent-child relationship between the different Entities, you can 
 
 Similarly, if you'd like to establish relationships between multiple Entities of different types, you can have a registration form for each type and include a field to represent a link to another Entity.
 
+My Entities have associated media, can I attach files to them?
+---------------------------------------------------------------
+
+Not yet, but this is something we will eventually support. If you are interested in possible temporary workarounds, see `this forum thread <https://forum.getodk.org/t/retrieving-dynamic-media-from-entity/47820>`_
+
 .. _entities-intro-alternatives:
 
 Alternatives
