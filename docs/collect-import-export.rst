@@ -17,7 +17,7 @@ When using :ref:`Central App Users <central-users-app-overview>`, settings QR co
 In some contexts, especially on larger, remote, or regionally-distributed projects, directly scanning QR codes from Central may not be possible. Here are some alternative distribution options:
 
 * Right-click an App User QR code in Central, save it, and send it via email, text message, WhatsApp, etc to data collectors who can then import the image into Collect.
-* If a single QR code will represent a role and be shared between multiple users, you can put it on a slide or on a handout during a training. Make sure that all copies are destroyed at the end. Alternately, you can scan the code into one device and use Collect to share it with the next person who can share it on, etc. 
+* If a single QR code will represent a role and be shared between multiple users, you can put it on a slide or on a handout during a training. Make sure that all copies are destroyed at the end. Alternatively, you can scan the code into one device and use Collect to share it with the next person who can share it on, etc. 
 * If a project is intended to be used by the general public, you can post QR codes publicly in places like a billboard or on Facebook.
 * If you need a large number of App Users representing individuals, use a script to bulk create App Users and generate a single document with all QR codes (`Python example <https://getodk.github.io/pyodk/examples/app_user_provisioner/app_user_provisioner/>`_).
 

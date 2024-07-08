@@ -9,7 +9,7 @@ Submitting filled forms via SMS (Disabled)
 
 .. admonition:: SMS is not reliable
 
-  SMS does not provide a way for users to reliably know that messages have been delivered in a timely manner. It is not uncommon for messages to be dropped. When submitting forms via SMS, consider also submitting forms to a server when Internet connectivity becomes available. Alternately, set up the receiving end to send an SMS confirmation that the enumerator can verify.
+  SMS does not provide a way for users to reliably know that messages have been delivered in a timely manner. It is not uncommon for messages to be dropped. When submitting forms via SMS, consider also submitting forms to a server when Internet connectivity becomes available. Alternatively, set up the receiving end to send an SMS confirmation that the enumerator can verify.
 
 Starting in ODK Collect v1.16.0, it is possible to submit filled forms via SMS. This can be useful when Internet connectivity is intermittent or unavailable. To use SMS submissions, you will need to decide where those submissions go. Some options are:
 
