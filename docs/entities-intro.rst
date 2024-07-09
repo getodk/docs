@@ -4,16 +4,16 @@
 Introduction to Entities
 **************************
 
-If you've heard something about ODK Entities and want to better understand whether they're useful for your longitudinal data collection, you're in the right place! We've organized this page as a series of questions that are independent from each other so you focus on the topics that interest you.
+If you've heard something about ODK Entities and want to better understand whether they're useful for your longitudinal data collection, you're in the right place! We've organized this page as a series of questions that are independent from each other so you can focus on the topics that interest you.
 
 If you're someone who learns best by doing, you may prefer to jump straight into the tutorial on :doc:`building a community reporting tool with Entities <tutorial-community-reporting>` and to come back here if you have any questions. If you have a question that we haven't answered, you can `post on the forum <https://forum.getodk.org/c/support/6>`_.
 
-Overview:
+**Topics**
 
-* :ref:`Concepts <entities-intro-concepts>`: how Entities fit with existing ODK concepts like forms and more general concepts like longitudinal data collection
-* :ref:`Limitations <entities-intro-limitations>`: what Entities can and can't do currently and some of what is planned for the future
-* :ref:`Alternatives <entities-intro-alternatives>`: other concepts in ODK you can use instead of Entities, other software you may want to consider
-* :ref:`How to <entities-intro-how-to>`: mechanics of how to use Entities
+* :ref:`Overview <entities-intro-concepts>`: how Entities fit with ODK concepts like Forms and longitudinal data collection
+* :ref:`What's coming <entities-intro-limitations>`: current limitations and plans for the future
+* :ref:`Alternative options <entities-intro-alternatives>`: other concepts in ODK you can use and other software to consider
+* :ref:`Get started <entities-intro-get-started>`: how to use Entities in your workflow
 
 .. note::
 
@@ -190,10 +190,10 @@ In general, workflows that are focused or short-lived can very easily be represe
 
 That said, in many contexts, workflow needs are so specific that a flexible platform like ODK offers great benefits. Once you have defined your workflow in ODK, the forms you have built can become the standard, specialized way to support others in your domain.
 
-.. _entities-intro-how-to:
+.. _entities-intro-get-started:
 
-How-to
-=========
+Get started
+============
 
 How do I access Entities from my forms?
 ---------------------------------------
@@ -216,7 +216,7 @@ You can access a specific Entity's properties using a :ref:`lookup expression <r
 How do I use forms to create or update Entities?
 ------------------------------------------------
 
-Add an ``entities`` sheet to your form and use it to define the Entity List that the form's submission will populate and an expression for each Entity's label.
+Add an ``entities`` sheet to your form and use it to define the Entity List that the form's submission will populate and an expression for each Entity's label. You'll do this with the ``list_name`` and ``label`` columns.
 
 Next, specify which form fields should be saved to Entity properties. This is done on the ``survey`` sheet by putting the desired property name in the ``save_to`` column for each form field that you want to save.
 
