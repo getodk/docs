@@ -125,7 +125,7 @@ Once the :file:`.csv` or :file:`.zip` completes downloading, you will find one o
 
 .. tip::
 
-  Excel will not import CSVs with Unicode characters like ã, ß, and 箸 correctly if you double-click the file or open it from the File menu. You must use the `Text Import Wizard <https://support.microsoft.com/en-us/office/text-import-wizard-c5b02af6-fda1-4440-899f-f78bafe41857>`_ and specify a file origin of Unicode (UTF-8, 65001) and the comma delimiter.
+  Excel will not import CSVs with Unicode characters like ã, ß, and 箸 correctly if you double-click the file or open it from the File menu. You must instead use Power Query. Go to the :guilabel:`Data` tab, and in the :guilabel:`Get & Transform Data` group, click :guilabel:`From Text/CSV`.
 
   Rather than downloading CSVs manually, you can also :ref:`connect Excel directly to Central via OData <central-submissions-odata>` and get a live-updating spreadsheet with auto-detected data types and Unicode support.
 
