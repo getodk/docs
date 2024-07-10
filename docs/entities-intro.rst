@@ -12,7 +12,7 @@ If you're someone who learns best by doing, you may prefer to jump straight into
 
 * :ref:`Overview <entities-intro-concepts>`: how Entities fit with ODK concepts like Forms and longitudinal data collection
 * :ref:`What's coming <entities-intro-limitations>`: current limitations and plans for the future
-* :ref:`Alternative options <entities-intro-alternatives>`: other concepts in ODK you can use and other software to consider
+* :ref:`Alternatives <entities-intro-alternatives>`: other concepts in ODK you can use and other software to consider
 * :ref:`Get started <entities-intro-get-started>`: how to use Entities in your workflow
 
 .. note::
@@ -195,6 +195,17 @@ That said, in many contexts, workflow needs are so specific that a flexible plat
 Get started
 ============
 
+How do I use forms to create or update Entities?
+------------------------------------------------
+
+Add an ``entities`` sheet to your form. This sheet is used to define how data from this form's submissions should be applied to Entity Lists. Currently, a single submission can only affect a single Entity in a fixed Entity List. To specify which list to create or update an Entity in, use the ``list_name`` column. If you're creating Entities, you'll also need to specify an expression to label each Entity in the ``label`` column (it's optional if you're doing an update). This is very similar to :ref:`the instance_name column <instance-name>` for naming filled forms.
+
+Next, specify which form fields should be saved to Entity properties. This is done on the ``survey`` sheet by putting the desired property name in the ``save_to`` column for each form field that you want to save.
+
+.. seealso::
+    * :doc:`Community reporting tutorial <tutorial-community-reporting>`
+    * :ref:`Central Entities documentation <central-entities-follow-up-forms>`
+
 How do I access Entities from my forms?
 ---------------------------------------
 
@@ -210,17 +221,6 @@ You can access a specific Entity's properties using a :ref:`lookup expression <r
 
 .. seealso::
     * :ref:`Looking up values in a list <referencing-values-in-datasets>`
-    * :doc:`Community reporting tutorial <tutorial-community-reporting>`
-    * :ref:`Central Entities documentation <central-entities-follow-up-forms>`
-
-How do I use forms to create or update Entities?
-------------------------------------------------
-
-Add an ``entities`` sheet to your form and use it to define the Entity List that the form's submission will populate and an expression for each Entity's label. You'll do this with the ``list_name`` and ``label`` columns.
-
-Next, specify which form fields should be saved to Entity properties. This is done on the ``survey`` sheet by putting the desired property name in the ``save_to`` column for each form field that you want to save.
-
-.. seealso::
     * :doc:`Community reporting tutorial <tutorial-community-reporting>`
     * :ref:`Central Entities documentation <central-entities-follow-up-forms>`
 
