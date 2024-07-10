@@ -4,13 +4,22 @@
 Introduction to Entities
 **************************
 
-If you've heard something about ODK Entities and want to better understand whether they're useful for your longitudinal data collection, you're in the right place! We've organized this page as a series of questions that are independent from each other so you can pick and choose the sections that interest you.
+If you've heard something about ODK Entities and want to better understand whether they're useful for your longitudinal data collection, you're in the right place! We've organized this page as a series of questions that are independent from each other so you can focus on the topics that interest you.
 
 If you're someone who learns best by doing, you may prefer to jump straight into the tutorial on :doc:`building a community reporting tool with Entities <tutorial-community-reporting>` and to come back here if you have any questions. If you have a question that we haven't answered, you can `post on the forum <https://forum.getodk.org/c/support/6>`_.
+
+**Topics**
+
+* :ref:`Overview <entities-intro-concepts>`: how Entities fit with ODK concepts like Forms and longitudinal data collection
+* :ref:`What's coming <entities-intro-limitations>`: current limitations and plans for the future
+* :ref:`Alternatives <entities-intro-alternatives>`: other concepts in ODK you can use and other software to consider
+* :ref:`Get started <entities-intro-get-started>`: how to use Entities in your workflow
 
 .. note::
 
     This document assumes you are using `ODK Cloud <https://getodk.org/#pricing>`_ or an up-to-date :doc:`ODK Central <central-intro>` server. Entities are not yet available in other ODK-compatible systems.
+
+.. _entities-intro-concepts:
 
 Concepts
 ========
@@ -82,11 +91,13 @@ Why can't I just flow data from one form to another form?
 
 We have added the Entity concept instead of letting data flow directly between forms because it adds more flexibility. In particular, it's common to have a workflow centered around a thing with a status that determines what needs to be done with that thing. Having an Entity representation with one or more properties that represent its status means it's significantly easier to have multiple forms that can update that status and to show a list of Entities with the latest status information.
 
-In many contexts, the information that needs to be shared between forms is minimal and sometimes as little as an ID and label are enough. Sometimes the subjects of a workflow are known ahead of time, either from a prior ODK form or some other system. Entities makes both of these cases straightforward to represent.
+In many contexts, the information that needs to be shared between forms is minimal and sometimes as little as an ID and label are enough. Sometimes the subjects of a workflow are known ahead of time, either from a prior ODK form or some other system. Entities make both of these scenarios straightforward to represent.
 
 If your workflow requires accessing all captured data about an Entity, directly flowing data between forms would likely have worked well. You can achieve something similar with Entities by creating an Entity List that represents encounters with the Entity. 
 
 For example, let's say that you have trees that you want to evaluate over time. You could have a ``trees`` Entity List that includes fixed properties of the trees: their location, their species, etc. Then you could have a second Entity List called ``tree_measurements`` that includes a property that represents a link back to a ``tree`` Entity as well as any measurements made during a new encounter.
+
+.. _entities-intro-limitations:
 
 Limitations
 ===========
@@ -129,6 +140,13 @@ If there is a parent-child relationship between the different Entities, you can 
 
 Similarly, if you'd like to establish relationships between multiple Entities of different types, you can have a registration form for each type and include a field to represent a link to another Entity.
 
+My Entities have associated media, can I attach files to them?
+---------------------------------------------------------------
+
+Not yet, but this is something we will eventually support. If you are interested in possible temporary workarounds, see `this forum thread <https://forum.getodk.org/t/retrieving-dynamic-media-from-entity/47820>`_
+
+.. _entities-intro-alternatives:
+
 Alternatives
 ============
 
@@ -160,7 +178,7 @@ ODK is a flexible data collection platform. Its strength is that it lets you qui
 
 The domain that you work in likely has systems for managing workflows similar to the ones you need to support. This could be a system designed to support a community health worker program, to monitor tree health over time, to track samples in a lab, etc. Those systems typically have some built-in concepts around the data that needs to be collected, the people that might be involved, the status changes that a workflow subject can go through, and so on.
 
-If you have specialized software that supports your domain's workflows, we recommend giving that software a try. If instead you prefer the flexibility to define your forms and Entity Lists to exactly match your workflow needs, ODK will be better a fit.
+If you have specialized software that supports your domain's workflows, we recommend giving that software a try. If you find that you need the flexibility to define your forms and Entity Lists to exactly match your workflow needs, ODK may be a better fit.
 
 Here are some questions to consider when deciding between using ODK and specialized software:
 
@@ -172,8 +190,21 @@ In general, workflows that are focused or short-lived can very easily be represe
 
 That said, in many contexts, workflow needs are so specific that a flexible platform like ODK offers great benefits. Once you have defined your workflow in ODK, the forms you have built can become the standard, specialized way to support others in your domain.
 
-Mechanics
-=========
+.. _entities-intro-get-started:
+
+Get started
+============
+
+How do I use forms to create or update Entities?
+------------------------------------------------
+
+Add an ``entities`` sheet to your form. This sheet is used to define how data from this form's submissions should be applied to Entity Lists. Currently, a single submission can only affect a single Entity in a fixed Entity List. To specify which list to create or update an Entity in, use the ``list_name`` column. If you're creating Entities, you'll also need to specify an expression to label each Entity in the ``label`` column (it's optional if you're doing an update). This is very similar to :ref:`the instance_name column <instance-name>` for naming filled forms.
+
+Next, specify which form fields should be saved to Entity properties. This is done on the ``survey`` sheet by putting the desired property name in the ``save_to`` column for each form field that you want to save.
+
+.. seealso::
+    * :doc:`Community reporting tutorial <tutorial-community-reporting>`
+    * :ref:`Central Entities documentation <central-entities-follow-up-forms>`
 
 How do I access Entities from my forms?
 ---------------------------------------
@@ -190,17 +221,6 @@ You can access a specific Entity's properties using a :ref:`lookup expression <r
 
 .. seealso::
     * :ref:`Looking up values in a list <referencing-values-in-datasets>`
-    * :doc:`Community reporting tutorial <tutorial-community-reporting>`
-    * :ref:`Central Entities documentation <central-entities-follow-up-forms>`
-
-How do I use forms to create or update Entities?
-------------------------------------------------
-
-Add an ``entities`` sheet to your form and use it to define the Entity List that the form's submission will populate and an expression for each Entity's label.
-
-Next, specify which form fields should be saved to Entity properties. This is done on the ``survey`` sheet by putting the desired property name in the ``save_to`` column for each form field that you want to save.
-
-.. seealso::
     * :doc:`Community reporting tutorial <tutorial-community-reporting>`
     * :ref:`Central Entities documentation <central-entities-follow-up-forms>`
 
