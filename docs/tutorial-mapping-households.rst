@@ -16,9 +16,9 @@ When surveying households, you may want to map each submission to visualize prog
 Goals
 -----
 
-* Connect ODK to Power BI
-* Prepare location data for mapping
-* Build a map that displays households
+* Connect Power BI to ODK
+* Prepare data for mapping
+* Display data on the map
 
 .. _tutorial-power-bi-connect:
 
@@ -34,7 +34,7 @@ Collect data with locations
 #. Upload the form into Central, publish it, connect your app user, and send in some sample data.
 
 
-Connect ODK to Power BI
+Connect Power BI to ODK
 ------------------------
 
 #. In Central, find your form's OData link by clicking on the :guilabel:`Analyze via OData` button on the right side of the Submissions page.
@@ -117,8 +117,8 @@ Power BI doesn't understand OData locations, so we have to prepare the data befo
    .. image:: /img/tutorial-mapping-households/data-category.png
 
 
-Display households on the map
------------------------------
+Display data on the map
+------------------------
 
 #. Switch to :guilabel:`Report view` and make sure you can see your :guilabel:`Visualizations` and :guilabel:`Data` panes.
 
