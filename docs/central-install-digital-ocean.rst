@@ -89,8 +89,8 @@ Once you have that password in hand, you'll be able to use the **Launch Console*
 
 Once you are in your server, you'll want to change your password so that people snooping your email do not gain access. You should be automatically asked for a new password the first time you log in. If you are not, type ``passwd`` and press **Enter**, then follow the instructions to choose a new password. From now on, you will use that password to log in.
 
-Changing Server Settings
-~~~~~~~~~~~~~~~~~~~~~~~~
+Getting and Setting Up Central
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #. Make sure you are running Docker Engine v23.x and Docker Compose v2.16.x or greater.
 
@@ -99,25 +99,6 @@ Changing Server Settings
   $ docker --version && docker compose version
 
 If you are using old versions, follow the instructions to install `Docker Engine <https://docs.docker.com/engine/install/ubuntu>`_ (not Desktop) for Ubuntu, the operating system we recommend and support. The instructions will help you setup the Docker ``apt`` repository and install the latest version of Docker Engine and Docker Compose.
-
-#. Modify the system firewall for web form features in Central to work correctly (using Enketo).
-
-.. code-block:: bash
-
-  $ ufw disable
-
-You should see the message ``Firewall stopped and disabled on system startup``. If so, you have configured the firewall correctly.
-
-.. admonition:: For advanced administrators
-
-  While it sounds dangerous, disabling your system firewall does not put your server at greater risk. In fact, most Linux operating systems come with the system firewall disabled.
-
-  If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be difficult to do correctly, so we don't recommend most people try. Another option is to use an upstream network firewall.
-
-  The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. In particular, if you can successfully ``curl`` your Central website over HTTPS on its public domain name, all Enketo features should work correctly.
-
-Getting and Setting Up Central
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #. Download the software. In the server window, type:
 
