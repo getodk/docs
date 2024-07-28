@@ -227,7 +227,7 @@ You may want to change the ODK Collect UI language separately from device settin
 Contribute to translating ODK
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ODK uses the Transifex software to facilitate translation of the ODK Collect app. You (yes you!) can play a pivotal role in expanding the app's language options and/or enhancing current translations through the Transifex platform. You can review `ODK Collect's translation progress <https://explore.transifex.com/getodk/collect/>`_ and get to know `ODK's translation guide <https://docs.google.com/document/d/1C0MS_ytAEBHwbMkdR-QrtDrWAAh_EkJo2QRr4XyIOpk>`_. Questions about Transifex or translating ODK Collect can be found in `the translation category <https://forum.getodk.org/c/development/translation/14>`_ on the ODK Forum. 
+ODK uses the Transifex platform to facilitate translation of the ODK Collect app. You (yes you!) can play a pivotal role in expanding the app's language options and/or enhancing current translations through Transifex. To get started, follow the `ODK Collect translation guide <https://docs.google.com/document/d/1Uv9YT7WjvLK3aGUKWNIQjo3XB62rTyV0XDNymlp9LBA>`_ and if you have questions, post in the `the translation category <https://forum.getodk.org/c/development/translation/14>`_ on the ODK Forum. 
 
 Empowering multilingual data collection
 ----------------------------------------
