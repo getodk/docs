@@ -445,6 +445,20 @@ Collect supports several non-Gregorian calendars.
   The non-Gregorian calendar is used only on input.
   The dates are converted and stored as standard Gregorian dates
 
+.. _bikram-sambat-calendar:
+
+Bikram Sambat calendar
+""""""""""""""""""""""""
+
+type
+  ``date``
+appearance
+  ``bikram-sambat``
+
+.. image:: /img/form-question-types/bikram-sambat-calendar-widget.*
+  :alt: The Bikram Sambat calendar widget.
+  :class: device-screen-vertical  
+
 .. _buddhist-calendar:
 
 Buddhist calendar
@@ -499,20 +513,6 @@ appearance
 
 .. image:: /img/form-question-types/islamic-calendar-widget.*
   :alt: The Islamic calendar widget.
-  :class: device-screen-vertical
-
-.. _bikram-sambat-calendar:
-
-Bikram Sambat calendar
-""""""""""""""""""""""""
-
-type
-  ``date``
-appearance
-  ``bikram-sambat``
-
-.. image:: /img/form-question-types/bikram-sambat-calendar-widget.*
-  :alt: The Bikram Sambat calendar widget.
   :class: device-screen-vertical
 
 Myanmar calendar
