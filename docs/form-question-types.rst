@@ -445,6 +445,20 @@ Collect supports several non-Gregorian calendars.
   The non-Gregorian calendar is used only on input.
   The dates are converted and stored as standard Gregorian dates
 
+.. _buddhist-calendar:
+
+Buddhist calendar
+"""""""""""""""""
+
+type
+  ``date``
+appearance
+  ``buddhist``
+
+.. image:: /img/form-question-types/buddhist-calendar-widget.*
+  :alt: The Buddhist calendar widget.
+  :class: device-screen-vertical  
+
 .. _coptic-calendar:
 
 Coptic calendar
