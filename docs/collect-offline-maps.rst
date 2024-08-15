@@ -7,8 +7,10 @@ The data for all the available basemaps comes from services on the Internet, so 
 
 The offline layer setting lets you select a file from your device that will be displayed offline. Offline layers are useful to present custom geospatial data layered over standard basemaps or as basemaps for low-connectivity environments. Use them to display high-resolution imagery, annotated maps, heatmaps, and more. ODK Collect can display any map layer saved as a set of tiles in the `MBTiles format <https://github.com/mapbox/mbtiles-spec>`_.
 
-.. note::
-  If you want to select geospatial features and include their metadata as part of a form submission, see :ref:`the select from map question type <select-from-map>`.
+.. seealso::
+
+  ..  youtube:: duDMw1aHCkw
+    :width: 100%
 
 .. _offline-maps-quick-start:
 
