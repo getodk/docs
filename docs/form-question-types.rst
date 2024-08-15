@@ -1373,7 +1373,10 @@ For example, if a Collect user captured a point while at the coordinates 12°22'
 
 Multiple points that form lines or shapes are separated by semicolons.
 
-.. seealso:: :ref:`Select from map <select-from-map>` for displaying existing geo features on a map for users to select from.
+.. seealso::
+
+  ..  youtube:: duDMw1aHCkw
+    :width: 100%
 
 .. note::
 
