@@ -2486,7 +2486,7 @@ When the ``rating`` appearance is added, the range widget is displayed with star
 .. csv-table:: survey
   :header: type, name, label, appearance, hint, parameters
 
-  range, range_integer_widget_rating, Range rating widget, rating, range integer widget with rating appearance, end=9
+  range, range_integer_widget_rating, Range rating widget, rating, range integer widget with rating appearance, end=5
 
 
 .. _note-widget:
