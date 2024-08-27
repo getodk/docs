@@ -2413,6 +2413,31 @@ the input will be stored as a decimal.
 
   range, range_decimal_widget, Range decimal widget,,range decimal widget with no appearance, start=1.5;end=5.5;step=0.5
 
+.. _range-widget-no-ticks:
+
+Range widget with no ticks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  ``range``
+appearance
+  ``no-ticks``
+
+To display the range widget's number line without ticks,
+use the ``no-ticks`` appearance.
+Both integers and decimals are supported. You can also use this appearance with the :ref:`vertical-range-widget`.
+
+.. image:: /img/form-question-types/range-integer-no-ticks-widget.*
+  :alt: The range widget, as displayed in the previous image, but the range number line has no ticks.
+  :class: device-screen-vertical
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint, parameters
+
+  range, range_integer_widget_no_ticks, Range integer widget with no ticks, no-ticks, range integer widget with no-ticks appearance, start=1;end=10;step=1
+
 .. _vertical-range-widget:
 
 Vertical range widget
@@ -2486,7 +2511,7 @@ When the ``rating`` appearance is added, the range widget is displayed with star
 .. csv-table:: survey
   :header: type, name, label, appearance, hint, parameters
 
-  range, range_integer_widget_rating, Range rating widget, rating, range integer widget with rating appearance, end=9
+  range, range_integer_widget_rating, Range rating widget, rating, range integer widget with rating appearance, end=5
 
 
 .. _note-widget:
