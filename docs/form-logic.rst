@@ -6,10 +6,6 @@ Form Logic
 This document covers how to specify this behavior
 in your :doc:`XLSForm <xlsform>` definition.
 
-.. warning::
-
-  Relevance, constraint and calculation evaluation :ref:`within the same screen <field-list>` is supported in Collect v1.22 and later. In earlier versions of Collect, questions tied by logic must be displayed on different screens.
-
 Form logic building blocks
 ============================
 

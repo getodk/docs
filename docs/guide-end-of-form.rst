@@ -3,7 +3,7 @@
 Helping data collectors take the right next step after filling a form
 =====================================================================
 
-The first step when planning to use ODK is to carefully design the workflow you would like the users of your forms to go through. This includes thinking through what they should do when they reach the end of a form or when they are interrupted and need to exit a form filling session. Should they send immediately? Should they go talk to someone? Should they save a draft?
+When planning to use ODK, it's important to carefully design the workflow you would like the users of your forms to go through. This includes thinking through what they should do when they reach the end of a form or when they are interrupted and need to exit a form filling session. Should they send immediately? Should they go talk to someone? Should they save a draft?
 
 By default, data collectors using Collect can save a form they're working on as a draft at any time and then come back to it for further editing. When they are done filling out a form, they finalize it so that it can be automatically sent to the server as soon as the device is connected to the Internet.
 

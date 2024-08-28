@@ -10,6 +10,7 @@ Tips and Best Practices
   collect-location
   collect-security
   collect-mirror
+  collect-troubleshooting
 
 Related Topics
 ----------------

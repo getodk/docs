@@ -58,6 +58,7 @@ Basemaps
 basemaps
 bday
 bikram
+biometrics
 bitrate
 bluetooth
 Bluetooth
