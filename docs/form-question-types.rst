@@ -324,6 +324,31 @@ a manual input is prompted.
 
   integer,ex_integer_widget,Ex integer widget,ex:change.uw.android.BREATHCOUNT,integer type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
 
+.. _counter-widget:
+
+Counter
+""""""""""
+
+type
+  ``integer``
+appearance
+  ``counter``
+
+The counter appearance allows users to increase a count by one with each click, making it ideal for tracking occurrences, items, 
+or any sequential tallies. Negative numbers are not supported, so the count starts at zero and only increments upwards. 
+It works exclusively with integers, and decimal values are not supported.
+
+.. image:: /img/form-question-types/counter.*
+  :alt: A counter widget displayed in ODK Collect on an Android phone.
+  :class: device-screen-vertical
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, hint, appearance
+
+  integer,counter,Counter,integer type with counter appearance,counter
+
 
 .. _date-and-time-widgets:
 
