@@ -68,6 +68,8 @@ We are open for new issues and pull requests.
 	- Issues labelled [easy](https://github.com/getodk/docs/labels/easy) do not require much specific technical knowledge.
 	- Issues labelled [contributor friendly](https://github.com/getodk/docs/labels/contributor%20friendly) are usually self-contained and don't require extensive knowledge of the ODK ecosystem as a whole.
 
+If you would like to add a screenshot of Collect, please make a copy of [this Figma document](https://www.figma.com/design/Hbk9VpMD9KSlLXHmhT3jwv/Collect-frame-for-docs?node-id=549-9&t=9KseMozGrZ12QXcc-0) to use as a template. You can then expand either "Template" or "Bottom Template" and find the "Screen" child. Import your screenshot as the fill for the Screen. You can then export the template as 2x for use.
+
 You can also...
 
  - [Discuss the documentation from a user perspective in our forum](https://forum.getodk.org/c/development/documentation).
