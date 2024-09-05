@@ -7,7 +7,7 @@ It is important that you secure devices running ODK Collect. We strongly recomme
 - Setting a strong passcode or biometrics to secure access to the device
 - Using a server with a https:// address, not http://
 - Keeping automatic updates turned on
-- Making sure you're using an encrypted device (default on Android 10+, on older devices this will be shown somewhere in ``Settings`` -> ``Security``)
+- Making sure that encryption is turned on (default on Android 10+, on older devices this will be configurable in ``Settings`` -> ``Security``)
 
 
 We recommend these additional resources to learn how best to secure your Android device:
