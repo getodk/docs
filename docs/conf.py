@@ -100,7 +100,7 @@ html_theme_options = {
         'color-announcement-background': '#f8f9fb',
         'color-announcement-text': 'black',
     },
-    'announcement': '<b>Looking to save time?</b> Try <a href="https://getodk.org/#pricing">ODK Cloud</a>, the official managed hosting service from the creators of ODK.',
+    'announcement': '<b>Looking for a better way?</b> Use <a href="https://getodk.org/#pricing">ODK Cloud</a>, the official managed hosting service from the creators of ODK.',
     'sidebar_hide_name': True,
 }
 html_show_sphinx = True

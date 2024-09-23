@@ -3,6 +3,9 @@
 Installing Central on DigitalOcean
 ===================================
 
+.. tip::
+  `ODK Cloud <https://getodk.org/#pricing>`_ is the best way to use ODK. With ODK Cloud, you can be collecting the data you need a few minutes after you subscribe. No technical skills required. `Get started today <https://getodk.org/#pricing>`_.
+
 If you'd like to set up an ODK server that's accessible from anywhere via the Internet, DigitalOcean provides a one-click configuration that's nicely geared with nearly all the tools you'll need to set up your new server. The only thing it doesn't do is register a domain name, which you will have to do in order to obtain a security certificate for your server.
 
 .. tip::
