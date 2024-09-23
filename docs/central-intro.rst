@@ -3,6 +3,9 @@
 ODK Central
 ===========
 
+.. tip::
+  `ODK Cloud <https://getodk.org/#pricing>`_ is the best way to use ODK. With ODK Cloud, you can be collecting the data you need a few minutes after you subscribe. No technical skills required. `Get started today <https://getodk.org/#pricing>`_.
+
 :dfn:`ODK Central` is the ODK server. It manages user accounts and permissions, forms and submissions, longitudinal data records, and allows data collection clients like :doc:`ODK Collect <collect-intro>` to connect to it for form download and submission upload.
 
 Our goal with Central is to create a server that is straightforward to install, easy to use, and extensible with new features and functionality both directly in the software and with the use of our REST, OpenRosa, and OData programmatic APIs.

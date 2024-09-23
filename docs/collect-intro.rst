@@ -1,6 +1,9 @@
 ODK Collect
 ================
 
+.. tip::
+  `ODK Cloud <https://getodk.org/#pricing>`_ is the best way to use ODK. With ODK Cloud, you can be collecting the data you need a few minutes after you subscribe. No technical skills required. `Get started today <https://getodk.org/#pricing>`_.
+
 .. _collect-introduction:
 
 :dfn:`ODK Collect` is an Android app for managing and filling out forms. It supports a wide range of question and answer types, and is designed to work well offline.
