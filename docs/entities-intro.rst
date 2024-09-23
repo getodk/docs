@@ -38,9 +38,9 @@ ODK has historically been form-based: every workflow starts by opening a blank f
 Can you show me how it works?
 -----------------------------
 
-Sure! Here's a video that shows a survey with baseline and follow-up that uses Entities.
+Sure! The video below shows an Entities-powered example of a bed net distribution project where you register households and then return to the households with children to distribute bed nets.
 
-..  youtube:: YHkKNWgYKaI
+..  youtube:: 3afegV6-4wI
    :width: 100%
 
 How are Entities and forms related?
