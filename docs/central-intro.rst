@@ -45,7 +45,7 @@ Here are some of the major features we support today:
  - ODK Briefcase-compatible data output
  - ODK Briefcase push/pull support
 
-Central is in active development. We have a lot of exciting ideas for its future and we look forward to hearing yours as well. See `What is coming in Central <https://forum.getodk.org/t/whats-coming-in-central-over-the-next-few-years/19677>`_ for more on future direction.
+Central is in active development. We have a lot of exciting ideas for its future and we look forward to hearing yours as well. See `our roadmap <https://roadmap.getodk.org>`_ for more on future direction.
 
 .. _central-intro-overview:
 
