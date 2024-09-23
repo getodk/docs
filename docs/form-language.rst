@@ -1,4 +1,4 @@
-Form language
+Form Language
 ===================
 
 .. seealso::
