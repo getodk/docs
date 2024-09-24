@@ -5,7 +5,7 @@ Upgrading Central
 
 We release new versions of Central regularly. We recommend that you upgrade as soon as you can to get access to the newest features, bug fixes, and security updates. It is not possible to downgrade and we do not guarantee that versions prior to the latest release can still be installed.
 
-Start by reviewing upgrade notes for all versions between your current version and the one you are upgrading to. You can skip upgrades and directly install the latest version as long as you make sure to follow all relevant upgrade instructions.
+Start by reviewing upgrade notes for all versions between your current version and the one you are upgrading to. You will directly install the latest version but you must follow all upgrade instructions between your current version and the one you are upgrading to. If you are upgrading over many versions, the chance of error increases. We recommend first trying the upgrade on a clone of your production environment to validate the steps that you need to follow.
 
 Upgrade notes
 -------------
