@@ -329,7 +329,12 @@ If you are having issues with Central running out of memory, we strongly recomme
 Adding External Storage
 -----------------------
 
-Forms with many large media attachments can fill up your droplet's storage space. To move your Central install to external storage, follow these steps:
+Forms with many large media attachments can fill up your droplet's storage space. There are a couple of simple options to increase storage space.
+
+DigitalOcean Volumes
+^^^^^^^^^^^^^^^^^^^^
+
+To move your Central install to DigitalOcean Volumes, follow these steps:
 
 #. `Add a new volume <https://docs.digitalocean.com/products/volumes/getting-started/quickstart/>`_ to your droplet.
 
@@ -349,6 +354,56 @@ Forms with many large media attachments can fill up your droplet's storage space
 #. `Move the Docker data directory <https://blog.adriel.co.nz/2018/01/25/change-docker-data-directory-in-debian-jessie/>`_ to the new volume. Use ``/mnt/your-volume-name/docker`` as the ``data-root`` path.
 
 .. _central-install-custom-memory:
+
+Amazon S3
+^^^^^^^^^
+
+Another alternative for external storage is Amazon S3, and the many compatible services. Normally Central stores form and submission attachments in its main database, but it can be configured to move these to an external object store.
+
+Options incude:
+
+* [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces)
+* [Amazon S3](https://aws.amazon.com/s3/)
+* [Google Cloud Storage](https://cloud.google.com/storage/)
+* [Azure Blob Storage](https://azure.microsoft.com/en-us/products/storage/blobs/)
+* [Cloudflare R2](https://developers.cloudflare.com/r2/)
+* etc.
+
+To enable s3 in Central, follow these steps:
+
+#. set up a bucket with your chosen S3 provider
+
+#. make sure that the bucket's visibility is set to PRIVATE
+
+#. create a user with minimal permissions.  Exact permissions will depend on your S3 provider, e.g.
+
+  * DigitalOcean Spaces: create an "Access Key" (https://docs.digitalocean.com/products/spaces/how-to/manage-access/)
+  * Amazon S3: create an IAM user with bucket-level permissions: `s3:PutObject`, `s3:GetObject`, and optionally `s3:DeleteObject`
+
+#. add bucket details to your Central config: edit the file ``files/service/config.json.template`` and update the ``s3blobStore`` section in ``external`` with your bucket details, e.g.:
+
+   .. code-block:: bash
+
+     $ cd central
+
+   .. code-block:: bash
+
+     $ nano files/service/config.json.template
+
+   .. code-block:: json
+
+     "external": {
+       ...
+       "s3blobStore": {
+         "server": "http://s3.amazonaws.com",
+         "bucketName": "<your_bucket_name>",
+         "accessKey": "<your_access_key>",
+         "secretKey": "<your_secret_access_key>"
+       }
+     }
+
+Once this is set up, Central should move new and existing blobs from the database to the external storage provider ecvery night.  You can check the Central Audit Log to confirm.
+
 
 Increasing Memory Allocation
 -----------------------------
