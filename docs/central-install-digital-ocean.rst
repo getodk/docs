@@ -1,3 +1,6 @@
+.. spelling:word-list::
+  Cloudflare
+
 .. _central-install-digital-ocean:
 
 Installing Central on DigitalOcean
@@ -335,7 +338,7 @@ You can configure S3-compatible storage at any time and migrate existing files o
 
 To use S3-compatible storage for all files saved in Central, follow these steps:
 
-#. Set up a bucket with your chosen S3-compatible provider. Options incude:
+#. Set up a bucket with your chosen S3-compatible provider. Options include:
 
    * `Amazon S3 <https://aws.amazon.com/s3/>`_
    * Locally-hosted service such as `MinIO <https://min.io/docs/minio/linux/index.html>`_
@@ -403,7 +406,7 @@ To use S3-compatible storage for all files saved in Central, follow these steps:
 
      $ docker compose exec service node lib/bin/s3.js upload-pending 1
 
-   If the configuration is correct, you should see a success message. If there are issues with the configuration, you should see an error messsage with hints on what needs to be fixed. To try uploading the same file again, you will need to reset its status to pending:
+   If the configuration is correct, you should see a success message. If there are issues with the configuration, you should see an error message with hints on what needs to be fixed. To try uploading the same file again, you will need to reset its status to pending:
 
    .. code-block:: bash
 
