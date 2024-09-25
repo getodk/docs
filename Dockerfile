@@ -1,8 +1,5 @@
-# consider using a non-circleci image?
-# Would use cimg/python to match CI, but it does some weird stuff with users
+# Match python version to CI
 FROM python:3.11
-
-ARG username
 
 RUN apt-get update && \
     apt-get install --yes pngquant python3-enchant && \
