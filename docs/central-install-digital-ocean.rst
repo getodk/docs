@@ -413,7 +413,7 @@ To use S3-compatible storage for all files saved in Central, follow these steps:
      $ docker compose exec service node lib/bin/s3.js reset-failed-to-pending
      $ docker compose exec service node lib/bin/s3.js upload-pending 1
 
-Once you have a working configuration, Central will move new and existing files from the database to the external storage provider every night. Each night that there are new files to process, there will be a :doc:`Central Server Audit Log <central-server-audits/>` entry created with successes and failures.
+Once you have a working configuration, Central will move new and existing files from the database to the external storage provider once every 24 hours. In each 24-hour period that there are new files to process, there will be a :doc:`Central Server Audit Log <central-server-audits/>` entry created with successes and failures.
 
 If there are any issues uploading a file, it will be marked as `failed` and will stay in the database. You can use the ``reset-failed-to-pending`` command as shown above to try again.
 
