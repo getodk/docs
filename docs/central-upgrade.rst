@@ -99,7 +99,7 @@ Upgrading to Central v2024.2
 
 There are no required special steps related to this upgrade. However, there are some optional changes that you may want to know about or opt into.
 
-1. Changes to .env no longer require rebuilding
+1. Changes to `.env` no longer require rebuilding
 **********************************************
 
 If you make changes to your `.env` file to configure Central as described in the :doc:`setup and configuration instructions <central-install-digital-ocean>`, you no longer have to rebuild Central for the changes to take effect. Instead, a stop and restart is now enough:
