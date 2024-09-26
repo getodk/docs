@@ -109,10 +109,10 @@ If you make changes to your `.env` file to configure Central as described in the
    $ docker compose stop
    $ docker compose up -d
 
-2. File data can be stored in S3-compatible storage
-***************************************************
+2. Files can be stored in S3-compatible storage
+************************************************
 
-By default, Central stores all of its data in a database, including files like images attached to submissions. If you have or plan on collecting a lot of files, you may prefer to store these in separate storage to reduce load on the database and possibly reduce hosting costs. See instructions on how to opt in.
+By default, Central stores all of its data in a database, including files like XLSForm definitions and images attached to submissions. If you have or plan on collecting a lot of files, you may prefer to store these in separate storage to reduce load on the database and possibly reduce hosting costs. See instructions on :ref:`configuring S3-compatible storage <central-install-digital-ocean-s3>`_.
 
 3. Docker images now published
 *******************************
