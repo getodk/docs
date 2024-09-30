@@ -334,7 +334,12 @@ Storing files in S3-compatible storage
 
 By default, Central stores form and submission attachments in its main database, but it can be configured to move these to an external object store. If you already have or plan to collect many files, storing them outside the main database can reduce database load and cost. It can also make it more practical to backup and restore the database.
 
-You can configure S3-compatible storage at any time and migrate existing files out of your database. Once you opt into using S3-compatible storage, you can't opt back out of it and migrate files back to the database.
+Consider the following to help you decide whether S3-compatible storage is a good fit:
+
+* You can configure S3-compatible storage at any time and migrate existing files out of your database. However, once you opt into using S3-compatible storage, there is no automated way to migrate files back to the database.
+* If you opt into S3-compatible storage, any system you use to retrieve file data from Central must be able to follow redirects (for example, Briefcase will not be able to retrieve form and submission attachments but ``pyodk`` will).
+* The names of objects stored in S3-compatible storage do not stand alone and must be converted to useful filenames and connected to the right forms/submissions by Central.
+* If you opt into S3-compatible storage, you must design a backup and restore strategy for that storage.
 
 To use S3-compatible storage for all files saved in Central, follow these steps:
 
@@ -400,7 +405,7 @@ To use S3-compatible storage for all files saved in Central, follow these steps:
      $ docker compose stop
      $ docker compose up -d
 
-#. Try the configuration by attempting to upload existing files. If this is a new server, you can upload an XLSForm to create a file.
+#. Try the configuration by attempting to upload existing one existing file. If this is a new server, you can upload an XLSForm to create a file.
 
    .. code-block:: bash
 
@@ -415,9 +420,15 @@ To use S3-compatible storage for all files saved in Central, follow these steps:
 
 Once you have a working configuration, Central will move new and existing files from the database to the external storage provider once every 24 hours. In each 24-hour period that there are new files to process, there will be a :doc:`Central Server Audit Log <central-server-audits/>` entry created with successes and failures.
 
-If there are any issues uploading a file, it will be marked as `failed` and will stay in the database. You can use the ``reset-failed-to-pending`` command as shown above to try again.
+You can manually request an upload of all pending files by using the ``upload-pending`` task described above without a count:
 
-You can also use the same tool to get counts of files in any of the following statuses: 'pending', 'in_progress', 'uploaded', 'failed'. For example, to get a count of successfully uploaded files:
+   .. code-block:: bash
+
+     $ docker compose exec service node lib/bin/s3.js upload-pending
+
+If there are any issues uploading a file, it will be marked as `failed` and will stay in the database. You can use the ``reset-failed-to-pending`` command as shown above to try uploading it again.
+
+You can also use the same ``s3.js`` tool to get counts of files in any of the following statuses: 'pending', 'in_progress', 'uploaded', 'failed'. For example, to get a count of successfully uploaded files:
 
 .. code-block:: bash
 
