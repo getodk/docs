@@ -3,7 +3,7 @@
 Server Audit Logs in Central
 ============================
 
-As of `version 0.6 <https://github.com/getodk/central/releases/tag/v0.6.0-beta.0>`_, ODK Central tracks and logs audit actions for most administrative actions performed on the server. The following actions are logged:
+ODK Central tracks and logs audit actions for most administrative actions performed on the server. The following actions are logged:
 
  - **Web User Actions**
 

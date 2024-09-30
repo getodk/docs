@@ -1,3 +1,6 @@
+.. spelling:word-list::
+  Cloudflare
+
 .. _central-install-digital-ocean:
 
 Installing Central on DigitalOcean
@@ -324,16 +327,125 @@ If you are having issues with Central running out of memory, we strongly recomme
 
 #. Finally, :ref:`increase memory allocation <central-install-custom-memory>` so Central can use the swap you've added.
 
+.. _central-install-digital-ocean-s3:
+
+Storing files in S3-compatible storage
+----------------------------------------
+
+By default, Central stores form and submission attachments in its main database, but it can be configured to move these to an external object store. If you already have or plan to collect many files, storing them outside the main database can reduce database load and cost. It can also make it more practical to backup and restore the database.
+
+Consider the following to help you decide whether S3-compatible storage is a good fit:
+
+* You can configure S3-compatible storage at any time and migrate existing files out of your database. However, once you opt into using S3-compatible storage, there is no automated way to migrate files back to the database.
+* If you opt into S3-compatible storage, any system you use to retrieve file data from Central must be able to follow redirects (for example, Briefcase will not be able to retrieve form and submission attachments but ``pyodk`` will).
+* The names of objects stored in S3-compatible storage do not stand alone and must be converted to useful filenames and connected to the right forms and/or submissions by Central. For example, object names will look like ``blob-412-950ababd4c8cf8d11rf5421433b5e3dafx5f6e75``.
+* If you opt into S3-compatible storage, you must design a backup and restore strategy for that storage.
+
+To use S3-compatible storage for all files saved in Central, follow these steps:
+
+#. Set up a bucket with your chosen S3-compatible provider. Options include:
+
+   * `Amazon S3 <https://aws.amazon.com/s3/>`_
+   * Locally-hosted service such as `MinIO <https://min.io/docs/minio/linux/index.html>`_
+   * `DigitalOcean Spaces <https://www.digitalocean.com/products/spaces>`_
+   * `Google Cloud Storage <https://cloud.google.com/storage/>`_
+   * `Cloudflare R2 <https://developers.cloudflare.com/r2/>`_
+
+#. Make sure that the bucket's visibility is set to PRIVATE
+
+#. Create a user with minimal permissions to your bucket only. The exact process and permissions will depend on your S3 provider. For example:
+
+   * DigitalOcean Spaces: create an `"Access Key" <https://docs.digitalocean.com/products/spaces/how-to/manage-access/>`_
+   * Amazon S3: create an IAM user
+
+     * .. collapse:: Example policy
+
+           .. code-block:: json
+
+              {
+                "Version": "2012-10-17",
+                "Statement": [
+                  {
+                    "Effect": "Allow",
+                    "Action": [
+                      "s3:GetBucketLocation",
+                      "s3:PutObject",
+                      "s3:GetObject",
+                      "s3:DeleteObject"
+                    ],
+                    "Resource": [
+                      "arn:aws:s3:::MY_BUCKET/*",
+                      "arn:aws:s3:::MY_BUCKET"
+                    ]
+                  }
+                ]
+              }
+
+#. Edit ``.env`` with your chosen service's URL as well as your bucket name, access key and secret. If your service has a region concept, use a general URL that does not specify region. For example, the URL to use for S3 is `https://s3.amazonaws.com`. You must use an ``https`` URL, not an ``http`` one.
+
+   .. code-block:: bash
+
+     $ cd central
+
+   .. code-block:: bash
+
+     $ nano .env
+
+   .. code-block:: bash
+
+      S3_SERVER=https://service.com
+      S3_ACCESS_KEY=MY_ACCESS_KEY
+      S3_SECRET_KEY=MY_SECRET
+      S3_BUCKET_NAME=MY_BUCKET
+
+#. Stop and restart your server to apply the configuration:
+
+   .. code-block:: bash
+
+     $ docker compose stop
+     $ docker compose up -d
+
+#. Try the configuration by attempting to upload existing one existing file. If this is a new server, you can upload an XLSForm to create a file.
+
+   .. code-block:: bash
+
+     $ docker compose exec service node lib/bin/s3.js upload-pending 1
+
+   If the configuration is correct, you should see a success message. If there are issues with the configuration, you should see an error message with hints on what needs to be fixed. To try uploading the same file again, you will need to reset its status to pending:
+
+   .. code-block:: bash
+
+     $ docker compose exec service node lib/bin/s3.js reset-failed-to-pending
+     $ docker compose exec service node lib/bin/s3.js upload-pending 1
+
+Once you have a working configuration, Central will move new and existing files from the database to the external storage provider once every 24 hours. In each 24-hour period that there are new files to process, there will be a :doc:`Central Server Audit Log <central-server-audits/>` entry created with successes and failures.
+
+You can manually request an upload of all pending files by using the ``upload-pending`` task described above without a count:
+
+   .. code-block:: bash
+
+     $ docker compose exec service node lib/bin/s3.js upload-pending
+
+If there are any issues uploading a file, it will be marked as `failed` and will stay in the database. You can use the ``reset-failed-to-pending`` command as shown above to try uploading it again.
+
+You can also use the same ``s3.js`` tool to get counts of files in any of the following statuses: 'pending', 'in_progress', 'uploaded', 'failed'. For example, to get a count of successfully uploaded files:
+
+.. code-block:: bash
+
+  $ docker compose exec service node lib/bin/s3.js count-blobs uploaded
+
 .. _central-install-digital-ocean-external-storage:
 
-Adding External Storage
------------------------
+Adding additional DigitalOcean storage
+---------------------------------------
 
-Forms with many large media attachments can fill up your droplet's storage space. To move your Central install to external storage, follow these steps:
+Forms with many large media attachments can fill up your droplet's storage space. To address this, you can :ref:`configure S3-compatible storage <central-install-digital-ocean-s3>` as described above. An alternative approach is to increase the amount of storage available to Central by using a DigitalOcean Volume.
+
+To move your Central install to DigitalOcean Volumes, follow these steps:
 
 #. `Add a new volume <https://docs.digitalocean.com/products/volumes/getting-started/quickstart/>`_ to your droplet.
 
-#. Find the location of your new volume. It will look like ``/mnt/your-volume-name``. 
+#. Find the location of your new volume. It will look like ``/mnt/your-volume-name``.
 
    .. code-block:: bash
 
@@ -343,7 +455,7 @@ Forms with many large media attachments can fill up your droplet's storage space
 #. Create a ``docker`` folder at that location.
 
    .. code-block:: bash
-  
+
      $ sudo mkdir /mnt/your-volume-name/docker
 
 #. `Move the Docker data directory <https://blog.adriel.co.nz/2018/01/25/change-docker-data-directory-in-debian-jessie/>`_ to the new volume. Use ``/mnt/your-volume-name/docker`` as the ``data-root`` path.
