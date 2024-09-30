@@ -338,7 +338,7 @@ Consider the following to help you decide whether S3-compatible storage is a goo
 
 * You can configure S3-compatible storage at any time and migrate existing files out of your database. However, once you opt into using S3-compatible storage, there is no automated way to migrate files back to the database.
 * If you opt into S3-compatible storage, any system you use to retrieve file data from Central must be able to follow redirects (for example, Briefcase will not be able to retrieve form and submission attachments but ``pyodk`` will).
-* The names of objects stored in S3-compatible storage do not stand alone and must be converted to useful filenames and connected to the right forms/submissions by Central.
+* The names of objects stored in S3-compatible storage do not stand alone and must be converted to useful filenames and connected to the right forms and/or submissions by Central. For example, object names will look like ``blob-412-950ababd4c8cf8d11rf5421433b5e3dafx5f6e75``.
 * If you opt into S3-compatible storage, you must design a backup and restore strategy for that storage.
 
 To use S3-compatible storage for all files saved in Central, follow these steps:
