@@ -10,6 +10,7 @@ Start by reviewing upgrade notes for all versions between your current version a
 Upgrade notes
 -------------
 
+* :ref:`Central v2024.2 <central-upgrade-2024.2>`: changes to ``.env`` and SSL no longer require rebuilding, consider using S3 storage
 * Central v2023.5, v2024.1: no upgrade notes
 * :ref:`Central v2023.4 <central-upgrade-2023.4>`: improve email delivery
 * :ref:`Central v2023.3 <central-upgrade-2023.3>`: clean up old database if needed
@@ -90,6 +91,33 @@ You'll be asked to confirm the removal of all dangling images. Agree by typing t
 
 Version-specific upgrade instructions
 --------------------------------------
+
+.. _central-upgrade-2024.2:
+
+Upgrading to Central v2024.2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are no required special steps related to this upgrade. However, there are some optional changes that you may want to know about or opt into.
+
+1. Changes to ``.env`` and SSL no longer require rebuilding
+************************************************************
+
+If you make changes to your ``.env`` file or your SSL certificates to configure Central as described in the :doc:`setup and configuration instructions <central-install-digital-ocean>`, you no longer have to rebuild Central for the changes to take effect. Instead, a stop and restart is now enough:
+
+.. code-block:: bash
+
+   $ docker compose stop
+   $ docker compose up -d
+
+2. Files can be stored in S3-compatible storage
+************************************************
+
+By default, Central stores all of its data in a database, including files like XLSForm definitions and images attached to submissions. If you have or plan on collecting a lot of files, you may prefer to store these in separate storage to reduce load on the database and possibly reduce hosting costs. See instructions on :ref:`configuring S3-compatible storage <central-install-digital-ocean-s3>`.
+
+3. Docker images now published
+*******************************
+
+If you use your own infrastructure for orchestrating the different components needed to run Central, you may prefer to use published Docker images. You can now find these `on GHCR <https://github.com/orgs/getodk/packages?tab=packages&repo_name=central>`_.
 
 .. _central-upgrade-2023.4:
 
