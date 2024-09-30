@@ -40,6 +40,17 @@ info:
 
     Here major and breaking changes to the API are listed by version.
 
+    ## ODK Central v2024.2
+
+    **Added**:
+
+    * Submission Delete!
+      - New [DELETE](/central-api-submission-management/#deleting-a-submission) and [RESTORE](/central-api-submission-management/#restoring-a-deleted-submission) endpoints for submissions!
+      - Submissions that have been soft-deleted for 30 days will automatically be purged. 
+    * Additional properties on certain responses:
+      - Extended metadata for Forms includes a new property `publicLinks`, which is the number of Public Links that can submit to the Form.
+      - Data for Entity versions now includes the properties `branchId`, `trunkVersion`, and `branchBaseVersion` for supporting offline functionality.
+
     ## ODK Central v2024.1
 
     **Added**:
@@ -841,6 +852,10 @@ tags:
     * `submission.update` when a Submission's metadata is updated.
     * `submission.update.version` when a Submission XML data is updated.
     * `submission.attachment.update` when a Submission Attachment binary is set or cleared, but _only via the REST API_. Attachments created alongside the submission over the OpenRosa `/submission` API (including submissions from Collect) do not generate audit log entries.
+    * `submission.delete` when a Submission is soft-deleted.
+    * `submission.purge` when soft-deleted Submissions are purged.
+    * `submission.restore` when a Submission is restored.
+    * `submission.reprocess` when an Entity Submission is held in a processing backlog and then removed.
     * `dataset.create` when a Dataset is created.
     * `dataset.update` when a Dataset is updated.
     * `dataset.update.publish` when a Dataset is published.
@@ -851,6 +866,8 @@ tags:
     * `entity.delete` when an Entity is deleted.
     * `config.set` when a system configuration is set.
     * `analytics` when a Usage Report is attempted.
+    * `blobs.s3.upload` when blobs are moved from the database to external storage.
+    * `blobs.s3.failed-to-pending` when blobs that failed to upload are reset to the pending state to be retried.
     * Deprecated: `backup` when a backup operation is attempted for Google Drive backups.
 - name: Direct Backup
   x-parent-tag: System Endpoints
@@ -2342,9 +2359,8 @@ paths:
                 forms:
                   type: array
                   description: If given, the Form metadata to update.
-                  items: {
+                  items:
                     type: object
-                  }
               example:
                 name: New Project Name
                 description: New Project Description
@@ -2965,7 +2981,9 @@ paths:
 
         As of version 1.2, Forms that are unpublished (that only carry a draft and have never been published) will appear with full metadata detail. Previously, certain details like `name` were omitted. You can determine that a Form is unpublished by checking the `publishedAt` value: it will be `null` for unpublished forms.
 
-        This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally retrieve the `submissions` count of the number of Submissions that each Form has, the `reviewStates` object of counts of Submissions with specific review states, the `lastSubmission` most recent submission timestamp, as well as the Actor the Form was `createdBy`.
+        This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally retrieve the `submissions` count of the number of Submissions that each Form has, the `reviewStates` object of counts of Submissions with specific review states, the `lastSubmission` most recent submission timestamp, the Actor the Form was `createdBy`, as well as other metadata.
+
+        The query `?deleted=true` can be added to list deleted Forms with their numeric form IDs, which can be used to [restore](/central-api-form-management/#restoring-a-form) a deleted Form.
       operationId: List all Forms
       parameters:
       - name: projectId
@@ -2975,6 +2993,12 @@ paths:
         schema:
           type: number
         example: "16"
+      - name: deleted
+        in: query
+        description: If set to `true`, will return only deleted Forms and their IDs
+        schema:
+          type: boolean
+        example: "true"
       responses:
         200:
           description: OK
@@ -3027,6 +3051,7 @@ paths:
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
                 entityRelated: false
+                publicLinks: 4
         403:
           description: Forbidden
           content:
@@ -3282,6 +3307,7 @@ paths:
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
                 entityRelated: false
+                publicLinks: 4
         403:
           description: Forbidden
           content:
@@ -3292,13 +3318,18 @@ paths:
       tags:
       - Individual Form
       summary: Deleting a Form
-      description: When a Form is deleted, it goes into the Trash section, but it
+      description: -|
+        When a Form is deleted, it goes into the Trash section, but it
         can now be restored from the Trash. After 30 days in the Trash, the Form and
         all of its resources and submissions will be automatically purged. If your
         goal is to prevent it from showing up on survey clients like ODK Collect,
         consider setting its `state` to `closing` or `closed` instead (see [Modifying
         a Form](/central-api-form-management/#modifying-a-form) just above for
         more details).
+
+        The API usually identifies forms by their `projectId` and `xmlFormId`, but if a Form
+        is deleted, the same `xmlFormId` can be reused. To [restore](/central-api-form-management/#restoring-a-form) a deleted Form, use its
+        _numeric ID_, which can be retrieved by [listing Forms with `?deleted=true`](/central-api-form-management/#list-all-forms).
       operationId: Deleting a Form
       parameters:
       - name: xmlFormId
@@ -3804,7 +3835,9 @@ paths:
       description: |-
         _(introduced: version 1.4)_
 
-        Deleted forms can now be restored (as long as they have been in the Trash less than 30 days and have not been purged). However, a deleted Form with the same `xmlFormId` as an active Form cannot be restored while that other Form is active. This `/restore` URL uses the numeric ID of the Form (now returned by the `/forms` endpoint) rather than the `xmlFormId` to unambigously restore.
+        Deleted forms can now be restored (as long as they have been in the Trash less than 30 days and have not been purged). However, a deleted Form with the same `xmlFormId` as an active Form cannot be restored while that other Form is active. 
+
+        This `/restore` URL uses the numeric ID of the Form (now returned by the `/forms?deleted=true` endpoint) rather than the `xmlFormId` to unambigously restore. Note that the numeric ID of a Form is not returned by default on the [Form list](/central-api-form-management/#list-all-forms) and is only returned when listing deleted Forms.
       operationId: Restoring a Form
       parameters:
       - name: projectId
@@ -5704,7 +5737,6 @@ paths:
                     - hasIssues
                     - rejected
                     - approved
-                    - approved
                   createdAt:
                     type: string
                     description: ISO date format. The time that the server received
@@ -5984,7 +6016,6 @@ paths:
                     - hasIssues
                     - rejected
                     - approved
-                    - approved
                   createdAt:
                     type: string
                     description: ISO date format. The time that the server received
@@ -6159,7 +6190,6 @@ paths:
                     - hasIssues
                     - rejected
                     - approved
-                    - approved
                   createdAt:
                     type: string
                     description: ISO date format. The time that the server received
@@ -6227,6 +6257,123 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error403'
+    delete:
+      tags:
+      - Submissions
+      summary: Deleting a Submission
+      description: When a Submission is deleted, there is a period of time (30 days)
+        during which it can be restored. After this time, all of its resources and attachments
+        are automatically purged. Purging deleted Submissions can also be triggered from the command line.
+      operationId: Deleting a Submission
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: xmlFormId
+        in: path
+        description: The `xmlFormId` of the Form being referenced.
+        required: true
+        schema:
+          type: string
+        example: simple
+      - name: instanceId
+        in: path
+        description: The `instanceId` of the Submission being referenced.
+        required: true
+        schema:
+          type: string
+        example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+              example:
+                code: "404.1"
+                message: Could not find the resource you were looking for.
+  /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/restore:
+    post:
+      tags:
+      - Submissions
+      summary: Restoring a deleted Submission
+      description: Submissions that have been recently soft-deleted and not yet purged can be restored using this endpoint.
+      operationId: Restoring a deleted Submission
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: xmlFormId
+        in: path
+        description: The `xmlFormId` of the Form being referenced.
+        required: true
+        schema:
+          type: string
+        example: simple
+      - name: instanceId
+        in: path
+        description: The `instanceId` of the Submission being referenced.
+        required: true
+        schema:
+          type: string
+        example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+              example:
+                code: "404.1"
+                message: Could not find the resource you were looking for.
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}.xml:
     get:
       tags:
@@ -6358,7 +6505,7 @@ paths:
         schema:
           type: boolean
         example: "true"
-      - name: '%24filter'
+      - name: '$filter'
         in: query
         description: If provided, will filter responses to those matching the given
           OData query. Only [certain fields](/central-api-odata-endpoints/#data-document)
@@ -6461,7 +6608,7 @@ paths:
         schema:
           type: boolean
         example: "true"
-      - name: '%24filter'
+      - name: '$filter'
         in: query
         description: If provided, will filter responses to those matching the given
           OData query. Only [certain fields](/central-api-odata-endpoints/#data-document)
@@ -6561,7 +6708,7 @@ paths:
         schema:
           type: string
         example: simple
-      - name: '%24filter'
+      - name: '$filter'
         in: query
         description: If provided, will filter responses to those matching the given
           OData query. Only [certain fields](/central-api-odata-endpoints/#data-document)
@@ -6630,7 +6777,7 @@ paths:
         schema:
           type: string
         example: simple
-      - name: '%24filter'
+      - name: '$filter'
         in: query
         description: If provided, will filter responses to those matching the given
           OData query. Only [certain fields](/central-api-odata-endpoints/#data-document)
@@ -7778,7 +7925,6 @@ paths:
                     - hasIssues
                     - rejected
                     - approved
-                    - approved
                   createdAt:
                     type: string
                     description: ISO date format. The time that the server received
@@ -8112,7 +8258,6 @@ paths:
                     - hasIssues
                     - rejected
                     - approved
-                    - approved
                   createdAt:
                     type: string
                     description: ISO date format. The time that the server received
@@ -8250,7 +8395,6 @@ paths:
                     - edited
                     - hasIssues
                     - rejected
-                    - approved
                     - approved
                   createdAt:
                     type: string
@@ -8645,7 +8789,9 @@ paths:
       - Dataset Management
       summary: Creating Datasets
       description: |- 
-        You can create a Dataset with a specific `name` within a Project. This Dataset can then be populated via the API or via Forms and Submissions, and then used by other Forms. This endpoint allows a Dataset to be created programatically without an input form.
+        You can create a Dataset with a specific `name` within a Project. This Dataset can then be populated with Entities via the API or via Forms and Submissions, and then used by other Forms. This endpoint allows a Dataset to be created programatically without an input form.
+
+        The name of a Dataset is case-sensitive in that it will keep the capitalization provided (e.g. "Trees"). But Central will not allow a second Dataset with the same name but different capitalization to be created (e.g. "trees" when "Trees" already exists).
 
         By default, the Dataset will have no properties, but each Entity will have a `label` and a unique ID (`uuid`). You can add additional properties with this [related endpoint](/central-api-dataset-management/#adding-properties).
         
@@ -8701,6 +8847,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error403'
+        409:
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: number
+                  message:
+                    type: string
+              example:
+                code: 409.3
+                message: A resource already exists with name,projectId value(s) of trees,1.
   /projects/{projectId}/datasets/{name}:
     get:
       tags:
@@ -8995,6 +9157,9 @@ paths:
                   userAgent: Enketo/3.0.4
                   version: 1
                   baseVersion: null
+                  branchId: null
+                  trunkVersion: null
+                  branchBaseVersion: null
                   conflictingProperties: null
             application/json; extended:
               schema:
@@ -9024,6 +9189,9 @@ paths:
                   userAgent: Enketo/3.0.4
                   version: 1
                   baseVersion: null
+                  branchId: null
+                  trunkVersion: null
+                  branchBaseVersion: null
                   conflictingProperties: null
                   creator:
                     createdAt: '2018-04-18T23:19:14.802Z'
@@ -9135,6 +9303,9 @@ paths:
                   conflictingProperties: null
                   version: 1
                   baseVersion: null
+                  branchId: null
+                  trunkVersion: null
+                  branchBaseVersion: null
                   data:
                     firstName: John
                     age: '88'
@@ -9216,6 +9387,9 @@ paths:
                   conflictingProperties: null
                   version: 1
                   baseVersion: null
+                  branchId: null
+                  trunkVersion: null
+                  branchBaseVersion: null
                   data:
                     firstName: John
                     age: '88'
@@ -9251,6 +9425,9 @@ paths:
                   conflictingProperties: null
                   version: 1
                   baseVersion: null
+                  branchId: null
+                  trunkVersion: null
+                  branchBaseVersion: null
                   data:
                     firstName: John
                     age: '88'
@@ -9413,6 +9590,9 @@ paths:
                   conflictingProperties: null
                   version: 1
                   baseVersion: null
+                  branchId: null
+                  trunkVersion: null
+                  branchBaseVersion: null
                   data:
                     firstName: John
                     age: '88'
@@ -9485,6 +9665,9 @@ paths:
                   userAgent: Enketo/3.0.4
                   version: 1
                   baseVersion: null
+                  branchId: null
+                  trunkVersion: null
+                  branchBaseVersion: null
                   conflict: null
                   resolved: false
                   lastGoodVersion: true
@@ -9514,6 +9697,9 @@ paths:
                   userAgent: Enketo/3.0.4
                   version: 1
                   baseVersion: null
+                  branchId: null
+                  trunkVersion: null
+                  branchBaseVersion: null
                   conflict: null
                   resolved: false
                   lastGoodVersion: true
@@ -10460,7 +10646,9 @@ paths:
       description: |-
         The data documents are JSON representations of each table of `Submission` data. They follow the [corresponding specification](http://docs.oasis-open.org/odata/odata-json-format/v4.01/odata-json-format-v4.01.html), but apart from the representation of geospatial data as GeoJSON rather than the ODK proprietary format, the output here should not be surprising. If you are looking for JSON output of Submission data, this is the best place to look.
 
-        The `$top` and `$skip` querystring parameters, specified by OData, apply `limit` and `offset` operations to the data, respectively. The `$count` parameter, also an OData standard, will annotate the response data with the total row count, regardless of the scoping requested by `$top` and `$skip`. If `$top` parameter is provided in the request then the response will include `@odata.nextLink` that you can use as is to fetch the next set of data. While paging is possible through these parameters, it will not greatly improve the performance of exporting data. ODK Central prefers to bulk-export all of its data at once if possible.
+        The `$top` and `$skip` querystring parameters, specified by OData, apply `limit` and `offset` operations to the data, respectively. The `$count` parameter, also an OData standard, will annotate the response data with the total row count, regardless of the scoping requested by `$top` and `$skip`. If `$top` parameter is provided in the request then the response will include `@odata.nextLink` that you can use as is to fetch the next set of data. As of ODK Central v2023.4, `@odata.nextLink` contains a `$skiptoken` (an opaque cursor), which allows you to page through Submissions with a consistent offset, even while new Submissions are being created.
+
+        While paging is possible through these parameters, it will not greatly improve the performance of exporting data. ODK Central prefers to bulk-export all of its data at once if possible.
 
         As of ODK Central v1.1, the [`$filter` querystring parameter](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948) is partially supported. In OData, you can use `$filter` to filter by certain data fields in the schema. The operators `lt`, `le`, `eq`, `ne`, `ge`, `gt`, `not`, `and`, and `or` are supported. The built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second` are supported. These supported elements may be combined in any way, but all other `$filter` features will cause an error.
 
@@ -10479,7 +10667,7 @@ paths:
 
         Please see the [OData documentation](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948) on `$filter` [operations](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinFilterOperations) and [functions](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinQueryFunctions) for more information.
 
-        As of ODK Central v1.2, you can use `%24expand=*` to expand all repeat repetitions. This is helpful if you'd rather get one nested JSON data payload of all hierarchical data, rather than retrieve each of repeat as a separate flat table with references.
+        As of ODK Central v1.2, you can use `$expand=*` to expand all repeat repetitions. This is helpful if you'd rather get one nested JSON data payload of all hierarchical data, rather than retrieve each of repeat as a separate flat table with references.
 
         The _nonstandard_ `$wkt` querystring parameter may be set to `true` to request that geospatial data is returned as a [Well-Known Text (WKT) string](https://en.wikipedia.org/wiki/Well-known_text) rather than a GeoJSON structure. This exists primarily to support Tableau, which cannot yet read GeoJSON, but you may find it useful as well depending on your mapping software. **Please note** that both GeoJSON and WKT follow a `(lon, lat, alt)` coördinate ordering rather than the ODK-proprietary `lat lon alt`. This is so that the values map neatly to `(x, y, z)`. GPS accuracy information is not a part of either standards specification, and so is presently omitted from OData output entirely. GeoJSON support may come in a future version.
 
@@ -10517,20 +10705,20 @@ paths:
         schema:
           type: string
         example: Submissions
-      - name: '%24skip'
+      - name: '$skip'
         in: query
         description: If supplied, the first `$skip` rows will be omitted from the
           results.
         schema:
           type: number
         example: "10"
-      - name: '%24top'
+      - name: '$top'
         in: query
         description: If supplied, only up to `$top` rows will be returned in the results.
         schema:
           type: number
         example: "5"
-      - name: '%24count'
+      - name: '$count'
         in: query
         description: If set to `true`, an `@odata.count` property will be added to
           the result indicating the total number of rows, ignoring the above paging
@@ -10538,14 +10726,14 @@ paths:
         schema:
           type: boolean
         example: "true"
-      - name: '%24wkt'
+      - name: '$wkt'
         in: query
         description: If set to `true`, geospatial data will be returned as Well-Known
           Text (WKT) strings rather than GeoJSON structures.
         schema:
           type: boolean
         example: "true"
-      - name: '%24filter'
+      - name: '$filter'
         in: query
         description: If provided, will filter responses to those matching the query.
           Only [certain fields](/central-api-odata-endpoints/#data-document)
@@ -10555,25 +10743,30 @@ paths:
         schema:
           type: string
         example: year(__system/submissionDate) lt year(now())
-      - name: '%24orderby'
+      - name: '$orderby'
         in: query
         description: If provided, will sort responses according to specified order expression. Only the same fields as `$filter` above can be used to sort. Multiple expressions can be used together.
         schema:
           type: string
         example: __system/submitterId asc, __system/updatedAt desc
-      - name: '%24expand'
+      - name: '$expand'
         in: query
         description: Repetitions, which should get expanded. Currently, only `*` is
           implemented, which expands all repetitions.
         schema:
           type: string
         example: '*'
-      - name: '%24select'
+      - name: '$select'
         in: query
         description: If provided, will return only the selected fields.
         schema:
           type: string
         example: __id, age, name, meta/instanceID
+      - name: '$skiptoken'
+        in: query
+        description: Opaque cursor from `@odata.nextLink` used for paging.
+        schema:
+          type: string
       responses:
         200:
           description: OK
@@ -10999,7 +11192,7 @@ paths:
       description: |-
         A data document is the straightforward JSON representation of all the `Entities` in a `Dataset`.
 
-        The `$top` and `$skip` querystring parameters, specified by OData, apply `limit` and `offset` operations to the data, respectively. The `$count` parameter, also an OData standard, will annotate the response data with the total row count, regardless of the scoping requested by `$top` and `$skip`. If `$top` parameter is provided in the request then the response will include `@odata.nextLink` that you can use as is to fetch the next set of data.
+        The `$top` and `$skip` querystring parameters, specified by OData, apply `limit` and `offset` operations to the data, respectively. The `$count` parameter, also an OData standard, will annotate the response data with the total row count, regardless of the scoping requested by `$top` and `$skip`. If `$top` parameter is provided in the request then the response will include `@odata.nextLink` that you can use as is to fetch the next set of data. As of ODK Central v2023.4, `@odata.nextLink` contains a `$skiptoken` (an opaque cursor) to better paginate around deleted Entities.
 
         The [`$filter` querystring parameter](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948) can be used to filter certain data fields in the system-level schema, but not the Dataset properties. The operators `lt`, `le`, `eq`, `ne`, `ge`, `gt`, `not`, `and`, and `or` are supported. The built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second` are supported.
 
@@ -11037,20 +11230,20 @@ paths:
         schema:
           type: string
         example: people
-      - name: '%24skip'
+      - name: '$skip'
         in: query
         description: If supplied, the first `$skip` rows will be omitted from the
           results.
         schema:
           type: number
         example: "10"
-      - name: '%24top'
+      - name: '$top'
         in: query
         description: If supplied, only up to `$top` rows will be returned in the results.
         schema:
           type: number
         example: "5"
-      - name: '%24count'
+      - name: '$count'
         in: query
         description: If set to `true`, an `@odata.count` property will be added to
           the result indicating the total number of rows, ignoring the above paging
@@ -11058,7 +11251,7 @@ paths:
         schema:
           type: boolean
         example: "true"
-      - name: '%24filter'
+      - name: '$filter'
         in: query
         description: If provided, will filter responses to those matching the query.
           Only [certain fields](/central-api-odata-endpoints/#data-document)
@@ -11068,18 +11261,23 @@ paths:
         schema:
           type: string
         example: year(__system/createdAt) lt year(now())
-      - name: '%24orderby'
+      - name: '$orderby'
         in: query
         description: If provided, will sort responses according to specified order expression. Only the same fields as `$filter` above can be used to sort. Multiple expressions can be used together.
         schema:
           type: string
         example: __system/creatorId asc, __system/updatedAt desc
-      - name: '%24select'
+      - name: '$select'
         in: query
         description: If provided, will return only the selected fields.
         schema:
           type: string
         example: __id, label, name
+      - name: '$skiptoken'
+        in: query
+        description: Opaque cursor from `@odata.nextLink` used for paging.
+        schema:
+          type: string
       responses:
         200:
           description: Ok
@@ -11455,20 +11653,20 @@ paths:
         schema:
           type: string
         example: Submissions
-      - name: '%24skip'
+      - name: '$skip'
         in: query
         description: If supplied, the first `$skip` rows will be omitted from the
           results.
         schema:
           type: number
         example: "10"
-      - name: '%24top'
+      - name: '$top'
         in: query
         description: If supplied, only up to `$top` rows will be returned in the results.
         schema:
           type: number
         example: "5"
-      - name: '%24count'
+      - name: '$count'
         in: query
         description: If set to `true`, an `@odata.count` property will be added to
           the result indicating the total number of rows, ignoring the above paging
@@ -11476,14 +11674,14 @@ paths:
         schema:
           type: boolean
         example: "true"
-      - name: '%24wkt'
+      - name: '$wkt'
         in: query
         description: If set to `true`, geospatial data will be returned as Well-Known
           Text (WKT) strings rather than GeoJSON structures.
         schema:
           type: boolean
         example: "true"
-      - name: '%24filter'
+      - name: '$filter'
         in: query
         description: If provided, will filter responses to those matching the query.
           Only [certain fields](/central-api-odata-endpoints/#data-document)
@@ -11493,14 +11691,14 @@ paths:
         schema:
           type: string
         example: year(__system/submissionDate) lt year(now())
-      - name: '%24expand'
+      - name: '$expand'
         in: query
         description: Repetitions, which should get expanded. Currently, only `*` is
           implemented, which expands all repetitions.
         schema:
           type: string
         example: '*'
-      - name: '%24select'
+      - name: '$select'
         in: query
         description: If provided, will return only the selected fields.
         schema:
@@ -12230,7 +12428,19 @@ components:
           example: 2
         baseVersion:
           type: number
-          description: The version number of the version that was the "base version" of this version. The base version is the version that was shown to the data collector when they made their update.
+          description: The version number of the version that was the "base version" of this version.
+          example: 1
+        branchId:
+          type: string
+          description: The uuid of a branch linking multiple offline entity updates together.
+          example: b0e927b6-958a-42f6-8344-1deb37ee9672
+        trunkVersion:
+          type: number
+          description: The version number of the last known base server version of an entity, in the case of an offline branch of updates.
+          example: 1
+        branchBaseVersion:
+          type: number
+          description: The base version of the entity according to the submission. In the case of an offline branch of updates, this may not match the version of the base submission on Central.
           example: 1
     EntitySummary:
       allOf: 
@@ -12501,6 +12711,7 @@ components:
             - submissions
             - reviewStates
             - entityRelated
+            - publicLinks
           properties:
             submissions:
               type: number
@@ -12522,6 +12733,10 @@ components:
             entityRelated:
               type: boolean
               description: True only if this Form is related to a Dataset. In v2022.3, this means the Form's Submissions create Entities in a Dataset. In a future version, Submissions will also be able to update existing Entities.
+            publicLinks:
+              type: number
+              example: 4
+              description: The number of Public Links that can submit to the Form. This does not include Public Links that have been revoked.
     ExtendedFormVersion:
       allOf:
         - $ref: '#/components/schemas/Form'
