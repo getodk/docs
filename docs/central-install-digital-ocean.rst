@@ -327,143 +327,10 @@ If you are having issues with Central running out of memory, we strongly recomme
 
 #. Finally, :ref:`increase memory allocation <central-install-custom-memory>` so Central can use the swap you've added.
 
-.. _central-install-digital-ocean-s3:
-
-Storing files in S3-compatible storage
-----------------------------------------
-
-By default, Central stores form and submission attachments in its main database, but it can be configured to move these to an external object store. If you already have or plan to collect many files, storing them outside the main database can reduce database load and cost. It can also make it more practical to backup and restore the database.
-
-Consider the following to help you decide whether S3-compatible storage is a good fit:
-
-* You can configure S3-compatible storage at any time and migrate existing files out of your database. However, once you opt into using S3-compatible storage, there is no automated way to migrate files back to the database.
-* If you opt into S3-compatible storage, any system you use to retrieve file data from Central must be able to follow redirects (for example, Briefcase will not be able to retrieve form and submission attachments but ``pyodk`` will).
-* The names of objects stored in S3-compatible storage do not stand alone and must be converted to useful filenames and connected to the right forms and/or submissions by Central. For example, object names will look like ``blob-412-950ababd4c8cf8d11rf5421433b5e3dafx5f6e75``.
-* If you opt into S3-compatible storage, you must design a backup and restore strategy for that storage.
-
-To use S3-compatible storage for all files saved in Central, follow these steps:
-
-#. Set up a bucket with your chosen S3-compatible provider. Options include:
-
-   * `Amazon S3 <https://aws.amazon.com/s3/>`_
-   * Locally-hosted service such as `MinIO <https://min.io/docs/minio/linux/index.html>`_
-   * `DigitalOcean Spaces <https://www.digitalocean.com/products/spaces>`_
-   * `Google Cloud Storage <https://cloud.google.com/storage/>`_
-   * `Cloudflare R2 <https://developers.cloudflare.com/r2/>`_
-
-#. Make sure that the bucket's visibility is set to PRIVATE
-
-#. Create a user with minimal permissions to your bucket only. The exact process and permissions will depend on your S3 provider. For example:
-
-   * DigitalOcean Spaces: create an `"Access Key" <https://docs.digitalocean.com/products/spaces/how-to/manage-access/>`_
-   * Amazon S3: create an IAM user
-
-     * .. collapse:: Example policy
-
-           .. code-block:: json
-
-              {
-                "Version": "2012-10-17",
-                "Statement": [
-                  {
-                    "Effect": "Allow",
-                    "Action": [
-                      "s3:GetBucketLocation",
-                      "s3:PutObject",
-                      "s3:GetObject",
-                      "s3:DeleteObject"
-                    ],
-                    "Resource": [
-                      "arn:aws:s3:::MY_BUCKET/*",
-                      "arn:aws:s3:::MY_BUCKET"
-                    ]
-                  }
-                ]
-              }
-
-#. Edit ``.env`` with your chosen service's URL as well as your bucket name, access key and secret. If your service has a region concept, use a general URL that does not specify region. For example, the URL to use for S3 is `https://s3.amazonaws.com`. You must use an ``https`` URL, not an ``http`` one.
-
-   .. code-block:: bash
-
-     $ cd central
-
-   .. code-block:: bash
-
-     $ nano .env
-
-   .. code-block:: bash
-
-      S3_SERVER=https://service.com
-      S3_ACCESS_KEY=MY_ACCESS_KEY
-      S3_SECRET_KEY=MY_SECRET
-      S3_BUCKET_NAME=MY_BUCKET
-
-#. Stop and restart your server to apply the configuration:
-
-   .. code-block:: bash
-
-     $ docker compose stop
-     $ docker compose up -d
-
-#. Try the configuration by attempting to upload existing one existing file. If this is a new server, you can upload an XLSForm to create a file.
-
-   .. code-block:: bash
-
-     $ docker compose exec service node lib/bin/s3.js upload-pending 1
-
-   If the configuration is correct, you should see a success message. If there are issues with the configuration, you should see an error message with hints on what needs to be fixed. To try uploading the same file again, you will need to reset its status to pending:
-
-   .. code-block:: bash
-
-     $ docker compose exec service node lib/bin/s3.js reset-failed-to-pending
-     $ docker compose exec service node lib/bin/s3.js upload-pending 1
-
-Once you have a working configuration, Central will move new and existing files from the database to the external storage provider once every 24 hours. In each 24-hour period that there are new files to process, there will be a :doc:`Central Server Audit Log <central-server-audits/>` entry created with successes and failures.
-
-You can manually request an upload of all pending files by using the ``upload-pending`` task described above without a count:
-
-   .. code-block:: bash
-
-     $ docker compose exec service node lib/bin/s3.js upload-pending
-
-If there are any issues uploading a file, it will be marked as `failed` and will stay in the database. You can use the ``reset-failed-to-pending`` command as shown above to try uploading it again.
-
-You can also use the same ``s3.js`` tool to get counts of files in any of the following statuses: 'pending', 'in_progress', 'uploaded', 'failed'. For example, to get a count of successfully uploaded files:
-
-.. code-block:: bash
-
-  $ docker compose exec service node lib/bin/s3.js count-blobs uploaded
-
-.. _central-install-digital-ocean-external-storage:
-
-Adding additional DigitalOcean storage
----------------------------------------
-
-Forms with many large media attachments can fill up your droplet's storage space. To address this, you can :ref:`configure S3-compatible storage <central-install-digital-ocean-s3>` as described above. An alternative approach is to increase the amount of storage available to Central by using a DigitalOcean Volume.
-
-To move your Central install to DigitalOcean Volumes, follow these steps:
-
-#. `Add a new volume <https://docs.digitalocean.com/products/volumes/getting-started/quickstart/>`_ to your droplet.
-
-#. Find the location of your new volume. It will look like ``/mnt/your-volume-name``.
-
-   .. code-block:: bash
-
-     $ df -h | grep /mnt/
-
-
-#. Create a ``docker`` folder at that location.
-
-   .. code-block:: bash
-
-     $ sudo mkdir /mnt/your-volume-name/docker
-
-#. `Move the Docker data directory <https://blog.adriel.co.nz/2018/01/25/change-docker-data-directory-in-debian-jessie/>`_ to the new volume. Use ``/mnt/your-volume-name/docker`` as the ``data-root`` path.
-
 .. _central-install-custom-memory:
 
-Increasing Memory Allocation
------------------------------
+Increasing RAM Allocation
+-------------------------
 
 During upgrades or exports, some versions of Central may use more memory than the 2 GB typically available to the Central service. If you run into this problem, increase the memory allocated to the Central service.
 
@@ -644,18 +511,61 @@ Central comes with a PostgreSQL v14.x database server to store your data. To use
 
      $ docker compose build service && docker compose stop service && docker compose up -d service
 
+.. _central-install-digital-ocean-s3:
 
-.. _central-install-digital-ocean-upstream-ssl:
+Using S3-compatible Storage
+---------------------------
 
-Configuring Upstream SSL
-------------------------
+By default, Central stores form and submission attachments in its main database, but it can be configured to move these to an external object store. If you already have or plan to collect many files, storing them outside the main database can reduce database load and cost. It can also make it more practical to backup and restore the database.
 
-.. warning::
-  We have not extensively tested this configuration and it is subject to change. Use at your own risk.
+Consider the following to help you decide whether S3-compatible storage is a good fit:
 
-You may wish to run Central behind a reverse proxy or load balancer. In order to do that, you must disable Central's native SSL support in favor for the upstream SSL provider.
+* You can configure S3-compatible storage at any time and migrate existing files out of your database. However, once you opt into using S3-compatible storage, there is no automated way to migrate files back to the database.
+* If you opt into S3-compatible storage, any system you use to retrieve file data from Central must be able to follow redirects (for example, Briefcase will not be able to retrieve form and submission attachments but ``pyodk`` will).
+* The names of objects stored in S3-compatible storage do not stand alone and must be converted to useful filenames and connected to the right forms and/or submissions by Central. For example, object names will look like ``blob-412-950ababd4c8cf8d11rf5421433b5e3dafx5f6e75``.
+* If you opt into S3-compatible storage, you must design a backup and restore strategy for that storage.
 
-#. Edit ``.env`` file to change your SSL type and HTTP/S ports. ``HTTP_PORT`` and ``HTTPS_PORT`` are the ports exposed on your host and ``UPSTREAM_HTTPS_PORT`` is the user-facing upstream HTTPS port.
+To use S3-compatible storage for all files saved in Central, follow these steps:
+
+#. Set up a bucket with your chosen S3-compatible provider. Options include:
+
+   * `Amazon S3 <https://aws.amazon.com/s3/>`_
+   * Locally-hosted service such as `MinIO <https://min.io/docs/minio/linux/index.html>`_
+   * `DigitalOcean Spaces <https://www.digitalocean.com/products/spaces>`_
+   * `Google Cloud Storage <https://cloud.google.com/storage/>`_
+   * `Cloudflare R2 <https://developers.cloudflare.com/r2/>`_
+
+#. Make sure that the bucket's visibility is set to PRIVATE
+
+#. Create a user with minimal permissions to your bucket only. The exact process and permissions will depend on your S3 provider. For example:
+
+   * DigitalOcean Spaces: create an `"Access Key" <https://docs.digitalocean.com/products/spaces/how-to/manage-access/>`_
+   * Amazon S3: create an IAM user
+
+     * .. collapse:: Example policy
+
+           .. code-block:: json
+
+              {
+                "Version": "2012-10-17",
+                "Statement": [
+                  {
+                    "Effect": "Allow",
+                    "Action": [
+                      "s3:GetBucketLocation",
+                      "s3:PutObject",
+                      "s3:GetObject",
+                      "s3:DeleteObject"
+                    ],
+                    "Resource": [
+                      "arn:aws:s3:::MY_BUCKET/*",
+                      "arn:aws:s3:::MY_BUCKET"
+                    ]
+                  }
+                ]
+              }
+
+#. Edit ``.env`` with your chosen service's URL as well as your bucket name, access key and secret. If your service has a region concept, use a general URL that does not specify region. For example, the URL to use for S3 is `https://s3.amazonaws.com`. You must use an ``https`` URL, not an ``http`` one.
 
    .. code-block:: bash
 
@@ -667,108 +577,51 @@ You may wish to run Central behind a reverse proxy or load balancer. In order to
 
    .. code-block:: bash
 
-     SSL_TYPE=upstream
+      S3_SERVER=https://service.com
+      S3_ACCESS_KEY=MY_ACCESS_KEY
+      S3_SECRET_KEY=MY_SECRET
+      S3_BUCKET_NAME=MY_BUCKET
 
-     HTTP_PORT=8080
-     HTTPS_PORT=8443
-     UPSTREAM_HTTPS_PORT=443
-
-2. Edit ``docker-compose.yml`` to add ``UPSTREAM_HTTPS_PORT`` to the service and enketo configurations.
-
-   .. code-block:: bash
-
-     $ nano docker-compose.yml
+#. Stop and restart your server to apply the configuration:
 
    .. code-block:: bash
 
-     service:
-       environment:
-         - HTTPS_PORT=${UPSTREAM_HTTPS_PORT:-443}
+     $ docker compose stop
+     $ docker compose up -d
 
-     ...
-
-     enketo:
-       environment:
-         - HTTPS_PORT=${UPSTREAM_HTTPS_PORT:-443}
-
-#. Build and restart all containers.
+#. Try the configuration by attempting to upload existing one existing file. If this is a new server, you can upload an XLSForm to create a file.
 
    .. code-block:: bash
 
-     $ docker compose build && docker compose stop && docker compose up -d
+     $ docker compose exec service node lib/bin/s3.js upload-pending 1
 
-.. _central-install-digital-ocean-dkim:
-
-Configuring DKIM
-----------------
-
-.. warning::
-  Do not follow these instructions if you are using a :ref:`custom mail server <central-install-digital-ocean-custom-mail>`.
-
-DKIM is a protocol which is used to help verify mail server identities. Without it, your sent mail is likely to be flagged as spam.
-
-#. Ensure that your server's name in DigitalOcean `matches your full domain name <https://www.digitalocean.com/community/questions/how-do-i-setup-a-ptr-record?comment=30810>`_, and that the `hostname does as well <https://askubuntu.com/questions/938786/how-to-permanently-change-host-name/938791#938791>`_. If you had to make changes for this step, restart the server to ensure they take effect.
-
-
-#. Generate a public and private key (if one doesn't already exist).
+   If the configuration is correct, you should see a success message. If there are issues with the configuration, you should see an error message with hints on what needs to be fixed. To try uploading the same file again, you will need to reset its status to pending:
 
    .. code-block:: bash
 
-     $ cd central
+     $ docker compose exec service node lib/bin/s3.js reset-failed-to-pending
+     $ docker compose exec service node lib/bin/s3.js upload-pending 1
+
+Once you have a working configuration, Central will move new and existing files from the database to the external storage provider once every 24 hours. In each 24-hour period that there are new files to process, there will be a :doc:`Central Server Audit Log <central-server-audits/>` entry created with successes and failures.
+
+You can manually request an upload of all pending files by using the ``upload-pending`` task described above without a count:
 
    .. code-block:: bash
 
-     $ ! test -s files/mail/rsa.private && openssl genrsa -out files/mail/rsa.private 1024
-     $ openssl rsa -in files/mail/rsa.private -out files/mail/rsa.public -pubout -outform PEM
+     $ docker compose exec service node lib/bin/s3.js upload-pending
 
-#. Ensure any changes to the DKIM private key are kept private.
+If there are any issues uploading a file, it will be marked as `failed` and will stay in the database. You can use the ``reset-failed-to-pending`` command as shown above to try uploading it again.
 
-   .. code-block:: bash
+You can also use the same ``s3.js`` tool to get counts of files in any of the following statuses: 'pending', 'in_progress', 'uploaded', 'failed'. For example, to get a count of successfully uploaded files:
 
-     $ git update-index --skip-worktree files/mail/rsa.private
+.. code-block:: bash
 
-#. Copy the contents of the public key with the boundary dashes removed.
-
-   .. code-block:: bash
-
-     $ cat files/mail/rsa.public | grep -v "^-"
-
-#. Create four new DNS records in these locations:
-
-   1. ``dkim._domainkey.DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content. Be sure to remove any newlines or line breaks.
-
-      .. code-block:: bash
-
-        k=rsa; p=PUBLIC-KEY-HERE
-
-   2. ``_dmarc.DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content.
-
-      .. code-block:: bash
-
-        v=DMARC1; p=none
-   
-   3. ``DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content. Get the server IP address from the DigitalOcean control panel. 
-
-      .. code-block:: bash
-
-        v=spf1 a mx ip4:SERVER-IP-ADDRESS-HERE -all
-
-   4. ``DOMAIN-NAME-HERE``: create a ``MX`` record with the following content.
-
-      .. code-block:: bash
-
-        10 DOMAIN-NAME-HERE
-
-#. Build and restart the mail container.
-
-   .. code-block:: bash
-
-     $ docker compose build mail && docker compose stop mail && docker compose up -d mail
+  $ docker compose exec service node lib/bin/s3.js count-blobs uploaded
 
 .. _central-install-digital-ocean-sso:
 
-Enabling Single Sign-on
------------------------
+Using Single Sign-on (SSO)
+--------------------------
 
 By default, users log into Central using an email address and password. However, if Single Sign-on (SSO) is enabled, then Central will no longer manage users' passwords and will instead forward users to a separate login server. This can be a convenient option if all of your users already have accounts on a service like Google Workspace or Azure Active Directory. Under this setup, the login server is called the "identity provider." If SSO is enabled, the identity provider will manage users' passwords, not Central.
 
@@ -862,6 +715,127 @@ To disable SSO:
    .. code-block:: bash
 
      $ docker compose build && docker compose stop && docker compose up -d
+
+
+.. _central-install-digital-ocean-upstream-ssl:
+
+Using Upstream SSL
+------------------
+
+.. warning::
+  We have not extensively tested this configuration and it is subject to change. Use at your own risk.
+
+You may wish to run Central behind a reverse proxy or load balancer. In order to do that, you must disable Central's native SSL support in favor for the upstream SSL provider.
+
+#. Edit ``.env`` file to change your SSL type and HTTP/S ports. ``HTTP_PORT`` and ``HTTPS_PORT`` are the ports exposed on your host and ``UPSTREAM_HTTPS_PORT`` is the user-facing upstream HTTPS port.
+
+   .. code-block:: bash
+
+     $ cd central
+
+   .. code-block:: bash
+
+     $ nano .env
+
+   .. code-block:: bash
+
+     SSL_TYPE=upstream
+
+     HTTP_PORT=8080
+     HTTPS_PORT=8443
+     UPSTREAM_HTTPS_PORT=443
+
+2. Edit ``docker-compose.yml`` to add ``UPSTREAM_HTTPS_PORT`` to the service and enketo configurations.
+
+   .. code-block:: bash
+
+     $ nano docker-compose.yml
+
+   .. code-block:: bash
+
+     service:
+       environment:
+         - HTTPS_PORT=${UPSTREAM_HTTPS_PORT:-443}
+
+     ...
+
+     enketo:
+       environment:
+         - HTTPS_PORT=${UPSTREAM_HTTPS_PORT:-443}
+
+#. Build and restart all containers.
+
+   .. code-block:: bash
+
+     $ docker compose build && docker compose stop && docker compose up -d
+
+.. _central-install-digital-ocean-dkim:
+
+Using DKIM
+-----------
+
+.. warning::
+  Do not follow these instructions if you are using a :ref:`custom mail server <central-install-digital-ocean-custom-mail>`.
+
+DKIM is a protocol which is used to help verify mail server identities. Without it, your sent mail is likely to be flagged as spam.
+
+#. Ensure that your server's name in DigitalOcean `matches your full domain name <https://www.digitalocean.com/community/questions/how-do-i-setup-a-ptr-record?comment=30810>`_, and that the `hostname does as well <https://askubuntu.com/questions/938786/how-to-permanently-change-host-name/938791#938791>`_. If you had to make changes for this step, restart the server to ensure they take effect.
+
+
+#. Generate a public and private key (if one doesn't already exist).
+
+   .. code-block:: bash
+
+     $ cd central
+
+   .. code-block:: bash
+
+     $ ! test -s files/mail/rsa.private && openssl genrsa -out files/mail/rsa.private 1024
+     $ openssl rsa -in files/mail/rsa.private -out files/mail/rsa.public -pubout -outform PEM
+
+#. Ensure any changes to the DKIM private key are kept private.
+
+   .. code-block:: bash
+
+     $ git update-index --skip-worktree files/mail/rsa.private
+
+#. Copy the contents of the public key with the boundary dashes removed.
+
+   .. code-block:: bash
+
+     $ cat files/mail/rsa.public | grep -v "^-"
+
+#. Create four new DNS records in these locations:
+
+   1. ``dkim._domainkey.DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content. Be sure to remove any newlines or line breaks.
+
+      .. code-block:: bash
+
+        k=rsa; p=PUBLIC-KEY-HERE
+
+   2. ``_dmarc.DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content.
+
+      .. code-block:: bash
+
+        v=DMARC1; p=none
+   
+   3. ``DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content. Get the server IP address from the DigitalOcean control panel. 
+
+      .. code-block:: bash
+
+        v=spf1 a mx ip4:SERVER-IP-ADDRESS-HERE -all
+
+   4. ``DOMAIN-NAME-HERE``: create a ``MX`` record with the following content.
+
+      .. code-block:: bash
+
+        10 DOMAIN-NAME-HERE
+
+#. Build and restart the mail container.
+
+   .. code-block:: bash
+
+     $ docker compose build mail && docker compose stop mail && docker compose up -d mail
 
 .. _central-install-digital-ocean-enketo:
 
