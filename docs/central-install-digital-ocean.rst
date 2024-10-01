@@ -16,6 +16,8 @@ If you'd like to set up an ODK server that's accessible from anywhere via the In
 
   DigitalOcean will give you $200 of credit to spend during the first 60 days so that you can try things out. Once you have spent $25 with them, we’ll get $25 to put towards our hosting costs.
 
+  If you are a student, enroll via GitHub's `Student Developer Pack <https://education.github.com/pack?utm_source=github+digitalocean>`_  to get your DigitalOcean credit extended for 1 year.
+
 In general, this installation process will involve five phases:
 
 #. Getting a server and loading it with the appropriate base system.
