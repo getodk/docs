@@ -159,8 +159,8 @@ You can also try a follow-up Form Draft by manually creating a CSV of sample Ent
 
 .. _central-entities-upload:
 
-Loading External Data Files into Entity Lists
----------------------------------------------
+Importing CSVs into Entity Lists
+---------------------------------
 
 .. versionadded:: v2024.1
 
