@@ -208,3 +208,8 @@ Elements within ``<mediaFile/>``
 -  ``<filename/>`` The unique un-rooted file path for this media file. This un-rooted path must not start with a drive name or slash and must not contain relative path navigations (for example, ``.`` or ``..``).
 -  ``<hash/>`` The hash value of the media file available for download. The only hash values currently supported are MD5 hashes of the file contents; they are prefixed by ``md5:``. If the hash value identified in the manifest differs from the hash value for a previously-downloaded media file, then the file should be re-fetched from the server.
 -  ``<downloadUrl/>`` A fully qualified URI for downloading the media file to the device. It may be a valid http or https URI of any structure; the server may require authentication; the server may require a secure (https) channel, etc.
+
+``<mediaFile/>`` attributes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- ``type`` Optional attribute to specify a category of file that needs special treatment. The only supported value is ``entityList`` (see `the Entities addition to the ODK XForms spec <https://getodk.github.io/xforms-spec/entities>`_).
