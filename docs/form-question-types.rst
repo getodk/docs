@@ -796,7 +796,7 @@ type
 appearance
   ``minimal``
 
-Adding the ``minimal`` appearance shows the choices in a compact way. This is particularly helpful when the list of choices is long and the select question is displayed on :ref:`the same screen as other questions <field-list>`. It is often combined with :ref:`the autocomplete appearance <select-autocomplete>`.
+Adding the ``minimal`` appearance shows the choices in a compact way. This is particularly helpful when the list of choices is long and the select question is displayed on :ref:`the same screen as other questions <field-list>`. It is often combined with :ref:`the search appearance <select-search>`.
 
 .. image:: /img/form-question-types/select-one-minimal-start.*
   :alt: The Single Select form widget, with minimal appearance, as displayed in the ODK Collect app on an Android phone. The question text is "Select widget." The hint text is "select_one type with minimal appearance, 4 text choices." Below that is a drop-down style select menu with the prompt "Select One Answer." Above the question text is the form group name "Select one widgets."
@@ -857,23 +857,27 @@ once a selection is made.
   opt_abcd,c,C
   opt_abcd,d,D
 
-.. _select-autocomplete:
+.. _select-search:
 
-Select widget with autocomplete
+Select widget with search
 """"""""""""""""""""""""""""""""
 
 type
   ``select_one {list_name}``
 appearance
-  ``autocomplete``
+  ``search``
 
-The ``autocomplete`` appearance allows the enumerator to filter the list of available choices. This is especially helpful for questions with a large number of choices.
+The ``search`` appearance allows the enumerator to filter the list of available choices. This is especially helpful for questions with a large number of choices.
 
-.. image:: /img/form-question-types/select-autocomplete.*
-  :alt: The Select One form widget with autocomplete, as displayed in the ODK Collect app on an Android phone. The question text is "Select one widget." The hint text is, "select one type with autocomplete appearance, 4 text choices." Below that is a text input followed by four radio buttons labeled A, B, C, and D. Above the question text is the form group name "Select one widgets." The device keyboard is active.
+.. note::
+
+  ``autocomplete`` is an alias for ``search`` and can be used to serve the same purpose.
+
+.. image:: /img/form-question-types/select-search.*
+  :alt: The Select One form widget with search, as displayed in the ODK Collect app on an Android phone. The question text is "Select one widget." The hint text is, "select one type with search appearance, 4 text choices." Below that is a text input followed by four radio buttons labeled A, B, C, and D. Above the question text is the form group name "Select one widgets." The device keyboard is active.
   :class: device-screen-vertical
 
-.. image:: /img/form-question-types/select-autocomplete-filtered.*
+.. image:: /img/form-question-types/select-search-filtered.*
   :alt: The Select One form widget as displayed previously. The text input contains a lowercase 'b'. There is a single radio button: B. The other three radio buttons are no longer displayed.
   :class: device-screen-vertical
 
@@ -882,7 +886,7 @@ The ``autocomplete`` appearance allows the enumerator to filter the list of avai
 .. csv-table:: survey
   :header: type, name, label, appearance, hint
 
-  select_one opt_abcd,select_one_autocomplete_widget,Select one widget,autocomplete,"select_one type with autocomplete appearance, 4 text choices"
+  select_one opt_abcd,select_one_search_widget,Select one widget,search,"select_one type with search appearance, 4 text choices"
 
 .. csv-table:: choices
   :header: list_name, name, label
