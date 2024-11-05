@@ -1,4 +1,3 @@
-:orphan:
 Security
 ========
 
@@ -63,7 +62,7 @@ The software is the same either way you choose, but there are important security
   :header: Area,ODK Cloud,Self hosting,Notes
   :widths: 20,5,5,70
 
-  Access Control and Firewall,✅,❓,"ODK Cloud runs on hardened infrastructure with isolated CPU, RAM, network, and storage for each customer. ODK Cloud only allows secure HTTPS connections. Direct SSH or database access are not possible."
+  Access Control and Firewall,✅,❓,"ODK Cloud runs on hardened infrastructure with isolated CPU, RAM, network, and storage for each customer. ODK Cloud only allows secure HTTPS connections. External SSH or database access are not possible."
   Audit Logging,✅,✅,The ODK server :doc:`logs every action <central-server-audits>`. The ODK mobile app can :doc:`log and geotag actions <form-audit-log>` taken during a form filling session. ODK Cloud adds monitored logging.
   Automated Testing,✅,✅,All ODK code has automated tests.
   Backups & Recovery Plans,✅,❓,ODK Cloud data is continuously backed up and can be restored to a specific moment in time. RPO/RTO guarantees are available.
@@ -72,7 +71,7 @@ The software is the same either way you choose, but there are important security
   Code Review,✅,✅,All ODK code goes through public code review.
   Cross-Site Request Forgery (CSRF),✅,✅,The ODK server has CSRF protection and has automated testing to confirm.
   Cross-Site scripting (XSS),✅,✅,ODK's developers are familiar with XSS best practices and consider it in code review.
-  Database Security,✅,❓,ODK Cloud databases are encrypted at rest and isolated by customer. Direct database access is not possible.
+  Database Security,✅,❓,ODK Cloud databases are encrypted at rest and isolated by customer. External database access is not possible.
   "Data Governance, Compliance, Privacy",✅,❓,"ODK Cloud is available in US or EU data centers. Data centers are GDPR compliant and ISO27K and SOC 2 certified. See `Terms of Service <https://getodk.org/tos>`_, `Privacy Policy <https://getodk.org/privacy>`_, and `Data Processing Agreement <https://getodk.org/dpa>`_."
   Denial of Service (DOS),✅,❓,ODK Cloud monitors for attacks and mitigations can be put in place quickly. Automated DDoS protection is available.
   Encryption,✅,✅,The ODK server requires encryption in transit (HTTPS). Additional :doc:`end-to-end encryption <central-encryption>` is available for low-trust environments. ODK Cloud adds encryption at rest.
@@ -86,17 +85,15 @@ The software is the same either way you choose, but there are important security
   Single Sign-On (SSO) & Multi-Factor Auth (MFA),✅,✅,The ODK server offers :ref:`SSO via the OIDC protocol <central-install-digital-ocean-sso>`. MFA can be enabled at the identity provider.
   SQL Injection (SQLi),✅,✅,The ODK server uses Slonik which is designed to prevent vulnerable queries. ODK's developers are familiar with SQLi best practices and consider it in code review.
   SSL Certificates (HTTPS),✅,✅,The ODK server requires HTTPS and uses Let's Encrypt certs with TLS 1.3 and an `A+ rating from SSL Labs <https://www.ssllabs.com/ssltest/analyze.html?d=production.getodk.cloud>`_.
-  Uptime Management,✅,❓,"ODK Cloud has had `100% uptime <https://status.getodk.org/>`_ over the last 16 months."
-
+  Uptime Management,✅,❓,"ODK Cloud has had `99.999% uptime <https://status.getodk.org/>`_ across any given 12 month period."
 
 Security audits
 ---------------
 .. _security-audits:
 
-In addition to internal security reviews of every change to ODK, we regularly commission independent white-box penetration tests, source code audits, and reviews of our architecture and processes. After mitigating issues, we publish the results. Below is our latest independent report.
+In addition to internal security reviews of every change to ODK, we commission independent white-box penetration tests, source code audits, and reviews of our architecture and processes. After mitigating issues, we publish the results.
 
-- Pen Test and Security Review (`Cure53 <https://cure53.de>`_ , July 2024)
-
+.. Below is our latest independent report. - Pen Test and Security Review (`Cure53 <https://cure53.de>`_ , July 2024)
 
 Vulnerability disclosure
 ------------------------
