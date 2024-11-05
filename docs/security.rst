@@ -3,7 +3,7 @@ Security
 
 .. warning::
 
-    This document assumes you are using `ODK Cloud <https://getodk.org/#pricing>`_ or an up-to-date :doc:`ODK Central <central-intro>` server. These security considerations do not apply to any other ODK-compatible systems.
+    This document assumes you are using `ODK Cloud <https://getodk.org/#pricing>`_ or an up-to-date :doc:`ODK Central <central-intro>` server. These security considerations do not apply to any other ODK-based systems.
 
 Whether you are monitoring elections, documenting crimes, or tracking vaccines, ODK offers industry-leading security to protect the sensitive data you collect. Some of our security features are automatic (e.g., vulnerability scanning), while others (e.g., end-to-end encryption) are configurable so you can strike the balance you need.
 

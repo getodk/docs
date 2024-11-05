@@ -17,7 +17,7 @@ If you're someone who learns best by doing, you may prefer to jump straight into
 
 .. note::
 
-    This document assumes you are using `ODK Cloud <https://getodk.org/#pricing>`_ or an up-to-date :doc:`ODK Central <central-intro>` server. Entities are not yet available in other ODK-compatible systems.
+    This document assumes you are using `ODK Cloud <https://getodk.org/#pricing>`_ or an up-to-date :doc:`ODK Central <central-intro>` server. Entities are not yet available in other ODK-based systems.
 
 .. _entities-intro-concepts:
 
