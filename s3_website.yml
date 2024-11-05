@@ -49,6 +49,7 @@ redirects:
   projecting-collect/index.html: collect-mirror
   pyodk/index.html: https://getodk.github.io/pyodk
   pyxform/index.html: xlsform
+  security-privacy/index.html: security
   style-guide/index.html: docs-style-guide
   training/index.html: additional-resources
   validate/index.html: https://github.com/getodk/validate
