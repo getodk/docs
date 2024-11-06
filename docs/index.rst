@@ -77,4 +77,4 @@ ODK is open-source software that's made by a welcoming community of people just 
   :caption: Reference
 
   security
-  additional-resources
+  legal
