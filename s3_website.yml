@@ -36,6 +36,7 @@ redirects:
   collect-connect-aggregate/index.html: collect-connect
   collect-guide/index.html: collect-intro
   collect-integrations/index.html: collect-external-apps
+  collect-security/index.html: security
   form-interaction/index.html: form-logic
   form-tools/index.html: form-design-intro
   form-uploader/index.html: briefcase-using#pulling-form-definitions
