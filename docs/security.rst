@@ -78,7 +78,7 @@ The software is the same either way you choose, but there are important security
   Cross-Site scripting (XSS),✅,✅,ODK's developers are familiar with XSS best practices and consider it in code review.
   Database Security,✅,❓,ODK Cloud databases are encrypted at rest and isolated by customer. External database access is not possible.
   "Data Governance, Compliance, Privacy",✅,❓,"ODK Cloud is available in US or EU data centers. Data centers are GDPR compliant and ISO27K and SOC 2 certified. See `Terms of Service <https://getodk.org/tos>`_, `Privacy Policy <https://getodk.org/privacy>`_, and `Data Processing Agreement <https://getodk.org/dpa>`_."
-  Denial of Service (DOS),✅,❓,ODK Cloud monitors for attacks and mitigations can be put in place quickly. Automated DDoS protection is available.
+  Distributed Denial of Service (DDoS),✅,❓,"ODK Cloud protects against common and most frequently occurring Layer 3 and Layer 4 attacks (e.g., SYN/UDP floods)."
   Encryption,✅,✅,The ODK server requires encryption in transit (HTTPS). Additional :doc:`end-to-end encryption <central-encryption>` is available for low-trust environments. ODK Cloud adds encryption at rest.
   Insurance,✅,❓,ODK Cloud is covered by General Liability and Professional Liability policies. Each has $2M/occurrence coverage.
   Maintenance & Updates,✅,❓,ODK Cloud infrastructure automatically updates outdated or vulnerable software.
