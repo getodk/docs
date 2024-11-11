@@ -8,7 +8,6 @@ Tips and Best Practices
   collect-adb
   collect-shortcut
   collect-location
-  collect-security
   collect-mirror
   collect-troubleshooting
 
