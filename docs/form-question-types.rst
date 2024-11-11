@@ -1681,6 +1681,9 @@ Image widgets
 .. tip::
   Image files can be very large. We recommend always including :ref:`a maximum image size in form design <scaling-down-images>`. Also, consider making test submissions to your server with the Internet conditions you expect when gathering data to make sure that you can send files of the size you expect.
 
+.. warning::
+  As of Android 13, Google introduced a new photo picker, backported to devices running Android 11 and 12. This new picker is automatically used when users click the ``Choose Image`` button. The picker enhances privacy by removing sensitive metadata, including GPS location, from selected images. If you rely on metadata like GPS location, please note that this data may no longer be available.
+
 .. _default-image-widget:
 
 Default image widget
