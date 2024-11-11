@@ -16,6 +16,10 @@ help:
 .PHONY: help Makefile
 
 autobuild:
+	sphinx-autobuild -b dirhtml "$(SOURCEDIR)" "$(BUILDDIR)/html" --re-ignore "central-api|_build" --host 0.0.0.0
+
+.PHONY: autobuild-docker
+autobuild-docker:
 	docker build --tag odk-docs-autobuild . && \
 	docker run --publish 8000:8000 --volume ./docs:/docs:rw odk-docs-autobuild
 
