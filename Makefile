@@ -15,6 +15,7 @@ help:
 
 .PHONY: help Makefile
 
+.PHONY: autobuild
 autobuild:
 	sphinx-autobuild -b dirhtml "$(SOURCEDIR)" "$(BUILDDIR)/html" --re-ignore "central-api|_build" --host 0.0.0.0
 
