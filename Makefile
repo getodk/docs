@@ -18,6 +18,11 @@ help:
 autobuild:
 	sphinx-autobuild -b dirhtml "$(SOURCEDIR)" "$(BUILDDIR)/html" --re-ignore "central-api|_build" --host 0.0.0.0
 
+.PHONY: autobuild-docker
+autobuild-docker:
+	docker build --tag odk-docs-autobuild . && \
+	docker run --publish 8000:8000 --volume ./docs:/docs:rw odk-docs-autobuild
+
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
