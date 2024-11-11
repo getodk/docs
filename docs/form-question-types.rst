@@ -1114,7 +1114,7 @@ When the map is first opened, it centers on the device's current location. There
 
 Point choices are represented by map markers (:fa:`map-marker`). Tapping on a marker increases its size.
 
-Line and polygon choices are represented by red lines connecting small white circles at each vertex. The inside of polygons is shaded red and can be tapped to select the polygon.
+Line and polygon choices are represented by red lines. The inside of polygons is shaded red and can be tapped to select the polygon.
 
 When a choice is selected, its properties are displayed at the bottom of the screen. Those properties are from:
 
