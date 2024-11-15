@@ -470,6 +470,7 @@ Central comes with a PostgreSQL v14.x database server to store your data. To use
 
       CREATE EXTENSION IF NOT EXISTS CITEXT;
       CREATE EXTENSION IF NOT EXISTS pg_trgm;
+      CREATE EXTENSION IF NOT EXISTS pgrowlocks;
 
 #. Edit ``.env`` with your database server host, database name, and authentication details.
 
