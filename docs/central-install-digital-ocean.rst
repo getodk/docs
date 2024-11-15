@@ -579,6 +579,11 @@ To use S3-compatible storage for all files saved in Central, follow these steps:
 
      $ docker compose exec service node lib/bin/s3.js upload-pending 1
 
+   .. note::
+
+     If you are using a custom database,
+     :ref:`ensure all required extensions are installed <central-install-digital-ocean-custom-db>`.
+
    If the configuration is correct, you should see a success message. If there are issues with the configuration, you should see an error message with hints on what needs to be fixed. To try uploading the same file again, you will need to reset its status to pending:
 
    .. code-block:: bash
