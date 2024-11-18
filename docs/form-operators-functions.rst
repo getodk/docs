@@ -765,13 +765,30 @@ Geography
 
     geopoint, point1, Record a Geopoint
     geopoint, point2, Record a Geopoint
-    calculate, calculated_distance, , distance(${point1}, ${point2})
-    note, display_distance, Calculated distance: ${calculated_distance}
+    calculate, dist, , "distance(${point1}, ${point2})"
+    note, dist_note, Calculated distance: ${dist}
 
   The ``distance`` function takes into account the circumference of the Earth around the Equator but does not take altitude into account. The longer the line segments are, the less accurate the computed distance will be. Additionally, distance calculations closer to the Equator are more accurate than ones close to the poles.
 
   You can use the ``distance`` function for things like basic reverse geocoding and basic geofencing. See `this sample form <https://docs.google.com/spreadsheets/d/1gMOeQdq-DhXz4C1WvgPZ3hsdXDF2mDMYOKTbsRco4Hg>`_ for multiple examples.
 
+.. function:: geofence(geopoint, geoshape)
+
+  Returns ``True`` if the specified point is inside the specified geoshape, ``False`` otherwise.
+
+  .. csv-table:: survey
+    :header: type, name, label, relevant, appearance
+
+    geoshape, shape, Specify a shape to use as a fence
+    geopoint, point, Select a point to see whether it is in the fence,,placement-map
+    note, in_note, Point is in fence, "geofence(${point}, ${shape})"
+    note, out_note, Point is outside fence, "${point} != '' and not(geofence(${point}, ${shape}))"
+
+  You can also find this example `in Google Sheets <https://docs.google.com/spreadsheets/d/1UKLC9ZBT5CdquUqmyMvf2Ofspl5IC2YRPBhV8ruo5bQ>`_
+
+  The ``geofence`` function is helpful for doing things like validating that a data collector is the expected location when filling out a form. If you don't need to define precise boundaries, you can instead use the :func:`distance` function to validate that a data collector is within a certain distance of the center of the target location. 
+  
+  If you need to validate that data collectors are at an indoor location, keep in mind that location capture is generally inaccurate indoors unless there are cellular and wifi signals available. You can address this by asking data collector to capture the location of the building front door before entering or by defining a fence that exceeds the real boundaries of the building.
 
 .. _utility-functions:
 
