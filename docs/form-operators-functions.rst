@@ -725,7 +725,7 @@ Geography
   
   It takes into account the circumference of the Earth around the Equator but does not take altitude into account.
   
-.. function:: distance(nodeset | geoshape | geotrace)
+.. function:: distance(nodeset | geoshape | geotrace | geopoint, geopoint [, geopoint [...]])
 
   Returns the distance, in meters, of either:
   
@@ -758,18 +758,20 @@ Geography
     calculate, calculated_distance, , distance(${trace})
     note, display_distance, Calculated distance: ${calculated_distance}
 
-  - concatenated geopoints
+  - a list of geopoints either specified as strings or references to other fields
 
   .. csv-table:: survey
     :header: type, name, label, calculation
 
     geopoint, point1, Record a Geopoint
     geopoint, point2, Record a Geopoint
-    calculate, concatenated_points, , "concat(${point1},' ; ', ${point2})"
-    calculate, calculated_distance, , distance(${concatenated_points})
+    calculate, calculated_distance, , distance(${point1}, ${point2})
     note, display_distance, Calculated distance: ${calculated_distance}
-  
-  It takes into account the circumference of the Earth around the Equator and does not take altitude into account.
+
+  The ``distance`` function takes into account the circumference of the Earth around the Equator but does not take altitude into account. The longer the line segments are, the less accurate the computed distance will be. Additionally, distance calculations closer to the Equator are more accurate than ones close to the poles.
+
+  You can use the ``distance`` function for things like basic reverse geocoding and basic geofencing. See `this sample form <https://docs.google.com/spreadsheets/d/1gMOeQdq-DhXz4C1WvgPZ3hsdXDF2mDMYOKTbsRco4Hg>`_ for multiple examples.
+
 
 .. _utility-functions:
 
