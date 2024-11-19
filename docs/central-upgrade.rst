@@ -420,7 +420,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
    
              $ sudo ./files/postgres14/upgrade/check-available-space
    
-          *If you don't have enough space,* **stop here** and resume when you have increased the disk space available. You may achieve this by clearing out data you don't need (e.g., logs) or by    increasing the total disk space available (e.g., by :ref:`adding external storage <central-install-digital-ocean-external-storage>`).
+          *If you don't have enough space,* **stop here** and resume when you have increased the disk space available. You may achieve this by clearing out data you don't need (e.g., logs) or by    increasing the total disk space available.
    
        #. **Create a file to prove that you're carefully reading these instructions.** This is required to continue.
    

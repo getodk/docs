@@ -514,7 +514,7 @@ Encoding and decoding strings
 
 .. function:: extract-signed(string, public-key)
   
-  Given a base64-encoded, signed string and public key as inputs, verifies that the first 64 bytes are a valid `Ed25519 <https://en.wikipedia.org/wiki/EdDSA> signature`_. If the signature is valid, returns the message (non-signature) portion of the contents as a UTF-8 string. If the signature is not valid, returns an empty string.
+  Given a base64-encoded, signed string and public key as inputs, verifies that the first 64 bytes are a valid `Ed25519 signature <https://en.wikipedia.org/wiki/EdDSA>`_. If the signature is valid, returns the message (non-signature) portion of the contents as a UTF-8 string. If the signature is not valid, returns an empty string.
 
 .. _math-functions:
   

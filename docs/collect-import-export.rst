@@ -10,7 +10,7 @@ Managing and distributing settings QR codes
 
 .. warning::
 
-  Settings QR codes generally include confidential information and should be kept private. Make sure to follow :doc:`Android security best practices <collect-security>`.
+  Settings QR codes generally include confidential information and should be kept private. Make sure to follow :ref:`Android security best practices <device-recommendations>`.
 
 When using :ref:`Central App Users <central-users-app-overview>`, settings QR codes are used as `passwordless authentication <https://www.cyberark.com/what-is/passwordless-authentication/>`_. When using other servers, settings QR codes may contain plaintext passwords. Settings QR codes should be treated with the same care as passwords would be. We recommend scanning them directly from the Central user interface if possible.
 
