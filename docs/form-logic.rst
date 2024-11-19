@@ -861,7 +861,7 @@ The location summary is also shown in the :ref:`jump menu <jumping>`.
 
 In many cases, the repeat index (2 in the above example) is enough information to give context to data collectors. However, in workflows where data collectors will need to jump between repeat instances, it can help to name those repeat instances based on the entity that they represent. 
 
-For example, using each person's name in the example above will be more helpful than just the index. To do this, add a group directly in the repeat and use one or more identifying questions in the label.
+For example, using each person's name in the example above will be more helpful than just the index. To do this, a group that begins right after the repeat begins and ends right before the repeat ends. Use one or more identifying questions in the label of that group.
 
 .. csv-table:: survey
   :header: type, name, label 
