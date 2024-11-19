@@ -135,22 +135,18 @@ Once the :file:`.csv` or :file:`.zip` completes downloading, you will find one o
 Downloading submissions with Power BI or Excel
 ----------------------------------------------
 
-.. tip::
+Central provides an OData feed that Power BI or Excel can use to easily download submissions into a dashboard for visualization or into a spreadsheet for analysis.
+
+.. seealso::
 
   * See our :doc:`mapping households tutorial <tutorial-mapping-households>` for step-by-step guidance on using Power BI with ODK.
 
   * See `connecting Excel to ODK <https://forum.getodk.org/t/step-by-step-instructions-for-odata-use-with-excel-professional-2016/45118>`_ for instructions on using Excel with ODK.
 
-  Power BI and Excel uses the same underlying technology (Power Query) to connect to Central's OData feed. Try both of the above resources to maximize your learning.
+  Power BI and Excel uses the same underlying technology (Power Query) to connect to Central's OData feed. Try both of the above resources to maximize your learning. You can also follow along with this video:
 
-.. seealso::
-
-Central provides an OData feed that Power BI or Excel can use to easily download submissions into a dashboard for visualization or into a spreadsheet for analysis.
-
-.. tip::
-
-..  youtube:: CDycTI-8TOc
-   :width: 100%
+  ..  youtube:: CDycTI-8TOc
+     :width: 100%
 
 To download submissions with Power BI or Excel, follow these steps:
 
@@ -191,17 +187,17 @@ It can be tricky to access submission media files while using external tools lik
 
 In the OData feed, you will see media files given by their filename. If you want, you can construct a link within your analysis tool that will download any media file with your web browser. You can do this by gluing together pieces of text into a URL. Often this gluing operation is called ``concat`` or ``concatenate``. You'll need to make it look like this:
 
-  .. code-block:: bash
+.. code-block:: bash
 
-    https://DOMAIN/#/dl/projects/PROJECTID/forms/FORMID/submissions/INSTANCEID/attachments/FILENAME
+  https://DOMAIN/#/dl/projects/PROJECTID/forms/FORMID/submissions/INSTANCEID/attachments/FILENAME
 
 Where the uppercase words need to be replaced with the appropriate values. The easiest way to get the ``DOMAIN``, ``PROJECTID``, and ``FORMID`` is to open the Form in your web browser in the Central administration website and just copy the values you see there. The two web addresses are quite similar. Then you have to add the ``INSTANCEID`` and the ``FILENAME``, both of which you can find in the OData data itself.
 
 Here is an example of a completed address:
 
-  .. code-block:: bash
+.. code-block:: bash
 
-    https://my.odk.server/#/dl/projects/1/forms/forest_survey/submissions/uuid:20bcee82-4a22-4381-a6aa-f926fc85fb22/attachments/my.file.mp3
+  https://my.odk.server/#/dl/projects/1/forms/forest_survey/submissions/uuid:20bcee82-4a22-4381-a6aa-f926fc85fb22/attachments/my.file.mp3
 
 This location is a web page that causes a web browser to download a file. It cannot be used directly to embed images or video on any website or application.
 
@@ -237,7 +233,7 @@ Submission Details
 
 As of version 1.2, each submission has its own detail page which provides basic information about the submission, an activity history of action and discussion on that submission, and tools for updating the submission review state and data itself.
 
-   .. image:: /img/central-submissions/details.png
+.. image:: /img/central-submissions/details.png
 
 The title at the top is pulled from the ``instance_name`` if there is one, otherwise it will be the automatically assigned ``instanceID``. We recommend you :ref:`define an instance_name <instance-name>` based on the data in each submission. This is especially important if you plan on using this page a lot, because it makes navigation much easier to have friendly names at the top of the page and in the web browser title and tab.
 
@@ -259,5 +255,5 @@ Any time a user edits a submission, they will see a note when they are returned 
 
 Finally, when edits are submitted, the submission :ref:`review state <central-submissions-review-states>` will automatically be set to :guilabel:`Edited`, and (as of version 1.3) you will see the changes between versions in the Submission Detail activity feed. Please note that Central will show you the differences between versions, but it doesn't know the exact actions you took to cause those changes. Sometimes the differences shown are not the same as the actions taken, but the resulting data will appear exactly as edited.
 
-   .. image:: /img/central-submissions/diff.png
+.. image:: /img/central-submissions/diff.png
 

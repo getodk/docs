@@ -92,9 +92,11 @@ The software is the same either way you choose, but there are important security
   SSL Certificates (HTTPS),✅,✅,The ODK server requires HTTPS and uses Let's Encrypt certs with TLS 1.3 and an `A+ rating from SSL Labs <https://www.ssllabs.com/ssltest/analyze.html?d=production.getodk.cloud>`_.
   Uptime Management,✅,❓,"ODK Cloud has had `99.9999% uptime <https://status.getodk.org/>`_ since April 2023."
 
+
+.. _device-recommendations:
+
 Device recommendations
 ----------------------
-.. _device-recommendations:
 
 It is important that you secure devices running Collect. We strongly recommend:
 
@@ -106,9 +108,10 @@ It is important that you secure devices running Collect. We strongly recommend:
 
 Collect's :ref:`protected settings <admin-settings>` can set and hide options that may further increase your data security.
 
+.. _security-audits:
+
 Security audits
 ---------------
-.. _security-audits:
 
 In addition to internal security reviews of every change to ODK, we commission independent white-box penetration tests, source code audits, and reviews of our architecture and processes. After mitigating issues, we publish the results.
 

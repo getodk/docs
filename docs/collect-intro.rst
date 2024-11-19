@@ -24,7 +24,7 @@ Collect supports location, audio, images, video, barcodes, signatures, multiple-
 Supported devices
 -------------------
 
-You can use Collect with a wide range of Android devices and the only requirement is that they must run Android 5 or above. That said, we generally recommend using Android 10 or higher for the best :doc:`security <collect-security>` and performance.
+You can use Collect with a wide range of Android devices and the only requirement is that they must run Android 5 or above. That said, we generally recommend using Android 10 or higher for the best :ref:`security <device-recommendations>` and performance.
 
 The device specification that will make the biggest difference for Collect performance is RAM. For forms with a lot of complex :doc:`logic <form-logic>`, many :ref:`repeat instances <repeats>`, or 60k+ elements in a choice list, Entity List or attached data file, we recommend aiming for devices with at least 4 GB of RAM. Devices with less RAM will likely work even for complex forms but may feel slow and even occasionally crash.
 

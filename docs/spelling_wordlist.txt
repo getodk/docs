@@ -168,6 +168,8 @@ Gejibo
 geo
 geocoding
 geodata
+geofence
+geofencing
 geojson
 GeoJSON
 Geolocation
