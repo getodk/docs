@@ -768,7 +768,7 @@ Geography
     calculate, dist, , "distance(${point1}, ${point2})"
     note, dist_note, Calculated distance: ${dist}
 
-  The ``distance`` function takes into account the circumference of the Earth around the Equator but does not take altitude into account. The longer the line segments are, the less accurate the computed distance will be. Additionally, distance calculations closer to the Equator are more accurate than ones close to the poles.
+  The ``distance`` function takes into account the circumference of the Earth around the equator but does not take altitude into account. The longer the line segments are, the less accurate the computed distance will be. Additionally, distance calculations closer to the equator are more accurate than ones close to the poles.
 
   You can use the ``distance`` function for things like basic reverse geocoding and basic geofencing. See `this sample form <https://docs.google.com/spreadsheets/d/1gMOeQdq-DhXz4C1WvgPZ3hsdXDF2mDMYOKTbsRco4Hg>`_ for multiple examples.
 
@@ -781,14 +781,14 @@ Geography
 
     geoshape, shape, Specify a shape to use as a fence
     geopoint, point, Select a point to see whether it is in the fence,,placement-map
-    note, in_note, Point is in fence, "geofence(${point}, ${shape})"
-    note, out_note, Point is outside fence, "${point} != '' and not(geofence(${point}, ${shape}))"
+    note, in_note, Point is inside the fence, "geofence(${point}, ${shape})"
+    note, out_note, Point is outside the fence, "${point} != '' and not(geofence(${point}, ${shape}))"
 
   You can also find this example `in Google Sheets <https://docs.google.com/spreadsheets/d/1UKLC9ZBT5CdquUqmyMvf2Ofspl5IC2YRPBhV8ruo5bQ>`_
 
-  The ``geofence`` function is helpful for doing things like validating that a data collector is the expected location when filling out a form. If you don't need to define precise boundaries, you can instead use the :func:`distance` function to validate that a data collector is within a certain distance of the center of the target location. 
+  The ``geofence`` function is helpful for things like validating that a data collector is the expected location when filling out a form. If you don't need to define precise boundaries, you can instead use the :func:`distance` function to validate that a data collector is within a certain distance of the center of the target location. 
   
-  If you need to validate that data collectors are at an indoor location, keep in mind that location capture is generally inaccurate indoors unless there are cellular and wifi signals available. You can address this by asking data collector to capture the location of the building front door before entering or by defining a fence that exceeds the real boundaries of the building.
+  If you need to validate that data collectors are at an indoor location, keep in mind that location capture is generally inaccurate indoors unless there are cellular and WiFi signals available. You can address this by asking data collector to capture the location of the building front door before entering or by defining a fence that is, for example, 5 to 10 meters outside the real boundaries of the building.
 
 .. _utility-functions:
 
