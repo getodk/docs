@@ -5,7 +5,7 @@ Security
 
     This document assumes you are using `ODK Cloud <https://getodk.org/#pricing>`_ or an up-to-date :doc:`ODK Central <central-intro>` server. These security considerations do not apply to any other ODK-based systems.
 
-Whether you are monitoring elections, documenting crimes, or tracking vaccines, ODK offers industry-leading security to protect the sensitive data you collect. Some of our security features are automatic (e.g., vulnerability scanning), while others (e.g., end-to-end encryption) are configurable so you can strike the balance you need.
+Whether you are surveying households, distributing vaccines, or monitoring elections, ODK offers industry-leading security to protect the sensitive data you collect. Some of our security features are automatic (e.g., vulnerability scanning), while others (e.g., end-to-end encryption) are configurable so you can strike the balance you need.
 
 When it comes to security, it's important to verify claims. ODK's code is 100% open-source, so you can confirm that what we say is true. And if you aren't a security expert, we offer :ref:`hosting considerations <hosting-considerations>`, :ref:`device recommendations <device-recommendations>`, and :ref:`security audit reports <security-audits>` to guide your decision-making.
 
@@ -87,7 +87,7 @@ The software is the same either way you choose, but there are important security
   Penetration Testing,✅,❓,"ODK Cloud has independent :ref:`security audits and penetration tests <security-audits>` that include testing OWASP Top 10 (e.g., broken access control, cryptographic failures, injection attacks, insecure design, misconfiguration)."
   Physical Security,✅,❓,"ODK Cloud data centers have 24-hour security, video surveillance, limited network access, etc."
   Roles & Permissions,✅,✅,"Web Users (e.g., project managers) can only be created with an email address and password resets are only possible through that email. App Users (e.g., data collectors) authenticate with a QR code and are fully isolated from all management functions. See :doc:`Central Users <central-users>` for more."
-  Single Sign-On (SSO) & Multi-Factor Auth (MFA),✅,✅,The ODK server offers :ref:`SSO via the OIDC protocol <central-install-digital-ocean-sso>`. MFA can be enabled at the identity provider.
+  Single Sign-On (SSO) & Multi-Factor Auth (MFA),✅,✅,The ODK server offers :ref:`SSO via the OIDC protocol <central-install-digital-ocean-sso>`. MFA can be enabled at the identity provider. ODK Cloud adds implementation support and automation.
   SQL Injection (SQLi),✅,✅,The ODK server uses Slonik which is designed to prevent vulnerable queries. ODK's developers are familiar with SQLi best practices and consider it in code review.
   SSL Certificates (HTTPS),✅,✅,The ODK server requires HTTPS and uses Let's Encrypt certs with TLS 1.3 and an `A+ rating from SSL Labs <https://www.ssllabs.com/ssltest/analyze.html?d=production.getodk.cloud>`_.
   Uptime Management,✅,❓,"ODK Cloud has had `99.9999% uptime <https://status.getodk.org/>`_ since April 2023."
