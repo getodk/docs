@@ -1720,6 +1720,9 @@ Image widgets
 .. tip::
   Image files can be very large. We recommend always including :ref:`a maximum image size in form design <scaling-down-images>`. Also, consider making test submissions to your server with the Internet conditions you expect when gathering data to make sure that you can send files of the size you expect.
 
+.. warning::
+  Sensitive metadata, such as GPS location, is typically no longer included in images selected via :guilabel:`Choose Image` on Android 11 and later.
+
 .. _default-image-widget:
 
 Default image widget
