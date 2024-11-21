@@ -1,3 +1,5 @@
+:og:image: https://docs.getodk.org/_static/img/security.png
+
 Security
 ========
 
@@ -7,7 +9,7 @@ Security
 
 Whether you are surveying households, distributing vaccines, or monitoring elections, ODK offers industry-leading security to protect the sensitive data you collect. Some of our security features are automatic (e.g., vulnerability scanning), while others (e.g., end-to-end encryption) are configurable so you can strike the balance you need.
 
-When it comes to security, it's important to verify claims. ODK's code is 100% open-source, so you can confirm that what we say is true. And if you aren't a security expert, we offer :ref:`hosting considerations <hosting-considerations>`, :ref:`device recommendations <device-recommendations>`, and :ref:`security audit reports <security-audits>` to guide your decision-making.
+When it comes to security, it's important to verify claims. ODK's code is 100% open-source, so you can confirm that what we say is true. And if you aren't a security expert, we offer :ref:`hosting considerations <hosting-considerations>`, :ref:`device recommendations <device-recommendations>`, and :ref:`independent audits <independent-audits>` to guide your decision-making.
 
 Threat model
 ------------
@@ -54,10 +56,10 @@ The primary threats we consider:
 - Data collectors bypassing settings or app functionality to create fake or modified data. There is an admin password that can be set to disable access to many app settings but this depends on project managers making use of it. Data is currently stored in shared storage meaning that data collectors could directly modify submission data.
 - Data collectors getting access to full datasets on the server. To mitigate this, we use a completely different and isolated account type for data collectors.
 
+.. _hosting-considerations:
 
 Hosting considerations
 ----------------------
-.. _hosting-considerations:
 
 There are two ways to get access to an ODK install. You can pay for official managed hosting on `ODK Cloud <https://getodk.org#pricing>`_, or if you are technical, you can self-host ODK for free on your own infrastructure.
 
@@ -92,7 +94,6 @@ The software is the same either way you choose, but there are important security
   SSL Certificates (HTTPS),✅,✅,The ODK server requires HTTPS and uses Let's Encrypt certs with TLS 1.3 and an `A+ rating from SSL Labs <https://www.ssllabs.com/ssltest/analyze.html?d=production.getodk.cloud>`_.
   Uptime Management,✅,❓,"ODK Cloud has had `99.9999% uptime <https://status.getodk.org/>`_ since April 2023."
 
-
 .. _device-recommendations:
 
 Device recommendations
@@ -108,14 +109,12 @@ It is important that you secure devices running Collect. We strongly recommend:
 
 Collect's :ref:`protected settings <admin-settings>` can set and hide options that may further increase your data security.
 
-.. _security-audits:
+.. _independent-audits:
 
-Security audits
----------------
+Independent audits
+-------------------
 
-In addition to internal security reviews of every change to ODK, we commission independent white-box penetration tests, source code audits, and reviews of our architecture and processes. After mitigating issues, we publish the results.
-
-.. Below is our latest independent report. - Pen Test and Security Review (`Cure53 <https://cure53.de>`_ , July 2024)
+We work with independent security firms to conduct white-box penetration tests and source code reviews of ODK Cloud. Email security@getodk.org to get the latest audit report.
 
 Vulnerability disclosure
 ------------------------
