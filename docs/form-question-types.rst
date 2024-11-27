@@ -1121,7 +1121,7 @@ appearance
 .. note::
     The only appearance that can combine with selection from map is `quick`.
 
-If the choices that you want users to select from are locations, you can display them on a map. Each choice must have a ``geometry`` property that specifies the choice's geometry. You can include points, lines, polygons, or a mix.
+If the choices that you want users to select from are locations, you can display them on a map. Each choice must have a ``geometry`` property that specifies the choice's geometry (see below for details). A choice list can include a mix of points, lines and shapes.
 
 .. image:: /img/form-question-types/select-from-map-point.*
   :alt: Single select from map as displayed in the ODK Collect app on an Android phone. The question text is "Select a point" and it is displayed in a small top bar. Below that is a map with several markers. One of the markers is larger. At the bottom of the screen, there is information about the selected marker. Its label is "Restaurant Délicia". Several other properties are shown including `timestamp`, `version` and `amenity`. Below the properties, there is a rounded button with a save icon and the text "Select."

@@ -890,7 +890,7 @@ The labels are also shown in the jump menu.
 Filtering options in select questions
 ===============================================
 
-To limit the options in a select question based on the answer to a previous question, specify an expression in the ``choice_filter`` column of the **survey** sheet. This expression will refer to one or more column in the **choices** sheet that the dataset should be filtered by.
+To limit the options in a select question based on the answer to a previous question, specify an expression in the ``choice_filter`` column of the **survey** sheet. This choice filter expression must refer to one or more column in the **choices** sheet that the dataset should be filtered by.
 
 For example, you might ask your enumerators to select a state first, and then only display cities within that state. This is referred to as a "cascading select" and can be extended to any depth. The example below has two levels: job category and job title.
 
