@@ -198,7 +198,13 @@ Get started
 How do I use forms to create or update Entities?
 ------------------------------------------------
 
-Add an ``entities`` sheet to your form. This sheet is used to define how data from this form's submissions should be applied to Entity Lists. Currently, a single submission can only affect a single Entity in a fixed Entity List. To specify which list to create or update an Entity in, use the ``list_name`` column. If you're creating Entities, you'll also need to specify an expression to label each Entity in the ``label`` column (it's optional if you're doing an update). This is very similar to :ref:`the instance_name column <instance-name>` for naming filled forms.
+Add an ``entities`` sheet to your form. This sheet is used to define how data from this form's submissions should be applied to Entity Lists.
+
+Currently, a single submission can only affect a single Entity in a fixed Entity List. To specify which list to create or update an Entity in, use the ``list_name`` column.
+
+If you're creating Entities, you'll also need to specify an expression to label each Entity in the ``label`` column. This is very similar to :ref:`the instance_name column <instance-name>` for naming filled forms.
+
+If you're updating Entities, you must add an ``entity_id`` column. In that column, put a reference to a form field that holds the unique id of the Entity you want to update. For example, if you have a select question named ``tree`` that lets the user select a tree from the Entity List, you would put ``${tree}`` in the ``entity_id`` column. You may also specify an expression to label each Entity in the ``label`` column if you would like the label to change, for example to show an updated status.
 
 Next, specify which form fields should be saved to Entity properties. This is done on the ``survey`` sheet by putting the desired property name in the ``save_to`` column for each form field that you want to save.
 
