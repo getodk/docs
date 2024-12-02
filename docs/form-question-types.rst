@@ -1102,9 +1102,9 @@ If adding images, note that the images are referenced in the choices sheet, and 
 Select one from map widget
 """""""""""""""""""""""""""
 
-.. versionadded:: 2022.2.0
+.. versionadded:: 2023.1.0
 
-  `ODK Collect v2022.2.0 <https://github.com/getodk/collect/releases/tag/v2022.2.0>`_
+  `ODK Collect v2023.1.0 <https://github.com/getodk/collect/releases/tag/v2023.1.0>`_
 
 type
  ``select_one {list_name}``
@@ -1114,14 +1114,12 @@ appearance
 .. warning::
   The `map` appearance on selects is not yet available in web forms (Enketo).
 
-  Polygons and lines are only supported in Collect v2023.1.0 or later.
-
   The different :ref:`basemap sources <mapping-settings>` currently have different performance. If Collect feels slow when creating the map or when selecting a choice, please describe what you are experiencing `on the forum <https://forum.getodk.org/c/support/6>`_. If you have many choices to include on a map, try a provider other than Google or Mapbox. You can also use a :ref:`choice filter <cascading-selects>` to reduce the number of choices that get mapped.
 
 .. note::
     The only appearance that can combine with selection from map is `quick`.
 
-If the choices that you want users to select from are locations, you can display them on a map. Each choice must have a ``geometry`` property that specifies the choice's geometry. You can include points, lines, polygons, or a mix.
+If the choices that you want users to select from are locations, you can display them on a map. Each choice must have a ``geometry`` property that specifies the choice's geometry (see :ref:`Specifying geometry for choices <specify-select-geometry>` for details). A choice list can include a mix of points, lines and shapes.
 
 .. image:: /img/form-question-types/select-from-map-point.*
   :alt: Single select from map as displayed in the ODK Collect app on an Android phone. The question text is "Select a point" and it is displayed in a small top bar. Below that is a map with several markers. One of the markers is larger. At the bottom of the screen, there is information about the selected marker. Its label is "Restaurant Délicia". Several other properties are shown including `timestamp`, `version` and `amenity`. Below the properties, there is a rounded button with a save icon and the text "Select."
@@ -1130,6 +1128,8 @@ If the choices that you want users to select from are locations, you can display
 .. image:: /img/form-question-types/select-from-map-polygon.*
   :alt: Single select from map as displayed in the ODK Collect app on an Android phone. The question text is "Select a building to inspect" and it is displayed in a small top bar. Below that is a map with several buildings outlined in red with red shading. At the bottom of the screen, there is information about the selected building. Its label is "Elephant Care Center". Below the properties, there is a rounded button with a save icon and the text "Select."
   :class: device-screen-vertical
+
+.. _specify-select-geometry:
 
 Specifying geometry for choices
 '''''''''''''''''''''''''''''''''''
