@@ -8,27 +8,27 @@
   Dia
 
 ************************
-Form datasets
+Form Datasets
 ************************
 
 Workflows sometimes require access to historical data, standard data tables, lists of people, or other information. You can include that data directly in the form, attach it as a CSV file, or define it in an Entity List which can be shared between forms. All of these sources of data can be used to build select questions or to look up specific values.
 
 Internal datasets are defined in the **choices** sheet of an XLSForm and are typically used as choices for :ref:`selects <select-widgets>`. You can also define a dataset in the **choices** sheet to :ref:`look up values <referencing-values-in-datasets>` based on user input. Learn how to define internal datasets in the section on :ref:`selects <select-widgets>`.
 
-External datasets can either be files that get attached to the form or :doc:`Entity Lists <central-entities>`. Entity Lists can be thought of as CSVs that are managed by ODK Central so that data collected by one form submission can be automatically accessible in other forms in the same project. The also can be shared between forms and can be updated by form submissions.
+External datasets can either be files that get attached to the form or :doc:`Entity Lists <central-entities>`. Entity Lists can be thought of as CSVs that are managed by ODK Central so that data collected by one form submission can be automatically accessible in other forms in the same project.
 
 External datasets, whether they are attached files or Entity Lists, are useful when:
 
 * data comes from another system. Using external datasets generally requires fewer steps than adding the data to a form definition.
 * data needs to change over time. External datasets can be updated without modifying the form definition.
-* data is reused between forms. It may be easier to attach the same data file to multiple forms instead of copying the data into all the form definitions. Entity Lists can be shared between forms.
-* the same forms are used in different contexts. For example, the exact same form definition could be used in multiple countries with different data files or Entity Lists listing regions, local products, etc.
+* data is reused between forms. It may be easier to attach the same data file to multiple forms instead of copying the data into all the form definitions. Entity Lists are often even more convenient because they be shared between forms and automatically kept up-to-date.
+* the same forms are used in different contexts. For example, the exact same form definition could be used in multiple countries with different data files or Entity Lists representing districts, species, or products.
 
 The more dynamic the data is, the more likely you are to benefit from Entity Lists over attached files.
 
 .. note::
 
-  Most mobile devices released in 2019 or later can handle lists of 50,000 or more elements without slowing down. If you experience Collect slowing down, please share the size of the dataset, the device you are using, and any expressions that reference the dataset on `the community forum <https://forum.getodk.org/c/support/6>`_ or to support@getodk.org.
+  Most mobile devices released in 2019 or later can handle lists of 50,000 or more elements without slowing down. If you experience ODK Collect slowing down, please share the size of the dataset, the device you are using, and any expressions that reference the dataset on `the community forum <https://forum.getodk.org/c/support/6>`_ or to support@getodk.org.
 
 .. _selects-from-csv:
 
@@ -37,7 +37,7 @@ Building selects from CSV files
 
 CSV files can be used as choice lists for select questions using ``select_one_from_file`` or ``select_multiple_from_file``. CSV files used this way must have ``name`` and ``label`` columns or you use the ``parameters`` column to :ref:`customize the columns used <customizing-label-and-value>`. For each row in the dataset, the text in the value column (defaults to ``name``) will be used as the value saved when that choice is selected and the text in the label column (defaults to ``label``) will be used to display the choice.
 
-.. note::
+.. warning::
 
   For select multiples, ``name`` must not contain spaces.
 
@@ -76,7 +76,9 @@ Attached CSV files may also have any number of additional columns for use in :re
 Building selects from Entity Lists
 -----------------------------------
 
-Entity Lists can be used as choice lists for select questions using ``select_one_from_file`` or ``select_multiple_from_file``. All Entities must have a ``name`` and ``label`` which are used by default as the value and label for choices. If you would like to use other properties as values or labels, you can specify those in the :ref:`parameters column <customizing-label-and-value>` of your XLSForm. Additional properties can be used in choice filters or other expressions, just like the columns in a CSV.
+Entity Lists can be used as choice lists for select questions using ``select_one_from_file`` or ``select_multiple_from_file``. All Entities have a ``name`` and ``label`` which are used by default as the value and label for choices.
+
+If you would like to use other properties as values or labels, you can specify those in the :ref:`parameters column <customizing-label-and-value>` of your XLSForm. Additional properties can be used in choice filters or other expressions, just like the columns in a CSV.
 
 .. _selects-from-geojson:
 
@@ -126,7 +128,7 @@ All properties are displayed by :ref:`select from map <select-from-map>` questio
 
 Given the GeoJSON file and the form definition above, if the user selected "HR Giger Museum", the value of ``${museum}`` would be ``"fs87b"``. 
 
-A feature's ``geometry`` can be accessed as ``geometry`` and is provided in :ref:`the ODK format <location-widgets>`. For example, the expression ``instance('museums')/root/item[id=${museum}]/geometry`` evaluates to ``46.5841618 7.0801379 0 0`` which is a point in the ODK format.
+A feature's geospatial representation can be accessed as ``geometry`` and is provided in :ref:`the ODK format <location-widgets>`. For example, the expression ``instance('museums')/root/item[id=${museum}]/geometry`` evaluates to ``46.5841618 7.0801379 0 0`` which is a point in the ODK format.
 
 .. _selects-from-xml:
 
@@ -179,8 +181,8 @@ In the example below, a user is first prompted to select a participant from the 
   da0ee575-d…, Xue (Ifedore) - 2341745, c2139aae-5…, 1, 2024-5-1, 2341745
   c51c32ac-1…, Dia (Ifedore) - 9868545, c2139aae-5…, 3, 2024-4-12, 9868545
 
-The components of lookup expressions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Lookup expressions
+~~~~~~~~~~~~~~~~~~~
 
 .. image:: /img/form-datasets/lookup-expression.png
 
@@ -196,7 +198,7 @@ You then generally need an expression in square brackets to filter down the list
 
 .. note::
 
-  Most filter expressions you will write will use comparisons with ``=``. Once side of the ``=`` will be a property or column from your list, written without `${}`, and the other side will be a field from your form, written with `${}`. If you have more complex filtering needs, you can use any expression that evaluates to ``True`` or ``False``. These filter expressions are exactly the same kind of expression used to define a :ref:`choice filter <cascading-selects>`. 
+  Most filter expressions you will write will use comparisons with ``=`` as in ``name = ${participant}``. Typically, the left side of the ``=`` will be a property or column from your list, written without `${}`, and the right side will be a field from your form, written with `${}`. If you have more complex filtering needs, you can use any expression that evaluates to ``True`` or ``False``. These filter expressions are exactly the same kind of expression used to define a :ref:`choice filter <cascading-selects>`.
 
 Once you have filtered down the list to the item or items that you care about, you generally will specify which property of the item(s) you want to look up. For example, if your dataset has a ``phone`` property and you want to look the phone number for the selected participant, your full expression would look like ``instance("people")/root/item[name = ${participant}]/phone``.
 
