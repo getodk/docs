@@ -784,7 +784,7 @@ Geography
     note, in_note, Point is inside the fence, "geofence(${point}, ${shape})"
     note, out_note, Point is outside the fence, "${point} != '' and not(geofence(${point}, ${shape}))"
 
-  See this `sample geofence form <https://docs.google.com/spreadsheets/d/1UKLC9ZBT5CdquUqmyMvf2Ofspl5IC2YRPBhV8ruo5bQ>`_ for an example.
+  You can also find the above example in this `Google Sheet <https://docs.google.com/spreadsheets/d/1UKLC9ZBT5CdquUqmyMvf2Ofspl5IC2YRPBhV8ruo5bQ>`_.
 
   The ``geofence`` function is helpful for things like validating that a data collector is the expected location when filling out a form. If you don't need to define precise boundaries, you can instead use the :func:`distance` function to validate that a data collector is within a certain distance of the center of the target location. 
   
