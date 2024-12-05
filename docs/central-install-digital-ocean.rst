@@ -112,7 +112,7 @@ If you are using old versions, follow the instructions to install `Docker Engine
 
    .. code-block:: bash
 
-     $ umask 022; git clone https://github.com/getodk/central
+     $ umask 022; git clone --shallow-submodules --recurse-submodules https://github.com/getodk/central
 
    and press **Enter**. It should think for some time and download many things.
 
@@ -121,12 +121,6 @@ If you are using old versions, follow the instructions to install `Docker Engine
    .. code-block:: bash
 
      $ cd central
-
-#. Get the latest client and server:
-
-   .. code-block:: bash
-
-     $ git submodule update -i
 
 #. Update settings. First, copy the settings template file so you can edit it:
 
