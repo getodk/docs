@@ -202,6 +202,10 @@ You then generally need an expression in square brackets to filter down the list
 
 Once you have filtered down the list to the item or items that you care about, you generally will specify which property of the item(s) you want to look up. For example, if your dataset has a ``phone`` property and you want to look the phone number for the selected participant, your full expression would look like ``instance("people")/root/item[name = ${participant}]/phone``.
 
+.. warning::
+
+  If your filter expression matches multiple items and you try to look up a single value, you will get a ``type mismatch`` crash in ODK Collect. :ref:`Learn how to fix this <troubleshoot-field-repeated>`.
+
 See the image below for a visual representation of the form example presented at the start of this section. You can see that there are two separate datasets with names ``places`` and ``people``. Each dataset has a root and multiple items connected to that root.
 
 Below the representation of the two datasets, there is the expression ``instance("places")/root/item[enumerator='6234']/label``. When that expression is evaluated, first the ``places`` dataset is selected. Then, for each **item** in the dataset, the ``enumerator`` property is compared against the value ``'6234'``. There is exactly one match: the item with name starting with ``c2139``. The label for that item is ``Ifedore`` so that is the result of evaluating the whole expression.
