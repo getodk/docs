@@ -102,6 +102,9 @@ For example, let's say that you have trees that you want to evaluate over time. 
 Limitations
 ===========
 
+.. seealso::
+  :ref:`Entities roadmap and limitations <central-entities-roadmap>`
+
 I filled out a registration form and don't immediately see my Entity in follow-up forms, why?
 ---------------------------------------------------------------------------------------------
 
@@ -202,15 +205,16 @@ Add an ``entities`` sheet to your form. This sheet is used to define how data fr
 
 Currently, a single submission can only affect a single Entity in a fixed Entity List. To specify which list to create or update an Entity in, use the ``list_name`` column.
 
-If you're creating Entities, you'll also need to specify an expression to label each Entity in the ``label`` column. This is very similar to :ref:`the instance_name column <instance-name>` for naming filled forms.
+If you're creating Entities, you'll also need to specify an expression that defines the label of each Entity in the ``label`` column. This is very similar to :ref:`the instance_name column <instance-name>` for naming filled forms.
 
-If you're updating Entities, you must add an ``entity_id`` column. In that column, put a reference to a form field that holds the unique id of the Entity you want to update. For example, if you have a select question named ``tree`` that lets the user select a tree from the Entity List, you would put ``${tree}`` in the ``entity_id`` column. You may also specify an expression to label each Entity in the ``label`` column if you would like the label to change, for example to show an updated status.
+If you're updating Entities, you must add an ``entity_id`` column. In that column, put a reference to a form field that holds the unique id of the Entity you want to update. For example, if you have a select question named ``tree`` that lets the user select a tree from the Entity List, you would put ``${tree}`` in the ``entity_id`` column. You may also specify an expression that defines the label for each Entity in the ``label`` column if you would like the label to change, for example to show an updated status.
 
 Next, specify which form fields should be saved to Entity properties. This is done on the ``survey`` sheet by putting the desired property name in the ``save_to`` column for each form field that you want to save.
 
 .. seealso::
     * :doc:`Community reporting tutorial <tutorial-community-reporting>`
-    * :ref:`Central Entities documentation <central-entities-follow-up-forms>`
+    * :ref:`Build a form that creates Entities <central-entities-registration-forms>`
+    * :ref:`Build a form that updates Entities <central-entities-build-update>`
 
 How do I access Entities from my forms?
 ---------------------------------------
@@ -228,7 +232,7 @@ You can access a specific Entity's properties using a :ref:`lookup expression <r
 .. seealso::
     * :ref:`Looking up values in a list <referencing-values-in-datasets>`
     * :doc:`Community reporting tutorial <tutorial-community-reporting>`
-    * :ref:`Central Entities documentation <central-entities-follow-up-forms>`
+    * :ref:`Build a form that uses Entities <central-entities-follow-up-forms>`
 
 What form fields should I save to my Entities as properties?
 ------------------------------------------------------------

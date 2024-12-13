@@ -5,6 +5,11 @@ Managing Entities in Central
 
 **Entities** in ODK let you share information between Forms so you can collect longitudinal data, manage cases over time, and support other complex workflows.
 
+.. seealso::
+
+* :doc:`Entities intro <entities-intro>`: similar information organized as a list of questions and answers
+* :doc:`Community reporting tutorial <tutorial-community-reporting>`
+
 Without Entities, you can attach existing data during the Form creation process, often through ``choices`` sheets or ``.csv`` files. Once this data is loaded into the Form, you can use it as the source for selection choices, to prepopulate data fields in the Form, or validate new input. A list of districts, for example, can be used as choices for selection, and information about each district can then be shown to the user or checked against. If you are new to these techniques, you can learn more about them on the :doc:`Form Datasets <form-datasets>` page.
 
 This is wonderful if the data you want to use is already known when you are publishing your Form, and if it doesn't change over the course of your project. In many cases, however, the data being collected today for the project *is* the data you need tomorrow for the same project. Think about seeing a patient for the first and then second time, or registering and then revisiting a survey site for a follow-up. These kinds of workflows are called :ref:`multiple encounter <multiple-encounters-with-the-same-entity>` or longitudinal workflows.
@@ -76,6 +81,8 @@ We recommend watching the video below once or twice to get an overview of how En
 .. note::
 
    In Central versions prior to v2023.4, Entity Lists were called Datasets. The video below was recorded with Central v2022.3 so many small improvements have been made since.
+
+   You may also want to see the :doc:`community reporting tutorial <tutorial-community-reporting>` for another Entity-based workflow.
 
 ..  youtube:: hbff-oaI8yg
    :width: 100%
