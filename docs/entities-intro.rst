@@ -137,7 +137,7 @@ Not yet, but this is something we will eventually support.
 
 If you find yourself wanting to create or update multiple Entities of the same type in a repeat, your best option currently is to use multiple submissions of the same form instead of a repeat. You can capture base information in one form and then use a separate form to create each Entity that you currently represent by repeat instances.
 
-If there is a parent-child relationship between the different Entities, you can save the parent's ID to each child. If you are working in an environment with Internet connectivity, you can refresh the forms to see your created parent Entities in your child Entity creation forms. If you are working in a disconnected environment, you can have data collectors copy the ID from the parent form to the child forms.
+If there is a parent-child relationship between the different Entities, you can save the parent's ID to each child. If your versions of Central and Collect support offline Entities, parent Entities will be available to other forms the moment the registration form is finalized. This means the registration form for the child Entities can include a question to select the parent Entity which will establish the link between the two.
 
 Similarly, if you'd like to establish relationships between multiple Entities of different types, you can have a registration form for each type and include a field to represent a link to another Entity.
 
