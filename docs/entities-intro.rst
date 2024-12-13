@@ -108,11 +108,9 @@ Limitations
 I filled out a registration form and don't immediately see my Entity in follow-up forms, why?
 ---------------------------------------------------------------------------------------------
 
-Currently, in order for a submission to create or update an Entity, that submission has to be processed by your server. That means that if you create a new Entity or update an existing one by filling out a form, you won't see that change reflected in follow-up forms until you download the latest update to your Entity List from your server.
+If you are using a version of ODK Central older than 2024.3.0, Enketo web forms, or a version of Collect older than 2024.3.0, Entities are not created or updated offline. This means that in order for a submission to create or update an Entity, that submission has to be processed by your server. If you create a new Entity or update an existing one by filling out a form, you won't see that change reflected in follow-up forms until you download the latest update to your Entity List from your server.
 
 If you usually have Internet connectivity, this is unlikely to be very important. Similarly, if your registration and follow-up periods happen at very different times, this limitation is not a problem. But for workflows in which follow-up needs to happen immediately after registration or multiple follow-ups are needed while offline, this limitation is significant. 
-
-Offline Entity support is expected in late 2024, read more `on the forum <https://forum.getodk.org/t/collect-coming-soon-offline-entities/46505>`_.
 
 I need to assign specific Entities to specific data collectors, how can I represent this?
 -----------------------------------------------------------------------------------------

@@ -50,6 +50,9 @@ If you would prefer a more personalized introduction, request a demo at https://
 Roadmap and limitations
 -----------------------
 
+.. seealso::
+  :ref:`Details about limitations <entities-intro-limitations>`
+
 Entities are a big new concept that open up a lot of new possibilities. While we think many workflows can benefit from Entities today, they have some limitations that you should be aware of.
 
 What's available now:
@@ -62,11 +65,9 @@ What's available now:
 
 Important limitations:
 
-- Entity create and update requires Internet access
-- Entity delete is only available via API
+- A form submission can only create or update a single Entity
 - Client performance (ODK Collect or Enketo web forms) suffers when managing more than 50,000 Entities
 - All devices will always download all Entities which may be a privacy concern
-- The Form specification and API may change
 - Currently, Entity properties may only be strings. Submission values saved to an Entity are converted to strings.
 
 We expect all of these limitations to be addressed over time. The roadmap at `getodk.org/roadmap <https://getodk.org/roadmap>`_ has what we're working on now and what's coming next.
