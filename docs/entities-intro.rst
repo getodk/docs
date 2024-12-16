@@ -246,9 +246,9 @@ Currently, once a property is added to an Entity List, it can't be removed. You 
 What are Entity conflicts and what can I do to avoid them?
 ----------------------------------------------------------
 
-A conflict happens when two form submissions that are received by the server have updates to the same Entity with the same version. If the two submissions specify different, overlapping updates to one or more properties, the server will provide an interface for resolving it. All conflicts have to be explicitly dismissed.
+A conflict happens when two form Submissions both representing updates to the same Entity with the same version are received by the server. If the two Submissions specify different, overlapping updates to one or more properties, Central will provide an interface for understanding and resolving the conflict. All conflicts have to be explicitly dismissed.
 
-One of our goals with Entities is to let field staff make as much progress as possible without interruption so the server applies conflicting updates with the latest one taking precedence. The conflict is shown on the server and office staff can look at the submitted data and work with field staff to resolve the issue.
+One of our goals with Entities is to let field staff make as much progress as possible without interruption. For this reason, Central uses a last-write-wins strategy and applies all Entity updates it receives. Conflicts are shown from Central so that project administrators can look at the submitted data and work with field staff to resolve the issue.
 
 When possible, we recommend using Entity properties and a :ref:`choice_filter <cascading-selects>` to limit the number of Entities that a specific field worker sees. This will greatly reduce the chance of conflicts.
 
