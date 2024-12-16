@@ -5,7 +5,7 @@
 Troubleshooting Collect
 ========================
 
-If you experience unexpected behavior in Collect, we strongly encourage you to post to `the forum <https://forum.getodk.org/>`_. Not only will this likely help you address your short-term need, it may also help the development team make improvements to the application that benefit all users. We consider reporting issues a very important contribution to the project, thank you!
+If you experience unexpected behavior in Collect, we strongly encourage you to post to `the forum <https://forum.getodk.org/c/support/6>`_. Not only will this likely help you address your short-term need, it may also help the development team make improvements to the application that benefit all users. We consider reporting issues a very important contribution to the project, thank you!
 
 Here are some known issues and how to address them.
 
@@ -22,7 +22,7 @@ Sometimes this error is related to a temporary state and can be resolved by rest
 
 If that doesn't help, consider simplifying the form. For example, could you remove some choices from your choice list or attached document? Could you split a form with a lot of logic into two separate forms filled in at different times? Could you limit the number of repeats created in a single submission?
 
-We also encourage you to share your form and device information `on the forum <https://forum.getodk.org/>`_.
+We also encourage you to share your form and device information `on the forum <https://forum.getodk.org/c/support/6>`_.
 
 .. _troubleshoot-field-repeated:
 
@@ -33,7 +33,7 @@ This error is usually followed by a list of the repeated fields expressed as :re
 
 .. code-block:: xml
 
-  /data/repeat[1]/description[1];/data/repeat[2]/description[1]
+  /data/place[1]/description[1];/data/place[2]/description[1]
 
 And the hint:
 
@@ -43,11 +43,11 @@ And the hint:
 
 This error points to a form design issue. If you get the error while filling out a form, please talk to the person who asked you to fill that form out.
 
-If you are the person who built the form, you will need to change the form design to fix the issue. To understand and fix this error, start by looking at the fields listed to identify which part of the field is repeated. If the fields start with ``/data``, the issue has to do with :ref:`repeats <troubleshoot-repeated-field-repeats>`. If the fields start with ``instance('<some name>')``, the issue has to do with :ref:`looking up a value in a dataset <troubleshoot-repeated-field-dataset>`.
+If you are the person who built the form, you will need to change the form design to fix the issue. To fix this error, start by looking at the fields listed to identify which part of the field is repeated. If the fields start with ``/data``, the issue has to do with :ref:`repeats <troubleshoot-repeated-field-repeats>`. If the fields start with ``instance(``, the issue has to do with :ref:`looking up a value in a dataset <troubleshoot-repeated-field-dataset>`.
 
 .. warning::
 
-  The web form preview will not show this error. Instead, it will default to always using the first repeated value. This is usually not the desired behavior and can be more difficult to identify. We recommend using ODK Collect to test forms with repeats.
+  The web form preview will not show this error. Instead, it will default to always using the first repeated value. We recommend using ODK Collect to test forms with repeats.
 
 .. _troubleshoot-repeated-field-repeats:
 
@@ -61,9 +61,9 @@ Consider this error:
   XPath evaluation: type mismatch
   This field is repeated:
 
-  /data/repeat[1]/description[1];/data/repeat[2]/description[1]
+  /data/place[1]/description[1];/data/place[2]/description[1]
 
-Look at the repeated fields in the error and notice ``/data/repeat[1]`` and ``/data/repeat[2]``. This means that there is a repeat with name ``repeat`` in the form. There's an attempt to access the ``description`` field inside that repeat and to use it as a single value, for example in a ``calculate``. If there are more than one ``repeat`` instances added, you will get this crash. In your XLSForm, look for a reference to ``${description}`` outside of ``repeat`` to identify the source of the issue.
+Look at the repeated fields in the error and notice ``/data/place[1]`` and ``/data/place[2]``. This means that there is a repeat with name ``place`` in the form. There's an attempt to access the ``description`` field inside that repeat and to use it as a single value, for example in a ``calculate``. If there are more than one ``place`` instances added, you will get this crash. In your XLSForm, look for a reference to ``${description}`` outside of ``place`` to identify the source of the issue.
 
 Here are some possible fixes depending on what you're trying to do:
 
@@ -75,7 +75,7 @@ You can reproduce this error yourself using `this form definition <https://docs.
 
 .. tip::
 
-  Whenever you have a form with a repeat, make sure to test it with 0, 1 and multiple repeat instances. This can help you catch this kind of issue before you send it out to be used.
+  Whenever you have a form with a repeat, make sure to test it with 0, 1 and 2 repeat instances. This can help you catch this kind of issue before you send it out to be used.
 
 .. _troubleshoot-repeated-field-dataset:
 
@@ -97,6 +97,6 @@ You can experience this error yourself by using `this form definition <https://d
 
 Here are some possible fixes depending on your needs:
 
-* Ensure uniqueness of the property to filter on. In the form above, you could make sure that each color is only used once in the ``things`` list. There's no built-in way to enforce this restriction in ODK but you could use a spreadsheet constraint to do so. If you're using an Entity List, you could use a constraint in your registration form.
-* Use a different item property to filter on. In the form above, if you do want multiple items to have the same ``color``, the form structure doesn't make sense. Maybe it should start by showing a list of items first instead and then any other :ref:`lookup expressions <referencing-values-in-datasets>` could filter by ``name`` which is required to be unique.
+* Ensure uniqueness of the property to filter on. In the form above, you could make sure that each color is only used once in the ``my_list`` list. There's no built-in way to enforce this restriction in ODK but you could use your spreadsheet software to do so. If you're using an Entity List, you could use a constraint in your registration form.
+* Use a different item property to filter on. In the form above, if you do want multiple items to have the same ``color``, you'll need to rethink your form design. Maybe the form should start by showing a list of items first instead and then any other :ref:`lookup expressions <referencing-values-in-datasets>` could filter by ``name`` which ODK guarantees will be unique.
 * Aggregate all of the values. For example, you could use a function like :func:`join` or :func:`count`.
