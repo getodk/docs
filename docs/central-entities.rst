@@ -316,7 +316,7 @@ You can use Forms to update Entity information. These Forms can be authored to, 
 Building a Form that updates an Entity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Updating Entities isn't too different from creating new Entities, but you'll have to specify the ``entity_id`` of the specific Entity instance you want to update in the ``entities`` sheet.
+Updating an Entity with a form submission is similar to creating a new Entity. You'll also specify the ``list_name`` in the ``entities`` sheet and will also have to specify the ``entity_id`` of the specific Entity instance you want to update. You can optionally update the ``label`` as well.
 
 .. rubric:: XLSForm
 
@@ -359,23 +359,25 @@ To update the label of an Entity from a Form, fill in the optional ``label`` col
 Setting conditions under which an Entity is updated
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can limit a Form to only update an Entity under certain conditions, based on an expression using the Entity and Submission data.
+You can limit a Form to only update an Entity under certain conditions, based on an expression. The Entity is only updated when the expression evaluates to ``True``.
 
 .. rubric:: XLSForm
 
 .. csv-table:: entities
   :header: list_name, entity_id, update_if
  
-  trees, ${tree}, true()
+  trees, ${tree}, ${approval} != ""
 
-In this case, ``true()`` is given in the optional ``update_if`` column, which means the Entity will always be updated upon submission. If an expression is given instead, the Entity is only updated when the expression evaluates to ``true`` or ``1``.
+In this case, the Entity will only be updated if the value of the ``approval`` field in the form is non-blank. If the ``approval`` field has a blank value, the submission will still be sent but it will have no impact on the corresponding Entity.
 
 .. _central-entities_build-update-create:
 
 Creating AND Updating Entities with one Form
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can give both a ``create_if`` and an ``update_if`` rule for the same Form. If only one of these expression evaluates to ``true`` or ``1``, then only that operation will be carried out. If both rules evaluate to ``true`` or ``1``, the Entity will be created if it does not exist (as identified by the ``entity_id`` expression), and updated if it does. Of course, if neither rule evaluates to ``true`` or ``1``, no Entity changes will occur.
+You can give both a ``create_if`` and an ``update_if`` rule for the same Form. If only one of these expression evaluates to ``true`` or ``1``, then only that operation will be carried out. If both rules evaluate to ``true`` or ``1``, the Entity will be created if it does not exist (as identified by the ``entity_id`` expression), and updated if it does. If neither rule evaluates to ``true`` or ``1``, no Entity changes will occur.
+
+See a sample form `here <https://docs.google.com/spreadsheets/d/1R3Ja6hOjjntE42HaYQMf0MLITMSsIfOlbb60Fe9l_kM>`__.
 
 .. _central-entities-update-conflicts:
 
