@@ -6,9 +6,8 @@ Managing Entities in Central
 **Entities** in ODK let you share information between Forms so you can collect longitudinal data, manage cases over time, and support other complex workflows.
 
 .. seealso::
-
-* :doc:`Entities intro <entities-intro>`: similar information organized as a list of questions and answers
-* :doc:`Community reporting tutorial <tutorial-community-reporting>`
+  * :doc:`Entities intro <entities-intro>`: similar information organized as a list of questions and answers
+  * :doc:`Community reporting tutorial <tutorial-community-reporting>`
 
 Without Entities, you can attach existing data during the Form creation process, often through ``choices`` sheets or ``.csv`` files. Once this data is loaded into the Form, you can use it as the source for selection choices, to prepopulate data fields in the Form, or validate new input. A list of districts, for example, can be used as choices for selection, and information about each district can then be shown to the user or checked against. If you are new to these techniques, you can learn more about them on the :doc:`Form Datasets <form-datasets>` page.
 
@@ -454,13 +453,13 @@ You can review and dismiss conflicts from the :ref:`Entity table <central-entiti
 
 If you can, try to organize work so that conflicts are unlikely. For example, you can use :ref:`choice filters <cascading-selects>` to only show each data collector the Entities that they are assigned to. You can filter based on Entity properties that represent regions, departments or even individual data collectors.
 
-When Central v2024.3.0 or later is used with Collect v2024.3.0 or later, Collect maintains its own offline representation of Entity Lists. This means that any Entity create or update by form submission is reflected locally the moment that submission is finalized. When a chain of multiple updates to the same Entity can be created offline, these can sometimes arrive out of order which will also be marked as conflicts by Central.
+Some special cases that can occur when an Entity is updated multiple times while offline are also marked by Central as conflicts.
 
 If you are able to prevent or reduce the risk of conflicts and don't expect chains of offline updates, you can skip this section. If your workflow is highly dynamic with the same Entities being periodically encountered or if your data collectors spend long periods of time offline, you will likely need to understand conflicts.
 
 .. _central-entities-update-conflicts-what-is:
 
-What is a parallel update?
+What are Entity conflicts?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Every time an Entity is updated, a new version of that Entity is created. This process is the same whether the Entity is updated by :ref:`direct edits <central-entities-edit>` from Central, through `the API </central-api-entity-management/#updating-an-entity>`__, or by :ref:`a Submission upload <central-entities-update>`. While direct edits can only be submitted if they're based on the latest version available, updates by Submission or through the API can be based on older Entity versions. These updates based on older versions are called parallel updates.
@@ -487,7 +486,22 @@ How often and how severely conflicts create real consistency problems with Entit
 
 An Entity version with the :guilabel:`Parallel update` label was created from an update based on an older version but it only updated properties that were not involved in the other parallel update(s). For example, in the example above, Alice might have updated the circumference of the tree's trunk, while Bob only reported that moss is now growing. These two changes are totally compatible and it doesn't matter that Bob based his update on an outdated version of "Zach's backyard tree" so the conflict can be quickly dismissed. In some workflows, this kind of parallel update is expected. Central surfaces it because in many contexts it can point to a process failure. For example, Alice and Bob may have been supposed to go to different regions on the day they both visited "Zach's backyard tree."
 
-An Entity version with the :guilabel:`Conflict` label means that this version was created from an update based on an older version **AND** one or more of the parallel updates modified the same properties. In the example above, maybe Alice and Bob both updated the circumference to different values. This kind of conflict almost always means that something went wrong. You should carefully review the Entity history and make any edits needed to the latest Entity version before dismissing the conflict. You may need to get in contact with the individuals who made the conflicting updates to figure out which value is correct.
+An Entity version with the :guilabel:`Conflict` label means that this version was created from an update based on an older version **AND** one or more of the parallel updates modified the same properties. In the example above, maybe Alice and Bob both updated the circumference to different values. This kind of conflict almost always means that something went wrong. You should carefully review the Entity history and make any edits needed to the latest Entity version before dismissing the conflict. You may need to get in contact with the individuals who made the conflicting updates to figure out which value is correct. The :guilabel:`Conflict` label is also used in certain special cases related to offline Entity updates.
+
+Conflicts related to Offline Entities
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When Central v2024.3.0 or later is used with Collect v2024.3.0 or later, Collect maintains its own offline representation of Entity Lists. This means that any Entity create or update by Form Submission is reflected in other follow-up forms the moment that Submission is finalized.
+
+Central will adds the label :guilabel:`Offline update` to any Entity version that was created from an update on a device that did not get a server update in between the latest update and the prior Entity action. For example, if Alice is working with a ``trees`` Entity list, registers "Zach's backyard tree", fills out and finalizes the "Update circumference" form, and then submits both without having received a server update in between the two, version 2 of "Zach's backyard tree" will have the label :guilabel:`Offline update`.
+
+Collect v2024.3.0 or later attempts to send Submissions in the order they were created. However, this may not always be possible. If Central receives a Submission that is an offline update based on an earlier Submission it has not received yet, it will hold the newer Submission for up to 5 days. If the earlier Submission(s) arrive within 5 days, all updates in the offline series will be immediately processed in order. If, after 5 days, earlier Submissions have not been received, the held Submission(s) will be force processed and the Entity will be marked as having a conflict.
+
+If an Entity is created and then updated offline, there is the possibility that the Form Submissions representing updates will be received by Central before the Submission representing the creation of the Entity. In that case, the update Submissions will be held for up to 5 days. If the create Submission is received any time before 5 days, the Entity will be created by Central and any held updates will immediately be processed in order. If the Submission that would have created the Entity is not received within 5 days, Central will process the first update Submission it has as a create and the Entity will be marked as having a conflict.
+
+Information about out-of-order submission processing is shown on each Submission's :ref:`detail page <central-submissions-details>`.
+
+When multiple different users can go offline and each create several offline updates to the same Entity, conflicts can be hard to understand. If you see conflict situations that you are unable to understand from the information shown in Central, please post to `the forum <https://forum.getodk.org/>`_.
 
 .. _central-entities-settings:
 
