@@ -108,7 +108,7 @@ Limitations
 I filled out a registration form and don't immediately see my Entity in follow-up forms, why?
 ---------------------------------------------------------------------------------------------
 
-If you are using a version of ODK Central older than 2024.3.0, Enketo web forms, or a version of Collect older than 2024.3.0, Entities are not created or updated offline. This means that in order for a submission to create or update an Entity, that submission has to be processed by your server. If you create a new Entity or update an existing one by filling out a form, you won't see that change reflected in follow-up forms until you download the latest update to your Entity List from your server.
+If you are using a version of Central older than 2024.3.0, Enketo web forms, or a version of Collect older than 2024.3.0, Entities are not created or updated offline. This means that in order for a submission to create or update an Entity, that submission has to be processed by your server. If you create a new Entity or update an existing one by filling out a form, you won't see that change reflected in follow-up forms until you download the latest update to your Entity List from your server.
 
 If you usually have Internet connectivity, this is unlikely to be very important. Similarly, if your registration and follow-up periods happen at very different times, this limitation is not a problem. But for workflows in which follow-up needs to happen immediately after registration or multiple follow-ups are needed while offline, this limitation is significant. 
 
@@ -253,7 +253,7 @@ One of our goals with Entities is to let field staff make as much progress as po
 When possible, we recommend using Entity properties and a :ref:`choice_filter <cascading-selects>` to limit the number of Entities that a specific field worker sees. This will greatly reduce the chance of conflicts.
 
 .. seealso::
-    * :ref:`Entity updates from submissions <central-entities-update>`
+    * :ref:`Managing Entity conflicts <central-entities-update-conflicts>`
 
 Should I analyze Entity data, form submission data or both?
 -----------------------------------------------------------
