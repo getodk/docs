@@ -56,9 +56,10 @@ Entities are a big new concept that open up a lot of new possibilities. While we
 
 What's available now:
 
-- Create an Entity with a registration form (automatically or after project manager approval)
-- Use multiple different registration forms targeting the same Entity List (e.g., registration at school vs. registration at home)
-- Use Entities in one or more follow-up form
+- Create an Entity with a registration Form (automatically or after project manager approval)
+- Use multiple different registration Forms targeting the same Entity List (e.g., registration at school vs. registration at home)
+- Use or update Entities in one or more follow-up Forms
+- Create or update Entities offline using Collect v2024.3 or later
 - Bulk create many Entities by uploading a .csv data file into an existing Entity List
 - Download Entities into Power BI, Excel, Python, and R
 
@@ -67,7 +68,7 @@ Important limitations:
 - A form submission can only create or update a single Entity
 - Client performance (ODK Collect or Enketo web forms) suffers when managing more than 50,000 Entities
 - All devices will always download all Entities which may be a privacy concern
-- Currently, Entity properties may only be strings. Submission values saved to an Entity are converted to strings.
+- Entity properties may only be strings. Submission values saved to an Entity are converted to strings.
 
 We expect all of these limitations to be addressed over time. The roadmap at `getodk.org/roadmap <https://getodk.org/roadmap>`_ has what we're working on now and what's coming next.
 
