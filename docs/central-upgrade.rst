@@ -10,6 +10,7 @@ Start by reviewing upgrade notes for all versions between your current version a
 Upgrade notes
 -------------
 
+* :ref:`Central v2024.3 <central-upgrade-2024.3>`: update Entity-related forms for offline Entities
 * :ref:`Central v2024.2 <central-upgrade-2024.2>`: changes to ``.env`` and SSL no longer require rebuilding, consider using S3 storage
 * Central v2023.5, v2024.1: no upgrade notes
 * :ref:`Central v2023.4 <central-upgrade-2023.4>`: improve email delivery
@@ -91,6 +92,13 @@ You'll be asked to confirm the removal of all dangling images. Agree by typing t
 
 Version-specific upgrade instructions
 --------------------------------------
+
+.. _central-upgrade-2024.3:
+
+Upgrading to Central v2024.3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This version of Central automatically updates all Entity-related forms so that Entities are created and updated offline in Collect. This change is **NOT compatible with versions of Collect older than v2024.3**. If you use Collect for Entity-related projects, make sure all devices have a recent Collect version before you upgrade Central.
 
 .. _central-upgrade-2024.2:
 
