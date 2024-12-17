@@ -5,6 +5,10 @@ Managing Entities in Central
 
 **Entities** in ODK let you share information between Forms so you can collect longitudinal data, manage cases over time, and support other complex workflows.
 
+.. seealso::
+  * :doc:`Entities intro <entities-intro>`: similar information organized as a list of questions and answers
+  * :doc:`Community reporting tutorial <tutorial-community-reporting>`
+
 Without Entities, you can attach existing data during the Form creation process, often through ``choices`` sheets or ``.csv`` files. Once this data is loaded into the Form, you can use it as the source for selection choices, to prepopulate data fields in the Form, or validate new input. A list of districts, for example, can be used as choices for selection, and information about each district can then be shown to the user or checked against. If you are new to these techniques, you can learn more about them on the :doc:`Form Datasets <form-datasets>` page.
 
 This is wonderful if the data you want to use is already known when you are publishing your Form, and if it doesn't change over the course of your project. In many cases, however, the data being collected today for the project *is* the data you need tomorrow for the same project. Think about seeing a patient for the first and then second time, or registering and then revisiting a survey site for a follow-up. These kinds of workflows are called :ref:`multiple encounter <multiple-encounters-with-the-same-entity>` or longitudinal workflows.
@@ -45,24 +49,26 @@ If you would prefer a more personalized introduction, request a demo at https://
 Roadmap and limitations
 -----------------------
 
+.. seealso::
+  :ref:`Details about limitations <entities-intro-limitations>`
+
 Entities are a big new concept that open up a lot of new possibilities. While we think many workflows can benefit from Entities today, they have some limitations that you should be aware of.
 
 What's available now:
 
-- Create an Entity with a registration form (automatically or after project manager approval)
-- Use multiple different registration forms targeting the same Entity List (e.g., registration at school vs. registration at home)
-- Use Entities in one or more follow-up form
+- Create an Entity with a registration Form (automatically or after project manager approval)
+- Use multiple different registration Forms targeting the same Entity List (e.g., registration at school vs. registration at home)
+- Use or update Entities in one or more follow-up Forms
+- Create or update Entities offline using Collect v2024.3 or later
 - Bulk create many Entities by uploading a .csv data file into an existing Entity List
 - Download Entities into Power BI, Excel, Python, and R
 
 Important limitations:
 
-- Entity create and update requires Internet access
-- Entity delete is only available via API
+- A form submission can only create or update a single Entity
 - Client performance (ODK Collect or Enketo web forms) suffers when managing more than 50,000 Entities
 - All devices will always download all Entities which may be a privacy concern
-- The Form specification and API may change
-- Currently, Entity properties may only be strings. Submission values saved to an Entity are converted to strings.
+- Entity properties may only be strings. Submission values saved to an Entity are converted to strings.
 
 We expect all of these limitations to be addressed over time. The roadmap at `getodk.org/roadmap <https://getodk.org/roadmap>`_ has what we're working on now and what's coming next.
 
@@ -76,6 +82,8 @@ We recommend watching the video below once or twice to get an overview of how En
 .. note::
 
    In Central versions prior to v2023.4, Entity Lists were called Datasets. The video below was recorded with Central v2022.3 so many small improvements have been made since.
+
+   You may also want to see the :doc:`community reporting tutorial <tutorial-community-reporting>` for another Entity-based workflow.
 
 ..  youtube:: hbff-oaI8yg
    :width: 100%
@@ -300,39 +308,15 @@ Updating Entities from Forms
 
 You can use Forms to update Entity information. These Forms can be authored to, for example, update previous observations to new values or change the status of an Entity. Just like Entity creation through Forms, you can specify which properties on which Entity instances will be updated when the Form's Submissions are uploaded to Central. The data in Submissions uploaded by Entity-updating Forms are applied to the Entity data saved on the Central server. These updated Entity values are then distributed to data collection clients once they synchronize with Central.
 
-.. _central-entities-update-conflicts:
-
-Parallel Updates in Updating Forms
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Once you begin allowing updates to Entities to come in through the field, you can run into incidents where two people attempt to update the same Entity at the same time. If you have a project setup where Entities would only be updated by one person at a time (for example, if that person is the only one assigned to a particular area), you can ignore this section.
-
-.. _central-entities-update-conflicts-what-is:
-
-What is a parallel update?
-""""""""""""""""""""""""""
-
-What does it mean that updating an Entity "at the same time" causes a conflict? Every time an Entity is updated, whether by direct edits on the Central management panel, through the API, or by a Submission upload, a new "version" of that Entity is created that has the latest data.
-
-Say Alice fetches all her Tree data on her device. This update includes a brand new Tree entity called "Zach's backyard tree". Alice updates Zach's tree with new measurements. This results in version 2 of that tree once the Submission is uploaded to Central. In a "clean," not-conflicting update Bob would get the latest Tree data, see version 2 of Zach's tree in his update Form, and upload his new changes to create version 3 of the tree on Central. Version 1 led to version 2, and version 2 was updated to create version 3.
-
-However, if Bob doesn't update his data before filling his Form, and so he's still working off version 1 of the tree, then a conflict results. Two updates have been created based on version 1, and Bob didn't know that Alice had already made the changes resulting in version 2. Alice and Bob are both looking at version 1 and trying to create version 2.
-
 .. note::
-   The same rules and behaviors apply when updating Entities through updates made directly to Entities in Central's management panel, or over the API. It's possible, for example, that Bob opened an Entity data edit window in Central before Alice's update is uploaded, but he didn't actually press Submit on his changes until much later. The same is true: Bob is looking at version 1 and thinking he's creating version 2.
-
-Central's behavior in these cases is basic: **it will always apply any changes it receives at the time and in the order it receives them**. This means that in this case, Bob's changes will always "win" over Alice's. Any time this happens, Central will generate a :guilabel:`conflict` warning in several places in the Central management panel so Project managers can see that a problem might have occurred.
-
-Of course, it's possible that Bob's changes and Alice's changes are totally compatible. For example, it's possible Alice only updated the circumference of the tree's trunk, while Bob only reported that moss is now growing. How often and severely conflicts create actual consistency problems with Entity data will depend on the design and complexity of your data collection process and your Forms. Central attempts to help Project managers determine the severity of conflicts by separating conflict warnings into two levels of severity.
-
-**All** conflicts surfaced by Central occur because two Entity updates were generated based off the same base version of an Entity. This circumstance is called a :guilabel:`Parallel Update` in Central. In the special case that a property included in an update has also been changed in the meantime, *and* the value currently stored in Central is different from the new updated value, a full :guilabel:`Conflict` error will be created instead, indicating that multiple possibly conflicting values were written into the same property at once. So if Alice and Bob have both updated the circumference of the tree at the same time to the same value, only a Parallel Update warning and not a Conflict will be flagged. Only if their inputs disagree will you see a full Conflict.
+   Entity updates from form submissions open up the possibility of two data collectors attempting to update the same Entity at the same time. This case is detected by Central and shown as a conflict. If your workflow involves many updates to the same Entity, especially from data collectors who are offline for a long time, be sure to read the section on :ref:`Entity conflicts <central-entities-update-conflicts>`.
 
 .. _central-entities-build-update:
 
 Building a Form that updates an Entity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Updating Entities isn't too different from creating new Entities, but you'll have to specify the ``entity_id`` of the specific Entity instance you want to update in the ``entities`` sheet.
+Updating an Entity with a form submission is similar to creating a new Entity. You'll also specify the ``list_name`` in the ``entities`` sheet and will also have to specify the ``entity_id`` of the specific Entity instance you want to update. You can optionally update the ``label`` as well.
 
 .. rubric:: XLSForm
 
@@ -375,23 +359,25 @@ To update the label of an Entity from a Form, fill in the optional ``label`` col
 Setting conditions under which an Entity is updated
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can limit a Form to only update an Entity under certain conditions, based on an expression using the Entity and Submission data.
+You can limit a Form to only update an Entity under certain conditions, based on an expression. The Entity is only updated when the expression evaluates to ``True``.
 
 .. rubric:: XLSForm
 
 .. csv-table:: entities
   :header: list_name, entity_id, update_if
  
-  trees, ${tree}, true()
+  trees, ${tree}, ${approval} != ""
 
-In this case, ``true()`` is given in the optional ``update_if`` column, which means the Entity will always be updated upon submission. If an expression is given instead, the Entity is only updated when the expression evaluates to ``true`` or ``1``.
+In this case, the Entity will only be updated if the value of the ``approval`` field in the form is non-blank. If the ``approval`` field has a blank value, the submission will still be sent but it will have no impact on the corresponding Entity.
 
 .. _central-entities_build-update-create:
 
 Creating AND Updating Entities with one Form
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can give both a ``create_if`` and an ``update_if`` rule for the same Form. If only one of these expression evaluates to ``true`` or ``1``, then only that operation will be carried out. If both rules evaluate to ``true`` or ``1``, the Entity will be created if it does not exist (as identified by the ``entity_id`` expression), and updated if it does. Of course, if neither rule evaluates to ``true`` or ``1``, no Entity changes will occur.
+You can give both a ``create_if`` and an ``update_if`` rule for the same Form. If only one of these expression evaluates to ``true`` or ``1``, then only that operation will be carried out. If both rules evaluate to ``true`` or ``1``, the Entity will be created if it does not exist (as identified by the ``entity_id`` expression), and updated if it does. If neither rule evaluates to ``true`` or ``1``, no Entity changes will occur.
+
+See a sample form `here <https://docs.google.com/spreadsheets/d/1R3Ja6hOjjntE42HaYQMf0MLITMSsIfOlbb60Fe9l_kM>`__.
 
 .. _central-entities-managing:
 
@@ -457,14 +443,66 @@ As you type, Central will highlight any fields you have changed in yellow so you
 
 To complete the process press the :guilabel:`Update` button to save your changes to the Entity. You will see a confirmation that the save succeeded. If you don't like your changes, you can click on the :guilabel:`x` or the :guilabel:`Never mind` link to close the dialog.
 
-.. _central-entities-manage-conflicts:
+.. _central-entities-update-conflicts:
 
 Managing Entity conflicts
--------------------------
+-------------------------------
 
-When an Entity is in a possible conflict, Central will raise the issue in many places throughout the management panel: in the homepage Entity Lists tables, in Entities tables on Project pages, in the Entity Data table, and on Entity Detail pages.
+It's possible for two people to attempt to update the same Entity at the same time. Central always applies all updates it receives in the order they are received and if it detects that two updates to the same Entity were made in parallel, it marks that Entity as possibly being in a conflict state. When an Entity is in a possible conflict, Central will raise the issue in many places throughout the management panel: in the homepage Entity Lists tables, in Entities tables on Project pages, in the Entity Data table, and on Entity Detail pages.
 
 You can review and dismiss conflicts from the :ref:`Entity table <central-entities-data>`, or from the :ref:`Entity Detail page <central-entities-detail>`. When you dismiss a conflict warning, the warning goes away and whatever values are currently recorded in Central are considered correct.
+
+If you can, try to organize work so that conflicts are unlikely. For example, you can use :ref:`choice filters <cascading-selects>` to only show each data collector the Entities that they are assigned to. You can filter based on Entity properties that represent regions, departments or even individual data collectors.
+
+Some special cases that can occur when an Entity is updated multiple times while offline are also marked by Central as conflicts.
+
+If you are able to prevent or reduce the risk of conflicts and don't expect chains of offline updates, you can skip this section. If your workflow is highly dynamic with the same Entities being periodically encountered or if your data collectors spend long periods of time offline, you will likely need to understand conflicts.
+
+.. _central-entities-update-conflicts-what-is:
+
+What are Entity conflicts?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Every time an Entity is updated, a new version of that Entity is created. This process is the same whether the Entity is updated by :ref:`direct edits <central-entities-edit>` from Central, through `the API </central-api-entity-management/#updating-an-entity>`__, or by :ref:`a Submission upload <central-entities-update>`. While direct edits can only be submitted if they're based on the latest version available, updates by Submission or through the API can be based on older Entity versions. These updates based on older versions are called parallel updates.
+
+Here's an example of how parallel updates can happen:
+
+#. Alice gets a form update to her device, including an update to a ``trees`` Entity List with a brand new tree Entity called "Zach's backyard tree". This new Entity has version 1.
+#. Bob also updates his device and gets the same ``trees`` Entity List with version 1 of "Zach's backyard tree".
+#. Alice fills out a Form that updates "Zach's backyard tree" with new measurements.
+#. Central receives Alice's Submission and applies it to "Zach's backyard tree". Central applies the update to create version 2 of that tree Entity.
+#. Bob also visits "Zach's backyard tree" and fills out a Form to update its measurements.
+#. Central receives Bob's Submission and applies it to "Zach's backyard tree". Central applies the update to create version 3 of that tree Entity. Because Bob based his update on version 1, just as Alice did, his update is considered a parallel update.
+
+In the example above, Bob was still working off version 1 of the tree, resulting in a conflict. Two updates were created based on version 1 because Bob didn't know that Alice had already made the changes resulting in version 2. Alice and Bob were both looking at version 1 and trying to create version 2. Central applied Bob's update to create version 3 and marked "Zach's backyard tree" as being in a state of conflict.
+
+In a "clean," not-conflicting update Bob would have received the latest ``trees`` data before visiting "Zach's backyard tree" so that he would have version 2 on his device. When he made his update, it would have been based off of version 2 and Central would have applied it on version 2 to create version 3.
+
+Addressing parallel updates
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Central's behavior when there are parallel updates is basic: **it always applies any changes it receives at the time and in the order it receives them**. This means that in the case above, Bob's changes will always "win" over Alice's because they are submitted last (this is sometimes called a last-write-wins strategy). Central has simple, predictable behavior that attempts to always use the latest available data. It also detects and shows conflict cases so that you can resolve them in more sophisticated ways as needed. If there are Entities in a conflict state, there will be a :guilabel:`conflict` warning in several places in the Central management panel so Project managers can see that a problem might have occurred.
+
+How often and how severely conflicts create real consistency problems with Entity data will depend on the design and complexity of your data collection process and your Forms. When looking at a specific Entity, any versions that were created from a parallel update will be labeled as either a :guilabel:`Parallel update` or a :guilabel:`Conflict`. These two conflict levels are intended to help Project managers determine the severity of those conflicts.
+
+An Entity version with the :guilabel:`Parallel update` label was created from an update based on an older version but it only updated properties that were not involved in the other parallel update(s). For example, in the example above, Alice might have updated the circumference of the tree's trunk, while Bob only reported that moss is now growing. These two changes are totally compatible and it doesn't matter that Bob based his update on an outdated version of "Zach's backyard tree" so the conflict can be quickly dismissed. In some workflows, this kind of parallel update is expected. Central surfaces it because in many contexts it can point to a process failure. For example, Alice and Bob may have been supposed to go to different regions on the day they both visited "Zach's backyard tree."
+
+An Entity version with the :guilabel:`Conflict` label means that this version was created from an update based on an older version **AND** one or more of the parallel updates modified the same properties. In the example above, maybe Alice and Bob both updated the circumference to different values. This kind of conflict almost always means that something went wrong. You should carefully review the Entity history and make any edits needed to the latest Entity version before dismissing the conflict. You may need to get in contact with the individuals who made the conflicting updates to figure out which value is correct. The :guilabel:`Conflict` label is also used in certain special cases related to offline Entity updates.
+
+Conflicts related to Offline Entities
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When Central v2024.3.0 or later is used with Collect v2024.3.0 or later, Collect maintains its own offline representation of Entity Lists. This means that any Entity create or update by Form Submission is reflected in other follow-up forms the moment that Submission is finalized.
+
+Central will adds the label :guilabel:`Offline update` to any Entity version that was created from an update on a device that did not get a server update in between the latest update and the prior Entity action. For example, if Alice is working with a ``trees`` Entity list, registers "Zach's backyard tree", fills out and finalizes the "Update circumference" form, and then submits both without having received a server update in between the two, version 2 of "Zach's backyard tree" will have the label :guilabel:`Offline update`.
+
+Collect v2024.3.0 or later attempts to send Submissions in the order they were created. However, this may not always be possible. If Central receives a Submission that is an offline update based on an earlier Submission it has not received yet, it will hold the newer Submission for up to 5 days. If the earlier Submission(s) arrive within 5 days, all updates in the offline series will be immediately processed in order. If, after 5 days, earlier Submissions have not been received, the held Submission(s) will be force processed and the Entity will be marked as having a conflict.
+
+If an Entity is created and then updated offline, there is the possibility that the Form Submissions representing updates will be received by Central before the Submission representing the creation of the Entity. In that case, the update Submissions will be held for up to 5 days. If the create Submission is received any time before 5 days, the Entity will be created by Central and any held updates will immediately be processed in order. If the Submission that would have created the Entity is not received within 5 days, Central will process the first update Submission it has as a create and the Entity will be marked as having a conflict. Our goal is to provide as much information as is available to follow-up forms while letting project administrators know that something may have gone wrong.
+
+Information about out-of-order submission processing is shown on each Submission's :ref:`detail page <central-submissions-details>`.
+
+When multiple different users can go offline and each create several offline updates to the same Entity, conflicts can be hard to understand. If you see conflict situations that you are unable to understand from the information shown in Central, please post to `the forum <https://forum.getodk.org/>`_.
 
 .. _central-entities-settings:
 

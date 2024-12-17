@@ -102,14 +102,15 @@ For example, let's say that you have trees that you want to evaluate over time. 
 Limitations
 ===========
 
+.. seealso::
+  :ref:`Entities roadmap and limitations <central-entities-roadmap>`
+
 I filled out a registration form and don't immediately see my Entity in follow-up forms, why?
 ---------------------------------------------------------------------------------------------
 
-Currently, in order for a submission to create or update an Entity, that submission has to be processed by your server. That means that if you create a new Entity or update an existing one by filling out a form, you won't see that change reflected in follow-up forms until you download the latest update to your Entity List from your server.
+If you are using a version of Central older than 2024.3.0, Enketo web forms, or a version of Collect older than 2024.3.0, Entities are not created or updated offline. This means that in order for a submission to create or update an Entity, that submission has to be processed by your server. If you create a new Entity or update an existing one by filling out a form, you won't see that change reflected in follow-up forms until you download the latest update to your Entity List from your server.
 
 If you usually have Internet connectivity, this is unlikely to be very important. Similarly, if your registration and follow-up periods happen at very different times, this limitation is not a problem. But for workflows in which follow-up needs to happen immediately after registration or multiple follow-ups are needed while offline, this limitation is significant. 
-
-Offline Entity support is expected in late 2024, read more `on the forum <https://forum.getodk.org/t/collect-coming-soon-offline-entities/46505>`_.
 
 I need to assign specific Entities to specific data collectors, how can I represent this?
 -----------------------------------------------------------------------------------------
@@ -136,7 +137,7 @@ Not yet, but this is something we will eventually support.
 
 If you find yourself wanting to create or update multiple Entities of the same type in a repeat, your best option currently is to use multiple submissions of the same form instead of a repeat. You can capture base information in one form and then use a separate form to create each Entity that you currently represent by repeat instances.
 
-If there is a parent-child relationship between the different Entities, you can save the parent's ID to each child. If you are working in an environment with Internet connectivity, you can refresh the forms to see your created parent Entities in your child Entity creation forms. If you are working in a disconnected environment, you can have data collectors copy the ID from the parent form to the child forms.
+If there is a parent-child relationship between the different Entities, you can save the parent's ID to each child. If your versions of Central and Collect support offline Entities, parent Entities will be available to other forms the moment the registration form is finalized. This means the registration form for the child Entities can include a question to select the parent Entity which will establish the link between the two.
 
 Similarly, if you'd like to establish relationships between multiple Entities of different types, you can have a registration form for each type and include a field to represent a link to another Entity.
 
@@ -202,15 +203,16 @@ Add an ``entities`` sheet to your form. This sheet is used to define how data fr
 
 Currently, a single submission can only affect a single Entity in a fixed Entity List. To specify which list to create or update an Entity in, use the ``list_name`` column.
 
-If you're creating Entities, you'll also need to specify an expression to label each Entity in the ``label`` column. This is very similar to :ref:`the instance_name column <instance-name>` for naming filled forms.
+If you're creating Entities, you'll also need to specify an expression that defines the label of each Entity in the ``label`` column. This is very similar to :ref:`the instance_name column <instance-name>` for naming filled forms.
 
-If you're updating Entities, you must add an ``entity_id`` column. In that column, put a reference to a form field that holds the unique id of the Entity you want to update. For example, if you have a select question named ``tree`` that lets the user select a tree from the Entity List, you would put ``${tree}`` in the ``entity_id`` column. You may also specify an expression to label each Entity in the ``label`` column if you would like the label to change, for example to show an updated status.
+If you're updating Entities, you must add an ``entity_id`` column. In that column, put a reference to a form field that holds the unique id of the Entity you want to update. For example, if you have a select question named ``tree`` that lets the user select a tree from the Entity List, you would put ``${tree}`` in the ``entity_id`` column. You may also specify an expression that defines the label for each Entity in the ``label`` column if you would like the label to change, for example to show an updated status.
 
 Next, specify which form fields should be saved to Entity properties. This is done on the ``survey`` sheet by putting the desired property name in the ``save_to`` column for each form field that you want to save.
 
 .. seealso::
     * :doc:`Community reporting tutorial <tutorial-community-reporting>`
-    * :ref:`Central Entities documentation <central-entities-follow-up-forms>`
+    * :ref:`Build a form that creates Entities <central-entities-registration-forms>`
+    * :ref:`Build a form that updates Entities <central-entities-build-update>`
 
 How do I access Entities from my forms?
 ---------------------------------------
@@ -228,7 +230,7 @@ You can access a specific Entity's properties using a :ref:`lookup expression <r
 .. seealso::
     * :ref:`Looking up values in a list <referencing-values-in-datasets>`
     * :doc:`Community reporting tutorial <tutorial-community-reporting>`
-    * :ref:`Central Entities documentation <central-entities-follow-up-forms>`
+    * :ref:`Build a form that uses Entities <central-entities-follow-up-forms>`
 
 What form fields should I save to my Entities as properties?
 ------------------------------------------------------------
@@ -244,14 +246,14 @@ Currently, once a property is added to an Entity List, it can't be removed. You 
 What are Entity conflicts and what can I do to avoid them?
 ----------------------------------------------------------
 
-A conflict happens when two form submissions that are received by the server have updates to the same Entity with the same version. If the two submissions specify different, overlapping updates to one or more properties, the server will provide an interface for resolving it. All conflicts have to be explicitly dismissed.
+A conflict happens when two form Submissions both representing updates to the same Entity with the same version are received by the server. If the two Submissions specify different, overlapping updates to one or more properties, Central will provide an interface for understanding and resolving the conflict. All conflicts have to be explicitly dismissed.
 
-One of our goals with Entities is to let field staff make as much progress as possible without interruption so the server applies conflicting updates with the latest one taking precedence. The conflict is shown on the server and office staff can look at the submitted data and work with field staff to resolve the issue.
+One of our goals with Entities is to let field staff make as much progress as possible without interruption. For this reason, Central uses a last-write-wins strategy and applies all Entity updates it receives. Conflicts are shown from Central so that project administrators can look at the submitted data and work with field staff to resolve the issue.
 
 When possible, we recommend using Entity properties and a :ref:`choice_filter <cascading-selects>` to limit the number of Entities that a specific field worker sees. This will greatly reduce the chance of conflicts.
 
 .. seealso::
-    * :ref:`Entity updates from submissions <central-entities-update>`
+    * :ref:`Managing Entity conflicts <central-entities-update-conflicts>`
 
 Should I analyze Entity data, form submission data or both?
 -----------------------------------------------------------
