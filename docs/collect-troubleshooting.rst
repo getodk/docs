@@ -75,7 +75,7 @@ You can reproduce this error yourself using `this form definition <https://docs.
 
 .. tip::
 
-  Whenever you have a form with a repeat, make sure to test it with 0, 1 and 2 repeat instances. This can help you catch this kind of issue before you send it out to be used.
+  Whenever you have a form with a repeat, make sure to test it with 0, 1, and 2 repeat instances to help you catch this kind of issue.
 
 .. _troubleshoot-repeated-field-dataset:
 
