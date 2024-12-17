@@ -41,7 +41,7 @@ And the hint:
 
   You may need to use the indexed-repeat() function to specify which value you want
 
-This error points to a form design issue. If you get the error while filling out a form, please talk to the person who asked you to fill that form out.
+This error points to a form design issue. If you get the error while filling out a form, please talk to the person who asked you to fill that form.
 
 If you are the person who built the form, you will need to change the form design to fix the issue. To fix this error, start by looking at the fields listed to identify which part of the field is repeated. If the fields start with ``/data``, the issue has to do with :ref:`repeats <troubleshoot-repeated-field-repeats>`. If the fields start with ``instance(``, the issue has to do with :ref:`looking up a value in a dataset <troubleshoot-repeated-field-dataset>`.
 
@@ -97,6 +97,6 @@ You can experience this error yourself by using `this form definition <https://d
 
 Here are some possible fixes depending on your needs:
 
-* Ensure uniqueness of the property to filter on. In the form above, you could make sure that each color is only used once in the ``my_list`` list. There's no built-in way to enforce this restriction in ODK but you could use your spreadsheet software to do so. If you're using an Entity List, you could use a constraint in your registration form.
+* Ensure uniqueness of the property to filter on. In the form above, you could make sure that each color is only used once in the ``my_list`` list. There's no built-in way to enforce this restriction in ODK but you could use your spreadsheet software to identify and remove duplicates in your XLSForm. If you're using an Entity List, you could use a constraint in your registration form.
 * Use a different item property to filter on. In the form above, if you do want multiple items to have the same ``color``, you'll need to rethink your form design. Maybe the form should start by showing a list of items first instead and then any other :ref:`lookup expressions <referencing-values-in-datasets>` could filter by ``name`` which ODK guarantees will be unique.
 * Aggregate all of the values. For example, you could use a function like :func:`join` or :func:`count`.
