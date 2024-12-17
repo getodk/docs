@@ -40,6 +40,17 @@ info:
 
     Here major and breaking changes to the API are listed by version.
 
+    ## ODK Central v2024.3
+
+    **Added**:
+    - Endpoints for managing [User Preferences](/central-api-accounts-and-users/#user-preferences), mainly to be used by the frontend.
+
+    **Changed**:
+
+    - [Submissions Odata]() now returns `__system/deletedAt`. It can also be used in $filter, $sort and $select query parameters.
+    - Dataset (Entity List) properties with the same name but different capitalization are not allowed.
+    - Form Attachments for both [published Forms](/central-api-form-management/#listing-form-attachments) and [draft Forms](/central-api-form-management/#listing-expected-draft-form-attachments) now return a property representing the hash of the attachment file.
+
     ## ODK Central v2024.2
 
     **Added**:
@@ -575,7 +586,7 @@ tags:
   description: |-
     [OData](http://www.odata.org/) is a standard for sharing data and its schema between web services. It allows for interoperability with tools like Excel, Power BI or Tableau. If you want to use your data in a service that does not support the OData standard but does support JSON data sources, you can use the [data document](/central-api-odata-endpoints/#data-document) directly.
 
-    ODK Central implements the [4.0 Minimal Conformance level](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#_Toc505771292) of the specification. Our goal is to enable data analysis and reporting through powerful third-party tools, sending them the data over OData, rather than attempt to create our own analysis tools. Our implementation primarily targets [Microsoft Power BI](https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata) and [Tableau](https://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_odata.html), two tools with reasonably robust free offerings that provide versatile analysis and visualization of data.
+    ODK Central implements the [4.0 Minimal Conformance level](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#_Toc505771292) of the specification. Our goal is to enable data analysis and reporting through powerful third-party tools, sending them the data over OData, rather than attempt to create our own analysis tools. Our implementation primarily targets [Microsoft Power BI](https://docs.microsoft.com/en-us/power-bi/desktop-connect-odata) and [Tableau](https://help.tableau.com/current/pro/desktop/en-us/examples_odata.htm), two tools with reasonably robust free offerings that provide versatile analysis and visualization of data.
 
     While OData itself supports data of any sort of structure, Power BI and Tableau both think in terms of relational tables. Our current solution for representing ODK's `repeat` structures in OData is to treat every `repeat` in the `Form` definition as its own relational table, and we compute stable join IDs to relate the tables together.
 
@@ -586,7 +597,6 @@ tags:
     * The **Metadata Document** defines the data schema using [an XML-based standard](https://docs.oasis-open.org/odata/odata-csdl-xml/v4.01/odata-csdl-xml-v4.01.html#sec_Introduction). It is linked in every OData response.
 
     * The **data documents**, linked from the Service Document, are a simple JSON representation of the Submission or Entity data, conforming to the schema we describe in our Metadata Document.
-
 - name: System Endpoints
   description: There are some resources available for getting or setting system information
     and configuration. You can set the [Usage Reporting configuration](/central-api-system-endpoints/#usage-reporting-configuration)
@@ -628,6 +638,8 @@ tags:
     Standard HTTP Basic Authentication is allowed, but **strongly discouraged**. This is because the server must verify your password with every single request, which is very slow to compute: typically, this will add hundreds of milliseconds to each request. For some one-off tasks and in cases where there is no other choice, it is reasonable to choose Basic authentication, but wherever possible we strongly encourage the use of any other authentication method.
 
     In addition, because credentials are sent in plaintext as part of the request, **the server will only accept Basic auth over HTTPS**. If your ODK Central server is set up over plain HTTP, it will not accept Basic auth.
+
+    Furthermore, authenticating using accounts with email addresses with a colon (":") in them is not possible.
 - name: App User Authentication
   x-parent-tag: Authentication
   description: |-
@@ -638,6 +650,12 @@ tags:
   x-parent-tag: Accounts and Users
   description: |-
     Presently, it is possible to create and list `User`s in the system, as well as to perform password reset operations. In future versions of this API it will be possible to manage existing user information and delete accounts as well.
+- name: User Preferences
+  x-parent-tag: Accounts and Users
+  description: |-
+    The Central frontend uses this API to save various user preferences, such as the sorting order of certain listings. When a user starts a new session, these preferences are loaded in as part of the [User object](/central-api-accounts-and-users/#getting-authenticated-user-details).
+    
+    Preferences can be set site-wide or per-project.
 - name: App Users
   x-parent-tag: Accounts and Users
   description: |-
@@ -833,6 +851,7 @@ tags:
     * `form.update.draft.set` when a Draft Form definition is set.
     * `form.update.draft.delete` when a Draft Form definition is deleted.
     * `form.update.publish` when a Draft Form is published to the Form.
+    * `form.update.draft.replace` when a Draft Form is changed in place.
     * `form.attachment.update` when a Form Attachment binary is set or cleared.
     * `form.submissions.export` when a Form's Submissions are exported to CSV.
     * `form.delete` when a Form is deleted.
@@ -855,7 +874,10 @@ tags:
     * `submission.delete` when a Submission is soft-deleted.
     * `submission.purge` when soft-deleted Submissions are purged.
     * `submission.restore` when a Submission is restored.
-    * `submission.reprocess` when an Entity Submission is held in a processing backlog and then removed.
+    * `submission.backlog.hold` when an Entity Submission is first held in processing backlog.
+    * `submission.backlog.reprocess` when an Entity Submission is reprocessed and removed from the backlog.
+    * `submission.backlog.force` when an Entity Submission is force-processed after being in backlog.
+    * `upgrade.process.form.entities_version` when Central flags an Entity-related Form for a potential automatic upgrade.
     * `dataset.create` when a Dataset is created.
     * `dataset.update` when a Dataset is updated.
     * `dataset.update.publish` when a Dataset is published.
@@ -978,6 +1000,8 @@ paths:
 
         As given by [the standard](https://en.wikipedia.org/wiki/Basic_access_authentication), the text following the `Basic` marker here is a base64 encoding of the credentials, provided in the form `email:password` (in this example `my.email.address@getodk.org:my.password`).
 
+        Because the colon symbol (":") is used as a separator, authenticating using an email address containing a colon is not possible. This is a general limitation of this authentication method; it is not specific to ODK Central.
+
         Unlike the standard, we do not require the client to first send an unauthenticated request and retry the request only after receiving a `WWW-Authenticate` response, and in fact we will never send the `WWW-Authenticate` header. This is mostly because, as noted above, we generally discourage the use of this authentication method, and would rather not advertise its use openly. As a result, if you wish to use Basic Authentication, directly supply the header on any request that needs it.
 
         _(There is not really anything at `/v1/example2`; this section only demonstrates how generally to use Basic Authentication.)_
@@ -1003,7 +1027,7 @@ paths:
       - App User Authentication
       summary: Using App User Authentication
       description: |-
-        To use App User Authentication, first obtain a App User, typically by using the configuration panel in the user interface, or else by using the [App User API Resource](/central-api-accounts-and-users/#app-users). Once you have the token, you can apply it to any eligible action by prefixing the URL with `/key/{appUser}` as follows:
+        To use App User Authentication, first obtain an App User, typically by using the configuration panel in the user interface, or else by using the [App User API Resource](/central-api-accounts-and-users/#app-users). Once you have the token, you can apply it to any eligible action by prefixing the URL with `/key/{appUser}` as follows:
 
         `/v1/key/!Ms7V3$Zdnd63j5HFacIPFEvFAuwNqTUZW$AsVOmaQFf$vIC!F8dJjdgiDnJXXOt/example/request/path`
 
@@ -1035,9 +1059,9 @@ paths:
         
         **Revoking an App User**
 
-        The token associated with a App User is actually just its Session Token. As a result, although a App User Token can uniquely be used as a URL prefix as described here, the session associated with it can be revoked in exactly the same way a session is logged out, by issuing a `DELETE` request to its Session resource.
+        The token associated with an App User is actually just its Session Token. As a result, although an App User Token can uniquely be used as a URL prefix as described here, the session associated with it can be revoked in exactly the same way a session is logged out, by issuing a `DELETE` request to its Session resource.
 
-        Note, however, that a App User cannot revoke itself; a `User` must perform this action.
+        Note, however, that an App User cannot revoke itself; a `User` must perform this action.
       operationId: Revoking an App User
       parameters:
       - name: token
@@ -1463,17 +1487,183 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error403'
       x-codegen-request-body-name: body
+  /v1/user-preferences/project/{projectId}/{propertyName}:
+    put:
+      tags:
+        - User Preferences
+      summary: Setting a project preference
+      parameters:
+        - name: projectId
+          in: path
+          description: The integer ID of the `Project`.
+          required: true
+          schema:
+            type: integer
+          example: 42
+        - name: propertyName
+          in: path
+          description: The name of the preference.
+          required: true
+          schema:
+            type: string
+          example: "frobwazzleEnabled"
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              required:
+              - propertyValue
+              type: any
+              properties:
+                propertyValue:
+                  type: any
+                  description: The preference to be stored. It may be of any json-serializable type.
+              example:
+                propertyValue: true
+        required: true
+      responses:
+        200:
+          description: The preference was stored
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+        403:
+          description: Forbidden - supplied bearer token was not valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+        404:
+          description: The specified project does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+    delete:
+      tags:
+        - User Preferences
+      summary: Deleting a project preference
+      parameters:
+        - name: projectId
+          in: path
+          description: The integer ID of the `Project`.
+          required: true
+          schema:
+            type: integer
+          example: 42
+        - name: propertyName
+          in: path
+          description: The name of the preference.
+          required: true
+          schema:
+            type: string
+          example: "frobwazzleEnabled"
+      responses:
+        200:
+          description: The preference was stored
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+        403:
+          description: Forbidden - supplied bearer token was not valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+        404:
+          description: The preference does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+  /v1/user-preferences/site/{propertyName}:
+    put:
+      tags:
+        - User Preferences
+      summary: Setting a sitewide preference
+      parameters:
+        - name: propertyName
+          in: path
+          description: The name of the preference.
+          required: true
+          schema:
+            type: string
+          example: "frobwazzleEnabled"
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              required:
+              - propertyValue
+              type: any
+              properties:
+                propertyValue:
+                  type: any
+                  description: The preference to be stored. It may be of any json-serializable type.
+              example:
+                propertyValue: true
+        required: true
+
+      responses:
+        200:
+          description: The preference was stored
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+        403:
+          description: Forbidden - supplied bearer token was not valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+    delete:
+      tags:
+        - User Preferences
+      summary: Deleting a sitewide preference
+      parameters:
+        - name: propertyName
+          in: path
+          description: The name of the preference.
+          required: true
+          schema:
+            type: string
+          example: "frobwazzleEnabled"
+      responses:
+        200:
+          description: The preference was deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+        403:
+          description: Forbidden - supplied bearer token was not valid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+          404:
+          description: The specified preference does not exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
   /v1/users/current:
     get:
       tags:
       - Users
+      - User Preferences
       summary: Getting authenticated User details
       description: |-
         Typically, you would get User details by the User's numeric Actor ID.
 
         However, if you only have a Bearer token, for example, you don't have any information about the user attached to that session, including even the ID with which to get more information. So you can instead supply the text `current` to get the user information associated with the authenticated session.
 
-        If you _do_ use `current`, you may request extended metadata. Supply an `X-Extended-Metadata` header value of `true` to additionally retrieve an array of strings of the `verbs` the authenticated User/Actor is allowed to perform server-wide.
+        If you _do_ use `current`, you may request extended metadata. Supply an `X-Extended-Metadata` header value of `true` to additionally receive:
+        - an array of strings of the `verbs` the authenticated User/Actor is allowed to perform server-wide
+        - an object containing the preferences of the authenticated User/Actor
       operationId: Getting authenticated User details
       responses:
         200:
@@ -1563,6 +1753,14 @@ paths:
                       server-wide.
                     items:
                       type: object
+                  preferences:
+                    description: The preferences of this user
+                    type: object
+                    properties:
+                      site:
+                        type: object
+                      projects:
+                        type: object
               example:
                 createdAt: 2018-04-18T23:19:14.802Z
                 displayName: My Display Name
@@ -1574,6 +1772,12 @@ paths:
                 verbs:
                 - project.create
                 - project.update
+                preferences:
+                  site:
+                    projectSortMode: latest
+                  projects:
+                    "1":
+                      formTrashCollapsed: false
         403:
           description: Forbidden
           content:
@@ -1865,12 +2069,12 @@ paths:
     delete:
       tags:
       - App Users
-      summary: Deleting a App User
+      summary: Deleting an App User
       description: |-
         You don't have to delete a `App User` in order to cut off its access. Using a `User`'s credentials you can simply [log the App User's session out](/central-api-authentication/#logging-out-current-session) using its token. This will end its session without actually deleting the App User, which allows you to still see it in the configuration panel and inspect its history. This is what the administrative panel does when you choose to "Revoke" the App User.
 
         That said, if you do wish to delete the App User altogether, you can do so by issuing a `DELETE` request to its resource path. App Users cannot delete themselves.
-      operationId: Deleting a App User
+      operationId: Deleting an App User
       parameters:
       - name: id
         in: path
@@ -3633,7 +3837,9 @@ paths:
       summary: Listing Form Attachments
       description: This endpoint allows you to fetch the list of expected attachment
         files, and will tell you whether the server is in possession of each file
-        or not. To modify an attachment, you'll need to create a Draft.
+        or not, and a hash of the file contents. To modify an attachment, you'll need to
+        create a Draft. The property `datasetExists` indicates whether  the attachment is
+        a link to a Dataset instead of an actual file.
       operationId: Listing Form Attachments
       parameters:
       - name: projectId
@@ -3660,11 +3866,12 @@ paths:
                 items:
                   $ref: '#/components/schemas/FormAttachment'
               example:
-              - name: myfile.mp3
+              - name: myfile.png
                 type: image
                 exists: true
                 blobExists: true
-                datasetExists: true
+                datasetExists: false
+                hash: 'd41d8cd98f00b204e9800998ecf8427e'
                 updatedAt: 2018-03-21T12:45:02.312Z
         403:
           description: Forbidden
@@ -4188,11 +4395,12 @@ paths:
                 items:
                   $ref: '#/components/schemas/FormAttachment'
               example:
-              - name: myfile.mp3
+              - name: myfile.png
                 type: image
                 exists: true
                 blobExists: true
-                datasetExists: true
+                datasetExists: false
+                hash: 'd41d8cd98f00b204e9800998ecf8427e'
                 updatedAt: 2018-03-21T12:45:02.312Z
         403:
           description: Forbidden
@@ -4889,11 +5097,12 @@ paths:
                 items:
                   $ref: '#/components/schemas/FormAttachment'
               example:
-              - name: myfile.mp3
+              - name: myfile.png
                 type: image
                 exists: true
                 blobExists: true
-                datasetExists: true
+                datasetExists: false
+                hash: 'd41d8cd98f00b204e9800998ecf8427e'
                 updatedAt: 2018-03-21T12:45:02.312Z
         403:
           description: Forbidden
@@ -5622,6 +5831,7 @@ paths:
                 reviewState: approved
                 createdAt: 2018-01-19T23:58:03.395Z
                 updatedAt: 2018-03-21T12:45:02.312Z
+                deletedAt: null
                 currentVersion:
                   instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                   instanceName: village third house
@@ -5643,6 +5853,7 @@ paths:
                 reviewState: approved
                 createdAt: 2018-01-19T23:58:03.395Z
                 updatedAt: 2018-03-21T12:45:02.312Z
+                deletedAt: null
                 currentVersion:
                   instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                   instanceName: village third house
@@ -5704,84 +5915,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - createdAt
-                - instanceId
-                - submitterId
-                type: object
-                properties:
-                  instanceId:
-                    type: string
-                    description: The `instanceId` of the `Submission`, given by the
-                      Submission XML.
-                  submitterId:
-                    type: number
-                    description: The ID of the `Actor` (`App User`, `User`, or `Public
-                      Link`) that originally submitted this `Submission`.
-                  deviceId:
-                    type: string
-                    description: The self-identified `deviceId` of the device that
-                      collected the data, sent by it upon submission to the server.
-                      The initial submission `deviceId` will be returned here.
-                  userAgent:
-                    type: string
-                    description: The self-identified `userAgent` of the device that
-                      collected the data, sent by it upon submission to the server.
-                      The initial submission `userAgent` will be returned here.
-                  reviewState:
-                    type: string
-                    description: The current review state of the submission.
-                    enum:
-                    - null
-                    - edited
-                    - hasIssues
-                    - rejected
-                    - approved
-                  createdAt:
-                    type: string
-                    description: ISO date format. The time that the server received
-                      the Submission.
-                  updatedAt:
-                    type: string
-                    description: ISO date format. `null` when the Submission is first
-                      created, then updated when the Submission's XML data or metadata
-                      is updated.
-                  currentVersion:
-                    required:
-                    - createdAt
-                    - current
-                    - instanceId
-                    - submitterId
-                    type: object
-                    properties:
-                      instanceId:
-                        type: string
-                        description: The `instanceId` of the `Submission` version,
-                          given by the Submission XML.
-                      instanceName:
-                        type: string
-                        description: The `instanceName`, if any, given by the Submission
-                          XML in the metadata section.
-                      submitterId:
-                        type: number
-                        description: The ID of the `Actor` (`App User`, `User`, or
-                          `Public Link`) that submitted this `Submission` version.
-                      deviceId:
-                        type: string
-                        description: The self-identified `deviceId` of the device
-                          that submitted the `Submission` version.
-                      userAgent:
-                        type: string
-                        description: The self-identified `userAgent` of the device
-                          that submitted the `Submission` version.
-                      createdAt:
-                        type: string
-                        description: ISO date format. The time that the server received
-                          the `Submission` version.
-                      current:
-                        type: boolean
-                        description: Whether the version is current or not.
-                    description: The current version of the `Submission`.
+                $ref: '#/components/schemas/Submission'
               example:
                 instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                 submitterId: 23
@@ -5790,6 +5924,7 @@ paths:
                 reviewState: approved
                 createdAt: 2018-01-19T23:58:03.395Z
                 updatedAt: 2018-03-21T12:45:02.312Z
+                deletedAt: null
                 currentVersion:
                   instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                   instanceName: village third house
@@ -5893,6 +6028,7 @@ paths:
                 reviewState: approved
                 createdAt: 2018-01-19T23:58:03.395Z
                 updatedAt: 2018-03-21T12:45:02.312Z
+                deletedAt: null
                 currentVersion:
                   instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                   instanceName: village third house
@@ -5912,6 +6048,7 @@ paths:
                 reviewState: approved
                 createdAt: 2018-01-19T23:58:03.395Z
                 updatedAt: 2018-03-21T12:45:02.312Z
+                deletedAt: null
                 currentVersion:
                   instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                   instanceName: village third house
@@ -5983,84 +6120,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - createdAt
-                - instanceId
-                - submitterId
-                type: object
-                properties:
-                  instanceId:
-                    type: string
-                    description: The `instanceId` of the `Submission`, given by the
-                      Submission XML.
-                  submitterId:
-                    type: number
-                    description: The ID of the `Actor` (`App User`, `User`, or `Public
-                      Link`) that originally submitted this `Submission`.
-                  deviceId:
-                    type: string
-                    description: The self-identified `deviceId` of the device that
-                      collected the data, sent by it upon submission to the server.
-                      The initial submission `deviceId` will be returned here.
-                  userAgent:
-                    type: string
-                    description: The self-identified `userAgent` of the device that
-                      collected the data, sent by it upon submission to the server.
-                      The initial submission `userAgent` will be returned here.
-                  reviewState:
-                    type: string
-                    description: The current review state of the submission.
-                    enum:
-                    - null
-                    - edited
-                    - hasIssues
-                    - rejected
-                    - approved
-                  createdAt:
-                    type: string
-                    description: ISO date format. The time that the server received
-                      the Submission.
-                  updatedAt:
-                    type: string
-                    description: ISO date format. `null` when the Submission is first
-                      created, then updated when the Submission's XML data or metadata
-                      is updated.
-                  currentVersion:
-                    required:
-                    - createdAt
-                    - current
-                    - instanceId
-                    - submitterId
-                    type: object
-                    properties:
-                      instanceId:
-                        type: string
-                        description: The `instanceId` of the `Submission` version,
-                          given by the Submission XML.
-                      instanceName:
-                        type: string
-                        description: The `instanceName`, if any, given by the Submission
-                          XML in the metadata section.
-                      submitterId:
-                        type: number
-                        description: The ID of the `Actor` (`App User`, `User`, or
-                          `Public Link`) that submitted this `Submission` version.
-                      deviceId:
-                        type: string
-                        description: The self-identified `deviceId` of the device
-                          that submitted the `Submission` version.
-                      userAgent:
-                        type: string
-                        description: The self-identified `userAgent` of the device
-                          that submitted the `Submission` version.
-                      createdAt:
-                        type: string
-                        description: ISO date format. The time that the server received
-                          the `Submission` version.
-                      current:
-                        type: boolean
-                        description: Whether the version is current or not.
-                    description: The current version of the `Submission`.
+                $ref: '#/components/schemas/Submission'
               example:
                 instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                 submitterId: 23
@@ -6069,6 +6129,7 @@ paths:
                 reviewState: approved
                 createdAt: 2018-01-19T23:58:03.395Z
                 updatedAt: 2018-03-21T12:45:02.312Z
+                deletedAt: null
                 currentVersion:
                   instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                   instanceName: village third house
@@ -6157,84 +6218,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - createdAt
-                - instanceId
-                - submitterId
-                type: object
-                properties:
-                  instanceId:
-                    type: string
-                    description: The `instanceId` of the `Submission`, given by the
-                      Submission XML.
-                  submitterId:
-                    type: number
-                    description: The ID of the `Actor` (`App User`, `User`, or `Public
-                      Link`) that originally submitted this `Submission`.
-                  deviceId:
-                    type: string
-                    description: The self-identified `deviceId` of the device that
-                      collected the data, sent by it upon submission to the server.
-                      The initial submission `deviceId` will be returned here.
-                  userAgent:
-                    type: string
-                    description: The self-identified `userAgent` of the device that
-                      collected the data, sent by it upon submission to the server.
-                      The initial submission `userAgent` will be returned here.
-                  reviewState:
-                    type: string
-                    description: The current review state of the submission.
-                    enum:
-                    - null
-                    - edited
-                    - hasIssues
-                    - rejected
-                    - approved
-                  createdAt:
-                    type: string
-                    description: ISO date format. The time that the server received
-                      the Submission.
-                  updatedAt:
-                    type: string
-                    description: ISO date format. `null` when the Submission is first
-                      created, then updated when the Submission's XML data or metadata
-                      is updated.
-                  currentVersion:
-                    required:
-                    - createdAt
-                    - current
-                    - instanceId
-                    - submitterId
-                    type: object
-                    properties:
-                      instanceId:
-                        type: string
-                        description: The `instanceId` of the `Submission` version,
-                          given by the Submission XML.
-                      instanceName:
-                        type: string
-                        description: The `instanceName`, if any, given by the Submission
-                          XML in the metadata section.
-                      submitterId:
-                        type: number
-                        description: The ID of the `Actor` (`App User`, `User`, or
-                          `Public Link`) that submitted this `Submission` version.
-                      deviceId:
-                        type: string
-                        description: The self-identified `deviceId` of the device
-                          that submitted the `Submission` version.
-                      userAgent:
-                        type: string
-                        description: The self-identified `userAgent` of the device
-                          that submitted the `Submission` version.
-                      createdAt:
-                        type: string
-                        description: ISO date format. The time that the server received
-                          the `Submission` version.
-                      current:
-                        type: boolean
-                        description: Whether the version is current or not.
-                    description: The current version of the `Submission`.
+                $ref: '#/components/schemas/Submission'
               example:
                 instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                 submitterId: 23
@@ -6243,6 +6227,7 @@ paths:
                 reviewState: approved
                 createdAt: 2018-01-19T23:58:03.395Z
                 updatedAt: 2018-03-21T12:45:02.312Z
+                deletedAt: null
                 currentVersion:
                   instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                   instanceName: village third house
@@ -6379,9 +6364,8 @@ paths:
       tags:
       - Submissions
       summary: Retrieving Submission XML
-      description: To get only the XML of the `Submission` rather than all of the
-        details with the XML as one of many properties, just add `.xml` to the end
-        of the request URL.
+      description: To retrieve the XML of the `Submission`, just append `.xml` to
+        the end of the request URL.
       operationId: Retrieving Submission XML
       parameters:
       - name: projectId
@@ -7892,84 +7876,7 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - createdAt
-                - instanceId
-                - submitterId
-                type: object
-                properties:
-                  instanceId:
-                    type: string
-                    description: The `instanceId` of the `Submission`, given by the
-                      Submission XML.
-                  submitterId:
-                    type: number
-                    description: The ID of the `Actor` (`App User`, `User`, or `Public
-                      Link`) that originally submitted this `Submission`.
-                  deviceId:
-                    type: string
-                    description: The self-identified `deviceId` of the device that
-                      collected the data, sent by it upon submission to the server.
-                      The initial submission `deviceId` will be returned here.
-                  userAgent:
-                    type: string
-                    description: The self-identified `userAgent` of the device that
-                      collected the data, sent by it upon submission to the server.
-                      The initial submission `userAgent` will be returned here.
-                  reviewState:
-                    type: string
-                    description: The current review state of the submission.
-                    enum:
-                    - null
-                    - edited
-                    - hasIssues
-                    - rejected
-                    - approved
-                  createdAt:
-                    type: string
-                    description: ISO date format. The time that the server received
-                      the Submission.
-                  updatedAt:
-                    type: string
-                    description: ISO date format. `null` when the Submission is first
-                      created, then updated when the Submission's XML data or metadata
-                      is updated.
-                  currentVersion:
-                    required:
-                    - createdAt
-                    - current
-                    - instanceId
-                    - submitterId
-                    type: object
-                    properties:
-                      instanceId:
-                        type: string
-                        description: The `instanceId` of the `Submission` version,
-                          given by the Submission XML.
-                      instanceName:
-                        type: string
-                        description: The `instanceName`, if any, given by the Submission
-                          XML in the metadata section.
-                      submitterId:
-                        type: number
-                        description: The ID of the `Actor` (`App User`, `User`, or
-                          `Public Link`) that submitted this `Submission` version.
-                      deviceId:
-                        type: string
-                        description: The self-identified `deviceId` of the device
-                          that submitted the `Submission` version.
-                      userAgent:
-                        type: string
-                        description: The self-identified `userAgent` of the device
-                          that submitted the `Submission` version.
-                      createdAt:
-                        type: string
-                        description: ISO date format. The time that the server received
-                          the `Submission` version.
-                      current:
-                        type: boolean
-                        description: Whether the version is current or not.
-                    description: The current version of the `Submission`.
+                $ref: '#/components/schemas/Submission'
               example:
                 instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                 submitterId: 23
@@ -7978,6 +7885,7 @@ paths:
                 reviewState: approved
                 createdAt: 2018-01-19T23:58:03.395Z
                 updatedAt: 2018-03-21T12:45:02.312Z
+                deletedAt: null
                 currentVersion:
                   instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                   instanceName: village third house
@@ -8222,121 +8130,9 @@ paths:
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
-            application/json; extended:
+            application/json:
               schema:
-                required:
-                - createdAt
-                - instanceId
-                - submitter
-                - submitterId
-                type: object
-                properties:
-                  instanceId:
-                    type: string
-                    description: The `instanceId` of the `Submission`, given by the
-                      Submission XML.
-                  submitterId:
-                    type: number
-                    description: The ID of the `Actor` (`App User`, `User`, or `Public
-                      Link`) that originally submitted this `Submission`.
-                  deviceId:
-                    type: string
-                    description: The self-identified `deviceId` of the device that
-                      collected the data, sent by it upon submission to the server.
-                      The initial submission `deviceId` will be returned here.
-                  userAgent:
-                    type: string
-                    description: The self-identified `userAgent` of the device that
-                      collected the data, sent by it upon submission to the server.
-                      The initial submission `userAgent` will be returned here.
-                  reviewState:
-                    type: string
-                    description: The current review state of the submission.
-                    enum:
-                    - null
-                    - edited
-                    - hasIssues
-                    - rejected
-                    - approved
-                  createdAt:
-                    type: string
-                    description: ISO date format. The time that the server received
-                      the Submission.
-                  updatedAt:
-                    type: string
-                    description: ISO date format. `null` when the Submission is first
-                      created, then updated when the Submission's XML data or metadata
-                      is updated.
-                  currentVersion:
-                    required:
-                    - createdAt
-                    - current
-                    - instanceId
-                    - submitterId
-                    type: object
-                    properties:
-                      instanceId:
-                        type: string
-                        description: The `instanceId` of the `Submission` version,
-                          given by the Submission XML.
-                      instanceName:
-                        type: string
-                        description: The `instanceName`, if any, given by the Submission
-                          XML in the metadata section.
-                      submitterId:
-                        type: number
-                        description: The ID of the `Actor` (`App User`, `User`, or
-                          `Public Link`) that submitted this `Submission` version.
-                      deviceId:
-                        type: string
-                        description: The self-identified `deviceId` of the device
-                          that submitted the `Submission` version.
-                      userAgent:
-                        type: string
-                        description: The self-identified `userAgent` of the device
-                          that submitted the `Submission` version.
-                      createdAt:
-                        type: string
-                        description: ISO date format. The time that the server received
-                          the `Submission` version.
-                      current:
-                        type: boolean
-                        description: Whether the version is current or not.
-                    description: The current version of the `Submission`.
-                  submitter:
-                    required:
-                    - createdAt
-                    - displayName
-                    - id
-                    - type
-                    type: object
-                    properties:
-                      createdAt:
-                        type: string
-                        description: ISO date format
-                      displayName:
-                        type: string
-                        description: All `Actor`s, regardless of type, have a display
-                          name
-                      id:
-                        type: number
-                      type:
-                        type: string
-                        description: the Type of this Actor; typically this will be
-                          `user`.
-                        enum:
-                        - user
-                        - field_key
-                        - public_link
-                        - singleUse
-                      updatedAt:
-                        type: string
-                        description: ISO date format
-                      deletedAt:
-                        type: string
-                        description: ISO date format
-                    description: The full details of the `Actor` that submitted this
-                      `Submission`.
+                $ref: '#/components/schemas/Submission'
               example:
                 instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                 submitterId: 23
@@ -8345,6 +8141,27 @@ paths:
                 reviewState: approved
                 createdAt: 2018-01-19T23:58:03.395Z
                 updatedAt: 2018-03-21T12:45:02.312Z
+                deletedAt: null
+                currentVersion:
+                  instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
+                  instanceName: village third house
+                  submitterId: 23
+                  deviceId: imei:123456
+                  userAgent: Enketo/3.0.4
+                  createdAt: 2018-01-19T23:58:03.395Z
+                  current: true
+            application/json; extended:
+              schema:
+                $ref: '#/components/schemas/ExtendedSubmission'
+              example:
+                instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
+                submitterId: 23
+                deviceId: imei:123456
+                userAgent: Enketo/3.0.4
+                reviewState: approved
+                createdAt: 2018-01-19T23:58:03.395Z
+                updatedAt: 2018-03-21T12:45:02.312Z
+                deletedAt: null
                 currentVersion:
                   instanceId: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
                   instanceName: village third house
@@ -8360,121 +8177,6 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
-            application/json:
-              schema:
-                required:
-                - createdAt
-                - instanceId
-                - submitter
-                - submitterId
-                type: object
-                properties:
-                  instanceId:
-                    type: string
-                    description: The `instanceId` of the `Submission`, given by the
-                      Submission XML.
-                  submitterId:
-                    type: number
-                    description: The ID of the `Actor` (`App User`, `User`, or `Public
-                      Link`) that originally submitted this `Submission`.
-                  deviceId:
-                    type: string
-                    description: The self-identified `deviceId` of the device that
-                      collected the data, sent by it upon submission to the server.
-                      The initial submission `deviceId` will be returned here.
-                  userAgent:
-                    type: string
-                    description: The self-identified `userAgent` of the device that
-                      collected the data, sent by it upon submission to the server.
-                      The initial submission `userAgent` will be returned here.
-                  reviewState:
-                    type: string
-                    description: The current review state of the submission.
-                    enum:
-                    - null
-                    - edited
-                    - hasIssues
-                    - rejected
-                    - approved
-                  createdAt:
-                    type: string
-                    description: ISO date format. The time that the server received
-                      the Submission.
-                  updatedAt:
-                    type: string
-                    description: ISO date format. `null` when the Submission is first
-                      created, then updated when the Submission's XML data or metadata
-                      is updated.
-                  currentVersion:
-                    required:
-                    - createdAt
-                    - current
-                    - instanceId
-                    - submitterId
-                    type: object
-                    properties:
-                      instanceId:
-                        type: string
-                        description: The `instanceId` of the `Submission` version,
-                          given by the Submission XML.
-                      instanceName:
-                        type: string
-                        description: The `instanceName`, if any, given by the Submission
-                          XML in the metadata section.
-                      submitterId:
-                        type: number
-                        description: The ID of the `Actor` (`App User`, `User`, or
-                          `Public Link`) that submitted this `Submission` version.
-                      deviceId:
-                        type: string
-                        description: The self-identified `deviceId` of the device
-                          that submitted the `Submission` version.
-                      userAgent:
-                        type: string
-                        description: The self-identified `userAgent` of the device
-                          that submitted the `Submission` version.
-                      createdAt:
-                        type: string
-                        description: ISO date format. The time that the server received
-                          the `Submission` version.
-                      current:
-                        type: boolean
-                        description: Whether the version is current or not.
-                    description: The current version of the `Submission`.
-                  submitter:
-                    required:
-                    - createdAt
-                    - displayName
-                    - id
-                    - type
-                    type: object
-                    properties:
-                      createdAt:
-                        type: string
-                        description: ISO date format
-                      displayName:
-                        type: string
-                        description: All `Actor`s, regardless of type, have a display
-                          name
-                      id:
-                        type: number
-                      type:
-                        type: string
-                        description: the Type of this Actor; typically this will be
-                          `user`.
-                        enum:
-                        - user
-                        - field_key
-                        - public_link
-                        - singleUse
-                      updatedAt:
-                        type: string
-                        description: ISO date format
-                      deletedAt:
-                        type: string
-                        description: ISO date format
-                    description: The full details of the `Actor` that submitted this
-                      `Submission`.
         403:
           description: Forbidden
           content:
@@ -8996,6 +8698,8 @@ paths:
       description: |-
         Creates a new Property with a specified name in the Dataset.
 
+        The name of a Property is case-sensitive in that it will keep the capitalization provided (e.g. "Firstname"). But Central will not allow another Property with the same name but different capitalization to be created (e.g. "FIRSTNAME" when "Firstname" already exists).
+
         Property names follow the same rules as form field names (valid XML identifiers) and cannot use the reserved names of `name` or `label`, or begin with the reserved prefix `__`. 
       operationId: Adding Properties
       parameters:
@@ -9313,6 +9017,9 @@ paths:
                     label: John (88)
                     firstName: John
                     age: '88'
+            application/json; bulk:
+              schema:
+                $ref: '#/components/schemas/Success'
         403:
           description: Forbidden
           content:
@@ -9930,7 +9637,7 @@ paths:
 
         * Central supports the `HEAD` request preflighting recommended by the specification, but does not require it. Because our supported authentication methods do not follow the try/retry pattern, only preflight your request if you want to read the `X-OpenRosa-Accept-Content-Length` header or are concerned about the other issues listed in the standards document, like proxies.
 
-        * As stated in the standards document, it is possible to submit multimedia attachments with the `Submission` across multiple `POST` requests to this API. _However_, we impose the additional restriction that the Submission XML (`xml_submission_file`) _may not change_ between requests. If Central sees a Submission with an `instanceId` it already knows about but the XML has changed in any way, it will respond with a `409 Conflict` error and reject the submission.
+        * As stated in the standards document, it is possible to submit multimedia attachments with the `Submission` across multiple `POST` requests to this API. _However_, we impose the additional restriction that the Submission XML (`xml_submission_file`) _may not change_ between requests. If Central sees a Submission with an `instanceId` it already knows about but the XML has changed in any way, it will respond with a `409 Conflict` error and reject the submission. Additionally, a `409 Conflict` error is returned if the Submission has been deleted in Central while attempting to send further POST requests.
 
         * Central will never return a `202` in any response from this API.
 
@@ -10654,12 +10361,13 @@ paths:
 
         The fields you can query against are as follows:
 
-        | Submission Metadata         | REST API Name | OData Field Name          |
-        | --------------------------- | ------------- | ------------------------- |
-        | Submitter Actor ID          | `submitterId` | `__system/submitterId`    |
-        | Submission Timestamp        | `createdAt`   | `__system/submissionDate` |
-        | Submission Update Timestamp | `updatedAt`   | `__system/updatedAt`      |
-        | Review State                | `reviewState` | `__system/reviewState`    |
+        | Submission Metadata                      | REST API Name | OData Field Name          |
+        | ---------------------------------------- | ------------- | ------------------------- |
+        | Submitter Actor ID                       | `submitterId` | `__system/submitterId`    |
+        | Submission Timestamp                     | `createdAt`   | `__system/submissionDate` |
+        | Submission Update Timestamp              | `updatedAt`   | `__system/updatedAt`      |
+        | Review State                             | `reviewState` | `__system/reviewState`    |
+        | Submission Delete Timestamp (v2024.3)    | `deletedAt`   | `__system/deletedAt`      |
 
         You can use `$root` expression to filter subtables (repeats) by Submission Metadata, you'll have to prefix above fields by `$root/Submissions/` in the filter criteria. For example, to filter a repeat table by Submission Timestamp you can pass `$filter=$root/Submissions/__system/submissionDate gt 2020-01-31T23:59:59.999Z` in the query parameter.
 
@@ -12759,7 +12467,7 @@ components:
       properties:
         name:
           type: string
-          example: myfile.mp3
+          example: myfile.png
           description: The name of the file as specified in the XForm.
         type:
           $ref: '#/components/schemas/FormAttachmentType'
@@ -13060,6 +12768,10 @@ components:
           type: string
           example: '2018-03-21T12:45:02.312Z'
           description: ISO date format. `null` when the Submission is first created, then updated when the Submission's XML data or metadata is updated.
+        deletedAt:
+          type: string
+          description: Timestamp of the deletion in ISO date format. `null` if the Submission is not deleted.
+          example: 2018-04-18T23:42:11.406Z
         currentVersion:
           $ref: '#/components/schemas/SubmissionVersion'
           description: The current version of the `Submission`.
@@ -13150,7 +12862,7 @@ components:
       properties:
         name:
           type: string
-          example: myfile.mp3
+          example: myfile.png
           description: The name of the file as specified in the Submission XML.
         exists:
           type: boolean
