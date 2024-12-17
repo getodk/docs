@@ -43,7 +43,7 @@ And the hint:
 
 This error points to a form design issue. If you get the error while filling out a form, please talk to the person who asked you to fill that form.
 
-If you are the person who built the form, you will need to change the form design to fix the issue. To fix this error, start by looking at the fields listed to identify which part of the field is repeated. If the fields start with ``/data``, the issue has to do with :ref:`repeats <troubleshoot-repeated-field-repeats>`. If the fields start with ``instance(``, the issue has to do with :ref:`looking up a value in a dataset <troubleshoot-repeated-field-dataset>`.
+If you are the person who built the form, you will need to change the form design to fix the issue. To fix this error, start by looking at the fields listed to identify which part of the field is repeated. If the fields start with ``/data``, the issue has to do with :ref:`repeats <troubleshoot-repeated-field-repeats>`. If the fields start with ``instance``, the issue has to do with :ref:`looking up a value in a dataset <troubleshoot-repeated-field-dataset>`.
 
 .. warning::
 
