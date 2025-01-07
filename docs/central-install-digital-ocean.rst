@@ -114,7 +114,7 @@ Getting and Setting Up Central
 
     $ ufw disable
 
-   You should see the message ``Firewall stopped and disabled on system startup``. If so, you have configured the firewall correctly.
+   You should see the message ``Firewall stopped and disabled on system startup``. If you do, the firewall is configured correctly.
 
    .. note::
 
@@ -122,7 +122,7 @@ Getting and Setting Up Central
 
     If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be difficult to do correctly, so we don't recommend most people try. Another option is to use an upstream network firewall.
 
-    The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. In particular, if you can successfully ``curl`` your Central website over HTTPS on its public domain name.
+    The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. To verify that this is the case, try to ``curl`` your Central website over HTTPS on its public domain name from within one of the containers.
 
 #. Download the software. In the server window, type:
 
