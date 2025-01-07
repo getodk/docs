@@ -102,11 +102,27 @@ Getting and Setting Up Central
 
 #. Make sure you are running Docker Engine v23.x and Docker Compose v2.16.x or greater.
 
-.. code-block:: bash
+   .. code-block:: bash
 
-  $ docker --version && docker compose version
+    $ docker --version && docker compose version
 
-If you are using old versions, follow the instructions to install `Docker Engine <https://docs.docker.com/engine/install/ubuntu>`_ (not Desktop) for Ubuntu, the operating system we recommend and support. The instructions will help you setup the Docker ``apt`` repository and install the latest version of Docker Engine and Docker Compose.
+   If you are using old versions, follow the instructions to install `Docker Engine <https://docs.docker.com/engine/install/ubuntu>`_ (not Desktop) for Ubuntu, the operating system we recommend and support. The instructions will help you setup the Docker ``apt`` repository and install the latest version of Docker Engine and Docker Compose.
+
+#. Disable the system firewall for web form features to work correctly.
+
+   .. code-block:: bash
+
+    $ ufw disable
+
+   You should see the message ``Firewall stopped and disabled on system startup``. If you do, the firewall is configured correctly.
+
+   .. note::
+
+    While it sounds dangerous, disabling your firewall does not put your server at greater risk. In fact, most Linux operating systems come with the firewall disabled.
+
+    If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be difficult to do correctly, so we don't recommend most people try. Another option is to use an upstream network firewall.
+
+    The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. To verify that this is the case, try to ``curl`` your Central website over HTTPS on its public domain name from within one of the containers.
 
 #. Download the software. In the server window, type:
 
