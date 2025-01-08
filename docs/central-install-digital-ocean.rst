@@ -128,7 +128,7 @@ Getting and Setting Up Central
 
    .. code-block:: bash
 
-     $ git clone https://github.com/getodk/central
+     $ umask 022; git clone https://github.com/getodk/central
 
    and press **Enter**. It should think for some time and download many things.
 
