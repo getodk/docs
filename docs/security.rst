@@ -86,7 +86,7 @@ The software is the same either way you choose, but there are important security
   Maintenance & Updates,✅,❓,ODK Cloud infrastructure automatically updates outdated or vulnerable software.
   Manual Testing,✅,✅,ODK's QA process includes `manual testing <https://forum.getodk.org/t/how-the-qa-team-ensures-odk-is-reliable/49960>`_ both of new features and the full system before releases. Users also contribute manual testing of `betas <https://forum.getodk.org/c/releases/pre-releases/19>`_.
   Password Storage,✅,✅,The ODK server uses BCrypt for password hashing with a cost factor of 12.
-  Penetration Testing,✅,❓,"ODK Cloud has independent :ref:`security audits and penetration tests <security-audits>` that include testing OWASP Top 10 (e.g., broken access control, cryptographic failures, injection attacks, insecure design, misconfiguration)."
+  Penetration Testing,✅,❓,"ODK Cloud has independent :ref:`security audits and penetration tests <independent-audits>` that include testing OWASP Top 10 (e.g., broken access control, cryptographic failures, injection attacks, insecure design, misconfiguration)."
   Physical Security,✅,❓,"ODK Cloud data centers have 24-hour security, video surveillance, limited network access, etc."
   Roles & Permissions,✅,✅,"Web Users (e.g., project managers) can only be created with an email address and password resets are only possible through that email. App Users (e.g., data collectors) authenticate with a QR code and are fully isolated from all management functions. See :doc:`Central Users <central-users>` for more."
   Single Sign-On (SSO) & Multi-Factor Auth (MFA),✅,✅,The ODK server offers :ref:`SSO via the OIDC protocol <central-install-digital-ocean-sso>`. MFA can be enabled at the identity provider. ODK Cloud adds implementation support and automation.
@@ -114,7 +114,9 @@ Collect's :ref:`protected settings <admin-settings>` can set and hide options th
 Independent audits
 -------------------
 
-We work with independent security firms to conduct white-box penetration tests and source code reviews of ODK Cloud. Email security@getodk.org to get the latest audit report.
+We work with independent security firms to conduct white-box penetration tests and source code reviews of ODK Cloud. Below are our most recent audit reports.
+
+- `ODK Pentest (2024-07) </downloads/security/ODK-Pentest-2024.pdf>`_ by `Cure53 <https://cure53.de/>`_
 
 Vulnerability disclosure
 ------------------------
