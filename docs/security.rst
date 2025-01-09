@@ -116,7 +116,7 @@ Independent audits
 
 We work with independent security firms to conduct white-box penetration tests and source code reviews of ODK Cloud. Below are our most recent audit reports.
 
-- `ODK Pentest (2024-07) </downloads/security/ODK-Pentest-2024.pdf>`_ by `Cure53 <https://cure53.de/>`_
+- :download:`ODK Pentest (2024-07) </downloads/security/ODK-Pentest-2024.pdf>` by `Cure53 <https://cure53.de/>`_
 
 Vulnerability disclosure
 ------------------------
