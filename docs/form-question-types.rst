@@ -1317,14 +1317,23 @@ To reduce bias, choice order can be randomized for any of the select question ty
   opt_abcd,c,C
   opt_abcd,d,D
 
-In the example above, each time the question is displayed, the choices will be in a different order. It is often preferable to pick one order that the choices will always be displayed in for a given filled form. This can be accomplished by setting an integer seed for the randomization.
+In the example above, each time the question is displayed, the choices will be in a different order. This means a single data collector may see the same question with different choice orders if they open a draft or leave the question and then return to it.
+
+Seeded randomization
+""""""""""""""""""""
+
+It can be preferable to show a consistent order for choices for a given submission. This can be accomplished by setting an integer seed for the randomization. Using an explicit seed also allows you to recreate the order that choices were displayed in at analysis time to do things like identify biasing orders.
+
+Good seed values are unique to a submission. Some examples are the unique ID of a participant or the last 4 digits of a phone number. Another good option is to use time.
+
+In the example below, the current time is converted to a decimal number. The number before the decimal point is the number of days since January 1, 1970. The digits after the decimal point represent fractions of a day from midnight. This means that the digits after the decimal point will be different for each form session and are a good candidate for a random seed. To use only that part of the time representation, we can use the :func:`substr` function.
 
 .. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, parameters, name, label, calculation
 
-  calculate,,my_seed,,"once(substr(decimal-date-time(now()), 10))"
+  calculate,,my_seed,,"once(substr(decimal-date-time(now()), 8))"
   select_one opt_abcd,"randomize=true,seed=${my_seed}",select_one_widget,Select one with random choice order set once per filled form
 
 .. csv-table:: choices
@@ -1335,11 +1344,11 @@ In the example above, each time the question is displayed, the choices will be i
   opt_abcd,c,C
   opt_abcd,d,D
 
-This seed can also be used to recreate the order choices were displayed in. See `the XForms spec <https://getodk.github.io/xforms-spec/#fn:randomize>`_ for a description of the randomization algorithm used.
+To recreate the order that choices were displayed in from the seed, see `the XForms spec <https://getodk.github.io/xforms-spec/#fn:randomize>`_ for a description of the randomization algorithm used.
 
 .. note::
 
-  In the example above, the integer seed is created from the last 8 numbers of the :func:`decimal-date-time()` which is unlikely to repeat across devices. In the seed expression, :func:`once` is important because it makes sure the seed is not changed if the same filled form is opened more than once.
+  If you use a changing value like time in your seed expression, :func:`once` is important because it makes sure the seed is not changed if the same filled form is opened more than once.
 
 .. _or-other:
 
