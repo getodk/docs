@@ -577,6 +577,7 @@ To use S3-compatible storage for all files saved in Central, follow these steps:
 
    .. code-block:: bash
 
+      S3_REGION=us-east-1
       S3_SERVER=https://service.com
       S3_ACCESS_KEY=MY_ACCESS_KEY
       S3_SECRET_KEY=MY_SECRET
