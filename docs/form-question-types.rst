@@ -1377,6 +1377,8 @@ Like with :ref:`select-widgets`, the options are listed on a sheet named **choic
 
 To change the order of the options in the list, tap the :guilabel:`Rank items` button. In the resulting dialog, long press on an item and once it gets a border around it, drag it up or down to change the order. If no :ref:`default <default-responses>` is provided, the value for the question is blank until the user taps :guilabel:`OK` in the ranking dialog.
 
+To limit the options in the rank widget based on the answer to a previous question, specify an expression in the :ref:`choice_filter <cascading-selects>` column of the **survey** sheet.
+
 type
   ``rank {list_name}``
 
