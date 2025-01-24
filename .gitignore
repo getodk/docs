@@ -13,3 +13,4 @@ docs/central-api*
 
 # IDE files
 .vscode/
+.idea
