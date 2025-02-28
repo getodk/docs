@@ -67,6 +67,15 @@ The ``entities`` sheet is included in the XLSForm template, but you can add it y
   * We recommend using :doc:`concat </form-logic/>` with fields from your form.
   * The label can be blank if the form updates the entity but does not change the label.
 
+.. list-table:: Minimal ``entities`` sheet for creating an entity
+   :widths: 50 50
+   :header-rows: 1
+
+   * - ``list_name``
+     - ``label``
+   * - trees
+     - concat("Tree: ", ${species})
+
 * **Optional** 
 
   * Column header ``create_if`` with a boolean expression.
@@ -74,6 +83,8 @@ The ``entities`` sheet is included in the XLSForm template, but you can add it y
   * Column header ``entity_id`` with the ID of an existing entity to update.
 
     * Use ``coalesce(${existing_item},uuid())`` if designing a form that both creates and updates entities. 
+
+
 
 .. list-table:: Example ``entities`` sheet for conditionally creating an entity
    :widths: 30 40 30
