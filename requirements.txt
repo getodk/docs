@@ -13,3 +13,4 @@ pyyaml
 sphinxext-opengraph
 sphinx-notfound-page
 sphinx-sitemap
+myst-parser
