@@ -132,23 +132,156 @@ The ``entities`` sheet is included in the XLSForm template, but you can add it y
 Using Entity Data
 -----------------
 
-.. comment
-   todo!
+Entity lists are used just like CSV attachments. You can use multiple entity lists in a single form. There are two main ways to attach an entity list: 
 
-* attach to form
-* choice filters
-* different keys
-* xpath expressions to get other properties
-* getting the id to reference when doing an update
+#. Use ``select_one_from_file listname.csv`` where **listname** is the name of your entity list.
+
+   * ``select_multiple_from_file listname.csv`` also works.
+
+#. Use ``csv-external`` with ``listname``.
+
+.. note::
+  When you upload your form to Central, it will check the expected attachments and automatically connect an entity list in place of an attachment when the name matches exactly. You can check what entity lists your forms are using by looking at those forms' attachments on Central.
+
+
+Working with a Selected Entity
+______________________________
+
+When you use ``select_one_from_file listname.csv``, this form field you write in the ``name`` column will hold the ID of your selected entity. This ID is the UUID that Central uses to uniquely track the entity, e.g. ``4d6a1fe1-6dff-4f72-b122-1413fe9b2dd0``. You might notice UUIDs like this in your submission data.
+
+.. list-table:: Example ``survey`` sheet for selecting an entity with ```select_one_from_file``.
+   :widths: 40 30 30
+   :header-rows: 1
+
+   * - ``type``
+     - ``name``
+     - ``label``
+   * - select_one_from_file households.csv
+     - hh_id
+     - Select household
+
+Updating a Selected Entity
+__________________________
+
+This UUID is the ID that Central needs when updating the entity.
+
+.. list-table:: Example ``entities`` sheet for updating a selected entity.
+   :widths: 40 30 30
+   :header-rows: 1
+
+   * - ``list_name``
+     - ``label``
+     - ``entity_id``
+   * - households
+     - 
+     - ${hh_id}
+
+
+Using a Different Key
+_____________________
+
+If your entities have a different important key, you can use the ``parameters`` column to specify a different entity property as the key.
+
+.. list-table:: Example 
+   :widths: 10 20 20 10 20
+   :header-rows: 1
+
+   * - ``type``
+     - ``name``
+     - ``label``
+     - ...
+     - ``parameters``
+   * - select_one_from_file turtles.csv
+     - turtle
+     - Select turtle
+     - ...
+     - value=tag_id
+
+
+
+Accessing Entity Data
+_____________________
+
+
+Once an entity has been selected, you can use that entity ID to access the properties of that entity. 
+
+.. list-table:: Example 
+   :widths: 30 30 10 30
+   :header-rows: 1
+
+   * - ``type``
+     - ``name``
+     - ``label``
+     - ``calculation``
+   * - calculate
+     - num_members
+     - 
+     - instance("households")/root/item[name=${hh_id}]/num_members
+
+
+You can use those existing values when updating properties. 
+
+You can also access the ``__version`` property of an entity to know how many updates have been made. 
+
+``instance("households")/root/item[name=${hh_id}]/_version``
+
+
+Pre-filling With Default Values
+_______________________________
+
+Note that if you want to use the existing value as a default, you will need to use a ``trigger`` to update the value when the entity is selected.
+
+.. list-table:: Example 
+   :widths: 10 10 10 10 10 10
+   :header-rows: 1
+
+   * - ``type``
+     - ``name``
+     - ``label``
+     - ``save_to``
+     - ``trigger``
+     - ``calculation``
+   * - integer
+     - num_members
+     - Enter number of household members
+     - num_members
+     - ${hh_id}
+     - instance("households")/root/item[name=${hh_id}]/num_members
+
+
+
 
 
 Structure of an Entity
 ----------------------
 
-.. comment
-   todo!
+Entity ID
+_________
 
-* ID aka uuid, __id, name, etc.
-* label
-* properties
-* some other system properties
+Every entity has an ID (a UUID) that is unique across all entity lists and projects within Central. 
+
+In a form, this entity ID is accesed through the ``name`` property. This is to fit in with existing CSV attachments and choice lists in which the ``name`` column represents a unique identifer for that row. 
+
+In an export and in OData, the entity ID appears under the ``__id`` column.
+
+
+Label
+_____
+
+Every entity has a label (a non-empty string) that is shown in forms the same way labels for choice lists and CSV attachments are shown.
+
+
+Properties
+__________
+
+Beyond the ID and Label, the properties of your entity are up to you. Note that ``name`` and the prefix ``__`` cannot be used as property names.
+
+Every value is stored as a string.
+
+We recommend storing the minimal amount of data necessary to drive your workflow. 
+
+
+System Properties
+_________________
+
+Every entity has a ``__version`` number available. Additional system properties such as ``__createdAt``, ``__updatedAt``, ``_createdBy`` are also available on the entity export and in OData.
