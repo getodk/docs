@@ -1,7 +1,7 @@
 .. comment
    add an og image like this :og:image: https://docs.getodk.org/_static/img/tutorial-first-form.png
 
-Entity Form Reference
+Entity Cheat Sheet
 =================================
 
 This page provides a quick reference for how to design :doc:`XLSForm </tutorial-first-form/>` for ODK that use, create, and update Entities.
