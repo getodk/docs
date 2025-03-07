@@ -1,3 +1,7 @@
+.. spelling:word-list::
+    hh
+    num
+
 .. comment
    add an og image like this :og:image: https://docs.getodk.org/_static/img/tutorial-first-form.png
 
@@ -260,7 +264,7 @@ _________
 
 Every entity has an ID (a UUID) that is unique across all entity lists and projects within Central. 
 
-In a form, this entity ID is accesed through the ``name`` property. This is to fit in with existing CSV attachments and choice lists in which the ``name`` column represents a unique identifer for that row. 
+In a form, this entity ID is accessed through the ``name`` property. This is to fit in with existing CSV attachments and choice lists in which the ``name`` column represents a unique identifier for that row.
 
 In an export and in OData, the entity ID appears under the ``__id`` column.
 
