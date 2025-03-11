@@ -138,7 +138,7 @@ The number of properties that each Entity has and the size and uniqueness of val
 If you have a form with may Entities that feels slow, we encourage you to post about it on `the forum <https://forum.getodk.org/c/support/6>`_ so that we can recommend approaches that will make it work faster or design improvements to the system.
 
 .. note::
-    We generally do not recommend using `pulldata <https://xlsform.org/en/#how-to-pull-data-from-csv>`_ and `search() <https://xlsform.org/en/#dynamic-selects-from-pre-loaded-data>`_ instead of ``instance`` and ``select_one_from_file`` because they do not work with offline Entities. Starting in Collect v2024.3 and Central v2024.3, there is limited performance benefit to ``pulldata`` and ``search()``.
+    We generally do not recommend using `search() <https://xlsform.org/en/#dynamic-selects-from-pre-loaded-data>`_ instead of ``select_one_from_file`` because it does not work with offline Entities and is less flexible. Starting in Collect v2024.3 and Central v2024.3, there is limited performance benefit to ``search()``.
 
 My form captures data on multiple different things, can I create multiple Entities with a single submission?
 ------------------------------------------------------------------------------------------------------------
