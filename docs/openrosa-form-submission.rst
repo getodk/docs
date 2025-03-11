@@ -25,8 +25,6 @@ OpenRosa servers MUST provide a URI capable of accepting HTTP POST Requests. Acc
 
 The server MUST support HTTP 1.1 chunked transfer encoding for receiving the POST content. There is no minimum set of standards for timeouts, maximum content length, or other http configurations, but servers are encouraged to support lenient connections and the largest possible content size, since many of the connections will be from unreliable channels and in environments where splitting content up is impractical.
 
-For maximum compatibility with J2ME clients, it is recommended that a server SHOULD NOT issue redirects. 
-
 .. note::
   Using digest authentication and https when communicating with a server does not require any redirects --- you can have authentication and secure transport without redirects.
 
