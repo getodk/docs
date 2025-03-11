@@ -8,12 +8,14 @@
 Entity Cheat Sheet
 =================================
 
-This page provides a quick reference for how to design :doc:`XLSForm </tutorial-first-form/>` for ODK that use, create, and update Entities.
+This page provides a quick reference for how to design forms in :doc:`XLSForm </tutorial-first-form/>` for ODK that use, create, and update Entities.
 
 Creating and Updating Entity Data
 ---------------------------------
 
-When you are designing your form, you can add extra information to that form that tells ODK how to use that submission data to create or update an entity. There are two places to make changes in your form: the ``survey`` sheet and the ``entities`` sheet.
+When you are designing your form, you can specify how transform submissions into entities. (Learn more about entities :doc:`here </entities-intro/>`.)
+
+To make a form that creates or updates entities, there are two places to make changes in your form: the ``survey`` sheet and the ``entities`` sheet.
 
 
 Survey Sheet
@@ -136,24 +138,24 @@ The ``entities`` sheet is included in the XLSForm template, but you can add it y
 Using Entity Data
 -----------------
 
-Entity lists are used just like CSV attachments. You can use multiple entity lists in a single form. There are two main ways to attach an entity list: 
+Entity lists are used just like CSV attachments. You can use multiple entity lists in a single form. There are two main ways to attach an entity list where **listname** is the name of your entity list:
 
-#. Use ``select_one_from_file listname.csv`` where **listname** is the name of your entity list.
+#. Use ``select_one_from_file listname.csv`` or ``select_multiple_from_file listname.csv`` 
 
-   * ``select_multiple_from_file listname.csv`` also works.
+   * The **.csv** extension after **listname** is necessary.
 
-#. Use ``csv-external`` with ``listname``.
+#. Use ``csv-external`` with ``listname``
 
 .. note::
   When you upload your form to Central, it will check the expected attachments and automatically connect an entity list in place of an attachment when the name matches exactly. You can check what entity lists your forms are using by looking at those forms' attachments on Central.
 
 
-Working with a Selected Entity
+Selecting an Entity
 ______________________________
 
 When you use ``select_one_from_file listname.csv``, this form field you write in the ``name`` column will hold the ID of your selected entity. This ID is the UUID that Central uses to uniquely track the entity, e.g. ``4d6a1fe1-6dff-4f72-b122-1413fe9b2dd0``. You might notice UUIDs like this in your submission data.
 
-.. list-table:: Example ``survey`` sheet for selecting an entity with ```select_one_from_file``.
+.. list-table:: Example ``survey`` sheet for selecting an entity with ``select_one_from_file``.
    :widths: 40 30 30
    :header-rows: 1
 
@@ -163,6 +165,35 @@ When you use ``select_one_from_file listname.csv``, this form field you write in
    * - select_one_from_file households.csv
      - hh_id
      - Select household
+
+
+Looking up an Entity from an External CSV
+______________________________________
+
+Another way to choose an entity from a list is by another key. Note that the ``calculate`` to get the ``name`` (also referred to as Entity ID or UUID) is only required if you need to update the entity. 
+
+.. list-table:: Example of selecting a household by a barcode ID.
+   :widths: 40 20 10 30
+   :header-rows: 1
+
+   * - ``type``
+     - ``name``
+     - ``label``
+     - ``calculation``
+   * - csv-external
+     - households
+     - 
+     - 
+   * - barcode
+     - barcode
+     - Scan household barcode
+     -
+   * - calculate
+     - hh_id
+     - 
+     - instance("households")/root/item[id=${barcode}]/name
+
+
 
 Updating a Selected Entity
 __________________________
@@ -181,33 +212,12 @@ This UUID is the ID that Central needs when updating the entity.
      - ${hh_id}
 
 
-Using a Different Key
-_____________________
-
-If your entities have a different important key, you can use the ``parameters`` column to specify a different entity property as the key.
-
-.. list-table:: Example 
-   :widths: 10 20 20 10 20
-   :header-rows: 1
-
-   * - ``type``
-     - ``name``
-     - ``label``
-     - ...
-     - ``parameters``
-   * - select_one_from_file turtles.csv
-     - turtle
-     - Select turtle
-     - ...
-     - value=tag_id
-
-
 
 Accessing Entity Data
 _____________________
 
 
-Once an entity has been selected, you can use that entity ID to access the properties of that entity. 
+Once an entity has been selected, you can use that entity ID to access the properties of that entity. You can also access the ``__version`` system property of an entity to know how many updates have been made. 
 
 .. list-table:: Example 
    :widths: 30 30 10 30
@@ -223,11 +233,6 @@ Once an entity has been selected, you can use that entity ID to access the prope
      - instance("households")/root/item[name=${hh_id}]/num_members
 
 
-You can use those existing values when updating properties. 
-
-You can also access the ``__version`` property of an entity to know how many updates have been made. 
-
-``instance("households")/root/item[name=${hh_id}]/_version``
 
 
 Pre-filling With Default Values
@@ -253,6 +258,26 @@ Note that if you want to use the existing value as a default, you will need to u
      - instance("households")/root/item[name=${hh_id}]/num_members
 
 
+
+Using a Different Key
+_____________________
+
+If your entities have a different important key, you can use the ``parameters`` column to specify a different entity property as the key. This is useful when you are *not* updating the entity in the form, and just using the entity list to manage shared data.
+
+.. list-table:: Example 
+   :widths: 10 20 20 10 20
+   :header-rows: 1
+
+   * - ``type``
+     - ``name``
+     - ``label``
+     - ...
+     - ``parameters``
+   * - select_one_from_file states.csv
+     - state
+     - Select state
+     - ...
+     - value=state_id
 
 
 
