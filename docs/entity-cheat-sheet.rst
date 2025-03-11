@@ -135,6 +135,23 @@ The ``entities`` sheet is included in the XLSForm template, but you can add it y
    Current limitation: Only one entity list can be updated per form and each submission can only create or update a single entity.
 
 
+Saving the Entity ID in a Registration Form
+___________________________________________
+
+Depending on your workflow, it may be helpful to save the Entity ID (UUID) in the submission data where the entity is created. 
+
+.. list-table:: Example of saving the ID of a new entity in the submission.
+   :widths: 40 30 30
+   :header-rows: 1
+
+   * - ``type``
+     - ``name``
+     - ``calculation``
+   * - calculate
+     - new_entity_id
+     - ``/data/meta/entity/@id``
+     
+
 Using Entity Data
 -----------------
 
