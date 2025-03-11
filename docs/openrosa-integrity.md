@@ -17,7 +17,7 @@ This request will return an integrity document.
 The structure of the integrity document returned by an integrity request is as follows:
 
 ```xml
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version='1.0' encoding='UTF-8'?>
 <data>
 <entities>
     <entity id="24b47424-ccf8-4f4b-b4cd-34ff5c71eddd">
