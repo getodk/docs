@@ -126,9 +126,9 @@ There are two current limitations that make millions of Entities impractical: da
 
 Currently, all Entities that have not been deleted are sent to every device on every update. Depending on your data connection, this may be a limiting factor for your project. To address this, we will eventually add functionality such as archiving Entities, synchronizing only updated Entities, or assigning a subset of Entities to a user.
 
-Starting in Collect v2024.3 and Central v2024.3, Entities are represented in a database. If you use simple expressions using ``=``, ``and`` and ``or`` in choice filters or :ref:`lookup expressions <referencing-values-in-datasets>`, they will be performed quickly. We verify that a form with 100,000 Entities with 6 properties that are each 36 random characters long is usable on a device from 2021 with 3 GB of RAM.
+Starting in Collect v2024.3 and Central v2024.3, Entities are optimized so that larger numbers can be used in forms. If your choice filters and :ref:`lookup expressions <referencing-values-in-datasets>` use simple expressions with ``=``, ``and`` and ``or``, they will be performed quickly. We verify that a form with 100,000 Entities with 6 properties that are each 36 random characters long is usable on a device from 2021 with 3 GB of RAM.
 
-If you use function calls in choice filters or lookup expressions, the entire Entity List will need to be stored in memory. Modern devices can easily process multiple tens of thousands of entities in this way, but your form may become slow or crash if you have more than 50,000 Entities.
+If you use function calls in choice filters or lookup expressions, the entire Entity List may need to be stored in memory. Modern devices can easily process multiple tens of thousands of entities in this way, but your form may become slow or crash if you have more than 50,000 Entities.
 
 The number of properties that each Entity has and the size and uniqueness of values saved will also affect both data transfer and form performance.
 
