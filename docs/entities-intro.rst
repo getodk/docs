@@ -124,11 +124,21 @@ Can I have millions of Entities?
 
 There are two current limitations that make millions of Entities impractical: data transfer and form performance.
 
-Currently, all Entities that have not been deleted are sent to every device on every update. Depending on your data connection, this may be a limiting factor for your project. We will eventually add support for archiving Entities to address this limitation.
+Currently, all Entities that have not been deleted are sent to every device on every update. Depending on your data connection, this may be a limiting factor for your project. To address this, we will eventually add functionality such as archiving Entities, synchronizing only updated Entities, or assigning a subset of Entities to a user.
 
-Entities are currently represented in memory for access by forms. Modern devices can easily process multiple tens of thousands of entities in this way, but your form may become slow or crash if you have more than 50,000 Entities.
+Starting in Collect v2024.3 and Central v2024.3, Entities are represented in a database. If you use simple expressions using ``=``, ``and`` and ``or`` in choice filters or :ref:`lookup expressions <referencing-values-in-datasets>`, they will be performed quickly. We verify that a form with 100,000 Entities with 6 properties that are each 36 random characters long is usable on a device from 2021 with 3 GB of RAM.
 
-We are actively working on addressing these performance limitations and expect significant improvements by late 2024. In the mean time, one possible workaround is to use `pulldata <https://xlsform.org/en/#how-to-pull-data-from-csv>`_ and `search() <https://xlsform.org/en/#dynamic-selects-from-pre-loaded-data>`_ instead of `instance` and `select_one_from_file`. These methods are less flexible but they will perform better.
+If you use function calls in choice filters or lookup expressions, the entire Entity List will need to be stored in memory. Modern devices can easily process multiple tens of thousands of entities in this way, but your form may become slow or crash if you have more than 50,000 Entities.
+
+The number of properties that each Entity has and the size and uniqueness of values saved will also affect both data transfer and form performance.
+
+.. seealso::
+    :ref:`What form fields should I save to my Entities as properties? <entities-intro-form-fields>`
+
+If you have a form with may Entities that feels slow, we encourage you to post about it on `the forum <https://forum.getodk.org/c/support/6>`_ so that we can recommend approaches that will make it work faster or design improvements to the system.
+
+.. note::
+    We generally do not recommend using `pulldata <https://xlsform.org/en/#how-to-pull-data-from-csv>`_ and `search() <https://xlsform.org/en/#dynamic-selects-from-pre-loaded-data>`_ instead of ``instance`` and ``select_one_from_file`` because they do not work with offline Entities. Starting in Collect v2024.3 and Central v2024.3, there is limited performance benefit to ``pulldata`` and ``search()``.
 
 My form captures data on multiple different things, can I create multiple Entities with a single submission?
 ------------------------------------------------------------------------------------------------------------
@@ -231,6 +241,8 @@ You can access a specific Entity's properties using a :ref:`lookup expression <r
     * :ref:`Looking up values in a list <referencing-values-in-datasets>`
     * :doc:`Community reporting tutorial <tutorial-community-reporting>`
     * :ref:`Build a form that uses Entities <central-entities-follow-up-forms>`
+
+.. _entities-intro-form-fields:
 
 What form fields should I save to my Entities as properties?
 ------------------------------------------------------------
