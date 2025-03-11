@@ -122,23 +122,16 @@ For now, you can limit the Entities that are available from a :ref:`select_one_f
 Can I have millions of Entities?
 --------------------------------
 
-There are two current limitations that make millions of Entities impractical: data transfer and form performance.
+Yes, but there are two limitations that may make millions of Entities impractical: data transfer and form performance.
 
-Currently, all Entities that have not been deleted are sent to every device on every update. Depending on your data connection, this may be a limiting factor for your project. To address this, we will eventually add functionality such as archiving Entities, synchronizing only updated Entities, or assigning a subset of Entities to a user.
+Currently, all Entities are sent to every device on every update. Depending on how much data is stored in your Entities and your team's network connection, using millions of Entities may not be practical. To address this limitation, we plan on adding support for archiving Entities, synchronizing only updated Entities, or assigning a subset of Entities to a user.
 
-Starting in Collect v2024.3 and Central v2024.3, Entities are optimized so that larger numbers can be used in forms. If your choice filters and :ref:`lookup expressions <referencing-values-in-datasets>` use simple expressions with ``=``, ``and`` and ``or``, they will be performed quickly. We verify that a form with 100,000 Entities with 6 properties that are each 36 random characters long is usable on a device from 2021 with 3 GB of RAM.
+Choice filters and :ref:`lookup expressions <referencing-values-in-datasets>` are the other limiting factor. Starting in Collect v2024.3 and Central v2024.3, simple and common expressions with ``=``, ``and`` and ``or`` are very fast. Complex expressions in lookups or choice filters (e.g., :doc:`functions <form-operators-functions>` like :func:`substr`) may slow your form if you have more than 50,000 Entities on devices with low amounts of RAM. We regularly review our analytics to look for opportunities for performance improvements.
 
-If you use function calls in choice filters or lookup expressions, the entire Entity List may need to be stored in memory. Modern devices can easily process multiple tens of thousands of entities in this way, but your form may become slow or crash if you have more than 50,000 Entities.
-
-The number of properties that each Entity has and the size and uniqueness of values saved will also affect both data transfer and form performance.
-
-.. seealso::
-    :ref:`What form fields should I save to my Entities as properties? <entities-intro-form-fields>`
-
-If you have a form with may Entities that feels slow, we encourage you to post about it on `the forum <https://forum.getodk.org/c/support/6>`_ so that we can recommend approaches that will make it work faster or design improvements to the system.
+The number of properties that each Entity has, the size and uniqueness of values saved, and the devices used all affect data transfer and form performance. If you have a form with many Entities that feels slow, we encourage you to post about it on `the forum <https://forum.getodk.org/c/support/6>`_ so that we can recommend approaches that will make it work faster or design improvements to the system.
 
 .. note::
-    We generally do not recommend using `search() <https://xlsform.org/en/#dynamic-selects-from-pre-loaded-data>`_ instead of ``select_one_from_file`` because it does not work with offline Entities and is less flexible. Starting in Collect v2024.3 and Central v2024.3, there is limited performance benefit to ``search()``.
+    We do not recommend using `search() <https://xlsform.org/en/#dynamic-selects-from-pre-loaded-data>`_ instead of ``select_one_from_file`` because it does not work with offline Entities and is less flexible. Starting in Collect v2024.3 and Central v2024.3, there is limited performance benefit to ``search()``.
 
 My form captures data on multiple different things, can I create multiple Entities with a single submission?
 ------------------------------------------------------------------------------------------------------------
