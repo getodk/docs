@@ -555,7 +555,9 @@ To use S3-compatible storage for all files saved in Central, follow these steps:
                       "s3:GetBucketLocation",
                       "s3:PutObject",
                       "s3:GetObject",
-                      "s3:DeleteObject"
+                      "s3:DeleteObject",
+                      "s3:ListBucketMultipartUploads",
+                      "s3:ListMultipartUploadParts"
                     ],
                     "Resource": [
                       "arn:aws:s3:::MY_BUCKET/*",
