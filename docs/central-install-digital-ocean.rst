@@ -877,11 +877,11 @@ Enketo is the software that Central uses to render forms in a web browser. It is
 Disabling or Customizing Sentry
 -------------------------------
 
-By default, we enable `Sentry error logging <https://sentry.io>`_ in Central's service container, which provides the Central team with an anonymized log of unexpected errors that occur while your server is running. 
+By default, we enable `Sentry error logging <https://sentry.io>`_ in Central's service container, which provides the Central team with an anonymized log of unexpected errors that occur while your server is running.  We also enable `Sentry tracing <https://docs.sentry.io/concepts/key-terms/tracing/>`_ to gather performance metrics and help our team make performance improvements.
 
 This information is only visible to the development team and should never contain any of your user or form data, but if you feel uncomfortable with this, you can disable Sentry:
 
-#. Edit the file ``files/service/config.json.template`` and remove the ``sentry`` lines, starting with ``"sentry": {`` through the next three lines until you remove the matching ``}``.
+#. Edit the file ``files/service/config.json.template`` and remove the ``sentry`` lines, starting with ``"sentry": {`` through the next four lines until you remove the matching ``}``.
 
    .. code-block:: bash
 
