@@ -23,3 +23,4 @@ OpenRosa 1.0 APIs were formally approved by the OpenRosa Working Group in Decemb
   openrosa-authentication
   openrosa-form-submission
   openrosa-form-list
+  openrosa-integrity

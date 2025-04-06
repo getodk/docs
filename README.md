@@ -20,6 +20,12 @@ Please [file an issue](https://github.com/getodk/docs/issues) if you can't find 
 
 We highly recommend you use a virtual environment like [`virtualenv`](https://virtualenv.pypa.io/en/stable/). If you need to use different versions of Python, we recommend [`pyenv`](https://github.com/pyenv/pyenv).
 
+You can also use Docker to build and view the docs:
+
+```bash
+make autobuild-docker
+```
+
 ### Cloning the repo
 
 Clone the docs repo and make sure all the requirements are installed:
