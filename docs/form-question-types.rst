@@ -140,6 +140,18 @@ The external app widget is displayed when the ``appearance`` attribute begins wi
 
   text,ex_string_widget,Ex string widget,ex:change.uw.android.BREATHCOUNT,text type with ex:change.uw.android.BREATHCOUNT appearance (can use other external apps)
 
+Hiding the received value
+""""""""""""""""""""""""""""
+
+By default, the received value is shown below the widget button. In some cases, the raw received value is not helpful to display. For example, it may be very long or may represent a list of values. In that case, you can use the ``hidden-answer`` appearance. We generally recommend putting this question in a :ref:`field-list <field-list>` to provide some useful feedback about the received value.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, hint
+
+  text,ex_string_widget,Ex string widget,ex:change.uw.android.BREATHCOUNT hidden-answer,text type with ex:change.uw.android.BREATHCOUNT hidden-answer appearance (can use other external apps)
+
 
 .. _masked-text-widget:
 
