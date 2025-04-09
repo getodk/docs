@@ -11,7 +11,7 @@ This page provides a quick reference for how to design forms in :doc:`XLSForm </
 Creating and Updating Entity Data
 ---------------------------------
 
-When you are designing your form, you can specify how Entities should be created from submissions.
+When you are designing your form, you can specify how Entities should be created or updated from submissions.
 
 To make a form that creates or updates Entities, there are two places to make changes in your form: the ``survey`` sheet and the ``entities`` sheet.
 
@@ -26,7 +26,7 @@ ____________
 * For each field you want to save to an Entity, fill out the corresponding Entity *property name* in this column.
   
   * The property name can be different from the field name.
-  * Not every field needs to be saved to a property. Only fill out the fields you need for your Entity workflow.
+  * Not every field needs to be saved to a property. Only make Entity properties for the fields you need in your Entity workflow.
 
 
 .. note::
@@ -37,67 +37,70 @@ ____________
 .. csv-table:: Example ``survey`` sheet with ``save_to`` column filled in with property names for certain fields
   :header: type, name, label, ..., save_to
 
-  geopoint, location, Tree Location, ..., location
+  geopoint, location, Tree Location, ..., geometry
   text, species, Tree Species, ..., species
   text, intake_notes, Intake Notes, ...,
 
 Entities Sheet
 ______________
 
-The ``entities`` sheet is included in the `XLSForm template <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_, but you can add it yourself if your form does not have one. The required column headers include ``list_name`` and ``label`` but there are several optional column headers depending on your desired functionality.
+The ``entities`` sheet is included in the `XLSForm template <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_, but you can add it yourself if your form does not have one. The required column headers are ``list_name`` and ``label`` and there are several optional column headers depending on your desired functionality.
 
+* Under ``list_name``, write the name of the Entity List to create or update Entities in
 
-* Under ``list_name``, write the name of your Entity List.
-
-* Under ``label``, write how to build a label for each Entity.
+* Under ``label``, write how to build a label for each Entity
   
   * We recommend using :doc:`concat </form-logic/>` with fields from your form.
-  * The label can be blank if the form updates the Entity but does not change the label.
+  * You can use the label to show status information about the Entity, including using emoji like ✅ or ⚪️.
 
+.. note::
+   Currently, the ``entities`` show can only have one row because each submission can only create or update a single Entity.
 
-.. rubric:: XLSForm
+Create
+~~~~~~
 
-.. csv-table:: Minimal ``entities`` sheet for creating an Entity
+.. csv-table:: entities
   :header: list_name, label
 
   trees, "concat(""Tree: "", ${species})"
 
-* **Optional** 
+Update
+~~~~~~
 
-  * Column header ``create_if`` with a boolean expression.
-  * Column header ``update_if`` with a boolean expression.
-  * Column header ``entity_id`` with the ID of an existing Entity to update.
+.. csv-table:: entities
+  :header: list_name, label, entity_id
 
-    * Use ``coalesce(${existing_item},uuid())`` if designing a form that both creates and updates Entities. 
+  trees, "concat(""Tree: "", ${species})", ${tree}
 
+.. note::
 
-.. rubric:: XLSForm
+   When updating an Entity, the value in the ``entity_id`` column is required and must be the Entity's system ID. This generally means that you need to attach an Entity List in order to update its Entities. See the :ref:`using Entity data <quick-reference-using-entity-data>` section.
 
-.. csv-table:: Example ``entities`` sheet for conditionally creating an Entity
+   The label can be blank if the form updates the Entity but does not change the label.
+
+Create or update
+~~~~~~~~~~~~~~~~
+
+.. csv-table:: entities
+  :header: list_name, label, create_if, update_if, entity_id
+
+  trees, "concat(""Tree: "", ${species})", ${tree} = '', ${tree} != '', "coalesce(${tree}, uuid())"
+
+Conditionally create
+~~~~~~~~~~~~~~~~~~~~
+
+.. csv-table:: entities
    :header: list_name, label, create_if
 
     trees, "concat(""Tree: "", ${species})", ${tree_cm} > 20
 
+Conditionally update
+~~~~~~~~~~~~~~~~~~~~
 
-.. rubric:: XLSForm
+.. csv-table:: entities
+   :header: list_name, label, entity_id, update_if
 
-.. csv-table:: Example ``entities`` sheet for conditionally updating an Entity
-   :header: list_name, label, update_if, entity_id
-
-    orders, "Approved: ${existing_order}", ${status} = 'approved', ${existing_order}
-
-
-.. rubric:: XLSForm
-
-.. csv-table:: Example ``entities`` sheet for creating and updating Entities in the same form
-   :header: list_name, label, create_if, update_if, entity_id
-
-    trees, "concat(""Tree: "", ${species})", ${create_or_update} = 'create', ${create_or_update} = 'update', coalesce(${existing_item},uuid())
-
-
-.. note::
-   Current limitation: Only one Entity List can be updated per form and each submission can only create or update a single Entity.
-
+    orders, "Approved: ${existing_order}", ${existing_order}, ${status} = 'approved'
 
 Saving the Entity ID in a Registration Form
 ___________________________________________
@@ -111,6 +114,7 @@ Depending on your workflow, it may be helpful to save the Entity ID (UUID) in th
 
    calculate, new_entity_id, ``/data/meta/entity/@id``
 
+.. _quick-reference-using-entity-data:
 
 Using Entity Data
 -----------------
@@ -121,20 +125,19 @@ Entity Lists are used just like CSV attachments. You can use multiple Entity Lis
 
    * The **.csv** extension after **listname** is necessary.
 
-#. Use ``csv-external`` with ``listname``
+#. Use type :ref:`csv-external <form-datasets-attaching-csv>` with name ``listname`` (no extension)
 
 .. note::
   When you upload your form to Central, it will check the expected attachments and automatically connect an Entity List in place of an attachment when the name matches exactly. You can check what Entity Lists your forms are using by looking at those forms' attachments on Central.
 
-
 Selecting an Entity
 ______________________________
 
-When you use ``select_one_from_file listname.csv``, this form field will hold the ID of your selected Entity. This ID is the UUID that Central uses to uniquely track the Entity, e.g. ``4d6a1fe1-6dff-4f72-b122-1413fe9b2dd0``. You might notice UUIDs like this in your submission data.
+When you use ``select_one_from_file listname.csv``, this form field will hold the system ID of your selected Entity. This ID looks like ``4d6a1fe1-6dff-4f72-b122-1413fe9b2dd0`` and is used to uniquely identify your Entity.
 
-.. rubric:: XLSForm
+.. rubric:: XLSForm: selecting an Entity with ``select_one_from_file``
 
-.. csv-table:: Example ``survey`` sheet for selecting an Entity with ``select_one_from_file``.
+.. csv-table:: survey
    :header: type, name, label
 
    select_one_from_file households.csv, hh_id, Select household
@@ -143,26 +146,29 @@ When you use ``select_one_from_file listname.csv``, this form field will hold th
 Looking up an Entity from an External CSV
 __________________________________________
 
-Another way to choose an Entity from a list is by another key. Note that the ``calculate`` to get the ``name`` (also referred to as Entity ID or UUID) is only required if you need to update the Entity. 
+You can also identify a specific Entity using other data entered by the user, for example, a barcode number.
 
-.. rubric:: XLSForm
+.. rubric:: XLSForm: selecting a household by a barcode ID
 
-.. csv-table:: Example of selecting a household by a barcode ID.
+.. csv-table:: survey
    :header: type, name, label, calculation
 
    csv-external, households, ,
    barcode, barcode, Scan household barcode,
-   calculate, hh_id, , instance("households")/root/item[id=${barcode}]/name
+   calculate, hh_id, , instance("households")/root/item[hh_id=${barcode}]/name
+
+.. note::
+   Every Entity has a ``name`` property which represents its system ID. The ``calculate`` in the example above shows how to access that system ID from another unique value like a barcode number. The system ID is necessary to update the Entity.
 
 
 Updating a Selected Entity
 __________________________
 
-The ID from a ``select_one_from_file`` or the ``name`` property described in the section above is the ID (represented as a UUID) that Central needs when updating the Entity.
+The ID from a ``select_one_from_file`` or the ``name`` property described in the section above is the ID needed to update the Entity.
 
-.. rubric:: XLSForm
+.. rubric:: XLSForm: updating a selected Entity
 
-.. csv-table:: Example ``entities`` sheet for updating a selected Entity.
+.. csv-table:: entities
    :header: list_name, label, entity_id
 
    household, ,${hh_id}
@@ -180,9 +186,9 @@ _____________________
 
 Once an Entity has been selected, you can use that Entity ID to access the properties of that Entity. You can also access the ``__version`` system property of an Entity to know how many updates have been made. 
 
-.. rubric:: XLSForm
+.. rubric:: XLSForm: using the ``instance`` function to look up a property of a selected Entity
 
-.. csv-table:: Example of using the ``instance`` function to look up a property of a selected Entity.
+.. csv-table:: survey
    :header: type, name, label, calculation
 
     calculate, num_members, ,instance("households")/root/item[name=${hh_id}]/num_members
@@ -195,9 +201,9 @@ _______________________________
 Note that if you are using ``select_one_from_file`` and want to use the existing value as a default, you will need to use a ``trigger`` to update the value when the Entity is selected.
 This follows the pattern of using `dynamic defaults from form data </form-logic/#dynamic-defaults-from-form-data>`_.
 
-.. rubric:: XLSForm
+.. rubric:: XLSForm: using dynamic defaults from form data to pre-fill a field with an Entity property
 
-.. csv-table:: Example of using dynamic defaults from form data to pre-fill a field with an Entity property.
+.. csv-table:: survey
    :header: type, name, label, save_to, trigger, calculation
 
    integer, num_members, Enter number of household members, num_members, ${hh_id}, instance("households")/root/item[name=${hh_id}]/num_members
@@ -207,11 +213,11 @@ This follows the pattern of using `dynamic defaults from form data </form-logic/
 Using a Different Key
 _____________________
 
-If your Entities have a different important key, you can use the ``parameters`` column to specify a different Entity property as the key. This is useful when you are *not* updating the Entity in the form, and just using the Entity list to manage shared data.
+If your Entities have a different important property used to uniquely identify them, you can save that property's value when an Entity is selected. Use the ``parameters`` column to specify a different Entity property as the value that will be saved. This is useful when you are *not* updating the Entity in the form, and just using the Entity list to manage shared data.
 
-.. rubric:: XLSForm
+.. rubric:: XLSForm: saving a different property when selecting an Entity
 
-.. csv-table:: Example of using a different column from your Entity List to serve as the ID or key.
+.. csv-table:: survey
    :header: type, name, label, ..., parameters
 
    select_one_from_file states.csv, state, Select state, ..., value=state_id
