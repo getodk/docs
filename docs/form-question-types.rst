@@ -2962,3 +2962,31 @@ Background audio recording troubleshooting
 """"""""""""""""""""""""""""""""""""""""""""
 
 In some rare cases such as the device running out of space, the recording may complete successfully but not be attached to the form. If this happens, the recording may be available in the ``recordings`` folder of the :ref:`Collect directory <collect-directory>`. This folder is never cleared so consider emptying it yourself once you have retrieved its files.
+
+.. _background-geolocation:
+
+Background geolocation
+~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  ``background-geopoint``
+
+.. versionadded:: v2024.3
+
+  `ODK Central v2024.3 <https://github.com/getodk/central/releases/tag/v2024.3>`_
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, trigger
+
+  select_one yes_no, at_door, Are you at the front door?
+  background-geopoint, my_location, , ${at_door}
+
+The ``background-geopoint`` question type lets you automatically capture a single geolocation in :ref:`geopoint format <location-widgets>` when the user changes the value of another question. The geolocation reading with the highest accuracy received in a 20-second window after the triggering question is changed will be recorded. To capture location automatically when first launching a form, see :ref:`start-geopoint <start-geopoint>`.
+
+If geolocation information is unavailable, the question will be left blank. Reasons for a blank value may include the enumerator turning off location providers, Collect not having location permissions, Google Play Services not being installed, the GPS not having satellite lock and more. No troubleshooting information is provided in the form submission.
+
+Any time a survey with a ``background-geopoint`` question is opened in Collect, the enumerator will see a warning that the form tracks device location. If the device battery is low, or if location tracking needs to be turned off for any reason, you can tap :menuselection:`⋮ --> Track location` or turn off location providers in Android.
+
+Including a ``background-geopoint`` question may make it faster to get high-accuracy geolocation readings for other :ref:`location question types <location-widgets>` by "warming" the GPS.
