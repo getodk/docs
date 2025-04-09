@@ -2878,17 +2878,17 @@ Geolocation at survey start
 .. note::
   Geolocation at survey start was added in Collect v1.23 and Central v1.0.0.
 
-The ``start-geopoint`` question type is used to capture a single geolocation in :ref:`geopoint format <location-widgets>` when the survey is first started. Questions of type ``start-geopoint`` may be given any allowable name. Although it is possible to have more than one ``start-geopoint`` question in a form, all will have the same value.
+The ``start-geopoint`` question type is used to capture a single geolocation in :ref:`geopoint format <location-widgets>` when the survey is first started. Questions of type ``start-geopoint`` may be given any allowable name. Although it is possible to have more than one ``start-geopoint`` question in a form, all will have the same value. You can also capture location in the background when a question's value changes using :ref:`background-geopoint <question-type-background-geopoint>`.
 
-Any time a survey with a `start-geopoint` question is opened in Collect, the enumerator will see a warning that the form tracks device location. If the device battery is low, or if location tracking needs to be turned off for any reason, you can tap :menuselection:`⋮ --> Track location` or turn off location providers in Android.
+Any time a survey with a ``start-geopoint`` question is opened in Collect, the enumerator will see a warning that the form tracks device location. If the device battery is low, or if location tracking needs to be turned off for any reason, you can tap :menuselection:`⋮ --> Track location` or turn off location providers in Android.
 
-The first time that a survey with a `start-geopoint` question is opened, Collect will attempt to read the device's geolocation. The geolocation reading with the highest accuracy received in a 20-second window will be recorded. A location icon will be displayed in the Android status bar while the geolocation is being requested by Collect.
+The first time that a survey with a ``start-geopoint`` question is opened, Collect will attempt to read the device's geolocation. The geolocation reading with the highest accuracy received in a 20-second window will be recorded. A location icon will be displayed in the Android status bar while the geolocation is being requested by Collect.
 
 Geolocation is read using data from GPS, WiFi and possibly other signals so this feature should work in most environments.
 
 If geolocation information is unavailable, the question will be left blank. Reasons for a blank value may include the enumerator turning off location providers, Collect not having location permissions, Google Play Services not being installed, the GPS not having satellite lock and more. No troubleshooting information is provided in the form submission.
 
-Including a `start-geopoint` question may make it faster to get high-accuracy geolocation readings for other :ref:`location question types <location-widgets>` by "warming" the GPS.
+Including a ``start-geopoint`` question may make it faster to get high-accuracy geolocation readings for other :ref:`location question types <location-widgets>` by "warming" the GPS.
 
 .. _calculate-question:
 
@@ -2963,9 +2963,9 @@ Background audio recording troubleshooting
 
 In some rare cases such as the device running out of space, the recording may complete successfully but not be attached to the form. If this happens, the recording may be available in the ``recordings`` folder of the :ref:`Collect directory <collect-directory>`. This folder is never cleared so consider emptying it yourself once you have retrieved its files.
 
-.. _background-geolocation:
+.. _question-type-background-geopoint:
 
-Background geolocation
+Background geopoint
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 type
@@ -2983,7 +2983,7 @@ type
   select_one yes_no, at_door, Are you at the front door?
   background-geopoint, my_location, , ${at_door}
 
-The ``background-geopoint`` question type lets you automatically capture a single geolocation in :ref:`geopoint format <location-widgets>` when the user changes the value of another question. The geolocation reading with the highest accuracy received in a 20-second window after the triggering question is changed will be recorded. To capture location automatically when first launching a form, see :ref:`start-geopoint <start-geopoint>`.
+The ``background-geopoint`` question type lets you automatically capture a single geolocation in :ref:`geopoint format <location-widgets>` when the user changes the value of another question. The geolocation reading with the highest accuracy received in a 20-second window after the triggering question is changed will be recorded. To capture location automatically when first launching a form, see :ref:`start-geopoint <metadata-start-geopoint>`.
 
 If geolocation information is unavailable, the question will be left blank. Reasons for a blank value may include the enumerator turning off location providers, Collect not having location permissions, Google Play Services not being installed, the GPS not having satellite lock and more. No troubleshooting information is provided in the form submission.
 
