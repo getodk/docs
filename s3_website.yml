@@ -56,4 +56,4 @@ redirects:
   validate/index.html: https://github.com/getodk/validate
   visualize/index.html: aggregate-visualize
   xlsform-first-form/index.html: tutorial-first-form
-  entity-cheat-sheet/index.html: entity-quick-reference
+  entity-cheat-sheet/index.html: entities-quick-reference
