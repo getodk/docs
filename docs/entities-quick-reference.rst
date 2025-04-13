@@ -3,8 +3,8 @@
     num
 
 
-Entity Cheat Sheet
-=================================
+Entity Quick Reference
+=======================
 
 This page provides a quick reference for how to design forms in :doc:`XLSForm </tutorial-first-form/>` for ODK that use, create, and update :doc:`Entities </entities-intro/>`.
 
@@ -141,7 +141,7 @@ When you use ``select_one_from_file listname.csv``, this form field will hold th
 
 
 Looking up an Entity from an External CSV
-______________________________________
+__________________________________________
 
 Another way to choose an Entity from a list is by another key. Note that the ``calculate`` to get the ``name`` (also referred to as Entity ID or UUID) is only required if you need to update the Entity. 
 
