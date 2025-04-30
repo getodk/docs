@@ -3,39 +3,54 @@
 Managing Submissions in Central
 ===============================
 
-The most common way to use ODK Central is in conjunction with a data collection client, typically on a mobile device, such as ODK Collect. To do this, you will need to :ref:`connect to it from your mobile device <central-users-app-configure>`, after which you will be able to :ref:`upload submissions <uploading-forms>` back to Central.
+When users fill out forms and submit them, Central receives Submissions. Central users with the right roles can then :ref:`manage those Submissions <central-submissions-accessing>` directly in Central, :ref:`download them <central-submissions-download>`, or :ref:`connect to them <central-submissions-odata>` from an external tool like Excel.
 
-ODK Central also bundles `Enketo <https://enketo.org>`_, which enables preview and submission of forms directly from a web browser. Please note that as with all ODK clients, Enketo does not always behave quite the same as Collect, or support the same features. Any authorized Web User may fill out a Form directly from the browser, as will be described in more detail below.
+.. _central-web-submissions:
 
-Finally, ODK Central offers Public Access Links. A Public Access Link grants anybody in possession of the link the ability to submit to a Form on your server. You can control whether each respondent can submit more than once, and revoke access from any Link at any time.
+Making Submissions from the web
+---------------------------------
 
-Submissions sent to Central are available to browse in a preview table, to connect directly to data analysis tools, and for download.
+In general, we recommend using the :doc:`ODK Collect Android application <collect-intro>` when doing enumerator-mediated data collection, especially in offline conditions or when using multiple forms for a single project. To do this, you will need to :ref:`connect to Central from your mobile device <central-users-app-configure>`, and then you will be able to :ref:`send submissions <uploading-forms>` back to Central. However, there are many scenarios in which web forms may be more appropriate:
+
+* Self-report. Use single-submission :ref:`Public Access Links <central-submissions-public-link>` that participants can fill out from any device.
+* Public surveys. Use :ref:`Public Access Links <central-submissions-public-link>` and share them on a poster as a QR code, by email, etc.
+* Non-Android mobile devices. You can give enumerators :ref:`Data Collector roles <central-users-web-roles>` in your project or send :ref:`Public Access Links <central-submissions-public-link>` for them to bookmark.
+* Data entry from paper forms. Web forms can be used at a computer with a keyboard to quickly transcribe data collected on paper.
+
+ODK Central bundles `Enketo <https://enketo.org>`_ to enable editing, previewing and submitting forms directly from a web browser.
+
+.. note::
+
+  Enketo does not always behave exactly like Collect, or support all the same features. The :doc:`XLSForm template <xlsform>` provides compatibility information and we recommend testing your form as you expect users to interact with it.
+
+Any authorized Web User may fill out a Form directly from the browser, as will be described in more detail below. Additionally, ODK Central offers Public Access Links which grant anybody in possession of the link the ability to submit to a Form on your server. You can control whether each respondent can submit more than once, and revoke access from any Link at any time. It is also possible to make Enketo web forms :ref:`usable while offline <central-offline-web-forms>`.
 
 .. _central-submissions-direct:
 
 Direct Web Browser Submissions
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Web Users who are Administrators, Project Managers, or Data Collectors can directly fill Forms in the web browser from the Central administration website. This functionality is provided by Enketo, which does not always behave quite the same as Collect, or support the same features.
 
-   .. image:: /img/central-submissions/new.png
+.. image:: /img/central-submissions/new.png
 
 Administrators and Project Managers can begin a survey by going to the :guilabel:`Submissions` tab of the Form, and clicking on the :guilabel:`New` button next to the Submissions header. This will open a new tab which will load the Form in Enketo.
 
-   .. image:: /img/central-submissions/data-collector-form-listing.png
+.. image:: /img/central-submissions/data-collector-form-listing.png
 
 Data Collectors do not have access to the detailed Form management pages. Instead, they will find a :guilabel:`Fill Form` button next to the Form name in the list of Forms on the Project Overview page.
 
 .. _central-submissions-public-link:
 
 Public Access Links
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 ODK Central allows the distribution of surveys to a broad or open respondent group using Public Access Links. These Links take recipients directly to the Form in their web browser, administered by Enketo.
 
 To create a Public Access Link, go to the Form's :guilabel:`Public Access` tab. Click on :guilabel:`Create Public Access Link…` to begin.
 
-   .. image:: /img/central-submissions/public-link-new.png
+.. image:: /img/central-submissions/public-link-new.png
+   :class: central-partial-screen
 
 In the window that appears, you'll need to name the Link. This name is for your own identification purposes in the administration website, and is not displayed to respondents.
 
@@ -49,14 +64,14 @@ You'll also need to decide whether to allow multiple submissions per respondent.
 
 Once a Link is created, it will appear in the table, along with a web address you can copy and paste to distribute the Link to respondents.
 
-   .. image:: /img/central-submissions/public-link-listing.png
+.. image:: /img/central-submissions/public-link-listing.png
 
-You cannot yet edit any of the details of a Public Link. This will come in a future version of Central.
+You cannot yet edit any of the details of a Public Link.
 
 .. _central-submissions-link-revoke:
 
 Revoking a Link
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 You can revoke a Link at any time to prevent any further Submissions through it. Once a Link is revoked, all Submissions will be immediately denied, and new attempts to load the Form using the Link will result in an error instead.
 
@@ -69,7 +84,7 @@ Accessing Submissions
 
 To find the Form submissions page, first find the form in the Form listings page (:menuselection:`--> Forms`) and click on it. You will be taken to the :ref:`Form Overview <central-forms-checklist>` page for that form. Click on the :menuselection:`--> Submissions` tab below the form name to find the submissions.
 
-   .. image:: /img/central-submissions/listing.png
+.. image:: /img/central-submissions/listing.png
 
 The table preview you see here will at first show you the first ten fields of your survey and their results, with the latest submissions shown closest to the top. Any downloadable files will appear with a green download link you can use to directly download that media attachment. The submission's instance ID will always be shown at the right side of this preview table.
 
@@ -90,12 +105,12 @@ Learn more about these options below:
 
 .. _central-submissions-download:
 
-Downloading submissions as CSVs
+Downloading Submissions as CSVs
 -------------------------------
 
 To download all submission data as :file:`.csv` tables, click on the :guilabel:`Download all # records` button on the right side of the listing page:
 
-   .. image:: /img/central-submissions/download-button.png
+.. image:: /img/central-submissions/download-button.png
 
 If you have any row filters applied to the submission table, those filters will be applied to your download as well. You can use this to, for example, download only submissions from a particular month, or only approved submissions.
 
@@ -106,7 +121,8 @@ Export options
 
 Once the download dialog opens, you'll be given some additional export options.
 
-   .. image:: /img/central-submissions/download-modal.png
+.. image:: /img/central-submissions/download-modal.png
+   :class: central-partial-screen
 
 Some of the options may be disabled if they do not apply to your data, or if they are not available due to features that you have enabled (such as managed encryption).
 
@@ -228,10 +244,10 @@ Once submissions have been reviewed, the submission table download and the OData
 
 .. _central-submissions-details:
 
-Submission Details
-------------------
+Viewing Submission Details
+--------------------------
 
-As of version 1.2, each submission has its own detail page which provides basic information about the submission, an activity history of action and discussion on that submission, and tools for updating the submission review state and data itself.
+Each submission has its own detail page which provides basic information about the submission, an activity history of action and discussion on that submission, and tools for updating the submission review state and data itself.
 
 .. image:: /img/central-submissions/details.png
 
@@ -246,8 +262,8 @@ You can leave a note when you update the review state, to indicate why the decis
 
 .. _central-submissions-editing:
 
-Submission Editing
-------------------
+Editing Submissions
+--------------------
 
 From the :ref:`submission detail page <central-submissions-details>` you can press the :guilabel:`Edit` button to edit the submission in your web browser. When an edited submission is resubmitted, a new version of it is created, just like a form version. You will be able to see previous submission versions in a future version of Central.
 
@@ -257,3 +273,56 @@ Finally, when edits are submitted, the submission :ref:`review state <central-su
 
 .. image:: /img/central-submissions/diff.png
 
+.. _central-offline-web-forms:
+
+Allowing web form users to work offline
+---------------------------------------
+
+.. note::
+
+   ODK Web Forms does not yet support offline use. If someone loses connectivity while filling out an ODK Web Forms form, they will be able to complete filling it out but will need an Internet connection before they can submit.
+
+Enketo's offlineable mode makes it possible to launch a form while offline, save drafts of that form, queue submissions to be sent to a server, and automatically send queued submissions once a connection is available.
+
+.. note::
+    Queued submissions are automatically sent **only if the form is open** in a browser when a connection is available.
+
+You can make an Enketo form offlineable by changing the form's web address and sharing that modified address. The way to do this depends on your Central version but links from older versions of Central will continue to work in newer versions.
+
+.. tab-set::
+
+  .. tab-item:: Central v2025.1.0+
+
+    **Offlineable link that does not require logging in**
+
+    #. Create a Public Access Link for your form. You can create a single shared link or repeat these instructions for each person filling out data so that you can track who is submitting.
+
+    #. Copy the link and paste it in a web browser.
+
+    #. Add ``/offline`` to the address right before the ``?st``.
+
+    #. Press ``Enter`` on your keyboard, confirm that you are redirected to a new address, and make sure that you see an orange connectivity icon in the upper left of the form.
+
+    #. Copy the link that you were redirected to and share it with your data collector(s).
+
+    **Offlineable link that requires logging in to submit**
+
+    #. Give the :guilabel:`Data Collector` role to any individual who will need to fill out this form.
+
+    #. Go to the form filling page for your form by clicking the :guilabel:`Add submission` button.
+
+    #. You should see your form and the web address should end with ``/new``. Add ``/offline`` to make the address end with ``/new/offline``.
+
+    #. Press ``Enter`` on your keyboard, confirm that you are redirected to a new address, and make sure that you see an orange connectivity icon in the upper left of the form.
+
+    #. Copy the link that you were redirected to and share it with your data collector(s). They will need to log in to first access the form and when they submit.
+
+  .. tab-item:: Central v2024.3.2 and prior
+
+    #. Go to a web form link by clicking the :guilabel:`New` button on the submissions page or by copying and pasting a :ref:`Public Access Link <central-submissions-public-link>`.
+
+    #. Add ``x/`` after ``/-/`` in the address. For :ref:`Public Access Links <central-submissions-public-link>`, replace ``single/`` with ``x/``.
+
+    #. Press ``Enter`` on your keyboard, and make sure that you see an orange connectivity icon in the upper left of the form.
+
+    #. Copy the link and share it with your data collector(s)
