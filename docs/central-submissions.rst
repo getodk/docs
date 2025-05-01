@@ -23,6 +23,10 @@ ODK Central bundles `Enketo <https://enketo.org>`_ to enable editing, previewing
 
   Enketo does not always behave exactly like Collect, or support all the same features. The :doc:`XLSForm template <xlsform>` provides compatibility information and we recommend testing your form as you expect users to interact with it.
 
+.. tip::
+
+  The ODK team is working on ODK Web Forms which will eventually replace Enketo in Central. Starting in Central v2025.1.0, you can :doc:`try it out <web-forms-intro>`!
+
 Any authorized Web User may fill out a Form directly from the browser, as will be described in more detail below. Additionally, ODK Central offers Public Access Links which grant anybody in possession of the link the ability to submit to a Form on your server. You can control whether each respondent can submit more than once, and revoke access from any Link at any time. It is also possible to make Enketo web forms :ref:`usable while offline <central-offline-web-forms>`.
 
 .. _central-submissions-direct:
@@ -282,18 +286,18 @@ Allowing web form users to work offline
 
    ODK Web Forms does not yet support offline use. If someone loses connectivity while filling out an ODK Web Forms form, they will be able to complete filling it out but will need an Internet connection before they can submit.
 
-Enketo's offlineable mode makes it possible to launch a form while offline, save drafts of that form, queue submissions to be sent to a server, and automatically send queued submissions once a connection is available.
+Enketo's offline-capable mode makes it possible to launch a form while offline, save drafts of that form, queue submissions to be sent to a server, and automatically send queued submissions once a connection is available.
 
 .. note::
     Queued submissions are automatically sent **only if the form is open** in a browser when a connection is available.
 
-You can make an Enketo form offlineable by changing the form's web address and sharing that modified address. The way to do this depends on your Central version but links from older versions of Central will continue to work in newer versions.
+You can make an Enketo form offline-capable by changing the form's web address and sharing that modified address. The way to do this depends on your Central version but links from older versions of Central will continue to work in newer versions.
 
 .. tab-set::
 
   .. tab-item:: Central v2025.1.0+
 
-    **Offlineable link that does not require logging in**
+    **Offline-capable link that does not require logging in**
 
     #. Create a Public Access Link for your form. You can create a single shared link or repeat these instructions for each person filling out data so that you can track who is submitting.
 
@@ -305,7 +309,7 @@ You can make an Enketo form offlineable by changing the form's web address and s
 
     #. Copy the link that you were redirected to and share it with your data collector(s).
 
-    **Offlineable link that requires logging in to submit**
+    **Offline-capable link that requires logging in to submit**
 
     #. Give the :guilabel:`Data Collector` role to any individual who will need to fill out this form.
 
