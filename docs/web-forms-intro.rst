@@ -32,7 +32,7 @@ You can see what functionality is currently supported `on Github <https://github
 * Entity creation or update
 * References to form fields in translated labels and hints (this works for single-language forms)
 
-You can change a form's setting between Enketo and Web Forms at any time. Any form links that users already have will continue to work and will reflect the setting on the server at the time that the user loads the form link.
+You can change a form's setting between Enketo and Web Forms at any time. Any form links that users already have will continue to work and will reflect the setting on the server at the time that the user loads the form link. Existing submissions are not affected by switching between web forms libraries.
 
 .. _web-forms-question-types:
 
@@ -67,4 +67,9 @@ Once location permissions are granted to Web Forms, it will start reading locati
 Image
 ~~~~~~~~
 
-The :ref:`image question type <image-widget>` without appearance allows the user to capture an image. In Web Forms, if the user is on a mobile device, they can take a picture with their mobile camera. Devices like laptops that use a desktop browser will not show the capture button, even if they have a built-in camera.
+The :ref:`image question type <default-image-widget>` without appearance allows the user to capture an image. In Web Forms, if the user is on a mobile device, they can take a picture with their mobile camera. Devices like laptops that use a desktop browser will not show the capture button, even if they have a built-in camera.
+
+Date
+~~~~~
+
+The :ref:`date question type <default-date-widget>` without appearance allows the user to enter a date. The user can manually type a date in the text field in the mm/dd/yyyy format or click in the field to select a date from a calendar. To change the year, they can press on the current year at the top of the calendar. To change the month, they can use the navigation arrows or press on the current month at the top of the calendar. There are also buttons to clear the date or jump to today.
