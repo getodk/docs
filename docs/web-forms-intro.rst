@@ -1,7 +1,7 @@
 Trying ODK Web Forms
 ====================
 
-ODK Central provides a web-based interface to your forms for data edits, to preview form definitions, and to enable data collection from devices other than Android phones. You can learn more about :ref:`how Central uses web-based forms <central-web-submissions>`.
+ODK Central provides a web-based interface to your forms for data edits, to preview form definitions, and to enable data collection from devices other than Android phones. You can learn about how Central uses web-based forms in :ref:`the section on managing Submissions <central-web-submissions>`.
 
 By default, web forms in Central are powered by `Enketo <https://enketo.org/>`_, a powerful library that was initially developed outside the ODK project and that the ODK team has contributed to.
 
@@ -17,11 +17,14 @@ Opting into ODK Web Forms in Central
 .. warning::
     ODK Web Forms is experimental and does not support all form functionality! Please test your form carefully.
 
-Starting in Central v2025.1.0, you can opt individual forms into using `ODK Web Forms <https://github.com/getodk/web-forms?tab=readme-ov-file#odk-web-forms>`_, an experimental replacement for Enketo designed from the ground up to align with ODK Collect. ODK Web Forms is still early in its development. We recommend trying ODK Web Forms if:
+Starting in Central v2025.1, you can opt individual forms into using `ODK Web Forms <https://github.com/getodk/web-forms?tab=readme-ov-file#odk-web-forms>`_, an alternative to Enketo designed from the ground up to align with ODK Collect. ODK Web Forms is still early in its development. We recommend trying ODK Web Forms if:
 
 * You are curious about how web forms will evolve in Central.
+* You like ODK Web Form's look and feel.
 * You want to provide feedback and ideas `on the forum <https://forum.getodk.org/tag/odk-webforms>`_.
 * You have a form that doesn't work well with Enketo. For example, this could be because of the presentation of certain question types such as ``geopoint``, performance issues, or bugs in repeats.
+
+If you try your form draft, make some test submissions, and find that all of the functionality that you need is supported well, Web Forms can be used to collect real data.
 
 To opt into ODK Web Forms, go to the :guilabel:`Settings` tab for a specific form. In the :guilabel:`Web Forms` section, select the :guilabel:`ODK Web Forms` option, read the description, and confirm that you want to opt in.
 
@@ -62,14 +65,19 @@ Once location permissions are granted to Web Forms, it will start reading locati
 
 .. image:: /img/web-forms/geopoint-refining-accuracy.*
   :alt: Web forms location-finding dialog
-  :class: central-partial-screen
 
 Image
 ~~~~~~~~
+
+.. image:: /img/web-forms/image-desktop.*
+  :class: central-partial-screen
 
 The :ref:`image question type <default-image-widget>` without appearance allows the user to capture an image. In Web Forms, if the user is on a mobile device, they can take a picture with their mobile camera. Devices like laptops that use a desktop browser will not show the capture button, even if they have a built-in camera.
 
 Date
 ~~~~~
+
+.. image:: /img/web-forms/calendar-yyyy-mm-dd.*
+  :class: central-partial-screen
 
 The :ref:`date question type <default-date-widget>` without appearance allows the user to enter a date. The user can manually type a date in the text field in the mm/dd/yyyy format or click in the field to select a date from a calendar. To change the year, they can press on the current year at the top of the calendar. To change the month, they can use the navigation arrows or press on the current month at the top of the calendar. There are also buttons to clear the date or jump to today.
