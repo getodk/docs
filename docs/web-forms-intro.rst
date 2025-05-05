@@ -1,3 +1,6 @@
+.. spelling:word-list::
+    yyyy
+
 Trying ODK Web Forms
 ====================
 
