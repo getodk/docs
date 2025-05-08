@@ -51,13 +51,13 @@ Once the form is successfully uploaded, you will be taken to the Form Draft page
 Working with Form Drafts
 ------------------------
 
-Form Drafts, available as of Central 0.8, provide a way to safely and easily verify the design of your Form before you make it available for use. Drafts are accessible only to privileged Project staff. Each Form Draft has a unique access token which allows configured data collection clients to submit test submissions to the Draft. These test submissions disappear automatically when the Draft is published. Once a Draft is published, it is available for use according to the access rules you have specified in the :ref:`Form Access <central-projects-form-access>` tab on the Project.
+Form Drafts provide a way to safely and easily verify the design of your Form before you make it available for use. Drafts are accessible only to privileged Project staff. Each Form Draft has a unique access token so you can configure Collect and send test submissions to the Draft. These test submissions disappear automatically when the Draft is published. Once a Draft is published, it is available for use according to the access rules you have specified in the :ref:`Form Access <central-projects-form-access>` tab on the Project.
 
    .. image:: /img/central-forms/draft-overview.png
 
-The **Draft Status** page gives insight into the current status of your Draft, and provides controls for managing it.
+The **Edit Form** tab gives insight into the current status of your Draft, and provides controls for managing it.
 
-On the left, you will find the Draft Checklist, which suggests the steps you might take before publishing your Draft. On the right are details about the currently uploaded Draft version of the Form, including its current version string, and actions you may take on the Draft:
+When you first create a Form, it exists only as a Draft. You'll see information about the currently uploaded Draft version of the Form, including its current version string, and actions you may take on the Draft:
 
  - The :guilabel:`Upload new definition` button will allow you to upload a new Form definition, which will replace the current Draft version. When this happens, all test submissions will be erased. If you have uploaded Media Files, Central will attempt to preserve any that match the new definition.
  - The :guilabel:`Publish Draft` button will publish the Draft, making it available for use according to the access rules you have specified on the :ref:`Form Access <central-projects-form-access>` tab on the Project. Any test submissions you have made will be erased.
@@ -66,15 +66,17 @@ On the left, you will find the Draft Checklist, which suggests the steps you mig
 .. tip::
   When a form is first created, none of the existing App Users on the project will be able to access it for download or submission, even once the Form is published. Once you are ready to allow App Users to access the form, use the Project :ref:`Form Access <central-projects-form-access>` tab.
 
-When you first create a new Form, the navigation tabs on the left will not be accessible. They pertain to the published version of the Form, and will become available once you publish your Draft. The tabs on the right, within the gray Draft section, relate to the Draft.
+When you first create a new Form, navigation tabs other than **Edit Form** will not be accessible. They are for the published version of the Form, and will become available once you publish your Draft.
 
-If your Draft requires Media Files, there will be a checklist step asking you to upload them, and a Media Files tab at the top of the page. See the next section :ref:`Forms With Attachments <central-forms-attachments>` for more information about uploading and managing attachments.
+If your Draft requires files or Entity Lists to be attached, there will be a section asking you to attach them. See the next section :ref:`Forms With Attachments <central-forms-attachments>` for more information about uploading and managing attachments.
 
-The :guilabel:`Testing` Draft tab shows test submissions that have been made to the Draft, and instructions for doing so:
+The :guilabel:`Testing` section shows buttons for making test submissions and a table with any existing Draft submissions:
 
    .. image:: /img/central-forms/testing.png
 
-At the top of the page are instructions and a QR Code which will configure a mobile device to submit to the Draft Form. For help configuring a mobile device, please see :doc:`importing settings into Collect <collect-import-export>`. The table below these instructions contains any test submissions that have been made to the current Draft. For help with this table or exporting test data, please see :doc:`Form Submissions in Central <central-submissions>`.
+To make web-based submissions, click the appropriate button. For Collect-based submissions, click the button and you will see a Collect configuration QR code just for this Draft. For help configuring a mobile device, please see :doc:`importing settings into Collect <collect-import-export>`. We recommend only using this QR code while iterating on form design and then deleting corresponding Collect project when you publish the Form.
+
+The table in this section contains any test submissions that have been made to the current Draft. For help with this table or exporting test data, please see :doc:`Form Submissions in Central <central-submissions>`.
 
 .. _central-forms-attachments:
 
@@ -85,17 +87,17 @@ If your Form Draft references any external files (images, audio, or video includ
 
    .. image:: /img/central-forms/attachments-overview.png
 
-If you see this extra **Upload Form Media Files** checklist step and **Media Files** tab at the top of your Form Draft checklist, then Central believes you need to upload some files associated with this form. If the checklist step has been checked off, then you've already completed this task: great work! Otherwise, click on the :menuselection:`--> Media Files` tab at the top to see what files you'll need to provide.
+If you see this extra **Attachments** section, then this form uses attachments that you can upload.
 
    .. image:: /img/central-forms/attachments-listing.png
 
-This form design references three files that we'll need to provide, one of which we've already uploaded. You can see the name and expected type of the file in the table, as well as when the file was last uploaded. You can click on the name of any uploaded file to download what Central has for it. To upload a new one, you'll want to drag-and-drop one or more files onto the table.
+This form design references three files that we'll need to provide, one of which we've already uploaded. You can see the name and expected type of the file in the table, as well as when the file was last uploaded. You can click on the name of any uploaded file to download what Central has for it. To upload a new one, you can drag-and-drop one or more files onto the table.
 
 .. admonition:: On File Types and Contents
 
-   While Central will detect the type of file the form design expects, and will verify that the name of any uploaded file matches one that is expected, Central will *not* double-check the *type* of the file, nor the *contents* of the file for you. So, just because Central accepts your file does not necessarily mean that it will work correctly.
+   While Central will detect the type of file the form design expects, and will verify that the name of any uploaded file matches one that is expected, Central will *not* double-check the *type* of the file, nor the *contents* of the file for you. So, just because Central accepts your file does not necessarily mean that it will work correctly. Make sure you try the form to confirm it works as expected.
 
-Once you publish a Draft, you will not be able to modify the Attachments associated with it without creating a new Draft.
+Attachments can only be added or changed for a form Draft. If you need to change the Attachments for a published form, first create a new Draft.
 
 .. _central-forms-attachments-multi:
 
@@ -114,17 +116,6 @@ Uploading One Attachment
    .. image:: /img/central-forms/attachments-single.png
 
 If you drag a single file onto the table, you'll have the option of which table row you'd like to upload that file into. This way, if the file isn't named exactly what Central expects, you can still upload a file into that slot without having to rename it on your own computer. But if the file does have the appropriate name, you can drop it somewhere other than a specific slot (for example, just below or just above the table) to have Central match it up with the correct slot automatically.
-
-.. _central-forms-checklist:
-
-The Form Overview page
-----------------------
-
-Here, you can get a brief summary of the status of your form, and recommended next steps. You are automatically taken here when you publish a Form Draft or click on the form name in the Form listing page. You can also get back here from other form-related pages by clicking the :menuselection:`--> Overview` tab below the name of the form.
-
-   .. image:: /img/central-forms/checklist.png
-
-The currently published version information is on the left. If you have a Draft in progress, you'll see its information on the right.
 
 .. _central-forms-submissions:
 
@@ -159,7 +150,7 @@ Closed    no                               no
 
 As you can see, you can use the **Closing** state to prevent further distribution of a form while still allowing the final few submissions to come in, while the **Closed** state effectively turns the form off completely. You can always set the form lifecycle stage to whatever you want: you can always, for example, re-open a closed form.
 
-To set the form lifecycle stage, go to the :ref:`Form Access <central-projects-form-access>` tab for the Project, under the name of the Project at the top of the page. You may have to navigate back out of the Form first by clicking on the :guilabel:`Back to Project Overview` link at the top of the page. Here, you will find the three possible stages in a dropdown for each Form on the left side of the page. Select the ones you want for each Form, then click :guilabel:`Save` at the top-right to save the changes.
+To set the form lifecycle stage, go to the :ref:`Form Access <central-projects-form-access>` tab for the Project, under the name of the Project at the top of the page. You may have to navigate back out of the Form first by clicking on the name of the project at the top of the page. Here, you will find the three possible stages in a dropdown for each Form on the left side of the page. Select the ones you want for each Form, then click :guilabel:`Save` at the top-right to save the changes.
 
 You can find more information about the Form Access page :ref:`here <central-projects-form-access>`.
 
@@ -168,7 +159,7 @@ You can find more information about the Form Access page :ref:`here <central-pro
 Updating Forms to a New Version
 -------------------------------
 
-Sometimes requirements change during data collection or a form design error is discovered that needs to be fixed. In those cases, Central lets you update a published Form with a new definition, or new Media Files, and to test these changes before they are applied to the Form in use.
+Sometimes requirements change during data collection or a form design error is discovered that needs to be fixed. In those cases, Central lets you update a published Form with a new definition, or new Attachments, and to test these changes before they are applied to the Form in use.
 
 .. warning::
   Changing a form definition while it is in use will likely complicate analysis and may significantly impact results. Make sure that it's acceptable for your context and make a plan for how you will take those changes into account before you publish them.
@@ -186,15 +177,15 @@ You can generally make improvements to the form without removing fields or chang
   - if a question is found to be easier to understand when framed as its negation, its field can be changed to a calculate that negates the response to a new question. This can impact results so carefully consider whether it is appropriate.
   - if a field has an implied value after a certain point in time, it can be changed to a calculate with a default value.
 
-To begin the process of updating a published Form, click on the :guilabel:`Create a new Draft` button in the Draft navigation on the Form:
+To begin the process of updating a published Form, click on the :guilabel:`Edit Form` tab in the Form navigation:
 
    .. image:: /img/central-forms/update-form.png
 
-Initially, the new Draft will have the same definition as the published Form. If you only want to update attachment Media Files, this means you don't have to upload a definition: you can go straight to the :guilabel:`Media Files` tab and :ref:`upload the changed files <central-forms-attachments>`.
+Initially, the new Draft will have the same definition as the published Form. If you only want to update Attachments, this means you don't have to upload a definition: you can go straight to the :guilabel:`Attachments` section and :ref:`upload the changed files <central-forms-attachments>`.
 
-You can replace the Draft definition, Media Files, and make test submissions as with the :ref:`initial Form Draft <central-forms-draft>` before the Form was first published. Test submissions will not interfere with published Form submissions.
+You can replace the Draft definition, Attachments, and make test submissions as with the :ref:`initial Form Draft <central-forms-draft>` before the Form was first published. Test submissions will not interfere with published Form submissions.
 
-Once you are satisfied that your updated Form is ready to be published for immediate use, you can click on the :guilabel:`Publish Draft` button on the Draft Status tab.
+Once you are satisfied that your updated Form is ready to be published for immediate use, you can click on the :guilabel:`Publish Draft` button at the bottom of the page.
 
 .. admonition:: Form Version naming
 

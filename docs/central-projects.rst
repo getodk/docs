@@ -57,7 +57,7 @@ To edit Project Settings, first navigate to the Project, then click on the :guil
 
    .. image:: /img/central-projects/settings.png
 
-From here, you will be able to edit the Project name and description. Markdown is supported in the description field, so you can insert formatted text, headings, tables, images, and links. All members of a Project see the same description on the overview page, so it's a great place to put instructions, notices, and links to useful resources related to the Project.
+From here, you will be able to edit the Project name and description. Markdown is supported in the description field, so you can insert formatted text, headings, tables, images, and links. All members of a Project see the same description on the project page, so it's a great place to put instructions, notices, and links to useful resources related to the Project.
 
 You will also see a section for Archiving a Project, which is described in more detail :ref:`below <central-project-archive>`. You can also enable :ref:`Project Managed Encryption <central-encryption-managed>`.
 
@@ -76,7 +76,7 @@ Data Collectors may view the list of Forms, retrieve basic information about the
 
 You will find a detailed breakdown of user roles :ref:`here <central-users-web-roles>`.
 
-To assign or remove Managers, Viewers, or Collectors for a Project, first go to the Project overview page, then click on the :guilabel:`Project Managers` tab under the Project name. You should see the following page:
+To assign or remove Managers, Viewers, or Collectors for a Project, first go to the Project overview page, then click on the :guilabel:`Project Roles` tab under the Project name. You should see the following page:
 
    .. image:: /img/central-projects/roles.png
 
@@ -93,7 +93,7 @@ To demote a Web User from any role, change the dropdown back to :guilabel:`None`
 Managing Project App Users
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To manage App Users for a Project, you can navigate to the Project overview page, then click on the :guilabel:`App Users` tab under the Project name. For more information about creating, managing, and retiring Project App Users, please see :ref:`this section <central-users-app-overview>`.
+To manage App Users for a Project, you can navigate to the Project page, then click on the :guilabel:`App Users` tab under the Project name. For more information about creating, managing, and retiring Project App Users, please see :ref:`this section <central-users-app-overview>`.
 
 .. _central-projects-form-access:
 
