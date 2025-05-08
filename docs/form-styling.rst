@@ -303,25 +303,8 @@ The ``style`` attribute accepts CSS-like key-value pairs for setting ``color`` a
 .. _hex color: http://www.color-hex.com/
 .. _generic font categories: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#%3Cgeneric-name%3E
 
-.. image:: /img/form-styling/going-red.*
-  :alt: A note widget in Collect. The label text is "Going red", and the word "red" is colored red. The hint text is the source markup for the label: Going <span style="color:red">red</span>
-  :class: device-screen-vertical
-
-.. image:: /img/form-styling/going-green.*
-  :alt: A note widget in Collect. The label text is "Going green", and the word "green" is colored green. This hint text is the source markup for the label: Going <span style="color:#008000">green</span>
-  :class: device-screen-vertical
-
-.. image:: /img/form-styling/cursive-text.*
-  :alt: A note widget in Collect. The label text is "Cursive text", style in a cursive font. The hint text is the source markup for the label: <span style="font-family:cursive">Cursive text</span>
-  :class: device-screen-vertical
-
-.. image:: /img/form-styling/styled-answers.*
-  :alt: A single select widget in Collect. The label text is "Formatting works on labels for choices also." The choices are "Yes" (which is colored green) and "No" (which is colored red).
-  :class: device-screen-vertical
-
-.. image:: /img/form-styling/combo-example.*
-  :alt: A note widget in Collect. The label text is "Color and font styling can be combined." The label is large, purple, and in cursive.
-  :class: device-screen-vertical
+.. image:: /img/form-styling/fonts-good-and-bad-tips.*
+  :alt: Use high-contrast colors and accessible fonts to enhance readability for all users
 
 .. rubric:: XLSForm
 
