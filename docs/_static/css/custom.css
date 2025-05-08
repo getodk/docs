@@ -31,6 +31,10 @@
     width: 365px;
 }
 
+.central-partial-screen {
+    width: 400px;
+}
+
 table.schema-table-wrap {
     width: 100%;    
 }
