@@ -73,13 +73,13 @@ When minor adjustments to the form definition or updates to media files are requ
 How to create and test a Draft
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Upload a new form definition on a Form's Status tab
+#. Go to the :guilabel:`Edit Form` tab for a specific Form, create a new Draft, and upload your new form definition
   
    .. image:: /img/guide-testing-forms/testing-upload-draft.png
 
-#. Navigate to the Testing tab (1 in screenshot below)
-#. To test the form online, click the New button (2) and the form will open in a new tab in your browser
-#. To test the form in Collect, click Add New Project on the app home screen and scan the QR code (3). 
+#. Navigate to the Testing section (1 in screenshot below)
+#. To test the form online, click the :guilabel:`Test in browser` button (2) and the form will open in a new tab in your browser
+#. To test the form in Collect, click the :guilabel:`Test on device` button to show the test QR code. Open the Collect application. If no projects are configured, tap the :guilabel:`Configure with QR code` button. If you already have a project, tap on the round button in the upper right corner, then tap :guilabel:`Add project`. Scan the QR code (3). 
 #. You will see the Draft icon at the top right of the screen (📝) and be able to fill out and submit a form as you normally would in Collect
 #. All Draft submissions will appear at the bottom of the screen on the Testing tab (4) 
 
