@@ -32,9 +32,9 @@ ____________
 .. note::
    Entity property names follow the same naming rules as form field names. Additionally, the property names ``name``, ``label``, and anything beginning with ``__`` (two underscores) are not allowed. 
 
-.. rubric:: XLSForm
+.. rubric:: XLSForm: ``survey`` sheet with ``save_to`` column filled in with property names for certain fields
 
-.. csv-table:: Example ``survey`` sheet with ``save_to`` column filled in with property names for certain fields
+.. csv-table:: survey
   :header: type, name, label, ..., save_to
 
   geopoint, location, Tree Location, ..., geometry
@@ -107,9 +107,9 @@ ___________________________________________
 
 Depending on your workflow, it may be helpful to save the Entity ID (UUID) in the submission data where the Entity is created. 
 
-.. rubric:: XLSForm
+.. rubric:: XLSForm: Example of saving the ID of a new Entity in the submission.
 
-.. csv-table:: Example of saving the ID of a new Entity in the submission.
+.. csv-table:: survey
    :header: type, name, calculation
 
    calculate, new_entity_id, ``/data/meta/entity/@id``
