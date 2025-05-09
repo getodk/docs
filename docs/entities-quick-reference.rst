@@ -232,7 +232,7 @@ Structure of an Entity
 Entity ID
 _________
 
-Every Entity has an ID (a UUID) that is unique across all Entity Lists and projects within Central. 
+Every Entity has an ID (a UUID) that is unique across all Entity Lists and projects within Central. We often refer to this as an Entity's system ID because it's assigned by the system and can't be changed.
 
 In a form, this Entity ID is accessed through the ``name`` property. This is to fit in with existing CSV attachments and choice lists in which the ``name`` column represents a unique identifier for that row.
 
