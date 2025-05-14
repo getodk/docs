@@ -10,6 +10,7 @@ Start by reviewing upgrade notes for all versions between your current version a
 Upgrade notes
 -------------
 
+* Central v2025.1: no upgrade notes
 * :ref:`Central v2024.3 <central-upgrade-2024.3>`: update Entity-related forms for offline Entities
 * :ref:`Central v2024.2 <central-upgrade-2024.2>`: changes to ``.env`` and SSL no longer require rebuilding, consider using S3 storage
 * Central v2023.5, v2024.1: no upgrade notes
