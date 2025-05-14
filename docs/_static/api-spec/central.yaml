@@ -40,6 +40,22 @@ info:
 
     Here major and breaking changes to the API are listed by version.
 
+    ## ODK Central v2025.1
+
+    **Added**:
+    - [RESTORE](/central-api-entity-management/#restoring-a-deleted-entity) endpoint for Entities.
+    - Entities that have been soft-deleted for 30 days will automatically be purged. 
+    - [Entities Odata](/central-api-odata-endpoints/#id3) now returns `__system/deletedAt`. It can also be used in $filter, $sort and $select query parameters.
+    - [Integrity](/central-api-openrosa-endpoints/#openrosa-dataset-integrity-api) endpoint for the Entity list.
+    - [Get Form metadata by EnketoId](/central-api-form-management/#getting-form-details-by-enketoid)
+
+    **Changed**:
+    - `webformsEnabled` boolean flag is added to [Forms](/central-api-form-management) APIs that enables use of ODK Web Forms instead of Enketo.
+    - Draft Submission can be created using draft token by adding `/test/{token}` to [Creating a draft Submission](/central-api-submission-management/#id1) endpoint.
+    - [Dataset Metadata](/central-api-dataset-management/#dataset-metadata) now includes a new property, `lastUpdate`, which is the timestamp of the latest modification to the datasets or its entities.
+    - After a file is uploaded for a Form Attachment via the POST endpoint, the response is now the updated Attachment.
+    - `userAgent` and `deviceId` longer than 255 characters will be truncated in [Submissions APIs](/central-api-submission-management)
+
     ## ODK Central v2024.3
 
     **Added**:
@@ -47,7 +63,7 @@ info:
 
     **Changed**:
 
-    - [Submissions Odata]() now returns `__system/deletedAt`. It can also be used in $filter, $sort and $select query parameters.
+    - [Submissions Odata](/central-api-odata-endpoints/#data-document) now returns `__system/deletedAt`. It can also be used in $filter, $sort and $select query parameters.
     - Dataset (Entity List) properties with the same name but different capitalization are not allowed.
     - Form Attachments for both [published Forms](/central-api-form-management/#listing-form-attachments) and [draft Forms](/central-api-form-management/#listing-expected-draft-form-attachments) now return a property representing the hash of the attachment file.
 
@@ -886,6 +902,8 @@ tags:
     * `entity.update.version` when an Entity is updated.
     * `entity.update.resolve` when an Entity conflict is resolved.
     * `entity.delete` when an Entity is deleted.
+    * `entity.restore` when a deleted Entity is restored.
+    * `entity.purge` when a deleted Entity is purged (ppermanently deleted).
     * `config.set` when a system configuration is set.
     * `analytics` when a Usage Report is attempted.
     * `blobs.s3.upload` when blobs are moved from the database to external storage.
@@ -3709,6 +3727,46 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error403'
       x-codegen-request-body-name: body
+  /v1/form-links/{formLinkId}/form:
+    get:
+      tags:
+      - Individual Form
+      summary: Getting Form Details by formLinkId
+      description: Returns Form metadata for the provided formLinkId
+      operationId: Getting Form Details by formLinkId
+      parameters:
+      - name: formLinkId
+        in: path
+        description: The `formLinkId` of the Form being referenced.
+        required: true
+        schema:
+          type: string
+        example: abcdef
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Form'
+              example:
+              - projectId: 1
+                xmlFormId: simple
+                name: Simple
+                version: "2.1"
+                enketoId: abcdef
+                hash: 51a93eab3a1974dbffc4c7913fa5a16a
+                keyId: 3
+                state: open
+                publishedAt: 2018-01-21T00:04:11.153Z
+                createdAt: 2018-01-19T23:58:03.395Z
+                updatedAt: 2018-03-21T12:45:02.312Z
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}.xml:
     get:
       tags:
@@ -3885,7 +3943,13 @@ paths:
       - Individual Form
       summary: Downloading a Form Attachment
       description: |-
-        To download a single file, use this endpoint. The appropriate `Content-Disposition` (attachment with a filename) and `Content-Type` (based on the type supplied at upload time) will be given.
+        To download a single file, use this endpoint.
+
+        The appropriate `Content-Disposition` (attachment with a filename) and `Content-Type` will be given. `Content-Type` will be either:
+
+        1. the type supplied at upload time, or if not supplied
+        2. a type derived from the file extension, or if none found
+        3. `application/octet-stream`
 
         This endpoint supports `ETag`, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, it returns a value in `ETag` header, you can pass this value in the header `If-None-Match` of subsequent requests. If the file has not been changed since the previous request, you will receive `304 Not Modified` response otherwise you'll get the latest file.
       operationId: Downloading a Form Attachment
@@ -4415,7 +4479,7 @@ paths:
       summary: Downloading a Draft Form Attachment
       description: To download a single file, use this endpoint. The appropriate `Content-Disposition`
         (attachment with a filename or Dataset name) and `Content-Type` (based on
-        the type supplied at upload time or `text/csv` in the case of a linked Dataset)
+        the type supplied at upload time, or `text/csv` in the case of a linked Dataset, or `application/octet-stream` otherwise)
         will be given.
 
         This endpoint supports `ETag`, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, it returns a value in `ETag` header, you can pass this value in the header `If-None-Match` of subsequent requests. If the file has not been changed since the previous request, you will receive `304 Not Modified` response otherwise you'll get the latest file.
@@ -4510,7 +4574,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Success'
+                $ref: '#/components/schemas/FormAttachment'
         403:
           description: Forbidden
           content:
@@ -5116,7 +5180,13 @@ paths:
       - Published Form Versions
       summary: Downloading a Form Version Attachment
       description: |-
-        To download a single file, use this endpoint. The appropriate `Content-Disposition` (attachment with a filename) and `Content-Type` (based on the type supplied at upload time) will be given.
+        To download a single file, use this endpoint.
+
+        The appropriate `Content-Disposition` (attachment with a filename) and `Content-Type` will be given. `Content-Type` will be either:
+
+        1. the type supplied at upload time, or if not supplied
+        2. a type derived from the file extension, or if none found
+        3. `application/octet-stream`
 
         This endpoint supports `ETag` header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in `ETag` header. If you pass that value in the `If-None-Match` header of a subsequent request, then if the file has not been changed since the previous request, you will receive `304 Not Modified` response; otherwise you'll get the latest file.
       operationId: Downloading a Form Version Attachment
@@ -7852,8 +7922,12 @@ paths:
       tags:
       - Draft Submissions
       summary: Creating a Submission
-      description: Identical to [the non-Draft version](/central-api-submission-management/#creating-a-submission)
-        of this endpoint.
+      description: |-
+        Or
+      
+        **POST /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/submissions**
+
+        Identical to [the non-Draft version](/central-api-submission-management/#creating-a-submission) of this endpoint.
       operationId: Creating a Submission for a draft Form
       parameters:
       - name: projectId
@@ -8532,14 +8606,13 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DatasetMetadata'
+                $ref: '#/components/schemas/DatasetMetadata'
               example:
                 name: people
                 createdAt: '2018-01-19T23:58:03.395Z'
                 projectId: 1
                 approvalRequired: false
+                lastUpdate: '2018-01-19T23:58:03.395Z'
                 sourceForms: []
                 linkedForms: []
                 properties: []
@@ -8594,14 +8667,13 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DatasetMetadata'
+                $ref: '#/components/schemas/DatasetMetadata'
               example:
                 name: people
                 createdAt: '2018-01-19T23:58:03.395Z'
                 projectId: 1
                 approvalRequired: true
+                lastUpdate: '2020-10-10T03:04:51.695Z'
                 sourceForms:
                 - xmlFormId: treeRegistration
                   name: Tree Registration
@@ -8663,14 +8735,13 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DatasetMetadata'
+                $ref: '#/components/schemas/DatasetMetadata'
               example:
                 name: people
                 createdAt: '2018-01-19T23:58:03.395Z'
                 projectId: 1
                 approvalRequired: true
+                lastUpdate: '2020-10-10T03:04:51.695Z'
                 sourceForms:
                 - xmlFormId: treeRegistration
                   name: Tree Registration
@@ -9155,51 +9226,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error403'
-    delete:
-      tags:
-      - Entity Management
-      summary: Deleting an Entity
-      description: Use this API to delete an Entity. With this API, Entity is soft-deleted,
-        which means it is still in the database and you can retreive it by passing
-        `?deleted=true` to [GET /projects/:id/datasets/:name/entities](/central-api-entity-management/#entities-metadata).
-        In the future, we will provide a way to restore deleted entities and purge
-        deleted entities.
-      operationId: Deleting an Entity
-      parameters:
-      - name: projectId
-        in: path
-        description: The numeric ID of the Project
-        required: true
-        schema:
-          type: number
-        example: "16"
-      - name: name
-        in: path
-        description: Name of the Dataset
-        required: true
-        schema:
-          type: string
-        example: people
-      - name: uuid
-        in: path
-        description: UUID of the Entity
-        required: true
-        schema:
-          type: string
-        example: 54a405a0-53ce-4748-9788-d23a30cc3afa
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     patch:
       tags:
       - Entity Management
@@ -9314,6 +9340,98 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error403'
       x-codegen-request-body-name: body
+    delete:
+      tags:
+      - Entity Management
+      summary: Deleting an Entity
+      description: Use this API to delete an Entity. With this API, Entity is soft-deleted,
+        which means it is still in the database and you can retreive it by passing
+        `?deleted=true` to [GET /projects/:id/datasets/:name/entities](/central-api-entity-management/#entities-metadata).
+      operationId: Deleting an Entity
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      - name: uuid
+        in: path
+        description: UUID of the Entity
+        required: true
+        schema:
+          type: string
+        example: 54a405a0-53ce-4748-9788-d23a30cc3afa
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+    
+  /projects/{projectId}/datasets/{name}/entities/{uuid}/restore:
+    post:
+      tags:
+      - Entity Management
+      summary: Restoring a deleted Entity
+      description: Entities that have been recently soft-deleted and not yet purged can be restored using this endpoint.
+      operationId: Restoring a deleted Entity
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      - name: uuid
+        in: path
+        description: UUID of the Entity
+        required: true
+        schema:
+          type: string
+        example: 54a405a0-53ce-4748-9788-d23a30cc3afa
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error403'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
   /projects/{projectId}/datasets/{name}/entities/{uuid}/versions:
     get:
       tags:
@@ -9734,6 +9852,12 @@ paths:
         * The Manifest will only output information for files the server actually has in its possession. Any missing expected files will be omitted, as we cannot provide a `hash` or `downloadUrl` for them.
 
         * For Attachments that are linked to a Dataset, the value of `hash` is calculated using the MD5 of the last updated timestamp of the Dataset, instead of the content of the Dataset.
+
+        [Offline Entities support](https://forum.getodk.org/t/openrosa-spec-proposal-support-offline-entities/48052):
+
+        * If an attachment is linked to a Dataset, then `type="entityList"` attribute is added to the `mediaFile` element.
+
+        * `integrityUrl` is also returned for the attachments that are linked to a Dataset.
       operationId: OpenRosa Form Manifest API
       parameters:
       - name: projectId
@@ -9778,7 +9902,86 @@ paths:
                     <hash>md5:a6fdc426037143cf71cced68e2532e3c</hash>
                     <downloadUrl>https://your.odk.server/v1/projects/7/forms/basic/attachments/question2.jpg</downloadUrl>
                   </mediaFile>
+                  <mediaFile type="entityList">
+                    <filename>people.csv</filename>
+                    <hash>md5:9fd39ac868eccdc0c134b3b7a6a25eb7</hash>
+                    <downloadUrl>https://your.odk.server/v1/projects/7/forms/basic/attachments/people.csv</downloadUrl>
+                    <integrityUrl>https://your.odk.server/v1/projects/7/datasets/people/integrity</integrityUrl>
+                  </mediaFile>
                 </manifest>
+        403:
+          description: Forbidden
+          headers:
+            X-OpenRosa-Version:
+              schema:
+                type: string
+          content:
+            text/xml:
+              example: |
+                <OpenRosaResponse xmlns="http://openrosa.org/http/response" items="0">
+                  <message nature="error">The authenticated actor does not have rights to perform that action.</message>
+                </OpenRosaResponse>
+  /v1/projects/{projectId}/datasets/{name}/integrity?id={UUIDs}:
+    get:
+      tags:
+      - OpenRosa Endpoints
+      summary: OpenRosa Dataset Integrity API
+      description: |-
+        _(introduced: version 2025.1)_
+
+        This is the fully standards-compliant implementation of the Entities Integrity API as described in [OpenRosa spec proposal: support offline Entities](https://forum.getodk.org/t/openrosa-spec-proposal-support-offline-entities/48052).
+
+        This returns the `deleted` flag of the Entities requested through `id` query parameter. If no `id` is provided then all Entities are return.
+      operationId: OpenRosa Form Manifest API
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "7"
+      - name: name
+        in: path
+        description: The `name` of the dataset being referenced.
+        required: true
+        schema:
+          type: string
+        example: people
+      - name: id
+        in: query
+        description: The comma separated UUIDs of the Entities
+        required: true
+        schema:
+          type: string
+        example: 6fdfa3b6-64fb-46cf-b98c-c92b57f914b1,97717278-2bf8-4565-88b2-711c88d66e75
+      - name: X-OpenRosa-Version
+        in: header
+        description: e.g. 1.0
+        schema:
+          type: string
+        example: "1.0"
+      responses:
+        200:
+          description: OK
+          headers:
+            X-OpenRosa-Version:
+              schema:
+                type: string
+          content:
+            text/xml:
+              example: |
+                <?xml version="1.0" encoding="UTF-8"?>
+                <data>
+                  <entities>
+                    <entity id="6fdfa3b6-64fb-46cf-b98c-c92b57f914b1">
+                      <deleted>true</deleted>
+                    </entity>
+                    <entity id="97717278-2bf8-4565-88b2-711c88d66e75">
+                      <deleted>false</deleted>
+                    </entity>
+                  </entities>
+                </data>
         403:
           description: Forbidden
           headers:
@@ -10572,7 +10775,7 @@ paths:
                 code: "501.1"
                 message: The requested feature $unsupported is not supported by this
                   server.
-  /#/dl/projects{projectId}/forms/{xmlFormId}/submissions/{instanceId}/attachments/{filename}:
+  /dl/projects{projectId}/forms/{xmlFormId}/submissions/{instanceId}/attachments/{filename}:
     get:
       tags:
       - OData Form Service
@@ -10584,9 +10787,9 @@ paths:
 
         If you are writing or configuring an OData client and have submission media files to deal with, you can run into authentication problems directly fetching or linking the media file URLs that are provided in the OData feed. This can be due to several reasons: if the user is not logged into the Central administration site (and thus has no valid cookie), if the request comes from a foreign origin (and thus cookies are not sent by the browser), and more.
 
-        To help manage this, the frontend provides a `/#/dl` path that allows file download. Just take a normal attachment download path and replace the `/v1` near the beginning of the path with `/#/dl`, and the user will be taken to a page managed by the Central administration website that will ensure the user is logged in, and offer the file as a download.
+        To help manage this, the frontend provides a `/dl` path that allows file download. Just take a normal attachment download path and replace the `/v1` near the beginning of the path with `/dl`, and the user will be taken to a page managed by the Central administration website that will ensure the user is logged in, and offer the file as a download.
 
-        Because this `/#/dl` path returns a web page that causes a file download rather than directly returning the media file in question, it cannot be used to directly embed or retrieve these files, for example in a `<img>` tag.
+        Because this `/dl` path returns a web page that causes a file download rather than directly returning the media file in question, it cannot be used to directly embed or retrieve these files, for example in a `<img>` tag.
       operationId: Data Download Path
       parameters:
       - name: projectId
@@ -10912,8 +11115,9 @@ paths:
         | Entity Timestamp        | `__system/createdAt` |
         | Entity Update Timestamp | `__system/updatedAt` |
         | Entity Conflict         | `__system/conflict`  |
+        | Entity Delete Timestamp | `__system/deletedAt` |
 
-        Note that `createdAt` and `updatedAt` are time components. This means that any comparisons you make need to account for the full time of the entity. It might seem like `$filter=__system/createdAt le 2020-01-31` would return all results on or before 31 Jan 2020, but in fact only entities made before midnight of that day would be accepted. To include all of the month of January, you need to filter by either `$filter=__system/createdAt le 2020-01-31T23:59:59.999Z` or `$filter=__system/createdAt lt 2020-02-01`. Remember also that you can [query by a specific timezone](https://en.wikipedia.org/wiki/ISO_8601#Time_offsets_from_UTC).
+        Note that `createdAt`, `updatedAt` and `deletedAt` are time components. This means that any comparisons you make need to account for the full time of the entity. It might seem like `$filter=__system/createdAt le 2020-01-31` would return all results on or before 31 Jan 2020, but in fact only entities made before midnight of that day would be accepted. To include all of the month of January, you need to filter by either `$filter=__system/createdAt le 2020-01-31T23:59:59.999Z` or `$filter=__system/createdAt lt 2020-02-01`. Remember also that you can [query by a specific timezone](https://en.wikipedia.org/wiki/ISO_8601#Time_offsets_from_UTC).
 
         Please see the [OData documentation](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948) on `$filter` [operations](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinFilterOperations) and [functions](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinQueryFunctions) for more information.
 
@@ -11007,6 +11211,7 @@ paths:
                     creatorName: Tree surveyor
                     updates: 1,
                     updatedAt: '2023-04-31T19:41:16.478Z'
+                    deletedAt: null
                     version: 1
                     conflict: null
                 - __id: aeebd746-3b1e-4a24-ba9d-ed6547bd5ff1
@@ -11017,6 +11222,7 @@ paths:
                     creatorName: Tree surveyor
                     updates: 1,
                     updatedAt: '2023-04-31T19:41:16.478Z'
+                    deletedAt: null
                     version: 2
                     conflict: null
                   geometry: 47.722581 18.562111 0 0,
@@ -12411,6 +12617,9 @@ components:
           type: string
           description: ISO date format
           example: 2018-03-21T12:45:02.312Z
+        webformsEnabled:
+          type: boolean
+          description: Enables use of ODK Web Forms instead of Enketo for filling Forms via web browsers.
     ExtendedForm:
       allOf:
         - $ref: '#/components/schemas/Form'
@@ -12715,22 +12924,29 @@ components:
           items:
             $ref: '#/components/schemas/FormKeyValue'
     DatasetMetadata:
-      properties:
-        linkedForms:
-          type: array
-          items:
-            $ref: '#/components/schemas/FormKeyValue'
-          description: Forms that consume data from the Dataset
-        sourceForms:
-          type: array
-          items:
-            $ref: '#/components/schemas/FormKeyValue'
-          description: Forms that create Entities in the Dataset
-        properties:
-          type: array
-          description: All properties of the Dataset
-          items:
-            $ref: '#/components/schemas/PropertyDetailed'
+      allOf:
+        - $ref: '#/components/schemas/Dataset'
+        - type: object
+          properties:
+            lastUpdate:
+              type: string
+              description: ISO date format. The timestamp of the most recent change to the dataset or its entities
+              example: '2020-10-10T03:04:51.695Z'
+            linkedForms:
+              type: array
+              items:
+                $ref: '#/components/schemas/FormKeyValue'
+              description: Forms that consume data from the Dataset
+            sourceForms:
+              type: array
+              items:
+                $ref: '#/components/schemas/FormKeyValue'
+              description: Forms that create Entities in the Dataset
+            properties:
+              type: array
+              description: All properties of the Dataset
+              items:
+                $ref: '#/components/schemas/PropertyDetailed'
     Submission:
       type: object
       required:
@@ -12797,10 +13013,12 @@ components:
           description: The ID of the `Actor` (`App User`, `User`, or `Public Link`) that submitted this `Submission` version.
         deviceId:
           type: string
+          maxLength: 255
           example: imei:123456
           description: The self-identified `deviceId` of the device that submitted the `Submission` version.
         userAgent:
           type: string
+          maxLength: 255
           example: Enketo/3.0.4
           description: The self-identified `userAgent` of the device that submitted the `Submission` version.
         createdAt:
