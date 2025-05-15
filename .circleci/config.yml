@@ -15,6 +15,13 @@ jobs:
           name: Checkout binaries
           command: git lfs pull
       - run:
+          name: Check that Git LFS was used to commit binaries
+          command: |
+            git ls-files | git check-attr --stdin filter | \
+              awk -F': ' '$3 ~ /lfs/ { print $1}' | \
+              xargs -L1 sh -c 'git cat-file blob "HEAD:$0" | \
+              git lfs pointer --check --stdin || { echo "$0"; false; }'
+      - run:
           name: Install build requirements
           command: |
             sudo apt-get install pngquant
