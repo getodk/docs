@@ -51,6 +51,12 @@ Once the form is successfully uploaded, you will be taken to the Form Draft page
 Working with Form Drafts
 ------------------------
 
+.. note::
+
+   Drafts have moved. In versions of Central older than v2025.1, drafts were accessed from a section to the right of the tab controls for a Form:
+
+   .. image:: /img/central-forms/draft-overview-top.png
+
 Form Drafts provide a way to safely and easily verify the design of your Form before you make it available for use. Drafts are accessible only to privileged Project staff. Each Form Draft has a unique access token so you can configure Collect and send test submissions to the Draft. These test submissions disappear automatically when the Draft is published. Once a Draft is published, it is available for use according to the access rules you have specified in the :ref:`Form Access <central-projects-form-access>` tab on the Project.
 
    .. image:: /img/central-forms/draft-overview.png
@@ -59,9 +65,9 @@ The **Edit Form** tab gives insight into the current status of your Draft, and p
 
 When you first create a Form, it exists only as a Draft. You'll see information about the currently uploaded Draft version of the Form, including its current version string, and actions you may take on the Draft:
 
- - The :guilabel:`Upload new definition` button will allow you to upload a new Form definition, which will replace the current Draft version. When this happens, all test submissions will be erased. If you have uploaded Media Files, Central will attempt to preserve any that match the new definition.
- - The :guilabel:`Publish Draft` button will publish the Draft, making it available for use according to the access rules you have specified on the :ref:`Form Access <central-projects-form-access>` tab on the Project. Any test submissions you have made will be erased.
- - The :guilabel:`Abandon Draft` button will delete the Draft. When there is not yet a published version, this will delete the entire Form. If the Form has been published, only the Draft will be deleted.
+- The :guilabel:`Upload new Form definition` button will allow you to upload a new Form definition, which will replace the current Draft version. When this happens, all test submissions will be erased. If you have uploaded Media Files, Central will attempt to preserve any that match the new definition.
+- The :guilabel:`Publish Draft` button will publish the Draft, making it available for use according to the access rules you have specified on the :ref:`Form Access <central-projects-form-access>` tab on the Project. Any test submissions you have made will be erased.
+- The :guilabel:`Abandon Draft` button will delete the Draft. When there is not yet a published version, this will delete the entire Form. If the Form has been published, only the Draft will be deleted.
 
 .. tip::
   When a form is first created, none of the existing App Users on the project will be able to access it for download or submission, even once the Form is published. Once you are ready to allow App Users to access the form, use the Project :ref:`Form Access <central-projects-form-access>` tab.
@@ -74,7 +80,7 @@ The :guilabel:`Testing` section shows buttons for making test submissions and a 
 
    .. image:: /img/central-forms/testing.png
 
-To make web-based submissions, click the appropriate button. For Collect-based submissions, click the button and you will see a Collect configuration QR code just for this Draft. For help configuring a mobile device, please see :doc:`importing settings into Collect <collect-import-export>`. We recommend only using this QR code while iterating on form design and then deleting corresponding Collect project when you publish the Form.
+To make web-based submissions, click the :guilabel:`Test on device` button. For Collect-based submissions, click the :guilabel:`Test on device` button and you will see a Collect configuration QR code just for this Draft. For help configuring a mobile device, please see :doc:`importing settings into Collect <collect-import-export>`. We recommend only using this QR code while iterating on form design and then deleting corresponding Collect project when you publish the Form.
 
 The table in this section contains any test submissions that have been made to the current Draft. For help with this table or exporting test data, please see :doc:`Form Submissions in Central <central-submissions>`.
 
@@ -173,13 +179,11 @@ Once a field is defined in a published Form version, the field's Data Type canno
 
 You can generally make improvements to the form without removing fields or changing their type. For example:
 
-  - if a question would be better displayed to the user as a different type (e.g., from decimal to integer), you can introduce a new field with that new type and change the old field to a calculate with a calculation that pulls the new field's value in. That way, your analysis can continue on the old field. This is only appropriate if the old and new questions have the same meaning.
-  - if a question is found to be easier to understand when framed as its negation, its field can be changed to a calculate that negates the response to a new question. This can impact results so carefully consider whether it is appropriate.
-  - if a field has an implied value after a certain point in time, it can be changed to a calculate with a default value.
+- if a question would be better displayed to the user as a different type (e.g., from decimal to integer), you can introduce a new field with that new type and change the old field to a calculate with a calculation that pulls the new field's value in. That way, your analysis can continue on the old field. This is only appropriate if the old and new questions have the same meaning.
+- if a question is found to be easier to understand when framed as its negation, its field can be changed to a calculate that negates the response to a new question. This can impact results so carefully consider whether it is appropriate.
+- if a field has an implied value after a certain point in time, it can be changed to a calculate with a default value.
 
-To begin the process of updating a published Form, click on the :guilabel:`Edit Form` tab in the Form navigation:
-
-   .. image:: /img/central-forms/update-form.png
+To begin the process of updating a published Form, click on the :guilabel:`Edit Form` tab in the Form navigation. You can learn more in the :ref:`drafts section <central-form-drafts>`.
 
 Initially, the new Draft will have the same definition as the published Form. If you only want to update Attachments, this means you don't have to upload a definition: you can go straight to the :guilabel:`Attachments` section and :ref:`upload the changed files <central-forms-attachments>`.
 
