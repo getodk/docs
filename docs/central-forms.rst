@@ -31,7 +31,6 @@ As of version 0.7, Central will accept either XForms :file:`.xml` or XLSForm :fi
 Once you have your form file, the next step will be to upload it into ODK Central. To do this, navigate to the Project you want to add the form to by clicking on its name from the ODK Central homepage:
 
 .. image:: /img/central-forms/new-form.*
-   :class: central-partial-screen
 
 From there, click on the :guilabel:`New` button next to the section header, and you should see a popup appear:
 
@@ -63,7 +62,6 @@ Form Drafts provide a way to safely and easily verify the design of your Form be
 The **Edit Form** tab gives insight into the current status of your Draft, and provides controls for managing it:
 
 .. image:: /img/central-forms/edit-form.*
-   :class: central-partial-screen
 
 When you first create a Form, it exists only as a Draft. You'll see information about the currently uploaded Draft version of the Form, including its current version string, and actions you may take on the Draft:
 
@@ -186,7 +184,6 @@ You can generally make improvements to the form without removing fields or chang
 To begin the process of updating a published Form, click on the :guilabel:`Edit Form` tab in the Form navigation. You can learn more in the :ref:`drafts section <central-forms-draft>`.
 
 .. image:: /img/central-forms/new-draft.*
-   :class: central-partial-screen
 
 Initially, the new Draft will have the same definition as the published Form. If you only want to update Attachments, this means you don't have to upload a definition: you can go straight to the :guilabel:`Attachments` section and :ref:`upload the changed files <central-forms-attachments>`.
 
@@ -214,7 +211,6 @@ Accessing Older Form Versions
 If you have published multiple version of a Form, you can see each of them under the :guilabel:`Versions` tab.
 
 .. image:: /img/central-forms/versions.*
-   :class: central-partial-screen
 
 Each published version of the Form will be listed, along with actions to download the definition of each Form. In future versions of Central, the Media File attachments associated with each version of the Form will be downloadable as well.
 
