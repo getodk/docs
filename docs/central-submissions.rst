@@ -86,7 +86,7 @@ To revoke a Link, click on the :guilabel:`Revoke` button in the Link's row in th
 Accessing Submissions
 ---------------------
 
-To find the Form submissions page, first find the form in the Form listings page (:menuselection:`--> Forms`) and click on it. You will be taken to the :ref:`Form Overview <central-forms-checklist>` page for that form. Click on the :menuselection:`--> Submissions` tab below the form name to find the submissions.
+To find the Form submissions page, first find the form in the Form listings page (:menuselection:`--> Forms`) and click on it. You will be taken to the :menuselection:`--> Submissions` tab and will see your submissions.
 
 .. image:: /img/central-submissions/listing.png
 

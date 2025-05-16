@@ -96,8 +96,8 @@ First, let's prepare the Forms for use with Central.
 2. Upload the `Tree registration Form <https://docs.google.com/spreadsheets/d/1xboXBJhIUlhs0wlblCxcQ3DB5Ubpx2AxLDuaXh_JYyw/edit#gid=2050654322>`_. Notice how Central knows from the Form definition that the Form creates Entities in an Entity List, and populates three Entity Properties.
 3. Publish the Form. As the dialog says, this action creates the ``trees`` Entity List within the Project you created.
 4. Now, upload the `Tree follow-up Form <https://docs.google.com/spreadsheets/d/12oJZDpJ8RxtmNopfqNKp3RWMsf4O3MWACYOTub_yZaQ/edit#gid=0>`_.
-5. Switch over to the Form Attachments tab before you publish this Form, and notice how the Form wants a data file called ``trees.csv``, but that Central has already linked the Entity List ``trees`` (created when you published the registration Form in step 3) and you don't need to upload any data here.
-6. Go back to the Draft Status page and publish this Form. Because this Form only *consumes* ``trees``, it does not make any changes to any Entity Properties.
+5. See the Attachments section before you publish this Form, and notice how the Form wants a data file called ``trees.csv``, but that Central has already linked the Entity List ``trees`` (created when you published the registration Form in step 3) and you don't need to upload any data here.
+6. Publish this Form. Because this Form only *consumes* ``trees``, it does not make any changes to any Entity Properties.
 7. Now, create an App User within this Project, allow it to access both of these Forms, and load them up into Collect or some other ODK-compatible client.
 
 Next, let's see these Forms working together.
@@ -132,7 +132,7 @@ Creating an Entity List in the Central Interface
 
 To create an Entity List directly in the Central web interface, first navigate to the Project which should contain this Entity List. Open the :guilabel:`Entities` tab. At the top of this page, you will see a :guilabel:`New` button you can click to create a new Entity List. You will only be asked for its name. Because Entity List names are used as identifiers throughout ODK, there are some restrictions on what you can choose as the name. If Central keeps rejecting your name, it is best to stick with basic letters and numbers.
 
-Once your Entity List is created, you can optionally also define the properties it should have. You can do this on the Entity List Overview page by clicking on the :guilabel:`New` button in the Entity Properties section.
+Once your Entity List is created, you can optionally also define the properties it should have. You can do this on the Entity List Properties page by clicking on the :guilabel:`New` button in the Entity Properties section.
 
 .. _central_entities_creating-definition:
 
