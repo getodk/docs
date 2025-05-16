@@ -75,21 +75,25 @@ How to create and test a Draft
 
 #. Go to the :guilabel:`Edit Form` tab for a specific Form, create a new Draft, and upload your new form definition
   
-   .. image:: /img/guide-testing-forms/testing-upload-draft.png
+   .. image:: /img/guide-testing-forms/create-draft.*
 
-#. Navigate to the Testing section (1 in screenshot below)
-#. To test the form online, click the :guilabel:`Test in browser` button (2) and the form will open in a new tab in your browser
-#. To test the form in Collect, click the :guilabel:`Test on device` button to show the test QR code. Open the Collect application. If no projects are configured, tap the :guilabel:`Configure with QR code` button. If you already have a project, tap on the round button in the upper right corner, then tap :guilabel:`Add project`. Scan the QR code (3). 
-#. You will see the Draft icon at the top right of the screen (📝) and be able to fill out and submit a form as you normally would in Collect
-#. All Draft submissions will appear at the bottom of the screen on the Testing tab (4) 
+#. Scroll down to the testing section
+#. To test the form in a browser, click the :guilabel:`Test in browser` button and the form will open in a new tab in your browser
+#. To test the form in Collect, click the :guilabel:`Test on device` button to show the test QR code.
 
-   .. image:: /img/guide-testing-forms/testing-draft-testing.png
+   #. Open the Collect application.
+   #. If no projects are configured, tap the :guilabel:`Configure with QR code` button. If you already have a project, tap on the round button in the upper right corner, then tap :guilabel:`Add project`.
+   #. Scan the draft testing QR code.
+   #. You will see the Draft icon at the top right of the screen (📝) and be able to fill out and submit a form as you normally do in Collect
+#. All Draft submissions will appear in the Testing section's table:
 
-#. Once the Draft has been tested and is ready to be published, return to the Status tab and click 'Publish Draft'.
+   .. image:: /img/guide-testing-forms/draft-testing.*
+
+#. Once the Draft has been tested and is ready to be published, go to the bottom of the page and click 'Publish Draft'.
 
    .. note:: The Draft submission data will disappear once the form is published.
 
-   .. image:: /img/guide-testing-forms/testing-publish-draft.png
+   .. image:: /img/guide-testing-forms/publish.*
 
 .. _guide-testing-app-user:
 
