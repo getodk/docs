@@ -227,10 +227,10 @@ If you are certain you wish to delete a Form, you can find the option on the For
 .. image:: /img/central-forms/delete.*
 
 
-Once a Form has been deleted, it will remain in the Trash for 30 days before being permanently deleted. You can find the Trash on the Project page, under the Forms list. Here, you can undelete a Form using the button on the right. Undeleting a Form will restore it exactly as it was when deleted.
+Once a Form has been deleted, it will remain in the Trash for 30 days before being permanently deleted. You can find the Trash on the Project page, under the Forms list. Here, you can restore a Form using the button on the right. Restoring a Form will restore it exactly as it was when deleted.
 
-.. image:: /img/central-forms/trash.png
+.. image:: /img/central-forms/trash.*
 
 After 30 days, when a Form is permanently deleted, the data will be removed from the system completely.
 
-You can create a Form with the same ``form_id`` as a Form in the Trash. If you do this, you won't be able to directly undelete the Form in the Trash with a matching ``form_id``. However, you can delete all Forms with the same ``form_id`` and then choose one to undelete. There can only be one active form with any given ``form_id`` but there can be many deleted ones.
+You can create a Form with the same ``form_id`` as a Form in the Trash. If you do this, you won't be able to directly restore the Form in the Trash with a matching ``form_id``. However, you can delete all Forms with the same ``form_id`` and then choose one to restore. There can only be one active form with any given ``form_id`` but there can be many deleted ones.
