@@ -18,7 +18,7 @@ Opting into ODK Web Forms in Central
 ----------------------------------------
 
 .. warning::
-    ODK Web Forms is experimental and does not support all form functionality! Please test your form carefully.
+    ODK Web Forms is experimental and does not support all form functionality! Please test your forms carefully. If you opt into using ODK Web Forms for real data collection, we strongly encourage you to follow the forum's `release category <https://forum.getodk.org/c/releases/16>_` and verify your forms again when Central is updated.
 
 Starting in Central v2025.1, you can opt individual forms into using `ODK Web Forms <https://github.com/getodk/web-forms?tab=readme-ov-file#odk-web-forms>`_, an alternative to Enketo designed from the ground up to align with ODK Collect. ODK Web Forms is still early in its development. We recommend trying ODK Web Forms if:
 
