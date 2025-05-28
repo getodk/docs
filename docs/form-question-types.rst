@@ -906,7 +906,7 @@ type
 appearance
   ``autocomplete``
 
-The ``autocomplete`` appearance allows the enumerator to filter the list of available choices. This is especially helpful for questions with a large number of choices.
+The ``autocomplete`` appearance allows the enumerator to filter the list of available choices based on their label. The filtering is case-insensitive and matches any subset of the label text.
 
 .. image:: /img/form-question-types/select-autocomplete.*
   :alt: The Select One form widget with autocomplete, as displayed in the ODK Collect app on an Android phone. The question text is "Select one widget." The hint text is, "select one type with autocomplete appearance, 4 text choices." Below that is a text input followed by four radio buttons labeled A, B, C, and D. Above the question text is the form group name "Select one widgets." The device keyboard is active.
