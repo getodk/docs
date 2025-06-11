@@ -22,10 +22,10 @@ Other commands that are helpful are:
 
 .. _troubleshooting-emails:
 
-Users aren't receiving emails
------------------------------
+Account creation and password reset emails are not working
+-----------------------------------------------------------
 
-Central uses email as a way to verify user identity when setting or changing passwords. This helps ensure that only the intended user has access to their Central account.
+Central uses email as a way to verify user identity when creating accounts or changing passwords. This helps ensure that only the intended user has access to their Central account.
 
 Email sounds like a simple technology but in practice there are many things that can cause message delivery issues. By default, Central is installed with a mail server which can be used without configuration. However, it will not work in every environment. For example:
 
@@ -34,6 +34,10 @@ Email sounds like a simple technology but in practice there are many things that
 * Your domain may not be recognized by mail recipients and therefore messages from it may be discarded or marked as spam
 
 To solve delivery issues, we strongly recommend using a dedicated email service such as `Mailjet <https://www.mailjet.com>`_. Central doesn't send many emails, so such a service will generally be a cost-effective way of ensuring email delivery. Once you have an account set up, you will need to :ref:`configure Central to use it <central-install-digital-ocean-custom-mail>`.
+
+.. note::
+
+  Some cloud providers (e.g., DigitalOcean) block emails by filtering outgoing traffic. If you're using a dedicated email service and account creation and password resets are still not working, contact your provider to request exclusion from their packet filtering.
 
 If you do not want to use a dedicated email service, you can try directly sending emails from your Central installation. :ref:`Configure DKIM <central-install-digital-ocean-dkim>` to increase the likelihood of your emails being delivered.
 
