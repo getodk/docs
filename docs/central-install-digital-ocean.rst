@@ -480,7 +480,7 @@ Central comes with a PostgreSQL v14.x database server to store your data. To use
       CREATE USER mydbuser WITH PASSWORD 'mydbpassword';
       CREATE DATABASE mydbname WITH OWNER=mydbuser ENCODING=UTF8;
 
-#. Ensure ``CITEXT`` and ``pg_trgm`` extensions exist on `mydbname`.
+#. Ensure the required PostgreSQL extensions exist on `mydbname`.
 
    .. code-block:: postgres
 
