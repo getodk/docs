@@ -243,7 +243,7 @@ Once you do see it working, you'll want to set up your first Administrator accou
 
 .. tip::
 
-  We strongly recommend using a :ref:`custom mail server <central-install-digital-ocean-custom-mail>` to ensure password reset emails are delivered reliably. Learn more at :ref:`troubleshooting emails <troubleshooting-emails>`.
+  We strongly recommend using a :ref:`custom mail server <central-install-digital-ocean-custom-mail>` to ensure account creation and password reset emails are delivered. If account creation is failing or users are not receiving emails, see :ref:`troubleshooting emails <troubleshooting-emails>`.
 
 .. _central-install-digital-ocean-backups:
 
