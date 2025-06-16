@@ -390,6 +390,8 @@ To browse all Entity Lists in a Project, go to the :guilabel:`Entities` tab with
 
 On this page, you can see how this Entity List relates to other incoming data in your Project: which Forms contribute to the Entity List, which ones read data from it, and which fields are being read or written. To see the actual data in your Entity List, click on the :guilabel:`Data` tab at the top.
 
+On the Settings page, you can select whether App Users and Data Collectors receive access to all Entities, or only the ones they create.
+
 .. _central-entities-data:
 
 Managing Entity Data
@@ -406,6 +408,8 @@ To see, edit, and manage additional details about a particular Entity, hover ove
    .. image:: /img/central-entities/entity-table-review.png
 
 By default, you see all Entities in the Entity List. If an Entity has a :ref:`conflict warning <central-entities-update-conflicts>` attached to it, you will see an alert in that table row. You can filter down to only Entities that do or don't have conflict warnings using the filter above the table. On the row of any Entity with a conflict warning, you can click on the red :guilabel:`Review Parallel Updates` button to see more information about the warning, make any edits needed to correct problems, and dismiss the warning if desired. You can also click through to the Entity Detail page to do these things with a little more information.
+
+If you're looking for a specific Entity, you can search for a specific property value, label or creator.
 
 .. _central-entities-detail:
 
