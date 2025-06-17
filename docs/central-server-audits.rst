@@ -58,6 +58,8 @@ ODK Central tracks and logs audit actions for most administrative actions perfor
 
    - Set
 
+- **Server Upgrade**
+
 To access the audit logs, navigate to :guilabel:`System`, then select :guilabel:`Server Audit Logs` from the navigation menu that appears:
 
    .. image:: /img/central-server-audits/overview.png
