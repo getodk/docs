@@ -45,7 +45,8 @@ extensions = [ 'sphinxcontrib.spelling',
     'openapi',
     'sphinxext.opengraph',
     'notfound.extension',
-    'sphinx_sitemap'
+    'sphinx_sitemap',
+    'myst_parser'
 ]
 
 # If using Apple Silicon, set env variable (assumes brew install of enchant)
