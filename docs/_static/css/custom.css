@@ -85,3 +85,13 @@ details.sd-dropdown details.nested-schema[open] > summary:first-of-type{
 .reaction {
     margin: 0px 1em;
 }
+
+#kapa-widget-container {
+  z-index: 10000 !important;
+  position: absolute !important;
+}
+
+.mantine-Modal-root {
+  z-index: 10000;
+  position: absolute;
+}

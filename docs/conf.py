@@ -87,6 +87,8 @@ html_css_files = [
     'css/custom.css',
 ]
 
+html_js_files = ["js/custom.js"]
+
 html_theme_options = {
     'light_css_variables': {
         'color-brand-primary': '#009ECC',
