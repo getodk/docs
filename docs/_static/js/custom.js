@@ -5,7 +5,14 @@ document.addEventListener("DOMContentLoaded", function () {
   script.setAttribute("data-project-name", "ODK");
   script.setAttribute("data-project-color", "#009ECC");
   script.setAttribute("data-project-logo", "https://getodk.org/assets/img/logo-square.jpg");
-  script.setAttribute("data-modal-title", "Ask AI");
+  script.setAttribute("data-button-hide", true);  
+  script.setAttribute("data-modal-title-ask-ai", "Ask AI");
+  script.setAttribute("data-modal-title-search", "Search");
+  script.setAttribute("data-modal-ask-ai-input-placeholder", "Ask a question");
+  script.setAttribute("data-search-mode-enabled", true);
+  script.setAttribute("data-search-mode-default", false);
+  script.setAttribute("data-search-include-source-names",'["Docs"]');
+  script.setAttribute("data-modal-override-open-id", "custom-ask-ai-button");
   script.async = true;
   document.head.appendChild(script);
 });
