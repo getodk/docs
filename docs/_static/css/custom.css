@@ -95,3 +95,7 @@ details.sd-dropdown details.nested-schema[open] > summary:first-of-type{
   z-index: 10000;
   position: absolute;
 }
+
+#custom-ask-ai-button {
+  text-align: left;
+}
