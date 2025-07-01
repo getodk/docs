@@ -591,16 +591,37 @@ To use S3-compatible storage for all files saved in Central, follow these steps:
      $ docker compose stop
      $ docker compose up -d
 
+#. Ensure all the required PostgreSQL extensions are installed.
+
+   1. Connect to your database server.
+
+      .. tabs::
+   
+         .. tab:: Default database
+
+           .. code-block:: bash
+
+             $ docker exec -it central-postgres14-1 psql -U odk -W odk
+
+           The default password is odk.
+
+         .. tab:: Custom database
+
+           .. code-block:: bash
+
+             $ psql -h mydbhost -p 5432 -U mydbadmin
+
+   2. Run the following SQL.
+
+   .. code-block:: postgres
+
+      CREATE EXTENSION IF NOT EXISTS pgrowlocks;
+
 #. Try the configuration by attempting to upload existing one existing file. If this is a new server, you can upload an XLSForm to create a file.
 
    .. code-block:: bash
 
      $ docker compose exec service node lib/bin/s3.js upload-pending 1
-
-   .. note::
-
-     If you are using a custom database,
-     :ref:`ensure all required extensions are installed <central-install-digital-ocean-custom-db>`.
 
    If the configuration is correct, you should see a success message. If there are issues with the configuration, you should see an error message with hints on what needs to be fixed. To try uploading the same file again, you will need to reset its status to pending:
 
@@ -613,9 +634,9 @@ Once you have a working configuration, Central will move new and existing files 
 
 You can manually request an upload of all pending files by using the ``upload-pending`` task described above without a count:
 
-   .. code-block:: bash
+.. code-block:: bash
 
-     $ docker compose exec service node lib/bin/s3.js upload-pending
+  $ docker compose exec service node lib/bin/s3.js upload-pending
 
 If there are any issues uploading a file, it will be marked as `failed` and will stay in the database. You can use the ``reset-failed-to-pending`` command as shown above to try uploading it again.
 
