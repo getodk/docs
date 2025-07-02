@@ -3,9 +3,14 @@
 Upgrading Central
 =================
 
-We release new versions of Central regularly. We recommend that you upgrade as soon as you can to get access to the newest features, bug fixes, and security updates. It is not possible to downgrade and we do not guarantee that versions prior to the latest release can still be installed.
+We release new versions of Central regularly. To get the latest features, bug fixes, and security updates, we recommend upgrading as soon as possible. It is not possible to downgrade and we do not guarantee that versions prior to the latest release can still be installed.
 
-Start by reviewing upgrade notes for all versions between your current version and the one you are upgrading to. You will directly install the latest version but you must follow all upgrade instructions between your current version and the one you are upgrading to. If you are upgrading over many versions, the chance of error increases. We recommend first trying the upgrade on a clone of your production environment to validate the steps that you need to follow.
+To be alerted when new versions of Central are released, we encourage you to go to `the forum's release category <https://forum.getodk.org/c/releases/16>`_ and click on the bell. We also update the "News" section on Central's landing page when a new version is available.
+
+To upgrade, start by reviewing upgrade notes for all versions between your current version and the one you are upgrading to. You may also want to review `release notes <https://forum.getodk.org/tags/c/releases/16/odk-central>`_. You will directly install the latest version but you must follow all upgrade instructions between your current version and the one you are upgrading to.
+
+.. warning::
+  If you are upgrading over many versions, the chance of error increases. We recommend first trying the upgrade on a clone of your production environment to validate the steps that you need to follow.
 
 Upgrade notes
 -------------
