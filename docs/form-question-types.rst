@@ -2344,9 +2344,11 @@ The following barcode formats are supported:
 - RSS-Expanded
 - QR Code
 - Data Matrix
-- Aztec (beta)
-- PDF 417 (beta)
+- Aztec
+- PDF 417
 - MaxiCode
+
+For PDF 417 barcodes, the scanned contents are first decoded as UTF-8. If that fails, they are decoded using ISO-8859-1 instead.
 
 .. _default-barcode-widget:
 
