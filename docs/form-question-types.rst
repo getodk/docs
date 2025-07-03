@@ -64,14 +64,43 @@ The text entry field expands as the user types, and line breaks can be included.
 
   text, name, What is your name?
 
-To define the minimum number of rows that a text field should display, use the ``parameters`` column.  
+.. _text-area:
+
+Text area
+~~~~~~~~~~
+
+type
+  ``text``
+appearance
+  ``multiline``
+
+A text area shown as 4 rows. The area becomes scrollable as more text is added.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance
+
+  text, comments, Comments, multiline
+
+.. _expanding-text-area:
+
+Text area with custom rows
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+type
+  ``text``
+appearance
+  *none*
+
+To define the minimum number of rows that a text field should display, use the ``parameters`` column.
 
 .. rubric:: XLSForm
 
 .. csv-table:: survey
   :header: type, name, label, parameters
 
-  text, name, What is your name?, rows=5
+  text, essay, Your essay, rows=15
 
 .. _number-text-widget:
 
