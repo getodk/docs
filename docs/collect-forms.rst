@@ -55,7 +55,7 @@ Each draft has a colored pill indicating its validation status. Drafts that have
 Finalizing drafts
 ==================
 
-If your device is online and Collect is configured to automatically send, you can send send a filled form immediately from the form end screen by tapping the :guilabel:`Send` button.
+If your device is online and Collect is configured to automatically send, you can send a filled form immediately from the form end screen by tapping the :guilabel:`Send` button.
 
 If your device is offline or Collect is not configured to send automatically, you will need to finalize a form before it can be sent. Finalized forms are available from the :guilabel:`Ready to send` screen where they can be viewed or sent but not edited. You can finalize a form from the end screen by tapping the :guilabel:`Finalize` button.
 
