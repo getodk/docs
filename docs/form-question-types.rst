@@ -74,7 +74,7 @@ type
 appearance
   ``multiline``
 
-A text area shown as 4 rows. The area becomes scrollable as more text is added.
+A text area shown as 4 rows. The area can be scrolled as more text is added.
 
 .. rubric:: XLSForm
 

@@ -274,6 +274,7 @@ monospace
 mouseover
 MTP
 Mufasa
+multiline
 multipart
 multiselect
 Mumbai
