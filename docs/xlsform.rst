@@ -65,9 +65,10 @@ Other available columns are:
 
 - ``default_language``: Specifies the default language name in a form that has multiple defined languages. For more information on using multiple languages, refer to :ref:`multi-language forms <switching-languages>`.
 - ``public_key``: This attribute is necessary for enabling :ref:`encryption <defining-encrypted-form>`. It represents a base64-encoded RSA public key. The corresponding private key will be required for decrypting submissions and should not be included in the form definition.
-- ``auto_send``: When set to true, any finalized forms will be automatically sent as soon as a connection becomes available. If present, it will override the app-level :ref:`Auto send <auto-send>` setting.
-- ``auto_delete``: When set to true, successfully submitted forms will be immediately deleted from the device. If present, it will override the app-level :ref:`Delete after send <delete-after-send>` setting.
+- ``auto_send``: When set to ``true``, any finalized forms will be automatically sent as soon as a connection becomes available. If present, it will override the app-level :ref:`Auto send <auto-send>` setting.
+- ``auto_delete``: When set to ``true``, successfully submitted forms will be immediately deleted from the device. If present, it will override the app-level :ref:`Delete after send <delete-after-send>` setting.
 - ``allow_choice_duplicates``: When set to ``yes``, enables the use of duplicate choice names within the same list. This is sometimes necessary, for example, in cascading selects where choices with the same name are distinguished by a preceding question. Without this setting, forms with duplicate choice names will produce an error and not convert.
+- ``client_editable``: When set to ``true``, finalized or sent submissions of this form will be editable in Collect. For more details, see :ref:`the Collect documentation <edit-sent-finalized>`.
 
 .. _instance-name:
 
