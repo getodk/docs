@@ -55,13 +55,13 @@ Each draft has a colored pill indicating its validation status. Drafts that have
 Finalizing drafts
 ==================
 
-.. note::
+If your device is online and Collect is configured to automatically send, you can send a filled form immediately from the form end screen by tapping the :guilabel:`Send` button.
 
-  In Collect versions prior to v2023.3, it was possible to edit finalized forms. If your workflow involves adding or removing data up until form submission time, consider configuring Collect to hide the :guilabel:`Finalize` or :guilabel:`Send` button from the form end screen (see the form entry access control section of :ref:`protected settings <admin-settings>`) and using :ref:`bulk finalization <bulk-finalizing-drafts>` instead.
+If your device is offline or Collect is not configured to send automatically, you will need to finalize a form before it can be sent. Finalized forms are available from the :guilabel:`Ready to send` screen where they can be viewed or sent but not edited. You can finalize a form from the end screen by tapping the :guilabel:`Finalize` button.
 
-If your device is online and Collect is configured to automatically send submissions, you can send send a filled form immediately from the form end screen by tapping the :guilabel:`Send` button.
+If your workflow involves adding or removing data up until form submission time, consider configuring Collect to hide the :guilabel:`Finalize` or :guilabel:`Send` button from the form end screen (see the form entry access control section of :ref:`protected settings <admin-settings>`) and using :ref:`bulk finalization <bulk-finalizing-drafts>` with auto send instead.
 
-If your device is offline or Collect is not configured to automatically send submissions, you will need to finalize a draft before it can be sent. Finalized forms are available from the :guilabel:`Ready to send` screen where they can be viewed or sent. You can finalize a form from the end screen by tapping the :guilabel:`Finalize` button.
+Individual form definitions can also be configured to :ref:`allow edits of finalized or sent forms <edit-sent-finalized>`.
 
 .. _bulk-finalizing-drafts:
 
@@ -118,6 +118,35 @@ To show sent and unsent forms:
 .. image:: /img/collect-forms/ready-to-send-change-view.*
   :alt: The "Ready to send" screen of the Collect app. The *Change View* option has a red arrow pointing to it.
   :class: device-screen-vertical
+
+.. _edit-sent-finalized:
+
+Editing finalized or sent forms
+================================
+
+.. versionadded:: v2025.2.0
+
+  `ODK Collect v2025.2.0 <https://github.com/getodk/collect/releases/tag/v2025.2.0>`_, `ODK Central v2025.1.4 <https://github.com/getodk/central/releases/tag/v2025.1.4>`_
+
+Starting in ODK Collect v2025.2, data collectors can edit finalized or sent submissions that are still on their device. This feature is off by default and must be explicitly enabled in the form definition. It's useful in contexts where data collectors may get new information or be asked to make corrections.
+
+Unlike edits to drafts, edits to finalized or sent submissions are tracked in Central and shown in the submission :ref:`activity feed <central-submissions-details>`. A data collector can make a series of edits to a single submission from Collect and each will result in a separate entry in the activity feed. Once an edit to a specific submission is made from Central, however, it is no longer possible to edit that one from Collect.
+
+Unlike with Central-based edits, Collect-based edits use the version of the form that was active when the form was originally filled, NOT the latest one. That means you can turn off edits to new submissions by changing the form definition but existing submissions will continue to be editable.
+
+Edits to submissions that create or update Entities are allowed but they will only modify the submission, not the corresponding Entity.
+
+If you manually send submissions from "Ready to send," edits must be sent in order. If you attempt to send a later edit before an earlier one, you will get an error.
+
+To allow editing of finalized or sent submissions on device, the form definition must be modified. Add a ``client_editable`` column to the ``settings`` sheet in your XLSForm and set its value to ``true``:
+
+.. rubric:: XLSForm --- enabling edits from Collect
+
+.. csv-table:: settings
+  :header: form_title, form_id, version, client_editable
+
+  My form, my_form, 2026031201, true
+
 
 .. _deleting-forms:
 
