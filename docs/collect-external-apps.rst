@@ -83,7 +83,7 @@ Additionally, your external app can receive values from Collect through ``Intent
 External apps to populate multiple fields
 -------------------------------------------------------
 
-A ``field-list`` group can have an ``intent`` attribute that allows an external application to populate it. Notice that the ``ex:`` prefix used when populating a single field is not included to populate multiple fields.
+A group that either has an ``appearance`` of ``field-list`` or that is within a group with the ``field-list`` ``appearance`` can have an ``intent`` attribute that allows an external application to populate it. Notice that the ``ex:`` prefix used when populating a single field is not included to populate multiple fields.
 
 XLSForm
 ~~~~~~~~~
@@ -130,13 +130,13 @@ XLSForm
     </input>
   </group>
 
-The ``intent`` attribute is only used when the group has an ``appearance`` of ``field-list``. The format and the functionality of the ``intent`` value is the same as above. If the ``Intent`` extras returned by the external application contains values with keys that match the type and the name of the sub-fields, then the values from the ``Intent`` extras overwrite the current values of those sub-fields.
+If the ``Intent`` extras returned by the external application contains values with keys that match the type and the name of fields in the group, then the values from the ``Intent`` extras overwrite the current values of those fields.
 
-The external app is launched with the parameters that are defined in the intent string plus the values of all the sub-fields that are either text, decimal, integer, or binary (filename is sent). Any other sub-field is invisible to the external app.
+The external app is launched with the parameters that are defined in the intent string plus the values of all the fields in the group that are either text, decimal, integer, or binary (filename is sent). Any other field is invisible to the external app.
 
 .. warning::
-  Collect will override parameters set in ``body::intent`` if the parameter name clashes with the name of a sub-field in the group. It's best to avoid using parameter names that might be used as field names in forms using your external app.
+  Collect will override parameters set in ``body::intent`` if the parameter name clashes with the name of a field in the group. It's best to avoid using parameter names that might be used as field names in forms using your external app.
 
-Since Collect v1.30.0, it is possible to populate binary fields (:ref:`image <image-widgets>`, :ref:`video <video>`, :ref:`audio <audio>` or :ref:`file <file-upload>`) in field lists. An app that returns one or more binary files to Collect as part of a field list must provide a `content URI <https://developer.android.com/guide/topics/providers/content-provider-basics#ContentURIs>`_ as the value for each ``extra`` that corresponds to a binary question to populate. Additionally, the external application must specify `ClipData items <https://developer.android.com/reference/android/content/ClipData.Item>`_ for each URI it returns. Your app can then grant Collect temporary permissions to the files using the `Intent.FLAG_GRANT_READ_URI_PERMISSION <https://developer.android.com/reference/android/content/Intent#FLAG_GRANT_READ_URI_PERMISSION>`_ intent flag. See :ref:`a similar code example above <external-app-design>`.
+It is possible to populate binary fields (:ref:`image <image-widgets>`, :ref:`video <video>`, :ref:`audio <audio>` or :ref:`file <file-upload>`) in field lists. An app that returns one or more binary files to Collect as part of a field list must provide a `content URI <https://developer.android.com/guide/topics/providers/content-provider-basics#ContentURIs>`_ as the value for each ``extra`` that corresponds to a binary question to populate. Additionally, the external application must specify `ClipData items <https://developer.android.com/reference/android/content/ClipData.Item>`_ for each URI it returns. Your app can then grant Collect temporary permissions to the files using the `Intent.FLAG_GRANT_READ_URI_PERMISSION <https://developer.android.com/reference/android/content/Intent#FLAG_GRANT_READ_URI_PERMISSION>`_ intent flag. See :ref:`a similar code example above <external-app-design>`.
 
-Typically, an external app creator decides on the names of input and output extras and documents those. Form designers use the names of the expected input extras in the ``appearance`` of the ``field-list`` used to launch the external app (e.g. ``my_text`` in ``org.mycompany.myapp(my_text='Some text')`` above). Form designers use the names of the expected outputs from the external app to name the questions in the field list.
+Typically, an external app creator decides on the names of input and output extras and documents those. Form designers use the names of the expected input extras in the ``body::intent`` of the group used to launch the external app (e.g. ``my_text`` in ``org.mycompany.myapp(my_text='Some text')`` above). Form designers use the names of the expected outputs from the external app to name the questions in the group.
