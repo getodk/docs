@@ -136,6 +136,8 @@ Unlike with Central-based edits, Collect-based edits use the version of the form
 
 Edits to submissions that create or update Entities are allowed but they will only modify the submission, not the corresponding Entity.
 
+If you manually send submissions from "Ready to send," edits must be sent in order. If you attempt to send a later edit before an earlier one, you will get an error.
+
 To allow editing of finalized or sent submissions on device, the form definition must be modified. Add a ``client_editable`` column to the ``settings`` sheet in your XLSForm and set its value to ``true``:
 
 .. rubric:: XLSForm --- enabling edits from Collect
