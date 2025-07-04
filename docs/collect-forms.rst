@@ -150,7 +150,7 @@ To allow editing of finalized or sent submissions on device, the form definition
 
 .. _deleting-forms:
 
-Deleting Forms
+Deleting forms
 ===============
 
 You can delete filled forms in any state (`Draft`, `Finalized`, or `Sent`). Deleting a `Sent` form deletes the form contents but metadata associated with it including the deletion date and the instance name are maintained for display in the :guilabel:`Sent` list.
@@ -188,7 +188,7 @@ These approaches can also be helpful in case of problems that require troublesho
 
 .. _loading-forms-directly:
 
-Loading Forms directly
+Loading forms directly
 ------------------------
 
 .. _loading-forms-with-adb:
@@ -235,14 +235,14 @@ Media files must be placed in a folder labeled :file:`{form-name}-media`.
 
 .. _pulling-forms-with-briefcase:
 
-Pulling Forms into Briefcase
+Pulling forms into Briefcase
 -----------------------------
 
 :doc:`ODK Briefcase  <briefcase-using>` is a desktop application that can be used to pull filled forms to your local computer. You will first need to :ref:`transfer the filled forms to your computer <pull-from-collect>`. This will not update the state of the form to `Sent`.
 
 .. _delete-forms-adb:
 
-Deleting Forms with ``adb``
+Deleting forms with ``adb``
 -------------------------------
 
 You can also :ref:`delete form instances directly with <deleting-forms-with-adb>` :doc:`Android Debug Bridge <collect-adb>`. They are stored in the :file:`instances` subdirectory of :ref:`your Collect directory <collect-directory>`, with a directory for each instance.
