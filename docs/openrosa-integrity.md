@@ -21,7 +21,7 @@ The structure of the integrity document returned by an integrity request is as f
 <data>
 <entities>
     <entity id="24b47424-ccf8-4f4b-b4cd-34ff5c71eddd">
-        deleted>true</deleted>
+        <deleted>true</deleted>
     </entity>
     <entity id="9e32d18f-d51a-4826-a8b2-e9b1c6d10b58">
         <deleted>false</deleted>
