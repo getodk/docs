@@ -32,7 +32,7 @@ The structure of the integrity document returned by an integrity request is as f
 
 This document consists of:
 
-- A top-level `<data/>` tag in the `http://openrosa.org/xforms/xformsIntegrity` namespace enclosing:
+- A top-level `<data/>` tag enclosing:
   - zero or more `<entity/>` tags containing a exactly one `<deleted/>` tag
 
 #### Elements with `<entity/>`
