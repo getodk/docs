@@ -19,21 +19,22 @@ The structure of the integrity document returned by an integrity request is as f
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
 <data>
-<entities>
-    <entity id="24b47424-ccf8-4f4b-b4cd-34ff5c71eddd">
-        <deleted>true</deleted>
-    </entity>
-    <entity id="9e32d18f-d51a-4826-a8b2-e9b1c6d10b58">
-        <deleted>false</deleted>
-    </entity>
-</entities>
+  <entities>
+      <entity id="24b47424-ccf8-4f4b-b4cd-34ff5c71eddd">
+          <deleted>true</deleted>
+      </entity>
+      <entity id="9e32d18f-d51a-4826-a8b2-e9b1c6d10b58">
+          <deleted>false</deleted>
+      </entity>
+  </entities>
 </data>
 ```
 
 This document consists of:
 
 - A top-level `<data/>` tag enclosing:
-  - zero or more `<entity/>` tags containing a exactly one `<deleted/>` tag
+  - an `entities` tag enclosing:
+    - zero or more `<entity/>` tags containing a exactly one `<deleted/>` tag
 
 #### Elements with `<entity/>`
 
