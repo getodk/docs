@@ -36,7 +36,7 @@ Errors are indicated in the :guilabel:`Drafts` list. You can also :ref:`check fo
 Finalized
 ~~~~~~~~~~~
 
-Finalized forms are ready to be sent and can't be edited. The ``finalized`` state exists to:
+Finalized forms are ready to be sent and can't be edited - unless editing is explicitly enabled in the form definition using :ref:`allow edits of finalized or sent forms <edit-sent-finalized>`. The ``finalized`` state exists to:
 
 * give data collectors control over when filled forms are queued for submission.
 * reduce the risk that data collectors continue editing data after they no longer have access to the data collection subject.
@@ -48,7 +48,7 @@ The ``finalized`` state is only necessary because Collect allows users to save a
 Sent
 ~~~~~
 
-Sent forms have been received by the server and can't be edited from Collect. The ``sent`` state exists to:
+Sent forms have been received by the server and can't be edited from Collect - unless editing is explicitly enabled in the form definition using :ref:`allow edits of finalized or sent forms <edit-sent-finalized>`. The ``sent`` state exists to:
 
 * let the user see data that they sent.
 * enable troubleshooting and data recovery in case of issues with the server.
