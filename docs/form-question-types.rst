@@ -1495,6 +1495,14 @@ Captures the current geolocation from the device. The location is displayed in d
 
 This question type shows a dialog with the current accuracy and lets the data collector decide when to capture the point. For capturing location without data collector intervention, see :ref:`start-geopoint <metadata-start-geopoint>`. For a geopoint with a user-selected location, see :ref:`placement-map <placement-map-widget>`.
 
+.. tip::
+
+  You can use :func:`selected-at()` to require geopoints meet a particular threshold. For example, if you need points with an accuracy better than 10 meters, use this constraint:
+
+  `selected-at(${geopoint_widget}, 3) < 10`.
+
+  The ``3`` in the above constraint references accuracy, the fourth space-separated value in the `geopoint data type <https://getodk.github.io/xforms-spec/#data-types>`_. The `selected-at` function uses 0-based indexing so you can use ``0`` to reference latitude, ``1`` for longitude, and ``2`` for altitude.
+
 .. rubric:: XLSForm with optional parameters
 
 .. csv-table:: survey
@@ -1522,14 +1530,6 @@ The bottom half of the dialog displays troubleshooting information. The first li
 You can also train data collectors to use time elapsed to take some action. For example, you can let them know to capture any point available after waiting for 2 minutes. Number of satellites (6) can be useful when capturing points outdoors. A low number of satellites (under 4) may indicate that something is wrong with the device or its position. See :doc:`collect-location`.
 
 .. _accuracy-constraint:
-
-.. tip::
-
-  You can use :func:`selected-at()` to require geopoints meet a particular threshold. For example, if you need points with an accuracy better than 10 meters, use this constraint:
-
-  `selected-at(${geopoint_widget}, 3) < 10`.
-
-  The ``3`` in the above constraint references accuracy, the fourth space-separated value in the `geopoint data type <https://getodk.github.io/xforms-spec/#data-types>`_. The `selected-at` function uses 0-based indexing so you can use ``0`` to reference latitude, ``1`` for longitude, and ``2`` for altitude.
 
 .. tip::
 
