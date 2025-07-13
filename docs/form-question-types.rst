@@ -1531,6 +1531,10 @@ You can also train data collectors to use time elapsed to take some action. For 
 
   The ``3`` in the above constraint references accuracy, the fourth space-separated value in the `geopoint data type <https://getodk.github.io/xforms-spec/#data-types>`_. The `selected-at` function uses 0-based indexing so you can use ``0`` to reference latitude, ``1`` for longitude, and ``2`` for altitude.
 
+.. tip::
+
+  If you rely on mock locations, keep in mind that only GPS can be spoofed. The system may still retrieve real location data from WI-FI or cellular networks, which can override the mock location and as a result, deliver a mix of real and fake location data. To avoid this, go to ``Android Settings`` > ``Location`` and turn off ``Improve location accuracy``. This forces the device to use only GPS, ensuring your mock location is applied consistently.
+
 
 .. _geopoint-maps:
 
