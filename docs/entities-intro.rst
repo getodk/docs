@@ -119,16 +119,18 @@ Currently, an entire Entity List is always sent to every device and there is no 
 
 For now, you can limit the Entities that are available from a :ref:`select_one_from_file <select-from-external-dataset>` using a :ref:`choice_filter <cascading-selects>`. This won't limit the amount of data sent to each device but it can significantly reduce the amount of options shown to each user and can help speed up :ref:`lookup expressions <referencing-values-in-datasets>`.
 
-Can I have millions of Entities?
---------------------------------
+How many Entities can I have?
+-----------------------------
 
-Yes, but there are two limitations that may make millions of Entities impractical: data transfer and form performance.
+The short answer is that most forms running on modern devices can handle Entity Lists with hundreds of thousands of Entities without slowdowns.
 
-Currently, all Entities are sent to every device on every update. Depending on how much data is stored in your Entities and your team's network connection, using millions of Entities may not be practical. To address this limitation, we plan on adding support for archiving Entities, synchronizing only updated Entities, or assigning a subset of Entities to a user.
+The long answer is that there are two key variables to consider when using very large Entity Lists: data transfer and form design.
 
-Choice filters and :ref:`lookup expressions <referencing-values-in-datasets>` are the other limiting factor. Starting in Collect v2024.3 and Central v2024.3, simple and common expressions with ``=``, ``and`` and ``or`` are very fast. Complex expressions in lookups or choice filters (e.g., :doc:`functions <form-operators-functions>` like :func:`substr`) may slow your form if you have more than 50,000 Entities on devices with low amounts of RAM. We regularly review our analytics to look for opportunities for performance improvements.
+Currently, all Entities are sent to every device on every update. Depending on the size and uniqueness of values saved in your Entities and your team's network connection, sending that much data may not be practical. To address this limitation, we plan to add support for archiving Entities, synchronizing only updated Entities, and assigning a subset of Entities to each user.
 
-The number of properties that each Entity has, the size and uniqueness of values saved, and the devices used all affect data transfer and form performance. If you have a form with many Entities that feels slow, we encourage you to post about it on `the forum <https://forum.getodk.org/c/support/6>`_ so that we can recommend approaches that will make it work faster or design improvements to the system.
+The choice filters and :ref:`lookup expressions <referencing-values-in-datasets>` you use in your form design are the other key consideration. Simple and common expressions with ``=``, ``and`` and ``or`` are very fast on all devices. More complex and uncommon ones, such as :func:`substr`, may perform poorly on older devices with limited RAM.
+
+We regularly review our analytics to look for opportunities for performance improvements. If you have a form with many Entities that feels slow, we encourage you to post about it on `the forum <https://forum.getodk.org/c/support/6>`_ so that we can recommend approaches that will make it work faster or design improvements to the system.
 
 .. note::
     We do not recommend using `search() <https://xlsform.org/en/#dynamic-selects-from-pre-loaded-data>`_ instead of ``select_one_from_file`` because it does not work with offline Entities and is less flexible. Starting in Collect v2024.3 and Central v2024.3, there is limited performance benefit to ``search()``.
