@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   script.setAttribute("data-search-mode-default", false);
   script.setAttribute("data-search-include-source-names",'["Docs"]');
   script.setAttribute("data-modal-override-open-id", "custom-ask-ai-button");
+  script.setAttribute("data-bot-protection-mechanism", "hcaptcha");
   script.async = true;
   document.head.appendChild(script);
 });
