@@ -1495,6 +1495,14 @@ Captures the current geolocation from the device. The location is displayed in d
 
 This question type shows a dialog with the current accuracy and lets the data collector decide when to capture the point. For capturing location without data collector intervention, see :ref:`start-geopoint <metadata-start-geopoint>`. For a geopoint with a user-selected location, see :ref:`placement-map <placement-map-widget>`.
 
+.. tip::
+
+  You can use :func:`selected-at()` to require geopoints meet a particular threshold. For example, if you need points with an accuracy better than 10 meters, use this constraint:
+
+  `selected-at(${geopoint_widget}, 3) < 10`.
+
+  The ``3`` in the above constraint references accuracy, the fourth space-separated value in the `geopoint data type <https://getodk.github.io/xforms-spec/#data-types>`_. The `selected-at` function uses 0-based indexing so you can use ``0`` to reference latitude, ``1`` for longitude, and ``2`` for altitude.
+
 .. rubric:: XLSForm with optional parameters
 
 .. csv-table:: survey
@@ -1525,11 +1533,7 @@ You can also train data collectors to use time elapsed to take some action. For 
 
 .. tip::
 
-  You can use :func:`selected-at()` to require geopoints meet a particular threshold. For example, if you need points with an accuracy better than 10 meters, use this constraint:
-
-  `selected-at(${geopoint_widget}, 3) < 10`.
-
-  The ``3`` in the above constraint references accuracy, the fourth space-separated value in the `geopoint data type <https://getodk.github.io/xforms-spec/#data-types>`_. The `selected-at` function uses 0-based indexing so you can use ``0`` to reference latitude, ``1`` for longitude, and ``2`` for altitude.
+  If you rely on mock locations, keep in mind that only GPS can be spoofed. The system may still retrieve real location data from WI-FI or cellular networks, which can override the mock location and as a result, deliver a mix of real and fake location data. To avoid this, go to ``Android Settings`` > ``Location`` and turn off ``Improve location accuracy``. This forces the device to use only GPS, ensuring your mock location is applied consistently.
 
 
 .. _geopoint-maps:
