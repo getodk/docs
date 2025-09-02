@@ -338,7 +338,7 @@ Customizing end-of-form behavior
    
    .. tab-item:: Central v2025.2.3+
    
-      For Public Access Links, the default end-of-form behavior displays a generic thank you message. To redirect respondents to a custom page, provide a `return_url`. Additionally, to enable respondents or data collectors to make multiple submissions without refreshing the page after each submission, append `&single=false` to the Public Access link:
+      For **Public Access Links**, the default end-of-form behavior displays a generic thank you message. To redirect respondents to a custom page, provide a `return_url`. Additionally, to enable respondents or data collectors to make multiple submissions without refreshing the page after each submission, append `&single=false` to the Public Access link:
 
       +------------------------------+-----------------------------------------------------------------------------------+
       | Default Public Access link:  | `https://your-domain/f/<enketo-id>?st=<secret>`                                   |
@@ -364,7 +364,7 @@ Customizing end-of-form behavior
 
    .. tab-item:: Central v2025.2.1 and prior
 
-      For Public Access Links, the default end-of-form behavior displays a generic thank you message. To redirect respondents to a custom page, provide a `return_url`. Additionally, to enable respondents or data collectors to make multiple submissions without refreshing the page after each submission, remove `/single` from the Public Access link:
+      For **Public Access Links**, the default end-of-form behavior displays a generic thank you message. To redirect respondents to a custom page, provide a `return_url`. Additionally, to enable respondents or data collectors to make multiple submissions without refreshing the page after each submission, remove `/single` from the Public Access link:
 
       +------------------------------+-----------------------------------------------------------------------------------+
       | Default Public Access link:  | `https://your-domain/-/single/<enketo-id>?st=<secret>`                            |
