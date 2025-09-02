@@ -330,3 +330,57 @@ You can make an Enketo form offline-capable by changing the form's web address a
     #. Press ``Enter`` on your keyboard, and make sure that you see an orange connectivity icon in the upper left of the form.
 
     #. Copy the link and share it with your data collector(s)
+
+Customizing end-of-form behavior
+--------------------------------
+
+.. tab-set::
+   
+   .. tab-item:: Central v2025.2.3+
+   
+      For **Public Access Links**, the default end-of-form behavior displays a generic thank you message. To redirect respondents to a custom page, provide a `return_url`. Additionally, to enable respondents or data collectors to make multiple submissions without refreshing the page after each submission, append `&single=false` to the Public Access link:
+
+      +------------------------------+-----------------------------------------------------------------------------------+
+      | Default Public Access link:  | `https://your-domain/f/<enketo-id>?st=<secret>`                                   |
+      +------------------------------+-----------------------------------------------------------------------------------+
+      | Multiple submissions:        | `https://your-domain/f/<enketo-id>?st=<secret>&single=false`                      |
+      +------------------------------+-----------------------------------------------------------------------------------+
+
+      Adding `&single=false` to the URL also enables the use of the `last-saved` instance in your form definition for web-based data collection.
+
+      For **Data Collectors**, the default end-of-form behavior allows them to make another submission without refreshing the page. To display a custom page instead, append `&single=true` and provide the URL of your custom page using the `return_url` query parameter:
+
+      +-----------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+      | Default URL for Data Collectors:  | `https://your-domain/projects/<id>/forms/<name>/submissions/new`                                                            |
+      +-----------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+      | Redirect after submission:        | `https://your-domain/projects/<id>/forms/<name>/submissions/new?single=true&return_url=http://some-domain/custom-page.html` |
+      +-----------------------------------+-----------------------------------------------------------------------------------------------------------------------------+
+
+      If you don't provide a `return_url`, a default thank-you message will be displayed.
+
+      .. note::
+
+         ODK Web Forms does not yet support the `last-saved` instance. Also, there is no impact of `single` query parameter on the behavior of ODK Web Forms.
+
+   .. tab-item:: Central v2025.2.1 and prior
+
+      For **Public Access Links**, the default end-of-form behavior displays a generic thank you message. To redirect respondents to a custom page, provide a `return_url`. Additionally, to enable respondents or data collectors to make multiple submissions without refreshing the page after each submission, remove `/single` from the Public Access link:
+
+      +------------------------------+-----------------------------------------------------------------------------------+
+      | Default Public Access link:  | `https://your-domain/-/single/<enketo-id>?st=<secret>`                            |
+      +------------------------------+-----------------------------------------------------------------------------------+
+      | Multiple submissions:        | `https://your-domain/-/<enketo-id>?st=<secret>`                                   |
+      +------------------------------+-----------------------------------------------------------------------------------+
+
+      Removing `/single` from the URL also enables the use of the `last-saved` instance in your form definition for web-based data collection.
+
+      For **Data Collectors**, the default end-of-form behavior allows them to make another submission without refreshing the page. To display a custom page instead, add `/single` after `/-` in the URL and provide the URL of your custom page using the `return_url` query parameter:
+
+      +-----------------------------------+-------------------------------------------------------------------------------------------+
+      | Default URL for Data Collectors:  | `https://your-domain/-/<enketo-id>`                                                       |
+      +-----------------------------------+-------------------------------------------------------------------------------------------+
+      | Redirect after submission:        | `https://your-domain/-/single/<enketo-id>?return_url=http://some-domain/custom-page.html` |
+      +-----------------------------------+-------------------------------------------------------------------------------------------+
+
+      If you don't provide a `return_url`, a default thank-you message will be displayed.
+
