@@ -84,3 +84,15 @@ Date
   :class: central-partial-screen
 
 The :ref:`date question type <default-date-widget>` without appearance allows the user to enter a date. The user can manually type a date in the text field in the mm/dd/yyyy format or click in the field to select a date from a calendar. To change the year, they can press on the current year at the top of the calendar. To change the month, they can use the navigation arrows or press on the current month at the top of the calendar. There are also buttons to clear the date or jump to today.
+
+Selects with images
+~~~~~~~~~~~~~~~~~~~
+
+When you specify :ref:`images for select options <image-options>`, Web Forms displays the options in containers to support visual processing and make selection easier.
+
+.. image:: /img/web-forms/select-with-images.*
+  :class: central-partial-screen
+
+By default, choices with images are displayed in a grid. Each choice container is given the same width and height and the number of columns is determined by the screen width (this is the same as the :ref:`columns appearance <select-columns-widget>`). Images are never distorted or scaled up but they may be scaled down. The maximum image height used is 300px. We recommend using a consistent size for all images and trying your form on the devices you plan to use for data collection.
+
+If you would like to display one choice with image per row, as is the default for Collect, you can use the :ref:`columns-1 appearance <select-columns-n-widget>`.
