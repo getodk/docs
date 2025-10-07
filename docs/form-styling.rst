@@ -17,10 +17,13 @@ can all be styled using
 Media
 ------
 
-A question label may include an image, an audio file and/or a video using the ``image``, ``audio`` and/or ``video`` columns.
-Files referenced should be included :ref:`in your form's media folder <loading-form-media>`.
+Images, audio and video can help make your forms more accessible, especially for enumerators or participants with lower literacy. Question labels can include any combination of images, audio and video in addition to text. You can also specify media for :ref:`select choices <image-options>`.
 
-.. seealso:: Media can be :doc:`translated <form-language>` or :ref:`used with select choices <image-options>`.
+To specify media for a question label, use the ``image``, ``audio`` and/or ``video`` columns on the ``survey`` sheet of your :doc:`xlsform`. When a form definition includes media, Central automatically detects which files are needed and :ref:`prompts you to attach them <central-forms-attachments>`. In Collect, files are stored :ref:`in your form's media folder <loading-form-media>`.
+
+.. seealso:: Media can be :doc:`translated <form-language>` or :ref:`used for select choices <image-options>`.
+
+.. _media-images:
 
 Images
 ~~~~~~~~
@@ -58,6 +61,72 @@ If your image is large or you would like to provide an alternative image with mo
   :header: type, name, label, image, big-image
 
   note, instructions, Go to the spot marked by an X. Tap the map to make it bigger., map-small.jpg, map-big.jpg
+
+.. _label-images-best-practices:
+
+Best practices for images
+""""""""""""""""""""""""""
+
+.. seealso:: :ref:`Using images for select choices <image-options>` and :ref:`selects with images in Web Forms <web-forms-selects-images>`
+
+Images can make forms easier to use and more engaging. Follow these tips to create images that enhance clarity and usability.
+
+**Tip 1: Use cohesive images to reduce cognitive load**
+
+* Make all images the same size (e.g. 300 x 300 pixels)
+* Use images with similar colors and contrast
+* Center the subject with equal whitespace around it
+* Keep backgrounds simple and uncluttered
+
+.. image:: /img/form-styling/label-images-cohesive.*
+  :alt: Examples of how to use images in selects. The good example has images on a white background. The bad example uses images with the subject cropped.
+
+**Tip 2: Use icons to simplify visuals**
+
+* Use open source libraries to find a cohesive set of icons (more details below)
+* Ensure the icons are large enough to recognize and understand
+* Pick distinct icons so users can tell them apart
+* Use icons with high color contrast and test in both light and dark modes
+
+.. image:: /img/form-styling/label-images-icons.*
+  :alt: Examples of how to use icons in selects. User friendly example includes consistent dark blue icons and the bad example uses low contrast icons and different sizes.
+
+**Tip 3: For images in choices, test column layouts with real users**
+
+* Get feedback on how many columns feel comfortable to view and tap
+* Consider smaller screens — more than two columns can feel crowded
+* Showing too many choices at once `can overwhelm users <https://lawsofux.com/choice-overload/>`_
+* If using multiple columns, icons need to be recognizable at a small scale
+* Keep labels short and specific to prevent awkward wrapping
+
+.. _label-images-icon-library:
+
+Using an icon library
+""""""""""""""""""""""
+
+If you don't have your own icon set, there are lots of great open-source options. Using icons from the same library, with the same style and weight, will make a better user experience. If one icon is big and bold in comparison to the others, it will slow down the user's decision making process because irregularity increases effort to make decisions (`Hick's Law <https://lawsofux.com/hicks-law/>`_).
+
+**Icon libraries**:
+
+* `Phosphor icons <https://phosphoricons.com/>`_
+* `Google icons <https://fonts.google.com/icons>`_
+* `Health icons <https://healthicons.org/>`_
+* `Pictogrammers <https://pictogrammers.com/library/mdi/>`_ (extension of the Google icons above)
+
+Once you've downloaded an icon that you want to use, you may want to add some white space around it so the icon doesn't look crowded with the screen edges or other content. One way to do this is by making a copy of `our icon template in Google Draw <https://docs.google.com/drawings/d/1fMdC8ZgSIpsNpl9grXr_6YQ9MZHvUn5Wr-4JnetJYok/edit>`_. Replace the image with each of your your downloaded icons and export the images with padding.
+
+You could also use a design tool like `Figma <https://www.figma.com/community/icons?resource_type=mixed&editor_type=all&price=all&sort_by=all_time&creators=all>`_ or `Canva's icon maker <https://www.canva.com/create/icons/>`_ to create equal spacing around your icon or create your own.
+
+.. _label-images-accessible:
+
+Making images accessible
+""""""""""""""""""""""""""
+
+Whether you're using images or icons, you should generally supplement them with brief written text in the ``label`` or ``hint``. When designing that text:
+
+* Avoid writing "Image or picture of"
+* Keep it short and specific
+* Focus on the details
 
 Audio
 ~~~~~~~~

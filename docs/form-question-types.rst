@@ -1317,7 +1317,7 @@ To make an image with selectable regions:
 Including media files in choices
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As with questions themselves, choices can include :ref:`media <media>` (image, video, or audio files):
+Like :ref:`question labels <media>`, choices can include media (image, video, or audio files):
 
 .. csv-table:: choices
   :header: list_name, name, label, image, video, audio
@@ -1326,11 +1326,11 @@ As with questions themselves, choices can include :ref:`media <media>` (image, v
   opt_media,b,B,,b.mp4
   opt_media,c,C,,,c.mp3
 
-.. seealso:: 
-
-  For images, you can :ref:`specify a bigger image for panning and zooming <big-image>` using the ``big-image`` column. This is not compatible with the ``no-buttons`` appearance.
+.. seealso:: :ref:`Best practices for images <label-images-best-practices>` and :ref:`selects with images in Web Forms <web-forms-selects-images>`
 
 .. note::
+
+  For images, you can :ref:`specify a bigger image for panning and zooming <big-image>` using the ``big-image`` column. This is not compatible with the ``no-buttons`` appearance.
 
   ``select_one`` and ``select_multiple`` questions using the ``no-buttons`` appearances will not
   display media buttons next to choices. However, if a choice has audio, it will be played when
