@@ -85,8 +85,12 @@ Date
 
 The :ref:`date question type <default-date-widget>` without appearance allows the user to enter a date. The user can manually type a date in the text field in the mm/dd/yyyy format or click in the field to select a date from a calendar. To change the year, they can press on the current year at the top of the calendar. To change the month, they can use the navigation arrows or press on the current month at the top of the calendar. There are also buttons to clear the date or jump to today.
 
+.. _web-forms-selects-images:
+
 Selects with images
 ~~~~~~~~~~~~~~~~~~~
+
+.. seealso:: :ref:`Best practices for images <label-images-best-practices>`
 
 When you specify :ref:`images for select options <image-options>`, Web Forms displays the options in containers to support visual processing and make selection easier.
 
