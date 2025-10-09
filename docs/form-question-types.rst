@@ -1143,9 +1143,12 @@ If adding images, note that the images are referenced in the choices sheet, and 
 Select one from map widget
 """""""""""""""""""""""""""
 
-.. versionadded::
+.. versionadded:: 2023.1.0
 
-  `ODK Collect v2023.1.0 <https://github.com/getodk/collect/releases/tag/v2023.1.0>`
+  `ODK Collect v2023.1.0 <https://github.com/getodk/collect/releases/tag/v2023.1.0>`_
+
+.. versionadded:: Central v2025.3
+
   `Web Forms support in Central v2025.3 `_
 
 type

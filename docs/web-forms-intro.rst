@@ -106,8 +106,7 @@ If you would like to display one choice with image per row, as is the default fo
 Select one from map
 ~~~~~~~~~~~~~~~~~~~
 
-.. versionadded::
-  `Web Forms support in Central v2025.3 `_
+.. versionadded:: Central v2025.3
 
 The :ref:`select one from map question type <select-from-map>` allows users to select an option from choices displayed on a map. Each choice must include a ``geometry`` column in the ``choices`` sheet. The map uses OpenStreetMap as the base layer and supports zooming, panning, and tapping features to view details and make a selection.
 
