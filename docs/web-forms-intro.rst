@@ -59,7 +59,7 @@ When a form includes a geopoint question, users of the form will see a :guilabel
   :alt: Web Forms location permissions request
 
 .. warning::
-  
+
   Different browsers manage location permissions differently. Some may not prompt for the permission and may require users to go to their settings to grant location access.
 
   If a user denies location permissions to a form, that permission will apply for all forms on that server and a user may need to go to browser settings to grant the permission.
@@ -100,3 +100,25 @@ When you specify :ref:`images for select options <image-options>`, Web Forms dis
 By default, choices with images are displayed in a grid. Each choice container is given the same width and height and the number of columns is determined by the screen width (this is the same as the :ref:`columns appearance <select-columns-widget>`). Images are never distorted or scaled up but they may be scaled down. The maximum image height used is 300 pixels. We recommend using a consistent size for all images and trying your form on the devices you plan to use for data collection.
 
 If you would like to display one choice with image per row, as is the default for Collect, you can use the :ref:`columns-1 appearance <select-columns-n-widget>`.
+
+.. _web-forms-select-from-map:
+
+Select one from map
+~~~~~~~~~~~~~~~~~~~
+
+.. versionadded::
+  `Web Forms support in Central v2025.3 `_
+
+The :ref:`select one from map question type <select-from-map>` allows users to select an option from choices displayed on a map. Each choice must include a ``geometry`` column in the ``choices`` sheet. The map uses OpenStreetMap as the base layer and supports zooming, panning, and tapping features to view details and make a selection.
+
+.. image:: /img/web-forms/select-one-from-map.*
+  :alt: Select one from map in Web Forms
+
+When defining properties, keep the list concise and easy to read, as it appears in a compact popup on selection.
+
+The following features are not supported yet:
+
+- The ``quick`` appearance
+- Offline tiles
+- Map layer customization (e.g., switching to Google Maps or Mapbox, terrain or satellite views)
+- Custom styling for points (``marker-color`` and ``marker-symbol``), lines (``stroke`` and ``stroke-width``) and shapes (``stroke``, ``stroke-width``, and ``fill``)
