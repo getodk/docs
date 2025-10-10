@@ -1147,7 +1147,7 @@ Select one from map widget
 
   `ODK Collect v2023.1.0 <https://github.com/getodk/collect/releases/tag/v2023.1.0>`_
 
-.. versionadded:: Web Forms in Central v2025.3
+.. versionadded:: v2025.3 Web Forms in Central
 
 type
  ``select_one {list_name}``
