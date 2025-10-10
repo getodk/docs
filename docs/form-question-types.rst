@@ -1453,16 +1453,16 @@ type
 
 .. _location-widgets:
 
-Location widgets
-------------------
+Capturing geospatial data
+--------------------------
 
-Location widgets capture one or more points representing locations on Earth. Each point is represented as four numbers separated by spaces: latitude, longitude, altitude in meters, and accuracy radius in meters.
+Geospatial question types make it possible to capture one or more points representing locations on Earth. Each point is represented as four numbers separated by spaces: latitude, longitude, altitude in meters, and accuracy radius in meters.
 
-For example, if a Collect user captured a point while at the coordinates 12°22'17.0"N 1°31'10.9"W, with a reported accuracy radius of 17.4 meters, and at 305 meters above sea level, the geopoint representation would be:
+For example, if a Collect user captured a point while at the coordinates 12°22'17.0"N 1°31'10.9"W, with a reported accuracy radius of 17.4 meters, and at 305 meters above sea level, the ODK ``geopoint`` representation would be:
 
 `12.371400 -1.519700 305 17.4`
 
-Multiple points that form lines or shapes are separated by semicolons.
+Multiple points that form lines or shapes are separated by semicolons and called ``geotrace`` and ``geoshape``.
 
 .. seealso::
 
@@ -1475,11 +1475,18 @@ Multiple points that form lines or shapes are separated by semicolons.
 
   To get an accurate location quickly, ensure devices have a clear view of the sky. For even faster points, consider "warming" the GPS with a :ref:`start-geopoint <metadata-start-geopoint>` question. See :doc:`improving location performance <collect-location>` for more.
 
-.. note::
+.. _mock-location:
 
-  Since v1.30, when a mock location provider is detected, the accuracy is set to 0. Achieving such perfect accuracy is not possible using GPS so that indicates it comes from a mock provider.
+Mock location providers and external GPS devices
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  In v2021.3 and later, you can opt out of this behavior by setting **allow-mock-accuracy** to **true** in the **parameters** column of your question in your XLSForm **survey** sheet. This is useful for external GPS devices that require Android's mock provider feature.
+Android makes it possible to provide mock locations to applications like ODK Collect. This can be useful for testing with real geo data without needing to go to a specific location. You can use applications like `Fake GPS <https://play.google.com/store/apps/details?id=com.lexa.fakegps&hl=en_US>`_ for this. 
+
+GPS faker applications can also be used by enumerators, presenting a risk to data quality. ODK Collect makes this detectable by always setting the accuracy to 0 when a location comes from a mock location provider. If you see an accuracy of 0 in analysis, the corresponding point came either from manual point placement or from a mock provider.
+
+External GPS devices also use mock location providers. When using an external GPS device, you should configure your form to capture accuracy even when it comes from a mock provider. To do this, set **allow-mock-accuracy** to **true** in the **parameters** column of your geospatial question in your XLSForm **survey** sheet.
+
+If you rely on mock locations, keep in mind that only GPS can be spoofed. The system may still retrieve real location data from WI-FI or cellular networks, which can override the mock location and as a result, deliver a mix of real and fake location data. To avoid this, go to ``Android Settings`` > ``Location`` and turn off ``Improve location accuracy``. This forces the device to use only GPS, ensuring your mock location is applied consistently.
 
 .. _geopoint-widget:
 
@@ -1494,6 +1501,8 @@ appearance
 Captures the current geolocation from the device. The location is displayed in degrees-minutes-seconds (DMS) notation and is stored in `decimal degrees <https://en.wikipedia.org/wiki/Decimal_degrees>`_ with altitude and accuracy. Learn more about the format of resulting data in :ref:`the location widgets section <location-widgets>`.
 
 This question type shows a dialog with the current accuracy and lets the data collector decide when to capture the point. For capturing location without data collector intervention, see :ref:`start-geopoint <metadata-start-geopoint>`. For a geopoint with a user-selected location, see :ref:`placement-map <placement-map-widget>`.
+
+.. _accuracy-constraint:
 
 .. tip::
 
@@ -1528,8 +1537,6 @@ The dialog is designed to guide the data collector to capture a point with the b
 The bottom half of the dialog displays troubleshooting information. The first line (4) shows the accuracy at which the point will be automatically captured. This is configured by the ``capture-accuracy`` parameter. You can ask data collectors to watch time elapsed (5) and let you know if it is systematically taking them a long time to get high-accuracy points. This may indicate an issue with their device.
 
 You can also train data collectors to use time elapsed to take some action. For example, you can let them know to capture any point available after waiting for 2 minutes. Number of satellites (6) can be useful when capturing points outdoors. A low number of satellites (under 4) may indicate that something is wrong with the device or its position. See :doc:`collect-location`.
-
-.. _accuracy-constraint:
 
 .. tip::
 
