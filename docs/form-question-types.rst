@@ -1149,7 +1149,7 @@ Select one from map widget
 
 .. versionadded:: Central v2025.3
 
-  `Web Forms support in Central v2025.3 `_
+  `Web Forms support in Central v2025.3`_
 
 type
  ``select_one {list_name}``
