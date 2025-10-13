@@ -1484,7 +1484,7 @@ Android makes it possible to provide mock locations to applications like ODK Col
 
 GPS faker applications can also be used by enumerators, presenting a risk to data quality. ODK Collect makes this detectable by always setting the accuracy to 0 when a location comes from a mock location provider. If you see an accuracy of 0 in analysis, the corresponding point came either from manual point placement or from a mock provider.
 
-External GPS devices also use mock location providers. When using an external GPS device, you should configure your form to capture accuracy even when it comes from a mock provider. To do this, set **allow-mock-accuracy** to **true** in the **parameters** column of your geospatial question in your XLSForm **survey** sheet.
+External GPS devices also use mock location providers. When using an external GPS device, you should configure your form to capture accuracy even when it comes from a mock provider. To do this, set **allow-mock-accuracy** to **true** in the **parameters** column of your geospatial question in your XLSForm **survey** sheet. See :ref:`the section on geopoint <geopoint-widget>` for an example.
 
 If you rely on mock locations, keep in mind that only GPS can be spoofed. The system may still retrieve real location data from WI-FI or cellular networks, which can override the mock location and as a result, deliver a mix of real and fake location data. To avoid this, go to ``Android Settings`` > ``Location`` and turn off ``Improve location accuracy``. This forces the device to use only GPS, ensuring your mock location is applied consistently.
 
