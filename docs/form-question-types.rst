@@ -1538,11 +1538,6 @@ The bottom half of the dialog displays troubleshooting information. The first li
 
 You can also train data collectors to use time elapsed to take some action. For example, you can let them know to capture any point available after waiting for 2 minutes. Number of satellites (6) can be useful when capturing points outdoors. A low number of satellites (under 4) may indicate that something is wrong with the device or its position. See :doc:`collect-location`.
 
-.. tip::
-
-  If you rely on mock locations, keep in mind that only GPS can be spoofed. The system may still retrieve real location data from WI-FI or cellular networks, which can override the mock location and as a result, deliver a mix of real and fake location data. To avoid this, go to ``Android Settings`` > ``Location`` and turn off ``Improve location accuracy``. This forces the device to use only GPS, ensuring your mock location is applied consistently.
-
-
 .. _geopoint-maps:
 
 Geopoint with map display
