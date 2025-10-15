@@ -10591,6 +10591,7 @@ paths:
 
         | Submission Metadata                      | REST API Name | OData Field Name          |
         | ---------------------------------------- | ------------- | ------------------------- |
+        | Submission ID                            | `instanceId`  | `__id`                    |
         | Submitter Actor ID                       | `submitterId` | `__system/submitterId`    |
         | Submission Timestamp                     | `createdAt`   | `__system/submissionDate` |
         | Submission Update Timestamp              | `updatedAt`   | `__system/updatedAt`      |
