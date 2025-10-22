@@ -8,9 +8,9 @@ can all be styled using
 
 .. warning::
 
-  Collect's mobile forms support both HTML and Markdown styling.
+  Mobile forms in Collect and Web Forms support both HTML and Markdown styling.
 
-  Central's Enketo-powered web forms only support Markdown styling. Styling is not yet supported in web form choice labels.
+  Mobile forms in Enketo only support Markdown styling, and styling is not supported in web form choice labels.
 
 .. _media:
 
@@ -328,10 +328,10 @@ Inline HTML
 ~~~~~~~~~~~~~
 
 Many Markdown implementations support inline HTML,
-but Collect only supports a small subset of HTML elements.
+but Collect and Web Forms only support a small subset of HTML elements.
 Support of HTML is further limited because:
 
-- Your exact Android device, operating system version,
+- Your exact device, operating system version,
   and other device-related factors
   will affect what HTML can be rendered, and how it is rendered.
 - HTML is not supported
@@ -362,7 +362,6 @@ The ``style`` attribute accepts CSS-like key-value pairs for setting ``color`` a
   - sans-serif
   - monospace
   - cursive
-  - fantasy
 
   This will ensure support across most devices.
   You can also use specific font choices,
