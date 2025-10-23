@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
   script.setAttribute("data-modal-title-ask-ai", "Ask AI");
   script.setAttribute("data-modal-ask-ai-input-placeholder", "Ask a question");
   script.setAttribute("data-modal-override-open-id", "custom-ask-ai-button");
-  script.setAttribute("data-bot-protection-mechanism", "hcaptcha");
   script.async = true;
   document.head.appendChild(script);
 });
