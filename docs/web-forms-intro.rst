@@ -100,3 +100,13 @@ When you specify :ref:`images for select options <image-options>`, Web Forms dis
 By default, choices with images are displayed in a grid. Each choice container is given the same width and height and the number of columns is determined by the screen width (this is the same as the :ref:`columns appearance <select-columns-widget>`). Images are never distorted or scaled up but they may be scaled down. The maximum image height used is 300 pixels. We recommend using a consistent size for all images and trying your form on the devices you plan to use for data collection.
 
 If you would like to display one choice with image per row, as is the default for Collect, you can use the :ref:`columns-1 appearance <select-columns-n-widget>`.
+
+Form styling
+~~~~~~~~~~~~~~~~~~~
+
+.. seealso:: :ref:`Markdown in forms<markdown-in-forms>`
+
+You can style text such as notes, labels, hints, options, and validation messages using Markdown format.
+
+.. image:: /img/web-forms/form-styling.*
+  :alt: Styling in Web Forms
