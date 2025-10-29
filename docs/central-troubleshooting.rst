@@ -104,11 +104,11 @@ If you absolutely must upload files over 100 MB, you can change `client_max_body
   $ cd central
   $ docker compose stop
   $ nano files/nginx/odk.conf.template
-  <modify value for client_max_body_size>
+  <modify client_max_body_size value>
   $ nano server/lib/http/endpoint.js
-  <modify value for X-OpenRosa-Accept-Content-Length>
+  <modify X-OpenRosa-Accept-Content-Length value>
   $ nano server/test/unit/http/endpoint.js
-  <modify value for X-OpenRosa-Accept-Content-Length>
+  <modify X-OpenRosa-Accept-Content-Length value>
   $ docker build
   $ docker compose up -d
 
