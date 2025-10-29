@@ -85,7 +85,7 @@ If you would like to use other properties as values or labels, you can specify t
 Building selects from GeoJSON files
 ------------------------------------
 
-*New in* `ODK Collect v2022.2.0 <https://github.com/getodk/collect/releases/tag/v2022.2.0>`_, `ODK Central v1.4.0 <https://forum.getodk.org/t/odk-central-v1-4/36886>`_; Polygons and lines in Collect v2023.1.0
+*New in* `ODK Collect v2022.2.0 <https://github.com/getodk/collect/releases/tag/v2022.2.0>`_, `ODK Central v1.4.0 <https://forum.getodk.org/t/odk-central-v1-4/36886>`_; Polygons and lines in Collect v2023.1.0; Web Forms support in Central v2025.3
 
 GeoJSON files that follow `the GeoJSON spec <https://datatracker.ietf.org/doc/html/rfc7946>`_ can be used to populate select question choices using ``select_one_from_file``. Selects from GeoJSON may be styled as maps using the :ref:`map appearance <select-from-map>` but can also use any other :ref:`select appearance <select-appearances>`. In order to be used by a form, a GeoJSON file:
 
@@ -126,7 +126,7 @@ GeoJSON files referenced in forms can have any number of ``features`` and any nu
 
 All properties are displayed by :ref:`select from map <select-from-map>` questions and can be :ref:`referenced by any part of the form <referencing-values-in-datasets>`, just like the columns in a CSV.
 
-Given the GeoJSON file and the form definition above, if the user selected "HR Giger Museum", the value of ``${museum}`` would be ``"fs87b"``. 
+Given the GeoJSON file and the form definition above, if the user selected "HR Giger Museum", the value of ``${museum}`` would be ``"fs87b"``.
 
 A feature's geospatial representation can be accessed as ``geometry`` and is provided in :ref:`the ODK format <location-widgets>`. For example, the expression ``instance('museums')/root/item[id=${museum}]/geometry`` evaluates to ``46.5841618 7.0801379 0 0`` which is a point in the ODK format.
 
@@ -166,7 +166,7 @@ In the example below, a user is first prompted to select a participant from the 
 
   select_one_from_file people, participant, Participant
   calculate, assigned_place, , instance("people")/root/item[name=${participant}]/place
-  csv-external, places, , 
+  csv-external, places, ,
   note, place_note, Assigned place: instance("places")/root/item[name=${assigned_place}]/label
 
 .. csv-table:: places.csv
