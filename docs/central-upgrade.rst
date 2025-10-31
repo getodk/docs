@@ -15,6 +15,7 @@ To upgrade, start by reviewing upgrade notes for all versions between your curre
 Upgrade notes
 -------------
 
+* :ref:`Central v2025.3 <central-upgrade-2025.3>`: plan ahead for longer than usual downtime during upgrade
 * Central v2025.1, v2025.2: no upgrade notes
 * :ref:`Central v2024.3 <central-upgrade-2024.3>`: update Entity-related forms for offline Entities
 * :ref:`Central v2024.2 <central-upgrade-2024.2>`: changes to ``.env`` and SSL no longer require rebuilding, consider using S3 storage
@@ -98,6 +99,19 @@ You'll be asked to confirm the removal of all dangling images. Agree by typing t
 
 Version-specific upgrade instructions
 --------------------------------------
+
+.. _central-upgrade-2025.3:
+
+Upgrading to Central v2025.3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are several time-consuming steps in this upgrade. Central will not be accessible during those steps. Plan for a minimum of an hour of downtime. The total time taken depends on how many media file submission attachments and submissions with ``geopoint``, ``geotrace`` or ``geoshape`` questions your server has.
+
+After restarting the server, you can watch logs to get a sense of progress:
+
+.. code-block:: bash
+
+  $ docker compose logs -f
 
 .. _central-upgrade-2024.3:
 
