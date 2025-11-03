@@ -1,3 +1,7 @@
-<div class="sidebar-search-container">
-<button class="sidebar-search" id="custom-ask-ai-button">Ask AI</button>
-</div>
+<form class="sidebar-search-container" method="get" action="{{ pathto('search') }}" role="search">
+  <input class="sidebar-search" placeholder="{{ _("Search") }}" name="q" aria-label="{{ _("Search" ) }}">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div>
+<div id="custom-ask-ai-button" class="sd-sphinx-override sd-text-wrap sd-btn sd-btn-info reference internal sd-mx-1 sd-mr-2 sd-mb-2 sd-mt-3">✨ Ask AI</div>

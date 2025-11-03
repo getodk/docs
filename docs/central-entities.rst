@@ -446,6 +446,25 @@ As you type, Central will highlight any fields you have changed in yellow so you
 
 To complete the process press the :guilabel:`Update` button to save your changes to the Entity. You will see a confirmation that the save succeeded. If you don't like your changes, you can click on the :guilabel:`x` or the :guilabel:`Never mind` link to close the dialog.
 
+.. _central-entities-delete:
+
+Deleting Entities
+~~~~~~~~~~~~~~~~~
+
+You can delete individual Entities by hovering over their row in the :ref:`Entity data table <central-entities-data>` and clicking the trashcan icon.
+
+You can also delete multiple Entities at once directly from the table.
+
+.. image:: /img/central-entities/bulk-delete.*
+
+#. Select one or more Entities by clicking the checkboxes in the leftmost column of each row.
+#. Once at least one Entity is selected, an **action bar** appears with a :guilabel:`Delete` button.
+#. Click :guilabel:`Delete`, then confirm the action in the dialog that appears.
+#. When deletion is complete, a **success toast** confirms that the Entities were deleted, and the table refreshes automatically.
+
+Once an Entity has been deleted, it will remain in the Trash for 30 days before being permanently deleted. Only users with permission to manage Entity Lists can delete Entities.
+
+
 .. _central-entities-update-conflicts:
 
 Managing Entity conflicts

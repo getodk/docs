@@ -132,7 +132,7 @@ Managing Web Users
 
 To manage Web Users, navigate to :menuselection:`--> Users --> Web Users` at the top of the Central management website. You should see a listing of users that looks like this:
 
-.. image:: /img/central-users/web-users-listing.png
+.. image:: /img/central-users/web-users-listing.*
 
 You can :ref:`make Users into Administrators <central-users-web-role>` from the site-wide Users panel shown above, or you can assign them a Project-level Role on the :ref:`Project Roles tab <central-project-roles>` within the Project.
 
@@ -144,6 +144,7 @@ Creating a Web User
 To create a new Web User, click on the :guilabel:`Create web user` button on the right side of the Web Users listing page. You will see a popup that looks like this:
 
 .. image:: /img/central-users/web-users-create.png
+   :class: central-partial-screen
 
 To create a new Web User, input the email address of the person who should receive access. Press :guilabel:`Create` once you are satisfied with the email address.
 
@@ -178,6 +179,7 @@ Resetting a Web User password
 Any user may request a reset of their own password by using the link at the bottom of the login screen:
 
 .. image:: /img/central-users/web-users-self-reset.png
+   :class: central-partial-screen
 
 After submitting the reset form, the user should receive an email with the subject line "ODK Central account password reset". If they cannot find it, they should check their spam folder. When resetting a password this way, the user's current password continues to function until they actually use the link in the email to set a new one.
 
@@ -188,7 +190,7 @@ We also provide a separate way for administrators to directly reset any Web User
 
 With the administrative reset, the user's password **stops working immediately** and they will be completely unable to log in until a new one is set. They will receive an email with instructions and a link on how to do this exactly :ref:`as shown above <central-users-web-create>`. To perform the administrative reset, navigate to the Web Users listing page, and use the Actions menu at the right side of the table:
 
-   .. image:: /img/central-users/web-users-admin-reset.png
+.. image:: /img/central-users/web-users-admin-reset.png
 
 .. _central-users-web-retire:
 
@@ -201,7 +203,7 @@ If a retired Web User attempts to reset their password, they will receive a spec
 
 To retire a Web User, find them on the Web User administration panel, and open the Actions menu:
 
-   .. image:: /img/central-users/web-users-retire.png
+.. image:: /img/central-users/web-users-retire.png
 
 From here, select :guilabel:`Retire User` and follow the on-screen instructions.
 

@@ -93,17 +93,26 @@ If you still run into problems, try :ref:`increasing allocated memory <central-i
 File upload fails with 413
 ---------------------------
 
-If you get an error `413` when trying to upload a submission or when trying to upload a form attachment, the file you are trying to upload is too large. By default, files up to 100 MB are accepted. We typically recommend reducing the size of the files to upload if possible. For example, :ref:`images can be scaled down in form design <scaling-down-images>`.
+If you get a `413` or `Request Entity Too Large` error when trying to upload a submission or a form attachment, it means the file you are trying to upload is too large. By default, Central allows files up to 100 MB.
 
-If you absolutely must upload files over 100 MB, you can change the `client_max_body_size` `nginx` directive:
+In general, we recommend reducing file sizes whenever possible (for example, :ref:images can be scaled down in form design <scaling-down-images>) or uploading very large files to a more appropriate service (such as YouTube for videos) and recording the identifier or URL in your form.
+
+If you absolutely must upload files over 100 MB, you can change `client_max_body_size` and `X-OpenRosa-Accept-Content-Length` values:
 
 .. code-block:: bash
 
   $ cd central
   $ docker compose stop
   $ nano files/nginx/odk.conf.template
-  <modify the nginx conf value for client_max_body_size>
+  <modify client_max_body_size value>
+  $ nano server/lib/http/endpoint.js
+  <modify X-OpenRosa-Accept-Content-Length value>
+  $ nano server/test/unit/http/endpoint.js
+  <modify X-OpenRosa-Accept-Content-Length value>
+  $ docker build
   $ docker compose up -d
+
+Note that uploads in Central do not resume from where they left off, so uploading large files over unreliable connections can result in wasted data and a low chance of success.
 
 .. _troubleshooting-docker-compose-down:
 
