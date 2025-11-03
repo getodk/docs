@@ -98,12 +98,33 @@ In the :guilabel:`State and actions` column, you will see the current review sta
 
 You can limit the rows that appear by the submitter, the date, and the review status. These filter controls are available just above the submission table.
 
-Any filter you apply to the submission table also applies to the download button. To work with your data, you can download it from Central. Right now, you can do this in one of two ways:
+.. _central-submission-map:
+
+Seeing Submissions on a map
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can also view your Submission data on a map by switching to the Map view using the toggle in the upper-right corner. Each Submission is plotted based on the first geo field in the form definition that is not in any repeat group.
+
+.. image:: /img/central-submissions/submission-map.*
+
+When many Submissions appear close together, they are automatically **clustered** to make the map easier to read. As you zoom in, clusters break apart to show individual Submissions. The number shown in each cluster represents how many Submissions it contains.
+
+.. tip::
+  If the geo field you want this summary map to use is different from the one you would like to show to your form users first, add a :ref:`calculation <calculations>` near the start of the form that references the geo form field to be mapped. You may also sometimes need a calculation to look up geometry from another type of data. 
+  
+  For example, if your form asks users to :ref:`select a feature on a map <select-from-map>`, you will need to add a calculation to look up the geometry based on the selected id. If the choices are stored in :doc:`a list <form-datasets>` called ``museums`` and the ``select_one`` field is called ``location``, the calculation to get the geometry would be
+
+  ``instance('museums')/root/item[name=${location}]/geometry``
+
+.. _central-downloading-submissions:
+
+Downloading Submissions
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To work with your data, you can download it from the Central submission table. Any filter you apply to the submission table also applies to the download button. Right now, you can download data in one of two ways:
 
 1. The **CSV Download** option will get you a :file:`.zip` file containing one or more :file:`.csv` tables, along with any multimedia submitted to the form. This is a good option if you already have custom tools you wish to use, or you want to import it into an offline analysis tool like SPSS or Stata.
 2. The **OData connector** allows you connect a live representation of the data to OData-capable tools like Microsoft Power BI, Microsoft Excel, Tableau, and others. This option has some advantages: the data is transferred more richly to maintain more data format information, and the feed is always live, meaning any analysis or reports you perform in your tool over an OData connection can be easily refreshed as more submissions come in.
-
-When the rows of the table have been filtered in any way, that filter also applies to the downloads. This makes it possible to download partial sections of your data at once.
 
 Learn more about these options below:
 
