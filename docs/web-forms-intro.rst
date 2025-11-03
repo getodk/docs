@@ -59,7 +59,7 @@ When a form includes a geopoint question, users of the form will see a :guilabel
   :alt: Web Forms location permissions request
 
 .. warning::
-  
+
   Different browsers manage location permissions differently. Some may not prompt for the permission and may require users to go to their settings to grant location access.
 
   If a user denies location permissions to a form, that permission will apply for all forms on that server and a user may need to go to browser settings to grant the permission.
@@ -102,11 +102,32 @@ By default, choices with images are displayed in a grid. Each choice container i
 If you would like to display one choice with image per row, as is the default for Collect, you can use the :ref:`columns-1 appearance <select-columns-n-widget>`.
 
 Form styling
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
-.. seealso:: :ref:`Markdown in forms<markdown-in-forms>`
+.. seealso:: :ref:`Markdown in forms <markdown-in-forms>`
 
 You can style text such as notes, labels, hints, options, and validation messages using Markdown format.
 
 .. image:: /img/web-forms/form-styling.*
   :alt: Styling in Web Forms
+
+.. _web-forms-select-from-map:
+
+Select one from map
+~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: Central v2025.3
+
+The :ref:`select one from map question type <select-from-map>` allows users to select an option from choices displayed on a map. Each choice must include a ``geometry`` column in the ``choices`` sheet. The map uses OpenStreetMap as the base layer and supports zooming, panning, and tapping features to view details and make a selection.
+
+.. image:: /img/web-forms/select-one-from-map.*
+  :alt: Select one from map in Web Forms
+
+When defining properties, keep the list concise and easy to read, as it appears in a compact popup on selection.
+
+The following features are not supported yet:
+
+- The ``quick`` appearance
+- Offline tiles
+- Map layer customization (e.g., switching to Google Maps or Mapbox, terrain or satellite views)
+- Custom styling for points (``marker-color`` and ``marker-symbol``), lines (``stroke`` and ``stroke-width``) and shapes (``stroke``, ``stroke-width``, and ``fill``)

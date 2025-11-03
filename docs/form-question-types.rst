@@ -375,8 +375,8 @@ type
 appearance
   ``counter``
 
-The counter appearance allows users to increase a count by one with each click, making it ideal for tracking occurrences, items, 
-or any sequential tallies. Negative numbers are not supported, so the count starts at zero and only increments upwards. 
+The counter appearance allows users to increase a count by one with each click, making it ideal for tracking occurrences, items,
+or any sequential tallies. Negative numbers are not supported, so the count starts at zero and only increments upwards.
 It works exclusively with integers, and decimal values are not supported.
 
 .. image:: /img/form-question-types/counter.*
@@ -523,7 +523,7 @@ appearance
 
 .. image:: /img/form-question-types/bikram-sambat-calendar-widget.*
   :alt: The Bikram Sambat calendar widget.
-  :class: device-screen-vertical  
+  :class: device-screen-vertical
 
 .. _buddhist-calendar:
 
@@ -537,7 +537,7 @@ appearance
 
 .. image:: /img/form-question-types/buddhist-calendar-widget.*
   :alt: The Buddhist calendar widget.
-  :class: device-screen-vertical  
+  :class: device-screen-vertical
 
 .. _coptic-calendar:
 
@@ -1147,13 +1147,15 @@ Select one from map widget
 
   `ODK Collect v2023.1.0 <https://github.com/getodk/collect/releases/tag/v2023.1.0>`_
 
+.. versionadded:: v2025.3 Web Forms in Central
+
 type
  ``select_one {list_name}``
 appearance
  ``map``
 
 .. warning::
-  The `map` appearance on selects is not yet available in web forms (Enketo).
+  The `map` appearance for selects is available in Web Forms (added in Central v2025.3) but not in Enketo. See more about the available features of **select one from map** in Web Forms and best practices :ref:`here <web-forms-select-from-map>`.
 
   The different :ref:`basemap sources <mapping-settings>` currently have different performance. If Collect feels slow when creating the map or when selecting a choice, please describe what you are experiencing `on the forum <https://forum.getodk.org/c/support/6>`_. If you have many choices to include on a map, try a provider other than Google or Mapbox. You can also use a :ref:`choice filter <cascading-selects>` to reduce the number of choices that get mapped.
 
@@ -1224,11 +1226,11 @@ There are special properties that can be used to style different choices:
 
   - **stroke**: a valid long or short hex color representing the color of a polygon (e.g. ``#aaccee`` or ``#ace``).
   - **stroke-width**: a floating-point number (greater than or equal to 0) representing the width of a polygon (e.g. ``5`` or ``6.5``).
-  - **fill**: a valid long or short hex color representing the interior color of a polygon (e.g. ``#aaccee`` or ``#ace``). It is displayed with transparency that can't be configured. 
+  - **fill**: a valid long or short hex color representing the interior color of a polygon (e.g. ``#aaccee`` or ``#ace``). It is displayed with transparency that can't be configured.
 
 If your geospatial data comes from an external source, you can :ref:`customize the label and underlying value <customizing-label-and-value>`.
 
-If there is an :doc:`offline layer <collect-offline-maps>` specified, it will be displayed under the mapped choices. 
+If there is an :doc:`offline layer <collect-offline-maps>` specified, it will be displayed under the mapped choices.
 
 .. _image-map-select:
 
@@ -1517,7 +1519,7 @@ This question type shows a dialog with the current accuracy and lets the data co
 .. csv-table:: survey
   :header: type, name, label, hint, parameters
 
-  geopoint,geopoint_widget,Geopoint widget,geopoint type,capture-accuracy=10 warning-accuracy=10 allow-mock-accuracy=true 
+  geopoint,geopoint_widget,Geopoint widget,geopoint type,capture-accuracy=10 warning-accuracy=10 allow-mock-accuracy=true
 
 There are three parameters that can be used to customize a ``geopoint`` question's behavior:
 
@@ -1884,7 +1886,7 @@ An image widget that does not include a :guilabel:`Choose Image` button. This re
 Image widget with custom camera app
 """"""""""""""""""""""""""""""""""""""
 .. versionadded:: 2024.1.0
-  
+
 When attempting to capture a photo, ODK Collect by default opens the built-in camera app. However, if you wish to utilize a specific camera application, you can do so by including the ``app`` parameter and providing the package name of the desired camera app.
 
 .. rubric:: XLSForm
@@ -1904,8 +1906,8 @@ Some camera apps to consider:
 - `Open Camera <https://play.google.com/store/apps/details?id=net.sourceforge.opencamera>`_ provides many advanced settings
 
 .. note::
-  - The app with the provided package name must be installed on the device. If it's not available, there will be a toast shown, and it will not be possible to take a picture. 
-  - By default, it's possible to select a picture from the device. Use the ``new`` appearance to prevent this. 
+  - The app with the provided package name must be installed on the device. If it's not available, there will be a toast shown, and it will not be possible to take a picture.
+  - By default, it's possible to select a picture from the device. Use the ``new`` appearance to prevent this.
   - Collect will request a picture, but some camera apps may still allow users to take video. That will fail silently.
 
 .. _self-portrait-image-widget:
@@ -2019,7 +2021,7 @@ Images created with any of the image widgets described above can be automaticall
 
   - a jpg image is attached not captured
   - and the attached file has quality lower than 80%
-  - and the difference between its original size and the value specified using ``max-pixels`` is not big enough 
+  - and the difference between its original size and the value specified using ``max-pixels`` is not big enough
 
   the size of the output image might be even bigger that the original one.
 
@@ -2708,7 +2710,7 @@ We recommend writing your HTML with fixed sample values first, trying it in a we
 This question type understands a custom ``qrcode`` element. Any text values placed within opening and closing ``qrcode`` tags will be encoded as a QR code and shown as an image You can apply the same attributes and styling to this element as you would to an ``img`` element.
 
 The calculation used to generate the card in the screenshot above is::
-   
+
   concat("
     <qrcode width='150' height='150'>", ${first_name}, " ", ${last_name}, " ", ${age}, " ", ${email}, " ", ${phone_number}, "</qrcode></br>
     <img width='150' src='", ${photo}, "'>
