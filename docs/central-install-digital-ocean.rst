@@ -46,11 +46,11 @@ At the very top, under **Choose an image**, switch to the **Marketplace** tab an
 As you continue down this page, there are a few options that may be important to you:
 
 - There is a section for standard droplets and another for more expensive optimized droplets. In general, you should not need optimized droplets.
-- The **size** option affects a few things, but the most important is the amount of memory available to your server. Memory does not affect storage space, it sets the amount of "thinking room" the server gets while it's working on things. If you don't expect many forms to be submitted at once and you don't expect many large media attachments, you can start with 1 GB. Higher-load servers and servers which handle many image or video attachments may need 2 GB or more. It is pretty easy to upgrade to a larger size later.
+- The **size** option affects a few things, but the most important is the amount of memory available to your server. Memory does not affect storage space, it sets the amount of "thinking room" the server gets while it's working on things. We generally recommend 2 GB of RAM but if you don't expect many forms to be submitted at once and you don't expect many large media attachments, you can start with 1 GB and :ref:`2 GB of swap <central-install-digital-ocean-swap>`. Higher-load servers and servers which handle many image or video attachments may need more. It is pretty easy to upgrade to a larger size later.
 
   .. tip::
 
-    If you choose a 1 GB server we strongly recommend you :ref:`add swap <central-install-digital-ocean-swap>`.
+    If you choose a 1 or 2 GB server we strongly recommend you :ref:`add swap <central-install-digital-ocean-swap>`.
 
 - The datacenter region selects where physically your server will be located. If you have security concerns, this is your chance to decide which country hosts your data. Otherwise, generally selecting the option with closest geographic proximity to your users is a good idea.
 - If you are technically savvy and understand what an SSH key is, there is a field here that you will want to fill in. If not, don't worry about it.
@@ -737,6 +737,34 @@ To disable SSO:
      OIDC_ISSUER_URL=
      OIDC_CLIENT_ID=
      OIDC_CLIENT_SECRET=
+
+#. Build and restart all containers.
+
+   .. code-block:: bash
+
+     $ docker compose build && docker compose stop && docker compose up -d
+
+
+.. _central-configure-session-length:
+
+Configuring session length
+---------------------------
+
+By default, Central :doc:`Web User <central-users>` sessions expire after 24 hours (86400 seconds). For security and compliance reasons, some organizations may want sessions to expire more quickly. To configure session length:
+
+#. In ``.env``, set ``SESSION_LIFETIME`` to a value in seconds less than 86400
+
+   .. code-block:: bash
+
+     $ cd central
+
+   .. code-block:: bash
+
+     $ nano .env
+
+   .. code-block:: bash
+    
+     SESSION_LIFETIME=3600 # 1 hour
 
 #. Build and restart all containers.
 
