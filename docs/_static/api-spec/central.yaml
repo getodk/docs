@@ -5,6 +5,7 @@
 openapi: 3.0.1
 info:
   title: ODK Central API
+  version: ""
   description: |-
     [ODK Central Backend](https://github.com/getodk/central-backend) is a RESTful API server that provides key functionality for creating and managing ODK data collection campaigns. It couples with [Central Frontend](https://github.com/getodk/central-frontend), an independent frontend interface, to form [ODK Central](https://github.com/getodk/central), a complete user-installable ODK server solution. While Central Frontend is the primary consumer of the ODK Central API, the API this server provides is fully public and generic: anything that can be done in the user interface can be done directly via the API.
 
@@ -39,6 +40,28 @@ info:
     ## Changelog
 
     Here major and breaking changes to the API are listed by version.
+
+    ## ODK Central v2025.3
+
+    **Added**:
+    - New endpoint [GET /projects/:id/datasets/:name/entities/creators](/central-api-entity-management/#entities-creators) to retrieve a list of all Actors who have created Entities in a Dataset, sorted by display name.
+    - [Bulk delete Entities](/central-api-entity-management/#bulk-deleting-entities) endpoint for deleting multiple Entities at once.
+    - [Bulk restore Entities](/central-api-entity-management/#bulk-restoring-entities) endpoint for restoring multiple soft-deleted Entities at once.
+    - Endpoints for getting submissions' and entities' geodata in GeoJSON format.
+      Their current primary use case is to deliver data for the map in Central.
+      
+      ⚠️ This API will likely change in a future release.
+      
+      The endpoints are:
+      - [GET /projects/:id/datasets/:name/entities.geojson](/central-api-entity-management/#entities-geodata)
+      - [GET /projects/:id/forms/:xmlFormId/submissions.geojson](/central-api-submission-management/#submissions-geodata)
+
+    **Changed**:
+    - [Download Dataset](/central-api-dataset-management/#download-dataset) API now supports $search query parameter.
+    - Added `deleted` query parameter to [GET /projects/:id/forms/:xmlFormId/submissions](/central-api-submission-management/#listing-all-submissions-on-a-form) to retrieve deleted submissions.
+
+    **Changed**:
+    - [GET /users](/central-api-accounts-and-users/#listing-users) and [GET /users/:actorId](/central-api-accounts-and-users/#getting-user-details) now include `lastLoginAt` field.
 
     ## ODK Central v2025.2
 
@@ -505,7 +528,6 @@ info:
     * **Changed** both OpenRosa and REST Submission creation processes to create and accept only the attachment filenames that are indicated to exist by the Submission XML.
 
     * **Changed** `GET` Submission Attachemnts listing to return an array of objects containing attachment details rather than an array of filename strings.
-  version: ""
 servers:
 - url: /
 tags:
@@ -522,6 +544,18 @@ tags:
     Next, you will find documentation on each of the three authentication methods described above. It is best not to present multiple credentials. If you do, the first _presented_ scheme out of `/key` token, Bearer, Basic, then Cookie will be used for the request. If the multiple schemes are sent at once, and the first matching scheme fails, the request will be immediately rejected.
 
     **Note:** If Single Sign-on with Open ID Connect is enabled on the ODK Central, you can neither use HTTP Basic Authentication nor login with `POST /v1/session` endpoint.
+    ### Authentication Errors
+
+    When authentication fails or access is denied, the API returns standard HTTP error codes:
+
+    * **401 Unauthorized**: Authentication is required but missing or invalid. This occurs when:
+      - No authentication credentials are provided
+      - Invalid session tokens, passwords, or App User tokens are used
+      - Expired session tokens are presented
+
+    * **403 Forbidden**: Authentication succeeded but the authenticated Actor lacks sufficient permissions. This occurs when:
+      - The Actor does not have the required role or permissions for the requested action
+      - The Actor is trying to access resources outside their assigned scope (e.g., App Users accessing administrative endpoints)
 - name: Accounts and Users
   description: |-
     Today, there are two types of accounts: `Users`, which are the administrative accounts held by staff members managing the data collection process, and `App Users`, which are restricted access keys granted per Form within a Project to data collection clients in the field. Although both of these entities are backed by `Actor`s as we explain in the [Authentication section](/central-api-authentication) above, there is not yet any way to directly create or manipulate an Actor. Today, you can only create, manage, and delete Users and App Users.
@@ -653,7 +687,7 @@ tags:
   description: |-
     This is the authentication method used by the ODK Central Frontend packaged with Central Backend. Only `User`s can authenticate this way. It consists mostly of two steps:
 
-    1. **Logging in**: presenting an Email Address and a Password for verification, after which a new `Session` is created. Associated with the Session is an expiration and a bearer token. Sessions expire 24 hours after they are created.
+    1. **Logging in**: presenting an Email Address and a Password for verification, after which a new `Session` is created. Associated with the Session is an expiration and a bearer token. By default, sessions will expire 24 hours after they are created. This can be changed through the `default.sessionLifetime` configuration setting.
     2. **Using the session**: each request to the API needs a header attached to it: `Authorization: Bearer {token}`. This authenticates that particular request as belonging to the Session we created by logging in.
 
     You might notice that Step 2 greatly resembles how OAuth 2.0 works. This was an intentional first step towards OAuth support, and should make the forward migration of your code easier down the road.
@@ -912,6 +946,8 @@ tags:
     * `entity.delete` when an Entity is deleted.
     * `entity.restore` when a deleted Entity is restored.
     * `entity.purge` when a deleted Entity is purged (ppermanently deleted).
+    * `entity.bulk.delete` when Entities are deleted in bulk.
+    * `entity.bulk.restore` when Entities are restored in bulk.
     * `config.set` when a system configuration is set.
     * `upgrade.server` when Central is upgraded to a new version.
     * `upgrade.process.form.entities_version` when Central flags an Entity-related Form for a potential automatic upgrade.
@@ -959,7 +995,7 @@ paths:
                   example: my.super.secure.password
         required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -985,12 +1021,6 @@ paths:
                 createdAt: 2018-04-18T03:04:51.695Z
                 expiresAt: 2018-04-19T03:04:51.695Z
                 token: lSpAIeksRu1CNZs7!qjAot2T17dPzkrw9B4iTtpj7OoIJBmXvnHM8z8Ka4QPEjR7
-        401:
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
   /v1/example1:
     get:
       tags:
@@ -1010,7 +1040,7 @@ paths:
           type: string
         example: Bearer lSpAIeksRu1CNZs7!qjAot2T17dPzkrw9B4iTtpj7OoIJBmXvnHM8z8Ka4QPEjR7
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -1043,7 +1073,7 @@ paths:
           type: string
         example: Basic bXkuZW1haWwuYWRkcmVzc0BvcGVuZGF0YWtpdC5vcmc6bXkucGFzc3dvcmQ=
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -1071,7 +1101,7 @@ paths:
           type: string
         example: '!Ms7V3$Zdnd63j5HFacIPFEvFAuwNqTUZW$AsVOmaQFf$vIC!F8dJjdgiDnJXXOt'
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -1100,18 +1130,12 @@ paths:
           type: string
         example: lSpAIeksRu1CNZs7!qjAot2T17dPzkrw9B4iTtpj7OoIJBmXvnHM8z8Ka4QPEjR7
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/sessions/current:
     delete:
       tags:
@@ -1123,18 +1147,12 @@ paths:
         Only the session that was used to authenticate the request is logged out. If the Actor associated with the session has other sessions as well, those are not logged out.
       operationId: Logging out current session
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/users:
     get:
       tags:
@@ -1157,7 +1175,7 @@ paths:
           type: string
         example: alice
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -1173,12 +1191,6 @@ paths:
                 updatedAt: 2018-04-18T23:42:11.406Z
                 deletedAt: 2018-04-18T23:42:11.406Z
                 email: my.email.address@getodk.org
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     post:
       tags:
       - Users
@@ -1210,7 +1222,7 @@ paths:
                 email: my.email.address@getodk.org
         required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -1258,7 +1270,7 @@ paths:
                 updatedAt: 2018-04-18T23:42:11.406Z
                 deletedAt: 2018-04-18T23:42:11.406Z
                 email: my.email.address@getodk.org
-        400:
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1279,12 +1291,6 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
       x-codegen-request-body-name: body
   /v1/users/{actorId}:
     get:
@@ -1307,7 +1313,7 @@ paths:
           type: string
         example: "42"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -1355,12 +1361,6 @@ paths:
                 updatedAt: 2018-04-18T23:42:11.406Z
                 deletedAt: 2018-04-18T23:42:11.406Z
                 email: my.email.address@getodk.org
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     delete:
       tags:
       - Users
@@ -1387,18 +1387,12 @@ paths:
           type: string
         example: "42"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     patch:
       tags:
       - Users
@@ -1439,7 +1433,7 @@ paths:
                 email: new.email.address@getodk.org
         required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -1487,7 +1481,7 @@ paths:
                 updatedAt: 2018-04-18T23:42:11.406Z
                 deletedAt: 2018-04-18T23:42:11.406Z
                 email: my.email.address@getodk.org
-        400:
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -1508,12 +1502,6 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
       x-codegen-request-body-name: body
   /v1/user-preferences/project/{projectId}/{propertyName}:
     put:
@@ -1541,28 +1529,20 @@ paths:
             schema:
               required:
               - propertyValue
-              type: any
               properties:
                 propertyValue:
-                  type: any
                   description: The preference to be stored. It may be of any json-serializable type.
               example:
                 propertyValue: true
         required: true
       responses:
-        200:
+        "200":
           description: The preference was stored
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden - supplied bearer token was not valid
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        404:
+        "404":
           description: The specified project does not exist
           content:
             application/json:
@@ -1588,19 +1568,13 @@ paths:
             type: string
           example: "frobwazzleEnabled"
       responses:
-        200:
+        "200":
           description: The preference was stored
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden - supplied bearer token was not valid
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        404:
+        "404":
           description: The preference does not exist
           content:
             application/json:
@@ -1625,28 +1599,20 @@ paths:
             schema:
               required:
               - propertyValue
-              type: any
               properties:
                 propertyValue:
-                  type: any
                   description: The preference to be stored. It may be of any json-serializable type.
               example:
                 propertyValue: true
         required: true
 
       responses:
-        200:
+        "200":
           description: The preference was stored
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden - supplied bearer token was not valid
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     delete:
       tags:
         - User Preferences
@@ -1660,19 +1626,13 @@ paths:
             type: string
           example: "frobwazzleEnabled"
       responses:
-        200:
+        "200":
           description: The preference was deleted
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden - supplied bearer token was not valid
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-          404:
+        "404":
           description: The specified preference does not exist
           content:
             application/json:
@@ -1694,7 +1654,7 @@ paths:
         - an object containing the preferences of the authenticated User/Actor
       operationId: Getting authenticated User details
       responses:
-        200:
+        "200":
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
@@ -1806,12 +1766,6 @@ paths:
                   projects:
                     "1":
                       formTrashCollapsed: false
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/users/{actorId}/password:
     put:
       tags:
@@ -1850,18 +1804,12 @@ paths:
                 new: new.password
         required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
       x-codegen-request-body-name: body
   /v1/users/reset/initiate:
     post:
@@ -1899,18 +1847,12 @@ paths:
                 email: my.email.address@getodk.org
         required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
       x-codegen-request-body-name: body
   /v1/projects/{projectId}/app-users:
     get:
@@ -1931,7 +1873,7 @@ paths:
           type: number
         example: "7"
       responses:
-        200:
+        "200":
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
@@ -1973,12 +1915,6 @@ paths:
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
                 lastUsed: 2018-04-14T08:34:21.633Z
-        403:
-          description: Forbidden
-          content:            
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     post:
       tags:
       - App Users
@@ -2011,7 +1947,7 @@ paths:
                 displayName: My Display Name
         required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -2065,7 +2001,7 @@ paths:
                 deletedAt: 2018-04-18T23:42:11.406Z
                 token: d1!E2GVHgpr4h9bpxxtqUJ7EVJ1Q$Dusm2RBXg8XyVJMCBCbvyE8cGacxUx3bcUT
                 projectId: 1
-        400:
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -2086,12 +2022,6 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
       x-codegen-request-body-name: body
   /v1/projects/{projectId}/app-users/{id}:
     delete:
@@ -2119,18 +2049,12 @@ paths:
           type: number
         example: "7"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/roles:
     get:
       tags:
@@ -2142,7 +2066,7 @@ paths:
         at any time.'
       operationId: Listing all Roles
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -2181,7 +2105,7 @@ paths:
           type: string
         example: "1"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -2207,7 +2131,7 @@ paths:
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to expand the `actorId` into a full `actor` objects. The Role reference remains a numeric ID.
       operationId: Listing all Assignments
       responses:
-        200:
+        "200":
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
@@ -2234,12 +2158,6 @@ paths:
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
                 roleId: 4
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/assignments/{roleId}:
     get:
       tags:
@@ -2259,7 +2177,7 @@ paths:
           type: string
         example: admin
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -2274,12 +2192,6 @@ paths:
                 type: user
                 updatedAt: 2018-04-18T23:42:11.406Z
                 deletedAt: 2018-04-18T23:42:11.406Z
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/assignments/{roleId}/{actorId}:
     post:
       tags:
@@ -2307,18 +2219,12 @@ paths:
           type: number
         example: "14"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     delete:
       tags:
       - Assignments
@@ -2344,18 +2250,12 @@ paths:
           type: number
         example: "14"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects:
     get:
       tags:
@@ -2388,7 +2288,7 @@ paths:
             type: boolean
           example: "true"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -2442,7 +2342,7 @@ paths:
                 name: Project Name
         required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -2478,12 +2378,6 @@ paths:
                 description: Description of this Project to show on Central.
                 keyId: 3
                 archived: false
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
       x-codegen-request-body-name: body  
   /v1/projects/{id}:
     get:
@@ -2506,7 +2400,7 @@ paths:
           type: number
         example: "16"
       responses:
-        200:
+        "200":
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
@@ -2540,12 +2434,6 @@ paths:
                 verbs:
                   - "form.create"
                   - "form.delete"
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     put:
       tags:
       - Projects
@@ -2609,7 +2497,7 @@ paths:
                   state: closed
         required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -2645,13 +2533,7 @@ paths:
                 description: Description of this Project to show on Central.
                 keyId: 3
                 archived: false
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        501:
+        "501":
           description: Not Implemented
           content:
             application/json:
@@ -2687,18 +2569,12 @@ paths:
           type: number
         example: "16"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     patch:
       tags:
       - Projects
@@ -2739,7 +2615,7 @@ paths:
                 archived: true
         required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -2775,12 +2651,6 @@ paths:
                 description: Description of this Project to show on Central.
                 keyId: 3
                 archived: false
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
       x-codegen-request-body-name: body
   /v1/projects/{id}/key:
     post:
@@ -2824,7 +2694,7 @@ paths:
                 hint: it was a secret
         required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -2860,7 +2730,7 @@ paths:
                 description: Description of this Project to show on Central.
                 keyId: 3
                 archived: false
-        400:
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -2881,13 +2751,7 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        409:
+        "409":
           description: Conflict
           content:
             application/json:
@@ -2923,7 +2787,7 @@ paths:
           type: number
         example: "2"
       responses:
-        200:
+        "200":
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
@@ -2949,12 +2813,6 @@ paths:
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
                 roleId: 4
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/assignments/{roleId}:
     get:
       tags:
@@ -2981,7 +2839,7 @@ paths:
           type: number
         example: "16"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -2996,12 +2854,6 @@ paths:
                 type: user
                 updatedAt: 2018-04-18T23:42:11.406Z
                 deletedAt: 2018-04-18T23:42:11.406Z
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/assignments/{roleId}/{actorId}:
     post:
       tags:
@@ -3036,18 +2888,12 @@ paths:
           type: number
         example: "14"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema: 
-                $ref: '#/components/schemas/Error403'
     delete:
       tags:
       - Project Assignments
@@ -3080,18 +2926,12 @@ paths:
           type: number
         example: "14"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/assignments/forms:
     get:
       tags:
@@ -3111,7 +2951,7 @@ paths:
           type: number
         example: "16"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -3138,12 +2978,6 @@ paths:
                   deletedAt: 2018-04-18T23:42:11.406Z
                 xmlFormId: simple
                 roleId: 4
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/assignments/forms/{roleId}:
     get:
       tags:
@@ -3170,7 +3004,7 @@ paths:
           type: number
         example: "16"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -3197,12 +3031,6 @@ paths:
                   deletedAt: 2018-04-18T23:42:11.406Z
                 xmlFormId: simple
                 roleId: 4
-        403:
-          description: Forbidden
-          content:
-            application/json; extended:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms:
     get:
       tags:
@@ -3232,7 +3060,7 @@ paths:
           type: boolean
         example: "true"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -3284,12 +3112,6 @@ paths:
                   deletedAt: 2018-04-18T23:42:11.406Z
                 entityRelated: false
                 publicLinks: 4
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     post:
       tags:
       - Forms
@@ -3346,7 +3168,7 @@ paths:
           type: string
         example: filename.xlsx
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -3422,7 +3244,7 @@ paths:
                 publishedAt: 2018-01-21T00:04:11.153Z
                 createdAt: 2018-01-19T23:58:03.395Z
                 updatedAt: 2018-03-21T12:45:02.312Z
-        400:
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -3443,13 +3265,7 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        409:
+        "409":
           description: Conflict
           content:
             application/json:
@@ -3491,7 +3307,7 @@ paths:
           type: number
         example: "16"
       responses:
-        200:
+        "200":
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
@@ -3499,7 +3315,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Form'
               example:
-              - projectId: 1
+                projectId: 1
                 xmlFormId: simple
                 name: Simple
                 version: "2.1"
@@ -3540,12 +3356,6 @@ paths:
                   deletedAt: 2018-04-18T23:42:11.406Z
                 entityRelated: false
                 publicLinks: 4
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     delete:
       tags:
       - Individual Form
@@ -3579,18 +3389,12 @@ paths:
           type: number
         example: "16"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     patch:
       tags:
       - Individual Form
@@ -3633,7 +3437,7 @@ paths:
                 state: open
         required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -3709,7 +3513,7 @@ paths:
                 publishedAt: 2018-01-21T00:04:11.153Z
                 createdAt: 2018-01-19T23:58:03.395Z
                 updatedAt: 2018-03-21T12:45:02.312Z
-        400:
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -3730,12 +3534,6 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
       x-codegen-request-body-name: body
   /v1/form-links/{formLinkId}/form:
     get:
@@ -3753,7 +3551,7 @@ paths:
           type: string
         example: abcdef
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -3771,12 +3569,6 @@ paths:
                 publishedAt: 2018-01-21T00:04:11.153Z
                 createdAt: 2018-01-19T23:58:03.395Z
                 updatedAt: 2018-03-21T12:45:02.312Z
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}.xml:
     get:
       tags:
@@ -3801,7 +3593,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/xml:
@@ -3835,22 +3627,6 @@ paths:
                     </input>
                   </h:body>
                 </h:html>
-        403:
-          description: Forbidden
-          content:
-            application/xml:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}.xlsx:
     get:
       tags:
@@ -3876,28 +3652,12 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
               example: |
                 (binary data)
-        403:
-          description: Forbidden
-          content:
-            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/attachments:
     get:
       tags:
@@ -3925,7 +3685,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -3941,12 +3701,6 @@ paths:
                 datasetExists: false
                 hash: 'd41d8cd98f00b204e9800998ecf8427e'
                 updatedAt: 2018-03-21T12:45:02.312Z
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/attachments/{filename}:
     get:
       tags:
@@ -3986,7 +3740,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           headers:
             Content-Disposition:
@@ -4001,14 +3755,8 @@ paths:
               schema:
                 type: object
               example: (binary data)
-        304:
+        "304":
           description:  Not Modified
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/fields:
     get:
       tags:
@@ -4047,7 +3795,7 @@ paths:
           type: boolean
         example: "false"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -4102,12 +3850,6 @@ paths:
                 path: /photo
                 type: binary
                 binary: true
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{id}/restore:
     post:
       tags:
@@ -4136,18 +3878,12 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/draft:
     get:
       tags:
@@ -4172,18 +3908,12 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/DraftForm'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     post:
       tags:
       - Draft Form
@@ -4234,13 +3964,13 @@ paths:
           type: string
         example: filename.xlsx
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        400:
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -4261,12 +3991,6 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     delete:
       tags:
       - Draft Form
@@ -4292,18 +4016,12 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/draft.xml:
     get:
       tags:
@@ -4328,7 +4046,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/xml:
@@ -4362,22 +4080,6 @@ paths:
                     </input>
                   </h:body>
                 </h:html>
-        403:
-          description: Forbidden
-          content:
-            application/xml:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/draft.xlsx:
     get:
       tags:
@@ -4405,7 +4107,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           headers:
             ETag:
@@ -4416,22 +4118,6 @@ paths:
             application/xml:
               example: |
                 (binary data)
-        403:
-          description: Forbidden
-          content:
-            application/xml:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/attachments:
     get:
       tags:
@@ -4460,7 +4146,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -4476,12 +4162,6 @@ paths:
                 datasetExists: false
                 hash: 'd41d8cd98f00b204e9800998ecf8427e'
                 updatedAt: 2018-03-21T12:45:02.312Z
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/attachments/{filename}:
     get:
       tags:
@@ -4517,7 +4197,7 @@ paths:
           type: string
         example: people.csv
       responses:
-        200:
+        "200":
           description: OK
           headers:
             Content-Disposition:
@@ -4531,22 +4211,6 @@ paths:
             '{the MIME type of the attachment file itself or text/csv for a Dataset}':
               example: |
                 (binary data)
-        403:
-          description: Forbidden
-          content:
-            '{the MIME type of the attachment file itself or text/csv for a Dataset}':
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     post:
       tags:
       - Draft Form
@@ -4579,18 +4243,12 @@ paths:
           type: string
         example: people.csv
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/FormAttachment'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     delete:
       tags:
       - Draft Form
@@ -4624,18 +4282,12 @@ paths:
           type: string
         example: people.csv
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     patch:
       tags:
       - Draft Form
@@ -4676,19 +4328,13 @@ paths:
               $ref: '#/components/schemas/PatchAttachment'
         required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        404:
+        "404":
           description: Not Found
           content:
             application/json:
@@ -4736,7 +4382,7 @@ paths:
           type: boolean
         example: "false"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -4791,12 +4437,6 @@ paths:
                 path: /photo
                 type: binary
                 binary: true
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/publish:
     post:
       tags:
@@ -4835,19 +4475,13 @@ paths:
           type: string
         example: newVersion
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        409:
+        "409":
           description: Conflict
           content:
             application/json:
@@ -4889,7 +4523,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: Ok
           content:
             application/json:
@@ -4933,12 +4567,6 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
-        403:
-          description: Forbidden
-          content:
-            application/json; extended:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}:
     get:
       tags:
@@ -4974,18 +4602,12 @@ paths:
           type: string
         example: one
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Form'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}.xml:
     get:
       tags:
@@ -5018,7 +4640,7 @@ paths:
           type: string
         example: one
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/xml:
@@ -5052,22 +4674,6 @@ paths:
                     </input>
                   </h:body>
                 </h:html>
-        403:
-          description: Forbidden
-          content:
-            application/xml:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}.xlsx:
     get:
       tags:
@@ -5103,7 +4709,7 @@ paths:
           type: string
         example: one
       responses:
-        200:
+        "200":
           description: OK
           headers:
             ETag:
@@ -5114,22 +4720,6 @@ paths:
             application/xml:
               example: |
                 (binary data)
-        403:
-          description: Forbidden
-          content:
-            application/xml:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}/attachments:
     get:
       tags:
@@ -5162,7 +4752,7 @@ paths:
           type: string
         example: one
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -5178,12 +4768,6 @@ paths:
                 datasetExists: false
                 hash: 'd41d8cd98f00b204e9800998ecf8427e'
                 updatedAt: 2018-03-21T12:45:02.312Z
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}/attachments/{filename}:
     get:
       tags:
@@ -5231,7 +4815,7 @@ paths:
           type: string
         example: people.csv
       responses:
-        200:
+        "200":
           description: OK
           headers:
             Content-Disposition:
@@ -5246,14 +4830,8 @@ paths:
               schema:
                 type: object
               example: (binary data)
-        304:
+        "304":
           description:  Not Modified
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}/fields:
     get:
       tags:
@@ -5293,7 +4871,7 @@ paths:
           type: boolean
         example: "false"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -5348,12 +4926,6 @@ paths:
                 path: /photo
                 type: binary
                 binary: true
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/assignments:
     get:
       tags:
@@ -5380,7 +4952,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
@@ -5406,12 +4978,6 @@ paths:
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
                 roleId: 4
-        403:
-          description: Forbidden
-          content:
-            application/json; extended:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/assignments/{roleId}:
     get:
       tags:
@@ -5445,7 +5011,7 @@ paths:
           type: string
         example: manager
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -5460,12 +5026,6 @@ paths:
                 type: user
                 updatedAt: 2018-04-18T23:42:11.406Z
                 deletedAt: 2018-04-18T23:42:11.406Z
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/assignments/{roleId}/{actorId}:
     post:
       tags:
@@ -5507,15 +5067,12 @@ paths:
           type: number
         example: "14"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content: {}
     delete:
       tags:
       - Form Assignments
@@ -5555,18 +5112,12 @@ paths:
           type: number
         example: "14"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/public-links:
     get:
       tags:
@@ -5593,7 +5144,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
@@ -5682,7 +5233,7 @@ paths:
                 once: false
         required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -5736,12 +5287,6 @@ paths:
                 deletedAt: 2018-04-18T23:42:11.406Z
                 token: d1!E2GVHgpr4h9bpxxtqUJ7EVJ1Q$Dusm2RBXg8XyVJMCBCbvyE8cGacxUx3bcUT
                 once: false
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
       x-codegen-request-body-name: body
   /v1/projects/{projectId}/forms/{xmlFormId}/public-links/{linkId}:
     delete:
@@ -5776,18 +5321,12 @@ paths:
           type: integer
         example: "42"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/dataset-diff:
     get:
       tags:
@@ -5814,7 +5353,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: This is the standard response
           content:
             application/json:
@@ -5854,7 +5393,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: This is the standard response
           content:
             application/json:
@@ -5894,8 +5433,14 @@ paths:
         schema:
           type: string
         example: simple
+      - name: deleted
+        in: query
+        description: If set to `true`, returns only deleted submissions.
+        schema:
+          type: boolean
+        example: true
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -5949,12 +5494,6 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
-        403:
-          description: Forbidden
-          content:
-            application/json; extended:
-              schema:
-                $ref: '#/components/schemas/Error403'
     post:
       tags:
       - Submissions
@@ -5990,7 +5529,7 @@ paths:
           type: string
         example: b1628661-65ed-4cab-8e30-19c17fef2de0
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -6013,7 +5552,7 @@ paths:
                   userAgent: Enketo/3.0.4
                   createdAt: 2018-01-19T23:58:03.395Z
                   current: true
-        400:
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -6034,13 +5573,7 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        409:
+        "409":
           description: Conflict
           content:
             application/json:
@@ -6056,6 +5589,83 @@ paths:
               example:
                 code: "409.1"
                 message: A resource already exists with id value(s) of 1.
+  /v1/projects/{projectId}/forms/{xmlFormId}/submissions.geojson:
+    get:
+      tags:
+      - Submissions
+      summary: Retrieving Submissions Geodata
+      description: |-
+        Submissions' geodata, one form field per submission, in [GeoJSON](https://geojson.org) format.
+        If no particular field path is supplied, the first non-repeat geopoint/geotrace/geoshape field is used.
+        No particular ordering is implied.
+        
+        ⚠️ The specifics of this endpoint are likely to change in future releases, and the parameters this endpoint takes are not all documented.
+        Its current behaviour should not be depended upon.
+        Use cases for this API can be discussed on [the forum](https://forum.getodk.org/).
+      operationId: Submissions Geodata
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "10"
+      - name: xmlFormId
+        in: path
+        description: The `xmlFormId` of the Form being referenced.
+        required: true
+        schema:
+          type: string
+        example: simple
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: |
+                  Submission geodata, in [GeoJSON](https://geojson.org) format.
+                  Geodata is grouped by submission. Submissions are represented as a GeoJSON "feature".
+                  
+                  When the provenance of the geodata (the form's field path) is not evident from the request, the origin field path of the geodata will be denoted in a `fieldpath` property in the feature's GeoJSON `properties` object. This is the case in when no field path is specified in the request, as in that situation the first geopoint-, geotrace-, or geoshape-field (not in any repeatgroup) of the form is used. And thus as forms get revised, what is the first geo-type field (not in any repeatgroup) may change; without the `fieldpath` extra information, the data provenance would be unclear. 
+                type: object
+              example:
+                {
+                  "type": "FeatureCollection",
+                  "features": [
+                    {
+                      "type": "Feature",
+                      "id": "uuid:f7ec6523-05f5-450c-9153-934b640b7467",
+                      "geometry": {
+                        "type": "Point",
+                        "coordinates": [170.511231, -52.123783, 654]
+                      },
+                      "properties": {
+                        "fieldpath": "/some_group/some_geopoint"
+                      }
+                    },
+                    {
+                      "type": "Feature",
+                      "id": "uuid:0de0e925-0f0e-467c-b809-31a7427f1518",
+                      "geometry": {
+                        "type": "Polygon",
+                        "coordinates": [
+                          [
+                            [170,     10,      653],
+                            [171.123, 20.123, -30.30],
+                            [172,     30,      65.65],
+                            [170,     10,      653]
+                          ]
+                        ]
+                      },
+                      "properties": {
+                        "fieldpath": "/some_geoshape"
+                      }
+                    }
+                  ]
+                }
+
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}:
     get:
       tags:
@@ -6093,7 +5703,7 @@ paths:
           type: string
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
-        200:
+        "200":
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
@@ -6144,17 +5754,11 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
-        301:
+        "301":
           description: Returns 301 with URL of the specific Submission version if `instanceId` of a Submission edit is provided
           content:
             text/html:
               example: "<Redirects to correct Submission URL>"
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     put:
       tags:
       - Submissions
@@ -6195,7 +5799,7 @@ paths:
           type: string
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -6218,7 +5822,7 @@ paths:
                   userAgent: Enketo/3.0.4
                   createdAt: 2018-01-19T23:58:03.395Z
                   current: true
-        400:
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -6239,13 +5843,7 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        409:
+        "409":
           description: Conflict
           content:
             application/json:
@@ -6293,7 +5891,7 @@ paths:
           type: string
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -6316,12 +5914,6 @@ paths:
                   userAgent: Enketo/3.0.4
                   createdAt: 2018-01-19T23:58:03.395Z
                   current: true
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     delete:
       tags:
       - Submissions
@@ -6353,19 +5945,13 @@ paths:
           type: string
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        404:
+        "404":
           description: Not Found
           content:
             application/json:
@@ -6411,19 +5997,13 @@ paths:
           type: string
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        404:
+        "404":
           description: Not Found
           content:
             application/json:
@@ -6470,7 +6050,7 @@ paths:
           type: string
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/xml:
@@ -6480,6 +6060,58 @@ paths:
                   <name>Alice</name>
                   <age>32</age>
                 </data>
+  /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}.geojson:
+    get:
+      tags:
+      - Submissions
+      summary: Retrieving Submission GeoJSON
+      description: To retrieve the GeoJSON representation of the `Submission`, just append `.geojson` to
+        the end of the request URL.
+      operationId: Retrieving Submission GeoJSON
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: xmlFormId
+        in: path
+        description: The `xmlFormId` of the Form being referenced.
+        required: true
+        schema:
+          type: string
+        example: simple
+      - name: instanceId
+        in: path
+        description: The `instanceId` of the Submission being referenced.
+        required: true
+        schema:
+          type: string
+        example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              example:
+                {
+                  "type": "FeatureCollection",
+                  "features": [
+                    {
+                      "type": "Feature",
+                      "id": "uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44",
+                      "geometry": {
+                        "type": "Point",
+                        "coordinates": [4.7871262893819555, 52.24107555748181, 0]
+                      },
+                      "properties": {
+                        "fieldpath": "/singular/input_geopoint"
+                      }
+                    }
+                  ]
+                }
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/edit:
     get:
       tags:
@@ -6517,19 +6149,16 @@ paths:
           type: string
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
-        302:
+        "302":
           description: Found
           headers:
             Location:
               schema:
                 type: string
-          content: {}
-        403:
-          description: Forbidden
           content:
-            application/json:
+            text/html:
               schema:
-                $ref: '#/components/schemas/Error403'
+                type: string
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions.csv.zip:
     get:
       tags:
@@ -6606,14 +6235,19 @@ paths:
           type: boolean
         example: "false"
       responses:
-        200:
+        "200":
           description: OK
           headers:
             Content-Disposition:
               schema:
                 type: string
-          content: {}
-        400:
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+                example: (binary data)
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -6634,12 +6268,6 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     post:
       tags:
       - Submissions
@@ -6709,14 +6337,19 @@ paths:
           type: boolean
         example: "false"
       responses:
-        200:
+        "200":
           description: OK
           headers:
             Content-Disposition:
               schema:
                 type: string
-          content: {}
-        400:
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+                example: (binary data)
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -6737,12 +6370,6 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions.csv:
     get:
       tags:
@@ -6783,10 +6410,14 @@ paths:
           type: string
         example: year(__system/submissionDate) lt year(now())
       responses:
-        200:
+        "200":
           description: OK
-          content: {}
-        400:
+          content:
+            application/zip:
+              schema:
+                type: string
+                example: (csv data)
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -6807,12 +6438,6 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     post:
       tags:
       - Submissions
@@ -6852,10 +6477,14 @@ paths:
           type: string
         example: year(__system/submissionDate) lt year(now())
       responses:
-        200:
+        "200":
           description: OK
-          content: {}
-        400:
+          content:
+            application/zip:
+              schema:
+                type: string
+                example: (csv data)
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -6876,12 +6505,6 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/audits:
     get:
       tags:
@@ -6917,7 +6540,7 @@ paths:
           type: string
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -6947,12 +6570,6 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/keys:
     get:
       tags:
@@ -6980,7 +6597,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -6993,12 +6610,6 @@ paths:
                   public: bcFeKDF3Sg8W91Uf5uxaIlsuhzmjbgUnIyiLzIjrx4CAaf9Y9LG7TAu6wKPqfbH6ZAkJTFSfjLNovbKhpOQcmO5VZGGay6yvXrX1TFW6C6RLITy74erxfUAStdtpP4nraCYqQYqn5zD4/1OmgweJt5vzGXW2ch7lrROEQhXB9lK+bjEeWx8TFW/+6ha/oRLnl6a2RBRL6mhwy3PoByNTKndB2MP4TygCJ/Ini4ivk74iSqVnoeuNJR/xUcU+kaIpZEIjxpAS2VECJU9fZvS5Gt84e5wl/t7bUKu+dlh/cUgHfk6+6bwzqGQYOe5A==
                   managed: true
                   hint: it was a secret
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/submitters:
     get:
       tags:
@@ -7024,7 +6635,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -7039,12 +6650,6 @@ paths:
                 type: user
                 updatedAt: 2018-04-18T23:42:11.406Z
                 deletedAt: 2018-04-18T23:42:11.406Z
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/comments:
     get:
       tags:
@@ -7078,7 +6683,7 @@ paths:
           type: string
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -7104,12 +6709,6 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     post:
       tags:
       - Comments
@@ -7154,7 +6753,7 @@ paths:
                 body: this is the text of my comment
         required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -7173,12 +6772,6 @@ paths:
               example:
                 body: this is my comment
                 actorId: 42
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
       x-codegen-request-body-name: body
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/attachments:
     get:
@@ -7214,7 +6807,7 @@ paths:
           type: string
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -7229,12 +6822,6 @@ paths:
                 exists: false
               - name: file3.jpg
                 exists: true
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/attachments/{filename}:
     get:
       tags:
@@ -7275,7 +6862,7 @@ paths:
           type: string
         example: file1.jpg
       responses:
-        200:
+        "200":
           description: OK
           headers:
             Content-Disposition:
@@ -7289,22 +6876,6 @@ paths:
             '{the MIME type of the attachment file itself}':
               example: |
                 (binary data)
-        403:
-          description: Forbidden
-          content:
-            '{the MIME type of the attachment file itself}':
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     post:
       tags:
       - Attachments
@@ -7344,18 +6915,12 @@ paths:
           type: string
         example: file1.jpg
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     delete:
       tags:
       - Attachments
@@ -7395,18 +6960,12 @@ paths:
           type: string
         example: file1.jpg
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/versions:
     get:
       tags:
@@ -7441,7 +7000,7 @@ paths:
           type: string
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -7479,12 +7038,6 @@ paths:
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
                 formVersion: "1.0"
-        403:
-          description: Forbidden
-          content:
-            application/json; extended:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/versions/{versionId}:
     get:
       tags:
@@ -7526,7 +7079,7 @@ paths:
           type: string
         example: uuid:b1628661-65ed-4cab-8e30-19c17fef2de0
       responses:
-        200:
+        "200":
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
@@ -7561,12 +7114,6 @@ paths:
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
                 formVersion: "1.0"
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/versions/{versionId}.xml:
     get:
       tags:
@@ -7605,7 +7152,7 @@ paths:
           type: string
         example: uuid:b1628661-65ed-4cab-8e30-19c17fef2de0
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/xml:
@@ -7615,22 +7162,65 @@ paths:
                   <name>Alice</name>
                   <age>32</age>
                 </data>
-        403:
-          description: Forbidden
+  /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/versions/{versionId}.geojson:
+    get:
+      tags:
+      - Submission Versions
+      summary: Getting Version GeoJSON
+      description: Returns the GeoJSON of a particular version of the submission.
+      operationId: Getting Version GeoJSON
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: xmlFormId
+        in: path
+        description: The `xmlFormId` of the Form being referenced.
+        required: true
+        schema:
+          type: string
+        example: simple
+      - name: instanceId
+        in: path
+        description: The `instanceId` of the Submission being referenced.
+        required: true
+        schema:
+          type: string
+        example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
+      - name: versionId
+        in: path
+        description: The `instanceId` of the particular version of this submission
+          in question.
+        required: true
+        schema:
+          type: string
+        example: uuid:b1628661-65ed-4cab-8e30-19c17fef2de0
+      responses:
+        "200":
+          description: OK
           content:
-            application/xml:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
             application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
+              example:
+                {
+                  "type": "FeatureCollection",
+                  "features": [
+                    {
+                      "type": "Feature",
+                      "id": "uuid:b1628661-65ed-4cab-8e30-19c17fef2de0",
+                      "geometry": {
+                        "type": "Point",
+                        "coordinates": [4.7871262893819555, 52.24107555748181, 0]
+                      },
+                      "properties": {
+                        "fieldpath": "/singular/input_geopoint"
+                      }
+                    }
+                  ]
+                }
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/versions/{versionId}/attachments:
     get:
       tags:
@@ -7673,7 +7263,7 @@ paths:
           type: string
         example: uuid:b1628661-65ed-4cab-8e30-19c17fef2de0
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -7688,12 +7278,6 @@ paths:
                 exists: false
               - name: file3.jpg
                 exists: true
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/versions/{versionId}/attachments/{filename}:
     get:
       tags:
@@ -7743,7 +7327,7 @@ paths:
           type: string
         example: file1.jpg
       responses:
-        200:
+        "200":
           description: OK
           headers:
             Content-Disposition:
@@ -7757,22 +7341,6 @@ paths:
             '{the MIME type of the attachment file itself}':
               example: |
                 (binary data)
-        403:
-          description: Forbidden
-          content:
-            '{the MIME type of the attachment file itself}':
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/diffs:
     get:
       tags:
@@ -7809,7 +7377,7 @@ paths:
           type: string
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -7839,12 +7407,6 @@ paths:
                     path:
                     - meta
                     - deprecatedID
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions:
     get:
       tags:
@@ -7869,7 +7431,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
@@ -7922,12 +7484,6 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     post:
       tags:
       - Draft Submissions
@@ -7955,7 +7511,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -7978,7 +7534,7 @@ paths:
                   userAgent: Enketo/3.0.4
                   createdAt: 2018-01-19T23:58:03.395Z
                   current: true
-        400:
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -7999,13 +7555,7 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        409:
+        "409":
           description: Conflict
           content:
             application/json:
@@ -8045,14 +7595,19 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           headers:
             Content-Disposition:
               schema:
                 type: string
-          content: {}
-        400:
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+                example: (binary data)
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -8073,12 +7628,6 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     post:
       tags:
       - Draft Submissions
@@ -8102,14 +7651,19 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           headers:
             Content-Disposition:
               schema:
                 type: string
-          content: {}
-        400:
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+                example: (binary data)
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -8130,12 +7684,6 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions/keys:
     get:
       tags:
@@ -8160,7 +7708,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -8173,12 +7721,6 @@ paths:
                   public: bcFeKDF3Sg8W91Uf5uxaIlsuhzmjbgUnIyiLzIjrx4CAaf9Y9LG7TAu6wKPqfbH6ZAkJTFSfjLNovbKhpOQcmO5VZGGay6yvXrX1TFW6C6RLITy74erxfUAStdtpP4nraCYqQYqn5zD4/1OmgweJt5vzGXW2ch7lrROEQhXB9lK+bjEeWx8TFW/+6ha/oRLnl6a2RBRL6mhwy3PoByNTKndB2MP4TygCJ/Ini4ivk74iSqVnoeuNJR/xUcU+kaIpZEIjxpAS2VECJU9fZvS5Gt84e5wl/t7bUKu+dlh/cUgHfk6+6bwzqGQYOe5A==
                   managed: true
                   hint: it was a secret
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions/{instanceId}:
     get:
       tags:
@@ -8210,7 +7752,7 @@ paths:
           type: string
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
-        200:
+        "200":
           description: 'This is the Extended Metadata response, if requested via the
             appropriate header:'
           content:
@@ -8261,12 +7803,6 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions/{instanceId}.xml:
     get:
       tags:
@@ -8298,7 +7834,7 @@ paths:
           type: string
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/xml:
@@ -8339,7 +7875,7 @@ paths:
           type: string
         example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -8354,12 +7890,6 @@ paths:
                 exists: false
               - name: file3.jpg
                 exists: true
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error403"
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/submissions/{instanceId}/attachments/{filename}:
     get:
       tags:
@@ -8398,7 +7928,7 @@ paths:
           type: string
         example: file1.jpg
       responses:
-        200:
+        "200":
           description: OK
           headers:
             Content-Disposition:
@@ -8408,22 +7938,6 @@ paths:
             '{the MIME type of the attachment file itself}':
               example: |
                 (binary data)
-        403:
-          description: Forbidden
-          content:
-            '{the MIME type of the attachment file itself}':
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     post:
       tags:
       - Draft Submissions
@@ -8461,18 +7975,12 @@ paths:
           type: string
         example: file1.jpg
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     delete:
       tags:
       - Draft Submissions
@@ -8510,19 +8018,13 @@ paths:
           type: string
         example: file1.jpg
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-  /projects/{projectId}/datasets:
+  /v1/projects/{projectId}/datasets:
     get:
       tags:
       - Dataset Management
@@ -8538,7 +8040,7 @@ paths:
           type: number
         example: "16"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -8566,12 +8068,6 @@ paths:
                   lastEntity: '2018-04-18T03:04:51.695Z'
                   entities: 10
                   conflicts: 2
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     post:
       tags:
       - Dataset Management
@@ -8607,17 +8103,15 @@ paths:
                   approvalRequired:
                     type: boolean
                     description: Control whether a Submission should be approved before an Entity is created from it.
-                    required: false
                   ownerOnly:
                     type: boolean
                     description: If `ownerOnly` is `true`, and an Actor only has access to the Dataset CSV file via linked Form Attachments, then only Entities created by the Actor will be downloaded to the OpenRosa client. If `ownerOnly` is `false`, or if an Actor has direct access to the Dataset CSV file, then all Entities will be downloaded.
-                    required: false
                 example:
                   name: Trees
                   approvalRequired: false
           required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -8633,13 +8127,7 @@ paths:
                 sourceForms: []
                 linkedForms: []
                 properties: []
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        409:
+        "409":
           description: Conflict
           content:
             application/json:
@@ -8655,7 +8143,7 @@ paths:
               example:
                 code: 409.3
                 message: A resource already exists with name,projectId value(s) of trees,1.
-  /projects/{projectId}/datasets/{name}:
+  /v1/projects/{projectId}/datasets/{name}:
     get:
       tags:
       - Dataset Management
@@ -8679,7 +8167,7 @@ paths:
           type: string
         example: people
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -8705,12 +8193,6 @@ paths:
                   forms:
                   - xmlFormId: simple
                     name: Simple
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     patch:
       tags:
       - Dataset Management
@@ -8721,7 +8203,7 @@ paths:
 
         The `approvalRequired` flag controls the Entity creation flow. If it is `true`, then the Submission must be approved before an Entity can be created from it. If it is `false`, then an Entity is created as soon as the Submission is received by ODK Central. By default, `approvalRequired` is `false` for Datasets created after v2023.3. Datasets created prior to that will have `approvalRequired` set to `true`.
 
-        The `ownerOnly` flag determines which Entities in the Dataset are included for download to an OpenRosa client. More specifically, it determines which Entities are included in a Form Attachment that has been linked to the Dataset. If `ownerOnly` is `true`, and the Actor using the OpenRosa client only has access to the Dataset CSV file via linked Form Attachments, then only Entities created by the Actor will be included. This is true of App Users, Web Users with a role of Data Collector, and Public Access Links. If `ownerOnly` is `false`, or if the Actor has direct access to the Dataset CSV file, then all Entities will be included. By default, `ownerOnly` is `false`.
+        The `ownerOnly` flag determines which Entities in the Dataset are included for download to an OpenRosa client. More specifically, it determines which Entities are included in a Form Attachment that has been linked to the Dataset. If `ownerOnly` is `true`, and the Actor using the OpenRosa client only has access to the Dataset CSV file via linked Form Attachments, then only Entities created by the Actor will be included. This is true of App Users, Web Users with a role of Data Collector, and Public Access Links. If `ownerOnly` is `false`, or if the Actor has direct access to the Dataset CSV file, then all Entities will be included. Accessing the Dataset CSV file via linked Form Attachments using a [draftToken](/central-api-form-management/#draft-form) will also retrieve all Entities, this functionality assumes the `draftToken` is used by Actors with full dataset access, such as Project Managers and System Administrators. By default, `ownerOnly` is `false`.
       parameters:
         - name: projectId
           in: path
@@ -8754,7 +8236,7 @@ paths:
               example:
                 approvalRequired: true
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -8780,13 +8262,7 @@ paths:
                   forms:
                   - xmlFormId: simple
                     name: Simple
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-  /projects/{projectId}/datasets/{name}/properties:
+  /v1/projects/{projectId}/datasets/{name}/properties:
     post:
       tags:
       - Dataset Management
@@ -8828,19 +8304,13 @@ paths:
                   name: circumference
           required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-  /projects/{projectId}/datasets/{name}/entities.csv:
+  /v1/projects/{projectId}/datasets/{name}/entities.csv:
     get:
       tags:
       - Dataset Management
@@ -8851,6 +8321,8 @@ paths:
         The CSV format closely matches the [OData Dataset Service](/central-api-odata-endpoints/#odata-dataset-service) format, with columns for system properties such as `__id` (the Entity UUID), `__createdAt`, `__creatorName`, etc., the Entity Label `label`, and the Dataset/Entity Properties themselves. If any Property for an given Entity is blank (e.g. it was not captured by that Form or was left blank), that field of the CSV is blank.
 
         The `$filter` querystring parameter can be used to filter on system-level properties, similar to how filtering in the [OData Dataset Service](/central-api-odata-endpoints/#odata-dataset-service) works.
+
+        The `$search` querystring parameter can be used to search entity data (user-defined properties) and the `label` field, using the same search behavior as the [OData Dataset Service](/central-api-odata-endpoints/#odata-dataset-service).
 
         This endpoint supports `ETag` header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in the ETag header. If you pass that value in the If-None-Match header of a subsequent request, then if the Dataset has not been changed since the previous request, you will receive `304 Not Modified` response; otherwise you'll get the new data.
       operationId: Download Dataset
@@ -8875,8 +8347,14 @@ paths:
         schema:
           type: string
         example: __system/conflict eq \'hard\'
+      - name: $search
+        in: query
+        description: If provided, will search entity data (user-defined properties) and the `label` field.
+        schema:
+          type: string
+        example: john
       responses:
-        200:
+        "200":
           description: OK
           headers:
             Content-Disposition:
@@ -8892,23 +8370,7 @@ paths:
                 __id,label,geometry,species,circumference_cm,__createdAt,__creatorId,__creatorName,__updates,__updatedAt,__version
                 2c1ee90b-dde8-434b-9985-2eefd8465339,666cm purpleheart,-29.281608 -67.624883 0 0,purpleheart,667,2023-05-31T19:49:28.902Z,22,Alice,1,2023-05-31T19:52:34.467Z,1
                 84ac3a03-9980-4098-93a5-b81fdc6ea749,555cm wallaba,18.921876 77.309451 0 0,wallaba,555,2023-05-31T19:49:20.152Z,22,Alice,0,,1
-        403:
-          description: Forbidden
-          content:
-            text/csv:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-  /projects/{projectId}/datasets/{name}/entities:
+  /v1/projects/{projectId}/datasets/{name}/entities:
     get:
       tags:
       - Entity Management
@@ -8934,7 +8396,7 @@ paths:
           type: string
         example: people
       responses:        
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -9000,12 +8462,116 @@ paths:
                     type: user
                     updatedAt: '2018-04-18T23:42:11.406Z'
                     deletedAt: '2018-04-18T23:42:11.406Z'
-        403:
-          description: Forbidden
+  /v1/projects/{projectId}/datasets/{name}/entities.geojson:
+    get:
+      tags:
+      - Entity Management
+      summary: Entities Geodata
+      description: |-
+        This endpoint returns the geometry-interpretable value of the `geometry` attribute of Entities of an entity dataset, in [GeoJSON](https://geojson.org) format.
+        No particular ordering is implied.
+        
+        ⚠️ The specifics of this endpoint are likely to change in future releases, and the parameters this endpoint takes are not all documented.
+        Its current behaviour should not be depended upon.
+        Use cases for this API can be discussed on [the forum](https://forum.getodk.org/).
+      operationId: Entities Geodata
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "10"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      responses:
+        "200":
+          description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error403'
+                description: |
+                  Value of the `geometry` attribute (if geometry-interpretable) of Entities of an entity dataset, in [GeoJSON](https://geojson.org) format.
+
+                  Each entity is represented as a GeoJSON feature.
+                type: object
+              example:
+                {
+                  "type": "FeatureCollection",
+                  "features": [
+                    {
+                      "type": "Feature",
+                      "id": "06f1b19a-a14e-4916-b850-b5a5155ea4b7",
+                      "properties": null,
+                      "geometry": {
+                        "type": "Point",
+                        "coordinates": [27.98833, 86.92528, 8848]
+                      }
+                    },
+                    {
+                      "type": "Feature",
+                      "id": "b4677e0a-8731-4b75-b8df-8e4337ff9b5e",
+                      "properties": null,
+                      "geometry": {
+                        "type": "Point",
+                        "coordinates": [11.3733, 142.5917, -10984]
+                      }
+                    }
+                  ]
+                }
+
+  /v1/projects/{projectId}/datasets/{name}/entities/creators:
+    get:
+      tags:
+      - Entity Management
+      summary: Entities Creators
+      description: |-
+        This endpoint returns a list of all Actors who have created Entities in the Dataset, sorted by display name.
+      operationId: Entities Creators
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      responses:        
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                description: List of Actors who created Entities
+                items:
+                  $ref: '#/components/schemas/Actor'
+              example:
+              - id: 115
+                type: user
+                displayName: Alice Johnson
+                createdAt: '2018-04-18T23:19:14.802Z'
+                updatedAt: '2018-04-18T23:42:11.406Z'
+                deletedAt: null
+              - id: 23
+                type: user
+                displayName: Bob Smith
+                createdAt: '2018-03-15T15:30:22.150Z'
+                updatedAt: '2018-03-15T15:30:22.150Z'
+                deletedAt: null
     post:
       tags:
       - Entity Management
@@ -9081,7 +8647,7 @@ paths:
                 name: my_dataset.csv
                 size: 100
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -9116,13 +8682,7 @@ paths:
             application/json; bulk:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-  /projects/{projectId}/datasets/{name}/entities/{uuid}:
+  /v1/projects/{projectId}/datasets/{name}/entities/{uuid}:
     get:
       tags:
       - Entity Management
@@ -9166,7 +8726,7 @@ paths:
           type: string
         example: 54a405a0-53ce-4748-9788-d23a30cc3afa
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -9245,12 +8805,6 @@ paths:
                     type: user
                     updatedAt: '2018-04-18T23:42:11.406Z'
                     deletedAt: '2018-04-18T23:42:11.406Z'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
     patch:
       tags:
       - Entity Management
@@ -9326,7 +8880,7 @@ paths:
                 firstName: John
                 age: '88'
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -9358,12 +8912,6 @@ paths:
                     firstName: John
                     age: '88'
                     label: John (88)
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
       x-codegen-request-body-name: body
     delete:
       tags:
@@ -9396,20 +8944,13 @@ paths:
           type: string
         example: 54a405a0-53ce-4748-9788-d23a30cc3afa
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-    
-  /projects/{projectId}/datasets/{name}/entities/{uuid}/restore:
+  /v1/projects/{projectId}/datasets/{name}/entities/{uuid}/restore:
     post:
       tags:
       - Entity Management
@@ -9439,25 +8980,19 @@ paths:
           type: string
         example: 54a405a0-53ce-4748-9788-d23a30cc3afa
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        404:
+        "404":
           description: Not Found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error404'
-  /projects/{projectId}/datasets/{name}/entities/{uuid}/versions:
+  /v1/projects/{projectId}/datasets/{name}/entities/{uuid}/versions:
     get:
       tags:
       - Entity Management
@@ -9498,7 +9033,7 @@ paths:
           type: boolean
         example: true
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -9572,13 +9107,7 @@ paths:
                     type: user
                     updatedAt: '2018-04-18T23:42:11.406Z'
                     deletedAt: '2018-04-18T23:42:11.406Z'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-  /projects/{projectId}/datasets/{name}/entities/{uuid}/diffs:
+  /v1/projects/{projectId}/datasets/{name}/entities/{uuid}/diffs:
     get:
       tags:
       - Entity Management
@@ -9612,7 +9141,7 @@ paths:
           type: string
         example: 54a405a0-53ce-4748-9788-d23a30cc3afa
       responses:
-        200:
+        "200":
           description: + Response 200
           content:
             application/json:
@@ -9636,13 +9165,7 @@ paths:
                 - new: Robert Doe
                   old: Doe Doe
                   propertyName: label
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-  /projects/{projectId}/datasets/{name}/entities/{uuid}/audits:
+  /v1/projects/{projectId}/datasets/{name}/entities/{uuid}/audits:
     get:
       tags:
       - Entity Management
@@ -9673,7 +9196,7 @@ paths:
           type: string
         example: 54a405a0-53ce-4748-9788-d23a30cc3afa
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -9686,12 +9209,170 @@ paths:
                 action: entity.create
                 acteeId: 85cb9aff-005e-4edd-9739-dc9c1a829c44
                 loggedAt: 2018-04-18T23:19:14.802Z
-        403:
-          description: Forbidden
+  /v1/projects/{projectId}/datasets/{name}/entities/{uuid}/geojson:
+    get:
+      tags:
+      - Entity Management
+      summary: Entity GeoJSON representation
+      description: Returns the GeoJSON representation of an Entity's `geometry` attribute, if available.
+      operationId: Entity GeoJSON representation
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      - name: uuid
+        in: path
+        description: UUID of the Entity
+        required: true
+        schema:
+          type: string
+        example: 54a405a0-53ce-4748-9788-d23a30cc3afa
+      responses:
+        "200":
+          description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error403'             
+                description: GeoJSON FeatureCollection, with one Feature.
+                type: object
+              example:
+                {
+                  "type": "FeatureCollection",
+                  "features": [
+                    {
+                      "type": "Feature",
+                      "id": "54a405a0-53ce-4748-9788-d23a30cc3afa",
+                      "properties": null,
+                      "geometry": {
+                        "type": "Point",
+                        "coordinates": [1.087337169764714, 40.007726575882074, 44.93365478515625]
+                      }
+                    }
+                  ]
+                }
+  /v1/projects/{projectId}/datasets/{name}/entities/bulk-delete:
+    post:
+      tags:
+      - Entity Management
+      summary: Bulk Deleting Entities
+      description: |-
+        Use this API to delete multiple Entities at once. This endpoint accepts an array of Entity UUIDs and performs soft-deletion on all of them.
+      operationId: Bulk Deleting Entities
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: string
+                  description: Array of Entity UUIDs to delete
+              required:
+                - ids
+            example:
+              ids: ["12345678-1234-4123-8234-123456789abc", "12345678-1234-4123-8234-123456789aaa"]
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+  /v1/projects/{projectId}/datasets/{name}/entities/bulk-restore:
+    post:
+      tags:
+      - Entity Management
+      summary: Bulk Restoring Entities
+      description: |-
+        Use this API to restore multiple deleted Entities at once. This endpoint accepts an array of Entity UUIDs and restores all of them that were previously deleted.
+      operationId: Bulk Restoring Entities
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: string
+                  description: Array of Entity UUIDs to restore
+              required:
+                - ids
+            example:
+              ids: ["12345678-1234-4123-8234-123456789abc", "12345678-1234-4123-8234-123456789aaa"]
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
   /v1/projects/{projectId}/formList:
     get:
       tags:
@@ -9737,7 +9418,7 @@ paths:
           type: string
         example: "1.0"
       responses:
-        200:
+        "200":
           description: OK
           headers:
             X-OpenRosa-Version:
@@ -9811,7 +9492,7 @@ paths:
           type: string
         example: "1.0"
       responses:
-        201:
+        "201":
           description: Created
           headers:
             X-OpenRosa-Version:
@@ -9823,7 +9504,7 @@ paths:
                 <OpenRosaResponse xmlns="http://openrosa.org/http/response" items="0">
                   <message nature="">full submission upload was successful!</message>
                 </OpenRosaResponse>
-        400:
+        "400":
           description: 'This is one of several possible `400` failures the API might
             return:'
           headers:
@@ -9836,19 +9517,7 @@ paths:
                 <OpenRosaResponse xmlns="http://openrosa.org/http/response" items="0">
                   <message nature="error">A resource already exists with a attachment file name of attachment1.jpg.</message>
                 </OpenRosaResponse>
-        403:
-          description: Forbidden
-          headers:
-            X-OpenRosa-Version:
-              schema:
-                type: string
-          content:
-            text/xml:
-              example: |
-                <OpenRosaResponse xmlns="http://openrosa.org/http/response" items="0">
-                  <message nature="error">The authenticated actor does not have rights to perform that action.</message>
-                </OpenRosaResponse>
-        409:
+        "409":
           description: Conflict
           headers:
             X-OpenRosa-Version:
@@ -9906,7 +9575,7 @@ paths:
           type: string
         example: "1.0"
       responses:
-        200:
+        "200":
           description: OK
           headers:
             X-OpenRosa-Version:
@@ -9934,19 +9603,7 @@ paths:
                     <integrityUrl>https://your.odk.server/v1/projects/7/datasets/people/integrity</integrityUrl>
                   </mediaFile>
                 </manifest>
-        403:
-          description: Forbidden
-          headers:
-            X-OpenRosa-Version:
-              schema:
-                type: string
-          content:
-            text/xml:
-              example: |
-                <OpenRosaResponse xmlns="http://openrosa.org/http/response" items="0">
-                  <message nature="error">The authenticated actor does not have rights to perform that action.</message>
-                </OpenRosaResponse>
-  /v1/projects/{projectId}/datasets/{name}/integrity?id={UUIDs}:
+  /v1/projects/{projectId}/datasets/{name}/integrity:
     get:
       tags:
       - OpenRosa Endpoints
@@ -9957,7 +9614,7 @@ paths:
         This is the fully standards-compliant implementation of the Entities Integrity API as described in [OpenRosa spec proposal: support offline Entities](https://forum.getodk.org/t/openrosa-spec-proposal-support-offline-entities/48052).
 
         This returns the `deleted` flag of the Entities requested through `id` query parameter. If no `id` is provided then all Entities are return.
-      operationId: OpenRosa Form Manifest API
+      operationId: OpenRosa Dataset Integrity API
       parameters:
       - name: projectId
         in: path
@@ -9987,7 +9644,7 @@ paths:
           type: string
         example: "1.0"
       responses:
-        200:
+        "200":
           description: OK
           headers:
             X-OpenRosa-Version:
@@ -10007,18 +9664,6 @@ paths:
                     </entity>
                   </entities>
                 </data>
-        403:
-          description: Forbidden
-          headers:
-            X-OpenRosa-Version:
-              schema:
-                type: string
-          content:
-            text/xml:
-              example: |
-                <OpenRosaResponse xmlns="http://openrosa.org/http/response" items="0">
-                  <message nature="error">The authenticated actor does not have rights to perform that action.</message>
-                </OpenRosaResponse>
   /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/formList:
     get:
       tags:
@@ -10056,7 +9701,7 @@ paths:
           type: string
         example: "1.0"
       responses:
-        200:
+        "200":
           description: OK
           headers:
             X-OpenRosa-Version:
@@ -10113,7 +9758,7 @@ paths:
           type: string
         example: "1.0"
       responses:
-        201:
+        "201":
           description: Created
           headers:
             X-OpenRosa-Version:
@@ -10125,7 +9770,7 @@ paths:
                 <OpenRosaResponse xmlns="http://openrosa.org/http/response" items="0">
                   <message nature="">full submission upload was successful!</message>
                 </OpenRosaResponse>
-        400:
+        "400":
           description: 'This is one of several possible `400` failures the API might
             return:'
           headers:
@@ -10138,19 +9783,7 @@ paths:
                 <OpenRosaResponse xmlns="http://openrosa.org/http/response" items="0">
                   <message nature="error">A resource already exists with a attachment file name of attachment1.jpg.</message>
                 </OpenRosaResponse>
-        403:
-          description: Forbidden
-          headers:
-            X-OpenRosa-Version:
-              schema:
-                type: string
-          content:
-            text/xml:
-              example: |
-                <OpenRosaResponse xmlns="http://openrosa.org/http/response" items="0">
-                  <message nature="error">The authenticated actor does not have rights to perform that action.</message>
-                </OpenRosaResponse>
-        409:
+        "409":
           description: Conflict
           headers:
             X-OpenRosa-Version:
@@ -10198,7 +9831,7 @@ paths:
           type: string
         example: "1.0"
       responses:
-        200:
+        "200":
           description: OK
           headers:
             X-OpenRosa-Version:
@@ -10215,18 +9848,6 @@ paths:
                     <downloadUrl>https://your.odk.server/v1/test/IeksRu1CNZs7!qjAot2T17dPzkrw9B4iTtpj7OoIJBmXvnHM8z8Ka4QP/projects/7/forms/basic/draft/attachments/question.jpg</downloadUrl>
                   </mediaFile>
                 </manifest>
-        403:
-          description: Forbidden
-          headers:
-            X-OpenRosa-Version:
-              schema:
-                type: string
-          content:
-            text/xml:
-              example: |
-                <OpenRosaResponse xmlns="http://openrosa.org/http/response" items="0">
-                  <message nature="error">The authenticated actor does not have rights to perform that action.</message>
-                </OpenRosaResponse>
   /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/attachments/{filename}:
     get:
       tags:
@@ -10264,7 +9885,7 @@ paths:
           type: string
         example: file1.jpg
       responses:
-        200:
+        "200":
           description: OK
           headers:
             Content-Disposition:
@@ -10274,22 +9895,6 @@ paths:
             '{the MIME type of the attachment file itself}':
               example: |
                 (binary data)
-        403:
-          description: Forbidden
-          content:
-            '{the MIME type of the attachment file itself}':
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/projects/{projectId}/forms/{xmlFormId}.svc:
     get:
       tags:
@@ -10319,7 +9924,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json; charset=utf-8; odata.metadata=minimal:
@@ -10391,23 +9996,7 @@ paths:
                   - kind: EntitySet
                     name: Submissions.children.child
                     url: Submissions.children.child
-        403:
-          description: Forbidden
-          content:
-            application/json; charset=utf-8; odata.metadata=minimal:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        406:
+        "406":
           description: Not Acceptable
           content:
             application/json; charset=utf-8; odata.metadata=minimal:
@@ -10471,7 +10060,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/xml:
@@ -10530,23 +10119,7 @@ paths:
                       </Schema>
                     </edmx:DataServices>
                   </edmx:Edmx>
-        403:
-          description: Forbidden
-          content:
-            application/xml:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        406:
+        "406":
           description: Not Acceptable
           content:
             application/xml:
@@ -10591,6 +10164,7 @@ paths:
 
         | Submission Metadata                      | REST API Name | OData Field Name          |
         | ---------------------------------------- | ------------- | ------------------------- |
+        | Submission ID                            | `instanceId`  | `__id`                    |
         | Submitter Actor ID                       | `submitterId` | `__system/submitterId`    |
         | Submission Timestamp                     | `createdAt`   | `__system/submissionDate` |
         | Submission Update Timestamp              | `updatedAt`   | `__system/updatedAt`      |
@@ -10704,7 +10278,7 @@ paths:
         schema:
           type: string
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -10760,13 +10334,7 @@ paths:
                   meta:
                     instanceID: uuid:297000fd-8eb2-4232-8863-d25f82521b87
                   name: Alice
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        406:
+        "406":
           description: Not Acceptable
           content:
             application/json:
@@ -10783,7 +10351,7 @@ paths:
                 code: "406.1"
                 message: 'Requested format not acceptable; this resource allows: (application/json,
                   json).'
-        501:
+        "501":
           description: Not Implemented
           content:
             application/json:
@@ -10847,7 +10415,7 @@ paths:
           type: string
         example: file1.jpg
       responses:
-        200:
+        "200":
           description: OK
           content:
             text/html:
@@ -10879,7 +10447,7 @@ paths:
           type: string
         example: trees
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json; charset=utf-8; odata.metadata=minimal:
@@ -10951,13 +10519,7 @@ paths:
                   - kind: EntitySet
                     name: Entities.children.child
                     url: Entities.children.child
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        406:
+        "406":
           description: Not Acceptable
           content:
             application/json:
@@ -11000,7 +10562,7 @@ paths:
           type: string
         example: people
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/xml:
@@ -11077,23 +10639,7 @@ paths:
                         </Schema>
                     </edmx:DataServices>
                 </edmx:Edmx>
-        403:
-          description: Forbidden
-          content:
-            application/xml:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        406:
+        "406":
           description: Not Acceptable
           content:
             application/xml:
@@ -11136,6 +10682,7 @@ paths:
 
         | Entity Metadata         | OData Field Name     |
         | ------------------------| -------------------- |
+        | Entity UUID             | `__id`               |
         | Entity Creator Actor ID | `__system/creatorId` |
         | Entity Timestamp        | `__system/createdAt` |
         | Entity Update Timestamp | `__system/updatedAt` |
@@ -11223,7 +10770,7 @@ paths:
         schema:
           type: string
       responses:
-        200:
+        "200":
           description: Ok
           content:
             application/json:
@@ -11260,13 +10807,7 @@ paths:
                   geometry: 47.722581 18.562111 0 0,
                   species: mora,
                   circumference_cm: 345            
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        406:
+        "406":
           description: Not Acceptable
           content:
             application/json:
@@ -11283,7 +10824,7 @@ paths:
                 code: "406.1"
                 message: 'Requested format not acceptable; this resource allows: (application/json,
                   json).'
-        501:
+        "501":
           description: Not Implemented
           content:
             application/json:
@@ -11325,7 +10866,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json; charset=utf-8; odata.metadata=minimal:
@@ -11397,23 +10938,7 @@ paths:
                   - kind: EntitySet
                     name: Submissions.children.child
                     url: Submissions.children.child
-        403:
-          description: Forbidden
-          content:
-            application/json; charset=utf-8; odata.metadata=minimal:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        406:
+        "406":
           description: Not Acceptable
           content:
             application/json; charset=utf-8; odata.metadata=minimal:
@@ -11465,7 +10990,7 @@ paths:
           type: string
         example: simple
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/xml:
@@ -11524,23 +11049,7 @@ paths:
                       </Schema>
                     </edmx:DataServices>
                   </edmx:Edmx>
-        403:
-          description: Forbidden
-          content:
-            application/xml:
-              schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        406:
+        "406":
           description: Not Acceptable
           content:
             application/xml:
@@ -11651,7 +11160,7 @@ paths:
           type: string
         example: __id, age, name, meta/instanceID
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -11707,13 +11216,7 @@ paths:
                   meta:
                     instanceID: uuid:297000fd-8eb2-4232-8863-d25f82521b87
                   name: Alice
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        406:
+        "406":
           description: Not Acceptable
           content:
             application/json:
@@ -11730,7 +11233,7 @@ paths:
                 code: "406.1"
                 message: 'Requested format not acceptable; this resource allows: (application/json,
                   json).'
-        501:
+        "501":
           description: Not Implemented
           content:
             application/json:
@@ -11759,7 +11262,7 @@ paths:
         will also return the provided work email address and organization name.
       operationId: Getting the current configuration
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -11802,13 +11305,7 @@ paths:
                   enabled: true
                   email: my.email.address@getodk.org
                   organization: Organization Name
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
-        404:
+        "404":
           description: Not Found
           content:
             application/json:
@@ -11860,7 +11357,7 @@ paths:
                 organization: Organization Name
         required: false
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -11903,12 +11400,6 @@ paths:
                   enabled: true
                   email: my.email.address@getodk.org
                   organization: Organization Name
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
       x-codegen-request-body-name: body
     delete:
       tags:
@@ -11918,18 +11409,12 @@ paths:
         once again see a message on the the Central administration website.
       operationId: Unsetting the current configuration
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/analytics/preview:
     get:
       tags:
@@ -11941,15 +11426,13 @@ paths:
         Usage Report; that is handled internally as a scheduled Central task.
       operationId: Getting the Usage Report preview
       responses:
-        200:
+        "200":
           description: OK
-          content: {}
-        403:
-          description: Forbidden
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error403'
+                type: object
+                example:
   /v1/audits:
     get:
       tags:
@@ -11998,7 +11481,7 @@ paths:
           type: number
         example: "200"
       responses:
-        200:
+        "200":
           description: OK
           content:
             application/json:
@@ -12032,7 +11515,7 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
-        400:
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -12041,12 +11524,6 @@ paths:
               example:
                 code: "400"
                 message: Could not parse the given data (2 chars) as json.
-        403:
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error403'
   /v1/backup:
     post:
       tags:
@@ -12070,20 +11547,18 @@ paths:
                 passphrase: my-password
         required: false
       responses:
-        200:
+        "200":
           description: OK
           headers:
             Content-Disposition:
               schema:
                 type: string
-          content: {}
-        403:
-          description: Forbidden
           content:
-            application/json:
+            application/zip:
               schema:
-                $ref: '#/components/schemas/Error403'
-      x-codegen-request-body-name: body
+                type: string
+                format: binary
+                example: (binary data)
 components:
   schemas:
     Actor:
@@ -12132,6 +11607,12 @@ components:
               type: string
               description: The email address of the user
               example:
+            lastLoginAt:
+              type: string
+              format: date-time
+              nullable: true
+              description: The timestamp of when the user last logged in. Will be null if the user has never logged in.
+              example: "2025-01-15T10:30:00.000Z"
     AppUser:
       allOf: 
         - $ref: '#/components/schemas/Actor'
@@ -12455,10 +11936,14 @@ components:
               example: {event: {}, submission: {}}
             baseDiff:
               type: array
+              items:
+                type: string
               description: List of properties that are different between this version and its base version. Includes the label if it differs between the two versions.
               example: ['name', 'age']
             serverDiff:
               type: array
+              items:
+                type: string
               description: List of properties that are different between this version and the previous version on the server. Includes the label if it differs between the two versions.
               example: ['name', 'age']
             conflict:
