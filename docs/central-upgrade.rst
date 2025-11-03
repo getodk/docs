@@ -113,6 +113,8 @@ After restarting the server, you can watch logs to get a sense of progress:
 
   $ docker compose logs -f
 
+Starting in this version, you can consider :ref:`configuring session length <central-configure-session-length>`.
+
 .. _central-upgrade-2024.3:
 
 Upgrading to Central v2024.3
