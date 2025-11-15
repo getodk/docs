@@ -15,7 +15,7 @@ To upgrade, start by reviewing upgrade notes for all versions between your curre
 Upgrade notes
 -------------
 
-* :ref:`Central v2025.3 <central-upgrade-2025.3>`: plan ahead for longer than usual downtime during upgrade
+* :ref:`Central v2025.3 <central-upgrade-2025.3>`: plan for longer than usual downtime during upgrade
 * Central v2025.1, v2025.2: no upgrade notes
 * :ref:`Central v2024.3 <central-upgrade-2024.3>`: update Entity-related forms for offline Entities
 * :ref:`Central v2024.2 <central-upgrade-2024.2>`: changes to ``.env`` and SSL no longer require rebuilding, consider using S3 storage
@@ -23,7 +23,7 @@ Upgrade notes
 * :ref:`Central v2023.4 <central-upgrade-2023.4>`: improve email delivery
 * :ref:`Central v2023.3 <central-upgrade-2023.3>`: clean up old database if needed
 * :ref:`Central v2023.2 <central-upgrade-2023.2>`: upgrade Docker, PostgreSQL, and move configuration to ``.env``
-* :ref:`Central v2023.1 <central-upgrade-2023.1>`: plan ahead for longer than usual downtime during upgrade
+* :ref:`Central v2023.1 <central-upgrade-2023.1>`: plan for longer than usual downtime during upgrade
 * :ref:`Central v2022.3 <central-upgrade-2022.3>`: update your NGINX configuration if you have disabled or customized Sentry
 * :ref:`Central v1.5 <central-upgrade-1.5>`: fix errors with ``git pull`` if you have disabled or customized Sentry
 * :ref:`Central v1.4 <central-upgrade-1.4>`: optionally add memory if you have tens of thousands of submissions
@@ -111,7 +111,7 @@ After restarting the server, you can watch logs to get a sense of progress:
 
 .. code-block:: bash
 
-  $ docker compose logs -f
+  $ docker compose logs -f service
 
 Starting in this version, you can consider :ref:`configuring session length <central-configure-session-length>`.
 
