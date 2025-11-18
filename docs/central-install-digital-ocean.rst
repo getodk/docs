@@ -953,7 +953,7 @@ This information is only visible to the development team and should never contai
 
    .. code-block:: bash
 
-     $ nano files/service/config.json.template
+     $ nano files/nginx/odk.conf.template
 
    .. code-block:: bash
 
