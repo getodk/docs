@@ -597,9 +597,9 @@ If you are using your own Sentry instance, then you must complete one additional
 
 .. code-block:: bash
 
- "orgSubdomain": "SENTRY_ORGANIZATION_SUBDOMAIN",
+ "orgSubdomain": "SENTRY_ORG_SUBDOMAIN",
 
-Replace ``SENTRY_ORGANIZATION_SUBDOMAIN`` with your `Sentry organization subdomain <https://forum.sentry.io/t/organization-subdomains-in-dsns/9360>`_.
+Replace ``SENTRY_ORG_SUBDOMAIN`` with your `Sentry organization subdomain <https://forum.sentry.io/t/organization-subdomains-in-dsns/9360>`_.
 
 .. _central-upgrade-1.4:
 

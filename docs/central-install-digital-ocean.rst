@@ -972,7 +972,7 @@ If you wish to use your own Sentry instance to receive your own errors, take the
 
 #. Create an account on `Sentry <https://sentry.io>`_, and create a new ``nodejs`` project.
 #. The new project will generate a ``DSN`` in this format: ``https://SENTRY_KEY@SENTRY_ORG_SUBDOMAIN.ingest.sentry.io/SENTRY_PROJECT``.
-#. In ``.env``, set ``SENTRY_SUBDOMAIN``, ``SENTRY_KEY`` and ``SENTRY_PROJECT`` to the values from step 2.
+#. In ``.env``, set ``SENTRY_ORG_SUBDOMAIN``, ``SENTRY_KEY`` and ``SENTRY_PROJECT`` to the values from step 2.
 
    .. code-block:: bash
 
