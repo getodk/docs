@@ -27,16 +27,14 @@ Starting in Central v2025.1, you can opt individual forms into using `ODK Web Fo
 * You want to provide feedback and ideas `on the forum <https://forum.getodk.org/tag/odk-webforms>`_.
 * You have a form that doesn't work well with Enketo. For example, this could be because of the presentation of certain question types such as ``geopoint``, performance issues, or bugs in repeats.
 
-If you try your form draft, make some test submissions, and find that all of the functionality that you need is supported well, Web Forms can be used to collect real data.
-
 To opt into ODK Web Forms, go to the :guilabel:`Settings` tab for a specific form. In the :guilabel:`Web Forms` section, select the :guilabel:`ODK Web Forms` option, read the description, and confirm that you want to opt in.
+
+If you make some test submission using Web Forms and find that all of the functionality that you need is supported well, Web Forms can be used to collect real data.
 
 You can see what functionality is currently supported `on Github <https://github.com/getodk/web-forms?tab=readme-ov-file#feature-matrix>`_. In particular, please note that the following sometimes subtle features are not yet supported:
 
 * :ref:`Dynamic defaults <dynamic-defaults>` and the XLSForm ``trigger`` column
 * :ref:`Metadata questions <metadata>`
-* Entity creation or update
-* References to form fields in translated labels and hints (this works for single-language forms)
 
 You can change a form's setting between Enketo and Web Forms at any time. Any form links that users already have will continue to work and will reflect the setting on the server at the time that the user loads the form link. Existing submissions are not affected by switching between web forms libraries.
 
