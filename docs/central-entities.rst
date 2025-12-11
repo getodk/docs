@@ -122,16 +122,16 @@ Creating Entity Lists
 
 There are two ways to create an Entity List: by Form definition, or by creating it directly in Central.
 
-If you have Forms already authored which reference your planned Entity Lists, just upload and publish those Forms and Central will offer to create everything automatically. If you are still planning your project, or if you have a bulk data file you want to upload into your new Entity List, it is often easier to just add them directly in Central.
+If you have Forms already authored which reference your planned Entity Lists, you can upload and publish those Forms and Central will create the lists automatically. If you are still planning your project, or if you have a bulk data file you want to upload into your new Entity List, it is often easier to add them directly in Central.
 
 .. _central-entities-creating-direct:
 
 Creating an Entity List in the Central Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To create an Entity List directly in the Central web interface, first navigate to the Project which should contain this Entity List. Open the :guilabel:`Entities` tab. At the top of this page, you will see a :guilabel:`New` button you can click to create a new Entity List. You will only be asked for its name. Because Entity List names are used as identifiers throughout ODK, there are some restrictions on what you can choose as the name. If Central keeps rejecting your name, it is best to stick with basic letters and numbers.
+To create an Entity List directly in the Central web interface, first navigate to the Project which should contain this Entity List. Open the :guilabel:`Entity Lists` tab. At the top of this page, you will see a :guilabel:`New` button you can click to create a new Entity List. You will only be asked for its name. Because Entity List names are used as identifiers throughout ODK, there are some restrictions on what you can choose as the name. If Central keeps rejecting your name, it is best to stick with basic letters and numbers.
 
-Once your Entity List is created, you can optionally also define the properties it should have. You can do this on the Entity List Properties page by clicking on the :guilabel:`New` button in the Entity Properties section.
+Once your Entity List is created, you can define the properties it should have so that you can :ref:`upload Entities from CSV <central-entities-upload>` to populate your new list. To add a new property, click on the :guilabel:`New` button on the :guilabel:`Properties` tab.
 
 .. _central_entities_creating-definition:
 
@@ -383,20 +383,16 @@ See a sample form `here <https://docs.google.com/spreadsheets/d/1R3Ja6hOjjntE42H
 Managing Entities
 -------------------
 
-To browse all Entity Lists in a Project, go to the :guilabel:`Entities` tab within the Project. You will see a list of all Entity Lists that have been created by Forms in this Project. Click on any Entity List to see basic details about it.
+To browse all Entity Lists in a Project, go to the :guilabel:`Entity Lists` tab. You'll see all Entity Lists created by Forms in that Project. Click any Entity List to view its Entities, properties, and settings.
 
-   .. image:: /img/central-entities/entity-landing.png
-
-On this page, you can see how this Entity List relates to other incoming data in your Project: which Forms contribute to the Entity List, which ones read data from it, and which fields are being read or written. To see the actual data in your Entity List, click on the :guilabel:`Data` tab at the top.
-
-On the Settings page, you can select whether App Users and Data Collectors receive access to all Entities, or only the ones they create.
+   .. image:: /img/central-entities/entity-lists.png
 
 .. _central-entities-data:
 
 Managing Entity Data
 --------------------
 
-You can preview or download Entity data from Central from the :guilabel:`Data` tab on the Entity List's page.
+From the :guilabel:`Entities`` tab, you can preview or download your Entity data.
 
    .. image:: /img/central-entities/entity-table.png
 
@@ -409,6 +405,12 @@ To see, edit, and manage additional details about a particular Entity, hover ove
 By default, you see all Entities in the Entity List. If an Entity has a :ref:`conflict warning <central-entities-update-conflicts>` attached to it, you will see an alert in that table row. You can filter down to only Entities that do or don't have conflict warnings using the filter above the table. On the row of any Entity with a conflict warning, you can click on the red :guilabel:`Review Parallel Updates` button to see more information about the warning, make any edits needed to correct problems, and dismiss the warning if desired. You can also click through to the Entity Detail page to do these things with a little more information.
 
 If you're looking for a specific Entity, you can search for a specific property value, label or creator.
+
+You can also view your Entity data on a map by switching to the Map view using the toggle in the upper-right corner. Each Entity is plotted based on its ``geometry`` property, if one is defined.
+
+.. image:: /img/central-entities/entity-map.png
+
+When many Entities appear close together, they are automatically clustered to make the map easier to read. As you zoom in, clusters break apart to show individual Entities. The number shown in each cluster represents how many Entities it contains.
 
 .. _central-entities-detail:
 
@@ -464,6 +466,29 @@ You can also delete multiple Entities at once directly from the table.
 
 Once an Entity has been deleted, it will remain in the Trash for 30 days before being permanently deleted. Only users with permission to manage Entity Lists can delete Entities.
 
+.. _central-entities-properties:
+
+Managing Entity properties
+----------------------------
+
+.. image:: /mg/central-entities/entity-properties.*
+
+On the :guilabel:`Properties` tab, you can see how this Entity List relates to other incoming data in your Project: which Forms contribute to the Entity List, which ones read data from it, and which fields are being read or written, as well as a list of Properties and the forms that update it.
+
+.. _central-entities-settings:
+
+Entity List Settings
+------------------------------
+
+On the :guilabel:`Settings` tab, you can choose whether Entities are created immediately when they are first received by Central, or if Central should wait until the Submission is approved before creating any Entities from it.
+
+   .. image:: /img/central-entities/entity-settings.png
+
+Note that only one of these two behaviors can be chosen at a time. If you change the setting from "on approval" to "when received" but you still have unapproved Submissions, Central will not ever be told to make Entities out of these Submissions. If this is the case for you and you try to make this setting change, you will see a special message and you will have the option to convert all pending (not approved or rejected) Submissions into Entities right away.
+
+Select either option and you should see a confirmation the setting has changed.
+
+You can also select whether App Users and Data Collectors receive access to all Entities, or only the ones they create.
 
 .. _central-entities-update-conflicts:
 
@@ -525,20 +550,4 @@ If an Entity is created and then updated offline, there is the possibility that 
 Information about out-of-order submission processing is shown on each Submission's :ref:`detail page <central-submissions-details>`.
 
 When multiple different users can go offline and each create several offline updates to the same Entity, conflicts can be hard to understand. If you see conflict situations that you are unable to understand from the information shown in Central, please post to `the forum <https://forum.getodk.org/>`_.
-
-.. _central-entities-settings:
-
-Changing Entity List Settings
-------------------------------
-
-Right now, only one setting is available for Entity Lists in Central. To reach it, click on the :guilabel:`Settings` tab on the Entity List page.
-
-   .. image:: /img/central-entities/entity-settings.png
-
-Here, you can choose whether Entities are created immediately when they are first received by Central, or if Central should wait until the Submission is approved before creating any Entities from it.
-
-Note that only one of these two behaviors can be chosen at a time. If you change the setting from "on approval" to "when received" but you still have unapproved Submissions, Central will not ever be told to make Entities out of these Submissions. If this is the case for you and you try to make this setting change, you will see a special message and you will have the option to convert all pending (not approved or rejected) Submissions into Entities right away.
-
-Select either option and you should see a confirmation the setting has changed.
-
 
