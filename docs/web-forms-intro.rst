@@ -49,7 +49,7 @@ b-forms?tab=readme-ov-file#feature-matrix>`_. While most supported functionality
 Geopoint
 ~~~~~~~~
 
-The :ref:`geopoint question type <geopoint-widget>` without appearance captures the current location of the device. Currently, this is the only location experience provided by Web Forms, including for edits. In the future, there will be a map-based interface accessible by setting different ``appearance`` values. Additionally, it will be possible to use a map to view and edit a location captured by the default geopoint question type.
+The :ref:`geopoint question type <geopoint-widget>` without appearance captures the current location of the device.
 
 When a form includes a geopoint question, users of the form will see a :guilabel:`Get location` button. When a user taps that button, a dialog will appear, showing the accuracy of the currently-available location or no value if location permissions are not granted yet. If location permissions are not granted yet, the user will also be asked to grant location permissions by their browser.
 
