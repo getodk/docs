@@ -392,7 +392,7 @@ To browse all Entity Lists in a Project, go to the :guilabel:`Entity Lists` tab.
 Managing Entity Data
 --------------------
 
-From the :guilabel:`Entities`` tab, you can preview or download your Entity data.
+From the :guilabel:`Entities` tab, you can preview or download your Entity data.
 
    .. image:: /img/central-entities/entity-table.png
 
