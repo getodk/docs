@@ -15,7 +15,7 @@ To upgrade, start by reviewing upgrade notes for all versions between your curre
 Upgrade notes
 -------------
 
-* Central v2025.4: no upgrade notes
+* :ref:`Central v2025.4 <central-upgrade-2025.4>`: perform database maintenance
 * :ref:`Central v2025.3 <central-upgrade-2025.3>`: plan for longer than usual downtime during upgrade
 * Central v2025.1, v2025.2: no upgrade notes
 * :ref:`Central v2024.3 <central-upgrade-2024.3>`: update Entity-related forms for offline Entities
@@ -100,6 +100,46 @@ You'll be asked to confirm the removal of all dangling images. Agree by typing t
 
 Version-specific upgrade instructions
 --------------------------------------
+
+.. _central-upgrade-2025.4:
+
+Upgrading to Central v2025.4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For those that use the default database setup, this version upgrades the PostgreSQL minor version. A bug in PostgreSQL could have resulted in index corruption so we recommend performing the maintenance outlined below immediately AFTER upgrading and bringing your server back up.
+
+If you don't use the default database setup, verify that you are running the latest PostgreSQL 14 minor version and consider upgrading if not. We recommend running the maintenance outlined below if you upgraded from a version below PostgreSQL 14.11.
+
+The following commands do not cause any user downtime, but they must be run one at a time, starting the next only after the previous one finishes. Depending on the size of your database, each command may take several minutes to complete, and no progress or status messages will be shown while a command is running.
+
+#. Make sure you are in the ``central`` folder, that you have upgraded to Central v2025.4 and that your server is running.
+
+   .. code-block:: bash
+
+     $ cd central
+
+#. Rebuild the index for the ``roles`` table
+
+   .. code-block:: bash
+
+     $ docker exec -it central-postgres14-1 psql -U odk -W odk \
+     $ -c "REINDEX TABLE CONCURRENTLY public.roles"
+
+   Note: the default database password is ``odk`` but you may have set a different one.
+
+#. Rebuild the index for the ``entity_defs`` table (can skip if no one on your server uses Entities)
+
+   .. code-block:: bash
+
+     $ docker exec -it central-postgres14-1 psql -U odk -W odk \
+     $ -c "REINDEX TABLE CONCURRENTLY public.entity_defs"
+
+#. Rebuild the index for the ``audits`` table
+
+   .. code-block:: bash
+
+     $ docker exec -it central-postgres14-1 psql -U odk -W odk \
+     $ -c "REINDEX TABLE CONCURRENTLY public.audits"
 
 .. _central-upgrade-2025.3:
 
