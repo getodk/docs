@@ -900,6 +900,8 @@ tags:
     * `user.update` when User information is updated, like email or password.
     * `user.assignment.create` when a User is assigned to a Server Role.
     * `user.assignment.delete` when a User is unassigned from a Server Role.
+    * `user.preference.update` when a site-wide or project-specific User preference is set or updated.
+    * `user.preference.delete` when a site-wide or project-specific User preference is removed.
     * `user.session.create` when a User logs in.
     * `user.delete` when a User is deleted.
     * `project.create` when a new Project is created.
@@ -929,7 +931,7 @@ tags:
     * `submission.create` when a new Submission is created.
     * `submission.update` when a Submission's metadata is updated.
     * `submission.update.version` when a Submission XML data is updated.
-    * `submission.attachment.update` when a Submission Attachment binary is set or cleared, but _only via the REST API_. Attachments created alongside the submission over the OpenRosa `/submission` API (including submissions from Collect) do not generate audit log entries.
+    * `submission.attachment.update` when a Submission Attachment binary is set or cleared.
     * `submission.delete` when a Submission is soft-deleted.
     * `submission.purge` when soft-deleted Submissions are purged.
     * `submission.restore` when a Submission is restored.
