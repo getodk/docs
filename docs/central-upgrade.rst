@@ -15,6 +15,7 @@ To upgrade, start by reviewing upgrade notes for all versions between your curre
 Upgrade notes
 -------------
 
+* Central v2025.4: no upgrade notes
 * :ref:`Central v2025.3 <central-upgrade-2025.3>`: plan for longer than usual downtime during upgrade
 * Central v2025.1, v2025.2: no upgrade notes
 * :ref:`Central v2024.3 <central-upgrade-2024.3>`: update Entity-related forms for offline Entities
