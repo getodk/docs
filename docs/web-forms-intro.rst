@@ -46,12 +46,22 @@ Question types
 To know which question types are currently supported in Web Forms, see `the Github feature matrix <https://github.com/getodk/we
 b-forms?tab=readme-ov-file#feature-matrix>`_. While most supported functionality is very similar to Collect's, this section describes question types with more complex functionality or that differ from Collect.
 
-Geopoint
+Web Forms currently supports 3 geo question types and appearances:
+
+* :ref:`Geopoint <geopoint-widget>`
+* :ref:`Maps appearance <geopoint-maps>`
+* :ref:`Placement-map appearance <placement-map-widget>`
+
+**Coming soon**
+
+- Geoshape
+- Geotrace
+- Editing all map appearances
+
+Geopoint without appearance
 ~~~~~~~~
 
-The :ref:`geopoint question type <geopoint-widget>` without appearance captures the current location of the device.
-
-When a form includes a geopoint question, users of the form will see a :guilabel:`Get location` button. When a user taps that button, a dialog will appear, showing the accuracy of the currently-available location or no value if location permissions are not granted yet. If location permissions are not granted yet, the user will also be asked to grant location permissions by their browser.
+The default geopoint question allows the user to get the location without a map interface. When a user taps the **Get location** button, a dialog will appear, showing the accuracy of the currently-available location or no value if location permissions are not granted yet. If location permissions are not granted yet, the user will also be asked to grant location permissions by their browser.
 
 .. image:: /img/web-forms/geopoint-permission.*
   :alt: Web Forms location permissions request
@@ -62,10 +72,28 @@ When a form includes a geopoint question, users of the form will see a :guilabel
 
   If a user denies location permissions to a form, that permission will apply for all forms on that server and a user may need to go to browser settings to grant the permission.
 
-Once location permissions are granted to Web Forms, it will start reading location data from available sensors on the device. The current location accuracy will be displayed along with qualitative information about that accuracy to help guide the person filling out the form to get the highest accuracy point possible. Location will continue to update until the user taps the :guilabel:`Save location` button or the accuracy reaches the target accuracy defined by the form, whichever comes first. The target accuracy is the value in the "Location will be saved at N m" message.
+Once location permissions are granted to Web Forms, it will start reading location data from available sensors on the device. The current location accuracy will be displayed along with qualitative information about that accuracy to help guide the person filling out the form to get the highest accuracy point possible. Location will continue to update until the user taps the **Save location** button or the accuracy reaches the target accuracy defined by the form, whichever comes first. The target accuracy is the value in the "Location will be saved at N m" message.
 
 .. image:: /img/web-forms/geopoint-refining-accuracy.*
   :alt: Web forms location-finding dialog
+
+Geopoint with `maps` appearance
+~~~~~~~~
+
+The `maps` appearance allows users to capture their current location while viewing it on a map. After tapping **Get location** and granting permissions, the map automatically zooms to the user’s current location. The user taps **Save point** to save the location. Once saved, the marker turns green to indicate success and the bottom panel displays **Point saved**. The user can remove the saved point and try again if needed.
+
+.. image:: /img/web-forms/geopoint-maps-appearance.*
+  :alt: Web forms geopoint with maps appearance
+
+Geopoint with `placement-map` appearance
+~~~~~~~~
+
+The `placement-map` appearance is similar to `maps`, but also allows the user to manually move the marker. If location permissions are granted, the map zooms to the user’s current location. The user can save the current location or manually place the marker by long-pressing on the map. The marker can be dragged to adjust the position. The user can remove the marker and try again at any time before moving on.
+
+For both `maps` and `placement-map` appearances, location capture stops when the user scrolls away from the question.
+
+.. image:: /img/web-forms/geopoint-placement-map-appearance.*
+  :alt: Web forms geopoint with placement-map appearance
 
 Image
 ~~~~~~~~
