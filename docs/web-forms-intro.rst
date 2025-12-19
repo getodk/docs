@@ -49,8 +49,8 @@ b-forms?tab=readme-ov-file#feature-matrix>`_. While most supported functionality
 Web Forms currently supports 3 geo question types and appearances:
 
 * :ref:`Geopoint <geopoint-widget>`
-* :ref:`Maps appearance <geopoint-with-map-display>`
-* :ref:`Placement-map appearance <geopoint-with-user-selected-location>`
+* :ref:`Maps appearance <geopoint-maps>`
+* :ref:`Placement-map appearance <placement-map-widget>`
 
 **Coming soon**
 
