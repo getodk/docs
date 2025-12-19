@@ -46,17 +46,13 @@ Question types
 To know which question types are currently supported in Web Forms, see `the Github feature matrix <https://github.com/getodk/we
 b-forms?tab=readme-ov-file#feature-matrix>`_. While most supported functionality is very similar to Collect's, this section describes question types with more complex functionality or that differ from Collect.
 
-Web Forms currently supports 3 geo question types and appearances:
+Web Forms currently supports 5 geo question types and appearances:
 
 * :ref:`Geopoint <geopoint-widget>`
 * :ref:`Maps appearance <geopoint-maps>`
 * :ref:`Placement-map appearance <placement-map-widget>`
-
-**Coming soon**
-
-- Geoshape
-- Geotrace
-- Editing all map appearances
+* :ref:`Geoshape <geotrace-widget>`
+* :ref:`Geotrace <geoshape-widget>`
 
 Geopoint without appearance
 ~~~~~~~~
@@ -94,6 +90,30 @@ For both `maps` and `placement-map` appearances, location capture stops when the
 
 .. image:: /img/web-forms/geopoint-placement-map-appearance.*
   :alt: Web forms geopoint with placement-map appearance
+
+Geoshape
+~~~~~~~~
+
+The geoshape question type allows users to capture a polygon area on a map by adding at least three points to form a closed shape.
+
+The status bar shows `No points saved` when having less than 3 points. Long press to add points; the shape closes automatically and autosaves, updating the status bar (e.g., `4 points saved`). The last point is highlighted in a darker tone and it’s larger. Long press to drag and move points.
+
+Select the shape to delete entirely (with confirmation); select a vertex to delete it (no confirmation). Tap off the shape to deselect; tap to reselect with vertices shown. Undo reverts the last change.
+
+.. image:: /img/web-forms/geoshape.*
+  :alt: Web forms geoshape
+
+Geotrace
+~~~~~~~~
+
+The geotrace question type allows users to capture a line on a map by adding at least two points.
+
+The status bar shows `No points saved` when having less than 2 points. Long press to add points; autosaves continuously, updating the status bar (e.g., `3 saved points`). The last point is highlighted in a darker tone and it’s larger. Long press to drag and move points.
+
+Select the trace to delete entirely (with confirmation); select a vertex to delete it (no confirmation). Tap off the line to deselect; tap to reselect with vertices shown. Undo reverts the last change.
+
+.. image:: /img/web-forms/geotrace.*
+  :alt: Web forms geotrace
 
 Image
 ~~~~~~~~
