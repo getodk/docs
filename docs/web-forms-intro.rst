@@ -96,9 +96,9 @@ Geoshape
 
 The geoshape question type allows users to capture a polygon area on a map by adding at least three points to form a closed shape.
 
-The status bar shows `No points saved` when having less than 3 points. Long press to add points; the shape closes automatically and autosaves, updating the status bar (e.g., `4 points saved`). The last point is highlighted in a darker tone and it’s larger. Long press to drag and move points.
+The status bar shows `No points saved` when having fewer than 3 points. Long-press to add points; the shape closes automatically and auto-saves, updating the status bar (e.g., `4 points saved`). The last point is highlighted in a darker tone, and it’s larger. Long-press to drag and move points.
 
-Select the shape to delete entirely (with confirmation); select a vertex to delete it (no confirmation). Tap off the shape to deselect; tap to reselect with vertices shown. Undo reverts the last change.
+Select the shape to delete entirely (with confirmation); select a vertex to delete it (no confirmation). Tap off the shape to deselect. Undo reverts the last change.
 
 .. image:: /img/web-forms/geoshape.*
   :alt: Web forms geoshape
@@ -108,9 +108,9 @@ Geotrace
 
 The geotrace question type allows users to capture a line on a map by adding at least two points.
 
-The status bar shows `No points saved` when having less than 2 points. Long press to add points; autosaves continuously, updating the status bar (e.g., `3 saved points`). The last point is highlighted in a darker tone and it’s larger. Long press to drag and move points.
+The status bar shows `No points saved` when having fewer than 2 points. Long-press to add points; auto-saves continuously, updating the status bar (e.g., `3 saved points`). The last point is highlighted in a darker tone, and it’s larger. Long-press to drag and move points.
 
-Select the trace to delete entirely (with confirmation); select a vertex to delete it (no confirmation). Tap off the line to deselect; tap to reselect with vertices shown. Undo reverts the last change.
+Select the trace to delete entirely (with confirmation); select a vertex to delete it (no confirmation). Tap off the line to deselect. Undo reverts the last change.
 
 .. image:: /img/web-forms/geotrace.*
   :alt: Web forms geotrace
