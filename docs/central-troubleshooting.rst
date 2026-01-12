@@ -179,3 +179,9 @@ The instructions below assume you installed Central on an Ubuntu LTS server. If 
    .. code-block:: bash
 
      $ find /var/lib/docker/volumes/ -name *-backup
+
+.. _troubleshooting-server:
+
+Service does not run when Sentry is blocked
+-------------------------------------------
+In Central v2025.4.1 or earlier, the service container may fail to start if it cannot reach the Sentry servers. Later versions of Central can run even if the Sentry server is unreachable. Learn more in :ref:`disabling Sentry  <central-install-digital-ocean-sentry>`.
