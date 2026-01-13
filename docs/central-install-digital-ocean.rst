@@ -926,7 +926,13 @@ Enketo is the software that Central uses to render forms in a web browser. It is
 Disabling or Customizing Sentry
 -------------------------------
 
-By default, we enable `Sentry error logging <https://sentry.io>`_ in Central's service container, which provides the Central team with an anonymized log of unexpected errors that occur while your server is running.  We also enable `Sentry tracing <https://docs.sentry.io/concepts/key-terms/tracing/>`_ to gather performance metrics and help our team make performance improvements.
+.. warning::
+
+   In Central v2025.4.1 or earlier, the service container may fail to start if it cannot reach the Sentry servers. Later versions of Central can run even if the Sentry server is unreachable.
+
+   Sentry's ingestion endpoint IPs changed on January 13, 2026. If your network uses outbound IP allow-lists, firewall rules, or other egress controls, add and allow Sentry's `new ingestion IPs <https://sentry.io/changelog/ingestion-ip-addresses-are-changing/>`_.
+
+By default, we enable `Sentry error logging <https://sentry.io>`_ in Central's service container, which provides the Central team with an anonymized log of unexpected errors that occur while your server is running. We also enable `Sentry tracing <https://docs.sentry.io/concepts/key-terms/tracing/>`_ to gather performance metrics and help our team make performance improvements.
 
 This information is only visible to the development team and should never contain any of your user or form data, but if you feel uncomfortable with this, you can disable Sentry:
 

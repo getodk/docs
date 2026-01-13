@@ -106,9 +106,9 @@ Version-specific upgrade instructions
 Upgrading to Central v2025.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For those that use the default database setup, this version upgrades the PostgreSQL minor version. A bug in PostgreSQL could have resulted in index corruption so we recommend performing the maintenance outlined below immediately AFTER upgrading and bringing your server back up.
+If you use the default database setup, this version upgrades PostgreSQL's minor version. A `bug in PostgreSQL <https://www.postgresql.org/docs/release/14.11/>`_ may have resulted in index corruption, so we recommend performing the maintenance outlined below immediately AFTER upgrading and bringing your server back up.
 
-If you don't use the default database setup, verify that you are running the latest PostgreSQL 14 minor version and consider upgrading if not. We recommend running the maintenance outlined below if you upgraded from a version below PostgreSQL 14.11.
+If you don't use the default database setup, verify that you are running the latest PostgreSQL 14 minor version and consider upgrading if not. We recommend running the maintenance outlined below if you've ever used PostgreSQL 14.11 or earlier.
 
 The following commands do not cause any user downtime, but they must be run one at a time, starting the next only after the previous one finishes. Depending on the size of your database, each command may take several minutes to complete, and no progress or status messages will be shown while a command is running.
 
@@ -705,4 +705,3 @@ The quickest way to do this is to run ``ufw disable`` while logged into your ser
   If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be difficult to do correctly, so we don't recommend most people try. Another option is to use an upstream network firewall.
 
   The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. To verify that this is the case, try to ``curl`` your Central website over HTTPS on its public domain name from within one of the containers.
-
