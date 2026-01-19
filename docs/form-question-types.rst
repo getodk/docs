@@ -2326,6 +2326,10 @@ Uploads any file from the device to the form.
 
   .. _potentially dangerous file: https://support.symantec.com/en_US/article.INFO3768.html
 
+.. tip::
+
+    To scan paper documents and attach them to your form, we recommend `FairScan <https://play.google.com/store/apps/details?id=org.fairscan.app>`_. It's a high-quality document scanner that automatically crops and straightens scans, then attaches them to your form as a PDF. Use a `file` question type with an appearance of `ex:org.fairscan.app.action.SCAN_TO_PDF` to enable it. See `demo video <https://www.youtube.com/watch?v=pnKIJqLzA2Y>`_.
+
 .. image:: /img/form-question-types/file-upload-widget.*
   :alt: The file upload widget in Collect.
        The question label is "Select a file to upload."
