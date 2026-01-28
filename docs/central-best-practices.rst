@@ -5,3 +5,4 @@ Tips and Best Practices
   :maxdepth: 2
   
   tutorial-mapping-households
+  using-http-caching
