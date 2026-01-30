@@ -390,6 +390,7 @@ ruODK
 sambat
 scalability
 schemas
+scrcpy
 screencap
 screenshot
 Screenshot
