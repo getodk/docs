@@ -1138,6 +1138,7 @@ Working on the docs
 
       When adding new words to :file:`spelling_wordlist.txt` or the top of a document file,
       please keep the words in alphabetical order.
+      You can use :code:`make sort-spelling-wordlist` to such effect.
 
    #. Style check
 

@@ -13,6 +13,20 @@ Vysor is a free and easy-to-use app that mirrors your existing Android device's 
 
 `Download Vysor <https://www.vysor.io/>`_  
 
+
+.. _using-scrcpy:
+
+Using scrcpy (recommended, for the technically inclined)
+-------------------------------
+
+:code:`srcpy` mirrors Android devices (video and audio) connected via USB or TCP/IP and allows control using the computer's keyboard and mouse.
+It does not require root access or an app installed on the device. It works on Linux, Windows, and macOS.
+
+It is open source and has many useful features.
+
+`Download scrcpy <https://github.com/Genymobile/scrcpy>`_
+
+
 .. _using-android-studio:
 
 Using Android Studio
