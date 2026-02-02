@@ -1,5 +1,5 @@
-Using HTTP caching for efficient pipelines
-==========================================
+Using HTTP caching for efficient data processing pipelines
+==========================================================
 
 Introduction
 ------------
@@ -32,7 +32,7 @@ Such a request is called a *conditional request*.
 If the version on the server side is indeed still :code:`A`, it will return an empty response with code :code:`304`, which means "Not Modified".
 And then the browser knows it can reuse the :code:`submissions.csv` that it has saved in its cache.
 
-But if the data on the serverside had changed since we downloaded version ":code:`A`", then the condition in the request header (:code:`If-None-Match: "A"`; "only if it doesn't match A") will be satisfied, and we get the :code:`submissions.csv` as we would normally — accompanied by an :code:`ETag` response header that tells us the new version.
+But if the data on the server had changed since we downloaded version ":code:`A`", then the condition in the request header (:code:`If-None-Match: "A"`; "only if it doesn't match A") will be satisfied, and we get the :code:`submissions.csv` as we would normally — accompanied by an :code:`ETag` response header that tells us the new version.
 
 Thus, all that's needed for a data pipeline that saves bandwidth and compute resources, is that we keep track of these versions - reading them from the :code:`ETag` response headers, and setting them in our :code:`If-None-Match` request headers.
 How this is done differs by programming environment — but all HTTP libraries will have some way of reading and setting header values.

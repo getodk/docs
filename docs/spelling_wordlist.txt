@@ -379,6 +379,7 @@ relevants
 repo
 reStructuredText
 retransmission
+revalidation
 righthand
 roadmap
 Roadmap
