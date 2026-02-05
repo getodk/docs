@@ -260,3 +260,16 @@ System Properties
 _________________
 
 Every Entity has a ``__version`` number available. Additional system properties such as ``__createdAt``, ``__updatedAt``, ``__createdBy`` are also available on the Entity export and in OData.
+
+Creating or updating multiple Entities
+--------------------------------------
+
+Create or update multiple Entities in the same list
+---------------------------------------------------
+
+To create or update multiple Entities in the same list, use a ``repeat`` on the ``survey`` sheet of your form definition to capture information about each Entity. All ``saveto``s must be in the same repeat and your ``label`` and other expressions on the ``entities`` sheet may only reference fields in the ``repeat``. Other than that, your ``entities`` sheet will look exactly the same as with a single Entity create or update.
+
+Create or update Entities in multiple lists
+--------------------------------------------
+
+To create or update Entities in multiple lists, add rows to your ``entities`` sheet. Each row must have a unique ``list_name`` value. That is, the only way to create or update multiple Entities in the same list is to use a ``repeat``. On the ``survey`` sheet, you must use the ``list_name`` value followed by a ``#`` as a prefix to your ``save_to`` values. For example, if you would like to write to the ``households`` and ``participants`` lists, all ``save_to``s for ``households`` must start with ``households#`` and all ``save_to`` values for ``participants`` must start with ``participants#`.

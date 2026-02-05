@@ -65,7 +65,6 @@ What's available now:
 
 Important limitations:
 
-- A form submission can only create or update a single Entity
 - All devices will always download all Entities which may be a privacy concern
 - Entity properties may only be strings. Submission values saved to an Entity are converted to strings.
 
