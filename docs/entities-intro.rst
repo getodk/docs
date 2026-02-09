@@ -202,7 +202,7 @@ How do I use forms to create or update Entities?
 
 Add an ``entities`` sheet to your form. This sheet is used to define how data from this form's submissions should be applied to Entity Lists.
 
-To specify which list to create or update an Entity in, use the ``list_name`` column.
+To specify which Entity List to create or update an Entity in, use the ``list_name`` column.
 
 If you're creating Entities, you'll also need to specify an expression that defines the label of each Entity in the ``label`` column. This is very similar to :ref:`the instance_name column <instance-name>` for naming filled forms.
 
