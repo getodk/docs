@@ -115,7 +115,7 @@ If you usually have Internet connectivity, this is unlikely to be very important
 I need to assign specific Entities to specific data collectors, how can I represent this?
 -----------------------------------------------------------------------------------------
 
-Currently, the only way to an entire Entity List is always sent to every device and there is no way to subset the list. This is something that we intend to eventually enable. 
+You can limit data collectors to :ref:`only see the Entities they created <central-entities-settings>` but there is no way to set or change the Entity owner yet. By default, the entire Entity List is always sent to every device.
 
 For now, you can limit the Entities that are available from a :ref:`select_one_from_file <select-from-external-dataset>` using a :ref:`choice_filter <cascading-selects>`. This won't limit the amount of data sent to each device but it can significantly reduce the amount of options shown to each user and can help speed up :ref:`lookup expressions <referencing-values-in-datasets>`.
 
@@ -138,7 +138,7 @@ We regularly review our analytics to look for opportunities for performance impr
 Can I create multiple Entities with a single submission?
 ---------------------------------------------------------
 
-Starting in Central v2025.4.3 and Collect v2026.1.0, you can either create multiple Entities in the same list by putting your ``save_to`` values targeting that list in a repeat or create Entities in different lists by adding multiple rows to the ``entities`` sheet of your XLSForm definition. You can save one Entity's ID to a property in another Entity to establish relationships.
+Starting in Central v2025.4.3 and Collect v2026.1.0, a single form submission can create multiple Entities. To create multiple Entities in the same list, put your ``save_to`` values targeting that list in a repeat. You can also create Entities in different lists by adding multiple rows to the ``entities`` sheet of your XLSForm definition. To establish relationships, you can save one Entity's ID to a property in another Entity. You can also update multiple Entities in the same way.
 
 My Entities have associated media, can I attach files to them?
 ---------------------------------------------------------------
@@ -212,7 +212,7 @@ Next, specify which form fields should be saved to Entity properties. This is do
 
 If you would like your form to create or update multiple Entities in the same list, you can use a repeat in your form. In that case, all of your ``save_to`` values must be in that repeat.
 
-To create or update Entities in multiple lists, add multiple rows to your ``entities`` sheet. Each row must have a unique value in the ``list_name`` column and you must add the list name followed by a ``#`` as a prefix to your ``save_to`` values. For example, if you would like to write to the ``households`` and ``participants`` lists, all ``save_to`` values for ``households`` must start with ``households#`` and all ``save_to``s for ``participants`` must start with ``participants#`.
+To create or update Entities in multiple lists, add multiple rows to your ``entities`` sheet. Each row must have a unique value in the ``list_name`` column and you must add the list name followed by a ``#`` as a prefix to your ``save_to`` values. For example, if you would like to write to the ``households`` and ``participants`` lists, all ``save_to`` values for ``households`` must start with ``households#`` and all ``save_to`` values for ``participants`` must start with ``participants#``.
 
 .. seealso::
     * :doc:`Community reporting tutorial <tutorial-community-reporting>`
