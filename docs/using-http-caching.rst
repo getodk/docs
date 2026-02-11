@@ -6,7 +6,7 @@ Introduction
 
 When creating a data processing pipeline, there are several API endpoints you may be making use of:
 
-   * the submission-related OData `"data documents" </central-api-odata-endpoints/#data-document>`_,
+   * the submission-related OData `data documents </central-api-odata-endpoints/#data-document>`_,
    * the `submissions.csv </central-api-submission-management/#exporting-root-data-to-plain-csv>`_ endpoint,
    * the `submissions.csv.zip </central-api-submission-management/#exporting-form-submissions-to-csv>`_ endpoint,
    * or the `submissions </central-api-submission-management/#listing-all-submissions-on-a-form>`_ endpoint as an index entry point for retrieving `individual submissions </central-api-submission-management/#retrieving-submission-xml>`_.
