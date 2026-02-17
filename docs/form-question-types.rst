@@ -1596,8 +1596,8 @@ When the map view is opened again with an existing point, the map is centered on
 
 .. _geotrace-widget:
 
-Geotrace widget
-~~~~~~~~~~~~~~~~~
+Geotrace
+~~~~~~~~~
 
 type
   ``geotrace``
@@ -1606,12 +1606,14 @@ appearance
 
 A series of points. Identical to :ref:`geoshape <geoshape-widget>` except that the first and last point may be different and at least 2 points are required.
 
-Points can be entered either by tapping the screen to place each point, or by taking readings of the device's geolocation over time. On a map, each coordinate is represented by small circles with red outlines. These are connected by red lines.
+Points can be entered either by tapping the screen to place each point, or by taking readings of the device's geolocation over time. On a map, each coordinate is represented by small circles with outlines. These are connected by lines. The last point that was entered has a darker outline.
 
 To collect a geotrace, first select the location-recording mode by tapping the "add point" button in the upper right side of the screen. The selected mode will be displayed in the gray bar at the bottom of the screen. While point collection is ongoing, the "add marker" button changes to a "pause" button. The "back arrow" button can be used to remove the last-entered point either when actively collecting points or when paused. Any point can be manually moved at any time by tapping on it and dragging it. The mode can only be changed if an existing line is first cleared by tapping the "trash" button. Recording must be paused to clear the existing line.
 
 .. tip::
-  Points that were entered by tapping or adjusted by dragging will always have an accuracy radius of 0. Points that were read from the device location will never have an accuracy radius of 0.
+  Points that were entered by tapping or adjusted by dragging will always have an accuracy radius of 0. Points that were read from the device location will never have an accuracy radius of 0 unless they come from a :ref:`mock provider <mock-location>`.
+
+  To prevent intersecting segments, use the :func:`intersects` function.
 
 Once the trace has been saved, the coordinates of its points will be displayed on the question screen. The trace can be opened for manual editing by tapping to add more points, moving existing points or deleting the last-added point. After a trace has been saved once, it cannot be added to in manual or automatic location recording modes.
 
@@ -1626,16 +1628,12 @@ Manual location recording
 Automatic location recording
   The user is prompted to select a recording interval and accuracy requirement. If the accuracy requirement is set to None, points are always collected at the recording interval. If the accuracy requirement is set to any other value, a point will only be captured if it meets the requirement. For example, given a recording interval of 20 seconds and an accuracy requirement of 10 meters, the app places a point at the device location every 20 seconds if the location is accurate to 10 meters or better.
 
-.. warning::
-
-  If you are using Aggregate and you would like to collect more than 5 points at a time, you should :doc:`increase the database field length to over 255 characters <aggregate-field-length>`. Otherwise, additional points will be lost.
-
 .. image:: /img/form-question-types/geotrace-question.*
-  :alt: A geotrace form widget displayed in the ODK Collect app on an Android phone. The question text is "Where have you been?" and below that is a button with the label "Start GeoTrace."
+  :alt: A geotrace form widget displayed in the ODK Collect app on an Android phone. The question text is "Please map out your favorite route to take a mid-day walk in your neighborhood" and below that is a button with the label "Get line."
   :class: device-screen-vertical
 
 .. image:: /img/form-question-types/geotrace-collected.*
-  :alt: A map displayed in the ODK Collect App on an Android phone. Above the map is a green bar showing current location accuracy radius. On the right side are six icon buttons stacked vertically: Add point, Delete point, Zoom to geolocation, Layers, Trash, Save. A series of markers form a line across the map.
+  :alt: A map displayed in the ODK Collect App on an Android phone. Above the map is a bar showing current location accuracy radius. On the right side are icon buttons stacked vertically. A series of markers form a line across the map.
   :class: device-screen-vertical
 
 .. rubric:: XLSForm
@@ -1657,12 +1655,14 @@ appearance
 
 A series of points that form a closed polygon. Identical to :ref:`geotrace <geotrace-widget>` except that the first and last point are always the same and at least 3 points are required.
 
-Points can be entered either by tapping the screen to place each point, or by taking readings of the device's geolocation over time. On a map, each coordinate is represented by small circles with red outlines. These are connected by red lines.
+Points can be entered either by tapping the screen to place each point, or by taking readings of the device's geolocation over time. On a map, each coordinate is represented by small circles with outlines. These are connected by lines. The last point that was entered has a darker outline.
 
 To collect a geoshape, first select the location-recording mode by tapping the "add point" button in the upper right side of the screen. The selected mode will be displayed in the gray bar at the bottom of the screen. While point collection is ongoing, the "add marker" button changes to a "pause" button. The "back arrow" button can be used to remove the last-entered point either when actively collecting points or when paused. Any point can be manually moved at any time by tapping on it and dragging it. The mode can only be changed if an existing line is first cleared by tapping the "trash" button. Recording must be paused to clear the existing line.
 
 .. tip::
-  Points that were entered by tapping or adjusted by dragging will always have an accuracy radius of 0. Points that were read from the device location will never have an accuracy radius of 0.
+  Points that were entered by tapping or adjusted by dragging will always have an accuracy radius of 0. Points that were read from the device location will never have an accuracy radius of 0 unless they come from a :ref:`mock provider <mock-location>`.
+
+  To prevent intersecting segments, use the :func:`intersects` function.
 
 Once the shape has been saved, the coordinates of its points will be displayed on the question screen. The shape can be opened for manual editing by tapping to add more points, moving existing points or deleting the last-added point. After a shape has been saved once, it cannot be added to in manual or automatic location recording modes.
 
@@ -1676,10 +1676,6 @@ Manual location recording
 
 Automatic location recording
   The user is prompted to select a recording interval and accuracy requirement. If the accuracy requirement is set to None, points are always collected at the recording interval. If the accuracy requirement is set to any other value, a point will only be captured if it meets the requirement. For example, given a recording interval of 20 seconds and an accuracy requirement of 10 meters, the app places a point at the device location every 20 seconds if the location is accurate to 10 meters or better.
-
-.. warning::
-
-  If you are using Aggregate and you would like to collect more than 5 points at a time, you should :doc:`increase the database field length to over 255 characters <aggregate-field-length>`. Otherwise, additional points will be lost.
 
 .. image:: /img/form-question-types/geoshape-question.*
   :alt: A geoshape form widget displayed in the ODK Collect app on an Android phone. The question text is "Select an Area." Below that is a button labeled "Start GeoShape."
