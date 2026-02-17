@@ -257,7 +257,7 @@ Specifies how blank forms should be updated:
 
 :guilabel:`Show guidance for questions`
 """"""""""""""""""""""""""""""""""""""""
-  Guidance hints on questions can be used to display additional information that is not always needed. For example, they can be used to show extra instructions to be used during training or valuable only on a printout. If set to `Yes - always shown`, guidance hints will always be displayed below regular hints. If set to `Yes - collapsed`, the user will need to tap to view guidance hints.
+  Guidance hints on questions can be used to display additional information that is not always needed. For example, they can be used to show extra instructions to be used during training or valuable only on a printout. Starting in Collect v2026.1.0, guidance hints are shown collapsed by default (:guilabel:`Yes - collapsed`). Other options are :guilabel:`No` or :guilabel:`Yes - always shown`.
 
 .. _use-external-app-for-audio-recording:
 
