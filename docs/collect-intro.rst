@@ -1,8 +1,12 @@
+.. _collect-intro:
+
 ODK Collect
 ================
 
 .. tip::
-  `ODK Cloud <https://getodk.org/#pricing>`_ is the best way to use ODK. With ODK Cloud, you can be collecting the data you need a few minutes after you subscribe. No technical skills required. `Get started today <https://getodk.org/#pricing>`_.
+  .. raw:: html
+
+     Get feature highlights and practical tips delivered to your inbox. <a class="ml-onclick-form" href="javascript:void(0)" onclick="ml('show', 'ctRbeg', true)">Subscribe</a>.
 
 .. _collect-introduction:
 
