@@ -1,6 +1,11 @@
 Question Types
 =================
 
+.. tip::
+  .. raw:: html
+
+     Get feature highlights and practical tips delivered to your inbox. <a class="ml-onclick-form" href="javascript:void(0)" onclick="ml('show', 'ctRbeg', true)">Subscribe</a>.
+
 :doc:`collect-intro` supports forms with a wide variety of question types.
 The exact functionality and display style of each question
 are specified in your :doc:`XLSForm <xlsform>` definition using the
