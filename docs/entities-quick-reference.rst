@@ -55,7 +55,7 @@ The ``entities`` sheet is included in the `XLSForm template <https://docs.google
   * The system does not enforce uniqueness of label values but you'll generally want to use values that you guarantee are unique through constraints or other mechanisms.
 
 .. note::
-   Currently, the ``entities`` show can only have one row because each submission can only create or update a single Entity.
+   Currently, the ``entities`` sheet can only have one row because each submission can only create or update a single Entity.
 
 Create
 ~~~~~~
