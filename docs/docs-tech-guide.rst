@@ -36,18 +36,15 @@ Set up collaboration accounts
 
 ODK is a collaborative community.
 Before diving in as a contributor,
-set up accounts on our three main collaboration platforms,
-:ref:`GitHub <get-gh-account>`,
-the :ref:`ODK Developer Slack <join-slack>`,
-and the `ODK Forum`
+set up accounts on our two main collaboration platforms,
+:ref:`GitHub <get-gh-account>` and the :ref:`ODK Forum <join-forum>`
 
 .. tip::
 
       As you are setting up your accounts,
       keep in mind that it is very helpful (but not required)
       to use the same (or similar) username
-      on :ref:`GitHub <get-gh-account>`,
-      the :ref:`ODK Developer Slack <join-slack>`,
+      on :ref:`GitHub <get-gh-account>`
       and the :ref:`ODK Forum <join-forum>`.
 
       This makes it easy for other people to keep track of conversations
@@ -73,26 +70,6 @@ and the `ODK Forum`
    .. _ODK Docs on GitHub: https://github.com/getodk/docs
    .. _GitHub: https://github.com/
 
-#. Join the `ODK Developer Slack`_.
-
-   .. _join-slack:
-
-   Slack is a popular chat platform.
-   The ODK contributor community uses Slack
-   to discuss development, plan work, and generally keep in touch.
-   If you have a question about how to contribute to ODK Docs,
-   or any other ODK project,
-   the ODK Slack is the best place to ask it.
-
-   Conversations related to documentation are held in the ``#docs-code`` channel.
-   You may also want to check in with ``#general`` and ``#random``.
-
-   #. Get an automated invitation from https://slack.getodk.org
-   #. Check your email for the invitation.
-   #. Follow the link in your email and set up your account.
-
-   .. _ODK Developer Slack: https://slack.getodk.org/
-
 #. Join the `ODK Forum`_
 
    .. _join-forum:
@@ -115,14 +92,14 @@ and the `ODK Forum`
 
    .. _ODK Forum: https://forum.getodk.org
 
-.. _forum-or-slack-or-gh:
+.. _forum-or-gh:
 
-.. admonition:: Should I ask in the Forum, the Slack, or a GitHub issue?
+.. admonition:: Should I ask in the Forum or a GitHub issue?
 
    The ODK community talks a lot, in a lot of places.
    Sometimes it's hard to know where to ask a question.
 
-   **Contribution-related questions and problems should be asked in Slack.**
+   **Contribution-related questions and problems should be asked on the forum.**
    This includes things like:
 
    - How do I set up my local editing environment?
@@ -1099,7 +1076,7 @@ Working on the docs
 
             .. code:: console
 
-               (odkenv) /odk/docs/ $ make spell-check
+               (odkenv) /odk/docs/ $ make spelling
 
          .. tab-item:: PowerShell
 
@@ -1159,7 +1136,7 @@ Working on the docs
 
          .. code:: console
 
-            (odkenv) /odk/docs/ $ make build
+            (odkenv) /odk/docs/ $ make autobuild
 
       .. tab-item:: PowerShell
 
@@ -1224,33 +1201,10 @@ Working on the docs
 
    Once you've corrected all the warnings that can be corrected...
 
-#. Serve the documentation website locally and view it.
-
-   .. _serve-the-docs-locally:
-
-   If you've been working on files in :file:`src`:
-
-   .. tab-set::
-
-      .. tab-item:: Bash
-
-         .. code:: console
-
-            (odkenv) /odk/docs/ $ python -m http.server -d odk-build 8000
-            Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
-
-      .. tab-item:: PowerShell
-
-         .. code:: powershell
-
-            (odkenv) /odk/docs/ > python -m http.server -d build 8000
-            Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
-
    #. Open your browser and go to http://localhost:8000.
    #. Read through your doc edits in the browser.
    #. Go back to the source files to correct any errors you find.
-   #. Go to your terminal, and press :kbd:`CTRL C` to shut down the local web server.
-   #. Re-run the build and serve steps.
+   #. Save the file to trigger a rebuild.
    #. Continue proofreading.
 
    Once you are reasonably sure your changes are ready...

@@ -147,7 +147,7 @@ Issues only
 
 All PRs must be directly connected to open issues. PRs should not represent suggestions, good ideas, or independent initiative.
 
-If you have a good idea, file an issue. If you are curious about whether something should be an issue, chat with one of the core team in the `#docs-code` channel on the `Slack <https://getodk.slack.com>`_.
+If you have a good idea, file an issue. If you are curious about whether something should be an issue, you can first discuss `on the forum https://forum.getodk.org/c/development/documentation`.
 
 Once you have filed an issue, wait for comment and approval before diving into the work. We do not want surprise PRs.
 
@@ -192,7 +192,7 @@ You can contribute to this community, no matter your background or skills.
 - If there is something you don't know how to do, you can ask.
 
   - If it is issue related, ask on the issue.
-  - If it is more general, try the #docs-code channel in the `ODK Developer Slack <https://slack.getodk.org>`_.
+  - If it is more general, discuss `on the forum <https://forum.getodk.org/c/development/documentation>`.
 
 - If you want to try something even though you aren't sure you can do it, go ahead and try.
 

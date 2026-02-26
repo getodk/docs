@@ -62,13 +62,13 @@ $ make autobuild
 
 You can then view the docs in your browser at [http://localhost:8000](http://localhost:8000). The docs will auto-build and refresh as you make changes to the source files.
 
-You can use `make dirhtml` to for a one-time build of the HTML files and `make clean` to clean the build.
+You can use `make dirhtml` to for a one-time build of the HTML files, `make spelling` to check spelling and `make clean` to clean the build.
 
 ## How to contribute?
 
 We are open for new issues and pull requests.
 
- - Please read the [Contributors Guide](https://docs.getodk.org/contributing) before working on the documentation.
+ - If you are new to open source contribution or Sphinx docs, please read the [Contributors Guide](https://docs.getodk.org/contributing) before working on the documentation.
  - Find issues to work on.
     - First time contributors are encouraged to complete a [line edit](https://github.com/getodk/docs/issues/96) as a way to get familiar with our contribution process.
 	- Issues labelled [easy](https://github.com/getodk/docs/labels/easy) do not require much specific technical knowledge.
@@ -78,8 +78,7 @@ If you would like to add a screenshot of Collect, please make a copy of [this Fi
 
 You can also...
 
- - [Discuss the documentation from a user perspective in our forum](https://forum.getodk.org/c/development/documentation).
- - [Discuss the documentation from a contributor perspective in our developer Slack](slack.getodk.org). (Use the #docs-code channel.)
+ - [Discuss the documentation on our forum](https://forum.getodk.org/c/development/documentation).
  - [File an issue](https://github.com/getodk/docs/issues) for any needed improvements.
  - [Watch](https://github.com/getodk/docs/subscription) and star this repo, to keep up with what we're doing.
 
