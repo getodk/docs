@@ -99,7 +99,7 @@ set up accounts on our two main collaboration platforms,
    The ODK community talks a lot, in a lot of places.
    Sometimes it's hard to know where to ask a question.
 
-   **Contribution-related questions and problems should be asked on the form.**
+   **Contribution-related questions and problems should be asked on the forum.**
    This includes things like:
 
    - How do I set up my local editing environment?
@@ -1201,33 +1201,10 @@ Working on the docs
 
    Once you've corrected all the warnings that can be corrected...
 
-#. Serve the documentation website locally and view it.
-
-   .. _serve-the-docs-locally:
-
-   If you've been working on files in :file:`src`:
-
-   .. tab-set::
-
-      .. tab-item:: Bash
-
-         .. code:: console
-
-            (odkenv) /odk/docs/ $ python -m http.server -d odk-build 8000
-            Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
-
-      .. tab-item:: PowerShell
-
-         .. code:: powershell
-
-            (odkenv) /odk/docs/ > python -m http.server -d build 8000
-            Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
-
    #. Open your browser and go to http://localhost:8000.
    #. Read through your doc edits in the browser.
    #. Go back to the source files to correct any errors you find.
-   #. Go to your terminal, and press :kbd:`CTRL C` to shut down the local web server.
-   #. Re-run the build and serve steps.
+   #. Save the file to trigger a rebuild.
    #. Continue proofreading.
 
    Once you are reasonably sure your changes are ready...
