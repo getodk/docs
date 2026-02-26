@@ -1283,7 +1283,7 @@ You can also create a reference with styled text:
 .. code-block:: rst
 
   .. |forum| replace:: **ODK forum**
-  .. forum: https://forum.getodk.org/c/development/documentation
+  .. forum: https://forum.getodk.org
 
 You can use the hyperlink reference by appending a "_" at the end of the vertical bars, for example:
 
@@ -1292,7 +1292,7 @@ You can use the hyperlink reference by appending a "_" at the end of the vertica
   You can ask about your problem on the |forum|_.
 
 .. |forum| replace:: **ODK forum**
-.. forum: https://forum.getodk.org/c/development/documentation
+.. forum: https://forum.getodk.org
 
 You can ask about your problem on the |forum|_.
 
