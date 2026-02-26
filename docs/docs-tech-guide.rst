@@ -36,18 +36,15 @@ Set up collaboration accounts
 
 ODK is a collaborative community.
 Before diving in as a contributor,
-set up accounts on our three main collaboration platforms,
-:ref:`GitHub <get-gh-account>`,
-the :ref:`ODK Developer Slack <join-slack>`,
-and the `ODK Forum`
+set up accounts on our two main collaboration platforms,
+:ref:`GitHub <get-gh-account>` and the :ref:`ODK Forum <join-forum>`
 
 .. tip::
 
       As you are setting up your accounts,
       keep in mind that it is very helpful (but not required)
       to use the same (or similar) username
-      on :ref:`GitHub <get-gh-account>`,
-      the :ref:`ODK Developer Slack <join-slack>`,
+      on :ref:`GitHub <get-gh-account>`
       and the :ref:`ODK Forum <join-forum>`.
 
       This makes it easy for other people to keep track of conversations
@@ -95,7 +92,7 @@ and the `ODK Forum`
 
    .. _ODK Forum: https://forum.getodk.org
 
-.. _forum-or-slack-or-gh:
+.. _forum-or-gh:
 
 .. admonition:: Should I ask in the Forum or a GitHub issue?
 

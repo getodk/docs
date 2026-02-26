@@ -1282,19 +1282,19 @@ You can also create a reference with styled text:
 
 .. code-block:: rst
 
-  .. |slack| replace:: **ODK Slack**
-  .. slack: https://getodk.slack.com
+  .. |forum| replace:: **ODK forum**
+  .. forum: https://forum.getodk.org/c/development/documentation
 
 You can use the hyperlink reference by appending a "_" at the end of the vertical bars, for example:
 
 .. code-block:: rst
 
-  You can ask about your problem in |slack|_.
+  You can ask about your problem on the |forum|_.
 
-.. |slack| replace:: **ODK Slack**
-.. _slack: https://getodk.slack.com
+.. |forum| replace:: **ODK forum**
+.. forum: https://forum.getodk.org/c/development/documentation
 
-You can ask about your problem in |slack|_.
+You can ask about your problem on the |forum|_.
 
 The ``rst_epilog`` in :file:`conf.py` contains a list of global substitutions that can be used from any file. The list is given below:
 
