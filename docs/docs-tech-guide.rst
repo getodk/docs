@@ -73,26 +73,6 @@ and the `ODK Forum`
    .. _ODK Docs on GitHub: https://github.com/getodk/docs
    .. _GitHub: https://github.com/
 
-#. Join the `ODK Developer Slack`_.
-
-   .. _join-slack:
-
-   Slack is a popular chat platform.
-   The ODK contributor community uses Slack
-   to discuss development, plan work, and generally keep in touch.
-   If you have a question about how to contribute to ODK Docs,
-   or any other ODK project,
-   the ODK Slack is the best place to ask it.
-
-   Conversations related to documentation are held in the ``#docs-code`` channel.
-   You may also want to check in with ``#general`` and ``#random``.
-
-   #. Get an automated invitation from https://slack.getodk.org
-   #. Check your email for the invitation.
-   #. Follow the link in your email and set up your account.
-
-   .. _ODK Developer Slack: https://slack.getodk.org/
-
 #. Join the `ODK Forum`_
 
    .. _join-forum:
@@ -117,12 +97,12 @@ and the `ODK Forum`
 
 .. _forum-or-slack-or-gh:
 
-.. admonition:: Should I ask in the Forum, the Slack, or a GitHub issue?
+.. admonition:: Should I ask in the Forum or a GitHub issue?
 
    The ODK community talks a lot, in a lot of places.
    Sometimes it's hard to know where to ask a question.
 
-   **Contribution-related questions and problems should be asked in Slack.**
+   **Contribution-related questions and problems should be asked on the form.**
    This includes things like:
 
    - How do I set up my local editing environment?
@@ -1099,7 +1079,7 @@ Working on the docs
 
             .. code:: console
 
-               (odkenv) /odk/docs/ $ make spell-check
+               (odkenv) /odk/docs/ $ make spelling
 
          .. tab-item:: PowerShell
 
@@ -1159,7 +1139,7 @@ Working on the docs
 
          .. code:: console
 
-            (odkenv) /odk/docs/ $ make build
+            (odkenv) /odk/docs/ $ make autobuild
 
       .. tab-item:: PowerShell
 
