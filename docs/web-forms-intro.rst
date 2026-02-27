@@ -76,7 +76,7 @@ Once location permissions are granted to Web Forms, it will start reading locati
 Geopoint with `maps` appearance
 ~~~~~~~~
 
-The `maps` appearance allows users to capture their current location while viewing it on a map. After tapping **Get location** and granting permissions, the map automatically zooms to the user’s current location. The user taps **Save point** to save the location. Once saved, the marker turns green to indicate success and the bottom panel displays **Point saved**. The user can remove the saved point and try again if needed.
+The `maps` appearance allows users to capture their current location while viewing it on a map. After tapping **Get location** and granting permissions, the map automatically zooms to the user’s current location and saves the location. The marker turns green to indicate success and the bottom panel displays Point saved. The user can remove the saved point and try again if needed.
 
 .. image:: /img/web-forms/geopoint-maps-appearance.*
   :alt: Web forms geopoint with maps appearance
@@ -84,7 +84,7 @@ The `maps` appearance allows users to capture their current location while viewi
 Geopoint with `placement-map` appearance
 ~~~~~~~~
 
-The `placement-map` appearance is similar to `maps`, but also allows the user to manually move the marker. If location permissions are granted, the map zooms to the user’s current location. The user can save the current location or manually place the marker by long-pressing on the map. The marker can be dragged to adjust the position. The user can remove the marker and try again at any time before moving on.
+The `placement-map` appearance is similar to `maps`, but also allows the user to manually move the marker. If location permissions are granted, the map zooms to the user’s current location. The marker is saved by tapping on the map. The marker can be dragged to adjust the position. The user can remove the marker and try again at any time before moving on.
 
 For both `maps` and `placement-map` appearances, location capture stops when the user scrolls away from the question.
 
@@ -94,11 +94,7 @@ For both `maps` and `placement-map` appearances, location capture stops when the
 Geoshape
 ~~~~~~~~
 
-The geoshape question type allows users to capture a polygon area on a map by adding at least three points to form a closed shape.
-
-The status bar shows `No points saved` when having fewer than 3 points. Long-press to add points; the shape closes automatically and auto-saves, updating the status bar (e.g., `4 points saved`). The last point is highlighted in a darker tone, and it’s larger. Long-press to drag and move points.
-
-Select the shape to delete entirely (with confirmation); select a vertex to delete it (no confirmation). Tap off the shape to deselect. Undo reverts the last change.
+A series of points that form a closed polygon. Points can be added by tapping the screen to place each point. Each coordinate is represented by small circles with outlines. These are connected by lines. The last point that was entered has a darker outline. Use the trash bin icon to delete the entire shape or the undo button to go back a step.
 
 .. image:: /img/web-forms/geoshape.*
   :alt: Web forms geoshape
@@ -106,14 +102,17 @@ Select the shape to delete entirely (with confirmation); select a vertex to dele
 Geotrace
 ~~~~~~~~
 
-The geotrace question type allows users to capture a line on a map by adding at least two points.
+A series of points. Identical to geoshape except that the first and last point may be different and at least 2 points are required.
 
-The status bar shows `No points saved` when having fewer than 2 points. Long-press to add points; auto-saves continuously, updating the status bar (e.g., `3 saved points`). The last point is highlighted in a darker tone, and it’s larger. Long-press to drag and move points.
-
-Select the trace to delete entirely (with confirmation); select a vertex to delete it (no confirmation). Tap off the line to deselect. Undo reverts the last change.
+Points can be added by tapping the screen to place each point. Each coordinate is represented by small circles with outlines. These are connected by lines. The last point that was entered has a darker outline.
 
 .. image:: /img/web-forms/geotrace.*
   :alt: Web forms geotrace
+
+For scenarios requiring precise coordinate adjustments, an advanced panel is available for manual data entry. Expanding this panel allows to specify the latitude, longitude, altitude, and accuracy for specific points. Additionally, use the import option to replace the existing trace or shape with external data.
+
+.. image:: /img/web-forms/map-advanced-panel.*
+  :alt: Web forms advanced panel for geoshape and geotrace
 
 Image
 ~~~~~~~~
