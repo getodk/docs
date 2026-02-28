@@ -60,12 +60,12 @@ What's available now:
 - Use multiple different registration Forms targeting the same Entity List (e.g., registration at school vs. registration at home)
 - Use or update Entities in one or more follow-up Forms
 - Create or update Entities offline using Collect v2024.3 or later
+- Create or update multiple Entities with a single submission using Central v2025.4.3 and Collect v2026.1.0
 - Bulk create many Entities by uploading a .csv data file into an existing Entity List
 - Download Entities into Power BI, Excel, Python, and R
 
 Important limitations:
 
-- A form submission can only create or update a single Entity
 - All devices will always download all Entities which may be a privacy concern
 - Entity properties may only be strings. Submission values saved to an Entity are converted to strings.
 

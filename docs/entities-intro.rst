@@ -46,9 +46,9 @@ Sure! The video below shows an Entities-powered example of a bed net distributio
 How are Entities and forms related?
 -----------------------------------
 
-Entities and forms exist at the same level in projects. Forms define actions that can be taken in your project and Entities store data that can be accessed as part of taking those actions. A form definition can attach and access many different Entity Lists but currently, a form submission can only create or update a single Entity. Eventually, it will be possible to create or update multiple Entities from a single submission. 
+Entities and forms exist at the same level in projects. Forms define actions that can be taken in your project and Entities store data that can be accessed as part of taking those actions. A form definition can read from many different Entity Lists. A form submission can also create or update Entities in multiple different lists.
 
-Once a submission has been processed and it creates or updates an Entity, the submission and the resulting Entity become independent. That means that if you edit the submission, those changes are not automatically applied to the related Entity. You can choose to apply them manually if applicable.
+Once a submission has been processed and it creates or updates Entities, the submission and the resulting Entities become independent. That means that if you edit the submission, those changes are not automatically applied to the related Entities. You can choose to apply them manually if applicable.
 
 Should I use Entities?
 ----------------------
@@ -108,21 +108,21 @@ Limitations
 I filled out a registration form and don't immediately see my Entity in follow-up forms, why?
 ---------------------------------------------------------------------------------------------
 
-If you are using a version of Central older than 2024.3.0, Enketo web forms, or a version of Collect older than 2024.3.0, Entities are not created or updated offline. This means that in order for a submission to create or update an Entity, that submission has to be processed by your server. If you create a new Entity or update an existing one by filling out a form, you won't see that change reflected in follow-up forms until you download the latest update to your Entity List from your server.
+If you are using a version of Central older than 2024.3.0, web forms, or a version of Collect older than 2024.3.0, Entities are not created or updated offline. This means that in order for a submission to create or update an Entity, that submission has to be processed by your server. If you create a new Entity or update an existing one by filling out a form, you won't see that change reflected in follow-up forms until you download the latest update to your Entity List from your server.
 
 If you usually have Internet connectivity, this is unlikely to be very important. Similarly, if your registration and follow-up periods happen at very different times, this limitation is not a problem. But for workflows in which follow-up needs to happen immediately after registration or multiple follow-ups are needed while offline, this limitation is significant. 
 
 I need to assign specific Entities to specific data collectors, how can I represent this?
 -----------------------------------------------------------------------------------------
 
-Currently, an entire Entity List is always sent to every device and there is no way to subset the list. This is something that we intend to eventually enable. 
+You can limit data collectors to :ref:`only see the Entities they created <central-entities-settings>` but there is no way to set or change the Entity owner yet. By default, the entire Entity List is always sent to every device.
 
 For now, you can limit the Entities that are available from a :ref:`select_one_from_file <select-from-external-dataset>` using a :ref:`choice_filter <cascading-selects>`. This won't limit the amount of data sent to each device but it can significantly reduce the amount of options shown to each user and can help speed up :ref:`lookup expressions <referencing-values-in-datasets>`.
 
 How many Entities can I have?
 -----------------------------
 
-The short answer is that most forms running on modern devices can handle Entity Lists with hundreds of thousands of Entities without slowdowns.
+The short answer is that Collect performance is generally going to be your biggest concern. Most forms running on modern mobile devices can handle Entity Lists in Collect with hundreds of thousands of Entities without feeling slow.
 
 The long answer is that there are two key variables to consider when using very large Entity Lists: data transfer and form design.
 
@@ -133,18 +133,12 @@ The choice filters and :ref:`lookup expressions <referencing-values-in-datasets>
 We regularly review our analytics to look for opportunities for performance improvements. If you have a form with many Entities that feels slow, we encourage you to post about it on `the forum <https://forum.getodk.org/c/support/6>`_ so that we can recommend approaches that will make it work faster or design improvements to the system.
 
 .. note::
-    We do not recommend using `search() <https://xlsform.org/en/#dynamic-selects-from-pre-loaded-data>`_ instead of ``select_one_from_file`` because it does not work with offline Entities and is less flexible. Starting in Collect v2024.3 and Central v2024.3, there is limited performance benefit to ``search()``.
+    We do not recommend using `search() <https://xlsform.org/en/#dynamic-selects-from-pre-loaded-data>`_ instead of ``select_one_from_file`` because it does not work with offline Entities and is less flexible. Starting in Collect v2024.3 and Central v2024.3, there is limited performance benefit to ``search()`` when using Entities.
 
-My form captures data on multiple different things, can I create multiple Entities with a single submission?
-------------------------------------------------------------------------------------------------------------
+Can I create multiple Entities with a single submission?
+---------------------------------------------------------
 
-Not yet, but this is something we will eventually support.
-
-If you find yourself wanting to create or update multiple Entities of the same type in a repeat, your best option currently is to use multiple submissions of the same form instead of a repeat. You can capture base information in one form and then use a separate form to create each Entity that you currently represent by repeat instances.
-
-If there is a parent-child relationship between the different Entities, you can save the parent's ID to each child. If your versions of Central and Collect support offline Entities, parent Entities will be available to other forms the moment the registration form is finalized. This means the registration form for the child Entities can include a question to select the parent Entity which will establish the link between the two.
-
-Similarly, if you'd like to establish relationships between multiple Entities of different types, you can have a registration form for each type and include a field to represent a link to another Entity.
+Starting in Central v2025.4.3 and Collect v2026.1.0, a single form submission can create multiple Entities. To create multiple Entities in the same list, put your ``save_to`` values targeting that list in a repeat. You can also create Entities in different lists by adding multiple rows to the ``entities`` sheet of your XLSForm definition. To establish relationships, you can save one Entity's ID to a property in another Entity. You can also update multiple Entities in the same way.
 
 My Entities have associated media, can I attach files to them?
 ---------------------------------------------------------------
@@ -159,7 +153,7 @@ Alternatives
 What's the difference between Entities and CSV form attachments?
 ----------------------------------------------------------------
 
-From a form design perspective, they are identical. That means you can attach them to forms, look values up in them or build selects on them in the exact same way.
+When it comes to reading from them in forms, they are identical. That means you can attach them to forms, look values up in them or build selects on them in the exact same way.
 
 From a server perspective, a CSV form attachment can only be associated with a single form, unlike Entities which can be shared between forms. CSV form attachments are stored as files and if you need to update one row in a CSV attachment, you need to replace the whole file. In contrast, Entities can be updated individually.
 
@@ -172,10 +166,12 @@ If CSV form attachments are working well for you, you don't need to change anyth
 
 If there's a need to periodically update your CSV form attachment, you may want to consider using Entities to save time and reduce the opportunity for mistakes that can come from a manual process such as forgetting to update or attaching the wrong file.
 
-What's the difference between Entities and choice lists?
---------------------------------------------------------
+What's the difference between Entity Lists and choice lists?
+-------------------------------------------------------------
 
-From a form design perspective, they are nearly identical. The only significant difference is that because Entity Lists are defined outside of a form, you need to explicitly attach them to your forms using :ref:`select_*_from_file <select-from-external-dataset>` or :ref:`csv-external <form-datasets-attaching-csv>`. Another difference is that there currently isn't support for media or translations in Entity Lists. Other than that, the way that you look up values in choice lists and Entity Lists using ``instance()`` is identical.
+When it comes to accessing them from forms, they are nearly identical. The only significant difference is that because Entity Lists are defined outside of a form, you need to explicitly attach them using :ref:`select_*_from_file <select-from-external-dataset>` or :ref:`csv-external <form-datasets-attaching-csv>`. Another difference is that there currently isn't support for media or translations in Entity Lists. Other than that, the way that you look up values in choice lists and Entity Lists using ``instance()`` is identical.
+
+The major difference is in how they get updated. Choice lists are part of a specific form and can only be modified by editing that form. Entity Lists can be updated automatically by form submissions, through CSV uploads from Central, or through the API.
 
 Can ODK now replace more specialized software?
 ----------------------------------------------
@@ -206,13 +202,17 @@ How do I use forms to create or update Entities?
 
 Add an ``entities`` sheet to your form. This sheet is used to define how data from this form's submissions should be applied to Entity Lists.
 
-Currently, a single submission can only affect a single Entity in a fixed Entity List. To specify which list to create or update an Entity in, use the ``list_name`` column.
+To specify which Entity List to create or update an Entity in, use the ``list_name`` column.
 
 If you're creating Entities, you'll also need to specify an expression that defines the label of each Entity in the ``label`` column. This is very similar to :ref:`the instance_name column <instance-name>` for naming filled forms.
 
 If you're updating Entities, you must add an ``entity_id`` column. In that column, put a reference to a form field that holds the unique id of the Entity you want to update. For example, if you have a select question named ``tree`` that lets the user select a tree from the Entity List, you would put ``${tree}`` in the ``entity_id`` column. You may also specify an expression that defines the label for each Entity in the ``label`` column if you would like the label to change, for example to show an updated status.
 
 Next, specify which form fields should be saved to Entity properties. This is done on the ``survey`` sheet by putting the desired property name in the ``save_to`` column for each form field that you want to save.
+
+If you would like your form to create or update multiple Entities in the same list, you can use a repeat in your form. In that case, all of your ``save_to`` values must be in that repeat.
+
+To create or update Entities in multiple lists, add multiple rows to your ``entities`` sheet. Each row must have a unique value in the ``list_name`` column and you must add the list name followed by a ``#`` as a prefix to your ``save_to`` values. For example, if you would like to write to the ``households`` and ``participants`` lists, all ``save_to`` values for ``households`` must start with ``households#`` and all ``save_to`` values for ``participants`` must start with ``participants#``.
 
 .. seealso::
     * :doc:`Community reporting tutorial <tutorial-community-reporting>`
@@ -222,7 +222,7 @@ Next, specify which form fields should be saved to Entity properties. This is do
 How do I access Entities from my forms?
 ---------------------------------------
 
-First, attach the Entity List(s) that you want to access Entities from in your form definition using ``select_one_from_file`` or ``csv-external``, as described below. Note that you can attach multiple Entity Lists to a single form via these methods, and they do not need to be listed in the ``entities`` sheet in the XLSForm: only the Entity List in which Entities are created or updated needs to be included in this sheet.
+First, attach the Entity List(s) that you want to access Entities from in your form definition using ``select_one_from_file`` or ``csv-external``, as described below. Note that you can attach multiple Entity Lists to a single form via these methods, and they do not need to be listed in the ``entities`` sheet in the XLSForm: only the Entity Lists in which Entities are created or updated needs to be included in this sheet.
 
 * If you want the user to be able to select an Entity from a list, you can use a :ref:`select_one_from_file <select-from-external-dataset>` question with the name of your Entity List followed by ``.csv``. For example, if your Entity List is named ``trees``, you would create a ``select_one_from_file trees.csv`` question.
 
