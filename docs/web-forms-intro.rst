@@ -109,7 +109,7 @@ Points can be added by tapping the screen to place each point. Each coordinate i
 .. image:: /img/web-forms/geotrace.*
   :alt: Web forms geotrace
 
-For scenarios requiring precise coordinate adjustments, an advanced panel is available for manual data entry. Expanding this panel allows to specify the latitude, longitude, altitude, and accuracy for specific points. Additionally, use the import option to replace the existing trace or shape with external data.
+For scenarios requiring precise coordinate adjustments, an advanced panel can be used for manual data entry. Expanding this panel allows users to specify the latitude, longitude, altitude, and accuracy for points. If the user already has the geodata from an external source, they can paste or import the file to replace the existing trace or shape.
 
 .. image:: /img/web-forms/map-advanced-panel.*
   :alt: Web forms advanced panel for geoshape and geotrace
