@@ -46,17 +46,13 @@ Question types
 To know which question types are currently supported in Web Forms, see `the Github feature matrix <https://github.com/getodk/we
 b-forms?tab=readme-ov-file#feature-matrix>`_. While most supported functionality is very similar to Collect's, this section describes question types with more complex functionality or that differ from Collect.
 
-Web Forms currently supports 3 geo question types and appearances:
+Web Forms currently supports 5 geo question types and appearances:
 
 * :ref:`Geopoint <geopoint-widget>`
 * :ref:`Maps appearance <geopoint-maps>`
 * :ref:`Placement-map appearance <placement-map-widget>`
-
-**Coming soon**
-
-- Geoshape
-- Geotrace
-- Editing all map appearances
+* :ref:`Geoshape <geotrace-widget>`
+* :ref:`Geotrace <geoshape-widget>`
 
 Geopoint without appearance
 ~~~~~~~~
@@ -80,7 +76,7 @@ Once location permissions are granted to Web Forms, it will start reading locati
 Geopoint with `maps` appearance
 ~~~~~~~~
 
-The `maps` appearance allows users to capture their current location while viewing it on a map. After tapping **Get location** and granting permissions, the map automatically zooms to the user’s current location. The user taps **Save point** to save the location. Once saved, the marker turns green to indicate success and the bottom panel displays **Point saved**. The user can remove the saved point and try again if needed.
+The `maps` appearance allows users to capture their current location while viewing it on a map. After tapping **Get location** and granting permissions, the map automatically zooms to the user’s current location and saves the location. The marker turns green to indicate success and the bottom panel displays Point saved. The user can remove the saved point and try again if needed.
 
 .. image:: /img/web-forms/geopoint-maps-appearance.*
   :alt: Web forms geopoint with maps appearance
@@ -88,12 +84,35 @@ The `maps` appearance allows users to capture their current location while viewi
 Geopoint with `placement-map` appearance
 ~~~~~~~~
 
-The `placement-map` appearance is similar to `maps`, but also allows the user to manually move the marker. If location permissions are granted, the map zooms to the user’s current location. The user can save the current location or manually place the marker by long-pressing on the map. The marker can be dragged to adjust the position. The user can remove the marker and try again at any time before moving on.
+The `placement-map` appearance is similar to `maps`, but also allows the user to manually move the marker. If location permissions are granted, the map zooms to the user’s current location. The marker is saved by tapping on the map. The marker can be dragged to adjust the position. The user can remove the marker and try again at any time before moving on.
 
 For both `maps` and `placement-map` appearances, location capture stops when the user scrolls away from the question.
 
 .. image:: /img/web-forms/geopoint-placement-map-appearance.*
   :alt: Web forms geopoint with placement-map appearance
+
+Geoshape
+~~~~~~~~
+
+A series of points that form a closed polygon. Points can be added by tapping the screen to place each point. Each coordinate is represented by small circles with outlines. These are connected by lines. The last point that was entered has a darker outline. Use the trash bin icon to delete the entire shape or the undo button to go back a step.
+
+.. image:: /img/web-forms/geoshape.*
+  :alt: Web forms geoshape
+
+Geotrace
+~~~~~~~~
+
+A series of points. Identical to geoshape except that the first and last point may be different and at least 2 points are required.
+
+Points can be added by tapping the screen to place each point. Each coordinate is represented by small circles with outlines. These are connected by lines. The last point that was entered has a darker outline.
+
+.. image:: /img/web-forms/geotrace.*
+  :alt: Web forms geotrace
+
+For scenarios requiring precise coordinate adjustments, an advanced panel can be used for manual data entry. Expanding this panel allows users to specify the latitude, longitude, altitude, and accuracy for points. If the user already has the geodata from an external source, they can paste or import the file to replace the existing trace or shape.
+
+.. image:: /img/web-forms/map-advanced-panel.*
+  :alt: Web forms advanced panel for geoshape and geotrace
 
 Image
 ~~~~~~~~
