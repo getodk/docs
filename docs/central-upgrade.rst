@@ -101,6 +101,16 @@ You'll be asked to confirm the removal of all dangling images. Agree by typing t
 Version-specific upgrade instructions
 --------------------------------------
 
+
+.. _central-upgrade-2026.1:
+
+Upgrading to Central v2026.1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This version of Central has switched to using `PostgreSQL environment variables <https://www.postgresql.org/docs/14/libpq-envars.html>`_ for configuring the database connection.
+No action is required unless you have configured a custom database connection *and* used the ``DB_SSL=true`` setting for it. In that case, replace it with ``PGSSLMODE=require`` by editing your ``.env`` file.
+
+
 .. _central-upgrade-2025.4:
 
 Upgrading to Central v2025.4
