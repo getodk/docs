@@ -29,7 +29,25 @@ What are Entities?
 
 In the ODK context, an "Entity" can be thought of as a "thing". If your project involves things that need to be shared between forms and may change over time, you can represent them as Entities. You can use Entities to represent real things like trees, people, or cities. You can also represent more abstract things like tree visits, malaria cases, or city ratings as Entities.
 
-Entities are organized in Entity Lists that group together Entities of the same type. You can think of Entity Lists as spreadsheets or databases that are shared across forms. Forms can create, read, and update Entities. You can also think of Entities as the nouns (trees) and the forms as the verbs (Register a tree).
+Entities are organized in lists that group together Entities of the same type. You can think of Entity Lists as spreadsheets or databases that are shared across forms. Forms can create, read, and update Entities. You can also think of Entities as the nouns (trees) and the forms as the verbs (Register a tree).
+
+.. mermaid::
+    :align: center
+    :alt: The "Register a tree" form flows data into a Trees Entity List. The "Request tree care" and "Periodic tree assessment" forms both read from the Trees Entity List. The "Periodic tree assessment" form also makes updates to the Trees Entity List.
+
+    flowchart LR
+        F1@{ shape: notch-rect, label: "Register a tree" }
+
+        T[(trees)]
+
+        F2@{ shape: notch-rect, label: "Request tree care" }
+        F3@{ shape: notch-rect, label: "Periodic tree<br/>assessment" }
+
+        %% Relationships
+        F1 --> T
+        T --> F2
+        T --> F3
+        F3 --> T
 
 ODK has historically been form-based: every workflow starts by opening a blank form and filling it out. We are now working towards providing an Entity-based option in which workflows start by selecting an Entity. Currently, you can have each of your forms start with a question that lets users select an Entity from a list. In the future, you'll have the option to first select an Entity and then see what forms, if any, apply to that Entity.
 
@@ -47,6 +65,43 @@ How are Entities and forms related?
 -----------------------------------
 
 Entities and forms exist at the same level in projects. Forms define actions that can be taken in your project and Entities store data that can be accessed as part of taking those actions. A form definition can read from many different Entity Lists. A form submission can also create or update Entities in multiple different lists.
+
+Entity Lists allow you to flow data between forms so that you can support complex real-world workflows.
+
+.. mermaid::
+    :align: center
+    :alt: Lists and forms combine within a project to represent complex workflows.
+
+    flowchart LR
+        subgraph P[Project A]
+            direction LR
+
+            FA@{ shape: notch-rect, label: "Form A" }
+            FB@{ shape: notch-rect, label: "Form B" }
+
+            L1[(list1)]
+            L2[(list2)]
+            L3[(list3)]
+            L4[(list4)]
+
+            FC@{ shape: notch-rect, label: "Form C" }
+            FD@{ shape: notch-rect, label: "Form D" }
+            FE@{ shape: notch-rect, label: "Form E" }
+        end
+
+        FA --> L1
+
+        FB --> L2
+        FB --> L3
+
+        FC --> L4
+        L4 --> FC
+
+        L1 --> FD
+        FD --> L1
+        L3 --> FE
+        L2 --> FE
+        L4 --> FE
 
 Once a submission has been processed and it creates or updates Entities, the submission and the resulting Entities become independent. That means that if you edit the submission, those changes are not automatically applied to the related Entities. You can choose to apply them manually if applicable.
 
@@ -96,6 +151,23 @@ In many contexts, the information that needs to be shared between forms is minim
 If your workflow requires accessing all captured data about an Entity, directly flowing data between forms would likely have worked well. You can achieve something similar with Entities by creating an Entity List that represents encounters with the Entity. 
 
 For example, let's say that you have trees that you want to evaluate over time. You could have a ``trees`` Entity List that includes fixed properties of the trees: their location, their species, etc. Then you could have a second Entity List called ``tree_measurements`` that includes a property that represents a link back to a ``tree`` Entity as well as any measurements made during a new encounter.
+
+.. mermaid::
+    :align: center
+    :alt: Entity Lists can represent real-world encounters linked to the Entity they are about.
+
+    flowchart LR
+        T[(trees)]
+        TM[(tree_measurements)]
+
+        F1@{ shape: notch-rect, label: "Register a tree" }
+        F2@{ shape: notch-rect, label: "Record tree measurement" }
+
+        F1 --> T
+        T --> F2
+        F2 --> TM
+
+        TM -.- |1 → many| T
 
 .. _entities-intro-limitations:
 

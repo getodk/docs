@@ -4,6 +4,7 @@ sphinxcontrib-spelling
 furo
 sphinx_design
 sphinx-copybutton
+sphinxcontrib-mermaid
 sphinxcontrib-youtube
 sphinx-tabs
 sphinx-toolbox
