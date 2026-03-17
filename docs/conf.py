@@ -46,7 +46,8 @@ extensions = [ 'sphinxcontrib.spelling',
     'sphinxext.opengraph',
     'notfound.extension',
     'sphinx_sitemap',
-    'myst_parser'
+    'myst_parser',
+    'sphinxcontrib.mermaid'
 ]
 
 # If using Apple Silicon, set env variable (assumes brew install of enchant)
@@ -126,6 +127,15 @@ smartquotes_action = 'De'
 copybutton_exclude = '.linenos, .gp, .go'
 # Exclude all prompt characters code-block:: bash
 copybutton_prompt_text = "$ "
+
+mermaid_height = '100%'
+mermaid_init_config = """
+mermaid.initialize({
+  themeVariables: {
+    fontSize: '12px'
+  }
+});
+"""
 
 ogp_site_url = "https://docs.getodk.org"
 
