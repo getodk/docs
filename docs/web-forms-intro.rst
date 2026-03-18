@@ -8,7 +8,7 @@ ODK Central provides a web-based interface to your forms for data edits, to prev
 
 By default, web forms in Central are powered by `Enketo <https://enketo.org/>`_, a powerful library that was initially developed outside the ODK project and that the ODK team has contributed to.
 
-The ODK team is now developing `ODK Web Forms <https://github.com/getodk/web-forms?tab=readme-ov-file#odk-web-forms>`_ which will eventually replace Enketo in ODK Central. ODK Web Forms is designed to align with ODK Collect and provide a modern user experience. This page describes how to opt into trying ODK Web Forms and documents its functionality.
+The ODK team is now developing `ODK Web Forms <https://github.com/getodk/web-forms?tab=readme-ov-file#odk-web-forms>`_ which will eventually replace Enketo in ODK Central. ODK Web Forms is designed to align with ODK Collect and provide a modern user experience.
 
 To quickly try your forms in ODK Web Forms, see `the preview website <https://getodk.org/web-forms-preview/>`_. This page describes how to :ref:`opt a Central Form into using ODK Web Forms <web-forms-opt-in>` for all web-based functions and documents :ref:`more complex question types <web-forms-question-types>`.
 
@@ -18,7 +18,7 @@ Opting into ODK Web Forms in Central
 ----------------------------------------
 
 .. warning::
-    ODK Web Forms is experimental and does not support all form functionality! Please test your forms carefully. If you opt into using ODK Web Forms for real data collection, we encourage you to go to `the forum's release category <https://forum.getodk.org/c/releases/16>`_ and click on the bell so you are notified when there is a new release. Be sure to verify your forms after each Central release.
+    ODK Web Forms does not yet support all form functionality so please test your forms carefully. If you opt into using ODK Web Forms for real data collection, we encourage you to go to `the forum's release category <https://forum.getodk.org/c/releases/16>`_ and click on the bell so you are notified when there is a new release. Be sure to verify your forms after each Central release.
 
 Starting in Central v2025.1, you can opt individual forms into using `ODK Web Forms <https://github.com/getodk/web-forms?tab=readme-ov-file#odk-web-forms>`_, an alternative to Enketo designed from the ground up to align with ODK Collect. ODK Web Forms is still early in its development. We recommend trying ODK Web Forms if:
 
@@ -29,14 +29,11 @@ Starting in Central v2025.1, you can opt individual forms into using `ODK Web Fo
 
 To opt into ODK Web Forms, go to the :guilabel:`Settings` tab for a specific form. In the :guilabel:`Web Forms` section, select the :guilabel:`ODK Web Forms` option, read the description, and confirm that you want to opt in.
 
-If you make some test submission using Web Forms and find that all of the functionality that you need is supported well, Web Forms can be used to collect real data.
+If you make some test submissions using Web Forms and find that all of the functionality that you need is supported well, Web Forms can be used to collect real data.
 
-You can see what functionality is currently supported `on Github <https://github.com/getodk/web-forms?tab=readme-ov-file#feature-matrix>`_. In particular, please note that the following sometimes subtle features are not yet supported:
+You can see what functionality is currently supported `on Github <https://github.com/getodk/web-forms?tab=readme-ov-file#feature-matrix>`_.
 
-* :ref:`Dynamic defaults <dynamic-defaults>` and the XLSForm ``trigger`` column
-* :ref:`Metadata questions <metadata>`
-
-You can change a form's setting between Enketo and Web Forms at any time. Any form links that users already have will continue to work and will reflect the setting on the server at the time that the user loads the form link. Existing submissions are not affected by switching between web forms libraries.
+You can change a form's setting between Enketo and Web Forms at any time. Any form links that users already have will continue to work and will reflect the setting on the server at the time that the user loads the form link. Existing submissions are not affected by switching between web forms options.
 
 .. _web-forms-question-types:
 
@@ -46,16 +43,15 @@ Question types
 To know which question types are currently supported in Web Forms, see `the Github feature matrix <https://github.com/getodk/we
 b-forms?tab=readme-ov-file#feature-matrix>`_. While most supported functionality is very similar to Collect's, this section describes question types with more complex functionality or that differ from Collect.
 
-Web Forms currently supports 5 geo question types and appearances:
+Geospatial question types
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* :ref:`Geopoint <geopoint-widget>`
-* :ref:`Maps appearance <geopoint-maps>`
-* :ref:`Placement-map appearance <placement-map-widget>`
-* :ref:`Geoshape <geotrace-widget>`
-* :ref:`Geotrace <geoshape-widget>`
+Web Forms supports :ref:`all of the geo questions supported by Collect <location-widgets>` with some user experience differences to account for the web context. Note that Web Forms users could be filling out forms from computers which generally do not provide as high accuracy locations as mobile devices. Unlike in Collect, using :ref:`start-geopoint <metadata-start-geopoint>` does not currently result in faster location capture.
+
+When designing the geospatial question types for Web Forms, we considered not only the data collection experience but also the data editing experience. In particular, when editing ``geopoint`` questions, Web Forms always shows the :ref:`placement map <web-forms-placement-map>` experience, even if another appearance was used to capture the point.
 
 Geopoint without appearance
-~~~~~~~~
+"""""""""""""""""""""""""""""
 
 The default geopoint question allows the user to get the location without a map interface. When a user taps the **Get location** button, a dialog will appear, showing the accuracy of the currently-available location or no value if location permissions are not granted yet. If location permissions are not granted yet, the user will also be asked to grant location permissions by their browser.
 
@@ -74,15 +70,17 @@ Once location permissions are granted to Web Forms, it will start reading locati
   :alt: Web forms location-finding dialog
 
 Geopoint with `maps` appearance
-~~~~~~~~
+"""""""""""""""""""""""""""""""
 
 The `maps` appearance allows users to capture their current location while viewing it on a map. After tapping **Get location** and granting permissions, the map automatically zooms to the user’s current location and saves the location. The marker turns green to indicate success and the bottom panel displays Point saved. The user can remove the saved point and try again if needed.
 
 .. image:: /img/web-forms/geopoint-maps-appearance.*
   :alt: Web forms geopoint with maps appearance
 
+.. _web-forms-placement-map:
+
 Geopoint with `placement-map` appearance
-~~~~~~~~
+"""""""""""""""""""""""""""""""""""""""""
 
 The `placement-map` appearance is similar to `maps`, but also allows the user to manually move the marker. If location permissions are granted, the map zooms to the user’s current location. The marker is saved by tapping on the map. The marker can be dragged to adjust the position. The user can remove the marker and try again at any time before moving on.
 
@@ -92,7 +90,7 @@ For both `maps` and `placement-map` appearances, location capture stops when the
   :alt: Web forms geopoint with placement-map appearance
 
 Geoshape
-~~~~~~~~
+""""""""
 
 A series of points that form a closed polygon. Points can be added by tapping the screen to place each point. Each coordinate is represented by small circles with outlines. These are connected by lines. The last point that was entered has a darker outline. Use the trash bin icon to delete the entire shape or the undo button to go back a step.
 
@@ -100,7 +98,7 @@ A series of points that form a closed polygon. Points can be added by tapping th
   :alt: Web forms geoshape
 
 Geotrace
-~~~~~~~~
+"""""""""
 
 A series of points. Identical to geoshape except that the first and last point may be different and at least 2 points are required.
 
@@ -115,7 +113,7 @@ For scenarios requiring precise coordinate adjustments, an advanced panel can be
   :alt: Web forms advanced panel for geoshape and geotrace
 
 Image
-~~~~~~~~
+~~~~~
 
 .. image:: /img/web-forms/image-desktop.*
   :class: central-partial-screen
@@ -146,16 +144,6 @@ By default, choices with images are displayed in a grid. Each choice container i
 
 If you would like to display one choice with image per row, as is the default for Collect, you can use the :ref:`columns-1 appearance <select-columns-n-widget>`.
 
-Form styling
-~~~~~~~~~~~~~
-
-.. seealso:: :ref:`Markdown in forms <markdown-in-forms>`
-
-You can style text such as notes, labels, hints, options, and validation messages using Markdown format.
-
-.. image:: /img/web-forms/form-styling.*
-  :alt: Styling in Web Forms
-
 .. _web-forms-select-from-map:
 
 Select one from map
@@ -176,3 +164,13 @@ The following features are not supported yet:
 - Offline tiles
 - Map layer customization (e.g., switching to Google Maps or Mapbox, terrain or satellite views)
 - Custom styling for points (``marker-color`` and ``marker-symbol``), lines (``stroke`` and ``stroke-width``) and shapes (``stroke``, ``stroke-width``, and ``fill``)
+
+Form styling
+~~~~~~~~~~~~~
+
+.. seealso:: :ref:`Markdown in forms <markdown-in-forms>`
+
+You can style text such as notes, labels, hints, options, and validation messages using Markdown format.
+
+.. image:: /img/web-forms/form-styling.*
+  :alt: Styling in Web Forms
