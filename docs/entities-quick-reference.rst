@@ -295,21 +295,22 @@ _____________________________________________
 
 To create or update Entities in multiple lists, add rows to your ``entities`` sheet. Each row must have a unique ``list_name`` value.
 
-On the ``survey`` sheet, you must use the ``list_name`` value followed by a ``#`` as a prefix to your ``save_to`` values. For example, if you would like to write to the ``households`` and ``hh_members`` lists, all ``save_to`` values for ``households`` must start with ``households#`` and all ``save_to`` values for ``hh_members`` must start with ``hh_members#``. Fields with ``save_to`` values for different lists much each be in their own group or repeat and a field's value can only be saved to a single property.
+On the ``survey`` sheet, you must use the ``list_name`` value followed by a ``#`` as a prefix to your ``save_to`` values. For example, if you would like to write to the ``households`` and ``members`` lists, all ``save_to`` values for ``households`` must start with ``households#`` and all ``save_to`` values for ``members`` must start with ``members#``. Fields with ``save_to`` values for different lists much each be in their own group or repeat and a field's value can only be saved to a single property.
 
 .. rubric:: XLSForm: create Entities in multiple lists
 
 .. csv-table:: entities
    :header: list_name, label
 
-   households, "concat(${hhid}, ' (', ${head_full_name}, ')')"
+   households, ${hhid}
    members, ${full_name}
 
 .. csv-table:: survey
    :header: type, name, label, save_to
 
    text, hhid, Household ID, households#id
-   text, head_full_name, Household head full name
+   geopoint, location, Location, households#geometry
+
    begin_repeat, household_member, Household Member
    text, full_name, Full name
    text, phone_number, Phone number, members#phone
@@ -318,4 +319,4 @@ On the ``survey`` sheet, you must use the ``list_name`` value followed by a ``#`
 
 .. note::
 
-   The ``hhid`` property of the ``hh_members`` links each household member to the household it belongs to. 
+   The ``hhid`` property of the ``members`` links each household member to its household, making it a foreign key.
