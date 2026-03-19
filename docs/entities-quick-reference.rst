@@ -272,21 +272,21 @@ _______________________________________________________
 
 To create or update multiple Entities in the same list, use a ``repeat`` on the ``survey`` sheet of your form definition to capture information about each Entity. All ``save_to`` values must be in the same ``repeat`` (or groups in that repeat) and your ``label`` and other expressions on the ``entities`` sheet may only reference fields in the ``repeat`` (or groups in that repeat). Other than that, your ``entities`` sheet will look exactly the same as with a single Entity create or update.
 
-In the example below, each instance of the ``household_member`` repeat creates a new Entity in the ``participants`` list.
+In the example below, each instance of the ``household_member`` repeat creates a new Entity in the ``respondents`` list.
 
 .. rubric:: XLSForm: create multiple Entities in the same list
 
 .. csv-table:: entities
    :header: list_name, label
 
-   participants, ${full_name}
+   trees, ${tree_id}
 
 .. csv-table:: survey
    :header: type, name, label, save_to
 
-   begin_repeat, household_member, Household Member
-   text, full_name, Full name
-   text, phone_number, Phone number, phone
+   begin_repeat, tree, Tree
+   barcode, tree_id, Tree ID
+   text, year_planted, Year planted, year_planted
    end_repeat
 
 
@@ -315,4 +315,7 @@ On the ``survey`` sheet, you must use the ``list_name`` value followed by a ``#`
    text, phone_number, Phone number, hh_members#phone
    calculate, member_hh, , hh_members#hhid
    end_repeat
-   
+
+.. note::
+
+   The ``hhid`` property of the ``hh_members`` that links each household member to the household it belongs to. 
