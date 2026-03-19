@@ -6,23 +6,40 @@ Using regular expressions
 Regular Expressions
 ---------------------
 
-A regular expression is a special text string for describing a search pattern. Regular expressions find an important use in specifying constraints in your forms. You might want to set constraints on the length, character set allowed and various other fields in the data input by the user. All this can be achieved by using regular expression constraints in your form.
+A regular expression is a special text string for describing a search pattern. You can use the :func:`regex` function in your forms to set constraints on the structure of text data input by the user.
+
+For example, if you ask users to input codes that look like ``CAR_PRC_2015_048``, the following constraint expression would validate that structure:
+
+.. code-block::
+
+  regex(.,'^[A-Z]{3}+_+[A-Z]{3}+_+[0-9]{4}+_+[0-9]{3,4}$')
+
+.. tip::
+
+  Only ask users to type in complex codes if absolutely necessary. Consider instead building the code from the values of multiple other fields. For example, the code above could be calculated by having the user select administrative levels from friendly dropdowns, the year could be computed from metadata, and the user might be prompted for a serial code.
 
 Some basic operations on regular expressions are:
 
 .. startignore
 
-1. **Boolean or**: A vertical bar separates alternatives. For example, ``gray|grey`` can match gray or grey. 
-2. **Grouping Parentheses**: They are used to define the scope and precedence of the operators. For example, ``gray|grey`` and ``gr(a|e)y`` are equivalent patterns which both describe the set of gray or grey.
-3. **Quantification**: A quantifier after a token (such as a character) or group specifies how often that preceding element is allowed to occur. 
+#. **Boolean or**: A vertical bar separates alternatives. For example, ``gray|grey`` can match gray or grey.
 
-    - Square brackets indicate the occurrence of elements within. For example, ``[abc]`` matches either a, b or c character, ``[a-g]`` matches any character from a to g, ``[^abc]`` matches any character except a,b or c.
-    - The question mark indicates zero or one occurrence of the preceding element. For example, ``colou?r`` matches both color and colour.
-    - The asterisk indicates zero or more occurrences of the preceding element. For example, ``ab*c`` matches ac, abc, abbc, abbbc, and so on.
-    - The plus sign indicates one or more occurrences of the preceding element. For example, ``ab+c`` matches abc, abbc, abbbc, and so on, but not ac.
-    - ``{n}``: The preceding item is matched exactly n times. 
-    - ``{min,}``: The preceding item is matched min or more times. 
-    - ``{min,max}``: The preceding item is matched at least min times, but not more than max times.
+#. **Grouping parentheses**: They are used to define the scope and precedence of the operators. For example, ``gray|grey`` and ``gr(a|e)y`` are equivalent patterns which both describe the set of gray or grey.
+
+#. **Character classes**: Square brackets define a set of characters, any one of which can match at a given position.
+
+   - ``[abc]`` matches either a, b, or c.
+   - ``[a-g]`` matches any character from a to g.
+   - ``[^abc]`` matches any character except a, b, or c.
+
+#. **Quantification**: A quantifier after a character, character class, or group specifies how often that preceding element is allowed to occur.
+
+   - The question mark indicates zero or one occurrence of the preceding element. For example, ``colou?r`` matches both color and colour.
+   - The asterisk indicates zero or more occurrences of the preceding element. For example, ``ab*c`` matches ac, abc, abbc, abbbc, and so on.
+   - The plus sign indicates one or more occurrences of the preceding element. For example, ``ab+c`` matches abc, abbc, abbbc, and so on, but not ac.
+   - ``{n}``: The preceding item is matched exactly n times. 
+   - ``{min,}``: The preceding item is matched min or more times. 
+   - ``{min,max}``: The preceding item is matched at least min times, but not more than max times.
 
 .. endignore
 
@@ -31,7 +48,6 @@ For a clear understanding of regular expressions, try these regex online checker
 - https://regex101.com/
 - https://www.regextester.com/
 - https://regexr.com/
-- http://www.regexe.com/.
 
 .. _tips-on-regex:
 
@@ -51,16 +67,6 @@ Tips on using regular expressions
 
    "text", "ex", "Enter example", "regex(.,'^[a-zA-Z]{0,6}$')", "Input can have a maximum of 6 alphabetic characters."
 
- In **XForm XML**:
-
- .. code-block:: xml
-
-   <bind constraint="regex(.,'^[a-zA-Z]{0,6}$')" jr:constraintMsg="Input can have a maximum of 6 alphabetic characters." nodeset="/regex_ex/ex" type="string"/>
-
-   <input ref="/regex_ex/ex">
-      <label>Enter example</label>
-    </input>
-
  Instead if you used a constraint of the form ``regex(.,'^[a-zA-Z]{6}$')``, it would require an input of exactly six alphabetic characters.
 
  .. note::
@@ -79,24 +85,16 @@ Tips on using regular expressions
    :widths: auto
 
    "text", "tel_no", "Enter your Telephone number", "regex(.,'^(([0-9]{1})*[- .(]*([0-9]{3})[- .)]*[0-9]{3}[- .]*[0-9]{4})+$')", "Telephone numbers should have 10 digits with optional separators.", "numbers"
-
- In **XForm XML**:
-
- .. code-block:: xml
-     
-   <bind constraint="regex(.,'^(([0-9]{1})*[- .(]*([0-9]{3})[- .)]*[0-9]{3}[- .]*[0-9]{4})+$')" jr:constraintMsg="Telephone numbers should have 10 digits with optional separators." nodeset="/regex_ex/tel_no" type="string"/> 
-   
-   <input appearance="numbers" ref="/regex_ex/tel_no">
-      <label>Enter your Telephone number"</label>
-   </input>
-
- An other alternative to this would be to use a regular expression of the form: ``regex(string(.),'...')``. But this should be avoided since the value of *string(.)* would be after whatever you entered was converted to an integer. So if you entered 0004, string(.) would be 4.
    
 - Integers are limited by binary representation to 9 decimal digits. If you want something longer (like 10 numbers) then make sure to use a text type with appearance as numbers and add a constraint restricting the input string to be a number. Constraint is required since appearance setting changes the keyboard style of the pop-up keyboard to the number keyboard when you attempt to enter data into the field but does not prevent non-numbers from being entered. This relies upon the device's keyboard supporting (See `this <http://developer.android.com/reference/android/text/InputType.html#TYPE_NUMBER_FLAG_SIGNED>`_).
 
  For example, a constraint of the form ``regex(.,'^[0-9]{11}$')`` will restrict the input string to be a number of exactly 11 digits.
 
-- Avoid using complex regex patterns as that may cause stack overflow crashes. Also, avoid placing constraints on names since your regex will certainly not capture all the punctuation or random characters that names can contain and they are hard error-prone and hard to maintain.  
+.. note::
+
+  Avoid placing restrictive constraints on proper nouns. These can have a wide range of structures with punctuation or characters that you may not expect. Exhaustive regex on proper nouns are often error-prone and hard to maintain.
+  
+  In general, complex regex patterns may cause stack overflow crashes.
 
 .. seealso::
 
