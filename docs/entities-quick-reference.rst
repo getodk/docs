@@ -1,6 +1,7 @@
 .. spelling:word-list::
     hh
     num
+    hhid
 
 
 Entity Quick Reference
@@ -46,16 +47,15 @@ ______________
 
 The ``entities`` sheet is included in the `XLSForm template <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_, but you can add it yourself if your form does not have one. The required column headers are ``list_name`` and ``label`` and there are several optional column headers depending on your desired functionality.
 
-* Under ``list_name``, write the name of the Entity List to create or update Entities in
+* Under ``list_name``, write the name of the Entity List to create or update Entities in.
 
-* Under ``label``, write how to build a label for each Entity
+* Under ``label``, write how to build a label for each Entity.
   
   * We recommend using :doc:`concat </form-logic/>` with fields from your form.
   * You can use the label to show status information about the Entity, including using emoji like ✅ or ⚪️.
   * The system does not enforce uniqueness of label values but you'll generally want to use values that you guarantee are unique through constraints or other mechanisms.
 
-.. note::
-   Currently, the ``entities`` sheet can only have one row because each submission can only create or update a single Entity.
+* The ``entities`` sheet can have multiple rows to :ref:`create or update multiple Entities <quick-multiple-entities>`.
 
 Create
 ~~~~~~
@@ -261,15 +261,64 @@ _________________
 
 Every Entity has a ``__version`` number available. Additional system properties such as ``__createdAt``, ``__updatedAt``, ``__createdBy`` are also available on the Entity export and in OData.
 
+
+.. _quick-multiple-entities:
+
 Creating or updating multiple Entities
 --------------------------------------
 
 Create or update multiple Entities in the same list
----------------------------------------------------
+_______________________________________________________
 
-To create or update multiple Entities in the same list, use a ``repeat`` on the ``survey`` sheet of your form definition to capture information about each Entity. All ``save_to`` values must be in the same repeat and your ``label`` and other expressions on the ``entities`` sheet may only reference fields in the ``repeat``. Other than that, your ``entities`` sheet will look exactly the same as with a single Entity create or update.
+To create or update multiple Entities in the same list, use a ``repeat`` on the ``survey`` sheet of your form definition to capture information about each Entity. All ``save_to`` values must be in the same ``repeat`` (or groups in that repeat) and your ``label`` and other expressions on the ``entities`` sheet may only reference fields in the ``repeat`` (or groups in that repeat). Other than that, your ``entities`` sheet will look exactly the same as with a single Entity create or update.
+
+In the example below, each instance of the ``tree`` repeat creates a new Entity in the ``trees`` list. The ``tree_id`` is saved as the label.
+
+.. rubric:: XLSForm: create multiple Entities in the same list
+
+.. csv-table:: entities
+   :header: list_name, label
+
+   trees, ${tree_id}
+
+.. csv-table:: survey
+   :header: type, name, label, save_to
+
+   begin_repeat, tree, Tree
+   barcode, tree_id, Tree ID
+   text, year_planted, Year planted, year_planted
+   end_repeat
+
 
 Create or update Entities in multiple lists
---------------------------------------------
+_____________________________________________
 
-To create or update Entities in multiple lists, add rows to your ``entities`` sheet. Each row must have a unique ``list_name`` value. That is, the only way to create or update multiple Entities in the same list is to use a ``repeat``. On the ``survey`` sheet, you must use the ``list_name`` value followed by a ``#`` as a prefix to your ``save_to`` values. For example, if you would like to write to the ``households`` and ``participants`` lists, all ``save_to`` values for ``households`` must start with ``households#`` and all ``save_to`` values for ``participants`` must start with ``participants#``.
+To create or update Entities in multiple lists, add rows to your ``entities`` sheet. Each row must have a unique ``list_name`` value.
+
+On the ``survey`` sheet, you must use the ``list_name`` value followed by a ``#`` as a prefix to your ``save_to`` values. For example, if you would like to write to the ``households`` and ``members`` lists, all ``save_to`` values for ``households`` must start with ``households#`` and all ``save_to`` values for ``members`` must start with ``members#``.
+
+Fields with ``save_to`` values for different lists must each be in their own group or repeat and a field's value can only be saved to a single property.
+
+.. rubric:: XLSForm: create Entities in multiple lists
+
+.. csv-table:: entities
+   :header: list_name, label
+
+   households, ${hhid}
+   members, ${full_name}
+
+.. csv-table:: survey
+   :header: type, name, label, save_to
+
+   text, hhid, Household ID, households#id
+   geopoint, location, Location, households#geometry
+
+   begin_repeat, household_member, Household Member
+   text, full_name, Full name
+   text, phone_number, Phone number, members#phone
+   calculate, member_hhid, , members#hhid
+   end_repeat
+
+.. note::
+
+   The ``hhid`` property of the ``members`` links each household member to its household, making it a foreign key.
