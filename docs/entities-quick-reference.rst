@@ -295,7 +295,9 @@ _____________________________________________
 
 To create or update Entities in multiple lists, add rows to your ``entities`` sheet. Each row must have a unique ``list_name`` value.
 
-On the ``survey`` sheet, you must use the ``list_name`` value followed by a ``#`` as a prefix to your ``save_to`` values. For example, if you would like to write to the ``households`` and ``members`` lists, all ``save_to`` values for ``households`` must start with ``households#`` and all ``save_to`` values for ``members`` must start with ``members#``. Fields with ``save_to`` values for different lists much each be in their own group or repeat and a field's value can only be saved to a single property.
+On the ``survey`` sheet, you must use the ``list_name`` value followed by a ``#`` as a prefix to your ``save_to`` values. For example, if you would like to write to the ``households`` and ``members`` lists, all ``save_to`` values for ``households`` must start with ``households#`` and all ``save_to`` values for ``members`` must start with ``members#``.
+
+Fields with ``save_to`` values for different lists must each be in their own group or repeat and a field's value can only be saved to a single property.
 
 .. rubric:: XLSForm: create Entities in multiple lists
 

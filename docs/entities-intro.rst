@@ -210,7 +210,7 @@ We regularly review our analytics to look for opportunities for performance impr
 Can I create multiple Entities with a single submission?
 ---------------------------------------------------------
 
-Starting in Central v2025.4.3 and Collect v2026.1.0, a single form submission can create multiple Entities. To create multiple Entities in the same list, put your ``save_to`` values targeting that list in a repeat.
+Yes, starting in Central v2025.4.3 and Collect v2026.1.0, a single form submission can create multiple Entities. To create multiple Entities in the same list, put your ``save_to`` values targeting that list in a repeat.
 
 You can also create Entities in different lists by adding multiple rows to the ``entities`` sheet of your XLSForm definition. To establish relationships, you can save one Entity's ID to a property in another Entity. You can also update multiple Entities in the same way. See :ref:`quick reference <quick-multiple-entities>` for details.
 
