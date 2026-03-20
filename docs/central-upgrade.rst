@@ -59,7 +59,7 @@ Upgrade steps
 
 .. note::
 
-  If you have made local changes to the files, you may have to start with ``git stash``, then run ``git stash pop`` after you perform the ``pull``. If you aren't sure, run ``git pull`` and it will tell you.
+  If you've made local changes you want to keep, run ``git stash``, then ``git pull``, and then ``git stash pop``. This temporarily saves your changes, gets the latest code from ODK, then reapplies your changes.
 
 3. **Get the latest client and server**.
 
