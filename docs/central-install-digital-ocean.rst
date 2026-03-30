@@ -457,7 +457,7 @@ Using a Custom Database Server
 .. warning::
   Using PostgreSQL version 14 isn't strictly required, but we only test with and support PostgreSQL 14.
 
-  Using a database server that is not on your local network, may result in poor performance.
+  Using a database server that is not on your local network may result in poor performance.
 
 Central comes with a PostgreSQL v14.x database server to store your data, which Central will connect to by default.
 However, you may want to connect to and use a database that runs elsewhere, for instance, one provisioned by your organization.
