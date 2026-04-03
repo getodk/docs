@@ -1,4 +1,4 @@
-sphinx
+sphinx<9.0
 sphinx-autobuild
 sphinxcontrib-spelling
 furo
