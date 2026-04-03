@@ -202,6 +202,24 @@ Looking at this view, you can match up the columns and ensure your data is loadi
 
 Click on the :guilabel:`Append data` button to import your data into your Entity List. Be sure you are ready to proceed: there isn't currently an easy way to undo an import.
 
+.. _central-entities-create-manually:
+
+Creating Entities manually
+--------------------------
+
+You can create Entities directly in the Central web interface, in addition to creating them through form submissions or CSV import.
+
+This is useful for adding a small number of records, correcting missing entries, or testing workflows. There is no validation when editing this way. If you would like to specify constraints or other relationships between values, create an update form that uses :ref:`dynamic defaults <dynamic-defaults>`.
+
+.. image:: /img/central-entities/entity-create-manually.jpg
+
+To manually create an Entity:
+
+#. Go to the :guilabel:`Entities` tab
+#. Click :guilabel:`New Entity`
+#. Enter values for the required properties
+#. Click :guilabel:`Create`
+
 .. _central-entities-authoring:
 
 Creating Forms to use Entities
@@ -394,7 +412,7 @@ Entity List Settings
 
 On the :guilabel:`Settings` tab, you can choose whether Entities are created immediately when they are first received by Central, or if Central should wait until the Submission is approved before creating any Entities from it.
 
-   .. image:: /img/central-entities/entity-settings.png
+.. image:: /img/central-entities/entity-settings.png
 
 Note that only one of these two behaviors can be chosen at a time. If you change the setting from "on approval" to "when received" but you still have unapproved Submissions, Central will not ever be told to make Entities out of these Submissions. If this is the case for you and you try to make this setting change, you will see a special message and you will have the option to convert all pending (not approved or rejected) Submissions into Entities right away.
 
@@ -520,7 +538,7 @@ Deleting Entity properties
 
 You can delete a property from an Entity List if it is no longer needed. 
 
-A property can only be deleted if its value is not set in any Entities. If its value is set in some Entities, you must :ref:`edit each Entity <entral-entities-edit>` to clear the values. Property deletion is currently intended to be used during the workflow testing phase. If you need to clear many Entities' values, you can use :ref:`the API <updating-an-entity>`.
+A property can only be deleted if its value is not set in any Entities. If its value is set in some Entities, you must :ref:`edit each Entity <entral-entities-edit>` to clear the values. Property deletion is currently intended to be used during the workflow testing phase. If you need to clear many Entities' values, you can use the API.
 
 .. image:: /img/central-entities/entity-property-delete.jpg
 
