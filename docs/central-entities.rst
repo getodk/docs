@@ -398,7 +398,7 @@ See a sample form `here <https://docs.google.com/spreadsheets/d/1R3Ja6hOjjntE42H
 
 .. _central-entities-managing:
 
-Managing Entitiy Lists
+Managing Entity Lists
 -----------------------
 
 To browse all Entity Lists in a Project, go to the :guilabel:`Entity Lists` tab. You'll see all Entity Lists created by Forms in that Project. Click any Entity List to view its Entities, properties, and settings.
@@ -538,7 +538,7 @@ Deleting Entity properties
 
 You can delete a property from an Entity List if it is no longer needed. 
 
-A property can only be deleted if its value is not set in any Entities. If its value is set in some Entities, you must :ref:`edit each Entity <entral-entities-edit>` to clear the values. Property deletion is currently intended to be used during the workflow testing phase. If you need to clear many Entities' values, you can use the API.
+A property can only be deleted if its value is not set in any Entities. If its value is set in some Entities, you must :ref:`edit each Entity <central-entities-edit>` to clear the values. Property deletion is currently intended to be used during the workflow testing phase. If you need to clear many Entities' values, you can use the API.
 
 .. image:: /img/central-entities/entity-property-delete.jpg
 
