@@ -387,6 +387,20 @@ To browse all Entity Lists in a Project, go to the :guilabel:`Entity Lists` tab.
 
 .. image:: /img/central-entities/entity-lists.png
 
+.. _central-entities-settings:
+
+Entity List Settings
+~~~~~~~~~~~~~~~~~~~~~
+
+On the :guilabel:`Settings` tab, you can choose whether Entities are created immediately when they are first received by Central, or if Central should wait until the Submission is approved before creating any Entities from it.
+
+   .. image:: /img/central-entities/entity-settings.png
+
+Note that only one of these two behaviors can be chosen at a time. If you change the setting from "on approval" to "when received" but you still have unapproved Submissions, Central will not ever be told to make Entities out of these Submissions. If this is the case for you and you try to make this setting change, you will see a special message and you will have the option to convert all pending (not approved or rejected) Submissions into Entities right away.
+
+Select either option and you should see a confirmation the setting has changed.
+
+You can also select whether App Users and Data Collectors receive access to all Entities, or only the ones they create.
 
 .. _deleting-entity-lists:
 
@@ -516,21 +530,6 @@ To delete a property:
 #. Locate the property you want to delete
 #. Click the delete icon
 #. Confirm the deletion
-
-.. _central-entities-settings:
-
-Entity List Settings
-------------------------------
-
-On the :guilabel:`Settings` tab, you can choose whether Entities are created immediately when they are first received by Central, or if Central should wait until the Submission is approved before creating any Entities from it.
-
-   .. image:: /img/central-entities/entity-settings.png
-
-Note that only one of these two behaviors can be chosen at a time. If you change the setting from "on approval" to "when received" but you still have unapproved Submissions, Central will not ever be told to make Entities out of these Submissions. If this is the case for you and you try to make this setting change, you will see a special message and you will have the option to convert all pending (not approved or rejected) Submissions into Entities right away.
-
-Select either option and you should see a confirmation the setting has changed.
-
-You can also select whether App Users and Data Collectors receive access to all Entities, or only the ones they create.
 
 .. _central-entities-update-conflicts:
 
