@@ -35,11 +35,33 @@ info:
 
     > ⚠️  In this API and in the related [ODK XForms specification](https://getodk.github.io/xforms-spec/entities), collections of `Entities` are referred to as `Datasets`. The term "Entity List" is used for this concept in the Central frontend UI, user documentation, and all other text intended for end users who are not developers.
 
-    Finally, **system information and configuration** is available via a set of specialized resources. Currently, you may set the Usage Reporting configuration and retrieve Server Audit Logs.
+    Finally, **system information and configuration** is available via a set of specialized resources. For example, you may set the Usage Reporting configuration or retrieve Server Audit Logs.
 
     ## Changelog
 
     Here major and breaking changes to the API are listed by version.
+
+    ## ODK Central v2026.1
+
+    **Added**:
+    - Datasets can now be deleted! Deleted Datasets are soft-deleted and remain in the trash for 30 days, during which their Entity data can still be exported as a CSV snapshot. After 30 days they are permanently purged. Unlike Forms, deleted Datasets cannot be restored.
+      - [DELETE /projects/:id/datasets/:name](/central-api-dataset-management/#deleting-a-dataset) to delete a Dataset.
+      - [GET /projects/:id/trash/datasets/:datasetId/entities.csv](/central-api-dataset-management/#downloading-deleted-dataset-entities) to export the Entity data of a deleted Dataset as a CSV.
+      - [DELETE /projects/:id/datasets/:name/properties/:propertyName](/central-api-dataset-management/#deleting-a-property) to delete a Dataset property.
+    - You can now customize the appearance of your server using new [system configuration endpoints](/central-api-system-endpoints/#system-configuration). You can configure a title and description for your login page, as well as a logo and hero image for your server.
+    - Three endpoints gained `ETag` HTTP response headers. These can be used to efficiently revalidate clientside caches.
+      A guide on how to use caching for better performance of data pipelines can be found [here](/using-http-caching).
+      The endpoints that have gained caching information are:
+      - The submission-related OData "[data documents](/central-api-odata-endpoints/#data-document)". The dataset-related OData endpoints are to follow in some future release.
+      - The [`submissions.csv`](/central-api-submission-management/#exporting-root-data-to-plain-csv) endpoint
+      - The [`submissions.csv.zip`](/central-api-submission-management/#exporting-form-submissions-to-csv) endpoint
+    - New [Clear Submission Attachment](/central-api-submission-management/#clearing-a-submission-version-s-attachment) endpoint that works on a specific version of an Submission.
+
+    **Changed**:
+    - Added `deleted` query parameter to [GET /projects/:id/datasets](/central-api-dataset-management/#listing-datasets) to list deleted Datasets with their numeric IDs.
+    - [Restoring a Form](/central-api-form-management/#restoring-a-form) now returns a 409 if a related Dataset has been deleted or a Dataset property that the Form wrote to has been deleted.
+    - The APIs introduced in 2025.3 yielding geographical information from [submissions](/central-api-submission-management/#retrieving-submissions-geodata) and [entities](/central-api-entity-management/#entities-geodata) in GeoJSON format have changed, and are now documented.
+    - Image submission attachments (`image/png`, `image/gif`, `image/jpeg`) are now served with `Content-Disposition: inline` instead of `attachment` when [downloading a Submission Attachment](/central-api-submission-management/#downloading-an-attachment).
 
     ## ODK Central v2025.3
 
@@ -54,13 +76,11 @@ info:
       
       The endpoints are:
       - [GET /projects/:id/datasets/:name/entities.geojson](/central-api-entity-management/#entities-geodata)
-      - [GET /projects/:id/forms/:xmlFormId/submissions.geojson](/central-api-submission-management/#submissions-geodata)
+      - [GET /projects/:id/forms/:xmlFormId/submissions.geojson](/central-api-submission-management/#retrieving-submissions-geodata)
 
     **Changed**:
     - [Download Dataset](/central-api-dataset-management/#download-dataset) API now supports $search query parameter.
     - Added `deleted` query parameter to [GET /projects/:id/forms/:xmlFormId/submissions](/central-api-submission-management/#listing-all-submissions-on-a-form) to retrieve deleted submissions.
-
-    **Changed**:
     - [GET /users](/central-api-accounts-and-users/#listing-users) and [GET /users/:actorId](/central-api-accounts-and-users/#getting-user-details) now include `lastLoginAt` field.
 
     ## ODK Central v2025.2
@@ -288,7 +308,7 @@ info:
 
     * `GET /projects/…/forms/…/submissions/…/diffs` will return the [changes between each version](/central-api-submission-management/#getting-changes-between-versions) of a Submission.
 
-    * You can set the [Usage Reporting configuration](/central-api-system-endpoints/#usage-reporting-configuration) to choose whether the server will share anonymous usage data with the Central team. By default, no usage information will be sent at all.
+    * You can set the [Usage Reporting configuration](/central-api-system-endpoints/#system-configuration) to choose whether the server will share anonymous usage data with the Central team. By default, no usage information will be sent at all.
 
     * You can also [preview the Usage Report](/central-api-system-endpoints/#usage-report-preview) to see exactly what information would be sent in a Usage Report.
 
@@ -658,7 +678,7 @@ tags:
     * The **data documents**, linked from the Service Document, are a simple JSON representation of the Submission or Entity data, conforming to the schema we describe in our Metadata Document.
 - name: System Endpoints
   description: There are some resources available for getting or setting system information
-    and configuration. You can set the [Usage Reporting configuration](/central-api-system-endpoints/#usage-reporting-configuration)
+    and configuration. For example, you can set the [Usage Reporting configuration](/central-api-system-endpoints/#system-configuration)
     for the server, retrieve the [Server Audit Logs](/central-api-system-endpoints/#server-audit-logs),
     or perform a [Direct Backup](/central-api-system-endpoints/#direct-backup).
 - name: Encryption
@@ -875,7 +895,7 @@ tags:
     To facilitate testing, there is an alternative collection of OData endpoints that will give access to the submissions uploaded to a Draft Form. This can be useful for ensuring that changes to your form do not break downstream dashboards or applications.
 
     They are all identical to the non-Draft OData endpoints, but they will only return the Draft Form schema and Submissions.
-- name: Usage Reporting Configuration
+- name: System Configuration
   x-parent-tag: System Endpoints
   description: |-
     _(introduced: version 1.3)_
@@ -884,7 +904,7 @@ tags:
   description: |-
     _(introduced: version 1.3)_
 
-    An Administrator of Central may opt in to sending periodic reports summarizing usage. Configuration of this reporting is described [here](/central-api-system-endpoints/#usage-reporting-configuration). For added transparency, the API provides a preview of the reported metrics.
+    An Administrator of Central may opt in to sending periodic reports summarizing usage. Configuration of this reporting is described [here](/central-api-system-endpoints/#system-configuration). For added transparency, the API provides a preview of the reported metrics.
 - name: Server Audit Logs
   x-parent-tag: System Endpoints
   description: |-
@@ -941,6 +961,8 @@ tags:
     * `dataset.create` when a Dataset is created.
     * `dataset.update` when a Dataset is updated.
     * `dataset.update.publish` when a Dataset is published.
+    * `dataset.delete` when a Dataset is deleted.
+    * `dataset.update.property.delete` when a Dataset Property is deleted.
     * `entity.create` when an Entity is created.
     * `entity.error` when there is an error processing a Submission to create or update an Entity.
     * `entity.update.version` when an Entity is updated.
@@ -977,7 +999,7 @@ paths:
         For security reasons, the only possible results are success or failure. No detail is provided upon failure.
 
         Successful responses will come with an HTTP-Only, Secure-Only cookie. This cookie is primarily meant for use by the Central frontend, and we do not recommend relying upon it. It will only work on `GET` requests, and it will only work over HTTPS.
-      operationId: Logging in
+      operationId: logIn
       requestBody:
         content:
           'application/json':
@@ -1032,7 +1054,7 @@ paths:
         Once you have logged in, to use your session token to authenticate with any action, supply it in a request header `Authorization` with a value of `Bearer {token}`, as seen here.
 
         _(There is not really anything at `/v1/example1`; this section only demonstrates how generally to use Session Bearer Token Authentication.)_
-      operationId: Session Authentication
+      operationId: sessionAuthentication
       parameters:
       - name: Authorization
         in: header
@@ -1065,7 +1087,7 @@ paths:
         Unlike the standard, we do not require the client to first send an unauthenticated request and retry the request only after receiving a `WWW-Authenticate` response, and in fact we will never send the `WWW-Authenticate` header. This is mostly because, as noted above, we generally discourage the use of this authentication method, and would rather not advertise its use openly. As a result, if you wish to use Basic Authentication, directly supply the header on any request that needs it.
 
         _(There is not really anything at `/v1/example2`; this section only demonstrates how generally to use Basic Authentication.)_
-      operationId: Using Basic Authentication
+      operationId: useBasicAuthentication
       parameters:
       - name: Authorization
         in: header
@@ -1092,7 +1114,7 @@ paths:
         `/v1/key/!Ms7V3$Zdnd63j5HFacIPFEvFAuwNqTUZW$AsVOmaQFf$vIC!F8dJjdgiDnJXXOt/example/request/path`
 
         _(There is not really anything at `/v1/example3`; this section only demonstrates how generally to use App User Authentication.)_
-      operationId: Using App User Authentication
+      operationId: useAppUserAuthentication
       parameters:
       - name: appUser
         in: path
@@ -1122,7 +1144,7 @@ paths:
         The token associated with an App User is actually just its Session Token. As a result, although an App User Token can uniquely be used as a URL prefix as described here, the session associated with it can be revoked in exactly the same way a session is logged out, by issuing a `DELETE` request to its Session resource.
 
         Note, however, that an App User cannot revoke itself; a `User` must perform this action.
-      operationId: Revoking an App User
+      operationId: revokeAppUser
       parameters:
       - name: token
         in: path
@@ -1147,7 +1169,7 @@ paths:
         This endpoint causes the current session to log itself out. Logging out is not strictly necessary for Web Users; all sessions expire 24 hours after they are created. But it can be a good idea, in case someone else manages to steal your token.
 
         Only the session that was used to authenticate the request is logged out. If the Actor associated with the session has other sessions as well, those are not logged out.
-      operationId: Logging out current session
+      operationId: logOutCurrentSession
       responses:
         "200":
           description: OK
@@ -1168,7 +1190,7 @@ paths:
         If a `q` parameter is given, and it exactly matches an email address that exists in the system, that user's details will always be returned, even for actors who cannot `user.list`. The request must still authenticate as a valid Actor. This allows non-Administrators to choose a user for an action (eg grant rights) without allowing full search.
 
         Actors who cannot `user.list` will always receive `[]` with a `200 OK` response.
-      operationId: Listing all Users
+      operationId: listAllUsers
       parameters:
       - name: q
         in: query
@@ -1203,7 +1225,7 @@ paths:
         Optionally, a password may also be supplied as a part of this request. If it is, the account is immediately usable with the given credentials. However, an email will still be dispatched with claim instructions as above.
 
         Users are not able to do anything upon creation besides log in and change their own profile information. To allow Users to perform useful actions, you will need to [assign them one or more Roles](/central-api-accounts-and-users/#assignments).
-      operationId: Creating a new User
+      operationId: createNewUser
       requestBody:
         content:
           '*/*':
@@ -1303,7 +1325,7 @@ paths:
         Typically, you supply the integer ID to get information about the user associated with that id.
 
         It is also possible to supply the text `current` instead of an integer ID; please see the following endpoint for documentation about this.
-      operationId: Getting User details
+      operationId: getUserDetails
       parameters:
       - name: actorId
         in: path
@@ -1377,7 +1399,7 @@ paths:
         * and should the user attempt to reset their password, they will receive an email informing them that their account has been removed.
 
         The User record will remain on file within the database, so that when for example information about the creator of a Form or Submission is requested, basic details are still available on file. A new User account may be created with the same email address as any deleted accounts.
-      operationId: Deleting a User
+      operationId: deleteUser
       parameters:
       - name: actorId
         in: path
@@ -1407,7 +1429,7 @@ paths:
         * `email` sets the email address associated with the account.
 
         When user details are updated, the `updatedAt` field will be automatically updated.
-      operationId: Modifying a User
+      operationId: modifyUser
       parameters:
       - name: actorId
         in: path
@@ -1507,6 +1529,7 @@ paths:
       x-codegen-request-body-name: body
   /v1/user-preferences/project/{projectId}/{propertyName}:
     put:
+      operationId: setProjectUserPreference
       tags:
         - User Preferences
       summary: Setting a project preference
@@ -1551,6 +1574,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error404'
     delete:
+      operationId: deleteProjectUserPreference
       tags:
         - User Preferences
       summary: Deleting a project preference
@@ -1584,6 +1608,7 @@ paths:
                 $ref: '#/components/schemas/Error404'
   /v1/user-preferences/site/{propertyName}:
     put:
+      operationId: setSiteUserPreference
       tags:
         - User Preferences
       summary: Setting a sitewide preference
@@ -1616,6 +1641,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Success'
     delete:
+      operationId: deleteSiteUserPreference
       tags:
         - User Preferences
       summary: Deleting a sitewide preference
@@ -1654,7 +1680,7 @@ paths:
         If you _do_ use `current`, you may request extended metadata. Supply an `X-Extended-Metadata` header value of `true` to additionally receive:
         - an array of strings of the `verbs` the authenticated User/Actor is allowed to perform server-wide
         - an object containing the preferences of the authenticated User/Actor
-      operationId: Getting authenticated User details
+      operationId: getAuthenticatedUserDetails
       responses:
         "200":
           description: 'This is the Extended Metadata response, if requested via the
@@ -1777,7 +1803,7 @@ paths:
         user's intention by supplying the `old` password alongside the `new`. If you
         simply want to initiate an email-based password reset process, see the following
         endpoint.
-      operationId: Directly updating a user password
+      operationId: setUserPassword
       parameters:
       - name: actorId
         in: path
@@ -1824,7 +1850,7 @@ paths:
         The optional query parameter `invalidate` may be set to `true` to immediately invalidate the user's current password, regardless of whether they complete the reset process. This can be done if, for example, their password has been compromised. In order to do this, though, the request must be performed as an authenticated user with permission to do this. If invalidation is attempted without the proper permissions, the entire request will fail.
 
         If the email address provided does not match any user in the system, that address will still be sent an email informing them of the attempt and that no account was found.
-      operationId: Initating a password reset
+      operationId: initatePasswordReset
       parameters:
       - name: invalidate
         in: query
@@ -1865,7 +1891,7 @@ paths:
         Currently, there are no paging or filtering options, so listing `App User`s will get you every App User in the system, every time.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally retrieve the `lastUsed` timestamp of each App User, as well as to retrieve the details of the `Actor` the App User was `createdBy`.
-      operationId: Listing all App Users
+      operationId: listAllAppUsers
       parameters:
       - name: projectId
         in: path
@@ -1925,7 +1951,7 @@ paths:
         The only information required to create a new `App User` is its `displayName` (this is called "Nickname" in the administrative panel).
 
         When an App User is created, they are assigned no rights. They will be able to authenticate and list forms on a mobile client, but the form list will be empty, as the list only includes Forms that the App User has read access to. Once an App User is created, you'll likely wish to use the [Form Assignments resource](/central-api-form-management/#form-assignments) to actually assign the `app-user` role to them for the Forms you wish.
-      operationId: Creating a new App User
+      operationId: createAppUser
       parameters:
       - name: projectId
         in: path
@@ -2034,7 +2060,7 @@ paths:
         You don't have to delete a `App User` in order to cut off its access. Using a `User`'s credentials you can simply [log the App User's session out](/central-api-authentication/#logging-out-current-session) using its token. This will end its session without actually deleting the App User, which allows you to still see it in the configuration panel and inspect its history. This is what the administrative panel does when you choose to "Revoke" the App User.
 
         That said, if you do wish to delete the App User altogether, you can do so by issuing a `DELETE` request to its resource path. App Users cannot delete themselves.
-      operationId: Deleting an App User
+      operationId: deleteAppUser
       parameters:
       - name: id
         in: path
@@ -2066,7 +2092,7 @@ paths:
         `Role`s will get you every Role in the system, every time. There are no authorization
         restrictions upon this endpoint: anybody is allowed to list all Role information
         at any time.'
-      operationId: Listing all Roles
+      operationId: listAllRoles
       responses:
         "200":
           description: OK
@@ -2096,7 +2122,7 @@ paths:
         The `id` parameter for Roles here and elsewhere will accept the numeric ID associated with that Role, _or_ a `system` name if there is one associated with the Role. Thus, you may request `/v1/roles/admin` on any ODK Central server and receive information about the Administrator role.
 
         As with Role listing, there are no authorization restrictions upon this endpoint: anybody is allowed to get information about any Role at any time.
-      operationId: Getting Role Details
+      operationId: getRoleDetails
       parameters:
       - name: id
         in: path
@@ -2131,7 +2157,7 @@ paths:
         This will list every server-wide assignment, in the form of `actorId`/`roleId` pairs. It will _not_ list Project-specific Assignments. To find those, you will need the [Assignments subresource](/central-api-project-management/#project-assignments) within Projects.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to expand the `actorId` into a full `actor` objects. The Role reference remains a numeric ID.
-      operationId: Listing all Assignments
+      operationId: listAllAssignments
       responses:
         "200":
           description: 'This is the Extended Metadata response, if requested via the
@@ -2168,7 +2194,7 @@ paths:
       description: Given a `roleId`, which may be a numeric ID or a string role `system`
         name, this endpoint lists all `Actors` that have been assigned that Role on
         a server-wide basis.
-      operationId: Listing all Actors assigned some Role
+      operationId: listAllActorsAssignedSomeRole
       parameters:
       - name: roleId
         in: path
@@ -2203,7 +2229,7 @@ paths:
         Given a `roleId`, which may be a numeric ID or a string role `system` name, and a numeric `actorId`, assigns that Role to that Actor across the entire server.
 
         No `POST` body data is required, and if provided it will be ignored.
-      operationId: Assigning an Actor to a server-wide Role
+      operationId: assignActorToServerwideRole
       parameters:
       - name: roleId
         in: path
@@ -2234,7 +2260,7 @@ paths:
       description: Given a `roleId`, which may be a numeric ID or a string role `system`
         name, and a numeric `actorId`, unassigns that Role from that Actor across
         the entire server.
-      operationId: Stripping an Role Assignment from an Actor
+      operationId: stripRoleAssignmentFromActor
       parameters:
       - name: roleId
         in: path
@@ -2269,7 +2295,7 @@ paths:
         Currently, there are no paging or filtering options, so listing `Project`s will get you every Project you have access to.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally retrieve the `appUsers` count of App Users and `forms` count of Forms within the Project, as well as the `lastSubmission` timestamp of the latest submission to any for in the project, if any.
-      operationId: Listing Projects
+      operationId: listProjects
       parameters: 
         - name: forms
           in: query
@@ -2328,7 +2354,7 @@ paths:
       summary: Creating a Project
       description: To create a Project, the only information you must supply (via
         POST body) is the desired name of the Project.
-      operationId: Creating a Project
+      operationId: createProject
       requestBody:
         content:
           '*/*':
@@ -2392,7 +2418,7 @@ paths:
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally retrieve the `appUsers` count of App Users and `forms` count of forms within the Project, as well as the `lastSubmission` timestamp of the latest submission to any for in the project, if any.
 
         In addition, the extended metadata version of this endpoint (but not the overall Project listing) returns an array of the `verbs` the authenticated Actor is able to perform on/within the Project.
-      operationId: Getting Project Details
+      operationId: getProjectDetails
       parameters:
       - name: id
         in: path
@@ -2452,7 +2478,7 @@ paths:
         This adherence to `PUT` semantics would normally imply that Forms could be created or deleted by way of this request, but such an operation could become incredibly complex. We currently return a `501 Not Implemented` error if you supply nested Form information but you do not give us exactly the entire set of extant Forms.
 
         You can inspect the Request format for this endpoint to see the exact nested data structure this endpoint accepts. Each level of increased granularity is optional: you may `PUT` just Project metadata, with no `forms` array, and you may `PUT` Project and Form metadata but omit `assignments` from any Form, in which case the omitted detail will be left as-is.
-      operationId: Deep Updating Project and Form Details
+      operationId: deepUpdateProjectAndFormDetails
       parameters:
       - name: id
         in: path
@@ -2561,7 +2587,7 @@ paths:
         and make it permanently inaccessible. Do not do this unless you are certain
         you will never need any of its data again. For now, deleting a Project will
         not purge its Forms. (We will change that in a future release.)
-      operationId: Deleting a Project
+      operationId: deleteProject
       parameters:
       - name: id
         in: path
@@ -2585,7 +2611,7 @@ paths:
         The Project name may be updated, as well as the Project description and the `archived` flag.
 
         By default, `archived` is not set, which is equivalent to `false`. If `archived` is set to `true`, the Project will be sorted to the bottom of the list, and in the web management application the Project will become effectively read-only. API write access will not be affected.
-      operationId: Updating Project Details
+      operationId: updateProjectDetails
       parameters:
       - name: id
         in: path
@@ -2665,7 +2691,7 @@ paths:
         [Project Managed Encryption](/central-api-encryption) can be enabled via the API. To do this, `POST` with the `passphrase` and optionally a reminder `hint` about the passphrase. If managed encryption is already enabled, a `409` error response will be returned.
 
         Enabling managed encryption will modify all unencrypted forms in the project, and as a result the `version` of all forms within the project will also be modified. It is therefore best to enable managed encryption before devices are in the field. Any forms in the project that already have self-supplied encryption keys will be left alone.
-      operationId: Enabling Project Managed Encryption
+      operationId: enableProjectManagedEncryption
       parameters:
       - name: id
         in: path
@@ -2779,7 +2805,7 @@ paths:
         This will list every assignment upon this Project, in the form of `actorId`/`roleId` pairs.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to expand the `actorId` into a full `actor` objects. The Role reference remains a numeric ID.
-      operationId: Listing all Project Assignments
+      operationId: listAllProjectAssignments
       parameters:
       - name: projectId
         in: path
@@ -2823,7 +2849,7 @@ paths:
       description: Given a `roleId`, which may be a numeric ID or a string role `system`
         name, this endpoint lists all `Actors` that have been assigned that Role upon
         this particular Project.
-      operationId: Listing all Actors assigned some Project Role
+      operationId: listAllActorsAssignedSomeProjectRole
       parameters:
       - name: roleId
         in: path
@@ -2865,7 +2891,7 @@ paths:
         Given a `roleId`, which may be a numeric ID or a string role `system` name, and a numeric `actorId`, assigns that Role to that Actor for this particular Project.
 
         No `POST` body data is required, and if provided it will be ignored.
-      operationId: Assigning an Actor to a Project Role
+      operationId: assignActorToProjectRole
       parameters:
       - name: projectId
         in: path
@@ -2903,7 +2929,7 @@ paths:
       description: Given a `roleId`, which may be a numeric ID or a string role `system`
         name, and a numeric `actorId`, unassigns that Role from that Actor for this
         particular Project.
-      operationId: Revoking a Project Role Assignment from an Actor
+      operationId: revokeProjectRoleAssignmentFromActor
       parameters:
       - name: projectId
         in: path
@@ -2943,7 +2969,7 @@ paths:
         Returns a summary of all _Form-specific_ Assignments within this Project. This endpoint is meant to simplify the task of summarizing all Form permissions within a Project at a glance and in one transactional request. Because it is necessary to specify which Form each Assignment is attached to, returned results form this endpoint include an `xmlFormId` field.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to expand the `actorId` into a full `actor` objects. The Role reference remains a numeric ID and the Form reference remains a string ID.
-      operationId: Seeing all Form Assignments within a Project
+      operationId: getProjectFormAssignments
       parameters:
       - name: projectId
         in: path
@@ -2989,7 +3015,7 @@ paths:
         Like the [Form Assignments summary API](/central-api-form-management/#listing-all-form-assignments), but filtered by some `roleId`.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to expand the `actorId` into a full `actor` objects. The Role reference remains a numeric ID and the Form reference remains a string ID.
-      operationId: Seeing Role-specific Form Assignments within a Project
+      operationId: getRoleSpecificProjectFormAssignments
       parameters:
       - name: projectId
         in: path
@@ -3046,7 +3072,7 @@ paths:
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally retrieve the `submissions` count of the number of Submissions that each Form has, the `reviewStates` object of counts of Submissions with specific review states, the `lastSubmission` most recent submission timestamp, the Actor the Form was `createdBy`, as well as other metadata.
 
         The query `?deleted=true` can be added to list deleted Forms with their numeric form IDs, which can be used to [restore](/central-api-form-management/#restoring-a-form) a deleted Form.
-      operationId: List all Forms
+      operationId: listAllForms
       parameters:
       - name: projectId
         in: path
@@ -3140,7 +3166,7 @@ paths:
         Starting from Version 2022.3, a Form can also create a Dataset by defining a Dataset schema in the Form definition (XForms XML or XLSForm). When a Form with a Dataset schema is uploaded, a Dataset and its Properties are created. The state of the Dataset is dependent on the state of the Form; you will need to publish the Form to publish the Dataset. Datasets in the Draft state are not returned in [Dataset APIs](/central-api-dataset-management), however the [Related Datasets](/central-api-form-management/#draft-form-dataset-diff) API for the Form can be called to get the Dataset and its Properties.
 
         It is possible to define the schema of a Dataset in multiple Forms. Such Forms can be created and published in any order. Publishing any of the Forms will also publish the Dataset and will generate a `dataset.create` event; `dataset.update` events are generated in Audit logs when a Form adds a new property in the Dataset. The state of a Property of a Dataset is also dependent on the state of the Form that FIRST defines that Property, which means if a Form is in the Draft state then the Properties defined by that Form will not appear in the [.csv file](/central-api-dataset-management/#download-dataset) of the Dataset.
-      operationId: Creating a new Form
+      operationId: createForm
       parameters:
       - name: projectId
         in: path
@@ -3292,7 +3318,7 @@ paths:
         header `X-Extended-Metadata: true` to additionally retrieve the `submissions`
         count of the number of `Submission`s that this Form has, as well as the `lastSubmission`
         most recent submission timestamp.'
-      operationId: Getting Form Details
+      operationId: getFormDetails
       parameters:
       - name: xmlFormId
         in: path
@@ -3362,7 +3388,7 @@ paths:
       tags:
       - Individual Form
       summary: Deleting a Form
-      description: -|
+      description: |-
         When a Form is deleted, it goes into the Trash section, but it
         can now be restored from the Trash. After 30 days in the Trash, the Form and
         all of its resources and submissions will be automatically purged. If your
@@ -3374,7 +3400,7 @@ paths:
         The API usually identifies forms by their `projectId` and `xmlFormId`, but if a Form
         is deleted, the same `xmlFormId` can be reused. To [restore](/central-api-form-management/#restoring-a-form) a deleted Form, use its
         _numeric ID_, which can be retrieved by [listing Forms with `?deleted=true`](/central-api-form-management/#list-all-forms).
-      operationId: Deleting a Form
+      operationId: deleteForm
       parameters:
       - name: xmlFormId
         in: path
@@ -3405,7 +3431,7 @@ paths:
         It is currently possible to modify only one thing about a `Form`: its `state`, which governs whether it is available for download onto survey clients and whether it accepts new `Submission`s. See the `state` Attribute in the Request documentation to the right to see the possible values and their meanings.
 
         We use `PATCH` rather than `PUT` to represent the update operation, so that you only have to supply the properties you wish to change. Anything you do not supply will remain untouched.
-      operationId: Modifying a Form
+      operationId: modifyForm
       parameters:
       - name: projectId
         in: path
@@ -3543,7 +3569,7 @@ paths:
       - Individual Form
       summary: Getting Form Details by formLinkId
       description: Returns Form metadata for the provided formLinkId
-      operationId: Getting Form Details by formLinkId
+      operationId: getFormDetailsByFormlinkid
       parameters:
       - name: formLinkId
         in: path
@@ -3578,7 +3604,7 @@ paths:
       summary: Retrieving Form XML
       description: To get the XML of the `Form`, add `.xml` to the end of the request
         URL.
-      operationId: Retrieving Form XML
+      operationId: retrieveFormXml
       parameters:
       - name: projectId
         in: path
@@ -3637,7 +3663,7 @@ paths:
       description: If a Form was created with an Excel file (`.xls` or `.xlsx`), you
         can get that file back by adding `.xls` or `.xlsx` as appropriate to the Form
         resource path.
-      operationId: Retrieving Form XLS(X)
+      operationId: retrieveFormXls
       parameters:
       - name: projectId
         in: path
@@ -3670,7 +3696,7 @@ paths:
         or not, and a hash of the file contents. To modify an attachment, you'll need to
         create a Draft. The property `datasetExists` indicates whether  the attachment is
         a link to a Dataset instead of an actual file.
-      operationId: Listing Form Attachments
+      operationId: listFormAttachments
       parameters:
       - name: projectId
         in: path
@@ -3718,7 +3744,7 @@ paths:
         3. `application/octet-stream`
 
         This endpoint supports `ETag`, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, it returns a value in `ETag` header, you can pass this value in the header `If-None-Match` of subsequent requests. If the file has not been changed since the previous request, you will receive `304 Not Modified` response otherwise you'll get the latest file.
-      operationId: Downloading a Form Attachment
+      operationId: downloadFormAttachment
       parameters:
       - name: projectId
         in: path
@@ -3774,7 +3800,7 @@ paths:
         Central internally processes the XForms schema tree into a flat list of fields, and this is how the data is returned over this endpoint as well. It will always return fields in a _depth-first traversal order_ of the original `<instance>` XML block in the XForm.
 
         You may optionally add the querystring parameter `?odata=true` to sanitize the field names and paths to match the way they will be outputted for OData. While the original field names as given in the XForms definition may be used as-is for CSV output, OData has some restrictions related to the domain-qualified identifier syntax it uses.
-      operationId: Getting Form Schema Fields
+      operationId: getFormSchemaFields
       parameters:
       - name: projectId
         in: path
@@ -3860,10 +3886,12 @@ paths:
       description: |-
         _(introduced: version 1.4)_
 
-        Deleted forms can now be restored (as long as they have been in the Trash less than 30 days and have not been purged). However, a deleted Form with the same `xmlFormId` as an active Form cannot be restored while that other Form is active. 
+        Deleted forms can now be restored (as long as they have been in the Trash less than 30 days and have not been purged). However, a deleted Form with the same `xmlFormId` as an active Form cannot be restored while that other Form is active.
+
+        A Form also cannot be restored if a related Dataset has been deleted or if a Dataset property that the Form wrote to has been deleted since the Form was deleted. In that case, a 409 is returned.
 
         This `/restore` URL uses the numeric ID of the Form (now returned by the `/forms?deleted=true` endpoint) rather than the `xmlFormId` to unambigously restore. Note that the numeric ID of a Form is not returned by default on the [Form list](/central-api-form-management/#list-all-forms) and is only returned when listing deleted Forms.
-      operationId: Restoring a Form
+      operationId: restoreForm
       parameters:
       - name: projectId
         in: path
@@ -3886,6 +3914,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+              example:
+                code: "409.23"
+                message: This Form cannot be restored because the related dataset(s) has been modified or deleted.
   /v1/projects/{projectId}/forms/{xmlFormId}/draft:
     get:
       tags:
@@ -3893,7 +3937,7 @@ paths:
       summary: Getting Draft Form Details
       description: The response here will include standard overall Form metadata,
         like `xmlFormId`, in addition to the Draft-specific information.
-      operationId: Getting Draft Form Details
+      operationId: getDraftFormDetails
       parameters:
       - name: projectId
         in: path
@@ -3936,7 +3980,7 @@ paths:
         The `xmlFormId`, however, must exactly match that of the Form overall, or the request will be rejected.
 
         Starting from Version 2022.3, a Draft Form can also create or update a Dataset by defining a Dataset schema in the Form definition. The state of the Dataset and its Properties is dependent on the state of the Form, see [Creating a new form](/central-api-form-management/#creating-a-new-form) for more details.
-      operationId: Creating a Draft Form
+      operationId: createDraftForm
       parameters:
       - name: projectId
         in: path
@@ -4001,7 +4045,7 @@ paths:
         Once a Draft Form is deleted, its definition and any Form Attachments associated with it will be removed.
 
         You will not be able to delete the draft if there is no published version of the form.
-      operationId: Deleting a Draft Form
+      operationId: deleteDraftForm
       parameters:
       - name: projectId
         in: path
@@ -4031,7 +4075,7 @@ paths:
       summary: Retrieving Draft Form XML
       description: To get the XML of the Draft Form, add `.xml` to the end of the
         request URL.
-      operationId: Retrieving Draft Form XML
+      operationId: retrieveDraftFormXml
       parameters:
       - name: projectId
         in: path
@@ -4092,7 +4136,7 @@ paths:
         Draft Form resource path.
 
         This endpoint supports `ETag`, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, it returns a value in `ETag` header, you can pass this value in the header `If-None-Match` of subsequent requests. If the file has not been changed since the previous request, you will receive `304 Not Modified` response otherwise you'll get the latest file.
-      operationId: Retrieving Draft Form XLS(X)
+      operationId: retrieveDraftFormXls
       parameters:
       - name: projectId
         in: path
@@ -4131,7 +4175,7 @@ paths:
         the list of form attachments; that list is fully determined by the given XForm.
         Instead, the focus of this API subresource is around communicating that expected
         list of files, and uploading binaries into those file slots.
-      operationId: Listing expected Draft Form Attachments
+      operationId: listExpectedDraftFormAttachments
       parameters:
       - name: projectId
         in: path
@@ -4175,7 +4219,7 @@ paths:
         will be given.
 
         This endpoint supports `ETag`, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, it returns a value in `ETag` header, you can pass this value in the header `If-None-Match` of subsequent requests. If the file has not been changed since the previous request, you will receive `304 Not Modified` response otherwise you'll get the latest file.
-      operationId: Downloading a Draft Form Attachment
+      operationId: downloadDraftFormAttachment
       parameters:
       - name: projectId
         in: path
@@ -4221,7 +4265,7 @@ paths:
         To upload a binary to an expected file slot, `POST` the binary to its endpoint. Supply a `Content-Type` MIME-type header if you have one.
 
         As of version 2022.3, if there is already a Dataset linked to this attachment, it will be unlinked and replaced with the uploaded file.
-      operationId: Uploading a Draft Form Attachment
+      operationId: uploadDraftFormAttachment
       parameters:
       - name: projectId
         in: path
@@ -4260,7 +4304,7 @@ paths:
         Form Attachment entry from the list, only to clear its uploaded content or
         to unlink the Dataset. Thus, when you issue a `DELETE` to the attachment's
         endpoint, that is what happens.
-      operationId: Clearing a Draft Form Attachment
+      operationId: clearDraftFormAttachment
       parameters:
       - name: projectId
         in: path
@@ -4300,7 +4344,7 @@ paths:
         This endpoint can update a Form Attachment's link to a Dataset. You can use this to link or unlink a Dataset to a Form Attachment. Linking of a Dataset to the Attachment only happens if the Attachment type is `file` and there is a Dataset with the exact name of the Attachment (excluding extension `.csv`) in the Project. For example, if the Form definition includes an Attachment named `people.csv`, then it can be linked to a Dataset named `people`. Pay special attention to letter case and spaces.
 
         When linking a Dataset, if there is any existing file attached then it will be removed.
-      operationId: Linking a Dataset to a Draft Form Attachment
+      operationId: linkDatasetToDraftFormAttachment
       parameters:
       - name: projectId
         in: path
@@ -4361,7 +4405,7 @@ paths:
       description: Identical to the [same request](/central-api-form-management/#getting-form-schema-fields)
         for the published Form, but will return the fields related to the current
         Draft version.
-      operationId: Getting Draft Form Schema Fields
+      operationId: getDraftFormSchemaFields
       parameters:
       - name: projectId
         in: path
@@ -4454,7 +4498,7 @@ paths:
         Once the Draft is published, there will no longer be a Draft version of the form.
 
         Starting with Version 2022.3, publishing a Draft Form that defines a Dataset schema will also publish the Dataset. It will generate `dataset.create` event in Audit logs and make the Dataset available in [Datasets APIs](/central-api-dataset-management). If the Dataset is already published and the Form adds new properties then `dataset.update` event will be generated.
-      operationId: Publishing a Draft Form
+      operationId: publishDraftForm
       parameters:
       - name: projectId
         in: path
@@ -4508,7 +4552,7 @@ paths:
         Each entry of the version listing will contain some of the same duplicate keys with basic information about the Form: `xmlFormId` and `createdAt`, for example. This is done to match the data you'd receive if you'd requested each version separately.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally retrieve the `Actor` that each version was `publishedBy`.
-      operationId: Listing Published Form Versions
+      operationId: listPublishedFormVersions
       parameters:
       - name: projectId
         in: path
@@ -4579,7 +4623,7 @@ paths:
         into trouble using this resource if you have such a Form. In this case, pass
         the special value `___` (three underscores) as the `version` to retrieve the
         blank `version` version.
-      operationId: Getting Form Version Details
+      operationId: getFormVersionDetails
       parameters:
       - name: projectId
         in: path
@@ -4617,7 +4661,7 @@ paths:
       summary: Retrieving Form Version XML
       description: To get the XML of the Form Version, add `.xml` to the end of the
         request URL.
-      operationId: Retrieving Form Version XML
+      operationId: retrieveFormVersionXml
       parameters:
       - name: projectId
         in: path
@@ -4686,7 +4730,7 @@ paths:
         Form Version resource path.
 
         This endpoint supports `ETag` header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in `ETag` header. If you pass that value in the `If-None-Match` header of a subsequent request, then if the file has not been changed since the previous request, you will receive `304 Not Modified` response; otherwise you'll get the latest file.
-      operationId: Retrieving Form Version XLS(X)
+      operationId: retrieveFormVersionXls
       parameters:
       - name: projectId
         in: path
@@ -4729,7 +4773,7 @@ paths:
       summary: Listing Form Version Attachments
       description: Attachments are specific to each version of a Form. You can retrieve
         the attachments associated with a given version here.
-      operationId: Listing Form Version Attachments
+      operationId: listFormVersionAttachments
       parameters:
       - name: projectId
         in: path
@@ -4785,7 +4829,7 @@ paths:
         3. `application/octet-stream`
 
         This endpoint supports `ETag` header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in `ETag` header. If you pass that value in the `If-None-Match` header of a subsequent request, then if the file has not been changed since the previous request, you will receive `304 Not Modified` response; otherwise you'll get the latest file.
-      operationId: Downloading a Form Version Attachment
+      operationId: downloadFormVersionAttachment
       parameters:
       - name: projectId
         in: path
@@ -4842,7 +4886,7 @@ paths:
       description: Identical to the [same request](/central-api-form-management/#getting-form-schema-fields)
         for the published Form, but will return the fields related to the specified
         version.
-      operationId: Getting Form Version Schema Fields
+      operationId: getFormVersionSchemaFields
       parameters:
       - name: projectId
         in: path
@@ -4937,7 +4981,7 @@ paths:
         This will list every assignment upon this Form, in the form of `actorId`/`roleId` pairs.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to expand the `actorId` into a full `actor` objects. The Role reference remains a numeric ID.
-      operationId: Listing all Form Assignments
+      operationId: listAllFormAssignments
       parameters:
       - name: projectId
         in: path
@@ -4988,7 +5032,7 @@ paths:
       description: Given a `roleId`, which may be a numeric ID or a string role `system`
         name, this endpoint lists all `Actors` that have been assigned that Role upon
         this particular Form.
-      operationId: Listing all Actors assigned some Form Role
+      operationId: listAllActorsAssignedSomeFormRole
       parameters:
       - name: projectId
         in: path
@@ -5037,7 +5081,7 @@ paths:
         Given a `roleId`, which may be a numeric ID or a string role `system` name, and a numeric `actorId`, assigns that Role to that Actor for this particular Form.
 
         No `POST` body data is required, and if provided it will be ignored.
-      operationId: Assigning an Actor to a Form Role
+      operationId: assignActorToFormRole
       parameters:
       - name: projectId
         in: path
@@ -5082,7 +5126,7 @@ paths:
       description: Given a `roleId`, which may be a numeric ID or a string role `system`
         name, and a numeric `actorId`, unassigns that Role from that Actor for this
         particular Form.
-      operationId: Revoking a Form Role Assignment from an Actor
+      operationId: revokeFormRoleAssignmentFromActor
       parameters:
       - name: projectId
         in: path
@@ -5129,7 +5173,7 @@ paths:
         This will list every Public Access Link upon this Form.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to retrieve the Actor the Link was `createdBy`.
-      operationId: Listing all Links
+      operationId: listAllLinks
       parameters:
       - name: projectId
         in: path
@@ -5196,7 +5240,7 @@ paths:
         enforced by Enketo using local device tracking; the link is still distributable
         to multiple recipients, and the enforcement can be defeated by using multiple
         browsers or devices.'
-      operationId: Creating a Link
+      operationId: createLink
       parameters:
       - name: projectId
         in: path
@@ -5299,7 +5343,7 @@ paths:
         This will remove the Link from the system entirely. If instead you wish to
         revoke the Link's access to prevent future submission without removing its
         record entirely, you can issue [`DELETE /sessions/:token`](/central-api-authentication/#logging-out-current-session).
-      operationId: Deleting a Link
+      operationId: deleteLink
       parameters:
       - name: projectId
         in: path
@@ -5338,7 +5382,7 @@ paths:
         affected by a Form. The list of Properties includes all published Properties
         on that Dataset, but each property has the `inForm` flag to note whether or
         not it will be filled in by that form.
-      operationId: Published Form Related Datasets
+      operationId: publishedFormRelatedDatasets
       parameters:
       - name: projectId
         in: path
@@ -5378,7 +5422,7 @@ paths:
         name and Properties, but it also includes the `isNew` flag on both the Dataset,
         and on each individual property. This flag is true only if the Dataset/Property
         is new and is going to be created by publishing the Draft Form.
-      operationId: Draft Form Dataset Diff
+      operationId: draftFormDatasetDiff
       parameters:
       - name: projectId
         in: path
@@ -5419,7 +5463,7 @@ paths:
         Currently, there are no paging or filtering options, so listing `Submission`s will get you every Submission in the system, every time.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to return a `submitter` data object alongside the `submitterId` Actor ID reference.
-      operationId: Listing all Submissions on a Form
+      operationId: listAllSubmissions
       parameters:
       - name: projectId
         in: path
@@ -5441,6 +5485,18 @@ paths:
         schema:
           type: boolean
         example: true
+      - name: limit
+        in: query
+        description: The maximum number of submissions to return.
+        schema:
+          type: number
+        example: "100"
+      - name: offset
+        in: query
+        description: The number of submissions to skip from the result (starting with the latest submission).
+        schema:
+          type: number
+        example: "200"
       responses:
         "200":
           description: OK
@@ -5506,7 +5562,7 @@ paths:
         Unlike the OpenRosa Form Submission API, this interface does _not_ accept Submission attachments upon Submission creation. Instead, the server will determine which attachments are expected based on the Submission XML, and you may use the endpoints found in the following section to add the appropriate attachments and check the attachment status and content.
 
         If the XML is unparseable or there is some other input problem with your data, you will get a `400` error in response. If a submission already exists with the given `instanceId`, you will get a `409` error in response.
-      operationId: Creating a Submission
+      operationId: createSubmission
       parameters:
       - name: projectId
         in: path
@@ -5601,10 +5657,8 @@ paths:
         If no particular field path is supplied, the first non-repeat geopoint/geotrace/geoshape field is used.
         No particular ordering is implied.
         
-        ⚠️ The specifics of this endpoint are likely to change in future releases, and the parameters this endpoint takes are not all documented.
-        Its current behaviour should not be depended upon.
-        Use cases for this API can be discussed on [the forum](https://forum.getodk.org/).
-      operationId: Submissions Geodata
+        You can use an [OData-style `$filter` query](/central-api-odata-endpoints/#data-document) to filter the submissions.
+      operationId: getSubmissionsGeodata
       parameters:
       - name: projectId
         in: path
@@ -5620,6 +5674,23 @@ paths:
         schema:
           type: string
         example: simple
+      - name: $filter
+        in: query
+        description: An [OData-style `$filter` query](/central-api-odata-endpoints/#data-document) to filter the submissions by.
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: number
+        example: 100
+        description: Impose a limit on the number of submissions to extract geoinformation from.
+      - name: fieldpath
+        in: query
+        schema:
+          type: string
+        example: "/some_group/some_geopoint"
+        description: Extract geoinformation from the specified field. At most one field can be specified. If no field is specified, the first geofield not part of any repeatgroup is extracted from.
       responses:
         "200":
           description: OK
@@ -5630,7 +5701,7 @@ paths:
                   Submission geodata, in [GeoJSON](https://geojson.org) format.
                   Geodata is grouped by submission. Submissions are represented as a GeoJSON "feature".
                   
-                  When the provenance of the geodata (the form's field path) is not evident from the request, the origin field path of the geodata will be denoted in a `fieldpath` property in the feature's GeoJSON `properties` object. This is the case in when no field path is specified in the request, as in that situation the first geopoint-, geotrace-, or geoshape-field (not in any repeatgroup) of the form is used. And thus as forms get revised, what is the first geo-type field (not in any repeatgroup) may change; without the `fieldpath` extra information, the data provenance would be unclear. 
+                  When the provenance of the geodata (the form's field path) is not evident from the request, the origin field path of the geodata will be denoted in a `fieldpath` property in the feature's GeoJSON `properties` object. This is the case in when no `fieldpath` query parameter is present, as in that situation the first geopoint-, geotrace-, or geoshape-field (not in any repeatgroup) of the form is used. And thus as forms get revised, what is the first geo-type field (not in any repeatgroup) may change; without the `fieldpath` extra information, the data provenance would be unclear. 
                 type: object
               example:
                 {
@@ -5681,7 +5752,7 @@ paths:
         As of version 2023.2, this API returns `currentVersion` that contains metadata of the most recent version of the Submission.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to return a `submitter` data object alongside the `submitterId` Actor ID reference.
-      operationId: Getting Submission metadata
+      operationId: getSubmissionMetadata
       parameters:
       - name: projectId
         in: path
@@ -5777,7 +5848,7 @@ paths:
         The XML data you send will _replace_ the existing data entirely. All of the data must be present in the updated XML.
 
         When you create a new submission version, any uploaded media files attached to the current version that match expected attachment names in the new version will automatically be copied over to the new version. So if you don't make any changes to media files, there is no need to resubmit them. You can get information about all the submission versions [from the `/versions` subresource](/central-api-submission-management/#submission-versions).
-      operationId: Updating Submission Data
+      operationId: updateSubmissionData
       parameters:
       - name: projectId
         in: path
@@ -5869,7 +5940,7 @@ paths:
         Currently, the only updatable _metadata_ on a Submission is its `reviewState`. To update the submission _data_ itself, please see [Updating Submission data](/central-api-submission-management/#updating-submission-data).
 
         Starting with Version 2022.3, changing the `reviewState` of a Submission to `approved` can create an Entity in a Dataset if the corresponding Form maps Dataset Properties to Form Fields. If an Entity is created successfully then an `entity.create` event is logged in Audit logs, else `entity.error` is logged.
-      operationId: Updating Submission metadata
+      operationId: updateSubmissionMetadata
       parameters:
       - name: projectId
         in: path
@@ -5923,7 +5994,7 @@ paths:
       description: When a Submission is deleted, there is a period of time (30 days)
         during which it can be restored. After this time, all of its resources and attachments
         are automatically purged. Purging deleted Submissions can also be triggered from the command line.
-      operationId: Deleting a Submission
+      operationId: deleteSubmission
       parameters:
       - name: projectId
         in: path
@@ -5975,7 +6046,7 @@ paths:
       - Submissions
       summary: Restoring a deleted Submission
       description: Submissions that have been recently soft-deleted and not yet purged can be restored using this endpoint.
-      operationId: Restoring a deleted Submission
+      operationId: restoreDeletedSubmission
       parameters:
       - name: projectId
         in: path
@@ -6028,7 +6099,7 @@ paths:
       summary: Retrieving Submission XML
       description: To retrieve the XML of the `Submission`, just append `.xml` to
         the end of the request URL.
-      operationId: Retrieving Submission XML
+      operationId: retrieveSubmissionXml
       parameters:
       - name: projectId
         in: path
@@ -6066,10 +6137,10 @@ paths:
     get:
       tags:
       - Submissions
-      summary: Retrieving Submission GeoJSON
+      summary: Retrieving GeoJSON of a single Submission
       description: To retrieve the GeoJSON representation of the `Submission`, just append `.geojson` to
         the end of the request URL.
-      operationId: Retrieving Submission GeoJSON
+      operationId: getSubmissionGeoJson
       parameters:
       - name: projectId
         in: path
@@ -6127,7 +6198,7 @@ paths:
         The Enketo instance is already hosted inside of ODK Central. There is no reason to create or use a separate Enketo installation.
 
         This endpoint is intended for use by the Central administration frontend and will not work without it. In particular, the user must be logged into the Central administration site for Enketo editing to work. If there is no Central authentication cookie present when Enketo is loaded, the browser will then be redirected by Enketo to a Central login page.
-      operationId: Getting an Enketo Edit URL
+      operationId: getEnketoEditUrl
       parameters:
       - name: projectId
         in: path
@@ -6178,7 +6249,7 @@ paths:
         If you are running an unsecured (`HTTP` rather than `HTTPS`) Central server, it is not a good idea to export data this way as your passphrase and the decrypted data will be sent plaintext over the network.
 
         You can use an [OData-style `$filter` query](/central-api-odata-endpoints/#data-document) to filter the submissions that will appear in the ZIP file. This is a bit awkward, since this endpoint has nothing to do with OData, but since we already must recognize the OData syntax, it is less strange overall for now not to invent a whole other one here. Only a subset of the `$filter` features are available; please see the linked section for more information.
-      operationId: Exporting Form Submissions to CSV
+      operationId: exportFormSubmissionsToCsv
       parameters:
       - name: projectId
         in: path
@@ -6280,7 +6351,7 @@ paths:
         You can exclude the media attachments from the ZIP file by specifying `?attachments=false`.
 
         And so, for this `POST` version of the Submission CSV export endpoint, the passphrases may be provided via `POST` body rather than querystring. Two formats are supported: form URL encoding (`application/x-www-form-urlencoded`) and JSON. In either case, the keys should be the `keyId`s and the values should be the `passphrase`s, as with the `GET` version above.
-      operationId: Exporting Form Submissions to CSV via POST
+      operationId: exportFormSubmissionsToCsvViaPost
       parameters:
       - name: projectId
         in: path
@@ -6385,7 +6456,7 @@ paths:
         To export _just_ the root table (no repeat data nor media files), you can call this endpoint instead, which will directly give you CSV data.
 
         Please see the [above endpoint](/central-api-submission-management/#exporting-form-submissions-to-csv) for notes on dealing with Managed Encryption.
-      operationId: Exporting Root Data to Plain CSV
+      operationId: exportRootDataToPlainCsv
       parameters:
       - name: projectId
         in: path
@@ -6452,7 +6523,7 @@ paths:
         As with `GET` to `.csv` just above, this endpoint will only return CSV text data, rather than a ZIP file containing ore or more files. Please see that endpoint for further explanation.
 
         As with [`POST` to `.csv.zip`](/central-api-submission-management/#exporting-form-submissions-to-csv-via-post) it allows secure submission of decryption passkeys. Please see that endpoint for more information on how to do this.
-      operationId: Exporting Root Data to Plain CSV via POST
+      operationId: exportRootDataToPlainCsvViaPost
       parameters:
       - name: projectId
         in: path
@@ -6518,7 +6589,7 @@ paths:
         You can retrieve all [Server Audit Logs](/central-api-system-endpoints/#server-audit-logs) relating to a submission. They will be returned most recent first.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally expand the `actorId` into full `actor` details, and `acteeId` into full `actee` details. The `actor` will always be an Actor, and the `actee` will be the Form this Submission is a part of.
-      operationId: Retrieving Audit Logs
+      operationId: retrieveAuditLogs
       parameters:
       - name: projectId
         in: path
@@ -6582,7 +6653,7 @@ paths:
         property (as `public`) of all known versions of the form that have submissions
         against them. If managed keys are being used and a `hint` was provided, that
         will be returned as well.
-      operationId: Listing Encryption Keys
+      operationId: listEncryptionKeys
       parameters:
       - name: projectId
         in: path
@@ -6620,7 +6691,7 @@ paths:
       description: This endpoint provides a listing of all known submitting actors
         to a given Form. Each Actor that has submitted to the given Form will be returned
         once.
-      operationId: Listing Submitters
+      operationId: listSubmitters
       parameters:
       - name: projectId
         in: path
@@ -6661,7 +6732,7 @@ paths:
         Comments have only a `body` comment text and an `actor` that made the comment.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to return a `actor` data object alongside the `actorId` Actor ID reference.
-      operationId: Listing Comments
+      operationId: listComments
       parameters:
       - name: projectId
         in: path
@@ -6717,7 +6788,7 @@ paths:
       summary: Posting Comments
       description: Currently, the only accepted data is `body`, which contains the
         body of the comment to be made.
-      operationId: Posting Comments
+      operationId: postComments
       parameters:
       - name: projectId
         in: path
@@ -6785,7 +6856,7 @@ paths:
         has a copy of the expected file or not. If the server has a file, you can
         then append its filename to the request URL to download only that file (see
         below).
-      operationId: Listing expected Submission Attachments
+      operationId: listExpectedSubmissionAttachments
       parameters:
       - name: projectId
         in: path
@@ -6829,11 +6900,11 @@ paths:
       tags:
       - Attachments
       summary: Downloading an Attachment
-      description: The `Content-Type` and `Content-Disposition` will be set appropriately
-        based on the file itself when requesting an attachment file download.
+      description: |-
+        The `Content-Type` and `Content-Disposition` will be set based on the file. For image attachments (`image/png`, `image/gif`, `image/jpeg`), `Content-Disposition` will be `inline`, allowing browsers to display them directly. For all other attachment types, `Content-Disposition` will be `attachment`.
 
         This endpoint supports `ETag`, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, it returns a value in `ETag` header, you can pass this value in the header `If-None-Match` of subsequent requests. If the file has not been changed since the previous request, you will receive `304 Not Modified` response otherwise you'll get the latest file.
-      operationId: Downloading an Attachment
+      operationId: downloadAttachment
       parameters:
       - name: projectId
         in: path
@@ -6886,7 +6957,7 @@ paths:
         _(introduced: version 0.4)_
 
         To upload a binary to an expected file slot, `POST` the binary to its endpoint. Supply a `Content-Type` MIME-type header if you have one.
-      operationId: Uploading an Attachment
+      operationId: uploadAttachment
       parameters:
       - name: projectId
         in: path
@@ -6931,7 +7002,10 @@ paths:
         _(introduced: version 0.4)_
 
         Because Submission Attachments are completely determined by the XML data of the submission itself, there is no direct way to entirely remove a Submission Attachment entry from the list, only to clear its uploaded content. Thus, when you issue a `DELETE` to the attachment's endpoint, that is what happens.
-      operationId: Clearing a Submission Attachment
+
+        This endpoint clears attachments on the current version of the submission.
+        See [Clearing the Attachment of a specific Submission Version](/central-api-submission-management/#clearing-a-submission-version-s-attachment) for working with past versions.
+      operationId: clearSubmissionAttachment
       parameters:
       - name: projectId
         in: path
@@ -6977,7 +7051,7 @@ paths:
         This will return all submission metadata for every version of this submission, in descending creation order.
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to return a `submitter` data object alongside the `submitterId` Actor ID reference.
-      operationId: Listing Versions
+      operationId: listVersions
       parameters:
       - name: projectId
         in: path
@@ -7049,7 +7123,7 @@ paths:
         Returns metadata about a particular version of the submission. As with the normal submission endpoint, you'll only get metadata in JSON out of this route. If you want to retrieve the XML, [add `.xml`](/central-api-submission-management/#getting-version-xml).
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to return a `submitter` data object alongside the `submitterId` Actor ID reference.
-      operationId: Getting Version Details
+      operationId: getVersionDetails
       parameters:
       - name: projectId
         in: path
@@ -7122,7 +7196,7 @@ paths:
       - Submission Versions
       summary: Getting Version XML
       description: Returns the XML of a particular version of the submission.
-      operationId: Getting Version XML
+      operationId: getVersionXml
       parameters:
       - name: projectId
         in: path
@@ -7170,7 +7244,7 @@ paths:
       - Submission Versions
       summary: Getting Version GeoJSON
       description: Returns the GeoJSON of a particular version of the submission.
-      operationId: Getting Version GeoJSON
+      operationId: getVersionGeoJson
       parameters:
       - name: projectId
         in: path
@@ -7233,7 +7307,7 @@ paths:
         the server actually has a copy of the expected file or not. If the server
         has a file, you can then append its filename to the request URL to download
         only that file (see below).
-      operationId: Listing Version expected Attachments
+      operationId: listVersionExpectedAttachments
       parameters:
       - name: projectId
         in: path
@@ -7290,7 +7364,7 @@ paths:
         It will not track overwritten attachments.
 
         This endpoint supports `ETag`, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, it returns a value in `ETag` header, you can pass this value in the header `If-None-Match` of subsequent requests. If the file has not been changed since the previous request, you will receive `304 Not Modified` response otherwise you'll get the latest file.
-      operationId: Downloading a Version's Attachment
+      operationId: downloadVersionedAttachment
       parameters:
       - name: projectId
         in: path
@@ -7343,6 +7417,61 @@ paths:
             '{the MIME type of the attachment file itself}':
               example: |
                 (binary data)
+    delete:
+      tags:
+      - Submission Versions
+      summary: Clearing a Submission Version's Attachment
+      description: |-
+        This endpoint clears attachments on submission versions.
+
+        Because Submission Attachments are completely determined by the XML data of the submission itself, there is no direct way to entirely remove a Submission Attachment entry from the list, only to clear its uploaded content. Thus, when you issue a DELETE to the attachment's endpoint, that is what happens.
+
+        To clear an attachment only on the current version of a Submission, see [Clearing a Submission Attachment](/central-api-submission-management/#clearing-a-submission-attachment).
+      operationId: clearVersionedAttachment
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: xmlFormId
+        in: path
+        description: The `xmlFormId` of the Form being referenced.
+        required: true
+        schema:
+          type: string
+        example: simple
+      - name: instanceId
+        in: path
+        description: The `instanceId` of the Submission being referenced.
+        required: true
+        schema:
+          type: string
+        example: uuid:85cb9aff-005e-4edd-9739-dc9c1a829c44
+      - name: versionId
+        in: path
+        description: The `instanceId` of the particular version of this submission
+          in question.
+        required: true
+        schema:
+          type: string
+        example: uuid:b1628661-65ed-4cab-8e30-19c17fef2de0
+      - name: filename
+        in: path
+        description: The name of the file as given by the Attachments listing resource.
+        required: true
+        schema:
+          type: string
+        example: file1.jpg
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
   /v1/projects/{projectId}/forms/{xmlFormId}/submissions/{instanceId}/diffs:
     get:
       tags:
@@ -7355,7 +7484,7 @@ paths:
         object contains the old and new values, as well as the path of that changed
         node in the Submission XML. These changes reflect the updated `instanceID`
         and `deprecatedID` fields as well as the edited value.
-      operationId: Getting changes between Versions
+      operationId: getChangesBetweenVersions
       parameters:
       - name: projectId
         in: path
@@ -7416,7 +7545,7 @@ paths:
       summary: Listing all Submissions on a Draft Form
       description: Identical to [the non-Draft version](/central-api-submission-management/#listing-all-submissions-on-a-form)
         of this endpoint.
-      operationId: Listing all Submissions on a Draft Form
+      operationId: listAllSubmissionsOnDraftForm
       parameters:
       - name: projectId
         in: path
@@ -7496,7 +7625,7 @@ paths:
         **POST /v1/test/{token}/projects/{projectId}/forms/{xmlFormId}/draft/submissions**
 
         Identical to [the non-Draft version](/central-api-submission-management/#creating-a-submission) of this endpoint.
-      operationId: Creating a Submission for a draft Form
+      operationId: createSubmissionForDraftForm
       parameters:
       - name: projectId
         in: path
@@ -7580,7 +7709,7 @@ paths:
       summary: Exporting Form Submissions to CSV
       description: Identical to [the non-Draft version](/central-api-submission-management/#exporting-form-submissions-to-csv)
         of this endpoint.
-      operationId: Exporting Form(Draft) Submissions to CSV
+      operationId: exportDraftFormSubmissionsToCsv
       parameters:
       - name: projectId
         in: path
@@ -7636,7 +7765,7 @@ paths:
       summary: Exporting Form Submissions to CSV via POST
       description: Identical to [the non-Draft version](/central-api-submission-management/#exporting-form-submissions-to-csv-via-post)
         of this endpoint.
-      operationId: Exporting Form(Draft) Submissions to CSV via POST
+      operationId: exportDraftFormSubmissionsToCsvViaPost
       parameters:
       - name: projectId
         in: path
@@ -7693,7 +7822,7 @@ paths:
       summary: Listing Encryption Keys
       description: Identical to [the non-Draft version](/central-api-submission-management/#listing-encryption-keys)
         of this endpoint.
-      operationId: Listing Encryption Keys (Draft Form)
+      operationId: listDraftFormEncryptionKeys
       parameters:
       - name: projectId
         in: path
@@ -7730,7 +7859,7 @@ paths:
       summary: Getting Submission details
       description: Identical to [the non-Draft version](/central-api-submission-management/#getting-submission-metadata)
         of this endpoint.
-      operationId: Getting Submission details
+      operationId: getSubmissionDetails
       parameters:
       - name: projectId
         in: path
@@ -7812,7 +7941,7 @@ paths:
       summary: Retrieving Submission XML
       description: Identical to [the non-Draft version](/central-api-submission-management/#retrieving-submission-xml)
         of this endpoint.
-      operationId: Retrieving Submission XML (Draft Form)
+      operationId: retrieveDraftFormSubmissionXml
       parameters:
       - name: projectId
         in: path
@@ -7853,7 +7982,7 @@ paths:
       summary: Listing expected Submission Attachments
       description: Identical to [the non-Draft version](/central-api-submission-management/#listing-expected-submission-attachments)
         of this endpoint.
-      operationId: Listing expected Submission Attachments (Draft Form)
+      operationId: listDraftFormSubmissionAttachments
       parameters:
       - name: projectId
         in: path
@@ -7899,7 +8028,7 @@ paths:
       summary: Downloading an Attachment
       description: Identical to [the non-Draft version](/central-api-submission-management/#downloading-an-attachment)
         of this endpoint.
-      operationId: Downloading an Attachment (Draft Form)
+      operationId: downloadDraftFormSubmissionAttachment
       parameters:
       - name: projectId
         in: path
@@ -7946,7 +8075,7 @@ paths:
       summary: Uploading an Attachment
       description: Identical to [the non-Draft version](/central-api-submission-management/#uploading-an-attachment)
         of this endpoint.
-      operationId: Uploading an Attachment (Form Draft)
+      operationId: uploadTestDraftFormAttachment
       parameters:
       - name: projectId
         in: path
@@ -7989,7 +8118,7 @@ paths:
       summary: Clearing a Submission Attachment
       description: Identical to [the non-Draft version](/central-api-submission-management/#clearing-a-submission-attachment)
         of this endpoint.
-      operationId: Clearing a Submission Attachment (Form Draft)
+      operationId: clearDraftFormSubmissionAttachment
       parameters:
       - name: projectId
         in: path
@@ -8031,8 +8160,11 @@ paths:
       tags:
       - Dataset Management
       summary: Listing Datasets
-      description: The Dataset listing endpoint returns all published Datasets in a Project. If a Draft Form defines a new Dataset, that Dataset will not be included in this list until the Form is published.
-      operationId: Listing Datasets
+      description: |-
+        The Dataset listing endpoint returns all published Datasets in a Project. If a Draft Form defines a new Dataset, that Dataset will not be included in this list until the Form is published.
+
+        The query `?deleted=true` can be added to list deleted Datasets with their numeric IDs, which can be used to [download a deleted Dataset's Entity data](/central-api-dataset-management/#downloading-deleted-dataset-entities).
+      operationId: listDatasets
       parameters:
       - name: projectId
         in: path
@@ -8041,6 +8173,12 @@ paths:
         schema:
           type: number
         example: "16"
+      - name: deleted
+        in: query
+        description: If set to `true`, will return only deleted Datasets and their numeric IDs
+        schema:
+          type: boolean
+        example: "true"
       responses:
         "200":
           description: OK
@@ -8082,7 +8220,7 @@ paths:
         By default, the Dataset will have no properties, but each Entity will have a `label` and a unique ID (`uuid`). You can add additional properties with this [related endpoint](/central-api-dataset-management/#adding-properties).
         
         The Dataset name must follow the the same rules as XML identifiers and not start with `.` or `__`. See the [Entities XForms Specification](https://getodk.github.io/xforms-spec/entities.html#declaring-that-a-form-creates-entities) for more information.
-      operationId: Creating Datasets
+      operationId: createDatasets
       parameters:
       - name: projectId
         in: path
@@ -8152,7 +8290,7 @@ paths:
       summary: Dataset Metadata
       description: Returns the metadata of a published Dataset including properties and forms
         that create and consume the Dataset.
-      operationId: Dataset Metadata
+      operationId: datasetMetadata
       parameters:
       - name: projectId
         in: path
@@ -8199,7 +8337,7 @@ paths:
       tags:
       - Dataset Management
       summary: Update Dataset Metadata
-      operationId: Update Dataset Metadata
+      operationId: updateDatasetMetadata
       description: |-
         You can use this endpoint to update `approvalRequired` and `ownerOnly`. However, you cannot update other properties, such as `name`.
 
@@ -8264,6 +8402,61 @@ paths:
                   forms:
                   - xmlFormId: simple
                     name: Simple
+    delete:
+      tags:
+      - Dataset Management
+      summary: Deleting a Dataset
+      description: |-
+        _(introduced: version 2026.1)_
+
+        When a Dataset is deleted, it is soft-deleted and placed in the trash. After 30 days in the trash, the Dataset and all of its Entities will be automatically purged. Unlike Forms, deleted Datasets cannot be restored.
+
+        While in the trash, the Dataset's Entity data can still be exported as a CSV snapshot using [GET /projects/:id/trash/datasets/:datasetId/entities.csv](/central-api-dataset-management/#downloading-deleted-dataset-entities).
+
+        A Dataset cannot be deleted if any Forms are still linked to it, either as a source (a Form that creates/updates Entities in it) or as a consumer (a Form that uses it as an attachment). All such Forms must be updated first:
+        - To update a Form that writes to a Dataset, remove that dataset from the `entities` tab of the XLSForm and remove associated `save_to`s.
+        - To update a Form that reads from a Dataset, replace the attachment with a static CSV or update the Form to not use that attachment.
+
+        A Form can also be deleted as a way to unlink it from a Dataset, but then that Form [cannot be restored](/central-api-form-management/#restoring-a-form).
+      operationId: deleteDataset
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+              example:
+                code: "409.21"
+                message: You can't delete this dataset because there are Form(s) dependent on it.
   /v1/projects/{projectId}/datasets/{name}/properties:
     post:
       tags:
@@ -8275,7 +8468,7 @@ paths:
         The name of a Property is case-sensitive in that it will keep the capitalization provided (e.g. "Firstname"). But Central will not allow another Property with the same name but different capitalization to be created (e.g. "FIRSTNAME" when "Firstname" already exists).
 
         Property names follow the same rules as form field names (valid XML identifiers) and cannot use the reserved names of `name` or `label`, or begin with the reserved prefix `__`. 
-      operationId: Adding Properties
+      operationId: addProperties
       parameters:
       - name: projectId
         in: path
@@ -8312,6 +8505,88 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
+  /v1/projects/{projectId}/datasets/{name}/properties/{propertyName}:
+    delete:
+      tags:
+      - Dataset Management
+      summary: Deleting a Property
+      description: |-
+        _(introduced: version 2026.1)_
+
+        Deletes a published Property from a Dataset. The deletion is permanent, but a new property with the same name can easily be re-added.
+
+        A Property cannot be deleted if either of the following is true:
+        - Any published or draft Forms are currently writing to it (i.e. they have a `save_to` mapping to this Property). Those Forms must be updated or deleted first.
+        - Any Entities have a non-empty value for it. Those Entity values must be cleared first by updating each Entity to have an empty string for that Property.
+
+        If deletion is blocked, the 409 response includes a `details.prerequisites` object describing what needs to be resolved. For blocked Forms, it includes a list of the dependent Form IDs and names. For blocked Entities, it includes a `totalCount` and up to 3 example Entity UUIDs and labels.
+
+        A Form that reads a Dataset Property via an attachment may break after deleting the Property, so check any Forms that consume this Dataset as well.
+      operationId: deleteProperty
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      - name: propertyName
+        in: path
+        description: The name of the Property to delete
+        required: true
+        schema:
+          type: string
+        example: age
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+        "409":
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+              example:
+                code: "409.22"
+                message: Prerequisites for deleting the property "age" are not met.
+                details:
+                  prerequisites:
+                    dependentForms:
+                      message: You can't delete this property because there are Form(s) writing to it
+                      details:
+                        forms:
+                        - formName: Registration Form
+                          xmlFormId: registration
+                    nonEmptyEntities:
+                      message: You can't delete this property because there are Entity(ies) with the non-empty value for the 'age'
+                      details:
+                        totalCount: 42
+                        entities:
+                        - uuid: 54a405a0-53ce-4748-9788-d23a30cc3afa
+                          label: John Doe
+                        - uuid: 9a2a3b4c-1234-4567-89ab-cdef01234567
+                          label: Jane Smith
+                        - uuid: 1b3d5f7a-9876-4321-abcd-ef0123456789
+                          label: Bob Jones
   /v1/projects/{projectId}/datasets/{name}/entities.csv:
     get:
       tags:
@@ -8327,7 +8602,7 @@ paths:
         The `$search` querystring parameter can be used to search entity data (user-defined properties) and the `label` field, using the same search behavior as the [OData Dataset Service](/central-api-odata-endpoints/#odata-dataset-service).
 
         This endpoint supports `ETag` header, which can be used to avoid downloading the same content more than once. When an API consumer calls this endpoint, the endpoint returns a value in the ETag header. If you pass that value in the If-None-Match header of a subsequent request, then if the Dataset has not been changed since the previous request, you will receive `304 Not Modified` response; otherwise you'll get the new data.
-      operationId: Download Dataset
+      operationId: downloadDataset
       parameters:
       - name: projectId
         in: path
@@ -8372,6 +8647,45 @@ paths:
                 __id,label,geometry,species,circumference_cm,__createdAt,__creatorId,__creatorName,__updates,__updatedAt,__version
                 2c1ee90b-dde8-434b-9985-2eefd8465339,666cm purpleheart,-29.281608 -67.624883 0 0,purpleheart,667,2023-05-31T19:49:28.902Z,22,Alice,1,2023-05-31T19:52:34.467Z,1
                 84ac3a03-9980-4098-93a5-b81fdc6ea749,555cm wallaba,18.921876 77.309451 0 0,wallaba,555,2023-05-31T19:49:20.152Z,22,Alice,0,,1
+  /v1/projects/{projectId}/trash/datasets/{datasetId}/entities.csv:
+    get:
+      tags:
+      - Dataset Management
+      summary: Downloading Deleted Dataset Entities
+      description: |-
+        _(introduced: version 2026.1)_
+
+        Returns a CSV snapshot of the Entities belonging to a soft-deleted Dataset. This is useful for exporting Entity data before the Dataset is permanently purged after 30 days in the trash.
+
+        The CSV format is identical to [Download Dataset](/central-api-dataset-management/#download-dataset), except the filename will have a `-deleted` suffix (e.g. `people-deleted.csv`).
+
+        This endpoint uses the numeric Dataset ID rather than the Dataset name because the name alone is not sufficient to unambiguously identify a deleted Dataset (the same name could be reused). The numeric ID can be retrieved by [listing Datasets with `?deleted=true`](/central-api-dataset-management/#listing-datasets).
+
+        Unlike [Download Dataset](/central-api-dataset-management/#download-dataset), this endpoint does not support `$filter`, `$search`, or `ETag`.
+      operationId: downloadDeletedDatasetEntities
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: datasetId
+        in: path
+        description: The numeric ID of the deleted Dataset (returned by listing Datasets with `?deleted=true`)
+        required: true
+        schema:
+          type: number
+        example: "42"
+      responses:
+        "200":
+          description: OK
+          content:
+            text/csv:
+              example: |
+                __id,label,geometry,species,circumference_cm,__createdAt,__creatorId,__creatorName,__updates,__updatedAt,__version
+                2c1ee90b-dde8-434b-9985-2eefd8465339,666cm purpleheart,-29.281608 -67.624883 0 0,purpleheart,667,2023-05-31T19:49:28.902Z,22,Alice,1,2023-05-31T19:52:34.467Z,1
   /v1/projects/{projectId}/datasets/{name}/entities:
     get:
       tags:
@@ -8381,7 +8695,7 @@ paths:
         This endpoint returns a list of the Entities of a Dataset. Please note that this endpoint only returns metadata of the entities not the data. If you want to get the data of all entities then please refer to [OData Dataset Service](/central-api-odata-endpoints/#odata-form-service)
         You can provide `?deleted=true` to get only deleted entities.
       
-      operationId: Entities Metadata
+      operationId: entitiesMetadata
       parameters:
       - name: projectId
         in: path
@@ -8464,116 +8778,6 @@ paths:
                     type: user
                     updatedAt: '2018-04-18T23:42:11.406Z'
                     deletedAt: '2018-04-18T23:42:11.406Z'
-  /v1/projects/{projectId}/datasets/{name}/entities.geojson:
-    get:
-      tags:
-      - Entity Management
-      summary: Entities Geodata
-      description: |-
-        This endpoint returns the geometry-interpretable value of the `geometry` attribute of Entities of an entity dataset, in [GeoJSON](https://geojson.org) format.
-        No particular ordering is implied.
-        
-        ⚠️ The specifics of this endpoint are likely to change in future releases, and the parameters this endpoint takes are not all documented.
-        Its current behaviour should not be depended upon.
-        Use cases for this API can be discussed on [the forum](https://forum.getodk.org/).
-      operationId: Entities Geodata
-      parameters:
-      - name: projectId
-        in: path
-        description: The numeric ID of the Project
-        required: true
-        schema:
-          type: number
-        example: "10"
-      - name: name
-        in: path
-        description: Name of the Dataset
-        required: true
-        schema:
-          type: string
-        example: people
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                description: |
-                  Value of the `geometry` attribute (if geometry-interpretable) of Entities of an entity dataset, in [GeoJSON](https://geojson.org) format.
-
-                  Each entity is represented as a GeoJSON feature.
-                type: object
-              example:
-                {
-                  "type": "FeatureCollection",
-                  "features": [
-                    {
-                      "type": "Feature",
-                      "id": "06f1b19a-a14e-4916-b850-b5a5155ea4b7",
-                      "properties": null,
-                      "geometry": {
-                        "type": "Point",
-                        "coordinates": [27.98833, 86.92528, 8848]
-                      }
-                    },
-                    {
-                      "type": "Feature",
-                      "id": "b4677e0a-8731-4b75-b8df-8e4337ff9b5e",
-                      "properties": null,
-                      "geometry": {
-                        "type": "Point",
-                        "coordinates": [11.3733, 142.5917, -10984]
-                      }
-                    }
-                  ]
-                }
-
-  /v1/projects/{projectId}/datasets/{name}/entities/creators:
-    get:
-      tags:
-      - Entity Management
-      summary: Entities Creators
-      description: |-
-        This endpoint returns a list of all Actors who have created Entities in the Dataset, sorted by display name.
-      operationId: Entities Creators
-      parameters:
-      - name: projectId
-        in: path
-        description: The numeric ID of the Project
-        required: true
-        schema:
-          type: number
-        example: "16"
-      - name: name
-        in: path
-        description: Name of the Dataset
-        required: true
-        schema:
-          type: string
-        example: people
-      responses:        
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                description: List of Actors who created Entities
-                items:
-                  $ref: '#/components/schemas/Actor'
-              example:
-              - id: 115
-                type: user
-                displayName: Alice Johnson
-                createdAt: '2018-04-18T23:19:14.802Z'
-                updatedAt: '2018-04-18T23:42:11.406Z'
-                deletedAt: null
-              - id: 23
-                type: user
-                displayName: Bob Smith
-                createdAt: '2018-03-15T15:30:22.150Z'
-                updatedAt: '2018-03-15T15:30:22.150Z'
-                deletedAt: null
     post:
       tags:
       - Entity Management
@@ -8608,7 +8812,7 @@ paths:
         `
 
         You can provide header `X-Action-Notes` to store the metadata about the request. The metadata can retrieved using [Entity Audit Log](/central-api-entity-management/#entity-audit-log)
-      operationId: Creating an Entity
+      operationId: createEntity
       parameters:
       - name: projectId
         in: path
@@ -8684,6 +8888,131 @@ paths:
             application/json; bulk:
               schema:
                 $ref: '#/components/schemas/Success'
+  /v1/projects/{projectId}/datasets/{name}/entities.geojson:
+    get:
+      tags:
+      - Entity Management
+      summary: Entities Geodata
+      description: |-
+        This endpoint returns the geometry-interpretable value of the `geometry` attribute of Entities of an entity dataset, in [GeoJSON](https://geojson.org) format.
+        No particular ordering is implied.
+        
+        You can use an [OData-style `$filter` query](/central-api-odata-endpoints/#data-document) to filter the entities.
+      operationId: getEntitiesGeodata
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "10"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      - name: limit
+        in: query
+        schema:
+          type: number
+        example: 100
+        description: Impose a limit on the number of entities to extract geoinformation from.
+      - name: $filter
+        in: query
+        description: If provided, will filter responses to those matching the query. Only system-level Entity fields are available to reference. The operators `lt`, `le`, `eq`, `neq`, `ge`, `gt`, `not`, `and`, and `or` are supported, and the built-in functions `now`, `year`, `month`, `day`, `hour`, `minute`, `second`.
+        schema:
+          type: string
+        example: __system/conflict eq \'hard\'
+      - name: $search
+        in: query
+        description: The `$search` querystring parameter can be used to search entity data (user-defined properties) and the `label` field, using the same search behavior as the [OData Dataset Service](/central-api-odata-endpoints/#odata-dataset-service).
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: |
+                  Value of the `geometry` attribute (if geometry-interpretable) of Entities of an entity dataset, in [GeoJSON](https://geojson.org) format.
+
+                  Each entity is represented as a GeoJSON feature.
+                type: object
+              example:
+                {
+                  "type": "FeatureCollection",
+                  "features": [
+                    {
+                      "type": "Feature",
+                      "id": "06f1b19a-a14e-4916-b850-b5a5155ea4b7",
+                      "properties": null,
+                      "geometry": {
+                        "type": "Point",
+                        "coordinates": [27.98833, 86.92528, 8848]
+                      }
+                    },
+                    {
+                      "type": "Feature",
+                      "id": "b4677e0a-8731-4b75-b8df-8e4337ff9b5e",
+                      "properties": null,
+                      "geometry": {
+                        "type": "Point",
+                        "coordinates": [11.3733, 142.5917, -10984]
+                      }
+                    }
+                  ]
+                }
+
+  /v1/projects/{projectId}/datasets/{name}/entities/creators:
+    get:
+      tags:
+      - Entity Management
+      summary: Entities Creators
+      description: |-
+        This endpoint returns a list of all Actors who have created Entities in the Dataset, sorted by display name.
+      operationId: entitiesCreators
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: name
+        in: path
+        description: Name of the Dataset
+        required: true
+        schema:
+          type: string
+        example: people
+      responses:        
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                description: List of Actors who created Entities
+                items:
+                  $ref: '#/components/schemas/Actor'
+              example:
+              - id: 115
+                type: user
+                displayName: Alice Johnson
+                createdAt: '2018-04-18T23:19:14.802Z'
+                updatedAt: '2018-04-18T23:42:11.406Z'
+                deletedAt: null
+              - id: 23
+                type: user
+                displayName: Bob Smith
+                createdAt: '2018-03-15T15:30:22.150Z'
+                updatedAt: '2018-03-15T15:30:22.150Z'
+                deletedAt: null
   /v1/projects/{projectId}/datasets/{name}/entities/{uuid}:
     get:
       tags:
@@ -8704,7 +9033,7 @@ paths:
           * `hard`. The Entity has a version that was based on a version other than the version immediately prior to it. Further, that version updated the same property as another update.
 
         If an Entity has a conflict, it can be marked as resolved. After that, the conflict field will be null until a new conflicting version is received.
-      operationId: Getting Entity Details
+      operationId: getEntityDetails
       parameters:
       - name: projectId
         in: path
@@ -8821,7 +9150,7 @@ paths:
         **Resolving a conflict**
 
         You can also use this endpoint to resolve an Entity conflict by passing the `resolve=true` query parameter, in which case providing data in the request body is optional. When not providing new data, only the `conflict` status from the Entity will be cleared and no new version will be created. When providing data, the `conflict` will be cleared and an updated version of the Entity will be added.
-      operationId: Updating an Entity
+      operationId: updateEntity
       parameters:
       - name: projectId
         in: path
@@ -8922,7 +9251,7 @@ paths:
       description: Use this API to delete an Entity. With this API, Entity is soft-deleted,
         which means it is still in the database and you can retreive it by passing
         `?deleted=true` to [GET /projects/:id/datasets/:name/entities](/central-api-entity-management/#entities-metadata).
-      operationId: Deleting an Entity
+      operationId: deleteEntity
       parameters:
       - name: projectId
         in: path
@@ -8958,7 +9287,7 @@ paths:
       - Entity Management
       summary: Restoring a deleted Entity
       description: Entities that have been recently soft-deleted and not yet purged can be restored using this endpoint.
-      operationId: Restoring a deleted Entity
+      operationId: restoreDeletedEntity
       parameters:
       - name: projectId
         in: path
@@ -9005,7 +9334,7 @@ paths:
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to return a `creator` data object alongside the `creatorId` Actor ID reference.
 
         There is an optional query flag `relevantToConflict` that returns the subset of past versions of an Entity that are relevant to the Entity's current conflict. This includes the latest version, the base version, the previous server version, and any other versions since the last time the Entity was in a conflict-free state. If the Entity is not in conflict, zero versions are returned.
-      operationId: Listing Entity Versions
+      operationId: listEntityVersions
       parameters:
       - name: projectId
         in: path
@@ -9119,7 +9448,7 @@ paths:
         Entities, there is an array of objects representing how each property changed.
         This change object contains the old and new values, as well as the property
         name.
-      operationId: Getting changes between Entity Versions
+      operationId: getChangesBetweenEntityVersions
       parameters:
       - name: projectId
         in: path
@@ -9174,7 +9503,7 @@ paths:
       summary: Entity Audit Log
       description: Returns [Server Audit Logs](/central-api-system-endpoints/#server-audit-logs)
         relating to an Entity. They will be returned most recent first.
-      operationId: Entity Audit Log
+      operationId: entityAuditLog
       parameters:
       - name: projectId
         in: path
@@ -9217,7 +9546,7 @@ paths:
       - Entity Management
       summary: Entity GeoJSON representation
       description: Returns the GeoJSON representation of an Entity's `geometry` attribute, if available.
-      operationId: Entity GeoJSON representation
+      operationId: getEntityGeoJson
       parameters:
       - name: projectId
         in: path
@@ -9270,7 +9599,7 @@ paths:
       summary: Bulk Deleting Entities
       description: |-
         Use this API to delete multiple Entities at once. This endpoint accepts an array of Entity UUIDs and performs soft-deletion on all of them.
-      operationId: Bulk Deleting Entities
+      operationId: deleteEntities
       parameters:
       - name: projectId
         in: path
@@ -9326,7 +9655,7 @@ paths:
       summary: Bulk Restoring Entities
       description: |-
         Use this API to restore multiple deleted Entities at once. This endpoint accepts an array of Entity UUIDs and restores all of them that were previously deleted.
-      operationId: Bulk Restoring Entities
+      operationId: restoreEntities
       parameters:
       - name: projectId
         in: path
@@ -9404,7 +9733,7 @@ paths:
         This resource always requires authentication. If a valid Actor is authenticated at all, a form list will always be returned, filtered by what that Actor is allowed to access.
 
         If you haven't already, please take a look at the **HTTP Request API** notes above on the required OpenRosa headers.
-      operationId: OpenRosa Form Listing API
+      operationId: openrosaListForms
       parameters:
       - name: projectId
         in: path
@@ -9478,7 +9807,7 @@ paths:
         * If the submission you are deprecating had media files uploaded for it, any of those that are still relevant will be carried over to the new version by filename reference. Any files you provide will overwrite these carryovers.
 
         * Just as with initial submission, you can send multiple requests to this endpoint to submit additional media files if they do not comfortably fit in a single request. Also the same as initial submission, you'll need to provide exactly the same XML to make this happen. For updates, this will need to include the `deprecatedID`.
-      operationId: OpenRosa Form Submission API
+      operationId: openrosaSubmitForm
       parameters:
       - name: projectId
         in: path
@@ -9554,7 +9883,7 @@ paths:
         * If an attachment is linked to a Dataset, then `type="entityList"` attribute is added to the `mediaFile` element. If the Dataset requires approval of Submission to create new Entity then `type="approvalEntityList"` is added instead.
 
         * `integrityUrl` is also returned for the attachments that are linked to a Dataset.
-      operationId: OpenRosa Form Manifest API
+      operationId: openrosaGetFormManifest
       parameters:
       - name: projectId
         in: path
@@ -9616,7 +9945,7 @@ paths:
         This is the fully standards-compliant implementation of the Entities Integrity API as described in [OpenRosa spec proposal: support offline Entities](https://forum.getodk.org/t/openrosa-spec-proposal-support-offline-entities/48052).
 
         This returns the `deleted` flag of the Entities requested through `id` query parameter. If no `id` is provided then all Entities are return.
-      operationId: OpenRosa Dataset Integrity API
+      operationId: openrosaCheckDatasetIntegrity
       parameters:
       - name: projectId
         in: path
@@ -9673,7 +10002,7 @@ paths:
       summary: OpenRosa Form Listing API
       description: Identical to the [non-Draft version](/central-api-openrosa-endpoints/#openrosa-form-listing-api),
         but will only list the Draft Form to be tested.
-      operationId: OpenRosa Form Listing API (Draft Form)
+      operationId: openrosaListDraftForms
       parameters:
       - name: token
         in: path
@@ -9730,7 +10059,7 @@ paths:
       summary: OpenRosa Form Submission API
       description: Identical to the [non-Draft version](/central-api-openrosa-endpoints/#openrosa-form-submission-api),
         but will only submit to (and allow submissions to) the Draft Form to be tested.
-      operationId: OpenRosa Form Submission API (Draft Form)
+      operationId: openrosaSubmitToDraftForm
       parameters:
       - name: token
         in: path
@@ -9803,7 +10132,7 @@ paths:
       - Draft Testing Endpoints
       summary: OpenRosa Form Manifest API
       description: Identical to the [non-Draft version](/central-api-openrosa-endpoints/#openrosa-form-manifest-api).
-      operationId: OpenRosa Form Manifest API (Draft Form)
+      operationId: openrosaGetDraftFormManifest
       parameters:
       - name: token
         in: path
@@ -9856,7 +10185,7 @@ paths:
       - Draft Testing Endpoints
       summary: Downloading a Form Attachment
       description: Identical to the [non-Draft version](/central-api-form-management/#downloading-a-form-attachment).
-      operationId: Downloading a Form Attachment (Draft Form)
+      operationId: downloadTestDraftFormAttachment
       parameters:
       - name: token
         in: path
@@ -9908,7 +10237,7 @@ paths:
         You will always find a link to the `/Submissions` subpath, which is the data document that represents the "root" table, the data from each `Submission` that is not nested within any `repeat`s.
 
         This document is available only in JSON format.
-      operationId: Service Document
+      operationId: serviceDocument
       parameters:
       - name: projectId
         in: path
@@ -10044,7 +10373,7 @@ paths:
         This implementation of the OData standard includes a set of Annotations describing the supported features of the service in the form of the [Capabilities Vocabulary](https://github.com/oasis-tcs/odata-vocabularies/blob/master/vocabularies/Org.OData.Capabilities.V1.md). In general, however, you can assume that the server supports the Minimal Conformance level and nothing beyond.
 
         While the latest 4.01 OData specification adds a new JSON EDMX CSDL format, most servers and clients do not yet support that format, and so for this release of ODK Central only the older XML EDMX CSDL format is available.
-      operationId: Metadata Document
+      operationId: metadataDocument
       parameters:
       - name: projectId
         in: path
@@ -10192,7 +10521,7 @@ paths:
         As of ODK Central v2024.1, the [`$orderby` query parameter](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358952) is now supported, and can sort on the same fields as `$filter`, noted above. The order can be specified as `ASC` (ascending) or `DESC` (descending), which are case-insensitive. Multiple sort expressions can be used together, separated by commas, e.g. `$orderby=__system/submitterId ASC, __system/reviewState DESC`.
 
         As the vast majority of clients only support the JSON OData format, that is the only format ODK Central offers.
-      operationId: Data Document
+      operationId: dataDocument
       parameters:
       - name: projectId
         in: path
@@ -10385,7 +10714,7 @@ paths:
         To help manage this, the frontend provides a `/dl` path that allows file download. Just take a normal attachment download path and replace the `/v1` near the beginning of the path with `/dl`, and the user will be taken to a page managed by the Central administration website that will ensure the user is logged in, and offer the file as a download.
 
         Because this `/dl` path returns a web page that causes a file download rather than directly returning the media file in question, it cannot be used to directly embed or retrieve these files, for example in a `<img>` tag.
-      operationId: Data Download Path
+      operationId: dataDownloadPath
       parameters:
       - name: projectId
         in: path
@@ -10432,7 +10761,7 @@ paths:
         The Service Document provides a link to the main source of information in this OData service: the list of `Entities` in this `Dataset`, as well as the Metadata Document describing the schema of this information.
 
         This document is available only in JSON format.
-      operationId: Service Document for Datasets
+      operationId: serviceDocumentForDatasets
       parameters:
       - name: projectId
         in: path
@@ -10547,7 +10876,7 @@ paths:
         the schema of all the data you can retrieve from the OData Dataset Service
         in question. Essentially, these are the Dataset properties, or the schema
         of each `Entity`, translated into the OData format.
-      operationId: Metadata Document for Dataset
+      operationId: metadataDocumentForDataset
       parameters:
       - name: projectId
         in: path
@@ -10707,7 +11036,7 @@ paths:
         - A dash (`-`) before a word excludes entities that contain that word (logical NOT).
 
         As the vast majority of clients only support the JSON OData format, that is the only format ODK Central offers.
-      operationId: Data Document for Dataset
+      operationId: dataDocumentForDataset
       parameters:
       - name: projectId
         in: path
@@ -10850,7 +11179,7 @@ paths:
       summary: Service Document
       description: Identical to [the non-Draft version](/central-api-odata-endpoints/#service-document)
         of this endpoint.
-      operationId: Service Document for Dataset
+      operationId: serviceDocumentForDataset
       parameters:
       - name: projectId
         in: path
@@ -10974,7 +11303,7 @@ paths:
       summary: Metadata Document
       description: Identical to [the non-Draft version](/central-api-odata-endpoints/#metadata-document)
         of this endpoint.
-      operationId: Metadata Document (Draft Form)
+      operationId: getDraftFormMetadata
       parameters:
       - name: projectId
         in: path
@@ -11085,7 +11414,7 @@ paths:
       summary: Data Document
       description: Identical to [the non-Draft version](/central-api-odata-endpoints/#data-document)
         of this endpoint.
-      operationId: Data Document (Draft Form)
+      operationId: getDraftFormDataDocument
       parameters:
       - name: projectId
         in: path
@@ -11255,78 +11584,31 @@ paths:
   /v1/config/analytics:
     get:
       tags:
-      - Usage Reporting Configuration
-      summary: Getting the current configuration
+      - System Configuration
+      summary: Getting the current Usage Reporting configuration
       description: If the Usage Reporting configuration is not set, this endpoint
         will return a `404`. Once the configuration is set, this endpoint will indicate
         whether the server will share usage data with the Central team. If the server
         will share usage data, and contact information was provided, this endpoint
         will also return the provided work email address and organization name.
-      operationId: Getting the current configuration
+      operationId: getTheCurrentConfiguration
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                required:
-                - key
-                - setAt
-                - value
-                type: object
-                properties:
-                  key:
-                    type: string
-                    description: The type of system configuration.
-                  setAt:
-                    type: string
-                    description: ISO date format. The last time this system configuration
-                      was set.
-                  value:
-                    required:
-                    - enabled
-                    type: object
-                    properties:
-                      enabled:
-                        type: boolean
-                        description: '`true` if the server will share usage data with
-                          the Central team and `false` if not.'
-                      email:
-                        type: string
-                        description: The work email address to include with the metrics
-                          report.
-                      organization:
-                        type: string
-                        description: The organization name to include with the metrics
-                          report.
-                    description: Details about the Usage Reporting configuration.
-              example:
-                key: some_type
-                setAt: 2018-01-06T00:32:52.787Z
-                value:
-                  enabled: true
-                  email: my.email.address@getodk.org
-                  organization: Organization Name
+                $ref: '#/components/schemas/ConfigAnalytics'
         "404":
           description: Not Found
           content:
             application/json:
               schema:
-                required:
-                - code
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
-              example:
-                code: "404.1"
-                message: Could not find the resource you were looking for.
+                $ref: '#/components/schemas/Error404'
     post:
       tags:
-      - Usage Reporting Configuration
-      summary: Setting a new configuration
+      - System Configuration
+      summary: Setting new configuration for Usage Reporting
       description: |-
         An Administrator can use this endpoint to choose whether the server will share anonymous usage data with the Central team. This configuration affects the entire server. Until the Usage Reporting configuration is set, Administrators will see a message on the Central administration website that provides further information.
 
@@ -11335,28 +11617,12 @@ paths:
         If an Administrator specifies `false` for `enabled`, the server will not share anonymous usage data with the Central team. Administrators will no longer see the message on the administration website.
 
         If the Usage Reporting configuration is already set, the current configuration will be overwritten with the new one.
-      operationId: Setting a new configuration
+      operationId: setConfiguration
       requestBody:
         content:
           '*/*':
             schema:
-              required:
-              - enabled
-              type: object
-              properties:
-                enabled:
-                  type: boolean
-                  description: See above.
-                email:
-                  type: string
-                  description: A work email address to include with the metrics report.
-                organization:
-                  type: string
-                  description: An organization name to include with the metrics report.
-              example:
-                enabled: true
-                email: my.email.address@getodk.org
-                organization: Organization Name
+              $ref: '#/components/schemas/ConfigAnalyticsValue'
         required: false
       responses:
         "200":
@@ -11364,52 +11630,15 @@ paths:
           content:
             application/json:
               schema:
-                required:
-                - key
-                - setAt
-                - value
-                type: object
-                properties:
-                  key:
-                    type: string
-                    description: The type of system configuration.
-                  setAt:
-                    type: string
-                    description: ISO date format. The last time this system configuration
-                      was set.
-                  value:
-                    required:
-                    - enabled
-                    type: object
-                    properties:
-                      enabled:
-                        type: boolean
-                        description: '`true` if the server will share usage data with
-                          the Central team and `false` if not.'
-                      email:
-                        type: string
-                        description: The work email address to include with the metrics
-                          report.
-                      organization:
-                        type: string
-                        description: The organization name to include with the metrics
-                          report.
-                    description: Details about the Usage Reporting configuration.
-              example:
-                key: some_type
-                setAt: 2018-01-06T00:32:52.787Z
-                value:
-                  enabled: true
-                  email: my.email.address@getodk.org
-                  organization: Organization Name
+                $ref: '#/components/schemas/ConfigAnalytics'
       x-codegen-request-body-name: body
     delete:
       tags:
-      - Usage Reporting Configuration
-      summary: Unsetting the current configuration
+      - System Configuration
+      summary: Unsetting the current Usage Reporting configuration
       description: If the Usage Reporting configuration is unset, Administrators will
-        once again see a message on the the Central administration website.
-      operationId: Unsetting the current configuration
+        once again see a message on the Central administration website.
+      operationId: unsetTheCurrentConfiguration
       responses:
         "200":
           description: OK
@@ -11417,6 +11646,213 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Success'
+  /v1/config/login-appearance:
+    get:
+      tags:
+      - System Configuration
+      summary: Getting the title and description configured for the login page
+      description: |-
+        _(introduced: version 2026.1)_
+
+        If no title or description has been configured for the login page, this endpoint will return a `404`. Once a configuration is set, this endpoint will return the custom title and/or description that has been configured for the login page.
+      operationId: getLoginAppearance
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfigLoginAppearance'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+    post:
+      tags:
+      - System Configuration
+      summary: Setting a new title and description for the login page
+      description: |-
+        _(introduced: version 2026.1)_
+
+        An Administrator can use this endpoint to set a custom title and/or description to show to all users who visit the login page. The description will be shown as a subtitle. If a title or description is already set, the current configuration will be overwritten with the new one; the two configurations will not be merged.
+      operationId: setLoginAppearance
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ConfigLoginAppearanceValue'
+        required: false
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfigLoginAppearance'
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+      - System Configuration
+      summary: Unsetting the title and description configured for the login page
+      description: |-
+        _(introduced: version 2026.1)_
+
+        If the configuration is unset, all users who visit the login page will once again see the default title and description.
+      operationId: unsetLoginAppearance
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+  /v1/config/logo:
+    get:
+      tags:
+      - System Configuration
+      summary: Getting the logo configured for the server
+      description: |-
+        _(introduced: version 2026.1)_
+
+        If no logo has been configured for the server, this endpoint will return a `404`. Once a configuration is set, this endpoint will return the custom logo that has been configured.
+      operationId: getLogo
+      responses:
+        "200":
+          description: OK
+          content:
+            "{the MIME type of the logo itself}":
+              example: (binary data)
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+    post:
+      tags:
+      - System Configuration
+      summary: Setting a new logo for the server
+      description: |-
+        _(introduced: version 2026.1)_
+
+        An Administrator can use this endpoint to set a custom logo for the entire server. The logo will be shown to all users who visit the login page, as well as other pages, including the reset password page and set password page. If a logo is already set, the current logo will be overwritten with the new one.
+      operationId: setLogo
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfigLogo'
+    delete:
+      tags:
+      - System Configuration
+      summary: Unsetting the logo configured for the server
+      description: |-
+        _(introduced: version 2026.1)_
+
+        If the configuration is unset, all users who visit the login page (or another page that previously showed the custom logo) will once again see the default logo.
+      operationId: unsetLogo
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+  /v1/config/hero-image:
+    get:
+      tags:
+      - System Configuration
+      summary: Getting the hero image configured for the server
+      description: |-
+        _(introduced: version 2026.1)_
+
+        If no hero image has been configured for the server, this endpoint will return a `404`. Once a configuration is set, this endpoint will return the custom hero image that has been configured.
+      operationId: getHeroImage
+      responses:
+        "200":
+          description: OK
+          content:
+            "{the MIME type of the hero image itself}":
+              example: (binary data)
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+    post:
+      tags:
+      - System Configuration
+      summary: Setting a new hero image for the server
+      description: |-
+        _(introduced: version 2026.1)_
+
+        An Administrator can use this endpoint to set a custom hero image for the entire server. The hero image will be shown to all users who visit the login page, as well as other pages, including the reset password page and set password page. If a hero image is already set, the current image will be overwritten with the new one.
+      operationId: setHeroImage
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfigHeroImage'
+    delete:
+      tags:
+      - System Configuration
+      summary: Unsetting the hero image configured for the server
+      description: |-
+        _(introduced: version 2026.1)_
+
+        If the configuration is unset, users who visit the login page (or another page that previously showed the custom hero image) will no longer see the custom image. Instead, they will see either a default image or no image at all.
+      operationId: unsetHeroImage
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+  /v1/config/public:
+    get:
+      tags:
+      - System Configuration
+      summary: Getting all public configuration
+      description: |-
+        _(introduced: version 2026.1)_
+
+        This endpoint will return all server configuration that is publicly accessible in a single object. This endpoint does not require authentication.
+
+        The following configurations are publicly accessible:
+
+        * `login-appearance`
+        * `logo`
+        * `hero-image`
+
+        The following configuration is not publicly accessible and requires authentication to access:
+
+        * `analytics`
+
+        For configuration that stores binary data (e.g., `logo`), this endpoint only returns metadata about the configuration (e.g., when the configuration was last set). To retrieve the binary data, you can use the corresponding endpoint described above (e.g., /v1/config/logo). If the configuration is publicly accessible, you can access the binary data without providing authentication via /v1/config/public/:key (e.g., /v1/config/public/logo).
+      operationId: getPublicConfig
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  login-appearance:
+                    $ref: '#/components/schemas/ConfigLoginAppearance'
+                  logo:
+                    $ref: '#/components/schemas/ConfigLogo'
+                  hero-image:
+                    $ref: '#/components/schemas/ConfigHeroImage'
+                description: Details about all public configuration.
   /v1/analytics/preview:
     get:
       tags:
@@ -11426,7 +11862,7 @@ paths:
         sent. The preview is computed on the fly and represents what the report would
         look like if sent at that time. This endpoint does not directly submit the
         Usage Report; that is handled internally as a scheduled Central task.
-      operationId: Getting the Usage Report preview
+      operationId: getTheUsageReportPreview
       responses:
         "200":
           description: OK
@@ -11450,7 +11886,7 @@ paths:
         `start` may be given without `end`, and vice versa, in which case the timestamp filter will only be bounded on the specified side. They are both inclusive (`>=` and `<=`, respectively).
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally expand the `actorId` into full `actor` details, and `acteeId` into full `actee` details. The `actor` will always be an Actor, but the `actee` may be an Actor, a Project, a Form, or some other type of object depending on the type of action.
-      operationId: Getting Audit Log Entries
+      operationId: getAuditLogEntries
       parameters:
       - name: action
         in: query
@@ -11535,7 +11971,7 @@ paths:
         Use the `POST` verb to start a direct download ad-hoc backup. You will want to supply a `passphrase` with your chosen encryption passphrase. It is possible to omit this, in which case the backup will still be encrypted, but it will decrypt given an empty passphrase.
 
         Please see the section notes above about the long-running nature of this endpoint.
-      operationId: Using an Encryption Passphrase
+      operationId: useEncryptionPassphrase
       requestBody:
         content:
           '*/*':
@@ -12668,6 +13104,96 @@ components:
               type: object
               properties: {}
               description: The details of the actee given by `acteeId`. Depending on the action type, this could be a number of object types, including an `Actor`, a `Project`, or a `Form`.
+    Config:
+      type: object
+      required:
+        - key
+        - setAt
+      properties:
+        key:
+          type: string
+          example: some_type
+          description: The type of system configuration.
+        setAt:
+          type: string
+          example: 2018-01-06T00:32:52.787Z
+          description: ISO date format. The last time this system configuration was set.
+    ConfigAnalyticsValue:
+      type: object
+      required:
+        - enabled
+      properties:
+        enabled:
+          type: boolean
+          example: true
+          description: '`true` if the server will share usage data with the Central team and `false` if not.'
+        email:
+          type: string
+          example: my.email.address@getodk.org
+          description: The work email address to include with the metrics report.
+        organization:
+          type: string
+          example: Organization Name
+          description: The organization name to include with the metrics report.
+    ConfigAnalytics:
+      allOf:
+        - $ref: '#/components/schemas/Config'
+        - type: object
+          required:
+            - value
+          properties:
+            key:
+              example: analytics
+            value:
+              $ref: '#/components/schemas/ConfigAnalyticsValue'
+              description: Details about the Usage Reporting configuration.
+    ConfigLoginAppearanceValue:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Better Data, Better Cocoa
+          description: A custom title to show on the login page.
+        description:
+          type: string
+          description: A custom description to show on the login page as a subtitle.
+    ConfigLoginAppearance:
+      allOf:
+        - $ref: '#/components/schemas/Config'
+        - type: object
+          required:
+            - value
+          properties:
+            key:
+              example: login-appearance
+            value:
+              $ref: '#/components/schemas/ConfigLoginAppearanceValue'
+              description: Details about the configuration.
+    ConfigBlob:
+      allOf:
+        - $ref: '#/components/schemas/Config'
+        - type: object
+          required:
+            - blobExists
+          properties:
+            blobExists:
+              type: boolean
+              example: true
+              description: Whether a file has been set for this configuration.
+    ConfigLogo:
+      allOf:
+        - $ref: '#/components/schemas/ConfigBlob'
+        - type: object
+          properties:
+            key:
+              example: logo
+    ConfigHeroImage:
+      allOf:
+        - $ref: '#/components/schemas/ConfigBlob'
+        - type: object
+          properties:
+            key:
+              example: hero-image
     Comment:
       type: object
       required:
