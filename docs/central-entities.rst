@@ -202,6 +202,24 @@ Looking at this view, you can match up the columns and ensure your data is loadi
 
 Click on the :guilabel:`Append data` button to import your data into your Entity List. Be sure you are ready to proceed: there isn't currently an easy way to undo an import.
 
+.. _central-entities-create-manually:
+
+Creating Entities manually
+--------------------------
+
+You can create Entities directly in the Central web interface, in addition to creating them through form submissions or CSV import.
+
+This is useful for adding a small number of records, correcting missing entries, or testing workflows. There is no validation when editing this way. If you would like to specify constraints or other relationships between values, create an update form that uses :ref:`dynamic defaults <dynamic-defaults>`.
+
+.. image:: /img/central-entities/entity-create-manually.jpg
+
+To manually create an Entity:
+
+#. Go to the :guilabel:`Entities` tab
+#. Click :guilabel:`New Entity`
+#. Enter values for the required properties
+#. Click :guilabel:`Create`
+
 .. _central-entities-authoring:
 
 Creating Forms to use Entities
@@ -380,12 +398,50 @@ See a sample form `here <https://docs.google.com/spreadsheets/d/1R3Ja6hOjjntE42H
 
 .. _central-entities-managing:
 
-Managing Entities
--------------------
+Managing Entity Lists
+-----------------------
 
 To browse all Entity Lists in a Project, go to the :guilabel:`Entity Lists` tab. You'll see all Entity Lists created by Forms in that Project. Click any Entity List to view its Entities, properties, and settings.
 
-   .. image:: /img/central-entities/entity-lists.png
+.. image:: /img/central-entities/entity-lists.png
+
+.. _central-entities-settings:
+
+Entity List Settings
+~~~~~~~~~~~~~~~~~~~~~
+
+On the :guilabel:`Settings` tab, you can choose whether Entities are created immediately when they are first received by Central, or if Central should wait until the Submission is approved before creating any Entities from it.
+
+.. image:: /img/central-entities/entity-settings.png
+
+Note that only one of these two behaviors can be chosen at a time. If you change the setting from "on approval" to "when received" but you still have unapproved Submissions, Central will not ever be told to make Entities out of these Submissions. If this is the case for you and you try to make this setting change, you will see a special message and you will have the option to convert all pending (not approved or rejected) Submissions into Entities right away.
+
+Select either option and you should see a confirmation the setting has changed.
+
+You can also select whether App Users and Data Collectors receive access to all Entities, or only the ones they create.
+
+.. _deleting-entity-lists:
+
+Deleting Entity Lists
+~~~~~~~~~~~~~~~~~~~~~~
+
+You can delete an Entity List that is no longer needed if it is not linked to any Forms. If the list is currently in use, unlink it from all Forms before proceeding.
+
+To unlink a Form from an Entity List, you must :ref:`edit the Form's definition <central-forms-updates>`.
+
+If a form uses Entities from the list you want to delete, you can remove the question(s) that reference the list or replace the list with a CSV. If a form creates or updates Entities in the list you want to delete, you must delete the row on the ``entities`` sheet of your form definition that references that Entity List. 
+
+Once you have made the necessary changes to your Form(s), publish your draft(s) and then proceed to deleting the Entity List:
+
+.. image:: /img/central-entities/entity-list-delete.*
+
+#. Go to the :guilabel:`Entities` tab in your Project.
+#. Select the Entity List you want to delete.
+#. Open :guilabel:`Settings`.
+#. Click :guilabel:`Delete Entity List`.
+#. Confirm the deletion.
+
+A deleted Entity List will be available in the trash for 30 days and then will be permanently deleted. You can't restore an Entity List from the trash but you can download its contents to :ref:`upload into a new list <central-entities-upload>`.
 
 .. _central-entities-data:
 
@@ -394,7 +450,7 @@ Managing Entity Data
 
 From the :guilabel:`Entities` tab, you can preview or download your Entity data.
 
-   .. image:: /img/central-entities/entity-table.png
+.. image:: /img/central-entities/entity-table.png
 
 Similar to the Submissions data page for a Form, you will see overall metadata like the create and update time on the left side of the table, and the actual data values on the right. You can press :guilabel:`Refresh` to fetch the latest data, or use any of the options at the top right of the table to export the data to a file or an analysis tool.
 
@@ -444,7 +500,7 @@ A dialog will appear with all the Entity data listed. You will see the name of t
 
 The very first row labeled :guilabel:`Entity Label *` is not part of the Form data collected. Rather, it is the title of the Entity, which is computed from the Entity data when the Entity is first created using rules set by the Form author. You can change it to any value here.
 
-As you type, Central will highlight any fields you have changed in yellow so you can see what you've done.
+As you type, Central will highlight any fields you have changed so you can see the changes you've made.
 
 To complete the process press the :guilabel:`Update` button to save your changes to the Entity. You will see a confirmation that the save succeeded. If you don't like your changes, you can click on the :guilabel:`x` or the :guilabel:`Never mind` link to close the dialog.
 
@@ -471,24 +527,27 @@ Once an Entity has been deleted, it will remain in the Trash for 30 days before 
 Managing Entity properties
 ----------------------------
 
-.. image:: /mg/central-entities/entity-properties.*
+.. image:: /img/central-entities/entity-properties.*
 
 On the :guilabel:`Properties` tab, you can see how this Entity List relates to other incoming data in your Project: which Forms contribute to the Entity List, which ones read data from it, and which fields are being read or written, as well as a list of Properties and the forms that update it.
 
-.. _central-entities-settings:
+.. _central-entities-properties-delete:
 
-Entity List Settings
-------------------------------
+Deleting Entity properties
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On the :guilabel:`Settings` tab, you can choose whether Entities are created immediately when they are first received by Central, or if Central should wait until the Submission is approved before creating any Entities from it.
+You can delete a property from an Entity List if it is no longer needed. 
 
-   .. image:: /img/central-entities/entity-settings.png
+A property can only be deleted if its value is not set in any Entities. If its value is set in some Entities, you must :ref:`edit each Entity <central-entities-edit>` to clear the values. Property deletion is currently intended to be used during the workflow testing phase. If you need to clear many Entities' values, you can use the API.
 
-Note that only one of these two behaviors can be chosen at a time. If you change the setting from "on approval" to "when received" but you still have unapproved Submissions, Central will not ever be told to make Entities out of these Submissions. If this is the case for you and you try to make this setting change, you will see a special message and you will have the option to convert all pending (not approved or rejected) Submissions into Entities right away.
+.. image:: /img/central-entities/entity-property-delete.jpg
 
-Select either option and you should see a confirmation the setting has changed.
+To delete a property:
 
-You can also select whether App Users and Data Collectors receive access to all Entities, or only the ones they create.
+#. Go to the :guilabel:`Properties` tab
+#. Locate the property you want to delete
+#. Click the delete icon
+#. Confirm the deletion
 
 .. _central-entities-update-conflicts:
 

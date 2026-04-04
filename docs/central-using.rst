@@ -9,6 +9,7 @@ Using ODK Central
   central-forms
   central-submissions
   central-entities
+  central-customization
   central-encryption
   central-server-audits
   central-briefcase
