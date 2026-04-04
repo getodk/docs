@@ -455,11 +455,27 @@ Using a Custom Database Server
 ------------------------------
 
 .. warning::
-  Using PostgreSQL 14 isn't strictly required, but we only test with and support PostgreSQL 14.
+  Using PostgreSQL version 14 isn't strictly required, but we only test with and support PostgreSQL 14.
 
-  Using a custom database server that is not on your local network, may result in poor performance.
+  Using a database server that is not on your local network may result in poor performance.
 
-Central comes with a PostgreSQL v14.x database server to store your data. To use a custom PostgreSQL database server:
+Central comes with a PostgreSQL v14.x database server to store your data, which Central will connect to by default.
+However, you may want to connect to and use a database that runs elsewhere, for instance, one provisioned by your organization.
+
+
+Configuring access to an external PostgreSQL database
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+From Central 2026.1 onwards, you can use PostgreSQL's environment variables in your ``.env`` file to configure the connection — 
+please refer to the `PostgreSQL documentation <https://www.postgresql.org/docs/14/libpq-envars.html>`_ for this.
+
+.. warning::
+  In particular, if previously you have used such a custom database connection and had SSL configured with ``DB_SSL=true``,
+  you will need to replace that setting with ``PGSSLMODE=require`` as the ``DB_SSL`` variable is no longer supported.
+
+
+Creating and using a custom PostgreSQL database server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #. Connect to your database server.
 
@@ -500,10 +516,10 @@ Central comes with a PostgreSQL v14.x database server to store your data. To use
 
    .. code-block:: bash
 
-     DB_HOST=my-db-host
-     DB_USER=my-db-user
-     DB_PASSWORD=my-db-password
-     DB_NAME=my-db-name
+     PGHOST=my-db-host
+     PGUSER=my-db-user
+     PGPASSWORD=my-db-password
+     PGDATABASE=my-db-name
 
 #. Build and restart the service container.
 
