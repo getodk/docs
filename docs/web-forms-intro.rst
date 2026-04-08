@@ -116,7 +116,8 @@ File uploads
 ~~~~~~~~~~~~
 
 .. image:: /img/web-forms/file-upload.*
-  :class: central-partial-screen
+  :alt: Web forms geotrace
+
 
 Web Forms supports uploading image, video, audio, and file attachments such as PDFs using the respective question types. For the :ref:`image question type <default-image-widget>`, users on a mobile device can also take a picture directly with their camera. Devices like laptops that use a desktop browser will not show the capture button, even if they have a built-in camera.
 
