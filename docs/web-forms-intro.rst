@@ -112,13 +112,13 @@ For scenarios requiring precise coordinate adjustments, an advanced panel can be
 .. image:: /img/web-forms/map-advanced-panel.*
   :alt: Web forms advanced panel for geoshape and geotrace
 
-Image, video, audio, and file
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+File uploads
+~~~~~~~~~~~~
 
-.. image:: /img/web-forms/image-desktop.*
+.. image:: /img/web-forms/file-upload.*
   :class: central-partial-screen
 
-The :ref:`image question type <default-image-widget>` without appearance allows the user to capture or upload an image. In Web Forms, if the user is on a mobile device, they can take a picture with their mobile camera. Devices like laptops that use a desktop browser will not show the capture button, even if they have a built-in camera. Web Forms also supports uploading video, audio, and file attachments such as PDFs using the respective question types.
+Web Forms supports uploading image, video, audio, and file attachments such as PDFs using the respective question types. For the :ref:`image question type <default-image-widget>`, users on a mobile device can also take a picture directly with their camera. Devices like laptops that use a desktop browser will not show the capture button, even if they have a built-in camera.
 
 Date
 ~~~~~
