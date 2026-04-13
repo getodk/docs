@@ -112,13 +112,14 @@ For scenarios requiring precise coordinate adjustments, an advanced panel can be
 .. image:: /img/web-forms/map-advanced-panel.*
   :alt: Web forms advanced panel for geoshape and geotrace
 
-Image
-~~~~~
+File uploads
+~~~~~~~~~~~~
 
-.. image:: /img/web-forms/image-desktop.*
-  :class: central-partial-screen
+.. image:: /img/web-forms/file-upload.*
+  :alt: Web forms geotrace
 
-The :ref:`image question type <default-image-widget>` without appearance allows the user to capture an image. In Web Forms, if the user is on a mobile device, they can take a picture with their mobile camera. Devices like laptops that use a desktop browser will not show the capture button, even if they have a built-in camera.
+
+Web Forms supports uploading image, video, audio, and file attachments such as PDFs using the respective question types. For the :ref:`image question type <default-image-widget>`, users on a mobile device can also take a picture directly with their camera. Devices like laptops that use a desktop browser will not show the capture button, even if they have a built-in camera.
 
 Date
 ~~~~~
@@ -126,7 +127,7 @@ Date
 .. image:: /img/web-forms/calendar-yyyy-mm-dd.*
   :class: central-partial-screen
 
-The :ref:`date question type <default-date-widget>` without appearance allows the user to enter a date. The user can manually type a date in the text field in the mm/dd/yyyy format or click in the field to select a date from a calendar. To change the year, they can press on the current year at the top of the calendar. To change the month, they can use the navigation arrows or press on the current month at the top of the calendar. There are also buttons to clear the date or jump to today.
+The :ref:`date question type <default-date-widget>` without appearance allows the user to enter a date. The user can manually type a date in the text field or click in the field to select a date from a calendar. The date format is based on the form's language, or the browser's language if the form does not have a language set. To change the year, they can press on the current year at the top of the calendar. To change the month, they can use the navigation arrows or press on the current month at the top of the calendar. There are also buttons to clear the date or jump to today.
 
 .. _web-forms-selects-images:
 
