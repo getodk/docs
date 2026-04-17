@@ -2540,6 +2540,14 @@ The step interval is configured by the ``tick_interval`` parameter in the ``para
 
 You can also configure a placeholder value for a number line range. This value determines where the selection line will be shown when no value is saved for the question. This can help avoid bias or help users select common values depending on the project context. No value is actually set for the question until the user interacts with range. If they tap on the placeholder, then that placeholder value is saved. The placeholder is configured by the ``placeholder`` parameter in the ``parameters`` column.
 
+The screenshots below show the placeholder when no value is selected and then a selected value of 80.
+
+.. image:: /img/form-question-types/range-placeholder-no-value.*
+  :class: device-screen-vertical
+
+.. image:: /img/form-question-types/range-placeholder-value.*
+  :class: device-screen-vertical
+
 .. rubric:: XLSForm
 
 .. csv-table:: survey
@@ -2557,6 +2565,14 @@ You can optionally specify labels for the ticks on a number line.
 When using phones to fill out forms, we recommend labeling at most the start, end, and midpoint. When using larger devices, you could add labels to any visible tick, determined by ``tick_interval`` if specified or ``step`` otherwise. If you add long labels or label many ticks, the labels may overlap so make sure to test on devices you intend to use.
 
 Tick labels are defined in a list on the ``choices`` tab of your XLSForm. You can give this list any name you want, for example ``agreement_labels``. The values in the ``name`` column for this list must be numbers that correspond to tick values in the range. The values in the ``label`` column can be any text you would like. You can translate those label values the same way you would :doc:`translate select choice labels <form-language>`.
+
+In the screenshots below, notice that the French labels are truncated on this device.
+
+.. image:: /img/form-question-types/range-labels-english.*
+  :class: device-screen-vertical
+
+.. image:: /img/form-question-types/range-labels-french.*
+  :class: device-screen-vertical
 
 .. rubric:: XLSForm
 
