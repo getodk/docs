@@ -1,3 +1,11 @@
+.. spelling:word-list::
+  labelset
+  français
+  fait
+  d'accord
+  Neutre
+  du
+
 Question Types
 =================
 
@@ -1112,7 +1120,7 @@ When the ``no-buttons`` appearance is added, the app displays choices without th
 .. _likert-widget:
 
 Likert widget
-""""""""""""""""""""""""""""""""""
+""""""""""""""
 
 type
  ``select_one {list_name}``
@@ -2475,44 +2483,40 @@ You can try `the sample form above <https://docs.google.com/spreadsheets/d/1RLdV
 Range widgets
 ----------------
 
-Range widgets allow the user to select numbers from within a range that is visually represented as a number line. The parameters of the range widget are defined by ``start``, ``end``, and ``step`` values defined in the ``parameters`` column of your XLSForm. The parameter values can be integers or decimals.
+Range widgets allow the user to select numbers from within a range. The range can be represented visually as a :ref:`number line <range-number-line>`, as :ref:`a picker <range-picker-widget>`, or as a :ref:`star rating <range-rating-widget>`.
 
-.. _range-widget-integers:
+The basic parameters of the range widget are defined by ``start``, ``end``, and ``step`` values defined in the ``parameters`` column of your XLSForm. The parameter values can be integers or decimals. The default values for ``start``, ``end`` and ``step`` are 1, 10, and 1.
 
-Default range widget with integers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+If all three parameter values are integers, the selected value is stored as an integer. If any of the parameter values are decimals, the input will be stored as a decimal.
+
+.. seealso::
+
+  :ref:`Likert questions <likert-widget>`
+
+.. _range-number-line:
+
+Number line range
+~~~~~~~~~~~~~~~~~
+
+Number line ranges are particularly helpful when you want to give survey respondents the opportunity to express an opinion or sentiment that exists on a continuum rather than as discrete values. Number lines have tick marks at every ``step`` by default and have labeled start and end values. The currently selected value is indicated by a line that can be dragged or the number line can be tapped directly to select a value. The currently-selected value is shown in the center of the number line.
+
+The number line is displayed :ref:`horizontally by default <range-widget-horizontal>`. It can also be displayed :ref:`vertically <range-widget-vertical>` and both orientations can be configured :ref:`without visible ticks <range-widget-no-ticks>`.
+
+To help standardize how people interpret and use the scale, you can specify an :ref:`interval at which to display visual ticks <range-tick-interval-placeholder>` on the range and :ref:`labels for those ticks <range-tick-labels>`. You can also set a :ref:`placeholder value <range-tick-interval-placeholder>`.
+
+.. _range-widget-horizontal:
+
+Horizontal range
+""""""""""""""""""
 
 type
   ``range``
 appearance
   *none*
-
-If all three parameter values are integers,
-the input will be stored as an integer.
 
 .. image:: /img/form-question-types/range-integer-default-widget.*
   :alt: The range widget, as displayed in the ODK Collect app on Android. The question text is "Range integer widget". The main part of the widget shows a horizontal line labeled "1" on the left end and "10" on the right. There are ten points on the line.
   :class: device-screen-vertical
-
-.. rubric:: XLSForm
-
-.. csv-table:: survey
-  :header: type, name, label, appearance, hint, parameters
-
-  range, range_integer_widget, Range integer widget,,range integer widget with no appearance, start=1;end=10;step=1
-
-.. _range-widget-decimal:
-
-Default range widget with decimals
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-type
-  ``range``
-appearance
-  *none*
-
-If any of the parameter values are decimals,
-the input will be stored as a decimal.
 
 .. image:: /img/form-question-types/range-decimal-default-widget.*
   :alt: The range widget as displayed previously. The number selection choices range from 1.5 to 5.5, and the selection line is horizontal.
@@ -2523,46 +2527,63 @@ the input will be stored as a decimal.
 .. csv-table:: survey
   :header: type, name, label, appearance, hint, parameters
 
-  range, range_decimal_widget, Range decimal widget,,range decimal widget with no appearance, start=1.5;end=5.5;step=0.5
+  range, sentiment, Decimal range,,Custom range, "start=1.5, end=5.5, step=0.5"
 
-.. _range-widget-no-ticks:
+.. _range-tick-interval-placeholder:
 
-Range widget with no ticks
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Range tick interval and placeholder
+""""""""""""""""""""""""""""""""""""
 
-type
-  ``range``
-appearance
-  ``no-ticks``
+A range question's ``step`` value determines the values that the user can select. For number line ranges, you can also optionally configure the step interval to determine the interval at which visible step markers are shown. This can be helpful if you want users to have visual markers to identify important points along the line such as the midpoint but also want to allow them to select points in between.
 
-To display the range widget's number line without ticks,
-use the ``no-ticks`` appearance.
-Both integers and decimals are supported. You can also use this appearance with the :ref:`vertical-range-widget`.
+The step interval is configured by the ``tick_interval`` parameter in the ``parameters`` column. Evenly spaced intervals help standardize how people interpret and use the scale.
 
-.. image:: /img/form-question-types/range-integer-no-ticks-widget.*
-  :alt: The range widget, as displayed in the previous image, but the range number line has no ticks.
-  :class: device-screen-vertical
+You can also configure a placeholder value for a number line range. This value determines where the selection line will be shown when no value is saved for the question. This can help avoid bias or help users select common values depending on the project context. No value is actually set for the question until the user interacts with range. If they tap on the placeholder, then that placeholder value is saved. The placeholder is configured by the ``placeholder`` parameter in the ``parameters`` column.
 
 .. rubric:: XLSForm
 
 .. csv-table:: survey
-  :header: type, name, label, appearance, hint, parameters
+  :header: type, name, label, parameters
 
-  range, range_integer_widget_no_ticks, Range integer widget with no ticks, no-ticks, range integer widget with no-ticks appearance, start=1;end=10;step=1
+  range, agreement, How strongly do you agree?, "start=0, end=100, tick_interval=25, placeholder=50"
 
-.. _vertical-range-widget:
+.. _range-tick-labels:
+
+Range tick labels
+""""""""""""""""""
+
+You can optionally specify labels for the ticks on a number line.
+
+When using phones to fill out forms, we recommend labeling at most the start, end, and midpoint. When using larger devices, you could add labels to any visible tick, determined by ``tick_interval`` if specified or ``step`` otherwise. If you add long labels or label many ticks, the labels may overlap so make sure to test on devices you intend to use.
+
+Tick labels are defined in a list on the ``choices`` tab of your XLSForm. You can give this list any name you want, for example ``agreement_labels``. The values in the ``name`` column for this list must be numbers that correspond to tick values in the range. The values in the ``label`` column can be any text you would like. You can translate those label values the same way you would :doc:`translate select choice labels <form-language>`.
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, parameters
+
+  range, agreement, How strongly do you agree?, "start=0, end=100, tick_interval=25, placeholder=50, tick_labelset=agreement_labels"
+
+.. csv-table:: choices
+  :header: list_name, name, label::English (en), label::français (fr)
+
+  agreement_labels, 0, Strongly agree, Tout à fait d'accord
+  agreement_labels, 50, neutral, Neutre
+  agreement_labels, 100, strongly disagree, Pas du tout d'accord
+
+
+.. _range-widget-vertical:
 
 Vertical range widget
-~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""
 
 type
   ``range``
 appearance
   ``vertical``
 
-To display the range widget's number line vertically,
-use the ``vertical`` appearance.
-Both integers and decimals are supported.
+To display the range widget's number line vertically, use the ``vertical`` appearance. Both integers and decimals are supported.
 
 .. image:: /img/form-question-types/range-integer-vertical-widget.*
   :alt: The range widget, as displayed in the previous image, but the range number line is vertical instead of horizontal.
@@ -2571,14 +2592,37 @@ Both integers and decimals are supported.
 .. rubric:: XLSForm
 
 .. csv-table:: survey
-  :header: type, name, label, appearance, hint, parameters
+  :header: type, name, label, appearance, parameters
 
-  range, range_integer_widget_vertical, Range vertical integer widget, vertical, range integer widget with vertical appearance, start=1;end=10;step=1
+  range, range_integer_widget_vertical, Range vertical integer widget, vertical, "start=1, end=10, step=1"
+
+.. _range-widget-no-ticks:
+
+Range widget with no ticks
+""""""""""""""""""""""""""
+
+type
+  ``range``
+appearance
+  ``no-ticks``
+
+To display the range widget's number line without ticks, use the ``no-ticks`` appearance. Both integers and decimals are supported. You can also use this appearance with the :ref:`range-widget-vertical`.
+
+.. image:: /img/form-question-types/range-integer-no-ticks-widget.*
+  :alt: The range widget, as displayed in the previous image, but the range number line has no ticks.
+  :class: device-screen-vertical
+
+.. rubric:: XLSForm
+
+.. csv-table:: survey
+  :header: type, name, label, appearance, parameters
+
+  range, range_integer_widget_no_ticks, Range integer widget with no ticks, no-ticks, "start=1, end=10, step=1"
 
 .. _range-picker-widget:
 
 Range widget with picker
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""""
 
 type
   ``range``
@@ -2605,7 +2649,7 @@ When the ``picker`` appearance is added, the range widget is displayed with a sp
 .. _range-rating-widget:
 
 Range widget with rating
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""""
 
 type
   ``range``
