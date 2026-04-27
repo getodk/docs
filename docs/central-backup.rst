@@ -129,7 +129,7 @@ Restoring a backup
 
      If you used our :ref:`DigitalOcean installation steps <central-install-digital-ocean>` but can't quite remember how to do this, we suggest reviewing the :ref:`login steps <central-install-digital-ocean-build>`.
 
-#.  Locate the file you transferred. In the below examples, we pretend that it's ``/root/backupfile``. We also pretend you set a passphrase "SECRET_PASSHPRASE". If you did not set a passphrase when backing up, then you can leave off the whole ``'SECRET_PASSPHRASE'`` bit.
+#.  Locate the file you transferred. In the below examples, we pretend that it's ``/root/backupfile``. We also pretend you set a passphrase "SECRET_PASSPHRASE". If you did not set a passphrase when backing up, then you can leave off the whole ``'SECRET_PASSPHRASE'`` bit.
 
     * For a backup ending with ``.pgdump.enc.bin`` (the post-v2026.2 format), you can run the restore process like so:
     .. code-block:: bash
