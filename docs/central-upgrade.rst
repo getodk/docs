@@ -15,7 +15,7 @@ To upgrade, start by reviewing upgrade notes for all versions between your curre
 Upgrade notes
 -------------
 
-* :ref:`Central v2026.1 <central-upgrade-2026.1>`: update ``.env`` if you need to configure custom database SSL
+* :ref:`Central v2026.1 <central-upgrade-2026.1>`: plan for longer than usual downtime, update ``.env`` if you need to configure custom database SSL
 * :ref:`Central v2025.4 <central-upgrade-2025.4>`: perform database maintenance
 * :ref:`Central v2025.3 <central-upgrade-2025.3>`: plan for longer than usual downtime during upgrade
 * Central v2025.1, v2025.2: no upgrade notes
@@ -107,6 +107,8 @@ Version-specific upgrade instructions
 
 Upgrading to Central v2026.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This version includes a time-consuming database migration. If you have hundreds of thousands of submissions or more, consider temporarily increasing database performance before upgrading.
 
 This version of Central has switched to using `PostgreSQL environment variables <https://www.postgresql.org/docs/14/libpq-envars.html>`_ for configuring the database connection. No action is required unless you have configured a custom database connection *and* used the ``DB_SSL=true`` setting for it. In that case, replace it with ``PGSSLMODE=require`` by editing your ``.env`` file.
 
