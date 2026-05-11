@@ -1626,7 +1626,7 @@ To collect a geotrace, first select the location-recording mode by tapping the "
 .. tip::
   Points that were entered by tapping or adjusted by dragging will always have an accuracy radius of 0. Points that were read from the device location will never have an accuracy radius of 0 unless they come from a :ref:`mock provider <mock-location>`.
 
-  To prevent intersecting segments, use the :func:`intersects` function.
+  To prevent intersecting segments, use the :func:`intersects` function. Add ``incremental=true``` in the ``parameters`` column to show a toast when a constraint is violated. By default, constraint violations are only shown after leaving the question screen.
 
 Once the trace has been saved, the coordinates of its points will be displayed on the question screen. The trace can be opened for manual editing by tapping to add more points, moving existing points or deleting the last-added point. After a trace has been saved once, it cannot be added to in manual or automatic location recording modes.
 
@@ -1675,7 +1675,7 @@ To collect a geoshape, first select the location-recording mode by tapping the "
 .. tip::
   Points that were entered by tapping or adjusted by dragging will always have an accuracy radius of 0. Points that were read from the device location will never have an accuracy radius of 0 unless they come from a :ref:`mock provider <mock-location>`.
 
-  To prevent intersecting segments, use the :func:`intersects` function.
+  To prevent intersecting segments, use the :func:`intersects` function. Add ``incremental=true``` in the ``parameters`` column to show a toast when a constraint is violated. By default, constraint violations are only shown after leaving the question screen.
 
 Once the shape has been saved, the coordinates of its points will be displayed on the question screen. The shape can be opened for manual editing by tapping to add more points, moving existing points or deleting the last-added point. After a shape has been saved once, it cannot be added to in manual or automatic location recording modes.
 
