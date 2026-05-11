@@ -794,9 +794,7 @@ Geography
 
   Returns ``True`` if the trace or shape specified has at least two segments that intersect, ``False`` otherwise.
 
-  The ``intersects`` function can be used in a :ref:`constraint <constraints>` to prevent the capture of invalid traces or shapes. You can also add ``incremental=true`` to the parameters column to show constraint violations immediately as they happen. This will also prevent adding new points until the violation is addressed.
-
-  ``incremental=true`` can be used with any constraint expression on a ``geotrace`` or ``geoshape`` but note that it's only appropriate for constraints that can be satisfied by removing or moving existing points. For example, you could use ``incremental=true`` if the answer to a ``geoshape`` question has to stay below an allowable area (e.g. ``area(.) < 60000``). For constraints that need new points to be added to be satisfied, ``incremental=true`` will block the user from making progress (e.g. ``area(.) > 20000``).
+  The ``intersects`` function can be used in a :ref:`constraint <constraints>` to prevent the capture of invalid traces or shapes. You can also add ``incremental=true`` to the parameters column to show constraint violations immediately as they happen.
 
   .. csv-table:: survey
     :header: type, name, label, constraint, parameters
