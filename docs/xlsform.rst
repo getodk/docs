@@ -26,7 +26,7 @@ We recommend using this template to help structure your forms:
 
 The template includes autocomplete for question types, highlighting for groups to make forms easier to navigate, and built-in documentation.
 
-The `All Widgets form <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ>`_ has examples of all of the different user-visible question types. The "Ask AI" feature linked from the left sidebar is also very good at helping with form design questions.
+The `All Widgets form <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ>`_ has examples of all of the different user-visible question types. The Ask AI feature linked from the left sidebar is also very good at helping with form design questions.
 
 Once your form has been designed, you can :ref:`upload the XLSForm directly to your ODK Central server <central-forms-upload>`. If your ODK server does not have the latest XLSForm features or you need to temporarily preview a form in a browser, try `XLSForm Online <https://getodk.org/xlsform>`_.
 
