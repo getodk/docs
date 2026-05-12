@@ -24,7 +24,7 @@ We recommend using this template to help structure your forms:
 * `Google Sheet <https://docs.google.com/spreadsheets/d/1v9Bumt3R0vCOGEKQI6ExUf2-8T72-XXp_CbKKTACuko>`_ (use `File > Make a copy`)
 * `Microsoft Excel (XLSX) file <https://github.com/getodk/xlsform-template/raw/main/ODK%20XLSForm%20Template.xlsx>`_
 
-The template includes helpful hints about each column, autocomplete for question types and appearances, highlighting for groups and repeats to make forms easier to navigate, and quick documentation directly in the workbook.
+The template includes autocomplete for question types, highlighting for groups to make forms easier to navigate, and built-in documentation.
 
 The `All Widgets form <https://docs.google.com/spreadsheets/d/1af_Sl8A_L8_EULbhRLHVl8OclCfco09Hq2tqb9CslwQ>`_ has examples of all of the different user-visible question types. The "Ask AI" feature linked from the left sidebar is also very good at helping with form design questions.
 
