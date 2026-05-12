@@ -6,7 +6,7 @@ XLSForm
 
 .. _xlsform-introduction:
 
-:dfn:`XLSForm` is a standard for designing forms in Excel. XLSForms are simple to get started with and can represent complex forms. The ODK documentation on this site shows all form design examples as XLSForms.
+:dfn:`XLSForm` is a standard for designing forms in Excel. XLSForms are simple to get started with and can represent complex forms.
 
 XLSForms can be created and edited by any application that works with ``.xlsx`` documents. This means that they are portable and can leverage many useful features commonly available in spreadsheet applications such as formulas, comments, and document versioning.
 
