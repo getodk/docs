@@ -53,6 +53,8 @@ Once you have created the list, you will need to tell Central the properties tha
 
 You are now ready to upload the CSV you built earlier. Go back to the :guilabel:`Entities` tab and click on the :guilabel:`Upload Entities` button. After you upload the Entities, you should see your 15 sites.
 
+.. image:: /img/tutorial-shared-choices/uploaded-sites.gif
+
 Use the ``sites`` Entity List in a form
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -94,9 +96,9 @@ Refresh your web forms or form list in Collect and you should now see "Tinotenda
 Create a form to add sites
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Making changes to an Entity List in Central is convenient but it requires full access to a project through the Central website which is not always appropriate. Another downside is that there is no validation on values that have been entered.
+Making changes to an Entity List in Central is convenient, but it requires project manager access, which is not always appropriate to grant. Another downside is that it does no validation on values that have been entered.
 
-To provide a more structured way to add Entities which can be made available to anyone who can access a form, not just Central administrators, you can create an Entity creation form:
+To let more people add Entities without giving them Central project manager access, use a form that creates Entities:
 
 #. Make a copy of :ref:`the XLSForm template <xlsform-template>`, name the file ``Add site``, and open it in spreadsheet software of your choice.
 #. On the ``settings`` sheet, set the form title to ``Add site`` and the form id to ``add_site``.
