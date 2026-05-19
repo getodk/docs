@@ -67,7 +67,7 @@ For each form definition:
 * Add ``value=code`` to the ``parameters`` column. This will save the site code to submissions rather that the site system ID.
 
   .. note::
-    It's really important that each site have a unique code or you won't be able to know which one was selected. As the project designer, you are responsible for making sure that uniqueness is ensured, for example by manually checking for duplicates. Central does NOT currently enforce uniqueness for any column other than the system ID.
+    Each site needs to have a unique code or you won't be able to know which one was selected. As the project designer, you are responsible for making sure they're unique, for example by manually checking for duplicates. Central does NOT currently enforce uniqueness for any column other than the system ID.
 * Create a new draft in Central.
 * In the Attachments section, click the "Link Entity List sites" button in the ``sites.csv`` row.
 
