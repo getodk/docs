@@ -55,29 +55,34 @@ Once you have created the list, you will need to tell Central the properties tha
 
 You are now ready to upload the CSV you built earlier. Go back to the :guilabel:`Entities` tab and click on the :guilabel:`Upload Entities` button. After you upload the Entities, you should see your 15 sites.
 
-Use the ``sites`` list in a form
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Use the ``sites`` Entity List in a form
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You are now ready to update each of your forms to use the Entity List rather than the internal choice lists.
 
 For each form definition:
 
-* Delete the ``sites`` choice list. This will avoid a conflict with the Entity List name and reduce the size of the form for your users.
+* Delete the ``sites`` choice list to avoid a conflict with the Entity List name.
 * Change ``select_one sites`` to ``select_one_from_file sites.csv``.
 * Add ``value=code`` to the ``parameters`` column. This will save the site code to submissions rather that the site system ID.
+
+  .. note::
+    It's really important that each site have a unique code or you won't be able to know which one was selected. As the project designer, you are responsible for making sure that uniqueness is ensured, for example by manually checking for duplicates. Central does NOT currently enforce uniqueness for any column other than the system ID.
 * Create a new draft in Central.
 * In the Attachments section, click the "Link Entity List sites" button in the ``sites.csv`` row.
 
   .. image:: /img/tutorial-shared-choices/link-entity-list.png
 
 * Publish the draft.
+
+Your form now 
   
 Add a site from Central
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 The power of a shared Entity List becomes visible when changes need to be made.
 
-Let's say that you need to add a new site called Tinotenda Primary School. You can now make this addition once in the shared Entity List: 
+Let's say that you need to add a new site called "Tinotenda Primary School." You can now make this addition once in the shared Entity List: 
 
 #. From your project, go to the :guilabel:`Entity Lists` tab and click into the ``sites`` list.
 #. Click the :guilabel:`New Entity` button.
@@ -87,7 +92,7 @@ Let's say that you need to add a new site called Tinotenda Primary School. You c
    .. image:: /img/tutorial-shared-choices/new-entity.png
 
 .. note::
-    In this project, site codes are used as site identifiers in form submissions. That means it's important for the codes to be unique. This is something that you are responsible for as the project designer, Central does NOT currently enforce uniqueness for any column other than the system ID.
+    Remember that you are responsible for ensuring site code uniqueness.
  
 Create a form to add sites
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -122,14 +127,18 @@ A big advantage of using forms to create or update Entities rather than editing 
 
 .. image:: /img/tutorial-shared-choices/site-add-constraint.png
 
+.. note::
+
+    The duplicate check only includes sites that were already registered the last time that the form got an online update. There is no protection against two data collectors adding the same site while both offline. You can train data collectors to dramatically reduce the likelihood of this happening. For example, you can tell them to only add a site they are physically at and to make sure to look for other staff members. You could also ask them to always update their forms before adding a new site.
+
 To test Entity creation, you will need to first publish it in the project with the ``sites`` Entity List. In Central, create a new form, upload your XLSForm, and publish it. You can then give an App User access to it or try the web form.
 
 .. video:: /vid/tutorial-shared-choices/add-site-collect.mp4
 
-In Collect, any new site added will be immediately available to other forms, even when offline. This makes it very important that field staff coordinates not to create duplicates! You can also introduce a server-side review step before new sites are available for other forms (see :ref:`central-entities-settings <Central Entities Settings>`).
+In Collect, any new site added will be immediately available to other forms, even when offline. This makes it very important that there is enough coordination between field staff to avoid duplicates! You can also introduce a server-side review step before new sites are available for other forms (see :ref:`central-entities-settings <Central Entities Settings>`).
 
-Add sites directly in action forms
-~~~~~~~~~~~~
+Add sites in an existing form
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want data collectors to be able to quickly add new sites without interrupting their primary action, you can add the option to create a new site directly in an existing form.
 
@@ -143,7 +152,7 @@ On the ``entities`` sheet, indicate that an Entity only needs to be created if n
 
 .. image:: /img/tutorial-shared-choices/participant-open-select-entities.png
 
-Site selection is now done using an open select: new values can now be dynamically added to the 
+Site selection now behaves like an open select: new values can be dynamically added to the choice list instead of selecting an existing option. This is very similar to adding an "Add site" form like we did above. Which you pick 
 
 Your turn
 ~~~~~~~~~
