@@ -75,7 +75,7 @@ For each form definition:
 
 * Publish the draft.
 
-Your form now 
+Your 3 forms 
   
 Add a site from Central
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -128,7 +128,6 @@ A big advantage of using forms to create or update Entities rather than editing 
 .. image:: /img/tutorial-shared-choices/site-add-constraint.png
 
 .. note::
-
     The duplicate check only includes sites that were already registered the last time that the form got an online update. There is no protection against two data collectors adding the same site while both offline. You can train data collectors to dramatically reduce the likelihood of this happening. For example, you can tell them to only add a site they are physically at and to make sure to look for other staff members. You could also ask them to always update their forms before adding a new site.
 
 To test Entity creation, you will need to first publish it in the project with the ``sites`` Entity List. In Central, create a new form, upload your XLSForm, and publish it. You can then give an App User access to it or try the web form.
