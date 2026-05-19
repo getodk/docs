@@ -53,7 +53,7 @@ Once you have created the list, you will need to tell Central the properties tha
 
 You are now ready to upload the CSV you built earlier. Go back to the :guilabel:`Entities` tab and click on the :guilabel:`Upload Entities` button. After you upload the Entities, you should see your 15 sites.
 
-.. image:: /img/tutorial-shared-choices/uploaded-sites.gif
+.. image:: /img/tutorial-shared-choices/uploaded-sites.png
 
 Use the ``sites`` Entity List in a form
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
