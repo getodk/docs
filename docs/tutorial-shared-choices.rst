@@ -127,13 +127,13 @@ A big advantage of using forms to create or update Entities rather than editing 
 .. warning::
     ODK can only check against sites that were synced to the form the last time the device was online. If two data collectors are offline, both could still register the same site.
 
-    Good field protocols can greatly reduce this risk. For example, require data collectors to update forms before registering new sites and only register sites they are physically visiting after confirming another staff member is not already there.
+    Good field protocols can greatly reduce this risk. For example, require data collectors to update forms before registering new sites and only register sites they are physically visiting after confirming another staff member is not already there. You can also introduce a server-side review step before new sites are available for other forms (see :ref:`Central Entities Settings <central-entities-settings>`).
 
 To test Entity creation, you will need to first publish the "Add site" form in your project. In Central, create a new form, upload your XLSForm, and publish it. You can then give an App User access to it or try the web form.
 
 .. video:: /vid/tutorial-shared-choices/add-site-collect.mp4
 
-In Collect, any new site added will be immediately available to other forms, even when offline. This makes it very important that there is enough coordination between field staff to avoid duplicates! You can also introduce a server-side review step before new sites are available for other forms (see :ref:`Central Entities Settings <central-entities-settings>`).
+In Collect, any new site added will be immediately available to other forms, even when offline.
 
 Use an existing form to add sites
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
