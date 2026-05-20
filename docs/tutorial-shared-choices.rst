@@ -22,7 +22,6 @@ Let's say that you run a multi-site program. You may have forms to:
 * Register new participants
 * Take attendance at events
 * Provide services
-* etc.
 
 One of the first questions in all of these forms would involve selecting a site:
 
@@ -44,13 +43,13 @@ Create a new Entity List
 
 Open any one of the forms for editing in your spreadsheet software. Start by copying the ``name`` and ``label`` columns from the ``choices`` sheet into a new spreadsheet document.
 
-Rename the ``name`` column to ``code``. In Entity Lists, ``name`` is reserved for the automatically generated Entity ID, so we'll store our own site code in a separate ``code`` property instead. Save this file as ``sites.csv``.
+Rename the ``name`` column to ``code``. For Entity Lists, ``name`` is reserved for the automatically generated Entity ID, so we'll store our own site code in a separate ``code`` property instead. Save this sheet as ``sites.csv``.
 
 In Central, navigate to your project, go to the :guilabel:`Entity List` tab, and click on the :guilabel:`New` button. Name your new Entity List ``sites``.
 
 Once you have created the list, you will need to tell Central the properties that each Entity in the ``sites`` list should have. Go to the :guilabel:`Properties` tab, click the :guilabel:`New` button, and add a ``code`` property. Every Entity must have a ``label`` so you don't need to explicitly add it.
 
-You are now ready to upload the CSV you built earlier. Go back to the :guilabel:`Entities` tab and click on the :guilabel:`Upload Entities` button. After you upload the Entities, you should see your 15 sites:
+You are now ready to upload the CSV you saved earlier. Go back to the :guilabel:`Entities` tab and click on the :guilabel:`Upload Entities` button. After you upload the Entities, you should see your 15 sites:
 
 .. image:: /img/tutorial-shared-choices/uploaded-sites.png
 
@@ -61,12 +60,12 @@ You are now ready to update each of your forms to use the Entity List rather tha
 
 For each form definition:
 
-* Delete the ``sites`` choice list to avoid a conflict with the Entity List name.
-* Change ``select_one sites`` to ``select_one_from_file sites.csv`` so the form loads choices dynamically from the linked Entity List.
+* On the ``choices`` sheet, delete the ``sites`` choice list to avoid a conflict with the Entity List name.
+* On the ``survey`` sheet, change ``select_one sites`` to ``select_one_from_file sites.csv`` so the form loads choices dynamically from the linked Entity List.
 * Add ``value=code`` to the ``parameters`` column. This will save the site code to submissions rather than the site Entity ID.
 
   .. warning::
-    Each site needs to have a unique code or you won't be able to know which one was selected. As the project manager, you are responsible for making sure they're unique, for example by manually checking for duplicates. Central does NOT currently enforce uniqueness for any user-defined property.
+    Each site needs to have a unique code or you won't be able to know which one was selected. As the project manager, you are responsible for making sure they're unique. Central does NOT currently enforce uniqueness for any user-defined property.
 * Create a new draft in Central.
 * In the Attachments section, click the "Link Entity List sites" button in the ``sites.csv`` row.
 
@@ -74,16 +73,16 @@ For each form definition:
 
 * Publish the draft.
 
-Your 3 forms should now use the same shared Entity List to define site selection. Make a few submissions and verify that the site codes are saved in the form submissions. To use Collect, make sure you have an App User with access to all 3 forms.
+Your three forms now use the same shared Entity List to define site selection. Make a few submissions and verify that the site codes are saved in the form submissions. To use Collect, make sure you have an App User with access to all three forms.
   
 Add a site from Central
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The power of a shared Entity List becomes visible when changes need to be made to the list.
+The benefits of a shared Entity List becomes clear when changes need to be made to the list.
 
 Let's say that you need to add a new site called "Tinotenda Primary School." You can now make this addition once in the shared Entity List: 
 
-#. From your project, go to the :guilabel:`Entity Lists` tab and click into the ``sites`` list.
+#. From your Central project, go to the :guilabel:`Entity Lists` tab and click into the ``sites`` list.
 #. Click the :guilabel:`New Entity` button.
 #. In the field for Entity Label, enter "Tinotenda Primary School".
 #. In the field for code, enter "TIN". As previously described, you're responsible for making sure that this is a unique ID.
@@ -95,7 +94,7 @@ Refresh your web forms or form list in Collect and you should now see the "Tinot
 Create a form to add sites
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Making changes to an Entity List in Central is convenient, but it requires project manager access, which is not always appropriate to grant. Another downside is that it does no validation on values that have been entered.
+Making changes to an Entity List in Central is convenient, but it requires project manager access, which is not always appropriate to grant. Another downside is that it does no validation on entered values.
 
 To let more people add Entities without giving them Central project manager access, use a form that creates Entities in the ``sites`` Entity List:
 
@@ -157,8 +156,6 @@ Site selection now behaves like an open select: new values can be dynamically ad
 
 Your turn
 ~~~~~~~~~
-* Require submission review before new sites are created.
-
 * Add a ``capacity`` property to sites to keep track of how many people each site can accommodate. Fill in ``capacity`` values for existing sites using the Central interface. Extend the "Add site" form so that a capacity can be specified. Update the "Take attendance" form so that the number of attendees is capped by the site capacity. 
 
 * Expand on the "Add site" form so that it can also be used to change a site label. It should not be possible to change existing site codes. You'll need to learn how to write forms to create or update Entities (see :ref:`quick reference <entities-quick-update>`). After giving it a try, see `an example <https://docs.google.com/spreadsheets/d/1hh5RQjN_4-A4cH-Lo2MYEviTxUDEei4d0v2nCp01dek>`_.
