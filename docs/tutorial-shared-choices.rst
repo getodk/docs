@@ -1,8 +1,8 @@
 .. spelling::
     Tinotenda
 
-Tutorial: keep choices in sync across forms
-===========================================
+Entities tutorial: share choices across forms
+===============================================
 
 If your project uses multiple forms that reference the same households, sites, products, other shared choices, keeping those lists in sync across forms can become difficult. With Entity Lists, you update shared data once and every connected form automatically stays in sync, saving you time and helping field teams collect more accurate data.
 
@@ -82,7 +82,7 @@ The benefits of a shared Entity List become clear when changes need to be made t
 
 Let's say that you need to add a new site called "Tinotenda Primary School." You can now make this addition once in the shared Entity List: 
 
-#. From your Central project, go to the :guilabel:`Entity Lists` tab and click into the ``sites`` list.
+#. From your Central project, go to the :guilabel:`Entity Lists` tab and click into the ``sites`` Entity List.
 #. Click the :guilabel:`New Entity` button.
 #. In the field for Entity Label, enter "Tinotenda Primary School".
 #. In the field for code, enter "TIN". As previously described, you're responsible for making sure that this is a unique ID.
@@ -112,8 +112,8 @@ This form captures information about new sites but it doesn't yet give us a way 
 
 A big advantage of using forms to create or update Entities rather than editing them directly in Central is that you can use form logic to validate new inputs. For sites, it's important for codes to be 3 characters and unique so we can add a constraint for this:
 
-#. Start by connecting the ``sites`` list to the form. In the ``type`` column, put ``csv-external``, in the ``name`` column, put ``sites``.
-#. Now that the ``sites`` list is available, you can count ``sites`` Entities that match ``site_code``. If that count is greater than 0, the code is already taken:
+#. Start by connecting the ``sites`` Entity List to the form. In the ``type`` column, put ``csv-external``, in the ``name`` column, put ``sites``.
+#. Now that the ``sites`` Entity List is available, you can count ``sites`` Entities that match ``site_code``. If that count is greater than 0, the code is already taken:
 
    #. In the ``type`` column, put ``calculate``. 
    #. In the ``name`` column, put ``matches_found``.
@@ -152,10 +152,15 @@ On the ``entities`` sheet, indicate that an Entity only needs to be created if n
 
 You can see the completed form `here <https://docs.google.com/spreadsheets/d/1jasKtn2KeGjrp5hGDEmkOUzDhKwu2x3O3r05QBC6HSI/edit?gid=1068911091#gid=1068911091>`_.
 
-Site selection now behaves like an open select: new values can be dynamically added to the choice list instead of selecting an existing option. This is very similar to adding an "Add site" form like we did above.
+Site selection now behaves like an open select: new values can be dynamically added to the choice list instead of selecting an existing option. This is very similar to adding an "Add site" form like we did above. For Entities like ``sites`` that don't have a lot of properties, the choice between the two form design options should generally be led by what feels more comfortable for the field team. For Entities with many properties, you will generally find it easier to have a separate form for adding new ones.
+
+Key takeaways
+~~~~~~~~~~~~~
+
+In this tutorial, you used Entity Lists to centralize shared choices across forms, keeping data consistent and reducing maintenance. You also saw how Entities can be created either through dedicated forms or directly within existing workflows, giving you flexibility to design experiences that fit your field teams and data collection needs.
 
 Your turn
 ~~~~~~~~~
-* Add a ``capacity`` property to sites to keep track of how many people each site can accommodate. Fill in ``capacity`` values for existing sites using the Central interface. Extend the "Add site" form so that a capacity can be specified. Update the "Take attendance" form so that the number of attendees is capped by the site capacity. 
+* Add a ``capacity`` property to sites to keep track of how many people each site can accommodate. Add ``capacity`` values for existing sites using the Central interface. Extend the "Add site" form so that a capacity can be specified. Update the "Take event attendance" form so that the number of attendees is capped by the site capacity. 
 
-* Expand on the "Add site" form so that it can also be used to change a site label. It should not be possible to change existing site codes. You'll need to learn how to write forms to create or update Entities (see :ref:`quick reference <entities-quick-update>`). After giving it a try, see `an example <https://docs.google.com/spreadsheets/d/1hh5RQjN_4-A4cH-Lo2MYEviTxUDEei4d0v2nCp01dek>`_.
+* Challenge: extend the "Add site" form so that it can also be used to update a site label. It should not be possible to change existing site codes. You'll need to learn how to write forms to create or update Entities (see :ref:`quick reference <entities-quick-update>`). After giving it a try, see `an example <https://docs.google.com/spreadsheets/d/1hh5RQjN_4-A4cH-Lo2MYEviTxUDEei4d0v2nCp01dek>`_.
