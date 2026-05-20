@@ -1,10 +1,10 @@
 .. spelling::
     Tinotenda
 
-Tutorial: keep shared choices in sync across forms
-==================================================
+Tutorial: keep choices in sync across forms
+===========================================
 
-If your project uses multiple forms that reference the same households, sites, products, other shared choices, keeping those lists updated everywhere is a lot of work. With Entity Lists, you update shared data once and every connected form automatically stays in sync, saving you time and helping field teams collect more accurate data.
+If your project uses multiple forms that reference the same households, sites, products, other shared choices, keeping those lists in sync across forms can become difficult. With Entity Lists, you update shared data once and every connected form automatically stays in sync, saving you time and helping field teams collect more accurate data.
 
 In this tutorial, you will:
 
@@ -21,22 +21,22 @@ Let's say that you run a multi-site program. You may have forms to:
 
 * Register new participants
 * Take attendance at events
-* Provide services
+* Record service delivery
 
-One of the first questions in all of these forms would involve selecting a site:
+Each of these forms includes a question to select a site:
 
 .. image:: /img/tutorial-shared-choices/site-selection.gif
   :class: device-screen-vertical
 
 Here are some minimal forms you can try yourself:
 
-* Register participant
-* Take event attendance
-* Monthly site report
+* `Register participant <https://docs.google.com/spreadsheets/d/1RSAwcLEaCyklxgdYxH1ZM1ijtTvz3zNJPU1W55GEIyA>`_
+* `Take event attendance <https://docs.google.com/spreadsheets/d/151Nxd4-qAm44JjcW8TTm12ZT6uOtrHyqZZ_se1R1V4o>`_
+* `Monthly site report <https://docs.google.com/spreadsheets/d/1i4vzHkGWc9nQfLN0hIHC2Me2GiMLbplxKN1WEDbdDx4>`_
 
-We recommend uploading them to your test project in Central and publishing them. You can also create an App User that has access to each form to try them in Collect.
+We recommend uploading each form to your test project in Central and publishing it. You can also create an App User that has access to each form to try them in Collect.
 
-Let's say that a new site gets added. With the way these forms are structured, you would need to update all three of them! Instead, we are going to extract the lists out of the forms and replace them with a shared Entity List.
+Let's say that a new site gets added. With the way these forms are structured, you would need to update all three of them! Instead, we'll move the lists out of the forms and replace them with a shared Entity List.
 
 Create a new Entity List
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -47,7 +47,7 @@ Rename the ``name`` column to ``code``. For Entity Lists, ``name`` is reserved f
 
 In Central, navigate to your project, go to the :guilabel:`Entity List` tab, and click on the :guilabel:`New` button. Name your new Entity List ``sites``.
 
-Once you have created the list, you will need to tell Central the properties that each Entity in the ``sites`` list should have. Go to the :guilabel:`Properties` tab, click the :guilabel:`New` button, and add a ``code`` property. Every Entity must have a ``label`` so you don't need to explicitly add it.
+Once you have created the list, you will need to tell Central the properties that each Entity in the ``sites`` Entity List should have. Go to the :guilabel:`Properties` tab, click the :guilabel:`New` button, and add a ``code`` property. Every Entity must have a ``label`` so you don't need to explicitly add it.
 
 You are now ready to upload the CSV you saved earlier. Go back to the :guilabel:`Entities` tab and click on the :guilabel:`Upload Entities` button. After you upload the Entities, you should see your 15 sites:
 
@@ -78,7 +78,7 @@ Your three forms now use the same shared Entity List to define site selection. M
 Add a site from Central
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The benefits of a shared Entity List becomes clear when changes need to be made to the list.
+The benefits of a shared Entity List become clear when changes need to be made to the list.
 
 Let's say that you need to add a new site called "Tinotenda Primary School." You can now make this addition once in the shared Entity List: 
 
@@ -104,7 +104,7 @@ To let more people add Entities without giving them Central project manager acce
 
    .. image:: /img/tutorial-shared-choices/simple-site-add.png
 
-This small form is enough to capture information about new sites but it doesn't yet give us a way to make that data available to our other forms. To do this, we'll need to update the form so it creates new Entities in the ``sites`` Entity List:
+This form captures information about new sites but it doesn't yet give us a way to make that data available to our other forms. To do this, we'll need to update the form so it creates new Entities in the ``sites`` Entity List:
 
 #. On the ``entities`` sheet, put ``sites`` in the ``list_name`` column and ``${site_label}`` in the ``label`` column.
 #. On the ``survey`` sheet, add a ``save_to`` column to the right of the ``required`` column.
