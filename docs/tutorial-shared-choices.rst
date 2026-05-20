@@ -82,7 +82,7 @@ The benefits of a shared Entity List become clear when changes need to be made t
 
 Let's say that you need to add a new site called "Tinotenda Primary School." You can now make this addition once in the shared Entity List: 
 
-#. From your Central project, go to the :guilabel:`Entity Lists` tab and click into the ``sites`` list.
+#. From your Central project, go to the :guilabel:`Entity Lists` tab and click into the ``sites`` Entity List.
 #. Click the :guilabel:`New Entity` button.
 #. In the field for Entity Label, enter "Tinotenda Primary School".
 #. In the field for code, enter "TIN". As previously described, you're responsible for making sure that this is a unique ID.
@@ -112,8 +112,8 @@ This form captures information about new sites but it doesn't yet give us a way 
 
 A big advantage of using forms to create or update Entities rather than editing them directly in Central is that you can use form logic to validate new inputs. For sites, it's important for codes to be 3 characters and unique so we can add a constraint for this:
 
-#. Start by connecting the ``sites`` list to the form. In the ``type`` column, put ``csv-external``, in the ``name`` column, put ``sites``.
-#. Now that the ``sites`` list is available, you can count ``sites`` Entities that match ``site_code``. If that count is greater than 0, the code is already taken:
+#. Start by connecting the ``sites`` Entity List to the form. In the ``type`` column, put ``csv-external``, in the ``name`` column, put ``sites``.
+#. Now that the ``sites`` Entity List is available, you can count ``sites`` Entities that match ``site_code``. If that count is greater than 0, the code is already taken:
 
    #. In the ``type`` column, put ``calculate``. 
    #. In the ``name`` column, put ``matches_found``.
