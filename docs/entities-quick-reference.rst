@@ -65,6 +65,8 @@ Create
 
   trees, "concat(""Tree: "", ${species})"
 
+.. _entities-quick-update:
+
 Update
 ~~~~~~
 
