@@ -53,11 +53,11 @@ There are two ways to get a Central server. You can use official managed hosting
 .. _getting-started-connect:
 .. _getting-started-fill-form:
 
-If you are working with data collectors or enumerators in the field, you'll want to use our mobile app. If you are doing a self-report project, use web forms.
+If your project has data collectors or enumerators working in the field, you’ll likely want to use our Android app. For all other projects, our web forms are usually the best fit.
 
 .. tabs::
    
-  .. tab:: Field data collection (mobile app)
+  .. tab:: Android app (best for field teams)
 
      #. :ref:`Create an App User <central-users-app-overview>` in Central and :ref:`assign your form to that user <central-projects-form-access>`.
 
@@ -71,7 +71,7 @@ If you are working with data collectors or enumerators in the field, you'll want
 
      #. Completed forms will be sent to Central when data collectors finish.
 
-  .. tab:: Self-report (web forms)
+  .. tab:: Web forms
 
      #. Create a :ref:`public access link <central-submissions-public-link>` to the form in Central.
 
