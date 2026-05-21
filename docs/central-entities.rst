@@ -138,16 +138,16 @@ Once your Entity List is created, you can define the properties it should have s
 Creating an Entity List by Uploading a Form
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-By uploading a Form that specifies the properties in a Submission that should be used to create a new Entity, and the name of the Entity List these new Entities should go to, you will prompt Central to create the Entity List. You'll be able to see the Entity information that Central recognized in your Form once you upload it.
+When you start a new form draft with a form definition that :ref:`creates Entities <central-entities-authoring>`, Central recognizes the Entity List declaration and prepares to create it when the form is published. On the draft page, you'll see information about the list(s) and properties that will be created.
 
-When you publish this Form, the new Entity List and new Entity Properties will be created for you automatically within the Project. You can learn more about authoring these kinds of Forms :ref:`in the sections below <central-entities-authoring>`.
+When you publish this Form, the new Entity List and new Entity Properties will be created for you automatically.
 
 .. note::
   By default, Entities are created immediately when the server receives the Submission. If you want to require a review step before Entities are available for follow-up, you can configure this in each Entity List's :ref:`settings <central-entities-settings>`.
 
 To see this new Entity List and download data from it, visit the :guilabel:`Entities` tab on the Project page.
 
-To use data from a Entity List in a Form, you can refer to it in a :ref:`select_one_from_file <selects-from-csv>` question as ``NAME.csv`` where ``NAME`` is the name of your Entity List. When you upload that Form, you will see on the Form Attachments tab that the file has been automatically linked to the Entity List.
+To use an Entity List in a Form, you can refer to it in a :ref:`select_one_from_file <selects-from-csv>` question as ``NAME.csv`` where ``NAME`` is the name of your Entity List. When you first create a draft for a new form, all references to CSV files that match Entity List names will automatically be linked to the corresponding Entity List. If you edit an existing form to add a reference to an Entity List, you'll need to click the :guilabel:`Link Entity List` button.
 
 .. _central-entities-testing:
 
@@ -262,7 +262,7 @@ Specify the Entity List the Form should save Entities to
 
 Add a new ``entities`` sheet to your XLSForm. This is where you will specify your Entity List name, under ``list_name``.
 
-The Entity List name will be used by Central to uniquely identify that Entity List. If an Entity List with the name you specify already exists in Central, this Form will create Entities in that existing Entity List. If Central doesn't yet have a Entity List with the specified name, it will be created.
+The Entity List name will be used by Central to uniquely identify that Entity List. If an Entity List with the name you specify already exists in Central, this Form will create Entities in that existing Entity List. If Central doesn't yet have an Entity List with the specified name, it will be created.
 
 Each Entity must have a label to identify it on Central and for use in follow-up Forms. The ``label`` field on the ``entities`` sheet is where you provide the expression to define the label for each Entity. This is very similar to the :ref:`instance name specified for a Submission <instance-name>`. The label expression can use any field in the Form, including ones that aren't saved to Entity Properties.
 
