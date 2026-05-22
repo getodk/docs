@@ -166,6 +166,26 @@ The following features are not supported yet:
 - Map layer customization (e.g., switching to Google Maps or Mapbox, terrain or satellite views)
 - Custom styling for points (``marker-color`` and ``marker-symbol``), lines (``stroke`` and ``stroke-width``) and shapes (``stroke``, ``stroke-width``, and ``fill``)
 
+Annotate, draw, and signature
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Web Forms supports the :ref:`image widget with annotation <annotate-widget>`, the :ref:`draw widget <draw-widget>`, and the :ref:`signature widget <signature-widget>`. All three open a drawing pad where the user can sketch with their mouse, finger, or stylus, and save the result as an image. The annotate and draw widgets provide pen color, zoom, undo, and clear controls; the signature widget uses a fixed black pen and provides only a clear control.
+
+The annotate widget starts from an existing image. The user captures an image with their camera (on devices that support it), uploads one from their device, or uses a default image attached to the form, then draws on top of it.
+
+.. image:: /img/web-forms/annotate.*
+  :alt: Web Forms image widget with annotation
+
+The draw widget opens with a blank drawing pad.
+
+.. image:: /img/web-forms/draw.*
+  :alt: Web Forms draw widget
+
+The signature widget opens with a blank pad sized for a handwritten signature.
+
+.. image:: /img/web-forms/signature.*
+  :alt: Web Forms signature widget
+
 Form styling
 ~~~~~~~~~~~~~
 
