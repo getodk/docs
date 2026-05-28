@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
   script.setAttribute("data-modal-title-ask-ai", "Ask AI");
   script.setAttribute("data-modal-ask-ai-input-placeholder", "Ask a question");
   script.setAttribute("data-modal-override-open-id", "custom-ask-ai-button");
+  script.setAttribute("data-mcp-subdomain", "odk-docs");
+  script.setAttribute("data-mcp-server-name", "ODK Docs MCP");
   script.async = true;
   document.head.appendChild(script);
 });
