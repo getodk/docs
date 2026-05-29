@@ -66,6 +66,7 @@ ODK is open-source software that's made by a welcoming community of people just 
   :maxdepth: 2
   :caption: Developers
 
+  docs-mcp
   collect-api
   central-api
   pyODK <https://getodk.github.io/pyodk/>
