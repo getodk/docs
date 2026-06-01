@@ -1,3 +1,6 @@
+.. spelling:word-list::
+  Edu
+
 ODK Docs MCP Server
 ===================
 
