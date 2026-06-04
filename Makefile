@@ -22,7 +22,7 @@ autobuild:
 .PHONY: autobuild-docker
 autobuild-docker:
 	docker build --tag odk-docs-autobuild . && \
-	docker run --publish 8000:8000 --volume ./docs:/docs:rw odk-docs-autobuild
+	docker run --publish 127.0.0.1:8000:8000 --volume ./docs:/docs:rw odk-docs-autobuild
 
 .PHONY: sort-spelling-wordlist
 sort-spelling-wordlist:
