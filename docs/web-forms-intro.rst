@@ -6,7 +6,7 @@ ODK Web Forms
 
 ODK Central provides a web-based interface to your forms for data edits, to preview form definitions, and to enable data collection from devices other than Android phones. You can learn about how to collect data using web forms in :ref:`the section on managing Submissions <central-web-submissions>`.
 
-ODK is in the process of migrating to ODK Web Forms and it is the default for new Forms starting in Central v2026.2.0. Forms created prior to that used `Enketo <https://enketo.org/>`_.
+ODK is migrating to ODK Web Forms, the modern default experience for new Forms starting in Central v2026.2.0. Forms created prior to that used `Enketo <https://enketo.org/>`_.
 
 This page describes how to :ref:`opt into using ODK Web Forms <web-forms-opt-in>` for all web-based functions, outlines :ref:`features not yet supported <features-not-yet-supported>` and documents :ref:`more complex question types <web-forms-question-types>`.
 
