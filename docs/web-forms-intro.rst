@@ -8,7 +8,7 @@ ODK Central provides a web-based interface to your forms for data edits, to prev
 
 ODK is migrating to ODK Web Forms, the modern default experience for new Forms starting in Central v2026.2.0. Forms created prior to that used `Enketo <https://enketo.org/>`_.
 
-This page describes how to :ref:`opt into using ODK Web Forms <web-forms-opt-in>` for all web-based functions, outlines :ref:`features not yet supported <features-not-yet-supported>` and documents :ref:`more complex question types <web-forms-question-types>`.
+This page describes how to :ref:`opt into using ODK Web Forms <web-forms-opt-in>` for all web-based functions, outlines :ref:`upcoming features <features-not-yet-supported>` and documents :ref:`more complex question types <web-forms-question-types>`.
 
 .. _web-forms-opt-in:
 
@@ -21,12 +21,15 @@ To opt an existing form into ODK Web Forms, go to the :guilabel:`Settings` tab f
 
 You can change a form's setting between Enketo and Web Forms at any time. Any form links that users already have will continue to work and will reflect the setting on the server at the time that the form link is loaded. Existing submissions are not affected by switching between web forms options.
 
+.. Linked to from Central
 .. _features-not-yet-supported:
 
-Features not yet supported
----------------------------
+Upcoming features
+------------------
 
-We've extensively tested ODK Web Forms and consider it ready for production use. However, there is some advanced functionality it does not yet support. Here is functionality in Enketo that we intend to add to Web Forms, in rough order of priority:
+We've extensively tested ODK Web Forms and consider it ready for production use for most projects. All form logic, major question types, media, translations, repeats, and Entities are supported.
+
+For users who have been using web forms in Central prior to v2026.2.0, here is functionality in Enketo that's coming to Web Forms, in rough order of priority:
 
 * One question per page
 * Query parameter defaults
@@ -38,11 +41,10 @@ We've extensively tested ODK Web Forms and consider it ready for production use.
 * no-calendar appearance
 * Select from svg
 * Guidance hints
-* Launch form offline and save as draft
+* Launch form offline and save drafts
 * Progress bar
-* Audio capture
+* Audio recording in foreground and background
 * Picker, ticks appearances for range
-* Background audio recording
 * Grid layout
 
 Please let us know `on the forum <https://forum.getodk.org/c/support/6>`_ what is most important to you.
