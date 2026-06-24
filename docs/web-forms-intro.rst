@@ -8,7 +8,7 @@ ODK Central provides a web-based interface to your forms for data edits, to prev
 
 ODK is in the process of migrating to ODK Web Forms, a modern web forms experience. It is the default for new Forms starting in Central v2026.2.0. Forms created prior to that use `Enketo <https://enketo.org/>`_ by default.
 
-This page describes how to :ref:`opt a Central Form into using ODK Web Forms <web-forms-opt-in>` for all web-based functions, outlines :ref:`features not yet supported <features-not-yet-supported>` and documents :ref:`more complex question types <web-forms-question-types>`.
+This page describes how to :ref:`opt into using ODK Web Forms <web-forms-opt-in>` for all web-based functions, outlines :ref:`features not yet supported <features-not-yet-supported>` and documents :ref:`more complex question types <web-forms-question-types>`.
 
 .. _web-forms-opt-in:
 
