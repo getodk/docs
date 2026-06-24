@@ -26,7 +26,7 @@ You can change a form's setting between Enketo and Web Forms at any time. Any fo
 Features not yet supported
 ---------------------------
 
-We've extensively tested ODK Web Forms and consider it ready for production use. However, there is some advanced functionality it does not yet support. Here is functionality in Enketo but not in Web Forms, in rough order of priority:
+We've extensively tested ODK Web Forms and consider it ready for production use. However, there is some advanced functionality it does not yet support. Here is functionality in Enketo that we intend to add to Web Forms, in rough order of priority:
 
 * One question per page
 * Query parameter defaults
