@@ -100,7 +100,7 @@ To manage App Users for a Project, you can navigate to the Project page, then cl
 Managing Form Access
 ~~~~~~~~~~~~~~~~~~~~
 
-Right now, Central offers two ways to control around Form Access within each Project:
+Central offers two ways to control access to Forms within each Project:
 
  - Each Form's :ref:`Lifecycle State <central-forms-lifecycle>` controls whether any App User can download and/or submit to that Form. Near the end of a Form's life, for example, it makes sense to disallow downloading the Form as a blank, but still receive any submissions that have already been created.
  - Access to download and submit each Form can be customized per App User associated with the Project. When first creating a Form, for example, it makes sense to only allow a testing user access to the Form so that one can be sure that it works before rolling it out to all users.
@@ -123,14 +123,24 @@ As you make changes to Form States and App User access, they will be highlighted
 .. tip::
   When you first create an App User, it will not have access to any Forms. When you first create a Form, no App Users will be allowed to access it.
 
+.. Linked from Central
+.. _central-custom-properties:
+
+Managing Custom Properties
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Custom Properties let you control which Entities each App User or Public Link receives. For example, if your organization works across multiple regions, you can create a ``region`` Custom Property, assign each App User a region, and configure an :ref:`Entity List access filter <entity-list-access-filter>` so each user receives only Entities from their region.
+
+Go to the :guilabel:`Custom Properties` tab for a project to see the available Custom Properties and add new ones. Custom Property names follow the same rules as form field names or Entity property names: they can't have spaces in them, must start with a letter, and can only contain letters, numbers, _ or -.
+
+Once a Custom Property is defined, assign values to App Users or Public Links. You can then create :ref:`Entity List access filters <entity-list-access-filter>` that compare Entity properties with those Custom Properties to determine which Entities each user receives.
+
 .. _central-project-archive:
 
 Archiving a Project
 ~~~~~~~~~~~~~~~~~~~
 
-When you Archive a Project, it will appear at the bottom of the Project List on the homepage, with :guilabel:`(archived)` added onto the end of its name.
-
-In version 0.6 of Central, archiving a Project would disable certain features on it. We have eliminated this behavior, so all your archived Projects can still be used and manipulated freely.
+When you Archive a Project, it will appear at the bottom of the Project List on the homepage, with :guilabel:`(archived)` added onto the end of its name. Archived Projects can still be used and manipulated freely.
 
 To Archive a Project, first navigate to the Project, then click on the :guilabel:`Settings` tab underneath the Project name.
 

@@ -187,9 +187,11 @@ If you usually have Internet connectivity, this is unlikely to be very important
 I need to assign specific Entities to specific data collectors, how can I represent this?
 -----------------------------------------------------------------------------------------
 
-You can limit data collectors to :ref:`only see the Entities they created <central-entities-settings>` but there is no way to set or change the Entity owner yet. By default, the entire Entity List is always sent to every device.
+:ref:`Entity filtering <entity-list-access-filter>` allows administrators to control which Entities are delivered to App Users and Public Access Links.
 
-For now, you can limit the Entities that are available from a :ref:`select_one_from_file <select-from-external-dataset>` using a :ref:`choice_filter <cascading-selects>`. This won't limit the amount of data sent to each device but it can significantly reduce the amount of options shown to each user and can help speed up :ref:`lookup expressions <referencing-values-in-datasets>`.
+Using :ref:`Custom Properties <central-custom-properties>` and filter rules, users can receive only the Entities relevant to their work. For example, a field worker assigned to a district can receive only Entities from that district.
+
+You can also filter what a user sees within a Form by using a  :ref:`select_one_from_file <select-from-external-dataset>` with a :ref:`choice_filter <cascading-selects>`. This doesn't limit the amount of data sent to each device but it can significantly reduce the amount of options shown to each user and can help speed up :ref:`lookup expressions <referencing-values-in-datasets>`.
 
 How many Entities can I have?
 -----------------------------

@@ -49,18 +49,21 @@ Data Collectors do not have access to the detailed Form management pages. Instea
 Public Access Links
 ~~~~~~~~~~~~~~~~~~~
 
-ODK Central allows the distribution of surveys to a broad or open respondent group using Public Access Links. These Links take recipients directly to the Form in their web browser, administered by Enketo.
+ODK Central allows the distribution of surveys to a broad or open respondent group using Public Access Links. These Links take recipients directly to the Form in their web browser.
 
 To create a Public Access Link, go to the Form's :guilabel:`Public Access` tab. Click on :guilabel:`Create Public Access Link…` to begin.
 
 .. image:: /img/central-submissions/public-link-new.png
-   :class: central-partial-screen
 
 In the window that appears, you'll need to name the Link. This name is for your own identification purposes in the administration website, and is not displayed to respondents.
+
+If the project has :ref:`Custom Properties <central-custom-properties>`, they can be set here or by editing a Public Access Link later. This allows :ref:`Entity filter rules <entity-list-access-filter>` to control which Entities are delivered when forms are opened through a Public Access Link.
 
 You'll also need to decide whether to allow multiple submissions per respondent. Normally, respondents filling a Form through a Public Link will be redirected to a thank you page after sending a Submission. Pressing the back button will not bring them back to the Form but they could send in another Submission by visiting the Link again. Checking the :guilabel:`Single Submission` checkbox enables basic protection against more than one Submission being made from the same browser.
 
 .. admonition:: Single submission enforcement
+
+  This is not yet supported by :doc:`ODK Web Forms <web-forms-intro>`.
 
   In Enketo, the enforcement limiting each respondent to a single response is done with in-browser tracking. This means that a user could submit multiple times using different devices or browsers, or distribute the link beyond the intended group.
 

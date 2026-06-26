@@ -237,7 +237,9 @@ Alternatively, App Users can represent devices (device1, device2) or roles (Hosp
 
 You'll also need to design a way to distribute settings QR codes such that they remain private. See :doc:`settings QR code <collect-import-export>` documentation for ideas.
 
-Once you provide a Display Name for the user, click :guilabel:`Create`. The user will be created, and you will see a screen that looks like this:
+If the project has :ref:`Custom Properties <central-custom-properties>`, you can set their values when creating or editing an App User.
+
+Once you provide a Display Name and optional Custom Properties for the user, click :guilabel:`Create`. The user will be created, and you will see a screen that looks like this:
 
 .. image:: /img/central-users/app-users-created.png
    :width: 400px
