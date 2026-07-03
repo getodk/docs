@@ -65,7 +65,7 @@ The **Edit Form** tab gives insight into the current status of your Draft, and p
 
 When you first create a Form, it exists only as a Draft. You'll see information about the currently uploaded Draft version of the Form, including its current version string, and actions you may take on the Draft:
 
-- The :guilabel:`Upload new Form definition` button will allow you to upload a new Form definition, which will replace the current Draft version. When this happens, all test submissions will be erased. If you have uploaded Media Files, Central will attempt to preserve any that match the new definition.
+- The file upload area will allow you to upload a new Form definition, which will replace the current Draft version. When this happens, all test submissions will be erased. If you have uploaded Media Files, Central will attempt to preserve any that match the new definition.
 - The :guilabel:`Publish Draft` button will publish the Draft, making it available for use according to the access rules you have specified on the :ref:`Form Access <central-projects-form-access>` tab on the Project. Any test submissions you have made will be erased.
 - The :guilabel:`Abandon Draft` button will delete the Draft. When there is not yet a published version, this will delete the entire Form. If the Form has been published, only the Draft will be deleted.
 
@@ -83,6 +83,8 @@ The :guilabel:`Testing` section shows buttons for making test submissions and a 
 To make web-based submissions, click the :guilabel:`Test on device` button. For Collect-based submissions, click the :guilabel:`Test on device` button and you will see a Collect configuration QR code just for this Draft. For help configuring a mobile device, please see :doc:`importing settings into Collect <collect-import-export>`. We recommend only using this QR code while iterating on form design and then deleting corresponding Collect project when you publish the Form.
 
 The table in this section contains any test submissions that have been made to the current Draft. For help with this table or exporting test data, please see :doc:`Form Submissions in Central <central-submissions>`.
+
+When you are ready to publish your draft, you will be given the opportunity to write notes to describe the changes in this version. These notes will be visible from the :ref:`Versions list <central-forms-versions>`
 
 .. _central-forms-attachments:
 
@@ -212,7 +214,7 @@ If you have published multiple version of a Form, you can see each of them under
 
 .. image:: /img/central-forms/versions.*
 
-Each published version of the Form will be listed, along with actions to download the definition of each Form. In future versions of Central, the Media File attachments associated with each version of the Form will be downloadable as well.
+Each published version of the Form will be listed, along with any version notes written and actions to download the definition of each Form.
 
 .. _central-forms-delete:
 
