@@ -35,7 +35,7 @@ Upgrade notes
 * :ref:`Central v0.9 <central-upgrade-0.9>`: configure firewall
 
 .. note::
-  To see your version, click on the question mark icon in the upper right section of your Central menu bar, then click :guilabel:`Version`. If you don't see the question mark, you can see the version by adding ``version.txt`` to the root URL (e.g., `demo.getodk.cloud/version.txt <https://demo.getodk.cloud/version.txt>`_).
+  To see your version, click on the question mark icon in the upper right section of your Central menu bar, then click :guilabel:`Version`. If you don't see the question mark, you can see the version by adding ``version.txt`` to the root URL (e.g., `demo.getodk.cloud/version.txt <https://demo.getodk.cloud/version.txt>`_). Note that starting in v2026.2.0, it is expected for the client version to start with `0000000000000000000000000000000000000000`.
 
 .. _central-upgrade-steps:
 

@@ -452,6 +452,8 @@ Property filters compare the value of an Entity property (such as ``region`` or 
 .. warning::
   Property filters currently apply only to App Users and Public Access Links. If a property filter is configured, Web Users with the Data Collector role will not receive any Entities.
 
+  Currently, you can only filter on user-defined Entity properties, not on system properties like ``label`` or creation date.
+
 By defining Custom Properties and creating filter rules, you can ensure users only receive the Entities relevant to their work. Like :ref:`choice filters <cascading-selects>` in forms, property filters compare values to determine which Entities are available.
 
 Common use cases include:
