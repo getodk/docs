@@ -15,6 +15,7 @@ To upgrade, start by reviewing upgrade notes for all versions between your curre
 Upgrade notes
 -------------
 
+* :ref:`Central v2026.2 <central-upgrade-2026.1>`: special instructions if you use direct backups via API or build frontend from source
 * :ref:`Central v2026.1 <central-upgrade-2026.1>`: plan for longer than usual downtime, update ``.env`` if you need to configure custom database SSL
 * :ref:`Central v2025.4 <central-upgrade-2025.4>`: perform database maintenance
 * :ref:`Central v2025.3 <central-upgrade-2025.3>`: plan for longer than usual downtime during upgrade
@@ -102,6 +103,14 @@ You'll be asked to confirm the removal of all dangling images. Agree by typing t
 Version-specific upgrade instructions
 --------------------------------------
 
+.. _central-upgrade-2026.2:
+
+Upgrading to Central v2026.2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This version changes the format used by :ref:`direct backups via API <central-direct-backups>`. If you use this feature, we recommend reading the updated documentation and reviewing the new restore steps. Backups downloaded before v2026.2 remain compatible and can still be restored. However, restores from the older format require more disk space during the restore process. We recommend making a backup in the new format immediately after upgrading.
+
+This version stops building the frontend from source which significantly cuts down on time and server resources needed to upgrade. Most users will see no change beyond those improvements. If you need to maintain local changes to the frontend source, you can opt back into source builds, :ref:`see how <build-source-v2026.2-plus>`.
 
 .. _central-upgrade-2026.1:
 
@@ -717,3 +726,47 @@ The quickest way to do this is to run ``ufw disable`` while logged into your ser
   If you don't want to disable the firewall entirely, you can instead configure Docker, ``iptables``, and ``ufw`` yourself. This can be difficult to do correctly, so we don't recommend most people try. Another option is to use an upstream network firewall.
 
   The goal here is to ensure that it is possible to access the host through its external IP from within each Docker container. To verify that this is the case, try to ``curl`` your Central website over HTTPS on its public domain name from within one of the containers.
+
+.. _build-source-v2026.2-plus:
+
+Building frontend from source in Central v2026.2+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In Central versions prior to v2026.2, the frontend was always pulled and built from source so local changes could be applied. Starting in Central v2026.2, the frontend is no longer built from source by default. You can still build from source if you would like but keep in mind that you will be responsible for keeping the ``client`` directory synchronized with the appropriate Central frontend release.
+
+To build from source:
+
+#. Open the ``.env`` file for editing:
+
+   .. code-block:: bash
+
+     $ nano .env
+
+#. Add the following to your ``.env`` file:
+
+   .. code-block:: bash
+
+     FRONTEND_BUILD_MODE=source
+
+#. Make sure you have a folder named ``client`` with the Central frontend source in your ``central`` directory. If you are upgrading from a version prior to v2026.2, it will already be there. If you are installing a new version, you will need to ``git clone https://github.com/getodk/central-frontend/ client`` from your ``central`` directory.
+
+#. Build
+
+   .. code-block:: bash
+
+     $ docker compose pull && docker compose build --pull
+
+#. Restart the server
+
+   .. code-block:: bash
+
+     $ docker compose stop && docker compose up -d
+
+Each time you upgrade Central, you will also need to update the frontend source to the matching release before rebuilding. For example, if you are upgrading to Central v2026.3:
+
+.. code-block:: bash
+
+   $ cd central/client
+   $ git stash
+   $ git pull
+   $ git checkout v2026.3.0
