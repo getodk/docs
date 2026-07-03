@@ -234,7 +234,7 @@ In the following section, we describe how to author Forms that create new Entiti
 Build a Form that creates Entities
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You’ll start by building a Form that creates new Entities in an Entity List called ``trees``. When you publish this Form, a ``trees`` Entity List will be created for you. When a Submission to this Form is received, an Entity will be created in the ``trees`` Entity List from data in the Submission. These types of Forms are often referred to as registration, enrollment, intake or discovery Forms.
+You'll start by building a Form that creates new Entities in an Entity List called ``trees``. When you publish this Form, a ``trees`` Entity List will be created for you. When a Submission to this Form is received, an Entity will be created in the ``trees`` Entity List from data in the Submission. These types of Forms are often referred to as registration, enrollment, intake or discovery Forms.
 
 .. _central-entities-registration-forms-structure:
 
@@ -418,7 +418,56 @@ Note that only one of these two behaviors can be chosen at a time. If you change
 
 Select either option and you should see a confirmation the setting has changed.
 
-You can also select whether App Users and Data Collectors receive access to all Entities, or only the ones they create.
+You can also define which Entities should be accessible from Forms.
+
+.. _central-entity-list-access:
+
+Entity List Access
+~~~~~~~~~~~~~~~~~~~
+
+By default, every Web User, App User and Public Access Link receives every Entity from an attached Entity List when viewing a form. You can restrict what they see in a Form by using :ref:`choice filters <cascading-selects>` but you may also want to filter Entities on the server before they are delivered to:
+
+* **Protect privacy** - users only receive the Entities relevant to their role, location, etc.
+* **Improve performance** - reducing the number of Entities delivered to devices can improve synchronization and loading performance for large Entity Lists.
+* **Simplify assignment workflows** - users automatically receive only the Entities relevant to their work without form logic.
+
+You have two options for filtering Entities on the server side:
+* Ownership filtering, which limits users to Entities they own.
+* Property filtering, which compares Entity properties with Custom Properties assigned to the requesting App User or Public Access Link.
+
+Web Users with the Administrator, Project Manager, or Project Viewer roles are unaffected by either filter type and continue to receive every Entity.
+
+Only access own Entities
+""""""""""""""""""""""""
+
+This access type applies to App Users, Web Users with the Data Collector role, and Public Access Links. Filtering by ownership is appropriate when Entities are registered and followed up with by the same person. Currently, there is no way to change an Entity's ownership after it has been created.
+
+.. _entity-list-access-filter:
+
+Filter by property
+""""""""""""""""""
+
+Property filters compare the value of an Entity property (such as ``region`` or ``role``) with the value of the corresponding :ref:`Custom Property <central-custom-properties>` on the App User or Public Access Link requesting the Entity List.
+
+.. warning::
+  Property filters currently apply only to App Users and Public Access Links. If a property filter is configured, Web Users with the Data Collector role will not receive any Entities.
+
+By defining Custom Properties and creating filter rules, you can ensure users only receive the Entities relevant to their work. Like :ref:`choice filters <cascading-selects>` in forms, property filters compare values to determine which Entities are available.
+
+Common use cases include:
+
+* Restricting access to sensitive Entities
+* Assigning work by region, district, or team
+* Improving performance by reducing the amount of Entity data delivered to devices and browsers
+
+For example, this rule ensures that users only receive Entities whose region property matches their assigned region:
+
+.. image:: /img/central-entities/filter-by-property.*
+
+To define a property filter, you need to first create a :ref:`Custom Property <central-custom-properties>` for the project and make sure the Entity List has an Entity property to compare against. Then, select the Entity property and the Custom Property that you want to compare. Currently, only exact equality is supported.
+
+When filtering by property, every App User and Public Link that can access the Entity List through a Form should have a value for the Custom Property. A blank value for that property will not match any Entities so the user will receive an empty list.
+
 
 .. _deleting-entity-lists:
 
