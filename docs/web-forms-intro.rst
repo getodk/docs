@@ -1,47 +1,60 @@
 .. spelling:word-list::
     yyyy
 
-Trying ODK Web Forms
+ODK Web Forms
 ====================
 
-ODK Central provides a web-based interface to your forms for data edits, to preview form definitions, and to enable data collection from devices other than Android phones. You can learn about how Central uses web-based forms in :ref:`the section on managing Submissions <central-web-submissions>`.
+ODK Central provides a web-based interface to your forms for data edits, to preview form definitions, and to enable data collection from devices other than Android phones. You can learn about how to collect data using web forms in :ref:`the section on managing Submissions <central-web-submissions>`.
 
-By default, web forms in Central are powered by `Enketo <https://enketo.org/>`_, a powerful library that was initially developed outside the ODK project and that the ODK team has contributed to.
+ODK is migrating to ODK Web Forms, the modern default experience for new Forms starting in Central v2026.2.0. Forms created prior to that used `Enketo <https://enketo.org/>`_.
 
-The ODK team is now developing `ODK Web Forms <https://github.com/getodk/web-forms?tab=readme-ov-file#odk-web-forms>`_ which will eventually replace Enketo in ODK Central. ODK Web Forms is designed to align with ODK Collect and provide a modern user experience.
-
-To quickly try your forms in ODK Web Forms, see `the preview website <https://getodk.org/web-forms-preview/>`_. This page describes how to :ref:`opt a Central Form into using ODK Web Forms <web-forms-opt-in>` for all web-based functions and documents :ref:`more complex question types <web-forms-question-types>`.
+This page describes how to :ref:`opt into using ODK Web Forms <web-forms-opt-in>` for all web-based functions, outlines :ref:`upcoming features <features-not-yet-supported>` and documents :ref:`more complex question types <web-forms-question-types>`.
 
 .. _web-forms-opt-in:
 
 Opting into ODK Web Forms in Central
 ----------------------------------------
 
-.. warning::
-    ODK Web Forms does not yet support all form functionality so please test your forms carefully. If you opt into using ODK Web Forms for real data collection, we encourage you to go to `the forum's release category <https://forum.getodk.org/c/releases/16>`_ and click on the bell so you are notified when there is a new release. Be sure to verify your forms after each Central release.
+ODK Web Forms is the default web forms experience for forms created in Central v2026.2.0 or later. Forms created on prior versions used `Enketo <https://enketo.org/>`_ by default.
 
-Starting in Central v2025.1, you can opt individual forms into using `ODK Web Forms <https://github.com/getodk/web-forms?tab=readme-ov-file#odk-web-forms>`_, an alternative to Enketo designed from the ground up to align with ODK Collect. ODK Web Forms is still early in its development. We recommend trying ODK Web Forms if:
+To opt an existing form into ODK Web Forms, go to the :guilabel:`Settings` tab for that form. In the :guilabel:`Web forms experience` section, select the :guilabel:`ODK Web Forms` option, read the description, and confirm that you want to opt in.
 
-* You are curious about how web forms will evolve in Central.
-* You like ODK Web Form's look and feel.
-* You want to provide feedback and ideas `on the forum <https://forum.getodk.org/tag/odk-webforms>`_.
-* You have a form that doesn't work well with Enketo. For example, this could be because of the presentation of certain question types such as ``geopoint``, performance issues, or bugs in repeats.
+You can change a form's setting between Enketo and Web Forms at any time. Any form links that users already have will continue to work and will reflect the setting on the server at the time that the form link is loaded. Existing submissions are not affected by switching between web forms options.
 
-To opt into ODK Web Forms, go to the :guilabel:`Settings` tab for a specific form. In the :guilabel:`Web Forms` section, select the :guilabel:`ODK Web Forms` option, read the description, and confirm that you want to opt in.
+.. Linked to from Central
+.. _features-not-yet-supported:
 
-If you make some test submissions using Web Forms and find that all of the functionality that you need is supported well, Web Forms can be used to collect real data.
+Upcoming features
+------------------
 
-You can see what functionality is currently supported `on Github <https://github.com/getodk/web-forms?tab=readme-ov-file#feature-matrix>`_.
+We've extensively tested ODK Web Forms and consider it ready for production use for most projects. All form logic, major question types, media, translations, repeats, and Entities are supported.
 
-You can change a form's setting between Enketo and Web Forms at any time. Any form links that users already have will continue to work and will reflect the setting on the server at the time that the user loads the form link. Existing submissions are not affected by switching between web forms options.
+For users who have been using web forms in Central prior to v2026.2.0, here is functionality in Enketo that's coming to Web Forms, in rough order of priority:
+
+* One question per page
+* Query parameter defaults
+* Jump to first error
+* Last-saved
+* Satellite basemaps
+* Single-submission enforced by browser
+* big-image for labels
+* no-calendar appearance
+* Select from svg
+* Guidance hints
+* Launch form offline and save drafts
+* Progress bar
+* Audio recording in foreground and background
+* Picker, ticks appearances for range
+* Grid layout
+
+Please let us know `on the forum <https://forum.getodk.org/c/support/6>`_ what is most important to you.
 
 .. _web-forms-question-types:
 
 Question types
 --------------
 
-To know which question types are currently supported in Web Forms, see `the Github feature matrix <https://github.com/getodk/we
-b-forms?tab=readme-ov-file#feature-matrix>`_. While most supported functionality is very similar to Collect's, this section describes question types with more complex functionality or that differ from Collect.
+Most Web Forms functionality is very similar to Collect's. This section describes question types with more complex functionality or that differ from Collect.
 
 Geospatial question types
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
