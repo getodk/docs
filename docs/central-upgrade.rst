@@ -62,7 +62,7 @@ Upgrade steps
 
   If you've made local changes you want to keep, run ``git stash``, then ``git pull``, and then ``git stash pop``. This temporarily saves your changes, gets the latest code from ODK, then reapplies your changes.
 
-3. **Get the latest client and server**.
+3. **Get the latest server**.
 
 .. code-block:: bash
 
@@ -491,7 +491,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
    
              $ git pull
    
-       #. **Get the latest client and server.**
+       #. **Get the latest server.**
    
           .. code-block:: bash
    

@@ -138,7 +138,7 @@ Getting and Setting Up Central
 
      $ cd central
 
-#. Get the latest client and server:
+#. Get the latest server:
 
    .. code-block:: bash
 
