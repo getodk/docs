@@ -15,7 +15,7 @@ To upgrade, start by reviewing upgrade notes for all versions between your curre
 Upgrade notes
 -------------
 
-* :ref:`Central v2026.2 <central-upgrade-2026.1>`: special instructions if you use direct backups via API or build frontend from source
+* :ref:`Central v2026.2 <central-upgrade-2026.2>`: special instructions if you use direct backups via API or build frontend from source
 * :ref:`Central v2026.1 <central-upgrade-2026.1>`: plan for longer than usual downtime, update ``.env`` if you need to configure custom database SSL
 * :ref:`Central v2025.4 <central-upgrade-2025.4>`: perform database maintenance
 * :ref:`Central v2025.3 <central-upgrade-2025.3>`: plan for longer than usual downtime during upgrade
