@@ -41,6 +41,25 @@ info:
 
     Here major and breaking changes to the API are listed by version.
 
+    ## ODK Central v2026.2
+
+    **Added**:
+    - [Actor Properties](/central-api-accounts-and-users/#actor-properties) allow you to attach custom key/value metadata to App Users and Public Links within a project. This can be used to tag users with attributes like team, region or supervisor, which can then be used to [filter Dataset access](/central-api-dataset-management/#update-dataset-access-filters-and-metadata).
+      - [POST /projects/:id/actor-properties](/central-api-accounts-and-users/#registering-an-actor-property-name) to register a new property name for a project.
+      - [GET /projects/:id/actor-properties](/central-api-accounts-and-users/#listing-actor-property-names) to list property names. Use `X-Extended-Metadata: true` to also retrieve the distinct values currently in use.
+      - [PATCH /projects/:id/app-users/:id](/central-api-accounts-and-users/#setting-actor-property-values-on-an-app-user) to set or unset property values on an App User.
+      - [PATCH /projects/:id/forms/:xmlFormId/public-links/:id](/central-api-form-management/#setting-actor-property-values-on-a-link) to set or unset property values on a Public Link.
+      - New audit log events: `actor_property.create`, `field_key.property.set`, and `public_link.property.set`.
+
+    **Changed**:
+    - The [Getting Form Details](/central-api-form-management/#getting-form-details), [Listing Published Form Versions](/central-api-form-management/#listing-published-form-versions) and [Getting Form Version Details](/central-api-form-management/#getting-form-version-details) endpoints now return a `publishNotes` field in extended metadata. 
+    - Several existing endpoints now support [Actor Properties](/central-api-accounts-and-users/#actor-properties):
+      - [GET /projects/:id/app-users](/central-api-accounts-and-users/#listing-all-app-users) and [GET /projects/:id/app-users/:id](/central-api-accounts-and-users/#getting-app-user-details) now return a `properties` object in extended metadata.
+      - [POST /projects/:id/app-users](/central-api-accounts-and-users/#creating-a-new-app-user) now accepts an optional `properties` object to set property values at creation time.
+      - [GET /projects/:id/forms/:xmlFormId/public-links](/central-api-form-management/#listing-all-links) and [GET /projects/:id/forms/:xmlFormId/public-links/:id](/central-api-form-management/#getting-link-details) now return a `properties` object in extended metadata.
+      - [POST /projects/:id/forms/:xmlFormId/public-links](/central-api-form-management/#creating-a-link) now accepts an optional `properties` object to set property values at creation time.
+      - [PATCH /projects/:id/datasets/:name](/central-api-dataset-management/#update-dataset-access-filters-and-metadata) now supports an `accessFilter` field for controlling which Entities App Users and Public Links can see via Actor Properties.
+
     ## ODK Central v2026.1
 
     **Added**:
@@ -735,6 +754,14 @@ tags:
     The Central frontend uses this API to save various user preferences, such as the sorting order of certain listings. When a user starts a new session, these preferences are loaded in as part of the [User object](/central-api-accounts-and-users/#getting-authenticated-user-details).
     
     Preferences can be set site-wide or per-project.
+- name: Actor Properties
+  x-parent-tag: Accounts and Users
+  description: |-
+    _(introduced: version 2026.2)_
+
+    Actor properties allow you to attach custom key/value metadata to App Users and Public Links within a project. This can be used to tag users with attributes like region or supervisor, which can then be used to [filter Dataset access](/central-api-dataset-management/#update-dataset-access-filters-and-metadata).
+
+    Property names must be registered on the project before they can be set on individual App Users or Public Links. Property names follow the same rules as Entity property names, with the additional restriction that `displayName` (case-insensitive) is reserved.
 - name: App Users
   x-parent-tag: Accounts and Users
   description: |-
@@ -943,11 +970,14 @@ tags:
     * `field_key.assignment.delete` when an App User is unassigned from a Server Role.
     * `field_key.session.end` when an App User's access is revoked.
     * `field_key.delete` when an App User is deleted.
+    * `field_key.property.set` when actor property values are set on an App User.
     * `public_link.create` when a new Public Link is created.
     * `public_link.assignment.create` when a Public Link is assigned to a Server Role.
     * `public_link.assignment.delete` when a Public Link is unassigned from a Server Role.
     * `public_link.session.end` when a Public Link's access is revoked.
     * `public_link.delete` when a Public Link is deleted.
+    * `public_link.property.set` when actor property values are set on a Public Link.
+    * `actor_property.create` when a new actor property name is registered for a project.
     * `submission.create` when a new Submission is created.
     * `submission.update` when a Submission's metadata is updated.
     * `submission.update.version` when a Submission XML data is updated.
@@ -1890,7 +1920,7 @@ paths:
       description: |-
         Currently, there are no paging or filtering options, so listing `App User`s will get you every App User in the system, every time.
 
-        This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally retrieve the `lastUsed` timestamp of each App User, as well as to retrieve the details of the `Actor` the App User was `createdBy`.
+        This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally retrieve the `lastUsed` timestamp of each App User, the details of the `Actor` the App User was `createdBy`, and a `properties` object containing any actor property values set on the App User.
       operationId: listAllAppUsers
       parameters:
       - name: projectId
@@ -1919,7 +1949,6 @@ paths:
                   deletedAt: 2018-04-18T23:42:11.406Z
                   token: d1!E2GVHgpr4h9bpxxtqUJ7EVJ1Q$Dusm2RBXg8XyVJMCBCbvyE8cGacxUx3bcUT
                   projectId: 1
-                  lastUsed: 2018-04-14T08:34:21.633Z
             application/json; extended:
               schema:
                 type: array
@@ -1943,6 +1972,8 @@ paths:
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
                 lastUsed: 2018-04-14T08:34:21.633Z
+                properties:
+                  region: North
     post:
       tags:
       - App Users
@@ -1951,6 +1982,8 @@ paths:
         The only information required to create a new `App User` is its `displayName` (this is called "Nickname" in the administrative panel).
 
         When an App User is created, they are assigned no rights. They will be able to authenticate and list forms on a mobile client, but the form list will be empty, as the list only includes Forms that the App User has read access to. Once an App User is created, you'll likely wish to use the [Form Assignments resource](/central-api-form-management/#form-assignments) to actually assign the `app-user` role to them for the Forms you wish.
+
+        You may also optionally provide a `properties` object to set pre-registered [Actor Property](/central-api-accounts-and-users/#actor-properties) values on the App User at creation time.
       operationId: createAppUser
       parameters:
       - name: projectId
@@ -1971,8 +2004,16 @@ paths:
                 displayName:
                   type: string
                   description: The friendly nickname of the `App User` to be created.
+                properties:
+                  type: object
+                  description: An optional object mapping pre-registered [Actor Property](/central-api-accounts-and-users/#actor-properties) names to string values.
+                  additionalProperties:
+                    type: string
+                    nullable: true
               example:
                 displayName: My Display Name
+                properties:
+                  region: North
         required: false
       responses:
         "200":
@@ -2052,6 +2093,90 @@ paths:
                 message: Could not parse the given data (2 chars) as json.
       x-codegen-request-body-name: body
   /v1/projects/{projectId}/app-users/{id}:
+    get:
+      tags:
+      - App Users
+      summary: Getting App User Details
+      description: |-
+        Returns the details of a single App User by its numeric ID.
+
+        This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally retrieve the `lastUsed` timestamp, the details of the `Actor` the App User was `createdBy`, and a `properties` object containing any actor property values set on the App User.
+      operationId: getAppUser
+      parameters:
+      - name: id
+        in: path
+        description: The numeric ID of the App User
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "7"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppUser'
+            application/json; extended:
+              schema:
+                $ref: '#/components/schemas/ExtendedAppUser'
+    patch:
+      tags:
+      - App Users
+      summary: Setting Actor Property Values on an App User
+      description: |-
+        Sets or unsets pre-registered [Actor Property](/central-api-accounts-and-users/#actor-properties) values on an App User. The body must contain a `properties` object mapping property names to string values or `null`. Sending `null` for a property unsets it.
+
+        Returns the extended App User, including a `properties` object containing all currently set property values.
+
+        Requires `field_key.update` permission.
+      operationId: patchAppUser
+      parameters:
+      - name: id
+        in: path
+        description: The numeric ID of the App User
+        required: true
+        schema:
+          type: number
+        example: "16"
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "7"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                properties:
+                  type: object
+                  description: An object mapping actor property names to string values or `null`. Set a property by providing a string value; unset it by providing `null`.
+                  additionalProperties:
+                    type: string
+                    nullable: true
+              example:
+                properties:
+                  region: "North"
+                  supervisor: null
+        required: true
+      responses:
+        "200":
+          description: Returns the extended App User with the updated properties.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtendedAppUser'
     delete:
       tags:
       - App Users
@@ -2076,6 +2201,88 @@ paths:
         schema:
           type: number
         example: "7"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Success'
+  /v1/projects/{projectId}/actor-properties:
+    get:
+      tags:
+      - Actor Properties
+      summary: Listing Actor Property Names
+      description: |-
+        Returns the list of actor property names registered for this project. These names define which properties can be set on App Users and Public Links within the project.
+
+        This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally retrieve the distinct values currently in use for each property across all App Users and Public Links in the project.
+      operationId: listActorProperties
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "7"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ActorProperty'
+              example:
+              - name: region
+              - name: supervisor
+            application/json; extended:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ActorPropertyWithValues'
+              example:
+              - name: region
+                values:
+                - North
+                - South
+              - name: supervisor
+                values: []
+    post:
+      tags:
+      - Actor Properties
+      summary: Registering an Actor Property Name
+      description: |-
+        Registers a new actor property name for this project. Once registered, the property can be set on any App User or Public Link within the project via `PATCH`.
+
+        Property names follow the same rules as Entity property names: they must be non-empty, may contain letters, digits, hyphens, and underscores, and the name `displayName` (case-insensitive) is reserved.
+
+        Requires `actor_property.update` permission.
+      operationId: createActorProperty
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "7"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              properties:
+                name:
+                  type: string
+                  description: The name of the property to register.
+              example:
+                name: region
+        required: true
       responses:
         "200":
           description: OK
@@ -3356,7 +3563,7 @@ paths:
                 updatedAt: 2018-03-21T12:45:02.312Z
             application/json; extended:
               schema:
-                $ref: '#/components/schemas/ExtendedForm'
+                $ref: '#/components/schemas/ExtendedFormWithPublishNotes'
               example:
                 projectId: 1
                 xmlFormId: simple
@@ -3384,6 +3591,7 @@ paths:
                   deletedAt: 2018-04-18T23:42:11.406Z
                 entityRelated: false
                 publicLinks: 4
+                publishNotes: 'Fixed validation rules for required fields'
     delete:
       tags:
       - Individual Form
@@ -4613,6 +4821,7 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
+                publishNotes: Fixed validation rules for required fields
   /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}:
     get:
       tags:
@@ -4654,6 +4863,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Form'
+            application/json; extended:
+              schema:
+                $ref: '#/components/schemas/ExtendedFormVersion'
   /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}.xml:
     get:
       tags:
@@ -5172,7 +5384,7 @@ paths:
       description: |-
         This will list every Public Access Link upon this Form.
 
-        This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to retrieve the Actor the Link was `createdBy`.
+        This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally retrieve the Actor the Link was `createdBy` and a `properties` object containing any actor property values set on the Link.
       operationId: listAllLinks
       parameters:
       - name: projectId
@@ -5229,17 +5441,16 @@ paths:
                   type: user
                   updatedAt: 2018-04-18T23:42:11.406Z
                   deletedAt: 2018-04-18T23:42:11.406Z
+                properties:
+                  region: North
     post:
       tags:
       - Public Access Links
       summary: Creating a Link
-      description: 'To create a new Public Access Link to this Form, you must send
-        at least a `displayName` for the resulting Actor. You may also provide `once:
-        true` if you want to create a link that [can only be filled by each respondent
-        once](https://blog.enketo.org/single-submission-surveys/). This setting is
-        enforced by Enketo using local device tracking; the link is still distributable
-        to multiple recipients, and the enforcement can be defeated by using multiple
-        browsers or devices.'
+      description: |-
+        To create a new Public Access Link to this Form, you must send at least a `displayName` for the resulting Actor. You may also provide `once: true` if you want to create a link that [can only be filled by each respondent once](https://blog.enketo.org/single-submission-surveys/). This setting is enforced by Enketo using local device tracking; the link is still distributable to multiple recipients, and the enforcement can be defeated by using multiple browsers or devices.
+
+        You may also optionally provide a `properties` object to set pre-registered [Actor Property](/central-api-accounts-and-users/#actor-properties) values on the Link at creation time.
       operationId: createLink
       parameters:
       - name: projectId
@@ -5274,9 +5485,17 @@ paths:
                   description: If set to `true`, an Enketo [single submission survey](https://blog.enketo.org/single-submission-surveys/)
                     will be created instead of a standard one, limiting respondents
                     to a single submission each.
+                properties:
+                  type: object
+                  description: An optional object mapping pre-registered [Actor Property](/central-api-accounts-and-users/#actor-properties) names to string values.
+                  additionalProperties:
+                    type: string
+                    nullable: true
               example:
                 displayName: my public link
                 once: false
+                properties:
+                  region: North
         required: false
       responses:
         "200":
@@ -5335,6 +5554,104 @@ paths:
                 once: false
       x-codegen-request-body-name: body
   /v1/projects/{projectId}/forms/{xmlFormId}/public-links/{linkId}:
+    get:
+      tags:
+      - Public Access Links
+      summary: Getting Link Details
+      description: |-
+        Returns the details of a single Public Access Link by its numeric ID.
+
+        This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally retrieve the Actor the Link was `createdBy` and a `properties` object containing any actor property values set on the Link.
+      operationId: getLink
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "2"
+      - name: xmlFormId
+        in: path
+        description: The `xmlFormId` of the Form being referenced.
+        required: true
+        schema:
+          type: string
+        example: simple
+      - name: linkId
+        in: path
+        description: The numeric ID of the Link
+        required: true
+        schema:
+          type: integer
+        example: "42"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicLink'
+            application/json; extended:
+              schema:
+                $ref: '#/components/schemas/ExtendedPublicLink'
+    patch:
+      tags:
+      - Public Access Links
+      summary: Setting Actor Property Values on a Link
+      description: |-
+        Sets or unsets pre-registered [Actor Property](/central-api-accounts-and-users/#actor-properties) values on a Public Access Link. The body must contain a `properties` object mapping property names to string values or `null`. Sending `null` for a property unsets it.
+
+        Returns the extended Public Link, including a `properties` object containing all currently set property values.
+
+        Requires `public_link.update` permission.
+      operationId: patchLink
+      parameters:
+      - name: projectId
+        in: path
+        description: The numeric ID of the Project
+        required: true
+        schema:
+          type: number
+        example: "2"
+      - name: xmlFormId
+        in: path
+        description: The `xmlFormId` of the Form being referenced.
+        required: true
+        schema:
+          type: string
+        example: simple
+      - name: linkId
+        in: path
+        description: The numeric ID of the Link
+        required: true
+        schema:
+          type: integer
+        example: "42"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                properties:
+                  type: object
+                  description: An object mapping actor property names to string values or `null`. Set a property by providing a string value; unset it by providing `null`.
+                  additionalProperties:
+                    type: string
+                    nullable: true
+              example:
+                properties:
+                  region: "North"
+                  supervisor: null
+        required: true
+      responses:
+        "200":
+          description: Returns the extended Public Link with the updated properties.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtendedPublicLink'
     delete:
       tags:
       - Public Access Links
@@ -8336,14 +8653,22 @@ paths:
     patch:
       tags:
       - Dataset Management
-      summary: Update Dataset Metadata
+      summary: Update Dataset Access Filters and Metadata
       operationId: updateDatasetMetadata
       description: |-
-        You can use this endpoint to update `approvalRequired` and `ownerOnly`. However, you cannot update other properties, such as `name`.
+        You can use this endpoint to update `approvalRequired`, `ownerOnly`, and `accessFilter`. However, you cannot update other properties, such as `name`.
 
         The `approvalRequired` flag controls the Entity creation flow. If it is `true`, then the Submission must be approved before an Entity can be created from it. If it is `false`, then an Entity is created as soon as the Submission is received by ODK Central. By default, `approvalRequired` is `false` for Datasets created after v2023.3. Datasets created prior to that will have `approvalRequired` set to `true`.
 
-        The `ownerOnly` flag determines which Entities in the Dataset are included for download to an OpenRosa client. More specifically, it determines which Entities are included in a Form Attachment that has been linked to the Dataset. If `ownerOnly` is `true`, and the Actor using the OpenRosa client only has access to the Dataset CSV file via linked Form Attachments, then only Entities created by the Actor will be included. This is true of App Users, Web Users with a role of Data Collector, and Public Access Links. If `ownerOnly` is `false`, or if the Actor has direct access to the Dataset CSV file, then all Entities will be included. Accessing the Dataset CSV file via linked Form Attachments using a [draftToken](/central-api-form-management/#draft-form) will also retrieve all Entities, this functionality assumes the `draftToken` is used by Actors with full dataset access, such as Project Managers and System Administrators. By default, `ownerOnly` is `false`.
+        The `accessFilter` field filters which Entities are visible to [App Users](/central-api-accounts-and-users/#app-users) and [Public Links](/central-api-form-management/#public-access-links) when they download the Dataset via a linked Form Attachment. When `accessFilter` is present, it takes precedence over the legacy `ownerOnly` flag.
+
+        | `accessFilter` value | Behavior |
+        | --- | --- |
+        | `null` | No restrictions; all Entities are visible. |
+        | `{ "type": "ownerOnly" }` | Each Actor only sees Entities they created. |
+        | `{ "type": "property", "rules": [...] }` | Each Actor only sees Entities where the specified Dataset property matches their [Actor property](/central-api-accounts-and-users/#actor-properties) value. Multiple rules are ANDed together. |
+
+        The legacy `ownerOnly` boolean field is still accepted when `accessFilter` is absent, and behaves as before. If `ownerOnly` is `true`, and the Actor using the OpenRosa client only has access to the Dataset CSV file via linked Form Attachments, then only Entities created by the Actor will be included. This is true of App Users, Web Users with a role of Data Collector, and Public Access Links. If `ownerOnly` is `false`, or if the Actor has direct access to the Dataset CSV file, then all Entities will be included. Accessing the Dataset CSV file via linked Form Attachments using a [draftToken](/central-api-form-management/#draft-form) will also retrieve all Entities; this functionality assumes the `draftToken` is used by Actors with full dataset access, such as Project Managers and System Administrators. By default, `ownerOnly` is `false`.
       parameters:
         - name: projectId
           in: path
@@ -8371,10 +8696,44 @@ paths:
                   example: true
                 ownerOnly:
                   type: boolean
-                  description: If `ownerOnly` is `true`, and an Actor only has access to the Dataset CSV file via linked Form Attachments, then only Entities created by the Actor will be downloaded to the OpenRosa client. If `ownerOnly` is `false`, or if an Actor has direct access to the Dataset CSV file, then all Entities will be downloaded.
+                  description: Legacy flag. If `ownerOnly` is `true`, and an Actor only has access to the Dataset CSV file via linked Form Attachments, then only Entities created by the Actor will be downloaded to the OpenRosa client. Ignored when `accessFilter` is also present.
                   example: false
+                accessFilter:
+                  nullable: true
+                  description: Controls which Entities are visible to restricted Actors (App Users, Data Collectors, Public Links) via linked Form Attachments. Takes precedence over `ownerOnly` when present. Set to `null` to remove all restrictions.
+                  type: object
+                  required:
+                    - type
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                        - ownerOnly
+                        - property
+                      description: '`ownerOnly` restricts each Actor to Entities they created. `property` restricts based on matching dataset and actor property values.'
+                    rules:
+                      type: array
+                      description: Required when `type` is `property`. Each rule matches a Dataset property against an Actor property; all rules must match.
+                      items:
+                        type: object
+                        required:
+                          - datasetProperty
+                          - actorProperty
+                        properties:
+                          datasetProperty:
+                            type: string
+                            description: The name of a Dataset property to compare.
+                            example: state
+                          actorProperty:
+                            type: string
+                            description: The name of an Actor property to compare against.
+                            example: region
               example:
-                approvalRequired: true
+                accessFilter:
+                  type: property
+                  rules:
+                  - datasetProperty: state
+                    actorProperty: region
       responses:
         "200":
           description: OK
@@ -11724,6 +12083,8 @@ paths:
           content:
             "{the MIME type of the logo itself}":
               example: (binary data)
+        "304":
+          description:  Not Modified
         "404":
           description: Not Found
           content:
@@ -11778,6 +12139,8 @@ paths:
           content:
             "{the MIME type of the hero image itself}":
               example: (binary data)
+        "304":
+          description:  Not Modified
         "404":
           description: Not Found
           content:
@@ -12077,6 +12440,15 @@ components:
               type: string
               description: ISO date format. The last time this `App User` was used to authenticate a request.
               example: 2018-04-14T08:34:21.633Z
+            properties:
+              type: object
+              nullable: true
+              description: An object mapping actor property names to their currently set string values for this App User. Only properties with values set are included. `null` if no properties have been set.
+              additionalProperties:
+                type: string
+              example:
+                region: North
+                supervisor: Alice
     Role:
       type: object
       properties:
@@ -12609,6 +12981,15 @@ components:
               type: number
               example: 4
               description: The number of Public Links that can submit to the Form. This does not include Public Links that have been revoked.
+    ExtendedFormWithPublishNotes:
+      allOf:
+        - $ref: '#/components/schemas/ExtendedForm'
+        - type: object
+          properties:
+            publishNotes:
+              type: string
+              example: Fixed validation rules for required fields
+              description: The notes provided when the current Form version was published (via the `X-Action-Notes` header). Only returned to users with `form.update` permission.
     ExtendedFormVersion:
       allOf:
         - $ref: '#/components/schemas/Form'
@@ -12620,6 +13001,10 @@ components:
             excelContentType:
               type: string
               description: If the Form was created by uploading an Excel file, this field contains the MIME type of that file.
+            publishNotes:
+              type: string
+              example: Fixed validation rules for required fields
+              description: The notes provided when this version was published (via the `X-Action-Notes` header). Only returned to users with `form.update` permission.
     FormAttachment:
       type: object
       required:
@@ -12720,8 +13105,34 @@ components:
           example: true
         ownerOnly:
           type: boolean
-          description: If `ownerOnly` is `true`, and an Actor only has access to the Dataset CSV file via linked Form Attachments, then only Entities created by the Actor will be downloaded to the OpenRosa client. If `ownerOnly` is `false`, or if an Actor has direct access to the Dataset CSV file, then all Entities will be downloaded.
+          description: Legacy flag. If `ownerOnly` is `true`, and an Actor only has access to the Dataset CSV file via linked Form Attachments, then only Entities created by the Actor will be downloaded to the OpenRosa client. Superseded by `accessFilter` when set.
           example: false
+        accessFilter:
+          nullable: true
+          description: Controls which Entities are visible to restricted Actors (App Users, Data Collectors, Public Links) via linked Form Attachments. `null` means no restrictions. When present, supersedes `ownerOnly`.
+          type: object
+          required:
+            - type
+          properties:
+            type:
+              type: string
+              enum:
+                - ownerOnly
+                - property
+              description: '`ownerOnly` restricts each Actor to Entities they created. `property` restricts based on matching dataset and actor property values.'
+              example: property
+            rules:
+              type: array
+              description: Present when `type` is `property`. Each rule specifies a Dataset property and an Actor property that must match.
+              items:
+                type: object
+                properties:
+                  datasetProperty:
+                    type: string
+                    example: state
+                  actorProperty:
+                    type: string
+                    example: region
     ExtendedDataset:
       allOf:
       - $ref: '#/components/schemas/Dataset'
@@ -12773,6 +13184,38 @@ components:
             createdBy:
               $ref: '#/components/schemas/Actor'
               description: The full details about the `Actor` that created this `Public Link`.
+            properties:
+              type: object
+              nullable: true
+              description: An object mapping actor property names to their currently set string values for this Public Link. Only properties with values set are included. `null` if no properties have been set.
+              additionalProperties:
+                type: string
+              example:
+                region: North
+    ActorProperty:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: The name of the actor property.
+          example: region
+    ActorPropertyWithValues:
+      allOf:
+        - $ref: '#/components/schemas/ActorProperty'
+        - type: object
+          required:
+            - values
+          properties:
+            values:
+              type: array
+              items:
+                type: string
+              description: The distinct values currently in use for this property across all App Users and Public Links in the project.
+              example:
+              - North
+              - South
     Key:
       type: object
       required:
