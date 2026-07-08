@@ -432,6 +432,7 @@ By default, every Web User, App User and Public Access Link receives every Entit
 * **Simplify assignment workflows** - users automatically receive only the Entities relevant to their work without form logic.
 
 You have two options for filtering Entities on the server side:
+
 * Ownership filtering, which limits users to Entities they own.
 * Property filtering, which compares Entity properties with Custom Properties assigned to the requesting App User or Public Access Link.
 
@@ -459,8 +460,8 @@ By defining Custom Properties and creating filter rules, you can ensure users on
 Common use cases include:
 
 * Restricting access to sensitive Entities
+* Reducing the amount of Entity data delivered to users
 * Assigning work by region, district, or team
-* Improving performance by reducing the amount of Entity data delivered to devices and browsers
 
 For example, this rule ensures that users only receive Entities whose region property matches their assigned region:
 
