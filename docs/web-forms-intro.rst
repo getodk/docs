@@ -32,7 +32,6 @@ We've extensively tested ODK Web Forms and consider it ready for production use 
 For users who have been using web forms in Central prior to v2026.2.0, here is functionality in Enketo that's coming to Web Forms, in rough order of priority:
 
 * One question per page
-* Query parameter defaults
 * Jump to first error
 * Last-saved
 * Satellite basemaps
