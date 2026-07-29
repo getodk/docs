@@ -80,7 +80,7 @@ You cannot yet edit any of the details of a Public Link.
 Default Parameters
 ^^^^^^^^^^^^^^^^^^
 
-You can add parameters to the public link URL to set values when the form is opened. This can be useful to prefill the form with data that's available on the page where the link is clicked. Parameters must be in the format :code:`d[{xpath}]={value}`, where xpath is the ref of the element you want to set, and value is the string value. For example, :code:`d[/root/name]=odk` will set the string "odk" into the name element. You can set values on multiple elements by including more parameters.
+You can add parameters to the public link URL to set values when the form is opened. This can be useful to fill the form with data that's available on the page where the link is clicked. Parameters must be in the format :code:`d[{xpath}]={value}`, where "xpath" is the ref of the element you want to set, and value is the string value. For example, :code:`d[/root/name]=odk` will set the string "odk" into the name element. You can set values on multiple elements by including more parameters.
 
 .. _central-submissions-link-revoke:
 
