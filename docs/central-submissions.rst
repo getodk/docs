@@ -80,7 +80,9 @@ You cannot yet edit any of the details of a Public Link.
 Default Parameters
 ^^^^^^^^^^^^^^^^^^
 
-You can add parameters to the public link URL to set values when the form is opened. This can be useful to fill the form with data that's available on the page where the link is clicked. Parameters must be in the format :code:`d[{XPath}]={value}`, where XPath is the ref of the element you want to set, and value is the string value. For example, :code:`d[/root/name]=odk` will set the string "odk" into the name element. You can set values on multiple elements by including more parameters.
+You can add parameters to the public link URL to set values when the form is opened. This can be useful to fill the form with data that's available on the page where the link is clicked. Parameters must be in the format :code:`d[{XPath}]={value}`, where XPath is the ref of the element you want to set, and value is the string value. For example, :code:`d[/root/name]=odk` will set the string "odk" into the name element. To reduce the length of the URL omit the primary instance name and leading slash, for example:  :code:`d[name]=odk`. Set values on multiple elements by including more parameters separated by an ampersand, :code:`d[name]=odk&d[engine]=webforms`.
+
+Note that the parameters must be URL encoded to be parsed correctly.
 
 .. _central-submissions-link-revoke:
 
