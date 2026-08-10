@@ -1160,12 +1160,6 @@ If adding images, note that the images are referenced in the choices sheet, and 
 Select one from map widget
 """""""""""""""""""""""""""
 
-.. versionadded:: 2023.1.0
-
-  `ODK Collect v2023.1.0 <https://github.com/getodk/collect/releases/tag/v2023.1.0>`_
-
-.. versionadded:: v2025.3 Web Forms in Central
-
 type
  ``select_one {list_name}``
 appearance
@@ -1174,7 +1168,7 @@ appearance
 .. warning::
   The `map` appearance for selects is available in Web Forms (added in Central v2025.3) but not in Enketo. See more about the available features of **select one from map** in Web Forms and best practices :ref:`here <web-forms-select-from-map>`.
 
-  The different :ref:`basemap sources <mapping-settings>` currently have different performance. If Collect feels slow when creating the map or when selecting a choice, please describe what you are experiencing `on the forum <https://forum.getodk.org/c/support/6>`_. If you have many choices to include on a map, try a provider other than Google or Mapbox. You can also use a :ref:`choice filter <cascading-selects>` to reduce the number of choices that get mapped.
+  The different :ref:`basemap sources <mapping-settings>` currently have different performance. If Collect feels slow when creating the map or when selecting a choice, please describe what you are experiencing `on the forum <https://forum.getodk.org/c/support/6>`_. You can  use a :ref:`choice filter <cascading-selects>` to reduce the number of choices that get mapped.
 
 .. note::
     The only appearance that can combine with selection from map is `quick`.
@@ -1189,23 +1183,6 @@ If the choices that you want users to select from are locations, you can display
   :alt: Single select from map as displayed in the ODK Collect app on an Android phone. The question text is "Select a building to inspect" and it is displayed in a small top bar. Below that is a map with several buildings outlined in red with red shading. At the bottom of the screen, there is information about the selected building. Its label is "Elephant Care Center". Below the properties, there is a rounded button with a save icon and the text "Select."
   :class: device-screen-vertical
 
-.. _specify-select-geometry:
-
-Specifying geometry for choices
-'''''''''''''''''''''''''''''''''''
-You can specify geometry for all choice sources:
-
-#. If you specify choices in the form using the **choices** tab, add a ``geometry`` column
-#. If you use an :ref:`external CSV file <selects-from-csv>` and use ``select_one_from_file``, add a ``geometry`` column
-#. Use a :ref:`GeoJSON attachment <selects-from-geojson>` and ``select_one_from_file``
-
-For the first two options, geometry values must be specified in :ref:`the ODK format <location-widgets>`. This makes it straightforward to use data previously collected by ODK as choices displayed on a map. You must make sure that the column containing the geometry to use for each choice has the name ``geometry``.
-
-Learn more about using GeoJSON attachments and see an example :ref:`here <selects-from-geojson>`.
-
-.. note::
-    Choices with invalid geometries are silently ignored. There will be no message displayed to a user when it happens.
-
 Select one from map behavior
 '''''''''''''''''''''''''''''
 
@@ -1213,7 +1190,10 @@ When the map is first opened, it centers on the device's current location. There
 
 Point choices are represented by map markers (:fa:`map-marker`). Tapping on a marker increases its size.
 
-Line and polygon choices are represented by red lines. The inside of polygons is shaded red and can be tapped to select the polygon.
+Line and polygon choices are represented by teal lines. The inside of polygons is shaded teal and can be tapped to select the polygon.
+
+.. note::
+    Choices with invalid geometries are silently ignored. There will be no message displayed to a user when it happens.
 
 When a choice is selected, its properties are displayed at the bottom of the screen. Those properties are from:
 
@@ -1226,6 +1206,9 @@ Choice properties
 ''''''''''''''''''
 
 All of a choice's properties including ``geometry`` can be used in the rest of the form (see :ref:`referencing values in datasets <referencing-values-in-datasets>`) including in :ref:`choice filter <cascading-selects>` expressions. Even if the choices are specified from a GeoJSON file, the ``geometry`` property is made available to the form in :ref:`the ODK format <location-widgets>`, NOT as GeoJSON.
+
+Style properties
+''''''''''''''''
 
 There are special properties that can be used to style different choices:
 
