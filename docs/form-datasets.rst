@@ -243,8 +243,8 @@ To get the total population across states with a population above a certain thre
 
 .. _form-datasets-using-geometry:
 
-Using geographical features from datasets
-------------------------------------------
+Using geometry from datasets
+-----------------------------
 
 .. _specify-select-geometry:
 
@@ -264,14 +264,19 @@ For the first three options, geometry values must be specified in :ref:`the ODK 
 
 To use a GeoJSON file, see the :ref:`GeoJSON section <selects-from-geojson>`.
 
+All data source types support :ref:`style properties <select-from-map-style>`.
+
 .. _geo-questions-reference-geometry:
 
 Reference geometry
 ~~~~~~~~~~~~~~~~~~~
 
-Any internal or external dataset can be used as reference for the :ref:`geoshape <geoshape-widget>`, :ref:`geotrace <geotrace-widget>`, :ref:`geopoint with map display <geopoint-maps>` or :ref:`geopoint with user placement <placement-map-widget>` question types. This is useful when you want to provide previously-captured data as context for new geometry to capture.
+Any dataset or repeat can be used to provide reference geometry for the :ref:`geoshape <geoshape-widget>`, :ref:`geotrace <geotrace-widget>`, :ref:`geopoint with map display <geopoint-maps>` or :ref:`geopoint with user placement <placement-map-widget>` question types. This is useful to provide previously-captured data as context for collecting new geometry.
 
-To specify a dataset to use as reference geometry for a geo question, use the ``parameters`` column of your XLSForm for that question. Add `reference-geometry=` followed by the name of your dataset without an extension. The dataset must have ``geometry`` defined as described for :ref:`select one from map <specify-select-geometry>`.
+.. image:: /img/form-datasets/reference-geometry.png
+  :class: device-screen-vertical
+
+To specify a dataset to use as reference geometry for a geo question, use the ``parameters`` column of your XLSForm for that question. Add ``reference-geometry=`` followed by the name of your dataset without an extension. For datasets, each item to display must have a geometry value in the ODK format, see the :ref:`select one from map <specify-select-geometry>` section above for details.
 
 For example, if a data collector needs to capture the boundaries of agricultural plots, you can save those plots in an Entity List and display existing plots on a map to help guide the collection of the new plots.
 
@@ -287,11 +292,25 @@ For example, if a data collector needs to capture the boundaries of agricultural
 
   plots,${plot_name}
 
-Reference geometry is displayed in purple and shapes are shaded in. Reference geometry can include a mix of points, lines and shapes that are all displayed together.
+By default, reference geometry is displayed in purple without vertex markers and shapes are shaded in. Reference geometry also respects :ref:`style properties <select-from-map-style>`. A dataset used as reference geometry can include a mix of points, lines and shapes that are all displayed together. Reference geometry cannot be interacted with.
+
+Like with selects, you can specify a ``choice_filter`` expression to limit the rows used as reference geometry. For example, you could filter by county, assigned enumerator, or priority level.
 
 Reference geometry from repeats
 """"""""""""""""""""""""""""""""
 
-Reference geometry can also be specified from a repeat which you can think of as a dataset that can change dynamically. For a repeat to be used as a source for reference geometry, each repeat instance must have a ``geometry`` field directly inside it. If the ``geometry`` field is missing, that repeat instance will be skipped.
+Reference geometry can also come from a repeat. You can think of a repeat as a dataset that changes dynamically as repeat instances are added or updated.
 
-For example, if a data collector needs to capture information on several geographical 
+To specify a repeat as a source for reference geometry, use the ``parameters`` column of the XLSForm for the question you want to provide reference for. Add ``reference-geometry=`` followed by a `${}` reference to your repeat. Each repeat instance with a ``geometry`` field in it will be mapped and others will be silently ignored.
+
+.. csv-table:: survey
+  :header: type,name,label,parameters
+
+  begin_repeat,plot,Plot,
+  text,plot_name,Plot name,
+  geoshape,geometry,Select new plot,reference-geometry=${plot}
+  end_repeat
+
+Like when using Entity Lists or choice lists as reference, you can specify a ``choice_filter`` expression based on the fields in the repeat.
+
+See a working example of using reference geometry with Entity Lists and repeats in `this XLSForm <https://docs.google.com/spreadsheets/d/1LOWyM0D9AxrTSb7vmGhsp2DgbwqTqpF_eLQvXviouMM/edit?gid=1068911091#gid=1068911091>`_.

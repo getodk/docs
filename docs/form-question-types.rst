@@ -1168,7 +1168,7 @@ appearance
 .. warning::
   The `map` appearance for selects is available in Web Forms (added in Central v2025.3) but not in Enketo. See more about the available features of **select one from map** in Web Forms and best practices :ref:`here <web-forms-select-from-map>`.
 
-  The different :ref:`basemap sources <mapping-settings>` currently have different performance. If Collect feels slow when creating the map or when selecting a choice, please describe what you are experiencing `on the forum <https://forum.getodk.org/c/support/6>`_. You can  use a :ref:`choice filter <cascading-selects>` to reduce the number of choices that get mapped.
+ If Collect feels slow when creating the map or when selecting a choice, please describe what you are experiencing `on the forum <https://forum.getodk.org/c/support/6>`_. You can  use a :ref:`choice filter <cascading-selects>` to reduce the number of choices that get mapped.
 
 .. note::
     The only appearance that can combine with selection from map is `quick`.
@@ -1206,6 +1206,9 @@ Choice properties
 ''''''''''''''''''
 
 All of a choice's properties including ``geometry`` can be used in the rest of the form (see :ref:`referencing values in datasets <referencing-values-in-datasets>`) including in :ref:`choice filter <cascading-selects>` expressions. Even if the choices are specified from a GeoJSON file, the ``geometry`` property is made available to the form in :ref:`the ODK format <location-widgets>`, NOT as GeoJSON.
+
+
+.. _select-from-map-style:
 
 Style properties
 ''''''''''''''''
@@ -1550,6 +1553,10 @@ type
 appearance
   ``maps``
 
+.. seealso:: 
+  
+  You can display other geometry on the map as :ref:`reference geometry <geo-questions-reference-geometry>`.
+
 The default :ref:`geopoint-widget` does not display a map to the user. When the appearance attribute is ``maps``, the widget displays a map to help the user get oriented and confirm that the selected point is correct and sufficiently accurate.
 
 When the device's geolocation is available, it is displayed on the map by a blue cross. A blue shaded circle around the cross represents the accuracy radius of the geolocation. The "add marker" button at the top right of the screen can be tapped to add a point at the location indicated by the middle of the blue cross. The selected point is represented by a small circle with a red outline.
@@ -1574,6 +1581,10 @@ type
   ``geopoint``
 appearance
   ``placement-map``
+
+.. seealso:: 
+  
+  You can display other geometry on the map as :ref:`reference geometry <geo-questions-reference-geometry>`.
 
 The default :ref:`geopoint-widget` does not allow the user to place the point anywhere other than the device's current geolocation.
 
@@ -1603,6 +1614,10 @@ type
   ``geotrace``
 appearance
   *none*
+
+.. seealso:: 
+  
+  You can display other geometry on the map as :ref:`reference geometry <geo-questions-reference-geometry>`.
 
 A series of points. Identical to :ref:`geoshape <geoshape-widget>` except that the first and last point may be different and at least 2 points are required.
 
@@ -1652,6 +1667,10 @@ type
   ``geoshape``
 appearance
   *none*
+
+.. seealso:: 
+  
+  You can display other geometry on the map as :ref:`reference geometry <geo-questions-reference-geometry>`.
 
 A series of points that form a closed polygon. Identical to :ref:`geotrace <geotrace-widget>` except that the first and last point are always the same and at least 3 points are required.
 
