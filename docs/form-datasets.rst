@@ -85,8 +85,6 @@ If you would like to use other properties as values or labels, you can specify t
 Building selects from GeoJSON files
 ------------------------------------
 
-*New in* `ODK Collect v2022.2.0 <https://github.com/getodk/collect/releases/tag/v2022.2.0>`_, `ODK Central v1.4.0 <https://forum.getodk.org/t/odk-central-v1-4/36886>`_; Polygons and lines in Collect v2023.1.0; Web Forms support in Central v2025.3
-
 GeoJSON files that follow `the GeoJSON spec <https://datatracker.ietf.org/doc/html/rfc7946>`_ can be used to populate select question choices using ``select_one_from_file``. Selects from GeoJSON may be styled as maps using the :ref:`map appearance <select-from-map>` but can also use any other :ref:`select appearance <select-appearances>`. In order to be used by a form, a GeoJSON file:
 
 - must have a ``.geojson`` extension (NOT ``.json``)
@@ -152,12 +150,32 @@ XML files used for selects must have the following structure and can have any nu
 
 The ``item`` blocks are analogous to rows in the CSV representation. Each ``item`` must have at least ``name`` and ``label`` nested nodes and can have any number of additional nodes. These nodes correspond to columns in the CSV representation.
 
+.. _form-datasets-attaching-csv:
+
+Attaching datasets without a select
+-----------------------------------
+
+If you want to use a CSV or Entity List directly without first going through a selection step, you can attach that CSV or Entity List with ``csv-external``:
+
+.. csv-table:: survey
+  :header: type,name,label,calculation
+
+  csv-external,people
+  barcode,person_id,Scan person's ID card
+  calculate,person_fname,,instance("people")/root/item[code=${person_id}]/fname
+
+The example form above attaches a CSV with filename ``people.csv`` or an :doc:`Entity List <central-entities>` named ``people``. It then prompts the user to scan a barcode from an ID card and uses the value from the ID card to look up the corresponding person's first name. If attaching an actual CSV file, it must have columns named ``fname`` and ``code``. Similarly, if using an entity list, that entity list must have properties named ``fname`` and ``code``.
+
+.. note::
+
+  To attach an XML file named ``people.xml`` instead, replace ``csv-external`` above with ``xml-external``.
+
 .. _referencing-values-in-datasets:
 
 Looking up values in datasets
----------------------------------
+------------------------------
 
-You can look up values from internal or external datasets. You can look up values and save them for analysis or use in other expressions by using a ``calculate``. You can also use lookup expressions directly in constraints and other expressions or use them directly in ``label``\s to display them to users.
+You can look up values from internal or external datasets. You can look up values and save them for analysis or use in other expressions by using a ``calculate``. You can also use lookup expressions directly in constraints and other expressions or in ``label``\s to display them to users.
 
 In the example below, a user is first prompted to select a participant from the list of people found in an external file. Then, the selected participant's ``name`` is used to look up the ``place`` that participant is assigned to. A second dataset is attached from a ``places.csv`` file using :ref:`csv-external <form-datasets-attaching-csv>`. The assigned place is looked up by ``name`` and its ``label`` is displayed directly in a **note**.
 
@@ -223,22 +241,76 @@ To get the total population across states with a population above a certain thre
 
 ``sum(instance("states")/root/item[population > ${pop_threshold}]/population)``
 
-.. _form-datasets-attaching-csv:
+.. _form-datasets-using-geometry:
 
-Attaching CSVs for lookups without a select
----------------------------------------------
+Using geometry from datasets
+-----------------------------
 
-If you want to look up a value in a CSV directly without first going through a selection step, you can attach that CSV with ``csv-external``:
+.. _specify-select-geometry:
+
+Select one from map
+~~~~~~~~~~~~~~~~~~~~
+
+Any internal or external dataset can be used as a source for the :ref:`select one from map <select-from-map>` question type.
+
+You can specify geometry for all choice sources:
+
+- If you specify choices in the form using the **choices** tab, add a ``geometry`` column
+- If you use an :ref:`external CSV file <selects-from-csv>` and use ``select_one_from_file``, add a ``geometry`` column
+- If you use an :doc:`Entity List <entities-intro>` and use ``select_one_from_file``, add a ``geometry`` property
+- Use a :ref:`GeoJSON attachment <selects-from-geojson>` and ``select_one_from_file``
+
+For all options other than GeoJSON, geometry values must be specified in :ref:`the ODK format <location-widgets>`. This makes it straightforward to use data previously collected by ODK as choices displayed on a map. You must make sure that the column containing the geometry to use for each choice has the name ``geometry``.
+
+For a GeoJSON attachment, see :ref:`uilding selects from GeoJSON files <selects-from-geojson>`.
+
+All data source types support :ref:`style properties <select-from-map-style>`.
+
+.. _geo-questions-reference-geometry:
+
+Reference geometry
+~~~~~~~~~~~~~~~~~~~
+
+Any dataset or repeat can be used to provide reference geometry for the :ref:`geoshape <geoshape-widget>`, :ref:`geotrace <geotrace-widget>`, :ref:`geopoint with map display <geopoint-maps>` or :ref:`geopoint with user placement <placement-map-widget>` question types. This is useful to provide previously-captured data as context for collecting new geometry.
+
+.. image:: /img/form-datasets/reference-geometry.png
+  :class: device-screen-vertical
+
+To specify a dataset to use as reference geometry for a geo question, use the ``parameters`` column of your XLSForm for that question. Add ``reference-geometry=`` followed by the name of your dataset without an extension. For datasets, each item to display must have a geometry value in the ODK format, see the :ref:`select one from map <specify-select-geometry>` section above for details.
+
+For example, if a data collector needs to capture the boundaries of agricultural plots, you can save those plots in an Entity List and display existing plots on a map to help guide the collection of the new plots.
 
 .. csv-table:: survey
-  :header: type,name,label,calculation
+  :header: type,name,label,save_to,parameters
 
-  csv-external,people
-  barcode,person_id,Scan person's ID card
-  calculate,person_fname,,instance("people")/root/item[code=${person_id}]/fname
+  csv-external,plots
+  text,plot_name,Plot name,,
+  geoshape,outline,Select new plot,geometry,reference-geometry=plots
 
-The example form above attaches a CSV with filename ``people.csv`` or an :doc:`entity list <central-entities>` named ``people``. It then prompts the user to scan a barcode from an ID card and uses the value from the ID card to look up the corresponding person's first name. If attaching an actual CSV file, it must have columns named ``fname`` and ``code``. Similarly, if using an entity list, that entity list must have properties named ``fname`` and ``code``.
+.. csv-table:: entities
+  :header: list_name,label
 
-.. note::
+  plots,${plot_name}
 
-  To attach an XML file named ``people.xml`` instead, replace ``csv-external`` above with ``xml-external``.
+By default, reference geometry is displayed in purple without vertex markers and shapes are shaded in. You can customize how each feature is displayed using :ref:`style properties <select-from-map-style>`. A dataset used as reference geometry can include a mix of points, lines and shapes that are all displayed together. Reference geometry cannot be interacted with.
+
+You can specify a :ref:`choice filter <cascading-selects>` expression to limit the rows used as reference geometry. For example, you could filter by county, assigned enumerator, or priority level.
+
+Reference geometry from repeats
+""""""""""""""""""""""""""""""""
+
+Reference geometry can also come from a repeat. You can think of a repeat as a dataset that changes dynamically as repeat instances are added or updated.
+
+To specify a repeat as a source for reference geometry, use the ``parameters`` column of the XLSForm for the question you want to provide reference for. Add ``reference-geometry=`` followed by a `${}` reference to your repeat. Each repeat instance with a ``geometry`` field in it will be mapped and others will be silently ignored.
+
+.. csv-table:: survey
+  :header: type,name,label,parameters
+
+  begin_repeat,plot,Plot,
+  text,plot_name,Plot name,
+  geoshape,geometry,Select new plot,reference-geometry=${plot}
+  end_repeat
+
+Like when using Entity Lists or choice lists as reference, you can specify a ``choice_filter`` expression based on the fields in the repeat.
+
+See a working example of using reference geometry with Entity Lists and repeats in `this XLSForm <https://docs.google.com/spreadsheets/d/1LOWyM0D9AxrTSb7vmGhsp2DgbwqTqpF_eLQvXviouMM/edit?gid=1068911091#gid=1068911091>`_.
