@@ -262,7 +262,7 @@ You can specify geometry for all choice sources:
 
 For all options other than GeoJSON, geometry values must be specified in :ref:`the ODK format <location-widgets>`. This makes it straightforward to use data previously collected by ODK as choices displayed on a map. You must make sure that the column containing the geometry to use for each choice has the name ``geometry``.
 
-For a GeoJSON attachment, see :ref:`uilding selects from GeoJSON files <selects-from-geojson>`.
+For a GeoJSON attachment, see :ref:`building selects from GeoJSON files <selects-from-geojson>`.
 
 All data source types support :ref:`style properties <select-from-map-style>`.
 

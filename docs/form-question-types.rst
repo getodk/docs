@@ -1193,7 +1193,7 @@ Point choices are represented by map markers (:fa:`map-marker`). Tapping on a ma
 Line and polygon choices are represented by teal lines. Polygons are filled with translucent teal and can be selected by tapping anywhere inside them.
 
 .. note::
-    Choices with invalid geometries are silently ignored. There will be no message displayed to a user when it happens.
+    Choices with invalid geometries are ignored. There will be no message displayed to a user when it happens.
 
 When a choice is selected, its properties are displayed at the bottom of the screen. Those properties are from:
 
