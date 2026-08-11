@@ -255,14 +255,14 @@ Any internal or external dataset can be used as a source for the :ref:`select on
 
 You can specify geometry for all choice sources:
 
-#. If you specify choices in the form using the **choices** tab, add a ``geometry`` column
-#. If you use an :ref:`external CSV file <selects-from-csv>` and use ``select_one_from_file``, add a ``geometry`` column
-#. If you use an :doc:`Entity List <entities-intro>` and use ``select_one_from_file``, add a ``geometry`` property
-#. Use a :ref:`GeoJSON attachment <selects-from-geojson>` and ``select_one_from_file``
+- If you specify choices in the form using the **choices** tab, add a ``geometry`` column
+- If you use an :ref:`external CSV file <selects-from-csv>` and use ``select_one_from_file``, add a ``geometry`` column
+- If you use an :doc:`Entity List <entities-intro>` and use ``select_one_from_file``, add a ``geometry`` property
+- Use a :ref:`GeoJSON attachment <selects-from-geojson>` and ``select_one_from_file``
 
-For the first three options, geometry values must be specified in :ref:`the ODK format <location-widgets>`. This makes it straightforward to use data previously collected by ODK as choices displayed on a map. You must make sure that the column containing the geometry to use for each choice has the name ``geometry``.
+For all options other than GeoJSON, geometry values must be specified in :ref:`the ODK format <location-widgets>`. This makes it straightforward to use data previously collected by ODK as choices displayed on a map. You must make sure that the column containing the geometry to use for each choice has the name ``geometry``.
 
-To use a GeoJSON file, see the :ref:`GeoJSON section <selects-from-geojson>`.
+For a GeoJSON attachment, see :ref:`uilding selects from GeoJSON files <selects-from-geojson>`.
 
 All data source types support :ref:`style properties <select-from-map-style>`.
 
@@ -292,9 +292,9 @@ For example, if a data collector needs to capture the boundaries of agricultural
 
   plots,${plot_name}
 
-By default, reference geometry is displayed in purple without vertex markers and shapes are shaded in. Reference geometry also respects :ref:`style properties <select-from-map-style>`. A dataset used as reference geometry can include a mix of points, lines and shapes that are all displayed together. Reference geometry cannot be interacted with.
+By default, reference geometry is displayed in purple without vertex markers and shapes are shaded in. You can customize how each feature is displayed using :ref:`style properties <select-from-map-style>`. A dataset used as reference geometry can include a mix of points, lines and shapes that are all displayed together. Reference geometry cannot be interacted with.
 
-Like with selects, you can specify a ``choice_filter`` expression to limit the rows used as reference geometry. For example, you could filter by county, assigned enumerator, or priority level.
+You can specify a :ref:`choice filter <cascading-selects>` expression to limit the rows used as reference geometry. For example, you could filter by county, assigned enumerator, or priority level.
 
 Reference geometry from repeats
 """"""""""""""""""""""""""""""""

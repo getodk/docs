@@ -1168,7 +1168,7 @@ appearance
 .. warning::
   The `map` appearance for selects is available in Web Forms (added in Central v2025.3) but not in Enketo. See more about the available features of **select one from map** in Web Forms and best practices :ref:`here <web-forms-select-from-map>`.
 
- If Collect feels slow when creating the map or when selecting a choice, please describe what you are experiencing `on the forum <https://forum.getodk.org/c/support/6>`_. You can  use a :ref:`choice filter <cascading-selects>` to reduce the number of choices that get mapped.
+ If Collect feels slow when creating the map or when selecting a choice, please describe what you are experiencing `on the forum <https://forum.getodk.org/c/support/6>`_. You can use a :ref:`choice filter <cascading-selects>` to reduce the number of choices that get mapped.
 
 .. note::
     The only appearance that can combine with selection from map is `quick`.
@@ -1190,7 +1190,7 @@ When the map is first opened, it centers on the device's current location. There
 
 Point choices are represented by map markers (:fa:`map-marker`). Tapping on a marker increases its size.
 
-Line and polygon choices are represented by teal lines. The inside of polygons is shaded teal and can be tapped to select the polygon.
+Line and polygon choices are represented by teal lines. Polygons are filled with translucent teal and can be selected by tapping anywhere inside them.
 
 .. note::
     Choices with invalid geometries are silently ignored. There will be no message displayed to a user when it happens.
@@ -1555,7 +1555,7 @@ appearance
 
 .. seealso:: 
   
-  You can display other geometry on the map as :ref:`reference geometry <geo-questions-reference-geometry>`.
+  You can display previously collected geospatial data on the map as :ref:`reference geometry <geo-questions-reference-geometry>`.
 
 The default :ref:`geopoint-widget` does not display a map to the user. When the appearance attribute is ``maps``, the widget displays a map to help the user get oriented and confirm that the selected point is correct and sufficiently accurate.
 
@@ -1584,7 +1584,7 @@ appearance
 
 .. seealso:: 
   
-  You can display other geometry on the map as :ref:`reference geometry <geo-questions-reference-geometry>`.
+  You can display previously collected geospatial data on the map as :ref:`reference geometry <geo-questions-reference-geometry>`.
 
 The default :ref:`geopoint-widget` does not allow the user to place the point anywhere other than the device's current geolocation.
 
@@ -1617,7 +1617,7 @@ appearance
 
 .. seealso:: 
   
-  You can display other geometry on the map as :ref:`reference geometry <geo-questions-reference-geometry>`.
+ You can display previously collected geospatial data on the map as :ref:`reference geometry <geo-questions-reference-geometry>`.
 
 A series of points. Identical to :ref:`geoshape <geoshape-widget>` except that the first and last point may be different and at least 2 points are required.
 
@@ -1670,7 +1670,7 @@ appearance
 
 .. seealso:: 
   
-  You can display other geometry on the map as :ref:`reference geometry <geo-questions-reference-geometry>`.
+  You can display previously collected geospatial data on the map as :ref:`reference geometry <geo-questions-reference-geometry>`.
 
 A series of points that form a closed polygon. Identical to :ref:`geotrace <geotrace-widget>` except that the first and last point are always the same and at least 3 points are required.
 
