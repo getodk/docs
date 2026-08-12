@@ -27,7 +27,7 @@ Concepts
 What are Entities?
 ------------------
 
-In ODK, an **Entity** can be thought of as a “thing.” If your project involves items that need to be shared across forms and may change over time, you can represent them as Entities. Entities can represent real-world things such as trees, people, or cities. They can also represent more abstract concepts, such as tree visits, malaria cases, or city ratings.
+In ODK, an **Entity** can be thought of as a "thing." If your project involves items that need to be shared across forms and may change over time, you can represent them as Entities. Entities can represent real-world things such as trees, people, or cities. They can also represent more abstract concepts, such as tree visits, malaria cases, or city ratings.
 
 Entities are organized in lists that group together Entities of the same type. You can think of Entity Lists as spreadsheets or databases that are shared across forms. Forms can create, read, and update Entities. You can also think of Entities as the nouns (trees) and the forms as the verbs (Register a tree).
 
