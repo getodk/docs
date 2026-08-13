@@ -196,6 +196,8 @@ Values from the last saved record
 
   We only recommend using last saved values as defaults. References to the last saved record could be used as part of any expression wherever expressions are allowed but this may lead to unexpected results on submission edit when the last saved record is likely to have changed.
 
+  When this feature is used the full content of the last submitted form will be stored on the submitter's device indefinitely, therefore we do not recommend using this feature for forms that could contain sensitive information.
+
   The last-saved feature does not work with encrypted forms.
 
   Support for last-saved was added in Collect v1.21.0 and Central v1.3.0. Using older versions or encrypted forms will have unpredictable results.
