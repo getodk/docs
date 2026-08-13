@@ -80,7 +80,9 @@ You cannot yet edit any of the details of a Public Link.
 Default Parameters
 ^^^^^^^^^^^^^^^^^^
 
-You can add parameters to the public link URL to set values when the form is opened. This can be useful to fill the form with data that's available on the page where the link is clicked. Parameters must be in the format :code:`d[{XPath}]={value}`, where XPath is the ref of the element you want to set, and value is the string value. For example, :code:`d[/root/name]=odk` will set the string "odk" into the name element. To reduce the length of the URL omit the primary instance name and leading slash, for example:  :code:`d[name]=odk`. Set values on multiple elements by including more parameters separated by an ampersand, :code:`d[name]=odk&d[engine]=webforms`.
+Parameters use the format :code:`d[{field}]={value}`, where ``field`` identifies the form field you want to set and ``value`` is the text to put in it. For example, :code:`d[name]=odk` sets the ``name`` field to ``odk``. For a field inside groups or repeats, include the names of the groups or repeats in the field identifier, separated by slashes. For example: :code:`d[person/name]=Maria`.
+
+To set multiple fields, separate parameters with an ampersand (``&``), for example: :code:`?d[name]=odk&d[engine]=webforms`.
 
 Note that the parameters must be URL encoded to be parsed correctly.
 
