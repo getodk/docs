@@ -534,8 +534,8 @@ Using S3-compatible Storage
 
 By default, Central stores form and submission attachments in its main database, but it can be configured to move these to an external object store. 
 
-**Important**: If your S3-compatible storage is unavailable, Central can continue accepting submissions, but devices may not be able to download new forms or attachments stored there.
-
+- If S3-compatible storage goes down, Central will still accept submissions, but devices may not receive updates to forms with attachments, and integrations or dashboards that use attachments may fail.
+- If you opt into S3-compatible storage, you must design a backup and restore strategy for that storage.
 If you already have or plan to collect many files, storing them outside the main database can reduce database load and cost. It can also make it more practical to backup and restore the database.
 
 Consider the following to help you decide whether S3-compatible storage is a good fit:
