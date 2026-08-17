@@ -31,7 +31,6 @@ We've extensively tested ODK Web Forms and consider it ready for production use 
 
 For users who have been using web forms in Central prior to v2026.2.0, here is functionality in Enketo that's coming to Web Forms, in rough order of priority:
 
-* One question per page
 * Query parameter defaults
 * Jump to first error
 * Last-saved
@@ -208,3 +207,18 @@ You can style text such as notes, labels, hints, options, and validation message
 
 .. image:: /img/web-forms/form-styling.*
   :alt: Styling in Web Forms
+
+.. _web-forms-pages:
+
+Pages
+------
+
+.. versionadded:: Web Forms v1.1
+
+To use pages in a form, set the ``style`` to ``pages`` in the ``settings`` sheet, as described in `the XLSForm documentation <https://xlsform.org/en/#multiple-webpage-forms>`_.
+
+By default, each question is shown on its own page. To show several questions together on one page, put them in a group with the :ref:`field-list appearance <field-list>`.
+
+Unlike Collect, a ``field-list`` group can also contain a repeat and it is shown on the same page, along with the other questions. You can also apply ``field-list`` to a repeat itself. In that case, each repeat instance becomes a page.
+
+Use the :guilabel:`Back` and :guilabel:`Next` buttons to move between pages. Pages where no question is :ref:`relevant <relevants>` are skipped.

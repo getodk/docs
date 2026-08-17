@@ -2897,7 +2897,7 @@ The ``field-list`` appearance attribute, applied to a group of widgets, displays
 
 .. warning::
 
-  Displaying :ref:`repeats` on the same screen (inside a ``field-list`` group) is not supported.
+  In Collect, displaying :ref:`repeats` on the same screen (inside a ``field-list`` group) is not supported. :doc:`Web Forms <web-forms-intro>` supports it: the whole group, including the repeat, is shown on one screen.
 
 .. seealso::
 
