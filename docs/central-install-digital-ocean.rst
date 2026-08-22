@@ -142,7 +142,7 @@ Getting and Setting Up Central
 
    .. code-block:: bash
 
-     $ git submodule update -i
+     $ git submodule update --init
 
 #. Update settings. First, copy the settings template file so you can edit it:
 
