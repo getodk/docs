@@ -190,7 +190,7 @@ Starting up Central
 
    .. code-block:: bash
 
-     $ docker compose up -d
+     $ docker compose up --detach
 
 #. See whether ODK has finished loading.
 
@@ -360,7 +360,7 @@ During upgrades or exports, some versions of Central may use more memory than th
 
    .. code-block:: bash
 
-     $ docker compose build service && docker compose stop service && docker compose up -d service
+     $ docker compose build service && docker compose stop service && docker compose up --detach service
 
 If an upgrade was the cause of the memory error, you may revert these changes after the upgrade and build and restart the service container.
 
@@ -403,7 +403,7 @@ Central uses Let's Encrypt SSL certificates to secure all communication. To use 
 
    .. code-block:: bash
 
-     $ docker compose build nginx && docker compose stop nginx && docker compose up -d nginx
+     $ docker compose build nginx && docker compose stop nginx && docker compose up --detach nginx
 
 .. _central-install-digital-ocean-custom-mail:
 
@@ -447,7 +447,7 @@ Central comes with a mail server to send password reset emails. To use a custom 
 
    .. code-block:: bash
 
-     $ docker compose build service && docker compose stop service && docker compose up -d service
+     $ docker compose build service && docker compose stop service && docker compose up --detach service
 
 .. _central-install-digital-ocean-custom-db:
 
@@ -525,7 +525,7 @@ Creating and using a custom PostgreSQL database server
 
    .. code-block:: bash
 
-     $ docker compose build service && docker compose stop service && docker compose up -d service
+     $ docker compose build service && docker compose stop service && docker compose up --detach service
 
 .. _central-install-digital-ocean-s3:
 
@@ -605,7 +605,7 @@ To use S3-compatible storage for all files saved in Central, follow these steps:
    .. code-block:: bash
 
      $ docker compose stop
-     $ docker compose up -d
+     $ docker compose up --detach
 
 #. Ensure all the required PostgreSQL extensions are installed.
 
@@ -710,7 +710,7 @@ To enable SSO in Central, you will first need to configure your identity provide
 
    .. code-block:: bash
 
-     $ docker compose build && docker compose stop && docker compose up -d
+     $ docker compose build && docker compose stop && docker compose up --detach
 
 Two Accounts: Central and the Identity Provider
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -758,7 +758,7 @@ To disable SSO:
 
    .. code-block:: bash
 
-     $ docker compose build && docker compose stop && docker compose up -d
+     $ docker compose build && docker compose stop && docker compose up --detach
 
 
 .. _central-configure-session-length:
@@ -786,7 +786,7 @@ By default, Central :doc:`Web User <central-users>` sessions expire after 24 hou
 
    .. code-block:: bash
 
-     $ docker compose build && docker compose stop && docker compose up -d
+     $ docker compose build && docker compose stop && docker compose up --detach
 
 
 .. _central-install-digital-ocean-upstream-ssl:
@@ -839,7 +839,7 @@ You may wish to run Central behind a reverse proxy or load balancer. In order to
 
    .. code-block:: bash
 
-     $ docker compose build && docker compose stop && docker compose up -d
+     $ docker compose build && docker compose stop && docker compose up --detach
 
 .. _central-install-digital-ocean-dkim:
 
@@ -907,7 +907,7 @@ DKIM is a protocol which is used to help verify mail server identities. Without 
 
    .. code-block:: bash
 
-     $ docker compose build mail && docker compose stop mail && docker compose up -d mail
+     $ docker compose build mail && docker compose stop mail && docker compose up --detach mail
 
 .. _central-install-digital-ocean-enketo:
 
@@ -935,7 +935,7 @@ Enketo is the software that Central uses to render forms in a web browser. It is
 
    .. code-block:: bash
 
-     $ docker compose build && docker compose stop && docker compose up -d
+     $ docker compose build && docker compose stop && docker compose up --detach
 
 .. _central-install-digital-ocean-sentry:
 
@@ -988,7 +988,7 @@ This information is only visible to the development team and should never contai
 
    .. code-block:: bash
 
-     $ docker compose build && docker compose stop && docker compose up -d
+     $ docker compose build && docker compose stop && docker compose up --detach
 
 If you wish to use your own Sentry instance to receive your own errors, take these steps:
 
@@ -1014,4 +1014,4 @@ If you wish to use your own Sentry instance to receive your own errors, take the
 
    .. code-block:: bash
 
-     $ docker compose build && docker compose stop && docker compose up -d
+     $ docker compose build && docker compose stop && docker compose up --detach
