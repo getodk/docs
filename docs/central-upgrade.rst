@@ -69,7 +69,7 @@ Upgrade steps
 
 .. code-block:: bash
 
-  $ git submodule update -i
+  $ git submodule update --init
 
 4. **Build** from the latest code you just fetched. The ``pull`` option ensures all Docker images are up-to-date.
 
@@ -506,7 +506,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
    
           .. code-block:: bash
    
-             $ git submodule update -i
+             $ git submodule update --init
    
        #. **Check that you have enough disk space available.** If you are prompted for a password, enter the system superuser password (not a Central password). You will see a message about how much space is required and if you have enough free space to proceed.
    
