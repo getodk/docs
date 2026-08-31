@@ -75,10 +75,12 @@ Once a Link is created, it will appear in the table, along with a web address yo
 
 You cannot yet edit any of the details of a Public Link.
 
-.. _central-submissions-link-default-parameters:
+.. _central-submissions-link-field-values-url:
 
-Default Parameters
-^^^^^^^^^^^^^^^^^^
+Set field values in the URL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Speed up data entry by including known field values as parameters in the form's URL. ODK will automatically fill matching values when the form opens.
 
 Parameters use the format :code:`d[{field}]={value}`, where ``field`` identifies the form field you want to set and ``value`` is the text to put in it. For example, :code:`d[name]=odk` sets the ``name`` field to ``odk``. For a field inside groups or repeats, include the names of the groups or repeats in the field identifier, separated by slashes. For example: :code:`d[person/name]=Maria`.
 
