@@ -583,6 +583,25 @@ To use S3-compatible storage for all files saved in Central, follow these steps:
                 ]
               }
 
+#. Provide a cross-origin resource sharing configuration to allow Central's frontend to fetch resources from the bucket.
+
+   * .. collapse:: Example Amazon S3 configuration (in Permissions for the bucket)
+
+        .. code-block:: json
+
+          [
+              {
+                  "AllowedHeaders": [],
+                  "AllowedMethods": [
+                      "GET"
+                  ],
+                  "AllowedOrigins": [
+                      "https://my.central.server"
+                  ],
+                  "ExposeHeaders": []
+              }
+          ]
+
 #. Edit ``.env`` with your chosen service's URL as well as your bucket name, access key and secret. If your service has a region concept, use a general URL that does not specify region. For example, the URL to use for S3 is `https://s3.amazonaws.com`. You must use an ``https`` URL, not an ``http`` one.
 
    .. code-block:: bash
