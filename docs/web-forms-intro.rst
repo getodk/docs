@@ -36,7 +36,6 @@ For users who have been using web forms in Central prior to v2026.2.0, here is f
 * Jump to first error
 * Last-saved
 * Satellite basemaps
-* Single-submission enforced by browser
 * big-image for labels
 * no-calendar appearance
 * Select from svg

@@ -63,9 +63,7 @@ You'll also need to decide whether to allow multiple submissions per respondent.
 
 .. admonition:: Single submission enforcement
 
-  This is not yet supported by :doc:`ODK Web Forms <web-forms-intro>`.
-
-  In Enketo, the enforcement limiting each respondent to a single response is done with in-browser tracking. This means that a user could submit multiple times using different devices or browsers, or distribute the link beyond the intended group.
+  The enforcement limiting each respondent to a single response is done with in-browser tracking. This means that a user could submit multiple times using different devices or browsers, or distribute the link beyond the intended group.
 
   Also because of this tracking method, respondents will only be able to respond once *per Form*, not once per single-submission Link. Future versions of Central may change how this works. Please leave `feedback on the community forum <https://forum.getodk.org/c/features/9>`_ if this is something you'd like to see.
 
