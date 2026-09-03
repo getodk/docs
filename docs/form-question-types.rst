@@ -1166,7 +1166,7 @@ appearance
  ``map``
 
 .. warning::
-  The `map` appearance for selects is available in Web Forms (added in Central v2025.3) but not in Enketo. See more about the available features of **select one from map** in Web Forms and best practices :ref:`here <web-forms-select-from-map>`.
+  The `map` appearance for selects is available in ODK Web Forms (added in Central v2025.3) but not in Enketo. See more about the available features of **select one from map** in Web Forms and best practices :ref:`here <web-forms-select-from-map>`.
 
  If Collect feels slow when creating the map or when selecting a choice, please describe what you are experiencing `on the forum <https://forum.getodk.org/c/support/6>`_. You can use a :ref:`choice filter <cascading-selects>` to reduce the number of choices that get mapped.
 
