@@ -17,15 +17,11 @@ In general, we recommend using the :doc:`ODK Collect Android application <collec
 * Non-Android mobile devices. You can give enumerators :ref:`Data Collector roles <central-users-web-roles>` in your project or send :ref:`Public Access Links <central-submissions-public-link>` for them to bookmark.
 * Data entry from paper forms. Web forms can be used at a computer with a keyboard to quickly transcribe data collected on paper.
 
-ODK Central bundles `Enketo <https://enketo.org>`_ to enable editing, previewing and submitting forms directly from a web browser.
+ODK Central bundles ODK Web Forms to enable editing, previewing and submitting forms directly from a web browser.
 
 .. note::
 
-  Enketo does not always behave exactly like Collect, or support all the same features. The :doc:`XLSForm template <xlsform>` provides compatibility information and we recommend testing your form as you expect users to interact with it.
-
-.. tip::
-
-  The ODK team is working on ODK Web Forms which will eventually replace Enketo in Central. Starting in Central v2025.1.0, you can :doc:`try it out <web-forms-intro>`!
+  ODK Web Forms does not always behave exactly like Collect, or support all the same features. The :doc:`XLSForm template <xlsform>` provides compatibility information and we recommend testing your form as you expect users to interact with it.
 
 Any authorized Web User may fill out a Form directly from the browser, as will be described in more detail below. Additionally, ODK Central offers Public Access Links which grant anybody in possession of the link the ability to submit to a Form on your server. You can control whether each respondent can submit more than once, and revoke access from any Link at any time. It is also possible to make Enketo web forms :ref:`usable while offline <central-offline-web-forms>`.
 
@@ -34,11 +30,11 @@ Any authorized Web User may fill out a Form directly from the browser, as will b
 Direct Web Browser Submissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Web Users who are Administrators, Project Managers, or Data Collectors can directly fill Forms in the web browser from the Central administration website. This functionality is provided by Enketo, which does not always behave quite the same as Collect, or support the same features.
+Web Users who are Administrators, Project Managers, or Data Collectors can directly fill Forms in the web browser from the Central administration website. This functionality is provided by ODK Web Forms, which does not always behave quite the same as Collect, or support the same features.
 
 .. image:: /img/central-submissions/new.png
 
-Administrators and Project Managers can begin a survey by going to the :guilabel:`Submissions` tab of the Form, and clicking on the :guilabel:`New` button next to the Submissions header. This will open a new tab which will load the Form in Enketo.
+Administrators and Project Managers can begin a survey by going to the :guilabel:`Submissions` tab of the Form, and clicking on the :guilabel:`New` button next to the Submissions header. This will open a new tab which will load the Form in ODK Web Forms.
 
 .. image:: /img/central-submissions/data-collector-form-listing.png
 
