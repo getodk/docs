@@ -208,3 +208,17 @@ You can style text such as notes, labels, hints, options, and validation message
 
 .. image:: /img/web-forms/form-styling.*
   :alt: Styling in Web Forms
+
+Translations
+------------
+
+.. seealso::
+  
+  :doc:`guide-form-language`
+
+Web Forms will display text using the default language specified in the form definition if there is one, reverting to the first supported language the user has configured in their browser. If no browser language matches one of the form languages, then the default language is English. The user may select their preferred language from the language selector dropdown shown at the top of the form, which is then saved and used for all future forms.
+
+.. image:: /img/web-forms/language-selector.*
+  :alt: The language selector
+
+When designing the form you can specify any languages you like, however the languages used for application elements such as buttons and status dialogs are limited to: English, Español, Français, and Bahasa Indonesia. If you would like to contribute additional languages, follow the `ODK Central translation guide <https://docs.google.com/document/d/1C0MS_ytAEBHwbMkdR-QrtDrWAAh_EkJo2QRr4XyIOpk>`_ and if you have questions, post in the `the translation category <https://forum.getodk.org/c/development/translation/14>`_ on the ODK Forum.
