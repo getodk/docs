@@ -43,9 +43,9 @@ Central Encryption Modes
 We offer two methods of form encryption in ODK Central:
 
  - **Self-supplied key encryption** is our term for the :ref:`encryption process <encrypted-forms>` already supported by Aggregate and other ODK ecosystem servers. To use self-supplied key encryption, you must generate and securely store your own cryptographic keys which are used to perform the encryption and decryption of the data. The public key (which cannot decrypt the data) is embedded into the XForm itself and this is how it is distributed with the form to Collect and other mobile clients. Decryption is possible only with the private key, and only through Briefcase.
- - **Project managed encryption** is new to ODK Central. It uses the same existing ODK encryption standard under the covers, and so it is compatible with existing mobile clients like Collect. However, Central will generate and securely store the cryptographic keys *for* you. The keys are themselves protected by a passphrase that you provide. You do not need to use Briefcase: if you can supply the correct passphrase, the Central administration panel will decrypt the data on the fly and provide you with exported data as usual. Without the passphrase, the data cannot be decrypted, and as Central does not store the passphrase, it cannot decrypt the data without your input.
+ - **Project managed encryption** is new to ODK Central. It uses the same existing ODK encryption standard under the covers, and so it is compatible with existing mobile clients like Collect. However, Central will generate and securely store the cryptographic keys *for* you. The keys are themselves protected by an encryption password that you provide. You do not need to use Briefcase: if you can supply the correct encryption password, the Central administration panel will decrypt the data on the fly and provide you with exported data as usual. Without the encryption password, the data cannot be decrypted, and as Central does not store the encryption password, it cannot decrypt the data without your input.
 
-For most cases, **we recommend using project managed encryption**. It is easier to use, as you do not have to learn how to generate a cryptographic key, you do not have to manually configure each form with the correct key, and you do not need to use Briefcase to decrypt the data. It can also be more secure in many cases, because cryptographic keys are files that must be stored digitally and can be difficult to secure properly. Conversely, a passphrase can be memorized, saved in a password manager, or written down and physically secured.
+For most cases, **we recommend using project managed encryption**. It is easier to use, as you do not have to learn how to generate a cryptographic key, you do not have to manually configure each form with the correct key, and you do not need to use Briefcase to decrypt the data. It can also be more secure in many cases, because cryptographic keys are files that must be stored digitally and can be difficult to secure properly. Conversely, an encryption password can be memorized, saved in a password manager, or written down and physically secured.
 
 If you already have familiarity with the encryption in Aggregate, or you cannot at all trust the security of Central itself due to where it has been installed, you may prefer to use self-supplied key encryption.
 
@@ -65,7 +65,7 @@ Using Project Managed Encryption
 
 .. admonition:: For Aggregate users already using encryption
 
-  Central will always respect any encryption settings already present in your Forms. This means that if you have already put ``<submission base64RsaPublicKey="…"/>`` configuration in your Forms, Central managed encryption will ignore those Forms and you will not be able to decrypt Submissions uploaded to those Forms using your managed encryption passphrase. Perhaps this is something you want to have happen, but if not you should remove encryption configuration from your Forms before turning managed encryption on.
+  Central will always respect any encryption settings already present in your Forms. This means that if you have already put ``<submission base64RsaPublicKey="…"/>`` configuration in your Forms, Central managed encryption will ignore those Forms and you will not be able to decrypt Submissions uploaded to those Forms using your managed encryption password. Perhaps this is something you want to have happen, but if not you should remove encryption configuration from your Forms before turning managed encryption on.
 
 Managed encryption can be enabled only at the Project level. To enable managed encryption, first navigate to the Project, then to the :guilabel:`Settings` tab underneath the Project name. On the right side, you will find the section managing your encryption settings.
 
@@ -75,19 +75,19 @@ To enable managed encryption for the whole project, first click on the :guilabel
 
    .. image:: /img/central-encryption/step1.png
 
-Once you review those warnings and press :guilabel:`Next` to proceed, you will be asked for your passphrase, and an optional passphrase hint:
+Once you review those warnings and press :guilabel:`Next` to proceed, you will be asked for your encryption password, and an optional encryption password hint:
 
    .. image:: /img/central-encryption/step2.png
 
-The passphrase you provide is the encryption secret that will be used to secure your data. Anybody who has it will be able to decrypt your submission data. If you lose it, there is no way to recover it, and no way to decrypt your data. Central does not store your passphrase in any way.
+The encryption password you provide is the encryption secret that will be used to secure your data. Anybody who has it will be able to decrypt your submission data. If you lose it, there is no way to recover it, and no way to decrypt your data. Central does not store your encryption password in any way.
 
-The passphrase hint will be displayed whenever the passphrase is needed to decrypt data. It can be a useful way to store information like where in a shared password manager to look for the passphrase. It is optional.
+The encryption password hint will be displayed whenever the encryption password is needed to decrypt data. It can be a useful way to store information like where in a shared password manager to look for the encryption password. It is optional.
 
-Once you have provided a passphrase and ensured that it is correct, press :guilabel:`Next` to proceed. At this time, managed encryption will be turned on for the Project. All Forms within the Project will be updated to include encryption information, and mobile devices will have to fetch these new versions in order to submit successfully to Central.
+Once you have provided an encryption password and ensured that it is correct, press :guilabel:`Next` to proceed. At this time, managed encryption will be turned on for the Project. All Forms within the Project will be updated to include encryption information, and mobile devices will have to fetch these new versions in order to submit successfully to Central.
 
-Once encrypted data has been submitted, you will be asked for your encryption passphrase when you try to download your data:
+Once encrypted data has been submitted, you will be asked for your encryption password when you try to download your data:
 
    .. image:: /img/central-encryption/decrypt.png
 
-Enter your passphrase and press :guilabel:`Download` to download the data. If the passphrase you provide is incorrect, an error message will be displayed after a moment.
+Enter your encryption password and press :guilabel:`Download` to download the data. If the encryption password you provide is incorrect, an error message will be displayed after a moment.
 
