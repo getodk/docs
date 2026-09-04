@@ -49,6 +49,7 @@ AWS
 Azul
 backend
 Backends
+Bahasa
 balancer
 barcode
 Barcode
@@ -156,6 +157,7 @@ Eziama
 fallback
 fave
 Firebase
+Français
 fn
 fname
 formid
