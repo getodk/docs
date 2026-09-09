@@ -131,7 +131,7 @@ Managing Custom Properties
 
 Custom Properties let you control which Entities each App User or Public Link receives. For example, if your organization works across multiple regions, you can create a ``region`` Custom Property, assign each App User a region, and configure an :ref:`Entity List access filter <entity-list-access-filter>` so each user receives only Entities from their region.
 
-Go to the :guilabel:`Custom Properties` tab for a project to see the available Custom Properties and add new ones. Custom Property names follow the same rules as form field names or Entity property names: they can't have spaces in them, must start with a letter, and can only contain letters, numbers, _ or -.
+Go to the :guilabel:`Custom Properties` tab for a project to see the available Custom Properties and add new ones. Custom Property names follow the same rules as form field names or Entity property names: they can't have spaces in them, must start with a letter or underscore, and can only contain letters, numbers, and a limited set of symbols (``_``, ``-``, and ``.``).
 
 Once a Custom Property is defined, assign values to App Users or Public Links. You can then create :ref:`Entity List access filters <entity-list-access-filter>` that compare Entity properties with those Custom Properties to determine which Entities each user receives.
 
