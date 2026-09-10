@@ -131,7 +131,7 @@ Creating an Entity List in the Central Interface
 
 To create an Entity List directly in the Central web interface, first navigate to the Project which should contain this Entity List. Open the :guilabel:`Entity Lists` tab. At the top of this page, you will see a :guilabel:`New` button you can click to create a new Entity List. You will only be asked for its name. Because Entity List names are used as identifiers throughout ODK, there are some restrictions on what you can choose as the name. If Central keeps rejecting your name, it is best to stick with basic letters and numbers.
 
-Once your Entity List is created, you can define the properties it should have so that you can :ref:`upload Entities from CSV <central-entities-upload>` to populate your new list. To add a new property, click on the :guilabel:`New` button on the :guilabel:`Properties` tab.
+Once your Entity List is created, you can manually define new properties from the :guilabel:`Properties` tab, create a form that writes Entities to it, or :ref:`upload Entities from CSV <central-entities-upload>`.
 
 .. _central_entities_creating-definition:
 
@@ -169,38 +169,28 @@ You can also try a follow-up Form Draft by manually creating a CSV of sample Ent
 Importing CSVs into Entity Lists
 ---------------------------------
 
-.. versionadded:: v2024.1
+In a lot of cases you already have data that you would like to load into your Entity List. To do so, navigate to the Entity List you'd like to load your data into, and select the :guilabel:`Entities` tab. At the top of that screen, click on the :guilabel:`Upload Entities` button.
 
-In a lot of cases you already have data sitting around that you would like to load into your Entity List. Starting with Central v2024.1, you can do this directly in Central.
-
-To get started, navigate to the Entity List you'd like to load your data into, and select the :guilabel:`Data` tab. At the top of that screen, click on the :guilabel:`Upload` button.
-
-.. image:: /img/central-entities/entity-upload.png
-
-You should see a screen that looks similar to the above. You can see data tables with column headings matching the properties in your Entity List. If you have any Entities in this Entity List already, you will see a preview of them in the table above.
+You will see a data table with column headings matching the properties in your Entity List. If you have any Entities in this Entity List already, you will see a preview of a few of them.
 
 To add your new data to this Entity List, you will first need to convert it into a ``.csv`` file if it is not already. You can use common spreadsheet applications like Excel, Google Sheets, or OpenOffice Calc to do this.
 
 There are some additional requirements on this data file:
 
-1. The first row (and *only* the first row) is a header row labeling each of your columns.
-2. Your header row must exactly match your Entity List properties.
-3. In addition to your Entity List properties, you must also include a ``label`` column, where you can provide the name for each Entity that is used when displaying the Entity in Central and Collect.
+1. The first row (and *only* the first row) is a header row that corresponds to your Entity properties.
+2. The first row must include a ``label`` column, where you can provide the name for each Entity that is used when displaying the Entity in Central and Collect.
 
 If you're not sure what this should look like, you can download a sample template ``.csv`` file by clicking the :guilabel:`Download a Data Template` button.
 
-.. note::
-  *What if my Entity List doesn't have any properties yet? Can't you just read them from my file?*
+Once you have a ``.csv`` file, you can select it for upload either by dragging it over the box, or by clicking on the :guilabel:`choose a file` button. If there is anything Central is worried about, you will see errors and warnings above your import data. Errors must be fixed before the file can be uploaded, while warnings can be reviewed and bypassed when appropriate.
 
-  Not yet. Please `let us know <https://forum.getodk.org/c/ideas/9>`_ if this is something you would like to see! For now, you will need to add the properties manually. The quickest way to do this is :ref:`in the Entity Properties section <central-entities-creating-direct>` in Central.
+.. image:: /img/central-entities/entity-upload.png
 
-Once you have a ``.csv`` file that meets these requirements, you can select it for upload either by dragging it over the box, or by clicking on the ``choose one`` button. If your file doesn't meet the above requirements, or if Central can't understand how to read the file, you will see an error message appear. Otherwise, you will see a preview of the data that Central found in the file and how it will load into the Entity List.
+Once errors are resloved, you will see a preview of the data that Central found in the file and how it will load into the Entity List.
 
-.. image:: /img/central-entities/entity-upload-preview.png
+Looking at this view, you can match up the columns and ensure your data is loading into the correct places. You can also verify that the number of records in your file matches the number of Entities Central found to import. It is also often a good idea to check at least the last few rows of your import data in the preview table in addition to the beginning. If you don't see any problems looking over the preview, you can feel safe to ignore any warnings. You can continue uploading new versions of your file until you are satisfied with the preview.
 
-Looking at this view, you can match up the columns and ensure your data is loading into the correct places. You can also verify that the number of records in your file matches the number of Entities Central found to import. It is also often a good idea to check at least the last few rows of your import data in the preview table in addition to the beginning. If there is anything Central is worried about, you will see warnings above your import data. Warnings at this point mean that Central is able to import your file, but is not completely sure it has interpreted your file correctly. If you don't see any problems looking over the preview, you can feel safe to ignore the warnings.
-
-Click on the :guilabel:`Append data` button to import your data into your Entity List. Be sure you are ready to proceed: there isn't currently an easy way to undo an import.
+Click on the :guilabel:`Append Entities` button to import your data into your Entity List. Be sure you are ready to proceed: there isn't currently an easy way to undo an import.
 
 .. _central-entities-create-manually:
 
@@ -434,7 +424,7 @@ By default, every Web User, App User and Public Access Link receives every Entit
 You have two options for filtering Entities on the server side:
 
 * Ownership filtering, which limits users to Entities they own.
-* Property filtering, which compares Entity properties with Custom Properties assigned to the requesting App User or Public Access Link.
+* Property filtering, which compares Entity properties with Properties assigned to the requesting App User or Public Access Link.
 
 Web Users with the Administrator, Project Manager, or Project Viewer roles are unaffected by either filter type and continue to receive every Entity.
 
@@ -448,14 +438,14 @@ This access type applies to App Users, Web Users with the Data Collector role, a
 Filter by property
 """"""""""""""""""
 
-Property filters compare the value of an Entity property (such as ``region`` or ``role``) with the value of the corresponding :ref:`Custom Property <central-custom-properties>` on the App User or Public Access Link requesting the Entity List.
+Property filters compare an Entity property with a property on the App User or Public Access Link accessing the Entity List. For example, if an App User has a ``region`` property with the value ``North``, you can configure an Entity List to provide that user only with Entities whose ``region`` property is also ``North``.
 
 .. warning::
   Property filters currently apply only to App Users and Public Access Links. If a property filter is configured, Web Users with the Data Collector role will not receive any Entities.
 
   Currently, you can only filter on user-defined Entity properties, not on system properties like ``label`` or creation date.
 
-By defining Custom Properties and creating filter rules, you can ensure users only receive the Entities relevant to their work. Like :ref:`choice filters <cascading-selects>` in forms, property filters compare values to determine which Entities are available.
+By defining user Properties and creating filter rules, you can ensure users only receive the Entities relevant to their work. Like :ref:`choice filters <cascading-selects>` in forms, property filters compare values to determine which Entities are available.
 
 Common use cases include:
 
@@ -467,9 +457,14 @@ For example, this rule ensures that users only receive Entities whose region pro
 
 .. image:: /img/central-entities/filter-by-property.*
 
-To define a property filter, you need to first create a :ref:`Custom Property <central-custom-properties>` for the project and make sure the Entity List has an Entity property to compare against. Then, select the Entity property and the Custom Property that you want to compare. Currently, only exact equality is supported.
+To define a property filter, you need to first add a user Property to your App Users and Public Access Links. Do this by creating a new user or link or by editing an existing one. You also need to make sure that the Entity List has an Entity property to compare against. Then, select the Entity property and the user Property that you want to compare. Currently, only exact equality is supported.
 
-When filtering by property, every App User and Public Link that can access the Entity List through a Form should have a value for the Custom Property. A blank value for that property will not match any Entities so the user will receive an empty list.
+When filtering by Property, every App User and Public Link that can access the Entity List through a Form should have a value for the Property. A blank value for that Property will not match any Entities so the user will receive an empty list.
+
+View as App User
+""""""""""""""""
+
+Use the :guilabel:`View as` filter to see which Entities are available to a specific App User. Select an App User to preview the Entity List using that user's access. This is useful for testing property-based access filters and verifying that users can access the expected Entities.
 
 
 .. _deleting-entity-lists:
