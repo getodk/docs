@@ -98,7 +98,7 @@ You'll be asked to confirm the removal of all dangling images. Agree by typing t
 
 .. code-block:: bash
 
-  $ docker compose stop && docker compose up -d
+  $ docker compose stop && docker compose up --detach
 
 .. _version-specific-instructions:
 
@@ -201,7 +201,7 @@ If you make changes to your ``.env`` file or your SSL certificates to configure 
 .. code-block:: bash
 
    $ docker compose stop
-   $ docker compose up -d
+   $ docker compose up --detach
 
 2. Files can be stored in S3-compatible storage
 ************************************************
@@ -555,7 +555,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
    
           .. code-block:: bash
    
-               $ docker compose up -d
+               $ docker compose up --detach
    
        #. **Log into the web interface and do some quick spot checks.** For example, verify that submission counts and latest submission dates look right and try a data export.
    
@@ -762,7 +762,7 @@ To build from source:
 
    .. code-block:: bash
 
-     $ docker compose stop && docker compose up -d
+     $ docker compose stop && docker compose up --detach
 
 Each time you upgrade Central, you will also need to update the frontend source to the matching release before rebuilding. For example, if you are upgrading to Central v2026.3:
 
