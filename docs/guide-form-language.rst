@@ -218,9 +218,9 @@ If your form does not use any ``select_one`` question, you can define one specif
 
 Form language vs. application UI language
 ------------------------------------------------------------
-Up to this point, our focus has been on the languages used within the questionnaire forms. However, it's important to note that the ODK Collect app and the Enketo web form interface both support multilingual functionality. This means that not only can the survey content be presented in multiple languages, but the app's user interface, instructions, and navigation elements can also be displayed in various languages. This feature makes it possible for data collectors to navigate the app in their preferred language.
+Up to this point, our focus has been on the languages used within the questionnaire forms. However, it's important to note that the ODK Collect app and the ODK Web Form interface both support multilingual functionality. This means that not only can the survey content be presented in multiple languages, but the app's user interface, instructions, and navigation elements can also be displayed in various languages. This feature makes it possible for data collectors to navigate the app in their preferred language.
 
-By default, Collect uses the language set in the device settings and Enketo uses the language set in the browser settings.
+By default, Collect uses the language set in the device settings and ODK Web Forms uses the language set in the browser settings.
 
 You may want to change the ODK Collect UI language separately from device settings. You can do this from the main Project screen: (1) click the project icon at the top right. (2) Once the Project window popup appears, click "Settings". This will open the Project settings screen. (3) Select User interface, followed by Language in the next screen. You will then see a menu of all the Collect UI languages to select from. 
 
