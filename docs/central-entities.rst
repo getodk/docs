@@ -186,7 +186,7 @@ Once you have a ``.csv`` file, you can select it for upload either by dragging i
 
 .. image:: /img/central-entities/entity-upload.png
 
-Once errors are resloved, you will see a preview of the data that Central found in the file and how it will load into the Entity List.
+Once errors are resolved, you will see a preview of the data that Central found in the file and how it will load into the Entity List.
 
 Looking at this view, you can match up the columns and ensure your data is loading into the correct places. You can also verify that the number of records in your file matches the number of Entities Central found to import. It is also often a good idea to check at least the last few rows of your import data in the preview table in addition to the beginning. If you don't see any problems looking over the preview, you can feel safe to ignore any warnings. You can continue uploading new versions of your file until you are satisfied with the preview.
 
