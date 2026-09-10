@@ -490,7 +490,7 @@ info:
       * `POST /projects/…/key` to enable project managed encryption.
       * Both submission intake methods (OpenRosa and REST) now support encrypted submissions.
       * `GET /projects/…/forms/…/submissions/keys` to get a list of encryption keys needed to decrypt all submitted data.
-      * `?{keyId}={passphrase}` option on `GET /projects/…/forms/…/submissions.csv.zip` to get a decrypted archive given the `passphrase`.
+      * `?{keyId}={passphrase}` option on `GET /projects/…/forms/…/submissions.csv.zip` to get a decrypted archive given the `encryption password`.
       * `POST /projects/…/forms/…/submissions.csv.zip` to provide a browser-secure (no querystring) method of accessing the above `GET .csv.zip` resource.
       * OData and `.csv.zip` data responses now contain an additional `status` system column.
 
@@ -706,19 +706,19 @@ tags:
 
     1. The [old methodology](https://docs.getodk.org/encrypted-forms/), where you generate an RSA keypair and use it with locally-downloaded encrypted data to decrypt submissions. We refer to these sorts of keys in this documentation as "self-supplied keys."
 
-    2. Managed Encryption, where Central will generate and store an RSA keypair for you, secured under a passphrase that Central does not save. The CSV export path can then decrypt all records on the fly given the passphrase.
+    2. Managed Encryption, where Central will generate and store an RSA keypair for you, secured under an encryption password that Central does not save. The CSV export path can then decrypt all records on the fly given the encryption password.
 
     Given the self-supplied key case, Central does not understand how to decrypt records, and the CSV export will export only metadata fields (and no binary attachments) for encrypted records. You may retrieve each data resource over the REST API and decrypt them yourself, or use ODK Briefcase to do this.
 
-    Managed Encryption is recommended for most people. The data is still encrypted "at rest" on the server, and the private key needed to decrypt the data is itself encrypted by the passphrase. Neither the passphrase nor the decrypted private key are ever stored; they are forgotten as soon as the server has finished the work at hand.
+    Managed Encryption is recommended for most people. The data is still encrypted "at rest" on the server, and the private key needed to decrypt the data is itself encrypted by the encryption password. Neither the encryption password nor the decrypted private key are ever stored; they are forgotten as soon as the server has finished the work at hand.
 
     The relevant API operations are documented inline above; here we guide you through what exists from a high level.
 
     To invoke Project Manage Encryption, you may use the web management interface, or you may [POST /projects/…/key](/central-api-project-management/#enabling-project-managed-encryption).
 
-    To list all the encryption keys associated with the submissions on a given form, you can [GET /projects/…/forms/…/submissions/keys](/central-api-submission-management/#listing-encryption-keys). This is particularly useful for obtaining the integer numeric ID associated with each key, which will be necessary to decrypt the records, as well as for obtaining reminder hints about each passphrase.
+    To list all the encryption keys associated with the submissions on a given form, you can [GET /projects/…/forms/…/submissions/keys](/central-api-submission-management/#listing-encryption-keys). This is particularly useful for obtaining the integer numeric ID associated with each key, which will be necessary to decrypt the records, as well as for obtaining reminder hints about each encryption password.
 
-    To perform decryption, you can [GET or POST /projects/…/forms/…/submissions.csv.zip](/central-api-submission-management/#exporting-form-submissions-to-csv) with extra parameters to provide the necessary passphrases. If you are building a browser-based application, it is recommended that you `POST` rather than `GET`: please see the notes in the linked sections for additional details.
+    To perform decryption, you can [GET or POST /projects/…/forms/…/submissions.csv.zip](/central-api-submission-management/#exporting-form-submissions-to-csv) with extra parameters to provide the necessary encryption passwords. If you are building a browser-based application, it is recommended that you `POST` rather than `GET`: please see the notes in the linked sections for additional details.
 
     Note that the OData JSON API does not (presently) decrypt data. Any encrypted submissions will be returned only with basic metadata, like submission date and user.
 - name: Session Authentication
@@ -2895,7 +2895,7 @@ paths:
       description: |-
         _(introduced: version 0.6)_
 
-        [Project Managed Encryption](/central-api-encryption) can be enabled via the API. To do this, `POST` with the `passphrase` and optionally a reminder `hint` about the passphrase. If managed encryption is already enabled, a `409` error response will be returned.
+        [Project Managed Encryption](/central-api-encryption) can be enabled via the API. To do this, `POST` with the `passphrase` and optionally a reminder `hint` about the encryption password. If managed encryption is already enabled, a `409` error response will be returned.
 
         Enabling managed encryption will modify all unencrypted forms in the project, and as a result the `version` of all forms within the project will also be modified. It is therefore best to enable managed encryption before devices are in the field. Any forms in the project that already have self-supplied encryption keys will be left alone.
       operationId: enableProjectManagedEncryption
@@ -2917,12 +2917,12 @@ paths:
               properties:
                 passphrase:
                   type: string
-                  description: The encryption passphrase. If this passphrase is lost,
+                  description: The encryption password. If this encryption password is lost,
                     the data will be irrecoverable.
                 hint:
                   type: string
-                  description: A reminder about the passphrase. This is primarily
-                    useful when multiple encryption keys and passphrases are being
+                  description: A reminder about the encryption password. This is primarily
+                    useful when multiple encryption keys and encryption passwords are being
                     used, to tell them apart.
               example:
                 passphrase: super duper secret
@@ -6561,9 +6561,9 @@ paths:
 
         If [Project Managed Encryption](/central-api-encryption) is being used, additional querystring parameters may be provided in the format `{keyId}={passphrase}` for any number of keys (eg `1=secret&4=password`). This will decrypt any records encrypted under those managed keys. Submissions encrypted under self-supplied keys will not be decrypted. **Note**: if you are building a browser-based application, please consider the alternative `POST` endpoint, described in the following section.
 
-        If a passphrase is supplied but is incorrect, the entire request will fail. If a passphrase is not supplied but encrypted records exist, only the metadata for those records will be returned, and they will have a `status` of `not decrypted`.
+        If an encryption password is supplied but is incorrect, the entire request will fail. If an encryption password is not supplied but encrypted records exist, only the metadata for those records will be returned, and they will have a `status` of `not decrypted`.
 
-        If you are running an unsecured (`HTTP` rather than `HTTPS`) Central server, it is not a good idea to export data this way as your passphrase and the decrypted data will be sent plaintext over the network.
+        If you are running an unsecured (`HTTP` rather than `HTTPS`) Central server, it is not a good idea to export data this way as your encryption password and the decrypted data will be sent plaintext over the network.
 
         You can use an [OData-style `$filter` query](/central-api-odata-endpoints/#data-document) to filter the submissions that will appear in the ZIP file. This is a bit awkward, since this endpoint has nothing to do with OData, but since we already must recognize the OData syntax, it is less strange overall for now not to invent a whole other one here. Only a subset of the `$filter` features are available; please see the linked section for more information.
       operationId: exportFormSubmissionsToCsv
@@ -6663,11 +6663,11 @@ paths:
       - Submissions
       summary: Exporting Form Submissions to CSV via POST
       description: |-
-        This non-REST-compliant endpoint is provided for use with [Project Managed Encryption](/central-api-encryption). In every respect, it behaves identically to the `GET` endpoint described in the previous section, except that it works over `POST`. This is necessary because for browser-based applications, it is a dangerous idea to simply link the user to `/submissions.csv.zip?2=supersecretpassphrase` because the browser will remember this route in its history and thus the passphrase will become exposed. This is especially dangerous as there are techniques for quickly learning browser-visited URLs of any arbitrary domain.
+        This non-REST-compliant endpoint is provided for use with [Project Managed Encryption](/central-api-encryption). In every respect, it behaves identically to the `GET` endpoint described in the previous section, except that it works over `POST`. This is necessary because for browser-based applications, it is a dangerous idea to simply link the user to `/submissions.csv.zip?2=supersecretpassphrase` because the browser will remember this route in its history and thus the encryption password will become exposed. This is especially dangerous as there are techniques for quickly learning browser-visited URLs of any arbitrary domain.
 
         You can exclude the media attachments from the ZIP file by specifying `?attachments=false`.
 
-        And so, for this `POST` version of the Submission CSV export endpoint, the passphrases may be provided via `POST` body rather than querystring. Two formats are supported: form URL encoding (`application/x-www-form-urlencoded`) and JSON. In either case, the keys should be the `keyId`s and the values should be the `passphrase`s, as with the `GET` version above.
+        And so, for this `POST` version of the Submission CSV export endpoint, the encryption passwords may be provided via `POST` body rather than querystring. Two formats are supported: form URL encoding (`application/x-www-form-urlencoded`) and JSON. In either case, the keys should be the `keyId`s and the values should be the `passphrase`s, as with the `GET` version above.
       operationId: exportFormSubmissionsToCsvViaPost
       parameters:
       - name: projectId
