@@ -198,9 +198,9 @@ Values from the last saved record
 
   When this feature is used the full content of the last submitted form will be stored on the submitter's device indefinitely, therefore we do not recommend using this feature for forms that could contain sensitive information.
 
-  The last-saved feature does not work with encrypted forms.
+  This stored content is **not** encrypted, even if you have set up :ref:`encryption <encrypted-forms>` for your form. Submissions are still encrypted as usual. This is true in both ODK Collect and ODK Web Forms.
 
-  Support for last-saved was added in Collect v1.21.0 and Central v1.3.0. Using older versions or encrypted forms will have unpredictable results.
+  Support for last-saved was added in Collect v1.21.0 and Central v1.3.0. Using older versions will have unpredictable results.
 
 You can refer to values from the last saved record of this form definition:
 

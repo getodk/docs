@@ -45,6 +45,10 @@ In :doc:`XLSForm <xlsform>`, form encryption is enabled from the :ref:`settings 
 
   my_form, 2024050301, https://my-server/submission, MIIBIjANB...JCwIDAQAB
 
+.. warning::
+
+  If your form uses :ref:`values from the last saved record <last-saved>`, those values are stored **unencrypted** on the device (or in the browser for ODK Web Forms), even if you have set up encryption. Submissions are still encrypted as usual.
+
 .. _create-RSA-key:
 
 Creating RSA Key pair
