@@ -41,6 +41,20 @@ info:
 
     Here major and breaking changes to the API are listed by version.
 
+    ## ODK Central v2026.3
+
+    **Added**:
+    - [Entities OData](/central-api-odata-endpoints/#odata-dataset-service), [GET Entities Metadata](/central-api-entity-management/#entities-metadata), [Download Dataset](/central-api-dataset-management/#download-dataset), and [Entities Geodata](/central-api-entity-management/#entities-geodata) now support a `viewAs` query parameter to preview the filtered Entity list for a specific Actor.
+
+    **Changed**:
+    - [GET /audits](/central-api-system-endpoints/#getting-audit-log-entries) now uses less-than when filtering with the `end` parameter.
+    - [Form Attachment](/central-api-form-management/#listing-form-attachments) objects now include a `size` field (in bytes) when a file has been uploaded. The field is absent for dataset-linked attachments and empty slots, and may be `null` for blobs uploaded before this version.
+    - [POST /projects/:id/actor-properties](/central-api-accounts-and-users/#registering-an-actor-property-name) now rejects names that differ only in letter case from an existing property, so `Region` cannot be registered when `region` already exists. See [Actor Properties](/central-api-accounts-and-users/#actor-properties) for the naming rules.
+
+    **Fixed**:
+
+    - Central now decodes the Form `version` string in Submission XML. This can prevent a 404 error when a Submission is sent.
+
     ## ODK Central v2026.2
 
     **Added**:
@@ -761,7 +775,7 @@ tags:
 
     Actor properties allow you to attach custom key/value metadata to App Users and Public Links within a project. This can be used to tag users with attributes like region or supervisor, which can then be used to [filter Dataset access](/central-api-dataset-management/#update-dataset-access-filters-and-metadata).
 
-    Property names must be registered on the project before they can be set on individual App Users or Public Links. Property names follow the same rules as Entity property names, with the additional restriction that `displayName` (case-insensitive) is reserved.
+    Property names must be registered on the project before they can be set on individual App Users or Public Links. Property names follow the same rules as Entity property names, with the additional restriction that `displayName` (case-insensitive) is reserved. Property names must be unique within a project, even with different capitalization, so `region` and `Region` cannot both be registered.
 - name: App Users
   x-parent-tag: Accounts and Users
   description: |-
@@ -2257,7 +2271,7 @@ paths:
       description: |-
         Registers a new actor property name for this project. Once registered, the property can be set on any App User or Public Link within the project via `PATCH`.
 
-        Property names follow the same rules as Entity property names: they must be non-empty, may contain letters, digits, hyphens, and underscores, and the name `displayName` (case-insensitive) is reserved.
+        Property names follow the same rules as Entity property names: they must be non-empty, may contain letters, digits, hyphens, and underscores, and the name `displayName` (case-insensitive) is reserved. Property names must be unique within a project and the uniqueness check is case-insensitive, so `region` and `Region` cannot coexist.
 
         Requires `actor_property.update` permission.
       operationId: createActorProperty
@@ -2634,6 +2648,12 @@ paths:
         schema:
           type: number
         example: "16"
+      - name: verbs
+        in: query
+        description: If set to `true`, will return allowed verbs for the current actor on this project.  When extended metadata is requested, this parameter is ignored, and verbs are always included.
+        schema:
+          type: boolean
+        example: "true"
       responses:
         "200":
           description: 'This is the Extended Metadata response, if requested via the
@@ -3935,6 +3955,7 @@ paths:
                 exists: true
                 blobExists: true
                 datasetExists: false
+                size: 4096
                 hash: 'd41d8cd98f00b204e9800998ecf8427e'
                 updatedAt: 2018-03-21T12:45:02.312Z
   /v1/projects/{projectId}/forms/{xmlFormId}/attachments/{filename}:
@@ -4414,6 +4435,7 @@ paths:
                 exists: true
                 blobExists: true
                 datasetExists: false
+                size: 4096
                 hash: 'd41d8cd98f00b204e9800998ecf8427e'
                 updatedAt: 2018-03-21T12:45:02.312Z
   /v1/projects/{projectId}/forms/{xmlFormId}/draft/attachments/{filename}:
@@ -5024,6 +5046,7 @@ paths:
                 exists: true
                 blobExists: true
                 datasetExists: false
+                size: 4096
                 hash: 'd41d8cd98f00b204e9800998ecf8427e'
                 updatedAt: 2018-03-21T12:45:02.312Z
   /v1/projects/{projectId}/forms/{xmlFormId}/versions/{version}/attachments/{filename}:
@@ -8989,6 +9012,15 @@ paths:
         schema:
           type: string
         example: john
+      - name: viewAs
+        in: query
+        description: |-
+          If provided, filters the response to only the Entities that the specified Actor would be able to see, based on the Dataset's access filter (`ownerOnly` or property rules). The value must be a numeric Actor ID.
+
+          This is intended for previewing what a particular App User or Public Link would receive when downloading the Dataset via a linked Form Attachment.
+        schema:
+          type: number
+        example: 42
       responses:
         "200":
           description: OK
@@ -9051,7 +9083,7 @@ paths:
       - Entity Management
       summary: Entities Metadata
       description: |-
-        This endpoint returns a list of the Entities of a Dataset. Please note that this endpoint only returns metadata of the entities not the data. If you want to get the data of all entities then please refer to [OData Dataset Service](/central-api-odata-endpoints/#odata-form-service)
+        This endpoint returns a list of the Entities of a Dataset. Please note that this endpoint only returns metadata of the entities not the data. If you want to get the data of all entities then please refer to [OData Dataset Service](/central-api-odata-endpoints/#odata-dataset-service)
         You can provide `?deleted=true` to get only deleted entities.
       
       operationId: entitiesMetadata
@@ -9070,6 +9102,15 @@ paths:
         schema:
           type: string
         example: people
+      - name: viewAs
+        in: query
+        description: |-
+          If provided, filters the response to only the Entities that the specified Actor would be able to see, based on the Dataset's access filter (`ownerOnly` or property rules). The value must be a numeric Actor ID.
+
+          This is intended for previewing what a particular App User or Public Link would receive when downloading the Dataset via a linked Form Attachment.
+        schema:
+          type: number
+        example: 42
       responses:        
         "200":
           description: OK
@@ -9290,6 +9331,15 @@ paths:
         description: The `$search` querystring parameter can be used to search entity data (user-defined properties) and the `label` field, using the same search behavior as the [OData Dataset Service](/central-api-odata-endpoints/#odata-dataset-service).
         schema:
           type: string
+      - name: viewAs
+        in: query
+        description: |-
+          If provided, filters the response to only the Entities that the specified Actor would be able to see, based on the Dataset's access filter (`ownerOnly` or property rules). The value must be a numeric Actor ID.
+
+          This is intended for previewing what a particular App User or Public Link would receive when downloading the Dataset via a linked Form Attachment.
+        schema:
+          type: number
+        example: 42
       responses:
         "200":
           description: OK
@@ -10861,9 +10911,9 @@ paths:
         | Review State                             | `reviewState` | `__system/reviewState`    |
         | Submission Delete Timestamp (v2024.3)    | `deletedAt`   | `__system/deletedAt`      |
 
-        You can use `$root` expression to filter subtables (repeats) by Submission Metadata, you'll have to prefix above fields by `$root/Submissions/` in the filter criteria. For example, to filter a repeat table by Submission Timestamp you can pass `$filter=$root/Submissions/__system/submissionDate gt 2020-01-31T23:59:59.999Z` in the query parameter.
+        You can use `$root` expression to filter subtables (repeats) by Submission Metadata, you'll have to prefix above fields by `$root/Submissions/` in the filter criteria. For example, to filter a repeat table by Submission Timestamp you can pass `$filter=$root/Submissions/__system/submissionDate ge 2020-02-01T00:00:00.000Z` in the query parameter.
 
-        Note that the `submissionDate` has a time component. This means that any comparisons you make need to account for the full time of the submission. It might seem like `$filter=__system/submissionDate le 2020-01-31` would return all results on or before 31 Jan 2020, but in fact only submissions made before midnight of that day would be accepted. To include all of the month of January, you need to filter by either `$filter=__system/submissionDate le 2020-01-31T23:59:59.999Z` or `$filter=__system/submissionDate lt 2020-02-01`. Remember also that you can [query by a specific timezone](https://en.wikipedia.org/wiki/ISO_8601#Time_offsets_from_UTC).
+        Note that the `submissionDate` has a time component. This means that any comparisons you make need to account for the full time of the submission. It might seem like `$filter=__system/submissionDate le 2020-01-31` would return all results on or before 31 Jan 2020, but in fact only submissions made before midnight of that day would be accepted. To include all of the month of January, you need to filter by either `$filter=__system/submissionDate lt 2020-02-01T00:00:00.000Z` or `$filter=__system/submissionDate lt 2020-02-01`. Remember also that you can [query by a specific timezone](https://en.wikipedia.org/wiki/ISO_8601#Time_offsets_from_UTC).
 
         Please see the [OData documentation](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948) on `$filter` [operations](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinFilterOperations) and [functions](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinQueryFunctions) for more information.
 
@@ -11379,7 +11429,7 @@ paths:
         | Entity Conflict         | `__system/conflict`  |
         | Entity Delete Timestamp | `__system/deletedAt` |
 
-        Note that `createdAt`, `updatedAt` and `deletedAt` are time components. This means that any comparisons you make need to account for the full time of the entity. It might seem like `$filter=__system/createdAt le 2020-01-31` would return all results on or before 31 Jan 2020, but in fact only entities made before midnight of that day would be accepted. To include all of the month of January, you need to filter by either `$filter=__system/createdAt le 2020-01-31T23:59:59.999Z` or `$filter=__system/createdAt lt 2020-02-01`. Remember also that you can [query by a specific timezone](https://en.wikipedia.org/wiki/ISO_8601#Time_offsets_from_UTC).
+        Note that `createdAt`, `updatedAt` and `deletedAt` are time components. This means that any comparisons you make need to account for the full time of the entity. It might seem like `$filter=__system/createdAt le 2020-01-31` would return all results on or before 31 Jan 2020, but in fact only entities made before midnight of that day would be accepted. To include all of the month of January, you need to filter by either `$filter=__system/createdAt lt 2020-02-01T00:00:00.000Z` or `$filter=__system/createdAt lt 2020-02-01`. Remember also that you can [query by a specific timezone](https://en.wikipedia.org/wiki/ISO_8601#Time_offsets_from_UTC).
 
         Please see the [OData documentation](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#_Toc31358948) on `$filter` [operations](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinFilterOperations) and [functions](http://docs.oasis-open.org/odata/odata/v4.01/cs01/part1-protocol/odata-v4.01-cs01-part1-protocol.html#sec_BuiltinQueryFunctions) for more information.
 
@@ -11393,6 +11443,8 @@ paths:
         - The `OR` keyword can be used to find entities that contain **any** of the searched words.
         - Quoted text (e.g., `"quoted text"`) searches for entities containing the **exact** phrase.
         - A dash (`-`) before a word excludes entities that contain that word (logical NOT).
+
+        The `viewAs` query parameter can be used to preview what a specific Actor would receive, based on the Dataset's access filter (`ownerOnly` or property rules). Pass a numeric Actor ID as the value. This is intended to preview what an App User or Public Link would see when fetching these Entities as a Form Attachment. This parameter can be combined with other filters, e.g. to see the subset of an Actor's Entities that also match a given `$filter` or `$search` expression.
 
         As the vast majority of clients only support the JSON OData format, that is the only format ODK Central offers.
       operationId: dataDocumentForDataset
@@ -11459,6 +11511,15 @@ paths:
         description: Opaque cursor from `@odata.nextLink` used for paging.
         schema:
           type: string
+      - name: viewAs
+        in: query
+        description: |-
+          If provided, filters the response to only the Entities that the specified Actor would be able to see, based on the Dataset's access filter (`ownerOnly` or property rules). The value must be a numeric Actor ID.
+
+          This is intended for previewing what a particular App User or Public Link would receive when downloading the Dataset via a linked Form Attachment.
+        schema:
+          type: number
+        example: "42"
       responses:
         "200":
           description: Ok
@@ -12246,7 +12307,7 @@ paths:
 
         For this reason, **we recommend always setting a timezone** when querying based on `start` and `end`: either by appending a `z` to indicate UTC (eg `2000-01-01z`) or by explicitly specifying a timezone per ISO 8601 (eg `2000-01-01+08`). The same applies for full timestamps (eg `2000-01-01T12:12:12z`, `2000-01-01T12:12:12+08`).
 
-        `start` may be given without `end`, and vice versa, in which case the timestamp filter will only be bounded on the specified side. They are both inclusive (`>=` and `<=`, respectively).
+        `start` may be given without `end`, and vice versa, in which case the timestamp filter will only be bounded on the specified side. `start` is inclusive, and `end` is exclusive (`>=` and `<`, respectively).
 
         This endpoint supports retrieving extended metadata; provide a header `X-Extended-Metadata: true` to additionally expand the `actorId` into full `actor` details, and `acteeId` into full `actee` details. The `actor` will always be an Actor, but the `actee` may be an Actor, a Project, a Form, or some other type of object depending on the type of action.
       operationId: getAuditLogEntries
@@ -12265,10 +12326,10 @@ paths:
         example: 2000-01-01z
       - name: end
         in: query
-        description: The timestamp after which log entries are to be filtered out.
+        description: The timestamp from which log entries are to be filtered out.
         schema:
           type: string
-        example: 2000-12-31T23:59.999z
+        example: 2001-01-01T00:00.000z
       - name: limit
         in: query
         description: The maximum number of entries to return.
@@ -13028,11 +13089,16 @@ components:
         blobExists:
           type: boolean
           example: true
-          description: Whether the server has the file or not.
+          description: True only when a file has been uploaded for this attachment slot. False when no file has been uploaded, or when the attachment is linked to a Dataset instead of a file.
         datasetExists:
           type: boolean
           example: true
           description: Whether attachment is linked to a Dataset.
+        size:
+          type: integer
+          nullable: true
+          example: 4096
+          description: The size of the uploaded file in bytes. Only present when `blobExists` is `true`. May be `null` for files on external blob store uploaded before version 2026.3.
         updatedAt:
           type: string
           example: '2018-03-21T12:45:02.312Z'
