@@ -1,5 +1,5 @@
 # Match python version to CI
-FROM python:3.11
+FROM python:3.14-slim
 
 RUN apt-get update && \
     apt-get install --yes pngquant python3-enchant && \

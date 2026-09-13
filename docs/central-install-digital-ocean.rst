@@ -14,7 +14,7 @@ If you'd like to set up an ODK server that's accessible from anywhere via the In
 .. tip::
   If you have not already created a DigitalOcean account, use `our referral link <https://m.do.co/c/39937689124c>`_.
 
-  DigitalOcean will give you $200 of credit to spend during the first 60 days so that you can try things out. Once you have spent $25 with them, we’ll get $25 to put towards our hosting costs.
+  Once you have spent $25 with them, we’ll get $25 to put towards our hosting costs.
 
   If you are a student, enroll via GitHub's `Student Developer Pack <https://education.github.com/pack?utm_source=github+digitalocean>`_  to get your DigitalOcean credit extended for 1 year.
 
@@ -142,7 +142,7 @@ Getting and Setting Up Central
 
    .. code-block:: bash
 
-     $ git submodule update -i
+     $ git submodule update --init
 
 #. Update settings. First, copy the settings template file so you can edit it:
 
@@ -586,6 +586,25 @@ To use S3-compatible storage for all files saved in Central, follow these steps:
                   }
                 ]
               }
+
+#. Provide a cross-origin resource sharing configuration to allow Central's frontend to fetch resources from the bucket.
+
+   * .. collapse:: Example Amazon S3 configuration (in Permissions for the bucket)
+
+        .. code-block:: json
+
+          [
+              {
+                  "AllowedHeaders": [],
+                  "AllowedMethods": [
+                      "GET"
+                  ],
+                  "AllowedOrigins": [
+                      "https://my.central.server"
+                  ],
+                  "ExposeHeaders": []
+              }
+          ]
 
 #. Edit ``.env`` with your chosen service's URL as well as your bucket name, access key and secret. If your service has a region concept, use a general URL that does not specify region. For example, the URL to use for S3 is `https://s3.amazonaws.com`. You must use an ``https`` URL, not an ``http`` one.
 

@@ -31,12 +31,7 @@ We've extensively tested ODK Web Forms and consider it ready for production use 
 
 For users who have been using web forms in Central prior to v2026.2.0, here is functionality in Enketo that's coming to Web Forms, in rough order of priority:
 
-* One question per page
-* Query parameter defaults
-* Jump to first error
-* Last-saved
 * Satellite basemaps
-* Single-submission enforced by browser
 * big-image for labels
 * no-calendar appearance
 * Select from svg
@@ -208,3 +203,32 @@ You can style text such as notes, labels, hints, options, and validation message
 
 .. image:: /img/web-forms/form-styling.*
   :alt: Styling in Web Forms
+
+.. _web-forms-pages:
+
+Pages
+------
+
+.. versionadded:: Web Forms v1.1
+
+To use pages in a form, set the ``style`` to ``pages`` in the ``settings`` sheet, as described in `the XLSForm documentation <https://xlsform.org/en/#multiple-webpage-forms>`_.
+
+By default, each question is shown on its own page. To show several questions together on one page, put them in a group with the :ref:`field-list appearance <field-list>`.
+
+Unlike Collect, a ``field-list`` group can also contain a repeat and it is shown on the same page, along with the other questions. You can also apply ``field-list`` to a repeat itself. In that case, each repeat instance becomes a page.
+
+Use the :guilabel:`Back` and :guilabel:`Next` buttons to move between pages. Pages where no question is :ref:`relevant <relevants>` are skipped.
+
+Translations
+------------
+
+.. seealso::
+
+  :doc:`guide-form-language`
+
+Web Forms will display text using the default language specified in the form definition if there is one, reverting to the first supported language the user has configured in their browser. If no browser language matches one of the form languages, then the default language is English. The user may select their preferred language from the language selector dropdown shown at the top of the form, which is then saved and used for all future forms.
+
+.. image:: /img/web-forms/language-selector.*
+  :alt: The language selector
+
+When designing the form you can specify any languages you like, however the languages used for application elements such as buttons and status dialogs are limited to: English, español, français, and bahasa Indonesia. If you would like to contribute additional languages, follow the `ODK Central translation guide <https://docs.google.com/document/d/1C0MS_ytAEBHwbMkdR-QrtDrWAAh_EkJo2QRr4XyIOpk>`_ and if you have questions, post in the `the translation category <https://forum.getodk.org/c/development/translation/14>`_ on the ODK Forum.

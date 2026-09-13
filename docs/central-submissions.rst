@@ -17,15 +17,11 @@ In general, we recommend using the :doc:`ODK Collect Android application <collec
 * Non-Android mobile devices. You can give enumerators :ref:`Data Collector roles <central-users-web-roles>` in your project or send :ref:`Public Access Links <central-submissions-public-link>` for them to bookmark.
 * Data entry from paper forms. Web forms can be used at a computer with a keyboard to quickly transcribe data collected on paper.
 
-ODK Central bundles `Enketo <https://enketo.org>`_ to enable editing, previewing and submitting forms directly from a web browser.
+ODK Central bundles ODK Web Forms to enable editing, previewing and submitting forms directly from a web browser.
 
 .. note::
 
-  Enketo does not always behave exactly like Collect, or support all the same features. The :doc:`XLSForm template <xlsform>` provides compatibility information and we recommend testing your form as you expect users to interact with it.
-
-.. tip::
-
-  The ODK team is working on ODK Web Forms which will eventually replace Enketo in Central. Starting in Central v2025.1.0, you can :doc:`try it out <web-forms-intro>`!
+  ODK Web Forms does not always behave exactly like Collect, or support all the same features. The :doc:`XLSForm template <xlsform>` provides compatibility information and we recommend testing your form as you expect users to interact with it.
 
 Any authorized Web User may fill out a Form directly from the browser, as will be described in more detail below. Additionally, ODK Central offers Public Access Links which grant anybody in possession of the link the ability to submit to a Form on your server. You can control whether each respondent can submit more than once, and revoke access from any Link at any time. It is also possible to make Enketo web forms :ref:`usable while offline <central-offline-web-forms>`.
 
@@ -34,11 +30,11 @@ Any authorized Web User may fill out a Form directly from the browser, as will b
 Direct Web Browser Submissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Web Users who are Administrators, Project Managers, or Data Collectors can directly fill Forms in the web browser from the Central administration website. This functionality is provided by Enketo, which does not always behave quite the same as Collect, or support the same features.
+Web Users who are Administrators, Project Managers, or Data Collectors can directly fill Forms in the web browser from the Central administration website. This functionality is provided by ODK Web Forms, which does not always behave quite the same as Collect, or support the same features.
 
 .. image:: /img/central-submissions/new.png
 
-Administrators and Project Managers can begin a survey by going to the :guilabel:`Submissions` tab of the Form, and clicking on the :guilabel:`New` button next to the Submissions header. This will open a new tab which will load the Form in Enketo.
+Administrators and Project Managers can begin a survey by going to the :guilabel:`Submissions` tab of the Form, and clicking on the :guilabel:`New` button next to the Submissions header. This will open a new tab which will load the Form in ODK Web Forms.
 
 .. image:: /img/central-submissions/data-collector-form-listing.png
 
@@ -57,15 +53,13 @@ To create a Public Access Link, go to the Form's :guilabel:`Public Access` tab. 
 
 In the window that appears, you'll need to name the Link. This name is for your own identification purposes in the administration website, and is not displayed to respondents.
 
-If the project has :ref:`Custom Properties <central-custom-properties>`, they can be set here or by editing a Public Access Link later. This allows :ref:`Entity filter rules <entity-list-access-filter>` to control which Entities are delivered when forms are opened through a Public Access Link.
+You can assign properties to a Public Access Link. These properties can be used by Entity List access filters to :ref:`control which Entities are delivered <entity-list-access-filter>` when a form is opened through the link.
 
 You'll also need to decide whether to allow multiple submissions per respondent. Normally, respondents filling a Form through a Public Link will be redirected to a thank you page after sending a Submission. Pressing the back button will not bring them back to the Form but they could send in another Submission by visiting the Link again. Checking the :guilabel:`Single Submission` checkbox enables basic protection against more than one Submission being made from the same browser.
 
 .. admonition:: Single submission enforcement
 
-  This is not yet supported by :doc:`ODK Web Forms <web-forms-intro>`.
-
-  In Enketo, the enforcement limiting each respondent to a single response is done with in-browser tracking. This means that a user could submit multiple times using different devices or browsers, or distribute the link beyond the intended group.
+  The enforcement limiting each respondent to a single response is done with in-browser tracking. This means that a user could submit multiple times using different devices or browsers, or distribute the link beyond the intended group.
 
   Also because of this tracking method, respondents will only be able to respond once *per Form*, not once per single-submission Link. Future versions of Central may change how this works. Please leave `feedback on the community forum <https://forum.getodk.org/c/features/9>`_ if this is something you'd like to see.
 
@@ -74,6 +68,19 @@ Once a Link is created, it will appear in the table, along with a web address yo
 .. image:: /img/central-submissions/public-link-listing.png
 
 You cannot yet edit any of the details of a Public Link.
+
+.. _central-submissions-link-field-values-url:
+
+Set field values in the URL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Speed up data entry by including known field values as parameters in the form's URL. ODK will automatically fill matching values when the form opens.
+
+Parameters use the format :code:`d[{field}]={value}`, where ``field`` identifies the form field you want to set and ``value`` is the text to put in it. For example, :code:`d[name]=odk` sets the ``name`` field to ``odk``. For a field inside groups or repeats, include the names of the groups or repeats in the field identifier, separated by slashes. For example: :code:`d[person/name]=Maria`.
+
+To set multiple fields, separate parameters with an ampersand (``&``), for example: :code:`?d[name]=odk&d[engine]=webforms`.
+
+Note that the parameters must be URL encoded to be parsed correctly.
 
 .. _central-submissions-link-revoke:
 
