@@ -15,6 +15,7 @@ To upgrade, start by reviewing upgrade notes for all versions between your curre
 Upgrade notes
 -------------
 
+* Central v2026.3: no upgrade notes
 * :ref:`Central v2026.2 <central-upgrade-2026.2>`: special instructions if you use direct backups via API or build frontend from source
 * :ref:`Central v2026.1 <central-upgrade-2026.1>`: plan for longer than usual downtime, update ``.env`` if you need to configure custom database SSL
 * :ref:`Central v2025.4 <central-upgrade-2025.4>`: perform database maintenance
@@ -36,7 +37,9 @@ Upgrade notes
 * :ref:`Central v0.9 <central-upgrade-0.9>`: configure firewall
 
 .. note::
-  To see your version, click on the question mark icon in the upper right section of your Central menu bar, then click :guilabel:`Version`. If you don't see the question mark, you can see the version by adding ``version.txt`` to the root URL (e.g., `demo.getodk.cloud/version.txt <https://demo.getodk.cloud/version.txt>`_). Note that starting in v2026.2.0, it is expected for the client version to start with `0000000000000000000000000000000000000000`.
+  To see your version, click on the question mark icon in the upper right section of your Central menu bar, then click :guilabel:`Version`. If you don't see the question mark, you can see the version by adding ``version.txt`` to the root URL (e.g., `demo.getodk.cloud/version.txt <https://demo.getodk.cloud/version.txt>`_). 
+
+  For v2026.2.0 and later, it is expected that the client version starts with 40 zeros.
 
 .. _central-upgrade-steps:
 
@@ -67,7 +70,7 @@ Upgrade steps
 
 .. code-block:: bash
 
-  $ git submodule update -i
+  $ git submodule update --init
 
 4. **Build** from the latest code you just fetched. The ``pull`` option ensures all Docker images are up-to-date.
 
@@ -504,7 +507,7 @@ This is *critical infrastructure upgrade*. In particular, it upgrades the includ
    
           .. code-block:: bash
    
-             $ git submodule update -i
+             $ git submodule update --init
    
        #. **Check that you have enough disk space available.** If you are prompted for a password, enter the system superuser password (not a Central password). You will see a message about how much space is required and if you have enough free space to proceed.
    

@@ -27,7 +27,7 @@ Concepts
 What are Entities?
 ------------------
 
-In the ODK context, an "Entity" can be thought of as a "thing". If your project involves things that need to be shared between forms and may change over time, you can represent them as Entities. You can use Entities to represent real things like trees, people, or cities. You can also represent more abstract things like tree visits, malaria cases, or city ratings as Entities.
+In ODK, an **Entity** can be thought of as a "thing." If your project involves items that need to be shared across forms and may change over time, you can represent them as Entities. Entities can represent real-world things such as trees, people, or cities. They can also represent more abstract concepts, such as tree visits, malaria cases, or city ratings.
 
 Entities are organized in lists that group together Entities of the same type. You can think of Entity Lists as spreadsheets or databases that are shared across forms. Forms can create, read, and update Entities. You can also think of Entities as the nouns (trees) and the forms as the verbs (Register a tree).
 
@@ -187,9 +187,7 @@ If you usually have Internet connectivity, this is unlikely to be very important
 I need to assign specific Entities to specific data collectors, how can I represent this?
 -----------------------------------------------------------------------------------------
 
-:ref:`Entity filtering <entity-list-access-filter>` allows administrators to control which Entities are delivered to App Users and Public Access Links.
-
-Using :ref:`Custom Properties <central-custom-properties>` and filter rules, users can receive only the Entities relevant to their work. For example, a field worker assigned to a district can receive only Entities from that district.
+:ref:`Entity filtering <entity-list-access-filter>` allows administrators to control which Entities are delivered to App Users and Public Access Links. For example, a field worker assigned to a district can receive only Entities from that district.
 
 You can also filter what a user sees within a Form by using a  :ref:`select_one_from_file <select-from-external-dataset>` with a :ref:`choice_filter <cascading-selects>`. This doesn't limit the amount of data sent to each device but it can significantly reduce the amount of options shown to each user and can help speed up :ref:`lookup expressions <referencing-values-in-datasets>`.
 

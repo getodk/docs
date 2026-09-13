@@ -27,6 +27,7 @@ However, here are some things that encryption will **not** do:
  - Prevent a hijacker from replacing forms or redirecting submissions to a malicious server.
  - Prevent the creation of phony submissions.
  - Substitute for HTTPS security on the web administration panel.
+ - Encrypt the values that :ref:`the last-saved feature <last-saved>` stores on the device or in the browser. Submissions are still encrypted as usual.
 
 And, here are some limitations that will appear when encryption is enabled on a project or form:
 
