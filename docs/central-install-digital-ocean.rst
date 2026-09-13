@@ -1,4 +1,4 @@
-.. spelling:word-list::
+5.. spelling:word-list::
   Cloudflare
 
 .. _central-install-digital-ocean:
@@ -532,17 +532,14 @@ Creating and using a custom PostgreSQL database server
 Using S3-compatible Storage
 ---------------------------
 
-By default, Central stores form and submission attachments in its main database, but it can be configured to move these to an external object store. 
-
-- If S3-compatible storage goes down, Central will still accept submissions, but devices may not receive updates to forms with attachments, and integrations or dashboards that use attachments may fail.
-- If you opt into S3-compatible storage, you must design a backup and restore strategy for that storage.
-If you already have or plan to collect many files, storing them outside the main database can reduce database load and cost. It can also make it more practical to backup and restore the database.
+By default, Central stores form and submission attachments in its main database, but it can be configured to move these to an external object store. If you already have or plan to collect many files, storing them outside the main database can reduce database load and cost. It can also make it more practical to backup and restore the database.
 
 Consider the following to help you decide whether S3-compatible storage is a good fit:
 
 * You can configure S3-compatible storage at any time and migrate existing files out of your database. However, once you opt into using S3-compatible storage, there is no automated way to migrate files back to the database.
 * If you opt into S3-compatible storage, any system you use to retrieve file data from Central must be able to follow redirects (for example, Briefcase will not be able to retrieve form and submission attachments but ``pyodk`` will).
 * The names of objects stored in S3-compatible storage do not stand alone and must be converted to useful filenames and connected to the right forms and/or submissions by Central. For example, object names will look like ``blob-412-950ababd4c8cf8d11rf5421433b5e3dafx5f6e75``.
+* If S3-compatible storage goes down, Central will still accept submissions, but devices may not receive updates to forms with attachments, and integrations or dashboards that use attachments may fail.
 * If you opt into S3-compatible storage, you must design a backup and restore strategy for that storage.
 
 To use S3-compatible storage for all files saved in Central, follow these steps:
