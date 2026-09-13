@@ -1,4 +1,4 @@
-5.. spelling:word-list::
+.. spelling:word-list::
   Cloudflare
 
 .. _central-install-digital-ocean:
