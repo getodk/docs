@@ -68,7 +68,7 @@ The default geopoint question allows the user to get the location without a map 
 
 .. warning::
 
-  Different browsers manage location permissions differently. Some may not prompt for the permission and may require users to go to their settings to grant location access.
+  Different browsers manage location permissions differently. Some may not prompt for the permission and may require users to go to their settings to grant location access. In Safari on iOS, a denied location permission stays in effect for the open page even after it is changed in Settings. The user must reload the page for the new permission to take effect.
 
   If a user denies location permissions to a form, that permission will apply for all forms on that server and a user may need to go to browser settings to grant the permission.
 
