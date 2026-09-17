@@ -965,7 +965,7 @@ The ``search`` appearance allows the enumerator to filter the list of available 
 .. note::
 
   ``autocomplete`` is an alias for ``search`` and can be used to serve the same purpose, but ``search`` is now the recommended option because it is more intuitive.
-  
+
 .. image:: /img/form-question-types/select-search.*
   :alt: The Select One form widget with search, as displayed in the ODK Collect app on an Android phone. The question text is "Select one widget." The hint text is, "select one type with search appearance, 4 text choices." Below that is a text input followed by four radio buttons labeled A, B, C, and D. Above the question text is the form group name "Select one widgets." The device keyboard is active.
   :class: device-screen-vertical
@@ -1485,7 +1485,7 @@ Multiple points that form lines or shapes are separated by semicolons and called
 Mock location providers and external GPS devices
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Android makes it possible to provide mock locations to applications like ODK Collect. This can be useful for testing with real geo data without needing to go to a specific location. You can use applications like `Fake GPS <https://play.google.com/store/apps/details?id=com.lexa.fakegps&hl=en_US>`_ for this. 
+Android makes it possible to provide mock locations to applications like ODK Collect. This can be useful for testing with real geo data without needing to go to a specific location. You can use applications like `Fake GPS <https://play.google.com/store/apps/details?id=com.lexa.fakegps&hl=en_US>`_ for this.
 
 GPS faker applications can also be used by enumerators, presenting a risk to data quality. ODK Collect makes this detectable by always setting the accuracy to 0 when a location comes from a mock location provider. If you see an accuracy of 0 in analysis, the corresponding point came either from manual point placement or from a mock provider.
 
@@ -1553,8 +1553,8 @@ type
 appearance
   ``maps``
 
-.. seealso:: 
-  
+.. seealso::
+
   You can display previously collected geospatial data on the map as :ref:`reference geometry <geo-questions-reference-geometry>`.
 
 The default :ref:`geopoint-widget` does not display a map to the user. When the appearance attribute is ``maps``, the widget displays a map to help the user get oriented and confirm that the selected point is correct and sufficiently accurate.
@@ -1582,8 +1582,8 @@ type
 appearance
   ``placement-map``
 
-.. seealso:: 
-  
+.. seealso::
+
   You can display previously collected geospatial data on the map as :ref:`reference geometry <geo-questions-reference-geometry>`.
 
 The default :ref:`geopoint-widget` does not allow the user to place the point anywhere other than the device's current geolocation.
@@ -1615,8 +1615,8 @@ type
 appearance
   *none*
 
-.. seealso:: 
-  
+.. seealso::
+
  You can display previously collected geospatial data on the map as :ref:`reference geometry <geo-questions-reference-geometry>`.
 
 A series of points. Identical to :ref:`geoshape <geoshape-widget>` except that the first and last point may be different and at least 2 points are required.
@@ -1668,8 +1668,8 @@ type
 appearance
   *none*
 
-.. seealso:: 
-  
+.. seealso::
+
   You can display previously collected geospatial data on the map as :ref:`reference geometry <geo-questions-reference-geometry>`.
 
 A series of points that form a closed polygon. Identical to :ref:`geotrace <geotrace-widget>` except that the first and last point are always the same and at least 3 points are required.
@@ -2948,7 +2948,9 @@ To do this, put your select questions in a ``field-list`` group and use the foll
 Hidden questions
 ------------------
 
-Not all question types render as visible widgets in Collect. Hidden fields collect and store values which are accessible as :ref:`variables <variables>` and available in :doc:`Central <central-intro>` and other data analysis tools.
+Not all question types render as visible widgets in Collect and Web Forms. Hidden fields collect and store values which are accessible as :ref:`variables <variables>` and available in :doc:`Central <central-intro>` and other data analysis tools.
+
+Because hidden questions are never shown to the data collector, leave the ``label`` and ``hint`` columns empty for these question types.
 
 .. _metadata:
 
@@ -3106,6 +3108,8 @@ type
   background-geopoint, my_location, , ${at_door}
 
 The ``background-geopoint`` question type lets you automatically capture a single geolocation in :ref:`geopoint format <location-widgets>` when the user changes the value of another question. The geolocation reading with the highest accuracy received in a 20-second window after the triggering question is changed will be recorded. To capture location automatically when first launching a form, see :ref:`start-geopoint <metadata-start-geopoint>`.
+
+This question is never shown to the data collector, so leave the ``label`` and ``hint`` columns empty.
 
 If geolocation information is unavailable, the question will be left blank. Reasons for a blank value may include the enumerator turning off location providers, Collect not having location permissions, Google Play Services not being installed, the GPS not having satellite lock and more. No troubleshooting information is provided in the form submission.
 
