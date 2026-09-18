@@ -1840,6 +1840,8 @@ Adding the ``annotate`` appearance allows the user to draw on the image before s
 
   To enforce that this default image gets annotated, you can use a constraint such as `not(. = 'jr://images/template.png'))`. This works because Collect renames images after annotation.
 
+  If the image comes from another question, set it with a ``trigger`` or ``once()``. A plain ``calculation`` is not recommended because it can re-evaluate at any time and discard the user's drawing.
+
   Also see :ref:`select from image <image-map-select>`.
 
 .. image:: /img/form-question-types/annotate-start.*
