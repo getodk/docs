@@ -129,6 +129,8 @@ File uploads
 
 Web Forms supports uploading image, video, audio, and file attachments such as PDFs using the respective question types. For the :ref:`image question type <default-image-widget>`, users on a mobile device can also take a picture directly with their camera. Devices like laptops that use a desktop browser will not show the capture button, even if they have a built-in camera.
 
+The value of an upload question can also be set by the form itself. Use a static ``default``, a ``trigger``, or ``once()`` so that the value is set exactly once. A plain ``calculation`` is not recommended because it can re-evaluate at any time and replace the file the user chose.
+
 Date
 ~~~~~
 
@@ -180,6 +182,10 @@ Annotate, draw, and signature
 Web Forms supports the :ref:`image widget with annotation <annotate-widget>`, the :ref:`draw widget <draw-widget>`, and the :ref:`signature widget <signature-widget>`. All three open a drawing pad where the user can sketch with their mouse, finger, or stylus, and save the result as an image. The annotate and draw widgets provide pen color, zoom, undo, and clear controls; the signature widget uses a fixed black pen and provides only a clear control.
 
 The annotate widget starts from an existing image. The user captures an image with their camera (on devices that support it), uploads one from their device, or uses a default image attached to the form, then draws on top of it.
+
+When the form provides the image, Web Forms shows it and saves it as the answer right away, even before the user draws. If the base image changes later, any drawing is discarded. Collect behaves differently: it only saves an answer after the user opens the annotation screen, and it disables **Take Picture** and **Choose Image** so the provided default image is the one that gets annotated. Web Forms lets the user replace the default image at any time.
+
+As with the upload questions, provide the image with a ``default``, a ``trigger``, or ``once()``. A plain ``calculation`` is not recommended because it can re-evaluate at any time and discard the user's drawing.
 
 .. image:: /img/web-forms/annotate.*
   :alt: Web Forms image widget with annotation
