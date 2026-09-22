@@ -1810,6 +1810,8 @@ appearance
 
 Captures an image from the device. The user can choose to take a new picture with the device camera, or select an image from the device photo gallery.
 
+The form can also set the value with a ``default``, a ``trigger``, or ``once()``. If the value is an image attached to the form, only the file name is saved. The image itself is not uploaded. Central will mark the submission as missing an attachment, and the image cannot be downloaded from it. The image still shows when the submission is edited. This is the same in Collect and Web Forms.
+
 .. image:: /img/form-question-types/default-image-widget.*
   :alt: The default Image form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Image Widget." The hint text is, "image type with no appearance." Below that are two buttons: "Take Picture" and "Choose Image." Above the question text is the form group name "Image widgets."
   :class: device-screen-vertical

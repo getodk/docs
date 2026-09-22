@@ -129,7 +129,7 @@ File uploads
 
 Web Forms supports uploading image, video, audio, and file attachments such as PDFs using the respective question types. For the :ref:`image question type <default-image-widget>`, users on a mobile device can also take a picture directly with their camera. Devices like laptops that use a desktop browser will not show the capture button, even if they have a built-in camera.
 
-The value of an upload question can also be set by the form itself. Use a static ``default``, a ``trigger``, or ``once()`` so that the value is set exactly once. A plain ``calculation`` is not recommended because it can re-evaluate at any time and replace the file the user chose.
+The value of an upload question can also be set by the form itself. Use a static ``default``, a ``trigger``, or ``once()`` so that the value is set exactly once. A plain ``calculation`` is not recommended because it can re-evaluate at any time and replace the file the user chose. If the value is a file attached to the form, only the file name is saved. The file itself is not uploaded. Central will mark the submission as missing an attachment, and the file cannot be downloaded from it. The file still shows when the submission is edited. This is the same in Collect and Web Forms.
 
 Date
 ~~~~~
