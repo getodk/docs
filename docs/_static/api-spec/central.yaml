@@ -41,6 +41,12 @@ info:
 
     Here major and breaking changes to the API are listed by version.
 
+    ## ODK Central v2026.3.1
+
+    **Fixed**:
+
+    - The parsing of [Submission geodata](/central-api-submission-management/#retrieving-submissions-geodata) is now more resilient. It will not fail for XML content fragments. ([getodk/central#2261](https://github.com/getodk/central/issues/2261))
+
     ## ODK Central v2026.3
 
     **Added**:
