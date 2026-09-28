@@ -1810,6 +1810,8 @@ appearance
 
 Captures an image from the device. The user can choose to take a new picture with the device camera, or select an image from the device photo gallery.
 
+The form can also set the value with a ``default``, a ``trigger``, or ``once()``. If the value is an image attached to the form, only the file name is saved. The image itself is not uploaded. Central will mark the submission as missing an attachment, and the image cannot be downloaded from it. The image still shows when the submission is edited. This is the same in Collect and Web Forms.
+
 .. image:: /img/form-question-types/default-image-widget.*
   :alt: The default Image form widget, as displayed in the ODK Collect app on an Android phone. The question text is, "Image Widget." The hint text is, "image type with no appearance." Below that are two buttons: "Take Picture" and "Choose Image." Above the question text is the form group name "Image widgets."
   :class: device-screen-vertical
@@ -1839,6 +1841,8 @@ Adding the ``annotate`` appearance allows the user to draw on the image before s
   If you have a standard image to annotate, you can add that image's filename in the ``default`` column. For example, put ``template.png`` in the ``default`` column and Central will prompt you to attach a png to the form. Anyone who fills out the form will see the same image.
 
   To enforce that this default image gets annotated, you can use a constraint such as `not(. = 'jr://images/template.png'))`. This works because Collect renames images after annotation.
+
+  If the image comes from another question, set it with a ``trigger`` or ``once()``. A plain ``calculation`` is not recommended because it can re-evaluate at any time and discard the user's drawing.
 
   Also see :ref:`select from image <image-map-select>`.
 
