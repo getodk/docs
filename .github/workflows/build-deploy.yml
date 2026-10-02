@@ -31,6 +31,17 @@ jobs:
             xargs -L1 sh -c 'git cat-file blob "HEAD:$0" | \
             git lfs pointer --check --stdin || { echo "$0"; false; }'
 
+      - name: Get pip cache directory
+        id: pip-cache
+        run: echo "dir=$(pip cache dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v6
+        with:
+          path: ${{ steps.pip-cache.outputs.dir }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: ${{ runner.os }}-pip-
+
       - name: Install build requirements
         run: |
           sudo apt-get update
