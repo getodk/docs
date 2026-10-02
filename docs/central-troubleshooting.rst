@@ -66,7 +66,7 @@ Now, run ``nano /etc/docker/daemon.json`` to make those nameservers and, optiona
       "dns": ["1.2.3.4", "9.8.7.6", "8.8.8.8"]
   }
 
-Finally, stop the containers, restart Docker, and bring the containers back up with ``docker compose stop``, ``systemctl restart docker`` and ``docker compose up -d``.
+Finally, stop the containers, restart Docker, and bring the containers back up with ``docker compose stop``, ``systemctl restart docker`` and ``docker compose up --detach``.
 
 .. _migration-fails-due-to-out-of-memory-error:
 
@@ -110,7 +110,7 @@ If you absolutely must upload files over 100 MB, you can change `client_max_body
   $ nano server/test/unit/http/endpoint.js
   <modify X-OpenRosa-Accept-Content-Length value>
   $ docker build
-  $ docker compose up -d
+  $ docker compose up --detach
 
 Note that uploads in Central do not resume from where they left off, so uploading large files over unreliable connections can result in wasted data and a low chance of success.
 
