@@ -461,9 +461,16 @@ Triggering calculations on value change
   
   Support for triggering calculations on value change was added in Collect v1.24.0 and Central v1.1.0. Using older versions will have unpredictable results.
 
-:ref:`Calculations <calculations>` are recomputed any time one of the values in its expression changes. For example, if your form includes the calculation `${q1} + ${q2}`, it will be recomputed any time either of the values for `${q1}` or `${q2}` changes.
+:ref:`Calculations <calculations>` are recomputed any time one of the values in its expression changes. For example, if your form includes the calculation ``${q1} + ${q2}``, it will be recomputed any time either of the values for ``${q1}`` or ``${q2}`` changes.
 
 Calculations can also be triggered when a value not involved in the calculation changes. This uses the same ``trigger`` column as  :ref:`defaults from form data <defaults-from-form-data>`. It is particularly useful for triggering calculations that involve values not in the form like random numbers or time.
+
+Multiple triggers
+-------------------------------
+
+.. versionadded:: v2025.4.0
+
+To use multiple triggers, write a comma separated list of variable references in ``trigger`` column, for example: ``${q1},${q2},${q3}``. The calculation will be recomputed when any of the listed values change; in other words, the list of triggers acts like an ``OR`` expression.
 
 .. _lightweight_timestamping:
 
