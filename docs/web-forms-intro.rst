@@ -1,5 +1,8 @@
 .. spelling:word-list::
     yyyy
+    Frans
+    wo
+    Wolof
 
 ODK Web Forms
 ====================
@@ -232,9 +235,72 @@ Translations
 
   :doc:`guide-form-language`
 
-Web Forms will display text using the default language specified in the form definition if there is one, reverting to the first supported language the user has configured in their browser. If no browser language matches one of the form languages, then the default language is English. The user may select their preferred language from the language selector dropdown shown at the top of the form, which is then saved and used for all future forms.
+A form can be defined in :doc:`multiple languages <form-language>`. When a form is opened, Web Forms selects the form language in this order:
+
+#. The language the user last selected in Web Forms on that device, if the form includes it or a regional variant of it.
+#. The form's default language, if the form designer specified one.
+#. The first of the browser's preferred languages that matches a form language.
+#. The first language defined in the form.
+
+The user may select their preferred language from the language selector dropdown shown at the top of the form.
 
 .. image:: /img/web-forms/language-selector.*
   :alt: The language selector
 
-When designing the form you can specify any languages you like, however the languages used for application elements such as buttons and status dialogs are limited to: English, español, français, and bahasa Indonesia. If you would like to contribute additional languages, follow the `ODK Central translation guide <https://docs.google.com/document/d/1C0MS_ytAEBHwbMkdR-QrtDrWAAh_EkJo2QRr4XyIOpk>`_ and if you have questions, post in the `the translation category <https://forum.getodk.org/c/development/translation/14>`_ on the ODK Forum.
+.. note::
+
+  The selected language is remembered per device and browser and applies to all forms opened from the same server. It can therefore override another form's default language, if that form also includes the remembered language.
+
+Beyond the form's question text, two other kinds of text follow their own language rules:
+
+- **Interface text** (buttons and status dialogs) is available in English, español, français, and bahasa Indonesia. Web Forms uses the one that matches the form language being displayed, falling back to English. If you would like to contribute additional languages, follow the `ODK Central translation guide <https://docs.google.com/document/d/1C0MS_ytAEBHwbMkdR-QrtDrWAAh_EkJo2QRr4XyIOpk>`_ and if you have questions, post in the `translation category <https://forum.getodk.org/c/development/translation/14>`_ on the ODK Forum.
+- **Date formats** in calendar widgets follow the form language being displayed, preferring the browser's regional variant of it when there is one. For example, a browser set to Australian English sees Australian date formats in an English form. If date formats are not available for the form language, English formats are used.
+
+For language matching to work, include the language code in parentheses in your language names (for example ``English (en)``), as described in :doc:`form-language`. A language without a code (for example ``Frans``) can still be selected manually, but it cannot be matched to the browser language or remembered across forms; interface text and date formats then follow the browser language. Regional codes such as ``English (en-US)`` are matched exactly when possible; otherwise, any variant of the same base language matches.
+
+.. dropdown:: Detailed language selection scenarios
+
+  The table below shows the expected outcome for combinations of browser language, previously saved selection, and form languages. A dash means not set or not applicable. :guilabel:`Saved` is the language previously selected on the device, :guilabel:`Form language` is the language used for question text, :guilabel:`Interface text` is the language of buttons and dialogs, and :guilabel:`Date formats` is the language that calendar widgets use for date formatting.
+
+  .. raw:: html
+
+    <style>
+      table.locale-scenarios-table td:last-child {
+        min-width: 28em;
+      }
+    </style>
+
+  .. csv-table::
+    :class: locale-scenarios-table
+    :header: "#", "Browser language(s)", "Saved", "Form languages", "Form default", "Form language", "Interface text", "Date formats", "Notes"
+
+    "A", "fr", "—", "fr, en, ar", "en", "en", "en", "en", "Form default wins over browser match"
+    "B", "fr", "—", "fr, en, ar", "—", "fr", "fr", "fr", ""
+    "C", "wo", "—", "fr, en, ar", "en", "en", "en", "en", "Form default wins over first form language"
+    "D", "wo", "—", "fr, en, ar", "—", "fr", "fr", "fr", "Browser language matches no form language; first form language is used"
+    "E", "wo", "—", "fr, en, ar", "fr", "fr", "fr", "fr", ""
+    "F", "wo", "—", "fr, ar", "fr", "fr", "fr", "fr", ""
+    "G", "wo", "—", "fr, ar", "—", "fr", "fr", "fr", "Browser language matches no form language; first form language is used"
+    "H", "fr", "—", "ar, en", "en", "en", "en", "en", "Form default wins over first form language"
+    "I", "fr", "—", "ar, en", "—", "ar", "en", "ar", "No browser match; first form language is used. Interface text is not available in Arabic, so it falls back to English"
+    "J", "fr", "—", "ar, en", "ar", "ar", "en", "ar", "Interface text is not available in Arabic"
+    "K", "en", "—", "ar, en", "ar", "ar", "en", "ar", "Form default wins over browser match. Interface text is not available in Arabic"
+    "L", "en", "—", "en, ar", "—", "en", "en", "en", ""
+    "M", "ar", "—", "en, ar", "—", "ar", "en", "ar", "Interface text is not available in Arabic"
+    "N", "wo", "—", "wo, en", "wo", "wo", "en", "en", "Wolof is not available for interface text or date formats; both fall back to English"
+    "O", "wo", "—", "wo, en", "—", "wo", "en", "en", "Wolof is not available for interface text or date formats; both fall back to English"
+    "P", "wo", "—", "wo, en", "en", "en", "en", "en", "Form default wins over browser match"
+    "Q", "en", "—", "wo, en", "en", "en", "en", "en", ""
+    "R", "en", "—", "wo, en", "—", "en", "en", "en", ""
+    "S", "fr", "—", "en, Frans", "en", "en", "en", "en", ""
+    "T", "fr", "—", "Frans, en", "—", "Frans", "fr", "fr", "``Frans`` has no language code, so interface text and date formats follow the browser language"
+    "U", "de", "—", "en, Frans", "Frans", "Frans", "en", "de", "``Frans`` has no language code; date formats follow the browser language (German is available for dates but not for interface text)"
+    "V", "de", "—", "en, Frans", "—", "en", "en", "en", "Browser language matches no form language; first form language is used"
+    "W", "de", "—", "—", "—", "—", "en", "de", "Form has no languages; date formats follow the browser language, interface text falls back to English"
+    "X", "de, fr", "—", "fr, en", "—", "fr", "fr", "fr", "German matches no form language; French (the second browser language) matches"
+    "Y", "en-NZ, en-AU, es, en", "—", "en, es", "—", "en", "en", "en-AU", "en-NZ matches the form's English; date formats use the closest available browser variant (en-AU, since en-NZ is not available)"
+    "Z", "en", "ar", "en, ar", "en", "ar", "en", "ar", "Saved selection wins over both browser match and form default. Interface text is not available in Arabic"
+    "AA", "en", "—", "en-AU, en-NZ, en-US", "—", "en-AU", "en", "en", "No exact match; the first English variant defined in the form is used"
+    "AB", "en-NZ", "—", "en-AU, en-US", "—", "en-AU", "en", "en-AU", "No exact match; first English variant is used. Date formats use en-AU, since en-NZ is not available"
+    "AC", "en-US", "—", "en-AU, en-NZ, en-US", "—", "en-US", "en", "en", "Exact match wins over form order. Date formats fall back to generic English, since en-US is not available"
+    "AD", "en-GB", "—", "en-AU, en-US", "en-US", "en-US", "en", "en-GB", "Form default wins over browser match. Date formats use the browser's en-GB"
