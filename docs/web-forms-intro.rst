@@ -242,7 +242,7 @@ A form can be defined in :doc:`multiple languages <form-language>`. When a form 
 #. The first of the browser's preferred languages that matches a form language.
 #. The first language defined in the form.
 
-The user may select their preferred language from the language selector dropdown shown at the top of the form.
+If the form defines multiple languages, the user may select their preferred language from the language selector dropdown shown at the top of the form.
 
 .. image:: /img/web-forms/language-selector.*
   :alt: The language selector
