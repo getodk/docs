@@ -147,7 +147,7 @@ The following commands do not cause any user downtime, but they must be run one 
    .. code-block:: bash
 
      $ docker exec -it central-postgres14-1 psql -U odk -W odk \
-     $ -c "REINDEX TABLE CONCURRENTLY public.roles"
+           -c "REINDEX TABLE CONCURRENTLY public.roles"
 
    Note: the default database password is ``odk`` but you may have set a different one.
 
@@ -156,14 +156,14 @@ The following commands do not cause any user downtime, but they must be run one 
    .. code-block:: bash
 
      $ docker exec -it central-postgres14-1 psql -U odk -W odk \
-     $ -c "REINDEX TABLE CONCURRENTLY public.entity_defs"
+          -c "REINDEX TABLE CONCURRENTLY public.entity_defs"
 
 #. Rebuild the index for the ``audits`` table
 
    .. code-block:: bash
 
      $ docker exec -it central-postgres14-1 psql -U odk -W odk \
-     $ -c "REINDEX TABLE CONCURRENTLY public.audits"
+          -c "REINDEX TABLE CONCURRENTLY public.audits"
 
 .. _central-upgrade-2025.3:
 
