@@ -38,8 +38,8 @@ For users who have been using web forms in Central prior to v2026.2.0, here is f
 * big-image for labels
 * no-calendar appearance
 * Select from svg
-* Launch form offline and save drafts
 * Guidance hints
+* Launch form offline and save drafts
 * Progress bar
 * Audio recording in foreground and background
 * Picker, ticks appearances for range
