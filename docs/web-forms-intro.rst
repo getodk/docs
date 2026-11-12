@@ -228,6 +228,23 @@ Unlike Collect, a ``field-list`` group can also contain a repeat and it is shown
 
 Use the :guilabel:`Back` and :guilabel:`Next` buttons to move between pages. Pages where no question is :ref:`relevant <relevants>` are skipped.
 
+Autosave
+------------
+
+.. versionadded:: v2026.4.0
+
+Forms can now be configured to automatically store form contents in the user's browser. This can be useful to protect against losing information when the browser tab is closed unintentionally. This feature is enabled by default for all forms created on v2026.4.0 or later, except for forms with submission encryption enabled.
+
+.. warning::
+
+  Data stored in the browser is not encrypted so it is possible a third party with access to the users's device can read it. If your form may sensitive information consider the risks of having this feature enabled and consider disabling it.
+
+When returning to a form the user will be prompted to restore or discard the autosaved instance. Web Forms will ignore data older than 30 days. Data stored on the device cannot be guaranteed as at any time the browser may choose to delete it, so this feature should not be relied on to store critical information for a long period of time.
+
+Users can only store one autosave record per form and any further updates will overwrite the stored record with the new version.
+
+To enable or disable autosave, go to the :guilabel:`Settings` tab for that form. In the :guilabel:`Web forms experience` section, and toggle the :guilabel:`Autosave` checkbox.
+
 Translations
 ------------
 
