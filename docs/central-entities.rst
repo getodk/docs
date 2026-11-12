@@ -1,7 +1,7 @@
 Managing Entities in Central
 ================================
 
-.. versionadded:: v2022.3
+.. versionadded:: v2022.3.0
 
 **Entities** in ODK let you share information between Forms so you can collect longitudinal data, manage cases over time, and support other complex workflows.
 
@@ -311,7 +311,7 @@ The same Entity List can be used in many different Forms. The concepts and patte
 Updating Entities from Forms
 ----------------------------
 
-.. versionadded:: v2023.5
+.. versionadded:: v2023.5.0
 
 You can use Forms to update Entity information. These Forms can be authored to, for example, update previous observations to new values or change the status of an Entity. Just like Entity creation through Forms, you can specify which properties on which Entity instances will be updated when the Form's Submissions are uploaded to Central. The data in Submissions uploaded by Entity-updating Forms are applied to the Entity data saved on the Central server. These updated Entity values are then distributed to data collection clients once they synchronize with Central.
 

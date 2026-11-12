@@ -3,7 +3,7 @@
 Managing Projects in Collect
 ============================
 
-.. versionadded:: v2021.2
+.. versionadded:: v2021.2.0
 
 Starting with Collect v2021.2, Collect can be set up with multiple Projects. Each Project in Collect has its own set of :doc:`Forms <collect-forms>` and :doc:`Settings <collect-settings>`.
 
