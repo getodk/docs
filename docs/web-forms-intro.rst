@@ -233,15 +233,17 @@ Autosave
 
 .. versionadded:: v2026.4.0
 
-Forms can now be configured to automatically store form contents in the user's browser. This can be useful to protect against losing information when the browser tab is closed unintentionally. This feature is enabled by default for all forms created on v2026.4.0 or later, except for forms with submission encryption enabled.
+Forms can now be configured to automatically store form contents in the user's browser, including any files, photos, and other media that have been captured. This can be useful to protect against losing information when the browser tab is closed unintentionally. This feature is enabled by default for all forms created on v2026.4.0 or later, except for forms with submission encryption enabled. Forms created on earlier versions of Central will have to be manually configured to opt-in to using autosave.
 
 .. warning::
 
-  Data stored in the browser is not encrypted so it is possible a third party with access to the users's device can read it. If your form may sensitive information consider the risks of having this feature enabled and consider disabling it.
+  Data stored in the browser is not encrypted so it is possible a third party with access to the user's device can access it. If your form may contain sensitive information consider the risks of having this feature enabled and consider disabling it.
 
-When returning to a form the user will be prompted to restore or discard the saved instance. Web Forms will ignore data older than 30 days. Data stored on the device cannot be guaranteed as at any time the browser may choose to delete it, so this feature should not be relied on to store critical information for a long period of time.
+When returning to a form the user will be prompted to recover or discard the saved instance. Web Forms will ignore data older than 30 days. The browser may delete stored data at any time, so don't rely on this feature for long-term storage.
 
-Users can only store one saved record per form and any further updates will overwrite the stored record with the new version.
+Users can only store one record per form per browser, and any further updates will overwrite the stored record with the new version.
+
+Autosave does not run when editing, previewing, or filling in draft forms.
 
 To enable or disable Autosave, go to the :guilabel:`Settings` tab for that form. In the :guilabel:`Web forms experience` section, and toggle the :guilabel:`Autosave` checkbox.
 
