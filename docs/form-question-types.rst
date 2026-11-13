@@ -1904,7 +1904,7 @@ An image widget that does not include a :guilabel:`Choose Image` button. This re
 
 Image widget with custom camera app
 """"""""""""""""""""""""""""""""""""""
-.. versionadded:: 2024.1.0
+.. versionadded:: v2024.1.0
 
 When attempting to capture a photo, ODK Collect by default opens the built-in camera app. However, if you wish to utilize a specific camera application, you can do so by including the ``app`` parameter and providing the package name of the desired camera app.
 
@@ -3099,7 +3099,7 @@ Background geopoint
 type
   ``background-geopoint``
 
-.. versionadded:: v2024.3
+.. versionadded:: v2024.3.0
 
   `ODK Central v2024.3 <https://github.com/getodk/central/releases/tag/v2024.3>`_
 

@@ -163,7 +163,7 @@ If you would like to display one choice with image per row, as is the default fo
 Select one from map
 ~~~~~~~~~~~~~~~~~~~
 
-.. versionadded:: Central v2025.3
+.. versionadded:: v2025.3.0
 
 The :ref:`select one from map question type <select-from-map>` allows users to select an option from choices displayed on a map. Each choice must include a ``geometry`` column in the ``choices`` sheet. The map uses OpenStreetMap as the base layer and supports zooming, panning, and tapping features to view details and make a selection.
 
@@ -218,7 +218,7 @@ You can style text such as notes, labels, hints, options, and validation message
 Pages
 ------
 
-.. versionadded:: Web Forms v1.1
+.. versionadded:: v2025.3.0
 
 To use pages in a form, set the ``style`` to ``pages`` in the ``settings`` sheet, as described in `the XLSForm documentation <https://xlsform.org/en/#multiple-webpage-forms>`_.
 
