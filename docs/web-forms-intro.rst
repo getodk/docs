@@ -228,6 +228,25 @@ Unlike Collect, a ``field-list`` group can also contain a repeat and it is shown
 
 Use the :guilabel:`Back` and :guilabel:`Next` buttons to move between pages. Pages where no question is :ref:`relevant <relevants>` are skipped.
 
+Autosave
+------------
+
+.. versionadded:: v2026.4.0
+
+Forms can now be configured to automatically store form contents in the user's browser, including any files, photos, and other media that have been captured. This can be useful to protect against losing information when the browser tab is closed unintentionally. This feature is enabled by default for all forms created on v2026.4.0 or later, except for forms with submission encryption enabled. Forms created on earlier versions of Central will have to be manually configured to opt-in to using Autosave.
+
+.. warning::
+
+  Data stored in the browser is not encrypted so it is possible a third party with access to the user's device can access it. If your form may contain sensitive information consider the risks of having this feature enabled and consider disabling it.
+
+When returning to a form the user will be prompted to recover or discard the saved instance. Web Forms will ignore data older than 30 days. The browser may delete stored data at any time, so don't rely on this feature for long-term storage.
+
+Users can only store one record per form per browser, and any further updates will overwrite the stored record with the new version.
+
+Autosave does not run when editing, previewing, or filling in draft forms.
+
+To enable or disable Autosave, go to the :guilabel:`Settings` tab for that form. In the :guilabel:`Web forms experience` section, and toggle the :guilabel:`Autosave` checkbox.
+
 Translations
 ------------
 
