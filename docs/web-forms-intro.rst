@@ -233,7 +233,7 @@ Autosave
 
 .. versionadded:: v2026.4.0
 
-Forms can now be configured to automatically store form contents in the user's browser, including any files, photos, and other media that have been captured. This can be useful to protect against losing information when the browser tab is closed unintentionally. This feature is enabled by default for all forms created on v2026.4.0 or later, except for forms with submission encryption enabled. Forms created on earlier versions of Central will have to be manually configured to opt-in to using autosave.
+Forms can now be configured to automatically store form contents in the user's browser, including any files, photos, and other media that have been captured. This can be useful to protect against losing information when the browser tab is closed unintentionally. This feature is enabled by default for all forms created on v2026.4.0 or later, except for forms with submission encryption enabled. Forms created on earlier versions of Central will have to be manually configured to opt-in to using Autosave.
 
 .. warning::
 
