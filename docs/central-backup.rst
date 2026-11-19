@@ -88,7 +88,7 @@ Performing a Direct Backup can take some time. Take care in using this feature p
     
     ``openssl enc -d -chacha20 -pbkdf2 < /path/to/central-backup-2026-04-01T11:22:33.456Z.pgdump.enc.bin | pg_restore --file /dev/null``
 
-Note that the ``pg_restore`` version must match the version used to make the ``pg_dump``.  The simplest way to do this is to use the version from inside the ``service`` container:
+    Note that the ``pg_restore`` version must match the version used to make the ``pg_dump``.  The simplest way to do this is to use the version from inside the ``service`` container:
 
     ``openssl enc -d -chacha20 -pbkdf2 < /path/to/central-backup-2026-04-01T11:22:33.456Z.pgdump.enc.bin | docker compose exec -T service pg_restore --file /dev/null``
     
