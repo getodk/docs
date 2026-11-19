@@ -87,6 +87,10 @@ Performing a Direct Backup can take some time. Take care in using this feature p
     On a Linux/Unix system, you can use the ``openssl`` and ``pg_restore`` utilities to check a backup file's integrity in the following way. OpenSSL decrypts the file and, if supplied with the correct passphrase, produces a unencrypted stream in the ``pg_dump`` binary archival format (conversely, if given an incorrect passphrase, it will produce a stream of gibberish). If we hand that stream to ``pg_restore``, we can simulate a restore and by that, verify the archive. Example incantation:
     
     ``openssl enc -d -chacha20 -pbkdf2 < /path/to/central-backup-2026-04-01T11:22:33.456Z.pgdump.enc.bin | pg_restore --file /dev/null``
+
+Note that the ``pg_restore`` version must match the version used to make the ``pg_dump``.  The simplest way to do this is to use the version from inside the ``service`` container:
+
+    ``openssl enc -d -chacha20 -pbkdf2 < /path/to/central-backup-2026-04-01T11:22:33.456Z.pgdump.enc.bin | docker compose exec -T service pg_restore --file /dev/null``
     
     It will ask for the backup passphrase. Just press the ``enter`` key if you didn't use any passphrase.
     
