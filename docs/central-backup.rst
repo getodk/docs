@@ -136,14 +136,14 @@ Restoring a backup
 
         cd
         cd central
-        cat /root/backupfile | docker compose exec -T service node /usr/odk/lib/bin/restore.js - 'SECRET_PASSPHRASE'
+        docker compose exec -T service node /usr/odk/lib/bin/restore.js - 'SECRET_PASSPHRASE' </root/backupfile
 
     * For a backup ending with .zip (the format produced by Central versions prior to v2026.2), we cannot simply stream the file, and we have to transfer the file "into" the container first. This will create an extra copy of the backup file. The restore process then unpacks the .zip file, creating yet *another* copy of the data. Thus you may want to make sure that there is enough disk space available. You can run the restore process like so:
     .. code-block:: bash
 
         cd
         cd central
-        cat /root/backupfile | docker compose exec -T service sh -c "cat > /tmp/odk_backup.zip"
+        docker compose exec -T service sh -c "cat > /tmp/odk_backup.zip" </root/backupfile
         docker compose exec service node /usr/odk/lib/bin/restore.js /tmp/odk_backup.zip 'SECRET_PASSPHRASE'
         docker compose exec service rm /tmp/odk_backup.zip
 
