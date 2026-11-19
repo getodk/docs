@@ -243,7 +243,7 @@ When returning to a form the user will be prompted to recover or discard the sav
 
 Users can only store one record per form per browser, and any further updates will overwrite the stored record with the new version.
 
-Autosave does not run when editing, previewing, or filling in draft forms.
+Autosave does not run when editing, previewing, or filling in draft forms. When recovering a record any field values passed as URL parameters will be ignored so as not to overwrite the restored state.
 
 To enable or disable Autosave, go to the :guilabel:`Settings` tab for that form. In the :guilabel:`Web forms experience` section, and toggle the :guilabel:`Autosave` checkbox.
 
