@@ -123,6 +123,19 @@ For scenarios requiring precise coordinate adjustments, an advanced panel can be
 .. image:: /img/web-forms/map-advanced-panel.*
   :alt: Web forms advanced panel for geoshape and geotrace
 
+.. _web-forms-google-maps:
+
+Google Maps layers
+""""""""""""""""""
+
+.. versionadded:: v2026.4.0
+
+By default, map questions use OpenStreetMap. If your server administrator sets ``GOOGLE_MAPS_KEY`` in Central's ``.env`` file, map questions use Google Maps instead and show a layer picker with **Default**, **Satellite**, and **Terrain**. The key must have the Map Tiles API enabled in Google Cloud. Map usage is billed to that Google Cloud account.
+
+If the key is invalid or over its quota, the map shows an error and the Google layers do not load. Web Forms does not fall back to OpenStreetMap.
+
+Unlike Enketo, Web Forms ignores Enketo's layer configuration and always offers these three layers when a key is set.
+
 File uploads
 ~~~~~~~~~~~~
 
