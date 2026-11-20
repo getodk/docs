@@ -93,15 +93,15 @@ html_js_files = ["js/custom.js"]
 
 html_theme_options = {
     'light_css_variables': {
-        'color-brand-primary': '#009ECC',
-        'color-brand-content': '#009ECC',
-        'color-announcement-background': '#1a1c1e',
-        'color-announcement-text': '#ffffffcc',
+        'color-brand-primary': '#0A80A3',
+        'color-brand-content': '#0A80A3',
+        'color-announcement-background': '#1A1C1E',
+        'color-announcement-text': '#FFFFFFCC',
     },
     'dark_css_variables': {
-        'color-brand-primary': '#009ECC',
-        'color-brand-content': '#009ECC',
-        'color-announcement-background': '#f8f9fb',
+        'color-brand-primary': '#0A80A3',
+        'color-brand-content': '#0A80A3',
+        'color-announcement-background': '#F8F9FB',
         'color-announcement-text': 'black',
     },
     'announcement': '<b>Looking for a better way?</b> Use <a href="https://getodk.org/#pricing">ODK Cloud</a>, the official managed hosting service from the creators of ODK.',

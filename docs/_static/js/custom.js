@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   script.src = "https://widget.kapa.ai/kapa-widget.bundle.js";
   script.setAttribute("data-website-id", "6de76ee0-0882-4210-b4c2-9a62ec8adb4b");
   script.setAttribute("data-project-name", "ODK Docs");
-  script.setAttribute("data-project-color", "#009ECC");
+  script.setAttribute("data-project-color", "#0A80A3");
   script.setAttribute("data-project-logo", "https://getodk.org/assets/img/logo-square.jpg");
   script.setAttribute("data-button-hide", true);
   script.setAttribute("data-modal-title-ask-ai", "ODK Docs AI");
