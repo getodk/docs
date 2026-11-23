@@ -37,11 +37,9 @@ For users who have been using web forms in Central prior to v2026.2.0, here is f
 * big-image for labels
 * no-calendar appearance
 * Select from svg
-* Guidance hints
 * Launch form offline and save drafts
 * Progress bar
 * Audio recording in foreground and background
-* Picker, ticks appearances for range
 * Grid layout
 
 Please let us know `on the forum <https://forum.getodk.org/c/support/6>`_ what is most important to you.
@@ -154,6 +152,18 @@ Date
   :class: central-partial-screen
 
 The :ref:`date question type <default-date-widget>` without appearance allows the user to enter a date. The user can manually type a date in the text field or click in the field to select a date from a calendar. The date format is based on the form's language, or the browser's language if the form does not have a language set. To change the year, they can press on the current year at the top of the calendar. To change the month, they can use the navigation arrows or press on the current month at the top of the calendar. There are also buttons to clear the date or jump to today.
+
+.. _web-forms-range:
+
+Range
+~~~~~
+
+.. versionadded:: v2026.4.0
+
+The :ref:`range question type <range-widgets>` shows tick marks and tick labels on the number line. It also supports the ``no-ticks`` and ``picker`` appearances and the ``tick_interval`` and ``placeholder`` parameters.
+
+.. image:: /img/web-forms/range-ticks-labels.*
+  :alt: Range question in Web Forms with tick marks and tick labels
 
 .. _web-forms-selects-images:
 
