@@ -291,7 +291,7 @@ If you are having issues with Central running out of memory, we strongly recomme
 #. To add 2 GB swap, log into your server's console and run these commands.
 
    .. code-block:: bash
-   
+
      $ fallocate -l 2G /swap
      $ dd if=/dev/zero of=/swap bs=1k count=2048k
      $ chmod 600 /swap
@@ -317,11 +317,11 @@ If you are having issues with Central running out of memory, we strongly recomme
 #. Edit ``/etc/fstab`` and add the following to the end of the file to ensure that the swap file is permanently available.
 
    .. code-block:: bash
-  
+
      $ nano /etc/fstab
-  
+
    .. code-block:: bash
-  
+
     /swap swap swap defaults 0 0
 
 #. Finally, :ref:`increase memory allocation <central-install-custom-memory>` so Central can use the swap you've added.
@@ -380,7 +380,7 @@ Central uses Let's Encrypt SSL certificates to secure all communication. To use 
      $ cp fullchain.pem central/files/local/customssl/
      $ cp privkey.pem central/files/local/customssl/
 
-#. In ``.env``, set ``SSL_TYPE`` to ``customssl`` and set ``DOMAIN`` to the domain name you registered. 
+#. In ``.env``, set ``SSL_TYPE`` to ``customssl`` and set ``DOMAIN`` to the domain name you registered.
 
    .. code-block:: bash
 
@@ -466,7 +466,7 @@ However, you may want to connect to and use a database that runs elsewhere, for 
 Configuring access to an external PostgreSQL database
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-From Central 2026.1 onwards, you can use PostgreSQL's environment variables in your ``.env`` file to configure the connection — 
+From Central 2026.1 onwards, you can use PostgreSQL's environment variables in your ``.env`` file to configure the connection —
 please refer to the `PostgreSQL documentation <https://www.postgresql.org/docs/14/libpq-envars.html>`_ for this.
 
 .. warning::
@@ -632,7 +632,7 @@ To use S3-compatible storage for all files saved in Central, follow these steps:
    1. Connect to your database server.
 
       .. tabs::
-   
+
          .. tab:: Default database
 
            .. code-block:: bash
@@ -799,7 +799,7 @@ By default, Central :doc:`Web User <central-users>` sessions expire after 24 hou
      $ nano .env
 
    .. code-block:: bash
-    
+
      SESSION_LIFETIME=3600 # 1 hour
 
 #. Build and restart all containers.
@@ -910,8 +910,8 @@ DKIM is a protocol which is used to help verify mail server identities. Without 
       .. code-block:: bash
 
         v=DMARC1; p=none
-   
-   3. ``DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content. Get the server IP address from the DigitalOcean control panel. 
+
+   3. ``DOMAIN-NAME-HERE``: create a ``TXT`` record with the following content. Get the server IP address from the DigitalOcean control panel.
 
       .. code-block:: bash
 
@@ -928,6 +928,25 @@ DKIM is a protocol which is used to help verify mail server identities. Without 
    .. code-block:: bash
 
      $ docker compose build mail && docker compose stop mail && docker compose up --detach mail
+
+.. _central-install-digital-ocean-google-maps:
+
+Using Google Maps in Web Forms
+------------------------------
+
+.. versionadded:: v2026.4.0
+
+By default, map questions in Web Forms use OpenStreetMap. You can show Google Maps instead, which adds **Satellite** and **Terrain** layers and a search box for places and addresses. To do this, you need a Google Maps API key. Map and search usage is billed to your Google Cloud account.
+
+1. In the Google Cloud console, create an API key. Enable the **Map Tiles API** and the **Geocoding API** for it, and restrict it to your Central domain.
+
+2. In ``.env``, set ``GOOGLE_MAPS_KEY`` to the key.
+
+3. Build and restart all containers.
+
+If the key is invalid, the APIs are not enabled, or the quota is exhausted, map questions show an error and the Google layers do not load. Web Forms does not fall back to OpenStreetMap. To return to OpenStreetMap, clear ``GOOGLE_MAPS_KEY`` and build and restart all containers again.
+
+This setting does not affect Enketo, which keeps its own map configuration.
 
 .. _central-install-digital-ocean-enketo:
 

@@ -34,7 +34,6 @@ We've extensively tested ODK Web Forms and consider it ready for production use 
 
 For users who have been using web forms in Central prior to v2026.2.0, here is functionality in Enketo that's coming to Web Forms, in rough order of priority:
 
-* Satellite basemaps
 * big-image for labels
 * no-calendar appearance
 * Select from svg
@@ -125,16 +124,17 @@ For scenarios requiring precise coordinate adjustments, an advanced panel can be
 
 .. _web-forms-google-maps:
 
-Google Maps layers
-""""""""""""""""""
+Google Maps layers and search
+"""""""""""""""""""""""""""""
 
 .. versionadded:: v2026.4.0
 
-By default, map questions use OpenStreetMap. If your server administrator sets ``GOOGLE_MAPS_KEY`` in Central's ``.env`` file, map questions use Google Maps instead and show a layer picker with **Default**, **Satellite**, and **Terrain**. The key must have the Map Tiles API enabled in Google Cloud. Map usage is billed to that Google Cloud account.
+By default, map questions use OpenStreetMap. If you have :ref:`enabled Google Maps <central-install-digital-ocean-google-maps>`, map questions use Google Maps instead. A layer button lets you switch between the **Default**, **Satellite**, and **Terrain** views. A search box at the top of the map lets you type a place or address and move the map there. The map opens with the **Default** layer each time.
 
-If the key is invalid or over its quota, the map shows an error and the Google layers do not load. Web Forms does not fall back to OpenStreetMap.
+To display Google Maps, your browser sends your IP address and the map areas you view to Google. Tap the info button next to the Google attribution section on the bottom of the map for details.
 
-Unlike Enketo, Web Forms ignores Enketo's layer configuration and always offers these three layers when a key is set.
+.. image:: /img/web-forms/map-google-layers.*
+  :alt: Web Forms map question with Google Maps layers and search
 
 File uploads
 ~~~~~~~~~~~~
@@ -178,7 +178,7 @@ Select one from map
 
 .. versionadded:: v2025.3.0
 
-The :ref:`select one from map question type <select-from-map>` allows users to select an option from choices displayed on a map. Each choice must include a ``geometry`` column in the ``choices`` sheet. The map uses OpenStreetMap as the base layer and supports zooming, panning, and tapping features to view details and make a selection.
+The :ref:`select one from map question type <select-from-map>` allows users to select an option from choices displayed on a map. Each choice must include a ``geometry`` column in the ``choices`` sheet. The map supports zooming, panning, and tapping features to view details and make a selection. It uses the same :ref:`map layers <web-forms-google-maps>` as the other map questions.
 
 .. image:: /img/web-forms/select-one-from-map.*
   :alt: Select one from map in Web Forms
@@ -189,7 +189,6 @@ The following features are not supported yet:
 
 - The ``quick`` appearance
 - Offline tiles
-- Map layer customization (e.g., switching to Google Maps or Mapbox, terrain or satellite views)
 - Custom styling for points (``marker-color`` and ``marker-symbol``), lines (``stroke`` and ``stroke-width``) and shapes (``stroke``, ``stroke-width``, and ``fill``)
 
 Annotate, draw, and signature
