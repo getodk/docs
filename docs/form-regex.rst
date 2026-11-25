@@ -43,11 +43,7 @@ Some basic operations on regular expressions are:
 
 .. endignore
 
-For a clear understanding of regular expressions, try these regex online checker tools: 
-
-- https://regex101.com/
-- https://www.regextester.com/
-- https://regexr.com/
+For a clear understanding of regular expressions, try https://regex101.com
 
 .. _tips-on-regex:
 
