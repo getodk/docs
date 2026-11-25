@@ -58,6 +58,12 @@ Web Forms supports :ref:`all of the geo questions supported by Collect <location
 
 When designing the geospatial question types for Web Forms, we considered not only the data collection experience but also the data editing experience. In particular, when editing ``geopoint`` questions, Web Forms always shows the :ref:`placement map <web-forms-placement-map>` experience, even if another appearance was used to capture the point.
 
+.. note::
+
+  The recommended minimum screen height for maps is 360 points. On shorter screens, use portrait orientation.
+
+  Maps do not wrap around at the edges of the world.
+
 Geopoint without appearance
 """""""""""""""""""""""""""""
 
@@ -127,7 +133,7 @@ Google Maps layers and search
 
 .. versionadded:: v2026.4.0
 
-By default, map questions use OpenStreetMap. If you have :ref:`enabled Google Maps <central-install-digital-ocean-google-maps>`, map questions use Google Maps instead. A layer button lets you switch between the **Default**, **Satellite**, and **Terrain** views. A search box at the top of the map lets you type a place or address and move the map there. The map opens with the **Default** layer each time.
+By default, map questions use OpenStreetMap. If you have :ref:`enabled Google Maps <central-install-digital-ocean-google-maps>`, map questions use Google Maps instead. A layer button lets you switch between the **Default**, **Satellite**, and **Terrain** views. On phones in landscape orientation, the layer button is hidden due to limited space. A search box at the top of the map lets you type a place or address and move the map there. The map opens with the **Default** layer each time.
 
 To display Google Maps, your browser sends your IP address and the map areas you view to Google. Tap the info button next to the Google attribution section on the bottom of the map for details.
 
