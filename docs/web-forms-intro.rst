@@ -34,15 +34,12 @@ We've extensively tested ODK Web Forms and consider it ready for production use 
 
 For users who have been using web forms in Central prior to v2026.2.0, here is functionality in Enketo that's coming to Web Forms, in rough order of priority:
 
-* Satellite basemaps
 * big-image for labels
 * no-calendar appearance
 * Select from svg
-* Guidance hints
 * Launch form offline and save drafts
 * Progress bar
 * Audio recording in foreground and background
-* Picker, ticks appearances for range
 * Grid layout
 
 Please let us know `on the forum <https://forum.getodk.org/c/support/6>`_ what is most important to you.
@@ -60,6 +57,12 @@ Geospatial question types
 Web Forms supports :ref:`all of the geo questions supported by Collect <location-widgets>` with some user experience differences to account for the web context. Note that Web Forms users could be filling out forms from computers which generally do not provide as high accuracy locations as mobile devices. Unlike in Collect, using :ref:`start-geopoint <metadata-start-geopoint>` does not currently result in faster location capture.
 
 When designing the geospatial question types for Web Forms, we considered not only the data collection experience but also the data editing experience. In particular, when editing ``geopoint`` questions, Web Forms always shows the :ref:`placement map <web-forms-placement-map>` experience, even if another appearance was used to capture the point.
+
+.. note::
+
+  The recommended minimum screen height for maps is 360 points. On shorter screens, use portrait orientation.
+
+  Maps do not wrap around at the edges of the world.
 
 Geopoint without appearance
 """""""""""""""""""""""""""""
@@ -123,6 +126,20 @@ For scenarios requiring precise coordinate adjustments, an advanced panel can be
 .. image:: /img/web-forms/map-advanced-panel.*
   :alt: Web forms advanced panel for geoshape and geotrace
 
+.. _web-forms-google-maps:
+
+Google Maps layers and search
+"""""""""""""""""""""""""""""
+
+.. versionadded:: v2026.4.0
+
+By default, map questions use OpenStreetMap. If you have :ref:`enabled Google Maps <central-install-digital-ocean-google-maps>`, map questions use Google Maps instead. A layer button lets you switch between the **Default**, **Satellite**, and **Terrain** views. On phones in landscape orientation, the layer button is hidden due to limited space. A search box at the top of the map lets you type a place or address and move the map there. The map opens with the **Default** layer each time.
+
+To display Google Maps, your browser sends your IP address and the map areas you view to Google. Tap the info button next to the Google attribution section on the bottom of the map for details.
+
+.. image:: /img/web-forms/map-google-layers.*
+  :alt: Web Forms map question with Google Maps layers and search
+
 File uploads
 ~~~~~~~~~~~~
 
@@ -141,6 +158,18 @@ Date
   :class: central-partial-screen
 
 The :ref:`date question type <default-date-widget>` without appearance allows the user to enter a date. The user can manually type a date in the text field or click in the field to select a date from a calendar. The date format is based on the form's language, or the browser's language if the form does not have a language set. To change the year, they can press on the current year at the top of the calendar. To change the month, they can use the navigation arrows or press on the current month at the top of the calendar. There are also buttons to clear the date or jump to today.
+
+.. _web-forms-range:
+
+Range
+~~~~~
+
+.. versionadded:: v2026.4.0
+
+The :ref:`range question type <range-widgets>` shows tick marks and tick labels on the number line. It also supports the ``no-ticks`` and ``picker`` appearances and the ``tick_interval`` and ``placeholder`` parameters.
+
+.. image:: /img/web-forms/range-ticks-labels.*
+  :alt: Range question in Web Forms with tick marks and tick labels
 
 .. _web-forms-selects-images:
 
@@ -165,7 +194,7 @@ Select one from map
 
 .. versionadded:: v2025.3.0
 
-The :ref:`select one from map question type <select-from-map>` allows users to select an option from choices displayed on a map. Each choice must include a ``geometry`` column in the ``choices`` sheet. The map uses OpenStreetMap as the base layer and supports zooming, panning, and tapping features to view details and make a selection.
+The :ref:`select one from map question type <select-from-map>` allows users to select an option from choices displayed on a map. Each choice must include a ``geometry`` column in the ``choices`` sheet. The map supports zooming, panning, and tapping features to view details and make a selection. It uses the same :ref:`map layers <web-forms-google-maps>` as the other map questions.
 
 .. image:: /img/web-forms/select-one-from-map.*
   :alt: Select one from map in Web Forms
@@ -176,7 +205,6 @@ The following features are not supported yet:
 
 - The ``quick`` appearance
 - Offline tiles
-- Map layer customization (e.g., switching to Google Maps or Mapbox, terrain or satellite views)
 - Custom styling for points (``marker-color`` and ``marker-symbol``), lines (``stroke`` and ``stroke-width``) and shapes (``stroke``, ``stroke-width``, and ``fill``)
 
 Annotate, draw, and signature
